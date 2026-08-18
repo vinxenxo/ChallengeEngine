@@ -1,0 +1,11 @@
+# custom_data poblado en cada frame por ParkingMechanic
+snapshot.custom_data = {
+    # MÉTIRICAS OBLIGATORIAS PARA EL CORE (Leídas por WinningFrameDetector)
+    "success_distance": float,  # Distancia en píxeles al centro de la plaza (||P - T||)
+    "velocity": float,          # Velocidad lineal en px/frame (||V||)
+
+    # TELEMETRÍA Y DIAGNÓSTICO ESPECÍFICO DE PARKING
+    "angle_error": float,       # Error de alineación en radianes (|θ_vehiculo - θ_plaza|)
+    "steering": float,          # Ángulo de giro de ruedas [-1.0, 1.0]
+    "braking": float            # Intensidad de frenada [0.0, 1.0]
+}

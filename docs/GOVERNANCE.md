@@ -1,0 +1,49 @@
+# GOVERNANCE.md — Normas inmutables de ingeniería y arquitectura
+
+## 1. Estructura de Capas en 4 Niveles
+
+┌─────────────────────────────────────────────────────────────┐
+│ CAPA 0: Declarative Challenge Definition (JSON Input)      │
+└──────────────────────────────┬──────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────┐
+│ CAPA 1: Deterministic Simulation Core (CPU / Memory)        │
+│         - Mechanics, Detectors, Validators                 │
+└──────────────────────────────┬──────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────┐
+│ CAPA 2: Presentation & Movie Maker Rendering (Godot 4)      │
+│         - VideoTimeline, Assets Injection                  │
+└──────────────────────────────┬──────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────┐
+│ CAPA 3: Production Orchestrator & Transcoding (Python/FFmpeg)│
+└─────────────────────────────────────────────────────────────┘
+
+
+1. **Capa 0 (Declarativa):** Expresa intenciones del creador (tiempos, dificultad, semillas, assets). Prohibido incluir lógica de código, rutas absolutas o dependencias con plataformas de destino.
+2. **Capa 1 (Simulación Pura):** Ejecución matemática determinista en CPU sin nodos gráficos ni llamadas a viewport. Genera `Array[FrameSnapshot]` y valida la simulación antes de autorizar el renderizado.
+3. **Capa 2 (Presentación):** Lectura pasiva de `verified_history`. Avance guiado de forma secuencial por `VideoTimeline` mediante Movie Maker.
+4. **Capa 3 (Orquestación):** Manejo asíncrono no bloqueante de I/O en Python, captura de telemetría de consola, codificación FFmpeg y generación del certificado `manifest.json`.
+
+---
+
+## 2. Convenciones de GDScript (Godot 4)
+- **Tipado Estático Obligatorio:** Variables, parámetros y retornos deben tiparse explícitamente (`var fps: int = 60`, `func simulate(...) -> SimulationResult`).
+- **Uso de `RefCounted`:** Las clases de datos puros (`FrameSnapshot`, `SimulationResult`, `ValidationResult`) heredan de `RefCounted` para optimizar el consumo de memoria sin la sobrecarga del árbol de nodos.
+
+---
+
+## 3. Normas de CLI y Ejecución Headless
+- **Separador de Argumentos CLI:** Los parámetros del usuario deben pasarse obligatoriamente tras el separador `--` (ejemplo: `godot --headless ... -- --config=path/file.json`) y recuperarse mediante `OS.get_cmdline_user_args()`.
+- **Soberanía Temporal:** El FPS y la duración total son dictados por la configuración e impuestos al ejecutable mediante `--fixed-fps <FPS>` y `--quit-after <TOTAL_FRAMES>`.
+
+---
+
+## 4. Determinismo vs. Reproducibilidad Multimedia
+- **Determinismo Lógico:** Misma semilla, algoritmo, configuración y versión del motor producen exactamente la misma secuencia de estados simulados.
+- **Reproducibilidad Multimedia:** El vídeo se reproduce de forma coherente bajo un entorno versionado, pero NO se garantiza identidad binaria (*bit-exactness*) del archivo MP4 final entre diferentes plataformas, S.O. o GPUs.
+- **Sanitización de `INF`:** Ningún valor infinito o no numérico (`INF`, `NaN`) debe serializarse a
