@@ -66,8 +66,8 @@ func _run_architecture_tests(failures: Array[String]) -> void:
 	if not is_nan(l4_val) or cosmetic.last_error != "RNG_STREAM_UNREGISTERED":
 		failures.append("Test L4 Failed: CosmeticRNG no detectó stream desconocido.")
 
-	# TEST M: Inmutabilidad del Scope Array por Referencia
-	var external_array = [REGISTRY.STREAM_TRAJECTORY]
+	# TEST M: Inmutabilidad del Scope Array por Referencia (Corregido con tipado estricto Array[int])
+	var external_array: Array[int] = [REGISTRY.STREAM_TRAJECTORY]
 	var mut_res = MECH_CTX.create(12345, "2.0", "PilotMechanic", external_array, structural, registry)
 	external_array.append(REGISTRY.STREAM_PARTICLES)
 	var mut_ctx = mut_res.context
