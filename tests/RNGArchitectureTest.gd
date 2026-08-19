@@ -6,6 +6,20 @@ const COSMETIC = preload("res://core/deterministic/CosmeticRNG.gd")
 const MECH_CTX = preload("res://core/deterministic/MechanicRNGContext.gd")
 const PRES_CTX = preload("res://core/deterministic/PresentationRNGContext.gd")
 
+# Mock local para simular un fallo en tiempo de ejecución de la fachada con Context válido
+class FailingStructuralRNG extends StructuralRNG:
+	func sample_float(seed: int, stream_id: int, index: int) -> float:
+		last_error = "RNG_DOMAIN_VIOLATION"
+		return NAN
+
+	func sample_integer(seed: int, stream_id: int, index: int) -> int:
+		last_error = "RNG_DOMAIN_VIOLATION"
+		return -1
+
+	func sample_float_range(seed: int, stream_id: int, index: int, min_val: float, max_val: float) -> float:
+		last_error = "RNG_DOMAIN_VIOLATION"
+		return NAN
+
 func _initialize() -> void:
 	var failures: Array[String] = []
 	_run_architecture_tests(failures)
@@ -40,9 +54,9 @@ func _run_architecture_tests(failures: Array[String]) -> void:
 		failures.append("Test 2 Failed: Falló al rechazar un stream no registrado. Código: %s" % fake_res.error_code)
 
 	# TEST K: Capability Intersection (K2: Runtime Deny)
-	var _denied_val = mech_ctx.sample_float(REGISTRY.STREAM_PARTICLES, 5) 
-	if mech_ctx.error_state != "RNG_CONSUMER_NOT_AUTHORIZED":
-		failures.append("Test K2 Failed: Runtime no bloqueó stream fuera de scope local.")
+	var denied_val = mech_ctx.sample_float(REGISTRY.STREAM_PARTICLES, 5) 
+	if mech_ctx.error_state != "RNG_CONSUMER_NOT_AUTHORIZED" or not is_nan(denied_val):
+		failures.append("Test K2 Failed: Runtime no bloqueó stream fuera de scope local o no devolvió NAN.")
 
 	# K3: Registry DENY en construcción
 	var rogue_res = MECH_CTX.create(12345, "2.0", "HackerMechanic", [REGISTRY.STREAM_TRAJECTORY], structural, registry)
@@ -66,14 +80,14 @@ func _run_architecture_tests(failures: Array[String]) -> void:
 	if not is_nan(l4_val) or cosmetic.last_error != "RNG_STREAM_UNREGISTERED":
 		failures.append("Test L4 Failed: CosmeticRNG no detectó stream desconocido.")
 
-	# TEST M: Inmutabilidad del Scope Array por Referencia (Corregido con tipado estricto Array[int])
+	# TEST M: Inmutabilidad del Scope Array por Referencia
 	var external_array: Array[int] = [REGISTRY.STREAM_TRAJECTORY]
 	var mut_res = MECH_CTX.create(12345, "2.0", "PilotMechanic", external_array, structural, registry)
 	external_array.append(REGISTRY.STREAM_PARTICLES)
 	var mut_ctx = mut_res.context
-	var _mut_test_val = mut_ctx.sample_float(REGISTRY.STREAM_PARTICLES, 0)
-	if mut_ctx.error_state != "RNG_CONSUMER_NOT_AUTHORIZED":
-		failures.append("Test M Failed: El scope del contexto fue vulnerable a mutación externa.")
+	var mut_test_val = mut_ctx.sample_float(REGISTRY.STREAM_PARTICLES, 0)
+	if mut_ctx.error_state != "RNG_CONSUMER_NOT_AUTHORIZED" or not is_nan(mut_test_val):
+		failures.append("Test M Failed: El scope del contexto fue vulnerable a mutación externa o no devolvió NAN.")
 
 	# TEST N: Inmutabilidad de RNGStreamDefinition desde el exterior
 	var def = registry.get_definition(REGISTRY.STREAM_TRAJECTORY)
@@ -83,29 +97,55 @@ func _run_architecture_tests(failures: Array[String]) -> void:
 	if def_after.get_allowed_consumers().size() != original_consumers_count:
 		failures.append("Test N Failed: RNGStreamDefinition permitió mutar su lista de consumidores externamente.")
 
-	# TEST O: Facade Value Equivalence (Primitiva LCG vs Fachadas - O1 a O6)
+	# TEST O: Facade Value Equivalence
 	var seed_val = 987654
-	
-	# O1: StructuralRNG.sample_float
 	if DeterministicLCG.sample_float(seed_val, REGISTRY.STREAM_TRAJECTORY, 42) != structural.sample_float(seed_val, REGISTRY.STREAM_TRAJECTORY, 42):
 		failures.append("Test O1 Failed: Mismatch en StructuralRNG.sample_float")
-		
-	# O2: StructuralRNG.sample_integer
 	if DeterministicLCG.sample_integer(seed_val, REGISTRY.STREAM_TRAJECTORY, 42) != structural.sample_integer(seed_val, REGISTRY.STREAM_TRAJECTORY, 42):
 		failures.append("Test O2 Failed: Mismatch en StructuralRNG.sample_integer")
-		
-	# O3: StructuralRNG.sample_float_range
 	if DeterministicLCG.sample_float_range(seed_val, REGISTRY.STREAM_TRAJECTORY, 42, 0.0, 100.0) != structural.sample_float_range(seed_val, REGISTRY.STREAM_TRAJECTORY, 42, 0.0, 100.0):
 		failures.append("Test O3 Failed: Mismatch en StructuralRNG.sample_float_range")
-
-	# O4: CosmeticRNG.sample_float
 	if DeterministicLCG.sample_float(seed_val, REGISTRY.STREAM_PARTICLES, 15) != cosmetic.sample_float(seed_val, REGISTRY.STREAM_PARTICLES, 15):
 		failures.append("Test O4 Failed: Mismatch en CosmeticRNG.sample_float")
-
-	# O5: CosmeticRNG.sample_integer
 	if DeterministicLCG.sample_integer(seed_val, REGISTRY.STREAM_PARTICLES, 15) != cosmetic.sample_integer(seed_val, REGISTRY.STREAM_PARTICLES, 15):
 		failures.append("Test O5 Failed: Mismatch en CosmeticRNG.sample_integer")
-
-	# O6: CosmeticRNG.sample_float_range
 	if DeterministicLCG.sample_float_range(seed_val, REGISTRY.STREAM_PARTICLES, 15, -50.0, 50.0) != cosmetic.sample_float_range(seed_val, REGISTRY.STREAM_PARTICLES, 15, -50.0, 50.0):
 		failures.append("Test O6 Failed: Mismatch en CosmeticRNG.sample_float_range")
+
+	# TEST U: Error State Coherence & Bubbling Validation
+	# U1: Context local error & recovery
+	var u_ctx_res = MECH_CTX.create(12345, "2.0", "PilotMechanic", [REGISTRY.STREAM_TRAJECTORY], structural, registry)
+	var u_ctx = u_ctx_res.context
+	var u1_val = u_ctx.sample_float(REGISTRY.STREAM_PARTICLES, 0)
+	if u_ctx.error_state != "RNG_CONSUMER_NOT_AUTHORIZED" or not is_nan(u1_val):
+		failures.append("Test U1 Failed: Context no registró error local o no devolvió NAN.")
+	
+	var u1_ok_val = u_ctx.sample_float(REGISTRY.STREAM_TRAJECTORY, 0)
+	if u_ctx.error_state != "OK" or is_nan(u1_ok_val):
+		failures.append("Test U1 Failed: Context error_state no se reseteó a 'OK' o devolvió inválido. Obtenido: %s" % u_ctx.error_state)
+
+	# U2: Bubbling from facade failure through valid Context
+	var failing_rng = FailingStructuralRNG.new(registry)
+	var fail_ctx_res = MECH_CTX.create(12345, "2.0", "PilotMechanic", [REGISTRY.STREAM_TRAJECTORY], failing_rng, registry)
+	if not fail_ctx_res.is_valid:
+		failures.append("Test U2 Failed: No pudo crearse Context válido para bubbling.")
+	else:
+		var fail_ctx = fail_ctx_res.context
+		var bubbled_val = fail_ctx.sample_float(REGISTRY.STREAM_TRAJECTORY, 0)
+		if fail_ctx.error_state != "RNG_DOMAIN_VIOLATION" or not is_nan(bubbled_val):
+			failures.append("Test U2 Failed: Context no propagó last_error de la fachada o no devolvió NAN. Obtenido: %s" % fail_ctx.error_state)
+
+	# Direct Facade Coherence checks
+	structural.sample_float(12345, REGISTRY.STREAM_PARTICLES, 0)
+	if structural.last_error != "RNG_DOMAIN_VIOLATION":
+		failures.append("Test U2 Failed: StructuralRNG last_error incorrecto.")
+	structural.sample_float(12345, REGISTRY.STREAM_TRAJECTORY, 0)
+	if structural.last_error != "OK":
+		failures.append("Test U2 Failed: StructuralRNG last_error no se reseteó a 'OK'.")
+
+	cosmetic.sample_float(12345, REGISTRY.STREAM_TRAJECTORY, 0)
+	if cosmetic.last_error != "RNG_DOMAIN_VIOLATION":
+		failures.append("Test U2 Failed: CosmeticRNG last_error incorrecto.")
+	cosmetic.sample_float(12345, REGISTRY.STREAM_PARTICLES, 0)
+	if cosmetic.last_error != "OK":
+		failures.append("Test U2 Failed: CosmeticRNG last_error no se reseteó a 'OK'.")

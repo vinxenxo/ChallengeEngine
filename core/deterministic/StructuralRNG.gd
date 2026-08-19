@@ -10,28 +10,28 @@ func _init(registry: RNGStreamRegistry) -> void:
 func validate_stream(stream_id: int) -> String:
 	if not _registry.is_registered(stream_id):
 		return "RNG_STREAM_UNREGISTERED"
-	var definition: RNGStreamDefinition = _registry.get_definition(stream_id)
-	if definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
+	var def = _registry.get_definition(stream_id)
+	if def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
 		return "RNG_DOMAIN_VIOLATION"
 	return "OK"
 
 func sample_float(seed: int, stream_id: int, index: int) -> float:
 	last_error = validate_stream(stream_id)
 	if last_error != "OK":
-		push_error("StructuralRNG Error: " + last_error)
 		return NAN
+	last_error = "OK"
 	return DeterministicLCG.sample_float(seed, stream_id, index)
 
 func sample_integer(seed: int, stream_id: int, index: int) -> int:
 	last_error = validate_stream(stream_id)
 	if last_error != "OK":
-		push_error("StructuralRNG Error: " + last_error)
 		return -1
+	last_error = "OK"
 	return DeterministicLCG.sample_integer(seed, stream_id, index)
 
 func sample_float_range(seed: int, stream_id: int, index: int, min_val: float, max_val: float) -> float:
 	last_error = validate_stream(stream_id)
 	if last_error != "OK":
-		push_error("StructuralRNG Error: " + last_error)
 		return NAN
+	last_error = "OK"
 	return DeterministicLCG.sample_float_range(seed, stream_id, index, min_val, max_val)

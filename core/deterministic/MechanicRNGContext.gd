@@ -28,18 +28,18 @@ static func create(seed: int, rng_version: String, consumer_id: String, allowed_
 		return result
 
 	var seen: Dictionary = {}
-	for stream_id in allowed_streams:
-		if seen.has(stream_id):
+	for s_id in allowed_streams:
+		if seen.has(s_id):
 			result.error_code = "RNG_CONTEXT_INVALID"
 			return result
-		seen[stream_id] = true
+		seen[s_id] = true
 
 	for stream_id in allowed_streams:
-		var definition: RNGStreamDefinition = registry.get_definition(stream_id)
-		if definition == null:
+		var def: RNGStreamDefinition = registry.get_definition(stream_id)
+		if def == null:
 			result.error_code = "RNG_CONTEXT_INVALID"
 			return result
-		if definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
+		if def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
 			result.error_code = "RNG_CONTEXT_INVALID"
 			return result
 		if not registry.is_consumer_authorized(stream_id, consumer_id):
@@ -53,41 +53,47 @@ static func create(seed: int, rng_version: String, consumer_id: String, allowed_
 func sample_float(stream_id: int, index: int) -> float:
 	if index < 0:
 		error_state = "RNG_INDEX_INVALID"
-		push_error(error_state)
 		return NAN
 	if not stream_id in _allowed_streams:
 		error_state = "RNG_CONSUMER_NOT_AUTHORIZED"
-		push_error(error_state)
 		return NAN
-	var value: float = _rng.sample_float(_seed, stream_id, index)
+
+	var val = _rng.sample_float(_seed, stream_id, index)
 	if _rng.last_error != "OK":
 		error_state = _rng.last_error
-	return value
+		return NAN
+
+	error_state = "OK"
+	return val
 
 func sample_integer(stream_id: int, index: int) -> int:
 	if index < 0:
 		error_state = "RNG_INDEX_INVALID"
-		push_error(error_state)
 		return -1
 	if not stream_id in _allowed_streams:
 		error_state = "RNG_CONSUMER_NOT_AUTHORIZED"
-		push_error(error_state)
 		return -1
-	var value: int = _rng.sample_integer(_seed, stream_id, index)
+
+	var val = _rng.sample_integer(_seed, stream_id, index)
 	if _rng.last_error != "OK":
 		error_state = _rng.last_error
-	return value
+		return -1
+
+	error_state = "OK"
+	return val
 
 func sample_float_range(stream_id: int, index: int, min_val: float, max_val: float) -> float:
 	if index < 0:
 		error_state = "RNG_INDEX_INVALID"
-		push_error(error_state)
 		return NAN
 	if not stream_id in _allowed_streams:
 		error_state = "RNG_CONSUMER_NOT_AUTHORIZED"
-		push_error(error_state)
 		return NAN
-	var value: float = _rng.sample_float_range(_seed, stream_id, index, min_val, max_val)
+
+	var val = _rng.sample_float_range(_seed, stream_id, index, min_val, max_val)
 	if _rng.last_error != "OK":
 		error_state = _rng.last_error
-	return value
+		return NAN
+
+	error_state = "OK"
+	return val
