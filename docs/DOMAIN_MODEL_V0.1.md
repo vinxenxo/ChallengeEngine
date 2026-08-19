@@ -33,3 +33,23 @@
     "cta": "¡INTÉNTALO TÚ TAMBIÉN!"
   }
 }
+
+## Addendum V2.0 — CHALLENGE_003
+
+V2.0 challenges may declare:
+
+```json
+"generation": {
+  "seed": 314159,
+  "rng_version": "2.0"
+}
+```
+
+`CHALLENGE_003` uses `mechanic: "pilot"` and `mechanic_version: "2.0"`.
+
+The Pilot fixture defines its structural input entirely through deterministic functions of `seed`, semantic stream coordinates, and the challenge configuration. The streams used by the pilot are:
+
+- `10 / TRAJECTORY` — `index_semantics: frame`;
+- `20 / CONTROL` — `index_semantics: frame`.
+
+The presentation RNG is deliberately absent from the mechanic's capability scope.

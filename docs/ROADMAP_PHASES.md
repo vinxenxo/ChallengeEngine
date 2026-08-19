@@ -5,7 +5,7 @@
 - **Entorno de Ejecución:** Godot 4.7.1.stable.mono.official.a13da4feb
 - **FASE 1.0 (Infraestructura y Pipeline):** COMPLETADA Y CONGELADA
 - **FASE 1.1 (Endurecimiento de Contrato Temporal y Coordenadas):** COMPLETADA Y CONGELADA
-- **Estado Actual:** LISTOS PARA FASE 1.2
+- **Estado del documento histórico V0.1:** las fases 1.0–1.2 documentadas aquí pertenecen al baseline congelado; el estado vivo se registra en el bloque "V2.0 Checkpoint Track" más abajo.
 
 ---
 
@@ -34,3 +34,32 @@
 
 ### ⚪ FASE 2: Extensión de Mecánicas Complejas
 - [ ] Desarrollo de `ParkingMechanic.gd` (DODGE / SAVE / CONTROL).
+
+## V2.0 Checkpoint Track — Current State
+
+The V2.0 work is tracked independently from the historical V0.1 phase labels above.
+
+### CHECKPOINT 0 — Baseline V0.1
+- [x] Frozen and validated.
+
+### CHECKPOINT 0.1 — Stateless RNG
+- [x] Stateful LCG migrated to pure stateless sampling.
+- [x] Historical `CHALLENGE_001` and `CHALLENGE_002` preserved under `rng_version: "1.0"`.
+- [x] Godot 4.7.1 headless regression validated.
+
+### CHECKPOINT 0.2.1 — Semantic Streams and DI Infrastructure
+- [x] `RNGStreamDefinition`.
+- [x] `RNGStreamRegistry`.
+- [x] `StructuralRNG` / `CosmeticRNG`.
+- [x] `MechanicRNGContext` / `PresentationRNGContext`.
+- [x] Composition Root integration.
+- [x] Architecture suite and historical regressions validated.
+
+### CHECKPOINT 0.2.2 — Pilot Mechanic
+- [x] Mathematical contract frozen.
+- [x] `PilotMechanic` implemented as a V2.0 laboratory fixture.
+- [x] `CHALLENGE_003.json` added.
+- [x] Tests P/Q prepared for headless execution.
+- [ ] Godot 4.7.1 execution and regression certification pending.
+
+The next engineering step after certification is to freeze the Pilot fixture and use the proven semantic-stream architecture for a production-grade V2.0 mechanic.

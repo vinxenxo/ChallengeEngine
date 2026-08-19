@@ -3,7 +3,7 @@ extends RefCounted
 
 class CreationResult:
 	var is_valid: bool = false
-	var context = null # Evita autorreferencia tipada estricta para prevenir problemas del parser
+	var context = null
 	var error_code: String = "OK"
 
 var _seed: int
@@ -28,18 +28,18 @@ static func create(seed: int, rng_version: String, consumer_id: String, allowed_
 		return result
 
 	var seen: Dictionary = {}
-	for s_id in allowed_streams:
-		if seen.has(s_id):
+	for stream_id in allowed_streams:
+		if seen.has(stream_id):
 			result.error_code = "RNG_CONTEXT_INVALID"
 			return result
-		seen[s_id] = true
+		seen[stream_id] = true
 
 	for stream_id in allowed_streams:
-		var def: RNGStreamDefinition = registry.get_definition(stream_id)
-		if def == null:
+		var definition: RNGStreamDefinition = registry.get_definition(stream_id)
+		if definition == null:
 			result.error_code = "RNG_CONTEXT_INVALID"
 			return result
-		if def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
+		if definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
 			result.error_code = "RNG_CONTEXT_INVALID"
 			return result
 		if not registry.is_consumer_authorized(stream_id, consumer_id):
@@ -59,7 +59,10 @@ func sample_float(stream_id: int, index: int) -> float:
 		error_state = "RNG_CONSUMER_NOT_AUTHORIZED"
 		push_error(error_state)
 		return NAN
-	return _rng.sample_float(_seed, stream_id, index)
+	var value: float = _rng.sample_float(_seed, stream_id, index)
+	if _rng.last_error != "OK":
+		error_state = _rng.last_error
+	return value
 
 func sample_integer(stream_id: int, index: int) -> int:
 	if index < 0:
@@ -70,7 +73,10 @@ func sample_integer(stream_id: int, index: int) -> int:
 		error_state = "RNG_CONSUMER_NOT_AUTHORIZED"
 		push_error(error_state)
 		return -1
-	return _rng.sample_integer(_seed, stream_id, index)
+	var value: int = _rng.sample_integer(_seed, stream_id, index)
+	if _rng.last_error != "OK":
+		error_state = _rng.last_error
+	return value
 
 func sample_float_range(stream_id: int, index: int, min_val: float, max_val: float) -> float:
 	if index < 0:
@@ -81,4 +87,7 @@ func sample_float_range(stream_id: int, index: int, min_val: float, max_val: flo
 		error_state = "RNG_CONSUMER_NOT_AUTHORIZED"
 		push_error(error_state)
 		return NAN
-	return _rng.sample_float_range(_seed, stream_id, index, min_val, max_val)
+	var value: float = _rng.sample_float_range(_seed, stream_id, index, min_val, max_val)
+	if _rng.last_error != "OK":
+		error_state = _rng.last_error
+	return value

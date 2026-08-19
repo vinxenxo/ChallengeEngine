@@ -8,5 +8,7 @@ static func create_mechanic(mechanic_id: String) -> ChallengeMechanic:
 			return KeyMechanic.new()
 		"parking":
 			return ParkingMechanic.new()
+		"pilot":
+			return PilotMechanic.new()
 		_:
 			return null

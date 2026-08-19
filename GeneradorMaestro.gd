@@ -42,7 +42,6 @@ func _ready() -> void:
 	validate_only = has_user_flag("--validate-only")
 	timeline = VideoTimeline.new(config_cache.get("video", {}))
 
-	# --- CHECKPOINT 0.2.1: Inicialización de Infraestructura RNG ---
 	var rng_init: Dictionary = initialize_rng_infrastructure()
 	if not bool(rng_init.get("valid", false)):
 		emit_engine_error(
@@ -52,7 +51,6 @@ func _ready() -> void:
 		)
 		get_tree().quit(1)
 		return
-	# ---------------------------------------------------------------
 
 	var validation_package: Dictionary = run_validation_pipeline()
 	if not bool(validation_package.get("valid", false)):
@@ -122,7 +120,6 @@ func _ready() -> void:
 	FamilyAssets.configure_presentation(config_cache, nodes_map)
 	main_label.text = str(config_cache.get("content", {}).get("hook", ""))
 
-# --- CHECKPOINT 0.2.1: Factorías y Setup V2.0 ---
 func initialize_rng_infrastructure() -> Dictionary:
 	rng_registry = RNGStreamRegistry.new()
 	structural_rng = StructuralRNG.new(rng_registry)
@@ -133,7 +130,7 @@ func initialize_rng_infrastructure() -> Dictionary:
 		"error_code": "OK"
 	}
 
-func create_mechanic_rng_context(seed: int, consumer_id: String, allowed_streams: Array[int]) -> MechanicRNGContext.CreationResult:
+func create_mechanic_rng_context(seed: int, consumer_id: String, allowed_streams: Array[int]):
 	return MechanicRNGContext.create(
 		seed,
 		"2.0",
@@ -143,7 +140,7 @@ func create_mechanic_rng_context(seed: int, consumer_id: String, allowed_streams
 		rng_registry
 	)
 
-func create_presentation_rng_context(seed: int, consumer_id: String, allowed_streams: Array[int]) -> PresentationRNGContext.CreationResult:
+func create_presentation_rng_context(seed: int, consumer_id: String, allowed_streams: Array[int]):
 	return PresentationRNGContext.create(
 		seed,
 		"2.0",
@@ -152,7 +149,6 @@ func create_presentation_rng_context(seed: int, consumer_id: String, allowed_str
 		cosmetic_rng,
 		rng_registry
 	)
-# ------------------------------------------------
 
 func run_validation_pipeline() -> Dictionary:
 	var mechanic_id: String = str(config_cache.get("mechanic", ""))
@@ -180,11 +176,40 @@ func run_validation_pipeline() -> Dictionary:
 	var final_result: SimulationResult = null
 	var final_validation: ValidationResult = null
 
+	var is_v2: bool = rng_version == "2.0"
+	var pilot_allowed_streams: Array[int] = [
+		RNGStreamRegistry.STREAM_TRAJECTORY,
+		RNGStreamRegistry.STREAM_CONTROL
+	]
+
+	if is_v2 and mechanic_id.to_lower() != "pilot":
+		return {
+			"valid": false,
+			"error_code": "RNG_CONTEXT_INVALID",
+			"message": "No existe todavía un contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
+			"errors": ["Missing V2.0 mechanic RNG contract: %s" % mechanic_id]
+		}
+
 	var attempts: int = 0
 	const MAX_ATTEMPTS: int = 100
 
 	while attempts < MAX_ATTEMPTS:
 		attempts += 1
+
+		if is_v2:
+			var context_result = create_mechanic_rng_context(
+				current_seed,
+				"PilotMechanic",
+				pilot_allowed_streams
+			)
+			if not context_result.is_valid:
+				return {
+					"valid": false,
+					"error_code": str(context_result.error_code),
+					"message": "No se pudo crear la capability RNG de la mecánica.",
+					"errors": [str(context_result.error_code)]
+				}
+			mechanic.set_rng_context(context_result.context)
 
 		var test_result: SimulationResult = mechanic.simulate(
 			timeline.game_frames,

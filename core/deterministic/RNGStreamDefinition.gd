@@ -18,10 +18,23 @@ func _init(p_id: int, p_name: String, p_domain: int, p_owner: String, p_semantic
 	_version_introduced = p_version
 	_allowed_consumers = p_consumers.duplicate()
 
-func get_id() -> int: return _id
-func get_name() -> String: return _name
-func get_domain() -> int: return _domain
-func get_owner() -> String: return _owner
-func get_index_semantics() -> String: return _index_semantics
-func get_version_introduced() -> String: return _version_introduced
-func get_allowed_consumers() -> Array[String]: return _allowed_consumers.duplicate()
+func get_id() -> int:
+	return _id
+
+func get_name() -> String:
+	return _name
+
+func get_domain() -> int:
+	return _domain
+
+func get_owner() -> String:
+	return _owner
+
+func get_index_semantics() -> String:
+	return _index_semantics
+
+func get_version_introduced() -> String:
+	return _version_introduced
+
+func get_allowed_consumers() -> Array[String]:
+	return _allowed_consumers.duplicate()

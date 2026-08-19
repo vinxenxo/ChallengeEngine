@@ -45,3 +45,14 @@ El archivo instanciado único que cruza los 4 niveles anteriores junto con una s
 
 ## 3. Principio de Agnósticismo ("Social-Aware, Platform-Agnostic")
 El motor conoce los conceptos de safe_area, hook, cta, vertical_canvas, pero desconoce completamente APIs, algoritmos, métricas de engagement o requisitos técnicos de Instagram, TikTok o YouTube.
+
+## Addendum V2.0 — RNG Contract
+
+`generation.rng_version` is supported with values `"1.0"` and `"2.0"`.
+
+- `1.0`: frozen legacy compatibility for historical fixtures.
+- `2.0`: semantic streams and capability-based RNG contexts.
+
+Historical fixtures `CHALLENGE_001` and `CHALLENGE_002` remain on `1.0` and are not migrated.
+
+`CHALLENGE_003` is the first controlled `2.0` fixture and exists to validate deterministic dependency isolation.

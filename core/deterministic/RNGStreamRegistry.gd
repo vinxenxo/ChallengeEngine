@@ -8,9 +8,9 @@ enum Domain {
 	COSMETIC_CONTENT = 3
 }
 
-const STREAM_TRAJECTORY = 10
-const STREAM_CONTROL = 20
-const STREAM_PARTICLES = 1010
+const STREAM_TRAJECTORY: int = 10
+const STREAM_CONTROL: int = 20
+const STREAM_PARTICLES: int = 1010
 
 var _definitions: Dictionary = {}
 
@@ -20,7 +20,15 @@ func _init() -> void:
 	_register(STREAM_PARTICLES, "PARTICLES", Domain.PRESENTATION, "PresentationCore", "entity_id", "2.0", ["PilotVisuals"])
 
 func _register(p_id: int, p_name: String, p_domain: Domain, p_owner: String, p_semantics: String, p_version: String, p_consumers: Array[String]) -> void:
-	_definitions[p_id] = RNGStreamDefinition.new(p_id, p_name, p_domain, p_owner, p_semantics, p_version, p_consumers)
+	_definitions[p_id] = RNGStreamDefinition.new(
+		p_id,
+		p_name,
+		p_domain,
+		p_owner,
+		p_semantics,
+		p_version,
+		p_consumers
+	)
 
 func is_registered(stream_id: int) -> bool:
 	return _definitions.has(stream_id)
@@ -31,7 +39,7 @@ func get_definition(stream_id: int) -> RNGStreamDefinition:
 	return null
 
 func is_consumer_authorized(stream_id: int, consumer_id: String) -> bool:
-	var def: RNGStreamDefinition = get_definition(stream_id)
-	if def == null:
+	var definition: RNGStreamDefinition = get_definition(stream_id)
+	if definition == null:
 		return false
-	return consumer_id in def.get_allowed_consumers()
+	return consumer_id in definition.get_allowed_consumers()

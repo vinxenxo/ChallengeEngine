@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "engine_version": "0.1",
+  "challenge_id": "CHALLENGE_003",
+  "mechanic": "pilot",
+  "mechanic_version": "2.0",
+  "video_profile": "test_master_11s",
+  "video_profile_version": "1.0",
+  "asset_family": "fam_001",
+  "asset_family_version": "1.0",
+  "theme": "generic",
+  "generation": {
+    "seed": 314159,
+    "rng_version": "2.0"
+  },
+  "video": {
+    "fps": 60,
+    "hook_duration": 2.0,
+    "game_duration": 7.0,
+    "cta_duration": 2.0
+  },
+  "difficulty": {
+    "level": 1,
+    "tolerance": {
+      "distance_px": 5.0
+    }
+  },
+  "content": {
+    "start_x": 0.0,
+    "end_x": 100.0,
+    "target_start": 0.0,
+    "target_velocity": 0.2386634844868735,
+    "trajectory_amplitude": 2.0,
+    "control_amplitude": 0.5,
+    "hook": "PILOT V2.0",
+    "cta": "RNG ISOLATION TEST"
+  }
+}

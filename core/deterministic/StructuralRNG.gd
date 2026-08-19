@@ -10,8 +10,8 @@ func _init(registry: RNGStreamRegistry) -> void:
 func validate_stream(stream_id: int) -> String:
 	if not _registry.is_registered(stream_id):
 		return "RNG_STREAM_UNREGISTERED"
-	var def = _registry.get_definition(stream_id)
-	if def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and def.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
+	var definition: RNGStreamDefinition = _registry.get_definition(stream_id)
+	if definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_MAIN and definition.get_domain() != RNGStreamRegistry.Domain.STRUCTURAL_SECONDARY:
 		return "RNG_DOMAIN_VIOLATION"
 	return "OK"
 

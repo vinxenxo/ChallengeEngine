@@ -37,3 +37,17 @@ HitMechanic CatchMechanic DodgeMechanic MatchMechanic FindMechanic JackpotMechan
 - **Familia:** DODGE / SAVE (Espacio 2D Continuo).
 - **Simulación:** Generación procedural de trayectoria continua hacia la plaza ($X, Y$) con aceleraciones, curvas y frenazos.
 - **Métricas:** `custom_data["success_distance"]` = $\text{distance\_to}(\text{target\_slot})$, `c
+
+## 4. PilotMechanic V2.0 — Fixture de Laboratorio
+
+`PilotMechanic` no constituye una nueva familia matemática. Es un fixture controlado para validar la arquitectura de RNG V2.0.
+
+- **Versión:** 2.0
+- **Capability:** `MechanicRNGContext`
+- **Consumer:** `PilotMechanic`
+- **Streams:** `TRAJECTORY` (10) y `CONTROL` (20)
+- **Índice:** `frame_number`
+- **Modelo:** función pura por frame, sin acumulación de estado entre frames.
+- **Salida:** `FrameSnapshot[]` con `success_distance`, `velocity`, `target_x`, `base_x`, `trajectory_noise` y `control_offset`.
+
+El fixture existe exclusivamente para demostrar que llamadas de Presentation/Cosmetic RNG no pueden alterar `SimulationResult`, mientras que una mutación estructural sí puede alterar el resultado.

@@ -19,3 +19,17 @@ Evalúan el acoplamiento entre el núcleo de simulación (Capa 1) y el motor de 
 Validan la totalidad del pipeline de producción automatizada de la Capa 3.
 - **Flujo:** `JSON` $\rightarrow$ `build_factory.py` $\rightarrow$ `Godot headless` $\rightarrow$ `RAW AVI` $\rightarrow$ `FFmpeg` $\rightarrow$ `FINAL MP4` $\rightarrow$ `ffprobe` $\rightarrow$ `manifest.json`.
 - **Criterio de Éxito:** Salida limpia `exit 0`, metadatos validados, duración exacta de vídeo, FPS y cumplimiento de las invariantes matemáticas ($f_{\text{winning}}$ dentro del bloque `GAME`).
+
+## Addendum V2.0 — Deterministic Dependency Isolation
+
+The V2.0 test layer adds architectural tests for semantic RNG streams and capability boundaries.
+
+- **K — Capability Intersection:** local scope and Registry authorization must both permit a stream.
+- **L1–L4 — Facade Isolation:** structural and cosmetic facades reject opposite-domain or unregistered streams.
+- **M — Scope Copy Isolation:** external mutation of the source `allowed_streams` array cannot mutate a capability.
+- **N — Registry Definition Isolation:** consumers cannot mutate the Registry's authorized-consumer list through a returned definition.
+- **O1–O6 — Facade Equivalence:** all facade sampling operations must return exactly the same value as the underlying `DeterministicLCG` for authorized streams.
+- **P — Cosmetic Invariance:** presentation RNG calls and presentation ordering must not alter `SimulationResult`.
+- **Q — Structural Reactivity:** a structural trajectory mutation must be observable in the simulation, while cosmetic stream activity must remain observationally irrelevant.
+
+The V2.0 pilot fixture is `CHALLENGE_003` / `PilotMechanic`.

@@ -81,3 +81,29 @@ Artifacts (.mp4 / _manifest.json)
    - `"winning_frame_game"`: Frame relativo al bloque GAME.
    - `"winning_frame"`: Frame absoluto del vídeo (usado por la Capa de Presentación/Render).
    - `"winning_frame_in_valid_window"`: Bool que certifica que el frame cae estrictamente en la ventana.
+
+## Addendum V2.0 — Semantic RNG Streams and Capability Isolation
+
+CHECKPOINT 0.2.1 introduces a deterministic RNG dependency boundary without changing the V1.0 simulation pipeline.
+
+### Composition Root
+
+`GeneradorMaestro` is the Composition Root for RNG V2.0. It creates:
+
+- `RNGStreamRegistry`;
+- `StructuralRNG`;
+- `CosmeticRNG`;
+- `MechanicRNGContext` capabilities for V2.0 mechanics;
+- `PresentationRNGContext` capabilities for presentation consumers.
+
+V1.0 mechanics (`key`, `parking`) continue to use their frozen contracts.
+
+### Domain Boundary
+
+`StructuralRNG` accepts only `STRUCTURAL_MAIN` and `STRUCTURAL_SECONDARY` streams. `CosmeticRNG` accepts only `PRESENTATION` and `COSMETIC_CONTENT` streams. A cosmetic component must never inject data into `SimulationResult`.
+
+`DeterministicLCG` remains a pure mathematical primitive and knows nothing about mechanics, presentation, ownership, or challenge semantics.
+
+### V2.0 Pilot
+
+`PilotMechanic` is the first V2.0 laboratory fixture. It consumes `STREAM_TRAJECTORY` (10) and `STREAM_CONTROL` (20) through `MechanicRNGContext`, using `frame_number` as the semantic index. It has no dependency on presentation systems.

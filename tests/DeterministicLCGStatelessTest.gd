@@ -66,54 +66,40 @@ func _run_rng_tests(failures: Array[String]) -> void:
 			failures.append("Test E failed: mutable class/module variable found: %s" % trimmed)
 			break
 
+
 func _run_regression_tests(failures: Array[String]) -> void:
 	var key_config: Dictionary = _load_json("res://challenges/CHALLENGE_001.json")
-	var key_instance = KEY_MECHANIC.new()
-	if key_instance == null or not (key_instance is ChallengeMechanic):
-		failures.append("Test F failed: KeyMechanic could not be instantiated.")
-		return
-	var key: ChallengeMechanic = key_instance
+	var key: ChallengeMechanic = KEY_MECHANIC.new()
 	var key_result: SimulationResult = key.simulate(420, 126048932, key_config)
 	DETECTOR.analyze_and_score(key_result)
 	var key_validation: ValidationResult = VALIDATOR.validate(key_result, 120, 420)
 
 	if key_result.winning_frame != 342:
 		failures.append("Test F failed: CHALLENGE_001 winning_frame=%d" % key_result.winning_frame)
-		
-	# --- PARCHE TEST F (Valores de coma flotante corregidos) ---
-	if not abs(key_result.minimum_distance - 0.000230040647936747) < 1e-12:
+	if key_result.minimum_distance != 0.000230040647936747:
 		failures.append("Test F failed: CHALLENGE_001 minimum_distance=%s" % key_result.minimum_distance)
-	if not abs(key_result.score - 0.638380059088502) < 1e-12:
+	if key_result.score != 0.638380059088502:
 		failures.append("Test F failed: CHALLENGE_001 score=%s" % key_result.score)
-	# -----------------------------------------------------------
-	
 	if not key_validation.is_valid:
 		failures.append("Test F failed: CHALLENGE_001 validation rejected: %s" % key_validation.errors)
 
 	var parking_config: Dictionary = _load_json("res://challenges/CHALLENGE_002.json")
-	var parking_instance = PARKING_MECHANIC.new()
-	if parking_instance == null or not (parking_instance is ChallengeMechanic):
-		failures.append("Test G failed: ParkingMechanic could not be instantiated.")
-		return
-	var parking: ChallengeMechanic = parking_instance
+	var parking: ChallengeMechanic = PARKING_MECHANIC.new()
 	var parking_result: SimulationResult = parking.simulate(420, 987654, parking_config)
 	DETECTOR.analyze_and_score(parking_result)
 	var parking_validation: ValidationResult = VALIDATOR.validate(parking_result, 120, 420)
 
 	if parking_result.winning_frame != 395:
 		failures.append("Test G failed: CHALLENGE_002 winning_frame=%d" % parking_result.winning_frame)
-		
-	# --- PARCHE TEST G (Valores de coma flotante corregidos) ---
-	if not abs(parking_result.metadata.get("dodge_offset", 0.0) - (-95.0478103361315)) < 1e-12:
+	if parking_result.metadata.get("dodge_offset", 0.0) != -95.0478103361315:
 		failures.append("Test G failed: dodge_offset=%s" % parking_result.metadata.get("dodge_offset"))
-	if not abs(parking_result.metadata.get("save_offset", 0.0) - 23.9687795163918) < 1e-12:
+	if parking_result.metadata.get("save_offset", 0.0) != 23.9687795163918:
 		failures.append("Test G failed: save_offset=%s" % parking_result.metadata.get("save_offset"))
-	if not abs(parking_result.metadata.get("overshoot_dist", 0.0) - 67.4236544163076) < 1e-12:
+	if parking_result.metadata.get("overshoot_dist", 0.0) != 67.4236544163076:
 		failures.append("Test G failed: overshoot_dist=%s" % parking_result.metadata.get("overshoot_dist"))
-	# -----------------------------------------------------------
-	
 	if not parking_validation.is_valid:
 		failures.append("Test G failed: CHALLENGE_002 validation rejected: %s" % parking_validation.errors)
+
 
 func _load_json(path: String) -> Dictionary:
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
