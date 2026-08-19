@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "engine_version": "0.1",
+  "challenge_id": "CHALLENGE_004",
+  "mechanic": "parking_v2",
+  "mechanic_version": "2.0",
+  "video_profile": "test_master_11s",
+  "video_profile_version": "1.0",
+  "asset_family": "fam_garage_01",
+  "asset_family_version": "1.0",
+  "theme": "garage",
+  "generation": {
+    "seed": 314159,
+    "rng_version": "2.0"
+  },
+  "video": {
+    "fps": 60,
+    "hook_duration": 2.0,
+    "game_duration": 7.0,
+    "cta_duration": 2.0
+  },
+  "difficulty": {
+    "level": 3,
+    "tolerance": {
+      "distance_px": 15.0,
+      "angle_deg": 6.0
+    },
+    "parking": {
+      "start_position": [
+        150.0,
+        960.0
+      ],
+      "target_position": [
+        850.0,
+        960.0
+      ],
+      "target_angle_deg": 0.0,
+      "max_speed_px": 12.0,
+      "steering_noise": 0.05
+    }
+  },
+  "content": {
+    "hook": "¡SOLO EL 1% APARCA SIN ROZAR!",
+    "cta": "¡INTÉNTALO TÚ TAMBIÉN!"
+  }
+}
