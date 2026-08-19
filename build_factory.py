@@ -68,13 +68,11 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
     manifest_path = output_dir / f"{challenge_id}_manifest.json"
 
     # --- 1. SIMULACIÓN (GODOT) ---
-    # Invocación base
     cmd = [
         "godot",
         "--path", str(PROJECT_ROOT)
     ]
     
-    # Bifurcación del contrato de renderizado
     if validate_only:
         cmd.append("--headless")
     else:
@@ -84,7 +82,6 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
             "--quit-after", "660"
         ])
         
-    # Argumentos del script de usuario
     cmd.extend([
         "--",
         f"--config={config_path}"
@@ -168,7 +165,6 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
             "error": {"code": "FFPROBE_ERROR", "message": probe_data["error"]}
         }
 
-    # Tolerancia mínima para float (duration), marcos y FPS exactos
     valid_duration = math.isclose(probe_data["duration"], 11.0, abs_tol=0.05)
     valid_frames = probe_data["nb_frames"] == 660
     valid_fps = probe_data["r_frame_rate"] == "60/1"
@@ -207,14 +203,97 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
         "manifest": manifest_data
     }
 
+def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: bool = False) -> Dict[str, Any]:
+    """Ejecuta el procesamiento secuencial y determinista por lotes de desafíos."""
+    challenges_dir = Path(challenges_dir_str).resolve()
+    base_output_dir = Path(base_output_dir_str).resolve()
+    
+    if not challenges_dir.exists() or not challenges_dir.is_dir():
+        return {
+            "success": False,
+            "error": {"code": "DIR_NOT_FOUND", "message": f"El directorio de desafíos no existe: {challenges_dir}"}
+        }
+
+    # Descubrimiento determinista ordenado alfabéticamente
+    config_files = sorted(challenges_dir.glob("CHALLENGE_*.json"))
+    
+    if not config_files:
+        return {
+            "success": False,
+            "error": {"code": "NO_CHALLENGES_FOUND", "message": f"No se encontraron archivos CHALLENGE_*.json en {challenges_dir}"}
+        }
+
+    base_output_dir.mkdir(parents=True, exist_ok=True)
+    batch_manifest_path = base_output_dir / "BATCH_MANIFEST.json"
+
+    passed_count = 0
+    failed_count = 0
+    challenges_results = []
+
+    for cfg_path in config_files:
+        # Aislamiento de salida por subdirectorio para cada desafío
+        challenge_id = read_challenge_id(cfg_path)
+        sub_output_dir = base_output_dir / challenge_id
+        
+        print(f"[BATCH] Procesando {challenge_id} desde {cfg_path.name}...")
+        res = run_factory(str(cfg_path), str(sub_output_dir), validate_only)
+        
+        if res["success"]:
+            passed_count += 1
+            rel_manifest = f"{challenge_id}/{challenge_id}_manifest.json"
+            challenges_results.append({
+                "challenge_id": challenge_id,
+                "status": "PASS",
+                "manifest": rel_manifest
+            })
+            print(f"[BATCH] -> {challenge_id}: PASS")
+        else:
+            failed_count += 1
+            err_info = res.get("error", {"code": "UNKNOWN_ERROR", "message": "Error desconocido en factoría"})
+            challenges_results.append({
+                "challenge_id": challenge_id,
+                "status": "FAIL",
+                "error": err_info
+            })
+            print(f"[BATCH] -> {challenge_id}: FAIL [{err_info.get('code')}] {err_info.get('message')}")
+
+    batch_status = "PASSED" if failed_count == 0 else "FAILED"
+    batch_manifest_data = {
+        "factory_version": "0.5.0",
+        "status": batch_status,
+        "summary": {
+            "total": len(config_files),
+            "passed": passed_count,
+            "failed": failed_count
+        },
+        "challenges": challenges_results
+    }
+
+    with open(batch_manifest_path, "w", encoding="utf-8") as f:
+        json.dump(batch_manifest_data, f, indent=2, ensure_ascii=False)
+
+    return {
+        "success": (failed_count == 0),
+        "batch_manifest_path": str(batch_manifest_path),
+        "summary": batch_manifest_data["summary"],
+        "batch_manifest": batch_manifest_data
+    }
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Pause Challenge Engine - Build Factory")
-    parser.add_argument("--config", required=True, help="Ruta al archivo JSON de configuración del challenge")
-    parser.add_argument("--output", default="./output", help="Directorio de salida de los artefactos")
+    parser = argparse.ArgumentParser(description="Pause Challenge Engine - Build Factory (Batch & Unit)")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--config", help="Ruta al archivo JSON unitario de configuración del challenge")
+    group.add_argument("--batch", help="Directorio que contiene los archivos CHALLENGE_*.json para procesamiento por lotes")
+    
+    parser.add_argument("--output", default="./output", help="Directorio raíz de salida de los artefactos")
     parser.add_argument("--validate-only", action="store_true", help="Ejecutar validación matemática sin empaquetar video")
     args = parser.parse_args()
 
-    result = run_factory(args.config, args.output, args.validate_only)
+    if args.config:
+        result = run_factory(args.config, args.output, args.validate_only)
+    else:
+        result = run_batch(args.batch, args.output, args.validate_only)
+
     print(json.dumps(result, indent=2, ensure_ascii=False))
     
     if not result["success"]:
