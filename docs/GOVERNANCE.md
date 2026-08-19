@@ -47,3 +47,16 @@
 - **Determinismo Lógico:** Misma semilla, algoritmo, configuración y versión del motor producen exactamente la misma secuencia de estados simulados.
 - **Reproducibilidad Multimedia:** El vídeo se reproduce de forma coherente bajo un entorno versionado, pero NO se garantiza identidad binaria (*bit-exactness*) del archivo MP4 final entre diferentes plataformas, S.O. o GPUs.
 - **Sanitización de `INF`:** Ningún valor infinito o no numérico (`INF`, `NaN`) debe serializarse a
+
+## Current Governance Status — V2.0 Checkpoint Track
+
+The following rules are now frozen for V2.0:
+
+1. `DeterministicLCG` is a pure sampling primitive and must not accumulate mutable sequence state.
+2. V2.0 mechanics receive RNG through capabilities, not global RNG singletons.
+3. Stream IDs must be registered and domain-owned before consumption.
+4. `StructuralRNG` and `CosmeticRNG` enforce the structural/presentation boundary.
+5. Lower layers detect and carry error state; the Composition Root owns process-level I/O and `[ERROR_JSON]` emission.
+6. `CHALLENGE_001` and `CHALLENGE_002` remain frozen V1.0 fixtures.
+7. New V2.0 mechanics are introduced in parallel with their legacy counterparts until integration is explicitly certified.
+8. `ParkingMechanicV2` is currently isolated and validated, but not yet globally registered/injected. That integration is CHECKPOINT 0.3.6 work.

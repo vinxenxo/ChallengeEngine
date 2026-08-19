@@ -107,3 +107,41 @@ V1.0 mechanics (`key`, `parking`) continue to use their frozen contracts.
 ### V2.0 Pilot
 
 `PilotMechanic` is the first V2.0 laboratory fixture. It consumes `STREAM_TRAJECTORY` (10) and `STREAM_CONTROL` (20) through `MechanicRNGContext`, using `frame_number` as the semantic index. It has no dependency on presentation systems.
+
+## Current Architecture Status — CHECKPOINT 0.3.6
+
+The V0.1 architecture above is preserved as historical reference. The live architecture now includes the V2.0 deterministic RNG dependency boundary.
+
+### V2.0 deterministic boundary
+
+`DeterministicLCG` is now a stateless mathematical primitive. Its public sampling contract is:
+
+```text
+sample_integer(seed, stream_id, index)
+sample_float(seed, stream_id, index)
+sample_float_range(seed, stream_id, index, min, max)
+```
+
+The primitive derives a deterministic stream seed for non-zero semantic streams and advances the 31-bit LCG by affine exponentiation. `stream_id = 0` preserves the historical legacy sequence used by RNG v1.0.
+
+### Capability boundary
+
+V2.0 mechanics receive `MechanicRNGContext` capabilities through the Composition Root. Presentation consumers receive `PresentationRNGContext` capabilities. `StructuralRNG` only accepts structural streams and `CosmeticRNG` only accepts presentation/cosmetic streams.
+
+The current Registry contains:
+
+| ID | Stream | Domain | Consumer |
+|---:|---|---|---|
+| 10 | `TRAJECTORY` | `STRUCTURAL_MAIN` | `PilotMechanic` |
+| 20 | `CONTROL` | `STRUCTURAL_MAIN` | `PilotMechanic` |
+| 30 | `PARKING_DODGE_OFFSET` | `STRUCTURAL_MAIN` | `ParkingMechanic` |
+| 40 | `PARKING_SAVE_OFFSET` | `STRUCTURAL_MAIN` | `ParkingMechanic` |
+| 50 | `PARKING_OVERSHOOT` | `STRUCTURAL_MAIN` | `ParkingMechanic` |
+| 60 | `PARKING_STEERING_NOISE` | `STRUCTURAL_MAIN` | `ParkingMechanic` |
+| 1010 | `PARTICLES` | `PRESENTATION` | `PilotVisuals` |
+
+### Important current integration boundary
+
+`ParkingMechanicV2.gd` exists and is validated in isolation, but `MechanicRegistry.gd` does **not yet** resolve `parking_v2`, and `GeneradorMaestro.gd` currently only has an end-to-end V2 capability path for the Pilot mechanic.
+
+That is the explicit objective of CHECKPOINT 0.3.6. Do not assume global integration is already complete merely because the isolated Parking V2 suite passes.

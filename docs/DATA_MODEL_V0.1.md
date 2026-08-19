@@ -50,3 +50,20 @@ Contrato estándar para la definición de un challenge (`/challenges/*.json`):
    - `"winning_frame_game"`: Frame relativo al bloque GAME.
    - `"winning_frame"`: Frame absoluto del vídeo (usado por la Capa de Presentación/Render).
    - `"winning_frame_in_valid_window"`: Bool que certifica que el frame cae estrictamente en la ventana.
+
+## Current Live Data Contract — V2.0
+
+Historical examples in the V0.1 section are retained as historical examples. Current challenge files use the established schema/version fields and the following live V2.0 pattern where applicable:
+
+```json
+"mechanic": "parking_v2",
+"mechanic_version": "2.0",
+"generation": {
+  "seed": 314159,
+  "rng_version": "2.0"
+}
+```
+
+`CHALLENGE_001` and `CHALLENGE_002` remain `rng_version: "1.0"`. `CHALLENGE_003` and `CHALLENGE_004` are V2.0 fixtures.
+
+The current temporal fixture used by the frozen challenges is 2 s HOOK + 7 s GAME + 2 s CTA = 11 s / 660 frames at 60 FPS. Historical references to 3+7+1 belong to older documentation and are not the current live contract.

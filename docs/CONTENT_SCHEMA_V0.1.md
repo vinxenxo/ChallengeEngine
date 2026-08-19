@@ -56,3 +56,28 @@ El motor conoce los conceptos de safe_area, hook, cta, vertical_canvas, pero des
 Historical fixtures `CHALLENGE_001` and `CHALLENGE_002` remain on `1.0` and are not migrated.
 
 `CHALLENGE_003` is the first controlled `2.0` fixture and exists to validate deterministic dependency isolation.
+
+## Current V2.0 Content Contract
+
+The five-level content model remains:
+
+```text
+Mathematical Family
+    ↓
+Mechanic implementation
+    ↓
+Semantic theme
+    ↓
+Asset family
+    ↓
+Concrete challenge JSON
+```
+
+V2.0 does not add new mathematical families. `parking_v2` is a V2 implementation of the `DODGE / SAVE / CONTROL` family. The visual theme `garage` is content metadata only.
+
+Current V2.0 fixtures:
+
+- `CHALLENGE_003` → `pilot` / `2.0` / laboratory DDI fixture.
+- `CHALLENGE_004` → `parking_v2` / `2.0` / production-oriented fixture.
+
+The challenge definition remains declarative; RNG stream allocation and algorithmic behavior are owned by the engine contracts, not by arbitrary JSON code.

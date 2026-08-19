@@ -51,3 +51,26 @@ HitMechanic CatchMechanic DodgeMechanic MatchMechanic FindMechanic JackpotMechan
 - **Salida:** `FrameSnapshot[]` con `success_distance`, `velocity`, `target_x`, `base_x`, `trajectory_noise` y `control_offset`.
 
 El fixture existe exclusivamente para demostrar que llamadas de Presentation/Cosmetic RNG no pueden alterar `SimulationResult`, mientras que una mutación estructural sí puede alterar el resultado.
+
+## Current V2.0 Status — CHECKPOINT 0.3.6
+
+The six mathematical families remain the engine taxonomy:
+
+- `HIT`
+- `CATCH`
+- `DODGE / CONTROL`
+- `MATCH`
+- `FIND`
+- `JACKPOT`
+
+Themes such as `retro_8bit_arcade`, `garage`, `sports`, `fantasy` and `scifi` remain content/presentation classifications, not new mathematical families.
+
+### Implemented V2.0 fixtures
+
+`PilotMechanic` is the controlled DDI laboratory fixture. `ParkingMechanicV2` is the first production-oriented V2.0 mechanic and belongs to `DODGE / SAVE / CONTROL`.
+
+`ParkingMechanic.gd` remains the frozen V1.0 oracle. `ParkingMechanicV2.gd` is a parallel implementation and must not replace or alter the V1.0 class during CHECKPOINT 0.3.6.
+
+### Parking V2 production streams
+
+`PARKING_DODGE_OFFSET`, `PARKING_SAVE_OFFSET`, and `PARKING_OVERSHOOT` are generation parameters sampled at index `0`. `PARKING_STEERING_NOISE` is sampled per frame at `f*2` and `f*2+1`.

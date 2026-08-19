@@ -47,3 +47,15 @@ $$\begin{aligned}
 
 ## 4. Zonas Seguras (Safe Areas)
 La capa de presentación debe respetar los márgenes superiores (15%) e inferiores (20%) para evitar
+
+## Current Live Distribution Timing
+
+The distribution architecture remains platform-agnostic. The current production challenge master profile is 11.0 seconds at 60 FPS with:
+
+```text
+HOOK = 2.0 s / 120 frames
+GAME = 7.0 s / 420 frames
+CTA  = 2.0 s / 120 frames
+```
+
+This supersedes older timing examples in this historical document for current engine work. No social platform API is part of the Simulation Core.

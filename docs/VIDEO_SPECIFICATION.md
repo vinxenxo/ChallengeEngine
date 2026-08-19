@@ -32,3 +32,16 @@ ffmpeg -y -i output/CHALLENGE_001_raw.avi \
   -acodec aac \
   -b:a 192k \
   output/CHALLENGE_001.mp4
+
+## Current Live Temporal Contract — CHECKPOINT 0.3.x
+
+The current challenge master profile used by the frozen baseline and current V2 fixtures is:
+
+| Block | Duration | Frames @ 60 FPS |
+|---|---:|---:|
+| HOOK | 2.0 s | 120 |
+| GAME | 7.0 s | 420 |
+| CTA | 2.0 s | 120 |
+| TOTAL | 11.0 s | 660 |
+
+The original document's technical rendering pipeline remains valid. Older timing examples with 3.0 s HOOK + 1.0 s CTA are historical and must not override the live challenge JSON contract.

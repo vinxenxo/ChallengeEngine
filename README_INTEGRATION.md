@@ -1,55 +1,88 @@
-# Pause Challenge Engine — Core V0.1 Consolidated
+# ChallengeEngineV01 — Integración y validación
 
-Esto es una documentación operativa.
-Este paquete contiene la implementación consolidada de las fases solicitadas.
+Este README es la guía **operativa y técnica**. Para entender el proyecto sin tecnicismos, consulta `README_PROJECT_ES.md`.
 
-## Orden
+## Estado del paquete
 
-1. Contratos:
-   - FrameSnapshot.gd
-   - SimulationResult.gd
-   - ValidationResult.gd
-   - ChallengeMechanic.gd
-2. Simulación:
-   - KeyMechanic.gd
-3. Análisis:
-   - WinningFrameDetector.gd
-   - ChallengeValidator.gd
-4. Tiempo:
-   - VideoTimeline.gd
-5. Orquestación:
-   - GeneradorMaestro.gd
-6. Configuración:
-   - challenges/CHALLENGE_001.json
-7. CLI:
-   - build_factory.py con --validate-only
+Este paquete corresponde al código entregado en el **CHECKPOINT 0.3.5**, preparado para iniciar el **CHECKPOINT 0.3.6 — Composition Root Integration**.
 
-## Integración
+`src/.continue/rules/` forma parte de la configuración del entorno VS Code/Continue y no pertenece al dominio matemático del motor.
 
-Copia los `.gd` en la ubicación de scripts que ya utiliza tu proyecto y conserva las rutas/nombres de escena que ya tiene `GeneradorMaestro.gd`.
+## Antes de modificar código
 
-El proyecto debe seguir teniendo las clases de presentación que ya existían, especialmente `FamilyAssets.gd`.
+Desde la raíz:
 
-## Validación previa al render
-
-Desde la raíz del proyecto:
-
-```bash
-python build_factory.py --validate-only --config=challenges/CHALLENGE_001.json
+```powershell
+godot --headless --path . --editor --quit
 ```
 
-Este modo ejecuta:
+Después ejecuta las suites congeladas:
 
-JSON -> Timeline -> KeyMechanic -> WinningFrameDetector -> ChallengeValidator
+```powershell
+godot --headless --path . --script tests/DeterministicLCGStatelessTest.gd
+godot --headless --path . --script tests/RNGArchitectureTest.gd
+godot --headless --path . --script tests/PilotMechanicIsolationTest.gd
+godot --headless --path . --script tests/PilotMechanicDDIHardeningTest.gd
+godot --headless --path . --script tests/ParkingMechanicV2IsolationTest.gd
+```
 
-y NO escribe AVI/MP4.
+Y las regresiones históricas:
+
+```powershell
+godot --headless --path . -- --config=challenges/CHALLENGE_001.json --validate-only
+godot --headless --path . -- --config=challenges/CHALLENGE_002.json --validate-only
+```
+
+La suite Parking V2 debe producir:
+
+```text
+[PARKING_V2_ISOLATION_SUITE] PASS
+```
+
+## Qué está integrado y qué no
+
+### Ya integrado
+
+- Stateless LCG.
+- Registry de streams.
+- Fachadas Structural/Cosmetic.
+- Contextos RNG.
+- Composition Root para la infraestructura RNG.
+- PilotMechanic V2.
+- ParkingMechanicV2 aislado.
+- CHALLENGE_004 como fixture.
+
+### Pendiente en 0.3.6
+
+- Registrar `parking_v2` en `MechanicRegistry`.
+- Crear su `MechanicRNGContext` desde `GeneradorMaestro`.
+- Inyectarlo por intento/retry.
+- Interceptar `error_state` antes de detector/validator.
+- Ejecutar CHALLENGE_004 mediante el pipeline global.
+- Confirmar regresión exacta de CHALLENGE_001/002.
 
 ## Producción
 
-```bash
-python build_factory.py
+El pipeline final conserva la separación:
+
+```text
+JSON
+  ↓
+Godot headless
+  ↓
+SimulationResult
+  ↓
+WinningFrameDetector
+  ↓
+ChallengeValidator
+  ↓
+Presentation / Movie Maker
+  ↓
+RAW AVI
+  ↓
+FFmpeg
+  ↓
+MP4 + manifest
 ```
 
-La producción mantiene el pipeline:
-
-JSON -> Godot headless -> Movie Maker -> AVI -> FFmpeg -> MP4 + manifest.json
+Python orquesta. Godot calcula. FFmpeg empaqueta.

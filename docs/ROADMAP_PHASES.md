@@ -63,3 +63,27 @@ The V2.0 work is tracked independently from the historical V0.1 phase labels abo
 - [ ] Godot 4.7.1 execution and regression certification pending.
 
 The next engineering step after certification is to freeze the Pilot fixture and use the proven semantic-stream architecture for a production-grade V2.0 mechanic.
+
+## Current V2.0 Checkpoint Track — CHECKPOINT 0.3.6
+
+The original Phase 1.x labels above are retained as historical baseline documentation. The live V2 development sequence is:
+
+```text
+0       Baseline V0.1                         FROZEN
+0.1     Stateless RNG                         FROZEN / VALIDATED
+0.2.1   Semantic Streams + DI                 FROZEN / VALIDATED
+0.2.2   PilotMechanic + CHALLENGE_003         FROZEN / VALIDATED
+0.2.2-R1 DDI Hardening + error bubbling       FROZEN / VALIDATED
+0.3.1   Parking V2 mathematical contract      FROZEN
+0.3.2   Production stream registry            FROZEN / VALIDATED
+0.3.3   Semantic index contract               FROZEN
+0.3.4   CHALLENGE_004                         FROZEN
+0.3.5   ParkingMechanicV2 isolation           FROZEN / VALIDATED
+0.3.6   Composition Root integration          OPEN
+```
+
+### 0.3.6 objective
+
+Integrate `parking_v2` into the production pipeline without altering V1.0 mechanics or fixtures.
+
+The intended change surface is `MechanicRegistry.gd` + `GeneradorMaestro.gd` + integration tests.

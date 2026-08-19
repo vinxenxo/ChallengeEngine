@@ -53,3 +53,21 @@ The Pilot fixture defines its structural input entirely through deterministic fu
 - `20 / CONTROL` — `index_semantics: frame`.
 
 The presentation RNG is deliberately absent from the mechanic's capability scope.
+
+## Current V2.0 Domain Addendum
+
+The domain model now distinguishes three RNG concerns:
+
+```text
+DeterministicLCG
+    ↓ primitive mathematics
+StructuralRNG / MechanicRNGContext
+    ↓ structural capability
+Simulation Core
+
+CosmeticRNG / PresentationRNGContext
+    ↓ presentation capability
+Presentation Layer
+```
+
+`PilotMechanic` proves the capability model in a deliberately simple domain. `ParkingMechanicV2` applies the same architectural contract to continuous 2D trajectory generation using Bézier geometry, deterministic generation parameters, and per-frame steering noise.

@@ -33,3 +33,37 @@ The V2.0 test layer adds architectural tests for semantic RNG streams and capabi
 - **Q — Structural Reactivity:** a structural trajectory mutation must be observable in the simulation, while cosmetic stream activity must remain observationally irrelevant.
 
 The V2.0 pilot fixture is `CHALLENGE_003` / `PilotMechanic`.
+
+## Current V2.0 Testing Status — CHECKPOINT 0.3.6
+
+The historical V0.1 test strategy remains unchanged as a record of the original contract. The live V2.0 testing surface now includes:
+
+### Deterministic RNG suite
+
+`tests/DeterministicLCGStatelessTest.gd` validates legacy sequence equivalence, referential repetition, reordering, stream isolation, absence of mutable RNG module state, and regression fixtures.
+
+### RNG architecture suite
+
+`tests/RNGArchitectureTest.gd` validates capability construction, domain separation, registry authorization, scope immutability, facade equivalence, error-state coherence, error bubbling, and the production Parking stream registry.
+
+### Pilot DDI suites
+
+`tests/PilotMechanicIsolationTest.gd` and `tests/PilotMechanicDDIHardeningTest.gd` validate cosmetic invariance, structural reactivity, stream independence and execution-order resilience for the laboratory fixture.
+
+### Parking V2 isolation suite
+
+`tests/ParkingMechanicV2IsolationTest.gd` validates:
+
+- capability creation for streams 30/40/50/60;
+- exact 420-frame contract;
+- repeatability;
+- cosmetic invariance;
+- structural stream independence;
+- direct structural reactivity via `PARKING_STEERING_NOISE`;
+- runtime error bubbling and rejection of partial results.
+
+The suite has been validated in the working Godot 4.7.1 environment with `[PARKING_V2_ISOLATION_SUITE] PASS`.
+
+### Integration testing still pending
+
+The Parking V2 isolation result does **not** yet certify global pipeline integration. CHECKPOINT 0.3.6 must additionally prove that `MechanicRegistry` resolves `parking_v2`, `GeneradorMaestro` injects its capability per attempt, RNG failures stop downstream processing, and V1.0 fixtures remain unchanged.
