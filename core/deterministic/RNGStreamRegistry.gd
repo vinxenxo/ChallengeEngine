@@ -2,44 +2,46 @@ class_name RNGStreamRegistry
 extends RefCounted
 
 enum Domain {
-	STRUCTURAL_MAIN = 0,
-	STRUCTURAL_SECONDARY = 1,
-	PRESENTATION = 2,
-	COSMETIC_CONTENT = 3
+	STRUCTURAL_MAIN,
+	STRUCTURAL_SECONDARY,
+	PRESENTATION,
+	COSMETIC_CONTENT
 }
 
-const STREAM_TRAJECTORY: int = 10
-const STREAM_CONTROL: int = 20
-const STREAM_PARTICLES: int = 1010
+const STREAM_TRAJECTORY = 10
+const STREAM_CONTROL = 20
+const STREAM_PARTICLES = 1010
+
+# FASE 0.3.2: Parking V2 Production Streams
+const STREAM_PARKING_DODGE = 30
+const STREAM_PARKING_SAVE = 40
+const STREAM_PARKING_OVERSHOOT = 50
+const STREAM_PARKING_STEERING = 60
 
 var _definitions: Dictionary = {}
 
 func _init() -> void:
-	_register(STREAM_TRAJECTORY, "TRAJECTORY", Domain.STRUCTURAL_MAIN, "SimulationCore", "frame", "2.0", ["PilotMechanic"])
-	_register(STREAM_CONTROL, "CONTROL", Domain.STRUCTURAL_MAIN, "SimulationCore", "frame", "2.0", ["PilotMechanic"])
-	_register(STREAM_PARTICLES, "PARTICLES", Domain.PRESENTATION, "PresentationCore", "entity_id", "2.0", ["PilotVisuals"])
+	# Legacy / Pilot Streams
+	_register(STREAM_TRAJECTORY, "TRAJECTORY", Domain.STRUCTURAL_MAIN, "Main spatial generation", "frame", "2.0", ["PilotMechanic"])
+	_register(STREAM_CONTROL, "CONTROL", Domain.STRUCTURAL_MAIN, "Logic flow generation", "frame", "2.0", ["PilotMechanic"])
+	_register(STREAM_PARTICLES, "PARTICLES", Domain.PRESENTATION, "Visual particles", "frame", "2.0", ["PilotVisuals"])
 
-func _register(p_id: int, p_name: String, p_domain: Domain, p_owner: String, p_semantics: String, p_version: String, p_consumers: Array[String]) -> void:
-	_definitions[p_id] = RNGStreamDefinition.new(
-		p_id,
-		p_name,
-		p_domain,
-		p_owner,
-		p_semantics,
-		p_version,
-		p_consumers
-	)
+	# Parking V2 Production Streams
+	_register(STREAM_PARKING_DODGE, "PARKING_DODGE_OFFSET", Domain.STRUCTURAL_MAIN, "Dodge generation parameter", "0", "2.0", ["ParkingMechanic"])
+	_register(STREAM_PARKING_SAVE, "PARKING_SAVE_OFFSET", Domain.STRUCTURAL_MAIN, "Save generation parameter", "0", "2.0", ["ParkingMechanic"])
+	_register(STREAM_PARKING_OVERSHOOT, "PARKING_OVERSHOOT", Domain.STRUCTURAL_MAIN, "Overshoot generation parameter", "0", "2.0", ["ParkingMechanic"])
+	_register(STREAM_PARKING_STEERING, "PARKING_STEERING_NOISE", Domain.STRUCTURAL_MAIN, "Steering noise (x/y)", "frame*2 / frame*2+1", "2.0", ["ParkingMechanic"])
+
+func _register(id: int, name: String, domain: Domain, description: String, index_semantics: String, version_introduced: String, allowed_consumers: Array[String]) -> void:
+	_definitions[id] = RNGStreamDefinition.new(id, name, domain, description, index_semantics, version_introduced, allowed_consumers)
 
 func is_registered(stream_id: int) -> bool:
 	return _definitions.has(stream_id)
 
 func get_definition(stream_id: int) -> RNGStreamDefinition:
-	if is_registered(stream_id):
-		return _definitions[stream_id]
-	return null
+	return _definitions.get(stream_id, null)
 
 func is_consumer_authorized(stream_id: int, consumer_id: String) -> bool:
-	var definition: RNGStreamDefinition = get_definition(stream_id)
-	if definition == null:
+	if not is_registered(stream_id):
 		return false
-	return consumer_id in definition.get_allowed_consumers()
+	return _definitions[stream_id].get_allowed_consumers().has(consumer_id)

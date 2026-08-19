@@ -149,3 +149,25 @@ func _run_architecture_tests(failures: Array[String]) -> void:
 	cosmetic.sample_float(12345, REGISTRY.STREAM_PARTICLES, 0)
 	if cosmetic.last_error != "OK":
 		failures.append("Test U2 Failed: CosmeticRNG last_error no se reseteó a 'OK'.")
+
+	# TEST V: Parking V2 Production Streams Validation (Phase 0.3.2)
+	var parking_streams = [
+		REGISTRY.STREAM_PARKING_DODGE,
+		REGISTRY.STREAM_PARKING_SAVE,
+		REGISTRY.STREAM_PARKING_OVERSHOOT,
+		REGISTRY.STREAM_PARKING_STEERING
+	]
+	
+	for s_id in parking_streams:
+		if not registry.is_registered(s_id):
+			failures.append("Test V Failed: Stream %d is not registered." % s_id)
+		else:
+			var s_def = registry.get_definition(s_id)
+			if s_def.get_domain() != REGISTRY.Domain.STRUCTURAL_MAIN:
+				failures.append("Test V Failed: Stream %d domain is not STRUCTURAL_MAIN." % s_id)
+			if not registry.is_consumer_authorized(s_id, "ParkingMechanic"):
+				failures.append("Test V Failed: Consumer 'ParkingMechanic' not authorized for stream %d." % s_id)
+				
+	# Ensure legacy streams are intact
+	if not registry.is_registered(REGISTRY.STREAM_TRAJECTORY) or not registry.is_registered(REGISTRY.STREAM_PARTICLES) or not registry.is_registered(REGISTRY.STREAM_CONTROL):
+		failures.append("Test V Failed: Legacy Pilot streams (10, 20 or 1010) are missing or modified.")
