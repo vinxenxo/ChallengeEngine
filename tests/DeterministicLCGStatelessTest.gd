@@ -76,9 +76,9 @@ func _run_regression_tests(failures: Array[String]) -> void:
 
 	if key_result.winning_frame != 342:
 		failures.append("Test F failed: CHALLENGE_001 winning_frame=%d" % key_result.winning_frame)
-	if key_result.minimum_distance != 0.000230040647936747:
+	if not is_equal_approx(key_result.minimum_distance, 0.000230040647936747):
 		failures.append("Test F failed: CHALLENGE_001 minimum_distance=%s" % key_result.minimum_distance)
-	if key_result.score != 0.638380059088502:
+	if not is_equal_approx(key_result.score, 0.638380059088502):
 		failures.append("Test F failed: CHALLENGE_001 score=%s" % key_result.score)
 	if not key_validation.is_valid:
 		failures.append("Test F failed: CHALLENGE_001 validation rejected: %s" % key_validation.errors)
@@ -91,11 +91,11 @@ func _run_regression_tests(failures: Array[String]) -> void:
 
 	if parking_result.winning_frame != 395:
 		failures.append("Test G failed: CHALLENGE_002 winning_frame=%d" % parking_result.winning_frame)
-	if parking_result.metadata.get("dodge_offset", 0.0) != -95.0478103361315:
+	if not is_equal_approx(parking_result.metadata.get("dodge_offset", 0.0), -95.0478103361315):
 		failures.append("Test G failed: dodge_offset=%s" % parking_result.metadata.get("dodge_offset"))
-	if parking_result.metadata.get("save_offset", 0.0) != 23.9687795163918:
+	if not is_equal_approx(parking_result.metadata.get("save_offset", 0.0), 23.9687795163918):
 		failures.append("Test G failed: save_offset=%s" % parking_result.metadata.get("save_offset"))
-	if parking_result.metadata.get("overshoot_dist", 0.0) != 67.4236544163076:
+	if not is_equal_approx(parking_result.metadata.get("overshoot_dist", 0.0), 67.4236544163076):
 		failures.append("Test G failed: overshoot_dist=%s" % parking_result.metadata.get("overshoot_dist"))
 	if not parking_validation.is_valid:
 		failures.append("Test G failed: CHALLENGE_002 validation rejected: %s" % parking_validation.errors)

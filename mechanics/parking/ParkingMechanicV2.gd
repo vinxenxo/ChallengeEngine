@@ -187,3 +187,6 @@ func _calculate_bezier(p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2, t: fl
 func _calculate_bezier_tangent(p0: Vector2, p1: Vector2, p2: Vector2, p3: Vector2, t: float) -> Vector2:
 	var u: float = 1.0 - t
 	return 3.0 * u * u * (p1 - p0) + 6.0 * u * t * (p2 - p1) + 3.0 * t * t * (p3 - p2)
+
+func set_rng_context(context: MechanicRNGContext) -> void:
+	rng_context = context

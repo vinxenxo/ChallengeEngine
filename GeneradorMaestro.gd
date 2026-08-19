@@ -181,14 +181,12 @@ func run_validation_pipeline() -> Dictionary:
 		RNGStreamRegistry.STREAM_TRAJECTORY,
 		RNGStreamRegistry.STREAM_CONTROL
 	]
-
-	if is_v2 and mechanic_id.to_lower() != "pilot":
-		return {
-			"valid": false,
-			"error_code": "RNG_CONTEXT_INVALID",
-			"message": "No existe todavía un contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
-			"errors": ["Missing V2.0 mechanic RNG contract: %s" % mechanic_id]
-		}
+	var parking_v2_allowed_streams: Array[int] = [
+		RNGStreamRegistry.STREAM_PARKING_DODGE,
+		RNGStreamRegistry.STREAM_PARKING_SAVE,
+		RNGStreamRegistry.STREAM_PARKING_OVERSHOOT,
+		RNGStreamRegistry.STREAM_PARKING_STEERING
+	]
 
 	var attempts: int = 0
 	const MAX_ATTEMPTS: int = 100
@@ -196,12 +194,28 @@ func run_validation_pipeline() -> Dictionary:
 	while attempts < MAX_ATTEMPTS:
 		attempts += 1
 
+		var context_result = null
 		if is_v2:
-			var context_result = create_mechanic_rng_context(
-				current_seed,
-				"PilotMechanic",
-				pilot_allowed_streams
-			)
+			if mechanic_id.to_lower() == "pilot":
+				context_result = create_mechanic_rng_context(
+					current_seed,
+					"PilotMechanic",
+					pilot_allowed_streams
+				)
+			elif mechanic_id.to_lower() == "parking_v2":
+				context_result = create_mechanic_rng_context(
+					current_seed,
+					"ParkingMechanic",
+					parking_v2_allowed_streams
+				)
+			else:
+				return {
+					"valid": false,
+					"error_code": "RNG_CONTEXT_INVALID",
+					"message": "No existe todavía un contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
+					"errors": ["Missing V2.0 mechanic RNG contract: %s" % mechanic_id]
+				}
+
 			if not context_result.is_valid:
 				return {
 					"valid": false,
@@ -216,6 +230,14 @@ func run_validation_pipeline() -> Dictionary:
 			current_seed,
 			config_cache
 		)
+
+		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2"] and context_result.context.error_state != "OK":
+			return {
+				"valid": false,
+				"error_code": "MECHANIC_SIMULATION_ERROR",
+				"message": "El contexto RNG reportó un error durante la simulación.",
+				"errors": [str(context_result.context.error_state)]
+			}
 
 		var contract_check: Dictionary = test_result.validate_contract(timeline.game_frames)
 		if not bool(contract_check.get("is_valid", false)):
