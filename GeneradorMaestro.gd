@@ -6,6 +6,11 @@ var final_winning_frame: int = -1
 var config_cache: Dictionary = {}
 var validate_only: bool = false
 
+# Infraestructura RNG V2.0 (Composition Root)
+var rng_registry: RNGStreamRegistry
+var structural_rng: StructuralRNG
+var cosmetic_rng: CosmeticRNG
+
 @onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/FondoEstatico
 @onready var target_sprite: Node2D = $OptimizadorVertical/PantallaVideo/GestorJuego/MetaContenedor
 @onready var object_sprite: Node2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
@@ -36,6 +41,18 @@ func _ready() -> void:
 
 	validate_only = has_user_flag("--validate-only")
 	timeline = VideoTimeline.new(config_cache.get("video", {}))
+
+	# --- CHECKPOINT 0.2.1: Inicialización de Infraestructura RNG ---
+	var rng_init: Dictionary = initialize_rng_infrastructure()
+	if not bool(rng_init.get("valid", false)):
+		emit_engine_error(
+			str(rng_init.get("error_code", "RNG_CONTEXT_INVALID")),
+			"Falló la inicialización de la infraestructura RNG.",
+			str(rng_init.get("details", []))
+		)
+		get_tree().quit(1)
+		return
+	# ---------------------------------------------------------------
 
 	var validation_package: Dictionary = run_validation_pipeline()
 	if not bool(validation_package.get("valid", false)):
@@ -104,6 +121,38 @@ func _ready() -> void:
 	}
 	FamilyAssets.configure_presentation(config_cache, nodes_map)
 	main_label.text = str(config_cache.get("content", {}).get("hook", ""))
+
+# --- CHECKPOINT 0.2.1: Factorías y Setup V2.0 ---
+func initialize_rng_infrastructure() -> Dictionary:
+	rng_registry = RNGStreamRegistry.new()
+	structural_rng = StructuralRNG.new(rng_registry)
+	cosmetic_rng = CosmeticRNG.new(rng_registry)
+
+	return {
+		"valid": true,
+		"error_code": "OK"
+	}
+
+func create_mechanic_rng_context(seed: int, consumer_id: String, allowed_streams: Array[int]) -> MechanicRNGContext.CreationResult:
+	return MechanicRNGContext.create(
+		seed,
+		"2.0",
+		consumer_id,
+		allowed_streams,
+		structural_rng,
+		rng_registry
+	)
+
+func create_presentation_rng_context(seed: int, consumer_id: String, allowed_streams: Array[int]) -> PresentationRNGContext.CreationResult:
+	return PresentationRNGContext.create(
+		seed,
+		"2.0",
+		consumer_id,
+		allowed_streams,
+		cosmetic_rng,
+		rng_registry
+	)
+# ------------------------------------------------
 
 func run_validation_pipeline() -> Dictionary:
 	var mechanic_id: String = str(config_cache.get("mechanic", ""))
