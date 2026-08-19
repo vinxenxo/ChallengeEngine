@@ -13,9 +13,9 @@ script = ExtResource("1")
 
 [node name="FondoEstatico" type="Sprite2D" parent="OptimizadorVertical/PantallaVideo/GestorJuego"]
 
-[node name="MetaContenedor" type="Node2D" parent="OptimizadorVertical/PantallaVideo/GestorJuego"]
+[node name="MetaContenedor" type="Sprite2D" parent="OptimizadorVertical/PantallaVideo/GestorJuego"]
 
-[node name="ObjetoMovil" type="Node2D" parent="OptimizadorVertical/PantallaVideo/GestorJuego"]
+[node name="ObjetoMovil" type="Sprite2D" parent="OptimizadorVertical/PantallaVideo/GestorJuego"]
 
 [node name="UI_Gancho" type="CanvasLayer" parent="OptimizadorVertical/PantallaVideo"]
 

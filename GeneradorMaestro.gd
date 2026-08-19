@@ -12,8 +12,8 @@ var structural_rng: StructuralRNG
 var cosmetic_rng: CosmeticRNG
 
 @onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/FondoEstatico
-@onready var target_sprite: Node2D = $OptimizadorVertical/PantallaVideo/GestorJuego/MetaContenedor
-@onready var object_sprite: Node2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
+@onready var target_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/MetaContenedor
+@onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
 @onready var main_label: Label = $OptimizadorVertical/PantallaVideo/UI_Gancho/TextoTitulo
 
 func _ready() -> void:
@@ -111,6 +111,10 @@ func _ready() -> void:
 	if validate_only:
 		get_tree().quit(0)
 		return
+
+	var parking_cfg: Dictionary = config_cache.get("difficulty", {}).get("parking", {})
+	var target_pos_arr: Array = parking_cfg.get("target_position", [540.0, 960.0])
+	target_sprite.position = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
 
 	var nodes_map: Dictionary = {
 		"background": bg_sprite,
