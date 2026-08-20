@@ -16,7 +16,7 @@ func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> Simul
 
 	var catch_cfg: Dictionary = config.get("difficulty", {}).get("catch", {})
 	
-	# Parámetros de configuración base del escenario cinemático
+	# Parámetros de configuración base
 	var catcher_orig_arr: Array = catch_cfg.get("catcher_origin", [540.0, 1700.0])
 	var catcher_dir_arr: Array = catch_cfg.get("catcher_direction", [0.0, -1.0])
 	var catcher_speed_base: float = float(catch_cfg.get("catcher_speed_base", 6.0))
@@ -33,7 +33,7 @@ func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> Simul
 	var dir_c: Vector2 = Vector2(float(catcher_dir_arr[0]), float(catcher_dir_arr[1]))
 	var dir_t: Vector2 = Vector2(float(target_direction_arr[0]), float(target_direction_arr[1]))
 
-	# Validación estricta de normalización y magnitudes de vectores directores
+	# Validación estricta
 	if dir_c.length() == 0.0 or dir_t.length() == 0.0 or catcher_speed_base < 0.0 or target_speed_base < 0.0:
 		var err_res = SimulationResult.new()
 		err_res.winning_frame = -1
@@ -42,14 +42,11 @@ func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> Simul
 	var u_c: Vector2 = dir_c.normalized()
 	var u_t: Vector2 = dir_t.normalized()
 
-	# 1. Stream 100 (Índice 0): Target Motion δ_target ∈ [-0.20, 0.20]
+	# Consumo de streams RNG
 	var delta_target: float = _rng_context.sample_float_range(100, 0, -0.20, 0.20)
-	# 2. Stream 110 (Índice 0): Pursuer Bias δ_bias ∈ [-0.15, 0.15]
 	var delta_bias: float = _rng_context.sample_float_range(110, 0, -0.15, 0.15)
-	# 3. Stream 120 (Índice 0): Initial Phase Δx_phase ∈ [-50.0, 50.0]
 	var delta_phase_x: float = _rng_context.sample_float_range(120, 0, -50.0, 50.0)
 
-	# Si ocurrió un error DDI (ej. stream no autorizado), abortamos la simulación
 	if _rng_context.error_state != "OK":
 		var err_res = SimulationResult.new()
 		err_res.winning_frame = -1
@@ -60,7 +57,6 @@ func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> Simul
 
 	var v_t: Vector2 = u_t * v_t_eff
 	var v_c: Vector2 = u_c * v_c_eff
-
 	var t0_prime: Vector2 = t0 + Vector2(delta_phase_x, 0.0)
 
 	var frames: Array[FrameSnapshot] = []
@@ -78,19 +74,22 @@ func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> Simul
 		snap.rotation = 0.0
 		snap.scale = Vector2.ONE
 		snap.opacity = 1.0
+		
+		# Contrato de Presentación 0.8.1: Inyectar posición del blanco
+		snap.custom_data = {
+			"target_position": p_t
+		}
+		
 		frames.append(snap)
 
-		# Argmin discreto estricto (< garantiza desempate manteniendo el primer índice)
 		if d_f < min_dist:
 			min_dist = d_f
 			winning_frame = f
 
-	# Cálculo de métricas contractuales de salida
 	var captured: bool = min_dist <= catch_radius
 	var score: float = clampf(1.0 - (min_dist / catch_radius), 0.0, 1.0)
 	var closing_velocity: float = (v_c - v_t).length()
 
-	# Segunda pasada para close_calls (d_f <= catch_radius * 3.5, excluyendo estrictamente winning_frame)
 	var close_threshold: float = catch_radius
 	var close_calls: int = 0
 	for f in range(total_frames):
