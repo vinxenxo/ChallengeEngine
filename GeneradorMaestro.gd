@@ -196,6 +196,11 @@ func run_validation_pipeline() -> Dictionary:
 		RNGStreamRegistry.STREAM_HIT_TRAJECTORY_NOISE,
 		RNGStreamRegistry.STREAM_HIT_TARGET_OFFSET
 	]
+	var catch_v1_allowed_streams: Array[int] = [
+		RNGStreamRegistry.STREAM_CATCH_TARGET_MOTION,
+		RNGStreamRegistry.STREAM_CATCH_PURSUER_BIAS,
+		RNGStreamRegistry.STREAM_CATCH_INITIAL_PHASE
+	]
 
 	var attempts: int = 0
 	const MAX_ATTEMPTS: int = 100
@@ -223,6 +228,12 @@ func run_validation_pipeline() -> Dictionary:
 					"HitMechanic",
 					hit_v1_allowed_streams
 				)
+			elif mechanic_id.to_lower() == "catch_v1":
+				context_result = create_mechanic_rng_context(
+					current_seed,
+					"CatchMechanic",
+					catch_v1_allowed_streams
+				)
 			else:
 				return {
 					"valid": false,
@@ -246,7 +257,7 @@ func run_validation_pipeline() -> Dictionary:
 			config_cache
 		)
 
-		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1"] and context_result.context.error_state != "OK":
+		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1"] and context_result.context.error_state != "OK":
 			return {
 				"valid": false,
 				"error_code": "MECHANIC_SIMULATION_ERROR",
@@ -263,8 +274,8 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
-		# Respetar la soberanía matemática de HIT: no pasa por el WinningFrameDetector genérico
-		if mechanic_id.to_lower() != "hit_v1":
+		# Respetar la soberanía matemática de HIT y CATCH: no pasan por el WinningFrameDetector genérico
+		if mechanic_id.to_lower() not in ["hit_v1", "catch_v1"]:
 			WinningFrameDetector.analyze_and_score(test_result)
 
 		var validation: ValidationResult = ChallengeValidator.validate(

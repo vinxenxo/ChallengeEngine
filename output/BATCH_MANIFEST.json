@@ -9,8 +9,8 @@
   ],
   "status": "PASSED",
   "summary": {
-    "total": 5,
-    "passed": 5,
+    "total": 6,
+    "passed": 6,
     "failed": 0
   },
   "challenges": [
@@ -48,6 +48,13 @@
       "rng_version": "2.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_005/CHALLENGE_005_manifest.json"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "status": "PASS",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "manifest": "CHALLENGE_006/CHALLENGE_006_manifest.json"
     }
   ]
 }
