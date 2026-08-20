@@ -19,7 +19,7 @@ mono_crash.*.json
 
 # Source code
 # *.gd
-# *.gd.uid
+*.gd.uid
 # *.gd.meta
 
 # VS Plugins
