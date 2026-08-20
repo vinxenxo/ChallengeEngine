@@ -5,6 +5,7 @@ var structural_rng: StructuralRNG
 var challenge_config: Dictionary
 var failures: int = 0
 
+
 func _init() -> void:
 	print("--- INICIANDO HIT MECHANIC ISOLATION SUITE ---")
 	_setup_environment()

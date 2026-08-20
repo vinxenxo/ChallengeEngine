@@ -8,8 +8,9 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Resolución inmutable del directorio raíz del proyecto
+# Resolución inmutable del directorio raíz del proyecto y versión oficial de la fábrica (0.7.0-B)
 PROJECT_ROOT = Path(__file__).resolve().parent
+FACTORY_VERSION = "0.7.0"
 
 def read_challenge_id(config_path: Path) -> str:
     """Extrae el challenge_id directamente del JSON declarativo (Capa 0)."""
@@ -172,8 +173,9 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
     
     probe_data["valid"] = valid_duration and valid_frames and valid_fps
 
-    # --- 4. CONSOLIDACIÓN DE MANIFIESTO ---
+    # --- 4. CONSOLIDACIÓN DE MANIFIESTO UNITARIO (Hardened 0.7.0) ---
     manifest_data = {
+        "factory_version": FACTORY_VERSION,
         "challenge_id": challenge_id,
         "telemetry": telemetry,
         "artifacts": {
@@ -237,12 +239,10 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
     base_output_dir.mkdir(parents=True, exist_ok=True)
     batch_manifest_path = base_output_dir / "BATCH_MANIFEST.json"
 
-    # Diccionario temporal para almacenar resultados asíncronos por ID
     raw_results: Dict[str, Dict[str, Any]] = {}
 
     print(f"[BATCH] Lanzando lote con {len(config_files)} desafíos usando {workers} worker(s)...")
 
-    # Ejecución controlada mediante ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max(1, workers)) as executor:
         future_to_config = {
             executor.submit(_process_single_challenge, cfg_path, base_output_dir, validate_only): cfg_path 
@@ -254,7 +254,6 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
                 ch_id, res = future.result()
                 raw_results[ch_id] = res
             except Exception as exc:
-                # Fallo crítico del worker no atrapado
                 cfg_path = future_to_config[future]
                 ch_id = read_challenge_id(cfg_path)
                 raw_results[ch_id] = {
@@ -262,7 +261,6 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
                     "error": {"code": "WORKER_CRASH", "message": str(exc)}
                 }
 
-    # Consolidación estricta respetando el orden alfabético/lógico determinista
     passed_count = 0
     failed_count = 0
     challenges_results = []
@@ -274,9 +272,13 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
         if res["success"]:
             passed_count += 1
             rel_manifest = f"{challenge_id}/{challenge_id}_manifest.json"
+            manifest_info = res.get("manifest", {})
+            telemetry_info = manifest_info.get("telemetry", {})
             challenges_results.append({
                 "challenge_id": challenge_id,
                 "status": "PASS",
+                "rng_version": telemetry_info.get("rng_version", "1.0"),
+                "godot_version": telemetry_info.get("godot_version", "unknown"),
                 "manifest": rel_manifest
             })
         else:
@@ -288,9 +290,24 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
                 "error": err_info
             })
 
+    # Extracción dinámica y consolidada de versiones del lote
+    godot_versions = sorted({
+        str(res["manifest"]["telemetry"].get("godot_version", "unknown"))
+        for res in raw_results.values()
+        if res.get("success") and res.get("manifest") and "telemetry" in res["manifest"]
+    })
+
+    rng_versions = sorted({
+        str(res["manifest"]["telemetry"].get("rng_version", "unknown"))
+        for res in raw_results.values()
+        if res.get("success") and res.get("manifest") and "telemetry" in res["manifest"]
+    })
+
     batch_status = "PASSED" if failed_count == 0 else "FAILED"
     batch_manifest_data = {
-        "factory_version": "0.5.1",
+        "factory_version": FACTORY_VERSION,
+        "godot_versions": godot_versions,
+        "rng_versions": rng_versions,
         "status": batch_status,
         "summary": {
             "total": len(config_files),

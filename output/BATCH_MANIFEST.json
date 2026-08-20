@@ -1,5 +1,12 @@
 {
-  "factory_version": "0.5.1",
+  "factory_version": "0.7.0",
+  "godot_versions": [
+    "4.7.1-stable (official)"
+  ],
+  "rng_versions": [
+    "1.0",
+    "2.0"
+  ],
   "status": "PASSED",
   "summary": {
     "total": 5,
@@ -10,26 +17,36 @@
     {
       "challenge_id": "CHALLENGE_001",
       "status": "PASS",
+      "rng_version": "1.0",
+      "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_001/CHALLENGE_001_manifest.json"
     },
     {
       "challenge_id": "CHALLENGE_002",
       "status": "PASS",
+      "rng_version": "1.0",
+      "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_002/CHALLENGE_002_manifest.json"
     },
     {
       "challenge_id": "CHALLENGE_003",
       "status": "PASS",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_003/CHALLENGE_003_manifest.json"
     },
     {
       "challenge_id": "CHALLENGE_004",
       "status": "PASS",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_004/CHALLENGE_004_manifest.json"
     },
     {
       "challenge_id": "CHALLENGE_005",
       "status": "PASS",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_005/CHALLENGE_005_manifest.json"
     }
   ]
