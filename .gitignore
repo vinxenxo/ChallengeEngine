@@ -21,3 +21,6 @@ mono_crash.*.json
 # *.gd
 # *.gd.uid
 # *.gd.meta
+
+# VS Plugins
+/src/.continue/rules/
