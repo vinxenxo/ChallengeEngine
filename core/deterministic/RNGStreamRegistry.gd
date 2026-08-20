@@ -23,6 +23,11 @@ const STREAM_HIT_SPEED_VARIANCE = 70
 const STREAM_HIT_TRAJECTORY_NOISE = 80
 const STREAM_HIT_TARGET_OFFSET = 90
 
+# FASE 0.8.0: CATCH V1 Production Streams
+const STREAM_CATCH_TARGET_MOTION = 100
+const STREAM_CATCH_PURSUER_BIAS = 110
+const STREAM_CATCH_INITIAL_PHASE = 120
+
 var _definitions: Dictionary = {}
 
 func _init() -> void:
@@ -64,6 +69,35 @@ func _init() -> void:
 		"0 / 1", 
 		"2.0", 
 		["HitMechanic"]
+	)
+
+	# CATCH V1 Production Streams
+	_register(
+		STREAM_CATCH_TARGET_MOTION,
+		"CATCH_TARGET_MOTION",
+		Domain.STRUCTURAL_SECONDARY,
+		"Per-attempt target velocity variance",
+		"0",
+		"2.0",
+		["CatchMechanic"]
+	)
+	_register(
+		STREAM_CATCH_PURSUER_BIAS,
+		"CATCH_PURSUER_BIAS",
+		Domain.STRUCTURAL_SECONDARY,
+		"Per-attempt pursuer velocity bias",
+		"0",
+		"2.0",
+		["CatchMechanic"]
+	)
+	_register(
+		STREAM_CATCH_INITIAL_PHASE,
+		"CATCH_INITIAL_PHASE",
+		Domain.STRUCTURAL_SECONDARY,
+		"Per-attempt initial target phase offset",
+		"0",
+		"2.0",
+		["CatchMechanic"]
 	)
 
 func _register(id: int, name: String, domain: Domain, description: String, index_semantics: String, version_introduced: String, allowed_consumers: Array[String]) -> void:

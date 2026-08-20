@@ -23,4 +23,4 @@ mono_crash.*.json
 # *.gd.meta
 
 # VS Plugins
-/src/.continue/rules/
+/src/

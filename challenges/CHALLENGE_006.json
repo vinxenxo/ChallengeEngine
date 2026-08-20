@@ -1,0 +1,29 @@
+{
+  "challenge_id": "CHALLENGE_006",
+  "mechanic": "catch_v1",
+  "generation": {
+    "seed": 884422,
+    "rng_version": "2.0"
+  },
+  "video": {
+    "fps": 60,
+    "hook_duration": 2.0,
+    "game_duration": 7.0,
+    "cta_duration": 2.0
+  },
+  "difficulty": {
+    "catch": {
+      "catcher_origin": [540.0, 1700.0],
+      "catcher_direction": [0.0, -1.0],
+      "catcher_speed_base": 6.0,
+      "target_origin": [540.0, 400.0],
+      "target_direction": [0.0, 1.0],
+      "target_speed_base": 2.5,
+      "catch_radius": 45.0
+    }
+  },
+  "content": {
+    "hook": "¡Intercepta el objetivo en movimiento!",
+    "cta": "¡Desafío superado!"
+  }
+}

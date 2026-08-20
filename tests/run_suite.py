@@ -11,6 +11,11 @@ SUITES = [
         PROJECT_ROOT / "tests/mechanics/hit/HitMechanicIsolationTest.gd",
         "[HIT_V1_ISOLATION_SUITE] PASS",
     ),
+    (
+        "CATCH_V1_ISOLATION",
+        PROJECT_ROOT / "tests/mechanics/catch/CatchMechanicIsolationTest.gd",
+        "[CATCH_V1_ISOLATION_SUITE] PASS",
+    ),
 ]
 
 FATAL_PATTERNS = [

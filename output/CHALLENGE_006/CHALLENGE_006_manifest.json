@@ -1,0 +1,38 @@
+{
+  "factory_version": "0.7.0",
+  "challenge_id": "CHALLENGE_006",
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 8,
+    "cta_frames": 120,
+    "dodge_offset": 0.0,
+    "final_seed": 884422,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 120,
+    "initial_seed": 884422,
+    "minimum_distance": 27.2707214355469,
+    "overshoot_dist": 0.0,
+    "rng_version": "2.0",
+    "save_offset": 0.0,
+    "score": 0.393983968098958,
+    "seed_used": 884422,
+    "total_frames": 660,
+    "validate_only": false,
+    "winning_frame": 278,
+    "winning_frame_game": 158,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 4.63333333333333,
+    "winning_time_game": 2.63333333333333
+  },
+  "artifacts": {
+    "raw_video": "CHALLENGE_006_raw.avi",
+    "final_video": "CHALLENGE_006.mp4"
+  },
+  "validation": {
+    "duration": 11.0,
+    "nb_frames": 660,
+    "r_frame_rate": "60/1",
+    "valid": true
+  }
+}
