@@ -6,6 +6,7 @@ import argparse
 import math
 from pathlib import Path
 from typing import Dict, Any, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Resolución inmutable del directorio raíz del proyecto
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -203,8 +204,19 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
         "manifest": manifest_data
     }
 
-def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: bool = False) -> Dict[str, Any]:
-    """Ejecuta el procesamiento secuencial y determinista por lotes de desafíos."""
+def _process_single_challenge(cfg_path: Path, base_output_dir: Path, validate_only: bool) -> tuple[str, Dict[str, Any]]:
+    """Helper interno para procesar un desafío de forma aislada (ejecutable por worker)."""
+    challenge_id = read_challenge_id(cfg_path)
+    sub_output_dir = base_output_dir / challenge_id
+    
+    print(f"[BATCH-WORKER] Iniciando {challenge_id} desde {cfg_path.name}...")
+    res = run_factory(str(cfg_path), str(sub_output_dir), validate_only)
+    print(f"[BATCH-WORKER] Finalizado {challenge_id} -> {'PASS' if res['success'] else 'FAIL'}")
+    
+    return challenge_id, res
+
+def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: bool = False, workers: int = 1) -> Dict[str, Any]:
+    """Ejecuta el procesamiento por lotes de forma concurrente controlada (Workers) y orden determinista."""
     challenges_dir = Path(challenges_dir_str).resolve()
     base_output_dir = Path(base_output_dir_str).resolve()
     
@@ -214,7 +226,6 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
             "error": {"code": "DIR_NOT_FOUND", "message": f"El directorio de desafíos no existe: {challenges_dir}"}
         }
 
-    # Descubrimiento determinista ordenado alfabéticamente
     config_files = sorted(challenges_dir.glob("CHALLENGE_*.json"))
     
     if not config_files:
@@ -226,17 +237,39 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
     base_output_dir.mkdir(parents=True, exist_ok=True)
     batch_manifest_path = base_output_dir / "BATCH_MANIFEST.json"
 
+    # Diccionario temporal para almacenar resultados asíncronos por ID
+    raw_results: Dict[str, Dict[str, Any]] = {}
+
+    print(f"[BATCH] Lanzando lote con {len(config_files)} desafíos usando {workers} worker(s)...")
+
+    # Ejecución controlada mediante ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as executor:
+        future_to_config = {
+            executor.submit(_process_single_challenge, cfg_path, base_output_dir, validate_only): cfg_path 
+            for cfg_path in config_files
+        }
+
+        for future in as_completed(future_to_config):
+            try:
+                ch_id, res = future.result()
+                raw_results[ch_id] = res
+            except Exception as exc:
+                # Fallo crítico del worker no atrapado
+                cfg_path = future_to_config[future]
+                ch_id = read_challenge_id(cfg_path)
+                raw_results[ch_id] = {
+                    "success": False,
+                    "error": {"code": "WORKER_CRASH", "message": str(exc)}
+                }
+
+    # Consolidación estricta respetando el orden alfabético/lógico determinista
     passed_count = 0
     failed_count = 0
     challenges_results = []
 
     for cfg_path in config_files:
-        # Aislamiento de salida por subdirectorio para cada desafío
         challenge_id = read_challenge_id(cfg_path)
-        sub_output_dir = base_output_dir / challenge_id
-        
-        print(f"[BATCH] Procesando {challenge_id} desde {cfg_path.name}...")
-        res = run_factory(str(cfg_path), str(sub_output_dir), validate_only)
+        res = raw_results.get(challenge_id, {"success": False, "error": {"code": "MISSING_RESULT", "message": "No se registró resultado."}})
         
         if res["success"]:
             passed_count += 1
@@ -246,7 +279,6 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
                 "status": "PASS",
                 "manifest": rel_manifest
             })
-            print(f"[BATCH] -> {challenge_id}: PASS")
         else:
             failed_count += 1
             err_info = res.get("error", {"code": "UNKNOWN_ERROR", "message": "Error desconocido en factoría"})
@@ -255,11 +287,10 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
                 "status": "FAIL",
                 "error": err_info
             })
-            print(f"[BATCH] -> {challenge_id}: FAIL [{err_info.get('code')}] {err_info.get('message')}")
 
     batch_status = "PASSED" if failed_count == 0 else "FAILED"
     batch_manifest_data = {
-        "factory_version": "0.5.0",
+        "factory_version": "0.5.1",
         "status": batch_status,
         "summary": {
             "total": len(config_files),
@@ -280,19 +311,20 @@ def run_batch(challenges_dir_str: str, base_output_dir_str: str, validate_only: 
     }
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Pause Challenge Engine - Build Factory (Batch & Unit)")
+    parser = argparse.ArgumentParser(description="Pause Challenge Engine - Build Factory (Batch, Parallel & Unit)")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--config", help="Ruta al archivo JSON unitario de configuración del challenge")
     group.add_argument("--batch", help="Directorio que contiene los archivos CHALLENGE_*.json para procesamiento por lotes")
     
     parser.add_argument("--output", default="./output", help="Directorio raíz de salida de los artefactos")
     parser.add_argument("--validate-only", action="store_true", help="Ejecutar validación matemática sin empaquetar video")
+    parser.add_argument("--workers", type=int, default=1, help="Número de hilos/procesos concurrentes para el modo batch (default: 1)")
     args = parser.parse_args()
 
     if args.config:
         result = run_factory(args.config, args.output, args.validate_only)
     else:
-        result = run_batch(args.batch, args.output, args.validate_only)
+        result = run_batch(args.batch, args.output, args.validate_only, args.workers)
 
     print(json.dumps(result, indent=2, ensure_ascii=False))
     

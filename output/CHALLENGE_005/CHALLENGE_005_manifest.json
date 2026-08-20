@@ -1,32 +1,32 @@
 {
-  "challenge_id": "CHALLENGE_001",
+  "challenge_id": "CHALLENGE_005",
   "telemetry": {
     "attempts": 1,
-    "close_calls": 0,
+    "close_calls": 16,
     "cta_frames": 120,
     "dodge_offset": 0.0,
-    "final_seed": 193847,
+    "final_seed": 998877,
     "game_frames": 420,
     "godot_version": "4.7.1-stable (official)",
     "hook_frames": 120,
-    "initial_seed": 193847,
-    "minimum_distance": 0.00736591562275279,
+    "initial_seed": 998877,
+    "minimum_distance": 1.68177151679993,
     "overshoot_dist": 0.0,
-    "rng_version": "1.0",
+    "rng_version": "2.0",
     "save_offset": 0.0,
-    "score": 0.648328777570576,
-    "seed_used": 193847,
+    "score": 0.943940949440002,
+    "seed_used": 998877,
     "total_frames": 660,
     "validate_only": false,
-    "winning_frame": 455,
-    "winning_frame_game": 335,
+    "winning_frame": 464,
+    "winning_frame_game": 344,
     "winning_frame_in_valid_window": true,
-    "winning_time": 7.58333333333333,
-    "winning_time_game": 5.58333333333333
+    "winning_time": 7.73333333333333,
+    "winning_time_game": 5.73333333333333
   },
   "artifacts": {
-    "raw_video": "CHALLENGE_001_raw.avi",
-    "final_video": "CHALLENGE_001.mp4"
+    "raw_video": "CHALLENGE_005_raw.avi",
+    "final_video": "CHALLENGE_005.mp4"
   },
   "validation": {
     "duration": 11.0,
