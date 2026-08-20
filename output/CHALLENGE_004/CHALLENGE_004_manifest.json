@@ -1,6 +1,15 @@
 {
-  "factory_version": "0.7.0",
+  "manifest_version": "1.0",
+  "factory_version": "0.9.0",
   "challenge_id": "CHALLENGE_004",
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "parking_v2",
+    "mechanic_version": "2.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
   "telemetry": {
     "attempts": 1,
     "close_calls": 1,
@@ -34,5 +43,6 @@
     "nb_frames": 660,
     "r_frame_rate": "60/1",
     "valid": true
-  }
+  },
+  "status": "PASS"
 }

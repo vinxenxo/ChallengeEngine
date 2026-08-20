@@ -1,5 +1,6 @@
 {
-  "factory_version": "0.7.0",
+  "manifest_version": "1.0",
+  "factory_version": "0.9.0",
   "godot_versions": [
     "4.7.1-stable (official)"
   ],
@@ -17,6 +18,7 @@
     {
       "challenge_id": "CHALLENGE_001",
       "status": "PASS",
+      "mechanic": "key",
       "rng_version": "1.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_001/CHALLENGE_001_manifest.json"
@@ -24,6 +26,7 @@
     {
       "challenge_id": "CHALLENGE_002",
       "status": "PASS",
+      "mechanic": "parking",
       "rng_version": "1.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_002/CHALLENGE_002_manifest.json"
@@ -31,6 +34,7 @@
     {
       "challenge_id": "CHALLENGE_003",
       "status": "PASS",
+      "mechanic": "pilot",
       "rng_version": "2.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_003/CHALLENGE_003_manifest.json"
@@ -38,6 +42,7 @@
     {
       "challenge_id": "CHALLENGE_004",
       "status": "PASS",
+      "mechanic": "parking_v2",
       "rng_version": "2.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_004/CHALLENGE_004_manifest.json"
@@ -45,6 +50,7 @@
     {
       "challenge_id": "CHALLENGE_005",
       "status": "PASS",
+      "mechanic": "hit_v1",
       "rng_version": "2.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_005/CHALLENGE_005_manifest.json"
@@ -52,6 +58,7 @@
     {
       "challenge_id": "CHALLENGE_006",
       "status": "PASS",
+      "mechanic": "catch_v1",
       "rng_version": "2.0",
       "godot_version": "4.7.1-stable (official)",
       "manifest": "CHALLENGE_006/CHALLENGE_006_manifest.json"

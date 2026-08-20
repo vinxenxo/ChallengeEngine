@@ -1,6 +1,10 @@
 {
-  "factory_version": "0.7.0",
+  "manifest_version": "1.0",
+  "factory_version": "0.9.0",
   "challenge_id": "CHALLENGE_006",
+  "declarative_metadata": {
+    "mechanic": "catch_v1"
+  },
   "telemetry": {
     "attempts": 1,
     "close_calls": 8,
@@ -34,5 +38,6 @@
     "nb_frames": 660,
     "r_frame_rate": "60/1",
     "valid": true
-  }
+  },
+  "status": "PASS"
 }
