@@ -16,6 +16,11 @@ SUITES = [
         PROJECT_ROOT / "tests/mechanics/catch/CatchMechanicIsolationTest.gd",
         "[CATCH_V1_ISOLATION_SUITE] PASS",
     ),
+    (
+        "CATCH_PRESENTATION_CONTRACT",
+        PROJECT_ROOT / "tests/mechanics/catch/CatchPresentationContractTest.gd",
+        "[CATCH_PRESENTATION_CONTRACT_SUITE] PASS",
+    ),
 ]
 
 FATAL_PATTERNS = [

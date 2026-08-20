@@ -341,6 +341,9 @@ func _process(_delta: float) -> void:
 			object_sprite.position = Vector2(540.0, 960.0)
 			object_sprite.rotation = 0.0
 			object_sprite.modulate.a = 0.5
+			
+			# Opcional: Asegurar que el target no se pinte en coordenadas erróneas al inicio
+			# Podríamos leer verified_history[0] si quisieramos, pero lo dejamos estático hasta GAME.
 
 		"GAME":
 			object_sprite.visible = true
@@ -349,16 +352,25 @@ func _process(_delta: float) -> void:
 			var game_idx: int = timeline.get_game_index()
 			if game_idx >= 0 and game_idx < verified_history.size():
 				var frame_state: FrameSnapshot = verified_history[game_idx]
+				
+				# Entidad Principal (Catcher / Vehículo / Proyectil)
 				object_sprite.position = frame_state.position
 				object_sprite.rotation = frame_state.rotation
 				object_sprite.scale = frame_state.scale
 				object_sprite.modulate.a = frame_state.opacity
+
+				# Entidad Secundaria (Blanco móvil para CATCH, estático para otros)
+				if frame_state.custom_data.has("target_position"):
+					var t_pos = frame_state.custom_data["target_position"]
+					if t_pos is Vector2:
+						target_sprite.position = t_pos
 
 		"CTA":
 			object_sprite.visible = false
 			main_label.text = str(config_cache.get("content", {}).get("cta", ""))
 
 	timeline.advance()
+
 
 func parse_cli_arguments() -> Dictionary:
 	var args: PackedStringArray = OS.get_cmdline_user_args()
