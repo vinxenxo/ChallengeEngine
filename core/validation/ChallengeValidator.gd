@@ -2,7 +2,7 @@ class_name ChallengeValidator
 extends RefCounted
 
 const MIN_CLOSE_CALL_FRAMES: int = 12
-const MIN_CLOSE_CALLS: int = 1
+const MIN_CLOSE_CALLS: int = 0
 const MAX_CLOSE_CALLS: int = 20
 
 
@@ -36,10 +36,6 @@ static func validate(
 
 	# ---------------------------------------------------------
 	# 2. VENTANA TEMPORAL
-	#
-	# winning_frame de SimulationResult es RELATIVO AL GAME.
-	#
-	# El frame absoluto se obtiene sumando hook_frames.
 	# ---------------------------------------------------------
 
 	validation.absolute_winning_frame = (
@@ -68,28 +64,31 @@ static func validate(
 			)
 
 	# ---------------------------------------------------------
-	# 3. CLOSE CALLS
+	# 3. CLOSE CALLS (Soporte nativo para Metadata / Hit o legacy)
 	# ---------------------------------------------------------
 
-	var close_threshold: float = result.tolerance_threshold * 3.5
 	var close_calls_count: int = 0
-	var current_streak: int = 0
 
-	for i: int in range(result.frames.size()):
-		var distance: float = float(
-			result.frames[i].custom_data.get("success_distance", INF)
-		)
+	if result.metadata.has("close_calls"):
+		close_calls_count = int(result.metadata["close_calls"])
+	else:
+		var close_threshold: float = result.tolerance_threshold * 3.5
+		var current_streak: int = 0
 
-		if distance < close_threshold:
-			current_streak += 1
-		else:
-			if current_streak >= MIN_CLOSE_CALL_FRAMES:
-				close_calls_count += 1
+		for i: int in range(result.frames.size()):
+			var distance: float = float(
+				result.frames[i].custom_data.get("success_distance", INF)
+			)
 
-			current_streak = 0
+			if distance < close_threshold:
+				current_streak += 1
+			else:
+				if current_streak >= MIN_CLOSE_CALL_FRAMES:
+					close_calls_count += 1
+				current_streak = 0
 
-	if current_streak >= MIN_CLOSE_CALL_FRAMES:
-		close_calls_count += 1
+		if current_streak >= MIN_CLOSE_CALL_FRAMES:
+			close_calls_count += 1
 
 	validation.close_calls = close_calls_count
 

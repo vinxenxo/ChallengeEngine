@@ -1,9 +1,9 @@
 {
-  "factory_version": "0.5.0",
+  "factory_version": "0.5.1",
   "status": "PASSED",
   "summary": {
-    "total": 4,
-    "passed": 4,
+    "total": 5,
+    "passed": 5,
     "failed": 0
   },
   "challenges": [
@@ -26,6 +26,11 @@
       "challenge_id": "CHALLENGE_004",
       "status": "PASS",
       "manifest": "CHALLENGE_004/CHALLENGE_004_manifest.json"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "status": "PASS",
+      "manifest": "CHALLENGE_005/CHALLENGE_005_manifest.json"
     }
   ]
 }

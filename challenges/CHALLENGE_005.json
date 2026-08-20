@@ -1,0 +1,27 @@
+{
+  "challenge_id": "CHALLENGE_005",
+  "mechanic": "hit_v1",
+  "mechanic_version": "1.0",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 998877
+  },
+  "difficulty": {
+    "hit": {
+      "origin": [540.0, 1500.0],
+      "target": [540.0, 300.0],
+      "speed_base": 3.5,
+      "hitbox_radius": 30.0
+    }
+  },
+  "video": {
+    "fps": 60,
+    "hook_duration": 2.0,
+    "game_duration": 7.0,
+    "cta_duration": 2.0
+  },
+  "content": {
+    "hook": "MATHEMATICAL HIT V1",
+    "cta": "DOWNLOAD NOW"
+  }
+}

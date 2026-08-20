@@ -191,6 +191,11 @@ func run_validation_pipeline() -> Dictionary:
 		RNGStreamRegistry.STREAM_PARKING_OVERSHOOT,
 		RNGStreamRegistry.STREAM_PARKING_STEERING
 	]
+	var hit_v1_allowed_streams: Array[int] = [
+		RNGStreamRegistry.STREAM_HIT_SPEED_VARIANCE,
+		RNGStreamRegistry.STREAM_HIT_TRAJECTORY_NOISE,
+		RNGStreamRegistry.STREAM_HIT_TARGET_OFFSET
+	]
 
 	var attempts: int = 0
 	const MAX_ATTEMPTS: int = 100
@@ -211,6 +216,12 @@ func run_validation_pipeline() -> Dictionary:
 					current_seed,
 					"ParkingMechanic",
 					parking_v2_allowed_streams
+				)
+			elif mechanic_id.to_lower() == "hit_v1":
+				context_result = create_mechanic_rng_context(
+					current_seed,
+					"HitMechanic",
+					hit_v1_allowed_streams
 				)
 			else:
 				return {
@@ -235,7 +246,7 @@ func run_validation_pipeline() -> Dictionary:
 			config_cache
 		)
 
-		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2"] and context_result.context.error_state != "OK":
+		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1"] and context_result.context.error_state != "OK":
 			return {
 				"valid": false,
 				"error_code": "MECHANIC_SIMULATION_ERROR",
@@ -252,7 +263,9 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
-		WinningFrameDetector.analyze_and_score(test_result)
+		# Respetar la soberanía matemática de HIT: no pasa por el WinningFrameDetector genérico
+		if mechanic_id.to_lower() != "hit_v1":
+			WinningFrameDetector.analyze_and_score(test_result)
 
 		var validation: ValidationResult = ChallengeValidator.validate(
 			test_result,
