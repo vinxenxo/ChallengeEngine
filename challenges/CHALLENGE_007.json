@@ -1,0 +1,43 @@
+{
+  "challenge_id": "CHALLENGE_007",
+  "mechanic": "find_v1",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 7770001
+  },
+  "video": {
+    "resolution": [1080, 1920],
+    "fps": 60,
+    "hook_duration": 2.0,
+    "game_duration": 7.0,
+    "cta_duration": 2.0
+  },
+  "difficulty": {
+    "find": {
+      "safe_area_x_min": 150.0,
+      "safe_area_x_max": 930.0,
+      "safe_area_y_min": 250.0,
+      "safe_area_y_max": 1670.0,
+      "scanner_cx": 540.0,
+      "scanner_cy": 960.0,
+      "scanner_ax": 320.0,
+      "scanner_ay": 680.0,
+      "scanner_wx": 0.013,
+      "scanner_wy": 0.017,
+      "target_drift_radius": 50.0,
+      "target_drift_frequency": 0.005,
+      "distractor_count": 3,
+      "capture_radius": 85.0
+    }
+  },
+  "autovetting": {
+    "require_capture": true,
+    "max_winning_frame": 400,
+    "min_winning_frame": 40,
+    "max_close_calls": 3
+  },
+  "content": {
+    "hook": "¿Podrás encontrarlo antes de que escape?",
+    "cta": "¡Descarga y pon a prueba tu agilidad visual!"
+  }
+}

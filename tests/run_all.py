@@ -1,29 +1,25 @@
+# tests/run_all.py
 import os
 import sys
 import subprocess
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+TESTS_DIR = PROJECT_ROOT / "tests"
 
-# Discover all test suites in the tests directory
-def discover_test_suites():
-    tests_dir = PROJECT_ROOT / "tests"
-    suites = []
-    
-    # Find all .gd test files
-    for root, dirs, files in os.walk(str(tests_dir)):
-        for file in files:
-            if file.endswith(".gd") and not file.startswith("."):
-                suite_path = Path(root) / file
-                # Use the file name as the suite name
-                suite_name = file.replace(".gd", "").upper()
-                # Use a default pass marker
-                pass_marker = f"[{suite_name}_SUITE] PASS"
-                suites.append((suite_name, suite_path, pass_marker))
-    
-    return suites
-
-SUITES = discover_test_suites()
+# Registro explícito y contractual de suites.
+# La identidad es el path relativo desde la carpeta 'tests/'.
+KNOWN_SUITES = {
+    "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
+    "mechanics/catch/CatchMechanicIsolationTest.gd": "[CATCH_V1_ISOLATION_SUITE] PASS",
+    "mechanics/catch/CatchPresentationContractTest.gd": "[CATCH_PRESENTATION_CONTRACT_SUITE] PASS",
+    "ParkingMechanicV2IsolationTest.gd": "[PARKING_V2_ISOLATION_SUITE] PASS",
+    "PilotMechanicIsolationTest.gd": "[PILOT_ISOLATION_SUITE] PASS",
+    "PilotMechanicDDIHardeningTest.gd": "[DDI_R1] PASS",
+    "DeterministicLCGStatelessTest.gd": "[RNG_TEST_SUITE] PASS",
+    "RNGArchitectureTest.gd": "[RNG_ARCHITECTURE_SUITE] PASS",
+    "mechanics/find/FindMechanicIsolationTest.gd": "[FIND_V1_ISOLATION_SUITE] PASS",
+}
 
 FATAL_PATTERNS = [
     "SCRIPT ERROR:",
@@ -35,32 +31,37 @@ FATAL_PATTERNS = [
     "CrashHandlerException",
 ]
 
+def discover_test_suites():
+    discovered = []
+    
+    for root, _, files in os.walk(str(TESTS_DIR)):
+        for file in files:
+            if file.endswith("Test.gd") and not file.startswith("."):
+                suite_path = Path(root) / file
+                rel_path = suite_path.relative_to(TESTS_DIR).as_posix()
+                
+                if rel_path not in KNOWN_SUITES:
+                    print(f"[FATAL] Test no registrado descubierto: {rel_path}.")
+                    print("Por seguridad, debes registrar explícitamente su marcador de éxito en KNOWN_SUITES.")
+                    sys.exit(1)
+                
+                pass_marker = KNOWN_SUITES[rel_path]
+                discovered.append((rel_path, suite_path, pass_marker))
+                
+    # Orden determinista garantizado para que el corpus se ejecute siempre igual
+    discovered.sort(key=lambda item: item[0])
+    return discovered
 
-def run_suite(name: str, suite_path: Path, pass_marker: str) -> bool:
-    print(f"\n[RUNNER] Ejecutando {name}: {suite_path}")
-
-    if not suite_path.exists():
-        print(f"[RUNNER-FAIL] Suite inexistente: {suite_path}")
-        return False
-
-    cmd = [
-        "godot",
-        "--headless",
-        "--path",
-        str(PROJECT_ROOT),
-        "--script",
-        str(suite_path),
-    ]
-
+def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
+    name = Path(rel_path).name
+    print(f"\n[RUNNER] Ejecutando {name} ({rel_path})...")
+    
+    cmd = ["godot", "--headless", "--path", str(PROJECT_ROOT), "--script", str(suite_path)]
+    
     try:
         result = subprocess.run(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            encoding="utf-8",
-            timeout=60,
-            cwd=str(PROJECT_ROOT),
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+            text=True, encoding="utf-8", timeout=60, cwd=str(PROJECT_ROOT)
         )
     except subprocess.TimeoutExpired:
         print(f"[RUNNER-FAIL] Timeout ejecutando {name}.")
@@ -69,75 +70,47 @@ def run_suite(name: str, suite_path: Path, pass_marker: str) -> bool:
         print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
         return False
 
-    stdout = result.stdout
-    stderr = result.stderr
-    combined = f"{stdout}\n{stderr}"
+    combined = f"{result.stdout}\n{result.stderr}"
 
     for pattern in FATAL_PATTERNS:
         if pattern in combined:
-            print(
-                f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern}"
-            )
-            if stdout.strip():
-                print(f"--- STDOUT ---\n{stdout.strip()}")
-            if stderr.strip():
-                print(f"--- STDERR ---\n{stderr.strip()}")
+            print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern}")
             return False
 
     if result.returncode != 0:
-        print(
-            f"[RUNNER-FAIL] {name}: exit code {result.returncode}"
-        )
-        if stderr.strip():
-            print(f"--- STDERR ---\n{stderr.strip()}")
+        print(f"[RUNNER-FAIL] {name}: exit code {result.returncode}")
         return False
 
-    if pass_marker not in stdout:
-        print(
-            f"[RUNNER-FAIL] {name}: falta marcador de éxito "
-            f"'{pass_marker}'."
-        )
-        if stdout.strip():
-            print(f"--- STDOUT ---\n{stdout.strip()}")
+    if pass_marker not in result.stdout:
+        print(f"[RUNNER-FAIL] {name}: falta marcador de éxito '{pass_marker}'.")
         return False
 
-    print(f"[RUNNER-PASS] {name}")
+    print(f"[RUNNER-PASS] {name} -> OK")
     return True
 
-
 def main() -> None:
-    print("=== PYTHON TEST RUNNER — HARDENING 0.7.0-A ===")
-    args = sys.argv[1:]
+    print("=== PYTHON TEST RUNNER — ALL CORPUS ===")
     
-    if "--all" in args:
-        SUITES = discover_test_suites()
-    else:
-        # Use default discovered suites
-        pass
-
-    results = []
-
-    for name, suite_path, pass_marker in SUITES:
-        passed = run_suite(name, suite_path, pass_marker)
-        results.append((name, passed))
-
-    failed = [name for name, passed in results if not passed]
-
-    if failed:
-        print(
-            "\n[BATCH-RUNNER] FAIL — "
-            f"{len(failed)} suite(s) fallaron."
-        )
-        for name in failed:
-            print(f"  - {name}")
+    suites = discover_test_suites()
+    if not suites:
+        print("[BATCH-RUNNER] No se encontraron suites válidas (*Test.gd).")
         sys.exit(1)
 
-    print(
-        f"\n[BATCH-RUNNER] PASS — "
-        f"{len(results)} suite(s) superaron la auditoría."
-    )
-    sys.exit(0)
+    results = []
+    for rel_path, suite_path, pass_marker in suites:
+        passed = run_suite(rel_path, suite_path, pass_marker)
+        results.append((rel_path, passed))
 
+    failed = [rel_path for rel_path, passed in results if not passed]
+
+    if failed:
+        print(f"\n[BATCH-RUNNER] FAIL — {len(failed)} suite(s) fallaron.")
+        for rel_path in failed:
+            print(f"  - {rel_path}")
+        sys.exit(1)
+
+    print(f"\n[BATCH-RUNNER] PASS — {len(results)} suite(s) superaron la auditoría E2E.")
+    sys.exit(0)
 
 if __name__ == "__main__":
     main()
