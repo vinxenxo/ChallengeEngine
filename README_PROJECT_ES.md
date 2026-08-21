@@ -1,246 +1,76 @@
 # ChallengeEngineV01 — ¿Qué estamos construyendo?
 
-## La idea, explicada sin tecnicismos
+Estamos construyendo una **fábrica automática de vídeos de retos de precisión**: el vídeo ejecuta una situación matemática y el espectador intenta pausar en el frame ganador.
 
-Estamos construyendo una **fábrica automática de vídeos de “Atrápame si puedes”**.
+No es un videojuego tradicional. La lógica del reto, la presentación y la producción están separadas para poder generar situaciones repetibles y escalables.
 
-La idea no es crear videojuegos tradicionales. Tampoco queremos que la persona que ve el vídeo controle un personaje ni que tenga que descargar una aplicación.
-
-El vídeo hace todo el trabajo.
-
-En cada vídeo ocurre una pequeña situación de precisión: un coche tiene que aparcar, algo está a punto de chocar, un objeto tiene que caer en el sitio exacto, un símbolo tiene que alinearse… En algún instante concreto existe un **frame ganador**.
-
-La persona que ve el vídeo tiene un único objetivo:
-
-> **Pausarlo justo en el momento correcto.**
-
-Ese pequeño gesto convierte una animación en un reto.
-
----
-
-## ¿Por qué una fábrica?
-
-Porque la intención no es producir uno o diez vídeos manualmente.
-
-Queremos poder describir un reto con unos pocos datos —por ejemplo, dificultad, duración, tema y semilla— y que el motor pueda construir de forma repetible una nueva situación.
-
-La visión es pasar de:
+## Familias matemáticas actuales
 
 ```text
-Idea → hacer un vídeo a mano
+HIT
+CATCH
+DODGE / SAVE / CONTROL
 ```
 
-a:
-
-```text
-Idea → configurar un reto → motor → vídeo terminado
-```
-
-Eso permite experimentar con muchas situaciones y dificultades sin reconstruir cada animación desde cero.
-
----
-
-## No estamos haciendo “ports” de juegos retro
-
-Una decisión importante del proyecto es que **no estamos intentando copiar videojuegos antiguos**.
-
-Nos interesa otra cosa: aquella sensación de precisión extrema que tenían algunos juegos clásicos.
-
-El motor no sabe qué son Atari, Activision, Nintendo, River Raid o Pitfall!.
-
-Para el motor sólo existe una pregunta matemática:
-
-> **¿En qué momento exacto ocurre el resultado que queremos que el espectador intente capturar?**
-
-Por eso una estética de 8 bits, por ejemplo, es simplemente una forma de presentar el reto. No cambia las matemáticas que lo generan.
-
----
-
-## Las grandes familias de retos
-
-Estamos organizando los retos en unas pocas familias matemáticas reutilizables.
+El motor también contiene fixtures de laboratorio como `pilot` y `key`, que sirven para preservar y validar contratos históricos.
 
 ### HIT
 
-Algo tiene que alcanzar exactamente un punto.
-
-Ejemplos posibles: una llave entrando en una cerradura, una flecha alcanzando una diana o un balón llegando al punto adecuado.
+Problemas de convergencia o impacto respecto de un objetivo. `hit_v1` es matemáticamente soberano.
 
 ### CATCH
 
-Hay que conseguir que algo quede dentro de otro elemento o coincida con él.
+Dos trayectorias móviles convergen sin feedback reactivo. `catch_v1` es matemáticamente soberano y utiliza el contrato de presentación:
 
-Por ejemplo, capturar un objeto, introducir algo en una cesta o hacer coincidir una trayectoria con una zona.
+```text
+FrameSnapshot.position
+    → catcher
+FrameSnapshot.custom_data["target_position"]
+    → target
+```
 
 ### DODGE / SAVE / CONTROL
 
-La clave es atravesar una situación peligrosa y terminar en la posición correcta.
+Familia de trayectoria continua. `parking_v2` es su implementación de producción actual.
 
-Aquí pertenece nuestro reto de **aparcar el coche**.
+### FIND — siguiente familia
 
-### MATCH
+En 1.0.0 FIND ha sido seleccionada como candidata para una nueva familia espacial: un escáner busca un objetivo en presencia de distractores que participan en la dificultad matemática.
 
-Dos cosas tienen que coincidir.
+El contrato FIND todavía no está congelado.
 
-Puede ser una forma, una posición, un patrón, un color u otra combinación definida por el reto.
+MATCH queda rechazado para 1.0.0 porque exigiría una expansión prematura del transporte multi-entidad de presentación.
 
-### FIND
+## RNG y determinismo
 
-La dificultad consiste en detectar o encontrar algo en el momento adecuado.
+El motor usa RNG sin estado y streams semánticos. Las fixtures históricas 001–002 permanecen en RNG 1.0; las fixtures 003–006 utilizan RNG 2.0.
 
-### JACKPOT
+El sistema no permite que la aleatoriedad cosmética modifique el resultado estructural.
 
-La situación se construye alrededor de combinaciones que tienen un instante especialmente difícil de capturar.
-
----
-
-## Y luego están los temas
-
-Una familia matemática puede vestirse de muchas maneras.
-
-Por ejemplo:
+## Producción actual
 
 ```text
-garage
-sports
-fantasy
-scifi
-retro_8bit_arcade
-cyberpunk
+HOOK  = 2 s
+GAME  = 7 s
+CTA   = 2 s
+TOTAL = 11 s / 660 frames @ 60 FPS
 ```
 
-Un reto de aparcamiento puede tener aspecto de garaje moderno, arcade de 8 bits o ciencia ficción sin convertirse por ello en una nueva familia matemática.
-
-**Las matemáticas generan el reto. El tema genera su aspecto.**
-
----
-
-## Un ejemplo: “Aparca el coche”
-
-Uno de los primeros retos reales del proyecto consiste en hacer que un coche siga una trayectoria que termina en una plaza.
-
-La trayectoria tiene curvas, una ligera desviación, un posible sobrepaso y pequeñas perturbaciones.
-
-El espectador ve únicamente el resultado visual.
-
-El motor, en cambio, sabe exactamente:
-
-- dónde está el coche en cada frame;
-- cuánto se ha separado del objetivo;
-- cómo cambia su orientación;
-- qué frame es el mejor;
-- qué semilla produjo esa situación.
-
-Eso permite generar un reto reproducible y comprobar matemáticamente que sigue siendo el mismo reto cuando se vuelve a producir.
-
----
-
-## Lo más importante: cada reto tiene una “verdad matemática”
-
-El proyecto separa dos cosas que para el espectador parecen una sola.
-
-**La situación que determina el reto** y **la forma en la que la presentamos**.
-
-Por ejemplo, añadir más partículas, polvo, humo o movimientos de cámara no debería cambiar el frame ganador.
-
-Si cambiar el humo cambia el resultado del reto, significa que hemos mezclado dos cosas que deberían estar separadas.
-
-Gran parte del trabajo que hemos hecho hasta ahora consiste precisamente en blindar esa separación.
-
----
-
-## ¿En qué punto estamos?
-
-El proyecto ya ha pasado por varias etapas importantes.
-
-### El motor original
-
-Primero se construyó la fábrica básica: definición del reto, simulación, elección del frame ganador, validación temporal y generación del vídeo.
-
-### RNG sin estado
-
-Después sustituimos el sistema de aleatoriedad secuencial por uno en el que cada valor puede identificarse por:
-
-```text
-semilla + stream + índice
-```
-
-Esto es fundamental porque permite añadir nuevos elementos sin desplazar accidentalmente todos los valores posteriores.
-
-### Streams semánticos
-
-Después dividimos la aleatoriedad en canales con significado.
-
-Por ejemplo:
-
-```text
-trayectoria
-control
-parámetro de esquiva
-ruido de dirección
-partículas
-```
-
-Cada uno tiene su propia identidad.
-
-### PilotMechanic
-
-Creamos después una mecánica de laboratorio extremadamente sencilla para demostrar que el sistema realmente podía aislar la lógica del reto de la presentación.
-
-No es un juego final. Es nuestro tubo de ensayo.
-
-### ParkingMechanicV2
-
-Finalmente hemos llevado esa arquitectura a una mecánica mucho más cercana a producción: el aparcamiento de un coche.
-
-La versión nueva mantiene las matemáticas importantes del sistema anterior, pero utiliza el nuevo modelo de aleatoriedad aislada.
-
-La prueba aislada de esta mecánica ya está superada.
-
----
-
-## ¿Qué significa “pausa challenge”?
-
-Un vídeo de este tipo suele tener tres partes:
-
-```text
-HOOK → GAME → CTA
-```
-
-En el perfil actual del motor:
-
-```text
-2 s → 7 s → 2 s
-```
-
-Es decir, 11 segundos en total a 60 FPS.
-
-Durante el bloque GAME ocurre la acción que contiene el frame ganador.
-
----
-
-## La visión final
-
-La idea de fondo es sencilla:
-
-> **Crear una máquina capaz de producir retos de precisión en formato vídeo de forma automática, reproducible y escalable.**
-
-No queremos construir un videojuego detrás de cada vídeo.
-
-Queremos construir una **fábrica de pequeñas experiencias imposibles de pausar en el momento correcto**.
-
-Y cada nuevo tema, coche, deporte, criatura, objeto o estética debería poder convertirse en contenido sin tener que reconstruir la arquitectura del motor.
-
----
+La factoría 0.9.0 produce manifests de provenance version 1.0 y mantiene los artefactos aislados por challenge.
 
 ## Estado actual
 
-El núcleo determinista está protegido.
+```text
+0.6.0  HIT v1                              FROZEN
+0.7.0  Production Contract Hardening      FROZEN
+0.8.0  CATCH v1                            FROZEN
+0.8.1  CATCH Presentation Contract         FROZEN / VALIDATED
+0.9.0  Production Contract Consolidation   FROZEN / VALIDATED
+1.0.0  FIND                                CONTRACT DRAFT
+```
 
-La infraestructura de RNG V2.0 está validada.
+La regla de desarrollo sigue siendo:
 
-El laboratorio `PilotMechanic` está validado.
-
-`ParkingMechanicV2` está implementado y validado de forma aislada.
-
-El siguiente paso es conectarlo al flujo general de producción sin tocar el comportamiento histórico de las versiones anteriores.
+```text
+AUDIT → CONTRACT → ISOLATION → INTEGRATION → REGRESSION → BATCH → FREEZE
+```

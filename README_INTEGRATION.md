@@ -1,88 +1,97 @@
-# ChallengeEngineV01 — Integración y validación
+# ChallengeEngineV01 — Integración y validación (estado vivo)
 
-Este README es la guía **operativa y técnica**. Para entender el proyecto sin tecnicismos, consulta `README_PROJECT_ES.md`.
+## Estado actual
 
-## Estado del paquete
+```text
+CHECKPOINT 0.9.0 — PRODUCTION CONTRACT CONSOLIDATION
+FROZEN / VALIDATED
+```
 
-Este paquete corresponde al código entregado en el **CHECKPOINT 0.3.5**, preparado para iniciar el **CHECKPOINT 0.3.6 — Composition Root Integration**.
+Godot: `4.7.1-stable (official)`
 
-`src/.continue/rules/` forma parte de la configuración del entorno VS Code/Continue y no pertenece al dominio matemático del motor.
+La infraestructura actual contiene seis fixtures y dos semánticas RNG coexistentes:
 
-## Antes de modificar código
+```text
+001 key        → RNG 1.0
+002 parking    → RNG 1.0
+003 pilot      → RNG 2.0
+004 parking_v2 → RNG 2.0
+005 hit_v1     → RNG 2.0
+006 catch_v1   → RNG 2.0
+```
 
-Desde la raíz:
+## Gate de arquitectura
+
+Antes de modificar código:
 
 ```powershell
 godot --headless --path . --editor --quit
+python .\tests\run_suite.py
 ```
 
-Después ejecuta las suites congeladas:
+El runner Python externo es el árbitro final de las suites.
 
-```powershell
-godot --headless --path . --script tests/DeterministicLCGStatelessTest.gd
-godot --headless --path . --script tests/RNGArchitectureTest.gd
-godot --headless --path . --script tests/PilotMechanicIsolationTest.gd
-godot --headless --path . --script tests/PilotMechanicDDIHardeningTest.gd
-godot --headless --path . --script tests/ParkingMechanicV2IsolationTest.gd
-```
-
-Y las regresiones históricas:
-
-```powershell
-godot --headless --path . -- --config=challenges/CHALLENGE_001.json --validate-only
-godot --headless --path . -- --config=challenges/CHALLENGE_002.json --validate-only
-```
-
-La suite Parking V2 debe producir:
+## Suites congeladas actualmente
 
 ```text
-[PARKING_V2_ISOLATION_SUITE] PASS
+HIT_V1_ISOLATION
+CATCH_V1_ISOLATION
+CATCH_PRESENTATION_CONTRACT
 ```
 
-## Qué está integrado y qué no
+## Producción batch
 
-### Ya integrado
+```powershell
+python build_factory.py --batch ./challenges --output ./output --workers 2
+```
 
-- Stateless LCG.
-- Registry de streams.
-- Fachadas Structural/Cosmetic.
-- Contextos RNG.
-- Composition Root para la infraestructura RNG.
-- PilotMechanic V2.
-- ParkingMechanicV2 aislado.
-- CHALLENGE_004 como fixture.
-
-### Pendiente en 0.3.6
-
-- Registrar `parking_v2` en `MechanicRegistry`.
-- Crear su `MechanicRNGContext` desde `GeneradorMaestro`.
-- Inyectarlo por intento/retry.
-- Interceptar `error_state` antes de detector/validator.
-- Ejecutar CHALLENGE_004 mediante el pipeline global.
-- Confirmar regresión exacta de CHALLENGE_001/002.
-
-## Producción
-
-El pipeline final conserva la separación:
+Resultado de referencia 0.9.0:
 
 ```text
-JSON
-  ↓
-Godot headless
-  ↓
-SimulationResult
-  ↓
-WinningFrameDetector
-  ↓
-ChallengeValidator
-  ↓
-Presentation / Movie Maker
-  ↓
+total  = 6
+passed = 6
+failed = 0
+status = PASSED
+```
+
+## Contrato de producción 0.9.0
+
+```text
+factory_version  = 0.9.0
+manifest_version = 1.0
+rng_versions     = ["1.0", "2.0"]
+```
+
+Los manifests unitarios viven en `output/CHALLENGE_XXX/`. El único certificado batch en la raíz es `output/BATCH_MANIFEST.json`.
+
+La factoría no inventa metadata declarativa ausente. Los campos de Capa 0 presentes en el JSON se copian literalmente al snapshot de provenance.
+
+## Arquitectura de producción
+
+```text
+Challenge JSON
+   ↓
+Godot validation / simulation
+   ↓
+SimulationResult + telemetry
+   ↓
+Godot Movie Maker / Compatibility renderer
+   ↓
 RAW AVI
-  ↓
+   ↓
+Python build_factory.py
+   ↓
 FFmpeg
-  ↓
-MP4 + manifest
+   ↓
+MP4
+   ↓
+FFprobe
+   ↓
+manifest.json / BATCH_MANIFEST.json
 ```
 
-Python orquesta. Godot calcula. FFmpeg empaqueta.
+## Próximo checkpoint
+
+`1.0.0` selecciona FIND como candidata. Su contrato matemático sigue en revisión; no se asignan todavía RNG streams ni se modifica la infraestructura global.
+
+Consulta `docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md` y `MASTER_HANDOVER_CHECKPOINT_0.9.0.md` para el estado contractual vivo.

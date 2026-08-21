@@ -1,5 +1,7 @@
 # ARCHITECTURE_V0.1.md — Plano técnico y flujo de datos del motor
 
+> **Live-state rule:** This older section is retained as historical checkpoint evidence. The latest "Current Live" section in this document is authoritative for the present repository.
+
 ## Diagrama de Flujo Unificado
 
                 ┌──────────────────────┐
@@ -108,7 +110,7 @@ V1.0 mechanics (`key`, `parking`) continue to use their frozen contracts.
 
 `PilotMechanic` is the first V2.0 laboratory fixture. It consumes `STREAM_TRAJECTORY` (10) and `STREAM_CONTROL` (20) through `MechanicRNGContext`, using `frame_number` as the semantic index. It has no dependency on presentation systems.
 
-## Current Architecture Status — CHECKPOINT 0.3.6
+## Historical Architecture Status — CHECKPOINT 0.3.6
 
 The V0.1 architecture above is preserved as historical reference. The live architecture now includes the V2.0 deterministic RNG dependency boundary.
 
@@ -145,3 +147,42 @@ The current Registry contains:
 `ParkingMechanicV2.gd` exists and is validated in isolation, but `MechanicRegistry.gd` does **not yet** resolve `parking_v2`, and `GeneradorMaestro.gd` currently only has an end-to-end V2 capability path for the Pilot mechanic.
 
 That is the explicit objective of CHECKPOINT 0.3.6. Do not assume global integration is already complete merely because the isolated Parking V2 suite passes.
+
+---
+
+## Current Live Architecture — CHECKPOINT 0.9.0
+
+The historical architecture sections above are preserved. The live pipeline is now:
+
+```text
+Challenge JSON
+    ↓
+Godot validation / deterministic simulation
+    ↓
+SimulationResult + telemetry
+    ↓
+Godot Movie Maker (graphical Compatibility renderer)
+    ↓
+RAW AVI
+    ↓
+Python build_factory.py 0.9.0
+    ↓
+FFmpeg H.264 / YUV420p
+    ↓
+MP4
+    ↓
+FFprobe
+    ↓
+unit manifest 1.0 / BATCH_MANIFEST 1.0
+```
+
+The architectural law remains:
+
+```text
+GODOT CALCULATES & RENDERS RAW
+PYTHON ORCHESTRATES
+FFMPEG PACKAGES
+FFPROBE VALIDATES
+```
+
+Checkpoint 0.9.0 adds provenance consolidation and canonical artifact isolation; it does not alter the frozen mathematical contracts of HIT or CATCH.

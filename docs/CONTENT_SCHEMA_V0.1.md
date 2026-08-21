@@ -81,3 +81,39 @@ Current V2.0 fixtures:
 - `CHALLENGE_004` → `parking_v2` / `2.0` / production-oriented fixture.
 
 The challenge definition remains declarative; RNG stream allocation and algorithmic behavior are owned by the engine contracts, not by arbitrary JSON code.
+
+---
+
+## Current Live Content Contract — CHECKPOINT 0.9.0
+
+`CONTENT_SCHEMA_V0.1.md` is retained as the historical schema document. Its live interpretation is complemented by the 0.9.0 provenance contract.
+
+### Current top-level declarative metadata
+
+The current fixtures use `schema_version: "1.0"` where declared. The file name `CONTENT_SCHEMA_V0.1.md` is a document revision label and must not be confused with the JSON field value.
+
+The production provenance snapshot copies these fields exactly when they exist:
+
+```text
+schema_version
+engine_version
+mechanic
+mechanic_version
+video_profile_version
+asset_family_version
+```
+
+Missing legacy fields remain missing.
+
+### Current fixture generations
+
+```text
+CHALLENGE_001 → key       / RNG 1.0
+CHALLENGE_002 → parking   / RNG 1.0
+CHALLENGE_003 → pilot     / RNG 2.0
+CHALLENGE_004 → parking_v2/ RNG 2.0
+CHALLENGE_005 → hit_v1    / RNG 2.0
+CHALLENGE_006 → catch_v1  / RNG 2.0
+```
+
+`FIND` is a 1.0.0 candidate family only; no FIND fixture exists yet.

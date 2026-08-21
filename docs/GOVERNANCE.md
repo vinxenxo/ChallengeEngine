@@ -1,5 +1,7 @@
 # GOVERNANCE.md — Normas inmutables de ingeniería y arquitectura
 
+> **Live-state rule:** This older section is retained as historical checkpoint evidence. The latest "Current Live" section in this document is authoritative for the present repository.
+
 ## 1. Estructura de Capas en 4 Niveles
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -48,7 +50,7 @@
 - **Reproducibilidad Multimedia:** El vídeo se reproduce de forma coherente bajo un entorno versionado, pero NO se garantiza identidad binaria (*bit-exactness*) del archivo MP4 final entre diferentes plataformas, S.O. o GPUs.
 - **Sanitización de `INF`:** Ningún valor infinito o no numérico (`INF`, `NaN`) debe serializarse a
 
-## Current Governance Status — V2.0 Checkpoint Track
+## Historical Governance Status — V2.0 Checkpoint Track (0.3.6)
 
 The following rules are now frozen for V2.0:
 
@@ -60,3 +62,28 @@ The following rules are now frozen for V2.0:
 6. `CHALLENGE_001` and `CHALLENGE_002` remain frozen V1.0 fixtures.
 7. New V2.0 mechanics are introduced in parallel with their legacy counterparts until integration is explicitly certified.
 8. `ParkingMechanicV2` is currently isolated and validated, but not yet globally registered/injected. That integration is CHECKPOINT 0.3.6 work.
+
+---
+
+## Current Governance Status — CHECKPOINT 0.9.0
+
+### Frozen production governance
+
+1. The repository is the code authority.
+2. Live documentation describes current contracts; historical checkpoint documents remain historical.
+3. Capa 0 metadata is never invented by the production factory.
+4. `factory_version` and `manifest_version` are separate identities.
+5. Mixed RNG 1.0/2.0 batches are valid and remain explicitly partitioned per challenge.
+6. Canonical artifacts are isolated under `output/CHALLENGE_XXX/`.
+7. The Python runner remains the final suite-level PASS/FAIL arbiter.
+8. CATCH presentation transport remains frozen and must not be redesigned for convenience.
+
+### 1.0.0 governance gate
+
+A new mathematical family may proceed only through:
+
+```text
+AUDIT → CONTRACT → ISOLATION → INTEGRATION → REGRESSION → BATCH → FREEZE
+```
+
+No RNG stream may be assigned before the mathematical contract is frozen.

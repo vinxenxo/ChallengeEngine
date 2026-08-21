@@ -59,3 +59,34 @@ V2.0 validation also distinguishes:
 - **mechanical determinism:** output depends only on declared structural inputs;
 - **presentation/cosmetic isolation:** cosmetic RNG consumption cannot alter `SimulationResult`;
 - **capability authorization:** a mechanic can consume only the streams granted by its context and the Registry.
+
+---
+
+## Current Live Validation Contract — CHECKPOINT 0.9.0
+
+The global temporal window is:
+
+```text
+120 <= absolute_winning_frame < 540
+```
+
+The modern validator accepts mechanic-owned `close_calls` supplied through `SimulationResult.metadata` and no longer requires the historical 3.5× fallback for mechanics that own their metric. Historical formulas in the document above are retained as historical reference and do not override sovereign HIT/CATCH contracts.
+
+### Production validation
+
+Canonical E2E acceptance:
+
+```text
+11.0 s ± 0.05 s
+660 frames
+60/1 FPS
+```
+
+Canonical artifact tree:
+
+```text
+output/CHALLENGE_XXX/...
+output/BATCH_MANIFEST.json
+```
+
+The external Python test runner remains mandatory for suite certification.

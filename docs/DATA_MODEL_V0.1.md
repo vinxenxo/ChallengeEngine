@@ -67,3 +67,40 @@ Historical examples in the V0.1 section are retained as historical examples. Cur
 `CHALLENGE_001` and `CHALLENGE_002` remain `rng_version: "1.0"`. `CHALLENGE_003` and `CHALLENGE_004` are V2.0 fixtures.
 
 The current temporal fixture used by the frozen challenges is 2 s HOOK + 7 s GAME + 2 s CTA = 11 s / 660 frames at 60 FPS. Historical references to 3+7+1 belong to older documentation and are not the current live contract.
+
+---
+
+## Current Live Data Contract — CHECKPOINT 0.9.0
+
+The frozen temporal contract is:
+
+```text
+FPS   = 60
+HOOK  = 120 frames
+GAME  = 420 frames
+CTA   = 120 frames
+TOTAL = 660 frames
+```
+
+`SimulationResult.winning_frame` is GAME-relative. The absolute presentation frame is derived by adding `hook_frames`.
+
+### Production provenance
+
+Unit manifests now carry:
+
+```text
+manifest_version
+factory_version
+challenge_id
+declarative_metadata
+telemetry
+artifacts
+validation
+status
+```
+
+`declarative_metadata` is a verbatim snapshot of declared provenance keys; runtime and artifact measurements remain in their own sections.
+
+### Legacy fixture policy
+
+`CHALLENGE_005` and `CHALLENGE_006` deliberately demonstrate incomplete historical metadata. The manifest preserves those absences rather than inventing values.

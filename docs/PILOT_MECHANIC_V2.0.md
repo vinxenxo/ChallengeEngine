@@ -706,3 +706,9 @@ CosmeticRNG
 Future mechanics may introduce more structural streams, richer mathematical models, or new semantic indices, but they must preserve the DDI rule demonstrated here:
 
 > **Presentation may evolve independently; structural determinism may not silently depend on presentation consumption.**
+
+---
+
+## Current Live Status — CHECKPOINT 0.9.0
+
+`pilot` remains a frozen RNG/DDI laboratory fixture. It is not a new mathematical family and is not being extended for 1.0.0. Its role is regression coverage for stateless semantic-stream isolation.

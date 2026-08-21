@@ -45,3 +45,29 @@ The current challenge master profile used by the frozen baseline and current V2 
 | TOTAL | 11.0 s | 660 |
 
 The original document's technical rendering pipeline remains valid. Older timing examples with 3.0 s HOOK + 1.0 s CTA are historical and must not override the live challenge JSON contract.
+
+---
+
+## Current Live Video Contract — CHECKPOINT 0.9.0
+
+Production video uses the graphical Godot Compatibility renderer for Movie Maker. The unsupported/unsafe combination of `--headless` with `--write-movie` is not part of the production contract.
+
+### Live timeline
+
+```text
+HOOK = 2.0 s / 120 frames
+GAME = 7.0 s / 420 frames
+CTA  = 2.0 s / 120 frames
+TOTAL = 11.0 s / 660 frames
+```
+
+### Canonical artifact paths
+
+```text
+output/CHALLENGE_XXX/CHALLENGE_XXX_raw.avi
+output/CHALLENGE_XXX/CHALLENGE_XXX.mp4
+output/CHALLENGE_XXX/CHALLENGE_XXX_manifest.json
+output/BATCH_MANIFEST.json
+```
+
+FFprobe is the physical output authority for duration, frame count and frame rate.

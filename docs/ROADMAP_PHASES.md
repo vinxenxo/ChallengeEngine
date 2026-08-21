@@ -1,5 +1,7 @@
 # ROADMAP_PHASES.md — Estado de Fases y Progreso de Desarrollo
 
+> **Live-state rule:** This older section is retained as historical checkpoint evidence. The latest "Current Live" section in this document is authoritative for the present repository.
+
 ## Estado General
 - **Versión del Engine:** Core V0.1
 - **Entorno de Ejecución:** Godot 4.7.1.stable.mono.official.a13da4feb
@@ -64,7 +66,7 @@ The V2.0 work is tracked independently from the historical V0.1 phase labels abo
 
 The next engineering step after certification is to freeze the Pilot fixture and use the proven semantic-stream architecture for a production-grade V2.0 mechanic.
 
-## Current V2.0 Checkpoint Track — CHECKPOINT 0.3.6
+## Historical V2.0 Checkpoint Track — CHECKPOINT 0.3.6
 
 The original Phase 1.x labels above are retained as historical baseline documentation. The live V2 development sequence is:
 
@@ -87,3 +89,29 @@ The original Phase 1.x labels above are retained as historical baseline document
 Integrate `parking_v2` into the production pipeline without altering V1.0 mechanics or fixtures.
 
 The intended change surface is `MechanicRegistry.gd` + `GeneradorMaestro.gd` + integration tests.
+
+---
+
+## Current Roadmap — Checkpoint 0.9.0 / 1.0.0
+
+The old phase numbering remains historical. The live checkpoint roadmap is:
+
+```text
+0.5.x     Batch / Parallel Production                FROZEN
+0.6.0     HIT v1                                     FROZEN
+0.7.0     Production Contract Hardening              FROZEN
+0.8.0     CATCH v1                                   FROZEN
+0.8.1     CATCH Presentation Contract                FROZEN / VALIDATED
+0.9.0     Production Contract Consolidation          FROZEN / VALIDATED
+1.0.0-A   Candidate Audit                            PASS
+1.0.0-B   FIND Mathematical Contract                 DRAFT / REVISION REQUIRED
+```
+
+Next valid sequence:
+
+```text
+CONTRACT → RNG DESIGN → ISOLATION → PRESENTATION CONTRACT
+→ INTEGRATION → REGRESSION → BATCH → FREEZE
+```
+
+No code or RNG stream allocation should occur while 1.0.0-B remains unapproved.
