@@ -6,7 +6,7 @@
 
 **Checkpoint:** 0.3.1–0.3.5
 
-**Current integration status:** `ParkingMechanicV2.gd` exists and its isolation suite passes, but global `MechanicRegistry` / `GeneradorMaestro` integration is the next engineering task (CHECKPOINT 0.3.6).
+**Historical integration note:** This document records the 0.3.x isolation phase. Global `MechanicRegistry` / `GeneradorMaestro` integration was subsequently completed and is now part of the frozen 0.9.0 production baseline.
 
 **Baseline oracle:** `core/mechanics/ParkingMechanic.gd` V1.0.
 
@@ -286,7 +286,7 @@ The working environment has already produced:
 
 The suite covers P1–P7, including the corrected interception of `sample_float_range()` for structural mutation and runtime RNG failure tests.
 
-This certifies **mechanic isolation**, not yet global pipeline integration.
+This sentence is historical: later checkpoints certified global pipeline integration.
 
 ---
 
@@ -310,4 +310,10 @@ CTA = 120
 TOTAL = 660
 ```
 
-The global Composition Root is deliberately not yet authoritative for this fixture at CHECKPOINT 0.3.5; this is the explicit work of CHECKPOINT 0.3.6.
+The preceding sentence is historical and refers to the pre-integration 0.3.5 state.
+
+---
+
+## Current Live Status — CHECKPOINT 0.9.0
+
+`parking_v2` is a frozen production fixture. Its streams 30/40/50/60 are governed by the semantic RNG architecture and its production result participates in the validated 001–006 batch.

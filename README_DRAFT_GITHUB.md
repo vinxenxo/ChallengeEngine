@@ -1,37 +1,61 @@
-# 🌟 Deterministic Engine v2.0
+# ChallengeEngineV01
 
-A high-performance, stateless deterministic engine built with Godot 4 and GDScript.
+Motor determinista para producir vídeos de retos de precisión.
 
-## 🧠 Core Principles
-- **Absolute Determinism**: No global RNG state. All randomness is derived from `(seed, stream_id, index)` tuples.
-- **Domain Isolation**: Structural logic and cosmetic presentation are strictly separated.
-- **Immutable Baseline**: Legacy challenges (CHALLENGE_001.json, CHALLENGE_002.json) are preserved as mathematical fixtures.
+## Current status
 
-## 🛠️ Features
-- **MechanicRNGContext** and **PresentationRNGContext** for stateless RNG.
-- **StructuralRNG** and **CosmeticRNG** for domain-specific randomness.
-- **PonyTail Optimization**: Simplicity and efficiency without sacrificing correctness.
+```text
+Checkpoint 0.9.0 — Production Contract Consolidation
+FROZEN / VALIDATED
+```
 
-## 📦 Installation
-1. Clone the repository.
-2. Open in Godot 4.
-3. Run the project.
+## Core principles
 
-## 📚 Documentation
-- [Godot 4 Documentation](https://docs.godotengine.org/en/stable/)
-- [GDScript Language Guide](https://docs.godotengine.org/en/stable/getting_started/step_by_step/gdscript_basics.html)
+- Stateless deterministic RNG.
+- Semantic stream capabilities for RNG 2.0.
+- Pure deterministic simulation separated from presentation.
+- Godot calculates and renders RAW.
+- Python orchestrates production and provenance.
+- FFmpeg packages the final MP4.
+- FFprobe validates physical artifacts.
+- External Python runner is the final suite-level PASS/FAIL arbiter.
 
-## 📦 License
-This project is licensed under the MIT License.
+## Production contract
 
-## 📩 Contributions
-Welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for details.
+```text
+factory_version  = 0.9.0
+manifest_version = 1.0
+FPS              = 60
+HOOK             = 120 frames
+GAME             = 420 frames
+CTA              = 120 frames
+TOTAL            = 660 frames
+```
 
-## 📄 Versioning
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases](https://github.com/yourusername/deterministic-engine/releases) page.
+Canonical output:
 
-## 📝 Authors
-- **Your Name** - *Initial work* - [yourusername](https://github.com/yourusername)
+```text
+output/CHALLENGE_XXX/
+output/BATCH_MANIFEST.json
+```
 
-## 📌 Acknowledgments
-- This project was inspired by the [PonyTail Principle](https://www.youtube.com/watch?v=Km6b21l8s1w) and the [Godot 4 documentation](https://docs.godotengine.org/en/stable/).
+## Fixtures
+
+```text
+001 key         RNG 1.0
+002 parking     RNG 1.0
+003 pilot       RNG 2.0
+004 parking_v2  RNG 2.0
+005 hit_v1      RNG 2.0
+006 catch_v1    RNG 2.0
+```
+
+## 1.0.0 direction
+
+FIND is the selected candidate for the next mathematical family. Its contract is still in draft. MATCH is not being introduced in 1.0.0.
+
+See:
+
+- `docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md`
+- `docs/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md`
+- `MASTER_HANDOVER_CHECKPOINT_0.9.0.md`

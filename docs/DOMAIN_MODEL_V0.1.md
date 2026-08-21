@@ -71,3 +71,22 @@ Presentation Layer
 ```
 
 `PilotMechanic` proves the capability model in a deliberately simple domain. `ParkingMechanicV2` applies the same architectural contract to continuous 2D trajectory generation using Bézier geometry, deterministic generation parameters, and per-frame steering noise.
+
+---
+
+## Current Live Domain Status — CHECKPOINT 0.9.0
+
+The current frozen domain families are represented by:
+
+```text
+key
+parking
+pilot
+parking_v2
+hit_v1
+catch_v1
+```
+
+HIT and CATCH are mathematically sovereign with respect to their winning-frame and score calculations. CATCH also owns the frozen presentation transport `custom_data["target_position"]`.
+
+The next candidate family is FIND. Its mathematical contract is not yet frozen and must not be inferred from CATCH simply because both use spatial distance.

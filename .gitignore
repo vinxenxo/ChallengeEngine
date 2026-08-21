@@ -23,4 +23,7 @@ mono_crash.*.json
 # *.gd.meta
 
 # VS Plugins
-/src/
+.continue/
+
+# output videos
+/output/

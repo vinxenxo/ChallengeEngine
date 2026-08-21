@@ -1,5 +1,7 @@
 # MECHANICS_SPECIFICATION.md — Taxonomía de mecánicas y familias base
 
+> **Live-state rule:** This older section is retained as historical checkpoint evidence. The latest "Current Live" section in this document is authoritative for the present repository.
+
 ## 1. Clasificación en 6 Familias Fundamentales
 
 El motor no implementa minijuegos aislados; construye **Familias Matemáticas Base** reutilizables sobre las que se aplican diferentes configuraciones y familias de assets.
@@ -52,7 +54,7 @@ HitMechanic CatchMechanic DodgeMechanic MatchMechanic FindMechanic JackpotMechan
 
 El fixture existe exclusivamente para demostrar que llamadas de Presentation/Cosmetic RNG no pueden alterar `SimulationResult`, mientras que una mutación estructural sí puede alterar el resultado.
 
-## Current V2.0 Status — CHECKPOINT 0.3.6
+## Historical V2.0 Status — CHECKPOINT 0.3.6
 
 The six mathematical families remain the engine taxonomy:
 
@@ -74,3 +76,22 @@ Themes such as `retro_8bit_arcade`, `garage`, `sports`, `fantasy` and `scifi` re
 ### Parking V2 production streams
 
 `PARKING_DODGE_OFFSET`, `PARKING_SAVE_OFFSET`, and `PARKING_OVERSHOOT` are generation parameters sampled at index `0`. `PARKING_STEERING_NOISE` is sampled per frame at `f*2` and `f*2+1`.
+
+---
+
+## Current Live Mechanics Status — CHECKPOINT 0.9.0 / 1.0.0
+
+The historical taxonomy remains useful as a design vocabulary, but the implementation status is now:
+
+| Identifier | Role | Status |
+|---|---|---|
+| `key` | legacy HIT fixture | FROZEN |
+| `parking` | legacy DODGE/SAVE fixture | FROZEN |
+| `pilot` | RNG laboratory fixture | FROZEN |
+| `parking_v2` | production DODGE/SAVE V2 | FROZEN |
+| `hit_v1` | sovereign HIT family | FROZEN |
+| `catch_v1` | sovereign CATCH family | FROZEN |
+| FIND | new family candidate | 1.0.0 CONTRACT DRAFT |
+| MATCH | candidate rejected for 1.0.0 | NOT SELECTED |
+
+FIND is intentionally not a CATCH reskin: distractors must participate in its mathematical difficulty. The exact false-positive event semantics remain open in the FIND contract draft.

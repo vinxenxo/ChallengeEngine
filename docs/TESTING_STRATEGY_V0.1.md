@@ -1,5 +1,7 @@
 # TESTING_STRATEGY_V0.1.md — Estrategia de Pruebas a 4 Niveles
 
+> **Live-state rule:** This older section is retained as historical checkpoint evidence. The latest "Current Live" section in this document is authoritative for the present repository.
+
 El Engine no es un juego tradicional, es una factoría de generación masiva. Su validación requiere una pirámide de pruebas estricta.
 
 ## 1. Pruebas Unitarias (UNIT)
@@ -34,7 +36,7 @@ The V2.0 test layer adds architectural tests for semantic RNG streams and capabi
 
 The V2.0 pilot fixture is `CHALLENGE_003` / `PilotMechanic`.
 
-## Current V2.0 Testing Status — CHECKPOINT 0.3.6
+## Historical V2.0 Testing Status — CHECKPOINT 0.3.6
 
 The historical V0.1 test strategy remains unchanged as a record of the original contract. The live V2.0 testing surface now includes:
 
@@ -67,3 +69,28 @@ The suite has been validated in the working Godot 4.7.1 environment with `[PARKI
 ### Integration testing still pending
 
 The Parking V2 isolation result does **not** yet certify global pipeline integration. CHECKPOINT 0.3.6 must additionally prove that `MechanicRegistry` resolves `parking_v2`, `GeneradorMaestro` injects its capability per attempt, RNG failures stop downstream processing, and V1.0 fixtures remain unchanged.
+
+---
+
+## Current Live Testing Strategy — CHECKPOINT 0.9.0 / 1.0.0
+
+The external `tests/run_suite.py` remains the suite-level arbiter. It treats runtime/script errors as fatal and requires accepted PASS markers.
+
+Current frozen architectural suites:
+
+```text
+HIT_V1_ISOLATION
+CATCH_V1_ISOLATION
+CATCH_PRESENTATION_CONTRACT
+```
+
+Current production gate:
+
+```text
+build_factory.py --batch ./challenges --output ./output --workers 2
+→ total 6 / passed 6 / failed 0
+```
+
+0.9.0 also verifies provenance and canonical artifact isolation.
+
+For 1.0.0/FIND, a new family must first have an independent mathematical isolation suite and a presentation contract suite before batch integration.
