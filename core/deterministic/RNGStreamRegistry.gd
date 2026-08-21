@@ -28,9 +28,19 @@ const STREAM_CATCH_TARGET_MOTION = 100
 const STREAM_CATCH_PURSUER_BIAS = 110
 const STREAM_CATCH_INITIAL_PHASE = 120
 
+const STREAM_FIND_SPATIAL_PLACEMENT: int = 130
+const STREAM_FIND_TOPOLOGY_GENERATION: int = 140
+const STREAM_FIND_SCANNER_TRAJECTORY: int = 150
+const STREAM_FIND_TARGET_DRIFT: int = 160
+
 var _definitions: Dictionary = {}
 
 func _init() -> void:
+	_register(STREAM_FIND_SPATIAL_PLACEMENT, "FIND_SPATIAL_PLACEMENT", Domain.STRUCTURAL_SECONDARY, "Target base coordinates", "0=X, 1=Y", "2.0", ["FindMechanic"])
+	_register(STREAM_FIND_TOPOLOGY_GENERATION, "FIND_TOPOLOGY_GENERATION", Domain.STRUCTURAL_SECONDARY, "Distractor positions", "2j=X, 2j+1=Y", "2.0", ["FindMechanic"])
+	_register(STREAM_FIND_SCANNER_TRAJECTORY, "FIND_SCANNER_TRAJECTORY", Domain.STRUCTURAL_SECONDARY, "Scanner initial phases", "0=phi_x, 1=phi_y", "2.0", ["FindMechanic"])
+	_register(STREAM_FIND_TARGET_DRIFT, "FIND_TARGET_DRIFT", Domain.STRUCTURAL_SECONDARY, "Target drift phase", "0=phi_drift", "2.0", ["FindMechanic"])
+	
 	# Legacy / Pilot Streams
 	_register(STREAM_TRAJECTORY, "TRAJECTORY", Domain.STRUCTURAL_MAIN, "Main spatial generation", "frame", "2.0", ["PilotMechanic"])
 	_register(STREAM_CONTROL, "CONTROL", Domain.STRUCTURAL_MAIN, "Logic flow generation", "frame", "2.0", ["PilotMechanic"])

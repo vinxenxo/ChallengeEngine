@@ -166,15 +166,9 @@ func run_validation_pipeline() -> Dictionary:
 			"errors": ["Unregistered mechanic_id: %s" % mechanic_id]
 		}
 
-	mechanic.setup(config_cache)
-
 	var generation_config: Dictionary = config_cache.get("generation", {})
-	var initial_seed: int = int(
-		generation_config.get("seed", 12345)
-	)
-	var rng_version: String = str(
-		generation_config.get("rng_version", "1.0")
-	)
+	var initial_seed: int = int(generation_config.get("seed", 12345))
+	var rng_version: String = str(generation_config.get("rng_version", "1.0"))
 
 	var current_seed: int = initial_seed
 	var final_result: SimulationResult = null
@@ -201,6 +195,12 @@ func run_validation_pipeline() -> Dictionary:
 		RNGStreamRegistry.STREAM_CATCH_PURSUER_BIAS,
 		RNGStreamRegistry.STREAM_CATCH_INITIAL_PHASE
 	]
+	var find_v1_allowed_streams: Array[int] = [
+		RNGStreamRegistry.STREAM_FIND_SPATIAL_PLACEMENT,
+		RNGStreamRegistry.STREAM_FIND_TOPOLOGY_GENERATION,
+		RNGStreamRegistry.STREAM_FIND_SCANNER_TRAJECTORY,
+		RNGStreamRegistry.STREAM_FIND_TARGET_DRIFT
+	]
 
 	var attempts: int = 0
 	const MAX_ATTEMPTS: int = 100
@@ -211,34 +211,20 @@ func run_validation_pipeline() -> Dictionary:
 		var context_result = null
 		if is_v2:
 			if mechanic_id.to_lower() == "pilot":
-				context_result = create_mechanic_rng_context(
-					current_seed,
-					"PilotMechanic",
-					pilot_allowed_streams
-				)
+				context_result = create_mechanic_rng_context(current_seed, "PilotMechanic", pilot_allowed_streams)
 			elif mechanic_id.to_lower() == "parking_v2":
-				context_result = create_mechanic_rng_context(
-					current_seed,
-					"ParkingMechanic",
-					parking_v2_allowed_streams
-				)
+				context_result = create_mechanic_rng_context(current_seed, "ParkingMechanic", parking_v2_allowed_streams)
 			elif mechanic_id.to_lower() == "hit_v1":
-				context_result = create_mechanic_rng_context(
-					current_seed,
-					"HitMechanic",
-					hit_v1_allowed_streams
-				)
+				context_result = create_mechanic_rng_context(current_seed, "HitMechanic", hit_v1_allowed_streams)
 			elif mechanic_id.to_lower() == "catch_v1":
-				context_result = create_mechanic_rng_context(
-					current_seed,
-					"CatchMechanic",
-					catch_v1_allowed_streams
-				)
+				context_result = create_mechanic_rng_context(current_seed, "CatchMechanic", catch_v1_allowed_streams)
+			elif mechanic_id.to_lower() == "find_v1":
+				context_result = create_mechanic_rng_context(current_seed, "FindMechanic", find_v1_allowed_streams)
 			else:
 				return {
 					"valid": false,
 					"error_code": "RNG_CONTEXT_INVALID",
-					"message": "No existe todavía un contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
+					"message": "No existe contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
 					"errors": ["Missing V2.0 mechanic RNG contract: %s" % mechanic_id]
 				}
 
@@ -251,13 +237,16 @@ func run_validation_pipeline() -> Dictionary:
 				}
 			mechanic.set_rng_context(context_result.context)
 
+		# ORDEN DE CICLO DE VIDA CORREGIDO: setup() se ejecuta POR INTENTO tras inyectar el contexto RNG
+		mechanic.setup(config_cache)
+
 		var test_result: SimulationResult = mechanic.simulate(
 			timeline.game_frames,
 			current_seed,
 			config_cache
 		)
 
-		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1"] and context_result.context.error_state != "OK":
+		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1"] and context_result.context.error_state != "OK":
 			return {
 				"valid": false,
 				"error_code": "MECHANIC_SIMULATION_ERROR",
@@ -274,8 +263,8 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
-		# Respetar la soberanía matemática de HIT y CATCH: no pasan por el WinningFrameDetector genérico
-		if mechanic_id.to_lower() not in ["hit_v1", "catch_v1"]:
+		# SOBERANÍA MATEMÁTICA: HIT, CATCH y FIND no pasan por el WinningFrameDetector genérico
+		if mechanic_id.to_lower() not in ["hit_v1", "catch_v1", "find_v1"]:
 			WinningFrameDetector.analyze_and_score(test_result)
 
 		var validation: ValidationResult = ChallengeValidator.validate(
