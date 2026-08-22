@@ -1,8 +1,21 @@
 class_name ChallengeMechanic
 extends RefCounted
 
+# Unified lifecycle state (C3-T1)
+var _is_setup: bool = false
+var _is_prepared: bool = false
+var _error_state: String = "OK"
+
 ## Configura los parámetros iniciales de la mecánica
 func setup(_config: Dictionary) -> void:
+	pass
+
+# Hook virtual para consulta de capabilities de preparación temporal
+func requires_temporal_preparation() -> bool:
+	return false
+
+# Hook virtual para preparación de estado temporal indexado por frame (C3-T)
+func prepare(_total_frames: int) -> void:
 	pass
 
 ## Recibe una capability RNG V2.0 cuando la mecánica la requiere.

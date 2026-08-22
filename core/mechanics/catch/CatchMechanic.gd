@@ -2,12 +2,13 @@ class_name CatchMechanic
 extends ChallengeMechanic
 
 var _rng_context: MechanicRNGContext = null
-var _is_setup: bool = false
-
 func set_rng_context(ctx: MechanicRNGContext) -> void:
 	_rng_context = ctx
 
 func setup(config: Dictionary) -> void:
+	_is_setup = false
+	_is_prepared = false
+	_error_state = "OK"
 	_is_setup = true
 
 func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> SimulationResult:
