@@ -5,7 +5,7 @@ const STRUCTURAL = preload("res://core/deterministic/StructuralRNG.gd")
 const COSMETIC = preload("res://core/deterministic/CosmeticRNG.gd")
 const MECH_CTX = preload("res://core/deterministic/MechanicRNGContext.gd")
 const PRES_CTX = preload("res://core/deterministic/PresentationRNGContext.gd")
-const PILOT = preload("res://core/mechanics/PilotMechanic.gd")
+const PILOT = preload("res://core/mechanics/pilot/PilotMechanic.gd")
 const DETECTOR = preload("res://core/validation/WinningFrameDetector.gd")
 
 const TEST_SEED: int = 314159

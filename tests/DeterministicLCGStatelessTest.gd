@@ -1,8 +1,8 @@
 extends SceneTree
 
 const RNG = preload("res://core/deterministic/DeterministicLCG.gd")
-const KEY_MECHANIC = preload("res://core/mechanics/KeyMechanic.gd")
-const PARKING_MECHANIC = preload("res://core/mechanics/ParkingMechanic.gd")
+const KEY_MECHANIC = preload("res://core/mechanics/key/KeyMechanic.gd")
+const PARKING_MECHANIC = preload("res://core/mechanics/parking/ParkingMechanic.gd")
 const DETECTOR = preload("res://core/validation/WinningFrameDetector.gd")
 const VALIDATOR = preload("res://core/validation/ChallengeValidator.gd")
 

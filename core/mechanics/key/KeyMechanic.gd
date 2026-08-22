@@ -1,5 +1,3 @@
-# core/mechanics/KeyMechanic.gd
-
 class_name KeyMechanic
 extends ChallengeMechanic
 
@@ -13,11 +11,19 @@ var tolerance_rotation_deg: float = 4.5
 var _rng_index: int = 0
 
 func setup(config: Dictionary) -> void:
+	# Reset transaccional (C3-T2-A / FASE R3-A)
+	_is_setup = false
+	_is_prepared = false
+	_error_state = "OK"
+
 	var diff: Dictionary = config.get("difficulty", {})
 	var tol: Dictionary = diff.get("tolerance", {})
 	tolerance_rotation_deg = float(
 		tol.get("rotation_deg", 4.5)
 	)
+	
+	# Confirmación de estado exitoso
+	_is_setup = true
 
 func simulate(
 	total_game_frames: int,
@@ -25,6 +31,7 @@ func simulate(
 	config: Dictionary
 ) -> SimulationResult:
 
+	# Legacy Double Setup (Se mantiene por compatibilidad)
 	setup(config)
 
 	var result: SimulationResult = SimulationResult.new()
