@@ -1,4 +1,3 @@
-# test/ParkingMechanicV2IsolationTest.gd
 extends SceneTree
 
 const REGISTRY = preload("res://core/deterministic/RNGStreamRegistry.gd")
@@ -57,6 +56,7 @@ func _initialize() -> void:
 	_run_structural_stream_independence_test(failures)
 	_run_structural_reactivity_test(failures)
 	_run_error_bubbling_test(failures)
+	_run_pure_simulation_test(failures)
 
 	if failures.is_empty():
 		print("[PARKING_V2_ISOLATION_SUITE] PASS")
@@ -109,6 +109,8 @@ func _create_context(registry: RNGStreamRegistry, structural: StructuralRNG) -> 
 func _simulate_with_context(config: Dictionary, context: MechanicRNGContext) -> SimulationResult:
 	var mechanic: ChallengeMechanic = PARKING_V2.new()
 	mechanic.set_rng_context(context)
+	mechanic.setup(config)
+	mechanic.prepare(GAME_FRAMES)
 	return mechanic.simulate(GAME_FRAMES, SEED, config)
 
 func _run_capability_test(failures: Array[String]) -> void:
@@ -248,14 +250,35 @@ func _run_error_bubbling_test(failures: Array[String]) -> void:
 	var config := _load_config()
 	var mechanic: ChallengeMechanic = PARKING_V2.new()
 	mechanic.set_rng_context(context)
+	mechanic.setup(config)
+	mechanic.prepare(GAME_FRAMES)
 
 	var result := mechanic.simulate(GAME_FRAMES, SEED, config)
 
-	if context.error_state != "RNG_DOMAIN_VIOLATION":
-		failures.append("P7 Failed: RNG error did not bubble to Parking context. State: %s" % context.error_state)
+	# El error debe haberse propagado desde el setup() o prepare() al _error_state de la mecanica.
+	if mechanic._error_state != "RNG_DOMAIN_VIOLATION":
+		failures.append("P7 Failed: RNG error did not bubble to mechanic _error_state. State: %s" % mechanic._error_state)
 
 	if not result.frames.is_empty():
 		failures.append("P7 Failed: failed simulation returned partial frames.")
+
+func _run_pure_simulation_test(failures: Array[String]) -> void:
+	var config := _load_config()
+	var registry := REGISTRY.new()
+	var structural := STRUCTURAL.new(registry)
+	var context := _create_context(registry, structural)
+
+	var mechanic: ChallengeMechanic = PARKING_V2.new()
+	mechanic.set_rng_context(context)
+	mechanic.setup(config)
+	mechanic.prepare(GAME_FRAMES)
+
+	# C3-D P8 - Extirpación transaccional: Anulamos la capacidad de RNG antes de simular
+	mechanic.set_rng_context(null)
+	var result := mechanic.simulate(GAME_FRAMES, SEED, config)
+
+	if result == null or result.frames.size() != GAME_FRAMES:
+		failures.append("P8 Failed: simulate() falló o exigió un contexto de RNG que ya no debería usar.")
 
 func _simulation_results_equal(a: SimulationResult, b: SimulationResult) -> bool:
 	if a.frames.size() != b.frames.size(): return false

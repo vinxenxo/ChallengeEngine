@@ -3,7 +3,6 @@ extends ChallengeMechanic
 
 var _rng_context: MechanicRNGContext = null
 
-# Estado estructural per-attempt congelado en setup() — C3-B1
 var _origin: Vector2 = Vector2.ZERO
 var _target: Vector2 = Vector2.ZERO
 var _target_prime: Vector2 = Vector2.ZERO
@@ -12,7 +11,6 @@ var _velocity: float = 3.5
 var _hitbox_radius: float = 30.0
 var _speed_base: float = 3.5
 
-# Estado temporal per-frame congelado en prepare() — C3-B2
 var _trajectory_noise: Array[float] = []
 
 func set_rng_context(ctx: MechanicRNGContext) -> void:
@@ -26,7 +24,6 @@ func setup(config: Dictionary) -> void:
 	_is_prepared = false
 	_error_state = "OK"
 
-	# Reseteo estricto por intento
 	_origin = Vector2.ZERO
 	_target = Vector2.ZERO
 	_target_prime = Vector2.ZERO
@@ -59,11 +56,6 @@ func setup(config: Dictionary) -> void:
 		float(target_arr[1])
 	)
 
-	# ============================================================
-	# C3-B1 — Stream 90: Target Offset
-	# ORDEN INNEGOCIABLE: PRIMERO
-	# ============================================================
-
 	var dx = _rng_context.sample_float_range(
 		RNGStreamRegistry.STREAM_HIT_TARGET_OFFSET,
 		0,
@@ -81,11 +73,6 @@ func setup(config: Dictionary) -> void:
 	_target_prime = _target + Vector2(dx, dy)
 	_direction = (_target_prime - _origin).normalized()
 
-	# ============================================================
-	# C3-B1 — Stream 70: Speed Variance
-	# ORDEN INNEGOCIABLE: SEGUNDO
-	# ============================================================
-
 	var dv = _rng_context.sample_float_range(
 		RNGStreamRegistry.STREAM_HIT_SPEED_VARIANCE,
 		0,
@@ -101,7 +88,6 @@ func setup(config: Dictionary) -> void:
 
 	_is_setup = true
 
-
 func prepare(total_frames: int) -> void:
 	_is_prepared = false
 	_trajectory_noise.clear()
@@ -116,12 +102,6 @@ func prepare(total_frames: int) -> void:
 	if _rng_context == null:
 		_error_state = "MISSING_RNG_CONTEXT"
 		return
-
-	# ============================================================
-	# C3-B2 — Stream 80: Trajectory Noise
-	# Consumo exclusivamente indexado por frame.
-	# Rango congelado: [-4.0, +4.0]
-	# ============================================================
 
 	for f in range(total_frames):
 		var eps_f: float = _rng_context.sample_float_range(
@@ -140,24 +120,22 @@ func prepare(total_frames: int) -> void:
 
 	_is_prepared = true
 
-
 func simulate(
 	total_frames: int,
 	initial_seed: int,
 	config: Dictionary
 ) -> SimulationResult:
 
-	# ============================================================
-	# C3-B2 — SIMULATE PURA
-	# Cero RNG.
-	# Cero acceso al contexto.
-	# Cero materialización estructural.
-	# ============================================================
-
 	if not _is_setup or _error_state != "OK" or not _is_prepared:
 		var err = SimulationResult.new()
 		err.winning_frame = -1
 		err.metadata["error"] = _error_state
+		return err
+
+	if _trajectory_noise.size() != total_frames:
+		var err = SimulationResult.new()
+		err.winning_frame = -1
+		err.metadata["error"] = "TEMPORAL_BUFFER_SIZE_MISMATCH"
 		return err
 
 	var frames: Array[FrameSnapshot] = []
@@ -187,8 +165,6 @@ func simulate(
 
 		frames.append(snap)
 
-	# Segunda pasada original para close_calls.
-	# El winning_frame se excluye explícitamente.
 	var close_calls: int = 0
 
 	for f in range(total_frames):
