@@ -14,6 +14,9 @@ var _rng_index: int = 0
 
 
 func setup(config: Dictionary) -> void:
+	_is_setup = false
+	_is_prepared = false
+	_error_state = "OK"
 	var diff: Dictionary = config.get("difficulty", {})
 	var parking_cfg: Dictionary = diff.get("parking", {})
 
@@ -58,6 +61,7 @@ func setup(config: Dictionary) -> void:
 	)
 
 	tolerance_angle_rad = deg_to_rad(tol_angle_deg)
+	_is_setup = true
 
 
 func simulate(

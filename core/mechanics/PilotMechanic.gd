@@ -4,7 +4,6 @@ extends ChallengeMechanic
 const RNG_REGISTRY = preload("res://core/deterministic/RNGStreamRegistry.gd")
 
 var _rng_context: MechanicRNGContext
-var _rng_context_error: String = "OK"
 
 var start_x: float = 0.0
 var end_x: float = 100.0
@@ -15,6 +14,9 @@ var control_amplitude: float = 0.5
 var tolerance_distance: float = 5.0
 
 func setup(config: Dictionary) -> void:
+	_is_setup = false
+	_is_prepared = false
+	_error_state = "OK"
 	var content: Dictionary = config.get("content", {})
 	start_x = float(content.get("start_x", 0.0))
 	end_x = float(content.get("end_x", 100.0))
@@ -25,14 +27,15 @@ func setup(config: Dictionary) -> void:
 
 	var tolerance: Dictionary = config.get("difficulty", {}).get("tolerance", {})
 	tolerance_distance = float(tolerance.get("distance_px", 5.0))
+	_is_setup = true
 
 func set_rng_context(context: MechanicRNGContext) -> void:
 	_rng_context = context
-	_rng_context_error = "OK"
+	_error_state = "OK"
 
 func clear_rng_context() -> void:
 	_rng_context = null
-	_rng_context_error = "OK"
+	_error_state = "OK"
 
 func simulate(
 	total_game_frames: int,
@@ -52,11 +55,11 @@ func simulate(
 		}
 		return result
 
-	if _rng_context_error != "OK":
+	if _error_state != "OK":
 		result.metadata = {
 			"mechanic": "pilot",
 			"rng_version": "2.0",
-			"simulation_error": _rng_context_error
+			"simulation_error": _error_state
 		}
 		return result
 
