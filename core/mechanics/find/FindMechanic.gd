@@ -13,19 +13,21 @@ var _phi_drift: float = 0.0
 func set_rng_context(ctx: MechanicRNGContext) -> void:
 	_rng_context = ctx
 
+func requires_temporal_preparation() -> bool:
+	return false
+
 func setup(config: Dictionary) -> void:
 	_is_setup = false
 	_is_prepared = false
 	_error_state = "OK"
-	# REQUISITO 6: Reseteo completo del estado estructural ante cada attempt/retry
+
+	# Amnesia por intento
 	_p_base = Vector2.ZERO
 	_distractors.clear()
 	_phi_x = 0.0
 	_phi_y = 0.0
 	_phi_drift = 0.0
-	_error_state = "OK"
-	_is_setup = false
-	
+
 	if _rng_context == null:
 		_error_state = "MISSING_RNG_CONTEXT"
 		return
@@ -74,7 +76,9 @@ func setup(config: Dictionary) -> void:
 		_error_state = _rng_context.error_state
 		return
 
+	# C3-F Modelo A: Mecánicas estructurales completan el ciclo temporal en setup
 	_is_setup = true
+	_is_prepared = true
 
 func calculate_frame(f: int, config: Dictionary) -> Dictionary:
 	var find_cfg: Dictionary = config.get("difficulty", {}).get("find", {})
@@ -102,8 +106,8 @@ func calculate_frame(f: int, config: Dictionary) -> Dictionary:
 		"p_target": p_target
 	}
 
-func simulate(total_frames: int, initial_seed: int, config: Dictionary) -> SimulationResult:
-	if not _is_setup or _error_state != "OK":
+func simulate(total_frames: int, _initial_seed: int, config: Dictionary) -> SimulationResult:
+	if not _is_setup or _error_state != "OK" or not _is_prepared:
 		var err = SimulationResult.new()
 		err.winning_frame = -1
 		err.metadata["error"] = _error_state
