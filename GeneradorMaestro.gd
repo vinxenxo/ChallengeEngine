@@ -57,7 +57,7 @@ func _ready() -> void:
 		var error_code: String = str(validation_package.get("error_code", "SIMULATION_FAILED"))
 		var error_msg: String = str(validation_package.get("message", "Fallo en la simulación o autovetting."))
 		var details: String = str(validation_package.get("errors", []))
-		
+
 		emit_engine_error(error_code, error_msg, details)
 		get_tree().quit(1)
 		return
@@ -237,8 +237,21 @@ func run_validation_pipeline() -> Dictionary:
 				}
 			mechanic.set_rng_context(context_result.context)
 
-		# ORDEN DE CICLO DE VIDA CORREGIDO: setup() se ejecuta POR INTENTO tras inyectar el contexto RNG
 		mechanic.setup(config_cache)
+
+		# =================================================================
+		# FASE R2 / C3-T2: COMPOSITION ROOT ENFORCEMENT GUARDS
+		# =================================================================
+		if not mechanic._is_setup or mechanic._error_state != "OK":
+			current_seed = lcg_next_seed(current_seed)
+			continue
+			
+		if mechanic.requires_temporal_preparation():
+			mechanic.prepare(timeline.game_frames)
+			if not mechanic._is_prepared or mechanic._error_state != "OK":
+				current_seed = lcg_next_seed(current_seed)
+				continue
+		# =================================================================
 
 		var test_result: SimulationResult = mechanic.simulate(
 			timeline.game_frames,
@@ -263,7 +276,6 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
-		# SOBERANÍA MATEMÁTICA: HIT, CATCH y FIND no pasan por el WinningFrameDetector genérico
 		if mechanic_id.to_lower() not in ["hit_v1", "catch_v1", "find_v1"]:
 			WinningFrameDetector.analyze_and_score(test_result)
 
@@ -330,9 +342,6 @@ func _process(_delta: float) -> void:
 			object_sprite.position = Vector2(540.0, 960.0)
 			object_sprite.rotation = 0.0
 			object_sprite.modulate.a = 0.5
-			
-			# Opcional: Asegurar que el target no se pinte en coordenadas erróneas al inicio
-			# Podríamos leer verified_history[0] si quisieramos, pero lo dejamos estático hasta GAME.
 
 		"GAME":
 			object_sprite.visible = true
@@ -341,14 +350,12 @@ func _process(_delta: float) -> void:
 			var game_idx: int = timeline.get_game_index()
 			if game_idx >= 0 and game_idx < verified_history.size():
 				var frame_state: FrameSnapshot = verified_history[game_idx]
-				
-				# Entidad Principal (Catcher / Vehículo / Proyectil)
+
 				object_sprite.position = frame_state.position
 				object_sprite.rotation = frame_state.rotation
 				object_sprite.scale = frame_state.scale
 				object_sprite.modulate.a = frame_state.opacity
 
-				# Entidad Secundaria (Blanco móvil para CATCH, estático para otros)
 				if frame_state.custom_data.has("target_position"):
 					var t_pos = frame_state.custom_data["target_position"]
 					if t_pos is Vector2:
@@ -359,7 +366,6 @@ func _process(_delta: float) -> void:
 			main_label.text = str(config_cache.get("content", {}).get("cta", ""))
 
 	timeline.advance()
-
 
 func parse_cli_arguments() -> Dictionary:
 	var args: PackedStringArray = OS.get_cmdline_user_args()

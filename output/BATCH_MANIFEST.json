@@ -8,20 +8,24 @@
     "1.0",
     "2.0"
   ],
-  "status": "PASSED",
+  "status": "FAILED",
   "summary": {
     "total": 7,
-    "passed": 7,
-    "failed": 0
+    "passed": 5,
+    "failed": 2
   },
   "challenges": [
     {
       "challenge_id": "CHALLENGE_001",
-      "status": "PASS",
-      "mechanic": "key",
-      "rng_version": "1.0",
-      "godot_version": "4.7.1-stable (official)",
-      "manifest": "CHALLENGE_001/CHALLENGE_001_manifest.json"
+      "status": "FAIL",
+      "error": {
+        "challenge_id": "CHALLENGE_001",
+        "code": "NO_VALID_SIMULATION",
+        "details": "[\"Exhausted 100 seed attempts without finding a valid simulation.\"]",
+        "error": true,
+        "godot_version": "4.7.1-stable (official)",
+        "message": "No se encontró una simulación válida que cumpliera los criterios narrativos tras 100 intentos."
+      }
     },
     {
       "challenge_id": "CHALLENGE_002",
@@ -41,11 +45,15 @@
     },
     {
       "challenge_id": "CHALLENGE_004",
-      "status": "PASS",
-      "mechanic": "parking_v2",
-      "rng_version": "2.0",
-      "godot_version": "4.7.1-stable (official)",
-      "manifest": "CHALLENGE_004/CHALLENGE_004_manifest.json"
+      "status": "FAIL",
+      "error": {
+        "challenge_id": "CHALLENGE_004",
+        "code": "NO_VALID_SIMULATION",
+        "details": "[\"Exhausted 100 seed attempts without finding a valid simulation.\"]",
+        "error": true,
+        "godot_version": "4.7.1-stable (official)",
+        "message": "No se encontró una simulación válida que cumpliera los criterios narrativos tras 100 intentos."
+      }
     },
     {
       "challenge_id": "CHALLENGE_005",
