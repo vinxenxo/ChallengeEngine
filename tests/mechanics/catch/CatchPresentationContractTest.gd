@@ -26,10 +26,18 @@ func _test_presentation_data_integrity() -> void:
 		reg._register(110, "P_BIAS", reg.Domain.STRUCTURAL_SECONDARY, "", "0", "2.0", ["CatchMechanic"])
 		reg._register(120, "PHASE", reg.Domain.STRUCTURAL_SECONDARY, "", "0", "2.0", ["CatchMechanic"])
 
-	var ctx = MechanicRNGContext.create(884422, "2.0", "CatchMechanic", [100, 110, 120], s_rng, reg)
+	var ctx = MechanicRNGContext.create(
+		884422,
+		"2.0",
+		"CatchMechanic",
+		[100, 110, 120],
+		s_rng,
+		reg
+	)
+
 	var mech = CatchMechanic.new()
-	mech.setup(config)
 	mech.set_rng_context(ctx.context)
+	mech.setup(config)
 	
 	var total_frames = 420
 	var res = mech.simulate(total_frames, 884422, config)
