@@ -1,3 +1,5 @@
+# core/mechanics/KeyMechanic.gd
+
 class_name KeyMechanic
 extends ChallengeMechanic
 
