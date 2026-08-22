@@ -2,7 +2,6 @@ class_name FindMechanic
 extends ChallengeMechanic
 
 var _rng_context: MechanicRNGContext = null
-var _is_setup: bool = false
 
 # Estado estructural congelado en setup()
 var _p_base: Vector2 = Vector2.ZERO
@@ -10,12 +9,14 @@ var _distractors: Array[Vector2] = []
 var _phi_x: float = 0.0
 var _phi_y: float = 0.0
 var _phi_drift: float = 0.0
-var _error_state: String = "OK"
 
 func set_rng_context(ctx: MechanicRNGContext) -> void:
 	_rng_context = ctx
 
 func setup(config: Dictionary) -> void:
+	_is_setup = false
+	_is_prepared = false
+	_error_state = "OK"
 	# REQUISITO 6: Reseteo completo del estado estructural ante cada attempt/retry
 	_p_base = Vector2.ZERO
 	_distractors.clear()
@@ -23,7 +24,7 @@ func setup(config: Dictionary) -> void:
 	_phi_y = 0.0
 	_phi_drift = 0.0
 	_error_state = "OK"
-	_is_setup = true
+	_is_setup = false
 	
 	if _rng_context == null:
 		_error_state = "MISSING_RNG_CONTEXT"
@@ -71,6 +72,9 @@ func setup(config: Dictionary) -> void:
 
 	if _rng_context.error_state != "OK":
 		_error_state = _rng_context.error_state
+		return
+
+	_is_setup = true
 
 func calculate_frame(f: int, config: Dictionary) -> Dictionary:
 	var find_cfg: Dictionary = config.get("difficulty", {}).get("find", {})
