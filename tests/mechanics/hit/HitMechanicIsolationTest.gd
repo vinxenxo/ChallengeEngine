@@ -1,3 +1,4 @@
+class_name HitMechanicIsolationTest
 extends SceneTree
 
 var registry: RNGStreamRegistry
@@ -5,9 +6,8 @@ var structural_rng: StructuralRNG
 var challenge_config: Dictionary
 var failures: int = 0
 
-
 func _init() -> void:
-	print("--- INICIANDO HIT MECHANIC ISOLATION SUITE ---")
+	print("--- INICIANDO HIT MECHANIC ISOLATION SUITE (C3-B2) ---")
 	_setup_environment()
 	
 	_test_exact_420_frames()
@@ -17,7 +17,8 @@ func _init() -> void:
 	_test_winning_frame_is_first_argmin()
 	_test_score_calculation()
 	_test_close_calls_excludes_winning_frame()
-	_test_error_bubbling_unauthorized_stream()
+	_test_error_bubbling_unauthorized_stream_in_prepare()
+	_test_pure_simulation_without_rng_context()
 	
 	if failures == 0:
 		print("[HIT_V1_ISOLATION_SUITE] PASS")
@@ -44,7 +45,6 @@ func _create_mechanic(allowed_streams: Array[int]) -> HitMechanic:
 	var m = HitMechanic.new()
 	var ctx_result = MechanicRNGContext.create(998877, "2.0", "HitMechanic", allowed_streams, structural_rng, registry)
 	
-	# ACCESO DIRECTO A PROPIEDADES DEL OBJETO (Godot 4 strict type)
 	if not ctx_result.is_valid:
 		print("[FATAL] MechanicRNGContext.create() denegado. Error: ", ctx_result.error_code)
 		failures += 1
@@ -52,6 +52,7 @@ func _create_mechanic(allowed_streams: Array[int]) -> HitMechanic:
 		
 	m.set_rng_context(ctx_result.context)
 	m.setup(challenge_config)
+	m.prepare(420)
 	return m
 
 # --- FUNCIONES DE ASERCIÓN ---
@@ -90,7 +91,7 @@ func _test_determinism() -> void:
 	if res1 == null or res2 == null: _assert(false, "simulate() devolvió null"); return
 	
 	_assert_eq(res1.winning_frame, res2.winning_frame, "El winning_frame debe ser idéntico entre ejecuciones")
-	_assert_eq(res1.metadata["minimum_distance"], res2.metadata["minimum_distance"], "La distancia mínima debe ser idéntica")
+	_assert_eq(res1.minimum_distance, res2.minimum_distance, "La distancia mínima debe ser idéntica")
 	_assert_eq(res1.metadata["impact_velocity"], res2.metadata["impact_velocity"], "La velocidad debe ser idéntica")
 
 func _test_rng_bounds_and_application() -> void:
@@ -135,7 +136,7 @@ func _test_winning_frame_is_first_argmin() -> void:
 	if res == null: return
 	
 	var wf = res.winning_frame
-	var min_dist = res.metadata["minimum_distance"]
+	var min_dist = res.minimum_distance
 	var target_prime = Vector2(res.metadata["target_prime_x"], res.metadata["target_prime_y"])
 	
 	for i in range(wf):
@@ -148,8 +149,8 @@ func _test_score_calculation() -> void:
 	var res = m.simulate(420, 998877, challenge_config)
 	if res == null: return
 	
-	var score = res.metadata["score"]
-	var dist = res.metadata["minimum_distance"]
+	var score = res.score
+	var dist = res.minimum_distance
 	var expected_score = clampf(1.0 - (dist / 30.0), 0.0, 1.0)
 	_assert_approx(score, expected_score, 0.0001, "Score debe cumplir la fórmula clamp(1 - dist/radius)")
 
@@ -175,9 +176,23 @@ func _test_close_calls_excludes_winning_frame() -> void:
 	var expected_close_calls = raw_close_calls - 1 if wf_is_hit else raw_close_calls
 	_assert_eq(res.metadata["close_calls"], expected_close_calls, "close_calls debe excluir explícitamente el winning_frame")
 
-func _test_error_bubbling_unauthorized_stream() -> void:
-	# Contexto VÁLIDO al crearse, pero deniega deliberadamente el Stream 80
-	var m = _create_mechanic([70, 90])
+func _test_error_bubbling_unauthorized_stream_in_prepare() -> void:
+	# Contexto SIN Stream 80 (autoriza solo 70 y 90)
+	var m = HitMechanic.new()
+	var ctx_result = MechanicRNGContext.create(998877, "2.0", "HitMechanic", [70, 90], structural_rng, registry)
+	m.set_rng_context(ctx_result.context)
+	m.setup(challenge_config)
+	m.prepare(420)
+	
+	_assert(m._is_prepared == false, "prepare() debe marcar _is_prepared como false ante stream no autorizado")
+	_assert(m._error_state != "OK", "Debe registrar un estado de error por consumo no autorizado (Stream 80) en prepare()")
+
+func _test_pure_simulation_without_rng_context() -> void:
+	var m = _create_mechanic([70, 80, 90])
 	if m == null: return
-	m.simulate(420, 998877, challenge_config)
-	_assert(m._rng_context.error_state != "OK", "Debe registrar un estado de error por consumo no autorizado (Stream 80) durante simulate()")
+	
+	# Anulamos el contexto RNG tras prepare() para demostrar simulación puramente determinista sin él
+	m.set_rng_context(null)
+	var res = m.simulate(420, 998877, challenge_config)
+	
+	_assert(res != null and res.frames.size() == 420, "simulate() debe completarse con éxito sin contexto RNG gracias a los datos congelados en prepare()")
