@@ -1,10 +1,11 @@
+# test/ParkingMechanicV2IsolationTest.gd
 extends SceneTree
 
 const REGISTRY = preload("res://core/deterministic/RNGStreamRegistry.gd")
 const STRUCTURAL = preload("res://core/deterministic/StructuralRNG.gd")
 const COSMETIC = preload("res://core/deterministic/CosmeticRNG.gd")
 const MECH_CTX = preload("res://core/deterministic/MechanicRNGContext.gd")
-const PARKING_V2 = preload("res://mechanics/parking/ParkingMechanicV2.gd")
+const PARKING_V2 = preload("res://core/mechanics/parking/ParkingMechanicV2.gd")
 
 const CHALLENGE_PATH := "res://challenges/CHALLENGE_004.json"
 
@@ -107,7 +108,7 @@ func _create_context(registry: RNGStreamRegistry, structural: StructuralRNG) -> 
 
 func _simulate_with_context(config: Dictionary, context: MechanicRNGContext) -> SimulationResult:
 	var mechanic: ChallengeMechanic = PARKING_V2.new()
-	mechanic.rng_context = context
+	mechanic.set_rng_context(context)
 	return mechanic.simulate(GAME_FRAMES, SEED, config)
 
 func _run_capability_test(failures: Array[String]) -> void:
@@ -246,7 +247,7 @@ func _run_error_bubbling_test(failures: Array[String]) -> void:
 
 	var config := _load_config()
 	var mechanic: ChallengeMechanic = PARKING_V2.new()
-	mechanic.rng_context = context
+	mechanic.set_rng_context(context)
 
 	var result := mechanic.simulate(GAME_FRAMES, SEED, config)
 
