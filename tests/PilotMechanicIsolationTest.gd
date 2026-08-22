@@ -60,18 +60,24 @@ func _load_config() -> Dictionary:
 	return json.data
 
 func _simulate(seed: int, config: Dictionary) -> SimulationResult:
+
 	var stack = _make_registry_stack()
 	var registry: RNGStreamRegistry = stack[0]
 	var structural: StructuralRNG = stack[1]
+
 	var context_result = _make_pilot_context(structural, registry, seed)
 	assert(context_result.is_valid)
 
 	var pilot: PilotMechanic = PILOT.new()
-	pilot.setup(config)
+
 	pilot.set_rng_context(context_result.context)
+	pilot.setup(config)
+	pilot.prepare(420)
+
 	var result: SimulationResult = pilot.simulate(420, seed, config)
 	DETECTOR.analyze_and_score(result)
 	return result
+
 
 func _run_test_p(failures: Array[String]) -> void:
 	var config: Dictionary = _load_config()
@@ -91,9 +97,16 @@ func _run_test_p(failures: Array[String]) -> void:
 		return
 
 	var pilot_a: PilotMechanic = PILOT.new()
-	pilot_a.setup(config)
 	pilot_a.set_rng_context(pilot_ctx_result.context)
-	var result_a: SimulationResult = pilot_a.simulate(420, TEST_SEED, config)
+	pilot_a.setup(config)
+	pilot_a.prepare(420)
+
+	var result_a: SimulationResult = pilot_a.simulate(
+		420,
+		TEST_SEED,
+		config
+	)
+
 	DETECTOR.analyze_and_score(result_a)
 
 	# H1/H2/I/J: Presentation work happens independently and in a different order.
