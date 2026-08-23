@@ -36,10 +36,13 @@ static func validate_definition(config: Dictionary) -> Dictionary:
 
 		var hook_dur: float = float(video.get("hook_duration", -1.0))
 		var game_dur: float = float(video.get("game_duration", -1.0))
+		var reveal_dur: float = float(video.get("reveal_duration", 0.0))
 		var cta_dur: float = float(video.get("cta_duration", -1.0))
 
 		if hook_dur < 0.0 or cta_dur < 0.0:
 			errors.append("Durations 'hook_duration' and 'cta_duration' must be non-negative.")
+		if reveal_dur < 0.0:
+			errors.append("Duration 'reveal_duration' must be non-negative.")
 		if game_dur <= 0.0:
 			errors.append("'game_duration' must be strictly greater than 0.")
 

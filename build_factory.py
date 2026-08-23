@@ -223,11 +223,28 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
     manifest_path = output_dir / f"{challenge_id}_manifest.json"
 
     # --- 1. SIMULACIÓN (GODOT) ---
+    def duration_to_frames(duration_seconds: float, fps: int) -> int:
+        return max(0, math.floor(duration_seconds * float(fps) + 0.5))
+
+    video_config = challenge_definition.get("video", {})
+    fps = int(video_config.get("fps", 60))
+
+    hook_frames = duration_to_frames(float(video_config.get("hook_duration", 2.0)), fps)
+    game_frames = duration_to_frames(float(video_config.get("game_duration", 7.0)), fps)
+    reveal_frames = duration_to_frames(float(video_config.get("reveal_duration", 0.0)), fps)
+    cta_frames = duration_to_frames(float(video_config.get("cta_duration", 2.0)), fps)
+
+    expected_total_frames = hook_frames + game_frames + reveal_frames + cta_frames
+
     cmd = ["godot", "--path", str(PROJECT_ROOT)]
     if validate_only:
         cmd.append("--headless")
     else:
-        cmd.extend(["--write-movie", str(raw_video_path), "--fixed-fps", "60", "--quit-after", "660"])
+        cmd.extend([
+            "--write-movie", str(raw_video_path), 
+            "--fixed-fps", str(fps), 
+            "--quit-after", str(expected_total_frames)
+        ])
         
     cmd.extend(["--", f"--config={config_path}"])
     if validate_only:
@@ -308,7 +325,7 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
         cleanup_partial_outputs(output_dir, challenge_id)
         return {"success": False, "error": {"code": "INVALID_DECLARATIVE_FPS", "message": f"video.fps inválido."}}
 
-    required_timeline_keys = ("total_frames", "hook_frames", "game_frames", "cta_frames")
+    required_timeline_keys = ("total_frames", "hook_frames", "game_frames", "reveal_frames", "cta_frames")
     if any(k not in telemetry for k in required_timeline_keys):
         cleanup_partial_outputs(output_dir, challenge_id)
         return {"success": False, "error": {"code": "MISSING_TELEMETRY_TIMELINE", "message": "Telemetría temporal incompleta."}}
@@ -316,17 +333,18 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
     t_total = telemetry["total_frames"]
     t_hook = telemetry["hook_frames"]
     t_game = telemetry["game_frames"]
+    t_reveal = telemetry["reveal_frames"]
     t_cta = telemetry["cta_frames"]
 
-    if any(type(x) is not int for x in (t_total, t_hook, t_game, t_cta)):
+    if any(type(x) is not int for x in (t_total, t_hook, t_game, t_reveal, t_cta)):
         cleanup_partial_outputs(output_dir, challenge_id)
         return {"success": False, "error": {"code": "INVALID_TELEMETRY_TIMELINE", "message": "Timeline debe ser entero."}}
 
-    if t_total <= 0 or t_hook < 0 or t_game <= 0 or t_cta < 0:
+    if t_total <= 0 or t_hook < 0 or t_game <= 0 or t_reveal < 0 or t_cta < 0:
         cleanup_partial_outputs(output_dir, challenge_id)
         return {"success": False, "error": {"code": "INVALID_TELEMETRY_TIMELINE", "message": "Timeline fuera de rango."}}
 
-    if t_total != (t_hook + t_game + t_cta):
+    if t_total != (t_hook + t_game + t_reveal + t_cta):
         cleanup_partial_outputs(output_dir, challenge_id)
         return {"success": False, "error": {"code": "TIMELINE_INTEGRITY_VIOLATION", "message": "Suma de frames incorrecta."}}
 

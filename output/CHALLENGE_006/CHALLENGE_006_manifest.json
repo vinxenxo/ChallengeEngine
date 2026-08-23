@@ -17,6 +17,7 @@
     "initial_seed": 884422,
     "minimum_distance": 27.2707214355469,
     "overshoot_dist": 0.0,
+    "reveal_frames": 0,
     "rng_version": "2.0",
     "save_offset": 0.0,
     "score": 0.393983968098958,
@@ -31,9 +32,9 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_006_raw.avi",
-    "raw_video_sha256": "2dd72c5ea9646c1192a0acf8f3d4c23e7687abce877378b48a3a8d2f3933cfac",
+    "raw_video_sha256": "6666fbcee344499ca3012fb71c4a29c988bed3a2e6788acdb9e373af374a496d",
     "final_video": "CHALLENGE_006.mp4",
-    "final_video_sha256": "1095b7c9a48bd0f5539c03d6974a8d493714f92fe0d3b4839a147147c531c67e"
+    "final_video_sha256": "b1bfd78814d26ba2c3b75a357da24736c3be116a8d4f879acd64d2d586fa9d13"
   },
   "validation": {
     "duration": 11.0,
