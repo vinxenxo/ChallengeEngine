@@ -107,7 +107,7 @@ def cleanup_partial_outputs(output_dir: Path, challenge_id: str) -> None:
 
 
 def run_ffprobe(video_path: Path) -> Dict[str, Any]:
-    """Extrae métricas exactas y maneja excepciones o valores 'N/A' de forma segura."""
+    """Extrae observaciones de FFprobe sin convertir datos ausentes/corruptos en valores válidos."""
     cmd = [
         "ffprobe",
         "-v", "error",
@@ -117,27 +117,110 @@ def run_ffprobe(video_path: Path) -> Dict[str, Any]:
         "-of", "json",
         str(video_path)
     ]
-    
-    try:
-        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-        probe_data = json.loads(result.stdout)
-        stream_info = probe_data.get("streams", [{}])[0]
-        
-        def safe_float(val, default=0.0):
-            try: return float(val)
-            except (ValueError, TypeError): return default
 
-        def safe_int(val, default=0):
-            try: return int(val)
-            except (ValueError, TypeError): return default
+    try:
+        result = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True
+        )
+
+        probe_data = json.loads(result.stdout)
+        streams = probe_data.get("streams")
+
+        if not isinstance(streams, list) or not streams:
+            return {
+                "error": "FFprobe no devolvió información de stream de vídeo."
+            }
+
+        stream_info = streams[0]
+
+        if not isinstance(stream_info, dict):
+            return {
+                "error": "FFprobe devolvió un stream de vídeo inválido."
+            }
+
+        required_fields = (
+            "duration",
+            "nb_read_frames",
+            "r_frame_rate",
+        )
+
+        missing = [
+            field
+            for field in required_fields
+            if field not in stream_info
+        ]
+
+        if missing:
+            return {
+                "error": (
+                    "FFprobe no proporcionó los campos requeridos: "
+                    + ", ".join(missing)
+                )
+            }
+
+        duration_raw = stream_info["duration"]
+        frames_raw = stream_info["nb_read_frames"]
+        fps_raw = stream_info["r_frame_rate"]
+
+        if duration_raw in (None, "", "N/A"):
+            return {"error": "FFprobe devolvió duration ausente o N/A."}
+
+        if frames_raw in (None, "", "N/A"):
+            return {"error": "FFprobe devolvió nb_read_frames ausente o N/A."}
+
+        if fps_raw in (None, ""):
+            return {"error": "FFprobe devolvió r_frame_rate ausente."}
+
+        try:
+            duration = float(duration_raw)
+        except (ValueError, TypeError) as exc:
+            return {
+                "error": f"FFprobe duration inválida: {duration_raw!r}"
+            }
+
+        try:
+            nb_frames = int(frames_raw)
+        except (ValueError, TypeError):
+            return {
+                "error": f"FFprobe nb_read_frames inválido: {frames_raw!r}"
+            }
+
+        if not math.isfinite(duration):
+            return {
+                "error": f"FFprobe duration no finita: {duration!r}"
+            }
+
+        if nb_frames < 0:
+            return {
+                "error": f"FFprobe nb_read_frames negativo: {nb_frames}"
+            }
+
+        if not isinstance(fps_raw, str) or "/" not in fps_raw:
+            return {
+                "error": f"FFprobe r_frame_rate inválido: {fps_raw!r}"
+            }
 
         return {
-            "duration": safe_float(stream_info.get("duration", 0.0)),
-            "nb_frames": safe_int(stream_info.get("nb_read_frames", 0)),
-            "r_frame_rate": stream_info.get("r_frame_rate", "")
+            "duration": duration,
+            "nb_frames": nb_frames,
+            "r_frame_rate": fps_raw,
         }
-    except Exception as e:
-        return {"error": str(e)}
+
+    except subprocess.CalledProcessError as exc:
+        return {
+            "error": (
+                exc.stderr.strip()
+                or "FFprobe terminó con código de error."
+            )
+        }
+    except (json.JSONDecodeError, OSError) as exc:
+        return {
+            "error": str(exc)
+        }
 
 
 def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool = False) -> Dict[str, Any]:
@@ -293,22 +376,176 @@ def run_factory(config_path_str: str, output_dir_str: str, validate_only: bool =
             "error": {"code": "FFPROBE_ERROR", "message": probe_data["error"]}
         }
 
-    valid_duration = math.isclose(probe_data["duration"], 11.0, abs_tol=0.05)
-    valid_frames = probe_data["nb_frames"] == 660
-    valid_fps = probe_data["r_frame_rate"] == "60/1"
-    
-    probe_data["valid"] = valid_duration and valid_frames and valid_fps
+    # ---------------------------------------------------------
+    # C5-A — RUNTIME ↔ ARTIFACT CONSISTENCY GATE
+    # ---------------------------------------------------------
 
-    if not probe_data["valid"]:
+    video_config = challenge_definition.get("video")
+
+    if not isinstance(video_config, dict) or "fps" not in video_config:
         cleanup_partial_outputs(output_dir, challenge_id)
         return {
             "success": False,
             "error": {
-                "code": "ARTIFACT_VALIDATION_FAILED",
-                "message": "Las métricas extraídas no cumplen el contrato E2E.",
-                "details": probe_data
+                "code": "MISSING_DECLARATIVE_FPS",
+                "message": "video.fps es obligatorio para validar el artefacto."
             }
         }
+
+    expected_fps = video_config["fps"]
+
+    # A0 — Declarative FPS válido
+    if (
+        type(expected_fps) not in (int, float)
+        or not math.isfinite(float(expected_fps))
+        or float(expected_fps) <= 0.0
+    ):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "INVALID_DECLARATIVE_FPS",
+                "message": f"video.fps inválido: {expected_fps!r}"
+            }
+        }
+
+    # C5-A exige enteros físicos para la línea temporal.
+    required_timeline_keys = (
+        "total_frames",
+        "hook_frames",
+        "game_frames",
+        "cta_frames",
+    )
+
+    missing_timeline = [
+        key
+        for key in required_timeline_keys
+        if key not in telemetry
+    ]
+
+    if missing_timeline:
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "MISSING_TELEMETRY_TIMELINE",
+                "message": (
+                    "Telemetría temporal incompleta. "
+                    f"Faltan: {', '.join(missing_timeline)}"
+                )
+            }
+        }
+
+    t_total = telemetry["total_frames"]
+    t_hook = telemetry["hook_frames"]
+    t_game = telemetry["game_frames"]
+    t_cta = telemetry["cta_frames"]
+
+    # A5 — Telemetría temporal válida
+    if (
+        type(t_total) is not int
+        or type(t_hook) is not int
+        or type(t_game) is not int
+        or type(t_cta) is not int
+    ):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "INVALID_TELEMETRY_TIMELINE",
+                "message": "Los campos de timeline deben ser enteros."
+            }
+        }
+
+    if (
+        t_total <= 0
+        or t_hook < 0
+        or t_game <= 0
+        or t_cta < 0
+    ):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "INVALID_TELEMETRY_TIMELINE",
+                "message": (
+                    "Valores de timeline fuera de rango: "
+                    f"total={t_total}, hook={t_hook}, "
+                    f"game={t_game}, cta={t_cta}"
+                )
+            }
+        }
+
+    # A1 — Integridad interna del timeline
+    timeline_sum = t_hook + t_game + t_cta
+
+    if t_total != timeline_sum:
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "TIMELINE_INTEGRITY_VIOLATION",
+                "message": (
+                    f"total_frames ({t_total}) != "
+                    f"hook ({t_hook}) + "
+                    f"game ({t_game}) + "
+                    f"cta ({t_cta})"
+                )
+            }
+        }
+
+    expected_duration = t_total / float(expected_fps)
+
+    # A2 — Conteo físico
+    if probe_data["nb_frames"] != t_total:
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "ARTIFACT_FRAME_COUNT_MISMATCH",
+                "message": (
+                    f"FFprobe nb_frames ({probe_data['nb_frames']}) != "
+                    f"Telemetry total_frames ({t_total})"
+                )
+            }
+        }
+
+    # A3 — Duración física
+    if not math.isclose(
+        probe_data["duration"],
+        expected_duration,
+        abs_tol=0.05
+    ):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "ARTIFACT_DURATION_MISMATCH",
+                "message": (
+                    f"FFprobe duration ({probe_data['duration']}) != "
+                    f"expected duration ({expected_duration}) "
+                    f"within tolerance 0.05s"
+                )
+            }
+        }
+
+    # A4 — Framerate físico
+    expected_rate = f"{int(expected_fps)}/1"
+
+    if probe_data["r_frame_rate"] != expected_rate:
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "ARTIFACT_FRAMERATE_MISMATCH",
+                "message": (
+                    f"FFprobe r_frame_rate ({probe_data['r_frame_rate']}) != "
+                    f"expected ({expected_rate})"
+                )
+            }
+        }
+
+    probe_data["valid"] = True
 
     # --- 4. CONSOLIDACIÓN DE MANIFIESTO UNITARIO (Contract 0.9.0) ---
     manifest_data = {
