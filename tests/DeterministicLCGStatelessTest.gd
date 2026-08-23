@@ -4,6 +4,7 @@ const RNG = preload("res://core/deterministic/DeterministicLCG.gd")
 const KEY_MECHANIC = preload("res://core/mechanics/key/KeyMechanic.gd")
 const PARKING_MECHANIC = preload("res://core/mechanics/parking/ParkingMechanic.gd")
 const DETECTOR = preload("res://core/validation/WinningFrameDetector.gd")
+const RESOLVER = preload("res://core/simulation/SimulationMetricsResolver.gd")
 const VALIDATOR = preload("res://core/validation/ChallengeValidator.gd")
 
 func _initialize() -> void:
@@ -71,6 +72,9 @@ func _run_regression_tests(failures: Array[String]) -> void:
 	var key_config: Dictionary = _load_json("res://challenges/CHALLENGE_001.json")
 	var key: ChallengeMechanic = KEY_MECHANIC.new()
 	var key_result: SimulationResult = key.simulate(420, 126048932, key_config)
+	
+	# C4-C1: Inyección de la capa de métricas derivada
+	RESOLVER.resolve_metrics(key_result)
 	DETECTOR.analyze_and_score(key_result)
 	var key_validation: ValidationResult = VALIDATOR.validate(key_result, 120, 420)
 
@@ -86,6 +90,9 @@ func _run_regression_tests(failures: Array[String]) -> void:
 	var parking_config: Dictionary = _load_json("res://challenges/CHALLENGE_002.json")
 	var parking: ChallengeMechanic = PARKING_MECHANIC.new()
 	var parking_result: SimulationResult = parking.simulate(420, 987654, parking_config)
+	
+	# C4-C1: Inyección de la capa de métricas derivada
+	RESOLVER.resolve_metrics(parking_result)
 	DETECTOR.analyze_and_score(parking_result)
 	var parking_validation: ValidationResult = VALIDATOR.validate(parking_result, 120, 420)
 

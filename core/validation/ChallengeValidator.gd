@@ -1,10 +1,8 @@
 class_name ChallengeValidator
 extends RefCounted
 
-const MIN_CLOSE_CALL_FRAMES: int = 12
 const MIN_CLOSE_CALLS: int = 0
 const MAX_CLOSE_CALLS: int = 20
-
 
 static func validate(
 	result: SimulationResult,
@@ -13,6 +11,11 @@ static func validate(
 ) -> ValidationResult:
 
 	var validation: ValidationResult = ValidationResult.new()
+
+	# C4-E: Defensa explícita: No se evalúan reglas sobre simulaciones fallidas
+	if result.error_state != "OK":
+		validation.errors.append("Cannot validate a failed simulation: %s" % result.error_state)
+		return validation
 
 	validation.minimum_distance = result.minimum_distance
 	validation.score = result.score
@@ -64,32 +67,14 @@ static func validate(
 			)
 
 	# ---------------------------------------------------------
-	# 3. CLOSE CALLS (Soporte nativo para Metadata / Hit o legacy)
+	# 3. CLOSE CALLS (Purificado: Solo consume, no calcula)
 	# ---------------------------------------------------------
+	
+	if not result.metadata.has("close_calls"):
+		validation.errors.append("Contract violation: close_calls metric is missing from SimulationResult.")
+		return validation
 
-	var close_calls_count: int = 0
-
-	if result.metadata.has("close_calls"):
-		close_calls_count = int(result.metadata["close_calls"])
-	else:
-		var close_threshold: float = result.tolerance_threshold * 3.5
-		var current_streak: int = 0
-
-		for i: int in range(result.frames.size()):
-			var distance: float = float(
-				result.frames[i].custom_data.get("success_distance", INF)
-			)
-
-			if distance < close_threshold:
-				current_streak += 1
-			else:
-				if current_streak >= MIN_CLOSE_CALL_FRAMES:
-					close_calls_count += 1
-				current_streak = 0
-
-		if current_streak >= MIN_CLOSE_CALL_FRAMES:
-			close_calls_count += 1
-
+	var close_calls_count: int = int(result.metadata["close_calls"])
 	validation.close_calls = close_calls_count
 
 	if close_calls_count < MIN_CLOSE_CALLS or close_calls_count > MAX_CLOSE_CALLS:
@@ -124,7 +109,6 @@ static func validate(
 	)
 
 	return validation
-
 
 static func is_finite(value: float) -> bool:
 	return not is_nan(value) and not is_inf(value)
