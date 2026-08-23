@@ -139,6 +139,7 @@ func simulate(total_frames: int, initial_seed: int, _config: Dictionary) -> Simu
 				close_calls += 1
 
 	var result: SimulationResult = SimulationResult.new()
+	result.is_self_scored = true
 	result.frames = frames
 	result.winning_frame = winning_frame
 	result.minimum_distance = min_dist
