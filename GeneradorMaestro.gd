@@ -148,10 +148,20 @@ func _ready() -> void:
 	target_sprite.centered = true
 	object_sprite.centered = true
 
-	# Posicionamiento inicial del Target estático (si aplica)
-	var parking_cfg: Dictionary = config_cache.get("difficulty", {}).get("parking", {})
-	var target_pos_arr: Array = parking_cfg.get("target_position", [850.0, 960.0])
-	var raw_target_pos = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
+	# --- POSICIONAMIENTO INICIAL DECLARATIVO DEL TARGET / DESTINO SECUNDARIO ---
+	var pres_cfg: Dictionary = config_cache.get("presentation", {})
+	var raw_target_pos: Vector2 = Vector2(850.0, 960.0) # Fallback por defecto
+
+	if secondary_binding_type == "static_position":
+		var static_pos_arr: Array = pres_cfg.get("static_target_position", [540.0, 960.0])
+		if static_pos_arr.size() >= 2:
+			raw_target_pos = Vector2(float(static_pos_arr[0]), float(static_pos_arr[1]))
+	else:
+		var parking_cfg: Dictionary = config_cache.get("difficulty", {}).get("parking", {})
+		if parking_cfg.has("target_position"):
+			var target_pos_arr: Array = parking_cfg.get("target_position", [850.0, 960.0])
+			raw_target_pos = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
+
 	target_sprite.position = CoordinateMapper.map_position(raw_target_pos, current_coord_space)
 	target_sprite.visible = true
 	target_sprite.modulate = Color.WHITE
@@ -389,7 +399,7 @@ func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
 	object_sprite.scale = frame_state.scale
 	object_sprite.modulate.a = frame_state.opacity
 
-	# 2. Entidad Secundaria guiada por el binding declarativo ("target_position" o "target_x")
+	# 2. Entidad Secundaria guiada por el binding declarativo
 	if secondary_binding_type == "target_position" and frame_state.custom_data.has("target_position"):
 		var t_pos = frame_state.custom_data["target_position"]
 		if t_pos is Vector2:
@@ -399,6 +409,9 @@ func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
 		var t_x = float(frame_state.custom_data["target_x"])
 		var mapped_x = CoordinateMapper.map_scalar_x(t_x, current_coord_space)
 		target_sprite.position = Vector2(mapped_x, object_sprite.position.y)
+		target_sprite.visible = true
+	elif secondary_binding_type == "static_position":
+		# La posición estática ya se fijó en _ready() de forma declarativa, se mantiene visible
 		target_sprite.visible = true
 
 func apply_reference_frame() -> void:
@@ -432,7 +445,20 @@ func _process(_delta: float) -> void:
 			main_label.text = ""
 			var game_idx: int = timeline.get_game_index()
 			if game_idx >= 0 and game_idx < verified_history.size():
-				apply_frame_snapshot(verified_history[game_idx])
+				var frame_state: FrameSnapshot = verified_history[game_idx]
+				if frame_state.custom_data.has("target_x"):
+					var target_x: float = float(frame_state.custom_data["target_x"])
+					var delta_x: float = frame_state.position.x - target_x
+					if game_idx % 60 == 0 or game_idx == reference_frame_index:
+						print(
+							"[C6_PILOT_TRACE] ",
+							"game_frame=", game_idx,
+							" object_x=", frame_state.position.x,
+							" target_x=", target_x,
+							" delta_x=", delta_x,
+							" velocity=", frame_state.custom_data.get("velocity", 0.0)
+						)
+				apply_frame_snapshot(frame_state)
 
 		"REVEAL":
 			object_sprite.visible = true

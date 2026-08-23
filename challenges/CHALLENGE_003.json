@@ -38,5 +38,10 @@
   "presentation": {
     "coordinate_space": "PILOT_0X100",
     "secondary_binding": "target_x"
+  },
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "target_path": "res://assets/c6/waypoint.svg",
+    "object_path": "res://assets/c6/pilot.svg"
   }
 }

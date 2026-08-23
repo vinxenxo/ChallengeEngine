@@ -36,5 +36,10 @@
   "content": {
     "hook": "¡SOLO EL 1% APARCA SIN ROZAR!",
     "cta": "¡INTÉNTALO TÚ TAMBIÉN!"
+  },
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "target_path": "res://assets/c6/parking_target.svg",
+    "object_path": "res://assets/c6/car.svg"
   }
 }
