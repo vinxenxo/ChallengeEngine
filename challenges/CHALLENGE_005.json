@@ -23,5 +23,14 @@
   "content": {
     "hook": "MATHEMATICAL HIT V1",
     "cta": "DOWNLOAD NOW"
+  },
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position"
+  },
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "target_path": "res://assets/c6/target.svg",
+    "object_path": "res://assets/c6/projectile.svg"
   }
 }
