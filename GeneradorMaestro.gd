@@ -276,8 +276,8 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
-		if mechanic_id.to_lower() not in ["hit_v1", "catch_v1", "find_v1"]:
-			WinningFrameDetector.analyze_and_score(test_result)
+		# C4-D3: Llamada universal al detector. El contrato (is_self_scored / error_state) decide.
+		WinningFrameDetector.analyze_and_score(test_result)
 
 		var validation: ValidationResult = ChallengeValidator.validate(
 			test_result,

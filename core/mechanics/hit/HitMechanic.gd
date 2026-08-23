@@ -185,6 +185,7 @@ func simulate(
 	var result = SimulationResult.new()
 
 	result.frames = frames
+	result.is_self_scored = true
 	result.winning_frame = winning_frame
 	result.minimum_distance = min_dist
 	result.score = score
