@@ -276,6 +276,18 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
+
+		# C4-C1: Capa de Métricas Derivadas
+		SimulationMetricsResolver.resolve_metrics(test_result)
+		if test_result.error_state != "OK":
+			return {
+				"valid": false,
+				"error_code": test_result.error_state,
+				"message": "Fallo en la resolución de métricas: %s" % test_result.error_state,
+				"errors": [test_result.error_state]
+			}
+
+		# C4-D3: Scoring
 		# C4-D3: Llamada universal al detector. El contrato (is_self_scored / error_state) decide.
 		WinningFrameDetector.analyze_and_score(test_result)
 
