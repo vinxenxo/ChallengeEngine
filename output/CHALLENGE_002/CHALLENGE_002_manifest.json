@@ -36,7 +36,9 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_002_raw.avi",
-    "final_video": "CHALLENGE_002.mp4"
+    "raw_video_sha256": "f33d3ebe697dd0c65afc85175f5a5c94260056b8586cbfb2e20fe4e575014b98",
+    "final_video": "CHALLENGE_002.mp4",
+    "final_video_sha256": "efeedd3d49f7ecf7f01b5ec97e827966ada3dfca83565d9df1a831424be433d6"
   },
   "validation": {
     "duration": 11.0,
