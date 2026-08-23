@@ -1,4 +1,4 @@
-# core/mechanics/ParkingMechanic.gd
+# core/mechanics/parking/ParkingMechanic.gd
 
 class_name ParkingMechanic
 extends ChallengeMechanic
