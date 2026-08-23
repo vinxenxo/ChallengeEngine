@@ -1,9 +1,5 @@
 extends Node2D
 
-const SIMULATION_SIZE := Vector2(1080.0, 1920.0)
-const PRESENTATION_SIZE := Vector2(540.0, 960.0)
-const PRESENTATION_SCALE := Vector2(0.5, 0.5)
-
 var timeline: VideoTimeline
 var verified_history: Array[FrameSnapshot] = []
 var final_winning_frame: int = -1
@@ -15,6 +11,10 @@ var final_result: SimulationResult
 var reference_frame_index: int = -1
 var reference_frame_mode: ReferenceFrameResolver.ReferenceMode = ReferenceFrameResolver.ReferenceMode.NONE
 
+# Configuración espacial declarativa de presentación (C6-A)
+var current_coord_space: CoordinateMapper.CoordinateSpace = CoordinateMapper.CoordinateSpace.CANVAS_1080X1920
+var secondary_binding_type: String = "target_position"
+
 # Infraestructura RNG V2.0 (Composition Root)
 var rng_registry: RNGStreamRegistry
 var structural_rng: StructuralRNG
@@ -25,12 +25,8 @@ var cosmetic_rng: CosmeticRNG
 @onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
 @onready var main_label: Label = $OptimizadorVertical/PantallaVideo/UI_Gancho/TextoTitulo
 
-func simulation_to_presentation(pos: Vector2) -> Vector2:
-	return pos * PRESENTATION_SCALE
-
 func _ready() -> void:
 	print("=== GENERADOR MAESTRO INICIADO ===")
-	print("[C6_COORDINATES] simulation_size=(1080,1920) presentation_size=(540,960)")
 
 	config_cache = parse_cli_arguments()
 	if config_cache.is_empty():
@@ -54,6 +50,9 @@ func _ready() -> void:
 
 	validate_only = has_user_flag("--validate-only")
 	timeline = VideoTimeline.new(config_cache.get("video", {}))
+
+	# --- CONFIGURACIÓN ESPACIAL DECLARATIVA DE PRESENTACIÓN ---
+	setup_presentation_bindings()
 
 	var rng_init: Dictionary = initialize_rng_infrastructure()
 	if not bool(rng_init.get("valid", false)):
@@ -90,6 +89,18 @@ func _ready() -> void:
 		"[C6_REFERENCE_FRAME] ",
 		"index=", reference_frame_index,
 		" mode=", str(reference_resolution.get("mode_name", "NONE")),
+		" reason=", str(reference_resolution.get("reason", ""))
+	)
+
+	# --- AUDITORÍA DE SWEEP DE REFERENCIA ---
+	var challenge_id: String = str(config_cache.get("challenge_id", config_cache.get("id", "UNKNOWN")))
+	var mechanic_id: String = str(config_cache.get("mechanic", ""))
+
+	print(
+		"[C6_SWEEP_AUDIT] id=", challenge_id,
+		" mechanic=", mechanic_id,
+		" mode=", str(reference_resolution.get("mode_name", "NONE")),
+		" frame_idx=", reference_frame_index,
 		" reason=", str(reference_resolution.get("reason", ""))
 	)
 
@@ -137,28 +148,15 @@ func _ready() -> void:
 	target_sprite.centered = true
 	object_sprite.centered = true
 
-	# Normalización de la posición del Target
+	# Posicionamiento inicial del Target estático (si aplica)
 	var parking_cfg: Dictionary = config_cache.get("difficulty", {}).get("parking", {})
 	var target_pos_arr: Array = parking_cfg.get("target_position", [850.0, 960.0])
 	var raw_target_pos = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
-	target_sprite.position = simulation_to_presentation(raw_target_pos)
+	target_sprite.position = CoordinateMapper.map_position(raw_target_pos, current_coord_space)
 	target_sprite.visible = true
 	target_sprite.modulate = Color.WHITE
 
-	print("[C6_TARGET] simulation=%s presentation=%s" % [raw_target_pos, target_sprite.position])
-
-	if reference_frame_index >= 0 and reference_frame_index < verified_history.size():
-		var ref_state: FrameSnapshot = verified_history[reference_frame_index]
-		var ref_presentation := simulation_to_presentation(ref_state.position)
-		print(
-			"[C6_REFERENCE_GEOMETRY] ",
-			"frame_idx=", reference_frame_index,
-			" simulation_position=", ref_state.position,
-			" presentation_position=", ref_presentation,
-			" target_presentation=", target_sprite.position,
-			" delta=", ref_presentation - target_sprite.position,
-			" rotation_deg=", rad_to_deg(ref_state.rotation)
-		)
+	print("[C6_TARGET] space=%d presentation_pos=%s" % [current_coord_space, target_sprite.position])
 
 	# Validación estricta de assets
 	if bg_sprite.texture == null:
@@ -168,7 +166,13 @@ func _ready() -> void:
 	if object_sprite.texture == null:
 		push_error("C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada.")
 
-	main_label.text = str(config_cache.get("content", {}).get("hook", "🚗 APARCA EL COCHE"))
+	main_label.text = str(config_cache.get("content", {}).get("hook", "¡RETO EN CURSO!"))
+
+func setup_presentation_bindings() -> void:
+	var pres_cfg: Dictionary = config_cache.get("presentation", {})
+	var space_str: String = str(pres_cfg.get("coordinate_space", "CANVAS_1080X1920"))
+	current_coord_space = CoordinateMapper.get_space_from_string(space_str)
+	secondary_binding_type = str(pres_cfg.get("secondary_binding", "target_position"))
 
 func initialize_rng_infrastructure() -> Dictionary:
 	rng_registry = RNGStreamRegistry.new()
@@ -379,15 +383,23 @@ func emit_engine_error(code: String, message: String, details: String) -> void:
 	print("[ERROR_JSON]" + JSON.stringify(error_payload))
 
 func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
-	object_sprite.position = simulation_to_presentation(frame_state.position)
+	# 1. Entidad Primaria mapeada mediante CoordinateMapper universal
+	object_sprite.position = CoordinateMapper.map_position(frame_state.position, current_coord_space)
 	object_sprite.rotation = frame_state.rotation
 	object_sprite.scale = frame_state.scale
 	object_sprite.modulate.a = frame_state.opacity
 
-	if frame_state.custom_data.has("target_position"):
+	# 2. Entidad Secundaria guiada por el binding declarativo ("target_position" o "target_x")
+	if secondary_binding_type == "target_position" and frame_state.custom_data.has("target_position"):
 		var t_pos = frame_state.custom_data["target_position"]
 		if t_pos is Vector2:
-			target_sprite.position = simulation_to_presentation(t_pos)
+			target_sprite.position = CoordinateMapper.map_position(t_pos, current_coord_space)
+			target_sprite.visible = true
+	elif secondary_binding_type == "target_x" and frame_state.custom_data.has("target_x"):
+		var t_x = float(frame_state.custom_data["target_x"])
+		var mapped_x = CoordinateMapper.map_scalar_x(t_x, current_coord_space)
+		target_sprite.position = Vector2(mapped_x, object_sprite.position.y)
+		target_sprite.visible = true
 
 func apply_reference_frame() -> void:
 	if reference_frame_index < 0:
@@ -404,14 +416,14 @@ func _process(_delta: float) -> void:
 		get_tree().quit(0)
 		return
 
-	# Forzar visibilidad permanente de la meta
+	# Forzar visibilidad permanente de la meta (si está en uso)
 	target_sprite.visible = true
 
 	match timeline.get_current_block():
 		"HOOK":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-			main_label.text = str(config_cache.get("content", {}).get("hook", "🚗 APARCA EL COCHE"))
+			main_label.text = str(config_cache.get("content", {}).get("hook", "¡RETO EN CURSO!"))
 			apply_reference_frame()
 
 		"GAME":
@@ -425,7 +437,7 @@ func _process(_delta: float) -> void:
 		"REVEAL":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-			main_label.text = "✅ ¡APARCADO!"
+			main_label.text = "✅ ¡COMPLETADO!"
 			apply_reference_frame()
 
 		"CTA":

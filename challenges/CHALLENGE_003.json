@@ -34,5 +34,9 @@
     "control_amplitude": 0.5,
     "hook": "PILOT V2.0",
     "cta": "RNG ISOLATION TEST"
+  },
+  "presentation": {
+    "coordinate_space": "PILOT_0X100",
+    "secondary_binding": "target_x"
   }
 }
