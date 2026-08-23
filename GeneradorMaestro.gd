@@ -1,10 +1,15 @@
 extends Node2D
 
+const SIMULATION_SIZE := Vector2(1080.0, 1920.0)
+const PRESENTATION_SIZE := Vector2(540.0, 960.0)
+const PRESENTATION_SCALE := Vector2(0.5, 0.5)
+
 var timeline: VideoTimeline
 var verified_history: Array[FrameSnapshot] = []
 var final_winning_frame: int = -1
 var config_cache: Dictionary = {}
 var validate_only: bool = false
+var final_result: SimulationResult
 
 # Infraestructura RNG V2.0 (Composition Root)
 var rng_registry: RNGStreamRegistry
@@ -16,8 +21,12 @@ var cosmetic_rng: CosmeticRNG
 @onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
 @onready var main_label: Label = $OptimizadorVertical/PantallaVideo/UI_Gancho/TextoTitulo
 
+func simulation_to_presentation(pos: Vector2) -> Vector2:
+	return pos * PRESENTATION_SCALE
+
 func _ready() -> void:
 	print("=== GENERADOR MAESTRO INICIADO ===")
+	print("[C6_COORDINATES] simulation_size=(1080,1920) presentation_size=(540,960)")
 
 	config_cache = parse_cli_arguments()
 	if config_cache.is_empty():
@@ -62,7 +71,7 @@ func _ready() -> void:
 		get_tree().quit(1)
 		return
 
-	var final_result: SimulationResult = validation_package["result"]
+	final_result = validation_package["result"]
 	var validation: ValidationResult = validation_package["validation"]
 
 	verified_history = final_result.frames
@@ -72,35 +81,23 @@ func _ready() -> void:
 	var fps_f: float = float(timeline.fps)
 
 	var telemetry: Dictionary = {
-		# Trazabilidad estricta de semillas
 		"initial_seed": int(final_result.metadata.get("initial_seed", 0)),
 		"final_seed": int(final_result.metadata.get("final_seed", 0)),
 		"seed_used": int(final_result.metadata.get("seed_used", 0)),
 		"attempts": int(final_result.metadata.get("attempts", 0)),
 		"rng_version": str(final_result.metadata.get("rng_version", "1.0")),
-
-		# Fotogramas y Tiempos Unificados (GAME vs Absoluto de Vídeo)
 		"winning_frame_game": winning_frame_game,
 		"winning_frame": final_winning_frame,
 		"winning_time_game": float(winning_frame_game) / fps_f,
 		"winning_time": float(final_winning_frame) / fps_f,
-
-		# Estructura Temporal Unificada (VideoTimeline)
 		"total_frames": timeline.total_frames,
 		"hook_frames": timeline.hook_frames,
 		"game_frames": timeline.game_frames,
+		"reveal_frames": timeline.reveal_frames,
 		"cta_frames": timeline.cta_frames,
-
-		# Métricas de Autovetting
 		"minimum_distance": validation.minimum_distance,
 		"score": validation.score,
 		"close_calls": validation.close_calls,
-
-		# Metadatos específicos de la trayectoria
-		"dodge_offset": final_result.metadata.get("dodge_offset", 0.0),
-		"save_offset": final_result.metadata.get("save_offset", 0.0),
-		"overshoot_dist": final_result.metadata.get("overshoot_dist", 0.0),
-
 		"winning_frame_in_valid_window": validation.winning_frame_in_valid_window,
 		"godot_version": Engine.get_version_info().string,
 		"validate_only": validate_only
@@ -112,17 +109,50 @@ func _ready() -> void:
 		get_tree().quit(0)
 		return
 
-	var parking_cfg: Dictionary = config_cache.get("difficulty", {}).get("parking", {})
-	var target_pos_arr: Array = parking_cfg.get("target_position", [540.0, 960.0])
-	target_sprite.position = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
-
+	# Configurar assets
 	var nodes_map: Dictionary = {
 		"background": bg_sprite,
 		"target": target_sprite,
 		"object": object_sprite
 	}
 	FamilyAssets.configure_presentation(config_cache, nodes_map)
-	main_label.text = str(config_cache.get("content", {}).get("hook", ""))
+
+	# --- CORRECCIÓN DE PIVOTE / CENTRADO ---
+	target_sprite.centered = true
+	object_sprite.centered = true
+
+	# Normalización de la posición del Target
+	var parking_cfg: Dictionary = config_cache.get("difficulty", {}).get("parking", {})
+	var target_pos_arr: Array = parking_cfg.get("target_position", [850.0, 960.0])
+	var raw_target_pos = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
+	target_sprite.position = simulation_to_presentation(raw_target_pos)
+	target_sprite.visible = true
+	target_sprite.modulate = Color.WHITE
+
+	print("[C6_TARGET] simulation=%s presentation=%s" % [raw_target_pos, target_sprite.position])
+
+	if winning_frame_game >= 0 and winning_frame_game < verified_history.size():
+		var win_state: FrameSnapshot = verified_history[winning_frame_game]
+		var winner_presentation := simulation_to_presentation(win_state.position)
+		print(
+			"[C6_WINNER_GEOMETRY] ",
+			"frame_game=", winning_frame_game,
+			" simulation_position=", win_state.position,
+			" presentation_position=", winner_presentation,
+			" target_presentation=", target_sprite.position,
+			" delta=", winner_presentation - target_sprite.position,
+			" rotation_deg=", rad_to_deg(win_state.rotation)
+		)
+
+	# Validación estricta de assets
+	if bg_sprite.texture == null:
+		push_error("C6_ASSET_MISSING: FondoEstatico no tiene textura asignada.")
+	if target_sprite.texture == null:
+		push_error("C6_ASSET_MISSING: MetaContenedor no tiene textura asignada.")
+	if object_sprite.texture == null:
+		push_error("C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada.")
+
+	main_label.text = str(config_cache.get("content", {}).get("hook", "🚗 APARCA EL COCHE"))
 
 func initialize_rng_infrastructure() -> Dictionary:
 	rng_registry = RNGStreamRegistry.new()
@@ -171,8 +201,8 @@ func run_validation_pipeline() -> Dictionary:
 	var rng_version: String = str(generation_config.get("rng_version", "1.0"))
 
 	var current_seed: int = initial_seed
-	var final_result: SimulationResult = null
-	var final_validation: ValidationResult = null
+	var sim_result: SimulationResult = null
+	var sim_validation: ValidationResult = null
 
 	var is_v2: bool = rng_version == "2.0"
 	var pilot_allowed_streams: Array[int] = [
@@ -239,9 +269,6 @@ func run_validation_pipeline() -> Dictionary:
 
 		mechanic.setup(config_cache)
 
-		# =================================================================
-		# FASE R2 / C3-T2: COMPOSITION ROOT ENFORCEMENT GUARDS
-		# =================================================================
 		if not mechanic._is_setup or mechanic._error_state != "OK":
 			current_seed = lcg_next_seed(current_seed)
 			continue
@@ -251,7 +278,6 @@ func run_validation_pipeline() -> Dictionary:
 			if not mechanic._is_prepared or mechanic._error_state != "OK":
 				current_seed = lcg_next_seed(current_seed)
 				continue
-		# =================================================================
 
 		var test_result: SimulationResult = mechanic.simulate(
 			timeline.game_frames,
@@ -276,8 +302,6 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
-
-		# C4-C1: Capa de Métricas Derivadas
 		SimulationMetricsResolver.resolve_metrics(test_result)
 		if test_result.error_state != "OK":
 			return {
@@ -287,8 +311,6 @@ func run_validation_pipeline() -> Dictionary:
 				"errors": [test_result.error_state]
 			}
 
-		# C4-D3: Scoring
-		# C4-D3: Llamada universal al detector. El contrato (is_self_scored / error_state) decide.
 		WinningFrameDetector.analyze_and_score(test_result)
 
 		var validation: ValidationResult = ChallengeValidator.validate(
@@ -298,13 +320,13 @@ func run_validation_pipeline() -> Dictionary:
 		)
 
 		if validation.is_valid:
-			final_result = test_result
-			final_validation = validation
+			sim_result = test_result
+			sim_validation = validation
 			break
 
 		current_seed = lcg_next_seed(current_seed)
 
-	if final_result == null or final_validation == null:
+	if sim_result == null or sim_validation == null:
 		return {
 			"valid": false,
 			"error_code": "NO_VALID_SIMULATION",
@@ -312,16 +334,16 @@ func run_validation_pipeline() -> Dictionary:
 			"errors": ["Exhausted %d seed attempts without finding a valid simulation." % attempts]
 		}
 
-	final_result.metadata["initial_seed"] = initial_seed
-	final_result.metadata["final_seed"] = current_seed
-	final_result.metadata["seed_used"] = current_seed
-	final_result.metadata["attempts"] = attempts
-	final_result.metadata["rng_version"] = rng_version
+	sim_result.metadata["initial_seed"] = initial_seed
+	sim_result.metadata["final_seed"] = current_seed
+	sim_result.metadata["seed_used"] = current_seed
+	sim_result.metadata["attempts"] = attempts
+	sim_result.metadata["rng_version"] = rng_version
 
 	return {
 		"valid": true,
-		"result": final_result,
-		"validation": final_validation,
+		"result": sim_result,
+		"validation": sim_validation,
 		"errors": []
 	}
 
@@ -340,6 +362,25 @@ func emit_engine_error(code: String, message: String, details: String) -> void:
 	}
 	print("[ERROR_JSON]" + JSON.stringify(error_payload))
 
+func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
+	object_sprite.position = simulation_to_presentation(frame_state.position)
+	object_sprite.rotation = frame_state.rotation
+	object_sprite.scale = frame_state.scale
+	object_sprite.modulate.a = frame_state.opacity
+
+	if frame_state.custom_data.has("target_position"):
+		var t_pos = frame_state.custom_data["target_position"]
+		if t_pos is Vector2:
+			target_sprite.position = simulation_to_presentation(t_pos)
+
+func apply_winning_frame() -> void:
+	if final_result == null:
+		return
+	# CORREGIDO: Usar .winning_frame en lugar de .winning_frame_game
+	var winning_idx: int = final_result.winning_frame
+	if winning_idx >= 0 and winning_idx < verified_history.size():
+		apply_frame_snapshot(verified_history[winning_idx])
+
 func _process(_delta: float) -> void:
 	if validate_only or timeline == null:
 		return
@@ -348,34 +389,35 @@ func _process(_delta: float) -> void:
 		get_tree().quit(0)
 		return
 
+	# Forzar visibilidad permanente de la meta
+	target_sprite.visible = true
+
 	match timeline.get_current_block():
 		"HOOK":
 			object_sprite.visible = true
-			object_sprite.position = Vector2(540.0, 960.0)
-			object_sprite.rotation = 0.0
-			object_sprite.modulate.a = 0.5
+			object_sprite.modulate.a = 1.0
+			main_label.text = str(config_cache.get("content", {}).get("hook", "🚗 APARCA EL COCHE"))
+			apply_winning_frame()
 
 		"GAME":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-
+			main_label.text = ""
 			var game_idx: int = timeline.get_game_index()
 			if game_idx >= 0 and game_idx < verified_history.size():
-				var frame_state: FrameSnapshot = verified_history[game_idx]
+				apply_frame_snapshot(verified_history[game_idx])
 
-				object_sprite.position = frame_state.position
-				object_sprite.rotation = frame_state.rotation
-				object_sprite.scale = frame_state.scale
-				object_sprite.modulate.a = frame_state.opacity
-
-				if frame_state.custom_data.has("target_position"):
-					var t_pos = frame_state.custom_data["target_position"]
-					if t_pos is Vector2:
-						target_sprite.position = t_pos
+		"REVEAL":
+			object_sprite.visible = true
+			object_sprite.modulate.a = 1.0
+			main_label.text = "✅ ¡APARCADO!"
+			apply_winning_frame()
 
 		"CTA":
-			object_sprite.visible = false
-			main_label.text = str(config_cache.get("content", {}).get("cta", ""))
+			object_sprite.visible = true
+			object_sprite.modulate.a = 1.0
+			main_label.text = str(config_cache.get("content", {}).get("cta", "¿Lo has clavado?"))
+			apply_winning_frame()
 
 	timeline.advance()
 

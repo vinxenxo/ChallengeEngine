@@ -17,7 +17,8 @@
     "fps": 60,
     "hook_duration": 2.0,
     "game_duration": 7.0,
-    "cta_duration": 2.0
+    "reveal_duration": 1.5,
+    "cta_duration": 1.5
   },
   "difficulty": {
     "level": 3,
@@ -41,6 +42,11 @@
   },
   "content": {
     "hook": "¡SOLO EL 1% APARCA SIN ROZAR!",
-    "cta": "¡INTÉNTALO TÚ TAMBIÉN!"
+    "cta": "¿Lo has clavado?"
+  },
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "target_path": "res://assets/c6/parking_target.svg",
+    "object_path": "res://assets/c6/car.svg"
   }
 }

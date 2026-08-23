@@ -4,6 +4,7 @@ extends RefCounted
 var fps: int = 60
 var hook_frames: int = 0
 var game_frames: int = 0
+var reveal_frames: int = 0
 var cta_frames: int = 0
 var total_frames: int = 0
 
@@ -16,8 +17,9 @@ func _init(video_cfg: Dictionary) -> void:
 
 	hook_frames = duration_to_frames(float(video_cfg.get("hook_duration", 2.0)))
 	game_frames = duration_to_frames(float(video_cfg.get("game_duration", 7.0)))
-	cta_frames = duration_to_frames(float(video_cfg.get("cta_duration", 2.0)))
-	total_frames = hook_frames + game_frames + cta_frames
+	reveal_frames = duration_to_frames(float(video_cfg.get("reveal_duration", 0.0))) # Fallback 0.0
+	cta_frames = duration_to_frames(float(video_cfg.get("cta_duration", 2.0))) # Fallback original restaurado
+	total_frames = hook_frames + game_frames + reveal_frames + cta_frames
 
 func duration_to_frames(duration_seconds: float) -> int:
 	return maxi(0, int(round(duration_seconds * float(fps))))
@@ -36,6 +38,8 @@ func get_current_block() -> String:
 		return "HOOK"
 	if _current_frame < hook_frames + game_frames:
 		return "GAME"
+	if _current_frame < hook_frames + game_frames + reveal_frames:
+		return "REVEAL"
 	return "CTA"
 
 func get_game_index() -> int:
