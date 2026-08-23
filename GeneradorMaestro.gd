@@ -11,6 +11,10 @@ var config_cache: Dictionary = {}
 var validate_only: bool = false
 var final_result: SimulationResult
 
+# Estado de resolución de referencia universal (C6-A)
+var reference_frame_index: int = -1
+var reference_frame_mode: ReferenceFrameResolver.ReferenceMode = ReferenceFrameResolver.ReferenceMode.NONE
+
 # Infraestructura RNG V2.0 (Composition Root)
 var rng_registry: RNGStreamRegistry
 var structural_rng: StructuralRNG
@@ -77,6 +81,18 @@ func _ready() -> void:
 	verified_history = final_result.frames
 	final_winning_frame = validation.absolute_winning_frame
 
+	# --- RESOLUCIÓN UNIVERSAL DEL FRAME DE REFERENCIA (C6-A) ---
+	var reference_resolution: Dictionary = ReferenceFrameResolver.resolve(final_result)
+	reference_frame_index = int(reference_resolution.get("frame_index", -1))
+	reference_frame_mode = reference_resolution.get("mode", ReferenceFrameResolver.ReferenceMode.NONE)
+
+	print(
+		"[C6_REFERENCE_FRAME] ",
+		"index=", reference_frame_index,
+		" mode=", str(reference_resolution.get("mode_name", "NONE")),
+		" reason=", str(reference_resolution.get("reason", ""))
+	)
+
 	var winning_frame_game: int = final_result.winning_frame
 	var fps_f: float = float(timeline.fps)
 
@@ -131,17 +147,17 @@ func _ready() -> void:
 
 	print("[C6_TARGET] simulation=%s presentation=%s" % [raw_target_pos, target_sprite.position])
 
-	if winning_frame_game >= 0 and winning_frame_game < verified_history.size():
-		var win_state: FrameSnapshot = verified_history[winning_frame_game]
-		var winner_presentation := simulation_to_presentation(win_state.position)
+	if reference_frame_index >= 0 and reference_frame_index < verified_history.size():
+		var ref_state: FrameSnapshot = verified_history[reference_frame_index]
+		var ref_presentation := simulation_to_presentation(ref_state.position)
 		print(
-			"[C6_WINNER_GEOMETRY] ",
-			"frame_game=", winning_frame_game,
-			" simulation_position=", win_state.position,
-			" presentation_position=", winner_presentation,
+			"[C6_REFERENCE_GEOMETRY] ",
+			"frame_idx=", reference_frame_index,
+			" simulation_position=", ref_state.position,
+			" presentation_position=", ref_presentation,
 			" target_presentation=", target_sprite.position,
-			" delta=", winner_presentation - target_sprite.position,
-			" rotation_deg=", rad_to_deg(win_state.rotation)
+			" delta=", ref_presentation - target_sprite.position,
+			" rotation_deg=", rad_to_deg(ref_state.rotation)
 		)
 
 	# Validación estricta de assets
@@ -373,13 +389,12 @@ func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
 		if t_pos is Vector2:
 			target_sprite.position = simulation_to_presentation(t_pos)
 
-func apply_winning_frame() -> void:
-	if final_result == null:
+func apply_reference_frame() -> void:
+	if reference_frame_index < 0:
 		return
-	# CORREGIDO: Usar .winning_frame en lugar de .winning_frame_game
-	var winning_idx: int = final_result.winning_frame
-	if winning_idx >= 0 and winning_idx < verified_history.size():
-		apply_frame_snapshot(verified_history[winning_idx])
+	if reference_frame_index >= verified_history.size():
+		return
+	apply_frame_snapshot(verified_history[reference_frame_index])
 
 func _process(_delta: float) -> void:
 	if validate_only or timeline == null:
@@ -397,7 +412,7 @@ func _process(_delta: float) -> void:
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 			main_label.text = str(config_cache.get("content", {}).get("hook", "🚗 APARCA EL COCHE"))
-			apply_winning_frame()
+			apply_reference_frame()
 
 		"GAME":
 			object_sprite.visible = true
@@ -411,13 +426,13 @@ func _process(_delta: float) -> void:
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 			main_label.text = "✅ ¡APARCADO!"
-			apply_winning_frame()
+			apply_reference_frame()
 
 		"CTA":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 			main_label.text = str(config_cache.get("content", {}).get("cta", "¿Lo has clavado?"))
-			apply_winning_frame()
+			apply_reference_frame()
 
 	timeline.advance()
 
