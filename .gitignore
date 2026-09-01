@@ -26,4 +26,8 @@ mono_crash.*.json
 .continue/
 
 # output videos
-/output/
+output/*
+
+# python
+__pycache__/
+*.pyc
