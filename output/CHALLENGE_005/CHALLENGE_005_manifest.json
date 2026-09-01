@@ -30,11 +30,11 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_005_raw.avi",
-    "raw_video_sha256": "140d75a7d45c57dc28e69136b624638526827d0a184913c94cd2713422d67b03",
+    "raw_video_sha256": "c6e5e82eef77a7482f08d7f48554024fa19528106fdfa503e962f889f972f5da",
     "final_video": "CHALLENGE_005.mp4",
-    "final_video_sha256": "1764951d1273ff2b6e0afe13702c887f9056b678bdf12812ab1435085843a62a",
+    "final_video_sha256": "62c3d052a275f45628f802d47ea2d3fcd0a56abbf25651876d81b0c33ec1e88e",
     "preview_gif": "CHALLENGE_005.gif",
-    "preview_gif_sha256": "fde6b99f54f591ef207ef532864563be4ca31d6b96e0ae4dce83b1a3509fa0fe"
+    "preview_gif_sha256": "2a2a3f21aef00e4e32881cfc50cb0fe6e3df6a59f039b31c4ded3c08ac28dd3d"
   },
   "validation": {
     "duration": 11.0,
