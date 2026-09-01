@@ -29,9 +29,9 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_006_raw.avi",
-    "raw_video_sha256": "0af06c358dc40b729d3839b30348d68c697f203058c769bf101aed2a5b0dd759",
+    "raw_video_sha256": "9c0e1edaf95fe06da19c5c7bde589f9438616b8906899a2d08baf7ffca2ed0da",
     "final_video": "CHALLENGE_006.mp4",
-    "final_video_sha256": "dce8ff2843f92902787e2228553596973b0808ea683900f9687e29b07b3c62af"
+    "final_video_sha256": "6d8c0c1676e6c6aad7e28be23f8e84c39032a880ac5aae8bc67c8e7e0884b487"
   },
   "validation": {
     "duration": 11.0,
