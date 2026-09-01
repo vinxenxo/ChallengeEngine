@@ -185,6 +185,69 @@ func _make_stylebox(bg: Color, border: Color, border_width: int, radius: int) ->
 	box.set_corner_radius_all(radius)
 	return box
 
+
+func _update_countdown(
+	content: Dictionary,
+	state: String
+) -> void:
+	if countdown_label == null:
+		return
+
+	# Estado por defecto: contador apagado.
+	countdown_label.visible = false
+	countdown_label.text = ""
+
+	# La cuenta atrás SOLO existe al principio de GAME.
+	if state != "GAME":
+		return
+
+	var fps: int = max(
+		1,
+		int(
+			content.get(
+				"ui_fps",
+				60
+			)
+		)
+	)
+
+	var state_frame: int = max(
+		0,
+		int(
+			content.get(
+				"ui_state_frame",
+				0
+			)
+		)
+	)
+
+	# Ventana fija de 3 segundos al inicio del GAME.
+	var countdown_duration_frames: int = fps * 3
+
+	if state_frame >= countdown_duration_frames:
+		return
+
+	var elapsed_seconds: int = (
+		state_frame / fps
+	)
+
+	var countdown_value: int = (
+		3 - elapsed_seconds
+	)
+
+	countdown_value = clampi(
+		countdown_value,
+		1,
+		3
+	)
+
+	countdown_label.text = str(
+		countdown_value
+	)
+
+	countdown_label.visible = true
+
+
 func _set_phase_hidden() -> void:
 	if hook_label != null:
 		hook_label.visible = false
@@ -209,52 +272,62 @@ func _set_difficulty(content: Dictionary) -> void:
 		difficulty_label.text = ""
 		difficulty_badge.visible = false
 
-func set_state(state: String, content: Dictionary) -> void:
+func set_state(
+	state: String,
+	content: Dictionary
+) -> void:
 	if container == null:
 		return
 
+	# Estado visual base: todas las capas de fase ocultas.
 	_set_phase_hidden()
+
+	# El nivel de dificultad permanece independiente de la fase.
 	_set_difficulty(content)
 
-	var fps: int = max(1, int(content.get("ui_fps", 60)))
-	var state_frame: int = max(0, int(content.get("ui_state_frame", 0)))
-	var winning_frame_game: int = int(content.get("winning_frame_game", -1))
-	var frames_remaining: int = winning_frame_game - state_frame
-	var countdown_window: int = fps * 3
+	# El countdown se gobierna EXCLUSIVAMENTE aquí.
+	_update_countdown(
+		content,
+		state
+	)
 
 	match state:
 		"HOOK":
 			if hook_label != null:
-				hook_label.text = str(content.get("hook", ""))
+				hook_label.text = str(
+					content.get(
+						"hook",
+						""
+					)
+				)
 				hook_label.visible = true
 
 		"GAME":
-			# Cuenta atrás SOLO antes del winning frame, durante sus 3 segundos previos.
-			# Al alcanzar el winning frame desaparece por completo.
-			if (
-				countdown_label != null
-				and winning_frame_game >= 0
-				and frames_remaining > 0
-				and frames_remaining <= countdown_window
-			):
-				var remaining_seconds := clampi(
-					int(ceil(float(frames_remaining) / float(fps))),
-					1,
-					3
-				)
-				countdown_label.text = str(remaining_seconds)
-				countdown_label.visible = true
+			# No hacemos nada más.
+			# El countdown ya ha sido resuelto por _update_countdown().
+			pass
 
 		"REVEAL":
 			if reveal_label != null:
-				reveal_label.text = "🎯 ¡LO HAS CLAVADO!"
+				reveal_label.text = (
+					"🎯 ¡LO HAS CLAVADO!"
+				)
 				reveal_label.visible = true
 
 		"CTA":
 			if cta_question_label != null:
-				cta_question_label.text = str(content.get("cta", ""))
+				cta_question_label.text = str(
+					content.get(
+						"cta",
+						""
+					)
+				)
 				cta_question_label.visible = true
+
 			if cta_button_panel != null:
 				cta_button_panel.visible = true
+
 			if cta_button_label != null:
-				cta_button_label.text = "JUGAR OTRA VEZ"
+				cta_button_label.text = (
+					"JUGAR OTRA VEZ"
+				)
