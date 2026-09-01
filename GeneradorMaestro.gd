@@ -282,6 +282,8 @@ func run_validation_pipeline() -> Dictionary:
 				context_result = create_mechanic_rng_context(current_seed, "FindMechanic", find_v1_allowed_streams)
 			elif mechanic_id.to_lower() == "choose_v1":
 				context_result = create_mechanic_rng_context(current_seed, "ChooseMechanic", [])
+			elif mechanic_id.to_lower() == "count_v1":
+				context_result = create_mechanic_rng_context(current_seed, "CountMechanic", [])
 			else:
 				return {
 					"valid": false,
@@ -317,7 +319,7 @@ func run_validation_pipeline() -> Dictionary:
 			config_cache
 		)
 
-		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1"] and context_result.context.error_state != "OK":
+		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1","count_v1"] and context_result.context.error_state != "OK":
 			return {
 				"valid": false,
 				"error_code": "MECHANIC_SIMULATION_ERROR",
