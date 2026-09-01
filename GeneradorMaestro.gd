@@ -15,6 +15,15 @@ var reference_frame_mode: ReferenceFrameResolver.ReferenceMode = ReferenceFrameR
 var current_coord_space: CoordinateMapper.CoordinateSpace = CoordinateMapper.CoordinateSpace.CANVAS_1080X1920
 var secondary_binding_type: String = "target_position"
 
+# Calibración Visual Declarativa (C6-D)
+var object_scale: float = 1.0
+var object_offset: Vector2 = Vector2.ZERO
+var target_scale: float = 1.0
+var target_offset: Vector2 = Vector2.ZERO
+
+# Capa de Presentación UI unificada (C6-D.1)
+var presentation_ui: PresentationUI
+
 # Infraestructura RNG V2.0 (Composition Root)
 var rng_registry: RNGStreamRegistry
 var structural_rng: StructuralRNG
@@ -24,6 +33,7 @@ var cosmetic_rng: CosmeticRNG
 @onready var target_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/MetaContenedor
 @onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
 @onready var main_label: Label = $OptimizadorVertical/PantallaVideo/UI_Gancho/TextoTitulo
+@onready var presentation_ui_root: Control = get_node_or_null("OptimizadorVertical/PantallaVideo/PresentationUILayer")
 
 func _ready() -> void:
 	print("=== GENERADOR MAESTRO INICIADO ===")
@@ -51,8 +61,53 @@ func _ready() -> void:
 	validate_only = has_user_flag("--validate-only")
 	timeline = VideoTimeline.new(config_cache.get("video", {}))
 
-	# --- CONFIGURACIÓN ESPACIAL DECLARATIVA DE PRESENTACIÓN ---
+	# --- CONFIGURACIÓN ESPACIAL Y CALIBRACIÓN VISUAL ---
 	setup_presentation_bindings()
+	setup_visual_calibration()
+
+	# Inicializar Design System UI de forma segura o autoconstruida (C6-D.1)
+	if presentation_ui_root == null:
+		var presentation_parent: Node = get_node_or_null("OptimizadorVertical/PantallaVideo")
+		if presentation_parent == null:
+			emit_engine_error(
+				"C6_UI_PARENT_MISSING",
+				"No existe el nodo PantallaVideo parent.",
+				"OptimizadorVertical/PantallaVideo"
+			)
+			get_tree().quit(1)
+			return
+
+		presentation_ui_root = Control.new()
+		presentation_ui_root.name = "PresentationUILayer"
+		presentation_parent.add_child(presentation_ui_root)
+		presentation_ui_root.position = Vector2.ZERO
+		presentation_ui_root.size = Vector2(
+			PresentationTheme.VIEWPORT_WIDTH,
+			PresentationTheme.VIEWPORT_HEIGHT
+		)
+		print("[C6_UI] PresentationUILayer creado dinámicamente.")
+
+	var pres_cfg: Dictionary = config_cache.get("presentation", {})
+	var ui_cfg: Dictionary = pres_cfg.get("ui", {})
+	var ui_theme_name: String = str(ui_cfg.get("theme", "default_c6"))
+
+	presentation_ui = PresentationUI.new(
+		presentation_ui_root,
+		ui_theme_name
+	)
+
+	print(
+		"[C6_UI] root=",
+		presentation_ui_root,
+		" size=",
+		presentation_ui_root.size if presentation_ui_root != null else Vector2(-1.0, -1.0),
+		" position=",
+		presentation_ui_root.position if presentation_ui_root != null else Vector2(-1.0, -1.0)
+	)
+
+	# Desactivar el Label antiguo de test; la UI oficial pasa a PresentationUI
+	if main_label:
+		main_label.visible = false
 
 	var rng_init: Dictionary = initialize_rng_infrastructure()
 	if not bool(rng_init.get("valid", false)):
@@ -149,7 +204,6 @@ func _ready() -> void:
 	object_sprite.centered = true
 
 	# --- POSICIONAMIENTO INICIAL DECLARATIVO DEL TARGET / DESTINO SECUNDARIO ---
-	var pres_cfg: Dictionary = config_cache.get("presentation", {})
 	var raw_target_pos: Vector2 = Vector2(850.0, 960.0) # Fallback por defecto
 
 	if secondary_binding_type == "static_position":
@@ -162,7 +216,8 @@ func _ready() -> void:
 			var target_pos_arr: Array = parking_cfg.get("target_position", [850.0, 960.0])
 			raw_target_pos = Vector2(float(target_pos_arr[0]), float(target_pos_arr[1]))
 
-	target_sprite.position = CoordinateMapper.map_position(raw_target_pos, current_coord_space)
+	target_sprite.position = CoordinateMapper.map_position(raw_target_pos, current_coord_space) + target_offset
+	target_sprite.scale = Vector2.ONE * target_scale
 	target_sprite.visible = true
 	target_sprite.modulate = Color.WHITE
 
@@ -176,13 +231,25 @@ func _ready() -> void:
 	if object_sprite.texture == null:
 		push_error("C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada.")
 
-	main_label.text = str(config_cache.get("content", {}).get("hook", "¡RETO EN CURSO!"))
-
 func setup_presentation_bindings() -> void:
 	var pres_cfg: Dictionary = config_cache.get("presentation", {})
 	var space_str: String = str(pres_cfg.get("coordinate_space", "CANVAS_1080X1920"))
 	current_coord_space = CoordinateMapper.get_space_from_string(space_str)
 	secondary_binding_type = str(pres_cfg.get("secondary_binding", "target_position"))
+
+func setup_visual_calibration() -> void:
+	var pres_cfg: Dictionary = config_cache.get("presentation", {})
+	var visual_cfg: Dictionary = pres_cfg.get("visual", {})
+	
+	object_scale = float(visual_cfg.get("object_scale", 1.0))
+	var obj_off = visual_cfg.get("object_offset", [0.0, 0.0])
+	if obj_off is Array and obj_off.size() >= 2:
+		object_offset = Vector2(float(obj_off[0]), float(obj_off[1]))
+		
+	target_scale = float(visual_cfg.get("target_scale", 1.0))
+	var tgt_off = visual_cfg.get("target_offset", [0.0, 0.0])
+	if tgt_off is Array and tgt_off.size() >= 2:
+		target_offset = Vector2(float(tgt_off[0]), float(tgt_off[1]))
 
 func initialize_rng_infrastructure() -> Dictionary:
 	rng_registry = RNGStreamRegistry.new()
@@ -319,7 +386,7 @@ func run_validation_pipeline() -> Dictionary:
 			config_cache
 		)
 
-		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1","count_v1"] and context_result.context.error_state != "OK":
+		if is_v2 and mechanic_id.to_lower() in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1", "count_v1"] and context_result.context.error_state != "OK":
 			return {
 				"valid": false,
 				"error_code": "MECHANIC_SIMULATION_ERROR",
@@ -397,25 +464,27 @@ func emit_engine_error(code: String, message: String, details: String) -> void:
 	print("[ERROR_JSON]" + JSON.stringify(error_payload))
 
 func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
-	# 1. Entidad Primaria mapeada mediante CoordinateMapper universal
-	object_sprite.position = CoordinateMapper.map_position(frame_state.position, current_coord_space)
+	# 1. Entidad Primaria mapeada mediante CoordinateMapper + Calibración C6-D
+	object_sprite.position = CoordinateMapper.map_position(frame_state.position, current_coord_space) + object_offset
 	object_sprite.rotation = frame_state.rotation
-	object_sprite.scale = frame_state.scale
+	object_sprite.scale = frame_state.scale * object_scale
 	object_sprite.modulate.a = frame_state.opacity
 
-	# 2. Entidad Secundaria guiada por el binding declarativo
+	# 2. Entidad Secundaria guiada por el binding declarativo + Calibración C6-D
 	if secondary_binding_type == "target_position" and frame_state.custom_data.has("target_position"):
 		var t_pos = frame_state.custom_data["target_position"]
 		if t_pos is Vector2:
-			target_sprite.position = CoordinateMapper.map_position(t_pos, current_coord_space)
+			target_sprite.position = CoordinateMapper.map_position(t_pos, current_coord_space) + target_offset
+			target_sprite.scale = Vector2.ONE * target_scale
 			target_sprite.visible = true
 	elif secondary_binding_type == "target_x" and frame_state.custom_data.has("target_x"):
 		var t_x = float(frame_state.custom_data["target_x"])
 		var mapped_x = CoordinateMapper.map_scalar_x(t_x, current_coord_space)
-		target_sprite.position = Vector2(mapped_x, object_sprite.position.y)
+		target_sprite.position = Vector2(mapped_x, object_sprite.position.y) + target_offset
+		target_sprite.scale = Vector2.ONE * target_scale
 		target_sprite.visible = true
 	elif secondary_binding_type == "static_position":
-		# La posición estática ya se fijó en _ready() de forma declarativa, se mantiene visible
+		target_sprite.scale = Vector2.ONE * target_scale
 		target_sprite.visible = true
 
 func apply_reference_frame() -> void:
@@ -440,19 +509,39 @@ func _process(_delta: float) -> void:
 		"HOOK":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-			main_label.text = str(config_cache.get("content", {}).get("hook", "¡RETO EN CURSO!"))
+
+			if presentation_ui != null:
+				presentation_ui.set_state(
+					"HOOK",
+					config_cache.get("content", {})
+				)
+
 			apply_reference_frame()
 
 		"GAME":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-			main_label.text = ""
+
+			if presentation_ui != null:
+				presentation_ui.set_state(
+					"GAME",
+					config_cache.get("content", {})
+				)
+
 			var game_idx: int = timeline.get_game_index()
+
 			if game_idx >= 0 and game_idx < verified_history.size():
 				var frame_state: FrameSnapshot = verified_history[game_idx]
+
 				if frame_state.custom_data.has("target_x"):
-					var target_x: float = float(frame_state.custom_data["target_x"])
-					var delta_x: float = frame_state.position.x - target_x
+					var target_x: float = float(
+						frame_state.custom_data["target_x"]
+					)
+
+					var delta_x: float = (
+						frame_state.position.x - target_x
+					)
+
 					if game_idx % 60 == 0 or game_idx == reference_frame_index:
 						print(
 							"[C6_PILOT_TRACE] ",
@@ -460,20 +549,34 @@ func _process(_delta: float) -> void:
 							" object_x=", frame_state.position.x,
 							" target_x=", target_x,
 							" delta_x=", delta_x,
-							" velocity=", frame_state.custom_data.get("velocity", 0.0)
+							" velocity=",
+							frame_state.custom_data.get("velocity", 0.0)
 						)
+
 				apply_frame_snapshot(frame_state)
 
 		"REVEAL":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-			main_label.text = "✅ ¡COMPLETADO!"
+
+			if presentation_ui != null:
+				presentation_ui.set_state(
+					"REVEAL",
+					config_cache.get("content", {})
+				)
+
 			apply_reference_frame()
 
 		"CTA":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
-			main_label.text = str(config_cache.get("content", {}).get("cta", "¿Lo has clavado?"))
+
+			if presentation_ui != null:
+				presentation_ui.set_state(
+					"CTA",
+					config_cache.get("content", {})
+				)
+
 			apply_reference_frame()
 
 	timeline.advance()
