@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "factory_version": "0.9.0",
+  "factory_version": "0.10.0",
   "challenge_id": "CHALLENGE_003",
   "declarative_metadata": {
     "schema_version": "1.0",
@@ -34,9 +34,11 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_003_raw.avi",
-    "raw_video_sha256": "aaf2a56634df2e17153ac0f0147676565f7263702f7d5b71b6948d957a785dcd",
+    "raw_video_sha256": "ec0cf69e44063d760567c74c1e01849bddd13d53a5fc8c14eba14a3ee4600308",
     "final_video": "CHALLENGE_003.mp4",
-    "final_video_sha256": "61ec015a00b4bf7a673c34fc92c26ef1027792ab0dab27dcbf3d48c8d2454381"
+    "final_video_sha256": "bd8cbf31ba0ce4a5eb12efb28b35ab459cfe36d310d8096549b94302583a4c00",
+    "preview_gif": "CHALLENGE_003.gif",
+    "preview_gif_sha256": "4dc239b98cbad8dd3f68bf20527951fe48a72e5a968689a9f440b28190b47da7"
   },
   "validation": {
     "duration": 11.0,
@@ -44,5 +46,18 @@
     "r_frame_rate": "60/1",
     "valid": true
   },
-  "status": "PASS"
+  "status": "PASS",
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 330,
+      "duration": 11.0
+    }
+  }
 }
