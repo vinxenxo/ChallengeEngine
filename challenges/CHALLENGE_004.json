@@ -17,21 +17,8 @@
     "fps": 60,
     "hook_duration": 2.0,
     "game_duration": 7.0,
-    "reveal_duration": 1.5,
-    "cta_duration": 1.5
-  },
-  "presentation": {
-    "coordinate_space": "CANVAS_1080X1920",
-    "secondary_binding": "target_position",
-    "visual": {
-      "object_scale": 0.85,
-      "object_offset": [0.0, 0.0],
-      "target_scale": 0.85,
-      "target_offset": [0.0, 0.0]
-    },
-    "ui": {
-      "theme": "default_c6"
-    }
+    "reveal_duration": 3.0,
+    "cta_duration": 2.0
   },
   "difficulty": {
     "level": 3,
@@ -56,6 +43,25 @@
   "content": {
     "hook": "¡SOLO EL 1% APARCA SIN ROZAR!",
     "cta": "¿Lo has clavado?"
+  },
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position",
+    "visual": {
+      "object_scale": 0.85,
+      "object_offset": [
+        0.0,
+        0.0
+      ],
+      "target_scale": 0.85,
+      "target_offset": [
+        0.0,
+        0.0
+      ]
+    },
+    "ui": {
+      "theme": "default_c6"
+    }
   },
   "assets": {
     "background_path": "res://assets/c6/garage_background.svg",
