@@ -26,6 +26,9 @@ static func create_mechanic(mechanic_id: String) -> ChallengeMechanic:
 
 		"choose_v1":
 			return ChooseMechanic.new()
+		
+		"count_v1":
+			return CountMechanic.new()
 
 		_:
 			return null

@@ -1,0 +1,37 @@
+{
+  "challenge_id": "CHALLENGE_009",
+  "mechanic": "count_v1",
+  "generation": {
+    "seed": 20260901,
+    "rng_version": "2.0"
+  },
+  "video": {
+    "fps": 60,
+    "total_duration": 11.0,
+    "hook_duration": 2.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 2.0
+  },
+  "difficulty": {
+    "count": {
+      "min_value": 3,
+      "max_value": 10,
+      "start_pos": [180.0, 850.0],
+      "step_x": 100.0
+    }
+  },
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "static_position"
+  },
+  "content": {
+    "hook": "¿CUÁNTOS HAY?",
+    "cta": "¿Has acertado?"
+  },
+  "assets": {
+    "background_path": "res://assets/c6/count_background.svg",
+    "target_path": "res://assets/c6/transparent.svg",
+    "object_path": "res://assets/c6/cursor.svg"
+  }
+}
