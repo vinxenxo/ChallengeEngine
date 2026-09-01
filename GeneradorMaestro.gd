@@ -644,8 +644,7 @@ func run_validation_pipeline() -> Dictionary:
 			"message":
 				"La mecánica requerida '%s' no está registrada en MechanicRegistry." % mechanic_id,
 			"errors": [
-				("Unregistered mechanic_id: %s"
-				% mechanic_id)
+				("Unregistered mechanic_id: %s" % mechanic_id)
 			]
 		}
 
@@ -778,8 +777,7 @@ func run_validation_pipeline() -> Dictionary:
 						"message":
 							"No existe contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
 						"errors": [
-							("Missing V2.0 mechanic RNG contract: "
-							+ mechanic_id)
+							("Missing V2.0 mechanic RNG contract: " + mechanic_id)
 						]
 					}
 
@@ -959,15 +957,19 @@ func run_validation_pipeline() -> Dictionary:
 	sim_result.metadata["initial_seed"] = (
 		initial_seed
 	)
+
 	sim_result.metadata["final_seed"] = (
 		current_seed
 	)
+
 	sim_result.metadata["seed_used"] = (
 		current_seed
 	)
+
 	sim_result.metadata["attempts"] = (
 		attempts
 	)
+
 	sim_result.metadata["rng_version"] = (
 		rng_version
 	)
@@ -1178,6 +1180,7 @@ func build_ui_content(
 	)
 	ui_content["ui_fps"] = timeline.fps
 	ui_content["winning_frame"] = final_winning_frame
+	ui_content["winning_frame_game"] = final_result.winning_frame if final_result != null else -1
 	ui_content["reference_frame"] = reference_frame_index
 
 	return ui_content
