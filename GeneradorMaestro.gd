@@ -32,7 +32,6 @@ var cosmetic_rng: CosmeticRNG
 @onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/FondoEstatico
 @onready var target_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/MetaContenedor
 @onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
-@onready var main_label: Label = $OptimizadorVertical/PantallaVideo/UI_Gancho/TextoTitulo
 @onready var presentation_ui_root: Control = get_node_or_null("OptimizadorVertical/PantallaVideo/PresentationUILayer")
 
 func _ready() -> void:
@@ -65,7 +64,7 @@ func _ready() -> void:
 	setup_presentation_bindings()
 	setup_visual_calibration()
 
-	# Inicializar Design System UI de forma segura o autoconstruida (C6-D.1)
+	# Inicialización segura o autoconstruida del Design System UI (C6-D.1)
 	if presentation_ui_root == null:
 		var presentation_parent: Node = get_node_or_null("OptimizadorVertical/PantallaVideo")
 		if presentation_parent == null:
@@ -104,10 +103,6 @@ func _ready() -> void:
 		" position=",
 		presentation_ui_root.position if presentation_ui_root != null else Vector2(-1.0, -1.0)
 	)
-
-	# Desactivar el Label antiguo de test; la UI oficial pasa a PresentationUI
-	if main_label:
-		main_label.visible = false
 
 	var rng_init: Dictionary = initialize_rng_infrastructure()
 	if not bool(rng_init.get("valid", false)):
@@ -464,13 +459,11 @@ func emit_engine_error(code: String, message: String, details: String) -> void:
 	print("[ERROR_JSON]" + JSON.stringify(error_payload))
 
 func apply_frame_snapshot(frame_state: FrameSnapshot) -> void:
-	# 1. Entidad Primaria mapeada mediante CoordinateMapper + Calibración C6-D
 	object_sprite.position = CoordinateMapper.map_position(frame_state.position, current_coord_space) + object_offset
 	object_sprite.rotation = frame_state.rotation
 	object_sprite.scale = frame_state.scale * object_scale
 	object_sprite.modulate.a = frame_state.opacity
 
-	# 2. Entidad Secundaria guiada por el binding declarativo + Calibración C6-D
 	if secondary_binding_type == "target_position" and frame_state.custom_data.has("target_position"):
 		var t_pos = frame_state.custom_data["target_position"]
 		if t_pos is Vector2:
@@ -502,7 +495,6 @@ func _process(_delta: float) -> void:
 		get_tree().quit(0)
 		return
 
-	# Forzar visibilidad permanente de la meta (si está en uso)
 	target_sprite.visible = true
 
 	match timeline.get_current_block():
@@ -511,10 +503,7 @@ func _process(_delta: float) -> void:
 			object_sprite.modulate.a = 1.0
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"HOOK",
-					config_cache.get("content", {})
-				)
+				presentation_ui.set_state("HOOK", config_cache.get("content", {}))
 
 			apply_reference_frame()
 
@@ -523,10 +512,7 @@ func _process(_delta: float) -> void:
 			object_sprite.modulate.a = 1.0
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"GAME",
-					config_cache.get("content", {})
-				)
+				presentation_ui.set_state("GAME", config_cache.get("content", {}))
 
 			var game_idx: int = timeline.get_game_index()
 
@@ -534,13 +520,8 @@ func _process(_delta: float) -> void:
 				var frame_state: FrameSnapshot = verified_history[game_idx]
 
 				if frame_state.custom_data.has("target_x"):
-					var target_x: float = float(
-						frame_state.custom_data["target_x"]
-					)
-
-					var delta_x: float = (
-						frame_state.position.x - target_x
-					)
+					var target_x: float = float(frame_state.custom_data["target_x"])
+					var delta_x: float = frame_state.position.x - target_x
 
 					if game_idx % 60 == 0 or game_idx == reference_frame_index:
 						print(
@@ -560,10 +541,7 @@ func _process(_delta: float) -> void:
 			object_sprite.modulate.a = 1.0
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"REVEAL",
-					config_cache.get("content", {})
-				)
+				presentation_ui.set_state("REVEAL", config_cache.get("content", {}))
 
 			apply_reference_frame()
 
@@ -572,10 +550,7 @@ func _process(_delta: float) -> void:
 			object_sprite.modulate.a = 1.0
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"CTA",
-					config_cache.get("content", {})
-				)
+				presentation_ui.set_state("CTA", config_cache.get("content", {}))
 
 			apply_reference_frame()
 

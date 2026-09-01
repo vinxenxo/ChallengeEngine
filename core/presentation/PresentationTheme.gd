@@ -4,11 +4,19 @@ extends RefCounted
 const VIEWPORT_WIDTH: float = 540.0
 const VIEWPORT_HEIGHT: float = 960.0
 
+# Ruta estándar para la tipografía corporativa de la factoría
+const FONT_PATH: String = "res://assets/fonts/Comic-Sans-MS.ttf"
+
 static func get_theme_config(theme_name: String) -> Dictionary:
+	var custom_font: Font = null
+	if ResourceLoader.exists(FONT_PATH):
+		custom_font = load(FONT_PATH) as Font
+
 	return {
-		"hook_font_size": 34,
+		"font": custom_font,
+		"hook_font_size": 36,
 		"reveal_font_size": 32,
-		"cta_font_size": 24,
+		"cta_font_size": 26,
 		"button_font_size": 22,
 		
 		"hook_color": Color.WHITE,
