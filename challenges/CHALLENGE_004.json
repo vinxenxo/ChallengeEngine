@@ -20,6 +20,19 @@
     "reveal_duration": 1.5,
     "cta_duration": 1.5
   },
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position",
+    "visual": {
+      "object_scale": 0.85,
+      "object_offset": [0.0, 0.0],
+      "target_scale": 0.85,
+      "target_offset": [0.0, 0.0]
+    },
+    "ui": {
+      "theme": "default_c6"
+    }
+  },
   "difficulty": {
     "level": 3,
     "tolerance": {
