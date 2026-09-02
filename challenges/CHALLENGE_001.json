@@ -15,9 +15,10 @@
   },
   "video": {
     "fps": 60,
-    "hook_duration": 3.0,
+    "hook_duration": 0.0,
     "game_duration": 7.0,
-    "cta_duration": 2.0
+    "cta_duration": 2.0,
+    "reveal_duration": 0.0
   },
   "difficulty": {
     "level": 5,
@@ -32,7 +33,10 @@
   "presentation": {
     "coordinate_space": "CANVAS_1080X1920",
     "secondary_binding": "static_position",
-    "static_target_position": [540.0, 960.0]
+    "static_target_position": [
+      540.0,
+      960.0
+    ]
   },
   "assets": {
     "background_path": "res://assets/c6/garage_background.svg",

@@ -66,7 +66,7 @@ Historical examples in the V0.1 section are retained as historical examples. Cur
 
 `CHALLENGE_001` and `CHALLENGE_002` remain `rng_version: "1.0"`. `CHALLENGE_003` and `CHALLENGE_004` are V2.0 fixtures.
 
-The current temporal fixture used by the frozen challenges is 2 s HOOK + 7 s GAME + 2 s CTA = 11 s / 660 frames at 60 FPS. Historical references to 3+7+1 belong to older documentation and are not the current live contract.
+The temporal model is declarative per challenge: HOOK, GAME, REVEAL and CTA durations are resolved independently at the configured FPS. Duration 0 omits a phase; GAME must remain > 0. The historical 2 s HOOK + 7 s GAME + 2 s CTA = 11 s / 660 frames @ 60 FPS remains a reference profile, not a global duration limit.
 
 ---
 

@@ -17,7 +17,8 @@
     "fps": 60,
     "hook_duration": 3.0,
     "game_duration": 7.0,
-    "cta_duration": 2.0
+    "cta_duration": 0.0,
+    "reveal_duration": 0.0
   },
   "difficulty": {
     "level": 3,
@@ -26,8 +27,14 @@
       "angle_deg": 6.0
     },
     "parking": {
-      "start_position": [150.0, 960.0],
-      "target_position": [850.0, 960.0],
+      "start_position": [
+        150.0,
+        960.0
+      ],
+      "target_position": [
+        850.0,
+        960.0
+      ],
       "target_angle_deg": 0.0,
       "max_speed_px": 12.0,
       "steering_noise": 0.05

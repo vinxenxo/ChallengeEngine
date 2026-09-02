@@ -31,7 +31,7 @@ Vertical       Square / Horizontal
 
 ## 3. Estructura Cronológica Master ("Pause Challenge")
 
-La duración estándar para desafíos de pausa en redes sociales se establece en **11.0 segundos totales (660 frames a 60 FPS)**:
+La duración estándar para desafíos de pausa en redes sociales se establece en **duración declarativa por challenge (frames derivados a partir de sus cuatro fases)**:
 
 $$\begin{aligned}
 \text{HOOK (Cuenta Atrás):} \quad & 0.0\text{ s} - 3.0\text{ s} \quad (180\text{ frames}) \\
@@ -50,7 +50,7 @@ La capa de presentación debe respetar los márgenes superiores (15%) e inferior
 
 ## Current Live Distribution Timing
 
-The distribution architecture remains platform-agnostic. The current production challenge master profile is 11.0 seconds at 60 FPS with:
+The distribution architecture remains platform-agnostic. The historical 11.0-second profile is a reference fixture; production duration is derived per challenge from HOOK/GAME/REVEAL/CTA:
 
 ```text
 HOOK = 2.0 s / 120 frames
@@ -70,7 +70,7 @@ The distribution layer remains platform-agnostic. The current production master 
 1080 × 1920
 9:16
 60 FPS
-11.0 s
+declarativa por challenge
 H.264 / MP4
 YUV420p
 ```

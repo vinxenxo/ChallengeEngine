@@ -43,7 +43,7 @@ FPS   = 60
 HOOK  = 120 frames
 GAME  = 420 frames
 CTA   = 120 frames
-TOTAL = 660 frames
+TOTAL = suma de frames declarados por fase
 ```
 
 Therefore the valid absolute winning-frame interval is:
@@ -77,8 +77,8 @@ The modern validator accepts mechanic-owned `close_calls` supplied through `Simu
 Canonical E2E acceptance:
 
 ```text
-11.0 s ± 0.05 s
-660 frames
+duración física = total_frames configurado ± tolerancia FFprobe
+frame count físico = total_frames configurado
 60/1 FPS
 ```
 

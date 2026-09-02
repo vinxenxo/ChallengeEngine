@@ -23,13 +23,13 @@ FROZEN / VALIDATED
 ## Production contract
 
 ```text
-factory_version  = 0.9.0
+factory_version  = 0.10.0
 manifest_version = 1.0
 FPS              = 60
-HOOK             = 120 frames
-GAME             = 420 frames
-CTA              = 120 frames
-TOTAL            = 660 frames
+PHASES           = HOOK / GAME / REVEAL / CTA
+RULE             = 0 frames => phase omitted
+GAME             = > 0 frames
+TOTAL            = suma de fases activas
 ```
 
 Canonical output:

@@ -47,7 +47,7 @@ The fixture is valid only if this separation can be observed empirically through
 | HOOK | `120` frames / `2.0 s` |
 | GAME | `420` frames / `7.0 s` |
 | CTA | `120` frames / `2.0 s` |
-| TOTAL | `660` frames / `11.0 s` |
+| TOTAL | Derivado del `video` del challenge; el fixture actual usa `720` frames / `12.0 s` |
 
 The fixture uses the same temporal profile as the frozen baseline so that the new RNG architecture is exercised inside the real engine timeline without changing the temporal contract.
 
