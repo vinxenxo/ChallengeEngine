@@ -1200,25 +1200,25 @@ func get_current_state_frame(
 
 		"HOOK":
 			state_frame = (
-				timeline.current_frame
+				timeline.get_current_frame()
 			)
 
 		"GAME":
 			state_frame = (
-				timeline.current_frame
+				timeline.get_current_frame()
 				- timeline.hook_frames
 			)
 
 		"REVEAL":
 			state_frame = (
-				timeline.current_frame
+				timeline.get_current_frame()
 				- timeline.hook_frames
 				- timeline.game_frames
 			)
 
 		"CTA":
 			state_frame = (
-				timeline.current_frame
+				timeline.get_current_frame()
 				- timeline.hook_frames
 				- timeline.game_frames
 				- timeline.reveal_frames
