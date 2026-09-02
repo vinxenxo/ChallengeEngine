@@ -4,7 +4,11 @@
 
 ```text
 CHECKPOINT 1.1.0-C6-D4
+<<<<<<< HEAD
 C6-D4 CODE COMPLETE / STATIC CONTRACT PASS / GODOT E2E PENDING HERE
+=======
+C6-D4 CERTIFICADO / Godot 4.7.1 E2E PASS / Factory 9/9 PASS
+>>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
 ```
 
 Godot objetivo: `4.7.1-stable (official)`

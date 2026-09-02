@@ -47,11 +47,64 @@ static func validate_definition(config: Dictionary) -> Dictionary:
 		if game_dur <= 0.0:
 			errors.append("'game_duration' must be strictly greater than 0.")
 
-	# 4. Comprobación de parámetros de dificultad
+	# 4. Integridad de assets obligatorios (antes de simulación/render)
+	_validate_required_assets(config, errors)
+
+	# 5. Contrato mínimo de presentation profile (sin autoridad temporal)
+	_validate_presentation_profile(config, errors)
+
+	# 6. Comprobación de parámetros de dificultad
 	if not config.has("difficulty") or not (config["difficulty"] is Dictionary):
 		errors.append("Missing or invalid mandatory section 'difficulty'.")
 
 	if errors.is_empty():
-		return {"is_valid": true, "errors": []}
+		return {"is_valid": true, "errors": [], "error_codes": []}
 	else:
-		return {"is_valid": false, "errors": errors}
+		return {"is_valid": false, "errors": errors, "error_codes": ["CHALLENGE_INVALID"]}
+
+static func _validate_required_assets(config: Dictionary, errors: Array[String]) -> void:
+	if not config.has("assets") or not (config["assets"] is Dictionary):
+		errors.append("Missing or invalid mandatory section 'assets'.")
+		return
+
+	var assets_cfg: Dictionary = config["assets"]
+	var required_paths := {
+		"background_path": "background",
+		"target_path": "target",
+		"object_path": "object"
+	}
+
+	for path_key in required_paths.keys():
+		if not assets_cfg.has(path_key):
+			errors.append("Missing mandatory asset path '%s'." % path_key)
+			continue
+
+		var asset_path: String = str(assets_cfg.get(path_key, ""))
+		if asset_path.is_empty():
+			errors.append("Mandatory asset path '%s' is empty." % path_key)
+			continue
+
+		if not asset_path.begins_with("res://"):
+			errors.append("Mandatory asset '%s' must use a res:// path: %s" % [path_key, asset_path])
+			continue
+
+		if not ResourceLoader.exists(asset_path):
+			errors.append("Missing mandatory asset '%s': %s" % [path_key, asset_path])
+
+
+static func _validate_presentation_profile(config: Dictionary, errors: Array[String]) -> void:
+	if not config.has("presentation"):
+		return
+
+	if not (config["presentation"] is Dictionary):
+		errors.append("'presentation' must be a Dictionary when provided.")
+		return
+
+	var presentation: Dictionary = config["presentation"]
+	if presentation.has("profile"):
+		var profile_id := str(presentation.get("profile", ""))
+		if profile_id.is_empty():
+			errors.append("'presentation.profile' must be a non-empty string.")
+
+	if presentation.has("profile_overrides") and not (presentation["profile_overrides"] is Dictionary):
+		errors.append("'presentation.profile_overrides' must be a Dictionary when provided.")

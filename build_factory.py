@@ -23,6 +23,12 @@ GIF_FPS = 30
 GIF_WIDTH = 540
 GIF_HEIGHT = 960
 
+# C6-E Step 0 — physical output contract.
+SOURCE_VIDEO_WIDTH = 540
+SOURCE_VIDEO_HEIGHT = 960
+MASTER_OUTPUT_WIDTH = 1080
+MASTER_OUTPUT_HEIGHT = 1920
+
 DECLARATIVE_METADATA_FIELDS = (
     "schema_version",
     "engine_version",
@@ -488,7 +494,7 @@ def run_ffprobe(
         "v:0",
         "-count_frames",
         "-show_entries",
-        "stream=r_frame_rate,nb_read_frames,duration",
+        "stream=width,height,codec_name,pix_fmt,r_frame_rate,nb_read_frames,duration",
         "-of",
         "json",
         str(video_path),
@@ -534,6 +540,10 @@ def run_ffprobe(
             }
 
         required_fields = (
+            "width",
+            "height",
+            "codec_name",
+            "pix_fmt",
             "duration",
             "nb_read_frames",
             "r_frame_rate",
@@ -554,6 +564,10 @@ def run_ffprobe(
                 )
             }
 
+        width_raw = stream_info["width"]
+        height_raw = stream_info["height"]
+        codec_raw = stream_info["codec_name"]
+        pix_fmt_raw = stream_info["pix_fmt"]
         duration_raw = stream_info["duration"]
         frames_raw = stream_info["nb_read_frames"]
         fps_raw = stream_info["r_frame_rate"]
@@ -656,7 +670,17 @@ def run_ffprobe(
                 )
             }
 
+        try:
+            width = int(width_raw)
+            height = int(height_raw)
+        except (ValueError, TypeError):
+            return {"error": f"FFprobe resolution inválida: {width_raw}x{height_raw}."}
+
         return {
+            "width": width,
+            "height": height,
+            "codec_name": str(codec_raw),
+            "pix_fmt": str(pix_fmt_raw),
             "duration": duration,
             "nb_frames": nb_frames,
             "r_frame_rate": fps_raw,
@@ -1026,7 +1050,39 @@ def run_factory(
         }
 
     # ========================================================
-    # 3. MP4
+    # 3. SOURCE MOVIE GATE
+    # ========================================================
+
+    source_probe = run_ffprobe(raw_video_path)
+
+    if "error" in source_probe:
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "SOURCE_FFPROBE_ERROR",
+                "message": source_probe["error"],
+            },
+        }
+
+    if (
+        source_probe["width"] != SOURCE_VIDEO_WIDTH
+        or source_probe["height"] != SOURCE_VIDEO_HEIGHT
+    ):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "SOURCE_RESOLUTION_MISMATCH",
+                "message": (
+                    f"Source movie must be {SOURCE_VIDEO_WIDTH}x{SOURCE_VIDEO_HEIGHT}; "
+                    f"observed {source_probe['width']}x{source_probe['height']}."
+                ),
+            },
+        }
+
+    # ========================================================
+    # 4. MP4 MASTER
     # ========================================================
 
     ffmpeg_cmd = [
@@ -1034,6 +1090,8 @@ def run_factory(
         "-y",
         "-i",
         str(raw_video_path),
+        "-vf",
+        f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
         "-c:v",
         "libx264",
         "-preset",
@@ -1122,7 +1180,7 @@ def run_factory(
             }
 
     # ========================================================
-    # 5. FFPROBE MP4
+    # 6. FFPROBE MASTER MP4
     # ========================================================
 
     probe_data = run_ffprobe(
@@ -1145,8 +1203,44 @@ def run_factory(
             },
         }
 
+    if (
+        probe_data["width"] != MASTER_OUTPUT_WIDTH
+        or probe_data["height"] != MASTER_OUTPUT_HEIGHT
+    ):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "MASTER_RESOLUTION_MISMATCH",
+                "message": (
+                    f"Master MP4 must be {MASTER_OUTPUT_WIDTH}x{MASTER_OUTPUT_HEIGHT}; "
+                    f"observed {probe_data['width']}x{probe_data['height']}."
+                ),
+            },
+        }
+
+    if probe_data["codec_name"] != "h264":
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "MASTER_CODEC_MISMATCH",
+                "message": f"Master codec must be h264; observed {probe_data['codec_name']}."
+            },
+        }
+
+    if probe_data["pix_fmt"] not in ("yuv420p", "yuvj420p"):
+        cleanup_partial_outputs(output_dir, challenge_id)
+        return {
+            "success": False,
+            "error": {
+                "code": "MASTER_PIXEL_FORMAT_MISMATCH",
+                "message": f"Master pixel format must be yuv420p-compatible; observed {probe_data['pix_fmt']}."
+            },
+        }
+
     # ========================================================
-    # 6. CONSISTENCY GATE C5-A
+    # 7. CONSISTENCY GATE C5-A
     # ========================================================
 
     expected_fps = (
@@ -1399,6 +1493,16 @@ def run_factory(
             "final_video_sha256":
                 final_hash,
         },
+
+        "output_contract": {
+            "simulation_canvas": [1080, 1920],
+            "source_movie": [SOURCE_VIDEO_WIDTH, SOURCE_VIDEO_HEIGHT],
+            "master_mp4": [MASTER_OUTPUT_WIDTH, MASTER_OUTPUT_HEIGHT],
+            "master_scale_filter": f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
+        },
+
+        "source_validation":
+            source_probe,
 
         "validation":
             probe_data,

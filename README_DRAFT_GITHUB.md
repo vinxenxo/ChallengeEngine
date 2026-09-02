@@ -9,7 +9,11 @@ Motor determinista para producir vídeos de retos de precisión.
 
 ```text
 Checkpoint 1.1.0-C6-D4
+<<<<<<< HEAD
 C6-D4 code complete / static contract PASS / Godot E2E pending in this environment
+=======
+C6-D4 CERTIFIED / Windows Godot 4.7.1 E2E PASS / 9 of 9 factory PASS
+>>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
 ```
 
 ## Core principles

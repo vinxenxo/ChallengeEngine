@@ -20,6 +20,12 @@ KNOWN_SUITES = {
     "DeterministicLCGStatelessTest.gd": "[RNG_TEST_SUITE] PASS",
     "RNGArchitectureTest.gd": "[RNG_ARCHITECTURE_SUITE] PASS",
     "mechanics/find/FindMechanicIsolationTest.gd": "[FIND_V1_ISOLATION_SUITE] PASS",
+    "C6EAssetIntegrityTest.gd": "[C6E_ASSET_INTEGRITY_SUITE] PASS",
+    "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
+    "C6E2ComponentSystemTest.gd": "[C6E2_COMPONENT_SYSTEM_SUITE] PASS",
+    "C6E2CountdownContractTest.gd": "[C6E2_COUNTDOWN_CONTRACT_SUITE] PASS",
+    "C6E2BadgeAndFontRegressionTest.gd": "[C6E2_BADGE_FONT_REGRESSION_SUITE] PASS",
+    "C6E2ComponentLayoutValidationTest.gd": "[C6E2_COMPONENT_LAYOUT_VALIDATION_SUITE] PASS",
 }
 
 FATAL_PATTERNS = [

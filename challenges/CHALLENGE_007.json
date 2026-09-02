@@ -46,7 +46,8 @@
   },
   "presentation": {
     "coordinate_space": "CANVAS_1080X1920",
-    "secondary_binding": "target_position"
+    "secondary_binding": "target_position",
+    "profile": "social_default_v1"
   },
   "assets": {
     "background_path": "res://assets/c6/garage_background.svg",

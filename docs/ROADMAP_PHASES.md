@@ -97,16 +97,16 @@ The intended change surface is `MechanicRegistry.gd` + `GeneradorMaestro.gd` + i
 The section below is preserved as historical checkpoint evidence. It does not describe the current live state.
 
 
-## Current Live State — 1.1.0-C6-D4
+## Current Live State — 1.1.0-C6-E-E1
 
-`C6-D4` introduces declarative phase-duration control without changing simulation, RNG or validation contracts. A phase is active when its configured duration is greater than zero; duration `0` omits the phase. `GAME` remains mandatory.
+`C6-D4` is closed/certified. `C6-E Step 0 + E1` establishes the physical master-output contract, mandatory asset integrity and the first declarative Presentation Profile layer without changing simulation, RNG or validation truth.
 
 ```text
 HOOK → GAME → REVEAL → CTA
         (fases con duración 0 se omiten)
 ```
 
-### C6-D4 — Phase Duration Control
+### C6-D4 — Phase Duration Control — CLOSED / CERTIFIED
 - [x] Contract accepted: `0 s` disables a presentation phase.
 - [x] `VideoTimeline.gd` treats zero-frame phases as omitted.
 - [x] `ChallengeDefinitionValidator.gd` documents/enforces non-negative optional phases and mandatory GAME.
@@ -114,17 +114,32 @@ HOOK → GAME → REVEAL → CTA
 - [x] Python factory timeline already matches the same sum-of-phases contract; no factory architecture change required.
 - [x] Five production fixtures prepared to exercise different phase combinations.
 - [x] Static phase-duration contract audit added.
+<<<<<<< HEAD
 - [ ] Godot E2E render + FFprobe regeneration of all nine fixtures.
 - [x] Repository-wide documentation audit completed; stale live-state claims corrected/marked historical.
 - [x] Generated output artifacts removed from the clean source package.
 - [ ] Final certification/freeze on a Godot 4.7.1 + FFmpeg/FFprobe machine.
+=======
+- [x] Godot E2E render + FFprobe regeneration of all nine fixtures.
+- [x] Repository-wide documentation audit completed; stale live-state claims corrected/marked historical.
+- [x] Generated output artifacts removed from the clean source package.
+- [x] Final certification/freeze on a Godot 4.7.1 + FFmpeg/FFprobe machine.
+
+### C6-E — Step 0 + E1 — Presentation System / Product Composition
+- [x] Output contract resolved: source movie 540×960 → master MP4 1080×1920.
+- [x] Asset integrity gate added before simulation/render.
+- [x] Missing `count_background.svg` resolved.
+- [x] Declarative `PresentationProfile` contract added.
+- [x] Profile isolation test added.
+- [ ] Godot 4.7.1 certification of the new E1 suites.
+>>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
 
 ### Next Roadmap — Product Convergence
 
 ```text
-C6-D4  Phase Duration Control                  CURRENT / CODE COMPLETE
+C6-D4  Phase Duration Control                  CLOSED / CERTIFIED
    ↓
-C6-E   Presentation polish + content fidelity
+C6-E   Presentation System / Product Composition  IN PROGRESS — E1
    ↓
 C6-F   Productized challenge authoring/profile layer
    ↓

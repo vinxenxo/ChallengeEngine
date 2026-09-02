@@ -17,13 +17,17 @@
     "count": {
       "min_value": 3,
       "max_value": 10,
-      "start_pos": [180.0, 850.0],
+      "start_pos": [
+        180.0,
+        850.0
+      ],
       "step_x": 100.0
     }
   },
   "presentation": {
     "coordinate_space": "CANVAS_1080X1920",
-    "secondary_binding": "static_position"
+    "secondary_binding": "static_position",
+    "profile": "social_default_v1"
   },
   "content": {
     "hook": "¿CUÁNTOS HAY?",

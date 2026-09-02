@@ -1,358 +1,154 @@
 class_name PresentationUI
 extends RefCounted
 
-var container: Control
-var hook_label: Label
-var reveal_label: Label
-var cta_question_label: Label
-var cta_button_panel: Panel
-var cta_button_label: Label
-var difficulty_badge: Panel
-var difficulty_label: Label
-var countdown_label: Label
-var theme_config: Dictionary = {}
+var root_control: Node
+var safe_area: SafeAreaLayout
+var badge_label: TypographyLabel
+var hook_label: HookComponent
+var winning_label: TypographyLabel
+var cta: CTAComponent
+var countdown: CountdownComponent
+var reveal_manager: RevealManager
+var current_profile: PresentationProfile
+var theme_name: String
 
-func _init(root: Control, theme_name: String = "default_c6") -> void:
+var gameplay_envelope: Control 
+var mechanic_node: Node2D
 
-	print(
-		"[D3_UI_SOURCE] PresentationUI cargada desde: ",
-		get_script().resource_path
-	)
-	container = root
-	theme_config = PresentationTheme.get_theme_config(theme_name)
-	build_or_bind_elements()
-	set_state("HOOK", {})
-
-func build_or_bind_elements() -> void:
-	if container == null:
-		return
-
-	hook_label = _get_or_create_label("HookLabel")
-	reveal_label = _get_or_create_label("RevealLabel")
-	cta_question_label = _get_or_create_label("CTALabel")
-	countdown_label = _get_or_create_label("CountdownLabel")
-	difficulty_badge = _get_or_create_panel("DifficultyBadge")
-	difficulty_label = _get_or_create_child_label(difficulty_badge, "DifficultyText")
-	cta_button_panel = _get_or_create_panel("ActionButtonPanel")
-	cta_button_label = _get_or_create_child_label(cta_button_panel, "ButtonText")
-
-	_apply_label_defaults(hook_label)
-	_apply_label_defaults(reveal_label)
-	_apply_label_defaults(cta_question_label)
-	_apply_label_defaults(countdown_label)
-	_apply_label_defaults(difficulty_label)
-	_apply_label_defaults(cta_button_label)
-
-	_apply_layout()
-	_apply_theme()
-
-func _get_or_create_label(node_name: String) -> Label:
-	var node := container.get_node_or_null(node_name) as Label
-	if node == null:
-		node = Label.new()
-		node.name = node_name
-		container.add_child(node)
-	return node
-
-func _get_or_create_panel(node_name: String) -> Panel:
-	var node := container.get_node_or_null(node_name) as Panel
-	if node == null:
-		node = Panel.new()
-		node.name = node_name
-		container.add_child(node)
-	return node
-
-func _get_or_create_child_label(parent: Panel, node_name: String) -> Label:
-	if parent == null:
-		return null
-	var node := parent.get_node_or_null(node_name) as Label
-	if node == null:
-		node = Label.new()
-		node.name = node_name
-		parent.add_child(node)
-	return node
-
-func _apply_label_defaults(label: Label) -> void:
-	if label == null:
-		return
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-func _apply_font_if_available(label: Label) -> void:
-	if label == null:
-		return
-	var font = theme_config.get("font", null)
-	if font is Font:
-		label.add_theme_font_override("font", font)
-
-func _apply_layout() -> void:
-	if hook_label != null:
-		hook_label.position = Vector2(30.0, 60.0)
-		hook_label.size = Vector2(480.0, 80.0)
-
-	if reveal_label != null:
-		reveal_label.position = Vector2(30.0, 60.0)
-		reveal_label.size = Vector2(480.0, 80.0)
-
-	if difficulty_badge != null:
-		difficulty_badge.position = Vector2(435.0, 22.0)
-		difficulty_badge.size = Vector2(
-			float(theme_config.get("difficulty_width", 90.0)),
-			float(theme_config.get("difficulty_height", 34.0))
-		)
-
-	if difficulty_label != null:
-		difficulty_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-
-	if countdown_label != null:
-		countdown_label.position = Vector2(0.0, 380.0)
-		countdown_label.size = Vector2(540.0, 200.0)
-
-	if cta_question_label != null:
-		cta_question_label.position = Vector2(30.0, 775.0)
-		cta_question_label.size = Vector2(480.0, 55.0)
-
-	if cta_button_panel != null:
-		var button_w := float(theme_config.get("button_min_width", 360.0))
-		var button_h := float(theme_config.get("button_height", 64.0))
-		cta_button_panel.position = Vector2(
-			(PresentationTheme.VIEWPORT_WIDTH - button_w) * 0.5,
-			840.0
-		)
-		cta_button_panel.size = Vector2(button_w, button_h)
-
-	if cta_button_label != null:
-		cta_button_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-
-func _apply_theme() -> void:
-	_apply_font_if_available(hook_label)
-	_apply_font_if_available(reveal_label)
-	_apply_font_if_available(cta_question_label)
-	_apply_font_if_available(countdown_label)
-	_apply_font_if_available(difficulty_label)
-	_apply_font_if_available(cta_button_label)
-
-	if hook_label != null:
-		hook_label.add_theme_font_size_override("font_size", int(theme_config.get("hook_font_size", 36)))
-		hook_label.add_theme_color_override("font_color", theme_config.get("hook_color", Color.WHITE))
-		hook_label.add_theme_constant_override("outline_size", int(theme_config.get("hook_outline_size", 6)))
-		hook_label.add_theme_color_override("font_outline_color", theme_config.get("hook_outline_color", Color.BLACK))
-
-	if reveal_label != null:
-		reveal_label.add_theme_font_size_override("font_size", int(theme_config.get("reveal_font_size", 32)))
-		reveal_label.add_theme_color_override("font_color", theme_config.get("reveal_color", Color(0.2, 0.85, 0.3, 1.0)))
-		reveal_label.add_theme_constant_override("outline_size", int(theme_config.get("reveal_outline_size", 6)))
-		reveal_label.add_theme_color_override("font_outline_color", theme_config.get("reveal_outline_color", Color.BLACK))
-
-	if cta_question_label != null:
-		cta_question_label.add_theme_font_size_override("font_size", int(theme_config.get("cta_font_size", 26)))
-		cta_question_label.add_theme_color_override("font_color", theme_config.get("cta_color", Color.WHITE))
-		cta_question_label.add_theme_constant_override("outline_size", int(theme_config.get("cta_outline_size", 4)))
-		cta_question_label.add_theme_color_override("font_outline_color", theme_config.get("cta_outline_color", Color.BLACK))
-
-	if countdown_label != null:
-		countdown_label.add_theme_font_size_override("font_size", int(theme_config.get("countdown_font_size", 72)))
-		countdown_label.add_theme_color_override("font_color", theme_config.get("countdown_color", Color.WHITE))
-		countdown_label.add_theme_constant_override("outline_size", int(theme_config.get("countdown_outline_size", 8)))
-		countdown_label.add_theme_color_override("font_outline_color", theme_config.get("countdown_outline_color", Color.BLACK))
-
-	if difficulty_label != null:
-		difficulty_label.add_theme_font_size_override("font_size", int(theme_config.get("difficulty_font_size", 16)))
-		difficulty_label.add_theme_color_override("font_color", theme_config.get("difficulty_text_color", Color.WHITE))
-
-	if cta_button_label != null:
-		cta_button_label.add_theme_font_size_override("font_size", int(theme_config.get("button_font_size", 22)))
-		cta_button_label.add_theme_color_override("font_color", theme_config.get("button_text_color", Color.WHITE))
-
-	if difficulty_badge != null:
-		difficulty_badge.add_theme_stylebox_override("panel", _make_stylebox(
-			theme_config.get("difficulty_bg", Color(0.12, 0.12, 0.16, 0.9)),
-			theme_config.get("difficulty_border", Color(0.85, 0.85, 0.9, 1.0)),
-			int(theme_config.get("difficulty_border_width", 2)),
-			int(theme_config.get("difficulty_corner_radius", 8))
-		))
-
-	if cta_button_panel != null:
-		cta_button_panel.add_theme_stylebox_override("panel", _make_stylebox(
-			theme_config.get("button_bg", Color(0.12, 0.12, 0.16, 0.95)),
-			theme_config.get("button_border", Color(0.85, 0.85, 0.9, 1.0)),
-			int(theme_config.get("button_border_width", 2)),
-			int(theme_config.get("button_corner_radius", 12))
-		))
-
-func _make_stylebox(bg: Color, border: Color, border_width: int, radius: int) -> StyleBoxFlat:
-	var box := StyleBoxFlat.new()
-	box.bg_color = bg
-	box.border_color = border
-	box.set_border_width_all(border_width)
-	box.set_corner_radius_all(radius)
-	return box
-
-func _update_countdown(
-	content: Dictionary,
-	state: String
-) -> void:
-	if countdown_label == null:
-		return
-
-	# Estado por defecto: contador apagado.
-	countdown_label.visible = false
-	countdown_label.text = ""
-
-	# La cuenta atrás SOLO existe durante HOOK.
-	if state != "HOOK":
-		return
-
-	var fps: int = max(
-		1,
-		int(
-			content.get(
-				"ui_fps",
-				60
-			)
-		)
-	)
-
-	var state_frame: int = max(
-		0,
-		int(
-			content.get(
-				"ui_state_frame",
-				0
-			)
-		)
-	)
-
-	print(
-		"[D3_COUNTDOWN] "
-		+ "state="
-		+ state
-		+ " | frame="
-		+ str(state_frame)
-		+ " | fps="
-		+ str(fps)
-	)
-
-	# ========================================================
-	# COUNTDOWN D3
-	#
-	# 0 .. fps-1       => 3
-	# fps .. 2*fps-1  => 2
-	# 2*fps .. 3*fps-1 => 1
-	# 3*fps en adelante => apagado
-	# ========================================================
-
-	var first_boundary: int = fps
-	var second_boundary: int = fps * 2
-	var third_boundary: int = fps * 3
-
-	var countdown_value: int = 0
-
-	if state_frame < first_boundary:
-		countdown_value = 3
-	elif state_frame < second_boundary:
-		countdown_value = 2
-	elif state_frame < third_boundary:
-		countdown_value = 1
-	else:
-		return
-
+func _init(root: Node = null, theme_name: String = "default_c6", profile: PresentationProfile = null):
+	self.root_control = root
+	self.theme_name = theme_name
 	
+	safe_area = SafeAreaLayout.new()
+	if root_control != null:
+		root_control.add_child(safe_area)
+	
+	var vbox = VBoxContainer.new()
+	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	safe_area.add_child(vbox)
+	
+	# TOP BAR: Badge
+	var top_hbox = HBoxContainer.new()
+	top_hbox.alignment = BoxContainer.ALIGNMENT_END
+	vbox.add_child(top_hbox)
+	
+	badge_label = TypographyLabel.new()
+	badge_label.role = TypographyLabel.Role.BADGE
+	top_hbox.add_child(badge_label)
+	
+	# HOOK OVERLAY
+	hook_label = HookComponent.new()
+	vbox.add_child(hook_label)
+	
+	# MIDDLE: Gameplay Envelope
+	gameplay_envelope = Control.new()
+	gameplay_envelope.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	gameplay_envelope.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	vbox.add_child(gameplay_envelope)
+	
+	countdown = CountdownComponent.new()
+	gameplay_envelope.add_child(countdown)
+	
+	winning_label = TypographyLabel.new()
+	winning_label.role = TypographyLabel.Role.HEADLINE
+	winning_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	winning_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	winning_label.set_anchors_preset(Control.PRESET_CENTER)
+	winning_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	winning_label.grow_vertical = Control.GROW_DIRECTION_END
+	winning_label.visible = false
+	gameplay_envelope.add_child(winning_label)
+	
+	# BOTTOM BAR: CTA
+	cta = CTAComponent.new()
+	cta.visible = false
+	vbox.add_child(cta)
+	
+	reveal_manager = RevealManager.new()
+	reveal_manager.winning_label = winning_label
+	if root_control != null:
+		root_control.add_child(reveal_manager)
+	
+	if profile != null:
+		apply_profile(profile)
 
-	countdown_label.text = str(
-		countdown_value
-	)
+func apply_profile(profile: PresentationProfile):
+	self.current_profile = profile
+	if safe_area != null:
+		safe_area.apply_profile(profile)
+		
+	# Carga de la fuente oficial desde PresentationTheme histórico
+	var theme_config = PresentationTheme.get_theme_config(theme_name) if ClassDB.class_exists("PresentationTheme") or ResourceLoader.exists("res://core/presentation/PresentationTheme.gd") else {}
+	# Intentamos cargar PresentationTheme dinámicamente si existe el script
+	var font: Font = null
+	if ResourceLoader.exists("res://core/presentation/PresentationTheme.gd"):
+		var theme_script = load("res://core/presentation/PresentationTheme.gd")
+		if theme_script and theme_script.has_method("get_theme_config"):
+			var cfg = theme_script.get_theme_config(theme_name)
+			font = cfg.get("font", null)
+	
+	if badge_label != null:
+		badge_label.apply_profile(profile)
+		badge_label.text = "HARD"
+		if font != null: badge_label.apply_font(font)
+		
+	if hook_label != null and profile != null:
+		hook_label.apply_profile(profile)
+		if font != null: hook_label.apply_font(font)
+		
+	if winning_label != null:
+		winning_label.apply_profile(profile)
+		if font != null: winning_label.apply_font(font)
+		
+	if cta != null:
+		cta.label_main.apply_profile(profile)
+		cta.label_sub.apply_profile(profile)
+		if font != null:
+			cta.label_main.apply_font(font)
+			cta.label_sub.apply_font(font)
+			
+	if countdown != null and profile != null:
+		countdown.apply_profile(profile)
+		if font != null: countdown.apply_font(font)
 
-	countdown_label.visible = true
+func setup_mechanic_canvas(mechanic_root: Node2D):
+	self.mechanic_node = mechanic_root
+	if reveal_manager != null:
+		reveal_manager.mechanics_canvas = mechanic_root
 
-func _set_phase_hidden() -> void:
-	if hook_label != null:
-		hook_label.visible = false
-	if reveal_label != null:
-		reveal_label.visible = false
-	if cta_question_label != null:
-		cta_question_label.visible = false
-	if cta_button_panel != null:
-		cta_button_panel.visible = false
-	if countdown_label != null:
-		countdown_label.visible = false
-	# El badge de dificultad es persistente y NO se oculta entre fases.
+func set_state(state: String, content: Dictionary) -> void:
+	if mechanic_node != null and gameplay_envelope != null:
+		if gameplay_envelope.size.x > 0:
+			var center_pos = gameplay_envelope.global_position + (gameplay_envelope.size / 2.0)
+			mechanic_node.global_position = center_pos
 
-func _set_difficulty(content: Dictionary) -> void:
-	if difficulty_badge == null or difficulty_label == null:
-		return
-	var level := int(content.get("difficulty_level", 0))
-	if level > 0:
-		difficulty_label.text = "DIF. %d" % level
-		difficulty_badge.visible = true
+	# 1. Regla de visibilidad del Badge de Dificultad (Visible únicamente en HOOK)
+	if badge_label != null:
+		badge_label.visible = (state == "HOOK")
+
+	# 2. Orquestación del Hook Text
+	if hook_label != null and current_profile != null:
+		hook_label.apply_profile(current_profile)
+		hook_label.update_from_state(state, content)
+
+	# 3. Orquestación temporal del Countdown
+	if countdown != null and current_profile != null:
+		countdown.apply_profile(current_profile)
+		countdown.update_from_state(state, content)
+
+	# 4. Orquestación rigurosa del Reveal / Winning Frame usando el frame absoluto
+	if reveal_manager != null:
+		var absolute_frame = int(content.get("absolute_frame", 0))
+		var winning_frame = int(content.get("winning_frame", 0))
+		var timeline = content.get("timeline", null)
+		if timeline != null:
+			reveal_manager.process_frame(absolute_frame, winning_frame, timeline, state)
+
+	# 5. Orquestación de CTA
+	if state == "CTA":
+		if cta != null and current_profile != null:
+			cta.visible = true
+			cta.configure("LINK IN BIO", "¡Juega ahora!", current_profile)
 	else:
-		difficulty_label.text = ""
-		difficulty_badge.visible = false
-
-func set_state(
-	state: String,
-	content: Dictionary
-) -> void:
-
-	print(
-		"[D3_UI_STATE] state=", state,
-		" frame=", content.get("ui_state_frame", -1)
-	)
-
-	if container == null:
-		return
-
-	# Estado visual base: todas las capas de fase ocultas.
-	_set_phase_hidden()
-
-	# El nivel de dificultad permanece independiente de la fase.
-	_set_difficulty(content)
-
-	# El countdown se gobierna EXCLUSIVAMENTE aquí.
-	_update_countdown(
-		content,
-		state
-	)
-
-	match state:
-		"HOOK":
-			if hook_label != null:
-				hook_label.text = str(
-					content.get(
-						"hook",
-						""
-					)
-				)
-				hook_label.visible = true
-
-		"GAME":
-			# No hacemos nada más.
-			# El countdown ya ha sido resuelto por _update_countdown().
-			pass
-
-		"REVEAL":
-			if reveal_label != null:
-				reveal_label.text = (
-					"🎯 ¡LO HAS CLAVADO!"
-				)
-				reveal_label.visible = true
-
-		"CTA":
-			if cta_question_label != null:
-				cta_question_label.text = str(
-					content.get(
-						"cta",
-						""
-					)
-				)
-				cta_question_label.visible = true
-
-			if cta_button_panel != null:
-				cta_button_panel.visible = true
-
-			if cta_button_label != null:
-				cta_button_label.text = (
-					"JUGAR OTRA VEZ"
-				)
+		if cta != null:
+			cta.visible = false
