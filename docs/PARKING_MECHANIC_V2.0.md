@@ -314,6 +314,6 @@ The preceding sentence is historical and refers to the pre-integration 0.3.5 sta
 
 ---
 
-## Current Live Status — CHECKPOINT 0.9.0
+## Current Live Status — CHECKPOINT 1.1.0-C6-D4
 
 `parking_v2` is a frozen production fixture. Its streams 30/40/50/60 are governed by the semantic RNG architecture and its production result participates in the validated 001–006 batch.

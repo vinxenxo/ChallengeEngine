@@ -79,7 +79,7 @@ Themes such as `retro_8bit_arcade`, `garage`, `sports`, `fantasy` and `scifi` re
 
 ---
 
-## Current Live Mechanics Status — CHECKPOINT 0.9.0 / 1.0.0
+## Current Live Mechanics Status — CHECKPOINT 1.1.0-C6-D4
 
 The historical taxonomy remains useful as a design vocabulary, but the implementation status is now:
 
@@ -91,7 +91,9 @@ The historical taxonomy remains useful as a design vocabulary, but the implement
 | `parking_v2` | production DODGE/SAVE V2 | FROZEN |
 | `hit_v1` | sovereign HIT family | FROZEN |
 | `catch_v1` | sovereign CATCH family | FROZEN |
-| FIND | new family candidate | 1.0.0 CONTRACT DRAFT |
+| FIND | spatial search family | FROZEN / VALIDATED |
+| `choose_v1` | current C6 fixture | PRESENT / ISOLATION TEST |
+| `count_v1` | current C6 fixture | PRESENT / PIPELINE FIXTURE |
 | MATCH | candidate rejected for 1.0.0 | NOT SELECTED |
 
-FIND is intentionally not a CATCH reskin: distractors must participate in its mathematical difficulty. The exact false-positive event semantics remain open in the FIND contract draft.
+FIND is intentionally not a CATCH reskin: distractors participate in its mathematical difficulty. Its 1.0.0 contract is frozen and covered by isolation/integration evidence.

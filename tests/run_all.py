@@ -13,6 +13,7 @@ KNOWN_SUITES = {
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
     "mechanics/catch/CatchMechanicIsolationTest.gd": "[CATCH_V1_ISOLATION_SUITE] PASS",
     "mechanics/catch/CatchPresentationContractTest.gd": "[CATCH_PRESENTATION_CONTRACT_SUITE] PASS",
+    "mechanics/choose/ChooseMechanicIsolationTest.gd": "[CHOOSE_V1_ISOLATION_SUITE] PASS",
     "ParkingMechanicV2IsolationTest.gd": "[PARKING_V2_ISOLATION_SUITE] PASS",
     "PilotMechanicIsolationTest.gd": "[PILOT_ISOLATION_SUITE] PASS",
     "PilotMechanicDDIHardeningTest.gd": "[DDI_R1] PASS",

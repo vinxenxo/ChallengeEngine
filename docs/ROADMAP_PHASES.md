@@ -92,29 +92,9 @@ The intended change surface is `MechanicRegistry.gd` + `GeneradorMaestro.gd` + i
 
 ---
 
-## Current Roadmap — Checkpoint 0.9.0 / 1.0.0
+## Historical Roadmap — Checkpoint 0.9.0 / 1.0.0
 
-The old phase numbering remains historical. The live checkpoint roadmap is:
-
-```text
-0.5.x     Batch / Parallel Production                FROZEN
-0.6.0     HIT v1                                     FROZEN
-0.7.0     Production Contract Hardening              FROZEN
-0.8.0     CATCH v1                                   FROZEN
-0.8.1     CATCH Presentation Contract                FROZEN / VALIDATED
-0.9.0     Production Contract Consolidation          FROZEN / VALIDATED
-1.0.0-A   Candidate Audit                            PASS
-1.0.0-B   FIND Mathematical Contract                 DRAFT / REVISION REQUIRED
-```
-
-Next valid sequence:
-
-```text
-CONTRACT → RNG DESIGN → ISOLATION → PRESENTATION CONTRACT
-→ INTEGRATION → REGRESSION → BATCH → FREEZE
-```
-
-No code or RNG stream allocation should occur while 1.0.0-B remains unapproved.
+The section below is preserved as historical checkpoint evidence. It does not describe the current live state.
 
 
 ## Current Live State — 1.1.0-C6-D4
@@ -135,7 +115,9 @@ HOOK → GAME → REVEAL → CTA
 - [x] Five production fixtures prepared to exercise different phase combinations.
 - [x] Static phase-duration contract audit added.
 - [ ] Godot E2E render + FFprobe regeneration of all nine fixtures.
-- [ ] Final repository-wide documentation audit and base-repo freeze.
+- [x] Repository-wide documentation audit completed; stale live-state claims corrected/marked historical.
+- [x] Generated output artifacts removed from the clean source package.
+- [ ] Final certification/freeze on a Godot 4.7.1 + FFmpeg/FFprobe machine.
 
 ### Next Roadmap — Product Convergence
 

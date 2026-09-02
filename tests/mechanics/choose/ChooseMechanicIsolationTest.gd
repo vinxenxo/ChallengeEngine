@@ -1,7 +1,16 @@
 class_name ChooseMechanicIsolationTest
-extends RefCounted
+extends SceneTree
 
-static func run_test() -> Dictionary:
+func _init() -> void:
+	var result = _run_test()
+	if bool(result.get("success", false)):
+		print("[CHOOSE_V1_ISOLATION_SUITE] PASS")
+		quit(0)
+	else:
+		print("[CHOOSE_V1_ISOLATION_SUITE] FAIL - ", str(result.get("error", "Unknown error")))
+		quit(1)
+
+func _run_test() -> Dictionary:
 	var mechanic = ChooseMechanic.new()
 	var config = {
 		"challenge_id": "CHALLENGE_008",

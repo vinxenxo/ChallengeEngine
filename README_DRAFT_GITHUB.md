@@ -4,9 +4,12 @@ Motor determinista para producir vídeos de retos de precisión.
 
 ## Current status
 
+> **This file is a GitHub README draft, not the authoritative live-status document.**
+> The authoritative state for this repository is `MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md` plus `docs/ROADMAP_PHASES.md`.
+
 ```text
-Checkpoint 0.9.0 — Production Contract Consolidation
-FROZEN / VALIDATED
+Checkpoint 1.1.0-C6-D4
+C6-D4 code complete / static contract PASS / Godot E2E pending in this environment
 ```
 
 ## Core principles
@@ -50,12 +53,12 @@ output/BATCH_MANIFEST.json
 006 catch_v1    RNG 2.0
 ```
 
-## 1.0.0 direction
+## Current direction
 
-FIND is the selected candidate for the next mathematical family. Its contract is still in draft. MATCH is not being introduced in 1.0.0.
+FIND is already integrated and frozen from 1.0.0. The next work is presentation/product convergence: visual fidelity, content authoring, asset/template systems, scalable batch generation, and export/publishing workflow.
 
 See:
 
-- `docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md`
-- `docs/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md`
-- `MASTER_HANDOVER_CHECKPOINT_0.9.0.md`
+- `MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md`
+- `docs/ROADMAP_PHASES.md`
+- `docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md`

@@ -65,7 +65,7 @@ The following rules are now frozen for V2.0:
 
 ---
 
-## Current Governance Status — CHECKPOINT 0.9.0
+## Current Governance Status — CHECKPOINT 1.1.0-C6-D4
 
 ### Frozen production governance
 
@@ -77,8 +77,10 @@ The following rules are now frozen for V2.0:
 6. Canonical artifacts are isolated under `output/CHALLENGE_XXX/`.
 7. The Python runner remains the final suite-level PASS/FAIL arbiter.
 8. CATCH presentation transport remains frozen and must not be redesigned for convenience.
+9. C6-D4 is presentation-timing work only: zero-duration phases are omitted; deterministic simulation, RNG streams and winning-frame mathematics remain frozen.
+10. Final C6-D4 release status requires physical Godot 4.7.1 + FFprobe evidence; static contract PASS is not sufficient for certification.
 
-### 1.0.0 governance gate
+### Historical 1.0.0 governance gate
 
 A new mathematical family may proceed only through:
 

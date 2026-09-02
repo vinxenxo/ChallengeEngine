@@ -84,7 +84,7 @@ The challenge definition remains declarative; RNG stream allocation and algorith
 
 ---
 
-## Current Live Content Contract — CHECKPOINT 0.9.0
+## Current Live Content Contract — CHECKPOINT 1.1.0-C6-D4
 
 `CONTENT_SCHEMA_V0.1.md` is retained as the historical schema document. Its live interpretation is complemented by the 0.9.0 provenance contract.
 
@@ -123,12 +123,15 @@ A duration of `0` omits that presentation phase. The effective order remains `HO
 ### Current fixture generations
 
 ```text
-CHALLENGE_001 → key       / RNG 1.0
-CHALLENGE_002 → parking   / RNG 1.0
-CHALLENGE_003 → pilot     / RNG 2.0
-CHALLENGE_004 → parking_v2/ RNG 2.0
-CHALLENGE_005 → hit_v1    / RNG 2.0
-CHALLENGE_006 → catch_v1  / RNG 2.0
+CHALLENGE_001 → key        / RNG 1.0
+CHALLENGE_002 → parking    / RNG 1.0
+CHALLENGE_003 → pilot      / RNG 2.0
+CHALLENGE_004 → parking_v2 / RNG 2.0
+CHALLENGE_005 → hit_v1     / RNG 2.0
+CHALLENGE_006 → catch_v1   / RNG 2.0
+CHALLENGE_007 → find_v1    / RNG 2.0
+CHALLENGE_008 → choose_v1  / RNG 2.0
+CHALLENGE_009 → count_v1   / RNG 2.0
 ```
 
-`FIND` is a 1.0.0 candidate family only; no FIND fixture exists yet.
+`FIND` is integrated and frozen from 1.0.0, with `CHALLENGE_007` as its production fixture. `CHALLENGE_008` and `CHALLENGE_009` additionally exercise `choose_v1` and `count_v1` in the current C6 repository.

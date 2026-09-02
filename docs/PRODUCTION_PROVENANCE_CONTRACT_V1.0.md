@@ -32,6 +32,8 @@ output/CHALLENGE_XXX/CHALLENGE_XXX_manifest.json
 
 Canonical structure:
 
+Historical 0.9.0 example structure (factory version shown in this example is not the current implementation):
+
 ```json
 {
   "manifest_version": "1.0",
@@ -237,3 +239,10 @@ The final output tree contains six challenge directories and `BATCH_MANIFEST.jso
 - FFmpeg encoding model;
 - global test harness architecture;
 - challenge fixture JSON files.
+
+
+## C6-D4 implementation addendum — current repository state
+
+The provenance contract in this document remains the frozen 0.9.0 contract. The current Python factory implementation reports `factory_version = "0.10.0"`; this version bump does not redefine `manifest_version = "1.0"` or the frozen provenance semantics.
+
+C6-D4 adds declarative video phase duration control. The physical acceptance rule is now challenge-specific: the four configured phase durations are converted to frames at the configured FPS, zero-duration phases are omitted from the effective presentation, and `GAME` remains strictly positive. `VideoTimeline.gd` and `build_factory.py` must agree before artifacts are accepted.
