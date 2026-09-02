@@ -2,66 +2,121 @@
 
 ## 1. Especificaciones Técnicas del Master
 
-| Parámetro | Valor Máster por Defecto |
+| Parámetro | Valor Máster / Regla |
 | :--- | :--- |
-| **Resolución** | $1080 \times 1920$ píxeles |
+| **Resolución** | $1080 	imes 1920$ píxeles |
 | **Relación de Aspecto** | 9:16 (Vertical Estricto) |
-| **Framerate Target** | 60 FPS (Configurable por JSON) |
-| **Formato de Píxel** | YUV420p (Obligatorio para compatibilidad móvil) |
+| **Framerate Target** | 60 FPS (configurable por JSON) |
+| **Formato de Píxel** | YUV420p (obligatorio para compatibilidad móvil) |
 | **Códec de Vídeo** | H.264 / MP4 |
 | **Códec de Audio** | AAC (192 kbps) |
 
 ---
 
-## 2. Invocación de Renderizado Offline (Godot Movie Maker)
+## 2. Invocación de Renderizado Offline
 
-godot --headless \
-  --write-movie output/CHALLENGE_001_raw.avi \
-  --fixed-fps 60 \
-  --quit-after 660 \
+La factoría calcula `--quit-after` desde el timeline declarativo de cada challenge. El valor no debe fijarse manualmente a 660 frames cuando el challenge utiliza otra composición temporal.
+
+Ejemplo conceptual:
+
+```text
+godot [renderer de producción] \
+  --write-movie output/CHALLENGE_XXX_raw.avi \
+  --fixed-fps <fps> \
+  --quit-after <total_frames_calculado> \
   --path . \
   -- \
-  --config=challenges/CHALLENGE_001.json
+  --config=challenges/CHALLENGE_XXX.json
+```
 
 ## 3. Pipeline de Transcodificación FFmpeg
-Bash
-ffmpeg -y -i output/CHALLENGE_001_raw.avi \
+
+```bash
+ffmpeg -y -i output/CHALLENGE_XXX_raw.avi \
   -vcodec libx264 \
   -crf 18 \
   -pix_fmt yuv420p \
   -acodec aac \
   -b:a 192k \
-  output/CHALLENGE_001.mp4
-
-## Current Live Temporal Contract — CHECKPOINT 0.3.x
-
-The current challenge master profile used by the frozen baseline and current V2 fixtures is:
-
-| Block | Duration | Frames @ 60 FPS |
-|---|---:|---:|
-| HOOK | 2.0 s | 120 |
-| GAME | 7.0 s | 420 |
-| CTA | 2.0 s | 120 |
-| TOTAL | 11.0 s | 660 |
-
-The original document's technical rendering pipeline remains valid. Older timing examples with 3.0 s HOOK + 1.0 s CTA are historical and must not override the live challenge JSON contract.
+  output/CHALLENGE_XXX.mp4
+```
 
 ---
 
-## Current Live Video Contract — CHECKPOINT 0.9.0
+## 4. Contrato Temporal Vivo — C6-D4
 
-Production video uses the graphical Godot Compatibility renderer for Movie Maker. The unsupported/unsafe combination of `--headless` with `--write-movie` is not part of the production contract.
+La composición temporal es **declarativa por challenge** y se define mediante cuatro duraciones: `hook_duration`, `game_duration`, `reveal_duration` y `cta_duration`.
 
-### Live timeline
+### Regla de activación de fases
+
+| Duración | Comportamiento |
+|---:|---|
+| `0` | La fase queda omitida del vídeo efectivo. |
+| `> 0` | La fase forma parte del timeline y se renderiza. |
+| `< 0` | JSON inválido; bloqueado por Capa 0. |
+
+`GAME` es obligatorio y debe cumplir `game_duration > 0`.
+
+El orden de las fases sigue siendo fijo:
 
 ```text
-HOOK = 2.0 s / 120 frames
-GAME = 7.0 s / 420 frames
-CTA  = 2.0 s / 120 frames
-TOTAL = 11.0 s / 660 frames
+HOOK → GAME → REVEAL → CTA
 ```
 
-### Canonical artifact paths
+Las fases desactivadas no generan frames ni estados visuales propios.
+
+### Cálculo canónico
+
+```text
+hook_frames   = round(hook_duration   × fps)
+game_frames   = round(game_duration   × fps)
+reveal_frames = round(reveal_duration × fps)
+cta_frames    = round(cta_duration    × fps)
+
+total_frames = hook_frames + game_frames + reveal_frames + cta_frames
+```
+
+La factoría Python y `VideoTimeline.gd` deben producir el mismo resultado determinista. FFprobe es la autoridad física sobre el artefacto renderizado.
+
+### Ejemplos oficiales C6-D4
+
+```text
+HOOK=0, GAME=7, REVEAL=0, CTA=2
+→ GAME → CTA
+→ 9.0 s / 540 frames @ 60 FPS
+
+HOOK=3, GAME=7, REVEAL=0, CTA=0
+→ HOOK → GAME
+→ 10.0 s / 600 frames @ 60 FPS
+
+HOOK=0, GAME=7, REVEAL=0, CTA=0
+→ GAME
+→ 7.0 s / 420 frames @ 60 FPS
+
+HOOK=3, GAME=7, REVEAL=3, CTA=2
+→ HOOK → GAME → REVEAL → CTA
+→ 15.0 s / 900 frames @ 60 FPS
+```
+
+El antiguo perfil 11 s (`2 + 7 + 2`) queda como **perfil de referencia histórico**, no como límite global del motor.
+
+---
+
+## 5. Integridad de Simulación vs Presentación
+
+El control de fases pertenece exclusivamente a la capa temporal/presentación. No puede modificar:
+
+- RNG o seeds.
+- `SimulationResult.frames`.
+- `winning_frame_game`.
+- métricas de validación.
+- trayectorias o matemáticas de las mecánicas.
+
+Cuando `hook_duration=0`, por ejemplo, el primer frame visual es `GAME[0]`; no se recalcula la simulación para compensar la ausencia del HOOK.
+
+---
+
+## 6. Artefactos Canónicos
 
 ```text
 output/CHALLENGE_XXX/CHALLENGE_XXX_raw.avi
@@ -70,4 +125,4 @@ output/CHALLENGE_XXX/CHALLENGE_XXX_manifest.json
 output/BATCH_MANIFEST.json
 ```
 
-FFprobe is the physical output authority for duration, frame count and frame rate.
+Cada manifest debe reflejar exactamente las duraciones y frame counts efectivos del challenge que lo generó.

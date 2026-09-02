@@ -115,3 +115,44 @@ CONTRACT → RNG DESIGN → ISOLATION → PRESENTATION CONTRACT
 ```
 
 No code or RNG stream allocation should occur while 1.0.0-B remains unapproved.
+
+
+## Current Live State — 1.1.0-C6-D4
+
+`C6-D4` introduces declarative phase-duration control without changing simulation, RNG or validation contracts. A phase is active when its configured duration is greater than zero; duration `0` omits the phase. `GAME` remains mandatory.
+
+```text
+HOOK → GAME → REVEAL → CTA
+        (fases con duración 0 se omiten)
+```
+
+### C6-D4 — Phase Duration Control
+- [x] Contract accepted: `0 s` disables a presentation phase.
+- [x] `VideoTimeline.gd` treats zero-frame phases as omitted.
+- [x] `ChallengeDefinitionValidator.gd` documents/enforces non-negative optional phases and mandatory GAME.
+- [x] `GeneradorMaestro.gd` consumes the effective timeline without modifying simulation truth.
+- [x] Python factory timeline already matches the same sum-of-phases contract; no factory architecture change required.
+- [x] Five production fixtures prepared to exercise different phase combinations.
+- [x] Static phase-duration contract audit added.
+- [ ] Godot E2E render + FFprobe regeneration of all nine fixtures.
+- [ ] Final repository-wide documentation audit and base-repo freeze.
+
+### Next Roadmap — Product Convergence
+
+```text
+C6-D4  Phase Duration Control                  CURRENT / CODE COMPLETE
+   ↓
+C6-E   Presentation polish + content fidelity
+   ↓
+C6-F   Productized challenge authoring/profile layer
+   ↓
+C6-G   Production-quality visual assets + templates
+   ↓
+C6-H   Batch content generation at scale
+   ↓
+C6-I   Social-platform export presets + publishing workflow
+   ↓
+PRODUCT MVP / REPEATABLE CONTENT FACTORY
+```
+
+The next engineering priority is visual/product convergence, not further changes to deterministic simulation architecture.

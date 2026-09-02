@@ -105,6 +105,21 @@ asset_family_version
 
 Missing legacy fields remain missing.
 
+## C6-D4 Addendum — Declarative Video Phase Control
+
+The `video` section remains declarative and now supports per-challenge phase composition through duration values:
+
+```text
+hook_duration   >= 0
+game_duration   > 0
+reveal_duration >= 0
+cta_duration    >= 0
+```
+
+A duration of `0` omits that presentation phase. The effective order remains `HOOK -> GAME -> REVEAL -> CTA`. `GAME` cannot be disabled. Total duration is always the sum of the four resolved phase durations.
+
+`video_profile` metadata is not the source of truth for effective duration; the four duration fields are.
+
 ### Current fixture generations
 
 ```text

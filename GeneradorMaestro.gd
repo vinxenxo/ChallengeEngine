@@ -3,7 +3,7 @@ extends Node2D
 # ============================================================
 # ChallengeEngineV01_STATELESS
 # GeneradorMaestro.gd
-# C6-D3 — Presentation orchestration built on the D2 baseline.
+# C6-D4 — Declarative phase-duration control on the D3 presentation baseline.
 #
 # PRINCIPIO:
 # - No modifica la simulación ni el RNG.
@@ -1249,6 +1249,9 @@ func _process(_delta: float) -> void:
 	var current_block: String = (
 		timeline.get_current_block()
 	)
+
+	# C6-D4: phases with duration 0 never become an active block.
+	# Timeline remains the single source of temporal truth.
 
 	var state_frame: int = (
 		get_current_state_frame(

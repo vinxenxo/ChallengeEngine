@@ -49,14 +49,18 @@ El sistema no permite que la aleatoriedad cosmética modifique el resultado estr
 
 ## Producción actual
 
+La composición temporal es declarativa por challenge:
+
 ```text
-HOOK  = 2 s
-GAME  = 7 s
-CTA   = 2 s
-TOTAL = 11 s / 660 frames @ 60 FPS
+HOOK / GAME / REVEAL / CTA
+0 s  = fase omitida
+>0 s = fase activa
+GAME > 0 siempre
 ```
 
-La factoría 0.9.0 produce manifests de provenance version 1.0 y mantiene los artefactos aislados por challenge.
+El perfil histórico `2 + 7 + 2 = 11 s` sigue siendo un fixture de referencia, pero ya no es una restricción global. C6-D4 permite generar vídeos de distinta composición temporal sin alterar la simulación.
+
+La factoría 0.10.0 mantiene manifests de provenance 1.0, calcula `total_frames` desde el JSON y valida físicamente el resultado con FFprobe.
 
 ## Estado actual
 
@@ -66,7 +70,8 @@ La factoría 0.9.0 produce manifests de provenance version 1.0 y mantiene los ar
 0.8.0  CATCH v1                            FROZEN
 0.8.1  CATCH Presentation Contract         FROZEN / VALIDATED
 0.9.0  Production Contract Consolidation   FROZEN / VALIDATED
-1.0.0  FIND                                CONTRACT DRAFT
+1.0.x  FIND / additional V2 mechanics     FROZEN / VALIDATED FIXTURES
+1.1.0-C6-D4 Phase Duration Control         CODE COMPLETE / E2E PENDING
 ```
 
 La regla de desarrollo sigue siendo:

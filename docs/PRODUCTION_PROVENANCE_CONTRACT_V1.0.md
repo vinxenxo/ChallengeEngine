@@ -83,6 +83,7 @@ winning_time
 total_frames
 hook_frames
 game_frames
+reveal_frames
 cta_frames
 minimum_distance
 score
@@ -91,15 +92,17 @@ winning_frame_in_valid_window
 validate_only
 ```
 
-### Artifact validation
+### Artifact validation — C6-D4
 
-The canonical E2E acceptance contract is:
+The canonical E2E acceptance contract is challenge-specific:
 
 ```text
-11.0 s ± 0.05 s
-660 frames
-60/1 FPS
+physical duration = configured total_frames / fps
+physical frame count = configured total_frames
+physical frame rate = configured fps
 ```
+
+The reference profile `2 + 7 + 2 = 11 s / 660 frames @ 60 FPS` remains valid as a fixture profile, but it is no longer a global production requirement.
 
 ## 4. Batch manifest contract — `manifest_version = "1.0"`
 

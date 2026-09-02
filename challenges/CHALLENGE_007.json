@@ -6,11 +6,15 @@
     "seed": 7770001
   },
   "video": {
-    "resolution": [1080, 1920],
+    "resolution": [
+      1080,
+      1920
+    ],
     "fps": 60,
     "hook_duration": 3.0,
     "game_duration": 7.0,
-    "cta_duration": 2.0
+    "cta_duration": 0.0,
+    "reveal_duration": 0.0
   },
   "difficulty": {
     "find": {

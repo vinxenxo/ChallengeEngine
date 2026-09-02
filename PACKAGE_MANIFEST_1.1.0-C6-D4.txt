@@ -1,0 +1,26 @@
+ChallengeEngineV01_STATELESS — PACKAGE MANIFEST
+Release: 1.1.0-C6-D4
+Factory: 0.10.0
+Manifest contract: 1.0
+
+FEATURE
+- Declarative per-challenge video phase duration control.
+- Duration 0 disables a phase.
+- GAME remains mandatory (>0).
+- Effective order: HOOK -> GAME -> REVEAL -> CTA.
+
+REQUESTED FIXTURES
+- CHALLENGE_001: GAME -> CTA, 540 frames / 9.0 s @ 60 FPS
+- CHALLENGE_002: HOOK -> GAME, 600 frames / 10.0 s @ 60 FPS
+- CHALLENGE_005: GAME, 420 frames / 7.0 s @ 60 FPS
+- CHALLENGE_006: GAME -> CTA, 540 frames / 9.0 s @ 60 FPS
+- CHALLENGE_007: HOOK -> GAME, 600 frames / 10.0 s @ 60 FPS
+
+VERIFICATION
+- C6-D4 Python phase-duration contract suite: PASS
+- build_factory.py Python syntax compile: PASS
+- Full Godot 4.7.1 E2E render/batch: PENDING (Godot unavailable in packaging environment)
+- FFprobe physical regeneration: PENDING
+
+OUTPUT POLICY
+Generated output manifests/videos were removed from this base package because the five fixture timelines changed. They must be regenerated from this source tree before production certification.

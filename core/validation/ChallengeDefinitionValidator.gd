@@ -26,6 +26,7 @@ static func validate_definition(config: Dictionary) -> Dictionary:
 				errors.append("Unsupported 'rng_version': %s. Expected '1.0' or '2.0'." % rng_version)
 
 	# 3. Comprobación de estructura temporal del vídeo (Capa 0 -> Video)
+	# Contrato C6-D4: duración 0 = fase omitida; GAME debe ser > 0.
 	if not config.has("video") or not (config["video"] is Dictionary):
 		errors.append("Missing or invalid mandatory section 'video'.")
 	else:
@@ -40,9 +41,9 @@ static func validate_definition(config: Dictionary) -> Dictionary:
 		var cta_dur: float = float(video.get("cta_duration", -1.0))
 
 		if hook_dur < 0.0 or cta_dur < 0.0:
-			errors.append("Durations 'hook_duration' and 'cta_duration' must be non-negative.")
+			errors.append("Durations 'hook_duration' and 'cta_duration' must be non-negative (0 disables the phase).")
 		if reveal_dur < 0.0:
-			errors.append("Duration 'reveal_duration' must be non-negative.")
+			errors.append("Duration 'reveal_duration' must be non-negative (0 disables the phase).")
 		if game_dur <= 0.0:
 			errors.append("'game_duration' must be strictly greater than 0.")
 
