@@ -1,0 +1,91 @@
+{
+  "manifest_version": "1.0",
+  "factory_version": "0.10.0",
+  "challenge_id": "CHALLENGE_004",
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "parking_v2",
+    "mechanic_version": "2.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 1,
+    "cta_frames": 120,
+    "final_seed": 314159,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 180,
+    "initial_seed": 314159,
+    "minimum_distance": 2.64212083816528,
+    "reveal_frames": 180,
+    "rng_version": "2.0",
+    "score": 0.270782912190842,
+    "seed_used": 314159,
+    "total_frames": 900,
+    "validate_only": false,
+    "winning_frame": 574,
+    "winning_frame_game": 394,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 9.56666666666667,
+    "winning_time_game": 6.56666666666667
+  },
+  "artifacts": {
+    "raw_video": "CHALLENGE_004_raw.avi",
+    "raw_video_sha256": "b5e328e6ba012ebac6102256250b7e2b872fed42869a43330cb056c6ed9839d9",
+    "final_video": "CHALLENGE_004.mp4",
+    "final_video_sha256": "8271f2c0527195c1c3f94efc26980f528ae01986a9030d6712f249d49a36ae53",
+    "preview_gif": "CHALLENGE_004.gif",
+    "preview_gif_sha256": "488df0bbe4bda212af9586d77bd59db897638cfa2aad9175a2f74ab95fab282c"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 15.0,
+    "nb_frames": 900,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "width": 1080,
+    "height": 1920,
+    "codec_name": "h264",
+    "pix_fmt": "yuvj420p",
+    "duration": 15.0,
+    "nb_frames": 900,
+    "r_frame_rate": "60/1",
+    "valid": true
+  },
+  "status": "PASS",
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 450,
+      "duration": 15.0
+    }
+  }
+}

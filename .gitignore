@@ -27,9 +27,7 @@ mono_crash.*.json
 .continue/
 
 # output videos
-output/*
-.mp4
-.raw.avi
+
 
 # python
 __pycache__/
