@@ -108,3 +108,9 @@ static func _validate_presentation_profile(config: Dictionary, errors: Array[Str
 
 	if presentation.has("profile_overrides") and not (presentation["profile_overrides"] is Dictionary):
 		errors.append("'presentation.profile_overrides' must be a Dictionary when provided.")
+		return
+
+	var profile_result: Dictionary = PresentationProfileValidator.validate_challenge(config)
+	if not bool(profile_result.get("is_valid", false)):
+		for error in profile_result.get("errors", []):
+			errors.append("Presentation profile: %s" % str(error))
