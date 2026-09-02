@@ -64,23 +64,15 @@ Historical examples in the V0.1 section are retained as historical examples. Cur
 }
 ```
 
-`CHALLENGE_001` and `CHALLENGE_002` remain `rng_version: "1.0"`. `CHALLENGE_003` and `CHALLENGE_004` are V2.0 fixtures.
+`CHALLENGE_001` and `CHALLENGE_002` remain `rng_version: "1.0"`. `CHALLENGE_003` through `CHALLENGE_009` use `rng_version: "2.0"` in the current corpus.
 
 The temporal model is declarative per challenge: HOOK, GAME, REVEAL and CTA durations are resolved independently at the configured FPS. Duration 0 omits a phase; GAME must remain > 0. The historical 2 s HOOK + 7 s GAME + 2 s CTA = 11 s / 660 frames @ 60 FPS remains a reference profile, not a global duration limit.
 
 ---
 
-## Current Live Data Contract — CHECKPOINT 0.9.0
+## Historical Data Contract — CHECKPOINT 0.9.0
 
-The frozen temporal contract is:
-
-```text
-FPS   = 60
-HOOK  = 120 frames
-GAME  = 420 frames
-CTA   = 120 frames
-TOTAL = 660 frames
-```
+That fixed 660-frame profile is historical. Current C6-D4 timing is declarative per challenge: `hook_frames + game_frames + reveal_frames + cta_frames`, with `GAME > 0` and zero-duration phases omitted.
 
 `SimulationResult.winning_frame` is GAME-relative. The absolute presentation frame is derived by adding `hook_frames`.
 

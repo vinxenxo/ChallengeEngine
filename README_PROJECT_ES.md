@@ -35,11 +35,9 @@ Familia de trayectoria continua. `parking_v2` es su implementación de producci�
 
 ### FIND — siguiente familia
 
-En 1.0.0 FIND ha sido seleccionada como candidata para una nueva familia espacial: un escáner busca un objetivo en presencia de distractores que participan en la dificultad matemática.
+FIND se integró como la quinta familia matemática activa en el checkpoint 1.0.0 y dispone de fixture productivo (`CHALLENGE_007`) y suite de aislamiento.
 
-El contrato FIND todavía no está congelado.
-
-MATCH queda rechazado para 1.0.0 porque exigiría una expansión prematura del transporte multi-entidad de presentación.
+Además, el repositorio C6 incorpora fixtures/puntos de integración experimentales para `choose_v1` y `count_v1` (`CHALLENGE_008` y `CHALLENGE_009`). Estos no deben confundirse con nuevos contratos matemáticos congelados: su presencia actual certifica disponibilidad de pipeline/presentación, no una nueva congelación de core.
 
 ## RNG y determinismo
 
@@ -70,7 +68,7 @@ La factoría 0.10.0 mantiene manifests de provenance 1.0, calcula `total_frames`
 0.8.0  CATCH v1                            FROZEN
 0.8.1  CATCH Presentation Contract         FROZEN / VALIDATED
 0.9.0  Production Contract Consolidation   FROZEN / VALIDATED
-1.0.x  FIND / additional V2 mechanics     FROZEN / VALIDATED FIXTURES
+1.0.0  FIND v1 + CHALLENGE_007              FROZEN / VALIDATED
 1.1.0-C6-D4 Phase Duration Control         CODE COMPLETE / E2E PENDING
 ```
 
@@ -79,3 +77,8 @@ La regla de desarrollo sigue siendo:
 ```text
 AUDIT → CONTRACT → ISOLATION → INTEGRATION → REGRESSION → BATCH → FREEZE
 ```
+
+
+## Documentación viva
+
+La continuidad y el estado de release se encuentran en `MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md`. El mapa de documentación vigente está en `docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md` y el roadmap en `docs/ROADMAP_PHASES.md`.

@@ -3,41 +3,30 @@
 ## Estado actual
 
 ```text
-CHECKPOINT 0.9.0 — PRODUCTION CONTRACT CONSOLIDATION
-FROZEN / VALIDATED
+CHECKPOINT 1.1.0-C6-D4
+C6-D4 CODE COMPLETE / STATIC CONTRACT PASS / GODOT E2E PENDING HERE
 ```
 
-Godot: `4.7.1-stable (official)`
+Godot objetivo: `4.7.1-stable (official)`
+Factory actual: `0.10.0`
+Manifest schema: `1.0`
 
-La infraestructura actual contiene seis fixtures y dos semánticas RNG coexistentes:
-
-```text
-001 key        → RNG 1.0
-002 parking    → RNG 1.0
-003 pilot      → RNG 2.0
-004 parking_v2 → RNG 2.0
-005 hit_v1     → RNG 2.0
-006 catch_v1   → RNG 2.0
-```
+El repositorio contiene nueve fixtures (`CHALLENGE_001`…`CHALLENGE_009`) y dos generaciones RNG coexistentes. Los fixtures 001–007 forman el corpus congelado de producción heredado/1.0; 008–009 son fixtures C6 de `choose_v1`/`count_v1` ya cableados al pipeline.
 
 ## Gate de arquitectura
 
-Antes de modificar código:
+En una máquina certificadora con Godot 4.7.1:
 
 ```powershell
 godot --headless --path . --editor --quit
-python .\tests\run_suite.py
+python .\tests\run_all.py
 ```
 
-El runner Python externo es el árbitro final de las suites.
+`tests/run_all.py` es el runner de corpus completo y el árbitro de PASS/FAIL a nivel de suite.
 
-## Suites congeladas actualmente
+## Corpus de suites
 
-```text
-HIT_V1_ISOLATION
-CATCH_V1_ISOLATION
-CATCH_PRESENTATION_CONTRACT
-```
+El descubrimiento es contractual: todo `*Test.gd` bajo `tests/` debe estar registrado explícitamente en `KNOWN_SUITES`. Esto evita que un test nuevo quede fuera de la regresión por accidente.
 
 ## Producción batch
 
@@ -45,33 +34,33 @@ CATCH_PRESENTATION_CONTRACT
 python build_factory.py --batch ./challenges --output ./output --workers 2
 ```
 
-Resultado de referencia 0.9.0:
+La certificación C6-D4 debe verificar, para los nueve challenges, que: `VideoTimeline.gd` y `build_factory.py` producen los mismos frame counts; el render físico contiene exactamente ese número de frames; FFprobe confirma duración/framerate; y el `BATCH_MANIFEST.json` consolida PASS sin contaminar la simulación.
+
+## Contrato temporal vivo
 
 ```text
-total  = 6
-passed = 6
-failed = 0
-status = PASSED
+HOOK → GAME → REVEAL → CTA
+0 s  → fase omitida
+GAME → siempre > 0
+TOTAL → suma de fases efectivas
 ```
 
-## Contrato de producción 0.9.0
+Fixtures C6-D4 oficiales:
 
 ```text
-factory_version  = 0.9.0
-manifest_version = 1.0
-rng_versions     = ["1.0", "2.0"]
+001  GAME → CTA      540 frames
+002  HOOK → GAME     600 frames
+005  GAME             420 frames
+006  GAME → CTA       540 frames
+007  HOOK → GAME      600 frames
 ```
-
-Los manifests unitarios viven en `output/CHALLENGE_XXX/`. El único certificado batch en la raíz es `output/BATCH_MANIFEST.json`.
-
-La factoría no inventa metadata declarativa ausente. Los campos de Capa 0 presentes en el JSON se copian literalmente al snapshot de provenance.
 
 ## Arquitectura de producción
 
 ```text
 Challenge JSON
    ↓
-Godot validation / simulation
+Godot validation / deterministic simulation
    ↓
 SimulationResult + telemetry
    ↓
@@ -79,7 +68,7 @@ Godot Movie Maker / Compatibility renderer
    ↓
 RAW AVI
    ↓
-Python build_factory.py
+Python build_factory.py 0.10.0
    ↓
 FFmpeg
    ↓
@@ -90,8 +79,6 @@ FFprobe
 manifest.json / BATCH_MANIFEST.json
 ```
 
-## Próximo checkpoint
+## Fuente de verdad
 
-`1.0.0` selecciona FIND como candidata. Su contrato matemático sigue en revisión; no se asignan todavía RNG streams ni se modifica la infraestructura global.
-
-Consulta `docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md` y `MASTER_HANDOVER_CHECKPOINT_0.9.0.md` para el estado contractual vivo.
+La continuidad actual está gobernada por `MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md`. El código de simulación y los contratos RNG siguen congelados; C6-D4 modifica únicamente la composición temporal de presentación por challenge.

@@ -74,7 +74,7 @@ Presentation Layer
 
 ---
 
-## Current Live Domain Status — CHECKPOINT 0.9.0
+## Current Live Domain Status — CHECKPOINT 1.1.0-C6-D4
 
 The current frozen domain families are represented by:
 
@@ -89,4 +89,4 @@ catch_v1
 
 HIT and CATCH are mathematically sovereign with respect to their winning-frame and score calculations. CATCH also owns the frozen presentation transport `custom_data["target_position"]`.
 
-The next candidate family is FIND. Its mathematical contract is not yet frozen and must not be inferred from CATCH simply because both use spatial distance.
+FIND is already integrated and frozen in the 1.0.0 baseline. C6-D4 does not introduce a new mathematical family; it changes presentation timing independently of domain simulation.

@@ -142,7 +142,7 @@ The current Registry contains:
 | 60 | `PARKING_STEERING_NOISE` | `STRUCTURAL_MAIN` | `ParkingMechanic` |
 | 1010 | `PARTICLES` | `PRESENTATION` | `PilotVisuals` |
 
-### Important current integration boundary
+### Historical integration boundary
 
 `ParkingMechanicV2.gd` exists and is validated in isolation, but `MechanicRegistry.gd` does **not yet** resolve `parking_v2`, and `GeneradorMaestro.gd` currently only has an end-to-end V2 capability path for the Pilot mechanic.
 
@@ -150,7 +150,7 @@ That is the explicit objective of CHECKPOINT 0.3.6. Do not assume global integra
 
 ---
 
-## Current Live Architecture — CHECKPOINT 0.9.0
+## Current Live Architecture — CHECKPOINT 1.1.0-C6-D4
 
 The historical architecture sections above are preserved. The live pipeline is now:
 
@@ -165,7 +165,7 @@ Godot Movie Maker (graphical Compatibility renderer)
     ↓
 RAW AVI
     ↓
-Python build_factory.py 0.9.0
+Python build_factory.py 0.10.0
     ↓
 FFmpeg H.264 / YUV420p
     ↓
@@ -176,6 +176,8 @@ FFprobe
 unit manifest 1.0 / BATCH_MANIFEST 1.0
 ```
 
+Factory implementation version: `0.10.0`; manifest schema remains `1.0`.
+
 The architectural law remains:
 
 ```text
@@ -185,4 +187,4 @@ FFMPEG PACKAGES
 FFPROBE VALIDATES
 ```
 
-Checkpoint 0.9.0 adds provenance consolidation and canonical artifact isolation; it does not alter the frozen mathematical contracts of HIT or CATCH.
+Checkpoint 1.1.0-C6-D4 adds declarative per-challenge phase duration control while preserving the frozen deterministic simulation/RNG contracts. `VideoTimeline.gd` is the effective presentation timeline source of truth.

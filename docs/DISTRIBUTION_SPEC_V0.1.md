@@ -62,7 +62,7 @@ This supersedes older timing examples in this historical document for current en
 
 ---
 
-## Current Live Distribution Contract — CHECKPOINT 0.9.0
+## Current Live Distribution Contract — CHECKPOINT 1.1.0-C6-D4
 
 The distribution layer remains platform-agnostic. The current production master is:
 
@@ -75,6 +75,6 @@ H.264 / MP4
 YUV420p
 ```
 
-The live timeline is 2 s HOOK + 7 s GAME + 2 s CTA. Older 3+7+1 timing in this historical document is retained as historical reference only and must not override the live JSON contract.
+The live timeline is declarative per challenge. The historical 2+7+2 profile remains a reference fixture only and must not override `VideoTimeline` / JSON durations.
 
 Production artifacts are isolated under the challenge output directory; the root output directory contains only the batch manifest and non-challenge placeholders such as `.gitkeep`.

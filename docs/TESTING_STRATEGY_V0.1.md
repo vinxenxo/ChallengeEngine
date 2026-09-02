@@ -72,25 +72,27 @@ The Parking V2 isolation result does **not** yet certify global pipeline integra
 
 ---
 
-## Current Live Testing Strategy — CHECKPOINT 0.9.0 / 1.0.0
+## Current Live Testing Strategy — CHECKPOINT 1.1.0-C6-D4
 
 The external `tests/run_suite.py` remains the suite-level arbiter. It treats runtime/script errors as fatal and requires accepted PASS markers.
 
-Current frozen architectural suites:
+The external `tests/run_all.py` is the current corpus runner. It discovers every `*Test.gd` under `tests/` and requires explicit registration plus a PASS marker. The present source corpus contains suites for HIT, CATCH, FIND, Parking V2, Pilot/DDI, RNG architecture, and `choose_v1`.
+
+Current registered corpus includes:
 
 ```text
 HIT_V1_ISOLATION
 CATCH_V1_ISOLATION
 CATCH_PRESENTATION_CONTRACT
+CHOOSE_V1_ISOLATION
+FIND_V1_ISOLATION
+PARKING_V2_ISOLATION
+PILOT_ISOLATION
+DDI_R1
+RNG_TEST_SUITE
+RNG_ARCHITECTURE_SUITE
 ```
 
-Current production gate:
+The C6-D4 production gate is pending physical certification because this environment has no Godot executable. The static phase-duration contract is already passing for the five requested fixture combinations.
 
-```text
-build_factory.py --batch ./challenges --output ./output --workers 2
-→ total 6 / passed 6 / failed 0
-```
-
-0.9.0 also verifies provenance and canonical artifact isolation.
-
-For 1.0.0/FIND, a new family must first have an independent mathematical isolation suite and a presentation contract suite before batch integration.
+Batch certification requires the nine challenge definitions, Godot 4.7.1, FFmpeg and FFprobe, with manifest/frame-count agreement checked before release freeze.

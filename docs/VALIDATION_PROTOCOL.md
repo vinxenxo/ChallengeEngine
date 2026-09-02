@@ -62,7 +62,7 @@ V2.0 validation also distinguishes:
 
 ---
 
-## Current Live Validation Contract — CHECKPOINT 0.9.0
+## Current Live Validation Contract — CHECKPOINT 1.1.0-C6-D4
 
 The global temporal window is:
 
