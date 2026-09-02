@@ -1,0 +1,86 @@
+{
+  "manifest_version": "1.0",
+  "factory_version": "0.10.0",
+  "challenge_id": "CHALLENGE_009",
+  "declarative_metadata": {
+    "mechanic": "count_v1"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 1,
+    "cta_frames": 120,
+    "final_seed": 20260901,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 180,
+    "initial_seed": 20260901,
+    "minimum_distance": 0.0,
+    "reveal_frames": 0,
+    "rng_version": "2.0",
+    "score": 1.0,
+    "seed_used": 20260901,
+    "total_frames": 720,
+    "validate_only": false,
+    "winning_frame": 495,
+    "winning_frame_game": 315,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 8.25,
+    "winning_time_game": 5.25
+  },
+  "artifacts": {
+    "raw_video": "CHALLENGE_009_raw.avi",
+    "raw_video_sha256": "e5766545d76898f635afba7a38f0b1bd6f929972a06726cca0ab1ca4f590dd2d",
+    "final_video": "CHALLENGE_009.mp4",
+    "final_video_sha256": "9d04f3b5775ab7b7a0d8eae4c7b4d5ba7fe18328a7233941790c5f5de24fce8b",
+    "preview_gif": "CHALLENGE_009.gif",
+    "preview_gif_sha256": "1df7cf655f9df9737fa2014c7670f6026eae0dee6e00602ac9303b2c9d9f1f58"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 12.0,
+    "nb_frames": 720,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "width": 1080,
+    "height": 1920,
+    "codec_name": "h264",
+    "pix_fmt": "yuvj420p",
+    "duration": 12.0,
+    "nb_frames": 720,
+    "r_frame_rate": "60/1",
+    "valid": true
+  },
+  "status": "PASS",
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 360,
+      "duration": 12.0
+    }
+  }
+}
