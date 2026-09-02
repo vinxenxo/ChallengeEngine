@@ -38,6 +38,7 @@ var target_offset: Vector2 = Vector2.ZERO
 
 # Capa de presentación UI unificada (C6-D.1 / D3)
 var presentation_ui: PresentationUI
+var presentation_profile: PresentationProfile
 
 # Infraestructura RNG V2.0 (Composition Root)
 var rng_registry: RNGStreamRegistry
@@ -83,6 +84,25 @@ func _ready() -> void:
 	validate_only = has_user_flag("--validate-only")
 	timeline = VideoTimeline.new(config_cache.get("video", {}))
 
+	# C6-E E1: profile declarativo, únicamente de presentación.
+	presentation_profile = PresentationProfile.from_challenge(config_cache)
+	var profile_validation := presentation_profile.validate()
+	if not bool(profile_validation.get("is_valid", false)):
+		emit_engine_error(
+			"PRESENTATION_PROFILE_INVALID",
+			"El Presentation Profile viola su contrato de presentación.",
+			str(profile_validation.get("errors", []))
+		)
+		get_tree().quit(1)
+		return
+
+	print(
+		"[C6E_PROFILE] id=", presentation_profile.profile_id,
+		" source=", presentation_profile.source_canvas_size,
+		" master=", presentation_profile.master_output_size,
+		" safe=", presentation_profile.safe_area
+	)
+
 	# --------------------------------------------------------
 	# Presentación declarativa
 	# --------------------------------------------------------
@@ -126,16 +146,14 @@ func _ready() -> void:
 		{}
 	)
 
-	var ui_theme_name: String = str(
-		ui_cfg.get(
-			"theme",
-			"default_c6"
-		)
-	)
+	var ui_theme_name: String = presentation_profile.theme_name
+	if ui_cfg.has("theme"):
+		ui_theme_name = str(ui_cfg.get("theme", presentation_profile.theme_name))
 
 	presentation_ui = PresentationUI.new(
 		presentation_ui_root,
-		ui_theme_name
+		ui_theme_name,
+		presentation_profile
 	)
 
 	print(

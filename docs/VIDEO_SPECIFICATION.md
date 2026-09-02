@@ -4,7 +4,8 @@
 
 | Parámetro | Valor Máster / Regla |
 | :--- | :--- |
-| **Resolución** | $1080 	imes 1920$ píxeles |
+| **Resolución Master** | 1080 × 1920 píxeles |
+| **Canvas / Source Movie** | 540 × 960 píxeles |
 | **Relación de Aspecto** | 9:16 (Vertical Estricto) |
 | **Framerate Target** | 60 FPS (configurable por JSON) |
 | **Formato de Píxel** | YUV420p (obligatorio para compatibilidad móvil) |
@@ -29,17 +30,31 @@ godot [renderer de producción] \
   --config=challenges/CHALLENGE_XXX.json
 ```
 
-## 3. Pipeline de Transcodificación FFmpeg
+## 3. Contrato físico de salida C6-E / E0
+
+La salida tiene una única especificación de producto:
+
+```text
+Simulation coordinate canvas : 1080 × 1920
+Source Movie / Godot        : 540 × 960 @ 60 FPS
+Master MP4                  : 1080 × 1920 @ 60 FPS
+Master codec                : H.264
+Master pixel format         : YUV420p-compatible
+```
+
+El upscale del source movie al master es explícito y obligatorio:
 
 ```bash
 ffmpeg -y -i output/CHALLENGE_XXX_raw.avi \
-  -vcodec libx264 \
+  -vf scale=1080:1920:flags=lanczos \
+  -c:v libx264 \
   -crf 18 \
   -pix_fmt yuv420p \
-  -acodec aac \
-  -b:a 192k \
   output/CHALLENGE_XXX.mp4
 ```
+
+FFprobe del master debe certificar simultáneamente 1080×1920, H.264, YUV420-compatible, FPS declarado y número de frames del timeline.
+
 
 ---
 

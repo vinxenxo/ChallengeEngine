@@ -69,7 +69,11 @@ La factoría 0.10.0 mantiene manifests de provenance 1.0, calcula `total_frames`
 0.8.1  CATCH Presentation Contract         FROZEN / VALIDATED
 0.9.0  Production Contract Consolidation   FROZEN / VALIDATED
 1.0.0  FIND v1 + CHALLENGE_007              FROZEN / VALIDATED
+<<<<<<< HEAD
 1.1.0-C6-D4 Phase Duration Control         CODE COMPLETE / E2E PENDING
+=======
+1.1.0-C6-D4 Phase Duration Control         CERTIFICADO / E2E PASS
+>>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
 ```
 
 La regla de desarrollo sigue siendo:

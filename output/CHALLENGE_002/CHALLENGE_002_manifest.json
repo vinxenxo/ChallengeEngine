@@ -34,13 +34,41 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_002_raw.avi",
-    "raw_video_sha256": "26ad454bd0894a9ef656ede0137da1c7783c4c939b87f06bb9c9d448d4f76c76",
+    "raw_video_sha256": "e260e3c5ce28f839c0613c00053044b8b1be957861f7b1d1659bc4fc6e885c5a",
     "final_video": "CHALLENGE_002.mp4",
-    "final_video_sha256": "0fc1db317dd4d404ad632c47dca1ee3671b76533162f83e0dbb5734d0fe2876c",
+    "final_video_sha256": "f95e6c5be469ce795debe380a1468fd1d491f600d2c72bb1d98ca7cf03463642",
     "preview_gif": "CHALLENGE_002.gif",
-    "preview_gif_sha256": "523e3bb4e6846e6f53a38dd48633bb27e48270ee21bd939886844fd8d49d143c"
+    "preview_gif_sha256": "18570acc32c088924069da4c4a64e1c86488a8650cc6f0bb1412ffe797e0bae1"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 10.0,
+    "nb_frames": 600,
+    "r_frame_rate": "60/1"
   },
   "validation": {
+    "width": 1080,
+    "height": 1920,
+    "codec_name": "h264",
+    "pix_fmt": "yuvj420p",
     "duration": 10.0,
     "nb_frames": 600,
     "r_frame_rate": "60/1",

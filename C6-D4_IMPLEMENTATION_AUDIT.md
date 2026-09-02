@@ -26,7 +26,11 @@ Quick, isolated implementation of per-challenge video phase control.
 | 007 | HOOK → GAME | 600 | 10.0 s |
 
 ## Runtime certification status
+<<<<<<< HEAD
 Godot 4.7.1 is not available in the current Linux execution environment, so the full Godot E2E render/batch and FFprobe regeneration cannot be executed here. This is intentionally recorded as pending rather than reported as passed. FFmpeg and FFprobe are available.
+=======
+The packaged audit was created before the final Windows certification. Subsequent Windows evidence on Godot 4.7.1 shows the complete regression suite passing (10/10) and the 9-challenge factory batch passing (9/9). This checkpoint is historical evidence; current certification is recorded in MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md.
+>>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
 
 ## Repository audit status
 The follow-up repository-wide audit is recorded in `DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md` and `docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md`.
