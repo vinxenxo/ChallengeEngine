@@ -17,32 +17,32 @@
     "final_seed": 314159,
     "game_frames": 420,
     "godot_version": "4.7.1-stable (official)",
-    "hook_frames": 120,
+    "hook_frames": 180,
     "initial_seed": 314159,
     "minimum_distance": 0.00520862150247581,
     "reveal_frames": 0,
     "rng_version": "2.0",
     "score": 0.97863649811667,
     "seed_used": 314159,
-    "total_frames": 660,
+    "total_frames": 720,
     "validate_only": false,
-    "winning_frame": 392,
+    "winning_frame": 452,
     "winning_frame_game": 272,
     "winning_frame_in_valid_window": true,
-    "winning_time": 6.53333333333333,
+    "winning_time": 7.53333333333333,
     "winning_time_game": 4.53333333333333
   },
   "artifacts": {
     "raw_video": "CHALLENGE_003_raw.avi",
-    "raw_video_sha256": "2dc347a0da83361aa6e0e9cc88bbcd62a33bbb3cbe1cab8607d2f058cd083a89",
+    "raw_video_sha256": "f34bb0e952337f4df7368184a729cb7836e38b62ad677478d66ef6b4d6966cca",
     "final_video": "CHALLENGE_003.mp4",
-    "final_video_sha256": "70dfb1dfde33cc24a3516f35fb7eee28f291a8593722973ce1e88b222a2edbd2",
+    "final_video_sha256": "31fdd0e982f3dbde27f132947b55118efc8930dbe27d0f559bece8d264d01c37",
     "preview_gif": "CHALLENGE_003.gif",
-    "preview_gif_sha256": "842d5e9b76d83ade72b778e064eee097a1b7552544bc9d73e5f40d3f3aa1c764"
+    "preview_gif_sha256": "308bd58c4ecd3756edd30440105822bd77e3a33bb9bf114ce8de400c9a36dd82"
   },
   "validation": {
-    "duration": 11.0,
-    "nb_frames": 660,
+    "duration": 12.0,
+    "nb_frames": 720,
     "r_frame_rate": "60/1",
     "valid": true
   },
@@ -56,8 +56,8 @@
       "width": 540,
       "height": 960,
       "avg_frame_rate": "100/3",
-      "nb_frames": 330,
-      "duration": 11.0
+      "nb_frames": 360,
+      "duration": 12.0
     }
   }
 }

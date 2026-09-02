@@ -13,6 +13,11 @@ var countdown_label: Label
 var theme_config: Dictionary = {}
 
 func _init(root: Control, theme_name: String = "default_c6") -> void:
+
+	print(
+		"[D3_UI_SOURCE] PresentationUI cargada desde: ",
+		get_script().resource_path
+	)
 	container = root
 	theme_config = PresentationTheme.get_theme_config(theme_name)
 	build_or_bind_elements()
@@ -185,7 +190,6 @@ func _make_stylebox(bg: Color, border: Color, border_width: int, radius: int) ->
 	box.set_corner_radius_all(radius)
 	return box
 
-
 func _update_countdown(
 	content: Dictionary,
 	state: String
@@ -197,8 +201,8 @@ func _update_countdown(
 	countdown_label.visible = false
 	countdown_label.text = ""
 
-	# La cuenta atrás SOLO existe al principio de GAME.
-	if state != "GAME":
+	# La cuenta atrás SOLO existe durante HOOK.
+	if state != "HOOK":
 		return
 
 	var fps: int = max(
@@ -221,32 +225,47 @@ func _update_countdown(
 		)
 	)
 
-	# Ventana fija de 3 segundos al inicio del GAME.
-	var countdown_duration_frames: int = fps * 3
+	print(
+		"[D3_COUNTDOWN] "
+		+ "state="
+		+ state
+		+ " | frame="
+		+ str(state_frame)
+		+ " | fps="
+		+ str(fps)
+	)
 
-	if state_frame >= countdown_duration_frames:
+	# ========================================================
+	# COUNTDOWN D3
+	#
+	# 0 .. fps-1       => 3
+	# fps .. 2*fps-1  => 2
+	# 2*fps .. 3*fps-1 => 1
+	# 3*fps en adelante => apagado
+	# ========================================================
+
+	var first_boundary: int = fps
+	var second_boundary: int = fps * 2
+	var third_boundary: int = fps * 3
+
+	var countdown_value: int = 0
+
+	if state_frame < first_boundary:
+		countdown_value = 3
+	elif state_frame < second_boundary:
+		countdown_value = 2
+	elif state_frame < third_boundary:
+		countdown_value = 1
+	else:
 		return
 
-	var elapsed_seconds: int = (
-		state_frame / fps
-	)
-
-	var countdown_value: int = (
-		3 - elapsed_seconds
-	)
-
-	countdown_value = clampi(
-		countdown_value,
-		1,
-		3
-	)
+	
 
 	countdown_label.text = str(
 		countdown_value
 	)
 
 	countdown_label.visible = true
-
 
 func _set_phase_hidden() -> void:
 	if hook_label != null:
@@ -276,6 +295,12 @@ func set_state(
 	state: String,
 	content: Dictionary
 ) -> void:
+
+	print(
+		"[D3_UI_STATE] state=", state,
+		" frame=", content.get("ui_state_frame", -1)
+	)
+
 	if container == null:
 		return
 

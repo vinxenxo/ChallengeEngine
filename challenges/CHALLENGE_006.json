@@ -7,7 +7,7 @@
   },
   "video": {
     "fps": 60,
-    "hook_duration": 2.0,
+    "hook_duration": 3.0,
     "game_duration": 7.0,
     "cta_duration": 2.0
   },
