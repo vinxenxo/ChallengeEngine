@@ -29,6 +29,43 @@ func _init() -> void:
     _assert(panel.position == Vector2(-2, 8), "Highlight padding position mismatch.")
     _assert(panel.size == Vector2(54, 64), "Highlight padding size mismatch.")
 
+    # Integration contract: PresentationUI owns and orchestrates E4
+    # without changing the frozen set_state(state, content) API.
+    var ui_root := Control.new()
+    ui_root.size = Vector2(540, 960)
+    root.add_child(ui_root)
+    var ui := PresentationUI.new(ui_root, "default_c6", PresentationProfile.new())
+
+    ui.set_state("GAME", {
+        "ui_state_frame": 41,
+        "winning_frame_game": 42,
+        "winning_highlight_rects": [Rect2(Vector2(100, 100), Vector2(50, 50))]
+    })
+    _assert(
+        not ui.winning_highlight.is_visible(),
+        "Highlight must be OFF immediately before winning frame."
+    )
+
+    ui.set_state("GAME", {
+        "ui_state_frame": 42,
+        "winning_frame_game": 42,
+        "winning_highlight_rects": [Rect2(Vector2(100, 100), Vector2(50, 50))]
+    })
+    _assert(
+        ui.winning_highlight.is_visible(),
+        "Highlight must be ON exactly at winning frame."
+    )
+
+    ui.set_state("GAME", {
+        "ui_state_frame": 43,
+        "winning_frame_game": 42,
+        "winning_highlight_rects": [Rect2(Vector2(100, 100), Vector2(50, 50))]
+    })
+    _assert(
+        not ui.winning_highlight.is_visible(),
+        "Highlight must be OFF immediately after winning frame."
+    )
+
     if failures == 0:
         print("[C6E4_WINNING_HIGHLIGHT_CONTRACT_SUITE] PASS")
         quit(0)
