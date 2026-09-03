@@ -1,0 +1,313 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.local/schema/challenge/2.0/challenge_schema.json",
+  "title": "ChallengeEngine Challenge Definition Schema",
+  "description": "Normative C6-F/F1 schema for canonical challenge authoring. Legacy fixtures are not required to conform; migration into this contract is an explicit operation.",
+  "$comment": "C6-E presentation, C3-C5 deterministic simulation and VideoTimeline remain frozen contracts. This schema defines the declarative authoring boundary only. Mechanic-specific parameter semantics are intentionally delegated to the mechanic registry/typed validation layer in F3.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "version",
+    "challenge_id",
+    "engine_version",
+    "mechanic",
+    "mechanic_version",
+    "asset_family",
+    "asset_family_version",
+    "theme",
+    "simulation",
+    "video",
+    "difficulty",
+    "content",
+    "presentation",
+    "assets"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "2.0",
+      "description": "Canonical C6-F challenge schema version. Legacy 1.0 fixtures must be explicitly migrated."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Authoring/content version of this challenge definition."
+    },
+    "challenge_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mechanic": {
+      "type": "string",
+      "enum": [
+        "key",
+        "parking",
+        "pilot",
+        "parking_v2",
+        "hit_v1",
+        "catch_v1",
+        "find_v1",
+        "choose_v1",
+        "count_v1"
+      ]
+    },
+    "mechanic_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "asset_family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_family_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "theme": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seed",
+        "rng_version",
+        "parameters"
+      ],
+      "properties": {
+        "seed": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 4294967295
+        },
+        "rng_version": {
+          "type": "string",
+          "enum": [
+            "1.0",
+            "2.0"
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Mechanic-specific declarative parameters. Shape is typed by the registered mechanic validator, not by this generic schema.",
+          "additionalProperties": true
+        }
+      }
+    },
+    "video": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fps",
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "properties": {
+        "fps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 240
+        },
+        "hook_duration": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 3600
+        },
+        "game_duration": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 3600
+        },
+        "reveal_duration": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 3600
+        },
+        "cta_duration": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 3600
+        }
+      }
+    },
+    "difficulty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level"
+      ],
+      "properties": {
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "label": {
+          "type": "string",
+          "enum": [
+            "EASY",
+            "NORMAL",
+            "HARD",
+            "EXTREME"
+          ]
+        },
+        "tolerance": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hook": {
+          "type": "string"
+        },
+        "reveal": {
+          "type": "string"
+        },
+        "cta": {
+          "type": "string"
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "coordinate_space",
+        "secondary_binding"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding": {
+          "type": "string",
+          "enum": [
+            "static_position",
+            "target_position",
+            "target_x",
+            "target_state"
+          ]
+        },
+        "profile_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$"
+        },
+        "coordinate_space": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secondary_binding": {
+          "type": "string",
+          "enum": [
+            "static_position",
+            "target_position",
+            "target_x",
+            "target_state"
+          ]
+        },
+        "static_target_position": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "visual": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "ui": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "background_path",
+        "target_path",
+        "object_path"
+      ],
+      "properties": {
+        "background_path": {
+          "$ref": "#/$defs/resourcePath"
+        },
+        "target_path": {
+          "$ref": "#/$defs/resourcePath"
+        },
+        "object_path": {
+          "$ref": "#/$defs/resourcePath"
+        }
+      }
+    },
+    "autovetting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "require_capture": {
+          "type": "boolean"
+        },
+        "max_winning_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "min_winning_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_close_calls": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "resourcePath": {
+      "type": "string",
+      "pattern": "^res://.+$"
+    }
+  }
+}
