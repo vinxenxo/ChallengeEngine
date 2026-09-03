@@ -35,6 +35,7 @@ func _ensure_pool(count: int) -> void:
         var panel := Panel.new()
         panel.name = "WinningHighlight_%d" % highlight_nodes.size()
         panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        panel.z_index = 10
         root.add_child(panel)
         highlight_nodes.append(panel)
         _apply_style(panel)

@@ -1156,6 +1156,29 @@ func apply_reference_frame() -> void:
 	)
 
 
+func build_winning_highlight_rects() -> Array:
+	# E4 es estrictamente presentación: obtenemos la caja visible
+	# de los sprites que ya han sido posicionados para este frame.
+	# No consultamos SimulationResult, validaciones ni recalculamos win.
+	var rects: Array = []
+
+	for sprite in [object_sprite, target_sprite]:
+		if sprite == null or not sprite.visible or sprite.texture == null:
+			continue
+
+		var local_rect: Rect2 = sprite.get_rect()
+		var canvas_rect: Rect2 = sprite.get_global_transform() * local_rect
+
+		if presentation_ui_root != null:
+			var to_ui: Transform2D = presentation_ui_root.get_global_transform().affine_inverse()
+			canvas_rect = to_ui * canvas_rect
+
+		if canvas_rect.size.x > 0.0 and canvas_rect.size.y > 0.0:
+			rects.append(canvas_rect)
+
+	return rects
+
+
 # ============================================================
 # UI STATE BUILDER
 # ============================================================
@@ -1330,6 +1353,10 @@ func _process(_delta: float) -> void:
 				# Protección: si el frame no existe, no
 				# simulamos un estado inventado.
 				object_sprite.visible = false
+
+			# C6-E4: la geometría procede exclusivamente del estado
+			# visual ya aplicado por apply_frame_snapshot().
+			ui_content["winning_highlight_rects"] = build_winning_highlight_rects()
 
 			if presentation_ui != null:
 				presentation_ui.set_state(

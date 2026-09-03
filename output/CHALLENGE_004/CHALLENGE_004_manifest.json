@@ -34,11 +34,11 @@
   },
   "artifacts": {
     "raw_video": "CHALLENGE_004_raw.avi",
-    "raw_video_sha256": "b5e328e6ba012ebac6102256250b7e2b872fed42869a43330cb056c6ed9839d9",
+    "raw_video_sha256": "277cb26e5165b80c7750f1fbf814bcb4b5860fcee3de555d16553ebc7b5506ae",
     "final_video": "CHALLENGE_004.mp4",
-    "final_video_sha256": "8271f2c0527195c1c3f94efc26980f528ae01986a9030d6712f249d49a36ae53",
+    "final_video_sha256": "711602442356ec5593a4c0b169f34193a5b569ad521e7d166f93815387b8d639",
     "preview_gif": "CHALLENGE_004.gif",
-    "preview_gif_sha256": "488df0bbe4bda212af9586d77bd59db897638cfa2aad9175a2f74ab95fab282c"
+    "preview_gif_sha256": "af8d2d92a29142e9f78e73bcf51247e7332b06642e3224d77d2d9e27b0ec1ed8"
   },
   "output_contract": {
     "simulation_canvas": [

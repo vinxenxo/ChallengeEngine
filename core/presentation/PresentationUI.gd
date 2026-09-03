@@ -9,6 +9,7 @@ var winning_label: TypographyLabel
 var cta: CTAComponent
 var countdown: CountdownComponent
 var reveal_manager: RevealManager
+var winning_highlight: WinningHighlightComponent
 var current_profile: PresentationProfile
 var theme_name: String
 
@@ -68,7 +69,13 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	reveal_manager.winning_label = winning_label
 	if root_control != null:
 		root_control.add_child(reveal_manager)
-	
+
+	# C6-E4: marco visual efímero del frame ganador.
+	# Presentation-only: recibe geometría ya resuelta por el renderer.
+	winning_highlight = WinningHighlightComponent.new(root_control as Control)
+	if winning_highlight != null:
+		winning_highlight.hide()
+
 	if profile != null:
 		apply_profile(profile)
 
@@ -144,7 +151,18 @@ func set_state(state: String, content: Dictionary) -> void:
 		if timeline != null:
 			reveal_manager.process_frame(absolute_frame, winning_frame, timeline, state)
 
-	# 5. Orquestación de CTA
+	# 5. C6-E4 — Winning Frame Visual Emphasis
+	# El componente NO calcula el win: solo compara el frame de UI
+	# con winning_frame_game y dibuja los bounds visuales suministrados.
+	if winning_highlight != null:
+		winning_highlight.hide()
+		var winning_frame_game: int = int(content.get("winning_frame_game", -1))
+		var current_game_frame: int = int(content.get("ui_state_frame", -1))
+		var highlight_rects: Array = content.get("winning_highlight_rects", [])
+		if state == "GAME" and current_game_frame == winning_frame_game:
+			winning_highlight.show_for_rects(highlight_rects)
+
+	# 6. Orquestación de CTA
 	if state == "CTA":
 		if cta != null and current_profile != null:
 			cta.visible = true
