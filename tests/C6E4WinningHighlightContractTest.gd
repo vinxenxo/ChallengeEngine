@@ -1,0 +1,42 @@
+extends SceneTree
+
+const HIGHLIGHT = preload("res://core/presentation/components/WinningHighlightComponent.gd")
+
+var failures: int = 0
+
+func _init() -> void:
+    var root := Control.new()
+    root.size = Vector2(540, 960)
+    get_root().add_child(root)
+
+    var component := HIGHLIGHT.new(root)
+    var rects: Array = [Rect2(Vector2(100, 200), Vector2(80, 60)), Rect2(Vector2(300, 400), Vector2(100, 90))]
+
+    component.show_for_rects(rects)
+    _assert(component.is_visible(), "Highlight must be visible when rects are provided.")
+    _assert(root.get_node_or_null("WinningHighlight_0") != null, "Primary highlight node missing.")
+    _assert(root.get_node_or_null("WinningHighlight_1") != null, "Secondary highlight node missing.")
+
+    component.hide()
+    _assert(not component.is_visible(), "Highlight must be hidden after hide().")
+
+    component.show_for_rects([])
+    _assert(not component.is_visible(), "Empty rect set must remain hidden.")
+
+    # Geometry must be preserved with deterministic padding.
+    component.show_for_rects([Rect2(Vector2(10, 20), Vector2(30, 40))])
+    var panel := root.get_node("WinningHighlight_0") as Control
+    _assert(panel.position == Vector2(-2, 8), "Highlight padding position mismatch.")
+    _assert(panel.size == Vector2(54, 64), "Highlight padding size mismatch.")
+
+    if failures == 0:
+        print("[C6E4_WINNING_HIGHLIGHT_CONTRACT_SUITE] PASS")
+        quit(0)
+    else:
+        print("[C6E4_WINNING_HIGHLIGHT_CONTRACT_SUITE] FAIL failures=%d" % failures)
+        quit(1)
+
+func _assert(condition: bool, message: String) -> void:
+    if not condition:
+        failures += 1
+        print("[C6E4] " + message)
