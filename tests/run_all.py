@@ -28,6 +28,7 @@ KNOWN_SUITES = {
     "C6E2CountdownContractTest.gd": "[C6E2_COUNTDOWN_CONTRACT_SUITE] PASS",
     "C6E2BadgeAndFontRegressionTest.gd": "[C6E2_BADGE_FONT_REGRESSION_SUITE] PASS",
     "C6E3PresentationValidationTest.gd": "[C6E3_PRESENTATION_VALIDATION_SUITE] PASS",
+    "C6F1MigrationEquivalenceTest.gd": "[C6F1_MIGRATION_EQUIVALENCE_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 

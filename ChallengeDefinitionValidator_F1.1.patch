@@ -1,0 +1,15 @@
+*** Begin Patch
+*** Update File: core/validation/ChallengeDefinitionValidator.gd
+@@
+ class_name ChallengeDefinitionValidator
+ extends RefCounted
++
++const CANONICAL_VALIDATOR = preload("res://core/validation/C6FChallengeSchemaValidator.gd")
+@@
+-static func validate_definition(config: Dictionary) -> Dictionary:
++static func validate_definition(config: Dictionary, strict_canonical: bool = false) -> Dictionary:
+ 	var errors: Array[String] = []
++
++	if strict_canonical or str(config.get("schema_version", "")) == "2.0":
++		return CANONICAL_VALIDATOR.validate_v2(config)
+*** End Patch
