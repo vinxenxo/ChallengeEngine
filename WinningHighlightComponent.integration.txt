@@ -1,0 +1,67 @@
+C6-E4 — INTEGRACIÓN QUIRÚRGICA
+
+1) Añadir el archivo:
+   core/presentation/components/WinningHighlightComponent.gd
+
+2) PresentationUI.gd
+   - declarar:
+       var winning_highlight: WinningHighlightComponent
+   - en _init(), después de build_or_bind_elements():
+       winning_highlight = WinningHighlightComponent.new(container)
+   - al principio de set_state():
+       winning_highlight.hide()
+   - dentro de "GAME":
+       var game_frame: int = int(content.get("winning_frame_game", -1))
+       var current_game_frame: int = int(content.get("ui_state_frame", -1))
+       if game_frame >= 0 and current_game_frame == game_frame:
+           winning_highlight.show_for_rects(content.get("winning_highlight_rects", []))
+
+3) GeneradorMaestro.gd
+   El root NO calcula winning_frame. Utiliza final_result.winning_frame ya certificado.
+   Antes de presentation_ui.set_state("GAME", ui_content), preparar:
+       ui_content["winning_highlight_rects"] = _build_winning_highlight_rects()
+
+   Implementar una única función de presentación:
+
+       func _build_winning_highlight_rects() -> Array[Rect2]:
+           var rects: Array[Rect2] = []
+           if object_sprite == null:
+               return rects
+
+           var object_rect := _sprite_visual_rect_in_ui(object_sprite)
+           if object_rect.size.x > 0.0 and object_rect.size.y > 0.0:
+               rects.append(object_rect)
+
+           if target_sprite != null and target_sprite.visible:
+               var target_rect := _sprite_visual_rect_in_ui(target_sprite)
+               if target_rect.size.x > 0.0 and target_rect.size.y > 0.0:
+                   rects.append(target_rect)
+
+           return rects
+
+       func _sprite_visual_rect_in_ui(sprite: Sprite2D) -> Rect2:
+           if sprite == null or sprite.texture == null or presentation_ui_root == null:
+               return Rect2()
+
+           var texture_size: Vector2 = sprite.texture.get_size() * sprite.global_scale
+           var top_left_global: Vector2 = sprite.global_position - (texture_size * 0.5)
+           var bottom_right_global: Vector2 = sprite.global_position + (texture_size * 0.5)
+           var top_left_ui: Vector2 = presentation_ui_root.to_local(top_left_global)
+           var bottom_right_ui: Vector2 = presentation_ui_root.to_local(bottom_right_global)
+           return Rect2(top_left_ui, bottom_right_ui - top_left_ui)
+
+   IMPORTANTE:
+   - La función anterior es puramente geométrica/presentacional.
+   - No accede a RNG.
+   - No calcula distancia, colisión, score ni winning_frame.
+   - No modifica SimulationResult.
+
+4) Si el sprite secundario representa otro elemento afectado, se incluye mediante su rect.
+   Para mecánicas con más de dos elementos se puede ampliar el mismo Array sin tocar el contrato matemático.
+
+5) Comportamiento temporal obligatorio:
+       winning_frame_game - 1 -> OFF
+       winning_frame_game     -> ON
+       winning_frame_game + 1 -> OFF
+
+6) El highlight NO debe aparecer en HOOK/REVEAL/CTA.
