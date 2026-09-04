@@ -1,0 +1,10 @@
+{
+  "profile_id": "standard_8s",
+  "fps": 30,
+  "phases": {
+    "hook_duration": 1.0,
+    "game_duration": 5.0,
+    "reveal_duration": 1.0,
+    "cta_duration": 1.0
+  }
+}
