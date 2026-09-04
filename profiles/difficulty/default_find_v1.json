@@ -1,0 +1,19 @@
+{
+  "profile_id": "default_find_v1",
+  "mechanic": "find_v1",
+  "allowed_parameters": [
+    "distractor_count",
+    "capture_radius"
+  ],
+  "constraints": {
+    "distractor_count": { "type": "int", "min": 0, "max": 999 },
+    "capture_radius": { "type": "float", "min": 1.0, "max": 100.0 }
+  },
+  "base_parameters": {},
+  "scaling": {
+    "EASY": {},
+    "NORMAL": {},
+    "HARD": {},
+    "EXTREME": {}
+  }
+}
