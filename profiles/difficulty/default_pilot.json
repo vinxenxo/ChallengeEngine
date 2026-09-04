@@ -1,0 +1,16 @@
+{
+  "profile_id": "default_pilot",
+  "mechanic": "pilot",
+  "allowed_parameters": ["tolerance.distance_px", "target_velocity"],
+  "constraints": {
+    "tolerance.distance_px": { "type": "float", "min": 5.0, "max": 150.0 },
+    "target_velocity": { "type": "float", "min": 0.1, "max": 20.0 }
+  },
+  "base_parameters": {},
+  "scaling": {
+    "EASY": { "tolerance.distance_px": 60.0, "target_velocity": 2.0 },
+    "NORMAL": { "tolerance.distance_px": 45.0, "target_velocity": 4.0 },
+    "HARD": { "tolerance.distance_px": 30.0, "target_velocity": 7.0 },
+    "EXTREME": { "tolerance.distance_px": 15.0, "target_velocity": 12.0 }
+  }
+}

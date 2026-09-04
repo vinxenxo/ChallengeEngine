@@ -1,0 +1,15 @@
+{
+  "profile_id": "default_key",
+  "mechanic": "key",
+  "allowed_parameters": ["tolerance.rotation_deg"],
+  "constraints": {
+    "tolerance.rotation_deg": { "type": "float", "min": 0.1, "max": 180.0 }
+  },
+  "base_parameters": {},
+  "scaling": {
+    "EASY": { "tolerance.rotation_deg": 45.0 },
+    "NORMAL": { "tolerance.rotation_deg": 30.0 },
+    "HARD": { "tolerance.rotation_deg": 15.0 },
+    "EXTREME": { "tolerance.rotation_deg": 5.0 }
+  }
+}

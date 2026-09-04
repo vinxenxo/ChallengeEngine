@@ -12,10 +12,21 @@ static func get_band_for_level(level: int) -> String:
 	if level < 75: return BAND_HARD
 	return BAND_EXTREME
 
+# Helper para asignar valores mediante dot-path sin aplanar diccionarios
+static func _set_nested(dict: Dictionary, dot_path: String, value) -> void:
+	var parts = dot_path.split(".")
+	var curr = dict
+	for i in range(parts.size() - 1):
+		var p = parts[i]
+		if not curr.has(p) or typeof(curr[p]) != TYPE_DICTIONARY:
+			curr[p] = {}
+		curr = curr[p]
+	curr[parts[parts.size() - 1]] = value
+
 static func resolve(level: int, profile_data: Dictionary, overrides: Dictionary = {}) -> Dictionary:
 	var allowed = profile_data.get("allowed_parameters", [])
 	
-	# 1. Firewall estricto
+	# 1. Firewall estricto (verifica tanto dot-paths como claves planas)
 	var invalid_keys = []
 	for k in overrides:
 		if not allowed.has(k):
@@ -30,22 +41,22 @@ static func resolve(level: int, profile_data: Dictionary, overrides: Dictionary 
 		
 	var effective = {}
 	
-	# 2. Base parameters
+	# 2. Base parameters (soporta dot-path)
 	var base = profile_data.get("base_parameters", {})
 	for k in base:
-		effective[k] = base[k]
+		_set_nested(effective, k, base[k])
 		
-	# 3. Band scaling
+	# 3. Band scaling (soporta dot-path)
 	var band = get_band_for_level(level)
 	var scaling = profile_data.get("scaling", {})
 	if scaling.has(band):
 		var band_params = scaling[band]
 		for k in band_params:
-			effective[k] = band_params[k]
+			_set_nested(effective, k, band_params[k])
 			
-	# 4. Overrides
+	# 4. Overrides (soporta dot-path)
 	for k in overrides:
-		effective[k] = overrides[k]
+		_set_nested(effective, k, overrides[k])
 		
 	return {
 		"success": true,
@@ -57,8 +68,6 @@ static func resolve(level: int, profile_data: Dictionary, overrides: Dictionary 
 # F2.4 RUNTIME INTEGRATION (Precedencia y Resolución orquestada)
 # =========================================================================
 static func resolve_for_challenge(challenge_data: Dictionary, profile_data: Dictionary) -> Dictionary:
-	# 1. PRECEDENCIA ABSOLUTA: Si el desafío ya tiene simulation.parameters explícitos, 
-	# no se debe resolver nada. Se asume como un contrato ya cerrado (e.g. fixtures legacy o autoría directa).
 	var sim_params = challenge_data.get("simulation", {}).get("parameters", {})
 	if typeof(sim_params) == TYPE_DICTIONARY and not sim_params.is_empty():
 		return {
@@ -67,12 +76,10 @@ static func resolve_for_challenge(challenge_data: Dictionary, profile_data: Dict
 			"effective_parameters": sim_params.duplicate(true)
 		}
 		
-	# 2. Si no hay parámetros explícitos, resolvemos la intención de autoría
 	var diff = challenge_data.get("difficulty", {})
 	var level = diff.get("level", 50)
 	var overrides = diff.get("overrides", {})
 	
-	# 3. Validar contrato de perfil (F2.5)
 	var validation_errors = DifficultyProfileValidator.validate(challenge_data, profile_data)
 	if validation_errors.size() > 0:
 		return {
@@ -81,5 +88,4 @@ static func resolve_for_challenge(challenge_data: Dictionary, profile_data: Dict
 			"effective_parameters": {}
 		}
 		
-	# 4. Resolver
 	return resolve(level, profile_data, overrides)
