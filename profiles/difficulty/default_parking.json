@@ -1,0 +1,17 @@
+{
+  "profile_id": "default_parking",
+  "mechanic": "parking",
+  "allowed_parameters": ["tolerance.distance_px", "tolerance.angle_deg", "steering_noise"],
+  "constraints": {
+    "tolerance.distance_px": { "type": "float", "min": 1.0, "max": 200.0 },
+    "tolerance.angle_deg": { "type": "float", "min": 1.0, "max": 90.0 },
+    "steering_noise": { "type": "float", "min": 0.0, "max": 10.0 }
+  },
+  "base_parameters": {},
+  "scaling": {
+    "EASY": { "tolerance.distance_px": 50.0, "tolerance.angle_deg": 30.0, "steering_noise": 0.0 },
+    "NORMAL": { "tolerance.distance_px": 35.0, "tolerance.angle_deg": 20.0, "steering_noise": 0.5 },
+    "HARD": { "tolerance.distance_px": 20.0, "tolerance.angle_deg": 10.0, "steering_noise": 1.5 },
+    "EXTREME": { "tolerance.distance_px": 10.0, "tolerance.angle_deg": 5.0, "steering_noise": 3.0 }
+  }
+}

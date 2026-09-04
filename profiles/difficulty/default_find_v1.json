@@ -1,19 +1,17 @@
 {
   "profile_id": "default_find_v1",
   "mechanic": "find_v1",
-  "allowed_parameters": [
-    "distractor_count",
-    "capture_radius"
-  ],
+  "allowed_parameters": ["distractor_count", "capture_radius", "target_drift_radius"],
   "constraints": {
-    "distractor_count": { "type": "int", "min": 0, "max": 999 },
-    "capture_radius": { "type": "float", "min": 1.0, "max": 100.0 }
+    "distractor_count": { "type": "int", "min": 0, "max": 500 },
+    "capture_radius": { "type": "float", "min": 5.0, "max": 150.0 },
+    "target_drift_radius": { "type": "float", "min": 0.0, "max": 50.0 }
   },
   "base_parameters": {},
   "scaling": {
-    "EASY": {},
-    "NORMAL": {},
-    "HARD": {},
-    "EXTREME": {}
+    "EASY": { "distractor_count": 5, "capture_radius": 60.0, "target_drift_radius": 0.0 },
+    "NORMAL": { "distractor_count": 15, "capture_radius": 45.0, "target_drift_radius": 2.0 },
+    "HARD": { "distractor_count": 35, "capture_radius": 30.0, "target_drift_radius": 5.0 },
+    "EXTREME": { "distractor_count": 70, "capture_radius": 15.0, "target_drift_radius": 10.0 }
   }
 }

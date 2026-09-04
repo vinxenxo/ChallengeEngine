@@ -1,0 +1,17 @@
+{
+  "profile_id": "default_catch_v1",
+  "mechanic": "catch_v1",
+  "allowed_parameters": ["catch_radius", "target_speed_base", "catcher_speed_base"],
+  "constraints": {
+    "catch_radius": { "type": "float", "min": 5.0, "max": 200.0 },
+    "target_speed_base": { "type": "float", "min": 0.1, "max": 20.0 },
+    "catcher_speed_base": { "type": "float", "min": 0.1, "max": 20.0 }
+  },
+  "base_parameters": {},
+  "scaling": {
+    "EASY": { "catch_radius": 100.0, "target_speed_base": 3.0, "catcher_speed_base": 10.0 },
+    "NORMAL": { "catch_radius": 75.0, "target_speed_base": 5.0, "catcher_speed_base": 8.0 },
+    "HARD": { "catch_radius": 50.0, "target_speed_base": 8.0, "catcher_speed_base": 6.0 },
+    "EXTREME": { "catch_radius": 30.0, "target_speed_base": 12.0, "catcher_speed_base": 4.0 }
+  }
+}
