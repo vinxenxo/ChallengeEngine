@@ -41,6 +41,7 @@ KNOWN_SUITES = {
     "C6F2AuthoringAdapterContractTest.gd": "[C6F2_AUTHORING_ADAPTER_CONTRACT_SUITE] PASS",
     "C6F2AuthoringGeneratorContractTest.gd": "[C6F2_AUTHORING_GENERATOR_CONTRACT_SUITE] PASS",
     "C6F2AuthoringDeterminismTest.gd": "[C6F2_AUTHORING_DETERMINISM_SUITE] PASS",
+    "C6F2VideoProfileContractTest.gd": "[C6F2_VIDEO_PROFILE_CONTRACT_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 
