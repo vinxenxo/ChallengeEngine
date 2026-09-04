@@ -34,6 +34,7 @@ KNOWN_SUITES = {
     "C6F2LegacyEquivalenceTest.gd": "[C6F2_LEGACY_EQUIVALENCE_SUITE] PASS",
     "C6F2ResolverCorrectnessTest.gd": "[C6F2_RESOLVER_CORRECTNESS_SUITE] PASS",
     "C6F2LegacyEquivalenceTest.gd": "[C6F2_LEGACY_EQUIVALENCE_SUITE] PASS",
+    "C6F2DeterminismTest.gd": "[C6F2_DETERMINISM_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 
