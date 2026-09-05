@@ -1,0 +1,92 @@
+[
+  {
+    "challenge_id": "CHALLENGE_001",
+    "mechanic": "key",
+    "fps": 60,
+    "hook_duration": 0.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 2.0,
+    "asset_family": "fam_001"
+  },
+  {
+    "challenge_id": "CHALLENGE_002",
+    "mechanic": "parking",
+    "fps": 60,
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 0.0,
+    "asset_family": "fam_garage_01"
+  },
+  {
+    "challenge_id": "CHALLENGE_003",
+    "mechanic": "pilot",
+    "fps": 60,
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0,
+    "cta_duration": 2.0,
+    "asset_family": "fam_001"
+  },
+  {
+    "challenge_id": "CHALLENGE_004",
+    "mechanic": "parking_v2",
+    "fps": 60,
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 3.0,
+    "cta_duration": 2.0,
+    "asset_family": "fam_garage_01"
+  },
+  {
+    "challenge_id": "CHALLENGE_005",
+    "mechanic": "hit_v1",
+    "fps": 60,
+    "hook_duration": 0.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 0.0,
+    "asset_family": "fam_001"
+  },
+  {
+    "challenge_id": "CHALLENGE_006",
+    "mechanic": "catch_v1",
+    "fps": 60,
+    "hook_duration": 0.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 2.0,
+    "asset_family": "fam_001"
+  },
+  {
+    "challenge_id": "CHALLENGE_007",
+    "mechanic": "find_v1",
+    "fps": 60,
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 0.0,
+    "asset_family": "fam_001"
+  },
+  {
+    "challenge_id": "CHALLENGE_008",
+    "mechanic": "choose_v1",
+    "fps": 60,
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 2.0,
+    "asset_family": "fam_001"
+  },
+  {
+    "challenge_id": "CHALLENGE_009",
+    "mechanic": "count_v1",
+    "fps": 60,
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 2.0,
+    "asset_family": "fam_001"
+  }
+]

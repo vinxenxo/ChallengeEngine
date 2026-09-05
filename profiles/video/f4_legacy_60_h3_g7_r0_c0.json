@@ -1,0 +1,10 @@
+{
+  "profile_id": "f4_legacy_60_h3_g7_r0_c0",
+  "fps": 60,
+  "phases": {
+    "hook_duration": 3.0,
+    "game_duration": 7.0,
+    "reveal_duration": 0.0,
+    "cta_duration": 0.0
+  }
+}

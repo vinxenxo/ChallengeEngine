@@ -1,5 +1,7 @@
 extends Node2D
 
+const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
+
 # ============================================================
 # ChallengeEngineV01_STATELESS
 # GeneradorMaestro.gd
@@ -21,6 +23,7 @@ var final_winning_frame: int = -1
 var config_cache: Dictionary = {}
 var validate_only: bool = false
 var final_result: SimulationResult
+var runtime_context: ChallengeRuntimeContext = null
 
 # Estado de resolución de referencia universal (C6-A)
 var reference_frame_index: int = -1
@@ -232,6 +235,40 @@ func _ready() -> void:
 
 	final_result = validation_package["result"]
 	var validation: ValidationResult = validation_package["validation"]
+
+	# C6-F4.2: shadow integration is evaluated only after the legacy
+	# autovetting route has selected its final deterministic seed.
+	var shadow_result := ChallengeRuntimeBridge.build_shadow_context(
+		config_cache,
+		final_result
+	)
+
+	if not bool(shadow_result.get("success", false)):
+		emit_engine_error(
+			str(shadow_result.get("error_code", "SHADOW_FAILED")),
+			str(shadow_result.get("error", "Shadow integration failed.")),
+			str(shadow_result.get("failures", []))
+		)
+		get_tree().quit(1)
+		return
+
+	runtime_context = shadow_result.get("context") as ChallengeRuntimeContext
+	var equivalence := ChallengeRuntimeBridge.verify_equivalence(
+		timeline,
+		final_result,
+		runtime_context
+	)
+
+	if not bool(equivalence.get("success", false)):
+		emit_engine_error(
+			str(equivalence.get("error_code", "SHADOW_EQUIVALENCE_FAILED")),
+			str(equivalence.get("error", "Shadow equivalence failed.")),
+			str(equivalence.get("failures", []))
+		)
+		get_tree().quit(1)
+		return
+
+	print("[C6-F4.2] Shadow integration + equivalence gate: PASS")
 
 	verified_history = final_result.frames
 	final_winning_frame = validation.absolute_winning_frame

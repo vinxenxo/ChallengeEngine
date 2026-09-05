@@ -1,0 +1,12 @@
+{
+  "F4.2_FIX_NOTES.md": "9ef3d9e981400c3b1dd04801686d38707e4d7c7df56027e3414a816a3bb47e72",
+  "F4.2_GeneradorMaestro.patch": "f684daa4c6185f3e6a6e2a6557f5120300c059dcb669927523e91086cb6a6d52",
+  "F4.2_STATIC_TIMING_CHECK.json": "49ace4511c71e31b0f47a429ff744be8346f21b32a2492b35633a320cbca10dc",
+  "GeneradorMaestro.gd": "00d50b924f5e040e570699f6cb57fb610dbb26a43e5ad3001612f61b3fd26e53",
+  "core/execution/ChallengeRuntimeContext.gd": "d5008be25e72830a2be55e229006b714f2e2d24a742581d4b8e9561a64969aa6",
+  "profiles/video/shadow_f4_60_h0_g7_r0_c0.json": "d669b4f2f70baffa9181c96a6142e9a7cee925ce3d82e8d0814bc9931d1bf0a8",
+  "profiles/video/shadow_f4_60_h0_g7_r0_c2.json": "cc8a5c3cdbfbfaa0caf6c9b9e4a4bfa6e10c08a03f47b254131d6c920047590f",
+  "profiles/video/shadow_f4_60_h3_g7_r0_c0.json": "37e6d74aa428ffed19fbda4884fb5bde7d53c838d20e0b6bf6f84f422e6796e2",
+  "profiles/video/shadow_f4_60_h3_g7_r0_c2.json": "c89f467e4713c63dd2e6dacc02ad845b1ba796dec5bdf047379ff4cae7ee9f3f",
+  "profiles/video/shadow_f4_60_h3_g7_r3_c2.json": "2661154612bb20f969d4c86bd82a2b3c685c0233827a9ae0911522e1fa7dfecf"
+}

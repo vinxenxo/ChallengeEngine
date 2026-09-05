@@ -1,0 +1,110 @@
+[
+  {
+    "challenge_id": "CHALLENGE_001",
+    "temporal": [
+      60,
+      0,
+      7,
+      0,
+      2
+    ],
+    "shadow_profile": "shadow_f4_60_h0_g7_r0_c2",
+    "total_frames": 540
+  },
+  {
+    "challenge_id": "CHALLENGE_002",
+    "temporal": [
+      60,
+      3,
+      7,
+      0,
+      0
+    ],
+    "shadow_profile": "shadow_f4_60_h3_g7_r0_c0",
+    "total_frames": 600
+  },
+  {
+    "challenge_id": "CHALLENGE_003",
+    "temporal": [
+      60,
+      3,
+      7,
+      0,
+      2
+    ],
+    "shadow_profile": "shadow_f4_60_h3_g7_r0_c2",
+    "total_frames": 720
+  },
+  {
+    "challenge_id": "CHALLENGE_004",
+    "temporal": [
+      60,
+      3,
+      7,
+      3,
+      2
+    ],
+    "shadow_profile": "shadow_f4_60_h3_g7_r3_c2",
+    "total_frames": 900
+  },
+  {
+    "challenge_id": "CHALLENGE_005",
+    "temporal": [
+      60,
+      0,
+      7,
+      0,
+      0
+    ],
+    "shadow_profile": "shadow_f4_60_h0_g7_r0_c0",
+    "total_frames": 420
+  },
+  {
+    "challenge_id": "CHALLENGE_006",
+    "temporal": [
+      60,
+      0,
+      7,
+      0,
+      2
+    ],
+    "shadow_profile": "shadow_f4_60_h0_g7_r0_c2",
+    "total_frames": 540
+  },
+  {
+    "challenge_id": "CHALLENGE_007",
+    "temporal": [
+      60,
+      3,
+      7,
+      0,
+      0
+    ],
+    "shadow_profile": "shadow_f4_60_h3_g7_r0_c0",
+    "total_frames": 600
+  },
+  {
+    "challenge_id": "CHALLENGE_008",
+    "temporal": [
+      60,
+      3,
+      7,
+      0,
+      2
+    ],
+    "shadow_profile": "shadow_f4_60_h3_g7_r0_c2",
+    "total_frames": 720
+  },
+  {
+    "challenge_id": "CHALLENGE_009",
+    "temporal": [
+      60,
+      3,
+      7,
+      0,
+      2
+    ],
+    "shadow_profile": "shadow_f4_60_h3_g7_r0_c2",
+    "total_frames": 720
+  }
+]
