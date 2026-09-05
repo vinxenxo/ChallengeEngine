@@ -1,0 +1,8 @@
+{
+  "family_id": "fam_001",
+  "version": "1.0",
+  "description": "Historical asset family fam_001 used by pilot and key mechanics.",
+  "themes": [
+    "default"
+  ]
+}

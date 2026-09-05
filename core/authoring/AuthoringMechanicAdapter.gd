@@ -4,13 +4,25 @@ extends RefCounted
 enum Source { DECLARED, DERIVED, UNAVAILABLE }
 
 func declared(val: Variant) -> Dictionary:
-	return {"source": Source.DECLARED, "value": val, "error": ""}
+	return {
+		"source": Source.DECLARED,
+		"value": val,
+		"error": ""
+	}
 
 func derived(val: Variant) -> Dictionary:
-	return {"source": Source.DERIVED, "value": val, "error": ""}
+	return {
+		"source": Source.DERIVED,
+		"value": val,
+		"error": ""
+	}
 
 func unavailable(err: String) -> Dictionary:
-	return {"source": Source.UNAVAILABLE, "value": null, "error": err}
+	return {
+		"source": Source.UNAVAILABLE,
+		"value": null,
+		"error": err
+	}
 
 func mechanic_id() -> String:
 	return ""
@@ -27,7 +39,10 @@ func default_presentation_profile() -> Dictionary:
 func required_assets() -> Dictionary:
 	return unavailable("required_assets not implemented")
 
-func build_structural_parameters(request: ChallengeAuthoringRequest, effective_parameters: Dictionary) -> Dictionary:
+func build_structural_parameters(
+	request: ChallengeAuthoringRequest,
+	effective_parameters: Dictionary
+) -> Dictionary:
 	return unavailable("build_structural_parameters not implemented")
 
 func validate_authoring_output(challenge: Dictionary) -> Array:
