@@ -1,18 +1,18 @@
 extends Node2D
 
 const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
+const ChallengeLegacyRuntimeOracle = preload("res://core/execution/ChallengeLegacyRuntimeOracle.gd")
 
 # ============================================================
 # ChallengeEngineV01_STATELESS
 # GeneradorMaestro.gd
-# C6-D4 — Declarative phase-duration control on the D3 presentation baseline.
+# C6-F4.3 — Effective Runtime Composition Root.
 #
 # PRINCIPIO:
-# - No modifica la simulación ni el RNG.
-# - No reemplaza el pipeline de validación.
-# - No asume nodos UI legacy.
-# - PresentationUI recibe SIEMPRE un único Dictionary de estado.
-# - El contador y dificultad se inyectan en ese Dictionary.
+# - C6 Runtime es la ruta efectiva de producción.
+# - El LegacyRuntimeOracle existe solo para auditoría cruzada.
+# - GeneradorMaestro no implementa simulación, RNG ni seed retry.
+# - Presentation consume exclusivamente SimulationResult + VideoTimeline.
 # - Los sprites de la mecánica siguen gobernados exclusivamente
 #   por FamilyAssets + FrameSnapshot.
 # ============================================================
@@ -42,11 +42,6 @@ var target_offset: Vector2 = Vector2.ZERO
 # Capa de presentación UI unificada (C6-D.1 / D3)
 var presentation_ui: PresentationUI
 var presentation_profile: PresentationProfile
-
-# Infraestructura RNG V2.0 (Composition Root)
-var rng_registry: RNGStreamRegistry
-var structural_rng: StructuralRNG
-var cosmetic_rng: CosmeticRNG
 
 
 @onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/FondoEstatico
@@ -85,193 +80,82 @@ func _ready() -> void:
 		return
 
 	validate_only = has_user_flag("--validate-only")
-	timeline = VideoTimeline.new(config_cache.get("video", {}))
 
-	# C6-E E1: profile declarativo, únicamente de presentación.
-	presentation_profile = PresentationProfile.from_challenge(config_cache)
-	var profile_validation := presentation_profile.validate()
-	if not bool(profile_validation.get("is_valid", false)):
+	# --------------------------------------------------------
+	# C6-F4.3: EFFECTIVE C6 RUNTIME
+	# Production state is resolved through the certified runtime bridge.
+	# --------------------------------------------------------
+	var effective_package: Dictionary = ChallengeRuntimeBridge.run_effective_pipeline(
+		config_cache
+	)
+
+	if not bool(effective_package.get("success", false)):
 		emit_engine_error(
-			"PRESENTATION_PROFILE_INVALID",
-			"El Presentation Profile viola su contrato de presentación.",
-			str(profile_validation.get("errors", []))
+			str(effective_package.get("error_code", "EFFECTIVE_RUNTIME_FAILED")),
+			str(effective_package.get("error", "C6 effective runtime failed.")),
+			str(effective_package.get("failures", []))
 		)
 		get_tree().quit(1)
 		return
 
-	print(
-		"[C6E_PROFILE] id=", presentation_profile.profile_id,
-		" source=", presentation_profile.source_canvas_size,
-		" master=", presentation_profile.master_output_size,
-		" safe=", presentation_profile.safe_area
-	)
-
-	# --------------------------------------------------------
-	# Presentación declarativa
-	# --------------------------------------------------------
-
-	setup_presentation_bindings()
-	setup_visual_calibration()
-
-	if presentation_ui_root == null:
-		var presentation_parent: Node = get_node_or_null(
-			"OptimizadorVertical/PantallaVideo"
-		)
-
-		if presentation_parent == null:
-			emit_engine_error(
-				"C6_UI_PARENT_MISSING",
-				"No existe el nodo PantallaVideo parent.",
-				"OptimizadorVertical/PantallaVideo"
-			)
-			get_tree().quit(1)
-			return
-
-		presentation_ui_root = Control.new()
-		presentation_ui_root.name = "PresentationUILayer"
-		presentation_parent.add_child(presentation_ui_root)
-
-		presentation_ui_root.position = Vector2.ZERO
-		presentation_ui_root.size = Vector2(
-			PresentationTheme.VIEWPORT_WIDTH,
-			PresentationTheme.VIEWPORT_HEIGHT
-		)
-
-		print("[C6_UI] PresentationUILayer creado dinámicamente.")
-
-	var pres_cfg: Dictionary = config_cache.get(
-		"presentation",
-		{}
-	)
-
-	var ui_cfg: Dictionary = pres_cfg.get(
-		"ui",
-		{}
-	)
-
-	var ui_theme_name: String = presentation_profile.theme_name
-	if ui_cfg.has("theme"):
-		ui_theme_name = str(ui_cfg.get("theme", presentation_profile.theme_name))
-
-	presentation_ui = PresentationUI.new(
-		presentation_ui_root,
-		ui_theme_name,
-		presentation_profile
-	)
-
-	print(
-		"[C6_UI] root=",
-		presentation_ui_root,
-		" size=",
-		presentation_ui_root.size if presentation_ui_root != null else Vector2(-1.0, -1.0),
-		" position=",
-		presentation_ui_root.position if presentation_ui_root != null else Vector2(-1.0, -1.0)
-	)
-
-	if presentation_ui_root != null:
-		presentation_ui_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	# --------------------------------------------------------
-	# RNG / simulación
-	# --------------------------------------------------------
-
-	var rng_init: Dictionary = initialize_rng_infrastructure()
-
-	if not bool(rng_init.get("valid", false)):
+	runtime_context = effective_package.get("context") as ChallengeRuntimeContext
+	if runtime_context == null or runtime_context.simulation_result == null or runtime_context.timeline == null:
 		emit_engine_error(
-			str(
-				rng_init.get(
-					"error_code",
-					"RNG_CONTEXT_INVALID"
-				)
-			),
-			"Falló la inicialización de la infraestructura RNG.",
-			str(
-				rng_init.get(
-					"details",
-					[]
-				)
-			)
+			"EFFECTIVE_RUNTIME_INVALID",
+			"El runtime C6 devolvió un contexto incompleto.",
+			"simulation_result/timeline/context required"
 		)
 		get_tree().quit(1)
 		return
 
-	var validation_package: Dictionary = run_validation_pipeline()
+	final_result = runtime_context.simulation_result
+	timeline = runtime_context.timeline
+	verified_history = final_result.frames
 
-	if not bool(
-		validation_package.get(
-			"valid",
-			false
-		)
-	):
-		var error_code: String = str(
-			validation_package.get(
-				"error_code",
-				"SIMULATION_FAILED"
-			)
-		)
-
-		var error_msg: String = str(
-			validation_package.get(
-				"message",
-				"Fallo en la simulación o autovetting."
-			)
-		)
-
-		var details: String = str(
-			validation_package.get(
-				"errors",
-				[]
-			)
-		)
-
+	var effective_validation: ValidationResult = effective_package.get("validation")
+	if effective_validation == null or not effective_validation.is_valid:
 		emit_engine_error(
-			error_code,
-			error_msg,
-			details
+			"EFFECTIVE_VALIDATION_FAILED",
+			"La validación del resultado efectivo C6 no es válida.",
+			str(effective_validation.errors if effective_validation != null else [])
 		)
 		get_tree().quit(1)
 		return
 
-	final_result = validation_package["result"]
-	var validation: ValidationResult = validation_package["validation"]
+	final_winning_frame = effective_validation.absolute_winning_frame
 
-	# C6-F4.2: shadow integration is evaluated only after the legacy
-	# autovetting route has selected its final deterministic seed.
-	var shadow_result := ChallengeRuntimeBridge.build_shadow_context(
-		config_cache,
-		final_result
-	)
-
-	if not bool(shadow_result.get("success", false)):
+	# --------------------------------------------------------
+	# C6-F4.3: INDEPENDENT LEGACY ORACLE
+	# Never used as production state; only audits exact equivalence.
+	# --------------------------------------------------------
+	var oracle_package: Dictionary = ChallengeLegacyRuntimeOracle.run(config_cache)
+	if not bool(oracle_package.get("valid", false)):
 		emit_engine_error(
-			str(shadow_result.get("error_code", "SHADOW_FAILED")),
-			str(shadow_result.get("error", "Shadow integration failed.")),
-			str(shadow_result.get("failures", []))
+			str(oracle_package.get("error_code", "LEGACY_ORACLE_FAILED")),
+			str(oracle_package.get("message", "Legacy runtime oracle failed.")),
+			str(oracle_package.get("errors", []))
 		)
 		get_tree().quit(1)
 		return
 
-	runtime_context = shadow_result.get("context") as ChallengeRuntimeContext
+	var oracle_result: SimulationResult = oracle_package.get("result")
+	var oracle_timeline: VideoTimeline = oracle_package.get("timeline")
 	var equivalence := ChallengeRuntimeBridge.verify_equivalence(
-		timeline,
-		final_result,
+		oracle_timeline,
+		oracle_result,
 		runtime_context
 	)
 
 	if not bool(equivalence.get("success", false)):
 		emit_engine_error(
-			str(equivalence.get("error_code", "SHADOW_EQUIVALENCE_FAILED")),
-			str(equivalence.get("error", "Shadow equivalence failed.")),
+			"F4_RUNTIME_EQUIVALENCE_FAILED",
+			"El runtime C6 efectivo no coincide con el oráculo legacy.",
 			str(equivalence.get("failures", []))
 		)
 		get_tree().quit(1)
 		return
 
-	print("[C6-F4.2] Shadow integration + equivalence gate: PASS")
-
-	verified_history = final_result.frames
-	final_winning_frame = validation.absolute_winning_frame
+	print("[C6-F4.3] Effective Runtime + independent legacy oracle: PASS")
 
 	# --------------------------------------------------------
 	# Frame de referencia certificado
@@ -400,10 +284,10 @@ func _ready() -> void:
 		"game_frames": timeline.game_frames,
 		"reveal_frames": timeline.reveal_frames,
 		"cta_frames": timeline.cta_frames,
-		"minimum_distance": validation.minimum_distance,
-		"score": validation.score,
-		"close_calls": validation.close_calls,
-		"winning_frame_in_valid_window": validation.winning_frame_in_valid_window,
+		"minimum_distance": effective_validation.minimum_distance,
+		"score": effective_validation.score,
+		"close_calls": effective_validation.close_calls,
+		"winning_frame_in_valid_window": effective_validation.winning_frame_in_valid_window,
 		"godot_version": Engine.get_version_info().string,
 		"validate_only": validate_only
 	}
@@ -420,6 +304,11 @@ func _ready() -> void:
 	# --------------------------------------------------------
 	# Assets
 	# --------------------------------------------------------
+
+	var pres_cfg: Dictionary = config_cache.get(
+		"presentation",
+		{}
+	)
 
 	var nodes_map: Dictionary = {
 		"background": bg_sprite,
@@ -630,421 +519,6 @@ func setup_visual_calibration() -> void:
 			float(tgt_off[0]),
 			float(tgt_off[1])
 		)
-
-
-func initialize_rng_infrastructure() -> Dictionary:
-	rng_registry = RNGStreamRegistry.new()
-	structural_rng = StructuralRNG.new(
-		rng_registry
-	)
-	cosmetic_rng = CosmeticRNG.new(
-		rng_registry
-	)
-
-	return {
-		"valid": true,
-		"error_code": "OK"
-	}
-
-
-func create_mechanic_rng_context(
-	seed: int,
-	consumer_id: String,
-	allowed_streams: Array[int]
-):
-	return MechanicRNGContext.create(
-		seed,
-		"2.0",
-		consumer_id,
-		allowed_streams,
-		structural_rng,
-		rng_registry
-	)
-
-
-func create_presentation_rng_context(
-	seed: int,
-	consumer_id: String,
-	allowed_streams: Array[int]
-):
-	return PresentationRNGContext.create(
-		seed,
-		"2.0",
-		consumer_id,
-		allowed_streams,
-		cosmetic_rng,
-		rng_registry
-	)
-
-
-func run_validation_pipeline() -> Dictionary:
-	var mechanic_id: String = str(
-		config_cache.get(
-			"mechanic",
-			""
-		)
-	)
-
-	var mechanic: ChallengeMechanic = (
-		MechanicRegistry.create_mechanic(
-			mechanic_id
-		)
-	)
-
-	if mechanic == null:
-		return {
-			"valid": false,
-			"error_code":
-				"UNKNOWN_MECHANIC_ID",
-			"message":
-				"La mecánica requerida '%s' no está registrada en MechanicRegistry." % mechanic_id,
-			"errors": [
-				("Unregistered mechanic_id: %s" % mechanic_id)
-			]
-		}
-
-	var generation_config: Dictionary = (
-		config_cache.get(
-			"generation",
-			{}
-		)
-	)
-
-	var initial_seed: int = int(
-		generation_config.get(
-			"seed",
-			12345
-		)
-	)
-
-	var rng_version: String = str(
-		generation_config.get(
-			"rng_version",
-			"1.0"
-		)
-	)
-
-	var current_seed: int = initial_seed
-
-	var sim_result: SimulationResult = null
-	var sim_validation: ValidationResult = null
-
-	var is_v2: bool = (
-		rng_version == "2.0"
-	)
-
-	var pilot_allowed_streams: Array[int] = [
-		RNGStreamRegistry.STREAM_TRAJECTORY,
-		RNGStreamRegistry.STREAM_CONTROL
-	]
-
-	var parking_v2_allowed_streams: Array[int] = [
-		RNGStreamRegistry.STREAM_PARKING_DODGE,
-		RNGStreamRegistry.STREAM_PARKING_SAVE,
-		RNGStreamRegistry.STREAM_PARKING_OVERSHOOT,
-		RNGStreamRegistry.STREAM_PARKING_STEERING
-	]
-
-	var hit_v1_allowed_streams: Array[int] = [
-		RNGStreamRegistry.STREAM_HIT_SPEED_VARIANCE,
-		RNGStreamRegistry.STREAM_HIT_TRAJECTORY_NOISE,
-		RNGStreamRegistry.STREAM_HIT_TARGET_OFFSET
-	]
-
-	var catch_v1_allowed_streams: Array[int] = [
-		RNGStreamRegistry.STREAM_CATCH_TARGET_MOTION,
-		RNGStreamRegistry.STREAM_CATCH_PURSUER_BIAS,
-		RNGStreamRegistry.STREAM_CATCH_INITIAL_PHASE
-	]
-
-	var find_v1_allowed_streams: Array[int] = [
-		RNGStreamRegistry.STREAM_FIND_SPATIAL_PLACEMENT,
-		RNGStreamRegistry.STREAM_FIND_TOPOLOGY_GENERATION,
-		RNGStreamRegistry.STREAM_FIND_SCANNER_TRAJECTORY,
-		RNGStreamRegistry.STREAM_FIND_TARGET_DRIFT
-	]
-
-	var attempts: int = 0
-	const MAX_ATTEMPTS: int = 100
-
-	while attempts < MAX_ATTEMPTS:
-		attempts += 1
-
-		var context_result = null
-
-		if is_v2:
-			match mechanic_id.to_lower():
-
-				"pilot":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"PilotMechanic",
-						pilot_allowed_streams
-					)
-
-				"parking_v2":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"ParkingMechanic",
-						parking_v2_allowed_streams
-					)
-
-				"hit_v1":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"HitMechanic",
-						hit_v1_allowed_streams
-					)
-
-				"catch_v1":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"CatchMechanic",
-						catch_v1_allowed_streams
-					)
-
-				"find_v1":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"FindMechanic",
-						find_v1_allowed_streams
-					)
-
-				"choose_v1":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"ChooseMechanic",
-						[]
-					)
-
-				"count_v1":
-					context_result = create_mechanic_rng_context(
-						current_seed,
-						"CountMechanic",
-						[]
-					)
-
-				_:
-					return {
-						"valid": false,
-						"error_code":
-							"RNG_CONTEXT_INVALID",
-						"message":
-							"No existe contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
-						"errors": [
-							("Missing V2.0 mechanic RNG contract: " + mechanic_id)
-						]
-					}
-
-			if not context_result.is_valid:
-				return {
-					"valid": false,
-					"error_code":
-						str(
-							context_result.error_code
-						),
-					"message":
-						"No se pudo crear la capability RNG de la mecánica.",
-					"errors": [
-						str(
-							context_result.error_code
-						)
-					]
-				}
-
-			mechanic.set_rng_context(
-				context_result.context
-			)
-
-		mechanic.setup(
-			config_cache
-		)
-
-		if (
-			not mechanic._is_setup
-			or mechanic._error_state != "OK"
-		):
-			current_seed = lcg_next_seed(
-				current_seed
-			)
-			continue
-
-		if mechanic.requires_temporal_preparation():
-			mechanic.prepare(
-				timeline.game_frames
-			)
-
-			if (
-				not mechanic._is_prepared
-				or mechanic._error_state != "OK"
-			):
-				current_seed = lcg_next_seed(
-					current_seed
-				)
-				continue
-
-		var test_result: SimulationResult = (
-			mechanic.simulate(
-				timeline.game_frames,
-				current_seed,
-				config_cache
-			)
-		)
-
-		if (
-			is_v2
-			and mechanic_id.to_lower()
-			in [
-				"pilot",
-				"parking_v2",
-				"hit_v1",
-				"catch_v1",
-				"find_v1",
-				"choose_v1",
-				"count_v1"
-			]
-			and context_result.context.error_state != "OK"
-		):
-			return {
-				"valid": false,
-				"error_code":
-					"MECHANIC_SIMULATION_ERROR",
-				"message":
-					"El contexto RNG reportó un error durante la simulación.",
-				"errors": [
-					str(
-						context_result.context.error_state
-					)
-				]
-			}
-
-		var contract_check: Dictionary = (
-			test_result.validate_contract(
-				timeline.game_frames
-			)
-		)
-
-		if not bool(
-			contract_check.get(
-				"is_valid",
-				false
-			)
-		):
-			return {
-				"valid": false,
-				"error_code":
-					str(
-						contract_check.get(
-							"error_code",
-							"SIMULATION_CONTRACT_VIOLATION"
-						)
-					),
-				"message":
-					str(
-						contract_check.get(
-							"message",
-							""
-						)
-					),
-				"errors": [
-					str(
-						contract_check.get(
-							"message",
-							""
-						)
-					)
-				]
-			}
-
-		SimulationMetricsResolver.resolve_metrics(
-			test_result
-		)
-
-		if test_result.error_state != "OK":
-			return {
-				"valid": false,
-				"error_code":
-					test_result.error_state,
-				"message":
-					"Fallo en la resolución de métricas: %s"
-					% test_result.error_state,
-				"errors": [
-					test_result.error_state
-				]
-			}
-
-		WinningFrameDetector.analyze_and_score(
-			test_result
-		)
-
-		var validation: ValidationResult = (
-			ChallengeValidator.validate(
-				test_result,
-				timeline.hook_frames,
-				timeline.game_frames
-			)
-		)
-
-		if validation.is_valid:
-			sim_result = test_result
-			sim_validation = validation
-			break
-
-		current_seed = lcg_next_seed(
-			current_seed
-		)
-
-	if (
-		sim_result == null
-		or sim_validation == null
-	):
-		return {
-			"valid": false,
-			"error_code":
-				"NO_VALID_SIMULATION",
-			"message":
-				"No se encontró una simulación válida que cumpliera los criterios narrativos tras %d intentos." % attempts,
-			"errors": [
-				"Exhausted %d seed attempts without finding a valid simulation." % attempts
-			]
-		}
-
-	sim_result.metadata["initial_seed"] = (
-		initial_seed
-	)
-
-	sim_result.metadata["final_seed"] = (
-		current_seed
-	)
-
-	sim_result.metadata["seed_used"] = (
-		current_seed
-	)
-
-	sim_result.metadata["attempts"] = (
-		attempts
-	)
-
-	sim_result.metadata["rng_version"] = (
-		rng_version
-	)
-
-	return {
-		"valid": true,
-		"result": sim_result,
-		"validation": sim_validation,
-		"errors": []
-	}
-
-
-func lcg_next_seed(seed: int) -> int:
-	return int(
-		(
-			seed * 1103515245
-			+ 12345
-		)
-		& 0x7fffffff
-	)
 
 
 func emit_engine_error(
