@@ -1,0 +1,17 @@
+{
+  "profile_id": "default_asset_music",
+  "music": {
+    "enabled": true,
+    "mode": "asset",
+    "asset_id": "music_arcade_01",
+    "volume_db": -8.0,
+    "loop": true
+  },
+  "sfx": {
+    "enabled": true,
+    "events": {
+      "win": "sfx_win_01",
+      "interaction": "sfx_click_01"
+    }
+  }
+}

@@ -46,6 +46,7 @@ KNOWN_SUITES = {
     "C6F2AssetFamilyContractTest.gd": "[C6F2_ASSET_FAMILY_CONTRACT_SUITE] PASS",
     "C6F2AdapterMetadataBindingTest.gd": "[C6F2_ADAPTER_METADATA_BINDING_SUITE] PASS",
     "C6F2ProductiveGeneratorTest.gd": "[C6F2_PRODUCTIVE_GENERATOR_SUITE] PASS",
+    "C6F2AudioProfileContractTest.gd": "[C6F2_AUDIO_PROFILE_CONTRACT_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 

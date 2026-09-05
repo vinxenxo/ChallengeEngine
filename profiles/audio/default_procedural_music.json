@@ -1,0 +1,16 @@
+{
+  "profile_id": "default_procedural_music",
+  "music": {
+    "enabled": true,
+    "mode": "procedural",
+    "procedural_config": {
+      "tempo": 140,
+      "intensity": 0.7
+    },
+    "volume_db": -5.0,
+    "loop": true
+  },
+  "sfx": {
+    "enabled": false
+  }
+}
