@@ -5,7 +5,7 @@ const STRUCTURAL = preload("res://core/deterministic/StructuralRNG.gd")
 const COSMETIC = preload("res://core/deterministic/CosmeticRNG.gd")
 const MECH_CTX = preload("res://core/deterministic/MechanicRNGContext.gd")
 const PRES_CTX = preload("res://core/deterministic/PresentationRNGContext.gd")
-const MAESTRO = preload("res://GeneradorMaestro.gd")
+const MECHANIC_REGISTRY = preload("res://core/mechanics/MechanicRegistry.gd")
 
 # ---------------------------------------------------------
 # TEST S: Presentation Execution Harness
@@ -117,58 +117,49 @@ func _run_test_s(failures: Array[String]) -> bool:
 	if config_text.is_empty():
 		failures.append("Test S Failed: Could not load CHALLENGE_003.json")
 		return false
-	
+
 	var config = JSON.parse_string(config_text)
 	var s_valid = true
-	
-	# Arrays estrictamente tipados para evitar el SCRIPT ERROR de Godot 4.7
-	var cam_consumers: Array[String] = ["Camera"]
-	var spr_consumers: Array[String] = ["Sprite"]
 
-	# Escenario A (Pilot -> Cam -> Sprite -> Particles)
-	var maestro_a = MAESTRO.new()
-	maestro_a.config_cache = config
-	maestro_a.timeline = VideoTimeline.new(config.get("video", {}))
-	maestro_a.initialize_rng_infrastructure()
-	
-	# Register conceptual presentation streams
-	maestro_a.rng_registry._register(1020, "CAMERA", REGISTRY.Domain.PRESENTATION, "Test", "frame", "2.0", cam_consumers)
-	maestro_a.rng_registry._register(1030, "SPRITE", REGISTRY.Domain.PRESENTATION, "Test", "entity", "2.0", spr_consumers)
-	
-	var sim_a = maestro_a.run_validation_pipeline()["result"]
-	
-	var cam_ctx_a = PRES_CTX.create(314159, "2.0", "Camera", [1020], maestro_a.cosmetic_rng, maestro_a.rng_registry).context
-	var spr_ctx_a = PRES_CTX.create(314159, "2.0", "Sprite", [1030], maestro_a.cosmetic_rng, maestro_a.rng_registry).context
-	var prt_ctx_a = PRES_CTX.create(314159, "2.0", "PilotVisuals", [1010], maestro_a.cosmetic_rng, maestro_a.rng_registry).context
-	
+	# Each scenario owns its own presentation RNG capability. The test must
+	# not depend on GeneradorMaestro's removed legacy orchestration.	
+	var registry_a = REGISTRY.new()
+	var cosmetic_a = COSMETIC.new(registry_a)
+	registry_a._register(1020, "CAMERA", REGISTRY.Domain.PRESENTATION, "Test", "frame", "2.0", ["Camera"])
+	registry_a._register(1030, "SPRITE", REGISTRY.Domain.PRESENTATION, "Test", "entity", "2.0", ["Sprite"])
+
+	var cam_ctx_a = PRES_CTX.create(314159, "2.0", "Camera", [1020], cosmetic_a, registry_a).context
+	var spr_ctx_a = PRES_CTX.create(314159, "2.0", "Sprite", [1030], cosmetic_a, registry_a).context
+	var prt_ctx_a = PRES_CTX.create(314159, "2.0", "PilotVisuals", [1010], cosmetic_a, registry_a).context
+
 	var cam_a = PresentationHarnessComponent.new(cam_ctx_a, 1020).execute(100)
 	var spr_a = PresentationHarnessComponent.new(spr_ctx_a, 1030).execute(100)
 	var prt_a = PresentationHarnessComponent.new(prt_ctx_a, 1010).execute(100)
+	var sim_a = _run_pilot_simulation(config)
 
-	# Escenario B (Particles -> Cam -> Sprite -> Pilot)
-	var maestro_b = MAESTRO.new()
-	maestro_b.config_cache = config
-	maestro_b.timeline = VideoTimeline.new(config.get("video", {}))
-	maestro_b.initialize_rng_infrastructure()
-	
-	maestro_b.rng_registry._register(1020, "CAMERA", REGISTRY.Domain.PRESENTATION, "Test", "frame", "2.0", cam_consumers)
-	maestro_b.rng_registry._register(1030, "SPRITE", REGISTRY.Domain.PRESENTATION, "Test", "entity", "2.0", spr_consumers)
+	# Reordered presentation consumption must not affect any presentation stream.
+	var registry_b = REGISTRY.new()
+	var cosmetic_b = COSMETIC.new(registry_b)
+	registry_b._register(1020, "CAMERA", REGISTRY.Domain.PRESENTATION, "Test", "frame", "2.0", ["Camera"])
+	registry_b._register(1030, "SPRITE", REGISTRY.Domain.PRESENTATION, "Test", "entity", "2.0", ["Sprite"])
 
-	var prt_ctx_b = PRES_CTX.create(314159, "2.0", "PilotVisuals", [1010], maestro_b.cosmetic_rng, maestro_b.rng_registry).context
-	var cam_ctx_b = PRES_CTX.create(314159, "2.0", "Camera", [1020], maestro_b.cosmetic_rng, maestro_b.rng_registry).context
-	var spr_ctx_b = PRES_CTX.create(314159, "2.0", "Sprite", [1030], maestro_b.cosmetic_rng, maestro_b.rng_registry).context
+	var prt_ctx_b = PRES_CTX.create(314159, "2.0", "PilotVisuals", [1010], cosmetic_b, registry_b).context
+	var cam_ctx_b = PRES_CTX.create(314159, "2.0", "Camera", [1020], cosmetic_b, registry_b).context
+	var spr_ctx_b = PRES_CTX.create(314159, "2.0", "Sprite", [1030], cosmetic_b, registry_b).context
 
 	var prt_b = PresentationHarnessComponent.new(prt_ctx_b, 1010).execute(100)
 	var cam_b = PresentationHarnessComponent.new(cam_ctx_b, 1020).execute(100)
 	var spr_b = PresentationHarnessComponent.new(spr_ctx_b, 1030).execute(100)
-	
-	var sim_b = maestro_b.run_validation_pipeline()["result"]
+	var sim_b = _run_pilot_simulation(config)
 
-	# Asserts
+	if sim_a == null or sim_b == null:
+		failures.append("Test S Failed: Pilot simulation helper returned null.")
+		return false
+
 	if sim_a.winning_frame != sim_b.winning_frame:
 		failures.append("Test S Failed: SimulationResult winning_frame differs upon reordering.")
 		s_valid = false
-		
+
 	for i in range(100):
 		if cam_a[i] != cam_b[i]:
 			failures.append("Test S Failed: Camera component index %d altered by execution order." % i)
@@ -182,11 +173,7 @@ func _run_test_s(failures: Array[String]) -> bool:
 			failures.append("Test S Failed: Particle component index %d altered by execution order." % i)
 			s_valid = false
 			break
-	
-	# Clean up Node2D leaks
-	maestro_a.free()
-	maestro_b.free()
-	
+
 	return s_valid
 
 # ---------------------------------------------------------
@@ -197,64 +184,95 @@ func _run_test_t(failures: Array[String]) -> bool:
 	if config_text.is_empty():
 		failures.append("Test T Failed: Could not load CHALLENGE_003.json")
 		return false
-		
+
 	var config = JSON.parse_string(config_text)
 	var t_valid = true
 
-	# Baseline Execution
-	var maestro_base = MAESTRO.new()
-	maestro_base.config_cache = config
-	maestro_base.timeline = VideoTimeline.new(config.get("video", {}))
-	maestro_base.initialize_rng_infrastructure()
-	
-	var val_base = maestro_base.run_validation_pipeline()
-	var sim_base = val_base["result"]
-	var result_base = val_base["validation"]
+	# Baseline Pilot simulation with the certified structural RNG.
+	var sim_base = _run_pilot_simulation(config)
+	# Mutated Pilot simulation with an injected StructuralRNG test double.
+	var mutated_registry = REGISTRY.new()
+	var mutated_structural = MutatedStructuralRNG.new(mutated_registry)
+	var sim_mut = _run_pilot_simulation(config, mutated_structural, mutated_registry)
 
-	# Mutated Execution
-	var maestro_mut = MAESTRO.new()
-	maestro_mut.config_cache = config
-	maestro_mut.timeline = VideoTimeline.new(config.get("video", {}))
-	maestro_mut.initialize_rng_infrastructure()
-	
-	# Inyectamos el StructuralRNG modificado
-	maestro_mut.structural_rng = MutatedStructuralRNG.new(maestro_mut.rng_registry)
-	
-	var val_mut = maestro_mut.run_validation_pipeline()
-	var sim_mut = val_mut["result"]
-	var result_mut = val_mut["validation"]
+	if sim_base == null or sim_mut == null:
+		failures.append("Test T Failed: Pilot simulation helper returned null.")
+		return false
 
-	# Asserts Macro
-	var macro_changed = (result_base.absolute_winning_frame != result_mut.absolute_winning_frame) or \
-						(result_base.minimum_distance != result_mut.minimum_distance) or \
-						(result_base.score != result_mut.score)
-						
-	if not macro_changed:
-		failures.append("Test T Failed: Structural stream mutation did not alter winning_frame, min_dist, or score.")
-		t_valid = false
+	# Simulation truth is evaluated by the frame snapshots here.
+	# winning_frame / minimum_distance / score are not computed by
+	# PilotMechanic.simulate(); they are resolved later by the analysis/
+	# validation layers. Therefore this DDI test must not demand a macro
+	# change in those fields at this stage.
 
-	# Asserts Internos por Frame
+	# The structural mutation MUST produce an observable trajectory effect,
+	# while CONTROL remains isolated and byte-for-byte equivalent.
+	var trajectory_changed := false
+	var position_changed := false
 	var frames_count = sim_base.frames.size()
+
+	if frames_count != sim_mut.frames.size():
+		failures.append("Test T Failed: structural mutation changed frame cardinality.")
+		t_valid = false
+		return t_valid
+
 	for i in range(frames_count):
 		var snap_base = sim_base.frames[i]
 		var snap_mut = sim_mut.frames[i]
-		
-		# Control offset DEBE ser idéntico
+
+		# Control offset DEBE ser idéntico.
 		if snap_base.custom_data.get("control_offset", 0.0) != snap_mut.custom_data.get("control_offset", 0.0):
 			failures.append("Test T Failed: control_offset mutated at frame %d when it should be isolated." % i)
 			t_valid = false
 			break
-			
-		# Trajectory noise DEBE ser diferente (asumiendo que 1.0 - x no es igual a x en la mayoría de valores no-0.5)
-		if snap_base.custom_data.get("trajectory_noise", 0.0) == snap_mut.custom_data.get("trajectory_noise", 0.0):
-			# Salvedad matemática: si el sample fue exactamente 0.5, 1.0 - 0.5 = 0.5, por lo que no cambiará.
-			if abs(snap_base.custom_data.get("trajectory_noise", 0.0)) > 0.0001: 
-				failures.append("Test T Failed: trajectory_noise did not react to stream mutation at frame %d." % i)
-				t_valid = false
-				break
-				
-	# Clean up Node2D leaks
-	maestro_base.free()
-	maestro_mut.free()
+
+		# Structural TRAJECTORY stream must alter the trajectory payload.
+		if snap_base.custom_data.get("trajectory_noise", 0.0) != snap_mut.custom_data.get("trajectory_noise", 0.0):
+			trajectory_changed = true
+
+		if snap_base.position != snap_mut.position:
+			position_changed = true
+
+	if not trajectory_changed:
+		failures.append("Test T Failed: TRAJECTORY stream mutation produced no trajectory_noise change.")
+		t_valid = false
+
+	if not position_changed:
+		failures.append("Test T Failed: structural trajectory mutation produced no position change.")
+		t_valid = false
 
 	return t_valid
+
+# ---------------------------------------------------------
+# PILOT TEST HARNESS
+# ---------------------------------------------------------
+func _run_pilot_simulation(config: Dictionary, structural_override = null, registry_override = null) -> SimulationResult:
+	var registry = REGISTRY.new() if registry_override == null else registry_override
+	var structural = STRUCTURAL.new(registry) if structural_override == null else structural_override
+	var seed: int = int(config.get("generation", {}).get("seed", 314159))
+	var context_result = MECH_CTX.create(
+		seed,
+		"2.0",
+		"PilotMechanic",
+		[REGISTRY.STREAM_TRAJECTORY, REGISTRY.STREAM_CONTROL],
+		structural,
+		registry
+	)
+	if not context_result.is_valid:
+		return null
+
+	var mechanic: ChallengeMechanic = MECHANIC_REGISTRY.create_mechanic("pilot")
+	if mechanic == null:
+		return null
+
+	mechanic.set_rng_context(context_result.context)
+	mechanic.setup(config)
+	if not mechanic._is_setup or mechanic._error_state != "OK":
+		return null
+
+	var timeline := VideoTimeline.new(config.get("video", {}))
+	mechanic.prepare(timeline.game_frames)
+	if not mechanic._is_prepared or mechanic._error_state != "OK":
+		return null
+
+	return mechanic.simulate(timeline.game_frames, seed, config)

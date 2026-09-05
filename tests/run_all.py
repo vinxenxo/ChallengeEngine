@@ -51,6 +51,7 @@ KNOWN_SUITES = {
     "C6F3TimelineBuilderTest.gd": "[C6F3_TIMELINE_BUILDER_SUITE] PASS",
     "C6F3PresentationBindingTest.gd": "[C6F3_PRESENTATION_BINDING_SUITE] PASS",
     "C6F4ShadowRuntimeBridgeTest.gd": "[C6F4_SHADOW_RUNTIME_BRIDGE_SUITE] PASS",
+    "C6F4EffectiveRuntimeTest.gd": "[C6F4_EFFECTIVE_RUNTIME_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 

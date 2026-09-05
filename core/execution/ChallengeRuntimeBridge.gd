@@ -1,13 +1,13 @@
 class_name ChallengeRuntimeBridge
 extends RefCounted
 
-## C6-F4.2 — Legacy V1 -> C6 Shadow Bridge.
+## C6-F4.3 — Legacy V1 -> C6 Effective Runtime Bridge.
 ##
 ## Responsibilities:
 ## - migrate legacy V1 through the certified F1.1 adapter;
 ## - build a temporary F3-compatible runtime projection without mutating F1.1;
-## - execute F3.1 -> F3.2 -> F3.3;
-## - return a transport context and explicit shadow-gate diagnostics.
+## - execute F3.1 -> F3.2 -> F3.3 as the production runtime path;
+## - expose a separate audit gate against the isolated legacy oracle.
 ##
 ## Non-responsibilities:
 ## - no RNG implementation;
@@ -21,6 +21,9 @@ const ChallengeMigrationAdapter = preload("res://core/authoring/ChallengeMigrati
 const ChallengeExecutionPipeline = preload("res://core/execution/ChallengeExecutionPipeline.gd")
 const ChallengeTimelineBuilder = preload("res://core/execution/ChallengeTimelineBuilder.gd")
 const ChallengePresentationBinder = preload("res://core/presentation/ChallengePresentationBinder.gd")
+const VideoProfileRegistry = preload("res://core/authoring/VideoProfileRegistry.gd")
+const ChallengeValidator = preload("res://core/validation/ChallengeValidator.gd")
+const SimulationMetricsResolver = preload("res://core/simulation/SimulationMetricsResolver.gd")
 
 const MIGRATION_POLICY := {
 	"authoring_version": "1.0.0",
@@ -150,6 +153,146 @@ static func build_shadow_context(
 	}
 
 
+## C6-F4.3 production entry point.
+## Executes the effective C6 runtime with the same deterministic seed-attempt
+## policy as the frozen legacy path, then applies the certified F3 contracts.
+static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
+	var context := ChallengeRuntimeContext.new()
+	if legacy_config.is_empty():
+		return _failure("EFFECTIVE_INPUT_INVALID", "Challenge configuration is empty.", context)
+
+	var migration := ChallengeMigrationAdapter.migrate_legacy_v1_to_v2(
+		legacy_config,
+		MIGRATION_POLICY
+	)
+	if not bool(migration.get("is_valid", false)):
+		return _failure(
+			"EFFECTIVE_MIGRATION_FAILED",
+			"F1.1 migration failed: %s" % str(migration.get("errors", [])),
+			context
+		)
+
+	var canonical_v2: Dictionary = migration.get("config", {}).duplicate(true)
+	if canonical_v2.is_empty():
+		return _failure("EFFECTIVE_MIGRATION_FAILED", "F1.1 returned an empty canonical V2 configuration.", context)
+	context.canonical_v2 = canonical_v2.duplicate(true)
+
+	var generation: Dictionary = legacy_config.get("generation", {})
+	var initial_seed := int(generation.get("seed", 12345))
+	var current_seed := initial_seed
+	var rng_version := str(generation.get("rng_version", "1.0"))
+	var attempts := 0
+	const MAX_ATTEMPTS := 100
+
+	while attempts < MAX_ATTEMPTS:
+		attempts += 1
+		var adapted := _build_f3_runtime_input(canonical_v2, legacy_config, current_seed)
+		if not bool(adapted.get("success", false)):
+			return _failure(
+				"EFFECTIVE_F3_ADAPTATION_FAILED",
+				str(adapted.get("error", "F3 runtime adaptation failed.")),
+				context
+			)
+
+		var runtime_input: Dictionary = adapted["config"]
+		var execution := ChallengeExecutionPipeline.execute(runtime_input)
+		if not bool(execution.get("success", false)):
+			return _failure(
+				"EFFECTIVE_F3_1_FAILED",
+				"F3.1 failed: %s" % str(execution.get("error", "unknown error")),
+				context
+			)
+
+		var result: SimulationResult = execution.get("simulation_result")
+		if result == null:
+			return _failure("EFFECTIVE_F3_1_FAILED", "F3.1 returned a null SimulationResult.", context)
+
+		var video_profile_id := str(runtime_input.get("video", ""))
+		var video_profile := VideoProfileRegistry.get_profile(video_profile_id)
+		if video_profile.is_empty():
+			return _failure("EFFECTIVE_VIDEO_PROFILE_FAILED", "Unable to resolve effective VideoProfile: %s" % video_profile_id, context)
+
+		var fps := int(video_profile.get("fps", 30))
+		var phases: Dictionary = video_profile.get("phases", {})
+		var game_frames := int(round(float(phases.get("game_duration", 6.0)) * float(fps)))
+
+		var contract_check: Dictionary = result.validate_contract(game_frames)
+		if not bool(contract_check.get("is_valid", false)):
+			return _failure(
+				"EFFECTIVE_SIMULATION_CONTRACT_FAILED",
+				str(contract_check.get("message", "Simulation contract violation.")),
+				context
+			)
+
+		SimulationMetricsResolver.resolve_metrics(result)
+		if result.error_state != "OK":
+			return _failure(
+				"EFFECTIVE_METRICS_FAILED",
+				"Metric resolution failed: %s" % result.error_state,
+				context
+			)
+
+		var timeline_result := ChallengeTimelineBuilder.build(runtime_input, result)
+		if not timeline_result.success:
+			return _failure(
+				"EFFECTIVE_F3_2_FAILED",
+				"F3.2 failed: %s" % str(timeline_result.error),
+				context
+			)
+
+		var timeline: VideoTimeline = timeline_result.timeline
+		if timeline == null:
+			return _failure("EFFECTIVE_F3_2_FAILED", "F3.2 returned a null VideoTimeline.", context)
+
+		var binding_result := ChallengePresentationBinder.bind(
+			runtime_input,
+			timeline,
+			result
+		)
+		if not binding_result.success:
+			return _failure(
+				"EFFECTIVE_F3_3_FAILED",
+				"F3.3 failed: %s" % str(binding_result.error),
+				context
+			)
+
+		var validation: ValidationResult = ChallengeValidator.validate(
+			result,
+			timeline.hook_frames,
+			timeline.game_frames
+		)
+		if validation.is_valid:
+			result.metadata["initial_seed"] = initial_seed
+			result.metadata["final_seed"] = current_seed
+			result.metadata["seed_used"] = current_seed
+			result.metadata["attempts"] = attempts
+			result.metadata["rng_version"] = rng_version
+
+			context.simulation_result = result
+			context.timeline = timeline
+			context.presentation_binding = binding_result
+			return {
+				"success": true,
+				"error_code": "",
+				"error": "",
+				"context": context,
+				"runtime_input": runtime_input,
+				"validation": validation
+			}
+
+		current_seed = _lcg_next_seed(current_seed)
+
+	return _failure(
+		"EFFECTIVE_NO_VALID_SIMULATION",
+		"No valid simulation found after %d attempts." % MAX_ATTEMPTS,
+		context
+	)
+
+
+static func _lcg_next_seed(seed: int) -> int:
+	return int((seed * 1103515245 + 12345) & 0x7fffffff)
+
+
 static func verify_equivalence(
 	legacy_timeline: VideoTimeline,
 	legacy_result: SimulationResult,
@@ -190,6 +333,46 @@ static func verify_equivalence(
 	# Simulation cardinality and local winning-frame gate.
 	_compare_int("winning_frame", legacy_result.winning_frame, shadow_result.winning_frame, failures)
 	_compare_int("frame_count", legacy_result.frames.size(), shadow_result.frames.size(), failures)
+
+	# Contract-critical deterministic metadata gate.
+	# Only values actually stored in SimulationResult.metadata belong here.
+	# minimum_distance and score are first-class SimulationResult fields;
+	# winning_frame_in_valid_window is derived by ValidationResult.
+	var metadata_keys := [
+		"initial_seed",
+		"final_seed",
+		"seed_used",
+		"attempts",
+		"rng_version",
+		"close_calls"
+	]
+	for key in metadata_keys:
+		if not legacy_result.metadata.has(key) or not shadow_result.metadata.has(key):
+			failures.append("metadata key '%s' missing from legacy/effective result." % key)
+			continue
+		if not _variants_equivalent(
+			legacy_result.metadata[key],
+			shadow_result.metadata[key],
+			"metadata.%s" % key,
+			-1,
+			failures
+		):
+			break
+
+	# First-class SimulationResult metrics are compared directly.
+	if abs(legacy_result.minimum_distance - shadow_result.minimum_distance) > 0.000001:
+		failures.append("minimum_distance mismatch: legacy=%.9f shadow=%.9f" % [legacy_result.minimum_distance, shadow_result.minimum_distance])
+	if abs(legacy_result.score - shadow_result.score) > 0.000001:
+		failures.append("score mismatch: legacy=%.9f shadow=%.9f" % [legacy_result.score, shadow_result.score])
+
+	# ValidationResult is not stored inside SimulationResult, so derive the
+	# temporal-window predicate from the already-compared timeline and frame.
+	var legacy_absolute := legacy_result.winning_frame + legacy_timeline.hook_frames
+	var shadow_absolute := shadow_result.winning_frame + shadow_timeline.hook_frames
+	var legacy_in_window := legacy_absolute >= legacy_timeline.hook_frames and legacy_absolute < legacy_timeline.hook_frames + legacy_timeline.game_frames
+	var shadow_in_window := shadow_absolute >= shadow_timeline.hook_frames and shadow_absolute < shadow_timeline.hook_frames + shadow_timeline.game_frames
+	if legacy_in_window != shadow_in_window:
+		failures.append("winning_frame_in_valid_window mismatch: legacy=%s shadow=%s" % [legacy_in_window, shadow_in_window])
 
 	if failures.is_empty():
 		for index in range(legacy_result.frames.size()):
