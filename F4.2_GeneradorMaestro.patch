@@ -1,0 +1,263 @@
+--- a/GeneradorMaestro.gd
++++ b/GeneradorMaestro.gd
+@@ -40,6 +40,9 @@
+ var presentation_ui: PresentationUI
+ var presentation_profile: PresentationProfile
+ 
++# C6-F4.2 shadow runtime context. Transport-only; never authoritative for render.
++var c6_shadow_context: ChallengeRuntimeContext = null
++
+ # Infraestructura RNG V2.0 (Composition Root)
+ var rng_registry: RNGStreamRegistry
+ var structural_rng: StructuralRNG
+@@ -235,6 +238,21 @@
+ 
+         verified_history = final_result.frames
+         final_winning_frame = validation.absolute_winning_frame
++
++        # C6-F4.2: Shadow runs only after the legacy validation loop has
++        # selected the effective seed. This prevents false mismatches caused
++        # by comparing the initial seed against a later validated retry.
++        var effective_seed: int = int(
++                final_result.metadata.get(
++                        "seed_used",
++                        final_result.metadata.get("final_seed", 0)
++                )
++        )
++        c6_shadow_context = run_c6_shadow_pipeline(
++                config_cache,
++                effective_seed
++        )
++        verify_shadow_equivalence(c6_shadow_context)
+ 
+         # --------------------------------------------------------
+         # Frame de referencia certificado
+@@ -509,6 +527,228 @@
+                 push_error(
+                         "C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada."
+         )
++
++
++# ============================================================
++# C6-F4.2: SHADOW PIPELINE & EQUIVALENCE GATE
++# ============================================================
++
++func _c6_migration_policy() -> Dictionary:
++	return {
++		"authoring_version": "1.0.0",
++		"default_engine_version": "0.1",
++		"default_asset_family": "fam_garage_01",
++		"default_asset_family_version": "1.0",
++		"default_theme": "generic",
++		"default_profile_id": "test_master_11s",
++		"default_profile_version": "1.0",
++		"default_mechanic_version": "1.0"
++	}
++
++func _c6_resolve_shadow_video_profile(video_cfg: Variant) -> String:
++	if not (video_cfg is Dictionary):
++		return ""
++	var fps: int = int(video_cfg.get("fps", 60))
++	var hook: float = float(video_cfg.get("hook_duration", 2.0))
++	var game: float = float(video_cfg.get("game_duration", 7.0))
++	var reveal: float = float(video_cfg.get("reveal_duration", 0.0))
++	var cta: float = float(video_cfg.get("cta_duration", 2.0))
++	var signature := "%d|%.9f|%.9f|%.9f|%.9f" % [fps, hook, game, reveal, cta]
++	var profiles := {
++		"60|0.000000000|7.000000000|0.000000000|2.000000000": "shadow_f4_60_h0_g7_r0_c2",
++		"60|3.000000000|7.000000000|0.000000000|0.000000000": "shadow_f4_60_h3_g7_r0_c0",
++		"60|3.000000000|7.000000000|0.000000000|2.000000000": "shadow_f4_60_h3_g7_r0_c2",
++		"60|3.000000000|7.000000000|3.000000000|2.000000000": "shadow_f4_60_h3_g7_r3_c2",
++		"60|0.000000000|7.000000000|0.000000000|0.000000000": "shadow_f4_60_h0_g7_r0_c0"
++	}
++	return str(profiles.get(signature, ""))
++
++func _c6_verify_shadow_profile(profile_id: String, source_video: Dictionary) -> Dictionary:
++	var VideoProfileRegistry = load("res://core/authoring/VideoProfileRegistry.gd")
++	if VideoProfileRegistry == null:
++		return {"valid": false, "error": "VideoProfileRegistry could not be loaded."}
++	var profile: Dictionary = VideoProfileRegistry.get_profile(profile_id)
++	if profile.is_empty():
++		return {"valid": false, "error": "Shadow video profile '%s' is not resolvable." % profile_id}
++	var phases: Dictionary = profile.get("phases", {})
++	if not (phases is Dictionary):
++		return {"valid": false, "error": "Shadow video profile '%s' has invalid phases." % profile_id}
++	var expected := {
++		"fps": int(source_video.get("fps", 60)),
++		"hook_duration": float(source_video.get("hook_duration", 2.0)),
++		"game_duration": float(source_video.get("game_duration", 7.0)),
++		"reveal_duration": float(source_video.get("reveal_duration", 0.0)),
++		"cta_duration": float(source_video.get("cta_duration", 2.0))
++	}
++	var actual := {
++		"fps": int(profile.get("fps", -1)),
++		"hook_duration": float(phases.get("hook_duration", 0.0)),
++		"game_duration": float(phases.get("game_duration", 0.0)),
++		"reveal_duration": float(phases.get("reveal_duration", 0.0)),
++		"cta_duration": float(phases.get("cta_duration", 0.0))
++	}
++	var failures: Array[String] = []
++	if expected["fps"] != actual["fps"]:
++		failures.append("fps %d != %d" % [expected["fps"], actual["fps"]])
++	for key in ["hook_duration", "game_duration", "reveal_duration", "cta_duration"]:
++		if abs(float(expected[key]) - float(actual[key])) > 0.0000005:
++			failures.append("%s %.9f != %.9f" % [key, float(expected[key]), float(actual[key])])
++	if not failures.is_empty():
++		return {"valid": false, "error": "Shadow profile '%s' temporal mismatch: %s" % [profile_id, " | ".join(failures)]}
++	return {"valid": true, "profile": profile}
++
++func run_c6_shadow_pipeline(legacy_config: Dictionary, effective_seed: int) -> ChallengeRuntimeContext:
++	var context := ChallengeRuntimeContext.new()
++	var ChallengeMigrationAdapter = load("res://core/authoring/ChallengeMigrationAdapter.gd")
++	if ChallengeMigrationAdapter == null:
++		push_error("[C6_SHADOW] F1.1 ChallengeMigrationAdapter could not be loaded.")
++		return context
++	var migration_result: Dictionary = ChallengeMigrationAdapter.migrate_legacy_v1_to_v2(legacy_config, _c6_migration_policy())
++	if not bool(migration_result.get("is_valid", false)):
++		push_error("[C6_SHADOW] F1.1 Migration failed: " + str(migration_result.get("errors", [])))
++		return context
++	var canonical_v2: Dictionary = migration_result.get("config", {}).duplicate(true)
++	if canonical_v2.is_empty():
++		push_error("[C6_SHADOW] F1.1 returned an empty Canonical V2 config.")
++		return context
++
++	var simulation_cfg: Dictionary = canonical_v2.get("simulation", {})
++	if not (simulation_cfg is Dictionary):
++		push_error("[C6_SHADOW] Canonical V2 simulation section is invalid.")
++		return context
++	# Compatibility projection only; persisted/input Canonical V2 is untouched.
++	simulation_cfg["seed"] = effective_seed
++	canonical_v2["simulation"] = simulation_cfg
++	canonical_v2["generation"] = {
++		"seed": effective_seed,
++		"rng_version": str(simulation_cfg.get("rng_version", "1.0"))
++	}
++
++	var legacy_video: Dictionary = legacy_config.get("video", {})
++	var shadow_video_id: String = _c6_resolve_shadow_video_profile(legacy_video)
++	if shadow_video_id.is_empty():
++		push_error("[C6_SHADOW] No static shadow video profile matches the legacy temporal contract.")
++		return context
++	var profile_check := _c6_verify_shadow_profile(shadow_video_id, legacy_video)
++	if not bool(profile_check.get("valid", false)):
++		push_error("[C6_SHADOW] " + str(profile_check.get("error", "Unknown profile error.")))
++		return context
++	canonical_v2["video"] = shadow_video_id
++	context.canonical_v2 = canonical_v2
++
++	var ChallengeExecutionPipeline = load("res://core/execution/ChallengeExecutionPipeline.gd")
++	if ChallengeExecutionPipeline == null:
++		push_error("[C6_SHADOW] F3.1 ChallengeExecutionPipeline could not be loaded.")
++		return context
++	var exec_res: Dictionary = ChallengeExecutionPipeline.execute(canonical_v2)
++	if not bool(exec_res.get("success", false)):
++		push_error("[C6_SHADOW] F3.1 Execution failed: " + str(exec_res.get("error", "")))
++		return context
++	context.simulation_result = exec_res.get("simulation_result")
++	if context.simulation_result == null:
++		push_error("[C6_SHADOW] F3.1 returned null SimulationResult.")
++		return context
++
++	var ChallengeTimelineBuilder = load("res://core/execution/ChallengeTimelineBuilder.gd")
++	if ChallengeTimelineBuilder == null:
++		push_error("[C6_SHADOW] F3.2 ChallengeTimelineBuilder could not be loaded.")
++		return context
++	var timeline_result = ChallengeTimelineBuilder.build(canonical_v2, context.simulation_result)
++	if timeline_result == null or not bool(timeline_result.success):
++		push_error("[C6_SHADOW] F3.2 Timeline failed: " + str(timeline_result.error if timeline_result != null else "null result"))
++		return context
++	context.timeline = timeline_result.timeline
++
++	var ChallengePresentationBinder = load("res://core/presentation/ChallengePresentationBinder.gd")
++	if ChallengePresentationBinder == null:
++		push_error("[C6_SHADOW] F3.3 ChallengePresentationBinder could not be loaded.")
++		return context
++	var binding_result = ChallengePresentationBinder.bind(canonical_v2, context.timeline, context.simulation_result)
++	if binding_result == null or not bool(binding_result.success):
++		push_error("[C6_SHADOW] F3.3 Presentation Binding failed: " + str(binding_result.error if binding_result != null else "null result"))
++		return context
++	context.presentation_binding = binding_result
++	print("[C6_SHADOW] Pipeline complete seed=", effective_seed, " video_profile=", shadow_video_id)
++	return context
++
++func _c6_variant_equivalent(a: Variant, b: Variant, path: String, failures: Array[String]) -> bool:
++	var ta: int = typeof(a)
++	var tb: int = typeof(b)
++	if ta == TYPE_INT or ta == TYPE_FLOAT:
++		if tb != TYPE_INT and tb != TYPE_FLOAT:
++			failures.append("%s: numeric type mismatch" % path)
++			return false
++		if abs(float(a) - float(b)) > 0.000001:
++			failures.append("%s: %.9f != %.9f" % [path, float(a), float(b)])
++			return false
++		return true
++	if ta != tb:
++		failures.append("%s: type %d != %d" % [path, ta, tb])
++		return false
++	match ta:
++		TYPE_VECTOR2:
++			if a.distance_to(b) > 0.000001:
++				failures.append("%s: Vector2 %s != %s" % [path, str(a), str(b)])
++				return false
++			return true
++		TYPE_ARRAY:
++			if a.size() != b.size():
++				failures.append("%s: array size %d != %d" % [path, a.size(), b.size()])
++				return false
++			for i in range(a.size()):
++				if not _c6_variant_equivalent(a[i], b[i], "%s[%d]" % [path, i], failures):
++					return false
++			return true
++		TYPE_DICTIONARY:
++			if a.size() != b.size():
++				failures.append("%s: dictionary size %d != %d" % [path, a.size(), b.size()])
++				return false
++			for key in a.keys():
++				if not b.has(key):
++					failures.append("%s: missing key '%s'" % [path, str(key)])
++					return false
++				if not _c6_variant_equivalent(a[key], b[key], "%s.%s" % [path, str(key)], failures):
++					return false
++			return true
++		_:
++			if a != b:
++				failures.append("%s: %s != %s" % [path, str(a), str(b)])
++				return false
++			return true
++
++func verify_shadow_equivalence(c6_ctx: ChallengeRuntimeContext) -> void:
++	print("[C6_SHADOW_EQUIVALENCE] Iniciando verificación estricta...")
++	if c6_ctx == null or c6_ctx.simulation_result == null or c6_ctx.timeline == null or c6_ctx.presentation_binding == null:
++		emit_engine_error("SHADOW_FAILED", "Contexto C6 incompleto. No se completó la tubería nueva.", "")
++		get_tree().quit(1)
++		return
++	var legacy_sim: SimulationResult = final_result
++	var legacy_tl: VideoTimeline = timeline
++	var c6_sim: SimulationResult = c6_ctx.simulation_result
++	var c6_tl: VideoTimeline = c6_ctx.timeline
++	var failures: Array[String] = []
++	if legacy_tl.fps != c6_tl.fps: failures.append("Timeline fps mismatch: %d vs %d" % [legacy_tl.fps, c6_tl.fps])
++	if legacy_tl.hook_frames != c6_tl.hook_frames: failures.append("Timeline hook_frames mismatch: %d vs %d" % [legacy_tl.hook_frames, c6_tl.hook_frames])
++	if legacy_tl.game_frames != c6_tl.game_frames: failures.append("Timeline game_frames mismatch: %d vs %d" % [legacy_tl.game_frames, c6_tl.game_frames])
++	if legacy_tl.reveal_frames != c6_tl.reveal_frames: failures.append("Timeline reveal_frames mismatch: %d vs %d" % [legacy_tl.reveal_frames, c6_tl.reveal_frames])
++	if legacy_tl.cta_frames != c6_tl.cta_frames: failures.append("Timeline cta_frames mismatch: %d vs %d" % [legacy_tl.cta_frames, c6_tl.cta_frames])
++	if legacy_tl.total_frames != c6_tl.total_frames: failures.append("Timeline total_frames mismatch: %d vs %d" % [legacy_tl.total_frames, c6_tl.total_frames])
++	if legacy_sim.winning_frame != c6_sim.winning_frame: failures.append("Simulation winning_frame mismatch: Legacy %d vs C6 %d" % [legacy_sim.winning_frame, c6_sim.winning_frame])
++	if legacy_sim.frames.size() != c6_sim.frames.size(): failures.append("Simulation frame count mismatch: Legacy %d vs C6 %d" % [legacy_sim.frames.size(), c6_sim.frames.size()])
++	if failures.is_empty():
++		for i in range(legacy_sim.frames.size()):
++			var lf: FrameSnapshot = legacy_sim.frames[i]
++			var cf: FrameSnapshot = c6_sim.frames[i]
++			if not _c6_variant_equivalent(lf.position, cf.position, "frame[%d].position" % i, failures): break
++			if not _c6_variant_equivalent(lf.rotation, cf.rotation, "frame[%d].rotation" % i, failures): break
++			if not _c6_variant_equivalent(lf.scale, cf.scale, "frame[%d].scale" % i, failures): break
++			if not _c6_variant_equivalent(lf.opacity, cf.opacity, "frame[%d].opacity" % i, failures): break
++			if not _c6_variant_equivalent(lf.custom_data, cf.custom_data, "frame[%d].custom_data" % i, failures): break
++	if not failures.is_empty():
++		emit_engine_error("SHADOW_EQUIVALENCE_FAILED", "Discrepancia detectada en Shadow Integration: " + " | ".join(failures), "")
++		get_tree().quit(1)
++		return
++	print("[C6_SHADOW_EQUIVALENCE] PASS — runtime legacy y pipeline C6 son equivalentes.")
+ 
+ 
+ func setup_presentation_bindings() -> void:

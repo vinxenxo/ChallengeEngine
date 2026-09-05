@@ -1,0 +1,8 @@
+{
+  "family_id": "fam_garage_01",
+  "version": "1.0",
+  "description": "Garage asset family used by the legacy parking fixtures.",
+  "themes": [
+    "garage"
+  ]
+}

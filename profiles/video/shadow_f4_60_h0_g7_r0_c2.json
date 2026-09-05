@@ -1,0 +1,10 @@
+{
+  "profile_id": "shadow_f4_60_h0_g7_r0_c2",
+  "fps": 60,
+  "phases": {
+    "hook_duration": 0,
+    "game_duration": 7,
+    "reveal_duration": 0,
+    "cta_duration": 2
+  }
+}
