@@ -1,0 +1,10 @@
+{
+  "profile_id": "test_master_11s",
+  "fps": 30,
+  "phases": {
+    "hook_duration": 2.0,
+    "game_duration": 6.0,
+    "reveal_duration": 1.0,
+    "cta_duration": 2.0
+  }
+}

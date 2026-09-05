@@ -1,6 +1,0 @@
-{
-  "family_id": "default",
-  "version": "1.0",
-  "description": "Base visual resources, core fonts and standard UI elements.",
-  "themes": ["default", "dark", "light"]
-}
