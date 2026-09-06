@@ -27,22 +27,31 @@ func setup(config: Dictionary) -> void:
 	_trajectory_samples.clear()
 	_control_samples.clear()
 
-	var content: Dictionary = config.get("content", {})
+	# C6-F4.4 Phase 1 — Canonical V2 is authoritative for pilot parameters.
+	# Keep legacy V1 fallback so frozen fixtures/tests remain backward-compatible.
+	var simulation: Dictionary = config.get("simulation", {})
+	var parameters: Dictionary = simulation.get("parameters", {})
+	if parameters.is_empty():
+		parameters = config.get("difficulty", {}).duplicate(true)
+		var legacy_content: Dictionary = config.get("content", {})
+		for key in ["start_x", "end_x", "target_start", "target_velocity", "trajectory_amplitude", "control_amplitude"]:
+			if legacy_content.has(key):
+				parameters[key] = legacy_content[key]
 
-	start_x = float(content.get("start_x", 0.0))
-	end_x = float(content.get("end_x", 100.0))
-	target_start = float(content.get("target_start", 0.0))
-	target_velocity = float(content.get("target_velocity", 0.0))
+	start_x = float(parameters.get("start_x", 0.0))
+	end_x = float(parameters.get("end_x", 100.0))
+	target_start = float(parameters.get("target_start", 0.0))
+	target_velocity = float(parameters.get("target_velocity", 0.0))
 	trajectory_amplitude = float(
-		content.get("trajectory_amplitude", 2.0)
+		parameters.get("trajectory_amplitude", 2.0)
 	)
 	control_amplitude = float(
-		content.get("control_amplitude", 0.5)
+		parameters.get("control_amplitude", 0.5)
 	)
 
-	var tolerance: Dictionary = (
-		config.get("difficulty", {}).get("tolerance", {})
-	)
+	var tolerance: Dictionary = parameters.get("tolerance", {})
+	if tolerance.is_empty():
+		tolerance = config.get("difficulty", {}).get("tolerance", {})
 
 	tolerance_distance = float(
 		tolerance.get("distance_px", 5.0)

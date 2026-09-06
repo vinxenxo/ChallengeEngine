@@ -186,15 +186,20 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 
 	while attempts < MAX_ATTEMPTS:
 		attempts += 1
-		var adapted := _build_f3_runtime_input(canonical_v2, legacy_config, current_seed)
-		if not bool(adapted.get("success", false)):
-			return _failure(
-				"EFFECTIVE_F3_ADAPTATION_FAILED",
-				str(adapted.get("error", "F3 runtime adaptation failed.")),
-				context
-			)
-
-		var runtime_input: Dictionary = adapted["config"]
+		var runtime_input: Dictionary
+		if str(canonical_v2.get("mechanic", "")) == "pilot":
+			# C6-F4.4 Phase 1: Pilot consumes strict Canonical V2 directly.
+			runtime_input = canonical_v2.duplicate(true)
+			runtime_input["simulation"]["seed"] = current_seed
+		else:
+			var adapted := _build_f3_runtime_input(canonical_v2, legacy_config, current_seed)
+			if not bool(adapted.get("success", false)):
+				return _failure(
+					"EFFECTIVE_F3_ADAPTATION_FAILED",
+					str(adapted.get("error", "F3 runtime adaptation failed.")),
+					context
+				)
+			runtime_input = adapted["config"]
 		var execution := ChallengeExecutionPipeline.execute(runtime_input)
 		if not bool(execution.get("success", false)):
 			return _failure(
@@ -207,14 +212,34 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 		if result == null:
 			return _failure("EFFECTIVE_F3_1_FAILED", "F3.1 returned a null SimulationResult.", context)
 
-		var video_profile_id := str(runtime_input.get("video", ""))
-		var video_profile := VideoProfileRegistry.get_profile(video_profile_id)
-		if video_profile.is_empty():
-			return _failure("EFFECTIVE_VIDEO_PROFILE_FAILED", "Unable to resolve effective VideoProfile: %s" % video_profile_id, context)
+		var video_binding = runtime_input.get("video", "")
+		var video_profile: Dictionary = {}
+		var game_frames: int = 0
+		if video_binding is Dictionary:
+			# F4.4 Phase 1: Canonical V2 keeps temporal fields flat under video.
+			# Resolve frame cardinality directly from that canonical block; do not
+			# manufacture a VideoProfile-shaped object or inject legacy defaults.
+			video_profile = video_binding.duplicate(true)
+			if not video_profile.has("fps") or not video_profile.has("game_duration"):
+				return _failure(
+					"EFFECTIVE_VIDEO_PROFILE_FAILED",
+					"Canonical V2 video is missing mandatory fps/game_duration fields.",
+					context
+				)
+			var canonical_fps := int(round(float(video_profile.get("fps"))))
+			var canonical_game_duration := float(video_profile.get("game_duration"))
+			game_frames = int(round(canonical_game_duration * float(canonical_fps)))
+		else:
+			var video_profile_id := str(video_binding)
+			video_profile = VideoProfileRegistry.get_profile(video_profile_id)
+			if video_profile.is_empty():
+				return _failure("EFFECTIVE_VIDEO_PROFILE_FAILED", "Unable to resolve effective VideoProfile binding: %s" % str(video_binding), context)
 
-		var fps := int(video_profile.get("fps", 30))
-		var phases: Dictionary = video_profile.get("phases", {})
-		var game_frames := int(round(float(phases.get("game_duration", 6.0)) * float(fps)))
+			var fps := int(video_profile.get("fps", 30))
+			var phases: Dictionary = video_profile.get("phases", {})
+			if not phases.has("game_duration"):
+				return _failure("EFFECTIVE_VIDEO_PROFILE_FAILED", "Resolved VideoProfile is missing mandatory game_duration.", context)
+			game_frames = int(round(float(phases.get("game_duration")) * float(fps)))
 
 		var contract_check: Dictionary = result.validate_contract(game_frames)
 		if not bool(contract_check.get("is_valid", false)):

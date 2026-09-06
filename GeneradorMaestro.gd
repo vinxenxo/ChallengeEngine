@@ -158,6 +158,94 @@ func _ready() -> void:
 	print("[C6-F4.3] Effective Runtime + independent legacy oracle: PASS")
 
 	# --------------------------------------------------------
+	# C6-E E1: profile declarativo, únicamente de presentación.
+	# Se inicializa antes de crear PresentationUI; no interviene
+	# en SimulationResult, RNG ni VideoTimeline.
+	# --------------------------------------------------------
+	presentation_profile = PresentationProfile.from_challenge(config_cache)
+	var profile_validation := presentation_profile.validate()
+	if not bool(profile_validation.get("is_valid", false)):
+		emit_engine_error(
+			"PRESENTATION_PROFILE_INVALID",
+			"El Presentation Profile viola su contrato de presentación.",
+			str(profile_validation.get("errors", []))
+		)
+		get_tree().quit(1)
+		return
+
+	print(
+		"[C6E_PROFILE] id=", presentation_profile.profile_id,
+		" source=", presentation_profile.source_canvas_size,
+		" master=", presentation_profile.master_output_size,
+		" safe=", presentation_profile.safe_area
+	)
+
+	# --------------------------------------------------------
+	# Presentación declarativa
+	# --------------------------------------------------------
+
+	setup_presentation_bindings()
+	setup_visual_calibration()
+
+	if presentation_ui_root == null:
+		var presentation_parent: Node = get_node_or_null(
+			"OptimizadorVertical/PantallaVideo"
+		)
+
+		if presentation_parent == null:
+			emit_engine_error(
+				"C6_UI_PARENT_MISSING",
+				"No existe el nodo PantallaVideo parent.",
+				"OptimizadorVertical/PantallaVideo"
+			)
+			get_tree().quit(1)
+			return
+
+		presentation_ui_root = Control.new()
+		presentation_ui_root.name = "PresentationUILayer"
+		presentation_parent.add_child(presentation_ui_root)
+
+		presentation_ui_root.position = Vector2.ZERO
+		presentation_ui_root.size = Vector2(
+			PresentationTheme.VIEWPORT_WIDTH,
+			PresentationTheme.VIEWPORT_HEIGHT
+		)
+
+		print("[C6_UI] PresentationUILayer creado dinámicamente.")
+
+	var pres_cfg: Dictionary = config_cache.get(
+		"presentation",
+		{}
+	)
+
+	var ui_cfg: Dictionary = pres_cfg.get(
+		"ui",
+		{}
+	)
+
+	var ui_theme_name: String = presentation_profile.theme_name
+	if ui_cfg.has("theme"):
+		ui_theme_name = str(ui_cfg.get("theme", presentation_profile.theme_name))
+
+	presentation_ui = PresentationUI.new(
+		presentation_ui_root,
+		ui_theme_name,
+		presentation_profile
+	)
+
+	print(
+		"[C6_UI] root=",
+		presentation_ui_root,
+		" size=",
+		presentation_ui_root.size if presentation_ui_root != null else Vector2(-1.0, -1.0),
+		" position=",
+		presentation_ui_root.position if presentation_ui_root != null else Vector2(-1.0, -1.0)
+	)
+
+	if presentation_ui_root != null:
+		presentation_ui_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	# --------------------------------------------------------
 	# Frame de referencia certificado
 	# --------------------------------------------------------
 
@@ -304,11 +392,6 @@ func _ready() -> void:
 	# --------------------------------------------------------
 	# Assets
 	# --------------------------------------------------------
-
-	var pres_cfg: Dictionary = config_cache.get(
-		"presentation",
-		{}
-	)
 
 	var nodes_map: Dictionary = {
 		"background": bg_sprite,
