@@ -40,8 +40,19 @@ func setup(config: Dictionary) -> void:
 	_steering_noise_samples.clear()
 	_rng_index = 0
 
-	var diff: Dictionary = config.get("difficulty", {})
-	var parking_cfg: Dictionary = diff.get("parking", {})
+	# C6-F4.4 Phase 2: Canonical V2 is authoritative.
+	# All mechanical parking/tolerance parameters migrated by F1.1 live under
+	# simulation.parameters. Legacy V1 remains a compatibility fallback only.
+	var simulation_cfg: Dictionary = config.get("simulation", {})
+	var params: Dictionary = {}
+	if simulation_cfg is Dictionary and simulation_cfg.get("parameters", {}) is Dictionary:
+		params = simulation_cfg.get("parameters", {}).duplicate(true)
+	else:
+		params = config.get("difficulty", {}).duplicate(true)
+
+	var parking_cfg: Dictionary = params.get("parking", params)
+	if not parking_cfg is Dictionary:
+		parking_cfg = {}
 
 	var start_arr: Array = parking_cfg.get("start_position", [150.0, 960.0])
 	start_pos = Vector2(float(start_arr[0]), float(start_arr[1]))
@@ -53,12 +64,21 @@ func setup(config: Dictionary) -> void:
 	max_speed = float(parking_cfg.get("max_speed_px", 12.0))
 	steering_noise = float(parking_cfg.get("steering_noise", 0.05))
 
-	var tol: Dictionary = diff.get("tolerance", {})
+	var tol: Dictionary = params.get("tolerance", {})
+	if not tol is Dictionary:
+		tol = {}
 	tolerance_distance_px = float(tol.get("distance_px", 15.0))
 	tolerance_angle_rad = deg_to_rad(float(tol.get("angle_deg", 6.0)))
 
-	_rng_version = str(config.get("generation", {}).get("rng_version", "1.0"))
-	_legacy_seed = int(config.get("generation", {}).get("seed", 0))
+	# C6-F4.4 Phase 2: seed and RNG version are also canonical V2 fields.
+	# No RNG algorithm or stream semantics are changed here.
+	var generation_cfg: Dictionary = config.get("generation", {})
+	if simulation_cfg is Dictionary:
+		_rng_version = str(simulation_cfg.get("rng_version", generation_cfg.get("rng_version", "1.0")))
+		_legacy_seed = int(simulation_cfg.get("seed", generation_cfg.get("seed", 0)))
+	else:
+		_rng_version = str(generation_cfg.get("rng_version", "1.0"))
+		_legacy_seed = int(generation_cfg.get("seed", 0))
 
 	if _rng_version == "2.0":
 		if _rng_context == null:

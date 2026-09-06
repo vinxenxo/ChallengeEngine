@@ -187,8 +187,9 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 	while attempts < MAX_ATTEMPTS:
 		attempts += 1
 		var runtime_input: Dictionary
-		if str(canonical_v2.get("mechanic", "")) == "pilot":
-			# C6-F4.4 Phase 1: Pilot consumes strict Canonical V2 directly.
+		var mechanic_id := str(canonical_v2.get("mechanic", "")).to_lower()
+		if mechanic_id in ["pilot", "parking_v2"]:
+			# C6-F4.4: native-V2 mechanics consume the migrated Canonical V2 directly.
 			runtime_input = canonical_v2.duplicate(true)
 			runtime_input["simulation"]["seed"] = current_seed
 		else:
