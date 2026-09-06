@@ -33,24 +33,31 @@ static func build(canonical_v2: Dictionary, simulation_result: SimulationResult)
 		result.error = "TimelineBuilder missing video profile binding."
 		return result
 
-	var video_profile_id: String = str(canonical_v2.get("video", ""))
-	if video_profile_id.strip_edges().is_empty():
-		result.error = "TimelineBuilder received empty video profile id."
-		return result
+	var video_binding = canonical_v2.get("video", "")
+	var video_profile: Dictionary = {}
+	var video_profile_label := "inline canonical V2 video"
+	if video_binding is Dictionary:
+		video_profile = _normalize_inline_canonical_video(video_binding)
+	else:
+		var video_profile_id: String = str(video_binding)
+		if video_profile_id.strip_edges().is_empty():
+			result.error = "TimelineBuilder received empty video profile id."
+			return result
+		video_profile_label = video_profile_id
+		video_profile = VideoProfileRegistry.get_profile(video_profile_id)
 
-	var video_profile = VideoProfileRegistry.get_profile(video_profile_id)
 	if video_profile.is_empty():
-		result.error = "TimelineBuilder failed to resolve video profile: '%s'" % video_profile_id
+		result.error = "TimelineBuilder failed to resolve video profile binding: '%s'" % video_profile_label
 		return result
 
 	# 3. Extract exact temporal configuration from the sovereign profile without synthetic defaults
 	if not video_profile.has("fps"):
-		result.error = "Video profile '%s' missing mandatory 'fps'." % video_profile_id
+		result.error = "Video profile '%s' missing mandatory 'fps'." % video_profile_label
 		return result
 
 	var phases: Dictionary = video_profile.get("phases", {})
 	if not phases.has("game_duration"):
-		result.error = "Video profile '%s' phases missing mandatory 'game_duration'." % video_profile_id
+		result.error = "Video profile '%s' phases missing mandatory 'game_duration'." % video_profile_label
 		return result
 
 	var timeline_config := {
@@ -68,3 +75,21 @@ static func build(canonical_v2: Dictionary, simulation_result: SimulationResult)
 	result.timeline = timeline
 	result.winning_frame = simulation_result.winning_frame # Sovereign local index of GAME
 	return result
+
+static func _normalize_inline_canonical_video(video: Dictionary) -> Dictionary:
+	# F4.4 Phase 1: adapt the flat Canonical V2 video contract to the
+	# internal VideoProfile temporal shape without mutating the source.
+	if not video.has("fps") or not video.has("game_duration"):
+		return {}
+
+	return {
+		"profile_id": "__inline_canonical_v2__",
+		"fps": int(round(float(video.get("fps", 30)))),
+		"phases": {
+			"hook_duration": float(video.get("hook_duration", 0.0)),
+			"game_duration": float(video.get("game_duration")),
+			"reveal_duration": float(video.get("reveal_duration", 0.0)),
+			"cta_duration": float(video.get("cta_duration", 0.0))
+		}
+	}
+

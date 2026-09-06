@@ -52,6 +52,7 @@ KNOWN_SUITES = {
     "C6F3PresentationBindingTest.gd": "[C6F3_PRESENTATION_BINDING_SUITE] PASS",
     "C6F4ShadowRuntimeBridgeTest.gd": "[C6F4_SHADOW_RUNTIME_BRIDGE_SUITE] PASS",
     "C6F4EffectiveRuntimeTest.gd": "[C6F4_EFFECTIVE_RUNTIME_SUITE] PASS",
+    "C6F4CanonicalV2PilotTest.gd": "[C6F4_CANONICAL_V2_PILOT_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 

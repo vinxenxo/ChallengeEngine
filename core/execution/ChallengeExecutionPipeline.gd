@@ -11,7 +11,7 @@ static func execute(canonical_v2: Dictionary) -> Dictionary:
 	# ---------------------------------------------------------
 	# 1. Structural Validation (Authoring V2 Gate)
 	# ---------------------------------------------------------
-	if canonical_v2.is_empty() or not canonical_v2.has("mechanic") or not canonical_v2.has("simulation") or not canonical_v2.has("generation") or not canonical_v2.has("video"):
+	if canonical_v2.is_empty() or not canonical_v2.has("mechanic") or not canonical_v2.has("simulation") or not canonical_v2.has("video"):
 		return {
 			"success": false,
 			"error": "Invalid Canonical V2 structure: missing required root sections.",
@@ -40,9 +40,19 @@ static func execute(canonical_v2: Dictionary) -> Dictionary:
 	# ---------------------------------------------------------
 	# 3. Extraction of Generation Parameters & RNG Isolation
 	# ---------------------------------------------------------
+	var simulation: Dictionary = canonical_v2.get("simulation", {})
+	if not simulation is Dictionary:
+		return {
+			"success": false,
+			"error": "Canonical V2 simulation section is not a Dictionary.",
+			"simulation_result": null
+		}
+
+	# Canonical V2 source of truth. Legacy generation remains a compatibility
+	# fallback for pre-F4.4 productive fixtures.
 	var generation = canonical_v2.get("generation", {})
-	var seed = int(generation.get("seed", 0))
-	var rng_version = str(generation.get("rng_version", "1.0"))
+	var seed = int(simulation.get("seed", generation.get("seed", 0)))
+	var rng_version = str(simulation.get("rng_version", generation.get("rng_version", "1.0")))
 	
 	if rng_version == "2.0":
 		var registry = RNGStreamRegistry.new()
@@ -84,13 +94,18 @@ static func execute(canonical_v2: Dictionary) -> Dictionary:
 	# ---------------------------------------------------------
 	mechanic.setup(canonical_v2)
 	
-	var video_profile_id = str(canonical_v2.get("video", ""))
-	var video_profile = VideoProfileRegistry.get_profile(video_profile_id)
-	
+	var video_binding = canonical_v2.get("video", "")
+	var video_profile: Dictionary = {}
+	if video_binding is Dictionary:
+		video_profile = _normalize_inline_canonical_video(video_binding)
+	else:
+		var video_profile_id = str(video_binding)
+		video_profile = VideoProfileRegistry.get_profile(video_profile_id)
+
 	if video_profile.is_empty():
 		return {
 			"success": false,
-			"error": "Execution pipeline failed to resolve video profile: '%s'" % video_profile_id,
+			"error": "Execution pipeline failed to resolve video profile binding: %s" % str(video_binding),
 			"simulation_result": null
 		}
 		
@@ -117,4 +132,23 @@ static func execute(canonical_v2: Dictionary) -> Dictionary:
 		"success": true,
 		"error": "",
 		"simulation_result": sim_result
+	}
+
+
+static func _normalize_inline_canonical_video(video: Dictionary) -> Dictionary:
+	# F4.4 Phase 1: Canonical V2 stores temporal fields flat under video.
+	# F3 consumes a VideoProfile-shaped view internally; this normalization is
+	# local, non-persistent, and never mutates the canonical input.
+	if not video.has("fps") or not video.has("game_duration"):
+		return {}
+
+	return {
+		"profile_id": "__inline_canonical_v2__",
+		"fps": int(round(float(video.get("fps", 30)))),
+		"phases": {
+			"hook_duration": float(video.get("hook_duration", 0.0)),
+			"game_duration": float(video.get("game_duration")),
+			"reveal_duration": float(video.get("reveal_duration", 0.0)),
+			"cta_duration": float(video.get("cta_duration", 0.0))
+		}
 	}
