@@ -95,59 +95,83 @@ static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_r
 	result.success = true
 	return result
 
-## E2-Hardening: Transforma el estado bruto en un modelo puramente visual
-static func build_frame_render_model(state: String, content: Dictionary, profile: PresentationProfile) -> Dictionary:
+## E2-Hardening: Frontera única que recibe el diccionario de contenido y extrae las autoridades de forma encapsulada
+static func build_frame_render_model(
+	state: String,
+	content: Dictionary,
+	profile: PresentationProfile
+) -> Dictionary:
+	var absolute_frame = int(content.get("absolute_frame", content.get("ui_state_frame", 0)))
+	var winning_frame = int(content.get("winning_frame", -1))
+	var timeline = content.get("timeline", null)
+	
 	var model = {}
 	
-	# 1. Extracción de textos (evita hardcoding en PresentationUI)
-	var comp = {}
-	if profile != null and "composition" in profile and typeof(profile.composition) == TYPE_DICTIONARY:
-		comp = profile.composition
-		
-	model["badge_text"] = comp.get("badge_text", "HARD")
-	model["cta_main"] = comp.get("cta_main", "LINK IN BIO")
-	model["cta_sub"] = comp.get("cta_sub", "¡Juega ahora!")
-	model["success_text"] = comp.get("success_text", "🎯 ¡LO HAS CLAVADO!")
+	var overrides = {}
+	if profile != null:
+		if "overrides" in profile and typeof(profile.overrides) == TYPE_DICTIONARY:
+			overrides = profile.overrides
+		elif "composition" in profile and typeof(profile.composition) == TYPE_DICTIONARY:
+			overrides = profile.composition
 	
-	# 2. Banderas visuales simples
+	model["badge_text"] = str(overrides.get("badge_text", ""))
+	model["cta_main"] = str(overrides.get("cta_main", ""))
+	model["cta_sub"] = str(overrides.get("cta_sub", ""))
+	model["success_text"] = str(overrides.get("success_text", ""))
+	
 	model["show_badge"] = (state == "HOOK")
 	model["cta_visible"] = (state == "CTA")
+	model["show_hook"] = (state == "HOOK")
+	model["hook_text"] = str(content.get("hook", ""))
 	
-	# 3. Resolución temporal absoluta (Oculta VideoTimeline al UI)
-	var absolute_frame = int(content.get("absolute_frame", 0))
-	var w_frame = int(content.get("winning_frame", -1)) # Leído solo aquí
-	var timeline_obj = content.get("timeline", null)
+	# Countdown state & contract calculation (3 -> 2 -> 1 -> hidden)
+	var countdown_vis = (state == "HOOK")
+	var countdown_val = ""
+	if countdown_vis:
+		var fps = max(1, int(content.get("ui_fps", 60)))
+		var state_frame = max(0, int(content.get("ui_state_frame", 0)))
+		
+		if state_frame < fps:
+			countdown_val = "3"
+		elif state_frame < fps * 2:
+			countdown_val = "2"
+		elif state_frame < fps * 3:
+			countdown_val = "1"
+		else:
+			countdown_vis = false
+			
+	model["countdown_visible"] = countdown_vis
+	model["countdown_value"] = countdown_val
 	
-	model["is_success_absolute"] = (absolute_frame == w_frame and state == "GAME")
+	model["success_visible"] = (absolute_frame == winning_frame and state == "GAME")
 	
 	var is_reveal = false
 	var reveal_prog = 0.0
 	var hide_success_text = false
 	
-	if timeline_obj != null and timeline_obj.has_method("get_phase_at_frame"):
-		var phase = str(timeline_obj.get_phase_at_frame(absolute_frame)).to_upper()
+	if timeline != null and timeline.has_method("get_phase_at_frame"):
+		var phase = str(timeline.get_phase_at_frame(absolute_frame)).to_upper()
 		is_reveal = (phase == "REVEAL")
 		
 		if is_reveal:
-			if absolute_frame > w_frame + 60:
+			if absolute_frame > winning_frame + 60:
 				hide_success_text = true
 				
 			var phase_start = 0
-			if timeline_obj.has_method("get_phase_start_frame"):
-				phase_start = timeline_obj.get_phase_start_frame("REVEAL")
+			if timeline.has_method("get_phase_start_frame"):
+				phase_start = timeline.get_phase_start_frame("REVEAL")
 				
 			var duration = 0
-			if "durations" in timeline_obj and timeline_obj.durations is Dictionary:
-				duration = timeline_obj.durations.get("REVEAL", 0)
+			if "durations" in timeline and timeline.durations is Dictionary:
+				duration = timeline.durations.get("REVEAL", 0)
 				
 			if duration > 0:
 				reveal_prog = float(absolute_frame - phase_start) / float(duration)
 				
-	model["is_reveal_phase"] = is_reveal
+	model["reveal_visible"] = is_reveal
 	model["reveal_progress"] = reveal_prog
 	model["hide_success_text"] = hide_success_text
 	
-	# 4. Geometría local del juego (Renombrado para evitar término prohibido en UI)
 	var w_frame_game = int(content.get("winning_frame_game", -1))
 	var current_game_frame = int(content.get("ui_state_frame", -1))
 	

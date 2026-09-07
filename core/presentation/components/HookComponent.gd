@@ -1,20 +1,25 @@
-extends TypographyLabel
 class_name HookComponent
+extends Control
+
+var label: TypographyLabel
 
 func _init() -> void:
-	role = TypographyLabel.Role.HEADLINE
-	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	set_anchors_preset(Control.PRESET_TOP_WIDE)
-	grow_horizontal = Control.GROW_DIRECTION_BOTH
-	grow_vertical = Control.GROW_DIRECTION_END
+	label = TypographyLabel.new()
+	label.role = TypographyLabel.Role.HEADLINE
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(label)
 
-func update_from_state(state: String, content: Dictionary) -> void:
-	visible = false
-	text = ""
+func apply_profile(profile: PresentationProfile) -> void:
+	if label != null and profile != null:
+		label.apply_profile(profile)
 
-	if state != "HOOK":
-		return
+func apply_font(font: Font) -> void:
+	if label != null and font != null:
+		label.apply_font(font)
 
-	text = str(content.get("hook", ""))
-	visible = not text.is_empty()
+func apply_render_model(render_model: Dictionary) -> void:
+	visible = render_model.get("show_hook", false)
+	if label != null:
+		label.text = render_model.get("hook_text", "")

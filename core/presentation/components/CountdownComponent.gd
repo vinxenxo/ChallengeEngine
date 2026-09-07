@@ -1,5 +1,5 @@
-extends TypographyLabel
 class_name CountdownComponent
+extends TypographyLabel
 
 func _init() -> void:
 	role = TypographyLabel.Role.COUNTDOWN
@@ -9,26 +9,10 @@ func _init() -> void:
 	grow_horizontal = Control.GROW_DIRECTION_BOTH
 	grow_vertical = Control.GROW_DIRECTION_BOTH
 
-func update_from_state(state: String, content: Dictionary) -> void:
-	visible = false
-	text = ""
+func apply_profile(profile: PresentationProfile) -> void:
+	if profile != null:
+		super.apply_profile(profile)
 
-	if state != "HOOK":
-		return
-
-	var fps: int = max(1, int(content.get("ui_fps", 60)))
-	var state_frame: int = max(0, int(content.get("ui_state_frame", 0)))
-
-	var countdown_value: int = 0
-
-	if state_frame < fps:
-		countdown_value = 3
-	elif state_frame < fps * 2:
-		countdown_value = 2
-	elif state_frame < fps * 3:
-		countdown_value = 1
-	else:
-		return
-
-	text = str(countdown_value)
-	visible = true
+func apply_render_model(render_model: Dictionary) -> void:
+	visible = bool(render_model.get("countdown_visible", false))
+	text = str(render_model.get("countdown_value", ""))
