@@ -3,9 +3,9 @@ import re
 
 # Configuración de rutas
 MECHANICS = {
-    "HIT_V1": "core/mechanics/hit/HitMechanic.gd",
-    "PILOT": "core/mechanics/pilot/PilotMechanic.gd",
-    "PARKING_V2": "core/mechanics/parking/ParkingMechanicV2.gd"
+    "HIT_V1": "../core/mechanics/hit/HitMechanic.gd",
+    "PILOT": "../core/mechanics/pilot/PilotMechanic.gd",
+    "PARKING_V2": "../core/mechanics/parking/ParkingMechanicV2.gd"
 }
 
 # Códigos ANSI para colores en terminal

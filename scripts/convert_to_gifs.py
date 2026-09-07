@@ -2,7 +2,7 @@ import os
 import subprocess
 from pathlib import Path
 
-def convert_mp4s_to_gifs(output_dir="./output"):
+def convert_mp4s_to_gifs(output_dir="../output"):
     output_path = Path(output_dir)
     if not output_path.exists():
         print(f"❌ La carpeta {output_dir} no existe.")

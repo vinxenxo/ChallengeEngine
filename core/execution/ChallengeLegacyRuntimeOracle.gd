@@ -6,6 +6,8 @@ extends RefCounted
 ## This class intentionally preserves the F3.3 legacy orchestration semantics
 ## for regression auditing. It is NEVER the production execution path.
 ##
+## Diagnostic instrumentation added temporarily for C6-F4.4 Phase 4 Catch.
+##
 ## Non-responsibilities:
 ## - no authoring migration;
 ## - no presentation/rendering;
@@ -22,6 +24,7 @@ const PresentationRNGContext = preload("res://core/deterministic/PresentationRNG
 static func run(legacy_config: Dictionary) -> Dictionary:
 	var timeline := VideoTimeline.new(legacy_config.get("video", {}))
 	return run_with_timeline(legacy_config, timeline)
+
 
 static func run_with_timeline(
 	legacy_config: Dictionary,
@@ -61,22 +64,26 @@ static func run_with_timeline(
 		RNGStreamRegistry.STREAM_TRAJECTORY,
 		RNGStreamRegistry.STREAM_CONTROL
 	]
+
 	var parking_v2_allowed_streams: Array[int] = [
 		RNGStreamRegistry.STREAM_PARKING_DODGE,
 		RNGStreamRegistry.STREAM_PARKING_SAVE,
 		RNGStreamRegistry.STREAM_PARKING_OVERSHOOT,
 		RNGStreamRegistry.STREAM_PARKING_STEERING
 	]
+
 	var hit_v1_allowed_streams: Array[int] = [
 		RNGStreamRegistry.STREAM_HIT_SPEED_VARIANCE,
 		RNGStreamRegistry.STREAM_HIT_TRAJECTORY_NOISE,
 		RNGStreamRegistry.STREAM_HIT_TARGET_OFFSET
 	]
+
 	var catch_v1_allowed_streams: Array[int] = [
 		RNGStreamRegistry.STREAM_CATCH_TARGET_MOTION,
 		RNGStreamRegistry.STREAM_CATCH_PURSUER_BIAS,
 		RNGStreamRegistry.STREAM_CATCH_INITIAL_PHASE
 	]
+
 	var find_v1_allowed_streams: Array[int] = [
 		RNGStreamRegistry.STREAM_FIND_SPATIAL_PLACEMENT,
 		RNGStreamRegistry.STREAM_FIND_TOPOLOGY_GENERATION,
@@ -92,45 +99,83 @@ static func run_with_timeline(
 
 	while attempts < MAX_ATTEMPTS:
 		attempts += 1
+
 		var context_result = null
+
+		# --------------------------------------------------------------
+		# DIAGNOSTIC
+		# --------------------------------------------------------------
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] ATTEMPT=%d SEED=%d" %
+				[attempts, current_seed]
+			)
 
 		if is_v2:
 			match mechanic_id.to_lower():
 				"pilot":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "PilotMechanic", pilot_allowed_streams,
-						structural_rng, rng_registry
+						current_seed,
+						"PilotMechanic",
+						pilot_allowed_streams,
+						structural_rng,
+						rng_registry
 					)
+
 				"parking_v2":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "ParkingMechanic", parking_v2_allowed_streams,
-						structural_rng, rng_registry
+						current_seed,
+						"ParkingMechanic",
+						parking_v2_allowed_streams,
+						structural_rng,
+						rng_registry
 					)
+
 				"hit_v1":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "HitMechanic", hit_v1_allowed_streams,
-						structural_rng, rng_registry
+						current_seed,
+						"HitMechanic",
+						hit_v1_allowed_streams,
+						structural_rng,
+						rng_registry
 					)
+
 				"catch_v1":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "CatchMechanic", catch_v1_allowed_streams,
-						structural_rng, rng_registry
+						current_seed,
+						"CatchMechanic",
+						catch_v1_allowed_streams,
+						structural_rng,
+						rng_registry
 					)
+
 				"find_v1":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "FindMechanic", find_v1_allowed_streams,
-						structural_rng, rng_registry
+						current_seed,
+						"FindMechanic",
+						find_v1_allowed_streams,
+						structural_rng,
+						rng_registry
 					)
+
 				"choose_v1":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "ChooseMechanic", [],
-						structural_rng, rng_registry
+						current_seed,
+						"ChooseMechanic",
+						[],
+						structural_rng,
+						rng_registry
 					)
+
 				"count_v1":
 					context_result = _create_mechanic_rng_context(
-						current_seed, "CountMechanic", [],
-						structural_rng, rng_registry
+						current_seed,
+						"CountMechanic",
+						[],
+						structural_rng,
+						rng_registry
 					)
+
 				_:
 					return {
 						"valid": false,
@@ -138,6 +183,16 @@ static func run_with_timeline(
 						"message": "No existe contrato RNG V2.0 para la mecánica '%s'." % mechanic_id,
 						"errors": ["Missing V2.0 mechanic RNG contract: %s" % mechanic_id]
 					}
+
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] RNG_CONTEXT valid=%s error_code=%s context=%s" %
+					[
+						str(context_result.is_valid),
+						str(context_result.error_code),
+						str(context_result.context != null)
+					]
+				)
 
 			if not context_result.is_valid:
 				return {
@@ -149,26 +204,102 @@ static func run_with_timeline(
 
 			mechanic.set_rng_context(context_result.context)
 
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] RNG_CONTEXT_ASSIGNED error_state=%s" %
+					str(context_result.context.error_state)
+				)
+
+		# --------------------------------------------------------------
+		# SETUP
+		# --------------------------------------------------------------
 		mechanic.setup(legacy_config)
+
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] AFTER_SETUP setup=%s prepared=%s error=%s" %
+				[
+					str(mechanic._is_setup),
+					str(mechanic._is_prepared),
+					str(mechanic._error_state)
+				]
+			)
+
 		if not mechanic._is_setup or mechanic._error_state != "OK":
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] REJECT_SETUP seed=%d error=%s" %
+					[current_seed, mechanic._error_state]
+				)
+
 			current_seed = lcg_next_seed(current_seed)
 			continue
 
+		# --------------------------------------------------------------
+		# TEMPORAL PREPARATION
+		# --------------------------------------------------------------
 		if mechanic.requires_temporal_preparation():
 			mechanic.prepare(timeline.game_frames)
+
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] AFTER_PREPARE prepared=%s error=%s" %
+					[
+						str(mechanic._is_prepared),
+						str(mechanic._error_state)
+					]
+				)
+
 			if not mechanic._is_prepared or mechanic._error_state != "OK":
+				if mechanic_id.to_lower() == "catch_v1":
+					print(
+						"[ORACLE:CATCH] REJECT_PREPARE seed=%d error=%s" %
+						[current_seed, mechanic._error_state]
+					)
+
 				current_seed = lcg_next_seed(current_seed)
 				continue
 
+		# --------------------------------------------------------------
+		# SIMULATION
+		# --------------------------------------------------------------
 		var test_result: SimulationResult = mechanic.simulate(
 			timeline.game_frames,
 			current_seed,
 			legacy_config
 		)
 
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] AFTER_SIMULATION winning_frame=%d min_dist=%s error=%s frames=%d close_calls=%s self_scored=%s" %
+				[
+					test_result.winning_frame,
+					str(test_result.minimum_distance),
+					str(test_result.error_state),
+					test_result.frames.size(),
+					str(test_result.metadata.get("close_calls", "MISSING")),
+					str(test_result.is_self_scored)
+				]
+			)
+
+		# --------------------------------------------------------------
+		# RNG POST-SIMULATION CHECK
+		# --------------------------------------------------------------
 		if is_v2 and mechanic_id.to_lower() in [
-			"pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1", "count_v1"
+			"pilot",
+			"parking_v2",
+			"hit_v1",
+			"catch_v1",
+			"find_v1",
+			"choose_v1",
+			"count_v1"
 		] and context_result.context.error_state != "OK":
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] REJECT_RNG_POST_SIMULATION error=%s" %
+					str(context_result.context.error_state)
+				)
+
 			return {
 				"valid": false,
 				"error_code": "MECHANIC_SIMULATION_ERROR",
@@ -176,17 +307,64 @@ static func run_with_timeline(
 				"errors": [str(context_result.context.error_state)]
 			}
 
-		var contract_check: Dictionary = test_result.validate_contract(timeline.game_frames)
+		# --------------------------------------------------------------
+		# CONTRACT
+		# --------------------------------------------------------------
+		var contract_check: Dictionary = test_result.validate_contract(
+			timeline.game_frames
+		)
+
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] CONTRACT valid=%s code=%s message=%s" %
+				[
+					str(contract_check.get("is_valid", false)),
+					str(contract_check.get("error_code", "")),
+					str(contract_check.get("message", ""))
+				]
+			)
+
 		if not bool(contract_check.get("is_valid", false)):
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] REJECT_CONTRACT seed=%d" %
+					current_seed
+				)
+
 			return {
 				"valid": false,
-				"error_code": str(contract_check.get("error_code", "SIMULATION_CONTRACT_VIOLATION")),
+				"error_code": str(contract_check.get(
+					"error_code",
+					"SIMULATION_CONTRACT_VIOLATION"
+				)),
 				"message": str(contract_check.get("message", "")),
 				"errors": [str(contract_check.get("message", ""))]
 			}
 
+		# --------------------------------------------------------------
+		# METRICS
+		# --------------------------------------------------------------
 		SimulationMetricsResolver.resolve_metrics(test_result)
+
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] AFTER_METRICS error=%s winning_frame=%d min_dist=%s close_calls=%s self_scored=%s" %
+				[
+					str(test_result.error_state),
+					test_result.winning_frame,
+					str(test_result.minimum_distance),
+					str(test_result.metadata.get("close_calls", "MISSING")),
+					str(test_result.is_self_scored)
+				]
+			)
+
 		if test_result.error_state != "OK":
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] REJECT_METRICS seed=%d error=%s" %
+					[current_seed, test_result.error_state]
+				)
+
 			return {
 				"valid": false,
 				"error_code": test_result.error_state,
@@ -194,21 +372,76 @@ static func run_with_timeline(
 				"errors": [test_result.error_state]
 			}
 
+		# --------------------------------------------------------------
+		# WINNING FRAME DETECTOR
+		# --------------------------------------------------------------
 		WinningFrameDetector.analyze_and_score(test_result)
+
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] AFTER_WINNING_DETECTOR winning_frame=%d min_dist=%s score=%s self_scored=%s" %
+				[
+					test_result.winning_frame,
+					str(test_result.minimum_distance),
+					str(test_result.score),
+					str(test_result.is_self_scored)
+				]
+			)
+
+		# --------------------------------------------------------------
+		# VALIDATOR
+		# --------------------------------------------------------------
 		var validation: ValidationResult = ChallengeValidator.validate(
 			test_result,
 			timeline.hook_frames,
 			timeline.game_frames
 		)
 
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] VALIDATOR valid=%s" %
+				str(validation.is_valid)
+			)
+
 		if validation.is_valid:
+			if mechanic_id.to_lower() == "catch_v1":
+				print(
+					"[ORACLE:CATCH] SUCCESS seed=%d attempts=%d winning_frame=%d close_calls=%s" %
+					[
+						current_seed,
+						attempts,
+						test_result.winning_frame,
+						str(test_result.metadata.get("close_calls", "MISSING"))
+					]
+				)
+
 			sim_result = test_result
 			sim_validation = validation
 			break
 
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] VALIDATOR_REJECT seed=%d winning_frame=%d close_calls=%s" %
+				[
+					current_seed,
+					test_result.winning_frame,
+					str(test_result.metadata.get("close_calls", "MISSING"))
+				]
+			)
+
 		current_seed = lcg_next_seed(current_seed)
 
 	if sim_result == null or sim_validation == null:
+		if mechanic_id.to_lower() == "catch_v1":
+			print(
+				"[ORACLE:CATCH] EXHAUSTED attempts=%d initial_seed=%d final_seed_candidate=%d" %
+				[
+					attempts,
+					initial_seed,
+					current_seed
+				]
+			)
+
 		return {
 			"valid": false,
 			"error_code": "NO_VALID_SIMULATION",
@@ -230,6 +463,7 @@ static func run_with_timeline(
 		"errors": []
 	}
 
+
 static func _create_mechanic_rng_context(
 	seed: int,
 	consumer_id: String,
@@ -246,6 +480,7 @@ static func _create_mechanic_rng_context(
 		rng_registry
 	)
 
+
 static func _create_presentation_rng_context(
 	seed: int,
 	consumer_id: String,
@@ -261,6 +496,7 @@ static func _create_presentation_rng_context(
 		cosmetic_rng,
 		rng_registry
 	)
+
 
 static func lcg_next_seed(seed: int) -> int:
 	return int((seed * 1103515245 + 12345) & 0x7fffffff)

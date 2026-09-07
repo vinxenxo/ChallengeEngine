@@ -54,6 +54,9 @@ KNOWN_SUITES = {
     "C6F4EffectiveRuntimeTest.gd": "[C6F4_EFFECTIVE_RUNTIME_SUITE] PASS",
     "C6F4CanonicalV2PilotTest.gd": "[C6F4_CANONICAL_V2_PILOT_SUITE] PASS",
     "C6F4CanonicalV2ParkingTest.gd": "[C6F4_CANONICAL_V2_PARKING_SUITE] PASS",
+    "C6F4CanonicalV2HitTest.gd": "[C6F4_CANONICAL_V2_HIT_SUITE] PASS",
+    "C6F4CanonicalV2CatchTest.gd": "[C6F4_CANONICAL_V2_CATCH_SUITE] PASS",
+    "C6F4CatchLegacyDiagnosticTest.gd": "[C6F4_CATCH_LEGACY_DIAGNOSTIC_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 

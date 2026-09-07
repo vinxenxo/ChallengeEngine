@@ -16,11 +16,14 @@ var _delta_target: float = 0.0
 var _delta_bias: float = 0.0
 var _delta_phase_x: float = 0.0
 
+
 func set_rng_context(ctx: MechanicRNGContext) -> void:
 	_rng_context = ctx
 
+
 func requires_temporal_preparation() -> bool:
 	return false
+
 
 func setup(config: Dictionary) -> void:
 	_is_setup = false
@@ -44,21 +47,76 @@ func setup(config: Dictionary) -> void:
 		_error_state = "MISSING_RNG_CONTEXT"
 		return
 
-	var catch_cfg: Dictionary = config.get("difficulty", {}).get("catch", {})
+	# C6-F4.4 Phase 4: Canonical V2 is authoritative.
+	# The migrated catch mechanical block lives under simulation.parameters.catch.
+	# Legacy V1 remains a compatibility fallback only.
+	var simulation_cfg = config.get("simulation", {})
+	var params = {}
+
+	# Prefer Canonical V2 when the nested parameters block exists.
+	if typeof(simulation_cfg) == TYPE_DICTIONARY:
+		var simulation_parameters = simulation_cfg.get("parameters", null)
+		if typeof(simulation_parameters) == TYPE_DICTIONARY:
+			params = simulation_parameters.duplicate(true)
+
+	# Legacy V1 compatibility fallback.
+	#
+	# Important: the Legacy Oracle executes the original V1 configuration
+	# directly. Historical V1 configurations may contain mechanical
+	# parameters distributed between difficulty and content.
+	if params.is_empty():
+		var difficulty_cfg = config.get("difficulty", {})
+		var content_cfg = config.get("content", {})
+
+		var legacy_params = {}
+
+		if typeof(difficulty_cfg) == TYPE_DICTIONARY:
+			var legacy_catch = difficulty_cfg.get("catch", difficulty_cfg)
+			if typeof(legacy_catch) == TYPE_DICTIONARY:
+				legacy_params = legacy_catch.duplicate(true)
+
+		# Merge historical content parameters only when they are not already
+		# defined by difficulty. This preserves difficulty precedence.
+		if typeof(content_cfg) == TYPE_DICTIONARY:
+			var content_catch = content_cfg.get("catch", null)
+
+			if typeof(content_catch) == TYPE_DICTIONARY:
+				for key in content_catch.keys():
+					if not legacy_params.has(key):
+						legacy_params[key] = content_catch[key]
+
+			# Some historical V1 configurations exposed parameters directly
+			# under content instead of content.catch.
+			for key in content_cfg.keys():
+				if not legacy_params.has(key):
+					legacy_params[key] = content_cfg[key]
+
+		params = legacy_params
+
+	var catch_cfg = {}
+	if typeof(params) == TYPE_DICTIONARY:
+		if params.has("catch"):
+			var catch_value = params.get("catch")
+			if typeof(catch_value) == TYPE_DICTIONARY:
+				catch_cfg = catch_value
+			else:
+				catch_cfg = params
+		else:
+			catch_cfg = params
 	
 	var catcher_orig_arr: Array = catch_cfg.get("catcher_origin", [540.0, 1700.0])
 	var catcher_dir_arr: Array = catch_cfg.get("catcher_direction", [0.0, -1.0])
 	_catcher_speed_base = float(catch_cfg.get("catcher_speed_base", 6.0))
-	
+
 	var target_orig_arr: Array = catch_cfg.get("target_origin", [540.0, 400.0])
 	var target_direction_arr: Array = catch_cfg.get("target_direction", [0.0, 1.0])
 	_target_speed_base = float(catch_cfg.get("target_speed_base", 2.5))
-	
+
 	_catch_radius = maxf(0.001, float(catch_cfg.get("catch_radius", 45.0)))
 
 	_c0 = Vector2(float(catcher_orig_arr[0]), float(catcher_orig_arr[1]))
 	_t0 = Vector2(float(target_orig_arr[0]), float(target_orig_arr[1]))
-	
+
 	var dir_c: Vector2 = Vector2(float(catcher_dir_arr[0]), float(catcher_dir_arr[1]))
 	var dir_t: Vector2 = Vector2(float(target_direction_arr[0]), float(target_direction_arr[1]))
 
@@ -81,6 +139,7 @@ func setup(config: Dictionary) -> void:
 	# C3-F Modelo A: Mecánicas estructurales completan el ciclo temporal aquí
 	_is_setup = true
 	_is_prepared = true
+
 
 func simulate(total_frames: int, initial_seed: int, _config: Dictionary) -> SimulationResult:
 	
@@ -141,6 +200,7 @@ func simulate(total_frames: int, initial_seed: int, _config: Dictionary) -> Simu
 	var result: SimulationResult = SimulationResult.new()
 	result.is_self_scored = true
 	result.frames = frames
+
 	result.winning_frame = winning_frame
 	result.minimum_distance = min_dist
 	result.score = score
