@@ -805,21 +805,19 @@ func build_ui_content(
 			)
 		)
 
-	# Estado temporal explícito para PresentationUI.
-	# Se mantienen estos valores dentro del Dictionary para
-	# que PresentationUI NO dependa de una firma de 4 parámetros.
 	ui_content["ui_state"] = current_block
 	ui_content["ui_state_frame"] = max(
 		0,
 		state_frame
 	)
 	ui_content["ui_fps"] = timeline.fps
+	ui_content["absolute_frame"] = timeline.get_current_frame()
 	ui_content["winning_frame"] = final_winning_frame
 	ui_content["winning_frame_game"] = final_result.winning_frame if final_result != null else -1
 	ui_content["reference_frame"] = reference_frame_index
+	ui_content["timeline"] = timeline
 
 	return ui_content
-
 
 # ============================================================
 # TEMPORAL STATE
@@ -906,83 +904,64 @@ func _process(_delta: float) -> void:
 	# El objetivo es impedir "residuos" de una fase anterior.
 	# --------------------------------------------------------
 
+
 	match current_block:
 
 		"HOOK":
-			# Solo Fondo + objeto/estado de referencia.
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 
 			apply_reference_frame()
 
-			# D3: PresentationUI recibe UN Dictionary.
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"HOOK",
-					ui_content
+				var rm = ChallengePresentationBinder.build_frame_render_model(
+					"HOOK", ui_content, presentation_ui.current_profile
 				)
+				presentation_ui.apply_render_model(rm)
 
 		"GAME":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 
-			var game_idx: int = (
-				timeline.get_game_index()
-			)
+			var game_idx: int = timeline.get_game_index()
 
-			if (
-				game_idx >= 0
-				and game_idx < verified_history.size()
-			):
-				var frame_state: FrameSnapshot = (
-					verified_history[
-						game_idx
-					]
-				)
-
-				apply_frame_snapshot(
-					frame_state
-				)
+			if game_idx >= 0 and game_idx < verified_history.size():
+				var frame_state: FrameSnapshot = verified_history[game_idx]
+				apply_frame_snapshot(frame_state)
 			else:
-				# Protección: si el frame no existe, no
-				# simulamos un estado inventado.
 				object_sprite.visible = false
 
-			# C6-E4: la geometría procede exclusivamente del estado
-			# visual ya aplicado por apply_frame_snapshot().
 			ui_content["winning_highlight_rects"] = build_winning_highlight_rects()
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"GAME",
-					ui_content
+				var rm = ChallengePresentationBinder.build_frame_render_model(
+					"GAME", ui_content, presentation_ui.current_profile
 				)
+				presentation_ui.apply_render_model(rm)
 
 		"REVEAL":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 
-			# Mantener exclusivamente el frame ganador certificado.
 			apply_reference_frame()
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"REVEAL",
-					ui_content
+				var rm = ChallengePresentationBinder.build_frame_render_model(
+					"REVEAL", ui_content, presentation_ui.current_profile
 				)
+				presentation_ui.apply_render_model(rm)
 
 		"CTA":
 			object_sprite.visible = true
 			object_sprite.modulate.a = 1.0
 
-			# Mantener la escena final certificada.
 			apply_reference_frame()
 
 			if presentation_ui != null:
-				presentation_ui.set_state(
-					"CTA",
-					ui_content
+				var rm = ChallengePresentationBinder.build_frame_render_model(
+					"CTA", ui_content, presentation_ui.current_profile
 				)
+				presentation_ui.apply_render_model(rm)
 
 		_:
 			object_sprite.visible = false

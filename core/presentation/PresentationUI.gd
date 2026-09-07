@@ -28,7 +28,6 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
 	safe_area.add_child(vbox)
 	
-	# TOP BAR: Badge
 	var top_hbox = HBoxContainer.new()
 	top_hbox.alignment = BoxContainer.ALIGNMENT_END
 	vbox.add_child(top_hbox)
@@ -37,11 +36,9 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	badge_label.role = TypographyLabel.Role.BADGE
 	top_hbox.add_child(badge_label)
 	
-	# HOOK OVERLAY
 	hook_label = HookComponent.new()
 	vbox.add_child(hook_label)
 	
-	# MIDDLE: Gameplay Envelope
 	gameplay_envelope = Control.new()
 	gameplay_envelope.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	gameplay_envelope.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -60,7 +57,6 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	winning_label.visible = false
 	gameplay_envelope.add_child(winning_label)
 	
-	# BOTTOM BAR: CTA
 	cta = CTAComponent.new()
 	cta.visible = false
 	vbox.add_child(cta)
@@ -70,7 +66,6 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	if root_control != null:
 		root_control.add_child(reveal_manager)
 
-	# C6-E4: marco visual efímero del frame exitoso.
 	winning_highlight = WinningHighlightComponent.new(root_control as Control)
 	if winning_highlight != null:
 		winning_highlight.hide()
@@ -83,7 +78,6 @@ func apply_profile(profile: PresentationProfile):
 	if safe_area != null:
 		safe_area.apply_profile(profile)
 		
-	var theme_config = PresentationTheme.get_theme_config(theme_name) if ClassDB.class_exists("PresentationTheme") or ResourceLoader.exists("res://core/presentation/PresentationTheme.gd") else {}
 	var font: Font = null
 	if ResourceLoader.exists("res://core/presentation/PresentationTheme.gd"):
 		var theme_script = load("res://core/presentation/PresentationTheme.gd")
@@ -119,26 +113,24 @@ func setup_mechanic_canvas(mechanic_root: Node2D):
 	if reveal_manager != null:
 		reveal_manager.mechanics_canvas = mechanic_root
 
-func set_state(state: String, content: Dictionary) -> void:
+## Única interfaz de la UI: Consumidor puro del RenderModel
+func apply_render_model(render_model: Dictionary) -> void:
 	if mechanic_node != null and gameplay_envelope != null:
 		if gameplay_envelope.size.x > 0:
 			var center_pos = gameplay_envelope.global_position + (gameplay_envelope.size / 2.0)
 			mechanic_node.global_position = center_pos
 
-	var ChallengePresentationBinder = load("res://core/presentation/ChallengePresentationBinder.gd")
-	var render_model = ChallengePresentationBinder.build_frame_render_model(state, content, current_profile)
-
 	if badge_label != null:
 		badge_label.visible = render_model.get("show_badge", false)
-		badge_label.text = render_model.get("badge_text", "HARD")
+		var b_text = render_model.get("badge_text", "")
+		if not b_text.is_empty():
+			badge_label.text = b_text
 
-	if hook_label != null and current_profile != null:
-		hook_label.apply_profile(current_profile)
-		hook_label.update_from_state(state, content)
+	if hook_label != null:
+		hook_label.apply_render_model(render_model)
 
-	if countdown != null and current_profile != null:
-		countdown.apply_profile(current_profile) # <-- CORRECCIÓN AQUÍ
-		countdown.update_from_state(state, content)
+	if countdown != null:
+		countdown.apply_render_model(render_model)
 
 	if reveal_manager != null:
 		reveal_manager.process_render_model(render_model)
@@ -149,8 +141,9 @@ func set_state(state: String, content: Dictionary) -> void:
 			winning_highlight.show_for_rects(render_model.get("success_highlight_rects", []))
 
 	if cta != null and current_profile != null:
-		cta.visible = render_model.get("cta_visible", false)
-		if cta.visible:
+		var cta_vis = render_model.get("cta_visible", false)
+		cta.visible = cta_vis
+		if cta_vis:
 			cta.configure(
 				render_model.get("cta_main", ""),
 				render_model.get("cta_sub", ""),

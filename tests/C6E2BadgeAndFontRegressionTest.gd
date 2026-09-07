@@ -9,32 +9,32 @@ func _init():
 	
 	var profile = PresentationProfile.new()
 	var ui = PresentationUI.new(root, "default_c6", profile)
+	var Binder = load("res://core/presentation/ChallengePresentationBinder.gd")
 	
-	# Validar visibilidad del badge por estados
-	ui.set_state("HOOK", {"hook": "Test hook", "ui_state_frame": 0, "ui_fps": 60})
+	# Validar visibilidad del badge por estados usando RenderModel
+	var rm_hook = Binder.build_frame_render_model("HOOK", {"hook": "Test hook", "ui_state_frame": 0, "ui_fps": 60}, profile)
+	ui.apply_render_model(rm_hook)
 	if not ui.badge_label.visible:
 		printerr("FAIL: Badge should be visible in HOOK state")
 		quit(1)
 		
-	ui.set_state("GAME", {"ui_state_frame": 0, "ui_fps": 60})
+	var rm_game = Binder.build_frame_render_model("GAME", {"ui_state_frame": 0, "ui_fps": 60}, profile)
+	ui.apply_render_model(rm_game)
 	if ui.badge_label.visible:
 		printerr("FAIL: Badge should be hidden in GAME state")
 		quit(1)
 		
-	ui.set_state("REVEAL", {"ui_state_frame": 0, "ui_fps": 60})
+	var rm_reveal = Binder.build_frame_render_model("REVEAL", {"ui_state_frame": 0, "ui_fps": 60}, profile)
+	ui.apply_render_model(rm_reveal)
 	if ui.badge_label.visible:
 		printerr("FAIL: Badge should be hidden in REVEAL state")
 		quit(1)
 		
-	ui.set_state("CTA", {"ui_state_frame": 0, "ui_fps": 60})
+	var rm_cta = Binder.build_frame_render_model("CTA", {"ui_state_frame": 0, "ui_fps": 60}, profile)
+	ui.apply_render_model(rm_cta)
 	if ui.badge_label.visible:
 		printerr("FAIL: Badge should be hidden in CTA state")
 		quit(1)
-		
-	# Validar integración de fuentes (Comic Sans)
-	if ui.badge_label.has_theme_font_override("font") or ResourceLoader.exists("res://assets/fonts/Comic-Sans-MS.ttf"):
-		# Si el theme provee font, verificamos que el override o la fuente base existan
-		pass
 
 	print("[C6E2_BADGE_FONT_REGRESSION_SUITE] PASS")
 	quit(0)
