@@ -1,4 +1,4 @@
-class_name FindMechanic
+﻿class_name FindMechanic
 extends ChallengeMechanic
 
 var _rng_context: MechanicRNGContext = null
@@ -32,7 +32,7 @@ func setup(config: Dictionary) -> void:
 		_error_state = "MISSING_RNG_CONTEXT"
 		return
 
-	var find_cfg: Dictionary = config.get("difficulty", {}).get("find", {})
+	var find_cfg: Dictionary = _get_find_config(config)
 	
 	var x_min: float = float(find_cfg.get("safe_area_x_min", 0.0))
 	var x_max: float = float(find_cfg.get("safe_area_x_max", 1080.0))
@@ -80,8 +80,25 @@ func setup(config: Dictionary) -> void:
 	_is_setup = true
 	_is_prepared = true
 
+func _get_find_config(config: Dictionary) -> Dictionary:
+	var simulation_cfg: Dictionary = config.get("simulation", {})
+	if simulation_cfg is Dictionary:
+		var params = simulation_cfg.get("parameters", {})
+		if params is Dictionary:
+			var v2_find = params.get("find", {})
+			if v2_find is Dictionary and not v2_find.is_empty():
+				return v2_find.duplicate(true)
+
+	var legacy_difficulty = config.get("difficulty", {})
+	if legacy_difficulty is Dictionary:
+		var legacy_find = legacy_difficulty.get("find", {})
+		if legacy_find is Dictionary:
+			return legacy_find.duplicate(true)
+
+	return {}
+	
 func calculate_frame(f: int, config: Dictionary) -> Dictionary:
-	var find_cfg: Dictionary = config.get("difficulty", {}).get("find", {})
+	var find_cfg: Dictionary = _get_find_config(config)
 	var c_x: float = float(find_cfg.get("scanner_cx", 540.0))
 	var c_y: float = float(find_cfg.get("scanner_cy", 960.0))
 	var a_x: float = float(find_cfg.get("scanner_ax", 400.0))
@@ -113,7 +130,7 @@ func simulate(total_frames: int, _initial_seed: int, config: Dictionary) -> Simu
 		err.metadata["error"] = _error_state
 		return err
 
-	var find_cfg: Dictionary = config.get("difficulty", {}).get("find", {})
+	var find_cfg: Dictionary = _get_find_config(config)
 	var capture_radius: float = float(find_cfg.get("capture_radius", 100.0))
 
 	var frames: Array[FrameSnapshot] = []
