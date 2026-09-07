@@ -188,7 +188,9 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 		attempts += 1
 		var runtime_input: Dictionary
 		var mechanic_id := str(canonical_v2.get("mechanic", "")).to_lower()
-		if mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1"]:
+		
+		# F4.4 - Exención de mecánicas native V2 (Añadido choose_v1)
+		if mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1"]:
 			# C6-F4.4: native-V2 mechanics consume the migrated Canonical V2 directly.
 			runtime_input = canonical_v2.duplicate(true)
 			runtime_input["simulation"]["seed"] = current_seed
@@ -629,4 +631,3 @@ static func _failure(
 		"error": message,
 		"context": context
 	}
-
