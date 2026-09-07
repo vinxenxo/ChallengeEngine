@@ -70,8 +70,7 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	if root_control != null:
 		root_control.add_child(reveal_manager)
 
-	# C6-E4: marco visual efímero del frame ganador.
-	# Presentation-only: recibe geometría ya resuelta por el renderer.
+	# C6-E4: marco visual efímero del frame exitoso.
 	winning_highlight = WinningHighlightComponent.new(root_control as Control)
 	if winning_highlight != null:
 		winning_highlight.hide()
@@ -84,9 +83,7 @@ func apply_profile(profile: PresentationProfile):
 	if safe_area != null:
 		safe_area.apply_profile(profile)
 		
-	# Carga de la fuente oficial desde PresentationTheme histórico
 	var theme_config = PresentationTheme.get_theme_config(theme_name) if ClassDB.class_exists("PresentationTheme") or ResourceLoader.exists("res://core/presentation/PresentationTheme.gd") else {}
-	# Intentamos cargar PresentationTheme dinámicamente si existe el script
 	var font: Font = null
 	if ResourceLoader.exists("res://core/presentation/PresentationTheme.gd"):
 		var theme_script = load("res://core/presentation/PresentationTheme.gd")
@@ -96,7 +93,6 @@ func apply_profile(profile: PresentationProfile):
 	
 	if badge_label != null:
 		badge_label.apply_profile(profile)
-		badge_label.text = "HARD"
 		if font != null: badge_label.apply_font(font)
 		
 	if hook_label != null and profile != null:
@@ -129,44 +125,37 @@ func set_state(state: String, content: Dictionary) -> void:
 			var center_pos = gameplay_envelope.global_position + (gameplay_envelope.size / 2.0)
 			mechanic_node.global_position = center_pos
 
-	# 1. Regla de visibilidad del Badge de Dificultad (Visible únicamente en HOOK)
-	if badge_label != null:
-		badge_label.visible = (state == "HOOK")
+	var ChallengePresentationBinder = load("res://core/presentation/ChallengePresentationBinder.gd")
+	var render_model = ChallengePresentationBinder.build_frame_render_model(state, content, current_profile)
 
-	# 2. Orquestación del Hook Text
+	if badge_label != null:
+		badge_label.visible = render_model.get("show_badge", false)
+		badge_label.text = render_model.get("badge_text", "HARD")
+
 	if hook_label != null and current_profile != null:
 		hook_label.apply_profile(current_profile)
 		hook_label.update_from_state(state, content)
 
-	# 3. Orquestación temporal del Countdown
 	if countdown != null and current_profile != null:
-		countdown.apply_profile(current_profile)
+		countdown.apply_profile(current_profile) # <-- CORRECCIÓN AQUÍ
 		countdown.update_from_state(state, content)
 
-	# 4. Orquestación rigurosa del Reveal / Winning Frame usando el frame absoluto
 	if reveal_manager != null:
-		var absolute_frame = int(content.get("absolute_frame", 0))
-		var winning_frame = int(content.get("winning_frame", 0))
-		var timeline = content.get("timeline", null)
-		if timeline != null:
-			reveal_manager.process_frame(absolute_frame, winning_frame, timeline, state)
+		reveal_manager.process_render_model(render_model)
 
-	# 5. C6-E4 — Winning Frame Visual Emphasis
-	# El componente NO calcula el win: solo compara el frame de UI
-	# con winning_frame_game y dibuja los bounds visuales suministrados.
 	if winning_highlight != null:
 		winning_highlight.hide()
-		var winning_frame_game: int = int(content.get("winning_frame_game", -1))
-		var current_game_frame: int = int(content.get("ui_state_frame", -1))
-		var highlight_rects: Array = content.get("winning_highlight_rects", [])
-		if state == "GAME" and current_game_frame == winning_frame_game:
-			winning_highlight.show_for_rects(highlight_rects)
+		if render_model.get("is_success_game", false):
+			winning_highlight.show_for_rects(render_model.get("success_highlight_rects", []))
 
-	# 6. Orquestación de CTA
-	if state == "CTA":
-		if cta != null and current_profile != null:
-			cta.visible = true
-			cta.configure("LINK IN BIO", "¡Juega ahora!", current_profile)
+	if cta != null and current_profile != null:
+		cta.visible = render_model.get("cta_visible", false)
+		if cta.visible:
+			cta.configure(
+				render_model.get("cta_main", ""),
+				render_model.get("cta_sub", ""),
+				current_profile
+			)
 	else:
 		if cta != null:
 			cta.visible = false
