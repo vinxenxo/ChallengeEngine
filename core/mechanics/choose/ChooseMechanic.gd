@@ -7,12 +7,41 @@ var options_positions: Array[Vector2] = []
 var winning_option: int = 0
 var precomputed_selections: Array[int] = []
 
+var _params: Dictionary = {}
+var _config: Dictionary = {}
 
-func setup(config_cache: Dictionary) -> void:
-	var difficulty_cfg: Dictionary = config_cache.get("difficulty", {})
-	var diff_cfg: Dictionary = difficulty_cfg.get("choose", {})
 
-	options_count = int(diff_cfg.get("options_count", 3))
+func setup(config: Dictionary) -> void:
+	_is_setup = false
+	_error_state = "OK"
+	
+	_config = config.duplicate(true)
+
+	var params: Dictionary = {}
+
+	# 1. Autoridad: Canonical V2
+	if config.has("simulation") and config.get("simulation", {}).has("parameters"):
+		var v2_params: Dictionary = config["simulation"]["parameters"]
+		params = v2_params.get("choose", v2_params)
+	
+	# 2. Fallback: Legacy V1
+	else:
+		var difficulty_cfg: Dictionary = config.get("difficulty", {})
+		var content_cfg: Dictionary = config.get("content", {})
+		
+		var diff_choose = difficulty_cfg.get("choose", difficulty_cfg)
+		params = diff_choose.duplicate(true) if diff_choose is Dictionary else {}
+		
+		# Fusionar metadata/content histórico para CHOOSE
+		if content_cfg is Dictionary:
+			for key in content_cfg.keys():
+				if not params.has(key):
+					params[key] = content_cfg[key]
+
+	# Centralizamos el acceso paramétrico
+	_params = params.duplicate(true)
+
+	options_count = int(_params.get("options_count", 3))
 
 	if options_count < 2:
 		_error_state = "INVALID_OPTIONS_COUNT"
@@ -27,7 +56,7 @@ func setup(config_cache: Dictionary) -> void:
 
 	options_positions.clear()
 
-	var raw_positions = diff_cfg.get("positions", [])
+	var raw_positions = _params.get("positions", [])
 
 	if raw_positions is Array and raw_positions.size() >= options_count:
 		for i: int in range(options_count):
@@ -58,8 +87,13 @@ func setup(config_cache: Dictionary) -> void:
 
 			options_positions.append(default_positions[i])
 
-	var generation_cfg: Dictionary = config_cache.get("generation", {})
-	var seed_val: int = int(generation_cfg.get("seed", 12345))
+	# Autoridad de semilla: simulation.seed para V2, fallback a generation.seed
+	var seed_val: int = 12345
+	if config.has("simulation") and config.get("simulation", {}).has("seed"):
+		seed_val = int(config["simulation"]["seed"])
+	else:
+		var generation_cfg: Dictionary = config.get("generation", {})
+		seed_val = int(generation_cfg.get("seed", 12345))
 
 	winning_option = seed_val % options_count
 
