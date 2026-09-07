@@ -1,0 +1,4 @@
+ChallengeRuntimeBridge.gd:
+Add count_v1 to the existing native-V2 mechanic allow-list alongside
+pilot, parking_v2, hit_v1, catch_v1, find_v1, choose_v1.
+Do not change any other bridge logic.

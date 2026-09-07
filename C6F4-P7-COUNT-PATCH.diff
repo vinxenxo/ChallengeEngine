@@ -1,0 +1,73 @@
+# C6-F4.4-P7 COUNT - minimal native V2 patch
+# Apply manually or use the supplied diff as reference.
+
+--- a/core/mechanics/count/CountMechanic.gd
++++ b/core/mechanics/count/CountMechanic.gd
+@@
+ var min_value: int = 3
+ var max_value: int = 10
+ var target_count: int = 0
+ var precomputed_counts: Array[int] = []
++var _params: Dictionary = {}
+@@
+ func setup(config_cache: Dictionary) -> void:
+-    var diff_cfg: Dictionary = config_cache.get("difficulty", {}).get("count", {})
++    _is_setup = false
++    _is_prepared = false
++    _error_state = "OK"
++
++    var params: Dictionary = {}
++    var simulation_cfg = config_cache.get("simulation", {})
++    if simulation_cfg is Dictionary:
++        var simulation_params = simulation_cfg.get("parameters", {})
++        if simulation_params is Dictionary:
++            var v2_count = simulation_params.get("count", {})
++            if v2_count is Dictionary and not v2_count.is_empty():
++                params = v2_count.duplicate(true)
++
++    if params.is_empty():
++        var difficulty_cfg = config_cache.get("difficulty", {})
++        if difficulty_cfg is Dictionary:
++            var legacy_count = difficulty_cfg.get("count", {})
++            if legacy_count is Dictionary:
++                params = legacy_count.duplicate(true)
++
++    var content_cfg = config_cache.get("content", {})
++    if content_cfg is Dictionary:
++        for key in content_cfg.keys():
++            if not params.has(key):
++                params[key] = content_cfg[key]
++
++    _params = params.duplicate(true)
+
+-    min_value = int(diff_cfg.get("min_value", 3))
+-    max_value = int(diff_cfg.get("max_value", 10))
++    min_value = int(_params.get("min_value", 3))
++    max_value = int(_params.get("max_value", 10))
+@@
+-    var raw_start = diff_cfg.get("start_pos", [])
++    var raw_start = _params.get("start_pos", [])
+@@
+-    step_x = float(diff_cfg.get("step_x", 100.0))
++    step_x = float(_params.get("step_x", 100.0))
+
+-    var generation_cfg: Dictionary = config_cache.get("generation", {})
+-    var seed_val: int = int(generation_cfg.get("seed", 12345))
++    var simulation_seed: Variant = null
++    var simulation_cfg_for_seed = config_cache.get("simulation", {})
++    if simulation_cfg_for_seed is Dictionary:
++        if simulation_cfg_for_seed.has("seed"):
++            simulation_seed = simulation_cfg_for_seed.get("seed")
++
++    var seed_val: int
++    if simulation_seed != null:
++        seed_val = int(simulation_seed)
++    else:
++        var generation_cfg: Dictionary = config_cache.get("generation", {})
++        seed_val = int(generation_cfg.get("seed", 12345))
+
+     var range_size: int = (max_value - min_value) + 1
+     target_count = min_value + (seed_val % range_size)
+
+     _is_setup = true
+     _error_state = "OK"

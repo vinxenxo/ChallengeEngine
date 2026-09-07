@@ -10,24 +10,59 @@ var start_pos: Vector2 = Vector2(180.0, 850.0)
 var step_x: float = 100.0
 
 func setup(config_cache: Dictionary) -> void:
-	var diff_cfg: Dictionary = config_cache.get("difficulty", {}).get("count", {})
+	_is_setup = false
+	_error_state = "OK"
 
-	min_value = int(diff_cfg.get("min_value", 3))
-	max_value = int(diff_cfg.get("max_value", 10))
+	var params: Dictionary = {}
+	var simulation_cfg: Dictionary = config_cache.get("simulation", {})
+
+	# 1. Autoridad: Canonical V2
+	if simulation_cfg.has("parameters"):
+		var simulation_params = simulation_cfg.get("parameters", {})
+		if simulation_params is Dictionary:
+			# Extrae "count" si existe, si no, usa el propio simulation_params aplanado
+			var v2_count = simulation_params.get("count", simulation_params)
+			if v2_count is Dictionary and not v2_count.is_empty():
+				params = v2_count.duplicate(true)
+			else:
+				params = simulation_params.duplicate(true)
+	
+	# 2. Fallback: Legacy V1
+	else:
+		var difficulty_cfg: Dictionary = config_cache.get("difficulty", {})
+		var content_cfg: Dictionary = config_cache.get("content", {})
+		
+		var diff_count = difficulty_cfg.get("count", difficulty_cfg)
+		params = diff_count.duplicate(true) if diff_count is Dictionary else {}
+		
+		# Fusionar metadata/content histórico
+		if content_cfg is Dictionary:
+			for key in content_cfg.keys():
+				if not params.has(key):
+					params[key] = content_cfg[key]
+
+	# Asignación de variables desde el diccionario resuelto
+	min_value = int(params.get("min_value", 3))
+	max_value = int(params.get("max_value", 10))
 
 	if min_value >= max_value:
 		_error_state = "INVALID_COUNT_RANGE"
 		_is_setup = false
 		return
 
-	var raw_start = diff_cfg.get("start_pos", [])
+	var raw_start = params.get("start_pos", [])
 	if raw_start is Array and raw_start.size() >= 2:
 		start_pos = Vector2(float(raw_start[0]), float(raw_start[1]))
 
-	step_x = float(diff_cfg.get("step_x", 100.0))
+	step_x = float(params.get("step_x", 100.0))
 
-	var generation_cfg: Dictionary = config_cache.get("generation", {})
-	var seed_val: int = int(generation_cfg.get("seed", 12345))
+	# Autoridad de semilla: simulation.seed para V2, fallback a generation.seed
+	var seed_val: int = 12345
+	if simulation_cfg.has("seed"):
+		seed_val = int(simulation_cfg.get("seed"))
+	else:
+		var generation_cfg: Dictionary = config_cache.get("generation", {})
+		seed_val = int(generation_cfg.get("seed", 12345))
 
 	var range_size: int = (max_value - min_value) + 1
 	target_count = min_value + (seed_val % range_size)
