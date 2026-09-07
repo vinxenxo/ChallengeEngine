@@ -188,7 +188,7 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 		attempts += 1
 		var runtime_input: Dictionary
 		var mechanic_id := str(canonical_v2.get("mechanic", "")).to_lower()
-		if mechanic_id in ["pilot", "parking_v2"]:
+		if mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1"]:
 			# C6-F4.4: native-V2 mechanics consume the migrated Canonical V2 directly.
 			runtime_input = canonical_v2.duplicate(true)
 			runtime_input["simulation"]["seed"] = current_seed
@@ -258,15 +258,43 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 				context
 			)
 
-		var timeline_result := ChallengeTimelineBuilder.build(runtime_input, result)
-		if not timeline_result.success:
-			return _failure(
-				"EFFECTIVE_F3_2_FAILED",
-				"F3.2 failed: %s" % str(timeline_result.error),
-				context
-			)
+		var timeline: VideoTimeline = null
+		if mechanic_id == "catch_v1":
+			# C6-F4.4 Phase 4: CATCH owns winning-frame truth.
+			# ChallengeTimelineBuilder delegates scoring to WinningFrameDetector,
+			# which is intentionally not applicable to CATCH. Build only the
+			# temporal VideoTimeline here from the already-authoritative V2 video.
+			var catch_video = runtime_input.get("video", {})
+			if not catch_video is Dictionary:
+				return _failure(
+					"EFFECTIVE_F3_2_FAILED",
+					"CATCH native V2 video binding is not a Dictionary.",
+					context
+				)
+			if not catch_video.has("fps") or not catch_video.has("game_duration"):
+				return _failure(
+					"EFFECTIVE_F3_2_FAILED",
+					"CATCH native V2 video is missing mandatory fps/game_duration fields.",
+					context
+				)
+			var catch_timeline_config := {
+				"fps": catch_video.get("fps"),
+				"hook_duration": catch_video.get("hook_duration", 0.0),
+				"game_duration": catch_video.get("game_duration"),
+				"reveal_duration": catch_video.get("reveal_duration", 0.0),
+				"cta_duration": catch_video.get("cta_duration", 0.0)
+			}
+			timeline = VideoTimeline.new(catch_timeline_config)
+		else:
+			var timeline_result := ChallengeTimelineBuilder.build(runtime_input, result)
+			if not timeline_result.success:
+				return _failure(
+					"EFFECTIVE_F3_2_FAILED",
+					"F3.2 failed: %s" % str(timeline_result.error),
+					context
+				)
+			timeline = timeline_result.timeline
 
-		var timeline: VideoTimeline = timeline_result.timeline
 		if timeline == null:
 			return _failure("EFFECTIVE_F3_2_FAILED", "F3.2 returned a null VideoTimeline.", context)
 

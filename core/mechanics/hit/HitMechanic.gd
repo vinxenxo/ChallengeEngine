@@ -35,7 +35,19 @@ func setup(config: Dictionary) -> void:
 		_error_state = "MISSING_RNG_CONTEXT"
 		return
 
-	var hit_cfg: Dictionary = config.get("difficulty", {}).get("hit", {})
+	# C6-F4.4 Phase 3: Canonical V2 is authoritative. F1.1 retains the full
+	# legacy difficulty block under simulation.parameters, so HitMechanic reads
+	# the nested `hit` block from V2 and falls back to legacy V1 only when needed.
+	var simulation_cfg: Dictionary = config.get("simulation", {})
+	var params: Dictionary = {}
+	if simulation_cfg is Dictionary and simulation_cfg.get("parameters", {}) is Dictionary:
+		params = simulation_cfg.get("parameters", {}).duplicate(true)
+	else:
+		params = config.get("difficulty", {}).duplicate(true)
+
+	var hit_cfg: Dictionary = params.get("hit", params)
+	if not hit_cfg is Dictionary:
+		hit_cfg = {}
 
 	var origin_arr = hit_cfg.get("origin", [540.0, 1500.0])
 	var target_arr = hit_cfg.get("target", [540.0, 300.0])
