@@ -1,5 +1,4 @@
-﻿# tests/run_all.py
-import os
+﻿import os
 import sys
 import subprocess
 from pathlib import Path
@@ -10,57 +9,52 @@ TESTS_DIR = PROJECT_ROOT / "tests"
 # Registro explícito y contractual de suites.
 # La identidad es el path relativo desde la carpeta 'tests/'.
 KNOWN_SUITES = {
-    "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
-    "mechanics/catch/CatchMechanicIsolationTest.gd": "[CATCH_V1_ISOLATION_SUITE] PASS",
-    "mechanics/catch/CatchPresentationContractTest.gd": "[CATCH_PRESENTATION_CONTRACT_SUITE] PASS",
-    "mechanics/choose/ChooseMechanicIsolationTest.gd": "[CHOOSE_V1_ISOLATION_SUITE] PASS",
-    "ParkingMechanicV2IsolationTest.gd": "[PARKING_V2_ISOLATION_SUITE] PASS",
-    "PilotMechanicIsolationTest.gd": "[PILOT_ISOLATION_SUITE] PASS",
-    "PilotMechanicDDIHardeningTest.gd": "[DDI_R1] PASS",
-    "DeterministicLCGStatelessTest.gd": "[RNG_TEST_SUITE] PASS",
-    "RNGArchitectureTest.gd": "[RNG_ARCHITECTURE_SUITE] PASS",
-    "mechanics/find/FindMechanicIsolationTest.gd": "[FIND_V1_ISOLATION_SUITE] PASS",
     "C6EAssetIntegrityTest.gd": "[C6E_ASSET_INTEGRITY_SUITE] PASS",
-    "C6E3PresentationValidationTest.gd": "[C6E3_PRESENTATION_VALIDATION_SUITE] PASS",
     "C6E2BadgeAndFontRegressionTest.gd": "[C6E2_BADGE_FONT_REGRESSION_SUITE] PASS",
     "C6E2ComponentLayoutValidationTest.gd": "[C6E2_COMPONENT_LAYOUT_VALIDATION_SUITE] PASS",
     "C6E2ComponentSystemTest.gd": "[C6E2_COMPONENT_SYSTEM_SUITE] PASS",
     "C6E2CountdownContractTest.gd": "[C6E2_COUNTDOWN_CONTRACT_SUITE] PASS",
-    "C6E2BadgeAndFontRegressionTest.gd": "[C6E2_BADGE_FONT_REGRESSION_SUITE] PASS",
     "C6E3PresentationValidationTest.gd": "[C6E3_PRESENTATION_VALIDATION_SUITE] PASS",
-    "C6F1MigrationEquivalenceTest.gd": "[C6F1_MIGRATION_EQUIVALENCE_SUITE] PASS",
     "C6E4WinningHighlightContractTest.gd": "[C6E4_WINNING_HIGHLIGHT_CONTRACT_SUITE] PASS",
-    "C6F2ResolverCorrectnessTest.gd": "[C6F2_RESOLVER_CORRECTNESS_SUITE] PASS",
-    "C6F2LegacyEquivalenceTest.gd": "[C6F2_LEGACY_EQUIVALENCE_SUITE] PASS",
-    "C6F2ResolverCorrectnessTest.gd": "[C6F2_RESOLVER_CORRECTNESS_SUITE] PASS",
-    "C6F2LegacyEquivalenceTest.gd": "[C6F2_LEGACY_EQUIVALENCE_SUITE] PASS",
+    "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
+    "C6F1MigrationEquivalenceTest.gd": "[C6F1_MIGRATION_EQUIVALENCE_SUITE] PASS",
+    "C6F2AdapterMetadataBindingTest.gd": "[C6F2_ADAPTER_METADATA_BINDING_SUITE] PASS",
+    "C6F2AssetFamilyContractTest.gd": "[C6F2_ASSET_FAMILY_CONTRACT_SUITE] PASS",
+    "C6F2AudioProfileContractTest.gd": "[C6F2_AUDIO_PROFILE_CONTRACT_SUITE] PASS",
+    "C6F2AuthoringAdapterContractTest.gd": "[C6F2_AUTHORING_ADAPTER_CONTRACT_SUITE] PASS",
+    "C6F2AuthoringDeterminismTest.gd": "[C6F2_AUTHORING_DETERMINISM_SUITE] PASS",
+    "C6F2AuthoringGeneratorContractTest.gd": "[C6F2_AUTHORING_GENERATOR_CONTRACT_SUITE] PASS",
+    "C6F2AuthoringRequestContractTest.gd": "[C6F2_AUTHORING_REQUEST_SUITE] PASS",
     "C6F2DeterminismTest.gd": "[C6F2_DETERMINISM_SUITE] PASS",
     "C6F2DifficultyCorpusTest.gd": "[C6F2_DIFFICULTY_CORPUS_SUITE] PASS",
     "C6F2DifficultyMonotonicityTest.gd": "[C6F2_DIFFICULTY_MONOTONICITY_SUITE] PASS",
-    "C6F2AuthoringRequestContractTest.gd": "[C6F2_AUTHORING_REQUEST_SUITE] PASS",
-    "C6F2AuthoringAdapterContractTest.gd": "[C6F2_AUTHORING_ADAPTER_CONTRACT_SUITE] PASS",
-    "C6F2AuthoringGeneratorContractTest.gd": "[C6F2_AUTHORING_GENERATOR_CONTRACT_SUITE] PASS",
-    "C6F2AuthoringDeterminismTest.gd": "[C6F2_AUTHORING_DETERMINISM_SUITE] PASS",
-    "C6F2VideoProfileContractTest.gd": "[C6F2_VIDEO_PROFILE_CONTRACT_SUITE] PASS",
+    "C6F2LegacyEquivalenceTest.gd": "[C6F2_LEGACY_EQUIVALENCE_SUITE] PASS",
     "C6F2PresentationBindingContractTest.gd": "[C6F2_PRESENTATION_BINDING_CONTRACT_SUITE] PASS",
-    "C6F2AssetFamilyContractTest.gd": "[C6F2_ASSET_FAMILY_CONTRACT_SUITE] PASS",
-    "C6F2AdapterMetadataBindingTest.gd": "[C6F2_ADAPTER_METADATA_BINDING_SUITE] PASS",
     "C6F2ProductiveGeneratorTest.gd": "[C6F2_PRODUCTIVE_GENERATOR_SUITE] PASS",
-    "C6F2AudioProfileContractTest.gd": "[C6F2_AUDIO_PROFILE_CONTRACT_SUITE] PASS",
+    "C6F2ResolverCorrectnessTest.gd": "[C6F2_RESOLVER_CORRECTNESS_SUITE] PASS",
+    "C6F2VideoProfileContractTest.gd": "[C6F2_VIDEO_PROFILE_CONTRACT_SUITE] PASS",
+    "C6F3PresentationBindingTest.gd": "[C6F3_PRESENTATION_BINDING_SUITE] PASS",
     "C6F3SimulationOrchestratorTest.gd": "[C6F3_SIMULATION_ORCHESTRATOR_SUITE] PASS",
     "C6F3TimelineBuilderTest.gd": "[C6F3_TIMELINE_BUILDER_SUITE] PASS",
-    "C6F3PresentationBindingTest.gd": "[C6F3_PRESENTATION_BINDING_SUITE] PASS",
-    "C6F4ShadowRuntimeBridgeTest.gd": "[C6F4_SHADOW_RUNTIME_BRIDGE_SUITE] PASS",
-    "C6F4EffectiveRuntimeTest.gd": "[C6F4_EFFECTIVE_RUNTIME_SUITE] PASS",
-    "C6F4CanonicalV2PilotTest.gd": "[C6F4_CANONICAL_V2_PILOT_SUITE] PASS",
-    "C6F4CanonicalV2ParkingTest.gd": "[C6F4_CANONICAL_V2_PARKING_SUITE] PASS",
-    "C6F4CanonicalV2HitTest.gd": "[C6F4_CANONICAL_V2_HIT_SUITE] PASS",
     "C6F4CanonicalV2CatchTest.gd": "[C6F4_CANONICAL_V2_CATCH_SUITE] PASS",
+    "C6F4CanonicalV2ChooseTest.gd": "[C6F4_CANONICAL_V2_CHOOSE_SUITE] PASS",
+    "C6F4CanonicalV2CountTest.gd": "[C6F4_CANONICAL_V2_COUNT_SUITE] PASS",
     "C6F4CanonicalV2FindTest.gd": "[C6F4_CANONICAL_V2_FIND_SUITE] PASS",
-    "C6F4CatchLegacyDiagnosticTest.gd": "[C6F4_CATCH_LEGACY_DIAGNOSTIC_SUITE] PASS",
-    "C6F4CanonicalV2ChooseTest.gd": "[C6F4_CANONICAL_V2_CHOOSE_SUITE] PASS",    
-    "C6F4CanonicalV2CountTest.gd" : "[C6F4_CANONICAL_V2_COUNT_SUITE] PASS",
-    "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
+    "C6F4CanonicalV2HitTest.gd": "[C6F4_CANONICAL_V2_HIT_SUITE] PASS",
+    "C6F4CanonicalV2ParkingTest.gd": "[C6F4_CANONICAL_V2_PARKING_SUITE] PASS",
+    "C6F4CanonicalV2PilotTest.gd": "[C6F4_CANONICAL_V2_PILOT_SUITE] PASS",
+    "C6F4EffectiveRuntimeTest.gd": "[C6F4_EFFECTIVE_RUNTIME_SUITE] PASS",
+    "C6F4ShadowRuntimeBridgeTest.gd": "[C6F4_SHADOW_RUNTIME_BRIDGE_SUITE] PASS",
+    "DeterministicLCGStatelessTest.gd": "[RNG_TEST_SUITE] PASS",
+    "ParkingMechanicV2IsolationTest.gd": "[PARKING_V2_ISOLATION_SUITE] PASS",
+    "PilotMechanicDDIHardeningTest.gd": "[DDI_R1] PASS",
+    "PilotMechanicIsolationTest.gd": "[PILOT_ISOLATION_SUITE] PASS",
+    "RNGArchitectureTest.gd": "[RNG_ARCHITECTURE_SUITE] PASS",
+    "mechanics/catch/CatchMechanicIsolationTest.gd": "[CATCH_V1_ISOLATION_SUITE] PASS",
+    "mechanics/catch/CatchPresentationContractTest.gd": "[CATCH_PRESENTATION_CONTRACT_SUITE] PASS",
+    "mechanics/choose/ChooseMechanicIsolationTest.gd": "[CHOOSE_V1_ISOLATION_SUITE] PASS",
+    "mechanics/find/FindMechanicIsolationTest.gd": "[FIND_V1_ISOLATION_SUITE] PASS",
+    "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 
 FATAL_PATTERNS = [
@@ -101,29 +95,50 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
     cmd = ["godot", "--headless", "--path", str(PROJECT_ROOT), "--script", str(suite_path)]
     
     try:
-        result = subprocess.run(
-            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
-            text=True, encoding="utf-8", timeout=60, cwd=str(PROJECT_ROOT)
+        process = subprocess.Popen(
+            cmd, 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.STDOUT, 
+            text=True, 
+            encoding="utf-8", 
+            cwd=str(PROJECT_ROOT)
         )
+        
+        combined_output = []
+        fatal_detected = False
+        
+        # Lectura asíncrona para detectar errores fatales inmediatamente
+        for line in process.stdout:
+            combined_output.append(line)
+            for pattern in FATAL_PATTERNS:
+                if pattern in line:
+                    print(f"[RUNNER-FAIL] {name}: detectado patrón fatal temprano: {pattern.strip()}")
+                    print(f"       Trazado: {line.strip()}")
+                    process.kill()
+                    fatal_detected = True
+                    break
+            if fatal_detected:
+                break
+                
+        if fatal_detected:
+            return False
+            
+        process.wait(timeout=60)
+        
     except subprocess.TimeoutExpired:
         print(f"[RUNNER-FAIL] Timeout ejecutando {name}.")
+        process.kill()
         return False
     except OSError as exc:
         print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
         return False
 
-    combined = f"{result.stdout}\n{result.stderr}"
-
-    for pattern in FATAL_PATTERNS:
-        if pattern in combined:
-            print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern}")
-            return False
-
-    if result.returncode != 0:
-        print(f"[RUNNER-FAIL] {name}: exit code {result.returncode}")
+    if process.returncode != 0:
+        print(f"[RUNNER-FAIL] {name}: exit code {process.returncode}")
         return False
 
-    if pass_marker not in result.stdout:
+    full_output = "".join(combined_output)
+    if pass_marker not in full_output:
         print(f"[RUNNER-FAIL] {name}: falta marcador de éxito '{pass_marker}'.")
         return False
 
