@@ -13,7 +13,6 @@ const VideoTimeline = preload("res://core/timeline/VideoTimeline.gd")
 static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_result: SimulationResult) -> PresentationBindingResult:
 	var result = PresentationBindingResult.new()
 	
-	# 1. Null and State Gate Checks (Fail-Closed)
 	if canonical_v2.is_empty():
 		result.error = "Canonical V2 definition is empty."
 		return result
@@ -26,7 +25,6 @@ static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_r
 		result.error = "SimulationResult is null or in an error state."
 		return result
 
-	# 2. Presentation Profile Binding Resolution & Validation
 	var pres_input = canonical_v2.get("presentation", "")
 	var pres_id = ""
 	if typeof(pres_input) == TYPE_STRING:
@@ -51,7 +49,6 @@ static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_r
 	result.presentation_profile = profile
 	result.presentation_render_model = profile.build_render_model("GAME", {})
 
-	# 3. Audio Profile Binding Resolution & Validation (Optional pass-through, strict if present)
 	if canonical_v2.has("audio"):
 		var audio_input = canonical_v2.get("audio")
 		var audio_id = ""
@@ -71,7 +68,6 @@ static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_r
 				return result
 			result.audio_profile = audio_data
 
-	# 4. Asset Family Binding Resolution & Validation (Identity)
 	var asset_family_id = str(canonical_v2.get("asset_family", "")).strip_edges()
 	if asset_family_id.is_empty():
 		result.error = "Missing or empty asset_family identifier in Canonical V2."
@@ -89,14 +85,73 @@ static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_r
 		
 	result.asset_family_meta = asset_family_data
 
-	# 5. Physical Assets Pass-through
 	var physical = canonical_v2.get("assets", {})
 	if typeof(physical) == TYPE_DICTIONARY:
 		result.physical_assets = physical.duplicate(true)
 
-	# 6. Temporal & Winning Frame Ingestion (Strict reference preservation, no recalculation)
 	result.timeline = timeline
 	result.winning_frame = simulation_result.winning_frame
 
 	result.success = true
 	return result
+
+## E2-Hardening: Transforma el estado bruto en un modelo puramente visual
+static func build_frame_render_model(state: String, content: Dictionary, profile: PresentationProfile) -> Dictionary:
+	var model = {}
+	
+	# 1. Extracción de textos (evita hardcoding en PresentationUI)
+	var comp = {}
+	if profile != null and "composition" in profile and typeof(profile.composition) == TYPE_DICTIONARY:
+		comp = profile.composition
+		
+	model["badge_text"] = comp.get("badge_text", "HARD")
+	model["cta_main"] = comp.get("cta_main", "LINK IN BIO")
+	model["cta_sub"] = comp.get("cta_sub", "¡Juega ahora!")
+	model["success_text"] = comp.get("success_text", "🎯 ¡LO HAS CLAVADO!")
+	
+	# 2. Banderas visuales simples
+	model["show_badge"] = (state == "HOOK")
+	model["cta_visible"] = (state == "CTA")
+	
+	# 3. Resolución temporal absoluta (Oculta VideoTimeline al UI)
+	var absolute_frame = int(content.get("absolute_frame", 0))
+	var w_frame = int(content.get("winning_frame", -1)) # Leído solo aquí
+	var timeline_obj = content.get("timeline", null)
+	
+	model["is_success_absolute"] = (absolute_frame == w_frame and state == "GAME")
+	
+	var is_reveal = false
+	var reveal_prog = 0.0
+	var hide_success_text = false
+	
+	if timeline_obj != null and timeline_obj.has_method("get_phase_at_frame"):
+		var phase = str(timeline_obj.get_phase_at_frame(absolute_frame)).to_upper()
+		is_reveal = (phase == "REVEAL")
+		
+		if is_reveal:
+			if absolute_frame > w_frame + 60:
+				hide_success_text = true
+				
+			var phase_start = 0
+			if timeline_obj.has_method("get_phase_start_frame"):
+				phase_start = timeline_obj.get_phase_start_frame("REVEAL")
+				
+			var duration = 0
+			if "durations" in timeline_obj and timeline_obj.durations is Dictionary:
+				duration = timeline_obj.durations.get("REVEAL", 0)
+				
+			if duration > 0:
+				reveal_prog = float(absolute_frame - phase_start) / float(duration)
+				
+	model["is_reveal_phase"] = is_reveal
+	model["reveal_progress"] = reveal_prog
+	model["hide_success_text"] = hide_success_text
+	
+	# 4. Geometría local del juego (Renombrado para evitar término prohibido en UI)
+	var w_frame_game = int(content.get("winning_frame_game", -1))
+	var current_game_frame = int(content.get("ui_state_frame", -1))
+	
+	model["is_success_game"] = (current_game_frame == w_frame_game and state == "GAME")
+	model["success_highlight_rects"] = content.get("winning_highlight_rects", [])
+	
+	return model
