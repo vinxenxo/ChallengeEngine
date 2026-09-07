@@ -58,7 +58,8 @@ KNOWN_SUITES = {
     "C6F4CanonicalV2CatchTest.gd": "[C6F4_CANONICAL_V2_CATCH_SUITE] PASS",
     "C6F4CanonicalV2FindTest.gd": "[C6F4_CANONICAL_V2_FIND_SUITE] PASS",
     "C6F4CatchLegacyDiagnosticTest.gd": "[C6F4_CATCH_LEGACY_DIAGNOSTIC_SUITE] PASS",
-    "C6F4CanonicalV2ChooseTest.gd": "[C6F4_CANONICAL_V2_CHOOSE_SUITE] PASS",
+    "C6F4CanonicalV2ChooseTest.gd": "[C6F4_CANONICAL_V2_CHOOSE_SUITE] PASS",    
+    "C6F4CanonicalV2CountTest.gd" : "[C6F4_CANONICAL_V2_COUNT_SUITE] PASS",
     "C6EPresentationProfileIsolationTest.gd": "[C6E_PRESENTATION_PROFILE_ISOLATION_SUITE] PASS",
 }
 
