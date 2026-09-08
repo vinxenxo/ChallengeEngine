@@ -6,16 +6,21 @@ var level: int = 1
 var seed: int = 0
 var profile_id: String = ""
 var _overrides: Dictionary = {}
+var _content: Dictionary = {}
 
-func _init(p_mechanic: String, p_level: int, p_seed: int, p_profile: String, p_overrides: Dictionary = {}):
+func _init(p_mechanic: String, p_level: int, p_seed: int, p_profile: String, p_overrides: Dictionary = {}, p_content: Dictionary = {}):
 	mechanic_id = p_mechanic
 	level = p_level
 	seed = p_seed
 	profile_id = p_profile
 	_overrides = p_overrides.duplicate(true)
+	_content = p_content.duplicate(true)
 
 func get_overrides() -> Dictionary:
 	return _overrides.duplicate(true)
+
+func get_content() -> Dictionary:
+	return _content.duplicate(true)
 
 static func create_from_dictionary(data: Dictionary) -> Dictionary:
 	var errors = []
@@ -39,6 +44,10 @@ static func create_from_dictionary(data: Dictionary) -> Dictionary:
 	var overrides = data.get("overrides", {})
 	if typeof(overrides) != TYPE_DICTIONARY:
 		errors.append("Field 'overrides' must be a Dictionary.")
+
+	var content = data.get("content", {})
+	if typeof(content) != TYPE_DICTIONARY:
+		errors.append("Field 'content' must be a Dictionary.")
 		
 	if errors.size() > 0:
 		return {
@@ -52,7 +61,8 @@ static func create_from_dictionary(data: Dictionary) -> Dictionary:
 		int(data["level"]),
 		int(data["seed"]),
 		str(data["profile"]),
-		overrides
+		overrides,
+		content
 	)
 	
 	return {
