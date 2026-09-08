@@ -1,15 +1,12 @@
 class_name CanonicalV2Assembler
 extends RefCounted
 
-# ============================================================
-# ChallengeEngineV01_STATELESS
-# CanonicalV2Assembler.gd
-# F0.1.5 — Strict F1 Canonical V2 Assembler.
-#
-# PRINCIPLE:
-# - Strict enforcement: UNAVAILABLE -> FAIL (Zero magic defaults/fallbacks).
-# - Translates authoring intents into normative Canonical V2 documents.
-# ============================================================
+const SCHEMA = preload("res://core/validation/C6FChallengeSchemaValidator.gd")
+const POLICY = preload("res://core/authoring/ChallengeAuthoringPolicy.gd")
+const DIFFICULTY_RESOLVER = preload("res://core/authoring/DifficultyResolver.gd")
+
+## C6-F0.1.5/0.1.6 — strict Canonical V2 materialization.
+## Pure assembly only: no simulation, no RNG consumption, no timeline work.
 
 static func assemble(
 	request: ChallengeAuthoringRequest,
@@ -17,128 +14,108 @@ static func assemble(
 	adapter_metadata: Dictionary,
 	video_profile: Dictionary,
 	presentation_profile: PresentationProfile,
-	presentation_config: Dictionary,
+	presentation_binding: Dictionary,
 	asset_family: Dictionary
 ) -> Dictionary:
-	
-	# =========================================================
-	# 1. STRICT UNAVAILABLE -> FAIL GUARDS (NO DEFAULTS)
-	# =========================================================
-	if video_profile.is_empty() or not video_profile.has("fps") or not video_profile.has("phases"):
-		return {"success": false, "error": "Video profile is unavailable or missing required fps/phases contract."}
-	
-	var phases = video_profile.get("phases", {})
-	if not phases.has("hook_duration") or not phases.has("game_duration") or not phases.has("reveal_duration") or not phases.has("cta_duration"):
-		return {"success": false, "error": "Video profile phases contract incomplete."}
+	if request == null:
+		return _fail("Authoring request is null.")
+	if resolution_result.is_empty():
+		return _fail("Difficulty resolution result is unavailable.")
+	var parameters: Variant = resolution_result.get("effective_parameters", null)
+	if not (parameters is Dictionary):
+		return _fail("Difficulty resolution must provide Dictionary 'effective_parameters'.")
+
+	if video_profile.is_empty():
+		return _fail("Video profile is unavailable or empty.")
+	for key in ["fps", "phases"]:
+		if not video_profile.has(key):
+			return _fail("Video profile missing required '%s'." % key)
+	var phases: Variant = video_profile.get("phases")
+	if not (phases is Dictionary):
+		return _fail("Video profile 'phases' must be a Dictionary.")
+	for key in ["hook_duration", "game_duration", "reveal_duration", "cta_duration"]:
+		if not phases.has(key):
+			return _fail("Video profile missing required phase '%s'." % key)
 
 	if presentation_profile == null:
-		return {"success": false, "error": "Presentation profile is unavailable (null)."}
-
-	if presentation_config.is_empty() or not presentation_config.has("coordinate_space") or not presentation_config.has("secondary_binding"):
-		return {"success": false, "error": "Presentation configuration missing coordinate_space or secondary_binding."}
+		return _fail("Presentation profile is unavailable.")
+	var presentation_validation: Dictionary = presentation_profile.validate()
+	if not bool(presentation_validation.get("is_valid", false)):
+		return _fail("Presentation profile failed validation: %s" % str(presentation_validation.get("errors", [])))
+	for key in ["coordinate_space", "secondary_binding"]:
+		if not presentation_binding.has(key) or str(presentation_binding.get(key, "")).strip_edges().is_empty():
+			return _fail("Presentation binding missing '%s'." % key)
+	if str(presentation_binding.get("secondary_binding")) not in ["static_position", "target_position", "target_x", "target_state"]:
+		return _fail("Invalid presentation secondary_binding.")
 
 	if asset_family.is_empty():
-		return {"success": false, "error": "Asset family is unavailable or empty."}
-	
-	if not asset_family.has("family_id") or str(asset_family.get("family_id", "")).strip_edges() == "":
-		return {"success": false, "error": "Asset family missing mandatory 'family_id'."}
-	if not asset_family.has("version") or str(asset_family.get("version", "")).strip_edges() == "":
-		return {"success": false, "error": "Asset family missing mandatory 'version'."}
+		return _fail("Asset family is unavailable or empty.")
+	for key in ["family_id", "version", "background_path", "target_path", "object_path"]:
+		if not asset_family.has(key) or str(asset_family.get(key, "")).strip_edges().is_empty():
+			return _fail("Asset family missing required '%s'." % key)
+	for key in ["background_path", "target_path", "object_path"]:
+		var path := str(asset_family[key])
+		if not path.begins_with("res://"):
+			return _fail("Asset '%s' must use a res:// path." % key)
+		if not ResourceLoader.exists(path):
+			return _fail("Asset '%s' does not exist: %s" % [key, path])
 
-	if not asset_family.has("background_path") or not asset_family.has("target_path") or not asset_family.has("object_path"):
-		return {"success": false, "error": "Asset family missing physical paths contract."}
+	for key in ["rng_version", "mechanic_version"]:
+		if not adapter_metadata.has(key) or str(adapter_metadata.get(key, "")).strip_edges().is_empty():
+			return _fail("Authoring metadata missing '%s'." % key)
+	var rng_version: String = str(adapter_metadata.get("rng_version"))
+	if rng_version not in ["1.0", "2.0"]:
+		return _fail("Unsupported rng_version '%s'." % rng_version)
 
-	var bg_path = str(asset_family.get("background_path", ""))
-	var tgt_path = str(asset_family.get("target_path", ""))
-	var obj_path = str(asset_family.get("object_path", ""))
-
-	if bg_path.is_empty() or tgt_path.is_empty() or obj_path.is_empty():
-		return {"success": false, "error": "Asset physical paths are empty strings."}
-
-	if not ResourceLoader.exists(bg_path) or not ResourceLoader.exists(tgt_path) or not ResourceLoader.exists(obj_path):
-		return {"success": false, "error": "Asset physical paths do not exist as valid resources on disk."}
-
-	if not adapter_metadata.has("engine_version") or str(adapter_metadata.get("engine_version", "")).strip_edges() == "":
-		return {"success": false, "error": "Adapter metadata missing mandatory 'engine_version'."}
-	if not adapter_metadata.has("version") or str(adapter_metadata.get("version", "")).strip_edges() == "":
-		return {"success": false, "error": "Adapter metadata missing normative 'version'."}
-	if not adapter_metadata.has("mechanic_version") or str(adapter_metadata.get("mechanic_version", "")).strip_edges() == "":
-		return {"success": false, "error": "Adapter metadata missing 'mechanic_version'."}
-	if not adapter_metadata.has("rng_version") or str(adapter_metadata.get("rng_version", "")).strip_edges() == "":
-		return {"success": false, "error": "Adapter metadata missing 'rng_version'."}
-	if not adapter_metadata.has("difficulty_label") or str(adapter_metadata.get("difficulty_label", "")).strip_edges() == "":
-		return {"success": false, "error": "Adapter metadata missing 'difficulty_label'."}
-
-	if not resolution_result.has("effective_parameters") or typeof(resolution_result.get("effective_parameters")) != TYPE_DICTIONARY:
-		return {"success": false, "error": "Resolution result missing or invalid 'effective_parameters'."}
-
-	var mechanic_id = request.mechanic_id
-	var seed = request.seed
-	var level = request.level
-
-	# =========================================================
-	# 2. CANONICAL DERIVATION (STRICT F1 SHAPE)
-	# =========================================================
-	var video_object = {
-		"fps": int(video_profile.get("fps")),
-		"hook_duration": float(phases.get("hook_duration")),
-		"game_duration": float(phases.get("game_duration")),
-		"reveal_duration": float(phases.get("reveal_duration")),
-		"cta_duration": float(phases.get("cta_duration"))
-	}
-
-	var presentation_object = {
-		"profile_id": presentation_profile.profile_id,
-		"coordinate_space": str(presentation_config.get("coordinate_space")),
-		"secondary_binding": str(presentation_config.get("secondary_binding"))
-	}
-
-	var assets_object = {
-		"background_path": bg_path,
-		"target_path": tgt_path,
-		"object_path": obj_path
-	}
-
-	var content_block = request.get_content()
-
-	# =========================================================
-	# 3. DOCUMENT ASSEMBLY (STRICT SCHEMA ALIGNMENT)
-	# =========================================================
-	var canonical_v2 = {
-		"schema_version": "2.0",
-		"version": str(adapter_metadata.get("version")),
-		"challenge_id": "CANONICAL_%s_%d" % [mechanic_id.to_upper(), seed],
-		"engine_version": str(adapter_metadata.get("engine_version")),
-		"mechanic": mechanic_id,
+	var canonical: Dictionary = {
+		"schema_version": POLICY.CANONICAL_SCHEMA_VERSION,
+		"version": POLICY.AUTHORING_VERSION,
+		"challenge_id": "AUTH_%s_%d" % [request.mechanic_id.to_upper(), request.seed],
+		"engine_version": POLICY.ENGINE_VERSION,
+		"mechanic": request.mechanic_id,
 		"mechanic_version": str(adapter_metadata.get("mechanic_version")),
-		
 		"asset_family": str(asset_family.get("family_id")),
 		"asset_family_version": str(asset_family.get("version")),
-		
 		"theme": presentation_profile.theme_name,
-		
 		"simulation": {
-			"seed": seed,
-			"rng_version": str(adapter_metadata.get("rng_version")),
-			"parameters": resolution_result.get("effective_parameters")
+			"seed": request.seed,
+			"rng_version": rng_version,
+			"parameters": parameters.duplicate(true)
 		},
-		
-		"video": video_object,
-		
-		"content": content_block,
-		
+		"video": {
+			"fps": int(video_profile.get("fps")),
+			"hook_duration": float(phases.get("hook_duration")),
+			"game_duration": float(phases.get("game_duration")),
+			"reveal_duration": float(phases.get("reveal_duration")),
+			"cta_duration": float(phases.get("cta_duration"))
+		},
 		"difficulty": {
-			"level": level,
-			"label": str(adapter_metadata.get("difficulty_label"))
+			"level": request.level,
+			"label": _difficulty_label(parameters, request.level)
 		},
-		
-		"presentation": presentation_object,
-		
-		"assets": assets_object
+		"content": request.get_content(),
+		"presentation": {
+			"profile_id": presentation_profile.profile_id,
+			"profile_version": str(presentation_binding.get("profile_version", POLICY.DEFAULT_PRESENTATION_PROFILE_VERSION)),
+			"coordinate_space": str(presentation_binding.get("coordinate_space")),
+			"secondary_binding": str(presentation_binding.get("secondary_binding"))
+		},
+		"assets": {
+			"background_path": str(asset_family.get("background_path")),
+			"target_path": str(asset_family.get("target_path")),
+			"object_path": str(asset_family.get("object_path"))
+		}
 	}
 
-	return {
-		"success": true,
-		"error": "",
-		"challenge": canonical_v2
-	}
+	var schema_result := SCHEMA.validate_v2(canonical)
+	if not bool(schema_result.get("is_valid", false)):
+		return _fail("Canonical V2 schema validation failed: %s" % str(schema_result.get("errors", [])))
+
+	return {"success": true, "error": "", "challenge": canonical}
+
+static func _difficulty_label(parameters: Dictionary, level: int) -> String:
+	# Preserve the existing deterministic difficulty banding authority.
+	return str(DIFFICULTY_RESOLVER.get_band_for_level(level))
+
+static func _fail(message: String) -> Dictionary:
+	return {"success": false, "error": message, "challenge": null}
