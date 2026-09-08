@@ -57,6 +57,7 @@ KNOWN_SUITES = {
     "C6E2StructuralAuditTest.gd": "[C6E2_STRUCTURAL_AUDIT_SUITE] PASS",
     "C6E3RuntimePresentationValidationTest.gd": "[C6E3_RUNTIME_PRESENTATION_SUITE] PASS",
     "C6F0_1_5CanonicalAssemblerTest.gd": "[C6F0_1_5_CANONICAL_ASSEMBLER_SUITE] PASS",
+    "C6F0_1_6AuthoringPipelineTest.gd": "[C6F0_1_6_AUTHORING_PIPELINE_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 

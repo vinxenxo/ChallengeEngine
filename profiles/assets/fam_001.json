@@ -4,5 +4,8 @@
   "description": "Historical asset family fam_001 used by pilot and key mechanics.",
   "themes": [
     "default"
-  ]
+  ],
+  "background_path": "res://assets/c6/garage_background.svg",
+  "target_path": "res://assets/c6/lock.svg",
+  "object_path": "res://assets/c6/key.svg"
 }

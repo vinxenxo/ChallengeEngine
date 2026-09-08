@@ -8,7 +8,14 @@ var profile_id: String = ""
 var _overrides: Dictionary = {}
 var _content: Dictionary = {}
 
-func _init(p_mechanic: String, p_level: int, p_seed: int, p_profile: String, p_overrides: Dictionary = {}, p_content: Dictionary = {}):
+func _init(
+	p_mechanic: String,
+	p_level: int,
+	p_seed: int,
+	p_profile: String,
+	p_overrides: Dictionary = {},
+	p_content: Dictionary = {}
+):
 	mechanic_id = p_mechanic
 	level = p_level
 	seed = p_seed
@@ -23,7 +30,7 @@ func get_content() -> Dictionary:
 	return _content.duplicate(true)
 
 static func create_from_dictionary(data: Dictionary) -> Dictionary:
-	var errors = []
+	var errors: Array = []
 	
 	if not data.has("mechanic") or typeof(data["mechanic"]) != TYPE_STRING or data["mechanic"].strip_edges() == "":
 		errors.append("Missing or invalid 'mechanic' field.")
@@ -41,13 +48,19 @@ static func create_from_dictionary(data: Dictionary) -> Dictionary:
 	if not data.has("profile") or typeof(data["profile"]) != TYPE_STRING or data["profile"].strip_edges() == "":
 		errors.append("Missing or invalid 'profile' field.")
 		
-	var overrides = data.get("overrides", {})
+	var overrides: Variant = data.get("overrides", {})
 	if typeof(overrides) != TYPE_DICTIONARY:
 		errors.append("Field 'overrides' must be a Dictionary.")
 
-	var content = data.get("content", {})
+	var content: Variant = data.get("content", {})
 	if typeof(content) != TYPE_DICTIONARY:
 		errors.append("Field 'content' must be a Dictionary.")
+	else:
+		for content_key in content.keys():
+			if content_key not in ["hook", "reveal", "cta"]:
+				errors.append("Unknown authoring content field: '%s'." % str(content_key))
+			elif typeof(content[content_key]) != TYPE_STRING:
+				errors.append("Authoring content field '%s' must be a String." % str(content_key))
 		
 	if errors.size() > 0:
 		return {
@@ -56,7 +69,7 @@ static func create_from_dictionary(data: Dictionary) -> Dictionary:
 			"request": null
 		}
 		
-	var req = ChallengeAuthoringRequest.new(
+	var req: ChallengeAuthoringRequest = ChallengeAuthoringRequest.new(
 		str(data["mechanic"]),
 		int(data["level"]),
 		int(data["seed"]),
