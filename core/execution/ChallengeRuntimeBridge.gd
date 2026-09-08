@@ -192,9 +192,9 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 		var runtime_input: Dictionary
 		var mechanic_id := str(canonical_v2.get("mechanic", "")).to_lower()
 		
-		# F4.4 - Exención de mecánicas native V2 (find_v1 añadido correctamente; choose_v1 permanece en F3)
+		# F4.4 - Exención de mecánicas native V2 (Completada con choose_v1)
 		if _is_native_v2_mechanic(mechanic_id):
-			# C6-F4.4 / C6-F0.2.1: native-V2 mechanics consume the migrated Canonical V2 directly.
+			# C6-F4.4 / C6-F0.2.x: native-V2 mechanics consume the migrated Canonical V2 directly.
 			runtime_input = canonical_v2.duplicate(true)
 			runtime_input["simulation"]["seed"] = current_seed
 			
@@ -359,8 +359,7 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 
 
 static func _is_native_v2_mechanic(mechanic_id: String) -> bool:
-	# Excluye choose_v1 hasta que alcance su turno en el roadmap (FIND -> COUNT -> CHOOSE)
-	return mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1"]
+	return mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "count_v1", "choose_v1"]
 
 
 static func _configure_mechanic_rng_v2(mechanic_id: String, seed: int, rng_version: String, config: Dictionary) -> Dictionary:
@@ -388,6 +387,12 @@ static func _configure_mechanic_rng_v2(mechanic_id: String, seed: int, rng_versi
 		"find_v1":
 			streams = [130, 140, 150, 160]
 			consumer = "FindMechanic"
+		"count_v1":
+			# COUNT V1 does not declare or consume any streams.
+			return {"success": true, "context": null}
+		"choose_v1":
+			# CHOOSE V1 purely derives from seed modulo logic.
+			return {"success": true, "context": null}
 		_:
 			return {"success": true, "context": null}
 			
@@ -401,6 +406,10 @@ static func _extract_native_parameters(mechanic_id: String, config: Dictionary) 
 	
 	if mechanic_id == "find_v1" and parameters.has("find") and parameters["find"] is Dictionary:
 		return parameters["find"]
+	elif mechanic_id == "count_v1" and parameters.has("count") and parameters["count"] is Dictionary:
+		return parameters["count"]
+	elif mechanic_id == "choose_v1" and parameters.has("choose") and parameters["choose"] is Dictionary:
+		return parameters["choose"]
 		
 	return parameters
 
