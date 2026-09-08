@@ -29,7 +29,6 @@ func _init() -> void:
 	
 	var video_profile = VideoProfileRegistry.get_profile(video_res.get("value", "test_master_11s"))
 	
-	# Validación soberana obligatoria del perfil de vídeo mediante VideoProfileValidator
 	var video_errors = VideoProfileValidator.validate(video_profile)
 	_assert(video_errors.is_empty(), "Video profile must pass VideoProfileValidator successfully.")
 
@@ -58,14 +57,19 @@ func _init() -> void:
 	)
 	_assert(not res_fail.get("success", true), "Assembler must fail when physical asset paths are missing or invalid.")
 
-	# 2. Cargar asset family enriquecida con rutas físicas reales extraídas del corpus (CHALLENGE_001.json)
+	# 2. Cargar asset family con rutas físicas reales estrictas del corpus (CHALLENGE_001.json) sin fallbacks
 	var challenge_cfg = _load_json("res://challenges/CHALLENGE_001.json")
-	var real_assets = challenge_cfg.get("assets", {})
+	_assert(challenge_cfg.has("assets"), "CHALLENGE_001.json must contain 'assets' block.")
+	var real_assets = challenge_cfg.get("assets")
+	
+	_assert(real_assets.has("background_path"), "CHALLENGE_001.json assets must have background_path")
+	_assert(real_assets.has("target_path"), "CHALLENGE_001.json assets must have target_path")
+	_assert(real_assets.has("object_path"), "CHALLENGE_001.json assets must have object_path")
 	
 	var complete_asset_family = asset_family.duplicate(true)
-	complete_asset_family["background_path"] = real_assets.get("background_path", "res://assets/backgrounds/background_default.png")
-	complete_asset_family["target_path"] = real_assets.get("target_path", "res://assets/targets/target_default.png")
-	complete_asset_family["object_path"] = real_assets.get("object_path", "res://assets/objects/object_default.png")
+	complete_asset_family["background_path"] = real_assets["background_path"]
+	complete_asset_family["target_path"] = real_assets["target_path"]
+	complete_asset_family["object_path"] = real_assets["object_path"]
 
 	var resolution_mock = {
 		"effective_parameters": {"speed": 12.0}
@@ -78,7 +82,7 @@ func _init() -> void:
 		"version": "1.0.0"
 	}
 
-	# 3. Snapshots de Inmutabilidad Profunda antes de la asamblea
+	# 3. Snapshots de Inmutabilidad Profunda
 	var req_overrides_snap = request.get_overrides()
 	var req_content_snap = request.get_content()
 	var resolution_snap = resolution_mock.duplicate(true)
@@ -100,7 +104,7 @@ func _init() -> void:
 	_assert(res_success.get("success", false), "Assembler must succeed with complete verified contracts: " + str(res_success.get("error", "")))
 	var canonical = res_success.get("challenge", {})
 
-	# Verificación de inmutabilidad estricta (igualdad profunda post-asamblea)
+	# Verificación de inmutabilidad estricta
 	_assert(request.get_overrides() == req_overrides_snap, "Request overrides must not be mutated")
 	_assert(request.get_content() == req_content_snap, "Request content must not be mutated")
 	_assert(resolution_mock == resolution_snap, "Resolution result must not be mutated")
@@ -109,42 +113,11 @@ func _init() -> void:
 	_assert(presentation_config == pres_config_snap, "Presentation config must not be mutated")
 	_assert(complete_asset_family == asset_family_snap, "Asset family must not be mutated")
 
-	# 4. Validación de Estructura Normativa F1 Exacta
-	_assert(canonical.get("schema_version") == "2.0", "schema_version must be 2.0")
-	_assert(canonical.get("version") == "1.0.0", "version must match metadata")
-	_assert(canonical.get("engine_version") == "1.0", "engine_version must match contract")
-	_assert(canonical.has("challenge_id"), "challenge_id required")
-	_assert(canonical.get("mechanic") == "pilot", "mechanic required")
-	_assert(canonical.has("mechanic_version"), "mechanic_version required")
-	_assert(canonical.has("asset_family"), "asset_family required")
-	_assert(canonical.has("asset_family_version"), "asset_family_version required")
-	_assert(canonical.has("theme"), "theme required")
-	_assert(canonical.has("simulation"), "simulation required")
+	# 4. Validación F1 Normativa Rigurosa contra el Schema Real (challenge_schema.json)
+	var schema_dict = _load_json("res://challenge_schema.json")
+	_assert(not schema_dict.is_empty(), "challenge_schema.json must be loadable and non-empty.")
 	
-	# Validación estructura exacta de vídeo F1 (aplanada, sin profile_id, sin phases)
-	var video_block = canonical.get("video", {})
-	_assert(typeof(video_block) == TYPE_DICTIONARY, "video must be dictionary")
-	_assert(video_block.has("fps"), "video must have fps")
-	_assert(video_block.has("hook_duration"), "video must have hook_duration")
-	_assert(video_block.has("game_duration"), "video must have game_duration")
-	_assert(video_block.has("reveal_duration"), "video must have reveal_duration")
-	_assert(video_block.has("cta_duration"), "video must have cta_duration")
-	_assert(not video_block.has("profile_id"), "video must NOT have profile_id in F1 normative schema")
-	_assert(not video_block.has("phases"), "video must NOT have phases in F1 normative schema")
-
-	# Validación estructura exacta de presentation F1
-	var pres_block = canonical.get("presentation", {})
-	_assert(typeof(pres_block) == TYPE_DICTIONARY, "presentation must be dictionary")
-	_assert(pres_block.has("profile_id"), "presentation must have profile_id")
-	_assert(pres_block.has("coordinate_space"), "presentation must have coordinate_space")
-	_assert(pres_block.has("secondary_binding"), "presentation must have secondary_binding")
-
-	# Validación estructura exacta de assets F1
-	var assets_block = canonical.get("assets", {})
-	_assert(typeof(assets_block) == TYPE_DICTIONARY, "assets must be dictionary")
-	_assert(assets_block.has("background_path"), "assets must have background_path")
-	_assert(assets_block.has("target_path"), "assets must have target_path")
-	_assert(assets_block.has("object_path"), "assets must have object_path")
+	_validate_against_schema_f1(canonical, schema_dict)
 
 	# 5. Determinismo Estricto
 	var res_success_2 = CanonicalV2Assembler.assemble(
@@ -159,6 +132,48 @@ func _init() -> void:
 	else:
 		push_error("[C6F0_1_5_CANONICAL_ASSEMBLER_SUITE] FAIL count=%d" % failures)
 		quit(1)
+
+func _validate_against_schema_f1(data: Dictionary, schema: Dictionary) -> void:
+	var required_props = schema.get("required", [])
+	var properties = schema.get("properties", {})
+	
+	# Verificar propiedades requeridas a nivel de raíz según F1
+	for prop in required_props:
+		_assert(data.has(prop), "Schema F1 validation failed: missing required root property '%s'" % prop)
+		
+	# Verificar tipos y propiedades adicionales (additionalProperties: false enforcement)
+	for key in data.keys():
+		_assert(properties.has(key), "Schema F1 validation failed: property '%s' is not defined in challenge_schema.json (additionalProperties violation)" % key)
+		
+		var prop_schema = properties.get(key, {})
+		var expected_type = prop_schema.get("type", "")
+		var val = data[key]
+		
+		if expected_type == "string":
+			_assert(typeof(val) == TYPE_STRING, "Schema F1 type error for '%s': expected string" % key)
+		elif expected_type == "object":
+			_assert(typeof(val) == TYPE_DICTIONARY, "Schema F1 type error for '%s': expected object/dictionary" % key)
+			
+			# Validación recursiva de sub-objetos normativos (video, presentation, assets, simulation, difficulty, content)
+			var sub_required = prop_schema.get("required", [])
+			var sub_properties = prop_schema.get("properties", {})
+			
+			for sub_req in sub_required:
+				_assert(val.has(sub_req), "Schema F1 sub-object validation failed: '%s' missing required property '%s'" % [key, sub_req])
+				
+			for sub_key in val.keys():
+				_assert(sub_properties.has(sub_key), "Schema F1 sub-object validation failed: '%s.%s' is not defined in schema" % [key, sub_key])
+				
+				var sub_prop_schema = sub_properties.get(sub_key, {})
+				var sub_expected_type = sub_prop_schema.get("type", "")
+				var sub_val = val[sub_key]
+				
+				if sub_expected_type == "string":
+					_assert(typeof(sub_val) == TYPE_STRING, "Schema F1 type error for '%s.%s': expected string" % [key, sub_key])
+				elif sub_expected_type == "integer" or sub_expected_type == "number":
+					_assert(typeof(sub_val) == TYPE_INT or typeof(sub_val) == TYPE_FLOAT, "Schema F1 type error for '%s.%s': expected number/integer" % [key, sub_key])
+				elif sub_expected_type == "object":
+					_assert(typeof(sub_val) == TYPE_DICTIONARY, "Schema F1 type error for '%s.%s': expected object" % [key, sub_key])
 
 func _load_json(path: String) -> Dictionary:
 	var file := FileAccess.open(path, FileAccess.READ)
