@@ -24,6 +24,9 @@ const ChallengePresentationBinder = preload("res://core/presentation/ChallengePr
 const VideoProfileRegistry = preload("res://core/authoring/VideoProfileRegistry.gd")
 const ChallengeValidator = preload("res://core/validation/ChallengeValidator.gd")
 const SimulationMetricsResolver = preload("res://core/simulation/SimulationMetricsResolver.gd")
+const RNGStreamRegistry = preload("res://core/deterministic/RNGStreamRegistry.gd")
+const StructuralRNG = preload("res://core/deterministic/StructuralRNG.gd")
+const MechanicRNGContext = preload("res://core/deterministic/MechanicRNGContext.gd")
 
 const MIGRATION_POLICY := {
 	"authoring_version": "1.0.0",
@@ -189,11 +192,21 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 		var runtime_input: Dictionary
 		var mechanic_id := str(canonical_v2.get("mechanic", "")).to_lower()
 		
-		# F4.4 - Exención de mecánicas native V2 (Añadido choose_v1)
-		if mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1"]:
-			# C6-F4.4: native-V2 mechanics consume the migrated Canonical V2 directly.
+		# F4.4 - Exención de mecánicas native V2 (find_v1 añadido correctamente; choose_v1 permanece en F3)
+		if _is_native_v2_mechanic(mechanic_id):
+			# C6-F4.4 / C6-F0.2.1: native-V2 mechanics consume the migrated Canonical V2 directly.
 			runtime_input = canonical_v2.duplicate(true)
 			runtime_input["simulation"]["seed"] = current_seed
+			
+			# Configuración explícita del contexto RNG V2 para mecánicas nativas
+			if rng_version == "2.0":
+				var rng_cfg = _configure_mechanic_rng_v2(mechanic_id, current_seed, rng_version, runtime_input)
+				if not bool(rng_cfg.get("success", false)):
+					return _failure(
+						"EFFECTIVE_RNG_CONTEXT_FAILED",
+						"Failed to configure RNG context for native V2 mechanic: %s" % mechanic_id,
+						context
+					)
 		else:
 			var adapted := _build_f3_runtime_input(canonical_v2, legacy_config, current_seed)
 			if not bool(adapted.get("success", false)):
@@ -343,6 +356,53 @@ static func run_effective_pipeline(legacy_config: Dictionary) -> Dictionary:
 		"No valid simulation found after %d attempts." % MAX_ATTEMPTS,
 		context
 	)
+
+
+static func _is_native_v2_mechanic(mechanic_id: String) -> bool:
+	# Excluye choose_v1 hasta que alcance su turno en el roadmap (FIND -> COUNT -> CHOOSE)
+	return mechanic_id in ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1"]
+
+
+static func _configure_mechanic_rng_v2(mechanic_id: String, seed: int, rng_version: String, config: Dictionary) -> Dictionary:
+	if rng_version != "2.0":
+		return {"success": true, "context": null}
+		
+	var registry = RNGStreamRegistry.new()
+	var structural = StructuralRNG.new(registry)
+	var streams: Array[int] = []
+	var consumer := ""
+	
+	match mechanic_id:
+		"pilot":
+			streams = [10, 20]
+			consumer = "PilotMechanic"
+		"parking_v2":
+			streams = [30, 40, 50, 60]
+			consumer = "ParkingMechanic"
+		"hit_v1":
+			streams = [70, 80, 90]
+			consumer = "HitMechanic"
+		"catch_v1":
+			streams = [100, 110, 120]
+			consumer = "CatchMechanic"
+		"find_v1":
+			streams = [130, 140, 150, 160]
+			consumer = "FindMechanic"
+		_:
+			return {"success": true, "context": null}
+			
+	var created = MechanicRNGContext.create(seed, rng_version, consumer, streams, structural, registry)
+	return {"success": created.is_valid, "context": created.context if created.is_valid else null}
+
+
+static func _extract_native_parameters(mechanic_id: String, config: Dictionary) -> Dictionary:
+	var simulation = config.get("simulation", {})
+	var parameters = simulation.get("parameters", {})
+	
+	if mechanic_id == "find_v1" and parameters.has("find") and parameters["find"] is Dictionary:
+		return parameters["find"]
+		
+	return parameters
 
 
 static func _lcg_next_seed(seed: int) -> int:
