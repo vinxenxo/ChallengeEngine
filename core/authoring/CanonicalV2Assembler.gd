@@ -40,7 +40,6 @@ static func assemble(
 	if asset_family.is_empty():
 		return {"success": false, "error": "Asset family is unavailable or empty."}
 	
-	# Guardias explícitas sin fallbacks para family_id y version
 	if not asset_family.has("family_id") or str(asset_family.get("family_id", "")).strip_edges() == "":
 		return {"success": false, "error": "Asset family missing mandatory 'family_id'."}
 	if not asset_family.has("version") or str(asset_family.get("version", "")).strip_edges() == "":
@@ -59,7 +58,6 @@ static func assemble(
 	if not ResourceLoader.exists(bg_path) or not ResourceLoader.exists(tgt_path) or not ResourceLoader.exists(obj_path):
 		return {"success": false, "error": "Asset physical paths do not exist as valid resources on disk."}
 
-	# Guardias estrictas para metadatos del adaptador (engine_version contractual)
 	if not adapter_metadata.has("engine_version") or str(adapter_metadata.get("engine_version", "")).strip_edges() == "":
 		return {"success": false, "error": "Adapter metadata missing mandatory 'engine_version'."}
 	if not adapter_metadata.has("version") or str(adapter_metadata.get("version", "")).strip_edges() == "":
@@ -104,7 +102,7 @@ static func assemble(
 	var content_block = request.get_content()
 
 	# =========================================================
-	# 3. DOCUMENT ASSEMBLY
+	# 3. DOCUMENT ASSEMBLY (STRICT SCHEMA ALIGNMENT)
 	# =========================================================
 	var canonical_v2 = {
 		"schema_version": "2.0",
@@ -131,9 +129,7 @@ static func assemble(
 		
 		"difficulty": {
 			"level": level,
-			"label": str(adapter_metadata.get("difficulty_label")),
-			"profile": request.profile_id,
-			"overrides": request.get_overrides()
+			"label": str(adapter_metadata.get("difficulty_label"))
 		},
 		
 		"presentation": presentation_object,
