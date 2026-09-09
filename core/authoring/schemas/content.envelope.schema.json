@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContentEnvelope",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "content_id",
+    "content_version",
+    "kind",
+    "subtype",
+    "engine_version",
+    "authoring_version",
+    "presentation",
+    "assets",
+    "audio",
+    "provenance"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["2.0"]
+    },
+    "content_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Z0-9_]+$"
+    },
+    "content_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["visual_loop", "visual_drill"]
+    },
+    "subtype": {
+      "type": "string",
+      "minLength": 1
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authoring_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "presentation": {
+      "type": "object",
+      "required": ["profile_id", "coordinate_space"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "coordinate_space": { "type": "string", "minLength": 1 },
+        "theme": { "type": "string" }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "required": ["family_id"],
+      "additionalProperties": false,
+      "properties": {
+        "family_id": { "type": "string", "minLength": 1 },
+        "background_path": { "type": "string" }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "required": ["profile_id", "enabled"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "enabled": { "type": "boolean" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["author", "timestamp_ms"],
+      "additionalProperties": false,
+      "properties": {
+        "author": { "type": "string", "minLength": 1 },
+        "timestamp_ms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
