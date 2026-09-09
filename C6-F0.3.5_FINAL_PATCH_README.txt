@@ -1,0 +1,7 @@
+C6-F0.3.5 FINAL PATCH PACKAGE
+Replace:
+  core/runtime/ContentRuntimeRegistry.gd
+  tests/C6F035ContentRuntimeBoundaryTest.gd
+Keep existing VisualLoopRuntime.gd / VisualDrillRuntime.gd paths at core/runtime/ unless separately instructed.
+Registry API: create_default() + resolve(definition).
+Exact route key: (kind, subtype), no normalization; failed initialization leaks no runtime.

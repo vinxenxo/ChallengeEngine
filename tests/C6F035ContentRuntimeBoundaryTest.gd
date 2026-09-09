@@ -1,15 +1,23 @@
 extends SceneTree
 
+# ============================================================
+# C6-F0.3.5 — Polymorphic Content Runtime Boundary Suite
+# Contracted against ContentRuntimeRegistry.create_default()/resolve(definition).
+# ============================================================
+
 const ContentRuntime = preload("res://core/runtime/ContentRuntime.gd")
 const ContentRuntimeRegistry = preload("res://core/runtime/ContentRuntimeRegistry.gd")
 const ChallengeRuntime = preload("res://core/runtime/ChallengeRuntime.gd")
 const VisualLoopRuntime = preload("res://core/runtime/VisualLoopRuntime.gd")
 const VisualDrillRuntime = preload("res://core/runtime/VisualDrillRuntime.gd")
+const RenderedFrameStream = preload("res://core/runtime/RenderedFrameStream.gd")
 
 var failures: Array[String] = []
 
+
 func _initialize() -> void:
 	print("[TEST] Running C6F035ContentRuntimeBoundaryTest...")
+
 	_test_registry_fail_closed()
 	_test_visual_loop_positive()
 	_test_visual_drill_positive()
@@ -23,144 +31,408 @@ func _initialize() -> void:
 	else:
 		for failure in failures:
 			push_error(failure)
-		print("[C6F0_3_5_RUNTIME_BOUNDARY_SUITE] FAIL")
+		print("[C6F0_3_5_RUNTIME_BOUNDARY_SUITE] FAIL failures=%d" % failures.size())
 		quit(1)
 
+
 func _test_registry_fail_closed() -> void:
-	var default_registry := ContentRuntimeRegistry.create_default()
-	_assert(not default_registry.has_route("visual_loop", "anything"), "Default registry must not use a wildcard visual route.")
-	var registry := ContentRuntimeRegistry.new()
-	var register_loop := registry.register_runtime("visual_loop", "test_loop", func(): return VisualLoopRuntime.new())
-	_assert(register_loop.success, "Visual loop route registration should succeed.")
+	var registry := ContentRuntimeRegistry.create_default()
 
-	var unknown := registry.resolve({
+	# Canonical positive routes must exist.
+	var canonical_routes: Array[String] = [
+		"visual_loop::fractal",
+		"visual_loop::vector_field",
+		"visual_loop::particle_flow",
+		"visual_loop::kaleidoscope",
+		"visual_loop::geometric",
+		"visual_drill::tracking",
+		"visual_drill::pursuit",
+		"visual_drill::saccade",
+		"visual_drill::peripheral_scan",
+		"challenge::key",
+		"challenge::parking",
+		"challenge::pilot"
+	]
+
+	var routes := registry.registered_routes()
+	for expected in canonical_routes:
+		_assert(routes.has(expected), "Missing canonical default route: %s" % expected)
+
+	# Unknown route.
+	var unknown: Dictionary = registry.resolve({
 		"kind": "visual_loop",
-		"subtype": "unregistered",
-		"payload": {}
+		"subtype": "unregistered"
 	})
-	_assert(not unknown.success, "Unknown (kind, subtype) must fail closed.")
-	_assert(str(unknown.error_code).begins_with("RUNTIME_ROUTE_NOT_REGISTERED:"), "Unknown route must report RUNTIME_ROUTE_NOT_REGISTERED.")
+	_assert(not bool(unknown.get("success", false)), "Unknown route must fail closed.")
+	_assert(unknown.get("runtime") == null, "Unknown route must never leak runtime.")
 
-	var duplicate := registry.register_runtime("visual_loop", "test_loop", func(): return VisualLoopRuntime.new())
-	_assert(not duplicate.success and duplicate.error_code == "ROUTE_DUPLICATE", "Duplicate route registration must fail closed.")
+	# Missing/empty routing metadata.
+	var empty_kind: Dictionary = registry.resolve({
+		"kind": "",
+		"subtype": "fractal"
+	})
+	_assert(not bool(empty_kind.get("success", false)), "Empty kind must fail closed.")
+	_assert(empty_kind.get("runtime") == null, "Empty kind must never return runtime.")
 
-	var bad_kind := registry.resolve({"kind": "", "subtype": "x"})
-	_assert(not bad_kind.success, "Empty kind must fail closed.")
+	var empty_subtype: Dictionary = registry.resolve({
+		"kind": "visual_loop",
+		"subtype": ""
+	})
+	_assert(not bool(empty_subtype.get("success", false)), "Empty subtype must fail closed.")
+	_assert(empty_subtype.get("runtime") == null, "Empty subtype must never return runtime.")
+
+	# Exact routing. No normalization.
+	var padded: Dictionary = registry.resolve({
+		"kind": "visual_loop",
+		"subtype": " FRACTAL "
+	})
+	_assert(not bool(padded.get("success", false)), "Padded subtype must fail closed.")
+
+	var uppercase: Dictionary = registry.resolve({
+		"kind": "visual_loop",
+		"subtype": "FRACTAL"
+	})
+	_assert(not bool(uppercase.get("success", false)), "Uppercase subtype must fail closed.")
+
+	print("[PASS] _test_registry_fail_closed")
+
 
 func _test_visual_loop_positive() -> void:
-	var registry := ContentRuntimeRegistry.new()
-	_assert(registry.register_runtime("visual_loop", "test_loop", func(): return VisualLoopRuntime.new()).success, "Loop route registration failed.")
-	var payload := _valid_loop_payload()
-	var resolved := registry.resolve({"kind": "visual_loop", "subtype": "test_loop", "payload": payload})
-	_assert(resolved.success, "Valid visual loop must resolve.")
-	var runtime: ContentRuntime = resolved.runtime
-	_assert(runtime is VisualLoopRuntime, "Visual loop route must instantiate VisualLoopRuntime.")
-	_assert(runtime.get_frame_count() == payload.frame_count, "Visual loop frame count must match declaration.")
-	_assert(runtime.get_rendered_frame_stream().validate_contract().is_valid, "Visual loop frame stream must validate.")
-	var first := runtime.next_frame()
-	_assert(first.payload.domain == "visual_loop", "Visual loop frame payload must remain visual-domain specific.")
-	_assert(not first.payload.has("phase"), "Visual loop must not invent Challenge phases.")
+	var registry := ContentRuntimeRegistry.create_default()
+	var definition := _valid_loop_definition()
+
+	var result: Dictionary = registry.resolve(definition)
+
+	_assert(
+		bool(result.get("success", false)),
+		"Canonical visual_loop/fractal must resolve. error=%s" % str(result.get("error_code", ""))
+	)
+	if not bool(result.get("success", false)):
+		return
+
+	var runtime: ContentRuntime = result.get("runtime")
+	_assert(runtime != null, "Resolved visual loop runtime must not be null.")
+	if runtime == null:
+		return
+
+	_assert(runtime is VisualLoopRuntime, "visual_loop/fractal must instantiate VisualLoopRuntime.")
+	if not (runtime is VisualLoopRuntime):
+		return
+
+	_assert(runtime.is_initialized(), "VisualLoopRuntime must be initialized by registry resolution.")
+	_assert(
+		runtime.get_frame_count() == int(definition["payload"]["frame_count"]),
+		"Visual loop frame count must match declaration."
+	)
+
+	var stream: RenderedFrameStream = runtime.get_rendered_frame_stream()
+	_assert(stream != null, "VisualLoopRuntime must expose RenderedFrameStream.")
+	if stream == null:
+		return
+
+	var validation: Dictionary = stream.validate_contract()
+	_assert(
+		bool(validation.get("is_valid", false)),
+		"Visual loop frame stream must validate: %s" % str(validation.get("errors", []))
+	)
+
+	var first: Dictionary = runtime.next_frame()
+	_assert(not first.is_empty(), "Visual loop must emit first frame.")
+	if first.is_empty():
+		return
+
+	var frame_payload: Dictionary = first.get("payload", {})
+	_assert(
+		frame_payload.get("domain", "") == "visual_loop",
+		"Visual loop frame must remain visual-domain specific."
+	)
+	_assert(
+		not frame_payload.has("phase"),
+		"Visual loop frame must not invent Challenge phase semantics."
+	)
+
 	var consumed := 1
 	while not runtime.is_finished():
-		var next := runtime.next_frame()
+		var next: Dictionary = runtime.next_frame()
 		_assert(not next.is_empty(), "Visual loop must emit every declared frame.")
+		if next.is_empty():
+			break
 		consumed += 1
-	_assert(consumed == payload.frame_count, "Visual loop runtime must emit exact declared frame cardinality.")
-	_assert(runtime.next_frame().is_empty(), "Visual loop must not emit frames after completion.")
+
+	_assert(
+		consumed == int(definition["payload"]["frame_count"]),
+		"Visual loop must emit exact declared frame cardinality."
+	)
+	_assert(runtime.next_frame().is_empty(), "Visual loop must stop after completion.")
+
+	print("[PASS] _test_visual_loop_positive")
+
 
 func _test_visual_drill_positive() -> void:
-	var registry := ContentRuntimeRegistry.new()
-	_assert(registry.register_runtime("visual_drill", "test_drill", func(): return VisualDrillRuntime.new()).success, "Drill route registration failed.")
-	var payload := _valid_drill_payload()
-	var resolved := registry.resolve({"kind": "visual_drill", "subtype": "test_drill", "payload": payload})
-	_assert(resolved.success, "Valid visual drill must resolve.")
-	var runtime: ContentRuntime = resolved.runtime
-	_assert(runtime is VisualDrillRuntime, "Visual drill route must instantiate VisualDrillRuntime.")
-	_assert(runtime.get_frame_count() == payload.frame_count, "Visual drill frame count must match declaration.")
-	_assert(runtime.get_rendered_frame_stream().validate_contract().is_valid, "Visual drill frame stream must validate.")
-	var frame := runtime.next_frame()
-	_assert(frame.payload.domain == "visual_drill", "Visual drill frame payload must remain visual-domain specific.")
-	_assert(not frame.payload.has("phase"), "Visual drill must not introduce phase semantics.")
+	var registry := ContentRuntimeRegistry.create_default()
+	var definition := _valid_drill_definition()
+
+	var result: Dictionary = registry.resolve(definition)
+
+	_assert(
+		bool(result.get("success", false)),
+		"Canonical visual_drill/tracking must resolve. error=%s" % str(result.get("error_code", ""))
+	)
+	if not bool(result.get("success", false)):
+		return
+
+	var runtime: ContentRuntime = result.get("runtime")
+	_assert(runtime != null, "Resolved visual drill runtime must not be null.")
+	if runtime == null:
+		return
+
+	_assert(runtime is VisualDrillRuntime, "visual_drill/tracking must instantiate VisualDrillRuntime.")
+	if not (runtime is VisualDrillRuntime):
+		return
+
+	_assert(runtime.is_initialized(), "VisualDrillRuntime must be initialized by registry resolution.")
+	_assert(
+		runtime.get_frame_count() == int(definition["payload"]["frame_count"]),
+		"Visual drill frame count must match declaration."
+	)
+
+	var stream: RenderedFrameStream = runtime.get_rendered_frame_stream()
+	_assert(stream != null, "VisualDrillRuntime must expose RenderedFrameStream.")
+	if stream == null:
+		return
+
+	var validation: Dictionary = stream.validate_contract()
+	_assert(
+		bool(validation.get("is_valid", false)),
+		"Visual drill frame stream must validate: %s" % str(validation.get("errors", []))
+	)
+
+	var first: Dictionary = runtime.next_frame()
+	_assert(not first.is_empty(), "Visual drill must emit first frame.")
+	if first.is_empty():
+		return
+
+	var payload: Dictionary = first.get("payload", {})
+	_assert(
+		payload.get("domain", "") == "visual_drill",
+		"Visual drill frame must remain visual-domain specific."
+	)
+	_assert(
+		not payload.has("phase"),
+		"Visual drill must not introduce phase semantics."
+	)
+
+	print("[PASS] _test_visual_drill_positive")
+
 
 func _test_visual_negative_contract() -> void:
-	var loop := VisualLoopRuntime.new()
-	var bad_loop := loop.initialize({"kind": "visual_loop", "subtype": "bad", "payload": {
-		"duration": 1.0,
-		"fps": 30,
-		"frame_count": 29,
-		"visual_parameters": {"generator": "fractal", "layers": [{"blend_mode": "normal", "speed": 1.0, "complexity": 1}]}
-	}})
-	_assert(not bad_loop, "Visual loop frame_count mismatch must fail.")
+	var registry := ContentRuntimeRegistry.create_default()
 
-	var drill := VisualDrillRuntime.new()
-	var bad_drill := drill.initialize({"kind": "visual_drill", "subtype": "bad", "payload": {
-		"duration": 1.0,
-		"fps": 30,
-		"frame_count": 30,
-		"exercise_parameters": {"difficulty_tier": 1, "speed_multiplier": 1.0},
-		"stimulus": {"shape": "dot", "size": 1.0, "color": "white"},
-		"targets": {"count": 1},
-		"distractors": {"count": 0},
-		"trajectory": {"pattern": "linear", "speed": 1.0}
-	}})
-	_assert(not bad_drill, "Visual drill missing task must fail.")
+	var unknown_loop: Dictionary = registry.resolve({
+		"kind": "visual_loop",
+		"subtype": "unknown_loop"
+	})
+	_assert(
+		not bool(unknown_loop.get("success", false)),
+		"Unknown visual loop subtype must fail closed."
+	)
+	_assert(unknown_loop.get("runtime") == null, "Unknown loop route must not leak runtime.")
+
+	var bad_loop := _valid_loop_definition()
+	bad_loop["payload"]["frame_count"] = 29
+	var bad_loop_result: Dictionary = registry.resolve(bad_loop)
+	_assert(
+		not bool(bad_loop_result.get("success", false)),
+		"Visual loop frame_count mismatch must fail during resolution."
+	)
+	_assert(
+		bad_loop_result.get("runtime") == null,
+		"Failed visual loop initialization must never leak runtime."
+	)
+
+	var unknown_drill: Dictionary = registry.resolve({
+		"kind": "visual_drill",
+		"subtype": "unknown_drill"
+	})
+	_assert(
+		not bool(unknown_drill.get("success", false)),
+		"Unknown visual drill subtype must fail closed."
+	)
+	_assert(unknown_drill.get("runtime") == null, "Unknown drill route must not leak runtime.")
+
+	var bad_drill := _valid_drill_definition()
+	bad_drill["payload"].erase("task")
+	var bad_drill_result: Dictionary = registry.resolve(bad_drill)
+	_assert(
+		not bool(bad_drill_result.get("success", false)),
+		"Visual drill missing task must fail during resolution."
+	)
+	_assert(
+		bad_drill_result.get("runtime") == null,
+		"Failed visual drill initialization must never leak runtime."
+	)
+
+	print("[PASS] _test_visual_negative_contract")
+
 
 func _test_challenge_boundary_positive() -> void:
 	var registry := ContentRuntimeRegistry.create_default()
-	var challenge_config := _load_json("res://challenges/CHALLENGE_001.json")
-	var resolved := registry.resolve({
+	var challenge_definition := _load_json("res://challenges/CHALLENGE_001.json")
+
+	_assert(not challenge_definition.is_empty(), "Challenge fixture must load.")
+	if challenge_definition.is_empty():
+		return
+
+	var routed_definition := {
 		"kind": "challenge",
 		"subtype": "key",
-		"definition": challenge_config
-	})
-	_assert(resolved.success, "Challenge key route must resolve through the sovereign runtime.")
-	var runtime: ContentRuntime = resolved.runtime
-	_assert(runtime is ChallengeRuntime, "Challenge route must instantiate ChallengeRuntime.")
-	_assert(runtime.get_frame_count() > 0, "Challenge runtime must expose a non-empty frame stream.")
-	_assert(runtime.get_rendered_frame_stream().validate_contract().is_valid, "Challenge frame stream must validate.")
-	var first := runtime.next_frame()
-	_assert(first.payload.domain == "challenge", "Challenge frame must be challenge-domain opaque payload.")
-	_assert(first.payload.has("snapshot"), "Challenge frame payload must carry its opaque snapshot slot.")
+		"definition": challenge_definition
+	}
+
+	var result: Dictionary = registry.resolve(routed_definition)
+	_assert(
+		bool(result.get("success", false)),
+		"Challenge key route must resolve. error=%s" % str(result.get("error_code", ""))
+	)
+	if not bool(result.get("success", false)):
+		return
+
+	var runtime: ContentRuntime = result.get("runtime")
+	_assert(runtime != null, "Resolved ChallengeRuntime must not be null.")
+	if runtime == null:
+		return
+
+	_assert(runtime is ChallengeRuntime, "Challenge key must instantiate ChallengeRuntime.")
+	if not (runtime is ChallengeRuntime):
+		return
+
+	_assert(runtime.is_initialized(), "ChallengeRuntime must be initialized.")
+	_assert(runtime.get_frame_count() > 0, "Challenge runtime must expose frames.")
+
+	var stream: RenderedFrameStream = runtime.get_rendered_frame_stream()
+	_assert(stream != null, "Challenge runtime must expose RenderedFrameStream.")
+	if stream == null:
+		return
+
+	var validation: Dictionary = stream.validate_contract()
+	_assert(
+		bool(validation.get("is_valid", false)),
+		"Challenge frame stream must validate: %s" % str(validation.get("errors", []))
+	)
+
+	var first: Dictionary = runtime.next_frame()
+	_assert(not first.is_empty(), "Challenge runtime must emit first frame.")
+	if first.is_empty():
+		return
+
+	var payload: Dictionary = first.get("payload", {})
+	_assert(
+		payload.get("domain", "") == "challenge",
+		"Challenge frame must remain Challenge-domain opaque."
+	)
+	_assert(
+		payload.has("snapshot"),
+		"Challenge frame must preserve its opaque snapshot slot."
+	)
+
+	print("[PASS] _test_challenge_boundary_positive")
+
 
 func _test_common_contract_isolation() -> void:
-	var base_source := FileAccess.get_file_as_string("res://core/runtime/ContentRuntime.gd")
-	var stream_source := FileAccess.get_file_as_string("res://core/runtime/RenderedFrameStream.gd")
-	var forbidden := ["SimulationResult", "WinningFrameDetector", "ChallengeMechanic", "PresentationUI", "CTAComponent"]
-	for token in forbidden:
-		_assert(not base_source.contains(token), "ContentRuntime must not depend on forbidden token '%s'." % token)
-		_assert(not stream_source.contains(token), "RenderedFrameStream must not depend on forbidden token '%s'." % token)
+	var base_source := FileAccess.get_file_as_string(
+		"res://core/runtime/ContentRuntime.gd"
+	)
+	var stream_source := FileAccess.get_file_as_string(
+		"res://core/runtime/RenderedFrameStream.gd"
+	)
 
-func _valid_loop_payload() -> Dictionary:
+	var forbidden := [
+		"SimulationResult",
+		"WinningFrameDetector",
+		"ChallengeMechanic",
+		"PresentationUI",
+		"CTAComponent"
+	]
+
+	for token in forbidden:
+		_assert(
+			not base_source.contains(token),
+			"ContentRuntime must not depend on '%s'." % token
+		)
+		_assert(
+			not stream_source.contains(token),
+			"RenderedFrameStream must not depend on '%s'." % token
+		)
+
+	print("[PASS] _test_common_contract_isolation")
+
+
+func _valid_loop_definition() -> Dictionary:
 	return {
-		"duration": 1.0,
-		"fps": 30,
-		"frame_count": 30,
-		"loop": {"seamless": true, "boundary_tolerance": 0.01},
-		"visual_parameters": {
-			"generator": "fractal",
-			"layers": [
-				{"blend_mode": "normal", "speed": 1.0, "complexity": 2}
-			]
+		"kind": "visual_loop",
+		"subtype": "fractal",
+		"payload": {
+			"duration": 1.0,
+			"fps": 30,
+			"frame_count": 30,
+			"loop": {
+				"seamless": true,
+				"boundary_tolerance": 0.01
+			},
+			"visual_parameters": {
+				"generator": "fractal",
+				"layers": [
+					{
+						"blend_mode": "normal",
+						"speed": 1.0,
+						"complexity": 2
+					}
+				]
+			}
 		}
 	}
 
-func _valid_drill_payload() -> Dictionary:
+
+func _valid_drill_definition() -> Dictionary:
 	return {
-		"duration": 1.0,
-		"fps": 30,
-		"frame_count": 30,
-		"exercise_parameters": {"difficulty_tier": 2, "speed_multiplier": 1.2, "pacing_mode": "constant"},
-		"stimulus": {"shape": "dot", "size": 8.0, "color": "white"},
-		"targets": {"count": 1},
-		"distractors": {"count": 2},
-		"trajectory": {"pattern": "linear", "speed": 1.0},
-		"task": {"type": "tracking"}
+		"kind": "visual_drill",
+		"subtype": "tracking",
+		"payload": {
+			"duration": 1.0,
+			"fps": 30,
+			"frame_count": 30,
+			"exercise_parameters": {
+				"difficulty_tier": 2,
+				"speed_multiplier": 1.2,
+				"pacing_mode": "constant"
+			},
+			"stimulus": {
+				"shape": "dot",
+				"size": 8.0,
+				"color": "white"
+			},
+			"targets": {
+				"count": 1
+			},
+			"distractors": {
+				"count": 2
+			},
+			"trajectory": {
+				"pattern": "linear",
+				"speed": 1.0
+			},
+			"task": {
+				"type": "tracking"
+			}
+		}
 	}
+
 
 func _load_json(path: String) -> Dictionary:
 	var text := FileAccess.get_file_as_string(path)
 	var parsed = JSON.parse_string(text)
 	return parsed if parsed is Dictionary else {}
+
 
 func _assert(condition: bool, message: String) -> void:
 	if not condition:
