@@ -10,79 +10,112 @@ No es un videojuego tradicional. La lógica del reto, la presentación y la prod
 HIT
 CATCH
 DODGE / SAVE / CONTROL
+FIND
+CHOOSE / COUNT (fixtures/pipeline C6)
 ```
 
 El motor también contiene fixtures de laboratorio como `pilot` y `key`, que sirven para preservar y validar contratos históricos.
 
-### HIT
-
-Problemas de convergencia o impacto respecto de un objetivo. `hit_v1` es matemáticamente soberano.
-
-### CATCH
-
-Dos trayectorias móviles convergen sin feedback reactivo. `catch_v1` es matemáticamente soberano y utiliza el contrato de presentación:
-
-```text
-FrameSnapshot.position
-    → catcher
-FrameSnapshot.custom_data["target_position"]
-    → target
-```
-
-### DODGE / SAVE / CONTROL
-
-Familia de trayectoria continua. `parking_v2` es su implementación de producción actual.
-
-### FIND — siguiente familia
-
-FIND se integró como la quinta familia matemática activa en el checkpoint 1.0.0 y dispone de fixture productivo (`CHALLENGE_007`) y suite de aislamiento.
-
-Además, el repositorio C6 incorpora fixtures/puntos de integración experimentales para `choose_v1` y `count_v1` (`CHALLENGE_008` y `CHALLENGE_009`). Estos no deben confundirse con nuevos contratos matemáticos congelados: su presencia actual certifica disponibilidad de pipeline/presentación, no una nueva congelación de core.
-
 ## RNG y determinismo
 
-El motor usa RNG sin estado y streams semánticos. Las fixtures históricas 001–002 permanecen en RNG 1.0; las fixtures 003–006 utilizan RNG 2.0.
+El motor usa RNG sin estado y streams semánticos. Las fixtures históricas mantienen sus contratos de RNG versionados. Los cambios de presentación o temporalidad no pueden alterar la verdad estructural de la simulación.
 
-El sistema no permite que la aleatoriedad cosmética modifique el resultado estructural.
+## C6-F0.3 — Foundation branch
 
-## Producción actual
-
-La composición temporal es declarativa por challenge:
+La rama C6-F0.3 establece la frontera común de contenido sin convertir Challenge en un tipo de contenido visual.
 
 ```text
-HOOK / GAME / REVEAL / CTA
-0 s  = fase omitida
->0 s = fase activa
-GAME > 0 siempre
+C6-F0.3.1  Pre-Implementation Audit       CLOSED
+C6-F0.3.2  Schema Boundary                CLOSED / CERTIFIED
+C6-F0.3.3  Shared Content Envelope        CLOSED / CERTIFIED
+C6-F0.3.4  Temporal Abstraction + CTA     CLOSED / CERTIFIED
+C6-F0.3.5  Content Runtime Boundary       IMPLEMENTED / RUNTIME PENDING
 ```
 
-El perfil histórico `2 + 7 + 2 = 11 s` sigue siendo un fixture de referencia, pero ya no es una restricción global. C6-D4 permite generar vídeos de distinta composición temporal sin alterar la simulación.
+### Authoring boundary
 
-La factoría 0.10.0 mantiene manifests de provenance 1.0, calcula `total_frames` desde el JSON y valida físicamente el resultado con FFprobe.
-
-## Estado actual
+`ContentEnvelope` acepta únicamente:
 
 ```text
-0.6.0  HIT v1                              FROZEN
-0.7.0  Production Contract Hardening      FROZEN
-0.8.0  CATCH v1                            FROZEN
-0.8.1  CATCH Presentation Contract         FROZEN / VALIDATED
-0.9.0  Production Contract Consolidation   FROZEN / VALIDATED
-1.0.0  FIND v1 + CHALLENGE_007              FROZEN / VALIDATED
-<<<<<<< HEAD
-1.1.0-C6-D4 Phase Duration Control         CODE COMPLETE / E2E PENDING
-=======
-1.1.0-C6-D4 Phase Duration Control         CERTIFICADO / E2E PASS
->>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
+visual_loop
+visual_drill
+```
+
+Challenge conserva sus schemas y orquestación soberanos.
+
+### Temporal boundary
+
+```text
+TemporalCore
+├── ChallengeTimeline
+│   └── VideoTimeline compatibility shim
+├── VisualLoopTimeline
+└── VisualDrillTimeline
+```
+
+La fórmula histórica es:
+
+```text
+maxi(0, int(round(duration_seconds * fps)))
+```
+
+`VisualLoopTimeline` es el único propietario del wrapping de loop. `VisualDrillTimeline` no define fases.
+
+### Runtime boundary
+
+```text
+Domain definition
+      ↓
+ContentRuntimeRegistry
+      ↓
+exact (kind, subtype) / fail-closed
+      ↓
+ChallengeRuntime | VisualLoopRuntime | VisualDrillRuntime
+      ↓
+RenderedFrameStream
+      ↓
+Presentation / Rendering
+      ↓
+Export
+```
+
+El runtime común no conoce `SimulationResult`, `WinningFrameDetector`, RNG, `ChallengeMechanic`, `PresentationUI` ni FFmpeg.
+
+## CTA histórico
+
+La extracción temporal provocó una regresión temporalmente acotada en los textos CTA. Los defaults históricos fueron restaurados y la suite específica verificó:
+
+```text
+LINK IN BIO
+¡Juega ahora!
+```
+
+La corrección se considera parte del baseline congelado.
+
+## Producción
+
+La factoría continúa en versión `0.10.0` con contrato de manifest `1.0`. `build_factory.py` sigue siendo orquestación de producción, no el runtime universal.
+
+## Certificación pendiente de F0.3.5
+
+La implementación está presente y ha pasado las comprobaciones estáticas del paquete. La certificación real de Godot/factoría debe ejecutarse en una máquina con el Godot objetivo disponible.
+
+## Documentación viva
+
+La referencia acumulativa de esta rama es:
+
+```text
+docs/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md
+```
+
+La continuidad exacta es:
+
+```text
+docs/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md
 ```
 
 La regla de desarrollo sigue siendo:
 
 ```text
-AUDIT → CONTRACT → ISOLATION → INTEGRATION → REGRESSION → BATCH → FREEZE
+AUDIT → CONTRACT → IMPLEMENTATION → TEST → REGRESSION → BATCH → PHYSICAL ARTIFACT → FREEZE
 ```
-
-
-## Documentación viva
-
-La continuidad y el estado de release se encuentran en `MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md`. El mapa de documentación vigente está en `docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md` y el roadmap en `docs/ROADMAP_PHASES.md`.
