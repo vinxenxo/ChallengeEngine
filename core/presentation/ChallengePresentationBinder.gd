@@ -115,11 +115,11 @@ static func build_frame_render_model(
 			overrides = profile.composition
 	
 	model["badge_text"] = str(overrides.get("badge_text", ""))
-	# Preserve the certified E2 CTA presentation contract.
-	# The later E2 hardening revision replaced these historical defaults with
-	# empty strings, leaving the CTA container present but visually blank.
-	model["cta_main"] = str(overrides.get("cta_main", "LINK IN BIO"))
-	model["cta_sub"] = str(overrides.get("cta_sub", "¡Juega ahora!"))
+	var comp = overrides
+	if profile != null and "composition" in profile and typeof(profile.composition) == TYPE_DICTIONARY:
+		comp = profile.composition
+	model["cta_main"] = comp.get("cta_main", "LINK IN BIO")
+	model["cta_sub"] = comp.get("cta_sub", "¡Juega ahora!")
 	model["success_text"] = str(overrides.get("success_text", ""))
 	
 	model["show_badge"] = (state == "HOOK")

@@ -60,6 +60,7 @@ KNOWN_SUITES = {
     "C6F0_1_6AuthoringPipelineTest.gd": "[C6F0_1_6_AUTHORING_PIPELINE_SUITE] PASS",
     "C6F0_1_7RuntimeBoundaryProofTest.gd": "[C6F0_1_7_RUNTIME_BOUNDARY_PROOF_SUITE] PASS",
     "C6F0_3MultiContentFoundationTest.gd": "[C6F0_3_MULTI_CONTENT_FOUNDATION_SUITE] PASS",
+    "C6F035ContentRuntimeBoundaryTest.gd": "[C6F0_3_5_RUNTIME_BOUNDARY_SUITE] PASS",
     "C6F0_3_4CTARenderRegressionTest.gd": "[C6F0_3_4_CTA_RENDER_REGRESSION_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }

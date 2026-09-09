@@ -1,88 +1,84 @@
-# ChallengeEngineV01 — Integración y validación (estado vivo)
+# ChallengeEngineV01 — Integración y validación
 
-## Estado actual
+## Estado de la foundation C6-F0.3
 
 ```text
-CHECKPOINT 1.1.0-C6-D4
-<<<<<<< HEAD
-C6-D4 CODE COMPLETE / STATIC CONTRACT PASS / GODOT E2E PENDING HERE
-=======
-C6-D4 CERTIFICADO / Godot 4.7.1 E2E PASS / Factory 9/9 PASS
->>>>>>> fdd1006 (CHECKPOINT 1.1.0  C6-E E.1)
+C6-F0.3.1  CLOSED
+C6-F0.3.2  CLOSED / CERTIFIED
+C6-F0.3.3  CLOSED / CERTIFIED
+C6-F0.3.4  CLOSED / CERTIFIED
+C6-F0.3.5  IMPLEMENTED / TARGETED RUNTIME PASS / FULL CERTIFICATION PENDING
 ```
 
 Godot objetivo: `4.7.1-stable (official)`
-Factory actual: `0.10.0`
+Factory: `0.10.0`
 Manifest schema: `1.0`
 
-El repositorio contiene nueve fixtures (`CHALLENGE_001`…`CHALLENGE_009`) y dos generaciones RNG coexistentes. Los fixtures 001–007 forman el corpus congelado de producción heredado/1.0; 008–009 son fixtures C6 de `choose_v1`/`count_v1` ya cableados al pipeline.
+## Runtime boundary
 
-## Gate de arquitectura
-
-En una máquina certificadora con Godot 4.7.1:
-
-```powershell
-godot --headless --path . --editor --quit
-python .\tests\run_all.py
+```text
+Domain-specific definition
+   ↓
+ContentRuntimeRegistry
+   ↓
+exact (kind, subtype) / fail-closed
+   ↓
+ContentRuntime
+   ├── ChallengeRuntime
+   ├── VisualLoopRuntime
+   └── VisualDrillRuntime
+   ↓
+RenderedFrameStream
+   ↓
+Presentation / Rendering
+   ↓
+Export
 ```
 
-`tests/run_all.py` es el runner de corpus completo y el árbitro de PASS/FAIL a nivel de suite.
+No se introduce un `ContentDefinition` universal. `ContentEnvelope` continúa siendo visual-only.
 
-## Corpus de suites
+## Suite de F0.3.5
 
-El descubrimiento es contractual: todo `*Test.gd` bajo `tests/` debe estar registrado explícitamente en `KNOWN_SUITES`. Esto evita que un test nuevo quede fuera de la regresión por accidente.
+```text
+godot --headless --path . --script tests/C6F035ContentRuntimeBoundaryTest.gd
+```
+
+La suite también está registrada en `tests/run_all.py`.
+
+## Validación global
+
+```text
+godot --headless --path . --editor --quit
+python tests/run_all.py
+```
 
 ## Producción batch
 
-```powershell
-python build_factory.py --batch ./challenges --output ./output --workers 2
+```text
+python build_factory.py --batch ./challenges --output ./output --workers 1
 ```
 
-La certificación C6-D4 debe verificar, para los nueve challenges, que: `VideoTimeline.gd` y `build_factory.py` producen los mismos frame counts; el render físico contiene exactamente ese número de frames; FFprobe confirma duración/framerate; y el `BATCH_MANIFEST.json` consolida PASS sin contaminar la simulación.
+Cuando el cambio afecta render/export, el cierre exige inspección del artefacto físico y verificación con FFprobe.
 
-## Contrato temporal vivo
+## Evidencia de ejecución y reparación
+
+La ejecución externa del runtime boundary de F0.3.5 dio `PASS`. La integración posterior expuso una regresión CTA causada por la recuperación de una versión antigua de `ChallengePresentationBinder.gd`; este paquete restaura los defaults históricos y registra/incluye la suite CTA. Deben ejecutarse de nuevo la suite CTA, el corpus completo y la factoría antes de cerrar F0.3.5.
+
+## Evidencia heredada
+
+El baseline inmediatamente anterior aportó:
 
 ```text
-HOOK → GAME → REVEAL → CTA
-0 s  → fase omitida
-GAME → siempre > 0
-TOTAL → suma de fases efectivas
+CTA regression suite  PASS
+Global corpus         53/53 PASS
+Factory batch         9/9 PASS
 ```
 
-Fixtures C6-D4 oficiales:
+Estas cifras permanecen como evidencia del baseline certificado anterior; no se etiquetan como certificación de F0.3.5.
+
+## Fuente de continuidad
 
 ```text
-001  GAME → CTA      540 frames
-002  HOOK → GAME     600 frames
-005  GAME             420 frames
-006  GAME → CTA       540 frames
-007  HOOK → GAME      600 frames
+docs/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md
+docs/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md
 ```
-
-## Arquitectura de producción
-
-```text
-Challenge JSON
-   ↓
-Godot validation / deterministic simulation
-   ↓
-SimulationResult + telemetry
-   ↓
-Godot Movie Maker / Compatibility renderer
-   ↓
-RAW AVI
-   ↓
-Python build_factory.py 0.10.0
-   ↓
-FFmpeg
-   ↓
-MP4
-   ↓
-FFprobe
-   ↓
-manifest.json / BATCH_MANIFEST.json
-```
-
-## Fuente de verdad
-
-La continuidad actual está gobernada por `MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md`. El código de simulación y los contratos RNG siguen congelados; C6-D4 modifica únicamente la composición temporal de presentación por challenge.
