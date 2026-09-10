@@ -1,45 +1,41 @@
 class_name TrackingGenerator
 extends VisualDrillGenerator
 
-## C6-F0.4.2 — Tracking Procedural Generator.
-## Computes continuous smooth pursuit / tracking trajectories and target/stimulus states.
+## C6-F0.4.2 — Visual Drill Tracking Generator.
+## Generates deterministic frame states for tracking exercises.
+## Strictly parses definition collections (Arrays) and objects (Dictionaries).
 
 func generate(frame_index: int, total_frames: int, drill_parameters: Dictionary) -> Dictionary:
-	var total := maxi(1, total_frames - 1)
-	var progress := float(frame_index) / float(total)
-	
 	var trajectory_def: Dictionary = drill_parameters.get("trajectory", {})
-	var pattern := str(trajectory_def.get("pattern", "linear"))
-	var speed := float(trajectory_def.get("speed", 1.0))
-	
-	# Deterministic trajectory math
-	var angle := progress * TAU * speed
-	var pos_x := cos(angle) * 150.0
-	var pos_y := sin(angle * 0.5) * 100.0 if pattern == "lissajous" else sin(angle) * 100.0
-	
 	var stimulus_def: Dictionary = drill_parameters.get("stimulus", {})
-	var targets_def: Dictionary = drill_parameters.get("targets", {})
-	var distractors_def: Dictionary = drill_parameters.get("distractors", {})
+	
+	var targets_def: Array = drill_parameters.get("targets", [])
+	var distractors_def: Array = drill_parameters.get("distractors", [])
+	
 	var task_def: Dictionary = drill_parameters.get("task", {})
 	
-	return {
+	var progress := 0.0
+	if total_frames > 1:
+		progress = float(frame_index) / float(total_frames - 1)
+		
+	var current_stimulus = stimulus_def.duplicate(true)
+	if trajectory_def.get("type", "") == "circular":
+		var center_x: float = float(trajectory_def.get("center_x", 0.0))
+		var center_y: float = float(trajectory_def.get("center_y", 0.0))
+		var radius: float = float(trajectory_def.get("radius", 100.0))
+		var speed: float = float(trajectory_def.get("speed", 1.0))
+		
+		var angle := progress * TAU * speed
+		current_stimulus["x"] = center_x + cos(angle) * radius
+		current_stimulus["y"] = center_y + sin(angle) * radius
+
+	var payload := {
 		"generator_type": "tracking",
-		"stimulus_state": {
-			"type": stimulus_def.get("type", "dot"),
-			"x": pos_x,
-			"y": pos_y,
-			"active": true
-		},
-		"target_states": [
-			{"id": 0, "x": pos_x, "y": pos_y, "status": "active"}
-		],
-		"distractor_states": [],
-		"trajectory_state": {
-			"pattern": pattern,
-			"current_angle": angle
-		},
-		"task_state": {
-			"type": task_def.get("type", "tracking"),
-			"status": "in_progress"
-		}
+		"progress": progress,
+		"stimulus_state": current_stimulus,
+		"target_states": targets_def.duplicate(true),
+		"distractor_states": distractors_def.duplicate(true),
+		"task_state": task_def.duplicate(true)
 	}
+	
+	return payload
