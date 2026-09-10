@@ -66,6 +66,10 @@ KNOWN_SUITES = {
     "C6F042VisualDrillRuntimeTest.gd": "[C6F0_4_2_VISUAL_DRILL_SUITE] PASS",
     "C6F05PresentationRoutingTest.gd": "[C6F0_5_PRESENTATION_ROUTING_SUITE] PASS",
     "C6F05PhysicalRenderingTest.gd": "[C6F0_5_PHYSICAL_RENDERING_SUITE] PASS",
+    "C6F06VisualDrillPhysicalExportTest.gd" : "[C6F0_6_DRILL_PHYSICAL_EXPORT_SUITE] PASS",
+    "C6F06VisualDrillPlaybackTest.gd" : "[C6F0_6_DRILL_PLAYBACK_SUITE] PASS",
+    "C6F06VisualLoopPhysicalExportTest.gd" : "[C6F0_6_PHYSICAL_EXPORT_SUITE] PASS",
+    "C6F06VisualLoopPlaybackTest.gd" : "[C6F0_6_PLAYBACK_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 

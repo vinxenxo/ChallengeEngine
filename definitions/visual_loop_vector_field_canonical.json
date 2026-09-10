@@ -1,0 +1,23 @@
+{
+  "kind": "visual_loop",
+  "subtype": "vector_field",
+  "payload": {
+    "duration": 2.0,
+    "fps": 30,
+    "frame_count": 60,
+    "loop": {
+      "seamless": true,
+      "boundary_tolerance": 0.01
+    },
+    "visual_parameters": {
+      "generator": "vector_field",
+      "layers": [
+        {
+          "blend_mode": "normal",
+          "speed": 1.0,
+          "complexity": 2
+        }
+      ]
+    }
+  }
+}
