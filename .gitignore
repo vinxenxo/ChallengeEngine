@@ -30,5 +30,5 @@ mono_crash.*.json
 # output/
 
 # python
-__pycache__/
+*pycache*
 *.pyc
