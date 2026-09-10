@@ -411,22 +411,37 @@ func _valid_drill_definition() -> Dictionary:
 				"size": 8.0,
 				"color": "white"
 			},
-			"targets": {
-				"count": 1
-			},
-			"distractors": {
-				"count": 2
-			},
+			"targets": [
+				{
+					"id": "t1",
+					"x": 50.0,
+					"y": 50.0,
+					"highlighted": true,
+					"status": "active"
+				}
+			],
+			"distractors": [
+				{
+					"id": "d1",
+					"x": -50.0,
+					"y": -50.0
+				},
+				{
+					"id": "d2",
+					"x": 100.0,
+					"y": -100.0
+				}
+			],
 			"trajectory": {
 				"pattern": "linear",
 				"speed": 1.0
 			},
 			"task": {
-				"type": "tracking"
+				"type": "tracking",
+				"target_id": "t1"
 			}
 		}
 	}
-
 
 func _load_json(path: String) -> Dictionary:
 	var text := FileAccess.get_file_as_string(path)
