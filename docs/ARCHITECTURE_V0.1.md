@@ -118,11 +118,9 @@ The V0.1 architecture above is preserved as historical reference. The live archi
 
 `DeterministicLCG` is now a stateless mathematical primitive. Its public sampling contract is:
 
-```text
-sample_integer(seed, stream_id, index)
-sample_float(seed, stream_id, index)
-sample_float_range(seed, stream_id, index, min, max)
-```
+    sample_integer(seed, stream_id, index)
+    sample_float(seed, stream_id, index)
+    sample_float_range(seed, stream_id, index, min, max)
 
 The primitive derives a deterministic stream seed for non-zero semantic streams and advances the 31-bit LCG by affine exponentiation. `stream_id = 0` preserves the historical legacy sequence used by RNG v1.0.
 
@@ -154,37 +152,33 @@ That is the explicit objective of CHECKPOINT 0.3.6. Do not assume global integra
 
 The historical architecture sections above are preserved. The live pipeline is now:
 
-```text
-Challenge JSON
-    ↓
-Godot validation / deterministic simulation
-    ↓
-SimulationResult + telemetry
-    ↓
-Godot Movie Maker (graphical Compatibility renderer)
-    ↓
-RAW AVI
-    ↓
-Python build_factory.py 0.10.0
-    ↓
-FFmpeg H.264 / YUV420p
-    ↓
-MP4
-    ↓
-FFprobe
-    ↓
-unit manifest 1.0 / BATCH_MANIFEST 1.0
-```
+    Challenge JSON
+        ↓
+    Godot validation / deterministic simulation
+        ↓
+    SimulationResult + telemetry
+        ↓
+    Godot Movie Maker (graphical Compatibility renderer)
+        ↓
+    RAW AVI
+        ↓
+    Python build_factory.py 0.10.0
+        ↓
+    FFmpeg H.264 / YUV420p
+        ↓
+    MP4
+        ↓
+    FFprobe
+        ↓
+    unit manifest 1.0 / BATCH_MANIFEST 1.0
 
 Factory implementation version: `0.10.0`; manifest schema remains `1.0`.
 
 The architectural law remains:
 
-```text
-GODOT CALCULATES & RENDERS RAW
-PYTHON ORCHESTRATES
-FFMPEG PACKAGES
-FFPROBE VALIDATES
-```
+    GODOT CALCULATES & RENDERS RAW
+    PYTHON ORCHESTRATES
+    FFMPEG PACKAGES
+    FFPROBE VALIDATES
 
 Checkpoint 1.1.0-C6-D4 adds declarative per-challenge phase duration control while preserving the frozen deterministic simulation/RNG contracts. `VideoTimeline.gd` is the effective presentation timeline source of truth.
