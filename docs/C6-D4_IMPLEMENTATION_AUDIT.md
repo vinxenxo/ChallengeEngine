@@ -1,6 +1,7 @@
 # C6-D4_IMPLEMENTATION_AUDIT.md
 
 ## Scope
+
 Quick, isolated implementation of per-challenge video phase control.
 
 ## Changed source
