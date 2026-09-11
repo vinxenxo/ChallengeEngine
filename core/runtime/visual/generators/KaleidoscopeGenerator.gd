@@ -1,28 +1,23 @@
 class_name KaleidoscopeGenerator
 extends VisualLoopGenerator
 
-## C6-F0.4.1 — Kaleidoscope Procedural Generator.
-## Speed modifies radial amplitude, preserving the fundamental closed-loop angle.
+## C6-F0.8-D — Kaleidoscope Visual Loop Generator.
+## Computes radial symmetry sectors, angular offsets, and mirrored transforms.
 
-func generate(loop_frame: int, total_frames: int, layer_params: Dictionary) -> Dictionary:
-	var total := maxi(1, total_frames)
-	var normalized_loop_time := fposmod(float(loop_frame) / float(total), 1.0)
-	
-	var speed := float(layer_params.get("speed", 1.0))
-	var complexity := int(layer_params.get("complexity", 1))
-	var blend_mode := str(layer_params.get("blend_mode", "normal"))
-	var color_palette := str(layer_params.get("color_palette", "default"))
-	
-	var sectors := maxi(3, complexity * 2)
-	var angle_offset := normalized_loop_time * TAU
-	
+func generate(frame_index: int, total_frames: int, loop_parameters: Dictionary, rng_context = null) -> Dictionary:
+	var progress := 0.0
+	if total_frames > 1:
+		progress = float(frame_index) / float(total_frames - 1)
+		
+	var sectors := 6
+	var rotation_speed := 1.0
+	if rng_context != null:
+		sectors = int(rng_context.sample_float_range(2004, 0, 4.0, 12.0))
+		rotation_speed = rng_context.sample_float_range(2004, 1, 0.5, 2.0)
+		
 	return {
-		"generator": "kaleidoscope",
-		"blend_mode": blend_mode,
-		"color_palette": color_palette,
-		"parameters": {
-			"sectors": sectors,
-			"angle_offset": angle_offset,
-			"symmetry_factor": 1.0 + (0.2 * cos(angle_offset) * speed)
-		}
+		"generator_type": "kaleidoscope",
+		"progress": progress,
+		"sectors": sectors,
+		"rotation": progress * TAU * rotation_speed
 	}
