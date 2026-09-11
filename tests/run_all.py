@@ -70,6 +70,9 @@ KNOWN_SUITES = {
     "C6F06VisualDrillPlaybackTest.gd" : "[C6F0_6_DRILL_PLAYBACK_SUITE] PASS",
     "C6F06VisualLoopPhysicalExportTest.gd" : "[C6F0_6_PHYSICAL_EXPORT_SUITE] PASS",
     "C6F06VisualLoopPlaybackTest.gd" : "[C6F0_6_PLAYBACK_SUITE] PASS",
+    "C6F08CompositionContractTest.gd": "[C6F08_COMPOSITION_CONTRACT_SUITE] PASS",
+    "C6F08ContentDefinitionContractTest.gd": "[C6F08_CONTENT_DEFINITION_CONTRACT_SUITE] PASS",
+    "C6F08CosmeticRNGContractTest.gd": "[C6F08_COS_RNG_CONTRACT_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 
