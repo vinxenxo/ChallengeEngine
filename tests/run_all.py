@@ -75,6 +75,7 @@ KNOWN_SUITES = {
     "C6F08CosmeticRNGContractTest.gd": "[C6F08_COS_RNG_CONTRACT_SUITE] PASS",
     "C6F08CompositionGeometryTest.gd": "[C6F08_COMPOSITION_GEOMETRY_SUITE] PASS",
     "C6F08FractalPilotTest.gd": "[C6F08_FRACTAL_PILOT_SUITE] PASS",
+    "C6F08VisualLoopRuntimeVariationTest.gd": "[C6F08_VISUAL_LOOP_RUNTIME_VARIATION_SUITE] PASS",
     "C6F08VisualLoopVariationContractTest.gd": "[C6F08_VISUAL_LOOP_VARIATION_SUITE] PASS",
     "C6F08VisualLoopBindingContractTest.gd": "[C6F08_VISUAL_LOOP_BINDING_CONTRACT_SUITE] PASS",
     "C6F08ContentDefinitionDeterminismTest.gd" : "C6F08_CONTENT_DEF_DETERMINISM_SUITE] PASS",
