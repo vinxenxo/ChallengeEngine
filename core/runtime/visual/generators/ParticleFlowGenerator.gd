@@ -1,24 +1,39 @@
 class_name ParticleFlowGenerator
 extends VisualLoopGenerator
 
-## C6-F0.8-D — Particle Flow Visual Loop Generator.
-## Computes multi-particle arrays, velocities, emission phases, and cosmetic variants.
+## C6-F0.4.1 — Particle Flow Procedural Generator.
+## Stateless periodic flow. Sampled particles act as diagnostic representation. Speed modulates radius amplitude.
 
-func generate(frame_index: int, total_frames: int, loop_parameters: Dictionary, rng_context = null) -> Dictionary:
-	var progress := 0.0
-	if total_frames > 1:
-		progress = float(frame_index) / float(total_frames - 1)
-		
-	var particle_count := 30
-	var emission_spread := 100.0
-	if rng_context != null:
-		particle_count = int(rng_context.sample_float_range(2003, 0, 20.0, 60.0))
-		emission_spread = rng_context.sample_float_range(2003, 1, 50.0, 150.0)
+func generate(loop_frame: int, total_frames: int, layer_params: Dictionary) -> Dictionary:
+	var total := maxi(1, total_frames)
+	var normalized_loop_time := fposmod(float(loop_frame) / float(total), 1.0)
+	
+	var speed := float(layer_params.get("speed", 1.0))
+	var complexity := int(layer_params.get("complexity", 1))
+	var blend_mode := str(layer_params.get("blend_mode", "normal"))
+	var color_palette := str(layer_params.get("color_palette", "default"))
+	
+	var particle_count := complexity * 16
+	var representative_particles: Array[Dictionary] = []
+	
+	for i in range(min(particle_count, 8)):
+		var pi_norm := float(i) / float(particle_count)
+		# Angle wraps perfectly across normalized_loop_time. Speed alters starting spatial rotation, not time frequency.
+		var angle := fposmod(normalized_loop_time * TAU + pi_norm * TAU, TAU)
+		var radius := 50.0 + (30.0 * sin(normalized_loop_time * TAU * 2.0 + pi_norm * PI) * speed)
+		representative_particles.append({
+			"id": i,
+			"x": cos(angle) * radius,
+			"y": sin(angle) * radius
+		})
 		
 	return {
-		"generator_type": "particle_flow",
-		"progress": progress,
-		"particle_count": particle_count,
-		"emission_spread": emission_spread,
-		"time_phase": progress * TAU * 3.0
+		"generator": "particle_flow",
+		"blend_mode": blend_mode,
+		"color_palette": color_palette,
+		"parameters": {
+			"particle_count": particle_count,
+			"emitter_phase": fposmod(normalized_loop_time * TAU, TAU),
+			"representative_particles": representative_particles
+		}
 	}

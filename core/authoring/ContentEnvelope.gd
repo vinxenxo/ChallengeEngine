@@ -1,8 +1,8 @@
 class_name ContentEnvelope
 extends RefCounted
 
-## C6-F0.3.3 — Shared Content Envelope Implementation.
-## Strict fail-closed model mirroring the normative JSON schema with full nested type checks and additionalProperties guards.
+## C6-F0.3.3 & C6-F0.8-B — Shared Content Envelope Implementation with Optional Deterministic RNG Controls.
+## Strict fail-closed model mirroring the normative JSON schema with full nested type checks, additionalProperties guards, and safe defaults for backward compatibility.
 
 var schema_version: String = ""
 var content_id: String = ""
@@ -11,6 +11,8 @@ var kind: String = ""
 var subtype: String = ""
 var engine_version: String = ""
 var authoring_version: String = ""
+var rng_version: String = "2.0"
+var seed: int = 0
 var presentation: Dictionary = {}
 var assets: Dictionary = {}
 var audio: Dictionary = {}
@@ -25,6 +27,7 @@ static func create_from_dictionary(dict: Dictionary) -> Dictionary:
 	var allowed_keys := [
 		"schema_version", "content_id", "content_version", "kind",
 		"subtype", "engine_version", "authoring_version",
+		"rng_version", "seed",
 		"presentation", "assets", "audio", "provenance"
 	]
 	for key in dict.keys():
@@ -71,6 +74,15 @@ static func create_from_dictionary(dict: Dictionary) -> Dictionary:
 		
 	if not dict["authoring_version"] is String or str(dict["authoring_version"]).is_empty():
 		errors.append("Invalid or empty 'authoring_version'.")
+
+	# Opcionales con validación estricta si se proporcionan
+	if dict.has("rng_version"):
+		if not dict["rng_version"] is String or str(dict["rng_version"]) != "2.0":
+			errors.append("Invalid or unsupported rng_version. Must be '2.0'.")
+
+	if dict.has("seed"):
+		if not dict["seed"] is int:
+			errors.append("Field 'seed' must be an integer.")
 		
 	if not dict["presentation"] is Dictionary:
 		errors.append("Field 'presentation' must be a Dictionary.")
@@ -133,6 +145,8 @@ static func create_from_dictionary(dict: Dictionary) -> Dictionary:
 	env.subtype = str(dict["subtype"])
 	env.engine_version = str(dict["engine_version"])
 	env.authoring_version = str(dict["authoring_version"])
+	env.rng_version = str(dict["rng_version"]) if dict.has("rng_version") else "2.0"
+	env.seed = int(dict["seed"]) if dict.has("seed") else 0
 	env.presentation = dict["presentation"].duplicate(true)
 	env.assets = dict["assets"].duplicate(true)
 	env.audio = dict["audio"].duplicate(true)
@@ -149,6 +163,8 @@ func to_dictionary() -> Dictionary:
 		"subtype": subtype,
 		"engine_version": engine_version,
 		"authoring_version": authoring_version,
+		"rng_version": rng_version,
+		"seed": seed,
 		"presentation": presentation.duplicate(true),
 		"assets": assets.duplicate(true),
 		"audio": audio.duplicate(true),
