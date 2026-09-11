@@ -73,6 +73,8 @@ KNOWN_SUITES = {
     "C6F08CompositionContractTest.gd": "[C6F08_COMPOSITION_CONTRACT_SUITE] PASS",
     "C6F08ContentDefinitionContractTest.gd": "[C6F08_CONTENT_DEFINITION_CONTRACT_SUITE] PASS",
     "C6F08CosmeticRNGContractTest.gd": "[C6F08_COS_RNG_CONTRACT_SUITE] PASS",
+    "C6F08CompositionGeometryTest.gd": "[C6F08_COMPOSITION_GEOMETRY_SUITE] PASS",
+    "C6F08ContentDefinitionDeterminismTest.gd" : "C6F08_CONTENT_DEF_DETERMINISM_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 
