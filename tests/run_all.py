@@ -81,6 +81,7 @@ KNOWN_SUITES = {
     "C6F08ContentDefinitionDeterminismTest.gd" : "[C6F08_CONTENT_DEF_DETERMINISM_SUITE] PASS",
     "C6F08FractalPlaybackValidationTest.gd" : "[C6F08_FRACTAL_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08VectorFieldPilotTest.gd" : "[C6F08_VECTOR_FIELD_PILOT_SUITE] PASS",
+    "C6F08PeripheralScanPilotTest.gd" : "[C6F08_PERIPHERAL_SCAN_PILOT_SUITE] PASS",
     "C6F08GeometricPlaybackValidationTest.gd" : "[C6F08_GEOMETRIC_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08KaleidoscopePlaybackValidationTest.gd" : "[C6F08_KALEIDOSCOPE_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08ParticleFlowPlaybackValidationTest.gd" : "[C6F08_PARTICLE_FLOW_PLAYBACK_VALIDATION_SUITE] PASS",
