@@ -51,7 +51,6 @@ func _initialize_domain(definition: Dictionary) -> bool:
 	if _generator == null:
 		return _fail("VISUAL_LOOP_GENERATOR_UNKNOWN")
 
-	# C6-F0.8-D2-B: Inicialización segura de RNG Cosmético
 	if not _initialize_cosmetic_rng(definition):
 		return false
 
@@ -61,7 +60,6 @@ func _initialize_domain(definition: Dictionary) -> bool:
 	for index in range(timeline.total_frames):
 		var state: VisualFrameState = _build_render_state(index)
 		
-		# Abortar estrictamente si la generación de estado (incluyendo RNG) falló
 		if state == null:
 			_current_render_state = null
 			return _fail("VISUAL_LOOP_RNG_SAMPLE_FAILED")
@@ -162,14 +160,30 @@ func _build_variation() -> Dictionary:
 	if _rng_context == null or _active_stream_id == -1:
 		return {}
 
-	var variation := {
-		"palette_variant": _rng_context.sample_float(_active_stream_id, 0),
-		"complexity_variant": _rng_context.sample_float(_active_stream_id, 1),
-		"phase_offset": _rng_context.sample_float(_active_stream_id, 2),
-		"rotation_offset": _rng_context.sample_float(_active_stream_id, 3)
-	}
+	var variation := {}
 
-	# Validación estricta D2-B: Si algún sample falló, la variación está corrupta.
+	# C6-F0.8-C: Strict Stream-Specific Variation Mapping Contract
+	match _generator_type:
+		"fractal":
+			variation["palette_variant"] = _rng_context.sample_float(_active_stream_id, 0)
+			variation["complexity_variant"] = _rng_context.sample_float(_active_stream_id, 1)
+			variation["phase_offset"] = _rng_context.sample_float(_active_stream_id, 2)
+			variation["rotation_offset"] = _rng_context.sample_float(_active_stream_id, 3)
+		"vector_field":
+			variation["palette_variant"] = _rng_context.sample_float(_active_stream_id, 0)
+			variation["turbulence_variant"] = _rng_context.sample_float(_active_stream_id, 1)
+		"particle_flow":
+			variation["palette_variant"] = _rng_context.sample_float(_active_stream_id, 0)
+			variation["emission_variant"] = _rng_context.sample_float(_active_stream_id, 1)
+		"kaleidoscope":
+			variation["palette_variant"] = _rng_context.sample_float(_active_stream_id, 0)
+			variation["symmetry_variant"] = _rng_context.sample_float(_active_stream_id, 1)
+		"geometric":
+			variation["palette_variant"] = _rng_context.sample_float(_active_stream_id, 0)
+			variation["shape_variant"] = _rng_context.sample_float(_active_stream_id, 1)
+		_:
+			pass
+
 	if _rng_context.error_state != "OK":
 		return {"_failed": true}
 
@@ -178,7 +192,6 @@ func _build_variation() -> Dictionary:
 func _build_render_state(absolute_frame: int) -> VisualFrameState:
 	var variation: Dictionary = _build_variation()
 	
-	# Propagación del fallo al generador del frame
 	if variation.has("_failed"):
 		return null
 		
