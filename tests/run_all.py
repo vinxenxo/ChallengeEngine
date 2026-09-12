@@ -84,6 +84,7 @@ KNOWN_SUITES = {
     "C6F08SaccadePlaybackValidationTest.gd" : "[C6F08_SACCADE_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08PursuitPlaybackValidationTest.gd" : "[C6F08_PURSUIT_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08PeripheralScanPilotTest.gd" : "[C6F08_PERIPHERAL_SCAN_PILOT_SUITE] PASS",
+    "C6F08F1ContentEnvelopeAuditTest.gd" : "[C6F08_F1_PAYLOAD_E2E_AUDIT] PASS - 9/9 Definitions Validated",
     "C6F08TrackingPlaybackValidationTest.gd" : "[C6F08_TRACKING_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08GeometricPlaybackValidationTest.gd" : "[C6F08_GEOMETRIC_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08KaleidoscopePlaybackValidationTest.gd" : "[C6F08_KALEIDOSCOPE_PLAYBACK_VALIDATION_SUITE] PASS",
