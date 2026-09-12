@@ -7,11 +7,13 @@ extends Node2D
 const PeripheralScanRendererClass = preload("res://core/presentation/rendering/PeripheralScanRenderer.gd")
 const TrackingRendererClass = preload("res://core/presentation/rendering/TrackingRenderer.gd")
 const PursuitRendererClass = preload("res://core/presentation/rendering/PursuitRenderer.gd")
+const SaccadeRendererClass = preload("res://core/presentation/rendering/SaccadeRenderer.gd")
 
 var _frame_state: Dictionary = {}
 var _peripheral_renderer: Node2D = null
 var _tracking_renderer: Node2D = null
 var _pursuit_renderer: Node2D = null
+var _saccade_renderer: Node2D = null
 
 func _ready() -> void:
 	_peripheral_renderer = PeripheralScanRendererClass.new()
@@ -25,6 +27,10 @@ func _ready() -> void:
 	_pursuit_renderer = PursuitRendererClass.new()
 	_pursuit_renderer.visible = false
 	add_child(_pursuit_renderer)
+	
+	_saccade_renderer = SaccadeRendererClass.new()
+	_saccade_renderer.visible = false
+	add_child(_saccade_renderer)
 
 func apply_state(model: Dictionary) -> void:
 	_frame_state = model.duplicate(true)
@@ -38,6 +44,8 @@ func apply_state(model: Dictionary) -> void:
 		_tracking_renderer.visible = (generator_type == "tracking")
 	if _pursuit_renderer != null:
 		_pursuit_renderer.visible = (generator_type == "pursuit")
+	if _saccade_renderer != null:
+		_saccade_renderer.visible = (generator_type == "saccade")
 	
 	if generator_type == "peripheral_scan" and _peripheral_renderer != null:
 		_peripheral_renderer.apply_state(model)
@@ -45,6 +53,8 @@ func apply_state(model: Dictionary) -> void:
 		_tracking_renderer.apply_state(model)
 	elif generator_type == "pursuit" and _pursuit_renderer != null:
 		_pursuit_renderer.apply_state(model)
+	elif generator_type == "saccade" and _saccade_renderer != null:
+		_saccade_renderer.apply_state(model)
 		
 	queue_redraw()
 
@@ -52,8 +62,9 @@ func _draw() -> void:
 	var p_vis = _peripheral_renderer != null and _peripheral_renderer.visible
 	var t_vis = _tracking_renderer != null and _tracking_renderer.visible
 	var pur_vis = _pursuit_renderer != null and _pursuit_renderer.visible
+	var sac_vis = _saccade_renderer != null and _saccade_renderer.visible
 	
-	if _frame_state.is_empty() or p_vis or t_vis or pur_vis:
+	if _frame_state.is_empty() or p_vis or t_vis or pur_vis or sac_vis:
 		return
 		
 	var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
