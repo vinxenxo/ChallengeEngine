@@ -13,6 +13,7 @@ export_credentials.cfg
 # *.gd.meta
 *.import
 .import
+*.gdshader.iud
 .godot_backups
 .svg.import
 

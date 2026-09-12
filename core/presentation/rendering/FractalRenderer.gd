@@ -25,14 +25,14 @@ func apply_state(model: Dictionary) -> void:
 	_rect.position = content_rect.position
 	_rect.size = content_rect.size
 	
-	# 2. Extract State Payload
-	var v_state: Dictionary = model.get("visual_frame_state", {})
-	var layers: Array = v_state.get("layers", [])
+	# 2. Extract State Payload with robustness for raw payload injections (Testing/Legacy contexts)
+	var v_state: Dictionary = model.get("visual_frame_state", model)
+	var layers: Array = v_state.get("layers", v_state.get("layer_states", []))
 	if layers.is_empty():
 		return
 		
 	var layer: Dictionary = layers[0]
-	var params: Dictionary = layer.get("parameters", {})
+	var params: Dictionary = layer.get("parameters", layer) # Compatibilidad adicional de contrato
 	
 	# 3. GPU Injection (Dumb binding)
 	_material.set_shader_parameter("zoom", float(params.get("zoom", 1.0)))
@@ -40,7 +40,6 @@ func apply_state(model: Dictionary) -> void:
 	_material.set_shader_parameter("phase", float(params.get("phase", 0.0)))
 	_material.set_shader_parameter("complexity", float(params.get("complexity", 1.0)))
 	
-	# Optional: Map color palette logic if required by contract later
 	if layer.get("color_palette", "") == "neon":
 		_material.set_shader_parameter("base_color", Color(0.9, 0.1, 0.8, 1.0))
 	else:
