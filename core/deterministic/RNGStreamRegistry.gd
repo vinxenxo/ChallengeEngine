@@ -86,10 +86,10 @@ func _init() -> void:
 	_register(STREAM_VISUAL_LOOP_KALEIDOSCOPE, "VISUAL_LOOP_KALEIDOSCOPE", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=symmetry_variant", "2.0", ["KaleidoscopeGenerator"])
 	_register(STREAM_VISUAL_LOOP_GEOMETRIC, "VISUAL_LOOP_GEOMETRIC", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=shape_variant", "2.0", ["GeometricGenerator"])
 
-	_register(STREAM_VISUAL_DRILL_TRACKING, "VISUAL_DRILL_TRACKING", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=trajectory_noise", "2.0", ["TrackingGenerator"])
-	_register(STREAM_VISUAL_DRILL_PURSUIT, "VISUAL_DRILL_PURSUIT", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=evasion_pattern", "2.0", ["PursuitGenerator"])
-	_register(STREAM_VISUAL_DRILL_SACCADE, "VISUAL_DRILL_SACCADE", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=grid_displacement", "2.0", ["SaccadeGenerator"])
-	_register(STREAM_VISUAL_DRILL_PERIPHERAL_SCAN, "VISUAL_DRILL_PERIPHERAL_SCAN", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=spawn_radius", "2.0", ["PeripheralScanGenerator"])
+	_register(STREAM_VISUAL_DRILL_TRACKING, "VISUAL_DRILL_TRACKING", Domain.COSMETIC_CONTENT, "VisualContent", "0=tracking_variant", "2.0", ["TrackingGenerator"])
+	_register(STREAM_VISUAL_DRILL_PURSUIT, "VISUAL_DRILL_PURSUIT", Domain.COSMETIC_CONTENT, "VisualContent", "0=pursuit_variant", "2.0", ["PursuitGenerator"])
+	_register(STREAM_VISUAL_DRILL_SACCADE, "VISUAL_DRILL_SACCADE", Domain.COSMETIC_CONTENT, "VisualContent", "0=saccade_variant", "2.0", ["SaccadeGenerator"])
+	_register(STREAM_VISUAL_DRILL_PERIPHERAL_SCAN, "VISUAL_DRILL_PERIPHERAL_SCAN", Domain.COSMETIC_CONTENT, "VisualContent", "0=pattern_variant, 1=amplitude_variant", "2.0", ["PeripheralScanGenerator"])
 
 func _register(id: int, name: String, domain: Domain, description: String, index_semantics: String, version_introduced: String, allowed_consumers: Array[String]) -> void:
 	_definitions[id] = RNGStreamDefinition.new(id, name, domain, description, index_semantics, version_introduced, allowed_consumers)
