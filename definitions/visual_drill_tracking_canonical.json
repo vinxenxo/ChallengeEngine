@@ -1,60 +1,57 @@
 {
-  "kind": "visual_drill",
-  "subtype": "tracking",
-  "payload": {
-    "duration": 2.0,
-    "fps": 30,
-    "frame_count": 60,
-
-    "exercise_parameters": {
-      "generator": "tracking",
-      "difficulty_tier": 2,
-      "speed_multiplier": 1.2,
-      "pacing_mode": "constant"
+    "kind": "visual_drill",
+    "subtype": "tracking",
+    "payload": {
+        "duration": 2.0,
+        "fps": 30,
+        "frame_count": 60,
+        "exercise_parameters": {
+            "generator": "tracking",
+            "difficulty_tier": 2,
+            "speed_multiplier": 1.2,
+            "pacing_mode": "constant"
+        },
+        "stimulus": {
+            "type": "dot",
+            "radius": 10.0,
+            "active": true,
+            "x": 0.0,
+            "y": 0.0
+        },
+        "targets": [
+            {
+                "id": "t1",
+                "x": 0.0,
+                "y": -150.0,
+                "highlighted": true,
+                "status": "active"
+            }
+        ],
+        "distractors": [
+            {
+                "id": "d1",
+                "x": 120.0,
+                "y": 120.0
+            },
+            {
+                "id": "d2",
+                "x": -120.0,
+                "y": 120.0
+            }
+        ],
+        "trajectory": {
+            "type": "circular",
+            "center_x": 0.0,
+            "center_y": 0.0,
+            "radius": 150.0,
+            "speed": 1.0
+        },
+        "task": {
+            "type": "smooth_pursuit",
+            "target_id": "t1"
+        }
     },
-
-    "stimulus": {
-      "type": "dot",
-      "radius": 10.0,
-      "active": true,
-      "x": 0.0,
-      "y": 0.0
-    },
-
-    "targets": [
-      {
-        "id": "t1",
-        "x": 0.0,
-        "y": -150.0,
-        "highlighted": true,
-        "status": "active"
-      }
-    ],
-
-    "distractors": [
-      {
-        "id": "d1",
-        "x": 120.0,
-        "y": 120.0
-      },
-      {
-        "id": "d2",
-        "x": -120.0,
-        "y": 120.0
-      }
-    ],
-
-    "trajectory": {
-      "type": "circular",
-      "center_x": 0.0,
-      "center_y": 0.0,
-      "radius": 150.0,
-      "speed": 1.0
-    },
-
-    "task": {
-      "type": "smooth_pursuit",
-      "target_id": "t1"
-    }
-  }
+    "seed": 12345,
+    "rng_version": "2.0",
+    "schema_version": "2.0"
 }
