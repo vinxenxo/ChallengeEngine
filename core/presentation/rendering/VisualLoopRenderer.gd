@@ -1,18 +1,24 @@
 class_name VisualLoopRenderer
 extends Node2D
 
-## C6-F0.5 Step 2 / C6-F0.8-D2-C — Visual Loop Renderer Router.
-## Hosts specific visual generators (like FractalRenderer) and preserves legacy diagnostic drawing.
+## C6-F0.5 Step 2 / C6-F0.8-D2-C / D4 — Visual Loop Renderer Router.
+## Hosts specific visual generators (Fractal, Vector Field) and preserves legacy drawing.
 
 const FractalRendererClass = preload("res://core/presentation/rendering/FractalRenderer.gd")
+const VectorFieldRendererClass = preload("res://core/presentation/rendering/VectorFieldRenderer.gd")
 
 var _frame_state: Dictionary = {}
 var _fractal_renderer: Node2D = null
+var _vector_renderer: Node2D = null
 
 func _ready() -> void:
 	_fractal_renderer = FractalRendererClass.new()
 	_fractal_renderer.visible = false
 	add_child(_fractal_renderer)
+	
+	_vector_renderer = VectorFieldRendererClass.new()
+	_vector_renderer.visible = false
+	add_child(_vector_renderer)
 
 func apply_state(model: Dictionary) -> void:
 	_frame_state = model.duplicate(true)
@@ -22,14 +28,22 @@ func apply_state(model: Dictionary) -> void:
 	
 	if generator_type == "fractal":
 		_fractal_renderer.visible = true
+		_vector_renderer.visible = false
 		_fractal_renderer.apply_state(model)
+		queue_redraw()
+	elif generator_type == "vector_field":
+		_fractal_renderer.visible = false
+		_vector_renderer.visible = true
+		_vector_renderer.apply_state(model)
 		queue_redraw()
 	else:
 		_fractal_renderer.visible = false
+		_vector_renderer.visible = false
 		queue_redraw()
 
 func _draw() -> void:
-	if _frame_state.is_empty() or (_fractal_renderer != null and _fractal_renderer.visible):
+	# Bloquear dibujo legacy si hay un renderer moderno activo
+	if _frame_state.is_empty() or (_fractal_renderer.visible) or (_vector_renderer.visible):
 		return
 		
 	var v_state: Dictionary = _frame_state.get("visual_frame_state", _frame_state)
@@ -48,9 +62,8 @@ func _draw() -> void:
 		
 		draw_set_transform(Vector2.ZERO, layer_rot, Vector2(layer_scale, layer_scale))
 		
-		if generator_type == "vector_field":
-			draw_line(Vector2.ZERO, Vector2(80.0, 0.0), color * Color(0.8, 0.3, 0.5, 1.0), 3.0)
-		elif generator_type == "particle_flow":
+		# Fallbacks para los 3 generadores que faltan (Particle, Kaleidoscope, Geometric)
+		if generator_type == "particle_flow":
 			draw_circle(Vector2(40.0, 0.0), 4.0, color * Color(0.3, 0.9, 0.5, 1.0))
 		elif generator_type == "kaleidoscope":
 			draw_rect(Rect2(-30.0, -30.0, 60.0, 60.0), color * Color(0.9, 0.2, 0.2, 1.0))
