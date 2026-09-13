@@ -1,0 +1,201 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "challenge_id": "CHALLENGE_001",
+  "provenance": {
+    "git": {
+      "commit": "4dec504cd3ddeb76591f44d29c2ba34a6efd8bc4",
+      "branch": "main",
+      "dirty": true
+    },
+    "challenge_definition": {
+      "path": "challenges_c7/CHALLENGE_001.json",
+      "sha256": "51a10c9016fe0e496fbc613f3ec5fab186888176b4a2a35b8db6c108d9ce2b8d"
+    },
+    "referenced_files": [
+      {
+        "path": "res://assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "path": "res://assets/c6/key.svg",
+        "sha256": "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121"
+      },
+      {
+        "path": "res://assets/c6/lock.svg",
+        "sha256": "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167"
+      }
+    ],
+    "authoring": {
+      "video": {
+        "video_profile": {
+          "id": "test_master_11s",
+          "path": "profiles/video/test_master_11s.json",
+          "sha256": "6ac5ddd620d5300f1e365dd4dd8ca6c04e0f97c2ceb95ec48438d52059bff93b"
+        }
+      },
+      "audio_authoring_snapshot": {
+        "assets_catalog": {
+          "path": "profiles/audio/audio_assets.json",
+          "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+        },
+        "profiles": [
+          {
+            "path": "profiles/audio/c7_profile_mixed_alt.json",
+            "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+          },
+          {
+            "path": "profiles/audio/c7_profile_mixed_overlap.json",
+            "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+          },
+          {
+            "path": "profiles/audio/c7_profile_multi_noise.json",
+            "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+          },
+          {
+            "path": "profiles/audio/c7_profile_noise_only.json",
+            "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+          },
+          {
+            "path": "profiles/audio/c7_profile_tone_only.json",
+            "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+          }
+        ]
+      }
+    },
+    "provenance_sha256": "64eb3feb9ce88e293d5dc53c71112ad5e241a0565f5b2fd5e7a579cffa3d73d0"
+  },
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "key",
+    "mechanic_version": "1.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 0,
+    "cta_frames": 120,
+    "final_seed": 193847,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 0,
+    "initial_seed": 193847,
+    "minimum_distance": 0.00736591562275279,
+    "reveal_frames": 0,
+    "rng_version": "1.0",
+    "score": 0.648328777570576,
+    "seed_used": 193847,
+    "total_frames": 540,
+    "validate_only": false,
+    "winning_frame": 335,
+    "winning_frame_game": 335,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 5.58333333333333,
+    "winning_time_game": 5.58333333333333
+  },
+  "artifacts": {
+    "raw_video": "CHALLENGE_001_raw.avi",
+    "raw_video_sha256": "b264500d755e5ee856ce99ae28addd75ae6828476f9ae9a1420cc2e164df4d2d",
+    "final_video": "CHALLENGE_001.mp4",
+    "final_video_sha256": "f0f518183874370db98b7e7bea8c5e53e97120b270c566cdf80a434c66f05d88",
+    "preview_gif": "CHALLENGE_001.gif",
+    "preview_gif_sha256": "e7a1964447ab18166798436f619fba0f94cab432fb5ca85be9d54838870879f9"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 9.0,
+    "nb_frames": 540,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 9.0,
+      "nb_frames": 540,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "codec_name": "aac",
+      "sample_rate": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "duration": 9.0
+    },
+    "av_sync": {
+      "valid": true,
+      "video_duration": 9.0,
+      "audio_duration": 9.0,
+      "diff": 0.0,
+      "tolerance": 0.05
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 396900,
+        "non_zero_samples": 22033,
+        "non_zero_ratio": 0.0555,
+        "peak_amplitude": 19648,
+        "peak_normalized": 0.5996,
+        "rms_amplitude": 1741.24,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -25.5,
+        "max_volume_db": -4.4,
+        "is_silent": false
+      }
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": true,
+    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\export\\c8_b_clean_run_a\\CHALLENGE_001\\audio_master.pcm",
+    "canonical_hash": "80259d169de0cd76ca49cc0ee4df2f6af9862ee09d5bbfeba56c1d64be803e03",
+    "channels": 1,
+    "format": "s16le",
+    "sample_rate": 44100,
+    "total_samples": 396900,
+    "audio_master_sha256": "80259d169de0cd76ca49cc0ee4df2f6af9862ee09d5bbfeba56c1d64be803e03"
+  },
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 270,
+      "duration": 9.0
+    }
+  }
+}
