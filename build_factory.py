@@ -1228,26 +1228,71 @@ def run_factory(
         }
 
     # ========================================================
-    # 4. MP4 MASTER
+    # 4. MP4 MASTER (C7-A1.2: Multiplexado Audiovisual Condicional)
     # ========================================================
 
-    ffmpeg_cmd = [
-        "ffmpeg",
-        "-y",
-        "-i",
-        str(raw_video_path),
-        "-vf",
-        f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
-        "-c:v",
-        "libx264",
-        "-preset",
-        "fast",
-        "-crf",
-        "18",
-        "-pix_fmt",
-        "yuv420p",
-        str(final_video_path),
-    ]
+    if has_audio:
+        if not audio_pcm_path.exists() or audio_pcm_path.stat().st_size <= 0:
+            cleanup_partial_outputs(output_dir, challenge_id)
+            return {
+                "success": False,
+                "error": {
+                    "code": "MISSING_AUDIO_PCM",
+                    "message": "Audio habilitado pero el archivo PCM no existe o está vacío.",
+                },
+            }
+
+        ffmpeg_cmd = [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(raw_video_path),
+            "-f",
+            "s16le",
+            "-ar",
+            "44100",
+            "-ac",
+            "1",
+            "-i",
+            str(audio_pcm_path),
+            "-map",
+            "0:v:0",
+            "-map",
+            "1:a:0",
+            "-vf",
+            f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-crf",
+            "18",
+            "-pix_fmt",
+            "yuv420p",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "192k",
+            str(final_video_path),
+        ]
+    else:
+        ffmpeg_cmd = [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(raw_video_path),
+            "-vf",
+            f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-crf",
+            "18",
+            "-pix_fmt",
+            "yuv420p",
+            str(final_video_path),
+        ]
 
     ffmpeg_proc = subprocess.run(
         ffmpeg_cmd,
