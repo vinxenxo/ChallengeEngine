@@ -1,0 +1,31 @@
+{
+  "assets": {
+    "countdown_asset": {
+      "generator_type": "tone_burst",
+      "parameters": {
+        "frequency_hz": 440.0,
+        "amplitude": 0.8,
+        "attack_frames": 5,
+        "release_frames": 20
+      }
+    },
+    "reveal_asset": {
+      "generator_type": "tone_burst",
+      "parameters": {
+        "frequency_hz": 880.0,
+        "amplitude": 0.9,
+        "attack_frames": 5,
+        "release_frames": 20
+      }
+    },
+    "cta_asset": {
+      "generator_type": "tone_burst",
+      "parameters": {
+        "frequency_hz": 220.0,
+        "amplitude": 0.7,
+        "attack_frames": 5,
+        "release_frames": 20
+      }
+    }
+  }
+}
