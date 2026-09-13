@@ -1,0 +1,11 @@
+{
+  "profile_id": "c7_profile_mixed_alt",
+  "sfx": {
+    "enabled": true,
+    "events": {
+      "countdown_tick": "asset_tone_standard",
+      "success_reveal": "asset_noise_impact",
+      "cta_transition": "asset_tone_high"
+    }
+  }
+}

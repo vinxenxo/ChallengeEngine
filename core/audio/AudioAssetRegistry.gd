@@ -57,13 +57,25 @@ static func resolve_asset(asset_id: String) -> Dictionary:
 	var raw_params: Dictionary = definition["parameters"]
 	var normalized_params = {}
 
-	# Normalización estricta de tipos sin alias ambiguos de final_frequency
+	# Normalización estricta de tipos según el tipo de generador
 	if gen_type == "tone_burst":
 		if raw_params.has("frequency_hz"):
 			normalized_params["frequency_hz"] = float(raw_params["frequency_hz"])
 
 		if raw_params.has("amplitude"):
 			normalized_params["amplitude"] = float(raw_params["amplitude"])
+
+		if raw_params.has("attack_frames"):
+			normalized_params["attack_frames"] = int(raw_params["attack_frames"])
+
+		if raw_params.has("release_frames"):
+			normalized_params["release_frames"] = int(raw_params["release_frames"])
+	elif gen_type == "noise_burst":
+		if raw_params.has("amplitude"):
+			normalized_params["amplitude"] = float(raw_params["amplitude"])
+
+		if raw_params.has("duration_frames"):
+			normalized_params["duration_frames"] = int(raw_params["duration_frames"])
 
 		if raw_params.has("attack_frames"):
 			normalized_params["attack_frames"] = int(raw_params["attack_frames"])

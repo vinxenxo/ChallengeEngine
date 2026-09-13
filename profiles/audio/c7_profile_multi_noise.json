@@ -1,0 +1,11 @@
+{
+  "profile_id": "c7_profile_multi_noise",
+  "sfx": {
+    "enabled": true,
+    "events": {
+      "countdown_tick": "asset_noise_subtle",
+      "success_reveal": "asset_noise_impact",
+      "cta_transition": "asset_noise_impact"
+    }
+  }
+}

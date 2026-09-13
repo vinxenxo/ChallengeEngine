@@ -4,27 +4,63 @@
       "generator_type": "tone_burst",
       "parameters": {
         "frequency_hz": 440.0,
-        "amplitude": 0.8,
+        "amplitude": 0.5,
         "attack_frames": 5,
-        "release_frames": 20
+        "release_frames": 10
       }
     },
     "reveal_asset": {
       "generator_type": "tone_burst",
       "parameters": {
         "frequency_hz": 880.0,
-        "amplitude": 0.9,
-        "attack_frames": 5,
-        "release_frames": 20
+        "amplitude": 0.7,
+        "attack_frames": 3,
+        "release_frames": 15
       }
     },
     "cta_asset": {
       "generator_type": "tone_burst",
       "parameters": {
-        "frequency_hz": 220.0,
-        "amplitude": 0.7,
+        "frequency_hz": 587.33,
+        "amplitude": 0.6,
+        "attack_frames": 4,
+        "release_frames": 12
+      }
+    },
+    "asset_tone_standard": {
+      "generator_type": "tone_burst",
+      "parameters": {
+        "frequency_hz": 440.0,
+        "amplitude": 0.5,
         "attack_frames": 5,
-        "release_frames": 20
+        "release_frames": 10
+      }
+    },
+    "asset_tone_high": {
+      "generator_type": "tone_burst",
+      "parameters": {
+        "frequency_hz": 880.0,
+        "amplitude": 0.6,
+        "attack_frames": 3,
+        "release_frames": 12
+      }
+    },
+    "asset_noise_impact": {
+      "generator_type": "noise_burst",
+      "parameters": {
+        "amplitude": 0.8,
+        "duration_frames": 15,
+        "attack_frames": 2,
+        "release_frames": 8
+      }
+    },
+    "asset_noise_subtle": {
+      "generator_type": "noise_burst",
+      "parameters": {
+        "amplitude": 0.4,
+        "duration_frames": 10,
+        "attack_frames": 1,
+        "release_frames": 5
       }
     }
   }
