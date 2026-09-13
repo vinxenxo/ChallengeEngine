@@ -1,3 +1,4 @@
+# res://core/simulation/SimulationResult.gd
 class_name SimulationResult
 extends RefCounted
 

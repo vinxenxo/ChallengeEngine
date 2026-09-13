@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/KaleidoscopeRenderer.gd
 class_name KaleidoscopeRendererNode
 extends Node2D
 

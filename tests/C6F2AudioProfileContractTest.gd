@@ -1,3 +1,4 @@
+# res://tests/C6F2AudioProfileContractTest.gd
 extends SceneTree
 
 const AudioProfileRegistry = preload("res://core/authoring/AudioProfileRegistry.gd")

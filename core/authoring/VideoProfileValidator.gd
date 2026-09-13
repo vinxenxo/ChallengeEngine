@@ -1,3 +1,4 @@
+# res://core/authoring/VideoProfileValidator.gd
 class_name VideoProfileValidator
 extends RefCounted
 

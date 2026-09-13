@@ -1,3 +1,4 @@
+# res://core/data/FrameSnapshot.gd
 class_name FrameSnapshot
 extends RefCounted
 

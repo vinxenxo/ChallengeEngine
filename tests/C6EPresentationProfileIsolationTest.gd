@@ -1,3 +1,4 @@
+# res://tests/C6EPresentationProfileIsolationTest.gd
 extends SceneTree
 
 func _initialize() -> void:

@@ -1,3 +1,4 @@
+# res://core/runtime/visual/VisualLoopGeneratorRegistry.gd
 class_name VisualLoopGeneratorRegistry
 extends RefCounted
 

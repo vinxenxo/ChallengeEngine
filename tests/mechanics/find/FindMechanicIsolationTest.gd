@@ -1,3 +1,4 @@
+# res://tests/mechanics/find/FindMechanicIsolationTest.gd
 class_name FindMechanicIsolationTest
 extends SceneTree
 

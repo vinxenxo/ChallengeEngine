@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/ContentRendererHost.gd
 class_name ContentRendererHost
 extends Node2D
 

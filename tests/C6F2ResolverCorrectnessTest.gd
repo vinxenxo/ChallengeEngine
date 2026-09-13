@@ -1,3 +1,4 @@
+# res://tests/C6F2ResolverCorrectnessTest.gd
 extends SceneTree
 
 const RESOLVER = preload("res://core/authoring/DifficultyResolver.gd")

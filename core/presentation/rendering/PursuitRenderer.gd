@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/PursuitRenderer.gd
 extends Node2D
 
 ## C6-F0.8-E3 — Pursuit Drill Renderer (Passive)

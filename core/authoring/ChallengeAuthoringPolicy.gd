@@ -1,3 +1,4 @@
+# res://core/authoring/ChallengeAuthoringPolicy.gd
 class_name ChallengeAuthoringPolicy
 extends RefCounted
 

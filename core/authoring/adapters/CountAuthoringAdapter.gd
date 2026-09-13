@@ -1,3 +1,4 @@
+# res://core/authoring/adapters/CountAuthoringAdapter.gd
 class_name CountAuthoringAdapter
 extends AuthoringMechanicAdapter
 

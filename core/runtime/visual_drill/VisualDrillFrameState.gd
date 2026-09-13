@@ -1,3 +1,4 @@
+# res://core/runtime/visual_drill/VisualDrillFrameState.gd
 class_name VisualDrillFrameState
 extends RefCounted
 

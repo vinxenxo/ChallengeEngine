@@ -1,3 +1,4 @@
+# res://core/audio/AudioProfile.gd
 class_name AudioProfile
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/TrackingRenderer.gd
 extends Node2D
 
 ## C6-F0.8-E2 — Tracking Drill Renderer (Passive)

@@ -1,3 +1,4 @@
+# res://core/authoring/DifficultyResolver.gd
 class_name DifficultyResolver
 extends RefCounted
 

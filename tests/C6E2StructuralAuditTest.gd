@@ -1,3 +1,4 @@
+# res://tests/C6E2StructuralAuditTest.gd
 extends SceneTree
 
 # ============================================================

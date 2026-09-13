@@ -1,3 +1,4 @@
+# res://core/mechanics/hit/HitMechanic.gd
 class_name HitMechanic
 extends ChallengeMechanic
 

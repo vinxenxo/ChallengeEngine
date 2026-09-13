@@ -1,3 +1,4 @@
+# res://tests/C6F0_1_6AuthoringPipelineTest.gd
 extends SceneTree
 
 const ChallengeGenerator = preload("res://core/authoring/ChallengeGenerator.gd")

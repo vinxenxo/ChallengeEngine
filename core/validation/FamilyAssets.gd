@@ -1,3 +1,4 @@
+# res://core/validation/FamilyAssets.gd
 class_name FamilyAssets
 extends RefCounted
 

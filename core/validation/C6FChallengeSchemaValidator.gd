@@ -1,3 +1,4 @@
+# res://core/validation/C6FChallengeSchemaValidator.gd
 class_name C6FChallengeSchemaValidator
 extends RefCounted
 

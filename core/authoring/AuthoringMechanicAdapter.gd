@@ -1,3 +1,4 @@
+# res://core/authoring/AuthoringMechanicAdapter.gd
 class_name AuthoringMechanicAdapter
 extends RefCounted
 

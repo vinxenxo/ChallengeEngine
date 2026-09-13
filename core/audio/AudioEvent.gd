@@ -1,3 +1,4 @@
+# res://core/audio/AudioEvent.gd
 class_name AudioEvent
 extends RefCounted
 

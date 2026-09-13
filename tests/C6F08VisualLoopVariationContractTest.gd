@@ -1,3 +1,4 @@
+# res://tests/C6F08VisualLoopVariationContractTest.gd
 extends SceneTree
 
 # ============================================================

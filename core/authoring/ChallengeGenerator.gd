@@ -1,3 +1,4 @@
+# res://core/authoring/ChallengeGenerator.gd
 class_name ChallengeGenerator
 extends RefCounted
 

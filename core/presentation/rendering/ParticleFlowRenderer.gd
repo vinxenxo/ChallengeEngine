@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/ParticleFlowRenderer.gd
 class_name ParticleFlowRenderer
 extends Node2D
 

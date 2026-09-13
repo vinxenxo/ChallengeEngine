@@ -1,3 +1,4 @@
+# res://core/presentation/PresentationBinderRegistry.gd
 class_name PresentationBinderRegistry
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://core/runtime/visual_drill/generators/PeripheralScanGenerator.gd
 class_name PeripheralScanGenerator
 extends VisualDrillGenerator
 

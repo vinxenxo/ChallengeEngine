@@ -1,3 +1,4 @@
+# res://core/authoring/TemporalCore.gd
 class_name TemporalCore
 extends RefCounted
 

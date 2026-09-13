@@ -1,3 +1,4 @@
+# res://tests/C6F05PhysicalRenderingTest.gd
 extends SceneTree
 
 # ============================================================

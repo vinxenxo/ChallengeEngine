@@ -1,3 +1,4 @@
+# res://tests/C6F4CanonicalV2ParkingTest.gd
 extends SceneTree
 
 const ADAPTER = preload("res://core/authoring/ChallengeMigrationAdapter.gd")

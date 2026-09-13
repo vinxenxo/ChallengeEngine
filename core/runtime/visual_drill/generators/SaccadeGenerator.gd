@@ -1,3 +1,4 @@
+# res://core/runtime/visual_drill/generators/SaccadeGenerator.gd
 class_name SaccadeGenerator
 extends VisualDrillGenerator
 

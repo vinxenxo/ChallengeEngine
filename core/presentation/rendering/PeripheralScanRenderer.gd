@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/PeripheralScanRenderer.gd
 extends Node2D
 
 ## C6-F0.8-E1 — Peripheral Scan Renderer (Passive)

@@ -1,3 +1,4 @@
+# res://core/runtime/visual/VisualFrameState.gd
 class_name VisualFrameState
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://core/presentation/components/RevealManager.gd
 extends Node
 class_name RevealManager
 

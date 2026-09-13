@@ -1,3 +1,4 @@
+# res://core/runtime/visual_drill/generators/TrackingGenerator.gd
 class_name TrackingGenerator
 extends VisualDrillGenerator
 

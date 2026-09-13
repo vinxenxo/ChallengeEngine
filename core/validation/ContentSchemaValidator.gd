@@ -1,3 +1,4 @@
+# res://core/validation/ContentSchemaValidator.gd
 class_name ContentSchemaValidator
 extends RefCounted
 

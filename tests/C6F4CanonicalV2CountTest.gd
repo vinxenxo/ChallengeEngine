@@ -1,3 +1,4 @@
+# res://tests/C6F4CanonicalV2CountTest.gd
 extends SceneTree
 
 # ============================================================

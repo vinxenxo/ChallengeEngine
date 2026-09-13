@@ -1,3 +1,4 @@
+# res://core/presentation/VisualLoopPresentationBinder.gd
 class_name VisualLoopPresentationBinder
 extends RefCounted
 

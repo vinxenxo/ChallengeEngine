@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/FractalRenderer.gd
 class_name FractalRenderer
 extends Node2D
 

@@ -1,3 +1,4 @@
+# res://core/execution/ChallengeTimelineBuilder.gd
 class_name ChallengeTimelineBuilder
 extends RefCounted
 

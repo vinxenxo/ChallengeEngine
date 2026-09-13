@@ -1,3 +1,4 @@
+# res://core/presentation/CoordinateMapper.gd
 class_name CoordinateMapper
 extends RefCounted
 

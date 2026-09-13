@@ -1,3 +1,4 @@
+# res://core/deterministic/CosmeticRNG.gd
 class_name CosmeticRNG
 extends RefCounted
 

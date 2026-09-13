@@ -1,3 +1,4 @@
+# res://core/simulation/SimulationMetricsResolver.gd
 class_name SimulationMetricsResolver
 extends RefCounted
 

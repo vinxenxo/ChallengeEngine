@@ -1,3 +1,4 @@
+# res://core/audio/generators/ToneBurstGenerator.gd
 class_name ToneBurstGenerator
 extends RefCounted
 

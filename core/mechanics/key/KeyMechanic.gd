@@ -1,3 +1,4 @@
+# res://core/mechanics/key/KeyMechanic.gd
 class_name KeyMechanic
 extends ChallengeMechanic
 

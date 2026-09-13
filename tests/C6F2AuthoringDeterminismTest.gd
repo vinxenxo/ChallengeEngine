@@ -1,3 +1,4 @@
+# res://tests/C6F2AuthoringDeterminismTest.gd
 class_name ChallengeDeterminismTest
 extends SceneTree
 

@@ -1,3 +1,4 @@
+# res://core/runtime/visual_drill/generators/PursuitGenerator.gd
 class_name PursuitGenerator
 extends VisualDrillGenerator
 

@@ -1,3 +1,4 @@
+# res://core/execution/ChallengeLegacyRuntimeOracle.gd
 class_name ChallengeLegacyRuntimeOracle
 extends RefCounted
 

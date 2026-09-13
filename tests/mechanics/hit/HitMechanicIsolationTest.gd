@@ -1,3 +1,4 @@
+# res://tests/mechanics/hit/HitMechanicIsolationTest.gd
 class_name HitMechanicIsolationTest
 extends SceneTree
 

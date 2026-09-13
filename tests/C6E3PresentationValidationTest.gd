@@ -1,3 +1,4 @@
+# res://tests/C6E3PresentationValidationTest.gd
 extends SceneTree
 
 const VALIDATOR = preload("res://core/validation/PresentationProfileValidator.gd")

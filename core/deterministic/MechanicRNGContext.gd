@@ -1,3 +1,4 @@
+# res://core/deterministic/MechanicRNGContext.gd
 class_name MechanicRNGContext
 extends RefCounted
 

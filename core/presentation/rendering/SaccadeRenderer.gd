@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/SaccadeRenderer.gd
 extends Node2D
 
 ## C6-F0.8-E4 — Saccade Drill Renderer (Passive)

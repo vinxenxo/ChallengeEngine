@@ -1,3 +1,4 @@
+# res://core/execution/ChallengeExecutionPipeline.gd
 class_name ChallengeExecutionPipeline
 extends RefCounted
 

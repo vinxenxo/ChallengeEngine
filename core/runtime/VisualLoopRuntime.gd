@@ -1,3 +1,4 @@
+# res://core/runtime/VisualLoopRuntime.gd
 class_name VisualLoopRuntime
 extends ContentRuntime
 

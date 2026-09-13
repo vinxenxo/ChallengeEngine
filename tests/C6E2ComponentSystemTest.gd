@@ -1,3 +1,4 @@
+# res://tests/C6E2ComponentSystemTest.gd
 extends SceneTree
 
 func _init():

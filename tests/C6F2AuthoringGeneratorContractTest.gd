@@ -1,3 +1,4 @@
+# res://tests/C6F2AuthoringGeneratorContractTest.gd
 class_name ChallengeGeneratorTest
 extends SceneTree
 

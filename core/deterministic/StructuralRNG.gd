@@ -1,3 +1,4 @@
+# res://core/deterministic/StructuralRNG.gd
 class_name StructuralRNG
 extends RefCounted
 

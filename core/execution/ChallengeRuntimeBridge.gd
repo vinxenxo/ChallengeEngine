@@ -1,4 +1,5 @@
-﻿class_name ChallengeRuntimeBridge
+﻿# res://core/execution/ChallengeRuntimeBridge.gd
+class_name ChallengeRuntimeBridge
 extends RefCounted
 
 ## C6-F4.3 — Legacy V1 -> C6 Effective Runtime Bridge.

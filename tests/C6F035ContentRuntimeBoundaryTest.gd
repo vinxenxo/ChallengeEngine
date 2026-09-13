@@ -1,3 +1,4 @@
+# res://tests/C6F035ContentRuntimeBoundaryTest.gd
 extends SceneTree
 
 # ============================================================

@@ -1,3 +1,4 @@
+# res://tests/C6F3PresentationBindingTest.gd
 extends SceneTree
 
 const ChallengeAuthoringRequest = preload("res://core/authoring/ChallengeAuthoringRequest.gd")

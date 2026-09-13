@@ -1,3 +1,4 @@
+# res://core/deterministic/RNGStreamDefinition.gd
 class_name RNGStreamDefinition
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://core/presentation/components/HookComponent.gd
 class_name HookComponent
 extends Control
 

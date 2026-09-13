@@ -1,3 +1,4 @@
+# res://core/presentation/components/CountdownComponent.gd
 class_name CountdownComponent
 extends TypographyLabel
 

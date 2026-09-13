@@ -1,3 +1,4 @@
+# res://core/validation/PresentationProfileValidator.gd
 class_name PresentationProfileValidator
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://core/authoring/adapters/ChooseAuthoringAdapter.gd
 class_name ChooseAuthoringAdapter
 extends AuthoringMechanicAdapter
 

@@ -1,3 +1,4 @@
+# res://core/runtime/visual_drill/VisualDrillGenerator.gd
 class_name VisualDrillGenerator
 extends RefCounted
 

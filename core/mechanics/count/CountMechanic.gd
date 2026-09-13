@@ -1,3 +1,4 @@
+# res://core/mechanics/count/CountMechanic.gd
 class_name CountMechanic
 extends ChallengeMechanic
 

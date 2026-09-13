@@ -1,3 +1,4 @@
+# res://core/mechanics/parking/ParkingMechanic.gd
 # core/mechanics/parking/ParkingMechanic.gd
 
 class_name ParkingMechanic

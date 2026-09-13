@@ -1,3 +1,4 @@
+# res://tests/C6F2AdapterMetadataBindingTest.gd
 extends SceneTree
 
 const AuthoringMechanicAdapter = preload(

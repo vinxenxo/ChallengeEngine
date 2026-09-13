@@ -1,3 +1,4 @@
+# res://core/authoring/PresentationBindingValidator.gd
 class_name PresentationBindingValidator
 extends RefCounted
 

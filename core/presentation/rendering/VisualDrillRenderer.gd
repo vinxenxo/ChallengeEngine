@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/VisualDrillRenderer.gd
 class_name VisualDrillRenderer
 extends Node2D
 
