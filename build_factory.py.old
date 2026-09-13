@@ -1103,8 +1103,7 @@ def run_factory(
         }
 
     # ========================================================
-    # 4. MP4 MASTER (Preparado para A1.2 Multiplexado Audiovisual, 
-    # actualmente mantiene la conversión de vídeo certificado)
+    # 4. MP4 MASTER (C7-A1.2: Multiplexado Audiovisual Condicional)
     # ========================================================
 
     has_audio = audio_export_info and audio_export_info.get("audio_enabled", False)
@@ -1119,7 +1118,8 @@ def run_factory(
                     "message": "Audio habilitado pero el archivo PCM no existe o está vacío.",
                 },
             }
-        # Comando FFmpeg audiovisual (Fase A1.2)
+        
+        # Comando FFmpeg audiovisual estricto (C7-A1.2)
         ffmpeg_cmd = [
             "ffmpeg",
             "-y",
@@ -1133,6 +1133,10 @@ def run_factory(
             "1",
             "-i",
             str(audio_pcm_path),
+            "-map",
+            "0:v:0",
+            "-map",
+            "1:a:0",
             "-vf",
             f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
             "-c:v",
@@ -1150,7 +1154,7 @@ def run_factory(
             str(final_video_path),
         ]
     else:
-        # Comando FFmpeg vídeo-only histórico
+        # Comando FFmpeg vídeo-only histórico (Inmutable para C6 / Legacy)
         ffmpeg_cmd = [
             "ffmpeg",
             "-y",
@@ -1191,7 +1195,6 @@ def run_factory(
                     ffmpeg_proc.stderr.strip(),
             },
         }
-
     # ========================================================
     # 4. GIF C6-D3
     # ========================================================
