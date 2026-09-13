@@ -1,0 +1,55 @@
+{
+  "manifest_version": "1.0",
+  "factory_version": "0.10.0",
+  "godot_versions": [
+    "4.7.1-stable (official)"
+  ],
+  "rng_versions": [
+    "1.0"
+  ],
+  "status": "PASSED",
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  },
+  "audio_summary": {
+    "total_challenges": 2,
+    "audited_challenges": 2,
+    "audio_enabled": 1,
+    "audio_disabled": 1,
+    "audio_content_valid": 1,
+    "av_sync_valid": 1,
+    "mixed_batch": true
+  },
+  "challenges": [
+    {
+      "challenge_id": "CHALLENGE_001",
+      "status": "PASS",
+      "mechanic": "key",
+      "rng_version": "1.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "CHALLENGE_001/CHALLENGE_001_manifest.json",
+      "preview_gif": "CHALLENGE_001/CHALLENGE_001.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_VIDEO_OFF_001",
+      "status": "PASS",
+      "mechanic": "key",
+      "rng_version": "1.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_VIDEO_OFF_001/CHALLENGE_VIDEO_OFF_001_manifest.json",
+      "preview_gif": "CHALLENGE_VIDEO_OFF_001/CHALLENGE_VIDEO_OFF_001.gif"
+    }
+  ],
+  "preview_gif_policy": {
+    "enabled": true,
+    "required": true,
+    "fps": 30,
+    "width": 540,
+    "height": 960,
+    "loop": true
+  }
+}
