@@ -1,3 +1,4 @@
+# res://core/authoring/AssetFamilyValidator.gd
 class_name AssetFamilyValidator
 extends RefCounted
 

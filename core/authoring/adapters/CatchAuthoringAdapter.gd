@@ -1,3 +1,4 @@
+# res://core/authoring/adapters/CatchAuthoringAdapter.gd
 class_name CatchAuthoringAdapter
 extends AuthoringMechanicAdapter
 

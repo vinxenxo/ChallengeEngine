@@ -1,3 +1,4 @@
+# res://tests/C6F2PresentationBindingContractTest.gd
 extends SceneTree
 
 const PresentationBindingValidator = preload(

@@ -1,3 +1,4 @@
+# res://tests/C6E2BadgeAndFontRegressionTest.gd
 extends SceneTree
 
 func _init():

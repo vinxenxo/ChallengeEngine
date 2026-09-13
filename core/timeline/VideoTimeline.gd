@@ -1,3 +1,4 @@
+# res://core/timeline/VideoTimeline.gd
 class_name VideoTimeline
 extends ChallengeTimeline
 

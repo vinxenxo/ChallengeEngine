@@ -1,3 +1,4 @@
+# res://core/presentation/PresentationBindingResult.gd
 class_name PresentationBindingResult
 extends RefCounted
 

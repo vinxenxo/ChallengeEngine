@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/VisualContentPlayer.gd
 class_name VisualContentPlayer
 extends Node2D
 

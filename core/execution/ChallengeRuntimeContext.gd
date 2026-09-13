@@ -1,3 +1,4 @@
+# res://core/execution/ChallengeRuntimeContext.gd
 class_name ChallengeRuntimeContext
 extends RefCounted
 

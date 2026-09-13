@@ -1,3 +1,4 @@
+# res://core/authoring/VideoProfileRegistry.gd
 class_name VideoProfileRegistry
 extends RefCounted
 

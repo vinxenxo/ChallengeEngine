@@ -1,3 +1,4 @@
+# res://core/authoring/ChallengeAuthoringRequestValidator.gd
 class_name ChallengeAuthoringRequestValidator
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://tests/C6F2AuthoringAdapterContractTest.gd
 extends SceneTree
 
 const AuthoringMechanicRegistry = preload("res://core/authoring/AuthoringMechanicRegistry.gd")

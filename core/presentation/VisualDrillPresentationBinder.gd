@@ -1,3 +1,4 @@
+# res://core/presentation/VisualDrillPresentationBinder.gd
 class_name VisualDrillPresentationBinder
 extends RefCounted
 

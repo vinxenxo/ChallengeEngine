@@ -1,3 +1,4 @@
+# res://core/mechanics/ChallengeMechanic.gd
 class_name ChallengeMechanic
 extends RefCounted
 

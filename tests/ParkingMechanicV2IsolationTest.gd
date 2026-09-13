@@ -1,3 +1,4 @@
+# res://tests/ParkingMechanicV2IsolationTest.gd
 extends SceneTree
 
 const REGISTRY = preload("res://core/deterministic/RNGStreamRegistry.gd")

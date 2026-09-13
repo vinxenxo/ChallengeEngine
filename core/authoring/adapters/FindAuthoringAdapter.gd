@@ -1,3 +1,4 @@
+# res://core/authoring/adapters/FindAuthoringAdapter.gd
 class_name FindAuthoringAdapter
 extends AuthoringMechanicAdapter
 

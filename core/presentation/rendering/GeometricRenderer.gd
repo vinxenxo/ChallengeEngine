@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/GeometricRenderer.gd
 extends Node2D
 
 ## C6-F0.8-D7 — Geometric Renderer (Passive)

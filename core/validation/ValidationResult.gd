@@ -1,3 +1,4 @@
+# res://core/validation/ValidationResult.gd
 class_name ValidationResult
 extends RefCounted
 

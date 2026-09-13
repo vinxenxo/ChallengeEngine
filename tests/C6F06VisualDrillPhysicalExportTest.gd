@@ -1,3 +1,4 @@
+# res://tests/C6F06VisualDrillPhysicalExportTest.gd
 extends SceneTree
 
 # ============================================================

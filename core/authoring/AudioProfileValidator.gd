@@ -1,3 +1,4 @@
+# res://core/authoring/AudioProfileValidator.gd
 class_name AudioProfileValidator
 extends RefCounted
 

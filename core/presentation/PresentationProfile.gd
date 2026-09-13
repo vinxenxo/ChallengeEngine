@@ -1,3 +1,4 @@
+# res://core/presentation/PresentationProfile.gd
 class_name PresentationProfile
 extends RefCounted
 

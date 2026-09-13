@@ -1,3 +1,4 @@
+# res://tests/C6F2LegacyEquivalenceTest.gd
 extends SceneTree
 
 const ADAPTER = preload("res://core/authoring/ChallengeMigrationAdapter.gd")

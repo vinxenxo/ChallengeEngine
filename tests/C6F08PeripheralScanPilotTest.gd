@@ -1,3 +1,4 @@
+# res://tests/C6F08PeripheralScanPilotTest.gd
 extends SceneTree
 
 # ============================================================

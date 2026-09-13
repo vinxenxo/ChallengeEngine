@@ -1,3 +1,4 @@
+# res://tests/C6EAssetIntegrityTest.gd
 extends SceneTree
 
 const VALIDATOR = preload("res://core/validation/ChallengeDefinitionValidator.gd")

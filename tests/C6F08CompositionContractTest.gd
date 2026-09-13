@@ -1,3 +1,4 @@
+# res://tests/C6F08CompositionContractTest.gd
 extends SceneTree
 
 # ============================================================

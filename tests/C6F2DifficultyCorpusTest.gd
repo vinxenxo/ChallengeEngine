@@ -1,3 +1,4 @@
+# res://tests/C6F2DifficultyCorpusTest.gd
 extends SceneTree
 
 func _init():

@@ -1,3 +1,4 @@
+# res://tests/mechanics/choose/ChooseMechanicIsolationTest.gd
 class_name ChooseMechanicIsolationTest
 extends SceneTree
 

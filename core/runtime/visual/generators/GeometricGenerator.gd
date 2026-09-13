@@ -1,3 +1,4 @@
+# res://core/runtime/visual/generators/GeometricGenerator.gd
 class_name GeometricGenerator
 extends VisualLoopGenerator
 

@@ -1,3 +1,4 @@
+# res://core/runtime/RenderedFrameStream.gd
 class_name RenderedFrameStream
 extends RefCounted
 

@@ -1,3 +1,4 @@
+# res://core/runtime/ChallengeRuntime.gd
 class_name ChallengeRuntime
 extends ContentRuntime
 

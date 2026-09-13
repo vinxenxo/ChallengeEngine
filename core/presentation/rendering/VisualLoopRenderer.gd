@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/VisualLoopRenderer.gd
 class_name VisualLoopRenderer
 extends Node2D
 

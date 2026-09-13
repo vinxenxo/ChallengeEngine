@@ -1,3 +1,4 @@
+# res://tests/C6F06VisualLoopPhysicalExportTest.gd
 extends SceneTree
 
 # ============================================================

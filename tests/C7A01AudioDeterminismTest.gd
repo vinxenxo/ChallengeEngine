@@ -1,3 +1,4 @@
+# res://tests/C7A01AudioDeterminismTest.gd
 extends SceneTree
 
 # ============================================================
@@ -44,11 +45,15 @@ func _get_canonical_v2_fixture() -> Dictionary:
 	file.close()
 	var dict = JSON.parse_string(text)
 	
+	# Preservar exactamente la configuración semántica de generación del fixture original
 	if not dict.has("simulation"):
-		dict["simulation"] = {
-			"seed": BASE_SEED,
-			"rng_version": "2.0"
-		}
+		if dict.has("generation"):
+			dict["simulation"] = dict["generation"].duplicate(true)
+		else:
+			dict["simulation"] = {
+				"seed": BASE_SEED,
+				"rng_version": "2.0"
+			}
 	return dict
 
 func _run_tests() -> void:

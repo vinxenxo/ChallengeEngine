@@ -1,3 +1,4 @@
+# res://core/authoring/CanonicalV2Assembler.gd
 class_name CanonicalV2Assembler
 extends RefCounted
 

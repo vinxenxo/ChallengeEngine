@@ -1,3 +1,4 @@
+# res://core/mechanics/pilot/PilotMechanic.gd
 class_name PilotMechanic
 extends ChallengeMechanic
 

@@ -1,3 +1,4 @@
+# res://core/deterministic/PresentationRNGContext.gd
 class_name PresentationRNGContext
 extends RefCounted
 

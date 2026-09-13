@@ -1,3 +1,4 @@
+# res://core/authoring/adapters/HitAuthoringAdapter.gd
 class_name HitAuthoringAdapter
 extends AuthoringMechanicAdapter
 

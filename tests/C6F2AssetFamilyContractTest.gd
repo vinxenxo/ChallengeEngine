@@ -1,3 +1,4 @@
+# res://tests/C6F2AssetFamilyContractTest.gd
 extends SceneTree
 
 const AssetFamilyRegistry = preload("res://core/authoring/AssetFamilyRegistry.gd")

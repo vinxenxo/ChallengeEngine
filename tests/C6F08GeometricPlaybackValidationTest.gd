@@ -1,3 +1,4 @@
+# res://tests/C6F08GeometricPlaybackValidationTest.gd
 extends SceneTree
 
 # ============================================================

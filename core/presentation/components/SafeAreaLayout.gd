@@ -1,3 +1,4 @@
+# res://core/presentation/components/SafeAreaLayout.gd
 extends MarginContainer
 class_name SafeAreaLayout
 

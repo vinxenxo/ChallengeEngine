@@ -1,3 +1,4 @@
+# res://core/authoring/AuthoringMechanicRegistry.gd
 class_name AuthoringMechanicRegistry
 extends RefCounted
 

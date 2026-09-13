@@ -1,3 +1,4 @@
+# res://core/mechanics/MechanicRegistry.gd
 class_name MechanicRegistry
 extends RefCounted
 

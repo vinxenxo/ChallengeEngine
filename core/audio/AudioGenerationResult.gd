@@ -1,3 +1,4 @@
+# res://core/audio/AudioGenerationResult.gd
 class_name AudioGenerationResult
 extends RefCounted
 

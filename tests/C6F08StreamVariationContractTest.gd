@@ -1,3 +1,4 @@
+# res://tests/C6F08StreamVariationContractTest.gd
 extends SceneTree
 
 # ============================================================

@@ -1,3 +1,4 @@
+# res://core/runtime/visual/generators/VectorFieldGenerator.gd
 class_name VectorFieldGenerator
 extends VisualLoopGenerator
 

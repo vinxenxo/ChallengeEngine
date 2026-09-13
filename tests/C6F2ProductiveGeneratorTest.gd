@@ -1,3 +1,4 @@
+# res://tests/C6F2ProductiveGeneratorTest.gd
 extends SceneTree
 
 const AuthoringMechanicRegistry = preload(

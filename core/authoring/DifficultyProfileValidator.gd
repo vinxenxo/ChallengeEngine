@@ -1,3 +1,4 @@
+# res://core/authoring/DifficultyProfileValidator.gd
 class_name DifficultyProfileValidator
 extends RefCounted
 

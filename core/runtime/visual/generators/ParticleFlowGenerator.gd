@@ -1,3 +1,4 @@
+# res://core/runtime/visual/generators/ParticleFlowGenerator.gd
 class_name ParticleFlowGenerator
 extends VisualLoopGenerator
 

@@ -1,3 +1,4 @@
+# res://core/runtime/visual/generators/FractalGenerator.gd
 class_name FractalGenerator
 extends VisualLoopGenerator
 

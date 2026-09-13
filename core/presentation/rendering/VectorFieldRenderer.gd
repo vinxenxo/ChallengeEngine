@@ -1,3 +1,4 @@
+# res://core/presentation/rendering/VectorFieldRenderer.gd
 class_name VectorFieldRenderer
 extends Node2D
 

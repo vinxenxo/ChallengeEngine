@@ -1,3 +1,4 @@
+# res://core/authoring/ChallengeMigrationAdapter.gd
 class_name ChallengeMigrationAdapter
 extends RefCounted
 

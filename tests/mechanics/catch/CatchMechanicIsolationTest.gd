@@ -1,3 +1,4 @@
+# res://tests/mechanics/catch/CatchMechanicIsolationTest.gd
 class_name CatchMechanicIsolationTest
 extends SceneTree
 

@@ -1,3 +1,4 @@
+# res://core/authoring/ContentEnvelope.gd
 class_name ContentEnvelope
 extends RefCounted
 

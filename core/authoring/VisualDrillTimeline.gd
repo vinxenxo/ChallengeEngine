@@ -1,3 +1,4 @@
+# res://core/authoring/VisualDrillTimeline.gd
 class_name VisualDrillTimeline
 extends TemporalCore
 

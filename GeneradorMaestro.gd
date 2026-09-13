@@ -1,3 +1,4 @@
+# res://GeneradorMaestro.gd
 extends Node2D
 
 const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")

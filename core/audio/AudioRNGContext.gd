@@ -1,3 +1,4 @@
+# res://core/audio/AudioRNGContext.gd
 class_name AudioRNGContext
 extends RefCounted
 

@@ -1,4 +1,5 @@
-﻿class_name FindMechanic
+﻿# res://core/mechanics/find/FindMechanic.gd
+class_name FindMechanic
 extends ChallengeMechanic
 
 var _rng_context: MechanicRNGContext = null

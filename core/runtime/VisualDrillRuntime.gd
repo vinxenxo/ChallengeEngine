@@ -1,3 +1,4 @@
+# res://core/runtime/VisualDrillRuntime.gd
 class_name VisualDrillRuntime
 extends ContentRuntime
 

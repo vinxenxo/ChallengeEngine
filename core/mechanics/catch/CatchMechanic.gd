@@ -1,3 +1,4 @@
+# res://core/mechanics/catch/CatchMechanic.gd
 class_name CatchMechanic
 extends ChallengeMechanic
 

@@ -1,3 +1,4 @@
+# res://core/validation/ChallengeValidator.gd
 class_name ChallengeValidator
 extends RefCounted
 

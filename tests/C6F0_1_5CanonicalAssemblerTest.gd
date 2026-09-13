@@ -1,3 +1,4 @@
+# res://tests/C6F0_1_5CanonicalAssemblerTest.gd
 extends SceneTree
 
 const CanonicalV2Assembler = preload("res://core/authoring/CanonicalV2Assembler.gd")

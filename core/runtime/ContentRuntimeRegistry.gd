@@ -1,3 +1,4 @@
+# res://core/runtime/ContentRuntimeRegistry.gd
 class_name ContentRuntimeRegistry
 extends RefCounted
 

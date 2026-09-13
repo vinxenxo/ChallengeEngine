@@ -1,3 +1,4 @@
+# res://tests/C6F0_3_4CTARenderRegressionTest.gd
 extends SceneTree
 
 const Binder = preload("res://core/presentation/ChallengePresentationBinder.gd")

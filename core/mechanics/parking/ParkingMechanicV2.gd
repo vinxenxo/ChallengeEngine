@@ -1,3 +1,4 @@
+# res://core/mechanics/parking/ParkingMechanicV2.gd
 class_name ParkingMechanicV2
 extends ChallengeMechanic
 

@@ -1,3 +1,4 @@
+# res://core/authoring/ChallengeTimeLiine.gd
 class_name ChallengeTimeline
 extends TemporalCore
 

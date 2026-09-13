@@ -1,3 +1,4 @@
+# res://core/validation/WinningFrameDetector.gd
 class_name WinningFrameDetector
 extends RefCounted
 

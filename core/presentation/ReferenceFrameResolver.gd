@@ -1,3 +1,4 @@
+# res://core/presentation/ReferenceFrameResolver.gd
 class_name ReferenceFrameResolver
 extends RefCounted
 

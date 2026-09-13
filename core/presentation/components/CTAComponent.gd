@@ -1,3 +1,4 @@
+# res://core/presentation/components/CTAComponent.gd
 extends VBoxContainer
 class_name CTAComponent
 

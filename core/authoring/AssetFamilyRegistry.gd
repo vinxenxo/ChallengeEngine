@@ -1,3 +1,4 @@
+# res://core/authoring/AssetFamilyRegistry.gd
 class_name AssetFamilyRegistry
 extends RefCounted
 

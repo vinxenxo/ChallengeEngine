@@ -1,3 +1,4 @@
+# res://core/deterministic/DeterministicLCG.gd
 class_name DeterministicLCG
 extends RefCounted
 

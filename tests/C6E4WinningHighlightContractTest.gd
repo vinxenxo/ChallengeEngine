@@ -1,3 +1,4 @@
+# res://tests/C6E4WinningHighlightContractTest.gd
 extends SceneTree
 
 const HIGHLIGHT = preload("res://core/presentation/components/WinningHighlightComponent.gd")

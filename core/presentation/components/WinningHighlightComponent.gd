@@ -1,3 +1,4 @@
+# res://core/presentation/components/WinningHighlightComponent.gd
 class_name WinningHighlightComponent
 extends RefCounted
 

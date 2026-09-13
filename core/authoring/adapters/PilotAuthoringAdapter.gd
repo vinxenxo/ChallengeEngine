@@ -1,3 +1,4 @@
+# res://core/authoring/adapters/PilotAuthoringAdapter.gd
 class_name PilotAuthoringAdapter
 extends AuthoringMechanicAdapter
 

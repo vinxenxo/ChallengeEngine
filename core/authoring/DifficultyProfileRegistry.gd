@@ -1,3 +1,4 @@
+# res://core/authoring/DifficultyProfileRegistry.gd
 class_name DifficultyProfileRegistry
 extends RefCounted
 

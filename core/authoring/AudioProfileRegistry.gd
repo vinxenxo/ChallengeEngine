@@ -1,3 +1,4 @@
+# res://core/authoring/AudioProfileRegistry.gd
 class_name AudioProfileRegistry
 extends RefCounted
 

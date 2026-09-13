@@ -1,3 +1,4 @@
+# res://core/authoring/VisualLoopTimeline.gd
 class_name VisualLoopTimeline
 extends TemporalCore
 

@@ -1,3 +1,4 @@
+# res://tests/C6F041VisualLoopRuntimeTest.gd
 extends SceneTree
 
 # ============================================================

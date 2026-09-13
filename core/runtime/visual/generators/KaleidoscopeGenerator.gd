@@ -1,3 +1,4 @@
+# res://core/runtime/visual/generators/KaleidoscopeGenerator.gd
 class_name KaleidoscopeGenerator
 extends VisualLoopGenerator
 

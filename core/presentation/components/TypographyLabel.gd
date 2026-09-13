@@ -1,3 +1,4 @@
+# res://core/presentation/components/TypographyLabel.gd
 extends Label
 class_name TypographyLabel
 

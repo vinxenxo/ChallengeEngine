@@ -1,3 +1,4 @@
+# res://core/presentation/ChallengePresentationBinder.gd
 class_name ChallengePresentationBinder
 extends RefCounted
 

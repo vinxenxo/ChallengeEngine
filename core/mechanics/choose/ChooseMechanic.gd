@@ -1,3 +1,4 @@
+# res://core/mechanics/choose/ChooseMechanic.gd
 class_name ChooseMechanic
 extends ChallengeMechanic
 

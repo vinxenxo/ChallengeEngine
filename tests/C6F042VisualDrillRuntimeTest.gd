@@ -1,3 +1,4 @@
+# res://tests/C6F042VisualDrillRuntimeTest.gd
 extends SceneTree
 
 # ============================================================

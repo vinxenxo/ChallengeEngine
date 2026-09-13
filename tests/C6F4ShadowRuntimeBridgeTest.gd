@@ -1,3 +1,4 @@
+# res://tests/C6F4ShadowRuntimeBridgeTest.gd
 extends SceneTree
 
 const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
