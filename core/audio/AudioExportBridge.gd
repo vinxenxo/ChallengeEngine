@@ -5,6 +5,9 @@ extends RefCounted
 const SAMPLE_RATE = 44100
 const SAMPLES_PER_FRAME = 735 # Relación exacta: 44100 / 60
 
+const ToneBurstPCMInterpreter = preload("res://core/audio/renderers/ToneBurstPCMInterpreter.gd")
+const NoiseBurstPCMInterpreter = preload("res://core/audio/renderers/NoiseBurstPCMInterpreter.gd")
+
 # Renderiza toda la pista de audio de un challenge y la exporta a un archivo binario crudo .pcm
 static func render_and_export_track(
 	simulation_result: SimulationResult, 
@@ -71,7 +74,21 @@ static func render_and_export_track(
 				"error": "UNKNOWN_OR_INVALID_GENERATOR"
 			}
 		
-		var event_buffer = ToneBurstPCMInterpreter.render(gen_result)
+		var event_buffer: AudioBuffer = null
+		if gen_result.generator_type == "tone_burst":
+			event_buffer = ToneBurstPCMInterpreter.render(gen_result)
+		elif gen_result.generator_type == "noise_burst":
+			event_buffer = NoiseBurstPCMInterpreter.render(gen_result)
+		else:
+			push_error(
+				"C7_AUDIO_EXPORT_UNKNOWN_PCM_INTERPRETER: "
+				+ gen_result.generator_type
+			)
+			return {
+				"success": false,
+				"error": "UNKNOWN_PCM_INTERPRETER"
+			}
+
 		if event_buffer == null or event_buffer.data.is_empty():
 			push_error("C7_AUDIO_EXPORT_RENDER_FAILED")
 			return {"success": false, "error": "RENDER_FAILED"}

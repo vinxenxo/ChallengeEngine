@@ -94,6 +94,7 @@ KNOWN_SUITES = {
     "C7A02AudioPCMHashTest.gd" : "[C7A02_PCM_HASH_SUITE] PASS",
     "C7A04AudioExportBridgeTest.gd" : "[C7A04_AUDIO_EXPORT_BRIDGE_SUITE] PASS",
     "C7A05AudioGeneratorRegistryTest.gd" : "[C7A05-TEST] RESULTADO GLOBAL: PASS",
+    "C7A06MultiGeneratorDeterminismTest.gd" : "[C7A06-TEST] RESULTADO GLOBAL: PASS",
     "C7A03AudioTimelineTest.gd" : "[C7A03_AUDIO_TIMELINE_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
