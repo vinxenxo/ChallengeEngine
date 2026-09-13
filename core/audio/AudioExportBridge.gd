@@ -35,7 +35,7 @@ static func render_and_export_track(
 		master_buffer.data[i] = 0.0
 		
 	var registry_context = AudioRNGContext.new(seed_used, RNGStreamRegistry.new())
-	var tone_generator = ToneBurstGenerator.new()
+	var generator_registry = AudioGeneratorRegistry.new()
 	
 	for event in events:
 		var profile = AudioProfileAdapter.from_authoring_profile(audio_profile_id, event.event_id)
@@ -46,10 +46,30 @@ static func render_and_export_track(
 		# Instrumentación diagnóstica exigida
 		print("[C7_DEBUG] event_id=", event.event_id, " generator_type=", profile.generator_type, " parameters=", profile.parameters)
 		
-		var gen_result = tone_generator.generate(profile, event, registry_context)
+		var generator_type: String = profile.generator_type.strip_edges()
+		if generator_type.is_empty():
+			push_error("C7_AUDIO_EXPORT_EMPTY_GENERATOR_TYPE")
+			return {
+				"success": false,
+				"error": "EMPTY_GENERATOR_TYPE"
+			}
+		
+		var gen_result = generator_registry.generate(
+			generator_type,
+			profile,
+			event,
+			registry_context
+		)
+		
 		if gen_result == null:
-			push_error("C7_AUDIO_EXPORT_GENERATION_FAILED")
-			return {"success": false, "error": "GENERATION_FAILED"}
+			push_error(
+				"C7_AUDIO_EXPORT_UNKNOWN_OR_INVALID_GENERATOR: "
+				+ generator_type
+			)
+			return {
+				"success": false,
+				"error": "UNKNOWN_OR_INVALID_GENERATOR"
+			}
 		
 		var event_buffer = ToneBurstPCMInterpreter.render(gen_result)
 		if event_buffer == null or event_buffer.data.is_empty():
