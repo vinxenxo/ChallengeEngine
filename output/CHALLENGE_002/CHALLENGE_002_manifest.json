@@ -5,40 +5,40 @@
   "declarative_metadata": {
     "schema_version": "1.0",
     "engine_version": "0.1",
-    "mechanic": "key",
+    "mechanic": "parking",
     "mechanic_version": "1.0",
     "video_profile_version": "1.0",
     "asset_family_version": "1.0"
   },
   "telemetry": {
     "attempts": 1,
-    "close_calls": 0,
-    "cta_frames": 120,
-    "final_seed": 884422,
+    "close_calls": 1,
+    "cta_frames": 0,
+    "final_seed": 987654,
     "game_frames": 420,
     "godot_version": "4.7.1-stable (official)",
-    "hook_frames": 0,
-    "initial_seed": 884422,
-    "minimum_distance": 0.00538836928067266,
+    "hook_frames": 180,
+    "initial_seed": 987654,
+    "minimum_distance": 3.38832068443298,
     "reveal_frames": 0,
     "rng_version": "1.0",
-    "score": 0.635477103516557,
-    "seed_used": 884422,
-    "total_frames": 540,
+    "score": 0.246091849120501,
+    "seed_used": 987654,
+    "total_frames": 600,
     "validate_only": false,
-    "winning_frame": 190,
-    "winning_frame_game": 190,
+    "winning_frame": 575,
+    "winning_frame_game": 395,
     "winning_frame_in_valid_window": true,
-    "winning_time": 3.16666666666667,
-    "winning_time_game": 3.16666666666667
+    "winning_time": 9.58333333333333,
+    "winning_time_game": 6.58333333333333
   },
   "artifacts": {
     "raw_video": "CHALLENGE_002_raw.avi",
-    "raw_video_sha256": "e910ffa541080901e65030ae0095c6553930c0706663dca17bb2260cae7ea02c",
+    "raw_video_sha256": "82a8ce9bc2a14151581bef7844e4790fac23e57293f6d0201e6b3b973df0ce39",
     "final_video": "CHALLENGE_002.mp4",
-    "final_video_sha256": "5a40951a3f376c88c49a0a9986a69d9b30950cf38e42f8e690e04d77d61233f8",
+    "final_video_sha256": "1dac7f62c014d2dfa3e6defb2948acc2467d469b995b22855490744d779ee863",
     "preview_gif": "CHALLENGE_002.gif",
-    "preview_gif_sha256": "4e9999f2b9139f7361911ad355aa0a114146fc8dda34b11dc565afedbc3e9c0c"
+    "preview_gif_sha256": "1cc070e7ac7a064fc17cff7396e0dccb0e1f82c63b10507c9d686a5795532d02"
   },
   "output_contract": {
     "simulation_canvas": [
@@ -60,8 +60,8 @@
     "height": 960,
     "codec_name": "mjpeg",
     "pix_fmt": "yuvj420p",
-    "duration": 9.0,
-    "nb_frames": 540,
+    "duration": 10.0,
+    "nb_frames": 600,
     "r_frame_rate": "60/1"
   },
   "validation": {
@@ -72,55 +72,27 @@
       "height": 1920,
       "codec_name": "h264",
       "pix_fmt": "yuvj420p",
-      "duration": 9.0,
-      "nb_frames": 540,
+      "duration": 10.0,
+      "nb_frames": 600,
       "r_frame_rate": "60/1"
     },
     "audio": {
       "valid": true,
-      "codec_name": "aac",
-      "sample_rate": 44100,
-      "channels": 1,
-      "channel_layout": "mono",
-      "duration": 9.0
+      "disabled": true,
+      "audio_streams_found": 0
     },
     "av_sync": {
       "valid": true,
-      "video_duration": 9.0,
-      "audio_duration": 9.0,
-      "diff": 0.0,
-      "tolerance": 0.05
+      "disabled": true
     },
     "audio_content": {
       "valid": true,
-      "pcm_signal": {
-        "valid": true,
-        "total_samples": 396900,
-        "non_zero_samples": 36733,
-        "non_zero_ratio": 0.0925,
-        "peak_amplitude": 29475,
-        "peak_normalized": 0.8995,
-        "rms_amplitude": 3281.68,
-        "is_silent": false
-      },
-      "aac_volume": {
-        "valid": true,
-        "mean_volume_db": -20.0,
-        "max_volume_db": -0.9,
-        "is_silent": false
-      }
+      "disabled": true
     }
   },
   "status": "PASS",
   "audio_export": {
-    "audio_enabled": true,
-    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\CHALLENGE_002\\audio_master.pcm",
-    "canonical_hash": "2aee2d4a423d5503b7af1bb2e72c285510cf265cdd37011529d94eeebfb18bd1",
-    "channels": 1,
-    "format": "s16le",
-    "sample_rate": 44100,
-    "total_samples": 396900,
-    "audio_master_sha256": "2aee2d4a423d5503b7af1bb2e72c285510cf265cdd37011529d94eeebfb18bd1"
+    "audio_enabled": false
   },
   "gif_validation": {
     "valid": true,
@@ -131,8 +103,8 @@
       "width": 540,
       "height": 960,
       "avg_frame_rate": "100/3",
-      "nb_frames": 270,
-      "duration": 9.0
+      "nb_frames": 300,
+      "duration": 10.0
     }
   }
 }
