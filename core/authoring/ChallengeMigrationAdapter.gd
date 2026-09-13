@@ -1,4 +1,3 @@
-# res://core/authoring/ChallengeMigrationAdapter.gd
 class_name ChallengeMigrationAdapter
 extends RefCounted
 
@@ -100,6 +99,17 @@ static func migrate_legacy_v1_to_v2(config: Dictionary, policy: Dictionary = {})
 		"presentation": canonical_presentation,
 		"assets": _deep_copy_dictionary(assets)
 	}
+	
+	# ---------------------------------------------------------
+	# C7-A1.1: Preservación explícita del bloque acústico declarativo.
+	# Permite que la migración conserve la authoring acústica definida.
+	# ---------------------------------------------------------
+	if config.has("canonical_v2"):
+		var source_canonical_v2 = config["canonical_v2"]
+		if source_canonical_v2 is Dictionary:
+			if source_canonical_v2.has("audio"):
+				canonical["audio"] = _deep_copy_value(source_canonical_v2["audio"])
+
 	if canonical["difficulty"].is_empty():
 		canonical["difficulty"] = {"level": int(policy.get("default_difficulty_level", 0))}
 	for key in ["label"]:
@@ -129,7 +139,7 @@ static func canonical_v2_to_runtime_v1(config: Dictionary) -> Dictionary:
 	presentation.erase("profile_id")
 	presentation.erase("profile_version")
 
-	return {
+	var result := {
 		"schema_version": "1.0",
 		"engine_version": str(config.get("engine_version", "")),
 		"challenge_id": str(config.get("challenge_id", "")),
@@ -150,6 +160,11 @@ static func canonical_v2_to_runtime_v1(config: Dictionary) -> Dictionary:
 		"presentation": presentation,
 		"assets": _deep_copy_dictionary(config.get("assets", {}))
 	}
+	
+	if config.has("audio"):
+		result["canonical_v2"] = {"audio": _deep_copy_value(config["audio"])}
+
+	return result
 
 static func _is_legacy(config: Dictionary) -> bool:
 	return config.has("generation") and config.has("video") and not config.has("simulation")

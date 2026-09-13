@@ -70,6 +70,9 @@
     "valid": true
   },
   "status": "PASS",
+  "audio_export": {
+    "audio_enabled": false
+  },
   "gif_validation": {
     "valid": true,
     "width": 540,
