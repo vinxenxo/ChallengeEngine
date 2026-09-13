@@ -1,0 +1,14 @@
+{
+  "profile_id": "c7_test_profile",
+  "music": {
+    "enabled": false
+  },
+  "sfx": {
+    "enabled": true,
+    "events": {
+      "countdown_tick": "countdown_asset",
+      "success_reveal": "reveal_asset",
+      "cta_transition": "cta_asset"
+    }
+  }
+}
