@@ -90,6 +90,7 @@ KNOWN_SUITES = {
     "C6F08KaleidoscopePlaybackValidationTest.gd" : "[C6F08_KALEIDOSCOPE_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08ParticleFlowPlaybackValidationTest.gd" : "[C6F08_PARTICLE_FLOW_PLAYBACK_VALIDATION_SUITE] PASS",
     "C6F08StreamVariationContractTest.gd" : "[C6F08_STREAM_VARIATION_CONTRACT_SUITE] PASS",
+    "C7A01AudioDeterminismTest.gd" : "[C7A01_AUDIO_DETERMINISM_SUITE] PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 

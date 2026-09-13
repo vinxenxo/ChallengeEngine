@@ -5,7 +5,8 @@ enum Domain {
 	STRUCTURAL_MAIN,
 	STRUCTURAL_SECONDARY,
 	PRESENTATION,
-	COSMETIC_CONTENT
+	COSMETIC_CONTENT,
+	AUDIO
 }
 
 const STREAM_TRAJECTORY = 10
@@ -47,6 +48,14 @@ const STREAM_VISUAL_DRILL_PURSUIT = 2012
 const STREAM_VISUAL_DRILL_SACCADE = 2013
 const STREAM_VISUAL_DRILL_PERIPHERAL_SCAN = 2014
 
+# ==========================================
+# FASE C7-A0.1: Procedural Audio Streams
+# ==========================================
+const STREAM_AUDIO_PITCH = 3001
+const STREAM_AUDIO_TIMBRE = 3002
+const STREAM_AUDIO_ENVELOPE = 3003
+const STREAM_AUDIO_MODULATION = 3004
+
 var _definitions: Dictionary = {}
 
 func _init() -> void:
@@ -78,7 +87,6 @@ func _init() -> void:
 
 	# ==========================================
 	# Cosmetic Streams (C6-F0.8-C)
-	# Owner attribute is mapped to the 'description' parameter internally.
 	# ==========================================
 	_register(STREAM_VISUAL_LOOP_FRACTAL, "VISUAL_LOOP_FRACTAL", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=complexity_variant, 2=phase_offset, 3=rotation_offset", "2.0", ["FractalGenerator"])
 	_register(STREAM_VISUAL_LOOP_VECTOR_FIELD, "VISUAL_LOOP_VECTOR_FIELD", Domain.COSMETIC_CONTENT, "VisualContent", "0=palette_variant, 1=turbulence_variant", "2.0", ["VectorFieldGenerator"])
@@ -90,6 +98,14 @@ func _init() -> void:
 	_register(STREAM_VISUAL_DRILL_PURSUIT, "VISUAL_DRILL_PURSUIT", Domain.COSMETIC_CONTENT, "VisualContent", "0=pursuit_variant", "2.0", ["PursuitGenerator"])
 	_register(STREAM_VISUAL_DRILL_SACCADE, "VISUAL_DRILL_SACCADE", Domain.COSMETIC_CONTENT, "VisualContent", "0=saccade_variant", "2.0", ["SaccadeGenerator"])
 	_register(STREAM_VISUAL_DRILL_PERIPHERAL_SCAN, "VISUAL_DRILL_PERIPHERAL_SCAN", Domain.COSMETIC_CONTENT, "VisualContent", "0=pattern_variant, 1=amplitude_variant", "2.0", ["PeripheralScanGenerator"])
+
+	# ==========================================
+	# Audio Procedural Streams (C7-A0.1)
+	# ==========================================
+	_register(STREAM_AUDIO_PITCH, "AUDIO_PITCH", Domain.AUDIO, "Parametric pitch modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
+	_register(STREAM_AUDIO_TIMBRE, "AUDIO_TIMBRE", Domain.AUDIO, "Timbre/color modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
+	_register(STREAM_AUDIO_ENVELOPE, "AUDIO_ENVELOPE", Domain.AUDIO, "Envelope modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
+	_register(STREAM_AUDIO_MODULATION, "AUDIO_MODULATION", Domain.AUDIO, "General parameter modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
 
 func _register(id: int, name: String, domain: Domain, description: String, index_semantics: String, version_introduced: String, allowed_consumers: Array[String]) -> void:
 	_definitions[id] = RNGStreamDefinition.new(id, name, domain, description, index_semantics, version_introduced, allowed_consumers)
