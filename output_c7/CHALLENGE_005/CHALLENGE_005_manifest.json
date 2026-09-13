@@ -1,0 +1,134 @@
+{
+  "manifest_version": "1.0",
+  "factory_version": "0.10.0",
+  "challenge_id": "CHALLENGE_005",
+  "declarative_metadata": {
+    "mechanic": "hit_v1",
+    "mechanic_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 16,
+    "cta_frames": 0,
+    "final_seed": 998877,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 0,
+    "initial_seed": 998877,
+    "minimum_distance": 1.68177151679993,
+    "reveal_frames": 0,
+    "rng_version": "2.0",
+    "score": 0.943940949440002,
+    "seed_used": 998877,
+    "total_frames": 420,
+    "validate_only": false,
+    "winning_frame": 344,
+    "winning_frame_game": 344,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 5.73333333333333,
+    "winning_time_game": 5.73333333333333
+  },
+  "artifacts": {
+    "raw_video": "CHALLENGE_005_raw.avi",
+    "raw_video_sha256": "ed26d5d605967fce24f552f34f3f5b60f14b280204244f10d7150919fdd29c58",
+    "final_video": "CHALLENGE_005.mp4",
+    "final_video_sha256": "de08599fdb2236b9c62a3561d127e369d1b9bc0a07eccf99cf04fc02f3f965ac",
+    "preview_gif": "CHALLENGE_005.gif",
+    "preview_gif_sha256": "d4bd71cb2318cc8b480c4d03ed7b5309a7eafdbefa48fd08025edf164cf1aa17"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 7.0,
+    "nb_frames": 420,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 7.0,
+      "nb_frames": 420,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "codec_name": "aac",
+      "sample_rate": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "duration": 7.0
+    },
+    "av_sync": {
+      "valid": true,
+      "video_duration": 7.0,
+      "audio_duration": 7.0,
+      "diff": 0.0,
+      "tolerance": 0.05
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 308700,
+        "non_zero_samples": 18370,
+        "non_zero_ratio": 0.0595,
+        "peak_amplitude": 29449,
+        "peak_normalized": 0.8987,
+        "rms_amplitude": 2937.25,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -21.0,
+        "max_volume_db": -0.9,
+        "is_silent": false
+      }
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": true,
+    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output_c7\\CHALLENGE_005\\audio_master.pcm",
+    "canonical_hash": "5c6f3d85f63479f30fd3b65bdc1e3fd8631fb64844c15df523bd53b85e8a6995",
+    "channels": 1,
+    "format": "s16le",
+    "sample_rate": 44100,
+    "total_samples": 308700,
+    "audio_master_sha256": "5c6f3d85f63479f30fd3b65bdc1e3fd8631fb64844c15df523bd53b85e8a6995"
+  },
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 210,
+      "duration": 7.0
+    }
+  }
+}

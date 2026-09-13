@@ -32,7 +32,7 @@
     "raw_video": "CHALLENGE_005_raw.avi",
     "raw_video_sha256": "ed26d5d605967fce24f552f34f3f5b60f14b280204244f10d7150919fdd29c58",
     "final_video": "CHALLENGE_005.mp4",
-    "final_video_sha256": "3ad0f12a03712b748842255a5a1641f037fcbd775e2b7541bc5739f43914f96a",
+    "final_video_sha256": "d91c4f874a6297b3881eb7d6628002590da8706b10823efa07e6288b3184b007",
     "preview_gif": "CHALLENGE_005.gif",
     "preview_gif_sha256": "d4bd71cb2318cc8b480c4d03ed7b5309a7eafdbefa48fd08025edf164cf1aa17"
   },
@@ -61,14 +61,30 @@
     "r_frame_rate": "60/1"
   },
   "validation": {
-    "width": 1080,
-    "height": 1920,
-    "codec_name": "h264",
-    "pix_fmt": "yuvj420p",
-    "duration": 7.0,
-    "nb_frames": 420,
-    "r_frame_rate": "60/1",
-    "valid": true
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 7.0,
+      "nb_frames": 420,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "disabled": true,
+      "audio_streams_found": 0
+    },
+    "av_sync": {
+      "valid": true,
+      "disabled": true
+    },
+    "audio_content": {
+      "valid": true,
+      "disabled": true
+    }
   },
   "status": "PASS",
   "audio_export": {

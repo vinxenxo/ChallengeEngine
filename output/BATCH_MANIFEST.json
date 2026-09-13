@@ -5,43 +5,114 @@
     "4.7.1-stable (official)"
   ],
   "rng_versions": [
-    "1.0"
+    "1.0",
+    "2.0"
   ],
-  "status": "PASSED",
+  "status": "FAILED",
   "summary": {
-    "total": 2,
-    "passed": 2,
+    "total": 9,
+    "passed": 9,
     "failed": 0
   },
   "audio_summary": {
-    "total_challenges": 2,
-    "audited_challenges": 2,
-    "audio_enabled": 1,
-    "audio_disabled": 1,
-    "audio_content_valid": 1,
-    "av_sync_valid": 1,
-    "mixed_batch": true
+    "total_challenges": 9,
+    "audited_challenges": 9,
+    "audio_enabled": 0,
+    "audio_disabled": 9,
+    "audio_content_valid": 0,
+    "av_sync_valid": 0,
+    "mixed_batch": false
   },
   "challenges": [
     {
-      "challenge_id": "CHALLENGE_002",
-      "status": "PASS",
-      "mechanic": "key",
-      "rng_version": "1.0",
-      "godot_version": "4.7.1-stable (official)",
-      "audio_enabled": true,
-      "manifest": "CHALLENGE_002/CHALLENGE_002_manifest.json",
-      "preview_gif": "CHALLENGE_002/CHALLENGE_002.gif"
-    },
-    {
-      "challenge_id": "CHALLENGE_VIDEO_OFF_001",
+      "challenge_id": "CHALLENGE_001",
       "status": "PASS",
       "mechanic": "key",
       "rng_version": "1.0",
       "godot_version": "4.7.1-stable (official)",
       "audio_enabled": false,
-      "manifest": "CHALLENGE_VIDEO_OFF_001/CHALLENGE_VIDEO_OFF_001_manifest.json",
-      "preview_gif": "CHALLENGE_VIDEO_OFF_001/CHALLENGE_VIDEO_OFF_001.gif"
+      "manifest": "CHALLENGE_001/CHALLENGE_001_manifest.json",
+      "preview_gif": "CHALLENGE_001/CHALLENGE_001.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "status": "PASS",
+      "mechanic": "parking",
+      "rng_version": "1.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_002/CHALLENGE_002_manifest.json",
+      "preview_gif": "CHALLENGE_002/CHALLENGE_002.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_003",
+      "status": "PASS",
+      "mechanic": "pilot",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_003/CHALLENGE_003_manifest.json",
+      "preview_gif": "CHALLENGE_003/CHALLENGE_003.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "status": "PASS",
+      "mechanic": "parking_v2",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_004/CHALLENGE_004_manifest.json",
+      "preview_gif": "CHALLENGE_004/CHALLENGE_004.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "status": "PASS",
+      "mechanic": "hit_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_005/CHALLENGE_005_manifest.json",
+      "preview_gif": "CHALLENGE_005/CHALLENGE_005.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "status": "PASS",
+      "mechanic": "catch_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_006/CHALLENGE_006_manifest.json",
+      "preview_gif": "CHALLENGE_006/CHALLENGE_006.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "status": "PASS",
+      "mechanic": "find_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_007/CHALLENGE_007_manifest.json",
+      "preview_gif": "CHALLENGE_007/CHALLENGE_007.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_008",
+      "status": "PASS",
+      "mechanic": "choose_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_008/CHALLENGE_008_manifest.json",
+      "preview_gif": "CHALLENGE_008/CHALLENGE_008.gif"
+    },
+    {
+      "challenge_id": "CHALLENGE_009",
+      "status": "PASS",
+      "mechanic": "count_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": false,
+      "manifest": "CHALLENGE_009/CHALLENGE_009_manifest.json",
+      "preview_gif": "CHALLENGE_009/CHALLENGE_009.gif"
     }
   ],
   "preview_gif_policy": {
@@ -51,5 +122,11 @@
     "width": 540,
     "height": 960,
     "loop": true
-  }
+  },
+  "errors": [
+    {
+      "code": "C7_A2_MIXED_BATCH_REQUIRED",
+      "message": "C7-A2 requiere al menos un challenge audio-on y uno audio-off en el mismo lote."
+    }
+  ]
 }
