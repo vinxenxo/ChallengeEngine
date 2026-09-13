@@ -88,7 +88,8 @@
       "valid": true,
       "video_duration": 9.0,
       "audio_duration": 9.0,
-      "diff": 0.0
+      "diff": 0.0,
+      "tolerance": 0.05
     },
     "audio_content": {
       "valid": true,
