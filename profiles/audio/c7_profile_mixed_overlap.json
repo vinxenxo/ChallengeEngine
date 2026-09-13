@@ -5,7 +5,8 @@
     "events": {
       "countdown_tick": "asset_tone_standard",
       "success_reveal": "asset_noise_impact",
-      "near_miss": "asset_noise_subtle"
+      "near_miss": "asset_noise_subtle",
+      "cta_transition": "asset_tone_standard"
     }
   }
 }
