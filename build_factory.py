@@ -11,13 +11,13 @@ from typing import Dict, Any, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ============================================================
-# C6-D3 / FACTORY CONTRACT
+# C8-A / FACTORY CONTRACT
 # ============================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
-FACTORY_VERSION = "0.10.0"
-MANIFEST_VERSION = "1.0"
+FACTORY_VERSION = "0.11.0"
+MANIFEST_VERSION = "1.1"
 
 GIF_FPS = 30
 GIF_WIDTH = 540
@@ -123,7 +123,7 @@ def read_rng_version(challenge_definition: Dict[str, Any]) -> Optional[str]:
 
 
 # ============================================================
-# OUTPUT CLEANUP / HASH
+# OUTPUT CLEANUP / HASH / C8-A PROVENANCE
 # ============================================================
 
 def cleanup_partial_outputs(output_dir: Path, challenge_id: str) -> None:
@@ -156,6 +156,197 @@ def compute_file_sha256(file_path: Path, chunk_size: int = 65536) -> Optional[st
     except Exception as exc:
         print(f"[WARN_HASH] No se pudo calcular SHA-256 para {file_path.name}: {exc}")
         return None
+
+
+def require_file_sha256(file_path: Path, context: str) -> str:
+    """Calcula SHA-256 de forma estricta (fail-closed)."""
+    sha256 = compute_file_sha256(file_path)
+    if sha256 is None:
+        raise ValueError(
+            f"C8-A: no se pudo calcular SHA-256 de {context}: {file_path}"
+        )
+    return sha256
+
+
+def compute_bytes_sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def run_git(args: list[str]) -> Optional[str]:
+    try:
+        result = subprocess.run(
+            ["git", *args],
+            cwd=str(PROJECT_ROOT),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip()
+    except (subprocess.CalledProcessError, OSError):
+        return None
+
+
+def build_git_provenance() -> Dict[str, Any]:
+    commit = run_git(["rev-parse", "HEAD"])
+    branch = run_git(["branch", "--show-current"])
+    status = run_git(["status", "--porcelain", "--untracked-files=all"])
+
+    if commit is None:
+        raise ValueError("C8-A: no se pudo resolver el Git commit HEAD.")
+
+    if status is None:
+        raise ValueError("C8-A: no se pudo resolver el estado Git.")
+
+    return {
+        "commit": commit,
+        "branch": branch or None,
+        "dirty": bool(status),
+    }
+
+
+def resolve_res_references(value: Any) -> set[str]:
+    """Extrae todos los paths res:// presentes en la definición declarativa."""
+    found: set[str] = set()
+
+    if isinstance(value, dict):
+        for child in value.values():
+            found.update(resolve_res_references(child))
+
+    elif isinstance(value, list):
+        for child in value:
+            found.update(resolve_res_references(child))
+
+    elif isinstance(value, str) and value.startswith("res://"):
+        found.add(value)
+
+    return found
+
+
+def hash_res_references(
+    challenge_definition: Dict[str, Any],
+) -> list[Dict[str, str]]:
+    result = []
+
+    for res_path in sorted(resolve_res_references(challenge_definition)):
+        relative_path = res_path.removeprefix("res://")
+        physical_path = PROJECT_ROOT / relative_path
+
+        sha256 = require_file_sha256(physical_path, f"res_reference ({res_path})")
+
+        result.append({
+            "path": res_path,
+            "sha256": sha256,
+        })
+
+    return result
+
+
+def resolve_unique_profile_file(profile_id: str) -> Optional[Path]:
+    matches = sorted(
+        path
+        for path in (PROJECT_ROOT / "profiles").rglob(f"{profile_id}.json")
+        if path.is_file()
+    )
+
+    if len(matches) > 1:
+        raise ValueError(
+            f"C8-A: profile_id ambiguo: {profile_id}. "
+            f"Encontrados {len(matches)} archivos."
+        )
+
+    return matches[0] if matches else None
+
+
+def build_profile_provenance(
+    challenge_definition: Dict[str, Any],
+) -> Dict[str, Any]:
+    provenance: Dict[str, Any] = {}
+
+    video_profile_id = challenge_definition.get("video_profile")
+    if isinstance(video_profile_id, str):
+        video_path = resolve_unique_profile_file(video_profile_id)
+
+        if video_path is None:
+            raise ValueError(
+                f"C8-A: no se encontró archivo para video_profile "
+                f"{video_profile_id!r}."
+            )
+
+        provenance["video_profile"] = {
+            "id": video_profile_id,
+            "path": str(video_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+            "sha256": require_file_sha256(video_path, "video_profile"),
+        }
+
+    return provenance
+
+
+def build_audio_authoring_provenance(
+    challenge_definition: Dict[str, Any],
+) -> Dict[str, Any]:
+    audio_root = PROJECT_ROOT / "profiles" / "audio"
+
+    result = {
+        "assets_catalog": None,
+        "profiles": [],
+    }
+
+    catalog = audio_root / "audio_assets.json"
+
+    if catalog.is_file():
+        result["assets_catalog"] = {
+            "path": str(catalog.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+            "sha256": require_file_sha256(catalog, "audio_assets_catalog"),
+        }
+
+    for profile_path in sorted(audio_root.glob("c7_profile_*.json")):
+        result["profiles"].append({
+            "path": str(profile_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+            "sha256": require_file_sha256(profile_path, "audio_profile_snapshot"),
+        })
+
+    return result
+
+
+def build_provenance(
+    config_path: Path,
+    challenge_definition: Dict[str, Any],
+) -> Dict[str, Any]:
+
+    git_info = build_git_provenance()
+
+    challenge_hash = require_file_sha256(config_path, "challenge_definition")
+
+    provenance = {
+        "git": git_info,
+        "challenge_definition": {
+            "path": str(config_path.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+            "sha256": challenge_hash,
+        },
+        "referenced_files": hash_res_references(
+            challenge_definition
+        ),
+        "authoring": {
+            "video": build_profile_provenance(
+                challenge_definition
+            ),
+            "audio_authoring_snapshot": build_audio_authoring_provenance(
+                challenge_definition
+            ),
+        },
+    }
+
+    identity_payload = json.dumps(
+        provenance,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode("utf-8")
+
+    provenance["provenance_sha256"] = compute_bytes_sha256(identity_payload)
+
+    return provenance
 
 
 # ============================================================
@@ -759,6 +950,7 @@ def run_factory(
         timeline_cfg = build_timeline_from_definition(
             challenge_definition.get("video", {})
         )
+        provenance = build_provenance(config_path, challenge_definition)
     except ValueError as exc:
         return {
             "success": False,
@@ -1351,13 +1543,14 @@ def run_factory(
         }
 
     # ========================================================
-    # 9. MANIFEST
+    # 9. MANIFEST (C8-A Provenance v1.1)
     # ========================================================
 
     manifest_data = {
         "manifest_version": MANIFEST_VERSION,
         "factory_version": FACTORY_VERSION,
         "challenge_id": challenge_id,
+        "provenance": provenance,
         "declarative_metadata": declarative_metadata,
         "telemetry": telemetry,
         "artifacts": {
@@ -1857,7 +2050,6 @@ def run_batch(
             },
         }
 
-    # C7-A2: descubre tanto fixtures oficiales como prefijos C7_*CHALLENGE*.
     config_files = sorted(challenges_dir.glob("*CHALLENGE*.json"))
 
     if not config_files:
@@ -2101,8 +2293,6 @@ def run_batch(
         audio_enabled = audio_export.get("audio_enabled")
 
         if type(audio_enabled) is not bool:
-            # Los manifests ya han pasado el gate unitario, pero mantener este
-            # chequeo aquí evita que la agregación cuente valores ambiguos.
             continue
 
         if audio_enabled:
@@ -2135,8 +2325,6 @@ def run_batch(
         else "FAILED"
     )
 
-    # C7-A2: el resumen acústico debe ser consistente con los manifests
-    # unitarios que efectivamente superaron la auditoría.
     audio_summary = {
         "total_challenges": expected_count,
         "audited_challenges": len(audited_manifests),
@@ -2146,7 +2334,6 @@ def run_batch(
         "av_sync_valid": av_sync_valid_count,
     }
 
-    # Mezcla estricta requerida por C7-A2 cuando no estamos en validate-only.
     if not validate_only and batch_status == "PASSED":
         if audio_enabled_count < 1 or audio_disabled_count < 1:
             batch_status = "FAILED"
@@ -2157,7 +2344,6 @@ def run_batch(
                     "en el mismo lote."
                 ),
             })
-            batch_status = "FAILED"
             audio_summary["mixed_batch"] = False
         else:
             audio_summary["mixed_batch"] = True
@@ -2218,8 +2404,8 @@ def run_batch(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description=(
-            "Pause Challenge Engine - Build Factory C7-A2 "
-            "(Batch Audio Integration)"
+            "Pause Challenge Engine - Build Factory C8-A "
+            "(Provenance & Release Identity)"
         )
     )
 
