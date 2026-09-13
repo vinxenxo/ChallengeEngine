@@ -1,4 +1,5 @@
 import sys
+import argparse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -7,27 +8,44 @@ import json
 import build_factory
 
 
-PROJECT_ROOT = Path(build_factory.PROJECT_ROOT)
-RUN_A_DIR = PROJECT_ROOT / "export" / "c8_b_run_a" / "CHALLENGE_001"
-RUN_B_DIR = PROJECT_ROOT / "export" / "c8_b_run_b" / "CHALLENGE_001"
-
-
 def assert_true(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
 
 
+def resolve_run_dir(path_str: str) -> Path:
+    p = Path(path_str).resolve()
+    if (p / "CHALLENGE_001_manifest.json").is_file():
+        return p
+    elif (p / "CHALLENGE_001" / "CHALLENGE_001_manifest.json").is_file():
+        return p / "CHALLENGE_001"
+    else:
+        raise FileNotFoundError(
+            f"No se encontró CHALLENGE_001_manifest.json en o bajo {p}"
+        )
+
+
 def main() -> None:
-    manifest_path_a = RUN_A_DIR / "CHALLENGE_001_manifest.json"
-    manifest_path_b = RUN_B_DIR / "CHALLENGE_001_manifest.json"
+    parser = argparse.ArgumentParser(
+        description="C8-B Reproducibility Cross-Run Verifier"
+    )
+    parser.add_argument("run_a", help="Ruta al directorio de la Ejecución A")
+    parser.add_argument("run_b", help="Ruta al directorio de la Ejecución B")
+    args = parser.parse_args()
+
+    run_a_dir = resolve_run_dir(args.run_a)
+    run_b_dir = resolve_run_dir(args.run_b)
+
+    manifest_path_a = run_a_dir / "CHALLENGE_001_manifest.json"
+    manifest_path_b = run_b_dir / "CHALLENGE_001_manifest.json"
 
     assert_true(
         manifest_path_a.is_file(),
-        f"Manifesto Run A no encontrado: {manifest_path_a}",
+        f"Manifiesto Run A no encontrado: {manifest_path_a}",
     )
     assert_true(
         manifest_path_b.is_file(),
-        f"Manifesto Run B no encontrado: {manifest_path_b}",
+        f"Manifiesto Run B no encontrado: {manifest_path_b}",
     )
 
     with open(manifest_path_a, "r", encoding="utf-8") as f:
@@ -47,15 +65,17 @@ def main() -> None:
     prov_a = manifest_a.get("provenance", {})
     prov_b = manifest_b.get("provenance", {})
 
-    dirty_a = prov_a.get("git", {}).get("dirty", True)
-    dirty_b = prov_b.get("git", {}).get("dirty", True)
+    dirty_a = prov_a.get("git", {}).get("dirty")
+    dirty_b = prov_b.get("git", {}).get("dirty")
 
-    if dirty_a or dirty_b:
-        print("[C8-B.2] ADVERTENCIA: Se detectó árbol Git 'dirty' en una o ambas ejecuciones.")
-        print(f"         Run A dirty: {dirty_a} | Run B dirty: {dirty_b}")
-        print("         (El determinismo bit-a-bit es válido, pero el contrato de release limpio requiere dirty=false).")
-
-    print("[C8-B.2] Release Status & Git Flags: PASS (con aviso de dirty state)")
+    assert_true(
+        dirty_a is False and dirty_b is False,
+        (
+            f"C8-B.2 Git Provenance: se requiere dirty=false para release-clean "
+            f"(Run A: {dirty_a}, Run B: {dirty_b})."
+        ),
+    )
+    print("[C8-B.2] Release-clean Git Provenance (dirty=false): PASS")
 
     # ----------------------------------------------------
     # 1. IDENTIDAD DE ENTRADA Y PROVENANCE
@@ -118,8 +138,8 @@ def main() -> None:
     raw_filename_a = artifacts_a.get("raw_video")
     raw_filename_b = artifacts_b.get("raw_video")
 
-    raw_path_a = RUN_A_DIR / raw_filename_a
-    raw_path_b = RUN_B_DIR / raw_filename_b
+    raw_path_a = run_a_dir / raw_filename_a
+    raw_path_b = run_b_dir / raw_filename_b
 
     assert_true(
         raw_path_a.is_file(),
@@ -148,7 +168,7 @@ def main() -> None:
     )
 
     print("[C8-B.2] Resultado físico (RAW Bit-to-Bit Identity): PASS")
-    print("[C8-B.2] RESULTADO GLOBAL DE DETERMINISMO: PASS")
+    print("[C8-B.2] RESULTADO GLOBAL DE REPRODUCIBILIDAD LIMPIA: PASS")
 
 
 if __name__ == "__main__":
