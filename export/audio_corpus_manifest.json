@@ -1,0 +1,61 @@
+{
+	"artifacts": {
+		"CHALLENGE_001": {
+			"artifact_path": "res://export/CHALLENGE_001.pcm",
+			"canonical_hash": "409e0f022f36decc23ba6b241157fe1da90d272d29fe597262171514d39a7ac3",
+			"challenge_id": "CHALLENGE_001",
+			"channels": 1,
+			"format": "s16le",
+			"profile_id": "c7_profile_tone_only",
+			"sample_rate": 44100,
+			"seed": 193847,
+			"total_samples": 176400
+		},
+		"CHALLENGE_002": {
+			"artifact_path": "res://export/CHALLENGE_002.pcm",
+			"canonical_hash": "a25eedd8f7c5a13cdbacf89cc05ae7c7ef53ee8081f45b475f570f1b5f8bd020",
+			"challenge_id": "CHALLENGE_002",
+			"channels": 1,
+			"format": "s16le",
+			"profile_id": "c7_profile_noise_only",
+			"sample_rate": 44100,
+			"seed": 987654,
+			"total_samples": 176400
+		},
+		"CHALLENGE_003": {
+			"artifact_path": "res://export/CHALLENGE_003.pcm",
+			"canonical_hash": "393cbcd726925cc35a5f981cb75e3dd6fd45eea352535c32767f06f015a348ae",
+			"challenge_id": "CHALLENGE_003",
+			"channels": 1,
+			"format": "s16le",
+			"profile_id": "c7_profile_mixed_alt",
+			"sample_rate": 44100,
+			"seed": 314159,
+			"total_samples": 176400
+		},
+		"CHALLENGE_004": {
+			"artifact_path": "res://export/CHALLENGE_004.pcm",
+			"canonical_hash": "17617287734bbc5013eba91ec27b6926d001bcd4a4dbd2ced0550b037336e217",
+			"challenge_id": "CHALLENGE_004",
+			"channels": 1,
+			"format": "s16le",
+			"profile_id": "c7_profile_mixed_overlap",
+			"sample_rate": 44100,
+			"seed": 314159,
+			"total_samples": 176400
+		},
+		"CHALLENGE_005": {
+			"artifact_path": "res://export/CHALLENGE_005.pcm",
+			"canonical_hash": "6f8d913596141de7865ac1a172c66530fb815425e9bc423a582751374c05289a",
+			"challenge_id": "CHALLENGE_005",
+			"channels": 1,
+			"format": "s16le",
+			"profile_id": "c7_profile_multi_noise",
+			"sample_rate": 44100,
+			"seed": 998877,
+			"total_samples": 176400
+		}
+	},
+	"timestamp_utc": "2026-09-13T21:29:56",
+	"version": "C7-A5.1"
+}

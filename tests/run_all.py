@@ -98,6 +98,10 @@ KNOWN_SUITES = {
     "C7A03AudioTimelineTest.gd" : "[C7A03_AUDIO_TIMELINE_SUITE] PASS",
     "C7A08AudioVisualCorpusExportTest.gd" : "[C7A08-TEST] RESULTADO GLOBAL: PASS",
     "C7A07MultiProfileCorpusTest.gd" : "[C7A07-TEST] RESULTADO GLOBAL: PASS",
+    "C7A502AudioVisualMuxTest.gd" : "[C7-A5.2-TEST] RESULTADO GLOBAL: PASS",
+    "C7A503AudioVisualFFmpegMuxTest.gd" : "[C7-A5.3-TEST] RESULTADO GLOBAL: PASS",
+    "C7A504AudioVisualFFprobeValidationTest.gd" : "[C7-A5.4-TEST] RESULTADO GLOBAL: PASS",
+    "C7A501OfficialAudioArtifactManifestTest.gd" : "[C7-A5.1-TEST] RESULTADO GLOBAL: PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 
