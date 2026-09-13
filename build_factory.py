@@ -480,13 +480,13 @@ def run_gif_probe(
 
 
 # ============================================================
-# VIDEO PROBE
+# VIDEO PROBE (RAW AVI)
 # ============================================================
 
 def run_ffprobe(
     video_path: Path
 ) -> Dict[str, Any]:
-    """Extrae observaciones del stream principal de vídeo."""
+    """Extrae observaciones del stream principal de vídeo RAW."""
     cmd = [
         "ffprobe",
         "-v",
@@ -703,6 +703,184 @@ def run_ffprobe(
 
 
 # ============================================================
+# MASTER MP4 PROBE (C7-A1.3: AV Stream & Sync Audit)
+# ============================================================
+
+def run_master_probe(
+    video_path: Path,
+    has_audio: bool
+) -> Dict[str, Any]:
+    """
+    Inspección exhaustiva del MP4 Master (C7-A1.3):
+    Valida vídeo (v:0) y, si has_audio es True, valida audio (a:0) y sincronización A/V.
+    """
+    cmd = [
+        "ffprobe",
+        "-v",
+        "error",
+        "-count_frames",
+        "-show_entries",
+        "stream=index,codec_type,width,height,codec_name,pix_fmt,r_frame_rate,nb_read_frames,duration,sample_rate,channels,channel_layout",
+        "-of",
+        "json",
+        str(video_path),
+    ]
+
+    try:
+        result = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True,
+        )
+
+        probe_data = json.loads(result.stdout)
+        streams = probe_data.get("streams", [])
+
+        video_stream = None
+        audio_stream = None
+
+        for s in streams:
+            if not isinstance(s, dict):
+                continue
+            codec_type = s.get("codec_type")
+            if codec_type == "video" and video_stream is None:
+                video_stream = s
+            elif codec_type == "audio" and audio_stream is None:
+                audio_stream = s
+
+        if not video_stream:
+            return {
+                "error": "FFprobe no encontró stream de vídeo en el MP4 Master."
+            }
+
+        width_raw = video_stream.get("width")
+        height_raw = video_stream.get("height")
+        codec_raw = video_stream.get("codec_name")
+        pix_fmt_raw = video_stream.get("pix_fmt")
+        duration_raw = video_stream.get("duration")
+        frames_raw = video_stream.get("nb_read_frames")
+        fps_raw = video_stream.get("r_frame_rate")
+
+        if duration_raw in (None, "", "N/A"):
+            return {"error": "FFprobe video duration ausente o N/A."}
+        if frames_raw in (None, "", "N/A"):
+            return {"error": "FFprobe video nb_read_frames ausente o N/A."}
+        if fps_raw in (None, "",):
+            return {"error": "FFprobe video r_frame_rate ausente."}
+
+        try:
+            v_duration = float(duration_raw)
+            v_nb_frames = int(frames_raw)
+            v_width = int(width_raw)
+            v_height = int(height_raw)
+        except (ValueError, TypeError) as exc:
+            return {"error": f"FFprobe video stream parameters inválidos: {exc}"}
+
+        video_validation = {
+            "valid": True,
+            "width": v_width,
+            "height": v_height,
+            "codec_name": str(codec_raw),
+            "pix_fmt": str(pix_fmt_raw),
+            "duration": v_duration,
+            "nb_frames": v_nb_frames,
+            "r_frame_rate": str(fps_raw),
+        }
+
+        if has_audio:
+            if not audio_stream:
+                return {
+                    "error": "Audio habilitado pero FFprobe no encontró stream de audio a:0 en el MP4 Master."
+                }
+
+            a_codec = str(audio_stream.get("codec_name", ""))
+            a_sample_rate_raw = audio_stream.get("sample_rate")
+            a_channels_raw = audio_stream.get("channels")
+            a_channel_layout = str(audio_stream.get("channel_layout", "mono"))
+            a_duration_raw = audio_stream.get("duration")
+
+            if a_codec != "aac":
+                return {"error": f"Master audio codec must be aac; observed {a_codec}."}
+
+            if a_sample_rate_raw in (None, "", "N/A"):
+                return {"error": "FFprobe audio sample_rate ausente."}
+            try:
+                a_sample_rate = int(a_sample_rate_raw)
+            except (ValueError, TypeError):
+                return {"error": f"FFprobe audio sample_rate inválido: {a_sample_rate_raw!r}"}
+
+            if a_sample_rate != 44100:
+                return {"error": f"Master audio sample_rate must be 44100; observed {a_sample_rate}."}
+
+            if a_channels_raw in (None, "", "N/A"):
+                return {"error": "FFprobe audio channels ausente."}
+            try:
+                a_channels = int(a_channels_raw)
+            except (ValueError, TypeError):
+                return {"error": f"FFprobe audio channels inválido: {a_channels_raw!r}"}
+
+            if a_channels != 1:
+                return {"error": f"Master audio channels must be 1 (mono); observed {a_channels}."}
+
+            if a_duration_raw in (None, "", "N/A"):
+                return {"error": "FFprobe audio duration ausente o N/A."}
+            try:
+                a_duration = float(a_duration_raw)
+            except (ValueError, TypeError):
+                return {"error": f"FFprobe audio duration inválida: {a_duration_raw!r}"}
+
+            audio_validation = {
+                "valid": True,
+                "codec_name": a_codec,
+                "sample_rate": a_sample_rate,
+                "channels": a_channels,
+                "channel_layout": "mono" if a_channels == 1 else a_channel_layout,
+                "duration": a_duration,
+            }
+
+            av_diff = abs(v_duration - a_duration)
+            av_sync_validation = {
+                "valid": av_diff <= 0.05,
+                "video_duration": v_duration,
+                "audio_duration": a_duration,
+                "diff": av_diff,
+            }
+
+            if not av_sync_validation["valid"]:
+                return {
+                    "error": f"A/V sync mismatch: video duration {v_duration}s vs audio duration {a_duration}s (diff {av_diff}s > 0.05s tolerance)."
+                }
+        else:
+            audio_validation = {
+                "valid": False,
+                "disabled": True,
+            }
+            av_sync_validation = {
+                "valid": False,
+                "disabled": True,
+            }
+
+        return {
+            "valid": True,
+            "video": video_validation,
+            "audio": audio_validation,
+            "av_sync": av_sync_validation,
+        }
+
+    except subprocess.CalledProcessError as exc:
+        return {
+            "error": (
+                exc.stderr.strip()
+                or "FFprobe Master terminó con código de error."
+            )
+        }
+    except (json.JSONDecodeError, OSError, ValueError) as exc:
+        return {"error": str(exc)}
+
+
+# ============================================================
 # FACTORY
 # ============================================================
 
@@ -830,9 +1008,6 @@ def run_factory(
         / f"{challenge_id}_manifest.json"
     )
 
-    # C7-A1.1: ruta contractual del maestro PCM.
-    # Python es la autoridad física de la ubicación; Godot recibe
-    # exactamente esta ruta mediante --audio-output.
     audio_pcm_path = (
         output_dir
         / "audio_master.pcm"
@@ -993,8 +1168,6 @@ def run_factory(
     # C7-A1.1: AUDIO EXPORT GATE (FAIL-CLOSED)
     # ========================================================
 
-    # Godot must explicitly declare whether audio is enabled or disabled.
-    # Missing [AUDIO_EXPORT_JSON] is never interpreted as video-only.
     if audio_export_info is None:
         cleanup_partial_outputs(
             output_dir,
@@ -1318,7 +1491,7 @@ def run_factory(
         }
 
     # ========================================================
-    # 4. GIF C6-D3
+    # 5. GIF C6-D3
     # ========================================================
 
     gif_hash: Optional[str] = None
@@ -1371,11 +1544,12 @@ def run_factory(
             }
 
     # ========================================================
-    # 6. FFPROBE MASTER MP4
+    # 6. FFPROBE MASTER MP4 (C7-A1.3: Audio/AV Audit)
     # ========================================================
 
-    probe_data = run_ffprobe(
-        final_video_path
+    probe_data = run_master_probe(
+        final_video_path,
+        has_audio
     )
 
     if "error" in probe_data:
@@ -1394,9 +1568,11 @@ def run_factory(
             },
         }
 
+    v_probe = probe_data["video"]
+
     if (
-        probe_data["width"] != MASTER_OUTPUT_WIDTH
-        or probe_data["height"] != MASTER_OUTPUT_HEIGHT
+        v_probe["width"] != MASTER_OUTPUT_WIDTH
+        or v_probe["height"] != MASTER_OUTPUT_HEIGHT
     ):
         cleanup_partial_outputs(output_dir, challenge_id)
         return {
@@ -1405,28 +1581,28 @@ def run_factory(
                 "code": "MASTER_RESOLUTION_MISMATCH",
                 "message": (
                     f"Master MP4 must be {MASTER_OUTPUT_WIDTH}x{MASTER_OUTPUT_HEIGHT}; "
-                    f"observed {probe_data['width']}x{probe_data['height']}."
+                    f"observed {v_probe['width']}x{v_probe['height']}."
                 ),
             },
         }
 
-    if probe_data["codec_name"] != "h264":
+    if v_probe["codec_name"] != "h264":
         cleanup_partial_outputs(output_dir, challenge_id)
         return {
             "success": False,
             "error": {
                 "code": "MASTER_CODEC_MISMATCH",
-                "message": f"Master codec must be h264; observed {probe_data['codec_name']}."
+                "message": f"Master codec must be h264; observed {v_probe['codec_name']}."
             },
         }
 
-    if probe_data["pix_fmt"] not in ("yuv420p", "yuvj420p"):
+    if v_probe["pix_fmt"] not in ("yuv420p", "yuvj420p"):
         cleanup_partial_outputs(output_dir, challenge_id)
         return {
             "success": False,
             "error": {
                 "code": "MASTER_PIXEL_FORMAT_MISMATCH",
-                "message": f"Master pixel format must be yuv420p-compatible; observed {probe_data['pix_fmt']}."
+                "message": f"Master pixel format must be yuv420p-compatible; observed {v_probe['pix_fmt']}."
             },
         }
 
@@ -1556,7 +1732,7 @@ def run_factory(
         / float(expected_fps)
     )
 
-    if probe_data[
+    if v_probe[
         "nb_frames"
     ] != t_total:
         cleanup_partial_outputs(
@@ -1575,7 +1751,7 @@ def run_factory(
         }
 
     if not math.isclose(
-        probe_data["duration"],
+        v_probe["duration"],
         expected_duration,
         abs_tol=0.05,
     ):
@@ -1598,7 +1774,7 @@ def run_factory(
         f"{int(expected_fps)}/1"
     )
 
-    if probe_data[
+    if v_probe[
         "r_frame_rate"
     ] != expected_rate:
         cleanup_partial_outputs(
@@ -1616,10 +1792,8 @@ def run_factory(
             },
         }
 
-    probe_data["valid"] = True
-
     # ========================================================
-    # 7. HASHES
+    # 8. HASHES
     # ========================================================
 
     raw_hash = compute_file_sha256(
@@ -1652,7 +1826,7 @@ def run_factory(
         }
 
     # ========================================================
-    # 8. MANIFEST
+    # 9. MANIFEST
     # ========================================================
 
     manifest_data = {
@@ -1702,8 +1876,6 @@ def run_factory(
             "PASS",
     }
 
-    # C7-A1.1: snapshot aislado de la salida acústica.
-    # La forma definitiva de `artifacts` de audio queda para A1.2.
     manifest_data["audio_export"] = dict(
         audio_export_info
     )
@@ -1913,10 +2085,10 @@ def audit_unit_manifest(
     require_gif: bool,
 ) -> Dict[str, Any]:
     """
-    Auditoría C5-C/C5-D + C6-D3.
+    Auditoría C5-C/C5-D + C6-D3 + C7-A1.3.
 
-    La auditoría física vuelve a calcular SHA-256 y, cuando GIF
-    está habilitado, exige que el GIF exista y esté certificado.
+    La auditoría física vuelve a calcular SHA-256 y verifica los bloques
+    de validación completos (vídeo, audio y sync).
     """
     challenge_definition = (
         read_challenge_definition(
@@ -2126,7 +2298,6 @@ def audit_unit_manifest(
         ),
     ]
 
-    # C6-D3: GIF obligatorio por defecto.
     if require_gif:
         if (
             "preview_gif"
@@ -2937,8 +3108,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description=(
             "Pause Challenge Engine - "
-            "Build Factory C6-D3 "
-            "(GIF + SHA-256)"
+            "Build Factory C7-A1.3 "
+            "(AV Audit)"
         )
     )
 
