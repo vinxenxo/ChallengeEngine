@@ -172,6 +172,24 @@ def compute_bytes_sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def compute_provenance_identity_sha256(provenance: Dict[str, Any]) -> str:
+    """Calcula la identidad canónica del bloque provenance sin autorreferencia."""
+    payload = {
+        key: value
+        for key, value in provenance.items()
+        if key != "provenance_sha256"
+    }
+
+    canonical = json.dumps(
+        payload,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode("utf-8")
+
+    return compute_bytes_sha256(canonical)
+
+
 def run_git(args: list[str]) -> Optional[str]:
     try:
         result = subprocess.run(
@@ -337,14 +355,9 @@ def build_provenance(
         },
     }
 
-    identity_payload = json.dumps(
-        provenance,
-        sort_keys=True,
-        separators=(",", ":"),
-        ensure_ascii=False,
-    ).encode("utf-8")
-
-    provenance["provenance_sha256"] = compute_bytes_sha256(identity_payload)
+    provenance["provenance_sha256"] = compute_provenance_identity_sha256(
+        provenance
+    )
 
     return provenance
 
@@ -1760,6 +1773,141 @@ def audit_unit_manifest(
             "error": {
                 "code": "UNIT_MANIFEST_ID_MISMATCH",
                 "message": f"{challenge_id}: ID mismatch.",
+            },
+        }
+
+    # ========================================================
+    # C8-A PROVENANCE GATE
+    # ========================================================
+
+    provenance = manifest.get("provenance")
+
+    if not isinstance(provenance, dict):
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_MISSING",
+                "message": f"{challenge_id}: provenance ausente o inválida.",
+            },
+        }
+
+    required_provenance_keys = {
+        "git",
+        "challenge_definition",
+        "referenced_files",
+        "authoring",
+        "provenance_sha256",
+    }
+
+    missing_provenance_keys = sorted(
+        key for key in required_provenance_keys
+        if key not in provenance
+    )
+
+    if missing_provenance_keys:
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_STRUCTURE_INVALID",
+                "message": (
+                    f"{challenge_id}: faltan claves de provenance: "
+                    + ", ".join(missing_provenance_keys)
+                ),
+            },
+        }
+
+    declared_provenance_hash = provenance.get("provenance_sha256")
+
+    if (
+        not isinstance(declared_provenance_hash, str)
+        or len(declared_provenance_hash) != 64
+    ):
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_HASH_INVALID",
+                "message": (
+                    f"{challenge_id}: provenance_sha256 no es "
+                    "un SHA-256 hexadecimal válido."
+                ),
+            },
+        }
+
+    computed_provenance_hash = compute_provenance_identity_sha256(
+        provenance
+    )
+
+    if computed_provenance_hash != declared_provenance_hash:
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_HASH_MISMATCH",
+                "message": (
+                    f"{challenge_id}: provenance_sha256 no coincide "
+                    "con el payload canónico."
+                ),
+            },
+        }
+
+    git_provenance = provenance.get("git")
+    if not isinstance(git_provenance, dict):
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_GIT_INVALID",
+                "message": f"{challenge_id}: provenance.git inválido.",
+            },
+        }
+
+    if not isinstance(git_provenance.get("commit"), str):
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_GIT_INVALID",
+                "message": f"{challenge_id}: provenance.git.commit inválido.",
+            },
+        }
+
+    challenge_provenance = provenance.get("challenge_definition")
+    if not isinstance(challenge_provenance, dict):
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_DEFINITION_INVALID",
+                "message": (
+                    f"{challenge_id}: provenance.challenge_definition inválida."
+                ),
+            },
+        }
+
+    if (
+        challenge_provenance.get("path")
+        != str(cfg_path.relative_to(PROJECT_ROOT)).replace("\\", "/")
+    ):
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_DEFINITION_PATH_MISMATCH",
+                "message": (
+                    f"{challenge_id}: path de challenge_definition no coincide."
+                ),
+            },
+        }
+
+    current_definition_hash = require_file_sha256(
+        cfg_path,
+        "challenge_definition",
+    )
+
+    if challenge_provenance.get("sha256") != current_definition_hash:
+        return {
+            "valid": False,
+            "error": {
+                "code": "UNIT_PROVENANCE_DEFINITION_HASH_MISMATCH",
+                "message": (
+                    f"{challenge_id}: hash de challenge_definition "
+                    "no coincide con el archivo actual."
+                ),
             },
         }
 
