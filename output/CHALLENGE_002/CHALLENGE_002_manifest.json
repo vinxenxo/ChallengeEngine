@@ -89,6 +89,25 @@
       "video_duration": 9.0,
       "audio_duration": 9.0,
       "diff": 0.0
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 396900,
+        "non_zero_samples": 36733,
+        "non_zero_ratio": 0.0925,
+        "peak_amplitude": 29475,
+        "peak_normalized": 0.8995,
+        "rms_amplitude": 3281.68,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -20.0,
+        "max_volume_db": -0.9,
+        "is_silent": false
+      }
     }
   },
   "status": "PASS",

@@ -5,6 +5,7 @@ import subprocess
 import argparse
 import math
 import hashlib
+import struct
 from pathlib import Path
 from typing import Dict, Any, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -480,13 +481,13 @@ def run_gif_probe(
 
 
 # ============================================================
-# VIDEO PROBE (RAW AVI)
+# VIDEO PROBE
 # ============================================================
 
 def run_ffprobe(
     video_path: Path
 ) -> Dict[str, Any]:
-    """Extrae observaciones del stream principal de vídeo RAW."""
+    """Extrae observaciones del stream principal de vídeo."""
     cmd = [
         "ffprobe",
         "-v",
@@ -703,16 +704,102 @@ def run_ffprobe(
 
 
 # ============================================================
-# MASTER MP4 PROBE (C7-A1.3: AV Stream & Sync Audit)
+# C7-A1.4: AUDIO CONTENT AUDIT (NON-SILENCE AUDITOR)
+# ============================================================
+
+def analyze_pcm_content(pcm_path: Path) -> Dict[str, Any]:
+    """Analiza la señal acústica física en el PCM crudo (s16le)."""
+    if not pcm_path.is_file() or pcm_path.stat().st_size == 0:
+        return {"valid": False, "error": "PCM ausente o vacío."}
+
+    try:
+        with open(pcm_path, "rb") as f:
+            raw_data = f.read()
+
+        sample_count = len(raw_data) // 2
+        if sample_count == 0:
+            return {"valid": False, "error": "PCM sin datos."}
+
+        samples = struct.unpack(f"<{sample_count}h", raw_data)
+
+        peak = max(abs(s) for s in samples)
+        non_zero = sum(1 for s in samples if s != 0)
+        sum_squares = sum(s * s for s in samples)
+        rms = math.sqrt(sum_squares / sample_count)
+
+        is_non_silent = peak > 100 and non_zero > 0
+
+        return {
+            "valid": is_non_silent,
+            "total_samples": sample_count,
+            "non_zero_samples": non_zero,
+            "non_zero_ratio": round(non_zero / float(sample_count), 4),
+            "peak_amplitude": peak,
+            "peak_normalized": round(peak / 32768.0, 4),
+            "rms_amplitude": round(rms, 2),
+            "is_silent": not is_non_silent,
+        }
+    except Exception as exc:
+        return {"valid": False, "error": f"Error analizando PCM: {exc}"}
+
+
+def analyze_mp4_audio_volume(mp4_path: Path) -> Dict[str, Any]:
+    """Aplica el filtro volumedetect de FFmpeg al MP4 para certificar nivel acústico AAC."""
+    cmd = [
+        "ffmpeg", "-y", "-i", str(mp4_path),
+        "-af", "volumedetect",
+        "-f", "null", "-"
+    ]
+    try:
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        stderr = res.stderr
+
+        mean_vol = None
+        max_vol = None
+
+        for line in stderr.splitlines():
+            if "mean_volume:" in line:
+                parts = line.split("mean_volume:")
+                if len(parts) > 1:
+                    try:
+                        mean_vol = float(parts[1].replace("dB", "").strip())
+                    except ValueError:
+                        pass
+            elif "max_volume:" in line:
+                parts = line.split("max_volume:")
+                if len(parts) > 1:
+                    try:
+                        max_vol = float(parts[1].replace("dB", "").strip())
+                    except ValueError:
+                        pass
+
+        if max_vol is None:
+            return {"valid": False, "error": "FFmpeg volumedetect no emitió max_volume."}
+
+        is_non_silent = max_vol > -90.0
+
+        return {
+            "valid": is_non_silent,
+            "mean_volume_db": mean_vol,
+            "max_volume_db": max_vol,
+            "is_silent": not is_non_silent,
+        }
+    except Exception as exc:
+        return {"valid": False, "error": f"Error ejecutando volumedetect: {exc}"}
+
+
+# ============================================================
+# MASTER MP4 PROBE (C7-A1.3 + C7-A1.4)
 # ============================================================
 
 def run_master_probe(
     video_path: Path,
+    pcm_path: Path,
     has_audio: bool
 ) -> Dict[str, Any]:
     """
-    Inspección exhaustiva del MP4 Master (C7-A1.3):
-    Valida vídeo (v:0) y, si has_audio es True, valida audio (a:0) y sincronización A/V.
+    Inspección exhaustiva del MP4 Master (C7-A1.3 / C7-A1.4):
+    Valida vídeo (v:0), audio (a:0) o su ausencia estricta, sincronización A/V y contenido acústico.
     """
     cmd = [
         "ffprobe",
@@ -852,13 +939,42 @@ def run_master_probe(
                 return {
                     "error": f"A/V sync mismatch: video duration {v_duration}s vs audio duration {a_duration}s (diff {av_diff}s > 0.05s tolerance)."
                 }
+
+            # C7-A1.4: Auditoría física de no-silencio
+            pcm_analysis = analyze_pcm_content(pcm_path)
+            if not pcm_analysis["valid"]:
+                return {
+                    "error": f"Auditoría física PCM fallida (silencio o datos inválidos): {pcm_analysis.get('error', 'Señal plana')}"
+                }
+
+            aac_analysis = analyze_mp4_audio_volume(video_path)
+            if not aac_analysis["valid"]:
+                return {
+                    "error": f"Auditoría física AAC fallida (silencio en contenedor MP4): max_volume={aac_analysis.get('max_volume_db')} dB"
+                }
+
+            audio_content_validation = {
+                "valid": True,
+                "pcm_signal": pcm_analysis,
+                "aac_volume": aac_analysis,
+            }
+
         else:
+            if audio_stream is not None:
+                return {
+                    "error": "Audio deshabilitado pero el MP4 Master contiene un stream de audio a:0 no autorizado."
+                }
             audio_validation = {
-                "valid": False,
+                "valid": True,
                 "disabled": True,
+                "audio_streams_found": 0,
             }
             av_sync_validation = {
-                "valid": False,
+                "valid": True,
+                "disabled": True,
+            }
+            audio_content_validation = {
+                "valid": True,
                 "disabled": True,
             }
 
@@ -867,6 +983,7 @@ def run_master_probe(
             "video": video_validation,
             "audio": audio_validation,
             "av_sync": av_sync_validation,
+            "audio_content": audio_content_validation,
         }
 
     except subprocess.CalledProcessError as exc:
@@ -1544,11 +1661,12 @@ def run_factory(
             }
 
     # ========================================================
-    # 6. FFPROBE MASTER MP4 (C7-A1.3: Audio/AV Audit)
+    # 6. MASTER MP4 PROBE (C7-A1.3 + C7-A1.4)
     # ========================================================
 
     probe_data = run_master_probe(
         final_video_path,
+        audio_pcm_path,
         has_audio
     )
 
@@ -1709,6 +1827,7 @@ def run_factory(
             },
         }
 
+    expected_total_frames = timeline_cfg["total_frames"]
     if t_total != expected_total_frames:
         cleanup_partial_outputs(
             output_dir,
@@ -2085,10 +2204,7 @@ def audit_unit_manifest(
     require_gif: bool,
 ) -> Dict[str, Any]:
     """
-    Auditoría C5-C/C5-D + C6-D3 + C7-A1.3.
-
-    La auditoría física vuelve a calcular SHA-256 y verifica los bloques
-    de validación completos (vídeo, audio y sync).
+    Auditoría C5-C/C5-D + C6-D3 + C7-A1.4.
     """
     challenge_definition = (
         read_challenge_definition(
@@ -3108,8 +3224,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description=(
             "Pause Challenge Engine - "
-            "Build Factory C7-A1.3 "
-            "(AV Audit)"
+            "Build Factory C7-A1.4 "
+            "(Audio Content Audit)"
         )
     )
 
