@@ -173,79 +173,121 @@ def main() -> None:
         print("[C8-A.5-TEST] Sensibilidad asset: PASS")
 
         # ----------------------------------------------------
+        # Preparación de entorno autocontenido para auditoría (validate-only / mock artefactos)
+        # ----------------------------------------------------
+        audit_temp_base = temp_root / "audit_output"
+        audit_challenge_dir = audit_temp_base / "CHALLENGE_001"
+        audit_challenge_dir.mkdir(parents=True, exist_ok=True)
+
+        # Generar manifiesto base canónico mínimo autocontenido utilizando build_provenance real
+        base_provenance = build_factory.build_provenance(SOURCE_CONFIG, challenge)
+        
+        # Crear archivos de artefactos dummy requeridos por el auditor físico
+        dummy_raw_video = audit_challenge_dir / "CHALLENGE_001_raw.avi"
+        dummy_raw_video.write_bytes(b"DUMMY_RAW_AVI")
+        dummy_raw_hash = build_factory.compute_file_sha256(dummy_raw_video)
+
+        dummy_final_video = audit_challenge_dir / "CHALLENGE_001.mp4"
+        dummy_final_video.write_bytes(b"DUMMY_FINAL_MP4")
+        dummy_final_hash = build_factory.compute_file_sha256(dummy_final_video)
+
+        dummy_gif = audit_challenge_dir / "CHALLENGE_001.gif"
+        dummy_gif.write_bytes(b"DUMMY_GIF")
+        dummy_gif_hash = build_factory.compute_file_sha256(dummy_gif)
+
+        synthetic_manifest = {
+            "manifest_version": build_factory.MANIFEST_VERSION,
+            "factory_version": build_factory.FACTORY_VERSION,
+            "challenge_id": "CHALLENGE_001",
+            "provenance": base_provenance,
+            "declarative_metadata": build_factory.build_declarative_metadata(challenge),
+            "telemetry": {
+                "rng_version": build_factory.read_rng_version(challenge),
+                "godot_version": "4.7.1-stable (mock)",
+                "total_frames": 540,
+                "hook_frames": 0,
+                "game_frames": 420,
+                "reveal_frames": 0,
+                "cta_frames": 120,
+            },
+            "artifacts": {
+                "raw_video": dummy_raw_video.name,
+                "raw_video_sha256": dummy_raw_hash,
+                "final_video": dummy_final_video.name,
+                "final_video_sha256": dummy_final_hash,
+                "preview_gif": dummy_gif.name,
+                "preview_gif_sha256": dummy_gif_hash,
+            },
+            "validation": {
+                "valid": True,
+                "video": {"valid": True, "width": 1080, "height": 1920, "codec_name": "h264", "pix_fmt": "yuv420p", "duration": 9.0, "nb_frames": 540, "r_frame_rate": "60/1"},
+                "audio": {"valid": True, "codec_name": "aac", "sample_rate": 44100, "channels": 1, "channel_layout": "mono", "duration": 9.0},
+                "av_sync": {"valid": True, "video_duration": 9.0, "audio_duration": 9.0, "diff": 0.0, "tolerance": 0.05},
+                "audio_content": {
+                    "valid": True,
+                    "pcm_signal": {"valid": True, "total_samples": 396900, "non_zero_samples": 1000, "non_zero_ratio": 0.01, "peak_amplitude": 10000, "peak_normalized": 0.3, "rms_amplitude": 1000.0, "is_silent": False},
+                    "aac_volume": {"valid": True, "mean_volume_db": -20.0, "max_volume_db": -3.0, "is_silent": False}
+                }
+            },
+            "audio_export": {
+                "audio_enabled": True,
+                "audio_master_sha256": "0" * 64
+            },
+            "gif_validation": {
+                "valid": True,
+                "width": 540,
+                "height": 960,
+                "fps": 30
+            },
+            "status": "PASS"
+        }
+
+        manifest_copy_path = audit_challenge_dir / "CHALLENGE_001_manifest.json"
+
+        # ----------------------------------------------------
         # 4. Provenance tampering gate (audit_unit_manifest)
         # ----------------------------------------------------
-        source_unit_dir = PROJECT_ROOT / "export" / "c8_a_unit_001" / "CHALLENGE_001"
-        if source_unit_dir.exists():
-            audit_temp_base = temp_root / "audit_output"
-            audit_challenge_dir = audit_temp_base / "CHALLENGE_001"
-            audit_challenge_dir.mkdir(parents=True, exist_ok=True)
+        tampered_provenance_manifest = json.loads(json.dumps(synthetic_manifest))
+        tampered_provenance_manifest["provenance"]["provenance_sha256"] = "0" * 64
+        manifest_copy_path.write_text(json.dumps(tampered_provenance_manifest, indent=2, ensure_ascii=False), encoding="utf-8")
 
-            for item in source_unit_dir.iterdir():
-                if item.is_file():
-                    shutil.copy2(item, audit_challenge_dir / item.name)
+        audit_res_1 = build_factory.audit_unit_manifest(
+            SOURCE_CONFIG,
+            audit_temp_base,
+            {"success": True},
+            require_gif=True,
+        )
 
-            manifest_copy_path = audit_challenge_dir / "CHALLENGE_001_manifest.json"
-            manifest_data = json.loads(manifest_copy_path.read_text(encoding="utf-8"))
-
-            manifest_data["provenance"]["provenance_sha256"] = "0" * 64
-            manifest_copy_path.write_text(json.dumps(manifest_data, indent=2, ensure_ascii=False), encoding="utf-8")
-
-            fake_exec_result = {"success": True}
-            audit_res = build_factory.audit_unit_manifest(
-                PROJECT_ROOT / "challenges_c7" / "CHALLENGE_001.json",
-                audit_temp_base,
-                fake_exec_result,
-                require_gif=True,
-            )
-
-            assert_true(
-                not audit_res["valid"] and audit_res["error"]["code"] == "UNIT_PROVENANCE_HASH_MISMATCH",
-                "C8-A.5 tamper provenance: el auditor no rechazó el hash corrupto.",
-            )
-            print("[C8-A.5-TEST] Provenance tampering gate: PASS")
+        assert_true(
+            not audit_res_1["valid"] and audit_res_1["error"]["code"] == "UNIT_PROVENANCE_HASH_MISMATCH",
+            "C8-A.5 tamper provenance: el auditor no rechazó el hash corrupto.",
+        )
+        print("[C8-A.5-TEST] Provenance tampering gate: PASS")
 
         # ----------------------------------------------------
         # 5. Definition hash tampering gate (audit_unit_manifest)
         # ----------------------------------------------------
-        if source_unit_dir.exists():
-            for item in source_unit_dir.iterdir():
-                if item.is_file():
-                    shutil.copy2(item, audit_challenge_dir / item.name)
-
-            manifest_copy_path = audit_challenge_dir / "CHALLENGE_001_manifest.json"
-            manifest_data = json.loads(manifest_copy_path.read_text(encoding="utf-8"))
-
-            manifest_data["provenance"]["challenge_definition"]["sha256"] = "0" * 64
-
-            manifest_data["provenance"]["provenance_sha256"] = (
-                build_factory.compute_provenance_identity_sha256(
-                    manifest_data["provenance"]
-                )
+        tampered_def_manifest = json.loads(json.dumps(synthetic_manifest))
+        tampered_def_manifest["provenance"]["challenge_definition"]["sha256"] = "0" * 64
+        tampered_def_manifest["provenance"]["provenance_sha256"] = (
+            build_factory.compute_provenance_identity_sha256(
+                tampered_def_manifest["provenance"]
             )
+        )
+        manifest_copy_path.write_text(json.dumps(tampered_def_manifest, indent=2, ensure_ascii=False), encoding="utf-8")
 
-            manifest_copy_path.write_text(
-                json.dumps(
-                    manifest_data,
-                    indent=2,
-                    ensure_ascii=False,
-                ),
-                encoding="utf-8",
-            )
+        audit_res_2 = build_factory.audit_unit_manifest(
+            SOURCE_CONFIG,
+            audit_temp_base,
+            {"success": True},
+            require_gif=True,
+        )
 
-            fake_exec_result = {"success": True}
-            audit_res = build_factory.audit_unit_manifest(
-                PROJECT_ROOT / "challenges_c7" / "CHALLENGE_001.json",
-                audit_temp_base,
-                fake_exec_result,
-                require_gif=True,
-            )
-
-            assert_true(
-                not audit_res["valid"] and audit_res["error"]["code"] == "UNIT_PROVENANCE_DEFINITION_HASH_MISMATCH",
-                "C8-A.5 tamper definition hash: el auditor no rechazó el hash de definición corrupto.",
-            )
-            print("[C8-A.5-TEST] Definition hash tampering gate: PASS")
+        assert_true(
+            not audit_res_2["valid"] and audit_res_2["error"]["code"] == "UNIT_PROVENANCE_DEFINITION_HASH_MISMATCH",
+            "C8-A.5 tamper definition hash: el auditor no rechazó el hash de definición corrupto.",
+        )
+        print("[C8-A.5-TEST] Definition hash tampering gate: PASS")
 
         print("[C8-A.5-TEST] RESULTADO GLOBAL: PASS")
 
