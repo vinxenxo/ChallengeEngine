@@ -3,6 +3,9 @@ class_name AudioGeneratorRegistry
 extends RefCounted
 
 const ToneBurstGenerator = preload("res://core/audio/generators/ToneBurstGenerator.gd")
+const NoiseBurstGenerator = preload(
+	"res://core/audio/generators/NoiseBurstGenerator.gd"
+)
 
 var _registry: Dictionary = {}
 
@@ -11,6 +14,7 @@ func _init() -> void:
 
 func _register_default_generators() -> void:
 	register_generator("tone_burst", ToneBurstGenerator.new())
+	register_generator("noise_burst", NoiseBurstGenerator.new())
 
 func register_generator(generator_type: String, generator_instance: RefCounted) -> bool:
 	var key := generator_type.strip_edges()

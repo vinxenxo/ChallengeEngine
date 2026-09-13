@@ -1,4 +1,4 @@
-# res://core/deterministic/RNGStreamRegistry.gd
+# core/deterministic/RNGStreamRegistry.gd
 class_name RNGStreamRegistry
 extends RefCounted
 
@@ -56,6 +56,7 @@ const STREAM_AUDIO_PITCH = 3001
 const STREAM_AUDIO_TIMBRE = 3002
 const STREAM_AUDIO_ENVELOPE = 3003
 const STREAM_AUDIO_MODULATION = 3004
+const STREAM_AUDIO_NOISE = 3005
 
 var _definitions: Dictionary = {}
 
@@ -107,6 +108,7 @@ func _init() -> void:
 	_register(STREAM_AUDIO_TIMBRE, "AUDIO_TIMBRE", Domain.AUDIO, "Timbre/color modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
 	_register(STREAM_AUDIO_ENVELOPE, "AUDIO_ENVELOPE", Domain.AUDIO, "Envelope modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
 	_register(STREAM_AUDIO_MODULATION, "AUDIO_MODULATION", Domain.AUDIO, "General parameter modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["ToneBurstGenerator"])
+	_register(STREAM_AUDIO_NOISE, "AUDIO_NOISE", Domain.AUDIO, "Procedural noise seed/modulation", "audio_event_v1(tick, sequence, offset)", "C7", ["NoiseBurstGenerator"])
 
 func _register(id: int, name: String, domain: Domain, description: String, index_semantics: String, version_introduced: String, allowed_consumers: Array[String]) -> void:
 	_definitions[id] = RNGStreamDefinition.new(id, name, domain, description, index_semantics, version_introduced, allowed_consumers)
