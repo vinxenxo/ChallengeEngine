@@ -72,7 +72,7 @@
   "canonical_v2": {
     "audio": {
       "enabled": true,
-      "profile_id": "c7_test_profile"
+      "profile_id": "c7_profile_mixed_overlap"
     }
   }
 }

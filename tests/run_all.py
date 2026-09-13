@@ -96,6 +96,7 @@ KNOWN_SUITES = {
     "C7A05AudioGeneratorRegistryTest.gd" : "[C7A05-TEST] RESULTADO GLOBAL: PASS",
     "C7A06MultiGeneratorDeterminismTest.gd" : "[C7A06-TEST] RESULTADO GLOBAL: PASS",
     "C7A03AudioTimelineTest.gd" : "[C7A03_AUDIO_TIMELINE_SUITE] PASS",
+    "C7A07MultiProfileCorpusTest.gd" : "[C7A07-TEST] RESULTADO GLOBAL: PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 
