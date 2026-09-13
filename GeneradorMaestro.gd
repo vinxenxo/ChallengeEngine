@@ -386,6 +386,12 @@ func _ready() -> void:
 		+ JSON.stringify(telemetry)
 	)
 
+	# --------------------------------------------------------
+	# C7-A1.1: AUDIO EXPORT PIPELINE HOOK (CERTIFIED v4)
+	# --------------------------------------------------------
+	if not _process_audio_export_pipeline():
+		return
+
 	if validate_only:
 		get_tree().quit(0)
 		return
@@ -1031,3 +1037,128 @@ func has_user_flag(
 		OS.get_cmdline_user_args()
 	)
 	return args.has(flag)
+
+# ============================================================
+# C7-A1.1 — AUDIO EXPORT PIPELINE HOOK (CERTIFIED CONTRACT v4)
+# ============================================================
+
+func _process_audio_export_pipeline() -> bool:
+	# Invariante #3: --validate-only no genera artefactos físicos de audio
+	if validate_only:
+		print("[AUDIO_EXPORT_JSON] " + JSON.stringify({"audio_enabled": false}))
+		return true
+		
+	# Invariante #1 & Fuente Soberana: Lectura exclusiva del Canonical V2 efectivo desde runtime_context
+	var canonical_v2 = runtime_context.canonical_v2 if runtime_context != null else {}
+	if canonical_v2.is_empty() or not canonical_v2.has("audio") or canonical_v2["audio"] == null:
+		# Estado 1: Audio ausente -> exportación visual normal sin PCM fantasma
+		print("[AUDIO_EXPORT_JSON] " + JSON.stringify({"audio_enabled": false}))
+		return true
+		
+	var audio_node = canonical_v2["audio"]
+	var profile_id = ""
+	
+	if typeof(audio_node) == TYPE_STRING:
+		profile_id = audio_node.strip_edges()
+	elif typeof(audio_node) == TYPE_DICTIONARY:
+		if audio_node.has("profile_id") and typeof(audio_node["profile_id"]) == TYPE_STRING:
+			profile_id = audio_node["profile_id"].strip_edges()
+			
+	# Invariante #2 (estado presente + inválido) e Invariante #6 (Fail-closed real)
+	if profile_id.is_empty():
+		var err_msg = "C7_FAIL_CLOSED: canonical_v2.audio presente pero profile_id inválido o ausente."
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "audio_profile_resolution"}))
+		get_tree().quit(1)
+		return false
+		
+	# Validación estricta de existencia en el registro de perfiles
+	var profile_dict = AudioProfileRegistry.get_profile(profile_id)
+	if profile_dict.is_empty():
+		var err_msg = "C7_FAIL_CLOSED: El perfil de audio '" + profile_id + "' no existe en el registro."
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "audio_profile_registry"}))
+		get_tree().quit(1)
+		return false
+		
+	# Validación contractual estricta (El validador devuelve Array de errores en el baseline actual)
+	var profile_errors: Array = AudioProfileValidator.validate(profile_dict)
+	if not profile_errors.is_empty():
+		var err_msg = "C7_FAIL_CLOSED: El perfil de audio '" + profile_id + "' viola el esquema de validación: " + str(profile_errors)
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "audio_profile_validation"}))
+		get_tree().quit(1)
+		return false
+		
+	# Contrato Físico estricto: La ruta PCM debe venir provista contractualmente por el supervisor (--audio-output)
+	var audio_output_path = get_cli_arg_value("--audio-output")
+	if audio_output_path.is_empty():
+		var err_msg = "C7_FAIL_CLOSED: Audio solicitado por authoring pero no se proporcionó '--audio-output=<path>' desde la CLI."
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "audio_output_path"}))
+		get_tree().quit(1)
+		return false
+			
+	var global_pcm_path = ProjectSettings.globalize_path(audio_output_path)
+	var parent_dir = audio_output_path.get_base_dir()
+	if not parent_dir.is_empty() and not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(parent_dir)):
+		var dir_err = DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(parent_dir))
+		if dir_err != OK:
+			var err_msg = "C7_FAIL_CLOSED: No se pudo crear el directorio de salida para audio: " + parent_dir
+			push_error(err_msg)
+			print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "filesystem"}))
+			get_tree().quit(1)
+			return false
+			
+	# Invariante #4: Verificación estricta y type-safe de la semilla (TYPE_INT obligatorio)
+	if final_result.metadata == null or not final_result.metadata.has("seed_used"):
+		var err_msg = "C7_FAIL_CLOSED: SimulationResult.metadata carece de 'seed_used'."
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "seed_metadata"}))
+		get_tree().quit(1)
+		return false
+		
+	var raw_seed = final_result.metadata["seed_used"]
+	if typeof(raw_seed) != TYPE_INT:
+		var err_msg = "C7_FAIL_CLOSED: 'seed_used' debe ser estrictamente un entero (TYPE_INT), recibido: " + str(typeof(raw_seed))
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "seed_type"}))
+		get_tree().quit(1)
+		return false
+		
+	# Invocación del AudioExportBridge certificado (C7-A0.4)
+	var export_result = AudioExportBridge.render_and_export_track(
+		final_result,
+		timeline,
+		profile_id,
+		global_pcm_path
+	)
+	
+	if not export_result.get("success", false):
+		var err_msg = "C7_FAIL_CLOSED: AudioExportBridge falló: " + str(export_result.get("error", "unknown"))
+		push_error(err_msg)
+		print("[ERROR_JSON] " + JSON.stringify({"error": err_msg, "stage": "bridge_render"}))
+		get_tree().quit(1)
+		return false
+		
+	# Invariante #5: Emisión de canal complementario sin alterar [TELEMETRY_JSON]
+	var audio_telemetry = {
+		"audio_enabled": true,
+		"audio_path": audio_output_path,
+		"sample_rate": export_result.get("sample_rate", 44100),
+		"channels": export_result.get("channels", 1),
+		"format": export_result.get("format", "s16le"),
+		"total_samples": export_result.get("total_samples", 0),
+		"canonical_hash": export_result.get("canonical_hash", "")
+	}
+	print("[AUDIO_EXPORT_JSON] " + JSON.stringify(audio_telemetry))
+	return true
+
+
+# Helper auxiliar CLI para extraer argumentos de prefijo exacto
+func get_cli_arg_value(flag_prefix: String) -> String:
+	var args = OS.get_cmdline_user_args()
+	for arg in args:
+		if arg.begins_with(flag_prefix + "="):
+			return arg.substr(flag_prefix.length() + 1)
+	return ""

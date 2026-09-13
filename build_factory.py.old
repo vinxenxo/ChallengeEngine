@@ -830,13 +830,8 @@ def run_factory(
         / f"{challenge_id}_manifest.json"
     )
 
-    # C7-A1.1: ruta contractual del maestro PCM.
-    # Python es la autoridad física de la ubicación; Godot recibe
-    # exactamente esta ruta mediante --audio-output.
-    audio_pcm_path = (
-        output_dir
-        / "audio_master.pcm"
-    )
+    # Contrato Físico C7-A1.1: Ruta contractual del maestro PCM de audio
+    audio_pcm_path = output_dir / "audio_master.pcm"
 
     fps = timeline_cfg["fps"]
     expected_total_frames = (
@@ -990,126 +985,6 @@ def run_factory(
         }
 
     # ========================================================
-    # C7-A1.1: AUDIO EXPORT GATE (FAIL-CLOSED)
-    # ========================================================
-
-    # Godot must explicitly declare whether audio is enabled or disabled.
-    # Missing [AUDIO_EXPORT_JSON] is never interpreted as video-only.
-    if audio_export_info is None:
-        cleanup_partial_outputs(
-            output_dir,
-            challenge_id
-        )
-
-        return {
-            "success": False,
-            "error": {
-                "code": "MISSING_AUDIO_EXPORT_JSON",
-                "message": (
-                    "Godot terminó sin error crítico pero no emitió "
-                    "[AUDIO_EXPORT_JSON]. Violación de fail-closed."
-                ),
-            },
-        }
-
-    if not isinstance(audio_export_info, dict):
-        cleanup_partial_outputs(
-            output_dir,
-            challenge_id
-        )
-
-        return {
-            "success": False,
-            "error": {
-                "code": "INVALID_AUDIO_EXPORT_JSON",
-                "message": (
-                    "[AUDIO_EXPORT_JSON] debe contener un objeto JSON."
-                ),
-            },
-        }
-
-    if "audio_enabled" not in audio_export_info:
-        cleanup_partial_outputs(
-            output_dir,
-            challenge_id
-        )
-
-        return {
-            "success": False,
-            "error": {
-                "code": "INVALID_AUDIO_EXPORT_JSON",
-                "message": (
-                    "[AUDIO_EXPORT_JSON] carece de la clave "
-                    "audio_enabled."
-                ),
-            },
-        }
-
-    audio_enabled_raw = audio_export_info["audio_enabled"]
-
-    if type(audio_enabled_raw) is not bool:
-        cleanup_partial_outputs(
-            output_dir,
-            challenge_id
-        )
-
-        return {
-            "success": False,
-            "error": {
-                "code": "INVALID_AUDIO_EXPORT_JSON",
-                "message": (
-                    "audio_enabled debe ser booleano."
-                ),
-            },
-        }
-
-    has_audio = audio_enabled_raw
-
-    audio_hash: Optional[str] = None
-
-    if has_audio:
-        if (
-            not audio_pcm_path.is_file()
-            or audio_pcm_path.stat().st_size <= 0
-        ):
-            cleanup_partial_outputs(
-                output_dir,
-                challenge_id
-            )
-
-            return {
-                "success": False,
-                "error": {
-                    "code": "MISSING_AUDIO_PCM",
-                    "message": (
-                        "Audio habilitado pero el archivo PCM "
-                        "no existe o está vacío."
-                    ),
-                },
-            }
-
-        audio_hash = compute_file_sha256(
-            audio_pcm_path
-        )
-
-        if not audio_hash:
-            cleanup_partial_outputs(
-                output_dir,
-                challenge_id
-            )
-
-            return {
-                "success": False,
-                "error": {
-                    "code": "AUDIO_HASH_FAILED",
-                    "message": (
-                        "No se pudo calcular SHA-256 del "
-                        "PCM canónico."
-                    ),
-                },
-            }
-
-    # ========================================================
     # RNG provenance gate
     # ========================================================
 
@@ -1228,26 +1103,71 @@ def run_factory(
         }
 
     # ========================================================
-    # 4. MP4 MASTER
+    # 4. MP4 MASTER (Preparado para A1.2 Multiplexado Audiovisual, 
+    # actualmente mantiene la conversión de vídeo certificado)
     # ========================================================
 
-    ffmpeg_cmd = [
-        "ffmpeg",
-        "-y",
-        "-i",
-        str(raw_video_path),
-        "-vf",
-        f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
-        "-c:v",
-        "libx264",
-        "-preset",
-        "fast",
-        "-crf",
-        "18",
-        "-pix_fmt",
-        "yuv420p",
-        str(final_video_path),
-    ]
+    has_audio = audio_export_info and audio_export_info.get("audio_enabled", False)
+
+    if has_audio:
+        if not audio_pcm_path.exists() or audio_pcm_path.stat().st_size <= 0:
+            cleanup_partial_outputs(output_dir, challenge_id)
+            return {
+                "success": False,
+                "error": {
+                    "code": "MISSING_AUDIO_PCM",
+                    "message": "Audio habilitado pero el archivo PCM no existe o está vacío.",
+                },
+            }
+        # Comando FFmpeg audiovisual (Fase A1.2)
+        ffmpeg_cmd = [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(raw_video_path),
+            "-f",
+            "s16le",
+            "-ar",
+            "44100",
+            "-ac",
+            "1",
+            "-i",
+            str(audio_pcm_path),
+            "-vf",
+            f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-crf",
+            "18",
+            "-pix_fmt",
+            "yuv420p",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "192k",
+            str(final_video_path),
+        ]
+    else:
+        # Comando FFmpeg vídeo-only histórico
+        ffmpeg_cmd = [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(raw_video_path),
+            "-vf",
+            f"scale={MASTER_OUTPUT_WIDTH}:{MASTER_OUTPUT_HEIGHT}:flags=lanczos",
+            "-c:v",
+            "libx264",
+            "-preset",
+            "fast",
+            "-crf",
+            "18",
+            "-pix_fmt",
+            "yuv420p",
+            str(final_video_path),
+        ]
 
     ffmpeg_proc = subprocess.run(
         ffmpeg_cmd,
@@ -1574,7 +1494,7 @@ def run_factory(
     probe_data["valid"] = True
 
     # ========================================================
-    # 7. HASHES
+    # 7. HASHES (Vídeo y PCM opcional)
     # ========================================================
 
     raw_hash = compute_file_sha256(
@@ -1585,9 +1505,14 @@ def run_factory(
         final_video_path
     )
 
+    audio_hash: Optional[str] = None
+    if has_audio and audio_pcm_path.exists():
+        audio_hash = compute_file_sha256(audio_pcm_path)
+
     if (
         not raw_hash
         or not final_hash
+        or (has_audio and not audio_hash)
     ):
         cleanup_partial_outputs(
             output_dir,
@@ -1610,6 +1535,21 @@ def run_factory(
     # 8. MANIFEST
     # ========================================================
 
+    manifest_artifacts = {
+        "raw_video":
+            raw_video_path.name,
+        "raw_video_sha256":
+            raw_hash,
+        "final_video":
+            final_video_path.name,
+        "final_video_sha256":
+            final_hash,
+    }
+
+    if has_audio and audio_hash:
+        manifest_artifacts["audio_master"] = audio_pcm_path.name
+        manifest_artifacts["audio_master_sha256"] = audio_hash
+
     manifest_data = {
         "manifest_version":
             MANIFEST_VERSION,
@@ -1626,19 +1566,8 @@ def run_factory(
         "telemetry":
             telemetry,
 
-        "artifacts": {
-            "raw_video":
-                raw_video_path.name,
-
-            "raw_video_sha256":
-                raw_hash,
-
-            "final_video":
-                final_video_path.name,
-
-            "final_video_sha256":
-                final_hash,
-        },
+        "artifacts":
+            manifest_artifacts,
 
         "output_contract": {
             "simulation_canvas": [1080, 1920],
@@ -1657,16 +1586,8 @@ def run_factory(
             "PASS",
     }
 
-    # C7-A1.1: snapshot aislado de la salida acústica.
-    # La forma definitiva de `artifacts` de audio queda para A1.2.
-    manifest_data["audio_export"] = dict(
-        audio_export_info
-    )
-
-    if has_audio and audio_hash is not None:
-        manifest_data["audio_export"][
-            "audio_master_sha256"
-        ] = audio_hash
+    if has_audio and audio_export_info:
+        manifest_data["audio"] = audio_export_info
 
     if not no_gif:
         manifest_data[
@@ -2131,6 +2052,10 @@ def audit_unit_manifest(
                         "gif_validation no certificado.",
                 },
             }
+
+    audio_info = manifest.get("audio")
+    if isinstance(audio_info, dict) and audio_info.get("audio_enabled", False):
+        checks.append(("audio_master", "audio_master_sha256"))
 
     for file_key, hash_key in checks:
 

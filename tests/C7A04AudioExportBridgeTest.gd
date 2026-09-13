@@ -16,10 +16,14 @@ func _assert(condition: bool, fail_msg: String) -> void:
 
 class MockVideoTimeline extends VideoTimeline:
 	func _init() -> void:
-		hook_frames = 60
-		game_frames = 120
-		reveal_frames = 0
-		cta_frames = 60
+		# Inicialización mediante la API real de VideoTimeline de producción
+		super._init({
+			"fps": 60,
+			"hook_duration": 1.0,
+			"game_duration": 2.0,
+			"reveal_duration": 0.0,
+			"cta_duration": 1.0
+		})
 		
 	func get_total_frames() -> int:
 		return hook_frames + game_frames + reveal_frames + cta_frames

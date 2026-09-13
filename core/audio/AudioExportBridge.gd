@@ -26,7 +26,7 @@ static func render_and_export_track(
 	var event_stream = AudioTimelineResolver.resolve(simulation_result, video_timeline)
 	var events = event_stream.get_all_events()
 	
-	var total_frames = video_timeline.get_total_frames()
+	var total_frames = video_timeline.total_frames
 	var total_samples = total_frames * SAMPLES_PER_FRAME
 	
 	var master_buffer = AudioBuffer.new(SAMPLE_RATE, 1)
