@@ -16,6 +16,7 @@ static func is_registered(mechanic_id: String) -> bool:
 static func initialize_defaults() -> void:
 	if _adapters.is_empty():
 		register_adapter(load("res://core/authoring/adapters/PilotAuthoringAdapter.gd").new())
+		register_adapter(load("res://core/authoring/adapters/ParkingV2AuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/HitAuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/CatchAuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/FindAuthoringAdapter.gd").new())

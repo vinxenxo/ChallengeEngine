@@ -1,17 +1,80 @@
 {
   "profile_id": "default_parking_v2",
   "mechanic": "parking_v2",
-  "allowed_parameters": ["tolerance.distance_px", "tolerance.angle_deg", "steering_noise"],
+  "allowed_parameters": [
+    "tolerance.distance_px",
+    "tolerance.angle_deg",
+    "parking.start_position",
+    "parking.target_position",
+    "parking.target_angle_deg",
+    "parking.max_speed_px",
+    "parking.steering_noise"
+  ],
   "constraints": {
-    "tolerance.distance_px": { "type": "float", "min": 1.0, "max": 200.0 },
-    "tolerance.angle_deg": { "type": "float", "min": 1.0, "max": 90.0 },
-    "steering_noise": { "type": "float", "min": 0.0, "max": 10.0 }
+    "tolerance.distance_px": {
+      "type": "float",
+      "min": 1.0,
+      "max": 200.0
+    },
+    "tolerance.angle_deg": {
+      "type": "float",
+      "min": 1.0,
+      "max": 90.0
+    },
+    "parking.start_position": {
+      "type": "vector2"
+    },
+    "parking.target_position": {
+      "type": "vector2"
+    },
+    "parking.target_angle_deg": {
+      "type": "float",
+      "min": -360.0,
+      "max": 360.0
+    },
+    "parking.max_speed_px": {
+      "type": "float",
+      "min": 0.1,
+      "max": 100.0
+    },
+    "parking.steering_noise": {
+      "type": "float",
+      "min": 0.0,
+      "max": 10.0
+    }
   },
-  "base_parameters": {},
+  "base_parameters": {
+    "parking.start_position": [
+      150.0,
+      960.0
+    ],
+    "parking.target_position": [
+      850.0,
+      960.0
+    ],
+    "parking.target_angle_deg": 0.0,
+    "parking.max_speed_px": 12.0
+  },
   "scaling": {
-    "EASY": { "tolerance.distance_px": 50.0, "tolerance.angle_deg": 30.0, "steering_noise": 0.0 },
-    "NORMAL": { "tolerance.distance_px": 35.0, "tolerance.angle_deg": 20.0, "steering_noise": 0.5 },
-    "HARD": { "tolerance.distance_px": 20.0, "tolerance.angle_deg": 10.0, "steering_noise": 1.5 },
-    "EXTREME": { "tolerance.distance_px": 10.0, "tolerance.angle_deg": 5.0, "steering_noise": 3.0 }
+    "EASY": {
+      "tolerance.distance_px": 50.0,
+      "tolerance.angle_deg": 30.0,
+      "parking.steering_noise": 0.0
+    },
+    "NORMAL": {
+      "tolerance.distance_px": 35.0,
+      "tolerance.angle_deg": 20.0,
+      "parking.steering_noise": 0.5
+    },
+    "HARD": {
+      "tolerance.distance_px": 20.0,
+      "tolerance.angle_deg": 10.0,
+      "parking.steering_noise": 1.5
+    },
+    "EXTREME": {
+      "tolerance.distance_px": 10.0,
+      "tolerance.angle_deg": 5.0,
+      "parking.steering_noise": 3.0
+    }
   }
 }
