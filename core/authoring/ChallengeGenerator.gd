@@ -156,6 +156,7 @@ static func generate(request: ChallengeAuthoringRequest) -> Dictionary:
 	# ---------------------------------------------------------
 
 	var rng_res: Dictionary = adapter.rng_version()
+	var mechanic_version_res: Dictionary = adapter.mechanic_version()
 
 	if rng_res.get("source") == (
 		AuthoringMechanicAdapter.Source.UNAVAILABLE
@@ -166,6 +167,19 @@ static func generate(request: ChallengeAuthoringRequest) -> Dictionary:
 			"error": (
 				"Metadata unavailable [rng_version]: "
 				+ str(rng_res.get("error", "unknown error"))
+			),
+			"challenge": null
+		}
+
+	if mechanic_version_res.get("source") == (
+		AuthoringMechanicAdapter.Source.UNAVAILABLE
+	):
+		return {
+			"success": false,
+			"stage": "metadata_validation",
+			"error": (
+				"Metadata unavailable [mechanic_version]: "
+				+ str(mechanic_version_res.get("error", "unknown error"))
 			),
 			"challenge": null
 		}
@@ -459,7 +473,7 @@ static func generate(request: ChallengeAuthoringRequest) -> Dictionary:
 		"engine_version": "1.0",
 
 		"mechanic": request.mechanic_id,
-		"mechanic_version": "1.0",
+		"mechanic_version": str(mechanic_version_res.get("value", "")),
 
 		# Resolved authoritative asset metadata.
 		"asset_family": asset_family.get(
@@ -563,11 +577,12 @@ static func generate_normative(request: ChallengeAuthoringRequest) -> Dictionary
 		}
 
 	var rng_res: Dictionary = adapter.rng_version()
+	var mechanic_version_res: Dictionary = adapter.mechanic_version()
 	var video_res: Dictionary = adapter.default_video_profile()
 	var presentation_res: Dictionary = adapter.default_presentation_profile()
 	var asset_res: Dictionary = adapter.required_assets()
 
-	for binding in [rng_res, video_res, presentation_res, asset_res]:
+	for binding in [rng_res, mechanic_version_res, video_res, presentation_res, asset_res]:
 		if binding.get("source") == AuthoringMechanicAdapter.Source.UNAVAILABLE:
 			return {
 				"success": false,
@@ -606,7 +621,7 @@ static func generate_normative(request: ChallengeAuthoringRequest) -> Dictionary
 
 	var adapter_metadata: Dictionary = {
 		"rng_version": str(rng_res.get("value", "")),
-		"mechanic_version": ChallengeAuthoringPolicy.DEFAULT_MECHANIC_VERSION
+		"mechanic_version": str(mechanic_version_res.get("value", ChallengeAuthoringPolicy.DEFAULT_MECHANIC_VERSION))
 	}
 
 	var assembly := CanonicalV2Assembler.assemble(

@@ -28,6 +28,9 @@ func unavailable(err: String) -> Dictionary:
 func mechanic_id() -> String:
 	return ""
 
+func mechanic_version() -> Dictionary:
+	return declared("1.0")
+
 func rng_version() -> Dictionary:
 	return unavailable("rng_version not implemented")
 

@@ -12,8 +12,8 @@ func _init():
 	AuthoringMechanicRegistry.clear_registry()
 	AuthoringMechanicRegistry.initialize_defaults()
 	
-	var expected_ready = ["pilot", "hit_v1", "catch_v1", "find_v1", "choose_v1", "count_v1"]
-	var blocked_partial = ["key", "parking", "parking_v2"]
+	var expected_ready = ["pilot", "parking_v2", "hit_v1", "catch_v1", "find_v1", "choose_v1", "count_v1"]
+	var blocked_partial = ["key", "parking"]
 	
 	# 1. Verificar registros
 	for mech in expected_ready:
@@ -44,18 +44,32 @@ func _init():
 			printerr("FAIL: rng_version contract broken on %s." % mech)
 			quit(1)
 			
-		# Verificación de Bloqueo de Defaults Inventados (Deben ser UNAVAILABLE)
-		if adapter.default_video_profile().source != AuthoringMechanicAdapter.Source.UNAVAILABLE:
-			printerr("FAIL: default_video_profile on %s illegally returned a value instead of UNAVAILABLE." % mech)
-			quit(1)
-			
-		if adapter.default_presentation_profile().source != AuthoringMechanicAdapter.Source.UNAVAILABLE:
-			printerr("FAIL: default_presentation_profile on %s illegally returned a value instead of UNAVAILABLE." % mech)
-			quit(1)
-			
-		if adapter.required_assets().source != AuthoringMechanicAdapter.Source.UNAVAILABLE:
-			printerr("FAIL: required_assets on %s illegally returned a value instead of UNAVAILABLE." % mech)
-			quit(1)
+		# Verificación de metadata contractual.
+		if mech != "parking_v2":
+			if adapter.default_video_profile().source != AuthoringMechanicAdapter.Source.UNAVAILABLE:
+				printerr("FAIL: default_video_profile on %s illegally returned a value instead of UNAVAILABLE." % mech)
+				quit(1)
+
+			if adapter.default_presentation_profile().source != AuthoringMechanicAdapter.Source.UNAVAILABLE:
+				printerr("FAIL: default_presentation_profile on %s illegally returned a value instead of UNAVAILABLE." % mech)
+				quit(1)
+
+			if adapter.required_assets().source != AuthoringMechanicAdapter.Source.UNAVAILABLE:
+				printerr("FAIL: required_assets on %s illegally returned a value instead of UNAVAILABLE." % mech)
+				quit(1)
+		else:
+			if adapter.mechanic_version().value != "2.0":
+				printerr("FAIL: parking_v2 mechanic_version must be 2.0.")
+				quit(1)
+			if adapter.default_video_profile().value != "parking_v2_social_15s":
+				printerr("FAIL: parking_v2 video profile binding mismatch.")
+				quit(1)
+			if adapter.default_presentation_profile().value != "social_default_v1":
+				printerr("FAIL: parking_v2 presentation profile binding mismatch.")
+				quit(1)
+			if adapter.required_assets().value != "fam_garage_01":
+				printerr("FAIL: parking_v2 asset family binding mismatch.")
+				quit(1)
 			
 		# Verificación Estructural
 		var struct_res = adapter.build_structural_parameters(dummy_request, dummy_params)

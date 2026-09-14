@@ -4,5 +4,8 @@
   "description": "Garage asset family used by the legacy parking fixtures.",
   "themes": [
     "garage"
-  ]
+  ],
+  "background_path": "res://assets/c6/garage_background.svg",
+  "target_path": "res://assets/c6/parking_target.svg",
+  "object_path": "res://assets/c6/car.svg"
 }
