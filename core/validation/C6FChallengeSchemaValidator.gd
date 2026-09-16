@@ -33,6 +33,10 @@ static func _validate_simulation(cfg: Dictionary, errors: Array[String]) -> void
 	if cfg.has("parameters") and not (cfg["parameters"] is Dictionary): errors.append("'simulation.parameters' must be an object.")
 
 static func _validate_video(cfg: Dictionary, errors: Array[String]) -> void:
+	if cfg.has("profile_id") and (not (cfg["profile_id"] is String) or str(cfg["profile_id"]).strip_edges().is_empty()):
+		errors.append("'video.profile_id' must be a non-empty string when provided.")
+	if cfg.has("profile_version") and (not (cfg["profile_version"] is String) or str(cfg["profile_version"]).strip_edges().is_empty()):
+		errors.append("'video.profile_version' must be a non-empty string when provided.")
 	for key in ["fps", "hook_duration", "game_duration", "reveal_duration", "cta_duration"]:
 		if not cfg.has(key): errors.append("Missing mandatory 'video.%s'." % key)
 	if cfg.has("fps"):

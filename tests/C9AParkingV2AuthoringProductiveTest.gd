@@ -60,6 +60,16 @@ func _initialize() -> void:
 		quit(1)
 		return
 
+	var audio: Dictionary = challenge.get("audio", {})
+	if audio.get("enabled") != true:
+		printerr("FAIL: parking_v2 authoring audio is not enabled.")
+		quit(1)
+		return
+	if audio.get("profile_id") != "c7_profile_mixed_overlap":
+		printerr("FAIL: audio profile mismatch: %s" % str(audio.get("profile_id")))
+		quit(1)
+		return
+
 	var parameters: Dictionary = simulation.get("parameters", {})
 	var parking: Dictionary = parameters.get("parking", {})
 	var tolerance: Dictionary = parameters.get("tolerance", {})

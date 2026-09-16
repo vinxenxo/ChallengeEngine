@@ -139,14 +139,27 @@ static func canonical_v2_to_runtime_v1(config: Dictionary) -> Dictionary:
 	presentation.erase("profile_id")
 	presentation.erase("profile_version")
 
+	var canonical_video: Dictionary = _deep_copy_dictionary(config.get("video", {}))
+	var runtime_video_profile := str(canonical_video.get("profile_id", "")).strip_edges()
+	var runtime_video_profile_version := str(canonical_video.get("profile_version", "")).strip_edges()
+	if runtime_video_profile.is_empty():
+		# Backward compatibility for pre-C9 canonical V2 that did not preserve video identity.
+		runtime_video_profile = str(config.get("metadata", {}).get("video_profile", "")).strip_edges()
+	if runtime_video_profile_version.is_empty():
+		runtime_video_profile_version = str(config.get("metadata", {}).get("video_profile_version", "")).strip_edges()
+	if runtime_video_profile.is_empty():
+		runtime_video_profile = str(config.get("presentation", {}).get("profile_id", "")).strip_edges()
+	if runtime_video_profile_version.is_empty():
+		runtime_video_profile_version = str(config.get("presentation", {}).get("profile_version", "")).strip_edges()
+
 	var result := {
 		"schema_version": "1.0",
 		"engine_version": str(config.get("engine_version", "")),
 		"challenge_id": str(config.get("challenge_id", "")),
 		"mechanic": str(config.get("mechanic", "")),
 		"mechanic_version": str(config.get("mechanic_version", "")),
-		"video_profile": str(config.get("presentation", {}).get("profile_id", "")),
-		"video_profile_version": str(config.get("presentation", {}).get("profile_version", "")),
+		"video_profile": runtime_video_profile,
+		"video_profile_version": runtime_video_profile_version,
 		"asset_family": str(config.get("asset_family", "")),
 		"asset_family_version": str(config.get("asset_family_version", "")),
 		"theme": str(config.get("theme", "")),

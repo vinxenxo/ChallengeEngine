@@ -16,7 +16,8 @@ static func assemble(
 	video_profile: Dictionary,
 	presentation_profile: PresentationProfile,
 	presentation_binding: Dictionary,
-	asset_family: Dictionary
+	asset_family: Dictionary,
+	audio_profile: Dictionary = {}
 ) -> Dictionary:
 	if request == null:
 		return _fail("Authoring request is null.")
@@ -84,6 +85,8 @@ static func assemble(
 			"parameters": parameters.duplicate(true)
 		},
 		"video": {
+			"profile_id": str(video_profile.get("profile_id", "")),
+			"profile_version": POLICY.DEFAULT_PRESENTATION_PROFILE_VERSION,
 			"fps": int(video_profile.get("fps")),
 			"hook_duration": float(phases.get("hook_duration")),
 			"game_duration": float(phases.get("game_duration")),
@@ -107,6 +110,15 @@ static func assemble(
 			"object_path": str(asset_family.get("object_path"))
 		}
 	}
+
+	if not audio_profile.is_empty():
+		var audio_id := str(audio_profile.get("profile_id", "")).strip_edges()
+		if audio_id.is_empty():
+			return _fail("Audio profile metadata contains an empty profile_id.")
+		canonical["audio"] = {
+			"enabled": true,
+			"profile_id": audio_id
+		}
 
 	var schema_result := SCHEMA.validate_v2(canonical)
 	if not bool(schema_result.get("is_valid", false)):

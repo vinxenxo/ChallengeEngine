@@ -111,6 +111,14 @@
         "cta_duration"
       ],
       "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_version": {
+          "type": "string",
+          "minLength": 1
+        },
         "fps": {
           "type": "integer",
           "minimum": 1,

@@ -42,6 +42,14 @@ const AssetFamilyValidator = preload(
 	"res://core/authoring/AssetFamilyValidator.gd"
 )
 
+const AudioProfileRegistry = preload(
+	"res://core/authoring/AudioProfileRegistry.gd"
+)
+
+const AudioProfileValidator = preload(
+	"res://core/authoring/AudioProfileValidator.gd"
+)
+
 const CanonicalV2Assembler = preload(
 	"res://core/authoring/CanonicalV2Assembler.gd"
 )
@@ -619,6 +627,20 @@ static func generate_normative(request: ChallengeAuthoringRequest) -> Dictionary
 	if struct_res.get("source") == AuthoringMechanicAdapter.Source.UNAVAILABLE:
 		return {"success": false, "stage": "metadata_validation", "error": "Structural parameters unavailable: " + str(struct_res.get("error", "unknown error")), "challenge": null}
 
+	var audio_profile: Dictionary = {}
+	var audio_res: Dictionary = adapter.default_audio_profile()
+	if audio_res.get("source") != AuthoringMechanicAdapter.Source.UNAVAILABLE:
+		var audio_id := str(audio_res.get("value", "")).strip_edges()
+		if audio_id.is_empty():
+			return {"success": false, "stage": "metadata_validation", "error": "Invalid audio profile binding: profile ID is empty.", "challenge": null}
+		var audio_profile_data := AudioProfileRegistry.get_profile(audio_id)
+		if audio_profile_data.is_empty():
+			return {"success": false, "stage": "metadata_validation", "error": "Audio profile '%s' could not be resolved." % audio_id, "challenge": null}
+		var audio_errors := AudioProfileValidator.validate(audio_profile_data)
+		if not audio_errors.is_empty():
+			return {"success": false, "stage": "metadata_validation", "error": "Audio profile '%s' failed validation: %s" % [audio_id, str(audio_errors)], "challenge": null}
+		audio_profile = {"profile_id": audio_id}
+
 	var adapter_metadata: Dictionary = {
 		"rng_version": str(rng_res.get("value", "")),
 		"mechanic_version": str(mechanic_version_res.get("value", ChallengeAuthoringPolicy.DEFAULT_MECHANIC_VERSION))
@@ -631,7 +653,8 @@ static func generate_normative(request: ChallengeAuthoringRequest) -> Dictionary
 		video_profile,
 		presentation_profile,
 		ChallengeAuthoringPolicy.build_presentation_binding(),
-		asset_family
+		asset_family,
+		audio_profile
 	)
 
 	if not bool(assembly.get("success", false)):

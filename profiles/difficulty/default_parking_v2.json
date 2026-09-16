@@ -67,9 +67,9 @@
       "parking.steering_noise": 0.5
     },
     "HARD": {
-      "tolerance.distance_px": 20.0,
-      "tolerance.angle_deg": 10.0,
-      "parking.steering_noise": 1.5
+      "tolerance.distance_px": 15.0,
+      "tolerance.angle_deg": 6.0,
+      "parking.steering_noise": 0.05
     },
     "EXTREME": {
       "tolerance.distance_px": 10.0,

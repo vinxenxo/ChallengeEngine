@@ -20,6 +20,9 @@ func default_presentation_profile() -> Dictionary:
 func required_assets() -> Dictionary:
 	return declared("fam_garage_01")
 
+func default_audio_profile() -> Dictionary:
+	return declared("c7_profile_mixed_overlap")
+
 func build_structural_parameters(
 	_request: ChallengeAuthoringRequest,
 	effective_parameters: Dictionary

@@ -43,6 +43,9 @@ func default_presentation_profile() -> Dictionary:
 func required_assets() -> Dictionary:
 	return unavailable("required_assets not implemented")
 
+func default_audio_profile() -> Dictionary:
+	return unavailable("default_audio_profile not implemented")
+
 func build_structural_parameters(
 	request: ChallengeAuthoringRequest,
 	effective_parameters: Dictionary
