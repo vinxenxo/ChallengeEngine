@@ -1,0 +1,38 @@
+[
+  {
+    "mechanic": "parking_v2",
+    "level": 50,
+    "seed": 10001,
+    "profile": "default_parking_v2",
+    "overrides": {},
+    "content": {
+      "hook": "¡RETO DE APARCAMIENTO 1!",
+      "reveal": "",
+      "cta": "¿Superado?"
+    }
+  },
+  {
+    "mechanic": "parking_v2",
+    "level": 50,
+    "seed": 10002,
+    "profile": "default_parking_v2",
+    "overrides": {},
+    "content": {
+      "hook": "¡RETO DE APARCAMIENTO 2!",
+      "reveal": "",
+      "cta": "¿Superado?"
+    }
+  },
+  {
+    "mechanic": "parking_v2",
+    "level": 50,
+    "seed": 10003,
+    "profile": "default_parking_v2",
+    "overrides": {},
+    "content": {
+      "hook": "¡RETO DE APARCAMIENTO 3!",
+      "reveal": "",
+      "cta": "¿Superado?"
+    }
+  }
+]

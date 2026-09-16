@@ -1,0 +1,201 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "challenge_id": "AUTH_PARKING_V2_10002",
+  "provenance": {
+    "git": {
+      "commit": "9191a6506dbf44172be97085e09e2c9813a9b9aa",
+      "branch": "main",
+      "dirty": true
+    },
+    "challenge_definition": {
+      "path": "c9_c_generated_configs/CHALLENGE_AUTH_PARKING_V2_10002.json",
+      "sha256": "b7bd5bee7a292eeca325821117e1ded070a1be2d719a503b5190e949ae994be6"
+    },
+    "referenced_files": [
+      {
+        "path": "res://assets/c6/car.svg",
+        "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+      },
+      {
+        "path": "res://assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "path": "res://assets/c6/parking_target.svg",
+        "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+      }
+    ],
+    "authoring": {
+      "video": {
+        "video_profile": {
+          "id": "parking_v2_social_15s",
+          "path": "profiles/video/parking_v2_social_15s.json",
+          "sha256": "12b49f14e0ee755d290f7dd36471723da6337ab3244461fc0088a3e3b77c5a82"
+        }
+      },
+      "audio_authoring_snapshot": {
+        "assets_catalog": {
+          "path": "profiles/audio/audio_assets.json",
+          "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+        },
+        "profiles": [
+          {
+            "path": "profiles/audio/c7_profile_mixed_alt.json",
+            "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+          },
+          {
+            "path": "profiles/audio/c7_profile_mixed_overlap.json",
+            "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+          },
+          {
+            "path": "profiles/audio/c7_profile_multi_noise.json",
+            "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+          },
+          {
+            "path": "profiles/audio/c7_profile_noise_only.json",
+            "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+          },
+          {
+            "path": "profiles/audio/c7_profile_tone_only.json",
+            "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+          }
+        ]
+      }
+    },
+    "provenance_sha256": "173b4f29949628623250edc35988cc212c5eaa3caf836493d58c75a6e6fe7770"
+  },
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "parking_v2",
+    "mechanic_version": "2.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 1,
+    "cta_frames": 120,
+    "final_seed": 10002,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 180,
+    "initial_seed": 10002,
+    "minimum_distance": 9.60053539276123,
+    "reveal_frames": 180,
+    "rng_version": "2.0",
+    "score": 0.158356224304327,
+    "seed_used": 10002,
+    "total_frames": 900,
+    "validate_only": false,
+    "winning_frame": 565,
+    "winning_frame_game": 385,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 9.41666666666667,
+    "winning_time_game": 6.41666666666667
+  },
+  "artifacts": {
+    "raw_video": "AUTH_PARKING_V2_10002_raw.avi",
+    "raw_video_sha256": "35c9a9f6d86a554dca41f318823fc5833700400656221f6315829e80af4b10c5",
+    "final_video": "AUTH_PARKING_V2_10002.mp4",
+    "final_video_sha256": "fbc4b8add076a22d74fb5ab9baaf43214f1445726840d6ab5d821cb7e9a57f9c",
+    "preview_gif": "AUTH_PARKING_V2_10002.gif",
+    "preview_gif_sha256": "4305481b8ce869b3718009bf579a0f353d4d5704169b55223b3cfbe16d3d8089"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 15.0,
+    "nb_frames": 900,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 15.0,
+      "nb_frames": 900,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "codec_name": "aac",
+      "sample_rate": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "duration": 15.0
+    },
+    "av_sync": {
+      "valid": true,
+      "video_duration": 15.0,
+      "audio_duration": 15.0,
+      "diff": 0.0,
+      "tolerance": 0.05
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 661500,
+        "non_zero_samples": 33064,
+        "non_zero_ratio": 0.05,
+        "peak_amplitude": 26203,
+        "peak_normalized": 0.7997,
+        "rms_amplitude": 1892.12,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -24.9,
+        "max_volume_db": -1.3,
+        "is_silent": false
+      }
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": true,
+    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\export\\c9_c_production_batch\\AUTH_PARKING_V2_10002\\audio_master.pcm",
+    "canonical_hash": "cec9b297290c7bb302e738e8eafc760b900a4692e677add09d2dc25856c6f2a8",
+    "channels": 1,
+    "format": "s16le",
+    "sample_rate": 44100,
+    "total_samples": 661500,
+    "audio_master_sha256": "cec9b297290c7bb302e738e8eafc760b900a4692e677add09d2dc25856c6f2a8"
+  },
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 450,
+      "duration": 15.0
+    }
+  }
+}

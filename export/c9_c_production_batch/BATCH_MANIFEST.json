@@ -1,0 +1,71 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "godot_versions": [
+    "4.7.1-stable (official)"
+  ],
+  "rng_versions": [
+    "2.0"
+  ],
+  "status": "FAILED",
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "audio_summary": {
+    "total_challenges": 3,
+    "audited_challenges": 3,
+    "audio_enabled": 3,
+    "audio_disabled": 0,
+    "audio_content_valid": 3,
+    "av_sync_valid": 3,
+    "mixed_batch": false
+  },
+  "challenges": [
+    {
+      "challenge_id": "AUTH_PARKING_V2_10001",
+      "status": "PASS",
+      "mechanic": "parking_v2",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_PARKING_V2_10001/AUTH_PARKING_V2_10001_manifest.json",
+      "preview_gif": "AUTH_PARKING_V2_10001/AUTH_PARKING_V2_10001.gif"
+    },
+    {
+      "challenge_id": "AUTH_PARKING_V2_10002",
+      "status": "PASS",
+      "mechanic": "parking_v2",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_PARKING_V2_10002/AUTH_PARKING_V2_10002_manifest.json",
+      "preview_gif": "AUTH_PARKING_V2_10002/AUTH_PARKING_V2_10002.gif"
+    },
+    {
+      "challenge_id": "AUTH_PARKING_V2_10003",
+      "status": "PASS",
+      "mechanic": "parking_v2",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_PARKING_V2_10003/AUTH_PARKING_V2_10003_manifest.json",
+      "preview_gif": "AUTH_PARKING_V2_10003/AUTH_PARKING_V2_10003.gif"
+    }
+  ],
+  "preview_gif_policy": {
+    "enabled": true,
+    "required": true,
+    "fps": 30,
+    "width": 540,
+    "height": 960,
+    "loop": true
+  },
+  "errors": [
+    {
+      "code": "C7_A2_MIXED_BATCH_REQUIRED",
+      "message": "C7-A2 requiere al menos un challenge audio-on y uno audio-off en el mismo lote."
+    }
+  ]
+}

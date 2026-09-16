@@ -1,0 +1,64 @@
+{
+  "asset_family": "fam_garage_01",
+  "asset_family_version": "1.0",
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "object_path": "res://assets/c6/car.svg",
+    "target_path": "res://assets/c6/parking_target.svg"
+  },
+  "canonical_v2": {
+    "audio": {
+      "enabled": true,
+      "profile_id": "c7_profile_mixed_overlap"
+    }
+  },
+  "challenge_id": "AUTH_PARKING_V2_10001",
+  "content": {
+    "cta": "¿Superado?",
+    "hook": "¡RETO DE APARCAMIENTO 1!",
+    "reveal": ""
+  },
+  "difficulty": {
+    "parking": {
+      "max_speed_px": 12.0,
+      "start_position": [
+        150.0,
+        960.0
+      ],
+      "steering_noise": 0.05,
+      "target_angle_deg": 0.0,
+      "target_position": [
+        850.0,
+        960.0
+      ]
+    },
+    "tolerance": {
+      "angle_deg": 6.0,
+      "distance_px": 15.0
+    }
+  },
+  "engine_version": "0.1",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 10001
+  },
+  "mechanic": "parking_v2",
+  "mechanic_version": "2.0",
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position"
+  },
+  "schema_version": "1.0",
+  "theme": "default_c6",
+  "video": {
+    "cta_duration": 2.0,
+    "fps": 60,
+    "game_duration": 7.0,
+    "hook_duration": 3.0,
+    "profile_id": "parking_v2_social_15s",
+    "profile_version": "1.0",
+    "reveal_duration": 3.0
+  },
+  "video_profile": "parking_v2_social_15s",
+  "video_profile_version": "1.0"
+}
