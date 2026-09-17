@@ -1,0 +1,53 @@
+﻿{
+    "test":  "C10-C",
+    "scope":  "authoring_to_runtime_to_physical_smoke",
+    "production_manifest":  false,
+    "godot_command_scene":  "core/presentation/rendering/VisualContentPlayer.tscn",
+    "fixed_fps":  30,
+    "frame_count":  60,
+    "duration_seconds":  2,
+    "artifacts":  [
+                      {
+                          "kind":  "visual_loop",
+                          "subtype":  "fractal",
+                          "definition":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\c10c_e2e\\definitions\\c10c_visual_loop_fractal.json",
+                          "raw_video":  {
+                                            "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\c10c_e2e\\avi\\c10c_visual_loop_fractal.avi",
+                                            "bytes":  1411060,
+                                            "sha256":  "02e919286ecb81c06a961987251090afe3597b7b62d7f9db744351f75d20e3be",
+                                            "codec":  "mjpeg",
+                                            "width":  540,
+                                            "height":  960,
+                                            "r_frame_rate":  "30/1",
+                                            "nb_frames":  60,
+                                            "duration_seconds":  2
+                                        },
+                          "final_video":  {
+                                              "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\c10c_e2e\\mp4\\c10c_visual_loop_fractal.mp4",
+                                              "bytes":  14784,
+                                              "sha256":  "385bc757f0f10ed0819bc0c4b6c7375679c2e5f31057e0f4075be5f9040b6297"
+                                          }
+                      },
+                      {
+                          "kind":  "visual_drill",
+                          "subtype":  "tracking",
+                          "definition":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\c10c_e2e\\definitions\\c10c_visual_drill_tracking.json",
+                          "raw_video":  {
+                                            "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\c10c_e2e\\avi\\c10c_visual_drill_tracking.avi",
+                                            "bytes":  1029460,
+                                            "sha256":  "d8844c064be9fa4d7e512975037b86713da1c6912f7a5ccb6790ce061de39eeb",
+                                            "codec":  "mjpeg",
+                                            "width":  540,
+                                            "height":  960,
+                                            "r_frame_rate":  "30/1",
+                                            "nb_frames":  60,
+                                            "duration_seconds":  2
+                                        },
+                          "final_video":  {
+                                              "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\output\\c10c_e2e\\mp4\\c10c_visual_drill_tracking.mp4",
+                                              "bytes":  6534,
+                                              "sha256":  "a51e9d77ae7c49cc3fb6c4d66a9212f5b93c6b76f50584d7c5e4e2f88f616e94"
+                                          }
+                      }
+                  ]
+}
