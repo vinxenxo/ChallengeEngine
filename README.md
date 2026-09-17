@@ -1,62 +1,81 @@
-# C10-A — Visual Authoring Contract
+# C10-A.1 — Visual Authoring Canonical Policies
 
-Status: DESIGN / INTEGRATION PACKAGE — NOT CERTIFIED
+Status: **DESIGN / INTEGRATION PACKAGE — NOT CERTIFIED**
 
-## Intent
+## What this closes
 
-This package defines the product-authoring boundary for the two visual domains:
+C10-A.1 replaces the illustrative C10-A policies with nine declarative production authoring policies and upgrades the suite to a 9/9 matrix:
 
-- `visual_loop`
-- `visual_drill`
+### Visual Loop
+- fractal
+- vector_field
+- particle_flow
+- kaleidoscope
+- geometric
 
-It does not modify any C6-F0.8 runtime, generator, RNG registry, renderer, binder, or Movie Maker code.
+### Visual Drill
+- tracking
+- pursuit
+- saccade
+- peripheral_scan
 
-## Contract
+Tier **2** is explicitly anchored to the C6-F0.8 canonical baseline: loops use `speed=1.0`, `complexity=2`, `seamless=true`, `boundary_tolerance=0.01`; drills use `difficulty_tier=2`, `speed_multiplier=1.0`, `pacing_mode=constant` and the frozen canonical stimulus/targets/distractors/trajectory/task shape.
 
-`VisualAuthoringRequest` contains product intent only:
+Tiers 1/3/4/5 are **C10 product-authoring policy**, not changes to the frozen runtime or generator math.
 
-- `authoring_version`
-- `domain_family`
-- `subtype`
-- `duration_seconds`
-- `fps`
-- `difficulty_tier` 1..5
-- `custom_parameters`
+## Real identifiers used by the production-context test
 
-Seed and infrastructure metadata are intentionally externalized into `VisualAuthoringAssemblyContext`.
+- presentation: `social_default_v1`
+- coordinate space: `2d`
+- assets family: `fam_001`
+- audio profile: `default_procedural_music` with `enabled=false`
 
-## Difficulty resolution
+`fam_001` is an existing repository asset-family ID. It is intentionally not described as a dedicated visual asset family; the C6-F0.8 visual runtime does not acquire new asset-family semantics from this package.
 
-`VisualDifficultyResolver` is pure and deterministic. It applies:
+`fake_identity` and the historical mock IDs (`f1`, `a1`, `visual_default`) are not used.
 
-1. base parameters
-2. tier parameters
-3. controlled custom overrides
+## Architecture invariant
 
-Unknown/custom keys fail closed. RNG-level fields are not exposed through the request contract.
+This package modifies only `core/authoring/` plus authoring-data JSON and the C10 test. It does **not** modify:
 
-## Canonical output
+- `core/runtime/visual/`
+- `core/runtime/visual_drill/`
+- generator implementations
+- RNG stream mappings
+- `RenderedFrameStream`
+- passive renderers/binders
+- Movie Maker/export code
 
-The generator emits the existing Content Envelope V2 shape with:
+## Apply
 
-- `schema_version=2.0`
-- `kind=visual_loop|visual_drill`
-- exact `subtype`
-- externally supplied `seed`
-- `rng_version=2.0`
-- explicit presentation/assets/audio/provenance metadata
-- domain-specific `payload`
+Copy these package paths into the project, preserving directories:
 
-No new runtime contract is introduced.
+```text
+core/authoring/VisualDifficultyResolver.gd
+core/authoring/VisualAuthoringPolicyRegistry.gd
+core/authoring/VisualAuthoringGenerator.gd
+core/authoring/adapters/VisualLoopAuthoringAdapter.gd
+core/authoring/adapters/VisualDrillAuthoringAdapter.gd
+profiles/difficulty/visual_loop_*.json
+profiles/difficulty/visual_drill_*.json
+tests/C10AVisualAuthoringPipelineTest.gd
+```
 
-## Certification
+The original C10-A request/context/registry files remain compatible and are included here as the baseline contract.
 
-The test suite must be executed in the real project with Godot 4.7.1. Passing this package statically or by inspection is not certification.
+## Real-project verification
 
-The expected command is:
+Run in the actual Windows/Godot 4.7.1 repository:
 
 ```powershell
+godot --headless --path . --editor --quit
 godot --headless --path . -s .\tests\C10AVisualAuthoringPipelineTest.gd
 ```
 
-Before execution, the test's sample `presentation`, `assets`, and `audio` identifiers must be aligned with the exact production registries present in the authoritative ZIP. The current package intentionally uses explicit placeholders rather than silently inventing production defaults.
+Expected terminal marker after real execution:
+
+```text
+[C10A_VISUAL_AUTHORING_PIPELINE_SUITE] PASS — C10-A.1 9/9
+```
+
+Passing a package inspection or a container-side JSON check is not C10-A.1 certification.
