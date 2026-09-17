@@ -1,0 +1,201 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "challenge_id": "AUTH_HIT_V1_998877",
+  "provenance": {
+    "git": {
+      "commit": "4016dc649a8408c8ddf396b7761db7604ff67a56",
+      "branch": "main",
+      "dirty": true
+    },
+    "challenge_definition": {
+      "path": "hit_v1/hit_v1_generated.json",
+      "sha256": "903f7fc5a8acfd66de6eca8f947b09f4575ba60c7495b867aeb5fe820dddcfa5"
+    },
+    "referenced_files": [
+      {
+        "path": "res://assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "path": "res://assets/c6/projectile.svg",
+        "sha256": "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254"
+      },
+      {
+        "path": "res://assets/c6/target.svg",
+        "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547"
+      }
+    ],
+    "authoring": {
+      "video": {
+        "video_profile": {
+          "id": "f4_legacy_60_h0_g7_r0_c0",
+          "path": "profiles/video/f4_legacy_60_h0_g7_r0_c0.json",
+          "sha256": "1ed476739fddad3b093da4adadb92cd78369b03cd47663221e0c1ea9168d40e8"
+        }
+      },
+      "audio_authoring_snapshot": {
+        "assets_catalog": {
+          "path": "profiles/audio/audio_assets.json",
+          "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+        },
+        "profiles": [
+          {
+            "path": "profiles/audio/c7_profile_mixed_alt.json",
+            "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+          },
+          {
+            "path": "profiles/audio/c7_profile_mixed_overlap.json",
+            "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+          },
+          {
+            "path": "profiles/audio/c7_profile_multi_noise.json",
+            "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+          },
+          {
+            "path": "profiles/audio/c7_profile_noise_only.json",
+            "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+          },
+          {
+            "path": "profiles/audio/c7_profile_tone_only.json",
+            "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+          }
+        ]
+      }
+    },
+    "provenance_sha256": "dd346415c9924c2680740126ae6e9a7c608278229fae173479434faae657f3b4"
+  },
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "hit_v1",
+    "mechanic_version": "1.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 16,
+    "cta_frames": 0,
+    "final_seed": 998877,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 0,
+    "initial_seed": 998877,
+    "minimum_distance": 1.68177151679993,
+    "reveal_frames": 0,
+    "rng_version": "2.0",
+    "score": 0.943940949440002,
+    "seed_used": 998877,
+    "total_frames": 420,
+    "validate_only": false,
+    "winning_frame": 344,
+    "winning_frame_game": 344,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 5.73333333333333,
+    "winning_time_game": 5.73333333333333
+  },
+  "artifacts": {
+    "raw_video": "AUTH_HIT_V1_998877_raw.avi",
+    "raw_video_sha256": "ed26d5d605967fce24f552f34f3f5b60f14b280204244f10d7150919fdd29c58",
+    "final_video": "AUTH_HIT_V1_998877.mp4",
+    "final_video_sha256": "b51ddb5e5e77df298877dfdf7aa0a24cde2b38bf86b83d19001fa279441b112e",
+    "preview_gif": "AUTH_HIT_V1_998877.gif",
+    "preview_gif_sha256": "d4bd71cb2318cc8b480c4d03ed7b5309a7eafdbefa48fd08025edf164cf1aa17"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 7.0,
+    "nb_frames": 420,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 7.0,
+      "nb_frames": 420,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "codec_name": "aac",
+      "sample_rate": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "duration": 7.0
+    },
+    "av_sync": {
+      "valid": true,
+      "video_duration": 7.0,
+      "audio_duration": 7.0,
+      "diff": 0.0,
+      "tolerance": 0.05
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 308700,
+        "non_zero_samples": 11020,
+        "non_zero_ratio": 0.0357,
+        "peak_amplitude": 26208,
+        "peak_normalized": 0.7998,
+        "rms_amplitude": 2141.66,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -23.9,
+        "max_volume_db": -1.2,
+        "is_silent": false
+      }
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": true,
+    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\hit_v1\\production\\AUTH_HIT_V1_998877\\audio_master.pcm",
+    "canonical_hash": "ce5a17dded6dcef8efa132196932c2e2544a2616a6e20066767ffe28a8b3d19a",
+    "channels": 1,
+    "format": "s16le",
+    "sample_rate": 44100,
+    "total_samples": 308700,
+    "audio_master_sha256": "ce5a17dded6dcef8efa132196932c2e2544a2616a6e20066767ffe28a8b3d19a"
+  },
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 210,
+      "duration": 7.0
+    }
+  }
+}

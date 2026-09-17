@@ -5,27 +5,36 @@ extends AuthoringMechanicAdapter
 func mechanic_id() -> String:
 	return "hit_v1"
 
+func mechanic_version() -> Dictionary:
+	return declared("1.0")
+
 func rng_version() -> Dictionary:
 	return declared("2.0")
 
 func default_video_profile() -> Dictionary:
-	return unavailable(
-		"No contractual default video profile defined for hit_v1."
-	)
+	return declared("f4_legacy_60_h0_g7_r0_c0")
 
 func default_presentation_profile() -> Dictionary:
 	return declared("social_default_v1")
 
 func required_assets() -> Dictionary:
-	return unavailable(
-		"No contractual asset family defined for hit_v1."
-	)
+	return declared("fam_hit_01")
+
+func default_audio_profile() -> Dictionary:
+	return declared("c7_profile_multi_noise")
 
 func build_structural_parameters(
 	_request: ChallengeAuthoringRequest,
 	effective_parameters: Dictionary
 ) -> Dictionary:
-	return derived(effective_parameters.duplicate(true))
+	var parameters := effective_parameters.duplicate(true)
+	parameters["origin"] = [540.0, 1500.0]
+	parameters["target"] = [540.0, 300.0]
+	return derived(parameters)
 
-func validate_authoring_output(_challenge: Dictionary) -> Array:
-	return []
+func validate_authoring_output(challenge: Dictionary) -> Array:
+	var errors: Array = []
+	var params: Dictionary = challenge.get("simulation", {}).get("parameters", {})
+	if not params.has("origin") or not params.has("target"):
+		errors.append("hit_v1 requires origin and target structural parameters.")
+	return errors

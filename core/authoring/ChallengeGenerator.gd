@@ -626,6 +626,14 @@ static func generate_normative(request: ChallengeAuthoringRequest) -> Dictionary
 	var struct_res: Dictionary = adapter.build_structural_parameters(request, resolution.get("effective_parameters", {}))
 	if struct_res.get("source") == AuthoringMechanicAdapter.Source.UNAVAILABLE:
 		return {"success": false, "stage": "metadata_validation", "error": "Structural parameters unavailable: " + str(struct_res.get("error", "unknown error")), "challenge": null}
+	var structural_parameters: Variant = struct_res.get("value", null)
+	if not (structural_parameters is Dictionary):
+		return {"success": false, "stage": "metadata_validation", "error": "Structural parameters must resolve to a Dictionary.", "challenge": null}
+
+	# Structural parameters are authoritative mechanic-derived output. Feed them
+	# into the Canonical V2 assembler instead of discarding the adapter result.
+	var resolution_for_assembly: Dictionary = resolution.duplicate(true)
+	resolution_for_assembly["effective_parameters"] = structural_parameters.duplicate(true)
 
 	var audio_profile: Dictionary = {}
 	var audio_res: Dictionary = adapter.default_audio_profile()
@@ -648,7 +656,7 @@ static func generate_normative(request: ChallengeAuthoringRequest) -> Dictionary
 
 	var assembly := CanonicalV2Assembler.assemble(
 		request,
-		resolution,
+		resolution_for_assembly,
 		adapter_metadata,
 		video_profile,
 		presentation_profile,
