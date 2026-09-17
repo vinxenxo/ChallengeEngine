@@ -76,7 +76,6 @@ foreach ($run in $runs) {
     $contactSheet = Join-Path $runPath 'contact_sheet.jpg'
 
     $status = 'PASS'
-    $error = $null
     try {
         foreach ($p in @($authoringPath, $envelopePath, $aviPath, $mp4Path, $frameMd5Path, $contactSheet)) {
             if (-not (Test-Path -LiteralPath $p)) { throw "Missing artifact: $p" }
@@ -105,12 +104,11 @@ foreach ($run in $runs) {
             frame_digest_sha256 = Get-FileSha256Hex -Path $frameMd5Path
             technical_status = 'PASS'
             visual_review = 'PENDING'
-            error = $null
+            'error' = $null
         }
     }
     catch {
         $status = 'FAIL'
-        $error = $_.Exception.Message
         $technicalFail++
         $records += [pscustomobject]@{
             run_id = $runId
@@ -125,7 +123,7 @@ foreach ($run in $runs) {
             frame_digest_sha256 = $null
             technical_status = $status
             visual_review = 'PENDING'
-            error = $error
+            'error' = $_.Exception.Message
         }
     }
 }

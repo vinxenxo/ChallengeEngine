@@ -28,9 +28,9 @@ function Invoke-Checked {
     )
 
     Write-Host "[C11A] $Label"
-    & $Executable @Arguments
-    if ($LASTEXITCODE -ne 0) {
-        throw "$Label failed with exit code $LASTEXITCODE"
+    $process = Start-Process -FilePath $Executable -ArgumentList $Arguments -Wait -PassThru -NoNewWindow
+    if ($process.ExitCode -ne 0) {
+        throw "$Label failed with exit code $($process.ExitCode)"
     }
 }
 
@@ -122,7 +122,7 @@ function Assert-VideoContract {
     }
 }
 
-function Render-Envelope {
+function Invoke-EnvelopeRender {
     param(
         [Parameter(Mandatory=$true)][string]$RunId,
         [Parameter(Mandatory=$true)][string]$EnvelopeRelativePath,
@@ -141,7 +141,7 @@ function Render-Envelope {
     ) "Movie Maker export $RunId"
 }
 
-function Encode-Mp4 {
+function Convert-Mp4 {
     param(
         [Parameter(Mandatory=$true)][string]$AviPath,
         [Parameter(Mandatory=$true)][string]$Mp4Path,
@@ -182,14 +182,15 @@ function Write-FrameMd5 {
     ) $Label
 }
 
-function Extract-KeyFrames {
+function Get-KeyFrames {
     param(
         [Parameter(Mandatory=$true)][string]$Mp4Path,
         [Parameter(Mandatory=$true)][string]$RunPath,
         [Parameter(Mandatory=$true)][string]$Label
     )
 
-    $selectExpr = "select='eq(n\,0)+eq(n\,15)+eq(n\,30)+eq(n\,45)+eq(n\,59)'"
+    $selectTerms = $FrameIndices | ForEach-Object { "eq(n\,$($_))" }
+    $selectExpr = "select='$(($selectTerms -join '+'))'"
     Invoke-Checked 'ffmpeg' @(
         '-y','-hide_banner','-loglevel','error',
         '-i',$Mp4Path,
@@ -206,7 +207,7 @@ function Extract-KeyFrames {
     return $frames
 }
 
-function Build-ContactSheet {
+function New-ContactSheet {
     param(
         [Parameter(Mandatory=$true)][string]$RunPath,
         [Parameter(Mandatory=$true)][string]$OutputPath,
@@ -290,8 +291,6 @@ foreach ($Run in $Runs) {
         if (-not (Test-Path -LiteralPath $authoringPath)) { throw 'Missing authoring.json' }
 
         $envData = Get-Content -Raw -LiteralPath $envelopePath | ConvertFrom-Json
-        $requestData = Get-Content -Raw -LiteralPath $authoringPath | ConvertFrom-Json
-
         $record.route = "$($envData.kind)/$($envData.subtype)"
         $record.seed = [int]$envData.seed
         if ($runId -match '_A$') { $record.seed_role = 'A' }
@@ -302,19 +301,19 @@ foreach ($Run in $Runs) {
 
         # Use a project-relative definition path, matching the C10 runner contract.
         $envelopeRelative = $envelopePath.Substring($ProjectRoot.Length + 1).Replace('\','/')
-        Render-Envelope -RunId $runId -EnvelopeRelativePath $envelopeRelative -AviPath $aviPath
+        Invoke-EnvelopeRender -RunId $runId -EnvelopeRelativePath $envelopeRelative -AviPath $aviPath
         [void](Assert-VideoContract -Path $aviPath -Label "AVI $runId")
         $record.avi_sha256 = Get-FileSha256Hex -Path $aviPath
 
-        Encode-Mp4 -AviPath $aviPath -Mp4Path $mp4Path -Label "FFmpeg MP4 $runId"
+        Convert-Mp4 -AviPath $aviPath -Mp4Path $mp4Path -Label "FFmpeg MP4 $runId"
         [void](Assert-VideoContract -Path $mp4Path -Label "MP4 $runId")
         $record.mp4_sha256 = Get-FileSha256Hex -Path $mp4Path
 
         Write-FrameMd5 -Mp4Path $mp4Path -FrameMd5Path $frameMd5Path -Label "FFmpeg frame digest $runId"
         $record.frame_digest_sha256 = Get-FileSha256Hex -Path $frameMd5Path
 
-        [void](Extract-KeyFrames -Mp4Path $mp4Path -RunPath $runPath -Label "Frame extraction $runId")
-        Build-ContactSheet -RunPath $runPath -OutputPath $contactSheetPath -Label "Contact sheet $runId"
+        [void](Get-KeyFrames -Mp4Path $mp4Path -RunPath $runPath -Label "Frame extraction $runId")
+        New-ContactSheet -RunPath $runPath -OutputPath $contactSheetPath -Label "Contact sheet $runId"
 
         $record.technical_status = 'PASS'
     }
