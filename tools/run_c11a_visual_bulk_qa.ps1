@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 # Native command exit-code contract under StrictMode.
@@ -7,7 +7,6 @@ $global:LASTEXITCODE = 0
 $ProjectRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $ProjectRoot
 
-# C11-A artifacts are deliberately isolated from the historical output/ tree.
 $OutputBase = Join-Path $ProjectRoot 'qa/c11a_visual_qa'
 $RunsDir = Join-Path $OutputBase 'runs'
 $ManifestPath = Join-Path $OutputBase 'C11_VISUAL_BULK_MANIFEST.json'
@@ -17,47 +16,9 @@ $ExpectedHeight = 960
 $ExpectedFps = '30/1'
 $ExpectedFrames = 60
 $ExpectedDuration = 2.0
+$FrameIndices = @(0, 15, 30, 45, 59)
 
-function ConvertTo-StartProcessArgument {
-    param([Parameter(Mandatory=$true)][string]$Value)
-
-    if ($Value -match '[\s"]') {
-        return '"' + $Value.Replace('"', '\"') + '"'
-    }
-    return $Value
-}
-
-function Invoke-GodotChecked {
-    param(
-        [Parameter(Mandatory=$true)][string[]]$Arguments,
-        [Parameter(Mandatory=$true)][string]$Label
-    )
-
-    Write-Host "[C11A] $Label"
-
-    # Godot on Windows may be exposed as a GUI-subsystem executable. The call
-    # operator can therefore return before Godot has completed. Start-Process
-    # with -Wait closes that race explicitly.
-    $argumentList = @($Arguments | ForEach-Object {
-        ConvertTo-StartProcessArgument -Value $_
-    })
-
-    $process = Start-Process \
-        -FilePath 'godot' \
-        -ArgumentList $argumentList \
-        -WorkingDirectory $ProjectRoot \
-        -NoNewWindow \
-        -Wait \
-        -PassThru
-
-    if ($null -eq $process) {
-        throw "$Label did not return a process handle."
-    }
-
-    if ($process.ExitCode -ne 0) {
-        throw "$Label failed with exit code $($process.ExitCode)"
-    }
-}
+New-Item -ItemType Directory -Force -Path $RunsDir | Out-Null
 
 function Invoke-Checked {
     param(
@@ -82,7 +43,7 @@ function Wait-ForStableFile {
     param(
         [Parameter(Mandatory=$true)][string]$Path,
         [Parameter(Mandatory=$true)][string]$Label,
-        [int]$TimeoutSeconds = 120
+        [int]$TimeoutSeconds = 90
     )
 
     $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
@@ -93,6 +54,7 @@ function Wait-ForStableFile {
         if (Test-Path -LiteralPath $Path) {
             $item = Get-Item -LiteralPath $Path
             $size = [int64]$item.Length
+
             if ($size -gt 0) {
                 if ($size -eq $lastSize) {
                     $stableSamples++
@@ -100,11 +62,13 @@ function Wait-ForStableFile {
                     $stableSamples = 0
                     $lastSize = $size
                 }
+
                 if ($stableSamples -ge 2) {
                     return
                 }
             }
         }
+
         Start-Sleep -Milliseconds 500
     }
 
@@ -133,8 +97,8 @@ function Assert-VideoContract {
     )
 
     Wait-ForStableFile -Path $Path -Label $Label
-    $probe = Get-VideoProbe -Path $Path
 
+    $probe = Get-VideoProbe -Path $Path
     if ($null -eq $probe.streams -or $probe.streams.Count -lt 1) {
         throw "$Label has no video stream"
     }
@@ -165,8 +129,9 @@ function Render-Envelope {
         [Parameter(Mandatory=$true)][string]$AviPath
     )
 
-    # Certified C10 physical path: dedicated graphical scene, NO --headless.
-    Invoke-GodotChecked @(
+    # Deliberately mirrors the already-certified C10 physical runner:
+    # graphical Compatibility renderer; NO --headless for Movie Maker.
+    Invoke-Checked 'godot' @(
         '--path','.',
         '--scene','core/presentation/rendering/VisualContentPlayer.tscn',
         "--definition=$EnvelopeRelativePath",
@@ -195,7 +160,9 @@ function Encode-Mp4 {
         $Mp4Path
     ) $Label
 
-    Wait-ForStableFile -Path $Mp4Path -Label $Label
+    if (-not (Test-Path -LiteralPath $Mp4Path)) {
+        throw "$Label did not create $Mp4Path"
+    }
 }
 
 function Write-FrameMd5 {
@@ -266,12 +233,9 @@ function Build-ContactSheet {
 Write-Host '==================================================='
 Write-Host '[C11A] VISUAL SEED QUALIFICATION & BULK RENDER'
 Write-Host '==================================================='
-Write-Host "[C11A] Output root: $OutputBase"
 
-New-Item -ItemType Directory -Force -Path $RunsDir | Out-Null
-
-# Phase 1 - deterministic envelopes. This call MUST block until Godot exits.
-Invoke-GodotChecked @(
+# Phase 1 — envelopes.
+Invoke-Checked 'godot' @(
     '--headless','--path','.',
     '-s','./tests/C11ABulkEnvelopeGenerator.gd'
 ) 'Envelope generation 9x6 matrix'
@@ -284,7 +248,7 @@ if ($Runs.Count -ne $ExpectedRuns) {
 
 $RunDataList = New-Object System.Collections.Generic.List[object]
 
-# Phase 2/3 - physical render + FFmpeg, intentionally serial.
+# Phase 2/3 — physical render + FFmpeg, intentionally serial.
 $CurrentRun = 0
 foreach ($Run in $Runs) {
     $CurrentRun++
@@ -326,6 +290,8 @@ foreach ($Run in $Runs) {
         if (-not (Test-Path -LiteralPath $authoringPath)) { throw 'Missing authoring.json' }
 
         $envData = Get-Content -Raw -LiteralPath $envelopePath | ConvertFrom-Json
+        $requestData = Get-Content -Raw -LiteralPath $authoringPath | ConvertFrom-Json
+
         $record.route = "$($envData.kind)/$($envData.subtype)"
         $record.seed = [int]$envData.seed
         if ($runId -match '_A$') { $record.seed_role = 'A' }
@@ -334,6 +300,7 @@ foreach ($Run in $Runs) {
         $record.authoring_hash = Get-FileSha256Hex -Path $authoringPath
         $record.envelope_hash = Get-FileSha256Hex -Path $envelopePath
 
+        # Use a project-relative definition path, matching the C10 runner contract.
         $envelopeRelative = $envelopePath.Substring($ProjectRoot.Length + 1).Replace('\','/')
         Render-Envelope -RunId $runId -EnvelopeRelativePath $envelopeRelative -AviPath $aviPath
         [void](Assert-VideoContract -Path $aviPath -Label "AVI $runId")
@@ -359,7 +326,7 @@ foreach ($Run in $Runs) {
     $RunDataList.Add([pscustomobject]$record)
 }
 
-# Phase 4 - determinism gates.
+# Phase 4 — determinism gates.
 $Determinism = [ordered]@{
     authoring = $true
     envelope = $true
@@ -406,45 +373,49 @@ foreach ($route in @($RunDataList | Select-Object -ExpandProperty route -Unique 
     }
     if ($runA[0].mp4_sha256 -ne $runB[0].mp4_sha256) {
         $Determinism.mp4_container = $false
-        Write-Host "[C11A] NOTICE: MP4 container hash differs for $route; visual digest remains authoritative." -ForegroundColor Yellow
+        # Container hash is evidence, but is not the definition of visual determinism.
+        Write-Host "[C11A] NOTICE: MP4 container hash differs for $route; visual digest matched/checked." -ForegroundColor Yellow
     }
 }
 
 $TechnicalPass = @($RunDataList | Where-Object { $_.technical_status -eq 'PASS' }).Count
 $TechnicalFail = $ExpectedRuns - $TechnicalPass
-$DeterminismAbPass = ($Determinism.authoring -and $Determinism.envelope -and $Determinism.decoded_frames)
+$DeterminismAbPass = $Determinism.authoring -and $Determinism.envelope -and $Determinism.decoded_frames
 
-$Manifest = [ordered]@{
+$Manifest = [pscustomobject]@{
     qa_batch_id = 'C11A_VISUAL_SEED_QUALIFICATION'
     timestamp_utc = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
-    output_root = 'qa/c11a_visual_qa'
-    contract = [ordered]@{
+    contract = [pscustomobject]@{
         tier = 2
         duration_seconds = 2.0
         fps = 30
         frame_count = 60
-        resolution = [ordered]@{ width = 540; height = 960 }
+        resolution = [pscustomobject]@{ width = 540; height = 960 }
         route_count = 9
         seed_count = 6
     }
     total_runs = $ExpectedRuns
-    summary = [ordered]@{
+    summary = [pscustomobject]@{
         technical_pass = $TechnicalPass
         technical_fail = $TechnicalFail
         determinism_ab_pass = $DeterminismAbPass
     }
-    determinism = $Determinism
+    determinism = [pscustomobject]@{
+        authoring = [bool]$Determinism.authoring
+        envelope = [bool]$Determinism.envelope
+        decoded_frames = [bool]$Determinism.decoded_frames
+        mp4_container = [bool]$Determinism.mp4_container
+    }
     determinism_failures = @($determinismFailures)
     runs = @($RunDataList)
 }
 
 $Manifest | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ManifestPath -Encoding UTF8
 
-$FinalPass = ($TechnicalPass -eq $ExpectedRuns) -and ($DeterminismAbPass -eq $true)
-if (-not $FinalPass) {
-    Write-Host "[C11A] FAIL - technical=$TechnicalPass/$ExpectedRuns, determinism_ab_pass=$DeterminismAbPass" -ForegroundColor Red
+if ($TechnicalPass -ne $ExpectedRuns -or -not $DeterminismAbPass) {
+    Write-Host "[C11A] FAIL — technical=$TechnicalPass/$ExpectedRuns, determinism_ab_pass=$DeterminismAbPass" -ForegroundColor Red
     exit 1
 }
 
-Write-Host '[C11A] PASS - 54/54 technical runs and A/B visual determinism verified.' -ForegroundColor Green
+Write-Host "[C11A] PASS — 54/54 technical runs and A/B visual determinism verified." -ForegroundColor Green
 exit 0

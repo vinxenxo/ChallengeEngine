@@ -10,7 +10,7 @@ const Context = preload("res://core/authoring/VisualAuthoringAssemblyContext.gd"
 const Generator = preload("res://core/authoring/VisualAuthoringGenerator.gd")
 const ContentRuntimeRegistry = preload("res://core/runtime/ContentRuntimeRegistry.gd")
 
-const OUTPUT_BASE: String = "res://qa/c11a_visual_qa/runs"
+const OUTPUT_BASE: String = "res://output/c11a_visual_qa/runs"
 
 const DURATION_SECONDS: float = 2.0
 const FPS: int = 30
