@@ -1,0 +1,201 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "challenge_id": "AUTH_COUNT_V1_20260901",
+  "provenance": {
+    "git": {
+      "commit": "7273c80284481f8b9719ff0ad0208a8cbb8fab0a",
+      "branch": "main",
+      "dirty": true
+    },
+    "challenge_definition": {
+      "path": "c9_g_generated_configs/CHALLENGE_AUTH_COUNT_V1_20260901.json",
+      "sha256": "83c1878bd31c232e637609970e2b4267f6fd4d6d2d0591f8c39406ee6bf16c06"
+    },
+    "referenced_files": [
+      {
+        "path": "res://assets/c6/count_background.svg",
+        "sha256": "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7"
+      },
+      {
+        "path": "res://assets/c6/cursor.svg",
+        "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b"
+      },
+      {
+        "path": "res://assets/c6/transparent.svg",
+        "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21"
+      }
+    ],
+    "authoring": {
+      "video": {
+        "video_profile": {
+          "id": "f4_legacy_60_h3_g7_r0_c2",
+          "path": "profiles/video/f4_legacy_60_h3_g7_r0_c2.json",
+          "sha256": "11cdc0d3f5047fa1dd8e70fb14c9133f34e976fcdc851d2c92e90450651734fb"
+        }
+      },
+      "audio_authoring_snapshot": {
+        "assets_catalog": {
+          "path": "profiles/audio/audio_assets.json",
+          "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+        },
+        "profiles": [
+          {
+            "path": "profiles/audio/c7_profile_mixed_alt.json",
+            "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+          },
+          {
+            "path": "profiles/audio/c7_profile_mixed_overlap.json",
+            "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+          },
+          {
+            "path": "profiles/audio/c7_profile_multi_noise.json",
+            "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+          },
+          {
+            "path": "profiles/audio/c7_profile_noise_only.json",
+            "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+          },
+          {
+            "path": "profiles/audio/c7_profile_tone_only.json",
+            "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+          }
+        ]
+      }
+    },
+    "provenance_sha256": "acff32106f0967ae3089085a3a1e3ea5d0b2ce3283baf973c4155fe137826809"
+  },
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "count_v1",
+    "mechanic_version": "1.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 1,
+    "cta_frames": 120,
+    "final_seed": 20260901,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 180,
+    "initial_seed": 20260901,
+    "minimum_distance": 0.0,
+    "reveal_frames": 0,
+    "rng_version": "2.0",
+    "score": 1.0,
+    "seed_used": 20260901,
+    "total_frames": 720,
+    "validate_only": false,
+    "winning_frame": 495,
+    "winning_frame_game": 315,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 8.25,
+    "winning_time_game": 5.25
+  },
+  "artifacts": {
+    "raw_video": "AUTH_COUNT_V1_20260901_raw.avi",
+    "raw_video_sha256": "5314c2754dfbb14d55de99076e75ea11825a561cb22daa69c156bf416740858a",
+    "final_video": "AUTH_COUNT_V1_20260901.mp4",
+    "final_video_sha256": "84a610f325c2e1c9d42abaca39d1aabc356b80e040416c59f411c649900c20e9",
+    "preview_gif": "AUTH_COUNT_V1_20260901.gif",
+    "preview_gif_sha256": "f233c83c39f03147babf605ca6240cb7ca3ca6bc42411ac7891b1e0bd05d049d"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 12.0,
+    "nb_frames": 720,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 12.0,
+      "nb_frames": 720,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "codec_name": "aac",
+      "sample_rate": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "duration": 12.0
+    },
+    "av_sync": {
+      "valid": true,
+      "video_duration": 12.0,
+      "audio_duration": 12.0,
+      "diff": 0.0,
+      "tolerance": 0.05
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 529200,
+        "non_zero_samples": 35999,
+        "non_zero_ratio": 0.068,
+        "peak_amplitude": 22907,
+        "peak_normalized": 0.6991,
+        "rms_amplitude": 2134.33,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -23.7,
+        "max_volume_db": -3.1,
+        "is_silent": false
+      }
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": true,
+    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\export\\c9_g_remaining_production\\AUTH_COUNT_V1_20260901\\audio_master.pcm",
+    "canonical_hash": "2d8d5c873a7fa86a4e6728f2d23dbef21357223ca9286d14674ffacd41946cc8",
+    "channels": 1,
+    "format": "s16le",
+    "sample_rate": 44100,
+    "total_samples": 529200,
+    "audio_master_sha256": "2d8d5c873a7fa86a4e6728f2d23dbef21357223ca9286d14674ffacd41946cc8"
+  },
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 360,
+      "duration": 12.0
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "asset_family": "fam_count_01",
+  "asset_family_version": "1.0",
+  "assets": {
+    "background_path": "res://assets/c6/count_background.svg",
+    "object_path": "res://assets/c6/cursor.svg",
+    "target_path": "res://assets/c6/transparent.svg"
+  },
+  "canonical_v2": {
+    "audio": {
+      "enabled": true,
+      "profile_id": "c7_test_profile"
+    }
+  },
+  "challenge_id": "AUTH_COUNT_V1_20260901",
+  "content": {
+    "cta": "¿Has acertado?",
+    "hook": "¿CUÁNTOS HAY?",
+    "reveal": ""
+  },
+  "difficulty": {
+    "count": {
+      "max_value": 10,
+      "min_value": 3,
+      "start_pos": [
+        180.0,
+        850.0
+      ],
+      "step_x": 100.0
+    }
+  },
+  "engine_version": "0.1",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 20260901
+  },
+  "mechanic": "count_v1",
+  "mechanic_version": "1.0",
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position"
+  },
+  "schema_version": "1.0",
+  "theme": "default_c6",
+  "video": {
+    "cta_duration": 2.0,
+    "fps": 60,
+    "game_duration": 7.0,
+    "hook_duration": 3.0,
+    "profile_id": "f4_legacy_60_h3_g7_r0_c2",
+    "profile_version": "1.0",
+    "reveal_duration": 0.0
+  },
+  "video_profile": "f4_legacy_60_h3_g7_r0_c2",
+  "video_profile_version": "1.0"
+}

@@ -19,6 +19,7 @@ static func initialize_defaults() -> void:
 		register_adapter(load("res://core/authoring/adapters/ParkingV2AuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/HitAuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/CatchAuthoringAdapter.gd").new())
+		register_adapter(load("res://core/authoring/adapters/KeyAuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/FindAuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/ChooseAuthoringAdapter.gd").new())
 		register_adapter(load("res://core/authoring/adapters/CountAuthoringAdapter.gd").new())

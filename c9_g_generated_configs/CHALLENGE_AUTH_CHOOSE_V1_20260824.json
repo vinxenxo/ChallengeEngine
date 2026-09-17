@@ -1,0 +1,64 @@
+{
+  "asset_family": "fam_choose_01",
+  "asset_family_version": "1.0",
+  "assets": {
+    "background_path": "res://assets/c6/choose_background.svg",
+    "object_path": "res://assets/c6/cursor.svg",
+    "target_path": "res://assets/c6/transparent.svg"
+  },
+  "canonical_v2": {
+    "audio": {
+      "enabled": true,
+      "profile_id": "c7_test_profile"
+    }
+  },
+  "challenge_id": "AUTH_CHOOSE_V1_20260824",
+  "content": {
+    "cta": "¿Has acertado?",
+    "hook": "¿Cuál es la opción correcta?",
+    "reveal": ""
+  },
+  "difficulty": {
+    "choose": {
+      "options_count": 3,
+      "positions": [
+        [
+          270.0,
+          960.0
+        ],
+        [
+          540.0,
+          960.0
+        ],
+        [
+          810.0,
+          960.0
+        ]
+      ]
+    }
+  },
+  "engine_version": "0.1",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 20260824
+  },
+  "mechanic": "choose_v1",
+  "mechanic_version": "1.0",
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position"
+  },
+  "schema_version": "1.0",
+  "theme": "default_c6",
+  "video": {
+    "cta_duration": 2.0,
+    "fps": 60,
+    "game_duration": 7.0,
+    "hook_duration": 3.0,
+    "profile_id": "f4_legacy_60_h3_g7_r0_c2",
+    "profile_version": "1.0",
+    "reveal_duration": 0.0
+  },
+  "video_profile": "f4_legacy_60_h3_g7_r0_c2",
+  "video_profile_version": "1.0"
+}

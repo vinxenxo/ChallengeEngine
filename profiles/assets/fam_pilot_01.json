@@ -1,0 +1,9 @@
+{
+  "family_id": "fam_pilot_01",
+  "version": "1.0",
+  "description": "Dedicated visual asset family for pilot authoring productization.",
+  "themes": ["garage"],
+  "background_path": "res://assets/c6/garage_background.svg",
+  "target_path": "res://assets/c6/waypoint.svg",
+  "object_path": "res://assets/c6/pilot.svg"
+}

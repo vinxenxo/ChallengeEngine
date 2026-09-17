@@ -1,0 +1,9 @@
+{
+  "family_id": "fam_find_01",
+  "version": "1.0",
+  "description": "Dedicated visual asset family for find_v1 authoring productization.",
+  "themes": ["garage"],
+  "background_path": "res://assets/c6/garage_background.svg",
+  "target_path": "res://assets/c6/target.svg",
+  "object_path": "res://assets/c6/scanner.svg"
+}

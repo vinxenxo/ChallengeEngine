@@ -1,0 +1,92 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "godot_versions": [
+    "4.7.1-stable (official)"
+  ],
+  "rng_versions": [
+    "1.0",
+    "2.0"
+  ],
+  "status": "FAILED",
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "audio_summary": {
+    "total_challenges": 5,
+    "audited_challenges": 5,
+    "audio_enabled": 5,
+    "audio_disabled": 0,
+    "audio_content_valid": 5,
+    "av_sync_valid": 5,
+    "mixed_batch": false
+  },
+  "challenges": [
+    {
+      "challenge_id": "AUTH_CHOOSE_V1_20260824",
+      "status": "PASS",
+      "mechanic": "choose_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_CHOOSE_V1_20260824/AUTH_CHOOSE_V1_20260824_manifest.json",
+      "preview_gif": "AUTH_CHOOSE_V1_20260824/AUTH_CHOOSE_V1_20260824.gif"
+    },
+    {
+      "challenge_id": "AUTH_COUNT_V1_20260901",
+      "status": "PASS",
+      "mechanic": "count_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_COUNT_V1_20260901/AUTH_COUNT_V1_20260901_manifest.json",
+      "preview_gif": "AUTH_COUNT_V1_20260901/AUTH_COUNT_V1_20260901.gif"
+    },
+    {
+      "challenge_id": "AUTH_FIND_V1_7770001",
+      "status": "PASS",
+      "mechanic": "find_v1",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_FIND_V1_7770001/AUTH_FIND_V1_7770001_manifest.json",
+      "preview_gif": "AUTH_FIND_V1_7770001/AUTH_FIND_V1_7770001.gif"
+    },
+    {
+      "challenge_id": "AUTH_KEY_193847",
+      "status": "PASS",
+      "mechanic": "key",
+      "rng_version": "1.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_KEY_193847/AUTH_KEY_193847_manifest.json",
+      "preview_gif": "AUTH_KEY_193847/AUTH_KEY_193847.gif"
+    },
+    {
+      "challenge_id": "AUTH_PILOT_314159",
+      "status": "PASS",
+      "mechanic": "pilot",
+      "rng_version": "2.0",
+      "godot_version": "4.7.1-stable (official)",
+      "audio_enabled": true,
+      "manifest": "AUTH_PILOT_314159/AUTH_PILOT_314159_manifest.json",
+      "preview_gif": "AUTH_PILOT_314159/AUTH_PILOT_314159.gif"
+    }
+  ],
+  "preview_gif_policy": {
+    "enabled": true,
+    "required": true,
+    "fps": 30,
+    "width": 540,
+    "height": 960,
+    "loop": true
+  },
+  "errors": [
+    {
+      "code": "C7_A2_MIXED_BATCH_REQUIRED",
+      "message": "C7-A2 requiere al menos un challenge audio-on y uno audio-off en el mismo lote."
+    }
+  ]
+}

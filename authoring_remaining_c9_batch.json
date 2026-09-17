@@ -1,0 +1,67 @@
+[
+  {
+    "mechanic": "key",
+    "level": 50,
+    "seed": 193847,
+    "profile": "default_key",
+    "overrides": {
+      "tolerance.rotation_deg": 4.5
+    },
+    "content": {
+      "hook": "¡SOLO EL 1% LLEGA AL CENTRO!",
+      "reveal": "",
+      "cta": "¡INTÉNTALO TÚ TAMBIÉN!"
+    }
+  },
+  {
+    "mechanic": "pilot",
+    "level": 50,
+    "seed": 314159,
+    "profile": "default_pilot",
+    "overrides": {
+      "tolerance.distance_px": 5.0,
+      "target_velocity": 0.2386634844868735
+    },
+    "content": {
+      "hook": "PILOT V2.0",
+      "reveal": "",
+      "cta": "RNG ISOLATION TEST"
+    }
+  },
+  {
+    "mechanic": "find_v1",
+    "level": 50,
+    "seed": 7770001,
+    "profile": "default_find_v1",
+    "overrides": {},
+    "content": {
+      "hook": "¿Podrás encontrarlo antes de que escape?",
+      "reveal": "",
+      "cta": "¡Descarga y pon a prueba tu agilidad visual!"
+    }
+  },
+  {
+    "mechanic": "choose_v1",
+    "level": 50,
+    "seed": 20260824,
+    "profile": "default_choose_v1",
+    "overrides": {},
+    "content": {
+      "hook": "¿Cuál es la opción correcta?",
+      "reveal": "",
+      "cta": "¿Has acertado?"
+    }
+  },
+  {
+    "mechanic": "count_v1",
+    "level": 50,
+    "seed": 20260901,
+    "profile": "default_count_v1",
+    "overrides": {},
+    "content": {
+      "hook": "¿CUÁNTOS HAY?",
+      "reveal": "",
+      "cta": "¿Has acertado?"
+    }
+  }
+]

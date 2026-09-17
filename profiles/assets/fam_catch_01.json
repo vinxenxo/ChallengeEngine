@@ -1,0 +1,9 @@
+{
+  "family_id": "fam_catch_01",
+  "version": "1.0",
+  "description": "Garage asset family used by catch_v1 authoring.",
+  "themes": ["garage"],
+  "background_path": "res://assets/c6/garage_background.svg",
+  "target_path": "res://assets/c6/target.svg",
+  "object_path": "res://assets/c6/catcher.svg"
+}

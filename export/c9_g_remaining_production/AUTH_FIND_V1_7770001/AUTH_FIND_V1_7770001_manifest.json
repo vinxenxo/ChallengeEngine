@@ -1,0 +1,201 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "challenge_id": "AUTH_FIND_V1_7770001",
+  "provenance": {
+    "git": {
+      "commit": "7273c80284481f8b9719ff0ad0208a8cbb8fab0a",
+      "branch": "main",
+      "dirty": true
+    },
+    "challenge_definition": {
+      "path": "c9_g_generated_configs/CHALLENGE_AUTH_FIND_V1_7770001.json",
+      "sha256": "5ce36e560d6e1a6414225a969355425d27dec6de72163ff615423cb50c5e08d5"
+    },
+    "referenced_files": [
+      {
+        "path": "res://assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "path": "res://assets/c6/scanner.svg",
+        "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804"
+      },
+      {
+        "path": "res://assets/c6/target.svg",
+        "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547"
+      }
+    ],
+    "authoring": {
+      "video": {
+        "video_profile": {
+          "id": "f4_legacy_60_h3_g7_r0_c0",
+          "path": "profiles/video/f4_legacy_60_h3_g7_r0_c0.json",
+          "sha256": "33628b3ac326e3ded85faf00d51112ad700ae4489a0d0ab2796dac07b5bcd4c1"
+        }
+      },
+      "audio_authoring_snapshot": {
+        "assets_catalog": {
+          "path": "profiles/audio/audio_assets.json",
+          "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+        },
+        "profiles": [
+          {
+            "path": "profiles/audio/c7_profile_mixed_alt.json",
+            "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+          },
+          {
+            "path": "profiles/audio/c7_profile_mixed_overlap.json",
+            "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+          },
+          {
+            "path": "profiles/audio/c7_profile_multi_noise.json",
+            "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+          },
+          {
+            "path": "profiles/audio/c7_profile_noise_only.json",
+            "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+          },
+          {
+            "path": "profiles/audio/c7_profile_tone_only.json",
+            "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+          }
+        ]
+      }
+    },
+    "provenance_sha256": "94d9c94a10a9b0637a9e75cfa76d7ca1cd1298e6b9ed2d24857fa1b9337cee95"
+  },
+  "declarative_metadata": {
+    "schema_version": "1.0",
+    "engine_version": "0.1",
+    "mechanic": "find_v1",
+    "mechanic_version": "1.0",
+    "video_profile_version": "1.0",
+    "asset_family_version": "1.0"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 2,
+    "cta_frames": 0,
+    "final_seed": 7770001,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 180,
+    "initial_seed": 7770001,
+    "minimum_distance": 58.2231826782227,
+    "reveal_frames": 0,
+    "rng_version": "2.0",
+    "score": 0.315021380256204,
+    "seed_used": 7770001,
+    "total_frames": 600,
+    "validate_only": false,
+    "winning_frame": 188,
+    "winning_frame_game": 8,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 3.13333333333333,
+    "winning_time_game": 0.133333333333333
+  },
+  "artifacts": {
+    "raw_video": "AUTH_FIND_V1_7770001_raw.avi",
+    "raw_video_sha256": "346d7cd1146276c470f31d2a9458efa7143b6cb6324a4a552d597b4ef75618d8",
+    "final_video": "AUTH_FIND_V1_7770001.mp4",
+    "final_video_sha256": "d765923ff691a85224f23b20509e8d3890fb3ca048973f6ff1f7b0fdd77640de",
+    "preview_gif": "AUTH_FIND_V1_7770001.gif",
+    "preview_gif_sha256": "e726c309366add1a729438984c8605a48f60418c690eead1e71984b28984a357"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 10.0,
+    "nb_frames": 600,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 10.0,
+      "nb_frames": 600,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "codec_name": "aac",
+      "sample_rate": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "duration": 10.0
+    },
+    "av_sync": {
+      "valid": true,
+      "video_duration": 10.0,
+      "audio_duration": 10.0,
+      "diff": 0.0,
+      "tolerance": 0.05
+    },
+    "audio_content": {
+      "valid": true,
+      "pcm_signal": {
+        "valid": true,
+        "total_samples": 441000,
+        "non_zero_samples": 24244,
+        "non_zero_ratio": 0.055,
+        "peak_amplitude": 22913,
+        "peak_normalized": 0.6992,
+        "rms_amplitude": 1936.15,
+        "is_silent": false
+      },
+      "aac_volume": {
+        "valid": true,
+        "mean_volume_db": -24.6,
+        "max_volume_db": -3.1,
+        "is_silent": false
+      }
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": true,
+    "audio_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\export\\c9_g_remaining_production\\AUTH_FIND_V1_7770001\\audio_master.pcm",
+    "canonical_hash": "699f1f73351837d9df8247e2aae7c861d5097d65f79968f5bff594ff2ad4be09",
+    "channels": 1,
+    "format": "s16le",
+    "sample_rate": 44100,
+    "total_samples": 441000,
+    "audio_master_sha256": "699f1f73351837d9df8247e2aae7c861d5097d65f79968f5bff594ff2ad4be09"
+  },
+  "gif_validation": {
+    "valid": true,
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "probe": {
+      "width": 540,
+      "height": 960,
+      "avg_frame_rate": "100/3",
+      "nb_frames": 300,
+      "duration": 10.0
+    }
+  }
+}

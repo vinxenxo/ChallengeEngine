@@ -1,0 +1,9 @@
+{
+  "family_id": "fam_choose_01",
+  "version": "1.0",
+  "description": "Dedicated visual asset family for choose_v1 authoring productization.",
+  "themes": ["choice"],
+  "background_path": "res://assets/c6/choose_background.svg",
+  "target_path": "res://assets/c6/transparent.svg",
+  "object_path": "res://assets/c6/cursor.svg"
+}

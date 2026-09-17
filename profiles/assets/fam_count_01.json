@@ -1,0 +1,9 @@
+{
+  "family_id": "fam_count_01",
+  "version": "1.0",
+  "description": "Dedicated visual asset family for count_v1 authoring productization.",
+  "themes": ["count"],
+  "background_path": "res://assets/c6/count_background.svg",
+  "target_path": "res://assets/c6/transparent.svg",
+  "object_path": "res://assets/c6/cursor.svg"
+}

@@ -1,0 +1,56 @@
+{
+  "asset_family": "fam_pilot_01",
+  "asset_family_version": "1.0",
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "object_path": "res://assets/c6/pilot.svg",
+    "target_path": "res://assets/c6/waypoint.svg"
+  },
+  "canonical_v2": {
+    "audio": {
+      "enabled": true,
+      "profile_id": "c7_profile_mixed_alt"
+    }
+  },
+  "challenge_id": "AUTH_PILOT_314159",
+  "content": {
+    "control_amplitude": 0.5,
+    "cta": "RNG ISOLATION TEST",
+    "end_x": 100.0,
+    "hook": "PILOT V2.0",
+    "reveal": "",
+    "start_x": 0.0,
+    "target_start": 0.0,
+    "target_velocity": 0.238663484486874,
+    "trajectory_amplitude": 2.0
+  },
+  "difficulty": {
+    "tolerance": {
+      "distance_px": 5.0
+    }
+  },
+  "engine_version": "0.1",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 314159
+  },
+  "mechanic": "pilot",
+  "mechanic_version": "2.0",
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position"
+  },
+  "schema_version": "1.0",
+  "theme": "default_c6",
+  "video": {
+    "cta_duration": 2.0,
+    "fps": 60,
+    "game_duration": 7.0,
+    "hook_duration": 3.0,
+    "profile_id": "f4_legacy_60_h3_g7_r0_c2",
+    "profile_version": "1.0",
+    "reveal_duration": 0.0
+  },
+  "video_profile": "f4_legacy_60_h3_g7_r0_c2",
+  "video_profile_version": "1.0"
+}
