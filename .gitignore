@@ -31,7 +31,8 @@ mono_crash.*.json
 .continue/
 
 # output videos
-# output/
+Output/
+qa/
 
 # python
 *pycache*
