@@ -1,0 +1,9 @@
+$files = git ls-files -- '*.avi' '*.zip'
+
+if ($files) {
+    Write-Host "ERROR: No se permiten archivos .avi o .zip en este repositorio." -ForegroundColor Red
+    $files | ForEach-Object {
+        Write-Host $_
+    }
+    exit 1
+}
