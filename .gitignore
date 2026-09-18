@@ -39,6 +39,7 @@ output/
 output_c7/
 output_bactch_audit/
 qa/
+export/
 
 # python
 *pycache*
