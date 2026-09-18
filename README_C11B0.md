@@ -33,3 +33,7 @@ Do not regenerate C11-A or C11-A.1 artifacts.
 
 ### v3 correction
 The `target_position` secondary binding is mapped through the same `BodyRegion` target rect as the primary entity. This keeps both winning-frame entities under the Unified Social Frame geometry.
+
+
+### Windows PowerShell compatibility
+The audit runner uses `ProcessStartInfo.Arguments` instead of `.ArgumentList` so it works under Windows PowerShell 5.1.

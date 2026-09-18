@@ -798,8 +798,10 @@ func build_winning_highlight_rects() -> Array:
 
 
 func build_winning_entity_audit() -> Array:
-	# C11-B.0: captures actual presentation geometry only.
-	# No simulation or winning-frame values are computed here.
+	# C11-B.0.1 — audit in the same local presentation space used by the
+	# gameplay sprites. CoordinateMapper writes positions into GestorJuego,
+	# therefore the audit must consume Sprite2D.transform relative to that
+	# parent, not a global transform converted through an unrelated Control.
 	var entities: Array = []
 	for pair in [
 		{"id": "object", "sprite": object_sprite},
@@ -808,19 +810,17 @@ func build_winning_entity_audit() -> Array:
 		var sprite: Sprite2D = pair["sprite"]
 		var has_texture := sprite != null and sprite.texture != null
 		var visible := sprite != null and sprite.visible
-		var canvas_rect := Rect2()
+		var parent_rect := Rect2()
 		if has_texture:
 			var local_rect: Rect2 = sprite.get_rect()
-			canvas_rect = sprite.get_global_transform() * local_rect
-			if presentation_ui_root != null:
-				var to_ui: Transform2D = presentation_ui_root.get_global_transform().affine_inverse()
-				canvas_rect = to_ui * canvas_rect
+			parent_rect = sprite.transform * local_rect
 
 		entities.append({
 			"id": pair["id"],
 			"visible": visible,
-			"has_geometry": has_texture and canvas_rect.size.x > 0.0 and canvas_rect.size.y > 0.0,
-			"screen_rect": canvas_rect
+			"has_geometry": has_texture and parent_rect.size.x > 0.0 and parent_rect.size.y > 0.0,
+			"screen_rect": parent_rect,
+			"audit_space": "GestorJuego_local"
 		})
 
 	return entities
@@ -847,11 +847,23 @@ func run_c11b_visibility_audit() -> void:
 		social_body_rect
 	)
 
+	var logical_position := verified_history[winning_index].position
+	var expected_position := CoordinateMapper.map_position(
+		logical_position,
+		current_coord_space,
+		CoordinateMapper.PRESENTATION_SIZE,
+		social_body_rect
+	) + object_offset
+
 	var payload := {
 		"challenge_id": str(config_cache.get("challenge_id", "UNKNOWN")),
 		"winning_frame_game": winning_index,
 		"winning_frame": final_winning_frame,
 		"body_rect": social_body_rect,
+		"audit_space": "GestorJuego_local",
+		"object_logical_position": logical_position,
+		"object_expected_position": expected_position,
+		"object_actual_position": object_sprite.position,
 		"pass": bool(gate.get("pass", false)),
 		"errors": gate.get("errors", []),
 		"entities": gate.get("entities", [])

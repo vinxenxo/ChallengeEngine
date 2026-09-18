@@ -1,0 +1,12 @@
+C11B0_IMPLEMENTATION.patch
+GeneradorMaestro.gd
+PACKAGE_CONTENTS.txt
+README_C11B0.md
+core/presentation/CoordinateMapper.gd
+core/presentation/PresentationProfile.gd
+core/presentation/UnifiedSocialFrame.gd
+core/presentation/UnifiedSocialFrame.tscn
+core/presentation/WinningFrameVisibilityGate.gd
+docs/C11B0_CONTRACT.md
+tests/C11B0UnifiedSocialFrameContractTest.gd
+tools/run_c11b_body_visibility_audit.ps1

@@ -34,14 +34,9 @@ function Invoke-CapturedProcess {
     $psi.CreateNoWindow = $true
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError = $true
-    $arguments = @('--headless','--path',$ProjectRoot,'--',"--config=$ConfigPath",'--validate-only','--c11b-visibility-audit')
-    if ($null -ne $psi.ArgumentList) {
-        foreach ($arg in $arguments) {
-            [void]$psi.ArgumentList.Add($arg)
-        }
-    } else {
-        $psi.Arguments = ($arguments | ForEach-Object { '"' + ($_ -replace '"', '\"') + '"' }) -join ' '
-    }
+    $quotedRoot = '"' + $ProjectRoot.Replace('"','\"') + '"'
+    $quotedConfig = '"' + $ConfigPath.Replace('"','\"') + '"'
+    $psi.Arguments = '--headless --path ' + $quotedRoot + ' -- "--config=' + $quotedConfig.Trim('"') + '" --validate-only --c11b-visibility-audit'
     $p = [Diagnostics.Process]::new()
     $p.StartInfo = $psi
     [void]$p.Start()
@@ -112,7 +107,24 @@ $manifestOut | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $outManifest
 
 if ($failures.Count -gt 0) {
     Write-Host "[C11B0] VISIBILITY NO-GO — $($failures.Count) run(s) failed." -ForegroundColor Red
-    $failures | ForEach-Object { Write-Host (" - {0}: {1}" -f $_.run_id, ($_.errors -join '; ')) -ForegroundColor Red }
+    $failures | ForEach-Object {
+        Write-Host (" - {0}: {1}" -f $_.run_id, ($_.errors -join '; ')) -ForegroundColor Red
+        if ($_.PSObject.Properties.Name -contains "challenge_id") {
+            Write-Host ("   body_rect={0}" -f (($_.body_rect | Out-String).Trim())) -ForegroundColor Yellow
+            if ($_.PSObject.Properties.Name -contains "winning_frame_game") {
+                Write-Host ("   winning_frame_game={0} winning_frame={1}" -f $_.winning_frame_game,$_.winning_frame) -ForegroundColor Yellow
+            }
+            if ($_.PSObject.Properties.Name -contains "object_logical_position") {
+                Write-Host ("   object_logical={0}" -f $_.object_logical_position) -ForegroundColor Yellow
+            }
+            if ($_.PSObject.Properties.Name -contains "object_expected_position") {
+                Write-Host ("   object_expected={0}" -f $_.object_expected_position) -ForegroundColor Yellow
+            }
+            if ($_.PSObject.Properties.Name -contains "object_actual_position") {
+                Write-Host ("   object_actual={0}" -f $_.object_actual_position) -ForegroundColor Yellow
+            }
+        }
+    }
     exit 1
 }
 
