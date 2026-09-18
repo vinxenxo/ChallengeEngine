@@ -1,8 +1,9 @@
-# res://GeneradorMaestro.gd
+﻿# res://GeneradorMaestro.gd
 extends Node2D
 
 const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
 const ChallengeLegacyRuntimeOracle = preload("res://core/execution/ChallengeLegacyRuntimeOracle.gd")
+const WinningFrameVisibilityGate = preload("res://core/presentation/WinningFrameVisibilityGate.gd")
 
 # ============================================================
 # ChallengeEngineV01_STATELESS
@@ -33,6 +34,7 @@ var reference_frame_mode: ReferenceFrameResolver.ReferenceMode = ReferenceFrameR
 # Configuración espacial declarativa de presentación (C6-A)
 var current_coord_space: CoordinateMapper.CoordinateSpace = CoordinateMapper.CoordinateSpace.CANVAS_1080X1920
 var secondary_binding_type: String = "target_position"
+var social_body_rect: Rect2 = CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
 
 # Calibración visual declarativa (C6-D)
 var object_scale: float = 1.0
@@ -180,6 +182,9 @@ func _ready() -> void:
 		" master=", presentation_profile.master_output_size,
 		" safe=", presentation_profile.safe_area
 	)
+
+	var social_regions := presentation_profile.get_social_regions()
+	social_body_rect = social_regions["body_rect"]
 
 	# --------------------------------------------------------
 	# Presentación declarativa
@@ -392,7 +397,7 @@ func _ready() -> void:
 	if not _process_audio_export_pipeline():
 		return
 
-	if validate_only:
+	if validate_only and not has_user_flag("--c11b-visibility-audit"):
 		get_tree().quit(0)
 		return
 
@@ -490,7 +495,9 @@ func _ready() -> void:
 	target_sprite.position = (
 		CoordinateMapper.map_position(
 			raw_target_pos,
-			current_coord_space
+			current_coord_space,
+			CoordinateMapper.PRESENTATION_SIZE,
+			social_body_rect
 		)
 		+ target_offset
 	)
@@ -525,6 +532,10 @@ func _ready() -> void:
 		push_error(
 			"C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada."
 	)
+
+	if has_user_flag("--c11b-visibility-audit"):
+		run_c11b_visibility_audit()
+		return
 
 
 func setup_presentation_bindings() -> void:
@@ -650,7 +661,9 @@ func apply_frame_snapshot(
 	object_sprite.position = (
 		CoordinateMapper.map_position(
 			frame_state.position,
-			current_coord_space
+			current_coord_space,
+			CoordinateMapper.PRESENTATION_SIZE,
+			social_body_rect
 		)
 		+ object_offset
 	)
@@ -685,7 +698,9 @@ func apply_frame_snapshot(
 			target_sprite.position = (
 				CoordinateMapper.map_position(
 					t_pos,
-					current_coord_space
+					current_coord_space,
+					CoordinateMapper.PRESENTATION_SIZE,
+					social_body_rect
 				)
 				+ target_offset
 			)
@@ -712,7 +727,9 @@ func apply_frame_snapshot(
 		var mapped_x = (
 			CoordinateMapper.map_scalar_x(
 				t_x,
-				current_coord_space
+				current_coord_space,
+				CoordinateMapper.PRESENTATION_SIZE,
+				social_body_rect
 			)
 		)
 
@@ -779,6 +796,74 @@ func build_winning_highlight_rects() -> Array:
 
 	return rects
 
+
+func build_winning_entity_audit() -> Array:
+	# C11-B.0: captures actual presentation geometry only.
+	# No simulation or winning-frame values are computed here.
+	var entities: Array = []
+	for pair in [
+		{"id": "object", "sprite": object_sprite},
+		{"id": "target", "sprite": target_sprite}
+	]:
+		var sprite: Sprite2D = pair["sprite"]
+		var has_texture := sprite != null and sprite.texture != null
+		var visible := sprite != null and sprite.visible
+		var canvas_rect := Rect2()
+		if has_texture:
+			var local_rect: Rect2 = sprite.get_rect()
+			canvas_rect = sprite.get_global_transform() * local_rect
+			if presentation_ui_root != null:
+				var to_ui: Transform2D = presentation_ui_root.get_global_transform().affine_inverse()
+				canvas_rect = to_ui * canvas_rect
+
+		entities.append({
+			"id": pair["id"],
+			"visible": visible,
+			"has_geometry": has_texture and canvas_rect.size.x > 0.0 and canvas_rect.size.y > 0.0,
+			"screen_rect": canvas_rect
+		})
+
+	return entities
+
+func run_c11b_visibility_audit() -> void:
+	if final_result == null or verified_history.is_empty():
+		push_error("C11-B.0 visibility audit requires a valid SimulationResult.")
+		get_tree().quit(1)
+		return
+
+	var winning_index := int(final_result.winning_frame)
+	if winning_index < 0 or winning_index >= verified_history.size():
+		push_error("C11-B.0 visibility audit winning_frame is outside verified history.")
+		get_tree().quit(1)
+		return
+
+	object_sprite.visible = true
+	object_sprite.modulate.a = 1.0
+	target_sprite.visible = true
+	apply_frame_snapshot(verified_history[winning_index])
+	var entities := build_winning_entity_audit()
+	var gate := WinningFrameVisibilityGate.evaluate_screen_rects(
+		entities,
+		social_body_rect
+	)
+
+	var payload := {
+		"challenge_id": str(config_cache.get("challenge_id", "UNKNOWN")),
+		"winning_frame_game": winning_index,
+		"winning_frame": final_winning_frame,
+		"body_rect": social_body_rect,
+		"pass": bool(gate.get("pass", false)),
+		"errors": gate.get("errors", []),
+		"entities": gate.get("entities", [])
+	}
+
+	print("[C11B_VISIBILITY_JSON]" + JSON.stringify(payload))
+
+	if not bool(gate.get("pass", false)):
+		get_tree().quit(2)
+		return
+
+	get_tree().quit(0)
 
 # ============================================================
 # UI STATE BUILDER

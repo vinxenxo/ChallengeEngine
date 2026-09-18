@@ -26,13 +26,15 @@ data_*/
 mono_crash.*.json
 
 # Source code
-.githooks
+.githooks/
 
 # VS Plugins
 .continue/
 
 # output videos
-Output/
+output/
+output_c7/
+output_bactch_audit/
 qa/
 
 # python
@@ -41,3 +43,4 @@ qa/
 __pycache__/
 *.avi
 *.zip
+ConsoleHost_history.txt

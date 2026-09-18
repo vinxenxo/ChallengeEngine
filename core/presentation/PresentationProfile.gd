@@ -276,6 +276,24 @@ func get_composition_geometry() -> Dictionary:
 		"footer_rect": footer_rect
 	}
 
+func get_social_regions() -> Dictionary:
+	## C11-B.0 — canonical full-width social frame geometry.
+	## This is intentionally distinct from get_composition_geometry(), whose
+	## safe-area semantics are preserved for C6 compatibility.
+	var canvas := Rect2(Vector2.ZERO, source_canvas_size)
+	var header_height := canvas.size.y * header_ratio
+	var footer_height := canvas.size.y * footer_ratio
+	var header_rect := Rect2(0.0, 0.0, canvas.size.x, header_height)
+	var footer_rect := Rect2(0.0, canvas.size.y - footer_height, canvas.size.x, footer_height)
+	var body_rect := Rect2(0.0, header_rect.end.y, canvas.size.x, footer_rect.position.y - header_rect.end.y)
+
+	return {
+		"canvas_rect": canvas,
+		"header_rect": header_rect,
+		"body_rect": body_rect,
+		"footer_rect": footer_rect
+	}
+
 func validate_composition_geometry() -> Dictionary:
 	var geom := get_composition_geometry()
 	var canvas: Rect2 = geom["canvas_rect"]

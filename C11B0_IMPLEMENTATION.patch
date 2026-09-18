@@ -1,0 +1,721 @@
+﻿--- a/GeneradorMaestro.gd	2026-09-17 04:19:25.000000000 +0000
++++ b/GeneradorMaestro.gd	2026-09-18 06:38:06.915176934 +0000
+@@ -3,6 +3,7 @@
+ 
+ const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
+ const ChallengeLegacyRuntimeOracle = preload("res://core/execution/ChallengeLegacyRuntimeOracle.gd")
++const WinningFrameVisibilityGate = preload("res://core/presentation/WinningFrameVisibilityGate.gd")
+ 
+ # ============================================================
+ # ChallengeEngineV01_STATELESS
+@@ -33,6 +34,7 @@
+ # Configuración espacial declarativa de presentación (C6-A)
+ var current_coord_space: CoordinateMapper.CoordinateSpace = CoordinateMapper.CoordinateSpace.CANVAS_1080X1920
+ var secondary_binding_type: String = "target_position"
++var social_body_rect: Rect2 = CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
+ 
+ # Calibración visual declarativa (C6-D)
+ var object_scale: float = 1.0
+@@ -181,6 +183,9 @@
+ 		" safe=", presentation_profile.safe_area
+ 	)
+ 
++	var social_regions := presentation_profile.get_social_regions()
++	social_body_rect = social_regions["body_rect"]
++
+ 	# --------------------------------------------------------
+ 	# Presentación declarativa
+ 	# --------------------------------------------------------
+@@ -392,7 +397,7 @@
+ 	if not _process_audio_export_pipeline():
+ 		return
+ 
+-	if validate_only:
++	if validate_only and not has_user_flag("--c11b-visibility-audit"):
+ 		get_tree().quit(0)
+ 		return
+ 
+@@ -490,7 +495,9 @@
+ 	target_sprite.position = (
+ 		CoordinateMapper.map_position(
+ 			raw_target_pos,
+-			current_coord_space
++			current_coord_space,
++			CoordinateMapper.PRESENTATION_SIZE,
++			social_body_rect
+ 		)
+ 		+ target_offset
+ 	)
+@@ -526,6 +533,10 @@
+ 			"C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada."
+ 	)
+ 
++	if has_user_flag("--c11b-visibility-audit"):
++		run_c11b_visibility_audit()
++		return
++
+ 
+ func setup_presentation_bindings() -> void:
+ 	var pres_cfg: Dictionary = config_cache.get(
+@@ -650,7 +661,9 @@
+ 	object_sprite.position = (
+ 		CoordinateMapper.map_position(
+ 			frame_state.position,
+-			current_coord_space
++			current_coord_space,
++			CoordinateMapper.PRESENTATION_SIZE,
++			social_body_rect
+ 		)
+ 		+ object_offset
+ 	)
+@@ -712,7 +725,9 @@
+ 		var mapped_x = (
+ 			CoordinateMapper.map_scalar_x(
+ 				t_x,
+-				current_coord_space
++				current_coord_space,
++				CoordinateMapper.PRESENTATION_SIZE,
++				social_body_rect
+ 			)
+ 		)
+ 
+@@ -780,6 +795,74 @@
+ 	return rects
+ 
+ 
++func build_winning_entity_audit() -> Array:
++	# C11-B.0: captures actual presentation geometry only.
++	# No simulation or winning-frame values are computed here.
++	var entities: Array = []
++	for pair in [
++		{"id": "object", "sprite": object_sprite},
++		{"id": "target", "sprite": target_sprite}
++	]:
++		var sprite: Sprite2D = pair["sprite"]
++		var has_texture := sprite != null and sprite.texture != null
++		var visible := sprite != null and sprite.visible
++		var canvas_rect := Rect2()
++		if has_texture:
++			var local_rect: Rect2 = sprite.get_rect()
++			canvas_rect = sprite.get_global_transform() * local_rect
++			if presentation_ui_root != null:
++				var to_ui: Transform2D = presentation_ui_root.get_global_transform().affine_inverse()
++				canvas_rect = to_ui * canvas_rect
++
++		entities.append({
++			"id": pair["id"],
++			"visible": visible,
++			"has_geometry": has_texture and canvas_rect.size.x > 0.0 and canvas_rect.size.y > 0.0,
++			"screen_rect": canvas_rect
++		})
++
++	return entities
++
++func run_c11b_visibility_audit() -> void:
++	if final_result == null or verified_history.is_empty():
++		push_error("C11-B.0 visibility audit requires a valid SimulationResult.")
++		get_tree().quit(1)
++		return
++
++	var winning_index := int(final_result.winning_frame)
++	if winning_index < 0 or winning_index >= verified_history.size():
++		push_error("C11-B.0 visibility audit winning_frame is outside verified history.")
++		get_tree().quit(1)
++		return
++
++	object_sprite.visible = true
++	object_sprite.modulate.a = 1.0
++	target_sprite.visible = true
++	apply_frame_snapshot(verified_history[winning_index])
++	var entities := build_winning_entity_audit()
++	var gate := WinningFrameVisibilityGate.evaluate_screen_rects(
++		entities,
++		social_body_rect
++	)
++
++	var payload := {
++		"challenge_id": str(config_cache.get("challenge_id", "UNKNOWN")),
++		"winning_frame_game": winning_index,
++		"winning_frame": final_winning_frame,
++		"body_rect": social_body_rect,
++		"pass": bool(gate.get("pass", false)),
++		"errors": gate.get("errors", []),
++		"entities": gate.get("entities", [])
++	}
++
++	print("[C11B_VISIBILITY_JSON]" + JSON.stringify(payload))
++
++	if not bool(gate.get("pass", false)):
++		get_tree().quit(2)
++		return
++
++	get_tree().quit(0)
++
+ # ============================================================
+ # UI STATE BUILDER
+ # ============================================================
+
+--- a/core/presentation/CoordinateMapper.gd	2026-09-17 04:19:28.000000000 +0000
++++ b/core/presentation/CoordinateMapper.gd	2026-09-18 06:35:44.231267421 +0000
+@@ -2,6 +2,15 @@
+ class_name CoordinateMapper
+ extends RefCounted
+ 
++## C11-B.0 — Presentation-only coordinate mapping.
++##
++## The logical simulation canvas remains 1080x1920.
++## A target_rect can constrain the presentation to a social body region
++## without changing simulation mathematics or frame truth.
++##
++## Aspect ratio is preserved by default. The source canvas is fitted inside
++## the target rect and centered; no clipping or distortion is introduced.
++
+ enum CoordinateSpace {
+ 	CANVAS_1080X1920,
+ 	PILOT_0X100
+@@ -9,6 +18,7 @@
+ 
+ const PRESENTATION_SIZE: Vector2 = Vector2(540.0, 960.0)
+ const SIMULATION_CANVAS_SIZE: Vector2 = Vector2(1080.0, 1920.0)
++const DEFAULT_SOCIAL_BODY_RECT: Rect2 = Rect2(0.0, 144.0, 540.0, 672.0)
+ 
+ static func get_space_from_string(space_name: String) -> CoordinateSpace:
+ 	match space_name.to_upper():
+@@ -17,40 +27,102 @@
+ 		_:
+ 			return CoordinateSpace.CANVAS_1080X1920
+ 
++static func resolve_target_rect(
++	viewport_size: Vector2 = PRESENTATION_SIZE,
++	target_rect: Rect2 = Rect2()
++) -> Rect2:
++	if target_rect.size.x > 0.0 and target_rect.size.y > 0.0:
++		return target_rect
++	return Rect2(Vector2.ZERO, viewport_size)
++
++static func get_fit_transform(
++	target_rect: Rect2,
++	preserve_aspect: bool = true
++) -> Dictionary:
++	if target_rect.size.x <= 0.0 or target_rect.size.y <= 0.0:
++		return {
++			"valid": false,
++			"scale": Vector2.ZERO,
++			"offset": target_rect.position,
++			"mapped_size": Vector2.ZERO,
++			"target_rect": target_rect
++		}
++
++	var scale_vec: Vector2
++	if preserve_aspect:
++		var uniform_scale := minf(
++			target_rect.size.x / SIMULATION_CANVAS_SIZE.x,
++			target_rect.size.y / SIMULATION_CANVAS_SIZE.y
++		)
++		scale_vec = Vector2.ONE * uniform_scale
++	else:
++		scale_vec = Vector2(
++			target_rect.size.x / SIMULATION_CANVAS_SIZE.x,
++			target_rect.size.y / SIMULATION_CANVAS_SIZE.y
++		)
++
++	var mapped_size := SIMULATION_CANVAS_SIZE * scale_vec
++	var offset := target_rect.position + (target_rect.size - mapped_size) * 0.5
++
++	return {
++		"valid": true,
++		"scale": scale_vec,
++		"offset": offset,
++		"mapped_size": mapped_size,
++		"target_rect": target_rect
++	}
++
+ static func map_position(
+ 	pos: Vector2,
+ 	space: CoordinateSpace,
+-	viewport_size: Vector2 = PRESENTATION_SIZE
++	viewport_size: Vector2 = PRESENTATION_SIZE,
++	target_rect: Rect2 = Rect2()
+ ) -> Vector2:
++	var target := resolve_target_rect(viewport_size, target_rect)
++
+ 	match space:
+ 		CoordinateSpace.PILOT_0X100:
+ 			var norm_x: float = clampf(pos.x / 100.0, 0.0, 1.0)
+-			var screen_x: float = norm_x * viewport_size.x
+-			var screen_y: float = viewport_size.y * 0.5
++			var screen_x: float = target.position.x + norm_x * target.size.x
++			var screen_y: float = target.position.y + target.size.y * 0.5
+ 			return Vector2(screen_x, screen_y)
+ 
+ 		CoordinateSpace.CANVAS_1080X1920:
+-			var scale_x: float = viewport_size.x / SIMULATION_CANVAS_SIZE.x
+-			var scale_y: float = viewport_size.y / SIMULATION_CANVAS_SIZE.y
+-			return Vector2(
+-				pos.x * scale_x,
+-				pos.y * scale_y
+-			)
++			var transform := get_fit_transform(target, true)
++			return transform["offset"] + pos * transform["scale"]
+ 
+ 	return Vector2.ZERO
+ 
+ static func map_scalar_x(
+ 	x: float,
+ 	space: CoordinateSpace,
+-	viewport_size: Vector2 = PRESENTATION_SIZE
++	viewport_size: Vector2 = PRESENTATION_SIZE,
++	target_rect: Rect2 = Rect2()
+ ) -> float:
++	var target := resolve_target_rect(viewport_size, target_rect)
++
+ 	match space:
+ 		CoordinateSpace.PILOT_0X100:
+ 			var norm_x: float = clampf(x / 100.0, 0.0, 1.0)
+-			return norm_x * viewport_size.x
++			return target.position.x + norm_x * target.size.x
+ 
+ 		CoordinateSpace.CANVAS_1080X1920:
+-			var scale_x: float = viewport_size.x / SIMULATION_CANVAS_SIZE.x
+-			return x * scale_x
++			var transform := get_fit_transform(target, true)
++			return transform["offset"].x + x * transform["scale"].x
+ 
+-	return 0.0
+\ No newline at end of file
++	return 0.0
++
++static func map_rect(
++	logical_rect: Rect2,
++	target_rect: Rect2 = Rect2(),
++	viewport_size: Vector2 = PRESENTATION_SIZE
++) -> Rect2:
++	var target := resolve_target_rect(viewport_size, target_rect)
++	var transform := get_fit_transform(target, true)
++	if not bool(transform["valid"]):
++		return Rect2()
++
++	return Rect2(
++		transform["offset"] + logical_rect.position * transform["scale"],
++		logical_rect.size * transform["scale"]
++	)
+
+--- a/core/presentation/PresentationProfile.gd	2026-09-17 04:19:28.000000000 +0000
++++ b/core/presentation/PresentationProfile.gd	2026-09-18 06:35:44.863841172 +0000
+@@ -276,6 +276,24 @@
+ 		"footer_rect": footer_rect
+ 	}
+ 
++func get_social_regions() -> Dictionary:
++	## C11-B.0 — canonical full-width social frame geometry.
++	## This is intentionally distinct from get_composition_geometry(), whose
++	## safe-area semantics are preserved for C6 compatibility.
++	var canvas := Rect2(Vector2.ZERO, source_canvas_size)
++	var header_height := canvas.size.y * header_ratio
++	var footer_height := canvas.size.y * footer_ratio
++	var header_rect := Rect2(0.0, 0.0, canvas.size.x, header_height)
++	var footer_rect := Rect2(0.0, canvas.size.y - footer_height, canvas.size.x, footer_height)
++	var body_rect := Rect2(0.0, header_rect.end.y, canvas.size.x, footer_rect.position.y - header_rect.end.y)
++
++	return {
++		"canvas_rect": canvas,
++		"header_rect": header_rect,
++		"body_rect": body_rect,
++		"footer_rect": footer_rect
++	}
++
+ func validate_composition_geometry() -> Dictionary:
+ 	var geom := get_composition_geometry()
+ 	var canvas: Rect2 = geom["canvas_rect"]
+
+--- a/core/presentation/WinningFrameVisibilityGate.gd	2026-09-18 06:24:20.151757762 +0000
++++ b/core/presentation/WinningFrameVisibilityGate.gd	2026-09-18 06:36:42.548231722 +0000
+@@ -0,0 +1,67 @@
++# res://core/presentation/WinningFrameVisibilityGate.gd
++class_name WinningFrameVisibilityGate
++extends RefCounted
++
++## C11-B.0 — presentation-only gate.
++## Validates the already-rendered geometry at the winning frame.
++## It never recalculates SimulationResult, winning_frame or RNG state.
++
++const EPSILON: float = 0.01
++
++static func rect_encloses_with_epsilon(container: Rect2, child: Rect2, epsilon: float = EPSILON) -> bool:
++	return (
++		child.position.x >= container.position.x - epsilon
++		and child.position.y >= container.position.y - epsilon
++		and child.end.x <= container.end.x + epsilon
++		and child.end.y <= container.end.y + epsilon
++	)
++
++static func evaluate_screen_rects(
++	entities: Array,
++	body_rect: Rect2,
++	epsilon: float = EPSILON
++) -> Dictionary:
++	var failures: Array[String] = []
++	var mapped_entities: Array = []
++
++	if body_rect.size.x <= 0.0 or body_rect.size.y <= 0.0:
++		return {
++			"pass": false,
++			"errors": ["BodyRegion is empty or invalid."],
++			"entities": []
++		}
++
++	for entity in entities:
++		if not (entity is Dictionary):
++			failures.append("Entity audit entry is not a Dictionary.")
++			continue
++
++		var entity_id := str(entity.get("id", "unknown"))
++		var visible := bool(entity.get("visible", true))
++		var has_geometry := bool(entity.get("has_geometry", entity.has("screen_rect")))
++		var raw_rect = entity.get("screen_rect", Rect2())
++		var screen_rect: Rect2 = raw_rect if raw_rect is Rect2 else Rect2()
++
++		var entry := {
++			"id": entity_id,
++			"visible": visible,
++			"has_geometry": has_geometry,
++			"screen_rect": screen_rect
++		}
++		mapped_entities.append(entry)
++
++		if not visible:
++			failures.append("%s is not visible at winning frame." % entity_id)
++			continue
++		if not has_geometry or screen_rect.size.x <= 0.0 or screen_rect.size.y <= 0.0:
++			failures.append("%s has no valid visible geometry." % entity_id)
++			continue
++		if not rect_encloses_with_epsilon(body_rect, screen_rect, epsilon):
++			failures.append("%s escapes BodyRegion: %s" % [entity_id, str(screen_rect)])
++
++	return {
++		"pass": failures.is_empty(),
++		"errors": failures,
++		"entities": mapped_entities,
++		"body_rect": body_rect
++	}
+
+--- a/core/presentation/UnifiedSocialFrame.gd	2026-09-18 06:24:20.151757762 +0000
++++ b/core/presentation/UnifiedSocialFrame.gd	2026-09-18 06:36:42.548285312 +0000
+@@ -0,0 +1,47 @@
++# res://core/presentation/UnifiedSocialFrame.gd
++class_name UnifiedSocialFrame
++extends Control
++
++## C11-B.0 — Unified Social Frame.
++## Shared canvas topology for Challenges, Visual Loops, Visual Drills and future families.
++## This node owns geometry/regions only. It does not own simulation, RNG or timing truth.
++
++@onready var header_region: Control = $HeaderRegion
++@onready var body_region: Control = $BodyRegion
++@onready var footer_region: Control = $FooterRegion
++
++var current_profile: PresentationProfile
++
++func _ready() -> void:
++	mouse_filter = Control.MOUSE_FILTER_IGNORE
++	_apply_geometry(PresentationProfile.new())
++
++func apply_profile(profile: PresentationProfile) -> void:
++	if profile == null:
++		return
++	current_profile = profile
++	_apply_geometry(profile)
++
++func _apply_geometry(profile: PresentationProfile) -> void:
++	var regions := profile.get_social_regions()
++	var canvas: Rect2 = regions["canvas_rect"]
++	var header: Rect2 = regions["header_rect"]
++	var body: Rect2 = regions["body_rect"]
++	var footer: Rect2 = regions["footer_rect"]
++
++	size = canvas.size
++	header_region.position = header.position
++	header_region.size = header.size
++	body_region.position = body.position
++	body_region.size = body.size
++	footer_region.position = footer.position
++	footer_region.size = footer.size
++
++func get_body_rect() -> Rect2:
++	return Rect2(body_region.position, body_region.size)
++
++func get_header_rect() -> Rect2:
++	return Rect2(header_region.position, header_region.size)
++
++func get_footer_rect() -> Rect2:
++	return Rect2(footer_region.position, footer_region.size)
+
+--- a/core/presentation/UnifiedSocialFrame.tscn	2026-09-18 06:24:20.151757762 +0000
++++ b/core/presentation/UnifiedSocialFrame.tscn	2026-09-18 06:35:45.020824214 +0000
+@@ -0,0 +1,34 @@
++[gd_scene load_steps=2 format=3]
++
++[ext_resource type="Script" path="res://core/presentation/UnifiedSocialFrame.gd" id="1_script"]
++
++[node name="UnifiedSocialFrame" type="Control"]
++layout_mode = 3
++anchors_preset = 0
++offset_right = 540.0
++offset_bottom = 960.0
++grow_horizontal = 0
++grow_vertical = 0
++mouse_filter = 2
++script = ExtResource("1_script")
++
++[node name="HeaderRegion" type="Control" parent="."]
++layout_mode = 0
++offset_right = 540.0
++offset_bottom = 144.0
++mouse_filter = 2
++
++[node name="BodyRegion" type="Control" parent="."]
++layout_mode = 0
++offset_top = 144.0
++offset_right = 540.0
++offset_bottom = 816.0
++mouse_filter = 2
++clip_contents = true
++
++[node name="FooterRegion" type="Control" parent="."]
++layout_mode = 0
++offset_top = 816.0
++offset_right = 540.0
++offset_bottom = 960.0
++mouse_filter = 2
+
+--- a/tests/C11B0UnifiedSocialFrameContractTest.gd	2026-09-18 06:24:20.151757762 +0000
++++ b/tests/C11B0UnifiedSocialFrameContractTest.gd	2026-09-18 06:37:01.979055660 +0000
+@@ -0,0 +1,106 @@
++extends SceneTree
++
++func _initialize() -> void:
++	print("[TEST] Running C11B0UnifiedSocialFrameContractTest...")
++	var failures: Array[String] = []
++
++	_test_profile_geometry(failures)
++	_test_mapper(failures)
++	_test_visibility_gate(failures)
++	_test_scene_geometry(failures)
++
++	if failures.is_empty():
++		print("[C11B0_UNIFIED_SOCIAL_FRAME_CONTRACT_SUITE] PASS")
++		quit(0)
++		return
++
++	for failure in failures:
++		print("FAIL: ", failure)
++	print("[C11B0_UNIFIED_SOCIAL_FRAME_CONTRACT_SUITE] FAIL count=%d" % failures.size())
++	quit(1)
++
++func _test_profile_geometry(failures: Array[String]) -> void:
++	var profile := PresentationProfile.new()
++	var regions := profile.get_social_regions()
++	var header: Rect2 = regions["header_rect"]
++	var body: Rect2 = regions["body_rect"]
++	var footer: Rect2 = regions["footer_rect"]
++
++	if header != Rect2(0.0, 0.0, 540.0, 144.0):
++		failures.append("Unexpected HeaderRegion geometry: %s" % str(header))
++	if body != Rect2(0.0, 144.0, 540.0, 672.0):
++		failures.append("Unexpected BodyRegion geometry: %s" % str(body))
++	if footer != Rect2(0.0, 816.0, 540.0, 144.0):
++		failures.append("Unexpected FooterRegion geometry: %s" % str(footer))
++
++func _test_mapper(failures: Array[String]) -> void:
++	var body := CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
++	var top_left := CoordinateMapper.map_position(
++		Vector2(0.0, 0.0),
++		CoordinateMapper.CoordinateSpace.CANVAS_1080X1920,
++		CoordinateMapper.PRESENTATION_SIZE,
++		body
++	)
++	var bottom_right := CoordinateMapper.map_position(
++		Vector2(1080.0, 1920.0),
++		CoordinateMapper.CoordinateSpace.CANVAS_1080X1920,
++		CoordinateMapper.PRESENTATION_SIZE,
++		body
++	)
++	var deep_y := CoordinateMapper.map_position(
++		Vector2(540.0, 1700.0),
++		CoordinateMapper.CoordinateSpace.CANVAS_1080X1920,
++		CoordinateMapper.PRESENTATION_SIZE,
++		body
++	)
++
++	if not top_left.is_equal_approx(Vector2(81.0, 144.0)):
++		failures.append("Unexpected mapped top-left: %s" % str(top_left))
++	if not bottom_right.is_equal_approx(Vector2(459.0, 816.0)):
++		failures.append("Unexpected mapped bottom-right: %s" % str(bottom_right))
++	if not deep_y.is_equal_approx(Vector2(270.0, 739.0)):
++		failures.append("Unexpected mapped deep-Y sample: %s" % str(deep_y))
++
++func _test_visibility_gate(failures: Array[String]) -> void:
++	var body := CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
++	var pass_case := WinningFrameVisibilityGate.evaluate_screen_rects(
++		[{
++			"id": "object",
++			"visible": true,
++			"has_geometry": true,
++			"screen_rect": Rect2(200.0, 300.0, 40.0, 40.0)
++		}],
++		body
++	)
++	if not bool(pass_case["pass"]):
++		failures.append("Visibility gate rejected an enclosed entity.")
++
++	var fail_case := WinningFrameVisibilityGate.evaluate_screen_rects(
++		[{
++			"id": "object",
++			"visible": true,
++			"has_geometry": true,
++			"screen_rect": Rect2(200.0, 800.0, 40.0, 40.0)
++		}],
++		body
++	)
++	if bool(fail_case["pass"]):
++		failures.append("Visibility gate accepted an entity extending into FooterRegion.")
++
++func _test_scene_geometry(failures: Array[String]) -> void:
++	var scene := load("res://core/presentation/UnifiedSocialFrame.tscn")
++	if scene == null:
++		failures.append("UnifiedSocialFrame.tscn could not be loaded.")
++		return
++	var frame = scene.instantiate()
++	if frame == null:
++		failures.append("UnifiedSocialFrame.tscn could not be instantiated.")
++		return
++	root.add_child(frame)
++	await process_frame
++
++	var body: Rect2 = frame.get_body_rect()
++	if body != Rect2(0.0, 144.0, 540.0, 672.0):
++		failures.append("UnifiedSocialFrame BodyRegion mismatch: %s" % str(body))
++
++	frame.queue_free()
+
+--- a/tools/run_c11b_body_visibility_audit.ps1	2026-09-18 06:24:20.151757762 +0000
++++ b/tools/run_c11b_body_visibility_audit.ps1	2026-09-18 06:37:01.980055471 +0000
+@@ -0,0 +1,115 @@
++[CmdletBinding()]
++param(
++    [string]$ProjectRoot = (Split-Path -Parent $PSScriptRoot),
++    [string]$InputRoot = "qa/c11a1_challenge_qa",
++    [string]$OutputRoot = "qa/c11b_visibility_qa"
++)
++
++$ErrorActionPreference = 'Stop'
++$ProjectRoot = [IO.Path]::GetFullPath($ProjectRoot)
++if (-not [IO.Path]::IsPathRooted($InputRoot))  { $InputRoot = Join-Path $ProjectRoot $InputRoot }
++if (-not [IO.Path]::IsPathRooted($OutputRoot)) { $OutputRoot = Join-Path $ProjectRoot $OutputRoot }
++$InputRoot = [IO.Path]::GetFullPath($InputRoot)
++$OutputRoot = [IO.Path]::GetFullPath($OutputRoot)
++
++$manifest = Join-Path $InputRoot 'C11A1_CHALLENGE_BULK_MANIFEST.json'
++$runsRoot = Join-Path $InputRoot 'runs'
++if (-not (Test-Path -LiteralPath $manifest -PathType Leaf)) { throw "C11B.0: falta $manifest" }
++if (-not (Test-Path -LiteralPath $runsRoot -PathType Container)) { throw "C11B.0: falta $runsRoot" }
++if ($null -eq (Get-Command godot -ErrorAction SilentlyContinue)) { throw 'C11B.0: godot no está en PATH.' }
++
++New-Item -ItemType Directory -Force -Path (Join-Path $OutputRoot 'runs') | Out-Null
++
++$sourceManifest = Get-Content -LiteralPath $manifest -Raw -Encoding UTF8 | ConvertFrom-Json
++$items = @($sourceManifest.items)
++if ($items.Count -ne 54) { throw "C11B.0: manifest C11A1 contiene $($items.Count) items, se esperaban 54." }
++
++function Invoke-CapturedProcess {
++    param([string]$ConfigPath, [string]$StdoutPath, [string]$StderrPath)
++    $psi = [Diagnostics.ProcessStartInfo]::new()
++    $psi.FileName = 'godot'
++    $psi.WorkingDirectory = $ProjectRoot
++    $psi.UseShellExecute = $false
++    $psi.CreateNoWindow = $true
++    $psi.RedirectStandardOutput = $true
++    $psi.RedirectStandardError = $true
++    foreach ($arg in @('--headless','--path',$ProjectRoot,'--',"--config=$ConfigPath",'--validate-only','--c11b-visibility-audit')) {
++        [void]$psi.ArgumentList.Add($arg)
++    }
++    $p = [Diagnostics.Process]::new()
++    $p.StartInfo = $psi
++    [void]$p.Start()
++    $outTask = $p.StandardOutput.ReadToEndAsync()
++    $errTask = $p.StandardError.ReadToEndAsync()
++    $p.WaitForExit()
++    $stdout = $outTask.Result
++    $stderr = $errTask.Result
++    [IO.File]::WriteAllText($StdoutPath,$stdout,[Text.UTF8Encoding]::new($false))
++    [IO.File]::WriteAllText($StderrPath,$stderr,[Text.UTF8Encoding]::new($false))
++    return [pscustomobject]@{ ExitCode=$p.ExitCode; Stdout=$stdout; Stderr=$stderr }
++}
++
++Write-Host '[C11B0] Unified Social Frame — winning-frame visibility audit' -ForegroundColor Cyan
++Write-Host "[C11B0] Input:  $InputRoot"
++Write-Host "[C11B0] Output: $OutputRoot"
++Write-Host '[C11B0] No rendering and no simulation modification; uses existing challenge runtime.'
++
++$results = @()
++$index = 0
++foreach ($item in ($items | Sort-Object run_id)) {
++    $index++
++    $runDir = Join-Path $runsRoot $item.run_id
++    $config = Join-Path $runDir 'challenge_definition.json'
++    if (-not (Test-Path -LiteralPath $config -PathType Leaf)) { throw "C11B0: falta config $config" }
++    $outDir = Join-Path (Join-Path $OutputRoot 'runs') $item.run_id
++    New-Item -ItemType Directory -Force -Path $outDir | Out-Null
++    $stdoutPath = Join-Path $outDir 'stdout.txt'
++    $stderrPath = Join-Path $outDir 'stderr.txt'
++
++    Write-Host ("[{0}/54] AUDIT {1}" -f $index,$item.run_id)
++    $proc = Invoke-CapturedProcess -ConfigPath $config -StdoutPath $stdoutPath -StderrPath $stderrPath
++    $matches = [regex]::Matches($proc.Stdout,'(?m)^\[C11B_VISIBILITY_JSON\](.+)$')
++    if ($matches.Count -eq 0) {
++        $results += [pscustomobject]@{ run_id=$item.run_id; pass=$false; exit_code=$proc.ExitCode; error='missing C11B_VISIBILITY_JSON' }
++        continue
++    }
++    $payload = $matches[$matches.Count-1].Groups[1].Value | ConvertFrom-Json
++    $results += [pscustomobject]@{
++        run_id = $item.run_id
++        challenge_id = $payload.challenge_id
++        pass = [bool]$payload.pass
++        exit_code = $proc.ExitCode
++        winning_frame_game = [int]$payload.winning_frame_game
++        winning_frame = [int]$payload.winning_frame
++        body_rect = $payload.body_rect
++        errors = $payload.errors
++        entities = $payload.entities
++    }
++}
++
++$failures = @($results | Where-Object { -not $_.pass })
++$manifestOut = [pscustomobject]@{
++    schema_version = '1.0'
++    checkpoint = 'C11-B.0'
++    purpose = 'Unified Social Frame winning-frame visibility gate'
++    source_manifest = 'qa/c11a1_challenge_qa/C11A1_CHALLENGE_BULK_MANIFEST.json'
++    body_region = [pscustomobject]@{ x=0; y=144; width=540; height=672 }
++    technical_runs = $results.Count
++    visibility_pass_count = @($results | Where-Object { $_.pass }).Count
++    visibility_fail_count = $failures.Count
++    overall_pass = ($results.Count -eq 54 -and $failures.Count -eq 0)
++    runs = $results
++}
++
++$outManifest = Join-Path $OutputRoot 'C11B0_BODY_VISIBILITY_MANIFEST.json'
++$manifestOut | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $outManifest -Encoding UTF8
++
++if ($failures.Count -gt 0) {
++    Write-Host "[C11B0] VISIBILITY NO-GO — $($failures.Count) run(s) failed." -ForegroundColor Red
++    $failures | ForEach-Object { Write-Host (" - {0}: {1}" -f $_.run_id, ($_.errors -join '; ')) -ForegroundColor Red }
++    exit 1
++}
++
++Write-Host '[C11B0] VISIBILITY PASS — 54/54 winning frames enclosed by BodyRegion.' -ForegroundColor Green
++Write-Host "[C11B0] Manifest: $outManifest"
++exit 0
+
+
+C11-B.0 v3 correction: target_position secondary binding now uses social_body_rect, matching primary object mapping.
