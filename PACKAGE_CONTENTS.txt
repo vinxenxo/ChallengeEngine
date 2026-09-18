@@ -1,12 +1,6 @@
-C11B0_IMPLEMENTATION.patch
-GeneradorMaestro.gd
-PACKAGE_CONTENTS.txt
-README_C11B0.md
-core/presentation/CoordinateMapper.gd
-core/presentation/PresentationProfile.gd
-core/presentation/UnifiedSocialFrame.gd
-core/presentation/UnifiedSocialFrame.tscn
-core/presentation/WinningFrameVisibilityGate.gd
-docs/C11B0_CONTRACT.md
-tests/C11B0UnifiedSocialFrameContractTest.gd
-tools/run_c11b_body_visibility_audit.ps1
+C11B0_2_PRESENTATION_FRAMING_PACKAGE_v4/
+- GeneradorMaestro.gd — defers C11B audit until target/assets/presentation state is initialized
+- tools/apply_c11b02_qa_framing_policy.ps1 — adds PRIMARY_FOCUS only to C11-A.1 QA copies of CHALLENGE_001
+- tools/verify_c11b02_installation.ps1 — verifies deferred ordering and package components
+- core/presentation/* — v3 pure mathematical framing components
+- tests/* — C11-B.0.2 contract tests

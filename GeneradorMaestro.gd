@@ -1,9 +1,10 @@
-﻿# res://GeneradorMaestro.gd
+# res://GeneradorMaestro.gd
 extends Node2D
 
 const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
 const ChallengeLegacyRuntimeOracle = preload("res://core/execution/ChallengeLegacyRuntimeOracle.gd")
 const WinningFrameVisibilityGate = preload("res://core/presentation/WinningFrameVisibilityGate.gd")
+const PresentationFramer = preload("res://core/presentation/PresentationFramer.gd")
 
 # ============================================================
 # ChallengeEngineV01_STATELESS
@@ -35,12 +36,16 @@ var reference_frame_mode: ReferenceFrameResolver.ReferenceMode = ReferenceFrameR
 var current_coord_space: CoordinateMapper.CoordinateSpace = CoordinateMapper.CoordinateSpace.CANVAS_1080X1920
 var secondary_binding_type: String = "target_position"
 var social_body_rect: Rect2 = CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
+var framing_policy: String = PresentationFramer.POLICY_STATIC_CANVAS
+var presentation_frame_offset: Vector2 = Vector2.ZERO
+var c11b_visibility_audit_requested: bool = false
 
 # Calibración visual declarativa (C6-D)
 var object_scale: float = 1.0
 var object_offset: Vector2 = Vector2.ZERO
 var target_scale: float = 1.0
 var target_offset: Vector2 = Vector2.ZERO
+var static_target_base_position: Vector2 = Vector2.ZERO
 
 # Capa de presentación UI unificada (C6-D.1 / D3)
 var presentation_ui: PresentationUI
@@ -185,6 +190,7 @@ func _ready() -> void:
 
 	var social_regions := presentation_profile.get_social_regions()
 	social_body_rect = social_regions["body_rect"]
+	framing_policy = PresentationFramer.resolve_policy(config_cache)
 
 	# --------------------------------------------------------
 	# Presentación declarativa
@@ -192,6 +198,7 @@ func _ready() -> void:
 
 	setup_presentation_bindings()
 	setup_visual_calibration()
+	c11b_visibility_audit_requested = has_user_flag("--c11b-visibility-audit")
 
 	if presentation_ui_root == null:
 		var presentation_parent: Node = get_node_or_null(
@@ -501,6 +508,7 @@ func _ready() -> void:
 		)
 		+ target_offset
 	)
+	static_target_base_position = target_sprite.position
 
 	target_sprite.scale = (
 		Vector2.ONE
@@ -533,7 +541,11 @@ func _ready() -> void:
 			"C6_ASSET_MISSING: ObjetoMovil no tiene textura asignada."
 	)
 
-	if has_user_flag("--c11b-visibility-audit"):
+
+	# C11-B.0.2: defer framing + visibility audit until the full presentation
+	# state is initialized (FamilyAssets, target base position, asset geometry).
+	if c11b_visibility_audit_requested:
+		initialize_presentation_framing()
 		run_c11b_visibility_audit()
 		return
 
@@ -666,6 +678,7 @@ func apply_frame_snapshot(
 			social_body_rect
 		)
 		+ object_offset
+		+ presentation_frame_offset
 	)
 
 	object_sprite.rotation = (
@@ -703,6 +716,7 @@ func apply_frame_snapshot(
 					social_body_rect
 				)
 				+ target_offset
+				+ presentation_frame_offset
 			)
 
 			target_sprite.scale = (
@@ -735,7 +749,7 @@ func apply_frame_snapshot(
 
 		target_sprite.position = (
 			Vector2(
-				mapped_x,
+				mapped_x + presentation_frame_offset.x,
 				object_sprite.position.y
 			)
 			+ target_offset
@@ -749,6 +763,7 @@ func apply_frame_snapshot(
 		target_sprite.visible = true
 
 	elif secondary_binding_type == "static_position":
+		target_sprite.position = static_target_base_position + presentation_frame_offset
 		target_sprite.scale = (
 			Vector2.ONE
 			* target_scale
@@ -797,33 +812,142 @@ func build_winning_highlight_rects() -> Array:
 	return rects
 
 
-func build_winning_entity_audit() -> Array:
-	# C11-B.0.1 — audit in the same local presentation space used by the
-	# gameplay sprites. CoordinateMapper writes positions into GestorJuego,
-	# therefore the audit must consume Sprite2D.transform relative to that
-	# parent, not a global transform converted through an unrelated Control.
-	var entities: Array = []
-	for pair in [
-		{"id": "object", "sprite": object_sprite},
-		{"id": "target", "sprite": target_sprite}
-	]:
-		var sprite: Sprite2D = pair["sprite"]
-		var has_texture := sprite != null and sprite.texture != null
-		var visible := sprite != null and sprite.visible
-		var parent_rect := Rect2()
-		if has_texture:
-			var local_rect: Rect2 = sprite.get_rect()
-			parent_rect = sprite.transform * local_rect
+func get_presentation_texture_size(sprite: Sprite2D, fallback_path: String) -> Vector2:
+	# Pure presentation metadata: asset dimensions only. No Node2D transform access.
+	if sprite != null and sprite.texture != null:
+		return sprite.texture.get_size()
+	if fallback_path != "":
+		var loaded_asset = ResourceLoader.load(fallback_path)
+		if loaded_asset is Texture2D:
+			return loaded_asset.get_size()
+	return Vector2.ZERO
 
-		entities.append({
-			"id": pair["id"],
-			"visible": visible,
-			"has_geometry": has_texture and parent_rect.size.x > 0.0 and parent_rect.size.y > 0.0,
-			"screen_rect": parent_rect,
-			"audit_space": "GestorJuego_local"
-		})
 
-	return entities
+func build_axis_aligned_rect(
+	center: Vector2,
+	size: Vector2,
+	rotation: float
+) -> Rect2:
+	if size.x <= 0.0 or size.y <= 0.0:
+		return Rect2()
+
+	var half := size * 0.5
+	var c := absf(cos(rotation))
+	var s := absf(sin(rotation))
+	var extents := Vector2(
+		(c * half.x) + (s * half.y),
+		(s * half.x) + (c * half.y)
+	)
+	return Rect2(center - extents, extents * 2.0)
+
+
+func map_primary_presentation_center(frame_state: FrameSnapshot) -> Vector2:
+	return (
+		CoordinateMapper.map_position(
+			frame_state.position,
+			current_coord_space,
+			CoordinateMapper.PRESENTATION_SIZE,
+			social_body_rect
+		)
+		+ object_offset
+		+ presentation_frame_offset
+	)
+
+
+func map_secondary_presentation_center(frame_state: FrameSnapshot) -> Vector2:
+	if secondary_binding_type == "target_position" and frame_state.custom_data.has("target_position"):
+		var target_position = frame_state.custom_data["target_position"]
+		if target_position is Vector2:
+			return (
+				CoordinateMapper.map_position(
+					target_position,
+					current_coord_space,
+					CoordinateMapper.PRESENTATION_SIZE,
+					social_body_rect
+				)
+				+ target_offset
+				+ presentation_frame_offset
+			)
+
+	if secondary_binding_type == "target_x" and frame_state.custom_data.has("target_x"):
+		var target_x := float(frame_state.custom_data["target_x"])
+		var mapped_x := CoordinateMapper.map_scalar_x(
+			target_x,
+			current_coord_space,
+			CoordinateMapper.PRESENTATION_SIZE,
+			social_body_rect
+		)
+		return Vector2(
+			mapped_x + presentation_frame_offset.x + target_offset.x,
+			map_primary_presentation_center(frame_state).y + target_offset.y
+		)
+
+	return static_target_base_position + presentation_frame_offset
+
+
+func build_math_entity_audit(frame_state: FrameSnapshot) -> Array:
+	# C11-B.0.2: pure mathematical presentation geometry.
+	# No global_transform, get_global_transform(), VisibilityNotifier,
+	# SceneTree visibility propagation or RenderingServer state is consulted.
+	var assets_cfg: Dictionary = config_cache.get("assets", {})
+	var object_path := str(assets_cfg.get("object_path", ""))
+	var target_path := str(assets_cfg.get("target_path", ""))
+	var object_texture_size := get_presentation_texture_size(object_sprite, object_path)
+	var target_texture_size := get_presentation_texture_size(target_sprite, target_path)
+
+	var object_visual_size := object_texture_size * frame_state.scale.abs() * object_scale
+	var target_visual_size := target_texture_size * target_scale
+
+	var object_center := map_primary_presentation_center(frame_state)
+	var target_center := map_secondary_presentation_center(frame_state)
+
+	return [
+		{
+			"id": "object",
+			"visible": object_sprite != null and object_sprite.visible,
+			"has_geometry": object_visual_size.x > 0.0 and object_visual_size.y > 0.0,
+			"screen_rect": build_axis_aligned_rect(
+				object_center,
+				object_visual_size,
+				frame_state.rotation
+			),
+			"audit_space": "Body_presentation_math"
+		},
+		{
+			"id": "target",
+			"visible": target_sprite != null and target_sprite.visible,
+			"has_geometry": target_visual_size.x > 0.0 and target_visual_size.y > 0.0,
+			"screen_rect": build_axis_aligned_rect(
+				target_center,
+				target_visual_size,
+				0.0
+			),
+			"audit_space": "Body_presentation_math"
+		}
+	]
+
+
+func initialize_presentation_framing() -> void:
+	# Resolve one constant presentation offset from the winning-frame geometry.
+	# The same offset is applied to the real Sprite2D positions for every runtime frame.
+	presentation_frame_offset = Vector2.ZERO
+	if framing_policy != PresentationFramer.POLICY_PRIMARY_FOCUS:
+		return
+
+	var winning_index := int(final_result.winning_frame)
+	if winning_index < 0 or winning_index >= verified_history.size():
+		return
+
+	object_sprite.visible = true
+	target_sprite.visible = true
+	var entities := build_math_entity_audit(verified_history[winning_index])
+	presentation_frame_offset = PresentationFramer.calculate_presentation_offset(
+		entities,
+		social_body_rect,
+		framing_policy,
+		"object"
+	)
+	apply_frame_snapshot(verified_history[winning_index])
 
 func run_c11b_visibility_audit() -> void:
 	if final_result == null or verified_history.is_empty():
@@ -840,30 +964,28 @@ func run_c11b_visibility_audit() -> void:
 	object_sprite.visible = true
 	object_sprite.modulate.a = 1.0
 	target_sprite.visible = true
-	apply_frame_snapshot(verified_history[winning_index])
-	var entities := build_winning_entity_audit()
+	var entities := build_math_entity_audit(verified_history[winning_index])
 	var gate := WinningFrameVisibilityGate.evaluate_screen_rects(
 		entities,
-		social_body_rect
+		social_body_rect,
+		framing_policy,
+		"object"
 	)
 
 	var logical_position := verified_history[winning_index].position
-	var expected_position := CoordinateMapper.map_position(
-		logical_position,
-		current_coord_space,
-		CoordinateMapper.PRESENTATION_SIZE,
-		social_body_rect
-	) + object_offset
+	var expected_position := map_primary_presentation_center(verified_history[winning_index])
 
 	var payload := {
 		"challenge_id": str(config_cache.get("challenge_id", "UNKNOWN")),
 		"winning_frame_game": winning_index,
 		"winning_frame": final_winning_frame,
 		"body_rect": social_body_rect,
-		"audit_space": "GestorJuego_local",
+		"audit_space": "Body_presentation_math",
+		"framing_policy": framing_policy,
+		"presentation_frame_offset": presentation_frame_offset,
 		"object_logical_position": logical_position,
 		"object_expected_position": expected_position,
-		"object_actual_position": object_sprite.position,
+		"object_actual_position": expected_position,
 		"pass": bool(gate.get("pass", false)),
 		"errors": gate.get("errors", []),
 		"entities": gate.get("entities", [])

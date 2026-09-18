@@ -19,6 +19,8 @@ static func rect_encloses_with_epsilon(container: Rect2, child: Rect2, epsilon: 
 static func evaluate_screen_rects(
 	entities: Array,
 	body_rect: Rect2,
+	policy: String = "STATIC_CANVAS",
+	primary_id: String = "object",
 	epsilon: float = EPSILON
 ) -> Dictionary:
 	var failures: Array[String] = []
@@ -50,6 +52,11 @@ static func evaluate_screen_rects(
 		}
 		mapped_entities.append(entry)
 
+		var required := true
+		if policy == "PRIMARY_FOCUS" and entity_id != primary_id:
+			required = false
+		if not required:
+			continue
 		if not visible:
 			failures.append("%s is not visible at winning frame." % entity_id)
 			continue
@@ -63,5 +70,7 @@ static func evaluate_screen_rects(
 		"pass": failures.is_empty(),
 		"errors": failures,
 		"entities": mapped_entities,
+		"policy": policy,
+		"primary_id": primary_id,
 		"body_rect": body_rect
 	}
