@@ -102,7 +102,12 @@ KNOWN_SUITES = {
     "C7A503AudioVisualFFmpegMuxTest.gd" : "[C7-A5.3-TEST] RESULTADO GLOBAL: PASS",
     "C7A504AudioVisualFFprobeValidationTest.gd" : "[C7-A5.4-TEST] RESULTADO GLOBAL: PASS",
     "C9AParkingV2AuthoringProductiveTest.gd": "[C9A_PARKING_V2_AUTHORING] PASS",
+    "C10AVisualAuthoringPipelineTest.gd": "[C10A_VISUAL_AUTHORING_PIPELINE_SUITE] PASS — C10-A.1 9/9",
+    "C10BDeterminismTest.gd": "[C10B_VISUAL_AUTHORING_DETERMINISM_SUITE] PASS — C10-B 9/9",
     "C9BParkingV2ProductiveGenerationTest.gd": "[C9B_PARKING_V2_PRODUCTIVE_GENERATION] PASS",
+    "C10CEndToEndTest.gd": "[C10C_VISUAL_AUTHORING_RUNTIME_E2E_SUITE] PASS — 9/9",
+    "C9EHitAuthoringProductiveTest.gd": "[C9E_HIT_V1_PRODUCTIVE_GENERATION] PASS",
+    "C9FCatchAuthoringProductiveTest.gd": "[C9F_CATCH_V1_PRODUCTIVE_GENERATION] PASS",
     "C7A501OfficialAudioArtifactManifestTest.gd" : "[C7-A5.1-TEST] RESULTADO GLOBAL: PASS",
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
