@@ -27,6 +27,9 @@ mono_crash.*.json
 
 # Source code
 .githooks/
+*.githooks
+
+
 
 # VS Plugins
 .continue/
