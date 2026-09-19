@@ -1,29 +1,42 @@
 # Data and Contracts
 
-## Canonical truth flow
+## Challenge corpus
 
-`Definition -> deterministic simulation -> SimulationResult / FrameSnapshot -> passive presentation -> RenderedFrameStream -> production artifact`
+| ID | Mechanic | RNG | Notes |
+|---|---|---|---|
+| `CHALLENGE_001` | key | 1.0 | historical fixture |
+| `CHALLENGE_002` | parking | 1.0 | legacy parking route |
+| `CHALLENGE_003` | pilot | 2.0 | native current route |
+| `CHALLENGE_004` | parking_v2 | 2.0 | native V2 parking |
+| `CHALLENGE_005` | hit_v1 | 2.0 | native hit route |
+| `CHALLENGE_006` | catch_v1 | 2.0 | native catch route |
+| `CHALLENGE_007` | find_v1 | 2.0 | native find route |
+| `CHALLENGE_008` | choose_v1 | 2.0 | native choose route |
+| `CHALLENGE_009` | count_v1 | 2.0 | native count route |
 
-## Canonical visual envelope
+Historical versions remain independently testable. Do not normalize their native durations or silently remap one mechanic to another implementation.
 
-The visual loop/drill envelope remains the C6-F0.8 contract. C11 does not extend it with social-frame text fields. QA diagnostics are presentation-only and are injected by the playback/export tooling.
+## Truth flow
 
-## Challenge contracts
+```text
+Definition
+   → deterministic simulation
+   → SimulationResult / FrameSnapshot
+   → passive presentation
+   → RenderedFrameStream
+   → physical production artifact
+```
 
-Historical challenge definitions keep their native mechanic and RNG versions. Examples currently covered by C11-A.1:
+## Visual content
 
-- CHALLENGE_001: key / RNG 1.0
-- CHALLENGE_002: parking legacy / RNG 1.0
-- CHALLENGE_003: pilot / RNG 2.0
-- CHALLENGE_004: parking_v2 / RNG 2.0
-- CHALLENGE_005: hit_v1 / RNG 2.0
-- CHALLENGE_006: catch_v1 / RNG 2.0
-- CHALLENGE_007: find_v1 / RNG 2.0
-- CHALLENGE_008: choose_v1 / RNG 2.0
-- CHALLENGE_009: count_v1 / RNG 2.0
+The canonical C6-F0.8 visual loop/drill content envelope remains visual-only. C11-B adds the social presentation frame around the established runtime output; it does not turn social UI text into a canonical gameplay/content field.
 
-## Presentation contract
+## Schemas
 
-`UnifiedSocialFrame` owns structural regions. `PresentationFramer` and `CoordinateMapper` determine how existing logical geometry is placed inside the Body region.
+The normative challenge schema is `schemas/challenge_schema.json`.
 
-No presentation change may alter the semantic contents of `SimulationResult`.
+`tests/fixtures/` contains compatibility fixtures that may intentionally represent older contracts. Their existence is part of the regression surface and they must not be "modernized" merely for cosmetic consistency.
+
+## Contract reopening rule
+
+A frozen contract is changed only through a named checkpoint with an explicit contract revision, focused tests, regression evidence and a final acceptance decision.

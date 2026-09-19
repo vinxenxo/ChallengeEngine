@@ -5,8 +5,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 $roots = @(
-    "output", "output_c7", "output_batch_audit", "export", "qa",
-    "catch_v1", "hit_v1", "parking_v2", "c9_c_generated_configs", "c9_g_generated_configs"
+    "artifacts", "artifacts/qa", "artifacts/production", "artifacts/regression", "artifacts/tests"
 )
 
 $result = [ordered]@{

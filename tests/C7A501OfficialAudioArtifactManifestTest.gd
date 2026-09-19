@@ -46,10 +46,10 @@ func _run_generation() -> void:
 		{"id": "CHALLENGE_005", "profile": "c7_profile_multi_noise"}
 	]
 
-	var export_dir = "res://export/"
-	var dir = DirAccess.open("res://")
-	if dir != null and not dir.dir_exists("export"):
-		dir.make_dir("export")
+	var export_dir := "res://artifacts/production/audiovisual/"
+	DirAccess.make_dir_recursive_absolute(
+		ProjectSettings.globalize_path(export_dir)
+	)
 
 	var timeline := MockVideoTimeline.new()
 	var expected_total_samples: int = timeline.get_total_frames() * 735
@@ -59,7 +59,7 @@ func _run_generation() -> void:
 		var ch_id = fixture["id"]
 		var profile_id = fixture["profile"]
 		
-		var json_path = "res://challenges_c7/" + ch_id + ".json"
+		var json_path = "res://tests/fixtures/c7/challenges/" + ch_id + ".json"
 		var file = FileAccess.open(json_path, FileAccess.READ)
 		if file == null:
 			_assert(false, "[" + ch_id + "] No se pudo abrir el JSON del challenge.")
@@ -77,7 +77,7 @@ func _run_generation() -> void:
 		_assert(seed != 0, "[" + ch_id + "] Seed canónica válida.")
 
 		var sim_result := MockSimulationResult.new(seed)
-		var pcm_relative_path = "res://export/" + ch_id + ".pcm"
+		var pcm_relative_path = "res://artifacts/production/audiovisual/" + ch_id + ".pcm"
 		var pcm_global_path = ProjectSettings.globalize_path(pcm_relative_path)
 
 		var export_res = AudioExportBridge.render_and_export_track(
@@ -116,7 +116,7 @@ func _run_generation() -> void:
 		"artifacts": manifest_entries
 	}
 
-	var manifest_file = FileAccess.open("res://export/audio_corpus_manifest.json", FileAccess.WRITE)
+	var manifest_file = FileAccess.open("res://artifacts/production/audiovisual/audio_corpus_manifest.json", FileAccess.WRITE)
 	if manifest_file != null:
 		manifest_file.store_string(JSON.stringify(manifest_data, "\t"))
 		manifest_file.close()

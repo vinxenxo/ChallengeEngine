@@ -1,0 +1,152 @@
+{
+  "manifest_version": "1.1",
+  "factory_version": "0.11.0",
+  "challenge_id": "CHALLENGE_007",
+  "provenance": {
+    "git": {
+      "commit": "f7f249d5d18e695628d966f8a5270662ddcc7af0",
+      "branch": "main",
+      "dirty": true
+    },
+    "challenge_definition": {
+      "path": "qa/c11a1_challenge_qa/runs/challenge_007_seed_314159/challenge_definition.json",
+      "sha256": "03c22295a7df41a148027afe6dc059454c2a5b2fb6604a913976ddeb11f20bff"
+    },
+    "referenced_files": [
+      {
+        "path": "res://assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "path": "res://assets/c6/scanner.svg",
+        "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804"
+      },
+      {
+        "path": "res://assets/c6/target.svg",
+        "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547"
+      }
+    ],
+    "authoring": {
+      "video": {},
+      "audio_authoring_snapshot": {
+        "assets_catalog": {
+          "path": "profiles/audio/audio_assets.json",
+          "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+        },
+        "profiles": [
+          {
+            "path": "profiles/audio/c7_profile_mixed_alt.json",
+            "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+          },
+          {
+            "path": "profiles/audio/c7_profile_mixed_overlap.json",
+            "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+          },
+          {
+            "path": "profiles/audio/c7_profile_multi_noise.json",
+            "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+          },
+          {
+            "path": "profiles/audio/c7_profile_noise_only.json",
+            "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+          },
+          {
+            "path": "profiles/audio/c7_profile_tone_only.json",
+            "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+          }
+        ]
+      }
+    },
+    "provenance_sha256": "1268769b87fc4ef7a937b81cd33190c30b359014f8ea449b87ca5c6174b103eb"
+  },
+  "declarative_metadata": {
+    "mechanic": "find_v1"
+  },
+  "telemetry": {
+    "attempts": 1,
+    "close_calls": 1,
+    "cta_frames": 0,
+    "final_seed": 314159,
+    "game_frames": 420,
+    "godot_version": "4.7.1-stable (official)",
+    "hook_frames": 180,
+    "initial_seed": 314159,
+    "minimum_distance": 86.0438537597656,
+    "reveal_frames": 0,
+    "rng_version": "2.0",
+    "score": 0.0,
+    "seed_used": 314159,
+    "total_frames": 600,
+    "validate_only": false,
+    "winning_frame": 495,
+    "winning_frame_game": 315,
+    "winning_frame_in_valid_window": true,
+    "winning_time": 8.25,
+    "winning_time_game": 5.25
+  },
+  "artifacts": {
+    "raw_video": "CHALLENGE_007_raw.avi",
+    "raw_video_sha256": "ed74e73ab369cdf34ea0be8c0940e479ead9957949c6e03d21ca585a9d239079",
+    "final_video": "CHALLENGE_007.mp4",
+    "final_video_sha256": "9d73554cb1165ccc4a9bb942a9da56f32da60cbbc7fa1cb527829c212b093208"
+  },
+  "output_contract": {
+    "simulation_canvas": [
+      1080,
+      1920
+    ],
+    "source_movie": [
+      540,
+      960
+    ],
+    "master_mp4": [
+      1080,
+      1920
+    ],
+    "master_scale_filter": "scale=1080:1920:flags=lanczos"
+  },
+  "source_validation": {
+    "width": 540,
+    "height": 960,
+    "codec_name": "mjpeg",
+    "pix_fmt": "yuvj420p",
+    "duration": 10.0,
+    "nb_frames": 600,
+    "r_frame_rate": "60/1"
+  },
+  "validation": {
+    "valid": true,
+    "video": {
+      "valid": true,
+      "width": 1080,
+      "height": 1920,
+      "codec_name": "h264",
+      "pix_fmt": "yuvj420p",
+      "duration": 10.0,
+      "nb_frames": 600,
+      "r_frame_rate": "60/1"
+    },
+    "audio": {
+      "valid": true,
+      "disabled": true,
+      "audio_streams_found": 0
+    },
+    "av_sync": {
+      "valid": true,
+      "disabled": true
+    },
+    "audio_content": {
+      "valid": true,
+      "disabled": true
+    }
+  },
+  "status": "PASS",
+  "audio_export": {
+    "audio_enabled": false
+  },
+  "gif_validation": {
+    "valid": false,
+    "disabled": true,
+    "policy_exception": "--no-gif"
+  }
+}

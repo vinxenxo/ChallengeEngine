@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "gate": "C11_FREEZE_RETROCOMPATIBILITY",
-  "reference_manifest": "qa/c11a1_challenge_qa/C11A1_CHALLENGE_BULK_MANIFEST.json",
+  "reference_manifest": "artifacts/qa/c11a1_challenge/C11A1_CHALLENGE_BULK_MANIFEST.json",
   "executions": 54,
   "passed": 54,
   "failed": 0,
@@ -49,7 +49,7 @@
     {
       "run_id": "challenge_001_seed_12345_A",
       "challenge_id": "CHALLENGE_001",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_001_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_001_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -79,7 +79,7 @@
     {
       "run_id": "challenge_001_seed_12345_B",
       "challenge_id": "CHALLENGE_001",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_001_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_001_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -109,7 +109,7 @@
     {
       "run_id": "challenge_001_seed_314159",
       "challenge_id": "CHALLENGE_001",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_001_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_001_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -139,7 +139,7 @@
     {
       "run_id": "challenge_001_seed_54321",
       "challenge_id": "CHALLENGE_001",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_001_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_001_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -169,7 +169,7 @@
     {
       "run_id": "challenge_001_seed_7770001",
       "challenge_id": "CHALLENGE_001",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_001_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_001_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -199,7 +199,7 @@
     {
       "run_id": "challenge_001_seed_998877",
       "challenge_id": "CHALLENGE_001",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_001_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_001_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -229,7 +229,7 @@
     {
       "run_id": "challenge_002_seed_12345_A",
       "challenge_id": "CHALLENGE_002",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_002_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_002_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -259,7 +259,7 @@
     {
       "run_id": "challenge_002_seed_12345_B",
       "challenge_id": "CHALLENGE_002",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_002_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_002_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -289,7 +289,7 @@
     {
       "run_id": "challenge_002_seed_314159",
       "challenge_id": "CHALLENGE_002",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_002_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_002_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -319,7 +319,7 @@
     {
       "run_id": "challenge_002_seed_54321",
       "challenge_id": "CHALLENGE_002",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_002_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_002_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -349,7 +349,7 @@
     {
       "run_id": "challenge_002_seed_7770001",
       "challenge_id": "CHALLENGE_002",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_002_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_002_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -379,7 +379,7 @@
     {
       "run_id": "challenge_002_seed_998877",
       "challenge_id": "CHALLENGE_002",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_002_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_002_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -409,7 +409,7 @@
     {
       "run_id": "challenge_003_seed_12345_A",
       "challenge_id": "CHALLENGE_003",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_003_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_003_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -439,7 +439,7 @@
     {
       "run_id": "challenge_003_seed_12345_B",
       "challenge_id": "CHALLENGE_003",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_003_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_003_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -469,7 +469,7 @@
     {
       "run_id": "challenge_003_seed_314159",
       "challenge_id": "CHALLENGE_003",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_003_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_003_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -499,7 +499,7 @@
     {
       "run_id": "challenge_003_seed_54321",
       "challenge_id": "CHALLENGE_003",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_003_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_003_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -529,7 +529,7 @@
     {
       "run_id": "challenge_003_seed_7770001",
       "challenge_id": "CHALLENGE_003",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_003_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_003_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -559,7 +559,7 @@
     {
       "run_id": "challenge_003_seed_998877",
       "challenge_id": "CHALLENGE_003",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_003_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_003_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -589,7 +589,7 @@
     {
       "run_id": "challenge_004_seed_12345_A",
       "challenge_id": "CHALLENGE_004",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_004_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_004_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -619,7 +619,7 @@
     {
       "run_id": "challenge_004_seed_12345_B",
       "challenge_id": "CHALLENGE_004",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_004_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_004_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -649,7 +649,7 @@
     {
       "run_id": "challenge_004_seed_314159",
       "challenge_id": "CHALLENGE_004",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_004_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_004_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -679,7 +679,7 @@
     {
       "run_id": "challenge_004_seed_54321",
       "challenge_id": "CHALLENGE_004",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_004_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_004_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -709,7 +709,7 @@
     {
       "run_id": "challenge_004_seed_7770001",
       "challenge_id": "CHALLENGE_004",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_004_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_004_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -739,7 +739,7 @@
     {
       "run_id": "challenge_004_seed_998877",
       "challenge_id": "CHALLENGE_004",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_004_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_004_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -769,7 +769,7 @@
     {
       "run_id": "challenge_005_seed_12345_A",
       "challenge_id": "CHALLENGE_005",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_005_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_005_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -799,7 +799,7 @@
     {
       "run_id": "challenge_005_seed_12345_B",
       "challenge_id": "CHALLENGE_005",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_005_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_005_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -829,7 +829,7 @@
     {
       "run_id": "challenge_005_seed_314159",
       "challenge_id": "CHALLENGE_005",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_005_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_005_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -859,7 +859,7 @@
     {
       "run_id": "challenge_005_seed_54321",
       "challenge_id": "CHALLENGE_005",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_005_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_005_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -889,7 +889,7 @@
     {
       "run_id": "challenge_005_seed_7770001",
       "challenge_id": "CHALLENGE_005",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_005_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_005_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -919,7 +919,7 @@
     {
       "run_id": "challenge_005_seed_998877",
       "challenge_id": "CHALLENGE_005",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_005_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_005_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -949,7 +949,7 @@
     {
       "run_id": "challenge_006_seed_12345_A",
       "challenge_id": "CHALLENGE_006",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_006_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_006_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -979,7 +979,7 @@
     {
       "run_id": "challenge_006_seed_12345_B",
       "challenge_id": "CHALLENGE_006",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_006_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_006_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1009,7 +1009,7 @@
     {
       "run_id": "challenge_006_seed_314159",
       "challenge_id": "CHALLENGE_006",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_006_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_006_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1039,7 +1039,7 @@
     {
       "run_id": "challenge_006_seed_54321",
       "challenge_id": "CHALLENGE_006",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_006_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_006_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1069,7 +1069,7 @@
     {
       "run_id": "challenge_006_seed_7770001",
       "challenge_id": "CHALLENGE_006",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_006_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_006_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1099,7 +1099,7 @@
     {
       "run_id": "challenge_006_seed_998877",
       "challenge_id": "CHALLENGE_006",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_006_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_006_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1129,7 +1129,7 @@
     {
       "run_id": "challenge_007_seed_12345_A",
       "challenge_id": "CHALLENGE_007",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_007_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_007_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1159,7 +1159,7 @@
     {
       "run_id": "challenge_007_seed_12345_B",
       "challenge_id": "CHALLENGE_007",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_007_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_007_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1189,7 +1189,7 @@
     {
       "run_id": "challenge_007_seed_314159",
       "challenge_id": "CHALLENGE_007",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_007_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_007_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1219,7 +1219,7 @@
     {
       "run_id": "challenge_007_seed_54321",
       "challenge_id": "CHALLENGE_007",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_007_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_007_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1249,7 +1249,7 @@
     {
       "run_id": "challenge_007_seed_7770001",
       "challenge_id": "CHALLENGE_007",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_007_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_007_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1279,7 +1279,7 @@
     {
       "run_id": "challenge_007_seed_998877",
       "challenge_id": "CHALLENGE_007",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_007_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_007_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1309,7 +1309,7 @@
     {
       "run_id": "challenge_008_seed_12345_A",
       "challenge_id": "CHALLENGE_008",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_008_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_008_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1339,7 +1339,7 @@
     {
       "run_id": "challenge_008_seed_12345_B",
       "challenge_id": "CHALLENGE_008",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_008_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_008_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1369,7 +1369,7 @@
     {
       "run_id": "challenge_008_seed_314159",
       "challenge_id": "CHALLENGE_008",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_008_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_008_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1399,7 +1399,7 @@
     {
       "run_id": "challenge_008_seed_54321",
       "challenge_id": "CHALLENGE_008",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_008_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_008_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1429,7 +1429,7 @@
     {
       "run_id": "challenge_008_seed_7770001",
       "challenge_id": "CHALLENGE_008",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_008_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_008_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1459,7 +1459,7 @@
     {
       "run_id": "challenge_008_seed_998877",
       "challenge_id": "CHALLENGE_008",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_008_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_008_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1489,7 +1489,7 @@
     {
       "run_id": "challenge_009_seed_12345_A",
       "challenge_id": "CHALLENGE_009",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_009_seed_12345_A/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_009_seed_12345_A/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1519,7 +1519,7 @@
     {
       "run_id": "challenge_009_seed_12345_B",
       "challenge_id": "CHALLENGE_009",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_009_seed_12345_B/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_009_seed_12345_B/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1549,7 +1549,7 @@
     {
       "run_id": "challenge_009_seed_314159",
       "challenge_id": "CHALLENGE_009",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_009_seed_314159/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_009_seed_314159/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1579,7 +1579,7 @@
     {
       "run_id": "challenge_009_seed_54321",
       "challenge_id": "CHALLENGE_009",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_009_seed_54321/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_009_seed_54321/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1609,7 +1609,7 @@
     {
       "run_id": "challenge_009_seed_7770001",
       "challenge_id": "CHALLENGE_009",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_009_seed_7770001/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_009_seed_7770001/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {
@@ -1639,7 +1639,7 @@
     {
       "run_id": "challenge_009_seed_998877",
       "challenge_id": "CHALLENGE_009",
-      "config": "qa/c11a1_challenge_qa/runs/challenge_009_seed_998877/challenge_definition.json",
+      "config": "artifacts/qa/c11a1_challenge/runs/challenge_009_seed_998877/challenge_definition.json",
       "exit_code": 0,
       "mismatches": [],
       "current_telemetry": {

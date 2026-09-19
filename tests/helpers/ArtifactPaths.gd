@@ -1,14 +1,16 @@
 class_name ArtifactPaths
 extends RefCounted
 
-## C11 Freeze — canonical generated-artifact paths.
-## Tests must use this resolver instead of embedding output/export/qa roots.
+## Canonical generated-artifact resolver for tests and QA.
+## Source fixtures belong under tests/fixtures; generated evidence belongs under artifacts/.
 
 const ROOT := "res://artifacts"
 const TESTS := ROOT + "/tests"
 const QA := ROOT + "/qa"
 const REGRESSION := ROOT + "/regression"
 const PRODUCTION := ROOT + "/production"
+const AUDIOVISUAL := PRODUCTION + "/audiovisual"
+const CHALLENGES := PRODUCTION + "/challenges"
 const SCRATCH := ROOT + "/scratch"
 
 static func absolute(relative_path: String) -> String:

@@ -58,7 +58,7 @@ func _run_tests() -> void:
 		var profile_id = fixture["profile"]
 		var expected_events: Array = fixture["events"]
 		
-		var json_path = "res://challenges_c7/" + ch_id + ".json"
+		var json_path = "res://tests/fixtures/c7/challenges/" + ch_id + ".json"
 		var file = FileAccess.open(json_path, FileAccess.READ)
 		if file == null:
 			_assert(false, "[" + ch_id + "] No se pudo abrir el archivo JSON en " + json_path)

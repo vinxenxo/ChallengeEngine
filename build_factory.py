@@ -2561,7 +2561,7 @@ if __name__ == "__main__":
     group.add_argument("--config", help="Ruta al archivo JSON unitario")
     group.add_argument("--batch", help="Directorio con archivos *CHALLENGE*.json")
 
-    parser.add_argument("--output", default="./output", help="Directorio raíz de salida")
+    parser.add_argument("--output", default="./artifacts/production/challenges", help="Directorio raíz de salida")
     parser.add_argument("--validate-only", action="store_true", help="Validación matemática sin vídeo ni GIF")
     parser.add_argument("--workers", type=int, default=1, help="Workers concurrentes")
     parser.add_argument("--no-gif", action="store_true", help="Excepción explícita: desactiva GIF")

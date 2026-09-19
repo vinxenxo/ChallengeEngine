@@ -15,7 +15,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=32)
     ap.add_argument("--corpus-seed", type=int, default=0xC11F2026)
-    ap.add_argument("--output", default="qa/seed_corpus/stress_v1.json")
+    ap.add_argument("--output", default="tests/fixtures/seeds/stress_v1.json")
     args = ap.parse_args()
     if args.count <= 0:
         raise SystemExit("count must be > 0")

@@ -16,7 +16,7 @@ func _assert(condition: bool, message: String) -> void:
 		print("[PASS] " + message)
 
 func _run_mux_validation() -> void:
-	var manifest_path = "res://export/audio_corpus_manifest.json"
+	var manifest_path = "res://artifacts/production/audiovisual/audio_corpus_manifest.json"
 	_assert(FileAccess.file_exists(manifest_path), "El manifiesto C7-A5.1 debe existir en disco.")
 	if not FileAccess.file_exists(manifest_path):
 		return
@@ -39,7 +39,7 @@ func _run_mux_validation() -> void:
 		_assert(FileAccess.file_exists(pcm_path), "[" + ch_id + "] Artefacto PCM físico accesible.")
 		
 		# Simulación / verificación de existencia de salida MP4 o ejecución de bridge de multiplexación
-		var mp4_expected_path = "res://export/" + ch_id + ".mp4"
+		var mp4_expected_path = "res://artifacts/production/audiovisual/" + ch_id + ".mp4"
 		print("[C7-A5.2] Verificando binding físico para corpus: ", ch_id, " (Perfil: ", entry["profile_id"], ")")
 
 func _conclude() -> void:

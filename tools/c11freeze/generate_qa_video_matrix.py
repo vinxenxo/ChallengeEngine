@@ -18,7 +18,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--source", default="challenges")
     ap.add_argument("--output", default="artifacts/qa/video_matrix/configs")
-    ap.add_argument("--seed-file", default="qa/seed_corpus/stress_v1.json")
+    ap.add_argument("--seed-file", default="tests/fixtures/seeds/stress_v1.json")
     ap.add_argument("--include-canonical", action="store_true")
     ap.add_argument("--limit", type=int, default=3)
     args = ap.parse_args()

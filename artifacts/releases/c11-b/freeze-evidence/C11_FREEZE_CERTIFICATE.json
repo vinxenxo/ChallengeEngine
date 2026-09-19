@@ -1,0 +1,46 @@
+﻿{
+    "freeze_id":  "C11",
+    "status":  "CERTIFIED / FROZEN",
+    "sealed_at_utc":  "2026-09-19T15:57:31.8257747Z",
+    "engine":  {
+                   "name":  "Godot",
+                   "version":  "4.7.1-stable"
+               },
+    "gates":  {
+                  "logical_corpus":  "PASS 103/103",
+                  "c11_contracts":  "PASS",
+                  "visual_seed_qualification":  "PASS 54/54",
+                  "challenge_seed_qualification":  "PASS 54/54",
+                  "retrocompatibility":  "PASS 54/54 telemetry + A/B",
+                  "seed_stress":  "PASS 288 cases / 576 logical executions",
+                  "physical_export":  "PASS 2/2",
+                  "qa_video_matrix":  "PASS 54/54 video renders; C7-A2 mixed-audio gate intentionally out of scope"
+              },
+    "source_manifest":  {
+                            "path":  "artifacts/tests/reports/C11_FREEZE_SHA256_MANIFEST.json",
+                            "tree_sha256":  "bfb570d066ed9d025bb0ba23e125b828ecb5c28e20d4e0e62b5d21273ee530ab"
+                        },
+    "evidence_sha256":  {
+                            "artifacts/qa/video_matrix/videos/BATCH_MANIFEST.json":  "239592f4c7dda6f8edf0149a3b94d5aa1d3dbb70a71347fa3f6030c4d8bdea29",
+                            "artifacts/qa/physical_smoke/c10c_e2e/C10C_PHYSICAL_SMOKE_MANIFEST.json":  "0e37ca3e3f08332e9ee9b3ee38f1f433a87e1a122eb6cc403b291de4e85845c8",
+                            "artifacts/qa/seed_stress/STRESS_REPORT.json":  "6faae1061bc560885bee2484d6f931adb0e3bc7cc32a25dcc423f985f921d342",
+                            "artifacts/regression/runs/c11_freeze/RETROCOMPATIBILITY_REPORT.json":  "94c5dac75844ac49a8ac015fddfea030816967b83c8c2983d51fd724e4b1e233",
+                            "artifacts/tests/reports/C11_FREEZE_SHA256_MANIFEST.json":  "8ea03de2a495186cda0539b328b01a26e5f90229e1cafac1a76b822c93a00393"
+                        },
+    "git":  {
+                "head":  "2ce42e2fb09c088c05415c90e9ee05ce33a00b3c",
+                "status":  " M PACKAGE_CONTENTS.txt\n M PACKAGE_VERSION.txt\n M README.md\n M artifacts/tests/reports/repository_inventory.json\n M export/audio_corpus_manifest.json\n M tools/c11freeze/run_all.ps1\n M tools/c11freeze/run_retrocompatibility.py\n M tools/c11freeze/run_seed_stress.py\n?? C11_FINAL_PACKAGE_MANIFEST.json\n?? MASTER_HANDOVER_C11_FREEZE.md\n?? README_C11_FREEZE_FINAL.md\n?? START_PROMPT_C11C_NEXT_WINDOW.md\n?? docs/00_PROJECT_OVERVIEW.md\n?? docs/01_ARCHITECTURE.md\n?? docs/02_DATA_AND_CONTRACTS.md\n?? docs/03_PRESENTATION.md\n?? docs/04_PRODUCTION_AND_ARTIFACTS.md\n?? docs/05_TESTING_AND_REGRESSION.md\n?? docs/06_ROADMAP.md\n?? docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md\n?? docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md\n?? docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md\n?? docs/c11-freeze/15_FREEZE_OPERATING_RULES.md\n?? docs/checkpoints/\n?? docs/history/\n?? tools/c11freeze/finalize_c11_freeze.ps1\n?? tools/c11freeze/update_readme_c11_freeze.ps1\n?? tools/c11freeze/verify_freeze_structure.ps1"
+            },
+    "freeze_boundary":  [
+                            "simulation mathematics",
+                            "RNG architecture and ownership",
+                            "SimulationResult semantics",
+                            "winning-frame calculation",
+                            "RenderedFrameStream",
+                            "canonical visual envelope",
+                            "C7 audio contracts",
+                            "C9 authoring contracts",
+                            "test and regression architecture"
+                        ],
+    "next_scope":  "C11-C Art Direction - presentation only"
+}

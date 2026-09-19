@@ -3,26 +3,68 @@
 ## Layer model
 
 ### Capa 0 — Definitions
-Declarative challenge/visual definitions. No runtime simulation state is stored here.
+
+Declarative JSON definitions, challenge definitions, visual definitions and profiles. They express author intent and parameters; they are not mutable runtime truth.
 
 ### Capa 1 — Deterministic simulation
-Mechanics consume explicit definitions and deterministic RNG streams. The result is authoritative and reproducible from the same inputs.
 
-### Capa 2 — Presentation
-Presentation maps simulation output into screen geometry, timelines, assets, text and rendering. It is passive with respect to gameplay.
+Mechanics consume definitions plus explicitly owned RNG capabilities. Simulation produces reproducible frame state and outcome data. Gameplay truth is represented by the established simulation result/frame snapshot contracts.
+
+### Capa 2 — Passive presentation
+
+Presentation consumes verified runtime output and decides how that output is framed, styled and rendered. It must not recalculate mechanics, RNG or the winning frame.
 
 ### Capa 3 — Production orchestration
-Authoring, batch generation, Movie Maker export, FFmpeg/FFprobe, manifests and QA automation.
 
-## Key invariants
+Authoring adapters, batch generation, Movie Maker, FFmpeg/FFprobe, artifact manifests, QA and release gates coordinate the pipeline without becoming a hidden source of gameplay truth.
 
-- Presentation cannot calculate a winning frame.
-- Presentation cannot regenerate mechanics.
-- Presentation cannot consume structural RNG.
-- `winning_frame` is the temporal anchor for challenge reveal logic.
-- `close_calls` represents an episode count, not a timing signal.
-- The social frame is structural; content roles remain content-driven.
+## Core invariants
 
-## Freeze boundary
+- Structural RNG and cosmetic/presentation RNG remain separated.
+- `winning_frame` is the temporal anchor.
+- `close_calls` is an episode/count metric, not a timing primitive.
+- `RenderedFrameStream` is consumed by presentation; presentation does not regenerate it.
+- `UnifiedSocialFrame` owns social structure, not simulation.
+- `CoordinateMapper` changes presentation coordinates only; it does not change logical simulation coordinates.
 
-C11 freezes the interfaces between these layers. Future art-direction work should modify presentation assets, style and composition choices only, unless a new checkpoint explicitly reopens a frozen contract.
+## Runtime flow
+
+```text
+Definition
+   ↓
+Deterministic simulation
+   ↓
+SimulationResult / FrameSnapshot
+   ↓
+RenderedFrameStream
+   ↓
+CoordinateMapper / PresentationFramer
+   ↓
+UnifiedSocialFrame
+   ↓
+Passive renderer / UI
+   ↓
+Movie Maker / production pipeline
+```
+
+## Production flow
+
+```text
+Canonical definition
+   ↓
+Authoring / validation
+   ↓
+build_factory.py
+   ↓
+Godot runtime
+   ↓
+Movie Maker
+   ↓
+AVI / FFmpeg / MP4 / FFprobe
+   ↓
+Manifest + release validation
+```
+
+## C11-C boundary
+
+C11-C is presentation-only art direction. It may alter approved visual assets, typography, styling, hierarchy, backgrounds/foregrounds and renderer appearance. A change that affects simulation semantics, RNG, canonical data, timing truth or frozen test contracts requires a new checkpoint rather than being hidden inside an art-direction change.

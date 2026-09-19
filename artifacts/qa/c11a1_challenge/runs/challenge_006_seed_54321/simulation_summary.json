@@ -1,0 +1,15 @@
+{
+    "simulation_pass":  true,
+    "initial_seed":  54321,
+    "final_seed":  54321,
+    "seed_used":  54321,
+    "attempts":  1,
+    "retries_used":  0,
+    "rng_version":  "2.0",
+    "winning_frame_game":  155,
+    "winning_frame":  155,
+    "winning_frame_in_valid_window":  true,
+    "minimum_distance":  43.4040451049805,
+    "score":  0.0354656643337674,
+    "close_calls":  2
+}

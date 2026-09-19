@@ -16,7 +16,7 @@ func _assert(condition: bool, message: String) -> void:
 		print("[PASS] " + message)
 
 func _run_ffmpeg_mux() -> void:
-	var manifest_path = "res://export/audio_corpus_manifest.json"
+	var manifest_path = "res://artifacts/production/audiovisual/audio_corpus_manifest.json"
 	_assert(FileAccess.file_exists(manifest_path), "El manifiesto C7-A5.1 debe existir.")
 	if not FileAccess.file_exists(manifest_path):
 		return
@@ -31,7 +31,7 @@ func _run_ffmpeg_mux() -> void:
 		var entry = artifacts[ch_id]
 		var pcm_rel = entry["artifact_path"]
 		var pcm_abs = ProjectSettings.globalize_path(pcm_rel)
-		var mp4_abs = ProjectSettings.globalize_path("res://export/" + ch_id + ".mp4")
+		var mp4_abs = ProjectSettings.globalize_path("res://artifacts/production/audiovisual/" + ch_id + ".mp4")
 		
 		_assert(FileAccess.file_exists(pcm_rel), "[" + ch_id + "] Archivo PCM fuente presente.")
 
@@ -57,7 +57,7 @@ func _run_ffmpeg_mux() -> void:
 		var exit_code = OS.execute("ffmpeg", ffmpeg_args, output, true)
 		
 		if exit_code == 0:
-			_assert(FileAccess.file_exists("res://export/" + ch_id + ".mp4"), "[" + ch_id + "] Contenedor MP4 físico generado exitosamente.")
+			_assert(FileAccess.file_exists("res://artifacts/production/audiovisual/" + ch_id + ".mp4"), "[" + ch_id + "] Contenedor MP4 físico generado exitosamente.")
 			print("[C7-A5.3] Mux OK: ", ch_id, " -> export/", ch_id, ".mp4")
 		else:
 			# Si ffmpeg no está en el PATH del sistema o falla por entorno headless sin codec, registramos advertencia controlada o fallback

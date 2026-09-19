@@ -92,7 +92,7 @@ def run_with_retries(config: Path, repeat: int, retries: int, retry_delay: float
 def main() -> int:
     ap = argparse.ArgumentParser(description="Fixed-seed deterministic stress gate")
     ap.add_argument("--challenge-dir", default="challenges")
-    ap.add_argument("--seed-file", default="qa/seed_corpus/stress_v1.json")
+    ap.add_argument("--seed-file", default="tests/fixtures/seeds/stress_v1.json")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--repeat", type=int, default=2)
     ap.add_argument("--retries", type=int, default=3, help="extra attempts after process/runtime failure")

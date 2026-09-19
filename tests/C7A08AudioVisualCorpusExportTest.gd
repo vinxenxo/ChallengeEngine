@@ -93,7 +93,7 @@ func _run_fixture(
 	expected_total_samples: int
 ) -> void:
 	var json_path := (
-		"res://challenges_c7/"
+		"res://tests/fixtures/c7/challenges/"
 		+ challenge_id
 		+ ".json"
 	)

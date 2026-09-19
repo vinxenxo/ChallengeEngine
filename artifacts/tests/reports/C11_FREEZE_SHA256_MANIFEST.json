@@ -1,19 +1,259 @@
 ﻿{
     "freeze_id":  "C11",
     "status":  "CERTIFIED / FROZEN",
-    "generated_at_utc":  "2026-09-19T15:57:31.7773296Z",
+    "generated_at_utc":  "2026-09-19T22:56:13.5022459Z",
     "godot_version":  "4.7.1-stable",
     "hash_algorithm":  "SHA-256",
     "scope":  "core + mechanics + tests + tools + docs + declared root project files",
-    "tree_sha256":  "bfb570d066ed9d025bb0ba23e125b828ecb5c28e20d4e0e62b5d21273ee530ab",
-    "file_count":  713,
-    "git_head":  "2ce42e2fb09c088c05415c90e9ee05ce33a00b3c",
-    "git_status":  " M PACKAGE_CONTENTS.txt\n M PACKAGE_VERSION.txt\n M README.md\n M artifacts/tests/reports/repository_inventory.json\n M export/audio_corpus_manifest.json\n M tools/c11freeze/run_all.ps1\n M tools/c11freeze/run_retrocompatibility.py\n M tools/c11freeze/run_seed_stress.py\n?? C11_FINAL_PACKAGE_MANIFEST.json\n?? MASTER_HANDOVER_C11_FREEZE.md\n?? README_C11_FREEZE_FINAL.md\n?? START_PROMPT_C11C_NEXT_WINDOW.md\n?? docs/00_PROJECT_OVERVIEW.md\n?? docs/01_ARCHITECTURE.md\n?? docs/02_DATA_AND_CONTRACTS.md\n?? docs/03_PRESENTATION.md\n?? docs/04_PRODUCTION_AND_ARTIFACTS.md\n?? docs/05_TESTING_AND_REGRESSION.md\n?? docs/06_ROADMAP.md\n?? docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md\n?? docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md\n?? docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md\n?? docs/c11-freeze/15_FREEZE_OPERATING_RULES.md\n?? docs/checkpoints/\n?? docs/history/\n?? tools/c11freeze/finalize_c11_freeze.ps1\n?? tools/c11freeze/update_readme_c11_freeze.ps1\n?? tools/c11freeze/verify_freeze_structure.ps1",
+    "tree_sha256":  "91c131c1f17dbbddd7ef2565c7c7b0e2a8bdf29c8a95f63190373f1f307d38a7",
+    "file_count":  887,
+    "git_head":  "9993ba55f2b3dd4d44187a3740037b5a485646fb",
+    "git_status":  " M .gitignore\n M AGENTS.md\n D BRAINSTORMING.md\n D C11_FINAL_PACKAGE_MANIFEST.json\n D MASTER_HANDOVER_C11_FREEZE.md\n D PACKAGE_CONTENTS.txt\n D PACKAGE_VERSION.txt\n M README.md\n D README_C11B1.md\n D README_C11_FREEZE_CONSOLIDATION.md\n D README_C11_FREEZE_CONSOLIDATION_v2.md\n D README_C11_FREEZE_FINAL.md\n D README_DRAFT_GITHUB.md\n D START_PROMPT_C11C_NEXT_WINDOW.md\n D __pycache__/build_factory.cpython-313.pyc\n M artifacts/regression/runs/c11_freeze/RETROCOMPATIBILITY_REPORT.json\n D artifacts/tests/reports/C11_FREEZE_CERTIFICATE.json\n D artifacts/tests/reports/C11_FREEZE_SHA256_MANIFEST.json\n M artifacts/tests/reports/repository_inventory.json\n M build_factory.py\n D c9_c_generated_configs/CHALLENGE_AUTH_PARKING_V2_10001.json\n D c9_c_generated_configs/CHALLENGE_AUTH_PARKING_V2_10002.json\n D c9_c_generated_configs/CHALLENGE_AUTH_PARKING_V2_10003.json\n D c9_g_generated_configs/CHALLENGE_AUTH_CHOOSE_V1_20260824.json\n D c9_g_generated_configs/CHALLENGE_AUTH_COUNT_V1_20260901.json\n D c9_g_generated_configs/CHALLENGE_AUTH_FIND_V1_7770001.json\n D c9_g_generated_configs/CHALLENGE_AUTH_KEY_193847.json\n D c9_g_generated_configs/CHALLENGE_AUTH_PILOT_314159.json\n D catch_v1/catch_v1_generated.json\n D catch_v1/production/AUTH_CATCH_V1_884422/AUTH_CATCH_V1_884422.gif\n D catch_v1/production/AUTH_CATCH_V1_884422/AUTH_CATCH_V1_884422_manifest.json\n D catch_v1/production/AUTH_CATCH_V1_884422/audio_master.pcm\n D challenge_schema.json\n D challenges_c7/CHALLENGE_001.json\n D challenges_c7/CHALLENGE_002.json\n D challenges_c7/CHALLENGE_003.json\n D challenges_c7/CHALLENGE_004.json\n D challenges_c7/CHALLENGE_005.json\n D challenges_c7/CHALLENGE_006.json\n D challenges_c7/CHALLENGE_007.json\n D challenges_c7/CHALLENGE_008.json\n D challenges_c7/CHALLENGE_009.json\n D challenges_c7_a2_mixed/CHALLENGE_001.json\n D challenges_c7_a2_mixed/CHALLENGE_VIDEO_OFF_001.json\n D clean-godot.ps1\n D clean-videos.ps1\n M docs/00_PROJECT_OVERVIEW.md\n M docs/01_ARCHITECTURE.md\n M docs/02_DATA_AND_CONTRACTS.md\n M docs/03_PRESENTATION.md\n D docs/04_PRODUCTION_AND_ARTIFACTS.md\n M docs/05_TESTING_AND_REGRESSION.md\n D docs/06_ROADMAP.md\n D docs/ARCHITECTURE_V0.1.md\n D docs/CHECKPOINT_0.3.6_DOCUMENTATION_CHANGELOG.md\n D docs/CHECKPOINT_0.3.6_STATUS.md\n D docs/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md\n D docs/CONTENT_SCHEMA_V0.1.md\n D docs/DATA_MODEL_V0.1.md\n D docs/DISTRIBUTION_SPEC_V0.1.md\n D docs/DOCUMENTATION_0.9_1.0_UPDATE_SUMMARY.md\n D docs/DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md\n D docs/DOCUMENTATION_STATUS_1.0.0.md\n D docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md\n D docs/DOCUMENTATION_STATUS_C6-F0.3.md\n D docs/DOMAIN_MODEL_V0.1.md\n D docs/GOVERNANCE.md\n D docs/MECHANICS_SPECIFICATION_V0.1.md\n D docs/PACKAGE_CONTENTS.txt\n D docs/PACKAGE_MANIFEST_1.1.0-C6-D4.txt\n D docs/PACKAGE_MANIFEST_C6-F0.3.5.txt\n D docs/PARKING_MECHANIC_V2.0.md\n D docs/PILOT_MECHANIC_V2.0.md\n D docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md\n D docs/README-P7.txt\n D docs/README_INTEGRATION.md\n D docs/README_PROJECT_ES.md\n D docs/RELEASE_NOTES_1.1.0-C6-D4.md\n D docs/REPOSITORY_AUDIT_1.1.0-C6-D4.md\n D docs/ROADMAP_PHASES.md\n D docs/TESTING_STRATEGY_V0.1.md\n D docs/VALIDATION_PROTOCOL.md\n D docs/VIDEO_SPECIFICATION.md\n D docs/c11-freeze/00_INDEX.md\n D docs/c11-freeze/01_REPOSITORY_LAYOUT.md\n D docs/c11-freeze/02_TEST_REGISTRY.md\n D docs/c11-freeze/03_RETROCOMPATIBILITY.md\n D docs/c11-freeze/04_SEED_POLICY.md\n D docs/c11-freeze/05_QA_VIDEO_TEXT.md\n D docs/c11-freeze/06_FREEZE_CHECKLIST.md\n D docs/c11-freeze/07_CURRENT_STATE.md\n D docs/c11-freeze/08_DOCUMENTATION_LIFECYCLE.md\n D docs/c11-freeze/09_CONSOLIDATION_V2.md\n D docs/c11-freeze/10_LONG_TERM_PROJECT_GUIDE.md\n D docs/c11-freeze/11_FINAL_FREEZE_GATE.md\n D docs/c11-freeze/12_DOCUMENTATION_INDEX.md\n D docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md\n D docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md\n D docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md\n D docs/c11-freeze/15_FREEZE_OPERATING_RULES.md\n D docs/c11/C11-README.md\n D docs/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md\n D docs/c11/C11A1_CURRENT_MATRIX_AUDIT.md\n D docs/c11/C11B0_1_PRESENTATION_SPACE_AUDIT.md\n D docs/c11/C11B0_CONTRACT.md\n D docs/c11/C11B0_IMPLEMENTATION.patch\n D docs/c11/C11B1_CONTRACT.md\n D docs/c11/README_C11A1.md\n D docs/c11/README_C11A_FIX.md\n D docs/c11/README_C11A_FIX_v2.md\n D docs/c11/README_C11A_V3.md\n D docs/c11/README_C11B0.md\n D docs/c11/README_C11B0_1.md\n D docs/c11/README_C11B0_1_NEXT.md\n D docs/c11/README_C11B0_2.md\n D docs/c11/README_C11B0_2_V3.md\n D docs/c11/README_C11B0_2_V4.md\n D docs/c6/C6-D4_IMPLEMENTATION_AUDIT.md\n D docs/c6/C6-E4_IMPLEMENTATION.md\n D docs/c6/C6-E4_RUNTIME_INTEGRATION.md\n D docs/c6/C6-E_E3_IMPLEMENTATION.md\n D docs/c6/C6-E_IMPLEMENTATION_NOTES.md\n D docs/c6/C6-E_STEP0_E1_REPORT.md\n D docs/c6/C6-F0.3.5_CTA_REGRESSION_REPAIR.md\n D docs/c6/C6-F0.3.5_FINAL_PATCH_README.txt\n D docs/c6/C6-F0.3.5_IMPLEMENTATION.md\n D docs/c6/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md\n D docs/c6/C6-F4.2_IMPLEMENTATION.md\n D docs/c6/C6-F4.2_STATIC_MATRIX.json\n D docs/c6/C6-F4.3_IMPLEMENTATION.md\n D docs/c6/C6-F4.4-P5-FIND-IMPLEMENTATION-NOTES.md\n D docs/c6/C6-F4.4_PHASE1_PILOT_NATIVE_V2.md\n D docs/c6/C6-F4.4_PHASE2_PARKING_NATIVE_V2.md\n D docs/c6/C6-F4.4_PHASE4_CATCH_CLOSURE.md\n D docs/c6/C6-F4.4_PHASE5_FIND_PREIMPLEMENTATION_AUDIT.md\n D docs/c6/C6F4-P7-COUNT-BRIDGE-NOTE.txt\n D docs/c6/C6_F0_3_4_CTA_REGRESSION_ROOT_CAUSE.md\n D docs/c6/F1.1_FIX4_NOTES.md\n D docs/c6/F1.1_IMPLEMENTATION.md\n D docs/c6/F4.2_FIX_NOTES.md\n D docs/c6/MIGRATION_1.1.0-C6-D3_TO_1.1.0-C6-D4.md\n D docs/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md\n D docs/c9/C9-D_AUTHORING_REPRODUCIBILITY.md\n D docs/c9/C9-E_HIT_V1_AUTHORING.md\n D docs/c9/C9-F_CATCH_V1_AUTHORING.md\n D docs/c9/C9-G_REMAINING_MECHANICS_AUTHORING.md\n M docs/checkpoints/C11_FREEZE.md\n D \"docs/master prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md\"\n D \"docs/master prompts/MASTER HANDOVER \\342\\200\\224 ChallengeEngineV01_STATELESS \\342\\200\\224 C7-A3 FROZEN - CERTIFIED.md\"\n D \"docs/master prompts/MASTER_HANDOVER_C10_VISUAL_AUTHORING_FROZEN.md\"\n D \"docs/master prompts/MASTER_HANDOVER_C6_F0_8_FROZEN.md\"\n D \"docs/master prompts/MASTER_HANDOVER_C6_F0_8_FROZEN_v2.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.6.0.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.9.0.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.0.0.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-F0.8-E.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.4_CLOSED.md\"\n D \"docs/master prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md\"\n D \"docs/master prompts/MASTER_START_PROMPT_1.1.0-C6-D4.md\"\n D \"docs/master prompts/MASTER_START_PROMPT_C6-F0.3.5.md\"\n D \"docs/master prompts/MASTER_START_PROMPT_C6-F0.8-E.md\"\n D \"docs/master prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md\"\n D \"docs/master prompts/START PROMPT \\342\\200\\224 ChallengeEngineV01_STATELESS \\342\\200\\224 Continuaci\\303\\263n despu\\303\\251s de C7-A3.md\"\n D \"docs/master prompts/START_PROMPT_C10_CONTINUATION.md\"\n D \"docs/master prompts/START_PROMPT_C6_F0_8_CONTINUATION.md\"\n D \"docs/master prompts/START_PROMPT_C6_F0_8_CONTINUATION_v2.md\"\n D export/CHALLENGE_001.pcm\n D export/CHALLENGE_002.pcm\n D export/CHALLENGE_003.pcm\n D export/CHALLENGE_004.pcm\n D export/CHALLENGE_005.pcm\n D export/audio_corpus_manifest.json\n D export/c7_a2_mixed/BATCH_MANIFEST.json\n D export/c7_a2_mixed/CHALLENGE_001/CHALLENGE_001.gif\n D export/c7_a2_mixed/CHALLENGE_001/CHALLENGE_001_manifest.json\n D export/c7_a2_mixed/CHALLENGE_001/audio_master.pcm\n D export/c7_a2_mixed/CHALLENGE_VIDEO_OFF_001/CHALLENGE_VIDEO_OFF_001.gif\n D export/c7_a2_mixed/CHALLENGE_VIDEO_OFF_001/CHALLENGE_VIDEO_OFF_001_manifest.json\n D export/c7_a6/BATCH_MANIFEST.json\n D export/c7_a6/CHALLENGE_001/CHALLENGE_001.gif\n D export/c7_a6/CHALLENGE_001/CHALLENGE_001_manifest.json\n D export/c7_a6/CHALLENGE_001/audio_master.pcm\n D export/c7_a6/CHALLENGE_002/CHALLENGE_002.gif\n D export/c7_a6/CHALLENGE_002/CHALLENGE_002_manifest.json\n D export/c7_a6/CHALLENGE_002/audio_master.pcm\n D export/c7_a6/CHALLENGE_003/CHALLENGE_003.gif\n D export/c7_a6/CHALLENGE_003/CHALLENGE_003_manifest.json\n D export/c7_a6/CHALLENGE_003/audio_master.pcm\n D export/c7_a6/CHALLENGE_004/CHALLENGE_004.gif\n D export/c7_a6/CHALLENGE_004/CHALLENGE_004_manifest.json\n D export/c7_a6/CHALLENGE_004/audio_master.pcm\n D export/c7_a6/CHALLENGE_005/CHALLENGE_005.gif\n D export/c7_a6/CHALLENGE_005/CHALLENGE_005_manifest.json\n D export/c7_a6/CHALLENGE_005/audio_master.pcm\n D export/c7_a6/CHALLENGE_006/CHALLENGE_006.gif\n D export/c7_a6/CHALLENGE_006/CHALLENGE_006_manifest.json\n D export/c7_a6/CHALLENGE_006/audio_master.pcm\n D export/c7_a6/CHALLENGE_007/CHALLENGE_007.gif\n D export/c7_a6/CHALLENGE_007/CHALLENGE_007_manifest.json\n D export/c7_a6/CHALLENGE_007/audio_master.pcm\n D export/c7_a6/CHALLENGE_008/CHALLENGE_008.gif\n D export/c7_a6/CHALLENGE_008/CHALLENGE_008_manifest.json\n D export/c7_a6/CHALLENGE_008/audio_master.pcm\n D export/c7_a6/CHALLENGE_009/CHALLENGE_009.gif\n D export/c7_a6/CHALLENGE_009/CHALLENGE_009_manifest.json\n D export/c7_a6/CHALLENGE_009/audio_master.pcm\n D export/c7_a6_unit_001/CHALLENGE_001/CHALLENGE_001.gif\n D export/c7_a6_unit_001/CHALLENGE_001/CHALLENGE_001_manifest.json\n D export/c7_a6_unit_001/CHALLENGE_001/audio_master.pcm\n D export/c8_a_unit_001/CHALLENGE_001/CHALLENGE_001.gif\n D export/c8_a_unit_001/CHALLENGE_001/CHALLENGE_001_manifest.json\n D export/c8_a_unit_001/CHALLENGE_001/audio_master.pcm\n D export/c8_b_clean_run_a/CHALLENGE_001/CHALLENGE_001.gif\n D export/c8_b_clean_run_a/CHALLENGE_001/CHALLENGE_001_manifest.json\n D export/c8_b_clean_run_a/CHALLENGE_001/audio_master.pcm\n D export/c8_b_clean_run_b/CHALLENGE_001/CHALLENGE_001.gif\n D export/c8_b_clean_run_b/CHALLENGE_001/CHALLENGE_001_manifest.json\n D export/c8_b_clean_run_b/CHALLENGE_001/audio_master.pcm\n D export/c9_c_production_batch/AUTH_PARKING_V2_10001/AUTH_PARKING_V2_10001.gif\n D export/c9_c_production_batch/AUTH_PARKING_V2_10001/AUTH_PARKING_V2_10001_manifest.json\n D export/c9_c_production_batch/AUTH_PARKING_V2_10001/audio_master.pcm\n D export/c9_c_production_batch/AUTH_PARKING_V2_10002/AUTH_PARKING_V2_10002.gif\n D export/c9_c_production_batch/AUTH_PARKING_V2_10002/AUTH_PARKING_V2_10002_manifest.json\n D export/c9_c_production_batch/AUTH_PARKING_V2_10002/audio_master.pcm\n D export/c9_c_production_batch/AUTH_PARKING_V2_10003/AUTH_PARKING_V2_10003.gif\n D export/c9_c_production_batch/AUTH_PARKING_V2_10003/AUTH_PARKING_V2_10003_manifest.json\n D export/c9_c_production_batch/AUTH_PARKING_V2_10003/audio_master.pcm\n D export/c9_c_production_batch/BATCH_MANIFEST.json\n D export/c9_g_remaining_production/AUTH_CHOOSE_V1_20260824/AUTH_CHOOSE_V1_20260824.gif\n D export/c9_g_remaining_production/AUTH_CHOOSE_V1_20260824/AUTH_CHOOSE_V1_20260824_manifest.json\n D export/c9_g_remaining_production/AUTH_CHOOSE_V1_20260824/audio_master.pcm\n D export/c9_g_remaining_production/AUTH_COUNT_V1_20260901/AUTH_COUNT_V1_20260901.gif\n D export/c9_g_remaining_production/AUTH_COUNT_V1_20260901/AUTH_COUNT_V1_20260901_manifest.json\n D export/c9_g_remaining_production/AUTH_COUNT_V1_20260901/audio_master.pcm\n D export/c9_g_remaining_production/AUTH_FIND_V1_7770001/AUTH_FIND_V1_7770001.gif\n D export/c9_g_remaining_production/AUTH_FIND_V1_7770001/AUTH_FIND_V1_7770001_manifest.json\n D export/c9_g_remaining_production/AUTH_FIND_V1_7770001/audio_master.pcm\n D export/c9_g_remaining_production/AUTH_KEY_193847/AUTH_KEY_193847.gif\n D export/c9_g_remaining_production/AUTH_KEY_193847/AUTH_KEY_193847_manifest.json\n D export/c9_g_remaining_production/AUTH_KEY_193847/audio_master.pcm\n D export/c9_g_remaining_production/AUTH_PILOT_314159/AUTH_PILOT_314159.gif\n D export/c9_g_remaining_production/AUTH_PILOT_314159/AUTH_PILOT_314159_manifest.json\n D export/c9_g_remaining_production/AUTH_PILOT_314159/audio_master.pcm\n D export/c9_g_remaining_production/BATCH_MANIFEST.json\n D hit_v1/hit_v1_generated.json\n D hit_v1/production/AUTH_HIT_V1_998877/AUTH_HIT_V1_998877.gif\n D hit_v1/production/AUTH_HIT_V1_998877/AUTH_HIT_V1_998877_manifest.json\n D hit_v1/production/AUTH_HIT_V1_998877/audio_master.pcm\n D output/.gitkeep\n D output/c10c_e2e/C10C_PHYSICAL_SMOKE_MANIFEST.json\n D output/c10c_e2e/definitions/c10c_visual_drill_tracking.json\n D output/c10c_e2e/definitions/c10c_visual_loop_fractal.json\n D output_batch_audit/BATCH_EXPORT_MANIFEST.json\n D output_c7/BATCH_MANIFEST.json\n D output_c7/CHALLENGE_001/CHALLENGE_001.gif\n D output_c7/CHALLENGE_001/CHALLENGE_001_manifest.json\n D output_c7/CHALLENGE_001/audio_master.pcm\n D output_c7/CHALLENGE_002/CHALLENGE_002.gif\n D output_c7/CHALLENGE_002/CHALLENGE_002_manifest.json\n D output_c7/CHALLENGE_002/audio_master.pcm\n D output_c7/CHALLENGE_003/CHALLENGE_003.gif\n D output_c7/CHALLENGE_003/CHALLENGE_003_manifest.json\n D output_c7/CHALLENGE_003/audio_master.pcm\n D output_c7/CHALLENGE_004/CHALLENGE_004.gif\n D output_c7/CHALLENGE_004/CHALLENGE_004_manifest.json\n D output_c7/CHALLENGE_004/audio_master.pcm\n D output_c7/CHALLENGE_005/CHALLENGE_005.gif\n D output_c7/CHALLENGE_005/CHALLENGE_005_manifest.json\n D output_c7/CHALLENGE_005/audio_master.pcm\n D output_c7/CHALLENGE_006/CHALLENGE_006.gif\n D output_c7/CHALLENGE_006/CHALLENGE_006_manifest.json\n D output_c7/CHALLENGE_006/audio_master.pcm\n D output_c7/CHALLENGE_007/CHALLENGE_007.gif\n D output_c7/CHALLENGE_007/CHALLENGE_007_manifest.json\n D output_c7/CHALLENGE_007/audio_master.pcm\n D output_c7/CHALLENGE_008/CHALLENGE_008.gif\n D output_c7/CHALLENGE_008/CHALLENGE_008_manifest.json\n D output_c7/CHALLENGE_008/audio_master.pcm\n D output_c7/CHALLENGE_009/CHALLENGE_009.gif\n D output_c7/CHALLENGE_009/CHALLENGE_009_manifest.json\n D output_c7/CHALLENGE_009/audio_master.pcm\n D parking_v2/parking_v2_generated.json\n D parking_v2/production/AUTH_PARKING_V2_314159/AUTH_PARKING_V2_314159.gif\n D parking_v2/production/AUTH_PARKING_V2_314159/AUTH_PARKING_V2_314159_manifest.json\n D parking_v2/production/AUTH_PARKING_V2_314159/audio_master.pcm\n D run_batch_export.py\n D scripts/APPLY.md\n D scripts/APPLY_NOTES.md\n D scripts/C6F4-P7-COUNT-PATCH.diff\n D scripts/C6F4_CATCH_CLEANUP_AND_RUNNER-FIX1.ps1\n D scripts/C6F4_CATCH_CLEANUP_AND_RUNNER.ps1\n D scripts/C6F4_FIND_NATIVE_V2_APPLY-FIX1.ps1\n D scripts/C6F4_FIND_NATIVE_V2_APPLY.ps1\n D scripts/ChallengeDefinitionValidator_F1.1.patch\n D scripts/F4.2_GeneradorMaestro.patch\n D scripts/F4.2_STATIC_TIMING_CHECK.json\n D scripts/WinningHighlightComponent.integration.txt\n D scripts/audit_c3_e.py\n D scripts/audit_export_pipeline.py\n D scripts/audit_shadow.py\n D scripts/authoring_batch.json\n D scripts/authoring_remaining_c9_batch.json\n D scripts/c6e_output_contract_test.py\n D scripts/c8_a_provenance_mutation_test.py\n D scripts/c8_b_batch_reproducibility_test.py\n D scripts/c8_b_reproducibility_test.py\n D scripts/c9_b_parking_v2_production.py\n D scripts/c9_c_batch_production.py\n D scripts/c9_d_authoring_reproducibility.py\n D scripts/c9_e_hit_v1_production.py\n D scripts/c9_f_catch_v1_production.py\n D scripts/c9_g_remaining_mechanics_production.py\n D scripts/challenges_c7_injection.py\n D scripts/convert_to_gifs.py\n D scripts/patch_definitions.py\n D scripts/patch_f06_step2.py\n D scripts/phase_duration_contract_test.py\n M tests/C11ABulkEnvelopeGenerator.gd\n M tests/C7A07MultiProfileCorpusTest.gd\n M tests/C7A08AudioVisualCorpusExportTest.gd\n M tests/C7A501OfficialAudioArtifactManifestTest.gd\n M tests/C7A502AudioVisualMuxTest.gd\n M tests/C7A503AudioVisualFFmpegMuxTest.gd\n M tests/C7A504AudioVisualFFprobeValidationTest.gd\n M tests/c11freeze/C11FreezeRepositoryContractTest.gd\n M tests/helpers/ArtifactPaths.gd\n D tools/apply_c11b02_qa_framing_policy.ps1\n M tools/c11freeze/finalize_c11_freeze.ps1\n M tools/c11freeze/generate_qa_video_matrix.py\n M tools/c11freeze/generate_seed_corpus.py\n M tools/c11freeze/inventory_repository.ps1\n D tools/c11freeze/migrate_artifacts.ps1\n M tools/c11freeze/run_physical_export_suite.ps1\n M tools/c11freeze/run_qa_video_matrix.ps1\n M tools/c11freeze/run_retrocompatibility.py\n M tools/c11freeze/run_seed_stress.py\n M tools/c11freeze/verify_freeze_structure.ps1\n D tools/clean_c10_generated_outputs.ps1\n D tools/finalize_c11a1_challenge_bulk_qa.ps1\n D tools/finalize_c11a_visual_bulk_qa.ps1\n D tools/prepare_c7_a2_video_only_fixture.ps1\n D tools/run_C10C_physical_export.ps1\n D tools/run_c11a1_challenge_bulk_qa.ps1\n D tools/run_c11a_visual_bulk_qa.ps1\n D tools/run_c11b_body_visibility_audit.ps1\n D tools/test_c11b.ps1\n D tools/verify_c11b01_installation.ps1\n D tools/verify_c11b02_installation.ps1\n D tools/verify_c11b1_installation.ps1\n?? .continue/\n?? artifacts/README.md\n?? artifacts/legacy/\n?? artifacts/production/\n?? artifacts/qa/\n?? artifacts/releases/\n?? assets/reference/\n?? docs/04_REPOSITORY_STRUCTURE.md\n?? docs/06_PRODUCTION_AND_DISTRIBUTION.md\n?? docs/07_ROADMAP.md\n?? docs/README.md\n?? docs/checkpoints/C11_B_REPOSITORY_CLEANUP_AUDIT.md\n?? docs/checkpoints/C11_B_REPOSITORY_ORGANIZATION.md\n?? docs/contracts/\n?? docs/history/c11-freeze/\n?? docs/history/c11/\n?? docs/history/c6/\n?? docs/history/c9/\n?? docs/history/design/\n?? docs/history/legacy-tools/\n?? docs/history/master-prompts/\n?? docs/history/reference/\n?? docs/history/repository/\n?? docs/master-prompts/\n?? docs/mechanics/\n?? docs/operations/\n?? schemas/\n?? tests/fixtures/README.md\n?? tests/fixtures/c7/\n?? tests/fixtures/c7_a2_mixed/\n?? tests/fixtures/seeds/\n?? tools/README.md\n?? tools/maintenance/\n?? tools/qa/",
     "files":  [
                   {
+                      "path":  ".editorconfig",
+                      "bytes":  33,
+                      "sha256":  "3b2c749c8a940905a08f727d8be9017c9568a12421c0aee7e37e9543b3751b1b"
+                  },
+                  {
+                      "path":  ".gitattributes",
+                      "bytes":  80,
+                      "sha256":  "21b01a606c9f85f18bb9230245f00ab104df7409cbb2fe9423f6751ca72ba754"
+                  },
+                  {
+                      "path":  ".gitignore",
+                      "bytes":  1306,
+                      "sha256":  "36bd77c5ea45681fe9fd1ea6be200e0fa48cb0ea1d2af666f2486ef713f1c34e"
+                  },
+                  {
+                      "path":  "AGENTS.md",
+                      "bytes":  2505,
+                      "sha256":  "bc2c5dfd7c0cb1a07a6979e9846962ad5559eb67d2dc3404df89e12284253cdc"
+                  },
+                  {
+                      "path":  "assets/c6/car.svg",
+                      "bytes":  208,
+                      "sha256":  "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+                  },
+                  {
+                      "path":  "assets/c6/car.svg.import",
+                      "bytes":  1019,
+                      "sha256":  "b79d6821b672a02ef25eb556006439221fa23177b95940a316b3673cc3e22dd2"
+                  },
+                  {
+                      "path":  "assets/c6/catcher.svg",
+                      "bytes":  165,
+                      "sha256":  "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd"
+                  },
+                  {
+                      "path":  "assets/c6/catcher.svg.import",
+                      "bytes":  1032,
+                      "sha256":  "2b438fc2be1f5990def715c1c698b2c98aa8a4679034d88779aec94fd475ad50"
+                  },
+                  {
+                      "path":  "assets/c6/choose_background.svg",
+                      "bytes":  797,
+                      "sha256":  "11b3ac5e70ab6f1e15ac99fcf1b5ac36626a553e14a450b592a8fd598fa6dce2"
+                  },
+                  {
+                      "path":  "assets/c6/choose_background.svg.import",
+                      "bytes":  1062,
+                      "sha256":  "b3151cdeb141e2e60819d441d094a14a69530f19118a749f77dee236c188427c"
+                  },
+                  {
+                      "path":  "assets/c6/count_background.svg",
+                      "bytes":  364,
+                      "sha256":  "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7"
+                  },
+                  {
+                      "path":  "assets/c6/count_background.svg.import",
+                      "bytes":  1059,
+                      "sha256":  "814793aa664a37e9404ea57cf36b3ea01dd323486c3bddc7a78e40d0a6fd9ce9"
+                  },
+                  {
+                      "path":  "assets/c6/cursor.svg",
+                      "bytes":  194,
+                      "sha256":  "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b"
+                  },
+                  {
+                      "path":  "assets/c6/cursor.svg.import",
+                      "bytes":  1028,
+                      "sha256":  "2214c0e6ca0c4af748412e4fdc2b09cf00cff4e5c538a969067516336bc22995"
+                  },
+                  {
+                      "path":  "assets/c6/garage_background.svg",
+                      "bytes":  127,
+                      "sha256":  "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+                  },
+                  {
+                      "path":  "assets/c6/garage_background.svg.import",
+                      "bytes":  1062,
+                      "sha256":  "79a5439c17d1565a85e3514ec7a4c2d066ca333a754aa4431e00b9e9dc8cdb6d"
+                  },
+                  {
+                      "path":  "assets/c6/key.svg",
+                      "bytes":  361,
+                      "sha256":  "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121"
+                  },
+                  {
+                      "path":  "assets/c6/key.svg.import",
+                      "bytes":  1019,
+                      "sha256":  "e9c5979c39be66a7791ab9ea9ac74631232b2516fc3c346bb46c27e358784e3e"
+                  },
+                  {
+                      "path":  "assets/c6/lock.svg",
+                      "bytes":  301,
+                      "sha256":  "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167"
+                  },
+                  {
+                      "path":  "assets/c6/lock.svg.import",
+                      "bytes":  1022,
+                      "sha256":  "d0cc8d60d0f3454865253d8834d0b063dadf2d3ebafa00c0f0614edc855caa5e"
+                  },
+                  {
+                      "path":  "assets/c6/parking_target.svg",
+                      "bytes":  192,
+                      "sha256":  "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+                  },
+                  {
+                      "path":  "assets/c6/parking_target.svg.import",
+                      "bytes":  1053,
+                      "sha256":  "859a34ab0a9dc57c29db923e68f9fd2e0620320496f19f1d06ad6b85f9904650"
+                  },
+                  {
+                      "path":  "assets/c6/pilot.svg",
+                      "bytes":  156,
+                      "sha256":  "aeddc9783af06b86a188f8400f60447f6f8e4eac1ba7a40c0dcf88b981ae94fb"
+                  },
+                  {
+                      "path":  "assets/c6/pilot.svg.import",
+                      "bytes":  1026,
+                      "sha256":  "ec96f5b61e622540f26bda52027076cf293d155e339069e7b6dceb8fa9fd08be"
+                  },
+                  {
+                      "path":  "assets/c6/projectile.svg",
+                      "bytes":  145,
+                      "sha256":  "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254"
+                  },
+                  {
+                      "path":  "assets/c6/projectile.svg.import",
+                      "bytes":  1041,
+                      "sha256":  "8c375781306a4778e7af0702f929b0e09b0422af23243c4f74f09209631cfdce"
+                  },
+                  {
+                      "path":  "assets/c6/scanner.svg",
+                      "bytes":  328,
+                      "sha256":  "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804"
+                  },
+                  {
+                      "path":  "assets/c6/scanner.svg.import",
+                      "bytes":  1032,
+                      "sha256":  "16057bc32fe73d904e1c11923ca0542f930cb07a0496b686784f82cb2500fa02"
+                  },
+                  {
+                      "path":  "assets/c6/target.svg",
+                      "bytes":  227,
+                      "sha256":  "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547"
+                  },
+                  {
+                      "path":  "assets/c6/target.svg.import",
+                      "bytes":  1029,
+                      "sha256":  "9297580a4a8a913b339252e4b31d3a0a0694046d8c6e749954abc6fd9cb2c462"
+                  },
+                  {
+                      "path":  "assets/c6/transparent.svg",
+                      "bytes":  136,
+                      "sha256":  "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21"
+                  },
+                  {
+                      "path":  "assets/c6/transparent.svg.import",
+                      "bytes":  1044,
+                      "sha256":  "976488f553f47f64151936886e9ae9bab120e5f52948fd86e3be285b130c18f0"
+                  },
+                  {
+                      "path":  "assets/c6/waypoint.svg",
+                      "bytes":  200,
+                      "sha256":  "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142"
+                  },
+                  {
+                      "path":  "assets/c6/waypoint.svg.import",
+                      "bytes":  1034,
+                      "sha256":  "117c822bf440376c60d44abb9ac90f2fd933514b8f7ca6540e675e6e6f47f945"
+                  },
+                  {
+                      "path":  "assets/fonts/Comic-Sans-MS.ttf",
+                      "bytes":  135484,
+                      "sha256":  "a6f559bc059fe6d0e68826e2daee0db31194844ed6145d5cc31a610c4e2700d2"
+                  },
+                  {
+                      "path":  "assets/fonts/Comic-Sans-MS.ttf.import",
+                      "bytes":  777,
+                      "sha256":  "8734033605d808ff92afe77120cc0f09f426b6e80c01b172c332b019456d5f27"
+                  },
+                  {
+                      "path":  "assets/fonts/courier-regular.ttf",
+                      "bytes":  61680,
+                      "sha256":  "19446e1d181aea1a44100a4622012e8202e8f7d1c57ff4482709e62da16ff7d6"
+                  },
+                  {
+                      "path":  "assets/fonts/courier-regular.ttf.import",
+                      "bytes":  783,
+                      "sha256":  "50a1a7f261ec3ff3a67261081a21cbd970852548e12dd1038b5e45966c32fc0a"
+                  },
+                  {
+                      "path":  "assets/reference/README.md",
+                      "bytes":  227,
+                      "sha256":  "3f50f9fafdf4cf1a0b77a1f8dd62920edb5173864b4a9424f023ea1d430a9457"
+                  },
+                  {
                       "path":  "build_factory.py",
-                      "bytes":  82838,
-                      "sha256":  "1dfd246240a85dfc955a30b47a3d51a3460724db1be18068bacfe8503ef0c82e"
+                      "bytes":  82863,
+                      "sha256":  "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_001.json",
+                      "bytes":  1085,
+                      "sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_002.json",
+                      "bytes":  1218,
+                      "sha256":  "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_003.json",
+                      "bytes":  1132,
+                      "sha256":  "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_004.json",
+                      "bytes":  1543,
+                      "sha256":  "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_005.json",
+                      "bytes":  917,
+                      "sha256":  "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_006.json",
+                      "bytes":  1097,
+                      "sha256":  "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_007.json",
+                      "bytes":  1388,
+                      "sha256":  "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_008.json",
+                      "bytes":  990,
+                      "sha256":  "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309"
+                  },
+                  {
+                      "path":  "challenges/CHALLENGE_009.json",
+                      "bytes":  881,
+                      "sha256":  "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151"
                   },
                   {
                       "path":  "core/audio/AudioAssetRegistry.gd",
@@ -962,8 +1202,8 @@
                   },
                   {
                       "path":  "core/presentation/PresentationUI.gd.uid",
-                      "bytes":  19,
-                      "sha256":  "2decfe8c5109a7fbac42f8ed72e157f7ee85e07fc2d91576d74e83c5069fa5cf"
+                      "bytes":  20,
+                      "sha256":  "71a07a064eaaeabf8e30a6c748b4d671f985d88f5d6dfd8773ed54c5c6ea7a6c"
                   },
                   {
                       "path":  "core/presentation/ReferenceFrameResolver.gd",
@@ -1173,7 +1413,7 @@
                   {
                       "path":  "core/presentation/rendering/VisualContentPlayer.gd.uid",
                       "bytes":  20,
-                      "sha256":  "0f6a7715be67bbf6394353920efb31077dfbc30fa75f77bfad5b7aa5a40837d1"
+                      "sha256":  "9bbc47494fb763023783715a2e7a70a48bd72b178e2a44882b04ea9e5327b484"
                   },
                   {
                       "path":  "core/presentation/rendering/VisualContentPlayer.tscn",
@@ -1576,429 +1816,734 @@
                       "sha256":  "083943b783785f41e2390790c168f950f2f20a46593e196cd99c5dd0c4c71043"
                   },
                   {
+                      "path":  "definitions/visual_drill_peripheral_scan_canonical.json",
+                      "bytes":  1301,
+                      "sha256":  "86a3701d9ca779d7d27132ec290579d3caaa586c94e8bb5d03b705418b2120fb"
+                  },
+                  {
+                      "path":  "definitions/visual_drill_pursuit_canonical.json",
+                      "bytes":  1277,
+                      "sha256":  "83c4e2e71e65792668edb3e845a3080466dd73802e72e1d7fedee771834e403a"
+                  },
+                  {
+                      "path":  "definitions/visual_drill_saccade_canonical.json",
+                      "bytes":  1277,
+                      "sha256":  "9480b2ba751c520672b614c7d924bb56d7fb22a520463f76571ddfe1136bd032"
+                  },
+                  {
+                      "path":  "definitions/visual_drill_tracking_canonical.json",
+                      "bytes":  1381,
+                      "sha256":  "946e206c2e7648f76cd51aaeb1968e5864caab29a6ecc9d32ae27733cefdb83c"
+                  },
+                  {
+                      "path":  "definitions/visual_loop_fractal_canonical.json",
+                      "bytes":  1003,
+                      "sha256":  "c45321fe698ecf9e96a9dd74c6c0afdb2ed994efe050d3089f4066428bf27700"
+                  },
+                  {
+                      "path":  "definitions/visual_loop_geometric_canonical.json",
+                      "bytes":  616,
+                      "sha256":  "44aae1f5e3b51050fc1de294c1d3461e21dfee9fa3128ac26d8d3ebab787bbf0"
+                  },
+                  {
+                      "path":  "definitions/visual_loop_kaleidoscope_canonical.json",
+                      "bytes":  622,
+                      "sha256":  "6dd743747af49b7b057b9cf7a90266d4a72165525ae8b7ec815dd4e75cafa751"
+                  },
+                  {
+                      "path":  "definitions/visual_loop_particle_flow_canonical.json",
+                      "bytes":  624,
+                      "sha256":  "1e8cb1b101c72b1598efd7322646d5ff74b08ab70fc2e9e5e6776dc598e2fa99"
+                  },
+                  {
+                      "path":  "definitions/visual_loop_vector_field_canonical.json",
+                      "bytes":  622,
+                      "sha256":  "8c01e762dbc7cd3505b3ea2e52f91d67cb6345c1132f2feeba1a5606e84e19fd"
+                  },
+                  {
                       "path":  "docs/00_PROJECT_OVERVIEW.md",
-                      "bytes":  1253,
-                      "sha256":  "34a1c646d175e8923f69bf6e0678ab65324085c6df5bf10c0035f95bafde2318"
+                      "bytes":  2075,
+                      "sha256":  "460cf7e887e4269b9e57c509e1c1fb6940e5969e7ebbe6ec56d70ec7973079f8"
                   },
                   {
                       "path":  "docs/01_ARCHITECTURE.md",
-                      "bytes":  1218,
-                      "sha256":  "ea6bae5853d9ef36288fc799dc091dbfb1909e352a06ef37824b80b7feed16aa"
+                      "bytes":  2251,
+                      "sha256":  "031d4fb8a0c2025fd6bfe2dad4941c1ca5592837dcc26917158fd507f0f269da"
                   },
                   {
                       "path":  "docs/02_DATA_AND_CONTRACTS.md",
-                      "bytes":  1161,
-                      "sha256":  "5c069bdd287d8480c1c7a0a5eb9b2a3ae3e9815b18236de4cd6bb27c1fe870ff"
+                      "bytes":  1702,
+                      "sha256":  "52626a47b17094b978d4529f55ef7638a9c27458bde7b58fd80d61fb0cb22da9"
                   },
                   {
                       "path":  "docs/03_PRESENTATION.md",
-                      "bytes":  1169,
-                      "sha256":  "585346a6581926c365a7a6ea7a2ac271818f8ae83c0549abda2a9ee8128010e2"
+                      "bytes":  1306,
+                      "sha256":  "76632b38b6c1d61e2f595a98e199f7853f7ad8ee06879ce084536b4e9b7df744"
                   },
                   {
-                      "path":  "docs/04_PRODUCTION_AND_ARTIFACTS.md",
-                      "bytes":  1141,
-                      "sha256":  "c017294bf8ce858128c5ec4d21f1a47dc09c924b81cab16af2e63557a7863dc4"
+                      "path":  "docs/04_REPOSITORY_STRUCTURE.md",
+                      "bytes":  5724,
+                      "sha256":  "f7f2504587e95f6f505a3a3888196212873482a2590e1df684bd85fdda811add"
                   },
                   {
                       "path":  "docs/05_TESTING_AND_REGRESSION.md",
-                      "bytes":  1288,
-                      "sha256":  "3f9396e8b35fe80d76e3e5837c61bf22c7097107f3784dc2c8dd3e6d2e92b5f1"
+                      "bytes":  4588,
+                      "sha256":  "1b4eae10b52327b32a22feb10cb15d13ece362ad8b75da7627cc9068ec484b37"
                   },
                   {
-                      "path":  "docs/06_ROADMAP.md",
-                      "bytes":  1058,
-                      "sha256":  "60074640052d8987dcc81a4e19f9a65159de7833fcdb530aa623457c79dfde4d"
+                      "path":  "docs/06_PRODUCTION_AND_DISTRIBUTION.md",
+                      "bytes":  1821,
+                      "sha256":  "3b001b939b8c3f6b3a0737fd75bd63f69ee6dcb42aac33d9f4b0410d28b5086c"
                   },
                   {
-                      "path":  "docs/ARCHITECTURE_V0.1.md",
-                      "bytes":  8111,
-                      "sha256":  "e8e46f2dda2fad784d16f0ebfdd245296120457b7f0aa35fc701c01d53ebc0cd"
+                      "path":  "docs/07_ROADMAP.md",
+                      "bytes":  3662,
+                      "sha256":  "0cc02fe266b1c07645223ae7cfbfc19ef7dee65b787b2c8a83ba0867b379d7b7"
                   },
                   {
-                      "path":  "docs/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+                      "path":  "docs/checkpoints/C11_B_REPOSITORY_CLEANUP_AUDIT.md",
+                      "bytes":  2379,
+                      "sha256":  "6cff79b62d765f48d33c9a5796cbcaba34e3d2cda9283bb40facc87d243a5491"
+                  },
+                  {
+                      "path":  "docs/checkpoints/C11_B_REPOSITORY_ORGANIZATION.md",
+                      "bytes":  1746,
+                      "sha256":  "1a0fa7eb79b58de00b1acccbf386515b23be92899ba3508ad4883acc9775dd98"
+                  },
+                  {
+                      "path":  "docs/checkpoints/C11_FREEZE.md",
+                      "bytes":  1207,
+                      "sha256":  "4f6aa8574e40a63536088f384dce1613bad62295034a2122da360c93bd91f77e"
+                  },
+                  {
+                      "path":  "docs/contracts/C11_ARCHITECTURE_MANIFESTO.md",
+                      "bytes":  3080,
+                      "sha256":  "183e02ec0865a12cd724fb26943fa8694ba1d873f9552e2e2fa8d886408b91ab"
+                  },
+                  {
+                      "path":  "docs/contracts/README.md",
+                      "bytes":  513,
+                      "sha256":  "1909fddb5f12d6d50883e735f53a79c734161f4eebbb505c80a68426efec8322"
+                  },
+                  {
+                      "path":  "docs/history/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
                       "bytes":  3554,
                       "sha256":  "f88a9c82b0b82cc9f16b5aa945e7116dcff28607330f6cdcc11746c7d45211e7"
                   },
                   {
-                      "path":  "docs/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
+                      "path":  "docs/history/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
                       "bytes":  1649,
                       "sha256":  "bf8c0600b33d38d12c24079928852b6fb6dd39004ac8e192d87b831102d0950a"
                   },
                   {
-                      "path":  "docs/c11/C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+                      "path":  "docs/history/c11/C11B0_1_PRESENTATION_SPACE_AUDIT.md",
                       "bytes":  1538,
                       "sha256":  "db42ee77b08df1276736e5fd7ff5c1affd934b4f38a813b11a6ea181b4dc9cd4"
                   },
                   {
-                      "path":  "docs/c11/C11B0_CONTRACT.md",
+                      "path":  "docs/history/c11/C11B0_CONTRACT.md",
                       "bytes":  2688,
                       "sha256":  "d1bbf4234f11dab9d71268dc96effdf5a1e93437b2ade021449451770fe5ed1b"
                   },
                   {
-                      "path":  "docs/c11/C11B0_IMPLEMENTATION.patch",
+                      "path":  "docs/history/c11/C11B0_IMPLEMENTATION.patch",
                       "bytes":  25276,
                       "sha256":  "62cc3dc278dd821f0b873f55d305e70c92b7ebfb720630b0d2f67b516adce5bc"
                   },
                   {
-                      "path":  "docs/c11/C11B1_CONTRACT.md",
+                      "path":  "docs/history/c11/C11B1_CONTRACT.md",
                       "bytes":  1322,
                       "sha256":  "022371026fdc161352b09884f079bc3ddd06d1c821d468992e611e0b5800079d"
                   },
                   {
-                      "path":  "docs/c11/C11-README.md",
+                      "path":  "docs/history/c11/C11-README.md",
                       "bytes":  11887,
                       "sha256":  "72f8b51c3626c922aad66e1ec74f188816e49028671490bf70fb76fcbaa3495c"
                   },
                   {
-                      "path":  "docs/c11/README_C11A_FIX.md",
+                      "path":  "docs/history/c11/README_C11A_FIX.md",
                       "bytes":  602,
                       "sha256":  "80b9af976ee0bd91f346f78edb5d203017a657bb7a42106aa4b95ed6af907701"
                   },
                   {
-                      "path":  "docs/c11/README_C11A_FIX_v2.md",
+                      "path":  "docs/history/c11/README_C11A_FIX_v2.md",
                       "bytes":  664,
                       "sha256":  "859e416245261d19e9632b4bca20d5c3ea36d6f8d0c920591f4559b53821273e"
                   },
                   {
-                      "path":  "docs/c11/README_C11A_V3.md",
+                      "path":  "docs/history/c11/README_C11A_V3.md",
                       "bytes":  493,
                       "sha256":  "2ea7547d7bf408439b284337f64a80691143865e70c8819b5c89e1323d448889"
                   },
                   {
-                      "path":  "docs/c11/README_C11A1.md",
+                      "path":  "docs/history/c11/README_C11A1.md",
                       "bytes":  1599,
                       "sha256":  "b874197e08e5897b8056c153c95e3b91b90a4ccdc11379163e23bd8880650fb5"
                   },
                   {
-                      "path":  "docs/c11/README_C11B0.md",
+                      "path":  "docs/history/c11/README_C11B0.md",
                       "bytes":  1523,
                       "sha256":  "4250f4154a61a12f4002233a2701696e8ef73fff02b183a38e6b2f6fc0a044b4"
                   },
                   {
-                      "path":  "docs/c11/README_C11B0_1.md",
+                      "path":  "docs/history/c11/README_C11B0_1.md",
                       "bytes":  1018,
                       "sha256":  "8d08c82b64e7aea676545302cbafce78dfa3f88eb09cc03fc65d4e6f1c6c3207"
                   },
                   {
-                      "path":  "docs/c11/README_C11B0_1_NEXT.md",
+                      "path":  "docs/history/c11/README_C11B0_1_NEXT.md",
                       "bytes":  426,
                       "sha256":  "a0112db85ca8f4e428ff56b66e2c1949e80960e0ef7af9136d7f483449a4c9ac"
                   },
                   {
-                      "path":  "docs/c11/README_C11B0_2.md",
+                      "path":  "docs/history/c11/README_C11B0_2.md",
                       "bytes":  2470,
                       "sha256":  "e66a2749daaf67695f6ae8bff30ab9297c2112578d1d867d0b7bd94fac2fc752"
                   },
                   {
-                      "path":  "docs/c11/README_C11B0_2_V3.md",
+                      "path":  "docs/history/c11/README_C11B0_2_V3.md",
                       "bytes":  1463,
                       "sha256":  "1d40292795b8d47481158477b71c4a59cfa2f792716e3dde7d5d49d826bfdc12"
                   },
                   {
-                      "path":  "docs/c11/README_C11B0_2_V4.md",
+                      "path":  "docs/history/c11/README_C11B0_2_V4.md",
                       "bytes":  1403,
                       "sha256":  "6a23e753bb15277ed474f07e1006eb52b2136d4f8d4aa908580e69af4e44e835"
                   },
                   {
-                      "path":  "docs/c11-freeze/00_INDEX.md",
+                      "path":  "docs/history/c11/README_C11B1.md",
+                      "bytes":  322,
+                      "sha256":  "fd87fe9a6d66c50f791c39b64fe5316d01a1c38bf7b6f82fb9e6fc087f5a9f7c"
+                  },
+                  {
+                      "path":  "docs/history/c11-freeze/00_INDEX.md",
                       "bytes":  906,
                       "sha256":  "1f7f069dc2ed77d17aacf4d0d80414a503539ec7122bb5f2a3e92a59f86b8158"
                   },
                   {
-                      "path":  "docs/c11-freeze/01_REPOSITORY_LAYOUT.md",
+                      "path":  "docs/history/c11-freeze/01_REPOSITORY_LAYOUT.md",
                       "bytes":  1631,
                       "sha256":  "e00881ad1dd998677e26071e4d76860e39f14221327b2574b3d57a3690fc2e77"
                   },
                   {
-                      "path":  "docs/c11-freeze/02_TEST_REGISTRY.md",
+                      "path":  "docs/history/c11-freeze/02_TEST_REGISTRY.md",
                       "bytes":  1988,
                       "sha256":  "1c80b4fafe30a89915c3c80d0e8d9fe85db1b6c2bb2d50f31bf8f77229b9b93d"
                   },
                   {
-                      "path":  "docs/c11-freeze/03_RETROCOMPATIBILITY.md",
+                      "path":  "docs/history/c11-freeze/03_RETROCOMPATIBILITY.md",
                       "bytes":  1672,
                       "sha256":  "15cdd475389c942d2d3c3c5bdcee890378b403e2d0b5ad270e81709464fae321"
                   },
                   {
-                      "path":  "docs/c11-freeze/04_SEED_POLICY.md",
+                      "path":  "docs/history/c11-freeze/04_SEED_POLICY.md",
                       "bytes":  1062,
                       "sha256":  "e86e42f788b6faec755312c1b7563cc81687d77994821f782c567ba1ba21ffcd"
                   },
                   {
-                      "path":  "docs/c11-freeze/05_QA_VIDEO_TEXT.md",
+                      "path":  "docs/history/c11-freeze/05_QA_VIDEO_TEXT.md",
                       "bytes":  595,
                       "sha256":  "eba9b7fee449b61b01dfc096fedd99acf52e7b03e16502071dab0e73cb329c59"
                   },
                   {
-                      "path":  "docs/c11-freeze/06_FREEZE_CHECKLIST.md",
+                      "path":  "docs/history/c11-freeze/06_FREEZE_CHECKLIST.md",
                       "bytes":  1146,
                       "sha256":  "34ec49bf0be32a317fa03626602a59a6594e1079105727e33c9d5ebac03e56c7"
                   },
                   {
-                      "path":  "docs/c11-freeze/07_CURRENT_STATE.md",
+                      "path":  "docs/history/c11-freeze/07_CURRENT_STATE.md",
                       "bytes":  1178,
                       "sha256":  "edc69fbc60120e33c39700d530b3f3c6382e37f9af0b5bd5012d48824238392e"
                   },
                   {
-                      "path":  "docs/c11-freeze/08_DOCUMENTATION_LIFECYCLE.md",
+                      "path":  "docs/history/c11-freeze/08_DOCUMENTATION_LIFECYCLE.md",
                       "bytes":  1307,
                       "sha256":  "92110907c3357c2c17a31b78f518c4a0b7e2dde8b8fe1ec1f4541faac8c79e84"
                   },
                   {
-                      "path":  "docs/c11-freeze/09_CONSOLIDATION_V2.md",
+                      "path":  "docs/history/c11-freeze/09_CONSOLIDATION_V2.md",
                       "bytes":  1156,
                       "sha256":  "342d6458bc5dd5d0aca49fd7247b31760580255ef7b2ddc5b387caa22f8b497a"
                   },
                   {
-                      "path":  "docs/c11-freeze/10_LONG_TERM_PROJECT_GUIDE.md",
+                      "path":  "docs/history/c11-freeze/10_LONG_TERM_PROJECT_GUIDE.md",
                       "bytes":  2259,
                       "sha256":  "4cf9e772db34254b2b3af5b0922ac8243fad857fed9c8e00833cf2be946ddde6"
                   },
                   {
-                      "path":  "docs/c11-freeze/11_FINAL_FREEZE_GATE.md",
+                      "path":  "docs/history/c11-freeze/11_FINAL_FREEZE_GATE.md",
                       "bytes":  1039,
                       "sha256":  "234a4ef8e66ab6499632614ea8d107b0eb4d4238f52faf54d290fc883f6d292b"
                   },
                   {
-                      "path":  "docs/c11-freeze/12_DOCUMENTATION_INDEX.md",
+                      "path":  "docs/history/c11-freeze/12_DOCUMENTATION_INDEX.md",
                       "bytes":  695,
                       "sha256":  "d8104ba263cca9dd447227d8c6127701f65501c66e53decd4b50ce9dcf7bbcb7"
                   },
                   {
-                      "path":  "docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md",
+                      "path":  "docs/history/c11-freeze/13_ARCHITECTURE_MANIFESTO.md",
                       "bytes":  2206,
                       "sha256":  "46c11e7345a7a139fb25f5836535c9b0c7433d50624ed20f5b98165aea4e1062"
                   },
                   {
-                      "path":  "docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md",
+                      "path":  "docs/history/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md",
                       "bytes":  1660,
                       "sha256":  "d882bbb58a18b8e4f94429b8e808f12f07fa388280c7616b9849865026570af1"
                   },
                   {
-                      "path":  "docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md",
+                      "path":  "docs/history/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md",
                       "bytes":  646,
                       "sha256":  "5b1099a9959608e11ca8618e7bd38f36abad62da3f7163348827550525204039"
                   },
                   {
-                      "path":  "docs/c11-freeze/15_FREEZE_OPERATING_RULES.md",
+                      "path":  "docs/history/c11-freeze/15_FREEZE_OPERATING_RULES.md",
                       "bytes":  632,
                       "sha256":  "0ded0c809e42c1914aff7a9d15d508388962e5f7e1e2d378b08d1279c826ec4f"
                   },
                   {
-                      "path":  "docs/c6/C6_F0_3_4_CTA_REGRESSION_ROOT_CAUSE.md",
+                      "path":  "docs/history/c11-freeze/README_C11_FREEZE_CONSOLIDATION.md",
+                      "bytes":  2812,
+                      "sha256":  "cb8d4ed51c7668f7904bdd6a51bf4973b696ac0e956692db36369479458506a4"
+                  },
+                  {
+                      "path":  "docs/history/c11-freeze/README_C11_FREEZE_CONSOLIDATION_v2.md",
+                      "bytes":  2218,
+                      "sha256":  "7a982515ee5d1764ec79d21b359118543b71a0a478a423ef4e242e993ebb7639"
+                  },
+                  {
+                      "path":  "docs/history/c11-freeze/README_C11_FREEZE_FINAL.md",
+                      "bytes":  1744,
+                      "sha256":  "a6043dced7375073ea1a276b2d61630897c1abd9873d8a07c65937248ed1d148"
+                  },
+                  {
+                      "path":  "docs/history/c6/C6_F0_3_4_CTA_REGRESSION_ROOT_CAUSE.md",
                       "bytes":  2178,
                       "sha256":  "f2f26669337a8fe3b5bebb6a49bd6eee6ff27a79f920480ab13997744577f1c7"
                   },
                   {
-                      "path":  "docs/c6/C6-D4_IMPLEMENTATION_AUDIT.md",
+                      "path":  "docs/history/c6/C6-D4_IMPLEMENTATION_AUDIT.md",
                       "bytes":  1456,
                       "sha256":  "e8497393d52e275348533a86a6000c724220c88203d1078729ab78fd6bd49077"
                   },
                   {
-                      "path":  "docs/c6/C6-E_E3_IMPLEMENTATION.md",
+                      "path":  "docs/history/c6/C6-E_E3_IMPLEMENTATION.md",
                       "bytes":  1411,
                       "sha256":  "f29d576ed6260e1245561efbee4185552e17969050228d00aac798900298556c"
                   },
                   {
-                      "path":  "docs/c6/C6-E_IMPLEMENTATION_NOTES.md",
+                      "path":  "docs/history/c6/C6-E_IMPLEMENTATION_NOTES.md",
                       "bytes":  1188,
                       "sha256":  "516e224ff82eef401148645f5515f6d17fd32ff9d668ab9b10e4df52d918443f"
                   },
                   {
-                      "path":  "docs/c6/C6-E_STEP0_E1_REPORT.md",
+                      "path":  "docs/history/c6/C6-E_STEP0_E1_REPORT.md",
                       "bytes":  3354,
                       "sha256":  "f2a691c27d2242b2833c902a7c8a8b2881a558b5e8b00091f106d1d4e8ae0fa2"
                   },
                   {
-                      "path":  "docs/c6/C6-E4_IMPLEMENTATION.md",
+                      "path":  "docs/history/c6/C6-E4_IMPLEMENTATION.md",
                       "bytes":  1328,
                       "sha256":  "8252c8d42ee7835cb53fbb09b92c25a5f743e246a269983b4b6e690c363b359e"
                   },
                   {
-                      "path":  "docs/c6/C6-E4_RUNTIME_INTEGRATION.md",
+                      "path":  "docs/history/c6/C6-E4_RUNTIME_INTEGRATION.md",
                       "bytes":  1731,
                       "sha256":  "128eb29835e765727eaff0268e8f108e2a2f9a4b3f8fbca0b475e733d4d782b1"
                   },
                   {
-                      "path":  "docs/c6/C6-F0.3.5_CTA_REGRESSION_REPAIR.md",
+                      "path":  "docs/history/c6/C6-F0.3.5_CTA_REGRESSION_REPAIR.md",
                       "bytes":  1055,
                       "sha256":  "bbab62769975a5c9f0d8716fb754b45f86850848e8183caac567b139e20ba6d3"
                   },
                   {
-                      "path":  "docs/c6/C6-F0.3.5_FINAL_PATCH_README.txt",
+                      "path":  "docs/history/c6/C6-F0.3.5_FINAL_PATCH_README.txt",
                       "bytes":  382,
                       "sha256":  "6053d36dcd7782c1f0d373729a7613033165327fbf6e1232b2ae58a03027c6e8"
                   },
                   {
-                      "path":  "docs/c6/C6-F0.3.5_IMPLEMENTATION.md",
+                      "path":  "docs/history/c6/C6-F0.3.5_IMPLEMENTATION.md",
                       "bytes":  5144,
                       "sha256":  "7d1ce2699a551065d42898d4f14e1b8a299aa9c365d79499db1fda56b76c6f25"
                   },
                   {
-                      "path":  "docs/c6/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md",
+                      "path":  "docs/history/c6/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md",
                       "bytes":  14331,
                       "sha256":  "58716386dcdc5a078f22a924374fd0b1166b77597d30b8770cbe2872c5774446"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.2_IMPLEMENTATION.md",
+                      "path":  "docs/history/c6/C6-F4.2_IMPLEMENTATION.md",
                       "bytes":  2567,
                       "sha256":  "fda0d511003949d786bcecbf9e50ebae9505dd851252764ae6d2c19c23e4b1e4"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.2_STATIC_MATRIX.json",
+                      "path":  "docs/history/c6/C6-F4.2_STATIC_MATRIX.json",
                       "bytes":  2020,
                       "sha256":  "aff99bbdc3d4944cd0e60b32ce12c30d8f3f31253646206809f2db004b82e0b4"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.3_IMPLEMENTATION.md",
+                      "path":  "docs/history/c6/C6-F4.3_IMPLEMENTATION.md",
                       "bytes":  2327,
                       "sha256":  "83243822b37e5ed53d8ff84d5e073a1b4b17c416bc39951fa1992e57fe570751"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.4_PHASE1_PILOT_NATIVE_V2.md",
+                      "path":  "docs/history/c6/C6-F4.4_PHASE1_PILOT_NATIVE_V2.md",
                       "bytes":  2000,
                       "sha256":  "961fd0d37d8b88f9c7267abd046c89021c9275711098d971fb2cf18ecae5af15"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.4_PHASE2_PARKING_NATIVE_V2.md",
+                      "path":  "docs/history/c6/C6-F4.4_PHASE2_PARKING_NATIVE_V2.md",
                       "bytes":  915,
                       "sha256":  "bfff627a4a13ebc2d86eb89c6fb2aec315e185e90f89d7e8a3f34c0843731da1"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.4_PHASE4_CATCH_CLOSURE.md",
+                      "path":  "docs/history/c6/C6-F4.4_PHASE4_CATCH_CLOSURE.md",
                       "bytes":  3723,
                       "sha256":  "d48ff1ba405ce19b37a3a611a334d710a3275a1fdb6f09b49ad557eefd385036"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.4_PHASE5_FIND_PREIMPLEMENTATION_AUDIT.md",
+                      "path":  "docs/history/c6/C6-F4.4_PHASE5_FIND_PREIMPLEMENTATION_AUDIT.md",
                       "bytes":  3018,
                       "sha256":  "436fded4402870fef277b8dd67ca6ff6b64f848e7a1d153476953ae8761c83fc"
                   },
                   {
-                      "path":  "docs/c6/C6-F4.4-P5-FIND-IMPLEMENTATION-NOTES.md",
+                      "path":  "docs/history/c6/C6-F4.4-P5-FIND-IMPLEMENTATION-NOTES.md",
                       "bytes":  1359,
                       "sha256":  "fedc16328cf27d261a4ffbf5b6f1b5518a3ef01bc1e93dd401737280c39db8c7"
                   },
                   {
-                      "path":  "docs/c6/C6F4-P7-COUNT-BRIDGE-NOTE.txt",
+                      "path":  "docs/history/c6/C6F4-P7-COUNT-BRIDGE-NOTE.txt",
                       "bytes":  191,
                       "sha256":  "6a32a341f0ebbebf4f7588a995614a58a2e1767e3c996e1827e2fd9603bc9d44"
                   },
                   {
-                      "path":  "docs/c6/F1.1_FIX4_NOTES.md",
+                      "path":  "docs/history/c6/F1.1_FIX4_NOTES.md",
                       "bytes":  1193,
                       "sha256":  "9486bc05508032dedea8e09dbb628d01b682326cc3995a7543211fadb7ccc79a"
                   },
                   {
-                      "path":  "docs/c6/F1.1_IMPLEMENTATION.md",
+                      "path":  "docs/history/c6/F1.1_IMPLEMENTATION.md",
                       "bytes":  581,
                       "sha256":  "452c98d981ddb795284d4acec8f081a5ee0aa98b12f81140cda1de646177be5c"
                   },
                   {
-                      "path":  "docs/c6/F4.2_FIX_NOTES.md",
+                      "path":  "docs/history/c6/F4.2_FIX_NOTES.md",
                       "bytes":  943,
                       "sha256":  "9ef3d9e981400c3b1dd04801686d38707e4d7c7df56027e3414a816a3bb47e72"
                   },
                   {
-                      "path":  "docs/c6/MIGRATION_1.1.0-C6-D3_TO_1.1.0-C6-D4.md",
+                      "path":  "docs/history/c6/MIGRATION_1.1.0-C6-D3_TO_1.1.0-C6-D4.md",
                       "bytes":  1128,
                       "sha256":  "b696b0cc84619359fb5b879f3ab5b2e1b04685c16c02d73325fb1c567b1571a0"
                   },
                   {
-                      "path":  "docs/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md",
+                      "path":  "docs/history/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md",
                       "bytes":  18981,
                       "sha256":  "c6d09f6944fc31e26e5f057d304b104cfa02a47e6b340d72792ef25c4809afa5"
                   },
                   {
-                      "path":  "docs/c9/C9-D_AUTHORING_REPRODUCIBILITY.md",
+                      "path":  "docs/history/c9/C9-D_AUTHORING_REPRODUCIBILITY.md",
                       "bytes":  668,
                       "sha256":  "141e78db5fb15340924bf9387ce5af60e83e268c30dc4b72d684359c3a8a5d18"
                   },
                   {
-                      "path":  "docs/c9/C9-E_HIT_V1_AUTHORING.md",
+                      "path":  "docs/history/c9/C9-E_HIT_V1_AUTHORING.md",
                       "bytes":  522,
                       "sha256":  "05abf736b50bc6cfec394efaa68c5032c6f0932470bed3141d842fadfdeec3d8"
                   },
                   {
-                      "path":  "docs/c9/C9-F_CATCH_V1_AUTHORING.md",
+                      "path":  "docs/history/c9/C9-F_CATCH_V1_AUTHORING.md",
                       "bytes":  503,
                       "sha256":  "f6a663df5b9b73e2f08606dfdc16a3098e99574a8dcfba055ffc7da420b1a209"
                   },
                   {
-                      "path":  "docs/c9/C9-G_REMAINING_MECHANICS_AUTHORING.md",
+                      "path":  "docs/history/c9/C9-G_REMAINING_MECHANICS_AUTHORING.md",
                       "bytes":  992,
                       "sha256":  "08c8b337b3b890b9ba11166fefc098833f117e81d11289dc0f13ec1ca8927dc4"
                   },
                   {
-                      "path":  "docs/CHECKPOINT_0.3.6_DOCUMENTATION_CHANGELOG.md",
-                      "bytes":  1319,
-                      "sha256":  "78a955d954ccd5f2d4989cdb9895014d2c45acb72429754129e7a52c0e540634"
+                      "path":  "docs/history/design/BRAINSTORMING.md",
+                      "bytes":  516,
+                      "sha256":  "2605726181d49e02a2c8770aaf4f6bf30997c33eff7811ae7b6c93913b51f460"
                   },
                   {
-                      "path":  "docs/CHECKPOINT_0.3.6_STATUS.md",
-                      "bytes":  5472,
-                      "sha256":  "a32ef701e30169a7fe6a924a1e539192bbc8f0242dc55d39484452d8a9d581f2"
+                      "path":  "docs/history/legacy-tools/run_batch_export.py",
+                      "bytes":  7673,
+                      "sha256":  "d82cb1558d8bb6809ffc1ebb4d05661833629005dd257d7d0e5a16820a82469e"
                   },
                   {
-                      "path":  "docs/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md",
-                      "bytes":  4212,
-                      "sha256":  "5bc329831aa3351bf8922183a8f872f4c45203e5bd701b3daa5aeaaa5c5d6b61"
+                      "path":  "docs/history/legacy-tools/scripts/APPLY.md",
+                      "bytes":  1301,
+                      "sha256":  "a9e5cdf171484f6c97649d5224c080c3653ab8361b332cb0bf5a150bd97d83c7"
                   },
                   {
-                      "path":  "docs/checkpoints/C11_FREEZE.md",
-                      "bytes":  989,
-                      "sha256":  "a4c48b1912c5042c966a8ae29dae5f967290d9cb223d692a8e4534be5774d56d"
+                      "path":  "docs/history/legacy-tools/scripts/APPLY_NOTES.md",
+                      "bytes":  1025,
+                      "sha256":  "9b0540f4d579bd8990abaaf87ec92e7b9172990c76d40fd0bb5098517a756017"
                   },
                   {
-                      "path":  "docs/CONTENT_SCHEMA_V0.1.md",
-                      "bytes":  5133,
-                      "sha256":  "dc3555a0690268c10dfc798104a9faf59c50fd5d567427af5d055981ae213655"
+                      "path":  "docs/history/legacy-tools/scripts/audit_c3_e.py",
+                      "bytes":  4276,
+                      "sha256":  "f19fcc412d29637a3c0f3e68a1658b3131d829a59528301bf1da7e3ce749b0e9"
                   },
                   {
-                      "path":  "docs/DATA_MODEL_V0.1.md",
-                      "bytes":  3402,
-                      "sha256":  "9f7cdbf5ad09c2fe338ea069e0c005f7cf78b0d45e7cc3ebab514c07a2594203"
+                      "path":  "docs/history/legacy-tools/scripts/audit_export_pipeline.py",
+                      "bytes":  1989,
+                      "sha256":  "29dbabcd1ed3b6e1b1b66329b9e43c9ff5f500c7c65507415a219a897fda2f50"
                   },
                   {
-                      "path":  "docs/DISTRIBUTION_SPEC_V0.1.md",
-                      "bytes":  3102,
-                      "sha256":  "b681b6db0eebfa080d0b86256619c237bd405212d6fd072f2d30ea1ecf947759"
+                      "path":  "docs/history/legacy-tools/scripts/audit_shadow.py",
+                      "bytes":  2290,
+                      "sha256":  "a1232b5cb415ec6e45d6ac656f7f4d548c73c30bf4d2ba09619bf506a867014b"
                   },
                   {
-                      "path":  "docs/DOCUMENTATION_0.9_1.0_UPDATE_SUMMARY.md",
-                      "bytes":  1322,
-                      "sha256":  "9718ef53648a7871b10f995f5265616314b76379f54cb4b04364ea183bd3de63"
+                      "path":  "docs/history/legacy-tools/scripts/authoring_batch.json",
+                      "bytes":  741,
+                      "sha256":  "52b0379c963ae976993522d7f4bbc09e771b006bb2174f6f9397716140537134"
                   },
                   {
-                      "path":  "docs/DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md",
-                      "bytes":  995,
-                      "sha256":  "1e110b5c0e91e6588603a5ce940fd24d98e906507e8beef78f6d79d39e359770"
+                      "path":  "docs/history/legacy-tools/scripts/authoring_remaining_c9_batch.json",
+                      "bytes":  1399,
+                      "sha256":  "55e12fcbda3d9b9ed3155c32dd0b5bab0780ec023cd67f41e95fb8a8a254ff72"
                   },
                   {
-                      "path":  "docs/DOCUMENTATION_STATUS_1.0.0.md",
-                      "bytes":  1278,
-                      "sha256":  "5a051e70d31d46da5a518f9259a6631cf30dde459807a62765aeaacb5895e623"
+                      "path":  "docs/history/legacy-tools/scripts/c6e_output_contract_test.py",
+                      "bytes":  2214,
+                      "sha256":  "351d17f714d87678f016523527da5f01b26ab7bbfa7476022627b6dbb47ebb49"
                   },
                   {
-                      "path":  "docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md",
-                      "bytes":  2222,
-                      "sha256":  "74014b82c68e3962ce1621e000be75eded058c713b2c50bbc8212dd12b680043"
+                      "path":  "docs/history/legacy-tools/scripts/C6F4_CATCH_CLEANUP_AND_RUNNER.ps1",
+                      "bytes":  4140,
+                      "sha256":  "7f2b6935c8c571a7cc5715e5a1f57abde67d070a60f0a362048d2769025b1646"
                   },
                   {
-                      "path":  "docs/DOCUMENTATION_STATUS_C6-F0.3.md",
-                      "bytes":  1444,
-                      "sha256":  "d0da8ab14532f7fd8e048239151e2fdfbd514d88988ca0ff18729db9616abd72"
+                      "path":  "docs/history/legacy-tools/scripts/C6F4_CATCH_CLEANUP_AND_RUNNER-FIX1.ps1",
+                      "bytes":  3691,
+                      "sha256":  "629d42a09caecaa7c32492652e027d6c23a9fdb771b827615f100bcc939bba08"
                   },
                   {
-                      "path":  "docs/DOMAIN_MODEL_V0.1.md",
-                      "bytes":  2497,
-                      "sha256":  "f4cab1214e79d8718677f6ca3a5c1ec9675285b2331b4a0c1e3965b440ded1f8"
+                      "path":  "docs/history/legacy-tools/scripts/C6F4_FIND_NATIVE_V2_APPLY.ps1",
+                      "bytes":  6825,
+                      "sha256":  "b1ba220c7a7d3101eca7fd6c8e65197d2a0af7f0ddf44e9cc73d03c2ae52c75f"
                   },
                   {
-                      "path":  "docs/GOVERNANCE.md",
-                      "bytes":  6556,
-                      "sha256":  "91cd91f0236ab6b2b8a26318771d54e5abc157acfccf6cb283cfa6247fd27b61"
+                      "path":  "docs/history/legacy-tools/scripts/C6F4_FIND_NATIVE_V2_APPLY-FIX1.ps1",
+                      "bytes":  7031,
+                      "sha256":  "e9d93c6127e1d7771eaa103301a38cbf9a157521017a5ffcc492067c7593ef96"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/C6F4-P7-COUNT-PATCH.diff",
+                      "bytes":  2766,
+                      "sha256":  "6690e68f079ab994e05853d50be4bc68d004ad962f5aecb4cbc790750a149a0c"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c8_a_provenance_mutation_test.py",
+                      "bytes":  11122,
+                      "sha256":  "fd9f3cb025b74333d2bb0c1e7df5f516d3662702bc1a7f4f644748e16975f846"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c8_b_batch_reproducibility_test.py",
+                      "bytes":  5581,
+                      "sha256":  "e4aa594a2f2210c7cdc509380eb45e8ed7c7b4ea50428ee5f955e7f8599f64ee"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c8_b_reproducibility_test.py",
+                      "bytes":  5842,
+                      "sha256":  "5cbcbd9b9bfafbee153011f3f41803385aa932d83921f642e1b9ebe591454049"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c9_b_parking_v2_production.py",
+                      "bytes":  4137,
+                      "sha256":  "3efda64838a0236cb44c4a8ce9be60284a34f94bf30f6340a76787454cc1ef87"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c9_c_batch_production.py",
+                      "bytes":  4783,
+                      "sha256":  "f41744502591a01aa26712f57f52f6beb316f621cb21ba1416310f3b23591104"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c9_d_authoring_reproducibility.py",
+                      "bytes":  3745,
+                      "sha256":  "116b2818c92f89f6282eb08e2c5bc3105ee19d19d89a62b0a7f2a990a9b4b481"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c9_e_hit_v1_production.py",
+                      "bytes":  2119,
+                      "sha256":  "50b958fcf3849baa0d85a34c0180d8a112d93e363ad84678a6b2f7307295d81f"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c9_f_catch_v1_production.py",
+                      "bytes":  2125,
+                      "sha256":  "994bace4fa25c7877b7c949de1c8921913ff0b9be45b3653ac24f2d08c72e3a9"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/c9_g_remaining_mechanics_production.py",
+                      "bytes":  4500,
+                      "sha256":  "b75169184b03c7bb361c04eaebecf5e195727d9783ce35f820ad4b7c853408a2"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/ChallengeDefinitionValidator_F1.1.patch",
+                      "bytes":  583,
+                      "sha256":  "fab436f0338a6a232e5848c5b3814b4e28e8985c80468ce783459bb2d77acd69"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/challenges_c7_injection.py",
+                      "bytes":  618,
+                      "sha256":  "e88fb454dde9597609a4f8d5cb2a1a1adbde8c952fd015b4a2dd97ea87d2b979"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/convert_to_gifs.py",
+                      "bytes":  1422,
+                      "sha256":  "170f97658b7e7092d0fb60382b7c85aea93f455b6e54f3eb2fe3f854a9f502b7"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/F4.2_GeneradorMaestro.patch",
+                      "bytes":  13245,
+                      "sha256":  "f684daa4c6185f3e6a6e2a6557f5120300c059dcb669927523e91086cb6a6d52"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/F4.2_STATIC_TIMING_CHECK.json",
+                      "bytes":  1713,
+                      "sha256":  "49ace4511c71e31b0f47a429ff744be8346f21b32a2492b35633a320cbca10dc"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/patch_definitions.py",
+                      "bytes":  2365,
+                      "sha256":  "1edf37f392ff9a907b9d30058d83b7997d136c8974910ea519267c0e414d1338"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/patch_f06_step2.py",
+                      "bytes":  1669,
+                      "sha256":  "9836215917575d09cadd6dbfcbb4a3a6d814570ba57ba22e977e7560fd125171"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/phase_duration_contract_test.py",
+                      "bytes":  1876,
+                      "sha256":  "2512cd4d8efda22fe63735660697a2abf49f2eeef47d0493cd55b95cb00323af"
+                  },
+                  {
+                      "path":  "docs/history/legacy-tools/scripts/WinningHighlightComponent.integration.txt",
+                      "bytes":  2982,
+                      "sha256":  "595cd1fec7a330dc1e3e474ae02d09b89152ff3796071292281154783e22899f"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
+                      "bytes":  9235,
+                      "sha256":  "3c8e5a3e7ac830e4abd451a933ca31cb4320c253fbbf7103c0ee73a3f3efe277"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_C10_VISUAL_AUTHORING_FROZEN.md",
+                      "bytes":  8434,
+                      "sha256":  "63270ff92d62f50634b43856aecd03a5212dd13cec22bff03d1b419a5719878a"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_C6_F0_8_FROZEN.md",
+                      "bytes":  16856,
+                      "sha256":  "0b5fd9efc6b11a667db981b2cdf73c2765efe23da688884b196088616ef4ad26"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_C6_F0_8_FROZEN_v2.md",
+                      "bytes":  11557,
+                      "sha256":  "b2baf3eb4dffbad9adeaf69da997654e2f448fb8e259ba106999af9e0ed5f368"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md",
+                      "bytes":  16469,
+                      "sha256":  "69b42a6bb9b69e0d36e283ead537788954e717f8d777f150ffbf39db3c4e6633"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md",
+                      "bytes":  3636,
+                      "sha256":  "2867b7355ac0eedb4afa6e7a69ee3a2ba6218a31485511e5f492c373b3d146c2"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md",
+                      "bytes":  13877,
+                      "sha256":  "28e2e663c8b3f8491b0cf995f0b006238072238abd157531148a0a913419faa4"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.6.0.md",
+                      "bytes":  4520,
+                      "sha256":  "d437ac23137f8aab30dea89d7e3c9f35ece77dcff3d3a2d6341d19d7616f530c"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md",
+                      "bytes":  23787,
+                      "sha256":  "fc40025d11b354614eec8919b999ba1244a1e92f43d6f4e93e6e2c8a7176d31d"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.9.0.md",
+                      "bytes":  3418,
+                      "sha256":  "fbbb2ed5ea240c593073fa523e2d10b20927f49f07080cf2cff26da38cf7540d"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.0.0.md",
+                      "bytes":  6804,
+                      "sha256":  "e5cc8605e207fde99fe1d35ba7144f06955fdcc3aaba3fbef6137394b58acfda"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md",
+                      "bytes":  6896,
+                      "sha256":  "c1f041d777b1468d1d7b040c8cde060bb85bd857703ba3682ff8cc45af5bbfb6"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md",
+                      "bytes":  2919,
+                      "sha256":  "0cba875edc72e7d50a7d989c2370c85f846b339b0ff8ccb473d27b8757299214"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md",
+                      "bytes":  1658,
+                      "sha256":  "8aff3d4ac0385f2ef1990f68e4d3274cc2f8caad49f3a112ba1f313f8c112dde"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-F0.8-E.md",
+                      "bytes":  4500,
+                      "sha256":  "b3019f496e48cce0d81ab2b413851322fb08855b5868cc11beed088bd028bdd5"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.4_CLOSED.md",
+                      "bytes":  14185,
+                      "sha256":  "5cdaf3e5aee85b1e09a7d6d4a6d01debf7a685159ebf7e13f1798f15e84db310"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md",
+                      "bytes":  4604,
+                      "sha256":  "0cd03b5f9c131a91bd3ebaca0800fa088b26e510f5e00ebbaaff01a175359c4c"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_START_PROMPT_1.1.0-C6-D4.md",
+                      "bytes":  1562,
+                      "sha256":  "3ec992720bb1e3426fa2f17a8585288b3ac24d02aa14928b555434fb87447bd9"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_START_PROMPT_C6-F0.3.5.md",
+                      "bytes":  8335,
+                      "sha256":  "b7e35fffd2e7bb5441df01feec31c62a468a2dfe48110bccd2c7bfac06bd0fcc"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/MASTER_START_PROMPT_C6-F0.8-E.md",
+                      "bytes":  2272,
+                      "sha256":  "27e525f9eafca80768d861574ff62b43aa06c98990643de0ac5ff89a15e32fc4"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md",
+                      "bytes":  4583,
+                      "sha256":  "ded9674baeda03763b06337afdf4732c4e6f176ff519dbda6ae33b912563d172"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/START_PROMPT_C10_CONTINUATION.md",
+                      "bytes":  4225,
+                      "sha256":  "099ccce23eb5be8553239e0770dc6b675c1ba5a9e00e3ea8700ab98fbccf4568"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/START_PROMPT_C6_F0_8_CONTINUATION.md",
+                      "bytes":  7049,
+                      "sha256":  "0335ac97ff79ee24f6164e0c9c47ab3b39aeae9453470d788ed43157fb092d98"
+                  },
+                  {
+                      "path":  "docs/history/master-prompts/START_PROMPT_C6_F0_8_CONTINUATION_v2.md",
+                      "bytes":  7449,
+                      "sha256":  "e11fcb7121fd22ae4432f3df564d456824a3e26d6f69b6761164b470d8355b99"
                   },
                   {
                       "path":  "docs/history/README.md",
@@ -2006,214 +2551,474 @@
                       "sha256":  "2d257c5d54823b4e3915247d475f21cf1013ef0935509cc0914b4651e1a968fc"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER HANDOVER — ChallengeEngineV01_STATELESS — C7-A3 FROZEN - CERTIFIED.md",
-                      "bytes":  9235,
-                      "sha256":  "3c8e5a3e7ac830e4abd451a933ca31cb4320c253fbbf7103c0ee73a3f3efe277"
+                      "path":  "docs/history/reference/04_PRODUCTION_AND_ARTIFACTS.md",
+                      "bytes":  1141,
+                      "sha256":  "c017294bf8ce858128c5ec4d21f1a47dc09c924b81cab16af2e63557a7863dc4"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
-                      "bytes":  9235,
-                      "sha256":  "3c8e5a3e7ac830e4abd451a933ca31cb4320c253fbbf7103c0ee73a3f3efe277"
+                      "path":  "docs/history/reference/06_ROADMAP.md",
+                      "bytes":  1058,
+                      "sha256":  "60074640052d8987dcc81a4e19f9a65159de7833fcdb530aa623457c79dfde4d"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_C10_VISUAL_AUTHORING_FROZEN.md",
-                      "bytes":  8434,
-                      "sha256":  "63270ff92d62f50634b43856aecd03a5212dd13cec22bff03d1b419a5719878a"
+                      "path":  "docs/history/reference/ARCHITECTURE_V0.1.md",
+                      "bytes":  8111,
+                      "sha256":  "e8e46f2dda2fad784d16f0ebfdd245296120457b7f0aa35fc701c01d53ebc0cd"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_C6_F0_8_FROZEN.md",
-                      "bytes":  16856,
-                      "sha256":  "0b5fd9efc6b11a667db981b2cdf73c2765efe23da688884b196088616ef4ad26"
+                      "path":  "docs/history/reference/CHECKPOINT_0.3.6_DOCUMENTATION_CHANGELOG.md",
+                      "bytes":  1319,
+                      "sha256":  "78a955d954ccd5f2d4989cdb9895014d2c45acb72429754129e7a52c0e540634"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_C6_F0_8_FROZEN_v2.md",
-                      "bytes":  11557,
-                      "sha256":  "b2baf3eb4dffbad9adeaf69da997654e2f448fb8e259ba106999af9e0ed5f368"
+                      "path":  "docs/history/reference/CHECKPOINT_0.3.6_STATUS.md",
+                      "bytes":  5472,
+                      "sha256":  "a32ef701e30169a7fe6a924a1e539192bbc8f0242dc55d39484452d8a9d581f2"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md",
-                      "bytes":  16469,
-                      "sha256":  "69b42a6bb9b69e0d36e283ead537788954e717f8d777f150ffbf39db3c4e6633"
+                      "path":  "docs/history/reference/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md",
+                      "bytes":  4212,
+                      "sha256":  "5bc329831aa3351bf8922183a8f872f4c45203e5bd701b3daa5aeaaa5c5d6b61"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md",
-                      "bytes":  3636,
-                      "sha256":  "2867b7355ac0eedb4afa6e7a69ee3a2ba6218a31485511e5f492c373b3d146c2"
+                      "path":  "docs/history/reference/contracts/CONTENT_SCHEMA_V0.1.md",
+                      "bytes":  5133,
+                      "sha256":  "dc3555a0690268c10dfc798104a9faf59c50fd5d567427af5d055981ae213655"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md",
-                      "bytes":  13877,
-                      "sha256":  "28e2e663c8b3f8491b0cf995f0b006238072238abd157531148a0a913419faa4"
+                      "path":  "docs/history/reference/contracts/DATA_MODEL_V0.1.md",
+                      "bytes":  3402,
+                      "sha256":  "9f7cdbf5ad09c2fe338ea069e0c005f7cf78b0d45e7cc3ebab514c07a2594203"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.6.0.md",
-                      "bytes":  4520,
-                      "sha256":  "d437ac23137f8aab30dea89d7e3c9f35ece77dcff3d3a2d6341d19d7616f530c"
+                      "path":  "docs/history/reference/contracts/DISTRIBUTION_SPEC_V0.1.md",
+                      "bytes":  3102,
+                      "sha256":  "b681b6db0eebfa080d0b86256619c237bd405212d6fd072f2d30ea1ecf947759"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md",
-                      "bytes":  23787,
-                      "sha256":  "fc40025d11b354614eec8919b999ba1244a1e92f43d6f4e93e6e2c8a7176d31d"
+                      "path":  "docs/history/reference/contracts/DOMAIN_MODEL_V0.1.md",
+                      "bytes":  2497,
+                      "sha256":  "f4cab1214e79d8718677f6ca3a5c1ec9675285b2331b4a0c1e3965b440ded1f8"
                   },
                   {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.9.0.md",
-                      "bytes":  3418,
-                      "sha256":  "fbbb2ed5ea240c593073fa523e2d10b20927f49f07080cf2cff26da38cf7540d"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.0.0.md",
-                      "bytes":  6804,
-                      "sha256":  "e5cc8605e207fde99fe1d35ba7144f06955fdcc3aaba3fbef6137394b58acfda"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md",
-                      "bytes":  6896,
-                      "sha256":  "c1f041d777b1468d1d7b040c8cde060bb85bd857703ba3682ff8cc45af5bbfb6"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md",
-                      "bytes":  2919,
-                      "sha256":  "0cba875edc72e7d50a7d989c2370c85f846b339b0ff8ccb473d27b8757299214"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md",
-                      "bytes":  1658,
-                      "sha256":  "8aff3d4ac0385f2ef1990f68e4d3274cc2f8caad49f3a112ba1f313f8c112dde"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-F0.8-E.md",
-                      "bytes":  4500,
-                      "sha256":  "b3019f496e48cce0d81ab2b413851322fb08855b5868cc11beed088bd028bdd5"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.4_CLOSED.md",
-                      "bytes":  14185,
-                      "sha256":  "5cdaf3e5aee85b1e09a7d6d4a6d01debf7a685159ebf7e13f1798f15e84db310"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md",
-                      "bytes":  4604,
-                      "sha256":  "0cd03b5f9c131a91bd3ebaca0800fa088b26e510f5e00ebbaaff01a175359c4c"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_START_PROMPT_1.1.0-C6-D4.md",
-                      "bytes":  1562,
-                      "sha256":  "3ec992720bb1e3426fa2f17a8585288b3ac24d02aa14928b555434fb87447bd9"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_START_PROMPT_C6-F0.3.5.md",
-                      "bytes":  8335,
-                      "sha256":  "b7e35fffd2e7bb5441df01feec31c62a468a2dfe48110bccd2c7bfac06bd0fcc"
-                  },
-                  {
-                      "path":  "docs/master prompts/MASTER_START_PROMPT_C6-F0.8-E.md",
-                      "bytes":  2272,
-                      "sha256":  "27e525f9eafca80768d861574ff62b43aa06c98990643de0ac5ff89a15e32fc4"
-                  },
-                  {
-                      "path":  "docs/master prompts/START PROMPT — ChallengeEngineV01_STATELESS — Continuación después de C7-A3.md",
-                      "bytes":  4583,
-                      "sha256":  "ded9674baeda03763b06337afdf4732c4e6f176ff519dbda6ae33b912563d172"
-                  },
-                  {
-                      "path":  "docs/master prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md",
-                      "bytes":  4583,
-                      "sha256":  "ded9674baeda03763b06337afdf4732c4e6f176ff519dbda6ae33b912563d172"
-                  },
-                  {
-                      "path":  "docs/master prompts/START_PROMPT_C10_CONTINUATION.md",
-                      "bytes":  4225,
-                      "sha256":  "099ccce23eb5be8553239e0770dc6b675c1ba5a9e00e3ea8700ab98fbccf4568"
-                  },
-                  {
-                      "path":  "docs/master prompts/START_PROMPT_C6_F0_8_CONTINUATION.md",
-                      "bytes":  7049,
-                      "sha256":  "0335ac97ff79ee24f6164e0c9c47ab3b39aeae9453470d788ed43157fb092d98"
-                  },
-                  {
-                      "path":  "docs/master prompts/START_PROMPT_C6_F0_8_CONTINUATION_v2.md",
-                      "bytes":  7449,
-                      "sha256":  "e11fcb7121fd22ae4432f3df564d456824a3e26d6f69b6761164b470d8355b99"
-                  },
-                  {
-                      "path":  "docs/MECHANICS_SPECIFICATION_V0.1.md",
+                      "path":  "docs/history/reference/contracts/MECHANICS_SPECIFICATION_V0.1.md",
                       "bytes":  5018,
                       "sha256":  "2b7459269f810a4e260726401e53bf13380c8b020b61de95037c12e6d6bf9619"
                   },
                   {
-                      "path":  "docs/PACKAGE_CONTENTS.txt",
-                      "bytes":  446,
-                      "sha256":  "052ff67c9f22ded7b2240b54401405e05aa3e7ce14989bb39c6b06e200063059"
+                      "path":  "docs/history/reference/contracts/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md",
+                      "bytes":  7413,
+                      "sha256":  "d60a217df982521b0e1d22045a26a8cba9f00dc9d8413fac396e941ede63421c"
                   },
                   {
-                      "path":  "docs/PACKAGE_MANIFEST_1.1.0-C6-D4.txt",
-                      "bytes":  1048,
-                      "sha256":  "8a6255f5c5d1964b50d3c8ed5b4d87d5478248df03a5acfe90e69fa7423b2dce"
-                  },
-                  {
-                      "path":  "docs/PACKAGE_MANIFEST_C6-F0.3.5.txt",
-                      "bytes":  2008,
-                      "sha256":  "c40eec0f3d66126da120fe7c75d2e75fba15a21312aca233d326250e9527b93c"
-                  },
-                  {
-                      "path":  "docs/PARKING_MECHANIC_V2.0.md",
-                      "bytes":  7684,
-                      "sha256":  "a2281817b2130afe0066d94482dfa89ce9fb2e60ec28c9ab6d62f510c23c786b"
-                  },
-                  {
-                      "path":  "docs/PILOT_MECHANIC_V2.0.md",
-                      "bytes":  16553,
-                      "sha256":  "3ed52953355ad001be8da8c9ccaea863a81feae7324c0db5cba262772371da5e"
-                  },
-                  {
-                      "path":  "docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md",
-                      "bytes":  7363,
-                      "sha256":  "f060643f3a7b09b6ebb123767a1ad4b7a09027ef40997393db4bcc695799897d"
-                  },
-                  {
-                      "path":  "docs/README_INTEGRATION.md",
-                      "bytes":  2185,
-                      "sha256":  "3263cef854343c3fa3182c350c9c48e2751f5f1a7b8ae6e7a1c58aa905ff2ad1"
-                  },
-                  {
-                      "path":  "docs/README_PROJECT_ES.md",
-                      "bytes":  3429,
-                      "sha256":  "ecb11f9fedd6efe746caf4050f7279eab8822682adab623ee32c4ed9b08619fb"
-                  },
-                  {
-                      "path":  "docs/README-P7.txt",
-                      "bytes":  582,
-                      "sha256":  "272ab21d8aacbe1783c9c2d58b8911b786d2a6d07c38816f36b1975a4fc6cbd6"
-                  },
-                  {
-                      "path":  "docs/RELEASE_NOTES_1.1.0-C6-D4.md",
-                      "bytes":  836,
-                      "sha256":  "7ac37c2c1b64dba9ed5e0e56809816c14e60faca69b7bc117d4268e762fba7aa"
-                  },
-                  {
-                      "path":  "docs/REPOSITORY_AUDIT_1.1.0-C6-D4.md",
-                      "bytes":  1616,
-                      "sha256":  "bf0eccfce631c153bfad0000a4c68dfa03b53adbdad180d139440e029bd3b834"
-                  },
-                  {
-                      "path":  "docs/ROADMAP_PHASES.md",
-                      "bytes":  6096,
-                      "sha256":  "23ab9203e013f8bd060f1bd419a3c9d85e1838861dd6fc76b6a69af24d7de806"
-                  },
-                  {
-                      "path":  "docs/TESTING_STRATEGY_V0.1.md",
+                      "path":  "docs/history/reference/contracts/TESTING_STRATEGY_V0.1.md",
                       "bytes":  5967,
                       "sha256":  "57b7f28f917fa1547b49b5b494a618ed8849abc8c1a0be48560e50a0ecfac8fd"
                   },
                   {
-                      "path":  "docs/VALIDATION_PROTOCOL.md",
-                      "bytes":  3570,
-                      "sha256":  "66ede403691e01083f727f682430a96fda2e770c22cd078ad61619abc46cf17e"
+                      "path":  "docs/history/reference/contracts/VALIDATION_PROTOCOL.md",
+                      "bytes":  3620,
+                      "sha256":  "77c2b86ec8f93970ff2bd03540614106c8472e1c2e47b887a596269e9eb7571a"
                   },
                   {
-                      "path":  "docs/VIDEO_SPECIFICATION.md",
-                      "bytes":  4133,
-                      "sha256":  "fafeb3569d9cfc8c4d016b6e18204bd541bfb7cd9d1f5deecaaf27a7a3edd399"
+                      "path":  "docs/history/reference/contracts/VIDEO_SPECIFICATION.md",
+                      "bytes":  4308,
+                      "sha256":  "9fc93a0fc53b67d3016de4027d7739ae42a2b68f5d1bc839d56ac89169517079"
+                  },
+                  {
+                      "path":  "docs/history/reference/DOCUMENTATION_0.9_1.0_UPDATE_SUMMARY.md",
+                      "bytes":  1322,
+                      "sha256":  "9718ef53648a7871b10f995f5265616314b76379f54cb4b04364ea183bd3de63"
+                  },
+                  {
+                      "path":  "docs/history/reference/DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md",
+                      "bytes":  995,
+                      "sha256":  "1e110b5c0e91e6588603a5ce940fd24d98e906507e8beef78f6d79d39e359770"
+                  },
+                  {
+                      "path":  "docs/history/reference/DOCUMENTATION_STATUS_1.0.0.md",
+                      "bytes":  1278,
+                      "sha256":  "5a051e70d31d46da5a518f9259a6631cf30dde459807a62765aeaacb5895e623"
+                  },
+                  {
+                      "path":  "docs/history/reference/DOCUMENTATION_STATUS_1.1.0-C6-D4.md",
+                      "bytes":  2222,
+                      "sha256":  "74014b82c68e3962ce1621e000be75eded058c713b2c50bbc8212dd12b680043"
+                  },
+                  {
+                      "path":  "docs/history/reference/DOCUMENTATION_STATUS_C6-F0.3.md",
+                      "bytes":  1444,
+                      "sha256":  "d0da8ab14532f7fd8e048239151e2fdfbd514d88988ca0ff18729db9616abd72"
+                  },
+                  {
+                      "path":  "docs/history/reference/GOVERNANCE_HISTORICAL.md",
+                      "bytes":  6556,
+                      "sha256":  "91cd91f0236ab6b2b8a26318771d54e5abc157acfccf6cb283cfa6247fd27b61"
+                  },
+                  {
+                      "path":  "docs/history/reference/mechanics/PARKING_MECHANIC_V2.0.md",
+                      "bytes":  7684,
+                      "sha256":  "a2281817b2130afe0066d94482dfa89ce9fb2e60ec28c9ab6d62f510c23c786b"
+                  },
+                  {
+                      "path":  "docs/history/reference/mechanics/PILOT_MECHANIC_V2.0.md",
+                      "bytes":  16553,
+                      "sha256":  "3ed52953355ad001be8da8c9ccaea863a81feae7324c0db5cba262772371da5e"
+                  },
+                  {
+                      "path":  "docs/history/reference/PACKAGE_CONTENTS.txt",
+                      "bytes":  446,
+                      "sha256":  "052ff67c9f22ded7b2240b54401405e05aa3e7ce14989bb39c6b06e200063059"
+                  },
+                  {
+                      "path":  "docs/history/reference/PACKAGE_MANIFEST_1.1.0-C6-D4.txt",
+                      "bytes":  1048,
+                      "sha256":  "8a6255f5c5d1964b50d3c8ed5b4d87d5478248df03a5acfe90e69fa7423b2dce"
+                  },
+                  {
+                      "path":  "docs/history/reference/PACKAGE_MANIFEST_C6-F0.3.5.txt",
+                      "bytes":  2008,
+                      "sha256":  "c40eec0f3d66126da120fe7c75d2e75fba15a21312aca233d326250e9527b93c"
+                  },
+                  {
+                      "path":  "docs/history/reference/README_INTEGRATION.md",
+                      "bytes":  2185,
+                      "sha256":  "3263cef854343c3fa3182c350c9c48e2751f5f1a7b8ae6e7a1c58aa905ff2ad1"
+                  },
+                  {
+                      "path":  "docs/history/reference/README_PROJECT_ES.md",
+                      "bytes":  3429,
+                      "sha256":  "ecb11f9fedd6efe746caf4050f7279eab8822682adab623ee32c4ed9b08619fb"
+                  },
+                  {
+                      "path":  "docs/history/reference/README-P7.txt",
+                      "bytes":  582,
+                      "sha256":  "272ab21d8aacbe1783c9c2d58b8911b786d2a6d07c38816f36b1975a4fc6cbd6"
+                  },
+                  {
+                      "path":  "docs/history/reference/RELEASE_NOTES_1.1.0-C6-D4.md",
+                      "bytes":  836,
+                      "sha256":  "7ac37c2c1b64dba9ed5e0e56809816c14e60faca69b7bc117d4268e762fba7aa"
+                  },
+                  {
+                      "path":  "docs/history/reference/REPOSITORY_AUDIT_1.1.0-C6-D4.md",
+                      "bytes":  1616,
+                      "sha256":  "bf0eccfce631c153bfad0000a4c68dfa03b53adbdad180d139440e029bd3b834"
+                  },
+                  {
+                      "path":  "docs/history/reference/ROADMAP_PHASES.md",
+                      "bytes":  6096,
+                      "sha256":  "23ab9203e013f8bd060f1bd419a3c9d85e1838861dd6fc76b6a69af24d7de806"
+                  },
+                  {
+                      "path":  "docs/history/repository/README_DRAFT_GITHUB.md",
+                      "bytes":  1779,
+                      "sha256":  "3e262f71260c24712239617ad5a6dff313a18c201dad1194f1f3c2589abd85ef"
+                  },
+                  {
+                      "path":  "docs/master-prompts/MASTER_HANDOVER_C11_B_FREEZE.md",
+                      "bytes":  3098,
+                      "sha256":  "db3a5a251a8511c9932a58b144de39bc578a2ff78479fbd43beea1f2dba560a1"
+                  },
+                  {
+                      "path":  "docs/master-prompts/MASTER_HANDOVER_C11_B_REPOSITORY_ORGANIZATION.md",
+                      "bytes":  3130,
+                      "sha256":  "8a9ef0b241ffd4da6c10c1551299327d4bbbfa78e25126bfbc832915fb7fd68b"
+                  },
+                  {
+                      "path":  "docs/master-prompts/START_PROMPT_C11C_ART_DIRECTION.md",
+                      "bytes":  2442,
+                      "sha256":  "b17290a5470ed114890c29460e400bcdeb04f83ba4189f5270046fcfdba61fba"
+                  },
+                  {
+                      "path":  "docs/mechanics/README.md",
+                      "bytes":  263,
+                      "sha256":  "3a80ae6d312c3ed1cb3590fbf98a6056c9ea57694879fae95a5385b01897899d"
+                  },
+                  {
+                      "path":  "docs/operations/ARTIFACT_POLICY.md",
+                      "bytes":  837,
+                      "sha256":  "4a149cde92b6da5d8573e81040a6ca7ddc132b321496e275d14f9884f0a5f50d"
+                  },
+                  {
+                      "path":  "docs/operations/GOVERNANCE.md",
+                      "bytes":  1061,
+                      "sha256":  "4b1847e1afea048def88cf5d87324cca7c62dc814b44163dbabfa03832781eb7"
+                  },
+                  {
+                      "path":  "docs/operations/REPOSITORY_ORGANIZATION.md",
+                      "bytes":  2521,
+                      "sha256":  "b6033ab921b1676e8c3d958d425fdcb1381e6a10ef6d64474602e0b98bde4b4d"
+                  },
+                  {
+                      "path":  "docs/operations/TEST_RUNBOOK.md",
+                      "bytes":  3100,
+                      "sha256":  "b3fe0917b4dda1c6ca875cc9bca04bf88707677bb368ec2d9d304e5ae90ffe66"
+                  },
+                  {
+                      "path":  "docs/README.md",
+                      "bytes":  1672,
+                      "sha256":  "33cdde69c74df90645eae2ba43d9ff056dc30853188f992573d39b2fc8d834d2"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_001.json",
+                      "bytes":  318,
+                      "sha256":  "3cbbd5e674ef97accbc52f49c0ff15403ccdbb3022e31b878004d6c865f025af"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_catch_01.json",
+                      "bytes":  303,
+                      "sha256":  "d0c0528af2f93cf9cca381839678d5a300b8a80ad4879084b12d8baeae19cc0f"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_choose_01.json",
+                      "bytes":  330,
+                      "sha256":  "2ce3331a3891087b4ea2ac3b86cc2b39c62f7df7d5794670b9dd9227836d8c6e"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_count_01.json",
+                      "bytes":  326,
+                      "sha256":  "0a29352033d754e426db3025829e38f23ceee6c73e086bf74e42e4d418c585cd"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_find_01.json",
+                      "bytes":  322,
+                      "sha256":  "cb581d065d6c99635c44f07fa185f8e64a705b4c3aef4e428e6bd5d2077a39ad"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_garage_01.json",
+                      "bytes":  325,
+                      "sha256":  "2f934644cf67d00e7804f30a543818a96e2d5f9158d96531cc6ac9bf910ebfb5"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_hit_01.json",
+                      "bytes":  302,
+                      "sha256":  "163df1585728736a104281cae7c5081daf1ad817a56b475b49b17483f09ffa30"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_key_01.json",
+                      "bytes":  311,
+                      "sha256":  "3c2b25aa96ff16c3e0dce71ac2877ceb9ad4da41cc6a4f33eb39d72fa1a4ad2c"
+                  },
+                  {
+                      "path":  "profiles/assets/fam_pilot_01.json",
+                      "bytes":  321,
+                      "sha256":  "e3efc2555273eccd6f7aea44307c48adb04813dbab4e7f5cd2f0c559509de940"
+                  },
+                  {
+                      "path":  "profiles/audio/audio_assets.json",
+                      "bytes":  1586,
+                      "sha256":  "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+                  },
+                  {
+                      "path":  "profiles/audio/c7_profile_mixed_alt.json",
+                      "bytes":  246,
+                      "sha256":  "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+                  },
+                  {
+                      "path":  "profiles/audio/c7_profile_mixed_overlap.json",
+                      "bytes":  296,
+                      "sha256":  "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+                  },
+                  {
+                      "path":  "profiles/audio/c7_profile_multi_noise.json",
+                      "bytes":  250,
+                      "sha256":  "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+                  },
+                  {
+                      "path":  "profiles/audio/c7_profile_noise_only.json",
+                      "bytes":  249,
+                      "sha256":  "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+                  },
+                  {
+                      "path":  "profiles/audio/c7_profile_tone_only.json",
+                      "bytes":  247,
+                      "sha256":  "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+                  },
+                  {
+                      "path":  "profiles/audio/c7_test_profile.json",
+                      "bytes":  267,
+                      "sha256":  "4a492605f1ef286b0502637d4a0802170aa9d4796c7fab7aa071702f7b09bd47"
+                  },
+                  {
+                      "path":  "profiles/audio/default_asset_music.json",
+                      "bytes":  298,
+                      "sha256":  "2482243ef443b2d6736a4b9312c9d1593d69ac9ed790f461d4a78e6ae6050798"
+                  },
+                  {
+                      "path":  "profiles/audio/default_procedural_music.json",
+                      "bytes":  265,
+                      "sha256":  "da9dbe405a736a868bb4234a6123e6809945e218d7207e3ffcd366df8911f3ed"
+                  },
+                  {
+                      "path":  "profiles/audio/fake_identity.json",
+                      "bytes":  261,
+                      "sha256":  "04d8b970fb3914232fafebec26d343a36c14a65f80532615341fa7f2394801ca"
+                  },
+                  {
+                      "path":  "profiles/audio/tone_burst.json",
+                      "bytes":  692,
+                      "sha256":  "2108b17bc3cc4c460e1aff25f92dfaf3c9a892031f480f0aeee383fce65716c2"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_catch_v1.json",
+                      "bytes":  969,
+                      "sha256":  "e8d7cdf6185dbfcb70271273fbac019d0e177cb36e3058825bf050859da51483"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_choose_v1.json",
+                      "bytes":  386,
+                      "sha256":  "2f81b147d302af1e3b79ed846c451d9b9952faa4833939b5afef7a6c1f2a4760"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_count_v1.json",
+                      "bytes":  500,
+                      "sha256":  "6eaa66ac954d9fd99a41f83ad7c4018203f5a96a9d521a60f75b86c2016864ed"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_find_v1.json",
+                      "bytes":  796,
+                      "sha256":  "d59789e78b3fc0bd1c85defb8726ff55529ff50c4551e1c8ac0079888c7f101f"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_hit_v1.json",
+                      "bytes":  675,
+                      "sha256":  "cff364344d67994ffd56aa5f61314c266d910c2939668adf7954c4ec86f430be"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_key.json",
+                      "bytes":  446,
+                      "sha256":  "7001aad244d1be585b38531f07085a0837933f059a8bbef68048d49655cfe4e8"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_parking.json",
+                      "bytes":  838,
+                      "sha256":  "a4bfc872c7bd8765323f15c10e2c10609795b1f262b284cfa8fa9a272f3dde6a"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_parking_v2.json",
+                      "bytes":  1714,
+                      "sha256":  "aa36af1929ec18ca8bd9d1e696b748fa80a82efb33f9c1eee771581700ce91c0"
+                  },
+                  {
+                      "path":  "profiles/difficulty/default_pilot.json",
+                      "bytes":  630,
+                      "sha256":  "3fd415d017c908ff68a5bd2917c00a77151e10f4c3ef6bde8cb36d6a40daca48"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_drill_peripheral_scan.json",
+                      "bytes":  1620,
+                      "sha256":  "bcdb73deff83744cfee7e7cbe7e3a9575f788210e9c8a1615eaf624d63bfbd63"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_drill_pursuit.json",
+                      "bytes":  1571,
+                      "sha256":  "8a2db8d496d23cd7ea520cd0dc2e1059eb647aaff2c1ec8bb22451358e8031d7"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_drill_saccade.json",
+                      "bytes":  1571,
+                      "sha256":  "48f962ead6740d5bfbf4e087d1df23c3f16574e13bee78f33d6c8b5bd6ae2280"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_drill_tracking.json",
+                      "bytes":  1575,
+                      "sha256":  "501ab8f5b9b377406a83091c3750009c35f17826b592142302a977d85d92ec25"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_loop_fractal.json",
+                      "bytes":  1487,
+                      "sha256":  "8342efeae840d39c72d3c1f1164a96c331fc0a67995fc045c58549eecf035cff"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_loop_geometric.json",
+                      "bytes":  1443,
+                      "sha256":  "43fa93d9f5ac56f92e9ee242ea99edea0488524448a78855bcf0742d985e74ac"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_loop_kaleidoscope.json",
+                      "bytes":  1452,
+                      "sha256":  "3fe557fa6edfaa9488ef4d70a07c0c60c9f7a28e179f69e301704e4c39ad6aaa"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_loop_particle_flow.json",
+                      "bytes":  1454,
+                      "sha256":  "ae16bbcc7435190ded0bd9f58eedf6d49d331caaef55265d65b0dcc59b558abc"
+                  },
+                  {
+                      "path":  "profiles/difficulty/visual_loop_vector_field.json",
+                      "bytes":  1454,
+                      "sha256":  "acfc4d728b8efb68a067966925792982d690d429316f439dd864c7cbdfedae6c"
+                  },
+                  {
+                      "path":  "profiles/video/f4_legacy_60_h0_g7_r0_c0.json",
+                      "bytes":  183,
+                      "sha256":  "1ed476739fddad3b093da4adadb92cd78369b03cd47663221e0c1ea9168d40e8"
+                  },
+                  {
+                      "path":  "profiles/video/f4_legacy_60_h0_g7_r0_c2.json",
+                      "bytes":  183,
+                      "sha256":  "f23a38a454f02114df2ba478854d17bb9272fd8081177fcf4a6893706946a88f"
+                  },
+                  {
+                      "path":  "profiles/video/f4_legacy_60_h3_g7_r0_c0.json",
+                      "bytes":  183,
+                      "sha256":  "33628b3ac326e3ded85faf00d51112ad700ae4489a0d0ab2796dac07b5bcd4c1"
+                  },
+                  {
+                      "path":  "profiles/video/f4_legacy_60_h3_g7_r0_c2.json",
+                      "bytes":  183,
+                      "sha256":  "11cdc0d3f5047fa1dd8e70fb14c9133f34e976fcdc851d2c92e90450651734fb"
+                  },
+                  {
+                      "path":  "profiles/video/f4_legacy_60_h3_g7_r3_c2.json",
+                      "bytes":  183,
+                      "sha256":  "7bedcf45282bd198cf1ec4be3ee63ccaa2cc83561eb1d678dc59655301ab3b0d"
+                  },
+                  {
+                      "path":  "profiles/video/master_11s.json",
+                      "bytes":  168,
+                      "sha256":  "f287240f67ea083239c3c38b7410444bbab2a506229675a01775f835f7fa10e3"
+                  },
+                  {
+                      "path":  "profiles/video/parking_v2_social_15s.json",
+                      "bytes":  180,
+                      "sha256":  "12b49f14e0ee755d290f7dd36471723da6337ab3244461fc0088a3e3b77c5a82"
+                  },
+                  {
+                      "path":  "profiles/video/shadow_f4_60_h0_g7_r0_c0.json",
+                      "bytes":  175,
+                      "sha256":  "d669b4f2f70baffa9181c96a6142e9a7cee925ce3d82e8d0814bc9931d1bf0a8"
+                  },
+                  {
+                      "path":  "profiles/video/shadow_f4_60_h0_g7_r0_c2.json",
+                      "bytes":  175,
+                      "sha256":  "cc8a5c3cdbfbfaa0caf6c9b9e4a4bfa6e10c08a03f47b254131d6c920047590f"
+                  },
+                  {
+                      "path":  "profiles/video/shadow_f4_60_h3_g7_r0_c0.json",
+                      "bytes":  175,
+                      "sha256":  "37e6d74aa428ffed19fbda4884fb5bde7d53c838d20e0b6bf6f84f422e6796e2"
+                  },
+                  {
+                      "path":  "profiles/video/shadow_f4_60_h3_g7_r0_c2.json",
+                      "bytes":  175,
+                      "sha256":  "c89f467e4713c63dd2e6dacc02ad845b1ba796dec5bdf047379ff4cae7ee9f3f"
+                  },
+                  {
+                      "path":  "profiles/video/shadow_f4_60_h3_g7_r3_c2.json",
+                      "bytes":  175,
+                      "sha256":  "2661154612bb20f969d4c86bd82a2b3c685c0233827a9ae0911522e1fa7dfecf"
+                  },
+                  {
+                      "path":  "profiles/video/standard_8s.json",
+                      "bytes":  169,
+                      "sha256":  "822f5f8fd7571263e7cd888d62e5b5570eceaceb2d57cd8e13b07956755be586"
+                  },
+                  {
+                      "path":  "profiles/video/test_master_11s.json",
+                      "bytes":  173,
+                      "sha256":  "6ac5ddd620d5300f1e365dd4dd8ca6c04e0f97c2ceb95ec48438d52059bff93b"
                   },
                   {
                       "path":  "project.godot",
@@ -2222,28 +3027,23 @@
                   },
                   {
                       "path":  "README.md",
-                      "bytes":  3110,
-                      "sha256":  "53957cfa64fd1bde4f1ac961a195a0de1c0e3eb22fb2765475b43fd4c73fd575"
+                      "bytes":  1971,
+                      "sha256":  "5e4556e249557103d43083f63189acd77490da3455f80b80296b32d924a63754"
                   },
                   {
-                      "path":  "README_C11_FREEZE_FINAL.md",
-                      "bytes":  1744,
-                      "sha256":  "a6043dced7375073ea1a276b2d61630897c1abd9873d8a07c65937248ed1d148"
+                      "path":  "release_gate.py",
+                      "bytes":  12619,
+                      "sha256":  "84a98a0186699a817ad2c1bc01410c8272e1f98f8f150788a507db6c19af594f"
                   },
                   {
-                      "path":  "tests/__pycache__/c8_a_provenance_mutation_test.cpython-313.pyc",
-                      "bytes":  9738,
-                      "sha256":  "477ff519093255e3d1adfd629a3ca5786f46972e5c744fb589b07a340a5d5473"
+                      "path":  "schemas/challenge_schema.json",
+                      "bytes":  7603,
+                      "sha256":  "617d081885ea58a082d82c5f4026758149d6725db763ce9dc68ab6ca03170ef1"
                   },
                   {
-                      "path":  "tests/__pycache__/phase_duration_contract_test.cpython-313.pyc",
-                      "bytes":  2685,
-                      "sha256":  "99545c37f93ed060dafa02eef7d73284c876ee2a1c4f225eb9ddc8fa84ddee53"
-                  },
-                  {
-                      "path":  "tests/__pycache__/run_all.cpython-313.pyc",
-                      "bytes":  8730,
-                      "sha256":  "c08d9bbded459859a787a005f0fd926e6bc81c83aa6c9a8369e2aece23f42c84"
+                      "path":  "schemas/README.md",
+                      "bytes":  197,
+                      "sha256":  "18004d935b24a100135949a05277b60ed5bccc660fce77dd5b9ff4f9f92ab820"
                   },
                   {
                       "path":  "tests/C10AVisualAuthoringPipelineTest.gd",
@@ -2282,18 +3082,18 @@
                   },
                   {
                       "path":  "tests/C10CPreparePhysicalFixtures.gd.uid",
-                      "bytes":  20,
-                      "sha256":  "362ba91fe9a11a544157ab71317c0d0966672bc24b959cba13efb67c56e4fa04"
+                      "bytes":  19,
+                      "sha256":  "866b62297c1098fd546a364908bf6b5155c70c0705c1a1c5bc4b1edb2142e539"
                   },
                   {
                       "path":  "tests/C11ABulkEnvelopeGenerator.gd",
-                      "bytes":  6345,
-                      "sha256":  "deef1ecadd08aaf606bc53a9e456f2cf8146504d22b70b02dabf375de9ef21a2"
+                      "bytes":  6352,
+                      "sha256":  "e1f7923af7b85ffe7ebe2554af81b5e4e52e3ce3552ffe383b57c362e8d72a43"
                   },
                   {
                       "path":  "tests/C11ABulkEnvelopeGenerator.gd.uid",
-                      "bytes":  19,
-                      "sha256":  "38312be9b006aef0186ece50b637d9764630b94f86fdbb08b1302fd6cf9afb48"
+                      "bytes":  20,
+                      "sha256":  "b4f48b1fb60c3fb4adc6026912978ce0731e946d1d0e26d46b6f5821bf181f35"
                   },
                   {
                       "path":  "tests/C11B02PresentationFramingContractTest.gd",
@@ -2322,18 +3122,18 @@
                   },
                   {
                       "path":  "tests/C11B1SocialUIIntegrationContractTest.gd.uid",
-                      "bytes":  20,
-                      "sha256":  "d824758584191a97a486cbcf15f0001a88b0c1965593a795811fed0563dff356"
+                      "bytes":  19,
+                      "sha256":  "273fd49909980959ed318fcaeefc767fba009f67e3979252bf269fff8cc6a8cd"
                   },
                   {
                       "path":  "tests/c11freeze/C11FreezeRepositoryContractTest.gd",
-                      "bytes":  917,
-                      "sha256":  "d40f2345a1eb9d714da38fc935f22d2ed6bc38050bec79c8bdcb42e5c35440ad"
+                      "bytes":  2039,
+                      "sha256":  "ca8fc61a331b90092820e78d3321ba2f2e0a2284457b8f48937aded869e68032"
                   },
                   {
                       "path":  "tests/c11freeze/C11FreezeRepositoryContractTest.gd.uid",
-                      "bytes":  19,
-                      "sha256":  "106011abc568ac241fb40b027c9c3834b69617f80a8b8b4457be35bfb7c3cf62"
+                      "bytes":  20,
+                      "sha256":  "bd6ddd770b81371ac56bfcadaa76948a546ecd10d4985e8f36e09fc3bede012b"
                   },
                   {
                       "path":  "tests/C6E2BadgeAndFontRegressionTest.gd",
@@ -2543,7 +3343,7 @@
                   {
                       "path":  "tests/C6F06VisualDrillPhysicalExportTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "5225cef24e6c74e8e2615343a092bec6a3aae023db925c1a53449f7dd41417a3"
+                      "sha256":  "c15689da8476934019c59fbf00d2be89667af01208b1d7236441abb06e78caa2"
                   },
                   {
                       "path":  "tests/C6F06VisualDrillPlaybackTest.gd",
@@ -2563,7 +3363,7 @@
                   {
                       "path":  "tests/C6F06VisualLoopPhysicalExportTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "3b6219a0c499ef3b1cf709cf64322347a087913f9824a2ba47415029e857744f"
+                      "sha256":  "5ece158d9b1ba665c240395db27b7861fc6ae7399d4b00c8bec5cb22c2bbb74c"
                   },
                   {
                       "path":  "tests/C6F06VisualLoopPlaybackTest.gd",
@@ -2792,8 +3592,8 @@
                   },
                   {
                       "path":  "tests/C6F2AdapterMetadataBindingTest.gd.uid",
-                      "bytes":  19,
-                      "sha256":  "e24bb71fa0f3f831920da45e4350863caeb3a4799bb30b2b211c58bea655f69c"
+                      "bytes":  20,
+                      "sha256":  "9c2f8318f56b2ec14040a47b6c88e58fbc680ffe1b6d544bfe9c1a3c66e7f6f4"
                   },
                   {
                       "path":  "tests/C6F2AssetFamilyContractTest.gd",
@@ -2913,7 +3713,7 @@
                   {
                       "path":  "tests/C6F2ProductiveGeneratorTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "f41560ecb5a66030b275d2938585fdfbc7b3bf3881017ffc38e6857fa5ec4288"
+                      "sha256":  "741144e809c248d9db4f75a9d65e75c103d9718ec41d4bdc0deaffee07309340"
                   },
                   {
                       "path":  "tests/C6F2ResolverCorrectnessTest.gd",
@@ -2943,7 +3743,7 @@
                   {
                       "path":  "tests/C6F3PresentationBindingTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "97c81143dcfe84cb32310ec32a7b60007b6abe8dfa8ea325c68fb3865026f2b3"
+                      "sha256":  "2443b07ad2195f65e0ba1f44dabb3912c9c7cab1337d10d94fd72175e8a2034b"
                   },
                   {
                       "path":  "tests/C6F3SimulationOrchestratorTest.gd",
@@ -3117,63 +3917,63 @@
                   },
                   {
                       "path":  "tests/C7A07MultiProfileCorpusTest.gd",
-                      "bytes":  5224,
-                      "sha256":  "c6b1a9835af9e50824d15cd24ee845baee9830f7a9677a3e45e564d43d29cb60"
+                      "bytes":  5086,
+                      "sha256":  "1307180e2d0c6be952e4863fc41bcc3eb19699a7c77989b14ea6917b12b9b9d0"
                   },
                   {
                       "path":  "tests/C7A07MultiProfileCorpusTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "7bd7f7c4357d3fcf0c0361ad0489802eea49d93c34d58c483ac140c8c3b31749"
+                      "sha256":  "2a069762d8dd3cd33443cda8ce47bb81746b4836fb4ce3aa02de8197791197dd"
                   },
                   {
                       "path":  "tests/C7A08AudioVisualCorpusExportTest.gd",
-                      "bytes":  5777,
-                      "sha256":  "a2fce0f00d79704a20a58dcd9aa0f8a759df646945af139c54d72739e51d1467"
+                      "bytes":  5505,
+                      "sha256":  "90b16b0eaa2a220c99f56586ca40b07b7c570d3962b3750edacccd1cd453c046"
                   },
                   {
                       "path":  "tests/C7A08AudioVisualCorpusExportTest.gd.uid",
-                      "bytes":  18,
-                      "sha256":  "a39c7e1bfb5b3228a2c481f30086a383228c2e072fb598c19ca3da97ae6b0cd7"
+                      "bytes":  20,
+                      "sha256":  "0c320912e675445ce59f3a8b6fd89e5b5f25026c40c55c021b1e659d71e51fce"
                   },
                   {
                       "path":  "tests/C7A501OfficialAudioArtifactManifestTest.gd",
-                      "bytes":  4485,
-                      "sha256":  "d5ba6c1a0cf2254696c6705a92fa4b091e91b039a0a095f5c1731046d2d2ecea"
+                      "bytes":  4422,
+                      "sha256":  "f814fb63bee01ef12c6e96ed2751bec4e7dfb9b999afdd8d02d943c12e82ed75"
                   },
                   {
                       "path":  "tests/C7A501OfficialAudioArtifactManifestTest.gd.uid",
-                      "bytes":  19,
-                      "sha256":  "55ba8aa46f86b709dd265b04c26fe7150d0b396d8344a834e1d0e81da3c928f5"
+                      "bytes":  20,
+                      "sha256":  "b2a6bb5785a59716a1d2cad3d311f5439dbb8e6abd3e3b5a4f7398a711883ff2"
                   },
                   {
                       "path":  "tests/C7A502AudioVisualMuxTest.gd",
                       "bytes":  1873,
-                      "sha256":  "8832df827bd60bfcb590176fe8f812cfbb79fbd28f5a262ce31f2e14b5e4b8fa"
+                      "sha256":  "ca04f0d4df81f35baf9a278f82bde6bd030548b6239f208ee4e9a87d326384e5"
                   },
                   {
                       "path":  "tests/C7A502AudioVisualMuxTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "43b04a9c50bf00d8c646337a2389828782aa4b4e825618239ec89f547e9e873e"
+                      "sha256":  "5e5d76d9e53234ce2c7affbfcff08d52d4b44ac080693074780edb7dc850991c"
                   },
                   {
                       "path":  "tests/C7A503AudioVisualFFmpegMuxTest.gd",
-                      "bytes":  2710,
-                      "sha256":  "2bc1da74308df92f2196107ffc29db27c97c6b7e1edcc39e912d45a5734e9196"
+                      "bytes":  2714,
+                      "sha256":  "dc6aeb59bdec0db83c4b9e93e2d0969bb4b892122994e293b9982eba5d09dd20"
                   },
                   {
                       "path":  "tests/C7A503AudioVisualFFmpegMuxTest.gd.uid",
-                      "bytes":  20,
-                      "sha256":  "fc362dc55f946491e9ccc199d34816194811f214e4e6bace73ba71650b170451"
+                      "bytes":  19,
+                      "sha256":  "51c74bd207df72b058b20d5c459854c5befa68b637ea4e2399d7604c2e018041"
                   },
                   {
                       "path":  "tests/C7A504AudioVisualFFprobeValidationTest.gd",
-                      "bytes":  2166,
-                      "sha256":  "db9241ff9aaf942606baa322ab90483a487dcb673182868e74d8d23392c55d68"
+                      "bytes":  2152,
+                      "sha256":  "27733b095831a0852bc3120303e4c0bb261e8628e138b786df35cd8cfed74674"
                   },
                   {
                       "path":  "tests/C7A504AudioVisualFFprobeValidationTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "f52b87603c72b38a3024e1a2eed0d490c40548a0ed96b2087665b191d251aaf5"
+                      "sha256":  "fd0a2fea30f504020e72ab82831b0f031c7222976f6147e4c1b4a3d1694d926c"
                   },
                   {
                       "path":  "tests/C9AParkingV2AuthoringProductiveTest.gd",
@@ -3212,8 +4012,8 @@
                   },
                   {
                       "path":  "tests/C9EHitAuthoringProductiveTest.gd.uid",
-                      "bytes":  20,
-                      "sha256":  "9bc95075a7b67a5eba128d24f69bb7da35d57ebd184c3cf8b1d07614248e53f4"
+                      "bytes":  19,
+                      "sha256":  "01108d04706c38f11a7b890ff8bfdee830781526c872bf4051075b1338e35c42"
                   },
                   {
                       "path":  "tests/C9FCatchAuthoringProductiveTest.gd",
@@ -3223,7 +4023,7 @@
                   {
                       "path":  "tests/C9FCatchAuthoringProductiveTest.gd.uid",
                       "bytes":  20,
-                      "sha256":  "57f4c8e76fc28a5db265a00328ae688007aef4ef1b8835ace6da980afcc2f837"
+                      "sha256":  "253380594e3c793f577e1e82ba20aafe079c18f6afc61304bf85b5553604e86c"
                   },
                   {
                       "path":  "tests/C9GRemainingMechanicsProductive.gd",
@@ -3251,6 +4051,61 @@
                       "sha256":  "53187aedec841fdb11cc1a4895c6f040f64b160e7a37f98f32e3c352653445b9"
                   },
                   {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_001.json",
+                      "bytes":  1248,
+                      "sha256":  "51a10c9016fe0e496fbc613f3ec5fab186888176b4a2a35b8db6c108d9ce2b8d"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_002.json",
+                      "bytes":  1390,
+                      "sha256":  "8c240f41523b626b9e34c9c7c4d3342a2266386f8f3c5b03ac4c5a5324589969"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_003.json",
+                      "bytes":  1296,
+                      "sha256":  "7dec390c099e7da6aaa6d1eefc601e406c2ac273b641aba90ee1da42d774aeff"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_004.json",
+                      "bytes":  1735,
+                      "sha256":  "48688ef75b89ccccf64f4b5fd3685a4391ead24403f821551d99097812e0cb13"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_005.json",
+                      "bytes":  1079,
+                      "sha256":  "7561fa0a242a4213256dbf92014327ff1cb3cf67a1ef43078d35f4ebddce6a86"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_006.json",
+                      "bytes":  1260,
+                      "sha256":  "84a34667e6570d2178c96eacc93bfdb56dc5a09aa41c96c5201445a6c9b065c1"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_007.json",
+                      "bytes":  1556,
+                      "sha256":  "92867523e461226ed94a5de90e4f16b5d2b5a1bb65a837752f3ae13c961b6359"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_008.json",
+                      "bytes":  1150,
+                      "sha256":  "f291d8302010118bc7ab981f578e751103297ec5fbd0750da45b8ce9f5344f0e"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7/challenges/CHALLENGE_009.json",
+                      "bytes":  1033,
+                      "sha256":  "71d47fe91d7133f909b50bd107f687b9ac5b9f2cd984d1e5bdd855864f0bd6de"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7_a2_mixed/CHALLENGE_001.json",
+                      "bytes":  1248,
+                      "sha256":  "51a10c9016fe0e496fbc613f3ec5fab186888176b4a2a35b8db6c108d9ce2b8d"
+                  },
+                  {
+                      "path":  "tests/fixtures/c7_a2_mixed/CHALLENGE_VIDEO_OFF_001.json",
+                      "bytes":  1822,
+                      "sha256":  "399ed08881d5685139705490527a210370a1ae5116cd0ee8f15a1395aee693cd"
+                  },
+                  {
                       "path":  "tests/fixtures/C7_AUDIO_CHALLENGE_002.json",
                       "bytes":  1219,
                       "sha256":  "df99cc70d3797f766ddd639c2fbaca79719d0bc841a21f3b83d2442a218c5426"
@@ -3261,14 +4116,34 @@
                       "sha256":  "399ed08881d5685139705490527a210370a1ae5116cd0ee8f15a1395aee693cd"
                   },
                   {
+                      "path":  "tests/fixtures/README.md",
+                      "bytes":  543,
+                      "sha256":  "eaf87e108ec3d5ae7c3094bd077989ac74d0d598f388e80ccdc0775838736644"
+                  },
+                  {
+                      "path":  "tests/fixtures/seeds/canonical_c11a1.json",
+                      "bytes":  142,
+                      "sha256":  "d8b01561d817496089025592184414668f56953ece8aa7b52905f8958bbd40a9"
+                  },
+                  {
+                      "path":  "tests/fixtures/seeds/README.md",
+                      "bytes":  182,
+                      "sha256":  "1d058188c278f5bca0aff0a674299ae25209ac900cf31293eb5c089a5bfe7df2"
+                  },
+                  {
+                      "path":  "tests/fixtures/seeds/stress_v1.json",
+                      "bytes":  870,
+                      "sha256":  "8dd097dcdbbcb6ce9f6a2bd42d39fea10f1fc9da0fc8176ea1428c3d91d16445"
+                  },
+                  {
                       "path":  "tests/helpers/ArtifactPaths.gd",
-                      "bytes":  753,
-                      "sha256":  "81cf640c6999fd3b8583da2c10683eb78b6059ade96143417cd5c33e32e1a4e6"
+                      "bytes":  870,
+                      "sha256":  "bdee4011224bd2278656988b7b850b4207503e44ae557475b863efa7b07b272d"
                   },
                   {
                       "path":  "tests/helpers/ArtifactPaths.gd.uid",
                       "bytes":  20,
-                      "sha256":  "9506f93133d26a955829cc4b551a90814ba801abf14fdd5536746bc11fd4db7b"
+                      "sha256":  "76074f5bdb2cee1741297e1f2360b9e46531ec9da3309c9a970fb64e78acd58d"
                   },
                   {
                       "path":  "tests/helpers/FailTestUnknownAsset.gd",
@@ -3396,39 +4271,9 @@
                       "sha256":  "b09ed053ed9c59e358fa1fd42cb718a5fa0acda44289e7eff2d2ad73443fd0e4"
                   },
                   {
-                      "path":  "tools/apply_c11b02_qa_framing_policy.ps1",
-                      "bytes":  1539,
-                      "sha256":  "f7132c7f763f2af31639e078d5121dba4ebb51f48c59af51932a7c57e881d864"
-                  },
-                  {
-                      "path":  "tools/c11freeze/__pycache__/generate_qa_video_configs.cpython-313.pyc",
-                      "bytes":  3047,
-                      "sha256":  "69c943bb71e45ac53360f3490e2ba664f6b1753c7f0a680f753aa09be4986712"
-                  },
-                  {
-                      "path":  "tools/c11freeze/__pycache__/generate_qa_video_matrix.cpython-313.pyc",
-                      "bytes":  4631,
-                      "sha256":  "6f63970c06af0af1a244fb26c50739edba84486d1d271d47f9f5edae66ac388c"
-                  },
-                  {
-                      "path":  "tools/c11freeze/__pycache__/generate_seed_corpus.cpython-313.pyc",
-                      "bytes":  2884,
-                      "sha256":  "fc27cb91af7472701e8b702773f2a81605c44af17fd8b95b0f45716fb85ffa53"
-                  },
-                  {
-                      "path":  "tools/c11freeze/__pycache__/run_retrocompatibility.cpython-313.pyc",
-                      "bytes":  9590,
-                      "sha256":  "7510aae3a38c4bd1d04286dce19af6b1d1f2412daf0cff9e70c431723bf2de9a"
-                  },
-                  {
-                      "path":  "tools/c11freeze/__pycache__/run_seed_stress.cpython-313.pyc",
-                      "bytes":  7387,
-                      "sha256":  "3ffd2c468c17a61ed8c6e51780aac67e8b6d62062af2a60d9b1f7a1b87b457d0"
-                  },
-                  {
                       "path":  "tools/c11freeze/finalize_c11_freeze.ps1",
-                      "bytes":  8497,
-                      "sha256":  "45f7f689d34eecdf548c077b44aec1b64add0b31bee913ffbb46559410ca39a6"
+                      "bytes":  8589,
+                      "sha256":  "bf9747fcd837700b353d864adce062977e8b2490a3d4764d9f6f952cf0aac1a5"
                   },
                   {
                       "path":  "tools/c11freeze/generate_qa_video_configs.py",
@@ -3437,23 +4282,18 @@
                   },
                   {
                       "path":  "tools/c11freeze/generate_qa_video_matrix.py",
-                      "bytes":  2980,
-                      "sha256":  "fdc9b76c22d0df514be71bc3b37a5624edac0576e81f3cd9fda77aaf094279db"
+                      "bytes":  2986,
+                      "sha256":  "d1e66972ff9b855f97fdcbbd70fdb723db25fb33ce67c0f70b61073fe80b6076"
                   },
                   {
                       "path":  "tools/c11freeze/generate_seed_corpus.py",
-                      "bytes":  1660,
-                      "sha256":  "6ed28c543511b587951915b5d6b27538e4a404e08aa35d7e6ff8fe264f6a3389"
+                      "bytes":  1666,
+                      "sha256":  "7b9890ddfabe2cf9023fec75f0cbc0334dfc28306a25211714cff694dbf3547c"
                   },
                   {
                       "path":  "tools/c11freeze/inventory_repository.ps1",
-                      "bytes":  1143,
-                      "sha256":  "3c4ffdc7c646d3e8353054e0f5e34fa439ee5df0ca56ea8e76ba0874c27bb6b1"
-                  },
-                  {
-                      "path":  "tools/c11freeze/migrate_artifacts.ps1",
-                      "bytes":  1732,
-                      "sha256":  "43a8fd52483f3ad1238bb475509bf3d9a923f0a92f847ea3d4111489208d445b"
+                      "bytes":  1086,
+                      "sha256":  "b5edd37d8b365aa898d66f1e46529230ffd2880e4abe0634bc287a7abb9f2892"
                   },
                   {
                       "path":  "tools/c11freeze/run_all.ps1",
@@ -3472,8 +4312,8 @@
                   },
                   {
                       "path":  "tools/c11freeze/run_physical_export_suite.ps1",
-                      "bytes":  1346,
-                      "sha256":  "7442d3ea5123adefaaae906108100181acec94d7d4f3e6d5c825a635c1c2a12a"
+                      "bytes":  1353,
+                      "sha256":  "6a812b091b5a6f2f81f9dbbd39c8b5979ad90bc02af305ecbac902817fe8ecea"
                   },
                   {
                       "path":  "tools/c11freeze/run_presentation_suite.ps1",
@@ -3482,8 +4322,8 @@
                   },
                   {
                       "path":  "tools/c11freeze/run_qa_video_matrix.ps1",
-                      "bytes":  1769,
-                      "sha256":  "1cdb680415c2864ff8cc13bd40abd997bce504c6dd24b6dd75b829f7beb87522"
+                      "bytes":  1725,
+                      "sha256":  "b6efd8c20e799f2106930866ff2c0f81cb03f48fc7d4e4a8fb69bc840a7ca0c6"
                   },
                   {
                       "path":  "tools/c11freeze/run_retrocompatibility.ps1",
@@ -3492,13 +4332,13 @@
                   },
                   {
                       "path":  "tools/c11freeze/run_retrocompatibility.py",
-                      "bytes":  6254,
-                      "sha256":  "bf4443437fe55520249d6baa961eb5943c0ac41ed742e78ff6e841c4523b7488"
+                      "bytes":  6273,
+                      "sha256":  "4cee648efe5bc52efee6fa739687d853d3941099a5307bbf4c2273edd131d69e"
                   },
                   {
                       "path":  "tools/c11freeze/run_seed_stress.py",
-                      "bytes":  7480,
-                      "sha256":  "70a0a72149b97aa76059f633def64715db8dee413ee49bdba1a9fb74b84eb207"
+                      "bytes":  7486,
+                      "sha256":  "2d83e59343b23793273d928e4bc7fde1a91fe896124b81e601bd23a8246e61ee"
                   },
                   {
                       "path":  "tools/c11freeze/run_test_suite.ps1",
@@ -3512,68 +4352,98 @@
                   },
                   {
                       "path":  "tools/c11freeze/verify_freeze_structure.ps1",
-                      "bytes":  833,
-                      "sha256":  "fd86243affb1986ab18dfeddb2b8ea185394a333cec08e865b383f9abb621913"
+                      "bytes":  1461,
+                      "sha256":  "b77f141e3634b462c8a76eb2db0069b6c9ce611e020eae4082a625f60b61cc6f"
                   },
                   {
-                      "path":  "tools/clean_c10_generated_outputs.ps1",
+                      "path":  "tools/maintenance/clean-godot.ps1",
+                      "bytes":  12064,
+                      "sha256":  "0d5bd60749b47d1cb8f83762a6fca0c2034f0da0574212788516b5e2732e771a"
+                  },
+                  {
+                      "path":  "tools/maintenance/clean-videos.ps1",
+                      "bytes":  1751,
+                      "sha256":  "7a089ec7169f96d11d7d8563ef3075736fae2577a3cbb212c95d207099b59b7a"
+                  },
+                  {
+                      "path":  "tools/maintenance/legacy/clean_c10_generated_outputs.ps1",
                       "bytes":  2446,
                       "sha256":  "5970fd7a47dde0960f4b78dd06a294f29e905c7aba0f5565749a6caf0f1c77f9"
                   },
                   {
-                      "path":  "tools/finalize_c11a_visual_bulk_qa.ps1",
-                      "bytes":  7453,
-                      "sha256":  "da52f674b1e399062be3ed04e5961147596599abd7b3e1af82ff6c63b92928d6"
+                      "path":  "tools/maintenance/legacy/migrate_artifacts_c11_freeze.ps1",
+                      "bytes":  1732,
+                      "sha256":  "43a8fd52483f3ad1238bb475509bf3d9a923f0a92f847ea3d4111489208d445b"
                   },
                   {
-                      "path":  "tools/finalize_c11a1_challenge_bulk_qa.ps1",
-                      "bytes":  15757,
-                      "sha256":  "557d5fea17294617a8726ea999ecdb5a3ae95b2092fc78ec69fc7d8fb17b5329"
+                      "path":  "tools/maintenance/verify_repository_layout.ps1",
+                      "bytes":  3350,
+                      "sha256":  "9bc7568fa42f762ace38598e044d27176fe28ba03db6ed7342e3f6474aeb3822"
                   },
                   {
-                      "path":  "tools/prepare_c7_a2_video_only_fixture.ps1",
-                      "bytes":  1512,
-                      "sha256":  "e04fdc0789591b1e57b52b9db4ddad342c7bfafdf245f65aae320534d80b46ec"
+                      "path":  "tools/qa/c10/run_C10C_physical_export.ps1",
+                      "bytes":  7299,
+                      "sha256":  "64a81116322015405e81eddef21f67bbff337347841d38a0e00102c181bcf99f"
                   },
                   {
-                      "path":  "tools/run_C10C_physical_export.ps1",
-                      "bytes":  7257,
-                      "sha256":  "b261e6c1d5cde5ac38fcc5f43083a20d0b769e16c25017c80bf5689fac38f7c8"
+                      "path":  "tools/qa/c11/apply_c11b02_qa_framing_policy.ps1",
+                      "bytes":  1588,
+                      "sha256":  "80527ebd2cb4827a9f8f8bd509c7752b7786298ab0c42864677f8dec2b398e97"
                   },
                   {
-                      "path":  "tools/run_c11a_visual_bulk_qa.ps1",
-                      "bytes":  15039,
-                      "sha256":  "fa853a15df483052295f53dd19f4fc0765fb4566890365a2cecde001676812f1"
+                      "path":  "tools/qa/c11/finalize_c11a_visual_bulk_qa.ps1",
+                      "bytes":  7502,
+                      "sha256":  "e18b38b891c5e23b7e6460a57dad6cefe3b3880985f6007ba9800e55da4184b6"
                   },
                   {
-                      "path":  "tools/run_c11a1_challenge_bulk_qa.ps1",
-                      "bytes":  17437,
-                      "sha256":  "352ac32210b5fafec379dbbae66d3b9dbf584f4d0ce98852cd87d1256cf663e6"
+                      "path":  "tools/qa/c11/finalize_c11a1_challenge_bulk_qa.ps1",
+                      "bytes":  15806,
+                      "sha256":  "2cfedff4890b26101636ec8e715eb7217217aa8ffc5d61ac8393f34d6688e750"
                   },
                   {
-                      "path":  "tools/run_c11b_body_visibility_audit.ps1",
-                      "bytes":  6690,
-                      "sha256":  "92c0450aaf7c9509bfeca5e09b6e0acac07e3a630e37dea9dee8b89ccc0f2f83"
+                      "path":  "tools/qa/c11/run_c11a_visual_bulk_qa.ps1",
+                      "bytes":  14668,
+                      "sha256":  "aed589eb258c902e8076b46a419738b0345f8c221b6ae892936a9d9ff681a109"
                   },
                   {
-                      "path":  "tools/test_c11b.ps1",
-                      "bytes":  975,
-                      "sha256":  "7910f05a8f8651a03a052c0e41306a621d599a2402d6e1c5c4f2c2399e2845b9"
+                      "path":  "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1",
+                      "bytes":  17500,
+                      "sha256":  "0bcc012aacc353452f7e921af3e283014a79d8984e03e6c2fe14a931cb6ac6e2"
                   },
                   {
-                      "path":  "tools/verify_c11b01_installation.ps1",
-                      "bytes":  1111,
-                      "sha256":  "9e0e636e69e7f410a7c25f8cb4283816730d94931dbe774ada67f2b0f32af2de"
+                      "path":  "tools/qa/c11/run_c11b_body_visibility_audit.ps1",
+                      "bytes":  6753,
+                      "sha256":  "ff0444f093270b018c8b37c4a9aa2a51d08a97c399d1bead3f63765dd1dad17a"
                   },
                   {
-                      "path":  "tools/verify_c11b02_installation.ps1",
-                      "bytes":  1725,
-                      "sha256":  "928a152a88ccdc93e2f5dd9a438e1d82f5e2a9c8b3f7d594dc437cc1a75429e1"
+                      "path":  "tools/qa/c11/test_c11b.ps1",
+                      "bytes":  1089,
+                      "sha256":  "e324c669e97eae93dcfd355d64dc4cbccfab0e6db703caab0336a4bfc29d1e95"
                   },
                   {
-                      "path":  "tools/verify_c11b1_installation.ps1",
-                      "bytes":  1523,
-                      "sha256":  "85887ff6b1ea0ce02e24b390e1d1afb4e0846a09bd0bd5e53dcdb1de5034a9bc"
+                      "path":  "tools/qa/c11/verify_c11b01_installation.ps1",
+                      "bytes":  1153,
+                      "sha256":  "34478e6b2bb6649efd8da652416357a4f1aa3105d884b799cf12c1bc55a0f6d9"
+                  },
+                  {
+                      "path":  "tools/qa/c11/verify_c11b02_installation.ps1",
+                      "bytes":  1774,
+                      "sha256":  "913b0ade44aeb66172265db99ffecabc571991022d97e0ec82ecb84c0c5675f8"
+                  },
+                  {
+                      "path":  "tools/qa/c11/verify_c11b1_installation.ps1",
+                      "bytes":  1625,
+                      "sha256":  "332432a3c22deb2ff9363d868759e9cd093af234543b11da5ed5728d19a17451"
+                  },
+                  {
+                      "path":  "tools/qa/c7/prepare_c7_a2_video_only_fixture.ps1",
+                      "bytes":  1600,
+                      "sha256":  "183c917e077c422ca51a1c54a2ec6766fa138327a6d8f8b65b76ca8b115c76b2"
+                  },
+                  {
+                      "path":  "tools/README.md",
+                      "bytes":  694,
+                      "sha256":  "123009e03b33362d4b78178c68d36ecda3dad67ecbbbb5ab2b61c11703951e40"
                   }
               ]
 }

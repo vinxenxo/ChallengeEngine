@@ -10,8 +10,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 REF_DEFAULTS = [
-    ROOT / "qa/c11a1_challenge_qa/C11A1_CHALLENGE_BULK_MANIFEST.json",
-    ROOT / "artifacts/qa/c11a1_challenge_qa/C11A1_CHALLENGE_BULK_MANIFEST.json",
+    ROOT / "artifacts/qa/c11a1_challenge/C11A1_CHALLENGE_BULK_MANIFEST.json",
 ]
 INT_FIELDS = {
     "initial_seed", "final_seed", "seed_used", "attempts", "winning_frame_game",
@@ -60,7 +59,12 @@ def resolve_reference(cli: str) -> Path:
 
 
 def resolve_run_dir(run_id: str) -> Path:
-    for root in (ROOT / "qa/c11a1_challenge_qa/runs", ROOT / "artifacts/qa/c11a1_challenge_qa/runs"):
+    roots = [
+        ROOT / "artifacts/qa/c11a1_challenge/runs",
+        ROOT / "artifacts/qa/c11a1_challenge_qa/runs",
+        ROOT / "qa/c11a1_challenge_qa/runs",
+    ]
+    for root in roots:
         path = root / run_id
         if path.is_dir():
             return path

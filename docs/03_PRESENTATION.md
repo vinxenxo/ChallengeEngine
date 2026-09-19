@@ -2,30 +2,37 @@
 
 ## Unified social frame
 
-All content uses a common 540x960 structure:
+All social renders use a common 540×960 structural frame:
 
 ```text
 HEADER  0..144
-----------------
 BODY    144..816
-----------------
 FOOTER  816..960
 ```
 
-`UnifiedSocialFrame` provides the regions and safe structure. It is passive.
+`UnifiedSocialFrame` is structural and passive. Content roles are bound by the appropriate presentation binder/UI layer.
 
 ## Coordinate mapping
 
-The simulation may operate on a 1080x1920 logical canvas. `CoordinateMapper` projects that geometry into the social Body rectangle while preserving aspect ratio. This is a presentation transform, not a gameplay transform.
+Simulation continues to use the established logical coordinate system. `CoordinateMapper` projects logical geometry into the social Body region while preserving aspect ratio. This is a presentation transform only.
 
 ## Framing
 
-C11-B.0.2 establishes the framing contract. The current modes distinguish structural presentation from the mechanics themselves. Any later visual polish must preserve entity positions derived from the same simulation snapshots.
+`PresentationFramer` owns presentation framing decisions. It cannot redefine simulation geometry, calculate the winning frame or alter RNG consumption.
 
 ## Winning-frame visibility
 
-Visibility is evaluated on actual screen geometry after mapping into the Body. The visibility gate must not remap logical coordinates.
+The visibility gate evaluates mapped screen-space geometry. A presentation validation failure must be repaired in presentation mapping/binding, not by changing the underlying winning-frame mathematics.
 
-## Art direction after freeze
+## C11-C art direction
 
-C11-C may refine typography, hierarchy, assets, visual language, emphasis, background treatment and other presentation concerns. Reference images may be used to drive those changes. The simulation mathematics remains frozen.
+The frozen structural frame is the starting boundary for visual design. Art direction can evolve:
+
+- palette and typography
+- asset treatment
+- backgrounds and foregrounds
+- visual hierarchy
+- badges and text styling
+- motion language and emphasis
+
+The first implementation should be validated on one representative route before propagation to the wider corpus.

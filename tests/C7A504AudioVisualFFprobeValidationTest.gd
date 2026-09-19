@@ -16,7 +16,7 @@ func _assert(condition: bool, message: String) -> void:
 		print("[PASS] " + message)
 
 func _run_validation() -> void:
-	var manifest_path = "res://export/audio_corpus_manifest.json"
+	var manifest_path = "res://artifacts/production/audiovisual/audio_corpus_manifest.json"
 	_assert(FileAccess.file_exists(manifest_path), "El manifiesto C7-A5.1 debe existir.")
 	if not FileAccess.file_exists(manifest_path):
 		return
@@ -28,7 +28,7 @@ func _run_validation() -> void:
 	var artifacts: Dictionary = manifest.get("artifacts", {})
 
 	for ch_id in artifacts.keys():
-		var mp4_rel = "res://export/" + ch_id + ".mp4"
+		var mp4_rel = "res://artifacts/production/audiovisual/" + ch_id + ".mp4"
 		var mp4_abs = ProjectSettings.globalize_path(mp4_rel)
 
 		_assert(FileAccess.file_exists(mp4_rel), "[" + ch_id + "] Contenedor MP4 presente en disco.")

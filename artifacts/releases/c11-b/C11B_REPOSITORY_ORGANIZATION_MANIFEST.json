@@ -1,0 +1,94 @@
+{
+  "manifest_version": "1.0",
+  "checkpoint": "C11-B-REPOSITORY-ORGANIZATION",
+  "status": "PREPARED_PENDING_USER_VALIDATION",
+  "baseline_archive": "ChallengeEngineV01.2_C11_B_FREEZE_LATEST.zip",
+  "semantic_freeze": {
+    "checkpoint": "C11-B",
+    "status": "CLOSED_CERTIFIED_FROZEN",
+    "pre_organization_tree_sha256": "bfb570d066ed9d025bb0ba23e125b828ecb5c28e20d4e0e62b5d21273ee530ab"
+  },
+  "scope": [
+    "repository directory reorganization",
+    "generated artifact consolidation",
+    "historical documentation isolation",
+    "test/tool path updates required by moves",
+    "gitignore hardening",
+    "long-term documentation consolidation"
+  ],
+  "semantic_scope_changes": false,
+  "preserved_contracts": [
+    "mechanic mathematics",
+    "RNG algorithms, versions and ownership",
+    "canonical challenge definitions",
+    "canonical visual definitions",
+    "SimulationResult semantics",
+    "winning-frame semantics",
+    "RenderedFrameStream contract",
+    "C7 audio contracts",
+    "C9 authoring contracts",
+    "C11-B Header/Body/Footer geometry",
+    "logical test registry and PASS markers"
+  ],
+  "canonical_moves": {
+    "challenge_schema.json": "schemas/challenge_schema.json",
+    "challenges_c7": "tests/fixtures/c7/challenges",
+    "challenges_c7_a2_mixed": "tests/fixtures/c7_a2_mixed",
+    "qa/seed_corpus": "tests/fixtures/seeds",
+    "qa/c11a1_challenge_qa": "artifacts/qa/c11a1_challenge",
+    "qa/c11a_visual_qa": "artifacts/qa/c11a_visual",
+    "qa/c11b_visibility_qa": "artifacts/qa/c11b_visibility",
+    "output and checkpoint-generated roots": "artifacts/legacy or artifacts/qa/ according to provenance",
+    "old root-level documentation": "docs/history/",
+    "scripts/": "docs/history/legacy-tools/",
+    "legacy maintenance scripts": "tools/maintenance/legacy/",
+    "C11 freeze release evidence": "artifacts/releases/c11-b/"
+  },
+  "retired_active_roots": [
+    "output/",
+    "output_c7/",
+    "output_batch_audit/",
+    "qa/",
+    "export/",
+    "c9_c_generated_configs/",
+    "c9_g_generated_configs/",
+    "scripts/"
+  ],
+  "pruned_reproducible_state": [
+    ".godot/",
+    ".mono/",
+    ".import/",
+    "__pycache__/",
+    "*.gd.uid",
+    "ConsoleHost_history.txt"
+  ],
+  "pruned_reproducible_media_extensions": [
+    ".avi",
+    ".mp4",
+    ".gif",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".wav",
+    ".pcm"
+  ],
+  "media_policy": "Source/reference media outside artifacts remains trackable. Generated media under artifacts is reproducible and ignored by Git; manifests, textual reports and digests are retained.",
+  "reference_test_evidence": {
+    "logical": "103/103",
+    "c11_contracts": "PASS",
+    "c11a_visual": "54/54",
+    "c11a1_challenge": "54/54",
+    "retrocompatibility": "54/54",
+    "seed_stress": "288 cases / 576 logical executions",
+    "physical": "2/2",
+    "video_matrix": "54/54 video renders"
+  },
+  "acceptance": {
+    "required": true,
+    "runbook": "docs/operations/TEST_RUNBOOK.md",
+    "owner_commit_required": true,
+    "new_baseline_only_after_green_validation": true
+  },
+  "next_product_scope": "C11-C Art Direction"
+}

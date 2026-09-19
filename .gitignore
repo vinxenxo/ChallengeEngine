@@ -1,50 +1,87 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
-.nomedia
+# =============================
+# ChallengeEngineV01_STATELESS
+# Git hygiene / generated state
+# =============================
 
-# Godot-specific ignores
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Godot generated state
+.godot/
+.mono/
 .import/
+**/.import/
+*.import
+*.uid
+**/*.uid
 export.cfg
 export_credentials.cfg
-*.tmp
-# *.gd
-*.gd.uid
-# *.gd.meta
-*.import
-.import
-*.gdshader.uid
-.godot_backups
-.svg.import
-
-# Imported translations (automatically generated from CSV files)
+.godot_backups/
+mono_crash.*.json
 *.translation
 
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
-
-# Source code
-.githooks/
-*.githooks
-
-
-
-# VS Plugins
-.continue/
-
-# output videos
-output/
-output_c7/
-output_bactch_audit/
-qa/
-export/
-
-# python
-*pycache*
-*.pyc
+# Python generated state
 __pycache__/
-*.avi
-*.zip
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Temporary / editor / crash files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+*.old
+*.orig
+crash*.log
+
+# Local shell history / personal command logs
 ConsoleHost_history.txt
+
+# Archives / local packages
+*.zip
+*.7z
+*.rar
+
+# =============================
+# Generated binary artifacts
+# Only under the canonical artifact root.
+# Source/reference media elsewhere remains trackable.
+# =============================
+artifacts/**/*.avi
+artifacts/**/*.mp4
+#artifacts/**/*.gif
+artifacts/**/*.pcm
+artifacts/**/*.wav
+#artifacts/**/*.png
+#artifacts/**/*.jpg
+artifacts/**/*.jpeg
+artifacts/**/*.webp
+artifacts/**/frames/
+artifacts/**/avi/
+artifacts/**/mp4/
+#artifacts/**/gif/
+artifacts/**/media/
+artifacts/**/videos/
+
+# Explicitly disposable workspace
+artifacts/scratch/

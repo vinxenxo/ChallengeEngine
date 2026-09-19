@@ -2,7 +2,7 @@
 param()
 $ErrorActionPreference = "Stop"
 
-& .\tools\run_C10C_physical_export.ps1
+& .\tools\qa\c10\run_C10C_physical_export.ps1
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $tests = @(

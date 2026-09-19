@@ -115,8 +115,8 @@ if ($onlyExpectedAudioGate -and -not $audioOffOnly) {
     throw "Freeze evidence invalid: accepted C7-A2 out-of-scope error has unexpected audio summary."
 }
 
-$sourceRoots = @('core','mechanics','tests','tools','docs')
-$rootFiles = @('project.godot','build_factory.py','README.md','README_C11_FREEZE_FINAL.md')
+$sourceRoots = @('core','tests','tools','docs','assets','profiles','definitions','challenges','schemas')
+$rootFiles = @('project.godot','build_factory.py','release_gate.py','README.md','AGENTS.md','.gitignore','.gitattributes','.editorconfig')
 $entries = New-Object System.Collections.Generic.List[object]
 foreach ($relativeRoot in $sourceRoots) {
     $fullRoot = Join-Path $root $relativeRoot

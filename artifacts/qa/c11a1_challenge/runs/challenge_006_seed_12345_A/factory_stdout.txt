@@ -1,0 +1,158 @@
+{
+  "success": true,
+  "validate_only": false,
+  "manifest_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_006_seed_12345_A\\artifacts\\CHALLENGE_006\\CHALLENGE_006_manifest.json",
+  "video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_006_seed_12345_A\\artifacts\\CHALLENGE_006\\CHALLENGE_006.mp4",
+  "manifest": {
+    "manifest_version": "1.1",
+    "factory_version": "0.11.0",
+    "challenge_id": "CHALLENGE_006",
+    "provenance": {
+      "git": {
+        "commit": "f7f249d5d18e695628d966f8a5270662ddcc7af0",
+        "branch": "main",
+        "dirty": true
+      },
+      "challenge_definition": {
+        "path": "qa/c11a1_challenge_qa/runs/challenge_006_seed_12345_A/challenge_definition.json",
+        "sha256": "69b3349c17dc424e604ab825c982e03defde4661eb35c2154adcfedeaa3653b2"
+      },
+      "referenced_files": [
+        {
+          "path": "res://assets/c6/catcher.svg",
+          "sha256": "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd"
+        },
+        {
+          "path": "res://assets/c6/garage_background.svg",
+          "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+        },
+        {
+          "path": "res://assets/c6/target.svg",
+          "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547"
+        }
+      ],
+      "authoring": {
+        "video": {},
+        "audio_authoring_snapshot": {
+          "assets_catalog": {
+            "path": "profiles/audio/audio_assets.json",
+            "sha256": "d18bd68653b49ae80061c09e9746d5783f47c207f7e6e0425aab5b575ebb1c14"
+          },
+          "profiles": [
+            {
+              "path": "profiles/audio/c7_profile_mixed_alt.json",
+              "sha256": "a99aa4fe46ad0a522431b4f8bcfbc594b30259f1b80be6d7bebcbdcbd762da6d"
+            },
+            {
+              "path": "profiles/audio/c7_profile_mixed_overlap.json",
+              "sha256": "6d6ee58db241c3f9c70c9e87b8f3ad7267514a54c3a8471234aafd19ee8528de"
+            },
+            {
+              "path": "profiles/audio/c7_profile_multi_noise.json",
+              "sha256": "6c47bb91c2fbc6e51db83e5fad02c2034cefa15b1c4017bcd50ef33de3e7c1fb"
+            },
+            {
+              "path": "profiles/audio/c7_profile_noise_only.json",
+              "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+            },
+            {
+              "path": "profiles/audio/c7_profile_tone_only.json",
+              "sha256": "dac57cb12a7ca4f3010008f7687ff82c8cc7c2e997d484e260b1f41eb154df65"
+            }
+          ]
+        }
+      },
+      "provenance_sha256": "3f40c20ca4c4387e311026c0767384b05125fa0297858159f6b9fdeeaa75d39a"
+    },
+    "declarative_metadata": {
+      "mechanic": "catch_v1"
+    },
+    "telemetry": {
+      "attempts": 1,
+      "close_calls": 0,
+      "cta_frames": 120,
+      "final_seed": 12345,
+      "game_frames": 420,
+      "godot_version": "4.7.1-stable (official)",
+      "hook_frames": 0,
+      "initial_seed": 12345,
+      "minimum_distance": 46.4806976318359,
+      "reveal_frames": 0,
+      "rng_version": "2.0",
+      "score": 0.0,
+      "seed_used": 12345,
+      "total_frames": 540,
+      "validate_only": false,
+      "winning_frame": 153,
+      "winning_frame_game": 153,
+      "winning_frame_in_valid_window": true,
+      "winning_time": 2.55,
+      "winning_time_game": 2.55
+    },
+    "artifacts": {
+      "raw_video": "CHALLENGE_006_raw.avi",
+      "raw_video_sha256": "843f34bb3c12ef43f259a53706431a4a70574feb1528c1d66cfcd9e53bada30c",
+      "final_video": "CHALLENGE_006.mp4",
+      "final_video_sha256": "06dbf6e8c01f1c6daf6a1619cf47957bdef6d41be8bcd2252bd3033039010464"
+    },
+    "output_contract": {
+      "simulation_canvas": [
+        1080,
+        1920
+      ],
+      "source_movie": [
+        540,
+        960
+      ],
+      "master_mp4": [
+        1080,
+        1920
+      ],
+      "master_scale_filter": "scale=1080:1920:flags=lanczos"
+    },
+    "source_validation": {
+      "width": 540,
+      "height": 960,
+      "codec_name": "mjpeg",
+      "pix_fmt": "yuvj420p",
+      "duration": 9.0,
+      "nb_frames": 540,
+      "r_frame_rate": "60/1"
+    },
+    "validation": {
+      "valid": true,
+      "video": {
+        "valid": true,
+        "width": 1080,
+        "height": 1920,
+        "codec_name": "h264",
+        "pix_fmt": "yuvj420p",
+        "duration": 9.0,
+        "nb_frames": 540,
+        "r_frame_rate": "60/1"
+      },
+      "audio": {
+        "valid": true,
+        "disabled": true,
+        "audio_streams_found": 0
+      },
+      "av_sync": {
+        "valid": true,
+        "disabled": true
+      },
+      "audio_content": {
+        "valid": true,
+        "disabled": true
+      }
+    },
+    "status": "PASS",
+    "audio_export": {
+      "audio_enabled": false
+    },
+    "gif_validation": {
+      "valid": false,
+      "disabled": true,
+      "policy_exception": "--no-gif"
+    }
+  }
+}
