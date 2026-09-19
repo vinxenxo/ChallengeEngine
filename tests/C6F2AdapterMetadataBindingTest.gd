@@ -230,9 +230,8 @@ func _init() -> void:
 			AuthoringMechanicAdapter.Source.UNAVAILABLE
 		):
 			failures.append(
-				"Mechanic '%s' incorrectly declares "
+				("Mechanic '%s' incorrectly declares " % mechanic_id)
 				+ "a video profile."
-				% mechanic_id
 			)
 
 		# -----------------------------------------------------
@@ -243,9 +242,8 @@ func _init() -> void:
 			AuthoringMechanicAdapter.Source.UNAVAILABLE
 		):
 			failures.append(
-				"Mechanic '%s' incorrectly declares "
+				("Mechanic '%s' incorrectly declares " % mechanic_id)
 				+ "an asset family."
-				% mechanic_id
 			)
 
 		# -----------------------------------------------------

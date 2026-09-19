@@ -1,9 +1,11 @@
 # res://tests/C6F06VisualLoopPhysicalExportTest.gd
 extends SceneTree
 
+const ArtifactPaths = preload("res://tests/helpers/ArtifactPaths.gd")
+
 # ============================================================
 # C6-F0.6 Step 1 — Visual Loop Physical Export Validation Test
-# Checks that the target video file specified by movie writer actually exists and is non-empty.
+# Checks that the canonical C11 artifact AVI actually exists and is non-empty.
 # ============================================================
 
 var failures: Array[String] = []
@@ -11,7 +13,7 @@ var failures: Array[String] = []
 func _initialize() -> void:
 	print("[TEST] Running C6F06VisualLoopPhysicalExportTest...")
 	
-	var target_path := "output/fractal_demo.avi"
+	var target_path := ArtifactPaths.absolute("qa/physical_smoke/c10c_e2e/avi/c10c_visual_loop_fractal.avi")
 	
 	await process_frame
 	

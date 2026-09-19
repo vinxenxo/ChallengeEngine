@@ -46,6 +46,7 @@ func _initialize() -> void:
 		failures.append("VisualContentPlayer.tscn missing UnifiedSocialFrame.")
 
 	frame.queue_free()
+	await process_frame
 	_conclude()
 
 func _assert_rect(actual: Rect2, expected: Rect2, label: String) -> void:

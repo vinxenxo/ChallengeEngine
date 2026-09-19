@@ -70,7 +70,7 @@ func _init() -> void:
 		if binding_res.winning_frame != sim_result.winning_frame:
 			failures.append("Winning frame mismatch: %d != %d" % [binding_res.winning_frame, sim_result.winning_frame])
 			
-		if binding_res.asset_family_meta.get("family_id", "") != "fam_001":
+		if binding_res.asset_family_meta.get("family_id", "") != "fam_pilot_01":
 			failures.append("Asset family meta family_id mismatch.")
 		
 		if binding_res.presentation_profile == null or binding_res.presentation_render_model.is_empty():

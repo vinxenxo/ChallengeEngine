@@ -1,1 +1,2 @@
-C11-B.1 — SOCIAL UI INTEGRATION — v1
+C11_FREEZE_CONSOLIDATION_PACKAGE_v2
+scope=test-hardening+artifact-contract+retrocompatibility+seed-stress+qa-video-matrix

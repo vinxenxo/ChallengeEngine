@@ -1,23 +1,21 @@
-C11-B.1 — Social UI Integration v1
+C11 Freeze Consolidation v2
 
-Assumes C11-B.0.2 v4 is already installed.
+Purpose: harden tests, retrocompatibility, artifact routing, seed stress and QA video diagnostics before the final freeze.
 
-Modified/added:
-- Main.tscn
-- GeneradorMaestro.gd
-- core/presentation/PresentationUI.gd
-- core/presentation/UnifiedSocialFrame.gd
-- core/presentation/UnifiedSocialFrame.tscn
-- core/presentation/SocialUIBinder.gd
+Key files:
 - core/presentation/rendering/VisualContentPlayer.gd
-- core/presentation/rendering/VisualContentPlayer.tscn
-- tests/C11B1SocialUIIntegrationContractTest.gd
-- tools/verify_c11b1_installation.ps1
-- docs/C11B1_CONTRACT.md
-
-Frozen contracts not modified:
-- SimulationResult
-- FrameSnapshot semantics
-- mechanics / RNG / WinningFrame calculation
-- C6-F0.8 ContentEnvelope schema
-- RenderedFrameStream schema
+- tests/run_all.py
+- tests/C6F06*PhysicalExportTest.gd
+- tests/C6F2AdapterMetadataBindingTest.gd
+- tests/C6F2ProductiveGeneratorTest.gd
+- tests/C6F3PresentationBindingTest.gd
+- tests/C9EHitAuthoringProductiveTest.gd
+- tests/C9FCatchAuthoringProductiveTest.gd
+- tests/C10CPreparePhysicalFixtures.gd
+- tests/c11freeze/C11FreezeRepositoryContractTest.gd
+- tools/run_C10C_physical_export.ps1
+- tools/c11freeze/run_physical_export_suite.ps1
+- tools/c11freeze/run_seed_stress.py
+- tools/c11freeze/generate_qa_video_matrix.py
+- tools/c11freeze/migrate_artifacts.ps1
+- docs/c11-freeze/*

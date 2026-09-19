@@ -1,0 +1,57 @@
+{
+  "asset_family": "fam_hit_01",
+  "asset_family_version": "1.0",
+  "assets": {
+    "background_path": "res://assets/c6/garage_background.svg",
+    "object_path": "res://assets/c6/projectile.svg",
+    "target_path": "res://assets/c6/target.svg"
+  },
+  "canonical_v2": {
+    "audio": {
+      "enabled": true,
+      "profile_id": "c7_profile_multi_noise"
+    }
+  },
+  "challenge_id": "AUTH_HIT_V1_998877",
+  "content": {
+    "cta": "DOWNLOAD NOW",
+    "hook": "MATHEMATICAL HIT V1",
+    "reveal": ""
+  },
+  "difficulty": {
+    "hitbox_radius": 30.0,
+    "origin": [
+      540.0,
+      1500.0
+    ],
+    "speed_base": 3.5,
+    "target": [
+      540.0,
+      300.0
+    ]
+  },
+  "engine_version": "0.1",
+  "generation": {
+    "rng_version": "2.0",
+    "seed": 998877
+  },
+  "mechanic": "hit_v1",
+  "mechanic_version": "1.0",
+  "presentation": {
+    "coordinate_space": "CANVAS_1080X1920",
+    "secondary_binding": "target_position"
+  },
+  "schema_version": "1.0",
+  "theme": "default_c6",
+  "video": {
+    "cta_duration": 0.0,
+    "fps": 60,
+    "game_duration": 7.0,
+    "hook_duration": 0.0,
+    "profile_id": "f4_legacy_60_h0_g7_r0_c0",
+    "profile_version": "1.0",
+    "reveal_duration": 0.0
+  },
+  "video_profile": "f4_legacy_60_h0_g7_r0_c0",
+  "video_profile_version": "1.0"
+}

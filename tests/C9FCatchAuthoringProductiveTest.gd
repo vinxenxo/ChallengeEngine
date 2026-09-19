@@ -12,15 +12,20 @@ const SimulationMetricsResolver = preload("res://core/simulation/SimulationMetri
 const Schema = preload("res://core/validation/C6FChallengeSchemaValidator.gd")
 
 const DEFAULT_LEVEL := 50
+const DEFAULT_OUTPUT_PATH := "res://artifacts/tests/authoring/C9F_catch_runtime.json"
+
 const DEFAULT_SEED := 884422
 
 func _initialize() -> void:
 	print("[TEST] Running C9FCatchAuthoringProductiveTest...")
 	var output_path := _get_arg("--output-config=")
 	if output_path.is_empty():
-		printerr("FAIL: missing --output-config argument.")
-		quit(1)
-		return
+		output_path = DEFAULT_OUTPUT_PATH
+
+	if output_path.begins_with("res://"):
+		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_path.get_base_dir()))
+	else:
+		DirAccess.make_dir_recursive_absolute(output_path.get_base_dir())
 
 	var request_result := ChallengeAuthoringRequest.create_from_dictionary({
 		"mechanic": "catch_v1",

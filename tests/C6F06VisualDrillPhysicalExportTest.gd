@@ -1,9 +1,11 @@
 # res://tests/C6F06VisualDrillPhysicalExportTest.gd
 extends SceneTree
 
+const ArtifactPaths = preload("res://tests/helpers/ArtifactPaths.gd")
+
 # ============================================================
 # C6-F0.6 Step 2 — Visual Drill Physical Export Validation Test
-# Checks that target output/tracking_demo.avi exists and is non-empty.
+# Checks that canonical C11 artifact AVI exists and is non-empty.
 # ============================================================
 
 var failures: Array[String] = []
@@ -11,7 +13,7 @@ var failures: Array[String] = []
 func _initialize() -> void:
 	print("[TEST] Running C6F06VisualDrillPhysicalExportTest...")
 	
-	var target_path := "output/tracking_demo.avi"
+	var target_path := ArtifactPaths.absolute("qa/physical_smoke/c10c_e2e/avi/c10c_visual_drill_tracking.avi")
 	
 	await process_frame
 	

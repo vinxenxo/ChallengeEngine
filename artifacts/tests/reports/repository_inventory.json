@@ -1,0 +1,57 @@
+﻿{
+    "generated_at":  "2026-09-19T12:33:25.8658452+02:00",
+    "repo":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "legacy_roots":  [
+                         {
+                             "path":  "output",
+                             "files":  113,
+                             "bytes":  71267
+                         },
+                         {
+                             "path":  "output_c7",
+                             "files":  28,
+                             "bytes":  28134497
+                         },
+                         {
+                             "path":  "output_batch_audit",
+                             "files":  1,
+                             "bytes":  16309
+                         },
+                         {
+                             "path":  "export",
+                             "files":  83,
+                             "bytes":  69868442
+                         },
+                         {
+                             "path":  "qa",
+                             "files":  2113,
+                             "bytes":  61368757
+                         },
+                         {
+                             "path":  "catch_v1",
+                             "files":  4,
+                             "bytes":  3127461
+                         },
+                         {
+                             "path":  "hit_v1",
+                             "files":  4,
+                             "bytes":  1482324
+                         },
+                         {
+                             "path":  "parking_v2",
+                             "files":  4,
+                             "bytes":  6830114
+                         },
+                         {
+                             "path":  "c9_c_generated_configs",
+                             "files":  3,
+                             "bytes":  4380
+                         },
+                         {
+                             "path":  "c9_g_generated_configs",
+                             "files":  5,
+                             "bytes":  6901
+                         }
+                     ],
+    "active_artifact_root_exists":  true
+}

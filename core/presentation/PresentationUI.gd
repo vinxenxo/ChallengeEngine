@@ -25,10 +25,14 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	if root_control != null and root_control is UnifiedSocialFrame:
 		unified_frame = root_control as UnifiedSocialFrame
 
-	safe_area = SafeAreaLayout.new()
 	if unified_frame != null:
+		# UnifiedSocialFrame owns the structural geometry. Avoid creating an
+		# unattached SafeAreaLayout for this path.
+		safe_area = null
 		_build_unified_frame_ui(unified_frame)
 	else:
+		# Preserve the legacy SafeAreaLayout path for non-unified callers.
+		safe_area = SafeAreaLayout.new()
 		_build_legacy_ui()
 
 	if profile != null:

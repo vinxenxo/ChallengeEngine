@@ -15,10 +15,11 @@ const VisualDrillRenderer = preload("res://core/presentation/rendering/VisualDri
 const PresentationUI = preload("res://core/presentation/PresentationUI.gd")
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
 const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
+const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 
 @export var content_definition_path: String = ""
 
-@onready var unified_social_frame: UnifiedSocialFrame = $UnifiedSocialFrame
+@onready var unified_social_frame: UnifiedSocialFrame = get_node_or_null("UnifiedSocialFrame") as UnifiedSocialFrame
 
 var _runtime = null
 var _renderer_host: ContentRendererHost = null
@@ -31,9 +32,24 @@ var playback_finished: bool = false
 var presentation_ui: PresentationUI
 var social_ui_binder: SocialUIBinder
 var presentation_profile: PresentationProfile
+var qa_mode: bool = false
+var qa_header_text: String = ""
+var qa_footer_text: String = ""
 
 func _ready() -> void:
 	print("[VISUAL_CONTENT_PLAYER] Initializing playback host...")
+
+	# C11-B.1 backward compatibility: legacy tests and callers may still
+	# instantiate VisualContentPlayer.gd directly instead of the TSCN.
+	if unified_social_frame == null:
+		unified_social_frame = UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+		if unified_social_frame != null:
+			unified_social_frame.name = "UnifiedSocialFrame"
+			add_child(unified_social_frame)
+
+	if unified_social_frame == null:
+		push_error("[VISUAL_CONTENT_PLAYER] UnifiedSocialFrame could not be mounted.")
+		return
 	
 	_renderer_host = ContentRendererHost.new()
 	_renderer_host.name = "ContentRendererHost"
@@ -52,6 +68,7 @@ func _ready() -> void:
 		return
 		
 	presentation_profile = _build_presentation_profile(definition)
+	_configure_qa_overlay(definition)
 	unified_social_frame.apply_profile(presentation_profile)
 	presentation_ui = PresentationUI.new(unified_social_frame, presentation_profile.theme_name, presentation_profile)
 	social_ui_binder = SocialUIBinder.new(presentation_ui, presentation_profile)
@@ -93,6 +110,14 @@ func _process(_delta: float) -> void:
 		return
 		
 	var render_model: Dictionary = _binder.bind_frame(frame, presentation_profile, "GAME")
+	if qa_mode:
+		render_model["show_hook"] = true
+		render_model["hook_text"] = qa_header_text
+		render_model["show_badge"] = true
+		render_model["badge_text"] = "C11 QA"
+		render_model["cta_visible"] = true
+		render_model["cta_main"] = qa_footer_text
+		render_model["cta_sub"] = ""
 	if social_ui_binder != null:
 		social_ui_binder.bind_render_model(render_model)
 	
@@ -105,9 +130,37 @@ func _process(_delta: float) -> void:
 	_renderer_host.forward_state(domain_state)
 	_current_frame_index += 1
 
+func _configure_qa_overlay(definition: Dictionary) -> void:
+	qa_mode = false
+	qa_header_text = ""
+	qa_footer_text = ""
+	for arg in OS.get_cmdline_user_args():
+		if arg == "--qa-mode":
+			qa_mode = true
+		elif arg.begins_with("--qa-label="):
+			qa_mode = true
+			qa_header_text = arg.trim_prefix("--qa-label=").strip_edges()
+
+	if not qa_mode:
+		return
+
+	var kind := str(definition.get("kind", "visual_content"))
+	var subtype := str(definition.get("subtype", "unknown"))
+	var seed_value = definition.get("seed", definition.get("generation", {}).get("seed", "?"))
+	var seed := str(seed_value)
+	var rng_value = definition.get("rng_version", definition.get("generation", {}).get("rng_version", "?"))
+	var rng := str(rng_value)
+	var payload: Dictionary = definition.get("payload", {})
+	var fps := int(payload.get("fps", 30))
+	var frame_count := int(payload.get("frame_count", 0))
+
+	if qa_header_text.is_empty():
+		qa_header_text = "QA · %s/%s · SEED %s" % [kind, subtype, str(seed)]
+	qa_footer_text = "TEST · RNG %s · %d FPS · %d FRAMES" % [rng, fps, frame_count]
+
 func _build_presentation_profile(definition: Dictionary) -> PresentationProfile:
 	var profile := PresentationProfile.new()
-	var presentation = definition.get("presentation", {})
+	var presentation: Dictionary = definition.get("presentation", {})
 	if presentation is Dictionary:
 		profile.profile_id = str(presentation.get("profile_id", PresentationProfile.DEFAULT_ID))
 		profile.theme_name = str(presentation.get("theme", "default_c6"))

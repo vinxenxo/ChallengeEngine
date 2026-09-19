@@ -7,7 +7,7 @@ $global:LASTEXITCODE = 0
 $ProjectRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $ProjectRoot
 
-$OutputRoot = Join-Path $ProjectRoot 'output/c10c_e2e'
+$OutputRoot = Join-Path $ProjectRoot 'artifacts/qa/physical_smoke/c10c_e2e'
 $DefinitionRoot = Join-Path $OutputRoot 'definitions'
 $AviRoot = Join-Path $OutputRoot 'avi'
 $Mp4Root = Join-Path $OutputRoot 'mp4'
@@ -178,7 +178,8 @@ foreach ($job in $Jobs) {
         "--definition=$($job.Definition.Replace($ProjectRoot + '\','').Replace('\','/'))",
         '--write-movie', $job.Avi,
         '--fixed-fps','30',
-        '--quit-after','60'
+        '--quit-after','60',
+        '--','--qa-mode'
     ) "Physical Movie Maker export $($job.Kind)/$($job.Subtype)"
 
     $aviArtifact = Assert-AviContract -Path $job.Avi -Label "$($job.Kind)/$($job.Subtype)"

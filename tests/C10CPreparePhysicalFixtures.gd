@@ -7,7 +7,7 @@ const Request = preload("res://core/authoring/VisualAuthoringRequest.gd")
 const Context = preload("res://core/authoring/VisualAuthoringAssemblyContext.gd")
 const Generator = preload("res://core/authoring/VisualAuthoringGenerator.gd")
 
-const OUTPUT_DIR: String = "res://output/c10c_e2e/definitions"
+const OUTPUT_DIR: String = "res://artifacts/qa/physical_smoke/c10c_e2e/definitions"
 const SEED: int = 12345
 const TIER: int = 2
 const DURATION_SECONDS: float = 2.0

@@ -136,26 +136,14 @@ func _init() -> void:
 						"Pilot V2 mechanic mismatch."
 					)
 
-				if challenge.get("video") != (
-					"test_master_11s"
-				):
-					failures.append(
-						"Pilot V2 video binding mismatch."
-					)
+				if challenge.get("video") != "f4_legacy_60_h3_g7_r0_c2":
+					failures.append("Pilot generated video profile mismatch.")
 
-				if challenge.get("presentation") != (
-					"social_default_v1"
-				):
-					failures.append(
-						"Pilot V2 presentation binding mismatch."
-					)
+				if challenge.get("presentation") != "social_default_v1":
+					failures.append("Pilot generated presentation binding mismatch.")
 
-				if challenge.get("asset_family") != (
-					"fam_001"
-				):
-					failures.append(
-						"Pilot V2 asset family binding mismatch."
-					)
+				if challenge.get("asset_family") != "fam_pilot_01":
+					failures.append("Pilot generated asset family binding mismatch.")
 
 				if challenge.get("asset_family_version") != (
 					"1.0"
@@ -212,7 +200,7 @@ func _init() -> void:
 					)
 
 	# =========================================================
-	# 2. HIT — FAIL CLOSED
+	# 2. HIT — PRODUCTIVE GENERATION
 	# =========================================================
 
 	var hit_request_result := (
@@ -227,64 +215,30 @@ func _init() -> void:
 		)
 	)
 
-	if not bool(
-		hit_request_result.get("success", false)
-	):
-		failures.append(
-			"Hit authoring request unexpectedly rejected."
-		)
+	if not bool(hit_request_result.get("success", false)):
+		failures.append("Hit authoring request unexpectedly rejected.")
 	else:
-		var hit_request = (
-			hit_request_result.get("request")
-		)
-
-		var hit_result := (
-			ChallengeGenerator.generate(
-				hit_request
-			)
-		)
-
-		if bool(hit_result.get("success", false)):
+		var hit_request = hit_request_result.get("request")
+		var hit_result := ChallengeGenerator.generate(hit_request)
+		if not bool(hit_result.get("success", false)):
 			failures.append(
-				"Hit generation succeeded despite "
-				+ "incomplete metadata."
+				"Hit productive generation failed: %s" % str(hit_result.get("error", "unknown error"))
 			)
-
-		if hit_result.get("stage") != (
-			"metadata_validation"
-		):
-			failures.append(
-				"Hit expected metadata_validation failure, got '%s'."
-				% str(
-					hit_result.get(
-						"stage",
-						""
-					)
-				)
-			)
-
-		if not str(
-			hit_result.get(
-				"error",
-				""
-			)
-		).contains("Metadata unavailable"):
-			failures.append(
-				"Hit did not fail through the expected "
-				+ "Metadata unavailable path: %s"
-				% str(
-					hit_result.get(
-						"error",
-						""
-					)
-				)
-			)
-
-		if hit_result.get("challenge") != null:
-			failures.append(
-				"Hit fail-closed generation returned "
-				+ "a non-null challenge."
-			)
+		else:
+			if hit_result.get("stage") != "assembly":
+				failures.append("Hit productive generation did not finish at assembly.")
+			var hit_challenge: Variant = hit_result.get("challenge")
+			if not (hit_challenge is Dictionary):
+				failures.append("Hit productive generation did not return a Dictionary.")
+			else:
+				if hit_challenge.get("mechanic") != "hit_v1":
+					failures.append("Hit mechanic identity mismatch.")
+				if hit_challenge.get("asset_family") != "fam_hit_01":
+					failures.append("Hit asset family binding mismatch.")
+				if hit_challenge.get("video") != "f4_legacy_60_h0_g7_r0_c0":
+					failures.append("Hit video profile binding mismatch.")
+				if hit_challenge.get("presentation") != "social_default_v1":
+					failures.append("Hit presentation binding mismatch.")
 
 	# =========================================================
 	# FINAL
