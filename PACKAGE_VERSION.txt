@@ -1,2 +1,2 @@
-C11_FREEZE_CONSOLIDATION_PACKAGE_v4
-scope=variant-typing+adapter-metadata+physical-suite-diagnostics+qa-video-matrix-uniqueness
+C11_FREEZE_CONSOLIDATION_PACKAGE_v5
+scope=physical-consumer-robustness+qa-video-audio-scope

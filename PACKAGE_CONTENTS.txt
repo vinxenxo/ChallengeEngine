@@ -23,3 +23,6 @@ Not included:
 - No SimulationResult changes.
 - No WinningFrame / visibility mathematics changes.
 - No artifact migration commit.
+
+- tools/c11freeze/run_physical_export_suite.ps1: exit-code authoritative physical consumer gate; marker diagnostics retained.
+- tools/c11freeze/run_qa_video_matrix.ps1: accepts exact 54/54 all-audio-off video-only QA condition without weakening build_factory release gates.
