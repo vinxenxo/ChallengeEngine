@@ -1,28 +1,9 @@
-C11 Freeze Consolidation v4
+TARGETED C11 freeze finalization fix.
 
-Purpose: close deterministic blockers discovered during the C11 freeze gate without touching simulation mathematics, RNG, or frozen contracts.
+Changed:
+tools/c11freeze/run_seed_stress.py
+tools/c11freeze/run_all.ps1
+tools/c11freeze/finalize_c11_freeze.ps1
+docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md
 
-Key files changed:
-- core/presentation/rendering/VisualContentPlayer.gd
-- tests/C6F06VisualLoopPhysicalExportTest.gd
-- tests/C6F06VisualDrillPhysicalExportTest.gd
-- tests/C6F2AdapterMetadataBindingTest.gd
-- tools/c11freeze/generate_qa_video_matrix.py
-- tools/c11freeze/run_physical_export_suite.ps1
-- README_C11_FREEZE_CONSOLIDATION_v2.md (v4 notes)
-
-Expected effects:
-- Remove fatal Variant type-inference warnings from the visual player path.
-- Align C6F2 metadata regression expectations with currently declared adapters.
-- Make canonical QA video matrix 9 challenges x 6 frozen seeds with unique test-only challenge_id values.
-- Make physical suite failures visible and PowerShell encoding-safe.
-
-Not included:
-- No mechanic implementation changes.
-- No RNG changes.
-- No SimulationResult changes.
-- No WinningFrame / visibility mathematics changes.
-- No artifact migration commit.
-
-- tools/c11freeze/run_physical_export_suite.ps1: exit-code authoritative physical consumer gate; marker diagnostics retained.
-- tools/c11freeze/run_qa_video_matrix.ps1: accepts exact 54/54 all-audio-off video-only QA condition without weakening build_factory release gates.
+No simulation, RNG, presentation, mechanic, asset, or production code changes.

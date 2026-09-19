@@ -1,0 +1,3579 @@
+﻿{
+    "freeze_id":  "C11",
+    "status":  "CERTIFIED / FROZEN",
+    "generated_at_utc":  "2026-09-19T15:57:31.7773296Z",
+    "godot_version":  "4.7.1-stable",
+    "hash_algorithm":  "SHA-256",
+    "scope":  "core + mechanics + tests + tools + docs + declared root project files",
+    "tree_sha256":  "bfb570d066ed9d025bb0ba23e125b828ecb5c28e20d4e0e62b5d21273ee530ab",
+    "file_count":  713,
+    "git_head":  "2ce42e2fb09c088c05415c90e9ee05ce33a00b3c",
+    "git_status":  " M PACKAGE_CONTENTS.txt\n M PACKAGE_VERSION.txt\n M README.md\n M artifacts/tests/reports/repository_inventory.json\n M export/audio_corpus_manifest.json\n M tools/c11freeze/run_all.ps1\n M tools/c11freeze/run_retrocompatibility.py\n M tools/c11freeze/run_seed_stress.py\n?? C11_FINAL_PACKAGE_MANIFEST.json\n?? MASTER_HANDOVER_C11_FREEZE.md\n?? README_C11_FREEZE_FINAL.md\n?? START_PROMPT_C11C_NEXT_WINDOW.md\n?? docs/00_PROJECT_OVERVIEW.md\n?? docs/01_ARCHITECTURE.md\n?? docs/02_DATA_AND_CONTRACTS.md\n?? docs/03_PRESENTATION.md\n?? docs/04_PRODUCTION_AND_ARTIFACTS.md\n?? docs/05_TESTING_AND_REGRESSION.md\n?? docs/06_ROADMAP.md\n?? docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md\n?? docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md\n?? docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md\n?? docs/c11-freeze/15_FREEZE_OPERATING_RULES.md\n?? docs/checkpoints/\n?? docs/history/\n?? tools/c11freeze/finalize_c11_freeze.ps1\n?? tools/c11freeze/update_readme_c11_freeze.ps1\n?? tools/c11freeze/verify_freeze_structure.ps1",
+    "files":  [
+                  {
+                      "path":  "build_factory.py",
+                      "bytes":  82838,
+                      "sha256":  "1dfd246240a85dfc955a30b47a3d51a3460724db1be18068bacfe8503ef0c82e"
+                  },
+                  {
+                      "path":  "core/audio/AudioAssetRegistry.gd",
+                      "bytes":  3044,
+                      "sha256":  "af4da136bd1e167d8a977b4e0a92586a6ae87390fdc397f9a58e2050604067fa"
+                  },
+                  {
+                      "path":  "core/audio/AudioAssetRegistry.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "47f0705c40a5cba48d9381ea3401a2f1a1d55e86e7a6ce7e874f6938f4a4ad96"
+                  },
+                  {
+                      "path":  "core/audio/AudioBuffer.gd",
+                      "bytes":  1487,
+                      "sha256":  "0939b89380941390344dfafe287610ee1de41729ab6dd8e73f268424def41f91"
+                  },
+                  {
+                      "path":  "core/audio/AudioBuffer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e592da3163cfe600ed4697b5eec139ee5729e688a076f67282e355c09401394d"
+                  },
+                  {
+                      "path":  "core/audio/AudioEvent.gd",
+                      "bytes":  871,
+                      "sha256":  "bac4475d4cd03fad875bfbba5fa89cde0078c50286abfda897fbd6f3e3aacd97"
+                  },
+                  {
+                      "path":  "core/audio/AudioEvent.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "225b87080e509ef274c47171faf425ccdc2170623a7f4dbe9663a17d96b45640"
+                  },
+                  {
+                      "path":  "core/audio/AudioEventStream.gd",
+                      "bytes":  1780,
+                      "sha256":  "2f1f61ba9ea080172a2bb44e776bf38f3e673d73c7224dcf9992f051edbead49"
+                  },
+                  {
+                      "path":  "core/audio/AudioEventStream.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c28460a709ce3201bca79b57bbb72bf0342a712d66fb8323b7bf554dca4e8d22"
+                  },
+                  {
+                      "path":  "core/audio/AudioExportBridge.gd",
+                      "bytes":  4305,
+                      "sha256":  "f24ea308cc20c05e017444bcc60449e28f72519073905e1a90ab04c59fc28039"
+                  },
+                  {
+                      "path":  "core/audio/AudioExportBridge.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "dcc38de4e0f2670c23639c7910544000c762b1863eb33c6ab9ff13ce62c3f703"
+                  },
+                  {
+                      "path":  "core/audio/AudioGenerationResult.gd",
+                      "bytes":  1001,
+                      "sha256":  "a3612641f1f834e7c3138297e5aff1637404b5f306aa0c924565f803dfc75fd0"
+                  },
+                  {
+                      "path":  "core/audio/AudioGenerationResult.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "8c1d4f33386c7d32d49841b05a33bd5f3f20b0738bfaaf59854b98019824a888"
+                  },
+                  {
+                      "path":  "core/audio/AudioGeneratorRegistry.gd",
+                      "bytes":  1925,
+                      "sha256":  "5522ae6872b6b8fba890564da7e5a486709739f96ea9ae07d835946f4d6dd160"
+                  },
+                  {
+                      "path":  "core/audio/AudioGeneratorRegistry.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "3f1d652dc4a3c36d185e3f72fa7bd73f9f9cadce427447dc504046a6210e05fc"
+                  },
+                  {
+                      "path":  "core/audio/AudioProfile.gd",
+                      "bytes":  702,
+                      "sha256":  "03a6b0cb7d439a8c94412333703bc2057dc008b4cf166d9bb45c7fa0169eb550"
+                  },
+                  {
+                      "path":  "core/audio/AudioProfile.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fad5cff08834337051903c3b9675b6356fca7c385ae0345c429105db1005d564"
+                  },
+                  {
+                      "path":  "core/audio/AudioProfileAdapter.gd",
+                      "bytes":  1565,
+                      "sha256":  "2515b5965ed28e4b7193a76851108c1105762e90d9ea0168a984f22430fe5862"
+                  },
+                  {
+                      "path":  "core/audio/AudioProfileAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "28abdea2a79326a7f07f7e27be300a565ffccfbf08585518f8475dc4b35cf575"
+                  },
+                  {
+                      "path":  "core/audio/AudioRNGContext.gd",
+                      "bytes":  1428,
+                      "sha256":  "942cb346256e377dcea640948bd73f0d56e8460dcd4d67309301a5daae306d6f"
+                  },
+                  {
+                      "path":  "core/audio/AudioRNGContext.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "a962dcee30b7a839980ddb4a09fe3a17e60ea4a32f2be0b2d8957e764624572a"
+                  },
+                  {
+                      "path":  "core/audio/AudioTimelineResolver.gd",
+                      "bytes":  1769,
+                      "sha256":  "785e5a7a6c8367d37914da782a36ec45ec18e938bfbd790c67ac7e80e29f529e"
+                  },
+                  {
+                      "path":  "core/audio/AudioTimelineResolver.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b52519ad688cd35e917545818ea6c4a49fcb938ce84cb9622668392a7d6b5044"
+                  },
+                  {
+                      "path":  "core/audio/generators/NoiseBurstGenerator.gd",
+                      "bytes":  2359,
+                      "sha256":  "7027577b6c7c9adb15e8076df37f7b268058bbd4fed0fb4935cabc1ca1601804"
+                  },
+                  {
+                      "path":  "core/audio/generators/NoiseBurstGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "bf9942f3f90c70a04ddabbc01d3d6c4ee3f4ee175c2fc4e83a511d11a5f69224"
+                  },
+                  {
+                      "path":  "core/audio/generators/ToneBurstGenerator.gd",
+                      "bytes":  2278,
+                      "sha256":  "151eaf13001f282dbcf332dbe2233c276f24d65b87c4367b772ad386d3813d27"
+                  },
+                  {
+                      "path":  "core/audio/generators/ToneBurstGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "2208f39c0a937dae43740577cb1d99d9664099ee0a6ef9821f6b70f791084bff"
+                  },
+                  {
+                      "path":  "core/audio/renderers/NoiseBurstPCMInterpreter.gd",
+                      "bytes":  2027,
+                      "sha256":  "18b95c15675fd9b5e9f6d017f63fa969b35e833fe61d7a0ec9e32356bbf93749"
+                  },
+                  {
+                      "path":  "core/audio/renderers/NoiseBurstPCMInterpreter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "4757a2282cc8ed129767ccf2f71eb338cd8393a9edd1f991da1ad943df018fc1"
+                  },
+                  {
+                      "path":  "core/audio/renderers/ToneBurstPCMInterpreter.gd",
+                      "bytes":  2962,
+                      "sha256":  "68dadb293df1037d9d7b281e19d0ad6515bf7830ba46d2c09fc48f339497ff49"
+                  },
+                  {
+                      "path":  "core/audio/renderers/ToneBurstPCMInterpreter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "effed798917fe304eff6872249c894d40f5319a12f6b9354980ba401427a603f"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/CatchAuthoringAdapter.gd",
+                      "bytes":  2067,
+                      "sha256":  "b9ce8d9a6e942890a1803277cb20f7999d906fbfa1d42ca508984fcdfad8796b"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/CatchAuthoringAdapter.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "4056ae41da14427e216f5591659c1a37f5aec262a4ecb7904dc31d1314bdadb3"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/ChooseAuthoringAdapter.gd",
+                      "bytes":  1496,
+                      "sha256":  "02ddd1d1417ba7bbf8bda2562dc4ca2417ac869eac88fe8e929e810c671e1a18"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/ChooseAuthoringAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fced92ca69dc9070f8788240725b699cd55a6cba63123ad3e8710654e0d406eb"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/CountAuthoringAdapter.gd",
+                      "bytes":  1646,
+                      "sha256":  "1a143c2d17b2295c6485880f55aa40648ad477b31900d10a9819ebadcb729786"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/CountAuthoringAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "109323a2c6f7ebffea391cdd6419ab1470bb88ef6707fe1863dd3155e1a5a38e"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/FindAuthoringAdapter.gd",
+                      "bytes":  2118,
+                      "sha256":  "3a072473abf2062252a0bc8e58d41f3d7cacc34b25c49c65d1f1a88c7ae2788d"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/FindAuthoringAdapter.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "aeb5519eb01681852f3debe10579e1e1130ee9a1edfa9019ce5ef1cc7599a130"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/HitAuthoringAdapter.gd",
+                      "bytes":  1233,
+                      "sha256":  "fc7047e354a6b1ba38cb151e84dcb26d24d24e183bd02317d054bedf5afff79f"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/HitAuthoringAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "ed79a22f84b61a3a69c613ec860edb53ec78aad264badb064984dae063602f16"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/KeyAuthoringAdapter.gd",
+                      "bytes":  1137,
+                      "sha256":  "57bd30fca778bb23324b812153753d272ac7a3d1399e60564e343bb158126f83"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/KeyAuthoringAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "2c97104c52a06d5e93a49ba7c9cfd90c2e2ed6492d2502cb16a6e40363c435d0"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/ParkingV2AuthoringAdapter.gd",
+                      "bytes":  901,
+                      "sha256":  "b1cf4e67d9536894fce514234721bd478afce0a82eec1f4d218d00a3965bcbe5"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/ParkingV2AuthoringAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "4df82e7f9644202fdeab76fd1ae4b23b9bf8bec4d5a579ab8781470d82547dbc"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/PilotAuthoringAdapter.gd",
+                      "bytes":  1997,
+                      "sha256":  "b1e31f3976ae5332a30bc3fd25b09647a428c9a74e91e65210ddad8f19e58f69"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/PilotAuthoringAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "cedf5d6dd9734847e97551cdd884faf528438e3120982c4c4138336f50ec059a"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+                      "bytes":  2720,
+                      "sha256":  "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/VisualDrillAuthoringAdapter.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "c7044c66b9f6975dcbde9f78fd90ff879d536a27eb5c887761596cea085e7fa1"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+                      "bytes":  1785,
+                      "sha256":  "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+                  },
+                  {
+                      "path":  "core/authoring/adapters/VisualLoopAuthoringAdapter.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "847fbc15729636db4fe1d01747f838c40119cd47cea1ac00ccd1b64f3043723a"
+                  },
+                  {
+                      "path":  "core/authoring/AssetFamilyRegistry.gd",
+                      "bytes":  729,
+                      "sha256":  "eb935fb5975783882b02142f4cd425229d557ca419316976e19211b4ca39ad75"
+                  },
+                  {
+                      "path":  "core/authoring/AssetFamilyRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e61fd90ad52820d2e71f45d496fcc3d27b2ead362f3bc0e8ca28ee855b6b4ce4"
+                  },
+                  {
+                      "path":  "core/authoring/AssetFamilyValidator.gd",
+                      "bytes":  1273,
+                      "sha256":  "0f11f9cc2723829cefc994b69ca4356d7fc7f2334a2e3ca0b610e7a4fadcf31a"
+                  },
+                  {
+                      "path":  "core/authoring/AssetFamilyValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "2e09dd1c0780b6d17ea1b99978500d486882cc9944a555eaebd71c1c22d93304"
+                  },
+                  {
+                      "path":  "core/authoring/AudioProfileRegistry.gd",
+                      "bytes":  886,
+                      "sha256":  "0103793bfeb7ac6d765baa71b8328321ed2ec96865ea26e7541981aa29d4110e"
+                  },
+                  {
+                      "path":  "core/authoring/AudioProfileRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d0b1858b0dcc7841a7be912ee48d19f507a4162ec691a48a427cc57f2c41b6c7"
+                  },
+                  {
+                      "path":  "core/authoring/AudioProfileValidator.gd",
+                      "bytes":  5946,
+                      "sha256":  "3aaa9139d6c046e71602ca709f6ed22db3f04cb00cf083ac57cad351957ee572"
+                  },
+                  {
+                      "path":  "core/authoring/AudioProfileValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d0c77e183afc969372f79ec25db5df65244baefd54a3c64d2b8664694279ccb2"
+                  },
+                  {
+                      "path":  "core/authoring/AuthoringMechanicAdapter.gd",
+                      "bytes":  1433,
+                      "sha256":  "98463a40ea4eec6153cbb67418180aba8d3e4f28ad762c9d0ba98122bce95029"
+                  },
+                  {
+                      "path":  "core/authoring/AuthoringMechanicAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "cc0014e31f225d7563c5dbcce0c1fb0013f048850cc373d5d4fec2eb6d720d45"
+                  },
+                  {
+                      "path":  "core/authoring/AuthoringMechanicRegistry.gd",
+                      "bytes":  1312,
+                      "sha256":  "6e8717ddfc179c1e1f63b690e4b8f4b6613e249681e5e6d70ff928784ab7e2a5"
+                  },
+                  {
+                      "path":  "core/authoring/AuthoringMechanicRegistry.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "9aad51a58ff379f7c0ae32404400bba56550e315b44224634b00f9ba97f89aba"
+                  },
+                  {
+                      "path":  "core/authoring/CanonicalV2Assembler.gd",
+                      "bytes":  6020,
+                      "sha256":  "1d90beeb9463dc4489591c78bc581cf0446b92034f7ac4a435c4003510f9ff85"
+                  },
+                  {
+                      "path":  "core/authoring/CanonicalV2Assembler.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "c807cbd17be989c4285c882fe35a78bc450eea2465ff8da45e3fb457eba520ac"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeAuthoringPolicy.gd",
+                      "bytes":  807,
+                      "sha256":  "a517abfd91f84a18f11e74a81cc4d439dad8e1559a61650f2495bcbe919a21b9"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeAuthoringPolicy.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "7fb241f7d4f768ac4fef26d5dbe55533be0eac9e46085d64acfe3d4839a848d0"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeAuthoringRequest.gd",
+                      "bytes":  2583,
+                      "sha256":  "779dff0fbaed748b985b10b60322a934e628d2d44bd6114a98ae6e77253cf50d"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeAuthoringRequest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "216bf977d1e24593401f74b25520ef2e0cd1f2fcb48b71323cc69fd695af5f4b"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeAuthoringRequestValidator.gd",
+                      "bytes":  1720,
+                      "sha256":  "0873d0f0d60b271a442ba4beaf4a9f3edb64b22922a3c0140fb250f68d96f3e4"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeAuthoringRequestValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7e1645d8dec624efbe07ee7837c66c718ecaf3bd4bb07a75ba792b37086a7587"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeGenerator.gd",
+                      "bytes":  18140,
+                      "sha256":  "ffa976911c23d8a41238e9793b156178917228dc4cb11d6bcaaec4da04bb138f"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeGenerator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "18b3da6490b0e99a178c8edc67a7dadaab6ec1f0d16bcabe6ce13ef01980a2f1"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeMigrationAdapter.gd",
+                      "bytes":  8977,
+                      "sha256":  "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeMigrationAdapter.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d416067452ded1669a50eaf027a354a22a3117950144a6d53f4d6d51d7add20b"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeTimeLiine.gd",
+                      "bytes":  1554,
+                      "sha256":  "9a91c94430bdc6f6b8696964fc8ce37d1a5c0c9116f8ed0302d02d796c97ff7c"
+                  },
+                  {
+                      "path":  "core/authoring/ChallengeTimeLiine.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b327359959843c0fb9d42f49ead62a0a35a5b1c8004151d4eb2ad666ccd42d92"
+                  },
+                  {
+                      "path":  "core/authoring/ContentEnvelope.gd",
+                      "bytes":  7328,
+                      "sha256":  "0529bca6ee17f7fe5538257506a8620fd2f2bd11439462087ad094a0aea44447"
+                  },
+                  {
+                      "path":  "core/authoring/ContentEnvelope.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "25997294e46b449499cb3c043128f8a95a541d86fc6c198ca34d7c77a4a280d8"
+                  },
+                  {
+                      "path":  "core/authoring/DifficultyProfileRegistry.gd",
+                      "bytes":  911,
+                      "sha256":  "a796c9f0d80d7c792115b6fb27518e623de977fcafba9288fef44c84a79233f3"
+                  },
+                  {
+                      "path":  "core/authoring/DifficultyProfileRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "12e67688515c2a77f93da3d2a78afd98ee9bf4a5d843b78fc39cd91f98ac0e30"
+                  },
+                  {
+                      "path":  "core/authoring/DifficultyProfileValidator.gd",
+                      "bytes":  1471,
+                      "sha256":  "e2edc83dc681f38c42c01fc4045eec1877bcbd00e4f6d9a9ffd59241e9765cdc"
+                  },
+                  {
+                      "path":  "core/authoring/DifficultyProfileValidator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "1efd47301535561459537b7f1403e6847068466677014471fb7661cb98661e6e"
+                  },
+                  {
+                      "path":  "core/authoring/DifficultyResolver.gd",
+                      "bytes":  2908,
+                      "sha256":  "211decb707e85e92d61063e4f1755e84a7a0a8632a12f7e4e7d5226230e8d95e"
+                  },
+                  {
+                      "path":  "core/authoring/DifficultyResolver.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e6fee03926208c34c2be9f07c344f95be31718b5229a54d8505360c65ff4883e"
+                  },
+                  {
+                      "path":  "core/authoring/PresentationBindingValidator.gd",
+                      "bytes":  3030,
+                      "sha256":  "39077f01d366054f8ae58841c6dce798c4da92308f07204686423b6c91ddc229"
+                  },
+                  {
+                      "path":  "core/authoring/PresentationBindingValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "13a7b83785eb865ec1db0835a83db5b44b65b7e88b20e37e54ecbbc150574023"
+                  },
+                  {
+                      "path":  "core/authoring/schemas/content.envelope.schema.json",
+                      "bytes":  2207,
+                      "sha256":  "2a2813f8529750604713a879652cbf7e4be569ca0cbc508f34a56fe7a49533ad"
+                  },
+                  {
+                      "path":  "core/authoring/TemporalCore.gd",
+                      "bytes":  880,
+                      "sha256":  "9dafdd5e9bc7dbdcaa8ba946d35267747fcd9030b4c744a6fea8217be614e309"
+                  },
+                  {
+                      "path":  "core/authoring/TemporalCore.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "be92cae4298886dee739c1b46009e2d15c880bf917dc105163d28128ce1d6d56"
+                  },
+                  {
+                      "path":  "core/authoring/VideoProfileRegistry.gd",
+                      "bytes":  810,
+                      "sha256":  "2dafcc034eb7101bb2ebefbe7c3185809049640e1f6cd82daed3da1decc91bba"
+                  },
+                  {
+                      "path":  "core/authoring/VideoProfileRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "28da6fac35c493a7aa151023d83b0ab58f3e98cdb54abd6637d9e86c0ddd56ab"
+                  },
+                  {
+                      "path":  "core/authoring/VideoProfileValidator.gd",
+                      "bytes":  1955,
+                      "sha256":  "2c13ef954d8def7f8b1754de6e4045a0b760d7388f3d87c3cd68a75391b62cee"
+                  },
+                  {
+                      "path":  "core/authoring/VideoProfileValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6b43b3eec472c5fbc32466cbe4a9324cdd73d05beafc47eaf9386563cea71887"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringAssemblyContext.gd",
+                      "bytes":  1116,
+                      "sha256":  "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringAssemblyContext.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "fa652351de25e7a2e4640a93162ae9e6c7084a408efaca559cf57a85b3e3dde1"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringGenerator.gd",
+                      "bytes":  5680,
+                      "sha256":  "5a8da22310663c62599448fed7c15e3e276c904ac373aac3c01e060f25b5d49f"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "79c27e8ab47a4901ceb81c22f732190984ac0577547eb678a76df480cf1a82dd"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringPolicyRegistry.gd",
+                      "bytes":  1254,
+                      "sha256":  "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringPolicyRegistry.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "1d27a0188efc72c84f1204eac8901e0dc931577e5385cfc426b6514d074359f2"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringRegistry.gd",
+                      "bytes":  460,
+                      "sha256":  "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b4c5cea767a71f0ea9f7ab6de49b09a2cb6eff6bd7534141ccd677a6f208e6f5"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringRequest.gd",
+                      "bytes":  1204,
+                      "sha256":  "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringRequest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "10a790f5f04d8459aac34d6bbeea9162ae695d8b516430d447c86cf835b947b1"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringRequestValidator.gd",
+                      "bytes":  1671,
+                      "sha256":  "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+                  },
+                  {
+                      "path":  "core/authoring/VisualAuthoringRequestValidator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "ef2a3bfc2e7180ccbe15edc040ed5492307904cd825fc17dfbfc44e7220ef9dd"
+                  },
+                  {
+                      "path":  "core/authoring/VisualDifficultyResolver.gd",
+                      "bytes":  4540,
+                      "sha256":  "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+                  },
+                  {
+                      "path":  "core/authoring/VisualDifficultyResolver.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "43de9fc8ae518357abdbbb07493377b795acf463ec3512e773afc31154a38e32"
+                  },
+                  {
+                      "path":  "core/authoring/VisualDrillTimeline.gd",
+                      "bytes":  358,
+                      "sha256":  "8a301ccb58fb0348a979954c91d7d32e45155892e4f2d89e1ea59b532a5a5038"
+                  },
+                  {
+                      "path":  "core/authoring/VisualDrillTimeline.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "78dad387a273f5c8e7962c565670186cbe92c54e3e883df1f754778aa853f162"
+                  },
+                  {
+                      "path":  "core/authoring/VisualLoopTimeline.gd",
+                      "bytes":  702,
+                      "sha256":  "955d6c8b22c2c9ccadf829f6cc6b117c4db984e1e3669c798948032296f91e3c"
+                  },
+                  {
+                      "path":  "core/authoring/VisualLoopTimeline.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7fa07ed75383baa88643491c175d8360f371c0cae463c3f4664e425d735a57c0"
+                  },
+                  {
+                      "path":  "core/data/FrameSnapshot.custom.data",
+                      "bytes":  611,
+                      "sha256":  "9d520017c0d96f47ef1263e2e89ae14b54e8fc2712631bbc0940ab88418da55b"
+                  },
+                  {
+                      "path":  "core/data/FrameSnapshot.gd",
+                      "bytes":  786,
+                      "sha256":  "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+                  },
+                  {
+                      "path":  "core/data/FrameSnapshot.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f87efb4d9657647c3e66a3927dd5f05d79666fba9073d1bc63d13a71b56a576e"
+                  },
+                  {
+                      "path":  "core/deterministic/CosmeticRNG.gd",
+                      "bytes":  1312,
+                      "sha256":  "2882c16dd549eb42c9bb59c43dda09590100e46601450fd937ee0f5882fbec1b"
+                  },
+                  {
+                      "path":  "core/deterministic/CosmeticRNG.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "4a8992e07a52fa73e06165cc8203a302d30c7c943ca8c772458d0c682f7a582e"
+                  },
+                  {
+                      "path":  "core/deterministic/DeterministicLCG.gd",
+                      "bytes":  2564,
+                      "sha256":  "e1e2393372a20d662aa403257b2334543e3ca770b91b4695c584bdb114171f29"
+                  },
+                  {
+                      "path":  "core/deterministic/DeterministicLCG.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f56f52810e9f810c6b6283a283ddaabe0181b65748b4851d576ef810223a5c58"
+                  },
+                  {
+                      "path":  "core/deterministic/MechanicRNGContext.gd",
+                      "bytes":  2914,
+                      "sha256":  "74aff2549b1fea80c877cda06a589a8cdae54ad4016b7e8ec9bbd25a6dbb6b01"
+                  },
+                  {
+                      "path":  "core/deterministic/MechanicRNGContext.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "86714db2de191ea7eece01bf9870fa5b19ac246f029f98918caa1b385c780934"
+                  },
+                  {
+                      "path":  "core/deterministic/PresentationRNGContext.gd",
+                      "bytes":  2913,
+                      "sha256":  "27fe69e4572f8ceec856a276f3294e920ece6c32c380e8b6fa007beeda89c419"
+                  },
+                  {
+                      "path":  "core/deterministic/PresentationRNGContext.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "8d7b1b51c7702846a7bb36858f0c54ab7674eb7215e04a62d0ac09207c1406e8"
+                  },
+                  {
+                      "path":  "core/deterministic/RNGStreamDefinition.gd",
+                      "bytes":  977,
+                      "sha256":  "4e335b67db5c10eff0fba7b9be6e8c6efb7c3783a4de553dcf70f01572a47811"
+                  },
+                  {
+                      "path":  "core/deterministic/RNGStreamDefinition.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f3c1facdf9aea97f3486be9bfe8f9e1351e8c598201460a04cf43ca2597d142e"
+                  },
+                  {
+                      "path":  "core/deterministic/RNGStreamRegistry.gd",
+                      "bytes":  7908,
+                      "sha256":  "62877a9fe6fe5bf2dc92eb9aa54c73fcd304d99967fb1dcc022c86e3d258f693"
+                  },
+                  {
+                      "path":  "core/deterministic/RNGStreamRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6645a23fdd6a838afe14640c11e2b0e1f8baf9aa29e0e03e380b47ab9028c8c8"
+                  },
+                  {
+                      "path":  "core/deterministic/StructuralRNG.gd",
+                      "bytes":  1323,
+                      "sha256":  "9ea60ff4a242d9cad748965a3cebf32239a61f207ca5dc2d7458df77e77fab4e"
+                  },
+                  {
+                      "path":  "core/deterministic/StructuralRNG.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7eff78893d7cd450a320bfd2550de53267e1fc9c5a22d648cca8b7d517f5ad61"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeExecutionPipeline.gd",
+                      "bytes":  5536,
+                      "sha256":  "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeExecutionPipeline.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "0ff04dd48f63dd6ebd28261290274b19870b3439cd516ae51971327e78800ce5"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeLegacyRuntimeOracle.gd",
+                      "bytes":  8605,
+                      "sha256":  "993013b5a31256faf0658d5caa4249121dc15b894614a57b8e36f5aad0b4243f"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeLegacyRuntimeOracle.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "5ff7b4529c85378689ff650e7f1fc67ead8e75772d8fa192e2d66628b357ba9e"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeRuntimeBridge.gd",
+                      "bytes":  25891,
+                      "sha256":  "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeRuntimeBridge.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b890d46f6e24eb84695c359377a08a49e99c03e4847cdc29f9163c76f18bbaac"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeRuntimeContext.gd",
+                      "bytes":  489,
+                      "sha256":  "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeRuntimeContext.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d1797b49a2db2da99af2653841b9cc601ba2857a7b64e4ba46247a14362ed29a"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeTimelineBuilder.gd",
+                      "bytes":  3721,
+                      "sha256":  "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+                  },
+                  {
+                      "path":  "core/execution/ChallengeTimelineBuilder.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "4fa446c3105dadb00af716e5e0228a8e3b4cab2be3a0e9cf07904e389996c84e"
+                  },
+                  {
+                      "path":  "core/mechanics/catch/CatchMechanic.gd",
+                      "bytes":  6834,
+                      "sha256":  "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30"
+                  },
+                  {
+                      "path":  "core/mechanics/catch/CatchMechanic.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "d96c89ab8b9850d22eed23e20a320acb1a9167f9e367aac662ba765f1a2227c9"
+                  },
+                  {
+                      "path":  "core/mechanics/ChallengeMechanic.gd",
+                      "bytes":  1017,
+                      "sha256":  "6556062402816fa04328e2aa58648de403befd7126a575de9fb0804c9afb1d98"
+                  },
+                  {
+                      "path":  "core/mechanics/ChallengeMechanic.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "76c6f9a300aa147a2fb5512274010e696b30a7168ee4236bf66b495ad3ada0fd"
+                  },
+                  {
+                      "path":  "core/mechanics/choose/ChooseMechanic.gd",
+                      "bytes":  5967,
+                      "sha256":  "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84"
+                  },
+                  {
+                      "path":  "core/mechanics/choose/ChooseMechanic.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "9a20527f2e01be2c6086076d2c8b161f9d25d99d9cc828259a0f2d8d9228d4d8"
+                  },
+                  {
+                      "path":  "core/mechanics/count/CountMechanic.gd",
+                      "bytes":  5132,
+                      "sha256":  "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8"
+                  },
+                  {
+                      "path":  "core/mechanics/count/CountMechanic.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "1d5fa8762a7e7454082385a04c12ca01bd5d389a1515bd8dff601e59bd84be61"
+                  },
+                  {
+                      "path":  "core/mechanics/find/FindMechanic.gd",
+                      "bytes":  6774,
+                      "sha256":  "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50"
+                  },
+                  {
+                      "path":  "core/mechanics/find/FindMechanic.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6278c6d7d3dc0baf3f909fc540daf8d1d401c7c8c682db9288880ddb2df22b2b"
+                  },
+                  {
+                      "path":  "core/mechanics/hit/HitMechanic.gd",
+                      "bytes":  4880,
+                      "sha256":  "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3"
+                  },
+                  {
+                      "path":  "core/mechanics/hit/HitMechanic.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c4a1c3b326837ddd3994f7afd51727524295509678e476b068b4139fac50a22d"
+                  },
+                  {
+                      "path":  "core/mechanics/key/KeyMechanic.gd",
+                      "bytes":  2715,
+                      "sha256":  "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6"
+                  },
+                  {
+                      "path":  "core/mechanics/key/KeyMechanic.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "63ccb04356e218615023e0eba178b07c5ed9c116eb564e4cca1929ff88f70de0"
+                  },
+                  {
+                      "path":  "core/mechanics/MechanicRegistry.gd",
+                      "bytes":  612,
+                      "sha256":  "03d20232a25ef6dcc0d5a8c6a772e3a6ab7706174cc37319c3a5d6cf67813a3a"
+                  },
+                  {
+                      "path":  "core/mechanics/MechanicRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "8a10438df690e514fc361ab361f076757a3acfbee3d795d46e855bf3d5d665b8"
+                  },
+                  {
+                      "path":  "core/mechanics/parking/ParkingMechanic.gd",
+                      "bytes":  6903,
+                      "sha256":  "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076"
+                  },
+                  {
+                      "path":  "core/mechanics/parking/ParkingMechanic.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "2b9e00794bda5066504eb9a099e9f7b62a8608c25422646c672e22ad7dbb4ae4"
+                  },
+                  {
+                      "path":  "core/mechanics/parking/ParkingMechanicV2.gd",
+                      "bytes":  9007,
+                      "sha256":  "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"
+                  },
+                  {
+                      "path":  "core/mechanics/parking/ParkingMechanicV2.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f2d26df7f84e98d15bf68c0b0c64d627d5b56c25aa446d6fea7f9f48b1458eae"
+                  },
+                  {
+                      "path":  "core/mechanics/pilot/PilotMechanic.gd",
+                      "bytes":  5797,
+                      "sha256":  "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13"
+                  },
+                  {
+                      "path":  "core/mechanics/pilot/PilotMechanic.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "8d2683350669fbb3b7131582db92c6f8e2d95bab428cdb59f50b66366927aca8"
+                  },
+                  {
+                      "path":  "core/presentation/ChallengePresentationBinder.gd",
+                      "bytes":  7079,
+                      "sha256":  "33a1ada9c0b765be8c4646aa8eca71c86d0a8350fd14f922b404667c0342d662"
+                  },
+                  {
+                      "path":  "core/presentation/ChallengePresentationBinder.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "41acfcdaa2d97b93b96795d91b69dfe4ed33fa854e6f7b6b35b1be1a8a1615a9"
+                  },
+                  {
+                      "path":  "core/presentation/components/CountdownComponent.gd",
+                      "bytes":  695,
+                      "sha256":  "057c8126bb9bc1887c449d78fe5e23561e07c72f116ae96d002aca7dc55b3d30"
+                  },
+                  {
+                      "path":  "core/presentation/components/CountdownComponent.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "310b94bd9c9029efd1d35cf37817e265e805d4d8e92437e6b47185ddaf4e2ab1"
+                  },
+                  {
+                      "path":  "core/presentation/components/CTAComponent.gd",
+                      "bytes":  948,
+                      "sha256":  "d20078a0421f0bd7b4117c06793ae8ab047745003bebba975e3cde7663d130ca"
+                  },
+                  {
+                      "path":  "core/presentation/components/CTAComponent.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "da6098142bded8b67cfac472eb9892850b6211dd0a3827f023bc74d14cfab529"
+                  },
+                  {
+                      "path":  "core/presentation/components/HookComponent.gd",
+                      "bytes":  806,
+                      "sha256":  "52894359fc80f4647493fb37fa185aae3dcdc8daf1ac1fdc37137d13debb7bbe"
+                  },
+                  {
+                      "path":  "core/presentation/components/HookComponent.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "60a5aefaf269c55bd589301335a72ba4d98b98ec3ce235896e4ffc3554792ebb"
+                  },
+                  {
+                      "path":  "core/presentation/components/RevealManager.gd",
+                      "bytes":  1035,
+                      "sha256":  "9602000a9006e86336557795e8443c74939e31174dbb444323323419dfe1cce4"
+                  },
+                  {
+                      "path":  "core/presentation/components/RevealManager.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "d5f98cff96a7f115592e42baeb07beb65767db32137bfb65f448038a604af317"
+                  },
+                  {
+                      "path":  "core/presentation/components/SafeAreaLayout.gd",
+                      "bytes":  730,
+                      "sha256":  "47ff82410086a3fe07aa7b5ba62a7caa50f48649f9751968dd96bfdfbec31e95"
+                  },
+                  {
+                      "path":  "core/presentation/components/SafeAreaLayout.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "40621666faeb2beb60203af07a65c3e7eb4c7657c5e55fb3f87dd88277923750"
+                  },
+                  {
+                      "path":  "core/presentation/components/TypographyLabel.gd",
+                      "bytes":  1240,
+                      "sha256":  "d7c6ec47b33baec983a239dfe6218037d4126dc1532130c92d4202d56e6e8866"
+                  },
+                  {
+                      "path":  "core/presentation/components/TypographyLabel.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e930f80c74b15f567b5434e7aec29a21f17986e200bf665489605ff122066096"
+                  },
+                  {
+                      "path":  "core/presentation/components/WinningHighlightComponent.gd",
+                      "bytes":  2765,
+                      "sha256":  "7cf15fb77afe7a802b4a897d6b9e4f2ba17431da3079a399eaaeecf19d94280b"
+                  },
+                  {
+                      "path":  "core/presentation/components/WinningHighlightComponent.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "acf5c307d306f86deb68e8606f407abb0511102c9318c6740d75c6923e7541be"
+                  },
+                  {
+                      "path":  "core/presentation/CoordinateMapper.gd",
+                      "bytes":  3741,
+                      "sha256":  "244bace2eaf87e29d653715ae18c0b4824cdf9503e915932be53d0f52bbe461c"
+                  },
+                  {
+                      "path":  "core/presentation/CoordinateMapper.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "393e10c39bc1d03c10ba233b8ad23dc8ba81888f8be986ddaf2d108f0532a999"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationBinderRegistry.gd",
+                      "bytes":  2541,
+                      "sha256":  "72e47e00d14ea790bc6925e4265995947b56933efefa6f051c936950f39252e9"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationBinderRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6d9f7a355878904d5a3d39709e25dda580abaec1c003430945f414ccd874b048"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationBindingResult.gd",
+                      "bytes":  438,
+                      "sha256":  "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationBindingResult.gd.uid",
+                      "bytes":  18,
+                      "sha256":  "70f0e866242b20d4e2b8330fb93b0a336de2c4a2a57c41ecebd7c14a1a77479a"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationFramer.gd",
+                      "bytes":  1691,
+                      "sha256":  "6ceba3ebeb40259e2553a89ae436e8986abf67b82325ffb94bdedf3466c36039"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationFramer.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "a78a49925dd9349464082bd715bb7906bfe50be97dd6dc6d4702d5b3a1dfc8a4"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationProfile.gd",
+                      "bytes":  8837,
+                      "sha256":  "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationProfile.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "3bd9e94bc9cd25f145c8e8c11cd01f3c6a9efe5773ffc01ef08d4f360c2d339f"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationTheme.gd",
+                      "bytes":  1569,
+                      "sha256":  "f412d8fc6f89decd36dc71623ac3456db886b396c8373e3f46ba2c29d643244e"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationTheme.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d7300ae86974c9930ab4cbe8d1833ad52f4a0382ceb1a07bbc427e45732569c5"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationUI.gd",
+                      "bytes":  6693,
+                      "sha256":  "fe13bd950444c9ae908d385f75c8464cf7062a988e65df054b4c2b751f4cd806"
+                  },
+                  {
+                      "path":  "core/presentation/PresentationUI.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "2decfe8c5109a7fbac42f8ed72e157f7ee85e07fc2d91576d74e83c5069fa5cf"
+                  },
+                  {
+                      "path":  "core/presentation/ReferenceFrameResolver.gd",
+                      "bytes":  1112,
+                      "sha256":  "222d143fd24e395be6aaef681385e5cfdce0f76b2c0bd35c808084c518a30eb2"
+                  },
+                  {
+                      "path":  "core/presentation/ReferenceFrameResolver.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "34438e8dccfb133e7b28f04cd39954eca37db9112b7073c8394ef8512b1f55aa"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/ContentRendererHost.gd",
+                      "bytes":  812,
+                      "sha256":  "5f3b66e1847b5c6a1b76fcd0db2e2fd97423f0c606e8d2aede5890c8bad80117"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/ContentRendererHost.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "12aa06fceb37e90f09b57cdde577f7e633e3a8239dbe2ea7aec40645c89bfe93"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/FractalRenderer.gd",
+                      "bytes":  1928,
+                      "sha256":  "115d82d35cca4e59e714eef8f4bd9a6ea8b3ec33ba64354e990de41b4a400645"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/FractalRenderer.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "45cfaea0b70c3ef39c88c5a47079fbd810ab7cf7b28a826da3d6947ac3f60c1c"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/GeometricRenderer.gd",
+                      "bytes":  1511,
+                      "sha256":  "667f7291b793931d139a4d5613a2326d95623780f681f93c989758133151920e"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/GeometricRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9ab872fab869cd9ae0e7a45f278887cfe3f4ffd7f5135216d227dd0138177dc4"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/KaleidoscopeRenderer.gd",
+                      "bytes":  1577,
+                      "sha256":  "4781e5dc310c81aafc928c5d268470fc5b08e851466b820a9e4e942edd1ca7db"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/KaleidoscopeRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d20ed4b28b157edfa606c9cc0b71a71ed5535fc9f587f598a1bb6d92ecd7770f"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/ParticleFlowRenderer.gd",
+                      "bytes":  1740,
+                      "sha256":  "d812bcca259c120090d7f70266ba9cb634a44dc44e8d3ba68ffd4c8e05b37e6a"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/ParticleFlowRenderer.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "792ecf4d0d37874f89605a34ba5db47fe89889ce5f20dd5086ae336e9da80399"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/PeripheralScanRenderer.gd",
+                      "bytes":  1565,
+                      "sha256":  "e1bd20da350bd34b515d2e0cb4c8b6b8939b1ae37831dd1e552be75975888e62"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/PeripheralScanRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d0133ce9619e56694f3e8e2f6a521660d8097f1bd004195c176bc2d0cac11db2"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/PursuitRenderer.gd",
+                      "bytes":  1461,
+                      "sha256":  "5f67e1273f35e051202f4e71c91816fef2da277083df6b3379697f7a41d47c15"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/PursuitRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "481ca46516e0a5d648fa50e7300f030db8b8c8c34e2f78e430e5224dc2d05848"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/SaccadeRenderer.gd",
+                      "bytes":  1461,
+                      "sha256":  "ce0e895187058e127cd05fdb26c75408caa4e08bb053dc4191529f4d60a8a564"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/SaccadeRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f34bf68401c5b640c12ee9b8cfe65e9869d520e68077b68bf82540d9c2df4a0d"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/fractal.gdshader",
+                      "bytes":  1031,
+                      "sha256":  "7c42b6a9ff973fe888ebc7705b162d51e1de8cf7d7b519bd621a709a89bf3694"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/fractal.gdshader.uid",
+                      "bytes":  20,
+                      "sha256":  "d2cc19279080c596f84f4f68c79be0fe8a3ea332675b4575949c631a8151f563"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/geometric.gdshader",
+                      "bytes":  853,
+                      "sha256":  "6dffab9c8e29c4e6aa80fb6e71c401650f55a407e11a448b597218fcbb867824"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/geometric.gdshader.uid",
+                      "bytes":  20,
+                      "sha256":  "c0de99d5276f357f9c04393cc7e8db1505647e094e4ae48827c44f325e8c1556"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/kaleidoscope.gdshader",
+                      "bytes":  1034,
+                      "sha256":  "1e4d09af94d7f6c34116e11c837036234af99ad5225397fe12d741be9dbbc747"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/kaleidoscope.gdshader.uid",
+                      "bytes":  19,
+                      "sha256":  "435098f9c5ab26fe5e9b7d79d2a5a9a061c52f0e2e4efbfd42999b6061616afe"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/particle_flow.gdshader",
+                      "bytes":  1410,
+                      "sha256":  "51a0e0810a831de4955444746364f74f9e74f3f8eb0852fe3bdd035788a9987b"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/particle_flow.gdshader.uid",
+                      "bytes":  19,
+                      "sha256":  "245988ad5942d162255875ef59555620ef1b449137197004ab9755fd70c76989"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/peripheral_scan.gdshader",
+                      "bytes":  579,
+                      "sha256":  "bedbd2e95436b64ead827602de7b4028c800a197b44e61a01298fb2d3371b16a"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/peripheral_scan.gdshader.uid",
+                      "bytes":  19,
+                      "sha256":  "a1d5d705329610302058ed0497005434dc814b1519b6b647798f808020706691"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/pursuit.gdshader",
+                      "bytes":  711,
+                      "sha256":  "ab42ec63c7c7a1bb80b18436c1335abe4f8af2b49ff8673536b127a072ad3a99"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/pursuit.gdshader.uid",
+                      "bytes":  20,
+                      "sha256":  "623e7dc769eb222ef0f946a7447a887b17783ff1e4178bd223a2d060e9fe895c"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/saccade.gdshader",
+                      "bytes":  651,
+                      "sha256":  "12edafaa9f6c3b222882d5ea24d5d384019ec86c05ecdabe872ddc34482eab3c"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/saccade.gdshader.uid",
+                      "bytes":  20,
+                      "sha256":  "e98b9ecf2865dd39ea1df7722dbaf51a0d4aa25c708bfbff1ae53ea796a5fe6f"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/tracking.gdshader",
+                      "bytes":  768,
+                      "sha256":  "36aba7bebcddb6818d87e3981adc241d7aaefda6820b7e1f34000b07840b4294"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/tracking.gdshader.uid",
+                      "bytes":  20,
+                      "sha256":  "79eac25f3f292d550cbdd4020c0623d23d511454d9bdeb4cd6e271691c65d6e1"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/vector_field.gdshader",
+                      "bytes":  1957,
+                      "sha256":  "1f557d30de590afe4b951fc93555cb5c1f9e4b2bf68a0b784346c65db770bb62"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/shaders/vector_field.gdshader.uid",
+                      "bytes":  20,
+                      "sha256":  "5db74236c7d2071a6f4387fbe5a80e5daf97299620f4229b1cab74653f6ee6e9"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/TrackingRenderer.gd",
+                      "bytes":  1468,
+                      "sha256":  "133cd2c9c13e2c5b8a725627c2f468e0628d5abf21caaaf9ad41716092d30b46"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/TrackingRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "4df48eab1e39b9989a22140cc200e4cf56858f9ff2459a9cb5f18de1a7cdf4ad"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VectorFieldRenderer.gd",
+                      "bytes":  1825,
+                      "sha256":  "e479707dae44e0865919194bc0bdc0bd3941a3ecb2ea746b8400e256582546a8"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VectorFieldRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c8d7c262dacf724811999dd715ba115c5396eac756232fe27fb8b14cf1c98b36"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualContentPlayer.gd",
+                      "bytes":  8188,
+                      "sha256":  "e7da92c9736bb1a6c2b0543063216c9ac877f9a95bb12545af83c86f20ea9caa"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualContentPlayer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "0f6a7715be67bbf6394353920efb31077dfbc30fa75f77bfad5b7aa5a40837d1"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualContentPlayer.tscn",
+                      "bytes":  402,
+                      "sha256":  "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualDrillRenderer.gd",
+                      "bytes":  3120,
+                      "sha256":  "40cf9d17438e69355dbb2dfd192e7561e462bb2b578c3ca9102c85b7aee4ebc8"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualDrillRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f618a39ba5cb6e5b540f33d8a014430ec7b8b97093f5f90b88ec911804fbd3fa"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualLoopRenderer.gd",
+                      "bytes":  4243,
+                      "sha256":  "7fef4452cc20357d2803528faac5295bbf554ec504f3351874ae959352adc276"
+                  },
+                  {
+                      "path":  "core/presentation/rendering/VisualLoopRenderer.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "3c3af9e95919d1c57ca63e5f2fb13f5e381b57c0e52376713b21cb6c16cc2298"
+                  },
+                  {
+                      "path":  "core/presentation/SocialUIBinder.gd",
+                      "bytes":  1742,
+                      "sha256":  "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+                  },
+                  {
+                      "path":  "core/presentation/SocialUIBinder.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "cc8bef0825300379124ce4f0ef3f68cbe0f2aa158f896fe57e29c10158c4842b"
+                  },
+                  {
+                      "path":  "core/presentation/UnifiedSocialFrame.gd",
+                      "bytes":  2087,
+                      "sha256":  "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+                  },
+                  {
+                      "path":  "core/presentation/UnifiedSocialFrame.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "17ca2e3b7d0b7e52f3ec1f7af70f28d50059e3c1501af3a140199c8b738fa69b"
+                  },
+                  {
+                      "path":  "core/presentation/UnifiedSocialFrame.tscn",
+                      "bytes":  1471,
+                      "sha256":  "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b"
+                  },
+                  {
+                      "path":  "core/presentation/VisualDrillPresentationBinder.gd",
+                      "bytes":  1382,
+                      "sha256":  "e405ec98d4feb56d031d4cf391460d588288e643d705cc7630128e5623fa05d8"
+                  },
+                  {
+                      "path":  "core/presentation/VisualDrillPresentationBinder.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7b3d1611fc754e55e5f43c67eeb268b85fb49fd8e977d9fe8186b0577b5caa29"
+                  },
+                  {
+                      "path":  "core/presentation/VisualLoopPresentationBinder.gd",
+                      "bytes":  1940,
+                      "sha256":  "33d870aa729d84ad0dd6cecb8e216f21c928d6b9a31700a7d6c4246468f7b3e6"
+                  },
+                  {
+                      "path":  "core/presentation/VisualLoopPresentationBinder.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "045ea612b8f08c8471247f0aec23145cc48da2aa7601f96e8617414d9fa28157"
+                  },
+                  {
+                      "path":  "core/presentation/WinningFrameVisibilityGate.gd",
+                      "bytes":  2368,
+                      "sha256":  "94ea4055f6d24b7ee9eb1d624e52620178f463a041f0e2288f508065231909e2"
+                  },
+                  {
+                      "path":  "core/presentation/WinningFrameVisibilityGate.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "ecef79d526fd124f30423244459d7b7c5b289f69c21a56ce8678d395af211509"
+                  },
+                  {
+                      "path":  "core/runtime/ChallengeRuntime.gd",
+                      "bytes":  2525,
+                      "sha256":  "30efd40974418ebadccce342a1fcfe5c9623430fc40b82004e2c27d9a91b63e6"
+                  },
+                  {
+                      "path":  "core/runtime/ChallengeRuntime.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "11ffc51e68a8b8ee002f835ab5dab9366c45c144156c7a62ecf6a60daa343966"
+                  },
+                  {
+                      "path":  "core/runtime/ContentRuntime.gd",
+                      "bytes":  2356,
+                      "sha256":  "d6100799202336e4c6dfac0b1cfbb830a6ad149d110ddcf72d553fca943e31eb"
+                  },
+                  {
+                      "path":  "core/runtime/ContentRuntime.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d0471c10c53611bc75de20bd9b78e884d61f169c472db528136ea4e4c61ecc16"
+                  },
+                  {
+                      "path":  "core/runtime/ContentRuntimeRegistry.gd",
+                      "bytes":  4957,
+                      "sha256":  "1b063ad7c0d5b01c1af4a859c90ea2af761baabb9a8a7b3cf1b61d5852d7fb70"
+                  },
+                  {
+                      "path":  "core/runtime/ContentRuntimeRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "96cf18f0452a68a22e43d55b09674aa8e89654db93d2770f933051380865419d"
+                  },
+                  {
+                      "path":  "core/runtime/RenderedFrameStream.gd",
+                      "bytes":  1744,
+                      "sha256":  "faf037b81326bb8fb54a3aaa66e096490298910c40269e53672f5ca35a9a6ab2"
+                  },
+                  {
+                      "path":  "core/runtime/RenderedFrameStream.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "83d449e1321422b406a2ce78ea2ebd0ec2f568a74cb67bf14d24c7a82e0413d1"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/FractalGenerator.gd",
+                      "bytes":  2325,
+                      "sha256":  "1ff5896aebe7e474ff3bc6fa4952ef21d4294a349415b211b92622a33413a830"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/FractalGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "cedc26c028aac674af558505ca2d3ac5f00b750ebe8d731b8297745f7031d7ef"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/GeometricGenerator.gd",
+                      "bytes":  1520,
+                      "sha256":  "97b69ae83f93bde8ab38a0d7296e4a6b73ab50e6d3defd10af641d3e8cb3b01f"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/GeometricGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c690f94a3b0119829fae95af0acb44e854d582bf7a4749435c80bee030892dca"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/KaleidoscopeGenerator.gd",
+                      "bytes":  1590,
+                      "sha256":  "abbcedcc4658e5afd49c25f1366cf2020b50d5508bc8205478e584dfeb7c0272"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/KaleidoscopeGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "bc6f4a522623980e919bdf50d6af094e7ee2c88795b45d290a41b8a548c4e548"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/ParticleFlowGenerator.gd",
+                      "bytes":  1723,
+                      "sha256":  "e59a8682d8c69b13c17419925000f3c2f21c48f2becce024d38e21e9fe03aefe"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/ParticleFlowGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "904b2f22ab53701ac89695b5bb28b02cde4ebadd20ccca3d4081251139117836"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/VectorFieldGenerator.gd",
+                      "bytes":  1570,
+                      "sha256":  "84408ad22ce8bf991eb6935b714a4fa4db53ee39aaf1455b07e627942d01bf16"
+                  },
+                  {
+                      "path":  "core/runtime/visual/generators/VectorFieldGenerator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "a24aa2798c9d1efacb4f62c6106b4eda4f41f8250749594c30078c7088d10109"
+                  },
+                  {
+                      "path":  "core/runtime/visual/VisualFrameState.gd",
+                      "bytes":  685,
+                      "sha256":  "f61a786e5aefa69d1bad9f2b021690883e3041636f4e1fd1615ea6347d6a47f9"
+                  },
+                  {
+                      "path":  "core/runtime/visual/VisualFrameState.gd.uid",
+                      "bytes":  18,
+                      "sha256":  "e10be35dfac75a6fcbe3add2bcfd87e0d33c446e218b89cf33cf363c9b03ac24"
+                  },
+                  {
+                      "path":  "core/runtime/visual/VisualLoopGenerator.gd",
+                      "bytes":  745,
+                      "sha256":  "70f710334f5ab4c0527d0b305c02ef6409ae4eb66a09a9f03a5ba7890704f82f"
+                  },
+                  {
+                      "path":  "core/runtime/visual/VisualLoopGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c2eaa41dfabc66a81f6c0ba76cd62d2a86e77a63916d4d78d570abb5192641e6"
+                  },
+                  {
+                      "path":  "core/runtime/visual/VisualLoopGeneratorRegistry.gd",
+                      "bytes":  719,
+                      "sha256":  "edabbf39a4164b4099fa75d55724607dc5cfe32ca25b2491fda9055c5ee062f0"
+                  },
+                  {
+                      "path":  "core/runtime/visual/VisualLoopGeneratorRegistry.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fb9c3e5d9b1ec62c2a9d986076926154d9bfeab591485822d3f3c3d491cc5903"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/PeripheralScanGenerator.gd",
+                      "bytes":  1977,
+                      "sha256":  "6ac8772538803e0be611e4d8181212d0413b10f29de016866a3c3456b4c39940"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/PeripheralScanGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "edc11749566a44aac7877889b62e748a168b08f387c9cf57daf356045387b646"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/PursuitGenerator.gd",
+                      "bytes":  1359,
+                      "sha256":  "b6bc60665b867f23d8fddf14cc566e47d671e345a74de672b3e8aed117b2bc52"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/PursuitGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e01ef4ca41134ceebc1b8c3c0afc37c2d0ec0097a17b68e84361eb1d79edbfc7"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/SaccadeGenerator.gd",
+                      "bytes":  1359,
+                      "sha256":  "0680b9a58f297182f8105bee3e253955300f57d5f1e69b6c237aa1fa26904aff"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/SaccadeGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fc752b87239956642c5ecf60408e4e8ed7df79f82ce2e83084d72af7af18e5f8"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/TrackingGenerator.gd",
+                      "bytes":  1368,
+                      "sha256":  "9297f67c476734787c18bce6341fe76786a40c8e33a59b5dd7a391d645e15c33"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/generators/TrackingGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "ff8b2e2934d546ac48c69da4876e0c4f60248768d74773d8221578d82748a88e"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/VisualDrillFrameState.gd",
+                      "bytes":  931,
+                      "sha256":  "ba888d90b8fd12667257f3663896efa3014a413e19ce520acf850ab2185d0f99"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/VisualDrillFrameState.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9b7712a5615ab40eb3d13d699e2004dac8f9de97e97cf9aab66b73430442a6a0"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/VisualDrillGenerator.gd",
+                      "bytes":  476,
+                      "sha256":  "7cdcae6a372884eb8b25a727fa8f0bdb00818cdb4cf06b226e50fc86c1126330"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/VisualDrillGenerator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "b950dc97c874a16a590026942328cff0d82b97e20327bca12b8f7bd80f1d7868"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/VisualDrillGeneratorRegistry.gd",
+                      "bytes":  635,
+                      "sha256":  "8ce497b90201757c1c7403c78f8843ebb53951d8280f7fff1b914708c50555d6"
+                  },
+                  {
+                      "path":  "core/runtime/visual_drill/VisualDrillGeneratorRegistry.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "64d9c79b6496176c054380c42022c3db4e3e4e22f5b1b3d2bf7450b633ed24cd"
+                  },
+                  {
+                      "path":  "core/runtime/VisualDrillRuntime.gd",
+                      "bytes":  5827,
+                      "sha256":  "aaad448c707cc623a898c44438e1afe946017859459a39deb717eb4bf6b928d8"
+                  },
+                  {
+                      "path":  "core/runtime/VisualDrillRuntime.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "0baa37b554a7de0aa01a2ce175a7d85020a13b180c1067a093337080c3e6ff0d"
+                  },
+                  {
+                      "path":  "core/runtime/VisualLoopRuntime.gd",
+                      "bytes":  7908,
+                      "sha256":  "961e976a359e358104ced1447fdc44f104cb1016eaa17eb5211f734166d14022"
+                  },
+                  {
+                      "path":  "core/runtime/VisualLoopRuntime.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7e254b15437cdd124518ed2862ec9126d4c284d1f81870852e2b9d8acb121c58"
+                  },
+                  {
+                      "path":  "core/simulation/SimulationMetricsResolver.gd",
+                      "bytes":  1815,
+                      "sha256":  "3ecd5c32c3eaa3235ec6f442e1ceb4316918bf2c83d136afaee82430807b9587"
+                  },
+                  {
+                      "path":  "core/simulation/SimulationMetricsResolver.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b0e64abe5b80240f8fa350c6c73198cc45b9c6f417191c608b0a2967a1e5a6b0"
+                  },
+                  {
+                      "path":  "core/simulation/SimulationResult.gd",
+                      "bytes":  3593,
+                      "sha256":  "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+                  },
+                  {
+                      "path":  "core/simulation/SimulationResult.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "62b5ce11325ff8a93c72783c5f32362d2fc1bf4f5728b86b6fad15915e1e1d1f"
+                  },
+                  {
+                      "path":  "core/timeline/VideoTimeline.gd",
+                      "bytes":  384,
+                      "sha256":  "0887364e8ca682e729908cef337c5d7877343d9b85e27954312ca1d104450114"
+                  },
+                  {
+                      "path":  "core/timeline/VideoTimeline.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "0391ce8be7a798e81fe17648a5fe02b8caec8af339b3dcde0c9582eee1c5ff34"
+                  },
+                  {
+                      "path":  "core/validation/C6FChallengeSchemaValidator.gd",
+                      "bytes":  5314,
+                      "sha256":  "7aebf3fc3bc7fb707a9b9012a5f9d2afbc4e99138e937887ccb391d871b23c35"
+                  },
+                  {
+                      "path":  "core/validation/C6FChallengeSchemaValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "dfff700c4e04798400a772cd63a9ca2f690aa31cac30015ddab7dd4dc368121f"
+                  },
+                  {
+                      "path":  "core/validation/ChallengeDefinitionValidator.gd",
+                      "bytes":  4906,
+                      "sha256":  "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4"
+                  },
+                  {
+                      "path":  "core/validation/ChallengeDefinitionValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "5d85db9a7dbf290d31c706ee5e51e7eebd06d4faa501453d4bdbb50b0de7c16f"
+                  },
+                  {
+                      "path":  "core/validation/ChallengeValidator.gd",
+                      "bytes":  3485,
+                      "sha256":  "db512e574ba3f9e25dda5709dea4784edc2e9da8f13fb9f2586d4645fbc03bf0"
+                  },
+                  {
+                      "path":  "core/validation/ChallengeValidator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "ff06451a1ca9cae87c58ae507b9496a546c76248be97929d375c73c6207a44fe"
+                  },
+                  {
+                      "path":  "core/validation/ContentSchemaValidator.gd",
+                      "bytes":  13069,
+                      "sha256":  "37b3fd0d6add71bfed8d2f62fe77bf93b0b28dd098627b078b3509a07c6b4687"
+                  },
+                  {
+                      "path":  "core/validation/ContentSchemaValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "354c4f1c4e881588f5de57800ad50f1766bc3368cc4b63c18415180c000d8b77"
+                  },
+                  {
+                      "path":  "core/validation/FamilyAssets.gd",
+                      "bytes":  871,
+                      "sha256":  "e2280164cab4e91ef186e1bcfe99f8fb8ed3e2f2d6af7ed758111e4e52eac1d9"
+                  },
+                  {
+                      "path":  "core/validation/FamilyAssets.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "00527c800da80343a1175358c6a1af720a3d646d68c8d0e5299e13d99559692d"
+                  },
+                  {
+                      "path":  "core/validation/PresentationProfileValidator.gd",
+                      "bytes":  4517,
+                      "sha256":  "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49"
+                  },
+                  {
+                      "path":  "core/validation/PresentationProfileValidator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f0de425423a0bdad4e9b21e5a3a470baed5fcc2a4d9e2940c411591ec15fac72"
+                  },
+                  {
+                      "path":  "core/validation/ValidationResult.gd",
+                      "bytes":  667,
+                      "sha256":  "d29ce1ee09e104e40bbadb8008c531686fac2883547ba8d1f0a2e99df58fdf7a"
+                  },
+                  {
+                      "path":  "core/validation/ValidationResult.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "03c8fd0294fda38d41c2d3f71d8ac2b89f7eca48b8bf8033b48d233503e3c9bd"
+                  },
+                  {
+                      "path":  "core/validation/WinningFrameDetector.gd",
+                      "bytes":  1705,
+                      "sha256":  "018e33d981956f55c28c789c783029176c83b81b5ae17fa97913b79d83fe84c2"
+                  },
+                  {
+                      "path":  "core/validation/WinningFrameDetector.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "083943b783785f41e2390790c168f950f2f20a46593e196cd99c5dd0c4c71043"
+                  },
+                  {
+                      "path":  "docs/00_PROJECT_OVERVIEW.md",
+                      "bytes":  1253,
+                      "sha256":  "34a1c646d175e8923f69bf6e0678ab65324085c6df5bf10c0035f95bafde2318"
+                  },
+                  {
+                      "path":  "docs/01_ARCHITECTURE.md",
+                      "bytes":  1218,
+                      "sha256":  "ea6bae5853d9ef36288fc799dc091dbfb1909e352a06ef37824b80b7feed16aa"
+                  },
+                  {
+                      "path":  "docs/02_DATA_AND_CONTRACTS.md",
+                      "bytes":  1161,
+                      "sha256":  "5c069bdd287d8480c1c7a0a5eb9b2a3ae3e9815b18236de4cd6bb27c1fe870ff"
+                  },
+                  {
+                      "path":  "docs/03_PRESENTATION.md",
+                      "bytes":  1169,
+                      "sha256":  "585346a6581926c365a7a6ea7a2ac271818f8ae83c0549abda2a9ee8128010e2"
+                  },
+                  {
+                      "path":  "docs/04_PRODUCTION_AND_ARTIFACTS.md",
+                      "bytes":  1141,
+                      "sha256":  "c017294bf8ce858128c5ec4d21f1a47dc09c924b81cab16af2e63557a7863dc4"
+                  },
+                  {
+                      "path":  "docs/05_TESTING_AND_REGRESSION.md",
+                      "bytes":  1288,
+                      "sha256":  "3f9396e8b35fe80d76e3e5837c61bf22c7097107f3784dc2c8dd3e6d2e92b5f1"
+                  },
+                  {
+                      "path":  "docs/06_ROADMAP.md",
+                      "bytes":  1058,
+                      "sha256":  "60074640052d8987dcc81a4e19f9a65159de7833fcdb530aa623457c79dfde4d"
+                  },
+                  {
+                      "path":  "docs/ARCHITECTURE_V0.1.md",
+                      "bytes":  8111,
+                      "sha256":  "e8e46f2dda2fad784d16f0ebfdd245296120457b7f0aa35fc701c01d53ebc0cd"
+                  },
+                  {
+                      "path":  "docs/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+                      "bytes":  3554,
+                      "sha256":  "f88a9c82b0b82cc9f16b5aa945e7116dcff28607330f6cdcc11746c7d45211e7"
+                  },
+                  {
+                      "path":  "docs/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
+                      "bytes":  1649,
+                      "sha256":  "bf8c0600b33d38d12c24079928852b6fb6dd39004ac8e192d87b831102d0950a"
+                  },
+                  {
+                      "path":  "docs/c11/C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+                      "bytes":  1538,
+                      "sha256":  "db42ee77b08df1276736e5fd7ff5c1affd934b4f38a813b11a6ea181b4dc9cd4"
+                  },
+                  {
+                      "path":  "docs/c11/C11B0_CONTRACT.md",
+                      "bytes":  2688,
+                      "sha256":  "d1bbf4234f11dab9d71268dc96effdf5a1e93437b2ade021449451770fe5ed1b"
+                  },
+                  {
+                      "path":  "docs/c11/C11B0_IMPLEMENTATION.patch",
+                      "bytes":  25276,
+                      "sha256":  "62cc3dc278dd821f0b873f55d305e70c92b7ebfb720630b0d2f67b516adce5bc"
+                  },
+                  {
+                      "path":  "docs/c11/C11B1_CONTRACT.md",
+                      "bytes":  1322,
+                      "sha256":  "022371026fdc161352b09884f079bc3ddd06d1c821d468992e611e0b5800079d"
+                  },
+                  {
+                      "path":  "docs/c11/C11-README.md",
+                      "bytes":  11887,
+                      "sha256":  "72f8b51c3626c922aad66e1ec74f188816e49028671490bf70fb76fcbaa3495c"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11A_FIX.md",
+                      "bytes":  602,
+                      "sha256":  "80b9af976ee0bd91f346f78edb5d203017a657bb7a42106aa4b95ed6af907701"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11A_FIX_v2.md",
+                      "bytes":  664,
+                      "sha256":  "859e416245261d19e9632b4bca20d5c3ea36d6f8d0c920591f4559b53821273e"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11A_V3.md",
+                      "bytes":  493,
+                      "sha256":  "2ea7547d7bf408439b284337f64a80691143865e70c8819b5c89e1323d448889"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11A1.md",
+                      "bytes":  1599,
+                      "sha256":  "b874197e08e5897b8056c153c95e3b91b90a4ccdc11379163e23bd8880650fb5"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11B0.md",
+                      "bytes":  1523,
+                      "sha256":  "4250f4154a61a12f4002233a2701696e8ef73fff02b183a38e6b2f6fc0a044b4"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11B0_1.md",
+                      "bytes":  1018,
+                      "sha256":  "8d08c82b64e7aea676545302cbafce78dfa3f88eb09cc03fc65d4e6f1c6c3207"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11B0_1_NEXT.md",
+                      "bytes":  426,
+                      "sha256":  "a0112db85ca8f4e428ff56b66e2c1949e80960e0ef7af9136d7f483449a4c9ac"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11B0_2.md",
+                      "bytes":  2470,
+                      "sha256":  "e66a2749daaf67695f6ae8bff30ab9297c2112578d1d867d0b7bd94fac2fc752"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11B0_2_V3.md",
+                      "bytes":  1463,
+                      "sha256":  "1d40292795b8d47481158477b71c4a59cfa2f792716e3dde7d5d49d826bfdc12"
+                  },
+                  {
+                      "path":  "docs/c11/README_C11B0_2_V4.md",
+                      "bytes":  1403,
+                      "sha256":  "6a23e753bb15277ed474f07e1006eb52b2136d4f8d4aa908580e69af4e44e835"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/00_INDEX.md",
+                      "bytes":  906,
+                      "sha256":  "1f7f069dc2ed77d17aacf4d0d80414a503539ec7122bb5f2a3e92a59f86b8158"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/01_REPOSITORY_LAYOUT.md",
+                      "bytes":  1631,
+                      "sha256":  "e00881ad1dd998677e26071e4d76860e39f14221327b2574b3d57a3690fc2e77"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/02_TEST_REGISTRY.md",
+                      "bytes":  1988,
+                      "sha256":  "1c80b4fafe30a89915c3c80d0e8d9fe85db1b6c2bb2d50f31bf8f77229b9b93d"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/03_RETROCOMPATIBILITY.md",
+                      "bytes":  1672,
+                      "sha256":  "15cdd475389c942d2d3c3c5bdcee890378b403e2d0b5ad270e81709464fae321"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/04_SEED_POLICY.md",
+                      "bytes":  1062,
+                      "sha256":  "e86e42f788b6faec755312c1b7563cc81687d77994821f782c567ba1ba21ffcd"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/05_QA_VIDEO_TEXT.md",
+                      "bytes":  595,
+                      "sha256":  "eba9b7fee449b61b01dfc096fedd99acf52e7b03e16502071dab0e73cb329c59"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/06_FREEZE_CHECKLIST.md",
+                      "bytes":  1146,
+                      "sha256":  "34ec49bf0be32a317fa03626602a59a6594e1079105727e33c9d5ebac03e56c7"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/07_CURRENT_STATE.md",
+                      "bytes":  1178,
+                      "sha256":  "edc69fbc60120e33c39700d530b3f3c6382e37f9af0b5bd5012d48824238392e"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/08_DOCUMENTATION_LIFECYCLE.md",
+                      "bytes":  1307,
+                      "sha256":  "92110907c3357c2c17a31b78f518c4a0b7e2dde8b8fe1ec1f4541faac8c79e84"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/09_CONSOLIDATION_V2.md",
+                      "bytes":  1156,
+                      "sha256":  "342d6458bc5dd5d0aca49fd7247b31760580255ef7b2ddc5b387caa22f8b497a"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/10_LONG_TERM_PROJECT_GUIDE.md",
+                      "bytes":  2259,
+                      "sha256":  "4cf9e772db34254b2b3af5b0922ac8243fad857fed9c8e00833cf2be946ddde6"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/11_FINAL_FREEZE_GATE.md",
+                      "bytes":  1039,
+                      "sha256":  "234a4ef8e66ab6499632614ea8d107b0eb4d4238f52faf54d290fc883f6d292b"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/12_DOCUMENTATION_INDEX.md",
+                      "bytes":  695,
+                      "sha256":  "d8104ba263cca9dd447227d8c6127701f65501c66e53decd4b50ce9dcf7bbcb7"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md",
+                      "bytes":  2206,
+                      "sha256":  "46c11e7345a7a139fb25f5836535c9b0c7433d50624ed20f5b98165aea4e1062"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md",
+                      "bytes":  1660,
+                      "sha256":  "d882bbb58a18b8e4f94429b8e808f12f07fa388280c7616b9849865026570af1"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md",
+                      "bytes":  646,
+                      "sha256":  "5b1099a9959608e11ca8618e7bd38f36abad62da3f7163348827550525204039"
+                  },
+                  {
+                      "path":  "docs/c11-freeze/15_FREEZE_OPERATING_RULES.md",
+                      "bytes":  632,
+                      "sha256":  "0ded0c809e42c1914aff7a9d15d508388962e5f7e1e2d378b08d1279c826ec4f"
+                  },
+                  {
+                      "path":  "docs/c6/C6_F0_3_4_CTA_REGRESSION_ROOT_CAUSE.md",
+                      "bytes":  2178,
+                      "sha256":  "f2f26669337a8fe3b5bebb6a49bd6eee6ff27a79f920480ab13997744577f1c7"
+                  },
+                  {
+                      "path":  "docs/c6/C6-D4_IMPLEMENTATION_AUDIT.md",
+                      "bytes":  1456,
+                      "sha256":  "e8497393d52e275348533a86a6000c724220c88203d1078729ab78fd6bd49077"
+                  },
+                  {
+                      "path":  "docs/c6/C6-E_E3_IMPLEMENTATION.md",
+                      "bytes":  1411,
+                      "sha256":  "f29d576ed6260e1245561efbee4185552e17969050228d00aac798900298556c"
+                  },
+                  {
+                      "path":  "docs/c6/C6-E_IMPLEMENTATION_NOTES.md",
+                      "bytes":  1188,
+                      "sha256":  "516e224ff82eef401148645f5515f6d17fd32ff9d668ab9b10e4df52d918443f"
+                  },
+                  {
+                      "path":  "docs/c6/C6-E_STEP0_E1_REPORT.md",
+                      "bytes":  3354,
+                      "sha256":  "f2a691c27d2242b2833c902a7c8a8b2881a558b5e8b00091f106d1d4e8ae0fa2"
+                  },
+                  {
+                      "path":  "docs/c6/C6-E4_IMPLEMENTATION.md",
+                      "bytes":  1328,
+                      "sha256":  "8252c8d42ee7835cb53fbb09b92c25a5f743e246a269983b4b6e690c363b359e"
+                  },
+                  {
+                      "path":  "docs/c6/C6-E4_RUNTIME_INTEGRATION.md",
+                      "bytes":  1731,
+                      "sha256":  "128eb29835e765727eaff0268e8f108e2a2f9a4b3f8fbca0b475e733d4d782b1"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F0.3.5_CTA_REGRESSION_REPAIR.md",
+                      "bytes":  1055,
+                      "sha256":  "bbab62769975a5c9f0d8716fb754b45f86850848e8183caac567b139e20ba6d3"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F0.3.5_FINAL_PATCH_README.txt",
+                      "bytes":  382,
+                      "sha256":  "6053d36dcd7782c1f0d373729a7613033165327fbf6e1232b2ae58a03027c6e8"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F0.3.5_IMPLEMENTATION.md",
+                      "bytes":  5144,
+                      "sha256":  "7d1ce2699a551065d42898d4f14e1b8a299aa9c365d79499db1fda56b76c6f25"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md",
+                      "bytes":  14331,
+                      "sha256":  "58716386dcdc5a078f22a924374fd0b1166b77597d30b8770cbe2872c5774446"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.2_IMPLEMENTATION.md",
+                      "bytes":  2567,
+                      "sha256":  "fda0d511003949d786bcecbf9e50ebae9505dd851252764ae6d2c19c23e4b1e4"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.2_STATIC_MATRIX.json",
+                      "bytes":  2020,
+                      "sha256":  "aff99bbdc3d4944cd0e60b32ce12c30d8f3f31253646206809f2db004b82e0b4"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.3_IMPLEMENTATION.md",
+                      "bytes":  2327,
+                      "sha256":  "83243822b37e5ed53d8ff84d5e073a1b4b17c416bc39951fa1992e57fe570751"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.4_PHASE1_PILOT_NATIVE_V2.md",
+                      "bytes":  2000,
+                      "sha256":  "961fd0d37d8b88f9c7267abd046c89021c9275711098d971fb2cf18ecae5af15"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.4_PHASE2_PARKING_NATIVE_V2.md",
+                      "bytes":  915,
+                      "sha256":  "bfff627a4a13ebc2d86eb89c6fb2aec315e185e90f89d7e8a3f34c0843731da1"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.4_PHASE4_CATCH_CLOSURE.md",
+                      "bytes":  3723,
+                      "sha256":  "d48ff1ba405ce19b37a3a611a334d710a3275a1fdb6f09b49ad557eefd385036"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.4_PHASE5_FIND_PREIMPLEMENTATION_AUDIT.md",
+                      "bytes":  3018,
+                      "sha256":  "436fded4402870fef277b8dd67ca6ff6b64f848e7a1d153476953ae8761c83fc"
+                  },
+                  {
+                      "path":  "docs/c6/C6-F4.4-P5-FIND-IMPLEMENTATION-NOTES.md",
+                      "bytes":  1359,
+                      "sha256":  "fedc16328cf27d261a4ffbf5b6f1b5518a3ef01bc1e93dd401737280c39db8c7"
+                  },
+                  {
+                      "path":  "docs/c6/C6F4-P7-COUNT-BRIDGE-NOTE.txt",
+                      "bytes":  191,
+                      "sha256":  "6a32a341f0ebbebf4f7588a995614a58a2e1767e3c996e1827e2fd9603bc9d44"
+                  },
+                  {
+                      "path":  "docs/c6/F1.1_FIX4_NOTES.md",
+                      "bytes":  1193,
+                      "sha256":  "9486bc05508032dedea8e09dbb628d01b682326cc3995a7543211fadb7ccc79a"
+                  },
+                  {
+                      "path":  "docs/c6/F1.1_IMPLEMENTATION.md",
+                      "bytes":  581,
+                      "sha256":  "452c98d981ddb795284d4acec8f081a5ee0aa98b12f81140cda1de646177be5c"
+                  },
+                  {
+                      "path":  "docs/c6/F4.2_FIX_NOTES.md",
+                      "bytes":  943,
+                      "sha256":  "9ef3d9e981400c3b1dd04801686d38707e4d7c7df56027e3414a816a3bb47e72"
+                  },
+                  {
+                      "path":  "docs/c6/MIGRATION_1.1.0-C6-D3_TO_1.1.0-C6-D4.md",
+                      "bytes":  1128,
+                      "sha256":  "b696b0cc84619359fb5b879f3ab5b2e1b04685c16c02d73325fb1c567b1571a0"
+                  },
+                  {
+                      "path":  "docs/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md",
+                      "bytes":  18981,
+                      "sha256":  "c6d09f6944fc31e26e5f057d304b104cfa02a47e6b340d72792ef25c4809afa5"
+                  },
+                  {
+                      "path":  "docs/c9/C9-D_AUTHORING_REPRODUCIBILITY.md",
+                      "bytes":  668,
+                      "sha256":  "141e78db5fb15340924bf9387ce5af60e83e268c30dc4b72d684359c3a8a5d18"
+                  },
+                  {
+                      "path":  "docs/c9/C9-E_HIT_V1_AUTHORING.md",
+                      "bytes":  522,
+                      "sha256":  "05abf736b50bc6cfec394efaa68c5032c6f0932470bed3141d842fadfdeec3d8"
+                  },
+                  {
+                      "path":  "docs/c9/C9-F_CATCH_V1_AUTHORING.md",
+                      "bytes":  503,
+                      "sha256":  "f6a663df5b9b73e2f08606dfdc16a3098e99574a8dcfba055ffc7da420b1a209"
+                  },
+                  {
+                      "path":  "docs/c9/C9-G_REMAINING_MECHANICS_AUTHORING.md",
+                      "bytes":  992,
+                      "sha256":  "08c8b337b3b890b9ba11166fefc098833f117e81d11289dc0f13ec1ca8927dc4"
+                  },
+                  {
+                      "path":  "docs/CHECKPOINT_0.3.6_DOCUMENTATION_CHANGELOG.md",
+                      "bytes":  1319,
+                      "sha256":  "78a955d954ccd5f2d4989cdb9895014d2c45acb72429754129e7a52c0e540634"
+                  },
+                  {
+                      "path":  "docs/CHECKPOINT_0.3.6_STATUS.md",
+                      "bytes":  5472,
+                      "sha256":  "a32ef701e30169a7fe6a924a1e539192bbc8f0242dc55d39484452d8a9d581f2"
+                  },
+                  {
+                      "path":  "docs/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md",
+                      "bytes":  4212,
+                      "sha256":  "5bc329831aa3351bf8922183a8f872f4c45203e5bd701b3daa5aeaaa5c5d6b61"
+                  },
+                  {
+                      "path":  "docs/checkpoints/C11_FREEZE.md",
+                      "bytes":  989,
+                      "sha256":  "a4c48b1912c5042c966a8ae29dae5f967290d9cb223d692a8e4534be5774d56d"
+                  },
+                  {
+                      "path":  "docs/CONTENT_SCHEMA_V0.1.md",
+                      "bytes":  5133,
+                      "sha256":  "dc3555a0690268c10dfc798104a9faf59c50fd5d567427af5d055981ae213655"
+                  },
+                  {
+                      "path":  "docs/DATA_MODEL_V0.1.md",
+                      "bytes":  3402,
+                      "sha256":  "9f7cdbf5ad09c2fe338ea069e0c005f7cf78b0d45e7cc3ebab514c07a2594203"
+                  },
+                  {
+                      "path":  "docs/DISTRIBUTION_SPEC_V0.1.md",
+                      "bytes":  3102,
+                      "sha256":  "b681b6db0eebfa080d0b86256619c237bd405212d6fd072f2d30ea1ecf947759"
+                  },
+                  {
+                      "path":  "docs/DOCUMENTATION_0.9_1.0_UPDATE_SUMMARY.md",
+                      "bytes":  1322,
+                      "sha256":  "9718ef53648a7871b10f995f5265616314b76379f54cb4b04364ea183bd3de63"
+                  },
+                  {
+                      "path":  "docs/DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md",
+                      "bytes":  995,
+                      "sha256":  "1e110b5c0e91e6588603a5ce940fd24d98e906507e8beef78f6d79d39e359770"
+                  },
+                  {
+                      "path":  "docs/DOCUMENTATION_STATUS_1.0.0.md",
+                      "bytes":  1278,
+                      "sha256":  "5a051e70d31d46da5a518f9259a6631cf30dde459807a62765aeaacb5895e623"
+                  },
+                  {
+                      "path":  "docs/DOCUMENTATION_STATUS_1.1.0-C6-D4.md",
+                      "bytes":  2222,
+                      "sha256":  "74014b82c68e3962ce1621e000be75eded058c713b2c50bbc8212dd12b680043"
+                  },
+                  {
+                      "path":  "docs/DOCUMENTATION_STATUS_C6-F0.3.md",
+                      "bytes":  1444,
+                      "sha256":  "d0da8ab14532f7fd8e048239151e2fdfbd514d88988ca0ff18729db9616abd72"
+                  },
+                  {
+                      "path":  "docs/DOMAIN_MODEL_V0.1.md",
+                      "bytes":  2497,
+                      "sha256":  "f4cab1214e79d8718677f6ca3a5c1ec9675285b2331b4a0c1e3965b440ded1f8"
+                  },
+                  {
+                      "path":  "docs/GOVERNANCE.md",
+                      "bytes":  6556,
+                      "sha256":  "91cd91f0236ab6b2b8a26318771d54e5abc157acfccf6cb283cfa6247fd27b61"
+                  },
+                  {
+                      "path":  "docs/history/README.md",
+                      "bytes":  405,
+                      "sha256":  "2d257c5d54823b4e3915247d475f21cf1013ef0935509cc0914b4651e1a968fc"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER HANDOVER — ChallengeEngineV01_STATELESS — C7-A3 FROZEN - CERTIFIED.md",
+                      "bytes":  9235,
+                      "sha256":  "3c8e5a3e7ac830e4abd451a933ca31cb4320c253fbbf7103c0ee73a3f3efe277"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
+                      "bytes":  9235,
+                      "sha256":  "3c8e5a3e7ac830e4abd451a933ca31cb4320c253fbbf7103c0ee73a3f3efe277"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_C10_VISUAL_AUTHORING_FROZEN.md",
+                      "bytes":  8434,
+                      "sha256":  "63270ff92d62f50634b43856aecd03a5212dd13cec22bff03d1b419a5719878a"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_C6_F0_8_FROZEN.md",
+                      "bytes":  16856,
+                      "sha256":  "0b5fd9efc6b11a667db981b2cdf73c2765efe23da688884b196088616ef4ad26"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_C6_F0_8_FROZEN_v2.md",
+                      "bytes":  11557,
+                      "sha256":  "b2baf3eb4dffbad9adeaf69da997654e2f448fb8e259ba106999af9e0ed5f368"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md",
+                      "bytes":  16469,
+                      "sha256":  "69b42a6bb9b69e0d36e283ead537788954e717f8d777f150ffbf39db3c4e6633"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md",
+                      "bytes":  3636,
+                      "sha256":  "2867b7355ac0eedb4afa6e7a69ee3a2ba6218a31485511e5f492c373b3d146c2"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md",
+                      "bytes":  13877,
+                      "sha256":  "28e2e663c8b3f8491b0cf995f0b006238072238abd157531148a0a913419faa4"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.6.0.md",
+                      "bytes":  4520,
+                      "sha256":  "d437ac23137f8aab30dea89d7e3c9f35ece77dcff3d3a2d6341d19d7616f530c"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md",
+                      "bytes":  23787,
+                      "sha256":  "fc40025d11b354614eec8919b999ba1244a1e92f43d6f4e93e6e2c8a7176d31d"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_0.9.0.md",
+                      "bytes":  3418,
+                      "sha256":  "fbbb2ed5ea240c593073fa523e2d10b20927f49f07080cf2cff26da38cf7540d"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.0.0.md",
+                      "bytes":  6804,
+                      "sha256":  "e5cc8605e207fde99fe1d35ba7144f06955fdcc3aaba3fbef6137394b58acfda"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md",
+                      "bytes":  6896,
+                      "sha256":  "c1f041d777b1468d1d7b040c8cde060bb85bd857703ba3682ff8cc45af5bbfb6"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md",
+                      "bytes":  2919,
+                      "sha256":  "0cba875edc72e7d50a7d989c2370c85f846b339b0ff8ccb473d27b8757299214"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md",
+                      "bytes":  1658,
+                      "sha256":  "8aff3d4ac0385f2ef1990f68e4d3274cc2f8caad49f3a112ba1f313f8c112dde"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-F0.8-E.md",
+                      "bytes":  4500,
+                      "sha256":  "b3019f496e48cce0d81ab2b413851322fb08855b5868cc11beed088bd028bdd5"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.4_CLOSED.md",
+                      "bytes":  14185,
+                      "sha256":  "5cdaf3e5aee85b1e09a7d6d4a6d01debf7a685159ebf7e13f1798f15e84db310"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md",
+                      "bytes":  4604,
+                      "sha256":  "0cd03b5f9c131a91bd3ebaca0800fa088b26e510f5e00ebbaaff01a175359c4c"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_START_PROMPT_1.1.0-C6-D4.md",
+                      "bytes":  1562,
+                      "sha256":  "3ec992720bb1e3426fa2f17a8585288b3ac24d02aa14928b555434fb87447bd9"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_START_PROMPT_C6-F0.3.5.md",
+                      "bytes":  8335,
+                      "sha256":  "b7e35fffd2e7bb5441df01feec31c62a468a2dfe48110bccd2c7bfac06bd0fcc"
+                  },
+                  {
+                      "path":  "docs/master prompts/MASTER_START_PROMPT_C6-F0.8-E.md",
+                      "bytes":  2272,
+                      "sha256":  "27e525f9eafca80768d861574ff62b43aa06c98990643de0ac5ff89a15e32fc4"
+                  },
+                  {
+                      "path":  "docs/master prompts/START PROMPT — ChallengeEngineV01_STATELESS — Continuación después de C7-A3.md",
+                      "bytes":  4583,
+                      "sha256":  "ded9674baeda03763b06337afdf4732c4e6f176ff519dbda6ae33b912563d172"
+                  },
+                  {
+                      "path":  "docs/master prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md",
+                      "bytes":  4583,
+                      "sha256":  "ded9674baeda03763b06337afdf4732c4e6f176ff519dbda6ae33b912563d172"
+                  },
+                  {
+                      "path":  "docs/master prompts/START_PROMPT_C10_CONTINUATION.md",
+                      "bytes":  4225,
+                      "sha256":  "099ccce23eb5be8553239e0770dc6b675c1ba5a9e00e3ea8700ab98fbccf4568"
+                  },
+                  {
+                      "path":  "docs/master prompts/START_PROMPT_C6_F0_8_CONTINUATION.md",
+                      "bytes":  7049,
+                      "sha256":  "0335ac97ff79ee24f6164e0c9c47ab3b39aeae9453470d788ed43157fb092d98"
+                  },
+                  {
+                      "path":  "docs/master prompts/START_PROMPT_C6_F0_8_CONTINUATION_v2.md",
+                      "bytes":  7449,
+                      "sha256":  "e11fcb7121fd22ae4432f3df564d456824a3e26d6f69b6761164b470d8355b99"
+                  },
+                  {
+                      "path":  "docs/MECHANICS_SPECIFICATION_V0.1.md",
+                      "bytes":  5018,
+                      "sha256":  "2b7459269f810a4e260726401e53bf13380c8b020b61de95037c12e6d6bf9619"
+                  },
+                  {
+                      "path":  "docs/PACKAGE_CONTENTS.txt",
+                      "bytes":  446,
+                      "sha256":  "052ff67c9f22ded7b2240b54401405e05aa3e7ce14989bb39c6b06e200063059"
+                  },
+                  {
+                      "path":  "docs/PACKAGE_MANIFEST_1.1.0-C6-D4.txt",
+                      "bytes":  1048,
+                      "sha256":  "8a6255f5c5d1964b50d3c8ed5b4d87d5478248df03a5acfe90e69fa7423b2dce"
+                  },
+                  {
+                      "path":  "docs/PACKAGE_MANIFEST_C6-F0.3.5.txt",
+                      "bytes":  2008,
+                      "sha256":  "c40eec0f3d66126da120fe7c75d2e75fba15a21312aca233d326250e9527b93c"
+                  },
+                  {
+                      "path":  "docs/PARKING_MECHANIC_V2.0.md",
+                      "bytes":  7684,
+                      "sha256":  "a2281817b2130afe0066d94482dfa89ce9fb2e60ec28c9ab6d62f510c23c786b"
+                  },
+                  {
+                      "path":  "docs/PILOT_MECHANIC_V2.0.md",
+                      "bytes":  16553,
+                      "sha256":  "3ed52953355ad001be8da8c9ccaea863a81feae7324c0db5cba262772371da5e"
+                  },
+                  {
+                      "path":  "docs/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md",
+                      "bytes":  7363,
+                      "sha256":  "f060643f3a7b09b6ebb123767a1ad4b7a09027ef40997393db4bcc695799897d"
+                  },
+                  {
+                      "path":  "docs/README_INTEGRATION.md",
+                      "bytes":  2185,
+                      "sha256":  "3263cef854343c3fa3182c350c9c48e2751f5f1a7b8ae6e7a1c58aa905ff2ad1"
+                  },
+                  {
+                      "path":  "docs/README_PROJECT_ES.md",
+                      "bytes":  3429,
+                      "sha256":  "ecb11f9fedd6efe746caf4050f7279eab8822682adab623ee32c4ed9b08619fb"
+                  },
+                  {
+                      "path":  "docs/README-P7.txt",
+                      "bytes":  582,
+                      "sha256":  "272ab21d8aacbe1783c9c2d58b8911b786d2a6d07c38816f36b1975a4fc6cbd6"
+                  },
+                  {
+                      "path":  "docs/RELEASE_NOTES_1.1.0-C6-D4.md",
+                      "bytes":  836,
+                      "sha256":  "7ac37c2c1b64dba9ed5e0e56809816c14e60faca69b7bc117d4268e762fba7aa"
+                  },
+                  {
+                      "path":  "docs/REPOSITORY_AUDIT_1.1.0-C6-D4.md",
+                      "bytes":  1616,
+                      "sha256":  "bf0eccfce631c153bfad0000a4c68dfa03b53adbdad180d139440e029bd3b834"
+                  },
+                  {
+                      "path":  "docs/ROADMAP_PHASES.md",
+                      "bytes":  6096,
+                      "sha256":  "23ab9203e013f8bd060f1bd419a3c9d85e1838861dd6fc76b6a69af24d7de806"
+                  },
+                  {
+                      "path":  "docs/TESTING_STRATEGY_V0.1.md",
+                      "bytes":  5967,
+                      "sha256":  "57b7f28f917fa1547b49b5b494a618ed8849abc8c1a0be48560e50a0ecfac8fd"
+                  },
+                  {
+                      "path":  "docs/VALIDATION_PROTOCOL.md",
+                      "bytes":  3570,
+                      "sha256":  "66ede403691e01083f727f682430a96fda2e770c22cd078ad61619abc46cf17e"
+                  },
+                  {
+                      "path":  "docs/VIDEO_SPECIFICATION.md",
+                      "bytes":  4133,
+                      "sha256":  "fafeb3569d9cfc8c4d016b6e18204bd541bfb7cd9d1f5deecaaf27a7a3edd399"
+                  },
+                  {
+                      "path":  "project.godot",
+                      "bytes":  868,
+                      "sha256":  "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  3110,
+                      "sha256":  "53957cfa64fd1bde4f1ac961a195a0de1c0e3eb22fb2765475b43fd4c73fd575"
+                  },
+                  {
+                      "path":  "README_C11_FREEZE_FINAL.md",
+                      "bytes":  1744,
+                      "sha256":  "a6043dced7375073ea1a276b2d61630897c1abd9873d8a07c65937248ed1d148"
+                  },
+                  {
+                      "path":  "tests/__pycache__/c8_a_provenance_mutation_test.cpython-313.pyc",
+                      "bytes":  9738,
+                      "sha256":  "477ff519093255e3d1adfd629a3ca5786f46972e5c744fb589b07a340a5d5473"
+                  },
+                  {
+                      "path":  "tests/__pycache__/phase_duration_contract_test.cpython-313.pyc",
+                      "bytes":  2685,
+                      "sha256":  "99545c37f93ed060dafa02eef7d73284c876ee2a1c4f225eb9ddc8fa84ddee53"
+                  },
+                  {
+                      "path":  "tests/__pycache__/run_all.cpython-313.pyc",
+                      "bytes":  8730,
+                      "sha256":  "c08d9bbded459859a787a005f0fd926e6bc81c83aa6c9a8369e2aece23f42c84"
+                  },
+                  {
+                      "path":  "tests/C10AVisualAuthoringPipelineTest.gd",
+                      "bytes":  11148,
+                      "sha256":  "0af1ef243af1e410c7f0fa0eadfc15e8e82a48762f743dd9e0f5b52732482a9c"
+                  },
+                  {
+                      "path":  "tests/C10AVisualAuthoringPipelineTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "23b92cdf3e0d32117ea868302498e3ae297628f0c75f905b37cf2fd9d49439ef"
+                  },
+                  {
+                      "path":  "tests/C10BDeterminismTest.gd",
+                      "bytes":  12319,
+                      "sha256":  "9fd0fc6549995edaf05a8473a0e7cb872d2c1f7f7857aaae7e9d2304ef74da28"
+                  },
+                  {
+                      "path":  "tests/C10BDeterminismTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "0de270302dff67839f4a20dfd5419ad4e9a79d00a55adc108d71f9f4fe678aaf"
+                  },
+                  {
+                      "path":  "tests/C10CEndToEndTest.gd",
+                      "bytes":  8333,
+                      "sha256":  "798d1cafc3f20b4632cc7ba7bf7d7a050784d207a820a8cd7c000f9a513788d1"
+                  },
+                  {
+                      "path":  "tests/C10CEndToEndTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "46283737368e4778018ae43f367415f67f9736210d49e5c7366daa899669a6c0"
+                  },
+                  {
+                      "path":  "tests/C10CPreparePhysicalFixtures.gd",
+                      "bytes":  2963,
+                      "sha256":  "a91daa362d03108b21d9f7c6c1c3a127253b1e86e61f998f3a563ddffaba57f7"
+                  },
+                  {
+                      "path":  "tests/C10CPreparePhysicalFixtures.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "362ba91fe9a11a544157ab71317c0d0966672bc24b959cba13efb67c56e4fa04"
+                  },
+                  {
+                      "path":  "tests/C11ABulkEnvelopeGenerator.gd",
+                      "bytes":  6345,
+                      "sha256":  "deef1ecadd08aaf606bc53a9e456f2cf8146504d22b70b02dabf375de9ef21a2"
+                  },
+                  {
+                      "path":  "tests/C11ABulkEnvelopeGenerator.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "38312be9b006aef0186ece50b637d9764630b94f86fdbb08b1302fd6cf9afb48"
+                  },
+                  {
+                      "path":  "tests/C11B02PresentationFramingContractTest.gd",
+                      "bytes":  1435,
+                      "sha256":  "d5596d3ff941705ea7da57426e9b3875515a55879da7e34e3e41eb22d9f45688"
+                  },
+                  {
+                      "path":  "tests/C11B02PresentationFramingContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9a73bbd3a6293f07cd6c21e0832e97deb90a515044dc3bb04a29d92238799ca7"
+                  },
+                  {
+                      "path":  "tests/C11B0UnifiedSocialFrameContractTest.gd",
+                      "bytes":  3493,
+                      "sha256":  "365457ab7548dbe2d70713ad821b6fa729145f1bee3cc6fe50c949aab3a695f1"
+                  },
+                  {
+                      "path":  "tests/C11B0UnifiedSocialFrameContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "55ead7205dcf617ad223467f0432ebe71656aa739129add27c3108f4d97ac061"
+                  },
+                  {
+                      "path":  "tests/C11B1SocialUIIntegrationContractTest.gd",
+                      "bytes":  2997,
+                      "sha256":  "7dfc47dbe97dd816f0aa7102e301f7f78e2d92f008f2b0cb224c927d49f23ec8"
+                  },
+                  {
+                      "path":  "tests/C11B1SocialUIIntegrationContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d824758584191a97a486cbcf15f0001a88b0c1965593a795811fed0563dff356"
+                  },
+                  {
+                      "path":  "tests/c11freeze/C11FreezeRepositoryContractTest.gd",
+                      "bytes":  917,
+                      "sha256":  "d40f2345a1eb9d714da38fc935f22d2ed6bc38050bec79c8bdcb42e5c35440ad"
+                  },
+                  {
+                      "path":  "tests/c11freeze/C11FreezeRepositoryContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "106011abc568ac241fb40b027c9c3834b69617f80a8b8b4457be35bfb7c3cf62"
+                  },
+                  {
+                      "path":  "tests/C6E2BadgeAndFontRegressionTest.gd",
+                      "bytes":  1483,
+                      "sha256":  "c1e34b0adce960303eb038ea9562466c77a2bc8fe90d0d77360fafb62e22110a"
+                  },
+                  {
+                      "path":  "tests/C6E2BadgeAndFontRegressionTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "417f1cc1e2a52cd7fd8008dc9313c8875a402e50b1a13eccddde954677ef549d"
+                  },
+                  {
+                      "path":  "tests/C6E2ComponentLayoutValidationTest.gd",
+                      "bytes":  1938,
+                      "sha256":  "b7930e9f0c44df73572e4a2143b523da4eb99003462f83233ad1b80936b5bb95"
+                  },
+                  {
+                      "path":  "tests/C6E2ComponentLayoutValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "71415ad80bf8df7c04f33cbd31a3373820d15a572a0e3a0b8405a57cab396ef3"
+                  },
+                  {
+                      "path":  "tests/C6E2ComponentSystemTest.gd",
+                      "bytes":  517,
+                      "sha256":  "664a7d5ecde78dd138b0f59da926b6683edbe6e10206ee72ba012f3b9ebfa9c7"
+                  },
+                  {
+                      "path":  "tests/C6E2ComponentSystemTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7edf6ec734199acb1d457386219b5c266fafe6b020bd26f90d108872915e917d"
+                  },
+                  {
+                      "path":  "tests/C6E2CountdownContractTest.gd",
+                      "bytes":  1997,
+                      "sha256":  "9252f22a3d14804073b51e09e7045b2edfcb5700de5f067072265c167d61a8c8"
+                  },
+                  {
+                      "path":  "tests/C6E2CountdownContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "23885a38c64c3704109e32a294d2eabf1ddfaddf18086945c8c7bfa6b39de822"
+                  },
+                  {
+                      "path":  "tests/C6E2StructuralAuditTest.gd",
+                      "bytes":  1869,
+                      "sha256":  "c734509298190916692b2e576a00bda5990196e75cd1cfe79910afbbaa50aa3d"
+                  },
+                  {
+                      "path":  "tests/C6E2StructuralAuditTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e5f67481e23edb05f8478b3f15ca2c748358e0858ebdc7de3f66afb30264ad25"
+                  },
+                  {
+                      "path":  "tests/C6E3PresentationValidationTest.gd",
+                      "bytes":  3354,
+                      "sha256":  "1e68f4aeae6ec6fb21342bbbd1793dc238b29308e84ed6d29188c57fa8c72376"
+                  },
+                  {
+                      "path":  "tests/C6E3PresentationValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9eb2d47bf785e628578626c72946d435a27c3884841690ca6b52f739ca97ea5d"
+                  },
+                  {
+                      "path":  "tests/C6E3RuntimePresentationValidationTest.gd",
+                      "bytes":  5737,
+                      "sha256":  "c298414f21a0d9191f3b89c3391b5864688f385e35337ad9a9e0000318108f5d"
+                  },
+                  {
+                      "path":  "tests/C6E3RuntimePresentationValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "2397afa84ae7f50f84ecd35f1c6c0a186704390a7e6b67a6bf77d21e69e0a85b"
+                  },
+                  {
+                      "path":  "tests/C6E4WinningHighlightContractTest.gd",
+                      "bytes":  2893,
+                      "sha256":  "dedc56f40a0c2cc852553be673ea8a5efda1f07731bcd8f352c7007e4a75ba80"
+                  },
+                  {
+                      "path":  "tests/C6E4WinningHighlightContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "2bc35a370b6e1bc49a640cc998d6c569cc2c1c1faf680d2943f89a3e08af8d79"
+                  },
+                  {
+                      "path":  "tests/C6EAssetIntegrityTest.gd",
+                      "bytes":  1491,
+                      "sha256":  "1d596c873dbd61899690755a22d5722c9fee4ba714cd3ffe71fb0dd01d2cc2af"
+                  },
+                  {
+                      "path":  "tests/C6EAssetIntegrityTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d5f8dae857907d6d5f8ffe7f1cabd8c76c14da9196d500fdc6a98f9d948f0346"
+                  },
+                  {
+                      "path":  "tests/C6EPresentationProfileIsolationTest.gd",
+                      "bytes":  4599,
+                      "sha256":  "b21b7abd4921a0f9db12a29573870a55368bd9a19c64283a8de3a213a2f5582f"
+                  },
+                  {
+                      "path":  "tests/C6EPresentationProfileIsolationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6b9d0a887b88802eb0c23ba828a0a7d3d22127e9e2f9dd0be17ed70958cfeb2b"
+                  },
+                  {
+                      "path":  "tests/C6F0_1_5CanonicalAssemblerTest.gd",
+                      "bytes":  5392,
+                      "sha256":  "6e0be797d1d7b3ebb99d6c776a502b0221df40f23a4113c90009ab9864fe1dbb"
+                  },
+                  {
+                      "path":  "tests/C6F0_1_5CanonicalAssemblerTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "430e3e018b27503ce7ae647386fac001c66bf2e0975ec1fca3bda44b2526d80d"
+                  },
+                  {
+                      "path":  "tests/C6F0_1_6AuthoringPipelineTest.gd",
+                      "bytes":  2858,
+                      "sha256":  "8af8b1fab3349972aca358c6ed241a4d6596b26c708094c43e5a68cacb6f4314"
+                  },
+                  {
+                      "path":  "tests/C6F0_1_6AuthoringPipelineTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c3d681cef7faf7fc8f21e1a62be233c7e0d0e9b0d527832d664ae6a55080e34b"
+                  },
+                  {
+                      "path":  "tests/C6F0_1_7RuntimeBoundaryProofTest.gd",
+                      "bytes":  7510,
+                      "sha256":  "9960d0aacc74087374fbd8485bde1852bbbf31212d10f38da56e29b0385dec4d"
+                  },
+                  {
+                      "path":  "tests/C6F0_1_7RuntimeBoundaryProofTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "1f6d532721abd807ab997bec24b2f9c6f6e20ec544fd2569d8fd2519f3022c15"
+                  },
+                  {
+                      "path":  "tests/C6F0_3_4CTARenderRegressionTest.gd",
+                      "bytes":  1977,
+                      "sha256":  "ec626a5a14b7861569fe39e428cbf033004ae89e01a9e0b90b1c11ee7bf669e4"
+                  },
+                  {
+                      "path":  "tests/C6F0_3_4CTARenderRegressionTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "e0b3879e532e0ec9e6beedf7fdcfbbaadca3bf11664fb30be63df589871ab4de"
+                  },
+                  {
+                      "path":  "tests/C6F0_3MultiContentFoundationTest.gd",
+                      "bytes":  22303,
+                      "sha256":  "ea24d0a16274c73e011c8a001032b0356851233055e07d53213348a2ab77e44a"
+                  },
+                  {
+                      "path":  "tests/C6F0_3MultiContentFoundationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "135c664f1b48eb30c167c77ec9db9669374b3e98aafba2842d6cc84f06ce827a"
+                  },
+                  {
+                      "path":  "tests/C6F035ContentRuntimeBoundaryTest.gd",
+                      "bytes":  13141,
+                      "sha256":  "8a359a2bf9af6fa674afdcb81f51498ffe0833e3cc23db35ac6538cf84b5d137"
+                  },
+                  {
+                      "path":  "tests/C6F035ContentRuntimeBoundaryTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "39b3aef93c4aad982b4d6a2ef650855076971ef2fd71727a4a13bb09a05d29bf"
+                  },
+                  {
+                      "path":  "tests/C6F041VisualLoopRuntimeTest.gd",
+                      "bytes":  6923,
+                      "sha256":  "2cb8cd476f89ca283f158f46032cefd493e82c921ac5bd6d8b98f34266a4d6ea"
+                  },
+                  {
+                      "path":  "tests/C6F041VisualLoopRuntimeTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "bc137075542d0e1132e90ab882d5b86b8e196be56887caa94659bf9eda782c4b"
+                  },
+                  {
+                      "path":  "tests/C6F042VisualDrillRuntimeTest.gd",
+                      "bytes":  6135,
+                      "sha256":  "6f4793b4885becbfdc42db6da440bcc54f1f706c0cba1761e411753a49af53c9"
+                  },
+                  {
+                      "path":  "tests/C6F042VisualDrillRuntimeTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "54a9ea33d82b8afe79dfe32537be26bd4bcc778738ab4f548cf751137a13a574"
+                  },
+                  {
+                      "path":  "tests/C6F05PhysicalRenderingTest.gd",
+                      "bytes":  4550,
+                      "sha256":  "1a94de5c4d473fb24ac40c923f62f0dd1b89a722fb65cff3d9f932d8835b11fe"
+                  },
+                  {
+                      "path":  "tests/C6F05PhysicalRenderingTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "89222f33da8f4bf76626aa9d64c959ec01792906de9e4ffb753af3aa663ab464"
+                  },
+                  {
+                      "path":  "tests/C6F05PresentationRoutingTest.gd",
+                      "bytes":  6722,
+                      "sha256":  "ef6867369781e40a3cf7016e0d5f4dfbf6271cae16504ef26e20f10c71c035d1"
+                  },
+                  {
+                      "path":  "tests/C6F05PresentationRoutingTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f2f0199b52471cc85031b4ab52ba3daaef29b212e34a7cf6e91f77b14ecf5a19"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualDrillPhysicalExportTest.gd",
+                      "bytes":  1483,
+                      "sha256":  "985118708c8a954cd3a67c95a2a89ea1c0cbb43dfb9628723cb44709fbb7f0c7"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualDrillPhysicalExportTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "5225cef24e6c74e8e2615343a092bec6a3aae023db925c1a53449f7dd41417a3"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualDrillPlaybackTest.gd",
+                      "bytes":  1653,
+                      "sha256":  "84b267d26993f33456e5f3b87b5d0e13814924cb91659667d3fe99a4ac742d00"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualDrillPlaybackTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f07c2b7d539ca4bb707f9a36412212f0697671b799197f96bad28ad6861d729e"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualLoopPhysicalExportTest.gd",
+                      "bytes":  1476,
+                      "sha256":  "a09028a2e5f7bcef8ba0727d5150f73dc642e5d31a0a10dcdc5bc41b7a4863d2"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualLoopPhysicalExportTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "3b6219a0c499ef3b1cf709cf64322347a087913f9824a2ba47415029e857744f"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualLoopPlaybackTest.gd",
+                      "bytes":  1549,
+                      "sha256":  "dc2c6001cffef2c11e8b78618322a6d82d548eb066cd900420fc3d4a9cc4490a"
+                  },
+                  {
+                      "path":  "tests/C6F06VisualLoopPlaybackTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7135784ca73dc7a63cb0e41c90745cf8c56d43b4f195fda201d53a935cccdaf3"
+                  },
+                  {
+                      "path":  "tests/C6F08CompositionContractTest.gd",
+                      "bytes":  1317,
+                      "sha256":  "2fc7027265de11366df5854c6944aa2e65b0c043198cda4bb25ed9df1c21f4e7"
+                  },
+                  {
+                      "path":  "tests/C6F08CompositionContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "c4b594204b2aa0a72e990ae92aa3375b2171c73449c9a6f88f687e373fe75b8d"
+                  },
+                  {
+                      "path":  "tests/C6F08CompositionGeometryTest.gd",
+                      "bytes":  2530,
+                      "sha256":  "c01844533bfc72b17e69df4a55cfd827bed05d0a8f4a3db8848d5264b0e54f02"
+                  },
+                  {
+                      "path":  "tests/C6F08CompositionGeometryTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f2ef372b7a08c0774a7ec9328126451d149296bc394008d2b1d1908aac2ddd22"
+                  },
+                  {
+                      "path":  "tests/C6F08ContentDefinitionContractTest.gd",
+                      "bytes":  1271,
+                      "sha256":  "7c118d3bca56efbbe798c1e0934c38052aff6fa428b10f928e622bdfe00b85f5"
+                  },
+                  {
+                      "path":  "tests/C6F08ContentDefinitionContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "8afcc99809acacea3c68e908474f7337f46471405691ef08ea3aee747411ff35"
+                  },
+                  {
+                      "path":  "tests/C6F08ContentDefinitionDeterminismTest.gd",
+                      "bytes":  3483,
+                      "sha256":  "df5ef443d1490066f686a83f34a72b36111f7a817c132511c0e4e08c3b107549"
+                  },
+                  {
+                      "path":  "tests/C6F08ContentDefinitionDeterminismTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "a32dc16019576a01cc5abfad1eb2c858ac82614d61d129ff57d5f1b2b4c1fe0d"
+                  },
+                  {
+                      "path":  "tests/C6F08CosmeticRNGContractTest.gd",
+                      "bytes":  6380,
+                      "sha256":  "d0aeedae76afbee248a71ca8811fc376ec6b65703b4ce07d216b141e57fab2d1"
+                  },
+                  {
+                      "path":  "tests/C6F08CosmeticRNGContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "3443a461d7aea3b18a582057f57d80458681a2f4db89769314903f464ddb15e4"
+                  },
+                  {
+                      "path":  "tests/C6F08F1ContentEnvelopeAuditTest.gd",
+                      "bytes":  6362,
+                      "sha256":  "1d8351aec9083e7bf8634f7440bcbbe139aa3346787b056c2138b783112483a5"
+                  },
+                  {
+                      "path":  "tests/C6F08F1ContentEnvelopeAuditTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "d3ccb65c7c7c1a7b47139a5d7433c076ef98795fca4b1d6ca19ef69505687ead"
+                  },
+                  {
+                      "path":  "tests/C6F08FractalPilotTest.gd",
+                      "bytes":  4948,
+                      "sha256":  "ef073138fdd9c3dfe29d3f5f4b5e9bddaea69a87814368a16f0a9532a083f594"
+                  },
+                  {
+                      "path":  "tests/C6F08FractalPilotTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f3891497aa3f122bc9f46494d76eecbe6b3941b13d1faa2697fa2d2198bc6b89"
+                  },
+                  {
+                      "path":  "tests/C6F08FractalPlaybackValidationTest.gd",
+                      "bytes":  6228,
+                      "sha256":  "39d7fe58a27591cd7d25c0410a64bdf224b08f7ee1c55798f83ca4b7328c2063"
+                  },
+                  {
+                      "path":  "tests/C6F08FractalPlaybackValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "a43199d83ea4ce3d565e8fb7b402e74d70329e0f3a67468521fc4a0b60ffb5b9"
+                  },
+                  {
+                      "path":  "tests/C6F08GeometricPlaybackValidationTest.gd",
+                      "bytes":  5411,
+                      "sha256":  "3b7dc6c5cac9f5f8fcd3df3184818bb45c7d3091ff290757b6a42afa2c60ab8e"
+                  },
+                  {
+                      "path":  "tests/C6F08GeometricPlaybackValidationTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "87c97db2f1c6a73cfda4f5f981f08eea46a3d42941a2141b02966ca7e672205b"
+                  },
+                  {
+                      "path":  "tests/C6F08KaleidoscopePlaybackValidationTest.gd",
+                      "bytes":  5682,
+                      "sha256":  "8a3acf5b8a9a27b3c59e14ff5d47ae4a80ee40e683a893b13b768a6966635956"
+                  },
+                  {
+                      "path":  "tests/C6F08KaleidoscopePlaybackValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "1f28d6af16e206e9ba1f7aba17bae121a9f3351685f5379bdee3666637938265"
+                  },
+                  {
+                      "path":  "tests/C6F08ParticleFlowPlaybackValidationTest.gd",
+                      "bytes":  5444,
+                      "sha256":  "72a2770daef34d3acb1773fa827bb5f4b0c7e0f6bdca4b10a733ec5151d0a78c"
+                  },
+                  {
+                      "path":  "tests/C6F08ParticleFlowPlaybackValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fa8d4ff2bfe175e29124b03bffa917847d21fca665e1fec56289e290cd6d1c88"
+                  },
+                  {
+                      "path":  "tests/C6F08PeripheralScanPilotTest.gd",
+                      "bytes":  3521,
+                      "sha256":  "dcb1cf44d39daea61d42d72bdbf8270c8a206f0f8fb6809781e15b70125596c8"
+                  },
+                  {
+                      "path":  "tests/C6F08PeripheralScanPilotTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c6bc743bd89a89a3a26bf8de82fe90ae6a513d49c25cd66d857a064c69a12128"
+                  },
+                  {
+                      "path":  "tests/C6F08PursuitPlaybackValidationTest.gd",
+                      "bytes":  3328,
+                      "sha256":  "1912515bd5cae2a9286935ffa63eb5dac02e253eac5470bed00e2312f81bf5b7"
+                  },
+                  {
+                      "path":  "tests/C6F08PursuitPlaybackValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "2831ab177162fb8939c943e8d0869a5d9bfe95372408b0791fe6978fad36c907"
+                  },
+                  {
+                      "path":  "tests/C6F08SaccadePlaybackValidationTest.gd",
+                      "bytes":  3298,
+                      "sha256":  "334ee36c02e42baab3ea5cc0c1a03406bb91152d860433e54e28cd4c03ac2ad2"
+                  },
+                  {
+                      "path":  "tests/C6F08SaccadePlaybackValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "90a35036c7569ca2d0359b16783507d4b7834eda1eda95c2f9638e327508ff81"
+                  },
+                  {
+                      "path":  "tests/C6F08StreamVariationContractTest.gd",
+                      "bytes":  5493,
+                      "sha256":  "ee672a07a7c011806b1143fd0b38ca5d9955322e6a0cc8120120e4c4e1b0590a"
+                  },
+                  {
+                      "path":  "tests/C6F08StreamVariationContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "5440dbb5c2b2c12b206e02fe559da900484a5a0daf49a0340343fe2a57266d59"
+                  },
+                  {
+                      "path":  "tests/C6F08TrackingPlaybackValidationTest.gd",
+                      "bytes":  3343,
+                      "sha256":  "ce529c9f682b88dc523f6a988c86c75b5023aacab5276bf1cc64b7eb3bab65c3"
+                  },
+                  {
+                      "path":  "tests/C6F08TrackingPlaybackValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "1003a53f513aa2d7879d60fb375f2a47254f51e6b8e3c7ea22ecd0e330874edf"
+                  },
+                  {
+                      "path":  "tests/C6F08VectorFieldPilotTest.gd",
+                      "bytes":  2704,
+                      "sha256":  "0d6a61fbbf0488cc9ecc727e50ba37a50afd1586bad30c587c1b7250ded27034"
+                  },
+                  {
+                      "path":  "tests/C6F08VectorFieldPilotTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "a5def4ba3533c81f94c5b63934c23fd2a31ab6d7e4ef5211aa3a5d71ece7ee5c"
+                  },
+                  {
+                      "path":  "tests/C6F08VisualLoopBindingContractTest.gd",
+                      "bytes":  2904,
+                      "sha256":  "f0aec372c2454349a8dfc2dfe62db1d804a79223ba19085b236bd6016d0a19a1"
+                  },
+                  {
+                      "path":  "tests/C6F08VisualLoopBindingContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "5dbad1779cd587f2c5df4f45ce9cf1e854ebb4caf40aa79351f35f6cf2730089"
+                  },
+                  {
+                      "path":  "tests/C6F08VisualLoopRuntimeVariationTest.gd",
+                      "bytes":  5076,
+                      "sha256":  "4725b5a32066a09375cd72540ea2481a4339af56d646d360ee8ff71ac269d567"
+                  },
+                  {
+                      "path":  "tests/C6F08VisualLoopRuntimeVariationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "bb241aa5ac998c403b7c4032a93f79c7acc83624b05ed251c209d1e72340884c"
+                  },
+                  {
+                      "path":  "tests/C6F08VisualLoopVariationContractTest.gd",
+                      "bytes":  2288,
+                      "sha256":  "521a33b81b152d75d498065d0aa8f999eb0f695b5fa22047e3f5da74e458894a"
+                  },
+                  {
+                      "path":  "tests/C6F08VisualLoopVariationContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "d57545b81e981a57caaada141d96b65f5dfdc8938d3a1bc3612c9debdd0d6392"
+                  },
+                  {
+                      "path":  "tests/C6F1MigrationEquivalenceTest.gd",
+                      "bytes":  7121,
+                      "sha256":  "7f055e6960b7572e1735f4bb1fb251fbda26576a9092f01d105d588b66ea1f2d"
+                  },
+                  {
+                      "path":  "tests/C6F1MigrationEquivalenceTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "8efd7ec536b2380bf9965dc4949bd3e50d44aff5a47af833aaae18b721e22199"
+                  },
+                  {
+                      "path":  "tests/C6F2AdapterMetadataBindingTest.gd",
+                      "bytes":  7851,
+                      "sha256":  "d75ee865415fbfe22c9ff6ce4bf7b59b675f5e3fc820f2d94435b27988905789"
+                  },
+                  {
+                      "path":  "tests/C6F2AdapterMetadataBindingTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "e24bb71fa0f3f831920da45e4350863caeb3a4799bb30b2b211c58bea655f69c"
+                  },
+                  {
+                      "path":  "tests/C6F2AssetFamilyContractTest.gd",
+                      "bytes":  2247,
+                      "sha256":  "bfac818f2aea0c54abbdcdbb6ffef3e5b2aa7ca10d315c5dcce9bcd16bb900d2"
+                  },
+                  {
+                      "path":  "tests/C6F2AssetFamilyContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "a00d005ee08c9cd1cf37acf111f251a40e50d0ad99acc1e240f8940877f8743a"
+                  },
+                  {
+                      "path":  "tests/C6F2AudioProfileContractTest.gd",
+                      "bytes":  3440,
+                      "sha256":  "3f4996caf276c2bb781bf9d2b631ea8c87585f93038c8d4e7ec2be4d80597770"
+                  },
+                  {
+                      "path":  "tests/C6F2AudioProfileContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "887db97e9c45d3a6f73881016aee97c726d1ae8ff43ab64341d3bf045521e715"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringAdapterContractTest.gd",
+                      "bytes":  3528,
+                      "sha256":  "03104f72f43ba3a94ea8ad9eace646dca8d83dc27a0468c98f3fa12a809d3d31"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringAdapterContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "554d22ee59ffa333f316b97edc204bbb142da1e2196750621587ba2255d3f385"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringDeterminismTest.gd",
+                      "bytes":  1388,
+                      "sha256":  "4ba1c10782be86a4a2489ff325ec027b39fc54683fc6bdc4d0651029634bd18d"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringDeterminismTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "022fde7d0fe0ea335e77554a22a65d235f8b15d54153c2be655d086da64d08c9"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringGeneratorContractTest.gd",
+                      "bytes":  1428,
+                      "sha256":  "acf08d7a95a3a5232134e6843c7ec75b1601ded6e3562f3379029370aea89aa3"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringGeneratorContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "818f824e5c603cffe2ac91ae45bf0065aa659dffda1a2adb299d72e280f910b7"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringRequestContractTest.gd",
+                      "bytes":  3014,
+                      "sha256":  "9c182004a2dce7ab150e5687b244877ec850ddaa04750129436b0651f8bda7a7"
+                  },
+                  {
+                      "path":  "tests/C6F2AuthoringRequestContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "e7936b6fae65290fc2c4ff01c81d2532d523a41c7d5b5b36d74b5253ee95f46e"
+                  },
+                  {
+                      "path":  "tests/C6F2DeterminismTest.gd",
+                      "bytes":  2670,
+                      "sha256":  "dd021675d7084270ace0b811b08f0f51fc12861742106ea796cb137bd8e862b0"
+                  },
+                  {
+                      "path":  "tests/C6F2DeterminismTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "382e69112d6c249d32a77203f02a9c15c0cc94123f70d281a9268a1a206990a4"
+                  },
+                  {
+                      "path":  "tests/C6F2DifficultyCorpusTest.gd",
+                      "bytes":  1576,
+                      "sha256":  "365996be0496fa55a41c15448cf36b091d21d6bf435cc16acb38acee6a37d657"
+                  },
+                  {
+                      "path":  "tests/C6F2DifficultyCorpusTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6cd98a697590a85b7ecfaa8a23f6a05d1d25829d29d54b2d8f609d2b88ec033b"
+                  },
+                  {
+                      "path":  "tests/C6F2DifficultyMonotonicityTest.gd",
+                      "bytes":  1366,
+                      "sha256":  "1c3d784562244a9b290c9745c61dc54c4bcc02e0ffbd2628be29da991a194db3"
+                  },
+                  {
+                      "path":  "tests/C6F2DifficultyMonotonicityTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "bf342744441d60e755d26dd7a24b144761c5cf3b15343a2247dab586e988b8d7"
+                  },
+                  {
+                      "path":  "tests/C6F2LegacyEquivalenceTest.gd",
+                      "bytes":  9329,
+                      "sha256":  "8ff55f482410da0824aa9a0008f7226e453a0f0d49fa3b1e09ba062a82e7dfa0"
+                  },
+                  {
+                      "path":  "tests/C6F2LegacyEquivalenceTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f87507ee7cb845b19a415c4f7b6db83ef41cb5a6ba28fd43514223b2496e3e27"
+                  },
+                  {
+                      "path":  "tests/C6F2PresentationBindingContractTest.gd",
+                      "bytes":  7892,
+                      "sha256":  "9efef97b9c34680c8965d23b9677cf6d0e5568d9d684724991f8dc733df8e1b7"
+                  },
+                  {
+                      "path":  "tests/C6F2PresentationBindingContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6811bbfbd8af48f70f5d79369594a1d22efc11e40c5f26d4583853a1ce82d0b9"
+                  },
+                  {
+                      "path":  "tests/C6F2ProductiveGeneratorTest.gd",
+                      "bytes":  6223,
+                      "sha256":  "b92c3059aa8bb42c0648f4d4a180e47bbb16023af6148095f697dc22b2c3118f"
+                  },
+                  {
+                      "path":  "tests/C6F2ProductiveGeneratorTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f41560ecb5a66030b275d2938585fdfbc7b3bf3881017ffc38e6857fa5ec4288"
+                  },
+                  {
+                      "path":  "tests/C6F2ResolverCorrectnessTest.gd",
+                      "bytes":  3010,
+                      "sha256":  "f60318ba4ed63df14bfc8c09ff13a8b2e7712f2d6eb3c6e79967f31af8fa8a37"
+                  },
+                  {
+                      "path":  "tests/C6F2ResolverCorrectnessTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "d112637969d9711ca54cd6db1e5864b3e635156d1265bf1076ec5b858f9134a4"
+                  },
+                  {
+                      "path":  "tests/C6F2VideoProfileContractTest.gd",
+                      "bytes":  2493,
+                      "sha256":  "97931670c51c4d11e76df96001dd692a634b67e26334b665fd81bedcb71c4d67"
+                  },
+                  {
+                      "path":  "tests/C6F2VideoProfileContractTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "449aa43b1b9442e7a95f8d5c2d04695a9b03156b071f4d0c14a51cbb337ea0f0"
+                  },
+                  {
+                      "path":  "tests/C6F3PresentationBindingTest.gd",
+                      "bytes":  5694,
+                      "sha256":  "e7f52f92a34c060cc19b7799e96f82f75c310d959f7e42465f92de99fa9ae77b"
+                  },
+                  {
+                      "path":  "tests/C6F3PresentationBindingTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "97c81143dcfe84cb32310ec32a7b60007b6abe8dfa8ea325c68fb3865026f2b3"
+                  },
+                  {
+                      "path":  "tests/C6F3SimulationOrchestratorTest.gd",
+                      "bytes":  4169,
+                      "sha256":  "6e7ff1ae1065cba1aea68903f862c32034cd09a3155acb8f153eb513cb33b554"
+                  },
+                  {
+                      "path":  "tests/C6F3SimulationOrchestratorTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "e7710301a0c1e9d6c5e96091339d2cab56b479e2bd92bd8af49c09e30818500a"
+                  },
+                  {
+                      "path":  "tests/C6F3TimelineBuilderTest.gd",
+                      "bytes":  3356,
+                      "sha256":  "ac46aeb387bb6c45392a1cf6a5da821397dbf0a38e2248c84d11e30178c1bd82"
+                  },
+                  {
+                      "path":  "tests/C6F3TimelineBuilderTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f6831b63529dd0d7ad839012e6b4308f2346b1f2b910d22dce2064f62da56e4b"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2CatchTest.gd",
+                      "bytes":  4990,
+                      "sha256":  "8390d3d1a422eb27116ec16382d190e38a322775775fca25d22c2724cbf26ad3"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2CatchTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b2ac39b85862db1a6f2391c1cb92808de991b2717694ae3f19572b6d811ea279"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2ChooseTest.gd",
+                      "bytes":  5098,
+                      "sha256":  "38f18689b9a8f21caaffc986cc7ff950156867edf93a7b0f21af653f60de77b9"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2ChooseTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "057e4495727761e10325df1cd900c849124973164380153814fcf938cf9fae37"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2CountTest.gd",
+                      "bytes":  5306,
+                      "sha256":  "59a2c999faae23a8381d0d2fdb26e2fec7212cc065040a3aeeec6d8aa3b82f36"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2CountTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fb4d17d9b875e24a6e7993f6041b3c90642db0550e606dec9c16e4cba38cacb5"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2FindTest.gd",
+                      "bytes":  7415,
+                      "sha256":  "70004b9be2de31dc33b9b7d62e131ce369960a1da06dfab6f345ef1d3b8afd89"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2FindTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "8136eb6d1ff942d8ebcd6e4ac13137988d839d53266e7f2e8f00aff57bd1825b"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2HitTest.gd",
+                      "bytes":  5017,
+                      "sha256":  "5d7d2bfec48fdca75a23604f6dfc4aeeb98056f449f7df02038658c38afdf4dd"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2HitTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fcb5de53028f3c0cc9b06daa52a60e77f40d3957e4559175f714a0e0b7cc64b9"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2ParkingTest.gd",
+                      "bytes":  5270,
+                      "sha256":  "37723dd54438f23af5c77c4f08e0ddf1fc6f762108d58b823db0678f30d599fa"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2ParkingTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "0fe8bc0262dffb93c69fe0b0012ee62edd6b8d4aa58f65c35dabd0b74b345d86"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2PilotTest.gd",
+                      "bytes":  5099,
+                      "sha256":  "f28e8bd0647af13538dc057d742fee8f6a364c4062d66d2a9df6502af78eab55"
+                  },
+                  {
+                      "path":  "tests/C6F4CanonicalV2PilotTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "817024a44ff89bc30c2a6aff8a1cb528cfb12ce2010437abd3377fa05a3f0a10"
+                  },
+                  {
+                      "path":  "tests/C6F4EffectiveRuntimeTest.gd",
+                      "bytes":  3156,
+                      "sha256":  "28f18abdff7ba26480b700e789e6c69ab45aefb0e5510f9b0c03b25a66023a76"
+                  },
+                  {
+                      "path":  "tests/C6F4EffectiveRuntimeTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9ea2854dcb2f49080ae074cac839deac05a74725aca597ecaf13ec725dba83cf"
+                  },
+                  {
+                      "path":  "tests/C6F4ShadowRuntimeBridgeTest.gd",
+                      "bytes":  3939,
+                      "sha256":  "277f90625bf8f10bbdb2253ca7ce233346cab7445beb446daf0985b5d5a90efa"
+                  },
+                  {
+                      "path":  "tests/C6F4ShadowRuntimeBridgeTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7206968c5ee9024e14e13b95474bd04ae8915102087242340473cf156ea3b609"
+                  },
+                  {
+                      "path":  "tests/C7A01AudioDeterminismTest.gd",
+                      "bytes":  6837,
+                      "sha256":  "dd77dc0e188cd51434c5299cd09213d494c00921a98959a7ef4829c71f72d5b8"
+                  },
+                  {
+                      "path":  "tests/C7A01AudioDeterminismTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "25e8ba821e4f0beecbb6af5e46332a9a29f8904908df15cb15b6361f6a23c9ef"
+                  },
+                  {
+                      "path":  "tests/C7A02AudioPCMHashTest.gd",
+                      "bytes":  3825,
+                      "sha256":  "730f3a9acc62fe1ccebbbfe64f2ec044488f75009d02b70cb4046826f0170ebd"
+                  },
+                  {
+                      "path":  "tests/C7A02AudioPCMHashTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f2023c12f3a08a70db4531803269356679a66dfd2ff0670870648fcef4394cf1"
+                  },
+                  {
+                      "path":  "tests/C7A03AudioTimelineTest.gd",
+                      "bytes":  4831,
+                      "sha256":  "f3d2a2306bb1bdb09cb9e64e8d60391406c13555f3376328e6ce08167771ee12"
+                  },
+                  {
+                      "path":  "tests/C7A03AudioTimelineTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "4fcc0a9391a07f69c6d656db8ae4988007de2284d42dfac2a87020bed5f1d41f"
+                  },
+                  {
+                      "path":  "tests/C7A04AudioExportBridgeTest.gd",
+                      "bytes":  6239,
+                      "sha256":  "45b3298bd84f319b3df71caee05bb87d06994220c0208aef6e74c187d40595f4"
+                  },
+                  {
+                      "path":  "tests/C7A04AudioExportBridgeTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "4b8b95f8d8a4c35f33685a06e4db7b8b5284ae3b62f63483e86877c4f8ef2675"
+                  },
+                  {
+                      "path":  "tests/C7A05AudioGeneratorRegistryTest.gd",
+                      "bytes":  5708,
+                      "sha256":  "d498f01454bfaa2e879c161ccd4a7f16402a6fedaa83f8cfb9ebe03997e6d985"
+                  },
+                  {
+                      "path":  "tests/C7A05AudioGeneratorRegistryTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "050a94cca6e451b310969578507c1bff8a494201778d5ba041252fb75a87645a"
+                  },
+                  {
+                      "path":  "tests/C7A06MultiGeneratorDeterminismTest.gd",
+                      "bytes":  4824,
+                      "sha256":  "b5783c362cad5b8755aeb42269ef79f2b7a20cc33a8f582fab010d5b55ad9107"
+                  },
+                  {
+                      "path":  "tests/C7A06MultiGeneratorDeterminismTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "ca9103add26b92aa473265b8ee5857600599cbdf65df7e3418f514014fed04ff"
+                  },
+                  {
+                      "path":  "tests/C7A07MultiProfileCorpusTest.gd",
+                      "bytes":  5224,
+                      "sha256":  "c6b1a9835af9e50824d15cd24ee845baee9830f7a9677a3e45e564d43d29cb60"
+                  },
+                  {
+                      "path":  "tests/C7A07MultiProfileCorpusTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "7bd7f7c4357d3fcf0c0361ad0489802eea49d93c34d58c483ac140c8c3b31749"
+                  },
+                  {
+                      "path":  "tests/C7A08AudioVisualCorpusExportTest.gd",
+                      "bytes":  5777,
+                      "sha256":  "a2fce0f00d79704a20a58dcd9aa0f8a759df646945af139c54d72739e51d1467"
+                  },
+                  {
+                      "path":  "tests/C7A08AudioVisualCorpusExportTest.gd.uid",
+                      "bytes":  18,
+                      "sha256":  "a39c7e1bfb5b3228a2c481f30086a383228c2e072fb598c19ca3da97ae6b0cd7"
+                  },
+                  {
+                      "path":  "tests/C7A501OfficialAudioArtifactManifestTest.gd",
+                      "bytes":  4485,
+                      "sha256":  "d5ba6c1a0cf2254696c6705a92fa4b091e91b039a0a095f5c1731046d2d2ecea"
+                  },
+                  {
+                      "path":  "tests/C7A501OfficialAudioArtifactManifestTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "55ba8aa46f86b709dd265b04c26fe7150d0b396d8344a834e1d0e81da3c928f5"
+                  },
+                  {
+                      "path":  "tests/C7A502AudioVisualMuxTest.gd",
+                      "bytes":  1873,
+                      "sha256":  "8832df827bd60bfcb590176fe8f812cfbb79fbd28f5a262ce31f2e14b5e4b8fa"
+                  },
+                  {
+                      "path":  "tests/C7A502AudioVisualMuxTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "43b04a9c50bf00d8c646337a2389828782aa4b4e825618239ec89f547e9e873e"
+                  },
+                  {
+                      "path":  "tests/C7A503AudioVisualFFmpegMuxTest.gd",
+                      "bytes":  2710,
+                      "sha256":  "2bc1da74308df92f2196107ffc29db27c97c6b7e1edcc39e912d45a5734e9196"
+                  },
+                  {
+                      "path":  "tests/C7A503AudioVisualFFmpegMuxTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "fc362dc55f946491e9ccc199d34816194811f214e4e6bace73ba71650b170451"
+                  },
+                  {
+                      "path":  "tests/C7A504AudioVisualFFprobeValidationTest.gd",
+                      "bytes":  2166,
+                      "sha256":  "db9241ff9aaf942606baa322ab90483a487dcb673182868e74d8d23392c55d68"
+                  },
+                  {
+                      "path":  "tests/C7A504AudioVisualFFprobeValidationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f52b87603c72b38a3024e1a2eed0d490c40548a0ed96b2087665b191d251aaf5"
+                  },
+                  {
+                      "path":  "tests/C9AParkingV2AuthoringProductiveTest.gd",
+                      "bytes":  3299,
+                      "sha256":  "fa5e8242a867cec3592f1f53f7bd7e1be69127d185c38e9e8919753fd63888e8"
+                  },
+                  {
+                      "path":  "tests/C9AParkingV2AuthoringProductiveTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "a4577326b23040cfc0cb31e3374259daa0962e5425ef2b10ed10a32e0b5591d6"
+                  },
+                  {
+                      "path":  "tests/C9BParkingV2ProductiveGenerationTest.gd",
+                      "bytes":  10949,
+                      "sha256":  "ae7a4d5181ec43629e218b90795060b6f2db5a39b57e8425d1d786beefe19b46"
+                  },
+                  {
+                      "path":  "tests/C9BParkingV2ProductiveGenerationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "f20748a4c9d6ddc0a22364c62ec0996ea223f9185b6862e44484f3e087fb756b"
+                  },
+                  {
+                      "path":  "tests/C9CBatchAuthoringGenerator.gd",
+                      "bytes":  5519,
+                      "sha256":  "205c4fc48c79fcea1d4072c84527a6f9f70db97f6190d7e53872603393352498"
+                  },
+                  {
+                      "path":  "tests/C9CBatchAuthoringGenerator.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "973ea68d8132174a4af414ac0c1cf6e3fa851a05c9724d303036f7eb725cb12b"
+                  },
+                  {
+                      "path":  "tests/C9EHitAuthoringProductiveTest.gd",
+                      "bytes":  6655,
+                      "sha256":  "c5b669cd32d8b65901e3a038faa55c1c5b4d75ac1a4ce70b69f485181fc56254"
+                  },
+                  {
+                      "path":  "tests/C9EHitAuthoringProductiveTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9bc95075a7b67a5eba128d24f69bb7da35d57ebd184c3cf8b1d07614248e53f4"
+                  },
+                  {
+                      "path":  "tests/C9FCatchAuthoringProductiveTest.gd",
+                      "bytes":  6961,
+                      "sha256":  "3d898b4af01941b7a2d0400a54fa9edf3988e5598d1caae17153986e739b1960"
+                  },
+                  {
+                      "path":  "tests/C9FCatchAuthoringProductiveTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "57f4c8e76fc28a5db265a00328ae688007aef4ef1b8835ace6da980afcc2f837"
+                  },
+                  {
+                      "path":  "tests/C9GRemainingMechanicsProductive.gd",
+                      "bytes":  10206,
+                      "sha256":  "31e096bdeb057c987a1b6de418301f8c50361e736666eb0ae389e1449057b5e1"
+                  },
+                  {
+                      "path":  "tests/C9GRemainingMechanicsProductive.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "169cfd0c6f37b16d5879644ff30a1b9fdea138eae988d49ccf4e45b21a451539"
+                  },
+                  {
+                      "path":  "tests/DeterministicLCGStatelessTest.gd",
+                      "bytes":  5443,
+                      "sha256":  "f8e2c2e7f5a5d93e813af894abafcdc6af38bab81bba2448598d3d4be31e4c3f"
+                  },
+                  {
+                      "path":  "tests/DeterministicLCGStatelessTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "6acc0ee169cb21155f980d8fe382bf987618e99c728dc9bb81a57ce39f7b59e8"
+                  },
+                  {
+                      "path":  "tests/F0_8MovieMakerPilot.tscn",
+                      "bytes":  353,
+                      "sha256":  "53187aedec841fdb11cc1a4895c6f040f64b160e7a37f98f32e3c352653445b9"
+                  },
+                  {
+                      "path":  "tests/fixtures/C7_AUDIO_CHALLENGE_002.json",
+                      "bytes":  1219,
+                      "sha256":  "df99cc70d3797f766ddd639c2fbaca79719d0bc841a21f3b83d2442a218c5426"
+                  },
+                  {
+                      "path":  "tests/fixtures/C7_VIDEO_ONLY_CHALLENGE_001.json",
+                      "bytes":  1822,
+                      "sha256":  "399ed08881d5685139705490527a210370a1ae5116cd0ee8f15a1395aee693cd"
+                  },
+                  {
+                      "path":  "tests/helpers/ArtifactPaths.gd",
+                      "bytes":  753,
+                      "sha256":  "81cf640c6999fd3b8583da2c10683eb78b6059ade96143417cd5c33e32e1a4e6"
+                  },
+                  {
+                      "path":  "tests/helpers/ArtifactPaths.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "9506f93133d26a955829cc4b551a90814ba801abf14fdd5536746bc11fd4db7b"
+                  },
+                  {
+                      "path":  "tests/helpers/FailTestUnknownAsset.gd",
+                      "bytes":  279,
+                      "sha256":  "212f4ddb0908fdaa2326fefed5133fee593752caaae1c956b52bb0517efc10ff"
+                  },
+                  {
+                      "path":  "tests/helpers/FailTestUnknownAsset.gd.uid",
+                      "bytes":  18,
+                      "sha256":  "142c720cb18da5acdea41da0a4498d6643555dc7648728c4bc75dd1103f6c6cf"
+                  },
+                  {
+                      "path":  "tests/helpers/FailTestUnknownEvent.gd",
+                      "bytes":  307,
+                      "sha256":  "912743256624090a754d644d39b9c760f8ca251f130242ca88710af44c2565b7"
+                  },
+                  {
+                      "path":  "tests/helpers/FailTestUnknownEvent.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "03ea112f8a60cd2f9992e157e1254d7562c82d43c7c5a5ac5051d5fd3be513ed"
+                  },
+                  {
+                      "path":  "tests/helpers/README.md",
+                      "bytes":  335,
+                      "sha256":  "0b402cb0baf32d99fb695678d1bd298cb1b8ed5ae7ca169889f0d8f5be2c164a"
+                  },
+                  {
+                      "path":  "tests/mechanics/catch/CatchMechanicIsolationTest.gd",
+                      "bytes":  4286,
+                      "sha256":  "b0af6cfd77c48b44fc990b89ca02b71a37ee574d3ef02dcf0b8120e0ba3a7aef"
+                  },
+                  {
+                      "path":  "tests/mechanics/catch/CatchMechanicIsolationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "8f28690158029848adfc89a0e3ed1f7c1fda0967ff00285dffc264636f5e99c6"
+                  },
+                  {
+                      "path":  "tests/mechanics/catch/CatchPresentationContractTest.gd",
+                      "bytes":  3143,
+                      "sha256":  "0221311193a751ea8dfb7a9a4b4d71d13b113187b4395451e5f75d7507bb1480"
+                  },
+                  {
+                      "path":  "tests/mechanics/catch/CatchPresentationContractTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "d45bdec9956126800f402f6e0d4210e74856e5d62dd243ef52546add99f077e2"
+                  },
+                  {
+                      "path":  "tests/mechanics/choose/ChooseMechanicIsolationTest.gd",
+                      "bytes":  1387,
+                      "sha256":  "3e61ef99867db6dd81bda257dd924a384d0c778bc4332d0fac6a9a3c09d34726"
+                  },
+                  {
+                      "path":  "tests/mechanics/choose/ChooseMechanicIsolationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "aacac796c8ee3dca67f5b3fed4c5ab3e49bbfb9061e2de1e8f6e607f11053cba"
+                  },
+                  {
+                      "path":  "tests/mechanics/find/FindMechanicIsolationTest.gd",
+                      "bytes":  6550,
+                      "sha256":  "1cc0383a16412fc19a4fc37b8bd2f5d6f610d3f37925793528a9a98f3cc5088b"
+                  },
+                  {
+                      "path":  "tests/mechanics/find/FindMechanicIsolationTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "396bf4783cac4b1246262def8c0720282ef57459cf1c588465922919554bace2"
+                  },
+                  {
+                      "path":  "tests/mechanics/hit/HitMechanicIsolationTest.gd",
+                      "bytes":  7325,
+                      "sha256":  "188a7262af68d1e3a1322a34a3d7e0fd6a17dfdc6aae6d6aac214b53643fef5c"
+                  },
+                  {
+                      "path":  "tests/mechanics/hit/HitMechanicIsolationTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "009b0e09d476f2496606fe450fbd447270daa590d1ea5847f1476589484e94f1"
+                  },
+                  {
+                      "path":  "tests/ParkingMechanicV2IsolationTest.gd",
+                      "bytes":  11609,
+                      "sha256":  "ac738e25d34d84494b41bb0e563eecc34d792bdad40f6c7be423e3996676db24"
+                  },
+                  {
+                      "path":  "tests/ParkingMechanicV2IsolationTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "a2ab229b72006323d8a7e743fcebc0ae3a905093794445d8c9d726d3df8865f1"
+                  },
+                  {
+                      "path":  "tests/PilotMechanicDDIHardeningTest.gd",
+                      "bytes":  11249,
+                      "sha256":  "b6697e473acf3859e9525acbd79764c56f79b378c0f4fc249ee4560fe6afd8d1"
+                  },
+                  {
+                      "path":  "tests/PilotMechanicDDIHardeningTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "c38eb9e208debb1316c6351c2227394d566d377541e5ca360555e2c3764cd889"
+                  },
+                  {
+                      "path":  "tests/PilotMechanicIsolationTest.gd",
+                      "bytes":  6612,
+                      "sha256":  "ac967393a5ef77f195574cba82081402e12955fbf7701d8641434f9c83dff275"
+                  },
+                  {
+                      "path":  "tests/PilotMechanicIsolationTest.gd.uid",
+                      "bytes":  19,
+                      "sha256":  "bf4cb22473df0fbaf4fe3e48e8e8a61c80d9a893e19e7154d5cfd2101eea0c44"
+                  },
+                  {
+                      "path":  "tests/RNGArchitectureTest.gd",
+                      "bytes":  9783,
+                      "sha256":  "b69db0f7be6c5b5e3997fbe1b7015664f4a119af99088d501c28c9a7b5d7f61d"
+                  },
+                  {
+                      "path":  "tests/RNGArchitectureTest.gd.uid",
+                      "bytes":  20,
+                      "sha256":  "b30598e81dc8044cb72ff17cd231096ac0d8bf6bebf5c989171b7644dfddfb98"
+                  },
+                  {
+                      "path":  "tests/run_all.py",
+                      "bytes":  13872,
+                      "sha256":  "a0719eba454e8e660a5d6c4624cc3f51fa532cfa66d417d0d739817cba9dcd32"
+                  },
+                  {
+                      "path":  "tests/run_suite.py",
+                      "bytes":  3417,
+                      "sha256":  "b09ed053ed9c59e358fa1fd42cb718a5fa0acda44289e7eff2d2ad73443fd0e4"
+                  },
+                  {
+                      "path":  "tools/apply_c11b02_qa_framing_policy.ps1",
+                      "bytes":  1539,
+                      "sha256":  "f7132c7f763f2af31639e078d5121dba4ebb51f48c59af51932a7c57e881d864"
+                  },
+                  {
+                      "path":  "tools/c11freeze/__pycache__/generate_qa_video_configs.cpython-313.pyc",
+                      "bytes":  3047,
+                      "sha256":  "69c943bb71e45ac53360f3490e2ba664f6b1753c7f0a680f753aa09be4986712"
+                  },
+                  {
+                      "path":  "tools/c11freeze/__pycache__/generate_qa_video_matrix.cpython-313.pyc",
+                      "bytes":  4631,
+                      "sha256":  "6f63970c06af0af1a244fb26c50739edba84486d1d271d47f9f5edae66ac388c"
+                  },
+                  {
+                      "path":  "tools/c11freeze/__pycache__/generate_seed_corpus.cpython-313.pyc",
+                      "bytes":  2884,
+                      "sha256":  "fc27cb91af7472701e8b702773f2a81605c44af17fd8b95b0f45716fb85ffa53"
+                  },
+                  {
+                      "path":  "tools/c11freeze/__pycache__/run_retrocompatibility.cpython-313.pyc",
+                      "bytes":  9590,
+                      "sha256":  "7510aae3a38c4bd1d04286dce19af6b1d1f2412daf0cff9e70c431723bf2de9a"
+                  },
+                  {
+                      "path":  "tools/c11freeze/__pycache__/run_seed_stress.cpython-313.pyc",
+                      "bytes":  7387,
+                      "sha256":  "3ffd2c468c17a61ed8c6e51780aac67e8b6d62062af2a60d9b1f7a1b87b457d0"
+                  },
+                  {
+                      "path":  "tools/c11freeze/finalize_c11_freeze.ps1",
+                      "bytes":  8497,
+                      "sha256":  "45f7f689d34eecdf548c077b44aec1b64add0b31bee913ffbb46559410ca39a6"
+                  },
+                  {
+                      "path":  "tools/c11freeze/generate_qa_video_configs.py",
+                      "bytes":  1633,
+                      "sha256":  "60946974b4b0df5f60365989655c57635bac9575dc09d92909bb2899753f6f5e"
+                  },
+                  {
+                      "path":  "tools/c11freeze/generate_qa_video_matrix.py",
+                      "bytes":  2980,
+                      "sha256":  "fdc9b76c22d0df514be71bc3b37a5624edac0576e81f3cd9fda77aaf094279db"
+                  },
+                  {
+                      "path":  "tools/c11freeze/generate_seed_corpus.py",
+                      "bytes":  1660,
+                      "sha256":  "6ed28c543511b587951915b5d6b27538e4a404e08aa35d7e6ff8fe264f6a3389"
+                  },
+                  {
+                      "path":  "tools/c11freeze/inventory_repository.ps1",
+                      "bytes":  1143,
+                      "sha256":  "3c4ffdc7c646d3e8353054e0f5e34fa439ee5df0ca56ea8e76ba0874c27bb6b1"
+                  },
+                  {
+                      "path":  "tools/c11freeze/migrate_artifacts.ps1",
+                      "bytes":  1732,
+                      "sha256":  "43a8fd52483f3ad1238bb475509bf3d9a923f0a92f847ea3d4111489208d445b"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_all.ps1",
+                      "bytes":  980,
+                      "sha256":  "eca3278130eb5a21d0c657e68278f1e9c033d6b23d3e5ca516f19570fbfc0a53"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_c11_suite.ps1",
+                      "bytes":  437,
+                      "sha256":  "1b22a278ee8a5c6bafa175431e6d0ececa18598f9326847d0ca563404aca2355"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_core_suite.ps1",
+                      "bytes":  788,
+                      "sha256":  "f905812c7ab7dfeedd2c9be67f06ba82a7da36d960a5efe4db3ba9d60d2b2288"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_physical_export_suite.ps1",
+                      "bytes":  1346,
+                      "sha256":  "7442d3ea5123adefaaae906108100181acec94d7d4f3e6d5c825a635c1c2a12a"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_presentation_suite.ps1",
+                      "bytes":  484,
+                      "sha256":  "292b6bfb2fb9749652d4ae0f1fbbca539c60567168e2316ac91fdfa687ba0f41"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_qa_video_matrix.ps1",
+                      "bytes":  1769,
+                      "sha256":  "1cdb680415c2864ff8cc13bd40abd997bce504c6dd24b6dd75b829f7beb87522"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_retrocompatibility.ps1",
+                      "bytes":  416,
+                      "sha256":  "13a00b203905e42e024088f17920b84af2ddf6a6ac925d421654425d9a54eb4a"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_retrocompatibility.py",
+                      "bytes":  6254,
+                      "sha256":  "bf4443437fe55520249d6baa961eb5943c0ac41ed742e78ff6e841c4523b7488"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_seed_stress.py",
+                      "bytes":  7480,
+                      "sha256":  "70a0a72149b97aa76059f633def64715db8dee413ee49bdba1a9fb74b84eb207"
+                  },
+                  {
+                      "path":  "tools/c11freeze/run_test_suite.ps1",
+                      "bytes":  428,
+                      "sha256":  "f1536eaa4b4134c45f9aca00d7211a3a9a08d4569f16e2b38042573235158eef"
+                  },
+                  {
+                      "path":  "tools/c11freeze/update_readme_c11_freeze.ps1",
+                      "bytes":  1543,
+                      "sha256":  "84334e9ec2e2c4671ab0474ca81689b67e34f48a1a13c9fa88c300b1d42819f8"
+                  },
+                  {
+                      "path":  "tools/c11freeze/verify_freeze_structure.ps1",
+                      "bytes":  833,
+                      "sha256":  "fd86243affb1986ab18dfeddb2b8ea185394a333cec08e865b383f9abb621913"
+                  },
+                  {
+                      "path":  "tools/clean_c10_generated_outputs.ps1",
+                      "bytes":  2446,
+                      "sha256":  "5970fd7a47dde0960f4b78dd06a294f29e905c7aba0f5565749a6caf0f1c77f9"
+                  },
+                  {
+                      "path":  "tools/finalize_c11a_visual_bulk_qa.ps1",
+                      "bytes":  7453,
+                      "sha256":  "da52f674b1e399062be3ed04e5961147596599abd7b3e1af82ff6c63b92928d6"
+                  },
+                  {
+                      "path":  "tools/finalize_c11a1_challenge_bulk_qa.ps1",
+                      "bytes":  15757,
+                      "sha256":  "557d5fea17294617a8726ea999ecdb5a3ae95b2092fc78ec69fc7d8fb17b5329"
+                  },
+                  {
+                      "path":  "tools/prepare_c7_a2_video_only_fixture.ps1",
+                      "bytes":  1512,
+                      "sha256":  "e04fdc0789591b1e57b52b9db4ddad342c7bfafdf245f65aae320534d80b46ec"
+                  },
+                  {
+                      "path":  "tools/run_C10C_physical_export.ps1",
+                      "bytes":  7257,
+                      "sha256":  "b261e6c1d5cde5ac38fcc5f43083a20d0b769e16c25017c80bf5689fac38f7c8"
+                  },
+                  {
+                      "path":  "tools/run_c11a_visual_bulk_qa.ps1",
+                      "bytes":  15039,
+                      "sha256":  "fa853a15df483052295f53dd19f4fc0765fb4566890365a2cecde001676812f1"
+                  },
+                  {
+                      "path":  "tools/run_c11a1_challenge_bulk_qa.ps1",
+                      "bytes":  17437,
+                      "sha256":  "352ac32210b5fafec379dbbae66d3b9dbf584f4d0ce98852cd87d1256cf663e6"
+                  },
+                  {
+                      "path":  "tools/run_c11b_body_visibility_audit.ps1",
+                      "bytes":  6690,
+                      "sha256":  "92c0450aaf7c9509bfeca5e09b6e0acac07e3a630e37dea9dee8b89ccc0f2f83"
+                  },
+                  {
+                      "path":  "tools/test_c11b.ps1",
+                      "bytes":  975,
+                      "sha256":  "7910f05a8f8651a03a052c0e41306a621d599a2402d6e1c5c4f2c2399e2845b9"
+                  },
+                  {
+                      "path":  "tools/verify_c11b01_installation.ps1",
+                      "bytes":  1111,
+                      "sha256":  "9e0e636e69e7f410a7c25f8cb4283816730d94931dbe774ada67f2b0f32af2de"
+                  },
+                  {
+                      "path":  "tools/verify_c11b02_installation.ps1",
+                      "bytes":  1725,
+                      "sha256":  "928a152a88ccdc93e2f5dd9a438e1d82f5e2a9c8b3f7d594dc437cc1a75429e1"
+                  },
+                  {
+                      "path":  "tools/verify_c11b1_installation.ps1",
+                      "bytes":  1523,
+                      "sha256":  "85887ff6b1ea0ce02e24b390e1d1afb4e0846a09bd0bd5e53dcdb1de5034a9bc"
+                  }
+              ]
+}

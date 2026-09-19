@@ -1,0 +1,104 @@
+{
+  "package": "C11_FREEZE_FINAL_HANDOVER_PACKAGE_v1",
+  "purpose": "Documentation, continuity and cryptographic sealing tooling for the already-validated C11 state.",
+  "functional_code_changes": false,
+  "file_count": 19,
+  "tree_sha256": "3a78d0722ef4455d6b67db2f76c6a95bb47ecaa767b04cd1e2cd487fa1936bfa",
+  "files": [
+    {
+      "path": "MASTER_HANDOVER_C11_FREEZE.md",
+      "bytes": 2906,
+      "sha256": "10e91bd9f97f17fe10ef926ed8ac70689ee72fcf86583ce11f8b265f5d021916"
+    },
+    {
+      "path": "PACKAGE_VERSION.txt",
+      "bytes": 37,
+      "sha256": "704bca79bda930dbb2203aeac1ee87d1d115dfe70917c4d03a2f18ee39ec1982"
+    },
+    {
+      "path": "README_C11_FREEZE_FINAL.md",
+      "bytes": 1744,
+      "sha256": "a6043dced7375073ea1a276b2d61630897c1abd9873d8a07c65937248ed1d148"
+    },
+    {
+      "path": "START_PROMPT_C11C_NEXT_WINDOW.md",
+      "bytes": 2459,
+      "sha256": "f5c09ced40e3d1c75bd06562f256297b10c2de7e7280cf830b79dc52ed46c688"
+    },
+    {
+      "path": "docs/00_PROJECT_OVERVIEW.md",
+      "bytes": 1253,
+      "sha256": "34a1c646d175e8923f69bf6e0678ab65324085c6df5bf10c0035f95bafde2318"
+    },
+    {
+      "path": "docs/01_ARCHITECTURE.md",
+      "bytes": 1218,
+      "sha256": "ea6bae5853d9ef36288fc799dc091dbfb1909e352a06ef37824b80b7feed16aa"
+    },
+    {
+      "path": "docs/02_DATA_AND_CONTRACTS.md",
+      "bytes": 1161,
+      "sha256": "5c069bdd287d8480c1c7a0a5eb9b2a3ae3e9815b18236de4cd6bb27c1fe870ff"
+    },
+    {
+      "path": "docs/03_PRESENTATION.md",
+      "bytes": 1169,
+      "sha256": "585346a6581926c365a7a6ea7a2ac271818f8ae83c0549abda2a9ee8128010e2"
+    },
+    {
+      "path": "docs/04_PRODUCTION_AND_ARTIFACTS.md",
+      "bytes": 1141,
+      "sha256": "c017294bf8ce858128c5ec4d21f1a47dc09c924b81cab16af2e63557a7863dc4"
+    },
+    {
+      "path": "docs/05_TESTING_AND_REGRESSION.md",
+      "bytes": 1288,
+      "sha256": "3f9396e8b35fe80d76e3e5837c61bf22c7097107f3784dc2c8dd3e6d2e92b5f1"
+    },
+    {
+      "path": "docs/06_ROADMAP.md",
+      "bytes": 1058,
+      "sha256": "60074640052d8987dcc81a4e19f9a65159de7833fcdb530aa623457c79dfde4d"
+    },
+    {
+      "path": "docs/c11-freeze/13_ARCHITECTURE_MANIFESTO.md",
+      "bytes": 2206,
+      "sha256": "46c11e7345a7a139fb25f5836535c9b0c7433d50624ed20f5b98165aea4e1062"
+    },
+    {
+      "path": "docs/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md",
+      "bytes": 646,
+      "sha256": "5b1099a9959608e11ca8618e7bd38f36abad62da3f7163348827550525204039"
+    },
+    {
+      "path": "docs/c11-freeze/15_FREEZE_OPERATING_RULES.md",
+      "bytes": 632,
+      "sha256": "0ded0c809e42c1914aff7a9d15d508388962e5f7e1e2d378b08d1279c826ec4f"
+    },
+    {
+      "path": "docs/checkpoints/C11_FREEZE.md",
+      "bytes": 989,
+      "sha256": "a4c48b1912c5042c966a8ae29dae5f967290d9cb223d692a8e4534be5774d56d"
+    },
+    {
+      "path": "docs/history/README.md",
+      "bytes": 405,
+      "sha256": "2d257c5d54823b4e3915247d475f21cf1013ef0935509cc0914b4651e1a968fc"
+    },
+    {
+      "path": "tools/c11freeze/finalize_c11_freeze.ps1",
+      "bytes": 6482,
+      "sha256": "deec2c4c354fdf9a3b9cc92e2e56345c8a2c4cd3416bd04e6ea4b7349e0283dd"
+    },
+    {
+      "path": "tools/c11freeze/update_readme_c11_freeze.ps1",
+      "bytes": 1543,
+      "sha256": "84334e9ec2e2c4671ab0474ca81689b67e34f48a1a13c9fa88c300b1d42819f8"
+    },
+    {
+      "path": "tools/c11freeze/verify_freeze_structure.ps1",
+      "bytes": 833,
+      "sha256": "fd86243affb1986ab18dfeddb2b8ea185394a333cec08e865b383f9abb621913"
+    }
+  ]
+}

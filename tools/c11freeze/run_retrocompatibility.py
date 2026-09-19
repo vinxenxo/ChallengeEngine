@@ -21,6 +21,8 @@ INT_FIELDS = {
 FLOAT_FIELDS = {"minimum_distance", "score"}
 BOOL_FIELDS = {"winning_frame_in_valid_window"}
 STR_FIELDS = {"rng_version"}
+GODOT_TRANSIENT_CRASH_CODES = {-1073741819}
+GODOT_MAX_ATTEMPTS = 3
 
 
 def parse_telemetry(stdout: str) -> dict[str, Any]:
@@ -65,6 +67,23 @@ def resolve_run_dir(run_id: str) -> Path:
     raise RuntimeError(f"C11-A.1 run directory not found: {run_id}")
 
 
+def run_godot(config: Path) -> subprocess.CompletedProcess[str]:
+    command = [
+        "godot", "--headless", "--path", str(ROOT), "--",
+        f"--config={config.as_posix()}", "--validate-only",
+    ]
+    proc = subprocess.run(
+        command, cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
+    )
+    for _ in range(GODOT_MAX_ATTEMPTS - 1):
+        if proc.returncode not in GODOT_TRANSIENT_CRASH_CODES:
+            break
+        proc = subprocess.run(
+            command, cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
+        )
+    return proc
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reference", default="")
@@ -82,10 +101,7 @@ def main() -> int:
         run_id = str(item["run_id"])
         config = resolve_run_dir(run_id) / "challenge_definition.json"
         print(f"[C11FREEZE][RETRO {index}/54] {run_id}")
-        proc = subprocess.run(
-            ["godot", "--headless", "--path", str(ROOT), "--", f"--config={config.as_posix()}", "--validate-only"],
-            cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
-        )
+        proc = run_godot(config)
         row: dict[str, Any] = {
             "run_id": run_id,
             "challenge_id": str(item["challenge_id"]),

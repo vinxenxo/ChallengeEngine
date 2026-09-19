@@ -1,2 +1,1 @@
-C11_FREEZE_CONSOLIDATION_PACKAGE_v5
-scope=physical-consumer-robustness+qa-video-audio-scope
+C11_FREEZE_FIX_PACKAGE_v6

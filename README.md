@@ -1,4 +1,24 @@
-# C10-C — Visual Authoring -> Runtime -> Physical Export
+﻿<!-- C11_FREEZE_STATUS_START -->
+
+## C11 FREEZE â€” Current Status
+
+**C11 is CLOSED / CERTIFIED / FROZEN.**
+
+The C11 cycle unified challenge and visual presentation around a common 540x960 social structure:
+
+- Header: 0..144
+- Body: 144..816
+- Footer: 816..960
+
+The deterministic simulation boundary is unchanged. Presentation maps and renders existing truth; it does not calculate mechanics, winning frames or RNG outcomes.
+
+Freeze evidence includes the 103/103 logical corpus, 54/54 retrocompatibility, 576 stress executions, 2/2 physical smoke exports and 54/54 QA video renders. The C7-A2 mixed-audio rule remains authoritative and is intentionally outside the video-only QA matrix.
+
+The next active scope is **C11-C Art Direction**, restricted to presentation and visual assets.
+
+<!-- C11_FREEZE_STATUS_END -->
+
+# C10-C â€” Visual Authoring -> Runtime -> Physical Export
 
 ## Scope
 
@@ -39,7 +59,7 @@ godot --headless --path . -s .\tests\C10CEndToEndTest.gd
 
 Expected marker:
 
-`[C10C_VISUAL_AUTHORING_RUNTIME_E2E_SUITE] PASS — 9/9`
+`[C10C_VISUAL_AUTHORING_RUNTIME_E2E_SUITE] PASS â€” 9/9`
 
 ## 2. Physical export smoke
 
@@ -73,10 +93,11 @@ The smoke asserts:
 
 Expected marker:
 
-`[C10C_PHYSICAL_EXPORT_SMOKE] PASS — 2/2`
+`[C10C_PHYSICAL_EXPORT_SMOKE] PASS â€” 2/2`
 
 The generated smoke manifest is explicitly marked `production_manifest = false`; it does not replace or mutate the production manifest contract.
 
 ## Important
 
 This package is **prepared, not certified**. Final certification requires the real Godot/Windows execution supplied by the user.
+
