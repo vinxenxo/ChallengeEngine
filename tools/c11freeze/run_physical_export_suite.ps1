@@ -12,13 +12,25 @@ $tests = @(
 
 $logRoot = ".\artifacts\tests\logs\physical"
 New-Item -ItemType Directory -Force -Path $logRoot | Out-Null
+
 foreach ($test in $tests) {
     $name = [IO.Path]::GetFileNameWithoutExtension($test.Path)
     $log = Join-Path $logRoot ($name + ".log")
     Write-Host "[C11FREEZE][PHYSICAL] $name"
-    $output = & godot --headless --path . -s $test.Path 2>&1
-    $output | Tee-Object -FilePath $log
-    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-    if (-not (($output -join "`n") -like "*$($test.Marker)*")) { exit 1 }
+
+    $output = @(& godot --headless --path . --script $test.Path 2>&1)
+    $code = $LASTEXITCODE
+    $output | Tee-Object -FilePath $log | Out-Host
+
+    if ($code -ne 0) {
+        Write-Host "[C11FREEZE][PHYSICAL] FAIL $name exit=$code" -ForegroundColor Red
+        exit $code
+    }
+
+    if (-not (($output -join "`n") -like "*$($test.Marker)*")) {
+        Write-Host "[C11FREEZE][PHYSICAL] FAIL $name marker missing" -ForegroundColor Red
+        exit 1
+    }
 }
-Write-Host "[C11FREEZE] Physical export suite PASS - 2/2"
+
+Write-Host "[C11FREEZE] Physical export suite PASS - 2/2" -ForegroundColor Green

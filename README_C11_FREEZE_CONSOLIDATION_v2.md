@@ -27,3 +27,12 @@ Run stress smoke with `python tools/c11freeze/run_seed_stress.py --limit 3` and 
 - Retrocompatibility is a real 54-run telemetry comparison against C11-A.1, not merely a current validate-only smoke test.
 - Seed stress is fixed-seed and repeated twice by default.
 - `tools/c11freeze/run_all.ps1` is the single complete freeze gate.
+
+
+## v4 fixes
+
+- Explicit GDScript typing in `VisualContentPlayer.gd` and the physical export consumer tests, eliminating Variant inference warnings treated as errors.
+- C6F2 adapter metadata regression test aligned with the current declared Pilot/Hit/Catch/Find/Choose/Count metadata.
+- QA video matrix generator now assigns a unique test-only `challenge_id` per challenge/seed, satisfying batch coverage without changing mechanic or simulation math.
+- `--include-canonical` generates exactly the six frozen C11-A.1 seeds; stress mode remains controlled by `--limit`.
+- Physical export runner is ASCII-safe and prints the actual Godot test output on failure.

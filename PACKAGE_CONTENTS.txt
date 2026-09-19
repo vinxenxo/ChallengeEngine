@@ -1,21 +1,25 @@
-C11 Freeze Consolidation v2
+C11 Freeze Consolidation v4
 
-Purpose: harden tests, retrocompatibility, artifact routing, seed stress and QA video diagnostics before the final freeze.
+Purpose: close deterministic blockers discovered during the C11 freeze gate without touching simulation mathematics, RNG, or frozen contracts.
 
-Key files:
+Key files changed:
 - core/presentation/rendering/VisualContentPlayer.gd
-- tests/run_all.py
-- tests/C6F06*PhysicalExportTest.gd
+- tests/C6F06VisualLoopPhysicalExportTest.gd
+- tests/C6F06VisualDrillPhysicalExportTest.gd
 - tests/C6F2AdapterMetadataBindingTest.gd
-- tests/C6F2ProductiveGeneratorTest.gd
-- tests/C6F3PresentationBindingTest.gd
-- tests/C9EHitAuthoringProductiveTest.gd
-- tests/C9FCatchAuthoringProductiveTest.gd
-- tests/C10CPreparePhysicalFixtures.gd
-- tests/c11freeze/C11FreezeRepositoryContractTest.gd
-- tools/run_C10C_physical_export.ps1
-- tools/c11freeze/run_physical_export_suite.ps1
-- tools/c11freeze/run_seed_stress.py
 - tools/c11freeze/generate_qa_video_matrix.py
-- tools/c11freeze/migrate_artifacts.ps1
-- docs/c11-freeze/*
+- tools/c11freeze/run_physical_export_suite.ps1
+- README_C11_FREEZE_CONSOLIDATION_v2.md (v4 notes)
+
+Expected effects:
+- Remove fatal Variant type-inference warnings from the visual player path.
+- Align C6F2 metadata regression expectations with currently declared adapters.
+- Make canonical QA video matrix 9 challenges x 6 frozen seeds with unique test-only challenge_id values.
+- Make physical suite failures visible and PowerShell encoding-safe.
+
+Not included:
+- No mechanic implementation changes.
+- No RNG changes.
+- No SimulationResult changes.
+- No WinningFrame / visibility mathematics changes.
+- No artifact migration commit.

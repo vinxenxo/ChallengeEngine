@@ -13,18 +13,18 @@ var failures: Array[String] = []
 func _initialize() -> void:
 	print("[TEST] Running C6F06VisualLoopPhysicalExportTest...")
 	
-	var target_path := ArtifactPaths.absolute("qa/physical_smoke/c10c_e2e/avi/c10c_visual_loop_fractal.avi")
+	var target_path: String = ArtifactPaths.absolute("qa/physical_smoke/c10c_e2e/avi/c10c_visual_loop_fractal.avi")
 	
 	await process_frame
 	
 	if not FileAccess.file_exists(target_path):
 		failures.append("Expected physical movie file '%s' was not generated." % target_path)
 	else:
-		var file := FileAccess.open(target_path, FileAccess.READ)
+		var file: FileAccess = FileAccess.open(target_path, FileAccess.READ)
 		if file == null:
 			failures.append("Failed to open generated movie file '%s'." % target_path)
 		else:
-			var length := file.get_length()
+			var length: int = file.get_length()
 			file.close()
 			if length <= 0:
 				failures.append("Generated movie file '%s' is empty (0 bytes)." % target_path)

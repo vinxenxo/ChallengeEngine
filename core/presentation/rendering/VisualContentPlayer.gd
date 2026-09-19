@@ -60,7 +60,7 @@ func _ready() -> void:
 		push_error("[VISUAL_CONTENT_PLAYER] Failed to load valid content definition.")
 		return
 		
-	var registry := ContentRuntimeRegistry.create_default()
+	var registry: ContentRuntimeRegistry = ContentRuntimeRegistry.create_default()
 	var resolution: Dictionary = registry.resolve(definition)
 	
 	if not bool(resolution.get("success", false)):
@@ -77,7 +77,7 @@ func _ready() -> void:
 	_total_frames = int(_runtime.get_frame_count())
 	
 	_stream = _runtime.get_rendered_frame_stream()
-	var binder_registry := PresentationBinderRegistry.create_default()
+	var binder_registry: PresentationBinderRegistry = PresentationBinderRegistry.create_default()
 	var binder_res: Dictionary = binder_registry.resolve_stream(_stream)
 	
 	if not bool(binder_res.get("success", false)):
@@ -144,23 +144,21 @@ func _configure_qa_overlay(definition: Dictionary) -> void:
 	if not qa_mode:
 		return
 
-	var kind := str(definition.get("kind", "visual_content"))
-	var subtype := str(definition.get("subtype", "unknown"))
-	var seed_value = definition.get("seed", definition.get("generation", {}).get("seed", "?"))
-	var seed := str(seed_value)
-	var rng_value = definition.get("rng_version", definition.get("generation", {}).get("rng_version", "?"))
-	var rng := str(rng_value)
+	var kind: String = str(definition.get("kind", "visual_content"))
+	var subtype: String = str(definition.get("subtype", "unknown"))
+	var seed_text: String = str(definition.get("seed", definition.get("generation", {}).get("seed", "?")))
+	var rng: String = str(definition.get("rng_version", definition.get("generation", {}).get("rng_version", "?")))
 	var payload: Dictionary = definition.get("payload", {})
-	var fps := int(payload.get("fps", 30))
-	var frame_count := int(payload.get("frame_count", 0))
+	var fps: int = int(payload.get("fps", 30))
+	var frame_count: int = int(payload.get("frame_count", 0))
 
 	if qa_header_text.is_empty():
-		qa_header_text = "QA · %s/%s · SEED %s" % [kind, subtype, str(seed)]
+		qa_header_text = "QA · %s/%s · SEED %s" % [kind, subtype, seed_text]
 	qa_footer_text = "TEST · RNG %s · %d FPS · %d FRAMES" % [rng, fps, frame_count]
 
 func _build_presentation_profile(definition: Dictionary) -> PresentationProfile:
-	var profile := PresentationProfile.new()
-	var presentation: Dictionary = definition.get("presentation", {})
+	var profile: PresentationProfile = PresentationProfile.new()
+	var presentation = definition.get("presentation", {})
 	if presentation is Dictionary:
 		profile.profile_id = str(presentation.get("profile_id", PresentationProfile.DEFAULT_ID))
 		profile.theme_name = str(presentation.get("theme", "default_c6"))
@@ -168,7 +166,7 @@ func _build_presentation_profile(definition: Dictionary) -> PresentationProfile:
 
 func _load_definition() -> Dictionary:
 	# 1. Check CLI arguments for --definition=<path>
-	var target_file := ""
+	var target_file: String = ""
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--definition="):
 			target_file = arg.trim_prefix("--definition=")
@@ -185,7 +183,7 @@ func _load_definition() -> Dictionary:
 		
 	# Load file if resolved
 	if not target_file.is_empty() and FileAccess.file_exists(target_file):
-		var text := FileAccess.get_file_as_string(target_file)
+		var text: String = FileAccess.get_file_as_string(target_file)
 		var parsed = JSON.parse_string(text)
 		if parsed is Dictionary:
 			print("[VISUAL_CONTENT_PLAYER] Loaded definition from path: %s" % target_file)

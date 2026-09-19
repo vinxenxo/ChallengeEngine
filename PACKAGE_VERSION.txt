@@ -1,2 +1,2 @@
-C11_FREEZE_CONSOLIDATION_PACKAGE_v2
-scope=test-hardening+artifact-contract+retrocompatibility+seed-stress+qa-video-matrix
+C11_FREEZE_CONSOLIDATION_PACKAGE_v4
+scope=variant-typing+adapter-metadata+physical-suite-diagnostics+qa-video-matrix-uniqueness

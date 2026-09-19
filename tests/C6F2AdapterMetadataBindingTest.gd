@@ -77,7 +77,7 @@ func _init() -> void:
 				"Pilot video profile is not DECLARED."
 			)
 
-		if video_binding.get("value") != "test_master_11s":
+		if video_binding.get("value") != "f4_legacy_60_h3_g7_r0_c2":
 			failures.append(
 				"Pilot video profile binding mismatch: %s"
 				% str(video_binding.get("value"))
@@ -91,7 +91,7 @@ func _init() -> void:
 
 			if video_data.is_empty():
 				failures.append(
-					"Pilot video profile 'test_master_11s' "
+					"Pilot video profile 'f4_legacy_60_h3_g7_r0_c2' "
 					+ "could not be resolved."
 				)
 			else:
@@ -154,7 +154,7 @@ func _init() -> void:
 				"Pilot asset family is not DECLARED."
 			)
 
-		if asset_binding.get("value") != "fam_001":
+		if asset_binding.get("value") != "fam_pilot_01":
 			failures.append(
 				"Pilot asset family binding mismatch: %s"
 				% str(asset_binding.get("value"))
@@ -168,7 +168,7 @@ func _init() -> void:
 
 			if asset_data.is_empty():
 				failures.append(
-					"Pilot asset family 'fam_001' "
+					"Pilot asset family 'fam_pilot_01' "
 					+ "could not be resolved."
 				)
 			else:
@@ -185,18 +185,18 @@ func _init() -> void:
 					)
 
 	# =========================================================
-	# 2. PARTIAL READY MECHANICS
+	# 2. READY MECHANICS — CURRENT DECLARED METADATA
 	# =========================================================
 
-	var partial_mechanics := [
-		"hit_v1",
-		"catch_v1",
-		"find_v1",
-		"choose_v1",
-		"count_v1"
-	]
+	var expected_metadata: Dictionary = {
+		"hit_v1": {"video": "f4_legacy_60_h0_g7_r0_c0", "assets": "fam_hit_01"},
+		"catch_v1": {"video": "f4_legacy_60_h0_g7_r0_c2", "assets": "fam_catch_01"},
+		"find_v1": {"video": "f4_legacy_60_h3_g7_r0_c0", "assets": "fam_find_01"},
+		"choose_v1": {"video": "f4_legacy_60_h3_g7_r0_c2", "assets": "fam_choose_01"},
+		"count_v1": {"video": "f4_legacy_60_h3_g7_r0_c2", "assets": "fam_count_01"}
+	}
 
-	for mechanic_id in partial_mechanics:
+	for mechanic_id in expected_metadata.keys():
 		var adapter := (
 			AuthoringMechanicRegistry.get_adapter(
 				mechanic_id
@@ -205,8 +205,7 @@ func _init() -> void:
 
 		if adapter == null:
 			failures.append(
-				"Adapter for '%s' not found."
-				% mechanic_id
+				"Adapter for '%s' not found." % mechanic_id
 			)
 			continue
 
@@ -222,33 +221,31 @@ func _init() -> void:
 			adapter.required_assets()
 		)
 
-		# -----------------------------------------------------
-		# Video MUST remain UNAVAILABLE
-		# -----------------------------------------------------
+		var expected: Dictionary = expected_metadata[mechanic_id]
 
 		if video_binding.get("source") != (
-			AuthoringMechanicAdapter.Source.UNAVAILABLE
+			AuthoringMechanicAdapter.Source.DECLARED
 		):
 			failures.append(
-				("Mechanic '%s' incorrectly declares " % mechanic_id)
-				+ "a video profile."
+				"Mechanic '%s' video is not DECLARED." % mechanic_id
 			)
-
-		# -----------------------------------------------------
-		# Assets MUST remain UNAVAILABLE
-		# -----------------------------------------------------
+		if video_binding.get("value") != expected.get("video"):
+			failures.append(
+				"Mechanic '%s' video binding mismatch: %s"
+				% [mechanic_id, str(video_binding.get("value"))]
+			)
 
 		if asset_binding.get("source") != (
-			AuthoringMechanicAdapter.Source.UNAVAILABLE
+			AuthoringMechanicAdapter.Source.DECLARED
 		):
 			failures.append(
-				("Mechanic '%s' incorrectly declares " % mechanic_id)
-				+ "an asset family."
+				"Mechanic '%s' assets are not DECLARED." % mechanic_id
 			)
-
-		# -----------------------------------------------------
-		# Presentation MUST be declared
-		# -----------------------------------------------------
+		if asset_binding.get("value") != expected.get("assets"):
+			failures.append(
+				"Mechanic '%s' asset family binding mismatch: %s"
+				% [mechanic_id, str(asset_binding.get("value"))]
+			)
 
 		if presentation_binding.get("source") != (
 			AuthoringMechanicAdapter.Source.DECLARED
