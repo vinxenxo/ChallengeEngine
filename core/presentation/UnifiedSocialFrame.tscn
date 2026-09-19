@@ -18,6 +18,15 @@ offset_right = 540.0
 offset_bottom = 144.0
 mouse_filter = 2
 
+[node name="HeaderContent" type="Control" parent="HeaderRegion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="BodyRegion" type="Control" parent="."]
 layout_mode = 0
 offset_top = 144.0
@@ -26,9 +35,30 @@ offset_bottom = 816.0
 mouse_filter = 2
 clip_contents = true
 
+[node name="BodyContentRoot" type="Node2D" parent="BodyRegion"]
+position = Vector2(0, -144)
+
+[node name="BodyUIOverlay" type="Control" parent="BodyRegion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="FooterRegion" type="Control" parent="."]
 layout_mode = 0
 offset_top = 816.0
 offset_right = 540.0
 offset_bottom = 960.0
+mouse_filter = 2
+
+[node name="FooterContent" type="Control" parent="FooterRegion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2

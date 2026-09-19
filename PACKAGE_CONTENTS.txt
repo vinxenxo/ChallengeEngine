@@ -1,0 +1,23 @@
+C11-B.1 — Social UI Integration v1
+
+Assumes C11-B.0.2 v4 is already installed.
+
+Modified/added:
+- Main.tscn
+- GeneradorMaestro.gd
+- core/presentation/PresentationUI.gd
+- core/presentation/UnifiedSocialFrame.gd
+- core/presentation/UnifiedSocialFrame.tscn
+- core/presentation/SocialUIBinder.gd
+- core/presentation/rendering/VisualContentPlayer.gd
+- core/presentation/rendering/VisualContentPlayer.tscn
+- tests/C11B1SocialUIIntegrationContractTest.gd
+- tools/verify_c11b1_installation.ps1
+- docs/C11B1_CONTRACT.md
+
+Frozen contracts not modified:
+- SimulationResult
+- FrameSnapshot semantics
+- mechanics / RNG / WinningFrame calculation
+- C6-F0.8 ContentEnvelope schema
+- RenderedFrameStream schema

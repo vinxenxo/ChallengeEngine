@@ -5,6 +5,7 @@ const ChallengeRuntimeBridge = preload("res://core/execution/ChallengeRuntimeBri
 const ChallengeLegacyRuntimeOracle = preload("res://core/execution/ChallengeLegacyRuntimeOracle.gd")
 const WinningFrameVisibilityGate = preload("res://core/presentation/WinningFrameVisibilityGate.gd")
 const PresentationFramer = preload("res://core/presentation/PresentationFramer.gd")
+const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
 
 # ============================================================
 # ChallengeEngineV01_STATELESS
@@ -50,13 +51,14 @@ var static_target_base_position: Vector2 = Vector2.ZERO
 # Capa de presentación UI unificada (C6-D.1 / D3)
 var presentation_ui: PresentationUI
 var presentation_profile: PresentationProfile
+var social_ui_binder: SocialUIBinder
 
 
-@onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/FondoEstatico
-@onready var target_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/MetaContenedor
-@onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/GestorJuego/ObjetoMovil
+@onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/UnifiedSocialFrame/BodyRegion/BodyContentRoot/GestorJuego/FondoEstatico
+@onready var target_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/UnifiedSocialFrame/BodyRegion/BodyContentRoot/GestorJuego/MetaContenedor
+@onready var object_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/UnifiedSocialFrame/BodyRegion/BodyContentRoot/GestorJuego/ObjetoMovil
 @onready var presentation_ui_root: Control = get_node_or_null(
-	"OptimizadorVertical/PantallaVideo/PresentationUILayer"
+	"OptimizadorVertical/PantallaVideo/UnifiedSocialFrame"
 )
 
 
@@ -245,6 +247,8 @@ func _ready() -> void:
 		ui_theme_name,
 		presentation_profile
 	)
+
+	social_ui_binder = SocialUIBinder.new(presentation_ui, presentation_profile)
 
 	print(
 		"[C6_UI] root=",
@@ -1143,7 +1147,7 @@ func _process(_delta: float) -> void:
 				var rm = ChallengePresentationBinder.build_frame_render_model(
 					"HOOK", ui_content, presentation_ui.current_profile
 				)
-				presentation_ui.apply_render_model(rm)
+				social_ui_binder.bind_render_model(rm)
 
 		"GAME":
 			object_sprite.visible = true
@@ -1163,7 +1167,7 @@ func _process(_delta: float) -> void:
 				var rm = ChallengePresentationBinder.build_frame_render_model(
 					"GAME", ui_content, presentation_ui.current_profile
 				)
-				presentation_ui.apply_render_model(rm)
+				social_ui_binder.bind_render_model(rm)
 
 		"REVEAL":
 			object_sprite.visible = true
@@ -1175,7 +1179,7 @@ func _process(_delta: float) -> void:
 				var rm = ChallengePresentationBinder.build_frame_render_model(
 					"REVEAL", ui_content, presentation_ui.current_profile
 				)
-				presentation_ui.apply_render_model(rm)
+				social_ui_binder.bind_render_model(rm)
 
 		"CTA":
 			object_sprite.visible = true
@@ -1187,7 +1191,7 @@ func _process(_delta: float) -> void:
 				var rm = ChallengePresentationBinder.build_frame_render_model(
 					"CTA", ui_content, presentation_ui.current_profile
 				)
-				presentation_ui.apply_render_model(rm)
+				social_ui_binder.bind_render_model(rm)
 
 		_:
 			object_sprite.visible = false

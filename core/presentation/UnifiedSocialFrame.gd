@@ -2,13 +2,18 @@
 class_name UnifiedSocialFrame
 extends Control
 
-## C11-B.0 — Unified Social Frame.
-## Shared canvas topology for Challenges, Visual Loops, Visual Drills and future families.
-## This node owns geometry/regions only. It does not own simulation, RNG or timing truth.
+## C11-B.0 / C11-B.1 — Unified Social Frame.
+## Shared canvas topology for challenges and visual families.
+## Owns only structural regions and presentation mount points.
+## Does not own simulation, RNG or temporal truth.
 
 @onready var header_region: Control = $HeaderRegion
+@onready var header_content: Control = $HeaderRegion/HeaderContent
 @onready var body_region: Control = $BodyRegion
+@onready var body_content_root: Node2D = $BodyRegion/BodyContentRoot
+@onready var body_ui_overlay: Control = $BodyRegion/BodyUIOverlay
 @onready var footer_region: Control = $FooterRegion
+@onready var footer_content: Control = $FooterRegion/FooterContent
 
 var current_profile: PresentationProfile
 
@@ -45,3 +50,15 @@ func get_header_rect() -> Rect2:
 
 func get_footer_rect() -> Rect2:
 	return Rect2(footer_region.position, footer_region.size)
+
+func get_header_content_root() -> Control:
+	return header_content
+
+func get_body_content_root() -> Node2D:
+	return body_content_root
+
+func get_body_ui_root() -> Control:
+	return body_ui_overlay
+
+func get_footer_content_root() -> Control:
+	return footer_content

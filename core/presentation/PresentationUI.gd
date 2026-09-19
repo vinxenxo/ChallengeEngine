@@ -20,34 +20,76 @@ var mechanic_node: Node2D
 func _init(root: Node = null, theme_name: String = "default_c6", profile: PresentationProfile = null):
 	self.root_control = root
 	self.theme_name = theme_name
-	
+
+	var unified_frame: UnifiedSocialFrame = null
+	if root_control != null and root_control is UnifiedSocialFrame:
+		unified_frame = root_control as UnifiedSocialFrame
+
 	safe_area = SafeAreaLayout.new()
+	if unified_frame != null:
+		_build_unified_frame_ui(unified_frame)
+	else:
+		_build_legacy_ui()
+
+	if profile != null:
+		apply_profile(profile)
+
+func _build_legacy_ui() -> void:
 	if root_control != null:
 		root_control.add_child(safe_area)
-	
-	var vbox = VBoxContainer.new()
+	var vbox := VBoxContainer.new()
 	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
 	safe_area.add_child(vbox)
-	
-	var top_hbox = HBoxContainer.new()
+	_build_header_ui(vbox)
+	_build_body_ui(vbox)
+	_build_footer_ui(vbox)
+	if reveal_manager != null and root_control != null:
+		root_control.add_child(reveal_manager)
+
+func _build_unified_frame_ui(frame: UnifiedSocialFrame) -> void:
+	var header_root := frame.get_header_content_root()
+	var body_root := frame.get_body_ui_root()
+	var footer_root := frame.get_footer_content_root()
+
+	var header_box := VBoxContainer.new()
+	header_box.set_anchors_preset(Control.PRESET_FULL_RECT)
+	header_root.add_child(header_box)
+	_build_header_ui(header_box)
+
+	gameplay_envelope = Control.new()
+	gameplay_envelope.set_anchors_preset(Control.PRESET_FULL_RECT)
+	gameplay_envelope.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	body_root.add_child(gameplay_envelope)
+	_build_body_children(true)
+
+	var footer_box := VBoxContainer.new()
+	footer_box.set_anchors_preset(Control.PRESET_FULL_RECT)
+	footer_root.add_child(footer_box)
+	_build_footer_children(footer_box)
+
+func _build_header_ui(parent: Control) -> void:
+	var top_hbox := HBoxContainer.new()
 	top_hbox.alignment = BoxContainer.ALIGNMENT_END
-	vbox.add_child(top_hbox)
-	
+	parent.add_child(top_hbox)
+
 	badge_label = TypographyLabel.new()
 	badge_label.role = TypographyLabel.Role.BADGE
 	top_hbox.add_child(badge_label)
-	
+
 	hook_label = HookComponent.new()
-	vbox.add_child(hook_label)
-	
+	parent.add_child(hook_label)
+
+func _build_body_ui(parent: Control) -> void:
 	gameplay_envelope = Control.new()
 	gameplay_envelope.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	gameplay_envelope.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vbox.add_child(gameplay_envelope)
-	
+	parent.add_child(gameplay_envelope)
+	_build_body_children()
+
+func _build_body_children(reveal_in_body: bool = false) -> void:
 	countdown = CountdownComponent.new()
 	gameplay_envelope.add_child(countdown)
-	
+
 	winning_label = TypographyLabel.new()
 	winning_label.role = TypographyLabel.Role.HEADLINE
 	winning_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -57,22 +99,23 @@ func _init(root: Node = null, theme_name: String = "default_c6", profile: Presen
 	winning_label.grow_vertical = Control.GROW_DIRECTION_END
 	winning_label.visible = false
 	gameplay_envelope.add_child(winning_label)
-	
-	cta = CTAComponent.new()
-	cta.visible = false
-	vbox.add_child(cta)
-	
+
 	reveal_manager = RevealManager.new()
 	reveal_manager.winning_label = winning_label
-	if root_control != null:
-		root_control.add_child(reveal_manager)
+	if reveal_in_body:
+		gameplay_envelope.add_child(reveal_manager)
 
-	winning_highlight = WinningHighlightComponent.new(root_control as Control)
+func _build_footer_ui(parent: Control) -> void:
+	_build_footer_children(parent)
+
+func _build_footer_children(parent: Control) -> void:
+	cta = CTAComponent.new()
+	cta.visible = false
+	parent.add_child(cta)
+
+	winning_highlight = WinningHighlightComponent.new(root_control as Control if root_control is Control else null)
 	if winning_highlight != null:
 		winning_highlight.hide()
-
-	if profile != null:
-		apply_profile(profile)
 
 func apply_profile(profile: PresentationProfile):
 	self.current_profile = profile

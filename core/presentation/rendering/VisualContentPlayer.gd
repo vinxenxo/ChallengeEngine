@@ -12,8 +12,13 @@ const PresentationBinderRegistry = preload("res://core/presentation/Presentation
 const ContentRendererHost = preload("res://core/presentation/rendering/ContentRendererHost.gd")
 const VisualLoopRenderer = preload("res://core/presentation/rendering/VisualLoopRenderer.gd")
 const VisualDrillRenderer = preload("res://core/presentation/rendering/VisualDrillRenderer.gd")
+const PresentationUI = preload("res://core/presentation/PresentationUI.gd")
+const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
+const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
 
 @export var content_definition_path: String = ""
+
+@onready var unified_social_frame: UnifiedSocialFrame = $UnifiedSocialFrame
 
 var _runtime = null
 var _renderer_host: ContentRendererHost = null
@@ -23,12 +28,16 @@ var _current_frame_index: int = 0
 var _total_frames: int = 0
 var is_ready_initialized: bool = false
 var playback_finished: bool = false
+var presentation_ui: PresentationUI
+var social_ui_binder: SocialUIBinder
+var presentation_profile: PresentationProfile
 
 func _ready() -> void:
 	print("[VISUAL_CONTENT_PLAYER] Initializing playback host...")
 	
 	_renderer_host = ContentRendererHost.new()
-	add_child(_renderer_host)
+	_renderer_host.name = "ContentRendererHost"
+	unified_social_frame.get_body_content_root().add_child(_renderer_host)
 	
 	var definition: Dictionary = _load_definition()
 	if definition.is_empty():
@@ -42,6 +51,11 @@ func _ready() -> void:
 		push_error("[VISUAL_CONTENT_PLAYER] Runtime resolution failed: %s" % str(resolution.get("error_code", "")))
 		return
 		
+	presentation_profile = _build_presentation_profile(definition)
+	unified_social_frame.apply_profile(presentation_profile)
+	presentation_ui = PresentationUI.new(unified_social_frame, presentation_profile.theme_name, presentation_profile)
+	social_ui_binder = SocialUIBinder.new(presentation_ui, presentation_profile)
+
 	_runtime = resolution.get("runtime")
 	_total_frames = int(_runtime.get_frame_count())
 	
@@ -78,7 +92,9 @@ func _process(_delta: float) -> void:
 	if frame.is_empty():
 		return
 		
-	var render_model: Dictionary = _binder.bind_frame(frame, null, "GAME")
+	var render_model: Dictionary = _binder.bind_frame(frame, presentation_profile, "GAME")
+	if social_ui_binder != null:
+		social_ui_binder.bind_render_model(render_model)
 	
 	var domain_state: Dictionary = {}
 	if _stream.kind == "visual_loop":
@@ -88,6 +104,14 @@ func _process(_delta: float) -> void:
 		
 	_renderer_host.forward_state(domain_state)
 	_current_frame_index += 1
+
+func _build_presentation_profile(definition: Dictionary) -> PresentationProfile:
+	var profile := PresentationProfile.new()
+	var presentation = definition.get("presentation", {})
+	if presentation is Dictionary:
+		profile.profile_id = str(presentation.get("profile_id", PresentationProfile.DEFAULT_ID))
+		profile.theme_name = str(presentation.get("theme", "default_c6"))
+	return profile
 
 func _load_definition() -> Dictionary:
 	# 1. Check CLI arguments for --definition=<path>
