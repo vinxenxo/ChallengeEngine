@@ -1,9 +1,13 @@
-param([int]$Seed = 314159)
+param(
+    [int]$Seed = 314159,
+    [switch]$NoFooter
+)
 
 $ErrorActionPreference = 'Stop'
 
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $env:C11C_SEED = [string]$Seed
+$env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_fractal_bloom_v1'
 $Avi = Join-Path $ArtifactRoot "FractalBloom_v1_seed_${Seed}.avi"
 $Mp4Silent = Join-Path $ArtifactRoot "FractalBloom_v1_seed_${Seed}_silent.mp4"
@@ -106,6 +110,8 @@ try {
             muxed_into_mp4 = $true
             C7_modified = $false
         }
+        technobabble_generator_revision = '1.0.0'
+        technobabble_deterministic = $true
         frozen_boundaries_modified = $false
     }
     $manifestObject | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 $Manifest

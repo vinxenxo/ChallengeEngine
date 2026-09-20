@@ -1,9 +1,13 @@
-param([int]$Seed = 314159)
+param(
+    [int]$Seed = 314159,
+    [switch]$NoFooter
+)
 
 $ErrorActionPreference = 'Stop'
 
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $env:C11C_SEED = [string]$Seed
+$env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_sacred_symmetry_v1'
 $Avi = Join-Path $ArtifactRoot "SacredSymmetry_v1_seed_${Seed}.avi"
 $Mp4Silent = Join-Path $ArtifactRoot "SacredSymmetry_v1_seed_${Seed}_silent.mp4"
@@ -65,6 +69,8 @@ try {
         visual = [ordered]@{ canvas='540x960'; body='y=144..816'; duration_seconds=10.0; fps=30; frame_count=300; mathematical_model='radial symmetry + concentric rings + polar ticks + orbital nodes + periodic clockwork motion'; }
         editorial = [ordered]@{ header='EL MECANISMO QUE ORDENA EL CAOS'; footer='RADIAL SYMMETRY  |  N=12  |  POLAR ASTROLABE  |  3 RINGS'; }
         audio = [ordered]@{ mode='prototype_procedural_music'; deterministic=$true; source_script='generate_c11c_sacred_symmetry_v1_music.py'; sample_rate=44100; channels=2; duration_seconds=10.0; muxed_into_mp4=$true; C7_modified=$false; }
+        technobabble_generator_revision = '1.0.0'
+        technobabble_deterministic = $true
         frozen_boundaries_modified = $false
     }
     $manifestObject | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 $Manifest

@@ -1,0 +1,23 @@
+{
+  "schema": "C11-C-EDITORIAL-VARIATION-UPDATE-V1",
+  "revision": "1.3.1",
+  "status": "GODOT_PARSE_HOTFIX",
+  "families": 5,
+  "changes": [
+    "deterministic geek text utility",
+    "family-specific technobabble vocabularies",
+    "footer prototype text injection",
+    "human-readable technobabble dictionary mirror",
+    "optional no-footer render switch for future production",
+    "production footer policy documented",
+    "production visual variation model documented"
+  ],
+  "prototype_footer_default": true,
+  "production_footer_default": false,
+  "frozen_boundaries_modified": false,
+  "core_modified": false,
+  "simulation_modified": false,
+  "rng_architecture_modified": false,
+  "c7_modified": false,
+  "hotfix": "TechnobabbleGenerator explicit typing for Godot 4.7.1"
+}

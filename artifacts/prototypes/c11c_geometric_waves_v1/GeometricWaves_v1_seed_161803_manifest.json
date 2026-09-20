@@ -12,7 +12,7 @@
                },
     "editorial":  {
                       "header":  "CUANDO LAS ONDAS DIBUJAN GEOMETRIA",
-                      "footer":  "(t)=2f/300  N=6  LISS 8:5  3 LAYERS  SEED $Seed"
+                      "footer":  "(t)=2f/300  N=6  LISS 8:5  3 LAYERS  SEED 161803"
                   },
     "audio":  {
                   "mode":  "prototype_procedural_music",
@@ -24,5 +24,7 @@
                   "muxed_into_mp4":  true,
                   "C7_modified":  false
               },
+    "technobabble_generator_revision":  "1.0.0",
+    "technobabble_deterministic":  true,
     "frozen_boundaries_modified":  false
 }

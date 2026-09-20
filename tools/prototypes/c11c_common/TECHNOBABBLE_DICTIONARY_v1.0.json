@@ -1,0 +1,21 @@
+{
+  "schema": "C11-C-TECHNOBABBLE-DICTIONARY-V1",
+  "revision": "1.0.0",
+  "note": "Human-readable vocabulary mirror. Runtime prototype generator is intentionally frozen to its GDScript constants for deterministic review.",
+  "actions": ["Calibrando", "Sincronizando", "Estabilizando", "Iterando", "Modulando", "Resolviendo", "Ajustando", "Compilando", "Acoplando", "Desfasando", "Mapeando", "Extrapolando"],
+  "statuses": ["NOMINAL", "ESTABLE", "OPTIMO", "ACOPLADO", "CONVERGENTE", "EN FASE", "BAJA ENTROPIA", "SINGULAR"],
+  "subjects": {
+    "geometric": ["matriz de Lissajous", "interferencia de ondas", "grilla de Voronoi", "nodos armonicos", "resonancia poligonal", "fase geometrica", "malla de amplitud", "simetria de onda"],
+    "fractal": ["fractal de Julia", "ramificaciones de micelio", "trampas de orbita", "sinapsis L-System", "campo complejo", "nucleo recursivo", "zoom analitico", "iteracion fractal"],
+    "kaleidoscope": ["astrolabio cuantico", "simetria radial", "ejes de rotacion", "teselaciones", "engranaje polar", "nucleo orbital", "anillo equiponderado", "mecanismo celeste"],
+    "particle_flow": ["atractores de Clifford", "dinamica de fluidos", "densidad magnetica", "vortice principal", "campo de Curl Noise", "nube de particulas", "pozo gravitacional", "flujo tangencial"],
+    "vector_field": ["topografia gravitacional", "flujo de viento solar", "lineas equipotenciales", "campo vectorial", "frente de presion", "pozo de potencial", "corriente termica", "gradiente de fuerza"]
+  },
+  "units": {
+    "geometric": ["Hz", "rad/s", "ciclos/s", "px/frame"],
+    "fractal": ["iter/s", "Hz", "rad/s", "niveles"],
+    "kaleidoscope": ["Hz", "rad/s", "vueltas/s", "grados"],
+    "particle_flow": ["u/s", "Hz", "m/s", "densidades"],
+    "vector_field": ["Hz", "rad/s", "u/s", "tesla*eq"]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "generator_action_explicit_string": true,
+  "generator_subject_explicit_string": true,
+  "generator_status_explicit_string": true,
+  "generator_unit_explicit_string": true,
+  "generator_fake_float": true,
+  "generator_trace_int": true,
+  "generator_template_id_int": true,
+  "no_literal_backslash_n_in_shaders": true,
+  "geometric_manifest_seed_interpolates": true,
+  "all_geek_text_explicit": true
+}

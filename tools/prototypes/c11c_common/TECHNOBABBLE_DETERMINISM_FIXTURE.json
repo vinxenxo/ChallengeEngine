@@ -1,0 +1,106 @@
+{
+  "schema": "C11-C-TECHNOBABBLE-FIXTURE-V1",
+  "generator_revision": "1.0.0",
+  "cases": [
+    {
+      "family": "geometric",
+      "seed": 314159,
+      "text": "Calibrando resonancia poligonal... [CONVERGENTE]"
+    },
+    {
+      "family": "geometric",
+      "seed": 271828,
+      "text": "Mapeando resonancia poligonal... [BAJA ENTROPIA]"
+    },
+    {
+      "family": "geometric",
+      "seed": 161803,
+      "text": "TRACE 450 // Calibrando // matriz de Lissajous"
+    },
+    {
+      "family": "geometric",
+      "seed": 112358,
+      "text": "Sincronizando malla de amplitud... [SINGULAR]"
+    },
+    {
+      "family": "fractal",
+      "seed": 314159,
+      "text": "[SYS] Mapeando sinapsis L-System a 638.4 Hz"
+    },
+    {
+      "family": "fractal",
+      "seed": 271828,
+      "text": "Estabilizando fractal de Julia... [OPTIMO]"
+    },
+    {
+      "family": "fractal",
+      "seed": 161803,
+      "text": "OBSERVADOR: fractal de Julia -> NOMINAL // 656.9 iter/s"
+    },
+    {
+      "family": "fractal",
+      "seed": 112358,
+      "text": "PROTOCOLO // SINCRONIZANDO // RAMIFICACIONES DE MICELIO // EN FASE"
+    },
+    {
+      "family": "kaleidoscope",
+      "seed": 314159,
+      "text": "OBSERVADOR: mecanismo celeste -> OPTIMO // 933.6 Hz"
+    },
+    {
+      "family": "kaleidoscope",
+      "seed": 271828,
+      "text": "Parametro de ejes de rotacion: 995.0 rad/s // Estado: EN FASE"
+    },
+    {
+      "family": "kaleidoscope",
+      "seed": 161803,
+      "text": "Ajustando astrolabio cuantico... [EN FASE]"
+    },
+    {
+      "family": "kaleidoscope",
+      "seed": 112358,
+      "text": "PROTOCOLO // RESOLVIENDO // NUCLEO ORBITAL // NOMINAL"
+    },
+    {
+      "family": "particle_flow",
+      "seed": 314159,
+      "text": "Parametro de flujo tangencial: 699.7 m/s // Estado: BAJA ENTROPIA"
+    },
+    {
+      "family": "particle_flow",
+      "seed": 271828,
+      "text": "OBSERVADOR: vortice principal -> BAJA ENTROPIA // 978.3 u/s"
+    },
+    {
+      "family": "particle_flow",
+      "seed": 161803,
+      "text": "OBSERVADOR: campo de Curl Noise -> OPTIMO // 142.6 Hz"
+    },
+    {
+      "family": "particle_flow",
+      "seed": 112358,
+      "text": "Parametro de pozo gravitacional: 820.7 Hz // Estado: EN FASE"
+    },
+    {
+      "family": "vector_field",
+      "seed": 314159,
+      "text": "Desfasando topografia gravitacional... [SINGULAR]"
+    },
+    {
+      "family": "vector_field",
+      "seed": 271828,
+      "text": "Acoplando corriente termica... [NOMINAL]"
+    },
+    {
+      "family": "vector_field",
+      "seed": 161803,
+      "text": "PROTOCOLO // MAPEANDO // CORRIENTE TERMICA // BAJA ENTROPIA"
+    },
+    {
+      "family": "vector_field",
+      "seed": 112358,
+      "text": "OBSERVADOR: pozo de potencial -> EN FASE // 359.7 tesla*eq"
+    }
+  ]
+}

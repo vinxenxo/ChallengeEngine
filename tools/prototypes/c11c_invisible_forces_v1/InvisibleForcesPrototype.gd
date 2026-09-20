@@ -5,6 +5,7 @@ extends Node2D
 
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const RendererClass = preload("res://tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesRenderer.gd")
+const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -17,9 +18,11 @@ const FRAME_COUNT := 300
 var _renderer: Node2D
 var _frame_index := 0
 var _seed := REFERENCE_SEED
+var _show_footer := true
 
 func _ready() -> void:
     _seed = _resolve_seed()
+    _show_footer = _resolve_footer_visibility()
     _build_scene()
     set_process(true)
 
@@ -37,7 +40,8 @@ func _build_scene() -> void:
     add_child(frame)
     _add_frame_decoration(frame)
     _add_header(frame.get_header_content_root())
-    _add_footer(frame.get_footer_content_root())
+    if _show_footer:
+        _add_footer(frame.get_footer_content_root())
 
     _renderer = RendererClass.new()
     _renderer.name = "InvisibleForcesRenderer"
@@ -88,10 +92,16 @@ func _add_header(root: Control) -> void:
 
 func _add_footer(root: Control) -> void:
     root.add_child(_new_label("VISUAL LOOP  //  INVISIBLE FORCES", Vector2(36.0, 33.0), Vector2(468.0, 18.0), 10, Color("AA7E6A")))
-    var hook := _new_label("NO VES LA FUERZA, SOLO SU RASTRO", Vector2(36.0, 53.0), Vector2(468.0, 38.0), 22, Color("FFF2EC"))
+    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("vector_field", _seed)
+    root.add_child(_new_footer_geek_label(geek_text, Vector2(36.0, 51.0), Vector2(468.0, 20.0), Color("AAB7C7")))
+    var hook := _new_label("NO VES LA FUERZA, SOLO SU RASTRO", Vector2(36.0, 72.0), Vector2(468.0, 28.0), 18, Color("FFF2EC"))
     hook.add_theme_constant_override("outline_size", 2)
     root.add_child(hook)
-    root.add_child(_new_label("DETERMINISTIC FIELD ART / v1", Vector2(36.0, 101.0), Vector2(468.0, 18.0), 9, Color("7D5547")))
+    root.add_child(_new_label("DETERMINISTIC FIELD ART / v1", Vector2(36.0, 106.0), Vector2(468.0, 16.0), 9, Color("7D5547")))
+
+func _resolve_footer_visibility() -> bool:
+    var raw := OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+    return raw not in ["0", "false", "off", "no"]
 
 func _resolve_seed() -> int:
     var raw := OS.get_environment("C11C_SEED").strip_edges()
@@ -108,6 +118,15 @@ func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2,
     label.add_theme_font_size_override("font_size", fitted)
     return label
 
+
+func _new_footer_geek_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+    var label := _new_label(text_value, pos, box_size, 10, color)
+    var font := label.get_theme_default_font()
+    var fitted := 10
+    while fitted > 8 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
+        fitted -= 1
+    label.add_theme_font_size_override("font_size", fitted)
+    return label
 func _new_label(text_value: String, pos: Vector2, box_size: Vector2, font_size: int, color: Color) -> Label:
     var label := Label.new()
     label.text = text_value

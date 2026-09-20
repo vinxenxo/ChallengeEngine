@@ -1,9 +1,13 @@
-param([int]$Seed = 314159)
+param(
+    [int]$Seed = 314159,
+    [switch]$NoFooter
+)
 
 $ErrorActionPreference = 'Stop'
 
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $env:C11C_SEED = [string]$Seed
+$env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_geometric_waves_v1'
 $Avi = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}.avi"
 $Mp4Silent = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}_silent.mp4"
@@ -105,7 +109,7 @@ try {
         }
         editorial = [ordered]@{
             header = 'CUANDO LAS ONDAS DIBUJAN GEOMETRIA'
-            footer = '(t)=2f/300  N=6  LISS 8:5  3 LAYERS  SEED $Seed'
+            footer = "(t)=2f/300  N=6  LISS 8:5  3 LAYERS  SEED $Seed"
         }
         audio = [ordered]@{
             mode = 'prototype_procedural_music'
@@ -117,6 +121,8 @@ try {
             muxed_into_mp4 = $true
             C7_modified = $false
         }
+        technobabble_generator_revision = '1.0.0'
+        technobabble_deterministic = $true
         frozen_boundaries_modified = $false
     }
     $manifestObject | ConvertTo-Json -Depth 6 | Set-Content -Encoding UTF8 $Manifest

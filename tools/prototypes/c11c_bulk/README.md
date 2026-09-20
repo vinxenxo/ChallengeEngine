@@ -42,3 +42,16 @@ Every launcher uses expandable seed-specific output paths (for example `*_seed_2
 
 ## Seed-driven variation
 The multiseed stage is a deterministic variation test, not just a filename test. Geometric Waves varies polygon/frequency/morph envelope; Fractal Bloom varies zoom/warp/bloom envelope; Sacred Symmetry varies radial order/ring bias/gear relations; Living Particles varies attractor positions/flow envelope; Invisible Forces varies field orientation/storm/pulse envelope. Same family + same seed remains reproducible.
+
+## Deterministic geek text
+
+Prototype Footer includes family-specific deterministic technobabble generated from family + seed.
+Use `-NoFooter` on individual prototype launchers to render without Footer for future production-style previews.
+
+## Seed diversity policy
+
+The current four-seed matrix is a qualification matrix, not the final production diversity envelope. Production bulk will widen family-specific parameters while remaining bounded by each family's art contract.
+
+## 1.3.1 Godot parse hotfix
+
+Godot 4.7.1 requires explicit typing for several values originating from untyped Arrays/Dictionaries in the deterministic technobabble utility. The 1.3.1 package contains that hotfix and does not alter the visual formulas or frozen engine boundaries.
