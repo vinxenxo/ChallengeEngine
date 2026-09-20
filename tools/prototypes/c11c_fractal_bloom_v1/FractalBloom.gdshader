@@ -1,0 +1,184 @@
+shader_type canvas_item;
+
+// C11-C.2 — Fractal Bloom v1 isolated presentation prototype.
+// Presentation-only. No simulation state, RNG stream or RenderedFrameStream access.
+// The entire time domain is driven by an externally supplied periodic phase.
+
+uniform float phase = 0.0;
+uniform float seed_phase = 0.0;
+uniform float zoom_strength = 0.62;
+uniform float warp_strength = 0.032;
+uniform float bloom_strength = 0.72;
+uniform float layer_softness = 0.82;
+uniform vec4 indigo_color : source_color = vec4(0.14, 0.13, 0.42, 1.0);
+uniform vec4 violet_color : source_color = vec4(0.55, 0.24, 0.96, 1.0);
+uniform vec4 cyan_color : source_color = vec4(0.10, 0.83, 0.93, 1.0);
+uniform vec4 highlight_color : source_color = vec4(0.97, 0.99, 1.0, 1.0);
+
+const float FB_PI = 3.14159265358979323846;
+const float FB_TAU = 6.28318530717958647692;
+const int FB_MAX_ITERS = 24;
+
+mat2 rot(float a) {
+    float s = sin(a);
+    float c = cos(a);
+    return mat2(vec2(c, -s), vec2(s, c));
+}
+
+float hash11(float p) {
+    p = fract(p * 0.1031);
+    p *= p + 33.33;
+    p *= p + p;
+    return fract(p);
+}
+
+vec2 cmul(vec2 a, vec2 b) {
+    return vec2(a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x);
+}
+
+vec2 cdiv(vec2 a, vec2 b) {
+    float d = max(dot(b, b), 0.000001);
+    return vec2(
+        (a.x * b.x + a.y * b.y) / d,
+        (a.y * b.x - a.x * b.y) / d
+    );
+}
+
+vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias) {
+    // Seeded Julia constant stays inside a restrained organic range.
+    float s0 = hash11(seed_phase * 0.159154943 + 1.7);
+    float s1 = hash11(seed_phase * 0.159154943 + 7.3);
+    vec2 c = vec2(
+        -0.19 + 0.18 * s0 + 0.018 * sin(local_phase * 0.75 + seed_phase),
+        0.57 + 0.15 * s1 + 0.014 * cos(local_phase * 0.50 - seed_phase)
+    );
+
+    vec2 q = p * layer_scale;
+    float warp_a = sin(q.y * 3.2 + local_phase * 0.65 + seed_phase * 0.20);
+    float warp_b = cos(q.x * 2.7 - local_phase * 0.55 - seed_phase * 0.13);
+    q += warp_strength * vec2(warp_a, warp_b);
+    q = rot(0.035 * sin(local_phase + seed_phase)) * q;
+
+    // Radial breathing makes the bloom feel alive without translating the nucleus.
+    float rr = length(q);
+    q *= 0.96 + 0.08 * cos(local_phase * 0.5 + rr * 4.0);
+
+    vec2 z = q;
+    float orbit = 10.0;
+    float axis_trap = 10.0;
+    float circle_trap = 10.0;
+    float min_r2 = 10.0;
+    float escaped_at = float(FB_MAX_ITERS);
+    bool escaped = false;
+
+    for (int i = 0; i < FB_MAX_ITERS; i++) {
+        z = cdiv(cmul(z, z), vec2(1.0, 0.0)) + c;
+        float zr = length(z);
+        orbit = min(orbit, abs(z.x));
+        orbit = min(orbit, abs(z.y));
+        axis_trap = min(axis_trap, abs(z.x * z.y));
+        circle_trap = min(circle_trap, abs(zr - 0.74));
+        min_r2 = min(min_r2, dot(z, z));
+        if (zr > 2.4 && !escaped) {
+            escaped_at = float(i);
+            escaped = true;
+        }
+        if (zr > 8.0) {
+            break;
+        }
+    }
+
+    float escape_soft = 1.0 - smoothstep(0.0, 2.5, escaped_at);
+    float filament = exp(-42.0 * orbit);
+    float branch_filament = exp(-58.0 * sqrt(max(axis_trap, 0.0)));
+    float ring_filament = exp(-34.0 * circle_trap);
+
+    float field = clamp(
+        filament * 0.92 + branch_filament * 0.52 + ring_filament * 0.18,
+        0.0,
+        1.0
+    );
+
+    // Reject the filled interior and emphasize filamentary escape structure.
+    float interior_guard = smoothstep(0.04, 0.22, length(q));
+    field *= mix(0.42, 1.0, interior_guard);
+    field *= mix(0.72, 1.16, escape_soft);
+
+    float node_energy = pow(clamp(field, 0.0, 1.0), 2.2);
+    float depth = exp(-layer_softness * rr * (0.65 + 0.10 * iter_bias));
+    field *= depth;
+
+    float organic_pulse = 0.82 + 0.18 * cos(local_phase * (1.0 + 0.12 * iter_bias) + rr * 5.0);
+    field *= organic_pulse;
+
+    vec3 cold = mix(indigo_color.rgb, violet_color.rgb, clamp(field * 1.7, 0.0, 1.0));
+    vec3 hot = mix(violet_color.rgb, cyan_color.rgb, clamp(field * 2.4 - 0.35, 0.0, 1.0));
+    vec3 colour = mix(cold, hot, smoothstep(0.22, 0.78, field));
+    colour = mix(colour, highlight_color.rgb, node_energy * 0.78 * bloom_strength);
+
+    float glow = pow(max(field, 0.0), 0.46) * 0.15 * bloom_strength;
+    colour += highlight_color.rgb * glow;
+
+    return vec4(colour * field, field + node_energy * 0.18);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 p = (uv - vec2(0.5)) * vec2(540.0 / 672.0, 1.0);
+
+    // Three-layer analytical zoom. No bitmap scrolling.
+    float zoom_wave = 0.5 - 0.5 * cos(phase);
+    float zoom_harm = 0.5 - 0.5 * cos(2.0 * phase);
+    float zoom = exp(zoom_strength * (0.78 * zoom_wave + 0.22 * zoom_harm));
+
+    vec3 accumulated = vec3(0.0);
+    float accumulated_alpha = 0.0;
+
+    float layer0_phase = phase * 0.52 + seed_phase * 0.06;
+    float layer1_phase = phase * 1.00 + seed_phase * 0.10;
+    float layer2_phase = phase * 1.82 + seed_phase * 0.16;
+
+    vec2 p0 = rot(0.030 * sin(layer0_phase)) * p;
+    vec2 p1 = rot(0.045 * sin(layer1_phase + 0.4)) * p;
+    vec2 p2 = rot(0.065 * sin(layer2_phase - 0.7)) * p;
+
+    // Deep roots: dim, broader and slower.
+    vec4 f0 = fractal_field(p0 * zoom * 0.84, layer0_phase, 0.92, 0.0);
+    float a0 = f0.a * 0.42;
+    accumulated += f0.rgb * vec3(0.82, 0.84, 1.0) * 0.80;
+    accumulated_alpha += a0;
+
+    // Hero bloom structure.
+    vec4 f1 = fractal_field(p1 * zoom, layer1_phase, 1.0, 1.0);
+    float a1 = f1.a * 0.94;
+    accumulated += f1.rgb;
+    accumulated_alpha += a1;
+
+    // Active synapses: finer detail sampled at a slightly different phase/scale.
+    vec4 f2 = fractal_field(p2 * zoom * 1.36, layer2_phase, 1.16, 2.0);
+    float a2 = f2.a * 0.62;
+    accumulated += f2.rgb * 1.04;
+    accumulated_alpha += a2;
+
+    // Central nucleus: luminous, restrained, never a filled disk.
+    float r = length(p);
+    float nucleus = exp(-r * 13.0);
+    float nucleus_breath = 0.72 + 0.28 * cos(phase * 1.5 + seed_phase * 0.2);
+    accumulated += highlight_color.rgb * nucleus * nucleus_breath * 0.075;
+    accumulated_alpha += nucleus * 0.05;
+
+    // Abyssal radial background.
+    float vignette = 1.0 - smoothstep(0.20, 0.62, length(p));
+    vec3 bg = vec3(0.018, 0.022, 0.050);
+    bg += indigo_color.rgb * (0.045 * vignette);
+    bg += violet_color.rgb * (0.012 * (1.0 - vignette));
+
+    // Edge breathing prevents the whole Body from becoming equally bright.
+    float edge_guard = 1.0 - smoothstep(0.43, 0.54, length(p));
+    accumulated *= mix(0.62, 1.0, edge_guard);
+
+    vec3 final_rgb = bg + accumulated;
+    final_rgb += highlight_color.rgb * pow(clamp(accumulated_alpha, 0.0, 1.0), 3.0) * 0.045 * bloom_strength;
+
+    COLOR = vec4(clamp(final_rgb, 0.0, 1.0), 1.0);
+}

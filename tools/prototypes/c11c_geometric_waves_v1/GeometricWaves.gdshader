@@ -10,6 +10,8 @@ uniform float morph = 0.5;
 uniform float wave_frequency = 18.0;
 uniform float line_width = 0.008;
 uniform float glow_strength = 0.62;
+uniform float polygon_sides = 6.0;
+uniform float wave_ratio = 0.83;
 uniform float layer_depth = 0.0;
 uniform vec4 dominant_color : source_color = vec4(0.0, 0.82, 0.94, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.95, 0.08, 0.52, 1.0);
@@ -65,7 +67,7 @@ void fragment() {
 
         // Circle <-> polygon morph. The target shape itself is continuously perturbed
         // by harmonic radial waves rather than being redrawn as a rigid primitive.
-        float polygon_r = polar_polygon_radius(a + 0.035 * sin(phase + seed_phase), 6.0);
+        float polygon_r = polar_polygon_radius(a + 0.035 * sin(phase + seed_phase), polygon_sides);
         float radial_wave = 0.024 * sin(6.0 * a + phase)
                           + 0.012 * sin(10.0 * a - 2.0 * phase + seed_phase);
         float target_r = mix(0.34 + radial_wave, 0.34 * polygon_r + radial_wave, morph);
@@ -81,7 +83,7 @@ void fragment() {
         grid_p = vec2(grid_p.x * gc - grid_p.y * gs, grid_p.x * gs + grid_p.y * gc);
 
         float gx = sin(wave_frequency * (grid_p.x + 0.032 * sin(phase + grid_p.y * 3.0)));
-        float gy = sin((wave_frequency * 0.83) * (grid_p.y + 0.028 * sin(phase * 0.75 - grid_p.x * 4.0)));
+        float gy = sin((wave_frequency * wave_ratio) * (grid_p.y + 0.028 * sin(phase * 0.75 - grid_p.x * 4.0)));
         float grid_x = line_from_zero(gx, line_width * (1.0 + 0.16 * depth));
         float grid_y = line_from_zero(gy, line_width * (1.0 + 0.16 * depth));
         float grid = max(grid_x, grid_y) * 0.62;

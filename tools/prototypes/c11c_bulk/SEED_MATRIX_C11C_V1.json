@@ -1,0 +1,13 @@
+{
+  "schema": "C11-C-SEED-MATRIX-V1",
+  "reference_seed": 314159,
+  "default_seeds": [314159, 271828, 161803, 112358],
+  "families": [
+    "c11c_geometric_waves_v1",
+    "c11c_fractal_bloom_v1",
+    "c11c_sacred_symmetry_v1",
+    "c11c_living_particles_v1",
+    "c11c_invisible_forces_v1"
+  ],
+  "default_render_count": 20
+}

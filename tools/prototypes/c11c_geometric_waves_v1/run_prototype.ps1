@@ -1,16 +1,19 @@
+param([int]$Seed = 314159)
+
 $ErrorActionPreference = 'Stop'
 
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
+$env:C11C_SEED = [string]$Seed
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_geometric_waves_v1'
-$Avi = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159.avi'
-$Mp4Silent = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159_silent.mp4'
-$Mp4 = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159.mp4'
-$Gif = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159.gif'
-$Probe = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159_ffprobe.json'
-$Audio = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159_music.wav'
+$Avi = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}.avi"
+$Mp4Silent = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}_silent.mp4"
+$Mp4 = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}.mp4"
+$Gif = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}.gif"
+$Probe = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}_ffprobe.json"
+$Audio = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}_music.wav"
 $AudioScript = Join-Path $PSScriptRoot 'generate_geometric_waves_music.py'
-$GodotLog = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159_godot.log'
-$Manifest = Join-Path $ArtifactRoot 'GeometricWaves_v1_seed_314159_manifest.json'
+$GodotLog = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}_godot.log"
+$Manifest = Join-Path $ArtifactRoot "GeometricWaves_v1_seed_${Seed}_manifest.json"
 
 New-Item -ItemType Directory -Force -Path $ArtifactRoot | Out-Null
 foreach ($p in @($Avi, $Mp4Silent, $Mp4, $Gif, $Probe, $Audio, $GodotLog, $Manifest)) {
@@ -40,7 +43,7 @@ try {
     }
 
     # 2) Procedural deterministic music bed. Prototype-only; C7 remains untouched.
-    & python $AudioScript $Audio
+    & python $AudioScript $Audio $Seed
     if ($LASTEXITCODE -ne 0) { throw "Procedural music generation failed: exit=$LASTEXITCODE" }
     if (-not (Test-Path -LiteralPath $Audio)) { throw "Music WAV missing: $Audio" }
     if ((Get-Item -LiteralPath $Audio).Length -le 0) { throw "Music WAV is empty: $Audio" }
@@ -92,7 +95,7 @@ try {
         prototype_id = 'C11-C.1_GEOMETRIC_WAVES_V1'
         revision = '1.0.2'
         status = 'PROTOTYPE_ONLY'
-        seed = 314159
+        seed = $Seed
         visual = [ordered]@{
             canvas = '540x960'
             body = 'y=144..816'
@@ -101,8 +104,8 @@ try {
             frame_count = 300
         }
         editorial = [ordered]@{
-            header = 'CUANDO LAS ONDAS DIBUJAN GEOMETRÍA'
-            footer = 'φ(t)=2π·f/300 · N=6 · LISS 8:5 · 3 LAYERS · SEED 314159'
+            header = 'CUANDO LAS ONDAS DIBUJAN GEOMETRIA'
+            footer = '(t)=2f/300  N=6  LISS 8:5  3 LAYERS  SEED $Seed'
         }
         audio = [ordered]@{
             mode = 'prototype_procedural_music'

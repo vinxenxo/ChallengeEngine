@@ -1,0 +1,26 @@
+{
+  "checkpoint": "C11-C.2",
+  "prototype_id": "C11-C.2_FRACTAL_BLOOM_V1",
+  "status": "ISOLATED_PROTOTYPE_PACKAGE",
+  "contract": "docs/c11/C11-C.2_FRACTAL_BLOOM_VISUAL_CONTRACT_v1.0.md",
+  "reference_seed": 314159,
+  "direction": "radial",
+  "visual_only_engine_changes": true,
+  "frozen_boundaries_modified": false,
+  "c7_modified": false,
+  "assets": {
+    "external_visual_art": false,
+    "procedural_shader": true,
+    "procedural_audio": true
+  },
+  "render": {
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "duration_seconds": 10.0,
+    "frames": 300
+  },
+  "review_rule": "one physical render before any second implementation",
+  "seed_variation": "restrained_deterministic_parameter_envelope",
+  "multiseed_revision": "v1.2.1"
+}

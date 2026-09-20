@@ -7,6 +7,7 @@ No external audio assets are required. This does not modify C7.
 from __future__ import annotations
 
 import math
+import sys
 import struct
 import wave
 from pathlib import Path
@@ -47,7 +48,7 @@ def env(t: float, start: float, end: float, attack: float = 0.03, release: float
     return min(a, r)
 
 
-def build(path: Path) -> None:
+def build(path: Path, seed: int = 314159) -> None:
     # Five-bar structure at 120 BPM => exactly 10 seconds.
     beat = 0.5
     bar = 2.0
@@ -60,7 +61,7 @@ def build(path: Path) -> None:
     ]
     arp = [NOTES["D4"], NOTES["A4"], NOTES["C5"], NOTES["F4"], NOTES["A4"], NOTES["D5"], NOTES["C5"], NOTES["A4"]]
 
-    rng_phase = ((SEED * 1103515245 + 12345) & 0x7FFFFFFF) / 0x7FFFFFFF
+    rng_phase = ((seed * 1103515245 + 12345) & 0x7FFFFFFF) / 0x7FFFFFFF
     master_gain = 0.38
     left: list[float] = []
     right: list[float] = []
@@ -124,6 +125,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("output", type=Path)
+    parser.add_argument("seed", nargs="?", type=int, default=314159)
     args = parser.parse_args()
-    build(args.output)
+    build(args.output, args.seed)
     print(f"[C11-C.1-AUDIO] WAV generated: {args.output}")

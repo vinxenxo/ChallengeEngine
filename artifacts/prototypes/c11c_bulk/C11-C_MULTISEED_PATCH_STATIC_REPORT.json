@@ -1,0 +1,88 @@
+[
+  {
+    "file": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+    "bad_literal_seed_lines": [],
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+    "bad_literal_seed_lines": [],
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+    "bad_literal_seed_lines": [],
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+    "bad_literal_seed_lines": [],
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+    "bad_literal_seed_lines": [],
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloom.gdshader",
+    "literal_backslash_n": false,
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+    "literal_backslash_n": false,
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForces.gdshader",
+    "literal_backslash_n": false,
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader",
+    "literal_backslash_n": false,
+    "pass": true
+  },
+  {
+    "file": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader",
+    "literal_backslash_n": false,
+    "pass": true
+  },
+  {
+    "pair": [
+      "c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "c11c_geometric_waves_v1/GeometricWavesRenderer.gd"
+    ],
+    "call_count": 1,
+    "definition_count": 1,
+    "pass": true
+  },
+  {
+    "pair": [
+      "c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+      "c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd"
+    ],
+    "call_count": 1,
+    "definition_count": 1,
+    "pass": true
+  },
+  {
+    "pair": [
+      "c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "c11c_living_particles_v1/LivingParticlesRenderer.gd"
+    ],
+    "call_count": 1,
+    "definition_count": 1,
+    "pass": true
+  },
+  {
+    "pair": [
+      "c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+      "c11c_invisible_forces_v1/InvisibleForcesRenderer.gd"
+    ],
+    "call_count": 1,
+    "definition_count": 1,
+    "pass": true
+  }
+]

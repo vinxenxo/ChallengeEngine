@@ -1,0 +1,31 @@
+﻿{
+    "prototype_id":  "C11-C.2_FRACTAL_BLOOM_V1",
+    "revision":  "1.0.0",
+    "status":  "PROTOTYPE_ONLY",
+    "seed":  161803,
+    "direction":  "radial_biological_fractal",
+    "visual":  {
+                   "canvas":  "540x960",
+                   "body":  "y=144..816",
+                   "duration_seconds":  10,
+                   "fps":  30,
+                   "frame_count":  300,
+                   "mathematical_model":  "dynamic Julia + orbit traps + domain warp + analytical periodic zoom",
+                   "depth_layers":  3
+               },
+    "editorial":  {
+                      "header":  "ENTRA EN UN UNIVERSO INFINITO",
+                      "footer":  "ZN+1 = ZN^2 + C | ORBIT TRAP | JULIA | 24 ITER"
+                  },
+    "audio":  {
+                  "mode":  "prototype_procedural_music",
+                  "deterministic":  true,
+                  "source_script":  "generate_fractal_bloom_music.py",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  10,
+                  "muxed_into_mp4":  true,
+                  "C7_modified":  false
+              },
+    "frozen_boundaries_modified":  false
+}

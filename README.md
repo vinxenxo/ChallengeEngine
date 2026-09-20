@@ -1,70 +1,29 @@
-# ChallengeEngineV01_STATELESS
+# C11-C Remaining Visual Loops v1 — Formal Contracts + Prototype Runners
 
-Deterministic challenge/video factory built on Godot 4.7.1 with a strict separation between declarative definitions, deterministic simulation, passive presentation and production orchestration.
+This bundle contains isolated gold-benchmark prototypes and the formal visual contracts for Sacred Symmetry, Living Particles and Invisible Forces.
 
-## Current state
-
-**C11-B — semantic FREEZE CLOSED / repository organization PREPARED — PENDING USER VALIDATION.**
-
-The behavior is frozen. This maintenance checkpoint only reorganizes the repository and its evidence paths. The organized tree must pass the complete runbook before it is committed as the new working baseline.
-
-Pre-cleanup owner-supplied evidence:
-
-```text
-logical             103/103
-C11 contracts       PASS
-C11-A               54/54
-C11-A.1             54/54
-retro               54/54
-stress              288 cases / 576 executions
-physical            2/2
-video matrix        54/54 video renders
-```
-
-## Repository
-
-See `docs/04_REPOSITORY_STRUCTURE.md` for the canonical layout.
-
-Generated output belongs under `artifacts/`. Historical material is retained below `docs/history/` and `artifacts/legacy/` and is not part of the active execution path.
-
-## Architecture
-
-```text
-Definition
-    ↓
-Deterministic SimulationResult
-    ↓
-CoordinateMapper / PresentationFramer
-    ↓
-UnifiedSocialFrame
-    ↓
-RenderedFrameStream
-    ↓
-Production
-```
-
-See `docs/01_ARCHITECTURE.md`, `docs/03_PRESENTATION.md` and `docs/contracts/C11_ARCHITECTURE_MANIFESTO.md`.
-
-## Tests
-
-Fast logical regression:
+## Individual prototype commands
 
 ```powershell
-python .\tests\run_all.py
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1
 ```
 
-Complete validation is in `docs/operations/TEST_RUNBOOK.md`.
+## Remaining-three test command
 
-## Production
+```powershell
+.\tools\prototypes\c11c_bulk\run_remaining_visual_loops.ps1
+```
 
-`build_factory.py` is the canonical factory CLI. Its normal output root is `artifacts/production/challenges`.
+## All-five visual loop test command
 
-See `docs/06_PRODUCTION_AND_DISTRIBUTION.md`.
+Requires the already validated Geometric Waves and Fractal Bloom prototype folders to be present in the project.
 
-## Roadmap
+```powershell
+.\tools\prototypes\c11c_bulk\run_all_c11c_visual_loops.ps1
+```
 
-After repository organization is validated and committed:
+The five-family runner executes, in order: Geometric Waves, Fractal Bloom, Sacred Symmetry, Living Particles and Invisible Forces.
 
-**C11-C Art Direction → C11-D Final Export → C11-E Distribution → Production**
-
-See `docs/07_ROADMAP.md` and `docs/master-prompts/START_PROMPT_C11C_ART_DIRECTION.md`.
+The bulk launchers are PowerShell-ASCII-safe in their control/error strings and resolve the project root from the c11c_bulk folder correctly. C11-C art remains presentation-only; C7, RNG architecture, SimulationResult and frozen engine boundaries are not reopened by these prototypes.

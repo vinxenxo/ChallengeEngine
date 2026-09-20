@@ -1,0 +1,44 @@
+{
+  "bundle": "C11-C_REMAINING_VISUAL_LOOPS_V1",
+  "status": "PROTOTYPE_ONLY",
+  "families": [
+    {
+      "id": "C11-C.3_SACRED_SYMMETRY_V1",
+      "family": "kaleidoscope",
+      "direction": "generative_astrolabe_celestial_clockwork",
+      "root": "c11c_sacred_symmetry_v1"
+    },
+    {
+      "id": "C11-C.4_LIVING_PARTICLES_V1",
+      "family": "particle_flow",
+      "direction": "magnetic_dust_fluid_ink",
+      "root": "c11c_living_particles_v1"
+    },
+    {
+      "id": "C11-C.5_INVISIBLE_FORCES_V1",
+      "family": "vector_field",
+      "direction": "solar_wind_gravitational_topography",
+      "root": "c11c_invisible_forces_v1"
+    }
+  ],
+  "shared_constraints": {
+    "canvas": "540x960",
+    "body": "y=144..816",
+    "fps": 30,
+    "duration_seconds": 10.0,
+    "frame_count": 300,
+    "seed": 314159,
+    "C7_modified": false,
+    "frozen_boundaries_modified": false
+  },
+  "contract_authority": "formal_user_visual_contracts_merged_2026-09-20",
+  "contract_files": {
+    "C11-C.3": "c11c_sacred_symmetry_v1/docs/c11/C11-C.3_SACRED_SYMMETRY_V1_VISUAL_CONTRACT_v1.0.md",
+    "C11-C.4": "c11c_living_particles_v1/docs/c11/C11-C.4_LIVING_PARTICLES_V1_VISUAL_CONTRACT_v1.0.md",
+    "C11-C.5": "c11c_invisible_forces_v1/docs/c11/C11-C.5_INVISIBLE_FORCES_V1_VISUAL_CONTRACT_v1.0.md"
+  },
+  "runners": {
+    "remaining_three": "tools/prototypes/c11c_bulk/run_remaining_visual_loops.ps1",
+    "all_five": "tools/prototypes/c11c_bulk/run_all_c11c_visual_loops.ps1"
+  }
+}

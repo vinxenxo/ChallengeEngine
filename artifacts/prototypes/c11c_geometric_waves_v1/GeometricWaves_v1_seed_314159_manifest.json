@@ -11,8 +11,8 @@
                    "frame_count":  300
                },
     "editorial":  {
-                      "header":  "CUANDO LAS ONDAS DIBUJAN GEOMETRÃA",
-                      "footer":  "Ï†(t)=2Ï€Â·f/300 Â· N=6 Â· LISS 8:5 Â· 3 LAYERS Â· SEED 314159"
+                      "header":  "CUANDO LAS ONDAS DIBUJAN GEOMETRIA",
+                      "footer":  "(t)=2f/300  N=6  LISS 8:5  3 LAYERS  SEED $Seed"
                   },
     "audio":  {
                   "mode":  "prototype_procedural_music",

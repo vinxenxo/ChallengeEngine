@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd" type="Script" id="1"]
+
+[node name="LivingParticlesPrototype" type="Node2D"]
+script = ExtResource("1")

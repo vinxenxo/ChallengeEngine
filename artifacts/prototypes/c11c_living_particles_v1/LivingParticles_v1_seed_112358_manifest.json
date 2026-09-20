@@ -1,0 +1,30 @@
+﻿{
+    "prototype_id":  "C11-C.4_LIVING_PARTICLES_V1",
+    "revision":  "1.0.0",
+    "status":  "PROTOTYPE_ONLY",
+    "seed":  112358,
+    "direction":  "magnetic_dust_fluid_ink",
+    "visual":  {
+                   "canvas":  "540x960",
+                   "body":  "y=144..816",
+                   "duration_seconds":  10,
+                   "fps":  30,
+                   "frame_count":  300,
+                   "mathematical_model":  "deterministic particle positions + analytic attractor/vortex field + segment trails + soft-depth glow"
+               },
+    "editorial":  {
+                      "header":  "LA MATERIA SIGUE FUERZAS INVISIBLES",
+                      "footer":  "FLOW FIELD  |  ATTRACTORS  |  EDDIES  |  TRAILS"
+                  },
+    "audio":  {
+                  "mode":  "prototype_procedural_music",
+                  "deterministic":  true,
+                  "source_script":  "generate_c11c_living_particles_v1_music.py",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  10,
+                  "muxed_into_mp4":  true,
+                  "C7_modified":  false
+              },
+    "frozen_boundaries_modified":  false
+}

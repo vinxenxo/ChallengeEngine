@@ -1,0 +1,29 @@
+{
+  "package_id": "C11-C_VISUAL_LOOPS_READY_COPY",
+  "revision": "1.0.2",
+  "status": "READY_FOR_LOCAL_PHYSICAL_VALIDATION",
+  "families": [
+    "geometric_waves",
+    "fractal_bloom",
+    "sacred_symmetry",
+    "living_particles",
+    "invisible_forces"
+  ],
+  "reference_seed": 314159,
+  "render": {
+    "width": 540,
+    "height": 960,
+    "fps": 30,
+    "duration_seconds": 10.0,
+    "frame_count": 300
+  },
+  "header_footer_policy": "C11-C_VISUAL_TEXT_PLACEMENT_v1.0",
+  "frozen_boundaries_modified": false,
+  "c7_modified": false,
+  "shader_fixes": {
+    "c11c_sacred_symmetry_v1": "decoded literal \\n sequences to real newlines",
+    "c11c_living_particles_v1": "decoded literal \\n sequences to real newlines",
+    "c11c_invisible_forces_v1": "decoded literal \\n sequences to real newlines"
+  },
+  "note": "Repository-root overlay. Copy/unzip directly into the live C11-B repository; no package wrapper directory."
+}

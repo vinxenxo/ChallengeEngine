@@ -1,0 +1,30 @@
+{
+  "prototype_id": "C11-C.3_SACRED_SYMMETRY_V1",
+  "revision": "1.0.2",
+  "status": "PROTOTYPE_ONLY",
+  "seed": 314159,
+  "family": "kaleidoscope",
+  "direction": "generative_astrolabe_celestial_clockwork",
+  "frozen_boundaries_modified": false,
+  "visual": {
+    "canvas": "540x960",
+    "body": "y=144..816",
+    "duration_seconds": 10.0,
+    "fps": 30,
+    "frame_count": 300,
+    "mathematical_model": "radial symmetry + concentric rings + polar ticks + orbital nodes + periodic clockwork motion"
+  },
+  "audio": {
+    "mode": "prototype_procedural_music",
+    "deterministic": true,
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 10.0,
+    "C7_modified": false
+  },
+  "contract_status": "FORMAL_USER_CONTRACT_MERGED",
+  "contract_authority": "docs/c11/C11-C.3_SACRED_SYMMETRY_V1_VISUAL_CONTRACT_v1.0.md",
+  "header_footer_policy": "C11-C_VISUAL_TEXT_PLACEMENT_v1.0",
+  "seed_variation": "restrained_deterministic_parameter_envelope",
+  "multiseed_revision": "v1.2.1"
+}

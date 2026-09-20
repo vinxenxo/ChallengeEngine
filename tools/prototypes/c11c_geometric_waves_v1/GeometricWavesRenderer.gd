@@ -32,11 +32,13 @@ func set_palette(dominant: Color, secondary: Color, highlight: Color) -> void:
     _material.set_shader_parameter("secondary_color", secondary)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(morph_value: float, wave_frequency: float, line_width: float, glow_strength: float) -> void:
+func set_style(morph_value: float, wave_frequency: float, line_width: float, glow_strength: float, polygon_sides: float, wave_ratio: float) -> void:
     _material.set_shader_parameter("morph", clamp(morph_value, 0.0, 1.0))
     _material.set_shader_parameter("wave_frequency", max(wave_frequency, 1.0))
     _material.set_shader_parameter("line_width", max(line_width, 0.001))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
+    _material.set_shader_parameter("polygon_sides", clamp(polygon_sides, 5.0, 8.0))
+    _material.set_shader_parameter("wave_ratio", clamp(wave_ratio, 0.78, 0.90))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

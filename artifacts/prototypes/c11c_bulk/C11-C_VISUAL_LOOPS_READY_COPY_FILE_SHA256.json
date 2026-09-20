@@ -1,0 +1,272 @@
+[
+  {
+    "path": "C11-C.3_SACRED_SYMMETRY_V1_MANIFEST.json",
+    "bytes": 896,
+    "sha256": "47516bfe78ce62c5748498f2be0e87f7c93bb34ce5591116738d5fa8553f4c33"
+  },
+  {
+    "path": "C11-C.4_LIVING_PARTICLES_V1_MANIFEST.json",
+    "bytes": 891,
+    "sha256": "d81c986a754fea84da504745ea95bcb6317123134fd220f21d04c1b484fb0a9d"
+  },
+  {
+    "path": "C11-C.5_INVISIBLE_FORCES_V1_MANIFEST.json",
+    "bytes": 894,
+    "sha256": "74decc2bbdfced9a122778cf9af4fad51b93b3ff450331586940acf31a86e9eb"
+  },
+  {
+    "path": "C11C_FRACTAL_BLOOM_PROTOTYPE_MANIFEST.json",
+    "bytes": 649,
+    "sha256": "7f885d11ed9593989033426177cea0bdd721f03bb9ab936335721033591353ca"
+  },
+  {
+    "path": "artifacts/prototypes/c11c_bulk/C11-C_VISUAL_LOOPS_READY_COPY_MANIFEST.json",
+    "bytes": 927,
+    "sha256": "084ce6e6191ec929856fcc2fb6fbaaa62ff994ef2199fd2e9dad4218e593948a"
+  },
+  {
+    "path": "artifacts/prototypes/c11c_fractal_bloom_v1/README.md",
+    "bytes": 185,
+    "sha256": "488949965a2ad6c203f5373d9451f09666f3cc012472853aa2d89262b0987525"
+  },
+  {
+    "path": "artifacts/prototypes/c11c_fractal_bloom_v1/definition.json",
+    "bytes": 791,
+    "sha256": "931f0b4dee441043b12d59975e35a65ab432da748693b502d56645068f7a9a53"
+  },
+  {
+    "path": "artifacts/prototypes/c11c_geometric_waves_v1/README.md",
+    "bytes": 2316,
+    "sha256": "d18a438db463b0939733f9613544c3188fcd9b969f0de10f9ebdede6d5ada694"
+  },
+  {
+    "path": "artifacts/prototypes/c11c_geometric_waves_v1/definition.json",
+    "bytes": 666,
+    "sha256": "d752bcd3826850728c5c567cbf454f423b2ec81db442398ecc0a9fd814839290"
+  },
+  {
+    "path": "docs/c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT.md",
+    "bytes": 21363,
+    "sha256": "92ee1d671cfc3fa8728df22d29beb4d5cfe59415e09e98d2c3e14cdefd9188d5"
+  },
+  {
+    "path": "docs/c11/C11-C.2_FRACTAL_BLOOM_VISUAL_CONTRACT_v1.0.md",
+    "bytes": 9442,
+    "sha256": "0f11f8064a5628c9589e7ee7153eb4719f0cc94ebf3293d7b25ceb4aaff318cf"
+  },
+  {
+    "path": "docs/c11/C11-C.3_SACRED_SYMMETRY_V1_VISUAL_CONTRACT_v1.0.md",
+    "bytes": 3373,
+    "sha256": "48ba2c115bd1b5dd118ee2eaf7e7b40dd2a65cb20466db8fed1edcf41bd556f5"
+  },
+  {
+    "path": "docs/c11/C11-C.4_LIVING_PARTICLES_V1_VISUAL_CONTRACT_v1.0.md",
+    "bytes": 3639,
+    "sha256": "b89cbef7858c4b92edd431f56de8ba3b31aa971e6754095c406acb995abc1b4a"
+  },
+  {
+    "path": "docs/c11/C11-C.5_INVISIBLE_FORCES_V1_VISUAL_CONTRACT_v1.0.md",
+    "bytes": 3340,
+    "sha256": "fb0048b9eceafdf593b31a86d73194e8aa889e2117de72cbaaf0c4508f53aab1"
+  },
+  {
+    "path": "docs/c11/C11-C_VISUAL_TEXT_PLACEMENT_v1.0.md",
+    "bytes": 556,
+    "sha256": "da490d8d3f2da422b575063af5cd237b2e0ee7b60b31d12ab271963270d0bdf5"
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/README.md",
+    "bytes": 602,
+    "sha256": "83c9bcaeaf2158ca85aabd0f73949ef2c6dfadd3a7925ab9f9e522dc95ef0fd7"
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_all_c11c_visual_loops.ps1",
+    "bytes": 895,
+    "sha256": "beaa5a5fbb34858ec05a21eed07be76bce262c9f8a0d5134059b1b9afd33bdc5"
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_remaining_visual_loops.ps1",
+    "bytes": 831,
+    "sha256": "2a7e6589133feed0fe6fcb266791b95f036d54a115dfff26e792abaa75ff14b8"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloom.gdshader",
+    "bytes": 6676,
+    "sha256": "74992bbd3afdbadd277b7128370596ab9dcccf9d8a2aff85cd4b26b22a6beb00"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+    "bytes": 4952,
+    "sha256": "fb96ec1b37be52be4713c3490e8866ec3aed83064b3dff68b989a99f1ccfc08b"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.tscn",
+    "bytes": 224,
+    "sha256": "806bed600f7550e7aa5c10175359c7ce545581ce206dc73e31c7c265cc398d5e"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomRenderer.gd",
+    "bytes": 2025,
+    "sha256": "cdbf49f53869b07e82de11bb65a0295e230bd8ed6d77d82bade63173ff26ea66"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/README.md",
+    "bytes": 1177,
+    "sha256": "2e913bbcaa14cf534e40806882941d43c8f15d9f2765cf2170638caf330fef9e"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/generate_fractal_bloom_music.py",
+    "bytes": 2331,
+    "sha256": "2fdaa990ddd03eb23619dc6d348c73f108653b4296e2ae1e23e76c6a7b568371"
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+    "bytes": 5993,
+    "sha256": "a1ca7b9b5aeca2d946ccc96d8da67f63f5a1ea9870bcb0021f1c88bc597fe735"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+    "bytes": 5994,
+    "sha256": "f8f088b98413f226171fb6f5620827c37daba3b1c61e0c1b3c21c63eb4ef93fd"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+    "bytes": 5196,
+    "sha256": "e58882190c1ec5bf08382c34dbbeb2135dedba1449ce3e1dcc72c7a9b6db5b31"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.tscn",
+    "bytes": 230,
+    "sha256": "11e214c6d8bba6003d7ef734477fdfc22cbe8238cae49c98692bd9b7487745fc"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+    "bytes": 2082,
+    "sha256": "c8c1c67e82497e17a519e540b0c5b065b8cb324e1f596a9a6452e51e80ce7cda"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/README.md",
+    "bytes": 1607,
+    "sha256": "f5663eb1e93529588a750b83db6f347a9339a1380d410c453b935425db035a0f"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+    "bytes": 1109,
+    "sha256": "ac64348d17a2dbb53493429680834991e8fb9a62a38a9dd74e01e041169687d7"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/generate_geometric_waves_music.py",
+    "bytes": 4130,
+    "sha256": "91eafdc514b4a61f4ebf3d18fcefc5f1547610f3610d7afe6a12e5db31deb40d"
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+    "bytes": 6317,
+    "sha256": "b1c02a37d84b904b303f2de6b1cd7ab224ebad5fb15e09e0af42da3f30a5fc0d"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForces.gdshader",
+    "bytes": 3991,
+    "sha256": "d90b6a792f2a282c94e5c21b0bf6ec8b73fd7c0eed95ab968838c8983fb7ab27"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+    "bytes": 4608,
+    "sha256": "17c65b4b57881a5157a0e3b16e68db361fe05a937af457bc4b5d595917dd2c9c"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn",
+    "bytes": 233,
+    "sha256": "85401c7c5a45283f90f090a28a1d0bb639d78dec4800e6eb730d60080972cb1c"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesRenderer.gd",
+    "bytes": 1670,
+    "sha256": "a4cd4e9e72a4204130a49bec3f2aca17c6935e368a9770b2b2c902d0c242e2a0"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/README.md",
+    "bytes": 768,
+    "sha256": "acfaa19084fe42614923f73b1f9de460455517851edd1fc00ca55b0afdbc6525"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/generate_c11c_invisible_forces_v1_music.py",
+    "bytes": 811,
+    "sha256": "ddb06312932740f23b99fcdacbdb0139a14a6aa54bde0a7726b06c5442c0fd4e"
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+    "bytes": 5555,
+    "sha256": "fc75afa021dfb53f9ef98f04bf07b3ae844707c41fe521b98a2823811e28f52d"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader",
+    "bytes": 4021,
+    "sha256": "62b18c15d0af2fc8fb4b5aea07a61ec40612e3d4cc4cfcfae0f99c21d50b54dc"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+    "bytes": 4608,
+    "sha256": "5091b5cc2f705f97abc3819a3dade0a8273d2c3a307f66bdebdf06b9a3ac2b07"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.tscn",
+    "bytes": 233,
+    "sha256": "b574dd963ea6556eff08ef1d6924f54e0b027238f98b717dc02e07584f22dfa1"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesRenderer.gd",
+    "bytes": 1669,
+    "sha256": "8cb17b309c78c0d2518e6d5e18f7fb4e5e9b7269f0ee8910097d9c25abc2c227"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/README.md",
+    "bytes": 765,
+    "sha256": "e7eb1d9fcb2f968b463cc252145559c4ee9ce80f3e5fcb14e3b5135f64431275"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/generate_c11c_living_particles_v1_music.py",
+    "bytes": 858,
+    "sha256": "e96f72a969977f1d0bf749eeca5fa5493079ac5cb6121068eb4545ad1fa4c431"
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+    "bytes": 5546,
+    "sha256": "72fc626eadf0c0f3b4ca44ad7c5fc05c0d75c06f1411128bf4c636c70a561018"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/README.md",
+    "bytes": 769,
+    "sha256": "1d68ba82d3603e40589b949c5fd953d6e71daaea67a71a885f40b6edf3e6622a"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader",
+    "bytes": 4704,
+    "sha256": "253d898e10873bfa230c49e2415fda8ad95a7fb39ed48cbb359e2afa94ba940c"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+    "bytes": 4602,
+    "sha256": "0d3cb7b6fa2fa236b14d14ef416d7388b6a79d9f663ac25c242129d1779dab85"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.tscn",
+    "bytes": 230,
+    "sha256": "231e24928f0e4e8287b2fccc8fae4e6deec45eea4dbf4f7ac5cd9bec0676ffa5"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd",
+    "bytes": 1765,
+    "sha256": "869c66716575da05606e90508e4f4525537b37544038bf21082638efa8dc857d"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/generate_c11c_sacred_symmetry_v1_music.py",
+    "bytes": 870,
+    "sha256": "0b1ea5fcbf565bbe828a3626c935e0d00ec00dd2e2cb2a1e92e061139b6976f2"
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+    "bytes": 5542,
+    "sha256": "b04255eb5fdb6ffe8bb2b77c1e1684b1cf4312ecd13354d08cc9ed1df3755dd8"
+  }
+]

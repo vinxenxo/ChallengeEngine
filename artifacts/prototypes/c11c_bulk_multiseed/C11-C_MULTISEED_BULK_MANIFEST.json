@@ -1,0 +1,164 @@
+﻿{
+    "schema":  "C11-C-MULTISEED-BULK-V1",
+    "status":  "COMPLETE",
+    "seeds":  [
+                  314159,
+                  271828,
+                  161803,
+                  112358
+              ],
+    "family_count":  5,
+    "seed_count":  4,
+    "render_count":  20,
+    "results":  [
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  314159,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  8
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  314159,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  8
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  314159,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  314159,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  314159,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  271828,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  271828,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  271828,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  271828,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  271828,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  161803,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  161803,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  161803,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  161803,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  161803,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  112358,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  112358,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  112358,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  112358,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  112358,
+                        "status":  "PASS",
+                        "exit":  0,
+                        "artifact_count":  7
+                    }
+                ],
+    "visual_contract":  {
+                            "canvas":  "540x960",
+                            "body":  "y=144..816",
+                            "fps":  30,
+                            "duration_seconds":  10,
+                            "frames":  300,
+                            "audio":  "stereo 44.1kHz, deterministic prototype bed"
+                        },
+    "frozen_boundaries_modified":  false
+}
