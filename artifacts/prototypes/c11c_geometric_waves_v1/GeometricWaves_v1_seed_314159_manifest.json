@@ -1,0 +1,28 @@
+﻿{
+    "prototype_id":  "C11-C.1_GEOMETRIC_WAVES_V1",
+    "revision":  "1.0.2",
+    "status":  "PROTOTYPE_ONLY",
+    "seed":  314159,
+    "visual":  {
+                   "canvas":  "540x960",
+                   "body":  "y=144..816",
+                   "duration_seconds":  10,
+                   "fps":  30,
+                   "frame_count":  300
+               },
+    "editorial":  {
+                      "header":  "CUANDO LAS ONDAS DIBUJAN GEOMETRÃA",
+                      "footer":  "Ï†(t)=2Ï€Â·f/300 Â· N=6 Â· LISS 8:5 Â· 3 LAYERS Â· SEED 314159"
+                  },
+    "audio":  {
+                  "mode":  "prototype_procedural_music",
+                  "deterministic":  true,
+                  "source_script":  "generate_geometric_waves_music.py",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  10,
+                  "muxed_into_mp4":  true,
+                  "C7_modified":  false
+              },
+    "frozen_boundaries_modified":  false
+}

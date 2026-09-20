@@ -1,0 +1,30 @@
+{
+  "prototype_id": "C11-C.1_GEOMETRIC_WAVES_V1",
+  "status": "PROTOTYPE_ONLY",
+  "seed": 314159,
+  "canvas": {
+    "width": 540,
+    "height": 960,
+    "header": [0, 144],
+    "body": [144, 816],
+    "footer": [816, 960]
+  },
+  "loop": {
+    "duration_seconds": 10.0,
+    "fps": 30,
+    "frame_count": 300,
+    "periodic_phase": "2*pi*frame/frame_count",
+    "boundary_conditions": {
+      "P_0_equals_P_T": true,
+      "Pprime_0_equals_Pprime_T": true
+    }
+  },
+  "art_direction": {
+    "family": "geometric_waves",
+    "dominant": "cyan",
+    "secondary": "magenta",
+    "highlight": "white",
+    "external_assets": false,
+    "ai_generated_assets": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "prototype_id": "C11-C.1_GEOMETRIC_WAVES_V1",
+  "status": "READY_FOR_PHYSICAL_EXPORT",
+  "base_source": "ChallengeEngineV01.2_C11_B_FREEZE_LATEST.zip",
+  "reference_seed": 314159,
+  "canvas": {
+    "width": 540,
+    "height": 960,
+    "header_y": [
+      0,
+      144
+    ],
+    "body_y": [
+      144,
+      816
+    ],
+    "footer_y": [
+      816,
+      960
+    ]
+  },
+  "loop": {
+    "duration_seconds": 10.0,
+    "fps": 30,
+    "frame_count": 300
+  },
+  "production_files_modified": false,
+  "notes": [
+    "Isolated under tools/prototypes; frozen core renderer/definition untouched.",
+    "Authoritative C11-C.1 v1.0 contract copied from the Library contract artifact.",
+    "Godot shader compatibility fix: custom C11C_PI/C11C_TAU identifiers avoid built-in PI collision.",
+    "Launcher hardening: rejects shader compilation errors, verifies AVI existence/non-empty before FFmpeg packaging.",
+    "Godot physical export still requires local Godot 4.7.1 execution and has not been independently certified here."
+  ],
+  "files": [
+    {
+      "path": "docs/c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT.md",
+      "bytes": 21014,
+      "sha256": "0c7d2e5b13e3f5d3cacfdb4fce19c2ab2728b2fee6690daf56683373c6b348c8"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "bytes": 5994,
+      "sha256": "f8f088b98413f226171fb6f5620827c37daba3b1c61e0c1b3c21c63eb4ef93fd"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "bytes": 2808,
+      "sha256": "a79da7468c4851507929274142caf8a104d135b461948b24d4d8a543fe83c100"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.tscn",
+      "bytes": 230,
+      "sha256": "11e214c6d8bba6003d7ef734477fdfc22cbe8238cae49c98692bd9b7487745fc"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "bytes": 2082,
+      "sha256": "c8c1c67e82497e17a519e540b0c5b065b8cb324e1f596a9a6452e51e80ce7cda"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "bytes": 3557,
+      "sha256": "b7d287371ad012b9286673f2ba6b1fd81343f1199d161c92cfac05ba8a6b50ac"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "bytes": 666,
+      "sha256": "d752bcd3826850728c5c567cbf454f423b2ec81db442398ecc0a9fd814839290"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/README.md",
+      "bytes": 2708,
+      "sha256": "7defade301bf940978acbeb3e9744ccaba5c2dc2b0d6b4af18f6aa9d869a3d48"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_geometric_waves_v1/README.md",
+      "bytes": 2316,
+      "sha256": "d18a438db463b0939733f9613544c3188fcd9b969f0de10f9ebdede6d5ada694"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_geometric_waves_v1/definition.json",
+      "bytes": 666,
+      "sha256": "d752bcd3826850728c5c567cbf454f423b2ec81db442398ecc0a9fd814839290"
+    }
+  ],
+  "overlay_revision": "1.0.1"
+}
