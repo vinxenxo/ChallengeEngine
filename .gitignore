@@ -83,6 +83,7 @@ artifacts/**/mp4/
 artifacts/**/media/
 artifacts/**/videos/
 artifacts/
+*.gif
 
 # Explicitly disposable workspace
 artifacts/scratch/
