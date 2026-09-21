@@ -1,0 +1,86 @@
+{
+  "version": "1.5.0",
+  "families": {
+    "geometric": {
+      "grammar_modes": [
+        "harmonic_membrane",
+        "interference_plane",
+        "parametric_ribbon",
+        "lattice_wave",
+        "orbital_wave"
+      ],
+      "palette_modes": [
+        "cyan_magenta",
+        "electric_blue_lilac",
+        "turquoise_orchid",
+        "spectral_blue",
+        "warm_cold_harmonic"
+      ]
+    },
+    "fractal": {
+      "grammar_modes": [
+        "radial_bloom",
+        "dendritic_tunnel",
+        "spiral_fractal",
+        "fractal_filigree",
+        "nested_worlds"
+      ],
+      "palette_modes": [
+        "indigo_violet_cyan",
+        "blue_night_violet",
+        "teal_indigo",
+        "ultraviolet_cyan",
+        "monochrome_indigo"
+      ]
+    },
+    "kaleidoscope": {
+      "grammar_modes": [
+        "astrolabe",
+        "gear_train",
+        "polygon_orrery",
+        "origami_mandala",
+        "celestial_chart"
+      ],
+      "palette_modes": [
+        "liquid_gold",
+        "gold_copper",
+        "amber_laser",
+        "bronze_pale_gold",
+        "warm_obsidian"
+      ]
+    },
+    "particle_flow": {
+      "grammar_modes": [
+        "swarm",
+        "vortex",
+        "collision_cloud",
+        "organic_pulse",
+        "magnetic_filament_cloud"
+      ],
+      "palette_modes": [
+        "emerald_sea_green",
+        "turquoise_aqua",
+        "jade_teal",
+        "cyan_green_spectral",
+        "green_blue_mono"
+      ]
+    },
+    "vector_field": {
+      "grammar_modes": [
+        "dipole_field",
+        "vortex_field",
+        "saddle_field",
+        "quadrupole_field",
+        "gravitational_lens",
+        "topographic_basin"
+      ],
+      "palette_modes": [
+        "crimson_cadmium_gold",
+        "crimson_orange",
+        "deep_red_amber",
+        "hot_orange_yellow",
+        "warm_monochrome"
+      ]
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "prototype_id": "C11-C.3_SACRED_SYMMETRY_V1",
   "revision": "1.0.2",
-  "status": "PROTOTYPE_ONLY",
+  "status": "PROTOTYPE_READY_ART_DIRECTION_REVISION",
   "seed": 314159,
   "family": "kaleidoscope",
   "direction": "generative_astrolabe_celestial_clockwork",
@@ -28,5 +28,7 @@
   "seed_variation": "restrained_deterministic_parameter_envelope",
   "multiseed_revision": "v1.2.1",
   "variation_profile_revision": "1.0.0",
-  "variation_profile_class": "tools/prototypes/c11c_common/C11CVariationProfile.gd"
+  "variation_profile_class": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+  "version": "1.6.0",
+  "art_direction_revision": "1.6.0"
 }

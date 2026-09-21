@@ -1,0 +1,472 @@
+{
+  "package_version": "1.5.0",
+  "package_type": "repository-ready C11-C geometric visual iteration",
+  "primary_change": "Geometric Waves visual grammar expansion",
+  "grammar_modes": [
+    "harmonic_membrane",
+    "interference_plane",
+    "parametric_ribbon",
+    "lattice_wave",
+    "orbital_wave"
+  ],
+  "palette_modes": [
+    "cyan_magenta",
+    "electric_blue_lilac",
+    "turquoise_orchid",
+    "spectral_blue",
+    "warm_cold_harmonic"
+  ],
+  "review_tools_included": true,
+  "core_modified": false,
+  "simulation_modified": false,
+  "rng_engine_modified": false,
+  "c7_modified": false,
+  "footer_production_default": "OFF",
+  "files": [
+    {
+      "path": "C11-C.1_GEOMETRIC_WAVES_V1.5_MANIFEST.json",
+      "bytes": 644,
+      "sha256": "bfb1f6541f4ec8499070dbfe226fa5f3a28079d8f19cea4f3f374fb9604e904d"
+    },
+    {
+      "path": "C11-C.1_V1.5_STATIC_REPORT.json",
+      "bytes": 229,
+      "sha256": "80272e6bcec374279e05e50a9df12300824bc3e6a6ab5cfc23b84929c06e9071"
+    },
+    {
+      "path": "C11-C.3_SACRED_SYMMETRY_V1_MANIFEST.json",
+      "bytes": 1122,
+      "sha256": "9d64a49ede859e933326025775fc1a8188e521986dfd5c273cfefc44d739ff02"
+    },
+    {
+      "path": "C11-C.4_LIVING_PARTICLES_V1_MANIFEST.json",
+      "bytes": 1117,
+      "sha256": "00180dd095910c693b560f635c41e7f2b006aa6d83d641df46d8dcbb7ccefd6f"
+    },
+    {
+      "path": "C11-C.5_INVISIBLE_FORCES_V1_MANIFEST.json",
+      "bytes": 1120,
+      "sha256": "83f849b6e4765bae502adcf79e6c4631c68dfc7f5e7d0c30c2cee97ea3df1d17"
+    },
+    {
+      "path": "C11-C_V1.5_README.md",
+      "bytes": 112,
+      "sha256": "bbc1d51aab5e2676e6f02aa3fcf8f8b540bad30e2c2e73320754ec2662589df6"
+    },
+    {
+      "path": "C11-C_VISUAL_LOOPS_READY_COPY_v1.3.1_GODOT_PARSE_HOTFIX.zip.sha256",
+      "bytes": 126,
+      "sha256": "1146ad7c91c7620c30947eb1a50e95057ecb17c6a93e207420882e974437f10c"
+    },
+    {
+      "path": "C11C_EDITORIAL_AND_VARIATION_UPDATE_MANIFEST.json",
+      "bytes": 786,
+      "sha256": "6981a2ef0b3ae6459a300e27713161214a1683bb6573a2346386ff56326fc0bb"
+    },
+    {
+      "path": "C11C_FRACTAL_BLOOM_PROTOTYPE_MANIFEST.json",
+      "bytes": 875,
+      "sha256": "45604dcb6bb463a5a64663fe3b536a29e4faf440abe93a627ffc26647cd23acb"
+    },
+    {
+      "path": "C11C_VARIATION_ENGINE_MANIFEST.json",
+      "bytes": 612,
+      "sha256": "8a210c955f911372b5588444d854823ddbb2f357dc93ce26a0286b7d180c30e8"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_bulk/C11-C_GODOT_PARSE_HOTFIX_CHECKS.json",
+      "bytes": 405,
+      "sha256": "7c93cedac4f4ed83504c4e9a99f879b73b7179e46e3127ac67c04cba195fbb1b"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_bulk/C11-C_GODOT_PARSE_HOTFIX_STATIC_REPORT.json",
+      "bytes": 707,
+      "sha256": "baa9f8b6dc57d0ad94d1dc98811278dff6d8c4667401d43e736bde3c01f0ba3a"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_bulk/C11-C_MULTISEED_PATCH_STATIC_REPORT.json",
+      "bytes": 2233,
+      "sha256": "6b77efdd492d139d9adcdcadfd09f5955943b02464df8642ae9988eb38814357"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_bulk/C11-C_VISUAL_LOOPS_READY_COPY_FILE_SHA256.json",
+      "bytes": 9990,
+      "sha256": "665875a2919741a7da713b529066ced282709cd941067ce1bb73d8a24ad8ecef"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_bulk/C11-C_VISUAL_LOOPS_READY_COPY_MANIFEST.json",
+      "bytes": 927,
+      "sha256": "084ce6e6191ec929856fcc2fb6fbaaa62ff994ef2199fd2e9dad4218e593948a"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_fractal_bloom_v1/README.md",
+      "bytes": 185,
+      "sha256": "488949965a2ad6c203f5373d9451f09666f3cc012472853aa2d89262b0987525"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_fractal_bloom_v1/definition.json",
+      "bytes": 791,
+      "sha256": "931f0b4dee441043b12d59975e35a65ab432da748693b502d56645068f7a9a53"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_geometric_waves_v1/README.md",
+      "bytes": 2316,
+      "sha256": "d18a438db463b0939733f9613544c3188fcd9b969f0de10f9ebdede6d5ada694"
+    },
+    {
+      "path": "artifacts/prototypes/c11c_geometric_waves_v1/definition.json",
+      "bytes": 666,
+      "sha256": "d752bcd3826850728c5c567cbf454f423b2ec81db442398ecc0a9fd814839290"
+    },
+    {
+      "path": "docs/c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT.md",
+      "bytes": 21363,
+      "sha256": "92ee1d671cfc3fa8728df22d29beb4d5cfe59415e09e98d2c3e14cdefd9188d5"
+    },
+    {
+      "path": "docs/c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT_v1.5_ART_DIRECTION.md",
+      "bytes": 1511,
+      "sha256": "24e786f0ae19f9c197d5348cd7ae67fc342ea345e81c989d5025d14fd50d4d01"
+    },
+    {
+      "path": "docs/c11/C11-C.1_V1.5_REVIEW_CHECKLIST.md",
+      "bytes": 557,
+      "sha256": "29a1df2bb8b1a04f2a70fb0a7d61808ae939bd937cfd3815e90bcad73aac6813"
+    },
+    {
+      "path": "docs/c11/C11-C.2_FRACTAL_BLOOM_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 9442,
+      "sha256": "0f11f8064a5628c9589e7ee7153eb4719f0cc94ebf3293d7b25ceb4aaff318cf"
+    },
+    {
+      "path": "docs/c11/C11-C.3_SACRED_SYMMETRY_V1_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 3373,
+      "sha256": "48ba2c115bd1b5dd118ee2eaf7e7b40dd2a65cb20466db8fed1edcf41bd556f5"
+    },
+    {
+      "path": "docs/c11/C11-C.4_LIVING_PARTICLES_V1_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 3639,
+      "sha256": "b89cbef7858c4b92edd431f56de8ba3b31aa971e6754095c406acb995abc1b4a"
+    },
+    {
+      "path": "docs/c11/C11-C.5_INVISIBLE_FORCES_V1_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 3340,
+      "sha256": "fb0048b9eceafdf593b31a86d73194e8aa889e2117de72cbaaf0c4508f53aab1"
+    },
+    {
+      "path": "docs/c11/C11-C_EDITORIAL_TEXT_GENERATION_CONTRACT_v1.0.md",
+      "bytes": 2213,
+      "sha256": "76f8fbc0d2fae6d6231f1ff42d5428e153e7ff319b703dc4bfec4932cbb58f67"
+    },
+    {
+      "path": "docs/c11/C11-C_MULTISEED_STAGE_STATUS_v1.0.md",
+      "bytes": 833,
+      "sha256": "b95d8e77f33b3f9ea8c467752632bc0b60d7bef2d986d37b4b55cbf6eb222ff1"
+    },
+    {
+      "path": "docs/c11/C11-C_REVIEW_ASSETS_EXPORT_CONTRACT_v1.0.md",
+      "bytes": 1141,
+      "sha256": "ddd3e5a94a97f60fcc6663ce5128b22ec0def74c0b1c964bc9627a97df9d6cb6"
+    },
+    {
+      "path": "docs/c11/C11-C_REVIEW_TOOLING_FIX_1.0.2.md",
+      "bytes": 341,
+      "sha256": "2c981aa665a39e807a4e534bf9c62c64ef10469246eda2c80322f425680ad025"
+    },
+    {
+      "path": "docs/c11/C11-C_VARIATION_ENGINE_v1.0.md",
+      "bytes": 1173,
+      "sha256": "58ed4dd11d11c712d1791b7e5d4a72550ad6d23224a9b37095b915ccbf7acb41"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_BULK_AND_HEADER_RULES_v1.0.md",
+      "bytes": 671,
+      "sha256": "ceeef51c1ba425fdfaf2e87699f5b88ce9d790807e9590d22e3735d7d962d95f"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_GRAMMAR_VARIATION_v1.5.md",
+      "bytes": 8183,
+      "sha256": "e773ea3ae24a93e1f49b998858dda4ad91508cca0506b33dd4f540c23af36639"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_TEXT_PLACEMENT_v1.0.md",
+      "bytes": 909,
+      "sha256": "f4b06707e03c9d8bada91b2a94fa90c879ec3c4f7b9f45dcf76f2f81666b5c1e"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_VARIATION_MODEL_v1.0.md",
+      "bytes": 1337,
+      "sha256": "0bcea500a570e17848aef59754400934767b0ec2bc19e29396f30fe84ec41fca"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_VARIATION_MODEL_v1.1.md",
+      "bytes": 1639,
+      "sha256": "9245d9d2f52697ef3a899950aef671e2b90bf0d581a3d18ed3350a4e749a6fab"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/C11C_PRODUCTION_SEED_BANK_v1.json",
+      "bytes": 571,
+      "sha256": "5a6b5a01312580cb76a7bd3a6e9bd4ef0674f241b32dbf71bfa669a6526608c0"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/README.md",
+      "bytes": 2949,
+      "sha256": "441a7e5cc2b1c9608491225689dc80c77a7a30c3f5f8e6b5d6100f43a8f6fbbb"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/SEED_MATRIX_C11C_V1.json",
+      "bytes": 325,
+      "sha256": "443c2520ee574f9411a1478c1806c5b08762941fa3bb460d88cafda4189fe60a"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_all_review_assets.ps1",
+      "bytes": 529,
+      "sha256": "f2dff72e60097c583595d57f70c8970241ccc773934f2d1494708b330dddcf52"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_gifs.ps1",
+      "bytes": 1753,
+      "sha256": "24b222dddebf0b69745129cff2bb459479e8501e5ca0834a4161f4dfe5d621cd"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_keyframes.ps1",
+      "bytes": 1452,
+      "sha256": "ccaf5b207d47c95da325f3b37e78dfbd9a5d68b65a8b8545ca0ce69f94583e78"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_all_c11c_visual_loops.ps1",
+      "bytes": 895,
+      "sha256": "beaa5a5fbb34858ec05a21eed07be76bce262c9f8a0d5134059b1b9afd33bdc5"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1",
+      "bytes": 3219,
+      "sha256": "15f72b12c2c0134e56746cc2521498a52e53d39cb5341aec72de7d36c8c875af"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1",
+      "bytes": 641,
+      "sha256": "7b0d3644d594a6e443cd5f938a6cb0ebfafeb3b9d833393ae9fbe013de323dfc"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_remaining_visual_loops.ps1",
+      "bytes": 831,
+      "sha256": "2a7e6589133feed0fe6fcb266791b95f036d54a115dfff26e792abaa75ff14b8"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "bytes": 7338,
+      "sha256": "8b94fb53ac07535cca6b6e0c3c8b4d09d04c4e6a7ce6c9acb46c9c91d0012137"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VARIATION_PROFILE_SPEC_v1.0.json",
+      "bytes": 1630,
+      "sha256": "d67365c2f00515196175e4eecf6fbf9962bb6dc8acf75afa811a0cec75e3eb6b"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VISUAL_GRAMMAR_SPEC_v1.5.json",
+      "bytes": 1851,
+      "sha256": "bb340d95e064012ca170cfd6c33fff4ba54d2fd730934f51fe3fb56bc532cc21"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/README.md",
+      "bytes": 259,
+      "sha256": "dffefae563dec2cb9d4bb95802e217fb6ae260212dfe70e4184c47528d968de7"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json",
+      "bytes": 2793,
+      "sha256": "e531fbb048c17171e4aaed758cc991eab9b21f2eb81c697c5b42ee9f20d7b15b"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DICTIONARY_v1.0.json",
+      "bytes": 1813,
+      "sha256": "6d6ec73d61bac5487843fee32a5b4284bafd434be4e805e42d14242e3e25d0e5"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TechnobabbleGenerator.gd",
+      "bytes": 5687,
+      "sha256": "127b73efaedd0b6bcb7a279e36af5a58947dc5a2a16d0e33c3ceed766c2081c9"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloom.gdshader",
+      "bytes": 7042,
+      "sha256": "262891050cdb3bdf58f28008310b815d2d3ddffe7ad2c729e922b029abf36677"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+      "bytes": 7726,
+      "sha256": "d594b8e5ca88a49c97f8a076e37d049549dd403fdcfd1dd819be4316adca94a1"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.tscn",
+      "bytes": 224,
+      "sha256": "806bed600f7550e7aa5c10175359c7ce545581ce206dc73e31c7c265cc398d5e"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomRenderer.gd",
+      "bytes": 2664,
+      "sha256": "3fe14b13ab7e9e0e82f6ace677a5f76046cf33c09d975104c20bb0898eb5fa5d"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/README.md",
+      "bytes": 1177,
+      "sha256": "2e913bbcaa14cf534e40806882941d43c8f15d9f2765cf2170638caf330fef9e"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/generate_fractal_bloom_music.py",
+      "bytes": 2380,
+      "sha256": "5000cbccf4928da53242b391dd4ffc6f60876574293ca42c20c1eea02f6cf9af"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "bytes": 6130,
+      "sha256": "178bc55a172777f9644c10b80d35a862b57d89514b2df5fadc59cc5647dbcbb6"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "bytes": 10027,
+      "sha256": "4af968a4050d9a2409b07d8c50616a259864424cbf051f72933ae1fa33089dec"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "bytes": 9631,
+      "sha256": "4f84461d98f980e42897dbe21b15a1b4e1f4de64934b3e6fd76a3567ca0e5917"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.tscn",
+      "bytes": 230,
+      "sha256": "11e214c6d8bba6003d7ef734477fdfc22cbe8238cae49c98692bd9b7487745fc"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "bytes": 3749,
+      "sha256": "12011badfdcc15dfefb93b399b4f21e1ae979c2899cbb4ba8c7da5d766ead666"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/README.md",
+      "bytes": 1607,
+      "sha256": "f5663eb1e93529588a750b83db6f347a9339a1380d410c453b935425db035a0f"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "bytes": 1531,
+      "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/generate_geometric_waves_music.py",
+      "bytes": 4241,
+      "sha256": "70591d0efe6a780dff4e24628222e5845d83b344c10ad679735ed39e95b47c80"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "bytes": 6442,
+      "sha256": "2099a0dade9e642534370fa8f4c2e3e08e2ee2ee56552e0a573902eaee713c56"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForces.gdshader",
+      "bytes": 4428,
+      "sha256": "b5ea26f2a7a59617cd494e39d37fc12a50f356ade8a2bf4e675a369a7c714057"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+      "bytes": 7468,
+      "sha256": "96a2b8a3beecbad650750ea684958a1cf68e9df53cf454e97a63114a12f5afd4"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn",
+      "bytes": 233,
+      "sha256": "85401c7c5a45283f90f090a28a1d0bb639d78dec4800e6eb730d60080972cb1c"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesRenderer.gd",
+      "bytes": 2239,
+      "sha256": "ece2e7f67dbb4ea65232fb5fa33b7fc26014cd0fa45ce93ade70f36676565b93"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/README.md",
+      "bytes": 768,
+      "sha256": "acfaa19084fe42614923f73b1f9de460455517851edd1fc00ca55b0afdbc6525"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/generate_c11c_invisible_forces_v1_music.py",
+      "bytes": 1050,
+      "sha256": "3eefb8732d987ca1b4667458bbfa96d0064fece9a58fe6438cf95dea51e90622"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+      "bytes": 5737,
+      "sha256": "b83a5caaa17dda347a327f42d4a9c33ff08bcc91146eab15b2a02d5cc7390a22"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader",
+      "bytes": 4348,
+      "sha256": "0e84fcef24b5123f5b4cd935544059a50de081cae6a046144621f7a75398d59d"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "bytes": 7538,
+      "sha256": "bc454af16d9c641f554cd9d1f11443c1122d556c977e146475bdf25324a05099"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.tscn",
+      "bytes": 233,
+      "sha256": "b574dd963ea6556eff08ef1d6924f54e0b027238f98b717dc02e07584f22dfa1"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesRenderer.gd",
+      "bytes": 2483,
+      "sha256": "102f3a08dd5555df70cae68033424dfa156a5dceec912903fdbe0c1fca63bc55"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/README.md",
+      "bytes": 765,
+      "sha256": "e7eb1d9fcb2f968b463cc252145559c4ee9ce80f3e5fcb14e3b5135f64431275"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/generate_c11c_living_particles_v1_music.py",
+      "bytes": 1073,
+      "sha256": "5e802cfa775e77ccda71d3ab3c36deb2c4391188ce8395c33dded2d106c6d1f7"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "bytes": 5728,
+      "sha256": "dc6ed2eab9b140e29a21ed05d5e19cb2777203a14cf8e38c8ba0703518245fa9"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/README.md",
+      "bytes": 769,
+      "sha256": "1d68ba82d3603e40589b949c5fd953d6e71daaea67a71a885f40b6edf3e6622a"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader",
+      "bytes": 5124,
+      "sha256": "7ae42464f96c9fa5de8236e0c0d5fd8432575a0ea2879866bb714e18dbb297f4"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+      "bytes": 7780,
+      "sha256": "98b842b4efce2723c7d671864463907e5d2254aca7b0feaa4cb846bd70dedf16"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.tscn",
+      "bytes": 230,
+      "sha256": "231e24928f0e4e8287b2fccc8fae4e6deec45eea4dbf4f7ac5cd9bec0676ffa5"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd",
+      "bytes": 2323,
+      "sha256": "2e7be1b5483a1b810cf32e66bd74628a3b9ec158a034c0d60687b514c6d5c3d0"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/generate_c11c_sacred_symmetry_v1_music.py",
+      "bytes": 986,
+      "sha256": "5c49d077eb863259b30b2cbf03ba5cd10d0b37aec4d3d9fa1b1bac258e5785de"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+      "bytes": 5724,
+      "sha256": "e7e39a2a46da02c3e0a3ca35b9a6fc327562503e02a4ee62ab76b999cec9f858"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "living:LivingParticles.gdshader:exists": true,
+  "living:LivingParticles.gdshader:literal_backslash_n": true,
+  "living:LivingParticlesRenderer.gd:exists": true,
+  "living:LivingParticlesRenderer.gd:literal_backslash_n": true,
+  "living:LivingParticlesPrototype.gd:exists": true,
+  "living:LivingParticlesPrototype.gd:literal_backslash_n": true,
+  "sacred:SacredSymmetry.gdshader:exists": true,
+  "sacred:SacredSymmetry.gdshader:literal_backslash_n": true,
+  "sacred:SacredSymmetryRenderer.gd:exists": true,
+  "sacred:SacredSymmetryRenderer.gd:literal_backslash_n": true,
+  "sacred:SacredSymmetryPrototype.gd:exists": true,
+  "sacred:SacredSymmetryPrototype.gd:literal_backslash_n": true,
+  "variation_version_1.6": true,
+  "sacred_grammar_names": true,
+  "living_grammar_names": true,
+  "no_core_files": true,
+  "living_coverage_all_5": true,
+  "sacred_coverage_all_5": true,
+  "sacred_orders_in_range": true
+}

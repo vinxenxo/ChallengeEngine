@@ -1,0 +1,43 @@
+{
+  "package_version": "1.5.0",
+  "package_type": "C11-C art-direction overlay",
+  "changes": [
+    "formalized visual grammar modes for five families",
+    "promoted palette and scale into explicit production variation",
+    "added review GIF export contract",
+    "added keyframe export contract and PowerShell tools",
+    "no engine/core/simulation changes"
+  ],
+  "files": [
+    {
+      "path": "docs/c11/C11-C_REVIEW_ASSETS_EXPORT_CONTRACT_v1.0.md",
+      "bytes": 1141,
+      "sha256": "ddd3e5a94a97f60fcc6663ce5128b22ec0def74c0b1c964bc9627a97df9d6cb6"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_GRAMMAR_VARIATION_v1.5.md",
+      "bytes": 8183,
+      "sha256": "e773ea3ae24a93e1f49b998858dda4ad91508cca0506b33dd4f540c23af36639"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_all_review_assets.ps1",
+      "bytes": 529,
+      "sha256": "f2dff72e60097c583595d57f70c8970241ccc773934f2d1494708b330dddcf52"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_gifs.ps1",
+      "bytes": 1719,
+      "sha256": "9596e840941a412834c3957f7e8e2c57b69ddb5c8d4e7d6391cf0dab5c5067f1"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_keyframes.ps1",
+      "bytes": 1447,
+      "sha256": "a683e5a49966fd40a0af42be7e11b9fae034fcdf07c1a70762cd41fe76aa09fc"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VISUAL_GRAMMAR_SPEC_v1.5.json",
+      "bytes": 1851,
+      "sha256": "bb340d95e064012ca170cfd6c33fff4ba54d2fd730934f51fe3fb56bc532cc21"
+    }
+  ]
+}

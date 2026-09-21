@@ -1,0 +1,56 @@
+{
+  "package_version": "1.5.1",
+  "changes": [
+    "fix ffmpeg palettegen PowerShell interpolation",
+    "preserve fractional keyframe times",
+    "preserve v1.5 art direction docs",
+    "no engine/shader/core changes"
+  ],
+  "files": [
+    {
+      "path": "C11-C_V1.5_README.md",
+      "bytes": 517,
+      "sha256": "c8f2d72f89f0bc393cb875717856dd022578f903b9a833105f7c84d4c1f7ba1b"
+    },
+    {
+      "path": "C11C_ART_DIRECTION_V1.5_MANIFEST.json",
+      "bytes": 1512,
+      "sha256": "4d4412e74533a29733b8f9f48dbd62ee93e44de2589ba3a1f453eaceca1f0b8c"
+    },
+    {
+      "path": "docs/c11/C11-C_REVIEW_ASSETS_EXPORT_CONTRACT_v1.0.md",
+      "bytes": 1141,
+      "sha256": "ddd3e5a94a97f60fcc6663ce5128b22ec0def74c0b1c964bc9627a97df9d6cb6"
+    },
+    {
+      "path": "docs/c11/C11-C_REVIEW_TOOLING_FIX_1.0.2.md",
+      "bytes": 341,
+      "sha256": "2c981aa665a39e807a4e534bf9c62c64ef10469246eda2c80322f425680ad025"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_GRAMMAR_VARIATION_v1.5.md",
+      "bytes": 8183,
+      "sha256": "e773ea3ae24a93e1f49b998858dda4ad91508cca0506b33dd4f540c23af36639"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_all_review_assets.ps1",
+      "bytes": 529,
+      "sha256": "f2dff72e60097c583595d57f70c8970241ccc773934f2d1494708b330dddcf52"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_gifs.ps1",
+      "bytes": 1753,
+      "sha256": "24b222dddebf0b69745129cff2bb459479e8501e5ca0834a4161f4dfe5d621cd"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_keyframes.ps1",
+      "bytes": 1452,
+      "sha256": "ccaf5b207d47c95da325f3b37e78dfbd9a5d68b65a8b8545ca0ce69f94583e78"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VISUAL_GRAMMAR_SPEC_v1.5.json",
+      "bytes": 1851,
+      "sha256": "bb340d95e064012ca170cfd6c33fff4ba54d2fd730934f51fe3fb56bc532cc21"
+    }
+  ]
+}

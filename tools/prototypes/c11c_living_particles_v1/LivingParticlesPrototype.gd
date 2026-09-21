@@ -34,7 +34,7 @@ func _build_scene() -> void:
     background.name = "AbyssalBackground"
     background.position = Vector2.ZERO
     background.size = Vector2(540.0, 960.0)
-    background.color = Color("03070A")
+    background.color = Color("020A14")
     background.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(background)
 
@@ -50,13 +50,20 @@ func _build_scene() -> void:
     _renderer.name = "LivingParticlesRenderer"
     frame.get_body_content_root().add_child(_renderer)
 
-    _renderer.set_palette(Color("0B6B5B"), Color("11B6A2"), Color("39E6C5"), Color("D7FFF7"))
+    var palette_index: int = int(_variation["palette_mode"])
+    match palette_index:
+        0: _renderer.set_palette(Color("0B4F3F"), Color("2FBF9F"), Color("54E0C2"), Color("E8FFF8"))
+        1: _renderer.set_palette(Color("063B4A"), Color("22C1C3"), Color("54F2E2"), Color("F0FFFF"))
+        2: _renderer.set_palette(Color("0A433A"), Color("40C98A"), Color("8FFFE5"), Color("F1FFF7"))
+        3: _renderer.set_palette(Color("073C47"), Color("14D6C5"), Color("68F0D0"), Color("EFFFFA"))
+        _: _renderer.set_palette(Color("0B2830"), Color("3E9E9B"), Color("71CFC5"), Color("E7FFFA"))
     var attractor_a: Vector2 = Vector2(float(_variation["attractor_a_x"]), float(_variation["attractor_a_y"]))
     var attractor_b: Vector2 = Vector2(float(_variation["attractor_b_x"]), float(_variation["attractor_b_y"]))
     _renderer.set_style(
-        float(_variation["particle_count"]), float(_variation["trail_length"]), float(_variation["glow"]),
+        int(_variation["grammar_mode"]), float(_variation["particle_count"]), float(_variation["glow"]),
         attractor_a, attractor_b, float(_variation["swirl_bias"]), float(_variation["particle_spread"]),
-        float(_variation["turbulence"]), float(_variation["attractor_strength"]), float(_variation["particle_size_scale"]), float(_variation["phase_rate"])
+        float(_variation["turbulence"]), float(_variation["attractor_strength"]), float(_variation["particle_size_scale"]),
+        float(_variation["phase_rate"]), float(_variation["collision_strength"]), float(_variation["core_scale"]), float(_variation["density_bias"])
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
@@ -90,7 +97,8 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("FLOW FIELD  |  ATTRACTORS  |  EDDIES  |  DENSITY", Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E8F5EF")))
+    var grammar_name: String = str(_variation["grammar_name"]).to_upper()
+    root.add_child(_new_header_math_label("MODE %s  |  DENSITY %.0f  |  BODY 540x672" % [grammar_name, float(_variation["particle_count"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E8F5EF")))
     root.add_child(_new_label("SEED %d   |   BODY 540x672   |   30 FPS   |   T=10.00 s   |   3 FLOW LAYERS" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("8BA9A2")))
 
 func _add_footer(root: Control) -> void:

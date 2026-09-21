@@ -1,0 +1,28 @@
+{
+  "prototype_id": "C11-C.1_GEOMETRIC_WAVES_V1",
+  "revision": "1.5.0",
+  "status": "PROTOTYPE_ART_ITERATION",
+  "grammar_modes": [
+    "harmonic_membrane",
+    "interference_plane",
+    "parametric_ribbon",
+    "lattice_wave",
+    "orbital_wave"
+  ],
+  "palette_modes": [
+    "cyan_magenta",
+    "electric_blue_lilac",
+    "turquoise_orchid",
+    "spectral_blue",
+    "warm_cold_harmonic"
+  ],
+  "scope": {
+    "core_modified": false,
+    "simulation_modified": false,
+    "rng_engine_modified": false,
+    "simulation_result_modified": false,
+    "c7_modified": false,
+    "c11b_geometry_modified": false
+  },
+  "footer_production": "OFF"
+}

@@ -1,7 +1,7 @@
 extends Node2D
 
-## C11-C.3 — Sacred Symmetry isolated presentation renderer.
-## Presentation-only. No simulation state, RNG stream or production runtime access.
+## C11-C.3 v1.6 — Sacred Symmetry visual grammar renderer.
+## Presentation-only. Exact symmetry belongs to the shader grammar.
 
 const WIDTH := 540.0
 const BODY_TOP := 144.0
@@ -29,16 +29,20 @@ func set_palette(primary: Color, secondary: Color, highlight: Color, white_gold:
     _material.set_shader_parameter("highlight_color", highlight)
     _material.set_shader_parameter("white_gold_color", white_gold)
 
-func set_style(segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float, ring_scale: float, core_scale: float, tick_density: float, mechanical_rate: float) -> void:
-    _material.set_shader_parameter("segment_count", max(segment_count, 6.0))
+func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float, ring_scale: float, core_scale: float, tick_density: float, mechanical_rate: float, macro_scale: float, node_density: float, fold_depth: float) -> void:
+    _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 4))
+    _material.set_shader_parameter("segment_count", max(segment_count, 4.0))
     _material.set_shader_parameter("ring_bias", clamp(ring_bias, 0.0, 1.0))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
     _material.set_shader_parameter("gear_inner", gear_inner)
     _material.set_shader_parameter("gear_outer", gear_outer)
-    _material.set_shader_parameter("ring_scale", clamp(ring_scale, 0.88, 1.12))
-    _material.set_shader_parameter("core_scale", clamp(core_scale, 0.80, 1.20))
-    _material.set_shader_parameter("tick_density", clamp(tick_density, 0.75, 1.40))
-    _material.set_shader_parameter("mechanical_rate", mechanical_rate)
+    _material.set_shader_parameter("ring_scale", clamp(ring_scale, 0.86, 1.12))
+    _material.set_shader_parameter("core_scale", clamp(core_scale, 0.76, 1.24))
+    _material.set_shader_parameter("tick_density", clamp(tick_density, 0.70, 1.45))
+    _material.set_shader_parameter("mechanical_rate", clamp(mechanical_rate, 0.80, 2.30))
+    _material.set_shader_parameter("macro_scale", clamp(macro_scale, 0.84, 1.08))
+    _material.set_shader_parameter("node_density", clamp(node_density, 0.65, 1.35))
+    _material.set_shader_parameter("fold_depth", clamp(fold_depth, 0.70, 1.30))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

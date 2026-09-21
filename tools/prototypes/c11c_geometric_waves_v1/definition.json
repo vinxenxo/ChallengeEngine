@@ -1,14 +1,23 @@
 {
   "prototype_id": "C11-C.1_GEOMETRIC_WAVES_V1",
-  "revision": "1.0.2",
+  "revision": "1.5.0",
   "status": "PROTOTYPE_ONLY",
   "seed": 314159,
   "canvas": {
     "width": 540,
     "height": 960,
-    "header": [0, 144],
-    "body": [144, 816],
-    "footer": [816, 960]
+    "header": [
+      0,
+      144
+    ],
+    "body": [
+      144,
+      816
+    ],
+    "footer": [
+      816,
+      960
+    ]
   },
   "loop": {
     "duration_seconds": 10.0,
@@ -39,6 +48,22 @@
     "secondary": "magenta",
     "highlight": "white",
     "external_visual_assets": false,
-    "ai_generated_visual_assets": false
+    "ai_generated_visual_assets": false,
+    "revision": "v1.5",
+    "grammar_modes": [
+      "harmonic_membrane",
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "palette_modes": [
+      "cyan_magenta",
+      "electric_blue_lilac",
+      "turquoise_orchid",
+      "spectral_blue",
+      "warm_cold_harmonic"
+    ],
+    "footer_production": "OFF"
   }
 }

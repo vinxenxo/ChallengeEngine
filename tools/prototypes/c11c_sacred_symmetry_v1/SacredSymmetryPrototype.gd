@@ -34,7 +34,7 @@ func _build_scene() -> void:
     background.name = "AbyssalBackground"
     background.position = Vector2.ZERO
     background.size = Vector2(540.0, 960.0)
-    background.color = Color("03070A")
+    background.color = Color("050505")
     background.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(background)
 
@@ -50,11 +50,18 @@ func _build_scene() -> void:
     _renderer.name = "SacredSymmetryRenderer"
     frame.get_body_content_root().add_child(_renderer)
 
-    _renderer.set_palette(Color("B37A2B"), Color("D99A3E"), Color("F3C76D"), Color("FFF3D6"))
+    var palette_index: int = int(_variation["palette_mode"])
+    match palette_index:
+        0: _renderer.set_palette(Color("FFD700"), Color("FF8C00"), Color("FFFFFF"), Color("FFF7D6"))
+        1: _renderer.set_palette(Color("D9A441"), Color("B87333"), Color("FFFFFF"), Color("FFF3D6"))
+        2: _renderer.set_palette(Color("FFB300"), Color("FF7A00"), Color("FFF2B2"), Color("FFFFFF"))
+        3: _renderer.set_palette(Color("B87333"), Color("D4AF37"), Color("FFF0C9"), Color("FFFFFF"))
+        _: _renderer.set_palette(Color("9C7A32"), Color("C49A6C"), Color("F7E7B0"), Color("FFFDF5"))
     _renderer.set_style(
-        float(_variation["symmetry_order"]), float(_variation["ring_bias"]), float(_variation["glow"]),
+        int(_variation["grammar_mode"]), float(_variation["symmetry_order"]), float(_variation["ring_bias"]), float(_variation["glow"]),
         float(_variation["gear_inner"]), float(_variation["gear_outer"]), float(_variation["ring_scale"]),
-        float(_variation["core_scale"]), float(_variation["tick_density"]), float(_variation["mechanical_rate"])
+        float(_variation["core_scale"]), float(_variation["tick_density"]), float(_variation["mechanical_rate"]),
+        float(_variation["macro_scale"]), float(_variation["node_density"]), float(_variation["fold_depth"])
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
@@ -89,7 +96,8 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
 
 func _add_header(root: Control) -> void:
     var symmetry_order: int = int(_variation["symmetry_order"])
-    root.add_child(_new_header_math_label("RADIAL SYMMETRY  |  N=%d  |  POLAR ASTROLABE  |  3 RINGS" % symmetry_order, Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E8E0D1")))
+    var grammar_name: String = str(_variation["grammar_name"]).to_upper()
+    root.add_child(_new_header_math_label("MODE %s  |  N=%d  |  RING SCALE %.2f" % [grammar_name, symmetry_order, float(_variation["ring_scale"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E8E0D1")))
     root.add_child(_new_label("SEED %d   |   BODY 540x672   |   30 FPS   |   T=10.00 s   |   CLOCKWORK MOTION" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("88909A")))
 
 func _add_footer(root: Control) -> void:

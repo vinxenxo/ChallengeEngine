@@ -1,9 +1,9 @@
 # res://tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd
 extends Node2D
 
-## C11-C.1 — Geometric Waves v1 single-reference prototype.
-## Reference: 10.0 s / 30 FPS / 300 frames / 540x960 / seed 314159.
-## The controller owns only prototype playback time; it does not touch VisualLoopRuntime.
+## C11-C.1 v1.5 — Geometric Waves visual-family prototype.
+## The seed selects a wave grammar, composition parameters and palette variant.
+## No core, simulation, RNG stream or C7 contract is touched.
 
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const GeometricWavesRendererClass = preload("res://tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd")
@@ -22,8 +22,6 @@ var _renderer: Node2D
 var _frame_index := 0
 var _seed := REFERENCE_SEED
 var _show_footer := true
-var _polygon_sides := 6
-var _wave_frequency: float = 18.0
 var _variation: Dictionary = {}
 
 func _ready() -> void:
@@ -46,8 +44,6 @@ func _build_scene() -> void:
     frame.name = "UnifiedSocialFrame"
     add_child(frame)
 
-    _polygon_sides = int(_variation["polygon_sides"])
-    _wave_frequency = float(_variation["wave_frequency"])
     _add_frame_decoration(frame)
     _add_header(frame.get_header_content_root())
     if _show_footer:
@@ -57,21 +53,71 @@ func _build_scene() -> void:
     _renderer.name = "GeometricWavesRenderer"
     frame.get_body_content_root().add_child(_renderer)
 
-    var seed_phase: float = _seed_phase(_seed)
-    _renderer.set_palette(
-        Color(0.00, 0.82, 0.94, 1.0),
-        Color(0.95, 0.08, 0.52, 1.0),
-        Color(1.00, 1.00, 1.00, 1.0)
-    )
+    _renderer.set_palette(_palette_dominant(), _palette_secondary(), Color("FFFFFF"))
     _renderer.set_style(
-        float(_variation["morph"]), float(_variation["wave_frequency"]), float(_variation["line_width"]),
-        float(_variation["glow"]), float(_variation["polygon_sides"]), float(_variation["wave_ratio"]),
-        float(_variation["shape_rotation"]), float(_variation["layer_spread"]), float(_variation["radial_wave_amplitude"]),
-        float(_variation["liss_x_frequency"]), float(_variation["liss_y_frequency"]), float(_variation["interference_scale"])
+        int(_variation["grammar_mode"]),
+        int(_variation["palette_mode"]),
+        float(_variation["morph"]),
+        float(_variation["wave_frequency"]),
+        float(_variation["line_width"]),
+        float(_variation["glow"]),
+        float(_variation["polygon_sides"]),
+        float(_variation["wave_ratio"]),
+        float(_variation["shape_rotation"]),
+        float(_variation["layer_spread"]),
+        float(_variation["radial_wave_amplitude"]),
+        float(_variation["liss_x_frequency"]),
+        float(_variation["liss_y_frequency"]),
+        float(_variation["interference_scale"]),
+        float(_variation["hero_scale"]),
+        float(_variation["perspective_strength"]),
+        float(_variation["depth_strength"]),
+        float(_variation["secondary_phase"]),
+        float(_variation["color_phase"]),
+        float(_variation["stroke_scale"])
     )
-    _renderer.set_frame(0, FRAME_COUNT, seed_phase)
+    _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
+
+func _palette_dominant() -> Color:
+    match int(_variation["palette_mode"]):
+        0: return Color("16E6FF")
+        1: return Color("5B8CFF")
+        2: return Color("38E5D0")
+        3: return Color("9AD7FF")
+        4: return Color("FFB347")
+        _: return Color("16E6FF")
+
+func _palette_secondary() -> Color:
+    match int(_variation["palette_mode"]):
+        0: return Color("FF3EBA")
+        1: return Color("B07CFF")
+        2: return Color("D887FF")
+        3: return Color("5C79FF")
+        4: return Color("35D4FF")
+        _: return Color("FF3EBA")
+
+func _grammar_label() -> String:
+    match int(_variation["grammar_mode"]):
+        0: return "HARMONIC MEMBRANE"
+        1: return "INTERFERENCE PLANE"
+        2: return "PARAMETRIC RIBBON"
+        3: return "LATTICE WAVE"
+        4: return "ORBITAL WAVE"
+        _: return "HARMONIC MEMBRANE"
+
+func _math_header() -> String:
+    match int(_variation["grammar_mode"]):
+        0: return "h(x,y,t)=sin(ωx+φ)·cos(ωy−φ)   ·   MEMBRANE"
+        1: return "I(x,y,t)=sin(ω₁x+φ₁)·sin(ω₂y+φ₂)   ·   INTERFERENCE"
+        2: return "R(u)=(u,A·sin(ωu+φ))   ·   PARAMETRIC RIBBON"
+        3: return "G(x,y,t)=sin(ωx+δ)·sin(ωy−δ)   ·   LATTICE"
+        4: return "ρ(a,t)=ρ₀+A·sin(kr−ωt)   ·   ORBITAL"
+        _: return "h(x,y,t)=sin(ωx+φ)·cos(ωy−φ)   ·   MEMBRANE"
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
+    var accent_a := _palette_dominant()
+    var accent_b := _palette_secondary()
+
     var header_line := ColorRect.new()
     header_line.name = "HeaderRule"
     header_line.position = Vector2(36.0, 102.0)
@@ -92,7 +138,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     header_accent.name = "HeaderAccent"
     header_accent.position = Vector2(36.0, 26.0)
     header_accent.size = Vector2(46.0, 2.0)
-    header_accent.color = Color(0.00, 0.82, 0.94, 0.90)
+    header_accent.color = accent_a
     header_accent.mouse_filter = Control.MOUSE_FILTER_IGNORE
     frame.get_header_content_root().add_child(header_accent)
 
@@ -100,13 +146,13 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     footer_accent.name = "FooterAccent"
     footer_accent.position = Vector2(458.0, 127.0)
     footer_accent.size = Vector2(46.0, 2.0)
-    footer_accent.color = Color(0.95, 0.08, 0.52, 0.85)
+    footer_accent.color = accent_b
     footer_accent.mouse_filter = Control.MOUSE_FILTER_IGNORE
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("φ(t)=2π·f/300   ·   POLY N=%d   ·   LISS %.0f:%.0f   ·   3 LAYERS" % [_polygon_sides, float(_variation["liss_x_frequency"]), float(_variation["liss_y_frequency"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("D8E5F2")))
-    root.add_child(_new_label("SEED %d   ·   BODY 540×672   ·   30 FPS   ·   T=10.00 s   ·   DETERMINISTIC" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("7F93A8")))
+    root.add_child(_new_header_math_label(_math_header(), Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E8F2FA")))
+    root.add_child(_new_label("MODE %s   ·   PALETTE %s   ·   HERO %.2fx" % [_grammar_label(), str(_variation["palette_name"]).to_upper(), float(_variation["hero_scale"])], Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("7F93A8")))
 
 func _add_footer(root: Control) -> void:
     root.add_child(_new_label("VISUAL LOOP  //  GEOMETRIC WAVES", Vector2(36.0, 33.0), Vector2(468.0, 18.0), 10, Color("7F93A8")))
@@ -115,36 +161,36 @@ func _add_footer(root: Control) -> void:
     var hook := _new_label("CUANDO LAS ONDAS DIBUJAN GEOMETRÍA", Vector2(36.0, 72.0), Vector2(468.0, 28.0), 18, Color("F3F7FF"))
     hook.add_theme_constant_override("outline_size", 2)
     root.add_child(hook)
-    root.add_child(_new_label("MATHEMATICAL GENERATIVE ART  /  v1", Vector2(36.0, 106.0), Vector2(468.0, 16.0), 9, Color("587086")))
+    root.add_child(_new_label("MATHEMATICAL GENERATIVE ART  /  v1.5", Vector2(36.0, 106.0), Vector2(468.0, 16.0), 9, Color("587086")))
 
 func _resolve_footer_visibility() -> bool:
-    var raw := OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+    var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
     return raw not in ["0", "false", "off", "no"]
 
 func _resolve_seed() -> int:
-    var raw := OS.get_environment("C11C_SEED").strip_edges()
+    var raw: String = OS.get_environment("C11C_SEED").strip_edges()
     if raw.is_valid_int():
         return int(raw)
     return REFERENCE_SEED
 
 func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
     var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
-    var font := label.get_theme_default_font()
-    var fitted := HEADER_MAX_FONT_SIZE
+    var font: Font = label.get_theme_default_font()
+    var fitted: int = HEADER_MAX_FONT_SIZE
     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
         fitted -= 1
     label.add_theme_font_size_override("font_size", fitted)
     return label
 
-
 func _new_footer_geek_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
     var label := _new_label(text_value, pos, box_size, 10, color)
-    var font := label.get_theme_default_font()
-    var fitted := 10
+    var font: Font = label.get_theme_default_font()
+    var fitted: int = 10
     while fitted > 8 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
         fitted -= 1
     label.add_theme_font_size_override("font_size", fitted)
     return label
+
 func _new_label(
     text_value: String,
     pos: Vector2,
@@ -166,25 +212,17 @@ func _new_label(
 func _process(_delta: float) -> void:
     if _renderer == null:
         return
-
     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed))
     _frame_index = (_frame_index + 1) % FRAME_COUNT
 
-func _choice(values: Array, salt: int):
-    return values[_seed_u32(salt) % values.size()]
-
-func _seed01(salt: int) -> float:
-    return float(_seed_u32(salt) % 100000) / 100000.0
-
 func _seed_u32(salt: int) -> int:
-    var x := (int(_seed) + salt * 374761393) & 0x7fffffff
+    var x: int = (int(_seed) + salt * 374761393) & 0x7fffffff
     x = int((x ^ (x >> 13)) * 1274126177) & 0x7fffffff
     x = int((x ^ (x >> 16)) * 2246822519) & 0x7fffffff
     return int(x ^ (x >> 13)) & 0x7fffffff
 
 func _seed_phase(seed_value: int) -> float:
-    # Stable integer mixing; this is a presentation parameter, not the engine RNG.
-    var x := int(seed_value) & 0x7fffffff
+    var x: int = int(seed_value) & 0x7fffffff
     x = int((x ^ (x >> 16)) * 2246822519) & 0x7fffffff
     x = int((x ^ (x >> 13)) * 3266489917) & 0x7fffffff
     x = int(x ^ (x >> 16))
