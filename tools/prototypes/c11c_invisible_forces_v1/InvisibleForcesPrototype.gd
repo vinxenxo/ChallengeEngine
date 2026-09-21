@@ -34,7 +34,7 @@ func _build_scene() -> void:
     background.name = "AbyssalBackground"
     background.position = Vector2.ZERO
     background.size = Vector2(540.0, 960.0)
-    background.color = Color("03070A")
+    background.color = Color("0A0505")
     background.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(background)
 
@@ -50,12 +50,20 @@ func _build_scene() -> void:
     _renderer.name = "InvisibleForcesRenderer"
     frame.get_body_content_root().add_child(_renderer)
 
-    _renderer.set_palette(Color("5A1024"), Color("B83B2B"), Color("F16A2E"), Color("FFD45A"))
+    var palette_index: int = int(_variation["palette_mode"])
+    match palette_index:
+        0: _renderer.set_palette(Color("4E0C18"), Color("C72536"), Color("FF5A1F"), Color("FFD34E"))
+        1: _renderer.set_palette(Color("430B12"), Color("C62E24"), Color("FF6B26"), Color("FFD166"))
+        2: _renderer.set_palette(Color("3A0A0A"), Color("A71D31"), Color("E85D2A"), Color("FFC857"))
+        3: _renderer.set_palette(Color("4A1007"), Color("D53A0A"), Color("FF7A00"), Color("FFD84A"))
+        _: _renderer.set_palette(Color("24100D"), Color("8B3A2D"), Color("C76435"), Color("FFD27A"))
     var storm_offset: Vector2 = Vector2(float(_variation["storm_offset_x"]), float(_variation["storm_offset_y"]))
     _renderer.set_style(
-        float(_variation["trace_count"]), float(_variation["curvature"]), float(_variation["glow"]),
+        int(_variation["grammar_mode"]), float(_variation["trace_count"]), float(_variation["curvature"]), float(_variation["glow"]),
         float(_variation["field_rotation"]), storm_offset, float(_variation["pulse_speed"]),
-        float(_variation["field_twist"]), float(_variation["pulse_width"]), float(_variation["storm_scale"])
+        float(_variation["field_twist"]), float(_variation["pulse_width"]), float(_variation["storm_scale"]),
+        float(_variation["lens_strength"]), float(_variation["basin_depth"]), float(_variation["pole_separation"]),
+        float(_variation["quadrupole_skew"])
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
@@ -89,7 +97,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("VECTOR FIELD  |  %d TRACES  |  TWIST %.2f  |  PULSE %.2f" % [int(_variation["trace_count"]), float(_variation["field_twist"]), float(_variation["pulse_speed"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("FFE6D6")))
+    root.add_child(_new_header_math_label("%s  |  %d TRACES  |  PULSE %.2f" % [str(_variation["grammar_name"]).to_upper(), int(_variation["trace_count"]), float(_variation["pulse_speed"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("FFE6D6")))
     root.add_child(_new_label("SEED %d   |   BODY 540x672   |   30 FPS   |   T=10.00 s   |   32 FLOW TRACES" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("AA7E6A")))
 
 func _add_footer(root: Control) -> void:

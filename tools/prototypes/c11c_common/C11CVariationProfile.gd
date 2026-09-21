@@ -4,7 +4,7 @@ extends RefCounted
 ## C11-C.6 — Presentation-only deterministic variation manifold.
 ## Same family + same seed => same profile. No production engine state is touched.
 
-const VERSION: String = "1.6.0"
+const VERSION: String = "1.7.0"
 
 static func build(family_id: String, seed_value: int) -> Dictionary:
     var family: String = _canonical_family(family_id)
@@ -66,18 +66,43 @@ static func _geometric(seed_value: int) -> Dictionary:
     }
 
 static func _fractal(seed_value: int) -> Dictionary:
+    var grammar_modes: Array[String] = [
+        "radial_bloom",
+        "dendritic_tunnel",
+        "spiral_fractal",
+        "fractal_filigree",
+        "nested_worlds"
+    ]
+    var palette_modes: Array[String] = [
+        "indigo_violet_cyan",
+        "midnight_electric_violet",
+        "teal_indigo",
+        "ultraviolet_magenta_cyan",
+        "monochrome_indigo"
+    ]
+    var grammar_index: int = _index(seed_value, 101, grammar_modes.size())
+    var palette_index: int = _index(seed_value, 103, palette_modes.size())
     return {
         "family": "fractal",
-        "zoom_strength": lerpf(0.48, 0.94, _unit(seed_value, 71)),
-        "warp_strength": lerpf(0.018, 0.062, _unit(seed_value, 73)),
-        "bloom_strength": lerpf(0.58, 0.92, _unit(seed_value, 79)),
-        "layer_softness": lerpf(0.55, 1.10, _unit(seed_value, 83)),
-        "julia_x_bias": lerpf(-0.055, 0.055, _unit(seed_value, 89)),
-        "julia_y_bias": lerpf(-0.060, 0.060, _unit(seed_value, 97)),
-        "zoom_cycles": float([1, 2, 3][_index(seed_value, 101, 3)]),
-        "warp_frequency": lerpf(2.3, 4.8, _unit(seed_value, 103)),
-        "layer_spread": lerpf(0.05, 0.18, _unit(seed_value, 107)),
-        "breath_strength": lerpf(0.055, 0.115, _unit(seed_value, 109))
+        "grammar_mode": grammar_index,
+        "grammar_name": grammar_modes[grammar_index],
+        "palette_mode": palette_index,
+        "palette_name": palette_modes[palette_index],
+        "zoom_strength": lerpf(0.92, 1.62, _unit(seed_value, 105)),
+        "warp_strength": lerpf(0.012, 0.058, _unit(seed_value, 107)),
+        "bloom_strength": lerpf(0.40, 0.82, _unit(seed_value, 109)),
+        "layer_softness": lerpf(0.48, 1.04, _unit(seed_value, 113)),
+        "julia_x_bias": lerpf(-0.060, 0.060, _unit(seed_value, 127)),
+        "julia_y_bias": lerpf(-0.075, 0.075, _unit(seed_value, 131)),
+        "zoom_cycles": float([1, 2, 3][_index(seed_value, 137, 3)]),
+        "zoom_path": _index(seed_value, 139, 3),
+        "warp_frequency": lerpf(2.0, 5.8, _unit(seed_value, 149)),
+        "layer_spread": lerpf(0.035, 0.20, _unit(seed_value, 151)),
+        "breath_strength": lerpf(0.035, 0.105, _unit(seed_value, 157)),
+        "branch_density": lerpf(0.76, 1.32, _unit(seed_value, 163)),
+        "detail_scale": lerpf(0.86, 1.34, _unit(seed_value, 167)),
+        "spiral_amount": lerpf(0.45, 1.45, _unit(seed_value, 173)),
+        "color_diversity": lerpf(0.62, 1.0, _unit(seed_value, 179))
     }
 
 static func _sacred(seed_value: int) -> Dictionary:
@@ -103,7 +128,9 @@ static func _sacred(seed_value: int) -> Dictionary:
         "mechanical_rate": float([1.0, 1.5, 2.0][_index(seed_value, 167, 3)]),
         "macro_scale": lerpf(0.86, 1.04, _unit(seed_value, 169)),
         "node_density": lerpf(0.72, 1.28, _unit(seed_value, 173)),
-        "fold_depth": lerpf(0.78, 1.22, _unit(seed_value, 179))
+        "fold_depth": lerpf(0.78, 1.22, _unit(seed_value, 179)),
+        "color_diversity": lerpf(0.62, 1.0, _unit(seed_value, 181)),
+        "color_phase": lerpf(-3.1415927, 3.1415927, _unit(seed_value, 183))
     }
 
 static func _living(seed_value: int) -> Dictionary:
@@ -131,22 +158,49 @@ static func _living(seed_value: int) -> Dictionary:
         "phase_rate": lerpf(0.68, 1.24, _unit(seed_value, 251)),
         "collision_strength": lerpf(0.72, 1.40, _unit(seed_value, 257)),
         "core_scale": lerpf(0.78, 1.18, _unit(seed_value, 259)),
-        "density_bias": lerpf(0.86, 1.16, _unit(seed_value, 261))
+        "density_bias": lerpf(0.86, 1.16, _unit(seed_value, 261)),
+        "color_diversity": lerpf(0.72, 1.0, _unit(seed_value, 263)),
+        "color_phase": lerpf(-3.1415927, 3.1415927, _unit(seed_value, 269))
     }
 
 static func _invisible(seed_value: int) -> Dictionary:
+    var grammar_modes: Array[String] = [
+        "dipole_field",
+        "vortex_field",
+        "saddle_field",
+        "quadrupole_field",
+        "gravitational_lens",
+        "topographic_basin"
+    ]
+    var palette_modes: Array[String] = [
+        "crimson_cadmium_gold",
+        "crimson_orange",
+        "deep_red_amber",
+        "hot_orange_yellow",
+        "warm_monochrome"
+    ]
+    var grammar_index: int = _index(seed_value, 271, grammar_modes.size())
+    var palette_index: int = _index(seed_value, 277, palette_modes.size())
     return {
         "family": "invisible_forces",
-        "trace_count": lerpf(50.0, 88.0, _unit(seed_value, 263)),
-        "curvature": lerpf(0.58, 1.22, _unit(seed_value, 269)),
-        "glow": lerpf(0.62, 0.94, _unit(seed_value, 271)),
-        "field_rotation": lerpf(-0.20, 0.20, _unit(seed_value, 277)),
-        "storm_offset_x": lerpf(-0.055, 0.055, _unit(seed_value, 281)),
-        "storm_offset_y": lerpf(-0.040, 0.040, _unit(seed_value, 283)),
-        "pulse_speed": lerpf(0.72, 1.32, _unit(seed_value, 293)),
-        "field_twist": lerpf(0.78, 1.28, _unit(seed_value, 307)),
-        "pulse_width": lerpf(0.72, 1.38, _unit(seed_value, 311)),
-        "storm_scale": lerpf(0.86, 1.18, _unit(seed_value, 313))
+        "grammar_mode": grammar_index,
+        "grammar_name": grammar_modes[grammar_index],
+        "palette_mode": palette_index,
+        "palette_name": palette_modes[palette_index],
+        "trace_count": lerpf(50.0, 88.0, _unit(seed_value, 281)),
+        "curvature": lerpf(0.52, 1.16, _unit(seed_value, 283)),
+        "glow": lerpf(0.50, 0.90, _unit(seed_value, 293)),
+        "field_rotation": lerpf(-0.42, 0.42, _unit(seed_value, 307)),
+        "storm_offset_x": lerpf(-0.16, 0.16, _unit(seed_value, 311)),
+        "storm_offset_y": lerpf(-0.12, 0.12, _unit(seed_value, 313)),
+        "pulse_speed": lerpf(0.70, 1.36, _unit(seed_value, 317)),
+        "field_twist": lerpf(0.62, 1.42, _unit(seed_value, 331)),
+        "pulse_width": lerpf(0.62, 1.34, _unit(seed_value, 337)),
+        "storm_scale": lerpf(0.74, 1.18, _unit(seed_value, 347)),
+        "lens_strength": lerpf(0.42, 0.92, _unit(seed_value, 349)),
+        "basin_depth": lerpf(0.45, 1.05, _unit(seed_value, 353)),
+        "pole_separation": lerpf(0.16, 0.34, _unit(seed_value, 359)),
+        "quadrupole_skew": lerpf(0.78, 1.28, _unit(seed_value, 367))
     }
 
 static func _canonical_family(family_id: String) -> String:

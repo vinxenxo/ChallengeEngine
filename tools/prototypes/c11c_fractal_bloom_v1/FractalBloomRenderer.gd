@@ -31,8 +31,9 @@ func set_palette(indigo: Color, violet: Color, cyan: Color, highlight: Color) ->
     _material.set_shader_parameter("cyan_color", cyan)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(zoom_strength: float, warp_strength: float, bloom_strength: float, layer_softness: float, julia_x_bias: float, julia_y_bias: float, zoom_cycles: float, warp_frequency: float, layer_spread: float, breath_strength: float) -> void:
-    _material.set_shader_parameter("zoom_strength", clamp(zoom_strength, 0.1, 1.2))
+func set_style(grammar_mode: int, zoom_strength: float, warp_strength: float, bloom_strength: float, layer_softness: float, julia_x_bias: float, julia_y_bias: float, zoom_cycles: float, warp_frequency: float, layer_spread: float, breath_strength: float, branch_density: float, detail_scale: float, spiral_amount: float) -> void:
+    _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 4))
+    _material.set_shader_parameter("zoom_strength", clamp(zoom_strength, 0.60, 1.90))
     _material.set_shader_parameter("warp_strength", clamp(warp_strength, 0.0, 0.08))
     _material.set_shader_parameter("bloom_strength", clamp(bloom_strength, 0.0, 1.0))
     _material.set_shader_parameter("layer_softness", clamp(layer_softness, 0.2, 1.5))
@@ -41,7 +42,10 @@ func set_style(zoom_strength: float, warp_strength: float, bloom_strength: float
     _material.set_shader_parameter("zoom_cycles", clamp(zoom_cycles, 1.0, 3.0))
     _material.set_shader_parameter("warp_frequency", clamp(warp_frequency, 2.0, 5.5))
     _material.set_shader_parameter("layer_spread", clamp(layer_spread, 0.0, 0.22))
-    _material.set_shader_parameter("breath_strength", clamp(breath_strength, 0.04, 0.13))
+    _material.set_shader_parameter("breath_strength", clamp(breath_strength, 0.03, 0.13))
+    _material.set_shader_parameter("branch_density", clamp(branch_density, 0.70, 1.40))
+    _material.set_shader_parameter("detail_scale", clamp(detail_scale, 0.80, 1.40))
+    _material.set_shader_parameter("spiral_amount", clamp(spiral_amount, 0.30, 1.60))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

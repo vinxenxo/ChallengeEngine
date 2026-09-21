@@ -18,6 +18,8 @@ uniform float mechanical_rate = 1.5;
 uniform float macro_scale = 1.0;
 uniform float node_density = 1.0;
 uniform float fold_depth = 1.0;
+uniform float color_diversity = 0.82;
+uniform float color_phase = 0.0;
 uniform vec4 primary_color : source_color = vec4(0.70, 0.48, 0.17, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.86, 0.60, 0.24, 1.0);
 uniform vec4 highlight_color : source_color = vec4(0.95, 0.78, 0.43, 1.0);
@@ -188,7 +190,11 @@ void fragment() {
     structure = clamp(structure, 0.0, 1.0);
     secondary = clamp(secondary, 0.0, 1.0);
 
-    vec3 gold = mix(primary_color.rgb, secondary_color.rgb, 0.40 + 0.44 * slow);
+    // Exact-symmetry chromatic modulation: every sector repeats the same color field.
+    float color_band = 0.5 + 0.5 * cos(segment_count * a + color_phase);
+    float radial_band = 0.5 + 0.5 * cos(r * 38.0 - color_phase * 0.7);
+    float color_mix = clamp(0.28 + color_diversity * (0.22 + 0.62 * color_band) + 0.08 * radial_band, 0.0, 1.0);
+    vec3 gold = mix(primary_color.rgb, secondary_color.rgb, color_mix);
     gold = mix(gold, highlight_color.rgb, clamp(align * 0.55 + nodes * 0.20, 0.0, 1.0));
     gold = mix(gold, white_gold_color.rgb, clamp(nodes * 0.70 + core * 0.42, 0.0, 1.0));
 

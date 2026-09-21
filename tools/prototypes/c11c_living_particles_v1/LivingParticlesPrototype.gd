@@ -52,18 +52,19 @@ func _build_scene() -> void:
 
     var palette_index: int = int(_variation["palette_mode"])
     match palette_index:
-        0: _renderer.set_palette(Color("0B4F3F"), Color("2FBF9F"), Color("54E0C2"), Color("E8FFF8"))
-        1: _renderer.set_palette(Color("063B4A"), Color("22C1C3"), Color("54F2E2"), Color("F0FFFF"))
-        2: _renderer.set_palette(Color("0A433A"), Color("40C98A"), Color("8FFFE5"), Color("F1FFF7"))
-        3: _renderer.set_palette(Color("073C47"), Color("14D6C5"), Color("68F0D0"), Color("EFFFFA"))
-        _: _renderer.set_palette(Color("0B2830"), Color("3E9E9B"), Color("71CFC5"), Color("E7FFFA"))
+        0: _renderer.set_palette(Color("063E33"), Color("20B58D"), Color("59E6BE"), Color("E8FFF8"))
+        1: _renderer.set_palette(Color("03394A"), Color("18AFC0"), Color("59F0E2"), Color("F0FFFF"))
+        2: _renderer.set_palette(Color("17442F"), Color("47C878"), Color("A0F6BC"), Color("F5FFF7"))
+        3: _renderer.set_palette(Color("07384A"), Color("1DC7C2"), Color("73F2D0"), Color("ECFFFA"))
+        _: _renderer.set_palette(Color("102F32"), Color("4EAAA0"), Color("9ADBD0"), Color("F1FFFD"))
     var attractor_a: Vector2 = Vector2(float(_variation["attractor_a_x"]), float(_variation["attractor_a_y"]))
     var attractor_b: Vector2 = Vector2(float(_variation["attractor_b_x"]), float(_variation["attractor_b_y"]))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["particle_count"]), float(_variation["glow"]),
         attractor_a, attractor_b, float(_variation["swirl_bias"]), float(_variation["particle_spread"]),
         float(_variation["turbulence"]), float(_variation["attractor_strength"]), float(_variation["particle_size_scale"]),
-        float(_variation["phase_rate"]), float(_variation["collision_strength"]), float(_variation["core_scale"]), float(_variation["density_bias"])
+        float(_variation["phase_rate"]), float(_variation["collision_strength"]), float(_variation["core_scale"]), float(_variation["density_bias"]),
+        float(_variation["color_diversity"]), float(_variation["color_phase"])
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 

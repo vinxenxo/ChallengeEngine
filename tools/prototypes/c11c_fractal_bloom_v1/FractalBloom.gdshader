@@ -16,6 +16,10 @@ uniform float zoom_cycles = 1.0;
 uniform float warp_frequency = 3.2;
 uniform float layer_spread = 0.10;
 uniform float breath_strength = 0.08;
+uniform int grammar_mode = 0;
+uniform float branch_density = 1.0;
+uniform float detail_scale = 1.0;
+uniform float spiral_amount = 1.0;
 uniform vec4 indigo_color : source_color = vec4(0.14, 0.13, 0.42, 1.0);
 uniform vec4 violet_color : source_color = vec4(0.55, 0.24, 0.96, 1.0);
 uniform vec4 cyan_color : source_color = vec4(0.10, 0.83, 0.93, 1.0);
@@ -61,6 +65,25 @@ vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias
     c.x += julia_x_bias;
 
     vec2 q = p * layer_scale;
+    float q_radius = max(length(q), 0.0001);
+    float q_angle = atan(q.y, q.x);
+    if (grammar_mode == 1) {
+        float tunnel_twist = spiral_amount * (0.58 + 0.24 * sin(local_phase * 0.7 + seed_phase));
+        q = rot(tunnel_twist * log(q_radius + 0.055)) * q;
+        q *= 0.92 + 0.14 * sin(local_phase * 0.65 + q_radius * 7.0);
+    } else if (grammar_mode == 2) {
+        q = rot(spiral_amount * (1.45 * log(q_radius + 0.045) + 0.15 * local_phase)) * q;
+        q += 0.018 * vec2(cos(q_angle * 5.0 + local_phase), sin(q_angle * 5.0 - local_phase));
+    } else if (grammar_mode == 3) {
+        q = abs(q);
+        q -= 0.028 * vec2(sin(local_phase + seed_phase), cos(local_phase * 0.8 - seed_phase));
+        q *= detail_scale;
+    } else if (grammar_mode == 4) {
+        float nested = 0.5 + 0.5 * sin(log(q_radius + 0.035) * 5.5 + local_phase * 0.36);
+        q = rot(0.34 * nested + spiral_amount * 0.22 * log(q_radius + 0.05)) * q;
+        q *= 0.90 + 0.20 * nested;
+    }
+
     float warp_a = sin(q.y * warp_frequency + local_phase * 0.65 + seed_phase * 0.20);
     float warp_b = cos(q.x * (warp_frequency * 0.84) - local_phase * 0.55 - seed_phase * 0.13);
     q += warp_strength * vec2(warp_a, warp_b);
@@ -101,7 +124,7 @@ vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias
     float ring_filament = exp(-34.0 * circle_trap);
 
     float field = clamp(
-        filament * 0.92 + branch_filament * 0.52 + ring_filament * 0.18,
+        filament * 0.92 * branch_density + branch_filament * 0.52 * branch_density + ring_filament * 0.18,
         0.0,
         1.0
     );
@@ -136,7 +159,17 @@ void fragment() {
     // Three-layer analytical zoom. No bitmap scrolling.
     float zoom_wave = 0.5 - 0.5 * cos(phase * zoom_cycles);
     float zoom_harm = 0.5 - 0.5 * cos(2.0 * phase * zoom_cycles);
-    float zoom = exp(zoom_strength * (0.78 * zoom_wave + 0.22 * zoom_harm));
+    float zoom_path = zoom_wave;
+    if (grammar_mode == 1) {
+        zoom_path = 0.68 * zoom_wave + 0.32 * (0.5 - 0.5 * cos(3.0 * phase * zoom_cycles));
+    } else if (grammar_mode == 2) {
+        zoom_path = 0.54 * zoom_wave + 0.28 * zoom_harm + 0.18 * (0.5 + 0.5 * sin(phase * zoom_cycles));
+    } else if (grammar_mode == 3) {
+        zoom_path = 0.42 * zoom_wave + 0.58 * zoom_harm;
+    } else if (grammar_mode == 4) {
+        zoom_path = 0.76 * zoom_wave + 0.24 * (0.5 + 0.5 * sin(3.0 * phase * zoom_cycles + seed_phase));
+    }
+    float zoom = exp(zoom_strength * (0.86 * zoom_path + 0.14 * zoom_harm));
 
     vec3 accumulated = vec3(0.0);
     float accumulated_alpha = 0.0;
@@ -166,6 +199,13 @@ void fragment() {
     float a2 = f2.a * 0.62;
     accumulated += f2.rgb * 1.04;
     accumulated_alpha += a2;
+
+    if (grammar_mode == 4) {
+        vec2 nested_p = rot(0.35 * phase + seed_phase * 0.05) * p * zoom * 1.95;
+        vec4 f3 = fractal_field(nested_p, phase * 1.37 + seed_phase * 0.12, 1.0, 3.0);
+        accumulated += f3.rgb * 0.42;
+        accumulated_alpha += f3.a * 0.38;
+    }
 
     // Central nucleus: luminous, restrained, never a filled disk.
     float r = length(p);

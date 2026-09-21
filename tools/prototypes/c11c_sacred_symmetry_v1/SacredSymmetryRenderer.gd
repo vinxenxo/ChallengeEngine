@@ -29,7 +29,7 @@ func set_palette(primary: Color, secondary: Color, highlight: Color, white_gold:
     _material.set_shader_parameter("highlight_color", highlight)
     _material.set_shader_parameter("white_gold_color", white_gold)
 
-func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float, ring_scale: float, core_scale: float, tick_density: float, mechanical_rate: float, macro_scale: float, node_density: float, fold_depth: float) -> void:
+func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float, ring_scale: float, core_scale: float, tick_density: float, mechanical_rate: float, macro_scale: float, node_density: float, fold_depth: float, color_diversity: float, color_phase: float) -> void:
     _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 4))
     _material.set_shader_parameter("segment_count", max(segment_count, 4.0))
     _material.set_shader_parameter("ring_bias", clamp(ring_bias, 0.0, 1.0))
@@ -43,6 +43,8 @@ func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_s
     _material.set_shader_parameter("macro_scale", clamp(macro_scale, 0.84, 1.08))
     _material.set_shader_parameter("node_density", clamp(node_density, 0.65, 1.35))
     _material.set_shader_parameter("fold_depth", clamp(fold_depth, 0.70, 1.30))
+    _material.set_shader_parameter("color_diversity", clamp(color_diversity, 0.0, 1.0))
+    _material.set_shader_parameter("color_phase", color_phase)
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

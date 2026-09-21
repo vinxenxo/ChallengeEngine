@@ -28,7 +28,8 @@ func set_palette(deep: Color, primary: Color, secondary: Color, highlight: Color
     _material.set_shader_parameter("secondary_color", secondary)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float, field_twist: float, pulse_width: float, storm_scale: float) -> void:
+func set_style(grammar_mode: int, trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float, field_twist: float, pulse_width: float, storm_scale: float, lens_strength: float, basin_depth: float, pole_separation: float, quadrupole_skew: float) -> void:
+    _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 5))
     _material.set_shader_parameter("trace_count", clamp(trace_count, 50.0, 92.0))
     _material.set_shader_parameter("curvature", clamp(curvature, 0.4, 1.4))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
@@ -37,7 +38,11 @@ func set_style(trace_count: float, curvature: float, glow_strength: float, field
     _material.set_shader_parameter("pulse_speed", pulse_speed)
     _material.set_shader_parameter("field_twist", clamp(field_twist, 0.70, 1.35))
     _material.set_shader_parameter("pulse_width", clamp(pulse_width, 0.65, 1.45))
-    _material.set_shader_parameter("storm_scale", clamp(storm_scale, 0.80, 1.20))
+    _material.set_shader_parameter("storm_scale", clamp(storm_scale, 0.74, 1.20))
+    _material.set_shader_parameter("lens_strength", clamp(lens_strength, 0.30, 1.10))
+    _material.set_shader_parameter("basin_depth", clamp(basin_depth, 0.30, 1.20))
+    _material.set_shader_parameter("pole_separation", clamp(pole_separation, 0.12, 0.40))
+    _material.set_shader_parameter("quadrupole_skew", clamp(quadrupole_skew, 0.70, 1.35))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

@@ -52,16 +52,17 @@ func _build_scene() -> void:
 
     var palette_index: int = int(_variation["palette_mode"])
     match palette_index:
-        0: _renderer.set_palette(Color("FFD700"), Color("FF8C00"), Color("FFFFFF"), Color("FFF7D6"))
-        1: _renderer.set_palette(Color("D9A441"), Color("B87333"), Color("FFFFFF"), Color("FFF3D6"))
-        2: _renderer.set_palette(Color("FFB300"), Color("FF7A00"), Color("FFF2B2"), Color("FFFFFF"))
-        3: _renderer.set_palette(Color("B87333"), Color("D4AF37"), Color("FFF0C9"), Color("FFFFFF"))
-        _: _renderer.set_palette(Color("9C7A32"), Color("C49A6C"), Color("F7E7B0"), Color("FFFDF5"))
+        0: _renderer.set_palette(Color("A87818"), Color("FFD700"), Color("FFB000"), Color("FFFFFF"))
+        1: _renderer.set_palette(Color("5E3518"), Color("C87828"), Color("F0B35A"), Color("FFF6E4"))
+        2: _renderer.set_palette(Color("7A2E12"), Color("FF8C00"), Color("FFD166"), Color("FFFFFF"))
+        3: _renderer.set_palette(Color("4B301A"), Color("B87333"), Color("E7C56A"), Color("FFF4D5"))
+        _: _renderer.set_palette(Color("2F2016"), Color("8D6B3E"), Color("D7B979"), Color("FFFDF5"))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["symmetry_order"]), float(_variation["ring_bias"]), float(_variation["glow"]),
         float(_variation["gear_inner"]), float(_variation["gear_outer"]), float(_variation["ring_scale"]),
         float(_variation["core_scale"]), float(_variation["tick_density"]), float(_variation["mechanical_rate"]),
-        float(_variation["macro_scale"]), float(_variation["node_density"]), float(_variation["fold_depth"])
+        float(_variation["macro_scale"]), float(_variation["node_density"]), float(_variation["fold_depth"]),
+        float(_variation["color_diversity"]), float(_variation["color_phase"])
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 

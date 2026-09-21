@@ -29,7 +29,7 @@ func set_palette(deep: Color, mid: Color, bright: Color, highlight: Color) -> vo
     _material.set_shader_parameter("bright_color", bright)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(grammar_mode: int, particle_count: float, glow_strength: float, attractor_a: Vector2, attractor_b: Vector2, swirl_bias: float, particle_spread: float, turbulence: float, attractor_strength: float, particle_size_scale: float, phase_rate: float, collision_strength: float, core_scale: float, density_bias: float) -> void:
+func set_style(grammar_mode: int, particle_count: float, glow_strength: float, attractor_a: Vector2, attractor_b: Vector2, swirl_bias: float, particle_spread: float, turbulence: float, attractor_strength: float, particle_size_scale: float, phase_rate: float, collision_strength: float, core_scale: float, density_bias: float, color_diversity: float, color_phase: float) -> void:
     _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 4))
     _material.set_shader_parameter("particle_count", clamp(particle_count, 72.0, 180.0))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
@@ -44,6 +44,8 @@ func set_style(grammar_mode: int, particle_count: float, glow_strength: float, a
     _material.set_shader_parameter("collision_strength", clamp(collision_strength, 0.60, 1.50))
     _material.set_shader_parameter("core_scale", clamp(core_scale, 0.72, 1.30))
     _material.set_shader_parameter("density_bias", clamp(density_bias, 0.80, 1.25))
+    _material.set_shader_parameter("color_diversity", clamp(color_diversity, 0.0, 1.0))
+    _material.set_shader_parameter("color_phase", color_phase)
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

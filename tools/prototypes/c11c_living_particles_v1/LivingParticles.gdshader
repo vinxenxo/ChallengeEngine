@@ -19,6 +19,8 @@ uniform float phase_rate = 1.0;
 uniform float collision_strength = 1.0;
 uniform float core_scale = 1.0;
 uniform float density_bias = 1.0;
+uniform float color_diversity = 0.82;
+uniform float color_phase = 0.0;
 uniform vec4 deep_color : source_color = vec4(0.04, 0.28, 0.24, 1.0);
 uniform vec4 mid_color : source_color = vec4(0.07, 0.71, 0.64, 1.0);
 uniform vec4 bright_color : source_color = vec4(0.22, 0.90, 0.77, 1.0);
@@ -146,8 +148,13 @@ void fragment() {
             float contribution = (core + halo) * (0.74 + 0.42 * depth) * density_bias;
             float warm_state = 0.5 + 0.5 * sin(particle_phase * 0.55 + id * 0.31 + seed_phase);
 
-            vec3 c = mix(deep_color.rgb, mid_color.rgb, 0.28 + 0.68 * depth);
-            c = mix(c, bright_color.rgb, core * (0.58 + 0.32 * warm_state));
+            float particle_color = fract(hash1(id + 401.0 + color_phase * 3.1) + 0.23 * warm_state);
+            vec3 low_color = mix(deep_color.rgb, mid_color.rgb, smoothstep(0.0, 0.55, particle_color));
+            vec3 high_color = mix(mid_color.rgb, bright_color.rgb, smoothstep(0.40, 1.0, particle_color));
+            vec3 particle_color_rgb = mix(low_color, high_color, step(0.5, particle_color));
+            particle_color_rgb = mix(mid_color.rgb, particle_color_rgb, color_diversity);
+
+            vec3 c = mix(particle_color_rgb, bright_color.rgb, core * (0.36 + 0.30 * warm_state));
             c = mix(c, highlight_color.rgb, pow(core, 3.2) * 0.76);
 
             if (grammar_mode == 2) {

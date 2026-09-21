@@ -52,16 +52,23 @@ func _build_scene() -> void:
     _renderer.name = "FractalBloomRenderer"
     frame.get_body_content_root().add_child(_renderer)
 
-    _renderer.set_palette(
-        Color("25245F"),
-        Color("8B5CF6"),
-        Color("22D3EE"),
-        Color("F8FBFF")
-    )
+    var palette_index: int = int(_variation["palette_mode"])
+    match palette_index:
+        0:
+            _renderer.set_palette(Color("1C214F"), Color("7552D8"), Color("22D3EE"), Color("F8FBFF"))
+        1:
+            _renderer.set_palette(Color("101A3B"), Color("6C4CE8"), Color("9B7BFF"), Color("F9F7FF"))
+        2:
+            _renderer.set_palette(Color("12373A"), Color("315DAA"), Color("39D3C2"), Color("F1FFFF"))
+        3:
+            _renderer.set_palette(Color("2A0B49"), Color("C048FF"), Color("38D9FF"), Color("FFF4FF"))
+        _:
+            _renderer.set_palette(Color("1C1F46"), Color("5F62B0"), Color("A8B4FF"), Color("F7F9FF"))
     _renderer.set_style(
-        float(_variation["zoom_strength"]), float(_variation["warp_strength"]), float(_variation["bloom_strength"]), float(_variation["layer_softness"]),
+        int(_variation["grammar_mode"]), float(_variation["zoom_strength"]), float(_variation["warp_strength"]), float(_variation["bloom_strength"]), float(_variation["layer_softness"]),
         float(_variation["julia_x_bias"]), float(_variation["julia_y_bias"]), float(_variation["zoom_cycles"]),
-        float(_variation["warp_frequency"]), float(_variation["layer_spread"]), float(_variation["breath_strength"])
+        float(_variation["warp_frequency"]), float(_variation["layer_spread"]), float(_variation["breath_strength"]),
+        float(_variation["branch_density"]), float(_variation["detail_scale"]), float(_variation["spiral_amount"])
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
@@ -99,7 +106,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("zₙ₊₁ = zₙ² + c   ·   ZOOM ×%d   ·   WARP %.1f   ·   JULIA" % [int(_variation["zoom_cycles"]), float(_variation["warp_frequency"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E1E4FF")))
+    root.add_child(_new_header_math_label("zₙ₊₁ = zₙ² + c   ·   %s   ·   ZOOM ×%d" % [str(_variation["grammar_name"]).to_upper(), int(_variation["zoom_cycles"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E1E4FF")))
     root.add_child(_new_label("SEED %d   ·   BODY 540×672   ·   30 FPS   ·   T=10.00 s   ·   3 DEPTH LAYERS" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("8890B5")))
 
 func _add_footer(root: Control) -> void:
