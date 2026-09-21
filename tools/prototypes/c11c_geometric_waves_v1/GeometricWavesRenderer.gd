@@ -32,13 +32,19 @@ func set_palette(dominant: Color, secondary: Color, highlight: Color) -> void:
     _material.set_shader_parameter("secondary_color", secondary)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(morph_value: float, wave_frequency: float, line_width: float, glow_strength: float, polygon_sides: float, wave_ratio: float) -> void:
+func set_style(morph_value: float, wave_frequency: float, line_width: float, glow_strength: float, polygon_sides: float, wave_ratio: float, shape_rotation: float, layer_spread: float, radial_wave_amplitude: float, liss_x_frequency: float, liss_y_frequency: float, interference_scale: float) -> void:
     _material.set_shader_parameter("morph", clamp(morph_value, 0.0, 1.0))
     _material.set_shader_parameter("wave_frequency", max(wave_frequency, 1.0))
     _material.set_shader_parameter("line_width", max(line_width, 0.001))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
     _material.set_shader_parameter("polygon_sides", clamp(polygon_sides, 5.0, 8.0))
-    _material.set_shader_parameter("wave_ratio", clamp(wave_ratio, 0.78, 0.90))
+    _material.set_shader_parameter("wave_ratio", clamp(wave_ratio, 0.68, 0.96))
+    _material.set_shader_parameter("shape_rotation", shape_rotation)
+    _material.set_shader_parameter("layer_spread", clamp(layer_spread, 0.0, 0.08))
+    _material.set_shader_parameter("radial_wave_amplitude", clamp(radial_wave_amplitude, 0.008, 0.055))
+    _material.set_shader_parameter("liss_x_frequency", clamp(liss_x_frequency, 5.0, 12.0))
+    _material.set_shader_parameter("liss_y_frequency", clamp(liss_y_frequency, 2.0, 8.0))
+    _material.set_shader_parameter("interference_scale", clamp(interference_scale, 0.75, 1.30))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

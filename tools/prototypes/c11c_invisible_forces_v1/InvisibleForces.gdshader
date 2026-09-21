@@ -10,6 +10,9 @@ uniform float glow_strength = 0.84;
 uniform float field_rotation = 0.0;
 uniform vec2 storm_offset = vec2(0.0);
 uniform float pulse_speed = 1.0;
+uniform float field_twist = 1.0;
+uniform float pulse_width = 1.0;
+uniform float storm_scale = 1.0;
 uniform vec4 deep_color : source_color = vec4(0.28, 0.03, 0.10, 1.0);
 uniform vec4 primary_color : source_color = vec4(0.70, 0.15, 0.11, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.95, 0.32, 0.12, 1.0);
@@ -31,7 +34,7 @@ float wrapped_angle(float a) {
 float streamline(float a, float r, float base_angle, float t) {
     float radial = clamp((r - 0.06) / 0.40, 0.0, 1.0);
     float gravity = 0.62 / max(r + 0.045, 0.05);
-    float warp = curvature * (0.20 * sin(2.0*a - t) + 0.10 * sin(5.0*a + 1.4*t));
+    float warp = curvature * field_twist * (0.20 * sin(2.0*a - t) + 0.10 * sin(5.0*a + 1.4*t));
     float target = base_angle + 0.54 * radial + 0.08 * gravity + warp * (0.4 + 0.6*radial);
     return wrapped_angle(a - target);
 }
@@ -42,7 +45,7 @@ void fragment() {
     float rs = sin(field_rotation);
     float rc = cos(field_rotation);
     p = vec2(p.x * rc - p.y * rs, p.x * rs + p.y * rc);
-    p -= storm_offset;
+    p -= storm_offset * storm_scale;
     float r = length(p);
     float a = atan(p.y, p.x);
 
@@ -62,7 +65,7 @@ void fragment() {
     }
 
     // Streamline family. Each base angle is a deterministic field line.
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < 96; i++) {
         if (float(i) < trace_count) {
             float fi = float(i);
             float base_angle = C11C_TAU * fi / trace_count + 0.10 * sin(fi * 2.1 + seed_phase);
@@ -72,7 +75,7 @@ void fragment() {
 
             float phase_band = 0.5 + 0.5 * sin(force_phase * (0.95 + 0.01*fi) - fi*0.4 + r*11.0);
             float active = line * radial_gate * (0.22 + 0.78*phase_band);
-            float pulse = exp(-abs(r - (0.09 + 0.32*mod(force_phase/C11C_TAU + fi*0.031 + 0.04*sin(seed_phase), 1.0))) * 95.0);
+            float pulse = exp(-abs(r - (0.09 + 0.32*mod(force_phase/C11C_TAU + fi*0.031 + 0.04*sin(seed_phase), 1.0))) * 95.0 * pulse_width);
             active += line * radial_gate * pulse * 0.28;
 
             vec3 c = mix(primary_color.rgb, secondary_color.rgb, 0.4 + 0.4*wind);

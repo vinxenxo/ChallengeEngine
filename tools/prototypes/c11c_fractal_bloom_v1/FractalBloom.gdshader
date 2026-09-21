@@ -10,6 +10,12 @@ uniform float zoom_strength = 0.62;
 uniform float warp_strength = 0.032;
 uniform float bloom_strength = 0.72;
 uniform float layer_softness = 0.82;
+uniform float julia_x_bias = 0.0;
+uniform float julia_y_bias = 0.0;
+uniform float zoom_cycles = 1.0;
+uniform float warp_frequency = 3.2;
+uniform float layer_spread = 0.10;
+uniform float breath_strength = 0.08;
 uniform vec4 indigo_color : source_color = vec4(0.14, 0.13, 0.42, 1.0);
 uniform vec4 violet_color : source_color = vec4(0.55, 0.24, 0.96, 1.0);
 uniform vec4 cyan_color : source_color = vec4(0.10, 0.83, 0.93, 1.0);
@@ -50,18 +56,19 @@ vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias
     float s1 = hash11(seed_phase * 0.159154943 + 7.3);
     vec2 c = vec2(
         -0.19 + 0.18 * s0 + 0.018 * sin(local_phase * 0.75 + seed_phase),
-        0.57 + 0.15 * s1 + 0.014 * cos(local_phase * 0.50 - seed_phase)
+        0.57 + 0.15 * s1 + 0.014 * cos(local_phase * 0.50 - seed_phase) + julia_y_bias
     );
+    c.x += julia_x_bias;
 
     vec2 q = p * layer_scale;
-    float warp_a = sin(q.y * 3.2 + local_phase * 0.65 + seed_phase * 0.20);
-    float warp_b = cos(q.x * 2.7 - local_phase * 0.55 - seed_phase * 0.13);
+    float warp_a = sin(q.y * warp_frequency + local_phase * 0.65 + seed_phase * 0.20);
+    float warp_b = cos(q.x * (warp_frequency * 0.84) - local_phase * 0.55 - seed_phase * 0.13);
     q += warp_strength * vec2(warp_a, warp_b);
     q = rot(0.035 * sin(local_phase + seed_phase)) * q;
 
     // Radial breathing makes the bloom feel alive without translating the nucleus.
     float rr = length(q);
-    q *= 0.96 + 0.08 * cos(local_phase * 0.5 + rr * 4.0);
+    q *= 0.96 + breath_strength * cos(local_phase * 0.5 + rr * 4.0);
 
     vec2 z = q;
     float orbit = 10.0;
@@ -127,8 +134,8 @@ void fragment() {
     vec2 p = (uv - vec2(0.5)) * vec2(540.0 / 672.0, 1.0);
 
     // Three-layer analytical zoom. No bitmap scrolling.
-    float zoom_wave = 0.5 - 0.5 * cos(phase);
-    float zoom_harm = 0.5 - 0.5 * cos(2.0 * phase);
+    float zoom_wave = 0.5 - 0.5 * cos(phase * zoom_cycles);
+    float zoom_harm = 0.5 - 0.5 * cos(2.0 * phase * zoom_cycles);
     float zoom = exp(zoom_strength * (0.78 * zoom_wave + 0.22 * zoom_harm));
 
     vec3 accumulated = vec3(0.0);
@@ -143,7 +150,7 @@ void fragment() {
     vec2 p2 = rot(0.065 * sin(layer2_phase - 0.7)) * p;
 
     // Deep roots: dim, broader and slower.
-    vec4 f0 = fractal_field(p0 * zoom * 0.84, layer0_phase, 0.92, 0.0);
+    vec4 f0 = fractal_field(p0 * zoom * 0.84 * (1.0 - layer_spread), layer0_phase, 0.92, 0.0);
     float a0 = f0.a * 0.42;
     accumulated += f0.rgb * vec3(0.82, 0.84, 1.0) * 0.80;
     accumulated_alpha += a0;
@@ -155,7 +162,7 @@ void fragment() {
     accumulated_alpha += a1;
 
     // Active synapses: finer detail sampled at a slightly different phase/scale.
-    vec4 f2 = fractal_field(p2 * zoom * 1.36, layer2_phase, 1.16, 2.0);
+    vec4 f2 = fractal_field(p2 * zoom * 1.36 * (1.0 + layer_spread), layer2_phase, 1.16, 2.0);
     float a2 = f2.a * 0.62;
     accumulated += f2.rgb * 1.04;
     accumulated_alpha += a2;

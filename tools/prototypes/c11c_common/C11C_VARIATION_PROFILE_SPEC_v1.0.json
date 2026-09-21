@@ -1,0 +1,73 @@
+{
+  "schema": "C11-C-VARIATION-PROFILE-V1",
+  "revision": "1.0.0",
+  "principle": "same family + same seed => identical profile; seed change => perceptible but bounded presentation change",
+  "families": {
+    "geometric": {
+      "primary_axes": [
+        "polygon_sides",
+        "wave_frequency",
+        "morph",
+        "wave_ratio",
+        "shape_rotation",
+        "layer_spread",
+        "lissajous_frequencies"
+      ]
+    },
+    "fractal": {
+      "primary_axes": [
+        "zoom_strength",
+        "warp_strength",
+        "julia_x_bias",
+        "julia_y_bias",
+        "zoom_cycles",
+        "warp_frequency",
+        "layer_spread"
+      ]
+    },
+    "sacred_symmetry": {
+      "primary_axes": [
+        "symmetry_order",
+        "ring_scale",
+        "core_scale",
+        "tick_density",
+        "gear_inner",
+        "gear_outer",
+        "mechanical_rate"
+      ]
+    },
+    "living_particles": {
+      "primary_axes": [
+        "particle_count",
+        "attractor_positions",
+        "swirl_bias",
+        "particle_spread",
+        "turbulence",
+        "attractor_strength",
+        "phase_rate"
+      ]
+    },
+    "invisible_forces": {
+      "primary_axes": [
+        "trace_count",
+        "curvature",
+        "field_rotation",
+        "storm_offset",
+        "pulse_speed",
+        "field_twist",
+        "pulse_width"
+      ]
+    }
+  },
+  "constraints": {
+    "body": "y=144..816",
+    "canvas": "540x960",
+    "fps": 30,
+    "duration_seconds": 10.0,
+    "frames": 300,
+    "engine_rng_touched": false,
+    "core_modified": false,
+    "c7_modified": false,
+    "footer_production_default": "off"
+  }
+}

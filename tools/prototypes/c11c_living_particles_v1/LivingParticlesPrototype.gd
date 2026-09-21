@@ -6,6 +6,7 @@ extends Node2D
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const RendererClass = preload("res://tools/prototypes/c11c_living_particles_v1/LivingParticlesRenderer.gd")
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
+const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -19,10 +20,12 @@ var _renderer: Node2D
 var _frame_index := 0
 var _seed := REFERENCE_SEED
 var _show_footer := true
+var _variation: Dictionary = {}
 
 func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
+    _variation = VariationProfileClass.build("living_particles", _seed)
     _build_scene()
     set_process(true)
 
@@ -48,13 +51,13 @@ func _build_scene() -> void:
     frame.get_body_content_root().add_child(_renderer)
 
     _renderer.set_palette(Color("0B6B5B"), Color("11B6A2"), Color("39E6C5"), Color("D7FFF7"))
-    var particle_count := lerpf(58.0, 84.0, _seed01(23))
-    var trail := lerpf(0.08, 0.18, _seed01(29))
-    var glow := lerpf(0.68, 0.88, _seed01(31))
-    var attractor_a := Vector2(lerpf(-0.16, -0.06, _seed01(37)), lerpf(-0.09, 0.02, _seed01(41)))
-    var attractor_b := Vector2(lerpf(0.06, 0.17, _seed01(43)), lerpf(0.02, 0.12, _seed01(47)))
-    var swirl_bias := lerpf(0.86, 1.18, _seed01(53))
-    _renderer.set_style(particle_count, trail, glow, attractor_a, attractor_b, swirl_bias)
+    var attractor_a: Vector2 = Vector2(float(_variation["attractor_a_x"]), float(_variation["attractor_a_y"]))
+    var attractor_b: Vector2 = Vector2(float(_variation["attractor_b_x"]), float(_variation["attractor_b_y"]))
+    _renderer.set_style(
+        float(_variation["particle_count"]), float(_variation["trail_length"]), float(_variation["glow"]),
+        attractor_a, attractor_b, float(_variation["swirl_bias"]), float(_variation["particle_spread"]),
+        float(_variation["turbulence"]), float(_variation["attractor_strength"]), float(_variation["particle_size_scale"]), float(_variation["phase_rate"])
+    )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:

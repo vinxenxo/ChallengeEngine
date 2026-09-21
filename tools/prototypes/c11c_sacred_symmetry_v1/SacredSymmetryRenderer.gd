@@ -29,12 +29,16 @@ func set_palette(primary: Color, secondary: Color, highlight: Color, white_gold:
     _material.set_shader_parameter("highlight_color", highlight)
     _material.set_shader_parameter("white_gold_color", white_gold)
 
-func set_style(segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float) -> void:
+func set_style(segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float, ring_scale: float, core_scale: float, tick_density: float, mechanical_rate: float) -> void:
     _material.set_shader_parameter("segment_count", max(segment_count, 6.0))
     _material.set_shader_parameter("ring_bias", clamp(ring_bias, 0.0, 1.0))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
     _material.set_shader_parameter("gear_inner", gear_inner)
     _material.set_shader_parameter("gear_outer", gear_outer)
+    _material.set_shader_parameter("ring_scale", clamp(ring_scale, 0.88, 1.12))
+    _material.set_shader_parameter("core_scale", clamp(core_scale, 0.80, 1.20))
+    _material.set_shader_parameter("tick_density", clamp(tick_density, 0.75, 1.40))
+    _material.set_shader_parameter("mechanical_rate", mechanical_rate)
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

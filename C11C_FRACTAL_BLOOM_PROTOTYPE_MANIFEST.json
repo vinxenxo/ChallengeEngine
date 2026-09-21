@@ -22,5 +22,7 @@
   },
   "review_rule": "one physical render before any second implementation",
   "seed_variation": "restrained_deterministic_parameter_envelope",
-  "multiseed_revision": "v1.2.1"
+  "multiseed_revision": "v1.2.1",
+  "variation_profile_revision": "1.0.0",
+  "variation_profile_class": "tools/prototypes/c11c_common/C11CVariationProfile.gd"
 }

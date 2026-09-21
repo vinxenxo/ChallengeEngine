@@ -8,6 +8,7 @@ extends Node2D
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const GeometricWavesRendererClass = preload("res://tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd")
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
+const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -22,11 +23,13 @@ var _frame_index := 0
 var _seed := REFERENCE_SEED
 var _show_footer := true
 var _polygon_sides := 6
-var _wave_frequency := 18.0
+var _wave_frequency: float = 18.0
+var _variation: Dictionary = {}
 
 func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
+    _variation = VariationProfileClass.build("geometric", _seed)
     _build_scene()
     set_process(true)
 
@@ -43,6 +46,8 @@ func _build_scene() -> void:
     frame.name = "UnifiedSocialFrame"
     add_child(frame)
 
+    _polygon_sides = int(_variation["polygon_sides"])
+    _wave_frequency = float(_variation["wave_frequency"])
     _add_frame_decoration(frame)
     _add_header(frame.get_header_content_root())
     if _show_footer:
@@ -52,19 +57,18 @@ func _build_scene() -> void:
     _renderer.name = "GeometricWavesRenderer"
     frame.get_body_content_root().add_child(_renderer)
 
-    var seed_phase := _seed_phase(_seed)
+    var seed_phase: float = _seed_phase(_seed)
     _renderer.set_palette(
         Color(0.00, 0.82, 0.94, 1.0),
         Color(0.95, 0.08, 0.52, 1.0),
         Color(1.00, 1.00, 1.00, 1.0)
     )
-    _polygon_sides = _choice([5, 6, 7, 8], 11)
-    _wave_frequency = _choice([16.0, 18.0, 20.0, 22.0], 17)
-    var morph := lerpf(0.54, 0.80, _seed01(23))
-    var line_width := lerpf(0.0068, 0.0090, _seed01(29))
-    var glow := lerpf(0.56, 0.70, _seed01(31))
-    var wave_ratio := lerpf(0.78, 0.90, _seed01(37))
-    _renderer.set_style(morph, _wave_frequency, line_width, glow, float(_polygon_sides), wave_ratio)
+    _renderer.set_style(
+        float(_variation["morph"]), float(_variation["wave_frequency"]), float(_variation["line_width"]),
+        float(_variation["glow"]), float(_variation["polygon_sides"]), float(_variation["wave_ratio"]),
+        float(_variation["shape_rotation"]), float(_variation["layer_spread"]), float(_variation["radial_wave_amplitude"]),
+        float(_variation["liss_x_frequency"]), float(_variation["liss_y_frequency"]), float(_variation["interference_scale"])
+    )
     _renderer.set_frame(0, FRAME_COUNT, seed_phase)
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
@@ -101,7 +105,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("φ(t)=2π·f/300   ·   POLY N=%d   ·   LISS 8:5   ·   3 LAYERS" % _polygon_sides, Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("D8E5F2")))
+    root.add_child(_new_header_math_label("φ(t)=2π·f/300   ·   POLY N=%d   ·   LISS %.0f:%.0f   ·   3 LAYERS" % [_polygon_sides, float(_variation["liss_x_frequency"]), float(_variation["liss_y_frequency"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("D8E5F2")))
     root.add_child(_new_label("SEED %d   ·   BODY 540×672   ·   30 FPS   ·   T=10.00 s   ·   DETERMINISTIC" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("7F93A8")))
 
 func _add_footer(root: Control) -> void:

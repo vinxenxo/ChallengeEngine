@@ -6,6 +6,7 @@ extends Node2D
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const RendererClass = preload("res://tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesRenderer.gd")
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
+const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -19,10 +20,12 @@ var _renderer: Node2D
 var _frame_index := 0
 var _seed := REFERENCE_SEED
 var _show_footer := true
+var _variation: Dictionary = {}
 
 func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
+    _variation = VariationProfileClass.build("invisible_forces", _seed)
     _build_scene()
     set_process(true)
 
@@ -48,13 +51,12 @@ func _build_scene() -> void:
     frame.get_body_content_root().add_child(_renderer)
 
     _renderer.set_palette(Color("5A1024"), Color("B83B2B"), Color("F16A2E"), Color("FFD45A"))
-    var trace_count := lerpf(26.0, 40.0, _seed01(23))
-    var curvature := lerpf(0.72, 1.04, _seed01(29))
-    var glow := lerpf(0.72, 0.90, _seed01(31))
-    var field_rotation := lerpf(-0.11, 0.11, _seed01(37))
-    var storm_offset := Vector2(lerpf(-0.035, 0.035, _seed01(41)), lerpf(-0.025, 0.025, _seed01(43)))
-    var pulse_speed := lerpf(0.86, 1.16, _seed01(47))
-    _renderer.set_style(trace_count, curvature, glow, field_rotation, storm_offset, pulse_speed)
+    var storm_offset: Vector2 = Vector2(float(_variation["storm_offset_x"]), float(_variation["storm_offset_y"]))
+    _renderer.set_style(
+        float(_variation["trace_count"]), float(_variation["curvature"]), float(_variation["glow"]),
+        float(_variation["field_rotation"]), storm_offset, float(_variation["pulse_speed"]),
+        float(_variation["field_twist"]), float(_variation["pulse_width"]), float(_variation["storm_scale"])
+    )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
@@ -87,7 +89,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("VECTOR FIELD  |  SOLAR WIND  |  GRAVITY  |  FLOW TRACES", Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("FFE6D6")))
+    root.add_child(_new_header_math_label("VECTOR FIELD  |  %d TRACES  |  TWIST %.2f  |  PULSE %.2f" % [int(_variation["trace_count"]), float(_variation["field_twist"]), float(_variation["pulse_speed"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("FFE6D6")))
     root.add_child(_new_label("SEED %d   |   BODY 540x672   |   30 FPS   |   T=10.00 s   |   32 FLOW TRACES" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("AA7E6A")))
 
 func _add_footer(root: Control) -> void:

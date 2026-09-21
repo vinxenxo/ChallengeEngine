@@ -26,5 +26,7 @@
   "contract_authority": "docs/c11/C11-C.5_INVISIBLE_FORCES_V1_VISUAL_CONTRACT_v1.0.md",
   "header_footer_policy": "C11-C_VISUAL_TEXT_PLACEMENT_v1.0",
   "seed_variation": "restrained_deterministic_parameter_envelope",
-  "multiseed_revision": "v1.2.1"
+  "multiseed_revision": "v1.2.1",
+  "variation_profile_revision": "1.0.0",
+  "variation_profile_class": "tools/prototypes/c11c_common/C11CVariationProfile.gd"
 }

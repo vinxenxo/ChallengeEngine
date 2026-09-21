@@ -10,6 +10,11 @@ uniform float glow_strength = 0.78;
 uniform vec2 attractor_a = vec2(-0.105, -0.035);
 uniform vec2 attractor_b = vec2(0.130, 0.080);
 uniform float swirl_bias = 1.0;
+uniform float particle_spread = 1.0;
+uniform float turbulence = 0.025;
+uniform float attractor_strength = 1.0;
+uniform float particle_size_scale = 1.0;
+uniform float phase_rate = 1.0;
 uniform vec4 deep_color : source_color = vec4(0.04, 0.28, 0.24, 1.0);
 uniform vec4 mid_color : source_color = vec4(0.07, 0.71, 0.64, 1.0);
 uniform vec4 bright_color : source_color = vec4(0.22, 0.90, 0.77, 1.0);
@@ -37,7 +42,7 @@ vec2 flow_position(float id, float local_phase) {
     vec2 h = hash2(id);
     float ang = C11C_TAU * h.x;
     float rad = 0.07 + 0.39 * pow(h.y, 0.72);
-    vec2 p = rad * vec2(cos(ang), sin(ang));
+    vec2 p = rad * particle_spread * vec2(cos(ang), sin(ang));
 
     // Two attractors create a gentle magnetic dipole.
     
@@ -45,12 +50,12 @@ vec2 flow_position(float id, float local_phase) {
     vec2 db = p - attractor_b;
     float wa = exp(-dot(da, da) * 17.0);
     float wb = exp(-dot(db, db) * 15.0);
-    vec2 va = vec2(-da.y, da.x) * wa * 1.45;
-    vec2 vb = vec2(db.y, -db.x) * wb * 1.15;
+    vec2 va = vec2(-da.y, da.x) * wa * 1.45 * attractor_strength;
+    vec2 vb = vec2(db.y, -db.x) * wb * 1.15 * attractor_strength;
 
     float swirl = 0.55 + 0.40 * sin(local_phase * swirl_bias + id * 0.21);
     p += va * swirl * 0.30 + vb * (1.0 - swirl) * 0.30;
-    p += 0.025 * vec2(sin(5.0*p.y + local_phase + id*0.13), cos(4.0*p.x - 0.8*local_phase));
+    p += turbulence * vec2(sin(5.0*p.y + local_phase + id*0.13), cos(4.0*p.x - 0.8*local_phase));
     p = rotate2(p, 0.08 * sin(local_phase * 0.5 + seed_phase));
     return p;
 }
@@ -74,15 +79,15 @@ void fragment() {
 
     float master_breath = 0.82 + 0.18 * sin(phase * 0.7 + seed_phase);
 
-    for (int i = 0; i < 84; i++) {
+    for (int i = 0; i < 128; i++) {
         if (float(i) < particle_count) {
             float id = float(i);
-            float particle_phase = phase * (0.82 + 0.24 * hash1(id + 22.0)) + C11C_TAU * hash1(id + 48.0);
+            float particle_phase = phase * phase_rate * (0.82 + 0.24 * hash1(id + 22.0)) + C11C_TAU * hash1(id + 48.0);
             vec2 head = flow_position(id, particle_phase);
             vec2 tail = flow_position(id, particle_phase - trail_length);
 
             float depth = hash1(id + 71.0);
-            float size = mix(0.0040, 0.0095, depth) * (0.90 + 0.25 * sin(particle_phase + id));
+            float size = particle_size_scale * mix(0.0040, 0.0095, depth) * (0.90 + 0.25 * sin(particle_phase + id));
             float trail = 1.0 - smoothstep(size * 0.65, size * 3.6, segment_distance(p, tail, head));
             float core = 1.0 - smoothstep(size * 0.55, size * 2.0, length(p - head));
             trail *= 0.35 + 0.65 * (1.0 - depth);

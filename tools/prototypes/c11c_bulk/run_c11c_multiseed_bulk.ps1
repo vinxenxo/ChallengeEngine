@@ -1,5 +1,6 @@
 param(
-    [int[]]$Seeds = @(314159, 271828, 161803, 112358)
+    [int[]]$Seeds = @(314159, 271828, 161803, 112358),
+    [switch]$Production
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,7 +20,9 @@ foreach ($seed in $Seeds) {
         $launcher = Join-Path $ProjectRoot ("tools\prototypes\$family\run_prototype.ps1")
         if (-not (Test-Path -LiteralPath $launcher)) { throw "Missing launcher: $launcher" }
         Write-Host "[C11-C-MULTISEED] START family=$family seed=$seed"
-        & powershell -NoProfile -ExecutionPolicy Bypass -File $launcher -Seed $seed
+        $launcherArgs = @('-Seed', $seed)
+        if ($Production) { $launcherArgs += '-NoFooter' }
+        & powershell -NoProfile -ExecutionPolicy Bypass -File $launcher @launcherArgs
         $exit = $LASTEXITCODE
         if ($exit -ne 0) {
             $results += [ordered]@{ family=$family; seed=$seed; status='FAIL'; exit=$exit }
@@ -33,12 +36,14 @@ foreach ($seed in $Seeds) {
         $seedToken = "seed_${seed}"
         $seedFiles = Get-ChildItem -LiteralPath $artifactDir -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*$seedToken*" }
         if (-not $seedFiles) { throw "No seed-specific artifacts found in ${family} for seed=${seed}." }
-        $results += [ordered]@{ family=$family; seed=$seed; status='PASS'; exit=0; artifact_count=$seedFiles.Count }
-        Write-Host "[C11-C-MULTISEED] PASS family=$family seed=$seed artifacts=$($seedFiles.Count)"
+        $seedSpecific = $seedFiles | Where-Object { $_.Name -notmatch '\$Seed' }
+        if (-not $seedSpecific) { throw "Seed ${seed} produced no non-literal seed artifacts in ${family}." }
+        $results += [ordered]@{ family=$family; seed=$seed; status='PASS'; exit=0; artifact_count=$seedSpecific.Count; footer_mode=($(if ($Production) { 'OFF' } else { 'ON' })) }
+        Write-Host "[C11-C-MULTISEED] PASS family=$family seed=$seed artifacts=$($seedSpecific.Count)"
     }
 }
 $manifest = [ordered]@{
-    schema='C11-C-MULTISEED-BULK-V1'; status='COMPLETE'; seeds=@($Seeds); family_count=$families.Count; seed_count=$Seeds.Count; render_count=$families.Count*$Seeds.Count; results=$results; visual_contract=[ordered]@{canvas='540x960'; body='y=144..816'; fps=30; duration_seconds=10.0; frames=300; audio='stereo 44.1kHz, deterministic prototype bed'}; frozen_boundaries_modified=$false
+    schema='C11-C-MULTISEED-BULK-V1'; status='COMPLETE'; seeds=@($Seeds); family_count=$families.Count; seed_count=$Seeds.Count; render_count=$families.Count*$Seeds.Count; results=$results; visual_contract=[ordered]@{canvas='540x960'; body='y=144..816'; fps=30; duration_seconds=10.0; frames=300; audio='stereo 44.1kHz, deterministic prototype bed'}; footer_mode=$(if ($Production) { 'OFF' } else { 'ON' }); variation_profile_revision='1.0.0'; frozen_boundaries_modified=$false
 }
 $manifestPath=Join-Path $root 'C11-C_MULTISEED_BULK_MANIFEST.json'
 $manifest | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 $manifestPath

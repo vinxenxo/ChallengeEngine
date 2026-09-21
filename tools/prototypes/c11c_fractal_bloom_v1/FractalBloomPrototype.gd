@@ -7,6 +7,7 @@ extends Node2D
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const FractalBloomRendererClass = preload("res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomRenderer.gd")
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
+const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -20,10 +21,12 @@ var _renderer: Node2D
 var _frame_index := 0
 var _seed := REFERENCE_SEED
 var _show_footer := true
+var _variation: Dictionary = {}
 
 func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
+    _variation = VariationProfileClass.build("fractal", _seed)
     _build_scene()
     set_process(true)
 
@@ -55,11 +58,11 @@ func _build_scene() -> void:
         Color("22D3EE"),
         Color("F8FBFF")
     )
-    var zoom := lerpf(0.54, 0.76, _seed01(23))
-    var warp := lerpf(0.022, 0.046, _seed01(29))
-    var bloom := lerpf(0.64, 0.86, _seed01(31))
-    var softness := lerpf(0.70, 0.98, _seed01(37))
-    _renderer.set_style(zoom, warp, bloom, softness)
+    _renderer.set_style(
+        float(_variation["zoom_strength"]), float(_variation["warp_strength"]), float(_variation["bloom_strength"]), float(_variation["layer_softness"]),
+        float(_variation["julia_x_bias"]), float(_variation["julia_y_bias"]), float(_variation["zoom_cycles"]),
+        float(_variation["warp_frequency"]), float(_variation["layer_spread"]), float(_variation["breath_strength"])
+    )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
@@ -96,7 +99,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("zₙ₊₁ = zₙ² + c   ·   ORBIT TRAP   ·   JULIA   ·   24 ITER", Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E1E4FF")))
+    root.add_child(_new_header_math_label("zₙ₊₁ = zₙ² + c   ·   ZOOM ×%d   ·   WARP %.1f   ·   JULIA" % [int(_variation["zoom_cycles"]), float(_variation["warp_frequency"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E1E4FF")))
     root.add_child(_new_label("SEED %d   ·   BODY 540×672   ·   30 FPS   ·   T=10.00 s   ·   3 DEPTH LAYERS" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("8890B5")))
 
 func _add_footer(root: Control) -> void:

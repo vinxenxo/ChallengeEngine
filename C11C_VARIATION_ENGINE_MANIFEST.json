@@ -1,0 +1,24 @@
+{
+  "schema": "C11-C-VARIATION-ENGINE-MANIFEST-V1",
+  "revision": "1.0.0",
+  "status": "READY_FOR_PHYSICAL_SWEEP",
+  "checks": {
+    "no_literal_shader_newline_escape": true,
+    "variation_class_present": true,
+    "technobabble_present": true,
+    "bulk_runner_present": true,
+    "production_seed_bank_present": true,
+    "core_files_touched_by_package": false
+  },
+  "families": [
+    "geometric",
+    "fractal",
+    "sacred_symmetry",
+    "living_particles",
+    "invisible_forces"
+  ],
+  "footer_production_default": "OFF",
+  "core_modified": false,
+  "rng_engine_modified": false,
+  "c7_modified": false
+}

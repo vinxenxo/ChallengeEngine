@@ -6,6 +6,7 @@ extends Node2D
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const RendererClass = preload("res://tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd")
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
+const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -19,10 +20,12 @@ var _renderer: Node2D
 var _frame_index := 0
 var _seed := REFERENCE_SEED
 var _show_footer := true
+var _variation: Dictionary = {}
 
 func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
+    _variation = VariationProfileClass.build("sacred_symmetry", _seed)
     _build_scene()
     set_process(true)
 
@@ -48,9 +51,11 @@ func _build_scene() -> void:
     frame.get_body_content_root().add_child(_renderer)
 
     _renderer.set_palette(Color("B37A2B"), Color("D99A3E"), Color("F3C76D"), Color("FFF3D6"))
-    var ring_bias := lerpf(0.44, 0.66, _seed01(23))
-    var glow := lerpf(0.60, 0.80, _seed01(29))
-    _renderer.set_style(float(_symmetry_order(_seed)), ring_bias, glow, _gear_inner(), _gear_outer())
+    _renderer.set_style(
+        float(_variation["symmetry_order"]), float(_variation["ring_bias"]), float(_variation["glow"]),
+        float(_variation["gear_inner"]), float(_variation["gear_outer"]), float(_variation["ring_scale"]),
+        float(_variation["core_scale"]), float(_variation["tick_density"]), float(_variation["mechanical_rate"])
+    )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
@@ -83,7 +88,7 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     frame.get_footer_content_root().add_child(footer_accent)
 
 func _add_header(root: Control) -> void:
-    var symmetry_order := _symmetry_order(_seed)
+    var symmetry_order: int = int(_variation["symmetry_order"])
     root.add_child(_new_header_math_label("RADIAL SYMMETRY  |  N=%d  |  POLAR ASTROLABE  |  3 RINGS" % symmetry_order, Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E8E0D1")))
     root.add_child(_new_label("SEED %d   |   BODY 540x672   |   30 FPS   |   T=10.00 s   |   CLOCKWORK MOTION" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("88909A")))
 

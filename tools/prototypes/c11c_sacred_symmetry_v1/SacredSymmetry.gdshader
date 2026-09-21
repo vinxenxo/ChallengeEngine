@@ -9,6 +9,10 @@ uniform float ring_bias = 0.55;
 uniform float glow_strength = 0.72;
 uniform float gear_inner = 2.0;
 uniform float gear_outer = 1.0;
+uniform float ring_scale = 1.0;
+uniform float core_scale = 1.0;
+uniform float tick_density = 1.0;
+uniform float mechanical_rate = 1.5;
 uniform vec4 primary_color : source_color = vec4(0.70, 0.48, 0.17, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.86, 0.60, 0.24, 1.0);
 uniform vec4 highlight_color : source_color = vec4(0.95, 0.78, 0.43, 1.0);
@@ -49,16 +53,16 @@ void fragment() {
     float symmetry_angle = mod(a + 0.13 * sin(phase * 0.5 * gear_inner + seed_phase), C11C_TAU / segment_count);
     symmetry_angle = abs(symmetry_angle - 0.5 * C11C_TAU / segment_count);
 
-    float core = exp(-r * 19.0);
-    float micro_core = exp(-r * 42.0);
+    float core = exp(-r * 19.0 / max(core_scale, 0.2));
+    float micro_core = exp(-r * 42.0 / max(core_scale, 0.2));
 
     float rings = 0.0;
     float ring_radii[5];
-    ring_radii[0] = 0.075;
-    ring_radii[1] = 0.145 + 0.010 * ring_bias;
-    ring_radii[2] = 0.225;
-    ring_radii[3] = 0.315 + 0.008 * sin(seed_phase);
-    ring_radii[4] = 0.405;
+    ring_radii[0] = 0.075 * ring_scale;
+    ring_radii[1] = (0.145 + 0.010 * ring_bias) * ring_scale;
+    ring_radii[2] = 0.225 * ring_scale;
+    ring_radii[3] = (0.315 + 0.008 * sin(seed_phase)) * ring_scale;
+    ring_radii[4] = 0.405 * ring_scale;
     for (int i = 0; i < 5; i++) {
         float pulse = 0.0025 * sin(phase * (0.72 + 0.12 * float(i)) * gear_inner + float(i) + seed_phase);
         rings += ring_line(r, ring_radii[i] + pulse, 0.0020 + 0.0008 * float(i));
@@ -69,8 +73,8 @@ void fragment() {
     float spokes = sectors * spoke_gate;
 
     float ticks = 0.0;
-    float tick_count = segment_count * 4.0;
-    for (int i = 0; i < 48; i++) {
+    float tick_count = segment_count * 4.0 * tick_density;
+    for (int i = 0; i < 64; i++) {
         if (float(i) < tick_count) {
             float ang = C11C_TAU * float(i) / tick_count + phase * (0.18 + 0.04 * sin(seed_phase)) * gear_outer;
             ticks += radial_line(p, ang, 0.416, 0.020 + 0.012 * step(0.0, 0.5 - mod(float(i), 4.0)));
@@ -88,7 +92,7 @@ void fragment() {
 
     float blade = exp(-abs(symmetry_angle - 0.5 * C11C_TAU / segment_count * 0.55) * 42.0);
     float blade_mask = smoothstep(0.08, 0.42, r) * (1.0 - smoothstep(0.44, 0.50, r));
-    float mechanical_breath = 0.5 + 0.5 * sin(phase * 1.5 + seed_phase);
+    float mechanical_breath = 0.5 + 0.5 * sin(phase * mechanical_rate + seed_phase);
     float structure = rings * 0.95 + spokes * 0.24 + ticks * 0.78 + orbit * 0.55 + orbit2 * 0.34 + nodes * 1.4 + blade * blade_mask * (0.12 + 0.08 * mechanical_breath);
     structure = clamp(structure, 0.0, 1.0);
 

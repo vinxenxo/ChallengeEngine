@@ -28,13 +28,16 @@ func set_palette(deep: Color, primary: Color, secondary: Color, highlight: Color
     _material.set_shader_parameter("secondary_color", secondary)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float) -> void:
-    _material.set_shader_parameter("trace_count", clamp(trace_count, 12.0, 40.0))
+func set_style(trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float, field_twist: float, pulse_width: float, storm_scale: float) -> void:
+    _material.set_shader_parameter("trace_count", clamp(trace_count, 50.0, 92.0))
     _material.set_shader_parameter("curvature", clamp(curvature, 0.4, 1.4))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))
     _material.set_shader_parameter("field_rotation", field_rotation)
     _material.set_shader_parameter("storm_offset", storm_offset)
     _material.set_shader_parameter("pulse_speed", pulse_speed)
+    _material.set_shader_parameter("field_twist", clamp(field_twist, 0.70, 1.35))
+    _material.set_shader_parameter("pulse_width", clamp(pulse_width, 0.65, 1.45))
+    _material.set_shader_parameter("storm_scale", clamp(storm_scale, 0.80, 1.20))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)

@@ -12,6 +12,12 @@ uniform float line_width = 0.008;
 uniform float glow_strength = 0.62;
 uniform float polygon_sides = 6.0;
 uniform float wave_ratio = 0.83;
+uniform float shape_rotation = 0.0;
+uniform float layer_spread = 0.030;
+uniform float radial_wave_amplitude = 0.024;
+uniform float liss_x_frequency = 8.0;
+uniform float liss_y_frequency = 5.0;
+uniform float interference_scale = 1.0;
 uniform float layer_depth = 0.0;
 uniform vec4 dominant_color : source_color = vec4(0.0, 0.82, 0.94, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.95, 0.08, 0.52, 1.0);
@@ -47,6 +53,10 @@ void fragment() {
     float rs = sin(breathing_rotation);
     float rc = cos(breathing_rotation);
     p = vec2(p.x * rc - p.y * rs, p.x * rs + p.y * rc);
+    float static_rotation = shape_rotation;
+    float ssr = sin(static_rotation);
+    float ccr = cos(static_rotation);
+    p = vec2(p.x * ccr - p.y * ssr, p.x * ssr + p.y * ccr);
 
     // Three depth scales share the same mathematical vocabulary.
     float scales[3];
@@ -59,7 +69,7 @@ void fragment() {
 
     for (int i = 0; i < 3; i++) {
         float depth = float(i);
-        float scale = scales[i] * (1.0 + 0.018 * sin(phase * 2.0 + seed_phase + depth));
+        float scale = scales[i] * (1.0 + layer_spread * (depth - 1.0) + 0.018 * sin(phase * 2.0 + seed_phase + depth));
         vec2 q = p / scale;
 
         float a = atan(q.y, q.x);
@@ -68,8 +78,8 @@ void fragment() {
         // Circle <-> polygon morph. The target shape itself is continuously perturbed
         // by harmonic radial waves rather than being redrawn as a rigid primitive.
         float polygon_r = polar_polygon_radius(a + 0.035 * sin(phase + seed_phase), polygon_sides);
-        float radial_wave = 0.024 * sin(6.0 * a + phase)
-                          + 0.012 * sin(10.0 * a - 2.0 * phase + seed_phase);
+        float radial_wave = radial_wave_amplitude * sin(6.0 * a + phase)
+                          + 0.5 * radial_wave_amplitude * sin(10.0 * a - 2.0 * phase + seed_phase);
         float target_r = mix(0.34 + radial_wave, 0.34 * polygon_r + radial_wave, morph);
 
         float polygon_contour = contour_line(r - target_r, 0.0048);
@@ -89,12 +99,12 @@ void fragment() {
         float grid = max(grid_x, grid_y) * 0.62;
 
         // Lissajous/interference contours create the transform bridge toward a mesh.
-        float liss = sin(8.0 * q.x + phase)
-                   + sin(5.0 * q.y - 2.0 * phase + seed_phase);
+        float liss = sin(liss_x_frequency * q.x + phase)
+                   + sin(liss_y_frequency * q.y - 2.0 * phase + seed_phase);
         float liss_lines = contour_line(liss, 0.065) * 0.48;
 
-        float inter_a = sin(24.0 * (q.x * 0.89 + q.y * 0.46) + phase);
-        float inter_b = sin(21.0 * (q.x * -0.52 + q.y * 0.84) - 1.5 * phase + seed_phase);
+        float inter_a = sin(24.0 * interference_scale * (q.x * 0.89 + q.y * 0.46) + phase);
+        float inter_b = sin(21.0 * interference_scale * (q.x * -0.52 + q.y * 0.84) - 1.5 * phase + seed_phase);
         float interference = line_from_zero(inter_a * inter_b, 0.055) * 0.34;
 
         float intersections = clamp((grid_x * grid_y * 1.8) + (polygon_contour * grid * 1.3), 0.0, 1.0);

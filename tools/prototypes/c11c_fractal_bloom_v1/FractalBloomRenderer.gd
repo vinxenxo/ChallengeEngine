@@ -31,11 +31,17 @@ func set_palette(indigo: Color, violet: Color, cyan: Color, highlight: Color) ->
     _material.set_shader_parameter("cyan_color", cyan)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(zoom_strength: float, warp_strength: float, bloom_strength: float, layer_softness: float) -> void:
+func set_style(zoom_strength: float, warp_strength: float, bloom_strength: float, layer_softness: float, julia_x_bias: float, julia_y_bias: float, zoom_cycles: float, warp_frequency: float, layer_spread: float, breath_strength: float) -> void:
     _material.set_shader_parameter("zoom_strength", clamp(zoom_strength, 0.1, 1.2))
     _material.set_shader_parameter("warp_strength", clamp(warp_strength, 0.0, 0.08))
     _material.set_shader_parameter("bloom_strength", clamp(bloom_strength, 0.0, 1.0))
     _material.set_shader_parameter("layer_softness", clamp(layer_softness, 0.2, 1.5))
+    _material.set_shader_parameter("julia_x_bias", clamp(julia_x_bias, -0.08, 0.08))
+    _material.set_shader_parameter("julia_y_bias", clamp(julia_y_bias, -0.08, 0.08))
+    _material.set_shader_parameter("zoom_cycles", clamp(zoom_cycles, 1.0, 3.0))
+    _material.set_shader_parameter("warp_frequency", clamp(warp_frequency, 2.0, 5.5))
+    _material.set_shader_parameter("layer_spread", clamp(layer_spread, 0.0, 0.22))
+    _material.set_shader_parameter("breath_strength", clamp(breath_strength, 0.04, 0.13))
 
 func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
     var total := maxi(1, total_frames)
