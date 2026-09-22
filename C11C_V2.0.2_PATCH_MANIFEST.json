@@ -1,0 +1,26 @@
+{
+  "package": "C11-C_VISUAL_LOOPS_READY_COPY_v2.0.2_EDITORIAL_ANIMATOR_HOTFIX_CLEANER",
+  "base": "C11-C_VISUAL_LOOPS_READY_COPY_v2.0.1_EDITORIAL_AUDIO_LOOP",
+  "version": "2.0.2",
+  "scope": "presentation_and_artifact_tooling_only",
+  "frozen_boundaries_modified": false,
+  "godot_parse_hotfix": true,
+  "affected_families": [
+    "geometric_waves",
+    "fractal_bloom",
+    "sacred_symmetry",
+    "living_particles",
+    "invisible_forces"
+  ],
+  "cleanup_tool": "tools/prototypes/c11c_bulk/clean_c11c_artifacts.ps1",
+  "cleanup_default_mode": "dry-run",
+  "protected_roots": [
+    "legacy",
+    "qa",
+    "regression",
+    "releases",
+    "production",
+    "tests"
+  ],
+  "prototype_sidecars_preserved": true
+}

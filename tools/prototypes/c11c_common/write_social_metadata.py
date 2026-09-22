@@ -20,7 +20,8 @@ def main() -> None:
 
     manifest_path = Path(args.manifest)
     out_path = Path(args.output)
-    m = json.loads(manifest_path.read_text(encoding='utf-8'))
+    # Windows PowerShell 5.1 commonly writes UTF-8 with BOM; accept both BOM/no-BOM manifests.
+    m = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
     visual = m.get('visual', {})
     audio = m.get('audio', {})
     editorial = m.get('editorial', {})

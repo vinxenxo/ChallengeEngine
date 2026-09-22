@@ -1,0 +1,27 @@
+{
+  "package": "C11-C_VISUAL_LOOPS_READY_COPY_v2.0.3_GODOT_SHADERS_CLEANER_HOTFIX",
+  "base": "C11-C_VISUAL_LOOPS_READY_COPY_v2.0.2_EDITORIAL_ANIMATOR_HOTFIX_CLEANER",
+  "version": "2.0.3",
+  "scope": "presentation_and_artifact_tooling_only",
+  "frozen_boundaries_modified": false,
+  "corrective_fixes": [
+    "InvisibleForces.gdshader: C11C_TAU -> IF_TAU at color-phase interpolation",
+    "clean_c11c_artifacts.ps1: parser-safe param block and safe path handling",
+    "artifact policy: preserve c11c_review_assets"
+  ],
+  "affected_families": [
+    "invisible_forces"
+  ],
+  "animator_hotfix_retained": true,
+  "protected_roots": [
+    "legacy",
+    "qa",
+    "regression",
+    "releases",
+    "production",
+    "tests",
+    "prototypes/c11c_review_assets"
+  ],
+  "prototype_sidecars_preserved": true,
+  "cleanup_default_mode": "dry-run"
+}

@@ -1,0 +1,34 @@
+{
+  "package": "C11-C_VISUAL_LOOPS_READY_COPY_v2.0.4_EDITORIAL_PALETTE_SINGLE_MP4_SOCIAL_HOTFIX",
+  "base": "C11-C v2.0.3",
+  "version": "2.0.4",
+  "scope": "presentation_and_prototype_tooling_only",
+  "frozen_boundaries_modified": false,
+  "changes": [
+    "restore palette-driven header/footer text",
+    "restore decorative header/footer rules",
+    "remove duplicated VISUAL LOOP family footer line",
+    "single final MP4 output with audio by default",
+    "-NoSound and -Silent alias produce a single silent MP4",
+    "intermediate silent MP4 moved to OS temp directory",
+    "social metadata manifest reading accepts UTF-8 BOM",
+    "manifest writes use UTF-8 without BOM",
+    "multiseed review manifest updated to 18s/540 frames",
+    "style-review orchestrator added"
+  ],
+  "affected_families": [
+    "geometric",
+    "fractal",
+    "sacred_symmetry",
+    "living_particles",
+    "invisible_forces"
+  ],
+  "protected_review_root": "artifacts/prototypes/c11c_review_assets",
+  "c11c_shader_hotfix_retained": true,
+  "c11c_editorial_animator_hotfix_retained": true,
+  "social_sidecar_required": true,
+  "default_duration_seconds": 18.0,
+  "default_fps": 30,
+  "default_frames": 540,
+  "default_audio": "deep_deterministic_ambient"
+}

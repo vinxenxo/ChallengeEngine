@@ -1,7 +1,7 @@
-class_name C11CEditorialAnimator
 extends RefCounted
 
 ## Deterministic airport-board / Matrix-like transition for Header line 2.
+## C11-C v2.0.2: intentionally consumed via preload() so prototypes do not depend on global class registration order.
 
 const CHARS: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/[]{}<>|+-_=.:*"
 const PRIMARY_END: float = 0.39

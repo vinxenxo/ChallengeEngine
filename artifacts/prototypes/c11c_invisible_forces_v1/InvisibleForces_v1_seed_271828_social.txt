@@ -1,0 +1,32 @@
+TITLE: INVISIBLE FORCES // TOPOGRAPHIC BASIN
+
+DESCRIPTION:
+INVISIBLE FORCES — visual loop de arte generativa matemática y procedural. Variante TOPOGRAPHIC BASIN con paleta scarlet_gold, seed 271828. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: TOPOGRAPHIC BASIN
+PALETTE: scarlet_gold
+SEED: 271828
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+TOPOGRAPHIC_BASIN | 79 TRACES | PULSE 1.18
+DESCUBRE EL CAMPO OCULTO
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: Parametro de topografia gravitacional: {value:.1f} Q-bits // CRITICO // TRACES 79 | PULSE 1.18
+
+HASHTAGS:
+#GenerativeArt #InvisibleForces #VectorField #MathematicalArt #PhysicsArt #ProceduralArt #Topography #CyberpunkArt #DigitalArt #GenerativeDesign
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 271828
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_271828_manifest.json

@@ -1,6 +1,7 @@
 param(
     [int]$Seed = 314159,
     [switch]$NoFooter,
+    [Alias('Silent')]
     [switch]$NoSound
 )
 
@@ -12,7 +13,8 @@ $env:C11C_SOUND_ENABLED = if ($NoSound) { '0' } else { '1' }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_living_particles_v1'
 $Stem = "LivingParticles_v1_seed_${Seed}"
 $Avi = Join-Path $ArtifactRoot ($Stem + '.avi')
-$Mp4Silent = Join-Path $ArtifactRoot ($Stem + '_silent.mp4')
+$LegacyMp4Silent = Join-Path $ArtifactRoot ($Stem + '_silent.mp4')
+$TempSilent = Join-Path ([System.IO.Path]::GetTempPath()) ('C11C_' + $Stem + '_silent.mp4')
 $Mp4 = Join-Path $ArtifactRoot ($Stem + '.mp4')
 $Gif = Join-Path $ArtifactRoot ($Stem + '.gif')
 $Probe = Join-Path $ArtifactRoot ($Stem + '_ffprobe.json')
@@ -24,7 +26,7 @@ $Authoring = Join-Path $ArtifactRoot ($Stem + '_authoring.json')
 $Social = Join-Path $ArtifactRoot ($Stem + '_social.txt')
 
 New-Item -ItemType Directory -Force -Path $ArtifactRoot | Out-Null
-foreach ($p in @($Avi,$Mp4Silent,$Mp4,$Gif,$Probe,$Audio,$GodotLog,$Manifest,$Authoring,$Social)) {
+foreach ($p in @($Avi,$LegacyMp4Silent,$Mp4,$Gif,$Probe,$Audio,$GodotLog,$Manifest,$Authoring,$Social,$TempSilent)) {
     if (Test-Path -LiteralPath $p) { Remove-Item -Force -LiteralPath $p }
 }
 
@@ -49,13 +51,13 @@ try {
         if (-not (Test-Path -LiteralPath $Audio)) { throw 'Music WAV missing.' }
     }
 
-    & ffmpeg -y -hide_banner -loglevel error -i $Avi -an -c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p -movflags +faststart $Mp4Silent
-    if ($LASTEXITCODE -ne 0) { throw "Silent MP4 packaging failed: exit=$LASTEXITCODE" }
-
     if ($NoSound) {
-        Copy-Item -LiteralPath $Mp4Silent -Destination $Mp4 -Force
+        & ffmpeg -y -hide_banner -loglevel error -i $Avi -an -c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p -movflags +faststart $Mp4
+        if ($LASTEXITCODE -ne 0) { throw "Silent MP4 packaging failed: exit=$LASTEXITCODE" }
     } else {
-        & ffmpeg -y -hide_banner -loglevel error -i $Mp4Silent -i $Audio -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -ar 44100 -ac 2 -shortest -movflags +faststart $Mp4
+        & ffmpeg -y -hide_banner -loglevel error -i $Avi -an -c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p -movflags +faststart $TempSilent
+        if ($LASTEXITCODE -ne 0) { throw "Intermediate silent MP4 packaging failed: exit=$LASTEXITCODE" }
+        & ffmpeg -y -hide_banner -loglevel error -i $TempSilent -i $Audio -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -ar 44100 -ac 2 -shortest -movflags +faststart $Mp4
         if ($LASTEXITCODE -ne 0) { throw "Audio mux failed: exit=$LASTEXITCODE" }
     }
 
@@ -86,7 +88,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.4_LIVING_PARTICLES_V1'
-        revision = '2.0.0'
+        revision = '2.0.4'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -126,19 +128,25 @@ try {
         technobabble = $author.technobabble
         frozen_boundaries_modified = $false
     }
-    $manifestObject | ConvertTo-Json -Depth 12 | Set-Content -Encoding UTF8 $Manifest
+    $manifestJson = $manifestObject | ConvertTo-Json -Depth 12
+    [System.IO.File]::WriteAllText($Manifest, $manifestJson, (New-Object System.Text.UTF8Encoding($false)))
 
     & python (Join-Path $ProjectRoot 'tools\prototypes\c11c_common\write_social_metadata.py') --manifest $Manifest --command $repro --output $Social
     if ($LASTEXITCODE -ne 0) { throw "Social metadata generation failed: exit=$LASTEXITCODE" }
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Remove-Item -Force -LiteralPath $Mp4Silent
-    Write-Host "[C11-C-2.0.0] PASS - 540x960 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.0.1] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.0.1] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.0.1] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.0.1] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.0.4] PASS - 540x960 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.0.4] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.0.4] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.0.4] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.0.4] SOCIAL: " + $Social)
 } finally {
+    if (Test-Path -LiteralPath $TempSilent) {
+        Remove-Item -Force -LiteralPath $TempSilent -ErrorAction SilentlyContinue
+    }
+    if (Test-Path -LiteralPath $LegacyMp4Silent) {
+        Remove-Item -Force -LiteralPath $LegacyMp4Silent -ErrorAction SilentlyContinue
+    }
     Pop-Location
 }

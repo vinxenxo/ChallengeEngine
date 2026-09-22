@@ -155,7 +155,7 @@ void fragment() {
                 float pulse = exp(-abs(fract(pulse_coord + 0.5) - 0.5) * (36.0 * pulse_width));
                 float active = rail * (0.18 + 0.70 * pulse);
 
-                vec3 c = mix(primary_color.rgb, secondary_color.rgb, 0.12 + 0.66 * (0.5 + 0.5 * sin(u * C11C_TAU + color_phase)));
+                vec3 c = mix(primary_color.rgb, secondary_color.rgb, 0.12 + 0.66 * (0.5 + 0.5 * sin(u * IF_TAU + color_phase)));
                 c = mix(c, highlight_color.rgb, pulse * (0.34 + 0.52 * gradient));
                 rgb += c * active * (0.28 + 0.52 * (1.0 - smoothstep(0.0, 0.58, r)));
                 trace_energy += active;
