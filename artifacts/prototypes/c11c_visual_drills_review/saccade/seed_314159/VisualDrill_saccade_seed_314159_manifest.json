@@ -11,6 +11,7 @@
     "matrix_enabled":  false,
     "editorial_layout":  "shared_c11c_social",
     "audio_mode":  "GLOBAL_AMBIENT_MASTER",
+    "audio_master_sha256":  "1a5ea80af654a506f2efc07a3e83351bf5ee391cdae7cfd4ff6c6162f078e02e",
     "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11a_visual\\runs\\visual_drill_saccade_seed_314159\\envelope.json",
     "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\saccade\\seed_314159\\VisualDrill_saccade_seed_314159.mp4",
     "gif":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\saccade\\seed_314159\\VisualDrill_saccade_seed_314159_review.gif",
@@ -32,7 +33,7 @@
                     "audio_streams":  1
                 },
     "hashes":  {
-                   "mp4_sha256":  "1a77818afc299f050175a14e341c9972425ceced886d12119acaacb036cbf713",
+                   "mp4_sha256":  "9cc55a53f0d7f7556f6252b40991163aa9f2fea885f0c6d09a3907d7ca738824",
                    "envelope_sha256":  "e3e4cc701d434e1e249b3e54cf2600e3089e9ae70ea50dca146e5982c737997e"
                }
 }

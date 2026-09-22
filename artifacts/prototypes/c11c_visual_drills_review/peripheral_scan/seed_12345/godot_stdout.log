@@ -7,8 +7,8 @@ Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
 [VISUAL_CONTENT_PLAYER] Ready [visual_drill/peripheral_scan]. Starting playback for 60 frames.
 --------------------------------------------------------------------------------
 Done recording movie at path: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_visual_drills_review\peripheral_scan\seed_12345\VisualDrill_peripheral_scan_seed_12345.avi
-60 frames at 30 FPS (movie length: 00:00:02:00), recorded in 00:00:05 (40% of real-time speed).
-CPU render time: 0.04 seconds (average: 0.67 ms/frame)
-GPU render time: 0.02 seconds (average: 0.35 ms/frame)
-Encoding time: 0.83 seconds (average: 13.75 ms/frame)
+60 frames at 30 FPS (movie length: 00:00:02:00), recorded in 00:00:02 (100% of real-time speed).
+CPU render time: 0.02 seconds (average: 0.36 ms/frame)
+GPU render time: 0.02 seconds (average: 0.28 ms/frame)
+Encoding time: 0.35 seconds (average: 5.86 ms/frame)
 --------------------------------------------------------------------------------

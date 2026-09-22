@@ -18,6 +18,10 @@ const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
 const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 
+const LOGICAL_SOCIAL_CANVAS_SIZE := Vector2(540.0, 960.0)
+const PHYSICAL_SOCIAL_OUTPUT_SIZE := Vector2(720.0, 1280.0)
+const PHYSICAL_SOCIAL_SCALE: float = PHYSICAL_SOCIAL_OUTPUT_SIZE.x / LOGICAL_SOCIAL_CANVAS_SIZE.x
+
 @export var content_definition_path: String = ""
 
 @onready var unified_social_frame: UnifiedSocialFrame = get_node_or_null("UnifiedSocialFrame") as UnifiedSocialFrame
@@ -73,6 +77,10 @@ func _ready() -> void:
 		
 	presentation_profile = _build_presentation_profile(definition)
 	_configure_qa_overlay(definition)
+	if str(definition.get("kind", "")) == "visual_drill":
+		# C11-C physical social delivery: keep all logical coordinates in the
+		# frozen 540x960 frame and scale the complete composition to 720x1280.
+		scale = Vector2.ONE * PHYSICAL_SOCIAL_SCALE
 	unified_social_frame.apply_profile(presentation_profile)
 	var use_shared_social_editorial: bool = str(definition.get("kind", "")) == "visual_drill"
 	presentation_ui = PresentationUI.new(unified_social_frame, presentation_profile.theme_name, presentation_profile, use_shared_social_editorial)

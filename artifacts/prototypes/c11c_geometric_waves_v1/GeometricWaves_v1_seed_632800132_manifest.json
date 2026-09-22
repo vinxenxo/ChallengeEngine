@@ -1,0 +1,43 @@
+{
+    "prototype_id":  "C11-C.1_GEOMETRIC_WAVES_V1",
+    "revision":  "2.1.4",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  632800132,
+    "family_id":  "geometric",
+    "display_name":  "GEOMETRIC WAVES",
+    "grammar":  "ORBITAL WAVE",
+    "palette":  "violet_gold",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  18,
+                   "fps":  30,
+                   "frame_count":  540,
+                   "loop_cycles":  2,
+                   "loop_closed":  true,
+                   "background":  "000000",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "ORBITAL_WAVE | WAVE 12.1 | MORPH 0.79",
+                      "header_line_2":  "[DECK] TURBINA DE VAPOR :: CAMPO DE NODOS :: WAVE 12.10 | MORPH 0.79",
+                      "header_secondary":  "VISUAL LOOP / GEOMETRIC WAVES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "family_grammar_deterministic_ambient",
+                  "style":  "harmonic glass pad / slow interference shimmer / clean partials / midpoint phase swell",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  18,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "social_metadata":  "GeometricWaves_v1_seed_632800132_social.txt",
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_geometric_waves_v1\\run_prototype.ps1 -Seed 632800132",
+    "technobabble":  "[DECK] turbina de vapor :: campo de nodos :: WAVE 12.10 | MORPH 0.79",
+    "frozen_boundaries_modified":  false
+}

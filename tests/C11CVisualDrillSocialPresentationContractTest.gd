@@ -7,6 +7,7 @@ const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFr
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
 const VisualDrillPresentationBinder = preload("res://core/presentation/VisualDrillPresentationBinder.gd")
 const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
+const VisualContentPlayer = preload("res://core/presentation/rendering/VisualContentPlayer.gd")
 
 var failures: Array[String] = []
 
@@ -61,6 +62,9 @@ func _initialize() -> void:
 	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header line 1 must identify the drill.")
 	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature must identify Visual Drill.")
 	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("720X896") >= 0, "Footer must expose the physical Body size used by the social composition.")
+	_assert(is_equal_approx(VisualContentPlayer.PHYSICAL_SOCIAL_SCALE, 4.0 / 3.0), "Visual Drill physical social scale must map 540x960 logical space to 720x1280.")
+	_assert(VisualContentPlayer.LOGICAL_SOCIAL_CANVAS_SIZE == Vector2(540.0, 960.0), "Logical social canvas must remain 540x960.")
+	_assert(VisualContentPlayer.PHYSICAL_SOCIAL_OUTPUT_SIZE == Vector2(720.0, 1280.0), "Physical social output must remain 720x1280.")
 
 	var layer := C11CVisualEditorialLayer.new()
 	_assert(layer.mount(frame), "Shared C11CVisualEditorialLayer failed to mount.")

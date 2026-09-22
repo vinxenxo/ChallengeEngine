@@ -3,7 +3,9 @@ param(
     [int[]]$Seeds = @(12345,54321,314159,7770001,998877),
     [switch]$ResetReviewAssets,
     [switch]$RegenerateEnvelopes,
-    [switch]$NoSound
+    [switch]$NoSound,
+    [Alias("Silent")]
+    [switch]$SilentMode
 )
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
@@ -15,6 +17,8 @@ $AudioRoot=Join-Path $ReviewRoot '_audio'
 $MovieCapture=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CMovieCapture.ps1'
 $AudioGenerator=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\generate_c11c_ambient_audio.py'
 $Seeds=@($Seeds | ForEach-Object {[int]$_})
+$NoSound = $NoSound -or $SilentMode
+$SharedAudioHash = $null
 $Drills=@('tracking','saccade','pursuit','peripheral_scan')
 
 if($Seeds.Count -ne 5){throw 'Visual Drill review expects exactly five unique seeds.'}
@@ -151,26 +155,42 @@ function Export-Gif {
 
 function Write-SocialSidecar {
     param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][string]$AudioMode)
+    $display = switch ($Family) {
+        'tracking' { 'TRACKING' }
+        'saccade' { 'SACCADE' }
+        'pursuit' { 'PURSUIT' }
+        'peripheral_scan' { 'PERIPHERAL SCAN' }
+        default { $Family.ToUpperInvariant() }
+    }
+    $description = "C11-C Visual Drill / $display. Deterministic procedural visual exercise, seed $Seed. $([math]::Round($Duration,2))s at 30 FPS, with the shared 720x1280 social presentation layer."
+    $hashtags = '#VisualDrill #VisualTraining #Perception #ProceduralArt #GenerativeArt #DigitalArt #TechArt'
     $content=@"
-C11-C VISUAL DRILL REVIEW
-Family: $Family
-Seed: $Seed
-Resolution: 720x1280
-FPS: 30
-Duration: $([math]::Round($Duration,2)) s
-Frames: $Frames
-Audio: $AudioMode
-Matrix header transition: OFF
-Shared social/editorial layout: ON
+TITLE: VISUAL DRILL // $display
 
-Reproduction source:
+DESCRIPTION:
+$description
+
+FAMILY: $Family
+SEED: $Seed
+RESOLUTION: 720x1280
+FPS: 30
+DURATION: $([math]::Round($Duration,2)) s
+FRAMES: $Frames
+AUDIO: $AudioMode
+MATRIX HEADER TRANSITION: OFF
+SHARED SOCIAL/EDITORIAL LAYOUT: ON
+
+HASHTAGS:
+$hashtags
+
+REVIEW SOURCE:
 C11-A qualification envelope; seed 12345 uses the deterministic A copy when present.
 "@
     [System.IO.File]::WriteAllText($Path,$content,(New-Object System.Text.UTF8Encoding($false)))
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.2.0'
 Write-Host '[C11-C-DRILL] 4 families x 5 seeds = 20 physical renders'
 Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / current envelope duration'
 Write-Host '[C11-C-DRILL] Shared editorial layout / Matrix OFF / audio ON'
@@ -243,6 +263,8 @@ try {
             } else {
                 Mux-Audio -VideoPath $silentMp4 -AudioPath $audioPath -OutputPath $finalMp4
                 Remove-Item -LiteralPath $silentMp4 -Force
+                if($null -eq $SharedAudioHash){ $SharedAudioHash = Get-FileSha256Hex -Path $audioPath }
+                elseif($SharedAudioHash -ne (Get-FileSha256Hex -Path $audioPath)){ throw 'Shared audio master hash changed during review.' }
             }
 
             $probe=Assert-FinalContract -Path $finalMp4 -ExpectedFrames $frames -ExpectedDuration $duration -ExpectedAudio:(-not $NoSound)
@@ -264,6 +286,7 @@ try {
                 matrix_enabled=$false
                 editorial_layout='shared_c11c_social'
                 audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
+                audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
                 source_envelope=$envelopePath
                 final_mp4=$finalMp4
                 gif=$gifPath
@@ -295,6 +318,7 @@ $rootManifest=[ordered]@{
     logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
     matrix_enabled=$false
     audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
+    audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
     source_qa_root=$QaRoot
     review_root=$ReviewRoot
     cleanup_performed=$false

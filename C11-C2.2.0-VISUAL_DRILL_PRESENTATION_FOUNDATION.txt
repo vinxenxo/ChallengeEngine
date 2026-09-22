@@ -1,0 +1,7 @@
+C11-C 2.2.0 — VISUAL DRILL PRESENTATION FOUNDATION
+
+Baseline: C11-C 2.1.4
+Purpose: common Visual Drill social/editorial/audio presentation before family mechanic/art refinement.
+Status: READY FOR PHYSICAL REVIEW
+Closed: 540x960 logical frame, 4/3 physical scale, 720x1280 output, shared social metadata, shared global ambient audio, Matrix OFF.
+Open: Tracking, Saccade, Pursuit, Peripheral Scan mechanics and family-specific art direction.

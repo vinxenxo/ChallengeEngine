@@ -1,13 +1,20 @@
-C11-C VISUAL DRILL REVIEW
-Family: peripheral_scan
-Seed: 7770001
-Resolution: 720x1280
-FPS: 30
-Duration: 2 s
-Frames: 60
-Audio: GLOBAL_AMBIENT
-Matrix header transition: OFF
-Shared social/editorial layout: ON
+TITLE: VISUAL DRILL // PERIPHERAL SCAN
 
-Reproduction source:
+DESCRIPTION:
+C11-C Visual Drill / PERIPHERAL SCAN. Deterministic procedural visual exercise, seed 7770001. 2s at 30 FPS, with the shared 720x1280 social presentation layer.
+
+FAMILY: peripheral_scan
+SEED: 7770001
+RESOLUTION: 720x1280
+FPS: 30
+DURATION: 2 s
+FRAMES: 60
+AUDIO: GLOBAL_AMBIENT
+MATRIX HEADER TRANSITION: OFF
+SHARED SOCIAL/EDITORIAL LAYOUT: ON
+
+HASHTAGS:
+#VisualDrill #VisualTraining #Perception #ProceduralArt #GenerativeArt #DigitalArt #TechArt
+
+REVIEW SOURCE:
 C11-A qualification envelope; seed 12345 uses the deterministic A copy when present.
