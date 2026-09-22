@@ -19,7 +19,7 @@ foreach ($seed in $Seeds) {
     foreach ($family in $families) {
         $launcher = Join-Path $ProjectRoot ("tools\prototypes\$family\run_prototype.ps1")
         if (-not (Test-Path -LiteralPath $launcher)) { throw "Missing launcher: $launcher" }
-        Write-Host "[C11-C-MULTISEED] START family=$family seed=$seed"
+        Write-Host "[C11-C-MULTISEED] START family=${family} seed=${seed}"
         $launcherArgs = @('-Seed', $seed)
         if ($Production) { $launcherArgs += '-NoFooter' }
         & powershell -NoProfile -ExecutionPolicy Bypass -File $launcher @launcherArgs

@@ -1,7 +1,7 @@
 param(
     [string]$InputRoot = ".\artifacts\prototypes",
     [string]$OutputRoot = ".\artifacts\prototypes\c11c_review_assets",
-    [double[]]$Times = @(0.0,1.25,2.5,3.75,5.0,6.25,7.5,8.75)
+    [double[]]$Times = @(0,2.25,4.5,6.75,9.0,11.25,13.5,15.75)
 )
 
 $ErrorActionPreference = "Stop"

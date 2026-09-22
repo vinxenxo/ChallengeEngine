@@ -23,6 +23,9 @@ func _ready() -> void:
     _rect.material = _material
     add_child(_rect)
 
+func set_background(background: Color) -> void:
+    _material.set_shader_parameter("background_color", background)
+
 func set_palette(primary: Color, secondary: Color, highlight: Color, white_gold: Color, accent: Color) -> void:
     _material.set_shader_parameter("primary_color", primary)
     _material.set_shader_parameter("secondary_color", secondary)
@@ -47,8 +50,10 @@ func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_s
     _material.set_shader_parameter("color_diversity", clamp(color_diversity, 0.0, 1.0))
     _material.set_shader_parameter("color_phase", color_phase)
 
-func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
-    var total := maxi(1, total_frames)
-    var frame := posmod(frame_index, total)
-    _material.set_shader_parameter("phase", TAU * float(frame) / float(total))
+func set_frame(frame_index: int, total_frames: int, seed_phase: float, loop_cycles: float = 1.0) -> void:
+    var total: int = maxi(1, total_frames)
+    var frame: int = posmod(frame_index, total)
+    var cycles: float = max(loop_cycles, 1.0)
+    _material.set_shader_parameter("phase", TAU * float(frame) / float(total) * cycles)
     _material.set_shader_parameter("seed_phase", seed_phase)
+

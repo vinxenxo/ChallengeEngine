@@ -27,6 +27,7 @@ uniform float secondary_phase = 0.0;
 uniform float color_phase = 0.0;
 uniform float stroke_scale = 1.0;
 
+uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 dominant_color : source_color = vec4(0.0, 0.82, 0.94, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.95, 0.08, 0.52, 1.0);
 uniform vec4 highlight_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
@@ -60,18 +61,18 @@ vec4 field_harmonic_membrane(vec2 q, float local_phase, float layer) {
     vec2 s = vec2(q.x * view, q.y);
 
     float h = 0.56 * sin(fx * s.x + local_phase)
-            + 0.44 * cos(fy * s.y - local_phase * 0.73 + seed_phase);
-    h += 0.22 * sin((fx * 0.43) * (s.x + s.y) + local_phase * 1.31);
+            + 0.44 * cos(fy * s.y - local_phase * 1.0 + seed_phase);
+    h += 0.22 * sin((fx * 0.43) * (s.x + s.y) + local_phase * 1.0);
 
     // Optical projection of a height field: vertical displacement + perspective shear.
     vec2 d = s + vec2(h * 0.042 * perspective_strength, h * 0.024 * perspective_strength);
 
     float gx = sin((fx * 0.98) * (d.x + h * 0.032) + local_phase);
-    float gy = sin((fy * 1.04) * (d.y + h * 0.026) - local_phase * 0.63 + seed_phase);
+    float gy = sin((fy * 1.04) * (d.y + h * 0.026) - local_phase * 1.0 + seed_phase);
     float grid_x = line_from_zero(gx, 0.052);
     float grid_y = line_from_zero(gy, 0.052);
 
-    float contour = contour_line(sin(h * 7.4 + local_phase * 0.28), 0.075) * 0.86;
+    float contour = contour_line(sin(h * 7.4 + local_phase * 1.0), 0.075) * 0.86;
     float ridges = contour_line(h, 0.13) * 0.34;
     float nodes = pow(clamp(grid_x * grid_y * 2.6, 0.0, 1.0), 0.72);
     float depth = 0.52 + 0.48 * h;
@@ -82,13 +83,13 @@ vec4 field_harmonic_membrane(vec2 q, float local_phase, float layer) {
 }
 
 vec4 field_interference_plane(vec2 q, float local_phase, float layer) {
-    vec2 r = rotate2(q, shape_rotation + 0.10 * sin(local_phase * 0.5 + seed_phase));
+    vec2 r = rotate2(q, shape_rotation + 0.10 * sin(local_phase * 1.0 + seed_phase));
     float f1 = wave_frequency * 0.82;
     float f2 = wave_frequency * wave_ratio * 0.96;
 
     float a = sin(f1 * (r.x + 0.065 * sin(r.y * 5.0 + local_phase)) + local_phase);
-    float b = sin(f2 * (r.y + 0.075 * sin(r.x * 4.0 - local_phase * 0.77)) - local_phase * 1.17 + seed_phase);
-    float c = sin((r.x + r.y) * interference_scale * 15.0 + local_phase * 0.37 + secondary_phase);
+    float b = sin(f2 * (r.y + 0.075 * sin(r.x * 4.0 - local_phase * 1.0)) - local_phase * 2.0 + seed_phase);
+    float c = sin((r.x + r.y) * interference_scale * 15.0 + local_phase * 1.0 + secondary_phase);
 
     float rails_a = line_from_zero(a, 0.048);
     float rails_b = line_from_zero(b, 0.048);
@@ -105,9 +106,9 @@ vec4 field_interference_plane(vec2 q, float local_phase, float layer) {
 vec4 field_parametric_ribbon(vec2 q, float local_phase, float layer) {
     float x = q.x * 2.15;
     float center = 0.18 * sin(2.35 * x + local_phase)
-                 + 0.075 * sin(5.10 * x - local_phase * 1.41 + seed_phase);
-    float width = 0.15 + 0.045 * sin(1.50 * x - local_phase * 0.62 + secondary_phase);
-    float folded = 0.035 * sin(8.0 * x + local_phase * 1.7) * cos(x * 1.7);
+                 + 0.075 * sin(5.10 * x - local_phase * 1.0 + seed_phase);
+    float width = 0.15 + 0.045 * sin(1.50 * x - local_phase * 1.0 + secondary_phase);
+    float folded = 0.035 * sin(8.0 * x + local_phase * 2.0) * cos(x * 1.7);
     center += folded;
 
     float dy = abs(q.y - center);
@@ -116,8 +117,8 @@ vec4 field_parametric_ribbon(vec2 q, float local_phase, float layer) {
 
     float ribbon_u = (q.y - center) / max(width, 0.025);
     float cross = line_from_zero(sin(ribbon_u * 6.2 + x * 2.8 + local_phase), 0.058);
-    float ribs = line_from_zero(sin(x * 11.0 + ribbon_u * 2.2 + local_phase * 0.65), 0.052);
-    float depth = 0.5 + 0.5 * sin(x * 1.7 + local_phase * 0.42);
+    float ribs = line_from_zero(sin(x * 11.0 + ribbon_u * 2.2 + local_phase * 1.0), 0.052);
+    float depth = 0.5 + 0.5 * sin(x * 1.7 + local_phase * 1.0);
 
     float energy = clamp(outer * 0.98 + inner * 0.52 + cross * 0.32 + ribs * 0.22, 0.0, 1.0);
     float highlight = clamp(outer * 0.78 + inner * 0.28 + cross * 0.48, 0.0, 1.0);
@@ -125,9 +126,9 @@ vec4 field_parametric_ribbon(vec2 q, float local_phase, float layer) {
 }
 
 vec4 field_lattice_wave(vec2 q, float local_phase, float layer) {
-    vec2 r = rotate2(q, 0.18 * sin(local_phase * 0.37 + seed_phase));
+    vec2 r = rotate2(q, 0.18 * sin(local_phase * 1.0 + seed_phase));
     float h = 0.22 * sin(r.x * 8.0 + local_phase)
-            + 0.18 * cos(r.y * 7.0 - local_phase * 0.82 + seed_phase);
+            + 0.18 * cos(r.y * 7.0 - local_phase * 1.0 + seed_phase);
     vec2 d = r + vec2(h * 0.10, -h * 0.08);
     float gx = sin((wave_frequency * 0.92) * d.x + 0.85 * sin(d.y * 5.0 + local_phase));
     float gy = sin((wave_frequency * wave_ratio * 0.86) * d.y + 0.85 * sin(d.x * 4.0 - local_phase));
@@ -147,16 +148,16 @@ vec4 field_orbital_wave(vec2 q, float local_phase, float layer) {
     vec2 ep = vec2(q.x / (1.0 + eccentricity), q.y);
     float a = atan(ep.y, ep.x);
     float r = length(ep);
-    float spiral = r + 0.055 * sin(3.0 * a - local_phase * 0.73);
+    float spiral = r + 0.055 * sin(3.0 * a - local_phase * 1.0);
     float wave = sin((wave_frequency * 0.70) * spiral - 2.6 * a + local_phase);
-    float wave2 = sin((wave_frequency * 0.46) * (r * 1.26) + 4.0 * a - local_phase * 1.35 + seed_phase);
+    float wave2 = sin((wave_frequency * 0.46) * (r * 1.26) + 4.0 * a - local_phase * 1.0 + seed_phase);
     float rails = line_from_zero(wave, 0.055);
     float secondary = line_from_zero(wave2, 0.058) * 0.62;
     float spiral_core = contour_line(sin(a * 5.0 + r * 13.0 - local_phase), 0.10) * 0.44;
     float node = rails * secondary;
     float energy = clamp(rails * 0.84 + secondary * 0.56 + spiral_core, 0.0, 1.0);
     float highlight = clamp(node * 1.8 + rails * 0.14, 0.0, 1.0);
-    float depth = 0.5 + 0.5 * cos(a * 3.0 - local_phase * 0.3);
+    float depth = 0.5 + 0.5 * cos(a * 3.0 - local_phase * 1.0);
     return vec4(energy, highlight, depth, 1.0);
 }
 
@@ -191,7 +192,7 @@ void fragment() {
         float depth = float(i);
         float scale = 1.0 + layer_spread * (depth - 1.0);
         vec2 q = p / scale;
-        float local_phase = phase * (1.0 + 0.13 * depth) + seed_phase * (0.31 + 0.17 * depth) + depth * secondary_phase;
+        float local_phase = phase * (1.0 + depth) + seed_phase * (0.31 + 0.17 * depth) + depth * secondary_phase;
 
         vec4 field = evaluate_field(q, local_phase, depth);
         float radial = length(q);
@@ -218,7 +219,7 @@ void fragment() {
     accumulated_alpha += convergence * 0.035;
 
     float vignette = smoothstep(0.80, 0.08, length(p));
-    vec3 bg = vec3(0.018, 0.024, 0.052);
+    vec3 bg = background_color.rgb;
     bg += dominant_color.rgb * (0.028 * vignette);
     bg += secondary_color.rgb * (0.009 * (1.0 - vignette));
 

@@ -1,161 +1,81 @@
 class_name TechnobabbleGenerator
 extends RefCounted
 
-## C11-C editorial layer — deterministic geek / technobabble text.
-## Prototype-only utility. No engine RNG stream is touched.
-## Same family + same seed => same text, forever within this generator revision.
+## C11-C deterministic geek/cyberpunk/steampunk editorial generator v2.0.
+## Isolated integer hash: never touches project RNG streams.
 
-const ACTIONS := [
-    "Calibrando",
-    "Sincronizando",
-    "Estabilizando",
-    "Iterando",
-    "Modulando",
-    "Resolviendo",
-    "Ajustando",
-    "Compilando",
-    "Acoplando",
-    "Desfasando",
-    "Mapeando",
-    "Extrapolando"
-]
-
-const STATUSES := [
-    "NOMINAL",
-    "ESTABLE",
-    "OPTIMO",
-    "ACOPLADO",
-    "CONVERGENTE",
-    "EN FASE",
-    "BAJA ENTROPIA",
-    "SINGULAR"
-]
-
+const REVISION: String = "2.0.1"
+const ACTIONS: Array[String] = ["Calibrando", "Sincronizando", "Acoplando", "Indexando", "Compilando", "Estabilizando", "Resolviendo", "Modulando", "Mapeando", "Desfasando", "Inyectando", "Decodificando", "Alineando", "Oscilando", "Renderizando", "Interfiriendo", "Refractando", "Trazando", "Reensamblando", "Afinando"]
+const CYBER: Array[String] = ["nucleo neural", "stack fantasma", "bus de fotones", "protocolo neon", "matriz de fase", "daemon espectral", "cortafuegos cuantico", "puerto de singularidad", "firmware de realidad", "subrutina nocturna", "terminal psi", "kernel de sombra", "senal fantasma", "relay ionico", "memoria de borde", "nodo black-ice", "puente de datos", "proxy espectral", "buffer de entropia", "interfaz neuroptica", "sandbox fractal", "canal de telemetria", "vector de latencia", "checksum astral"]
+const STEAMPUNK: Array[String] = ["engranaje de cobre", "oscilador de laton", "giroscopio de precision", "caldera de fase", "cronometro mecanico", "valvula de eter", "astrolabio de laton", "rotor de bronce", "regulador de vapor", "turbina de vapor", "inductor de mercurio", "reloj de cuarzo mecanico", "bobina de eter", "regulador isocronico", "camara de presion", "embrague de cobre"]
+const STATUS: Array[String] = ["NOMINAL", "OPTIMO", "ESTABLE", "ACOPLADO", "SINCRO", "PARALEX", "HYPERDRIVE", "LOCKED", "CRITICO", "EN FASE", "CUANTIZADO", "SINCRONIA", "OVERCLOCK", "PHASE-LOCK", "STEADY", "FOCUS"]
+const MODIFIERS: Array[String] = ["sin deriva", "sin perdida de fase", "bajo ruido", "en coherencia", "a maxima nitidez", "sin aliasing", "con fase estable", "en regimen orbital", "en modo stealth", "a baja entropia", "sincronizado al kernel", "con latencia cero", "en sobrecarga controlada", "a entropia minima", "sin jitter", "con señal limpia", "en fase cuantica", "sin desbordamiento", "a frecuencia fantasma"]
+const UNITS: Array[String] = ["Hz", "kHz", "rad/s", "ms", "TeV", "Q-bits", "GHz", "iter/s", "cycles/s", "phase"]
 const SUBJECTS := {
-    "geometric": [
-        "matriz de Lissajous",
-        "interferencia de ondas",
-        "grilla de Voronoi",
-        "nodos armonicos",
-        "resonancia poligonal",
-        "fase geometrica",
-        "malla de amplitud",
-        "simetria de onda"
-    ],
-    "fractal": [
-        "fractal de Julia",
-        "ramificaciones de micelio",
-        "trampas de orbita",
-        "sinapsis L-System",
-        "campo complejo",
-        "nucleo recursivo",
-        "zoom analitico",
-        "iteracion fractal"
-    ],
-    "kaleidoscope": [
-        "astrolabio cuantico",
-        "simetria radial",
-        "ejes de rotacion",
-        "teselaciones",
-        "engranaje polar",
-        "nucleo orbital",
-        "anillo equiponderado",
-        "mecanismo celeste"
-    ],
-    "particle_flow": [
-        "atractores de Clifford",
-        "dinamica de fluidos",
-        "densidad magnetica",
-        "vortice principal",
-        "campo de Curl Noise",
-        "nube de particulas",
-        "pozo gravitacional",
-        "flujo tangencial"
-    ],
-    "vector_field": [
-        "topografia gravitacional",
-        "flujo de viento solar",
-        "lineas equipotenciales",
-        "campo vectorial",
-        "frente de presion",
-        "pozo de potencial",
-        "corriente termica",
-        "gradiente de fuerza"
-    ]
+    "geometric": ["matriz de Lissajous", "interferencia de ondas", "membrana armonica", "malla de fase", "cinta parametrica", "campo de nodos", "plano de interferencia"],
+    "fractal": ["fractal de Julia", "trampas de orbita", "ramificaciones de micelio", "filigrana fractal", "tunel dendritico", "mundo recursivo", "sinapsis L-System"],
+    "sacred_symmetry": ["astrolabio cuantico", "engranaje planetario", "orrery poligonal", "mandala origami", "carta celeste", "rotor de bronce", "eje de alineacion"],
+    "living_particles": ["atractores de Clifford", "nube magnetica", "dinamica de fluidos", "vortice organico", "swarm sintetico", "materia bioluminiscente", "corriente de particulas"],
+    "invisible_forces": ["topografia gravitacional", "lineas equipotenciales", "viento solar", "campo dipolar", "cuadrupolo magnetico", "lente gravitacional", "cuenca de potencial"]
 }
-
-const UNITS := {
-    "geometric": ["Hz", "rad/s", "ciclos/s", "px/frame"],
-    "fractal": ["iter/s", "Hz", "rad/s", "niveles"],
-    "kaleidoscope": ["Hz", "rad/s", "vueltas/s", "grados"],
-    "particle_flow": ["u/s", "Hz", "m/s", "densidades"],
-    "vector_field": ["Hz", "rad/s", "u/s", "tesla*eq"]
-}
-
-const TEMPLATES := [
-    "%s %s... [%s]",
-    "[SYS] %s %s a %.1f %s",
-    "Parametro de %s: %.1f %s // Estado: %s",
-    "PROTOCOLO // %s // %s // %s",
-    "OBSERVADOR: %s -> %s // %.1f %s",
-    "TRACE %03d // %s // %s"
+const TEMPLATES: Array[String] = [
+    "{action} {subject}... [{status}] // {actual}",
+    "[SYS] {action} {subject} a {value:.1f} {unit} // {modifier} // {actual}",
+    "Parametro de {subject}: {value:.1f} {unit} // {status} // {actual}",
+    "{subject} {modifier} // {status} // {actual}",
+    "Kernel: {cyber} // objetivo: {subject} // {actual}",
+    "{steam} // {subject} // {status} // {actual}",
+    "TRACE: {subject} // {actual} // {modifier}",
+    "SUBRUTINA // {cyber} -> {subject} // {status} // {actual}",
+    "DEMONIO: {cyber} // {subject} // {actual}",
+    "PROCESO {action} // {subject} // {actual} // {status}",
+    "[DECK] {steam} :: {subject} :: {actual}"
 ]
 
-static func generate_geek_text(family_id: String, seed_value: int) -> String:
-    var canonical_family: String = _canonical_family(family_id)
-    var family_salt: int = _family_salt(canonical_family)
-    var action: String = str(ACTIONS[_index(seed_value, family_salt + 11, ACTIONS.size())])
-    var subjects: Array = SUBJECTS.get(canonical_family, SUBJECTS["geometric"])
-    var subject: String = str(subjects[_index(seed_value, family_salt + 17, subjects.size())])
-    var status: String = str(STATUSES[_index(seed_value, family_salt + 23, STATUSES.size())])
-    var units: Array = UNITS.get(canonical_family, UNITS["geometric"])
-    var unit: String = str(units[_index(seed_value, family_salt + 29, units.size())])
-    var fake_value: float = float(lerpf(12.0, 999.9, _unit(seed_value, family_salt + 31)))
-    var trace: int = int(_index(seed_value, family_salt + 37, 1000))
-    var template_id: int = int(_index(seed_value, family_salt + 41, TEMPLATES.size()))
+static func generate_geek_text(family_id: String, seed_value: int, context: Dictionary = {}) -> String:
+    var family: String = _canonical_family(family_id)
+    var subject_pool: Array = SUBJECTS.get(family, SUBJECTS["geometric"])
+    var action: String = ACTIONS[_index(seed_value, 11, ACTIONS.size())]
+    var subject: String = str(subject_pool[_index(seed_value, 17, subject_pool.size())])
+    var status: String = STATUS[_index(seed_value, 23, STATUS.size())]
+    var unit: String = UNITS[_index(seed_value, 29, UNITS.size())]
+    var modifier: String = MODIFIERS[_index(seed_value, 31, MODIFIERS.size())]
+    var cyber: String = CYBER[_index(seed_value, 37, CYBER.size())]
+    var steam: String = STEAMPUNK[_index(seed_value, 41, STEAMPUNK.size())]
+    var value: float = 12.0 + 987.0 * _unit(seed_value, 43)
+    var actual: String = _actual_phrase(family, context)
+    var template: String = TEMPLATES[_index(seed_value, 47, TEMPLATES.size())]
+    return template.format({"action": action, "subject": subject, "status": status, "unit": unit, "modifier": modifier, "cyber": cyber, "steam": steam, "value": value, "actual": actual})
 
-    match template_id:
-        0:
-            return "%s %s... [%s]" % [action, subject, status]
-        1:
-            return "[SYS] %s %s a %.1f %s" % [action, subject, fake_value, unit]
-        2:
-            return "Parametro de %s: %.1f %s // Estado: %s" % [subject, fake_value, unit, status]
-        3:
-            return "PROTOCOLO // %s // %s // %s" % [action.to_upper(), subject.to_upper(), status]
-        4:
-            return "OBSERVADOR: %s -> %s // %.1f %s" % [subject, status, fake_value, unit]
-        5:
-            return "TRACE %03d // %s // %s" % [trace, action, subject]
+static func _actual_phrase(family: String, context: Dictionary) -> String:
+    match family:
+        "geometric":
+            return "WAVE %.2f | MORPH %.2f" % [float(context.get("wave_frequency", 0.0)), float(context.get("morph", 0.0))]
+        "fractal":
+            return "DETAIL %.2f | BRANCH %.2f" % [float(context.get("detail_scale", 0.0)), float(context.get("branch_density", 0.0))]
+        "sacred_symmetry":
+            return "N=%d | GEAR %d:%d" % [int(context.get("symmetry_order", 0)), int(context.get("gear_inner", 0)), int(context.get("gear_outer", 0))]
+        "living_particles":
+            return "PARTICLES %d | COLLISION %.2f" % [int(context.get("particle_count", 0.0)), float(context.get("collision_strength", 0.0))]
+        "invisible_forces":
+            return "TRACES %d | PULSE %.2f" % [int(context.get("trace_count", 0.0)), float(context.get("pulse_speed", 0.0))]
         _:
-            return "Generando %s..." % subject
+            return "SEED %d" % int(context.get("seed", 0))
 
-static func generate_geek_text_for_seed(family_id: String, seed_value: int) -> String:
-    return generate_geek_text(family_id, seed_value)
+static func revision() -> String:
+    return REVISION
 
 static func _canonical_family(family_id: String) -> String:
     match family_id:
-        "c11c_geometric_waves_v1", "geometric", "geometric_waves":
-            return "geometric"
-        "c11c_fractal_bloom_v1", "fractal", "fractal_bloom":
-            return "fractal"
-        "c11c_sacred_symmetry_v1", "kaleidoscope", "sacred_symmetry":
-            return "kaleidoscope"
-        "c11c_living_particles_v1", "particle_flow", "living_particles":
-            return "particle_flow"
-        "c11c_invisible_forces_v1", "vector_field", "invisible_forces":
-            return "vector_field"
-        _:
-            return "geometric"
-
-static func _family_salt(family_id: String) -> int:
-    var value := 2166136261
-    for byte in family_id.to_utf8_buffer():
-        value = int((value ^ int(byte)) * 16777619) & 0x7fffffff
-    return value
+        "c11c_geometric_waves_v1", "geometric", "geometric_waves": return "geometric"
+        "c11c_fractal_bloom_v1", "fractal", "fractal_bloom": return "fractal"
+        "c11c_sacred_symmetry_v1", "kaleidoscope", "sacred_symmetry": return "sacred_symmetry"
+        "c11c_living_particles_v1", "particle_flow", "living_particles": return "living_particles"
+        "c11c_invisible_forces_v1", "vector_field", "invisible_forces": return "invisible_forces"
+        _: return "geometric"
 
 static func _mixed(seed_value: int, salt: int) -> int:
-    var x := (int(seed_value) ^ int(salt * 374761393)) & 0x7fffffff
+    var x: int = (int(seed_value) ^ int(salt * 374761393)) & 0x7fffffff
     x = int((x ^ (x >> 13)) * 1274126177) & 0x7fffffff
     x = int((x ^ (x >> 16)) * 2246822519) & 0x7fffffff
     x = int((x ^ (x >> 13)) * 3266489917) & 0x7fffffff

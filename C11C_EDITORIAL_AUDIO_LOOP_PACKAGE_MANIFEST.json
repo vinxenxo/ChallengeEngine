@@ -1,0 +1,41 @@
+{
+  "package_version": "1.9.1",
+  "package_name": "C11-C_VISUAL_LOOPS_READY_COPY_v1.9.1_EDITORIAL_AUDIO_LOOP.zip",
+  "scope": "C11-C editorial + color variation + audio + loop presentation phase",
+  "frozen_boundaries_modified": false,
+  "header": {
+    "line_1": "large mathematical identity + grammar + seed-resolved motion tag",
+    "line_2": "hook with deterministic Matrix-style transition to family signature"
+  },
+  "footer": {
+    "prototype_qa": true,
+    "production_switch": "-NoFooter"
+  },
+  "background": {
+    "current": "000000",
+    "theme_file": "tools/prototypes/c11c_common/C11CTheme.gd"
+  },
+  "audio": {
+    "style": "deep deterministic ambient / singing bowls / sub-bass drone / family-synced pulses",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 10.0,
+    "c7_modified": false
+  },
+  "loop": {
+    "duration_seconds": 10.0,
+    "fps": 30,
+    "frames": 300,
+    "visual_cycles": "integer 1..3",
+    "temporal_closure": "all temporal multipliers are integer or integer-derived"
+  },
+  "color_variation": {
+    "palette_count_per_family": 16,
+    "seed_controlled": true,
+    "strong_separation": true
+  },
+  "social_sidecar": {
+    "suffix": "_social.txt",
+    "reproduction_command": true
+  }
+}

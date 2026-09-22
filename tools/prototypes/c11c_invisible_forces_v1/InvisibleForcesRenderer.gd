@@ -22,13 +22,16 @@ func _ready() -> void:
     _rect.material = _material
     add_child(_rect)
 
+func set_background(background: Color) -> void:
+    _material.set_shader_parameter("background_color", background)
+
 func set_palette(deep: Color, primary: Color, secondary: Color, highlight: Color) -> void:
     _material.set_shader_parameter("deep_color", deep)
     _material.set_shader_parameter("primary_color", primary)
     _material.set_shader_parameter("secondary_color", secondary)
     _material.set_shader_parameter("highlight_color", highlight)
 
-func set_style(grammar_mode: int, trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float, field_twist: float, pulse_width: float, storm_scale: float, lens_strength: float, basin_depth: float, pole_separation: float, quadrupole_skew: float) -> void:
+func set_style(grammar_mode: int, trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float, field_twist: float, pulse_width: float, storm_scale: float, lens_strength: float, basin_depth: float, pole_separation: float, quadrupole_skew: float, color_phase: float = 0.0) -> void:
     _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 5))
     _material.set_shader_parameter("trace_count", clamp(trace_count, 50.0, 92.0))
     _material.set_shader_parameter("curvature", clamp(curvature, 0.4, 1.4))
@@ -43,9 +46,12 @@ func set_style(grammar_mode: int, trace_count: float, curvature: float, glow_str
     _material.set_shader_parameter("basin_depth", clamp(basin_depth, 0.30, 1.20))
     _material.set_shader_parameter("pole_separation", clamp(pole_separation, 0.12, 0.40))
     _material.set_shader_parameter("quadrupole_skew", clamp(quadrupole_skew, 0.70, 1.35))
+    _material.set_shader_parameter("color_phase", color_phase)
 
-func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
-    var total := maxi(1, total_frames)
-    var frame := posmod(frame_index, total)
-    _material.set_shader_parameter("phase", TAU * float(frame) / float(total))
+func set_frame(frame_index: int, total_frames: int, seed_phase: float, loop_cycles: float = 1.0) -> void:
+    var total: int = maxi(1, total_frames)
+    var frame: int = posmod(frame_index, total)
+    var cycles: float = max(loop_cycles, 1.0)
+    _material.set_shader_parameter("phase", TAU * float(frame) / float(total) * cycles)
     _material.set_shader_parameter("seed_phase", seed_phase)
+

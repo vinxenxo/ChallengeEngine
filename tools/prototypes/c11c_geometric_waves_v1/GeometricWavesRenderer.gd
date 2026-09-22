@@ -26,6 +26,9 @@ func _ready() -> void:
 
     add_child(_rect)
 
+func set_background(background: Color) -> void:
+    _material.set_shader_parameter("background_color", background)
+
 func set_palette(dominant: Color, secondary: Color, highlight: Color) -> void:
     _material.set_shader_parameter("dominant_color", dominant)
     _material.set_shader_parameter("secondary_color", secondary)
@@ -74,12 +77,13 @@ func set_style(
     _material.set_shader_parameter("color_phase", color_phase)
     _material.set_shader_parameter("stroke_scale", clamp(stroke_scale, 0.72, 1.40))
 
-func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
+func set_frame(frame_index: int, total_frames: int, seed_phase: float, loop_cycles: float = 1.0) -> void:
     var total: int = maxi(1, total_frames)
     var frame: int = posmod(frame_index, total)
-    var phase: float = TAU * float(frame) / float(total)
-    _material.set_shader_parameter("phase", phase)
+    var cycles: float = max(loop_cycles, 1.0)
+    _material.set_shader_parameter("phase", TAU * float(frame) / float(total) * cycles)
     _material.set_shader_parameter("seed_phase", seed_phase)
+
 
 func get_body_rect() -> Rect2:
     return BODY_RECT

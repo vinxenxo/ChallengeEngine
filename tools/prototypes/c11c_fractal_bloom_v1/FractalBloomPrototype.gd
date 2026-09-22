@@ -1,48 +1,61 @@
 extends Node2D
 
-## C11-C.2 — Fractal Bloom v1 radial single-reference prototype.
-## Reference: 10.0 s / 30 FPS / 300 frames / 540x960 / seed 314159.
-## This scene is intentionally isolated from VisualLoopRuntime and simulation.
+## C11-C editorial/audio/loop presentation prototype v1.9.
+## Family: FRACTAL BLOOM
+## Presentation-only: no core, simulation, SimulationResult, engine RNG or C7 changes.
 
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const FractalBloomRendererClass = preload("res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomRenderer.gd")
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
 const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
+const PaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CPaletteBank.gd")
+const EditorialAnimatorClass = preload("res://tools/prototypes/c11c_common/C11CEditorialAnimator.gd")
+const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
 const HEADER_MAX_FONT_SIZE := 16
 const HEADER_MIN_FONT_SIZE := 11
-const LOOP_DURATION := 10.0
+const HEADER_HOOK_FONT_SIZE := 18
+const LOOP_DURATION := 18.0
 const FPS := 30
-const FRAME_COUNT := 300
+const FRAME_COUNT := 540
+const BLACK: Color = C11CThemeClass.SECTION_BACKGROUND
 
 var _renderer: Node2D
-var _frame_index := 0
-var _seed := REFERENCE_SEED
-var _show_footer := true
+var _frame_index: int = 0
+var _seed: int = REFERENCE_SEED
+var _show_footer: bool = true
 var _variation: Dictionary = {}
+var _palette: Dictionary = {}
+var _header_hook: Label
+var _header_animator: C11CEditorialAnimator
+var _authoring_json_path: String = ""
 
 func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("fractal", _seed)
+    _palette = PaletteBankClass.palette("fractal", int(_variation["palette_mode"]))
+    _authoring_json_path = "res://artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_%d_authoring.json" % _seed
+    _write_authoring_snapshot()
     _build_scene()
     set_process(true)
 
 func _build_scene() -> void:
     var background := ColorRect.new()
-    background.name = "AbyssalBackground"
+    background.name = "UnifiedBlackBackground"
     background.position = Vector2.ZERO
     background.size = Vector2(540.0, 960.0)
-    background.color = Color("050713")
+    background.color = BLACK
     background.mouse_filter = Control.MOUSE_FILTER_IGNORE
     add_child(background)
 
     var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
     frame.name = "UnifiedSocialFrame"
     add_child(frame)
-
+    _add_section_background(frame.get_header_content_root())
+    _add_section_background(frame.get_footer_content_root())
     _add_frame_decoration(frame)
     _add_header(frame.get_header_content_root())
     if _show_footer:
@@ -51,114 +64,85 @@ func _build_scene() -> void:
     _renderer = FractalBloomRendererClass.new()
     _renderer.name = "FractalBloomRenderer"
     frame.get_body_content_root().add_child(_renderer)
-
-    var palette_index: int = int(_variation["palette_mode"])
-    match palette_index:
-        0:
-            _renderer.set_palette(Color("141B46"), Color("5E49D6"), Color("22D3EE"), Color("F8FBFF"))
-        1:
-            _renderer.set_palette(Color("0B1430"), Color("435DE7"), Color("8A7BFF"), Color("F4F7FF"))
-        2:
-            _renderer.set_palette(Color("0F3036"), Color("2D6CB6"), Color("35D7C5"), Color("EEFFFF"))
-        3:
-            _renderer.set_palette(Color("23063E"), Color("B534F0"), Color("FF4BCB"), Color("FFF1FF"))
-        4:
-            _renderer.set_palette(Color("171A38"), Color("4B57A6"), Color("A9B7FF"), Color("F6F8FF"))
-        5:
-            _renderer.set_palette(Color("0C2342"), Color("2B84D6"), Color("A8F3FF"), Color("F5FFFF"))
-        6:
-            _renderer.set_palette(Color("250A35"), Color("B03CF2"), Color("FF7AD8"), Color("FFF7FF"))
-        _:
-            _renderer.set_palette(Color("092D33"), Color("3F5EB8"), Color("7DDEFF"), Color("F2FEFF"))
+    _renderer.set_background(BLACK)
+    _renderer.set_palette(Color(str(_palette["indigo"])), Color(str(_palette["violet"])), Color(str(_palette["cyan"])), Color(str(_palette["highlight"])))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["zoom_strength"]), float(_variation["warp_strength"]), float(_variation["bloom_strength"]), float(_variation["layer_softness"]),
-        float(_variation["julia_x_bias"]), float(_variation["julia_y_bias"]), float(_variation["zoom_cycles"]),
-        float(_variation["warp_frequency"]), float(_variation["layer_spread"]), float(_variation["breath_strength"]),
-        float(_variation["branch_density"]), float(_variation["detail_scale"]), float(_variation["spiral_amount"])
+        float(_variation["julia_x_bias"]), float(_variation["julia_y_bias"]), float(_variation["zoom_cycles"]), float(_variation["warp_frequency"]), float(_variation["layer_spread"]),
+        float(_variation["breath_strength"]), float(_variation["branch_density"]), float(_variation["detail_scale"]), float(_variation["spiral_amount"]), float(_variation["color_diversity"]), float(_variation["color_phase"])
     )
-    _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed))
+    _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
+
+func _add_section_background(root: Control) -> void:
+    var section_bg := ColorRect.new()
+    section_bg.name = "SectionBlackBackground"
+    section_bg.position = Vector2.ZERO
+    section_bg.size = Vector2(540.0, 144.0)
+    section_bg.color = BLACK
+    section_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    section_bg.z_index = -100
+    root.add_child(section_bg)
 
 func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
-    var header_line := ColorRect.new()
-    header_line.name = "HeaderRule"
-    header_line.position = Vector2(36.0, 102.0)
-    header_line.size = Vector2(468.0, 1.0)
-    header_line.color = Color(0.25, 0.28, 0.47, 0.32)
-    header_line.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    frame.get_header_content_root().add_child(header_line)
+    var rule_a := ColorRect.new()
+    rule_a.position = Vector2(36.0, 104.0)
+    rule_a.size = Vector2(468.0, 1.0)
+    rule_a.color = Color(0.55, 0.55, 0.55, 0.20)
+    frame.get_header_content_root().add_child(rule_a)
 
-    var footer_line := ColorRect.new()
-    footer_line.name = "FooterRule"
-    footer_line.position = Vector2(36.0, 30.0)
-    footer_line.size = Vector2(468.0, 1.0)
-    footer_line.color = Color(0.25, 0.28, 0.47, 0.32)
-    footer_line.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    frame.get_footer_content_root().add_child(footer_line)
-
-    var header_accent := ColorRect.new()
-    header_accent.name = "HeaderAccent"
-    header_accent.position = Vector2(36.0, 26.0)
-    header_accent.size = Vector2(46.0, 2.0)
-    header_accent.color = Color("22D3EE")
-    header_accent.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    frame.get_header_content_root().add_child(header_accent)
-
-    var footer_accent := ColorRect.new()
-    footer_accent.name = "FooterAccent"
-    footer_accent.position = Vector2(458.0, 127.0)
-    footer_accent.size = Vector2(46.0, 2.0)
-    footer_accent.color = Color("8B5CF6")
-    footer_accent.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    frame.get_footer_content_root().add_child(footer_accent)
+    var rule_b := ColorRect.new()
+    rule_b.position = Vector2(36.0, 30.0)
+    rule_b.size = Vector2(468.0, 1.0)
+    rule_b.color = Color(0.55, 0.55, 0.55, 0.20)
+    frame.get_footer_content_root().add_child(rule_b)
 
 func _add_header(root: Control) -> void:
-    root.add_child(_new_header_math_label("zₙ₊₁ = zₙ² + c   ·   %s   ·   ZOOM ×%d" % [str(_variation["grammar_name"]).to_upper(), int(_variation["zoom_cycles"])], Vector2(36.0, 34.0), Vector2(468.0, 28.0), Color("E1E4FF")))
-    root.add_child(_new_label("SEED %d   ·   BODY 540×672   ·   30 FPS   ·   T=10.00 s   ·   3 DEPTH LAYERS" % _seed, Vector2(36.0, 68.0), Vector2(468.0, 20.0), 9, Color("8890B5")))
+    var grammar_names: Array[String] = ["RADIAL BLOOM", "DENDRITIC TUNNEL", "SPIRAL FRACTAL", "FRACTAL FILIGREE", "NESTED WORLDS"]
+    var hooks: Array[String] = ["ENTRA EN UN UNIVERSO INFINITO", "DESCIENDE A OTRA ESCALA DE LA MATERIA", "DESCUBRE UNA NUEVA CAPA DEL FRACTAL", "LA FORMA SIGUE CRECIENDO", "OBSERVA LO QUE APARECE DENTRO"]
+    var grammar_index: int = int(_variation["grammar_mode"])
+    var grammar_name: String = grammar_names[grammar_index].to_upper()
+    var hook: String = hooks[grammar_index % hooks.size()]
+    var line1: String = "z(n+1)=z(n)^2+c | %s | DETAIL %.2f" % [grammar_name.replace(" ", "_"), float(_variation["detail_scale"])]
+    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), Color("F1F5FA")))
+    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, Color("FFFFFF"))
+    _header_hook.add_theme_constant_override("outline_size", 1)
+    root.add_child(_header_hook)
+    _header_animator = C11CEditorialAnimatorClass.new(hook, "VISUAL LOOP / FRACTAL BLOOM", _seed)
 
 func _add_footer(root: Control) -> void:
-    root.add_child(_new_label("VISUAL LOOP  //  FRACTAL BLOOM", Vector2(36.0, 33.0), Vector2(468.0, 18.0), 10, Color("8890B5")))
-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed)
-    root.add_child(_new_footer_geek_label(geek_text, Vector2(36.0, 51.0), Vector2(468.0, 20.0), Color("AAB7C7")))
-    var hook := _new_label("ENTRA EN UN UNIVERSO INFINITO", Vector2(36.0, 72.0), Vector2(468.0, 28.0), 18, Color("F5F7FF"))
-    hook.add_theme_constant_override("outline_size", 2)
-    root.add_child(hook)
-    root.add_child(_new_label("BIOLUMINESCENT MATHEMATICAL ART  /  v1", Vector2(36.0, 106.0), Vector2(468.0, 16.0), 9, Color("626B96")))
+    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation)
+    var line1: String = "VISUAL LOOP // FRACTAL BLOOM"
+    var line2: String = geek_text
+    var line3: String = "SEED %d | BODY 540X672 | T=18.00S | DETAIL %.2f | %d LOOPS" % [_seed, float(_variation["detail_scale"]), int(_variation["loop_cycles"])]
+    var line4: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+    var line5: String = "BIOLUMINESCENT FRACTAL ART / v2.0.1"
+    root.add_child(_new_footer_label(line1, Vector2(36.0, 28.0), Color("D0D6DE")))
+    root.add_child(_new_footer_label(line2, Vector2(36.0, 48.0), Color("FFFFFF")))
+    root.add_child(_new_footer_label(line3, Vector2(36.0, 68.0), Color("AEB7C1")))
+    root.add_child(_new_footer_label(line4, Vector2(36.0, 88.0), Color("8F9BAA")))
+    root.add_child(_new_footer_label(line5, Vector2(36.0, 108.0), Color("6D7782")))
+
+func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
+    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
 
 func _resolve_footer_visibility() -> bool:
-    var raw := OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+    var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
     return raw not in ["0", "false", "off", "no"]
 
 func _resolve_seed() -> int:
-    var raw := OS.get_environment("C11C_SEED").strip_edges()
-    if raw.is_valid_int():
-        return int(raw)
-    return REFERENCE_SEED
+    var raw: String = OS.get_environment("C11C_SEED").strip_edges()
+    return int(raw) if raw.is_valid_int() else REFERENCE_SEED
 
 func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
     var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
-    var font := label.get_theme_default_font()
-    var fitted := HEADER_MAX_FONT_SIZE
+    var font: Font = label.get_theme_default_font()
+    var fitted: int = HEADER_MAX_FONT_SIZE
     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
         fitted -= 1
     label.add_theme_font_size_override("font_size", fitted)
     return label
 
-
-func _new_footer_geek_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
-    var label := _new_label(text_value, pos, box_size, 10, color)
-    var font := label.get_theme_default_font()
-    var fitted := 10
-    while fitted > 8 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
-        fitted -= 1
-    label.add_theme_font_size_override("font_size", fitted)
-    return label
-func _new_label(
-    text_value: String,
-    pos: Vector2,
-    box_size: Vector2,
-    font_size: int,
-    color: Color
-) -> Label:
+func _new_label(text_value: String, pos: Vector2, box_size: Vector2, font_size: int, color: Color) -> Label:
     var label := Label.new()
     label.text = text_value
     label.position = pos
@@ -173,18 +157,67 @@ func _new_label(
 func _process(_delta: float) -> void:
     if _renderer == null:
         return
-    _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed))
+    _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
+    if _header_hook != null and _header_animator != null:
+        var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
+        _header_hook.text = str(editorial["text"])
+        _header_hook.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(editorial["transition"]) else 0.90)
     _frame_index = (_frame_index + 1) % FRAME_COUNT
 
-func _seed01(salt: int) -> float:
-    var x := (int(_seed) + salt * 374761393) & 0x7fffffff
+func _seed_index(salt: int, size: int) -> int:
+    return _seed_mix(salt) % maxi(size, 1)
+
+func _seed_mix(salt: int) -> int:
+    var x: int = (int(_seed) ^ int(salt * 374761393)) & 0x7fffffff
     x = int((x ^ (x >> 13)) * 1274126177) & 0x7fffffff
     x = int((x ^ (x >> 16)) * 2246822519) & 0x7fffffff
-    return float((int(x ^ (x >> 13)) & 0x7fffffff) % 100000) / 100000.0
+    return int(x ^ (x >> 13)) & 0x7fffffff
 
 func _seed_phase(seed_value: int) -> float:
-    var x := int(seed_value) & 0x7fffffff
+    var x: int = int(seed_value) & 0x7fffffff
     x = int((x ^ (x >> 16)) * 2246822519) & 0x7fffffff
     x = int((x ^ (x >> 13)) * 3266489917) & 0x7fffffff
     x = int(x ^ (x >> 16))
     return TAU * float(x % 100000) / 100000.0
+
+func _write_authoring_snapshot() -> void:
+    var absolute_path: String = ProjectSettings.globalize_path(_authoring_json_path)
+    var dir_path: String = absolute_path.get_base_dir()
+    DirAccess.make_dir_recursive_absolute(dir_path)
+    var grammar_index: int = int(_variation["grammar_mode"])
+    var grammar_names: Array[String] = ["RADIAL BLOOM", "DENDRITIC TUNNEL", "SPIRAL FRACTAL", "FRACTAL FILIGREE", "NESTED WORLDS"]
+    var hooks: Array[String] = ["ENTRA EN UN UNIVERSO INFINITO", "DESCIENDE A OTRA ESCALA DE LA MATERIA", "DESCUBRE UNA NUEVA CAPA DEL FRACTAL", "LA FORMA SIGUE CRECIENDO", "OBSERVA LO QUE APARECE DENTRO"]
+    var grammar_name: String = grammar_names[grammar_index]
+    var header_primary: String = hooks[grammar_index % hooks.size()]
+    var header_math: String = "z(n+1)=z(n)^2+c | %s | DETAIL %.2f" % [grammar_name.replace(" ", "_"), float(_variation["detail_scale"])]
+    var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
+    var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
+    var snapshot := {
+        "family_id": "fractal",
+        "display_name": "FRACTAL BLOOM",
+        "seed": _seed,
+        "grammar_mode": grammar_index,
+        "grammar": grammar_name,
+        "palette_mode": int(_variation["palette_mode"]),
+        "palette": str(_variation["palette_name"]),
+        "loop_cycles": float(_variation["loop_cycles"]),
+        "duration_seconds": LOOP_DURATION,
+        "fps": FPS,
+        "frame_count": FRAME_COUNT,
+        "header_primary": header_primary,
+        "header_secondary": "VISUAL LOOP / FRACTAL BLOOM",
+        "header_math": header_math,
+        "technobabble": TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation),
+        "technobabble_revision": TechnobabbleGeneratorClass.revision(),
+        "audio_style": "deep deterministic ambient / singing bowls / low drone / family-synced pulses",
+        "sound_enabled": sound_enabled,
+        "background": "000000",
+        "footer_enabled": _show_footer,
+        "editorial_revision": "2.0.0",
+        "loop_closed": true
+    }
+    var file := FileAccess.open(absolute_path, FileAccess.WRITE)
+    if file != null:
+        file.store_string(JSON.stringify(snapshot, "  "))
+        file.close()
+

@@ -20,6 +20,7 @@ uniform int grammar_mode = 0;
 uniform float branch_density = 1.0;
 uniform float detail_scale = 1.0;
 uniform float spiral_amount = 1.0;
+uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 indigo_color : source_color = vec4(0.14, 0.13, 0.42, 1.0);
 uniform vec4 violet_color : source_color = vec4(0.55, 0.24, 0.96, 1.0);
 uniform vec4 cyan_color : source_color = vec4(0.10, 0.83, 0.93, 1.0);
@@ -59,8 +60,8 @@ vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias
     float s0 = hash11(seed_phase * 0.159154943 + 1.7);
     float s1 = hash11(seed_phase * 0.159154943 + 7.3);
     vec2 c = vec2(
-        -0.19 + 0.18 * s0 + 0.018 * sin(local_phase * 0.75 + seed_phase),
-        0.57 + 0.15 * s1 + 0.014 * cos(local_phase * 0.50 - seed_phase) + julia_y_bias
+        -0.19 + 0.18 * s0 + 0.018 * sin(local_phase * 1.0 + seed_phase),
+        0.57 + 0.15 * s1 + 0.014 * cos(local_phase * 1.0 - seed_phase) + julia_y_bias
     );
     c.x += julia_x_bias;
 
@@ -68,30 +69,30 @@ vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias
     float q_radius = max(length(q), 0.0001);
     float q_angle = atan(q.y, q.x);
     if (grammar_mode == 1) {
-        float tunnel_twist = spiral_amount * (0.58 + 0.24 * sin(local_phase * 0.7 + seed_phase));
+        float tunnel_twist = spiral_amount * (0.58 + 0.24 * sin(local_phase * 1.0 + seed_phase));
         q = rot(tunnel_twist * log(q_radius + 0.055)) * q;
-        q *= 0.92 + 0.14 * sin(local_phase * 0.65 + q_radius * 7.0);
+        q *= 0.92 + 0.14 * sin(local_phase * 1.0 + q_radius * 7.0);
     } else if (grammar_mode == 2) {
         q = rot(spiral_amount * (1.45 * log(q_radius + 0.045) + 0.15 * local_phase)) * q;
         q += 0.018 * vec2(cos(q_angle * 5.0 + local_phase), sin(q_angle * 5.0 - local_phase));
     } else if (grammar_mode == 3) {
         q = abs(q);
-        q -= 0.028 * vec2(sin(local_phase + seed_phase), cos(local_phase * 0.8 - seed_phase));
+        q -= 0.028 * vec2(sin(local_phase + seed_phase), cos(local_phase * 1.0 - seed_phase));
         q *= detail_scale;
     } else if (grammar_mode == 4) {
-        float nested = 0.5 + 0.5 * sin(log(q_radius + 0.035) * 5.5 + local_phase * 0.36);
+        float nested = 0.5 + 0.5 * sin(log(q_radius + 0.035) * 5.5 + local_phase * 1.0);
         q = rot(0.34 * nested + spiral_amount * 0.22 * log(q_radius + 0.05)) * q;
         q *= 0.90 + 0.20 * nested;
     }
 
-    float warp_a = sin(q.y * warp_frequency + local_phase * 0.65 + seed_phase * 0.20);
-    float warp_b = cos(q.x * (warp_frequency * 0.84) - local_phase * 0.55 - seed_phase * 0.13);
+    float warp_a = sin(q.y * warp_frequency + local_phase * 1.0 + seed_phase * 0.20);
+    float warp_b = cos(q.x * (warp_frequency * 0.84) - local_phase * 1.0 - seed_phase * 0.13);
     q += warp_strength * vec2(warp_a, warp_b);
     q = rot(0.035 * sin(local_phase + seed_phase)) * q;
 
     // Radial breathing makes the bloom feel alive without translating the nucleus.
     float rr = length(q);
-    q *= 0.96 + breath_strength * cos(local_phase * 0.5 + rr * 4.0);
+    q *= 0.96 + breath_strength * cos(local_phase * 1.0 + rr * 4.0);
 
     vec2 z = q;
     float orbit = 10.0;
@@ -138,12 +139,14 @@ vec4 fractal_field(vec2 p, float local_phase, float layer_scale, float iter_bias
     float depth = exp(-layer_softness * rr * (0.65 + 0.10 * iter_bias));
     field *= depth;
 
-    float organic_pulse = 0.82 + 0.18 * cos(local_phase * (1.0 + 0.12 * iter_bias) + rr * 5.0);
+    float organic_pulse = 0.82 + 0.18 * cos(local_phase * 1.0 + rr * 5.0);
     field *= organic_pulse;
 
-    vec3 cold = mix(indigo_color.rgb, violet_color.rgb, clamp(field * 1.7, 0.0, 1.0));
-    vec3 hot = mix(violet_color.rgb, cyan_color.rgb, clamp(field * 2.4 - 0.35, 0.0, 1.0));
-    vec3 colour = mix(cold, hot, smoothstep(0.22, 0.78, field));
+    float chroma_wave = 0.5 + 0.5 * sin(color_phase + field * 5.7 + node_energy * 2.2);
+    vec3 cold = mix(indigo_color.rgb, violet_color.rgb, clamp(field * 1.55, 0.0, 1.0));
+    vec3 hot = mix(violet_color.rgb, cyan_color.rgb, clamp(field * 2.7 - 0.28, 0.0, 1.0));
+    vec3 tertiary = mix(cyan_color.rgb, indigo_color.rgb, chroma_wave);
+    vec3 colour = mix(mix(cold, hot, smoothstep(0.18, 0.76, field)), tertiary, color_diversity * 0.22);
     colour = mix(colour, highlight_color.rgb, node_energy * 0.78 * bloom_strength);
 
     float glow = pow(max(field, 0.0), 0.46) * 0.15 * bloom_strength;
@@ -181,14 +184,24 @@ void fragment() {
     } else if (grammar_mode == 4) {
         zoom_span = 0.52;
     }
-    float zoom = exp(zoom_strength * zoom_span * (zoom_path - 0.5));
+    float zoom_activity = 1.0;
+    if (grammar_mode == 3) {
+        zoom_activity = 0.22;
+    } else if (grammar_mode == 4) {
+        zoom_activity = 0.55;
+    } else if (grammar_mode == 2) {
+        zoom_activity = 0.72;
+    } else if (grammar_mode == 1) {
+        zoom_activity = 0.84;
+    }
+    float zoom = exp((zoom_strength * zoom_activity) * zoom_span * (zoom_path - 0.5));
 
     vec3 accumulated = vec3(0.0);
     float accumulated_alpha = 0.0;
 
-    float layer0_phase = phase * 0.52 + seed_phase * 0.06;
-    float layer1_phase = phase * 1.00 + seed_phase * 0.10;
-    float layer2_phase = phase * 1.82 + seed_phase * 0.16;
+    float layer0_phase = phase + seed_phase * 0.06;
+    float layer1_phase = phase * 2.0 + seed_phase * 0.10;
+    float layer2_phase = phase * 3.0 + seed_phase * 0.16;
 
     vec2 p0 = rot(0.030 * sin(layer0_phase)) * p;
     vec2 p1 = rot(0.045 * sin(layer1_phase + 0.4)) * p;
@@ -213,8 +226,8 @@ void fragment() {
     accumulated_alpha += a2;
 
     if (grammar_mode == 4) {
-        vec2 nested_p = rot(0.35 * phase + seed_phase * 0.05) * p * zoom * 1.95;
-        vec4 f3 = fractal_field(nested_p, phase * 1.37 + seed_phase * 0.12, 1.0, 3.0);
+        vec2 nested_p = rot(phase + seed_phase * 0.05) * p * zoom * 1.95;
+        vec4 f3 = fractal_field(nested_p, phase * 2.0 + seed_phase * 0.12, 1.0, 3.0);
         accumulated += f3.rgb * 0.42;
         accumulated_alpha += f3.a * 0.38;
     }
@@ -222,13 +235,13 @@ void fragment() {
     // Central nucleus: luminous, restrained, never a filled disk.
     float r = length(p);
     float nucleus = exp(-r * 13.0);
-    float nucleus_breath = 0.72 + 0.28 * cos(phase * 1.5 + seed_phase * 0.2);
+    float nucleus_breath = 0.72 + 0.28 * cos(phase * 2.0 + seed_phase * 0.2);
     accumulated += highlight_color.rgb * nucleus * nucleus_breath * 0.075;
     accumulated_alpha += nucleus * 0.05;
 
     // Abyssal radial background.
     float vignette = 1.0 - smoothstep(0.20, 0.62, length(p));
-    vec3 bg = vec3(0.018, 0.022, 0.050);
+    vec3 bg = background_color.rgb;
     bg += indigo_color.rgb * (0.045 * vignette);
     bg += violet_color.rgb * (0.012 * (1.0 - vignette));
 

@@ -23,6 +23,9 @@ func _ready() -> void:
     _rect.material = _material
     add_child(_rect)
 
+func set_background(background: Color) -> void:
+    _material.set_shader_parameter("background_color", background)
+
 func set_palette(deep: Color, mid: Color, bright: Color, highlight: Color) -> void:
     _material.set_shader_parameter("deep_color", deep)
     _material.set_shader_parameter("mid_color", mid)
@@ -40,15 +43,18 @@ func set_style(grammar_mode: int, particle_count: float, glow_strength: float, a
     _material.set_shader_parameter("turbulence", clamp(turbulence, 0.010, 0.055))
     _material.set_shader_parameter("attractor_strength", clamp(attractor_strength, 0.60, 1.60))
     _material.set_shader_parameter("particle_size_scale", clamp(particle_size_scale, 0.68, 1.40))
-    _material.set_shader_parameter("phase_rate", clamp(phase_rate, 0.60, 1.35))
+    var safe_phase_rate: float = float(clampi(int(round(phase_rate)), 1, 3))
+    _material.set_shader_parameter("phase_rate", safe_phase_rate)
     _material.set_shader_parameter("collision_strength", clamp(collision_strength, 0.60, 1.50))
     _material.set_shader_parameter("core_scale", clamp(core_scale, 0.72, 1.30))
     _material.set_shader_parameter("density_bias", clamp(density_bias, 0.80, 1.25))
     _material.set_shader_parameter("color_diversity", clamp(color_diversity, 0.0, 1.0))
     _material.set_shader_parameter("color_phase", color_phase)
 
-func set_frame(frame_index: int, total_frames: int, seed_phase: float) -> void:
-    var total := maxi(1, total_frames)
-    var frame := posmod(frame_index, total)
-    _material.set_shader_parameter("phase", TAU * float(frame) / float(total))
+func set_frame(frame_index: int, total_frames: int, seed_phase: float, loop_cycles: float = 1.0) -> void:
+    var total: int = maxi(1, total_frames)
+    var frame: int = posmod(frame_index, total)
+    var cycles: float = max(loop_cycles, 1.0)
+    _material.set_shader_parameter("phase", TAU * float(frame) / float(total) * cycles)
     _material.set_shader_parameter("seed_phase", seed_phase)
+

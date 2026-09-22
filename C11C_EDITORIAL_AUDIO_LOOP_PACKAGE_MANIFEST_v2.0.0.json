@@ -1,0 +1,544 @@
+{
+  "package_version": "2.0.0",
+  "status": "REVIEW_PHASE_EDITORIAL_AUDIO_LOOP",
+  "changes": [
+    "exact_header_footer_layout",
+    "midpoint_deterministic_scramble",
+    "black_unified_background",
+    "optional_audio_no_sound",
+    "social_sidecar_fixed",
+    "technobabble_v2",
+    "expanded_colorways",
+    "18s_540_frames",
+    "integer_loop_cycles",
+    "review_keyframes_18s"
+  ],
+  "frozen_boundaries_modified": false,
+  "files": [
+    {
+      "path": "C11-C_V1.9.1_README.md",
+      "bytes": 1483,
+      "sha256": "15b00e88984202851fbb43685b4420e2fd949e0626abfc1825d82b82c198e1ea"
+    },
+    {
+      "path": "C11-C_V2.0_README.md",
+      "bytes": 583,
+      "sha256": "8921fdf2dc22f71b38951488348a39f0ada279a3e8002c5b59a583b7e4e95620"
+    },
+    {
+      "path": "C11C_EDITORIAL_AUDIO_LOOP_PACKAGE_MANIFEST.json",
+      "bytes": 1242,
+      "sha256": "456c06b9fb6741c73229a21b3204f333dcef6d2d4c0ac8334330aa9d7fd5c38f"
+    },
+    {
+      "path": "C11C_PACKAGE_FILE_INVENTORY_v1.9.1.json",
+      "bytes": 20659,
+      "sha256": "1a85fd49e0e4a7346fc5ff8c83ca79c78c05ba08a4a604b7a886a4db7d5a1107"
+    },
+    {
+      "path": "docs/c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT.md",
+      "bytes": 21363,
+      "sha256": "92ee1d671cfc3fa8728df22d29beb4d5cfe59415e09e98d2c3e14cdefd9188d5"
+    },
+    {
+      "path": "docs/c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT_v1.5_ART_DIRECTION.md",
+      "bytes": 1511,
+      "sha256": "24e786f0ae19f9c197d5348cd7ae67fc342ea345e81c989d5025d14fd50d4d01"
+    },
+    {
+      "path": "docs/c11/C11-C.1_V1.5_REVIEW_CHECKLIST.md",
+      "bytes": 557,
+      "sha256": "29a1df2bb8b1a04f2a70fb0a7d61808ae939bd937cfd3815e90bcad73aac6813"
+    },
+    {
+      "path": "docs/c11/C11-C.2_FRACTAL_BLOOM_ART_DIRECTION_v1.7.md",
+      "bytes": 327,
+      "sha256": "b318bcee664d5ff72e6508b6a7a68246e75710a3655ca3b1d7a24ca7b546f316"
+    },
+    {
+      "path": "docs/c11/C11-C.2_FRACTAL_BLOOM_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 9442,
+      "sha256": "0f11f8064a5628c9589e7ee7153eb4719f0cc94ebf3293d7b25ceb4aaff318cf"
+    },
+    {
+      "path": "docs/c11/C11-C.3_SACRED_SYMMETRY_COLOR_DIVERSITY_v1.7.md",
+      "bytes": 266,
+      "sha256": "f0db3165e366ef659d58229db1082487ec8d5e3be09b1da4f6d20fdb939231b5"
+    },
+    {
+      "path": "docs/c11/C11-C.3_SACRED_SYMMETRY_V1_ART_DIRECTION_v1.6.md",
+      "bytes": 1507,
+      "sha256": "d5c4a5615612ac799e6ef664d3f09f4c4874b1a2d89bb0f565116ebed9026dd3"
+    },
+    {
+      "path": "docs/c11/C11-C.3_SACRED_SYMMETRY_V1_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 3681,
+      "sha256": "b50bd3d2400fae75b5c3bdf1d7c95f3d1445aaed8f53d5f5afddffa61d3c6fe6"
+    },
+    {
+      "path": "docs/c11/C11-C.4_LIVING_PARTICLES_COLOR_DIVERSITY_v1.7.md",
+      "bytes": 285,
+      "sha256": "279d58efeae03590222d16e0587726982598740ec9a15e8b56adfda4cce10b6c"
+    },
+    {
+      "path": "docs/c11/C11-C.4_LIVING_PARTICLES_V1_ART_DIRECTION_v1.6.md",
+      "bytes": 1534,
+      "sha256": "a005bc93fab9319d4d88ab678cbfb4323a3c0cc26b9de39a78dae48be136ed84"
+    },
+    {
+      "path": "docs/c11/C11-C.4_LIVING_PARTICLES_V1_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 3978,
+      "sha256": "a6d0af83147f772a097eeee2e3825a46deeaf6df342285216a9f17377d804280"
+    },
+    {
+      "path": "docs/c11/C11-C.5_INVISIBLE_FORCES_ART_DIRECTION_v1.7.md",
+      "bytes": 339,
+      "sha256": "bf9d03ad93452a01b097fbc4dee76b8db28c4e906e6fb632db63d9858353b43d"
+    },
+    {
+      "path": "docs/c11/C11-C.5_INVISIBLE_FORCES_V1_VISUAL_CONTRACT_v1.0.md",
+      "bytes": 3340,
+      "sha256": "fb0048b9eceafdf593b31a86d73194e8aa889e2117de72cbaaf0c4508f53aab1"
+    },
+    {
+      "path": "docs/c11/C11-C_COLOR_VARIATION_POLICY_v1.9.1.md",
+      "bytes": 445,
+      "sha256": "60b040a6c79f14e72c484e16f259cb785bbf761fe33eb647c1178dd5580eeaf7"
+    },
+    {
+      "path": "docs/c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v1.0.md",
+      "bytes": 1747,
+      "sha256": "7f3cd3dc9a2d10ae14df620ecc12674000a15a036ed010a933ed5225f1a349c0"
+    },
+    {
+      "path": "docs/c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v1.9.1.md",
+      "bytes": 1713,
+      "sha256": "2d8197fee96f3bfed32245252988ef086da489672c180350b90a909c3ad2e332"
+    },
+    {
+      "path": "docs/c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v2.0.md",
+      "bytes": 1793,
+      "sha256": "96658909b061c78725264016e600ab11be773728ca52a3637323a82c88a08900"
+    },
+    {
+      "path": "docs/c11/C11-C_EDITORIAL_TEXT_GENERATION_CONTRACT_v1.0.md",
+      "bytes": 2213,
+      "sha256": "76f8fbc0d2fae6d6231f1ff42d5428e153e7ff319b703dc4bfec4932cbb58f67"
+    },
+    {
+      "path": "docs/c11/C11-C_LSP_v1.6_IMPLEMENTATION_NOTES.md",
+      "bytes": 1016,
+      "sha256": "4781a86e91145c0f71d6a17abcccbf5bf723b46a5eb2d952e144018a707944a0"
+    },
+    {
+      "path": "docs/c11/C11-C_MULTISEED_STAGE_STATUS_v1.0.md",
+      "bytes": 833,
+      "sha256": "b95d8e77f33b3f9ea8c467752632bc0b60d7bef2d986d37b4b55cbf6eb222ff1"
+    },
+    {
+      "path": "docs/c11/C11-C_PRODUCTION_BULK_WORKFLOW_v2.0.md",
+      "bytes": 273,
+      "sha256": "d142d25ff781decefc4a98db7bfd16da7dd57d50273943e19cf366ffb1e9095a"
+    },
+    {
+      "path": "docs/c11/C11-C_REVIEW_ASSETS_EXPORT_CONTRACT_v1.0.md",
+      "bytes": 1141,
+      "sha256": "ddd3e5a94a97f60fcc6663ce5128b22ec0def74c0b1c964bc9627a97df9d6cb6"
+    },
+    {
+      "path": "docs/c11/C11-C_REVIEW_TOOLING_FIX_1.0.2.md",
+      "bytes": 341,
+      "sha256": "2c981aa665a39e807a4e534bf9c62c64ef10469246eda2c80322f425680ad025"
+    },
+    {
+      "path": "docs/c11/C11-C_TECHNOBABBLE_GENERATION_CONTRACT_v2.0.md",
+      "bytes": 390,
+      "sha256": "32f9f4246aa0e63bcda854c6fec0d95325184287da97c489e4ef7a39d1842fea"
+    },
+    {
+      "path": "docs/c11/C11-C_TEXT_TEMPLATE_EXAMPLES_v2.0.md",
+      "bytes": 450,
+      "sha256": "2265c9abde5ed02c563e8e13a52676d5166646c45e9c55848d4f92d20fd2b07b"
+    },
+    {
+      "path": "docs/c11/C11-C_VARIATION_ENGINE_v1.0.md",
+      "bytes": 1173,
+      "sha256": "58ed4dd11d11c712d1791b7e5d4a72550ad6d23224a9b37095b915ccbf7acb41"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_ART_DIRECTION_V1.8_COLOR_ZOOM_FIX.md",
+      "bytes": 1436,
+      "sha256": "8f0ea77f9e740c66a6da6b85e56037a6a94d3526ff5337b37f6e2a25950bfb32"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_BULK_AND_HEADER_RULES_v1.0.md",
+      "bytes": 671,
+      "sha256": "ceeef51c1ba425fdfaf2e87699f5b88ce9d790807e9590d22e3735d7d962d95f"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_GRAMMAR_VARIATION_v1.5.md",
+      "bytes": 8183,
+      "sha256": "e773ea3ae24a93e1f49b998858dda4ad91508cca0506b33dd4f540c23af36639"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_TEXT_PLACEMENT_v1.0.md",
+      "bytes": 909,
+      "sha256": "f4b06707e03c9d8bada91b2a94fa90c879ec3c4f7b9f45dcf76f2f81666b5c1e"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_VARIATION_MODEL_v1.0.md",
+      "bytes": 1337,
+      "sha256": "0bcea500a570e17848aef59754400934767b0ec2bc19e29396f30fe84ec41fca"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_VARIATION_MODEL_v1.1.md",
+      "bytes": 1639,
+      "sha256": "9245d9d2f52697ef3a899950aef671e2b90bf0d581a3d18ed3350a4e749a6fab"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/C11C_PRODUCTION_SEED_BANK_v1.json",
+      "bytes": 571,
+      "sha256": "5a6b5a01312580cb76a7bd3a6e9bd4ef0674f241b32dbf71bfa669a6526608c0"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/README.md",
+      "bytes": 2949,
+      "sha256": "441a7e5cc2b1c9608491225689dc80c77a7a30c3f5f8e6b5d6100f43a8f6fbbb"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/SEED_MATRIX_C11C_V1.json",
+      "bytes": 325,
+      "sha256": "443c2520ee574f9411a1478c1806c5b08762941fa3bb460d88cafda4189fe60a"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_all_review_assets.ps1",
+      "bytes": 529,
+      "sha256": "f2dff72e60097c583595d57f70c8970241ccc773934f2d1494708b330dddcf52"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_gifs.ps1",
+      "bytes": 1753,
+      "sha256": "24b222dddebf0b69745129cff2bb459479e8501e5ca0834a4161f4dfe5d621cd"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/export_review_keyframes.ps1",
+      "bytes": 1453,
+      "sha256": "cfedadfd7d2c1464ef962ff8a9ca638374a9849ae5dfaa39b6be41a36923c06a"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_all_c11c_visual_loops.ps1",
+      "bytes": 869,
+      "sha256": "7be443dad13c6eb4d991505c39de2d9b597dffbc6e757aed16e688bf7eda248c"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1",
+      "bytes": 3223,
+      "sha256": "c23ef8167976dfe741c1e22dea3b1a32579725bc95b8265dfb9eea51d34fc4ae"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_production_bulk.ps1",
+      "bytes": 1038,
+      "sha256": "164c4f81c9d04005bdb8c1b6367a69a081adab561009acd260fb8046fadb4e54"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1",
+      "bytes": 624,
+      "sha256": "b3cb98acbfac556b98d1480a39bba7eac6898220c2a4e507aee50b33193e76a0"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1",
+      "bytes": 641,
+      "sha256": "7b0d3644d594a6e443cd5f938a6cb0ebfafeb3b9d833393ae9fbe013de323dfc"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1",
+      "bytes": 677,
+      "sha256": "6de93dfa67fa8b623a5547326ec5cd5b6c45fde8bf93d88c3ca00fbdf7157ed0"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_living_particles_grammar_coverage.ps1",
+      "bytes": 404,
+      "sha256": "8a54509cc47a114f7eb7b95c1d0636d18951fda77a590a70d144bb1def1f29ac"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_remaining_visual_loops.ps1",
+      "bytes": 807,
+      "sha256": "f185750c9fca8e4c9d172a72233ba4d1a91e34a46d05b7aead9aa1c6c31d4408"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_sacred_symmetry_grammar_coverage.ps1",
+      "bytes": 403,
+      "sha256": "51cbb4d20950dd9b9d4a6890bda7056c363ff0c9c62cfe44305457225273aa23"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CEditorialAnimator.gd",
+      "bytes": 2834,
+      "sha256": "cc5931439a607449574de8d3b8492281b237321f2aae41446e27e7852bf563c7"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "bytes": 12742,
+      "sha256": "8bfb62a725f560bc36cdbf45aa19da6748397ae47bd8bb6d6971ab4bc94e3d32"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CTheme.gd",
+      "bytes": 233,
+      "sha256": "d1851f42169ced55db471676ee21ac140178b200e00eadd3df3c99a1e77c002e"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "bytes": 13684,
+      "sha256": "dc6bb552faf1a17450e3c3d7fcbd741f9c909514f9a502c750aa8490f52a9bfe"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VARIATION_PROFILE_SPEC_v1.0.json",
+      "bytes": 1630,
+      "sha256": "d67365c2f00515196175e4eecf6fbf9962bb6dc8acf75afa811a0cec75e3eb6b"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VISUAL_GRAMMAR_SPEC_v1.5.json",
+      "bytes": 1851,
+      "sha256": "bb340d95e064012ca170cfd6c33fff4ba54d2fd730934f51fe3fb56bc532cc21"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VISUAL_GRAMMAR_SPEC_v1.6.json",
+      "bytes": 1615,
+      "sha256": "340f7853e716ed6b7ec3d5647735ddd65a1b365326e7c1e60949df7d43db7688"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/README.md",
+      "bytes": 259,
+      "sha256": "dffefae563dec2cb9d4bb95802e217fb6ae260212dfe70e4184c47528d968de7"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/README_v1.9.md",
+      "bytes": 418,
+      "sha256": "e8cf3f7b2a9adba95bc129d4cb80ccadd76a3329307104f5cc2bdee821c5c4e2"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json",
+      "bytes": 2793,
+      "sha256": "e531fbb048c17171e4aaed758cc991eab9b21f2eb81c697c5b42ee9f20d7b15b"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DICTIONARY_v1.0.json",
+      "bytes": 1813,
+      "sha256": "6d6ec73d61bac5487843fee32a5b4284bafd434be4e805e42d14242e3e25d0e5"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TechnobabbleGenerator.gd",
+      "bytes": 5149,
+      "sha256": "3b2390dda1fa7659eb5b7461f0441d999fbe3a7447c4ede69dfc9cebfa5443d0"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/__pycache__/generate_c11c_ambient_audio.cpython-313.pyc",
+      "bytes": 7881,
+      "sha256": "cde72c8395c527b67622b29abc9b68b90e9344404b05e6070a096e1abd652346"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/__pycache__/write_social_metadata.cpython-313.pyc",
+      "bytes": 4178,
+      "sha256": "571301b9c5b7e03e1c8d63ad01edee80466d25d89d2ac32093fe6bbc1edfe7f0"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/generate_c11c_ambient_audio.py",
+      "bytes": 4393,
+      "sha256": "410cc3ddabb2eac4601923c6b66d49739634b768570a2291076b3a0471226127"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/write_social_metadata.py",
+      "bytes": 2915,
+      "sha256": "c01174f3336719590ed60a75c13756df101d04ce7404c812619c5ca49c8c5c4f"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloom.gdshader",
+      "bytes": 9981,
+      "sha256": "0e42275d4f6ac98c86bb151b7ee2e06c04b249729ca84b077051e79d863f43be"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+      "bytes": 11651,
+      "sha256": "a730c50b6cafd75cc33b16c91601c0b812301827564f7e6a6f84ecedfbebfd98"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.tscn",
+      "bytes": 224,
+      "sha256": "806bed600f7550e7aa5c10175359c7ce545581ce206dc73e31c7c265cc398d5e"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomRenderer.gd",
+      "bytes": 3478,
+      "sha256": "78102f64829bda24ae56d50b5ad16a69b8674569b22133509e335649f08861f7"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/README.md",
+      "bytes": 1177,
+      "sha256": "2e913bbcaa14cf534e40806882941d43c8f15d9f2765cf2170638caf330fef9e"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/generate_c11c_fractal_bloom_v1_music.py",
+      "bytes": 574,
+      "sha256": "cf87c910fbc04499b2a3e4ecdf8525f96c610a59eee952b4f09504e64374d66c"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/generate_fractal_bloom_music.py",
+      "bytes": 2380,
+      "sha256": "5000cbccf4928da53242b391dd4ffc6f60876574293ca42c20c1eea02f6cf9af"
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "bytes": 7397,
+      "sha256": "9fad5864943eba556350e48f48b3f312f99231c7cdc5754a3b97c7ebbdf66d38"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "bytes": 10073,
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "bytes": 11770,
+      "sha256": "5f15b676b68952dd53ecad09b3691b2fdd8ee6e1e1d50c5ff0d30b9534242aa8"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.tscn",
+      "bytes": 230,
+      "sha256": "11e214c6d8bba6003d7ef734477fdfc22cbe8238cae49c98692bd9b7487745fc"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "bytes": 3918,
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/README.md",
+      "bytes": 1607,
+      "sha256": "f5663eb1e93529588a750b83db6f347a9339a1380d410c453b935425db035a0f"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "bytes": 1531,
+      "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/generate_c11c_geometric_waves_v1_music.py",
+      "bytes": 580,
+      "sha256": "1e79fe7b09299fc9d7a17fa272ab9f52a5ad50128c224bca2939e47a0203b65d"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/generate_geometric_waves_music.py",
+      "bytes": 4241,
+      "sha256": "70591d0efe6a780dff4e24628222e5845d83b344c10ad679735ed39e95b47c80"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "bytes": 7411,
+      "sha256": "c78a911ffbe32246e7687ffc746ce557927b0fab7d26dc0f2d8dfa70f7a05bac"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForces.gdshader",
+      "bytes": 7392,
+      "sha256": "b35da54f6636152d7d6316c2985c9e22b0fe0f0e4e2c69af9bf497844ec121e4"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+      "bytes": 11764,
+      "sha256": "aa8cee01505bbe4d0a8d5bf92d31e03ef3fecca5cb8cbb55431fcdbc034bcfae"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn",
+      "bytes": 233,
+      "sha256": "85401c7c5a45283f90f090a28a1d0bb639d78dec4800e6eb730d60080972cb1c"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesRenderer.gd",
+      "bytes": 3069,
+      "sha256": "8b1d9293a12f8f453e9327bb41b51b765b1001c363022e316f893d87c2e5c249"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/README.md",
+      "bytes": 768,
+      "sha256": "acfaa19084fe42614923f73b1f9de460455517851edd1fc00ca55b0afdbc6525"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/generate_c11c_invisible_forces_v1_music.py",
+      "bytes": 589,
+      "sha256": "0cf3ce2b0720808bda128a5b912a9fe03fe24e2302636b7bad210d644bc5f931"
+    },
+    {
+      "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+      "bytes": 7418,
+      "sha256": "0adf9971487788e8393b377a15b2b57a05cb3144ddcd2a222d3099155af1ef9b"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader",
+      "bytes": 8571,
+      "sha256": "f3f2dc74b176045d55f5c549471fe6931452fbf3504665f6a918823d96213217"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "bytes": 11769,
+      "sha256": "65c938c5c4f6d3f03a496b29e58bf252a776745f7cb6f5c2c34f731885fa0cab"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.tscn",
+      "bytes": 233,
+      "sha256": "b574dd963ea6556eff08ef1d6924f54e0b027238f98b717dc02e07584f22dfa1"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesRenderer.gd",
+      "bytes": 3348,
+      "sha256": "4ef7a6be6e95d4bf0be558743502701da9be15b47e95c688fe4236f4f7985c19"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/README.md",
+      "bytes": 765,
+      "sha256": "e7eb1d9fcb2f968b463cc252145559c4ee9ce80f3e5fcb14e3b5135f64431275"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/generate_c11c_living_particles_v1_music.py",
+      "bytes": 589,
+      "sha256": "3d47634e41d79dbf16b73a84c728ca2f932a47270b3b3bf7fc2d8316166101d3"
+    },
+    {
+      "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "bytes": 7418,
+      "sha256": "aa1a39eca6a696a8b927697f3ed7139535b08d14920054012a62bf709e33e068"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/README.md",
+      "bytes": 769,
+      "sha256": "1d68ba82d3603e40589b949c5fd953d6e71daaea67a71a885f40b6edf3e6622a"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader",
+      "bytes": 10849,
+      "sha256": "d8c77013bbbc408b76b0c1d9097a536f45ca52ea7e147bf3050af604c76ef75b"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+      "bytes": 11696,
+      "sha256": "a027db8f4b317b66962ca2c84273d55c33ec556959566fa6bed04d6bfaef5541"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.tscn",
+      "bytes": 230,
+      "sha256": "231e24928f0e4e8287b2fccc8fae4e6deec45eea4dbf4f7ac5cd9bec0676ffa5"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd",
+      "bytes": 3202,
+      "sha256": "8df3f67725041cb0903ed9bfe5c89f8eeaf08d8d2dab418aa1ef99ebe2c30369"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/generate_c11c_sacred_symmetry_v1_music.py",
+      "bytes": 586,
+      "sha256": "c93e37b6848907eca0d3c1ba5f15f59f6c7492969f96b8f80e7cfcc0ce989c9e"
+    },
+    {
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+      "bytes": 7411,
+      "sha256": "06a7e92821c5d9e286452005be240cba71159c03f7553fe4f6addcec3440aa5e"
+    }
+  ]
+}

@@ -21,6 +21,7 @@ uniform float core_scale = 1.0;
 uniform float density_bias = 1.0;
 uniform float color_diversity = 0.82;
 uniform float color_phase = 0.0;
+uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 deep_color : source_color = vec4(0.04, 0.28, 0.24, 1.0);
 uniform vec4 mid_color : source_color = vec4(0.07, 0.71, 0.64, 1.0);
 uniform vec4 bright_color : source_color = vec4(0.22, 0.90, 0.77, 1.0);
@@ -53,29 +54,30 @@ vec2 mode_position(float id, float local_phase) {
 
     if (grammar_mode == 0) {
         // SWARM — collective cloud with a gentle moving centroid.
-        vec2 drift = 0.035 * vec2(sin(local_phase * 0.72 + seed_phase), cos(local_phase * 0.51 - seed_phase));
+        vec2 drift = 0.035 * vec2(sin(local_phase * 1.0 + seed_phase), cos(local_phase * 1.0 - seed_phase));
         p += drift * (0.35 + 0.65 * h.x);
-        p = rotate2(p, 0.08 * sin(local_phase * 0.45 + h.x * C11C_TAU));
+        p = rotate2(p, 0.08 * sin(local_phase * 1.0 + h.x * C11C_TAU));
     } else if (grammar_mode == 1) {
         // VORTEX — particles orbit an attractor with radius-dependent angular velocity.
         vec2 center = attractor_a * 0.62;
         float turns = 0.22 + 0.95 * h.y;
         float radius = mix(0.035, 0.34 * particle_spread, h.y);
-        float theta = ang + local_phase * (0.45 + 1.20 * h.y) * swirl_bias;
+        float swirl_cycles = float(clamp(int(round(swirl_bias)), 1, 2));
+        float theta = ang + local_phase * swirl_cycles;
         p = center + radius * vec2(cos(theta), sin(theta));
-        p += attractor_b * 0.10 * sin(local_phase * 0.7 + h.x * C11C_TAU);
+        p += attractor_b * 0.10 * sin(local_phase * 1.0 + h.x * C11C_TAU);
         p *= 0.92 + 0.08 * sin(C11C_TAU * cycle + h.x * C11C_TAU + seed_phase);
     } else if (grammar_mode == 2) {
         // COLLISION CLOUD — two populations converge, collide, deflect and separate.
         float side = step(0.5, h.x);
-        vec2 left = vec2(-0.28, -0.02) + vec2(0.025, 0.035) * vec2(sin(local_phase + h.y * 7.0), cos(local_phase * 0.7 + h.x * 9.0));
-        vec2 right = vec2(0.28, 0.02) + vec2(-0.025, 0.035) * vec2(sin(local_phase * 0.9 + h.y * 8.0), cos(local_phase * 0.64 + h.x * 11.0));
+        vec2 left = vec2(-0.28, -0.02) + vec2(0.025, 0.035) * vec2(sin(local_phase + h.y * 7.0), cos(local_phase * 1.0 + h.x * 9.0));
+        vec2 right = vec2(0.28, 0.02) + vec2(-0.025, 0.035) * vec2(sin(local_phase * 1.0 + h.y * 8.0), cos(local_phase * 1.0 + h.x * 11.0));
         vec2 source = mix(left, right, side);
         vec2 target = mix(right, left, side);
         float collide = smoothstep(0.10, 0.48, 0.5 + 0.5 * sin(C11C_TAU * cycle - C11C_PI * 0.5));
         vec2 q = mix(source, target, collide * 0.92);
         vec2 tangent = normalize(vec2(-(target - source).y, (target - source).x) + vec2(0.0001));
-        q += tangent * sin(local_phase * 1.4 + h.x * C11C_TAU) * collide * collision_strength * 0.065;
+        q += tangent * sin(local_phase * 1.0 + h.x * C11C_TAU) * collide * collision_strength * 0.065;
         if (collide > 0.82) {
             vec2 away = normalize(q - vec2(0.0) + vec2(0.0001));
             q += away * (collide - 0.82) * 0.23 * collision_strength;
@@ -84,12 +86,12 @@ vec2 mode_position(float id, float local_phase) {
         p *= particle_spread * (0.92 + 0.16 * h.y);
     } else if (grammar_mode == 3) {
         // ORGANIC PULSE — a living central mass that breathes and sheds peripheral matter.
-        float breath = 0.72 + 0.22 * sin(local_phase * 0.72 + seed_phase);
+        float breath = 0.72 + 0.22 * sin(local_phase * 1.0 + seed_phase);
         float radius = mix(0.025, 0.31, pow(h.y, 0.95)) * (0.86 + 0.16 * breath);
-        float radial_wave = 0.018 * sin(local_phase * 1.1 + h.x * C11C_TAU * 2.0 + radius * 16.0);
+        float radial_wave = 0.018 * sin(local_phase * 1.0 + h.x * C11C_TAU * 2.0 + radius * 16.0);
         p = vec2(cos(ang), sin(ang)) * (radius + radial_wave);
         p *= particle_spread;
-        p += 0.045 * vec2(sin(local_phase * 0.4), cos(local_phase * 0.53)) * (1.0 - h.y);
+        p += 0.045 * vec2(sin(local_phase * 1.0), cos(local_phase * 1.0)) * (1.0 - h.y);
     } else {
         // MAGNETIC FILAMENT CLOUD — density follows a soft dipolar/curling field.
         vec2 da = p - attractor_a;
@@ -101,13 +103,13 @@ vec2 mode_position(float id, float local_phase) {
         float mix_w = 0.5 + 0.5 * sin(local_phase * swirl_bias + id * 0.21);
         p += va * mix_w * 0.42 + vb * (1.0 - mix_w) * 0.42;
         p += turbulence * 2.2 * vec2(sin(5.0 * p.y + local_phase + id * 0.13), cos(4.0 * p.x - 0.8 * local_phase));
-        p = rotate2(p, 0.12 * sin(local_phase * 0.52 + seed_phase));
+        p = rotate2(p, 0.12 * sin(local_phase * 1.0 + seed_phase));
     }
 
     // Shared soft-field turbulence; it never draws line geometry.
     p += turbulence * 0.85 * vec2(
-        sin(3.7 * p.y + local_phase * 0.7 + id * 0.17),
-        cos(3.2 * p.x - local_phase * 0.53 + id * 0.11)
+        sin(3.7 * p.y + local_phase * 1.0 + id * 0.17),
+        cos(3.2 * p.x - local_phase * 1.0 + id * 0.11)
     );
     return p;
 }
@@ -124,18 +126,18 @@ void fragment() {
     p.x *= BODY_ASPECT;
     float r = length(p);
 
-    vec3 rgb = vec3(0.004, 0.012, 0.018);
+    vec3 rgb = background_color.rgb;
     float density = 0.0;
     float hero = 0.0;
     float active_collision = 0.0;
 
-    float master_breath = 0.84 + 0.16 * sin(phase * 0.7 + seed_phase);
+    float master_breath = 0.84 + 0.16 * sin(phase * 1.0 + seed_phase);
 
     for (int i = 0; i < 180; i++) {
         if (float(i) < particle_count) {
             float id = float(i);
             vec2 h = hash2(id);
-            float particle_phase = phase * phase_rate * (0.78 + 0.28 * hash1(id + 22.0)) + C11C_TAU * hash1(id + 48.0);
+            float particle_phase = phase * phase_rate + C11C_TAU * hash1(id + 48.0);
             vec2 head = mode_position(id, particle_phase);
 
             float depth = hash1(id + 71.0);
@@ -146,7 +148,7 @@ void fragment() {
 
             float halo = soft_blob(p, head, size * 2.8, 1.0, 0.0) * 0.22;
             float contribution = (core + halo) * (0.74 + 0.42 * depth) * density_bias;
-            float warm_state = 0.5 + 0.5 * sin(particle_phase * 0.55 + id * 0.31 + seed_phase);
+            float warm_state = 0.5 + 0.5 * sin(particle_phase * 1.0 + id * 0.31 + seed_phase);
 
             float particle_color = fract(hash1(id + 401.0 + color_phase * 3.1) + 0.23 * warm_state);
             vec3 low_color = mix(deep_color.rgb, mid_color.rgb, smoothstep(0.0, 0.55, particle_color));

@@ -4,7 +4,7 @@ extends RefCounted
 ## C11-C.6 — Presentation-only deterministic variation manifold.
 ## Same family + same seed => same profile. No production engine state is touched.
 
-const VERSION: String = "1.8.0"
+const VERSION: String = "2.0.1"
 
 static func build(family_id: String, seed_value: int) -> Dictionary:
     var family: String = _canonical_family(family_id)
@@ -38,7 +38,19 @@ static func _geometric(seed_value: int) -> Dictionary:
         "warm_cold_harmonic",
         "indigo_rose",
         "aqua_ultraviolet",
-        "silver_ice"
+        "silver_ice",
+        "coral_violet",
+        "mint_fuchsia",
+        "acid_lime_blue",
+        "sky_rose",
+        "lava_blue",
+        "ultra_pink_cyan",
+        "violet_lime",
+        "obsidian_teal",
+        "ember_aqua",
+        "violet_gold",
+        "fuchsia_teal",
+        "arctic_orange"
     ]
     var grammar_index: int = _index(seed_value, 11, grammar_modes.size())
     var palette_index: int = _index(seed_value, 13, palette_modes.size())
@@ -48,6 +60,7 @@ static func _geometric(seed_value: int) -> Dictionary:
         "grammar_name": grammar_modes[grammar_index],
         "palette_mode": palette_index,
         "palette_name": palette_modes[palette_index],
+        "loop_cycles": float(1 + _index(seed_value, 97, 3)),
         "polygon_sides": [5, 6, 7, 8][_index(seed_value, 17, 4)],
         "wave_frequency": lerpf(12.0, 28.0, _unit(seed_value, 19)),
         "morph": lerpf(0.18, 0.92, _unit(seed_value, 23)),
@@ -84,7 +97,19 @@ static func _fractal(seed_value: int) -> Dictionary:
         "monochrome_indigo",
         "blue_cyan_ice",
         "violet_rose_cyan",
-        "deep_teal_violet"
+        "deep_teal_violet",
+        "ultraviolet_mint",
+        "acid_lime_violet",
+        "rose_ultraviolet",
+        "royal_blue_fuchsia",
+        "coral_ultraviolet",
+        "mint_magenta",
+        "cyan_lime_nebula",
+        "royal_violet_rose",
+        "crimson_cyan_nebula",
+        "gold_violet_nebula",
+        "lime_violet_void",
+        "ice_rose_nebula"
     ]
     var grammar_index: int = _index(seed_value, 101, grammar_modes.size())
     var palette_index: int = _index(seed_value, 103, palette_modes.size())
@@ -94,7 +119,8 @@ static func _fractal(seed_value: int) -> Dictionary:
         "grammar_name": grammar_modes[grammar_index],
         "palette_mode": palette_index,
         "palette_name": palette_modes[palette_index],
-        "zoom_strength": lerpf(0.38, 0.82, _unit(seed_value, 105)),
+        "loop_cycles": float(1 + _index(seed_value, 99, 3)),
+        "zoom_strength": lerpf(0.10, 0.42, _unit(seed_value, 105)),
         "warp_strength": lerpf(0.012, 0.058, _unit(seed_value, 107)),
         "bloom_strength": lerpf(0.40, 0.82, _unit(seed_value, 109)),
         "layer_softness": lerpf(0.48, 1.04, _unit(seed_value, 113)),
@@ -108,7 +134,8 @@ static func _fractal(seed_value: int) -> Dictionary:
         "branch_density": lerpf(0.76, 1.32, _unit(seed_value, 163)),
         "detail_scale": lerpf(0.86, 1.34, _unit(seed_value, 167)),
         "spiral_amount": lerpf(0.45, 1.45, _unit(seed_value, 173)),
-        "color_diversity": lerpf(0.62, 1.0, _unit(seed_value, 179))
+        "color_diversity": lerpf(0.82, 1.0, _unit(seed_value, 179)),
+        "color_phase": lerpf(-3.1415927, 3.1415927, _unit(seed_value, 181))
     }
 
 static func _sacred(seed_value: int) -> Dictionary:
@@ -122,7 +149,19 @@ static func _sacred(seed_value: int) -> Dictionary:
         "warm_obsidian",
         "champagne_brass",
         "copper_fire",
-        "platinum_warm_gold"
+        "platinum_warm_gold",
+        "rose_gold",
+        "antique_brass",
+        "warm_platinum",
+        "ivory_gold",
+        "rose_bronze",
+        "champagne_ivory",
+        "copper_platinum",
+        "warm_silver",
+        "black_gold_crimson",
+        "midnight_brass",
+        "royal_copper",
+        "ember_champagne"
     ]
     var grammar_index: int = _index(seed_value, 127, grammar_modes.size())
     var palette_index: int = _index(seed_value, 129, palette_modes.size())
@@ -132,6 +171,7 @@ static func _sacred(seed_value: int) -> Dictionary:
         "grammar_name": grammar_modes[grammar_index],
         "palette_mode": palette_index,
         "palette_name": palette_modes[palette_index],
+        "loop_cycles": float(1 + _index(seed_value, 125, 3)),
         "symmetry_order": orders[_index(seed_value, 131, orders.size())],
         "ring_bias": lerpf(0.30, 0.82, _unit(seed_value, 133)),
         "glow": lerpf(0.40, 0.78, _unit(seed_value, 137)),
@@ -140,11 +180,11 @@ static func _sacred(seed_value: int) -> Dictionary:
         "ring_scale": lerpf(0.90, 1.08, _unit(seed_value, 151)),
         "core_scale": lerpf(0.82, 1.16, _unit(seed_value, 157)),
         "tick_density": lerpf(0.82, 1.34, _unit(seed_value, 163)),
-        "mechanical_rate": float([1.0, 1.5, 2.0][_index(seed_value, 167, 3)]),
+        "mechanical_rate": float([1.0, 2.0, 3.0][_index(seed_value, 167, 3)]),
         "macro_scale": lerpf(0.86, 1.04, _unit(seed_value, 169)),
         "node_density": lerpf(0.72, 1.28, _unit(seed_value, 173)),
         "fold_depth": lerpf(0.78, 1.22, _unit(seed_value, 179)),
-        "color_diversity": lerpf(0.62, 1.0, _unit(seed_value, 181)),
+        "color_diversity": lerpf(0.82, 1.0, _unit(seed_value, 181)),
         "color_phase": lerpf(-3.1415927, 3.1415927, _unit(seed_value, 183))
     }
 
@@ -158,7 +198,19 @@ static func _living(seed_value: int) -> Dictionary:
         "petrol_aqua",
         "seafoam_emerald",
         "deep_teal_spectral",
-        "algae_green_aqua"
+        "algae_green_aqua",
+        "cobalt_algae",
+        "lime_turquoise",
+        "ice_cyan_mint",
+        "jade_chartreuse",
+        "mint_chartreuse",
+        "cyan_golden",
+        "forest_aqua",
+        "ice_jade",
+        "deep_violet_algae",
+        "ember_seafoam",
+        "magenta_plankton",
+        "lime_cyan_abyss"
     ]
     var grammar_index: int = _index(seed_value, 181, grammar_modes.size())
     var palette_index: int = _index(seed_value, 183, palette_modes.size())
@@ -168,6 +220,7 @@ static func _living(seed_value: int) -> Dictionary:
         "grammar_name": grammar_modes[grammar_index],
         "palette_mode": palette_index,
         "palette_name": palette_modes[palette_index],
+        "loop_cycles": float(1 + _index(seed_value, 179, 3)),
         "particle_count": lerpf(104.0, 170.0, _unit(seed_value, 187)),
         "glow": lerpf(0.56, 0.88, _unit(seed_value, 191)),
         "attractor_a_x": lerpf(-0.22, -0.04, _unit(seed_value, 197)),
@@ -179,11 +232,11 @@ static func _living(seed_value: int) -> Dictionary:
         "turbulence": lerpf(0.012, 0.046, _unit(seed_value, 233)),
         "attractor_strength": lerpf(0.72, 1.44, _unit(seed_value, 239)),
         "particle_size_scale": lerpf(0.74, 1.30, _unit(seed_value, 241)),
-        "phase_rate": lerpf(0.68, 1.24, _unit(seed_value, 251)),
+        "phase_rate": float([1.0, 2.0, 3.0][_index(seed_value, 251, 3)]),
         "collision_strength": lerpf(0.72, 1.40, _unit(seed_value, 257)),
         "core_scale": lerpf(0.78, 1.18, _unit(seed_value, 259)),
         "density_bias": lerpf(0.86, 1.16, _unit(seed_value, 261)),
-        "color_diversity": lerpf(0.72, 1.0, _unit(seed_value, 263)),
+        "color_diversity": lerpf(0.88, 1.0, _unit(seed_value, 263)),
         "color_phase": lerpf(-3.1415927, 3.1415927, _unit(seed_value, 269))
     }
 
@@ -204,7 +257,19 @@ static func _invisible(seed_value: int) -> Dictionary:
         "warm_monochrome",
         "scarlet_copper",
         "vermilion_peach_gold",
-        "burgundy_amber"
+        "burgundy_amber",
+        "magenta_red_gold",
+        "plasma_orange",
+        "ember_gold",
+        "rust_yellow",
+        "scarlet_gold",
+        "ember_champagne",
+        "ruby_copper",
+        "firebrick_gold",
+        "crimson_lime_gold",
+        "purple_fire_gold",
+        "burnished_cyan",
+        "hot_magenta_orange"
     ]
     var grammar_index: int = _index(seed_value, 271, grammar_modes.size())
     var palette_index: int = _index(seed_value, 277, palette_modes.size())
@@ -214,20 +279,22 @@ static func _invisible(seed_value: int) -> Dictionary:
         "grammar_name": grammar_modes[grammar_index],
         "palette_mode": palette_index,
         "palette_name": palette_modes[palette_index],
+        "loop_cycles": float(1 + _index(seed_value, 269, 3)),
         "trace_count": lerpf(50.0, 88.0, _unit(seed_value, 281)),
         "curvature": lerpf(0.52, 1.16, _unit(seed_value, 283)),
         "glow": lerpf(0.50, 0.90, _unit(seed_value, 293)),
         "field_rotation": lerpf(-0.42, 0.42, _unit(seed_value, 307)),
         "storm_offset_x": lerpf(-0.16, 0.16, _unit(seed_value, 311)),
         "storm_offset_y": lerpf(-0.12, 0.12, _unit(seed_value, 313)),
-        "pulse_speed": lerpf(0.70, 1.36, _unit(seed_value, 317)),
+        "pulse_speed": lerpf(0.84, 1.34, _unit(seed_value, 317)),
         "field_twist": lerpf(0.62, 1.42, _unit(seed_value, 331)),
         "pulse_width": lerpf(0.62, 1.34, _unit(seed_value, 337)),
         "storm_scale": lerpf(0.74, 1.18, _unit(seed_value, 347)),
         "lens_strength": lerpf(0.42, 0.92, _unit(seed_value, 349)),
         "basin_depth": lerpf(0.45, 1.05, _unit(seed_value, 353)),
         "pole_separation": lerpf(0.16, 0.34, _unit(seed_value, 359)),
-        "quadrupole_skew": lerpf(0.78, 1.28, _unit(seed_value, 367))
+        "quadrupole_skew": lerpf(0.78, 1.28, _unit(seed_value, 367)),
+        "color_phase": lerpf(-3.1415927, 3.1415927, _unit(seed_value, 369))
     }
 
 static func _canonical_family(family_id: String) -> String:

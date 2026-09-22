@@ -5,22 +5,18 @@
                   314159,
                   271828,
                   161803,
-                  112358,
-                  577215,
-                  8675309,
-                  424242,
-                  990001
+                  112358
               ],
     "family_count":  5,
-    "seed_count":  8,
-    "render_count":  40,
+    "seed_count":  4,
+    "render_count":  20,
     "results":  [
                     {
                         "family":  "c11c_geometric_waves_v1",
                         "seed":  314159,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -28,7 +24,7 @@
                         "seed":  314159,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -36,7 +32,7 @@
                         "seed":  314159,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -44,7 +40,7 @@
                         "seed":  314159,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -52,7 +48,7 @@
                         "seed":  314159,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -60,7 +56,7 @@
                         "seed":  271828,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -68,7 +64,7 @@
                         "seed":  271828,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -76,7 +72,7 @@
                         "seed":  271828,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -84,7 +80,7 @@
                         "seed":  271828,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -92,7 +88,7 @@
                         "seed":  271828,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -100,7 +96,7 @@
                         "seed":  161803,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -108,7 +104,7 @@
                         "seed":  161803,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -116,7 +112,7 @@
                         "seed":  161803,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -124,7 +120,7 @@
                         "seed":  161803,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -132,7 +128,7 @@
                         "seed":  161803,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -140,7 +136,7 @@
                         "seed":  112358,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -148,7 +144,7 @@
                         "seed":  112358,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -156,7 +152,7 @@
                         "seed":  112358,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
@@ -164,172 +160,12 @@
                         "seed":  112358,
                         "status":  "PASS",
                         "exit":  0,
-                        "artifact_count":  8,
+                        "artifact_count":  7,
                         "footer_mode":  "ON"
                     },
                     {
                         "family":  "c11c_invisible_forces_v1",
                         "seed":  112358,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  8,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_geometric_waves_v1",
-                        "seed":  577215,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_fractal_bloom_v1",
-                        "seed":  577215,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_sacred_symmetry_v1",
-                        "seed":  577215,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_living_particles_v1",
-                        "seed":  577215,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_invisible_forces_v1",
-                        "seed":  577215,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_geometric_waves_v1",
-                        "seed":  8675309,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_fractal_bloom_v1",
-                        "seed":  8675309,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_sacred_symmetry_v1",
-                        "seed":  8675309,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_living_particles_v1",
-                        "seed":  8675309,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_invisible_forces_v1",
-                        "seed":  8675309,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_geometric_waves_v1",
-                        "seed":  424242,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_fractal_bloom_v1",
-                        "seed":  424242,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_sacred_symmetry_v1",
-                        "seed":  424242,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_living_particles_v1",
-                        "seed":  424242,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_invisible_forces_v1",
-                        "seed":  424242,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_geometric_waves_v1",
-                        "seed":  990001,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_fractal_bloom_v1",
-                        "seed":  990001,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_sacred_symmetry_v1",
-                        "seed":  990001,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_living_particles_v1",
-                        "seed":  990001,
-                        "status":  "PASS",
-                        "exit":  0,
-                        "artifact_count":  7,
-                        "footer_mode":  "ON"
-                    },
-                    {
-                        "family":  "c11c_invisible_forces_v1",
-                        "seed":  990001,
                         "status":  "PASS",
                         "exit":  0,
                         "artifact_count":  7,
