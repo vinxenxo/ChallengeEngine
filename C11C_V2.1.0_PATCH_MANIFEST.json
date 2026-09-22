@@ -1,0 +1,16 @@
+{
+  "schema": "C11-C-PATCH-MANIFEST",
+  "revision": "2.1.0",
+  "scope": "workspace_validation_and_production_separation",
+  "changes": [
+    "Remove all trailing commas from PowerShell parameter blocks in the C11-C overlay.",
+    "Separate prototype/review generation from artifact cleanup; no render/review launcher cleans prototype artifacts.",
+    "Add parser-based PowerShell validator.",
+    "Add dedicated production publisher under protected artifacts/production/audiovisual with recovery metadata and catalog.",
+    "Remove obsolete silent MP4 artifact path variables from family launchers.",
+    "Apply strict typing to C11CEditorialColors defaults."
+  ],
+  "frozen_boundaries_modified": false,
+  "c11_modified": false,
+  "c7_modified": false
+}

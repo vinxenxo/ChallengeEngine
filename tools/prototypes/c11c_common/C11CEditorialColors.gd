@@ -5,9 +5,9 @@ extends RefCounted
 ## Presentation-only. No engine/core/simulation/C7 dependencies.
 
 static func palette(family_id: String, palette: Dictionary) -> Dictionary:
-    var primary := Color("FFFFFF")
-    var secondary := Color("FFFFFF")
-    var highlight := Color("FFFFFF")
+    var primary: Color = Color("FFFFFF")
+    var secondary: Color = Color("FFFFFF")
+    var highlight: Color = Color("FFFFFF")
 
     match family_id:
         "geometric":
