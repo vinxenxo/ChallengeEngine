@@ -19,7 +19,7 @@ $Mp4 = Join-Path $ArtifactRoot ($Stem + '.mp4')
 $Gif = Join-Path $ArtifactRoot ($Stem + '.gif')
 $Probe = Join-Path $ArtifactRoot ($Stem + '_ffprobe.json')
 $Audio = Join-Path $ArtifactRoot ($Stem + '_music.wav')
-$AudioScript = Join-Path $PSScriptRoot 'generate_c11c_living_particles_v1_music.py'
+$AudioScript = Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CSafeAmbient.py'
 $GodotLog = Join-Path $ArtifactRoot ($Stem + '_godot.log')
 $Manifest = Join-Path $ArtifactRoot ($Stem + '_manifest.json')
 $Authoring = Join-Path $ArtifactRoot ($Stem + '_authoring.json')
@@ -32,7 +32,7 @@ foreach ($p in @($Avi,$LegacyMp4Silent,$Mp4,$Gif,$Probe,$Audio,$GodotLog,$Manife
 
 Push-Location $ProjectRoot
 try {
-    & godot --path . --scene tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.tscn --write-movie $Avi --fixed-fps 30 --quit-after 540 2>&1 | Tee-Object -FilePath $GodotLog
+    & godot --path . --scene tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.tscn --write-movie $Avi --fixed-fps 30 --resolution 720x1280 --quit-after 540 2>&1 | Tee-Object -FilePath $GodotLog
     $godotExit = $LASTEXITCODE
     if ($godotExit -ne 0) { throw "Godot prototype export failed: exit=$godotExit" }
     $errors = Select-String -Path $GodotLog -Pattern 'SHADER ERROR|Shader compilation failed|SCRIPT ERROR|Parse Error|ERROR:' -SimpleMatch:$false
@@ -46,7 +46,7 @@ try {
     $FrameCount = 540
 
     if (-not $NoSound) {
-        & python $AudioScript $Audio $Seed $loopCycles $DurationSeconds
+        & python $AudioScript $Audio $Seed $loopCycles $DurationSeconds 'living_particles'
         if ($LASTEXITCODE -ne 0) { throw "Music generation failed: exit=$LASTEXITCODE" }
         if (-not (Test-Path -LiteralPath $Audio)) { throw 'Music WAV missing.' }
     }
@@ -72,8 +72,8 @@ try {
     $audioStream = $probe.streams | Where-Object { $_.codec_type -eq 'audio' } | Select-Object -First 1
     if (-not $video) { throw 'Final MP4 has no video stream.' }
     if ((-not $NoSound) -and (-not $audioStream)) { throw 'Final MP4 has no audio stream.' }
-    if ([int]$video.width -ne 540) { throw "Width contract failed: $($video.width)" }
-    if ([int]$video.height -ne 960) { throw "Height contract failed: $($video.height)" }
+    if ([int]$video.width -ne 720) { throw "Width contract failed: $($video.width)" }
+    if ([int]$video.height -ne 1280) { throw "Height contract failed: $($video.height)" }
     if ([string]$video.r_frame_rate -ne '30/1') { throw "FPS contract failed: $($video.r_frame_rate)" }
     if ([int]$video.nb_frames -ne 540) { throw "Frame count contract failed: $($video.nb_frames)" }
     if ([math]::Abs([double]$video.duration - 18.0) -gt 0.05) { throw "Video duration contract failed: $($video.duration)" }
@@ -88,7 +88,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.4_LIVING_PARTICLES_V1'
-        revision = '2.0.5'
+        revision = '2.0.6'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -96,7 +96,7 @@ try {
         grammar = $author.grammar
         palette = $author.palette
         visual = [ordered]@{
-            canvas = '540x960'
+            canvas = '720x1280'
             body = 'y=144..816'
             duration_seconds = 18.0
             fps = 30
@@ -136,11 +136,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.0.5] PASS - 540x960 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.0.5] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.0.5] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.0.5] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.0.5] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.0.6] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.0.6] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.0.6] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.0.6] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.0.6] SOCIAL: " + $Social)
 } finally {
     if (Test-Path -LiteralPath $TempSilent) {
         Remove-Item -Force -LiteralPath $TempSilent -ErrorAction SilentlyContinue

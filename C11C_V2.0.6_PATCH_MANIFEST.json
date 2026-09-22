@@ -1,0 +1,15 @@
+{
+  "revision": "2.0.6",
+  "status": "SOCIAL_DELIVERY_AUDIO_HOTFIX",
+  "canvas": "720x1280",
+  "fps": 30,
+  "frames": 540,
+  "duration_seconds": 18.0,
+  "families": 5,
+  "frozen_boundaries_modified": false,
+  "changes": [
+    "mobile_vivid_palette",
+    "safe_ambient_audio",
+    "720x1280_delivery"
+  ]
+}

@@ -1,0 +1,32 @@
+TITLE: GEOMETRIC WAVES // INTERFERENCE PLANE
+
+DESCRIPTION:
+GEOMETRIC WAVES — visual loop de arte generativa matemática y procedural. Variante INTERFERENCE PLANE con paleta cyan_magenta, seed 398129550. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: geometric
+GRAMMAR: INTERFERENCE PLANE
+PALETTE: cyan_magenta
+SEED: 398129550
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+INTERFERENCE_PLANE | WAVE 19.6 | MORPH 0.87
+OBSERVA COMO VIAJA LA FORMA
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: Sincronizando plano de interferencia... [ACOPLADO] // WAVE 19.64 | MORPH 0.87
+
+HASHTAGS:
+#GenerativeArt #GeometricWaves #MathematicalArt #ProceduralArt #WaveArt #DigitalArt #TechArt #CyberpunkArt #Lissajous #AbstractArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 398129550
+
+CANONICAL MANIFEST:
+GeometricWaves_v1_seed_398129550_manifest.json

@@ -12,6 +12,7 @@ const PaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CPalette
 const EDITORIAL_ANIMATOR_SCRIPT = preload("res://tools/prototypes/c11c_common/C11CEditorialAnimator.gd")
 const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd")
 const EditorialColorsClass = preload("res://tools/prototypes/c11c_common/C11CEditorialColors.gd")
+const ColorBoostClass = preload("res://tools/prototypes/c11c_common/C11CColorBoost.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -21,6 +22,7 @@ const HEADER_HOOK_FONT_SIZE := 18
 const LOOP_DURATION := 18.0
 const FPS := 30
 const FRAME_COUNT := 540
+const OUTPUT_SCALE := 4.0 / 3.0
 const BLACK: Color = C11CThemeClass.SECTION_BACKGROUND
 
 var _renderer: Node2D
@@ -35,6 +37,7 @@ var _header_animator: RefCounted
 var _authoring_json_path: String = ""
 
 func _ready() -> void:
+    scale = Vector2(OUTPUT_SCALE, OUTPUT_SCALE)
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("fractal", _seed)
@@ -68,7 +71,7 @@ func _build_scene() -> void:
     _renderer.name = "FractalBloomRenderer"
     frame.get_body_content_root().add_child(_renderer)
     _renderer.set_background(BLACK)
-    _renderer.set_palette(Color(str(_palette["indigo"])), Color(str(_palette["violet"])), Color(str(_palette["cyan"])), Color(str(_palette["highlight"])))
+    _renderer.set_palette(ColorBoostClass.vivid(Color(str(_palette["indigo"]))), ColorBoostClass.vivid(Color(str(_palette["violet"]))), ColorBoostClass.vivid(Color(str(_palette["cyan"]))), ColorBoostClass.vivid(Color(str(_palette["highlight"]))))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["zoom_strength"]), float(_variation["warp_strength"]), float(_variation["bloom_strength"]), float(_variation["layer_softness"]),
         float(_variation["julia_x_bias"]), float(_variation["julia_y_bias"]), float(_variation["zoom_cycles"]), float(_variation["warp_frequency"]), float(_variation["layer_spread"]),
@@ -118,9 +121,9 @@ func _add_header(root: Control) -> void:
 func _add_footer(root: Control) -> void:
     var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation)
     var line1: String = geek_text
-    var line2: String = "SEED %d | BODY 540X672 | T=18.00S | DETAIL %.2f | %d LOOPS" % [_seed, float(_variation["detail_scale"]), int(_variation["loop_cycles"])]
+    var line2: String = "SEED %d | BODY 720X896 | T=18.00S | DETAIL %.2f | %d LOOPS" % [_seed, float(_variation["detail_scale"]), int(_variation["loop_cycles"])]
     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
-    var line4: String = "BIOLUMINESCENT FRACTAL ART / v2.0.4"
+    var line4: String = "BIOLUMINESCENT FRACTAL ART / v2.0.6"
     root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
     root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
     root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))

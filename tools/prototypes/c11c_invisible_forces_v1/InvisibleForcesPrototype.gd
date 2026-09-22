@@ -12,6 +12,7 @@ const PaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CPalette
 const EDITORIAL_ANIMATOR_SCRIPT = preload("res://tools/prototypes/c11c_common/C11CEditorialAnimator.gd")
 const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd")
 const EditorialColorsClass = preload("res://tools/prototypes/c11c_common/C11CEditorialColors.gd")
+const ColorBoostClass = preload("res://tools/prototypes/c11c_common/C11CColorBoost.gd")
 
 const REFERENCE_SEED := 314159
 const HEADER_MAX_WIDTH := 468.0
@@ -21,6 +22,7 @@ const HEADER_HOOK_FONT_SIZE := 18
 const LOOP_DURATION := 18.0
 const FPS := 30
 const FRAME_COUNT := 540
+const OUTPUT_SCALE := 4.0 / 3.0
 const BLACK: Color = C11CThemeClass.SECTION_BACKGROUND
 
 var _renderer: Node2D
@@ -35,6 +37,7 @@ var _header_animator: RefCounted
 var _authoring_json_path: String = ""
 
 func _ready() -> void:
+    scale = Vector2(OUTPUT_SCALE, OUTPUT_SCALE)
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("invisible_forces", _seed)
@@ -68,7 +71,7 @@ func _build_scene() -> void:
     _renderer.name = "InvisibleForcesRenderer"
     frame.get_body_content_root().add_child(_renderer)
     _renderer.set_background(BLACK)
-    _renderer.set_palette(Color(str(_palette["deep"])), Color(str(_palette["primary"])), Color(str(_palette["secondary"])), Color(str(_palette["highlight"])))
+    _renderer.set_palette(ColorBoostClass.vivid(Color(str(_palette["deep"])), 1.24, 1.03), ColorBoostClass.vivid(Color(str(_palette["primary"]))), ColorBoostClass.vivid(Color(str(_palette["secondary"]))), ColorBoostClass.vivid(Color(str(_palette["highlight"]))))
     var storm_offset: Vector2 = Vector2(float(_variation["storm_offset_x"]), float(_variation["storm_offset_y"]))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["trace_count"]), float(_variation["curvature"]), float(_variation["glow"]),
@@ -119,9 +122,9 @@ func _add_header(root: Control) -> void:
 func _add_footer(root: Control) -> void:
     var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation)
     var line1: String = geek_text
-    var line2: String = "SEED %d | BODY 540X672 | T=18.00S | %d FLOW TRACES | PULSE %.2f" % [_seed, int(_variation["trace_count"]), float(_variation["pulse_speed"])]
+    var line2: String = "SEED %d | BODY 720X896 | T=18.00S | %d FLOW TRACES | PULSE %.2f" % [_seed, int(_variation["trace_count"]), float(_variation["pulse_speed"])]
     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
-    var line4: String = "DETERMINISTIC FIELD ART / v2.0.4"
+    var line4: String = "DETERMINISTIC FIELD ART / v2.0.6"
     root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
     root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
     root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))

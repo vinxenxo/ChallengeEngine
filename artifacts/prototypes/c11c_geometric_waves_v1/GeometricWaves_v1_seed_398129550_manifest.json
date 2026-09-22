@@ -1,0 +1,42 @@
+{
+    "prototype_id":  "C11-C.1_GEOMETRIC_WAVES_V1",
+    "revision":  "2.0.5",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  398129550,
+    "family_id":  "geometric",
+    "display_name":  "GEOMETRIC WAVES",
+    "grammar":  "INTERFERENCE PLANE",
+    "palette":  "cyan_magenta",
+    "visual":  {
+                   "canvas":  "540x960",
+                   "body":  "y=144..816",
+                   "duration_seconds":  18,
+                   "fps":  30,
+                   "frame_count":  540,
+                   "loop_cycles":  1,
+                   "loop_closed":  true,
+                   "background":  "000000",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "INTERFERENCE_PLANE | WAVE 19.6 | MORPH 0.87",
+                      "header_line_2":  "OBSERVA COMO VIAJA LA FORMA",
+                      "header_secondary":  "VISUAL LOOP / GEOMETRIC WAVES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "deep_deterministic_ambient",
+                  "style":  "deep deterministic ambient / singing bowls / low drone / family-synced pulses",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  18,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false
+              },
+    "social_metadata":  "GeometricWaves_v1_seed_398129550_social.txt",
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_geometric_waves_v1\\run_prototype.ps1 -Seed 398129550",
+    "technobabble":  "Sincronizando plano de interferencia... [ACOPLADO] // WAVE 19.64 | MORPH 0.87",
+    "frozen_boundaries_modified":  false
+}
