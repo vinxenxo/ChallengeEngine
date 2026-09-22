@@ -125,7 +125,7 @@ func _add_footer(root: Control) -> void:
     var line1: String = geek_text
     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | PARTICLES %d | FLOW %.2f" % [_seed, int(round(float(_variation["particle_count"]))), float(_variation["swirl_bias"])]
     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
-    var line4: String = "SYNTHETIC MATTER / v2.0.6"
+    var line4: String = "SYNTHETIC MATTER / v2.0.8"
     root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
     root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
     root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))

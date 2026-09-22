@@ -88,7 +88,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.4_LIVING_PARTICLES_V1'
-        revision = '2.0.6'
+        revision = '2.0.8'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -97,7 +97,7 @@ try {
         palette = $author.palette
         visual = [ordered]@{
             canvas = '720x1280'
-            body = 'y=144..816'
+            body = 'y=192..1088'
             duration_seconds = 18.0
             fps = 30
             frame_count = 540
@@ -136,11 +136,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.0.6] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.0.6] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.0.6] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.0.6] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.0.6] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.0.8] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.0.8] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.0.8] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.0.8] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.0.8] SOCIAL: " + $Social)
 } finally {
     if (Test-Path -LiteralPath $TempSilent) {
         Remove-Item -Force -LiteralPath $TempSilent -ErrorAction SilentlyContinue

@@ -1,0 +1,16 @@
+{
+  "schema": "C11-C-PATCH-MANIFEST",
+  "revision": "2.0.8",
+  "scope": "bulk_shader_artifact_workspace",
+  "changes": [
+    "Fix C11CColorBoost Godot strict-warning parse failure via typed clampf.",
+    "Remove automatic artifact cleanup/reset from review launchers.",
+    "Keep ordinary cleanup and full C11-C reset as separate explicit commands.",
+    "Add dedicated random art-direction launcher for 5 seeds x 5 families.",
+    "Write seed manifest after review-assets regeneration so it is preserved.",
+    "Correct 720x1280 manifest body coordinates to y=192..1088."
+  ],
+  "frozen_boundaries_modified": false,
+  "c11_modified": false,
+  "c7_modified": false
+}
