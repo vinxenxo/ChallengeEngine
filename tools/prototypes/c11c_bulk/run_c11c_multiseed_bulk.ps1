@@ -43,7 +43,7 @@ foreach ($seed in $Seeds) {
     }
 }
 $manifest = [ordered]@{
-    schema='C11-C-MULTISEED-BULK-V1'; status='COMPLETE'; revision='2.0.8'; seeds=@($Seeds); family_count=$families.Count; seed_count=$Seeds.Count; render_count=$families.Count*$Seeds.Count; results=$results; visual_contract=[ordered]@{canvas='720x1280'; body='y=192..1088'; fps=30; duration_seconds=18.0; frames=540; audio='stereo 44.1kHz, deterministic prototype bed'}; footer_mode=$(if ($Production) { 'OFF' } else { 'ON' }); variation_profile_revision='1.0.0'; frozen_boundaries_modified=$false
+    schema='C11-C-MULTISEED-BULK-V1'; status='COMPLETE'; revision='2.0.9'; seeds=@($Seeds); family_count=$families.Count; seed_count=$Seeds.Count; render_count=$families.Count*$Seeds.Count; results=$results; visual_contract=[ordered]@{canvas='720x1280'; body='y=192..1088'; fps=30; duration_seconds=18.0; frames=540; audio='stereo 44.1kHz, deterministic prototype bed'}; footer_mode=$(if ($Production) { 'OFF' } else { 'ON' }); variation_profile_revision='1.0.0'; frozen_boundaries_modified=$false
 }
 $manifestPath=Join-Path $root 'C11-C_MULTISEED_BULK_MANIFEST.json'
 $manifest | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 $manifestPath

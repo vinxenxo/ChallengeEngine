@@ -5,7 +5,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
-$StyleReview = Join-Path $PSScriptRoot 'run_c11c_style_review_v2.0.8.ps1'
+$StyleReview = Join-Path $PSScriptRoot 'run_c11c_style_review_v2.0.9.ps1'
 $ReviewRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_review_assets'
 
 if ($VariationsPerFamily -lt 1 -or $VariationsPerFamily -gt 50) {
