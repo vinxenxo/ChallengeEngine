@@ -1,0 +1,32 @@
+TITLE: GEOMETRIC WAVES // HARMONIC MEMBRANE
+
+DESCRIPTION:
+GEOMETRIC WAVES — visual loop de arte generativa matemática y procedural. Variante HARMONIC MEMBRANE con paleta ember_aqua, seed 425622334. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: geometric
+GRAMMAR: HARMONIC MEMBRANE
+PALETTE: ember_aqua
+SEED: 425622334
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+HARMONIC_MEMBRANE | WAVE 15.8 | MORPH 0.63
+CUANDO UNA ONDA SE CONVIERTE EN ARQUITECTURA
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: [DECK] giroscopio de precision :: plano de interferencia :: WAVE 15.76 | MORPH 0.63
+
+HASHTAGS:
+#GenerativeArt #GeometricWaves #MathematicalArt #ProceduralArt #WaveArt #DigitalArt #TechArt #CyberpunkArt #Lissajous #AbstractArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 425622334
+
+CANONICAL MANIFEST:
+GeometricWaves_v1_seed_425622334_manifest.json

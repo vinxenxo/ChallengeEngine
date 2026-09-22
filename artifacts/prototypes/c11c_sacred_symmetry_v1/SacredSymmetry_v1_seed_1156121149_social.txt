@@ -1,0 +1,32 @@
+TITLE: SACRED SYMMETRY // ORIGAMI MANDALA
+
+DESCRIPTION:
+SACRED SYMMETRY — visual loop de arte generativa matemática y procedural. Variante ORIGAMI MANDALA con paleta black_gold_crimson, seed 1156121149. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: sacred_symmetry
+GRAMMAR: ORIGAMI MANDALA
+PALETTE: black_gold_crimson
+SEED: 1156121149
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+ORIGAMI_MANDALA | N=6 | GEAR 5:1
+ABRE EL MECANISMO
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: TRACE: rotor de bronce // N=6 | GEAR 5:1 // a maxima nitidez
+
+HASHTAGS:
+#GenerativeArt #SacredSymmetry #MathematicalArt #ProceduralArt #Astrolabe #SteampunkArt #GenerativeDesign #DigitalArt #GeometricArt #CelestialArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 1156121149
+
+CANONICAL MANIFEST:
+SacredSymmetry_v1_seed_1156121149_manifest.json

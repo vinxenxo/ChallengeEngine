@@ -1,0 +1,32 @@
+TITLE: INVISIBLE FORCES // GRAVITATIONAL LENS
+
+DESCRIPTION:
+INVISIBLE FORCES — visual loop de arte generativa matemática y procedural. Variante GRAVITATIONAL LENS con paleta deep_red_amber, seed 1697515618. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: GRAVITATIONAL LENS
+PALETTE: deep_red_amber
+SEED: 1697515618
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+GRAVITATIONAL_LENS | 62 TRACES | PULSE 1.04
+LA FISICA DEJA UNA HUELLA
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: reloj de cuarzo mecanico // lineas equipotenciales // ESTABLE // TRACES 62 | PULSE 1.04
+
+HASHTAGS:
+#GenerativeArt #InvisibleForces #VectorField #MathematicalArt #PhysicsArt #ProceduralArt #Topography #CyberpunkArt #DigitalArt #GenerativeDesign
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 1697515618
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_1697515618_manifest.json

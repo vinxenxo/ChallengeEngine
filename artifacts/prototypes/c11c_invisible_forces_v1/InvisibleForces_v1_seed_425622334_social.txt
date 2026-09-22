@@ -1,0 +1,32 @@
+TITLE: INVISIBLE FORCES // VORTEX FIELD
+
+DESCRIPTION:
+INVISIBLE FORCES — visual loop de arte generativa matemática y procedural. Variante VORTEX FIELD con paleta vermilion_peach_gold, seed 425622334. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: VORTEX FIELD
+PALETTE: vermilion_peach_gold
+SEED: 425622334
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+VORTEX_FIELD | 72 TRACES | PULSE 1.08
+OBSERVA UNA FUERZA HECHA VISIBLE
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: [DECK] giroscopio de precision :: cuenca de potencial :: TRACES 72 | PULSE 1.08
+
+HASHTAGS:
+#GenerativeArt #InvisibleForces #VectorField #MathematicalArt #PhysicsArt #ProceduralArt #Topography #CyberpunkArt #DigitalArt #GenerativeDesign
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 425622334
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_425622334_manifest.json
