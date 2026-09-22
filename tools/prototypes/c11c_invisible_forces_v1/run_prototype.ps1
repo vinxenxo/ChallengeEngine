@@ -37,7 +37,8 @@ try {
     . $MovieCaptureHelper
     $movieOverride = Enter-C11CMovieOverride -ProjectRoot $ProjectRoot -Width 720 -Height 1280
     Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
-    & godot --path . --scene tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn --write-movie $Avi --fixed-fps 30 --resolution 720x1280 --quit-after 540 2>&1 | Tee-Object -FilePath $GodotLog
+    $godotArgs=@('--path','.','--scene','tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn','--write-movie',$Avi,'--fixed-fps','30','--resolution','720','1280','--quit-after','540')
+    & godot @godotArgs 2>&1 | Tee-Object -FilePath $GodotLog
     $godotExit = $LASTEXITCODE
     if ($godotExit -ne 0) { throw "Godot prototype export failed: exit=$godotExit" }
     $errors = Select-String -Path $GodotLog -Pattern 'SHADER ERROR|Shader compilation failed|SCRIPT ERROR|Parse Error|ERROR:' -SimpleMatch:$false
@@ -143,11 +144,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.1.2] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.1.2] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.1.2] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.1.2] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.1.2] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.1.3] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.1.3] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.1.3] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.1.3] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.1.3] SOCIAL: " + $Social)
 } finally {
     if ($null -ne $movieOverride) {
         Exit-C11CMovieOverride -State $movieOverride

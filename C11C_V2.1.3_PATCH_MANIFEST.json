@@ -1,0 +1,11 @@
+{
+  "revision": "2.1.3",
+  "scope": "C11-C toolchain only",
+  "frozen_boundaries_modified": false,
+  "fixes": [
+    "direct PowerShell child-script invocation",
+    "720x1280 Movie Maker CLI argument separation",
+    "canonical validator versioned-launcher mismatch",
+    "review/production tool separation"
+  ]
+}

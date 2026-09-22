@@ -32,12 +32,8 @@ Write-Host "[C11-C-PRODUCTION] Family=$Family Seed=$Seed Product=$productId"
 
 # Render to prototype staging FIRST. An existing final product is never deleted before
 # the replacement candidate has successfully rendered and passed its own contracts.
-$psArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$launcher,'-Seed',[string]$Seed)
-if ($NoSound) { $psArgs += '-NoSound' }
-if ($NoFooter) { $psArgs += '-NoFooter' }
-& powershell.exe @psArgs
-$exit=$LASTEXITCODE
-if ($exit -ne 0) { throw "Prototype generation failed: exit=$exit" }
+& $launcher -Seed ([int]$Seed) -NoSound:$NoSound -NoFooter:$NoFooter
+if (-not $?) { throw 'Prototype generation failed.' }
 
 $stage=Join-Path $ProjectRoot ("artifacts\prototypes\$Family")
 $stem=$productId

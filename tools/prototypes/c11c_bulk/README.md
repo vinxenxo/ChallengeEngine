@@ -1,4 +1,4 @@
-# C11-C canonical toolchain — v2.1.2
+# C11-C canonical toolchain — v2.1.3
 
 This directory contains the canonical C11-C presentation/review/production tools. C11-B remains frozen.
 
@@ -60,7 +60,7 @@ Neither command touches `artifacts\production\audiovisual`.
 
 C11-B keeps its frozen 540×960 viewport. C11-C captures at 720×1280 (9:16) by temporarily writing a root `override.cfg` with viewport and window overrides, then restoring/removing it. The prototype scene keeps the 540×960 logical composition and scales it by 4/3.
 
-The family launcher also verifies that the Godot log reports a 720×1280 Movie Maker capture before any downstream packaging continues.
+The family launcher invokes Godot with `--resolution 720 1280` (two CLI arguments) and verifies that the Godot log reports a 720×1280 Movie Maker capture before any downstream packaging continues.
 
 ## Audio and MP4 contract
 
@@ -69,3 +69,8 @@ Sound is enabled by default. `-NoSound` and `-Silent` disable audio. Exactly one
 ## Historical versioned scripts
 
 Files named `run_*_v2.0.x.ps1` or `run_*_v2.1.0.ps1` are historical/superseded tooling from the iterative C11-C hardening process. Use the unversioned canonical commands above for current work.
+
+
+## PowerShell orchestration rule
+
+Canonical C11-C orchestrators invoke `.ps1` children directly (`& $script @params`). They do not spawn `powershell.exe -File` to transport array parameters. This avoids Windows PowerShell argument-flattening/binding problems with `[int[]]` parameters.
