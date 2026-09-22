@@ -1,0 +1,32 @@
+TITLE: FRACTAL BLOOM // NESTED WORLDS
+
+DESCRIPTION:
+FRACTAL BLOOM — visual loop de arte generativa matemática y procedural. Variante NESTED WORLDS con paleta teal_indigo, seed 1389270334. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: NESTED WORLDS
+PALETTE: teal_indigo
+SEED: 1389270334
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+z(n+1)=z(n)^2+c | NESTED_WORLDS | DETAIL 0.89
+OBSERVA LO QUE APARECE DENTRO
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: Parametro de trampas de orbita: {value:.1f} Q-bits // ESTABLE // DETAIL 0.89 | BRANCH 0.84
+
+HASHTAGS:
+#GenerativeArt #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #GenerativeDesign #CyberpunkArt #DigitalArt #InfiniteArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 1389270334
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_1389270334_manifest.json

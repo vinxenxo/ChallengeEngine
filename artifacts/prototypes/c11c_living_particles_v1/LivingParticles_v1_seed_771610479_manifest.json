@@ -1,0 +1,42 @@
+{
+    "prototype_id":  "C11-C.4_LIVING_PARTICLES_V1",
+    "revision":  "2.1.4",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  771610479,
+    "family_id":  "living_particles",
+    "display_name":  "LIVING PARTICLES",
+    "grammar":  "VORTEX",
+    "palette":  "ice_jade",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  18,
+                   "fps":  30,
+                   "frame_count":  540,
+                   "loop_cycles":  1,
+                   "loop_closed":  true,
+                   "background":  "000000",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "VORTEX | DENSITY 1.01 | FLOW 0.82",
+                      "header_line_2":  "OBSERVA COMO NACE LA VIDA SINTETICA",
+                      "header_secondary":  "VISUAL LOOP / LIVING PARTICLES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "deep_deterministic_ambient",
+                  "style":  "deep deterministic ambient / singing bowls / low drone / family-synced pulses",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  18,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false
+              },
+    "social_metadata":  "LivingParticles_v1_seed_771610479_social.txt",
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_living_particles_v1\\run_prototype.ps1 -Seed 771610479",
+    "technobabble":  "camara de presion // nube magnetica // ESTABLE // PARTICLES 117 | COLLISION 1.25",
+    "frozen_boundaries_modified":  false
+}

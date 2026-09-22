@@ -1,8 +1,8 @@
-# C11-C Production Policy v2.1.2
+# C11-C Production Policy v2.1.4
 
 ## Product boundary
 
-A product is a C11-C Visual Loop video deliberately published after review. It is not staging material.
+A product is a C11-C Visual Loop deliberately published after review. It is not staging material.
 
 ## Final-product path
 
@@ -10,7 +10,15 @@ A product is a C11-C Visual Loop video deliberately published after review. It i
 artifacts\production\audiovisual\<family>\<product-id>\
 ```
 
-The directory is protected from C11-C cleanup/reset/review commands.
+This tree is permanent and is not targeted by C11-C prototype cleanup, reset, or review generation.
+
+## Current delivery
+
+- 720x1280 / 9:16
+- 30 FPS
+- 18.00 s review baseline
+- exactly one final `.mp4`
+- sound ON by default; `-NoSound` / `-Silent` produces the silent final MP4
 
 ## Product contents
 
@@ -30,12 +38,12 @@ Optional when enabled/generated:
 - `.gif`
 - `_music.wav`
 
-The raw Movie Maker `.avi` and `_silent.mp4` intermediate are never published to production.
+The raw Movie Maker `.avi` and temporary `_silent.mp4` are never published to production.
 
 ## Replacement policy
 
-Existing products are immutable by default. Use `-Force` only after an explicit decision to replace the same product ID. The production runner renders and validates the replacement candidate before deleting an existing product directory, preventing loss of a previously published product after a failed render.
+Existing products are immutable by default. Use `-Force` only after an explicit decision to replace the same product ID. The production runner renders and validates the replacement candidate before deleting the existing product directory.
 
 ## Reproducibility
 
-Every product stores its seed, family, source revision and exact production reproduction command. `C11C_PRODUCTION_CATALOG.json` indexes all published products.
+Every product stores its seed, family, source revision and exact production reproduction command. `C11C_PRODUCTION_CATALOG.json` indexes published products.

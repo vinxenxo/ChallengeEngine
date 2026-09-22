@@ -25,9 +25,11 @@ Write-Host "[C11-C-ART-DIRECTION] Total renders: $($VariationsPerFamily * 5)"
 Write-Host "[C11-C-ART-DIRECTION] Seeds: $($Seeds -join ', ')"
 if($ResetReviewAssets -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
 New-Item -ItemType Directory -Force -Path $ReviewRoot | Out-Null
-& $Bulk -Seeds $Seeds
+$bulkParams=@{Seeds=@($Seeds)}
+& $Bulk @bulkParams
 if(-not $?){throw 'Multiseed bulk failed.'}
-& $Reviews -InputRoot (Join-Path $ProjectRoot 'artifacts\prototypes') -OutputRoot $ReviewRoot -Seeds $Seeds
+$reviewParams=@{InputRoot=(Join-Path $ProjectRoot 'artifacts\prototypes');OutputRoot=$ReviewRoot;Seeds=@($Seeds)}
+& $Reviews @reviewParams
 if(-not $?){throw 'Review asset export failed.'}
 $expected=$VariationsPerFamily*5
 $stage=Join-Path $ProjectRoot 'artifacts\prototypes'
@@ -35,7 +37,7 @@ $batch=@(Get-ChildItem -Path $stage -Recurse -Filter '*.mp4' -File | Where-Objec
 $seedStrings=@($Seeds|ForEach-Object {$_.ToString()})
 $batch=@($batch|Where-Object {$seedStrings -contains ([regex]::Match($_.Name,'_seed_([0-9]+)\.mp4$').Groups[1].Value)})
 if($batch.Count -ne $expected){throw "Review corpus count failed: expected $expected canonical MP4s, found $($batch.Count)."}
-$seedManifest=[ordered]@{schema='C11-C-ART-DIRECTION-REVIEW-SEEDS-V3';revision='2.1.3';mode='random_or_explicit_seed_batch';family_count=5;variations_per_family=$VariationsPerFamily;render_count=$expected;seeds=@($Seeds);review_root=$ReviewRoot;prototype_cleanup_performed=$false;review_assets_reset=[bool]$ResetReviewAssets;delivery_contract='720x1280 / 30 FPS / 18.0 s / 540 frames'}
+$seedManifest=[ordered]@{schema='C11-C-ART-DIRECTION-REVIEW-SEEDS-V3';revision='2.1.4';mode='random_or_explicit_seed_batch';family_count=5;variations_per_family=$VariationsPerFamily;render_count=$expected;seeds=@($Seeds);review_root=$ReviewRoot;prototype_cleanup_performed=$false;review_assets_reset=[bool]$ResetReviewAssets;delivery_contract='720x1280 / 30 FPS / 18.0 s / 540 frames'}
 [System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_SEEDS.json'),($seedManifest|ConvertTo-Json -Depth 8),(New-Object System.Text.UTF8Encoding($false)))
 Write-Host "[C11-C-ART-DIRECTION] COMPLETE - $expected renders generated."
 return

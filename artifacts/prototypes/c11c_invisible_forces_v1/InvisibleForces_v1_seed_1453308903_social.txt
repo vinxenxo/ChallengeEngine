@@ -1,0 +1,32 @@
+TITLE: INVISIBLE FORCES // QUADRUPOLE FIELD
+
+DESCRIPTION:
+INVISIBLE FORCES — visual loop de arte generativa matemática y procedural. Variante QUADRUPOLE FIELD con paleta purple_fire_gold, seed 1453308903. Duración 18.00s, 3 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: QUADRUPOLE FIELD
+PALETTE: purple_fire_gold
+SEED: 1453308903
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+QUADRUPOLE_FIELD | 79 TRACES | PULSE 0.91
+LEE EL MAPA DE UNA FUERZA
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: SUBRUTINA // puente de datos -> topografia gravitacional // NOMINAL // TRACES 79 | PULSE 0.91
+
+HASHTAGS:
+#GenerativeArt #InvisibleForces #VectorField #MathematicalArt #PhysicsArt #ProceduralArt #Topography #CyberpunkArt #DigitalArt #GenerativeDesign
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 1453308903
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_1453308903_manifest.json

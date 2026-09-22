@@ -1,0 +1,42 @@
+{
+    "prototype_id":  "C11-C.3_SACRED_SYMMETRY_V1",
+    "revision":  "2.1.4",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  1714697890,
+    "family_id":  "sacred_symmetry",
+    "display_name":  "SACRED SYMMETRY",
+    "grammar":  "POLYGON ORRERY",
+    "palette":  "royal_copper",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  18,
+                   "fps":  30,
+                   "frame_count":  540,
+                   "loop_cycles":  3,
+                   "loop_closed":  true,
+                   "background":  "000000",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "POLYGON_ORRERY | N=4 | GEAR 5:-2",
+                      "header_line_2":  "UNA ARQUITECTURA HECHA DE SIMETRIA",
+                      "header_secondary":  "VISUAL LOOP / SACRED SYMMETRY",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "deep_deterministic_ambient",
+                  "style":  "deep deterministic ambient / singing bowls / low drone / family-synced pulses",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  18,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false
+              },
+    "social_metadata":  "SacredSymmetry_v1_seed_1714697890_social.txt",
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_sacred_symmetry_v1\\run_prototype.ps1 -Seed 1714697890",
+    "technobabble":  "TRACE: rotor de bronce // N=4 | GEAR 5:-2 // a baja entropia",
+    "frozen_boundaries_modified":  false
+}

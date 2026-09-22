@@ -1,0 +1,176 @@
+{
+    "schema":  "C11-C-MULTISEED-BULK-V2",
+    "revision":  "2.1.4",
+    "status":  "COMPLETE",
+    "seeds":  [
+                  1714697890,
+                  1453308903,
+                  1389270334,
+                  1299373554,
+                  771610479
+              ],
+    "family_count":  5,
+    "seed_count":  5,
+    "render_count":  25,
+    "results":  [
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  1714697890,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1714697890.mp4"
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  1453308903,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1453308903.mp4"
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  1389270334,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1389270334.mp4"
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  1299373554,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1299373554.mp4"
+                    },
+                    {
+                        "family":  "c11c_geometric_waves_v1",
+                        "seed":  771610479,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_771610479.mp4"
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  1714697890,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1714697890.mp4"
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  1453308903,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1453308903.mp4"
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  1389270334,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1389270334.mp4"
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  1299373554,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1299373554.mp4"
+                    },
+                    {
+                        "family":  "c11c_fractal_bloom_v1",
+                        "seed":  771610479,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_771610479.mp4"
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  1714697890,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1714697890.mp4"
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  1453308903,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1453308903.mp4"
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  1389270334,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1389270334.mp4"
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  1299373554,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1299373554.mp4"
+                    },
+                    {
+                        "family":  "c11c_sacred_symmetry_v1",
+                        "seed":  771610479,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_771610479.mp4"
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  1714697890,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1714697890.mp4"
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  1453308903,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1453308903.mp4"
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  1389270334,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1389270334.mp4"
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  1299373554,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1299373554.mp4"
+                    },
+                    {
+                        "family":  "c11c_living_particles_v1",
+                        "seed":  771610479,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_771610479.mp4"
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  1714697890,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1714697890.mp4"
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  1453308903,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1453308903.mp4"
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  1389270334,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1389270334.mp4"
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  1299373554,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1299373554.mp4"
+                    },
+                    {
+                        "family":  "c11c_invisible_forces_v1",
+                        "seed":  771610479,
+                        "status":  "PASS",
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_771610479.mp4"
+                    }
+                ],
+    "visual_contract":  {
+                            "canvas":  "720x1280",
+                            "body":  "y=192..1088",
+                            "fps":  30,
+                            "duration_seconds":  18,
+                            "frames":  540
+                        },
+    "audio_contract":  "default ON; safe mobile ambient; -NoSound/-Silent disables audio",
+    "frozen_boundaries_modified":  false
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "C11-C-PATCH-MANIFEST",
+  "revision": "2.1.4",
+  "purpose": "Consolidated physical-validation hotfix before Art Direction 2.0 corpus generation",
+  "delivery": {"canvas": "720x1280", "fps": 30, "frames": 540, "duration_seconds": 18.0},
+  "review_corpus": "5 seeds x 5 families = 25 renders",
+  "godot_resolution_cli": "--resolution 720x1280",
+  "cleanup_during_render": false,
+  "production_root": "artifacts/production/audiovisual",
+  "nested_powershell_invocation": false,
+  "frozen_boundaries_modified": false
+}

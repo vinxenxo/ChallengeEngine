@@ -32,7 +32,10 @@ Write-Host "[C11-C-PRODUCTION] Family=$Family Seed=$Seed Product=$productId"
 
 # Render to prototype staging FIRST. An existing final product is never deleted before
 # the replacement candidate has successfully rendered and passed its own contracts.
-& $launcher -Seed ([int]$Seed) -NoSound:$NoSound -NoFooter:$NoFooter
+$launcherParams=@{Seed=[int]$Seed}
+if($NoSound){$launcherParams.NoSound=$true}
+if($NoFooter){$launcherParams.NoFooter=$true}
+& $launcher @launcherParams
 if (-not $?) { throw 'Prototype generation failed.' }
 
 $stage=Join-Path $ProjectRoot ("artifacts\prototypes\$Family")
@@ -68,7 +71,7 @@ $sourceManifest=Get-Content -Raw (Join-Path $stage "${stem}_manifest.json") | Co
 $created=[DateTime]::UtcNow.ToString('o')
 $prodManifest=[ordered]@{
     schema='C11-C-PRODUCTION-PRODUCT-V2'
-    revision='2.1.2'
+    revision='2.1.4'
     status='FINAL_PRODUCT'
     product_id=$productId
     family=$Family
@@ -113,7 +116,7 @@ if (Test-Path -LiteralPath $catalogPath) {
     $catalog=Get-Content -Raw $catalogPath | ConvertFrom-Json
 } else {
     New-Item -ItemType Directory -Force -Path $productionRoot | Out-Null
-    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.1.2';products=@()}
+    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.1.4';products=@()}
 }
 if ($null -eq $catalog.products) { $catalog.products=@() }
 $catalog.products=@($catalog.products | Where-Object { $_.product_id -ne $productId })

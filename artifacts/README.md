@@ -1,8 +1,10 @@
-# artifacts — C11-C layout v2.1.2
+# artifacts — C11-C / current layout v2.1.4
 
-`artifacts` is divided by evidentiary role. Do not use one generic cleaner over the whole tree.
+`artifacts` is divided by evidentiary role. C11-C tools do not treat it as one disposable workspace.
 
-## Protected evidence roots
+## Protected evidence
+
+Never targeted by C11-C review cleanup/reset:
 
 - `legacy`
 - `qa`
@@ -11,9 +13,7 @@
 - `production`
 - `tests`
 
-These roots are never targeted by C11-C cleanup/reset.
-
-## Regenerable staging
+## Regenerable C11-C staging
 
 - `prototypes\c11c_geometric_waves_v1`
 - `prototypes\c11c_fractal_bloom_v1`
@@ -24,8 +24,8 @@ These roots are never targeted by C11-C cleanup/reset.
 - `prototypes\c11c_review_assets`
 - `scratch`
 
-The review/render commands do not delete this staging material. Cleanup is explicit.
+Render/review commands do not perform general cleanup. Explicit cleanup/reset tools are required.
 
-## Final products
+## Permanent C11-C products
 
-`production\audiovisual` is the permanent C11-C product store. It is not removed by prototype cleaners or review runs.
+`production\audiovisual` is the permanent C11-C product store. Products placed there are not removed by prototype cleanup/reset or review generation.

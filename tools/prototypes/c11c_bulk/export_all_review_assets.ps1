@@ -8,9 +8,11 @@ $gif=Join-Path $PSScriptRoot 'export_review_gifs.ps1'
 $key=Join-Path $PSScriptRoot 'export_review_keyframes.ps1'
 New-Item -ItemType Directory -Force -Path $OutputRoot | Out-Null
 if($Seeds.Count -gt 0){
-    & $gif -InputRoot $InputRoot -OutputRoot $OutputRoot -Seeds $Seeds
+    $gifParams=@{InputRoot=$InputRoot;OutputRoot=$OutputRoot;Seeds=@($Seeds)}
+    & $gif @gifParams
     if(-not $?){throw 'Review GIF export failed.'}
-    & $key -InputRoot $InputRoot -OutputRoot $OutputRoot -Seeds $Seeds
+    $keyParams=@{InputRoot=$InputRoot;OutputRoot=$OutputRoot;Seeds=@($Seeds)}
+    & $key @keyParams
     if(-not $?){throw 'Review keyframe export failed.'}
 } else {
     & $gif -InputRoot $InputRoot -OutputRoot $OutputRoot

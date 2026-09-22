@@ -1,0 +1,32 @@
+TITLE: SACRED SYMMETRY // POLYGON ORRERY
+
+DESCRIPTION:
+SACRED SYMMETRY — visual loop de arte generativa matemática y procedural. Variante POLYGON ORRERY con paleta royal_copper, seed 1714697890. Duración 18.00s, 3 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: sacred_symmetry
+GRAMMAR: POLYGON ORRERY
+PALETTE: royal_copper
+SEED: 1714697890
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+POLYGON_ORRERY | N=4 | GEAR 5:-2
+UNA ARQUITECTURA HECHA DE SIMETRIA
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: TRACE: rotor de bronce // N=4 | GEAR 5:-2 // a baja entropia
+
+HASHTAGS:
+#GenerativeArt #SacredSymmetry #MathematicalArt #ProceduralArt #Astrolabe #SteampunkArt #GenerativeDesign #DigitalArt #GeometricArt #CelestialArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 1714697890
+
+CANONICAL MANIFEST:
+SacredSymmetry_v1_seed_1714697890_manifest.json

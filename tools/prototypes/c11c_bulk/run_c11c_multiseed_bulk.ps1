@@ -21,7 +21,8 @@ foreach($family in $families){
     foreach($seed in $Seeds){
         Write-Host "[C11-C-MULTISEED] START family=$family seed=$seed"
         try {
-            & $launcher -Seed ([int]$seed)
+            $launcherParams=@{Seed=[int]$seed}
+            & $launcher @launcherParams
             if(-not $?) { throw "Launcher returned failure: $launcher" }
         } catch { throw "Multi-seed run failed for ${family} seed=${seed}: $($_.Exception.Message)" }
         $artifactDir=Join-Path $ProjectRoot ("artifacts\prototypes\$family")
@@ -41,7 +42,7 @@ foreach($family in $families){
         Write-Host "[C11-C-MULTISEED] PASS family=$family seed=$seed 720x1280 / 30 FPS / 540 frames / 18.0s"
     }
 }
-$manifest=[ordered]@{schema='C11-C-MULTISEED-BULK-V2';revision='2.1.3';status='COMPLETE';seeds=@($Seeds);family_count=$families.Count;seed_count=$Seeds.Count;render_count=$families.Count*$Seeds.Count;results=$results;visual_contract=[ordered]@{canvas='720x1280';body='y=192..1088';fps=30;duration_seconds=18.0;frames=540};audio_contract='default ON; safe mobile ambient; -NoSound/-Silent disables audio';frozen_boundaries_modified=$false}
+$manifest=[ordered]@{schema='C11-C-MULTISEED-BULK-V2';revision='2.1.4';status='COMPLETE';seeds=@($Seeds);family_count=$families.Count;seed_count=$Seeds.Count;render_count=$families.Count*$Seeds.Count;results=$results;visual_contract=[ordered]@{canvas='720x1280';body='y=192..1088';fps=30;duration_seconds=18.0;frames=540};audio_contract='default ON; safe mobile ambient; -NoSound/-Silent disables audio';frozen_boundaries_modified=$false}
 $manifestPath=Join-Path $root 'C11-C_MULTISEED_BULK_MANIFEST.json'
 [System.IO.File]::WriteAllText($manifestPath,($manifest|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
 Write-Host "[C11-C-MULTISEED] COMPLETE renders=$($families.Count*$Seeds.Count) manifest=$manifestPath"

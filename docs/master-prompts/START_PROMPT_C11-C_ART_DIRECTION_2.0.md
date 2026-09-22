@@ -1,31 +1,25 @@
-# START PROMPT — C11-C / ART DIRECTION 2.0 — v2.1.2
+# START PROMPT — C11-C ART DIRECTION 2.0 — v2.1.4
 
-We are continuing `ChallengeEngineV01_STATELESS` at C11-C.
+Continue `ChallengeEngineV01_STATELESS` from C11-C v2.1.4.
 
-C11-B is frozen. Work only in the C11-C presentation/art layer.
+C11-B is CLOSED / CERTIFIED / FROZEN. C11-C is presentation/art-direction only.
 
-Five families are implemented:
+Five active families: Geometric Waves, Fractal Bloom, Sacred Symmetry, Living Particles, Invisible Forces.
 
-- Geometric Waves
-- Fractal Bloom
-- Sacred Symmetry
-- Living Particles
-- Invisible Forces
+Current delivery baseline: 720x1280, 9:16, 30 FPS, 540 frames, 18.00 s. Default audio ON; `-NoSound` / `-Silent` disables audio. One final MP4 per run.
 
-Current delivery baseline: **720×1280, 30 FPS, 18.00 s, 540 frames**. The base `project.godot` remains frozen at 540×960 for C11-B. C11-C temporarily overrides the effective Movie Maker viewport/window to 720×1280 and restores the project state after capture.
+Real Facebook/mobile testing already established three delivery requirements: higher resolution, more vivid palette treatment, and non-intrusive ambient audio.
 
-Canonical current toolchain:
+Canonical preflight:
+`.\tools\prototypes\c11c_bulk\validate_c11c_preflight.ps1`
 
-`tools/prototypes/c11c_bulk/validate_c11c_powershell.ps1`
+Canonical review corpus:
+`.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -ResetReviewAssets`
 
-`tools/prototypes/c11c_bulk/validate_c11c_delivery_configuration.ps1`
+Expected corpus: 5 seeds × 5 families = 25 renders.
 
-`tools/prototypes/c11c_bulk/run_c11c_art_direction_review.ps1`
+Godot capture resolution must remain exactly `--resolution 720x1280` as one argument. Do not modify `project.godot`.
 
-`tools/prototypes/c11c_bulk/run_c11c_production.ps1`
+Do not reintroduce versioned launcher proliferation, nested PowerShell invocation, review-time general cleanup, or variable-duration logic.
 
-Cleanup is separate and manual. Do not run historical versioned review scripts.
-
-Immediate objective: use the 25-video corpus (5 seeds × 5 families) to conduct Art Direction 2.0. Focus on stronger family identity, premium mathematical treatment, vivid mobile-safe palettes, typography and editorial hierarchy, subtle cyberpunk/geek/steampunk language, meaningful seed variation, and intentional loop feel.
-
-Do not change duration yet. Do not reopen frozen engineering boundaries. Any future variable-duration system must be introduced as a separate explicit directive/contract.
+Use the actual 25 rendered videos/keyframes as the evidence base for Art Direction 2.0.
