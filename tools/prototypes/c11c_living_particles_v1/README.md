@@ -1,20 +1,33 @@
-# C11-C.4_LIVING_PARTICLES_V1
+# LIVING PARTICLES — C11-C v2.1.2
 
-This is an isolated C11-C art-direction prototype for the `particle_flow` Visual Loop family.
+Family id: `living_particles`
 
-## Visual brief
-**Living Particles** — magnetic dust fluid ink.
+Presentation-only Visual Loop prototype. No C11-B simulation, RNG ownership, C7 audio contract or C9 authoring contract is modified.
 
-deterministic particle positions + analytic attractor/vortex field + segment trails + soft-depth glow.
+## Art identity
 
-## Physical review
-Run from the repository root:
+particles / attractors / eddies / fluid-like flow.
+
+## Current social delivery
+
+- 720×1280 (9:16)
+- 30 FPS
+- 18.00 s / 540 frames
+- 4/3 scale from the frozen 540×960 logical composition
+
+The launcher creates a temporary root `override.cfg` to override viewport + window size during Movie Maker capture, then restores/removes it. `project.godot` remains untouched.
+
+## Run one video
 
 ```powershell
-.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 271828
 ```
 
-The launcher renders 540x960, 30 FPS, 300 frames, 10.0 seconds, generates deterministic stereo 44.1 kHz WAV, muxes audio into MP4, creates a GIF review surface and validates the final MP4 with FFprobe.
+Disable audio with either:
 
-## Boundaries
-This prototype does not touch `core/`, simulation math, RNG architecture, `SimulationResult`, C7, C9 or C11-B geometry.
+```powershell
+... -NoSound
+... -Silent
+```
+
+A successful run leaves one canonical MP4 for the seed, plus review/trace sidecars.

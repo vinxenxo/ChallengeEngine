@@ -1,7 +1,7 @@
 extends RefCounted
 
 ## Deterministic airport-board / Matrix-like transition for Header line 2.
-## C11-C v2.0.2: intentionally consumed via preload() so prototypes do not depend on global class registration order.
+## C11-C v2.1.2: intentionally consumed via preload() so prototypes do not depend on global class registration order.
 
 const CHARS: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/[]{}<>|+-_=.:*"
 const PRIMARY_END: float = 0.39
@@ -37,7 +37,7 @@ func display_at(frame_index: int, total_frames: int) -> Dictionary:
 func _scramble_blend(from_text: String, to_text: String, amount: float, frame_index: int) -> String:
     var width: int = maxi(from_text.length(), to_text.length())
     var out: String = ""
-    var reveal: float = clamp(amount, 0.0, 1.0)
+    var reveal: float = clampf(amount, 0.0, 1.0)
     for i in range(width):
         var a: String = from_text.substr(i, 1) if i < from_text.length() else " "
         var b: String = to_text.substr(i, 1) if i < to_text.length() else " "

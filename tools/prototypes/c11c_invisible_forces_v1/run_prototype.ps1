@@ -13,6 +13,7 @@ $env:C11C_SOUND_ENABLED = if ($NoSound) { '0' } else { '1' }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_invisible_forces_v1'
 $Stem = "InvisibleForces_v1_seed_${Seed}"
 $Avi = Join-Path $ArtifactRoot ($Stem + '.avi')
+$LegacyMp4Silent = Join-Path $ArtifactRoot ($Stem + '_silent.mp4')
 $TempSilent = Join-Path ([System.IO.Path]::GetTempPath()) ('C11C_' + $Stem + '_silent.mp4')
 $Mp4 = Join-Path $ArtifactRoot ($Stem + '.mp4')
 $Gif = Join-Path $ArtifactRoot ($Stem + '.gif')
@@ -20,22 +21,29 @@ $Probe = Join-Path $ArtifactRoot ($Stem + '_ffprobe.json')
 $Audio = Join-Path $ArtifactRoot ($Stem + '_music.wav')
 $AudioScript = Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CSafeAmbient.py'
 $GodotLog = Join-Path $ArtifactRoot ($Stem + '_godot.log')
+$MovieCaptureHelper = Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CMovieCapture.ps1'
 $Manifest = Join-Path $ArtifactRoot ($Stem + '_manifest.json')
 $Authoring = Join-Path $ArtifactRoot ($Stem + '_authoring.json')
 $Social = Join-Path $ArtifactRoot ($Stem + '_social.txt')
 
 New-Item -ItemType Directory -Force -Path $ArtifactRoot | Out-Null
-foreach ($p in @($Avi,$Mp4,$Gif,$Probe,$Audio,$GodotLog,$Manifest,$Authoring,$Social,$TempSilent)) {
+foreach ($p in @($Avi,$LegacyMp4Silent,$Mp4,$Gif,$Probe,$Audio,$GodotLog,$Manifest,$Authoring,$Social,$TempSilent)) {
     if (Test-Path -LiteralPath $p) { Remove-Item -Force -LiteralPath $p }
 }
 
+$movieOverride = $null
 Push-Location $ProjectRoot
 try {
+    . $MovieCaptureHelper
+    $movieOverride = Enter-C11CMovieOverride -ProjectRoot $ProjectRoot -Width 720 -Height 1280
+    Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
     & godot --path . --scene tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn --write-movie $Avi --fixed-fps 30 --resolution 720x1280 --quit-after 540 2>&1 | Tee-Object -FilePath $GodotLog
     $godotExit = $LASTEXITCODE
     if ($godotExit -ne 0) { throw "Godot prototype export failed: exit=$godotExit" }
     $errors = Select-String -Path $GodotLog -Pattern 'SHADER ERROR|Shader compilation failed|SCRIPT ERROR|Parse Error|ERROR:' -SimpleMatch:$false
     if ($errors) { throw "Godot reported prototype errors. See: $GodotLog" }
+    $captureLine = Select-String -Path $GodotLog -Pattern 'recording movie in\s+720[^\r\n]*1280\s+@\s+30\s+FPS' -SimpleMatch:$false
+    if (-not $captureLine) { throw "Movie Maker resolution contract failed. Expected 720x1280 in Godot log: $GodotLog" }
     if (-not (Test-Path -LiteralPath $Avi)) { throw "Godot finished without creating AVI: $Avi" }
     if ((Get-Item -LiteralPath $Avi).Length -le 0) { throw 'Generated AVI is empty.' }
 
@@ -87,7 +95,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.5_INVISIBLE_FORCES_V1'
-        revision = '2.1.0'
+        revision = '2.1.2'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -135,14 +143,20 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.1.0] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.1.0] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.1.0] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.1.0] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.1.0] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.1.2] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.1.2] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.1.2] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.1.2] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.1.2] SOCIAL: " + $Social)
 } finally {
+    if ($null -ne $movieOverride) {
+        Exit-C11CMovieOverride -State $movieOverride
+    }
     if (Test-Path -LiteralPath $TempSilent) {
         Remove-Item -Force -LiteralPath $TempSilent -ErrorAction SilentlyContinue
+    }
+    if (Test-Path -LiteralPath $LegacyMp4Silent) {
+        Remove-Item -Force -LiteralPath $LegacyMp4Silent -ErrorAction SilentlyContinue
     }
     Pop-Location
 }

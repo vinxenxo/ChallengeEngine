@@ -1,13 +1,31 @@
-# Generated Artifacts
+# artifacts — C11-C layout v2.1.2
 
-`artifacts/` is the only canonical root for generated outputs and evidence.
+`artifacts` is divided by evidentiary role. Do not use one generic cleaner over the whole tree.
 
-- `production/` — generated production exports.
-- `qa/` — repeatable QA evidence and manifests.
-- `regression/` — reference comparisons and freeze reports.
-- `tests/` — test logs, inventories and test-generated JSON.
-- `releases/` — retained package/checkpoint evidence.
-- `legacy/` — historical generated evidence migrated out of the live path.
-- `scratch/` — disposable local workspace and ignored by Git.
+## Protected evidence roots
 
-Binary media is deliberately ignored by Git and can be regenerated from the corresponding definitions/manifests.
+- `legacy`
+- `qa`
+- `regression`
+- `releases`
+- `production`
+- `tests`
+
+These roots are never targeted by C11-C cleanup/reset.
+
+## Regenerable staging
+
+- `prototypes\c11c_geometric_waves_v1`
+- `prototypes\c11c_fractal_bloom_v1`
+- `prototypes\c11c_sacred_symmetry_v1`
+- `prototypes\c11c_living_particles_v1`
+- `prototypes\c11c_invisible_forces_v1`
+- `prototypes\c11c_bulk_multiseed`
+- `prototypes\c11c_review_assets`
+- `scratch`
+
+The review/render commands do not delete this staging material. Cleanup is explicit.
+
+## Final products
+
+`production\audiovisual` is the permanent C11-C product store. It is not removed by prototype cleaners or review runs.

@@ -1,57 +1,71 @@
-# C11-C Visual Loop Prototype Bulk
+# C11-C canonical toolchain — v2.1.2
 
-This directory contains presentation-only runners.
+This directory contains the canonical C11-C presentation/review/production tools. C11-B remains frozen.
 
-## Single-family runners
+## Canonical commands
 
-- `..\c11c_geometric_waves_v1\run_prototype.ps1`
-- `..\c11c_fractal_bloom_v1\run_prototype.ps1`
-- `..\c11c_sacred_symmetry_v1\run_prototype.ps1`
-- `..\c11c_living_particles_v1\run_prototype.ps1`
-- `..\c11c_invisible_forces_v1\run_prototype.ps1`
-
-## Group runners
-
-- `run_remaining_visual_loops.ps1` — C11-C.3 through C11-C.5
-- `run_all_c11c_visual_loops.ps1` — all five families
-
-All runners expect the repository root as their working tree and preserve the frozen engine boundaries.
-
-
-## Multi-seed bulk
-
-`run_c11c_multiseed_bulk.ps1` renders all five families for a deterministic seed matrix.
-Default: `314159`, `271828`, `161803`, `112358` = 20 renders.
-
-Example custom matrix:
+Validate PowerShell syntax:
 
 ```powershell
-.\tools\prototypes\c11c_bulk\run_c11c_multiseed_bulk.ps1 -Seeds 314159,271828,161803,577215,424242
+.\tools\prototypes\c11c_bulk\validate_c11c_powershell.ps1
 ```
 
-Every family launcher accepts `-Seed <int>`; the seed is propagated to visual presentation and prototype audio.
+Validate delivery configuration:
 
+```powershell
+.\tools\prototypes\c11c_bulk\validate_c11c_delivery_configuration.ps1
+```
 
-## Seed variation policy
-The multiseed stage is no longer a filename-only test. Each family receives a restrained, deterministic parameter envelope from `C11C_SEED`: geometry/frequency for Geometric Waves; Julia/zoom treatment for Fractal Bloom; symmetry order/ring/gear ratios for Sacred Symmetry; attractor positions/flow envelope for Living Particles; and field orientation/pulse envelope for Invisible Forces. Same family + same seed remains reproducible.
+Generate the Art Direction 2.0 corpus (5 seeds × 5 families = 25 videos):
 
+```powershell
+.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -ResetReviewAssets
+```
 
-## Artifact naming integrity
-Every launcher uses expandable seed-specific output paths (for example `*_seed_271828.mp4`). Literal `$Seed` filenames are treated as legacy artifacts from the pre-fix runner and are never reused by the current bulk matrix.
+Use explicit seeds when reproducibility of a review batch is required:
 
+```powershell
+.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -Seeds 1234567,2345678,3456789,4567890,5678901 -ResetReviewAssets
+```
 
-## Seed-driven variation
-The multiseed stage is a deterministic variation test, not just a filename test. Geometric Waves varies polygon/frequency/morph envelope; Fractal Bloom varies zoom/warp/bloom envelope; Sacred Symmetry varies radial order/ring bias/gear relations; Living Particles varies attractor positions/flow envelope; Invisible Forces varies field orientation/storm/pulse envelope. Same family + same seed remains reproducible.
+Publish a final product:
 
-## Deterministic geek text
+```powershell
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828
+```
 
-Prototype Footer includes family-specific deterministic technobabble generated from family + seed.
-Use `-NoFooter` on individual prototype launchers to render without Footer for future production-style previews.
+Review and production never perform prototype cleanup.
 
-## Seed diversity policy
+## Artifact policy
 
-The current four-seed matrix is a qualification matrix, not the final production diversity envelope. Production bulk will widen family-specific parameters while remaining bounded by each family's art contract.
+`artifacts\prototypes` is staging/review material.
+`artifacts\production\audiovisual` is the protected final-product store.
+`artifacts\legacy`, `qa`, `regression`, `releases`, `production`, and `tests` are protected evidence roots.
 
-## 1.3.1 Godot parse hotfix
+Manual prototype media cleanup:
 
-Godot 4.7.1 requires explicit typing for several values originating from untyped Arrays/Dictionaries in the deterministic technobabble utility. The 1.3.1 package contains that hotfix and does not alter the visual formulas or frozen engine boundaries.
+```powershell
+.\tools\prototypes\c11c_bulk\clean_c11c_artifacts.ps1 -Apply
+```
+
+Explicit C11-C prototype/reset cleanup:
+
+```powershell
+.\tools\prototypes\c11c_bulk\reset_c11c_artifacts.ps1 -Apply
+```
+
+Neither command touches `artifacts\production\audiovisual`.
+
+## Resolution contract
+
+C11-B keeps its frozen 540×960 viewport. C11-C captures at 720×1280 (9:16) by temporarily writing a root `override.cfg` with viewport and window overrides, then restoring/removing it. The prototype scene keeps the 540×960 logical composition and scales it by 4/3.
+
+The family launcher also verifies that the Godot log reports a 720×1280 Movie Maker capture before any downstream packaging continues.
+
+## Audio and MP4 contract
+
+Sound is enabled by default. `-NoSound` and `-Silent` disable audio. Exactly one canonical MP4 exists under the family staging directory after a successful run. Any audio-muxing intermediate is written only to the OS temporary directory and is deleted.
+
+## Historical versioned scripts
+
+Files named `run_*_v2.0.x.ps1` or `run_*_v2.1.0.ps1` are historical/superseded tooling from the iterative C11-C hardening process. Use the unversioned canonical commands above for current work.

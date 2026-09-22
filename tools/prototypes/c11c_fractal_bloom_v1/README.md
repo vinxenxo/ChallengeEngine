@@ -1,45 +1,33 @@
-# C11-C.2 — Fractal Bloom v1 Prototype
+# FRACTAL BLOOM — C11-C v2.1.2
 
-Isolated radial prototype for the `VisualLoop / fractal` family.
+Family id: `fractal`
 
-## Artistic target
+Presentation-only Visual Loop prototype. No C11-B simulation, RNG ownership, C7 audio contract or C9 authoring contract is modified.
 
-**Bioluminescent mycelium / neural synapses / microscopic infinite universe.**
+## Art identity
 
-The structure is procedural: dynamic Julia iteration + orbit traps + domain warping + analytical periodic zoom. No visual PNG/JPG assets are used.
+radial fractal nucleus / branching filaments / bioluminescent depth.
 
-## Reference
+## Current social delivery
 
-- seed: `314159`
-- canvas: `540×960`
-- body: `y=144..816`
-- fps: `30`
-- duration: `10.0 s`
-- exported frames: `300`
-- depth layers: `3`
+- 720×1280 (9:16)
+- 30 FPS
+- 18.00 s / 540 frames
+- 4/3 scale from the frozen 540×960 logical composition
 
-## Run
+The launcher creates a temporary root `override.cfg` to override viewport + window size during Movie Maker capture, then restores/removes it. `project.godot` remains untouched.
 
-From the project root:
+## Run one video
 
 ```powershell
-.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 271828
 ```
 
-Expected artifacts:
+Disable audio with either:
 
-```text
-artifacts/prototypes/c11c_fractal_bloom_v1/
-  FractalBloom_v1_seed_314159.mp4
-  FractalBloom_v1_seed_314159.gif
-  FractalBloom_v1_seed_314159_music.wav
-  FractalBloom_v1_seed_314159_ffprobe.json
-  FractalBloom_v1_seed_314159_manifest.json
-  FractalBloom_v1_seed_314159_godot.log
+```powershell
+... -NoSound
+... -Silent
 ```
 
-The audio layer is prototype-only. It does not modify C7.
-
-## Review rule
-
-This package is not a productive integration. The first physical GIF/MP4 is the visual review surface. Do not create a second artistic implementation before reviewing it.
+A successful run leaves one canonical MP4 for the seed, plus review/trace sidecars.

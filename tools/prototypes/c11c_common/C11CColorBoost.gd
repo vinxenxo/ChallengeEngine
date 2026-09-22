@@ -1,7 +1,7 @@
 class_name C11CColorBoost
 extends RefCounted
 
-## C11-C v2.0.8 — mobile-vivid editorial palette transform.
+## C11-C v2.1.2 — mobile-vivid editorial palette transform.
 ## Presentation-only: increases chroma/value without changing palette identity.
 
 static func vivid(c: Color, saturation_gain: float = 1.34, value_gain: float = 1.10) -> Color:

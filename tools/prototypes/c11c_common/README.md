@@ -1,7 +1,12 @@
-# C11-C Common Prototype Utilities
+# C11-C common presentation layer — v2.1.2
 
-`TechnobabbleGenerator.gd` is an isolated editorial utility for deterministic geek/fluff text.
+Presentation-only helpers used by the five Visual Loop families.
 
-It is prototype-only and intentionally outside `core/`.
+- `C11CEditorialAnimator.gd`: deterministic Matrix/airport-board header transition.
+- `C11CEditorialColors.gd`: palette-derived editorial text/rule colors.
+- `C11CColorBoost.gd`: deterministic mobile-vivid color transform; explicitly typed to avoid Godot warning-as-error inference.
+- `C11CMovieCapture.ps1`: temporary 720×1280 Movie Maker override; restores prior `override.cfg` state.
+- `C11CSafeAmbient.py`: deterministic, restrained mobile-safe ambient bed.
+- `write_social_metadata.py`: writes per-video social sidecars; accepts UTF-8 BOM and non-BOM JSON.
 
-Same family + same seed + same generator revision => exact same text.
+These helpers do not modify C11-B engine semantics or C7 contracts.
