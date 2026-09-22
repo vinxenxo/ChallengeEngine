@@ -27,6 +27,8 @@ uniform vec4 highlight_color : source_color = vec4(0.95, 0.78, 0.43, 1.0);
 uniform vec4 white_gold_color : source_color = vec4(1.0, 0.95, 0.84, 1.0);
 uniform vec4 accent_color : source_color = vec4(0.95, 0.62, 0.12, 1.0);
 
+const float GEOMETRY_CONTAINMENT_SCALE = 0.94;
+
 const float C11C_PI = 3.14159265358979323846;
 const float C11C_TAU = 6.28318530717958647692;
 const float BODY_ASPECT = 540.0 / 672.0;
@@ -76,7 +78,8 @@ float gear_teeth(vec2 p, float sides, float base_r, float tooth_depth, float wid
 void fragment() {
     vec2 p = UV - vec2(0.5);
     p.x *= BODY_ASPECT;
-    p *= macro_scale;
+    // Slight global containment margin keeps the largest seeded figures inside the Body.
+    p *= clamp(macro_scale, 0.84, 1.02) * GEOMETRY_CONTAINMENT_SCALE;
     float r = length(p);
     float a = atan(p.y, p.x);
 

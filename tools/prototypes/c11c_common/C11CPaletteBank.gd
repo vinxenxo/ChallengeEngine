@@ -122,11 +122,76 @@ const PALETTES := {
     ]
 }
 
-static func palette(family_id: String, palette_index: int) -> Dictionary:
+static func palette(family_id: String, palette_index: int, seed_value: int = 0) -> Dictionary:
     var family: String = _canonical_family(family_id)
     var entries: Array = PALETTES.get(family, PALETTES["geometric"])
     var idx: int = posmod(palette_index, entries.size())
-    return entries[idx]
+    var result: Dictionary = entries[idx].duplicate(true)
+    if seed_value != 0:
+        _apply_seed_variant(result, family, seed_value, idx)
+    return result
+
+static func _apply_seed_variant(palette: Dictionary, family: String, seed_value: int, palette_index: int) -> void:
+    # Controlled intra-palette variation: deterministic but now broad enough to
+    # prevent a five-render review batch from collapsing into the same colorway.
+    # The variant is a cosmetic hash of seed + selected palette, never simulation RNG.
+    var variant: int = _mixed(seed_value, 601 + palette_index * 97) % 16
+    var shifts: Array[float] = [-0.092, 0.0, 0.076, -0.054, 0.108, -0.080, 0.034, -0.026, 0.064, -0.116, 0.018, 0.098, -0.046, 0.052, -0.068, 0.086]
+    var base_shift: float = shifts[variant]
+    var family_scale: float = 1.0
+    match family:
+        "geometric": family_scale = 1.00
+        "fractal": family_scale = 0.94
+        "sacred_symmetry": family_scale = 0.16
+        "living_particles": family_scale = 1.05
+        "invisible_forces": family_scale = 0.26
+        _: family_scale = 1.0
+
+    var hue_shift: float = base_shift * family_scale
+    var sat_scale: float = 1.0 + [-0.06, 0.04, 0.08, -0.02, 0.12, 0.06, -0.08, 0.10, 0.02, 0.14, -0.04, 0.09, -0.10, 0.05, 0.11, -0.03][variant]
+    var value_scale: float = 1.0 + [-0.04, 0.02, 0.04, -0.03, 0.06, 0.01, -0.05, 0.03, 0.05, -0.02, 0.07, 0.02, -0.06, 0.04, 0.01, -0.01][variant]
+
+    var roles: Array[String] = []
+    match family:
+        "geometric": roles = ["dominant", "secondary", "highlight"]
+        "fractal": roles = ["indigo", "violet", "cyan", "highlight"]
+        "sacred_symmetry": roles = ["primary", "secondary", "highlight", "white_gold", "accent"]
+        "living_particles": roles = ["deep", "mid", "bright", "highlight"]
+        "invisible_forces": roles = ["deep", "primary", "secondary", "highlight"]
+        _: roles = []
+
+    for i in range(roles.size()):
+        var role: String = roles[i]
+        if not palette.has(role):
+            continue
+        var role_hue_shift: float = hue_shift
+        if role == "secondary":
+            role_hue_shift *= -0.42
+        elif role == "accent":
+            role_hue_shift *= 0.72
+        elif role == "highlight" or role == "white_gold":
+            role_hue_shift *= 0.22
+        var role_value: float = value_scale + float(i - roles.size() / 2) * 0.009
+        palette[role] = _variant_color_hex(str(palette[role]), role_hue_shift, sat_scale, role_value)
+
+    palette["palette_variant"] = variant
+    palette["palette_variant_seed"] = seed_value
+    palette["name"] = "%s V%02d" % [str(palette["name"]), variant]
+
+static func _variant_color_hex(hex_value: String, hue_shift: float, sat_scale: float, value_scale: float) -> String:
+    var color := Color(hex_value)
+    var h: float = color.h
+    var s: float = color.s
+    var v: float = color.v
+    var shifted := Color.from_hsv(fposmod(h + hue_shift, 1.0), clampf(s * sat_scale, 0.0, 1.0), clampf(v * value_scale, 0.0, 1.0), color.a)
+    return shifted.to_html(false)
+
+static func _mixed(seed_value: int, salt: int) -> int:
+    var x: int = (int(seed_value) ^ int(salt * 374761393)) & 0x7fffffff
+    x = int((x ^ (x >> 13)) * 1274126177) & 0x7fffffff
+    x = int((x ^ (x >> 16)) * 2246822519) & 0x7fffffff
+    x = int((x ^ (x >> 13)) * 3266489917) & 0x7fffffff
+    return int(x ^ (x >> 16)) & 0x7fffffff
 
 static func _canonical_family(family_id: String) -> String:
     match family_id:

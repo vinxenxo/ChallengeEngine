@@ -25,7 +25,7 @@ const HEADER_TOP_HEIGHT := 56.0
 const HEADER_SEPARATOR_Y := 70.0
 const HEADER_SECOND_Y := 74.0
 const HEADER_SECOND_HEIGHT := 66.0
-const FOOTER_FONT_SIZE := 12
+const FOOTER_FONT_SIZE := 13
 const LOOP_DURATION := 18.0
 const FPS := 30
 const FRAME_COUNT := 540
@@ -49,7 +49,7 @@ func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("fractal", _seed)
-    _palette = PaletteBankClass.palette("fractal", int(_variation["palette_mode"]))
+    _palette = PaletteBankClass.palette("fractal", int(_variation["palette_mode"]), _seed)
     _text_colors = EditorialColorsClass.palette("fractal", _palette)
     _authoring_json_path = "res://artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_%d_authoring.json" % _seed
     _write_authoring_snapshot()
@@ -147,7 +147,7 @@ func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
     var label := _new_label(text_value, pos, Vector2(540.0, 24.0), FOOTER_FONT_SIZE, color)
     var font: Font = label.get_theme_default_font()
     var fitted: int = FOOTER_FONT_SIZE
-    while fitted > 10 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > 508.0:
+    while fitted > 12 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > 508.0:
         fitted -= 1
     label.add_theme_font_size_override("font_size", fitted)
     return label
