@@ -15,6 +15,7 @@ const VisualDrillRenderer = preload("res://core/presentation/rendering/VisualDri
 const PresentationUI = preload("res://core/presentation/PresentationUI.gd")
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
 const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
+const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 
 @export var content_definition_path: String = ""
@@ -35,6 +36,8 @@ var presentation_profile: PresentationProfile
 var qa_mode: bool = false
 var qa_header_text: String = ""
 var qa_footer_text: String = ""
+var _definition_context: Dictionary = {}
+var c11c_editorial_layer: C11CVisualEditorialLayer = null
 
 func _ready() -> void:
 	print("[VISUAL_CONTENT_PLAYER] Initializing playback host...")
@@ -56,6 +59,7 @@ func _ready() -> void:
 	unified_social_frame.get_body_content_root().add_child(_renderer_host)
 	
 	var definition: Dictionary = _load_definition()
+	_definition_context = definition.duplicate(true)
 	if definition.is_empty():
 		push_error("[VISUAL_CONTENT_PLAYER] Failed to load valid content definition.")
 		return
@@ -70,7 +74,8 @@ func _ready() -> void:
 	presentation_profile = _build_presentation_profile(definition)
 	_configure_qa_overlay(definition)
 	unified_social_frame.apply_profile(presentation_profile)
-	presentation_ui = PresentationUI.new(unified_social_frame, presentation_profile.theme_name, presentation_profile)
+	var use_shared_social_editorial: bool = str(definition.get("kind", "")) == "visual_drill"
+	presentation_ui = PresentationUI.new(unified_social_frame, presentation_profile.theme_name, presentation_profile, use_shared_social_editorial)
 	social_ui_binder = SocialUIBinder.new(presentation_ui, presentation_profile)
 
 	_runtime = resolution.get("runtime")
@@ -85,7 +90,20 @@ func _ready() -> void:
 		return
 		
 	_binder = binder_res.get("binder")
-	
+
+	if _binder != null and _binder.has_method("set_definition_context"):
+		_binder.set_definition_context(definition)
+
+	if str(definition.get("kind", "")) == "visual_drill":
+		c11c_editorial_layer = C11CVisualEditorialLayer.new()
+		if c11c_editorial_layer == null:
+			push_error("[VISUAL_CONTENT_PLAYER] Shared C11-C editorial layer could not be instantiated.")
+			return
+		if not c11c_editorial_layer.mount(unified_social_frame):
+			push_error("[VISUAL_CONTENT_PLAYER] Shared C11-C editorial layer could not be mounted.")
+			c11c_editorial_layer = null
+			return
+
 	if _stream.kind == "visual_loop":
 		_renderer_host.mount_renderer(VisualLoopRenderer.new())
 	elif _stream.kind == "visual_drill":
@@ -110,6 +128,9 @@ func _process(_delta: float) -> void:
 		return
 		
 	var render_model: Dictionary = _binder.bind_frame(frame, presentation_profile, "GAME")
+	render_model["editorial_frame_index"] = _current_frame_index
+	render_model["editorial_frame_count"] = _total_frames
+	render_model["editorial_seed"] = int(_definition_context.get("seed", 314159))
 	if qa_mode:
 		render_model["show_hook"] = true
 		render_model["hook_text"] = qa_header_text
@@ -120,7 +141,9 @@ func _process(_delta: float) -> void:
 		render_model["cta_sub"] = ""
 	if social_ui_binder != null:
 		social_ui_binder.bind_render_model(render_model)
-	
+	if c11c_editorial_layer != null:
+		c11c_editorial_layer.apply_render_model(render_model)
+
 	var domain_state: Dictionary = {}
 	if _stream.kind == "visual_loop":
 		domain_state = render_model.get("visual_frame_state", {})

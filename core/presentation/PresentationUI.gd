@@ -16,10 +16,12 @@ var theme_name: String
 
 var gameplay_envelope: Control 
 var mechanic_node: Node2D
+var use_c11c_shared_social_editorial: bool = false
 
-func _init(root: Node = null, theme_name: String = "default_c6", profile: PresentationProfile = null):
+func _init(root: Node = null, theme_name: String = "default_c6", profile: PresentationProfile = null, use_shared_social_editorial: bool = false):
 	self.root_control = root
 	self.theme_name = theme_name
+	self.use_c11c_shared_social_editorial = use_shared_social_editorial
 
 	var unified_frame: UnifiedSocialFrame = null
 	if root_control != null and root_control is UnifiedSocialFrame:
@@ -55,10 +57,11 @@ func _build_unified_frame_ui(frame: UnifiedSocialFrame) -> void:
 	var body_root := frame.get_body_ui_root()
 	var footer_root := frame.get_footer_content_root()
 
-	var header_box := VBoxContainer.new()
-	header_box.set_anchors_preset(Control.PRESET_FULL_RECT)
-	header_root.add_child(header_box)
-	_build_header_ui(header_box)
+	if not use_c11c_shared_social_editorial:
+		var header_box := VBoxContainer.new()
+		header_box.set_anchors_preset(Control.PRESET_FULL_RECT)
+		header_root.add_child(header_box)
+		_build_header_ui(header_box)
 
 	gameplay_envelope = Control.new()
 	gameplay_envelope.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -66,8 +69,9 @@ func _build_unified_frame_ui(frame: UnifiedSocialFrame) -> void:
 	body_root.add_child(gameplay_envelope)
 	_build_body_children(true)
 
-	var footer_box := VBoxContainer.new()
+	var footer_box := Control.new()
 	footer_box.set_anchors_preset(Control.PRESET_FULL_RECT)
+	footer_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	footer_root.add_child(footer_box)
 	_build_footer_children(footer_box)
 

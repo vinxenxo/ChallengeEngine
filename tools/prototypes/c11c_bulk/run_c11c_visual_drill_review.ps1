@@ -1,0 +1,305 @@
+param(
+    [Parameter(Mandatory=$false)]
+    [int[]]$Seeds = @(12345,54321,314159,7770001,998877),
+    [switch]$ResetReviewAssets,
+    [switch]$RegenerateEnvelopes,
+    [switch]$NoSound
+)
+$ErrorActionPreference='Stop'
+Set-StrictMode -Version Latest
+
+$ProjectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
+$QaRoot=Join-Path $ProjectRoot 'artifacts\qa\c11a_visual\runs'
+$ReviewRoot=Join-Path $ProjectRoot 'artifacts\prototypes\c11c_visual_drills_review'
+$AudioRoot=Join-Path $ReviewRoot '_audio'
+$MovieCapture=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CMovieCapture.ps1'
+$AudioGenerator=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\generate_c11c_ambient_audio.py'
+$Seeds=@($Seeds | ForEach-Object {[int]$_})
+$Drills=@('tracking','saccade','pursuit','peripheral_scan')
+
+if($Seeds.Count -ne 5){throw 'Visual Drill review expects exactly five unique seeds.'}
+if(@($Seeds | Sort-Object -Unique).Count -ne 5){throw 'Visual Drill review seeds must be unique.'}
+foreach($seed in $Seeds){if($seed -lt 1 -or $seed -gt 2147483646){throw "Seed out of range: $seed"}}
+
+. $MovieCapture
+
+function Invoke-Checked {
+    param([Parameter(Mandatory=$true)][string]$Executable,[Parameter(Mandatory=$true)][string[]]$Arguments,[Parameter(Mandatory=$true)][string]$Label)
+    Write-Host "[C11-C-DRILL] $Label"
+    $process=Start-Process -FilePath $Executable -ArgumentList $Arguments -Wait -PassThru -NoNewWindow
+    if($process.ExitCode -ne 0){throw "$Label failed with exit code $($process.ExitCode)"}
+}
+
+function Invoke-GodotMovieChecked {
+    param(
+        [Parameter(Mandatory=$true)][string[]]$Arguments,
+        [Parameter(Mandatory=$true)][string]$RunDir,
+        [Parameter(Mandatory=$true)][string]$RunId
+    )
+    $stdoutPath=Join-Path $RunDir 'godot_stdout.log'
+    $stderrPath=Join-Path $RunDir 'godot_stderr.log'
+    Write-Host "[C11-C-DRILL] Render $RunId"
+    $process=Start-Process -FilePath 'godot' -ArgumentList $Arguments -Wait -PassThru -NoNewWindow -RedirectStandardOutput $stdoutPath -RedirectStandardError $stderrPath
+    $stdout=if(Test-Path -LiteralPath $stdoutPath){Get-Content -Raw -LiteralPath $stdoutPath}else{''}
+    $stderr=if(Test-Path -LiteralPath $stderrPath){Get-Content -Raw -LiteralPath $stderrPath}else{''}
+    $log=$stdout+"`n"+$stderr
+    $fatalPatterns=@(
+        'SCRIPT ERROR:',
+        'Parse Error:',
+        'Compile Error:',
+        'ERROR: Failed to load script',
+        'Invalid call. Nonexistent function',
+        'Nonexistent function',
+        'Failed to compile depended scripts'
+    )
+    foreach($pattern in $fatalPatterns){
+        if($log -match [regex]::Escape($pattern)){
+            throw "Godot runtime/compile failure for $RunId. See $stdoutPath and $stderrPath. Matched: $pattern"
+        }
+    }
+    if($process.ExitCode -ne 0){throw "Godot render failed for $RunId with exit code $($process.ExitCode)"}
+    if($log -notmatch '\[VISUAL_CONTENT_PLAYER\] Ready \[visual_drill/') {
+        throw "Godot render for $RunId never reached VisualContentPlayer READY state. See $stdoutPath and $stderrPath."
+    }
+}
+
+function Get-FileSha256Hex {
+    param([Parameter(Mandatory=$true)][string]$Path)
+    return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant()
+}
+
+function Wait-ForStableFile {
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Label,[int]$TimeoutSeconds=90)
+    $deadline=(Get-Date).AddSeconds($TimeoutSeconds)
+    $lastSize=-1L; $stableSamples=0
+    while((Get-Date) -lt $deadline){
+        if(Test-Path -LiteralPath $Path){
+            $item=Get-Item -LiteralPath $Path
+            $size=[int64]$item.Length
+            if($size -gt 0){
+                if($size -eq $lastSize){$stableSamples++} else {$stableSamples=0;$lastSize=$size}
+                if($stableSamples -ge 2){return}
+            }
+        }
+        Start-Sleep -Milliseconds 400
+    }
+    throw "$Label was not stable within ${TimeoutSeconds}s: $Path"
+}
+
+function Get-VideoProbe {
+    param([Parameter(Mandatory=$true)][string]$Path)
+    $json=& ffprobe -v error -show_streams -show_format -of json $Path
+    if($LASTEXITCODE -ne 0){throw "ffprobe failed for $Path"}
+    return ($json -join "`n") | ConvertFrom-Json
+}
+
+function Convert-Mp4VideoOnly {
+    param([Parameter(Mandatory=$true)][string]$AviPath,[Parameter(Mandatory=$true)][string]$Mp4Path)
+    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$AviPath,'-an','-c:v','libx264','-preset','fast','-crf','21','-pix_fmt','yuv420p','-movflags','+faststart',$Mp4Path) "Encode silent video $Mp4Path"
+}
+
+function Mux-Audio {
+    param([Parameter(Mandatory=$true)][string]$VideoPath,[Parameter(Mandatory=$true)][string]$AudioPath,[Parameter(Mandatory=$true)][string]$OutputPath)
+    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$VideoPath,'-stream_loop','-1','-i',$AudioPath,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','128k','-ar','44100','-ac','2','-shortest','-movflags','+faststart',$OutputPath) "Mux shared ambient master $OutputPath"
+}
+
+function Assert-FinalContract {
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][int]$ExpectedFrames,[Parameter(Mandatory=$true)][double]$ExpectedDuration,[Parameter(Mandatory=$true)][bool]$ExpectedAudio)
+    Wait-ForStableFile -Path $Path -Label "Final artifact $Path"
+    $probe=Get-VideoProbe -Path $Path
+    if((Get-Item -LiteralPath $Path).Length -lt 4096){throw "Final artifact is suspiciously small/empty: $Path"}
+    $video=@($probe.streams | Where-Object {$_.codec_type -eq 'video'}) | Select-Object -First 1
+    if($null -eq $video){throw "No video stream in $Path"}
+    if([int]$video.width -ne 720 -or [int]$video.height -ne 1280){throw "720x1280 contract failed: $Path -> $($video.width)x$($video.height)"}
+    if([string]$video.r_frame_rate -ne '30/1'){throw "30 FPS contract failed: $Path -> $($video.r_frame_rate)"}
+    if([int]$video.nb_frames -ne $ExpectedFrames){throw "Frame contract failed: $Path -> $($video.nb_frames), expected $ExpectedFrames"}
+    $duration=[double]$probe.format.duration
+    if([math]::Abs($duration-$ExpectedDuration) -gt 0.05){throw "Duration contract failed: $Path -> $duration, expected ~$ExpectedDuration"}
+    $audioCount=@($probe.streams | Where-Object {$_.codec_type -eq 'audio'}).Count
+    if($ExpectedAudio -and $audioCount -lt 1){throw "Audio is required but missing: $Path"}
+    if(-not $ExpectedAudio -and $audioCount -ne 0){throw "Audio was disabled but is present: $Path"}
+    return [ordered]@{codec=[string]$video.codec_name;width=[int]$video.width;height=[int]$video.height;r_frame_rate=[string]$video.r_frame_rate;nb_frames=[int]$video.nb_frames;duration_seconds=$duration;audio_streams=$audioCount}
+}
+
+function Export-KeyFrames {
+    param([Parameter(Mandatory=$true)][string]$Mp4Path,[Parameter(Mandatory=$true)][string]$RunDir)
+	$probe=Get-VideoProbe -Path $Mp4Path
+	$video=@($probe.streams | Where-Object {$_.codec_type -eq 'video'}) | Select-Object -First 1
+	$availableFrames=[int]$video.nb_frames
+	if($availableFrames -lt 1){throw "Cannot derive keyframes: invalid frame count in $Mp4Path"}
+	$lastFrame=$availableFrames-1
+	$indices=@(0,[int][math]::Floor($lastFrame*0.25),[int][math]::Floor($lastFrame*0.50),[int][math]::Floor($lastFrame*0.75),$lastFrame) | Sort-Object -Unique
+	while($indices.Count -lt 5){$indices=@($indices + $lastFrame) | Sort-Object -Unique;if($lastFrame -lt 4){throw "Cannot extract five unique keyframes from $Mp4Path"}}
+	$indices=@($indices | Select-Object -First 5)
+    $terms=$indices | ForEach-Object {"eq(n\,$($_))"}
+    $expr="select='$($terms -join '+')'"
+    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$Mp4Path,'-vf',$expr,'-fps_mode','vfr',(Join-Path $RunDir 'frame_%03d.png')) "Extract keyframes $Mp4Path"
+    $frames=@(Get-ChildItem -LiteralPath $RunDir -Filter 'frame_*.png' | Sort-Object Name)
+    if($frames.Count -ne 5){throw "Expected 5 keyframes, found $($frames.Count) in $RunDir"}
+}
+
+function Export-ContactSheet {
+    param([Parameter(Mandatory=$true)][string]$RunDir)
+    $frames=@(Get-ChildItem -LiteralPath $RunDir -Filter 'frame_*.png' | Sort-Object Name)
+    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$frames[0].FullName,'-i',$frames[1].FullName,'-i',$frames[2].FullName,'-i',$frames[3].FullName,'-i',$frames[4].FullName,'-filter_complex','hstack=inputs=5',(Join-Path $RunDir 'contact_sheet.jpg')) "Build contact sheet $RunDir"
+}
+
+function Export-Gif {
+    param([Parameter(Mandatory=$true)][string]$Mp4Path,[Parameter(Mandatory=$true)][string]$GifPath)
+    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$Mp4Path,'-vf','fps=12,scale=360:640:flags=lanczos:force_original_aspect_ratio=decrease,pad=360:640:(ow-iw)/2:(oh-ih)/2','-an',$GifPath) "Build review GIF $GifPath"
+}
+
+function Write-SocialSidecar {
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][string]$AudioMode)
+    $content=@"
+C11-C VISUAL DRILL REVIEW
+Family: $Family
+Seed: $Seed
+Resolution: 720x1280
+FPS: 30
+Duration: $([math]::Round($Duration,2)) s
+Frames: $Frames
+Audio: $AudioMode
+Matrix header transition: OFF
+Shared social/editorial layout: ON
+
+Reproduction source:
+C11-A qualification envelope; seed 12345 uses the deterministic A copy when present.
+"@
+    [System.IO.File]::WriteAllText($Path,$content,(New-Object System.Text.UTF8Encoding($false)))
+}
+
+Write-Host '============================================================'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW'
+Write-Host '[C11-C-DRILL] 4 families x 5 seeds = 20 physical renders'
+Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / current envelope duration'
+Write-Host '[C11-C-DRILL] Shared editorial layout / Matrix OFF / audio ON'
+Write-Host '============================================================'
+
+if($ResetReviewAssets -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
+New-Item -ItemType Directory -Force -Path $ReviewRoot,$AudioRoot | Out-Null
+
+$requiredRuns=@()
+foreach($family in $Drills){foreach($seed in $Seeds){$requiredRuns += [pscustomobject]@{Family=$family;Seed=$seed;RunId="visual_drill_${family}_seed_${seed}"}}}
+
+function Resolve-SourceEnvelopePath {
+    param([Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed)
+    $baseRun = Join-Path $QaRoot ("visual_drill_${Family}_seed_${Seed}")
+    $baseEnvelope = Join-Path $baseRun 'envelope.json'
+    if(Test-Path -LiteralPath $baseEnvelope){ return $baseEnvelope }
+    if($Seed -eq 12345){
+        $aRun = Join-Path $QaRoot ("visual_drill_${Family}_seed_12345_A")
+        $aEnvelope = Join-Path $aRun 'envelope.json'
+        if(Test-Path -LiteralPath $aEnvelope){ return $aEnvelope }
+    }
+    return $null
+}
+
+$missing=@($requiredRuns | Where-Object { $null -eq (Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed) })
+if($RegenerateEnvelopes -or $missing.Count -gt 0){
+    Write-Host '[C11-C-DRILL] Existing C11-A envelopes incomplete; regenerating the legacy qualification matrix.'
+    Invoke-Checked 'godot' @('--headless','--path','.','-s','./tests/C11ABulkEnvelopeGenerator.gd') 'Generate C11-A envelopes'
+}
+
+$overrideState=$null
+$catalog=@()
+try {
+    $overrideState=Enter-C11CMovieOverride -ProjectRoot $ProjectRoot -Width 720 -Height 1280
+    foreach($family in $Drills){
+        $familyRoot=Join-Path $ReviewRoot $family
+        New-Item -ItemType Directory -Force -Path $familyRoot | Out-Null
+        foreach($seed in $Seeds){
+            $runId="visual_drill_${family}_seed_${seed}"
+            $envelopePath=Resolve-SourceEnvelopePath -Family $family -Seed $seed
+            if(-not(Test-Path -LiteralPath $envelopePath)){throw "Missing envelope: $envelopePath"}
+            $envelope=Get-Content -Raw -LiteralPath $envelopePath | ConvertFrom-Json
+            if([string]$envelope.kind -ne 'visual_drill' -or [string]$envelope.subtype -ne $family){throw "Unexpected route in $envelopePath"}
+            $duration=[double]$envelope.payload.duration
+            $fps=[int]$envelope.payload.fps
+            $frames=[int]$envelope.payload.frame_count
+            if($fps -ne 30){throw "$runId is not 30 FPS: $fps"}
+            if($frames -lt 1){throw "$runId has invalid frame_count: $frames"}
+            $targetDir=Join-Path $familyRoot "seed_$seed"
+            New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
+            Get-ChildItem -LiteralPath $targetDir -File -ErrorAction SilentlyContinue | Remove-Item -Force
+
+            $aviPath=Join-Path $targetDir "VisualDrill_${family}_seed_${seed}.avi"
+            $silentMp4=Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_silent.mp4"
+            $finalMp4=Join-Path $targetDir "VisualDrill_${family}_seed_${seed}.mp4"
+            $gifPath=Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_review.gif"
+            $relativeEnvelope=$envelopePath.Substring($ProjectRoot.Length+1).Replace('\','/')
+
+            Invoke-GodotMovieChecked @('--path','.', '--scene','core/presentation/rendering/VisualContentPlayer.tscn', "--definition=$relativeEnvelope", '--write-movie',$aviPath,'--fixed-fps','30','--quit-after',([string]$frames)) -RunDir $targetDir -RunId $runId
+            if(-not(Test-Path -LiteralPath $aviPath)){throw "Godot did not create AVI for ${runId}: ${aviPath}"}
+            Wait-ForStableFile -Path $aviPath -Label "Movie Maker capture $runId"
+            Convert-Mp4VideoOnly -AviPath $aviPath -Mp4Path $silentMp4
+
+            $audioPath=Join-Path $AudioRoot 'global_ambient_master.wav'
+            if(-not $NoSound -and -not(Test-Path -LiteralPath $audioPath)){
+                Invoke-Checked 'python' @($AudioGenerator,$audioPath,'314159','visual_drill','1','18.0') "Generate one shared ambient master (18s)"
+            }
+            if($NoSound){
+                Move-Item -LiteralPath $silentMp4 -Destination $finalMp4 -Force
+            } else {
+                Mux-Audio -VideoPath $silentMp4 -AudioPath $audioPath -OutputPath $finalMp4
+                Remove-Item -LiteralPath $silentMp4 -Force
+            }
+
+            $probe=Assert-FinalContract -Path $finalMp4 -ExpectedFrames $frames -ExpectedDuration $duration -ExpectedAudio:(-not $NoSound)
+            Export-KeyFrames -Mp4Path $finalMp4 -RunDir $targetDir
+            Export-ContactSheet -RunDir $targetDir
+            Export-Gif -Mp4Path $finalMp4 -GifPath $gifPath
+            Write-SocialSidecar -Path (Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt") -Family $family -Seed $seed -Duration $duration -Frames $frames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT'})
+
+            $manifest=[ordered]@{
+                schema='C11-C-VISUAL-DRILL-REVIEW-V1'
+                revision='1.0'
+                family=$family
+                seed=$seed
+                route='visual_drill/' + $family
+                resolution='720x1280'
+                fps=$fps
+                duration_seconds=$duration
+                frame_count=$frames
+                matrix_enabled=$false
+                editorial_layout='shared_c11c_social'
+                audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
+                source_envelope=$envelopePath
+                final_mp4=$finalMp4
+                gif=$gifPath
+                contact_sheet=(Join-Path $targetDir 'contact_sheet.jpg')
+                keyframes=@(Get-ChildItem -LiteralPath $targetDir -Filter 'frame_*.png' | Sort-Object Name | Select-Object -ExpandProperty Name)
+                ffprobe=$probe
+                hashes=[ordered]@{mp4_sha256=(Get-FileSha256Hex $finalMp4);envelope_sha256=(Get-FileSha256Hex $envelopePath)}
+            }
+            $manifestPath=Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_manifest.json"
+            [System.IO.File]::WriteAllText($manifestPath,($manifest|ConvertTo-Json -Depth 12),(New-Object System.Text.UTF8Encoding($false)))
+            $catalog += [pscustomobject]@{family=$family;seed=$seed;path=$finalMp4;status='PASS'}
+            Write-Host "[C11-C-DRILL] PASS $runId -> 720x1280 / $frames frames / $duration s"
+        }
+    }
+} finally {
+    if($null -ne $overrideState){Exit-C11CMovieOverride -State $overrideState}
+}
+
+$rootManifest=[ordered]@{
+    schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
+    revision='1.0'
+    status='COMPLETE'
+    family_count=$Drills.Count
+    seed_count=$Seeds.Count
+    render_count=$catalog.Count
+    seeds=@($Seeds)
+    families=@($Drills)
+    delivery='720x1280 / 9:16 / 30 FPS'
+    logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
+    matrix_enabled=$false
+    audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
+    source_qa_root=$QaRoot
+    review_root=$ReviewRoot
+    cleanup_performed=$false
+    results=$catalog
+}
+[System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_VISUAL_DRILL_REVIEW_CATALOG.json'),($rootManifest|ConvertTo-Json -Depth 12),(New-Object System.Text.UTF8Encoding($false)))
+Write-Host "[C11-C-DRILL] COMPLETE renders=$($catalog.Count) root=$ReviewRoot"
+return

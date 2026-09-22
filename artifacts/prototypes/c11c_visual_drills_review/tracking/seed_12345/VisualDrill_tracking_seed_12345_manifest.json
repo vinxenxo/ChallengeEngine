@@ -1,0 +1,38 @@
+{
+    "schema":  "C11-C-VISUAL-DRILL-REVIEW-V1",
+    "revision":  "1.0",
+    "family":  "tracking",
+    "seed":  12345,
+    "route":  "visual_drill/tracking",
+    "resolution":  "720x1280",
+    "fps":  30,
+    "duration_seconds":  2,
+    "frame_count":  60,
+    "matrix_enabled":  false,
+    "editorial_layout":  "shared_c11c_social",
+    "audio_mode":  "GLOBAL_AMBIENT_MASTER",
+    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11a_visual\\runs\\visual_drill_tracking_seed_12345_A\\envelope.json",
+    "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\tracking\\seed_12345\\VisualDrill_tracking_seed_12345.mp4",
+    "gif":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\tracking\\seed_12345\\VisualDrill_tracking_seed_12345_review.gif",
+    "contact_sheet":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\tracking\\seed_12345\\contact_sheet.jpg",
+    "keyframes":  [
+                      "frame_001.png",
+                      "frame_002.png",
+                      "frame_003.png",
+                      "frame_004.png",
+                      "frame_005.png"
+                  ],
+    "ffprobe":  {
+                    "codec":  "h264",
+                    "width":  720,
+                    "height":  1280,
+                    "r_frame_rate":  "30/1",
+                    "nb_frames":  60,
+                    "duration_seconds":  2,
+                    "audio_streams":  1
+                },
+    "hashes":  {
+                   "mp4_sha256":  "a3b0719df83978bcda2610eab245cc67bfa1053b4d5c1a62c96fe10ca79d9fa3",
+                   "envelope_sha256":  "737cd9f75bc8589f63257871e3e741103fec735fd06f1cdeee4a727c9e381e76"
+               }
+}

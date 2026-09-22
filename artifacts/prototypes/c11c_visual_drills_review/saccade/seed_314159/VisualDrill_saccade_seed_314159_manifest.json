@@ -1,0 +1,38 @@
+{
+    "schema":  "C11-C-VISUAL-DRILL-REVIEW-V1",
+    "revision":  "1.0",
+    "family":  "saccade",
+    "seed":  314159,
+    "route":  "visual_drill/saccade",
+    "resolution":  "720x1280",
+    "fps":  30,
+    "duration_seconds":  2,
+    "frame_count":  60,
+    "matrix_enabled":  false,
+    "editorial_layout":  "shared_c11c_social",
+    "audio_mode":  "GLOBAL_AMBIENT_MASTER",
+    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11a_visual\\runs\\visual_drill_saccade_seed_314159\\envelope.json",
+    "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\saccade\\seed_314159\\VisualDrill_saccade_seed_314159.mp4",
+    "gif":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\saccade\\seed_314159\\VisualDrill_saccade_seed_314159_review.gif",
+    "contact_sheet":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\saccade\\seed_314159\\contact_sheet.jpg",
+    "keyframes":  [
+                      "frame_001.png",
+                      "frame_002.png",
+                      "frame_003.png",
+                      "frame_004.png",
+                      "frame_005.png"
+                  ],
+    "ffprobe":  {
+                    "codec":  "h264",
+                    "width":  720,
+                    "height":  1280,
+                    "r_frame_rate":  "30/1",
+                    "nb_frames":  60,
+                    "duration_seconds":  2,
+                    "audio_streams":  1
+                },
+    "hashes":  {
+                   "mp4_sha256":  "1a77818afc299f050175a14e341c9972425ceced886d12119acaacb036cbf713",
+                   "envelope_sha256":  "e3e4cc701d434e1e249b3e54cf2600e3089e9ae70ea50dca146e5982c737997e"
+               }
+}

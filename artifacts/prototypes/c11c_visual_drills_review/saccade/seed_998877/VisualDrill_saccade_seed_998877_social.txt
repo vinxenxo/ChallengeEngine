@@ -1,0 +1,13 @@
+C11-C VISUAL DRILL REVIEW
+Family: saccade
+Seed: 998877
+Resolution: 720x1280
+FPS: 30
+Duration: 2 s
+Frames: 60
+Audio: GLOBAL_AMBIENT
+Matrix header transition: OFF
+Shared social/editorial layout: ON
+
+Reproduction source:
+C11-A qualification envelope; seed 12345 uses the deterministic A copy when present.
