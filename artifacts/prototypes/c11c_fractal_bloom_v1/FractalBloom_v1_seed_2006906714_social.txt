@@ -1,0 +1,32 @@
+TITLE: FRACTAL BLOOM // FRACTAL FILIGREE
+
+DESCRIPTION:
+FRACTAL BLOOM — visual loop de arte generativa matemática y procedural. Variante FRACTAL FILIGREE con paleta rose_ultraviolet, seed 2006906714. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: FRACTAL FILIGREE
+PALETTE: rose_ultraviolet
+SEED: 2006906714
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+z(n+1)=z(n)^2+c | FRACTAL_FILIGREE | DETAIL 1.14
+PARAMETRO DE TUNEL DENDRITICO: {VALUE:.1F} RAD/S // ESTABLE // DETAIL 1.14 | BRANCH 0.88
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: Parametro de tunel dendritico: {value:.1f} rad/s // ESTABLE // DETAIL 1.14 | BRANCH 0.88
+
+HASHTAGS:
+#GenerativeArt #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #GenerativeDesign #CyberpunkArt #DigitalArt #InfiniteArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 2006906714
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_2006906714_manifest.json

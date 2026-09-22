@@ -1,0 +1,32 @@
+TITLE: SACRED SYMMETRY // ASTROLABE
+
+DESCRIPTION:
+SACRED SYMMETRY — visual loop de arte generativa matemática y procedural. Variante ASTROLABE con paleta ember_champagne, seed 2006906714. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: sacred_symmetry
+GRAMMAR: ASTROLABE
+PALETTE: ember_champagne
+SEED: 2006906714
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+ASTROLABE | N=6 | GEAR 5:-2
+PARAMETRO DE CARTA CELESTE: {VALUE:.1F} RAD/S // ESTABLE // N=6 | GEAR 5:-2
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: Parametro de carta celeste: {value:.1f} rad/s // ESTABLE // N=6 | GEAR 5:-2
+
+HASHTAGS:
+#GenerativeArt #SacredSymmetry #MathematicalArt #ProceduralArt #Astrolabe #SteampunkArt #GenerativeDesign #DigitalArt #GeometricArt #CelestialArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 2006906714
+
+CANONICAL MANIFEST:
+SacredSymmetry_v1_seed_2006906714_manifest.json

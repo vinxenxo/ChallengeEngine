@@ -1,0 +1,32 @@
+TITLE: GEOMETRIC WAVES // ORBITAL WAVE
+
+DESCRIPTION:
+GEOMETRIC WAVES — visual loop de arte generativa matemática y procedural. Variante ORBITAL WAVE con paleta mint_fuchsia, seed 876662918. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: geometric
+GRAMMAR: ORBITAL WAVE
+PALETTE: mint_fuchsia
+SEED: 876662918
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+ORBITAL_WAVE | WAVE 15.4 | MORPH 0.82
+PARAMETRO DE CAMPO DE NODOS: {VALUE:.1F} ITER/S // OPTIMO // WAVE 15.41 | MORPH 0.82
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: Parametro de campo de nodos: {value:.1f} iter/s // OPTIMO // WAVE 15.41 | MORPH 0.82
+
+HASHTAGS:
+#GenerativeArt #GeometricWaves #MathematicalArt #ProceduralArt #WaveArt #DigitalArt #TechArt #CyberpunkArt #Lissajous #AbstractArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 876662918
+
+CANONICAL MANIFEST:
+GeometricWaves_v1_seed_876662918_manifest.json

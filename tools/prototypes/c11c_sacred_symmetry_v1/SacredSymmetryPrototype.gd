@@ -1,6 +1,7 @@
 extends Node2D
 
 ## C11-C editorial/audio/loop presentation prototype v2.1.4.
+## R4: shared two-line Matrix intro/midpoint swap + family-synced ambient audio.
 ## Family: SACRED SYMMETRY
 ## Presentation-only: no core, simulation, SimulationResult, engine RNG or C7 changes.
 
@@ -9,16 +10,22 @@ const RendererClass = preload("res://tools/prototypes/c11c_sacred_symmetry_v1/Sa
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
 const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 const PaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CPaletteBank.gd")
-const EDITORIAL_ANIMATOR_SCRIPT = preload("res://tools/prototypes/c11c_common/C11CEditorialAnimator.gd")
+const HEADER_ANIMATOR_SCRIPT = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
 const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd")
 const EditorialColorsClass = preload("res://tools/prototypes/c11c_common/C11CEditorialColors.gd")
 const ColorBoostClass = preload("res://tools/prototypes/c11c_common/C11CColorBoost.gd")
 
 const REFERENCE_SEED := 314159
-const HEADER_MAX_WIDTH := 468.0
-const HEADER_MAX_FONT_SIZE := 16
-const HEADER_MIN_FONT_SIZE := 11
-const HEADER_HOOK_FONT_SIZE := 18
+const HEADER_MAX_WIDTH := 486.0
+const HEADER_FONT_SIZE := 18
+const HEADER_BOLD_EMBOLDEN := 0.70
+const HEADER_LABEL_WIDTH := 540.0
+const HEADER_TOP_Y := 12.0
+const HEADER_TOP_HEIGHT := 56.0
+const HEADER_SEPARATOR_Y := 70.0
+const HEADER_SECOND_Y := 74.0
+const HEADER_SECOND_HEIGHT := 66.0
+const FOOTER_FONT_SIZE := 12
 const LOOP_DURATION := 18.0
 const FPS := 30
 const FRAME_COUNT := 540
@@ -32,6 +39,7 @@ var _show_footer: bool = true
 var _variation: Dictionary = {}
 var _palette: Dictionary = {}
 var _text_colors: Dictionary = {}
+var _header_math: Label
 var _header_hook: Label
 var _header_animator: RefCounted
 var _authoring_json_path: String = ""
@@ -94,43 +102,60 @@ func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
     rule_color.a = 0.28
 
     var rule_a := ColorRect.new()
-    rule_a.position = Vector2(36.0, 104.0)
+    rule_a.position = Vector2(36.0, HEADER_SEPARATOR_Y)
     rule_a.size = Vector2(468.0, 1.0)
     rule_a.color = rule_color
     frame.get_header_content_root().add_child(rule_a)
 
     var rule_b := ColorRect.new()
-    rule_b.position = Vector2(36.0, 30.0)
+    rule_b.position = Vector2(36.0, 14.0)
     rule_b.size = Vector2(468.0, 1.0)
     rule_b.color = rule_color
     frame.get_footer_content_root().add_child(rule_b)
 
 func _add_header(root: Control) -> void:
     var grammar_names: Array[String] = ["ASTROLABE", "GEAR TRAIN", "POLYGON ORRERY", "ORIGAMI MANDALA", "CELESTIAL CHART"]
-    var hooks: Array[String] = ["OBSERVA UNA MAQUINA PERFECTA", "EL TIEMPO TAMBIEN TIENE GEOMETRIA", "UNA ARQUITECTURA HECHA DE SIMETRIA", "ABRE EL MECANISMO", "SIGUE LA ALINEACION CELESTE"]
     var grammar_index: int = int(_variation["grammar_mode"])
     var grammar_name: String = grammar_names[grammar_index].to_upper()
-    var hook: String = hooks[grammar_index % hooks.size()]
     var line1: String = "%s | N=%d | GEAR %d:%d" % [grammar_name.replace(" ", "_"), int(_variation["symmetry_order"]), int(_variation["gear_inner"]), int(_variation["gear_outer"])]
-    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), _text_colors["header_math"]))
-    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
+    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation).to_upper()
+    var wrapped_line2: String = HEADER_ANIMATOR_SCRIPT.wrap_two_lines(line2, root.get_theme_default_font(), HEADER_FONT_SIZE, HEADER_MAX_WIDTH)
+
+    # Both editorial blocks share the same 18 px bold treatment. The second block
+    # is explicitly wrapped at word boundaries so no word is ever split.
+    _header_math = _new_header_label(line1, Vector2(0.0, HEADER_TOP_Y), Vector2(HEADER_LABEL_WIDTH, HEADER_TOP_HEIGHT), _text_colors["header_math"])
+    _header_math.add_theme_constant_override("outline_size", 1)
+    _header_math = HEADER_ANIMATOR_SCRIPT.apply_bold(_header_math, HEADER_BOLD_EMBOLDEN)
+    root.add_child(_header_math)
+
+    _header_hook = _new_header_label(wrapped_line2, Vector2(0.0, HEADER_SECOND_Y), Vector2(HEADER_LABEL_WIDTH, HEADER_SECOND_HEIGHT), _text_colors["header_hook"])
     _header_hook.add_theme_constant_override("outline_size", 1)
+    _header_hook = HEADER_ANIMATOR_SCRIPT.apply_bold(_header_hook, HEADER_BOLD_EMBOLDEN)
     root.add_child(_header_hook)
-    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(hook, "VISUAL LOOP / SACRED SYMMETRY", _seed)
+
+    _header_animator = HEADER_ANIMATOR_SCRIPT.new(line1, wrapped_line2, _seed + 7919)
 
 func _add_footer(root: Control) -> void:
-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation)
-    var line1: String = geek_text
     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | N=%d | GEAR %d:%d" % [_seed, int(_variation["symmetry_order"]), int(_variation["gear_inner"]), int(_variation["gear_outer"])]
     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
     var line4: String = "PRECISION CELESTIAL MECHANISM / v2.1.4"
-    root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
-    root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
-    root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))
-    root.add_child(_new_footer_label(line4, Vector2(36.0, 102.0), _text_colors["footer_signature"]))
+    root.add_child(_new_footer_label(line2, Vector2(0.0, 20.0), _text_colors["footer_data"]))
+    root.add_child(_new_footer_label(line3, Vector2(0.0, 47.0), _text_colors["footer_palette"]))
+    root.add_child(_new_footer_label(line4, Vector2(0.0, 74.0), _text_colors["footer_signature"]))
 
 func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
-    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
+    var label := _new_label(text_value, pos, Vector2(540.0, 24.0), FOOTER_FONT_SIZE, color)
+    var font: Font = label.get_theme_default_font()
+    var fitted: int = FOOTER_FONT_SIZE
+    while fitted > 10 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > 508.0:
+        fitted -= 1
+    label.add_theme_font_size_override("font_size", fitted)
+    return label
+
+func _new_header_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+    var label := _new_label(text_value, pos, box_size, HEADER_FONT_SIZE, color)
+    label.add_theme_constant_override("line_spacing", 0)
+    return label
 
 func _resolve_footer_visibility() -> bool:
     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
@@ -139,15 +164,6 @@ func _resolve_footer_visibility() -> bool:
 func _resolve_seed() -> int:
     var raw: String = OS.get_environment("C11C_SEED").strip_edges()
     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
-
-func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
-    var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
-    var font: Font = label.get_theme_default_font()
-    var fitted: int = HEADER_MAX_FONT_SIZE
-    while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
-        fitted -= 1
-    label.add_theme_font_size_override("font_size", fitted)
-    return label
 
 func _new_label(text_value: String, pos: Vector2, box_size: Vector2, font_size: int, color: Color) -> Label:
     var label := Label.new()
@@ -158,6 +174,7 @@ func _new_label(text_value: String, pos: Vector2, box_size: Vector2, font_size: 
     label.add_theme_font_size_override("font_size", font_size)
     label.add_theme_color_override("font_color", color)
     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     label.clip_text = true
     return label
 
@@ -165,10 +182,13 @@ func _process(_delta: float) -> void:
     if _renderer == null:
         return
     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
-    if _header_hook != null and _header_animator != null:
+    if _header_animator != null:
         var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
-        _header_hook.text = str(editorial["text"])
-        _header_hook.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(editorial["transition"]) else 0.90)
+        _header_math.text = str(editorial["line1_text"])
+        _header_hook.text = str(editorial["line2_text"])
+        var alpha: float = 0.90 if bool(editorial["transition"]) else 1.0
+        _header_math.modulate = Color(1.0, 1.0, 1.0, alpha)
+        _header_hook.modulate = Color(1.0, 1.0, 1.0, alpha)
     _frame_index = (_frame_index + 1) % FRAME_COUNT
 
 func _seed_index(salt: int, size: int) -> int:
@@ -193,9 +213,8 @@ func _write_authoring_snapshot() -> void:
     DirAccess.make_dir_recursive_absolute(dir_path)
     var grammar_index: int = int(_variation["grammar_mode"])
     var grammar_names: Array[String] = ["ASTROLABE", "GEAR TRAIN", "POLYGON ORRERY", "ORIGAMI MANDALA", "CELESTIAL CHART"]
-    var hooks: Array[String] = ["OBSERVA UNA MAQUINA PERFECTA", "EL TIEMPO TAMBIEN TIENE GEOMETRIA", "UNA ARQUITECTURA HECHA DE SIMETRIA", "ABRE EL MECANISMO", "SIGUE LA ALINEACION CELESTE"]
     var grammar_name: String = grammar_names[grammar_index]
-    var header_primary: String = hooks[grammar_index % hooks.size()]
+    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation).to_upper()
     var header_math: String = "%s | N=%d | GEAR %d:%d" % [grammar_name.replace(" ", "_"), int(_variation["symmetry_order"]), int(_variation["gear_inner"]), int(_variation["gear_outer"])]
     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
@@ -211,12 +230,14 @@ func _write_authoring_snapshot() -> void:
         "duration_seconds": LOOP_DURATION,
         "fps": FPS,
         "frame_count": FRAME_COUNT,
-        "header_primary": header_primary,
+        "header_primary": header_line_2,
+        "header_line_1": header_math,
+        "header_line_2": header_line_2,
         "header_secondary": "VISUAL LOOP / SACRED SYMMETRY",
         "header_math": header_math,
         "technobabble": TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation),
         "technobabble_revision": TechnobabbleGeneratorClass.revision(),
-        "audio_style": "deep deterministic ambient / singing bowls / low drone / family-synced pulses",
+        "audio_style": "soft celestial chime bed / aligned harmonics / restrained bell overtones / midpoint orbit swell",
         "sound_enabled": sound_enabled,
         "background": "000000",
         "footer_enabled": _show_footer,

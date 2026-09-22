@@ -1,0 +1,32 @@
+TITLE: GEOMETRIC WAVES // ORBITAL WAVE
+
+DESCRIPTION:
+GEOMETRIC WAVES — visual loop de arte generativa matemática y procedural. Variante ORBITAL WAVE con paleta cyan_magenta, seed 516399246. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: geometric
+GRAMMAR: ORBITAL WAVE
+PALETTE: cyan_magenta
+SEED: 516399246
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+ORBITAL_WAVE | WAVE 14.1 | MORPH 0.42
+DEMONIO: proxy espectral // cinta parametrica // WAVE 14.11 | MORPH 0.42
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: DEMONIO: proxy espectral // cinta parametrica // WAVE 14.11 | MORPH 0.42
+
+HASHTAGS:
+#GenerativeArt #GeometricWaves #MathematicalArt #ProceduralArt #WaveArt #DigitalArt #TechArt #CyberpunkArt #Lissajous #AbstractArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 516399246
+
+CANONICAL MANIFEST:
+GeometricWaves_v1_seed_516399246_manifest.json

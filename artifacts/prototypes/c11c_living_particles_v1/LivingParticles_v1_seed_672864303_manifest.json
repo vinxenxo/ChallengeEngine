@@ -1,0 +1,42 @@
+{
+    "prototype_id":  "C11-C.4_LIVING_PARTICLES_V1",
+    "revision":  "2.1.4",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  672864303,
+    "family_id":  "living_particles",
+    "display_name":  "LIVING PARTICLES",
+    "grammar":  "ORGANIC PULSE",
+    "palette":  "deep_violet_algae",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  18,
+                   "fps":  30,
+                   "frame_count":  540,
+                   "loop_cycles":  3,
+                   "loop_closed":  true,
+                   "background":  "000000",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "ORGANIC_PULSE | DENSITY 1.08 | FLOW 1.46",
+                      "header_line_2":  "[SYS] INDEXANDO ATRACTORES DE CLIFFORD A {VALUE:.1F} HZ // SIN JITTER // PARTICLES 111 | COLLISION 0.78",
+                      "header_secondary":  "VISUAL LOOP / LIVING PARTICLES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "deep_deterministic_ambient",
+                  "style":  "deep deterministic ambient / singing bowls / low drone / family-synced pulses",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  18,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false
+              },
+    "social_metadata":  "LivingParticles_v1_seed_672864303_social.txt",
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_living_particles_v1\\run_prototype.ps1 -Seed 672864303",
+    "technobabble":  "[SYS] Indexando atractores de Clifford a {value:.1f} Hz // sin jitter // PARTICLES 111 | COLLISION 0.78",
+    "frozen_boundaries_modified":  false
+}

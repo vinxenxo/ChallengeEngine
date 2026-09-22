@@ -1,0 +1,32 @@
+TITLE: FRACTAL BLOOM // RADIAL BLOOM
+
+DESCRIPTION:
+FRACTAL BLOOM — visual loop de arte generativa matemática y procedural. Variante RADIAL BLOOM con paleta rose_ultraviolet, seed 1537106206. Duración 18.00s, 1 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: RADIAL BLOOM
+PALETTE: rose_ultraviolet
+SEED: 1537106206
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+z(n+1)=z(n)^2+c | RADIAL_BLOOM | DETAIL 1.09
+GIROSCOPIO DE PRECISION // TRAMPAS DE ORBITA // HYPERDRIVE // DETAIL 1.09 | BRANCH 1.29
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: giroscopio de precision // trampas de orbita // HYPERDRIVE // DETAIL 1.09 | BRANCH 1.29
+
+HASHTAGS:
+#GenerativeArt #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #GenerativeDesign #CyberpunkArt #DigitalArt #InfiniteArt
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 1537106206
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_1537106206_manifest.json

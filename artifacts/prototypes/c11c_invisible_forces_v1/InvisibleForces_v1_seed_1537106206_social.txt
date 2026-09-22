@@ -1,0 +1,32 @@
+TITLE: INVISIBLE FORCES // SADDLE FIELD
+
+DESCRIPTION:
+INVISIBLE FORCES — visual loop de arte generativa matemática y procedural. Variante SADDLE FIELD con paleta scarlet_copper, seed 1537106206. Duración 18.00s, 3 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: SADDLE FIELD
+PALETTE: scarlet_copper
+SEED: 1537106206
+DURATION: 18.00 s
+FPS: 30
+FRAMES: 540
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / DEEP AMBIENT
+BACKGROUND: #000000
+
+HEADER:
+SADDLE_FIELD | 73 TRACES | PULSE 1.20
+GIROSCOPIO DE PRECISION // LINEAS EQUIPOTENCIALES // HYPERDRIVE // TRACES 73 | PULSE 1.20
+
+EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
+TECHNOBABBLE: giroscopio de precision // lineas equipotenciales // HYPERDRIVE // TRACES 73 | PULSE 1.20
+
+HASHTAGS:
+#GenerativeArt #InvisibleForces #VectorField #MathematicalArt #PhysicsArt #ProceduralArt #Topography #CyberpunkArt #DigitalArt #GenerativeDesign
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 1537106206
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_1537106206_manifest.json

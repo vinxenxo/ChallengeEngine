@@ -66,7 +66,7 @@ try {
     } else {
         & ffmpeg -y -hide_banner -loglevel error -i $Avi -an -c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p -movflags +faststart $TempSilent
         if ($LASTEXITCODE -ne 0) { throw "Intermediate silent MP4 packaging failed: exit=$LASTEXITCODE" }
-        & ffmpeg -y -hide_banner -loglevel error -i $TempSilent -i $Audio -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -ar 44100 -ac 2 -shortest -movflags +faststart $Mp4
+        & ffmpeg -y -hide_banner -loglevel error -i $TempSilent -i $Audio -map 0:v:0 -map 1:a:0 -c:v copy -af "volume=4.0,alimiter=limit=0.90" -c:a aac -b:a 192k -ar 44100 -ac 2 -shortest -movflags +faststart $Mp4
         if ($LASTEXITCODE -ne 0) { throw "Audio mux failed: exit=$LASTEXITCODE" }
     }
 
@@ -145,7 +145,7 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.1.4] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host "[C11-C-2.1.4] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / AUDIO_GAIN=4X / LOOP / EDITORIAL"
     Write-Host ("[C11-C-2.1.4] MP4: " + $Mp4)
     Write-Host ("[C11-C-2.1.4] GIF: " + $Gif)
     Write-Host ("[C11-C-2.1.4] AUDIO: " + $Audio)

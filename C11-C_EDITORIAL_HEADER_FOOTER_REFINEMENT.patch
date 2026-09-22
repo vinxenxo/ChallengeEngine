@@ -1,0 +1,650 @@
+--- a/tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd
++++ b/tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd
+@@ -16,9 +16,9 @@
+ 
+ const REFERENCE_SEED := 314159
+ const HEADER_MAX_WIDTH := 468.0
+-const HEADER_MAX_FONT_SIZE := 16
++const HEADER_MAX_FONT_SIZE := 18
+ const HEADER_MIN_FONT_SIZE := 11
+-const HEADER_HOOK_FONT_SIZE := 18
++const HEADER_HOOK_FONT_SIZE := 20
+ const LOOP_DURATION := 18.0
+ const FPS := 30
+ const FRAME_COUNT := 540
+@@ -32,7 +32,9 @@
+ var _variation: Dictionary = {}
+ var _palette: Dictionary = {}
+ var _text_colors: Dictionary = {}
++var _header_math: Label
+ var _header_hook: Label
++var _header_math_animator: RefCounted
+ var _header_animator: RefCounted
+ var _authoring_json_path: String = ""
+ 
+@@ -95,7 +97,7 @@
+     rule_color.a = 0.28
+ 
+     var rule_a := ColorRect.new()
+-    rule_a.position = Vector2(36.0, 104.0)
++    rule_a.position = Vector2(36.0, 62.0)
+     rule_a.size = Vector2(468.0, 1.0)
+     rule_a.color = rule_color
+     frame.get_header_content_root().add_child(rule_a)
+@@ -108,30 +110,28 @@
+ 
+ func _add_header(root: Control) -> void:
+     var grammar_names: Array[String] = ["HARMONIC MEMBRANE", "INTERFERENCE PLANE", "PARAMETRIC RIBBON", "LATTICE WAVE", "ORBITAL WAVE"]
+-    var hooks: Array[String] = ["CUANDO UNA ONDA SE CONVIERTE EN ARQUITECTURA", "OBSERVA COMO VIAJA LA FORMA", "LA GEOMETRIA TAMBIEN PUEDE FLUIR", "ESCULTURA HECHA DE ONDAS", "ENTRA EN EL CAMPO ARMONICO"]
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_name: String = grammar_names[grammar_index].to_upper()
+-    var hook: String = hooks[grammar_index % hooks.size()]
+     var line1: String = "%s | WAVE %.1f | MORPH %.2f" % [grammar_name.replace(" ", "_"), float(_variation["wave_frequency"]), float(_variation["morph"])]
+-    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), _text_colors["header_math"]))
+-    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
++    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("geometric", _seed, _variation)
++    _header_math = _new_header_math_label(line1, Vector2(36.0, 12.0), Vector2(468.0, 44.0), _text_colors["header_math"])
++    root.add_child(_header_math)
++    _header_hook = _new_header_fitted_label(line2, Vector2(36.0, 70.0), Vector2(468.0, 48.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
+     _header_hook.add_theme_constant_override("outline_size", 1)
+     root.add_child(_header_hook)
+-    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(hook, "VISUAL LOOP / GEOMETRIC WAVES", _seed)
++    _header_math_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line1, line1, _seed)
++    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line2, line2, _seed + 7919)
+ 
+ func _add_footer(root: Control) -> void:
+-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("geometric", _seed, _variation)
+-    var line1: String = geek_text
+     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | 30 FPS | %d LOOPS" % [_seed, int(_variation["loop_cycles"])]
+     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+     var line4: String = "GEOMETRIC GENERATIVE WAVE / v2.1.4"
+-    root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
+-    root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
+-    root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))
+-    root.add_child(_new_footer_label(line4, Vector2(36.0, 102.0), _text_colors["footer_signature"]))
++    root.add_child(_new_footer_label(line2, Vector2(36.0, 42.0), _text_colors["footer_data"]))
++    root.add_child(_new_footer_label(line3, Vector2(36.0, 70.0), _text_colors["footer_palette"]))
++    root.add_child(_new_footer_label(line4, Vector2(36.0, 98.0), _text_colors["footer_signature"]))
+ 
+ func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
+-    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
++    return _new_label(text_value, pos, Vector2(468.0, 20.0), 10, color)
+ 
+ func _resolve_footer_visibility() -> bool:
+     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+@@ -142,9 +142,12 @@
+     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
+ 
+ func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+-    var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++    return _new_header_fitted_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++
++func _new_header_fitted_label(text_value: String, pos: Vector2, box_size: Vector2, max_font_size: int, color: Color) -> Label:
++    var label := _new_label(text_value, pos, box_size, max_font_size, color)
+     var font: Font = label.get_theme_default_font()
+-    var fitted: int = HEADER_MAX_FONT_SIZE
++    var fitted: int = max_font_size
+     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
+         fitted -= 1
+     label.add_theme_font_size_override("font_size", fitted)
+@@ -159,6 +162,7 @@
+     label.add_theme_font_size_override("font_size", font_size)
+     label.add_theme_color_override("font_color", color)
+     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
++    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+     label.clip_text = true
+     return label
+ 
+@@ -166,6 +170,10 @@
+     if _renderer == null:
+         return
+     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
++    if _header_math != null and _header_math_animator != null:
++        var math_editorial: Dictionary = _header_math_animator.display_at(_frame_index, FRAME_COUNT)
++        _header_math.text = str(math_editorial["text"])
++        _header_math.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(math_editorial["transition"]) else 0.90)
+     if _header_hook != null and _header_animator != null:
+         var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
+         _header_hook.text = str(editorial["text"])
+@@ -194,9 +202,8 @@
+     DirAccess.make_dir_recursive_absolute(dir_path)
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_names: Array[String] = ["HARMONIC MEMBRANE", "INTERFERENCE PLANE", "PARAMETRIC RIBBON", "LATTICE WAVE", "ORBITAL WAVE"]
+-    var hooks: Array[String] = ["CUANDO UNA ONDA SE CONVIERTE EN ARQUITECTURA", "OBSERVA COMO VIAJA LA FORMA", "LA GEOMETRIA TAMBIEN PUEDE FLUIR", "ESCULTURA HECHA DE ONDAS", "ENTRA EN EL CAMPO ARMONICO"]
+     var grammar_name: String = grammar_names[grammar_index]
+-    var header_primary: String = hooks[grammar_index % hooks.size()]
++    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("geometric", _seed, _variation)
+     var header_math: String = "%s | WAVE %.1f | MORPH %.2f" % [grammar_name.replace(" ", "_"), float(_variation["wave_frequency"]), float(_variation["morph"])]
+     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
+     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
+@@ -212,7 +219,9 @@
+         "duration_seconds": LOOP_DURATION,
+         "fps": FPS,
+         "frame_count": FRAME_COUNT,
+-        "header_primary": header_primary,
++        "header_primary": header_line_2,
++        "header_line_1": header_math,
++        "header_line_2": header_line_2,
+         "header_secondary": "VISUAL LOOP / GEOMETRIC WAVES",
+         "header_math": header_math,
+         "technobabble": TechnobabbleGeneratorClass.generate_geek_text("geometric", _seed, _variation),
+--- a/tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd
++++ b/tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd
+@@ -16,9 +16,9 @@
+ 
+ const REFERENCE_SEED := 314159
+ const HEADER_MAX_WIDTH := 468.0
+-const HEADER_MAX_FONT_SIZE := 16
++const HEADER_MAX_FONT_SIZE := 18
+ const HEADER_MIN_FONT_SIZE := 11
+-const HEADER_HOOK_FONT_SIZE := 18
++const HEADER_HOOK_FONT_SIZE := 20
+ const LOOP_DURATION := 18.0
+ const FPS := 30
+ const FRAME_COUNT := 540
+@@ -32,7 +32,9 @@
+ var _variation: Dictionary = {}
+ var _palette: Dictionary = {}
+ var _text_colors: Dictionary = {}
++var _header_math: Label
+ var _header_hook: Label
++var _header_math_animator: RefCounted
+ var _header_animator: RefCounted
+ var _authoring_json_path: String = ""
+ 
+@@ -94,7 +96,7 @@
+     rule_color.a = 0.28
+ 
+     var rule_a := ColorRect.new()
+-    rule_a.position = Vector2(36.0, 104.0)
++    rule_a.position = Vector2(36.0, 62.0)
+     rule_a.size = Vector2(468.0, 1.0)
+     rule_a.color = rule_color
+     frame.get_header_content_root().add_child(rule_a)
+@@ -107,30 +109,28 @@
+ 
+ func _add_header(root: Control) -> void:
+     var grammar_names: Array[String] = ["RADIAL BLOOM", "DENDRITIC TUNNEL", "SPIRAL FRACTAL", "FRACTAL FILIGREE", "NESTED WORLDS"]
+-    var hooks: Array[String] = ["ENTRA EN UN UNIVERSO INFINITO", "DESCIENDE A OTRA ESCALA DE LA MATERIA", "DESCUBRE UNA NUEVA CAPA DEL FRACTAL", "LA FORMA SIGUE CRECIENDO", "OBSERVA LO QUE APARECE DENTRO"]
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_name: String = grammar_names[grammar_index].to_upper()
+-    var hook: String = hooks[grammar_index % hooks.size()]
+     var line1: String = "z(n+1)=z(n)^2+c | %s | DETAIL %.2f" % [grammar_name.replace(" ", "_"), float(_variation["detail_scale"])]
+-    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), _text_colors["header_math"]))
+-    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
++    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation)
++    _header_math = _new_header_math_label(line1, Vector2(36.0, 12.0), Vector2(468.0, 44.0), _text_colors["header_math"])
++    root.add_child(_header_math)
++    _header_hook = _new_header_fitted_label(line2, Vector2(36.0, 70.0), Vector2(468.0, 48.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
+     _header_hook.add_theme_constant_override("outline_size", 1)
+     root.add_child(_header_hook)
+-    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(hook, "VISUAL LOOP / FRACTAL BLOOM", _seed)
++    _header_math_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line1, line1, _seed)
++    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line2, line2, _seed + 7919)
+ 
+ func _add_footer(root: Control) -> void:
+-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation)
+-    var line1: String = geek_text
+     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | DETAIL %.2f | %d LOOPS" % [_seed, float(_variation["detail_scale"]), int(_variation["loop_cycles"])]
+     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+     var line4: String = "BIOLUMINESCENT FRACTAL ART / v2.1.4"
+-    root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
+-    root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
+-    root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))
+-    root.add_child(_new_footer_label(line4, Vector2(36.0, 102.0), _text_colors["footer_signature"]))
++    root.add_child(_new_footer_label(line2, Vector2(36.0, 42.0), _text_colors["footer_data"]))
++    root.add_child(_new_footer_label(line3, Vector2(36.0, 70.0), _text_colors["footer_palette"]))
++    root.add_child(_new_footer_label(line4, Vector2(36.0, 98.0), _text_colors["footer_signature"]))
+ 
+ func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
+-    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
++    return _new_label(text_value, pos, Vector2(468.0, 20.0), 10, color)
+ 
+ func _resolve_footer_visibility() -> bool:
+     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+@@ -141,9 +141,12 @@
+     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
+ 
+ func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+-    var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++    return _new_header_fitted_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++
++func _new_header_fitted_label(text_value: String, pos: Vector2, box_size: Vector2, max_font_size: int, color: Color) -> Label:
++    var label := _new_label(text_value, pos, box_size, max_font_size, color)
+     var font: Font = label.get_theme_default_font()
+-    var fitted: int = HEADER_MAX_FONT_SIZE
++    var fitted: int = max_font_size
+     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
+         fitted -= 1
+     label.add_theme_font_size_override("font_size", fitted)
+@@ -158,6 +161,7 @@
+     label.add_theme_font_size_override("font_size", font_size)
+     label.add_theme_color_override("font_color", color)
+     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
++    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+     label.clip_text = true
+     return label
+ 
+@@ -165,6 +169,10 @@
+     if _renderer == null:
+         return
+     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
++    if _header_math != null and _header_math_animator != null:
++        var math_editorial: Dictionary = _header_math_animator.display_at(_frame_index, FRAME_COUNT)
++        _header_math.text = str(math_editorial["text"])
++        _header_math.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(math_editorial["transition"]) else 0.90)
+     if _header_hook != null and _header_animator != null:
+         var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
+         _header_hook.text = str(editorial["text"])
+@@ -193,9 +201,8 @@
+     DirAccess.make_dir_recursive_absolute(dir_path)
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_names: Array[String] = ["RADIAL BLOOM", "DENDRITIC TUNNEL", "SPIRAL FRACTAL", "FRACTAL FILIGREE", "NESTED WORLDS"]
+-    var hooks: Array[String] = ["ENTRA EN UN UNIVERSO INFINITO", "DESCIENDE A OTRA ESCALA DE LA MATERIA", "DESCUBRE UNA NUEVA CAPA DEL FRACTAL", "LA FORMA SIGUE CRECIENDO", "OBSERVA LO QUE APARECE DENTRO"]
+     var grammar_name: String = grammar_names[grammar_index]
+-    var header_primary: String = hooks[grammar_index % hooks.size()]
++    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation)
+     var header_math: String = "z(n+1)=z(n)^2+c | %s | DETAIL %.2f" % [grammar_name.replace(" ", "_"), float(_variation["detail_scale"])]
+     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
+     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
+@@ -211,7 +218,9 @@
+         "duration_seconds": LOOP_DURATION,
+         "fps": FPS,
+         "frame_count": FRAME_COUNT,
+-        "header_primary": header_primary,
++        "header_primary": header_line_2,
++        "header_line_1": header_math,
++        "header_line_2": header_line_2,
+         "header_secondary": "VISUAL LOOP / FRACTAL BLOOM",
+         "header_math": header_math,
+         "technobabble": TechnobabbleGeneratorClass.generate_geek_text("fractal", _seed, _variation),
+--- a/tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd
++++ b/tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd
+@@ -16,9 +16,9 @@
+ 
+ const REFERENCE_SEED := 314159
+ const HEADER_MAX_WIDTH := 468.0
+-const HEADER_MAX_FONT_SIZE := 16
++const HEADER_MAX_FONT_SIZE := 18
+ const HEADER_MIN_FONT_SIZE := 11
+-const HEADER_HOOK_FONT_SIZE := 18
++const HEADER_HOOK_FONT_SIZE := 20
+ const LOOP_DURATION := 18.0
+ const FPS := 30
+ const FRAME_COUNT := 540
+@@ -32,7 +32,9 @@
+ var _variation: Dictionary = {}
+ var _palette: Dictionary = {}
+ var _text_colors: Dictionary = {}
++var _header_math: Label
+ var _header_hook: Label
++var _header_math_animator: RefCounted
+ var _header_animator: RefCounted
+ var _authoring_json_path: String = ""
+ 
+@@ -94,7 +96,7 @@
+     rule_color.a = 0.28
+ 
+     var rule_a := ColorRect.new()
+-    rule_a.position = Vector2(36.0, 104.0)
++    rule_a.position = Vector2(36.0, 62.0)
+     rule_a.size = Vector2(468.0, 1.0)
+     rule_a.color = rule_color
+     frame.get_header_content_root().add_child(rule_a)
+@@ -107,30 +109,28 @@
+ 
+ func _add_header(root: Control) -> void:
+     var grammar_names: Array[String] = ["ASTROLABE", "GEAR TRAIN", "POLYGON ORRERY", "ORIGAMI MANDALA", "CELESTIAL CHART"]
+-    var hooks: Array[String] = ["OBSERVA UNA MAQUINA PERFECTA", "EL TIEMPO TAMBIEN TIENE GEOMETRIA", "UNA ARQUITECTURA HECHA DE SIMETRIA", "ABRE EL MECANISMO", "SIGUE LA ALINEACION CELESTE"]
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_name: String = grammar_names[grammar_index].to_upper()
+-    var hook: String = hooks[grammar_index % hooks.size()]
+     var line1: String = "%s | N=%d | GEAR %d:%d" % [grammar_name.replace(" ", "_"), int(_variation["symmetry_order"]), int(_variation["gear_inner"]), int(_variation["gear_outer"])]
+-    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), _text_colors["header_math"]))
+-    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
++    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation)
++    _header_math = _new_header_math_label(line1, Vector2(36.0, 12.0), Vector2(468.0, 44.0), _text_colors["header_math"])
++    root.add_child(_header_math)
++    _header_hook = _new_header_fitted_label(line2, Vector2(36.0, 70.0), Vector2(468.0, 48.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
+     _header_hook.add_theme_constant_override("outline_size", 1)
+     root.add_child(_header_hook)
+-    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(hook, "VISUAL LOOP / SACRED SYMMETRY", _seed)
++    _header_math_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line1, line1, _seed)
++    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line2, line2, _seed + 7919)
+ 
+ func _add_footer(root: Control) -> void:
+-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation)
+-    var line1: String = geek_text
+     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | N=%d | GEAR %d:%d" % [_seed, int(_variation["symmetry_order"]), int(_variation["gear_inner"]), int(_variation["gear_outer"])]
+     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+     var line4: String = "PRECISION CELESTIAL MECHANISM / v2.1.4"
+-    root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
+-    root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
+-    root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))
+-    root.add_child(_new_footer_label(line4, Vector2(36.0, 102.0), _text_colors["footer_signature"]))
++    root.add_child(_new_footer_label(line2, Vector2(36.0, 42.0), _text_colors["footer_data"]))
++    root.add_child(_new_footer_label(line3, Vector2(36.0, 70.0), _text_colors["footer_palette"]))
++    root.add_child(_new_footer_label(line4, Vector2(36.0, 98.0), _text_colors["footer_signature"]))
+ 
+ func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
+-    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
++    return _new_label(text_value, pos, Vector2(468.0, 20.0), 10, color)
+ 
+ func _resolve_footer_visibility() -> bool:
+     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+@@ -141,9 +141,12 @@
+     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
+ 
+ func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+-    var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++    return _new_header_fitted_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++
++func _new_header_fitted_label(text_value: String, pos: Vector2, box_size: Vector2, max_font_size: int, color: Color) -> Label:
++    var label := _new_label(text_value, pos, box_size, max_font_size, color)
+     var font: Font = label.get_theme_default_font()
+-    var fitted: int = HEADER_MAX_FONT_SIZE
++    var fitted: int = max_font_size
+     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
+         fitted -= 1
+     label.add_theme_font_size_override("font_size", fitted)
+@@ -158,6 +161,7 @@
+     label.add_theme_font_size_override("font_size", font_size)
+     label.add_theme_color_override("font_color", color)
+     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
++    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+     label.clip_text = true
+     return label
+ 
+@@ -165,6 +169,10 @@
+     if _renderer == null:
+         return
+     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
++    if _header_math != null and _header_math_animator != null:
++        var math_editorial: Dictionary = _header_math_animator.display_at(_frame_index, FRAME_COUNT)
++        _header_math.text = str(math_editorial["text"])
++        _header_math.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(math_editorial["transition"]) else 0.90)
+     if _header_hook != null and _header_animator != null:
+         var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
+         _header_hook.text = str(editorial["text"])
+@@ -193,9 +201,8 @@
+     DirAccess.make_dir_recursive_absolute(dir_path)
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_names: Array[String] = ["ASTROLABE", "GEAR TRAIN", "POLYGON ORRERY", "ORIGAMI MANDALA", "CELESTIAL CHART"]
+-    var hooks: Array[String] = ["OBSERVA UNA MAQUINA PERFECTA", "EL TIEMPO TAMBIEN TIENE GEOMETRIA", "UNA ARQUITECTURA HECHA DE SIMETRIA", "ABRE EL MECANISMO", "SIGUE LA ALINEACION CELESTE"]
+     var grammar_name: String = grammar_names[grammar_index]
+-    var header_primary: String = hooks[grammar_index % hooks.size()]
++    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation)
+     var header_math: String = "%s | N=%d | GEAR %d:%d" % [grammar_name.replace(" ", "_"), int(_variation["symmetry_order"]), int(_variation["gear_inner"]), int(_variation["gear_outer"])]
+     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
+     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
+@@ -211,7 +218,9 @@
+         "duration_seconds": LOOP_DURATION,
+         "fps": FPS,
+         "frame_count": FRAME_COUNT,
+-        "header_primary": header_primary,
++        "header_primary": header_line_2,
++        "header_line_1": header_math,
++        "header_line_2": header_line_2,
+         "header_secondary": "VISUAL LOOP / SACRED SYMMETRY",
+         "header_math": header_math,
+         "technobabble": TechnobabbleGeneratorClass.generate_geek_text("sacred_symmetry", _seed, _variation),
+--- a/tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd
++++ b/tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd
+@@ -16,9 +16,9 @@
+ 
+ const REFERENCE_SEED := 314159
+ const HEADER_MAX_WIDTH := 468.0
+-const HEADER_MAX_FONT_SIZE := 16
++const HEADER_MAX_FONT_SIZE := 18
+ const HEADER_MIN_FONT_SIZE := 11
+-const HEADER_HOOK_FONT_SIZE := 18
++const HEADER_HOOK_FONT_SIZE := 20
+ const LOOP_DURATION := 18.0
+ const FPS := 30
+ const FRAME_COUNT := 540
+@@ -32,7 +32,9 @@
+ var _variation: Dictionary = {}
+ var _palette: Dictionary = {}
+ var _text_colors: Dictionary = {}
++var _header_math: Label
+ var _header_hook: Label
++var _header_math_animator: RefCounted
+ var _header_animator: RefCounted
+ var _authoring_json_path: String = ""
+ 
+@@ -96,7 +98,7 @@
+     rule_color.a = 0.28
+ 
+     var rule_a := ColorRect.new()
+-    rule_a.position = Vector2(36.0, 104.0)
++    rule_a.position = Vector2(36.0, 62.0)
+     rule_a.size = Vector2(468.0, 1.0)
+     rule_a.color = rule_color
+     frame.get_header_content_root().add_child(rule_a)
+@@ -109,30 +111,28 @@
+ 
+ func _add_header(root: Control) -> void:
+     var grammar_names: Array[String] = ["SWARM", "VORTEX", "COLLISION CLOUD", "ORGANIC PULSE", "MAGNETIC FILAMENT CLOUD"]
+-    var hooks: Array[String] = ["LA MATERIA SIGUE FUERZAS INVISIBLES", "OBSERVA COMO NACE LA VIDA SINTETICA", "DOS NUBES. UNA FUERZA.", "LA MATERIA APRENDE A MOVERSE", "VE COMO APARECE EL ORDEN"]
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_name: String = grammar_names[grammar_index].to_upper()
+-    var hook: String = hooks[grammar_index % hooks.size()]
+     var line1: String = "%s | DENSITY %.2f | FLOW %.2f" % [grammar_name.replace(" ", "_"), float(_variation["density_bias"]), float(_variation["swirl_bias"])]
+-    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), _text_colors["header_math"]))
+-    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
++    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("living_particles", _seed, _variation)
++    _header_math = _new_header_math_label(line1, Vector2(36.0, 12.0), Vector2(468.0, 44.0), _text_colors["header_math"])
++    root.add_child(_header_math)
++    _header_hook = _new_header_fitted_label(line2, Vector2(36.0, 70.0), Vector2(468.0, 48.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
+     _header_hook.add_theme_constant_override("outline_size", 1)
+     root.add_child(_header_hook)
+-    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(hook, "VISUAL LOOP / LIVING PARTICLES", _seed)
++    _header_math_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line1, line1, _seed)
++    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line2, line2, _seed + 7919)
+ 
+ func _add_footer(root: Control) -> void:
+-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("living_particles", _seed, _variation)
+-    var line1: String = geek_text
+     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | PARTICLES %d | FLOW %.2f" % [_seed, int(round(float(_variation["particle_count"]))), float(_variation["swirl_bias"])]
+     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+     var line4: String = "SYNTHETIC MATTER / v2.1.4"
+-    root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
+-    root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
+-    root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))
+-    root.add_child(_new_footer_label(line4, Vector2(36.0, 102.0), _text_colors["footer_signature"]))
++    root.add_child(_new_footer_label(line2, Vector2(36.0, 42.0), _text_colors["footer_data"]))
++    root.add_child(_new_footer_label(line3, Vector2(36.0, 70.0), _text_colors["footer_palette"]))
++    root.add_child(_new_footer_label(line4, Vector2(36.0, 98.0), _text_colors["footer_signature"]))
+ 
+ func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
+-    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
++    return _new_label(text_value, pos, Vector2(468.0, 20.0), 10, color)
+ 
+ func _resolve_footer_visibility() -> bool:
+     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+@@ -143,9 +143,12 @@
+     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
+ 
+ func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+-    var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++    return _new_header_fitted_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++
++func _new_header_fitted_label(text_value: String, pos: Vector2, box_size: Vector2, max_font_size: int, color: Color) -> Label:
++    var label := _new_label(text_value, pos, box_size, max_font_size, color)
+     var font: Font = label.get_theme_default_font()
+-    var fitted: int = HEADER_MAX_FONT_SIZE
++    var fitted: int = max_font_size
+     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
+         fitted -= 1
+     label.add_theme_font_size_override("font_size", fitted)
+@@ -160,6 +163,7 @@
+     label.add_theme_font_size_override("font_size", font_size)
+     label.add_theme_color_override("font_color", color)
+     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
++    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+     label.clip_text = true
+     return label
+ 
+@@ -167,6 +171,10 @@
+     if _renderer == null:
+         return
+     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
++    if _header_math != null and _header_math_animator != null:
++        var math_editorial: Dictionary = _header_math_animator.display_at(_frame_index, FRAME_COUNT)
++        _header_math.text = str(math_editorial["text"])
++        _header_math.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(math_editorial["transition"]) else 0.90)
+     if _header_hook != null and _header_animator != null:
+         var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
+         _header_hook.text = str(editorial["text"])
+@@ -195,9 +203,8 @@
+     DirAccess.make_dir_recursive_absolute(dir_path)
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_names: Array[String] = ["SWARM", "VORTEX", "COLLISION CLOUD", "ORGANIC PULSE", "MAGNETIC FILAMENT CLOUD"]
+-    var hooks: Array[String] = ["LA MATERIA SIGUE FUERZAS INVISIBLES", "OBSERVA COMO NACE LA VIDA SINTETICA", "DOS NUBES. UNA FUERZA.", "LA MATERIA APRENDE A MOVERSE", "VE COMO APARECE EL ORDEN"]
+     var grammar_name: String = grammar_names[grammar_index]
+-    var header_primary: String = hooks[grammar_index % hooks.size()]
++    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("living_particles", _seed, _variation)
+     var header_math: String = "%s | DENSITY %.2f | FLOW %.2f" % [grammar_name.replace(" ", "_"), float(_variation["density_bias"]), float(_variation["swirl_bias"])]
+     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
+     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
+@@ -213,7 +220,9 @@
+         "duration_seconds": LOOP_DURATION,
+         "fps": FPS,
+         "frame_count": FRAME_COUNT,
+-        "header_primary": header_primary,
++        "header_primary": header_line_2,
++        "header_line_1": header_math,
++        "header_line_2": header_line_2,
+         "header_secondary": "VISUAL LOOP / LIVING PARTICLES",
+         "header_math": header_math,
+         "technobabble": TechnobabbleGeneratorClass.generate_geek_text("living_particles", _seed, _variation),
+--- a/tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd
++++ b/tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd
+@@ -16,9 +16,9 @@
+ 
+ const REFERENCE_SEED := 314159
+ const HEADER_MAX_WIDTH := 468.0
+-const HEADER_MAX_FONT_SIZE := 16
++const HEADER_MAX_FONT_SIZE := 18
+ const HEADER_MIN_FONT_SIZE := 11
+-const HEADER_HOOK_FONT_SIZE := 18
++const HEADER_HOOK_FONT_SIZE := 20
+ const LOOP_DURATION := 18.0
+ const FPS := 30
+ const FRAME_COUNT := 540
+@@ -32,7 +32,9 @@
+ var _variation: Dictionary = {}
+ var _palette: Dictionary = {}
+ var _text_colors: Dictionary = {}
++var _header_math: Label
+ var _header_hook: Label
++var _header_math_animator: RefCounted
+ var _header_animator: RefCounted
+ var _authoring_json_path: String = ""
+ 
+@@ -95,7 +97,7 @@
+     rule_color.a = 0.28
+ 
+     var rule_a := ColorRect.new()
+-    rule_a.position = Vector2(36.0, 104.0)
++    rule_a.position = Vector2(36.0, 62.0)
+     rule_a.size = Vector2(468.0, 1.0)
+     rule_a.color = rule_color
+     frame.get_header_content_root().add_child(rule_a)
+@@ -108,30 +110,28 @@
+ 
+ func _add_header(root: Control) -> void:
+     var grammar_names: Array[String] = ["DIPOLE FIELD", "VORTEX FIELD", "SADDLE FIELD", "QUADRUPOLE FIELD", "GRAVITATIONAL LENS", "TOPOGRAPHIC BASIN"]
+-    var hooks: Array[String] = ["NO VES LA FUERZA, SOLO SU RASTRO", "OBSERVA UNA FUERZA HECHA VISIBLE", "SIGUE EL RASTRO DE LA FISICA", "LEE EL MAPA DE UNA FUERZA", "LA FISICA DEJA UNA HUELLA", "DESCUBRE EL CAMPO OCULTO"]
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_name: String = grammar_names[grammar_index].to_upper()
+-    var hook: String = hooks[grammar_index % hooks.size()]
+     var line1: String = "%s | %d TRACES | PULSE %.2f" % [grammar_name.replace(" ", "_"), int(_variation["trace_count"]), float(_variation["pulse_speed"])]
+-    root.add_child(_new_header_math_label(line1, Vector2(36.0, 27.0), Vector2(468.0, 32.0), _text_colors["header_math"]))
+-    _header_hook = _new_label(hook, Vector2(36.0, 66.0), Vector2(468.0, 34.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
++    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation)
++    _header_math = _new_header_math_label(line1, Vector2(36.0, 12.0), Vector2(468.0, 44.0), _text_colors["header_math"])
++    root.add_child(_header_math)
++    _header_hook = _new_header_fitted_label(line2, Vector2(36.0, 70.0), Vector2(468.0, 48.0), HEADER_HOOK_FONT_SIZE, _text_colors["header_hook"])
+     _header_hook.add_theme_constant_override("outline_size", 1)
+     root.add_child(_header_hook)
+-    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(hook, "VISUAL LOOP / INVISIBLE FORCES", _seed)
++    _header_math_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line1, line1, _seed)
++    _header_animator = EDITORIAL_ANIMATOR_SCRIPT.new(line2, line2, _seed + 7919)
+ 
+ func _add_footer(root: Control) -> void:
+-    var geek_text: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation)
+-    var line1: String = geek_text
+     var line2: String = "SEED %d | BODY 720X896 | T=18.00S | %d FLOW TRACES | PULSE %.2f" % [_seed, int(_variation["trace_count"]), float(_variation["pulse_speed"])]
+     var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+     var line4: String = "DETERMINISTIC FIELD ART / v2.1.4"
+-    root.add_child(_new_footer_label(line1, Vector2(36.0, 42.0), _text_colors["footer_geek"]))
+-    root.add_child(_new_footer_label(line2, Vector2(36.0, 62.0), _text_colors["footer_data"]))
+-    root.add_child(_new_footer_label(line3, Vector2(36.0, 82.0), _text_colors["footer_palette"]))
+-    root.add_child(_new_footer_label(line4, Vector2(36.0, 102.0), _text_colors["footer_signature"]))
++    root.add_child(_new_footer_label(line2, Vector2(36.0, 42.0), _text_colors["footer_data"]))
++    root.add_child(_new_footer_label(line3, Vector2(36.0, 70.0), _text_colors["footer_palette"]))
++    root.add_child(_new_footer_label(line4, Vector2(36.0, 98.0), _text_colors["footer_signature"]))
+ 
+ func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
+-    return _new_label(text_value, pos, Vector2(468.0, 16.0), 9, color)
++    return _new_label(text_value, pos, Vector2(468.0, 20.0), 10, color)
+ 
+ func _resolve_footer_visibility() -> bool:
+     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
+@@ -142,9 +142,12 @@
+     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
+ 
+ func _new_header_math_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
+-    var label := _new_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++    return _new_header_fitted_label(text_value, pos, box_size, HEADER_MAX_FONT_SIZE, color)
++
++func _new_header_fitted_label(text_value: String, pos: Vector2, box_size: Vector2, max_font_size: int, color: Color) -> Label:
++    var label := _new_label(text_value, pos, box_size, max_font_size, color)
+     var font: Font = label.get_theme_default_font()
+-    var fitted: int = HEADER_MAX_FONT_SIZE
++    var fitted: int = max_font_size
+     while fitted > HEADER_MIN_FONT_SIZE and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > HEADER_MAX_WIDTH:
+         fitted -= 1
+     label.add_theme_font_size_override("font_size", fitted)
+@@ -159,6 +162,7 @@
+     label.add_theme_font_size_override("font_size", font_size)
+     label.add_theme_color_override("font_color", color)
+     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
++    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+     label.clip_text = true
+     return label
+ 
+@@ -166,6 +170,10 @@
+     if _renderer == null:
+         return
+     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
++    if _header_math != null and _header_math_animator != null:
++        var math_editorial: Dictionary = _header_math_animator.display_at(_frame_index, FRAME_COUNT)
++        _header_math.text = str(math_editorial["text"])
++        _header_math.modulate = Color(1.0, 1.0, 1.0, 1.0 if not bool(math_editorial["transition"]) else 0.90)
+     if _header_hook != null and _header_animator != null:
+         var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
+         _header_hook.text = str(editorial["text"])
+@@ -194,9 +202,8 @@
+     DirAccess.make_dir_recursive_absolute(dir_path)
+     var grammar_index: int = int(_variation["grammar_mode"])
+     var grammar_names: Array[String] = ["DIPOLE FIELD", "VORTEX FIELD", "SADDLE FIELD", "QUADRUPOLE FIELD", "GRAVITATIONAL LENS", "TOPOGRAPHIC BASIN"]
+-    var hooks: Array[String] = ["NO VES LA FUERZA, SOLO SU RASTRO", "OBSERVA UNA FUERZA HECHA VISIBLE", "SIGUE EL RASTRO DE LA FISICA", "LEE EL MAPA DE UNA FUERZA", "LA FISICA DEJA UNA HUELLA", "DESCUBRE EL CAMPO OCULTO"]
+     var grammar_name: String = grammar_names[grammar_index]
+-    var header_primary: String = hooks[grammar_index % hooks.size()]
++    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation)
+     var header_math: String = "%s | %d TRACES | PULSE %.2f" % [grammar_name.replace(" ", "_"), int(_variation["trace_count"]), float(_variation["pulse_speed"])]
+     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
+     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
+@@ -212,7 +219,9 @@
+         "duration_seconds": LOOP_DURATION,
+         "fps": FPS,
+         "frame_count": FRAME_COUNT,
+-        "header_primary": header_primary,
++        "header_primary": header_line_2,
++        "header_line_1": header_math,
++        "header_line_2": header_line_2,
+         "header_secondary": "VISUAL LOOP / INVISIBLE FORCES",
+         "header_math": header_math,
+         "technobabble": TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation),
