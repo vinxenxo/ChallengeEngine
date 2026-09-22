@@ -1,0 +1,43 @@
+{
+    "prototype_id":  "C11-C.2_FRACTAL_BLOOM_V1",
+    "revision":  "2.1.4",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  314159,
+    "family_id":  "fractal",
+    "display_name":  "FRACTAL BLOOM",
+    "grammar":  "RADIAL BLOOM",
+    "palette":  "gold_violet_nebula",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  18,
+                   "fps":  30,
+                   "frame_count":  540,
+                   "loop_cycles":  3,
+                   "loop_closed":  true,
+                   "background":  "000000",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "z(n+1)=z(n)^2+c | RADIAL_BLOOM | DETAIL 0.98",
+                      "header_line_2":  "DEMONIO: PUERTO DE SINGULARIDAD // SINAPSIS L-SYSTEM // DETAIL 0.98 | BRANCH 0.96",
+                      "header_secondary":  "VISUAL LOOP / FRACTAL BLOOM",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "family_grammar_deterministic_ambient",
+                  "style":  "evolving harmonic bloom / soft high-mid shimmer / nested overtones / midpoint spectral swell",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  18,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "social_metadata":  "FractalBloom_v1_seed_314159_social.txt",
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_fractal_bloom_v1\\run_prototype.ps1 -Seed 314159",
+    "technobabble":  "DEMONIO: puerto de singularidad // sinapsis L-System // DETAIL 0.98 | BRANCH 0.96",
+    "frozen_boundaries_modified":  false
+}
