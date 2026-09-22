@@ -6,6 +6,7 @@ shader_type canvas_item;
 
 uniform float phase = 0.0;
 uniform float seed_phase = 0.0;
+uniform float color_phase = 0.0;
 uniform float zoom_strength = 0.62;
 uniform float warp_strength = 0.032;
 uniform float bloom_strength = 0.72;
@@ -20,6 +21,7 @@ uniform int grammar_mode = 0;
 uniform float branch_density = 1.0;
 uniform float detail_scale = 1.0;
 uniform float spiral_amount = 1.0;
+uniform float color_diversity = 0.90;
 uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 indigo_color : source_color = vec4(0.14, 0.13, 0.42, 1.0);
 uniform vec4 violet_color : source_color = vec4(0.55, 0.24, 0.96, 1.0);

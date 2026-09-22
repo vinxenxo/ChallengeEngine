@@ -1,16 +1,14 @@
 param(
-    [switch]$Apply
+    [switch]$Apply,
+    [switch]$ResetC11C
 )
 
 $ErrorActionPreference = 'Stop'
-
-# c11c_bulk -> prototypes -> tools -> project root
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $ArtifactsRoot = Join-Path $ProjectRoot 'artifacts'
 $PrototypeRoot = Join-Path $ArtifactsRoot 'prototypes'
 $ScratchRoot = Join-Path $ArtifactsRoot 'scratch'
 
-# Never remove any historical/certification evidence from these roots.
 $ProtectedRoots = @(
     (Join-Path $ArtifactsRoot 'legacy'),
     (Join-Path $ArtifactsRoot 'qa'),
@@ -18,11 +16,6 @@ $ProtectedRoots = @(
     (Join-Path $ArtifactsRoot 'releases'),
     (Join-Path $ArtifactsRoot 'production'),
     (Join-Path $ArtifactsRoot 'tests')
-)
-
-# Review keyframes are intentionally retained: they are active visual-review evidence.
-$ProtectedPrototypeRoots = @(
-    (Join-Path $PrototypeRoot 'c11c_review_assets')
 )
 
 $DisposableExtensions = @(
@@ -42,42 +35,80 @@ function Is-UnderRoot([string]$Path, [string]$Root) {
            $full.StartsWith($base + '\', [System.StringComparison]::OrdinalIgnoreCase)
 }
 
-function Is-Protected([string]$Path) {
-    foreach ($root in $ProtectedRoots) {
-        if (Is-UnderRoot $Path $root) { return $true }
-    }
-    foreach ($root in $ProtectedPrototypeRoots) {
-        if (Is-UnderRoot $Path $root) { return $true }
-    }
-    return $false
-}
-
-$Candidates = @()
-
-if (Test-Path -LiteralPath $PrototypeRoot) {
-    Get-ChildItem -LiteralPath $PrototypeRoot -Recurse -File -Force | ForEach-Object {
-        if ($_.Extension.ToLowerInvariant() -in $DisposableExtensions -and -not (Is-Protected $_.FullName)) {
-            $Candidates += $_
-        }
-    }
-}
-
-$ScratchItems = @()
-if (Test-Path -LiteralPath $ScratchRoot) {
-    $ScratchItems = @(Get-ChildItem -LiteralPath $ScratchRoot -Force)
+function Get-TreeBytes([string]$Path) {
+    if (-not (Test-Path -LiteralPath $Path)) { return [int64]0 }
+    $sum = (Get-ChildItem -LiteralPath $Path -Recurse -File -Force -ErrorAction SilentlyContinue |
+        Measure-Object -Property Length -Sum).Sum
+    if ($null -eq $sum) { return [int64]0 }
+    return [int64]$sum
 }
 
 Write-Host '[C11C-CLEAN] =========================================='
 Write-Host "[C11C-CLEAN] ProjectRoot: $ProjectRoot"
 Write-Host "[C11C-CLEAN] Mode: $(if ($Apply) { 'APPLY' } else { 'DRY-RUN' })"
 Write-Host '[C11C-CLEAN] Protected roots: legacy / qa / regression / releases / production / tests'
-Write-Host '[C11C-CLEAN] Protected prototype root: c11c_review_assets'
-Write-Host '[C11C-CLEAN] Disposable prototype media: MP4/GIF/AVI/WAV/PNG/JPEG/WebP/BMP/MOV/MKV/WebM'
-Write-Host '[C11C-CLEAN] Prototype metadata (*.json/*.txt/*.md/*.sha256 etc.) is retained.'
+Write-Host '[C11C-CLEAN] Ordinary mode: only regenerable prototype media is removed; metadata is retained.'
+Write-Host '[C11C-CLEAN] Reset mode (-ResetC11C): removes the complete C11-C prototype workspace and scratch, then recreates them.'
 Write-Host ''
 
+if ($ResetC11C) {
+    $targets = @()
+    if (Test-Path -LiteralPath $PrototypeRoot) {
+        $targets += @(Get-ChildItem -LiteralPath $PrototypeRoot -Directory -Force | Where-Object { $_.Name -like 'c11c_*' })
+    }
+    if (Test-Path -LiteralPath $ScratchRoot) {
+        $targets += @(Get-ChildItem -LiteralPath $ScratchRoot -Force)
+    }
+
+    $totalBytes = [int64]0
+    foreach ($item in $targets) {
+        $bytes = if ($item.PSIsContainer) { Get-TreeBytes $item.FullName } else { [int64]$item.Length }
+        $totalBytes += $bytes
+        if ($Apply) {
+            Remove-Item -LiteralPath $item.FullName -Recurse -Force
+            Write-Host "[C11C-CLEAN] RESET REMOVED  $($item.FullName)"
+        } else {
+            Write-Host "[C11C-CLEAN] RESET WOULD REMOVE  $($item.FullName)"
+        }
+    }
+
+    if ($Apply) {
+        New-Item -ItemType Directory -Force -Path $PrototypeRoot | Out-Null
+        New-Item -ItemType Directory -Force -Path $ScratchRoot | Out-Null
+    }
+
+    $totalMB = [math]::Round($totalBytes / 1MB, 2)
+    Write-Host ''
+    Write-Host "[C11C-CLEAN] Reset targets: $($targets.Count)"
+    Write-Host "[C11C-CLEAN] Reset reclaimable: $totalMB MB"
+    if ($Apply) {
+        Write-Host '[C11C-CLEAN] C11-C RESET COMPLETE. Protected evidence roots were not touched.'
+    } else {
+        Write-Host '[C11C-CLEAN] C11-C RESET DRY-RUN ONLY. Rerun with -Apply to delete.'
+    }
+    return
+}
+
+$candidates = @()
+if (Test-Path -LiteralPath $PrototypeRoot) {
+    Get-ChildItem -LiteralPath $PrototypeRoot -Recurse -File -Force | ForEach-Object {
+        $isProtected = $false
+        foreach ($root in $ProtectedRoots) {
+            if (Is-UnderRoot $_.FullName $root) { $isProtected = $true; break }
+        }
+        if (-not $isProtected -and $_.Extension.ToLowerInvariant() -in $DisposableExtensions) {
+            $candidates += $_
+        }
+    }
+}
+
+$scratchItems = @()
+if (Test-Path -LiteralPath $ScratchRoot) {
+    $scratchItems = @(Get-ChildItem -LiteralPath $ScratchRoot -Force)
+}
+
 $totalBytes = [int64]0
-foreach ($file in $Candidates) {
+foreach ($file in $candidates) {
     $totalBytes += [int64]$file.Length
     if ($Apply) {
         Remove-Item -LiteralPath $file.FullName -Force
@@ -88,15 +119,9 @@ foreach ($file in $Candidates) {
 }
 
 $scratchBytes = [int64]0
-foreach ($item in $ScratchItems) {
-    if ($item.PSIsContainer) {
-        $sum = (Get-ChildItem -LiteralPath $item.FullName -Recurse -File -ErrorAction SilentlyContinue |
-            Measure-Object -Property Length -Sum).Sum
-        if ($null -ne $sum) { $scratchBytes += [int64]$sum }
-    } else {
-        $scratchBytes += [int64]$item.Length
-    }
-
+foreach ($item in $scratchItems) {
+    $bytes = if ($item.PSIsContainer) { Get-TreeBytes $item.FullName } else { [int64]$item.Length }
+    $scratchBytes += $bytes
     if ($Apply) {
         Remove-Item -LiteralPath $item.FullName -Recurse -Force
         Write-Host "[C11C-CLEAN] REMOVED SCRATCH  $($item.FullName)"
@@ -110,10 +135,7 @@ if ($Apply) {
         if (Test-Path -LiteralPath $root) {
             Get-ChildItem -LiteralPath $root -Recurse -Directory -Force |
                 Sort-Object FullName -Descending |
-                Where-Object {
-                    -not (Is-Protected $_.FullName) -and
-                    @(Get-ChildItem -LiteralPath $_.FullName -Force -ErrorAction SilentlyContinue).Count -eq 0
-                } |
+                Where-Object { @(Get-ChildItem -LiteralPath $_.FullName -Force -ErrorAction SilentlyContinue).Count -eq 0 } |
                 ForEach-Object { Remove-Item -LiteralPath $_.FullName -Force -ErrorAction SilentlyContinue }
         }
     }
@@ -121,12 +143,11 @@ if ($Apply) {
 
 $totalMB = [math]::Round(($totalBytes + $scratchBytes) / 1MB, 2)
 Write-Host ''
-Write-Host "[C11C-CLEAN] Prototype media files: $($Candidates.Count)"
-Write-Host "[C11C-CLEAN] Scratch top-level entries: $($ScratchItems.Count)"
+Write-Host "[C11C-CLEAN] Prototype media files: $($candidates.Count)"
+Write-Host "[C11C-CLEAN] Scratch top-level entries: $($scratchItems.Count)"
 Write-Host "[C11C-CLEAN] Reclaimable: $totalMB MB"
-
 if ($Apply) {
-    Write-Host '[C11C-CLEAN] CLEANUP COMPLETE. Protected evidence/review assets were not touched.'
+    Write-Host '[C11C-CLEAN] CLEANUP COMPLETE. Protected evidence roots were not touched.'
 } else {
     Write-Host '[C11C-CLEAN] DRY-RUN ONLY. Review the list, then rerun with -Apply to delete.'
 }

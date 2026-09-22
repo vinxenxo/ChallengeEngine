@@ -1,0 +1,38 @@
+{
+  "package": "C11-C_VISUAL_LOOPS_READY_COPY_v2.0.5_BULK_SHADER_ARTIFACT_RESET_HOTFIX",
+  "base": "C11-C v2.0.4",
+  "version": "2.0.5",
+  "scope": "presentation_and_prototype_tooling_only",
+  "frozen_boundaries_modified": false,
+  "changes": [
+    "fix Fractal Bloom undeclared shader uniforms color_phase and color_diversity",
+    "fix style-review stale LASTEXITCODE check after PowerShell cleanup script",
+    "add explicit ResetC11C artifact workspace reset mode",
+    "style review starts from a clean regenerable C11-C workspace by default",
+    "preserve protected C11 evidence roots",
+    "document future seed-derived duration policy without implementing it"
+  ],
+  "affected_families": [
+    "geometric",
+    "fractal",
+    "sacred_symmetry",
+    "living_particles",
+    "invisible_forces"
+  ],
+  "resettable_roots": [
+    "artifacts/prototypes/c11c_*",
+    "artifacts/scratch"
+  ],
+  "protected_roots": [
+    "artifacts/legacy",
+    "artifacts/qa",
+    "artifacts/regression",
+    "artifacts/releases",
+    "artifacts/production",
+    "artifacts/tests"
+  ],
+  "default_duration_seconds": 18.0,
+  "default_fps": 30,
+  "default_frames": 540,
+  "duration_seed_system": "deferred"
+}

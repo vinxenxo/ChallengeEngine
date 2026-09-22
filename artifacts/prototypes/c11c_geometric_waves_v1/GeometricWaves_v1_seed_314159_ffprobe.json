@@ -13,8 +13,8 @@
             "width": 540,
             "height": 960,
             "r_frame_rate": "30/1",
-            "duration": "10.000000",
-            "nb_frames": "300"
+            "duration": "18.000000",
+            "nb_frames": "540"
         },
         {
             "index": 1,
@@ -23,11 +23,11 @@
             "sample_rate": "44100",
             "channels": 2,
             "r_frame_rate": "0/0",
-            "duration": "10.000000",
-            "nb_frames": "432"
+            "duration": "18.000000",
+            "nb_frames": "777"
         }
     ],
     "format": {
-        "duration": "10.000000"
+        "duration": "18.000000"
     }
 }

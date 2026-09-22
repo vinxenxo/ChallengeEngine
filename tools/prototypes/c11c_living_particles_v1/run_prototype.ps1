@@ -88,7 +88,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.4_LIVING_PARTICLES_V1'
-        revision = '2.0.4'
+        revision = '2.0.5'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -136,11 +136,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.0.4] PASS - 540x960 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.0.4] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.0.4] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.0.4] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.0.4] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.0.5] PASS - 540x960 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.0.5] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.0.5] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.0.5] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.0.5] SOCIAL: " + $Social)
 } finally {
     if (Test-Path -LiteralPath $TempSilent) {
         Remove-Item -Force -LiteralPath $TempSilent -ErrorAction SilentlyContinue
