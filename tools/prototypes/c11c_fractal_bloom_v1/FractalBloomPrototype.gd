@@ -55,15 +55,21 @@ func _build_scene() -> void:
     var palette_index: int = int(_variation["palette_mode"])
     match palette_index:
         0:
-            _renderer.set_palette(Color("1C214F"), Color("7552D8"), Color("22D3EE"), Color("F8FBFF"))
+            _renderer.set_palette(Color("141B46"), Color("5E49D6"), Color("22D3EE"), Color("F8FBFF"))
         1:
-            _renderer.set_palette(Color("101A3B"), Color("6C4CE8"), Color("9B7BFF"), Color("F9F7FF"))
+            _renderer.set_palette(Color("0B1430"), Color("435DE7"), Color("8A7BFF"), Color("F4F7FF"))
         2:
-            _renderer.set_palette(Color("12373A"), Color("315DAA"), Color("39D3C2"), Color("F1FFFF"))
+            _renderer.set_palette(Color("0F3036"), Color("2D6CB6"), Color("35D7C5"), Color("EEFFFF"))
         3:
-            _renderer.set_palette(Color("2A0B49"), Color("C048FF"), Color("38D9FF"), Color("FFF4FF"))
+            _renderer.set_palette(Color("23063E"), Color("B534F0"), Color("FF4BCB"), Color("FFF1FF"))
+        4:
+            _renderer.set_palette(Color("171A38"), Color("4B57A6"), Color("A9B7FF"), Color("F6F8FF"))
+        5:
+            _renderer.set_palette(Color("0C2342"), Color("2B84D6"), Color("A8F3FF"), Color("F5FFFF"))
+        6:
+            _renderer.set_palette(Color("250A35"), Color("B03CF2"), Color("FF7AD8"), Color("FFF7FF"))
         _:
-            _renderer.set_palette(Color("1C1F46"), Color("5F62B0"), Color("A8B4FF"), Color("F7F9FF"))
+            _renderer.set_palette(Color("092D33"), Color("3F5EB8"), Color("7DDEFF"), Color("F2FEFF"))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["zoom_strength"]), float(_variation["warp_strength"]), float(_variation["bloom_strength"]), float(_variation["layer_softness"]),
         float(_variation["julia_x_bias"]), float(_variation["julia_y_bias"]), float(_variation["zoom_cycles"]),

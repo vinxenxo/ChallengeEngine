@@ -81,19 +81,25 @@ func _build_scene() -> void:
 func _palette_dominant() -> Color:
     match int(_variation["palette_mode"]):
         0: return Color("16E6FF")
-        1: return Color("5B8CFF")
-        2: return Color("38E5D0")
-        3: return Color("9AD7FF")
-        4: return Color("FFB347")
+        1: return Color("4D7CFE")
+        2: return Color("28E0D1")
+        3: return Color("A4DFFF")
+        4: return Color("FFB04A")
+        5: return Color("5666D9")
+        6: return Color("40F0EE")
+        7: return Color("DDEAFF")
         _: return Color("16E6FF")
 
 func _palette_secondary() -> Color:
     match int(_variation["palette_mode"]):
         0: return Color("FF3EBA")
-        1: return Color("B07CFF")
-        2: return Color("D887FF")
-        3: return Color("5C79FF")
-        4: return Color("35D4FF")
+        1: return Color("B98CFF")
+        2: return Color("E06BFF")
+        3: return Color("477BFF")
+        4: return Color("37D7FF")
+        5: return Color("FF7BB0")
+        6: return Color("B86CFF")
+        7: return Color("8DC6FF")
         _: return Color("FF3EBA")
 
 func _grammar_label() -> String:

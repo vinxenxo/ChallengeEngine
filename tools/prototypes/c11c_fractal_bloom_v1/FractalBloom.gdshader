@@ -169,7 +169,19 @@ void fragment() {
     } else if (grammar_mode == 4) {
         zoom_path = 0.76 * zoom_wave + 0.24 * (0.5 + 0.5 * sin(3.0 * phase * zoom_cycles + seed_phase));
     }
-    float zoom = exp(zoom_strength * (0.86 * zoom_path + 0.14 * zoom_harm));
+    // v1.8: zoom is a supporting motion, not the protagonist.
+    // The recursive detail remains visible while the camera-like scale excursion stays restrained.
+    float zoom_span = 0.24;
+    if (grammar_mode == 1) {
+        zoom_span = 0.34;
+    } else if (grammar_mode == 2) {
+        zoom_span = 0.40;
+    } else if (grammar_mode == 3) {
+        zoom_span = 0.16;
+    } else if (grammar_mode == 4) {
+        zoom_span = 0.52;
+    }
+    float zoom = exp(zoom_strength * zoom_span * (zoom_path - 0.5));
 
     vec3 accumulated = vec3(0.0);
     float accumulated_alpha = 0.0;

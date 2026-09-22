@@ -69,21 +69,19 @@ ConsoleHost_history.txt
 # =============================
 artifacts/**/*.avi
 artifacts/**/*.mp4
-#artifacts/**/*.gif
+artifacts/**/*.gif
 artifacts/**/*.pcm
 artifacts/**/*.wav
-#artifacts/**/*.png
-#artifacts/**/*.jpg
+artifacts/**/*.png
+artifacts/**/*.jpg
 artifacts/**/*.jpeg
 artifacts/**/*.webp
 artifacts/**/frames/
 artifacts/**/avi/
 artifacts/**/mp4/
-#artifacts/**/gif/
+artifacts/**/gif/
 artifacts/**/media/
 artifacts/**/videos/
-artifacts/
-*.gif
 
 # Explicitly disposable workspace
 artifacts/scratch/

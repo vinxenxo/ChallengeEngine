@@ -56,7 +56,11 @@ func _build_scene() -> void:
         1: _renderer.set_palette(Color("430B12"), Color("C62E24"), Color("FF6B26"), Color("FFD166"))
         2: _renderer.set_palette(Color("3A0A0A"), Color("A71D31"), Color("E85D2A"), Color("FFC857"))
         3: _renderer.set_palette(Color("4A1007"), Color("D53A0A"), Color("FF7A00"), Color("FFD84A"))
-        _: _renderer.set_palette(Color("24100D"), Color("8B3A2D"), Color("C76435"), Color("FFD27A"))
+        4: _renderer.set_palette(Color("24100D"), Color("8B3A2D"), Color("C76435"), Color("FFD27A"))
+        5: _renderer.set_palette(Color("3C0B12"), Color("D13A2F"), Color("FF8354"), Color("FFE08A"))
+        6: _renderer.set_palette(Color("42120A"), Color("E0481C"), Color("FF9C52"), Color("FFE6A6"))
+        7: _renderer.set_palette(Color("25070E"), Color("9E303A"), Color("D86A45"), Color("F4C36A"))
+        _: _renderer.set_palette(Color("4E0C18"), Color("C72536"), Color("FF5A1F"), Color("FFD34E"))
     var storm_offset: Vector2 = Vector2(float(_variation["storm_offset_x"]), float(_variation["storm_offset_y"]))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["trace_count"]), float(_variation["curvature"]), float(_variation["glow"]),

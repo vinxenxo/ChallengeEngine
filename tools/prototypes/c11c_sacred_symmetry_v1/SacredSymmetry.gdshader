@@ -24,6 +24,7 @@ uniform vec4 primary_color : source_color = vec4(0.70, 0.48, 0.17, 1.0);
 uniform vec4 secondary_color : source_color = vec4(0.86, 0.60, 0.24, 1.0);
 uniform vec4 highlight_color : source_color = vec4(0.95, 0.78, 0.43, 1.0);
 uniform vec4 white_gold_color : source_color = vec4(1.0, 0.95, 0.84, 1.0);
+uniform vec4 accent_color : source_color = vec4(0.95, 0.62, 0.12, 1.0);
 
 const float C11C_PI = 3.14159265358979323846;
 const float C11C_TAU = 6.28318530717958647692;
@@ -195,6 +196,9 @@ void fragment() {
     float radial_band = 0.5 + 0.5 * cos(r * 38.0 - color_phase * 0.7);
     float color_mix = clamp(0.28 + color_diversity * (0.22 + 0.62 * color_band) + 0.08 * radial_band, 0.0, 1.0);
     vec3 gold = mix(primary_color.rgb, secondary_color.rgb, color_mix);
+    // Accent color carries a separate structural role while exact sector symmetry is preserved.
+    float accent_band = clamp(0.18 + 0.46 * radial_band + 0.24 * color_band, 0.0, 0.78);
+    gold = mix(gold, accent_color.rgb, accent_band * color_diversity);
     gold = mix(gold, highlight_color.rgb, clamp(align * 0.55 + nodes * 0.20, 0.0, 1.0));
     gold = mix(gold, white_gold_color.rgb, clamp(nodes * 0.70 + core * 0.42, 0.0, 1.0));
 

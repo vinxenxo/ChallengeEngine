@@ -1,28 +1,69 @@
 {
-  "version": "1.6.0",
+  "version": "1.8.0",
   "purpose": "seed-selected macro visual grammar for all five C11-C Visual Loop families",
   "families": {
     "geometric": {
-      "grammar_modes": ["harmonic_membrane", "interference_plane", "parametric_ribbon", "lattice_wave", "orbital_wave"]
+      "grammar_modes": [
+        "harmonic_membrane",
+        "interference_plane",
+        "parametric_ribbon",
+        "lattice_wave",
+        "orbital_wave"
+      ]
     },
     "fractal": {
-      "grammar_modes": ["radial_bloom", "dendritic_tunnel", "spiral_fractal", "fractal_filigree", "nested_worlds"]
+      "grammar_modes": [
+        "radial_bloom",
+        "dendritic_tunnel",
+        "spiral_fractal",
+        "fractal_filigree",
+        "nested_worlds"
+      ]
     },
     "sacred_symmetry": {
-      "grammar_modes": ["astrolabe", "gear_train", "polygon_orrery", "origami_mandala", "celestial_chart"],
-      "symmetry_orders": [4, 6, 8, 12]
+      "grammar_modes": [
+        "astrolabe",
+        "gear_train",
+        "polygon_orrery",
+        "origami_mandala",
+        "celestial_chart"
+      ],
+      "symmetry_orders": [
+        4,
+        6,
+        8,
+        12
+      ]
     },
     "living_particles": {
-      "grammar_modes": ["swarm", "vortex", "collision_cloud", "organic_pulse", "magnetic_filament_cloud"],
-      "production_particle_target": [10000, 50000]
+      "grammar_modes": [
+        "swarm",
+        "vortex",
+        "collision_cloud",
+        "organic_pulse",
+        "magnetic_filament_cloud"
+      ],
+      "production_particle_target": [
+        10000,
+        50000
+      ]
     },
     "invisible_forces": {
-      "grammar_modes": ["dipole_field", "vortex_field", "saddle_field", "quadrupole_field", "gravitational_lens", "topographic_basin"]
+      "grammar_modes": [
+        "dipole_field",
+        "vortex_field",
+        "saddle_field",
+        "quadrupole_field",
+        "gravitational_lens",
+        "topographic_basin"
+      ]
     }
   },
   "diversity_gate": {
     "same_family_different_seed_requires_macro_grammar_variation": true,
     "palette_variation_required": true,
     "scale_or_density_variation_required": true
-  }
+  },
+  "color_variation": "first-class seed dimension; family-specific palette banks",
+  "fractal_zoom": "restrained support motion; grammar-specific zoom_span"
 }

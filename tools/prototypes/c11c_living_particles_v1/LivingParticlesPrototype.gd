@@ -52,11 +52,15 @@ func _build_scene() -> void:
 
     var palette_index: int = int(_variation["palette_mode"])
     match palette_index:
-        0: _renderer.set_palette(Color("063E33"), Color("20B58D"), Color("59E6BE"), Color("E8FFF8"))
-        1: _renderer.set_palette(Color("03394A"), Color("18AFC0"), Color("59F0E2"), Color("F0FFFF"))
-        2: _renderer.set_palette(Color("17442F"), Color("47C878"), Color("A0F6BC"), Color("F5FFF7"))
-        3: _renderer.set_palette(Color("07384A"), Color("1DC7C2"), Color("73F2D0"), Color("ECFFFA"))
-        _: _renderer.set_palette(Color("102F32"), Color("4EAAA0"), Color("9ADBD0"), Color("F1FFFD"))
+        0: _renderer.set_palette(Color("063E33"), Color("20B58D"), Color("66E6BE"), Color("E8FFF8"))
+        1: _renderer.set_palette(Color("033A4A"), Color("16B4C8"), Color("62F2E4"), Color("F0FFFF"))
+        2: _renderer.set_palette(Color("1A4A22"), Color("6BD03F"), Color("C0FF88"), Color("F7FFF0"))
+        3: _renderer.set_palette(Color("07384A"), Color("1DC7C2"), Color("8AF6DA"), Color("ECFFFA"))
+        4: _renderer.set_palette(Color("0B2D35"), Color("3CAFB0"), Color("72E2D0"), Color("E9FFFB"))
+        5: _renderer.set_palette(Color("0B4539"), Color("4FCB91"), Color("A6F1B8"), Color("F2FFF7"))
+        6: _renderer.set_palette(Color("0A3640"), Color("2DBFAE"), Color("84EAF4"), Color("F0FFFF"))
+        7: _renderer.set_palette(Color("1D3F26"), Color("70C85C"), Color("7BEAD8"), Color("F1FFF8"))
+        _: _renderer.set_palette(Color("063E33"), Color("20B58D"), Color("66E6BE"), Color("E8FFF8"))
     var attractor_a: Vector2 = Vector2(float(_variation["attractor_a_x"]), float(_variation["attractor_a_y"]))
     var attractor_b: Vector2 = Vector2(float(_variation["attractor_b_x"]), float(_variation["attractor_b_y"]))
     _renderer.set_style(

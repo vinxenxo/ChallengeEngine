@@ -41,7 +41,8 @@ float dipole_scalar(vec2 p) {
     vec2 b = p - vec2(pole_separation, 0.0);
     float va = 0.10 / (length(a) + 0.055);
     float vb = 0.10 / (length(b) + 0.055);
-    return tanh((va - vb) * 1.45);
+    float bridge = 0.08 * p.y / (dot(p, p) + 0.05);
+    return tanh((va - vb + bridge) * 1.62);
 }
 
 float saddle_scalar(vec2 p, float t) {
@@ -53,26 +54,31 @@ float saddle_scalar(vec2 p, float t) {
 }
 
 float quadrupole_scalar(vec2 p, float t) {
-    float x = p.x * quadrupole_skew;
+    // v1.8: polynomial quadrupole avoids the atan/derivative path that can crash some Windows
+    // compatibility drivers (seen as STATUS_CPP_EH_EXCEPTION / 0xC06D007F on seed 4).
+    float x = p.x * max(quadrupole_skew, 0.72);
     float y = p.y;
-    float denom = dot(vec2(x, y), vec2(x, y)) + 0.045;
-    float q = (x * x - y * y) / denom;
-    q += 0.09 * sin(3.0 * atan(y, x) + t * 0.42);
+    float denom = x * x + y * y + 0.045;
+    float harmonic = (x * x - y * y) / denom;
+    float cross = (2.0 * x * y) / denom;
+    float q = harmonic + 0.075 * sin(t * 0.42) * cross;
     return tanh(q * 1.55);
 }
 
 float lens_scalar(vec2 p, float t) {
-    float r = length(p);
-    float a = atan(p.y, p.x);
-    float lens = r + lens_strength * cos(2.0 * a + 0.35 * sin(t)) / (r + 0.11) * 0.075;
-    lens += 0.018 * sin(3.0 * a - t * 0.32);
-    return tanh((lens - 0.18) * 4.8);
+    // Gravitational-lens topology: parallel equipotentials bend around a central mass.
+    float r2 = dot(p, p) + 0.028;
+    float deflect = lens_strength * 0.085 / r2;
+    float warped_y = p.y + p.y * deflect;
+    float warped_x = p.x - p.x * deflect * 0.34;
+    float ripple = 0.020 * sin(warped_x * 18.0 + t * 0.34);
+    return tanh((warped_y + ripple) * 8.0);
 }
 
 float basin_scalar(vec2 p, float t) {
-    float x = p.x;
-    float y = p.y;
-    float h = 0.50 * dot(p, p);
+    float x = p.x * 1.34;
+    float y = p.y * 0.78;
+    float h = 0.50 * (x * x + y * y);
     h += basin_depth * (0.025 * sin(4.0 * x + t) + 0.018 * cos(5.0 * y - 0.8 * t));
     h += basin_depth * 0.012 * sin(3.0 * x + 4.0 * y + t * 0.55);
     return tanh((h - 0.075) * 7.0);
@@ -131,6 +137,9 @@ void fragment() {
     } else {
         float f = field_scalar(p, t);
         float gradient = clamp(length(vec2(dFdx(f), dFdy(f))) * 4.6, 0.0, 1.0);
+        if (grammar_mode == 3) {
+            gradient = clamp((abs(p.x) + abs(p.y)) * 1.65, 0.0, 1.0);
+        }
 
         for (int i = 0; i < 96; i++) {
             if (float(i) < trace_count) {

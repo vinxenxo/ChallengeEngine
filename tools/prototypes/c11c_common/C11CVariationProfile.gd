@@ -4,7 +4,7 @@ extends RefCounted
 ## C11-C.6 — Presentation-only deterministic variation manifold.
 ## Same family + same seed => same profile. No production engine state is touched.
 
-const VERSION: String = "1.7.0"
+const VERSION: String = "1.8.0"
 
 static func build(family_id: String, seed_value: int) -> Dictionary:
     var family: String = _canonical_family(family_id)
@@ -35,7 +35,10 @@ static func _geometric(seed_value: int) -> Dictionary:
         "electric_blue_lilac",
         "turquoise_orchid",
         "spectral_blue",
-        "warm_cold_harmonic"
+        "warm_cold_harmonic",
+        "indigo_rose",
+        "aqua_ultraviolet",
+        "silver_ice"
     ]
     var grammar_index: int = _index(seed_value, 11, grammar_modes.size())
     var palette_index: int = _index(seed_value, 13, palette_modes.size())
@@ -78,7 +81,10 @@ static func _fractal(seed_value: int) -> Dictionary:
         "midnight_electric_violet",
         "teal_indigo",
         "ultraviolet_magenta_cyan",
-        "monochrome_indigo"
+        "monochrome_indigo",
+        "blue_cyan_ice",
+        "violet_rose_cyan",
+        "deep_teal_violet"
     ]
     var grammar_index: int = _index(seed_value, 101, grammar_modes.size())
     var palette_index: int = _index(seed_value, 103, palette_modes.size())
@@ -88,7 +94,7 @@ static func _fractal(seed_value: int) -> Dictionary:
         "grammar_name": grammar_modes[grammar_index],
         "palette_mode": palette_index,
         "palette_name": palette_modes[palette_index],
-        "zoom_strength": lerpf(0.92, 1.62, _unit(seed_value, 105)),
+        "zoom_strength": lerpf(0.38, 0.82, _unit(seed_value, 105)),
         "warp_strength": lerpf(0.012, 0.058, _unit(seed_value, 107)),
         "bloom_strength": lerpf(0.40, 0.82, _unit(seed_value, 109)),
         "layer_softness": lerpf(0.48, 1.04, _unit(seed_value, 113)),
@@ -108,7 +114,16 @@ static func _fractal(seed_value: int) -> Dictionary:
 static func _sacred(seed_value: int) -> Dictionary:
     var orders: Array[int] = [4, 6, 8, 12]
     var grammar_modes: Array[String] = ["astrolabe", "gear_train", "polygon_orrery", "origami_mandala", "celestial_chart"]
-    var palette_modes: Array[String] = ["liquid_gold", "gold_copper", "amber_laser", "bronze_pale_gold", "warm_obsidian"]
+    var palette_modes: Array[String] = [
+        "liquid_gold",
+        "gold_copper",
+        "amber_laser",
+        "bronze_pale_gold",
+        "warm_obsidian",
+        "champagne_brass",
+        "copper_fire",
+        "platinum_warm_gold"
+    ]
     var grammar_index: int = _index(seed_value, 127, grammar_modes.size())
     var palette_index: int = _index(seed_value, 129, palette_modes.size())
     return {
@@ -135,7 +150,16 @@ static func _sacred(seed_value: int) -> Dictionary:
 
 static func _living(seed_value: int) -> Dictionary:
     var grammar_modes: Array[String] = ["swarm", "vortex", "collision_cloud", "organic_pulse", "magnetic_filament_cloud"]
-    var palette_modes: Array[String] = ["emerald_sea_green", "turquoise_aqua", "jade_teal", "cyan_green_spectral", "green_blue_mono"]
+    var palette_modes: Array[String] = [
+        "emerald_sea_green",
+        "turquoise_aqua",
+        "jade_lime",
+        "cyan_mint",
+        "petrol_aqua",
+        "seafoam_emerald",
+        "deep_teal_spectral",
+        "algae_green_aqua"
+    ]
     var grammar_index: int = _index(seed_value, 181, grammar_modes.size())
     var palette_index: int = _index(seed_value, 183, palette_modes.size())
     return {
@@ -177,7 +201,10 @@ static func _invisible(seed_value: int) -> Dictionary:
         "crimson_orange",
         "deep_red_amber",
         "hot_orange_yellow",
-        "warm_monochrome"
+        "warm_monochrome",
+        "scarlet_copper",
+        "vermilion_peach_gold",
+        "burgundy_amber"
     ]
     var grammar_index: int = _index(seed_value, 271, grammar_modes.size())
     var palette_index: int = _index(seed_value, 277, palette_modes.size())

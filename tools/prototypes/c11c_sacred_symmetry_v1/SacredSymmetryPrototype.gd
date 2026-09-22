@@ -52,11 +52,15 @@ func _build_scene() -> void:
 
     var palette_index: int = int(_variation["palette_mode"])
     match palette_index:
-        0: _renderer.set_palette(Color("A87818"), Color("FFD700"), Color("FFB000"), Color("FFFFFF"))
-        1: _renderer.set_palette(Color("5E3518"), Color("C87828"), Color("F0B35A"), Color("FFF6E4"))
-        2: _renderer.set_palette(Color("7A2E12"), Color("FF8C00"), Color("FFD166"), Color("FFFFFF"))
-        3: _renderer.set_palette(Color("4B301A"), Color("B87333"), Color("E7C56A"), Color("FFF4D5"))
-        _: _renderer.set_palette(Color("2F2016"), Color("8D6B3E"), Color("D7B979"), Color("FFFDF5"))
+        0: _renderer.set_palette(Color("9A6410"), Color("FFD700"), Color("FFB72B"), Color("FFFFFF"), Color("FFF0A0"))
+        1: _renderer.set_palette(Color("6A3214"), Color("D47B2D"), Color("FFB45A"), Color("FFF4E2"), Color("FF7A2F"))
+        2: _renderer.set_palette(Color("7F220D"), Color("FF8C00"), Color("FFD34E"), Color("FFFFFF"), Color("FFF3A2"))
+        3: _renderer.set_palette(Color("543017"), Color("B87333"), Color("E8C36A"), Color("FFF6DE"), Color("F2C27A"))
+        4: _renderer.set_palette(Color("302019"), Color("A66A42"), Color("D8A77B"), Color("FFF8EF"), Color("E6A66E"))
+        5: _renderer.set_palette(Color("8B6B35"), Color("E7C77A"), Color("FFF0B5"), Color("FFFFFF"), Color("FFF0C2"))
+        6: _renderer.set_palette(Color("7E2D14"), Color("C95A24"), Color("FFAA4A"), Color("FFF1DA"), Color("FF6B3A"))
+        7: _renderer.set_palette(Color("5B3F2B"), Color("C7A26A"), Color("F1D7A6"), Color("FFFFFF"), Color("FFE0A6"))
+        _: _renderer.set_palette(Color("9A6410"), Color("FFD700"), Color("FFB72B"), Color("FFFFFF"), Color("FFF0A0"))
     _renderer.set_style(
         int(_variation["grammar_mode"]), float(_variation["symmetry_order"]), float(_variation["ring_bias"]), float(_variation["glow"]),
         float(_variation["gear_inner"]), float(_variation["gear_outer"]), float(_variation["ring_scale"]),

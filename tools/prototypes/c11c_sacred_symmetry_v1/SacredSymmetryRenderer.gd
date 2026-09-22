@@ -23,11 +23,12 @@ func _ready() -> void:
     _rect.material = _material
     add_child(_rect)
 
-func set_palette(primary: Color, secondary: Color, highlight: Color, white_gold: Color) -> void:
+func set_palette(primary: Color, secondary: Color, highlight: Color, white_gold: Color, accent: Color) -> void:
     _material.set_shader_parameter("primary_color", primary)
     _material.set_shader_parameter("secondary_color", secondary)
     _material.set_shader_parameter("highlight_color", highlight)
     _material.set_shader_parameter("white_gold_color", white_gold)
+    _material.set_shader_parameter("accent_color", accent)
 
 func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_strength: float, gear_inner: float, gear_outer: float, ring_scale: float, core_scale: float, tick_density: float, mechanical_rate: float, macro_scale: float, node_density: float, fold_depth: float, color_diversity: float, color_phase: float) -> void:
     _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 4))
