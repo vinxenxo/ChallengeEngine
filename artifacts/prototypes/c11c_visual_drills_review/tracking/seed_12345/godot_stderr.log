@@ -1,0 +1,16 @@
+SCRIPT ERROR: Parse Error: Cannot infer the type of "rx" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://core/presentation/rendering/TrackingRenderer.gd:50)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "ry" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://core/presentation/rendering/TrackingRenderer.gd:51)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://core/presentation/rendering/VisualDrillRenderer.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://core/presentation/rendering/VisualContentPlayer.gd:0)
+ERROR: Failed to load script "res://core/presentation/rendering/VisualContentPlayer.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+   at: VisualDrillRenderer._ready (res://core/presentation/rendering/VisualDrillRenderer.gd:24)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://core/presentation/rendering/VisualDrillRenderer.gd:24)
+       [1] mount_renderer (res://core/presentation/rendering/ContentRendererHost.gd:19)
+       [2] _ready (res://core/presentation/rendering/VisualContentPlayer.gd:118)

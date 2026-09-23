@@ -1,0 +1,31 @@
+C11-C 2.3.0 — TRACKING MECHANIC BASELINE OVERLAY
+
+Apply over the already-installed C11-C 2.2.2 state.
+
+Scope:
+- Visual Drill / Tracking mechanic refinement only.
+- Deterministic bounded Lissajous 2:3 movement.
+- Exactly one active target.
+- Short history-only trajectory trail.
+- Target position and velocity emitted by mechanic state.
+- Body containment enforced by trajectory resolver.
+- Cosmetic tracking_variant does not alter mechanic truth.
+- Tracking task preserves canonical subtype type=tracking and uses mode=smooth_pursuit.
+
+Presentation:
+- Tracking renderer renders only emitted state.
+- No trajectory calculation in presentation.
+- Procedural target + quiet history trail + subordinate mathematical field.
+- No new external/raster asset is introduced in this mechanic baseline.
+
+Frozen boundaries untouched:
+- Challenge simulation and mechanics.
+- SimulationResult.
+- winning_frame / close_calls.
+- Structural RNG ownership.
+- C7 audio contracts.
+- C9 authoring contracts.
+- C11-B logical social geometry.
+
+Version chain:
+C11-C 2.2.0 foundation -> 2.2.1 common presentation -> 2.2.2 presentation hotfix -> 2.3.0 tracking mechanic baseline.

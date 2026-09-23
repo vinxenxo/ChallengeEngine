@@ -8,46 +8,45 @@
         "exercise_parameters": {
             "generator": "tracking",
             "difficulty_tier": 2,
-            "speed_multiplier": 1.2,
+            "speed_multiplier": 1.0,
             "pacing_mode": "constant"
         },
         "stimulus": {
             "type": "dot",
-            "radius": 10.0,
+            "radius": 12.0,
             "active": true,
-            "x": 0.0,
-            "y": 0.0
+            "x": 270.0,
+            "y": 480.0
         },
         "targets": [
             {
                 "id": "t1",
-                "x": 0.0,
-                "y": -150.0,
+                "x": 270.0,
+                "y": 480.0,
+                "radius": 12.0,
                 "highlighted": true,
                 "status": "active"
             }
         ],
-        "distractors": [
-            {
-                "id": "d1",
-                "x": 120.0,
-                "y": 120.0
-            },
-            {
-                "id": "d2",
-                "x": -120.0,
-                "y": 120.0
-            }
-        ],
+        "distractors": [],
         "trajectory": {
-            "type": "circular",
-            "center_x": 0.0,
-            "center_y": 0.0,
-            "radius": 150.0,
-            "speed": 1.0
+            "type": "lissajous",
+            "profile": "lissajous_2_3_bounded_v1",
+            "center_x": 270.0,
+            "center_y": 480.0,
+            "amplitude_x": 160.0,
+            "amplitude_y": 210.0,
+            "x_frequency": 2.0,
+            "y_frequency": 3.0,
+            "travel_cycles": 0.5,
+            "phase_x": 0.25,
+            "phase_y": -0.65,
+            "target_radius": 12.0,
+            "trail_length_frames": 18
         },
         "task": {
-            "type": "smooth_pursuit",
+            "type": "tracking",
+            "mode": "smooth_pursuit",
             "target_id": "t1"
         }
     },

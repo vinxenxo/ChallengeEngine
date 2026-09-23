@@ -1,0 +1,155 @@
+Qué vamos a dirigir en cada Visual Drill
+
+Aquí es donde ahora sí merece la pena trabajar con método. He revisado los cuatro contratos específicos del freeze y los resumiría así.
+
+1. Tracking
+
+Identidad: seguimiento continuo + claridad de trayectoria.
+
+La mecánica debe presentar un objetivo móvil que pueda seguirse continuamente. El movimiento debe ser suave y matemáticamente coherente; la trayectoria puede ser compleja, pero nunca debe dejar de estar claro cuál es el objetivo. El contrato admite trayectorias analíticas como Lissajous, splines, armónicos acotados o rutas guiadas por campos suaves.
+
+Lo que deberemos dirigir:
+
+Movimiento
+
+velocidad continua;
+aceleración suave;
+nada de cambios bruscos arbitrarios;
+preferencia por ciclos periódicos;
+trayectoria interesante pero no caótica.
+
+Geometría
+
+trayectoria completamente contenida en Body;
+separación suficiente respecto a bordes;
+evitar pasos demasiado próximos a elementos editoriales.
+
+Objetivo
+
+un único target inequívoco;
+debe ser visualmente dominante;
+cualquier matemática ambiental debe quedar claramente por debajo del target.
+
+Arte
+Aquí sí tenemos muchísimo margen: la trayectoria puede convertirse en una auténtica "pieza matemática" sin perder su función.
+
+La pregunta artística que tendremos que resolver será:
+
+¿Cómo hacer que seguir el objeto sea visualmente hipnótico sin convertir la escena en un screensaver?
+
+2. Saccade
+
+Identidad: salto espacial discreto + precisión de localización.
+
+No es seguimiento. El target debe reubicarse claramente de un punto a otro. El contrato propone posiciones procedentes de distribuciones deterministas, coordenadas polares, grupos de simetría y composiciones geométricas acotadas.
+
+Lo que deberemos dirigir:
+
+Mecánica
+
+estado A;
+salto;
+estado B;
+endpoint perfectamente identificable.
+
+Transición
+Podemos usar una pequeña señal visual de transición, pero nunca una trayectoria que haga creer que el target se desplaza continuamente.
+
+Geometría
+
+posiciones alejadas de los bordes;
+evitar alineaciones que generen dudas;
+evitar simetrías accidentales donde parezca que existen varios targets válidos.
+
+Arte
+Aquí la oportunidad es mucho más geométrica:
+
+posición → estructura espacial → salto → nueva estructura
+
+Anillos, retículas, coordenadas polares, geometría orbital, grids, etc.
+
+Pero todo tiene que desaparecer conceptualmente en el momento de responder:
+
+"¿Dónde está ahora el target?"
+
+3. Pursuit
+
+Identidad: seguimiento continuo con una trayectoria todavía más limpia.
+
+Es parecido a Tracking, pero conceptualmente el contrato insiste más en el continuous following / smooth motion y en un solo estímulo dominante.
+
+Admite:
+
+Lissajous de frecuencia controlada;
+curvas suaves;
+rutas spline-like;
+deformaciones de campo de baja frecuencia.
+
+La diferencia que quiero preservar entre ambos será importante.
+
+Tracking
+
+Puede ser:
+
+"sigue esta trayectoria"
+
+Pursuit
+
+Debe sentirse más como:
+
+"mantén el objetivo visual bajo seguimiento continuo"
+
+Por tanto, aquí la trayectoria no debería consumir tanta atención propia.
+
+Objetivo: estabilidad visual.
+
+Entorno: matemático, sí; protagonista, no.
+
+Prohibido: múltiples objetos móviles equivalentes, aceleraciones extrañas, jitter o elementos ambientales que hagan difícil mantener el target.
+
+4. Peripheral Scan
+
+Identidad: fijación central + detección periférica.
+
+Esta es probablemente la familia con mayor diferencia conceptual respecto a las otras.
+
+Debe existir:
+
+          estímulo periférico
+                 ●
+
+       ┌───────────────────┐
+       │                   │
+       │        +          │
+       │                   │
+       └───────────────────┘
+              fijación
+
+La fijación central permanece estable y el estímulo aparece en una zona excéntrica definida. El contrato contempla anillos, sectores angulares, coordenadas polares y estructuras radiales deterministas.
+
+Aquí la dirección artística debe ser especialmente disciplinada.
+
+No queremos:
+
+centro espectacular
++
+periferia espectacular
++
+flash
++
+decoración
+
+Queremos:
+
+centro = ancla
+periferia = información
+estructura = contexto
+
+El estímulo periférico puede:
+
+aparecer;
+desaparecer;
+pulsar;
+desplazarse por un arco limitado.
+
+Pero nunca debe convertirse en otro protagonista central.

@@ -49,27 +49,28 @@ func _run_player_and_validate(def_path: String, mode: String):
 		node.queue_free()
 		return null
 		
-	var captured_params = null
+	var captured_position = null
 	while not player.playback_finished:
-		if player._current_frame_index == 1 and captured_params == null:
+		if player._current_frame_index == 1 and captured_position == null:
 			var tracker_renderer = _find_renderer(player, "TrackingRenderer.gd")
 			if tracker_renderer == null:
 				_assert(false, "[%s] TrackingRenderer must exist." % mode)
 			else:
 				_assert(tracker_renderer.visible, "[%s] TrackingRenderer must be visible." % mode)
-				var rect = tracker_renderer.get("_rect")
-				if rect == null:
-					_assert(false, "[%s] Geometry Contract: _rect not found." % mode)
-				else:
-					_assert(rect.size.x > 0 and rect.size.y > 0, "[%s] Geometry Contract invalid." % mode)
-					var mat = rect.material as ShaderMaterial
-					if mat != null:
-						captured_params = mat.get_shader_parameter("tracking_variant")
-		await process_frame
+				var state: Dictionary = tracker_renderer._frame_state.get("drill_frame_state", tracker_renderer._frame_state)
+				var targets: Array = state.get("target_states", [])
+				_assert(targets.size() == 1, "[%s] Tracking must expose exactly one rendered target." % mode)
+				var trajectory: Dictionary = state.get("trajectory_state", {})
+				_assert(str(trajectory.get("type", "")) == "lissajous", "[%s] Tracking trajectory must be Lissajous." % mode)
+				var target: Dictionary = targets[0] if not targets.is_empty() else {}
+				captured_position = Vector2(float(target.get("x", 0.0)), float(target.get("y", 0.0)))
+				_assert(captured_position.y >= 144.0 and captured_position.y <= 816.0, "[%s] Tracking target must remain inside Body." % mode)
+				_assert(tracker_renderer._frame_state.get("trajectory_state", {}).get("trail_points", []).size() >= 1, "[%s] Tracking history trail must be emitted." % mode)
+	await process_frame
 		
 	node.queue_free()
 	await process_frame
-	return captured_params
+	return captured_position
 
 func _find_renderer(node: Node, script_name: String) -> Node:
 	var script = node.get_script()

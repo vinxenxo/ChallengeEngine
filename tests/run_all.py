@@ -56,6 +56,7 @@ KNOWN_SUITES = {
     "C11B1SocialUIIntegrationContractTest.gd": "[C11B1_SOCIAL_UI_INTEGRATION_CONTRACT_SUITE] PASS",
     "C11CCommonPresentationOverlayContractTest.gd": "[C11C_COMMON_PRESENTATION_OVERLAY_CONTRACT_SUITE] PASS",
     "C11CVisualDrillSocialPresentationContractTest.gd": "[C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_SUITE] PASS",
+    "C11CTrackingMechanicContractTest.gd": "[C11C_TRACKING_MECHANIC_CONTRACT_SUITE] PASS",
     "c11freeze/C11FreezeRepositoryContractTest.gd": "[C11FREEZE_REPOSITORY_CONTRACT_SUITE] PASS",
     "DeterministicLCGStatelessTest.gd": "[RNG_TEST_SUITE] PASS",
     "ParkingMechanicV2IsolationTest.gd": "[PARKING_V2_ISOLATION_SUITE] PASS",
