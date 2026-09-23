@@ -1,0 +1,124 @@
+diff --git a/tests/C6F08TrackingPlaybackValidationTest.gd b/tests/C6F08TrackingPlaybackValidationTest.gd
+index 636d64b636c718af8eadc65bca376c6292324423..fbf9eaadaa8a54ab865c1a7c62997e7d590fb8ed 100644
+--- a/tests/C6F08TrackingPlaybackValidationTest.gd
++++ b/tests/C6F08TrackingPlaybackValidationTest.gd
+@@ -10,6 +10,7 @@ const VisualContentPlayerScript = preload("res://core/presentation/rendering/Vis
+ const RNGStreamRegistry = preload("res://core/deterministic/RNGStreamRegistry.gd")
+ 
+ var failures: Array[String] = []
++const MAX_PLAYBACK_WAIT_FRAMES: int = 180
+ 
+ func _initialize() -> void:
+ 	print("[TEST] Running C6F08TrackingPlaybackValidationTest...")
+@@ -49,8 +50,9 @@ func _run_player_and_validate(def_path: String, mode: String):
+ 		node.queue_free()
+ 		return null
+ 		
+-	var captured_position = null
+-	while not player.playback_finished:
++	var captured_position: Variant = null
++	var wait_frames: int = 0
++	while not player.playback_finished and wait_frames < MAX_PLAYBACK_WAIT_FRAMES:
+ 		if player._current_frame_index == 1 and captured_position == null:
+ 			var tracker_renderer = _find_renderer(player, "TrackingRenderer.gd")
+ 			if tracker_renderer == null:
+@@ -66,8 +68,12 @@ func _run_player_and_validate(def_path: String, mode: String):
+ 				captured_position = Vector2(float(target.get("x", 0.0)), float(target.get("y", 0.0)))
+ 				_assert(captured_position.y >= 144.0 and captured_position.y <= 816.0, "[%s] Tracking target must remain inside Body." % mode)
+ 				_assert(tracker_renderer._frame_state.get("trajectory_state", {}).get("trail_points", []).size() >= 1, "[%s] Tracking history trail must be emitted." % mode)
+-	await process_frame
+-		
++		wait_frames += 1
++		await process_frame
++
++	if not player.playback_finished:
++		_assert(false, "[%s] Playback did not finish within %d process frames." % [mode, MAX_PLAYBACK_WAIT_FRAMES])
++
+ 	node.queue_free()
+ 	await process_frame
+ 	return captured_position
+diff --git a/tests/run_all.py b/tests/run_all.py
+index 534e63209ec825274f8c6079ae8581bd27ea0270..33328b2e512eb320822de2bc980198df98058f3f 100644
+--- a/tests/run_all.py
++++ b/tests/run_all.py
+@@ -120,6 +120,8 @@ KNOWN_SUITES = {
+     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
+ }
+ 
++SUITE_TIMEOUT_SECONDS = 120
++
+ PHYSICAL_EXTERNAL_SUITES = {
+     "C6F06VisualDrillPhysicalExportTest.gd",
+     "C6F06VisualLoopPhysicalExportTest.gd",
+@@ -177,43 +179,41 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
+     
+     try:
+         process = subprocess.Popen(
+-            cmd, 
+-            stdout=subprocess.PIPE, 
+-            stderr=subprocess.STDOUT, 
+-            text=True, 
+-            encoding="utf-8", 
++            cmd,
++            stdout=subprocess.PIPE,
++            stderr=subprocess.STDOUT,
++            text=True,
++            encoding="utf-8",
++            errors="replace",
+             cwd=str(PROJECT_ROOT)
+         )
+-        
+-        combined_output = []
+-        fatal_detected = False
+-        
+-        # Lectura asíncrona para detectar errores fatales inmediatamente
+-        for line in process.stdout:
+-            combined_output.append(line)
+-            for pattern in FATAL_PATTERNS:
+-                if pattern in line:
+-                    print(f"[RUNNER-FAIL] {name}: detectado patrón fatal temprano: {pattern.strip()}")
+-                    print(f"       Trazado: {line.strip()}")
+-                    process.kill()
+-                    fatal_detected = True
+-                    break
+-            if fatal_detected:
+-                break
+-                
+-        if fatal_detected:
++
++        # communicate() drena stdout mientras Godot corre. Iterar directamente sobre
++        # process.stdout puede bloquear indefinidamente si una suite queda viva sin cerrar
++        # correctamente su extremo del pipe. El timeout se aplica al proceso completo.
++        try:
++            stdout_text, _ = process.communicate(timeout=SUITE_TIMEOUT_SECONDS)
++            combined_output = stdout_text.splitlines(keepends=True)
++        except subprocess.TimeoutExpired:
++            print(f"[RUNNER-FAIL] Timeout ejecutando {name} tras {SUITE_TIMEOUT_SECONDS}s.")
++            process.kill()
++            stdout_text, _ = process.communicate()
++            combined_output = stdout_text.splitlines(keepends=True)
++            for line in combined_output[-20:]:
++                print(f"       {line.rstrip()}")
+             return False
+-            
+-        process.wait(timeout=60)
+-        
+-    except subprocess.TimeoutExpired:
+-        print(f"[RUNNER-FAIL] Timeout ejecutando {name}.")
+-        process.kill()
+-        return False
++
+     except OSError as exc:
+         print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
+         return False
+ 
++    for line in combined_output:
++        for pattern in FATAL_PATTERNS:
++            if pattern in line:
++                print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern.strip()}")
++                print(f"       Trazado: {line.strip()}")
++                return False
++
+     if process.returncode != 0:
+         print(f"[RUNNER-FAIL] {name}: exit code {process.returncode}")
+         return False

@@ -120,6 +120,8 @@ KNOWN_SUITES = {
     "mechanics/hit/HitMechanicIsolationTest.gd": "[HIT_V1_ISOLATION_SUITE] PASS",
 }
 
+SUITE_TIMEOUT_SECONDS = 120
+
 PHYSICAL_EXTERNAL_SUITES = {
     "C6F06VisualDrillPhysicalExportTest.gd",
     "C6F06VisualLoopPhysicalExportTest.gd",
@@ -177,42 +179,40 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
     
     try:
         process = subprocess.Popen(
-            cmd, 
-            stdout=subprocess.PIPE, 
-            stderr=subprocess.STDOUT, 
-            text=True, 
-            encoding="utf-8", 
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
             cwd=str(PROJECT_ROOT)
         )
-        
-        combined_output = []
-        fatal_detected = False
-        
-        # Lectura asíncrona para detectar errores fatales inmediatamente
-        for line in process.stdout:
-            combined_output.append(line)
-            for pattern in FATAL_PATTERNS:
-                if pattern in line:
-                    print(f"[RUNNER-FAIL] {name}: detectado patrón fatal temprano: {pattern.strip()}")
-                    print(f"       Trazado: {line.strip()}")
-                    process.kill()
-                    fatal_detected = True
-                    break
-            if fatal_detected:
-                break
-                
-        if fatal_detected:
+
+        # communicate() drena stdout mientras Godot corre. Iterar directamente sobre
+        # process.stdout puede bloquear indefinidamente si una suite queda viva sin cerrar
+        # correctamente su extremo del pipe. El timeout se aplica al proceso completo.
+        try:
+            stdout_text, _ = process.communicate(timeout=SUITE_TIMEOUT_SECONDS)
+            combined_output = stdout_text.splitlines(keepends=True)
+        except subprocess.TimeoutExpired:
+            print(f"[RUNNER-FAIL] Timeout ejecutando {name} tras {SUITE_TIMEOUT_SECONDS}s.")
+            process.kill()
+            stdout_text, _ = process.communicate()
+            combined_output = stdout_text.splitlines(keepends=True)
+            for line in combined_output[-20:]:
+                print(f"       {line.rstrip()}")
             return False
-            
-        process.wait(timeout=60)
-        
-    except subprocess.TimeoutExpired:
-        print(f"[RUNNER-FAIL] Timeout ejecutando {name}.")
-        process.kill()
-        return False
+
     except OSError as exc:
         print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
         return False
+
+    for line in combined_output:
+        for pattern in FATAL_PATTERNS:
+            if pattern in line:
+                print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern.strip()}")
+                print(f"       Trazado: {line.strip()}")
+                return False
 
     if process.returncode != 0:
         print(f"[RUNNER-FAIL] {name}: exit code {process.returncode}")

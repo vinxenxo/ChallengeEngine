@@ -6,7 +6,12 @@ Aquí es donde ahora sí merece la pena trabajar con método. He revisado los cu
 
 Identidad: seguimiento continuo + claridad de trayectoria.
 
-La mecánica debe presentar un objetivo móvil que pueda seguirse continuamente. El movimiento debe ser suave y matemáticamente coherente; la trayectoria puede ser compleja, pero nunca debe dejar de estar claro cuál es el objetivo. El contrato admite trayectorias analíticas como Lissajous, splines, armónicos acotados o rutas guiadas por campos suaves.
+La mecánica debe presentar un objetivo móvil que pueda seguirse continuamente. 
+El movimiento debe ser suave y matemáticamente coherente; la trayectoria puede 
+ser compleja, pero nunca debe dejar de estar claro cuál es el objetivo. 
+
+El contrato admite trayectorias analíticas como Lissajous, splines, armónicos 
+acotados o rutas guiadas por campos suaves.
 
 Lo que deberemos dirigir:
 

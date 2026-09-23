@@ -1,0 +1,9 @@
+C11-C 2.3.2 — TEST RUNNER / TRACKING PLAYBACK HOTFIX
+
+Apply over the already-installed C11-C 2.3.1 state.
+
+Scope:
+- harden tests/run_all.py against pipe-read deadlocks;
+- add watchdog to C6F08TrackingPlaybackValidationTest.gd;
+- no Tracking mechanic changes;
+- future pre-drawn guided-path Tracking variant is deliberately deferred.

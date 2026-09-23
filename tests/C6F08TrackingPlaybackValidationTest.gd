@@ -10,6 +10,7 @@ const VisualContentPlayerScript = preload("res://core/presentation/rendering/Vis
 const RNGStreamRegistry = preload("res://core/deterministic/RNGStreamRegistry.gd")
 
 var failures: Array[String] = []
+const MAX_PLAYBACK_WAIT_FRAMES: int = 180
 
 func _initialize() -> void:
 	print("[TEST] Running C6F08TrackingPlaybackValidationTest...")
@@ -49,8 +50,9 @@ func _run_player_and_validate(def_path: String, mode: String):
 		node.queue_free()
 		return null
 		
-	var captured_position = null
-	while not player.playback_finished:
+	var captured_position: Variant = null
+	var wait_frames: int = 0
+	while not player.playback_finished and wait_frames < MAX_PLAYBACK_WAIT_FRAMES:
 		if player._current_frame_index == 1 and captured_position == null:
 			var tracker_renderer = _find_renderer(player, "TrackingRenderer.gd")
 			if tracker_renderer == null:
@@ -66,8 +68,12 @@ func _run_player_and_validate(def_path: String, mode: String):
 				captured_position = Vector2(float(target.get("x", 0.0)), float(target.get("y", 0.0)))
 				_assert(captured_position.y >= 144.0 and captured_position.y <= 816.0, "[%s] Tracking target must remain inside Body." % mode)
 				_assert(tracker_renderer._frame_state.get("trajectory_state", {}).get("trail_points", []).size() >= 1, "[%s] Tracking history trail must be emitted." % mode)
-	await process_frame
-		
+		wait_frames += 1
+		await process_frame
+
+	if not player.playback_finished:
+		_assert(false, "[%s] Playback did not finish within %d process frames." % [mode, MAX_PLAYBACK_WAIT_FRAMES])
+
 	node.queue_free()
 	await process_frame
 	return captured_position
