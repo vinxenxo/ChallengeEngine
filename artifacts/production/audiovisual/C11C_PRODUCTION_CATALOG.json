@@ -281,6 +281,46 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_3739793",
                          "created_utc":  "2026-09-23T09:03:33.3266517Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 3739793"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_271828",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  271828,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_271828",
+                         "created_utc":  "2026-09-23T22:18:52.4663750Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 271828"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1363178258",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1363178258,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1363178258",
+                         "created_utc":  "2026-09-23T22:28:28.7647316Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1363178258"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2010507880",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2010507880,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2010507880",
+                         "created_utc":  "2026-09-23T22:29:50.5529695Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2010507880"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1969801934",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1969801934,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1969801934",
+                         "created_utc":  "2026-09-23T22:36:41.0042502Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1969801934"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1444627713",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1444627713,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1444627713",
+                         "created_utc":  "2026-09-23T23:08:51.9360925Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1444627713"
                      }
                  ]
 }
