@@ -7,6 +7,7 @@
 - `run_c11c_art_direction_review.ps1`: generate a 5-seed × 5-family review corpus. Optional `-ResetReviewAssets` resets only `artifacts\prototypes\c11c_review_assets`.
 - `run_c11c_production.ps1`: publish one validated product under `artifacts\production\audiovisual`.
 - `run_c11c_production_bulk.ps1`: publish a seed set for one family.
+- `run_c11c_production_25.ps1`: publish five random/shared seeds across all five families (25 final products). No cleanup.
 - `clean_c11c_artifacts.ps1`: explicit manual cleanup of regenerable prototype media.
 - `reset_c11c_artifacts.ps1`: explicit reset of C11-C prototype workspace only.
 

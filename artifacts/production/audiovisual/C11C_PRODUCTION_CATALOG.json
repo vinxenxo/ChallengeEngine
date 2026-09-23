@@ -41,6 +41,54 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_314159",
                          "created_utc":  "2026-09-22T22:21:37.3198930Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 314159"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_48434477",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  48434477,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_48434477",
+                         "created_utc":  "2026-09-23T00:01:27.4565637Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 48434477"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1985584094",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1985584094,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1985584094",
+                         "created_utc":  "2026-09-23T00:01:51.7203717Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1985584094"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1082925524",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1082925524,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1082925524",
+                         "created_utc":  "2026-09-23T00:02:16.1735542Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1082925524"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1794863540",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1794863540,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1794863540",
+                         "created_utc":  "2026-09-23T00:02:39.8173840Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1794863540"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_681275460",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  681275460,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_681275460",
+                         "created_utc":  "2026-09-23T00:03:08.5322611Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 681275460"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_48434477",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  48434477,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_48434477",
+                         "created_utc":  "2026-09-23T00:04:01.0219698Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 48434477"
                      }
                  ]
 }

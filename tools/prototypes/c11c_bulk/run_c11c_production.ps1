@@ -51,9 +51,9 @@ $required=@(
 foreach ($name in $required) {
     if (-not (Test-Path -LiteralPath (Join-Path $stage $name))) { throw "Required production artifact missing: $name" }
 }
-$stageMp4s=@(Get-ChildItem -LiteralPath $stage -Filter '*.mp4' -File | Where-Object { $_.Name -match '_seed_[0-9]+\.mp4$' })
-if ($stageMp4s.Count -ne 1 -or $stageMp4s[0].Name -ne "$stem.mp4") {
-    throw "Production candidate must contain exactly one canonical seed MP4; found $($stageMp4s.Count)."
+$candidateMp4 = Join-Path $stage "$stem.mp4"
+if (-not (Test-Path -LiteralPath $candidateMp4)) {
+    throw "Canonical production candidate MP4 missing for seed ${Seed}: $candidateMp4"
 }
 
 # Only now is replacement allowed.
@@ -71,7 +71,7 @@ $sourceManifest=Get-Content -Raw (Join-Path $stage "${stem}_manifest.json") | Co
 $created=[DateTime]::UtcNow.ToString('o')
 $prodManifest=[ordered]@{
     schema='C11-C-PRODUCTION-PRODUCT-V2'
-    revision='2.1.4'
+    revision='2.1.6'
     status='FINAL_PRODUCT'
     product_id=$productId
     family=$Family
@@ -116,7 +116,7 @@ if (Test-Path -LiteralPath $catalogPath) {
     $catalog=Get-Content -Raw $catalogPath | ConvertFrom-Json
 } else {
     New-Item -ItemType Directory -Force -Path $productionRoot | Out-Null
-    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.1.4';products=@()}
+    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.1.6';products=@()}
 }
 if ($null -eq $catalog.products) { $catalog.products=@() }
 $catalog.products=@($catalog.products | Where-Object { $_.product_id -ne $productId })

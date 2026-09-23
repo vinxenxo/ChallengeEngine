@@ -1,0 +1,381 @@
+C11-C VISUAL LOOPS — MANUAL OPERATIVO DE COMANDOS
+==================================================
+Versión de referencia: C11-C v2.1.4
+Objetivo: generar, revisar y publicar Visual Loops sin mezclar REVIEW con PRODUCTION.
+
+REGLA PRINCIPAL
+---------------
+1) REVIEW = experimentación/dirección de arte. Vive en artifacts\prototypes.
+2) PRODUCTION = productos finales. Vive en artifacts\production\audiovisual y NO lo toca la limpieza de review.
+3) CLEANUP/RESET = operaciones manuales, nunca se ejecutan automáticamente al lanzar renders.
+4) No modificar project.godot por C11-C. La captura social usa 720x1280 mediante override temporal.
+5) Duración provisional actual del corpus: 18.00 s / 540 frames / 30 FPS. La duración variable queda para una fase futura.
+6) Audio: ON por defecto. Para desactivarlo usar -NoSound o -Silent.
+7) Cada ejecución produce un único MP4 canónico: <Nombre>_seed_<SEED>.mp4.
+
+==================================================
+A. FLUJO NORMAL RECOMENDADO — UNA REVISIÓN NUEVA
+==================================================
+
+PASO 1 — Validar PowerShell
+Comando:
+.\tools\prototypes\c11c_bulk\validate_c11c_powershell.ps1
+Descripción:
+Comprueba que los scripts PowerShell canónicos son sintácticamente válidos.
+Usarlo:
+Antes de una tanda de renders o después de modificar herramientas.
+
+PASO 2 — Validar configuración de entrega
+Comando:
+.\tools\prototypes\c11c_bulk\validate_c11c_delivery_configuration.ps1
+Descripción:
+Comprueba 720x1280, 30 FPS, 540 frames, captura común y separación REVIEW/PRODUCTION.
+Usarlo:
+Antes de una tanda de revisión o producción.
+
+PASO 3 — Preflight completo
+Comando:
+.\tools\prototypes\c11c_bulk\validate_c11c_preflight.ps1
+Descripción:
+Chequeo previo del toolchain C11-C antes de renderizar.
+Usarlo:
+Recomendado al comenzar una nueva sesión/tanda importante.
+
+PASO 4 — Opcional: comprobar que Godot puede abrir el proyecto
+Comando:
+godot --headless --path . --editor --quit
+Descripción:
+Fuerza a Godot a escanear scripts, clases y recursos sin renderizar.
+Usarlo:
+Como comprobación rápida de carga del proyecto.
+
+PASO 5 — NUEVA REVISIÓN DE DIRECCIÓN DE ARTE
+Comando:
+.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -ResetReviewAssets
+Descripción:
+Genera 5 seeds aleatorias × 5 familias = 25 vídeos y después crea los assets de revisión.
+No hace limpieza general de artifacts.
+-RestartReviewAssets / -ResetReviewAssets afecta solo a artifacts\prototypes\c11c_review_assets.
+
+Resultado:
+5 seeds nuevas y aleatorias, compartidas por las 5 familias.
+25 renders físicos.
+GIFs/keyframes de revisión.
+Seed manifest para reproducibilidad.
+
+PASO 6 — REVISIÓN CON SEEDS ELEGIDAS
+Comando:
+.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -Seeds 1234567,2345678,3456789,4567890,5678901 -ResetReviewAssets
+Descripción:
+Igual que el anterior pero usando exactamente esas 5 seeds.
+
+==================================================
+B. GENERAR UN SOLO VISUAL LOOP COMO PROTOTIPO
+==================================================
+
+Plantilla:
+.\tools\prototypes\<FAMILIA>\run_prototype.ps1 -Seed <SEED>
+
+Familias válidas:
+- c11c_geometric_waves_v1
+- c11c_fractal_bloom_v1
+- c11c_sacred_symmetry_v1
+- c11c_living_particles_v1
+- c11c_invisible_forces_v1
+
+Ejemplos:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 271828
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 271828
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 271828
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 271828
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 271828
+
+Flags opcionales:
+-NoSound  = genera el MP4 sin sonido.
+-Silent   = alias aceptado por los flujos donde está definido; preferencia operativa: -NoSound.
+-NoFooter = oculta el footer editorial.
+
+Por defecto:
+720x1280 / 30 FPS / 540 frames / 18 s / audio ON.
+
+==================================================
+C. GENERAR LAS 5 FAMILIAS CON LA MISMA SEED
+==================================================
+
+Comando:
+.\tools\prototypes\c11c_bulk\run_all_c11c_visual_loops.ps1 -Seed 271828
+
+Descripción:
+Genera una pieza de cada una de las 5 familias usando la misma seed.
+Total: 5 vídeos.
+
+Sin sonido:
+.\tools\prototypes\c11c_bulk\run_all_c11c_visual_loops.ps1 -Seed 271828 -NoSound
+
+==================================================
+D. EL COMANDO QUE BUSCAS: 25 PRODUCTOS FINALES (5×5)
+==================================================
+
+OBJETIVO:
+5 seeds aleatorias × 5 familias = 25 PRODUCTOS FINALES listos para producción.
+
+IMPORTANTE:
+No usar run_c11c_art_direction_review.ps1 para esto.
+Ese comando es REVIEW.
+Para productos finales hay que usar la cadena PRODUCTION.
+
+COMANDO RECOMENDADO — 5 SEEDS ALEATORIAS + 25 PRODUCTOS:
+
+$Seeds = 1..5 | ForEach-Object {
+    Get-Random -Minimum 1000000 -Maximum 2147483646
+} | Select-Object -Unique
+
+while ($Seeds.Count -lt 5) {
+    $Seeds += Get-Random -Minimum 1000000 -Maximum 2147483646
+    $Seeds = @($Seeds | Select-Object -Unique)
+}
+
+Write-Host "Seeds de producción: $($Seeds -join ', ')"
+
+$Families = @(
+    'c11c_geometric_waves_v1',
+    'c11c_fractal_bloom_v1',
+    'c11c_sacred_symmetry_v1',
+    'c11c_living_particles_v1',
+    'c11c_invisible_forces_v1'
+)
+
+foreach ($Family in $Families) {
+    .\tools\prototypes\c11c_bulk\run_c11c_production_bulk.ps1 -Family $Family -Seeds $Seeds
+    if (-not $?) { throw "Production failed for $Family" }
+}
+
+Qué hace:
+- Genera 5 seeds aleatorias únicas.
+- Usa exactamente esas mismas 5 seeds en las 5 familias.
+- Ejecuta 5 productos por familia.
+- Total = 25 productos finales.
+- Audio activado por defecto.
+- Los productos se publican bajo artifacts\production\audiovisual.
+- Cada producto conserva MP4 + logs + manifest + ffprobe + social + authoring + PRODUCT.txt.
+- La producción no es objetivo del cleanup de review.
+
+La consola imprimirá las 5 seeds usadas. Conviene conservarlas para poder reproducir la tanda.
+
+==================================================
+E. 25 PRODUCTOS FINALES CON 5 SEEDS YA CONOCIDAS
+==================================================
+
+Ejemplo usando una tanda fija:
+
+$Seeds = @(1234567,2345678,3456789,4567890,5678901)
+$Families = @(
+    'c11c_geometric_waves_v1',
+    'c11c_fractal_bloom_v1',
+    'c11c_sacred_symmetry_v1',
+    'c11c_living_particles_v1',
+    'c11c_invisible_forces_v1'
+)
+
+foreach ($Family in $Families) {
+    .\tools\prototypes\c11c_bulk\run_c11c_production_bulk.ps1 -Family $Family -Seeds $Seeds
+    if (-not $?) { throw "Production failed for $Family" }
+}
+
+Resultado:
+25 productos finales reproducibles.
+
+==================================================
+F. PRODUCCIÓN DE UN SOLO PRODUCTO FINAL
+==================================================
+
+Plantilla:
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family <FAMILIA> -Seed <SEED>
+
+Ejemplo:
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828
+
+Sin sonido:
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828 -NoSound
+
+Sin footer:
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828 -NoFooter
+
+Reemplazo deliberado de un producto existente:
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828 -Force
+
+ADVERTENCIA:
+-Force solo debe usarse cuando deliberadamente quieres sustituir un producto existente.
+Sin -Force, producción se detiene si el producto ya existe.
+
+==================================================
+G. PRODUCCIÓN BULK DE UNA SOLA FAMILIA
+==================================================
+
+8 seeds desde el banco de producción:
+.\tools\prototypes\c11c_bulk\run_c11c_production_bulk.ps1 -Family c11c_invisible_forces_v1
+
+5 seeds concretas:
+.\tools\prototypes\c11c_bulk\run_c11c_production_bulk.ps1 -Family c11c_invisible_forces_v1 -Seeds 1234567,2345678,3456789,4567890,5678901
+
+Sin sonido:
+.\tools\prototypes\c11c_bulk\run_c11c_production_bulk.ps1 -Family c11c_invisible_forces_v1 -Seeds 1234567,2345678,3456789,4567890,5678901 -NoSound
+
+Descripción:
+Genera productos finales para UNA familia.
+Para 25 productos se debe envolver este comando en el bucle de las 5 familias mostrado en la sección D.
+
+==================================================
+H. EXPORTAR ASSETS PARA REVISIÓN
+==================================================
+
+Generar GIFs de revisión desde los MP4 existentes:
+.\tools\prototypes\c11c_bulk\export_review_gifs.ps1
+
+Generar keyframes de revisión:
+.\tools\prototypes\c11c_bulk\export_review_keyframes.ps1
+
+Generar ambos:
+.\tools\prototypes\c11c_bulk\export_all_review_assets.ps1
+
+Para una tanda concreta de seeds:
+.\tools\prototypes\c11c_bulk\export_all_review_assets.ps1 -Seeds 1234567,2345678,3456789,4567890,5678901
+
+Nota:
+Los keyframes actuales usan 720x1280 y 8 tiempos de revisión en el baseline de 18 s.
+
+==================================================
+I. LIMPIEZA DE ARTIFACTS — MANUAL
+==================================================
+
+DRY-RUN (no borra):
+.\tools\prototypes\c11c_bulk\clean_c11c_artifacts.ps1
+
+APPLY (borra medios regenerables de prototype):
+.\tools\prototypes\c11c_bulk\clean_c11c_artifacts.ps1 -Apply
+
+Qué limpia:
+- Medios regenerables de las carpetas c11c_* de artifacts\prototypes.
+- MP4, GIF, AVI, WAV, PNG, JPEG, WebP, BMP, MOV, MKV, WebM.
+
+Qué NO toca:
+- artifacts\production
+- artifacts\legacy
+- artifacts\qa
+- artifacts\regression
+- artifacts\releases
+- artifacts\tests
+- metadata conservada en prototype
+
+==================================================
+J. RESET EXPLÍCITO DE C11-C — USAR CON MUCHO CUIDADO
+==================================================
+
+DRY-RUN:
+.\tools\prototypes\c11c_bulk\reset_c11c_artifacts.ps1
+
+APPLY:
+.\tools\prototypes\c11c_bulk\reset_c11c_artifacts.ps1 -Apply
+
+Qué hace:
+Elimina los árboles c11c_* de artifacts\prototypes y artifacts\scratch y los recrea.
+
+NO toca:
+legacy / qa / regression / releases / production / tests
+
+No usarlo como parte de un lanzamiento normal.
+
+==================================================
+K. MANTENIMIENTO DE TOOLS ANTIGUAS
+==================================================
+
+Dry-run:
+.\tools\prototypes\c11c_bulk\retire_legacy_c11c_tool_versions.ps1
+
+Aplicar:
+.\tools\prototypes\c11c_bulk\retire_legacy_c11c_tool_versions.ps1 -Apply
+
+Uso:
+Solo cuando existan launchers versionados antiguos y quieras retirarlos.
+No toca artifacts.
+No forma parte del flujo diario.
+
+==================================================
+L. VERIFICAR LOS PRODUCTOS FINALES
+==================================================
+
+Cada producto se almacena en:
+artifacts\production\audiovisual\<familia>\<producto>
+
+Ejemplo:
+artifacts\production\audiovisual\c11c_invisible_forces_v1\InvisibleForces_v1_seed_271828\
+
+Archivos importantes:
+- <producto>.mp4
+- <producto>_social.txt
+- <producto>_manifest.json
+- <producto>_authoring.json
+- <producto>_ffprobe.json
+- <producto>_godot.log
+- <producto>_music.wav (si audio activo y el WAV se conserva)
+- <producto>.gif
+- PRODUCT.txt
+- production_manifest.json
+
+Catálogo global:
+artifacts\production\audiovisual\C11C_PRODUCTION_CATALOG.json
+
+El PRODUCT.txt contiene también el comando de reproducción del producto.
+
+==================================================
+M. REPRODUCIR UNA PIEZA EXACTA
+==================================================
+
+La regla general es siempre:
+SEED + FAMILIA
+
+Ejemplo:
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828
+
+Para reconstruir exactamente la variante publicada, consultar PRODUCT.txt o production_manifest.json.
+
+==================================================
+N. COMANDO MÁS SIMPLE PARA RECORDAR
+==================================================
+
+REVISIÓN — 25 vídeos aleatorios:
+.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -ResetReviewAssets
+
+PRODUCCIÓN — 25 vídeos aleatorios:
+
+$Seeds = 1..5 | ForEach-Object { Get-Random -Minimum 1000000 -Maximum 2147483646 } | Select-Object -Unique
+while ($Seeds.Count -lt 5) { $Seeds += Get-Random -Minimum 1000000 -Maximum 2147483646; $Seeds = @($Seeds | Select-Object -Unique) }
+$Families = @('c11c_geometric_waves_v1','c11c_fractal_bloom_v1','c11c_sacred_symmetry_v1','c11c_living_particles_v1','c11c_invisible_forces_v1')
+foreach ($Family in $Families) { .\tools\prototypes\c11c_bulk\run_c11c_production_bulk.ps1 -Family $Family -Seeds $Seeds; if (-not $?) { throw "Production failed for $Family" } }
+
+==================================================
+ORDEN RECOMENDADO DE EJECUCIÓN
+==================================================
+
+Para una revisión artística nueva:
+1. validate_c11c_powershell.ps1
+2. validate_c11c_delivery_configuration.ps1
+3. validate_c11c_preflight.ps1
+4. run_c11c_art_direction_review.ps1 -ResetReviewAssets
+5. Revisar los 25 vídeos + GIFs + keyframes
+6. Tomar decisiones de Dirección de Arte 2.0
+
+Para publicar productos finales:
+1. validate_c11c_powershell.ps1
+2. validate_c11c_delivery_configuration.ps1
+3. validate_c11c_preflight.ps1
+4. Ejecutar la tanda de producción 5×5 de la sección D
+5. Verificar artifacts\production\audiovisual
+6. Guardar las seeds y conservar C11C_PRODUCTION_CATALOG.json
+
+Para mantenimiento:
+1. clean_c11c_artifacts.ps1  (DRY-RUN)
+2. clean_c11c_artifacts.ps1 -Apply
+3. reset_c11c_artifacts.ps1 -Apply SOLO cuando realmente quieras reiniciar todo el workspace C11-C regenerable
+
+FIN DEL MANUAL

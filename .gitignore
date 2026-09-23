@@ -85,3 +85,6 @@ artifacts/**/videos/
 
 # Explicitly disposable workspace
 artifacts/scratch/
+artifacts/prototypes/
+artifacts/production/
+

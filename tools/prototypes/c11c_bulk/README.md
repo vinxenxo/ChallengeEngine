@@ -22,6 +22,16 @@ Single product:
 .\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828
 ```
 
+Production batch — 5 random seeds × 5 families = 25 final products:
+```powershell
+.\tools\prototypes\c11c_bulk\run_c11c_production_25.ps1
+```
+
+Production batch with explicit five seeds:
+```powershell
+.\tools\prototypes\c11c_bulk\run_c11c_production_25.ps1 -Seeds 1234567,2345678,3456789,4567890,5678901
+```
+
 ## Delivery contract
 
 - 720x1280, 9:16

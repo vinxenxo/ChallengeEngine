@@ -44,6 +44,16 @@ The raw Movie Maker `.avi` and temporary `_silent.mp4` are never published to pr
 
 Existing products are immutable by default. Use `-Force` only after an explicit decision to replace the same product ID. The production runner renders and validates the replacement candidate before deleting the existing product directory.
 
+## 5x5 batch production
+
+Run:
+
+```powershell
+.\tools\prototypes\c11c_bulk\run_c11c_production_25.ps1
+```
+
+This generates five unique random seeds and publishes all 25 family/seed combinations. The same five seeds are shared across all five families. Existing products cause an upfront abort unless `-Force` is explicitly supplied. The batch manifest is written under `artifacts\production\audiovisual`.
+
 ## Reproducibility
 
 Every product stores its seed, family, source revision and exact production reproduction command. `C11C_PRODUCTION_CATALOG.json` indexes published products.
