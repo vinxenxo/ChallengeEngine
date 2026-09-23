@@ -113,7 +113,7 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 		"show_footer": true,
 		"show_footer_rule": true,
 		"show_header_rule": true,
-		"matrix_enabled": false,
+		"matrix_enabled": true,
 		"header": {
 			"line_1": header_line_1,
 			"line_2": descriptor

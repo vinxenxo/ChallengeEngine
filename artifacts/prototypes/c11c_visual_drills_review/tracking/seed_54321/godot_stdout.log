@@ -7,8 +7,8 @@ Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
 [VISUAL_CONTENT_PLAYER] Ready [visual_drill/tracking]. Starting playback for 60 frames.
 --------------------------------------------------------------------------------
 Done recording movie at path: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_visual_drills_review\tracking\seed_54321\VisualDrill_tracking_seed_54321.avi
-60 frames at 30 FPS (movie length: 00:00:02:00), recorded in 00:00:02 (100% of real-time speed).
-CPU render time: 0.02 seconds (average: 0.32 ms/frame)
-GPU render time: 0.02 seconds (average: 0.31 ms/frame)
-Encoding time: 0.34 seconds (average: 5.73 ms/frame)
+60 frames at 30 FPS (movie length: 00:00:02:00), recorded in 00:00:04 (50% of real-time speed).
+CPU render time: 0.04 seconds (average: 0.64 ms/frame)
+GPU render time: 0.02 seconds (average: 0.28 ms/frame)
+Encoding time: 0.66 seconds (average: 11.01 ms/frame)
 --------------------------------------------------------------------------------

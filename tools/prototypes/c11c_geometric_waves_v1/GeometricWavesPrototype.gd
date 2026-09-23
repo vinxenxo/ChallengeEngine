@@ -1,6 +1,6 @@
 extends Node2D
 
-## C11-C editorial/audio/loop presentation prototype v2.1.4.
+## C11-C editorial/audio/loop presentation prototype v2.2.1.
 ## R4: shared two-line Matrix intro/midpoint swap + family-synced ambient audio.
 ## Family: GEOMETRIC WAVES
 ## Presentation-only: no core, simulation, SimulationResult, engine RNG or C7 changes.
@@ -10,22 +10,12 @@ const GeometricWavesRendererClass = preload("res://tools/prototypes/c11c_geometr
 const TechnobabbleGeneratorClass = preload("res://tools/prototypes/c11c_common/TechnobabbleGenerator.gd")
 const VariationProfileClass = preload("res://tools/prototypes/c11c_common/C11CVariationProfile.gd")
 const PaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CPaletteBank.gd")
-const HEADER_ANIMATOR_SCRIPT = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
 const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd")
 const EditorialColorsClass = preload("res://tools/prototypes/c11c_common/C11CEditorialColors.gd")
 const ColorBoostClass = preload("res://tools/prototypes/c11c_common/C11CColorBoost.gd")
+const C11CVisualEditorialLayerClass = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 
 const REFERENCE_SEED := 314159
-const HEADER_MAX_WIDTH := 486.0
-const HEADER_FONT_SIZE := 18
-const HEADER_BOLD_EMBOLDEN := 0.70
-const HEADER_LABEL_WIDTH := 540.0
-const HEADER_TOP_Y := 12.0
-const HEADER_TOP_HEIGHT := 56.0
-const HEADER_SEPARATOR_Y := 70.0
-const HEADER_SECOND_Y := 74.0
-const HEADER_SECOND_HEIGHT := 66.0
-const FOOTER_FONT_SIZE := 13
 const LOOP_DURATION := 18.0
 const FPS := 30
 const FRAME_COUNT := 540
@@ -39,9 +29,8 @@ var _show_footer: bool = true
 var _variation: Dictionary = {}
 var _palette: Dictionary = {}
 var _text_colors: Dictionary = {}
-var _header_math: Label
-var _header_hook: Label
-var _header_animator: RefCounted
+var _editorial_layer: RefCounted = null
+var _editorial_model: Dictionary = {}
 var _authoring_json_path: String = ""
 
 func _ready() -> void:
@@ -49,7 +38,7 @@ func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("geometric", _seed)
-    _palette = PaletteBankClass.palette("geometric", int(_variation["palette_mode"]), _seed)
+    _palette = PaletteBankClass.palette("geometric", int(_variation["palette_mode"]))
     _text_colors = EditorialColorsClass.palette("geometric", _palette)
     _authoring_json_path = "res://artifacts/prototypes/c11c_geometric_waves_v1/GeometricWaves_v1_seed_%d_authoring.json" % _seed
     _write_authoring_snapshot()
@@ -68,12 +57,7 @@ func _build_scene() -> void:
     var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
     frame.name = "UnifiedSocialFrame"
     add_child(frame)
-    _add_section_background(frame.get_header_content_root())
-    _add_section_background(frame.get_footer_content_root())
-    _add_frame_decoration(frame)
-    _add_header(frame.get_header_content_root())
-    if _show_footer:
-        _add_footer(frame.get_footer_content_root())
+    _mount_editorial(frame)
 
     _renderer = GeometricWavesRendererClass.new()
     _renderer.name = "GeometricWavesRenderer"
@@ -88,75 +72,50 @@ func _build_scene() -> void:
     )
     _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
 
-func _add_section_background(root: Control) -> void:
-    var section_bg := ColorRect.new()
-    section_bg.name = "SectionBlackBackground"
-    section_bg.position = Vector2.ZERO
-    section_bg.size = Vector2(540.0, 144.0)
-    section_bg.color = BLACK
-    section_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    section_bg.z_index = -100
-    root.add_child(section_bg)
+func _mount_editorial(frame: UnifiedSocialFrame) -> void:
+    _editorial_layer = C11CVisualEditorialLayerClass.new()
+    if _editorial_layer == null or not _editorial_layer.mount(frame):
+        push_error("[C11-C 2.2.1] Shared editorial layer could not be mounted for c11c_geometric_waves_v1.")
+        _editorial_layer = null
+        return
 
-func _add_frame_decoration(frame: UnifiedSocialFrame) -> void:
-    var rule_color: Color = _text_colors["rule"]
-    rule_color.a = 0.28
-
-    var rule_a := ColorRect.new()
-    rule_a.position = Vector2(36.0, HEADER_SEPARATOR_Y)
-    rule_a.size = Vector2(468.0, 1.0)
-    rule_a.color = rule_color
-    frame.get_header_content_root().add_child(rule_a)
-
-    var rule_b := ColorRect.new()
-    rule_b.position = Vector2(36.0, 14.0)
-    rule_b.size = Vector2(468.0, 1.0)
-    rule_b.color = rule_color
-    frame.get_footer_content_root().add_child(rule_b)
-
-func _add_header(root: Control) -> void:
     var grammar_names: Array[String] = ["HARMONIC MEMBRANE", "INTERFERENCE PLANE", "PARAMETRIC RIBBON", "LATTICE WAVE", "ORBITAL WAVE"]
     var grammar_index: int = int(_variation["grammar_mode"])
     var grammar_name: String = grammar_names[grammar_index].to_upper()
     var line1: String = "%s | WAVE %.1f | MORPH %.2f" % [grammar_name.replace(" ", "_"), float(_variation["wave_frequency"]), float(_variation["morph"])]
-    var line2: String = TechnobabbleGeneratorClass.generate_geek_text("geometric", _seed, _variation).to_upper()
-    var wrapped_line2: String = HEADER_ANIMATOR_SCRIPT.wrap_two_lines(line2, root.get_theme_default_font(), HEADER_FONT_SIZE, HEADER_MAX_WIDTH)
+    var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("geometric", _seed, _variation).to_upper()
+    var footer_line2: String = "SEED %d | BODY 720X896 | T=18.00S | 30 FPS | %d LOOPS" % [_seed, int(_variation["loop_cycles"])]
+    var footer_line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+    var footer_line_3: String = "GEOMETRIC GENERATIVE WAVE / v2.2.1"
 
-    # Both editorial blocks share the same 18 px bold treatment. The second block
-    # is explicitly wrapped at word boundaries so no word is ever split.
-    _header_math = _new_header_label(line1, Vector2(0.0, HEADER_TOP_Y), Vector2(HEADER_LABEL_WIDTH, HEADER_TOP_HEIGHT), _text_colors["header_math"])
-    _header_math.add_theme_constant_override("outline_size", 1)
-    _header_math = HEADER_ANIMATOR_SCRIPT.apply_bold(_header_math, HEADER_BOLD_EMBOLDEN)
-    root.add_child(_header_math)
-
-    _header_hook = _new_header_label(wrapped_line2, Vector2(0.0, HEADER_SECOND_Y), Vector2(HEADER_LABEL_WIDTH, HEADER_SECOND_HEIGHT), _text_colors["header_hook"])
-    _header_hook.add_theme_constant_override("outline_size", 1)
-    _header_hook = HEADER_ANIMATOR_SCRIPT.apply_bold(_header_hook, HEADER_BOLD_EMBOLDEN)
-    root.add_child(_header_hook)
-
-    _header_animator = HEADER_ANIMATOR_SCRIPT.new(line1, wrapped_line2, _seed + 7919)
-
-func _add_footer(root: Control) -> void:
-    var line2: String = "SEED %d | BODY 720X896 | T=18.00S | 30 FPS | %d LOOPS" % [_seed, int(_variation["loop_cycles"])]
-    var line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
-    var line4: String = "GEOMETRIC GENERATIVE WAVE / v2.1.4"
-    root.add_child(_new_footer_label(line2, Vector2(0.0, 20.0), _text_colors["footer_data"]))
-    root.add_child(_new_footer_label(line3, Vector2(0.0, 47.0), _text_colors["footer_palette"]))
-    root.add_child(_new_footer_label(line4, Vector2(0.0, 74.0), _text_colors["footer_signature"]))
-
-func _new_footer_label(text_value: String, pos: Vector2, color: Color) -> Label:
-    var label := _new_label(text_value, pos, Vector2(540.0, 24.0), FOOTER_FONT_SIZE, color)
-    var font: Font = label.get_theme_default_font()
-    var fitted: int = FOOTER_FONT_SIZE
-    while fitted > 12 and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > 508.0:
-        fitted -= 1
-    label.add_theme_font_size_override("font_size", fitted)
-    return label
-
-func _new_header_label(text_value: String, pos: Vector2, box_size: Vector2, color: Color) -> Label:
-    var label := _new_label(text_value, pos, box_size, HEADER_FONT_SIZE, color)
-    label.add_theme_constant_override("line_spacing", 0)
-    return label
+    _editorial_model = {
+        "editorial": {
+            "enabled": true,
+            "show_header": true,
+            "show_footer": _show_footer,
+            "show_header_rule": true,
+            "show_footer_rule": true,
+            "matrix_enabled": true,
+            "header": {
+                "line_1": line1,
+                "line_2": header_line_2
+            },
+            "footer": {
+                "line_1": footer_line2,
+                "line_2": footer_line3,
+                "line_3": footer_line_3
+            },
+            "colors": {
+                "header_secondary": _text_colors["header_hook"],
+                "footer_data": _text_colors["footer_data"],
+                "rule": _text_colors["rule"]
+            }
+        },
+        "editorial_seed": _seed,
+        "editorial_frame_index": 0,
+        "editorial_frame_count": FRAME_COUNT
+    }
+    _editorial_layer.apply_render_model(_editorial_model)
 
 func _resolve_footer_visibility() -> bool:
     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
@@ -166,30 +125,13 @@ func _resolve_seed() -> int:
     var raw: String = OS.get_environment("C11C_SEED").strip_edges()
     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
 
-func _new_label(text_value: String, pos: Vector2, box_size: Vector2, font_size: int, color: Color) -> Label:
-    var label := Label.new()
-    label.text = text_value
-    label.position = pos
-    label.size = box_size
-    label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    label.add_theme_font_size_override("font_size", font_size)
-    label.add_theme_color_override("font_color", color)
-    label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    label.clip_text = true
-    return label
-
 func _process(_delta: float) -> void:
     if _renderer == null:
         return
     _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
-    if _header_animator != null:
-        var editorial: Dictionary = _header_animator.display_at(_frame_index, FRAME_COUNT)
-        _header_math.text = str(editorial["line1_text"])
-        _header_hook.text = str(editorial["line2_text"])
-        var alpha: float = 0.90 if bool(editorial["transition"]) else 1.0
-        _header_math.modulate = Color(1.0, 1.0, 1.0, alpha)
-        _header_hook.modulate = Color(1.0, 1.0, 1.0, alpha)
+    if _editorial_layer != null and not _editorial_model.is_empty():
+        _editorial_model["editorial_frame_index"] = _frame_index
+        _editorial_layer.apply_render_model(_editorial_model)
     _frame_index = (_frame_index + 1) % FRAME_COUNT
 
 func _seed_index(salt: int, size: int) -> int:
@@ -242,7 +184,7 @@ func _write_authoring_snapshot() -> void:
         "sound_enabled": sound_enabled,
         "background": "000000",
         "footer_enabled": _show_footer,
-        "editorial_revision": "2.1.4",
+        "editorial_revision": "2.2.1",
         "loop_closed": true
     }
     var file := FileAccess.open(absolute_path, FileAccess.WRITE)

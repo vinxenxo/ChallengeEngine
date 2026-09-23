@@ -1,7 +1,7 @@
 extends RefCounted
 
 ## C11-C editorial header animator R4.
-## Deterministic Matrix / airport-board presentation shared by all five Visual Loop families.
+## Deterministic Matrix / airport-board presentation shared by all C11-C visual families.
 ## Presentation-only: no simulation, engine RNG or timing ownership.
 
 const CHARS: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/[]{}<>|+-_=.:*"
@@ -15,11 +15,24 @@ const BOLD_EMBOLDEN: float = 0.70
 var primary_text: String
 var secondary_text: String
 var seed_value: int
+var sequence_texts: Array[String] = []
 
 func _init(primary: String, secondary: String, seed: int) -> void:
     primary_text = primary
     secondary_text = secondary
     seed_value = seed
+
+func set_sequence(texts: Array[String]) -> void:
+    sequence_texts.clear()
+    for raw_text in texts:
+        var clean_text: String = str(raw_text).strip_edges()
+        if clean_text.is_empty():
+            continue
+        if not sequence_texts.has(clean_text):
+            sequence_texts.append(clean_text)
+
+func clear_sequence() -> void:
+    sequence_texts.clear()
 
 static func apply_bold(label: Label, embolden: float = BOLD_EMBOLDEN) -> Label:
     var base_font: Font = label.get_theme_default_font()
@@ -57,6 +70,46 @@ static func wrap_two_lines(text: String, font: Font, font_size: int, max_width: 
             best_break = i
 
     return " ".join(words.slice(0, best_break)) + "\n" + " ".join(words.slice(best_break))
+
+func display_sequence_at(frame_index: int, total_frames: int) -> Dictionary:
+    var total: int = maxi(1, total_frames)
+    if sequence_texts.size() < 2:
+        return {
+            "text": primary_text,
+            "transition": false,
+            "phase": 0.0,
+            "mode": "legacy_fallback"
+        }
+
+    var frame: int = posmod(frame_index, total)
+    var u: float = float(frame) / float(total)
+    var count: int = sequence_texts.size()
+    var slot_u: float = u * float(count)
+    var slot_index: int = mini(int(floor(slot_u)), count - 1)
+    var local_u: float = slot_u - float(slot_index)
+    var current_text: String = sequence_texts[slot_index]
+    var next_text: String = sequence_texts[(slot_index + 1) % count]
+    var hold_end: float = 0.84
+
+    if local_u < hold_end:
+        return {
+            "text": current_text,
+            "transition": false,
+            "phase": local_u / hold_end,
+            "mode": "sequence_hold",
+            "sequence_index": slot_index,
+            "sequence_count": count
+        }
+
+    var transition_t: float = inverse_lerp(hold_end, 1.0, local_u)
+    return {
+        "text": _scramble_blend(current_text, next_text, transition_t, frame, 17 + slot_index * 97),
+        "transition": true,
+        "phase": transition_t,
+        "mode": "sequence_transition",
+        "sequence_index": slot_index,
+        "sequence_count": count
+    }
 
 func display_at(frame_index: int, total_frames: int) -> Dictionary:
     var total: int = maxi(1, total_frames)

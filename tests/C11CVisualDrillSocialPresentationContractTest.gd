@@ -8,6 +8,7 @@ const PresentationProfile = preload("res://core/presentation/PresentationProfile
 const VisualDrillPresentationBinder = preload("res://core/presentation/VisualDrillPresentationBinder.gd")
 const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 const VisualContentPlayer = preload("res://core/presentation/rendering/VisualContentPlayer.gd")
+const C11CHeaderAnimatorV2Class = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
 
 var failures: Array[String] = []
 
@@ -58,22 +59,31 @@ func _initialize() -> void:
 
 	var editorial: Dictionary = model.get("editorial", {})
 	_assert(bool(editorial.get("enabled", false)), "Editorial layer must be enabled for Visual Drill.")
-	_assert(not bool(editorial.get("matrix_enabled", true)), "Visual Drill editorial Matrix must be disabled.")
-	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header line 1 must identify the drill.")
-	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature must identify Visual Drill.")
+	_assert(bool(editorial.get("matrix_enabled", false)), "Visual Drill editorial Matrix must be enabled.")
+	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header source line must identify the drill.")
+	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature source line must identify Visual Drill.")
 	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("720X896") >= 0, "Footer must expose the physical Body size used by the social composition.")
 	_assert(is_equal_approx(VisualContentPlayer.PHYSICAL_SOCIAL_SCALE, 4.0 / 3.0), "Visual Drill physical social scale must map 540x960 logical space to 720x1280.")
 	_assert(VisualContentPlayer.LOGICAL_SOCIAL_CANVAS_SIZE == Vector2(540.0, 960.0), "Logical social canvas must remain 540x960.")
 	_assert(VisualContentPlayer.PHYSICAL_SOCIAL_OUTPUT_SIZE == Vector2(720.0, 1280.0), "Physical social output must remain 720x1280.")
 
+	var animator := C11CHeaderAnimatorV2Class.new("A\nB", "C\nD", 12345)
+	animator.set_sequence(["A\nB", "C\nD", "E\nF", "G\nH"])
+	_assert(str(animator.display_sequence_at(0, 120).get("text", "")) == "A\nB", "Matrix sequence must begin with the existing double-line header text.")
+	_assert(str(animator.display_sequence_at(30, 120).get("text", "")) == "C\nD", "Matrix sequence must advance deterministically through all editorial texts.")
+	_assert(str(animator.display_sequence_at(60, 120).get("text", "")) == "E\nF", "Matrix sequence third state missing.")
+	_assert(str(animator.display_sequence_at(90, 120).get("text", "")) == "G\nH", "Matrix sequence fourth state missing.")
+
 	var layer := C11CVisualEditorialLayer.new()
 	_assert(layer.mount(frame), "Shared C11CVisualEditorialLayer failed to mount.")
 	layer.apply_render_model(model)
-	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderLine1") != null, "Shared header line 1 missing.")
-	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderLine2") != null, "Shared header line 2 missing.")
+	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderLine1") == null, "Former header line 1 must no longer be rendered.")
+	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderLine2") != null, "Shared header double-line block missing.")
 	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine1") != null, "Shared footer line 1 missing.")
-	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine2") != null, "Shared footer line 2 missing.")
-	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine3") != null, "Shared footer line 3 missing.")
+	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine2") == null, "Former footer line 2 must no longer be rendered.")
+	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine3") == null, "Former footer line 3 must no longer be rendered.")
+	_assert(frame.get_header_content_root().get_node("C11CVisualEditorialHeader/C11CHeaderRule").position.y == 140.0, "Header separator must move below the double-line block.")
+	_assert(frame.get_footer_content_root().get_node("C11CVisualEditorialFooter/C11CFooterRule").position.y == 14.0, "Footer separator position must remain the leading separator.")
 	_assert(frame.get_header_content_root().visible, "Shared layer must not hide the C11-B header root.")
 	_assert(frame.get_footer_content_root().visible, "Shared layer must not hide the C11-B footer root.")
 

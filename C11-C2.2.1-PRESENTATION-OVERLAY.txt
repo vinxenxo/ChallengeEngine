@@ -1,0 +1,24 @@
+C11-C 2.2.1 — COMMON PRESENTATION OVERLAY
+
+Baseline: current C11-C 2.2.0 Visual Drill Presentation Foundation + C11-C R4 loop editorial state.
+
+COMMON
+- Header: former first line hidden; its upper space retained. Double-line block remains at logical y=74..138. Separator moves to y=140.
+- Footer: separator + first text line only. Former footer lines 2/3 are moved into Matrix rotation.
+- Header Matrix now affects only the double-line header block.
+- Matrix sequence: current header double-line, former header line 1, former footer line 2, former footer line 3.
+- Matrix sequence is distributed across the full video.
+- Header font: 21 logical px; Footer font: 14 logical px; deterministic fitting remains active.
+- Visual Drills now use the same Matrix mechanism as Visual Loops.
+
+LIVING PARTICLES
+- Adds a stronger-contrast deterministic perspective Tron road behind the particles.
+- Perspective vanishing point, rails, transverse grid and moving center guide.
+- Road motion simulates forward travel toward the viewer.
+- Road is presentation-only and synchronized to the existing visual phase.
+
+FROZEN BOUNDARIES
+- No simulation/mechanics/RNG/SimulationResult/winning_frame/close_calls changes.
+- No C7/C9 changes.
+- Logical 540x960 Social Frame remains unchanged.
+- Physical 720x1280 output and 4/3 scaling remain unchanged.

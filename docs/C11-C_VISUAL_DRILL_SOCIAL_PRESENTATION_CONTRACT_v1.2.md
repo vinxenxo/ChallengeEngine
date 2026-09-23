@@ -1,3 +1,5 @@
+> **SUPERSEDED by C11-C 2.2.1 / Contract v1.3.** Visual Drill Matrix is now ON and the common header/footer layout has moved to the 2.2.1 presentation overlay.
+
 # C11-C Visual Drill Social Presentation Contract v1.2
 
 **Release:** C11-C 2.2.0 — VISUAL DRILL SOCIAL PRESENTATION FOUNDATION

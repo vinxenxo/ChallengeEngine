@@ -1,6 +1,6 @@
 extends Node2D
 
-## C11-C.4 v1.6 — Living Particles visual grammar renderer.
+## C11-C.4 v2.2.1 — Living Particles visual grammar renderer.
 ## Presentation-only. No simulation state, RNG stream or production runtime access.
 
 const WIDTH := 540.0
@@ -8,11 +8,18 @@ const BODY_TOP := 144.0
 const BODY_HEIGHT := 672.0
 const BODY_RECT := Rect2(0.0, BODY_TOP, WIDTH, BODY_HEIGHT)
 const SHADER = preload("res://tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader")
+const TronRoadClass = preload("res://tools/prototypes/c11c_living_particles_v1/LivingParticlesTronRoad.gd")
 
 var _rect: ColorRect
 var _material: ShaderMaterial
+var _road: Node2D
 
 func _ready() -> void:
+    _road = TronRoadClass.new()
+    _road.name = "LivingParticlesTronRoad"
+    _road.z_index = -10
+    add_child(_road)
+
     _rect = ColorRect.new()
     _rect.name = "LivingParticlesCanvas"
     _rect.position = BODY_RECT.position
@@ -21,6 +28,7 @@ func _ready() -> void:
     _material = ShaderMaterial.new()
     _material.shader = SHADER
     _rect.material = _material
+    _rect.z_index = 1
     add_child(_rect)
 
 func set_background(background: Color) -> void:
@@ -31,6 +39,8 @@ func set_palette(deep: Color, mid: Color, bright: Color, highlight: Color) -> vo
     _material.set_shader_parameter("mid_color", mid)
     _material.set_shader_parameter("bright_color", bright)
     _material.set_shader_parameter("highlight_color", highlight)
+    if _road != null and _road.has_method("set_contrast_reference"):
+        _road.set_contrast_reference(mid, highlight)
 
 func set_style(grammar_mode: int, particle_count: float, glow_strength: float, attractor_a: Vector2, attractor_b: Vector2, swirl_bias: float, particle_spread: float, turbulence: float, attractor_strength: float, particle_size_scale: float, phase_rate: float, collision_strength: float, core_scale: float, density_bias: float, color_diversity: float, color_phase: float) -> void:
     _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 4))
@@ -57,4 +67,6 @@ func set_frame(frame_index: int, total_frames: int, seed_phase: float, loop_cycl
     var cycles: float = max(loop_cycles, 1.0)
     _material.set_shader_parameter("phase", TAU * float(frame) / float(total) * cycles)
     _material.set_shader_parameter("seed_phase", seed_phase)
+    if _road != null and _road.has_method("set_frame"):
+        _road.set_frame(frame, total, cycles)
 
