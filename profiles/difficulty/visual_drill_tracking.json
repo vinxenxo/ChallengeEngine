@@ -66,6 +66,11 @@
       "target_id": "t1"
     }
   },
+  "difficulty_bands": {
+    "easy": [1, 2],
+    "medium": [3],
+    "hard": [4, 5]
+  },
   "tiers": {
     "1": {
       "speed_multiplier": 0.75

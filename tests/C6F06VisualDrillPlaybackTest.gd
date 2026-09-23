@@ -9,6 +9,7 @@ extends SceneTree
 const VisualContentPlayerScript = preload("res://core/presentation/rendering/VisualContentPlayer.gd")
 
 var failures: Array[String] = []
+const MAX_WAIT_FRAMES: int = 720
 
 func _initialize() -> void:
 	print("[TEST] Running C6F06VisualDrillPlaybackTest...")
@@ -29,11 +30,19 @@ func _initialize() -> void:
 		_conclude()
 		return
 		
-	while not player.playback_finished:
+	var wait_frames: int = 0
+	while not player.playback_finished and wait_frames < MAX_WAIT_FRAMES:
+		wait_frames += 1
 		await process_frame
-		
+
+	if not player.playback_finished:
+		failures.append("Visual Drill playback did not finish within %d process frames." % MAX_WAIT_FRAMES)
+
 	if player._current_frame_index != player._total_frames:
 		failures.append("Frame count mismatch: processed %d, expected %d." % [player._current_frame_index, player._total_frames])
+	if player._is_visual_drill:
+		if player._visual_drill_countdown_frames != 90 or player._presentation_total_frames != 600:
+			failures.append("Visual Drill presentation frame contract mismatch: countdown=%d total=%d." % [player._visual_drill_countdown_frames, player._presentation_total_frames])
 		
 	node.queue_free()
 	await process_frame

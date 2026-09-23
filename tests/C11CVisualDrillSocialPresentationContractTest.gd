@@ -33,7 +33,7 @@ func _initialize() -> void:
 		"seed": 12345,
 		"audio": {"enabled": true},
 		"payload": {
-			"duration": 2.0,
+			"duration": 17.0,
 			"fps": 30,
 			"exercise_parameters": {"difficulty_tier": 2, "speed_multiplier": 1.0}
 		}
@@ -50,7 +50,12 @@ func _initialize() -> void:
 			"parameters": {"tracking_variant": 0.25}
 		}
 	}
-	var model := binder.bind_frame(source_frame, profile, "GAME")
+	var model := binder.bind_frame(source_frame, profile, "GAME", 90, 30)
+	var pre_roll_model := binder.bind_frame(source_frame, profile, "PRE_ROLL", 0, 30)
+	_assert(bool(pre_roll_model.get("countdown_visible", false)), "Visual Drill PRE_ROLL countdown should be visible.")
+	_assert(str(pre_roll_model.get("countdown_value", "")) == "3", "Visual Drill PRE_ROLL should begin at 3.")
+	_assert(bool(pre_roll_model.get("editorial", {}).get("intro_active", false)), "Visual Drill intro should be active during PRE_ROLL.")
+	_assert(not bool(model.get("countdown_visible", true)), "Visual Drill countdown should be hidden during GAME.")
 	_assert(model.has("geometry"), "VisualDrill binder must expose composition geometry.")
 	_assert(model.has("social_geometry"), "VisualDrill binder must expose social geometry.")
 	_assert(model.has("source_canvas_size"), "VisualDrill binder must expose source canvas size.")
@@ -62,7 +67,8 @@ func _initialize() -> void:
 	_assert(bool(editorial.get("matrix_enabled", false)), "Visual Drill editorial Matrix must be enabled.")
 	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header source line must identify the drill.")
 	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature source line must identify Visual Drill.")
-	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("720X896") >= 0, "Footer must expose the physical Body size used by the social composition.")
+	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("GAME 17.00S") >= 0, "Footer must expose the canonical 17s gameplay duration.")
+	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("TOTAL 20.00S") >= 0, "Footer must expose the 20s total presentation duration.")
 	_assert(is_equal_approx(VisualContentPlayer.PHYSICAL_SOCIAL_SCALE, 4.0 / 3.0), "Visual Drill physical social scale must map 540x960 logical space to 720x1280.")
 	_assert(VisualContentPlayer.LOGICAL_SOCIAL_CANVAS_SIZE == Vector2(540.0, 960.0), "Logical social canvas must remain 540x960.")
 	_assert(VisualContentPlayer.PHYSICAL_SOCIAL_OUTPUT_SIZE == Vector2(720.0, 1280.0), "Physical social output must remain 720x1280.")

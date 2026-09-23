@@ -7,6 +7,7 @@ extends RefCounted
 ## Does not alter simulation, RNG, timeline or winning-frame truth.
 
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
+const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
 
 const DISPLAY_NAMES := {
 	"tracking": "TRACKING",
@@ -29,12 +30,19 @@ const SIGNATURES := {
 	"peripheral_scan": "VISUAL DRILL / PERIPHERAL SCAN / C11-C"
 }
 
+const INTRO_TEXTS := {
+	"tracking": "¿ERES CAPAZ DE SEGUIR EL OBJETO CON LA VISTA SIN PERDERLO?",
+	"pursuit": "¿PUEDES MANTENER EL OBJETIVO CENTRADO MIENTRAS SE DESPLAZA?",
+	"saccade": "¿PUEDES LOCALIZAR EL OBJETIVO Y SALTAR A ÉL CON PRECISIÓN?",
+	"peripheral_scan": "¿PUEDES DETECTAR EL ESTÍMULO PERIFÉRICO SIN PERDER LA FIJACIÓN?"
+}
+
 var _definition_context: Dictionary = {}
 
 func set_definition_context(definition: Dictionary) -> void:
 	_definition_context = definition.duplicate(true) if definition is Dictionary else {}
 
-func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: String = "GAME") -> Dictionary:
+func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: String = "GAME", presentation_frame_index: int = -1, presentation_fps: int = 30) -> Dictionary:
 	var model := {}
 
 	# Shared C6/C11-C geometry payload. The logical composition remains 540x960;
@@ -67,12 +75,21 @@ func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: Strin
 	model["show_hook"] = false
 	model["countdown_visible"] = false
 	model["countdown_value"] = ""
+	model["presentation_phase"] = ui_state
 
 	var drill_state: Dictionary = frame.get("payload", {}).duplicate(true)
 	model["visual_drill_frame_state"] = drill_state
 	model["drill_frame_state"] = drill_state
 
-	model["editorial"] = _build_editorial_model(frame, profile)
+	var drill_subtype: String = str(drill_state.get("generator_type", "visual_drill"))
+	var effective_presentation_frame: int = presentation_frame_index if presentation_frame_index >= 0 else 0
+	var effective_fps: int = maxi(1, presentation_fps)
+	var pre_roll: bool = ui_state == "PRE_ROLL"
+	CountdownPresentationLogic.apply_to_render_model(model, pre_roll, effective_presentation_frame, effective_fps)
+	var editorial_model: Dictionary = _build_editorial_model(frame, profile)
+	editorial_model["intro_active"] = pre_roll
+	editorial_model["intro_text"] = str(INTRO_TEXTS.get(drill_subtype, "PREPÁRATE PARA EL EJERCICIO VISUAL."))
+	model["editorial"] = editorial_model
 	return model
 
 func bind(frame: Dictionary, profile: PresentationProfile, ui_state: String = "GAME") -> Dictionary:
@@ -103,7 +120,8 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 	if generator_variant.is_empty() == false:
 		header_line_1 = "%s | %s | SPEED %.2f" % [display_name, generator_variant, speed]
 
-	var audio_enabled := true
+	var difficulty_band: String = _difficulty_band(tier)
+	var audio_enabled: bool = true
 	if audio_node is Dictionary and audio_node.has("enabled"):
 		audio_enabled = bool(audio_node.get("enabled"))
 	
@@ -119,7 +137,7 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 			"line_2": descriptor
 		},
 		"footer": {
-			"line_1": "SEED %d | BODY 720X896 | T=%.2fS | %d FPS | TIER %d" % [definition_seed, duration, fps, tier],
+			"line_1": "SEED %d | GAME %.2fS | TOTAL %.2fS | %d FPS | %s" % [definition_seed, duration, duration + CountdownPresentationLogic.COUNTDOWN_SECONDS, fps, difficulty_band],
 			"line_2": "GEN %s | AUDIO %s | SOCIAL 720X1280" % [display_name, "AMBIENT" if audio_enabled else "OFF"],
 			"line_3": signature
 		},
@@ -132,6 +150,13 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 			"rule": Color("6FA6D9")
 		}
 	}
+
+func _difficulty_band(tier: int) -> String:
+	if tier <= 2:
+		return "EASY"
+	if tier == 3:
+		return "MEDIUM"
+	return "HARD"
 
 func _variant_summary(subtype: String, params: Dictionary) -> String:
 	match subtype:

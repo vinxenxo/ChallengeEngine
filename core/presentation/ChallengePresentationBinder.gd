@@ -10,6 +10,7 @@ const AssetFamilyRegistry = preload("res://core/authoring/AssetFamilyRegistry.gd
 const AssetFamilyValidator = preload("res://core/authoring/AssetFamilyValidator.gd")
 const PresentationBindingResult = preload("res://core/presentation/PresentationBindingResult.gd")
 const VideoTimeline = preload("res://core/timeline/VideoTimeline.gd")
+const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
 
 static func bind(canonical_v2: Dictionary, timeline: VideoTimeline, simulation_result: SimulationResult) -> PresentationBindingResult:
 	var result = PresentationBindingResult.new()
@@ -128,24 +129,10 @@ static func build_frame_render_model(
 	model["show_hook"] = (state == "HOOK")
 	model["hook_text"] = str(content.get("hook", ""))
 	
-	# Countdown state & contract calculation (3 -> 2 -> 1 -> hidden)
-	var countdown_vis = (state == "HOOK")
-	var countdown_val = ""
-	if countdown_vis:
-		var fps = max(1, int(content.get("ui_fps", 60)))
-		var state_frame = max(0, int(content.get("ui_state_frame", 0)))
-		
-		if state_frame < fps:
-			countdown_val = "3"
-		elif state_frame < fps * 2:
-			countdown_val = "2"
-		elif state_frame < fps * 3:
-			countdown_val = "1"
-		else:
-			countdown_vis = false
-			
-	model["countdown_visible"] = countdown_vis
-	model["countdown_value"] = countdown_val
+	# Shared historical Challenge countdown contract: 3 -> 2 -> 1 -> hidden.
+	var countdown_fps: int = max(1, int(content.get("ui_fps", 60)))
+	var countdown_frame: int = max(0, int(content.get("ui_state_frame", 0)))
+	CountdownPresentationLogic.apply_to_render_model(model, state == "HOOK", countdown_frame, countdown_fps)
 	
 	model["success_visible"] = (absolute_frame == winning_frame and state == "GAME")
 	

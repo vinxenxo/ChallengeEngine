@@ -2,7 +2,7 @@
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.2.2 — Shared visual-content social/editorial presentation layer.
+## C11-C 2.4.0 — Shared visual-content social/editorial presentation layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
 
@@ -132,8 +132,15 @@ func apply_render_model(render_model: Dictionary) -> void:
     var footer_removed_2: String = _wrap_two_lines(str(footer.get("line_2", "")).strip_edges().to_upper())
     var footer_removed_3: String = _wrap_two_lines(str(footer.get("line_3", "")).strip_edges().to_upper())
 
+    var intro_active: bool = bool(editorial.get("intro_active", false))
+    var intro_text: String = str(editorial.get("intro_text", "")).strip_edges().to_upper()
     var matrix_enabled: bool = bool(editorial.get("matrix_enabled", true))
-    if matrix_enabled:
+    if intro_active and not intro_text.is_empty():
+        _animator = null
+        _animator_sequence_signature = ""
+        _header_line_2.text = _wrap_two_lines(intro_text)
+        _header_line_2.modulate = Color.WHITE
+    elif matrix_enabled:
         var sequence: Array[String] = [
             header_double_text,
             _wrap_two_lines(header_primary_text),

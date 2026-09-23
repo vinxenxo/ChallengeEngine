@@ -10,7 +10,7 @@ const VisualContentPlayerScript = preload("res://core/presentation/rendering/Vis
 const RNGStreamRegistry = preload("res://core/deterministic/RNGStreamRegistry.gd")
 
 var failures: Array[String] = []
-const MAX_PLAYBACK_WAIT_FRAMES: int = 180
+const MAX_PLAYBACK_WAIT_FRAMES: int = 720
 
 func _initialize() -> void:
 	print("[TEST] Running C6F08TrackingPlaybackValidationTest...")
@@ -46,6 +46,10 @@ func _run_player_and_validate(def_path: String, mode: String):
 		timeout += 0.016
 		
 	_assert(player.is_ready_initialized, "[%s] VisualContentPlayer failed to initialize." % mode)
+	if player.is_ready_initialized:
+		_assert(player._visual_drill_countdown_frames == 90, "[%s] Visual Drill countdown must be 90 frames at 30 FPS." % mode)
+		_assert(player._total_frames == 510, "[%s] Tracking gameplay stream must contain 510 frames." % mode)
+		_assert(player._presentation_total_frames == 600, "[%s] Tracking presentation must contain 600 frames including countdown." % mode)
 	if not player.is_ready_initialized:
 		node.queue_free()
 		return null

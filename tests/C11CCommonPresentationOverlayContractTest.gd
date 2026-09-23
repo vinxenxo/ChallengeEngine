@@ -30,6 +30,8 @@ func _initialize() -> void:
     _assert(particle_source.find("LivingParticlesBackground") >= 0, "Living Particles must own a separate Body background beneath the Tron road.")
     var shader_source := FileAccess.get_file_as_string("res://tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader")
     _assert(shader_source.find("particle_alpha") >= 0, "Particle shader must composite transparently over the Tron road.")
+    var countdown_source := FileAccess.get_file_as_string("res://core/presentation/CountdownPresentationLogic.gd")
+    _assert(countdown_source.find("COUNTDOWN_SECONDS: float = 3.0") >= 0, "Shared countdown logic must retain the 3s Challenge baseline.")
     var reviewer_source := FileAccess.get_file_as_string("res://tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1")
     _assert(reviewer_source.find("C11CVisualDrillReviewEnvelopeGenerator.gd") >= 0, "Drill reviewer must generate envelopes for requested seeds.")
     _assert(reviewer_source.find("MATRIX HEADER TRANSITION: ON") >= 0, "Drill review metadata must report Matrix ON.")

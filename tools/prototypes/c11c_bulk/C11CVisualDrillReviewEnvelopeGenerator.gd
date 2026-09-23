@@ -11,7 +11,7 @@ const ContentRuntimeRegistry = preload("res://core/runtime/ContentRuntimeRegistr
 
 const OUTPUT_ENV := "C11C_DRILL_REVIEW_ENVELOPE_ROOT"
 const SEEDS_ENV := "C11C_DRILL_REVIEW_SEEDS"
-const DURATION_SECONDS: float = 2.0
+const DURATION_SECONDS: float = 17.0
 const FPS: int = 30
 const TIER: int = 2
 const RNG_VERSION: String = "2.0"

@@ -21,6 +21,10 @@ $Seeds=@($Seeds | ForEach-Object {[int]$_})
 $NoSound = $NoSound -or $SilentMode
 $SharedAudioHash = $null
 $Drills=@('tracking','saccade','pursuit','peripheral_scan')
+$CountdownSeconds=3.0
+$MinimumTotalDurationSeconds=20.0
+$ExpectedGameplayDurationSeconds=17.0
+$ExpectedGameplayFrames=510
 
 if($Smoke){
     if($Seeds.Count -ne 1){throw 'Visual Drill smoke expects exactly one seed.'}
@@ -159,7 +163,7 @@ function Export-Gif {
 }
 
 function Write-SocialSidecar {
-    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][string]$AudioMode)
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][double]$Countdown,[Parameter(Mandatory=$true)][double]$TotalDuration,[Parameter(Mandatory=$true)][int]$TotalFrames,[Parameter(Mandatory=$true)][string]$AudioMode)
     $display = switch ($Family) {
         'tracking' { 'TRACKING' }
         'saccade' { 'SACCADE' }
@@ -179,8 +183,11 @@ FAMILY: $Family
 SEED: $Seed
 RESOLUTION: 720x1280
 FPS: 30
-DURATION: $([math]::Round($Duration,2)) s
-FRAMES: $Frames
+GAMEPLAY DURATION: $([math]::Round($Duration,2)) s
+GAMEPLAY FRAMES: $Frames
+COUNTDOWN: $([math]::Round($Countdown,2)) s
+TOTAL DURATION: $([math]::Round($TotalDuration,2)) s
+TOTAL FRAMES: $TotalFrames
 AUDIO: $AudioMode
 MATRIX HEADER TRANSITION: ON
 SHARED SOCIAL/EDITORIAL LAYOUT: ON
@@ -195,9 +202,9 @@ C11-A qualification envelope; seed 12345 uses the deterministic A copy when pres
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.2.2'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.4.0'
 Write-Host ("[C11-C-DRILL] 4 families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
-Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / current envelope duration'
+Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + 17s gameplay = 20s total'
 Write-Host ("[C11-C-DRILL] Shared editorial layout / Matrix ON / audio ON")
 Write-Host '============================================================'
 
@@ -227,14 +234,48 @@ function Ensure-RequestedEnvelopes {
     }
 }
 
+function Test-EnvelopeCompatibility {
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family)
+    try {
+        $raw=Get-Content -Raw -LiteralPath $Path
+        $json=$raw | ConvertFrom-Json
+        if([string]$json.kind -ne 'visual_drill' -or [string]$json.subtype -ne $Family){return $false}
+        $payload=$json.payload
+        if($null -eq $payload){return $false}
+        $duration=[double]$payload.duration
+        $fps=[int]$payload.fps
+        $frames=[int]$payload.frame_count
+        if($fps -ne 30){return $false}
+        if([math]::Abs($duration - $ExpectedGameplayDurationSeconds) -gt 0.0001){return $false}
+        if($frames -ne $ExpectedGameplayFrames){return $false}
+        return $true
+    } catch {
+        return $false
+    }
+}
+
 $missing=@($requiredRuns | Where-Object { $null -eq (Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed) })
-if($RegenerateEnvelopes -or $missing.Count -gt 0){
+$incompatible=@($requiredRuns | Where-Object {
+    $path=Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed
+    $null -ne $path -and -not (Test-EnvelopeCompatibility -Path $path -Family $_.Family)
+})
+if($RegenerateEnvelopes -or $missing.Count -gt 0 -or $incompatible.Count -gt 0){
     Write-Host '[C11-C-DRILL] Generate request-specific Visual Drill envelopes'
     Ensure-RequestedEnvelopes
 }
 
-$missingAfter=@($requiredRuns | Where-Object { $null -eq (Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed) })
+$missingAfter=@($requiredRuns | Where-Object {
+    $path=Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed
+    $null -eq $path -or -not (Test-EnvelopeCompatibility -Path $path -Family $_.Family)
+})
 if($missingAfter.Count -gt 0){throw "Requested Visual Drill envelopes still missing: $($missingAfter.RunId -join ', ')"}
+
+if(-not $NoSound){
+    $audioPath=Join-Path $AudioRoot 'global_ambient_master.wav'
+    if(Test-Path -LiteralPath $audioPath){Remove-Item -LiteralPath $audioPath -Force}
+    Invoke-Checked 'python' @($AudioGenerator,$audioPath,'314159','visual_drill','1','20.0') "Generate one shared ambient master (20s)"
+    $SharedAudioHash=Get-FileSha256Hex -Path $audioPath
+}
 
 $overrideState=$null
 $catalog=@()
@@ -253,7 +294,11 @@ try {
             $fps=[int]$envelope.payload.fps
             $frames=[int]$envelope.payload.frame_count
             if($fps -ne 30){throw "$runId is not 30 FPS: $fps"}
-            if($frames -lt 1){throw "$runId has invalid frame_count: $frames"}
+            if([math]::Abs($duration - $ExpectedGameplayDurationSeconds) -gt 0.0001 -or $frames -ne $ExpectedGameplayFrames){throw "$runId must be 17.0s / 510 gameplay frames: got $duration s / $frames frames"}
+            $countdownFrames=[int][math]::Round($CountdownSeconds * $fps)
+            $totalFrames=$countdownFrames + $frames
+            $totalDuration=$CountdownSeconds + $duration
+            if($countdownFrames -ne 90 -or $totalFrames -lt 600 -or $totalDuration + 0.0001 -lt $MinimumTotalDurationSeconds){throw "$runId violates 20s presentation contract: countdown=$countdownFrames total_frames=$totalFrames total_duration=$totalDuration"}
             $targetDir=Join-Path $familyRoot "seed_$seed"
             New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
             Get-ChildItem -LiteralPath $targetDir -File -ErrorAction SilentlyContinue | Remove-Item -Force
@@ -264,15 +309,12 @@ try {
             $gifPath=Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_review.gif"
             $relativeEnvelope=$envelopePath.Substring($ProjectRoot.Length+1).Replace('\','/')
 
-            Invoke-GodotMovieChecked @('--path','.', '--scene','core/presentation/rendering/VisualContentPlayer.tscn', "--definition=$relativeEnvelope", '--write-movie',$aviPath,'--fixed-fps','30','--quit-after',([string]$frames)) -RunDir $targetDir -RunId $runId
+            Invoke-GodotMovieChecked @('--path','.', '--scene','core/presentation/rendering/VisualContentPlayer.tscn', "--definition=$relativeEnvelope", '--write-movie',$aviPath,'--fixed-fps','30','--quit-after',([string]$totalFrames)) -RunDir $targetDir -RunId $runId
             if(-not(Test-Path -LiteralPath $aviPath)){throw "Godot did not create AVI for ${runId}: ${aviPath}"}
             Wait-ForStableFile -Path $aviPath -Label "Movie Maker capture $runId"
             Convert-Mp4VideoOnly -AviPath $aviPath -Mp4Path $silentMp4
 
             $audioPath=Join-Path $AudioRoot 'global_ambient_master.wav'
-            if(-not $NoSound -and -not(Test-Path -LiteralPath $audioPath)){
-                Invoke-Checked 'python' @($AudioGenerator,$audioPath,'314159','visual_drill','1','18.0') "Generate one shared ambient master (18s)"
-            }
             if($NoSound){
                 Move-Item -LiteralPath $silentMp4 -Destination $finalMp4 -Force
             } else {
@@ -282,22 +324,26 @@ try {
                 elseif($SharedAudioHash -ne (Get-FileSha256Hex -Path $audioPath)){ throw 'Shared audio master hash changed during review.' }
             }
 
-            $probe=Assert-FinalContract -Path $finalMp4 -ExpectedFrames $frames -ExpectedDuration $duration -ExpectedAudio:(-not $NoSound)
+            $probe=Assert-FinalContract -Path $finalMp4 -ExpectedFrames $totalFrames -ExpectedDuration $totalDuration -ExpectedAudio:(-not $NoSound)
             Export-KeyFrames -Mp4Path $finalMp4 -RunDir $targetDir
             Export-ContactSheet -RunDir $targetDir
             Export-Gif -Mp4Path $finalMp4 -GifPath $gifPath
-            Write-SocialSidecar -Path (Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt") -Family $family -Seed $seed -Duration $duration -Frames $frames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT'})
+            Write-SocialSidecar -Path (Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt") -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT'})
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.2.2'
+                revision='2.4.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
                 resolution='720x1280'
                 fps=$fps
                 duration_seconds=$duration
-                frame_count=$frames
+                gameplay_frame_count=$frames
+                countdown_seconds=$CountdownSeconds
+                countdown_frames=$countdownFrames
+                total_duration_seconds=$totalDuration
+                total_frame_count=$totalFrames
                 matrix_enabled=$true
                 editorial_layout='shared_c11c_social'
                 audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
@@ -322,11 +368,17 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.2.2'
+    revision='2.4.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
     render_count=$catalog.Count
+    countdown_seconds=$CountdownSeconds
+    gameplay_seconds=$ExpectedGameplayDurationSeconds
+    total_seconds=$MinimumTotalDurationSeconds
+    gameplay_frames=$ExpectedGameplayFrames
+    countdown_frames=90
+    total_frames=600
     seeds=@($Seeds)
     families=@($Drills)
     delivery='720x1280 / 9:16 / 30 FPS'

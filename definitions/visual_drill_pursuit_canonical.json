@@ -2,9 +2,9 @@
     "kind": "visual_drill",
     "subtype": "pursuit",
     "payload": {
-        "duration": 2.0,
+        "duration": 17.0,
         "fps": 30,
-        "frame_count": 60,
+        "frame_count": 510,
         "exercise_parameters": {
             "generator": "pursuit",
             "difficulty_tier": 2,

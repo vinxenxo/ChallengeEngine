@@ -18,6 +18,7 @@ func _initialize() -> void:
 	_test_target_motion(generator, params)
 	_test_body_containment(generator, params)
 	_test_history_only_trail(generator, params)
+	_test_final_history_is_full(generator, params)
 	_test_cosmetic_variant_does_not_change_mechanics(generator, params)
 	_test_determinism(generator, params)
 
@@ -32,24 +33,25 @@ func _initialize() -> void:
 	quit(1)
 
 func _test_state_shape(generator: TrackingGeneratorClass, params: Dictionary) -> void:
-	var state := generator.generate_with_variation(20, 60, params, {"tracking_variant": 0.25})
+	var state := generator.generate_with_variation(20, 510, params, {"tracking_variant": 0.25})
 	_assert(str(state.get("generator_type", "")) == "tracking", "Generator type must be tracking.")
 	_assert(state.get("target_states", []).size() == 1, "Tracking must emit exactly one target.")
 	_assert(str(state.get("trajectory_state", {}).get("type", "")) == "lissajous", "Tracking trajectory must be Lissajous.")
+	_assert(is_equal_approx(float(state.get("trajectory_state", {}).get("travel_cycles", 0.0)), 0.75), "Tracking gameplay baseline must use 0.75 travel cycles.")
 	_assert(str(state.get("task_state", {}).get("type", "")) == "tracking", "Tracking task type must preserve the canonical subtype contract.")
 	_assert(str(state.get("task_state", {}).get("mode", "")) == "smooth_pursuit", "Tracking task mode must be smooth_pursuit.")
 	_assert(state.get("distractor_states", []).is_empty(), "Canonical tracking baseline must not render distractors.")
 
 func _test_target_motion(generator: TrackingGeneratorClass, params: Dictionary) -> void:
-	var state_a := generator.generate(0, 60, params)
-	var state_b := generator.generate(30, 60, params)
+	var state_a := generator.generate(0, 510, params)
+	var state_b := generator.generate(255, 510, params)
 	var a := Vector2(float(state_a.get("target_states", [])[0].get("x", 0.0)), float(state_a.get("target_states", [])[0].get("y", 0.0)))
 	var b := Vector2(float(state_b.get("target_states", [])[0].get("x", 0.0)), float(state_b.get("target_states", [])[0].get("y", 0.0)))
 	_assert(a.distance_to(b) > 20.0, "Tracking target must travel materially across the exercise.")
 
-	for frame in range(0, 59):
-		var state0 := generator.generate(frame, 60, params)
-		var state1 := generator.generate(frame + 1, 60, params)
+	for frame in range(0, 509):
+		var state0 := generator.generate(frame, 510, params)
+		var state1 := generator.generate(frame + 1, 510, params)
 		var target0: Dictionary = state0.get("target_states", [])[0]
 		var target1: Dictionary = state1.get("target_states", [])[0]
 		var p0 := Vector2(float(target0.get("x", 0.0)), float(target0.get("y", 0.0)))
@@ -57,8 +59,8 @@ func _test_target_motion(generator: TrackingGeneratorClass, params: Dictionary) 
 		_assert(p0.distance_to(p1) < 80.0, "Tracking frame-to-frame displacement is too large for continuous pursuit.")
 
 	var previous_speed := -1.0
-	for frame in range(60):
-		var state := generator.generate(frame, 60, params)
+	for frame in range(510):
+		var state := generator.generate(frame, 510, params)
 		var speed := float(state.get("trajectory_state", {}).get("speed_px_per_second", 0.0))
 		_assert(speed >= 0.0 and is_finite(speed), "Tracking emitted an invalid speed value.")
 		_assert(speed <= 600.0, "Tracking baseline speed is too high for the intended smooth-pursuit presentation.")
@@ -67,8 +69,8 @@ func _test_target_motion(generator: TrackingGeneratorClass, params: Dictionary) 
 		previous_speed = speed
 
 func _test_body_containment(generator: TrackingGeneratorClass, params: Dictionary) -> void:
-	for frame in range(60):
-		var state := generator.generate(frame, 60, params)
+	for frame in range(510):
+		var state := generator.generate(frame, 510, params)
 		var target: Dictionary = state.get("target_states", [])[0]
 		var p := Vector2(float(target.get("x", 0.0)), float(target.get("y", 0.0)))
 		_assert(BODY_RECT.grow(-TARGET_RADIUS).has_point(p), "Tracking target escaped Body or touched a forbidden edge margin.")
@@ -81,9 +83,9 @@ func _test_body_containment(generator: TrackingGeneratorClass, params: Dictionar
 		_assert(float(bounds.get("bottom", 960.0)) <= BODY_RECT.end.y - TARGET_RADIUS, "Trajectory bottom bound lacks target clearance.")
 
 func _test_history_only_trail(generator: TrackingGeneratorClass, params: Dictionary) -> void:
-	var state := generator.generate(30, 60, params)
+	var state := generator.generate(30, 510, params)
 	var trail: Array = state.get("trajectory_state", {}).get("trail_points", [])
-	_assert(trail.size() <= 19, "Tracking trail must remain a short history window.")
+	_assert(trail.size() == 31, "Tracking growing history must contain frames 0..30 at gameplay frame 30.")
 	_assert(trail.size() > 1, "Tracking trail must include history once movement has started.")
 	var current: Dictionary = state.get("target_states", [])[0]
 	var current_p := Vector2(float(current.get("x", 0.0)), float(current.get("y", 0.0)))
@@ -91,22 +93,29 @@ func _test_history_only_trail(generator: TrackingGeneratorClass, params: Diction
 	var last_p := Vector2(float(trail_last.get("x", 0.0)), float(trail_last.get("y", 0.0)))
 	_assert(current_p.distance_to(last_p) < 0.01, "Trail last point must equal current target position.")
 
+func _test_final_history_is_full(generator: TrackingGeneratorClass, params: Dictionary) -> void:
+	var state: Dictionary = generator.generate(509, 510, params)
+	var trajectory: Dictionary = state.get("trajectory_state", {})
+	var trail: Array = trajectory.get("trail_points", [])
+	_assert(str(trajectory.get("trail_behavior", "")) == "growing_history", "Tracking trail must use growing_history behavior.")
+	_assert(trail.size() == 510, "Tracking growing history must reach the full gameplay history at the final frame.")
+
 func _test_cosmetic_variant_does_not_change_mechanics(generator: TrackingGeneratorClass, params: Dictionary) -> void:
-	var base := generator.generate_with_variation(24, 60, params, {"tracking_variant": 0.0})
-	var variant := generator.generate_with_variation(24, 60, params, {"tracking_variant": 0.99})
+	var base := generator.generate_with_variation(24, 510, params, {"tracking_variant": 0.0})
+	var variant := generator.generate_with_variation(24, 510, params, {"tracking_variant": 0.99})
 	_assert(base.get("target_states", []) == variant.get("target_states", []), "Cosmetic tracking_variant must not alter target mechanic state.")
 	_assert(base.get("trajectory_state", {}) == variant.get("trajectory_state", {}), "Cosmetic tracking_variant must not alter trajectory mechanic state.")
 
 func _test_determinism(generator: TrackingGeneratorClass, params: Dictionary) -> void:
-	var state_a := generator.generate(37, 60, params)
-	var state_b := generator.generate(37, 60, params)
+	var state_a := generator.generate(37, 510, params)
+	var state_b := generator.generate(37, 510, params)
 	_assert(state_a == state_b, "Same tracking inputs must generate byte-equivalent state dictionaries.")
 
 func _params() -> Dictionary:
 	return {
-		"duration": 2.0,
+		"duration": 17.0,
 		"fps": 30,
-		"frame_count": 60,
+		"frame_count": 510,
 		"exercise_parameters": {
 			"speed_multiplier": 1.0,
 			"pacing_mode": "constant"

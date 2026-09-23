@@ -17,10 +17,14 @@ const PresentationProfile = preload("res://core/presentation/PresentationProfile
 const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
 const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
 
 const LOGICAL_SOCIAL_CANVAS_SIZE := Vector2(540.0, 960.0)
 const PHYSICAL_SOCIAL_OUTPUT_SIZE := Vector2(720.0, 1280.0)
 const PHYSICAL_SOCIAL_SCALE: float = PHYSICAL_SOCIAL_OUTPUT_SIZE.x / LOGICAL_SOCIAL_CANVAS_SIZE.x
+const VISUAL_DRILL_COUNTDOWN_SECONDS: float = CountdownPresentationLogic.COUNTDOWN_SECONDS
+const VISUAL_DRILL_GAMEPLAY_BASELINE_SECONDS: float = 17.0
+const VISUAL_DRILL_MIN_TOTAL_SECONDS: float = 20.0
 
 @export var content_definition_path: String = ""
 
@@ -32,6 +36,10 @@ var _binder = null
 var _stream = null
 var _current_frame_index: int = 0
 var _total_frames: int = 0
+var _is_visual_drill: bool = false
+var _visual_drill_countdown_frames: int = 0
+var _presentation_frame_index: int = 0
+var _presentation_total_frames: int = 0
 var is_ready_initialized: bool = false
 var playback_finished: bool = false
 var presentation_ui: PresentationUI
@@ -90,6 +98,20 @@ func _ready() -> void:
 	_total_frames = int(_runtime.get_frame_count())
 	
 	_stream = _runtime.get_rendered_frame_stream()
+	_is_visual_drill = _stream != null and _stream.kind == "visual_drill"
+	_presentation_frame_index = 0
+	_visual_drill_countdown_frames = 0
+	_presentation_total_frames = _total_frames
+	if _is_visual_drill:
+		_visual_drill_countdown_frames = int(round(VISUAL_DRILL_COUNTDOWN_SECONDS * float(_stream.fps)))
+		_presentation_total_frames = _visual_drill_countdown_frames + _total_frames
+		var gameplay_seconds: float = float(_total_frames) / float(maxi(1, _stream.fps))
+		var total_seconds: float = gameplay_seconds + VISUAL_DRILL_COUNTDOWN_SECONDS
+		if total_seconds + 0.0001 < VISUAL_DRILL_MIN_TOTAL_SECONDS:
+			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration is below the 20s C11-C contract.")
+		else:
+			print("[VISUAL_CONTENT_PLAYER] Visual Drill presentation: %.2fs countdown + %.2fs gameplay = %.2fs total." % [VISUAL_DRILL_COUNTDOWN_SECONDS, gameplay_seconds, total_seconds])
+
 	var binder_registry: PresentationBinderRegistry = PresentationBinderRegistry.create_default()
 	var binder_res: Dictionary = binder_registry.resolve_stream(_stream)
 	
@@ -125,20 +147,40 @@ func _ready() -> void:
 	set_process(true)
 
 func _process(_delta: float) -> void:
+	if _is_visual_drill and _presentation_frame_index < _visual_drill_countdown_frames:
+		var initial_frame: Dictionary = _stream.get_frame(0)
+		if initial_frame.is_empty():
+			return
+		_apply_render_model_to_view(initial_frame, "PRE_ROLL", _presentation_frame_index)
+		_presentation_frame_index += 1
+		return
+
 	if _runtime == null or _runtime.is_finished():
 		if not playback_finished:
 			playback_finished = true
-			print("[VISUAL_CONTENT_PLAYER] Playback finished. Awaiting Movie Maker completion.")
+			print("[VISUAL_CONTENT_PLAYER] Playback finished. Awaiting Movie Maker completion. presentation_frames=%d total_frames=%d" % [_presentation_frame_index, _presentation_total_frames])
 		return
-		
+
 	var frame: Dictionary = _runtime.next_frame()
 	if frame.is_empty():
 		return
-		
-	var render_model: Dictionary = _binder.bind_frame(frame, presentation_profile, "GAME")
-	render_model["editorial_frame_index"] = _current_frame_index
+
+	_apply_render_model_to_view(frame, "GAME", _current_frame_index)
+	_current_frame_index += 1
+	_presentation_frame_index += 1
+
+func _apply_render_model_to_view(frame: Dictionary, ui_state: String, frame_index: int) -> void:
+	var render_model: Dictionary = {}
+	if _binder != null and _binder.has_method("bind_frame"):
+		if _stream != null and _stream.kind == "visual_drill":
+			render_model = _binder.bind_frame(frame, presentation_profile, ui_state, frame_index, _stream.fps)
+		else:
+			render_model = _binder.bind_frame(frame, presentation_profile, ui_state)
+	render_model["editorial_frame_index"] = _current_frame_index if ui_state == "GAME" else 0
 	render_model["editorial_frame_count"] = _total_frames
 	render_model["editorial_seed"] = int(_definition_context.get("seed", 314159))
+	render_model["presentation_frame_index"] = frame_index
+	render_model["presentation_total_frames"] = _presentation_total_frames
 	if qa_mode:
 		render_model["show_hook"] = true
 		render_model["hook_text"] = qa_header_text
@@ -157,9 +199,7 @@ func _process(_delta: float) -> void:
 		domain_state = render_model.get("visual_frame_state", {})
 	elif _stream.kind == "visual_drill":
 		domain_state = render_model.get("visual_drill_frame_state", {})
-		
 	_renderer_host.forward_state(domain_state)
-	_current_frame_index += 1
 
 func _configure_qa_overlay(definition: Dictionary) -> void:
 	qa_mode = false

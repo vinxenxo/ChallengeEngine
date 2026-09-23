@@ -2,7 +2,7 @@
 class_name TrackingGenerator
 extends VisualDrillGenerator
 
-## C11-C.6 / Tracking mechanic baseline v1.0.
+## C11-C.6 / Tracking mechanic baseline v1.1 / C11-C 2.4.0.
 ## Generates deterministic, frame-addressable smooth-pursuit state.
 ## The mechanic owns trajectory math; the presentation layer only renders the emitted state.
 
@@ -12,11 +12,12 @@ const DEFAULT_AMPLITUDE_X: float = 160.0
 const DEFAULT_AMPLITUDE_Y: float = 210.0
 const DEFAULT_FREQUENCY_X: float = 2.0
 const DEFAULT_FREQUENCY_Y: float = 3.0
-const DEFAULT_TRAVEL_CYCLES: float = 0.25
+const DEFAULT_TRAVEL_CYCLES: float = 0.75
 const DEFAULT_PHASE_X: float = 0.25
 const DEFAULT_PHASE_Y: float = -0.65
 const DEFAULT_TARGET_RADIUS: float = 12.0
-const DEFAULT_TRAIL_LENGTH_FRAMES: int = 18
+const DEFAULT_TRAIL_LENGTH_FRAMES: int = 510
+const DEFAULT_TRAIL_MODE: String = "growing_history"
 const MIN_EDGE_CLEARANCE: float = 36.0
 
 func generate(frame_index: int, total_frames: int, drill_parameters: Dictionary) -> Dictionary:
@@ -75,6 +76,7 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
 			"speed_px_per_second": velocity.length(),
 			"phase": phase,
 			"phase_progress": paced_progress,
+			"travel_cycles": float(trajectory.get("travel_cycles", DEFAULT_TRAVEL_CYCLES)),
 			"x_frequency": float(trajectory.get("x_frequency", DEFAULT_FREQUENCY_X)),
 			"y_frequency": float(trajectory.get("y_frequency", DEFAULT_FREQUENCY_Y)),
 			"amplitude_x": float(trajectory.get("amplitude_x", DEFAULT_AMPLITUDE_X)),
@@ -82,6 +84,7 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
 			"center_x": float(trajectory.get("center_x", DEFAULT_CENTER.x)),
 			"center_y": float(trajectory.get("center_y", DEFAULT_CENTER.y)),
 			"trail_points": trail_points,
+			"trail_behavior": str(trajectory.get("trail_mode", DEFAULT_TRAIL_MODE)),
 			"bounds": {
 				"left": float(trajectory.get("center_x", DEFAULT_CENTER.x)) - float(trajectory.get("amplitude_x", DEFAULT_AMPLITUDE_X)),
 				"right": float(trajectory.get("center_x", DEFAULT_CENTER.x)) + float(trajectory.get("amplitude_x", DEFAULT_AMPLITUDE_X)),
@@ -117,7 +120,10 @@ func _resolve_trajectory(raw_trajectory: Variant) -> Dictionary:
 	var frequency_y := clampf(absf(float(raw.get("y_frequency", DEFAULT_FREQUENCY_Y))), 1.0, 4.0)
 	var travel_cycles := clampf(absf(float(raw.get("travel_cycles", DEFAULT_TRAVEL_CYCLES))), 0.1, 2.0)
 	var target_radius := clampf(absf(float(raw.get("target_radius", DEFAULT_TARGET_RADIUS))), 8.0, 16.0)
-	var trail_length := clampi(int(raw.get("trail_length_frames", DEFAULT_TRAIL_LENGTH_FRAMES)), 0, 24)
+	var trail_length := clampi(int(raw.get("trail_length_frames", DEFAULT_TRAIL_LENGTH_FRAMES)), 0, 600)
+	var trail_mode := str(raw.get("trail_mode", DEFAULT_TRAIL_MODE))
+	if trail_mode not in ["growing_history", "history_window"]:
+		trail_mode = DEFAULT_TRAIL_MODE
 	var phase_x := float(raw.get("phase_x", DEFAULT_PHASE_X))
 	var phase_y := float(raw.get("phase_y", DEFAULT_PHASE_Y))
 	var trajectory_type := str(raw.get("type", "lissajous"))
@@ -137,7 +143,8 @@ func _resolve_trajectory(raw_trajectory: Variant) -> Dictionary:
 		"phase_x": phase_x,
 		"phase_y": phase_y,
 		"target_radius": target_radius,
-		"trail_length_frames": trail_length
+		"trail_length_frames": trail_length,
+		"trail_mode": trail_mode
 	}
 
 func _resolve_progress(frame_index: int, total_frames: int) -> float:
@@ -204,8 +211,9 @@ func _build_history_trail(
 	trajectory: Dictionary
 ) -> Array:
 	var trail: Array = []
-	var trail_length := int(trajectory.get("trail_length_frames", DEFAULT_TRAIL_LENGTH_FRAMES))
-	var first_frame := maxi(0, frame_index - trail_length)
+	var trail_length: int = int(trajectory.get("trail_length_frames", DEFAULT_TRAIL_LENGTH_FRAMES))
+	var trail_mode: String = str(trajectory.get("trail_mode", DEFAULT_TRAIL_MODE))
+	var first_frame: int = 0 if trail_mode == "growing_history" else maxi(0, frame_index - trail_length)
 	for sample_frame in range(first_frame, frame_index + 1):
 		var sample_progress := _resolve_progress(sample_frame, total_frames)
 		var sample_paced := _resolve_paced_progress(sample_progress, pacing_mode)

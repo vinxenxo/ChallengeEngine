@@ -1,0 +1,22 @@
+C11-C 2.4.0 — VISUAL DRILL COUNTDOWN + TRACKING OVERLAY
+
+APPLY OVER: C11-C 2.3.2 + existing 2.3.x Tracking state.
+
+COMMON VISUAL DRILLS
+- Reuses the existing Challenge CountdownComponent.
+- Shared CountdownPresentationLogic: 3 / 2 / 1 over 90 frames at 30 FPS.
+- Gameplay remains a 510-frame logical stream; countdown is presentation-only pre-roll.
+- Total physical Visual Drill delivery: 600 frames / 20 seconds.
+- Header instruction appears only during the 3-second pre-roll; Matrix resumes at gameplay.
+
+TRACKING
+- 17-second gameplay / 510 frames.
+- Bounded 2:3 Lissajous smooth pursuit.
+- Growing history trail from gameplay frame 0.
+- Full 540px logical Body width.
+- Presentation-only Tron depth background and mobile-safe high-contrast palettes.
+
+BOUNDARIES
+- No C11-B simulation or frozen geometry changes.
+- No C7/C9 contract changes.
+- Generic C10-A authoring duration contract remains unchanged.
