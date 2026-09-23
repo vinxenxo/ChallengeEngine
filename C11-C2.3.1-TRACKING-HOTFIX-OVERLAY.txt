@@ -1,0 +1,12 @@
+C11-C 2.3.1 — TRACKING MECHANIC HOTFIX OVERLAY
+
+Apply over the already-installed C11-C 2.3.0 state.
+
+Fixes:
+- Explicit static types in core/presentation/rendering/TrackingRenderer.gd for Godot 4.7.1 (rx/ry and loop values).
+- Explicit Dictionary type for trail_last in tests/C11CTrackingMechanicContractTest.gd.
+- Restores successful loading of VisualDrillRenderer by fixing its preloaded TrackingRenderer dependency compilation.
+- Slows the Tracking canonical baseline from travel_cycles=0.50 to 0.25 while preserving the same Lissajous 2:3 shape.
+- Adds a conservative <=600 px/s assertion for the canonical tier-2 baseline.
+
+No changes to simulation, SimulationResult, winning_frame, close_calls, RNG ownership, C7/C9 contracts or C11-B logical geometry.

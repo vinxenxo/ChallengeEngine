@@ -61,6 +61,7 @@ func _test_target_motion(generator: TrackingGeneratorClass, params: Dictionary) 
 		var state := generator.generate(frame, 60, params)
 		var speed := float(state.get("trajectory_state", {}).get("speed_px_per_second", 0.0))
 		_assert(speed >= 0.0 and is_finite(speed), "Tracking emitted an invalid speed value.")
+		_assert(speed <= 600.0, "Tracking baseline speed is too high for the intended smooth-pursuit presentation.")
 		if previous_speed >= 0.0:
 			_assert(abs(speed - previous_speed) < 450.0, "Tracking speed changes too abruptly between frames.")
 		previous_speed = speed
@@ -86,7 +87,7 @@ func _test_history_only_trail(generator: TrackingGeneratorClass, params: Diction
 	_assert(trail.size() > 1, "Tracking trail must include history once movement has started.")
 	var current: Dictionary = state.get("target_states", [])[0]
 	var current_p := Vector2(float(current.get("x", 0.0)), float(current.get("y", 0.0)))
-	var trail_last := trail[trail.size() - 1]
+	var trail_last: Dictionary = trail[trail.size() - 1]
 	var last_p := Vector2(float(trail_last.get("x", 0.0)), float(trail_last.get("y", 0.0)))
 	_assert(current_p.distance_to(last_p) < 0.01, "Trail last point must equal current target position.")
 

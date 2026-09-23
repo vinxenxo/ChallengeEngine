@@ -46,9 +46,10 @@ func _draw() -> void:
 	# operating zone without exposing the future trajectory.
 	var field_outer := Vector2(amplitude_x + 22.0, amplitude_y + 22.0)
 	draw_arc(center, minf(field_outer.x, field_outer.y), 0.0, TAU, 96, Color(FIELD_COLOR.r, FIELD_COLOR.g, FIELD_COLOR.b, 0.12), 1.0, true)
-	for axis_scale in [0.72, 0.48]:
-		var rx := amplitude_x * axis_scale
-		var ry := amplitude_y * axis_scale
+	var ellipse_scales: Array[float] = [0.72, 0.48]
+	for axis_scale: float in ellipse_scales:
+		var rx: float = amplitude_x * axis_scale
+		var ry: float = amplitude_y * axis_scale
 		_draw_ellipse(center, rx, ry, Color(FIELD_COLOR.r, FIELD_COLOR.g, FIELD_COLOR.b, 0.055), 1.0)
 
 	var trail: Array = trajectory.get("trail_points", [])
@@ -74,7 +75,8 @@ func _draw() -> void:
 
 	var tick_inner := radius * 1.7
 	var tick_outer := radius * 2.25
-	for angle in [0.0, PI * 0.5, PI, PI * 1.5]:
+	var tick_angles: Array[float] = [0.0, PI * 0.5, PI, PI * 1.5]
+	for angle: float in tick_angles:
 		var direction := Vector2(cos(angle), sin(angle))
 		draw_line(target_position + direction * tick_inner, target_position + direction * tick_outer, TARGET_COLOR, 1.6, true)
 
