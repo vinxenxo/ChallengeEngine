@@ -1,0 +1,5 @@
+C11-C 2.2.2 — PRESENTATION HOTFIX OVERLAY
+
+Apply over the already-installed C11-C 2.2.1 state.
+Primary artifact: 2.2.2 fixes review seed envelope generation, increases header typography safely, and makes Living Particles Tron road truly visible beneath transparent particles.
+No simulation/mechanic/RNG/C7/C9/C11-B semantic changes.

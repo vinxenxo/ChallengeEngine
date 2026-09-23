@@ -1,6 +1,6 @@
 {
     "schema":  "C11-C-VISUAL-DRILL-REVIEW-V1",
-    "revision":  "1.0",
+    "revision":  "2.2.2",
     "family":  "tracking",
     "seed":  54321,
     "route":  "visual_drill/tracking",
@@ -8,11 +8,11 @@
     "fps":  30,
     "duration_seconds":  2,
     "frame_count":  60,
-    "matrix_enabled":  false,
+    "matrix_enabled":  true,
     "editorial_layout":  "shared_c11c_social",
     "audio_mode":  "GLOBAL_AMBIENT_MASTER",
     "audio_master_sha256":  "1a5ea80af654a506f2efc07a3e83351bf5ee391cdae7cfd4ff6c6162f078e02e",
-    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11a_visual\\runs\\visual_drill_tracking_seed_54321\\envelope.json",
+    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\_envelopes\\visual_drill_tracking_seed_54321\\envelope.json",
     "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\tracking\\seed_54321\\VisualDrill_tracking_seed_54321.mp4",
     "gif":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\tracking\\seed_54321\\VisualDrill_tracking_seed_54321_review.gif",
     "contact_sheet":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_visual_drills_review\\tracking\\seed_54321\\contact_sheet.jpg",
@@ -33,7 +33,7 @@
                     "audio_streams":  1
                 },
     "hashes":  {
-                   "mp4_sha256":  "1ad69df6aae1fb6f51bd7b01c5ea07b6761e35f2edc9d7293d2f6b5ca7c74c61",
-                   "envelope_sha256":  "510f02ac7c937d389585a137d6f3a377df5ac866192f87fd93161da3a15c1fe3"
+                   "mp4_sha256":  "2e0c4b6d2b0e40539becb7aa7e66bb1a9ca206502b01f69c36c27bec1548c334",
+                   "envelope_sha256":  "42ade1b57c24892dc3076699ddc2b8b994714b28f5490e120123ac6c4e87f159"
                }
 }

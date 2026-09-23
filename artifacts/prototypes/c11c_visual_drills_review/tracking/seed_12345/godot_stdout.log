@@ -3,12 +3,12 @@ OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - I
 
 Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
 [VISUAL_CONTENT_PLAYER] Initializing playback host...
-[VISUAL_CONTENT_PLAYER] Loaded definition from path: artifacts/qa/c11a_visual/runs/visual_drill_tracking_seed_12345_A/envelope.json
+[VISUAL_CONTENT_PLAYER] Loaded definition from path: artifacts/prototypes/c11c_visual_drills_review/_envelopes/visual_drill_tracking_seed_12345/envelope.json
 [VISUAL_CONTENT_PLAYER] Ready [visual_drill/tracking]. Starting playback for 60 frames.
 --------------------------------------------------------------------------------
 Done recording movie at path: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_visual_drills_review\tracking\seed_12345\VisualDrill_tracking_seed_12345.avi
 60 frames at 30 FPS (movie length: 00:00:02:00), recorded in 00:00:04 (50% of real-time speed).
-CPU render time: 0.04 seconds (average: 0.62 ms/frame)
-GPU render time: 0.01 seconds (average: 0.23 ms/frame)
-Encoding time: 0.60 seconds (average: 9.98 ms/frame)
+CPU render time: 0.03 seconds (average: 0.54 ms/frame)
+GPU render time: 0.01 seconds (average: 0.21 ms/frame)
+Encoding time: 0.60 seconds (average: 9.97 ms/frame)
 --------------------------------------------------------------------------------

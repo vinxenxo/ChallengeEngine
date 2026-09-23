@@ -121,46 +121,12 @@ float soft_blob(vec2 p, vec2 center, float size, float anisotropy, float angle) 
     return exp(-pow(d / max(size, 0.0001), 2.15));
 }
 
-float perspective_grid(vec2 p) {
-    // Faint Tron-like floor: all depth lines converge toward one horizon.
-    // The grid remains subordinate to the particle field and never alters the target ecology.
-    float horizon = -0.16;
-    float floor_mask = smoothstep(horizon, horizon + 0.018, p.y);
-    float depth = max(p.y - horizon, 0.024);
-
-    float lateral = p.x / depth;
-    float vertical_phase = 0.035 * sin(phase * 0.55 + seed_phase);
-    lateral += vertical_phase;
-    float vertical_cells = 5.0;
-    float vertical_d = abs(fract(lateral * vertical_cells + 0.5) - 0.5);
-    float vertical = 1.0 - smoothstep(0.012, 0.022, vertical_d);
-
-    float depth_cells = 0.18 / depth;
-    float horizontal_d = abs(fract(depth_cells + 0.5) - 0.5);
-    float horizontal = 1.0 - smoothstep(0.025, 0.070, horizontal_d);
-
-    float horizon_line = 1.0 - smoothstep(0.003, 0.012, abs(p.y - horizon));
-    float fade = 1.0 - smoothstep(0.10, 0.56, depth);
-    float edge_fade = smoothstep(0.05, 0.38, abs(p.x));
-
-    float grid = vertical * 0.55 + horizontal * 0.72;
-    grid *= floor_mask * (0.58 + 0.42 * (1.0 - edge_fade));
-    grid += horizon_line * 0.44;
-    return clamp(grid, 0.0, 1.0);
-}
-
 void fragment() {
     vec2 p = UV - vec2(0.5);
     p.x *= BODY_ASPECT;
     float r = length(p);
 
-    vec3 rgb = background_color.rgb;
-
-    float grid = perspective_grid(p);
-    vec3 grid_base = mix(deep_color.rgb, mid_color.rgb, 0.78);
-    rgb += grid_base * grid * 0.105;
-    rgb += bright_color.rgb * grid * 0.010;
-
+    vec3 rgb = vec3(0.0);
     float density = 0.0;
     float hero = 0.0;
     float active_collision = 0.0;
@@ -217,5 +183,9 @@ void fragment() {
     float vignette = smoothstep(0.67, 0.10, r);
     rgb *= 0.92 + 0.08 * vignette;
 
-    COLOR = vec4(clamp(rgb, 0.0, 1.0), 1.0);
+    // The procedural particle layer is composited over the separate Body background
+    // and Tron road, so the road remains visible beneath the particles.
+    float particle_alpha = clamp(density * 1.65 + hero * 0.38, 0.0, 1.0);
+    vec3 particle_rgb = clamp(rgb / max(particle_alpha, 0.0001), 0.0, 1.0);
+    COLOR = vec4(particle_rgb, particle_alpha);
 }

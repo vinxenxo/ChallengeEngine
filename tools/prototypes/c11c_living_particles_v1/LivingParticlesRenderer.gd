@@ -1,6 +1,6 @@
 extends Node2D
 
-## C11-C.4 v2.2.1 — Living Particles visual grammar renderer.
+## C11-C.4 v2.2.2 — Living Particles visual grammar renderer.
 ## Presentation-only. No simulation state, RNG stream or production runtime access.
 
 const WIDTH := 540.0
@@ -10,14 +10,24 @@ const BODY_RECT := Rect2(0.0, BODY_TOP, WIDTH, BODY_HEIGHT)
 const SHADER = preload("res://tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader")
 const TronRoadClass = preload("res://tools/prototypes/c11c_living_particles_v1/LivingParticlesTronRoad.gd")
 
+var _background: ColorRect
 var _rect: ColorRect
 var _material: ShaderMaterial
 var _road: Node2D
 
 func _ready() -> void:
+    _background = ColorRect.new()
+    _background.name = "LivingParticlesBackground"
+    _background.position = BODY_RECT.position
+    _background.size = BODY_RECT.size
+    _background.color = Color.BLACK
+    _background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    _background.z_index = -30
+    add_child(_background)
+
     _road = TronRoadClass.new()
     _road.name = "LivingParticlesTronRoad"
-    _road.z_index = -10
+    _road.z_index = -20
     add_child(_road)
 
     _rect = ColorRect.new()
@@ -28,10 +38,12 @@ func _ready() -> void:
     _material = ShaderMaterial.new()
     _material.shader = SHADER
     _rect.material = _material
-    _rect.z_index = 1
+    _rect.z_index = 0
     add_child(_rect)
 
 func set_background(background: Color) -> void:
+    if _background != null:
+        _background.color = background
     _material.set_shader_parameter("background_color", background)
 
 func set_palette(deep: Color, mid: Color, bright: Color, highlight: Color) -> void:

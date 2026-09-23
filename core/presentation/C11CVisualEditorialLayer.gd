@@ -2,7 +2,7 @@
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.2.1 — Shared visual-content social/editorial presentation layer.
+## C11-C 2.2.2 — Shared visual-content social/editorial presentation layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
 
@@ -13,9 +13,9 @@ const HEADER_HEIGHT := 144.0
 const FOOTER_HEIGHT := 144.0
 const CONTENT_WIDTH := 468.0
 const CONTENT_X := 36.0
-const HEADER_MAX_WIDTH := 486.0
-const HEADER_FONT_SIZE := 21
-const HEADER_MIN_FONT_SIZE := 14
+const HEADER_MAX_WIDTH := CONTENT_WIDTH
+const HEADER_FONT_SIZE := 23
+const HEADER_MIN_FONT_SIZE := 15
 const HEADER_SECOND_Y := 74.0
 const HEADER_SECOND_HEIGHT := 64.0
 const HEADER_BOLD_EMBOLDEN := 0.70
@@ -234,7 +234,13 @@ func _fit_label(label: Label, text_value: String, max_font_size: int, min_font_s
     if font == null:
         return
     var fitted: int = max_font_size
-    while fitted > min_font_size and font.get_string_size(text_value, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x > max_width:
+    var lines := text_value.split("\n", true)
+    while fitted > min_font_size:
+        var widest: float = 0.0
+        for line in lines:
+            widest = maxf(widest, font.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x)
+        if widest <= max_width:
+            break
         fitted -= 1
     label.add_theme_font_size_override("font_size", fitted)
 

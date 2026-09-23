@@ -1,6 +1,6 @@
 extends Node2D
 
-## C11-C editorial/audio/loop presentation prototype v2.2.1.
+## C11-C editorial/audio/loop presentation prototype v2.2.2.
 ## R4: shared two-line Matrix intro/midpoint swap + family-synced ambient audio.
 ## Family: LIVING PARTICLES
 ## Presentation-only: no core, simulation, SimulationResult, engine RNG or C7 changes.
@@ -76,7 +76,7 @@ func _build_scene() -> void:
 func _mount_editorial(frame: UnifiedSocialFrame) -> void:
     _editorial_layer = C11CVisualEditorialLayerClass.new()
     if _editorial_layer == null or not _editorial_layer.mount(frame):
-        push_error("[C11-C 2.2.1] Shared editorial layer could not be mounted for c11c_living_particles_v1.")
+        push_error("[C11-C 2.2.2] Shared editorial layer could not be mounted for c11c_living_particles_v1.")
         _editorial_layer = null
         return
 
@@ -87,7 +87,7 @@ func _mount_editorial(frame: UnifiedSocialFrame) -> void:
     var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("living_particles", _seed, _variation).to_upper()
     var footer_line2: String = "SEED %d | BODY 720X896 | T=18.00S | PARTICLES %d | FLOW %.2f" % [_seed, int(round(float(_variation["particle_count"]))), float(_variation["swirl_bias"])]
     var footer_line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
-    var footer_line_3: String = "SYNTHETIC MATTER / v2.2.1"
+    var footer_line_3: String = "SYNTHETIC MATTER / v2.2.2"
 
     _editorial_model = {
         "editorial": {
@@ -185,7 +185,7 @@ func _write_authoring_snapshot() -> void:
         "sound_enabled": sound_enabled,
         "background": "000000",
         "footer_enabled": _show_footer,
-        "editorial_revision": "2.2.1",
+        "editorial_revision": "2.2.2",
         "loop_closed": true
     }
     var file := FileAccess.open(absolute_path, FileAccess.WRITE)

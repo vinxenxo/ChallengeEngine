@@ -3,6 +3,7 @@ param(
     [int[]]$Seeds = @(12345,54321,314159,7770001,998877),
     [switch]$ResetReviewAssets,
     [switch]$RegenerateEnvelopes,
+    [switch]$Smoke,
     [switch]$NoSound,
     [Alias("Silent")]
     [switch]$SilentMode
@@ -11,9 +12,9 @@ $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 
 $ProjectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
-$QaRoot=Join-Path $ProjectRoot 'artifacts\qa\c11a_visual\runs'
 $ReviewRoot=Join-Path $ProjectRoot 'artifacts\prototypes\c11c_visual_drills_review'
 $AudioRoot=Join-Path $ReviewRoot '_audio'
+$EnvelopeRoot=Join-Path $ReviewRoot '_envelopes'
 $MovieCapture=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CMovieCapture.ps1'
 $AudioGenerator=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\generate_c11c_ambient_audio.py'
 $Seeds=@($Seeds | ForEach-Object {[int]$_})
@@ -21,8 +22,12 @@ $NoSound = $NoSound -or $SilentMode
 $SharedAudioHash = $null
 $Drills=@('tracking','saccade','pursuit','peripheral_scan')
 
-if($Seeds.Count -ne 5){throw 'Visual Drill review expects exactly five unique seeds.'}
-if(@($Seeds | Sort-Object -Unique).Count -ne 5){throw 'Visual Drill review seeds must be unique.'}
+if($Smoke){
+    if($Seeds.Count -ne 1){throw 'Visual Drill smoke expects exactly one seed.'}
+} elseif($Seeds.Count -ne 5){
+    throw 'Visual Drill review expects exactly five unique seeds; use -Smoke for a one-seed smoke render.'
+}
+if(@($Seeds | Sort-Object -Unique).Count -ne $Seeds.Count){throw 'Visual Drill review seeds must be unique.'}
 foreach($seed in $Seeds){if($seed -lt 1 -or $seed -gt 2147483646){throw "Seed out of range: $seed"}}
 
 . $MovieCapture
@@ -177,7 +182,7 @@ FPS: 30
 DURATION: $([math]::Round($Duration,2)) s
 FRAMES: $Frames
 AUDIO: $AudioMode
-MATRIX HEADER TRANSITION: OFF
+MATRIX HEADER TRANSITION: ON
 SHARED SOCIAL/EDITORIAL LAYOUT: ON
 
 HASHTAGS:
@@ -190,36 +195,46 @@ C11-A qualification envelope; seed 12345 uses the deterministic A copy when pres
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.2.0'
-Write-Host '[C11-C-DRILL] 4 families x 5 seeds = 20 physical renders'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.2.2'
+Write-Host ("[C11-C-DRILL] 4 families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
 Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / current envelope duration'
-Write-Host '[C11-C-DRILL] Shared editorial layout / Matrix OFF / audio ON'
+Write-Host ("[C11-C-DRILL] Shared editorial layout / Matrix ON / audio ON")
 Write-Host '============================================================'
 
 if($ResetReviewAssets -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
-New-Item -ItemType Directory -Force -Path $ReviewRoot,$AudioRoot | Out-Null
+New-Item -ItemType Directory -Force -Path $ReviewRoot,$AudioRoot,$EnvelopeRoot | Out-Null
 
 $requiredRuns=@()
 foreach($family in $Drills){foreach($seed in $Seeds){$requiredRuns += [pscustomobject]@{Family=$family;Seed=$seed;RunId="visual_drill_${family}_seed_${seed}"}}}
 
 function Resolve-SourceEnvelopePath {
     param([Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed)
-    $baseRun = Join-Path $QaRoot ("visual_drill_${Family}_seed_${Seed}")
+    $baseRun = Join-Path $EnvelopeRoot ("visual_drill_${Family}_seed_${Seed}")
     $baseEnvelope = Join-Path $baseRun 'envelope.json'
     if(Test-Path -LiteralPath $baseEnvelope){ return $baseEnvelope }
-    if($Seed -eq 12345){
-        $aRun = Join-Path $QaRoot ("visual_drill_${Family}_seed_12345_A")
-        $aEnvelope = Join-Path $aRun 'envelope.json'
-        if(Test-Path -LiteralPath $aEnvelope){ return $aEnvelope }
-    }
     return $null
+}
+
+function Ensure-RequestedEnvelopes {
+    $requestedSeeds = ($Seeds -join ',')
+    $env:C11C_DRILL_REVIEW_SEEDS = $requestedSeeds
+    $env:C11C_DRILL_REVIEW_ENVELOPE_ROOT = $EnvelopeRoot
+    try {
+        Invoke-Checked 'godot' @('--headless','--path','.','-s','./tools/prototypes/c11c_bulk/C11CVisualDrillReviewEnvelopeGenerator.gd') 'Generate requested Visual Drill review envelopes'
+    } finally {
+        Remove-Item Env:C11C_DRILL_REVIEW_SEEDS -ErrorAction SilentlyContinue
+        Remove-Item Env:C11C_DRILL_REVIEW_ENVELOPE_ROOT -ErrorAction SilentlyContinue
+    }
 }
 
 $missing=@($requiredRuns | Where-Object { $null -eq (Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed) })
 if($RegenerateEnvelopes -or $missing.Count -gt 0){
-    Write-Host '[C11-C-DRILL] Existing C11-A envelopes incomplete; regenerating the legacy qualification matrix.'
-    Invoke-Checked 'godot' @('--headless','--path','.','-s','./tests/C11ABulkEnvelopeGenerator.gd') 'Generate C11-A envelopes'
+    Write-Host '[C11-C-DRILL] Generate request-specific Visual Drill envelopes'
+    Ensure-RequestedEnvelopes
 }
+
+$missingAfter=@($requiredRuns | Where-Object { $null -eq (Resolve-SourceEnvelopePath -Family $_.Family -Seed $_.Seed) })
+if($missingAfter.Count -gt 0){throw "Requested Visual Drill envelopes still missing: $($missingAfter.RunId -join ', ')"}
 
 $overrideState=$null
 $catalog=@()
@@ -275,7 +290,7 @@ try {
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='1.0'
+                revision='2.2.2'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -283,7 +298,7 @@ try {
                 fps=$fps
                 duration_seconds=$duration
                 frame_count=$frames
-                matrix_enabled=$false
+                matrix_enabled=$true
                 editorial_layout='shared_c11c_social'
                 audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
                 audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
@@ -307,7 +322,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='1.0'
+    revision='2.2.2'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
@@ -316,10 +331,10 @@ $rootManifest=[ordered]@{
     families=@($Drills)
     delivery='720x1280 / 9:16 / 30 FPS'
     logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
-    matrix_enabled=$false
+    matrix_enabled=$true
     audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
     audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
-    source_qa_root=$QaRoot
+    source_envelope_root=$EnvelopeRoot
     review_root=$ReviewRoot
     cleanup_performed=$false
     results=$catalog

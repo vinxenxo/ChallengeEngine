@@ -1,6 +1,6 @@
 # C11-C Visual Drill Social Presentation Contract v1.3
 
-**Release:** C11-C 2.2.1 — COMMON PRESENTATION OVERLAY
+**Release:** C11-C 2.2.2 — COMMON PRESENTATION OVERLAY
 
 ## Common presentation
 

@@ -7,7 +7,10 @@ $required=@(
  'core\presentation\PresentationUI.gd',
  'core\presentation\rendering\VisualContentPlayer.gd',
  'tests\C11CVisualDrillSocialPresentationContractTest.gd',
- 'tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1'
+ 'tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1',
+ 'tools\prototypes\c11c_bulk\C11CVisualDrillReviewEnvelopeGenerator.gd',
+ 'tools\prototypes\c11c_living_particles_v1\LivingParticlesTronRoad.gd',
+ 'tests\run_all.py'
 )
 $missing=@($required | Where-Object { -not (Test-Path -LiteralPath (Join-Path $ProjectRoot $_)) })
 if($missing.Count -gt 0){ throw ('Missing C11-C Visual Drill presentation overlay files: ' + ($missing -join ', ')) }
