@@ -2,7 +2,7 @@
 class_name VisualDrillPresentationBinder
 extends RefCounted
 
-## C11-C 2.8.0 / C6-F0.5 — Visual Drill Presentation Binder.
+## C11-C 2.9.0 / C6-F0.5 — Visual Drill Presentation Binder.
 ## Produces the shared C11-C social/editorial model plus domain-specific drill state.
 ## Does not alter simulation, RNG, timeline or winning-frame truth.
 

@@ -6,6 +6,8 @@ const ShaderSource = "res://core/presentation/rendering/shaders/pursuit_dof.gdsh
 
 var failures: Array[String] = []
 
+const EnvironmentSource = "res://core/presentation/rendering/C11CDrillEnvironment.gd"
+
 func _initialize() -> void:
     _check_source_contracts()
     _conclude()
@@ -21,6 +23,8 @@ func _check_source_contracts() -> void:
     _assert(shader.find("screen_texture") >= 0, "Pursuit radial DOF must use a screen-texture filter.")
     _assert(renderer.find("_hash01") >= 0, "Pursuit background must be deterministic from the seed.")
     _assert(target.find("sizygia_active") >= 0, "Target layer must react to authored sizygia state.")
+
+    _assert(FileAccess.file_exists(EnvironmentSource), "Shared C11-C drill environment must be present.")
 
 func _assert(condition: bool, message: String) -> void:
     if not condition:

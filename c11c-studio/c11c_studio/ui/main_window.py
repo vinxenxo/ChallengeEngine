@@ -30,7 +30,7 @@ from .pages.reproduction import ReproductionPage
 from .pages.about import AboutPage
 
 class MainWindow(QMainWindow):
- def __init__(self,ctx,cfg,app_version="0.4.0"):
+ def __init__(self,ctx,cfg,app_version="0.5.1"):
   super().__init__();self.ctx=ctx;self.cfg=cfg;self.app_version=app_version;self.tools=discover_all(ctx.project_root,cfg.get("tool_paths",{}));ctx.powershell_path=self.tools["powershell"].path;ctx.python_path=self.tools["python"].path;ctx.ffmpeg_path=self.tools["ffmpeg"].path;ctx.ffprobe_path=self.tools["ffprobe"].path;ctx.godot_path=self.tools["godot"].path;ctx.godot_version=self.tools["godot"].version
   self.introspector=BackendIntrospector(ctx);catalog=self.introspector.scan();self.families=FamilyRegistry(ctx,self.introspector).load();self.commands=CommandBuilder(ctx,catalog);self.seeds=SeedManager(ctx.paths.gui_workspace/"seeds");self.job_manager=JobManager(ctx.paths.gui_logs);self.registry=ArtifactRegistry(ctx);self.products_catalog=ProductCatalog(ctx);self.snapshots=SnapshotService(ctx.paths.gui_snapshots);self._batch_queue=[];self._batch_total=0;self._batch_current=0;self._batch_id=None;self._active_batch_id=None
   self._build();self._wire();self._refresh_counts();self.timer=QTimer(self);self.timer.timeout.connect(self._refresh_counts);self.timer.start(15000)
@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
   return "Environment health\n"+"\n".join(parts)
  def _nav(self):
   r=QFrame();r.setObjectName("NavRail");r.setFixedWidth(226);v=QVBoxLayout(r);v.setContentsMargins(10,14,10,12);v.setSpacing(3);self.nav=[]
-  groups=[("PRODUCCIÓN",[("Generar",0),("Resultados",1),("Jobs",2),("Logs",3),("Reproducir",4)]),("CONFIGURACIÓN",[("Dirección de arte",5),("Familias",6),("Seeds",7),("Artifacts",8),("Validación",9),("Ajustes",10),("Juegos / Drills",11),("Diagnóstico",12)])]
+  groups=[("PRODUCCIÓN",[("Generar",0),("Resultados",1),("Actividad",2),("Logs",3),("Reproducir",4)]),("CONFIGURACIÓN",[("Dirección de arte",5),("Familias",6),("Seeds",7),("Artifacts",8),("Validación",9),("Ajustes",10),("Juegos / Drills",11),("Diagnóstico",12)])]
   for heading,items in groups:
    cap=QLabel(heading);cap.setObjectName("NavSection");v.addWidget(cap)
    for label,i in items:

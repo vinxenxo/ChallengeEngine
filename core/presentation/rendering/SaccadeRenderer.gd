@@ -1,7 +1,7 @@
 # res://core/presentation/rendering/SaccadeRenderer.gd
 extends Node2D
 
-## C11-C 2.7.0 — Saccade presentation.
+## C11-C 2.9.0 — Saccade presentation.
 ## Random/polar jump baseline: no decorative background, no spatial interpolation.
 ## The mechanic owns position, phase and jump_index; this layer only expresses them.
 
@@ -10,6 +10,8 @@ const CENTER_X: float = 270.0
 const CENTER_Y: float = 480.0
 const TARGET_RADIUS: float = 12.0
 const DrillPaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
+const C11CVisualTypographyClass = preload("res://core/presentation/C11CVisualTypography.gd")
+const C11CDrillEnvironmentClass = preload("res://core/presentation/rendering/C11CDrillEnvironment.gd")
 
 var _frame_state: Dictionary = {}
 var _palette_index: int = -1
@@ -19,6 +21,7 @@ var _secondary_color: Color = Color("FF3EBA")
 var _target_color: Color = Color("FFFFFF")
 var _counter_color: Color = Color("06111A")
 var _counter_label: Label = null
+var _environment: Node2D = null
 
 func _ready() -> void:
     _counter_label = Label.new()
@@ -29,14 +32,21 @@ func _ready() -> void:
     _counter_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     _counter_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     _counter_label.add_theme_font_size_override("font_size", 10)
+    C11CVisualTypographyClass.apply_to_label(_counter_label)
     _counter_label.add_theme_constant_override("outline_size", 1)
     _counter_label.z_index = 120
     add_child(_counter_label)
+
+    _environment = C11CDrillEnvironmentClass.new()
+    _environment.name = "SaccadeEnvironment"
+    _environment.z_index = -20
+    add_child(_environment)
 
 func apply_state(model: Dictionary) -> void:
     _frame_state = model.duplicate(true)
     _apply_palette()
     _update_counter()
+    _update_environment()
     queue_redraw()
 
 func _apply_palette() -> void:
@@ -44,7 +54,7 @@ func _apply_palette() -> void:
     var params: Dictionary = drill_state.get("parameters", {})
     var variant: float = clampf(float(params.get("saccade_variant", 0.0)), 0.0, 0.999999)
     var palette := DrillPaletteBankClass.saccade(variant)
-    var index: int = int(floor(variant * 12.0))
+    var index: int = int(floor(variant * float(DrillPaletteBankClass.count_for("saccade"))))
     if index == _palette_index:
         return
     _palette_index = index
@@ -85,11 +95,20 @@ func _update_counter() -> void:
     _counter_label.add_theme_color_override("font_outline_color", Color(_secondary_color.r, _secondary_color.g, _secondary_color.b, 0.42))
     _counter_label.visible = opacity > 0.001 and scale_value > 0.001
 
+func _update_environment() -> void:
+    if _environment == null:
+        return
+    var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
+    var target_states: Array = drill_state.get("target_states", [])
+    var target_position := Vector2(CENTER_X, CENTER_Y)
+    if target_states.size() == 1:
+        var target: Dictionary = target_states[0]
+        target_position = Vector2(float(target.get("x", CENTER_X)), float(target.get("y", CENTER_Y)))
+    _environment.configure("saccade", int(_frame_state.get("editorial_seed", 314159)), int(_frame_state.get("presentation_frame_index", 0)), _background_color, _accent_color, _secondary_color, _target_color, target_position)
+
 func _draw() -> void:
     if _frame_state.is_empty():
         return
-
-    draw_rect(BODY_RECT, _background_color, true)
 
     var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
     var saccade_state: Dictionary = drill_state.get("saccade_state", drill_state.get("mechanic_state", {}).get("saccade_state", {}))

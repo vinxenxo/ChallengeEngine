@@ -1,46 +1,67 @@
 # ChallengeEngineV01_STATELESS — Project Overview
 
-## Purpose
-
-ChallengeEngineV01_STATELESS is a deterministic challenge and video factory built on Godot 4.7.1. The project separates declarative definitions, deterministic simulation, passive presentation and production orchestration so visual evolution does not redefine gameplay truth.
-
 ## Current state
 
 **C11-B — CLOSED / CERTIFIED / FROZEN.**
 
-The C11-B freeze established and validated the common 540×960 social presentation frame:
+**C11-C — ACTIVE, current implementation 2.9.0.**
 
-```text
-HEADER   Y 0..144
-BODY     Y 144..816
-FOOTER   Y 816..960
-```
+The C11-C Visual Drill presentation now spans four deterministic training families: Tracking, Saccade, Pursuit and Peripheral Scan. The common social frame remains 540×960 with Header 0..144, Body 144..816 and Footer 816..960.
 
-The repository is now entering a separate **Repository Organization Checkpoint**. This checkpoint is a maintenance/restructure operation: it must preserve the C11-B behavior and all executable regression coverage.
+The 2.9.0 work window consolidates the terminal CTA, typography, broader semantic palettes, procedural drill environments, shared motion-ambient audio, social sidecar guarantees and current documentation, while preserving the frozen engine boundaries.
 
 ## Frozen pillars
 
 1. Stateless deterministic simulation.
-2. Explicit semantic RNG stream ownership.
+2. Explicit semantic RNG ownership.
 3. `SimulationResult` / frame snapshots as gameplay truth.
 4. Passive presentation.
 5. `RenderedFrameStream` as the visual runtime contract.
-6. C7 audiovisual contracts, including the authoritative audio policy gates.
-7. C9 authoring contracts and canonical production metadata.
+6. C7 audiovisual contracts.
+7. C9 authoring contracts.
 8. Reproducible QA and evidence under `artifacts/`.
+9. C11-B Header/Body/Footer framing contract.
 
-## Current working rule
+## Current Visual Drill presentation phases
 
-Repository cleanup may move files and update references, but must not alter simulation mathematics, RNG behavior, canonical definitions, winning-frame semantics or frozen presentation contracts. After the cleanup, the reorganized repository must pass the complete documented validation suite before it becomes the new working baseline.
+```text
+PRE_ROLL 3 s
+    ↓
+GAME — canonical authored/runtime drill stream
+    ↓
+END_CTA 3 s — self-evaluation prompt in HEADER
+```
+
+Tracking uses 21 s gameplay; Saccade, Pursuit and Peripheral Scan use 17 s gameplay. Total durations remain 27 s and 23 s respectively.
+
+## Current route states
+
+### Tracking
+
+Seed controls authored Lissajous frequencies, phases, amplitudes, centre, travel cycles and controlled speed variation. Presentation retains a growing history trail, rich palettes and a procedural background without the former Tron road.
+
+### Saccade
+
+Seed controls polar endpoint distribution. Spatial jumps remain discrete, with no interpolation. The target contains a jump counter derived from emitted `jump_index`.
+
+### Pursuit
+
+Seed authoring produces a uniform cubic B-spline, arc-length LUT, per-frame normalized samples, controlled speed modulation, sizygia events and camouflage zones. The answer sheet records the sizygia count and event frame starts.
+
+### Peripheral Scan
+
+Seed authoring produces polar/logistic angular events, orbital rings, threat/distractor classification and a central anchor sequence. The answer sheet records both counts and exact frame starts.
+
+## Working rule
+
+C11-C may evolve art, typography, backgrounds, audio presentation and authoring-stage variation. It must not change C11-B simulation mathematics, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 contracts or C9 frozen challenge authoring semantics.
 
 ## Where to start
 
+- Current status: `docs/c11/C11-C_2.9.0_CURRENT_STATE.md`
 - Architecture: `docs/01_ARCHITECTURE.md`
-- Contracts and data: `docs/02_DATA_AND_CONTRACTS.md`
+- Data: `docs/02_DATA_AND_CONTRACTS.md`
 - Presentation: `docs/03_PRESENTATION.md`
-- Repository layout: `docs/04_REPOSITORY_STRUCTURE.md`
 - Testing: `docs/05_TESTING_AND_REGRESSION.md`
-- Production/distribution: `docs/06_PRODUCTION_AND_DISTRIBUTION.md`
 - Roadmap: `docs/07_ROADMAP.md`
-- Test runbook: `docs/operations/TEST_RUNBOOK.md`
-- Current handover: `docs/master-prompts/MASTER_HANDOVER_C11_B_REPOSITORY_ORGANIZATION.md`
+- Current handover: `docs/master-prompts/MASTER_HANDOVER_C11-C_CURRENT_v2.9.0.md`

@@ -17,6 +17,8 @@ var theme_name: String
 var gameplay_envelope: Control 
 var mechanic_node: Node2D
 var use_c11c_shared_social_editorial: bool = false
+var c11c_shared_footer_region: Control = null
+const C11CVisualTypographyClass = preload("res://core/presentation/C11CVisualTypography.gd")
 
 func _init(root: Node = null, theme_name: String = "default_c6", profile: PresentationProfile = null, use_shared_social_editorial: bool = false):
 	self.root_control = root
@@ -56,6 +58,9 @@ func _build_unified_frame_ui(frame: UnifiedSocialFrame) -> void:
 	var header_root := frame.get_header_content_root()
 	var body_root := frame.get_body_ui_root()
 	var footer_root := frame.get_footer_content_root()
+
+	if use_c11c_shared_social_editorial:
+		c11c_shared_footer_region = footer_root.get_parent() as Control
 
 	if not use_c11c_shared_social_editorial:
 		var header_box := VBoxContainer.new()
@@ -169,13 +174,21 @@ func apply_profile(profile: PresentationProfile):
 	if cta != null:
 		cta.label_main.apply_profile(profile)
 		cta.label_sub.apply_profile(profile)
-		if font != null:
+		if use_c11c_shared_social_editorial:
+			C11CVisualTypographyClass.apply_to_typography_label(cta.label_main)
+			C11CVisualTypographyClass.apply_to_typography_label(cta.label_sub)
+		elif font != null:
 			cta.label_main.apply_font(font)
 			cta.label_sub.apply_font(font)
 			
 	if countdown != null and profile != null:
 		countdown.apply_profile(profile)
-		if font != null: countdown.apply_font(font)
+		if use_c11c_shared_social_editorial:
+			var c11c_countdown_font: Font = C11CVisualTypographyClass.get_font()
+			if c11c_countdown_font != null:
+				countdown.apply_font(c11c_countdown_font)
+		elif font != null:
+			countdown.apply_font(font)
 
 func setup_mechanic_canvas(mechanic_root: Node2D):
 	self.mechanic_node = mechanic_root
@@ -200,6 +213,10 @@ func apply_render_model(render_model: Dictionary) -> void:
 
 	if countdown != null:
 		countdown.apply_render_model(render_model)
+
+	if c11c_shared_footer_region != null and use_c11c_shared_social_editorial:
+		var presentation_phase: String = str(render_model.get("presentation_phase", "GAME"))
+		c11c_shared_footer_region.visible = presentation_phase != "END_CTA"
 
 	if reveal_manager != null:
 		reveal_manager.process_render_model(render_model)

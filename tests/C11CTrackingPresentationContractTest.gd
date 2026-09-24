@@ -4,6 +4,8 @@ extends SceneTree
 
 var failures: Array[String] = []
 
+const EnvironmentSource = "res://core/presentation/rendering/C11CDrillEnvironment.gd"
+
 func _initialize() -> void:
 	var renderer := FileAccess.get_file_as_string("res://core/presentation/rendering/TrackingRenderer.gd")
 	_assert(renderer.find("LivingParticlesTronRoad") < 0, "Tracking must no longer use the Tron background.")
@@ -16,6 +18,8 @@ func _initialize() -> void:
 	_assert(renderer.find("secondary_color") >= 0, "Tracking palette must expose a secondary accent for richer trail rendering.")
 	_assert(renderer.find("TARGET_Z_INDEX: int = 100") >= 0, "Tracking target must remain the perceptual hero at z100.")
 	_assert(renderer.find("future trajectory") < 0, "Tracking renderer must not draw a future trajectory path.")
+
+	_assert(FileAccess.file_exists(EnvironmentSource), "Shared C11-C drill environment must be present.")
 	if failures.is_empty():
 		print("[C11C_TRACKING_PRESENTATION_CONTRACT_SUITE] PASS")
 		quit(0)

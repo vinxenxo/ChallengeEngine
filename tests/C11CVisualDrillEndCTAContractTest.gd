@@ -93,6 +93,8 @@ func _test_shared_cta_component_path() -> void:
     # Wait one frame so _ready() has completed before PresentationUI resolves them.
     await process_frame
     var ui := PresentationUI.new(unified, "default_c6", profile, true)
+    var footer_region: Control = unified.get_footer_content_root().get_parent() as Control
+    _assert(footer_region != null, "Visual Drill shared footer region must be discoverable as a Control parent.")
     _assert(ui != null, "PresentationUI must instantiate for the shared UnifiedSocialFrame path.")
     if ui == null:
         root.queue_free()
@@ -112,7 +114,6 @@ func _test_shared_cta_component_path() -> void:
     var model: Dictionary = binder.bind_frame({"payload": {"generator_type": "pursuit", "parameters": {}}}, profile, "END_CTA", 600, 30, 690)
     ui.apply_render_model(model)
     _assert(ui.cta != null, "Visual Drill end CTA must reuse CTAComponent.")
-    _assert(ui.cta != null, "Shared CTAComponent must exist for Visual Drill END_CTA.")
     if ui.cta == null:
         root.queue_free()
         await process_frame
@@ -120,16 +121,17 @@ func _test_shared_cta_component_path() -> void:
     _assert(ui.cta.visible, "Shared CTAComponent must become visible for END_CTA.")
     _assert(ui.cta.get_parent() == unified.get_header_content_root(), "Visual Drill END_CTA CTAComponent must be mounted in the HEADER.")
     _assert(ui.cta.get_parent() != unified.get_footer_content_root(), "Visual Drill END_CTA CTAComponent must not be mounted in the FOOTER.")
+    _assert(footer_region != null and not footer_region.visible, "Visual Drill END_CTA must hide the complete FooterRegion; no residual gray footer surface may remain.")
     _assert(ui.cta.label_main.text == "¿LO CONSEGUISTE?", "Shared CTAComponent main label mismatch.")
     _assert(ui.cta.label_sub.text == "¿HASTA DÓNDE LLEGASTE?", "Shared CTAComponent sub label mismatch.")
     _assert(ui.cta.scale.x < 1.0, "Shared CTAComponent should be in its terminal entry animation path.")
     root.queue_free()
     await process_frame
-
 func _test_legacy_challenge_cta_path_is_preserved() -> void:
     var source := FileAccess.get_file_as_string("res://core/presentation/PresentationUI.gd")
     _assert(source.find("if not use_c11c_shared_social_editorial") >= 0, "PresentationUI must preserve the legacy Challenge CTA path.")
     _assert(source.find("cta = CTAComponent.new()") >= 0, "PresentationUI must continue to instantiate the shared CTAComponent.")
+    _assert(source.find("c11c_shared_footer_region.visible = presentation_phase != \"END_CTA\"") >= 0, "PresentationUI must hide the complete Visual Drill FooterRegion during END_CTA.")
 
 
 func _test_cta_component_instantiable() -> void:

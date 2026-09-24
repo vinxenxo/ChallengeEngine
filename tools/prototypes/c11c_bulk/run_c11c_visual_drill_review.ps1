@@ -177,7 +177,13 @@ function Write-SocialSidecar {
         default { $Family.ToUpperInvariant() }
     }
     $description = "C11-C Visual Drill / $display. Deterministic procedural visual exercise, seed $Seed. $([math]::Round($Duration,2))s at 30 FPS, with shared preparation and terminal self-evaluation phases."
-    $hashtags = '#VisualDrill #VisualTraining #Perception #ProceduralArt #GenerativeArt #DigitalArt #TechArt'
+    $hashtags = switch ($Family) {
+        'tracking' { '#VisualDrill #Tracking #SmoothPursuit #EyeTraining #Perception #ProceduralArt #TechArt' }
+        'saccade' { '#VisualDrill #Saccade #EyeTraining #Memory #Perception #ProceduralArt #TechArt' }
+        'pursuit' { '#VisualDrill #Pursuit #SmoothPursuit #FovealAttention #EyeTraining #ProceduralArt #TechArt' }
+        'peripheral_scan' { '#VisualDrill #PeripheralVision #Attention #EyeTraining #Perception #ProceduralArt #TechArt' }
+        default { '#VisualDrill #VisualTraining #Perception #ProceduralArt #GenerativeArt #DigitalArt #TechArt' }
+    }
     $content=@"
 TITLE: VISUAL DRILL // $display
 
@@ -198,6 +204,10 @@ TOTAL FRAMES: $TotalFrames
 AUDIO: $AudioMode
 MATRIX HEADER TRANSITION: ON
 SHARED SOCIAL/EDITORIAL LAYOUT: ON
+CTA POSITION: HEADER
+FOOTER DURING CTA: HIDDEN
+FONT: COURIER REGULAR
+BACKGROUND: PROCEDURAL / MOBILE-SAFE
 
 HASHTAGS:
 $hashtags
@@ -209,7 +219,7 @@ C11-A qualification envelope; seed 12345 uses the deterministic A copy when pres
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.8.1'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.9.0'
 Write-Host ("[C11-C-DRILL] $($Drills.Count) families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
 Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + gameplay (17s/21s) + 3s end CTA = 23s/27s total'
 Write-Host ("[C11-C-DRILL] Shared editorial layout / terminal self-evaluation CTA / audio ON")
@@ -354,11 +364,14 @@ try {
             Export-KeyFrames -Mp4Path $finalMp4 -RunDir $targetDir
             Export-ContactSheet -RunDir $targetDir
             Export-Gif -Mp4Path $finalMp4 -GifPath $gifPath
-            Write-SocialSidecar -Path (Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt") -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT'})
+            $socialPath = Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt"
+            Write-SocialSidecar -Path $socialPath -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_V2'})
+            if(-not (Test-Path -LiteralPath $socialPath)){ throw "Social sidecar was not created: $socialPath" }
+            if((Get-Item -LiteralPath $socialPath).Length -lt 160){ throw "Social sidecar is unexpectedly small: $socialPath" }
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.8.1'
+                revision='2.9.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -376,7 +389,7 @@ try {
                 total_frame_count=$totalFrames
                 matrix_enabled=$true
                 editorial_layout='shared_c11c_social'
-                audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
+                audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_V2'})
                 audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
                 source_envelope=$envelopePath
                 final_mp4=$finalMp4
@@ -398,7 +411,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.8.1'
+    revision='2.9.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
@@ -417,7 +430,7 @@ $rootManifest=[ordered]@{
     delivery='720x1280 / 9:16 / 30 FPS'
     logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
     matrix_enabled=$true
-    audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_MASTER'})
+    audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_V2'})
     audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
     source_envelope_root=$EnvelopeRoot
     review_root=$ReviewRoot

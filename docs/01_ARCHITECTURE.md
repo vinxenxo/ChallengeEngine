@@ -2,69 +2,72 @@
 
 ## Layer model
 
-### Capa 0 — Definitions
+### Capa 0 — Definitions / authoring
 
-Declarative JSON definitions, challenge definitions, visual definitions and profiles. They express author intent and parameters; they are not mutable runtime truth.
+Canonical JSON, visual definitions, difficulty profiles and C11-C seed-authoring transforms. This layer may produce deterministic authored variation from the content seed without consuming runtime gameplay RNG.
 
-### Capa 1 — Deterministic simulation
+### Capa 1 — Deterministic runtime / mechanics
 
-Mechanics consume definitions plus explicitly owned RNG capabilities. Simulation produces reproducible frame state and outcome data. Gameplay truth is represented by the established simulation result/frame snapshot contracts.
+Visual Drill generators consume authored parameters and emit deterministic frame state. The runtime never asks presentation to derive mechanics.
 
 ### Capa 2 — Passive presentation
 
-Presentation consumes verified runtime output and decides how that output is framed, styled and rendered. It must not recalculate mechanics, RNG or the winning frame.
+`VisualDrillPresentationBinder`, `C11CVisualEditorialLayer`, `PresentationUI` and the family renderers consume render-ready state. Presentation may select color/font/background treatment from authored cosmetic variants, but it cannot calculate trajectory, event timing or answer truth.
 
 ### Capa 3 — Production orchestration
 
-Authoring adapters, batch generation, Movie Maker, FFmpeg/FFprobe, artifact manifests, QA and release gates coordinate the pipeline without becoming a hidden source of gameplay truth.
+Review envelope generation, Movie Maker capture, FFmpeg/FFprobe, social sidecars, manifests and production QA.
 
-## Core invariants
-
-- Structural RNG and cosmetic/presentation RNG remain separated.
-- `winning_frame` is the temporal anchor.
-- `close_calls` is an episode/count metric, not a timing primitive.
-- `RenderedFrameStream` is consumed by presentation; presentation does not regenerate it.
-- `UnifiedSocialFrame` owns social structure, not simulation.
-- `CoordinateMapper` changes presentation coordinates only; it does not change logical simulation coordinates.
-
-## Runtime flow
+## Visual Drill runtime flow
 
 ```text
-Definition
-   ↓
-Deterministic simulation
-   ↓
-SimulationResult / FrameSnapshot
-   ↓
-RenderedFrameStream
-   ↓
-CoordinateMapper / PresentationFramer
-   ↓
-UnifiedSocialFrame
-   ↓
-Passive renderer / UI
-   ↓
-Movie Maker / production pipeline
+Canonical drill definition
+        ↓
+Seeded authoring transform
+        ↓
+Review envelope / runtime payload
+        ↓
+VisualDrillRuntime
+        ↓
+VisualDrillFrameState
+        ↓
+VisualDrillPresentationBinder
+        ↓
+UnifiedSocialFrame / PresentationUI
+        ↓
+Passive family renderer + C11-C editorial layer
+        ↓
+Movie Maker / FFmpeg / FFprobe
 ```
 
-## Production flow
+## Presentation phases
+
+The shared `VisualDrillPresentationPhaseLogic` adds presentation-only phases:
 
 ```text
-Canonical definition
-   ↓
-Authoring / validation
-   ↓
-build_factory.py
-   ↓
-Godot runtime
-   ↓
-Movie Maker
-   ↓
-AVI / FFmpeg / MP4 / FFprobe
-   ↓
-Manifest + release validation
+PRE_ROLL → GAME → END_CTA → DONE
 ```
 
-## C11-C boundary
+The terminal CTA is appended to the video duration and does not modify the gameplay frame stream.
 
-C11-C is presentation-only art direction. It may alter approved visual assets, typography, styling, hierarchy, backgrounds/foregrounds and renderer appearance. A change that affects simulation semantics, RNG, canonical data, timing truth or frozen test contracts requires a new checkpoint rather than being hidden inside an art-direction change.
+## Shared presentation components
+
+- `CTAComponent` is reused from the historical Challenge presentation.
+- C11-C Visual Drill routes place that same component in Header.
+- The FooterRegion is hidden for terminal CTA so the former footer background cannot remain as a gray block.
+- `C11CVisualTypography` centralizes the active C11-C font and prevents duplication across editorial labels, CTA and Saccade counter.
+- `C11CDrillEnvironment` centralizes low-salience procedural backgrounds across drill families.
+
+## Determinism boundary
+
+Seed-driven variation in Tracking, Saccade, Pursuit and Peripheral Scan is an **authoring transform**. It belongs in `VisualDrillSeedVariation`, not in family renderers.
+
+The renderer consumes authored/runtime state. It never generates hidden answer events, trajectory samples or target positions.
+
+## Pursuit-specific runtime boundary
+
+Pursuit is authored as a normalized uniform cubic B-spline with arc-length lookup and frame samples. The renderer does not read `position_samples_normalized` directly; it consumes the runtime target state derived from those authored samples.
+
+## Peripheral-specific runtime boundary
+
+Peripheral Scan authoring owns event kind, ring, angle and frame start. Presentation only renders `active_events` and the authored central-anchor state.

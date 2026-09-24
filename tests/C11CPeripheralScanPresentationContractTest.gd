@@ -2,6 +2,8 @@ extends SceneTree
 
 var failures: Array[String] = []
 
+const EnvironmentSource = "res://core/presentation/rendering/C11CDrillEnvironment.gd"
+
 func _initialize() -> void:
     var source := FileAccess.get_file_as_string("res://core/presentation/rendering/PeripheralScanRenderer.gd")
     _assert(source.find("_draw_anchor") >= 0, "Peripheral renderer must have a dedicated fixation anchor.")
@@ -9,7 +11,9 @@ func _initialize() -> void:
     _assert(source.find("draw_arc(CENTER") >= 0, "Peripheral renderer must expose the orbital radar rings.")
     _assert(source.find("active_events") >= 0, "Peripheral renderer must consume authored active events.")
     _assert(source.find("draw_circle(CENTER + Vector2(cos(angle), sin(angle)) * radius") >= 0, "Peripheral event must remain a luminosity-based flare, not a solid node.")
-    _assert(source.find("draw_rect(BODY_RECT") >= 0, "Peripheral renderer must own a restrained dark Body field.")
+    _assert(source.find("C11CDrillEnvironmentClass") >= 0, "Peripheral renderer must mount the shared restrained Body environment.")
+
+    _assert(FileAccess.file_exists(EnvironmentSource), "Shared C11-C drill environment must be present.")
     _conclude()
 
 func _assert(condition: bool, message: String) -> void:

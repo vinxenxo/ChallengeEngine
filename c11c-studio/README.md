@@ -1,4 +1,4 @@
-# C11-C Studio v0.4.0
+# C11-C Studio v0.5.1
 
 Windows desktop control surface for `ChallengeEngineV01_STATELESS` and the canonical C11-C toolchain.
 

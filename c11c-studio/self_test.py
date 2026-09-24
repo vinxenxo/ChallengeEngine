@@ -25,12 +25,24 @@ def main() -> int:
         assert manual.seeds == [1, 2, 3, 4, 5]
         assert (Path(tmp) / (manual.batch_id + ".json")).exists()
 
-    spec = CommandSpec("powershell.exe", ["-NoProfile", "-File", "demo.ps1", "-Seeds", "1", "2"])
-    assert spec.arguments[-3:] == ["-Seeds", "1", "2"]
+    spec = CommandSpec("powershell.exe", ["-NoProfile", "-File", "demo.ps1", "-Seeds", "1,2"])
+    assert spec.arguments[-2:] == ["-Seeds", "1,2"]
 
-    print("C11-C Studio v0.3.1 self-test PASS")
+    print("C11-C Studio v0.5.1 self-test PASS")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+# v0.5.1 command contract: [int[]] Seeds must be parsed by PowerShell itself.
+try:
+    from c11c_studio.services.command_builder import _ps
+    spec = _ps("powershell.exe", Path("run_c11c_production_bulk.ps1"), ["-Family","family","-Seeds","1,2,3,4,5"])
+    assert "-Command" in spec.arguments, spec.arguments
+    cmd = spec.arguments[spec.arguments.index("-Command") + 1]
+    assert "@( 1, 2, 3, 4, 5 )" in cmd, cmd
+    print("PowerShell array command contract PASS")
+except Exception as exc:
+    raise AssertionError(f"PowerShell array command contract failed: {exc}")

@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.8.0 — Request-specific Visual Drill review envelope generator.
+## C11-C 2.9.0 — Request-specific Visual Drill review envelope generator.
 ## Generates review-only envelopes for exactly the seeds requested by the PowerShell
 ## reviewer. Uses the canonical authoring generator; does not mutate simulation or RNG.
 
@@ -22,7 +22,7 @@ const ENGINE_VERSION: String = "4.7.1"
 const PRESENTATION_PROFILE: String = "social_default_v1"
 const COORDINATE_SPACE: String = "2d"
 const ASSET_FAMILY: String = "fam_001"
-const AUDIO_PROFILE: String = "default_procedural_music"
+const AUDIO_PROFILE: String = "drill_motion_ambient_v2"
 const AUTHOR: String = "c11c_visual_drill_review"
 const DRILLS: Array[String] = ["tracking", "saccade", "pursuit", "peripheral_scan"]
 
@@ -150,7 +150,7 @@ func _init() -> void:
             var authored_trajectory: Dictionary = authored_payload.get("trajectory", {}) if authored_payload.get("trajectory", {}) is Dictionary else {}
             authoring_document["authored"] = {
                 "seed": seed_value,
-                "variation_version": "VisualDrillSeedVariation/2.8.0",
+                "variation_version": "VisualDrillSeedVariation/2.9.0",
                 "trajectory": {
                     "type": authored_trajectory.get("type", ""),
                     "profile": authored_trajectory.get("profile", ""),

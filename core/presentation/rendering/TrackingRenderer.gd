@@ -1,12 +1,13 @@
 # res://core/presentation/rendering/TrackingRenderer.gd
 extends Node2D
 
-## C11-C 2.7.0 — Tracking Renderer.
+## C11-C 2.9.0 — Tracking Renderer.
 ## Passive renderer: consumes deterministic TrackingGenerator state only.
 ## No trajectory math, RNG, Tron background or future-path disclosure belongs here.
 
 const TrackingTargetLayerClass = preload("res://core/presentation/rendering/TrackingTargetLayer.gd")
 const DrillPaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
+const C11CDrillEnvironmentClass = preload("res://core/presentation/rendering/C11CDrillEnvironment.gd")
 
 const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
 const TARGET_RADIUS: float = 12.0
@@ -18,6 +19,7 @@ const GROWING_HISTORY: String = "growing_history"
 var _frame_state: Dictionary = {}
 var _body_background: ColorRect = null
 var _target_layer: Node2D = null
+var _environment: Node2D = null
 var _palette_index: int = -1
 var _background_color: Color = Color("030813")
 var _trail_color: Color = Color("16E6FF")
@@ -39,10 +41,16 @@ func _ready() -> void:
     _target_layer.z_index = TARGET_Z_INDEX
     add_child(_target_layer)
 
+    _environment = C11CDrillEnvironmentClass.new()
+    _environment.name = "TrackingEnvironment"
+    _environment.z_index = -20
+    add_child(_environment)
+
 func apply_state(model: Dictionary) -> void:
     _frame_state = model.duplicate(true)
     _apply_palette()
     _update_target_layer()
+    _update_environment()
     queue_redraw()
 
 func _apply_palette() -> void:
@@ -51,7 +59,7 @@ func _apply_palette() -> void:
     var variant: float = clampf(float(params.get("tracking_variant", 0.0)), 0.0, 0.999999)
     var palette := DrillPaletteBankClass.tracking(variant)
     var palette_name := str(palette.get("name", ""))
-    var index: int = int(floor(variant * 12.0))
+    var index: int = int(floor(variant * float(DrillPaletteBankClass.count_for("tracking"))))
     if index == _palette_index:
         return
     _palette_index = index
@@ -79,11 +87,20 @@ func _update_target_layer() -> void:
     var radius: float = float(target.get("radius", trajectory.get("bounds", {}).get("target_radius", TARGET_RADIUS)))
     _target_layer.configure(position, radius, _target_color, _trail_color, _secondary_color)
 
+func _update_environment() -> void:
+    if _environment == null:
+        return
+    var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
+    var target_states: Array = drill_state.get("target_states", [])
+    var target_position := Vector2(270.0, 480.0)
+    if target_states.size() == 1:
+        var target: Dictionary = target_states[0]
+        target_position = Vector2(float(target.get("x", 270.0)), float(target.get("y", 480.0)))
+    _environment.configure("tracking", int(_frame_state.get("editorial_seed", 314159)), int(_frame_state.get("presentation_frame_index", 0)), _background_color, _trail_color, _secondary_color, _target_color, target_position)
+
 func _draw() -> void:
     if _frame_state.is_empty():
         return
-
-    draw_rect(BODY_RECT, _background_color, true)
 
     var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
     var trajectory: Dictionary = drill_state.get("trajectory_state", {})

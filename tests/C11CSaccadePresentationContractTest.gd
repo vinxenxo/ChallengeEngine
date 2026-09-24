@@ -4,6 +4,8 @@ extends SceneTree
 
 var failures: Array[String] = []
 
+const EnvironmentSource = "res://core/presentation/rendering/C11CDrillEnvironment.gd"
+
 func _initialize() -> void:
 	var renderer := FileAccess.get_file_as_string("res://core/presentation/rendering/SaccadeRenderer.gd")
 	_assert(renderer.find("lerp(") < 0, "Saccade renderer must not interpolate spatial position.")
@@ -15,6 +17,8 @@ func _initialize() -> void:
 	_assert(renderer.find("SaccadeJumpCounter") >= 0, "Saccade must expose the jump counter label.")
 	_assert(renderer.find("jump_index + 1") >= 0, "Saccade counter must increment from the emitted jump_index.")
 	_assert(renderer.find("Tron") < 0, "Random/polar Saccade baseline must not add decorative background.")
+
+	_assert(FileAccess.file_exists(EnvironmentSource), "Shared C11-C drill environment must be present.")
 	if failures.is_empty():
 		print("[C11C_SACCADE_PRESENTATION_CONTRACT_SUITE] PASS")
 		quit(0)

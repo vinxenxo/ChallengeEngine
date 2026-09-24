@@ -1,60 +1,92 @@
 class_name C11CDrillPaletteBank
 extends RefCounted
 
-## C11-C 2.7.0 — Visual Drill presentation palettes.
+## C11-C 2.9.0 — Visual Drill presentation palettes.
 ## Presentation-only. Palette selection is driven by the existing cosmetic variant.
 
+
 const TRACKING_PALETTES := [
-    {"name":"CYAN_MAGENTA", "background":"030813", "accent":"16E6FF", "secondary":"FF3EBA", "target":"FFFFFF", "target_soft":"E8FDFF", "text_primary":"62F1FF", "text_secondary":"FFC0E7", "text_data":"E8FDFF", "rule":"2CB6D0", "counter":"06111A"},
-    {"name":"BLUE_LILAC", "background":"050817", "accent":"4D7CFE", "secondary":"B98CFF", "target":"F7FBFF", "target_soft":"E8EEFF", "text_primary":"91AEFF", "text_secondary":"D5BEFF", "text_data":"F2F5FF", "rule":"6D86D9", "counter":"0A0C1D"},
-    {"name":"TURQUOISE_ORCHID", "background":"031010", "accent":"28E0D1", "secondary":"E06BFF", "target":"FFFFFF", "target_soft":"E8FFFB", "text_primary":"67F1E7", "text_secondary":"E9B4FF", "text_data":"EEFFFD", "rule":"35BDB5", "counter":"071313"},
-    {"name":"SPECTRAL_BLUE", "background":"04101A", "accent":"66D9FF", "secondary":"477BFF", "target":"F8FFFF", "target_soft":"E8F8FF", "text_primary":"9BE8FF", "text_secondary":"9AAFFF", "text_data":"EFFBFF", "rule":"59A9DA", "counter":"07131C"},
-    {"name":"WARM_COLD", "background":"120B06", "accent":"FFB04A", "secondary":"37D7FF", "target":"FFFDF6", "target_soft":"FFF1D8", "text_primary":"FFD18B", "text_secondary":"7DE8FF", "text_data":"FFF4DE", "rule":"D99B4B", "counter":"1D1205"},
-    {"name":"INDIGO_ROSE", "background":"0B0815", "accent":"8A6CFF", "secondary":"FF4F9A", "target":"FBF8FF", "target_soft":"F0EAFF", "text_primary":"BCAFFF", "text_secondary":"FF98C2", "text_data":"F6F0FF", "rule":"9279D9", "counter":"130B18"},
-    {"name":"AQUA_ULTRAVIOLET", "background":"060611", "accent":"40F0EE", "secondary":"B86CFF", "target":"F8FFFF", "target_soft":"E7FFFF", "text_primary":"78F9F6", "text_secondary":"D3A8FF", "text_data":"F0FFFF", "rule":"4AC9C8", "counter":"0A0D16"},
-    {"name":"SILVER_ICE", "background":"071019", "accent":"DDEAFF", "secondary":"79B9FF", "target":"FFFFFF", "target_soft":"EDF6FF", "text_primary":"EAF2FF", "text_secondary":"A9D2FF", "text_data":"FFFFFF", "rule":"9DBBE0", "counter":"0B111A"},
-    {"name":"CORAL_VIOLET", "background":"120710", "accent":"FF6E7A", "secondary":"8A6CFF", "target":"FFF9FB", "target_soft":"FFE8EC", "text_primary":"FFACB4", "text_secondary":"BCAFFF", "text_data":"FFF2F4", "rule":"D17C86", "counter":"1A090F"},
-    {"name":"MINT_FUCHSIA", "background":"04110D", "accent":"75F5D4", "secondary":"FF4FC7", "target":"FFFFFF", "target_soft":"E8FFF7", "text_primary":"A7FFE9", "text_secondary":"FF9CDE", "text_data":"F3FFF9", "rule":"63CFAF", "counter":"07150F"},
-    {"name":"ACID_LIME_BLUE", "background":"091006", "accent":"B6FF4A", "secondary":"438CFF", "target":"FAFFF2", "target_soft":"EDFFD3", "text_primary":"D1FF7D", "text_secondary":"8FB5FF", "text_data":"F7FFE8", "rule":"9BCB4B", "counter":"0E1605"},
-    {"name":"EMBER_AQUA", "background":"120806", "accent":"FF5A3D", "secondary":"22FFC8", "target":"FFF9F3", "target_soft":"FFEAE0", "text_primary":"FFAC98", "text_secondary":"72FFD9", "text_data":"FFF1E9", "rule":"D4745B", "counter":"1B0C07"}
-]
-
-
-const PURSUIT_PALETTES := [
-    {"name":"VOID_CYAN","background":"020710","accent":"59E7FF","secondary":"8D7CFF","tertiary":"B7F5FF","target":"FFFFFF","target_soft":"E8FBFF","text_primary":"9BEFFF","text_secondary":"B7ADFF","text_data":"EEFCFF","rule":"378FA8","counter":"06131B"},
-    {"name":"ASTRAL_VIOLET","background":"07040F","accent":"B485FF","secondary":"5CE1FF","tertiary":"F0CAFF","target":"FFF9FF","target_soft":"F1E7FF","text_primary":"D1B8FF","text_secondary":"A0EFFF","text_data":"FAF3FF","rule":"795BA6","counter":"120A1C"},
-    {"name":"SOLAR_AMBER","background":"100803","accent":"FFB84A","secondary":"5EE5FF","tertiary":"FFE2A4","target":"FFFCF2","target_soft":"FFF0C8","text_primary":"FFD08C","text_secondary":"89EDFF","text_data":"FFF6E2","rule":"C79042","counter":"1A1005"},
-    {"name":"DEEP_EMERALD","background":"020D0A","accent":"55F0B0","secondary":"6FD7FF","tertiary":"B8FFE0","target":"F5FFF9","target_soft":"E0FFF1","text_primary":"96FFD2","text_secondary":"9AE7FF","text_data":"F2FFF8","rule":"3C9F79","counter":"06160F"},
-    {"name":"ION_BLUE","background":"020A16","accent":"5A9DFF","secondary":"4BF0FF","tertiary":"B8D7FF","target":"F8FCFF","target_soft":"E4F0FF","text_primary":"A0C7FF","text_secondary":"8DEEFF","text_data":"F2F8FF","rule":"3A73B5","counter":"07101D"},
-    {"name":"PLASMA_ROSE","background":"10030C","accent":"FF68BD","secondary":"9A78FF","tertiary":"FFC2E6","target":"FFF8FC","target_soft":"FFE5F2","text_primary":"FF9ED4","text_secondary":"C8B7FF","text_data":"FFF0F8","rule":"BA558F","counter":"190A15"},
-    {"name":"GLACIAL_MINT","background":"03110F","accent":"6FFFE3","secondary":"7C9BFF","tertiary":"C5FFF3","target":"F9FFFE","target_soft":"E5FFF9","text_primary":"A9FFED","text_secondary":"ACBCFF","text_data":"F3FFFC","rule":"48BFA7","counter":"071814"},
-    {"name":"OBSIDIAN_LIME","background":"080D03","accent":"B9FF58","secondary":"48B5FF","tertiary":"E5FFB8","target":"FBFFF4","target_soft":"ECFFD4","text_primary":"D1FF8A","text_secondary":"96C9FF","text_data":"F6FFE8","rule":"8AAA43","counter":"101604"}
-]
-
-const PERIPHERAL_PALETTES := [
-    {"name":"ECLIPSE_TEAL","background":"020B0C","accent":"62FFE1","secondary":"43A8FF","tertiary":"B7FFF1","target":"FAFFFE","target_soft":"E5FFF8","text_primary":"A4FFEF","text_secondary":"9ACFFF","text_data":"F2FFFC","rule":"398F87","counter":"061614"},
-    {"name":"CORONA_GOLD","background":"100902","accent":"FFD05A","secondary":"FF7A4A","tertiary":"FFE9A8","target":"FFFDF4","target_soft":"FFF3C9","text_primary":"FFE08D","text_secondary":"FFB58D","text_data":"FFF7E2","rule":"C69D45","counter":"1B1104"},
-    {"name":"SOLAR_VIOLET","background":"08030D","accent":"C18BFF","secondary":"FF5CC8","tertiary":"E7C9FF","target":"FFF9FF","target_soft":"F1E7FF","text_primary":"D8B7FF","text_secondary":"FF9BDA","text_data":"FBF2FF","rule":"8D5EB2","counter":"160A19"},
-    {"name":"MAGNETIC_BLUE","background":"020915","accent":"66B4FF","secondary":"63FFE8","tertiary":"C4E3FF","target":"F9FDFF","target_soft":"E6F4FF","text_primary":"A9D7FF","text_secondary":"A2FFF0","text_data":"F2F9FF","rule":"4486BA","counter":"07121D"},
-    {"name":"EMBER_ORBIT","background":"120603","accent":"FF754D","secondary":"FFCF4A","tertiary":"FFD0C0","target":"FFF8F4","target_soft":"FFE8DF","text_primary":"FFAA8F","text_secondary":"FFE08E","text_data":"FFF1EA","rule":"C36B54","counter":"1D0B06"},
-    {"name":"AURORA_GREEN","background":"031008","accent":"70F09C","secondary":"83B8FF","tertiary":"C6FFD8","target":"F9FFF9","target_soft":"E5FFEB","text_primary":"A9FFBF","text_secondary":"B3D1FF","text_data":"F2FFF4","rule":"4BA66B","counter":"07150E"},
-    {"name":"ULTRAVIOLET_NEON","background":"07040E","accent":"9E73FF","secondary":"5EEAFF","tertiary":"D6C6FF","target":"FCFAFF","target_soft":"EFE9FF","text_primary":"C5AEFF","text_secondary":"A1F3FF","text_data":"F8F4FF","rule":"7456AE","counter":"110A19"},
-    {"name":"ICE_CORONA","background":"061019","accent":"A8E6FF","secondary":"8CF5CE","tertiary":"D8F7FF","target":"FFFFFF","target_soft":"ECFAFF","text_primary":"D0F1FF","text_secondary":"B2FFE2","text_data":"F7FCFF","rule":"6E9AB0","counter":"0B151C"}
+    {"name":"DEEP_OCEAN_COPPER", "background":"03101A", "accent":"40D9FF", "secondary":"FF8E61", "tertiary":"C9F4FF", "target":"F9FCFF", "target_soft":"CBEFFF", "text_primary":"FFD1BC", "text_secondary":"EFFBFF", "text_data":"CBEFFF", "rule":"4AA0B9", "counter":"07131A"},
+    {"name":"MOSS_CORAL", "background":"07120C", "accent":"77E09B", "secondary":"FF786E", "tertiary":"D2FFE1", "target":"FAFFF8", "target_soft":"E7FFEF", "text_primary":"FFC3BC", "text_secondary":"F3FFF4", "text_data":"E7FFEF", "rule":"4D9B69", "counter":"0A190F"},
+    {"name":"ROYAL_AMETHYST", "background":"0A0716", "accent":"6E7BFF", "secondary":"E99BFF", "tertiary":"D4D7FF", "target":"FBFAFF", "target_soft":"EEEFFF", "text_primary":"F6CFFF", "text_secondary":"F7F4FF", "text_data":"EEEFFF", "rule":"686D9E", "counter":"110C1F"},
+    {"name":"SUNSET_INK", "background":"160A0A", "accent":"FFB347", "secondary":"FF5D8F", "tertiary":"FFE2B8", "target":"FFF9F4", "target_soft":"FFF0DA", "text_primary":"FFC5D6", "text_secondary":"FFF5EA", "text_data":"FFF0DA", "rule":"B96E4F", "counter":"1E0F0F"},
+    {"name":"FROSTED_MINT", "background":"041312", "accent":"7CF7DE", "secondary":"A9B7FF", "tertiary":"D8FFF6", "target":"FFFFFF", "target_soft":"ECFFF9", "text_primary":"C8D1FF", "text_secondary":"F6FFFC", "text_data":"ECFFF9", "rule":"57B2A2", "counter":"081918"},
+    {"name":"ELECTRIC_SAPPHIRE", "background":"040B1B", "accent":"3FA7FF", "secondary":"5AF0FF", "tertiary":"C8E1FF", "target":"F8FCFF", "target_soft":"E3F2FF", "text_primary":"B0F8FF", "text_secondary":"F1F9FF", "text_data":"E3F2FF", "rule":"3E82C7", "counter":"071322"},
+    {"name":"POMEGRANATE_GOLD", "background":"160704", "accent":"FF496E", "secondary":"FFC64D", "tertiary":"FFD0D9", "target":"FFF9F6", "target_soft":"FFE9E0", "text_primary":"FFE19A", "text_secondary":"FFF4EE", "text_data":"FFE9E0", "rule":"B95A58", "counter":"1F0C0B"},
+    {"name":"FOREST_VIOLET", "background":"081006", "accent":"6EDB77", "secondary":"A77BFF", "tertiary":"D6F8C8", "target":"FBFFF9", "target_soft":"E7F8DE", "text_primary":"D0B8FF", "text_secondary":"F5F8F0", "text_data":"E7F8DE", "rule":"4A9858", "counter":"0D180A"},
+    {"name":"ARCTIC_INDIGO", "background":"070D19", "accent":"8ED1FF", "secondary":"7D7BFF", "tertiary":"D9EEFF", "target":"F9FCFF", "target_soft":"EAF5FF", "text_primary":"CECAFF", "text_secondary":"F2F8FF", "text_data":"EAF5FF", "rule":"5E8CAC", "counter":"0C1422"},
+    {"name":"TANGERINE_AQUA", "background":"140B03", "accent":"FF9E42", "secondary":"37E2D0", "tertiary":"FFD8A8", "target":"FFFDF7", "target_soft":"FFEFD0", "text_primary":"B6FFF8", "text_secondary":"FFF5E4", "text_data":"FFEFD0", "rule":"B97B3D", "counter":"1C1006"},
+    {"name":"HOT_PINK_CYAN", "background":"13050E", "accent":"FF4BBF", "secondary":"44F0F2", "tertiary":"FFC9EA", "target":"FFF9FD", "target_soft":"FFE9F7", "text_primary":"A7FFFF", "text_secondary":"FFF3FB", "text_data":"FFE9F7", "rule":"B24D91", "counter":"1B0A16"},
+    {"name":"LIME_ULTRAMARINE", "background":"091003", "accent":"B7F04A", "secondary":"527BFF", "tertiary":"E8FFB6", "target":"FDFFF6", "target_soft":"EFFFD5", "text_primary":"BBC8FF", "text_secondary":"F8FDEB", "text_data":"EFFFD5", "rule":"8AA34A", "counter":"111804"},
+    {"name":"STEEL_ROSE", "background":"0D1017", "accent":"D6E5FF", "secondary":"FF7AA8", "tertiary":"F0F5FF", "target":"FFFFFF", "target_soft":"F6F9FF", "text_primary":"FFD0E0", "text_secondary":"FBFDFF", "text_data":"F6F9FF", "rule":"8794AE", "counter":"141720"},
+    {"name":"EMBER_TEAL", "background":"120905", "accent":"FF6B4F", "secondary":"31E8B0", "tertiary":"FFCFC2", "target":"FFF9F6", "target_soft":"FFE9E3", "text_primary":"B5FFE9", "text_secondary":"FFF3EE", "text_data":"FFE9E3", "rule":"B75C4D", "counter":"1A0D08"},
+    {"name":"VIOLET_LIME", "background":"0C0712", "accent":"AF73FF", "secondary":"C8F04F", "tertiary":"E8D3FF", "target":"FFFDFF", "target_soft":"F2E8FF", "text_primary":"E7FFA0", "text_secondary":"FAF6FF", "text_data":"F2E8FF", "rule":"7A5CAD", "counter":"130C1A"},
+    {"name":"MIDNIGHT_GOLD", "background":"0D0D08", "accent":"FFE06A", "secondary":"69A7FF", "tertiary":"FFF0A8", "target":"FFFFF7", "target_soft":"FFF6D0", "text_primary":"C7DCFF", "text_secondary":"FFF9E8", "text_data":"FFF6D0", "rule":"A4934C", "counter":"16150A"},
+    {"name":"CRIMSON_ICE", "background":"14050A", "accent":"FF5578", "secondary":"73D9FF", "tertiary":"FFD0DC", "target":"FFF9FB", "target_soft":"F2EFFF", "text_primary":"BFEFFF", "text_secondary":"FFF3F6", "text_data":"F2EFFF", "rule":"B55A70", "counter":"1C0A10"},
+    {"name":"AQUAMARINE_SUN", "background":"03110D", "accent":"46E0C1", "secondary":"FFD45A", "tertiary":"C7FFF0", "target":"FFFFFA", "target_soft":"E6FFF8", "text_primary":"FFE9A5", "text_secondary":"FFF9E8", "text_data":"E6FFF8", "rule":"4AA38F", "counter":"07180F"}
 ]
 
 const SACCADE_PALETTES := [
-    {"name":"CYAN_MAGENTA", "background":"030813", "accent":"16E6FF", "secondary":"FF3EBA", "target":"FFFFFF", "target_soft":"E8FDFF", "counter":"06111A"},
-    {"name":"BLUE_LILAC", "background":"050817", "accent":"4D7CFE", "secondary":"B98CFF", "target":"F7FBFF", "target_soft":"E8EEFF", "counter":"0A0C1D"},
-    {"name":"TURQUOISE_ORCHID", "background":"031010", "accent":"28E0D1", "secondary":"E06BFF", "target":"FFFFFF", "target_soft":"E8FFFB", "counter":"071313"},
-    {"name":"SPECTRAL_BLUE", "background":"04101A", "accent":"66D9FF", "secondary":"477BFF", "target":"F8FFFF", "target_soft":"E8F8FF", "counter":"07131C"},
-    {"name":"WARM_COLD", "background":"120B06", "accent":"FFB04A", "secondary":"37D7FF", "target":"FFFDF6", "target_soft":"FFF1D8", "counter":"1D1205"},
-    {"name":"INDIGO_ROSE", "background":"0B0815", "accent":"8A6CFF", "secondary":"FF4F9A", "target":"FBF8FF", "target_soft":"F0EAFF", "counter":"130B18"},
-    {"name":"AQUA_ULTRAVIOLET", "background":"060611", "accent":"40F0EE", "secondary":"B86CFF", "target":"F8FFFF", "target_soft":"E7FFFF", "counter":"0A0D16"},
-    {"name":"SILVER_ICE", "background":"071019", "accent":"DDEAFF", "secondary":"79B9FF", "target":"FFFFFF", "target_soft":"EDF6FF", "counter":"0B111A"},
-    {"name":"CORAL_VIOLET", "background":"120710", "accent":"FF6E7A", "secondary":"8A6CFF", "target":"FFF9FB", "target_soft":"FFE8EC", "counter":"1A090F"},
-    {"name":"MINT_FUCHSIA", "background":"04110D", "accent":"75F5D4", "secondary":"FF4FC7", "target":"FFFFFF", "target_soft":"E8FFF7", "counter":"07150F"},
-    {"name":"ACID_LIME_BLUE", "background":"091006", "accent":"B6FF4A", "secondary":"438CFF", "target":"FAFFF2", "target_soft":"EDFFD3", "counter":"0E1605"},
-    {"name":"EMBER_AQUA", "background":"120806", "accent":"FF5A3D", "secondary":"22FFC8", "target":"FFF9F3", "target_soft":"FFEAE0", "counter":"1B0C07"}
+    {"name":"ELECTRIC_SAPPHIRE", "background":"040B1B", "accent":"3FA7FF", "secondary":"5AF0FF", "tertiary":"C8E1FF", "target":"F8FCFF", "target_soft":"E3F2FF", "text_primary":"B0F8FF", "text_secondary":"F1F9FF", "text_data":"E3F2FF", "rule":"3E82C7", "counter":"071322"},
+    {"name":"POMEGRANATE_GOLD", "background":"160704", "accent":"FF496E", "secondary":"FFC64D", "tertiary":"FFD0D9", "target":"FFF9F6", "target_soft":"FFE9E0", "text_primary":"FFE19A", "text_secondary":"FFF4EE", "text_data":"FFE9E0", "rule":"B95A58", "counter":"1F0C0B"},
+    {"name":"FOREST_VIOLET", "background":"081006", "accent":"6EDB77", "secondary":"A77BFF", "tertiary":"D6F8C8", "target":"FBFFF9", "target_soft":"E7F8DE", "text_primary":"D0B8FF", "text_secondary":"F5F8F0", "text_data":"E7F8DE", "rule":"4A9858", "counter":"0D180A"},
+    {"name":"ARCTIC_INDIGO", "background":"070D19", "accent":"8ED1FF", "secondary":"7D7BFF", "tertiary":"D9EEFF", "target":"F9FCFF", "target_soft":"EAF5FF", "text_primary":"CECAFF", "text_secondary":"F2F8FF", "text_data":"EAF5FF", "rule":"5E8CAC", "counter":"0C1422"},
+    {"name":"TANGERINE_AQUA", "background":"140B03", "accent":"FF9E42", "secondary":"37E2D0", "tertiary":"FFD8A8", "target":"FFFDF7", "target_soft":"FFEFD0", "text_primary":"B6FFF8", "text_secondary":"FFF5E4", "text_data":"FFEFD0", "rule":"B97B3D", "counter":"1C1006"},
+    {"name":"HOT_PINK_CYAN", "background":"13050E", "accent":"FF4BBF", "secondary":"44F0F2", "tertiary":"FFC9EA", "target":"FFF9FD", "target_soft":"FFE9F7", "text_primary":"A7FFFF", "text_secondary":"FFF3FB", "text_data":"FFE9F7", "rule":"B24D91", "counter":"1B0A16"},
+    {"name":"LIME_ULTRAMARINE", "background":"091003", "accent":"B7F04A", "secondary":"527BFF", "tertiary":"E8FFB6", "target":"FDFFF6", "target_soft":"EFFFD5", "text_primary":"BBC8FF", "text_secondary":"F8FDEB", "text_data":"EFFFD5", "rule":"8AA34A", "counter":"111804"},
+    {"name":"STEEL_ROSE", "background":"0D1017", "accent":"D6E5FF", "secondary":"FF7AA8", "tertiary":"F0F5FF", "target":"FFFFFF", "target_soft":"F6F9FF", "text_primary":"FFD0E0", "text_secondary":"FBFDFF", "text_data":"F6F9FF", "rule":"8794AE", "counter":"141720"},
+    {"name":"EMBER_TEAL", "background":"120905", "accent":"FF6B4F", "secondary":"31E8B0", "tertiary":"FFCFC2", "target":"FFF9F6", "target_soft":"FFE9E3", "text_primary":"B5FFE9", "text_secondary":"FFF3EE", "text_data":"FFE9E3", "rule":"B75C4D", "counter":"1A0D08"},
+    {"name":"VIOLET_LIME", "background":"0C0712", "accent":"AF73FF", "secondary":"C8F04F", "tertiary":"E8D3FF", "target":"FFFDFF", "target_soft":"F2E8FF", "text_primary":"E7FFA0", "text_secondary":"FAF6FF", "text_data":"F2E8FF", "rule":"7A5CAD", "counter":"130C1A"},
+    {"name":"MIDNIGHT_GOLD", "background":"0D0D08", "accent":"FFE06A", "secondary":"69A7FF", "tertiary":"FFF0A8", "target":"FFFFF7", "target_soft":"FFF6D0", "text_primary":"C7DCFF", "text_secondary":"FFF9E8", "text_data":"FFF6D0", "rule":"A4934C", "counter":"16150A"},
+    {"name":"CRIMSON_ICE", "background":"14050A", "accent":"FF5578", "secondary":"73D9FF", "tertiary":"FFD0DC", "target":"FFF9FB", "target_soft":"F2EFFF", "text_primary":"BFEFFF", "text_secondary":"FFF3F6", "text_data":"F2EFFF", "rule":"B55A70", "counter":"1C0A10"},
+    {"name":"AQUAMARINE_SUN", "background":"03110D", "accent":"46E0C1", "secondary":"FFD45A", "tertiary":"C7FFF0", "target":"FFFFFA", "target_soft":"E6FFF8", "text_primary":"FFE9A5", "text_secondary":"FFF9E8", "text_data":"E6FFF8", "rule":"4AA38F", "counter":"07180F"},
+    {"name":"DEEP_OCEAN_COPPER", "background":"03101A", "accent":"40D9FF", "secondary":"FF8E61", "tertiary":"C9F4FF", "target":"F9FCFF", "target_soft":"CBEFFF", "text_primary":"FFD1BC", "text_secondary":"EFFBFF", "text_data":"CBEFFF", "rule":"4AA0B9", "counter":"07131A"},
+    {"name":"MOSS_CORAL", "background":"07120C", "accent":"77E09B", "secondary":"FF786E", "tertiary":"D2FFE1", "target":"FAFFF8", "target_soft":"E7FFEF", "text_primary":"FFC3BC", "text_secondary":"F3FFF4", "text_data":"E7FFEF", "rule":"4D9B69", "counter":"0A190F"},
+    {"name":"ROYAL_AMETHYST", "background":"0A0716", "accent":"6E7BFF", "secondary":"E99BFF", "tertiary":"D4D7FF", "target":"FBFAFF", "target_soft":"EEEFFF", "text_primary":"F6CFFF", "text_secondary":"F7F4FF", "text_data":"EEEFFF", "rule":"686D9E", "counter":"110C1F"},
+    {"name":"SUNSET_INK", "background":"160A0A", "accent":"FFB347", "secondary":"FF5D8F", "tertiary":"FFE2B8", "target":"FFF9F4", "target_soft":"FFF0DA", "text_primary":"FFC5D6", "text_secondary":"FFF5EA", "text_data":"FFF0DA", "rule":"B96E4F", "counter":"1E0F0F"},
+    {"name":"FROSTED_MINT", "background":"041312", "accent":"7CF7DE", "secondary":"A9B7FF", "tertiary":"D8FFF6", "target":"FFFFFF", "target_soft":"ECFFF9", "text_primary":"C8D1FF", "text_secondary":"F6FFFC", "text_data":"ECFFF9", "rule":"57B2A2", "counter":"081918"}
+]
+
+const PURSUIT_PALETTES := [
+    {"name":"TANGERINE_AQUA", "background":"140B03", "accent":"FF9E42", "secondary":"37E2D0", "tertiary":"FFD8A8", "target":"FFFDF7", "target_soft":"FFEFD0", "text_primary":"B6FFF8", "text_secondary":"FFF5E4", "text_data":"FFEFD0", "rule":"B97B3D", "counter":"1C1006"},
+    {"name":"HOT_PINK_CYAN", "background":"13050E", "accent":"FF4BBF", "secondary":"44F0F2", "tertiary":"FFC9EA", "target":"FFF9FD", "target_soft":"FFE9F7", "text_primary":"A7FFFF", "text_secondary":"FFF3FB", "text_data":"FFE9F7", "rule":"B24D91", "counter":"1B0A16"},
+    {"name":"LIME_ULTRAMARINE", "background":"091003", "accent":"B7F04A", "secondary":"527BFF", "tertiary":"E8FFB6", "target":"FDFFF6", "target_soft":"EFFFD5", "text_primary":"BBC8FF", "text_secondary":"F8FDEB", "text_data":"EFFFD5", "rule":"8AA34A", "counter":"111804"},
+    {"name":"STEEL_ROSE", "background":"0D1017", "accent":"D6E5FF", "secondary":"FF7AA8", "tertiary":"F0F5FF", "target":"FFFFFF", "target_soft":"F6F9FF", "text_primary":"FFD0E0", "text_secondary":"FBFDFF", "text_data":"F6F9FF", "rule":"8794AE", "counter":"141720"},
+    {"name":"EMBER_TEAL", "background":"120905", "accent":"FF6B4F", "secondary":"31E8B0", "tertiary":"FFCFC2", "target":"FFF9F6", "target_soft":"FFE9E3", "text_primary":"B5FFE9", "text_secondary":"FFF3EE", "text_data":"FFE9E3", "rule":"B75C4D", "counter":"1A0D08"},
+    {"name":"VIOLET_LIME", "background":"0C0712", "accent":"AF73FF", "secondary":"C8F04F", "tertiary":"E8D3FF", "target":"FFFDFF", "target_soft":"F2E8FF", "text_primary":"E7FFA0", "text_secondary":"FAF6FF", "text_data":"F2E8FF", "rule":"7A5CAD", "counter":"130C1A"},
+    {"name":"MIDNIGHT_GOLD", "background":"0D0D08", "accent":"FFE06A", "secondary":"69A7FF", "tertiary":"FFF0A8", "target":"FFFFF7", "target_soft":"FFF6D0", "text_primary":"C7DCFF", "text_secondary":"FFF9E8", "text_data":"FFF6D0", "rule":"A4934C", "counter":"16150A"},
+    {"name":"CRIMSON_ICE", "background":"14050A", "accent":"FF5578", "secondary":"73D9FF", "tertiary":"FFD0DC", "target":"FFF9FB", "target_soft":"F2EFFF", "text_primary":"BFEFFF", "text_secondary":"FFF3F6", "text_data":"F2EFFF", "rule":"B55A70", "counter":"1C0A10"},
+    {"name":"AQUAMARINE_SUN", "background":"03110D", "accent":"46E0C1", "secondary":"FFD45A", "tertiary":"C7FFF0", "target":"FFFFFA", "target_soft":"E6FFF8", "text_primary":"FFE9A5", "text_secondary":"FFF9E8", "text_data":"E6FFF8", "rule":"4AA38F", "counter":"07180F"},
+    {"name":"DEEP_OCEAN_COPPER", "background":"03101A", "accent":"40D9FF", "secondary":"FF8E61", "tertiary":"C9F4FF", "target":"F9FCFF", "target_soft":"CBEFFF", "text_primary":"FFD1BC", "text_secondary":"EFFBFF", "text_data":"CBEFFF", "rule":"4AA0B9", "counter":"07131A"},
+    {"name":"MOSS_CORAL", "background":"07120C", "accent":"77E09B", "secondary":"FF786E", "tertiary":"D2FFE1", "target":"FAFFF8", "target_soft":"E7FFEF", "text_primary":"FFC3BC", "text_secondary":"F3FFF4", "text_data":"E7FFEF", "rule":"4D9B69", "counter":"0A190F"},
+    {"name":"ROYAL_AMETHYST", "background":"0A0716", "accent":"6E7BFF", "secondary":"E99BFF", "tertiary":"D4D7FF", "target":"FBFAFF", "target_soft":"EEEFFF", "text_primary":"F6CFFF", "text_secondary":"F7F4FF", "text_data":"EEEFFF", "rule":"686D9E", "counter":"110C1F"},
+    {"name":"SUNSET_INK", "background":"160A0A", "accent":"FFB347", "secondary":"FF5D8F", "tertiary":"FFE2B8", "target":"FFF9F4", "target_soft":"FFF0DA", "text_primary":"FFC5D6", "text_secondary":"FFF5EA", "text_data":"FFF0DA", "rule":"B96E4F", "counter":"1E0F0F"},
+    {"name":"FROSTED_MINT", "background":"041312", "accent":"7CF7DE", "secondary":"A9B7FF", "tertiary":"D8FFF6", "target":"FFFFFF", "target_soft":"ECFFF9", "text_primary":"C8D1FF", "text_secondary":"F6FFFC", "text_data":"ECFFF9", "rule":"57B2A2", "counter":"081918"},
+    {"name":"ELECTRIC_SAPPHIRE", "background":"040B1B", "accent":"3FA7FF", "secondary":"5AF0FF", "tertiary":"C8E1FF", "target":"F8FCFF", "target_soft":"E3F2FF", "text_primary":"B0F8FF", "text_secondary":"F1F9FF", "text_data":"E3F2FF", "rule":"3E82C7", "counter":"071322"},
+    {"name":"POMEGRANATE_GOLD", "background":"160704", "accent":"FF496E", "secondary":"FFC64D", "tertiary":"FFD0D9", "target":"FFF9F6", "target_soft":"FFE9E0", "text_primary":"FFE19A", "text_secondary":"FFF4EE", "text_data":"FFE9E0", "rule":"B95A58", "counter":"1F0C0B"},
+    {"name":"FOREST_VIOLET", "background":"081006", "accent":"6EDB77", "secondary":"A77BFF", "tertiary":"D6F8C8", "target":"FBFFF9", "target_soft":"E7F8DE", "text_primary":"D0B8FF", "text_secondary":"F5F8F0", "text_data":"E7F8DE", "rule":"4A9858", "counter":"0D180A"},
+    {"name":"ARCTIC_INDIGO", "background":"070D19", "accent":"8ED1FF", "secondary":"7D7BFF", "tertiary":"D9EEFF", "target":"F9FCFF", "target_soft":"EAF5FF", "text_primary":"CECAFF", "text_secondary":"F2F8FF", "text_data":"EAF5FF", "rule":"5E8CAC", "counter":"0C1422"}
+]
+
+const PERIPHERAL_PALETTES := [
+    {"name":"EMBER_TEAL", "background":"120905", "accent":"FF6B4F", "secondary":"31E8B0", "tertiary":"FFCFC2", "target":"FFF9F6", "target_soft":"FFE9E3", "text_primary":"B5FFE9", "text_secondary":"FFF3EE", "text_data":"FFE9E3", "rule":"B75C4D", "counter":"1A0D08"},
+    {"name":"VIOLET_LIME", "background":"0C0712", "accent":"AF73FF", "secondary":"C8F04F", "tertiary":"E8D3FF", "target":"FFFDFF", "target_soft":"F2E8FF", "text_primary":"E7FFA0", "text_secondary":"FAF6FF", "text_data":"F2E8FF", "rule":"7A5CAD", "counter":"130C1A"},
+    {"name":"MIDNIGHT_GOLD", "background":"0D0D08", "accent":"FFE06A", "secondary":"69A7FF", "tertiary":"FFF0A8", "target":"FFFFF7", "target_soft":"FFF6D0", "text_primary":"C7DCFF", "text_secondary":"FFF9E8", "text_data":"FFF6D0", "rule":"A4934C", "counter":"16150A"},
+    {"name":"CRIMSON_ICE", "background":"14050A", "accent":"FF5578", "secondary":"73D9FF", "tertiary":"FFD0DC", "target":"FFF9FB", "target_soft":"F2EFFF", "text_primary":"BFEFFF", "text_secondary":"FFF3F6", "text_data":"F2EFFF", "rule":"B55A70", "counter":"1C0A10"},
+    {"name":"AQUAMARINE_SUN", "background":"03110D", "accent":"46E0C1", "secondary":"FFD45A", "tertiary":"C7FFF0", "target":"FFFFFA", "target_soft":"E6FFF8", "text_primary":"FFE9A5", "text_secondary":"FFF9E8", "text_data":"E6FFF8", "rule":"4AA38F", "counter":"07180F"},
+    {"name":"DEEP_OCEAN_COPPER", "background":"03101A", "accent":"40D9FF", "secondary":"FF8E61", "tertiary":"C9F4FF", "target":"F9FCFF", "target_soft":"CBEFFF", "text_primary":"FFD1BC", "text_secondary":"EFFBFF", "text_data":"CBEFFF", "rule":"4AA0B9", "counter":"07131A"},
+    {"name":"MOSS_CORAL", "background":"07120C", "accent":"77E09B", "secondary":"FF786E", "tertiary":"D2FFE1", "target":"FAFFF8", "target_soft":"E7FFEF", "text_primary":"FFC3BC", "text_secondary":"F3FFF4", "text_data":"E7FFEF", "rule":"4D9B69", "counter":"0A190F"},
+    {"name":"ROYAL_AMETHYST", "background":"0A0716", "accent":"6E7BFF", "secondary":"E99BFF", "tertiary":"D4D7FF", "target":"FBFAFF", "target_soft":"EEEFFF", "text_primary":"F6CFFF", "text_secondary":"F7F4FF", "text_data":"EEEFFF", "rule":"686D9E", "counter":"110C1F"},
+    {"name":"SUNSET_INK", "background":"160A0A", "accent":"FFB347", "secondary":"FF5D8F", "tertiary":"FFE2B8", "target":"FFF9F4", "target_soft":"FFF0DA", "text_primary":"FFC5D6", "text_secondary":"FFF5EA", "text_data":"FFF0DA", "rule":"B96E4F", "counter":"1E0F0F"},
+    {"name":"FROSTED_MINT", "background":"041312", "accent":"7CF7DE", "secondary":"A9B7FF", "tertiary":"D8FFF6", "target":"FFFFFF", "target_soft":"ECFFF9", "text_primary":"C8D1FF", "text_secondary":"F6FFFC", "text_data":"ECFFF9", "rule":"57B2A2", "counter":"081918"},
+    {"name":"ELECTRIC_SAPPHIRE", "background":"040B1B", "accent":"3FA7FF", "secondary":"5AF0FF", "tertiary":"C8E1FF", "target":"F8FCFF", "target_soft":"E3F2FF", "text_primary":"B0F8FF", "text_secondary":"F1F9FF", "text_data":"E3F2FF", "rule":"3E82C7", "counter":"071322"},
+    {"name":"POMEGRANATE_GOLD", "background":"160704", "accent":"FF496E", "secondary":"FFC64D", "tertiary":"FFD0D9", "target":"FFF9F6", "target_soft":"FFE9E0", "text_primary":"FFE19A", "text_secondary":"FFF4EE", "text_data":"FFE9E0", "rule":"B95A58", "counter":"1F0C0B"},
+    {"name":"FOREST_VIOLET", "background":"081006", "accent":"6EDB77", "secondary":"A77BFF", "tertiary":"D6F8C8", "target":"FBFFF9", "target_soft":"E7F8DE", "text_primary":"D0B8FF", "text_secondary":"F5F8F0", "text_data":"E7F8DE", "rule":"4A9858", "counter":"0D180A"},
+    {"name":"ARCTIC_INDIGO", "background":"070D19", "accent":"8ED1FF", "secondary":"7D7BFF", "tertiary":"D9EEFF", "target":"F9FCFF", "target_soft":"EAF5FF", "text_primary":"CECAFF", "text_secondary":"F2F8FF", "text_data":"EAF5FF", "rule":"5E8CAC", "counter":"0C1422"},
+    {"name":"TANGERINE_AQUA", "background":"140B03", "accent":"FF9E42", "secondary":"37E2D0", "tertiary":"FFD8A8", "target":"FFFDF7", "target_soft":"FFEFD0", "text_primary":"B6FFF8", "text_secondary":"FFF5E4", "text_data":"FFEFD0", "rule":"B97B3D", "counter":"1C1006"},
+    {"name":"HOT_PINK_CYAN", "background":"13050E", "accent":"FF4BBF", "secondary":"44F0F2", "tertiary":"FFC9EA", "target":"FFF9FD", "target_soft":"FFE9F7", "text_primary":"A7FFFF", "text_secondary":"FFF3FB", "text_data":"FFE9F7", "rule":"B24D91", "counter":"1B0A16"},
+    {"name":"LIME_ULTRAMARINE", "background":"091003", "accent":"B7F04A", "secondary":"527BFF", "tertiary":"E8FFB6", "target":"FDFFF6", "target_soft":"EFFFD5", "text_primary":"BBC8FF", "text_secondary":"F8FDEB", "text_data":"EFFFD5", "rule":"8AA34A", "counter":"111804"},
+    {"name":"STEEL_ROSE", "background":"0D1017", "accent":"D6E5FF", "secondary":"FF7AA8", "tertiary":"F0F5FF", "target":"FFFFFF", "target_soft":"F6F9FF", "text_primary":"FFD0E0", "text_secondary":"FBFDFF", "text_data":"F6F9FF", "rule":"8794AE", "counter":"141720"}
 ]
 
 static func tracking(variant: float) -> Dictionary:
@@ -68,6 +100,14 @@ static func pursuit(variant: float) -> Dictionary:
 
 static func peripheral_scan(variant: float) -> Dictionary:
     return _from_variant(PERIPHERAL_PALETTES, variant)
+
+static func count_for(family: String) -> int:
+    match family:
+        "tracking": return TRACKING_PALETTES.size()
+        "saccade": return SACCADE_PALETTES.size()
+        "pursuit": return PURSUIT_PALETTES.size()
+        "peripheral_scan": return PERIPHERAL_PALETTES.size()
+        _: return 0
 
 static func _from_variant(entries: Array, variant: float) -> Dictionary:
     var normalized: float = clampf(variant, 0.0, 0.999999)

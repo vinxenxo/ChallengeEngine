@@ -1,12 +1,12 @@
 class_name VisualDrillSeedVariation
 extends RefCounted
 
-## C11-C 2.7.0 — Seeded visual-drill authoring variation.
+## C11-C 2.9.0 — Seeded visual-drill authoring variation.
 ## This stage expands a visual-drill definition deterministically from the content seed.
 ## It is an authoring transform: no runtime RNG stream is consumed and presentation
 ## does not calculate or alter mechanics after the envelope has been authored.
 
-const VERSION: String = "2.8.0"
+const VERSION: String = "2.9.0"
 const MASK_31: int = 0x7fffffff
 
 static func apply(subtype: String, seed_value: int, payload: Dictionary) -> Dictionary:

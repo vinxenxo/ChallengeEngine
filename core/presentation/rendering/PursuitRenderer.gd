@@ -7,6 +7,7 @@ const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
 const PursuitTargetLayerClass = preload("res://core/presentation/rendering/PursuitTargetLayer.gd")
 const DrillPaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
 const DOF_SHADER = preload("res://core/presentation/rendering/shaders/pursuit_dof.gdshader")
+const C11CDrillEnvironmentClass = preload("res://core/presentation/rendering/C11CDrillEnvironment.gd")
 
 var _frame_state: Dictionary = {}
 var _background := Color("020710")
@@ -19,6 +20,7 @@ var _target_layer: Node2D = null
 var _dof_rect: ColorRect = null
 var _dof_material: ShaderMaterial = null
 var _palette_name := "VOID_CYAN"
+var _environment: Node2D = null
 
 func _ready() -> void:
     _target_layer = PursuitTargetLayerClass.new()
@@ -37,10 +39,16 @@ func _ready() -> void:
     _dof_rect.material = _dof_material
     add_child(_dof_rect)
 
+    _environment = C11CDrillEnvironmentClass.new()
+    _environment.name = "PursuitEnvironment"
+    _environment.z_index = -40
+    add_child(_environment)
+
 func apply_state(model: Dictionary) -> void:
     _frame_state = model.duplicate(true)
     _apply_palette()
     _update_layers()
+    _update_environment()
     queue_redraw()
 
 func _apply_palette() -> void:
@@ -83,11 +91,20 @@ func _update_layers() -> void:
         _dof_material.set_shader_parameter("focus_radius", 0.16)
         _dof_material.set_shader_parameter("outer_radius", 0.62)
 
+func _update_environment() -> void:
+    if _environment == null:
+        return
+    var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
+    var target_states: Array = drill_state.get("target_states", [])
+    var target_position := Vector2(270.0, 480.0)
+    if target_states.size() == 1:
+        var target: Dictionary = target_states[0]
+        target_position = Vector2(float(target.get("x", 270.0)), float(target.get("y", 480.0)))
+    _environment.configure("pursuit", int(_frame_state.get("editorial_seed", 314159)), int(_frame_state.get("presentation_frame_index", 0)), _background, _accent, _secondary, _tertiary, target_position)
+
 func _draw() -> void:
     if _frame_state.is_empty():
         return
-    draw_rect(BODY_RECT, _background, true)
-
     var seed_value := int(_frame_state.get("editorial_seed", 314159))
     var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
     var trajectory: Dictionary = drill_state.get("trajectory_state", {})

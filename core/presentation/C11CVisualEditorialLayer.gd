@@ -2,11 +2,12 @@
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.7.0 — Shared visual-content social/editorial presentation layer.
+## C11-C 2.9.0 — Shared visual-content social/editorial presentation layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
 
 const C11CHeaderAnimatorV2Class = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
+const C11CVisualTypographyClass = preload("res://core/presentation/C11CVisualTypography.gd")
 
 const LOGICAL_CANVAS_SIZE := Vector2(540.0, 960.0)
 const HEADER_HEIGHT := 144.0
@@ -226,6 +227,7 @@ func _new_label(node_name: String, position_value: Vector2, size_value: Vector2,
     label.size = size_value
     label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     label.add_theme_font_size_override("font_size", font_size)
+    C11CVisualTypographyClass.apply_to_label(label)
     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     label.clip_text = true
@@ -234,7 +236,7 @@ func _new_label(node_name: String, position_value: Vector2, size_value: Vector2,
     return label
 
 func _apply_bold(label: Label) -> Label:
-    var base_font: Font = label.get_theme_default_font()
+    var base_font: Font = label.get_theme_font("font")
     if base_font == null:
         return label
     var bold_font := FontVariation.new()
@@ -246,7 +248,7 @@ func _apply_bold(label: Label) -> Label:
 func _fit_label(label: Label, text_value: String, max_font_size: int, min_font_size: int, max_width: float) -> void:
     if label == null:
         return
-    var font: Font = label.get_theme_default_font()
+    var font: Font = label.get_theme_font("font")
     if font == null:
         return
     var fitted: int = max_font_size
@@ -265,7 +267,7 @@ func _wrap_two_lines(text_value: String) -> String:
     var words: PackedStringArray = clean.split(" ", false)
     if words.size() <= 1:
         return clean
-    var font: Font = _header_line_2.get_theme_default_font() if _header_line_2 != null else null
+    var font: Font = _header_line_2.get_theme_font("font") if _header_line_2 != null else null
     if font == null:
         return clean
     var measure_font := FontVariation.new()

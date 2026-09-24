@@ -5,11 +5,11 @@ from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
 from c11c_studio.core.config import AppConfig
 from c11c_studio.core.project_context import ProjectContext
 from c11c_studio.services.environment_validator import EnvironmentValidator
-from c11c_studio.ui.theme import apply_dark_theme
+from c11c_studio.ui.theme import apply_light_theme
 from c11c_studio.ui.main_window import MainWindow
 
 APP_NAME = "C11-C Studio"
-APP_VERSION = "0.4.0"
+APP_VERSION = "0.5.1"
 
 
 def parse_args():
@@ -37,7 +37,7 @@ def main():
     app = QApplication(sys.argv)
     app.setApplicationName(APP_NAME)
     app.setApplicationVersion(APP_VERSION)
-    apply_dark_theme(app)
+    apply_light_theme(app)
 
     if root is None or not looks_like_project(root):
         chosen = QFileDialog.getExistingDirectory(None, "Select ChallengeEngineV01_STATELESS project root", str(Path.home()))

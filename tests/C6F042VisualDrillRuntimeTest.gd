@@ -78,7 +78,7 @@ func _test_all_four_generators_deterministic_evolution() -> void:
 	var total := 30
 	for g_type in types:
 		var gen = VisualDrillGeneratorRegistry.get_generator(g_type)
-		var params := _valid_drill_parameters()
+		var params := _valid_drill_parameters_for_type(g_type)
 		
 		var state1 = gen.generate(10, total, params)
 		var state2 = gen.generate(10, total, params)
@@ -128,6 +128,49 @@ func _test_generator_isolation_from_challenge() -> void:
 		if source.contains("ChallengeMechanic") or source.contains("SimulationResult") or source.contains("WinningFrameDetector") or source.contains("RNG"):
 			_fail("Generator " + g_type + " violates domain isolation by referencing Challenge/RNG classes.")
 	print("[PASS] _test_generator_isolation_from_challenge")
+
+
+func _valid_drill_parameters_for_type(g_type: String) -> Dictionary:
+	var params := _valid_drill_parameters()
+	match g_type:
+		"pursuit":
+			var samples: Array = []
+			for i in range(30):
+				var u: float = float(i) / 29.0
+				samples.append([0.24 + 0.52 * u, 0.50 + 0.16 * sin(TAU * 1.2 * u)])
+			params["trajectory"] = {
+				"type": "uniform_cubic_bspline",
+				"profile": "uniform_cubic_bspline_arc_length_v1",
+				"position_samples_normalized": samples,
+				"speed_factor_samples": [1.0, 1.0, 1.0, 1.0],
+				"camouflage_zones": []
+			}
+			params["task"] = {
+				"type": "pursuit",
+				"target_id": "t1",
+				"sizygia_count": 2,
+				"sizygia_events": [
+					{"index": 1, "frame_start": 8, "duration_frames": 5},
+					{"index": 2, "frame_start": 22, "duration_frames": 6}
+				]
+			}
+		"peripheral_scan":
+			params["trajectory"] = {
+				"type": "polar_logistic_orbits",
+				"center_normalized": [0.5, 0.5],
+				"ring_radii_normalized": [0.245, 0.355, 0.450]
+			}
+			params["task"] = {
+				"type": "peripheral_scan",
+				"target_id": "central_anchor",
+				"anchor_sequence": ["TRIANGLE", "CIRCLE", "SQUARE"],
+				"anchor_interval_frames": 8,
+				"events": [
+					{"id":"e1", "kind":"threat", "ring_index":1, "radius_norm":0.355, "angle_rad":0.5, "frame_start":8, "duration_frames":8, "pulse_pattern":"double"},
+					{"id":"e2", "kind":"distractor", "ring_index":2, "radius_norm":0.450, "angle_rad":2.2, "frame_start":14, "duration_frames":8, "pulse_pattern":"single"}
+				]
+			}
+	return params
 
 func _valid_drill_parameters() -> Dictionary:
 	return {

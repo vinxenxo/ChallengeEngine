@@ -1,0 +1,56 @@
+C11-C 2.9.0 — VISUAL DRILL POLISH MANIFEST
+
+BASELINE: C11-C 2.8.1 (last user-verified runtime baseline)
+CURRENT: C11-C 2.9.0 (active candidate; not frozen)
+
+FILES IN OVERLAY
+- C11-C2.9.0-VISUAL-DRILL-POLISH-OVERLAY.txt
+- CHANGELOG_C11-C_2.9.0.md
+- README.md
+- core/authoring/VisualDrillSeedVariation.gd
+- core/presentation/C11CVisualEditorialLayer.gd
+- core/presentation/C11CVisualTypography.gd
+- core/presentation/PresentationUI.gd
+- core/presentation/VisualDrillPresentationBinder.gd
+- core/presentation/VisualDrillPresentationPhaseLogic.gd
+- core/presentation/rendering/C11CDrillEnvironment.gd
+- core/presentation/rendering/PeripheralScanRenderer.gd
+- core/presentation/rendering/PursuitRenderer.gd
+- core/presentation/rendering/SaccadeRenderer.gd
+- core/presentation/rendering/TrackingRenderer.gd
+- docs/00_PROJECT_OVERVIEW.md
+- docs/01_ARCHITECTURE.md
+- docs/02_DATA_AND_CONTRACTS.md
+- docs/03_PRESENTATION.md
+- docs/04_REPOSITORY_STRUCTURE.md
+- docs/05_TESTING_AND_REGRESSION.md
+- docs/06_PRODUCTION_AND_DISTRIBUTION.md
+- docs/07_ROADMAP.md
+- docs/README.md
+- docs/c11/C11-C.12_DRILL_DESIGN_BIBLE_v1.0.md
+- docs/c11/C11-C.8_PURSUIT_MECHANIC_BASELINE_v1.1.md
+- docs/c11/C11-C.9_PERIPHERAL_SCAN_MECHANIC_BASELINE_v1.1.md
+- docs/c11/C11-C_2.9.0_CURRENT_STATE.md
+- docs/c11/C11-C_VISUAL_DRILL_AUDIO_DIRECTION_v2.0.md
+- docs/history/C11-C_2.9.0_STATUS_SNAPSHOT.md
+- docs/history/C11-C_HISTORY_INDEX_2.9.0.md
+- docs/master-prompts/MASTER_HANDOVER_C11-C_CURRENT_v2.9.0.md
+- tests/C10BDeterminismTest.gd
+- tests/C11CDrillPaletteBankContractTest.gd
+- tests/C11CPeripheralScanMechanicContractTest.gd
+- tests/C11CPeripheralScanPresentationContractTest.gd
+- tests/C11CPursuitPresentationContractTest.gd
+- tests/C11CSaccadePresentationContractTest.gd
+- tests/C11CTrackingPresentationContractTest.gd
+- tests/C11CVisualDrillEndCTAContractTest.gd
+- tests/C11CVisualDrillSeedVariationContractTest.gd
+- tests/C11CVisualDrillSocialDeliveryContractTest.gd
+- tests/C11CVisualDrillSocialPresentationContractTest.gd
+- tests/C11CVisualDrillTypographyContractTest.gd
+- tests/C6F042VisualDrillRuntimeTest.gd
+- tests/run_all.py
+- tools/prototypes/c11c_bulk/C11CVisualDrillReviewEnvelopeGenerator.gd
+- tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1
+- tools/prototypes/c11c_common/C11CDrillPaletteBank.gd
+- tools/prototypes/c11c_common/generate_c11c_ambient_audio.py
+- C11-C2.9.0-VISUAL-DRILL-POLISH-MANIFEST.txt

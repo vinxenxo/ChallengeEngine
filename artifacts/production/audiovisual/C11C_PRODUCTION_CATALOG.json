@@ -329,6 +329,606 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_574546432",
                          "created_utc":  "2026-09-24T15:47:20.9652757Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 574546432"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_213000676",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  213000676,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_213000676",
+                         "created_utc":  "2026-09-24T16:27:21.6420065Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 213000676"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1293646824",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1293646824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1293646824",
+                         "created_utc":  "2026-09-24T16:28:13.0757937Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1293646824"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1764483438",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1764483438,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1764483438",
+                         "created_utc":  "2026-09-24T16:29:11.9795853Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1764483438"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1285749456",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1285749456,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1285749456",
+                         "created_utc":  "2026-09-24T16:29:53.8551985Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1285749456"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_2128967575",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  2128967575,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_2128967575",
+                         "created_utc":  "2026-09-24T16:30:34.3781826Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 2128967575"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_213000676",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  213000676,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_213000676",
+                         "created_utc":  "2026-09-24T16:31:48.0015515Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 213000676"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1293646824",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1293646824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1293646824",
+                         "created_utc":  "2026-09-24T16:32:55.1875129Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1293646824"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1764483438",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1764483438,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1764483438",
+                         "created_utc":  "2026-09-24T16:34:04.5125839Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1764483438"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1285749456",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1285749456,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1285749456",
+                         "created_utc":  "2026-09-24T16:35:02.8426160Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1285749456"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2128967575",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2128967575,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2128967575",
+                         "created_utc":  "2026-09-24T16:36:11.8744172Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2128967575"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_213000676",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  213000676,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_213000676",
+                         "created_utc":  "2026-09-24T16:36:52.0725893Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 213000676"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1293646824",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1293646824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1293646824",
+                         "created_utc":  "2026-09-24T16:37:31.2669301Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1293646824"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1764483438",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1764483438,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1764483438",
+                         "created_utc":  "2026-09-24T16:38:10.0447880Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1764483438"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1285749456",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1285749456,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1285749456",
+                         "created_utc":  "2026-09-24T16:38:48.2555143Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1285749456"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_2128967575",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  2128967575,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_2128967575",
+                         "created_utc":  "2026-09-24T16:39:26.6730897Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 2128967575"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_213000676",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  213000676,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_213000676",
+                         "created_utc":  "2026-09-24T16:40:18.0235075Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 213000676"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1293646824",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1293646824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1293646824",
+                         "created_utc":  "2026-09-24T16:41:07.4577061Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1293646824"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1764483438",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1764483438,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1764483438",
+                         "created_utc":  "2026-09-24T16:41:58.2706676Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1764483438"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1285749456",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1285749456,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1285749456",
+                         "created_utc":  "2026-09-24T16:42:48.6430719Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1285749456"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_2128967575",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  2128967575,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_2128967575",
+                         "created_utc":  "2026-09-24T16:43:34.8737743Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 2128967575"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_213000676",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  213000676,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_213000676",
+                         "created_utc":  "2026-09-24T16:44:18.3925708Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 213000676"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1293646824",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1293646824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1293646824",
+                         "created_utc":  "2026-09-24T16:45:02.2632099Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1293646824"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1764483438",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1764483438,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1764483438",
+                         "created_utc":  "2026-09-24T16:45:43.7523740Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1764483438"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1285749456",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1285749456,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1285749456",
+                         "created_utc":  "2026-09-24T16:46:26.8670882Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1285749456"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_2128967575",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  2128967575,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_2128967575",
+                         "created_utc":  "2026-09-24T16:47:10.0832647Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 2128967575"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1209245824",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1209245824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1209245824",
+                         "created_utc":  "2026-09-24T18:30:52.1299366Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1209245824"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1219360445",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1219360445,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1219360445",
+                         "created_utc":  "2026-09-24T18:31:32.0861729Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1219360445"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_119995032",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  119995032,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_119995032",
+                         "created_utc":  "2026-09-24T18:32:10.1665191Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 119995032"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_799162203",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  799162203,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_799162203",
+                         "created_utc":  "2026-09-24T18:32:50.1398811Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 799162203"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_161627453",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  161627453,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_161627453",
+                         "created_utc":  "2026-09-24T18:33:29.3433594Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 161627453"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1209245824",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1209245824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1209245824",
+                         "created_utc":  "2026-09-24T18:34:27.6165417Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1209245824"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1219360445",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1219360445,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1219360445",
+                         "created_utc":  "2026-09-24T18:35:50.3298289Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1219360445"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_119995032",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  119995032,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_119995032",
+                         "created_utc":  "2026-09-24T18:36:57.9297222Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 119995032"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_799162203",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  799162203,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_799162203",
+                         "created_utc":  "2026-09-24T18:38:03.7044030Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 799162203"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_161627453",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  161627453,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_161627453",
+                         "created_utc":  "2026-09-24T18:39:04.9099730Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 161627453"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1209245824",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1209245824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1209245824",
+                         "created_utc":  "2026-09-24T18:40:03.9387508Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1209245824"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1219360445",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1219360445,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1219360445",
+                         "created_utc":  "2026-09-24T18:41:05.6668929Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1219360445"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_119995032",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  119995032,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_119995032",
+                         "created_utc":  "2026-09-24T18:41:49.2742279Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 119995032"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_799162203",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  799162203,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_799162203",
+                         "created_utc":  "2026-09-24T18:42:33.5596304Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 799162203"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_161627453",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  161627453,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_161627453",
+                         "created_utc":  "2026-09-24T18:43:21.2907681Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 161627453"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1209245824",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1209245824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1209245824",
+                         "created_utc":  "2026-09-24T18:44:34.6168958Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1209245824"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1219360445",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1219360445,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1219360445",
+                         "created_utc":  "2026-09-24T18:45:30.1811283Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1219360445"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_119995032",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  119995032,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_119995032",
+                         "created_utc":  "2026-09-24T18:46:24.4859249Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 119995032"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_799162203",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  799162203,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_799162203",
+                         "created_utc":  "2026-09-24T18:47:19.9249714Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 799162203"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_161627453",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  161627453,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_161627453",
+                         "created_utc":  "2026-09-24T18:48:10.8953521Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 161627453"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1209245824",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1209245824,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1209245824",
+                         "created_utc":  "2026-09-24T18:48:54.6090180Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1209245824"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1219360445",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1219360445,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1219360445",
+                         "created_utc":  "2026-09-24T18:49:37.6775736Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1219360445"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_119995032",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  119995032,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_119995032",
+                         "created_utc":  "2026-09-24T18:50:22.8004684Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 119995032"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_799162203",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  799162203,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_799162203",
+                         "created_utc":  "2026-09-24T18:51:05.4178173Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 799162203"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_161627453",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  161627453,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_161627453",
+                         "created_utc":  "2026-09-24T18:51:46.5957371Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 161627453"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_828169733",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  828169733,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_828169733",
+                         "created_utc":  "2026-09-24T18:55:26.2931918Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 828169733"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1779689030",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1779689030,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1779689030",
+                         "created_utc":  "2026-09-24T18:56:05.5781748Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1779689030"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_894695305",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  894695305,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_894695305",
+                         "created_utc":  "2026-09-24T18:56:43.7591476Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 894695305"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_893587323",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  893587323,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_893587323",
+                         "created_utc":  "2026-09-24T18:57:23.5027911Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 893587323"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1968707165",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1968707165,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1968707165",
+                         "created_utc":  "2026-09-24T18:58:03.7352249Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1968707165"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_828169733",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  828169733,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_828169733",
+                         "created_utc":  "2026-09-24T18:59:14.7900882Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 828169733"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1779689030",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1779689030,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1779689030",
+                         "created_utc":  "2026-09-24T19:00:10.7084077Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1779689030"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_894695305",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  894695305,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_894695305",
+                         "created_utc":  "2026-09-24T19:01:15.1293227Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 894695305"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_893587323",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  893587323,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_893587323",
+                         "created_utc":  "2026-09-24T19:02:15.4014678Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 893587323"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1968707165",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1968707165,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1968707165",
+                         "created_utc":  "2026-09-24T19:03:03.9277740Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1968707165"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_828169733",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  828169733,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_828169733",
+                         "created_utc":  "2026-09-24T19:04:06.1585125Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 828169733"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1779689030",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1779689030,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1779689030",
+                         "created_utc":  "2026-09-24T19:04:49.8513498Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1779689030"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_894695305",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  894695305,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_894695305",
+                         "created_utc":  "2026-09-24T19:05:38.8430954Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 894695305"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_893587323",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  893587323,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_893587323",
+                         "created_utc":  "2026-09-24T19:06:26.1452573Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 893587323"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1968707165",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1968707165,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1968707165",
+                         "created_utc":  "2026-09-24T19:07:07.8608130Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1968707165"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_828169733",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  828169733,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_828169733",
+                         "created_utc":  "2026-09-24T19:08:01.2428422Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 828169733"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1779689030",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1779689030,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1779689030",
+                         "created_utc":  "2026-09-24T19:08:58.4390843Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1779689030"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_894695305",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  894695305,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_894695305",
+                         "created_utc":  "2026-09-24T19:09:58.1113746Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 894695305"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_893587323",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  893587323,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_893587323",
+                         "created_utc":  "2026-09-24T19:10:50.8477281Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 893587323"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1968707165",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1968707165,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1968707165",
+                         "created_utc":  "2026-09-24T19:11:41.6556036Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1968707165"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_828169733",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  828169733,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_828169733",
+                         "created_utc":  "2026-09-24T19:12:26.8205407Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 828169733"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1779689030",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1779689030,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1779689030",
+                         "created_utc":  "2026-09-24T19:13:09.4970042Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1779689030"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_894695305",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  894695305,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_894695305",
+                         "created_utc":  "2026-09-24T19:13:53.8392280Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 894695305"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_893587323",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  893587323,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_893587323",
+                         "created_utc":  "2026-09-24T19:14:42.4394742Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 893587323"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1968707165",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1968707165,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1968707165",
+                         "created_utc":  "2026-09-24T19:15:27.2935723Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1968707165"
                      }
                  ]
 }

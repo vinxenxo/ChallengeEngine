@@ -6,8 +6,10 @@ extends Node2D
 const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
 const CENTER := Vector2(270.0, 480.0)
 const DrillPaletteBankClass = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
+const C11CDrillEnvironmentClass = preload("res://core/presentation/rendering/C11CDrillEnvironment.gd")
 
 var _frame_state: Dictionary = {}
+var _environment: Node2D = Node2D.new()
 var _background := Color("020B0C")
 var _primary := Color("62FFE1")
 var _secondary := Color("43A8FF")
@@ -15,9 +17,16 @@ var _tertiary := Color("B7FFF1")
 var _target := Color("FAFFFE")
 var _palette_index := -1
 
+func _ready() -> void:
+    _environment = C11CDrillEnvironmentClass.new()
+    _environment.name = "PeripheralScanEnvironment"
+    _environment.z_index = -40
+    add_child(_environment)
+
 func apply_state(model: Dictionary) -> void:
     _frame_state = model.duplicate(true)
     _apply_palette()
+    _update_environment()
     queue_redraw()
 
 func _apply_palette() -> void:
@@ -34,11 +43,14 @@ func _apply_palette() -> void:
     _tertiary = Color(str(palette.get("tertiary", "B7FFF1")))
     _target = Color(str(palette.get("target", "FAFFFE")))
 
+func _update_environment() -> void:
+    if _environment == null:
+        return
+    _environment.configure("peripheral_scan", int(_frame_state.get("editorial_seed", 314159)), int(_frame_state.get("presentation_frame_index", 0)), _background, _primary, _secondary, _tertiary, CENTER)
+
 func _draw() -> void:
     if _frame_state.is_empty():
         return
-    draw_rect(BODY_RECT, _background, true)
-
     var drill_state: Dictionary = _frame_state.get("drill_frame_state", _frame_state)
     var trajectory: Dictionary = drill_state.get("trajectory_state", {})
     var task: Dictionary = drill_state.get("task_state", {})

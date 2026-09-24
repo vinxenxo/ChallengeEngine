@@ -1,7 +1,7 @@
 class_name VisualDrillPresentationPhaseLogic
 extends RefCounted
 
-## C11-C 2.7.0 — Shared Visual Drill presentation phases.
+## C11-C 2.9.0 — Shared Visual Drill presentation phases.
 const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
 
 ## Presentation-only companion to CountdownPresentationLogic.

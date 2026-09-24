@@ -56,7 +56,7 @@ func _run_tests() -> void:
     _assert(generator != null and is_instance_valid(generator), "PeripheralScanGenerator must instantiate successfully.")
     if generator == null or not is_instance_valid(generator):
         return
-    var frame0 := generator.generate_with_variation(0, 510, a, {"pattern_variant": 0.25, "amplitude_variant": 0.75})
+    var frame0: Dictionary = generator.generate_with_variation(0, 510, a, {"pattern_variant": 0.25, "amplitude_variant": 0.75})
     _assert(frame0.get("target_states", []).size() == 1, "Peripheral Scan must expose exactly one central fixation anchor.")
     var anchor_state: Dictionary = frame0.get("task_state", {}).get("anchor_state", {})
     _assert(is_equal_approx(float(anchor_state.get("x", -1.0)), 270.0), "Peripheral anchor X must remain fixed at 270.")

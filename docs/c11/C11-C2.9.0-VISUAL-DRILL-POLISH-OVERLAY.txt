@@ -1,0 +1,31 @@
+C11-C 2.9.0 — VISUAL DRILL POLISH OVERLAY
+
+BASELINE
+2.8.1 — last user-verified runtime baseline.
+
+SCOPE
+- Move Visual Drill terminal CTA to Header and hide the whole FooterRegion during END_CTA.
+- Preserve the historical shared Challenge CTAComponent; no duplicate CTA system.
+- Apply Courier Regular to newly authored C11-C editorial, CTA, countdown and Saccade counter text.
+- Expand semantic palette bank to 18 variants per drill family.
+- Add shared family-specific procedural drill environments.
+- Add shared deterministic mobile-safe motion ambient generator/profile.
+- Require a social .txt sidecar for every physical Visual Drill review render.
+- Harden Pursuit/Peripheral authoring/runtime/test paths and preserve authored answer sheets.
+- Consolidate C11-C operational documentation and historical continuity map through 2.9.0.
+
+FROZEN BOUNDARIES
+Do not modify C11-B simulation mathematics, structural RNG ownership, SimulationResult, winning_frame, close_calls, WinningFrameDetector, RenderedFrameStream, C7 contracts or C9 frozen authoring semantics.
+
+PRESENTATION ENVELOPE
+PRE_ROLL 3 s → GAME → END_CTA 3 s.
+Tracking: 21 s gameplay / 27 s total / 810 frames.
+Saccade, Pursuit, Peripheral Scan: 17 s gameplay / 23 s total / 690 frames.
+
+VALIDATION EXPECTATION
+Static/package validation is performed before delivery. Final acceptance requires Windows/Godot 4.7.1 runtime, physical four-family render review, five-seed variance review, social sidecar verification and audio/mobile review.
+
+APPLY
+Expand-Archive -Path .\C11C_2.9.0_VISUAL_DRILL_POLISH_OVERLAY.zip -DestinationPath . -Force
+OR
+git apply .\C11C_2.9.0_VISUAL_DRILL_POLISH.patch

@@ -2,41 +2,62 @@
 
 ## Challenge corpus
 
-| ID | Mechanic | RNG | Notes |
-|---|---|---|---|
-| `CHALLENGE_001` | key | 1.0 | historical fixture |
-| `CHALLENGE_002` | parking | 1.0 | legacy parking route |
-| `CHALLENGE_003` | pilot | 2.0 | native current route |
-| `CHALLENGE_004` | parking_v2 | 2.0 | native V2 parking |
-| `CHALLENGE_005` | hit_v1 | 2.0 | native hit route |
-| `CHALLENGE_006` | catch_v1 | 2.0 | native catch route |
-| `CHALLENGE_007` | find_v1 | 2.0 | native find route |
-| `CHALLENGE_008` | choose_v1 | 2.0 | native choose route |
-| `CHALLENGE_009` | count_v1 | 2.0 | native count route |
+Historical Challenge definitions remain independently testable and are not normalized for Visual Drill convenience.
 
-Historical versions remain independently testable. Do not normalize their native durations or silently remap one mechanic to another implementation.
+## Visual Drill canonical presentation data
 
-## Truth flow
+| Family | Gameplay | Total with phases | Primary authored response |
+|---|---:|---:|---|
+| Tracking | 21 s | 27 s | trajectory/optional future cognitive variants |
+| Saccade | 17 s | 23 s | jump sequence / `jump_index` |
+| Pursuit | 17 s | 23 s | `answer_sheet.sizygia_count` + event frames |
+| Peripheral Scan | 17 s | 23 s | threat/distractor counts + event frames |
 
-```text
-Definition
-   → deterministic simulation
-   → SimulationResult / FrameSnapshot
-   → passive presentation
-   → RenderedFrameStream
-   → physical production artifact
+## Authoring answer sheets
+
+The request-specific Visual Drill envelope generator writes `authoring.json`. Its `authored.answer_sheet` is the study answer key and remains separate from presentation styling.
+
+### Pursuit
+
+```json
+{
+  "sizygia_count": 4,
+  "event_frame_starts": [ ... ]
+}
 ```
 
-## Visual content
+The number is deterministic for the seed and difficulty tier. It is not recomputed by the renderer.
 
-The canonical C6-F0.8 visual loop/drill content envelope remains visual-only. C11-B adds the social presentation frame around the established runtime output; it does not turn social UI text into a canonical gameplay/content field.
+### Peripheral Scan
 
-## Schemas
+```json
+{
+  "threat_count": 4,
+  "distractor_count": 8,
+  "threat_frame_starts": [ ... ],
+  "distractor_frame_starts": [ ... ]
+}
+```
 
-The normative challenge schema is `schemas/challenge_schema.json`.
+## Seed variation
 
-`tests/fixtures/` contains compatibility fixtures that may intentionally represent older contracts. Their existence is part of the regression surface and they must not be "modernized" merely for cosmetic consistency.
+`VisualDrillSeedVariation/2.9.0` is the active authoring variation layer for all four drill families.
+
+It changes family-specific authored data from the content seed while preserving deterministic repeatability. Runtime presentation variants remain separate cosmetic inputs.
+
+## Frozen boundaries
+
+Presentation additions must not alter:
+
+- `SimulationResult`;
+- `winning_frame`;
+- `close_calls`;
+- `WinningFrameDetector`;
+- `RenderedFrameStream`;
+- C7 audio contracts;
+- C9 challenge authoring contracts;
+- C11-B logical/physical social geometry.
 
 ## Contract reopening rule
 
-A frozen contract is changed only through a named checkpoint with an explicit contract revision, focused tests, regression evidence and a final acceptance decision.
+A semantic engine change requires an explicit checkpoint with a new contract revision, focused tests, regression evidence and acceptance. C11-C art/presentation work must remain on the presentation side of that boundary.

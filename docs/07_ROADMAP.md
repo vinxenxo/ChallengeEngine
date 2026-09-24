@@ -1,117 +1,84 @@
 # Roadmap to Production
 
-This roadmap distinguishes completed/frozen engineering from future product work. Closed checkpoints are not reopened for convenience.
+## Closed foundations
 
-## Completed foundation
+- C6-F0.8 — Visual runtime foundation — closed.
+- C7 — audiovisual contracts — closed.
+- C9 — authoring contracts — closed.
+- C10 — authoring → runtime → physical export — closed.
+- C11-A / A.1 — qualification — closed.
+- C11-B — Unified Social Frame — closed/certified/frozen.
 
-### C6-F0.8 — Visual runtime foundation
+## C11-C current line
 
-Deterministic visual loop/drill runtime, presentation and content/runtime boundaries frozen.
+### Completed families / foundations
 
-### C7 — Audiovisual
+1. Geometric Waves visual-loop benchmark.
+2. Tracking — seeded motion, growing history trail and refined presentation.
+3. Saccade — seeded polar jumps, counter and refined presentation.
+4. Pursuit — authored uniform cubic B-spline, arc-length path, sizygia and camouflage.
+5. Peripheral Scan — authored polar/logistic schedule, threat/distractor answer sheet.
+6. Shared PRE_ROLL / GAME / END_CTA presentation phases.
+7. END_CTA reused from Challenge and now placed in Header.
+8. Common C11-C typography utility.
+9. Expanded semantic palette bank.
+10. Shared procedural drill environments.
+11. Shared mobile-safe Visual Drill motion ambient.
+12. Social `.txt` delivery contract.
+13. Current C11-C documentation/handover.
 
-Audio generation, audiovisual export and policy gates frozen.
+## Current 2.9.0 gate
 
-### C9 — Authoring
+The active checkpoint is **2.9.0 — Drill presentation polish**.
 
-Productive challenge authoring and canonical generation contracts frozen.
-
-### C10 — Visual authoring → runtime → physical export
-
-Closed and certified.
-
-### C11-A / C11-A.1 — Qualification
-
-Closed and certified. Visual and challenge seed qualification matrices established the reference evidence used by later regression.
-
-### C11-B — Unified Social Frame
-
-Closed, certified and frozen. The common 540×960 Header/Body/Footer structure was introduced without changing simulation truth.
-
-## C11-B Repository Organization
-
-Maintenance checkpoint immediately after the semantic freeze.
-
-**Goal:** make the repository understandable and maintainable without losing any executable test, fixture, contract or historically useful evidence.
-
-**Acceptance:** the new layout passes the complete runbook, retired active roots are absent, documentation points to current paths, and the organization is committed separately from the semantic C11-B freeze.
-
-## C11-C — Art Direction
-
-First product-evolution checkpoint after repository organization.
-
-1. inventory owner-supplied reference images;
-2. define common visual vocabulary;
-3. define measurable design tokens and layout constraints;
-4. prototype one representative route;
-5. physically render and compare;
-6. propagate the accepted design system;
-7. run visual regression across the defined routes;
-8. freeze C11-C.
-
-### Frozen during C11-C
-
-The following remain closed unless a separate checkpoint explicitly reopens them:
-
-- mechanic mathematics;
-- RNG algorithms, versions and ownership;
-- canonical challenge/visual definitions;
-- `SimulationResult` semantics;
-- winning-frame semantics;
-- `RenderedFrameStream` contract;
-- C7 audio contracts;
-- C9 authoring contracts;
-- C11-B Header/Body/Footer structure.
-
-## C11-D — Final Export
-
-Lock production presentation profiles, export settings, media QA, provenance and release-candidate evidence.
-
-Deliverables should include:
-
-- deterministic source snapshot;
-- final visual/audio profiles;
-- production render matrix;
-- manifest/provenance records;
-- physical media validation;
-- reproducible export instructions.
-
-## C11-E — Distribution
-
-Finalize distribution metadata, packaging, platform-specific delivery procedures and operational release recovery.
-
-Deliverables should include:
-
-- versioned release package;
-- distribution metadata;
-- final checksums/provenance;
-- release checklist;
-- rollback/recovery procedure.
-
-## Production launch gate
-
-Production launch requires an explicitly versioned source snapshot and all applicable gates green. At minimum:
+Required before freeze:
 
 ```text
-SOURCE SNAPSHOT
-    ↓
-LOGICAL REGRESSION
-    ↓
-DETERMINISM / RETRO
-    ↓
-PHYSICAL MEDIA QA
-    ↓
-PROVENANCE / MANIFEST
-    ↓
-RELEASE CANDIDATE
-    ↓
-DISTRIBUTION QA
-    ↓
-PRODUCTION
+2.9.0 source snapshot
+       ↓
+113-suite logical regression green
+       ↓
+4-family playback green
+       ↓
+5-seed visual variance review
+       ↓
+social.txt presence confirmed for all families
+       ↓
+audio review on mobile-class playback
+       ↓
+C11-C freeze decision
 ```
 
-No art-direction change is considered production-ready merely because it looks correct interactively; it must survive the physical export path and the applicable deterministic regression.
+## Cognitive-load expansion roadmap
+
+The supplied Drill Design Bible is split into current and future mechanics to avoid destabilizing already-valid contracts.
+
+### Tracking future
+
+- predictive occlusion tunnel;
+- target morph-state counting.
+
+### Saccade future
+
+- N-back spatial memory;
+- flash recognition / Landolt-style orientation.
+
+### Pursuit future
+
+- depth/scale modulation;
+- flanker interference.
+
+### Peripheral Scan future
+
+- quadrant/bin counting;
+- asynchronous/polyrhythmic peripheral spawns.
+
+These future mechanics require their own authored answer data and focused contract suites; they should not be added as renderer-only effects.
+
+## C11-D
+
+Final export profile lock, media QA, provenance, production matrix and release-candidate evidence.
 
 ## Long-term principle
 
-The project should grow by adding explicit checkpoints, not by silently mutating frozen ones. Every future architectural change should identify its contract, its migration path and its regression gates before implementation begins.
+Every future evolution gets an explicit versioned checkpoint. Historical documents remain auditable; current operational truth is always identified by the active versioned handover.

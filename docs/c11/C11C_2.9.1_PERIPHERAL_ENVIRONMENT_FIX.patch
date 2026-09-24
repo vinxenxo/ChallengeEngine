@@ -1,0 +1,7 @@
+diff --git a/core/presentation/rendering/PeripheralScanRenderer.gd b/core/presentation/rendering/PeripheralScanRenderer.gd
+--- a/core/presentation/rendering/PeripheralScanRenderer.gd
++++ b/core/presentation/rendering/PeripheralScanRenderer.gd
+@@
+ var _frame_state: Dictionary = {}
++var _environment: Node2D = Node2D.new()
+ var _background := Color("020B0C")

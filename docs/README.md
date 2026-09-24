@@ -1,32 +1,22 @@
 # Documentation Map
 
-## Live project documentation
+## Current operational documentation
 
-- `00_PROJECT_OVERVIEW.md` — project mission and current status.
-- `01_ARCHITECTURE.md` — layer boundaries and invariants.
-- `02_DATA_AND_CONTRACTS.md` — data truth and contract rules.
-- `03_PRESENTATION.md` — social frame and presentation boundary.
-- `04_REPOSITORY_STRUCTURE.md` — where source, tests, tools and artifacts live.
-- `05_TESTING_AND_REGRESSION.md` — complete test matrix and regression policy.
-- `06_PRODUCTION_AND_DISTRIBUTION.md` — production pipeline and release readiness.
-- `07_ROADMAP.md` — path from current freeze to production.
+- `00_PROJECT_OVERVIEW.md` — current project state.
+- `01_ARCHITECTURE.md` — layer boundaries and determinism rules.
+- `02_DATA_AND_CONTRACTS.md` — Visual Drill authoring data and answer-sheet contracts.
+- `03_PRESENTATION.md` — social frame, phases, CTA, typography and backgrounds.
+- `04_REPOSITORY_STRUCTURE.md` — current live files.
+- `05_TESTING_AND_REGRESSION.md` — 2.9.0 regression workflow.
+- `06_PRODUCTION_AND_DISTRIBUTION.md` — physical production and social/audio delivery.
+- `07_ROADMAP.md` — current C11-C gate and future C11-D.
 
-## Operations
+## Current C11-C authority
 
-- `operations/TEST_RUNBOOK.md` — copy/paste test procedures.
-- `operations/REPOSITORY_ORGANIZATION.md` — cleanup/maintenance rules.
-- `operations/ARTIFACT_POLICY.md` — generated evidence policy.
-- `operations/GOVERNANCE.md` — current engineering governance.
+- `c11/C11-C_2.9.0_CURRENT_STATE.md`
+- `master-prompts/MASTER_HANDOVER_C11-C_CURRENT_v2.9.0.md`
 
-## Checkpoints and continuity
+## Historical continuity
 
-- `checkpoints/C11_FREEZE.md` — C11-B semantic frozen state.
-- `checkpoints/C11_B_REPOSITORY_ORGANIZATION.md` — repository cleanup checkpoint.
-- `checkpoints/C11_B_REPOSITORY_CLEANUP_AUDIT.md` — exact move/retention decisions.
-- `contracts/C11_ARCHITECTURE_MANIFESTO.md` — C11 simulation/presentation boundary.
-- `master-prompts/MASTER_HANDOVER_C11_B_REPOSITORY_ORGANIZATION.md` — continuity authority for the organized baseline.
-- `master-prompts/START_PROMPT_C11C_ART_DIRECTION.md` — next-window startup prompt after cleanup validation.
-
-## History
-
-`history/` contains superseded checkpoint documents, old prompts and useful historical scripts. They are preserved for auditability and context, not as current instructions.
+- `history/C11-C_HISTORY_INDEX_2.9.0.md` — version-by-version continuity map through the current checkpoint.
+- `history/` and versioned C11-C documents preserve previous checkpoints and are not current instructions unless explicitly referenced by the active handover.

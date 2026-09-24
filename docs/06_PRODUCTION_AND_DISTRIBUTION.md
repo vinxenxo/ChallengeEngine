@@ -1,58 +1,64 @@
 # Production and Distribution
 
-## Canonical production pipeline
+## Visual Drill production envelope
 
 ```text
-canonical definition
-    ↓
-authoring / contract validation
-    ↓
-deterministic runtime
-    ↓
-passive presentation
-    ↓
-Godot Movie Maker
-    ↓
+Authoring
+  ↓
+request-specific envelope + authoring.json
+  ↓
+VisualDrillRuntime
+  ↓
+UnifiedSocialFrame / C11-C presentation
+  ↓
+Movie Maker
+  ↓
 AVI
-    ↓
+  ↓
 FFmpeg
-    ↓
-MP4
-    ↓
-FFprobe + manifest
-    ↓
-release gate
+  ↓
+MP4 + FFprobe
+  ↓
+manifest + social.txt + review artifacts
 ```
 
-`build_factory.py` is the canonical production CLI. Its normal output root is `artifacts/production/challenges`.
+## Physical contract
 
-## Artifact policy
+- 720×1280
+- 9:16
+- 30 FPS
+- Tracking: 27 s total
+- Saccade/Pursuit/Peripheral Scan: 23 s total
+- 3 s countdown + gameplay + 3 s terminal CTA
 
-- `artifacts/production/challenges/`: challenge production outputs.
-- `artifacts/production/audiovisual/`: C7 audiovisual/audio evidence.
-- `artifacts/qa/`: C10/C11 QA runs, manifests and regression inputs.
-- `artifacts/regression/`: baselines, comparisons and freeze reports.
-- `artifacts/tests/`: test logs/reports.
-- `artifacts/releases/`: retained release/freeze packages and certificates.
-- `artifacts/legacy/`: historical outputs preserved for audit only.
-- `artifacts/scratch/`: disposable local work.
+## Audio
 
-## Physical rendering
+C11-C 2.9.0 uses one shared Visual Drill ambient master, profile `drill_motion_ambient_v2`. The master is intentionally independent of family/seed and contains no event-locked timing.
 
-The physical contract uses Godot 4.7.1 with the graphical Compatibility renderer and Movie Maker. Headless Godot is appropriate for logical validation, fixture preparation and contract suites; it is not a replacement for the physical export path.
+`-NoSound` / `-Silent` remain supported by the review runner.
+
+## Social sidecar
+
+Every review render creates a sibling `.txt` with:
+
+- title;
+- description;
+- family;
+- seed;
+- resolution;
+- FPS;
+- gameplay duration/frames;
+- countdown and CTA durations;
+- CTA text and Header placement;
+- audio mode;
+- font;
+- procedural background statement;
+- family-specific hashtags.
+
+Actual answer counts remain in `authoring.json`, not in the public social sidecar.
 
 ## Release readiness
 
-Before a production release, the repository must have:
+2.9.0 is not production-frozen until the final Windows/Godot runtime validation and physical visual review are green.
 
-1. a known source/configuration snapshot;
-2. green logical and deterministic regression;
-3. required physical export evidence;
-4. valid manifests/provenance;
-5. reproducible production commands;
-6. documented recovery/rollback behavior;
-7. no unresolved contract drift.
-
-## Roadmap to production
-
-C11-C defines and validates the visual language. C11-D locks final export profiles, production media QA and release-candidate outputs. C11-E establishes distribution metadata, packaging and final operational procedures.
+C11-D remains the later checkpoint for locking final export profiles, media QA, provenance and release-candidate packaging.

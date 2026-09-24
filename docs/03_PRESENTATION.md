@@ -2,37 +2,83 @@
 
 ## Unified social frame
 
-All social renders use a common 540×960 structural frame:
-
 ```text
+540 × 960 logical
 HEADER  0..144
 BODY    144..816
 FOOTER  816..960
 ```
 
-`UnifiedSocialFrame` is structural and passive. Content roles are bound by the appropriate presentation binder/UI layer.
+Physical social delivery remains 720×1280 at 30 FPS with one uniform 4/3 scale at the presentation boundary.
 
-## Coordinate mapping
+## Visual Drill phase envelope
 
-Simulation continues to use the established logical coordinate system. `CoordinateMapper` projects logical geometry into the social Body region while preserving aspect ratio. This is a presentation transform only.
+All four drill families use:
 
-## Framing
+```text
+PRE_ROLL  = 3 s
+GAME      = canonical drill gameplay
+END_CTA   = 3 s
+```
 
-`PresentationFramer` owns presentation framing decisions. It cannot redefine simulation geometry, calculate the winning frame or alter RNG consumption.
+Current totals:
 
-## Winning-frame visibility
+- Tracking: 21 + 3 + 3 = 27 s / 810 physical frames.
+- Saccade: 17 + 3 + 3 = 23 s / 690 physical frames.
+- Pursuit: 17 + 3 + 3 = 23 s / 690 physical frames.
+- Peripheral Scan: 17 + 3 + 3 = 23 s / 690 physical frames.
 
-The visibility gate evaluates mapped screen-space geometry. A presentation validation failure must be repaired in presentation mapping/binding, not by changing the underlying winning-frame mathematics.
+## Terminal CTA
 
-## C11-C art direction
+Visual Drills reuse the historical `CTAComponent` implementation used by Challenge.
 
-The frozen structural frame is the starting boundary for visual design. Art direction can evolve:
+Placement:
 
-- palette and typography
-- asset treatment
-- backgrounds and foregrounds
-- visual hierarchy
-- badges and text styling
-- motion language and emphasis
+```text
+Visual Drill END_CTA
+    └── HEADER
+```
 
-The first implementation should be validated on one representative route before propagation to the wider corpus.
+Message:
+
+```text
+¿LO CONSEGUISTE?
+¿HASTA DÓNDE LLEGASTE?
+```
+
+During END_CTA the entire `FooterRegion` is hidden. This removes the background box from the former Footer presentation state while preserving C11-B structural geometry.
+
+## Typography
+
+C11-C Visual content uses `C11CVisualTypography` → `assets/fonts/courier-regular.ttf`.
+
+The legacy `PresentationTheme` remains available for C6/Challenge compatibility; the C11-C utility prevents a global theme mutation solely to satisfy the new drill typography.
+
+## Background language
+
+`C11CDrillEnvironment` is a shared low-salience background layer:
+
+- Tracking: atmospheric contour arcs + sparse particles; no Tron road and no future trajectory.
+- Saccade: sparse constellation haze; no edge connects or predicts target jumps.
+- Pursuit: star field + soft nebular masses under radial DOF.
+- Peripheral Scan: sparse space dust + outer atmospheric ring beneath orbital radar.
+
+The environment is presentation-only and stays subordinate to the drill stimulus.
+
+## Visual Drill family renderers
+
+### Tracking
+
+Hero target + growing history trail. Seed variation is authored, not generated in presentation.
+
+### Saccade
+
+Discrete target relocation, scale/opacity/flash transitions and a counter driven by emitted `jump_index`.
+
+### Pursuit
+
+Complex internal Euler-like target structure, authored arc-length movement, sizygia response and radial depth-of-field treatment.
+
+### Peripheral Scan
+
+Fixed central fixation anchor, orbital rings and luminosity-only peripheral flares, with authored threat/distractor event timing.

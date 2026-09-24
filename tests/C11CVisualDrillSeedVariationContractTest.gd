@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.8.0 — Seeded Visual Drill authoring variation contract.
+## C11-C 2.9.0 — Seeded Visual Drill authoring variation contract.
 ## Verifies that visual-drill content seeds create deterministic but materially different
 ## Tracking mechanics before runtime, without touching presentation RNG or simulation.
 

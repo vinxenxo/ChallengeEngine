@@ -1,4 +1,5 @@
 import subprocess
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -19,16 +20,50 @@ class CommandSpec:
                 self.display_command = " ".join([self.executable, *map(str, self.arguments)])
 
 
+def _ps_quote(value: str) -> str:
+    value = str(value)
+    if re.fullmatch(r"-?\d+(?:\.\d+)?", value):
+        return value
+    return "'" + value.replace("'", "''") + "'"
+
+
 def _ps(powershell, script, args=(), working_directory=None):
+    args = [str(a) for a in args]
+    has_array = "-Seeds" in args
+    if has_array:
+        parts = [f"& {_ps_quote(str(script))}"]
+        i = 0
+        while i < len(args):
+            item = args[i]
+            parts.append(item)
+            if item == "-Seeds" and i + 1 < len(args):
+                raw = args[i + 1]
+                vals = [v for v in raw.split(",") if v.strip()]
+                parts.append("@( " + ", ".join(v.strip() for v in vals) + " )")
+                i += 2
+                continue
+            if i + 1 < len(args) and not args[i + 1].startswith("-"):
+                parts.append(_ps_quote(args[i + 1]))
+                i += 2
+                continue
+            i += 1
+        command = " ".join(parts) + "; if (-not $?) { exit 1 }"
+        return CommandSpec(
+            str(powershell),
+            ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", command],
+            str(working_directory or Path(script).parent),
+        )
     return CommandSpec(
         str(powershell),
-        ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), *map(str, args)],
+        ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), *args],
         str(working_directory or Path(script).parent),
     )
 
 
 def _arr(flag, values):
-    return [flag, *[str(v) for v in values]]
+    # Marker consumed by _ps: PowerShell must parse the comma expression as an
+    # actual Int32[] rather than receiving a literal CSV string from QProcess.
+    return [flag, ",".join(str(v) for v in values)]
 
 
 class CommandBuilder:
