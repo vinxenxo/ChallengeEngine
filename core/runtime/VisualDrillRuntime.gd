@@ -68,8 +68,12 @@ func _initialize_domain(definition: Dictionary) -> bool:
 		vdfs.distractor_states = drill_state.get("distractor_states", [])
 		vdfs.trajectory_state = drill_state.get("trajectory_state", {})
 		vdfs.task_state = drill_state.get("task_state", {})
+		if drill_state.has("saccade_state"):
+			vdfs.mechanic_state = {"saccade_state": drill_state.get("saccade_state", {})}
 		
 		var frame_payload: Dictionary = vdfs.to_dictionary()
+		if drill_state.has("saccade_state"):
+			frame_payload["saccade_state"] = drill_state.get("saccade_state", {}).duplicate(true)
 		frame_payload["domain"] = "visual_drill"
 		if drill_state.has("parameters"):
 			frame_payload["parameters"] = drill_state["parameters"].duplicate(true)

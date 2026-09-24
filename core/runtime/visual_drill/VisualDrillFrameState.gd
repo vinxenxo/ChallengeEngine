@@ -13,6 +13,7 @@ var target_states: Array = []
 var distractor_states: Array = []
 var trajectory_state: Dictionary = {}
 var task_state: Dictionary = {}
+var mechanic_state: Dictionary = {}
 
 func to_dictionary() -> Dictionary:
 	return {
@@ -23,5 +24,6 @@ func to_dictionary() -> Dictionary:
 		"target_states": target_states.duplicate(true),
 		"distractor_states": distractor_states.duplicate(true),
 		"trajectory_state": trajectory_state.duplicate(true),
-		"task_state": task_state.duplicate(true)
+		"task_state": task_state.duplicate(true),
+		"mechanic_state": mechanic_state.duplicate(true)
 	}

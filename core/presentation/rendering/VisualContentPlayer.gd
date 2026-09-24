@@ -23,8 +23,8 @@ const LOGICAL_SOCIAL_CANVAS_SIZE := Vector2(540.0, 960.0)
 const PHYSICAL_SOCIAL_OUTPUT_SIZE := Vector2(720.0, 1280.0)
 const PHYSICAL_SOCIAL_SCALE: float = PHYSICAL_SOCIAL_OUTPUT_SIZE.x / LOGICAL_SOCIAL_CANVAS_SIZE.x
 const VISUAL_DRILL_COUNTDOWN_SECONDS: float = CountdownPresentationLogic.COUNTDOWN_SECONDS
-const VISUAL_DRILL_GAMEPLAY_BASELINE_SECONDS: float = 17.0
 const VISUAL_DRILL_MIN_TOTAL_SECONDS: float = 20.0
+const VISUAL_DRILL_MAX_TOTAL_SECONDS: float = 30.0
 
 @export var content_definition_path: String = ""
 
@@ -109,6 +109,10 @@ func _ready() -> void:
 		var total_seconds: float = gameplay_seconds + VISUAL_DRILL_COUNTDOWN_SECONDS
 		if total_seconds + 0.0001 < VISUAL_DRILL_MIN_TOTAL_SECONDS:
 			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration is below the 20s C11-C contract.")
+			return
+		elif total_seconds - 0.0001 > VISUAL_DRILL_MAX_TOTAL_SECONDS:
+			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration exceeds the 30s C11-C contract.")
+			return
 		else:
 			print("[VISUAL_CONTENT_PLAYER] Visual Drill presentation: %.2fs countdown + %.2fs gameplay = %.2fs total." % [VISUAL_DRILL_COUNTDOWN_SECONDS, gameplay_seconds, total_seconds])
 
@@ -199,6 +203,12 @@ func _apply_render_model_to_view(frame: Dictionary, ui_state: String, frame_inde
 		domain_state = render_model.get("visual_frame_state", {})
 	elif _stream.kind == "visual_drill":
 		domain_state = render_model.get("visual_drill_frame_state", {})
+		if domain_state is Dictionary:
+			domain_state = domain_state.duplicate(true)
+			domain_state["presentation_phase"] = ui_state
+			domain_state["presentation_frame_index"] = frame_index
+			domain_state["presentation_total_frames"] = _presentation_total_frames
+			domain_state["presentation_fps"] = _stream.fps if _stream != null else 30
 	_renderer_host.forward_state(domain_state)
 
 func _configure_qa_overlay(definition: Dictionary) -> void:

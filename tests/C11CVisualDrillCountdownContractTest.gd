@@ -50,7 +50,7 @@ func _test_visual_drill_binder() -> void:
 		"subtype": "tracking",
 		"seed": 12345,
 		"payload": {
-			"duration": 17.0,
+			"duration": 21.0,
 			"fps": 30,
 			"exercise_parameters": {"difficulty_tier": 2, "speed_multiplier": 1.0}
 		}
@@ -84,9 +84,13 @@ func _test_canonical_duration_contract() -> void:
 		_assert(parsed is Dictionary, "%s must contain a valid JSON object." % path)
 		if parsed is Dictionary:
 			var payload: Dictionary = parsed.get("payload", {})
-			_assert(is_equal_approx(float(payload.get("duration", 0.0)), 17.0), "%s gameplay duration must be 17s." % path)
-			_assert(int(payload.get("frame_count", 0)) == 510, "%s gameplay frame_count must be 510." % path)
-			_assert(17.0 + CountdownPresentationLogic.COUNTDOWN_SECONDS >= 20.0, "Visual Drill total presentation must be at least 20s.")
+			var subtype: String = str(parsed.get("subtype", ""))
+			var expected_gameplay: float = 21.0 if subtype == "tracking" else 17.0
+			var expected_frames: int = int(round(expected_gameplay * 30.0))
+			var total_seconds: float = expected_gameplay + CountdownPresentationLogic.COUNTDOWN_SECONDS
+			_assert(is_equal_approx(float(payload.get("duration", 0.0)), expected_gameplay), "%s gameplay duration mismatch." % path)
+			_assert(int(payload.get("frame_count", 0)) == expected_frames, "%s gameplay frame_count mismatch." % path)
+			_assert(total_seconds >= 20.0 and total_seconds <= 30.0, "%s total presentation duration must be within 20-30s." % path)
 
 func _assert(condition: bool, message: String) -> void:
 	if not condition:

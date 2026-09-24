@@ -2,9 +2,9 @@
     "kind": "visual_drill",
     "subtype": "tracking",
     "payload": {
-        "duration": 17.0,
+        "duration": 21.0,
         "fps": 30,
-        "frame_count": 510,
+        "frame_count": 630,
         "exercise_parameters": {
             "generator": "tracking",
             "difficulty_tier": 2,
@@ -42,7 +42,7 @@
             "phase_x": 0.25,
             "phase_y": -0.65,
             "target_radius": 12.0,
-            "trail_length_frames": 510,
+            "trail_length_frames": 630,
             "trail_mode": "growing_history"
         },
         "task": {

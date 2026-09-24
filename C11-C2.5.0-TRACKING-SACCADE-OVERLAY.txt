@@ -1,0 +1,39 @@
+C11-C 2.5.0 — TRACKING + SACCADE OVERLAY
+
+BASELINE
+Apply over the already-installed C11-C 2.4.0 state.
+
+TRACKING
+- Gameplay duration: 21.0s + 3.0s shared countdown = 24.0s total.
+- Analytical bounded Lissajous 2:3; no random physics or jitter.
+- Existing five difficulty tiers preserved; presentation bands remain easy 1-2 / medium 3 / hard 4-5.
+- Growing history trail starts at gameplay frame 0.
+- Trail opacity is time/age based, not distance based.
+- Target presentation is isolated at Z=100.
+- Body underlay fills the complete logical 540px width from y=144..816.
+- Reuses the established Living Particles Tron road implementation.
+- Tron environment is intentionally subdued below target luminance.
+- Six deterministic high-contrast mobile-safe palette variants are selected from the existing cosmetic tracking variation channel.
+- No future path is exposed by the mechanic.
+- Future guided_path tracking is documented but not implemented.
+
+SACCADE
+- Canonical baseline remains 17s gameplay + 3s countdown = 20s total.
+- Position is discrete: no spatial lerp/interpolation.
+- Polar golden-angle endpoint distribution with guaranteed 180..300px jump distance.
+- APPEAR 200ms (6 frames @30fps), IDLE tier-dependent, VANISH 50ms nominal quantized to 2 frames @30fps.
+- Transition effects use scale/opacity/flash; no translation transition.
+- Random/polar baseline uses no decorative background.
+- Dedicated mechanical/presentation contracts and playback validation.
+- Pre-roll validation checks the renderer after its first presentation frame is applied.
+
+COMMON
+- C11-B remains frozen.
+- No changes to SimulationResult, winning_frame, close_calls, RenderedFrameStream, RNG architecture, C7 or C9.
+- Logical social frame remains 540x960; physical delivery remains 720x1280 at 30fps.
+- Visual Drill countdown remains the shared Challenge-derived 3/2/1 presentation layer.
+
+TEST TOOLING
+- run_all.py retains bounded suite execution from C11-C 2.3.2.
+- Visual Drill reviewer supports -Families for focused reviews.
+- All new suites are registered in tests/run_all.py.

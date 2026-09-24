@@ -11,7 +11,9 @@ const ContentRuntimeRegistry = preload("res://core/runtime/ContentRuntimeRegistr
 
 const OUTPUT_ENV := "C11C_DRILL_REVIEW_ENVELOPE_ROOT"
 const SEEDS_ENV := "C11C_DRILL_REVIEW_SEEDS"
-const DURATION_SECONDS: float = 17.0
+const FAMILIES_ENV := "C11C_DRILL_REVIEW_FAMILIES"
+const DEFAULT_GAMEPLAY_SECONDS: float = 17.0
+const TRACKING_GAMEPLAY_SECONDS: float = 21.0
 const FPS: int = 30
 const TIER: int = 2
 const RNG_VERSION: String = "2.0"
@@ -27,6 +29,7 @@ const DRILLS: Array[String] = ["tracking", "saccade", "pursuit", "peripheral_sca
 func _init() -> void:
     var output_root := OS.get_environment(OUTPUT_ENV).strip_edges()
     var seeds_raw := OS.get_environment(SEEDS_ENV).strip_edges()
+    var families_raw := OS.get_environment(FAMILIES_ENV).strip_edges()
     if output_root.is_empty() or seeds_raw.is_empty():
         printerr("[C11-C-DRILL] Review envelope generator requires output root and seeds environment variables.")
         quit(1)
@@ -55,19 +58,37 @@ func _init() -> void:
     var absolute_root := ProjectSettings.globalize_path(output_root)
     DirAccess.make_dir_recursive_absolute(absolute_root)
     var registry := ContentRuntimeRegistry.create_default()
-    var expected_count := DRILLS.size() * seeds.size()
+    var selected_drills: Array[String] = []
+    if families_raw.is_empty():
+        selected_drills = DRILLS.duplicate()
+    else:
+        for raw_family in families_raw.split(",", false):
+            var family := raw_family.strip_edges()
+            if not DRILLS.has(family):
+                printerr("[C11-C-DRILL] Unknown Visual Drill family: %s" % family)
+                quit(1)
+                return
+            if not selected_drills.has(family):
+                selected_drills.append(family)
+    if selected_drills.is_empty():
+        printerr("[C11-C-DRILL] No Visual Drill families requested.")
+        quit(1)
+        return
+
+    var expected_count := selected_drills.size() * seeds.size()
     var success_count := 0
 
-    for subtype in DRILLS:
+    for subtype in selected_drills:
         for seed_value in seeds:
             var run_id := "visual_drill_%s_seed_%d" % [subtype, seed_value]
             var run_dir := absolute_root.path_join(run_id)
             DirAccess.make_dir_recursive_absolute(run_dir)
 
+            var gameplay_seconds: float = TRACKING_GAMEPLAY_SECONDS if subtype == "tracking" else DEFAULT_GAMEPLAY_SECONDS
             var request := Request.new(
                 "visual_drill",
                 subtype,
-                DURATION_SECONDS,
+                gameplay_seconds,
                 FPS,
                 TIER,
                 {}

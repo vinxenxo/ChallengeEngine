@@ -40,8 +40,12 @@ func _init() -> void:
 				tc["expected_text"], str(tc["expected_visible"]), 
 				countdown.text, str(countdown.visible)
 			])
+			countdown.queue_free()
+			await process_frame
 			quit(1)
 			return
 			
+	countdown.queue_free()
+	await process_frame
 	print("[C6E2_COUNTDOWN_CONTRACT_SUITE] PASS")
 	quit(0)

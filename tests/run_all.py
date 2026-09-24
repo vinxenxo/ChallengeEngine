@@ -58,6 +58,8 @@ KNOWN_SUITES = {
     "C11CVisualDrillSocialPresentationContractTest.gd": "[C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_SUITE] PASS",
     "C11CTrackingMechanicContractTest.gd": "[C11C_TRACKING_MECHANIC_CONTRACT_SUITE] PASS",
     "C11CVisualDrillCountdownContractTest.gd": "[C11C_VISUAL_DRILL_COUNTDOWN_CONTRACT_SUITE] PASS",
+    "C11CSaccadeMechanicContractTest.gd": "[C11C_SACCADE_MECHANIC_CONTRACT_SUITE] PASS",
+    "C11CSaccadePresentationContractTest.gd": "[C11C_SACCADE_PRESENTATION_CONTRACT_SUITE] PASS",
     "C11CTrackingPresentationContractTest.gd": "[C11C_TRACKING_PRESENTATION_CONTRACT_SUITE] PASS",
     "c11freeze/C11FreezeRepositoryContractTest.gd": "[C11FREEZE_REPOSITORY_CONTRACT_SUITE] PASS",
     "DeterministicLCGStatelessTest.gd": "[RNG_TEST_SUITE] PASS",

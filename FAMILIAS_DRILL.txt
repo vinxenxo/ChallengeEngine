@@ -1,6 +1,7 @@
 Qué vamos a dirigir en cada Visual Drill
 
-Aquí es donde ahora sí merece la pena trabajar con método. He revisado los cuatro contratos específicos del freeze y los resumiría así.
+Aquí es donde ahora sí merece la pena trabajar con método. 
+He revisado los cuatro contratos específicos del freeze y los resumiría así.
 
 1. Tracking
 
@@ -46,7 +47,9 @@ La pregunta artística que tendremos que resolver será:
 
 Identidad: salto espacial discreto + precisión de localización.
 
-No es seguimiento. El target debe reubicarse claramente de un punto a otro. El contrato propone posiciones procedentes de distribuciones deterministas, coordenadas polares, grupos de simetría y composiciones geométricas acotadas.
+No es seguimiento. El target debe reubicarse claramente de un punto a otro. 
+El contrato propone posiciones procedentes de distribuciones deterministas, 
+coordenadas polares, grupos de simetría y composiciones geométricas acotadas.
 
 Lo que deberemos dirigir:
 
@@ -58,7 +61,8 @@ estado B;
 endpoint perfectamente identificable.
 
 Transición
-Podemos usar una pequeña señal visual de transición, pero nunca una trayectoria que haga creer que el target se desplaza continuamente.
+Podemos usar una pequeña señal visual de transición, pero nunca una 
+trayectoria que haga creer que el target se desplaza continuamente.
 
 Geometría
 
@@ -158,3 +162,136 @@ pulsar;
 desplazarse por un arco limitado.
 
 Pero nunca debe convertirse en otro protagonista central.
+
+###################3
+
+Acepto el reto. Dejamos el código a un lado y nos ponemos la gorra de **Director de Arte Técnico** y **Diseñador de Sistemas**.
+
+Para que un *Principal Developer* pueda coger este documento y traducirlo directamente a código (GDScript/Shaders en Godot, o la herramienta matemática que use), necesitamos transformar las intenciones artísticas en **reglas matemáticas, jerarquías de renderizado y arquitecturas de componentes**.
+
+Aquí tienes la expansión del **GDD Técnico y Dirección de Arte** para los *Visual Drills*, estructurado para ser directamente implementable.
+
+---
+
+# DOCUMENTO DE DIRECCIÓN TÉCNICA Y ARTE: C11-C VISUAL DRILLS
+
+## REGLAS GLOBALES DEL MOTOR VISUAL (CORE RULES)
+
+Antes de entrar en cada mecánica, el programador debe asegurar esta base en todos los *Drills*:
+
+* **Z-Index Estricto:** `Z: 0` (Fondo matemático), `Z: 10` (Guías/Estructuras), `Z: 100` (Target/Ancla). El target *nunca* puede ser ocluido por un elemento estético.
+* **Zonas de Seguridad (Safe Zones):** Definir un margen de padding estricto (ej. 15% del canvas). El centroide del Target nunca puede cruzar este límite para evitar tensión ocular contra los bordes físicos de la pantalla.
+* **Gestión de Color (Palette Bank):** El Target siempre debe usar el color de máxima luminancia y saturación de la paleta asignada por la semilla. El fondo debe operar con opacidades reducidas (ej. 10%-30%) o variaciones de valor tonal oscuras.
+
+---
+
+## 1. TRACKING (Seguimiento Continuo)
+
+**Visión:** El ojo sigue un camino complejo pero predecible. Es un baile geométrico. El fondo apoya la sensación de movimiento sin competir.
+
+### Lógica de Movimiento (Math & Logic)
+
+* **Trayectorias Paramétricas:** No usar movimiento aleatorio (físicas/fuerzas). Usar ecuaciones analíticas. El programador debe implementar curvas de Lissajous acotadas o armónicos esféricos proyectados en 2D.
+* *Fórmula base sugerida:* $x(t) = A \sin(a \cdot t + \delta), y(t) = B \sin(b \cdot t)$.
+* *Parámetros expuestos por Seed:* Frecuencias ($a, b$), Desfase ($\delta$) y Amplitudes ($A, B$ con clamp a las Safe Zones).
+
+
+* **Manejo del Tiempo (`Delta`):** La velocidad angular debe ser constante o alterada por curvas de interpolación (`EaseInOut` de muy baja frecuencia). Prohibido el *jitter* (micromovimientos erráticos).
+
+### Jerarquía Visual y Renderizado
+
+* **El Target (Z:100):** Geometría sólida, bordes definidos (anti-aliasing perfecto).
+* **La Estela (Trail):** Para hipnotizar, el objeto debe dejar una estela direccional (un `Line2D` o un *ribbon trail* en el shader). La estela debe desvanecerse basándose en *tiempo*, no en *distancia*, para que en aceleraciones la estela se estire visualmente, informando al cerebro de la velocidad.
+* **El Entorno (Z:0):** Mallas de ondas, rejillas (grids) deformables o campos vectoriales que reaccionan sutilmente al paso del target (como si el target fuera un imán moviéndose sobre limaduras de hierro), pero siempre con una luminosidad inferior al 40% respecto al target.
+
+---
+
+## 2. SACCADE (Salto Espacial Discreto)
+
+**Visión:** Teletransporte cuántico. Movimiento ocular balístico. El cerebro debe registrar un punto exacto, borrarlo, y registrar un nuevo punto exacto.
+
+### Lógica de Movimiento (Math & Logic)
+
+* **Generador de Posiciones:** Prohibido el `lerp` o interpolación de posición. El objeto en el frame $T$ está en $A$, y en $T+1$ está en $B$.
+* **Distribución Espacial:** El programador debe usar un algoritmo de *Poisson Disk Sampling* o coordenadas polares generadas proceduralmente para asegurar que la distancia entre saltos ($A \rightarrow B$) tenga una longitud mínima y máxima garantizada.
+* **Máquina de Estados:** `APPEAR` (200ms) $\rightarrow$ `IDLE` (fijación, duración variable según perfil) $\rightarrow$ `VANISH` (50ms).
+
+### Jerarquía Visual y Renderizado
+
+* **Transiciones sin movimiento:** Para indicar el salto, usar matemáticas de escala y opacidad, no de traslación.
+* *Vanish:* Escala rápida a $0$ con un breve *flash* de sobreexposición (material emissive).
+* *Appear:* Expansión rápida desde $0$ a $1$ (efecto *pop* o *ripple* sutil en el shader local).
+
+
+* **Estructuras de Salto:** La "pista de baile". Si el salto es aleatorio, que no haya fondo. Si el salto sigue una geometría (ej. vértices de un polígono complejo), dibujar la geometría en Z:10 con opacidad 15%. Cuando el target aterriza en un nodo, ese nodo se ilumina. Esto da contexto espacial al "salto".
+
+---
+
+## 3. PURSUIT (Seguimiento Limpio / Estabilidad)
+
+**Visión:** Foco absoluto (visión foveal). Un objeto majestuoso flotando en el espacio. Menos acrobático que el Tracking, mucho más relajante y estabilizador.
+
+### Lógica de Movimiento (Math & Logic)
+
+* **Curvas Suaves (Low-Frequency):** Usar Splines (Catmull-Rom) con muy pocos puntos de control generados proceduralmente, o movimientos orbitales simples.
+* **Aceleración:** Derivada segunda extremadamente baja. El objeto se mueve como si estuviera sumergido en un fluido denso.
+
+### Jerarquía Visual y Renderizado
+
+* **Diseño del Target:** Aquí el target puede tener rotación propia interna (ej. anillos anidados girando a distintas velocidades o mandalas procedurales), manteniendo su centro de masa perfectamente definido.
+* **Ausencia de Estela:** A diferencia de Tracking, **NO** hay trail. El objeto debe sentirse contenido en sí mismo.
+* **Efecto de Foco Foveal (Post-Processing):** Esta es la clave técnica. El programador debe implementar un shader de pantalla que aplique un *Radial Blur* (desenfoque radial) o desaturación en los bordes de la pantalla, cuyo centro ($UV = 0,0$) esté fijado dinámicamente **en las coordenadas del Target**. Así, mires donde mires, el target es lo único perfectamente nítido, forzando la atención continua.
+
+---
+
+## 4. PERIPHERAL SCAN (Fijación Central + Detección)
+
+**Visión:** Ancla y radar. El usuario mira al centro pero debe estar alerta a las sombras. Disciplina visual extrema.
+
+### Lógica de Movimiento (Math & Logic)
+
+* **Centroides Inmutables:** El ancla de fijación está clavada en $(0,0)$ del canvas lógico. NUNCA se traslada.
+* **Generador Periférico (Spawn Logic):** Las matemáticas deben basarse en anillos (Annulus).
+* Fórmula: $x = r \cos(\theta), y = r \sin(\theta)$, donde $R_{min} < r < R_{max}$.
+* $R_{min}$ asegura que el estímulo no pise el ancla. $R_{max}$ asegura que no se salga de las Safe Zones.
+
+
+* **Comportamiento del Estímulo:** Puede orbitar lentamente (variando $\theta$), o hacer *ping* (aparecer y desaparecer variando el alpha).
+
+### Jerarquía Visual y Renderizado
+
+* **El Ancla (Centro):** Geometría estable. Para que el usuario no se aburra mirándola, debe tener una animación respiratoria (escala oscilando usando función seno entre $0.95$ y $1.05$) o una rotación constante. Color: Alto contraste (ej. Blanco o Cyan primario).
+* **El Estímulo Periférico:** Biológicamente, los bastones de la retina (periferia) detectan brillo y movimiento mejor que el color.
+* *Regla de render:* El estímulo periférico no debe usar formas complejas ni colores saturados chillones que compitan con el ancla.
+* Debe resolverse mediante *Luminancia* (un pulso suave de brillo sobre el color de fondo) o *Expansión* (un arco geométrico grueso que crece temporalmente).
+
+
+* **Contexto Estructural:** Dibujar anillos concéntricos sutiles (opacidad 5-10%) para enmarcar las distancias $R_{min}$ y $R_{max}$. Actúan como guías de radar.
+
+---
+
+## 5. PARÁMETROS EXPUESTOS PARA EL "AUTHORING" (JSON / Inspector)
+
+Para que el sistema de semillas (Seed) pueda configurar estas mecánicas dinámicamente, el programador debe exponer este diccionario de variables en cada módulo:
+
+**Comunes a todos:**
+
+* `palette_id` (String)
+* `background_complexity` (Float: 0.0 a 1.0)
+* `target_scale_multiplier` (Float)
+
+**Específicos:**
+
+* **Tracking:** `lissajous_ratio_x`, `lissajous_ratio_y`, `base_speed`, `trail_length_frames`.
+* **Saccade:** `jump_interval_ms`, `grid_type` (Enum: POISSON, RADIAL, HEX_GRID), `anticipation_enabled` (Bool).
+* **Pursuit:** `spline_tension`, `foveal_blur_intensity`, `target_internal_rotation_speed`.
+* **Peripheral Scan:** `inner_radius_ratio`, `outer_radius_ratio`, `stimulus_lifespan_ms`, `stimulus_type` (Enum: PULSE, ARC_SWEEP, ORBIT).
+
+---
+
+Con este documento, el programador ya no tiene ambigüedades. Sabe exactamente qué ecuaciones usar, cómo organizar el renderizado por capas, qué efectos de shader aplican y qué variables conectar a tu sistema de semillas.
+
+¿Qué te parece este enfoque? Podemos hacer un zoom (drill-down) en las matemáticas de algún shader concreto si lo necesitas para el equipo técnico.
+
+####################3
+

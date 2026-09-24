@@ -13,37 +13,35 @@
         },
         "stimulus": {
             "type": "dot",
-            "radius": 10.0,
+            "radius": 12.0,
             "active": true,
-            "x": 0.0,
-            "y": 0.0
+            "x": 270.0,
+            "y": 480.0
         },
         "targets": [
             {
                 "id": "t1",
-                "x": 50.0,
-                "y": 50.0,
+                "x": 270.0,
+                "y": 480.0,
+                "radius": 12.0,
                 "highlighted": true,
                 "status": "active"
             }
         ],
-        "distractors": [
-            {
-                "id": "d1",
-                "x": -50.0,
-                "y": -50.0
-            }
-        ],
+        "distractors": [],
         "trajectory": {
-            "type": "linear",
-            "start_x": 0.0,
-            "start_y": 0.0,
-            "end_x": 100.0,
-            "end_y": 100.0,
-            "speed": 1.0
+            "type": "polar_golden_angle",
+            "distribution": "polar_golden_angle",
+            "position_radius": 140.0,
+            "radius_variation": 20.0,
+            "min_jump_distance": 180.0,
+            "max_jump_distance": 300.0,
+            "appear_ms": 200,
+            "vanish_ms": 50
         },
         "task": {
             "type": "saccade",
+            "mode": "discrete_relocation",
             "target_id": "t1"
         }
     },

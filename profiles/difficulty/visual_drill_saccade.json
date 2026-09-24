@@ -1,9 +1,9 @@
 {
   "profile_id": "visual_drill_saccade",
-  "profile_version": "1.0",
+  "profile_version": "2.0",
   "domain_family": "visual_drill",
   "subtype": "saccade",
-  "source": "C6-F0.8 canonical baseline + C10 product difficulty policy",
+  "source": "C6-F0.8 canonical baseline + C10 product difficulty policy + C11-C.7 saccade mechanic v1",
   "canonical_baseline_tier": 2,
   "allowed_parameters": [
     "speed_multiplier",
@@ -29,39 +29,50 @@
     "pacing_mode": "constant",
     "stimulus": {
       "type": "dot",
-      "radius": 10.0,
+      "radius": 12.0,
       "active": true,
-      "x": 0.0,
-      "y": 0.0
+      "x": 270.0,
+      "y": 480.0
     },
     "targets": [
       {
         "id": "t1",
-        "x": 50.0,
-        "y": 50.0,
+        "x": 270.0,
+        "y": 480.0,
+        "radius": 12.0,
         "highlighted": true,
         "status": "active"
       }
     ],
-    "distractors": [
-      {
-        "id": "d1",
-        "x": -50.0,
-        "y": -50.0
-      }
-    ],
+    "distractors": [],
     "trajectory": {
-      "type": "linear",
-      "start_x": 0.0,
-      "start_y": 0.0,
-      "end_x": 100.0,
-      "end_y": 100.0,
-      "speed": 1.0
+      "type": "polar_golden_angle",
+      "distribution": "polar_golden_angle",
+      "position_radius": 140.0,
+      "radius_variation": 20.0,
+      "min_jump_distance": 180.0,
+      "max_jump_distance": 300.0,
+      "appear_ms": 200,
+      "vanish_ms": 50
     },
     "task": {
       "type": "saccade",
+      "mode": "discrete_relocation",
       "target_id": "t1"
     }
+  },
+  "difficulty_bands": {
+    "easy": [
+      1,
+      2
+    ],
+    "medium": [
+      3
+    ],
+    "hard": [
+      4,
+      5
+    ]
   },
   "tiers": {
     "1": {
@@ -79,6 +90,27 @@
     "5": {
       "speed_multiplier": 1.5
     }
+  },
+  "mechanic_contract": {
+    "position_interpolation": false,
+    "distribution": "polar_golden_angle",
+    "min_jump_distance": 180.0,
+    "max_jump_distance": 300.0,
+    "appear_ms": 200.0,
+    "vanish_ms": 50.0,
+    "idle_by_tier": {
+      "1": 24,
+      "2": 18,
+      "3": 14,
+      "4": 11,
+      "5": 9
+    },
+    "transition_visuals": [
+      "scale",
+      "opacity",
+      "flash"
+    ],
+    "random_jump_has_no_background": true
   },
   "forbidden_rng_parameters": [
     "saccade_variant"

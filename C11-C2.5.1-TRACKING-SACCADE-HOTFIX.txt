@@ -1,0 +1,11 @@
+C11-C 2.5.1 — TRACKING / SACCADE VISUAL HOTFIX
+
+Purpose
+- Fix TrackingRenderer.gd CanvasItem draw_ellipse() signature collision.
+- Recover Tracking premium visual language: growing history trail, live head accent, Tron 3D road, deterministic palettes, strong target hierarchy.
+- Advance Saccade from mechanical foundation to a first premium visual presentation baseline without introducing spatial interpolation or background decoration.
+
+Mechanics unchanged
+- Tracking deterministic Lissajous trajectory and history-only trail contract unchanged.
+- Saccade discrete endpoint relocation, polar/golden-angle distribution, jump bounds and APPEAR/IDLE/VANISH timing unchanged.
+- Cosmetic variants remain isolated from mechanic truth.

@@ -3,7 +3,7 @@
   "profile_version": "2.0",
   "domain_family": "visual_drill",
   "subtype": "tracking",
-  "source": "C6-F0.8 canonical baseline + C10 product difficulty policy + C11-C.6 tracking mechanic v1",
+  "source": "C6-F0.8 canonical baseline + C10 product difficulty policy + C11-C.6 tracking mechanic v1 + C11-C 2.5.0 presentation baseline",
   "canonical_baseline_tier": 2,
   "allowed_parameters": [
     "speed_multiplier",
@@ -58,7 +58,7 @@
       "phase_x": 0.25,
       "phase_y": -0.65,
       "target_radius": 12.0,
-      "trail_length_frames": 18
+      "trail_length_frames": 630
     },
     "task": {
       "type": "tracking",
@@ -67,9 +67,17 @@
     }
   },
   "difficulty_bands": {
-    "easy": [1, 2],
-    "medium": [3],
-    "hard": [4, 5]
+    "easy": [
+      1,
+      2
+    ],
+    "medium": [
+      3
+    ],
+    "hard": [
+      4,
+      5
+    ]
   },
   "tiers": {
     "1": {
