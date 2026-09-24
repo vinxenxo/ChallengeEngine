@@ -1,9 +1,9 @@
 {
   "profile_id": "visual_drill_tracking",
-  "profile_version": "2.0",
+  "profile_version": "2.1",
   "domain_family": "visual_drill",
   "subtype": "tracking",
-  "source": "C6-F0.8 canonical baseline + C10 product difficulty policy + C11-C.6 tracking mechanic v1 + C11-C 2.5.0 presentation baseline",
+  "source": "C6-F0.8 canonical baseline + C10 product difficulty policy + C11-C.6 tracking mechanic v1.2 + C11-C 2.6.0 seeded authoring variation",
   "canonical_baseline_tier": 2,
   "allowed_parameters": [
     "speed_multiplier",
@@ -107,7 +107,21 @@
     },
     "target_margin": 12.0,
     "trail_is_history_only": true,
-    "variant_does_not_change_mechanic_truth": true
+    "variant_does_not_change_mechanic_truth": true,
+    "seeded_authoring_variation": true,
+    "seed_variation_parameters": [
+      "center_x",
+      "center_y",
+      "amplitude_x",
+      "amplitude_y",
+      "x_frequency",
+      "y_frequency",
+      "travel_cycles",
+      "phase_x",
+      "phase_y",
+      "motion_speed_multiplier"
+    ],
+    "seeded_authoring_is_not_presentation_rng": true
   },
   "forbidden_rng_parameters": [
     "tracking_variant"

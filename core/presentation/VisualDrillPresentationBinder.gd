@@ -8,6 +8,7 @@ extends RefCounted
 
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
 const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
+const DrillPaletteBank = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
 
 const DISPLAY_NAMES := {
 	"tracking": "TRACKING",
@@ -120,6 +121,7 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 	if generator_variant.is_empty() == false:
 		header_line_1 = "%s | %s | SPEED %.2f" % [display_name, generator_variant, speed]
 
+	var editorial_colors := _editorial_colors(subtype, params)
 	var difficulty_band: String = _difficulty_band(tier)
 	var audio_enabled: bool = true
 	if audio_node is Dictionary and audio_node.has("enabled"):
@@ -138,17 +140,42 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 		},
 		"footer": {
 			"line_1": "SEED %d | GAME %.2fS | TOTAL %.2fS | %d FPS | %s" % [definition_seed, duration, duration + CountdownPresentationLogic.COUNTDOWN_SECONDS, fps, difficulty_band],
-			"line_2": "GEN %s | AUDIO %s | SOCIAL 720X1280" % [display_name, "AMBIENT" if audio_enabled else "OFF"],
+			"line_2": "GEN %s | PALETTE %s | AUDIO %s | SOCIAL 720X1280" % [display_name, str(editorial_colors.get("palette_name", "DEFAULT")), "AMBIENT" if audio_enabled else "OFF"],
 			"line_3": signature
 		},
-		"colors": {
-			"header_primary": Color("FFFFFF"),
-			"header_secondary": Color("D6E8FF"),
-			"footer_data": Color("FFFFFF"),
-			"footer_secondary": Color("9CB8D8"),
-			"footer_signature": Color("9CB8D8"),
-			"rule": Color("6FA6D9")
-		}
+		"colors": editorial_colors
+	}
+
+
+func _editorial_colors(subtype: String, params: Dictionary) -> Dictionary:
+	var variant: float = 0.0
+	var palette: Dictionary = {}
+	match subtype:
+		"tracking":
+			variant = clampf(float(params.get("tracking_variant", 0.0)), 0.0, 0.999999)
+			palette = DrillPaletteBank.tracking(variant)
+		"saccade":
+			variant = clampf(float(params.get("saccade_variant", 0.0)), 0.0, 0.999999)
+			palette = DrillPaletteBank.saccade(variant)
+		_:
+			return {
+				"header_primary": Color("FFFFFF"),
+				"header_secondary": Color("D6E8FF"),
+				"footer_data": Color("FFFFFF"),
+				"footer_secondary": Color("9CB8D8"),
+				"footer_signature": Color("9CB8D8"),
+				"rule": Color("6FA6D9"),
+				"palette_name": "DEFAULT"
+			}
+
+	return {
+		"header_primary": Color(str(palette.get("text_primary", "FFFFFF"))),
+		"header_secondary": Color(str(palette.get("text_secondary", "D6E8FF"))),
+		"footer_data": Color(str(palette.get("text_data", palette.get("target_soft", "FFFFFF")))),
+		"footer_secondary": Color(str(palette.get("text_secondary", "9CB8D8"))),
+		"footer_signature": Color(str(palette.get("accent", "9CB8D8"))),
+		"rule": Color(str(palette.get("accent", "6FA6D9"))),
+		"palette_name": str(palette.get("name", "DEFAULT"))
 	}
 
 func _difficulty_band(tier: int) -> String:
@@ -161,11 +188,11 @@ func _difficulty_band(tier: int) -> String:
 func _variant_summary(subtype: String, params: Dictionary) -> String:
 	match subtype:
 		"tracking":
-			return "VAR %.2f" % float(params.get("tracking_variant", 0.0))
+			return "PALETTE %s" % str(DrillPaletteBank.tracking(float(params.get("tracking_variant", 0.0))).get("name", "DEFAULT"))
 		"pursuit":
 			return "VAR %.2f" % float(params.get("pursuit_variant", 0.0))
 		"saccade":
-			return "VAR %.2f" % float(params.get("saccade_variant", 0.0))
+			return "PALETTE %s" % str(DrillPaletteBank.saccade(float(params.get("saccade_variant", 0.0))).get("name", "DEFAULT"))
 		"peripheral_scan":
 			return "PAT %.2f / AMP %.2f" % [float(params.get("pattern_variant", 0.0)), float(params.get("amplitude_variant", 0.5))]
 		_:

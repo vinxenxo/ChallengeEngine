@@ -3,6 +3,7 @@ extends SceneTree
 ## C11-C.7 — Saccade mechanic contract test.
 
 const SaccadeGeneratorClass = preload("res://core/runtime/visual_drill/generators/SaccadeGenerator.gd")
+const SeedVariationClass = preload("res://core/authoring/VisualDrillSeedVariation.gd")
 const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
 const MIN_JUMP_DISTANCE: float = 180.0
 const MAX_JUMP_DISTANCE: float = 300.0
@@ -18,6 +19,7 @@ func _initialize() -> void:
     _test_body_containment(generator, params)
     _test_determinism(generator, params)
     _test_cosmetic_isolation(generator, params)
+    _test_seed_authoring_variation(generator, params)
     if failures.is_empty():
         print("[C11C_SACCADE_MECHANIC_CONTRACT_SUITE] PASS")
         quit(0)
@@ -76,6 +78,19 @@ func _test_cosmetic_isolation(generator: SaccadeGeneratorClass, params: Dictiona
     var b := generator.generate_with_variation(90, 510, params, {"saccade_variant": 0.99})
     _assert(a.get("target_states", []) == b.get("target_states", []), "saccade_variant must not modify target mechanic truth.")
     _assert(a.get("saccade_state", {}) == b.get("saccade_state", {}), "saccade_variant must not modify saccade mechanic truth.")
+
+
+func _test_seed_authoring_variation(generator: SaccadeGeneratorClass, params: Dictionary) -> void:
+    var seeds: Array[int] = [314159, 944296688, 1411540143, 489652843, 1266632463]
+    var positions := {}
+    for seed_value in seeds:
+        var authored: Dictionary = SeedVariationClass.apply("saccade", seed_value, params)
+        var a: Dictionary = generator.generate(8, 510, authored)
+        var b: Dictionary = generator.generate(44, 510, authored)
+        var pa: Vector2 = Vector2(float(a.get("saccade_state", {}).get("position", {}).get("x", 0.0)), float(a.get("saccade_state", {}).get("position", {}).get("y", 0.0)))
+        var pb: Vector2 = Vector2(float(b.get("saccade_state", {}).get("position", {}).get("x", 0.0)), float(b.get("saccade_state", {}).get("position", {}).get("y", 0.0)))
+        positions["%.4f:%.4f|%.4f:%.4f" % [pa.x, pa.y, pb.x, pb.y]] = true
+    _assert(positions.size() >= 4, "Saccade seeds must alter the authored spatial sequence across review seeds.")
 
 func _params() -> Dictionary:
     return {"duration": 17.0,"fps":30,"frame_count":510,"exercise_parameters":{"difficulty_tier":2,"speed_multiplier":1.0,"pacing_mode":"constant"},"trajectory":{"type":"polar_golden_angle"},"task":{"type":"saccade"}}

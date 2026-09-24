@@ -7,69 +7,57 @@ from pathlib import Path
 
 @dataclass
 class ToolInfo:
-    name: str
-    path: object
-    version: object
+    key: str
+    path: str | None
+    version: str | None
     present: bool
-
-    def __str__(self):
-        tag = "OK " + (self.version or "") if self.present else "MISSING"
-        return self.name + ": " + tag
+    source: str
 
 
-def _which(cands):
-    for c in cands:
-        p = shutil.which(c)
+def _which(names):
+    for n in names:
+        p=shutil.which(n)
         if p:
             return p
     return None
 
 
-def _run_version(cmd, timeout=6.0):
+def _version(cmd):
+    if not cmd:
+        return None
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-        txt = (r.stdout or r.stderr or "").strip().splitlines()
-        return txt[0] if txt else None
-    except Exception:
+        r=subprocess.run(cmd,capture_output=True,text=True,timeout=8,check=False)
+        lines=(r.stdout or r.stderr or "").strip().splitlines()
+        return lines[0] if lines else None
+    except (OSError, subprocess.SubprocessError):
         return None
 
 
-def discover_all(project_root=None):
-    tools = {}
-    tools["python"] = ToolInfo(
-        "python", os.sys.executable,
-        "%d.%d.%d" % (os.sys.version_info.major,
-                      os.sys.version_info.minor,
-                      os.sys.version_info.micro),
-        True)
-
-    ps = _which(["powershell.exe", "pwsh.exe", "powershell", "pwsh"])
-    tools["powershell"] = ToolInfo(
-        "powershell", ps,
-        _run_version([ps, "-NoProfile", "-Command",
-                      "$PSVersionTable.PSVersion.ToString()"]) if ps else None,
-        bool(ps))
-
-    ffmpeg = _which(["ffmpeg.exe", "ffmpeg"])
-    ffprobe = _which(["ffprobe.exe", "ffprobe"])
-    if project_root:
-        for cand in project_root.rglob("ffmpeg.exe"):
-            ffmpeg = ffmpeg or str(cand); break
-        for cand in project_root.rglob("ffprobe.exe"):
-            ffprobe = ffprobe or str(cand); break
-    tools["ffmpeg"] = ToolInfo("ffmpeg", ffmpeg,
-        _run_version([ffmpeg, "-version"]) if ffmpeg else None,
-        bool(ffmpeg))
-    tools["ffprobe"] = ToolInfo("ffprobe", ffprobe,
-        _run_version([ffprobe, "-version"]) if ffprobe else None,
-        bool(ffprobe))
-
-    godot = _which(["godot.exe", "Godot.exe", "godot"])
-    if not godot and project_root:
-        for cand in project_root.rglob("Godot*.exe"):
-            godot = str(cand); break
-    tools["godot"] = ToolInfo("godot", godot,
-        _run_version([godot, "--version"]) if godot else None,
-        bool(godot))
-
+def discover_all(root,overrides=None):
+    root=Path(root).resolve(); overrides=overrides or {}
+    def choose(key,names,candidates=()):
+        ov=overrides.get(key)
+        if ov and Path(ov).exists(): return str(Path(ov).resolve()),"CONFIG"
+        p=_which(names)
+        if p: return p,"PATH"
+        for rel in candidates:
+            q=root/rel
+            if q.exists(): return str(q.resolve()),"PROJECT"
+        return None,"MISSING"
+    tools={}
+    py=str(os.sys.executable)
+    tools["python"]=ToolInfo("python",py,platform_python(),True,"CURRENT")
+    ps,src=choose("powershell",["powershell.exe","pwsh.exe","powershell","pwsh"])
+    tools["powershell"]=ToolInfo("powershell",ps,_version([ps,"-NoProfile","-Command","$PSVersionTable.PSVersion.ToString()"] if ps else []),bool(ps),src)
+    ff,src=choose("ffmpeg",["ffmpeg.exe","ffmpeg"],["tools/bin/ffmpeg.exe"])
+    fp,src2=choose("ffprobe",["ffprobe.exe","ffprobe"],["tools/bin/ffprobe.exe"])
+    gd,src3=choose("godot",["godot.exe","Godot.exe","godot"],["tools/bin/godot.exe","tools/bin/Godot.exe"])
+    tools["ffmpeg"]=ToolInfo("ffmpeg",ff,_version([ff,"-version"] if ff else []),bool(ff),src)
+    tools["ffprobe"]=ToolInfo("ffprobe",fp,_version([fp,"-version"] if fp else []),bool(fp),src2)
+    tools["godot"]=ToolInfo("godot",gd,_version([gd,"--version"] if gd else []),bool(gd),src3)
     return tools
+
+
+def platform_python():
+    import sys
+    return ".".join(map(str,sys.version_info[:3]))

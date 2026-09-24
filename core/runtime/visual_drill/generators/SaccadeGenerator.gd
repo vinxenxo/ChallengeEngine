@@ -2,7 +2,7 @@
 class_name SaccadeGenerator
 extends VisualDrillGenerator
 
-## C11-C.7 / Saccade mechanic baseline v1.0.
+## C11-C.7 / Saccade mechanic baseline v1.1 / C11-C 2.6.0.
 ## Position changes are discrete: no spatial interpolation between endpoints.
 ## Presentation expresses APPEAR / IDLE / VANISH using scale and opacity only.
 
@@ -11,6 +11,12 @@ const CENTER := Vector2(270.0, 480.0)
 const POSITION_RADIUS: float = 140.0
 const RADIUS_VARIATION: float = 20.0
 const GOLDEN_ANGLE: float = 2.399963229728653
+const MIN_ANGLE_STEP: float = 2.09439510239
+const MAX_ANGLE_STEP: float = 2.53072741539
+const MIN_RADIUS_BASE: float = 136.0
+const MAX_RADIUS_BASE: float = 144.0
+const MIN_RADIUS_VARIATION: float = 14.0
+const MAX_RADIUS_VARIATION: float = 18.0
 const POSITION_MARGIN: float = 44.0
 const MIN_JUMP_DISTANCE: float = 180.0
 const MAX_JUMP_DISTANCE: float = 300.0
@@ -32,8 +38,9 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
     var cycle_frames: int = APPEAR_FRAMES + idle_frames + VANISH_FRAMES
     var jump_index: int = maxi(0, frame_index) / maxi(1, cycle_frames)
     var within_cycle: int = posmod(maxi(0, frame_index), maxi(1, cycle_frames))
-    var position: Vector2 = _position_for_jump(jump_index)
-    var previous_position: Vector2 = _position_for_jump(maxi(0, jump_index - 1))
+    var trajectory: Dictionary = _resolve_trajectory(drill_parameters.get("trajectory", {}))
+    var position: Vector2 = _position_for_jump(jump_index, trajectory)
+    var previous_position: Vector2 = _position_for_jump(maxi(0, jump_index - 1), trajectory)
     var jump_distance: float = position.distance_to(previous_position) if jump_index > 0 else 0.0
 
     var phase: String = "IDLE"
@@ -97,7 +104,12 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
             "scale": scale,
             "opacity": opacity,
             "flash_strength": flash_strength,
-            "distribution": "polar_golden_angle"
+            "distribution": "polar_golden_angle",
+            "trajectory_profile": str(trajectory.get("profile", "polar_golden_angle_v1")),
+            "angle_step": float(trajectory.get("angle_step", GOLDEN_ANGLE)),
+            "angle_offset": float(trajectory.get("angle_offset", 0.0)),
+            "radius_base": float(trajectory.get("radius_base", POSITION_RADIUS)),
+            "radius_variation": float(trajectory.get("radius_variation", RADIUS_VARIATION))
         },
         "parameters": {
             "saccade_variant": float(variation.get("saccade_variant", 0.0)),
@@ -122,10 +134,24 @@ func _idle_frames_for_tier(tier: int, speed_multiplier: float) -> int:
     var adjusted: int = int(round(float(base) / clampf(speed_multiplier, 0.75, 1.5)))
     return maxi(6, adjusted)
 
-func _position_for_jump(index: int) -> Vector2:
+func _resolve_trajectory(raw_trajectory: Variant) -> Dictionary:
+    var raw: Dictionary = raw_trajectory if raw_trajectory is Dictionary else {}
+    return {
+        "angle_step": clampf(float(raw.get("angle_step", GOLDEN_ANGLE)), MIN_ANGLE_STEP, MAX_ANGLE_STEP),
+        "angle_offset": clampf(float(raw.get("angle_offset", 0.0)), -PI, PI),
+        "radius_base": clampf(float(raw.get("radius_base", POSITION_RADIUS)), MIN_RADIUS_BASE, MAX_RADIUS_BASE),
+        "radius_variation": clampf(float(raw.get("radius_variation", RADIUS_VARIATION)), MIN_RADIUS_VARIATION, MAX_RADIUS_VARIATION),
+        "profile": str(raw.get("profile", "polar_golden_angle_v1"))
+    }
+
+func _position_for_jump(index: int, trajectory: Dictionary) -> Vector2:
     var safe_index: int = maxi(0, index)
-    var angle: float = float(safe_index) * GOLDEN_ANGLE
-    var radius: float = POSITION_RADIUS + RADIUS_VARIATION * sin(float(safe_index) * 1.61803398875 + 0.7)
+    var angle_step: float = float(trajectory.get("angle_step", GOLDEN_ANGLE))
+    var angle_offset: float = float(trajectory.get("angle_offset", 0.0))
+    var radius_base: float = float(trajectory.get("radius_base", POSITION_RADIUS))
+    var radius_variation: float = float(trajectory.get("radius_variation", RADIUS_VARIATION))
+    var angle: float = float(safe_index) * angle_step + angle_offset
+    var radius: float = radius_base + radius_variation * sin(float(safe_index) * 1.61803398875 + 0.7)
     var position: Vector2 = CENTER + Vector2(cos(angle), sin(angle)) * radius
     position.x = clampf(position.x, BODY_RECT.position.x + POSITION_MARGIN, BODY_RECT.end.x - POSITION_MARGIN)
     position.y = clampf(position.y, BODY_RECT.position.y + POSITION_MARGIN, BODY_RECT.end.y - POSITION_MARGIN)

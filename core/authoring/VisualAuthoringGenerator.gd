@@ -12,6 +12,7 @@ const Registry = preload("res://core/authoring/VisualAuthoringRegistry.gd")
 const PolicyRegistry = preload("res://core/authoring/VisualAuthoringPolicyRegistry.gd")
 const LoopAdapter = preload("res://core/authoring/adapters/VisualLoopAuthoringAdapter.gd")
 const DrillAdapter = preload("res://core/authoring/adapters/VisualDrillAuthoringAdapter.gd")
+const DrillSeedVariation = preload("res://core/authoring/VisualDrillSeedVariation.gd")
 
 static func generate(request: VisualAuthoringRequest, context: AssemblyContext, supplied_policy: Dictionary = {}) -> Dictionary:
     var errors := RequestValidator.validate(request)
@@ -56,6 +57,14 @@ static func generate(request: VisualAuthoringRequest, context: AssemblyContext, 
             "errors": payload_result.get("errors", []),
             "content": {}
         }
+
+    if request.domain_family == "visual_drill":
+        var authored_payload: Dictionary = payload_result.get("payload", {})
+        payload_result["payload"] = DrillSeedVariation.apply(
+            request.subtype,
+            context.seed,
+            authored_payload
+        )
 
     var envelope := {
         "schema_version": "2.0",

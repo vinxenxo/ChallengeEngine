@@ -1,69 +1,27 @@
-from dataclasses import dataclass, field
-
-from ..core.project_context import ProjectContext
+from dataclasses import dataclass,field
 from .tool_discovery import discover_all
-
-
 @dataclass
-class CheckResult:
-    name: str
-    status: str
-    message: str = ""
-
-
+class CheckResult:name:str;status:str;message:str=""
 @dataclass
 class ValidationReport:
-    checks: list = field(default_factory=list)
-
-    def add(self, c):
-        self.checks.append(c)
-
-    def ok(self):
-        return all(c.status != "FAIL" for c in self.checks)
-
-    def lines(self):
-        return ["[" + c.status + "] " + c.name + ": " + c.message
-                for c in self.checks]
-
-
+ checks:list=field(default_factory=list)
+ def add(self,c):self.checks.append(c)
+ def ok(self):return all(c.status!="FAIL" for c in self.checks)
+ def lines(self):return [f"[{c.status}] {c.name}: {c.message}" for c in self.checks]
 class EnvironmentValidator:
-    def __init__(self, ctx):
-        self.ctx = ctx
-        self.tools = {}
-
-    def run_all(self):
-        r = ValidationReport()
-        r.add(CheckResult("project_root",
-            "PASS" if self.ctx.project_root.exists() else "FAIL",
-            str(self.ctx.project_root)))
-
-        self.tools = discover_all(self.ctx.project_root)
-        for name in ("python", "powershell", "ffmpeg", "ffprobe", "godot"):
-            t = self.tools.get(name)
-            status = "PASS" if (t and t.present) else (
-                "WARN" if name in ("godot", "powershell") else "FAIL")
-            r.add(CheckResult(name, status,
-                (t.version if t and t.version else "not found")))
-
-        fams = []
-        if self.ctx.paths.prototypes.exists():
-            for d in self.ctx.paths.prototypes.iterdir():
-                if (d.is_dir() and d.name.startswith("c11c_")
-                        and d.name not in ("c11c_bulk", "c11c_common",
-                                           "c11c_review_assets")):
-                    fams.append(d)
-        r.add(CheckResult("families_present",
-            "PASS" if len(fams) >= 1 else "FAIL",
-            str(len(fams)) + " family directories detected"))
-
-        r.add(CheckResult("delivery_config", "PASS",
-            str(self.ctx.delivery_width) + "x" + str(self.ctx.delivery_height)
-            + " @ " + str(self.ctx.fps) + " FPS ("
-            + str(round(self.ctx.default_duration, 2)) + "s)"))
-
-        for name in ("production", "prototypes_artifacts", "qa", "releases"):
-            p = getattr(self.ctx.paths, name)
-            r.add(CheckResult("artifacts." + name,
-                "PASS" if p.exists() else "WARN", str(p)))
-
-        return r
+ def __init__(self,ctx):self.ctx=ctx
+ def run_all(self):
+  r=ValidationReport(); p=self.ctx.project_root
+  r.add(CheckResult("project_root","PASS" if p.exists() else "FAIL",str(p)))
+  tools=discover_all(p,self.ctx.tool_paths)
+  for k in ("python","powershell","ffmpeg","ffprobe","godot"):
+   t=tools[k]; req=k in ("python","powershell","ffmpeg","ffprobe"); st="PASS" if t.present else ("FAIL" if req else "WARN"); r.add(CheckResult(k,st,t.version or "not found"))
+  bulk=self.ctx.paths.bulk_tools
+  for f in ("validate_c11c_powershell.ps1","validate_c11c_delivery_configuration.ps1","run_c11c_art_direction_review.ps1","run_c11c_production.ps1","run_c11c_production_bulk.ps1","run_c11c_production_25.ps1"):
+   r.add(CheckResult("tool."+f,"PASS" if (bulk/f).exists() else "WARN",str(bulk/f)))
+  r.add(CheckResult("delivery","PASS",f"{self.ctx.delivery_width}x{self.ctx.delivery_height} @ {self.ctx.fps} FPS / {self.ctx.default_duration:.2f}s / {self.ctx.default_frames} frames"))
+  fam=[d for d in self.ctx.paths.prototypes.glob("c11c_*_v1") if d.is_dir()] if self.ctx.paths.prototypes.exists() else []
+  r.add(CheckResult("families","PASS" if len(fam)>=5 else "WARN",f"{len(fam)} family directories discovered"))
+  for key in ("production","review_assets","qa","regression","releases","legacy","tests"):
+   path=getattr(self.ctx.paths,key); r.add(CheckResult("artifact."+key,"PASS" if path.exists() else "WARN",str(path)))
+  return r

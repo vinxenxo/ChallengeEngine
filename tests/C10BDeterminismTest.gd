@@ -9,6 +9,7 @@ const Context = preload("res://core/authoring/VisualAuthoringAssemblyContext.gd"
 const Generator = preload("res://core/authoring/VisualAuthoringGenerator.gd")
 const PolicyRegistry = preload("res://core/authoring/VisualAuthoringPolicyRegistry.gd")
 const Resolver = preload("res://core/authoring/VisualDifficultyResolver.gd")
+const SeedVariation = preload("res://core/authoring/VisualDrillSeedVariation.gd")
 
 const LOOP_SUBTYPES := ["fractal", "vector_field", "particle_flow", "kaleidoscope", "geometric"]
 const DRILL_SUBTYPES := ["tracking", "pursuit", "saccade", "peripheral_scan"]
@@ -116,8 +117,11 @@ func _test_seed_injection_isolation_9_of_9() -> void:
             _assert(int(env_b.get("seed", -1)) == SEED_B, "Seed B was not preserved for %s/%s" % [str(route["domain_family"]), subtype])
             var env_a_no_seed = _without_seed(env_a)
             var env_b_no_seed = _without_seed(env_b)
-            _assert(env_a_no_seed == env_b_no_seed, "Changing seed altered non-seed authoring data for %s/%s" % [str(route["domain_family"]), subtype])
-            _assert(JSON.stringify(env_a_no_seed) == JSON.stringify(env_b_no_seed), "Changing seed altered non-seed JSON serialization for %s/%s" % [str(route["domain_family"]), subtype])
+            if str(route["domain_family"]) == "visual_drill" and subtype in ["tracking", "saccade"]:
+                _assert(env_a_no_seed != env_b_no_seed, "C11-C 2.6.0 %s seed variation must alter authored motion data for %s/%s" % [subtype.to_upper(), str(route["domain_family"]), subtype])
+            else:
+                _assert(env_a_no_seed == env_b_no_seed, "Changing seed altered non-seed authoring data for %s/%s" % [str(route["domain_family"]), subtype])
+                _assert(JSON.stringify(env_a_no_seed) == JSON.stringify(env_b_no_seed), "Changing seed altered non-seed JSON serialization for %s/%s" % [str(route["domain_family"]), subtype])
             passed += 1
 
     print("[C10B] Seed injection isolation: %d/9" % passed)
@@ -174,7 +178,10 @@ func _test_tier_4_propagates_declared_policy_without_touching_seed_9_of_9() -> v
 
             for key in ["stimulus", "targets", "distractors", "trajectory"]:
                 if expected.has(key):
-                    _assert(payload.get(key, null) == expected[key], "Tier-4 payload parameter '%s' not propagated for %s/%s" % [str(key), domain_family, subtype])
+                    var expected_value: Variant = expected[key]
+                    if subtype in ["tracking", "saccade"] and key == "trajectory":
+                        expected_value = SeedVariation.apply(subtype, SEED_A, {"trajectory": expected[key]}).get("trajectory", expected[key])
+                    _assert(payload.get(key, null) == expected_value, "Tier-4 payload parameter '%s' not propagated for %s/%s" % [str(key), domain_family, subtype])
 
             var task_expected: Dictionary = expected.get("task", {})
             _assert(payload.get("task", {}) == task_expected, "Tier-4 task mapping mismatch for %s/%s" % [domain_family, subtype])

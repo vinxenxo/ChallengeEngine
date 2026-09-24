@@ -33,7 +33,7 @@ func _initialize() -> void:
 		"seed": 12345,
 		"audio": {"enabled": true},
 		"payload": {
-			"duration": 17.0,
+			"duration": 21.0,
 			"fps": 30,
 			"exercise_parameters": {"difficulty_tier": 2, "speed_multiplier": 1.0}
 		}
@@ -51,6 +51,9 @@ func _initialize() -> void:
 		}
 	}
 	var model := binder.bind_frame(source_frame, profile, "GAME", 90, 30)
+	var alternate_frame := source_frame.duplicate(true)
+	alternate_frame["payload"]["parameters"]["tracking_variant"] = 0.875
+	var alternate_model := binder.bind_frame(alternate_frame, profile, "GAME", 90, 30)
 	var pre_roll_model := binder.bind_frame(source_frame, profile, "PRE_ROLL", 0, 30)
 	_assert(bool(pre_roll_model.get("countdown_visible", false)), "Visual Drill PRE_ROLL countdown should be visible.")
 	_assert(str(pre_roll_model.get("countdown_value", "")) == "3", "Visual Drill PRE_ROLL should begin at 3.")
@@ -67,8 +70,15 @@ func _initialize() -> void:
 	_assert(bool(editorial.get("matrix_enabled", false)), "Visual Drill editorial Matrix must be enabled.")
 	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header source line must identify the drill.")
 	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature source line must identify Visual Drill.")
-	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("GAME 17.00S") >= 0, "Footer must expose the canonical 17s gameplay duration.")
-	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("TOTAL 20.00S") >= 0, "Footer must expose the 20s total presentation duration.")
+	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("GAME 21.00S") >= 0, "Footer must expose the canonical 21s Tracking gameplay duration.")
+	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("TOTAL 24.00S") >= 0, "Footer must expose the 24s Tracking total presentation duration.")
+	_assert(str(editorial.get("footer", {}).get("line_2", "")).find("PALETTE ") >= 0, "Tracking footer must expose the active palette name.")
+	var alternate_editorial: Dictionary = alternate_model.get("editorial", {})
+	var base_colors: Dictionary = editorial.get("colors", {})
+	var alternate_colors: Dictionary = alternate_editorial.get("colors", {})
+	_assert(base_colors.get("header_secondary", Color.WHITE) != alternate_colors.get("header_secondary", Color.WHITE), "Tracking seed/cosmetic variants must alter editorial text colour.")
+	_assert(base_colors.get("footer_data", Color.WHITE) != alternate_colors.get("footer_data", Color.WHITE), "Tracking seed/cosmetic variants must alter footer data colour.")
+	_assert(str(editorial.get("footer", {}).get("line_2", "")) != str(alternate_editorial.get("footer", {}).get("line_2", "")), "Tracking palette variants must produce different editorial palette labels.")
 	_assert(is_equal_approx(VisualContentPlayer.PHYSICAL_SOCIAL_SCALE, 4.0 / 3.0), "Visual Drill physical social scale must map 540x960 logical space to 720x1280.")
 	_assert(VisualContentPlayer.LOGICAL_SOCIAL_CANVAS_SIZE == Vector2(540.0, 960.0), "Logical social canvas must remain 540x960.")
 	_assert(VisualContentPlayer.PHYSICAL_SOCIAL_OUTPUT_SIZE == Vector2(720.0, 1280.0), "Physical social output must remain 720x1280.")

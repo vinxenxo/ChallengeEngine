@@ -1,0 +1,13 @@
+C11-C 2.6.0 — TRACKING SEEDED VARIATION + SACCADE JUMP COUNTER
+
+Apply over the certified C11-C 2.5.1 workspace.
+
+This checkpoint changes visual-drill authoring content for Tracking and Saccade: the seed now deterministically expands the authored Tracking trajectory and Saccade polar sequence. The runtime generator remains deterministic and presentation remains passive.
+
+Tracking: no Tron background, no circular operating-boundary visual, richer seeded palettes/text colours, history-only snake trail.
+Saccade: numeric jump counter sourced from emitted jump_index; content seeds author distinct polar jump sequences while preserving 180..300 px jump bounds and existing timing.
+
+Run the focused Tracking/Saccade contracts, then the complete logical corpus and regenerate multi-seed review videos before closing the families.
+
+Tracking motion speed variation is 0.72x–1.38x; Tracking uses no Tron background or operating ellipse.
+Saccade target displays jump_index + 1 inside the target core.

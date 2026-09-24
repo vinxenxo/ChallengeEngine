@@ -2,7 +2,7 @@
 class_name TrackingGenerator
 extends VisualDrillGenerator
 
-## C11-C.6 / Tracking mechanic baseline v1.1 / C11-C 2.4.0.
+## C11-C.6 / Tracking mechanic baseline v1.2 / C11-C 2.6.0.
 ## Generates deterministic, frame-addressable smooth-pursuit state.
 ## The mechanic owns trajectory math; the presentation layer only renders the emitted state.
 
@@ -34,7 +34,8 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
 	var speed_multiplier := clampf(float(exercise.get("speed_multiplier", 1.0)), 0.1, 3.0)
 	var pacing_mode := str(exercise.get("pacing_mode", "constant"))
 	var paced_progress := _resolve_paced_progress(progress, pacing_mode)
-	var phase_scale := TAU * float(trajectory.get("travel_cycles", DEFAULT_TRAVEL_CYCLES)) * speed_multiplier
+	var motion_speed_multiplier := clampf(float(trajectory.get("motion_speed_multiplier", 1.0)), 0.70, 1.40)
+	var phase_scale := TAU * float(trajectory.get("travel_cycles", DEFAULT_TRAVEL_CYCLES)) * speed_multiplier * motion_speed_multiplier
 	var phase := phase_scale * paced_progress
 
 	var position := _sample_position(phase, trajectory)
@@ -77,6 +78,7 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
 			"phase": phase,
 			"phase_progress": paced_progress,
 			"travel_cycles": float(trajectory.get("travel_cycles", DEFAULT_TRAVEL_CYCLES)),
+			"motion_speed_multiplier": motion_speed_multiplier,
 			"x_frequency": float(trajectory.get("x_frequency", DEFAULT_FREQUENCY_X)),
 			"y_frequency": float(trajectory.get("y_frequency", DEFAULT_FREQUENCY_Y)),
 			"amplitude_x": float(trajectory.get("amplitude_x", DEFAULT_AMPLITUDE_X)),
@@ -100,8 +102,9 @@ func generate_with_variation(frame_index: int, total_frames: int, drill_paramete
 		},
 		"parameters": {
 			"tracking_variant": tracking_var,
-			"trajectory_profile": "lissajous_2_3_bounded_v1",
+			"trajectory_profile": str(trajectory.get("profile", "lissajous_2_3_bounded_v1")),
 			"speed_multiplier": speed_multiplier,
+			"motion_speed_multiplier": motion_speed_multiplier,
 			"pacing_mode": pacing_mode
 		}
 	}
@@ -144,7 +147,9 @@ func _resolve_trajectory(raw_trajectory: Variant) -> Dictionary:
 		"phase_y": phase_y,
 		"target_radius": target_radius,
 		"trail_length_frames": trail_length,
-		"trail_mode": trail_mode
+		"trail_mode": trail_mode,
+		"motion_speed_multiplier": clampf(float(raw.get("motion_speed_multiplier", 1.0)), 0.70, 1.40),
+		"seed_motion_variant": int(raw.get("seed_motion_variant", 0))
 	}
 
 func _resolve_progress(frame_index: int, total_frames: int) -> float:
@@ -217,7 +222,8 @@ func _build_history_trail(
 	for sample_frame in range(first_frame, frame_index + 1):
 		var sample_progress := _resolve_progress(sample_frame, total_frames)
 		var sample_paced := _resolve_paced_progress(sample_progress, pacing_mode)
-		var sample_phase := TAU * float(trajectory.get("travel_cycles", DEFAULT_TRAVEL_CYCLES)) * speed_multiplier * sample_paced
+		var motion_speed_multiplier := clampf(float(trajectory.get("motion_speed_multiplier", 1.0)), 0.70, 1.40)
+		var sample_phase := TAU * float(trajectory.get("travel_cycles", DEFAULT_TRAVEL_CYCLES)) * speed_multiplier * motion_speed_multiplier * sample_paced
 		var sample_position := _sample_position(sample_phase, trajectory)
 		trail.append({"x": sample_position.x, "y": sample_position.y})
 	return trail

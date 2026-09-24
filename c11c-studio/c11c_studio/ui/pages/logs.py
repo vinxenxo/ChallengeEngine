@@ -1,34 +1,6 @@
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
-                               QPushButton, QComboBox, QLineEdit)
+from PySide6.QtWidgets import QWidget,QVBoxLayout,QLabel,QComboBox,QLineEdit,QPushButton,QHBoxLayout
 from ..widgets.log_view import LogView
-
-
 class LogsPage(QWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        root = QVBoxLayout(self)
-        root.setContentsMargins(24, 20, 24, 20)
-        root.setSpacing(10)
-
-        t = QLabel("Logs"); t.setObjectName("PageTitle")
-        s = QLabel("Raw stdout/stderr is preserved verbatim. No line is dropped.")
-        s.setObjectName("PageSubtitle")
-        root.addWidget(t); root.addWidget(s)
-
-        row = QHBoxLayout()
-        self.cb_filter = QComboBox(); self.cb_filter.addItems(
-            ["ALL", "INFO", "WARN", "ERROR"])
-        self.le_search = QLineEdit()
-        self.le_search.setPlaceholderText("Search...")
-        self.btn_clear = QPushButton("CLEAR")
-        self.btn_open = QPushButton("OPEN RAW LOG")
-        row.addWidget(QLabel("Filter:")); row.addWidget(self.cb_filter)
-        row.addWidget(self.le_search)
-        row.addWidget(self.btn_clear); row.addWidget(self.btn_open)
-        row.addStretch(1)
-        root.addLayout(row)
-
-        self.view = LogView()
-        root.addWidget(self.view, 1)
-
-        self.btn_clear.clicked.connect(self.view.clear_log)
+ def __init__(self,jm,parent=None):
+  super().__init__(parent);self.jm=jm;root=QVBoxLayout(self);t=QLabel("Log Center");t.setObjectName("PageTitle");root.addWidget(t);row=QHBoxLayout();self.filter=QComboBox();self.filter.addItems(["ALL","STDOUT","STDERR"]);self.search=QLineEdit();self.search.setPlaceholderText("Search current log");self.clear=QPushButton("CLEAR");row.addWidget(self.filter);row.addWidget(self.search,1);row.addWidget(self.clear);root.addLayout(row);self.view=LogView();root.addWidget(self.view,1);self.clear.clicked.connect(self.view.clear);jm.job_output.connect(self._output)
+ def _output(self,jid,stream,text):self.view.append_line(text,stream)

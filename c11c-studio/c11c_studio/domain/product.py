@@ -6,14 +6,13 @@ from pathlib import Path
 class Product:
     product_id: str
     family: str
-    seed: int
+    seed: int | None
     root: Path
-    mp4: object = None
-    wav: object = None
-    social_txt: object = None
-    manifest_json: object = None
-    authoring_json: object = None
-    ffprobe_json: object = None
-    godot_log: object = None
-    status: str = "CANDIDATE"
+    status: str = "DISCOVERED"
+    files: dict = field(default_factory=dict)
     metadata: dict = field(default_factory=dict)
+
+    @property
+    def mp4(self): return self.files.get("mp4")
+    @property
+    def manifest(self): return self.files.get("manifest")

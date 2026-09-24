@@ -206,7 +206,7 @@ C11-A qualification envelope; seed 12345 uses the deterministic A copy when pres
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.4.0'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.6.0'
 Write-Host ("[C11-C-DRILL] $($Drills.Count) families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
 Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + family-specific gameplay (17s/21s) = 20s/24s total'
 Write-Host ("[C11-C-DRILL] Shared editorial layout / Matrix ON / audio ON")
@@ -354,7 +354,7 @@ try {
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.5.1'
+                revision='2.6.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -390,7 +390,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.5.1'
+    revision='2.6.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
