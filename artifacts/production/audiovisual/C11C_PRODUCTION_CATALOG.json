@@ -929,6 +929,14 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1968707165",
                          "created_utc":  "2026-09-24T19:15:27.2935723Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1968707165"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1450498974",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1450498974,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1450498974",
+                         "created_utc":  "2026-09-24T23:10:15.9614522Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1450498974"
                      }
                  ]
 }

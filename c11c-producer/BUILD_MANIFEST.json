@@ -1,0 +1,9 @@
+{
+  "app": "C11-C Producer",
+  "version": "0.1.0",
+  "source_profile": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+  "source_profile_sha256": "9a900af817b9ae5b924a95490e48eef64759df11c1aad23637e300f4f73c9801",
+  "source_command": "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
+  "build_mode": "new_from_scratch",
+  "reuses_c11c_studio": false
+}

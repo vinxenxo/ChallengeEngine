@@ -1,0 +1,1036 @@
+{
+  "schema_version": "2.0",
+  "backend_profile_source": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+  "backend_profile_version": "2.0.1",
+  "families": {
+    "c11c_geometric_waves_v1": {
+      "name": "Geometric Waves",
+      "internal": "geometric",
+      "prototype": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "grammars": [
+        [
+          "auto",
+          "AUTO — seed"
+        ],
+        [
+          "harmonic_membrane",
+          "HARMONIC MEMBRANE"
+        ],
+        [
+          "interference_plane",
+          "INTERFERENCE PLANE"
+        ],
+        [
+          "parametric_ribbon",
+          "PARAMETRIC RIBBON"
+        ],
+        [
+          "lattice_wave",
+          "LATTICE WAVE"
+        ],
+        [
+          "orbital_wave",
+          "ORBITAL WAVE"
+        ]
+      ],
+      "params": [
+        {
+          "key": "palette_name",
+          "label": "Palette",
+          "kind": "enum",
+          "values": [
+            "AUTO (seed)",
+            "cyan_magenta",
+            "electric_blue_lilac",
+            "turquoise_orchid",
+            "spectral_blue",
+            "warm_cold_harmonic",
+            "indigo_rose",
+            "aqua_ultraviolet",
+            "silver_ice",
+            "coral_violet",
+            "mint_fuchsia",
+            "acid_lime_blue",
+            "sky_rose",
+            "lava_blue",
+            "ultra_pink_cyan",
+            "violet_lime",
+            "obsidian_teal",
+            "ember_aqua",
+            "violet_gold",
+            "fuchsia_teal",
+            "arctic_orange"
+          ]
+        },
+        {
+          "key": "loop_cycles",
+          "label": "Loop cycles",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "polygon_sides",
+          "label": "Polygon sides",
+          "kind": "enum",
+          "values": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "wave_frequency",
+          "label": "Wave frequency",
+          "kind": "float",
+          "min": 12,
+          "max": 28,
+          "step": 0.1
+        },
+        {
+          "key": "morph",
+          "label": "Morph",
+          "kind": "float",
+          "min": 0.18,
+          "max": 0.92,
+          "step": 0.01
+        },
+        {
+          "key": "line_width",
+          "label": "Line width",
+          "kind": "float",
+          "min": 0.0048,
+          "max": 0.0094,
+          "step": 0.0001
+        },
+        {
+          "key": "glow",
+          "label": "Glow",
+          "kind": "float",
+          "min": 0.34,
+          "max": 0.72,
+          "step": 0.01
+        },
+        {
+          "key": "wave_ratio",
+          "label": "Wave ratio",
+          "kind": "float",
+          "min": 0.62,
+          "max": 1.02,
+          "step": 0.01
+        },
+        {
+          "key": "shape_rotation",
+          "label": "Shape rotation",
+          "kind": "float",
+          "min": -0.42,
+          "max": 0.42,
+          "step": 0.01
+        },
+        {
+          "key": "layer_spread",
+          "label": "Layer spread",
+          "kind": "float",
+          "min": 0.014,
+          "max": 0.076,
+          "step": 0.001
+        },
+        {
+          "key": "radial_wave_amplitude",
+          "label": "Radial amplitude",
+          "kind": "float",
+          "min": 0.012,
+          "max": 0.062,
+          "step": 0.001
+        },
+        {
+          "key": "liss_x_frequency",
+          "label": "Liss X frequency",
+          "kind": "enum",
+          "values": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "key": "liss_y_frequency",
+          "label": "Liss Y frequency",
+          "kind": "enum",
+          "values": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "interference_scale",
+          "label": "Interference scale",
+          "kind": "float",
+          "min": 0.74,
+          "max": 1.42,
+          "step": 0.01
+        },
+        {
+          "key": "hero_scale",
+          "label": "Hero scale",
+          "kind": "float",
+          "min": 0.8,
+          "max": 1.03,
+          "step": 0.01
+        },
+        {
+          "key": "perspective_strength",
+          "label": "Perspective strength",
+          "kind": "float",
+          "min": 0.35,
+          "max": 1.02,
+          "step": 0.01
+        },
+        {
+          "key": "depth_strength",
+          "label": "Depth strength",
+          "kind": "float",
+          "min": 0.42,
+          "max": 0.94,
+          "step": 0.01
+        },
+        {
+          "key": "secondary_phase",
+          "label": "Secondary phase",
+          "kind": "float",
+          "min": -1.1,
+          "max": 1.1,
+          "step": 0.01
+        },
+        {
+          "key": "color_phase",
+          "label": "Color phase",
+          "kind": "float",
+          "min": -3.1415927,
+          "max": 3.1415927,
+          "step": 0.01
+        },
+        {
+          "key": "stroke_scale",
+          "label": "Stroke scale",
+          "kind": "float",
+          "min": 0.78,
+          "max": 1.28,
+          "step": 0.01
+        }
+      ]
+    },
+    "c11c_fractal_bloom_v1": {
+      "name": "Fractal Bloom",
+      "internal": "fractal",
+      "prototype": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "grammars": [
+        [
+          "auto",
+          "AUTO — seed"
+        ],
+        [
+          "radial_bloom",
+          "RADIAL BLOOM"
+        ],
+        [
+          "dendritic_tunnel",
+          "DENDRITIC TUNNEL"
+        ],
+        [
+          "spiral_fractal",
+          "SPIRAL FRACTAL"
+        ],
+        [
+          "fractal_filigree",
+          "FRACTAL FILIGREE"
+        ],
+        [
+          "nested_worlds",
+          "NESTED WORLDS"
+        ]
+      ],
+      "params": [
+        {
+          "key": "palette_name",
+          "label": "Palette",
+          "kind": "enum",
+          "values": [
+            "AUTO (seed)",
+            "indigo_violet_cyan",
+            "midnight_electric_violet",
+            "teal_indigo",
+            "ultraviolet_magenta_cyan",
+            "monochrome_indigo",
+            "blue_cyan_ice",
+            "violet_rose_cyan",
+            "deep_teal_violet",
+            "ultraviolet_mint",
+            "acid_lime_violet",
+            "rose_ultraviolet",
+            "royal_blue_fuchsia",
+            "coral_ultraviolet",
+            "mint_magenta",
+            "cyan_lime_nebula",
+            "royal_violet_rose",
+            "crimson_cyan_nebula",
+            "gold_violet_nebula",
+            "lime_violet_void",
+            "ice_rose_nebula"
+          ]
+        },
+        {
+          "key": "loop_cycles",
+          "label": "Loop cycles",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "zoom_strength",
+          "label": "Zoom strength",
+          "kind": "float",
+          "min": 0.1,
+          "max": 0.42,
+          "step": 0.01
+        },
+        {
+          "key": "warp_strength",
+          "label": "Warp strength",
+          "kind": "float",
+          "min": 0.012,
+          "max": 0.058,
+          "step": 0.001
+        },
+        {
+          "key": "bloom_strength",
+          "label": "Bloom strength",
+          "kind": "float",
+          "min": 0.4,
+          "max": 0.82,
+          "step": 0.01
+        },
+        {
+          "key": "layer_softness",
+          "label": "Layer softness",
+          "kind": "float",
+          "min": 0.48,
+          "max": 1.04,
+          "step": 0.01
+        },
+        {
+          "key": "julia_x_bias",
+          "label": "Julia X bias",
+          "kind": "float",
+          "min": -0.06,
+          "max": 0.06,
+          "step": 0.001
+        },
+        {
+          "key": "julia_y_bias",
+          "label": "Julia Y bias",
+          "kind": "float",
+          "min": -0.075,
+          "max": 0.075,
+          "step": 0.001
+        },
+        {
+          "key": "zoom_cycles",
+          "label": "Zoom cycles",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "zoom_path",
+          "label": "Zoom path",
+          "kind": "enum",
+          "values": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "key": "warp_frequency",
+          "label": "Warp frequency",
+          "kind": "float",
+          "min": 2,
+          "max": 5.8,
+          "step": 0.1
+        },
+        {
+          "key": "layer_spread",
+          "label": "Layer spread",
+          "kind": "float",
+          "min": 0.035,
+          "max": 0.2,
+          "step": 0.005
+        },
+        {
+          "key": "breath_strength",
+          "label": "Breath strength",
+          "kind": "float",
+          "min": 0.035,
+          "max": 0.105,
+          "step": 0.005
+        },
+        {
+          "key": "branch_density",
+          "label": "Branch density",
+          "kind": "float",
+          "min": 0.76,
+          "max": 1.32,
+          "step": 0.01
+        },
+        {
+          "key": "detail_scale",
+          "label": "Detail scale",
+          "kind": "float",
+          "min": 0.86,
+          "max": 1.34,
+          "step": 0.01
+        },
+        {
+          "key": "spiral_amount",
+          "label": "Spiral amount",
+          "kind": "float",
+          "min": 0.45,
+          "max": 1.45,
+          "step": 0.01
+        },
+        {
+          "key": "color_diversity",
+          "label": "Color diversity",
+          "kind": "float",
+          "min": 0.82,
+          "max": 1,
+          "step": 0.01
+        },
+        {
+          "key": "color_phase",
+          "label": "Color phase",
+          "kind": "float",
+          "min": -3.1415927,
+          "max": 3.1415927,
+          "step": 0.01
+        }
+      ]
+    },
+    "c11c_sacred_symmetry_v1": {
+      "name": "Sacred Symmetry",
+      "internal": "sacred_symmetry",
+      "prototype": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+      "grammars": [
+        [
+          "auto",
+          "AUTO — seed"
+        ],
+        [
+          "astrolabe",
+          "ASTROLABE"
+        ],
+        [
+          "gear_train",
+          "GEAR TRAIN"
+        ],
+        [
+          "polygon_orrery",
+          "POLYGON ORRERY"
+        ],
+        [
+          "origami_mandala",
+          "ORIGAMI MANDALA"
+        ],
+        [
+          "celestial_chart",
+          "CELESTIAL CHART"
+        ]
+      ],
+      "params": [
+        {
+          "key": "palette_name",
+          "label": "Palette",
+          "kind": "enum",
+          "values": [
+            "AUTO (seed)",
+            "liquid_gold",
+            "gold_copper",
+            "amber_laser",
+            "bronze_pale_gold",
+            "warm_obsidian",
+            "champagne_brass",
+            "copper_fire",
+            "platinum_warm_gold",
+            "rose_gold",
+            "antique_brass",
+            "warm_platinum",
+            "ivory_gold",
+            "rose_bronze",
+            "champagne_ivory",
+            "copper_platinum",
+            "warm_silver",
+            "black_gold_crimson",
+            "midnight_brass",
+            "royal_copper",
+            "ember_champagne"
+          ]
+        },
+        {
+          "key": "loop_cycles",
+          "label": "Loop cycles",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "symmetry_order",
+          "label": "Symmetry order",
+          "kind": "enum",
+          "values": [
+            4,
+            6,
+            8,
+            12
+          ]
+        },
+        {
+          "key": "ring_bias",
+          "label": "Ring bias",
+          "kind": "float",
+          "min": 0.3,
+          "max": 0.82,
+          "step": 0.01
+        },
+        {
+          "key": "glow",
+          "label": "Glow",
+          "kind": "float",
+          "min": 0.4,
+          "max": 0.78,
+          "step": 0.01
+        },
+        {
+          "key": "gear_inner",
+          "label": "Gear inner",
+          "kind": "enum",
+          "values": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "key": "gear_outer",
+          "label": "Gear outer",
+          "kind": "enum",
+          "values": [
+            1,
+            -2,
+            3
+          ]
+        },
+        {
+          "key": "ring_scale",
+          "label": "Ring scale",
+          "kind": "float",
+          "min": 0.9,
+          "max": 1.08,
+          "step": 0.01
+        },
+        {
+          "key": "core_scale",
+          "label": "Core scale",
+          "kind": "float",
+          "min": 0.82,
+          "max": 1.16,
+          "step": 0.01
+        },
+        {
+          "key": "tick_density",
+          "label": "Tick density",
+          "kind": "float",
+          "min": 0.82,
+          "max": 1.34,
+          "step": 0.01
+        },
+        {
+          "key": "mechanical_rate",
+          "label": "Mechanical rate",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "macro_scale",
+          "label": "Macro scale",
+          "kind": "float",
+          "min": 0.86,
+          "max": 1.04,
+          "step": 0.01
+        },
+        {
+          "key": "node_density",
+          "label": "Node density",
+          "kind": "float",
+          "min": 0.72,
+          "max": 1.28,
+          "step": 0.01
+        },
+        {
+          "key": "fold_depth",
+          "label": "Fold depth",
+          "kind": "float",
+          "min": 0.78,
+          "max": 1.22,
+          "step": 0.01
+        },
+        {
+          "key": "color_diversity",
+          "label": "Color diversity",
+          "kind": "float",
+          "min": 0.82,
+          "max": 1,
+          "step": 0.01
+        },
+        {
+          "key": "color_phase",
+          "label": "Color phase",
+          "kind": "float",
+          "min": -3.1415927,
+          "max": 3.1415927,
+          "step": 0.01
+        }
+      ]
+    },
+    "c11c_living_particles_v1": {
+      "name": "Living Particles",
+      "internal": "living_particles",
+      "prototype": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "grammars": [
+        [
+          "auto",
+          "AUTO — seed"
+        ],
+        [
+          "swarm",
+          "SWARM"
+        ],
+        [
+          "vortex",
+          "VORTEX"
+        ],
+        [
+          "collision_cloud",
+          "COLLISION CLOUD"
+        ],
+        [
+          "organic_pulse",
+          "ORGANIC PULSE"
+        ],
+        [
+          "magnetic_filament_cloud",
+          "MAGNETIC FILAMENT CLOUD"
+        ]
+      ],
+      "params": [
+        {
+          "key": "palette_name",
+          "label": "Palette",
+          "kind": "enum",
+          "values": [
+            "AUTO (seed)",
+            "emerald_sea_green",
+            "turquoise_aqua",
+            "jade_lime",
+            "cyan_mint",
+            "petrol_aqua",
+            "seafoam_emerald",
+            "deep_teal_spectral",
+            "algae_green_aqua",
+            "cobalt_algae",
+            "lime_turquoise",
+            "ice_cyan_mint",
+            "jade_chartreuse",
+            "mint_chartreuse",
+            "cyan_golden",
+            "forest_aqua",
+            "ice_jade",
+            "deep_violet_algae",
+            "ember_seafoam",
+            "magenta_plankton",
+            "lime_cyan_abyss"
+          ]
+        },
+        {
+          "key": "loop_cycles",
+          "label": "Loop cycles",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "particle_count",
+          "label": "Particle count",
+          "kind": "float",
+          "min": 104,
+          "max": 170,
+          "step": 1
+        },
+        {
+          "key": "glow",
+          "label": "Glow",
+          "kind": "float",
+          "min": 0.56,
+          "max": 0.88,
+          "step": 0.01
+        },
+        {
+          "key": "attractor_a_x",
+          "label": "Attractor A X",
+          "kind": "float",
+          "min": -0.22,
+          "max": -0.04,
+          "step": 0.01
+        },
+        {
+          "key": "attractor_a_y",
+          "label": "Attractor A Y",
+          "kind": "float",
+          "min": -0.16,
+          "max": 0.09,
+          "step": 0.01
+        },
+        {
+          "key": "attractor_b_x",
+          "label": "Attractor B X",
+          "kind": "float",
+          "min": 0.04,
+          "max": 0.22,
+          "step": 0.01
+        },
+        {
+          "key": "attractor_b_y",
+          "label": "Attractor B Y",
+          "kind": "float",
+          "min": -0.05,
+          "max": 0.17,
+          "step": 0.01
+        },
+        {
+          "key": "swirl_bias",
+          "label": "Swirl bias",
+          "kind": "float",
+          "min": 0.62,
+          "max": 1.48,
+          "step": 0.01
+        },
+        {
+          "key": "particle_spread",
+          "label": "Particle spread",
+          "kind": "float",
+          "min": 0.78,
+          "max": 1.18,
+          "step": 0.01
+        },
+        {
+          "key": "turbulence",
+          "label": "Turbulence",
+          "kind": "float",
+          "min": 0.012,
+          "max": 0.046,
+          "step": 0.001
+        },
+        {
+          "key": "attractor_strength",
+          "label": "Attractor strength",
+          "kind": "float",
+          "min": 0.72,
+          "max": 1.44,
+          "step": 0.01
+        },
+        {
+          "key": "particle_size_scale",
+          "label": "Particle size",
+          "kind": "float",
+          "min": 0.74,
+          "max": 1.3,
+          "step": 0.01
+        },
+        {
+          "key": "phase_rate",
+          "label": "Phase rate",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "collision_strength",
+          "label": "Collision strength",
+          "kind": "float",
+          "min": 0.72,
+          "max": 1.4,
+          "step": 0.01
+        },
+        {
+          "key": "core_scale",
+          "label": "Core scale",
+          "kind": "float",
+          "min": 0.78,
+          "max": 1.18,
+          "step": 0.01
+        },
+        {
+          "key": "density_bias",
+          "label": "Density bias",
+          "kind": "float",
+          "min": 0.86,
+          "max": 1.16,
+          "step": 0.01
+        },
+        {
+          "key": "color_diversity",
+          "label": "Color diversity",
+          "kind": "float",
+          "min": 0.88,
+          "max": 1,
+          "step": 0.01
+        },
+        {
+          "key": "color_phase",
+          "label": "Color phase",
+          "kind": "float",
+          "min": -3.1415927,
+          "max": 3.1415927,
+          "step": 0.01
+        }
+      ]
+    },
+    "c11c_invisible_forces_v1": {
+      "name": "Invisible Forces",
+      "internal": "invisible_forces",
+      "prototype": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+      "grammars": [
+        [
+          "auto",
+          "AUTO — seed"
+        ],
+        [
+          "dipole_field",
+          "DIPOLE FIELD"
+        ],
+        [
+          "vortex_field",
+          "VORTEX FIELD"
+        ],
+        [
+          "saddle_field",
+          "SADDLE FIELD"
+        ],
+        [
+          "quadrupole_field",
+          "QUADRUPOLE FIELD"
+        ],
+        [
+          "gravitational_lens",
+          "GRAVITATIONAL LENS"
+        ],
+        [
+          "topographic_basin",
+          "TOPOGRAPHIC BASIN"
+        ]
+      ],
+      "params": [
+        {
+          "key": "palette_name",
+          "label": "Palette",
+          "kind": "enum",
+          "values": [
+            "AUTO (seed)",
+            "crimson_cadmium_gold",
+            "crimson_orange",
+            "deep_red_amber",
+            "hot_orange_yellow",
+            "warm_monochrome",
+            "scarlet_copper",
+            "vermilion_peach_gold",
+            "burgundy_amber",
+            "magenta_red_gold",
+            "plasma_orange",
+            "ember_gold",
+            "rust_yellow",
+            "scarlet_gold",
+            "ember_champagne",
+            "ruby_copper",
+            "firebrick_gold",
+            "crimson_lime_gold",
+            "purple_fire_gold",
+            "burnished_cyan",
+            "hot_magenta_orange"
+          ]
+        },
+        {
+          "key": "loop_cycles",
+          "label": "Loop cycles",
+          "kind": "enum",
+          "values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "key": "trace_count",
+          "label": "Trace count",
+          "kind": "float",
+          "min": 50,
+          "max": 88,
+          "step": 1
+        },
+        {
+          "key": "curvature",
+          "label": "Curvature",
+          "kind": "float",
+          "min": 0.52,
+          "max": 1.16,
+          "step": 0.01
+        },
+        {
+          "key": "glow",
+          "label": "Glow",
+          "kind": "float",
+          "min": 0.5,
+          "max": 0.9,
+          "step": 0.01
+        },
+        {
+          "key": "field_rotation",
+          "label": "Field rotation",
+          "kind": "float",
+          "min": -0.42,
+          "max": 0.42,
+          "step": 0.01
+        },
+        {
+          "key": "storm_offset_x",
+          "label": "Storm offset X",
+          "kind": "float",
+          "min": -0.16,
+          "max": 0.16,
+          "step": 0.01
+        },
+        {
+          "key": "storm_offset_y",
+          "label": "Storm offset Y",
+          "kind": "float",
+          "min": -0.12,
+          "max": 0.12,
+          "step": 0.01
+        },
+        {
+          "key": "pulse_speed",
+          "label": "Pulse speed",
+          "kind": "float",
+          "min": 0.84,
+          "max": 1.34,
+          "step": 0.01
+        },
+        {
+          "key": "field_twist",
+          "label": "Field twist",
+          "kind": "float",
+          "min": 0.62,
+          "max": 1.42,
+          "step": 0.01
+        },
+        {
+          "key": "pulse_width",
+          "label": "Pulse width",
+          "kind": "float",
+          "min": 0.62,
+          "max": 1.34,
+          "step": 0.01
+        },
+        {
+          "key": "storm_scale",
+          "label": "Storm scale",
+          "kind": "float",
+          "min": 0.74,
+          "max": 1.18,
+          "step": 0.01
+        },
+        {
+          "key": "lens_strength",
+          "label": "Lens strength",
+          "kind": "float",
+          "min": 0.42,
+          "max": 0.92,
+          "step": 0.01
+        },
+        {
+          "key": "basin_depth",
+          "label": "Basin depth",
+          "kind": "float",
+          "min": 0.45,
+          "max": 1.05,
+          "step": 0.01
+        },
+        {
+          "key": "pole_separation",
+          "label": "Pole separation",
+          "kind": "float",
+          "min": 0.16,
+          "max": 0.34,
+          "step": 0.01
+        },
+        {
+          "key": "quadrupole_skew",
+          "label": "Quadrupole skew",
+          "kind": "float",
+          "min": 0.78,
+          "max": 1.28,
+          "step": 0.01
+        },
+        {
+          "key": "color_phase",
+          "label": "Color phase",
+          "kind": "float",
+          "min": -3.1415927,
+          "max": 3.1415927,
+          "step": 0.01
+        }
+      ]
+    }
+  },
+  "backend_profile_sha256": "9a900af817b9ae5b924a95490e48eef64759df11c1aad23637e300f4f73c9801"
+}
