@@ -20,6 +20,8 @@ class BackendCatalog:
     json_keys: dict[str,list[str]]=field(default_factory=dict)
     grammar_names: dict[str,set[str]]=field(default_factory=dict)
     palette_names: dict[str,set[str]]=field(default_factory=dict)
+    def script_supports(self, script, param):
+        cap=self.scripts.get(str(script)); return bool(cap and param in cap.parameters)
 
 class BackendIntrospector:
     def __init__(self,ctx): self.ctx=ctx; self.catalog=BackendCatalog()
@@ -86,5 +88,3 @@ class BackendIntrospector:
             for v in obj.values(): self._harvest(name,v)
         elif isinstance(obj,list):
             for v in obj: self._harvest(name,v)
-    def script_supports(self,script,param):
-        cap=self.catalog.scripts.get(str(script)); return bool(cap and param in cap.parameters)

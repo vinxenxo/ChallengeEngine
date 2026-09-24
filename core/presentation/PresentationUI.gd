@@ -63,6 +63,20 @@ func _build_unified_frame_ui(frame: UnifiedSocialFrame) -> void:
 		header_root.add_child(header_box)
 		_build_header_ui(header_box)
 
+	# C11-C Visual Drill CTA lives in the HEADER. It reuses the same shared
+	# CTAComponent used by Challenge; no second CTA implementation exists.
+	if use_c11c_shared_social_editorial:
+		cta = CTAComponent.new()
+		cta.name = "VisualDrillEndCTA"
+		cta.visible = false
+		cta.set_anchors_preset(Control.PRESET_FULL_RECT)
+		cta.offset_left = 24.0
+		cta.offset_top = 12.0
+		cta.offset_right = -24.0
+		cta.offset_bottom = -12.0
+		cta.z_index = 50
+		header_root.add_child(cta)
+
 	gameplay_envelope = Control.new()
 	gameplay_envelope.set_anchors_preset(Control.PRESET_FULL_RECT)
 	gameplay_envelope.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -117,15 +131,12 @@ func _build_footer_ui(parent: Control) -> void:
 	_build_footer_children(parent)
 
 func _build_footer_children(parent: Control) -> void:
-	cta = CTAComponent.new()
-	cta.visible = false
-	if use_c11c_shared_social_editorial:
-		cta.set_anchors_preset(Control.PRESET_FULL_RECT)
-		cta.offset_left = 28.0
-		cta.offset_top = 6.0
-		cta.offset_right = -28.0
-		cta.offset_bottom = -6.0
-	parent.add_child(cta)
+	# C11-C Visual Drill CTA is mounted in the HEADER on the shared social path.
+	# Preserve the historical Challenge CTA in the legacy footer path.
+	if not use_c11c_shared_social_editorial:
+		cta = CTAComponent.new()
+		cta.visible = false
+		parent.add_child(cta)
 
 	winning_highlight = WinningHighlightComponent.new(root_control as Control if root_control is Control else null)
 	if winning_highlight != null:

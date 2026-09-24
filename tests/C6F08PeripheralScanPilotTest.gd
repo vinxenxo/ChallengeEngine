@@ -68,8 +68,12 @@ func _run_tests() -> void:
 	var payload1 = frame1.get("payload", {})
 	_assert(payload1.has("parameters"), "Payload debe contener los parámetros generados por variación.")
 	if payload1.has("parameters"):
-		_assert(payload1["parameters"].has("pattern_variant"), "Debe incluir pattern_variant del Stream 2014.")
-		_assert(payload1["parameters"].has("amplitude_variant"), "Debe incluir amplitude_variant del Stream 2014.")
+		_assert(payload1["parameters"].has("pattern_variant") and payload1["parameters"].has("amplitude_variant"), "Debe incluir pattern_variant y amplitude_variant del Stream 2014.")
+		var task_state: Dictionary = payload1.get("task_state", {})
+		var anchor_state: Dictionary = task_state.get("anchor_state", {})
+		_assert(is_equal_approx(float(anchor_state.get("x", -1.0)), 270.0), "Peripheral anchor X must remain fixed.")
+		_assert(is_equal_approx(float(anchor_state.get("y", -1.0)), 480.0), "Peripheral anchor Y must remain fixed.")
+		_assert(task_state.get("active_events", []).size() >= 0, "Peripheral active event state must be present.")
 
 	# 2. Prueba de Determinismo (Misma seed -> Misma salida exacta)
 	var rt2 = VisualDrillRuntime.new()

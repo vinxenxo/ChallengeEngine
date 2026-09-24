@@ -9,7 +9,7 @@
             "generator": "peripheral_scan",
             "difficulty_tier": 2,
             "speed_multiplier": 1.0,
-            "pacing_mode": "constant"
+            "pacing_mode": "authored_polar_schedule"
         },
         "stimulus": {
             "type": "dot",
@@ -35,16 +35,216 @@
             }
         ],
         "trajectory": {
-            "type": "linear",
+            "type": "polar_logistic_orbits",
             "start_x": 0.0,
             "start_y": 0.0,
             "end_x": 100.0,
             "end_y": 100.0,
-            "speed": 1.0
+            "speed": 1.0,
+            "profile": "polar_logistic_orbits_seeded_v1",
+            "coordinate_space": "normalized_body_0_1_min_dimension",
+            "center_normalized": [
+                0.5,
+                0.5
+            ],
+            "ring_radii_normalized": [
+                0.245,
+                0.355,
+                0.45
+            ],
+            "logistic_parameter": 3.91732148,
+            "seed_authoring_version": "2.8.0"
         },
         "task": {
             "type": "peripheral_scan",
-            "target_id": "t1"
+            "target_id": "central_anchor",
+            "anchor_fixed": true,
+            "anchor_sequence": [
+                "TRIANGLE",
+                "CIRCLE",
+                "SQUARE"
+            ],
+            "anchor_interval_frames": 77,
+            "events": [
+                {
+                    "id": "e1",
+                    "kind": "threat",
+                    "ring_index": 0,
+                    "radius_norm": 0.245,
+                    "angle_rad": 5.755838685230868,
+                    "angle_deg": 329.78526422185746,
+                    "frame_start": 45,
+                    "duration_frames": 13,
+                    "duration_ms": 433.3333333333333,
+                    "pulse_pattern": "double",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e2",
+                    "kind": "threat",
+                    "ring_index": 0,
+                    "radius_norm": 0.245,
+                    "angle_rad": 1.8924051781631208,
+                    "angle_deg": 108.42682983744945,
+                    "frame_start": 83,
+                    "duration_frames": 8,
+                    "duration_ms": 266.6666666666667,
+                    "pulse_pattern": "double",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e3",
+                    "kind": "distractor",
+                    "ring_index": 2,
+                    "radius_norm": 0.45,
+                    "angle_rad": 5.180422290507049,
+                    "angle_deg": 296.8163333415488,
+                    "frame_start": 127,
+                    "duration_frames": 15,
+                    "duration_ms": 500.0,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e4",
+                    "kind": "distractor",
+                    "ring_index": 0,
+                    "radius_norm": 0.245,
+                    "angle_rad": 3.561694796085275,
+                    "angle_deg": 204.07007972939462,
+                    "frame_start": 164,
+                    "duration_frames": 7,
+                    "duration_ms": 233.33333333333334,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e5",
+                    "kind": "threat",
+                    "ring_index": 1,
+                    "radius_norm": 0.355,
+                    "angle_rad": 6.04328215836113,
+                    "angle_deg": 346.25456208080357,
+                    "frame_start": 199,
+                    "duration_frames": 13,
+                    "duration_ms": 433.3333333333333,
+                    "pulse_pattern": "double",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e6",
+                    "kind": "distractor",
+                    "ring_index": 2,
+                    "radius_norm": 0.45,
+                    "angle_rad": 0.9038953779021749,
+                    "angle_deg": 51.78939027517723,
+                    "frame_start": 234,
+                    "duration_frames": 11,
+                    "duration_ms": 366.6666666666667,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e7",
+                    "kind": "threat",
+                    "ring_index": 0,
+                    "radius_norm": 0.245,
+                    "angle_rad": 3.031464336894442,
+                    "angle_deg": 173.69011224847625,
+                    "frame_start": 277,
+                    "duration_frames": 17,
+                    "duration_ms": 566.6666666666666,
+                    "pulse_pattern": "double",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e8",
+                    "kind": "distractor",
+                    "ring_index": 0,
+                    "radius_norm": 0.245,
+                    "angle_rad": 6.145752702256641,
+                    "angle_deg": 352.1256917704264,
+                    "frame_start": 305,
+                    "duration_frames": 7,
+                    "duration_ms": 233.33333333333334,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e9",
+                    "kind": "distractor",
+                    "ring_index": 1,
+                    "radius_norm": 0.355,
+                    "angle_rad": 0.5265919365009749,
+                    "angle_deg": 30.171495487126904,
+                    "frame_start": 341,
+                    "duration_frames": 9,
+                    "duration_ms": 300.0,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e10",
+                    "kind": "distractor",
+                    "ring_index": 1,
+                    "radius_norm": 0.355,
+                    "angle_rad": 1.8899447286590736,
+                    "angle_deg": 108.28585646516248,
+                    "frame_start": 376,
+                    "duration_frames": 15,
+                    "duration_ms": 500.0,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e11",
+                    "kind": "distractor",
+                    "ring_index": 1,
+                    "radius_norm": 0.355,
+                    "angle_rad": 5.176586022761887,
+                    "angle_deg": 296.5965313906688,
+                    "frame_start": 429,
+                    "duration_frames": 14,
+                    "duration_ms": 466.6666666666667,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                },
+                {
+                    "id": "e12",
+                    "kind": "distractor",
+                    "ring_index": 1,
+                    "radius_norm": 0.355,
+                    "angle_rad": 3.571438417749269,
+                    "angle_deg": 204.6283481279137,
+                    "frame_start": 461,
+                    "duration_frames": 10,
+                    "duration_ms": 333.3333333333333,
+                    "pulse_pattern": "single",
+                    "simultaneous_allowed": false
+                }
+            ],
+            "threat_count": 4,
+            "distractor_count": 8,
+            "answer_sheet": {
+                "threat_count": 4,
+                "distractor_count": 8,
+                "threat_frame_starts": [
+                    45,
+                    83,
+                    199,
+                    277
+                ],
+                "distractor_frame_starts": [
+                    127,
+                    164,
+                    234,
+                    305,
+                    341,
+                    376,
+                    429,
+                    461
+                ]
+            }
         }
     },
     "seed": 12345,

@@ -19,6 +19,29 @@ const TRACKING_PALETTES := [
     {"name":"EMBER_AQUA", "background":"120806", "accent":"FF5A3D", "secondary":"22FFC8", "target":"FFF9F3", "target_soft":"FFEAE0", "text_primary":"FFAC98", "text_secondary":"72FFD9", "text_data":"FFF1E9", "rule":"D4745B", "counter":"1B0C07"}
 ]
 
+
+const PURSUIT_PALETTES := [
+    {"name":"VOID_CYAN","background":"020710","accent":"59E7FF","secondary":"8D7CFF","tertiary":"B7F5FF","target":"FFFFFF","target_soft":"E8FBFF","text_primary":"9BEFFF","text_secondary":"B7ADFF","text_data":"EEFCFF","rule":"378FA8","counter":"06131B"},
+    {"name":"ASTRAL_VIOLET","background":"07040F","accent":"B485FF","secondary":"5CE1FF","tertiary":"F0CAFF","target":"FFF9FF","target_soft":"F1E7FF","text_primary":"D1B8FF","text_secondary":"A0EFFF","text_data":"FAF3FF","rule":"795BA6","counter":"120A1C"},
+    {"name":"SOLAR_AMBER","background":"100803","accent":"FFB84A","secondary":"5EE5FF","tertiary":"FFE2A4","target":"FFFCF2","target_soft":"FFF0C8","text_primary":"FFD08C","text_secondary":"89EDFF","text_data":"FFF6E2","rule":"C79042","counter":"1A1005"},
+    {"name":"DEEP_EMERALD","background":"020D0A","accent":"55F0B0","secondary":"6FD7FF","tertiary":"B8FFE0","target":"F5FFF9","target_soft":"E0FFF1","text_primary":"96FFD2","text_secondary":"9AE7FF","text_data":"F2FFF8","rule":"3C9F79","counter":"06160F"},
+    {"name":"ION_BLUE","background":"020A16","accent":"5A9DFF","secondary":"4BF0FF","tertiary":"B8D7FF","target":"F8FCFF","target_soft":"E4F0FF","text_primary":"A0C7FF","text_secondary":"8DEEFF","text_data":"F2F8FF","rule":"3A73B5","counter":"07101D"},
+    {"name":"PLASMA_ROSE","background":"10030C","accent":"FF68BD","secondary":"9A78FF","tertiary":"FFC2E6","target":"FFF8FC","target_soft":"FFE5F2","text_primary":"FF9ED4","text_secondary":"C8B7FF","text_data":"FFF0F8","rule":"BA558F","counter":"190A15"},
+    {"name":"GLACIAL_MINT","background":"03110F","accent":"6FFFE3","secondary":"7C9BFF","tertiary":"C5FFF3","target":"F9FFFE","target_soft":"E5FFF9","text_primary":"A9FFED","text_secondary":"ACBCFF","text_data":"F3FFFC","rule":"48BFA7","counter":"071814"},
+    {"name":"OBSIDIAN_LIME","background":"080D03","accent":"B9FF58","secondary":"48B5FF","tertiary":"E5FFB8","target":"FBFFF4","target_soft":"ECFFD4","text_primary":"D1FF8A","text_secondary":"96C9FF","text_data":"F6FFE8","rule":"8AAA43","counter":"101604"}
+]
+
+const PERIPHERAL_PALETTES := [
+    {"name":"ECLIPSE_TEAL","background":"020B0C","accent":"62FFE1","secondary":"43A8FF","tertiary":"B7FFF1","target":"FAFFFE","target_soft":"E5FFF8","text_primary":"A4FFEF","text_secondary":"9ACFFF","text_data":"F2FFFC","rule":"398F87","counter":"061614"},
+    {"name":"CORONA_GOLD","background":"100902","accent":"FFD05A","secondary":"FF7A4A","tertiary":"FFE9A8","target":"FFFDF4","target_soft":"FFF3C9","text_primary":"FFE08D","text_secondary":"FFB58D","text_data":"FFF7E2","rule":"C69D45","counter":"1B1104"},
+    {"name":"SOLAR_VIOLET","background":"08030D","accent":"C18BFF","secondary":"FF5CC8","tertiary":"E7C9FF","target":"FFF9FF","target_soft":"F1E7FF","text_primary":"D8B7FF","text_secondary":"FF9BDA","text_data":"FBF2FF","rule":"8D5EB2","counter":"160A19"},
+    {"name":"MAGNETIC_BLUE","background":"020915","accent":"66B4FF","secondary":"63FFE8","tertiary":"C4E3FF","target":"F9FDFF","target_soft":"E6F4FF","text_primary":"A9D7FF","text_secondary":"A2FFF0","text_data":"F2F9FF","rule":"4486BA","counter":"07121D"},
+    {"name":"EMBER_ORBIT","background":"120603","accent":"FF754D","secondary":"FFCF4A","tertiary":"FFD0C0","target":"FFF8F4","target_soft":"FFE8DF","text_primary":"FFAA8F","text_secondary":"FFE08E","text_data":"FFF1EA","rule":"C36B54","counter":"1D0B06"},
+    {"name":"AURORA_GREEN","background":"031008","accent":"70F09C","secondary":"83B8FF","tertiary":"C6FFD8","target":"F9FFF9","target_soft":"E5FFEB","text_primary":"A9FFBF","text_secondary":"B3D1FF","text_data":"F2FFF4","rule":"4BA66B","counter":"07150E"},
+    {"name":"ULTRAVIOLET_NEON","background":"07040E","accent":"9E73FF","secondary":"5EEAFF","tertiary":"D6C6FF","target":"FCFAFF","target_soft":"EFE9FF","text_primary":"C5AEFF","text_secondary":"A1F3FF","text_data":"F8F4FF","rule":"7456AE","counter":"110A19"},
+    {"name":"ICE_CORONA","background":"061019","accent":"A8E6FF","secondary":"8CF5CE","tertiary":"D8F7FF","target":"FFFFFF","target_soft":"ECFAFF","text_primary":"D0F1FF","text_secondary":"B2FFE2","text_data":"F7FCFF","rule":"6E9AB0","counter":"0B151C"}
+]
+
 const SACCADE_PALETTES := [
     {"name":"CYAN_MAGENTA", "background":"030813", "accent":"16E6FF", "secondary":"FF3EBA", "target":"FFFFFF", "target_soft":"E8FDFF", "counter":"06111A"},
     {"name":"BLUE_LILAC", "background":"050817", "accent":"4D7CFE", "secondary":"B98CFF", "target":"F7FBFF", "target_soft":"E8EEFF", "counter":"0A0C1D"},
@@ -39,6 +62,12 @@ static func tracking(variant: float) -> Dictionary:
 
 static func saccade(variant: float) -> Dictionary:
     return _from_variant(SACCADE_PALETTES, variant)
+
+static func pursuit(variant: float) -> Dictionary:
+    return _from_variant(PURSUIT_PALETTES, variant)
+
+static func peripheral_scan(variant: float) -> Dictionary:
+    return _from_variant(PERIPHERAL_PALETTES, variant)
 
 static func _from_variant(entries: Array, variant: float) -> Dictionary:
     var normalized: float = clampf(variant, 0.0, 0.999999)

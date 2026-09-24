@@ -2,7 +2,7 @@
 class_name VisualDrillPresentationBinder
 extends RefCounted
 
-## C11-C 2.7.0 / C6-F0.5 — Visual Drill Presentation Binder.
+## C11-C 2.8.0 / C6-F0.5 — Visual Drill Presentation Binder.
 ## Produces the shared C11-C social/editorial model plus domain-specific drill state.
 ## Does not alter simulation, RNG, timeline or winning-frame truth.
 
@@ -110,10 +110,12 @@ func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: Strin
 		) if effective_total_frames > 0 else 0.0
 		model["cta_colors"] = {
 			"cta_main": editorial_colors.get("header_primary", Color("FFFFFF")),
-			"cta_sub": editorial_colors.get("footer_secondary", Color("D6E8FF"))
+			"cta_sub": editorial_colors.get("header_secondary", Color("D6E8FF"))
 		}
 		editorial_model["intro_active"] = false
-		editorial_model["header"]["line_2"] = "EJERCICIO COMPLETADO"
+		# The CTA owns the header during END_CTA; avoid competing editorial text.
+		editorial_model["header"]["line_1"] = ""
+		editorial_model["header"]["line_2"] = ""
 		editorial_model["show_footer"] = false
 		editorial_model["show_footer_rule"] = false
 		editorial_model["matrix_enabled"] = false
@@ -185,6 +187,12 @@ func _editorial_colors(subtype: String, params: Dictionary) -> Dictionary:
 		"saccade":
 			variant = clampf(float(params.get("saccade_variant", 0.0)), 0.0, 0.999999)
 			palette = DrillPaletteBank.saccade(variant)
+		"pursuit":
+			variant = clampf(float(params.get("pursuit_variant", 0.0)), 0.0, 0.999999)
+			palette = DrillPaletteBank.pursuit(variant)
+		"peripheral_scan":
+			variant = _peripheral_palette_variant(params)
+			palette = DrillPaletteBank.peripheral_scan(variant)
 		_:
 			return {
 				"header_primary": Color("FFFFFF"),
@@ -210,6 +218,11 @@ func _editorial_colors(subtype: String, params: Dictionary) -> Dictionary:
 		"palette_name": str(palette.get("name", "DEFAULT"))
 	}
 
+func _peripheral_palette_variant(params: Dictionary) -> float:
+	var pattern := clampf(float(params.get("pattern_variant", 0.0)), 0.0, 0.999999)
+	var amplitude := clampf(float(params.get("amplitude_variant", 0.0)), 0.0, 0.999999)
+	return fposmod(pattern * 0.63 + amplitude * 0.37, 1.0)
+
 func _difficulty_band(tier: int) -> String:
 	if tier <= 2:
 		return "EASY"
@@ -222,10 +235,10 @@ func _variant_summary(subtype: String, params: Dictionary) -> String:
 		"tracking":
 			return "PALETTE %s" % str(DrillPaletteBank.tracking(float(params.get("tracking_variant", 0.0))).get("name", "DEFAULT"))
 		"pursuit":
-			return "VAR %.2f" % float(params.get("pursuit_variant", 0.0))
+			return "PALETTE %s" % str(DrillPaletteBank.pursuit(float(params.get("pursuit_variant", 0.0))).get("name", "DEFAULT"))
 		"saccade":
 			return "PALETTE %s" % str(DrillPaletteBank.saccade(float(params.get("saccade_variant", 0.0))).get("name", "DEFAULT"))
 		"peripheral_scan":
-			return "PAT %.2f / AMP %.2f" % [float(params.get("pattern_variant", 0.0)), float(params.get("amplitude_variant", 0.5))]
+			return "PALETTE %s" % str(DrillPaletteBank.peripheral_scan(_peripheral_palette_variant(params)).get("name", "DEFAULT"))
 		_:
 			return ""

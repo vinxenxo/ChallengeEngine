@@ -1,6 +1,6 @@
 {
   "profile_id": "visual_drill_pursuit",
-  "profile_version": "1.0",
+  "profile_version": "2.0",
   "domain_family": "visual_drill",
   "subtype": "pursuit",
   "source": "C6-F0.8 canonical baseline + C10 product difficulty policy",
@@ -26,7 +26,7 @@
   },
   "base_parameters": {
     "speed_multiplier": 1.0,
-    "pacing_mode": "constant",
+    "pacing_mode": "authored_arc_length",
     "stimulus": {
       "type": "dot",
       "radius": 10.0,
@@ -51,16 +51,18 @@
       }
     ],
     "trajectory": {
-      "type": "linear",
-      "start_x": 0.0,
-      "start_y": 0.0,
-      "end_x": 100.0,
-      "end_y": 100.0,
-      "speed": 1.0
+      "type": "uniform_cubic_bspline",
+      "profile": "uniform_cubic_bspline_arc_length_v1",
+      "coordinate_space": "normalized_body_0_1"
     },
     "task": {
       "type": "pursuit",
-      "target_id": "t1"
+      "target_id": "t1",
+      "sizygia_count": 4,
+      "sizygia_duration_frames_min": 5,
+      "sizygia_duration_frames_max": 6,
+      "sizygia_events": [],
+      "camouflage_zones": []
     }
   },
   "tiers": {
@@ -82,5 +84,17 @@
   },
   "forbidden_rng_parameters": [
     "pursuit_variant"
-  ]
+  ],
+  "mechanic_contract": {
+    "trajectory": "uniform_cubic_bspline",
+    "parameterization": "arc_length",
+    "position_source": "authored_position_samples_normalized",
+    "no_runtime_t_parameter_step": true,
+    "sizygia_duration_frames": [
+      5,
+      6
+    ],
+    "answer_sheet": "task.answer_sheet.sizygia_count",
+    "camouflage_contrast_min": 0.05
+  }
 }

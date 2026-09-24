@@ -16,6 +16,7 @@ func _initialize() -> void:
     _test_phase_boundaries()
     _test_all_families_bind_terminal_cta()
     await _test_shared_cta_component_path()
+    _test_legacy_challenge_cta_path_is_preserved()
     _test_cta_component_instantiable()
     if failures.is_empty():
         print("[C11C_VISUAL_DRILL_END_CTA_CONTRACT_SUITE] PASS")
@@ -80,8 +81,13 @@ func _test_shared_cta_component_path() -> void:
     var root := Control.new()
     root.size = Vector2(540.0, 960.0)
     get_root().add_child(root)
-    var frame_scene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
-    var unified = frame_scene.instantiate()
+    var frame_scene: PackedScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+    var unified: UnifiedSocialFrame = frame_scene.instantiate() as UnifiedSocialFrame
+    _assert(unified != null, "UnifiedSocialFrame must instantiate for the shared CTA path.")
+    if unified == null:
+        root.queue_free()
+        await process_frame
+        return
     root.add_child(unified)
     # UnifiedSocialFrame exposes its mount points through @onready members.
     # Wait one frame so _ready() has completed before PresentationUI resolves them.
@@ -106,12 +112,25 @@ func _test_shared_cta_component_path() -> void:
     var model: Dictionary = binder.bind_frame({"payload": {"generator_type": "pursuit", "parameters": {}}}, profile, "END_CTA", 600, 30, 690)
     ui.apply_render_model(model)
     _assert(ui.cta != null, "Visual Drill end CTA must reuse CTAComponent.")
+    _assert(ui.cta != null, "Shared CTAComponent must exist for Visual Drill END_CTA.")
+    if ui.cta == null:
+        root.queue_free()
+        await process_frame
+        return
     _assert(ui.cta.visible, "Shared CTAComponent must become visible for END_CTA.")
+    _assert(ui.cta.get_parent() == unified.get_header_content_root(), "Visual Drill END_CTA CTAComponent must be mounted in the HEADER.")
+    _assert(ui.cta.get_parent() != unified.get_footer_content_root(), "Visual Drill END_CTA CTAComponent must not be mounted in the FOOTER.")
     _assert(ui.cta.label_main.text == "¿LO CONSEGUISTE?", "Shared CTAComponent main label mismatch.")
     _assert(ui.cta.label_sub.text == "¿HASTA DÓNDE LLEGASTE?", "Shared CTAComponent sub label mismatch.")
     _assert(ui.cta.scale.x < 1.0, "Shared CTAComponent should be in its terminal entry animation path.")
     root.queue_free()
     await process_frame
+
+func _test_legacy_challenge_cta_path_is_preserved() -> void:
+    var source := FileAccess.get_file_as_string("res://core/presentation/PresentationUI.gd")
+    _assert(source.find("if not use_c11c_shared_social_editorial") >= 0, "PresentationUI must preserve the legacy Challenge CTA path.")
+    _assert(source.find("cta = CTAComponent.new()") >= 0, "PresentationUI must continue to instantiate the shared CTAComponent.")
+
 
 func _test_cta_component_instantiable() -> void:
     var cta = CTAComponent.new()

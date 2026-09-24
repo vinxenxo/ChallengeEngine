@@ -19,11 +19,11 @@ class CommandSpec:
                 self.display_command = " ".join([self.executable, *map(str, self.arguments)])
 
 
-def _ps(powershell, script, args=()):
+def _ps(powershell, script, args=(), working_directory=None):
     return CommandSpec(
         str(powershell),
         ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), *map(str, args)],
-        str(Path(script).parent),
+        str(working_directory or Path(script).parent),
     )
 
 
@@ -32,6 +32,14 @@ def _arr(flag, values):
 
 
 class CommandBuilder:
+    CANONICAL_FAMILIES = (
+        "c11c_geometric_waves_v1",
+        "c11c_fractal_bloom_v1",
+        "c11c_sacred_symmetry_v1",
+        "c11c_living_particles_v1",
+        "c11c_invisible_forces_v1",
+    )
+
     def __init__(self, ctx, catalog=None):
         self.ctx = ctx
         self.catalog = catalog
@@ -49,43 +57,28 @@ class CommandBuilder:
         return set(cap.parameters) if cap else set()
 
     def validate_powershell(self):
-        return _ps(self.ps, self.ctx.paths.bulk_tools / "validate_c11c_powershell.ps1")
+        return _ps(self.ps, self.ctx.paths.bulk_tools / "validate_c11c_powershell.ps1", working_directory=self.ctx.project_root)
 
     def validate_delivery(self):
-        return _ps(self.ps, self.ctx.paths.bulk_tools / "validate_c11c_delivery_configuration.ps1")
+        return _ps(self.ps, self.ctx.paths.bulk_tools / "validate_c11c_delivery_configuration.ps1", working_directory=self.ctx.project_root)
 
     def validate_preflight(self):
         p = self.ctx.paths.bulk_tools / "validate_c11c_preflight.ps1"
-        return _ps(self.ps, p) if p.exists() else None
+        return _ps(self.ps, p, working_directory=self.ctx.project_root) if p.exists() else None
 
-    def review(self, seeds, families, audio=True, reset=False, footer=True):
+    def review(self, seeds, families=None, audio=True, reset=False, footer=True):
         p = self.ctx.paths.bulk_tools / "run_c11c_art_direction_review.ps1"
         self._require(p)
-        params = self._param_names(p)
-        args = _arr("-Seeds", seeds)
-        if "Families" in params:
-            args += _arr("-Families", families)
-        else:
-            canonical = {
-                "c11c_geometric_waves_v1",
-                "c11c_fractal_bloom_v1",
-                "c11c_sacred_symmetry_v1",
-                "c11c_living_particles_v1",
-                "c11c_invisible_forces_v1",
-            }
-            if set(families) != canonical:
-                raise ValueError(
-                    "The canonical Art Direction Review launcher does not expose -Families. "
-                    "Select all five canonical families for this operation."
-                )
-        for flag, enabled, param in (
-            ("-NoSound", not audio, "NoSound"),
-            ("-ResetReviewAssets", reset, "ResetReviewAssets"),
-            ("-NoFooter", not footer, "NoFooter"),
-        ):
-            if enabled and self._supported(p, param):
-                args.append(flag)
-        return _ps(self.ps, p, args)
+        vals = [int(x) for x in seeds]
+        if len(vals) != 5 or len(set(vals)) != 5:
+            raise ValueError("Canonical Art Direction Review requires exactly 5 unique seeds.")
+        requested = set(families or self.CANONICAL_FAMILIES)
+        if requested != set(self.CANONICAL_FAMILIES):
+            raise ValueError("Canonical Art Direction Review always renders all five C11-C visual families.")
+        args = _arr("-Seeds", vals)
+        if reset and self._supported(p, "ResetReviewAssets"):
+            args.append("-ResetReviewAssets")
+        return _ps(self.ps, p, args, working_directory=self.ctx.project_root)
 
     def production_single(self, family, seed, audio=True, footer=True, force=False, grammar=None):
         p = self.ctx.paths.bulk_tools / "run_c11c_production.ps1"
@@ -100,20 +93,16 @@ class CommandBuilder:
                 args.append(flag)
         if grammar and self._supported(p, "Grammar"):
             args += ["-Grammar", grammar]
-        return _ps(self.ps, p, args)
+        return _ps(self.ps, p, args, working_directory=self.ctx.project_root)
 
     def production_25(self, seeds, audio=True, footer=True, force=False):
-        p = self.ctx.paths.bulk_tools / "run_c11c_production_25.ps1"
-        self._require(p)
-        args = _arr("-Seeds", seeds)
-        for flag, enabled, param in (
-            ("-NoSound", not audio, "NoSound"),
-            ("-NoFooter", not footer, "NoFooter"),
-            ("-Force", force, "Force"),
-        ):
-            if enabled and self._supported(p, param):
-                args.append(flag)
-        return _ps(self.ps, p, args)
+        vals = [int(x) for x in seeds]
+        if len(vals) != 5 or len(set(vals)) != 5:
+            raise ValueError("Canonical Production 5x5 requires exactly 5 unique seeds.")
+        return [
+            self.production_family_bulk(family, vals, audio, footer, force)
+            for family in self.CANONICAL_FAMILIES
+        ]
 
     def production_family_bulk(self, family, seeds, audio=True, footer=True, force=False):
         p = self.ctx.paths.bulk_tools / "run_c11c_production_bulk.ps1"
@@ -126,7 +115,7 @@ class CommandBuilder:
         ):
             if enabled and self._supported(p, param):
                 args.append(flag)
-        return _ps(self.ps, p, args)
+        return _ps(self.ps, p, args, working_directory=self.ctx.project_root)
 
     def all_families(self, seed, audio=True, footer=True):
         p = self.ctx.paths.bulk_tools / "run_all_c11c_visual_loops.ps1"
@@ -136,24 +125,47 @@ class CommandBuilder:
             args.append("-NoSound")
         if not footer and self._supported(p, "NoFooter"):
             args.append("-NoFooter")
-        return _ps(self.ps, p, args)
+        return _ps(self.ps, p, args, working_directory=self.ctx.project_root)
 
     def cleanup(self, apply=False):
         p = self.ctx.paths.bulk_tools / "clean_c11c_artifacts.ps1"
         self._require(p)
-        return _ps(self.ps, p, ["-Apply"] if apply else [])
+        return _ps(self.ps, p, ["-Apply"] if apply else [], working_directory=self.ctx.project_root)
 
     def reset(self, apply=False):
         p = self.ctx.paths.bulk_tools / "reset_c11c_artifacts.ps1"
         self._require(p)
-        return _ps(self.ps, p, ["-Apply"] if apply else [])
+        return _ps(self.ps, p, ["-Apply"] if apply else [], working_directory=self.ctx.project_root)
 
     def export_review_assets(self, seeds=None):
         p = self.ctx.paths.bulk_tools / "export_all_review_assets.ps1"
         self._require(p)
-        return _ps(self.ps, p, _arr("-Seeds", seeds) if seeds else [])
+        return _ps(self.ps, p, _arr("-Seeds", seeds) if seeds else [], working_directory=self.ctx.project_root)
+
+    def export_review_gifs(self, seeds=None):
+        p = self.ctx.paths.bulk_tools / "export_review_gifs.ps1"
+        self._require(p)
+        return _ps(self.ps, p, _arr("-Seeds", seeds) if seeds else [], working_directory=self.ctx.project_root)
+
+    def export_review_keyframes(self, seeds=None):
+        p = self.ctx.paths.bulk_tools / "export_review_keyframes.ps1"
+        self._require(p)
+        return _ps(self.ps, p, _arr("-Seeds", seeds) if seeds else [], working_directory=self.ctx.project_root)
+
+    def retire_legacy_tools(self, apply=False):
+        p = self.ctx.paths.bulk_tools / "retire_legacy_c11c_tool_versions.ps1"
+        self._require(p)
+        return _ps(self.ps, p, ["-Apply"] if apply else [], working_directory=self.ctx.project_root)
+
+    def prototype(self, family, seed, audio=True, footer=True):
+        p = self.ctx.paths.family_dir(family) / "run_prototype.ps1"
+        self._require(p)
+        args = ["-Seed", seed]
+        if not audio and self._supported(p, "NoSound"): args.append("-NoSound")
+        if not footer and self._supported(p, "NoFooter"): args.append("-NoFooter")
+        return _ps(self.ps, p, args, working_directory=self.ctx.project_root)
 
     def reproduce_prototype(self, family, seed):
         p = self.ctx.paths.family_dir(family) / "run_prototype.ps1"
         self._require(p)
-        return _ps(self.ps, p, ["-Seed", seed])
+        return _ps(self.ps, p, ["-Seed", seed], working_directory=self.ctx.project_root)

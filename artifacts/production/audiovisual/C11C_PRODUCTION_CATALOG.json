@@ -321,6 +321,14 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1444627713",
                          "created_utc":  "2026-09-23T23:08:51.9360925Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1444627713"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_574546432",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  574546432,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_574546432",
+                         "created_utc":  "2026-09-24T15:47:20.9652757Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 574546432"
                      }
                  ]
 }

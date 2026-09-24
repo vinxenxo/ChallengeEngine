@@ -63,6 +63,6 @@ class ProjectContext:
             "has_tools": paths.tools.exists(),
             "has_artifacts": paths.artifacts.exists(),
             "has_prototypes": paths.prototypes.exists(),
-            "has_production_25": (paths.bulk_tools / "run_c11c_production_25.ps1").exists(),
+            "has_production_bulk": (paths.bulk_tools / "run_c11c_production_bulk.ps1").exists(),
         }
         return ctx

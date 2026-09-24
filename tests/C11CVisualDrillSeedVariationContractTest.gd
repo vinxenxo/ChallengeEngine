@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.7.0 — Seeded Visual Drill authoring variation contract.
+## C11-C 2.8.0 — Seeded Visual Drill authoring variation contract.
 ## Verifies that visual-drill content seeds create deterministic but materially different
 ## Tracking mechanics before runtime, without touching presentation RNG or simulation.
 
@@ -14,6 +14,8 @@ func _initialize() -> void:
     _test_different_seeds_change_motion()
     _test_motion_stays_inside_contract_bounds()
     _test_saccade_seeds_change_spatial_sequence()
+    _test_pursuit_variation()
+    _test_peripheral_scan_variation()
     if failures.is_empty():
         print("[C11C_VISUAL_DRILL_SEED_VARIATION_CONTRACT_SUITE] PASS")
         quit(0)
@@ -130,6 +132,37 @@ func _tracking_payload() -> Dictionary:
         }
     }
 
+
+
+func _test_pursuit_variation() -> void:
+    var base := {"frame_count": 510, "exercise_parameters": {"difficulty_tier": 2}, "trajectory": {}, "task": {"type": "pursuit"}}
+    var a := VisualDrillSeedVariation.apply("pursuit", 5409, base)
+    var b := VisualDrillSeedVariation.apply("pursuit", 7770001, base)
+    _assert(str(a.get("trajectory", {}).get("control_points_normalized", [])) != str(b.get("trajectory", {}).get("control_points_normalized", [])), "Pursuit seeds must author different B-spline control points.")
+    _assert(int(a.get("task", {}).get("sizygia_count", 0)) == 4, "Pursuit seed 5409 must author four sizygias.")
+    _assert(a.get("trajectory", {}).get("arc_length_parameterized", false) == true, "Pursuit seed variation must author arc-length parameterization.")
+
+func _test_peripheral_scan_variation() -> void:
+    var base := {"frame_count": 510, "exercise_parameters": {"difficulty_tier": 2}, "trajectory": {}, "task": {"type": "peripheral_scan"}}
+    var a := VisualDrillSeedVariation.apply("peripheral_scan", 5409, base)
+    var b := VisualDrillSeedVariation.apply("peripheral_scan", 7770001, base)
+    _assert(str(a.get("task", {}).get("events", [])) != str(b.get("task", {}).get("events", [])), "Peripheral Scan seeds must author different event schedules.")
+    _assert(int(a.get("task", {}).get("threat_count", 0)) > 0, "Peripheral Scan must author threats.")
+    _assert(int(a.get("task", {}).get("distractor_count", 0)) > 0, "Peripheral Scan must author distractors.")
+    _assert(a.get("task", {}).get("answer_sheet", {}).has("threat_frame_starts"), "Peripheral Scan answer sheet must expose threat frame starts.")
+    _assert(a.get("task", {}).get("answer_sheet", {}).get("threat_count", -1) == int(a.get("task", {}).get("threat_count", -2)), "Peripheral Scan answer sheet threat count must match authored count.")
+    _assert(a.get("task", {}).get("answer_sheet", {}).get("distractor_count", -1) == int(a.get("task", {}).get("distractor_count", -2)), "Peripheral Scan answer sheet distractor count must match authored count.")
+
 func _assert(condition: bool, message: String) -> void:
     if not condition:
         failures.append(message)
+
+func _conclude() -> void:
+    if failures.is_empty():
+        print("[C11C_VISUAL_DRILL_SEED_VARIATION_CONTRACT_SUITE] PASS")
+        quit(0)
+    else:
+        for failure in failures:
+            push_error(failure)
+        print("[C11C_VISUAL_DRILL_SEED_VARIATION_CONTRACT_SUITE] FAIL failures=%d" % failures.size())
+        quit(1)

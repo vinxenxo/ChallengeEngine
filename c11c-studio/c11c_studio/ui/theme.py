@@ -34,6 +34,11 @@ def apply_dark_theme(app):
     QFrame#Hero { background:qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 #101a24, stop:1 #0e141d); border:1px solid #25374b; border-radius:14px; }
     QFrame#Panel { background:#0f141c; border:1px solid #233044; border-radius:12px; }
     QFrame#InfoStrip { background:#101923; border:1px solid #26384e; border-radius:9px; }
+    QFrame#GenerateSummary { background:#0d141d; border:1px solid #233044; border-radius:10px; }
+    QFrame#ModeBar { background:#0a1017; border:1px solid #202d40; border-radius:10px; }
+    QFrame#GeneratePanel { background:#0f141c; border:1px solid #253247; border-radius:12px; }
+    QFrame#GenerationStatus { background:#0d131b; border:1px solid #202d3e; border-radius:9px; }
+    QLabel#GenerateStatValue { color:#f2f8fd; font-size:15pt; font-weight:800; }
     QLabel#PanelTitle { color:#e9f2fa; font-size:10.5pt; font-weight:800; }
     QLabel#PanelMeta { color:#71869f; font-size:8.5pt; }
 
@@ -45,6 +50,9 @@ def apply_dark_theme(app):
     QPushButton[class="Primary"]:hover { background:#174354; border-color:#2b98bd; }
     QPushButton[class="Secondary"] { background:#111820; border-color:#314156; }
     QPushButton[class="Danger"] { background:#281317; border-color:#69333d; color:#ffb8c2; }
+    QPushButton[class="Mode"] { background:#0f161f; border-color:#253448; color:#7e92a8; font-weight:800; min-height:34px; padding:7px 18px; }
+    QPushButton[class="Mode"]:checked { background:#12384a; border-color:#2d7892; color:#d8f7ff; }
+    QPushButton[class="Mode"]:hover { background:#142330; color:#cbeaf4; }
 
     QLineEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QTableWidget,QTextBrowser { background:#0c1219; color:#e7edf5; border:1px solid #28364a; border-radius:8px; selection-background-color:#173e51; selection-color:#f7fbff; padding:6px 8px; }
     QLineEdit:focus,QPlainTextEdit:focus,QSpinBox:focus,QDoubleSpinBox:focus,QComboBox:focus,QTableWidget:focus,QTextBrowser:focus { border-color:#3e7893; }

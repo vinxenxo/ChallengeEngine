@@ -1,6 +1,6 @@
 {
   "profile_id": "visual_drill_peripheral_scan",
-  "profile_version": "1.0",
+  "profile_version": "2.0",
   "domain_family": "visual_drill",
   "subtype": "peripheral_scan",
   "source": "C6-F0.8 canonical baseline + C10 product difficulty policy",
@@ -26,7 +26,7 @@
   },
   "base_parameters": {
     "speed_multiplier": 1.0,
-    "pacing_mode": "constant",
+    "pacing_mode": "authored_polar_schedule",
     "stimulus": {
       "type": "dot",
       "radius": 10.0,
@@ -51,16 +51,32 @@
       }
     ],
     "trajectory": {
-      "type": "linear",
-      "start_x": 0.0,
-      "start_y": 0.0,
-      "end_x": 100.0,
-      "end_y": 100.0,
-      "speed": 1.0
+      "type": "polar_logistic_orbits",
+      "profile": "polar_logistic_orbits_seeded_v1",
+      "coordinate_space": "normalized_body_0_1_min_dimension",
+      "center_normalized": [
+        0.5,
+        0.5
+      ],
+      "ring_radii_normalized": [
+        0.245,
+        0.355,
+        0.45
+      ]
     },
     "task": {
       "type": "peripheral_scan",
-      "target_id": "t1"
+      "target_id": "central_anchor",
+      "anchor_fixed": true,
+      "anchor_sequence": [
+        "TRIANGLE",
+        "CIRCLE",
+        "SQUARE"
+      ],
+      "anchor_interval_frames": 80,
+      "events": [],
+      "threat_count": 6,
+      "distractor_count": 6
     }
   },
   "tiers": {
@@ -83,5 +99,19 @@
   "forbidden_rng_parameters": [
     "pattern_variant",
     "amplitude_variant"
-  ]
+  ],
+  "mechanic_contract": {
+    "coordinate_space": "polar",
+    "anchor_fixed": true,
+    "angle_source": "logistic_map",
+    "event_state": "authored_frame_schedule",
+    "threat_signature": "double",
+    "distractor_signature": "single",
+    "answer_sheet": [
+      "threat_count",
+      "distractor_count",
+      "threat_frame_starts",
+      "distractor_frame_starts"
+    ]
+  }
 }

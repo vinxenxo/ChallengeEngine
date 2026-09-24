@@ -3,10 +3,15 @@ import tempfile
 
 from c11c_studio.domain.seed import SeedRecord, SeedSet, MIN_SEED, MAX_SEED, generate_unique_seeds
 from c11c_studio.services.seed_manager import SeedManager
+from c11c_studio.services.introspection import BackendCatalog, ScriptCapability
 from c11c_studio.services.command_builder import CommandBuilder, CommandSpec
 
 
 def main() -> int:
+    catalog = BackendCatalog()
+    catalog.scripts["demo.ps1"] = ScriptCapability(Path("demo.ps1"), {"Force": "switch"})
+    assert catalog.script_supports("demo.ps1", "Force")
+    assert not catalog.script_supports("demo.ps1", "Missing")
     seeds = generate_unique_seeds(5)
     assert len(seeds) == 5 and len(set(seeds)) == 5
     assert all(MIN_SEED <= value <= MAX_SEED for value in seeds)
@@ -23,7 +28,7 @@ def main() -> int:
     spec = CommandSpec("powershell.exe", ["-NoProfile", "-File", "demo.ps1", "-Seeds", "1", "2"])
     assert spec.arguments[-3:] == ["-Seeds", "1", "2"]
 
-    print("C11-C Studio v0.3.0 self-test PASS")
+    print("C11-C Studio v0.3.1 self-test PASS")
     return 0
 
 

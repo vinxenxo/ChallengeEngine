@@ -17,7 +17,7 @@ class EnvironmentValidator:
   for k in ("python","powershell","ffmpeg","ffprobe","godot"):
    t=tools[k]; req=k in ("python","powershell","ffmpeg","ffprobe"); st="PASS" if t.present else ("FAIL" if req else "WARN"); r.add(CheckResult(k,st,t.version or "not found"))
   bulk=self.ctx.paths.bulk_tools
-  for f in ("validate_c11c_powershell.ps1","validate_c11c_delivery_configuration.ps1","run_c11c_art_direction_review.ps1","run_c11c_production.ps1","run_c11c_production_bulk.ps1","run_c11c_production_25.ps1"):
+  for f in ("validate_c11c_powershell.ps1","validate_c11c_delivery_configuration.ps1","validate_c11c_preflight.ps1","run_c11c_art_direction_review.ps1","run_all_c11c_visual_loops.ps1","run_c11c_production.ps1","run_c11c_production_bulk.ps1","export_review_gifs.ps1","export_review_keyframes.ps1","export_all_review_assets.ps1","clean_c11c_artifacts.ps1","reset_c11c_artifacts.ps1","retire_legacy_c11c_tool_versions.ps1"):
    r.add(CheckResult("tool."+f,"PASS" if (bulk/f).exists() else "WARN",str(bulk/f)))
   r.add(CheckResult("delivery","PASS",f"{self.ctx.delivery_width}x{self.ctx.delivery_height} @ {self.ctx.fps} FPS / {self.ctx.default_duration:.2f}s / {self.ctx.default_frames} frames"))
   fam=[d for d in self.ctx.paths.prototypes.glob("c11c_*_v1") if d.is_dir()] if self.ctx.paths.prototypes.exists() else []

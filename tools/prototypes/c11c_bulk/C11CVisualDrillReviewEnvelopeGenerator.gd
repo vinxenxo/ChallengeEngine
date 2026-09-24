@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.7.0 — Request-specific Visual Drill review envelope generator.
+## C11-C 2.8.0 — Request-specific Visual Drill review envelope generator.
 ## Generates review-only envelopes for exactly the seeds requested by the PowerShell
 ## reviewer. Uses the canonical authoring generator; does not mutate simulation or RNG.
 
@@ -140,7 +140,31 @@ func _init() -> void:
                 printerr("[C11-C-DRILL] Unable to write authoring.json for %s" % run_id)
                 quit(1)
                 return
-            authoring_file.store_string(JSON.stringify(request.to_dictionary(), "\t"))
+
+            # Preserve the original request document and append the deterministic
+            # authored study sheet. The seed remains external to VisualAuthoringRequest;
+            # it is recorded here as artifact provenance only.
+            var authoring_document: Dictionary = request.to_dictionary().duplicate(true)
+            var authored_payload: Dictionary = envelope.get("payload", {}) if envelope.get("payload", {}) is Dictionary else {}
+            var authored_task: Dictionary = authored_payload.get("task", {}) if authored_payload.get("task", {}) is Dictionary else {}
+            var authored_trajectory: Dictionary = authored_payload.get("trajectory", {}) if authored_payload.get("trajectory", {}) is Dictionary else {}
+            authoring_document["authored"] = {
+                "seed": seed_value,
+                "variation_version": "VisualDrillSeedVariation/2.8.0",
+                "trajectory": {
+                    "type": authored_trajectory.get("type", ""),
+                    "profile": authored_trajectory.get("profile", ""),
+                    "coordinate_space": authored_trajectory.get("coordinate_space", "")
+                },
+                "answer_sheet": authored_task.get("answer_sheet", {}),
+                "task_summary": {
+                    "type": authored_task.get("type", subtype),
+                    "sizygia_count": authored_task.get("sizygia_count", null),
+                    "threat_count": authored_task.get("threat_count", null),
+                    "distractor_count": authored_task.get("distractor_count", null)
+                }
+            }
+            authoring_file.store_string(JSON.stringify(authoring_document, "\t"))
             authoring_file.close()
 
             var envelope_path := run_dir.path_join("envelope.json")
