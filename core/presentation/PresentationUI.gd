@@ -119,6 +119,12 @@ func _build_footer_ui(parent: Control) -> void:
 func _build_footer_children(parent: Control) -> void:
 	cta = CTAComponent.new()
 	cta.visible = false
+	if use_c11c_shared_social_editorial:
+		cta.set_anchors_preset(Control.PRESET_FULL_RECT)
+		cta.offset_left = 28.0
+		cta.offset_top = 6.0
+		cta.offset_right = -28.0
+		cta.offset_bottom = -6.0
 	parent.add_child(cta)
 
 	winning_highlight = WinningHighlightComponent.new(root_control as Control if root_control is Control else null)
@@ -196,11 +202,19 @@ func apply_render_model(render_model: Dictionary) -> void:
 		var cta_vis = render_model.get("cta_visible", false)
 		cta.visible = cta_vis
 		if cta_vis:
+			var cta_colors_variant: Variant = render_model.get("cta_colors", {})
+			var cta_colors: Dictionary = cta_colors_variant if cta_colors_variant is Dictionary else {}
 			cta.configure(
-				render_model.get("cta_main", ""),
-				render_model.get("cta_sub", ""),
-				current_profile
+				str(render_model.get("cta_main", "")),
+				str(render_model.get("cta_sub", "")),
+				current_profile,
+				cta_colors
 			)
+			if bool(render_model.get("cta_animated", false)):
+				cta.apply_presentation_motion(float(render_model.get("cta_progress", 1.0)))
+			else:
+				cta.reset_presentation_motion()
 	else:
 		if cta != null:
 			cta.visible = false
+			cta.reset_presentation_motion()

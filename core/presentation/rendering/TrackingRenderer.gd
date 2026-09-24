@@ -1,7 +1,7 @@
 # res://core/presentation/rendering/TrackingRenderer.gd
 extends Node2D
 
-## C11-C 2.6.0 — Tracking Renderer.
+## C11-C 2.7.0 — Tracking Renderer.
 ## Passive renderer: consumes deterministic TrackingGenerator state only.
 ## No trajectory math, RNG, Tron background or future-path disclosure belongs here.
 

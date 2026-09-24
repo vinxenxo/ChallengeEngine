@@ -2,7 +2,7 @@
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.4.0 — Shared visual-content social/editorial presentation layer.
+## C11-C 2.7.0 — Shared visual-content social/editorial presentation layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
 
@@ -122,9 +122,12 @@ func apply_render_model(render_model: Dictionary) -> void:
     var footer: Dictionary = footer_variant if footer_variant is Dictionary else {}
     var colors: Dictionary = colors_variant if colors_variant is Dictionary else {}
 
+    var header_primary: Color = _to_color(colors.get("header_primary", Color("FFFFFF")))
     var header_secondary: Color = _to_color(colors.get("header_secondary", Color("D6E8FF")))
     var footer_data: Color = _to_color(colors.get("footer_data", Color("FFFFFF")))
+    var footer_secondary: Color = _to_color(colors.get("footer_secondary", Color("9CB8D8")))
     var rule_color: Color = _to_color(colors.get("rule", header_secondary))
+    var section_background: Color = _to_color(colors.get("section_background", SECTION_BACKGROUND))
 
     var header_primary_text: String = str(header.get("line_1", "")).strip_edges().to_upper()
     var header_double_text: String = _wrap_two_lines(str(header.get("line_2", "")).strip_edges().to_upper())
@@ -139,7 +142,7 @@ func apply_render_model(render_model: Dictionary) -> void:
         _animator = null
         _animator_sequence_signature = ""
         _header_line_2.text = _wrap_two_lines(intro_text)
-        _header_line_2.modulate = Color.WHITE
+        _header_line_2.modulate = Color(1.0, 1.0, 1.0, 0.96)
     elif matrix_enabled:
         var sequence: Array[String] = [
             header_double_text,
@@ -168,9 +171,11 @@ func apply_render_model(render_model: Dictionary) -> void:
         _header_line_2.text = header_double_text
         _header_line_2.modulate = Color.WHITE
 
-    _header_line_2.add_theme_color_override("font_color", header_secondary)
+    _header_line_2.add_theme_color_override("font_color", header_primary if intro_active else header_secondary)
+    _header_line_2.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.72))
     _footer_line_1.text = footer_line_1
     _footer_line_1.add_theme_color_override("font_color", footer_data)
+    _footer_line_1.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.78))
 
     _fit_label(_header_line_2, _header_line_2.text, HEADER_FONT_SIZE, HEADER_MIN_FONT_SIZE, HEADER_MAX_WIDTH)
     _fit_label(_footer_line_1, footer_line_1, FOOTER_FONT_SIZE, FOOTER_MIN_FONT_SIZE, 508.0)
@@ -181,6 +186,10 @@ func apply_render_model(render_model: Dictionary) -> void:
     _footer_rule.visible = bool(editorial.get("show_footer_rule", true))
     _header_container.visible = bool(editorial.get("show_header", true))
     _footer_container.visible = bool(editorial.get("show_footer", true))
+    if _header_background != null:
+        _header_background.color = section_background
+    if _footer_background != null:
+        _footer_background.color = section_background
 
 func clear() -> void:
     _mounted = false

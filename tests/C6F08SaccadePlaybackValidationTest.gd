@@ -50,10 +50,14 @@ func _run_player_and_validate(def_path: String, mode: String):
 		
 	var captured_state = null
 	var pre_roll_checked: bool = false
+	var end_cta_seen: bool = false
 	var wait_frames: int = 0
 	while not player.playback_finished and wait_frames < 1000:
 		wait_frames += 1
 		await process_frame
+
+		if player._presentation_frame_index >= player._visual_drill_countdown_frames + player._total_frames and player._presentation_frame_index < player._presentation_total_frames:
+			end_cta_seen = true
 
 		var saccade_renderer_now = _find_renderer(player, "SaccadeRenderer.gd")
 		if not pre_roll_checked and saccade_renderer_now != null:
@@ -73,7 +77,10 @@ func _run_player_and_validate(def_path: String, mode: String):
 		
 	_assert(player.playback_finished, "[%s] Saccade playback did not finish within watchdog." % mode)
 	_assert(player._current_frame_index == player._total_frames, "[%s] Gameplay frame count mismatch." % mode)
+	_assert(player._visual_drill_end_cta_frames == 90, "[%s] Saccade end CTA must be 90 frames at 30 FPS." % mode)
+	_assert(player._presentation_total_frames == 690, "[%s] Saccade presentation must contain 690 frames including countdown + end CTA." % mode)
 	_assert(pre_roll_checked, "[%s] Saccade pre-roll check did not execute." % mode)
+	_assert(end_cta_seen or player.playback_finished, "[%s] Saccade end CTA phase did not execute before playback completion." % mode)
 	node.queue_free()
 	await process_frame
 	return captured_state

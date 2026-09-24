@@ -8,6 +8,7 @@ extends SceneTree
 
 const VisualContentPlayerScript = preload("res://core/presentation/rendering/VisualContentPlayer.gd")
 const RNGStreamRegistry = preload("res://core/deterministic/RNGStreamRegistry.gd")
+const VisualDrillPresentationPhaseLogic = preload("res://core/presentation/VisualDrillPresentationPhaseLogic.gd")
 
 var failures: Array[String] = []
 const MAX_PLAYBACK_WAIT_FRAMES: int = 1000
@@ -49,14 +50,18 @@ func _run_player_and_validate(def_path: String, mode: String):
 	if player.is_ready_initialized:
 		_assert(player._visual_drill_countdown_frames == 90, "[%s] Visual Drill countdown must be 90 frames at 30 FPS." % mode)
 		_assert(player._total_frames == 630, "[%s] Tracking gameplay stream must contain 630 frames." % mode)
-		_assert(player._presentation_total_frames == 720, "[%s] Tracking presentation must contain 720 frames including countdown." % mode)
+		_assert(player._presentation_total_frames == 810, "[%s] Tracking presentation must contain 810 frames including countdown + end CTA." % mode)
 	if not player.is_ready_initialized:
 		node.queue_free()
 		return null
 		
 	var captured_position: Variant = null
+	var end_cta_seen: bool = false
 	var wait_frames: int = 0
 	while not player.playback_finished and wait_frames < MAX_PLAYBACK_WAIT_FRAMES:
+		if player._presentation_frame_index >= player._visual_drill_countdown_frames + player._total_frames and player._presentation_frame_index < player._presentation_total_frames:
+			end_cta_seen = true
+
 		if player._current_frame_index == 1 and captured_position == null:
 			var tracker_renderer = _find_renderer(player, "TrackingRenderer.gd")
 			if tracker_renderer == null:

@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.6.0 — Request-specific Visual Drill review envelope generator.
+## C11-C 2.7.0 — Request-specific Visual Drill review envelope generator.
 ## Generates review-only envelopes for exactly the seeds requested by the PowerShell
 ## reviewer. Uses the canonical authoring generator; does not mutate simulation or RNG.
 

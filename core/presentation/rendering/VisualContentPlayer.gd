@@ -18,6 +18,7 @@ const SocialUIBinder = preload("res://core/presentation/SocialUIBinder.gd")
 const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
 const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
+const VisualDrillPresentationPhaseLogic = preload("res://core/presentation/VisualDrillPresentationPhaseLogic.gd")
 
 const LOGICAL_SOCIAL_CANVAS_SIZE := Vector2(540.0, 960.0)
 const PHYSICAL_SOCIAL_OUTPUT_SIZE := Vector2(720.0, 1280.0)
@@ -38,8 +39,10 @@ var _current_frame_index: int = 0
 var _total_frames: int = 0
 var _is_visual_drill: bool = false
 var _visual_drill_countdown_frames: int = 0
+var _visual_drill_end_cta_frames: int = 0
 var _presentation_frame_index: int = 0
 var _presentation_total_frames: int = 0
+var _last_visual_drill_frame: Dictionary = {}
 var is_ready_initialized: bool = false
 var playback_finished: bool = false
 var presentation_ui: PresentationUI
@@ -101,12 +104,15 @@ func _ready() -> void:
 	_is_visual_drill = _stream != null and _stream.kind == "visual_drill"
 	_presentation_frame_index = 0
 	_visual_drill_countdown_frames = 0
+	_visual_drill_end_cta_frames = 0
 	_presentation_total_frames = _total_frames
+	_last_visual_drill_frame = {}
 	if _is_visual_drill:
-		_visual_drill_countdown_frames = int(round(VISUAL_DRILL_COUNTDOWN_SECONDS * float(_stream.fps)))
-		_presentation_total_frames = _visual_drill_countdown_frames + _total_frames
+		_visual_drill_countdown_frames = VisualDrillPresentationPhaseLogic.countdown_frames(_stream.fps)
+		_visual_drill_end_cta_frames = VisualDrillPresentationPhaseLogic.end_cta_frames(_stream.fps)
+		_presentation_total_frames = VisualDrillPresentationPhaseLogic.total_presentation_frames(_total_frames, _stream.fps)
 		var gameplay_seconds: float = float(_total_frames) / float(maxi(1, _stream.fps))
-		var total_seconds: float = gameplay_seconds + VISUAL_DRILL_COUNTDOWN_SECONDS
+		var total_seconds: float = VisualDrillPresentationPhaseLogic.total_presentation_seconds(_total_frames, _stream.fps)
 		if total_seconds + 0.0001 < VISUAL_DRILL_MIN_TOTAL_SECONDS:
 			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration is below the 20s C11-C contract.")
 			return
@@ -114,7 +120,7 @@ func _ready() -> void:
 			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration exceeds the 30s C11-C contract.")
 			return
 		else:
-			print("[VISUAL_CONTENT_PLAYER] Visual Drill presentation: %.2fs countdown + %.2fs gameplay = %.2fs total." % [VISUAL_DRILL_COUNTDOWN_SECONDS, gameplay_seconds, total_seconds])
+			print("[VISUAL_CONTENT_PLAYER] Visual Drill presentation: %.2fs countdown + %.2fs gameplay + %.2fs end CTA = %.2fs total." % [VisualDrillPresentationPhaseLogic.COUNTDOWN_SECONDS, gameplay_seconds, VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, total_seconds])
 
 	var binder_registry: PresentationBinderRegistry = PresentationBinderRegistry.create_default()
 	var binder_res: Dictionary = binder_registry.resolve_stream(_stream)
@@ -155,29 +161,41 @@ func _process(_delta: float) -> void:
 		var initial_frame: Dictionary = _stream.get_frame(0)
 		if initial_frame.is_empty():
 			return
+		_last_visual_drill_frame = initial_frame.duplicate(true)
 		_apply_render_model_to_view(initial_frame, "PRE_ROLL", _presentation_frame_index)
 		_presentation_frame_index += 1
 		return
 
-	if _runtime == null or _runtime.is_finished():
-		if not playback_finished:
-			playback_finished = true
-			print("[VISUAL_CONTENT_PLAYER] Playback finished. Awaiting Movie Maker completion. presentation_frames=%d total_frames=%d" % [_presentation_frame_index, _presentation_total_frames])
+	if _runtime != null and not _runtime.is_finished():
+		var frame: Dictionary = _runtime.next_frame()
+		if frame.is_empty():
+			return
+
+		if _is_visual_drill:
+			_last_visual_drill_frame = frame.duplicate(true)
+		_apply_render_model_to_view(frame, "GAME", _current_frame_index)
+		_current_frame_index += 1
+		_presentation_frame_index += 1
 		return
 
-	var frame: Dictionary = _runtime.next_frame()
-	if frame.is_empty():
+	if _is_visual_drill and _presentation_frame_index < _presentation_total_frames:
+		if _last_visual_drill_frame.is_empty():
+			_last_visual_drill_frame = _stream.get_frame(maxi(0, _total_frames - 1))
+		if _last_visual_drill_frame.is_empty():
+			return
+		_apply_render_model_to_view(_last_visual_drill_frame, "END_CTA", _presentation_frame_index)
+		_presentation_frame_index += 1
 		return
 
-	_apply_render_model_to_view(frame, "GAME", _current_frame_index)
-	_current_frame_index += 1
-	_presentation_frame_index += 1
+	if not playback_finished:
+		playback_finished = true
+		print("[VISUAL_CONTENT_PLAYER] Playback finished. Awaiting Movie Maker completion. presentation_frames=%d total_frames=%d" % [_presentation_frame_index, _presentation_total_frames])
 
 func _apply_render_model_to_view(frame: Dictionary, ui_state: String, frame_index: int) -> void:
 	var render_model: Dictionary = {}
 	if _binder != null and _binder.has_method("bind_frame"):
 		if _stream != null and _stream.kind == "visual_drill":
-			render_model = _binder.bind_frame(frame, presentation_profile, ui_state, frame_index, _stream.fps)
+			render_model = _binder.bind_frame(frame, presentation_profile, ui_state, frame_index, _stream.fps, _presentation_total_frames)
 		else:
 			render_model = _binder.bind_frame(frame, presentation_profile, ui_state)
 	render_model["editorial_frame_index"] = _current_frame_index if ui_state == "GAME" else 0

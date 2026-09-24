@@ -9,7 +9,7 @@ from c11c_studio.ui.theme import apply_dark_theme
 from c11c_studio.ui.main_window import MainWindow
 
 APP_NAME = "C11-C Studio"
-APP_VERSION = "0.2.3"
+APP_VERSION = "0.2.4"
 
 
 def parse_args():

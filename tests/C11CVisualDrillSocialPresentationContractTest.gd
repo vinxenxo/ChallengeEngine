@@ -71,7 +71,7 @@ func _initialize() -> void:
 	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header source line must identify the drill.")
 	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature source line must identify Visual Drill.")
 	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("GAME 21.00S") >= 0, "Footer must expose the canonical 21s Tracking gameplay duration.")
-	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("TOTAL 24.00S") >= 0, "Footer must expose the 24s Tracking total presentation duration.")
+	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("TOTAL 27.00S") >= 0, "Footer must expose the 24s Tracking total presentation duration.")
 	_assert(str(editorial.get("footer", {}).get("line_2", "")).find("PALETTE ") >= 0, "Tracking footer must expose the active palette name.")
 	var alternate_editorial: Dictionary = alternate_model.get("editorial", {})
 	var base_colors: Dictionary = editorial.get("colors", {})

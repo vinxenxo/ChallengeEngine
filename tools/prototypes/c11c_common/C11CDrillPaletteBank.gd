@@ -1,7 +1,7 @@
 class_name C11CDrillPaletteBank
 extends RefCounted
 
-## C11-C 2.6.0 — Visual Drill presentation palettes.
+## C11-C 2.7.0 — Visual Drill presentation palettes.
 ## Presentation-only. Palette selection is driven by the existing cosmetic variant.
 
 const TRACKING_PALETTES := [

@@ -2,12 +2,13 @@
 class_name VisualDrillPresentationBinder
 extends RefCounted
 
-## C11-C / C6-F0.5 — Visual Drill Presentation Binder.
+## C11-C 2.7.0 / C6-F0.5 — Visual Drill Presentation Binder.
 ## Produces the shared C11-C social/editorial model plus domain-specific drill state.
 ## Does not alter simulation, RNG, timeline or winning-frame truth.
 
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
 const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
+const VisualDrillPresentationPhaseLogic = preload("res://core/presentation/VisualDrillPresentationPhaseLogic.gd")
 const DrillPaletteBank = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
 
 const DISPLAY_NAMES := {
@@ -43,7 +44,7 @@ var _definition_context: Dictionary = {}
 func set_definition_context(definition: Dictionary) -> void:
 	_definition_context = definition.duplicate(true) if definition is Dictionary else {}
 
-func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: String = "GAME", presentation_frame_index: int = -1, presentation_fps: int = 30) -> Dictionary:
+func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: String = "GAME", presentation_frame_index: int = -1, presentation_fps: int = 30, presentation_total_frames: int = -1) -> Dictionary:
 	var model := {}
 
 	# Shared C6/C11-C geometry payload. The logical composition remains 540x960;
@@ -71,8 +72,11 @@ func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: Strin
 	model["badge_text"] = str(composition.get("badge_text", ""))
 	model["cta_main"] = str(composition.get("cta_main", "LINK IN BIO"))
 	model["cta_sub"] = str(composition.get("cta_sub", "¡Juega ahora!"))
-	model["show_badge"] = (ui_state == "HOOK")
 	model["cta_visible"] = (ui_state == "CTA")
+	model["cta_animated"] = false
+	model["cta_progress"] = 1.0
+	model["cta_colors"] = {}
+	model["show_badge"] = (ui_state == "HOOK")
 	model["show_hook"] = false
 	model["countdown_visible"] = false
 	model["countdown_value"] = ""
@@ -85,11 +89,35 @@ func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: Strin
 	var drill_subtype: String = str(drill_state.get("generator_type", "visual_drill"))
 	var effective_presentation_frame: int = presentation_frame_index if presentation_frame_index >= 0 else 0
 	var effective_fps: int = maxi(1, presentation_fps)
+	var effective_total_frames: int = presentation_total_frames if presentation_total_frames > 0 else 0
 	var pre_roll: bool = ui_state == "PRE_ROLL"
 	CountdownPresentationLogic.apply_to_render_model(model, pre_roll, effective_presentation_frame, effective_fps)
 	var editorial_model: Dictionary = _build_editorial_model(frame, profile)
 	editorial_model["intro_active"] = pre_roll
 	editorial_model["intro_text"] = str(INTRO_TEXTS.get(drill_subtype, "PREPÁRATE PARA EL EJERCICIO VISUAL."))
+
+	if ui_state == "END_CTA":
+		var editorial_colors: Dictionary = editorial_model.get("colors", {})
+		model["cta_main"] = "¿LO CONSEGUISTE?"
+		model["cta_sub"] = "¿HASTA DÓNDE LLEGASTE?"
+		model["cta_visible"] = true
+		model["cta_animated"] = true
+		var gameplay_frame_count := int(_definition_context.get("payload", {}).get("frame_count", frame.get("payload", {}).get("frame_count", 0)))
+		model["cta_progress"] = VisualDrillPresentationPhaseLogic.end_cta_progress(
+			effective_presentation_frame,
+			gameplay_frame_count,
+			effective_fps
+		) if effective_total_frames > 0 else 0.0
+		model["cta_colors"] = {
+			"cta_main": editorial_colors.get("header_primary", Color("FFFFFF")),
+			"cta_sub": editorial_colors.get("footer_secondary", Color("D6E8FF"))
+		}
+		editorial_model["intro_active"] = false
+		editorial_model["header"]["line_2"] = "EJERCICIO COMPLETADO"
+		editorial_model["show_footer"] = false
+		editorial_model["show_footer_rule"] = false
+		editorial_model["matrix_enabled"] = false
+
 	model["editorial"] = editorial_model
 	return model
 
@@ -139,7 +167,7 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 			"line_2": descriptor
 		},
 		"footer": {
-			"line_1": "SEED %d | GAME %.2fS | TOTAL %.2fS | %d FPS | %s" % [definition_seed, duration, duration + CountdownPresentationLogic.COUNTDOWN_SECONDS, fps, difficulty_band],
+			"line_1": "SEED %d | GAME %.2fS | PREP %.2fS | END %.2fS | TOTAL %.2fS | %d FPS | %s" % [definition_seed, duration, CountdownPresentationLogic.COUNTDOWN_SECONDS, VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, duration + CountdownPresentationLogic.COUNTDOWN_SECONDS + VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, fps, difficulty_band],
 			"line_2": "GEN %s | PALETTE %s | AUDIO %s | SOCIAL 720X1280" % [display_name, str(editorial_colors.get("palette_name", "DEFAULT")), "AMBIENT" if audio_enabled else "OFF"],
 			"line_3": signature
 		},
@@ -174,7 +202,11 @@ func _editorial_colors(subtype: String, params: Dictionary) -> Dictionary:
 		"footer_data": Color(str(palette.get("text_data", palette.get("target_soft", "FFFFFF")))),
 		"footer_secondary": Color(str(palette.get("text_secondary", "9CB8D8"))),
 		"footer_signature": Color(str(palette.get("accent", "9CB8D8"))),
-		"rule": Color(str(palette.get("accent", "6FA6D9"))),
+		"rule": Color(str(palette.get("rule", palette.get("accent", "6FA6D9")))),
+		"section_background": Color(str(palette.get("background", "05070B"))),
+		"accent": Color(str(palette.get("accent", "6FA6D9"))),
+		"secondary": Color(str(palette.get("secondary", "9CB8D8"))),
+		"target": Color(str(palette.get("target", "FFFFFF"))),
 		"palette_name": str(palette.get("name", "DEFAULT"))
 	}
 

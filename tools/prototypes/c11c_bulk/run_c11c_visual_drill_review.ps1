@@ -24,6 +24,7 @@ $NoSound = $NoSound -or $SilentMode
 $SharedAudioHash = $null
 $Drills=@($Families | ForEach-Object { [string]$_ })
 $CountdownSeconds=3.0
+$EndCTASeconds=3.0
 $MinimumTotalDurationSeconds=20.0
 $MaximumTotalDurationSeconds=30.0
 $DefaultGameplayDurationSeconds=17.0
@@ -167,7 +168,7 @@ function Export-Gif {
 }
 
 function Write-SocialSidecar {
-    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][double]$Countdown,[Parameter(Mandatory=$true)][double]$TotalDuration,[Parameter(Mandatory=$true)][int]$TotalFrames,[Parameter(Mandatory=$true)][string]$AudioMode)
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][double]$Countdown,[Parameter(Mandatory=$true)][double]$EndCTA,[Parameter(Mandatory=$true)][double]$TotalDuration,[Parameter(Mandatory=$true)][int]$TotalFrames,[Parameter(Mandatory=$true)][string]$AudioMode)
     $display = switch ($Family) {
         'tracking' { 'TRACKING' }
         'saccade' { 'SACCADE' }
@@ -175,7 +176,7 @@ function Write-SocialSidecar {
         'peripheral_scan' { 'PERIPHERAL SCAN' }
         default { $Family.ToUpperInvariant() }
     }
-    $description = "C11-C Visual Drill / $display. Deterministic procedural visual exercise, seed $Seed. $([math]::Round($Duration,2))s at 30 FPS, with the shared 720x1280 social presentation layer."
+    $description = "C11-C Visual Drill / $display. Deterministic procedural visual exercise, seed $Seed. $([math]::Round($Duration,2))s at 30 FPS, with shared preparation and terminal self-evaluation phases."
     $hashtags = '#VisualDrill #VisualTraining #Perception #ProceduralArt #GenerativeArt #DigitalArt #TechArt'
     $content=@"
 TITLE: VISUAL DRILL // $display
@@ -190,6 +191,8 @@ FPS: 30
 GAMEPLAY DURATION: $([math]::Round($Duration,2)) s
 GAMEPLAY FRAMES: $Frames
 COUNTDOWN: $([math]::Round($Countdown,2)) s
+END CTA: $([math]::Round($EndCTA,2)) s
+END CTA TEXT: ¿LO CONSEGUISTE? / ¿HASTA DÓNDE LLEGASTE?
 TOTAL DURATION: $([math]::Round($TotalDuration,2)) s
 TOTAL FRAMES: $TotalFrames
 AUDIO: $AudioMode
@@ -206,10 +209,10 @@ C11-A qualification envelope; seed 12345 uses the deterministic A copy when pres
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.6.0'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.7.0'
 Write-Host ("[C11-C-DRILL] $($Drills.Count) families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
-Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + family-specific gameplay (17s/21s) = 20s/24s total'
-Write-Host ("[C11-C-DRILL] Shared editorial layout / Matrix ON / audio ON")
+Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + gameplay (17s/21s) + 3s end CTA = 23s/27s total'
+Write-Host ("[C11-C-DRILL] Shared editorial layout / terminal self-evaluation CTA / audio ON")
 Write-Host '============================================================'
 
 if($ResetReviewAssets -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
@@ -293,7 +296,7 @@ if($missingAfter.Count -gt 0){throw "Requested Visual Drill envelopes still miss
 if(-not $NoSound){
     $audioPath=Join-Path $AudioRoot 'global_ambient_master.wav'
     if(Test-Path -LiteralPath $audioPath){Remove-Item -LiteralPath $audioPath -Force}
-    Invoke-Checked 'python' @($AudioGenerator,$audioPath,'314159','visual_drill','1','24.0') "Generate one shared ambient master (24s)"
+    Invoke-Checked 'python' @($AudioGenerator,$audioPath,'314159','visual_drill','1','27.0') "Generate one shared ambient master (27s)"
     $SharedAudioHash=Get-FileSha256Hex -Path $audioPath
 }
 
@@ -318,8 +321,9 @@ try {
             $expectedFrames=Get-ExpectedGameplayFrames -Family $family
             if([math]::Abs($duration - $expectedDuration) -gt 0.0001 -or $frames -ne $expectedFrames){throw "$runId must be $expectedDuration s / $expectedFrames gameplay frames: got $duration s / $frames frames"}
             $countdownFrames=[int][math]::Round($CountdownSeconds * $fps)
-            $totalFrames=$countdownFrames + $frames
-            $totalDuration=$CountdownSeconds + $duration
+            $endCtaFrames=[int][math]::Round($EndCTASeconds * $fps)
+            $totalFrames=$countdownFrames + $frames + $endCtaFrames
+            $totalDuration=$CountdownSeconds + $duration + $EndCTASeconds
             if($countdownFrames -ne 90 -or $totalDuration + 0.0001 -lt $MinimumTotalDurationSeconds -or $totalDuration - 0.0001 -gt $MaximumTotalDurationSeconds){throw "$runId violates 20-30s presentation contract: countdown=$countdownFrames total_frames=$totalFrames total_duration=$totalDuration"}
             $targetDir=Join-Path $familyRoot "seed_$seed"
             New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
@@ -350,11 +354,11 @@ try {
             Export-KeyFrames -Mp4Path $finalMp4 -RunDir $targetDir
             Export-ContactSheet -RunDir $targetDir
             Export-Gif -Mp4Path $finalMp4 -GifPath $gifPath
-            Write-SocialSidecar -Path (Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt") -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT'})
+            Write-SocialSidecar -Path (Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt") -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT'})
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.6.0'
+                revision='2.7.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -364,6 +368,10 @@ try {
                 gameplay_frame_count=$frames
                 countdown_seconds=$CountdownSeconds
                 countdown_frames=$countdownFrames
+                end_cta_seconds=$EndCTASeconds
+                end_cta_frames=$endCtaFrames
+                end_cta_main='¿LO CONSEGUISTE?'
+                end_cta_sub='¿HASTA DÓNDE LLEGASTE?'
                 total_duration_seconds=$totalDuration
                 total_frame_count=$totalFrames
                 matrix_enabled=$true
@@ -390,7 +398,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.6.0'
+    revision='2.7.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
@@ -401,7 +409,9 @@ $rootManifest=[ordered]@{
     default_gameplay_seconds=$DefaultGameplayDurationSeconds
     tracking_gameplay_seconds=$TrackingGameplayDurationSeconds
     countdown_frames=90
-    max_total_frames=720
+    end_cta_seconds=$EndCTASeconds
+    end_cta_frames=90
+    max_total_frames=810
     seeds=@($Seeds)
     families=@($Drills)
     delivery='720x1280 / 9:16 / 30 FPS'

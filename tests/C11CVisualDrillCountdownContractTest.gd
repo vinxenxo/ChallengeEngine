@@ -6,6 +6,7 @@ extends SceneTree
 const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
 const VisualDrillPresentationBinder = preload("res://core/presentation/VisualDrillPresentationBinder.gd")
 const PresentationProfile = preload("res://core/presentation/PresentationProfile.gd")
+const VisualDrillPresentationPhaseLogic = preload("res://core/presentation/VisualDrillPresentationPhaseLogic.gd")
 
 var failures: Array[String] = []
 
@@ -72,6 +73,14 @@ func _test_visual_drill_binder() -> void:
 	_assert(not bool(game_editorial.get("intro_active", true)), "Tracking intro must disappear at gameplay start.")
 	_assert(bool(game_editorial.get("matrix_enabled", false)), "Visual Drill Matrix must resume during gameplay.")
 
+	var end_cta: Dictionary = binder.bind_frame(frame, profile, "END_CTA", 720, 30, 810)
+	_assert(bool(end_cta.get("cta_visible", false)), "Visual Drill end CTA must be visible after gameplay.")
+	_assert(str(end_cta.get("cta_main", "")) == "¿LO CONSEGUISTE?", "Visual Drill end CTA main text mismatch.")
+	_assert(str(end_cta.get("cta_sub", "")) == "¿HASTA DÓNDE LLEGASTE?", "Visual Drill end CTA sub text mismatch.")
+	_assert(bool(end_cta.get("cta_animated", false)), "Visual Drill end CTA must use the shared presentation motion path.")
+	var end_editorial: Dictionary = end_cta.get("editorial", {})
+	_assert(not bool(end_editorial.get("show_footer", true)), "End CTA must suppress telemetry footer while retaining the shared CTA component.")
+
 func _test_canonical_duration_contract() -> void:
 	var paths: Array[String] = [
 		"res://definitions/visual_drill_tracking_canonical.json",
@@ -87,7 +96,7 @@ func _test_canonical_duration_contract() -> void:
 			var subtype: String = str(parsed.get("subtype", ""))
 			var expected_gameplay: float = 21.0 if subtype == "tracking" else 17.0
 			var expected_frames: int = int(round(expected_gameplay * 30.0))
-			var total_seconds: float = expected_gameplay + CountdownPresentationLogic.COUNTDOWN_SECONDS
+			var total_seconds: float = expected_gameplay + CountdownPresentationLogic.COUNTDOWN_SECONDS + VisualDrillPresentationPhaseLogic.END_CTA_SECONDS
 			_assert(is_equal_approx(float(payload.get("duration", 0.0)), expected_gameplay), "%s gameplay duration mismatch." % path)
 			_assert(int(payload.get("frame_count", 0)) == expected_frames, "%s gameplay frame_count mismatch." % path)
 			_assert(total_seconds >= 20.0 and total_seconds <= 30.0, "%s total presentation duration must be within 20-30s." % path)

@@ -1,7 +1,7 @@
 # res://core/presentation/rendering/SaccadeRenderer.gd
 extends Node2D
 
-## C11-C 2.6.0 — Saccade presentation.
+## C11-C 2.7.0 — Saccade presentation.
 ## Random/polar jump baseline: no decorative background, no spatial interpolation.
 ## The mechanic owns position, phase and jump_index; this layer only expresses them.
 

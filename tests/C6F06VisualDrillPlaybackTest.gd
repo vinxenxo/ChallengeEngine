@@ -7,6 +7,7 @@ extends SceneTree
 # ============================================================
 
 const VisualContentPlayerScript = preload("res://core/presentation/rendering/VisualContentPlayer.gd")
+const VisualDrillPresentationPhaseLogic = preload("res://core/presentation/VisualDrillPresentationPhaseLogic.gd")
 
 var failures: Array[String] = []
 const MAX_WAIT_FRAMES: int = 1000
@@ -41,10 +42,10 @@ func _initialize() -> void:
 	if player._current_frame_index != player._total_frames:
 		failures.append("Frame count mismatch: processed %d, expected %d." % [player._current_frame_index, player._total_frames])
 	if player._is_visual_drill:
-		var expected_total_frames: int = 90 + player._total_frames
-		if player._visual_drill_countdown_frames != 90 or player._presentation_total_frames != expected_total_frames:
-			failures.append("Visual Drill presentation frame contract mismatch: countdown=%d total=%d expected=%d." % [player._visual_drill_countdown_frames, player._presentation_total_frames, expected_total_frames])
-		var expected_total_seconds: float = 3.0 + float(player._total_frames) / float(maxi(1, player._stream.fps))
+		var expected_total_frames: int = VisualDrillPresentationPhaseLogic.total_presentation_frames(player._total_frames, player._stream.fps)
+		if player._visual_drill_countdown_frames != 90 or player._visual_drill_end_cta_frames != 90 or player._presentation_total_frames != expected_total_frames:
+			failures.append("Visual Drill presentation frame contract mismatch: countdown=%d end_cta=%d total=%d expected=%d." % [player._visual_drill_countdown_frames, player._visual_drill_end_cta_frames, player._presentation_total_frames, expected_total_frames])
+		var expected_total_seconds: float = VisualDrillPresentationPhaseLogic.total_presentation_seconds(player._total_frames, player._stream.fps)
 		if expected_total_seconds < 20.0 or expected_total_seconds > 30.0:
 			failures.append("Visual Drill total duration outside 20-30s contract: %.3fs." % expected_total_seconds)
 		

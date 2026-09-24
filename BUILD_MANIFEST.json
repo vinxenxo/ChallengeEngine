@@ -1,6 +1,6 @@
 {
   "app": "C11-C Studio",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "format_version": 1,
   "owned_files": [
     "BUILD_MANIFEST.json",
@@ -60,7 +60,8 @@
     "main.py",
     "requirements.txt",
     "run.bat",
-    "self_test.py"
+    "self_test.py",
+    "docs/C11C_STUDIO_BUILD_NOTES_v0.2.4.md"
   ],
   "notes": [
     "Bootstrap source package; generated files are owned by the bootstrap manifest.",

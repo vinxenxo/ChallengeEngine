@@ -41,3 +41,7 @@ No changes are made to C11-B simulation mathematics, RNG ownership, `SimulationR
 ## Future Tracking variants
 
 The current C11-C baseline is `smooth_pursuit`: the target moves without disclosing its future route. A future independent Tracking variant may expose a pre-drawn geometric route (`guided_path`) and have the target follow that route. That variant is intentionally outside C11-C 2.4.0.
+
+## Historical baseline superseded by C11-C 2.7.0
+
+The 2.4.0 duration examples above predate the terminal self-evaluation CTA. The current shared presentation contract is `docs/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md`: PRE_ROLL + GAME + END_CTA, with a 3-second terminal CTA appended after gameplay.
