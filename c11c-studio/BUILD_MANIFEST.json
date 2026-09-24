@@ -1,6 +1,6 @@
 {
   "app": "C11-C Studio",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "format_version": 1,
   "owned_files": [
     "BUILD_MANIFEST.json",
@@ -54,17 +54,19 @@
     "devcheck.py",
     "docs/C11C_STUDIO_BUILD_NOTES_v0.2.2.md",
     "docs/C11C_STUDIO_BUILD_NOTES_v0.2.3.md",
+    "docs/C11C_STUDIO_BUILD_NOTES_v0.2.4.md",
+    "docs/C11C_STUDIO_BUILD_NOTES_v0.3.0.md",
     "docs/C11C_STUDIO_FIRST_BUILD_AUDIT_v0.2.1.md",
     "docs/C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md",
     "docs/C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md",
     "main.py",
     "requirements.txt",
     "run.bat",
-    "self_test.py",
-    "docs/C11C_STUDIO_BUILD_NOTES_v0.2.4.md"
+    "self_test.py"
   ],
   "notes": [
-    "Bootstrap source package; generated files are owned by the bootstrap manifest.",
-    "Runtime targets C11-C backend v2.1.4 and discovers canonical tools dynamically."
+    "UX/UI-only pass over the v0.2.4 desktop shell.",
+    "Backend services, canonical command paths and C11-B/C contracts are unchanged.",
+    "Dashboard, global shell, grouped navigation, Review Lab, Production and shared Qt theme were redesigned."
   ]
 }

@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.7.0 — Visual Drill terminal CTA contract.
+## C11-C 2.7.2 — Visual Drill terminal CTA contract.
 ## Reuses the historical Challenge CTAComponent through the shared presentation UI.
 ## The phase is presentation-only and is appended after the canonical gameplay stream.
 
@@ -15,7 +15,7 @@ var failures: Array[String] = []
 func _initialize() -> void:
     _test_phase_boundaries()
     _test_all_families_bind_terminal_cta()
-    _test_shared_cta_component_path()
+    await _test_shared_cta_component_path()
     _test_cta_component_instantiable()
     if failures.is_empty():
         print("[C11C_VISUAL_DRILL_END_CTA_CONTRACT_SUITE] PASS")
@@ -83,6 +83,9 @@ func _test_shared_cta_component_path() -> void:
     var frame_scene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
     var unified = frame_scene.instantiate()
     root.add_child(unified)
+    # UnifiedSocialFrame exposes its mount points through @onready members.
+    # Wait one frame so _ready() has completed before PresentationUI resolves them.
+    await process_frame
     var ui := PresentationUI.new(unified, "default_c6", profile, true)
     _assert(ui != null, "PresentationUI must instantiate for the shared UnifiedSocialFrame path.")
     if ui == null:

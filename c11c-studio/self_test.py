@@ -23,7 +23,7 @@ def main() -> int:
     spec = CommandSpec("powershell.exe", ["-NoProfile", "-File", "demo.ps1", "-Seeds", "1", "2"])
     assert spec.arguments[-3:] == ["-Seeds", "1", "2"]
 
-    print("C11-C Studio v0.2.3 self-test PASS")
+    print("C11-C Studio v0.3.0 self-test PASS")
     return 0
 
 
