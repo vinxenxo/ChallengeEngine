@@ -16,8 +16,8 @@ This tree is permanent and is not targeted by C11-C prototype cleanup, reset, or
 
 - 720x1280 / 9:16
 - 30 FPS
-- 20..30 s policy-driven review baseline
-- Visual Loop chapters use complete authored cycles; default cycle mapping is 24/27/30 s for 1/2/3 cycles
+- Visual Loop review baseline: 20..23 s; Visual Drill timing remains separate
+- Visual Loop chapters use complete authored cycles; default cycle mapping is 20/22/23 s for 1/2/3 cycles
 - Visual Drill total presentations are 27..30 s including the 3 s countdown and 3 s terminal CTA
 - exactly one final `.mp4`
 - sound ON by default; `-NoSound` / `-Silent` produces the silent final MP4
@@ -76,7 +76,7 @@ Monthly production repeats the 27-slot pattern and enforces seed spacing across 
 
 ## Long-form Visual Loop anthologies
 
-A three-minute anthology is composed from existing canonical production segments; it does not create a new renderer. Each segment remains 20..30 s and loop-safe.
+A three-minute anthology is composed from existing canonical production segments; it does not create a new renderer. Each segment remains 20..23 s and loop-safe.
 
 ```powershell
 .\tools\prototypes\c11c_bulk\run_c11c_visual_loop_longform_production_bulk.ps1 -Seed 314159

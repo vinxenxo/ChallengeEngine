@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$true)]
     [ValidateSet('c11c_geometric_waves_v1','c11c_fractal_bloom_v1','c11c_sacred_symmetry_v1','c11c_living_particles_v1','c11c_invisible_forces_v1')]
     [string]$Family,
@@ -30,8 +30,8 @@ $segments=@($familySchedule.segments)
 $target=[double]$schedule.target_duration_seconds
 $total=0.0
 foreach($segment in $segments){$total += [double]$segment.duration_seconds}
-if([math]::Abs($total-$target)-gt 0.01){throw "Longform schedule duration invalid for $Family: $total"}
-foreach($segment in $segments){if([double]$segment.duration_seconds -lt 20.0 -or [double]$segment.duration_seconds -gt 30.0){throw "Longform segment outside 20..30s: $($segment.grammar_id)"}}
+if([math]::Abs($total-$target)-gt 0.01){throw "Longform schedule duration invalid for ${Family}: $total"}
+foreach($segment in $segments){if([double]$segment.duration_seconds -lt 20.0 -or [double]$segment.duration_seconds -gt 23.0){throw "Longform segment outside 20..23s: $($segment.grammar_id)"}}
 
 if([string]::IsNullOrWhiteSpace($OutputRoot)){ $OutputRoot=Join-Path $ProjectRoot 'artifacts\production\audiovisual_longform' }
 $familyRoot=Join-Path $OutputRoot $Family
@@ -143,7 +143,7 @@ $socialPath=Join-Path $productRoot "${stem}_social.txt"
 
 $manifest=[ordered]@{
     schema='C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V1'
-    revision='2.13.0'
+    revision='2.14.0'
     status='FINAL_LONGFORM_PRODUCT'
     family=[ordered]@{technical_id=$familyKey;artistic_name=$familySchedule.artistic_name;production_id=$familySchedule.production_id}
     base_seed=$Seed

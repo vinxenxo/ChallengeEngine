@@ -31,10 +31,10 @@ It is one argument. `project.godot` remains untouched. A temporary root `overrid
 
 - 720x1280 / 9:16
 - 30 FPS
-- 20..30 s -> round(duration*30) frames
-- standard Visual Loop duration is cycle-complete; 24/27/30 s for 1/2/3 authored cycles
+- 20..23 s for Visual Loops; round(duration*30) frames
+- standard Visual Loop duration is cycle-complete; 20/22/23 s for 1/2/3 authored cycles
 - Visual Drill total delivery is 27..30 s including countdown and CTA
-- 20..30 s policy-driven
+- Visual Loop policy: 20..23 s
 - audio ON by default
 - `-NoSound` / `-Silent` disables sound
 - one final MP4

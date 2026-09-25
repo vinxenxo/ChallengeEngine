@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$true)]
     [ValidateSet('c11c_geometric_waves_v1','c11c_fractal_bloom_v1','c11c_sacred_symmetry_v1','c11c_living_particles_v1','c11c_invisible_forces_v1')]
     [string]$Family,
@@ -7,7 +7,7 @@ param(
     [int]$Seed,
     [Parameter(Mandatory=$false)]
     [string]$Grammar = '',
-    [ValidateRange(20.0,30.0)]
+    [ValidateRange(20.0,23.0)]
     [double]$Duration = 0.0,
     [Alias('Silent')][switch]$NoSound,
     [switch]$NoFooter,
@@ -80,7 +80,7 @@ $created=[DateTime]::UtcNow.ToString('o')
 $sourceDurationText=([double]$sourceManifest.visual.duration_seconds).ToString('F2')
 $prodManifest=[ordered]@{
     schema='C11-C-PRODUCTION-PRODUCT-V2'
-    revision='2.13.0'
+    revision='2.14.0'
     status='FINAL_PRODUCT'
     product_id=$productId
     family=$Family
@@ -128,7 +128,7 @@ if (Test-Path -LiteralPath $catalogPath) {
     $catalog=Get-Content -Raw $catalogPath | ConvertFrom-Json
 } else {
     New-Item -ItemType Directory -Force -Path $productionRoot | Out-Null
-    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.13.0';products=@()}
+    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.14.0';products=@()}
 }
 if ($null -eq $catalog.products) { $catalog.products=@() }
 $catalog.products=@($catalog.products | Where-Object { $_.product_id -ne $productId })

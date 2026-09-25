@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$false)]
     [int[]]$Seeds = @(),
     [Parameter(Mandatory=$false)]
@@ -41,7 +41,7 @@ $seedStrings=@($Seeds|ForEach-Object {$_.ToString()})
 $batch=@($batch|Where-Object {$seedStrings -contains ([regex]::Match($_.Name,'_seed_([0-9]+)\.mp4$').Groups[1].Value)})
 if($batch.Count -ne $expected){throw "Review corpus count failed: expected $expected canonical MP4s, found $($batch.Count)."}
 $seedMode = if($seedWasGenerated){'stratified_spread_random_v1'}else{'explicit_fixture_v1'}
-$seedManifest=[ordered]@{schema='C11-C-ART-DIRECTION-REVIEW-SEEDS-V3';revision='2.13.0';mode=$seedMode;family_count=5;variations_per_family=$VariationsPerFamily;render_count=$expected;seeds=@($Seeds);review_root=$ReviewRoot;prototype_cleanup_performed=$false;review_assets_reset=[bool]$ResetReviewAssets;delivery_contract='720x1280 / 30 FPS / 20..30 s policy-driven / frames=round(duration*30)'}
+$seedManifest=[ordered]@{schema='C11-C-ART-DIRECTION-REVIEW-SEEDS-V3';revision='2.14.0';mode=$seedMode;family_count=5;variations_per_family=$VariationsPerFamily;render_count=$expected;seeds=@($Seeds);review_root=$ReviewRoot;prototype_cleanup_performed=$false;review_assets_reset=[bool]$ResetReviewAssets;delivery_contract='720x1280 / 30 FPS / Visual Loop 20..23 s policy-driven / frames=round(duration*30)'}
 [System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_SEEDS.json'),($seedManifest|ConvertTo-Json -Depth 8),(New-Object System.Text.UTF8Encoding($false)))
 Write-Host "[C11-C-ART-DIRECTION] COMPLETE - $expected renders generated."
 return

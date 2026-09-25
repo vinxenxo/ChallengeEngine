@@ -1,8 +1,8 @@
-param(
+﻿param(
     [int]$Seed = 314159,
     [switch]$NoFooter,
     [string]$Grammar = '',
-    [ValidateRange(20.0,30.0)]
+    [ValidateRange(20.0,23.0)]
     [double]$Duration = 0.0,
     [Alias('Silent')]
     [switch]$NoSound
@@ -48,8 +48,17 @@ try {
     Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
     $DeliveryResolution='720x1280'
     $godotArgs=@('--path','.','--scene','tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.tscn','--write-movie',$Avi,'--fixed-fps','30','--resolution',$DeliveryResolution,'--quit-after','900')
-    & godot @godotArgs 2>&1 | Tee-Object -FilePath $GodotLog
-    $godotExit = $LASTEXITCODE
+    # Windows PowerShell 5.1 can promote native stderr (including non-fatal Godot warnings)
+    # to NativeCommandError when $ErrorActionPreference='Stop'. Keep stderr visible in the log
+    # without aborting the export; the real process exit code is still validated below.
+    $nativeEap = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        & godot @godotArgs 2>&1 | Tee-Object -FilePath $GodotLog
+        $godotExit = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $nativeEap
+    }
     if ($godotExit -ne 0) { throw "Godot prototype export failed: exit=$godotExit" }
     $errors = Select-String -Path $GodotLog -Pattern 'SHADER ERROR|Shader compilation failed|SCRIPT ERROR|Parse Error|ERROR:' -SimpleMatch:$false
     if ($errors) { throw "Godot reported prototype errors. See: $GodotLog" }
@@ -110,7 +119,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.1_GEOMETRIC_WAVES_V1'
-        revision = '2.13.0'
+        revision = '2.14.0'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -171,11 +180,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.13.0] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.13.0] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.13.0] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.13.0] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.13.0] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.14.0] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.14.0] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.14.0] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.14.0] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.14.0] SOCIAL: " + $Social)
 } finally {
     if ($null -ne $movieOverride) {
         Exit-C11CMovieOverride -State $movieOverride
@@ -185,6 +194,11 @@ try {
     }
     if (Test-Path -LiteralPath $LegacyMp4Silent) {
         Remove-Item -Force -LiteralPath $LegacyMp4Silent -ErrorAction SilentlyContinue
+    }
+    # AVI is an intermediate Movie Maker capture only; the published MP4/GIF are the deliverables.
+    # Always remove it in finally to prevent multi-GiB capture buildup, including failed runs.
+    if (Test-Path -LiteralPath $Avi) {
+        Remove-Item -Force -LiteralPath $Avi -ErrorAction SilentlyContinue
     }
     Pop-Location
 }

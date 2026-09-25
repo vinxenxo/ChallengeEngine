@@ -1,15 +1,16 @@
 extends SceneTree
 
-## C11-C 2.13.0 — standard 20..30s visual duration policy contract.
+## C11-C 2.14.0 — 20..23s Visual Loop duration policy contract.
 var failures: Array[String] = []
 
 func _initialize() -> void:
     var policy := FileAccess.get_file_as_string("res://profiles/presentation/c11c_visual_duration_policy.json")
-    _assert(policy.find("\"min\": 20.0") >= 0, "Duration policy minimum must be 20s.")
-    _assert(policy.find("\"max\": 30.0") >= 0, "Duration policy maximum must be 30s.")
-    _assert(policy.find("\"1\": 24.0") >= 0, "One-cycle Visual Loop duration must be 24s.")
-    _assert(policy.find("\"2\": 27.0") >= 0, "Two-cycle Visual Loop duration must be 27s.")
-    _assert(policy.find("\"3\": 30.0") >= 0, "Three-cycle Visual Loop duration must be 30s.")
+    _assert(policy.find("\"duration_range_seconds\":") >= 0, "Visual Loop duration range must be explicitly declared.")
+    _assert(policy.find("\"visual_loops\":") >= 0, "Duration policy must define Visual Loop duration policy.")
+    _assert(policy.find("\"max\": 23.0") >= 0, "Visual Loop duration maximum must be 23s.")
+    _assert(policy.find("\"1\": 20.0") >= 0, "One-cycle Visual Loop duration must be 20s.")
+    _assert(policy.find("\"2\": 22.0") >= 0, "Two-cycle Visual Loop duration must be 22s.")
+    _assert(policy.find("\"3\": 23.0") >= 0, "Three-cycle Visual Loop duration must be 23s.")
     _assert(policy.find("\"tracking\": 24.0") >= 0, "Tracking gameplay duration must be 24s.")
     _assert(policy.find("\"saccade\": 21.0") >= 0, "Saccade gameplay duration must be 21s.")
     _assert(policy.find("\"pursuit\": 24.0") >= 0, "Pursuit gameplay duration must be 24s.")

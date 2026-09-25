@@ -36,8 +36,8 @@ Production batch with explicit five seeds:
 
 - 720x1280, 9:16
 - 30 FPS
-- 20..30 s -> round(duration*30) frames
-- 20..30 s policy-driven review baseline
+- 20..23 s for Visual Loops; round(duration*30) frames
+- Visual Loop review baseline: 20..23 s; Visual Drill timing remains separate
 - default audio ON
 - `-NoSound` / `-Silent` disables audio
 - one canonical final MP4 per run

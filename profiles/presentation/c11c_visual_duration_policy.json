@@ -1,6 +1,6 @@
 {
   "schema": "C11-C-VISUAL-DURATION-POLICY-V1",
-  "revision": "2.13.0",
+  "revision": "2.14.0",
   "standard_range_seconds": {
     "min": 20.0,
     "max": 30.0
@@ -8,13 +8,17 @@
   "fps": 30,
   "visual_loops": {
     "cycle_to_duration_seconds": {
-      "1": 24.0,
-      "2": 27.0,
-      "3": 30.0
+      "1": 20.0,
+      "2": 22.0,
+      "3": 23.0
     },
-    "rationale": "Choose the shortest standard duration that preserves a complete number of visual cycles and enough temporal development for mobile playback.",
+    "rationale": "Compact 20–23s delivery for mobile retention while preserving complete authored temporal cycles and exact visual/audio endpoint alignment.",
     "loop_safe_required": true,
-    "audio_loop_safe_required": true
+    "audio_loop_safe_required": true,
+    "duration_range_seconds": {
+      "min": 20.0,
+      "max": 23.0
+    }
   },
   "visual_drills": {
     "countdown_seconds": 3.0,
@@ -31,15 +35,15 @@
       "pursuit": 30.0,
       "peripheral_scan": 27.0
     },
-    "note": "Legacy authoring fixtures at 17s/21s remain valid test fixtures; production/review defaults use this policy."
+    "note": "Visual Drill timing is unchanged in v2.14.0; its existing 3s countdown, gameplay and 3s CTA policy remains under separate art-direction review."
   },
   "longform_visual_loops": {
     "target_seconds": 180.0,
     "transition_mode": "chapter_boundary_safe_concat",
     "internal_segment_range_seconds": [
       20.0,
-      30.0
+      23.0
     ],
-    "description": "Long-form family anthology composed from the same existing grammar renderers; no new per-family renderer."
+    "description": "Long-form family anthology remains 180s overall. Internal chapters use the revised 20..23s Visual Loop duration policy."
   }
 }

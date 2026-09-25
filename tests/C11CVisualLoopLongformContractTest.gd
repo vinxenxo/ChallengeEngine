@@ -1,15 +1,14 @@
-extends SceneTree
+﻿extends SceneTree
 
-## C11-C 2.13.1 — three-minute Visual Loop anthology contract regression repair.
+## C11-C 2.14.1 — three-minute Visual Loop anthology contract.
 var failures: Array[String] = []
 
 func _initialize() -> void:
     var schedule_path := "res://profiles/presentation/c11c_visual_loop_longform_schedule.json"
     _assert(FileAccess.file_exists(schedule_path), "Longform schedule must exist.")
-    var parsed_schedule: Variant = JSON.parse_string(FileAccess.get_file_as_string(schedule_path))
-    _assert(parsed_schedule is Dictionary, "Longform schedule must be valid JSON.")
-    if parsed_schedule is Dictionary:
-        var schedule: Dictionary = parsed_schedule
+    var schedule: Variant = JSON.parse_string(FileAccess.get_file_as_string(schedule_path))
+    _assert(schedule is Dictionary, "Longform schedule must be valid JSON.")
+    if schedule is Dictionary:
         var families: Dictionary = schedule.get("families", {})
         _assert(families.size() == 5, "Longform schedule must cover the five Visual Loop families.")
         for family_id in ["geometric", "fractal", "sacred_symmetry", "living_particles", "invisible_forces"]:
@@ -19,7 +18,7 @@ func _initialize() -> void:
                 var segments: Array = families[family_id].get("segments", [])
                 for segment in segments:
                     seconds += float(segment.get("duration_seconds", 0.0))
-                    _assert(float(segment.get("duration_seconds", 0.0)) >= 20.0 and float(segment.get("duration_seconds", 0.0)) <= 30.0, "Longform segment must remain in the standard 20..30s range.")
+                    _assert(float(segment.get("duration_seconds", 0.0)) >= 20.0 and float(segment.get("duration_seconds", 0.0)) <= 23.0, "Longform segment must remain in the standard 20..23s range.")
                 _assert(abs(seconds - 180.0) <= 0.01, "Longform family must total exactly 180s: " + family_id)
                 _assert(segments.size() >= 5, "Longform family must combine multiple visual grammars.")
         var invisible: Array = families.get("invisible_forces", {}).get("segments", [])

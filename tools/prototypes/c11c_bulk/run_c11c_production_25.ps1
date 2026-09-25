@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$false)]
     [int[]]$Seeds = @(),
     [Parameter(Mandatory=$false)]
@@ -148,7 +148,7 @@ foreach ($family in $Families) {
 $batchFinished = [DateTime]::UtcNow
 $batchManifest = [ordered]@{
     schema = 'C11-C-PRODUCTION-25-BATCH-V1'
-    revision = '2.13.0'
+    revision = '2.14.0'
     status = 'COMPLETE'
     batch_type = '5_random_or_explicit_seeds_x_5_families'
     started_utc = $batchStarted.ToString('o')
@@ -166,7 +166,7 @@ $batchManifest = [ordered]@{
         aspect_ratio = '9:16'
         fps = 30
         frames = 'round(duration_seconds*30)'
-        duration_seconds = '20..30 policy-driven'
+        duration_seconds = '20..23 policy-driven'
     }
     production_root = $ProductionRoot
     protected_from_review_cleanup = $true

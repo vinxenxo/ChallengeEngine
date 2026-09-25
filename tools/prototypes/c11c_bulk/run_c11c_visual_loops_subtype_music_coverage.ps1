@@ -1,4 +1,4 @@
-param(
+﻿param(
     [switch]$ResetReviewAssets
 )
 $ErrorActionPreference = 'Stop'
@@ -81,7 +81,7 @@ foreach ($case in $cases) {
     if ($null -eq $video -or $null -eq $audio) { throw "MP4 stream contract failed for $($case.Grammar)" }
     if ([int]$video.width -ne 720 -or [int]$video.height -ne 1280) { throw "Resolution failed for $($case.Grammar)" }
     $duration=[double]$video.duration
-    if ($duration -lt 20.0 -or $duration -gt 30.0) { throw "Duration failed for $($case.Grammar): $duration" }
+    if ($duration -lt 20.0 -or $duration -gt 23.0) { throw "Duration failed for $($case.Grammar): $duration (expected 20..23s)" }
     $expectedFrames=[int][math]::Round($duration * 30.0)
     if ([int]$video.nb_frames -ne $expectedFrames) { throw "Frame count failed for $($case.Grammar): $($video.nb_frames) expected $expectedFrames" }
     if ([int]$audio.sample_rate -ne 44100 -or [int]$audio.channels -ne 2) { throw "Audio format failed for $($case.Grammar)" }
@@ -95,7 +95,7 @@ foreach ($case in $cases) {
 
 $summary = [ordered]@{
     schema='C11-C-VISUAL-LOOPS-SUBTYPE-MUSIC-COVERAGE-V1'
-    revision='2.13.0'
+    revision='2.14.0'
     total=27
     audio_required=$true
     results=$results
