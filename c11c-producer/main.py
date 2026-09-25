@@ -62,7 +62,8 @@ class MainWindow(QMainWindow):
         self.grammar=QComboBox(); self.count=QSpinBox(); self.count.setRange(1,500); self.count.setValue(1)
         self.seed_mode=QComboBox(); self.seed_mode.addItems(['SEEDS ALEATORIAS','SEEDS MANUALES'])
         self.manual=QLineEdit(); self.manual.setPlaceholderText('Una seed por vídeo: 314159, 271828…'); self.manual.setEnabled(False)
-        for row,label,w in [(0,'Tipo de vídeo',self.video_type),(1,'Familia',self.family),(2,'Subfamilia',self.grammar),(3,'Cantidad',self.count),(4,'Seeds',self.seed_mode)]: grid.addWidget(QLabel(label),row,0); grid.addWidget(w,row,1)
+        self.video_type_label=QLabel('Tipo de vídeo'); self.family_label=QLabel('Familia'); self.subtype_label=QLabel('Subfamilia'); self.count_label=QLabel('Cantidad'); self.seed_label=QLabel('Seeds')
+        for row,label,w in [(0,self.video_type_label,self.video_type),(1,self.family_label,self.family),(2,self.subtype_label,self.grammar),(3,self.count_label,self.count),(4,self.seed_label,self.seed_mode)]: grid.addWidget(label,row,0); grid.addWidget(w,row,1)
         grid.addWidget(self.manual,5,0,1,2); root.addLayout(grid)
         self.type_info=QLabel('Visual Loops disponible. Challenges y Visual Drills se conectarán en fases posteriores.'); self.type_info.setObjectName('Hint'); self.type_info.setWordWrap(True); root.addWidget(self.type_info)
         opts=QHBoxLayout(); self.no_sound=QCheckBox('Sin audio'); self.no_footer=QCheckBox('Sin footer'); self.force=QCheckBox('FORCE'); opts.addWidget(self.no_sound); opts.addWidget(self.no_footer); opts.addWidget(self.force); opts.addStretch(); root.addLayout(opts)
@@ -81,38 +82,73 @@ class MainWindow(QMainWindow):
 
     def _video_type_changed(self,idx):
         video_type=str(self.video_type.currentData() or 'visual_loops')
-        available=(video_type=='visual_loops')
+        available=(video_type in ('visual_loops','visual_drills'))
         self.family.setEnabled(available)
-        self.grammar.setEnabled(available and self.seed_mode.currentIndex()!=1)
         self.count.setEnabled(available)
         self.seed_mode.setEnabled(available)
         self.manual.setEnabled(available and self.seed_mode.currentIndex()==1)
         self.no_sound.setEnabled(available)
-        self.no_footer.setEnabled(available)
+        self.no_footer.setEnabled(video_type=='visual_loops')
         self.force.setEnabled(available)
         self.randomize.setEnabled(available)
         self.add.setEnabled(available)
-        for r in self.rows: r.set_interactive(available and self.seed_mode.currentIndex()!=1)
-        if available:
+        if video_type=='visual_loops':
+            self.subtype_label.setText('Subfamilia')
+            self.grammar.setEnabled(self.seed_mode.currentIndex()!=1)
             self.type_info.setText('Visual Loops activo. Familia, subfamilia y variaciones usan el backend C11-C 2.9.1 real.')
-        elif video_type=='challenges':
-            self.type_info.setText('Challenges: selector preparado, generación aún no conectada en este Producer.')
+        elif video_type=='visual_drills':
+            self.subtype_label.setText('Dificultad')
+            self.no_footer.setChecked(False)
+            self.grammar.setEnabled(True)
+            self._refresh_family(self.family.currentIndex() if self.family.count() else 0)
+            self.type_info.setText('Visual Drills activo. 3 s de cuenta atrás + gameplay + 3 s de CTA.')
         else:
-            self.type_info.setText('Visual Drills: selector preparado, generación aún no conectada en este Producer.')
+            self.subtype_label.setText('Subfamilia')
+            self.family.clear(); self.grammar.clear()
+            while self.pl.count():
+                item=self.pl.takeAt(0); w=item.widget()
+                if w: w.deleteLater()
+            self.rows=[]
+            self.grammar.setEnabled(False)
+            self.type_info.setText('Challenges: selector preparado, generación aún no conectada en este Producer.')
+        self._seed_mode_changed(self.seed_mode.currentIndex())
+
+    def _clear_param_rows(self):
+        while self.pl.count():
+            item=self.pl.takeAt(0); w=item.widget()
+            if w: w.deleteLater()
+        self.rows=[]
 
     def _refresh_family(self,idx):
-        fid=list(FAMILIES)[idx]; self.fid=fid; self.grammar.clear(); self.grammar.addItem('ALEATORIO — por seed','auto')
-        for code,label in FAMILIES[fid]['grammars'][1:]: self.grammar.addItem(label,code)
-        while self.pl.count():
-            item=self.pl.takeAt(0); w=item.widget(); w.deleteLater() if w else None
-        self.rows=[]
-        for spec in FAMILIES[fid]['params']:
-            r=ParamRow(spec); self.pl.addWidget(r); self.rows.append(r)
+        video_type=str(self.video_type.currentData() or 'visual_loops')
+        self._clear_param_rows()
+        if video_type=='visual_loops':
+            ids=list(FAMILIES)
+            if not ids:return
+            idx=max(0,min(idx,len(ids)-1)); self.fid=ids[idx]
+            self.family.blockSignals(True); self.family.clear(); self.family.addItems([v['name'] for v in FAMILIES.values()]); self.family.setCurrentIndex(idx); self.family.blockSignals(False)
+            self.grammar.clear(); self.grammar.addItem('ALEATORIO — por seed','auto')
+            for code,label in FAMILIES[self.fid]['grammars'][1:]: self.grammar.addItem(label,code)
+            for spec in FAMILIES[self.fid]['params']:
+                r=ParamRow(spec); self.pl.addWidget(r); self.rows.append(r)
+            self.type_info.setText('Visual Loops activo. Variación determinista del backend C11-C 2.9.1.')
+        elif video_type=='visual_drills':
+            ids=list(SCHEMA.get('drills',{}))
+            if not ids:return
+            idx=max(0,min(idx,len(ids)-1)); self.fid=ids[idx]
+            self.family.blockSignals(True); self.family.clear(); self.family.addItems([v['name'] for v in SCHEMA['drills'].values()]); self.family.setCurrentIndex(idx); self.family.blockSignals(False)
+            self.grammar.clear(); self.grammar.addItem('ALEATORIO — por vídeo','auto')
+            for tier in range(1,6): self.grammar.addItem(f'TIER {tier}',tier)
+            for spec in SCHEMA['drills'][self.fid].get('parameters',[]):
+                r=ParamRow(spec); self.pl.addWidget(r); self.rows.append(r)
+            self.type_info.setText('Visual Drills activo. 3 s de cuenta atrás + gameplay + 3 s de CTA.')
         self._seed_mode_changed(self.seed_mode.currentIndex())
 
     def _seed_mode_changed(self,idx):
-        manual=idx==1; self.manual.setEnabled(manual); self.grammar.setEnabled(not manual)
-        for r in self.rows: r.set_interactive(not manual)
+        manual=idx==1; active=self.video_type.currentData() in ('visual_loops','visual_drills')
+        self.manual.setEnabled(manual and active)
+        self.grammar.setEnabled(active)
+        for r in self.rows: r.set_interactive(active)
 
     def _randomize_all(self):
         self.grammar.setCurrentIndex(0)
@@ -134,14 +170,22 @@ class MainWindow(QMainWindow):
             except ValueError: QMessageBox.warning(self,'Seeds','Las seeds deben ser enteros.'); return
             if len(manual)!=self.count.value() or len(set(manual))!=len(manual) or any(x<1 or x>2147483646 for x in manual): QMessageBox.warning(self,'Seeds',f'Necesitas exactamente {self.count.value()} seeds únicas entre 1 y 2147483646.'); return
         video_type=str(self.video_type.currentData() or 'visual_loops')
-        if video_type!='visual_loops': QMessageBox.information(self,'Tipo no disponible','Este tipo de vídeo está preparado en la interfaz pero todavía no tiene launcher de producción conectado.'); return
+        if video_type not in ('visual_loops','visual_drills'):
+            QMessageBox.information(self,'Tipo no disponible','Challenges todavía no tiene un launcher de producción conectado.'); return
         targets={r.spec['key']:v for r in self.rows if (v:=r.value()) is not None}; grammar=self.grammar.currentData() or 'auto'
-        if targets.get('palette_name')=='AUTO (seed)': targets.pop('palette_name')
-        if manual and (grammar!='auto' or targets): QMessageBox.warning(self,'Configuración incompatible','Con seeds manuales el perfil ya queda determinado por la seed. Usa SEEDS ALEATORIAS para fijar subfamilia o parámetros.'); return
-        r=Recipe(video_type,self.fid,grammar,self.count.value(),manual,self.no_sound.isChecked(),self.no_footer.isChecked(),self.force.isChecked(),targets); self.queue.append(r); self._add_row(r)
+        if video_type=='visual_loops':
+            if targets.get('palette_name')=='AUTO (seed)': targets.pop('palette_name')
+            if manual and (grammar!='auto' or targets): QMessageBox.warning(self,'Configuración incompatible','Con seeds manuales el perfil ya queda determinado por la seed. Usa SEEDS ALEATORIAS para fijar subfamilia o parámetros.'); return
+        r=Recipe(video_type,str(self.fid),str(grammar),self.count.value(),manual,self.no_sound.isChecked(),self.no_footer.isChecked(),self.force.isChecked(),targets); self.queue.append(r); self._add_row(r)
 
     def _add_row(self,r):
-        n=self.table.rowCount(); self.table.insertRow(n); g=next((l for c,l in FAMILIES[r.family]['grammars'] if c==r.grammar),'ALEATORIO — por seed'); vals=['VISUAL LOOPS',FAMILIES[r.family]['name'],g,str(r.count),'NO' if r.no_sound else 'SI','NO' if r.no_footer else 'SI','PENDIENTE']
+        n=self.table.rowCount(); self.table.insertRow(n)
+        if r.video_type=='visual_loops':
+            g=next((l for c,l in FAMILIES[r.family]['grammars'] if c==r.grammar),'ALEATORIO — por seed')
+            vals=['VISUAL LOOPS',FAMILIES[r.family]['name'],g,str(r.count),'NO' if r.no_sound else 'SI','NO' if r.no_footer else 'SI','PENDIENTE']
+        else:
+            g='ALEATORIO' if r.grammar=='auto' else f'TIER {r.grammar}'
+            vals=['VISUAL DRILLS',SCHEMA['drills'][r.family]['name'],g,str(r.count),'NO' if r.no_sound else 'SI','—','PENDIENTE']
         for c,v in enumerate(vals): self.table.setItem(n,c,QTableWidgetItem(v))
 
     def remove_selected(self):
@@ -157,6 +201,17 @@ class MainWindow(QMainWindow):
         if not self.queue: self.log.appendPlainText('\n=== PRODUCCIÓN FINALIZADA ==='); self.generate.setEnabled(True); return
         self.current_recipe=self.queue[0]; self.jobs=[]; r=self.current_recipe; self.table.selectRow(0)
         if r.manual_seeds: self.jobs=list(r.manual_seeds); self.log.appendPlainText('[SEEDS MANUALES] '+', '.join(map(str,self.jobs))); self._run_job(); return
+        if r.video_type=='visual_drills':
+            existing=set(); base=PROJECT/'artifacts/production/audiovisual/visual_drills'/r.family
+            if base.exists():
+                for p in base.glob('*_seed_*'):
+                    m=re.search(r'_seed_(\d+)',p.name)
+                    if m: existing.add(int(m.group(1)))
+            seeds=[]
+            while len(seeds)<r.count:
+                s=random.randint(1000000,2147483646)
+                if s not in existing and s not in seeds: seeds.append(s)
+            self.jobs=seeds; self.log.appendPlainText('[SEEDS RANDOM] '+', '.join(map(str,seeds))); self._run_job(); return
         if not r.targets and r.grammar=='auto':
             existing=self._existing(r.family); seeds=[]
             while len(seeds)<r.count:
@@ -199,11 +254,25 @@ class MainWindow(QMainWindow):
     def _run_job(self):
         if not self.jobs:
             self.table.setItem(0,6,QTableWidgetItem('COMPLETADA')); self.queue.pop(0); self.table.removeRow(0); self.current_recipe=None; QTimer.singleShot(0,self._run_recipe); return
-        seed=self.jobs.pop(0); r=self.current_recipe; script=str(PROJECT/'tools/prototypes/c11c_bulk/run_c11c_production.ps1'); args=['-NoProfile','-ExecutionPolicy','Bypass','-File',script,'-Family',r.family,'-Seed',str(seed)]
-        if r.no_sound:args.append('-NoSound')
-        if r.no_footer:args.append('-NoFooter')
-        if r.force:args.append('-Force')
-        self.table.setItem(0,6,QTableWidgetItem(f'GENERANDO {seed}')); self.log.appendPlainText('\n[PRODUCTION] powershell.exe '+' '.join(args))
+        seed=self.jobs.pop(0); r=self.current_recipe
+        if r.video_type=='visual_drills':
+            tier=int(r.grammar) if r.grammar!='auto' else random.randint(1,5)
+            speed=float(r.targets['speed_multiplier']) if 'speed_multiplier' in r.targets else random.uniform(*SCHEMA['drills'][r.family]['random_speed_range']) if SCHEMA['drills'][r.family].get('random_speed_range') else 1.0
+            if r.family=='tracking':
+                pacing=str(r.targets['pacing_mode']) if 'pacing_mode' in r.targets else random.choice(['constant','accelerating','pulsed'])
+            else:
+                pacing='constant'
+            script=str(ROOT/'run_visual_drill_production.ps1')
+            args=['-NoProfile','-ExecutionPolicy','Bypass','-File',script,'-Family',r.family,'-Seed',str(seed),'-DifficultyTier',str(tier),'-SpeedMultiplier',f'{speed:.5f}','-PacingMode',pacing]
+            if r.no_sound:args.append('-NoSound')
+            if r.force:args.append('-Force')
+            self.table.setItem(0,6,QTableWidgetItem(f'GENERANDO {seed} · T{tier}')); self.log.appendPlainText('\n[DRILL PRODUCTION] powershell.exe '+' '.join(args))
+        else:
+            script=str(PROJECT/'tools/prototypes/c11c_bulk/run_c11c_production.ps1'); args=['-NoProfile','-ExecutionPolicy','Bypass','-File',script,'-Family',r.family,'-Seed',str(seed)]
+            if r.no_sound:args.append('-NoSound')
+            if r.no_footer:args.append('-NoFooter')
+            if r.force:args.append('-Force')
+            self.table.setItem(0,6,QTableWidgetItem(f'GENERANDO {seed}')); self.log.appendPlainText('\n[PRODUCTION] powershell.exe '+' '.join(args))
         self.proc=QProcess(self); self.proc.setWorkingDirectory(str(PROJECT)); self.proc.setProgram('powershell.exe'); self.proc.setArguments(args); self.proc.readyReadStandardOutput.connect(self._out); self.proc.readyReadStandardError.connect(self._err); self.proc.finished.connect(self._prod_done); self.proc.start()
     def _out(self):
         if not self.proc:return
