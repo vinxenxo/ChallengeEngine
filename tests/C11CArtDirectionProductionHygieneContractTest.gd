@@ -4,10 +4,15 @@
 var failures: Array[String] = []
 
 func _initialize() -> void:
-    for family in [
-        "geometric", "fractal", "sacred_symmetry", "living_particles", "invisible_forces"
-    ]:
-        var path := "res://tools/prototypes/c11c_%s_v1/run_prototype.ps1" % family
+    var family_launchers := {
+        "geometric": "res://tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+        "fractal": "res://tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+        "sacred_symmetry": "res://tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+        "living_particles": "res://tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+        "invisible_forces": "res://tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+    }
+    for family in family_launchers.keys():
+        var path: String = str(family_launchers[family])
         var source := FileAccess.get_file_as_string(path)
         _assert(source.find("[switch]$ExportGif") >= 0, path + " must make GIF export optional.")
         _assert(source.find("[switch]$KeepAvi") >= 0, path + " must expose optional AVI retention.")

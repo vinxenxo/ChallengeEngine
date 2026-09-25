@@ -1,41 +1,32 @@
 {
-  "schema": "C11-C-ART-DIRECTION-OVERLAY-V1",
-  "revision": "2.15.0",
+  "schema": "C11-C-ART-DIRECTION-CONTRACT-REPAIR-V1",
+  "revision": "2.15.1",
+  "status": "OVERLAY",
   "files": [
     {
-      "path": "CHANGELOG_C11-C_2.15.0.md",
-      "bytes": 515,
-      "sha256": "11cbf4c26729aa2b624ededf04a34fbe11b8a8645b6514123e1893349c516009"
+      "path": "C11-C_2.15.1_ART_DIRECTION_CONTRACT_REPAIR.md",
+      "bytes": 927,
+      "sha256": "c72db241ecd7bb647ddf09e49b67e29154bcd7f623ce8d49bc7e21b3d3352046"
     },
     {
-      "path": "core/presentation/C11CVisualEditorialLayer.gd",
-      "bytes": 18822,
-      "sha256": "23490f873d9575945f293cc88841cbae524a7854528e419eb581d96fdc747459"
-    },
-    {
-      "path": "docs/c11/C11-C_2.15.0_ART_DIRECTION_OVERLAY.md",
-      "bytes": 1735,
-      "sha256": "0090b9eec63cfd000ff3bd6fdda7beb471f0b6a9990d0cb33bbf4fead94c8083"
-    },
-    {
-      "path": "profiles/presentation/c11c_visual_loop_longform_schedule.json",
-      "bytes": 8161,
-      "sha256": "e84de9810d1e54984ed3915810c82e389c4aeba9241a4e76cd5d8e8c8e0ecc1f"
+      "path": "CHANGELOG_C11-C_2.15.1.md",
+      "bytes": 826,
+      "sha256": "155806c124a1e949deafc4773692cf4eb036f31561452379be94996f7db50514"
     },
     {
       "path": "tests/C11CArtDirectionProductionHygieneContractTest.gd",
-      "bytes": 2303,
-      "sha256": "5613aa716658cd62e0f8e7e3e5666e97c61761931e0e154e60eeb8294b303cf9"
+      "bytes": 2701,
+      "sha256": "2d6d79a87936fd31aca3f5e5b6b63fe46a977bc85715e8f7ba23ab90283b6c87"
     },
     {
-      "path": "tests/C11CCommonPresentationOverlayContractTest.gd",
-      "bytes": 4647,
-      "sha256": "21b0a27f2e3de4f5c6f894fe4446e8a0fc1760d0df9b8be8147353a72a7efd9c"
+      "path": "tests/C11CSacredSymmetryContainmentContractTest.gd",
+      "bytes": 1484,
+      "sha256": "7eae1576c61a9c342db18eb4916971182b5f6d079ff545494e6b3d0936b52092"
     },
     {
-      "path": "tests/C11CVisualDrillSocialDeliveryContractTest.gd",
-      "bytes": 3541,
-      "sha256": "b0e11262c2bd8c4719f8368530fca0782080f1e59beb4a06b36c3e1bea0b84f2"
+      "path": "tests/C11CVisualDrillSocialPresentationContractTest.gd",
+      "bytes": 9673,
+      "sha256": "52c453caac361e0b5fffbb7139003de553fbcd40cab79eaf1e9cd838afd5d0ad"
     },
     {
       "path": "tests/C11CVisualLoopLongformContractTest.gd",
@@ -43,85 +34,19 @@
       "sha256": "f8f548c992811f08474f3a7c695570b034e7bb7a7828cea638612ee1d67851af"
     },
     {
-      "path": "tests/C11CVisualSocialCopyContractTest.gd",
-      "bytes": 2299,
-      "sha256": "d88c0d1a0e3ed4cc299a9c5542c83b3a58ccbe813b4fe7b1b57f4536c64346a2"
-    },
-    {
-      "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.cmd",
-      "bytes": 134,
-      "sha256": "5db896b52fdd602a152db9d8c1fa03bf365d359a724f7dc51a3a4e6c9126e53b"
-    },
-    {
-      "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1",
-      "bytes": 7901,
-      "sha256": "c044ac0273110ae85babb96dba8e7bc38a2cc9bcddbe0f57f19f40ca83fdbbd9"
-    },
-    {
-      "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
-      "bytes": 7208,
-      "sha256": "09a18a21397768635e340065ded017b41a554199a660da00f5e59f4c3c40c5b5"
-    },
-    {
-      "path": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
-      "bytes": 26839,
-      "sha256": "0ad17ab9cbdf87b12494bf2938398b2798329fcea1b96914c48bbcc7a6c3bd05"
+      "path": "tests/run_all.py",
+      "bytes": 18053,
+      "sha256": "403b4e4e4190ce48e7d2e2bbed9c43ee433aa47ad1fee8d9353043c2df06ba2d"
     },
     {
       "path": "tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production.ps1",
-      "bytes": 12748,
-      "sha256": "624cc13c9e02384bc88364a1ebb57e31c40dff002bb2401d4e0d54b597c89cff"
-    },
-    {
-      "path": "tools/prototypes/c11c_common/C11CColorBoost.gd",
-      "bytes": 475,
-      "sha256": "7ab2b0b81355f9b94e0b94f258824bd970f0bf9c037c344d7a1360d758a838c7"
-    },
-    {
-      "path": "tools/prototypes/c11c_common/C11CTheme.gd",
-      "bytes": 255,
-      "sha256": "7e73c62221ca8149a174b4633900b732b67047e0eddd20ee73e9d8f2f83cab64"
-    },
-    {
-      "path": "tools/prototypes/c11c_common/write_social_metadata.py",
-      "bytes": 5087,
-      "sha256": "2fe823bde91ad5ac9b074827e9814e52e001a34917ccf51cc603a51170a789d7"
-    },
-    {
-      "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
-      "bytes": 12464,
-      "sha256": "1a43b3f69339ad7f8b8832d8eaccc5b97a106105d3cfd79b0c75321ad9517eb1"
-    },
-    {
-      "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
-      "bytes": 12488,
-      "sha256": "b19b077ada8ef4b88f3f54e50fa8db5cfdb4980c8651fc26f832bd9f66eabec9"
-    },
-    {
-      "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
-      "bytes": 12514,
-      "sha256": "7c46bda9a4796dda25e12911f3364a0de56e359b549a5391f06aeb67509ae070"
-    },
-    {
-      "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
-      "bytes": 12515,
-      "sha256": "5136aee4bb77f811f7d29219df8b20680e86e1e0e5537135e11ba6120b37fe0f"
+      "bytes": 12960,
+      "sha256": "bfaebc8d4d53e7e8975c0ac024228fc9923ece67b956b0dceba50ad3bd8739a1"
     },
     {
       "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader",
-      "bytes": 11057,
-      "sha256": "645103aa6e94f4ad27498d56028240d7104b76f4ae90e4d351387659cc605c14"
-    },
-    {
-      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd",
-      "bytes": 3205,
-      "sha256": "dc927881bed4608845fa843afbbb2638f3b748a4cbb9d8c7c923b2a3ee9706a8"
-    },
-    {
-      "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
-      "bytes": 12503,
-      "sha256": "637c5fe9c53c96cb4e686fd7500f6417bde66d1e5776b0fcab02a45b81a57b50"
+      "bytes": 11193,
+      "sha256": "0334eb29186aed50041f4068e841a4b847fff300deca54fca5b740be3cb63d49"
     }
-  ],
-  "count": 24
+  ]
 }

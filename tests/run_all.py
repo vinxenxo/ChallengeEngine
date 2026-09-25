@@ -95,6 +95,7 @@ KNOWN_SUITES = {
     "C6E3RuntimePresentationValidationTest.gd": "[C6E3_RUNTIME_PRESENTATION_SUITE] PASS",
     "C6F0_1_5CanonicalAssemblerTest.gd": "[C6F0_1_5_CANONICAL_ASSEMBLER_SUITE] PASS",
     "C6F0_1_6AuthoringPipelineTest.gd": "[C6F0_1_6_AUTHORING_PIPELINE_SUITE] PASS",
+    "C11CArtDirectionProductionHygieneContractTest.gd" : "[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS",
     "C6F0_1_7RuntimeBoundaryProofTest.gd": "[C6F0_1_7_RUNTIME_BOUNDARY_PROOF_SUITE] PASS",
     "C6F0_3MultiContentFoundationTest.gd": "[C6F0_3_MULTI_CONTENT_FOUNDATION_SUITE] PASS",
     "C6F035ContentRuntimeBoundaryTest.gd": "[C6F0_3_5_RUNTIME_BOUNDARY_SUITE] PASS",
@@ -195,11 +196,14 @@ def discover_test_suites():
     discovered.sort(key=lambda item: item[0])
     return discovered
 
-def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
+def run_suite(rel_path: str, suite_path: Path, pass_marker: str, verbose: bool = False) -> bool:
     name = Path(rel_path).name
-    print(f"\n[RUNNER] Ejecutando {name} ({rel_path})...")
-    
+    mode = " --verbose" if verbose else ""
+    print(f"\n[RUNNER] Ejecutando {name} ({rel_path}){mode}...")
+
     cmd = ["godot", "--headless", "--path", str(PROJECT_ROOT), "--script", str(suite_path)]
+    if verbose:
+        cmd.append("--verbose")
     
     try:
         process = subprocess.Popen(
@@ -230,6 +234,18 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
     except OSError as exc:
         print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
         return False
+
+    if verbose:
+        verbose_dir = PROJECT_ROOT / "artifacts" / "tests" / "logs" / "verbose"
+        verbose_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = rel_path.replace("/", "__").replace("\\", "__").replace(".gd", "")
+        log_path = verbose_dir / f"{safe_name}.log"
+        log_text = "".join(combined_output)
+        log_path.write_text(log_text, encoding="utf-8")
+        print(f"[RUNNER-VERBOSE] Log guardado: {log_path}")
+        print(f"[RUNNER-VERBOSE] ===== BEGIN {name} =====")
+        print(log_text, end="" if log_text.endswith("\n") else "\n")
+        print(f"[RUNNER-VERBOSE] ===== END {name} =====")
 
     for line in combined_output:
         for pattern in FATAL_PATTERNS:
@@ -280,6 +296,13 @@ def main() -> None:
         print(f"\n[BATCH-RUNNER] FAIL — {len(failed)} suite(s) fallaron.")
         for rel_path in failed:
             print(f"  - {rel_path}")
+
+        print("\n[BATCH-RUNNER] Reejecutando suites fallidas con --verbose para diagnóstico...")
+        failed_map = {rel_path: (suite_path, pass_marker) for rel_path, suite_path, pass_marker in suites}
+        for rel_path in failed:
+            suite_path, pass_marker = failed_map[rel_path]
+            run_suite(rel_path, suite_path, pass_marker, verbose=True)
+
         sys.exit(1)
 
     print(f"\n[BATCH-RUNNER] PASS — {len(results)} logical suite(s) superaron la auditoría E2E.")

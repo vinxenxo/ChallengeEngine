@@ -30,6 +30,7 @@ $segments=@($familySchedule.segments)
 $target=[double]$schedule.target_duration_seconds
 $transition=[double]$schedule.transition_duration_seconds
 $finalFade=[double]$schedule.final_fade_seconds
+$transitionContract='never_through_black'
 if($segments.Count -lt 2){throw 'Longform requires at least two segments.'}
 foreach($segment in $segments){
     $segDuration=[double]$segment.duration_seconds
@@ -39,6 +40,7 @@ $rawTotal=0.0
 foreach($segment in $segments){$rawTotal += [double]$segment.duration_seconds}
 $expectedComposed=$rawTotal - ($transition * ($segments.Count - 1))
 if([math]::Abs($expectedComposed-$target)-gt 0.01){throw "Longform composed duration invalid for ${Family}: raw=$rawTotal transition=$transition expected=$expectedComposed target=$target"}
+if([string]$schedule.transition -notmatch 'never_through_black'){throw 'Longform schedule must declare never_through_black.'}
 
 if([string]::IsNullOrWhiteSpace($OutputRoot)){ $OutputRoot=Join-Path $ProjectRoot 'artifacts\production\audiovisual_longform' }
 $familyRoot=Join-Path $OutputRoot $Family
@@ -197,6 +199,7 @@ $manifest=[ordered]@{
     final_fade_seconds=$finalFade
     final_fade_color='black'
     transition_through_black=$false
+    transition_contract=$transitionContract
     loop_safe_segments=$true
     overall_longform_loop=$false
     composition='canonical production segments + FFmpeg xfade/acrossfade; no new renderer'

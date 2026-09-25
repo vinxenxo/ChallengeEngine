@@ -1,4 +1,4 @@
-extends SceneTree
+﻿extends SceneTree
 
 ## C11-C 2.9.0 — Shared visual social/editorial presentation contract test.
 ## Presentation-only. Does not touch simulation, RNG, C7 or C9.
@@ -97,12 +97,13 @@ func _initialize() -> void:
 	var layer := C11CVisualEditorialLayer.new()
 	_assert(layer.mount(frame), "Shared C11CVisualEditorialLayer failed to mount.")
 	layer.apply_render_model(model)
-	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderLine1") == null, "Former header line 1 must no longer be rendered.")
-	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderLine2") != null, "Shared header double-line block missing.")
-	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine1") != null, "Shared footer line 1 missing.")
-	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine2") == null, "Former footer line 2 must no longer be rendered.")
-	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterLine3") == null, "Former footer line 3 must no longer be rendered.")
-	_assert(frame.get_header_content_root().get_node("C11CVisualEditorialHeader/C11CHeaderRule").position.y == 140.0, "Header separator must move below the double-line block.")
+	_assert(frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderText") != null, "Shared three-line header text block missing.")
+	_assert(frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterText") != null, "Shared two-line footer text block missing.")
+	var rendered_header: Label = frame.get_header_content_root().get_node("C11CVisualEditorialHeader/C11CHeaderText") as Label
+	var rendered_footer: Label = frame.get_footer_content_root().get_node("C11CVisualEditorialFooter/C11CFooterText") as Label
+	_assert(rendered_header.text.count("\n") == 2, "Shared header must render exactly three lines.")
+	_assert(rendered_footer.text.count("\n") == 1, "Shared footer must render exactly two lines.")
+	_assert(frame.get_header_content_root().get_node("C11CVisualEditorialHeader/C11CHeaderRule").position.y == 140.0, "Header separator must remain below the expanded header block.")
 	_assert(frame.get_footer_content_root().get_node("C11CVisualEditorialFooter/C11CFooterRule").position.y == 14.0, "Footer separator position must remain the leading separator.")
 	_assert(frame.get_header_content_root().visible, "Shared layer must not hide the C11-B header root.")
 	_assert(frame.get_footer_content_root().visible, "Shared layer must not hide the C11-B footer root.")
