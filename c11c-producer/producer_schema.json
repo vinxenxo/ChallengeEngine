@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.0",
+  "schema_version": "4.0",
   "backend_profile_source": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
   "backend_profile_version": "2.0.1",
   "families": {
@@ -1033,5 +1033,18 @@
     }
   },
   "backend_profile_sha256": "9a900af817b9ae5b924a95490e48eef64759df11c1aad23637e300f4f73c9801",
-  "generated_from_backend": true
+  "video_types": [
+    [
+      "challenges",
+      "CHALLENGES"
+    ],
+    [
+      "visual_loops",
+      "VISUAL LOOPS"
+    ],
+    [
+      "visual_drills",
+      "VISUAL DRILLS"
+    ]
+  ]
 }

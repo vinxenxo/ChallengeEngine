@@ -164,6 +164,8 @@ func _write_authoring_snapshot() -> void:
     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
     var snapshot := {
         "family_id": "living_particles",
+        "audio_profile": "ORGANIC_BLOOM",
+        "audio_pairing_mode": "FAMILY_MUSIC_V3",
         "display_name": "LIVING PARTICLES",
         "seed": _seed,
         "grammar_mode": grammar_index,

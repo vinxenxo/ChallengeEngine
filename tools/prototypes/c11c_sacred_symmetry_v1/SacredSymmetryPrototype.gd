@@ -162,6 +162,8 @@ func _write_authoring_snapshot() -> void:
     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
     var snapshot := {
         "family_id": "sacred_symmetry",
+        "audio_profile": "ORBITAL_RITUAL",
+        "audio_pairing_mode": "FAMILY_MUSIC_V3",
         "display_name": "SACRED SYMMETRY",
         "seed": _seed,
         "grammar_mode": grammar_index,

@@ -5,15 +5,22 @@ extends RefCounted
 const VIEWPORT_WIDTH: float = 540.0
 const VIEWPORT_HEIGHT: float = 960.0
 
-const FONT_PATH: String = "res://assets/fonts/Comic-Sans-MS.ttf"
+const C11CVisualTypographyClass = preload("res://core/presentation/C11CVisualTypography.gd")
+
+# Compatibility alias retained for legacy callers. Active presentations now resolve
+# through the shared role-based C11-C typography service.
+const FONT_PATH: String = C11CVisualTypographyClass.HEADER_FONT_PATH
+const HEADER_FONT_PATH: String = C11CVisualTypographyClass.HEADER_FONT_PATH
+const FOOTER_FONT_PATH: String = C11CVisualTypographyClass.FOOTER_FONT_PATH
 
 static func get_theme_config(theme_name: String) -> Dictionary:
-	var custom_font: Font = null
-	if ResourceLoader.exists(FONT_PATH):
-		custom_font = load(FONT_PATH) as Font
+	var custom_font: Font = C11CVisualTypographyClass.get_header_font()
+	var footer_font: Font = C11CVisualTypographyClass.get_footer_font()
 
 	return {
 		"font": custom_font,
+		"header_font": custom_font,
+		"footer_font": footer_font,
 		"hook_font_size": 36,
 		"reveal_font_size": 32,
 		"cta_font_size": 26,

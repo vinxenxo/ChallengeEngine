@@ -91,11 +91,9 @@ func mount(frame: UnifiedSocialFrame) -> bool:
         "C11CFooterLine1",
         Vector2(0.0, FOOTER_LINE_Y),
         Vector2(LOGICAL_CANVAS_SIZE.x, FOOTER_LINE_HEIGHT),
-        FOOTER_FONT_SIZE
+        FOOTER_FONT_SIZE,
+        true
     )
-    _header_line_2 = _apply_bold(_header_line_2)
-    _footer_line_1 = _apply_bold(_footer_line_1)
-
     _header_container.add_child(_header_line_2)
     _footer_container.add_child(_footer_line_1)
     _mounted = true
@@ -220,29 +218,22 @@ func _new_rule(node_name: String, position_value: Vector2) -> ColorRect:
     rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
     return rule
 
-func _new_label(node_name: String, position_value: Vector2, size_value: Vector2, font_size: int) -> Label:
+func _new_label(node_name: String, position_value: Vector2, size_value: Vector2, font_size: int, footer_role: bool = false) -> Label:
     var label := Label.new()
     label.name = node_name
     label.position = position_value
     label.size = size_value
     label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     label.add_theme_font_size_override("font_size", font_size)
-    C11CVisualTypographyClass.apply_to_label(label)
+    if footer_role:
+        C11CVisualTypographyClass.apply_footer_to_label(label)
+    else:
+        C11CVisualTypographyClass.apply_header_to_label(label)
     label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     label.clip_text = true
     label.add_theme_constant_override("outline_size", 1)
     label.add_theme_constant_override("line_spacing", 0)
-    return label
-
-func _apply_bold(label: Label) -> Label:
-    var base_font: Font = label.get_theme_font("font")
-    if base_font == null:
-        return label
-    var bold_font := FontVariation.new()
-    bold_font.base_font = base_font
-    bold_font.variation_embolden = HEADER_BOLD_EMBOLDEN
-    label.add_theme_font_override("font", bold_font)
     return label
 
 func _fit_label(label: Label, text_value: String, max_font_size: int, min_font_size: int, max_width: float) -> void:

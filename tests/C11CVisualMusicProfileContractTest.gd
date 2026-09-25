@@ -1,0 +1,89 @@
+extends SceneTree
+
+## C11-C 2.10.1 — family-aware music binding contract.
+## Music is delivery/presentation metadata: no gameplay frame/event/answer-sheet input is permitted.
+
+const ProfileService = preload("res://core/presentation/C11CVisualMusicProfile.gd")
+const PROFILE_PATH := "res://profiles/presentation/c11c_visual_music_profiles.json"
+const DRILLS := ["tracking", "saccade", "pursuit", "peripheral_scan"]
+const LOOPS := ["geometric", "fractal", "sacred_symmetry", "living_particles", "invisible_forces"]
+const HISTORICAL_ALIASES := ["kaleidoscope", "particle_flow", "vector_field"]
+
+var failures: Array[String] = []
+
+func _initialize() -> void:
+    _assert(FileAccess.file_exists(PROFILE_PATH), "Music profile JSON must exist.")
+    var data = JSON.parse_string(FileAccess.get_file_as_string(PROFILE_PATH))
+    _assert(data is Dictionary, "Music profile JSON must be a valid object.")
+    if not data is Dictionary:
+        _conclude()
+        return
+    _assert(str(data.get("mode", "")) == "FAMILY_MUSIC_V3", "Music mode must be FAMILY_MUSIC_V3.")
+    _assert(bool(data.get("mobile_safe", false)), "Music contract must declare mobile-safe delivery.")
+    _assert(not bool(data.get("event_coupled", true)), "Music must not be event-coupled to gameplay truth.")
+    _assert(bool(data.get("seed_deterministic", false)), "Music must be deterministic with seed/family identity.")
+    var design_rules: Dictionary = data.get("design_rules", {})
+    _assert(int(design_rules.get("sample_rate", 0)) == 44100, "Music sample rate must remain 44100 Hz.")
+    _assert(int(design_rules.get("channels", 0)) == 2, "Music must remain stereo.")
+    _assert(float(design_rules.get("max_peak", 1.0)) <= 0.20, "Music peak must remain mobile-safe.")
+
+    var profiles: Array = data.get("profiles", [])
+    var ids: Dictionary = {}
+    for entry in profiles:
+        if entry is Dictionary:
+            ids[str(entry.get("id", ""))] = true
+    _assert(profiles.size() == 5, "Exactly five semantic music profiles must be defined.")
+    _assert(ids.size() == 5, "Music profile IDs must be unique.")
+
+    for family in DRILLS:
+        _assert(ProfileService.profile_for("visual_drill/" + family) != "", "%s must resolve to a music profile." % family)
+    for family in LOOPS:
+        _assert(ProfileService.profile_for("visual_loop/" + family) != "", "%s must resolve to a music profile." % family)
+    for family in HISTORICAL_ALIASES:
+        _assert(ProfileService.profile_for("visual_loop/" + family) != "", "Historical alias %s must remain resolvable." % family)
+
+    var all_reachable: Dictionary = {}
+    for route in [
+        "visual_drill/tracking", "visual_drill/saccade", "visual_drill/pursuit", "visual_drill/peripheral_scan",
+        "visual_loop/geometric", "visual_loop/fractal", "visual_loop/sacred_symmetry", "visual_loop/living_particles", "visual_loop/invisible_forces",
+        "visual_loop/kaleidoscope"
+    ]:
+        all_reachable[ProfileService.profile_for(route)] = true
+    _assert(all_reachable.size() == 5, "All five semantic music profiles must be reachable from current or preserved historical routes.")
+
+    var reachable: Dictionary = {}
+    for route in [
+        "visual_drill/tracking", "visual_drill/saccade", "visual_drill/pursuit", "visual_drill/peripheral_scan",
+        "visual_loop/geometric", "visual_loop/fractal", "visual_loop/sacred_symmetry", "visual_loop/living_particles", "visual_loop/invisible_forces"
+    ]:
+        reachable[ProfileService.profile_for(route)] = true
+    _assert(reachable.size() == 4, "The four current Drill families must use four intentionally distinct semantic profiles.")
+    _assert(ProfileService.profile_for("visual_drill/saccade") == ProfileService.profile_for("visual_loop/geometric"), "Saccade and Geometric Waves must share their intended musical pairing.")
+    _assert(ProfileService.profile_for("visual_drill/pursuit") == ProfileService.profile_for("visual_loop/fractal"), "Pursuit and Fractal Bloom must share their intended musical pairing.")
+    _assert(ProfileService.profile_for("visual_drill/peripheral_scan") == ProfileService.profile_for("visual_loop/sacred_symmetry"), "Peripheral Scan and Sacred Symmetry must share their intended musical pairing.")
+    _assert(ProfileService.profile_for("visual_drill/tracking") == ProfileService.profile_for("visual_loop/invisible_forces"), "Tracking and Invisible Forces must share their intended musical pairing.")
+
+    for source_path in [
+        "res://tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "res://tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "res://tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1"
+    ]:
+        var source := FileAccess.get_file_as_string(source_path)
+        _assert(source.find("FAMILY_MUSIC_V3") >= 0, "%s must use FAMILY_MUSIC_V3." % source_path)
+        _assert(source.find("game_event") < 0 and source.find("answer_sheet") < 0, "%s must not couple music generation to gameplay truth." % source_path)
+
+    _conclude()
+
+func _assert(condition: bool, message: String) -> void:
+    if not condition:
+        failures.append(message)
+
+func _conclude() -> void:
+    if failures.is_empty():
+        print("[C11C_VISUAL_MUSIC_PROFILE_CONTRACT_SUITE] PASS")
+        quit(0)
+    else:
+        for failure in failures:
+            push_error(failure)
+        print("[C11C_VISUAL_MUSIC_PROFILE_CONTRACT_SUITE] FAIL failures=%d" % failures.size())
+        quit(1)

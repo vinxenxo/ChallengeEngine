@@ -37,12 +37,17 @@ def main() -> None:
     technobabble = str(m.get('technobabble', '')).strip()
     line1 = str(editorial.get('header_line_1', '')).strip()
     line2 = str(editorial.get('header_line_2', '')).strip()
+    audio_profile = str(audio.get('profile_id', 'FAMILY_MUSIC_V3')).strip()
+    audio_mode = str(audio.get('mode', 'FAMILY_MUSIC_V3')).strip()
+    typography = m.get('typography', {})
+    header_font = str(typography.get('header', 'Inter Bold'))
+    footer_font = str(typography.get('footer', 'Noto Sans Mono Regular'))
 
     desc = (
         f"{display_name} — visual loop de arte generativa matemática y procedural. "
         f"Variante {grammar} con paleta {palette}, seed {seed}. "
         f"Duración {duration:.2f}s, {cycles} ciclo(s) completo(s), "
-        f"{'audio ambiental determinista' if enabled else 'sin sonido'}. "
+        f"{'audio ambiental determinista' if enabled else 'sin sonido'} ({audio_profile}). "
         "Diseñado para reproducción continua en bucle."
     )
     text = [
@@ -59,7 +64,9 @@ def main() -> None:
         f"FRAMES: {int(visual.get('frame_count', round(duration * 30)))}",
         f"LOOP CYCLES: {cycles}",
         f"LOOP CLOSED: {bool(visual.get('loop_closed', True))}",
-        f"AUDIO: {'ON / DEEP AMBIENT' if enabled else 'OFF / SILENT'}",
+        f"AUDIO: {'ON / ' + audio_mode + ' / ' + audio_profile if enabled else 'OFF / SILENT'}",
+        f"AUDIO PROFILE: {audio_profile}",
+        f"FONTS: HEADER={header_font.upper()} | FOOTER={footer_font.upper()}",
         f"BACKGROUND: #{visual.get('background', '000000')}",
         "",
         "HEADER:",

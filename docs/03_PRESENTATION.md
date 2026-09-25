@@ -46,13 +46,16 @@ Message:
 ¿HASTA DÓNDE LLEGASTE?
 ```
 
-During END_CTA the entire `FooterRegion` is hidden. This removes the background box from the former Footer presentation state while preserving C11-B structural geometry.
+During END_CTA the `FooterRegion` remains visible. The CTA is Header-owned; the Footer continues to show its normal telemetry text. The former Footer CTA surface is not rendered.
 
 ## Typography
 
-C11-C Visual content uses `C11CVisualTypography` → `assets/fonts/courier-regular.ttf`.
+C11-C Visual content uses the shared role service `C11CVisualTypography`:
 
-The legacy `PresentationTheme` remains available for C6/Challenge compatibility; the C11-C utility prevents a global theme mutation solely to satisfy the new drill typography.
+- Header → `assets/fonts/Inter-Bold.otf` (Inter Bold).
+- Footer → `assets/fonts/NotoSansMono-Regular.ttf` (Noto Sans Mono Regular).
+
+The bundled fonts are distributed under SIL Open Font License 1.1 and are documented in `assets/fonts/LICENSE-C11C-FONTS.txt`. The legacy `PresentationTheme` remains available for C6/Challenge compatibility; it is not part of the active C11-C typography path.
 
 ## Background language
 
@@ -82,3 +85,7 @@ Complex internal Euler-like target structure, authored arc-length movement, sizy
 ### Peripheral Scan
 
 Fixed central fixation anchor, orbital rings and luminosity-only peripheral flares, with authored threat/distractor event timing.
+
+## Visual Loop presentation
+
+The five active C11-C Loop identities use the same shared editorial typography layer as Visual Drills. Their visual renderer remains family-specific; presentation changes never alter loop simulation/data contracts.

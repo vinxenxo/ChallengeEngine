@@ -163,6 +163,8 @@ func _write_authoring_snapshot() -> void:
     var sound_enabled: bool = sound_raw not in ["0", "false", "off", "no"]
     var snapshot := {
         "family_id": "invisible_forces",
+        "audio_profile": "FLOWING_VECTOR",
+        "audio_pairing_mode": "FAMILY_MUSIC_V3",
         "display_name": "INVISIBLE FORCES",
         "seed": _seed,
         "grammar_mode": grammar_index,

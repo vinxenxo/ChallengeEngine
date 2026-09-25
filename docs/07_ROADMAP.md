@@ -20,34 +20,38 @@
 5. Peripheral Scan — authored polar/logistic schedule, threat/distractor answer sheet.
 6. Shared PRE_ROLL / GAME / END_CTA presentation phases.
 7. END_CTA reused from Challenge and now placed in Header.
-8. Common C11-C typography utility.
-9. Expanded semantic palette bank.
+8. Common C11-C typography utility, upgraded to role-based Inter Bold / Noto Sans Mono.
+9. Expanded semantic Drill palette bank: 24 worlds per family.
 10. Shared procedural drill environments.
-11. Shared mobile-safe Visual Drill motion ambient.
-12. Social `.txt` delivery contract.
+11. Family-aware `FAMILY_MUSIC_V3` audio foundation with semantic Drill/Loop pairings.
+12. Social `.txt` delivery contract with audio/font metadata.
 13. Current C11-C documentation/handover.
 
-## Current 2.9.0 gate
+## 2.10.1 presentation/audio gate
 
-The active checkpoint is **2.9.0 — Drill presentation polish**.
-
-Required before freeze:
+The active workstream keeps the 2.9.1 green baseline while hardening shared media foundations. The initial 2.10.0 checkpoint exposed runtime presentation compilation defects during workstation validation and is therefore treated as rejected/historical; 2.10.1 is the repair checkpoint.
 
 ```text
-2.9.0 source snapshot
+2.9.1 green baseline
        ↓
-113-suite logical regression green
+CTA footer residual-surface correction
        ↓
-4-family playback green
+role-based C11-C typography
        ↓
-5-seed visual variance review
+24-world Drill palette banks
        ↓
-social.txt presence confirmed for all families
+FAMILY_MUSIC_V3 + per-family/seed audio
        ↓
-audio review on mobile-class playback
+focused regression suites
        ↓
-C11-C freeze decision
+full aggregate corpus
+       ↓
+physical 4-Drill + 5-Loop review
+       ↓
+only then choose deeper gameplay vs further art polish
 ```
+
+The next physical review must pay particular attention to mobile legibility, footer visibility during END_CTA, palette variance, audio loudness, harshness, and perceived pairing between each Drill and its companion Loop family.
 
 ## Cognitive-load expansion roadmap
 

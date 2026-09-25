@@ -2,7 +2,7 @@
 
 ## Current baseline
 
-**C11-C11-C2.9.1** is the authoritative functional baseline. The repository organization work is a path/layout refactor only and must preserve all C11-B behavior and regression coverage.
+**C11-B FREEZE** is the authoritative functional baseline. The repository organization work is a path/layout refactor only and must preserve all C11-B behavior and regression coverage.
 
 Read `docs/00_PROJECT_OVERVIEW.md` first, then `docs/01_ARCHITECTURE.md`, `docs/02_DATA_AND_CONTRACTS.md`, `docs/03_PRESENTATION.md`, `docs/04_REPOSITORY_STRUCTURE.md`, `docs/05_TESTING_AND_REGRESSION.md` and `docs/07_ROADMAP.md`.
 

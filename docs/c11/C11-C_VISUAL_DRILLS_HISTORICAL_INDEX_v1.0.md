@@ -17,9 +17,10 @@ Single navigation index for the C11-C Visual Drill phase. Historical changelogs 
 - **2.8.1** — Pursuit/Peripheral runtime dependency hotfix.
 - **2.9.0** — Visual Drill polish layer: broader typography/palette/social-delivery/audio/background work and final four-family review tooling.
 - **2.9.1** — Peripheral renderer `_environment` declaration hotfix intended to close aggregate playback/parser cascade.
+- **2.10.1** — Shared presentation/audio foundation refinement: CTA footer surface correction, role-based C11-C typography, 24-world Drill palette banks, and `FAMILY_MUSIC_V3` with deterministic Drill/Loop pairings.
 
 ## Current phase status
-**Four Visual Drill families implemented. 2.9.1 is the closure hotfix; closure requires clean focused suites + clean aggregate runner + physical review.**
+**Four Visual Drill families implemented. 2.9.1 closure is green by project workstation review. 2.10.1 is the active repair checkpoint for shared presentation/audio foundations; runtime closure still requires the 2.10.1 workstation validation gate.**
 
 ## Family matrix
 | Family | Mechanic | Answer sheet | Presentation | Status |
@@ -38,8 +39,10 @@ Single navigation index for the C11-C Visual Drill phase. Historical changelogs 
 - 3-second terminal self-evaluation CTA in Header.
 - Shared CTAComponent; no duplicate CTA framework.
 - Social `.txt` sidecar expected for every family.
-- Semantic palette bank.
-- Shared deterministic ambient master through the established C7 pathway.
+- Semantic palette bank: 24 authored worlds per Drill family.
+- Role-based C11-C typography: Inter Bold Header / Noto Sans Mono Footer.
+- `FAMILY_MUSIC_V3` semantic music profiles shared across paired Drill/Loop identities.
+- C7 audio ownership/contracts remain untouched.
 
 ## Deliberate artistic decisions
 - Tracking: Tron road removed after visual review; history trail retained.

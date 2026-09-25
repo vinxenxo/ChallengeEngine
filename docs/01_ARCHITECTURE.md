@@ -54,8 +54,8 @@ The terminal CTA is appended to the video duration and does not modify the gamep
 
 - `CTAComponent` is reused from the historical Challenge presentation.
 - C11-C Visual Drill routes place that same component in Header.
-- The FooterRegion is hidden for terminal CTA so the former footer background cannot remain as a gray block.
-- `C11CVisualTypography` centralizes the active C11-C font and prevents duplication across editorial labels, CTA and Saccade counter.
+- The FooterRegion remains visible for terminal CTA; the CTA is Header-owned and the former Footer CTA surface is not rendered.
+- `C11CVisualTypography` centralizes active presentation fonts by role; `PresentationTheme` delegates to it so legacy video UI does not reintroduce Comic Sans.
 - `C11CDrillEnvironment` centralizes low-salience procedural backgrounds across drill families.
 
 ## Determinism boundary

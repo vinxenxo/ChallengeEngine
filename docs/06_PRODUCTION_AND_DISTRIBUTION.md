@@ -33,7 +33,11 @@ manifest + social.txt + review artifacts
 
 ## Audio
 
-C11-C 2.9.0 uses one shared Visual Drill ambient master, profile `drill_motion_ambient_v2`. The master is intentionally independent of family/seed and contains no event-locked timing.
+C11-C 2.10.1 uses `FAMILY_MUSIC_V3`: one semantic profile per audiovisual family grammar, selected deterministically by family/route and seed. The active Drill/Loop pairings are defined in `profiles/presentation/c11c_visual_music_profiles.json`.
+
+Delivery constraints: 44.1 kHz stereo source WAV, peak target ≤ 0.20 before AAC mux, low-transient/low-high-frequency-energy design, no kick/snare layer, and no gameplay-event coupling. Drill audio gently settles during the terminal three seconds.
+
+The family music layer is presentation/delivery only; C7 ownership/contracts remain untouched.
 
 `-NoSound` / `-Silent` remain supported by the review runner.
 
@@ -51,7 +55,8 @@ Every review render creates a sibling `.txt` with:
 - countdown and CTA durations;
 - CTA text and Header placement;
 - audio mode;
-- font;
+- audio profile;
+- font roles (Header/Footer);
 - procedural background statement;
 - family-specific hashtags.
 
@@ -59,6 +64,6 @@ Actual answer counts remain in `authoring.json`, not in the public social sideca
 
 ## Release readiness
 
-2.9.0 is not production-frozen until the final Windows/Godot runtime validation and physical visual review are green.
+2.10.1 is not production-frozen until the final Windows/Godot runtime validation and physical Visual Drill + Visual Loop review are green.
 
 C11-D remains the later checkpoint for locking final export profiles, media QA, provenance and release-candidate packaging.

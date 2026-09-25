@@ -79,7 +79,7 @@ func _test_visual_drill_binder() -> void:
 	_assert(str(end_cta.get("cta_sub", "")) == "¿HASTA DÓNDE LLEGASTE?", "Visual Drill end CTA sub text mismatch.")
 	_assert(bool(end_cta.get("cta_animated", false)), "Visual Drill end CTA must use the shared presentation motion path.")
 	var end_editorial: Dictionary = end_cta.get("editorial", {})
-	_assert(not bool(end_editorial.get("show_footer", true)), "End CTA must suppress telemetry footer while retaining the shared CTA component.")
+	_assert(bool(end_editorial.get("show_footer", false)), "End CTA must retain telemetry footer while the CTA occupies the Header.")
 
 func _test_canonical_duration_contract() -> void:
 	var paths: Array[String] = [

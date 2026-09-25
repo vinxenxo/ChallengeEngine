@@ -32,7 +32,7 @@ func _ready() -> void:
     _counter_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     _counter_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     _counter_label.add_theme_font_size_override("font_size", 10)
-    C11CVisualTypographyClass.apply_to_label(_counter_label)
+    C11CVisualTypographyClass.apply_footer_to_label(_counter_label)
     _counter_label.add_theme_constant_override("outline_size", 1)
     _counter_label.z_index = 120
     add_child(_counter_label)

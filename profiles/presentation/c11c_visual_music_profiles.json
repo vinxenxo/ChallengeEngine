@@ -1,0 +1,109 @@
+{
+  "version": "3.0.0",
+  "mode": "FAMILY_MUSIC_V3",
+  "mobile_safe": true,
+  "event_coupled": false,
+  "seed_deterministic": true,
+  "design_rules": {
+    "sample_rate": 44100,
+    "channels": 2,
+    "max_peak": 0.2,
+    "delivery_codec": "AAC 128k",
+    "avoid_high_frequency_transients": true,
+    "no_kick_snare_layer": true,
+    "no_exact_game_event_sync": true,
+    "cta_settle_seconds": 3.0
+  },
+  "profiles": [
+    {
+      "id": "FLOWING_VECTOR",
+      "role": "airy low-mid motion bed",
+      "mood": "fluid / directional / weightless",
+      "root_hz": 73.4162,
+      "color": "cyan-indigo-air",
+      "paired_visual_loop": "invisible_forces"
+    },
+    {
+      "id": "CIRCUIT_PULSE",
+      "role": "clean harmonic pulse without percussion",
+      "mood": "precise / ballistic / crystalline",
+      "root_hz": 65.4064,
+      "color": "cobalt-electric",
+      "paired_visual_loop": "geometric"
+    },
+    {
+      "id": "ORGANIC_BLOOM",
+      "role": "warm evolving chord bloom",
+      "mood": "organic / expanding / luminous",
+      "root_hz": 87.3071,
+      "color": "violet-amber",
+      "paired_visual_loop": "fractal"
+    },
+    {
+      "id": "ORBITAL_RITUAL",
+      "role": "slow celestial harmonic orbit",
+      "mood": "celestial / ritual / suspended",
+      "root_hz": 55.0,
+      "color": "gold-violet",
+      "paired_visual_loop": "sacred_symmetry"
+    },
+    {
+      "id": "PRISMATIC_MEMORY",
+      "role": "mirrored harmonic refraction",
+      "mood": "prismatic / memory / reflective",
+      "root_hz": 82.4069,
+      "color": "teal-magenta",
+      "paired_visual_loop": "kaleidoscope"
+    }
+  ],
+  "bindings": {
+    "visual_drill/tracking": {
+      "profile": "FLOWING_VECTOR",
+      "paired_with": "visual_loop/invisible_forces"
+    },
+    "visual_drill/saccade": {
+      "profile": "CIRCUIT_PULSE",
+      "paired_with": "visual_loop/geometric"
+    },
+    "visual_drill/pursuit": {
+      "profile": "ORGANIC_BLOOM",
+      "paired_with": "visual_loop/fractal"
+    },
+    "visual_drill/peripheral_scan": {
+      "profile": "ORBITAL_RITUAL",
+      "paired_with": "visual_loop/sacred_symmetry"
+    },
+    "visual_loop/geometric": {
+      "profile": "CIRCUIT_PULSE",
+      "paired_with": "visual_drill/saccade"
+    },
+    "visual_loop/fractal": {
+      "profile": "ORGANIC_BLOOM",
+      "paired_with": "visual_drill/pursuit"
+    },
+    "visual_loop/sacred_symmetry": {
+      "profile": "ORBITAL_RITUAL",
+      "paired_with": "visual_drill/peripheral_scan"
+    },
+    "visual_loop/living_particles": {
+      "profile": "ORGANIC_BLOOM",
+      "paired_with": "visual_drill/pursuit"
+    },
+    "visual_loop/invisible_forces": {
+      "profile": "FLOWING_VECTOR",
+      "paired_with": "visual_drill/tracking"
+    },
+    "visual_loop/kaleidoscope": {
+      "profile": "PRISMATIC_MEMORY",
+      "paired_with": "visual_loop/sacred_symmetry"
+    },
+    "visual_loop/particle_flow": {
+      "profile": "ORGANIC_BLOOM",
+      "paired_with": "visual_drill/pursuit"
+    },
+    "visual_loop/vector_field": {
+      "profile": "FLOWING_VECTOR",
+      "paired_with": "visual_drill/tracking"
+    }
+  }
+}

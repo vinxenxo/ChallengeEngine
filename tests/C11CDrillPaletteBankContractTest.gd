@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.9.0 — Expanded semantic palette bank contract.
+## C11-C 2.10.1 — Expanded semantic palette bank contract.
 
 const PaletteBank = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
 
@@ -8,7 +8,7 @@ var failures: Array[String] = []
 
 func _initialize() -> void:
     for family in ["tracking", "saccade", "pursuit", "peripheral_scan"]:
-        _assert(PaletteBank.count_for(family) >= 18, "%s palette bank must contain at least 18 semantic palettes." % family)
+        _assert(PaletteBank.count_for(family) >= 24, "%s palette bank must contain at least 24 semantic palettes." % family)
         var names: Dictionary = {}
         for i in range(PaletteBank.count_for(family)):
             var variant: float = (float(i) + 0.25) / float(PaletteBank.count_for(family))
@@ -18,7 +18,7 @@ func _initialize() -> void:
             _assert(palette.get("text_primary", "") != "", "%s palettes must include text_primary." % family)
             _assert(palette.get("text_secondary", "") != "", "%s palettes must include text_secondary." % family)
             _assert(palette.get("target", "") != "", "%s palettes must include target." % family)
-        _assert(names.size() >= 18, "%s palette names must be unique." % family)
+        _assert(names.size() >= 24, "%s palette names must be unique." % family)
     if failures.is_empty():
         print("[C11C_DRILL_PALETTE_BANK_CONTRACT_SUITE] PASS")
         quit(0)

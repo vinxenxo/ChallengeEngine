@@ -2,6 +2,8 @@
 class_name VisualDrillPresentationBinder
 extends RefCounted
 
+const VisualMusic = preload("res://core/presentation/C11CVisualMusicProfile.gd")
+
 ## C11-C 2.9.0 / C6-F0.5 — Visual Drill Presentation Binder.
 ## Produces the shared C11-C social/editorial model plus domain-specific drill state.
 ## Does not alter simulation, RNG, timeline or winning-frame truth.
@@ -93,6 +95,8 @@ func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: Strin
 	var pre_roll: bool = ui_state == "PRE_ROLL"
 	CountdownPresentationLogic.apply_to_render_model(model, pre_roll, effective_presentation_frame, effective_fps)
 	var editorial_model: Dictionary = _build_editorial_model(frame, profile)
+	editorial_model["audio_profile"] = VisualMusic.profile_for("visual_drill/" + drill_subtype)
+	editorial_model["audio_pairing"] = VisualMusic.binding_for("visual_drill/" + drill_subtype)
 	editorial_model["intro_active"] = pre_roll
 	editorial_model["intro_text"] = str(INTRO_TEXTS.get(drill_subtype, "PREPÁRATE PARA EL EJERCICIO VISUAL."))
 
@@ -116,8 +120,8 @@ func bind_frame(frame: Dictionary, profile: PresentationProfile, ui_state: Strin
 		# The CTA owns the header during END_CTA; avoid competing editorial text.
 		editorial_model["header"]["line_1"] = ""
 		editorial_model["header"]["line_2"] = ""
-		editorial_model["show_footer"] = false
-		editorial_model["show_footer_rule"] = false
+		editorial_model["show_footer"] = true
+		editorial_model["show_footer_rule"] = true
 		editorial_model["matrix_enabled"] = false
 
 	model["editorial"] = editorial_model
@@ -170,7 +174,7 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 		},
 		"footer": {
 			"line_1": "SEED %d | GAME %.2fS | PREP %.2fS | END %.2fS | TOTAL %.2fS | %d FPS | %s" % [definition_seed, duration, CountdownPresentationLogic.COUNTDOWN_SECONDS, VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, duration + CountdownPresentationLogic.COUNTDOWN_SECONDS + VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, fps, difficulty_band],
-			"line_2": "GEN %s | PALETTE %s | AUDIO %s | SOCIAL 720X1280" % [display_name, str(editorial_colors.get("palette_name", "DEFAULT")), "AMBIENT" if audio_enabled else "OFF"],
+			"line_2": "GEN %s | PALETTE %s | AUDIO %s | SOCIAL 720X1280" % [display_name, str(editorial_colors.get("palette_name", "DEFAULT")), str(VisualMusic.profile_for("visual_drill/" + subtype)) if audio_enabled else "OFF"],
 			"line_3": signature
 		},
 		"colors": editorial_colors

@@ -1,9 +1,9 @@
-# C11-C Producer 0.3.0
+# C11-C Producer 0.4.0
 
-Standalone production dashboard built independently of `c11c-studio`.
+Producer mínimo basado en la interfaz de C11-C Producer 0.2.0. Se conserva el formulario original y se añade únicamente un selector superior de tipo de vídeo: CHALLENGES / VISUAL LOOPS / VISUAL DRILLS.
 
-Top-level video types are represented explicitly: `Challenges`, `Visual Loops`, `Visual Drills`. Only `Visual Loops` is enabled in this phase.
+En esta fase solo VISUAL LOOPS tiene generación conectada. CHALLENGES y VISUAL DRILLS están presentes en el selector para preparar la expansión posterior, pero no ejecutan ningún launcher.
 
-Visual Loop source of truth is the frozen C11-C 2.9.1 backend, especially `tools/prototypes/c11c_common/C11CVariationProfile.gd` and the canonical production launcher `tools/prototypes/c11c_bulk/run_c11c_production.ps1`.
+Fuente única de verdad del backend: `ChallengeEngineV01_STATELESS-C11-C2.9.1.zip`. El Producer usa el `C11CVariationProfile.gd` real del proyecto y verifica su SHA-256.
 
-The UI exposes the five canonical Visual Loop families and their grammar modes as subfamilies. Every variation field can be left `ALEATORIO` or set as a target. Fixed targets are solved by querying the real backend variation profile; the renderer is never overridden by the Producer.
+La misma familia + seed reproduce el mismo perfil; seeds nuevas producen variantes nuevas. Los parámetros se dejan en `ALEATORIO (seed)` por defecto.

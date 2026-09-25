@@ -4,11 +4,11 @@
 
 **C11-B — CLOSED / CERTIFIED / FROZEN.**
 
-**C11-C — ACTIVE, current implementation 2.9.0.**
+**C11-C — ACTIVE, current implementation 2.10.1.**
 
 The C11-C Visual Drill presentation now spans four deterministic training families: Tracking, Saccade, Pursuit and Peripheral Scan. The common social frame remains 540×960 with Header 0..144, Body 144..816 and Footer 816..960.
 
-The 2.9.0 work window consolidates the terminal CTA, typography, broader semantic palettes, procedural drill environments, shared motion-ambient audio, social sidecar guarantees and current documentation, while preserving the frozen engine boundaries.
+The 2.10.1 repair checkpoint preserves the 2.10.0 presentation/audio foundation while correcting its runtime compilation defects. It retains the terminal CTA/footer correction, role-based typography, broader semantic palettes, procedural drill environments, family-aware music, social sidecar guarantees and current documentation, while preserving the frozen engine boundaries.
 
 ## Frozen pillars
 
@@ -58,10 +58,10 @@ C11-C may evolve art, typography, backgrounds, audio presentation and authoring-
 
 ## Where to start
 
-- Current status: `docs/c11/C11-C_2.9.0_CURRENT_STATE.md`
+- Current status: `docs/c11/C11-C_2.10.1_CURRENT_STATE.md`
 - Architecture: `docs/01_ARCHITECTURE.md`
 - Data: `docs/02_DATA_AND_CONTRACTS.md`
 - Presentation: `docs/03_PRESENTATION.md`
 - Testing: `docs/05_TESTING_AND_REGRESSION.md`
 - Roadmap: `docs/07_ROADMAP.md`
-- Current handover: `docs/master-prompts/MASTER_HANDOVER_C11-C_CURRENT_v2.9.0.md`
+- Current handover: `docs/c11/MASTER_HANDOVER_C11-C_2.10.1.md`

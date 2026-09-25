@@ -18,10 +18,9 @@ $ReviewRoot=Join-Path $ProjectRoot 'artifacts\prototypes\c11c_visual_drills_revi
 $AudioRoot=Join-Path $ReviewRoot '_audio'
 $EnvelopeRoot=Join-Path $ReviewRoot '_envelopes'
 $MovieCapture=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CMovieCapture.ps1'
-$AudioGenerator=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\generate_c11c_ambient_audio.py'
+$AudioGenerator=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CSafeAmbient.py'
 $Seeds=@($Seeds | ForEach-Object {[int]$_})
 $NoSound = $NoSound -or $SilentMode
-$SharedAudioHash = $null
 $Drills=@($Families | ForEach-Object { [string]$_ })
 $CountdownSeconds=3.0
 $EndCTASeconds=3.0
@@ -118,7 +117,7 @@ function Convert-Mp4VideoOnly {
 
 function Mux-Audio {
     param([Parameter(Mandatory=$true)][string]$VideoPath,[Parameter(Mandatory=$true)][string]$AudioPath,[Parameter(Mandatory=$true)][string]$OutputPath)
-    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$VideoPath,'-stream_loop','-1','-i',$AudioPath,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','128k','-ar','44100','-ac','2','-shortest','-movflags','+faststart',$OutputPath) "Mux shared ambient master $OutputPath"
+    Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$VideoPath,'-stream_loop','-1','-i',$AudioPath,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','128k','-ar','44100','-ac','2','-shortest','-movflags','+faststart',$OutputPath) "Mux family music $OutputPath"
 }
 
 function Assert-FinalContract {
@@ -168,7 +167,7 @@ function Export-Gif {
 }
 
 function Write-SocialSidecar {
-    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][double]$Countdown,[Parameter(Mandatory=$true)][double]$EndCTA,[Parameter(Mandatory=$true)][double]$TotalDuration,[Parameter(Mandatory=$true)][int]$TotalFrames,[Parameter(Mandatory=$true)][string]$AudioMode)
+    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][double]$Countdown,[Parameter(Mandatory=$true)][double]$EndCTA,[Parameter(Mandatory=$true)][double]$TotalDuration,[Parameter(Mandatory=$true)][int]$TotalFrames,[Parameter(Mandatory=$true)][string]$AudioMode,[Parameter(Mandatory=$true)][string]$AudioProfile)
     $display = switch ($Family) {
         'tracking' { 'TRACKING' }
         'saccade' { 'SACCADE' }
@@ -205,8 +204,8 @@ AUDIO: $AudioMode
 MATRIX HEADER TRANSITION: ON
 SHARED SOCIAL/EDITORIAL LAYOUT: ON
 CTA POSITION: HEADER
-FOOTER DURING CTA: HIDDEN
-FONT: COURIER REGULAR
+FOOTER DURING CTA: VISIBLE
+FONTS: HEADER=INTER BOLD | FOOTER=NOTO SANS MONO REGULAR
 BACKGROUND: PROCEDURAL / MOBILE-SAFE
 
 HASHTAGS:
@@ -303,12 +302,6 @@ $missingAfter=@($requiredRuns | Where-Object {
 })
 if($missingAfter.Count -gt 0){throw "Requested Visual Drill envelopes still missing: $($missingAfter.RunId -join ', ')"}
 
-if(-not $NoSound){
-    $audioPath=Join-Path $AudioRoot 'global_ambient_master.wav'
-    if(Test-Path -LiteralPath $audioPath){Remove-Item -LiteralPath $audioPath -Force}
-    Invoke-Checked 'python' @($AudioGenerator,$audioPath,'314159','visual_drill','1','27.0') "Generate one shared ambient master (27s)"
-    $SharedAudioHash=Get-FileSha256Hex -Path $audioPath
-}
 
 $overrideState=$null
 $catalog=@()
@@ -350,14 +343,22 @@ try {
             Wait-ForStableFile -Path $aviPath -Label "Movie Maker capture $runId"
             Convert-Mp4VideoOnly -AviPath $aviPath -Mp4Path $silentMp4
 
-            $audioPath=Join-Path $AudioRoot 'global_ambient_master.wav'
+            $audioProfile = switch ($family) {
+                'tracking' { 'FLOWING_VECTOR' }
+                'saccade' { 'CIRCUIT_PULSE' }
+                'pursuit' { 'ORGANIC_BLOOM' }
+                'peripheral_scan' { 'ORBITAL_RITUAL' }
+                default { throw "No FAMILY_MUSIC_V3 profile defined for $family" }
+            }
+            $audioPath=Join-Path $AudioRoot ("${family}_seed_${seed}_${audioProfile}.wav")
             if($NoSound){
                 Move-Item -LiteralPath $silentMp4 -Destination $finalMp4 -Force
             } else {
+                & python $AudioGenerator $audioPath $seed 1 $totalDuration $family 'drill'
+                if($LASTEXITCODE -ne 0){throw "Music generation failed for ${runId}: exit=$LASTEXITCODE"}
+                if(-not(Test-Path -LiteralPath $audioPath)){throw "Family music WAV missing: $audioPath"}
                 Mux-Audio -VideoPath $silentMp4 -AudioPath $audioPath -OutputPath $finalMp4
                 Remove-Item -LiteralPath $silentMp4 -Force
-                if($null -eq $SharedAudioHash){ $SharedAudioHash = Get-FileSha256Hex -Path $audioPath }
-                elseif($SharedAudioHash -ne (Get-FileSha256Hex -Path $audioPath)){ throw 'Shared audio master hash changed during review.' }
             }
 
             $probe=Assert-FinalContract -Path $finalMp4 -ExpectedFrames $totalFrames -ExpectedDuration $totalDuration -ExpectedAudio:(-not $NoSound)
@@ -365,13 +366,13 @@ try {
             Export-ContactSheet -RunDir $targetDir
             Export-Gif -Mp4Path $finalMp4 -GifPath $gifPath
             $socialPath = Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt"
-            Write-SocialSidecar -Path $socialPath -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_V2'})
+            Write-SocialSidecar -Path $socialPath -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V3'}) -AudioProfile $(if($NoSound){'OFF'}else{$audioProfile})
             if(-not (Test-Path -LiteralPath $socialPath)){ throw "Social sidecar was not created: $socialPath" }
             if((Get-Item -LiteralPath $socialPath).Length -lt 160){ throw "Social sidecar is unexpectedly small: $socialPath" }
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.9.0'
+                revision='2.10.1'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -389,8 +390,10 @@ try {
                 total_frame_count=$totalFrames
                 matrix_enabled=$true
                 editorial_layout='shared_c11c_social'
-                audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_V2'})
-                audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
+                audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V3'})
+                audio_profile=$(if($NoSound){$null}else{$audioProfile})
+                audio_master_sha256=$(if($NoSound){$null}else{Get-FileSha256Hex -Path $audioPath})
+                typography=[ordered]@{header='Inter Bold';footer='Noto Sans Mono Regular';license='SIL Open Font License 1.1'}
                 source_envelope=$envelopePath
                 final_mp4=$finalMp4
                 gif=$gifPath
@@ -411,7 +414,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.9.0'
+    revision='2.10.1'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
@@ -430,8 +433,8 @@ $rootManifest=[ordered]@{
     delivery='720x1280 / 9:16 / 30 FPS'
     logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
     matrix_enabled=$true
-    audio_mode=$(if($NoSound){'OFF'}else{'GLOBAL_AMBIENT_V2'})
-    audio_master_sha256=$(if($NoSound){$null}else{$SharedAudioHash})
+    audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V3'})
+    audio_scope=$(if($NoSound){'OFF'}else{'PER-FAMILY-SEED'})
     source_envelope_root=$EnvelopeRoot
     review_root=$ReviewRoot
     cleanup_performed=$false

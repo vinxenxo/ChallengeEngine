@@ -54,9 +54,10 @@ try {
     $DurationSeconds = 18.0
     $FrameCount = 540
     $audioGrammar = [string]$authorForAudio.grammar
+    $audioProfile = [string]$authorForAudio.audio_profile
 
     if (-not $NoSound) {
-        & python $AudioScript $Audio $Seed $loopCycles $DurationSeconds 'fractal_bloom' $audioGrammar
+        & python $AudioScript $Audio $Seed $loopCycles $DurationSeconds 'fractal' 'loop' $audioGrammar
         if ($LASTEXITCODE -ne 0) { throw "Music generation failed: exit=$LASTEXITCODE" }
         if (-not (Test-Path -LiteralPath $Audio)) { throw 'Music WAV missing.' }
     }
@@ -98,7 +99,7 @@ try {
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.2_FRACTAL_BLOOM_V1'
-        revision = '2.1.4'
+        revision = '2.10.1'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -124,7 +125,8 @@ try {
             footer = 'generation telemetry / prototype QA'
         }
         audio = [ordered]@{
-            mode = 'family_grammar_deterministic_ambient'
+            mode = 'FAMILY_MUSIC_V3'
+            profile_id = $author.audio_profile
             style = $author.audio_style
             sample_rate = 44100
             channels = 2
@@ -132,7 +134,12 @@ try {
             muxed_into_mp4 = -not $NoSound
             enabled = -not $NoSound
             C7_modified = $false
-            family_grammar_bound = $true
+            family_grammar_bound = $false
+        }
+        typography = [ordered]@{
+            header = 'Inter Bold'
+            footer = 'Noto Sans Mono Regular'
+            license = 'SIL Open Font License 1.1'
         }
         social_metadata = [System.IO.Path]::GetFileName($Social)
         reproduction_command = $repro

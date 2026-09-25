@@ -22,7 +22,7 @@ const ENGINE_VERSION: String = "4.7.1"
 const PRESENTATION_PROFILE: String = "social_default_v1"
 const COORDINATE_SPACE: String = "2d"
 const ASSET_FAMILY: String = "fam_001"
-const AUDIO_PROFILE: String = "drill_motion_ambient_v2"
+const AUDIO_PROFILE: String = "FAMILY_MUSIC_V3"
 const AUTHOR: String = "c11c_visual_drill_review"
 const DRILLS: Array[String] = ["tracking", "saccade", "pursuit", "peripheral_scan"]
 

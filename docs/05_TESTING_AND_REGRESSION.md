@@ -2,13 +2,9 @@
 
 ## Current corpus
 
-The user-verified 2.8.1 corpus contained **110 logical suites**. C11-C 2.9.0 adds three focused suites:
+The current C11-C 2.10.1 repair tree contains **122 registered logical suites** in `tests/run_all.py`. The 2.10.1 checkpoint retains the family-aware music binding suite to the 2.9.1 corpus and preserves the existing historical compatibility suites.
 
-- `C11CVisualDrillTypographyContractTest.gd`
-- `C11CVisualDrillSocialDeliveryContractTest.gd`
-- `C11CDrillPaletteBankContractTest.gd`
-
-The expected 2.9.0 corpus is **113 registered logical suites**, pending final runtime validation.
+The user has confirmed that the previous 2.9.1 corpus and physical review are green. The 2.10.1 repair requires a fresh runtime pass before closure is claimed; focused tests must also prove the shared editorial layer can load.
 
 ## Required first command
 
@@ -23,6 +19,7 @@ godot --headless --path . --script .\tests\C11CVisualDrillEndCTAContractTest.gd
 godot --headless --path . --script .\tests\C11CVisualDrillTypographyContractTest.gd
 godot --headless --path . --script .\tests\C11CVisualDrillSocialDeliveryContractTest.gd
 godot --headless --path . --script .\tests\C11CDrillPaletteBankContractTest.gd
+godot --headless --path . --script .\tests\C11CVisualMusicProfileContractTest.gd
 ```
 
 Family contracts:

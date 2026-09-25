@@ -175,8 +175,8 @@ func apply_profile(profile: PresentationProfile):
 		cta.label_main.apply_profile(profile)
 		cta.label_sub.apply_profile(profile)
 		if use_c11c_shared_social_editorial:
-			C11CVisualTypographyClass.apply_to_typography_label(cta.label_main)
-			C11CVisualTypographyClass.apply_to_typography_label(cta.label_sub)
+			C11CVisualTypographyClass.apply_header_to_typography_label(cta.label_main)
+			C11CVisualTypographyClass.apply_header_to_typography_label(cta.label_sub)
 		elif font != null:
 			cta.label_main.apply_font(font)
 			cta.label_sub.apply_font(font)
@@ -184,7 +184,7 @@ func apply_profile(profile: PresentationProfile):
 	if countdown != null and profile != null:
 		countdown.apply_profile(profile)
 		if use_c11c_shared_social_editorial:
-			var c11c_countdown_font: Font = C11CVisualTypographyClass.get_font()
+			var c11c_countdown_font: Font = C11CVisualTypographyClass.get_header_font()
 			if c11c_countdown_font != null:
 				countdown.apply_font(c11c_countdown_font)
 		elif font != null:
@@ -215,15 +215,16 @@ func apply_render_model(render_model: Dictionary) -> void:
 		countdown.apply_render_model(render_model)
 
 	if c11c_shared_footer_region != null and use_c11c_shared_social_editorial:
-		var presentation_phase: String = str(render_model.get("presentation_phase", "GAME"))
-		c11c_shared_footer_region.visible = presentation_phase != "END_CTA"
+		# Footer telemetry remains visible during END_CTA. The CTA owns Header only.
+		c11c_shared_footer_region.visible = true
 
 	if reveal_manager != null:
 		reveal_manager.process_render_model(render_model)
 
 	if winning_highlight != null:
 		winning_highlight.hide()
-		if render_model.get("is_success_game", false):
+		var presentation_phase: String = str(render_model.get("presentation_phase", "GAME"))
+		if presentation_phase == "GAME" and render_model.get("is_success_game", false):
 			winning_highlight.show_for_rects(render_model.get("success_highlight_rects", []))
 
 	if cta != null and current_profile != null:
