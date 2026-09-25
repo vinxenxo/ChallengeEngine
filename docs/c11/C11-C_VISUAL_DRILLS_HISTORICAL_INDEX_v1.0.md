@@ -63,3 +63,13 @@ No new gameplay layer is accepted unless its truth is deterministically authored
 - Canonical technical → artistic → production naming table added.
 - Weekly/monthly production batch automation added.
 - Visual Loop subtype coverage expanded to 27 slots including Scalar Potential.
+
+
+## 2.13.0 continuation
+
+- Standard visual duration policy introduced: 20..30 seconds, cycle-complete Visual Loops and 27..30 second total Visual Drills including countdown/CTA.
+- Batch seed spacing hardened with stratified spread validation.
+- Sacred Symmetry Body containment tightened.
+- 180-second Visual Loop family anthologies introduced through a sequence composer that reuses canonical production/render/audio paths.
+
+The five Visual Loop families remain exactly five; technical IDs and artistic/production names are mapped explicitly by the family nomenclature contract.

@@ -9,7 +9,7 @@ import json
 SAMPLE_RATE = 44100
 CHANNELS = 2
 TARGET_PEAK = 0.35
-AUDIO_REVISION = "4.1.1"
+AUDIO_REVISION = "4.3.0"
 TAU = 2.0 * math.pi
 PENTATONIC_HZ = [110.0, 130.81, 146.83, 164.81, 196.0, 220.0, 261.63, 293.66, 329.63]
 A2_HZ = 110.0
@@ -43,11 +43,11 @@ PROFILE_BED_LEVELS = {
 
 # Musical motifs: pentatonic note indices, chosen to remain consonant while clearly differentiating the families.
 MOTIFS = {
-    "FLOWING_VECTOR": [[0, 2, 4, 5], [0, 3, 5, 4], [2, 4, 5, 7]],
-    "CIRCUIT_PULSE": [[0, 2, 3, 5, 3, 2, 5, 7], [0, 3, 2, 5, 7, 5, 3, 2], [2, 4, 5, 4, 7, 5, 4, 2]],
-    "ORGANIC_BLOOM": [[0, 2, 5], [0, 3, 5], [2, 4, 7]],
-    "ORBITAL_RITUAL": [[0, 4, 5, 7, 4], [0, 3, 5, 7, 5], [0, 2, 4, 7, 5]],
-    "PRISMATIC_MEMORY": [[0, 2, 4, 7, 5, 3], [0, 3, 5, 7, 4, 2], [2, 4, 7, 5, 3, 0]],
+    "FLOWING_VECTOR": [[0, 2, 4, 5], [0, 3, 5, 4], [2, 4, 5, 7], [0, 4, 2, 5], [2, 5, 7, 4], [0, 2, 5, 7]],
+    "CIRCUIT_PULSE": [[0, 2, 3, 5, 3, 2, 5, 7], [0, 3, 2, 5, 7, 5, 3, 2], [2, 4, 5, 4, 7, 5, 4, 2], [0, 5, 3, 7, 5, 2, 4, 3], [2, 7, 5, 3, 4, 0, 3, 5], [0, 4, 2, 7, 3, 5, 2, 5]],
+    "ORGANIC_BLOOM": [[0, 2, 5], [0, 3, 5], [2, 4, 7], [0, 5, 3], [2, 5, 7], [0, 4, 5]],
+    "ORBITAL_RITUAL": [[0, 4, 5, 7, 4], [0, 3, 5, 7, 5], [0, 2, 4, 7, 5], [0, 5, 3, 7, 4], [2, 4, 7, 5, 3], [0, 2, 7, 4, 5]],
+    "PRISMATIC_MEMORY": [[0, 2, 4, 7, 5, 3], [0, 3, 5, 7, 4, 2], [2, 4, 7, 5, 3, 0], [0, 5, 2, 7, 4, 3], [2, 7, 4, 5, 0, 3], [0, 4, 7, 2, 5, 3]],
 }
 
 
@@ -99,6 +99,33 @@ def low_pass_periodic_modulated(left: float, right: float, state: tuple[float, f
     return lowpass_pair(left, right, state, cutoff)
 
 
+def periodic_lowpass_buffer(raw, cycle_period: float, seed: int, family: str, profile: str, grammar: str, base_cutoff: float):
+    # Estimate the steady-state filter state from one complete periodic pass, then
+    # perform two passes from that state. The filter memory is milliseconds while
+    # the signal period is seconds, so the second pass converges effectively to the
+    # exact loop state without storing per-sample coefficients.
+    state = (0.0, 0.0)
+    for i, (left, right) in enumerate(raw):
+        t = i / SAMPLE_RATE
+        n = cyclic_value_noise_1d(t, cycle_period, seed, family, profile, grammar)
+        _, _, state = low_pass_periodic_modulated(left, right, state, base_cutoff, n)
+    # Restart each pass from the steady-state estimate and filter the ORIGINAL
+    # periodic signal. Filtering a previously filtered pass would compound the
+    # spectrum and make the loop progressively darker on each verification pass.
+    filtered = list(raw)
+    steady_state = state
+    for _ in range(2):
+        state = steady_state
+        filtered_out = []
+        for i, (left, right) in enumerate(raw):
+            t = i / SAMPLE_RATE
+            n = cyclic_value_noise_1d(t, cycle_period, seed, family, profile, grammar)
+            left, right, state = low_pass_periodic_modulated(left, right, state, base_cutoff, n)
+            filtered_out.append((left, right))
+        filtered = filtered_out
+    return filtered
+
+
 def note_envelope(local_t: float, length: float, attack: float, release: float) -> float:
     a = smoothstep(local_t / max(attack, 1e-6))
     r = smoothstep((length - local_t) / max(release, 1e-6))
@@ -106,7 +133,7 @@ def note_envelope(local_t: float, length: float, attack: float, release: float) 
     return min(a, r) * sustain
 
 
-def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind="loop", grammar=""):
+def generate(path, seed, family, profile_id, loop_cycles=1, duration=24.0, kind="loop", grammar=""):
     if profile_id not in PROFILE_ROOTS:
         raise ValueError(f"Unknown music profile: {profile_id}")
     style = STYLE[profile_id]
@@ -115,7 +142,16 @@ def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind=
     root = PROFILE_ROOTS[profile_id]
     gain_scale = PROFILE_GAINS[profile_id]
     cycles = max(1, int(loop_cycles))
-    cycle_period = max(4.0, min(18.0, duration / cycles if kind == "loop" else duration))
+    cycle_period = max(1.0, duration / cycles if kind == "loop" else duration)
+
+    # Seed selects a pentatonic tonal center as well as the motif, increasing
+    # audible variation between videos in the same family without introducing
+    # dissonant notes.
+    base_root = float(root)
+    base_root_index = min(range(len(PENTATONIC_HZ)), key=lambda i: abs(PENTATONIC_HZ[i] - base_root))
+    root_shift = int(stable_u(seed, family, profile_id, grammar, "root_step") * 5.0) - 2
+    root_index = max(0, min(len(PENTATONIC_HZ) - 1, base_root_index + root_shift))
+    root = PENTATONIC_HZ[root_index]
 
     motif_bank = MOTIFS[profile_id]
     motif_selector = int(stable_u(seed, family, profile_id, grammar, "motif") * len(motif_bank)) % len(motif_bank)
@@ -128,11 +164,11 @@ def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind=
         motif = list(reversed(motif))
     grammar_octave = 1 if stable_u(seed, family, profile_id, grammar, "grammar_octave") > 0.74 else 0
     grammar_sustain = 0.90 + 0.08 * stable_u(seed, family, profile_id, grammar, "grammar_sustain")
+    grammar_brightness = 0.80 + 0.40 * stable_u(seed, family, profile_id, grammar, "brightness")
 
     note_count = len(motif)
     raw = []
     peak = 0.0
-    filter_state = (0.0, 0.0)
     phase_seed = stable_u(seed, family, profile_id, grammar, "phase") * TAU
     stereo_phase = stable_u(seed, family, profile_id, grammar, "stereo") * TAU
 
@@ -167,21 +203,35 @@ def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind=
             voice = math.sin(carrier_phase) + 0.30 * math.sin(2.0 * carrier_phase + 0.25) + 0.13 * math.sin(4.0 * carrier_phase + 0.67) + 0.035 * math.sin(7.0 * carrier_phase + 1.11)
         layer_freq = root * PENTATONIC_RATIOS[(note_idx + 2 + motif_selector) % len(PENTATONIC_RATIOS)]
         layer_amount = 0.12 if profile_id == "ORBITAL_RITUAL" else (0.22 if profile_id == "FLOWING_VECTOR" else 0.30)
-        layer = layer_amount * math.sin(TAU * layer_freq * t + phase_seed * 0.71)
-        s = (voice + layer) * env * gain_scale
+        layer_cycles = max(1, int(round(layer_freq * cycle_period))) if kind == "loop" else layer_freq
+        layer_phase = TAU * layer_cycles * pos + phase_seed * 0.71 if kind == "loop" else TAU * layer_freq * t + phase_seed * 0.71
+        layer = layer_amount * math.sin(layer_phase)
+        s = (voice + layer) * env * gain_scale * grammar_brightness
 
         # Continuous family bed keeps mobile playback audible without percussion.
         bed_level = PROFILE_BED_LEVELS[profile_id]
         bed_freq = root * (2.0 if profile_id in ("CIRCUIT_PULSE", "PRISMATIC_MEMORY") else 1.0)
-        bed_mod = 0.92 + 0.08 * math.sin(TAU * (t / max(cycle_period, 1e-6)) + phase_seed * 0.41)
-        if profile_id == "CIRCUIT_PULSE":
-            bed_wave = math.sin(TAU * bed_freq * t + phase_seed * 0.21) + 0.12 * math.sin(TAU * bed_freq * 2.0 * t + phase_seed * 0.63)
-        elif profile_id == "ORBITAL_RITUAL":
-            bed_wave = math.sin(TAU * bed_freq * t + phase_seed * 0.21) + 0.18 * math.sin(TAU * bed_freq * 0.5 * t + phase_seed * 0.63)
-        elif profile_id == "ORGANIC_BLOOM":
-            bed_wave = math.sin(TAU * bed_freq * t + phase_seed * 0.21) + 0.36 * math.sin(TAU * bed_freq * 1.5 * t + phase_seed * 0.63)
+        bed_cycles = max(1, int(round(bed_freq * cycle_period))) if kind == "loop" else 0
+        bed_phase = (TAU * bed_cycles * pos + phase_seed * 0.21) if kind == "loop" else (TAU * bed_freq * t + phase_seed * 0.21)
+        bed_mod = 0.90 + 0.10 * math.sin(TAU * (t / max(cycle_period, 1e-6)) + phase_seed * 0.41)
+        # Use integer harmonics of the cycle, never fractional phase multipliers,
+        # so the complete bed is exactly periodic for 1, 2 or 3 visual cycles.
+        if kind == "loop":
+            secondary_phase = TAU * float(bed_cycles * 2) * pos + phase_seed * 0.42
+            slow_phase = TAU * float(max(1, bed_cycles // 2)) * pos + phase_seed * 0.42
+            tri_phase = TAU * float(bed_cycles * 3) * pos + phase_seed * 0.42
         else:
-            bed_wave = math.sin(TAU * bed_freq * t + phase_seed * 0.21) + 0.24 * math.sin(TAU * bed_freq * 1.5 * t + phase_seed * 0.63)
+            secondary_phase = bed_phase * 2.0 + phase_seed * 0.42
+            slow_phase = bed_phase * 0.5 + phase_seed * 0.42
+            tri_phase = bed_phase * 3.0 + phase_seed * 0.42
+        if profile_id == "CIRCUIT_PULSE":
+            bed_wave = math.sin(bed_phase) + 0.12 * math.sin(secondary_phase)
+        elif profile_id == "ORBITAL_RITUAL":
+            bed_wave = math.sin(bed_phase) + 0.18 * math.sin(slow_phase)
+        elif profile_id == "ORGANIC_BLOOM":
+            bed_wave = math.sin(bed_phase) + 0.36 * math.sin(tri_phase)
+        else:
+            bed_wave = math.sin(bed_phase) + 0.24 * math.sin(tri_phase)
         bed = bed_level * bed_mod * bed_wave
         s += bed
 
@@ -207,13 +257,11 @@ def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind=
             left = s * (1.0 + mirror)
             right = s * (1.0 - mirror)
 
-        # Slow loop-safe deterministic noise drives a periodic low-pass cutoff.
-        n = cyclic_value_noise_1d(t, cycle_period, seed, family, profile_id, grammar)
-        left, right, filter_state = low_pass_periodic_modulated(left, right, filter_state, style["cutoff"], n)
-
         # Very restrained high-frequency air; profile/grammar-specific, never per-particle static.
-        air_phase = TAU * (root * 2.0) * t + phase_seed * 0.37
-        air = style["texture"] * math.sin(air_phase) * (0.35 + 0.65 * env)
+        air_freq = root * 2.0
+        air_cycles = max(1, int(round(air_freq * cycle_period))) if kind == "loop" else 0
+        air_phase = (TAU * air_cycles * pos + phase_seed * 0.37) if kind == "loop" else (TAU * air_freq * t + phase_seed * 0.37)
+        air = style["texture"] * math.sin(air_phase) * (0.35 + 0.65 * env) * (0.90 + 0.20 * grammar_brightness)
         left += air
         right -= air * (0.55 if profile_id == "PRISMATIC_MEMORY" else 0.25)
 
@@ -221,14 +269,24 @@ def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind=
             q = smoothstep((t - (duration - 3.0)) / 3.0)
             left *= 1.0 - 0.18 * q
             right *= 1.0 - 0.18 * q
-
-        fade_in = smoothstep(min(1.0, t / 1.25))
-        fade_out = smoothstep(min(1.0, (duration - t) / 1.75))
-        left *= fade_in * fade_out
-        right *= fade_in * fade_out
+            fade_in = smoothstep(min(1.0, t / 1.25))
+            fade_out = smoothstep(min(1.0, (duration - t) / 1.75))
+            left *= fade_in * fade_out
+            right *= fade_in * fade_out
         raw.append((left, right))
-        peak = max(peak, abs(left), abs(right))
 
+    if kind == "loop":
+        filtered = periodic_lowpass_buffer(raw, cycle_period, seed, family, profile_id, grammar, style["cutoff"])
+    else:
+        filtered = []
+        filter_state = (0.0, 0.0)
+        for i, (left, right) in enumerate(raw):
+            t = i / SAMPLE_RATE
+            n = cyclic_value_noise_1d(t, duration, seed, family, profile_id, grammar)
+            left, right, filter_state = low_pass_periodic_modulated(left, right, filter_state, style["cutoff"], n)
+            filtered.append((left, right))
+
+    peak = max((max(abs(left), abs(right)) for left, right in filtered), default=0.0)
     norm = TARGET_PEAK / peak if peak > 1e-9 else 1.0
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     with wave.open(str(path), 'wb') as wf:
@@ -236,7 +294,7 @@ def generate(path, seed, family, profile_id, loop_cycles=1, duration=18.0, kind=
         wf.setsampwidth(2)
         wf.setframerate(SAMPLE_RATE)
         buf = bytearray()
-        for left, right in raw:
+        for left, right in filtered:
             li = max(-32768, min(32767, int(left * norm * 32767.0)))
             ri = max(-32768, min(32767, int(right * norm * 32767.0)))
             buf.extend(struct.pack('<hh', li, ri))

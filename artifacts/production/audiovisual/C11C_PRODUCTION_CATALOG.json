@@ -1021,6 +1021,1066 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1151601083",
                          "created_utc":  "2026-09-25T10:47:37.8966831Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1151601083 -Grammar radial_bloom"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1810024476",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1810024476,
+                         "grammar_id":  "astrolabe",
+                         "grammar_name":  "ASTROLABE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1810024476",
+                         "created_utc":  "2026-09-25T10:48:18.6854267Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1810024476 -Grammar astrolabe"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1577704374",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1577704374,
+                         "grammar_id":  "swarm",
+                         "grammar_name":  "SWARM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1577704374",
+                         "created_utc":  "2026-09-25T10:49:05.5308756Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1577704374 -Grammar swarm"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1789957753",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1789957753,
+                         "grammar_id":  "dipole_field",
+                         "grammar_name":  "DIPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1789957753",
+                         "created_utc":  "2026-09-25T10:49:46.1473565Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1789957753 -Grammar dipole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1177001245",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1177001245,
+                         "grammar_id":  "interference_plane",
+                         "grammar_name":  "INTERFERENCE PLANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1177001245",
+                         "created_utc":  "2026-09-25T10:50:22.8536615Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1177001245 -Grammar interference_plane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1329591275",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1329591275,
+                         "grammar_id":  "dendritic_tunnel",
+                         "grammar_name":  "DENDRITIC TUNNEL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1329591275",
+                         "created_utc":  "2026-09-25T10:51:33.2687406Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1329591275 -Grammar dendritic_tunnel"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1802400796",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1802400796,
+                         "grammar_id":  "gear_train",
+                         "grammar_name":  "GEAR TRAIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1802400796",
+                         "created_utc":  "2026-09-25T10:52:11.1806225Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1802400796 -Grammar gear_train"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_808044541",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  808044541,
+                         "grammar_id":  "vortex",
+                         "grammar_name":  "VORTEX",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_808044541",
+                         "created_utc":  "2026-09-25T10:52:56.2149990Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 808044541 -Grammar vortex"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1101666159",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1101666159,
+                         "grammar_id":  "vortex_field",
+                         "grammar_name":  "VORTEX FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1101666159",
+                         "created_utc":  "2026-09-25T10:53:34.6367819Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1101666159 -Grammar vortex_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1071365706",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1071365706,
+                         "grammar_id":  "parametric_ribbon",
+                         "grammar_name":  "PARAMETRIC RIBBON",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1071365706",
+                         "created_utc":  "2026-09-25T10:54:08.8271332Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1071365706 -Grammar parametric_ribbon"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1501191064",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1501191064,
+                         "grammar_id":  "spiral_fractal",
+                         "grammar_name":  "SPIRAL FRACTAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1501191064",
+                         "created_utc":  "2026-09-25T10:55:08.5769061Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1501191064 -Grammar spiral_fractal"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_429392782",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  429392782,
+                         "grammar_id":  "polygon_orrery",
+                         "grammar_name":  "POLYGON ORRERY",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_429392782",
+                         "created_utc":  "2026-09-25T10:55:40.5583109Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 429392782 -Grammar polygon_orrery"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_339604903",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  339604903,
+                         "grammar_id":  "collision_cloud",
+                         "grammar_name":  "COLLISION CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_339604903",
+                         "created_utc":  "2026-09-25T10:56:23.6521456Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 339604903 -Grammar collision_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1975714971",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1975714971,
+                         "grammar_id":  "saddle_field",
+                         "grammar_name":  "SADDLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1975714971",
+                         "created_utc":  "2026-09-25T10:57:00.2959870Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1975714971 -Grammar saddle_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1252580766",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1252580766,
+                         "grammar_id":  "lattice_wave",
+                         "grammar_name":  "LATTICE WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1252580766",
+                         "created_utc":  "2026-09-25T10:57:34.2033153Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1252580766 -Grammar lattice_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_368939599",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  368939599,
+                         "grammar_id":  "fractal_filigree",
+                         "grammar_name":  "FRACTAL FILIGREE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_368939599",
+                         "created_utc":  "2026-09-25T10:58:35.6010969Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 368939599 -Grammar fractal_filigree"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_33489294",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  33489294,
+                         "grammar_id":  "origami_mandala",
+                         "grammar_name":  "ORIGAMI MANDALA",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_33489294",
+                         "created_utc":  "2026-09-25T10:59:09.8897641Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 33489294 -Grammar origami_mandala"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_401125433",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  401125433,
+                         "grammar_id":  "organic_pulse",
+                         "grammar_name":  "ORGANIC PULSE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_401125433",
+                         "created_utc":  "2026-09-25T10:59:51.7869781Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 401125433 -Grammar organic_pulse"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_895621047",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  895621047,
+                         "grammar_id":  "quadrupole_field",
+                         "grammar_name":  "QUADRUPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_895621047",
+                         "created_utc":  "2026-09-25T11:00:27.8529288Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 895621047 -Grammar quadrupole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_2024577732",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  2024577732,
+                         "grammar_id":  "orbital_wave",
+                         "grammar_name":  "ORBITAL WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_2024577732",
+                         "created_utc":  "2026-09-25T11:01:01.1285980Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 2024577732 -Grammar orbital_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1548327731",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1548327731,
+                         "grammar_id":  "nested_worlds",
+                         "grammar_name":  "NESTED WORLDS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1548327731",
+                         "created_utc":  "2026-09-25T11:02:07.3223309Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1548327731 -Grammar nested_worlds"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1467258190",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1467258190,
+                         "grammar_id":  "celestial_chart",
+                         "grammar_name":  "CELESTIAL CHART",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1467258190",
+                         "created_utc":  "2026-09-25T11:02:42.2857059Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1467258190 -Grammar celestial_chart"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_11084556",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  11084556,
+                         "grammar_id":  "magnetic_filament_cloud",
+                         "grammar_name":  "MAGNETIC FILAMENT CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_11084556",
+                         "created_utc":  "2026-09-25T11:03:28.4049265Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 11084556 -Grammar magnetic_filament_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1755047131",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1755047131,
+                         "grammar_id":  "gravitational_lens",
+                         "grammar_name":  "GRAVITATIONAL LENS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1755047131",
+                         "created_utc":  "2026-09-25T11:04:02.7698996Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1755047131 -Grammar gravitational_lens"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_476099908",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  476099908,
+                         "grammar_id":  "topographic_basin",
+                         "grammar_name":  "TOPOGRAPHIC BASIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_476099908",
+                         "created_utc":  "2026-09-25T11:04:40.0568398Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 476099908 -Grammar topographic_basin"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1802039231",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1802039231,
+                         "grammar_id":  "scalar_potential",
+                         "grammar_name":  "SCALAR POTENTIAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1802039231",
+                         "created_utc":  "2026-09-25T11:05:23.8329580Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1802039231 -Grammar scalar_potential"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1972082719",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1972082719,
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "HARMONIC MEMBRANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1972082719",
+                         "created_utc":  "2026-09-25T11:05:59.0765042Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1972082719 -Grammar harmonic_membrane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1202427254",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1202427254,
+                         "grammar_id":  "radial_bloom",
+                         "grammar_name":  "RADIAL BLOOM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1202427254",
+                         "created_utc":  "2026-09-25T11:06:50.3372058Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1202427254 -Grammar radial_bloom"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1714677549",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1714677549,
+                         "grammar_id":  "astrolabe",
+                         "grammar_name":  "ASTROLABE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1714677549",
+                         "created_utc":  "2026-09-25T11:07:27.6723065Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1714677549 -Grammar astrolabe"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_658370205",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  658370205,
+                         "grammar_id":  "swarm",
+                         "grammar_name":  "SWARM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_658370205",
+                         "created_utc":  "2026-09-25T11:08:08.4376034Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 658370205 -Grammar swarm"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_180128668",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  180128668,
+                         "grammar_id":  "dipole_field",
+                         "grammar_name":  "DIPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_180128668",
+                         "created_utc":  "2026-09-25T11:08:44.2447238Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 180128668 -Grammar dipole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_42178973",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  42178973,
+                         "grammar_id":  "interference_plane",
+                         "grammar_name":  "INTERFERENCE PLANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_42178973",
+                         "created_utc":  "2026-09-25T11:09:19.0407850Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 42178973 -Grammar interference_plane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1287375142",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1287375142,
+                         "grammar_id":  "dendritic_tunnel",
+                         "grammar_name":  "DENDRITIC TUNNEL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1287375142",
+                         "created_utc":  "2026-09-25T11:10:00.1984770Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1287375142 -Grammar dendritic_tunnel"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_991604147",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  991604147,
+                         "grammar_id":  "gear_train",
+                         "grammar_name":  "GEAR TRAIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_991604147",
+                         "created_utc":  "2026-09-25T11:10:34.7366073Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 991604147 -Grammar gear_train"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_909875752",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  909875752,
+                         "grammar_id":  "vortex",
+                         "grammar_name":  "VORTEX",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_909875752",
+                         "created_utc":  "2026-09-25T11:11:14.9221822Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 909875752 -Grammar vortex"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1402290136",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1402290136,
+                         "grammar_id":  "vortex_field",
+                         "grammar_name":  "VORTEX FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1402290136",
+                         "created_utc":  "2026-09-25T11:11:53.4767039Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1402290136 -Grammar vortex_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_784887415",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  784887415,
+                         "grammar_id":  "parametric_ribbon",
+                         "grammar_name":  "PARAMETRIC RIBBON",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_784887415",
+                         "created_utc":  "2026-09-25T11:12:27.5343612Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 784887415 -Grammar parametric_ribbon"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1408804133",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1408804133,
+                         "grammar_id":  "spiral_fractal",
+                         "grammar_name":  "SPIRAL FRACTAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1408804133",
+                         "created_utc":  "2026-09-25T11:13:33.4627066Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1408804133 -Grammar spiral_fractal"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_122321072",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  122321072,
+                         "grammar_id":  "polygon_orrery",
+                         "grammar_name":  "POLYGON ORRERY",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_122321072",
+                         "created_utc":  "2026-09-25T11:14:14.0363582Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 122321072 -Grammar polygon_orrery"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_836102087",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  836102087,
+                         "grammar_id":  "collision_cloud",
+                         "grammar_name":  "COLLISION CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_836102087",
+                         "created_utc":  "2026-09-25T11:14:53.7965885Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 836102087 -Grammar collision_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1654365287",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1654365287,
+                         "grammar_id":  "saddle_field",
+                         "grammar_name":  "SADDLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1654365287",
+                         "created_utc":  "2026-09-25T11:15:31.5663658Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1654365287 -Grammar saddle_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_2036987484",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  2036987484,
+                         "grammar_id":  "lattice_wave",
+                         "grammar_name":  "LATTICE WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_2036987484",
+                         "created_utc":  "2026-09-25T11:16:04.1014143Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 2036987484 -Grammar lattice_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2128116146",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2128116146,
+                         "grammar_id":  "fractal_filigree",
+                         "grammar_name":  "FRACTAL FILIGREE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2128116146",
+                         "created_utc":  "2026-09-25T11:17:07.4282817Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2128116146 -Grammar fractal_filigree"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1822869202",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1822869202,
+                         "grammar_id":  "origami_mandala",
+                         "grammar_name":  "ORIGAMI MANDALA",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1822869202",
+                         "created_utc":  "2026-09-25T11:17:44.2639915Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1822869202 -Grammar origami_mandala"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1288653092",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1288653092,
+                         "grammar_id":  "organic_pulse",
+                         "grammar_name":  "ORGANIC PULSE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1288653092",
+                         "created_utc":  "2026-09-25T11:18:25.9507015Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1288653092 -Grammar organic_pulse"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_706539817",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  706539817,
+                         "grammar_id":  "quadrupole_field",
+                         "grammar_name":  "QUADRUPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_706539817",
+                         "created_utc":  "2026-09-25T11:19:07.7069364Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 706539817 -Grammar quadrupole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_546985905",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  546985905,
+                         "grammar_id":  "orbital_wave",
+                         "grammar_name":  "ORBITAL WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_546985905",
+                         "created_utc":  "2026-09-25T11:19:40.8026739Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 546985905 -Grammar orbital_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1937313999",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1937313999,
+                         "grammar_id":  "nested_worlds",
+                         "grammar_name":  "NESTED WORLDS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1937313999",
+                         "created_utc":  "2026-09-25T11:20:22.4923469Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1937313999 -Grammar nested_worlds"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_145264096",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  145264096,
+                         "grammar_id":  "celestial_chart",
+                         "grammar_name":  "CELESTIAL CHART",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_145264096",
+                         "created_utc":  "2026-09-25T11:20:55.0859966Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 145264096 -Grammar celestial_chart"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_312047125",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  312047125,
+                         "grammar_id":  "magnetic_filament_cloud",
+                         "grammar_name":  "MAGNETIC FILAMENT CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_312047125",
+                         "created_utc":  "2026-09-25T11:21:36.7596865Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 312047125 -Grammar magnetic_filament_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1822791933",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1822791933,
+                         "grammar_id":  "gravitational_lens",
+                         "grammar_name":  "GRAVITATIONAL LENS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1822791933",
+                         "created_utc":  "2026-09-25T11:22:10.1734195Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1822791933 -Grammar gravitational_lens"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_631314527",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  631314527,
+                         "grammar_id":  "topographic_basin",
+                         "grammar_name":  "TOPOGRAPHIC BASIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_631314527",
+                         "created_utc":  "2026-09-25T11:22:50.5352942Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 631314527 -Grammar topographic_basin"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_189047072",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  189047072,
+                         "grammar_id":  "scalar_potential",
+                         "grammar_name":  "SCALAR POTENTIAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_189047072",
+                         "created_utc":  "2026-09-25T11:23:29.0360992Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 189047072 -Grammar scalar_potential"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1138506107",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1138506107,
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "HARMONIC MEMBRANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1138506107",
+                         "created_utc":  "2026-09-25T11:24:01.7536580Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1138506107 -Grammar harmonic_membrane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2048622311",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2048622311,
+                         "grammar_id":  "radial_bloom",
+                         "grammar_name":  "RADIAL BLOOM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2048622311",
+                         "created_utc":  "2026-09-25T11:25:22.8012519Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2048622311 -Grammar radial_bloom"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_366835203",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  366835203,
+                         "grammar_id":  "astrolabe",
+                         "grammar_name":  "ASTROLABE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_366835203",
+                         "created_utc":  "2026-09-25T11:25:56.9409466Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 366835203 -Grammar astrolabe"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_635281260",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  635281260,
+                         "grammar_id":  "swarm",
+                         "grammar_name":  "SWARM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_635281260",
+                         "created_utc":  "2026-09-25T11:26:44.4776792Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 635281260 -Grammar swarm"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1949873933",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1949873933,
+                         "grammar_id":  "dipole_field",
+                         "grammar_name":  "DIPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1949873933",
+                         "created_utc":  "2026-09-25T11:27:19.6939204Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1949873933 -Grammar dipole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_2085936270",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  2085936270,
+                         "grammar_id":  "interference_plane",
+                         "grammar_name":  "INTERFERENCE PLANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_2085936270",
+                         "created_utc":  "2026-09-25T11:27:51.4046819Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 2085936270 -Grammar interference_plane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_787765875",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  787765875,
+                         "grammar_id":  "dendritic_tunnel",
+                         "grammar_name":  "DENDRITIC TUNNEL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_787765875",
+                         "created_utc":  "2026-09-25T11:28:36.6486749Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 787765875 -Grammar dendritic_tunnel"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_898994749",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  898994749,
+                         "grammar_id":  "gear_train",
+                         "grammar_name":  "GEAR TRAIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_898994749",
+                         "created_utc":  "2026-09-25T11:29:09.2226493Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 898994749 -Grammar gear_train"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1221917423",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1221917423,
+                         "grammar_id":  "vortex",
+                         "grammar_name":  "VORTEX",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1221917423",
+                         "created_utc":  "2026-09-25T11:29:50.5846527Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1221917423 -Grammar vortex"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1401225981",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1401225981,
+                         "grammar_id":  "vortex_field",
+                         "grammar_name":  "VORTEX FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1401225981",
+                         "created_utc":  "2026-09-25T11:30:28.1002316Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1401225981 -Grammar vortex_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1472604100",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1472604100,
+                         "grammar_id":  "parametric_ribbon",
+                         "grammar_name":  "PARAMETRIC RIBBON",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1472604100",
+                         "created_utc":  "2026-09-25T11:31:00.7037097Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1472604100 -Grammar parametric_ribbon"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2139907586",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2139907586,
+                         "grammar_id":  "spiral_fractal",
+                         "grammar_name":  "SPIRAL FRACTAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2139907586",
+                         "created_utc":  "2026-09-25T11:31:44.8383791Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2139907586 -Grammar spiral_fractal"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_71998071",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  71998071,
+                         "grammar_id":  "polygon_orrery",
+                         "grammar_name":  "POLYGON ORRERY",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_71998071",
+                         "created_utc":  "2026-09-25T11:32:17.7582967Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 71998071 -Grammar polygon_orrery"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_834389776",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  834389776,
+                         "grammar_id":  "collision_cloud",
+                         "grammar_name":  "COLLISION CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_834389776",
+                         "created_utc":  "2026-09-25T11:33:00.1784180Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 834389776 -Grammar collision_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1602584052",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1602584052,
+                         "grammar_id":  "saddle_field",
+                         "grammar_name":  "SADDLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1602584052",
+                         "created_utc":  "2026-09-25T11:33:37.5630354Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1602584052 -Grammar saddle_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1097375371",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1097375371,
+                         "grammar_id":  "lattice_wave",
+                         "grammar_name":  "LATTICE WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1097375371",
+                         "created_utc":  "2026-09-25T11:34:12.7581423Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1097375371 -Grammar lattice_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2045404741",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2045404741,
+                         "grammar_id":  "fractal_filigree",
+                         "grammar_name":  "FRACTAL FILIGREE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2045404741",
+                         "created_utc":  "2026-09-25T11:34:55.1589890Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2045404741 -Grammar fractal_filigree"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_963586242",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  963586242,
+                         "grammar_id":  "origami_mandala",
+                         "grammar_name":  "ORIGAMI MANDALA",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_963586242",
+                         "created_utc":  "2026-09-25T11:35:28.8469138Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 963586242 -Grammar origami_mandala"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_991702564",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  991702564,
+                         "grammar_id":  "organic_pulse",
+                         "grammar_name":  "ORGANIC PULSE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_991702564",
+                         "created_utc":  "2026-09-25T11:36:12.4951850Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 991702564 -Grammar organic_pulse"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_419640582",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  419640582,
+                         "grammar_id":  "quadrupole_field",
+                         "grammar_name":  "QUADRUPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_419640582",
+                         "created_utc":  "2026-09-25T11:36:51.1037568Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 419640582 -Grammar quadrupole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1141096331",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1141096331,
+                         "grammar_id":  "orbital_wave",
+                         "grammar_name":  "ORBITAL WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1141096331",
+                         "created_utc":  "2026-09-25T11:37:25.3589031Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1141096331 -Grammar orbital_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1514519555",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1514519555,
+                         "grammar_id":  "nested_worlds",
+                         "grammar_name":  "NESTED WORLDS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1514519555",
+                         "created_utc":  "2026-09-25T11:38:10.0920281Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1514519555 -Grammar nested_worlds"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1289790666",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1289790666,
+                         "grammar_id":  "celestial_chart",
+                         "grammar_name":  "CELESTIAL CHART",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1289790666",
+                         "created_utc":  "2026-09-25T11:38:42.6217903Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1289790666 -Grammar celestial_chart"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_869709201",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  869709201,
+                         "grammar_id":  "magnetic_filament_cloud",
+                         "grammar_name":  "MAGNETIC FILAMENT CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_869709201",
+                         "created_utc":  "2026-09-25T11:39:28.2141008Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 869709201 -Grammar magnetic_filament_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_2102925109",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  2102925109,
+                         "grammar_id":  "gravitational_lens",
+                         "grammar_name":  "GRAVITATIONAL LENS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_2102925109",
+                         "created_utc":  "2026-09-25T11:40:01.4128270Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 2102925109 -Grammar gravitational_lens"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_164901988",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  164901988,
+                         "grammar_id":  "topographic_basin",
+                         "grammar_name":  "TOPOGRAPHIC BASIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_164901988",
+                         "created_utc":  "2026-09-25T11:40:37.2977268Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 164901988 -Grammar topographic_basin"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1803333334",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1803333334,
+                         "grammar_id":  "scalar_potential",
+                         "grammar_name":  "SCALAR POTENTIAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1803333334",
+                         "created_utc":  "2026-09-25T11:41:14.1121576Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1803333334 -Grammar scalar_potential"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_919487056",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  919487056,
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "HARMONIC MEMBRANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_919487056",
+                         "created_utc":  "2026-09-25T11:42:01.8833679Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 919487056 -Grammar harmonic_membrane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_620474472",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  620474472,
+                         "grammar_id":  "radial_bloom",
+                         "grammar_name":  "RADIAL BLOOM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_620474472",
+                         "created_utc":  "2026-09-25T11:43:13.2751675Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 620474472 -Grammar radial_bloom"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1543623376",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1543623376,
+                         "grammar_id":  "astrolabe",
+                         "grammar_name":  "ASTROLABE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1543623376",
+                         "created_utc":  "2026-09-25T11:43:46.2923894Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1543623376 -Grammar astrolabe"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_547145765",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  547145765,
+                         "grammar_id":  "swarm",
+                         "grammar_name":  "SWARM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_547145765",
+                         "created_utc":  "2026-09-25T11:44:30.1915372Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 547145765 -Grammar swarm"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1883642319",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1883642319,
+                         "grammar_id":  "dipole_field",
+                         "grammar_name":  "DIPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1883642319",
+                         "created_utc":  "2026-09-25T11:45:07.6291300Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1883642319 -Grammar dipole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1448900614",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1448900614,
+                         "grammar_id":  "interference_plane",
+                         "grammar_name":  "INTERFERENCE PLANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1448900614",
+                         "created_utc":  "2026-09-25T11:45:41.9796917Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1448900614 -Grammar interference_plane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_2044360220",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  2044360220,
+                         "grammar_id":  "dendritic_tunnel",
+                         "grammar_name":  "DENDRITIC TUNNEL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_2044360220",
+                         "created_utc":  "2026-09-25T11:46:31.3872254Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 2044360220 -Grammar dendritic_tunnel"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_738785572",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  738785572,
+                         "grammar_id":  "gear_train",
+                         "grammar_name":  "GEAR TRAIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_738785572",
+                         "created_utc":  "2026-09-25T11:47:06.8698871Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 738785572 -Grammar gear_train"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1671485453",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1671485453,
+                         "grammar_id":  "vortex",
+                         "grammar_name":  "VORTEX",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1671485453",
+                         "created_utc":  "2026-09-25T11:47:48.5501679Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1671485453 -Grammar vortex"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_80404014",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  80404014,
+                         "grammar_id":  "vortex_field",
+                         "grammar_name":  "VORTEX FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_80404014",
+                         "created_utc":  "2026-09-25T11:48:25.5787787Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 80404014 -Grammar vortex_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_618154503",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  618154503,
+                         "grammar_id":  "parametric_ribbon",
+                         "grammar_name":  "PARAMETRIC RIBBON",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_618154503",
+                         "created_utc":  "2026-09-25T11:48:58.3122030Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 618154503 -Grammar parametric_ribbon"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_113321044",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  113321044,
+                         "grammar_id":  "spiral_fractal",
+                         "grammar_name":  "SPIRAL FRACTAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_113321044",
+                         "created_utc":  "2026-09-25T11:49:39.4857564Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 113321044 -Grammar spiral_fractal"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1422623191",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1422623191,
+                         "grammar_id":  "polygon_orrery",
+                         "grammar_name":  "POLYGON ORRERY",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1422623191",
+                         "created_utc":  "2026-09-25T11:50:13.5272939Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1422623191 -Grammar polygon_orrery"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_152686774",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  152686774,
+                         "grammar_id":  "collision_cloud",
+                         "grammar_name":  "COLLISION CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_152686774",
+                         "created_utc":  "2026-09-25T11:50:56.2696019Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 152686774 -Grammar collision_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1341037748",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1341037748,
+                         "grammar_id":  "saddle_field",
+                         "grammar_name":  "SADDLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1341037748",
+                         "created_utc":  "2026-09-25T11:51:32.8742020Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1341037748 -Grammar saddle_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1293047438",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1293047438,
+                         "grammar_id":  "lattice_wave",
+                         "grammar_name":  "LATTICE WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1293047438",
+                         "created_utc":  "2026-09-25T11:52:05.6164725Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1293047438 -Grammar lattice_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1156481732",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1156481732,
+                         "grammar_id":  "fractal_filigree",
+                         "grammar_name":  "FRACTAL FILIGREE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1156481732",
+                         "created_utc":  "2026-09-25T11:52:54.6395271Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1156481732 -Grammar fractal_filigree"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1199324831",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1199324831,
+                         "grammar_id":  "origami_mandala",
+                         "grammar_name":  "ORIGAMI MANDALA",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1199324831",
+                         "created_utc":  "2026-09-25T11:53:29.2760941Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1199324831 -Grammar origami_mandala"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_119274472",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  119274472,
+                         "grammar_id":  "organic_pulse",
+                         "grammar_name":  "ORGANIC PULSE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_119274472",
+                         "created_utc":  "2026-09-25T11:54:08.8795299Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 119274472 -Grammar organic_pulse"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_715788107",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  715788107,
+                         "grammar_id":  "quadrupole_field",
+                         "grammar_name":  "QUADRUPOLE FIELD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_715788107",
+                         "created_utc":  "2026-09-25T11:54:47.1921229Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 715788107 -Grammar quadrupole_field"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1314815579",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1314815579,
+                         "grammar_id":  "orbital_wave",
+                         "grammar_name":  "ORBITAL WAVE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1314815579",
+                         "created_utc":  "2026-09-25T11:55:20.0852474Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1314815579 -Grammar orbital_wave"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_510595612",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  510595612,
+                         "grammar_id":  "nested_worlds",
+                         "grammar_name":  "NESTED WORLDS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_510595612",
+                         "created_utc":  "2026-09-25T11:56:04.3053288Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 510595612 -Grammar nested_worlds"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_1520524699",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  1520524699,
+                         "grammar_id":  "celestial_chart",
+                         "grammar_name":  "CELESTIAL CHART",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1520524699",
+                         "created_utc":  "2026-09-25T11:56:37.7642564Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 1520524699 -Grammar celestial_chart"
+                     },
+                     {
+                         "product_id":  "LivingParticles_v1_seed_1699660552",
+                         "family":  "c11c_living_particles_v1",
+                         "seed":  1699660552,
+                         "grammar_id":  "magnetic_filament_cloud",
+                         "grammar_name":  "MAGNETIC FILAMENT CLOUD",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1699660552",
+                         "created_utc":  "2026-09-25T11:57:19.7211602Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1699660552 -Grammar magnetic_filament_cloud"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_1104555225",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  1104555225,
+                         "grammar_id":  "gravitational_lens",
+                         "grammar_name":  "GRAVITATIONAL LENS",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1104555225",
+                         "created_utc":  "2026-09-25T11:58:33.0360496Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 1104555225 -Grammar gravitational_lens"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_592450921",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  592450921,
+                         "grammar_id":  "topographic_basin",
+                         "grammar_name":  "TOPOGRAPHIC BASIN",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_592450921",
+                         "created_utc":  "2026-09-25T11:59:08.4534601Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 592450921 -Grammar topographic_basin"
+                     },
+                     {
+                         "product_id":  "InvisibleForces_v1_seed_2060271961",
+                         "family":  "c11c_invisible_forces_v1",
+                         "seed":  2060271961,
+                         "grammar_id":  "scalar_potential",
+                         "grammar_name":  "SCALAR POTENTIAL",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_2060271961",
+                         "created_utc":  "2026-09-25T11:59:46.0483960Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 2060271961 -Grammar scalar_potential"
                      }
                  ]
 }

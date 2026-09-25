@@ -26,8 +26,8 @@ $CountdownSeconds=3.0
 $EndCTASeconds=3.0
 $MinimumTotalDurationSeconds=20.0
 $MaximumTotalDurationSeconds=30.0
-$DefaultGameplayDurationSeconds=17.0
-$TrackingGameplayDurationSeconds=21.0
+$DefaultGameplayDurationSeconds=21.0
+$TrackingGameplayDurationSeconds=24.0
 
 if($Smoke){
     if($Seeds.Count -ne 1){throw 'Visual Drill smoke expects exactly one seed.'}
@@ -232,7 +232,7 @@ Diseñado en código con #GodotEngine para este reto visual procedimental.
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.12.0'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.13.0'
 Write-Host ("[C11-C-DRILL] $($Drills.Count) families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
 Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + gameplay (17s/21s) + 3s end CTA = 23s/27s total'
 Write-Host ("[C11-C-DRILL] Shared editorial layout / terminal self-evaluation CTA / audio ON")
@@ -390,7 +390,7 @@ try {
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.12.0'
+                revision='2.13.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -438,7 +438,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.12.0'
+    revision='2.13.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
@@ -451,7 +451,7 @@ $rootManifest=[ordered]@{
     countdown_frames=90
     end_cta_seconds=$EndCTASeconds
     end_cta_frames=90
-    max_total_frames=810
+    max_total_frames=900
     seeds=@($Seeds)
     families=@($Drills)
     delivery='720x1280 / 9:16 / 30 FPS'

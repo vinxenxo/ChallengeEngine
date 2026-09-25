@@ -27,7 +27,7 @@ uniform vec4 highlight_color : source_color = vec4(0.95, 0.78, 0.43, 1.0);
 uniform vec4 white_gold_color : source_color = vec4(1.0, 0.95, 0.84, 1.0);
 uniform vec4 accent_color : source_color = vec4(0.95, 0.62, 0.12, 1.0);
 
-const float GEOMETRY_CONTAINMENT_SCALE = 0.94;
+const float GEOMETRY_CONTAINMENT_SCALE = 0.82;
 
 const float C11C_PI = 3.14159265358979323846;
 const float C11C_TAU = 6.28318530717958647692;
@@ -79,7 +79,7 @@ void fragment() {
     vec2 p = UV - vec2(0.5);
     p.x *= BODY_ASPECT;
     // Slight global containment margin keeps the largest seeded figures inside the Body.
-    p *= clamp(macro_scale, 0.84, 1.02) * GEOMETRY_CONTAINMENT_SCALE;
+    p *= clamp(macro_scale, 0.78, 0.96) * GEOMETRY_CONTAINMENT_SCALE;
     float r = length(p);
     float a = atan(p.y, p.x);
 
@@ -171,12 +171,12 @@ void fragment() {
     } else {
         // CELESTIAL CHART — sectors, orbital paths and exact radial points.
         float sector_lines = 1.0 - smoothstep(0.006, 0.012, symmetry_angle);
-        float radial_window = smoothstep(0.06, 0.41, r) * (1.0 - smoothstep(0.42, 0.48, r));
+        float radial_window = smoothstep(0.06, 0.41, r) * (1.0 - smoothstep(0.40, 0.445, r));
         structure += sector_lines * radial_window * 0.62;
         structure += ring_line(r, 0.12 * ring_scale, 0.0018);
         structure += ring_line(r, 0.20 * ring_scale, 0.0018);
         structure += ring_line(r, 0.33 * ring_scale, 0.0020);
-        structure += ring_line(r, 0.43 * ring_scale, 0.0018);
+        structure += ring_line(r, 0.405 * ring_scale, 0.0018);
         float chart_wave = 0.5 + 0.5 * sin(segment_count * a + phase * gear_outer);
         float orbit_r = 0.285 + 0.055 * chart_wave;
         secondary += ring_line(r, orbit_r, 0.0018);
@@ -184,7 +184,7 @@ void fragment() {
         for (int i = 0; i < 36; i++) {
             if (float(i) < segment_count * 3.0) {
                 float ang = C11C_TAU * float(i) / max(segment_count * 3.0, 1.0) + phase * 1.0;
-                structure += radial_line(p, ang, 0.395, 0.438, 0.0046) * 0.60;
+                structure += radial_line(p, ang, 0.378, 0.415, 0.0046) * 0.60;
             }
         }
     }

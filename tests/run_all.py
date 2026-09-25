@@ -3,6 +3,7 @@ import sys
 import subprocess
 from pathlib import Path
 import argparse
+import re
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TESTS_DIR = PROJECT_ROOT / "tests"
@@ -70,6 +71,10 @@ KNOWN_SUITES = {
     "C11CVisualFamilyNomenclatureContractTest.gd": "[C11C_VISUAL_FAMILY_NOMENCLATURE_CONTRACT_SUITE] PASS",
     "C11CVisualSocialCopyContractTest.gd": "[C11C_VISUAL_SOCIAL_COPY_CONTRACT_SUITE] PASS",
     "C11CVisualTextEncodingContractTest.gd": "[C11C_VISUAL_TEXT_ENCODING_CONTRACT_SUITE] PASS",
+    "C11CVisualDurationPolicyContractTest.gd": "[C11C_VISUAL_DURATION_POLICY_CONTRACT_SUITE] PASS",
+    "C11CSeedSpreadContractTest.gd": "[C11C_SEED_SPREAD_CONTRACT_SUITE] PASS",
+    "C11CSacredSymmetryContainmentContractTest.gd": "[C11C_SACRED_SYMMETRY_CONTAINMENT_CONTRACT_SUITE] PASS",
+    "C11CVisualLoopLongformContractTest.gd": "[C11C_VISUAL_LOOP_LONGFORM_CONTRACT_SUITE] PASS",
     "C11CVisualLoopSubtypeMusicCoverageContractTest.gd": "[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] PASS",
     "C11CProductionBatchScheduleContractTest.gd": "[C11C_PRODUCTION_BATCH_SCHEDULE_CONTRACT_SUITE] PASS",
     "C11CPursuitMechanicContractTest.gd": "[C11C_PURSUIT_MECHANIC_CONTRACT_SUITE] PASS",
@@ -238,6 +243,9 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str) -> bool:
         return False
 
     full_output = "".join(combined_output)
+    if re.search(r"\[[^\]]+_SUITE\] FAIL", full_output):
+        print(f"[RUNNER-FAIL] {name}: suite emitted an explicit FAIL marker.")
+        return False
     if pass_marker not in full_output:
         print(f"[RUNNER-FAIL] {name}: falta marcador de éxito '{pass_marker}'.")
         return False

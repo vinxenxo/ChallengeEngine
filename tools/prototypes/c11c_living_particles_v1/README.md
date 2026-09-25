@@ -12,7 +12,7 @@ particles / attractors / eddies / fluid-like flow.
 
 - 720×1280 (9:16)
 - 30 FPS
-- 18.00 s / 540 frames
+- 20..30 s policy-driven / round(duration×30) frames
 - 4/3 scale from the frozen 540×960 logical composition
 
 The launcher creates a temporary root `override.cfg` to override viewport + window size during Movie Maker capture, then restores/removes it. `project.godot` remains untouched.

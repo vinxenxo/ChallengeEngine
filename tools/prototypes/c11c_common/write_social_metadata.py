@@ -54,7 +54,7 @@ def main() -> None:
     grammar = clean_text(m.get('grammar', 'UNKNOWN'))
     palette = clean_text(m.get('palette', 'UNKNOWN'))
     seed = int(m.get('seed', 0))
-    duration = float(visual.get('duration_seconds', 18.0))
+    duration = float(visual.get('duration_seconds', 24.0))
     cycles = int(round(float(visual.get('loop_cycles', 1.0))))
     enabled = bool(audio.get('enabled', True))
     audio_profile = clean_text(audio.get('profile_id', 'FAMILY_MUSIC_V4'))

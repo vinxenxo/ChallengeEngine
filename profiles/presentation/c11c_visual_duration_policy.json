@@ -1,0 +1,45 @@
+{
+  "schema": "C11-C-VISUAL-DURATION-POLICY-V1",
+  "revision": "2.13.0",
+  "standard_range_seconds": {
+    "min": 20.0,
+    "max": 30.0
+  },
+  "fps": 30,
+  "visual_loops": {
+    "cycle_to_duration_seconds": {
+      "1": 24.0,
+      "2": 27.0,
+      "3": 30.0
+    },
+    "rationale": "Choose the shortest standard duration that preserves a complete number of visual cycles and enough temporal development for mobile playback.",
+    "loop_safe_required": true,
+    "audio_loop_safe_required": true
+  },
+  "visual_drills": {
+    "countdown_seconds": 3.0,
+    "end_cta_seconds": 3.0,
+    "gameplay_seconds": {
+      "tracking": 24.0,
+      "saccade": 21.0,
+      "pursuit": 24.0,
+      "peripheral_scan": 21.0
+    },
+    "total_presentation_seconds": {
+      "tracking": 30.0,
+      "saccade": 27.0,
+      "pursuit": 30.0,
+      "peripheral_scan": 27.0
+    },
+    "note": "Legacy authoring fixtures at 17s/21s remain valid test fixtures; production/review defaults use this policy."
+  },
+  "longform_visual_loops": {
+    "target_seconds": 180.0,
+    "transition_mode": "chapter_boundary_safe_concat",
+    "internal_segment_range_seconds": [
+      20.0,
+      30.0
+    ],
+    "description": "Long-form family anthology composed from the same existing grammar renderers; no new per-family renderer."
+  }
+}

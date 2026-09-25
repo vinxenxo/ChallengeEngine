@@ -1,5 +1,5 @@
 {
-  "version": "4.1.1",
+  "version": "4.3.0",
   "mode": "FAMILY_MUSIC_V4",
   "mobile_safe": true,
   "event_coupled": false,
@@ -39,13 +39,15 @@
       3000.0
     ],
     "noise_modulation": "deterministic_low_frequency_loop_safe_value_noise",
-    "generator_revision": "4.1.1",
+    "generator_revision": "4.3.0",
     "semantic_visual_binding": "family_plus_seed; loops also include visual_grammar; never gameplay-event/frame coupled",
     "stereo_motion": "slow_deterministic_pan_within_plus_minus_0.16",
     "seed_pitch_scale": "whole_pad_transposition_0.80_to_1.20",
     "target_rms_max": 0.16,
     "target_peak": 0.35,
-    "low_pass_mode": "loop_safe_periodically_modulated_low_pass"
+    "low_pass_mode": "loop_safe_periodically_modulated_low_pass",
+    "loop_boundary": "periodic_filter_state_and_cycle_locked_bed_air",
+    "seed_tonal_variation": "pentatonic_tonal_center_plus_motif_and_timbre_variation"
   },
   "profiles": [
     {
@@ -72,7 +74,7 @@
       "noise_rate": 0.18,
       "harmonic_presence": 0.22,
       "decay_sec": 1.0,
-      "generator_revision": "4.1.1"
+      "generator_revision": "4.3.0"
     },
     {
       "id": "CIRCUIT_PULSE",
@@ -98,7 +100,7 @@
       "noise_rate": 0.18,
       "harmonic_presence": 0.22,
       "decay_sec": 1.0,
-      "generator_revision": "4.1.1"
+      "generator_revision": "4.3.0"
     },
     {
       "id": "ORGANIC_BLOOM",
@@ -124,7 +126,7 @@
       "noise_rate": 0.18,
       "harmonic_presence": 0.22,
       "decay_sec": 1.0,
-      "generator_revision": "4.1.1"
+      "generator_revision": "4.3.0"
     },
     {
       "id": "ORBITAL_RITUAL",
@@ -150,7 +152,7 @@
       "noise_rate": 0.18,
       "harmonic_presence": 0.22,
       "decay_sec": 1.0,
-      "generator_revision": "4.1.1"
+      "generator_revision": "4.3.0"
     },
     {
       "id": "PRISMATIC_MEMORY",
@@ -176,7 +178,7 @@
       "noise_rate": 0.18,
       "harmonic_presence": 0.22,
       "decay_sec": 1.0,
-      "generator_revision": "4.1.1"
+      "generator_revision": "4.3.0"
     }
   ],
   "bindings": {

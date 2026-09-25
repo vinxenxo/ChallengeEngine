@@ -1,4 +1,4 @@
-# C11-C common presentation/audio layer — 2.11.0
+# C11-C common presentation/audio layer — 2.13.0
 
 Presentation/delivery-only helpers shared by the five Visual Loop production identities and the four Visual Drill families.
 
@@ -13,3 +13,6 @@ Presentation/delivery-only helpers shared by the five Visual Loop production ide
 
 Music inputs are limited to seed, visual family/grammar and approved presentation metadata. Gameplay truth is never consumed.
 These helpers do not modify C11-B engine semantics, C7 ownership/contracts or C9 authoring semantics.
+
+
+Duration is resolved by `C11CVisualLoopDuration.gd` for Visual Loop renderers. Audio generation receives the resolved duration so visual and audio periods remain aligned. Long-form production composes canonical rendered segments rather than duplicating family renderers.

@@ -36,8 +36,8 @@ Production batch with explicit five seeds:
 
 - 720x1280, 9:16
 - 30 FPS
-- 540 frames
-- 18.00 s review baseline
+- 20..30 s -> round(duration*30) frames
+- 20..30 s policy-driven review baseline
 - default audio ON
 - `-NoSound` / `-Silent` disables audio
 - one canonical final MP4 per run

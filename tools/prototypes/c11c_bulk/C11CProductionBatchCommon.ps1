@@ -44,15 +44,42 @@ function Get-C11CProductionSchedule {
     )
 }
 
+function Get-C11CMinimumSeedGap {
+    param([Parameter(Mandatory=$true)][int]$Count,[int]$Minimum=1000000,[int]$MaximumExclusive=2147483647)
+    if ($Count -lt 2) { return 0 }
+    $range = [double]($MaximumExclusive - $Minimum - 1)
+    return [int][math]::Floor(($range / [double]($Count + 1)) * 0.40)
+}
+
+function Assert-C11CSeedSpacing {
+    param([Parameter(Mandatory=$true)][int[]]$Seeds,[int]$Minimum=1000000,[int]$MaximumExclusive=2147483647)
+    if ($Seeds.Count -lt 1) { throw 'Seed count must be positive.' }
+    foreach($seed in $Seeds){ if($seed -lt $Minimum -or $seed -ge $MaximumExclusive){ throw "Seed out of configured batch range: $seed" } }
+    $sorted=@($Seeds | Sort-Object -Unique)
+    if($sorted.Count -ne $Seeds.Count){ throw 'Batch seeds must be unique.' }
+    $minGap=Get-C11CMinimumSeedGap -Count $Seeds.Count -Minimum $Minimum -MaximumExclusive $MaximumExclusive
+    for($i=1;$i -lt $sorted.Count;$i++){
+        $gap=[int64]$sorted[$i]-[int64]$sorted[$i-1]
+        if($gap -lt $minGap){ throw "Batch seeds are too close: gap=$gap minimum_required=$minGap" }
+    }
+}
+
 function New-C11CUniqueSeeds {
     param([Parameter(Mandatory=$true)][int]$Count,[int]$Minimum=1000000,[int]$MaximumExclusive=2147483647)
     if ($Count -lt 1) { throw 'Seed count must be positive.' }
-    $result = [System.Collections.Generic.List[int]]::new()
-    while ($result.Count -lt $Count) {
-        $candidate = Get-Random -Minimum $Minimum -Maximum $MaximumExclusive
-        if (-not $result.Contains([int]$candidate)) { [void]$result.Add([int]$candidate) }
+    $binWidth=[double]($MaximumExclusive-$Minimum-1)/[double]($Count+1)
+    $margin=$binWidth*0.30
+    $result=[System.Collections.Generic.List[int]]::new()
+    for($i=1;$i -le $Count;$i++){
+        $center=$Minimum+($binWidth*$i)
+        $low=[int][math]::Ceiling($center-$margin)
+        $high=[int][math]::Floor($center+$margin)
+        $candidate=Get-Random -Minimum $low -Maximum ($high+1)
+        [void]$result.Add([int]$candidate)
     }
-    return @($result)
+    $shuffled=@($result | Sort-Object { Get-Random })
+    Assert-C11CSeedSpacing -Seeds $shuffled -Minimum $Minimum -MaximumExclusive $MaximumExclusive
+    return $shuffled
 }
 
 function Convert-ToSafeName {
@@ -97,7 +124,7 @@ function Invoke-C11CProductionBatch {
         [switch]$Force
     )
     if ($Schedule.Count -ne $Seeds.Count) { throw "Schedule count $($Schedule.Count) does not match seed count $($Seeds.Count)." }
-    if (@($Seeds | Sort-Object -Unique).Count -ne $Seeds.Count) { throw 'Batch seeds must be unique.' }
+    Assert-C11CSeedSpacing -Seeds $Seeds
     if ((Test-Path -LiteralPath $OutputRoot) -and -not $Force) { throw "Batch already exists: $OutputRoot. Use -Force for deliberate replacement." }
     if ($Force -and (Test-Path -LiteralPath $OutputRoot)) { Remove-Item -LiteralPath $OutputRoot -Recurse -Force }
 
@@ -135,6 +162,8 @@ function Invoke-C11CProductionBatch {
         $sourceManifest=Get-Content -Raw -LiteralPath $src.Manifest | ConvertFrom-Json
         $sourceAuthoring=Get-Content -Raw -LiteralPath $src.Authoring | ConvertFrom-Json
         $productId='{0:D2}_{1}_{2}_seed_{3}' -f [int]$item.Slot,(Convert-ToSafeName $item.Artistic),(Convert-ToSafeName $item.GrammarName),$seed
+        $sourceDurationText=([double]$sourceManifest.visual.duration_seconds).ToString('F2')
+        $sourceDurationInvariant=([double]$sourceManifest.visual.duration_seconds).ToString([System.Globalization.CultureInfo]::InvariantCulture)
         $productText=@"
 C11-C BATCH PRODUCTION PRODUCT
 ==============================
@@ -149,16 +178,16 @@ Grammar artistic name: $($item.GrammarName)
 Seed: $seed
 Resolution: 720x1280
 FPS: 30
-Duration: 18.00 s
+Duration: $sourceDurationText s
 Audio: FAMILY_MUSIC_V4
 
 Source reproduction:
-.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $($item.Production) -Seed $seed -Grammar $($item.Grammar)
+.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $($item.Production) -Seed $seed -Grammar $($item.Grammar) -Duration $sourceDurationInvariant
 "@
         [System.IO.File]::WriteAllText((Join-Path $d.Destination 'PRODUCT.txt'),$productText,(New-Object System.Text.UTF8Encoding($false)))
         $itemManifest=[ordered]@{
             schema='C11-C-BATCH-PRODUCT-V1'
-            revision='2.12.0'
+            revision='2.13.0'
             status='FINAL_BATCH_PRODUCT'
             batch_kind=$BatchKind
             batch_id=$BatchId
@@ -168,13 +197,13 @@ Source reproduction:
             family=[ordered]@{technical_id=$item.Family; artistic_name=$item.Artistic; production_id=$item.Production}
             grammar=[ordered]@{technical_id=$item.Grammar; artistic_name=$item.GrammarName}
             seed=$seed
-            visual=[ordered]@{resolution='720x1280';fps=30;duration_seconds=18.0;frames=540}
+            visual=[ordered]@{resolution='720x1280';fps=[int]$sourceManifest.visual.fps;duration_seconds=[double]$sourceManifest.visual.duration_seconds;frames=[int]$sourceManifest.visual.frame_count}
             audio=[ordered]@{mode='FAMILY_MUSIC_V4';profile_id=[string]$sourceManifest.audio.profile_id;semantic_key=[string]$sourceManifest.audio.semantic_key;enabled=$true}
             source_revision=[string]$sourceManifest.revision
             source_authoring_grammar=[string]$sourceAuthoring.grammar_id
             source_manifest=$src.Manifest
             files=@(Get-ChildItem -LiteralPath $d.Destination -File | Select-Object -ExpandProperty Name) + 'batch_item_manifest.json' + 'PRODUCT.txt'
-            reproduction_command=".\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $($item.Production) -Seed $seed -Grammar $($item.Grammar)"
+            reproduction_command=".\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $($item.Production) -Seed $seed -Grammar $($item.Grammar) -Duration $sourceDurationInvariant"
         }
         [System.IO.File]::WriteAllText((Join-Path $d.Destination 'batch_item_manifest.json'),($itemManifest|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
         $results += [pscustomobject]@{
@@ -183,12 +212,14 @@ Source reproduction:
     }
     $manifest=[ordered]@{
         schema='C11-C-BATCH-MANIFEST-V1'
-        revision='2.12.0'
+        revision='2.13.0'
         status='COMPLETE'
         batch_kind=$BatchKind
         batch_id=$BatchId
         count=$results.Count
         seed_count=@($Seeds|Select-Object -Unique).Count
+        seed_strategy='stratified_spread_random_v1'
+        minimum_seed_gap=(Get-C11CMinimumSeedGap -Count $Seeds.Count)
         unique_video_keys=@($results | ForEach-Object { "$($_.family)|$($_.grammar)|$($_.seed)" } | Select-Object -Unique).Count
         schedule_unique_keys=@($results | ForEach-Object { "$($_.family)|$($_.grammar)|$($_.seed)" } | Select-Object -Unique).Count
         output_root=$OutputRoot

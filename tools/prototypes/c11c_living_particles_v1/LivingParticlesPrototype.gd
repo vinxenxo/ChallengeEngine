@@ -14,11 +14,11 @@ const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd"
 const EditorialColorsClass = preload("res://tools/prototypes/c11c_common/C11CEditorialColors.gd")
 const ColorBoostClass = preload("res://tools/prototypes/c11c_common/C11CColorBoost.gd")
 const C11CVisualEditorialLayerClass = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
+const C11CVisualLoopDurationClass = preload("res://tools/prototypes/c11c_common/C11CVisualLoopDuration.gd")
 
 const REFERENCE_SEED := 314159
-const LOOP_DURATION := 18.0
-const FPS := 30
-const FRAME_COUNT := 540
+const DEFAULT_LOOP_DURATION := 0.0
+const FPS := C11CVisualLoopDurationClass.FPS
 const GRAMMAR_IDS: Array[String] = ["swarm", "vortex", "collision_cloud", "organic_pulse", "magnetic_filament_cloud"]
 const GRAMMAR_NAMES: Array[String] = ["SWARM", "VORTEX", "COLLISION CLOUD", "ORGANIC PULSE", "MAGNETIC FILAMENT CLOUD"]
 const OUTPUT_SCALE := 4.0 / 3.0
@@ -34,6 +34,8 @@ var _text_colors: Dictionary = {}
 var _editorial_layer: RefCounted = null
 var _editorial_model: Dictionary = {}
 var _authoring_json_path: String = ""
+var _loop_duration: float = 0.0
+var _frame_count: int = 0
 
 func _ready() -> void:
     scale = Vector2(OUTPUT_SCALE, OUTPUT_SCALE)
@@ -41,6 +43,9 @@ func _ready() -> void:
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("living_particles", _seed)
     _apply_grammar_override()
+    var duration_policy: Dictionary = C11CVisualLoopDurationClass.resolve(int(_variation["loop_cycles"]), DEFAULT_LOOP_DURATION)
+    _loop_duration = float(duration_policy["duration_seconds"])
+    _frame_count = int(duration_policy["frame_count"])
     _palette = PaletteBankClass.palette("living_particles", int(_variation["palette_mode"]))
     _text_colors = EditorialColorsClass.palette("living_particles", _palette)
     _authoring_json_path = "res://artifacts/prototypes/c11c_living_particles_v1/LivingParticles_v1_seed_%d_authoring.json" % _seed
@@ -74,7 +79,7 @@ func _build_scene() -> void:
         float(_variation["particle_size_scale"]), float(_variation["phase_rate"]), float(_variation["collision_strength"]), float(_variation["core_scale"]),
         float(_variation["density_bias"]), float(_variation["color_diversity"]), float(_variation["color_phase"])
     )
-    _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
+    _renderer.set_frame(0, _frame_count, _seed_phase(_seed), float(_variation["loop_cycles"]))
 
 func _mount_editorial(frame: UnifiedSocialFrame) -> void:
     _editorial_layer = C11CVisualEditorialLayerClass.new()
@@ -86,7 +91,7 @@ func _mount_editorial(frame: UnifiedSocialFrame) -> void:
     var grammar_name: String = GRAMMAR_NAMES[grammar_index].to_upper()
     var line1: String = "%s | DENSITY %.2f | FLOW %.2f" % [grammar_name.replace(" ", "_"), float(_variation["density_bias"]), float(_variation["swirl_bias"])]
     var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("living_particles", _seed, _variation).to_upper()
-    var footer_line2: String = "SEED %d | BODY 720X896 | T=18.00S | PARTICLES %d | FLOW %.2f" % [_seed, int(round(float(_variation["particle_count"]))), float(_variation["swirl_bias"])]
+    var footer_line2: String = "SEED %d | BODY 720X896 | T=%.2fS | PARTICLES %d | FLOW %.2f" % [_seed, _loop_duration, int(round(float(_variation["particle_count"]))), float(_variation["swirl_bias"])]
     var footer_line3: String = "PALETTE %s | LOOP x%d | FAMILY MUSIC V4" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
     var footer_line_3: String = "SYNTHETIC MATTER / v2.2.2"
 
@@ -115,7 +120,7 @@ func _mount_editorial(frame: UnifiedSocialFrame) -> void:
         },
         "editorial_seed": _seed,
         "editorial_frame_index": 0,
-        "editorial_frame_count": FRAME_COUNT
+        "editorial_frame_count": _frame_count
     }
     _editorial_layer.apply_render_model(_editorial_model)
 
@@ -144,11 +149,14 @@ func _resolve_seed() -> int:
 func _process(_delta: float) -> void:
     if _renderer == null:
         return
-    _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
+    _renderer.set_frame(_frame_index, _frame_count, _seed_phase(_seed), float(_variation["loop_cycles"]))
     if _editorial_layer != null and not _editorial_model.is_empty():
         _editorial_model["editorial_frame_index"] = _frame_index
         _editorial_layer.apply_render_model(_editorial_model)
-    _frame_index = (_frame_index + 1) % FRAME_COUNT
+    if _frame_index >= _frame_count - 1:
+        get_tree().quit()
+    else:
+        _frame_index += 1
 
 func _seed_index(salt: int, size: int) -> int:
     return _seed_mix(salt) % maxi(size, 1)
@@ -188,9 +196,9 @@ func _write_authoring_snapshot() -> void:
         "palette_mode": int(_variation["palette_mode"]),
         "palette": str(_variation["palette_name"]),
         "loop_cycles": float(_variation["loop_cycles"]),
-        "duration_seconds": LOOP_DURATION,
+        "duration_seconds": _loop_duration,
         "fps": FPS,
-        "frame_count": FRAME_COUNT,
+        "frame_count": _frame_count,
         "header_primary": header_line_2,
         "header_line_1": header_math,
         "header_line_2": header_line_2,

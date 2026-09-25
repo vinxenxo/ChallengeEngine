@@ -9,6 +9,6 @@ if __name__ == "__main__":
     out = sys.argv[1]
     seed = int(sys.argv[2]) if len(sys.argv) > 2 else 314159
     loop_cycles = int(sys.argv[3]) if len(sys.argv) > 3 else 1
-    duration = float(sys.argv[4]) if len(sys.argv) > 4 else 18.0
+    duration = float(sys.argv[4]) if len(sys.argv) > 4 else 24.0
     generate(out, seed, "living_particles", loop_cycles, duration)
     print("[C11-C-AUDIO] LIVING PARTICLES ambient WAV generated: " + out)

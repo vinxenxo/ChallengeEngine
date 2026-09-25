@@ -14,3 +14,5 @@ $OutputRoot=Join-Path $ProjectRoot "artifacts\batch\week\$WeekId"
 Write-Host '[C11-C-BATCH] WEEKLY PRODUCTION BATCH'
 Write-Host "[C11-C-BATCH] WeekId=$WeekId | videos=$($Schedule.Count) | output=$OutputRoot"
 Invoke-C11CProductionBatch -Schedule $Schedule -Seeds $Seeds -OutputRoot $OutputRoot -BatchKind 'week' -BatchId $WeekId -Force:$Force
+
+# C11-C 2.13.0 batch seeds use stratified_spread_random_v1 through C11CProductionBatchCommon.

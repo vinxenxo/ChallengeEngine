@@ -9,9 +9,13 @@ param(
     [switch]$Force
 )
 $ErrorActionPreference='Stop'
+Set-StrictMode -Version Latest
+. (Join-Path $PSScriptRoot 'C11CProductionBatchCommon.ps1')
 if($Seeds.Count -eq 0){
-    $bank=Get-Content -Raw (Join-Path $PSScriptRoot 'C11C_PRODUCTION_SEED_BANK_v1.json') | ConvertFrom-Json
-    $Seeds=@($bank.seeds | Select-Object -First 8 | ForEach-Object {[int]$_})
+    $Seeds=@(New-C11CUniqueSeeds -Count 8)
+}else{
+    $Seeds=@($Seeds | ForEach-Object {[int]$_})
+    Assert-C11CSeedSpacing -Seeds $Seeds
 }
 $launcher=Join-Path $PSScriptRoot 'run_c11c_production.ps1'
 foreach($seed in $Seeds){
@@ -22,5 +26,5 @@ foreach($seed in $Seeds){
     if(-not $?){throw "Production bulk failed for $Family seed=$seed"}
     Write-Host "[C11-C-PRODUCTION-BULK] PASS family=$Family seed=$seed"
 }
-Write-Host "[C11-C-PRODUCTION-BULK] COMPLETE family=$Family products=$($Seeds.Count)"
+Write-Host "[C11-C-PRODUCTION-BULK] COMPLETE family=$Family products=$($Seeds.Count) | seed_strategy=stratified_spread_random_v1"
 return

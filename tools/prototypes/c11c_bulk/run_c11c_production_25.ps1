@@ -16,6 +16,7 @@ $ErrorActionPreference = 'Stop'
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $ProductionRunner = Join-Path $PSScriptRoot 'run_c11c_production_bulk.ps1'
 $ProductionRoot = Join-Path $ProjectRoot 'artifacts\production\audiovisual'
+. (Join-Path $PSScriptRoot 'C11CProductionBatchCommon.ps1')
 
 $Families = @(
     'c11c_geometric_waves_v1',
@@ -33,34 +34,13 @@ $PrefixMap = @{
     c11c_invisible_forces_v1 = 'InvisibleForces_v1'
 }
 
-function New-UniqueSeeds {
-    param(
-        [int]$Count,
-        [int]$Minimum,
-        [int]$MaximumExclusive
-    )
-
-    if ($MaximumExclusive -le $Minimum) {
-        throw "Invalid random seed range: minimum=$Minimum maximumExclusive=$MaximumExclusive"
-    }
-
-    $result = [System.Collections.Generic.List[int]]::new()
-    while ($result.Count -lt $Count) {
-        $candidate = Get-Random -Minimum $Minimum -Maximum $MaximumExclusive
-        if (-not $result.Contains([int]$candidate)) {
-            [void]$result.Add([int]$candidate)
-        }
-    }
-    return @($result)
-}
-
 if (-not (Test-Path -LiteralPath $ProductionRunner)) {
     throw "Missing canonical production bulk runner: $ProductionRunner"
 }
 
 # Exactly five shared seeds: the same five seeds are rendered in all five families.
 if ($Seeds.Count -eq 0) {
-    $Seeds = @(New-UniqueSeeds -Count 5 -Minimum $RandomSeedMinimum -MaximumExclusive $RandomSeedMaximumExclusive)
+    $Seeds = @(New-C11CUniqueSeeds -Count 5 -Minimum $RandomSeedMinimum -MaximumExclusive $RandomSeedMaximumExclusive)
 } else {
     if ($Seeds.Count -ne 5) {
         throw "Pass exactly 5 seeds when -Seeds is supplied. Received $($Seeds.Count)."
@@ -69,10 +49,11 @@ if ($Seeds.Count -eq 0) {
     if ((@($Seeds | Select-Object -Unique)).Count -ne 5) {
         throw 'The five production seeds must be unique.'
     }
+    Assert-C11CSeedSpacing -Seeds $Seeds -Minimum $RandomSeedMinimum -MaximumExclusive $RandomSeedMaximumExclusive
 }
 
 foreach ($seed in $Seeds) {
-    if ($seed -lt 1 -or $seed -gt 2147483646) {
+    if ($seed -lt $RandomSeedMinimum -or $seed -ge $RandomSeedMaximumExclusive) {
         throw "Seed out of range: $seed"
     }
 }
@@ -167,7 +148,7 @@ foreach ($family in $Families) {
 $batchFinished = [DateTime]::UtcNow
 $batchManifest = [ordered]@{
     schema = 'C11-C-PRODUCTION-25-BATCH-V1'
-    revision = '2.1.6'
+    revision = '2.13.0'
     status = 'COMPLETE'
     batch_type = '5_random_or_explicit_seeds_x_5_families'
     started_utc = $batchStarted.ToString('o')
@@ -176,14 +157,16 @@ $batchManifest = [ordered]@{
     seed_count = 5
     product_count = 25
     seeds = @($Seeds)
+    seed_strategy = 'stratified_spread_random_v1'
+    minimum_seed_gap = (Get-C11CMinimumSeedGap -Count $Seeds.Count -Minimum $RandomSeedMinimum -MaximumExclusive $RandomSeedMaximumExclusive)
     audio_enabled = (-not $NoSound)
     footer_enabled = (-not $NoFooter)
     delivery = [ordered]@{
         resolution = '720x1280'
         aspect_ratio = '9:16'
         fps = 30
-        frames = 540
-        duration_seconds = 18.0
+        frames = 'round(duration_seconds*30)'
+        duration_seconds = '20..30 policy-driven'
     }
     production_root = $ProductionRoot
     protected_from_review_cleanup = $true

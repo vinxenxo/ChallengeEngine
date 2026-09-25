@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.11.1 — family-aware music binding contract.
+## C11-C 2.13.1 — family-aware music binding contract.
 ## Music is delivery/presentation metadata: no gameplay frame/event/answer-sheet input is permitted.
 
 const ProfileService = preload("res://core/presentation/C11CVisualMusicProfile.gd")
@@ -19,6 +19,8 @@ func _initialize() -> void:
         _conclude()
         return
     _assert(str(data.get("mode", "")) == "FAMILY_MUSIC_V4", "Music mode must be FAMILY_MUSIC_V4.")
+    var profile_version: String = str(data.get("version", ""))
+    _assert(profile_version.begins_with("4.3."), "Music profile version must be 4.3.x for this checkpoint.")
     _assert(bool(data.get("mobile_safe", false)), "Music contract must declare mobile-safe delivery.")
     _assert(not bool(data.get("event_coupled", true)), "Music must not be event-coupled to gameplay truth.")
     _assert(bool(data.get("seed_deterministic", false)), "Music must be deterministic with seed/family identity.")
@@ -35,7 +37,8 @@ func _initialize() -> void:
     _assert(Array(design_rules.get("attack_seconds", [])).size() == 2, "Music contract must expose attack range.")
     _assert(Array(design_rules.get("release_seconds", [])).size() == 2, "Music contract must expose release range.")
     _assert(str(design_rules.get("noise_modulation", "")).find("low_frequency") >= 0, "Music must use slow deterministic noise modulation.")
-    _assert(str(design_rules.get("generator_revision", "")).begins_with("4.1.1"), "Music generator revision must be 4.1.x for this checkpoint.")
+    _assert(str(design_rules.get("generator_revision", "")).begins_with("4.3."), "Music generator revision must be 4.3.x for this checkpoint.")
+    _assert(str(design_rules.get("generator_revision", "")) == profile_version, "Music profile and generator revisions must match exactly.")
     _assert(str(design_rules.get("stereo_motion", "")).find("plus_minus_0.16") >= 0, "Stereo motion must remain bounded to the documented mobile-safe range.")
     _assert(str(design_rules.get("seed_pitch_scale", "")).find("0.80_to_1.20") >= 0, "Seeded whole-pad pitch scaling must be documented as 0.80x–1.20x.")
 

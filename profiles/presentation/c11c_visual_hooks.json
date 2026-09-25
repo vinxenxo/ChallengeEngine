@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "selection": {
     "algorithm": "posmod(seed + family_offset, hook_count)",
     "presentation_role": "header_hook",
@@ -9,7 +9,7 @@
     "tracking": {
       "family_offset": 0,
       "hooks": [
-        "¿Puedes seguir el Target sin parpadear los 18 segundos enteros?",
+        "¿Puedes seguir el Target sin parpadear los 24 segundos enteros?",
         "Tu cerebro intentará predecir la curva... y va a fallar en el segundo 12.",
         "Un test de seguimiento ocular para calibrar tu enfoque. Inténtalo.",
         "El 94% de la gente pierde el Target cuando la estela matemática se cruza.",
@@ -45,7 +45,7 @@
         "Una deformación de campo de baja frecuencia. Sigue el estímulo dominante.",
         "Como mirar una vela digital. Mantén el objetivo bajo seguimiento continuo.",
         "Este video no tiene jitter ni ruido. Es matemática perfectamente limpia.",
-        "Quédate 18 segundos mirando el centro geométrico. Sentirás paz.",
+        "Quédate 24 segundos mirando el centro geométrico. Sentirás paz.",
         "Un solo estímulo, cero distracciones. El test definitivo de atención sostenida.",
         "Matemática ambiental hecha arte. Deja que tus ojos fluyan con la curva.",
         "El bucle es tan limpio que parece que el video nunca termina. Compruébalo."

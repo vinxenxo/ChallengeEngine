@@ -2,6 +2,8 @@ param(
     [int]$Seed = 314159,
     [switch]$NoFooter,
     [string]$Grammar = '',
+    [ValidateRange(20.0,30.0)]
+    [double]$Duration = 0.0,
     [Alias('Silent')]
     [switch]$NoSound
 )
@@ -16,6 +18,7 @@ if ([string]::IsNullOrWhiteSpace($Grammar)) {
 }
 $env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $env:C11C_SOUND_ENABLED = if ($NoSound) { '0' } else { '1' }
+if($Duration -gt 0){ $env:C11C_DURATION_SECONDS = $Duration.ToString([System.Globalization.CultureInfo]::InvariantCulture) } else { Remove-Item Env:C11C_DURATION_SECONDS -ErrorAction SilentlyContinue }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_invisible_forces_v1'
 $Stem = "InvisibleForces_v1_seed_${Seed}"
 $Avi = Join-Path $ArtifactRoot ($Stem + '.avi')
@@ -44,7 +47,7 @@ try {
     $movieOverride = Enter-C11CMovieOverride -ProjectRoot $ProjectRoot -Width 720 -Height 1280
     Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
     $DeliveryResolution='720x1280'
-    $godotArgs=@('--path','.','--scene','tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn','--write-movie',$Avi,'--fixed-fps','30','--resolution',$DeliveryResolution,'--quit-after','540')
+    $godotArgs=@('--path','.','--scene','tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn','--write-movie',$Avi,'--fixed-fps','30','--resolution',$DeliveryResolution,'--quit-after','900')
     & godot @godotArgs 2>&1 | Tee-Object -FilePath $GodotLog
     $godotExit = $LASTEXITCODE
     if ($godotExit -ne 0) { throw "Godot prototype export failed: exit=$godotExit" }
@@ -57,8 +60,8 @@ try {
 
     $authorForAudio = Get-Content -Raw $Authoring | ConvertFrom-Json
     $loopCycles = [int][math]::Round([double]$authorForAudio.loop_cycles)
-    $DurationSeconds = 18.0
-    $FrameCount = 540
+    $DurationSeconds = [double]$authorForAudio.duration_seconds
+    $FrameCount = [int]$authorForAudio.frame_count
     $audioGrammar = [string]$authorForAudio.grammar
     $audioProfile = [string]$authorForAudio.audio_profile
 
@@ -92,8 +95,8 @@ try {
     if ([int]$video.width -ne 720) { throw "Width contract failed: $($video.width)" }
     if ([int]$video.height -ne 1280) { throw "Height contract failed: $($video.height)" }
     if ([string]$video.r_frame_rate -ne '30/1') { throw "FPS contract failed: $($video.r_frame_rate)" }
-    if ([int]$video.nb_frames -ne 540) { throw "Frame count contract failed: $($video.nb_frames)" }
-    if ([math]::Abs([double]$video.duration - 18.0) -gt 0.05) { throw "Video duration contract failed: $($video.duration)" }
+    if ([int]$video.nb_frames -ne $FrameCount) { throw "Frame count contract failed: $($video.nb_frames), expected $FrameCount" }
+    if ([math]::Abs([double]$video.duration - $DurationSeconds) -gt 0.05) { throw "Video duration contract failed: $($video.duration), expected $DurationSeconds" }
     if (-not $NoSound) {
         if ([int]$audioStream.sample_rate -ne 44100) { throw "Audio rate contract failed: $($audioStream.sample_rate)" }
         if ([int]$audioStream.channels -ne 2) { throw "Audio channel contract failed: $($audioStream.channels)" }
@@ -102,11 +105,12 @@ try {
     $author = Get-Content -Raw $Authoring | ConvertFrom-Json
     $repro = '.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed ' + [string]$Seed
     if (-not [string]::IsNullOrWhiteSpace($Grammar)) { $repro += ' -Grammar "' + $Grammar + '"' }
+    $repro += ' -Duration ' + $DurationSeconds.ToString([System.Globalization.CultureInfo]::InvariantCulture)
     if ($NoFooter) { $repro += ' -NoFooter' }
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.5_INVISIBLE_FORCES_V1'
-        revision = '2.12.0'
+        revision = '2.13.0'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -121,9 +125,9 @@ try {
         visual = [ordered]@{
             canvas = '720x1280'
             body = 'y=192..1088'
-            duration_seconds = 18.0
+            duration_seconds = $DurationSeconds
             fps = 30
-            frame_count = 540
+            frame_count = $FrameCount
             loop_cycles = [double]$author.loop_cycles
             loop_closed = $true
             background = '000000'
@@ -143,7 +147,7 @@ try {
             semantic_key = $audioGrammar
             sample_rate = 44100
             channels = 2
-            duration_seconds = 18.0
+            duration_seconds = $DurationSeconds
             muxed_into_mp4 = -not $NoSound
             enabled = -not $NoSound
             C7_modified = $false
@@ -167,11 +171,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.12.0] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.12.0] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.12.0] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.12.0] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.12.0] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.13.0] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.13.0] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.13.0] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.13.0] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.13.0] SOCIAL: " + $Social)
 } finally {
     if ($null -ne $movieOverride) {
         Exit-C11CMovieOverride -State $movieOverride

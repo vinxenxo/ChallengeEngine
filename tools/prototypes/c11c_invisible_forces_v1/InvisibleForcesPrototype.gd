@@ -14,11 +14,11 @@ const C11CThemeClass = preload("res://tools/prototypes/c11c_common/C11CTheme.gd"
 const EditorialColorsClass = preload("res://tools/prototypes/c11c_common/C11CEditorialColors.gd")
 const ColorBoostClass = preload("res://tools/prototypes/c11c_common/C11CColorBoost.gd")
 const C11CVisualEditorialLayerClass = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
+const C11CVisualLoopDurationClass = preload("res://tools/prototypes/c11c_common/C11CVisualLoopDuration.gd")
 
 const REFERENCE_SEED := 314159
-const LOOP_DURATION := 18.0
-const FPS := 30
-const FRAME_COUNT := 540
+const DEFAULT_LOOP_DURATION := 0.0
+const FPS := C11CVisualLoopDurationClass.FPS
 const GRAMMAR_IDS: Array[String] = ["dipole_field", "vortex_field", "saddle_field", "quadrupole_field", "gravitational_lens", "topographic_basin", "scalar_potential"]
 const GRAMMAR_NAMES: Array[String] = ["DIPOLE FIELD", "VORTEX FIELD", "SADDLE FIELD", "QUADRUPOLE FIELD", "GRAVITATIONAL LENS", "TOPOGRAPHIC BASIN", "SCALAR POTENTIAL"]
 const OUTPUT_SCALE := 4.0 / 3.0
@@ -34,6 +34,8 @@ var _text_colors: Dictionary = {}
 var _editorial_layer: RefCounted = null
 var _editorial_model: Dictionary = {}
 var _authoring_json_path: String = ""
+var _loop_duration: float = 0.0
+var _frame_count: int = 0
 
 func _ready() -> void:
     scale = Vector2(OUTPUT_SCALE, OUTPUT_SCALE)
@@ -41,6 +43,9 @@ func _ready() -> void:
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("invisible_forces", _seed)
     _apply_grammar_override()
+    var duration_policy: Dictionary = C11CVisualLoopDurationClass.resolve(int(_variation["loop_cycles"]), DEFAULT_LOOP_DURATION)
+    _loop_duration = float(duration_policy["duration_seconds"])
+    _frame_count = int(duration_policy["frame_count"])
     _palette = PaletteBankClass.palette("invisible_forces", int(_variation["palette_mode"]))
     _text_colors = EditorialColorsClass.palette("invisible_forces", _palette)
     _authoring_json_path = "res://artifacts/prototypes/c11c_invisible_forces_v1/InvisibleForces_v1_seed_%d_authoring.json" % _seed
@@ -73,7 +78,7 @@ func _build_scene() -> void:
         float(_variation["field_rotation"]), storm_offset, float(_variation["pulse_speed"]), float(_variation["field_twist"]), float(_variation["pulse_width"]),
         float(_variation["storm_scale"]), float(_variation["lens_strength"]), float(_variation["basin_depth"]), float(_variation["pole_separation"]), float(_variation["quadrupole_skew"]), float(_variation["color_phase"])
     )
-    _renderer.set_frame(0, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
+    _renderer.set_frame(0, _frame_count, _seed_phase(_seed), float(_variation["loop_cycles"]))
 
 func _mount_editorial(frame: UnifiedSocialFrame) -> void:
     _editorial_layer = C11CVisualEditorialLayerClass.new()
@@ -85,7 +90,7 @@ func _mount_editorial(frame: UnifiedSocialFrame) -> void:
     var grammar_name: String = GRAMMAR_NAMES[grammar_index].to_upper()
     var line1: String = "%s | %d TRACES | PULSE %.2f" % [grammar_name.replace(" ", "_"), int(_variation["trace_count"]), float(_variation["pulse_speed"])]
     var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation).to_upper()
-    var footer_line2: String = "SEED %d | BODY 720X896 | T=18.00S | %d FLOW TRACES | PULSE %.2f" % [_seed, int(_variation["trace_count"]), float(_variation["pulse_speed"])]
+    var footer_line2: String = "SEED %d | BODY 720X896 | T=%.2fS | %d FLOW TRACES | PULSE %.2f" % [_seed, _loop_duration, int(_variation["trace_count"]), float(_variation["pulse_speed"])]
     var footer_line3: String = "PALETTE %s | LOOP x%d | FAMILY MUSIC V4" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
     var footer_line_3: String = "DETERMINISTIC FIELD ART / v2.2.1"
 
@@ -114,7 +119,7 @@ func _mount_editorial(frame: UnifiedSocialFrame) -> void:
         },
         "editorial_seed": _seed,
         "editorial_frame_index": 0,
-        "editorial_frame_count": FRAME_COUNT
+        "editorial_frame_count": _frame_count
     }
     _editorial_layer.apply_render_model(_editorial_model)
 
@@ -143,11 +148,14 @@ func _resolve_seed() -> int:
 func _process(_delta: float) -> void:
     if _renderer == null:
         return
-    _renderer.set_frame(_frame_index, FRAME_COUNT, _seed_phase(_seed), float(_variation["loop_cycles"]))
+    _renderer.set_frame(_frame_index, _frame_count, _seed_phase(_seed), float(_variation["loop_cycles"]))
     if _editorial_layer != null and not _editorial_model.is_empty():
         _editorial_model["editorial_frame_index"] = _frame_index
         _editorial_layer.apply_render_model(_editorial_model)
-    _frame_index = (_frame_index + 1) % FRAME_COUNT
+    if _frame_index >= _frame_count - 1:
+        get_tree().quit()
+    else:
+        _frame_index += 1
 
 func _seed_index(salt: int, size: int) -> int:
     return _seed_mix(salt) % maxi(size, 1)
@@ -187,9 +195,9 @@ func _write_authoring_snapshot() -> void:
         "palette_mode": int(_variation["palette_mode"]),
         "palette": str(_variation["palette_name"]),
         "loop_cycles": float(_variation["loop_cycles"]),
-        "duration_seconds": LOOP_DURATION,
+        "duration_seconds": _loop_duration,
         "fps": FPS,
-        "frame_count": FRAME_COUNT,
+        "frame_count": _frame_count,
         "header_primary": header_line_2,
         "header_line_1": header_math,
         "header_line_2": header_line_2,

@@ -1,4 +1,4 @@
-# C11-C Canonical Toolchain — v2.1.4
+# C11-C Canonical Toolchain — v2.13.0
 
 ## Responsibilities
 
@@ -7,7 +7,11 @@
 - `run_c11c_art_direction_review.ps1`: generate a 5-seed × 5-family review corpus. Optional `-ResetReviewAssets` resets only `artifacts\prototypes\c11c_review_assets`.
 - `run_c11c_production.ps1`: publish one validated product under `artifacts\production\audiovisual`.
 - `run_c11c_production_bulk.ps1`: publish a seed set for one family.
-- `run_c11c_production_25.ps1`: publish five random/shared seeds across all five families (25 final products). No cleanup.
+- `run_c11c_production_25.ps1`: publish five stratified/spread seeds across all five families (25 final products). No cleanup.
+- `run_c11c_weekly_production_batch.ps1`: publish the canonical 27-slot week.
+- `run_c11c_monthly_production_batch.ps1`: repeat the 27-slot week with globally spread month seeds.
+- `run_c11c_visual_loop_longform_production.ps1`: compose one 180s anthology for a single Visual Loop family.
+- `run_c11c_visual_loop_longform_production_bulk.ps1`: compose all five 180s family anthologies.
 - `clean_c11c_artifacts.ps1`: explicit manual cleanup of regenerable prototype media.
 - `reset_c11c_artifacts.ps1`: explicit reset of C11-C prototype workspace only.
 
@@ -27,8 +31,10 @@ It is one argument. `project.godot` remains untouched. A temporary root `overrid
 
 - 720x1280 / 9:16
 - 30 FPS
-- 540 frames
-- 18.00 s
+- 20..30 s -> round(duration*30) frames
+- standard Visual Loop duration is cycle-complete; 24/27/30 s for 1/2/3 authored cycles
+- Visual Drill total delivery is 27..30 s including countdown and CTA
+- 20..30 s policy-driven
 - audio ON by default
 - `-NoSound` / `-Silent` disables sound
 - one final MP4
@@ -53,3 +59,7 @@ Review/cleanup tools must never target that root.
 ```powershell
 .\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -ResetReviewAssets
 ```
+
+## Seed policy
+
+Production batches use `stratified_spread_random_v1`: uniqueness plus a minimum pairwise gap derived from the available seed range and batch size. Explicit review fixtures may remain historically fixed; production batches enforce spacing.

@@ -7,6 +7,8 @@ param(
     [int]$Seed,
     [Parameter(Mandatory=$false)]
     [string]$Grammar = '',
+    [ValidateRange(20.0,30.0)]
+    [double]$Duration = 0.0,
     [Alias('Silent')][switch]$NoSound,
     [switch]$NoFooter,
     [switch]$Force
@@ -38,6 +40,7 @@ $launcherParams=@{Seed=[int]$Seed}
 if(-not [string]::IsNullOrWhiteSpace($Grammar)){$launcherParams.Grammar=$Grammar}
 if($NoSound){$launcherParams.NoSound=$true}
 if($NoFooter){$launcherParams.NoFooter=$true}
+if($Duration -gt 0){$launcherParams.Duration=$Duration}
 & $launcher @launcherParams
 if (-not $?) { throw 'Prototype generation failed.' }
 
@@ -68,14 +71,16 @@ foreach ($name in ($required + @("$stem.gif","${stem}_music.wav"))) {
 }
 
 $repro=".\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $Family -Seed $Seed"
+if($Duration -gt 0){$repro+=" -Duration $($Duration.ToString([System.Globalization.CultureInfo]::InvariantCulture))"}
 if(-not [string]::IsNullOrWhiteSpace($Grammar)){$repro+=" -Grammar $Grammar"}
 if ($NoSound) { $repro+=' -NoSound' }
 if ($NoFooter) { $repro+=' -NoFooter' }
 $sourceManifest=Get-Content -Raw (Join-Path $stage "${stem}_manifest.json") | ConvertFrom-Json
 $created=[DateTime]::UtcNow.ToString('o')
+$sourceDurationText=([double]$sourceManifest.visual.duration_seconds).ToString('F2')
 $prodManifest=[ordered]@{
     schema='C11-C-PRODUCTION-PRODUCT-V2'
-    revision='2.1.6'
+    revision='2.13.0'
     status='FINAL_PRODUCT'
     product_id=$productId
     family=$Family
@@ -85,8 +90,8 @@ $prodManifest=[ordered]@{
     created_utc=$created
     canvas='720x1280'
     fps=30
-    duration_seconds=18.0
-    frames=540
+    duration_seconds=[double]$sourceManifest.visual.duration_seconds
+    frames=[int]$sourceManifest.visual.frame_count
     sound_enabled=(-not $NoSound)
     footer_enabled=(-not $NoFooter)
     production_path=$productRoot
@@ -105,7 +110,7 @@ Seed: $Seed
 Grammar technical id: $(if([string]::IsNullOrWhiteSpace($Grammar)){'(prototype default)'}else{$Grammar})
 Resolution: 720x1280
 FPS: 30
-Duration: 18.00 s
+Duration: $sourceDurationText s
 Sound: $(-not $NoSound)
 Footer: $(-not $NoFooter)
 
@@ -123,7 +128,7 @@ if (Test-Path -LiteralPath $catalogPath) {
     $catalog=Get-Content -Raw $catalogPath | ConvertFrom-Json
 } else {
     New-Item -ItemType Directory -Force -Path $productionRoot | Out-Null
-    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.1.6';products=@()}
+    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.13.0';products=@()}
 }
 if ($null -eq $catalog.products) { $catalog.products=@() }
 $catalog.products=@($catalog.products | Where-Object { $_.product_id -ne $productId })

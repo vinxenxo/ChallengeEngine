@@ -1,0 +1,233 @@
+{
+  "schema": "C11-C-VISUAL-LOOP-LONGFORM-SCHEDULE-V1",
+  "revision": "2.13.0",
+  "target_duration_seconds": 180.0,
+  "segment_standard_range_seconds": [
+    20.0,
+    30.0
+  ],
+  "overall_loop_safe": false,
+  "architecture": "sequence_composer_reusing_canonical_family_renderers",
+  "families": {
+    "geometric": {
+      "artistic_name": "Geometric Waves",
+      "production_id": "c11c_geometric_waves_v1",
+      "segments": [
+        {
+          "slot": 1,
+          "grammar_id": "harmonic_membrane",
+          "grammar_name": "Harmonic Membrane",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 2,
+          "grammar_id": "lattice_wave",
+          "grammar_name": "Lattice Wave",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 3,
+          "grammar_id": "parametric_ribbon",
+          "grammar_name": "Parametric Ribbon",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 4,
+          "grammar_id": "interference_plane",
+          "grammar_name": "Interference Plane",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 5,
+          "grammar_id": "orbital_wave",
+          "grammar_name": "Orbital Wave",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 6,
+          "grammar_id": "harmonic_membrane",
+          "grammar_name": "Harmonic Membrane",
+          "duration_seconds": 30.0,
+          "encore": true
+        }
+      ]
+    },
+    "fractal": {
+      "artistic_name": "Fractal Bloom",
+      "production_id": "c11c_fractal_bloom_v1",
+      "segments": [
+        {
+          "slot": 1,
+          "grammar_id": "radial_bloom",
+          "grammar_name": "Radial Bloom",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 2,
+          "grammar_id": "dendritic_tunnel",
+          "grammar_name": "Dendritic Tunnel",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 3,
+          "grammar_id": "spiral_fractal",
+          "grammar_name": "Spiral Fractal",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 4,
+          "grammar_id": "fractal_filigree",
+          "grammar_name": "Fractal Filigree",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 5,
+          "grammar_id": "nested_worlds",
+          "grammar_name": "Nested Worlds",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 6,
+          "grammar_id": "radial_bloom",
+          "grammar_name": "Radial Bloom",
+          "duration_seconds": 30.0,
+          "encore": true
+        }
+      ]
+    },
+    "sacred_symmetry": {
+      "artistic_name": "Sacred Symmetry",
+      "production_id": "c11c_sacred_symmetry_v1",
+      "segments": [
+        {
+          "slot": 1,
+          "grammar_id": "astrolabe",
+          "grammar_name": "Astrolabe",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 2,
+          "grammar_id": "gear_train",
+          "grammar_name": "Gear Train",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 3,
+          "grammar_id": "polygon_orrery",
+          "grammar_name": "Polygon Orrery",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 4,
+          "grammar_id": "origami_mandala",
+          "grammar_name": "Origami Mandala",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 5,
+          "grammar_id": "celestial_chart",
+          "grammar_name": "Celestial Chart",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 6,
+          "grammar_id": "astrolabe",
+          "grammar_name": "Astrolabe",
+          "duration_seconds": 30.0,
+          "encore": true
+        }
+      ]
+    },
+    "living_particles": {
+      "artistic_name": "Living Particles",
+      "production_id": "c11c_living_particles_v1",
+      "segments": [
+        {
+          "slot": 1,
+          "grammar_id": "swarm",
+          "grammar_name": "Swarm",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 2,
+          "grammar_id": "vortex",
+          "grammar_name": "Vortex",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 3,
+          "grammar_id": "collision_cloud",
+          "grammar_name": "Collision Cloud",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 4,
+          "grammar_id": "organic_pulse",
+          "grammar_name": "Organic Pulse",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 5,
+          "grammar_id": "magnetic_filament_cloud",
+          "grammar_name": "Magnetic Filament Cloud",
+          "duration_seconds": 30.0
+        },
+        {
+          "slot": 6,
+          "grammar_id": "swarm",
+          "grammar_name": "Swarm",
+          "duration_seconds": 30.0,
+          "encore": true
+        }
+      ]
+    },
+    "invisible_forces": {
+      "artistic_name": "Invisible Forces",
+      "production_id": "c11c_invisible_forces_v1",
+      "segments": [
+        {
+          "slot": 1,
+          "grammar_id": "dipole_field",
+          "grammar_name": "Dipole Field",
+          "duration_seconds": 25.0
+        },
+        {
+          "slot": 2,
+          "grammar_id": "vortex_field",
+          "grammar_name": "Vortex Field",
+          "duration_seconds": 25.0
+        },
+        {
+          "slot": 3,
+          "grammar_id": "saddle_field",
+          "grammar_name": "Saddle Field",
+          "duration_seconds": 25.0
+        },
+        {
+          "slot": 4,
+          "grammar_id": "quadrupole_field",
+          "grammar_name": "Quadrupole Field",
+          "duration_seconds": 25.0
+        },
+        {
+          "slot": 5,
+          "grammar_id": "gravitational_lens",
+          "grammar_name": "Gravitational Lens",
+          "duration_seconds": 25.0
+        },
+        {
+          "slot": 6,
+          "grammar_id": "topographic_basin",
+          "grammar_name": "Topographic Basin",
+          "duration_seconds": 25.0
+        },
+        {
+          "slot": 7,
+          "grammar_id": "scalar_potential",
+          "grammar_name": "Scalar Potential",
+          "duration_seconds": 30.0
+        }
+      ]
+    }
+  }
+}

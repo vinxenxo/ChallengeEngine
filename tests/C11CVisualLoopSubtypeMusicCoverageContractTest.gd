@@ -13,9 +13,10 @@ func _initialize() -> void:
     if failures.is_empty():
         print("[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] PASS")
         quit(0)
-    for f in failures: push_error(f)
-    print("[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] FAIL failures=%d" % failures.size())
-    quit(1)
+    else:
+        for f in failures: push_error(f)
+        print("[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] FAIL failures=%d" % failures.size())
+        quit(1)
 
 func _assert(condition: bool, message: String) -> void:
     if not condition: failures.append(message)

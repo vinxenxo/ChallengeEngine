@@ -6,7 +6,7 @@ foreach($family in $families){
     $p=Join-Path $ProjectRoot ("tools\prototypes\$family\run_prototype.ps1")
     if(-not(Test-Path -LiteralPath $p)){throw "Missing launcher: $p"}
     $s=Get-Content -Raw $p
-    foreach($needle in @("'--resolution',`$DeliveryResolution","'--fixed-fps','30'","'--quit-after','540'",'C11CMovieCapture.ps1','-Width 720 -Height 1280')){
+    foreach($needle in @("'--resolution',`$DeliveryResolution","'--fixed-fps','30'","'--quit-after','900'",'C11CMovieCapture.ps1','-Width 720 -Height 1280')){
         if($s -notlike "*$needle*"){throw "${family}: required launcher token missing: $needle"}
     }
     if($s -match "'--resolution','720','1280'"){throw "${family}: obsolete split resolution arguments remain."}
