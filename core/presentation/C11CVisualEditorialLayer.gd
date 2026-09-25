@@ -1,10 +1,11 @@
-# res://core/presentation/C11CVisualEditorialLayer.gd
+﻿# res://core/presentation/C11CVisualEditorialLayer.gd
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.9.0 — Shared visual-content social/editorial presentation layer.
+## C11-C 2.15.0 — shared visual/editorial layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
+## Global art-direction contract: 3-line header / 2-line footer.
 
 const C11CHeaderAnimatorV2Class = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
 const C11CVisualTypographyClass = preload("res://core/presentation/C11CVisualTypography.gd")
@@ -17,13 +18,13 @@ const CONTENT_X := 36.0
 const HEADER_MAX_WIDTH := CONTENT_WIDTH
 const HEADER_FONT_SIZE := 23
 const HEADER_MIN_FONT_SIZE := 15
-const HEADER_SECOND_Y := 74.0
-const HEADER_SECOND_HEIGHT := 64.0
+const HEADER_TEXT_Y := 2.0
+const HEADER_TEXT_HEIGHT := 136.0
 const HEADER_BOLD_EMBOLDEN := 0.70
 const FOOTER_FONT_SIZE := 14
 const FOOTER_MIN_FONT_SIZE := 11
-const FOOTER_LINE_Y := 20.0
-const FOOTER_LINE_HEIGHT := 34.0
+const FOOTER_TEXT_Y := 8.0
+const FOOTER_TEXT_HEIGHT := 126.0
 const HEADER_SEPARATOR_Y := 140.0
 const FOOTER_SEPARATOR_Y := 14.0
 const SECTION_BACKGROUND := Color("05070B")
@@ -33,8 +34,8 @@ var _header_root: Control
 var _footer_root: Control
 var _header_container: Control
 var _footer_container: Control
-var _header_line_2: Label
-var _footer_line_1: Label
+var _header_text: Label
+var _footer_text: Label
 var _header_rule: ColorRect
 var _footer_rule: ColorRect
 var _header_background: ColorRect
@@ -74,28 +75,28 @@ func mount(frame: UnifiedSocialFrame) -> bool:
     _header_container.add_child(_header_background)
     _footer_container.add_child(_footer_background)
 
-    # The former first header text keeps its entire upper space; only the
-    # double-line header block remains visible there. The rule moves below it.
     _header_rule = _new_rule("C11CHeaderRule", Vector2(CONTENT_X, HEADER_SEPARATOR_Y))
     _footer_rule = _new_rule("C11CFooterRule", Vector2(CONTENT_X, FOOTER_SEPARATOR_Y))
     _header_container.add_child(_header_rule)
     _footer_container.add_child(_footer_rule)
 
-    _header_line_2 = _new_label(
-        "C11CHeaderLine2",
-        Vector2(0.0, HEADER_SECOND_Y),
-        Vector2(LOGICAL_CANVAS_SIZE.x, HEADER_SECOND_HEIGHT),
+    # One shared Label per region. Matrix states use the exact same font
+    # resource, size and embolden role; only text content changes.
+    _header_text = _new_label(
+        "C11CHeaderText",
+        Vector2(0.0, HEADER_TEXT_Y),
+        Vector2(LOGICAL_CANVAS_SIZE.x, HEADER_TEXT_HEIGHT),
         HEADER_FONT_SIZE
     )
-    _footer_line_1 = _new_label(
-        "C11CFooterLine1",
-        Vector2(0.0, FOOTER_LINE_Y),
-        Vector2(LOGICAL_CANVAS_SIZE.x, FOOTER_LINE_HEIGHT),
+    _footer_text = _new_label(
+        "C11CFooterText",
+        Vector2(0.0, FOOTER_TEXT_Y),
+        Vector2(LOGICAL_CANVAS_SIZE.x, FOOTER_TEXT_HEIGHT),
         FOOTER_FONT_SIZE,
         true
     )
-    _header_container.add_child(_header_line_2)
-    _footer_container.add_child(_footer_line_1)
+    _header_container.add_child(_header_text)
+    _footer_container.add_child(_footer_text)
     _mounted = true
     return true
 
@@ -128,56 +129,60 @@ func apply_render_model(render_model: Dictionary) -> void:
     var rule_color: Color = _to_color(colors.get("rule", header_secondary))
     var section_background: Color = _to_color(colors.get("section_background", SECTION_BACKGROUND))
 
-    var header_primary_text: String = str(header.get("line_1", "")).strip_edges().to_upper()
-    var header_double_text: String = _wrap_two_lines(str(header.get("line_2", "")).strip_edges().to_upper())
-    var footer_line_1: String = str(footer.get("line_1", "")).strip_edges().to_upper()
-    var footer_removed_2: String = _wrap_two_lines(str(footer.get("line_2", "")).strip_edges().to_upper())
-    var footer_removed_3: String = _wrap_two_lines(str(footer.get("line_3", "")).strip_edges().to_upper())
+    var header_line_1: String = _single_line(str(header.get("line_1", "")).strip_edges().to_upper())
+    var header_line_2: String = _single_line(str(header.get("line_2", "")).strip_edges().to_upper())
+    var header_full_text: String = _compose_header_three_lines(header_line_1, header_line_2)
+    var footer_full_text: String = _compose_footer_two_lines(footer)
 
+    var matrix_enabled: bool = bool(editorial.get("matrix_enabled", true))
     var intro_active: bool = bool(editorial.get("intro_active", false))
     var intro_text: String = str(editorial.get("intro_text", "")).strip_edges().to_upper()
-    var matrix_enabled: bool = bool(editorial.get("matrix_enabled", true))
+
+    # Every Matrix state is a 3-line block. The font size is calculated once
+    # across the complete state sequence, preventing size jitter during swaps.
+    var sequence: Array[String] = [
+        header_full_text,
+        _pad_three_lines(_wrap_three_lines(header_line_2)),
+        _pad_three_lines(_wrap_three_lines(header_line_1)),
+        _pad_three_lines(_wrap_two_lines(str(footer.get("line_2", "")).strip_edges().to_upper())),
+        _pad_three_lines(_wrap_two_lines(str(footer.get("line_3", "")).strip_edges().to_upper()))
+    ]
+    var shared_header_font_size: int = _resolve_shared_header_font_size(sequence)
+    _header_text.add_theme_font_size_override("font_size", shared_header_font_size)
+
     if intro_active and not intro_text.is_empty():
         _animator = null
         _animator_sequence_signature = ""
-        _header_line_2.text = _wrap_two_lines(intro_text)
-        _header_line_2.modulate = Color(1.0, 1.0, 1.0, 0.96)
+        _header_text.text = _pad_three_lines(_wrap_three_lines(intro_text))
+        _header_text.modulate = Color(1.0, 1.0, 1.0, 0.96)
     elif matrix_enabled:
-        var sequence: Array[String] = [
-            header_double_text,
-            _wrap_two_lines(header_primary_text),
-            footer_removed_2,
-            footer_removed_3
-        ]
-        var sequence_signature := "|".join(sequence)
-        var seed_value := int(render_model.get("editorial_seed", 314159))
+        var sequence_signature: String = "|".join(sequence)
+        var seed_value: int = int(render_model.get("editorial_seed", 314159))
         if _animator == null or _animator_seed != seed_value:
-            _animator = C11CHeaderAnimatorV2Class.new(header_double_text, header_primary_text, seed_value)
+            _animator = C11CHeaderAnimatorV2Class.new(header_full_text, header_line_2, seed_value)
             _animator_seed = seed_value
             _animator_sequence_signature = ""
         if _animator_sequence_signature != sequence_signature and _animator != null and _animator.has_method("set_sequence"):
             _animator.call("set_sequence", sequence)
             _animator_sequence_signature = sequence_signature
-
-        var frame_index := int(render_model.get("editorial_frame_index", 0))
-        var frame_count := int(render_model.get("editorial_frame_count", 1))
+        var frame_index: int = int(render_model.get("editorial_frame_index", 0))
+        var frame_count: int = int(render_model.get("editorial_frame_count", 1))
         var animated: Dictionary = _animator.call("display_sequence_at", frame_index, frame_count)
-        _header_line_2.text = str(animated.get("text", header_double_text))
-        _header_line_2.modulate = Color(1.0, 1.0, 1.0, 0.90 if bool(animated.get("transition", false)) else 1.0)
+        _header_text.text = _pad_three_lines(str(animated.get("text", header_full_text)))
+        _header_text.modulate = Color(1.0, 1.0, 1.0, 0.93 if bool(animated.get("transition", false)) else 1.0)
     else:
         _animator = null
         _animator_sequence_signature = ""
-        _header_line_2.text = header_double_text
-        _header_line_2.modulate = Color.WHITE
+        _header_text.text = header_full_text
+        _header_text.modulate = Color.WHITE
 
-    _header_line_2.add_theme_color_override("font_color", header_primary if intro_active else header_secondary)
-    _header_line_2.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.72))
-    _footer_line_1.text = footer_line_1
-    _footer_line_1.add_theme_color_override("font_color", footer_data)
-    _footer_line_1.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.78))
+    _header_text.add_theme_color_override("font_color", header_primary if intro_active else header_secondary)
+    _header_text.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.72))
 
-    _fit_label(_header_line_2, _header_line_2.text, HEADER_FONT_SIZE, HEADER_MIN_FONT_SIZE, HEADER_MAX_WIDTH)
-    _fit_label(_footer_line_1, footer_line_1, FOOTER_FONT_SIZE, FOOTER_MIN_FONT_SIZE, 508.0)
+    _footer_text.text = footer_full_text
+    _footer_text.add_theme_color_override("font_color", footer_data)
+    _footer_text.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.78))
+    _fit_label(_footer_text, footer_full_text, FOOTER_FONT_SIZE, FOOTER_MIN_FONT_SIZE, 508.0)
 
     _header_rule.color = _with_alpha(rule_color, 0.34)
     _footer_rule.color = _with_alpha(rule_color, 0.34)
@@ -199,6 +204,8 @@ func clear() -> void:
     _footer_root = null
     _header_container = null
     _footer_container = null
+    _header_text = null
+    _footer_text = null
 
 func _new_background(node_name: String, height: float) -> ColorRect:
     var rect := ColorRect.new()
@@ -236,6 +243,28 @@ func _new_label(node_name: String, position_value: Vector2, size_value: Vector2,
     label.add_theme_constant_override("line_spacing", 0)
     return label
 
+func _resolve_shared_header_font_size(blocks: Array[String]) -> int:
+    if _header_text == null:
+        return HEADER_FONT_SIZE
+    var font: Font = _header_text.get_theme_font("font")
+    if font == null:
+        return HEADER_FONT_SIZE
+    var fitted: int = HEADER_FONT_SIZE
+    while fitted > HEADER_MIN_FONT_SIZE:
+        var all_fit: bool = true
+        for block in blocks:
+            var widest: float = 0.0
+            var lines: PackedStringArray = block.split("\n", true)
+            for line in lines:
+                widest = maxf(widest, font.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, fitted).x)
+            if widest > HEADER_MAX_WIDTH:
+                all_fit = false
+                break
+        if all_fit:
+            break
+        fitted -= 1
+    return fitted
+
 func _fit_label(label: Label, text_value: String, max_font_size: int, min_font_size: int, max_width: float) -> void:
     if label == null:
         return
@@ -243,7 +272,7 @@ func _fit_label(label: Label, text_value: String, max_font_size: int, min_font_s
     if font == null:
         return
     var fitted: int = max_font_size
-    var lines := text_value.split("\n", true)
+    var lines: PackedStringArray = text_value.split("\n", true)
     while fitted > min_font_size:
         var widest: float = 0.0
         for line in lines:
@@ -254,11 +283,11 @@ func _fit_label(label: Label, text_value: String, max_font_size: int, min_font_s
     label.add_theme_font_size_override("font_size", fitted)
 
 func _wrap_two_lines(text_value: String) -> String:
-    var clean := text_value.strip_edges().replace("\r", "").replace("\n", " ")
+    var clean: String = text_value.strip_edges().replace("\r", "").replace("\n", " ")
     var words: PackedStringArray = clean.split(" ", false)
     if words.size() <= 1:
         return clean
-    var font: Font = _header_line_2.get_theme_font("font") if _header_line_2 != null else null
+    var font: Font = _header_text.get_theme_font("font") if _header_text != null else null
     if font == null:
         return clean
     var measure_font := FontVariation.new()
@@ -269,16 +298,105 @@ func _wrap_two_lines(text_value: String) -> String:
     for i in range(1, words.size()):
         var left: String = " ".join(words.slice(0, i))
         var right: String = " ".join(words.slice(i))
-        var left_width := measure_font.get_string_size(left, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
-        var right_width := measure_font.get_string_size(right, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
-        var max_line := maxf(left_width, right_width)
-        var overflow := maxf(0.0, max_line - HEADER_MAX_WIDTH)
-        var balance := absf(left_width - right_width)
-        var score := overflow * 100000.0 + balance
+        var left_width: float = measure_font.get_string_size(left, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
+        var right_width: float = measure_font.get_string_size(right, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
+        var max_line: float = maxf(left_width, right_width)
+        var overflow: float = maxf(0.0, max_line - HEADER_MAX_WIDTH)
+        var balance: float = absf(left_width - right_width)
+        var score: float = overflow * 100000.0 + balance
         if score < best_score:
             best_score = score
             best_break = i
     return " ".join(words.slice(0, best_break)) + "\n" + " ".join(words.slice(best_break))
+
+func _wrap_three_lines(text_value: String) -> String:
+    var clean: String = text_value.strip_edges().replace("\r", "").replace("\n", " ")
+    var words: PackedStringArray = clean.split(" ", false)
+    if words.size() <= 2:
+        return clean
+    var font: Font = _header_text.get_theme_font("font") if _header_text != null else null
+    if font == null:
+        return clean
+    var measure_font := FontVariation.new()
+    measure_font.base_font = font
+    measure_font.variation_embolden = HEADER_BOLD_EMBOLDEN
+    var best_a: int = 1
+    var best_b: int = 2
+    var best_score: float = 1.0e30
+    for a in range(1, words.size() - 1):
+        for b in range(a + 1, words.size()):
+            var l1: String = " ".join(words.slice(0, a))
+            var l2: String = " ".join(words.slice(a, b))
+            var l3: String = " ".join(words.slice(b))
+            var w1: float = measure_font.get_string_size(l1, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
+            var w2: float = measure_font.get_string_size(l2, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
+            var w3: float = measure_font.get_string_size(l3, HORIZONTAL_ALIGNMENT_LEFT, -1, HEADER_FONT_SIZE).x
+            var max_line: float = maxf(w1, maxf(w2, w3))
+            var balance: float = absf(w1 - w2) + absf(w2 - w3) + absf(w1 - w3)
+            var overflow: float = maxf(0.0, max_line - HEADER_MAX_WIDTH)
+            var score: float = overflow * 100000.0 + balance
+            if score < best_score:
+                best_score = score
+                best_a = a
+                best_b = b
+    return " ".join(words.slice(0, best_a)) + "\n" + " ".join(words.slice(best_a, best_b)) + "\n" + " ".join(words.slice(best_b))
+
+func _compose_header_three_lines(line_1: String, line_2: String) -> String:
+    var primary: String = _single_line(line_1)
+    var secondary: String = _single_line(line_2)
+    if primary.is_empty():
+        return _pad_three_lines(_wrap_three_lines(secondary))
+    if secondary.is_empty():
+        return _pad_three_lines(_wrap_three_lines(primary))
+    return _pad_three_lines(primary + "\n" + _wrap_two_lines(secondary))
+
+func _compose_footer_two_lines(footer: Dictionary) -> String:
+    var line_1: String = _single_line(str(footer.get("line_1", "")).strip_edges().to_upper())
+    var line_2: String = _single_line(str(footer.get("line_2", "")).strip_edges().to_upper())
+    var line_3: String = _single_line(str(footer.get("line_3", "")).strip_edges().to_upper())
+    var chunks: Array[String] = []
+    for value in [line_1, line_2, line_3]:
+        if not value.is_empty():
+            chunks.append(value)
+    if chunks.is_empty():
+        return ""
+    var combined: String = " | ".join(chunks)
+    return _wrap_footer_two_lines(combined)
+
+func _wrap_footer_two_lines(text_value: String) -> String:
+    var clean: String = text_value.strip_edges().replace("\r", "").replace("\n", " ")
+    var words: PackedStringArray = clean.split(" ", false)
+    if words.size() <= 1:
+        return clean
+    var font: Font = _footer_text.get_theme_font("font") if _footer_text != null else null
+    if font == null:
+        return clean
+    var best_break: int = 1
+    var best_score: float = 1.0e30
+    for i in range(1, words.size()):
+        var left: String = " ".join(words.slice(0, i))
+        var right: String = " ".join(words.slice(i))
+        var left_width: float = font.get_string_size(left, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
+        var right_width: float = font.get_string_size(right, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
+        var max_line: float = maxf(left_width, right_width)
+        var overflow: float = maxf(0.0, max_line - 508.0)
+        var balance: float = absf(left_width - right_width)
+        var score: float = overflow * 100000.0 + balance
+        if score < best_score:
+            best_score = score
+            best_break = i
+    return " ".join(words.slice(0, best_break)) + "\n" + " ".join(words.slice(best_break))
+
+func _pad_three_lines(text_value: String) -> String:
+    var clean: PackedStringArray = text_value.replace("\r", "").split("\n", true)
+    while clean.size() < 3:
+        clean.append("")
+    if clean.size() > 3:
+        clean = PackedStringArray(clean.slice(0, 3))
+    return "\n".join(clean)
+
+func _single_line(value: String) -> String:
+    return value.strip_edges().replace("\r", "").replace("\n", " ")
 
 func _to_color(value) -> Color:
     if value is Color:

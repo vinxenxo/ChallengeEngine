@@ -11,6 +11,8 @@
     [double]$Duration = 0.0,
     [Alias('Silent')][switch]$NoSound,
     [switch]$NoFooter,
+    [switch]$ExportGif,
+    [switch]$KeepAvi,
     [switch]$Force
 )
 $ErrorActionPreference='Stop'
@@ -40,6 +42,8 @@ $launcherParams=@{Seed=[int]$Seed}
 if(-not [string]::IsNullOrWhiteSpace($Grammar)){$launcherParams.Grammar=$Grammar}
 if($NoSound){$launcherParams.NoSound=$true}
 if($NoFooter){$launcherParams.NoFooter=$true}
+if($ExportGif){$launcherParams.ExportGif=$true}
+if($KeepAvi){$launcherParams.KeepAvi=$true}
 if($Duration -gt 0){$launcherParams.Duration=$Duration}
 & $launcher @launcherParams
 if (-not $?) { throw 'Prototype generation failed.' }
@@ -65,9 +69,19 @@ if (-not (Test-Path -LiteralPath $candidateMp4)) {
 # Only now is replacement allowed.
 if ($Force -and (Test-Path -LiteralPath $productRoot)) { Remove-Item -LiteralPath $productRoot -Recurse -Force }
 New-Item -ItemType Directory -Force -Path $productRoot | Out-Null
-foreach ($name in ($required + @("$stem.gif","${stem}_music.wav"))) {
+foreach ($name in ($required + @("${stem}_music.wav"))) {
     $source=Join-Path $stage $name
     if (Test-Path -LiteralPath $source) { Copy-Item -LiteralPath $source -Destination (Join-Path $productRoot $name) -Force }
+}
+if($ExportGif){
+    $gifSource=Join-Path $stage "$stem.gif"
+    if(-not(Test-Path -LiteralPath $gifSource)){throw "ExportGif was requested but the generated GIF is missing: $gifSource"}
+    Copy-Item -LiteralPath $gifSource -Destination (Join-Path $productRoot "$stem.gif") -Force
+}
+if($KeepAvi){
+    $aviSource=Join-Path $stage "$stem.avi"
+    if(-not (Test-Path -LiteralPath $aviSource)){throw "KeepAvi was requested but the retained AVI is missing: $aviSource"}
+    Copy-Item -LiteralPath $aviSource -Destination (Join-Path $productRoot "$stem.avi") -Force
 }
 
 $repro=".\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $Family -Seed $Seed"
@@ -75,12 +89,14 @@ if($Duration -gt 0){$repro+=" -Duration $($Duration.ToString([System.Globalizati
 if(-not [string]::IsNullOrWhiteSpace($Grammar)){$repro+=" -Grammar $Grammar"}
 if ($NoSound) { $repro+=' -NoSound' }
 if ($NoFooter) { $repro+=' -NoFooter' }
+if ($ExportGif) { $repro+=' -ExportGif' }
+if ($KeepAvi) { $repro+=' -KeepAvi' }
 $sourceManifest=Get-Content -Raw (Join-Path $stage "${stem}_manifest.json") | ConvertFrom-Json
 $created=[DateTime]::UtcNow.ToString('o')
 $sourceDurationText=([double]$sourceManifest.visual.duration_seconds).ToString('F2')
 $prodManifest=[ordered]@{
     schema='C11-C-PRODUCTION-PRODUCT-V2'
-    revision='2.14.0'
+    revision='2.15.0'
     status='FINAL_PRODUCT'
     product_id=$productId
     family=$Family
@@ -93,6 +109,8 @@ $prodManifest=[ordered]@{
     duration_seconds=[double]$sourceManifest.visual.duration_seconds
     frames=[int]$sourceManifest.visual.frame_count
     sound_enabled=(-not $NoSound)
+    export_gif=[bool]$ExportGif
+    keep_avi=[bool]$KeepAvi
     footer_enabled=(-not $NoFooter)
     production_path=$productRoot
     source_prototype_revision=$sourceManifest.revision
@@ -128,7 +146,7 @@ if (Test-Path -LiteralPath $catalogPath) {
     $catalog=Get-Content -Raw $catalogPath | ConvertFrom-Json
 } else {
     New-Item -ItemType Directory -Force -Path $productionRoot | Out-Null
-    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.14.0';products=@()}
+    $catalog=[pscustomobject]@{schema='C11-C-PRODUCTION-CATALOG-V2';revision='2.15.0';products=@()}
 }
 if ($null -eq $catalog.products) { $catalog.products=@() }
 $catalog.products=@($catalog.products | Where-Object { $_.product_id -ne $productId })

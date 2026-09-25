@@ -1,8 +1,9 @@
-class_name C11CTheme
+﻿class_name C11CTheme
 extends RefCounted
 
-## Central presentation background. Future theme changes happen here.
-const SECTION_BACKGROUND: Color = Color("000000")
+## C11-C 2.15.0 — shared dark non-black presentation background.
+## Presentation-only.
+const SECTION_BACKGROUND: Color = Color("05070B")
 
 static func background_color() -> Color:
     return SECTION_BACKGROUND

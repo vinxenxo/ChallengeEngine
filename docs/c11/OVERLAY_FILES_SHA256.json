@@ -1,0 +1,112 @@
+[
+  {
+    "path": "OVERLAY_MANIFEST.json",
+    "sha256": "abb40a5994fd7e01431c16ddaaddd1e01b0788e3d9caf5c9b0c40b7735d6334e",
+    "bytes": 4185
+  },
+  {
+    "path": "docs/c11/C11-C_2.14.0_OVERLAY_README.md",
+    "sha256": "b9dce23be38f908c605982b3bc5aca92b914670b734b922714f88b6cb8edac8a",
+    "bytes": 650
+  },
+  {
+    "path": "profiles/presentation/c11c_visual_duration_policy.json",
+    "sha256": "9382a10aedfd938d79876ef281e3005650100fcf566858feee547062be312997",
+    "bytes": 1425
+  },
+  {
+    "path": "profiles/presentation/c11c_visual_loop_longform_schedule.json",
+    "sha256": "4cf5c3e7eba8ec55451228fcfa47624475e2908bbd5f8f6e80819f6288779e7d",
+    "bytes": 7852
+  },
+  {
+    "path": "tests/C11CCommonPresentationOverlayContractTest.gd",
+    "sha256": "b750af59c16b80f1976164c3ba240070b2a56ca2e9f2cd487fb8613d0e3944ab",
+    "bytes": 4167
+  },
+  {
+    "path": "tests/C11CVisualDurationPolicyContractTest.gd",
+    "sha256": "9ae998a3b005f8c375d485210991815d15303249211645ac98a0e3a26eaf84c9",
+    "bytes": 2693
+  },
+  {
+    "path": "tests/C11CVisualLoopLongformContractTest.gd",
+    "sha256": "f717c89fc4123a68c70c3a255f388b43fce3abc774ef5ce95698b10ed5cb6ddc",
+    "bytes": 2907
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/C11C_PRODUCTION_POLICY.md",
+    "sha256": "f61c162b513acfbe5fdc2a3853e17878ddad9ade18fec05da87fee0fd191b19f",
+    "bytes": 2838
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/C11C_TOOLCHAIN_CANONICAL.md",
+    "sha256": "acad0efba03e17a3a1f35b95042bafd7157525da13d43c4135c0bc5970c13380",
+    "bytes": 2726
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/README.md",
+    "sha256": "1403f1960ddffae1a5ee7f41d9ea8349a83fb3d334c2ff61a7e1cf5e457e46f0",
+    "bytes": 1788
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review.ps1",
+    "sha256": "00610400e55870c6bf9f6953365f743da6fb3786b49456cc02dedf75fb29f6f7",
+    "bytes": 3224
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1",
+    "sha256": "40f3be59368bb2e6559cbee8cb804e676bdbf1a1b4dab2f0a325bbace7d1cc19",
+    "bytes": 3912
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
+    "sha256": "8a45f2f59b5bf8fb2ccdd6a61c8a3e91021ca6e2041aeb9b72926d7ff1879035",
+    "bytes": 6380
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1",
+    "sha256": "7a5cd901bb10a3c55cd336fae28b9342f321c6fc0a3add6441191136f68c122a",
+    "bytes": 7318
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production.ps1",
+    "sha256": "5e7858962e42465f65a2df0c57d71ca45dfffe2261835ffbab5caaf2902e36b6",
+    "bytes": 10185
+  },
+  {
+    "path": "tools/prototypes/c11c_bulk/run_c11c_visual_loops_subtype_music_coverage.ps1",
+    "sha256": "b05e2429a56c5db8a0b56155765053824118247cdf1bdbe423f780009e0badb7",
+    "bytes": 7599
+  },
+  {
+    "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+    "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8",
+    "bytes": 1048
+  },
+  {
+    "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+    "sha256": "43240fb378ff74983bff9c450955983aa3f6c351c55934a17f90628e63a2bc69",
+    "bytes": 11276
+  },
+  {
+    "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+    "sha256": "36d5d2e8adbdc86579ae385c9bdca814df5f2ce51a4498f9bdca5e4f635c25fc",
+    "bytes": 11298
+  },
+  {
+    "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+    "sha256": "48cf82200eeb64c4af567591f8d12195c1a916d481414dc52953a40c0af7ec38",
+    "bytes": 11323
+  },
+  {
+    "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+    "sha256": "9eb2fa8fa969348a85b23bc733166f25356126f244806a5865d90f3ab269f683",
+    "bytes": 11324
+  },
+  {
+    "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+    "sha256": "02f267a58e2c77169b7d3210f942f98de72c9444c1a4c470f69a5fca665c82f4",
+    "bytes": 11313
+  }
+]

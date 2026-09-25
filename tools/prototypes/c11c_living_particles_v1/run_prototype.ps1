@@ -5,7 +5,10 @@
     [ValidateRange(20.0,23.0)]
     [double]$Duration = 0.0,
     [Alias('Silent')]
-    [switch]$NoSound
+    [switch]$NoSound,
+    [switch]$ExportGif,
+    [switch]$KeepAvi,
+    [string]$OutputRoot = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,9 +22,9 @@ if ([string]::IsNullOrWhiteSpace($Grammar)) {
 $env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $env:C11C_SOUND_ENABLED = if ($NoSound) { '0' } else { '1' }
 if($Duration -gt 0){ $env:C11C_DURATION_SECONDS = $Duration.ToString([System.Globalization.CultureInfo]::InvariantCulture) } else { Remove-Item Env:C11C_DURATION_SECONDS -ErrorAction SilentlyContinue }
-$ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_living_particles_v1'
+if([string]::IsNullOrWhiteSpace($OutputRoot)){ $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_living_particles_v1' } else { $ArtifactRoot = [System.IO.Path]::GetFullPath($OutputRoot) }
 $Stem = "LivingParticles_v1_seed_${Seed}"
-$Avi = Join-Path $ArtifactRoot ($Stem + '.avi')
+$Avi = if($KeepAvi) { Join-Path $ArtifactRoot ($Stem + '.avi') } else { Join-Path ([System.IO.Path]::GetTempPath()) ($Stem + '_' + [Guid]::NewGuid().ToString('N') + '.avi') }
 $LegacyMp4Silent = Join-Path $ArtifactRoot ($Stem + '_silent.mp4')
 $TempSilent = Join-Path ([System.IO.Path]::GetTempPath()) ('C11C_' + $Stem + '_silent.mp4')
 $Mp4 = Join-Path $ArtifactRoot ($Stem + '.mp4')
@@ -36,7 +39,7 @@ $Authoring = Join-Path $ArtifactRoot ($Stem + '_authoring.json')
 $Social = Join-Path $ArtifactRoot ($Stem + '_social.txt')
 
 New-Item -ItemType Directory -Force -Path $ArtifactRoot | Out-Null
-foreach ($p in @($Avi,$LegacyMp4Silent,$Mp4,$Gif,$Probe,$Audio,$GodotLog,$Manifest,$Authoring,$Social,$TempSilent)) {
+foreach ($p in @($Avi,$LegacyMp4Silent,$Mp4,$Probe,$Audio,$GodotLog,$Manifest,$Authoring,$Social,$TempSilent,$Gif)) {
     if (Test-Path -LiteralPath $p) { Remove-Item -Force -LiteralPath $p }
 }
 
@@ -60,6 +63,12 @@ try {
         $ErrorActionPreference = $nativeEap
     }
     if ($godotExit -ne 0) { throw "Godot prototype export failed: exit=$godotExit" }
+    # Prototype scenes still write their authoring snapshot under the canonical project artifact path.
+    # When OutputRoot is overridden for an extraordinary review, mirror that snapshot into the requested root.
+    if(-not (Test-Path -LiteralPath $Authoring)){
+        $canonicalAuthoring=Join-Path $ProjectRoot ('artifacts\prototypes\c11c_living_particles_v1\' + ($Stem + '_authoring.json'))
+        if(Test-Path -LiteralPath $canonicalAuthoring){ Copy-Item -LiteralPath $canonicalAuthoring -Destination $Authoring -Force }
+    }
     $errors = Select-String -Path $GodotLog -Pattern 'SHADER ERROR|Shader compilation failed|SCRIPT ERROR|Parse Error|ERROR:' -SimpleMatch:$false
     if ($errors) { throw "Godot reported prototype errors. See: $GodotLog" }
     $captureLine = Select-String -Path $GodotLog -Pattern 'recording movie in\s+720[^\r\n]*1280\s+@\s+30\s+FPS' -SimpleMatch:$false
@@ -89,9 +98,10 @@ try {
         & ffmpeg -y -hide_banner -loglevel error -i $TempSilent -i $Audio -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -ar 44100 -ac 2 -shortest -movflags +faststart $Mp4
         if ($LASTEXITCODE -ne 0) { throw "Audio mux failed: exit=$LASTEXITCODE" }
     }
-
-    & ffmpeg -y -hide_banner -loglevel error -i $Mp4 -vf 'fps=24,scale=360:640:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96:stats_mode=diff[p];[s1][p]paletteuse=dither=sierra2_4a' -loop 0 $Gif
-    if ($LASTEXITCODE -ne 0) { throw "GIF packaging failed: exit=$LASTEXITCODE" }
+    if($ExportGif) {
+        & ffmpeg -y -hide_banner -loglevel error -i $Mp4 -vf 'fps=24,scale=360:640:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96:stats_mode=diff[p];[s1][p]paletteuse=dither=sierra2_4a' -loop 0 $Gif
+        if ($LASTEXITCODE -ne 0) { throw "GIF packaging failed: exit=$LASTEXITCODE" }
+    }
 
     & ffprobe -v error -show_entries format=duration:stream=index,codec_type,codec_name,width,height,r_frame_rate,nb_frames,duration,sample_rate,channels -of json $Mp4 | Set-Content -Encoding UTF8 $Probe
     if ($LASTEXITCODE -ne 0) { throw "FFprobe validation failed: exit=$LASTEXITCODE" }
@@ -117,9 +127,12 @@ try {
     $repro += ' -Duration ' + $DurationSeconds.ToString([System.Globalization.CultureInfo]::InvariantCulture)
     if ($NoFooter) { $repro += ' -NoFooter' }
     if ($NoSound) { $repro += ' -NoSound' }
+    if ($ExportGif) { $repro += ' -ExportGif' }
+    if ($KeepAvi) { $repro += ' -KeepAvi' }
+    if (-not [string]::IsNullOrWhiteSpace($OutputRoot)) { $repro += ' -OutputRoot "' + $OutputRoot + '"' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.4_LIVING_PARTICLES_V1'
-        revision = '2.14.0'
+        revision = '2.15.0'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -139,7 +152,7 @@ try {
             frame_count = $FrameCount
             loop_cycles = [double]$author.loop_cycles
             loop_closed = $true
-            background = '000000'
+            background = '05070B'
             footer_enabled = -not $NoFooter
         }
         editorial = [ordered]@{
@@ -168,6 +181,7 @@ try {
             license = 'SIL Open Font License 1.1'
         }
         social_metadata = [System.IO.Path]::GetFileName($Social)
+        artifact_policy = [ordered]@{ export_gif = [bool]$ExportGif; keep_avi = [bool]$KeepAvi; avi_intermediate = [bool](-not $KeepAvi); output_root = $ArtifactRoot }
         reproduction_command = $repro
         technobabble = $author.technobabble
         frozen_boundaries_modified = $false
@@ -180,11 +194,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.14.0] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.14.0] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.14.0] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.14.0] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.14.0] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.15.0] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.13.0] MP4: " + $Mp4)
+    if($ExportGif){ Write-Host ("[C11-C-2.15.0] GIF: " + $Gif) }
+    Write-Host ("[C11-C-2.13.0] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.13.0] SOCIAL: " + $Social)
 } finally {
     if ($null -ne $movieOverride) {
         Exit-C11CMovieOverride -State $movieOverride
@@ -195,9 +209,8 @@ try {
     if (Test-Path -LiteralPath $LegacyMp4Silent) {
         Remove-Item -Force -LiteralPath $LegacyMp4Silent -ErrorAction SilentlyContinue
     }
-    # AVI is an intermediate Movie Maker capture only; the published MP4/GIF are the deliverables.
-    # Always remove it in finally to prevent multi-GiB capture buildup, including failed runs.
-    if (Test-Path -LiteralPath $Avi) {
+    # AVI is an intermediate capture. Retain only when explicitly requested with -KeepAvi.
+    if (-not $KeepAvi -and (Test-Path -LiteralPath $Avi)) {
         Remove-Item -Force -LiteralPath $Avi -ErrorAction SilentlyContinue
     }
     Pop-Location

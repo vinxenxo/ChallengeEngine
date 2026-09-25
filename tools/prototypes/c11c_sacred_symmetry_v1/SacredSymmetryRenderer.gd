@@ -1,6 +1,6 @@
-extends Node2D
+﻿extends Node2D
 
-## C11-C.3 v1.6 — Sacred Symmetry visual grammar renderer.
+## C11-C.3 v1.7 — Sacred Symmetry visual grammar renderer.
 ## Presentation-only. Exact symmetry belongs to the shader grammar.
 
 const WIDTH := 540.0
@@ -44,7 +44,7 @@ func set_style(grammar_mode: int, segment_count: float, ring_bias: float, glow_s
     _material.set_shader_parameter("core_scale", clamp(core_scale, 0.76, 1.24))
     _material.set_shader_parameter("tick_density", clamp(tick_density, 0.70, 1.45))
     _material.set_shader_parameter("mechanical_rate", clamp(mechanical_rate, 0.80, 2.30))
-    _material.set_shader_parameter("macro_scale", clamp(macro_scale, 0.84, 1.02))
+    _material.set_shader_parameter("macro_scale", clamp(macro_scale, 0.86, 1.04))
     _material.set_shader_parameter("node_density", clamp(node_density, 0.65, 1.35))
     _material.set_shader_parameter("fold_depth", clamp(fold_depth, 0.70, 1.30))
     _material.set_shader_parameter("color_diversity", clamp(color_diversity, 0.0, 1.0))

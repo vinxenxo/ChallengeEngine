@@ -1,4 +1,4 @@
-extends SceneTree
+﻿extends SceneTree
 
 ## C11-C 2.11.1 — Visual Drill social sidecar delivery contract.
 ## Production review runner must emit one .txt sidecar for every generated family/seed.
@@ -22,7 +22,8 @@ func _initialize() -> void:
     _assert(runner.find("c11c_visual_hooks.json") >= 0, "Visual Drill runner must consume the canonical hook bank.")
     _assert(runner.find("hook_index") >= 0, "Visual Drill manifest must expose deterministic hook selection metadata.")
     _assert(runner.find("#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying") >= 0, "Visual Drill sidecar must include the four fixed hashtags.")
-    _assert(runner.find("**$display**") >= 0, "Visual Drill social copy must use the new markdown-friendly format.")
+    _assert(runner.find("**") < 0, "Visual Drill social copy must not contain Markdown bold markers.")
+    _assert(runner.find("COPY_PASTE_READY:") >= 0, "Visual Drill social copy must expose a copy/paste-ready block.")
     _assert(runner.find("FAMILY_MUSIC_V4") >= 0, "Visual Drill runner must use family-aware music mode.")
     _assert(runner.find("audio ambient") < 0, "Visual Drill runner must not hard-code an old single ambient public copy.")
     _assert(runner.find("drill_motion_ambient_v2") < 0, "Visual Drill runner must not retain the superseded global drill ambient profile.")

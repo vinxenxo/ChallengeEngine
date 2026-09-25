@@ -73,19 +73,24 @@ def main() -> None:
 
     desc = (
         f'{loop_hook}\n\n'
-        f'**{display_name}** — {title_prefix} de arte generativa matemática y procedural.\n\n'
-        f'- **Variante:** {grammar}\n'
-        f'- **Paleta:** {palette}\n'
-        f'- **Seed:** {seed}\n'
-        f'- **Detalles:** Duración {duration:.2f}s, {cycles} ciclo(s) completo(s), '
+        f'{display_name} - {title_prefix} de arte generativa matemática y procedural.\n\n'
+        f'- Variante: {grammar}\n'
+        f'- Paleta: {palette}\n'
+        f'- Seed: {seed}\n'
+        f'- Detalles: Duración {duration:.2f}s, {cycles} ciclo(s) completo(s), '
         f'{"música ambiental determinista" if enabled else "sin sonido"}.\n\n'
         f'Diseñado en código con #GodotEngine para reproducción continua en bucle.'
     )
 
+    copy_paste = f'{loop_hook}\n\n{desc}\n\n{hashtag_line}'
+
     text = [
+        'COPY_PASTE_READY:',
+        copy_paste,
+        '',
         desc,
         '',
-        'TITLE:', f'{display_name} — {grammar.upper()}',
+        'TITLE:', f'{display_name} - {grammar.upper()}',
         '',
         'DESCRIPTION:', desc,
         '',

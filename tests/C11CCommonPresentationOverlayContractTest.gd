@@ -1,6 +1,6 @@
-extends SceneTree
+﻿extends SceneTree
 
-## C11-C 2.13.0 common presentation contract. Source-level smoke contract for all five loops.
+## C11-C 2.15.0 common presentation contract. Source-level smoke contract for all five loops.
 
 var failures: Array[String] = []
 
@@ -24,8 +24,12 @@ func _initialize() -> void:
     _assert(road_source.find("VANISHING_POINT") >= 0, "Living Particles Tron road must define a perspective vanishing point.")
     _assert(road_source.find("_travel") >= 0, "Living Particles Tron road must animate forward travel.")
     var layer_source := FileAccess.get_file_as_string("res://core/presentation/C11CVisualEditorialLayer.gd")
-    _assert(layer_source.find("const HEADER_FONT_SIZE := 23") >= 0, "Shared header font must be 23 logical px in C11-C 2.14.0.")
+    _assert(layer_source.find("const HEADER_FONT_SIZE := 23") >= 0, "Shared header font must be 23 logical px in C11-C 2.15.0.")
     _assert(layer_source.find("const HEADER_MAX_WIDTH := CONTENT_WIDTH") >= 0, "Header width must stay inside the shared content margins.")
+    _assert(layer_source.find("HEADER_TEXT_HEIGHT := 136.0") >= 0, "Header box must use the expanded three-line region.")
+    _assert(layer_source.find("_compose_header_three_lines") >= 0, "Shared header must compose exactly three lines.")
+    _assert(layer_source.find("_compose_footer_two_lines") >= 0, "Shared footer must compose two lines.")
+    _assert(layer_source.find("_resolve_shared_header_font_size") >= 0, "Matrix header states must share one resolved font size.")
     var particle_source := FileAccess.get_file_as_string("res://tools/prototypes/c11c_living_particles_v1/LivingParticlesRenderer.gd")
     _assert(particle_source.find("LivingParticlesBackground") >= 0, "Living Particles must own a separate Body background beneath the Tron road.")
     var shader_source := FileAccess.get_file_as_string("res://tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader")
