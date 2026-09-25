@@ -1,0 +1,41 @@
+{
+  "version": "1.1.0",
+  "purpose": "Canonical five-family Visual Loop crosswalk: technical_id -> artistic_name -> runtime_id -> production_id. Technical and artistic/productive names are aliases for the same five families.",
+  "families": [
+    {
+      "technical_id": "geometric",
+      "artistic_name": "Geometric Waves",
+      "production_id": "c11c_geometric_waves_v1",
+      "runtime_id": "geometric",
+      "canonical_family_count": 5
+    },
+    {
+      "technical_id": "fractal",
+      "artistic_name": "Fractal Bloom",
+      "production_id": "c11c_fractal_bloom_v1",
+      "runtime_id": "fractal",
+      "canonical_family_count": 5
+    },
+    {
+      "technical_id": "kaleidoscope",
+      "artistic_name": "Sacred Symmetry",
+      "production_id": "c11c_sacred_symmetry_v1",
+      "runtime_id": "sacred_symmetry",
+      "canonical_family_count": 5
+    },
+    {
+      "technical_id": "particle_flow",
+      "artistic_name": "Living Particles",
+      "production_id": "c11c_living_particles_v1",
+      "runtime_id": "living_particles",
+      "canonical_family_count": 5
+    },
+    {
+      "technical_id": "vector_field",
+      "artistic_name": "Invisible Forces",
+      "production_id": "c11c_invisible_forces_v1",
+      "runtime_id": "invisible_forces",
+      "canonical_family_count": 5
+    }
+  ]
+}

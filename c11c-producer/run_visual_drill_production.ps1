@@ -38,13 +38,12 @@ function Invoke-Checked {
     param([string]$Exe,[string[]]$Args,[string]$Label)
     Write-Host "[C11-C-PRODUCER-DRILL] $Label"
     & $Exe @Args
-    $exitCode=$LASTEXITCODE
-    if($exitCode -ne 0){ throw "$Label failed with exit code $exitCode" }
+    if(-not $?) { throw "$Label failed" }
 }
 function Get-Probe {
     param([string]$Path)
     $raw=& ffprobe -v error -show_streams -show_format -of json $Path
-    if($LASTEXITCODE -ne 0){ throw "ffprobe failed: $Path" }
+    if(-not $?) { throw "ffprobe failed: $Path" }
     return (($raw -join "`n")|ConvertFrom-Json)
 }
 function Invoke-GodotMovieChecked {
@@ -52,12 +51,12 @@ function Invoke-GodotMovieChecked {
     $stdoutPath=Join-Path $RunDir 'godot_stdout.log'
     $stderrPath=Join-Path $RunDir 'godot_stderr.log'
     & godot @Args > $stdoutPath 2> $stderrPath
-    $exitCode=$LASTEXITCODE
+    $nativeOk=$?
     $stdout=if(Test-Path -LiteralPath $stdoutPath){Get-Content -Raw -LiteralPath $stdoutPath}else{''}
     $stderr=if(Test-Path -LiteralPath $stderrPath){Get-Content -Raw -LiteralPath $stderrPath}else{''}
     $log=$stdout+"`n"+$stderr
     foreach($bad in @('SCRIPT ERROR:','Parse Error:','Compile Error:','Failed to compile depended scripts','Invalid call. Nonexistent function')){ if($log -match [regex]::Escape($bad)){ throw "Godot drill render reported $bad. See $stdoutPath / $stderrPath" } }
-    if($exitCode -ne 0){ throw "Godot drill render failed: $Family seed=$Seed. See $stdoutPath / $stderrPath" }
+    if(-not $nativeOk){ throw "Godot drill render failed: $Family seed=$Seed. See $stdoutPath / $stderrPath" }
     if($log -notmatch '\[VISUAL_CONTENT_PLAYER\] Ready \[visual_drill/'){ throw "VisualContentPlayer did not reach READY for $Family seed=$Seed. See $stdoutPath / $stderrPath" }
 }
 function Get-Sha { param([string]$Path); return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant() }
@@ -66,7 +65,7 @@ $state=$null
 try {
     Write-Host "[C11-C-PRODUCER-DRILL] Authoring envelope $Family seed=$Seed T$DifficultyTier speed=$SpeedMultiplier pacing=$PacingMode"
     & godot --headless --path $ProjectRoot --script 'c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd' -- $request
-    if($LASTEXITCODE -ne 0){ throw 'Visual Drill envelope generation failed.' }
+    if(-not $?) { throw 'Visual Drill envelope generation failed.' }
     if(-not(Test-Path -LiteralPath $response)){ throw 'Visual Drill envelope generator returned no response.' }
     $resp=Get-Content -Raw -LiteralPath $response | ConvertFrom-Json
     if(-not $resp.ok){ throw "Visual Drill authoring failed: $($resp.error)" }
@@ -102,8 +101,7 @@ try {
     } else {
         $audio=Join-Path $stage "${productId}_music.wav"
         & python $AudioGenerator $audio $Seed 1 $totalSeconds $Family 'drill'
-        $audioExitCode=$LASTEXITCODE
-        if($audioExitCode -ne 0){ throw "Drill audio generation failed: exit=$audioExitCode" }
+        if(-not $?) { throw 'Drill audio generation failed.' }
         if(-not(Test-Path -LiteralPath $audio)){ throw "Drill music WAV missing: $audio" }
         Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$silent,'-i',$audio,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','128k','-ar','44100','-ac','2','-shortest','-movflags','+faststart',$final) 'Mux drill audio'
         Remove-Item -LiteralPath $silent -Force

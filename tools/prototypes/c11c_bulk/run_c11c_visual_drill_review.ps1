@@ -166,8 +166,40 @@ function Export-Gif {
     Invoke-Checked 'ffmpeg' @('-y','-hide_banner','-loglevel','error','-i',$Mp4Path,'-vf','fps=12,scale=360:640:flags=lanczos:force_original_aspect_ratio=decrease,pad=360:640:(ow-iw)/2:(oh-ih)/2','-an',$GifPath) "Build review GIF $GifPath"
 }
 
+function Get-VisualDrillHook {
+    param([Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed)
+    $hookDataPath = Join-Path $ProjectRoot 'profiles\presentation\c11c_visual_hooks.json'
+    if(-not (Test-Path -LiteralPath $hookDataPath)){throw "Visual hook bank missing: $hookDataPath"}
+    $hookData = Get-Content -Raw -LiteralPath $hookDataPath | ConvertFrom-Json
+    $entry = $hookData.visual_drills.$Family
+    if($null -eq $entry){throw "No Visual Drill hook bank for family: $Family"}
+    $hooks = @($entry.hooks)
+    if($hooks.Count -ne 10){throw "Visual Drill hook bank for $Family must contain exactly 10 hooks: got $($hooks.Count)"}
+    $hookIndex = (($Seed + [int]$entry.family_offset) % $hooks.Count + $hooks.Count) % $hooks.Count
+    return [pscustomobject]@{
+        Text = [string]$hooks[$hookIndex]
+        Index = $hookIndex
+        BankVersion = [string]$hookData.version
+    }
+}
+
 function Write-SocialSidecar {
-    param([Parameter(Mandatory=$true)][string]$Path,[Parameter(Mandatory=$true)][string]$Family,[Parameter(Mandatory=$true)][int]$Seed,[Parameter(Mandatory=$true)][double]$Duration,[Parameter(Mandatory=$true)][int]$Frames,[Parameter(Mandatory=$true)][double]$Countdown,[Parameter(Mandatory=$true)][double]$EndCTA,[Parameter(Mandatory=$true)][double]$TotalDuration,[Parameter(Mandatory=$true)][int]$TotalFrames,[Parameter(Mandatory=$true)][string]$AudioMode,[Parameter(Mandatory=$true)][string]$AudioProfile)
+    param(
+        [Parameter(Mandatory=$true)][string]$Path,
+        [Parameter(Mandatory=$true)][string]$Family,
+        [Parameter(Mandatory=$true)][int]$Seed,
+        [Parameter(Mandatory=$true)][double]$Duration,
+        [Parameter(Mandatory=$true)][int]$Frames,
+        [Parameter(Mandatory=$true)][double]$Countdown,
+        [Parameter(Mandatory=$true)][double]$EndCTA,
+        [Parameter(Mandatory=$true)][double]$TotalDuration,
+        [Parameter(Mandatory=$true)][int]$TotalFrames,
+        [Parameter(Mandatory=$true)][string]$AudioMode,
+        [Parameter(Mandatory=$true)][string]$AudioProfile
+    )
+    $hookInfo = Get-VisualDrillHook -Family $Family -Seed $Seed
+    $hook = $hookInfo.Text
+    $hookIndex = $hookInfo.Index
     $display = switch ($Family) {
         'tracking' { 'TRACKING' }
         'saccade' { 'SACCADE' }
@@ -175,53 +207,36 @@ function Write-SocialSidecar {
         'peripheral_scan' { 'PERIPHERAL SCAN' }
         default { $Family.ToUpperInvariant() }
     }
-    $description = "C11-C Visual Drill / $display. Deterministic procedural visual exercise, seed $Seed. $([math]::Round($Duration,2))s at 30 FPS, with shared preparation and terminal self-evaluation phases."
-    $hashtags = switch ($Family) {
-        'tracking' { '#VisualDrill #Tracking #SmoothPursuit #EyeTraining #Perception #ProceduralArt #TechArt' }
-        'saccade' { '#VisualDrill #Saccade #EyeTraining #Memory #Perception #ProceduralArt #TechArt' }
-        'pursuit' { '#VisualDrill #Pursuit #SmoothPursuit #FovealAttention #EyeTraining #ProceduralArt #TechArt' }
-        'peripheral_scan' { '#VisualDrill #PeripheralVision #Attention #EyeTraining #Perception #ProceduralArt #TechArt' }
-        default { '#VisualDrill #VisualTraining #Perception #ProceduralArt #GenerativeArt #DigitalArt #TechArt' }
+    $familyTags = switch ($Family) {
+        'tracking' { '#VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt' }
+        'saccade' { '#VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt' }
+        'pursuit' { '#VisualDrill #Pursuit #SmoothPursuit #FovealAttention #VisualChallenge #ProceduralArt' }
+        'peripheral_scan' { '#VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt' }
+        default { '#VisualDrill #VisualChallenge #ProceduralArt' }
     }
+    $hashtags = '#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying ' + $familyTags
     $content=@"
-TITLE: VISUAL DRILL // $display
+$hook
 
-DESCRIPTION:
-$description
+**$display** — Visual drill de presentación procedural y determinista.
 
-FAMILY: $Family
-SEED: $Seed
-RESOLUTION: 720x1280
-FPS: 30
-GAMEPLAY DURATION: $([math]::Round($Duration,2)) s
-GAMEPLAY FRAMES: $Frames
-COUNTDOWN: $([math]::Round($Countdown,2)) s
-END CTA: $([math]::Round($EndCTA,2)) s
-END CTA TEXT: ¿LO CONSEGUISTE? / ¿HASTA DÓNDE LLEGASTE?
-TOTAL DURATION: $([math]::Round($TotalDuration,2)) s
-TOTAL FRAMES: $TotalFrames
-AUDIO: $AudioMode
-MATRIX HEADER TRANSITION: ON
-SHARED SOCIAL/EDITORIAL LAYOUT: ON
-CTA POSITION: HEADER
-FOOTER DURING CTA: VISIBLE
-FONTS: HEADER=INTER BOLD | FOOTER=NOTO SANS MONO REGULAR
-BACKGROUND: PROCEDURAL / MOBILE-SAFE
+- **Familia:** $display
+- **Seed:** $Seed
+- **Detalles:** Duración $([math]::Round($Duration,2))s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
 
-HASHTAGS:
-$hashtags
+Diseñado en código con #GodotEngine para este reto visual procedimental.
 
-REVIEW SOURCE:
-C11-A qualification envelope; seed 12345 uses the deterministic A copy when present.
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying $familyTags
 "@
     [System.IO.File]::WriteAllText($Path,$content,(New-Object System.Text.UTF8Encoding($false)))
 }
 
 Write-Host '============================================================'
-Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.9.0'
+Write-Host '[C11-C-DRILL] VISUAL DRILL SOCIAL REVIEW — C11-C 2.12.0'
 Write-Host ("[C11-C-DRILL] $($Drills.Count) families x $($Seeds.Count) seeds = $($Drills.Count * $Seeds.Count) physical renders")
 Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + gameplay (17s/21s) + 3s end CTA = 23s/27s total'
 Write-Host ("[C11-C-DRILL] Shared editorial layout / terminal self-evaluation CTA / audio ON")
+Write-Host '[C11-C-DRILL] MATRIX HEADER TRANSITION: ON'
 Write-Host '============================================================'
 
 if($ResetReviewAssets -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
@@ -348,13 +363,15 @@ try {
                 'saccade' { 'CIRCUIT_PULSE' }
                 'pursuit' { 'ORGANIC_BLOOM' }
                 'peripheral_scan' { 'ORBITAL_RITUAL' }
-                default { throw "No FAMILY_MUSIC_V3 profile defined for $family" }
+                default { throw "No FAMILY_MUSIC_V4 profile defined for $family" }
             }
+            $hookInfo = Get-VisualDrillHook -Family $family -Seed $seed
+            $audioSemanticKey = "family=$family|seed=$seed"
             $audioPath=Join-Path $AudioRoot ("${family}_seed_${seed}_${audioProfile}.wav")
             if($NoSound){
                 Move-Item -LiteralPath $silentMp4 -Destination $finalMp4 -Force
             } else {
-                & python $AudioGenerator $audioPath $seed 1 $totalDuration $family 'drill'
+                & python $AudioGenerator $audioPath $seed 1 $totalDuration $family 'drill' $audioSemanticKey
                 if($LASTEXITCODE -ne 0){throw "Music generation failed for ${runId}: exit=$LASTEXITCODE"}
                 if(-not(Test-Path -LiteralPath $audioPath)){throw "Family music WAV missing: $audioPath"}
                 Mux-Audio -VideoPath $silentMp4 -AudioPath $audioPath -OutputPath $finalMp4
@@ -365,14 +382,15 @@ try {
             Export-KeyFrames -Mp4Path $finalMp4 -RunDir $targetDir
             Export-ContactSheet -RunDir $targetDir
             Export-Gif -Mp4Path $finalMp4 -GifPath $gifPath
+            $hookInfo = Get-VisualDrillHook -Family $family -Seed $seed
             $socialPath = Join-Path $targetDir "VisualDrill_${family}_seed_${seed}_social.txt"
-            Write-SocialSidecar -Path $socialPath -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V3'}) -AudioProfile $(if($NoSound){'OFF'}else{$audioProfile})
+            Write-SocialSidecar -Path $socialPath -Family $family -Seed $seed -Duration $duration -Frames $frames -Countdown $CountdownSeconds -EndCTA $EndCTASeconds -TotalDuration $totalDuration -TotalFrames $totalFrames -AudioMode $(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'}) -AudioProfile $(if($NoSound){'OFF'}else{$audioProfile})
             if(-not (Test-Path -LiteralPath $socialPath)){ throw "Social sidecar was not created: $socialPath" }
             if((Get-Item -LiteralPath $socialPath).Length -lt 160){ throw "Social sidecar is unexpectedly small: $socialPath" }
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.10.1'
+                revision='2.12.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -386,12 +404,18 @@ try {
                 end_cta_frames=$endCtaFrames
                 end_cta_main='¿LO CONSEGUISTE?'
                 end_cta_sub='¿HASTA DÓNDE LLEGASTE?'
+                hook=$hookInfo.Text
+                hook_index=$hookInfo.Index
+                hook_bank_version=$hookInfo.BankVersion
+                cta_position='HEADER'
+                footer_during_cta='VISIBLE'
                 total_duration_seconds=$totalDuration
                 total_frame_count=$totalFrames
                 matrix_enabled=$true
                 editorial_layout='shared_c11c_social'
-                audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V3'})
+                audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'})
                 audio_profile=$(if($NoSound){$null}else{$audioProfile})
+                audio_semantic_key=$(if($NoSound){$null}else{$audioSemanticKey})
                 audio_master_sha256=$(if($NoSound){$null}else{Get-FileSha256Hex -Path $audioPath})
                 typography=[ordered]@{header='Inter Bold';footer='Noto Sans Mono Regular';license='SIL Open Font License 1.1'}
                 source_envelope=$envelopePath
@@ -414,7 +438,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.10.1'
+    revision='2.12.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count
@@ -433,7 +457,7 @@ $rootManifest=[ordered]@{
     delivery='720x1280 / 9:16 / 30 FPS'
     logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
     matrix_enabled=$true
-    audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V3'})
+    audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'})
     audio_scope=$(if($NoSound){'OFF'}else{'PER-FAMILY-SEED'})
     source_envelope_root=$EnvelopeRoot
     review_root=$ReviewRoot

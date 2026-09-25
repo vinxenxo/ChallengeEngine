@@ -32,7 +32,7 @@ func set_palette(deep: Color, primary: Color, secondary: Color, highlight: Color
     _material.set_shader_parameter("highlight_color", highlight)
 
 func set_style(grammar_mode: int, trace_count: float, curvature: float, glow_strength: float, field_rotation: float, storm_offset: Vector2, pulse_speed: float, field_twist: float, pulse_width: float, storm_scale: float, lens_strength: float, basin_depth: float, pole_separation: float, quadrupole_skew: float, color_phase: float = 0.0) -> void:
-    _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 5))
+    _material.set_shader_parameter("grammar_mode", clamp(grammar_mode, 0, 6))
     _material.set_shader_parameter("trace_count", clamp(trace_count, 50.0, 92.0))
     _material.set_shader_parameter("curvature", clamp(curvature, 0.4, 1.4))
     _material.set_shader_parameter("glow_strength", clamp(glow_strength, 0.0, 1.0))

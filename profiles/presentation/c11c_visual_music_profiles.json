@@ -1,109 +1,276 @@
 {
-  "version": "3.0.0",
-  "mode": "FAMILY_MUSIC_V3",
+  "version": "4.1.1",
+  "mode": "FAMILY_MUSIC_V4",
   "mobile_safe": true,
   "event_coupled": false,
   "seed_deterministic": true,
   "design_rules": {
     "sample_rate": 44100,
     "channels": 2,
-    "max_peak": 0.2,
-    "delivery_codec": "AAC 128k",
+    "max_peak": 0.36,
+    "delivery_codec": "AAC 192k loops / AAC 128k drills",
     "avoid_high_frequency_transients": true,
     "no_kick_snare_layer": true,
     "no_exact_game_event_sync": true,
-    "cta_settle_seconds": 3.0
+    "cta_settle_seconds": 3.0,
+    "target_rms_min": 0.08,
+    "scale": "A minor pentatonic",
+    "pentatonic_hz": [
+      110.0,
+      130.81,
+      146.83,
+      164.81,
+      196.0,
+      220.0,
+      261.63,
+      293.66,
+      329.63
+    ],
+    "attack_seconds": [
+      1.0,
+      2.5
+    ],
+    "release_seconds": [
+      1.5,
+      3.0
+    ],
+    "low_pass_cutoff_hz": [
+      1400.0,
+      3000.0
+    ],
+    "noise_modulation": "deterministic_low_frequency_loop_safe_value_noise",
+    "generator_revision": "4.1.1",
+    "semantic_visual_binding": "family_plus_seed; loops also include visual_grammar; never gameplay-event/frame coupled",
+    "stereo_motion": "slow_deterministic_pan_within_plus_minus_0.16",
+    "seed_pitch_scale": "whole_pad_transposition_0.80_to_1.20",
+    "target_rms_max": 0.16,
+    "target_peak": 0.35,
+    "low_pass_mode": "loop_safe_periodically_modulated_low_pass"
   },
   "profiles": [
     {
       "id": "FLOWING_VECTOR",
       "role": "airy low-mid motion bed",
       "mood": "fluid / directional / weightless",
-      "root_hz": 73.4162,
+      "root_hz": 146.83,
       "color": "cyan-indigo-air",
-      "paired_visual_loop": "invisible_forces"
+      "paired_visual_loop": "invisible_forces",
+      "tempo_bpm": 56,
+      "attack_sec": 1.8,
+      "release_sec": 2.2,
+      "cutoff_hz": 2400,
+      "pulse_depth": 0.07,
+      "air": 0.012,
+      "degree_sequence": [
+        0,
+        3,
+        5,
+        7
+      ],
+      "sustain_level": 0.82,
+      "pan_depth": 0.12,
+      "noise_rate": 0.18,
+      "harmonic_presence": 0.22,
+      "decay_sec": 1.0,
+      "generator_revision": "4.1.1"
     },
     {
       "id": "CIRCUIT_PULSE",
       "role": "clean harmonic pulse without percussion",
       "mood": "precise / ballistic / crystalline",
-      "root_hz": 65.4064,
+      "root_hz": 130.81,
       "color": "cobalt-electric",
-      "paired_visual_loop": "geometric"
+      "paired_visual_loop": "geometric",
+      "tempo_bpm": 76,
+      "attack_sec": 1.2,
+      "release_sec": 1.8,
+      "cutoff_hz": 2600,
+      "pulse_depth": 0.1,
+      "air": 0.01,
+      "degree_sequence": [
+        0,
+        2,
+        4,
+        7
+      ],
+      "sustain_level": 0.82,
+      "pan_depth": 0.12,
+      "noise_rate": 0.18,
+      "harmonic_presence": 0.22,
+      "decay_sec": 1.0,
+      "generator_revision": "4.1.1"
     },
     {
       "id": "ORGANIC_BLOOM",
       "role": "warm evolving chord bloom",
       "mood": "organic / expanding / luminous",
-      "root_hz": 87.3071,
+      "root_hz": 164.81,
       "color": "violet-amber",
-      "paired_visual_loop": "fractal"
+      "paired_visual_loop": "fractal",
+      "tempo_bpm": 48,
+      "attack_sec": 2.2,
+      "release_sec": 2.8,
+      "cutoff_hz": 2200,
+      "pulse_depth": 0.11,
+      "air": 0.015,
+      "degree_sequence": [
+        0,
+        3,
+        5,
+        8
+      ],
+      "sustain_level": 0.82,
+      "pan_depth": 0.12,
+      "noise_rate": 0.18,
+      "harmonic_presence": 0.22,
+      "decay_sec": 1.0,
+      "generator_revision": "4.1.1"
     },
     {
       "id": "ORBITAL_RITUAL",
       "role": "slow celestial harmonic orbit",
       "mood": "celestial / ritual / suspended",
-      "root_hz": 55.0,
+      "root_hz": 110.0,
       "color": "gold-violet",
-      "paired_visual_loop": "sacred_symmetry"
+      "paired_visual_loop": "sacred_symmetry",
+      "tempo_bpm": 44,
+      "attack_sec": 2.4,
+      "release_sec": 3.0,
+      "cutoff_hz": 1900,
+      "pulse_depth": 0.08,
+      "air": 0.008,
+      "degree_sequence": [
+        0,
+        2,
+        5,
+        7
+      ],
+      "sustain_level": 0.82,
+      "pan_depth": 0.12,
+      "noise_rate": 0.18,
+      "harmonic_presence": 0.22,
+      "decay_sec": 1.0,
+      "generator_revision": "4.1.1"
     },
     {
       "id": "PRISMATIC_MEMORY",
       "role": "mirrored harmonic refraction",
       "mood": "prismatic / memory / reflective",
-      "root_hz": 82.4069,
+      "root_hz": 196.0,
       "color": "teal-magenta",
-      "paired_visual_loop": "kaleidoscope"
+      "paired_visual_loop": "kaleidoscope",
+      "tempo_bpm": 64,
+      "attack_sec": 1.6,
+      "release_sec": 2.5,
+      "cutoff_hz": 2500,
+      "pulse_depth": 0.09,
+      "air": 0.013,
+      "degree_sequence": [
+        0,
+        4,
+        6,
+        8
+      ],
+      "sustain_level": 0.82,
+      "pan_depth": 0.12,
+      "noise_rate": 0.18,
+      "harmonic_presence": 0.22,
+      "decay_sec": 1.0,
+      "generator_revision": "4.1.1"
     }
   ],
   "bindings": {
     "visual_drill/tracking": {
       "profile": "FLOWING_VECTOR",
-      "paired_with": "visual_loop/invisible_forces"
+      "paired_with": "visual_loop/invisible_forces",
+      "music_semantic_inputs": [
+        "seed"
+      ]
     },
     "visual_drill/saccade": {
       "profile": "CIRCUIT_PULSE",
-      "paired_with": "visual_loop/geometric"
+      "paired_with": "visual_loop/geometric",
+      "music_semantic_inputs": [
+        "seed"
+      ]
     },
     "visual_drill/pursuit": {
       "profile": "ORGANIC_BLOOM",
-      "paired_with": "visual_loop/fractal"
+      "paired_with": "visual_loop/fractal",
+      "music_semantic_inputs": [
+        "seed"
+      ]
     },
     "visual_drill/peripheral_scan": {
       "profile": "ORBITAL_RITUAL",
-      "paired_with": "visual_loop/sacred_symmetry"
+      "paired_with": "visual_loop/sacred_symmetry",
+      "music_semantic_inputs": [
+        "seed"
+      ]
     },
     "visual_loop/geometric": {
       "profile": "CIRCUIT_PULSE",
-      "paired_with": "visual_drill/saccade"
+      "paired_with": "visual_drill/saccade",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/fractal": {
       "profile": "ORGANIC_BLOOM",
-      "paired_with": "visual_drill/pursuit"
+      "paired_with": "visual_drill/pursuit",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/sacred_symmetry": {
       "profile": "ORBITAL_RITUAL",
-      "paired_with": "visual_drill/peripheral_scan"
+      "paired_with": "visual_drill/peripheral_scan",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/living_particles": {
       "profile": "ORGANIC_BLOOM",
-      "paired_with": "visual_drill/pursuit"
+      "paired_with": "visual_drill/pursuit",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/invisible_forces": {
       "profile": "FLOWING_VECTOR",
-      "paired_with": "visual_drill/tracking"
+      "paired_with": "visual_drill/tracking",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/kaleidoscope": {
       "profile": "PRISMATIC_MEMORY",
-      "paired_with": "visual_loop/sacred_symmetry"
+      "paired_with": "visual_loop/sacred_symmetry",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/particle_flow": {
       "profile": "ORGANIC_BLOOM",
-      "paired_with": "visual_drill/pursuit"
+      "paired_with": "visual_drill/pursuit",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     },
     "visual_loop/vector_field": {
       "profile": "FLOWING_VECTOR",
-      "paired_with": "visual_drill/tracking"
+      "paired_with": "visual_drill/tracking",
+      "music_semantic_inputs": [
+        "seed",
+        "visual_grammar"
+      ]
     }
   }
 }

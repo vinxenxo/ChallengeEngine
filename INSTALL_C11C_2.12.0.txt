@@ -1,0 +1,19 @@
+C11-C 2.12.0 OVERLAY
+====================
+Baseline required: C11-C 2.11.1 validated.
+
+Copy the contents of this overlay into the repository root.
+Do not replace the repository with the overlay ZIP itself.
+
+This overlay adds:
+- explicit visual grammar selection;
+- Invisible Forces / Scalar Potential;
+- corrected subtype/audio coverage validation;
+- stronger loop-safe FAMILY_MUSIC_V4 generator contract;
+- no-emoji social output;
+- weekly 27-slot production batch;
+- monthly repeated-pattern batch with globally unique seeds;
+- documentation and regression suites.
+
+Optional on Windows after copying:
+Get-ChildItem -Path . -Recurse | Unblock-File

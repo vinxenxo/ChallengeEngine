@@ -20,7 +20,7 @@ def resolve_profile(family):
         binding=bindings.get(route)
         if isinstance(binding,dict) and str(binding.get("profile","")).strip():
             return str(binding["profile"])
-    raise ValueError(f"No FAMILY_MUSIC_V3 binding for family: {family}")
+    raise ValueError(f"No FAMILY_MUSIC_V4 binding for family: {family}")
 
 def main():
     if len(sys.argv)<5:
@@ -37,7 +37,8 @@ def main():
     if len(sys.argv)>7:
         grammar=sys.argv[7]
     profile=resolve_profile(family)
-    generate(out, seed, family, profile, cycles, dur, kind)
-    print(f'[C11-C-AUDIO] FAMILY_MUSIC_V3 generated: {out} | {dur:.2f}s | family={family} | profile={profile} | kind={kind} | grammar={grammar}')
+    grammar = grammar.strip() if grammar.strip() else family
+    generate(out, seed, family, profile, cycles, dur, kind, grammar)
+    print(f'[C11-C-AUDIO] FAMILY_MUSIC_V4 generated: {out} | {dur:.2f}s | family={family} | profile={profile} | kind={kind} | semantic={grammar}')
 
 if __name__=='__main__': main()

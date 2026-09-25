@@ -9,6 +9,7 @@ const VisualDrillPresentationBinder = preload("res://core/presentation/VisualDri
 const C11CVisualEditorialLayer = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
 const VisualContentPlayer = preload("res://core/presentation/rendering/VisualContentPlayer.gd")
 const C11CHeaderAnimatorV2Class = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
+const VisualHookBank = preload("res://core/presentation/C11CVisualHookBank.gd")
 
 var failures: Array[String] = []
 
@@ -69,6 +70,9 @@ func _initialize() -> void:
 	_assert(bool(editorial.get("enabled", false)), "Editorial layer must be enabled for Visual Drill.")
 	_assert(bool(editorial.get("matrix_enabled", false)), "Visual Drill editorial Matrix must be enabled.")
 	_assert(str(editorial.get("header", {}).get("line_1", "")).begins_with("TRACKING"), "Tracking header source line must identify the drill.")
+	_assert(str(editorial.get("hook_text", "")).length() > 0, "Tracking editorial model must expose a deterministic hook.")
+	_assert(str(editorial.get("header", {}).get("line_2", "")) == VisualHookBank.hook_for("tracking", 12345), "Tracking Header hook must come from the shared hook bank.")
+	_assert(int(editorial.get("hook_index", -1)) == VisualHookBank.hook_index_for("tracking", 12345), "Tracking hook index must be deterministic.")
 	_assert(str(editorial.get("footer", {}).get("line_3", "")).find("VISUAL DRILL") >= 0, "Footer signature source line must identify Visual Drill.")
 	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("GAME 21.00S") >= 0, "Footer must expose the canonical 21s Tracking gameplay duration.")
 	_assert(str(editorial.get("footer", {}).get("line_1", "")).find("TOTAL 27.00S") >= 0, "Footer must expose the 27s Tracking total presentation duration.")
@@ -111,6 +115,11 @@ func _initialize() -> void:
 	_assert(frame.get_footer_content_root().visible, "Disabling shared footer must not hide the structural footer root.")
 	_assert(not frame.get_header_content_root().get_node("C11CVisualEditorialHeader").visible, "Shared header container must hide cleanly.")
 	_assert(not frame.get_footer_content_root().get_node("C11CVisualEditorialFooter").visible, "Shared footer container must hide cleanly.")
+
+	_assert(VisualHookBank.hook_count_for("tracking") == 10, "Tracking hook bank must contain 10 hooks.")
+	_assert(VisualHookBank.hook_count_for("saccade") == 10, "Saccade hook bank must contain 10 hooks.")
+	_assert(VisualHookBank.hook_count_for("pursuit") == 10, "Pursuit hook bank must contain 10 hooks.")
+	_assert(VisualHookBank.hook_count_for("peripheral_scan") == 10, "Peripheral Scan hook bank must contain 10 hooks.")
 
 	frame.queue_free()
 	await process_frame

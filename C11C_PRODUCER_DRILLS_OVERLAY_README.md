@@ -1,4 +1,4 @@
-# C11-C Producer — Visual Drills overlay v0.1.3
+# C11-C Producer — Visual Drills overlay v0.1.4
 
 Overlay for the frozen **C11-C Producer 0.4.0**.
 
@@ -21,3 +21,9 @@ Overlay for the frozen **C11-C Producer 0.4.0**.
 
 ## Apply
 Extract this archive at the repository root, merging the contained paths. It contains only modified/new Producer files and docs.
+
+## v0.1.4 hotfix
+
+- Removes all `$LASTEXITCODE` reads from the Drill production wrapper.
+- Uses immediate PowerShell `$?` checks and a captured `$nativeOk` flag for Godot.
+- No layout, theme, backend, or Visual Loop changes.

@@ -1,0 +1,11 @@
+C11-C 2.11.1 overlay
+
+Baseline: C11-C 2.11.0
+
+Copy the contents of this directory over the repository root, preserving paths.
+No full project archive is included.
+
+After applying the overlay, validate with the focused suites and then run:
+.\tools\prototypes\c11c_bulk\run_c11c_visual_loops_subtype_music_coverage.ps1 -ResetReviewAssets
+
+Expected exhaustive Visual Loop coverage: 26 videos, one per authored grammar/subtype, each with audio.

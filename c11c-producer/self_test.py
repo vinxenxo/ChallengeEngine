@@ -30,6 +30,9 @@ assert hashlib.sha256(extract_style(main).encode()).hexdigest()=='a96307a08896da
 ps=(ROOT/'run_visual_drill_production.ps1').read_text(encoding='utf-8')
 for token in ['C11CMovieCapture.ps1','C11CSafeAmbient.py','VisualContentPlayer.tscn','720','1280','FAMILY_MUSIC_V3']:
     assert token in ps
+assert '$LASTEXITCODE' not in ps
+assert 'if(-not $?)' in ps
+assert '$nativeOk=$?' in ps
 assert "Start-Process -FilePath 'godot'" not in ps
 assert "& godot @Args > $stdoutPath 2> $stderrPath" in ps
 bridge=(ROOT/'C11CVisualDrillProducerEnvelopeGenerator.gd').read_text(encoding='utf-8')
@@ -38,5 +41,5 @@ for token in ['VisualAuthoringGenerator.gd','VisualDrillSeedVariation.gd','track
 doc=(ROOT.parent/'docs/c11-C_PRODUCER_CANONICAL_NAMING.md').read_text(encoding='utf-8')
 for token in ['geometric','Geometric Waves','fractal','Fractal Bloom','kaleidoscope','Sacred Symmetry','particle_flow','Living Particles','vector_field','Invisible Forces']:
     assert token in doc
-print('C11-C Producer 0.4.0 + Visual Drills overlay v0.1.3 self-test PASS')
+print('C11-C Producer 0.4.0 + Visual Drills overlay v0.1.4 self-test PASS')
 print('LIGHT_THEME_AND_LAYOUT_BASE040_PRESERVED PASS')

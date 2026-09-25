@@ -58,3 +58,8 @@ Peripheral Scan: quadrant accounting; rhythmic asynchrony / anti-entrainment.
 
 ## Quality rule
 No new gameplay layer is accepted unless its truth is deterministically authored/runtime-resolved and auditable in an answer sheet. Presentation cannot invent or infer task truth.
+
+## 2.12.0 continuation
+- Canonical technical → artistic → production naming table added.
+- Weekly/monthly production batch automation added.
+- Visual Loop subtype coverage expanded to 27 slots including Scalar Potential.

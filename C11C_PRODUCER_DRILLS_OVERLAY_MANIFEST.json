@@ -1,6 +1,6 @@
 {
   "overlay": "C11-C Producer Visual Drills",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "base": "C11-C Producer 0.4.0",
   "backend_truth": "ChallengeEngineV01_STATELESS-C11-C2.10.1.zip",
   "layout_changed": false,
@@ -27,6 +27,6 @@
     "Base Producer 0.4.0 layout and light theme are frozen and preserved byte-for-byte in STYLE.",
     "Visual Drills are added as an overlay only; Visual Loops behavior and launcher paths remain unchanged.",
     "Visual Drill production uses the authoritative C11-C 2.10.1 authoring generator and seed-variation stage.",
-    "Drill child processes use the PowerShell call operator instead of Start-Process argument-string parsing."
+    "Visual Drill production wrapper no longer reads $LASTEXITCODE under Set-StrictMode; native command success is checked immediately with PowerShell $?."
   ]
 }

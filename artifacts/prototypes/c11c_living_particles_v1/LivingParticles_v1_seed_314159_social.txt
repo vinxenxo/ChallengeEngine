@@ -1,7 +1,28 @@
-TITLE: LIVING PARTICLES // ORGANIC PULSE
+DEMONIO: PUERTO DE SINGULARIDAD // CORRIENTE DE PARTICULAS // PARTICLES 113 | COLLISION 0.97
+
+**LIVING PARTICLES** — Visual loop de arte generativa matemática y procedural.
+
+- **Variante:** ORGANIC PULSE
+- **Paleta:** petrol_aqua
+- **Seed:** 314159
+- **Detalles:** Duración 18.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+LIVING PARTICLES — ORGANIC PULSE
 
 DESCRIPTION:
-LIVING PARTICLES — visual loop de arte generativa matemática y procedural. Variante ORGANIC PULSE con paleta petrol_aqua, seed 314159. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+DEMONIO: PUERTO DE SINGULARIDAD // CORRIENTE DE PARTICULAS // PARTICLES 113 | COLLISION 0.97
+
+**LIVING PARTICLES** — Visual loop de arte generativa matemática y procedural.
+
+- **Variante:** ORGANIC PULSE
+- **Paleta:** petrol_aqua
+- **Seed:** 314159
+- **Detalles:** Duración 18.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
 
 FAMILY: living_particles
 GRAMMAR: ORGANIC PULSE
@@ -12,21 +33,17 @@ FPS: 30
 FRAMES: 540
 LOOP CYCLES: 2
 LOOP CLOSED: True
-AUDIO: ON / DEEP AMBIENT
-BACKGROUND: #000000
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
 
-HEADER:
-ORGANIC_PULSE | DENSITY 0.93 | FLOW 1.20
+HEADER HOOK:
 DEMONIO: PUERTO DE SINGULARIDAD // CORRIENTE DE PARTICULAS // PARTICLES 113 | COLLISION 0.97
 
-EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
-TECHNOBABBLE: DEMONIO: puerto de singularidad // corriente de particulas // PARTICLES 113 | COLLISION 0.97
-
 HASHTAGS:
-#GenerativeArt #LivingParticles #ProceduralArt #SyntheticLife #FluidArt #ParticleArt #GenerativeDesign #BioArt #DigitalArt #CyberpunkArt
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #ORGANICPULSE
 
 REPRODUCTION COMMAND:
-.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 314159
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 314159 -Grammar organic_pulse
 
 CANONICAL MANIFEST:
 LivingParticles_v1_seed_314159_manifest.json

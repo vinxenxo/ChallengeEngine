@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "families": [
+    {
+      "technical_id": "geometric",
+      "artistic_name": "Geometric Waves",
+      "production_id": "c11c_geometric_waves_v1"
+    },
+    {
+      "technical_id": "fractal",
+      "artistic_name": "Fractal Bloom",
+      "production_id": "c11c_fractal_bloom_v1"
+    },
+    {
+      "technical_id": "kaleidoscope",
+      "artistic_name": "Sacred Symmetry",
+      "production_id": "c11c_sacred_symmetry_v1"
+    },
+    {
+      "technical_id": "particle_flow",
+      "artistic_name": "Living Particles",
+      "production_id": "c11c_living_particles_v1"
+    },
+    {
+      "technical_id": "vector_field",
+      "artistic_name": "Invisible Forces",
+      "production_id": "c11c_invisible_forces_v1"
+    }
+  ],
+  "runtime_ids": [
+    {
+      "runtime_id": "sacred_symmetry",
+      "technical_alias": "kaleidoscope"
+    },
+    {
+      "runtime_id": "living_particles",
+      "technical_alias": "particle_flow"
+    },
+    {
+      "runtime_id": "invisible_forces",
+      "technical_alias": "vector_field"
+    }
+  ]
+}

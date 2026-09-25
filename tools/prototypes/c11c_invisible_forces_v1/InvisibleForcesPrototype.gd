@@ -19,6 +19,8 @@ const REFERENCE_SEED := 314159
 const LOOP_DURATION := 18.0
 const FPS := 30
 const FRAME_COUNT := 540
+const GRAMMAR_IDS: Array[String] = ["dipole_field", "vortex_field", "saddle_field", "quadrupole_field", "gravitational_lens", "topographic_basin", "scalar_potential"]
+const GRAMMAR_NAMES: Array[String] = ["DIPOLE FIELD", "VORTEX FIELD", "SADDLE FIELD", "QUADRUPOLE FIELD", "GRAVITATIONAL LENS", "TOPOGRAPHIC BASIN", "SCALAR POTENTIAL"]
 const OUTPUT_SCALE := 4.0 / 3.0
 const BLACK: Color = C11CThemeClass.SECTION_BACKGROUND
 
@@ -38,6 +40,7 @@ func _ready() -> void:
     _seed = _resolve_seed()
     _show_footer = _resolve_footer_visibility()
     _variation = VariationProfileClass.build("invisible_forces", _seed)
+    _apply_grammar_override()
     _palette = PaletteBankClass.palette("invisible_forces", int(_variation["palette_mode"]))
     _text_colors = EditorialColorsClass.palette("invisible_forces", _palette)
     _authoring_json_path = "res://artifacts/prototypes/c11c_invisible_forces_v1/InvisibleForces_v1_seed_%d_authoring.json" % _seed
@@ -78,14 +81,12 @@ func _mount_editorial(frame: UnifiedSocialFrame) -> void:
         push_error("[C11-C 2.2.1] Shared editorial layer could not be mounted for c11c_invisible_forces_v1.")
         _editorial_layer = null
         return
-
-    var grammar_names: Array[String] = ["DIPOLE FIELD", "VORTEX FIELD", "SADDLE FIELD", "QUADRUPOLE FIELD", "GRAVITATIONAL LENS", "TOPOGRAPHIC BASIN"]
     var grammar_index: int = int(_variation["grammar_mode"])
-    var grammar_name: String = grammar_names[grammar_index].to_upper()
+    var grammar_name: String = GRAMMAR_NAMES[grammar_index].to_upper()
     var line1: String = "%s | %d TRACES | PULSE %.2f" % [grammar_name.replace(" ", "_"), int(_variation["trace_count"]), float(_variation["pulse_speed"])]
     var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation).to_upper()
     var footer_line2: String = "SEED %d | BODY 720X896 | T=18.00S | %d FLOW TRACES | PULSE %.2f" % [_seed, int(_variation["trace_count"]), float(_variation["pulse_speed"])]
-    var footer_line3: String = "PALETTE %s | LOOP x%d | AUDIO AMBIENT" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
+    var footer_line3: String = "PALETTE %s | LOOP x%d | FAMILY MUSIC V4" % [str(_palette["name"]).to_upper(), int(_variation["loop_cycles"])]
     var footer_line_3: String = "DETERMINISTIC FIELD ART / v2.2.1"
 
     _editorial_model = {
@@ -121,6 +122,20 @@ func _resolve_footer_visibility() -> bool:
     var raw: String = OS.get_environment("C11C_SHOW_FOOTER").strip_edges().to_lower()
     return raw not in ["0", "false", "off", "no"]
 
+func _apply_grammar_override() -> void:
+    var requested: String = OS.get_environment("C11C_VISUAL_GRAMMAR").strip_edges().to_lower()
+    if requested.is_empty():
+        return
+    requested = requested.replace("-", "_").replace(" ", "_")
+    for index in range(GRAMMAR_IDS.size()):
+        var technical_id: String = GRAMMAR_IDS[index]
+        var artistic_id: String = GRAMMAR_NAMES[index].to_lower().replace(" ", "_")
+        if requested == technical_id or requested == artistic_id:
+            _variation["grammar_mode"] = index
+            _variation["grammar_name"] = technical_id
+            return
+    push_error("Unknown visual grammar override for c11c_invisible_forces_v1: %s" % requested)
+
 func _resolve_seed() -> int:
     var raw: String = OS.get_environment("C11C_SEED").strip_edges()
     return int(raw) if raw.is_valid_int() else REFERENCE_SEED
@@ -155,8 +170,7 @@ func _write_authoring_snapshot() -> void:
     var dir_path: String = absolute_path.get_base_dir()
     DirAccess.make_dir_recursive_absolute(dir_path)
     var grammar_index: int = int(_variation["grammar_mode"])
-    var grammar_names: Array[String] = ["DIPOLE FIELD", "VORTEX FIELD", "SADDLE FIELD", "QUADRUPOLE FIELD", "GRAVITATIONAL LENS", "TOPOGRAPHIC BASIN"]
-    var grammar_name: String = grammar_names[grammar_index]
+    var grammar_name: String = GRAMMAR_NAMES[grammar_index]
     var header_line_2: String = TechnobabbleGeneratorClass.generate_geek_text("invisible_forces", _seed, _variation).to_upper()
     var header_math: String = "%s | %d TRACES | PULSE %.2f" % [grammar_name.replace(" ", "_"), int(_variation["trace_count"]), float(_variation["pulse_speed"])]
     var sound_raw: String = OS.get_environment("C11C_SOUND_ENABLED").strip_edges().to_lower()
@@ -164,10 +178,11 @@ func _write_authoring_snapshot() -> void:
     var snapshot := {
         "family_id": "invisible_forces",
         "audio_profile": "FLOWING_VECTOR",
-        "audio_pairing_mode": "FAMILY_MUSIC_V3",
+        "audio_pairing_mode": "FAMILY_MUSIC_V4",
         "display_name": "INVISIBLE FORCES",
         "seed": _seed,
         "grammar_mode": grammar_index,
+        "grammar_id": GRAMMAR_IDS[grammar_index],
         "grammar": grammar_name,
         "palette_mode": int(_variation["palette_mode"]),
         "palette": str(_variation["palette_name"]),

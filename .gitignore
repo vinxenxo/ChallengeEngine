@@ -87,4 +87,5 @@ artifacts/**/videos/
 artifacts/scratch/
 artifacts/prototypes/
 artifacts/production/
+artifacts/batch/
 

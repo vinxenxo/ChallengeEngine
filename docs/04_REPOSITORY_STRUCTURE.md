@@ -19,7 +19,15 @@ core/presentation/rendering/
 
 tools/prototypes/c11c_common/
 ├── C11CDrillPaletteBank.gd
-└── generate_c11c_ambient_audio.py
+├── C11CSafeAmbient.py
+├── generate_c11c_family_music.py
+├── generate_c11c_ambient_audio.py
+└── write_social_metadata.py
+
+profiles/presentation/
+├── c11c_visual_family_catalog.json
+├── c11c_visual_hooks.json
+└── c11c_visual_music_profiles.json
 
 tools/prototypes/c11c_bulk/
 ├── C11CVisualDrillReviewEnvelopeGenerator.gd

@@ -247,7 +247,8 @@ static func _invisible(seed_value: int) -> Dictionary:
         "saddle_field",
         "quadrupole_field",
         "gravitational_lens",
-        "topographic_basin"
+        "topographic_basin",
+        "scalar_potential"
     ]
     var palette_modes: Array[String] = [
         "crimson_cadmium_gold",

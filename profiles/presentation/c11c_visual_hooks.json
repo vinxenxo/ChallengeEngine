@@ -1,0 +1,73 @@
+{
+  "version": "1.2.0",
+  "selection": {
+    "algorithm": "posmod(seed + family_offset, hook_count)",
+    "presentation_role": "header_hook",
+    "social_reuse": "exact_selected_header_hook"
+  },
+  "visual_drills": {
+    "tracking": {
+      "family_offset": 0,
+      "hooks": [
+        "¿Puedes seguir el Target sin parpadear los 18 segundos enteros?",
+        "Tu cerebro intentará predecir la curva... y va a fallar en el segundo 12.",
+        "Un test de seguimiento ocular para calibrar tu enfoque. Inténtalo.",
+        "El 94% de la gente pierde el Target cuando la estela matemática se cruza.",
+        "Sigue el nodo principal. Mira cómo deforma el campo vectorial a su paso.",
+        "Esta trayectoria de Lissajous está diseñada para relajar tu mente. Pruébalo.",
+        "Fija tu mirada en la geometría sólida. Ignora el fondo.",
+        "El ciclo se cierra de forma milimétrica. ¿En qué segundo vuelve a empezar?",
+        "Geometría analítica en movimiento puro. No mires los bordes.",
+        "Si tu ojo se desvía, tu nivel de concentración actual es bajo. Ponlo a prueba."
+      ]
+    },
+    "saccade": {
+      "family_offset": 3,
+      "hooks": [
+        "No es un video, es un test de velocidad visual. ¿Dónde está ahora?",
+        "Tu ojo tarda 200ms en registrar el salto. ¿Puedes ganarle al algoritmo?",
+        "Si parpadeas en el frame exacto, te perderás la estructura de la red.",
+        "La cuadrícula polar cambia con cada salto. Encuentra el centroide.",
+        "Diseñado para romper la predicción de tu cerebro. Intenta adivinar el próximo cuadrante.",
+        "Fijación balística pura. Si tu ojo sigue una línea, estás perdiendo.",
+        "Aparece, se fija, desaparece. Entrena tus reflejos oculares aquí.",
+        "¿Pudiste ver la señal visual de transición o tu cerebro la borró?",
+        "Detén el dedo. Deja que la estructura espacial limpie tu fatiga visual.",
+        "Hay un patrón matemático oculto en el orden de los saltos. ¿Lo ves?"
+      ]
+    },
+    "pursuit": {
+      "family_offset": 6,
+      "hooks": [
+        "Baja tus revoluciones. Sigue este movimiento continuo ultra suave.",
+        "Respira al ritmo de la curva spline. Inhala... exhala...",
+        "Estabilidad visual absoluta. Cero aceleraciones extrañas para limpiar tu mente.",
+        "Una deformación de campo de baja frecuencia. Sigue el estímulo dominante.",
+        "Como mirar una vela digital. Mantén el objetivo bajo seguimiento continuo.",
+        "Este video no tiene jitter ni ruido. Es matemática perfectamente limpia.",
+        "Quédate 18 segundos mirando el centro geométrico. Sentirás paz.",
+        "Un solo estímulo, cero distracciones. El test definitivo de atención sostenida.",
+        "Matemática ambiental hecha arte. Deja que tus ojos fluyan con la curva.",
+        "El bucle es tan limpio que parece que el video nunca termina. Compruébalo."
+      ]
+    },
+    "peripheral_scan": {
+      "family_offset": 9,
+      "hooks": [
+        "Mantén tu mirada fija en el centro, pero cuenta cuántas veces pulsa la periferia.",
+        "Entrenamiento de visión periférica: No mires el estímulo de reojo de forma directa.",
+        "Tu ancla está en el centro. El contexto está en los bordes. ¿Puedes controlarlo?",
+        "La estructura radial te dirá cuándo va a aparecer. No mires a los lados.",
+        "Un ejercicio para expandir tu campo visual. Fija el centro ahora.",
+        "El estímulo periférico solo aparece por milisegundos. ¿Cuántos detectaste?",
+        "Fijación central disciplinada. Si mueves los ojos hacia el arco, pierdes.",
+        "Arte de sectores angulares. Tu cerebro procesa la periferia sin que te des cuenta.",
+        "Cero pantallas espectaculares, solo información periférica pura. Concéntrate.",
+        "Si logras ver el pulso periférico final sin desviar la mirada del centro, ganas."
+      ]
+    }
+  },
+  "visual_loops": {
+    "default_social_hook": "¿Puedes notar dónde termina el bucle?"
+  }
+}

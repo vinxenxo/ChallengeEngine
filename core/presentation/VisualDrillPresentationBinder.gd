@@ -4,7 +4,7 @@ extends RefCounted
 
 const VisualMusic = preload("res://core/presentation/C11CVisualMusicProfile.gd")
 
-## C11-C 2.9.0 / C6-F0.5 — Visual Drill Presentation Binder.
+## C11-C 2.11.0 / C6-F0.5 — Visual Drill Presentation Binder.
 ## Produces the shared C11-C social/editorial model plus domain-specific drill state.
 ## Does not alter simulation, RNG, timeline or winning-frame truth.
 
@@ -12,6 +12,7 @@ const PresentationProfile = preload("res://core/presentation/PresentationProfile
 const CountdownPresentationLogic = preload("res://core/presentation/CountdownPresentationLogic.gd")
 const VisualDrillPresentationPhaseLogic = preload("res://core/presentation/VisualDrillPresentationPhaseLogic.gd")
 const DrillPaletteBank = preload("res://tools/prototypes/c11c_common/C11CDrillPaletteBank.gd")
+const VisualHookBank = preload("res://core/presentation/C11CVisualHookBank.gd")
 
 const DISPLAY_NAMES := {
 	"tracking": "TRACKING",
@@ -140,6 +141,8 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 	var definition := _definition_context
 	var definition_payload: Dictionary = definition.get("payload", {}) if definition is Dictionary else {}
 	var definition_seed := int(definition.get("seed", 0)) if definition is Dictionary else 0
+	var hook_text := VisualHookBank.hook_for(subtype, definition_seed)
+	var hook_index := VisualHookBank.hook_index_for(subtype, definition_seed)
 	var exercise: Dictionary = definition_payload.get("exercise_parameters", {}) if definition_payload is Dictionary else {}
 	if not exercise is Dictionary:
 		exercise = {}
@@ -170,8 +173,12 @@ func _build_editorial_model(frame: Dictionary, profile: PresentationProfile) -> 
 		"matrix_enabled": true,
 		"header": {
 			"line_1": header_line_1,
-			"line_2": descriptor
+			"line_2": hook_text,
+			"descriptor": descriptor
 		},
+		"hook_text": hook_text,
+		"hook_index": hook_index,
+		"hook_bank_version": "1.2.0",
 		"footer": {
 			"line_1": "SEED %d | GAME %.2fS | PREP %.2fS | END %.2fS | TOTAL %.2fS | %d FPS | %s" % [definition_seed, duration, CountdownPresentationLogic.COUNTDOWN_SECONDS, VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, duration + CountdownPresentationLogic.COUNTDOWN_SECONDS + VisualDrillPresentationPhaseLogic.END_CTA_SECONDS, fps, difficulty_band],
 			"line_2": "GEN %s | PALETTE %s | AUDIO %s | SOCIAL 720X1280" % [display_name, str(editorial_colors.get("palette_name", "DEFAULT")), str(VisualMusic.profile_for("visual_drill/" + subtype)) if audio_enabled else "OFF"],

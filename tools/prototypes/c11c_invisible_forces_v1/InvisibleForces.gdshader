@@ -86,6 +86,17 @@ float basin_scalar(vec2 p, float t) {
     return tanh((h - 0.075) * 7.0);
 }
 
+
+float scalar_potential_scalar(vec2 p, float t) {
+    // Scalar-potential topology: concentric potential shells with gentle animated drift.
+    // Presentation-only; no gameplay semantics are inferred here.
+    float r = length(p);
+    float potential = 0.18 / (r + 0.032);
+    float shells = cos((potential + 0.18 * sin(t * 0.35)) * 2.7);
+    float radial_bias = 0.22 * sin(r * 18.0 - t * 0.40);
+    return tanh((shells + radial_bias) * 1.25);
+}
+
 float field_scalar(vec2 p, float t) {
     if (grammar_mode == 0) {
         return dipole_scalar(p);
@@ -99,7 +110,10 @@ float field_scalar(vec2 p, float t) {
     if (grammar_mode == 4) {
         return lens_scalar(p, t);
     }
-    return basin_scalar(p, t);
+    if (grammar_mode == 5) {
+        return basin_scalar(p, t);
+    }
+    return scalar_potential_scalar(p, t);
 }
 
 void fragment() {

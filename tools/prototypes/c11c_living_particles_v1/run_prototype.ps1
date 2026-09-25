@@ -1,6 +1,7 @@
 param(
     [int]$Seed = 314159,
     [switch]$NoFooter,
+    [string]$Grammar = '',
     [Alias('Silent')]
     [switch]$NoSound
 )
@@ -8,6 +9,11 @@ param(
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $env:C11C_SEED = [string]$Seed
+if ([string]::IsNullOrWhiteSpace($Grammar)) {
+    Remove-Item Env:C11C_VISUAL_GRAMMAR -ErrorAction SilentlyContinue
+} else {
+    $env:C11C_VISUAL_GRAMMAR = $Grammar
+}
 $env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $env:C11C_SOUND_ENABLED = if ($NoSound) { '0' } else { '1' }
 $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_living_particles_v1'
@@ -95,15 +101,21 @@ try {
 
     $author = Get-Content -Raw $Authoring | ConvertFrom-Json
     $repro = '.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed ' + [string]$Seed
+    if (-not [string]::IsNullOrWhiteSpace($Grammar)) { $repro += ' -Grammar "' + $Grammar + '"' }
     if ($NoFooter) { $repro += ' -NoFooter' }
     if ($NoSound) { $repro += ' -NoSound' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.4_LIVING_PARTICLES_V1'
-        revision = '2.10.1'
+        revision = '2.12.0'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
+        technical_id = 'particle_flow'
+        artistic_name = 'Living Particles'
+        production_id = 'c11c_living_particles_v1'
+        runtime_id = 'living_particles'
         display_name = $author.display_name
+        grammar_id = $author.grammar_id
         grammar = $author.grammar
         palette = $author.palette
         visual = [ordered]@{
@@ -125,16 +137,17 @@ try {
             footer = 'generation telemetry / prototype QA'
         }
         audio = [ordered]@{
-            mode = 'FAMILY_MUSIC_V3'
+            mode = 'FAMILY_MUSIC_V4'
             profile_id = $author.audio_profile
             style = $author.audio_style
+            semantic_key = $audioGrammar
             sample_rate = 44100
             channels = 2
             duration_seconds = 18.0
             muxed_into_mp4 = -not $NoSound
             enabled = -not $NoSound
             C7_modified = $false
-            family_grammar_bound = $false
+            family_grammar_bound = $true
         }
         typography = [ordered]@{
             header = 'Inter Bold'
@@ -154,11 +167,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.1.4] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.1.4] MP4: " + $Mp4)
-    Write-Host ("[C11-C-2.1.4] GIF: " + $Gif)
-    Write-Host ("[C11-C-2.1.4] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.1.4] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.12.0] PASS - 720x1280 / 30 FPS / 540 frames / 18.0 s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.12.0] MP4: " + $Mp4)
+    Write-Host ("[C11-C-2.12.0] GIF: " + $Gif)
+    Write-Host ("[C11-C-2.12.0] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.12.0] SOCIAL: " + $Social)
 } finally {
     if ($null -ne $movieOverride) {
         Exit-C11CMovieOverride -State $movieOverride

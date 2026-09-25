@@ -1,7 +1,7 @@
 class_name C11CVisualMusicProfile
 extends RefCounted
 
-## C11-C 2.10.1 — semantic music binding service.
+## C11-C 2.11.0 — semantic music binding service.
 ## Presentation/delivery metadata only. It does not consume gameplay frames or answer sheets.
 
 const PROFILE_PATH: String = "res://profiles/presentation/c11c_visual_music_profiles.json"

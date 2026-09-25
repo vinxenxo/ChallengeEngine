@@ -1,4 +1,6 @@
 {
+  "audio_pairing_mode": "FAMILY_MUSIC_V4",
+  "audio_profile": "ORBITAL_RITUAL",
   "audio_style": "soft celestial chime bed / aligned harmonics / restrained bell overtones / midpoint orbit swell",
   "background": "000000",
   "display_name": "SACRED SYMMETRY",
@@ -9,6 +11,7 @@
   "fps": 30,
   "frame_count": 540,
   "grammar": "ASTROLABE",
+  "grammar_id": "astrolabe",
   "grammar_mode": 0,
   "header_line_1": "ASTROLABE | N=6 | GEAR 3:-2",
   "header_line_2": "DEMONIO: PUERTO DE SINGULARIDAD // EJE DE ALINEACION // N=6 | GEAR 3:-2",

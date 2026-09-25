@@ -1,7 +1,28 @@
-TITLE: SACRED SYMMETRY // ASTROLABE
+DEMONIO: PUERTO DE SINGULARIDAD // EJE DE ALINEACION // N=6 | GEAR 3:-2
+
+**SACRED SYMMETRY** — Visual loop de arte generativa matemática y procedural.
+
+- **Variante:** ASTROLABE
+- **Paleta:** champagne_brass
+- **Seed:** 314159
+- **Detalles:** Duración 18.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+SACRED SYMMETRY — ASTROLABE
 
 DESCRIPTION:
-SACRED SYMMETRY — visual loop de arte generativa matemática y procedural. Variante ASTROLABE con paleta champagne_brass, seed 314159. Duración 18.00s, 2 ciclo(s) completo(s), audio ambiental determinista. Diseñado para reproducción continua en bucle.
+DEMONIO: PUERTO DE SINGULARIDAD // EJE DE ALINEACION // N=6 | GEAR 3:-2
+
+**SACRED SYMMETRY** — Visual loop de arte generativa matemática y procedural.
+
+- **Variante:** ASTROLABE
+- **Paleta:** champagne_brass
+- **Seed:** 314159
+- **Detalles:** Duración 18.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
 
 FAMILY: sacred_symmetry
 GRAMMAR: ASTROLABE
@@ -12,21 +33,17 @@ FPS: 30
 FRAMES: 540
 LOOP CYCLES: 2
 LOOP CLOSED: True
-AUDIO: ON / DEEP AMBIENT
-BACKGROUND: #000000
+AUDIO: ON / ORBITAL_RITUAL
+AUDIO PROFILE: ORBITAL_RITUAL
 
-HEADER:
-ASTROLABE | N=6 | GEAR 3:-2
+HEADER HOOK:
 DEMONIO: PUERTO DE SINGULARIDAD // EJE DE ALINEACION // N=6 | GEAR 3:-2
 
-EDITORIAL TRANSITION: deterministic Matrix / airport-board character scramble near midpoint.
-TECHNOBABBLE: DEMONIO: puerto de singularidad // eje de alineacion // N=6 | GEAR 3:-2
-
 HASHTAGS:
-#GenerativeArt #SacredSymmetry #MathematicalArt #ProceduralArt #Astrolabe #SteampunkArt #GenerativeDesign #DigitalArt #GeometricArt #CelestialArt
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #ASTROLABE
 
 REPRODUCTION COMMAND:
-.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 314159
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 314159 -Grammar astrolabe
 
 CANONICAL MANIFEST:
 SacredSymmetry_v1_seed_314159_manifest.json

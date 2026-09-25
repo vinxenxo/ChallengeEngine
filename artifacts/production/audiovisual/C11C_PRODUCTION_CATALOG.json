@@ -977,6 +977,50 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1370873901",
                          "created_utc":  "2026-09-25T07:39:21.7480492Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1370873901"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_362007415",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  362007415,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_362007415",
+                         "created_utc":  "2026-09-25T09:13:41.3915992Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 362007415"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_960593712",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  960593712,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_960593712",
+                         "created_utc":  "2026-09-25T09:16:35.3105805Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 960593712"
+                     },
+                     {
+                         "product_id":  "SacredSymmetry_v1_seed_304932373",
+                         "family":  "c11c_sacred_symmetry_v1",
+                         "seed":  304932373,
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_304932373",
+                         "created_utc":  "2026-09-25T09:18:56.9177496Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_sacred_symmetry_v1 -Seed 304932373"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_1100097970",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  1100097970,
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "HARMONIC MEMBRANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1100097970",
+                         "created_utc":  "2026-09-25T10:46:07.9854933Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 1100097970 -Grammar harmonic_membrane"
+                     },
+                     {
+                         "product_id":  "FractalBloom_v1_seed_1151601083",
+                         "family":  "c11c_fractal_bloom_v1",
+                         "seed":  1151601083,
+                         "grammar_id":  "radial_bloom",
+                         "grammar_name":  "RADIAL BLOOM",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1151601083",
+                         "created_utc":  "2026-09-25T10:47:37.8966831Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 1151601083 -Grammar radial_bloom"
                      }
                  ]
 }

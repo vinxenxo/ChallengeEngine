@@ -5,6 +5,8 @@ param(
     [Parameter(Mandatory=$true)]
     [ValidateRange(1,2147483646)]
     [int]$Seed,
+    [Parameter(Mandatory=$false)]
+    [string]$Grammar = '',
     [Alias('Silent')][switch]$NoSound,
     [switch]$NoFooter,
     [switch]$Force
@@ -33,6 +35,7 @@ Write-Host "[C11-C-PRODUCTION] Family=$Family Seed=$Seed Product=$productId"
 # Render to prototype staging FIRST. An existing final product is never deleted before
 # the replacement candidate has successfully rendered and passed its own contracts.
 $launcherParams=@{Seed=[int]$Seed}
+if(-not [string]::IsNullOrWhiteSpace($Grammar)){$launcherParams.Grammar=$Grammar}
 if($NoSound){$launcherParams.NoSound=$true}
 if($NoFooter){$launcherParams.NoFooter=$true}
 & $launcher @launcherParams
@@ -65,6 +68,7 @@ foreach ($name in ($required + @("$stem.gif","${stem}_music.wav"))) {
 }
 
 $repro=".\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family $Family -Seed $Seed"
+if(-not [string]::IsNullOrWhiteSpace($Grammar)){$repro+=" -Grammar $Grammar"}
 if ($NoSound) { $repro+=' -NoSound' }
 if ($NoFooter) { $repro+=' -NoFooter' }
 $sourceManifest=Get-Content -Raw (Join-Path $stage "${stem}_manifest.json") | ConvertFrom-Json
@@ -76,6 +80,8 @@ $prodManifest=[ordered]@{
     product_id=$productId
     family=$Family
     seed=$Seed
+    grammar_id=if([string]::IsNullOrWhiteSpace($Grammar)){[string]$sourceManifest.grammar_id}else{$Grammar}
+    grammar_name=if([string]::IsNullOrWhiteSpace($Grammar)){[string]$sourceManifest.grammar}else{[string]$sourceManifest.grammar}
     created_utc=$created
     canvas='720x1280'
     fps=30
@@ -96,6 +102,7 @@ C11-C FINAL PRODUCT
 Product ID: $productId
 Family: $Family
 Seed: $Seed
+Grammar technical id: $(if([string]::IsNullOrWhiteSpace($Grammar)){'(prototype default)'}else{$Grammar})
 Resolution: 720x1280
 FPS: 30
 Duration: 18.00 s
@@ -120,7 +127,7 @@ if (Test-Path -LiteralPath $catalogPath) {
 }
 if ($null -eq $catalog.products) { $catalog.products=@() }
 $catalog.products=@($catalog.products | Where-Object { $_.product_id -ne $productId })
-$catalog.products += [pscustomobject]@{product_id=$productId;family=$Family;seed=$Seed;path=$productRoot;created_utc=$created;reproduction_command=$repro}
+$catalog.products += [pscustomobject]@{product_id=$productId;family=$Family;seed=$Seed;grammar_id=$sourceManifest.grammar_id;grammar_name=$sourceManifest.grammar;path=$productRoot;created_utc=$created;reproduction_command=$repro}
 [System.IO.File]::WriteAllText($catalogPath,($catalog | ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
 Write-Host '[C11-C-PRODUCTION] FINAL PRODUCT PUBLISHED.'
 Write-Host "[C11-C-PRODUCTION] $productRoot"
