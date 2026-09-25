@@ -17,10 +17,9 @@ Single navigation index for the C11-C Visual Drill phase. Historical changelogs 
 - **2.8.1** — Pursuit/Peripheral runtime dependency hotfix.
 - **2.9.0** — Visual Drill polish layer: broader typography/palette/social-delivery/audio/background work and final four-family review tooling.
 - **2.9.1** — Peripheral renderer `_environment` declaration hotfix intended to close aggregate playback/parser cascade.
-- **2.10.1** — Shared presentation/audio foundation refinement: CTA footer surface correction, role-based C11-C typography, 24-world Drill palette banks, and `FAMILY_MUSIC_V3` with deterministic Drill/Loop pairings.
 
 ## Current phase status
-**Four Visual Drill families implemented. 2.9.1 closure is green by project workstation review. 2.10.1 is the active repair checkpoint for shared presentation/audio foundations; runtime closure still requires the 2.10.1 workstation validation gate.**
+**Four Visual Drill families implemented. 2.9.1 is the closure hotfix; closure requires clean focused suites + clean aggregate runner + physical review.**
 
 ## Family matrix
 | Family | Mechanic | Answer sheet | Presentation | Status |
@@ -39,10 +38,8 @@ Single navigation index for the C11-C Visual Drill phase. Historical changelogs 
 - 3-second terminal self-evaluation CTA in Header.
 - Shared CTAComponent; no duplicate CTA framework.
 - Social `.txt` sidecar expected for every family.
-- Semantic palette bank: 24 authored worlds per Drill family.
-- Role-based C11-C typography: Inter Bold Header / Noto Sans Mono Footer.
-- `FAMILY_MUSIC_V3` semantic music profiles shared across paired Drill/Loop identities.
-- C7 audio ownership/contracts remain untouched.
+- Semantic palette bank.
+- Shared deterministic ambient master through the established C7 pathway.
 
 ## Deliberate artistic decisions
 - Tracking: Tron road removed after visual review; history trail retained.
@@ -58,18 +55,3 @@ Peripheral Scan: quadrant accounting; rhythmic asynchrony / anti-entrainment.
 
 ## Quality rule
 No new gameplay layer is accepted unless its truth is deterministically authored/runtime-resolved and auditable in an answer sheet. Presentation cannot invent or infer task truth.
-
-## 2.12.0 continuation
-- Canonical technical → artistic → production naming table added.
-- Weekly/monthly production batch automation added.
-- Visual Loop subtype coverage expanded to 27 slots including Scalar Potential.
-
-
-## 2.13.0 continuation
-
-- Standard visual duration policy introduced: 20..30 seconds, cycle-complete Visual Loops and 27..30 second total Visual Drills including countdown/CTA.
-- Batch seed spacing hardened with stratified spread validation.
-- Sacred Symmetry Body containment tightened.
-- 180-second Visual Loop family anthologies introduced through a sequence composer that reuses canonical production/render/audio paths.
-
-The five Visual Loop families remain exactly five; technical IDs and artistic/production names are mapped explicitly by the family nomenclature contract.

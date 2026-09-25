@@ -1,8 +1,0 @@
-{
-  "schema": "C11-C-OVERLAY-MANIFEST-V1",
-  "revision": "2.13.1",
-  "baseline": "C11-C 2.13.0",
-  "type": "overlay_only",
-  "scope": "test_contracts_and_documentation",
-  "frozen_functional_boundaries_untouched": true
-}
