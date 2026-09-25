@@ -2081,6 +2081,16 @@
                          "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_2060271961",
                          "created_utc":  "2026-09-25T11:59:46.0483960Z",
                          "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 2060271961 -Grammar scalar_potential"
+                     },
+                     {
+                         "product_id":  "GeometricWaves_v1_seed_997287742",
+                         "family":  "c11c_geometric_waves_v1",
+                         "seed":  997287742,
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "HARMONIC MEMBRANE",
+                         "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_997287742",
+                         "created_utc":  "2026-09-25T13:15:36.1865892Z",
+                         "reproduction_command":  ".\\tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1 -Family c11c_geometric_waves_v1 -Seed 997287742 -Grammar harmonic_membrane"
                      }
                  ]
 }
