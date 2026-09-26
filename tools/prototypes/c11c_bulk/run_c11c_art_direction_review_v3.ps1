@@ -15,6 +15,27 @@ $ProjectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 if([string]::IsNullOrWhiteSpace($ReviewRoot)){ $ReviewRoot=Join-Path $ProjectRoot 'artifacts\prototypes\c11c_art_direction_review' }
 if($Reset -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
 if($Resume -and -not (Test-Path -LiteralPath $ReviewRoot)){ throw "Cannot resume: review root does not exist: $ReviewRoot" }
+New-Item -ItemType Directory -Force -Path $ReviewRoot | Out-Null
+$statePath=Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_STATE.json'
+$completedLoops=@{}
+$completedLongforms=@{}
+$drillsComplete=$false
+
+if($Resume -and (Test-Path -LiteralPath $statePath)){
+    try{
+        $existingState=Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
+        if($existingState.seeds){ $Seeds=@($existingState.seeds | ForEach-Object {[int]$_}) }
+        # Only reuse the completion ledger when it belongs to this exact review revision.
+        # Older 2.16.x ledgers remain useful for seed recovery but must not hide new art changes.
+        if([string]$existingState.revision -eq '2.16.3'){
+            if($existingState.completed_loops){ foreach($item in @($existingState.completed_loops)){ $completedLoops[[string]$item]=$true } }
+            if($existingState.completed_longforms){ foreach($item in @($existingState.completed_longforms)){ $completedLongforms[[string]$item]=$true } }
+            $drillsComplete=[bool]$existingState.drills_complete
+        }
+    }catch{
+        Write-Warning "Existing review state could not be parsed; artifact recovery will be attempted: $statePath"
+    }
+}
 if($Resume -and $Seeds.Count -eq 0){
     $resumeManifestPath=Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'
     if(Test-Path -LiteralPath $resumeManifestPath){
@@ -26,11 +47,16 @@ if($Resume -and $Seeds.Count -eq 0){
         }
     }
 }
+if($Resume -and $Seeds.Count -eq 0){
+    $seedCandidates=@()
+    Get-ChildItem -LiteralPath $ReviewRoot -Recurse -File -Filter '*_seed_*_manifest.json' -ErrorAction SilentlyContinue | ForEach-Object {
+        if($_.Name -match '_seed_(\d+)_manifest\.json$'){ $seedCandidates += [int]$Matches[1] }
+    }
+    $Seeds=@($seedCandidates | Sort-Object -Unique | Select-Object -First 5)
+}
 if($Seeds.Count -eq 0){ $Seeds=New-C11CUniqueSeeds -Count 5 }
 if($Seeds.Count -ne 5){ throw 'Art-direction review expects exactly five high-spread seeds.' }
 Assert-C11CSeedSpacing -Seeds ([int[]]$Seeds)
-New-Item -ItemType Directory -Force -Path $ReviewRoot | Out-Null
-$statePath=Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_STATE.json'
 
 $loopFamilies=[ordered]@{
     geometric='c11c_geometric_waves_v1'; fractal='c11c_fractal_bloom_v1'; sacred_symmetry='c11c_sacred_symmetry_v1'; living_particles='c11c_living_particles_v1'; invisible_forces='c11c_invisible_forces_v1'
@@ -48,28 +74,64 @@ $familyFolder=[ordered]@{
     tracking='06_Tracking'; saccade='07_Saccade'; pursuit='08_Pursuit'; peripheral_scan='09_Peripheral_Scan'
 }
 
+# Resume recovery: rebuild the completion ledger from final artifacts even if the prior
+# process died before the global corpus manifest was written.
+if($Resume){
+    $loopRecoveryIndex=0
+    foreach($familyKey in $loopFamilies.Keys){
+        $familyRoot=Join-Path $ReviewRoot $familyFolder[$familyKey]
+        foreach($grammarValue in @($loopGrammars[$familyKey])){
+            $grammar=[string]$grammarValue
+            $seed=[int]$Seeds[$loopRecoveryIndex % $Seeds.Count]
+            $loopRecoveryIndex++
+            if(Test-LoopComplete -FamilyKey $familyKey -FamilyRoot $familyRoot -Grammar $grammar -Seed $seed){
+                $completedLoops["$familyKey/$grammar/$seed"]=$true
+            }
+        }
+    }
+    $familyIndex=0
+    foreach($familyKey in $loopFamilies.Keys){
+        $seed=[int]$Seeds[$familyIndex % $Seeds.Count]
+        $familyIndex++
+        $dest=Join-Path $ReviewRoot $familyFolder[$familyKey]
+        if(Test-LongformComplete -FamilyKey $familyKey -FamilyRoot $dest -Seed $seed){ $completedLongforms["$familyKey/$seed"]=$true }
+    }
+    if(Test-DrillsComplete -Root $ReviewRoot){ $drillsComplete=$true }
+}
+
 function Save-State {
     param([string]$Stage,[string]$Key,[string]$Status)
+    if($Status -in @('COMPLETE','SKIP_EXISTING')){
+        if($Stage -eq 'LOOPS'){ $completedLoops[$Key]=$true }
+        elseif($Stage -eq 'LONGFORM'){ $completedLongforms[$Key]=$true }
+        elseif($Stage -eq 'DRILLS'){ $script:drillsComplete=$true }
+    }
     $state=[ordered]@{
-        schema='C11-C-ART-DIRECTION-REVIEW-STATE-V3'
-        revision='2.16.2'
+        schema='C11-C-ART-DIRECTION-REVIEW-STATE-V5'
+        revision='2.16.3'
         status=$Stage
         updated=(Get-Date).ToString('o')
         workers=$Workers
         seeds=@($Seeds)
         resume_enabled=$true
-        item=[ordered]@{key=$Key;status=$Status}
+        completed_loops=@($completedLoops.Keys | Sort-Object)
+        completed_longforms=@($completedLongforms.Keys | Sort-Object)
+        drills_complete=$drillsComplete
+        last_item=[ordered]@{key=$Key;status=$Status}
     }
-    [System.IO.File]::WriteAllText($statePath,($state|ConvertTo-Json -Depth 8),(New-Object System.Text.UTF8Encoding($false)))
+    $tmp=$statePath+'.tmp'
+    [System.IO.File]::WriteAllText($tmp,($state|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
+    Move-Item -LiteralPath $tmp -Destination $statePath -Force
 }
 
 function Test-LoopComplete {
-    param([string]$FamilyRoot,[string]$Grammar,[int]$Seed)
+    param([string]$FamilyKey,[string]$FamilyRoot,[string]$Grammar,[int]$Seed)
+    $key="$FamilyKey/$Grammar/$Seed"
     if(-not(Test-Path -LiteralPath $FamilyRoot)){return $false}
-    foreach($m in @(Get-ChildItem -LiteralPath $FamilyRoot -File -Filter "*_seed_${Seed}_manifest.json" -ErrorAction SilentlyContinue)){
+    foreach($m in @(Get-ChildItem -LiteralPath $FamilyRoot -File -Filter "*_seed_${Seed}_${Grammar}_manifest.json" -ErrorAction SilentlyContinue)){
         try{
             $x=Get-Content -Raw -LiteralPath $m.FullName | ConvertFrom-Json
-            if([string]$x.grammar_id -eq $Grammar -and [string]$x.revision -ge '2.16.0'){
+            if([string]$x.grammar_id -eq $Grammar -and [string]$x.revision -eq '2.16.3'){
                 $stem=$m.FullName -replace '_manifest\.json$',''
                 return (Test-Path -LiteralPath ($stem+'.mp4')) -and (Test-Path -LiteralPath ($stem+'_social.txt'))
             }
@@ -79,12 +141,13 @@ function Test-LoopComplete {
 }
 
 function Test-LongformComplete {
-    param([string]$FamilyRoot,[int]$Seed)
+    param([string]$FamilyKey,[string]$FamilyRoot,[int]$Seed)
+    $key="$FamilyKey/$Seed"
     if(-not(Test-Path -LiteralPath $FamilyRoot)){return $false}
     foreach($m in @(Get-ChildItem -LiteralPath $FamilyRoot -File -Filter "*_Longform_seed_${Seed}_manifest.json" -ErrorAction SilentlyContinue)){
         try{
             $x=Get-Content -Raw -LiteralPath $m.FullName | ConvertFrom-Json
-            if([string]$x.revision -ge '2.16.0' -and [string]$x.composition_model -eq 'dissolve_continuity_v3' -and [double]$x.duration_seconds -eq 180.0){
+            if([string]$x.revision -eq '2.16.3' -and [string]$x.composition_model -eq 'dissolve_continuity_v3' -and [double]$x.duration_seconds -eq 180.0){
                 $stem=$m.FullName -replace '_manifest\.json$',''
                 return (Test-Path -LiteralPath ($stem+'.mp4')) -and (Test-Path -LiteralPath ($stem+'_social.txt'))
             }
@@ -103,7 +166,7 @@ function Test-DrillsComplete {
             if(-not(Test-Path -LiteralPath $m) -or -not(Test-Path -LiteralPath $mp4)){return $false}
             try{
                 $manifest=Get-Content -Raw -LiteralPath $m | ConvertFrom-Json
-                if([string]$manifest.revision -lt '2.16.0'){return $false}
+                if([string]$manifest.revision -ne '2.16.3'){return $false}
             }catch{return $false}
         }
     }
@@ -113,7 +176,10 @@ function Test-DrillsComplete {
 function Start-LoopReviewJob {
     param([string]$FamilyId,[string]$Grammar,[int]$Seed,[string]$FamilyRoot)
     $launcher=Join-Path $ProjectRoot ("tools\prototypes\$FamilyId\run_prototype.ps1")
-    $childArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$launcher,'-Seed',$Seed,'-Grammar',$Grammar,'-Duration','23','-OutputRoot',$FamilyRoot)
+    # Invisible Forces has seven grammars and therefore reuses five seeds. The grammar tag
+    # must be part of every filename so concurrent workers can never delete/overwrite each
+    # other's authoring, manifest, social or MP4 artifacts.
+    $childArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$launcher,'-Seed',$Seed,'-Grammar',$Grammar,'-Duration','23','-OutputRoot',$FamilyRoot,'-OutputTag',$Grammar)
     if($NoSound){$childArgs += '-NoSound'}
     if($ExportGif){$childArgs += '-ExportGif'}
     $job=Start-Job -ScriptBlock {
@@ -129,40 +195,48 @@ function Start-LoopReviewJob {
 }
 
 Write-Host '[C11-C-ART-DIRECTION] =========================================='
-Write-Host '[C11-C-ART-DIRECTION] REVIEW V3.1 — grouped by family / resumable'
+Write-Host '[C11-C-ART-DIRECTION] REVIEW V5 — grouped by family / resumable / isolated artifacts'
 Write-Host "[C11-C-ART-DIRECTION] Root: $ReviewRoot"
 Write-Host "[C11-C-ART-DIRECTION] Workers: $Workers | seeds: $($Seeds.Count) | GIF=$ExportGif | Resume=$Resume"
 Write-Host '[C11-C-ART-DIRECTION] AVI temporary by default; GIF opt-in.'
 Write-Host '============================================================'
 
-$active=@()
+$loopTasks=@()
 $loopIndex=0
 foreach($familyKey in $loopFamilies.Keys){
     $familyRoot=Join-Path $ReviewRoot $familyFolder[$familyKey]
     New-Item -ItemType Directory -Force -Path $familyRoot | Out-Null
-    foreach($grammar in @($loopGrammars[$familyKey])){
+    foreach($grammarValue in @($loopGrammars[$familyKey])){
+        $grammar=[string]$grammarValue
         $seed=[int]$Seeds[$loopIndex % $Seeds.Count]
         $loopIndex++
-        if($Resume -and (Test-LoopComplete -FamilyRoot $familyRoot -Grammar $grammar -Seed $seed)){
+        if($Resume -and (Test-LoopComplete -FamilyKey $familyKey -FamilyRoot $familyRoot -Grammar $grammar -Seed $seed)){
             Write-Host "[C11-C-ART-DIRECTION] RESUME SKIP loop $familyKey/$grammar seed=$seed"
             Save-State -Stage 'LOOPS' -Key "$familyKey/$grammar/$seed" -Status 'SKIP_EXISTING'
             continue
         }
-        $active += Start-LoopReviewJob -FamilyId ([string]$loopFamilies[$familyKey]) -Grammar $grammar -Seed $seed -FamilyRoot $familyRoot
-        while(@($active | Where-Object {$_.State -eq 'Running'}).Count -ge $Workers){
-            Start-Sleep -Milliseconds 350
-            foreach($done in @($active | Where-Object {$_.State -in @('Completed','Failed','Stopped')})){
-                if($done.State -ne 'Completed'){
-                    Receive-Job $done -ErrorAction Continue | Out-Host
-                    Remove-Job $done -Force
-                    throw "Parallel Visual Loop review render failed: $($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)"
-                }
-                Receive-Job $done -ErrorAction Stop | Out-Host
-                Save-State -Stage 'LOOPS' -Key "$($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)" -Status 'COMPLETE'
+        $loopTasks += [pscustomobject]@{FamilyKey=$familyKey;FamilyId=[string]$loopFamilies[$familyKey];Grammar=$grammar;Seed=$seed;FamilyRoot=$familyRoot}
+    }
+}
+if($Resume){
+    Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN — $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
+}
+$active=@()
+foreach($task in @($loopTasks)){
+    $active += Start-LoopReviewJob -FamilyId $task.FamilyId -Grammar $task.Grammar -Seed $task.Seed -FamilyRoot $task.FamilyRoot
+    while(@($active | Where-Object {$_.State -eq 'Running'}).Count -ge $Workers){
+        Start-Sleep -Milliseconds 350
+        foreach($done in @($active | Where-Object {$_.State -in @('Completed','Failed','Stopped')})){
+            if($done.State -ne 'Completed'){
+                Receive-Job $done -ErrorAction Continue | Out-Host
                 Remove-Job $done -Force
+                throw "Parallel Visual Loop review render failed: $($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)"
             }
-            $active=@($active | Where-Object {$_.State -eq 'Running'})
+            Receive-Job $done -ErrorAction Stop | Out-Host
+            Save-State -Stage 'LOOPS' -Key "$($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)" -Status 'COMPLETE'
+            Remove-Job $done -Force
         }
+        $active=@($active | Where-Object {$_.State -eq 'Running'})
     }
 }
 while($active.Count -gt 0){
@@ -186,7 +260,7 @@ foreach($familyKey in $loopFamilies.Keys){
     $seed=[int]$Seeds[$familyIndex % $Seeds.Count]
     $familyIndex++
     $dest=Join-Path $ReviewRoot $familyFolder[$familyKey]
-    if($Resume -and (Test-LongformComplete -FamilyRoot $dest -Seed $seed)){
+    if($Resume -and (Test-LongformComplete -FamilyKey $familyKey -FamilyRoot $dest -Seed $seed)){
         Write-Host "[C11-C-ART-DIRECTION] RESUME SKIP longform $familyKey seed=$seed"
         Save-State -Stage 'LONGFORM' -Key "$familyKey/$seed" -Status 'SKIP_EXISTING'
         continue
@@ -232,8 +306,8 @@ if($Resume -and (Test-DrillsComplete -Root $ReviewRoot)){
 }
 
 $manifest=[ordered]@{
-    schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V3'
-    revision='2.16.2'
+    schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V5'
+    revision='2.16.3'
     status='COMPLETE'
     root=$ReviewRoot
     workers=$Workers

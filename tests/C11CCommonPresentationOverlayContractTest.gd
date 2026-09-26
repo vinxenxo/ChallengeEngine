@@ -1,6 +1,6 @@
 ﻿extends SceneTree
 
-## C11-C 2.16.2 common presentation contract. Source-level smoke contract for all five loops.
+## C11-C 2.16.3 common presentation contract. Source-level smoke contract for all five loops.
 
 var failures: Array[String] = []
 
@@ -24,17 +24,17 @@ func _initialize() -> void:
     _assert(road_source.find("VANISHING_POINT") >= 0, "Living Particles Tron road must define a perspective vanishing point.")
     _assert(road_source.find("_travel") >= 0, "Living Particles Tron road must animate forward travel.")
     var layer_source := FileAccess.get_file_as_string("res://core/presentation/C11CVisualEditorialLayer.gd")
-    _assert(layer_source.find("const HEADER_FONT_SIZE := 27") >= 0, "Shared header font must be 27 logical px in C11-C 2.16.2.")
+    _assert(layer_source.find("const HEADER_FONT_SIZE := 29") >= 0, "Shared header font must be 29 logical px in C11-C 2.16.3.")
     _assert(layer_source.find("const HEADER_MAX_WIDTH := CONTENT_WIDTH") >= 0, "Header width must stay inside the shared content margins.")
-    _assert(layer_source.find("HEADER_TEXT_HEIGHT := 128.0") >= 0, "Header box must reserve a 12px logical gap above the separator.")
+    _assert(layer_source.find("HEADER_TEXT_HEIGHT := 120.0") >= 0, "Header box must reserve a 20px logical gap above the separator.")
     _assert(layer_source.find("_compose_header_three_lines") >= 0, "Shared header must compose exactly three lines.")
     _assert(layer_source.find("_compose_footer_three_lines") >= 0, "Shared footer must compose up to three lines.")
     _assert(layer_source.find("_resolve_shared_header_font_size") >= 0, "Matrix header states must share one resolved font size.")
     _assert(layer_source.find("VERTICAL_ALIGNMENT_TOP if footer_role else VERTICAL_ALIGNMENT_BOTTOM") >= 0, "Header/footer text blocks must sit against the Body boundary.")
     _assert(layer_source.find("_header_rule.visible = true") >= 0 and layer_source.find("_footer_rule.visible = true") >= 0, "Editorial separator rules must remain visible.")
-    _assert(layer_source.find("const HEADER_TEXT_HEIGHT := 128.0") >= 0, "Header text box must end before the header separator.")
-    _assert(layer_source.find("const FOOTER_TEXT_Y := 28.0") >= 0, "Footer text box must start after the footer separator.")
-    _assert(layer_source.find("const FOOTER_TEXT_HEIGHT := 116.0") >= 0, "Footer text box must retain room for three lines.")
+    _assert(layer_source.find("const HEADER_TEXT_HEIGHT := 120.0") >= 0, "Header text box must end before the header separator.")
+    _assert(layer_source.find("const FOOTER_TEXT_Y := 34.0") >= 0, "Footer text box must start after the footer separator.")
+    _assert(layer_source.find("const FOOTER_TEXT_HEIGHT := 110.0") >= 0, "Footer text box must retain room for three lines.")
     _assert(layer_source.find("const FOOTER_FONT_SIZE := 16") >= 0, "Shared footer font must be 16 logical px.")
     _assert(layer_source.find("_compose_footer_three_lines") >= 0, "Shared footer must support up to three lines.")
 

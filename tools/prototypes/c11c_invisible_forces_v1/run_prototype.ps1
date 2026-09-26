@@ -8,7 +8,8 @@
     [switch]$NoSound,
     [switch]$ExportGif,
     [switch]$KeepAvi,
-    [string]$OutputRoot = ''
+    [string]$OutputRoot = '',
+    [string]$OutputTag = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -23,7 +24,8 @@ $env:C11C_SHOW_FOOTER = if ($NoFooter) { '0' } else { '1' }
 $env:C11C_SOUND_ENABLED = if ($NoSound) { '0' } else { '1' }
 if($Duration -gt 0){ $env:C11C_DURATION_SECONDS = $Duration.ToString([System.Globalization.CultureInfo]::InvariantCulture) } else { Remove-Item Env:C11C_DURATION_SECONDS -ErrorAction SilentlyContinue }
 if([string]::IsNullOrWhiteSpace($OutputRoot)){ $ArtifactRoot = Join-Path $ProjectRoot 'artifacts\prototypes\c11c_invisible_forces_v1' } else { $ArtifactRoot = [System.IO.Path]::GetFullPath($OutputRoot) }
-$Stem = "InvisibleForces_v1_seed_${Seed}"
+$OutputTagSafe = if ([string]::IsNullOrWhiteSpace($OutputTag)) { "" } else { "_" + ($OutputTag -replace '[^A-Za-z0-9_-]', '_') }
+$Stem = "InvisibleForces_v1_seed_${Seed}$OutputTagSafe"
 $Avi = if($KeepAvi) { Join-Path $ArtifactRoot ($Stem + '.avi') } else { Join-Path ([System.IO.Path]::GetTempPath()) ($Stem + '_' + [Guid]::NewGuid().ToString('N') + '.avi') }
 $LegacyMp4Silent = Join-Path $ArtifactRoot ($Stem + '_silent.mp4')
 $TempSilent = Join-Path ([System.IO.Path]::GetTempPath()) ('C11C_' + $Stem + '_silent.mp4')
@@ -50,6 +52,7 @@ try {
     $movieOverride = Enter-C11CMovieOverride -ProjectRoot $ProjectRoot -Width 720 -Height 1280
     Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
     $DeliveryResolution='720x1280'
+    $env:C11C_AUTHORING_OUTPUT_PATH = [System.IO.Path]::GetFullPath($Authoring)
     $godotArgs=@('--path','.','--scene','tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.tscn','--write-movie',$Avi,'--fixed-fps','30','--resolution',$DeliveryResolution,'--quit-after','900')
     # Windows PowerShell 5.1 can promote native stderr (including non-fatal Godot warnings)
     # to NativeCommandError when $ErrorActionPreference='Stop'. Keep stderr visible in the log
@@ -130,9 +133,10 @@ try {
     if ($ExportGif) { $repro += ' -ExportGif' }
     if ($KeepAvi) { $repro += ' -KeepAvi' }
     if (-not [string]::IsNullOrWhiteSpace($OutputRoot)) { $repro += ' -OutputRoot "' + $OutputRoot + '"' }
+    if (-not [string]::IsNullOrWhiteSpace($OutputTag)) { $repro += ' -OutputTag "' + $OutputTag + '"' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.5_INVISIBLE_FORCES_V1'
-        revision = '2.16.0'
+        revision = '2.16.3'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id
@@ -181,7 +185,7 @@ try {
             license = 'SIL Open Font License 1.1'
         }
         social_metadata = [System.IO.Path]::GetFileName($Social)
-        artifact_policy = [ordered]@{ export_gif = [bool]$ExportGif; keep_avi = [bool]$KeepAvi; avi_intermediate = [bool](-not $KeepAvi); output_root = $ArtifactRoot }
+        artifact_policy = [ordered]@{ export_gif = [bool]$ExportGif; keep_avi = [bool]$KeepAvi; avi_intermediate = [bool](-not $KeepAvi); output_root = $ArtifactRoot; output_tag = $OutputTag }
         reproduction_command = $repro
         technobabble = $author.technobabble
         frozen_boundaries_modified = $false
@@ -194,11 +198,11 @@ try {
     if (-not (Test-Path -LiteralPath $Social)) { throw "Social sidecar was not created: $Social" }
     if ((Get-Item -LiteralPath $Social).Length -lt 100) { throw "Social sidecar is unexpectedly small: $Social" }
 
-    Write-Host "[C11-C-2.15.0] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
-    Write-Host ("[C11-C-2.13.0] MP4: " + $Mp4)
-    if($ExportGif){ Write-Host ("[C11-C-2.15.0] GIF: " + $Gif) }
-    Write-Host ("[C11-C-2.13.0] AUDIO: " + $Audio)
-    Write-Host ("[C11-C-2.13.0] SOCIAL: " + $Social)
+    Write-Host "[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+    Write-Host ("[C11-C-2.16.3] MP4: " + $Mp4)
+    if($ExportGif){ Write-Host ("[C11-C-2.16.3] GIF: " + $Gif) }
+    Write-Host ("[C11-C-2.16.3] AUDIO: " + $Audio)
+    Write-Host ("[C11-C-2.16.3] SOCIAL: " + $Social)
 } finally {
     if ($null -ne $movieOverride) {
         Exit-C11CMovieOverride -State $movieOverride
@@ -213,5 +217,6 @@ try {
     if (-not $KeepAvi -and (Test-Path -LiteralPath $Avi)) {
         Remove-Item -Force -LiteralPath $Avi -ErrorAction SilentlyContinue
     }
+    Remove-Item Env:C11C_AUTHORING_OUTPUT_PATH -ErrorAction SilentlyContinue
     Pop-Location
 }

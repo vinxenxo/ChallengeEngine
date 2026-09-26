@@ -1,4 +1,4 @@
-extends Node2D
+﻿extends Node2D
 
 ## C11-C editorial/audio/loop presentation prototype v2.2.1.
 ## R4: shared two-line Matrix intro/midpoint swap + family-synced ambient audio.
@@ -48,7 +48,11 @@ func _ready() -> void:
     _frame_count = int(duration_policy["frame_count"])
     _palette = PaletteBankClass.palette("geometric", int(_variation["palette_mode"]))
     _text_colors = EditorialColorsClass.palette("geometric", _palette)
-    _authoring_json_path = "res://artifacts/prototypes/c11c_geometric_waves_v1/GeometricWaves_v1_seed_%d_authoring.json" % _seed
+    var authoring_override: String = OS.get_environment("C11C_AUTHORING_OUTPUT_PATH").strip_edges()
+    if authoring_override.is_empty():
+        _authoring_json_path = "res://artifacts/prototypes/c11c_geometric_waves_v1/GeometricWaves_v1_seed_%d_authoring.json" % _seed
+    else:
+        _authoring_json_path = authoring_override
     _write_authoring_snapshot()
     _build_scene()
     set_process(true)

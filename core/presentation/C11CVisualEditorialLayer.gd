@@ -2,7 +2,7 @@
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.16.2 — shared visual/editorial layer.
+## C11-C 2.16.3 — shared visual/editorial layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
 ## Global art-direction contract: 3-line header / up-to-3-line footer with visible separator rules and editorial spacing.
@@ -16,15 +16,15 @@ const FOOTER_HEIGHT := 144.0
 const CONTENT_WIDTH := 468.0
 const CONTENT_X := 36.0
 const HEADER_MAX_WIDTH := CONTENT_WIDTH
-const HEADER_FONT_SIZE := 27
+const HEADER_FONT_SIZE := 29
 const HEADER_MIN_FONT_SIZE := 17
 const HEADER_TEXT_Y := 0.0
-const HEADER_TEXT_HEIGHT := 128.0
+const HEADER_TEXT_HEIGHT := 120.0
 const HEADER_BOLD_EMBOLDEN := 0.70
 const FOOTER_FONT_SIZE := 16
 const FOOTER_MIN_FONT_SIZE := 12
-const FOOTER_TEXT_Y := 28.0
-const FOOTER_TEXT_HEIGHT := 116.0
+const FOOTER_TEXT_Y := 34.0
+const FOOTER_TEXT_HEIGHT := 110.0
 const HEADER_SEPARATOR_Y := 140.0
 const FOOTER_SEPARATOR_Y := 14.0
 const SECTION_BACKGROUND := Color("05070B")
@@ -143,9 +143,7 @@ func apply_render_model(render_model: Dictionary) -> void:
     var sequence: Array[String] = [
         header_full_text,
         _pad_three_lines(_wrap_three_lines(header_line_2)),
-        _pad_three_lines(_wrap_three_lines(header_line_1)),
-        _pad_three_lines(_wrap_footer_three_lines(str(footer.get("line_2", "")).strip_edges().to_upper())),
-        _pad_three_lines(_wrap_footer_three_lines(str(footer.get("line_3", "")).strip_edges().to_upper()))
+        _pad_three_lines(_wrap_three_lines(header_line_1))
     ]
     var shared_header_font_size: int = _resolve_shared_header_font_size(sequence)
     _header_text.add_theme_font_size_override("font_size", shared_header_font_size)
