@@ -1,0 +1,28 @@
+WorkerThreadPool: 22 threads, 6 max low-priority.
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Using "default" pen tablet driver...
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+.NET: Initializing module...
+Found hostfxr: C:/Program Files/dotnet/host/fxr/10.0.11/hostfxr.dll
+.NET: hostfxr initialized
+.NET: GodotPlugins initialized
+.NET: Failed to load project assembly
+CORE API HASH: 2244263461
+EDITOR API HASH: 3539082181
+Loading resource: res://tests/C11CVisualLoopLongformContractTest.gd remapped: res://tests/C11CVisualLoopLongformContractTest.gd
+Completed load for: 'res://tests/C11CVisualLoopLongformContractTest.gd' remapped 'res://tests/C11CVisualLoopLongformContractTest.gd' at thread -1
+SceneTreeFTI: traversal method DEFAULT
+Loaded system CA certificates
+ERROR: Longform must declare no black between chapters.
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _initialize (res://tests/C11CVisualLoopLongformContractTest.gd:44)
+[C11C_VISUAL_LOOP_LONGFORM_CONTRACT_SUITE] FAIL failures=1
+Unloading: Disposing tracked instances...
+Unloading: Finished disposing tracked instances.
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"

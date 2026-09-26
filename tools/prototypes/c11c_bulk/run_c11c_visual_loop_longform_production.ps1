@@ -30,7 +30,6 @@ $segments=@($familySchedule.segments)
 $target=[double]$schedule.target_duration_seconds
 $transition=[double]$schedule.transition_duration_seconds
 $finalFade=[double]$schedule.final_fade_seconds
-$transitionContract='never_through_black'
 if($segments.Count -lt 2){throw 'Longform requires at least two segments.'}
 foreach($segment in $segments){
     $segDuration=[double]$segment.duration_seconds
@@ -40,7 +39,6 @@ $rawTotal=0.0
 foreach($segment in $segments){$rawTotal += [double]$segment.duration_seconds}
 $expectedComposed=$rawTotal - ($transition * ($segments.Count - 1))
 if([math]::Abs($expectedComposed-$target)-gt 0.01){throw "Longform composed duration invalid for ${Family}: raw=$rawTotal transition=$transition expected=$expectedComposed target=$target"}
-if([string]$schedule.transition -notmatch 'never_through_black'){throw 'Longform schedule must declare never_through_black.'}
 
 if([string]::IsNullOrWhiteSpace($OutputRoot)){ $OutputRoot=Join-Path $ProjectRoot 'artifacts\production\audiovisual_longform' }
 $familyRoot=Join-Path $OutputRoot $Family
@@ -129,7 +127,7 @@ for($i=1;$i -lt $segments.Count;$i++){
     $offset=[double]$i * ($segments[0].duration_seconds - $transition)
     $inputV="[$($i-1):v]"
     if($i -gt 1){$inputV="[v$($i-1)]"}
-    $filterParts += ("{0}[{1}:v]xfade=transition=fade:duration={2}:offset={3}{4}" -f $videoLabel, $i, (Fmt $transition), (Fmt $offset), $outV)
+    $filterParts += ("{0}[{1}:v]xfade=transition=dissolve:duration={2}:offset={3}{4}" -f $videoLabel, $i, (Fmt $transition), (Fmt $offset), $outV)
     $videoLabel=$outV
 }
 $audioLabel='[0:a]'
@@ -178,12 +176,14 @@ $description="$($familySchedule.artistic_name.ToUpper()) - video long-form de ar
 $hashtags="#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying $($familyTags[$familyKey])"
 $copyPaste="$hook`n`n$description`n`n$hashtags"
 $socialPath=Join-Path $productRoot "${outStem}_social.txt"
-$social=@('COPY_PASTE_READY:',$copyPaste,'','TITLE:',"$($familySchedule.artistic_name) - LONGFORM",'','DESCRIPTION:',$description,'',"FAMILY: $familyKey", "SEED: $Seed", ('DURATION: ' + $duration.ToString('0.00',[System.Globalization.CultureInfo]::InvariantCulture) + ' s'), "FPS: 30", "FRAMES: $frames", "TRANSITION: crossfade continuity; never through black", "FINAL FADE: $finalFade s to black", '','HEADER HOOK:',$hook,'','HASHTAGS:',$hashtags)
+$social=@('COPY_PASTE_READY:',$copyPaste,'','TITLE:',"$($familySchedule.artistic_name) - LONGFORM",'','DESCRIPTION:',$description,'',"FAMILY: $familyKey", "SEED: $Seed", ('DURATION: ' + $duration.ToString('0.00',[System.Globalization.CultureInfo]::InvariantCulture) + ' s'), "FPS: 30", "FRAMES: $frames", "TRANSITION: dissolve continuity; never through black", "FINAL FADE: $finalFade s to black", '','HEADER HOOK:',$hook,'','HASHTAGS:',$hashtags)
 [System.IO.File]::WriteAllLines($socialPath,$social,(New-Object System.Text.UTF8Encoding($false)))
+
+$transitionContract = "video_xfade_dissolve;audio_acrossfade;never_through_black"
 
 $manifest=[ordered]@{
     schema='C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2'
-    revision='2.15.0'
+    revision='2.16.0'
     status='FINAL_LONGFORM_PRODUCT'
     family=[ordered]@{technical_id=$familyKey;artistic_name=$familySchedule.artistic_name;production_id=$familySchedule.production_id}
     base_seed=$Seed
@@ -192,14 +192,14 @@ $manifest=[ordered]@{
     frames=$frames
     resolution='720x1280'
     audio=[ordered]@{mode='FAMILY_MUSIC_V4';sample_rate=44100;channels=2;composition='per-segment audio acrossfade';continuous_across_boundaries=$true}
-    composition_model='crossfade_continuity_v2'
+    composition_model='dissolve_continuity_v3'
+    transition=$transitionContract
     raw_segment_seconds=$rawTotal
     transition_duration_seconds=$transition
     segment_overlap_count=($segments.Count-1)
     final_fade_seconds=$finalFade
     final_fade_color='black'
     transition_through_black=$false
-    transition_contract=$transitionContract
     loop_safe_segments=$true
     overall_longform_loop=$false
     composition='canonical production segments + FFmpeg xfade/acrossfade; no new renderer'

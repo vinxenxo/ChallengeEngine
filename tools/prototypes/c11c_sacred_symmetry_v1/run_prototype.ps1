@@ -132,7 +132,7 @@ try {
     if (-not [string]::IsNullOrWhiteSpace($OutputRoot)) { $repro += ' -OutputRoot "' + $OutputRoot + '"' }
     $manifestObject = [ordered]@{
         prototype_id = 'C11-C.3_SACRED_SYMMETRY_V1'
-        revision = '2.15.0'
+        revision = '2.16.0'
         status = 'EDITORIAL_AUDIO_LOOP_REVIEW'
         seed = $Seed
         family_id = $author.family_id

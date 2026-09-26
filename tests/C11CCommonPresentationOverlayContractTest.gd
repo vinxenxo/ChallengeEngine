@@ -1,6 +1,6 @@
 ﻿extends SceneTree
 
-## C11-C 2.15.0 common presentation contract. Source-level smoke contract for all five loops.
+## C11-C 2.16.2 common presentation contract. Source-level smoke contract for all five loops.
 
 var failures: Array[String] = []
 
@@ -24,12 +24,20 @@ func _initialize() -> void:
     _assert(road_source.find("VANISHING_POINT") >= 0, "Living Particles Tron road must define a perspective vanishing point.")
     _assert(road_source.find("_travel") >= 0, "Living Particles Tron road must animate forward travel.")
     var layer_source := FileAccess.get_file_as_string("res://core/presentation/C11CVisualEditorialLayer.gd")
-    _assert(layer_source.find("const HEADER_FONT_SIZE := 23") >= 0, "Shared header font must be 23 logical px in C11-C 2.15.0.")
+    _assert(layer_source.find("const HEADER_FONT_SIZE := 27") >= 0, "Shared header font must be 27 logical px in C11-C 2.16.2.")
     _assert(layer_source.find("const HEADER_MAX_WIDTH := CONTENT_WIDTH") >= 0, "Header width must stay inside the shared content margins.")
-    _assert(layer_source.find("HEADER_TEXT_HEIGHT := 136.0") >= 0, "Header box must use the expanded three-line region.")
+    _assert(layer_source.find("HEADER_TEXT_HEIGHT := 128.0") >= 0, "Header box must reserve a 12px logical gap above the separator.")
     _assert(layer_source.find("_compose_header_three_lines") >= 0, "Shared header must compose exactly three lines.")
-    _assert(layer_source.find("_compose_footer_two_lines") >= 0, "Shared footer must compose two lines.")
+    _assert(layer_source.find("_compose_footer_three_lines") >= 0, "Shared footer must compose up to three lines.")
     _assert(layer_source.find("_resolve_shared_header_font_size") >= 0, "Matrix header states must share one resolved font size.")
+    _assert(layer_source.find("VERTICAL_ALIGNMENT_TOP if footer_role else VERTICAL_ALIGNMENT_BOTTOM") >= 0, "Header/footer text blocks must sit against the Body boundary.")
+    _assert(layer_source.find("_header_rule.visible = true") >= 0 and layer_source.find("_footer_rule.visible = true") >= 0, "Editorial separator rules must remain visible.")
+    _assert(layer_source.find("const HEADER_TEXT_HEIGHT := 128.0") >= 0, "Header text box must end before the header separator.")
+    _assert(layer_source.find("const FOOTER_TEXT_Y := 28.0") >= 0, "Footer text box must start after the footer separator.")
+    _assert(layer_source.find("const FOOTER_TEXT_HEIGHT := 116.0") >= 0, "Footer text box must retain room for three lines.")
+    _assert(layer_source.find("const FOOTER_FONT_SIZE := 16") >= 0, "Shared footer font must be 16 logical px.")
+    _assert(layer_source.find("_compose_footer_three_lines") >= 0, "Shared footer must support up to three lines.")
+
     var particle_source := FileAccess.get_file_as_string("res://tools/prototypes/c11c_living_particles_v1/LivingParticlesRenderer.gd")
     _assert(particle_source.find("LivingParticlesBackground") >= 0, "Living Particles must own a separate Body background beneath the Tron road.")
     var shader_source := FileAccess.get_file_as_string("res://tools/prototypes/c11c_living_particles_v1/LivingParticles.gdshader")

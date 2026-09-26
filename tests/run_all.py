@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 import subprocess
 from pathlib import Path
@@ -75,6 +75,8 @@ KNOWN_SUITES = {
     "C11CSeedSpreadContractTest.gd": "[C11C_SEED_SPREAD_CONTRACT_SUITE] PASS",
     "C11CSacredSymmetryContainmentContractTest.gd": "[C11C_SACRED_SYMMETRY_CONTAINMENT_CONTRACT_SUITE] PASS",
     "C11CVisualLoopLongformContractTest.gd": "[C11C_VISUAL_LOOP_LONGFORM_CONTRACT_SUITE] PASS",
+    "C11CArtDirectionReviewResumeContractTest.gd": "[C11C_ART_DIRECTION_REVIEW_RESUME_CONTRACT_SUITE] PASS",
+    "C11CArtDirectionProductionHygieneContractTest.gd": "[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS",
     "C11CVisualLoopSubtypeMusicCoverageContractTest.gd": "[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] PASS",
     "C11CProductionBatchScheduleContractTest.gd": "[C11C_PRODUCTION_BATCH_SCHEDULE_CONTRACT_SUITE] PASS",
     "C11CPursuitMechanicContractTest.gd": "[C11C_PURSUIT_MECHANIC_CONTRACT_SUITE] PASS",
@@ -95,7 +97,6 @@ KNOWN_SUITES = {
     "C6E3RuntimePresentationValidationTest.gd": "[C6E3_RUNTIME_PRESENTATION_SUITE] PASS",
     "C6F0_1_5CanonicalAssemblerTest.gd": "[C6F0_1_5_CANONICAL_ASSEMBLER_SUITE] PASS",
     "C6F0_1_6AuthoringPipelineTest.gd": "[C6F0_1_6_AUTHORING_PIPELINE_SUITE] PASS",
-    "C11CArtDirectionProductionHygieneContractTest.gd" : "[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS",
     "C6F0_1_7RuntimeBoundaryProofTest.gd": "[C6F0_1_7_RUNTIME_BOUNDARY_PROOF_SUITE] PASS",
     "C6F0_3MultiContentFoundationTest.gd": "[C6F0_3_MULTI_CONTENT_FOUNDATION_SUITE] PASS",
     "C6F035ContentRuntimeBoundaryTest.gd": "[C6F0_3_5_RUNTIME_BOUNDARY_SUITE] PASS",

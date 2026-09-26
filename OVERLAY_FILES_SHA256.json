@@ -1,47 +1,23 @@
-[
-  {
-    "path": "C11-C_2.15.1_ART_DIRECTION_CONTRACT_REPAIR.md",
-    "bytes": 927,
-    "sha256": "c72db241ecd7bb647ddf09e49b67e29154bcd7f623ce8d49bc7e21b3d3352046"
-  },
-  {
-    "path": "CHANGELOG_C11-C_2.15.1.md",
-    "bytes": 826,
-    "sha256": "155806c124a1e949deafc4773692cf4eb036f31561452379be94996f7db50514"
-  },
-  {
-    "path": "tests/C11CArtDirectionProductionHygieneContractTest.gd",
-    "bytes": 2701,
-    "sha256": "2d6d79a87936fd31aca3f5e5b6b63fe46a977bc85715e8f7ba23ab90283b6c87"
-  },
-  {
-    "path": "tests/C11CSacredSymmetryContainmentContractTest.gd",
-    "bytes": 1484,
-    "sha256": "7eae1576c61a9c342db18eb4916971182b5f6d079ff545494e6b3d0936b52092"
-  },
-  {
-    "path": "tests/C11CVisualDrillSocialPresentationContractTest.gd",
-    "bytes": 9673,
-    "sha256": "52c453caac361e0b5fffbb7139003de553fbcd40cab79eaf1e9cd838afd5d0ad"
-  },
-  {
-    "path": "tests/C11CVisualLoopLongformContractTest.gd",
-    "bytes": 3587,
-    "sha256": "f8f548c992811f08474f3a7c695570b034e7bb7a7828cea638612ee1d67851af"
-  },
-  {
-    "path": "tests/run_all.py",
-    "bytes": 18053,
-    "sha256": "403b4e4e4190ce48e7d2e2bbed9c43ee433aa47ad1fee8d9353043c2df06ba2d"
-  },
-  {
-    "path": "tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production.ps1",
-    "bytes": 12960,
-    "sha256": "bfaebc8d4d53e7e8975c0ac024228fc9923ece67b956b0dceba50ad3bd8739a1"
-  },
-  {
-    "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader",
-    "bytes": 11193,
-    "sha256": "0334eb29186aed50041f4068e841a4b847fff300deca54fca5b740be3cb63d49"
-  }
-]
+{
+  "core/presentation/C11CVisualEditorialLayer.gd": "42e20e1edb872f84ddfd109f8830eedde8144f5cfcd5db430804cf843e45056a",
+  "docs/c11/C11-C_2.16.0_ART_DIRECTION_REFINEMENT.md": "54baa71cfec6efea45e8ae85186d0183c94dfc842d8241ac8a370ea83d1ac5e3",
+  "profiles/presentation/c11c_visual_loop_longform_schedule.json": "eb9b5d92d1a6152c9d8f94e2b093cdd3f40740d3177bfccb0ecd3b16ea0da64e",
+  "tests/C11CArtDirectionReviewResumeContractTest.gd": "a7c3c6eefa8ac3eb894f6e311e4fd049f0de7cd75c06f103ea9c7e20bf593e37",
+  "tests/C11CCommonPresentationOverlayContractTest.gd": "ed0cfdc2fbe059cad3fdd70345c9223ab35ab2585cbfd5c5e9a391783ef45f50",
+  "tests/C11CSacredSymmetryContainmentContractTest.gd": "927a0f4418fb8acc45b9ac627384486cdc646e998c1025bc26546e83359eb024",
+  "tests/C11CVisualDrillSocialPresentationContractTest.gd": "217230c2b4193c0528978fd2ab444da0f04cd63804a8a21552cf5c9ae629eacf",
+  "tests/C11CVisualLoopLongformContractTest.gd": "5f07a90b1e45ca4f5115021ebb16e9d3f8b8f8a6fc090451b8cc3d2657fe5f5e",
+  "tests/run_all.py": "c06ff792de15ef5758c60d9de75d59762c08228a7f973b7f35eec900c371f914",
+  "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.cmd": "619d4a1567a1695df267b4130f7c4d125693f7932d6b997ef0dc62b542f4e56c",
+  "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1": "13662a3ddc6f9c0819f25779cc6696b1b76ac7d8c271bc36cd8076bd70358787",
+  "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1": "0d096a8379c5d7c51e17cfb99a7afed58dbec256ad3fe5c21b63960f672b5635",
+  "tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production.ps1": "acd37871b276058c8a17094f7b4f6253a437221feef6156862c6aaf0fe05773e",
+  "tools/prototypes/c11c_common/C11CColorBoost.gd": "ea585997b03aba00a13c3cb87640a7c626081316b43306093265757dd09c6607",
+  "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1": "4165c2abb2db42448fdc1cc846551ac3e39f2a1ac7a002bc18c75f70a0a52846",
+  "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1": "c17acc8177d01e95594a2d9e541313716f611fc962f7b66db9f2f63f6a2c51fb",
+  "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1": "c8a4f74eefd4b3531a8a0130abe3adfb35108d016ac1ea23ff07447deba3ddb1",
+  "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1": "1297473ff4690f39cbf8a10469e27798c66fbeed8bb2aa5392a5bd4b57c93fa8",
+  "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry.gdshader": "4874060302443196a1c8646a4790670ff61c1b6b04d66d275989ab1bf9551d5d",
+  "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryRenderer.gd": "4cb914ccdab0f7a4ec2f85670691ea90ac24e045ac1e5a8e696344a702397a26",
+  "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1": "bb2c8a04c15a2781d6016f731c4f7a7b12cb017b3550c66331634da8a7a09891"
+}

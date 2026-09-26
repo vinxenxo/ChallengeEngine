@@ -27,7 +27,7 @@ uniform vec4 highlight_color : source_color = vec4(0.95, 0.78, 0.43, 1.0);
 uniform vec4 white_gold_color : source_color = vec4(1.0, 0.95, 0.84, 1.0);
 uniform vec4 accent_color : source_color = vec4(0.95, 0.62, 0.12, 1.0);
 
-const float GEOMETRY_CONTAINMENT_SCALE = 0.82;
+const float GEOMETRY_CONTAINMENT_SCALE = 0.98;
 
 const float C11C_PI = 3.14159265358979323846;
 const float C11C_TAU = 6.28318530717958647692;
@@ -77,11 +77,21 @@ float gear_teeth(vec2 p, float sides, float base_r, float tooth_depth, float wid
 
 void fragment() {
     vec2 p = UV - vec2(0.5);
-    p.x *= 1.0 / BODY_ASPECT;
-    // Conservative inverse containment keeps the largest seeded figures inside the Body.
-    // macro_scale is bounded more tightly so seeded variants cannot escape the social Body.
-    float containment = max(clamp(macro_scale, 0.78, 0.96) * GEOMETRY_CONTAINMENT_SCALE, 0.82);
-    p *= 1.0 / containment;
+    // Correct the non-square Body without horizontal deformation.
+    p.x *= BODY_ASPECT;
+    // Grammar-aware scale: Astrolabe needs a larger optical footprint, while
+    // Origami Mandala keeps the proven full-frame scale and remains untouched.
+    float grammar_scale = 1.0;
+    if (grammar_mode == 0) {
+        grammar_scale = 1.10; // ASTROLABE
+    } else if (grammar_mode == 1 || grammar_mode == 2) {
+        grammar_scale = 1.04; // GEAR TRAIN / POLYGON ORRERY
+    } else if (grammar_mode == 4) {
+        grammar_scale = 1.03; // CELESTIAL CHART
+    }
+    float geometry_scale = clamp(macro_scale, 0.84, 1.02) * grammar_scale * GEOMETRY_CONTAINMENT_SCALE;
+    geometry_scale = clamp(geometry_scale, 0.88, 1.10);
+    p *= geometry_scale;
     float r = length(p);
     float a = atan(p.y, p.x);
 

@@ -2,10 +2,10 @@
 class_name C11CVisualEditorialLayer
 extends RefCounted
 
-## C11-C 2.15.0 — shared visual/editorial layer.
+## C11-C 2.16.2 — shared visual/editorial layer.
 ## Common to Visual Loops and Visual Drills.
 ## Presentation-only: never owns simulation, RNG, timing truth or mechanics.
-## Global art-direction contract: 3-line header / 2-line footer.
+## Global art-direction contract: 3-line header / up-to-3-line footer with visible separator rules and editorial spacing.
 
 const C11CHeaderAnimatorV2Class = preload("res://tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd")
 const C11CVisualTypographyClass = preload("res://core/presentation/C11CVisualTypography.gd")
@@ -16,15 +16,15 @@ const FOOTER_HEIGHT := 144.0
 const CONTENT_WIDTH := 468.0
 const CONTENT_X := 36.0
 const HEADER_MAX_WIDTH := CONTENT_WIDTH
-const HEADER_FONT_SIZE := 23
-const HEADER_MIN_FONT_SIZE := 15
-const HEADER_TEXT_Y := 2.0
-const HEADER_TEXT_HEIGHT := 136.0
+const HEADER_FONT_SIZE := 27
+const HEADER_MIN_FONT_SIZE := 17
+const HEADER_TEXT_Y := 0.0
+const HEADER_TEXT_HEIGHT := 128.0
 const HEADER_BOLD_EMBOLDEN := 0.70
-const FOOTER_FONT_SIZE := 14
-const FOOTER_MIN_FONT_SIZE := 11
-const FOOTER_TEXT_Y := 8.0
-const FOOTER_TEXT_HEIGHT := 126.0
+const FOOTER_FONT_SIZE := 16
+const FOOTER_MIN_FONT_SIZE := 12
+const FOOTER_TEXT_Y := 28.0
+const FOOTER_TEXT_HEIGHT := 116.0
 const HEADER_SEPARATOR_Y := 140.0
 const FOOTER_SEPARATOR_Y := 14.0
 const SECTION_BACKGROUND := Color("05070B")
@@ -132,7 +132,7 @@ func apply_render_model(render_model: Dictionary) -> void:
     var header_line_1: String = _single_line(str(header.get("line_1", "")).strip_edges().to_upper())
     var header_line_2: String = _single_line(str(header.get("line_2", "")).strip_edges().to_upper())
     var header_full_text: String = _compose_header_three_lines(header_line_1, header_line_2)
-    var footer_full_text: String = _compose_footer_two_lines(footer)
+    var footer_full_text: String = _compose_footer_three_lines(footer)
 
     var matrix_enabled: bool = bool(editorial.get("matrix_enabled", true))
     var intro_active: bool = bool(editorial.get("intro_active", false))
@@ -144,8 +144,8 @@ func apply_render_model(render_model: Dictionary) -> void:
         header_full_text,
         _pad_three_lines(_wrap_three_lines(header_line_2)),
         _pad_three_lines(_wrap_three_lines(header_line_1)),
-        _pad_three_lines(_wrap_two_lines(str(footer.get("line_2", "")).strip_edges().to_upper())),
-        _pad_three_lines(_wrap_two_lines(str(footer.get("line_3", "")).strip_edges().to_upper()))
+        _pad_three_lines(_wrap_footer_three_lines(str(footer.get("line_2", "")).strip_edges().to_upper())),
+        _pad_three_lines(_wrap_footer_three_lines(str(footer.get("line_3", "")).strip_edges().to_upper()))
     ]
     var shared_header_font_size: int = _resolve_shared_header_font_size(sequence)
     _header_text.add_theme_font_size_override("font_size", shared_header_font_size)
@@ -186,8 +186,9 @@ func apply_render_model(render_model: Dictionary) -> void:
 
     _header_rule.color = _with_alpha(rule_color, 0.34)
     _footer_rule.color = _with_alpha(rule_color, 0.34)
-    _header_rule.visible = bool(editorial.get("show_header_rule", true))
-    _footer_rule.visible = bool(editorial.get("show_footer_rule", true))
+    # 2.16.1 restores the visible separator lines as part of the shared editorial composition.
+    _header_rule.visible = true
+    _footer_rule.visible = true
     _header_container.visible = bool(editorial.get("show_header", true))
     _footer_container.visible = bool(editorial.get("show_footer", true))
     if _header_background != null:
@@ -236,7 +237,7 @@ func _new_label(node_name: String, position_value: Vector2, size_value: Vector2,
         C11CVisualTypographyClass.apply_footer_to_label(label)
     else:
         C11CVisualTypographyClass.apply_header_to_label(label)
-    label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    label.vertical_alignment = VERTICAL_ALIGNMENT_TOP if footer_role else VERTICAL_ALIGNMENT_BOTTOM
     label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     label.clip_text = true
     label.add_theme_constant_override("outline_size", 1)
@@ -350,7 +351,7 @@ func _compose_header_three_lines(line_1: String, line_2: String) -> String:
         return _pad_three_lines(_wrap_three_lines(primary))
     return _pad_three_lines(primary + "\n" + _wrap_two_lines(secondary))
 
-func _compose_footer_two_lines(footer: Dictionary) -> String:
+func _compose_footer_three_lines(footer: Dictionary) -> String:
     var line_1: String = _single_line(str(footer.get("line_1", "")).strip_edges().to_upper())
     var line_2: String = _single_line(str(footer.get("line_2", "")).strip_edges().to_upper())
     var line_3: String = _single_line(str(footer.get("line_3", "")).strip_edges().to_upper())
@@ -360,10 +361,9 @@ func _compose_footer_two_lines(footer: Dictionary) -> String:
             chunks.append(value)
     if chunks.is_empty():
         return ""
-    var combined: String = " | ".join(chunks)
-    return _wrap_footer_two_lines(combined)
+    return _wrap_footer_three_lines(" | ".join(chunks))
 
-func _wrap_footer_two_lines(text_value: String) -> String:
+func _wrap_footer_three_lines(text_value: String) -> String:
     var clean: String = text_value.strip_edges().replace("\r", "").replace("\n", " ")
     var words: PackedStringArray = clean.split(" ", false)
     if words.size() <= 1:
@@ -371,21 +371,26 @@ func _wrap_footer_two_lines(text_value: String) -> String:
     var font: Font = _footer_text.get_theme_font("font") if _footer_text != null else null
     if font == null:
         return clean
-    var best_break: int = 1
+    var best_a: int = 1
+    var best_b: int = mini(2, words.size() - 1)
     var best_score: float = 1.0e30
-    for i in range(1, words.size()):
-        var left: String = " ".join(words.slice(0, i))
-        var right: String = " ".join(words.slice(i))
-        var left_width: float = font.get_string_size(left, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
-        var right_width: float = font.get_string_size(right, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
-        var max_line: float = maxf(left_width, right_width)
-        var overflow: float = maxf(0.0, max_line - 508.0)
-        var balance: float = absf(left_width - right_width)
-        var score: float = overflow * 100000.0 + balance
-        if score < best_score:
-            best_score = score
-            best_break = i
-    return " ".join(words.slice(0, best_break)) + "\n" + " ".join(words.slice(best_break))
+    for a in range(1, words.size() - 1):
+        for b in range(a + 1, words.size()):
+            var l1: String = " ".join(words.slice(0, a))
+            var l2: String = " ".join(words.slice(a, b))
+            var l3: String = " ".join(words.slice(b))
+            var w1: float = font.get_string_size(l1, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
+            var w2: float = font.get_string_size(l2, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
+            var w3: float = font.get_string_size(l3, HORIZONTAL_ALIGNMENT_LEFT, -1, FOOTER_FONT_SIZE).x
+            var widest: float = maxf(w1, maxf(w2, w3))
+            var overflow: float = maxf(0.0, widest - 508.0)
+            var balance: float = absf(w1 - w2) + absf(w2 - w3) + absf(w1 - w3)
+            var score: float = overflow * 100000.0 + balance
+            if score < best_score:
+                best_score = score
+                best_a = a
+                best_b = b
+    return " ".join(words.slice(0, best_a)) + "\n" + " ".join(words.slice(best_a, best_b)) + "\n" + " ".join(words.slice(best_b))
 
 func _pad_three_lines(text_value: String) -> String:
     var clean: PackedStringArray = text_value.replace("\r", "").split("\n", true)

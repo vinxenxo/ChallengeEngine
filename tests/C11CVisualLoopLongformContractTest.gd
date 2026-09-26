@@ -1,6 +1,6 @@
 ﻿extends SceneTree
 
-## C11-C 2.15.0 — three-minute Visual Loop anthology contract.
+## C11-C 2.16.0 — three-minute Visual Loop anthology contract.
 var failures: Array[String] = []
 
 func _initialize() -> void:
@@ -27,12 +27,14 @@ func _initialize() -> void:
                 _assert(abs(composed_seconds - 180.0) <= 0.01, "Composed longform must total 180s: " + family_id)
         _assert(abs(float(schedule.get("transition_duration_seconds", 0.0)) - (4.0 / 7.0)) <= 0.0001, "Longform transition must be 4/7s.")
         _assert(float(schedule.get("final_fade_seconds", 0.0)) == 1.0, "Longform must end with a 1s final fade.")
-        _assert(str(schedule.get("transition", "")).find("never_through_black") >= 0, "Inter-segment transitions must never go through black.")
+        _assert(bool(schedule.get("transition_through_black", true)) == false, "Longform must declare no black between chapters.")
+        _assert(str(schedule.get("transition", "")).find("never_through_black") >= 0, "Longform transition metadata must declare no black between chapters.")
+        _assert(str(schedule.get("transition", "")).find("video_xfade_dissolve") >= 0, "Inter-segment transition must use dissolve continuity.")
         _assert(str(schedule.get("final_fade_color", "")) == "black", "Final fade must be black.")
-        _assert(str(schedule.get("composition_model", "")) == "crossfade_continuity_v2", "Longform composition model must be crossfade_continuity_v2.")
+        _assert(str(schedule.get("composition_model", "")) == "dissolve_continuity_v3", "Longform composition model must be dissolve_continuity_v3.")
     var composer: String = FileAccess.get_file_as_string("res://tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production.ps1")
     _assert(composer.find("run_c11c_production.ps1") >= 0, "Longform must reuse canonical production launcher.")
-    _assert(composer.find("xfade=transition=fade") >= 0, "Longform must use source-to-source video xfade.")
+    _assert(composer.find("xfade=transition=dissolve") >= 0, "Longform must use source-to-source dissolve xfade.")
     _assert(composer.find("acrossfade") >= 0, "Longform must use audio acrossfade.")
     _assert(composer.find("color=black") >= 0, "Longform must have an explicit final fade to black.")
     _assert(composer.find("never_through_black") >= 0, "Longform must declare no black between chapters.")

@@ -385,7 +385,7 @@ try {
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.15.0'
+                revision='2.16.0'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -435,7 +435,7 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.15.0'
+    revision='2.16.0'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count

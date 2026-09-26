@@ -1,6 +1,6 @@
-{
+﻿{
   "schema": "C11-C-VISUAL-LOOP-LONGFORM-SCHEDULE-V1",
-  "revision": "2.15.0",
+  "revision": "2.16.0",
   "target_duration_seconds": 180.0,
   "segment_standard_range_seconds": [
     20.0,
@@ -293,10 +293,10 @@
       ]
     }
   },
-  "composition_model": "crossfade_continuity_v2",
+  "composition_model": "dissolve_continuity_v3",
   "segment_duration_seconds": 23.0,
   "transition_duration_seconds": 0.5714285714285714,
-  "transition": "video_xfade_fade;audio_acrossfade;never_through_black",
+  "transition": "video_xfade_dissolve;audio_acrossfade;never_through_black",
   "final_fade_seconds": 1.0,
   "final_fade_color": "black",
   "transition_through_black": false
