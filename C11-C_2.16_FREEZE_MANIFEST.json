@@ -1,0 +1,15 @@
+{
+  "milestone": "C11-C 2.16",
+  "status": "FROZEN",
+  "classification": "stable_manufacturing_milestone",
+  "final_contract_repair": "authoring_output_path_isolated_by_output_root_and_grammar",
+  "review_workers": 7,
+  "visual_loop_duration_policy": "20..23s",
+  "longform_duration_seconds": 180,
+  "visual_loop_families": 5,
+  "visual_loop_grammars": 27,
+  "visual_drill_families": 4,
+  "audiovisual_corpus_review_complete": true,
+  "production_artifact_hygiene": "avi_temp_gif_opt_in",
+  "next_phase": "post_freeze_challenge_asset_recovery"
+}

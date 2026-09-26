@@ -179,15 +179,29 @@ function Start-LoopReviewJob {
     # Invisible Forces has seven grammars and therefore reuses five seeds. The grammar tag
     # must be part of every filename so concurrent workers can never delete/overwrite each
     # other's authoring, manifest, social or MP4 artifacts.
+    $stemPrefix=switch($FamilyId){
+        'c11c_geometric_waves_v1' { 'GeometricWaves_v1' }
+        'c11c_fractal_bloom_v1' { 'FractalBloom_v1' }
+        'c11c_sacred_symmetry_v1' { 'SacredSymmetry_v1' }
+        'c11c_living_particles_v1' { 'LivingParticles_v1' }
+        'c11c_invisible_forces_v1' { 'InvisibleForces_v1' }
+        default { throw "Unsupported review family id: $FamilyId" }
+    }
+    $outputTagSafe=if([string]::IsNullOrWhiteSpace($Grammar)){ '' } else { '_' + ($Grammar -replace '[^A-Za-z0-9_-]','_') }
+    $reviewStem="${stemPrefix}_seed_${Seed}${outputTagSafe}"
+    $authoringOutputPath=Join-Path $FamilyRoot ($reviewStem + '_authoring.json')
     $childArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$launcher,'-Seed',$Seed,'-Grammar',$Grammar,'-Duration','23','-OutputRoot',$FamilyRoot,'-OutputTag',$Grammar)
     if($NoSound){$childArgs += '-NoSound'}
     if($ExportGif){$childArgs += '-ExportGif'}
     $job=Start-Job -ScriptBlock {
-        param($ChildArgs,$Root)
+        param($ChildArgs,$Root,$AuthoringOutputPath)
         Set-Location $Root
+        # Explicit per-worker authoring path. This is intentionally scoped to the child
+        # process so OutputRoot + grammar tag remain isolated under seven concurrent workers.
+        $env:C11C_AUTHORING_OUTPUT_PATH=[System.IO.Path]::GetFullPath($AuthoringOutputPath)
         & powershell.exe @ChildArgs
         if($LASTEXITCODE -ne 0){throw "Review render failed: exit=$LASTEXITCODE"}
-    } -ArgumentList (,$childArgs),$ProjectRoot
+    } -ArgumentList (,$childArgs),$ProjectRoot,$authoringOutputPath
     $job | Add-Member NoteProperty C11Family $FamilyId
     $job | Add-Member NoteProperty C11Grammar $Grammar
     $job | Add-Member NoteProperty C11Seed $Seed
