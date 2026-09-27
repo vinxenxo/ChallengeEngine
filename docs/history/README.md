@@ -1,7 +1,5 @@
-# Documentation History
+# Historical Documentation
 
-Historical checkpoint material is retained as evidence. It is not current operational truth.
+Historical checkpoint notes, old master handovers, start prompts and implementation transcripts are preserved as context. They are not active architectural authority.
 
-Current operational truth lives under `docs/current/` and current master prompts under `docs/master-prompts/`.
-
-See `DOCUMENTATION_AUDIT_2.16.9.json` for the frozen 2.16.9 documentation inventory.
+When a historical document conflicts with the current frozen contract, the current repository plus the active checkpoint documentation wins. Historical files should be archived rather than silently rewritten.
