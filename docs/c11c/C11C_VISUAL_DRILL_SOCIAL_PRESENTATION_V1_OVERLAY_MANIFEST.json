@@ -1,0 +1,34 @@
+{
+  "schema": "C11-C-VISUAL-DRILL-SOCIAL-PRESENTATION-OVERLAY",
+  "revision": "1.0",
+  "baseline": "ChallengeEngineV01_C11-C2.1.4-LATEST-FREEZE.zip",
+  "baseline_sha256": "f4ceb95fd506d1ea40e70c0f2102c91e8e29b30acc0d5c0a0b032f69765d1996",
+  "scope": "presentation_only",
+  "shared_logical_frame": "540x960",
+  "physical_delivery": "720x1280 / 9:16 / 30 FPS",
+  "visual_drill_families": ["tracking", "saccade", "pursuit", "peripheral_scan"],
+  "matrix_default": false,
+  "audio": {
+    "mode": "GLOBAL_AMBIENT",
+    "master_duration_seconds": 18.0,
+    "family_independent": true,
+    "seed_independent": true
+  },
+  "modern_review_render_count": 20,
+  "files": [
+    "core/presentation/C11CEditorialAnimator.gd",
+    "core/presentation/C11CVisualEditorialLayer.gd",
+    "core/presentation/PresentationUI.gd",
+    "core/presentation/VisualDrillPresentationBinder.gd",
+    "core/presentation/VisualLoopPresentationBinder.gd",
+    "core/presentation/rendering/VisualContentPlayer.gd",
+    "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+    "tools/prototypes/c11c_common/README.md",
+    "tools/prototypes/c11c_common/generate_c11c_ambient_audio.py",
+    "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
+    "tests/C11CVisualDrillSocialPresentationContractTest.gd",
+    "tests/run_all.py",
+    "docs/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+    "docs/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md"
+  ]
+}

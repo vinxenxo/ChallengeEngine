@@ -1,0 +1,7 @@
+{
+  "success": false,
+  "error": {
+    "code": "SOURCE_RESOLUTION_MISMATCH",
+    "message": "Source movie must be 540x960; observed 720x1280."
+  }
+}

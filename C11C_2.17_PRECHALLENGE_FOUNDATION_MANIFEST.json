@@ -1,0 +1,30 @@
+{
+  "version": "2.17.0",
+  "baseline": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
+  "baseline_status": "FROZEN",
+  "scope": "documentation consolidation + Meta delivery audit + Producer GUI foundation + selective review batch surface + additive challenge wrapper",
+  "docs_authoritative_root": "docs/current",
+  "docs_audit": "docs/history/DOCUMENTATION_AUDIT_2.16.9.json",
+  "producer_version": "0.7.0",
+  "review_workers_default": 7,
+  "next_phase": "video_challenger_asset_recovery",
+  "challenge_wrapper_status": "EXPERIMENTAL_ADDITIVE_NOT_YET_RUNTIME_CERTIFIED",
+  "overlay_revision": "2.17.0",
+  "baseline_sha256": "cdf5dafd29b8fccb2d5cce8cc273df06d07eed47ea65282d65329fa20e9332de",
+  "documentation_audit_documents": 429,
+  "producer_features": [
+    "single_challenge",
+    "single_visual_loop",
+    "single_visual_drill",
+    "review_27_loops",
+    "review_20_drills",
+    "review_5_longforms",
+    "review_combinations",
+    "full_regression",
+    "seed_probe",
+    "resume_reset",
+    "7_workers",
+    "optional_gif",
+    "optional_avi"
+  ]
+}

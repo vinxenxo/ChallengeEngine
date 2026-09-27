@@ -1,0 +1,2850 @@
+{
+  "audit_version": "2.16.9",
+  "baseline": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
+  "document_count": 429,
+  "freeze_manifest": {
+    "milestone": "C11-C 2.16",
+    "status": "FROZEN",
+    "classification": "stable_manufacturing_milestone",
+    "final_contract_repair": "authoring_output_path_isolated_by_output_root_and_grammar",
+    "review_workers": 7,
+    "visual_loop_duration_policy": "20..23s",
+    "longform_duration_seconds": 180,
+    "visual_loop_families": 5,
+    "visual_loop_grammars": 27,
+    "visual_drill_families": 4,
+    "audiovisual_corpus_review_complete": true,
+    "production_artifact_hygiene": "avi_temp_gif_opt_in",
+    "next_phase": "post_freeze_challenge_asset_recovery"
+  },
+  "policy": "Historical evidence is preserved; current truth is maintained in docs/current and explicit current handover documents.",
+  "entries": [
+    {
+      "path": "00_PROJECT_OVERVIEW.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 3072,
+      "stale_signals": [
+        "2.10.0",
+        "2.10.1"
+      ]
+    },
+    {
+      "path": "01_ARCHITECTURE.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2979,
+      "stale_signals": []
+    },
+    {
+      "path": "02_DATA_AND_CONTRACTS.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1939,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "03_PRESENTATION.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2819,
+      "stale_signals": []
+    },
+    {
+      "path": "04_REPOSITORY_STRUCTURE.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1629,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "05_TESTING_AND_REGRESSION.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2876,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.1"
+      ]
+    },
+    {
+      "path": "06_PRODUCTION_AND_DISTRIBUTION.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1873,
+      "stale_signals": [
+        "2.10.1",
+        "FAMILY_MUSIC_V3",
+        "44.1"
+      ]
+    },
+    {
+      "path": "07_ROADMAP.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 3201,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "2.10.1",
+        "FAMILY_MUSIC_V3"
+      ]
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/C11-C.0_UNIVERSAL_VISUAL_GENERATION_CONTRACT_v1.0.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 4995,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/C11-C_VISUAL_FAMILY_CONTRACT_INDEX_v1.0.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1591,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/README_C11-C_CONTRACT_SET_v1.0.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 501,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_drill/01_TRACKING_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1515,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_drill/02_SACCADE_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1499,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_drill/03_PURSUIT_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1309,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_drill/04_PERIPHERAL_SCAN_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1491,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_loop/01_FRACTAL_BLOOM_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 2296,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_loop/02_GEOMETRIC_WAVES_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 21014,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_loop/03_SACRED_SYMMETRY_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1999,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_loop/04_LIVING_PARTICLES_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1898,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_CONTRACTS_v1.0/visual_loop/05_INVISIBLE_FORCES_v1.md",
+      "status": "CONTRACT_REFERENCE",
+      "bytes": 1794,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_COUNTDOWN_AND_TRACKING_V2.4.0.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2910,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2429,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 950,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1391,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 458,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2445,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1348,
+      "stale_signals": []
+    },
+    {
+      "path": "C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2324,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2153,
+      "stale_signals": []
+    },
+    {
+      "path": "C11C_STUDIO_BUILD_NOTES_v0.2.2.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 1335,
+      "stale_signals": []
+    },
+    {
+      "path": "C11C_STUDIO_BUILD_NOTES_v0.2.3.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 518,
+      "stale_signals": []
+    },
+    {
+      "path": "C11C_STUDIO_BUILD_NOTES_v0.2.4.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 530,
+      "stale_signals": []
+    },
+    {
+      "path": "C11C_STUDIO_FIRST_BUILD_AUDIT_v0.2.1.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 3178,
+      "stale_signals": []
+    },
+    {
+      "path": "C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 67028,
+      "stale_signals": []
+    },
+    {
+      "path": "C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 28984,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1439,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "README.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1214,
+      "stale_signals": [
+        "2.9.0",
+        "2.10.1"
+      ]
+    },
+    {
+      "path": "README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 2435,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C.10_AUDIO_DIRECTION_VISUAL_DRILLS_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1053,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.12_DRILL_DESIGN_BIBLE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1193,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.1_GEOMETRIC_WAVES_V1.5_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 644,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 21363,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT_REFERENCE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 21014,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.1_GEOMETRIC_WAVES_VISUAL_CONTRACT_v1.5_ART_DIRECTION.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1511,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.1_V1.5_REVIEW_CHECKLIST.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 557,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.1_V1.5_STATIC_REPORT.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 229,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.2_FRACTAL_BLOOM_ART_DIRECTION_v1.7.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 327,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.2_FRACTAL_BLOOM_VISUAL_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 9442,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.3_SACRED_SYMMETRY_COLOR_DIVERSITY_v1.7.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 266,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.3_SACRED_SYMMETRY_V1_ART_DIRECTION_v1.6.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1507,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.3_SACRED_SYMMETRY_V1_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1205,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.3_SACRED_SYMMETRY_V1_VISUAL_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3681,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.4_LIVING_PARTICLES_COLOR_DIVERSITY_v1.7.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 285,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.4_LIVING_PARTICLES_V1_ART_DIRECTION_v1.6.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1534,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.4_LIVING_PARTICLES_V1_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1200,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.4_LIVING_PARTICLES_V1_VISUAL_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3978,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.5_INVISIBLE_FORCES_ART_DIRECTION_v1.7.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 339,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.5_INVISIBLE_FORCES_V1_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1120,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.5_INVISIBLE_FORCES_V1_VISUAL_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3340,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.6_TRACKING_MECHANIC_BASELINE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 688,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.6_TRACKING_MECHANIC_BASELINE_v1.2.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 906,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.7_SACCADE_MECHANIC_BASELINE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1208,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.7_SACCADE_MECHANIC_BASELINE_v1.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 838,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.8_PURSUIT_ART_DIRECTION_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2857,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.8_PURSUIT_MECHANIC_BASELINE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1608,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.8_PURSUIT_MECHANIC_BASELINE_v1.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1091,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.9_PERIPHERAL_SCAN_MECHANIC_BASELINE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1269,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C.9_PERIPHERAL_SCAN_MECHANIC_BASELINE_v1.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 932,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.2.0-VISUAL_DRILL_PRESENTATION_FOUNDATION.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 442,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C2.2.1-PRESENTATION-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1331,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C2.2.2-OVERLAY-MANIFEST.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 335,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.2.2-PRESENTATION-HOTFIX.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1110,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C2.3.0-TRACKING-MECHANIC-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1155,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.3.1-TRACKING-HOTFIX-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 760,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.3.2-TEST-RUNNER-HOTFIX.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 335,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.4.0-VISUAL-DRILL-COUNTDOWN-TRACKING-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 909,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.5.0-TRACKING-SACCADE-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2070,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C2.5.1-TRACKING-SACCADE-HOTFIX.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 733,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.6.0-TRACKING-SACCADE-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 999,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C2.9.0-VISUAL-DRILL-POLISH-MANIFEST.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2405,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C2.9.0-VISUAL-DRILL-POLISH-OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1658,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.10.0_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2373,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "FAMILY_MUSIC_V3",
+        "44.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.10.0_STATIC_VALIDATION.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2432,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "FAMILY_MUSIC_V3",
+        "44.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.10.1_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2353,
+      "stale_signals": [
+        "2.10.0",
+        "2.10.1",
+        "FAMILY_MUSIC_V3",
+        "44.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.11.0_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 943,
+      "stale_signals": [
+        "2.10.1",
+        "2.11.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.11.0_OVERLAY_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 7124,
+      "stale_signals": [
+        "2.10.1",
+        "2.11.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.11.0_OVERLAY_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 856,
+      "stale_signals": [
+        "2.10.1",
+        "2.11.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.11.1_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1814,
+      "stale_signals": [
+        "2.11.0",
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.11.1_OVERLAY_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 429,
+      "stale_signals": [
+        "2.11.0",
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.12.0_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2702,
+      "stale_signals": [
+        "2.11.1",
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.12.0_OVERLAY_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 521,
+      "stale_signals": [
+        "2.11.1",
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.13.0_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1932,
+      "stale_signals": [
+        "2.12.0",
+        "2.13.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.13.0_OVERLAY_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1596,
+      "stale_signals": [
+        "2.12.0",
+        "2.13.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.14.0_OVERLAY_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 650,
+      "stale_signals": [
+        "2.14.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.14.1_LONGFORM_CONTRACT_TEST_REPAIR.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 694,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_2.15.0_ART_DIRECTION_OVERLAY.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1735,
+      "stale_signals": [
+        "2.15.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.16.0_ART_DIRECTION_REFINEMENT.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1955,
+      "stale_signals": [
+        "2.15.1",
+        "2.16.0",
+        "2.16.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.16.2_POST_REVIEW_REFINEMENT.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 624,
+      "stale_signals": [
+        "2.15.1",
+        "2.16.2"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.16.3_ART_DIRECTION_RESUME_REPAIR.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1788,
+      "stale_signals": [
+        "2.15.1",
+        "2.16.3"
+      ]
+    },
+    {
+      "path": "c11/C11-C_2.9.0_CURRENT_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2643,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "c11/C11-C_ARTIFACT_CLEANUP_POLICY_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 793,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_CHANGELOG_v2.0.1_to_v2.1.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 334,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_CHANGELOG_v2.0.1_to_v2.1.4.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3921,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_CHANGELOG_v2.1.3.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 693,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_COLOR_VARIATION_POLICY_v1.9.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 445,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1747,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v1.9.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1713,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v2.0.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1271,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v2.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1793,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_AUDIO_LOOP_CONTRACT_v2.1.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2541,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_HEADER_FOOTER_REFINEMENT.patch",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 40228,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_EDITORIAL_TEXT_GENERATION_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2213,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_GEOMETRIC_WAVES_V1.5_PACKAGE_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 17751,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_LSP_v1.6_IMPLEMENTATION_NOTES.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1016,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_MULTISEED_STAGE_STATUS_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 833,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_PHASE_STATUS_2.9.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2275,
+      "stale_signals": [
+        "2.9.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_PRODUCTION_BULK_WORKFLOW_v2.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 273,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_REMAINING_VISUAL_LOOPS_INDEX.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1479,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_REVIEW_ASSETS_EXPORT_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1141,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_REVIEW_TOOLING_FIX_1.0.2.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 341,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_SEED_SPACING_POLICY_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 893,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_SOCIAL_POSTS_v1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 8189,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_TECHNOBABBLE_GENERATION_CONTRACT_v2.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 390,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_TEXT_TEMPLATE_EXAMPLES_v2.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 450,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V1.5_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 112,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V1.6_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 676,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V1.7_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 567,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V1.8_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 376,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V1.9.1_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1483,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.1_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 449,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.2_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1663,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.3_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2068,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.4_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1712,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.5_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1533,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.6_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1372,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_V2.0.8_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1730,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0.9_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1973,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.0_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 583,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.1.0_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1229,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.1.2_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2061,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.1.3_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 543,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_V2.1.4_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 923,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_VARIATION_ENGINE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1173,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_ART_DIRECTION_V1.8_COLOR_ZOOM_FIX.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1436,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_BULK_AND_HEADER_RULES_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 671,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_DRILLS_HISTORICAL_INDEX_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3819,
+      "stale_signals": [
+        "2.9.0",
+        "2.9.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_VISUAL_DRILL_AUDIO_DIRECTION_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1845,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_DRILL_AUDIO_DIRECTION_v2.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1123,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_DRILL_GAMEPLAY_BIBLE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2172,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_DURATION_POLICY_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1428,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_FAMILY_NOMENCLATURE_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 916,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_GRAMMAR_VARIATION_v1.5.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 8183,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_HOOK_SOCIAL_AUDIO_2.11.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 229,
+      "stale_signals": [
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_VISUAL_HOOK_SOCIAL_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1986,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_LOOPS_PARKED_STATE.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1871,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_LOOPS_READY_COPY_v1.3.1_GODOT_PARSE_HOTFIX.zip.sha256",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 126,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_LOOP_LONGFORM_ARCHITECTURE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1209,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11-C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 955,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_MUSIC_DIRECTION_v3.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2685,
+      "stale_signals": [
+        "44.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_VISUAL_MUSIC_DIRECTION_v3.3.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2554,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_MUSIC_DIRECTION_v4.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1155,
+      "stale_signals": [
+        "44.1"
+      ]
+    },
+    {
+      "path": "c11/C11-C_VISUAL_SOCIAL_COPY_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1392,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_TEXT_PLACEMENT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 909,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_TYPOGRAPHY_CONTRACT_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1999,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_VARIATION_MODEL_v1.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1337,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11-C_VISUAL_VARIATION_MODEL_v1.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1639,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_2.13.2_NATIVE_STDERR_AND_AVI_HYGIENE_REPAIR.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1436,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_2.3.2_TEST_RUNNER_TRACKING_PLAYBACK_HOTFIX.patch",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 5199,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_2.9.1_PERIPHERAL_ENVIRONMENT_FIX.patch",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 358,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.5.1_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1872,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.5_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1512,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.6_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 19879,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.6_STATIC_CHECKS.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 916,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.7_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 20736,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.8.1_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 21000,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_ART_DIRECTION_V1.8_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 20827,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_COMANDOS_OPERATIVOS_v2.1.4.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 13483,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_EDITORIAL_AND_VARIATION_UPDATE_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 786,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_EDITORIAL_AUDIO_LOOP_PACKAGE_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1242,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_EDITORIAL_AUDIO_LOOP_PACKAGE_MANIFEST_v2.0.0.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 20637,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_FRACTAL_BLOOM_PROTOTYPE_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 875,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_PACKAGE_FILE_INVENTORY_v1.9.1.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 20659,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_PRODUCER_DRILLS_OVERLAY_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1618,
+      "stale_signals": [
+        "2.10.1"
+      ]
+    },
+    {
+      "path": "c11/C11C_PRODUCER_DRILLS_OVERLAY_README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1602,
+      "stale_signals": [
+        "2.10.1"
+      ]
+    },
+    {
+      "path": "c11/C11C_PROTOTYPE_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3017,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_TOOLCHAIN_CANONICAL_v2.1.4.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 4109,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_V2.0.2_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 715,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_V2.0.3_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 843,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_V2.0.4_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1242,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_V2.0.5_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1191,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_V2.0.6_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 305,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_V2.0.8_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 666,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_V2.0.9_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 936,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_V2.1.0_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 754,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_V2.1.2_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3568,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_V2.1.3_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 314,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_V2.1.4_PATCH_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 529,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/C11C_V2.1.4_STATIC_AUDIT.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 84,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/C11C_VARIATION_ENGINE_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 612,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.10.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3116,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "2.10.1",
+        "FAMILY_MUSIC_V3"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.10.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1509,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "2.10.1",
+        "FAMILY_MUSIC_V3"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.11.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1790,
+      "stale_signals": [
+        "2.11.0",
+        "FAMILY_MUSIC_V3"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.11.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1131,
+      "stale_signals": [
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.12.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1147,
+      "stale_signals": [
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.13.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2064,
+      "stale_signals": [
+        "2.13.0"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.2.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 643,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.2.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 951,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.2.2.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1885,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.3.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1542,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.3.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1327,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.3.2.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1199,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.4.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1083,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.5.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2230,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.5.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1242,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.6.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1533,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.7.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3215,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.7.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 841,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.7.2.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 922,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.8.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1212,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.8.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 688,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.9.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3308,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "c11/CHANGELOG_C11-C_2.9.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1817,
+      "stale_signals": [
+        "2.9.0",
+        "2.9.1"
+      ]
+    },
+    {
+      "path": "c11/FAMILIAS_DRILL.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 13473,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/INSTALL_C11C_2.11.1.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 441,
+      "stale_signals": [
+        "2.11.0",
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/INSTALL_C11C_2.12.0.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 648,
+      "stale_signals": [
+        "2.11.1",
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.10.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2891,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "FAMILY_MUSIC_V3",
+        "44.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.10.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2299,
+      "stale_signals": [
+        "2.9.1",
+        "2.10.0",
+        "2.10.1",
+        "FAMILY_MUSIC_V3",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.11.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2808,
+      "stale_signals": [
+        "2.10.1",
+        "2.11.0",
+        "FAMILY_MUSIC_V3",
+        "44.1"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.11.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 991,
+      "stale_signals": [
+        "2.10.1",
+        "2.11.0",
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.12.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1160,
+      "stale_signals": [
+        "2.11.1",
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.13.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2254,
+      "stale_signals": [
+        "2.12.0",
+        "2.13.0"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_2.9.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 6329,
+      "stale_signals": [
+        "2.9.0",
+        "2.9.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/MASTER_HANDOVER_C11-C_ART_DIRECTION_2.0_v2.1.4.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 6406,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/OVERLAY_FILES_SHA256.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3920,
+      "stale_signals": [
+        "2.14.0"
+      ]
+    },
+    {
+      "path": "c11/OVERLAY_MANIFEST.json",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 408,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/README.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1222,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/README_C11C_EDITORIAL_HEADER_FOOTER_REFINEMENT.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1576,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V2.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 819,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V3.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 937,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/README_INSTALL_C11C_2.12.0_OVERLAY.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 667,
+      "stale_signals": [
+        "2.11.1",
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1405,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_REVISED.txt",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 881,
+      "stale_signals": []
+    },
+    {
+      "path": "c11/START_PROMPT_C11-C_ART_DIRECTION_2.0_v2.1.4.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 3288,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.10.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1340,
+      "stale_signals": [
+        "2.10.0",
+        "FAMILY_MUSIC_V3"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.10.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1104,
+      "stale_signals": [
+        "2.10.0",
+        "2.10.1"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.11.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 598,
+      "stale_signals": [
+        "2.10.1",
+        "2.11.0"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.11.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 659,
+      "stale_signals": [
+        "2.11.1"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.12.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 1529,
+      "stale_signals": [
+        "2.11.1",
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.13.0.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 590,
+      "stale_signals": [
+        "2.13.0"
+      ]
+    },
+    {
+      "path": "c11/START_PROMPT_C11C_NEXT_CONTEXT_2.9.1.md",
+      "status": "C11C_VERSIONED_REFERENCE",
+      "bytes": 2576,
+      "stale_signals": [
+        "2.9.0",
+        "2.9.1",
+        "720x1280"
+      ]
+    },
+    {
+      "path": "c11-C_PRODUCER_CANONICAL_NAMING.md",
+      "status": "TOOLING_REFERENCE",
+      "bytes": 1063,
+      "stale_signals": []
+    },
+    {
+      "path": "c11c/C11C_LONGFORM_POWERSHELL_PARSER_REPAIR_README.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1108,
+      "stale_signals": []
+    },
+    {
+      "path": "c11c_2.12.0_PRODUCTION_BATCH_RUNBOOK.md",
+      "status": "LEGACY_OR_REFERENCE",
+      "bytes": 1361,
+      "stale_signals": [
+        "2.12.0"
+      ]
+    },
+    {
+      "path": "checkpoints/C11_B_REPOSITORY_CLEANUP_AUDIT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2379,
+      "stale_signals": []
+    },
+    {
+      "path": "checkpoints/C11_B_REPOSITORY_ORGANIZATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1746,
+      "stale_signals": []
+    },
+    {
+      "path": "checkpoints/C11_FREEZE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1207,
+      "stale_signals": []
+    },
+    {
+      "path": "contracts/C11_ARCHITECTURE_MANIFESTO.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 3080,
+      "stale_signals": []
+    },
+    {
+      "path": "contracts/README.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 513,
+      "stale_signals": []
+    },
+    {
+      "path": "history/C11-C_2.9.0_STATUS_SNAPSHOT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 606,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "history/C11-C_HISTORY_INDEX_2.9.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2897,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "history/README.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 405,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11-README.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 11351,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3554,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1649,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1538,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11B0_CONTRACT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2688,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11B0_IMPLEMENTATION.patch",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 25276,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/C11B1_CONTRACT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1322,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11A1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1599,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11A_FIX.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 602,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11A_FIX_v2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 664,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11A_V3.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 493,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1523,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B0_1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1018,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B0_1_NEXT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 426,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B0_2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2470,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B0_2_V3.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1463,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B0_2_V4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1403,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11/README_C11B1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 322,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/00_INDEX.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 906,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/01_REPOSITORY_LAYOUT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1631,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/02_TEST_REGISTRY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1988,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/03_RETROCOMPATIBILITY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1672,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/04_SEED_POLICY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1062,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/05_QA_VIDEO_TEXT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 595,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/06_FREEZE_CHECKLIST.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1146,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/07_CURRENT_STATE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1178,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/08_DOCUMENTATION_LIFECYCLE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1307,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/09_CONSOLIDATION_V2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1156,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/10_LONG_TERM_PROJECT_GUIDE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2259,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/11_FINAL_FREEZE_GATE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1039,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/12_DOCUMENTATION_INDEX.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 695,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/13_ARCHITECTURE_MANIFESTO.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2206,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1660,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 646,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/15_FREEZE_OPERATING_RULES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 632,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/README_C11_FREEZE_CONSOLIDATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2812,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/README_C11_FREEZE_CONSOLIDATION_v2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2218,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c11-freeze/README_C11_FREEZE_FINAL.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1744,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-D4_IMPLEMENTATION_AUDIT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1456,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-E4_IMPLEMENTATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1328,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-E4_RUNTIME_INTEGRATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1731,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-E_E3_IMPLEMENTATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1411,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-E_IMPLEMENTATION_NOTES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1188,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-E_STEP0_E1_REPORT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3354,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F0.3.5_CTA_REGRESSION_REPAIR.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1055,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F0.3.5_FINAL_PATCH_README.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 382,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F0.3.5_IMPLEMENTATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5144,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 14331,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.2_IMPLEMENTATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2567,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.2_STATIC_MATRIX.json",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2020,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.3_IMPLEMENTATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2327,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.4-P5-FIND-IMPLEMENTATION-NOTES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1359,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.4_PHASE1_PILOT_NATIVE_V2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2000,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.4_PHASE2_PARKING_NATIVE_V2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 915,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.4_PHASE4_CATCH_CLOSURE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3723,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6-F4.4_PHASE5_FIND_PREIMPLEMENTATION_AUDIT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3018,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6F4-P7-COUNT-BRIDGE-NOTE.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 191,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/C6_F0_3_4_CTA_REGRESSION_ROOT_CAUSE.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2178,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/F1.1_FIX4_NOTES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1193,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/F1.1_IMPLEMENTATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 581,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/F4.2_FIX_NOTES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 943,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/MIGRATION_1.1.0-C6-D3_TO_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1128,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 18981,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c9/C9-D_AUTHORING_REPRODUCIBILITY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 668,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c9/C9-E_HIT_V1_AUTHORING.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 522,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c9/C9-F_CATCH_V1_AUTHORING.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 503,
+      "stale_signals": []
+    },
+    {
+      "path": "history/c9/C9-G_REMAINING_MECHANICS_AUTHORING.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 992,
+      "stale_signals": []
+    },
+    {
+      "path": "history/design/BRAINSTORMING.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 593,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/run_batch_export.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 7503,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/APPLY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1301,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/APPLY_NOTES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1025,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/C6F4-P7-COUNT-PATCH.diff",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2766,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/C6F4_CATCH_CLEANUP_AND_RUNNER-FIX1.ps1",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3691,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/C6F4_CATCH_CLEANUP_AND_RUNNER.ps1",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4030,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/C6F4_FIND_NATIVE_V2_APPLY-FIX1.ps1",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 7031,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/C6F4_FIND_NATIVE_V2_APPLY.ps1",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 6825,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/ChallengeDefinitionValidator_F1.1.patch",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 583,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/F4.2_GeneradorMaestro.patch",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 13245,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/F4.2_STATIC_TIMING_CHECK.json",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1713,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/WinningHighlightComponent.integration.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2982,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/audit_c3_e.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4276,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/audit_export_pipeline.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1943,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/audit_shadow.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2222,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/authoring_batch.json",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 741,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/authoring_remaining_c9_batch.json",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1399,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c6e_output_contract_test.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2214,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c8_a_provenance_mutation_test.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 10827,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c8_b_batch_reproducibility_test.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5412,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c8_b_reproducibility_test.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5667,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c9_b_parking_v2_production.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4137,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c9_c_batch_production.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4783,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c9_d_authoring_reproducibility.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3745,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c9_e_hit_v1_production.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2119,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c9_f_catch_v1_production.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2125,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/c9_g_remaining_mechanics_production.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4500,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/challenges_c7_injection.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 601,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/convert_to_gifs.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1422,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/patch_definitions.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2298,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/patch_f06_step2.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1629,
+      "stale_signals": []
+    },
+    {
+      "path": "history/legacy-tools/scripts/phase_duration_contract_test.py",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1876,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 9235,
+      "stale_signals": [
+        "44.1"
+      ]
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_C10_VISUAL_AUTHORING_FROZEN.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 8434,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_C6_F0_8_FROZEN.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 16856,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_C6_F0_8_FROZEN_v2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 11557,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 16469,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3636,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 13877,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.6.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4520,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 23787,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.9.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3418,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.0.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 6804,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 6896,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2919,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1658,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-F0.8-E.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4500,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.4_CLOSED.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 14185,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4604,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_START_PROMPT_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1562,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_START_PROMPT_C6-F0.3.5.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 8335,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/MASTER_START_PROMPT_C6-F0.8-E.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2272,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4583,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/START_PROMPT_C10_CONTINUATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4225,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/START_PROMPT_C6_F0_8_CONTINUATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 7049,
+      "stale_signals": []
+    },
+    {
+      "path": "history/master-prompts/START_PROMPT_C6_F0_8_CONTINUATION_v2.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 7449,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/04_PRODUCTION_AND_ARTIFACTS.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1141,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/06_ROADMAP.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1058,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/ARCHITECTURE_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 8111,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/CHECKPOINT_0.3.6_DOCUMENTATION_CHANGELOG.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1319,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/CHECKPOINT_0.3.6_STATUS.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5472,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4212,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/DOCUMENTATION_0.9_1.0_UPDATE_SUMMARY.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1322,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 995,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/DOCUMENTATION_STATUS_1.0.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1278,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/DOCUMENTATION_STATUS_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2222,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/DOCUMENTATION_STATUS_C6-F0.3.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1444,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/GOVERNANCE_HISTORICAL.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 6556,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/PACKAGE_CONTENTS.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 446,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/PACKAGE_MANIFEST_1.1.0-C6-D4.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1048,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/PACKAGE_MANIFEST_C6-F0.3.5.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2008,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/README-P7.txt",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 582,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/README_INTEGRATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2185,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/README_PROJECT_ES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3429,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/RELEASE_NOTES_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 836,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/REPOSITORY_AUDIT_1.1.0-C6-D4.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1616,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/ROADMAP_PHASES.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 6096,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/CONTENT_SCHEMA_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5133,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/DATA_MODEL_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3402,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/DISTRIBUTION_SPEC_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3102,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/DOMAIN_MODEL_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 2497,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/MECHANICS_SPECIFICATION_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5018,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 7413,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/TESTING_STRATEGY_V0.1.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 5967,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/VALIDATION_PROTOCOL.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 3620,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/contracts/VIDEO_SPECIFICATION.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 4308,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/mechanics/PARKING_MECHANIC_V2.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 7684,
+      "stale_signals": []
+    },
+    {
+      "path": "history/reference/mechanics/PILOT_MECHANIC_V2.0.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 16553,
+      "stale_signals": []
+    },
+    {
+      "path": "history/repository/README_DRAFT_GITHUB.md",
+      "status": "HISTORICAL_PRESERVED",
+      "bytes": 1779,
+      "stale_signals": []
+    },
+    {
+      "path": "master-prompts/MASTER_HANDOVER_C11-C_ART_DIRECTION_2.0.md",
+      "status": "PROMPT_HISTORY",
+      "bytes": 2200,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "master-prompts/MASTER_HANDOVER_C11-C_CURRENT_v2.9.0.md",
+      "status": "PROMPT_HISTORY",
+      "bytes": 1785,
+      "stale_signals": [
+        "2.9.0"
+      ]
+    },
+    {
+      "path": "master-prompts/MASTER_HANDOVER_C11_B_FREEZE.md",
+      "status": "PROMPT_HISTORY",
+      "bytes": 3098,
+      "stale_signals": []
+    },
+    {
+      "path": "master-prompts/MASTER_HANDOVER_C11_B_REPOSITORY_ORGANIZATION.md",
+      "status": "PROMPT_HISTORY",
+      "bytes": 3130,
+      "stale_signals": []
+    },
+    {
+      "path": "master-prompts/START_PROMPT_C11-C_ART_DIRECTION_2.0.md",
+      "status": "PROMPT_HISTORY",
+      "bytes": 1210,
+      "stale_signals": [
+        "720x1280"
+      ]
+    },
+    {
+      "path": "master-prompts/START_PROMPT_C11C_ART_DIRECTION.md",
+      "status": "PROMPT_HISTORY",
+      "bytes": 2442,
+      "stale_signals": []
+    },
+    {
+      "path": "mechanics/README.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 263,
+      "stale_signals": []
+    },
+    {
+      "path": "operations/ARTIFACT_POLICY.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 837,
+      "stale_signals": []
+    },
+    {
+      "path": "operations/GOVERNANCE.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 1061,
+      "stale_signals": []
+    },
+    {
+      "path": "operations/REPOSITORY_ORGANIZATION.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 2521,
+      "stale_signals": []
+    },
+    {
+      "path": "operations/TEST_RUNBOOK.md",
+      "status": "SPECIALIZED_OPERATIONAL_REFERENCE",
+      "bytes": 3100,
+      "stale_signals": []
+    }
+  ]
+}

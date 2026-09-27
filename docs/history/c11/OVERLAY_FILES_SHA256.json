@@ -1,0 +1,19 @@
+{
+  "CHANGELOG_C11-C_2.16.3.md": "90f14439f202d04e885b0d62ae99e96548323b2dff0c90403a72ca29754efd1b",
+  "core/presentation/C11CVisualEditorialLayer.gd": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+  "docs/c11/C11-C_2.16.3_ART_DIRECTION_RESUME_REPAIR.md": "8b2d3ad0b3f8b9339399a798bbb02efe93f7c0a8ea9f12c36717fa4396b1de19",
+  "tests/C11CArtDirectionReviewResumeContractTest.gd": "e0c05f2e7ca49a8106e88af2886f583bf6e03ddb8179671977d4bcebd56d2a75",
+  "tests/C11CCommonPresentationOverlayContractTest.gd": "eac84391f59ecbbbdfdaa7f00e6ed57ce03809470d5e78c7bc227c9cdd6efefd",
+  "tests/C11CVisualLoopLongformContractTest.gd": "6686f1cab4dafcf4922e0c5f5eb7fbc07fc1b548206c41524f0641bef453a3de",
+  "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1": "a533b4003eda831bcc5a2348349fe8faa6725b029018ff7cd83347a816628240",
+  "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55",
+  "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801",
+  "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c",
+  "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd",
+  "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a",
+  "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60",
+  "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a",
+  "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638",
+  "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b",
+  "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e"
+}
