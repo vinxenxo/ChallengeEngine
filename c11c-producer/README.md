@@ -1,6 +1,6 @@
-# C11-C Producer 0.8.0
+# C11-C Producer 0.9.0
 
-Two-column light interface preserved from the approved 0.4.0 UI. The Producer is the single orchestration surface for single content, selective review batches and logical regression.
+Compact two-column cyberpunk interface derived from the approved 0.4.0 layout; the header/banner and visible help text are intentionally removed to maximize workspace. The Producer is the single orchestration surface for single content, selective review batches and logical regression.
 
 ## Supported single production
 
@@ -31,5 +31,7 @@ cd .\c11c-producer
 python .\self_test.py
 python .\preflight.py
 ```
+
+Variation controls use visual sliders with an explicit ALEATORIO checkbox; fixed values are selected only when ALEATORIO is disabled. Completed queue entries remain visible and dimmed, while the active row receives a strong selection highlight. Delivery profiles are resolved centrally, including aliases.
 
 The review runner is held to the current Visual Drill contract: Tracking 21s gameplay + 3s PRE_ROLL + 3s END_CTA = 27s / 810 frames; Saccade, Pursuit and Peripheral Scan remain 17s gameplay + 6s presentation = 23s / 690 frames.

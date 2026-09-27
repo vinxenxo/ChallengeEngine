@@ -10,13 +10,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from PySide6.QtCore import QProcess, QTimer, Qt
+from PySide6.QtCore import QProcess, Qt
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
     QComboBox,
-    QDoubleSpinBox,
     QFrame,
     QGridLayout,
     QGroupBox,
@@ -29,6 +28,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QSizePolicy,
+    QSlider,
     QSpinBox,
     QTableWidget,
     QTableWidgetItem,
@@ -36,7 +36,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.8.0"
+APP_VERSION = "0.9.1"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parent)).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -60,25 +60,45 @@ DELIVERY_ORDER = [
 ]
 
 
+def resolve_delivery_profile(profile_id: str) -> tuple[str, dict[str, Any]]:
+    profiles = DELIVERY_CONFIG.get("profiles", {})
+    seen: set[str] = set()
+    current = profile_id
+    while True:
+        if current in seen:
+            raise ValueError(f"Delivery profile alias cycle: {profile_id}")
+        seen.add(current)
+        profile = profiles.get(current)
+        if not isinstance(profile, dict):
+            raise ValueError(f"Unknown delivery profile: {current}")
+        target = profile.get("alias_of")
+        if not target:
+            return current, profile
+        current = str(target)
+
+
 def delivery_label(profile_id: str) -> str:
-    profile = DELIVERY_CONFIG.get("profiles", {}).get(profile_id, {})
+    try:
+        resolved_id, profile = resolve_delivery_profile(profile_id)
+    except ValueError:
+        return profile_id
+    width = profile.get("width", "?")
+    height = profile.get("height", "?")
     if profile_id == "MASTER_1080":
-        return "MASTER — 1080x1920 (ESTÁNDAR)"
+        return "MASTER · 1080×1920 · ESTÁNDAR"
     if profile_id == "REVIEW_720":
-        return "REVIEW — 720x1280 (C11-C)"
+        return "REVIEW · 720×1280 · C11-C"
     if profile_id == "MIN_540":
-        return "MÍNIMO — 540x960"
+        return "MÍNIMO · 540×960"
     if profile_id == "META_REELS_FINAL_V1":
-        return "META REELS FINAL — 1080x1920"
+        return f"META REELS FINAL · {width}×{height}"
     if profile_id == "LONGFORM_1080":
-        return "LONGFORM — 1080x1920"
-    return f"{profile_id} — {profile.get('width', '?')}x{profile.get('height', '?')}"
+        return "LONGFORM · 1080×1920"
+    return f"{profile_id} · {width}×{height}"
 
 
 DELIVERY_PROFILES = [
-    pid
-    for pid in DELIVERY_ORDER
-    if pid in DELIVERY_CONFIG.get("profiles", {})
+    pid for pid in DELIVERY_ORDER if pid in DELIVERY_CONFIG.get("profiles", {})
 ]
 DEFAULT_DELIVERY = (
     DELIVERY_CONFIG.get("standard_default")
@@ -96,12 +116,10 @@ def load_challenge_catalog() -> dict[str, dict[str, Any]]:
             cid = str(payload.get("challenge_id") or path.stem)
             video = payload.get("video") or {}
             fps = int(video.get("fps", 60))
-            phase_seconds = sum(float(video.get(key, 0.0)) for key in (
-                "hook_duration",
-                "game_duration",
-                "reveal_duration",
-                "cta_duration",
-            ))
+            phase_seconds = sum(
+                float(video.get(key, 0.0))
+                for key in ("hook_duration", "game_duration", "reveal_duration", "cta_duration")
+            )
             total_frames = int(round(phase_seconds * fps))
             catalog[cid] = {
                 "id": cid,
@@ -140,107 +158,146 @@ class Recipe:
     keep_avi: bool = False
     delivery: str = DEFAULT_DELIVERY
     targets: dict[str, Any] = field(default_factory=dict)
+    ui_row: int = -1
+    status: str = "EN COLA"
+    completed: bool = False
 
 
 class ParamRow(QWidget):
+    """Compact visual control: slider + current value + random checkbox."""
+
     def __init__(self, spec: dict[str, Any]):
         super().__init__()
         self.spec = spec
-        lay = QHBoxLayout(self)
-        lay.setContentsMargins(0, 1, 0, 1)
-        lay.setSpacing(8)
-        self.label = QLabel(spec["label"])
-        self.label.setMinimumWidth(155)
-        self.mode = QComboBox()
-        self.mode.addItems(["ALEATORIO (seed)", "FIJAR"])
-        self.mode.setFixedWidth(155)
-        if spec["kind"] == "enum":
-            self.editor = QComboBox()
-            self.editor.addItems([str(value) for value in spec["values"]])
+        self.is_enum = spec["kind"] == "enum"
+        self.values = list(spec.get("values", [])) if self.is_enum else []
+        self.random_check = QCheckBox("ALEATORIO")
+        self.random_check.setChecked(True)
+        self.random_check.setMinimumWidth(105)
+        self.random_check.setToolTip("Dejar que la seed determine este parámetro")
+
+        self.slider = QSlider(Qt.Horizontal)
+        self.slider.setTracking(True)
+        self.slider.setMinimum(0)
+        if self.is_enum:
+            self.slider.setMaximum(max(0, len(self.values) - 1))
         else:
-            self.editor = QDoubleSpinBox()
-            self.editor.setRange(float(spec["min"]), float(spec["max"]))
-            self.editor.setSingleStep(float(spec["step"]))
+            minimum = float(spec["min"])
+            maximum = float(spec["max"])
             step = float(spec["step"])
-            self.editor.setDecimals(5 if step < 0.001 else 3 if step < 0.01 else 2)
-            self.editor.setValue((float(spec["min"]) + float(spec["max"])) / 2)
-        self.editor.setEnabled(False)
-        self.editor.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        lay.addWidget(self.label)
-        lay.addWidget(self.mode)
-        lay.addWidget(self.editor, 1)
-        self.mode.currentIndexChanged.connect(
-            lambda index: self.editor.setEnabled(index == 1 and self.isEnabled())
-        )
+            steps = max(1, int(round((maximum - minimum) / step)))
+            self.slider.setMaximum(steps)
+        self.slider.setValue(self.slider.maximum() // 2)
+        self.slider.setEnabled(False)
+        self.slider.setMinimumWidth(135)
 
-    def set_random(self) -> None:
-        self.mode.setCurrentIndex(0)
+        self.value_label = QLabel(self._display_value())
+        self.value_label.setObjectName("SliderValue")
+        self.value_label.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        self.value_label.setMinimumWidth(105)
 
-    def value(self) -> Any:
-        if self.mode.currentIndex() == 0:
-            return None
-        if self.spec["kind"] == "enum":
-            value = self.editor.currentText()
-            try:
-                return int(value)
-            except ValueError:
-                return value
-        return float(self.editor.value())
+        self.label = QLabel(str(spec["label"]))
+        self.label.setMinimumWidth(132)
+        self.label.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(7)
+        layout.addWidget(self.label)
+        layout.addWidget(self.slider, 1)
+        layout.addWidget(self.value_label)
+        layout.addWidget(self.random_check)
+
+        self.slider.valueChanged.connect(self._value_changed)
+        self.random_check.toggled.connect(self._random_toggled)
+
+    def _typed_value(self) -> Any:
+        if self.is_enum:
+            return self.values[self.slider.value()]
+        minimum = float(self.spec["min"])
+        step = float(self.spec["step"])
+        value = minimum + self.slider.value() * step
+        maximum = float(self.spec["max"])
+        return min(maximum, value)
+
+    def _display_value(self) -> str:
+        value = self._typed_value()
+        if self.is_enum:
+            return str(value)
+        step = float(self.spec["step"])
+        if step < 0.001:
+            return f"{value:.5f}"
+        if step < 0.01:
+            return f"{value:.3f}"
+        if step < 0.1:
+            return f"{value:.2f}"
+        if step < 1:
+            return f"{value:.1f}"
+        return f"{value:.0f}"
+
+    def _value_changed(self, _value: int) -> None:
+        self.value_label.setText(self._display_value())
+
+    def _random_toggled(self, random_enabled: bool) -> None:
+        self.slider.setEnabled(self.isEnabled() and not random_enabled)
+        self.value_label.setEnabled(not random_enabled)
 
     def set_interactive(self, enabled: bool) -> None:
         self.setEnabled(enabled)
-        self.mode.setEnabled(enabled)
-        self.editor.setEnabled(enabled and self.mode.currentIndex() == 1)
+        self.random_check.setEnabled(enabled)
+        self.slider.setEnabled(enabled and not self.random_check.isChecked())
+        self.value_label.setEnabled(enabled and not self.random_check.isChecked())
+
+    def set_random(self) -> None:
+        self.random_check.setChecked(True)
+
+    def value(self) -> Any:
+        return None if self.random_check.isChecked() else self._typed_value()
 
 
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle(f"C11-C Producer {APP_VERSION}")
-        self.resize(1280, 920)
+        self.resize(1240, 860)
         self.queue: list[Recipe] = []
+        self._table_recipes: list[Recipe] = []
         self.current_recipe: Recipe | None = None
         self.jobs: list[int] = []
+        self.job_total = 0
+        self.job_completed = 0
         self.proc: QProcess | None = None
         self.probe_file: Path | None = None
         self.rows: list[ParamRow] = []
+        self._building_type = False
         self._build()
         self._check_backend()
-        self._refresh_profile_hint()
+        self._update_delivery_tooltip()
 
     def _build(self) -> None:
         root = QWidget()
         self.setCentralWidget(root)
         main = QVBoxLayout(root)
-        main.setContentsMargins(14, 14, 14, 14)
-        main.setSpacing(10)
-
-        banner = QFrame()
-        banner.setObjectName("Banner")
-        bl = QHBoxLayout(banner)
-        bl.setContentsMargins(16, 9, 16, 9)
-        title = QLabel("C11-C PRODUCER")
-        title.setObjectName("Title")
-        bl.addWidget(title)
-        bl.addStretch()
-        self.backend_info = QLabel("")
-        self.backend_info.setObjectName("Muted")
-        bl.addWidget(self.backend_info)
-        main.addWidget(banner)
+        main.setContentsMargins(9, 9, 9, 7)
+        main.setSpacing(7)
 
         cols = QHBoxLayout()
-        cols.setSpacing(10)
+        cols.setSpacing(8)
         cols.addWidget(self._build_recipe(), 1)
         cols.addWidget(self._build_queue(), 1)
         main.addLayout(cols, 1)
 
+        self.statusBar().showMessage("Preparado")
+
     def _build_recipe(self) -> QGroupBox:
         box = QGroupBox("CREAR PRODUCCIÓN")
         root = QVBoxLayout(box)
-        root.setSpacing(8)
+        root.setContentsMargins(10, 9, 10, 10)
+        root.setSpacing(7)
+
         grid = QGridLayout()
-        grid.setHorizontalSpacing(10)
-        grid.setVerticalSpacing(8)
+        grid.setHorizontalSpacing(8)
+        grid.setVerticalSpacing(6)
 
         self.operation = QComboBox()
         self.operation.addItem("A LA CARTA", "A_LA_CARTA")
@@ -251,7 +308,6 @@ class MainWindow(QMainWindow):
         self.video_type = QComboBox()
         for key in ("challenges", "visual_loops", "visual_drills"):
             self.video_type.addItem(VIDEO_TYPES.get(key, key.upper()), key)
-        self.video_type.setCurrentIndex(0)
 
         self.family = QComboBox()
         self.grammar = QComboBox()
@@ -264,19 +320,15 @@ class MainWindow(QMainWindow):
         self.manual.setPlaceholderText("314159, 271828…")
         self.manual.setEnabled(False)
 
-        self.video_type_label = QLabel("Tipo de vídeo")
         self.family_label = QLabel("Familia")
         self.subtype_label = QLabel("Subfamilia")
-        self.count_label = QLabel("Cantidad")
-        self.seed_label = QLabel("Seeds")
-
         fields = [
             (0, QLabel("Operación"), self.operation),
-            (1, self.video_type_label, self.video_type),
+            (1, QLabel("Tipo de vídeo"), self.video_type),
             (2, self.family_label, self.family),
             (3, self.subtype_label, self.grammar),
-            (4, self.count_label, self.count),
-            (5, self.seed_label, self.seed_mode),
+            (4, QLabel("Cantidad"), self.count),
+            (5, QLabel("Seeds"), self.seed_mode),
         ]
         for row, label, widget in fields:
             grid.addWidget(label, row, 0)
@@ -284,97 +336,93 @@ class MainWindow(QMainWindow):
         grid.addWidget(self.manual, 6, 0, 1, 2)
         root.addLayout(grid)
 
-        self.type_info = QLabel()
-        self.type_info.setObjectName("Hint")
-        self.type_info.setWordWrap(True)
-        root.addWidget(self.type_info)
-
-        opts = QHBoxLayout()
-        self.no_sound = QCheckBox("Sin audio")
-        self.no_footer = QCheckBox("Sin footer")
+        opts = QGridLayout()
+        opts.setHorizontalSpacing(8)
+        opts.setVerticalSpacing(4)
+        self.no_sound = QCheckBox("SIN AUDIO")
+        self.no_footer = QCheckBox("SIN FOOTER")
         self.force = QCheckBox("FORCE")
-        opts.addWidget(self.no_sound)
-        opts.addWidget(self.no_footer)
-        opts.addWidget(self.force)
-        opts.addStretch()
+        opts.addWidget(self.no_sound, 0, 0)
+        opts.addWidget(self.no_footer, 0, 1)
+        opts.addWidget(self.force, 0, 2)
         root.addLayout(opts)
 
         out = QGridLayout()
+        out.setHorizontalSpacing(8)
+        out.setVerticalSpacing(4)
         self.delivery = QComboBox()
         for profile_id in DELIVERY_PROFILES:
             self.delivery.addItem(delivery_label(profile_id), profile_id)
-        default_index = max(0, self.delivery.findData(DEFAULT_DELIVERY))
-        self.delivery.setCurrentIndex(default_index)
+        self.delivery.setCurrentIndex(max(0, self.delivery.findData(DEFAULT_DELIVERY)))
         self.workers = QSpinBox()
         self.workers.setRange(1, 7)
         self.workers.setValue(7)
         self.resume = QCheckBox("RESUME")
         self.reset = QCheckBox("RESET")
-        self.export_gif = QCheckBox("Exportar GIF")
-        self.keep_avi = QCheckBox("Conservar AVI")
-        out.addWidget(QLabel("Salida"), 0, 0)
-        out.addWidget(self.delivery, 0, 1)
-        out.addWidget(QLabel("Workers"), 1, 0)
+        self.export_gif = QCheckBox("GIF")
+        self.keep_avi = QCheckBox("AVI")
+        out.addWidget(QLabel("SALIDA"), 0, 0)
+        out.addWidget(self.delivery, 0, 1, 1, 2)
+        out.addWidget(QLabel("WORKERS"), 1, 0)
         out.addWidget(self.workers, 1, 1)
-        out.addWidget(self.resume, 2, 0)
-        out.addWidget(self.reset, 2, 1)
-        out.addWidget(self.export_gif, 3, 0)
-        out.addWidget(self.keep_avi, 3, 1)
+        out.addWidget(self.resume, 1, 2)
+        out.addWidget(self.reset, 2, 0)
+        out.addWidget(self.export_gif, 2, 1)
+        out.addWidget(self.keep_avi, 2, 2)
         root.addLayout(out)
 
-        pbox = QGroupBox("VARIACIÓN · por defecto ALEATORIA por seed")
-        pl = QVBoxLayout(pbox)
-        self.randomize = QPushButton("PONER TODO EN ALEATORIO")
-        pl.addWidget(self.randomize)
+        self.variation_box = QGroupBox("VARIACIÓN")
+        variation = QVBoxLayout(self.variation_box)
+        variation.setContentsMargins(8, 7, 8, 8)
+        variation.setSpacing(3)
         self.pscroll = QScrollArea()
         self.pscroll.setWidgetResizable(True)
         self.pscroll.setFrameShape(QFrame.NoFrame)
         self.pwidget = QWidget()
         self.pl = QVBoxLayout(self.pwidget)
-        self.pl.setContentsMargins(4, 4, 4, 4)
+        self.pl.setContentsMargins(2, 1, 2, 1)
+        self.pl.setSpacing(4)
         self.pl.setAlignment(Qt.AlignTop)
         self.pscroll.setWidget(self.pwidget)
-        pl.addWidget(self.pscroll, 1)
-        root.addWidget(pbox, 1)
-
-        hint = QLabel(
-            "La GUI solo orquesta launchers canónicos. No reimplementa mecánicas, RNG ni renderers."
-        )
-        hint.setObjectName("Hint")
-        hint.setWordWrap(True)
-        root.addWidget(hint)
+        variation.addWidget(self.pscroll, 1)
+        root.addWidget(self.variation_box, 1)
 
         self.add = QPushButton("AÑADIR A LA COLA")
         self.add.setObjectName("Primary")
-        self.add.setMinimumHeight(46)
+        self.add.setMinimumHeight(44)
         root.addWidget(self.add)
 
         self.operation.currentIndexChanged.connect(self._operation_changed)
         self.video_type.currentIndexChanged.connect(self._video_type_changed)
         self.family.currentIndexChanged.connect(self._refresh_family)
         self.seed_mode.currentIndexChanged.connect(self._seed_mode_changed)
-        self.delivery.currentIndexChanged.connect(self._refresh_profile_hint)
-        self.randomize.clicked.connect(self._randomize_all)
+        self.delivery.currentIndexChanged.connect(self._update_delivery_tooltip)
         self.add.clicked.connect(self._add)
-
-        self._video_type_changed(self.video_type.currentIndex())
         self._operation_changed(0)
         return box
 
     def _build_queue(self) -> QGroupBox:
         box = QGroupBox("COLA DE PRODUCCIÓN")
         root = QVBoxLayout(box)
+        root.setContentsMargins(10, 9, 10, 10)
+        root.setSpacing(7)
+
         self.table = QTableWidget(0, 8)
         self.table.setHorizontalHeaderLabels(
-            ["Operación", "Tipo", "Familia", "Subfamilia", "Cantidad", "Salida", "Workers", "Estado"]
+            ["OPERACIÓN", "TIPO", "FAMILIA", "SUBTIPO", "CANTIDAD", "SALIDA", "WORKERS", "ESTADO"]
         )
         self.table.setSelectionBehavior(QTableWidget.SelectRows)
+        self.table.setSelectionMode(QTableWidget.SingleSelection)
+        self.table.setAlternatingRowColors(False)
+        self.table.verticalHeader().setVisible(False)
+        self.table.setShowGrid(False)
+        self.table.setSortingEnabled(False)
         root.addWidget(self.table, 3)
 
         btns = QHBoxLayout()
         self.generate = QPushButton("GENERAR")
         self.generate.setObjectName("Primary")
-        self.generate.setMinimumHeight(48)
+        self.generate.setMinimumHeight(46)
         self.remove = QPushButton("QUITAR")
         self.clear = QPushButton("VACIAR")
         btns.addWidget(self.generate, 2)
@@ -382,8 +430,9 @@ class MainWindow(QMainWindow):
         btns.addWidget(self.clear)
         root.addLayout(btns)
 
-        lbox = QGroupBox("PROGRESO / LOG")
+        lbox = QGroupBox("LOG")
         ll = QVBoxLayout(lbox)
+        ll.setContentsMargins(7, 7, 7, 7)
         self.log = QPlainTextEdit()
         self.log.setReadOnly(True)
         ll.addWidget(self.log)
@@ -403,73 +452,77 @@ class MainWindow(QMainWindow):
         self.rows = []
 
     def _video_type_changed(self, _idx: int) -> None:
-        if self.operation.currentData() != "A_LA_CARTA":
+        if self._building_type or self.operation.currentData() != "A_LA_CARTA":
             return
-        video_type = str(self.video_type.currentData())
-        self._clear_rows()
-        self.family.clear()
-        self.grammar.clear()
+        self._building_type = True
+        try:
+            video_type = str(self.video_type.currentData())
+            self._clear_rows()
+            self.family.blockSignals(True)
+            self.grammar.blockSignals(True)
+            self.family.clear()
+            self.grammar.clear()
 
-        if video_type == "challenges":
-            self.family_label.setText("Mecánica")
-            self.subtype_label.setText("Challenge ID")
-            mechanics = sorted({item["mechanic"] for item in CHALLENGES.values()})
-            self.family.addItems(mechanics)
-            self._refresh_challenges()
-            self.no_footer.setChecked(False)
-            self.type_info.setText(
-                "Challenges: catálogo leído directamente de challenges/*.json. El timeline se deriva de las cuatro fases; el Producer no duplica mecánica."
-            )
-        elif video_type == "visual_loops":
-            self.family_label.setText("Familia")
-            self.subtype_label.setText("Gramática")
-            self.family.addItems([value["name"] for value in FAMILIES.values()])
-            self._refresh_family(0)
-            self.no_footer.setEnabled(True)
-            self.type_info.setText(
-                "Visual Loops: 5 familias / 27 grammars. Review histórico 720x1280; MASTER_1080 se obtiene después mediante el perfil de entrega."
-            )
-        else:
-            self.family_label.setText("Familia")
-            self.subtype_label.setText("Dificultad")
-            self.family.addItems([value["name"] for value in DRILLS.values()])
-            self._refresh_family(0)
-            self.no_footer.setChecked(False)
-            self.no_footer.setEnabled(False)
-            self.type_info.setText(
-                "Visual Drills: Tracking, Saccade, Pursuit y Peripheral Scan. PRE_ROLL + gameplay + END_CTA; la entrega se selecciona en el perfil central."
-            )
-
-        self.delivery.setEnabled(True)
+            if video_type == "challenges":
+                self.family_label.setText("Challenge")
+                self.subtype_label.setText("Mecánica")
+                for cid, item in sorted(CHALLENGES.items()):
+                    self.family.addItem(
+                        f"{cid} · {item['mechanic'].upper()} · {item['duration_seconds']:.0f}s",
+                        cid,
+                    )
+                self._refresh_challenges()
+                self.variation_box.setVisible(False)
+                self.no_footer.setChecked(False)
+                self.no_footer.setEnabled(False)
+            elif video_type == "visual_loops":
+                self.family_label.setText("Familia")
+                self.subtype_label.setText("Gramática")
+                self.family.addItems([value["name"] for value in FAMILIES.values()])
+                self._refresh_family(0)
+                self.variation_box.setVisible(True)
+                self.no_footer.setEnabled(True)
+            else:
+                self.family_label.setText("Familia")
+                self.subtype_label.setText("Dificultad")
+                self.family.addItems([value["name"] for value in DRILLS.values()])
+                self._refresh_family(0)
+                self.variation_box.setVisible(True)
+                self.no_footer.setChecked(False)
+                self.no_footer.setEnabled(False)
+            self.family.blockSignals(False)
+            self.grammar.blockSignals(False)
+        finally:
+            self._building_type = False
+        if video_type != "challenges":
+            self._refresh_family(self.family.currentIndex() if self.family.count() else 0)
         self._seed_mode_changed(self.seed_mode.currentIndex())
-        self._refresh_profile_hint()
+        self._set_status(f"{VIDEO_TYPES.get(video_type, video_type)}")
 
     def _refresh_challenges(self) -> None:
-        mechanic = str(self.family.currentText())
+        cid = str(self.family.currentData() or "")
+        item = CHALLENGES.get(cid)
         self.grammar.clear()
-        for cid, item in CHALLENGES.items():
-            if item["mechanic"] == mechanic:
-                self.grammar.addItem(
-                    f"{cid} · {item['duration_seconds']:.0f}s · {item['frames']} frames",
-                    cid,
-                )
+        if item:
+            self.grammar.addItem(item["mechanic"].upper(), item["mechanic"])
 
     def _refresh_family(self, idx: int) -> None:
+        if self._building_type:
+            return
         video_type = str(self.video_type.currentData())
         if video_type == "challenges":
             self._refresh_challenges()
             return
-
         self._clear_rows()
         if video_type == "visual_loops":
             ids = list(FAMILIES)
             if not ids:
                 return
             idx = max(0, min(idx, len(ids) - 1))
+            family_id = ids[idx]
             self.family.blockSignals(True)
             self.family.setCurrentIndex(idx)
             self.family.blockSignals(False)
-            family_id = ids[idx]
             self.grammar.clear()
             for code, label in FAMILIES[family_id].get("grammars", []):
                 self.grammar.addItem(label, code)
@@ -482,12 +535,11 @@ class MainWindow(QMainWindow):
             if not ids:
                 return
             idx = max(0, min(idx, len(ids) - 1))
+            family_id = ids[idx]
             self.family.blockSignals(True)
             self.family.setCurrentIndex(idx)
             self.family.blockSignals(False)
-            family_id = ids[idx]
             self.grammar.clear()
-            self.grammar.addItem("ALEATORIO", "auto")
             for tier in range(1, 6):
                 self.grammar.addItem(f"TIER {tier}", str(tier))
             for spec in DRILLS[family_id].get("parameters", []):
@@ -509,7 +561,6 @@ class MainWindow(QMainWindow):
         self.no_sound.setEnabled(not batch and not utility)
         self.no_footer.setEnabled(not batch and not utility)
         self.force.setEnabled(not batch and not utility)
-        self.randomize.setEnabled(not batch)
         self.delivery.setEnabled(not batch and not utility)
         self.workers.setEnabled(True)
         self.resume.setEnabled(batch and not utility)
@@ -517,13 +568,11 @@ class MainWindow(QMainWindow):
         self.export_gif.setEnabled(not utility)
         self.keep_avi.setEnabled(not utility)
         self.add.setEnabled(True)
+        self.variation_box.setVisible(not batch and not utility and str(self.video_type.currentData()) != "challenges")
         if batch:
-            self.subtype_label.setText("Contenido")
-            self.type_info.setText(
-                "Operación batch: utiliza el runner C11-C selectivo. Estas operaciones son revisiones históricas; el perfil de entrega de A LA CARTA no se reutiliza automáticamente."
-            )
+            self.variation_box.setVisible(False)
         if utility:
-            self.type_info.setText("Ejecuta la regresión lógica completa con el runner oficial.")
+            self.variation_box.setVisible(False)
         else:
             self._video_type_changed(self.video_type.currentIndex())
 
@@ -534,47 +583,23 @@ class MainWindow(QMainWindow):
         for row in self.rows:
             row.set_interactive(active)
 
-    def _refresh_profile_hint(self, _idx: int = -1) -> None:
+    def _update_delivery_tooltip(self, _idx: int = -1) -> None:
         profile_id = str(self.delivery.currentData() or "")
-        profile = DELIVERY_CONFIG.get("profiles", {}).get(profile_id, {})
-        if profile.get("alias_of"):
-            text = f"Salida: {profile_id} → {profile['alias_of']}"
-        else:
+        try:
+            resolved_id, profile = resolve_delivery_profile(profile_id)
             width = profile.get("width", "?")
             height = profile.get("height", "?")
-            hz = profile.get("audio_sample_rate_hz", "?")
-            text = f"Salida: {profile_id} · {width}x{height} · audio {hz} Hz"
-        current = self.type_info.text().split("\n\n")[0]
-        self.type_info.setText(f"{current}\n\n{text}")
-
-    def _randomize_all(self) -> None:
-        if self.grammar.count():
-            self.grammar.setCurrentIndex(0)
-        for row in self.rows:
-            row.set_random()
-
-    def _new_unique_seeds(self, count: int) -> list[int]:
-        seeds: list[int] = []
-        seen: set[int] = set()
-        while len(seeds) < count:
-            value = random.randint(1, 2_147_483_646)
-            if value not in seen:
-                seen.add(value)
-                seeds.append(value)
-        return seeds
-
-    def _manual_seeds(self) -> list[int]:
-        try:
-            values = [int(x.strip()) for x in self.manual.text().split(",") if x.strip()]
+            fps = profile.get("fps", profile.get("fps_max", "?"))
+            codec = str(profile.get("codec", "h264")).upper()
+            audio = f"{profile.get('audio_codec', 'AAC').upper()} {profile.get('audio_sample_rate_hz', 48000)} Hz estéreo"
+            self.delivery.setToolTip(
+                f"{profile_id} · {width}×{height} · {fps} FPS · {codec} · {audio}\nBase: {resolved_id}"
+            )
         except ValueError as exc:
-            raise ValueError("Seeds inválidas: deben ser enteros.") from exc
-        if not values or any(x < 1 or x > 2_147_483_646 for x in values):
-            raise ValueError("Seeds inválidas: rango permitido 1..2147483646.")
-        if len(set(values)) != len(values):
-            raise ValueError("Las seeds manuales deben ser únicas.")
-        if len(values) != self.count.value():
-            raise ValueError(f"Necesitas exactamente {self.count.value()} seeds manuales.")
-        return values
+            self.delivery.setToolTip(str(exc))
+
+    def _set_status(self, text: str) -> None:
+        self.statusBar().showMessage(text)
 
     def _add(self) -> None:
         try:
@@ -597,6 +622,7 @@ class MainWindow(QMainWindow):
                     export_gif=self.export_gif.isChecked(),
                     no_sound=self.no_sound.isChecked(),
                     keep_avi=self.keep_avi.isChecked(),
+                    delivery="REVIEW_720",
                 )
                 self.queue.append(recipe)
                 self._add_row(recipe)
@@ -607,23 +633,27 @@ class MainWindow(QMainWindow):
             delivery = str(self.delivery.currentData() or DEFAULT_DELIVERY)
 
             if video_type == "challenges":
-                cid = str(self.grammar.currentData() or "")
+                cid = str(self.family.currentData() or "")
                 if cid not in CHALLENGES:
-                    raise ValueError("Selecciona un Challenge ID válido.")
+                    raise ValueError("Selecciona un Challenge válido.")
                 recipe = Recipe(
                     op,
                     video_type,
                     family=str(self.family.currentText()),
-                    grammar=cid,
+                    grammar=str(self.grammar.currentData() or ""),
                     challenge_id=cid,
                     count=self.count.value(),
                     manual_seeds=manual,
                     no_sound=self.no_sound.isChecked(),
                     force=self.force.isChecked(),
+                    export_gif=self.export_gif.isChecked(),
+                    keep_avi=self.keep_avi.isChecked(),
                     delivery=delivery,
                 )
             else:
                 ids = list(FAMILIES if video_type == "visual_loops" else DRILLS)
+                if not ids:
+                    raise ValueError("No hay familias disponibles.")
                 family_id = ids[self.family.currentIndex()]
                 targets = {
                     row.spec["key"]: value
@@ -633,7 +663,7 @@ class MainWindow(QMainWindow):
                 grammar = str(self.grammar.currentData() or "auto")
                 if video_type == "visual_loops" and manual and (grammar != "auto" or targets):
                     raise ValueError(
-                        "Con seeds manuales, deja gramática/parámetros en ALEATORIO; la variación determinista la fija la seed."
+                        "Con seeds manuales, deja gramática y variación en ALEATORIO."
                     )
                 recipe = Recipe(
                     op,
@@ -648,14 +678,65 @@ class MainWindow(QMainWindow):
                     workers=1,
                     targets=targets,
                     delivery=delivery,
+                    export_gif=self.export_gif.isChecked(),
+                    keep_avi=self.keep_avi.isChecked(),
                 )
-            self.queue.append(recipe)
-            self._add_row(recipe)
+            already_produced = self._recipe_already_produced(recipe) and not recipe.force
+            if already_produced:
+                recipe.status = "YA PRODUCIDO"
+                recipe.completed = True
+                self._add_row(recipe)
+            else:
+                self.queue.append(recipe)
+                self._add_row(recipe)
         except Exception as exc:
             QMessageBox.warning(self, "Configuración inválida", str(exc))
 
+    def _manual_seeds(self) -> list[int]:
+        try:
+            values = [int(x.strip()) for x in self.manual.text().split(",") if x.strip()]
+        except ValueError as exc:
+            raise ValueError("Seeds inválidas: deben ser enteros.") from exc
+        if not values or any(x < 1 or x > 2_147_483_646 for x in values):
+            raise ValueError("Seeds inválidas: rango permitido 1..2147483646.")
+        if len(set(values)) != len(values):
+            raise ValueError("Las seeds manuales deben ser únicas.")
+        if len(values) != self.count.value():
+            raise ValueError(f"Necesitas exactamente {self.count.value()} seeds manuales.")
+        return values
+
+    def _recipe_already_produced(self, recipe: Recipe) -> bool:
+        if not recipe.manual_seeds:
+            return False
+
+        def matches_profile(product_dir: Path) -> bool:
+            manifest = product_dir / "production_manifest.json"
+            if not manifest.exists():
+                return False
+            try:
+                data = json.loads(manifest.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                return False
+            return str(data.get("delivery_profile", "")) == recipe.delivery and any(product_dir.glob("*.mp4"))
+
+        for seed in recipe.manual_seeds:
+            if recipe.video_type == "challenges":
+                base = PROJECT / "artifacts" / "production" / "audiovisual" / "challenges" / recipe.challenge_id / f"seed_{seed}"
+                if not matches_profile(base):
+                    return False
+            elif recipe.video_type in ("visual_loops", "visual_drills"):
+                family_root = recipe.family if recipe.video_type == "visual_loops" else str(Path("visual_drills") / recipe.family)
+                base = PROJECT / "artifacts" / "production" / "audiovisual" / family_root
+                if not base.exists() or not any(matches_profile(p) for p in base.iterdir() if p.is_dir() and f"seed_{seed}" in p.name):
+                    return False
+            else:
+                return False
+        return True
+
     def _add_row(self, recipe: Recipe) -> None:
         row = self.table.rowCount()
+        recipe.ui_row = row
+        self._table_recipes.append(recipe)
         self.table.insertRow(row)
         values = [
             recipe.operation,
@@ -663,27 +744,67 @@ class MainWindow(QMainWindow):
             recipe.family or recipe.challenge_id,
             recipe.grammar or "—",
             str(recipe.count),
-            recipe.delivery,
+            recipe.delivery if recipe.video_type != "batch" else "—",
             str(recipe.workers),
-            "EN COLA",
+            recipe.status,
         ]
         for index, value in enumerate(values):
-            self.table.setItem(row, index, QTableWidgetItem(value))
+            item = QTableWidgetItem(value)
+            item.setFlags(item.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, index, item)
+        state = "done" if recipe.status == "YA PRODUCIDO" else "pending"
+        self._style_row(row, state)
+        if state != "done":
+            self.table.selectRow(row)
+
+    def _reindex_rows(self) -> None:
+        for index, recipe in enumerate(self._table_recipes):
+            recipe.ui_row = index
+
+    def _style_row(self, row: int, state: str) -> None:
+        if row < 0 or row >= self.table.rowCount():
+            return
+        if state == "done":
+            foreground = Qt.GlobalColor.darkGray
+        elif state == "error":
+            foreground = Qt.GlobalColor.red
+        else:
+            foreground = Qt.GlobalColor.white
+        for col in range(self.table.columnCount()):
+            item = self.table.item(row, col)
+            if item:
+                item.setForeground(foreground)
+                item.setToolTip("Producción completada" if state == "done" else "")
+
+    def _set_recipe_status(self, recipe: Recipe, status: str, state: str = "pending") -> None:
+        recipe.status = status
+        row = recipe.ui_row
+        if 0 <= row < self.table.rowCount():
+            self.table.item(row, 7).setText(status)
+            self._style_row(row, state)
+            self.table.selectRow(row)
 
     def remove_selected(self) -> None:
         if self.proc:
             return
-        rows = sorted({item.row() for item in self.table.selectedIndexes()}, reverse=True)
-        for index in rows:
-            if 0 <= index < len(self.queue):
-                self.queue.pop(index)
-                self.table.removeRow(index)
+        row = self.table.currentRow()
+        if row < 0 or row >= len(self._table_recipes):
+            return
+        recipe = self._table_recipes[row]
+        if recipe in self.queue:
+            self.queue.remove(recipe)
+        self._table_recipes.pop(row)
+        self.table.removeRow(row)
+        self._reindex_rows()
+        self._set_status("Elemento eliminado")
 
     def _clear(self) -> None:
         if self.proc:
             return
         self.queue.clear()
+        self._table_recipes.clear()
         self.table.setRowCount(0)
+        self._set_status("Cola vacía")
 
     def start(self) -> None:
         if self.proc or not self.queue:
@@ -695,26 +816,23 @@ class MainWindow(QMainWindow):
         if not self.queue:
             self.current_recipe = None
             self.generate.setEnabled(True)
+            self._set_status("Producción finalizada")
             self.log.appendPlainText("\n=== PRODUCCIÓN FINALIZADA ===")
             return
         self.current_recipe = self.queue[0]
         self.jobs = []
-        self.table.selectRow(0)
+        self.job_total = 0
+        self.job_completed = 0
         recipe = self.current_recipe
+        if recipe.ui_row >= 0:
+            self.table.selectRow(recipe.ui_row)
         if recipe.operation == "RUN_REGRESSION":
+            self._set_recipe_status(recipe, "REGRESIÓN")
             self._launch_python_regression()
             return
         if recipe.operation != "A_LA_CARTA":
             script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1"
-            args = [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                str(script),
-                "-Workers",
-                str(recipe.workers),
-            ]
+            args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), "-Workers", str(recipe.workers)]
             mapping = {
                 "REVIEW_LOOPS": ["-Loops"],
                 "REVIEW_DRILLS": ["-Drills"],
@@ -733,16 +851,18 @@ class MainWindow(QMainWindow):
                 args.append("-ExportGif")
             if recipe.no_sound:
                 args.append("-NoSound")
-            self.table.setItem(0, 7, QTableWidgetItem("REVIEW"))
+            self._set_recipe_status(recipe, "REVIEW")
             self._launch(args)
             return
 
         if recipe.video_type == "challenges":
             self.jobs = list(recipe.manual_seeds) if recipe.manual_seeds else self._new_unique_seeds(recipe.count)
+            self.job_total = len(self.jobs)
             self._run_challenge_job()
             return
         if recipe.video_type == "visual_drills":
             self.jobs = list(recipe.manual_seeds) if recipe.manual_seeds else self._new_unique_seeds(recipe.count)
+            self.job_total = len(self.jobs)
             self._run_content_job()
             return
         self._prepare_loop_jobs()
@@ -753,6 +873,7 @@ class MainWindow(QMainWindow):
             return
         if recipe.manual_seeds:
             self.jobs = list(recipe.manual_seeds)
+            self.job_total = len(self.jobs)
             self._run_content_job()
             return
         if recipe.grammar == "auto" and not recipe.targets:
@@ -761,6 +882,7 @@ class MainWindow(QMainWindow):
                 seed = random.randint(1, 2_147_483_646)
                 if seed not in existing and seed not in self.jobs:
                     self.jobs.append(seed)
+            self.job_total = len(self.jobs)
             self.log.appendPlainText("[SEEDS RANDOM] " + ", ".join(map(str, self.jobs)))
             self._run_content_job()
             return
@@ -781,22 +903,13 @@ class MainWindow(QMainWindow):
         self.probe_file.write_text(json.dumps(request, ensure_ascii=False), encoding="utf-8")
         answer = ROOT / ".runtime" / "response.json"
         answer.unlink(missing_ok=True)
-        self.log.appendPlainText("[SEED PLANNER] Buscando seeds compatibles…")
+        self._set_status("Buscando seeds compatibles…")
+        self.log.appendPlainText("[SEED PLANNER] búsqueda en curso")
 
         self.proc = QProcess(self)
         self.proc.setWorkingDirectory(str(PROJECT))
         self.proc.setProgram("godot")
-        self.proc.setArguments(
-            [
-                "--headless",
-                "--path",
-                str(PROJECT),
-                "--script",
-                str(ROOT / "seed_probe.gd"),
-                "--",
-                str(self.probe_file),
-            ]
-        )
+        self.proc.setArguments(["--headless", "--path", str(PROJECT), "--script", str(ROOT / "seed_probe.gd"), "--", str(self.probe_file)])
         self.proc.readyReadStandardOutput.connect(self._out)
         self.proc.readyReadStandardError.connect(self._err)
         self.proc.finished.connect(self._probe_done)
@@ -809,7 +922,6 @@ class MainWindow(QMainWindow):
         self._err()
         if process:
             process.deleteLater()
-
         answer = ROOT / ".runtime" / "response.json"
         payload: dict[str, Any] | None = None
         if answer.exists():
@@ -825,15 +937,19 @@ class MainWindow(QMainWindow):
             self._finish_error((payload or {}).get("error", f"seed_probe exit {code}"))
             return
         self.jobs = [int(item["seed"]) for item in payload["results"]]
+        self.job_total = len(self.jobs)
         self.log.appendPlainText("[SEEDS PLANNER] " + ", ".join(map(str, self.jobs)))
         self._run_content_job()
 
-    def _finish_error(self, message: str) -> None:
-        self.log.appendPlainText("[ERROR] " + message)
-        self.jobs = []
-        self.current_recipe = None
-        self.generate.setEnabled(True)
-        QMessageBox.critical(self, "Proceso fallido", message)
+    def _new_unique_seeds(self, count: int) -> list[int]:
+        seeds: list[int] = []
+        seen: set[int] = set()
+        while len(seeds) < count:
+            value = random.randint(1, 2_147_483_646)
+            if value not in seen:
+                seen.add(value)
+                seeds.append(value)
+        return seeds
 
     def _existing(self, family: str) -> set[int]:
         base = PROJECT / "artifacts" / "production" / "audiovisual" / family
@@ -853,21 +969,13 @@ class MainWindow(QMainWindow):
         if recipe is None:
             return
         seed = self.jobs.pop(0)
+        self.job_completed = self.job_total - len(self.jobs) - 1
         script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_challenge_production.ps1"
         args = [
-            "-NoProfile",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-File",
-            str(script),
-            "-ChallengeId",
-            recipe.challenge_id,
-            "-Seed",
-            str(seed),
-            "-DeliveryProfile",
-            recipe.delivery,
-            "-OutputRoot",
-            str(PROJECT / "artifacts" / "production" / "audiovisual" / "challenges" / recipe.challenge_id / f"seed_{seed}"),
+            "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+            "-ChallengeId", recipe.challenge_id, "-Seed", str(seed),
+            "-DeliveryProfile", recipe.delivery,
+            "-OutputRoot", str(PROJECT / "artifacts" / "production" / "audiovisual" / "challenges" / recipe.challenge_id / f"seed_{seed}"),
         ]
         if recipe.no_sound:
             args.append("-NoSound")
@@ -877,7 +985,7 @@ class MainWindow(QMainWindow):
             args.append("-ExportGif")
         if recipe.keep_avi:
             args.append("-KeepAvi")
-        self.table.setItem(0, 7, QTableWidgetItem(f"CHALLENGE {seed}"))
+        self._set_recipe_status(recipe, f"GENERANDO {self.job_completed + 1}/{self.job_total} · {seed}")
         self._launch(args)
 
     def _run_content_job(self) -> None:
@@ -888,59 +996,27 @@ class MainWindow(QMainWindow):
         if recipe is None:
             return
         seed = self.jobs.pop(0)
-
+        job_index = self.job_total - len(self.jobs)
         if recipe.video_type == "visual_drills":
             params = recipe.targets or {}
-            tier = int(recipe.grammar) if recipe.grammar not in ("auto", "AUTO") else random.randint(1, 5)
-            speed = float(
-                params.get(
-                    "speed_multiplier",
-                    random.uniform(*DRILLS[recipe.family].get("random_speed_range", [1.0, 1.0])),
-                )
-            )
-            pacing = (
-                str(params.get("pacing_mode", random.choice(["constant", "accelerating", "pulsed"])))
-                if recipe.family == "tracking"
-                else "constant"
-            )
+            tier = int(recipe.grammar) if recipe.grammar not in ("auto", "AUTO", "") else random.randint(1, 5)
+            speed = float(params.get("speed_multiplier", random.uniform(*DRILLS[recipe.family].get("random_speed_range", [1.0, 1.0]))))
+            pacing = str(params.get("pacing_mode", random.choice(["constant", "accelerating", "pulsed"]))) if recipe.family == "tracking" else "constant"
             script = ROOT / "run_visual_drill_production.ps1"
             args = [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                str(script),
-                "-Family",
-                recipe.family,
-                "-Seed",
-                str(seed),
-                "-DifficultyTier",
-                str(tier),
-                "-SpeedMultiplier",
-                f"{speed:.5f}",
-                "-PacingMode",
-                pacing,
-                "-DeliveryProfile",
-                recipe.delivery,
+                "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+                "-Family", recipe.family, "-Seed", str(seed), "-DifficultyTier", str(tier),
+                "-SpeedMultiplier", f"{speed:.5f}", "-PacingMode", pacing,
+                "-DeliveryProfile", recipe.delivery,
             ]
         else:
             script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_production.ps1"
             args = [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-File",
-                str(script),
-                "-Family",
-                recipe.family,
-                "-Seed",
-                str(seed),
-                "-DeliveryProfile",
-                recipe.delivery,
+                "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+                "-Family", recipe.family, "-Seed", str(seed), "-DeliveryProfile", recipe.delivery,
             ]
             if recipe.grammar and recipe.grammar != "auto":
                 args += ["-Grammar", recipe.grammar]
-
         if recipe.no_sound:
             args.append("-NoSound")
         if recipe.no_footer:
@@ -951,16 +1027,25 @@ class MainWindow(QMainWindow):
             args.append("-ExportGif")
         if recipe.keep_avi:
             args.append("-KeepAvi")
-        self.table.setItem(0, 7, QTableWidgetItem(f"GENERANDO {seed}"))
+        self._set_recipe_status(recipe, f"GENERANDO {job_index}/{self.job_total} · {seed}")
         self._launch(args)
 
     def _job_complete(self) -> None:
-        self.table.setItem(0, 7, QTableWidgetItem("COMPLETADA"))
-        if self.queue:
-            self.queue.pop(0)
-        self.table.removeRow(0)
+        recipe = self.current_recipe
+        if recipe is None:
+            return
+        self._set_recipe_status(recipe, "COMPLETADA", "done")
+        recipe.completed = True
+        if recipe in self.queue:
+            self.queue.remove(recipe)
         self.current_recipe = None
-        QTimer.singleShot(0, self._run_recipe)
+        self.jobs = []
+        self.job_total = 0
+        self.job_completed = 0
+        self._set_status("Elemento completado")
+        self._run_recipe()
+        if not self.queue:
+            self.table.clearSelection()
 
     def _launch_python_regression(self) -> None:
         self.log.appendPlainText("[LAUNCH] python .\\tests\\run_all.py")
@@ -974,7 +1059,9 @@ class MainWindow(QMainWindow):
         self.proc.start()
 
     def _launch(self, args: list[str]) -> None:
-        self.log.appendPlainText("\n[LAUNCH] powershell.exe " + " ".join(args))
+        if self.proc:
+            return
+        self.log.appendPlainText("\n[LAUNCH] powershell.exe " + " ".join(self._display_arg(a) for a in args))
         self.proc = QProcess(self)
         self.proc.setWorkingDirectory(str(PROJECT))
         self.proc.setProgram("powershell.exe")
@@ -983,6 +1070,10 @@ class MainWindow(QMainWindow):
         self.proc.readyReadStandardError.connect(self._err)
         self.proc.finished.connect(self._done)
         self.proc.start()
+
+    @staticmethod
+    def _display_arg(value: str) -> str:
+        return f'"{value}"' if any(ch.isspace() for ch in value) else value
 
     def _out(self) -> None:
         if self.proc:
@@ -996,6 +1087,18 @@ class MainWindow(QMainWindow):
             if data:
                 self.log.appendPlainText("[STDERR] " + data.rstrip())
 
+    def _finish_error(self, message: str) -> None:
+        recipe = self.current_recipe
+        if recipe:
+            self._set_recipe_status(recipe, "ERROR", "error")
+        self.jobs = []
+        self.job_total = 0
+        self.current_recipe = None
+        self.generate.setEnabled(True)
+        self._set_status("Proceso fallido")
+        self.log.appendPlainText("[ERROR] " + message)
+        QMessageBox.critical(self, "Proceso fallido", message)
+
     def _done(self, code: int, _status: Any) -> None:
         self._out()
         self._err()
@@ -1004,11 +1107,7 @@ class MainWindow(QMainWindow):
         if process:
             process.deleteLater()
         if code != 0:
-            self.table.setItem(0, 7, QTableWidgetItem("ERROR"))
-            self.jobs = []
-            self.current_recipe = None
-            self.generate.setEnabled(True)
-            QMessageBox.critical(self, "Proceso fallido", f"Launcher terminó con código {code}. Revisa el LOG.")
+            self._finish_error(f"Launcher terminó con código {code}. Revisa el LOG.")
             return
 
         recipe = self.current_recipe
@@ -1028,7 +1127,7 @@ class MainWindow(QMainWindow):
     def _check_backend(self) -> None:
         profile_source = PROJECT / SCHEMA["backend_profile_source"]
         if not profile_source.exists():
-            self.backend_info.setText("BACKEND: no encontrado")
+            self._set_status("BACKEND no encontrado")
             self.generate.setEnabled(False)
             return
         actual = hashlib.sha256(profile_source.read_bytes()).hexdigest()
@@ -1037,7 +1136,7 @@ class MainWindow(QMainWindow):
         delivery_ok = DELIVERY_FILE.exists() and bool(DELIVERY_PROFILES)
         challenge_ok = len(CHALLENGES) == 9
         if backend_ok and delivery_ok and challenge_ok:
-            self.backend_info.setText("BACKEND C11-C 2.16.9 FROZEN · DELIVERY OK · CHALLENGES 9/9")
+            self._set_status("BACKEND 2.16.9 FROZEN · DELIVERY OK · CHALLENGES 9/9")
         else:
             flags = []
             if not backend_ok:
@@ -1046,32 +1145,43 @@ class MainWindow(QMainWindow):
                 flags.append("DELIVERY CONFIG MISSING")
             if not challenge_ok:
                 flags.append(f"CHALLENGES {len(CHALLENGES)}/9")
-            self.backend_info.setText(" · ".join(flags))
+            self._set_status(" · ".join(flags))
             self.generate.setEnabled(False)
-            QTimer.singleShot(
-                0,
-                lambda: QMessageBox.critical(
-                    self,
-                    "Entorno incompatible",
-                    "El Producer requiere el backend congelado, los perfiles de delivery actuales y el corpus CHALLENGE_001..009.",
-                ),
-            )
 
 
 STYLE = """
-QWidget{background:#f3f5f7;color:#1b2430;font-family:\"Segoe UI\";font-size:13px;} QLabel{background:transparent;}
-QFrame#Banner{background:#fff;border:1px solid #d3dae2;border-radius:10px;min-height:60px;} QLabel#Title{font-size:22px;font-weight:700;color:#111827;} QLabel#Muted,QLabel#Hint{color:#5b6775;}
-QGroupBox{background:#fff;border:1px solid #d3dae2;border-radius:9px;margin-top:10px;padding:10px;font-weight:700;}
-QComboBox,QLineEdit,QSpinBox,QDoubleSpinBox{background:#fff;color:#17212b;border:1px solid #9aa7b5;border-radius:6px;min-height:40px;padding:0 10px;font-size:14px;}
-QComboBox:focus,QLineEdit:focus,QSpinBox:focus,QDoubleSpinBox:focus{border:2px solid #2563eb;}
-QComboBox::drop-down{width:34px;border-left:1px solid #aab5c0;background:#edf2f7;}
-QComboBox QAbstractItemView{background:#fff;color:#17212b;border:1px solid #9aa7b5;selection-background-color:#dbeafe;selection-color:#111827;outline:0;padding:5px;} QComboBox QAbstractItemView::item{min-height:34px;padding:6px 8px;}
-QCheckBox{min-height:30px;spacing:7px;} QCheckBox::indicator{width:18px;height:18px;}
-QPushButton{background:#fff;color:#17212b;border:1px solid #9aa7b5;border-radius:7px;min-height:40px;padding:0 14px;font-weight:600;} QPushButton:hover{background:#eef4fb;}
-QPushButton#Primary{background:#2563eb;color:#fff;border-color:#2563eb;min-height:46px;font-size:15px;} QPushButton#Primary:hover{background:#1d4ed8;}
-QTableWidget,QPlainTextEdit{background:#fff;color:#17212b;border:1px solid #9aa7b5;border-radius:6px;} QHeaderView::section{background:#e9eef3;padding:8px;font-weight:700;border:0;min-height:26px;}
-QScrollArea{border:0;background:#fff;} QScrollBar:vertical{width:14px;background:#e6ebf0;} QScrollBar::handle:vertical{background:#aeb9c5;min-height:34px;border-radius:7px;}
+QWidget{background:#080d14;color:#e7f7ff;font-family:\"Segoe UI\";font-size:12px;}
+QLabel{background:transparent;color:#d9edf5;}
+QGroupBox{background:#0d141d;border:1px solid #234353;border-radius:8px;margin-top:8px;padding:8px;font-weight:700;color:#69f5ff;}
+QGroupBox::title{subcontrol-origin:margin;left:9px;padding:0 5px;color:#69f5ff;}
+QComboBox,QLineEdit,QSpinBox,QDoubleSpinBox{background:#0a1119;color:#e7f7ff;border:1px solid #315365;border-radius:5px;min-height:34px;padding:0 8px;font-size:13px;selection-background-color:#ff2bd6;}
+QComboBox:focus,QLineEdit:focus,QSpinBox:focus,QDoubleSpinBox:focus{border:1px solid #00f0ff;}
+QComboBox::drop-down{width:28px;border-left:1px solid #244655;background:#111c27;}
+QComboBox QAbstractItemView{background:#0d141d;color:#e7f7ff;border:1px solid #00aeca;selection-background-color:#ff2bd6;selection-color:#ffffff;padding:4px;}
+QCheckBox{min-height:26px;spacing:5px;color:#cbeaf2;}
+QCheckBox::indicator{width:16px;height:16px;border:1px solid #356274;border-radius:3px;background:#091019;}
+QCheckBox::indicator:checked{background:#00d9ff;border:1px solid #00f0ff;}
+QPushButton{background:#101a24;color:#dffaff;border:1px solid #325668;border-radius:6px;min-height:36px;padding:0 12px;font-weight:700;}
+QPushButton:hover{background:#162532;border-color:#00d9ff;color:#ffffff;}
+QPushButton#Primary{background:#00c8e6;color:#031018;border-color:#00f0ff;min-height:44px;font-size:14px;}
+QPushButton#Primary:hover{background:#45eaff;border-color:#ff2bd6;}
+QPushButton#Primary:pressed{background:#ff2bd6;color:#ffffff;border-color:#ff71df;}
+QTableWidget,QPlainTextEdit{background:#09111a;color:#dffaff;border:1px solid #274655;border-radius:6px;}
+QTableWidget::item{padding:7px 6px;border-bottom:1px solid #142632;}
+QTableWidget::item:selected{background:#ff2bd6;color:#ffffff;border:1px solid #ff71df;}
+QHeaderView::section{background:#101c27;color:#69f5ff;padding:7px;font-weight:800;border:0;border-right:1px solid #203643;min-height:25px;}
+QScrollArea{border:0;background:#0d141d;}
+QScrollBar:vertical{width:11px;background:#09111a;}
+QScrollBar::handle:vertical{background:#284a5a;min-height:28px;border-radius:5px;}
+QScrollBar::handle:vertical:hover{background:#00b9d5;}
+QSlider::groove:horizontal{height:5px;border-radius:2px;background:#213441;}
+QSlider::sub-page:horizontal{background:#00cfe8;border-radius:2px;}
+QSlider::handle:horizontal{width:15px;margin:-5px 0;border-radius:8px;background:#ff2bd6;border:1px solid #ff8be8;}
+QSlider::handle:horizontal:hover{background:#ff71df;}
+QLabel#SliderValue{color:#a9f7ff;font-family:"Consolas";font-size:11px;}
+QStatusBar{background:#070c12;color:#6ff5ff;border-top:1px solid #1e3743;}
 """
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -15,6 +15,25 @@ param(
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $ProjectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+function Resolve-DeliveryProfileData {
+    param([Parameter(Mandatory=$true)]$Config,[Parameter(Mandatory=$true)][string]$ProfileId)
+    $profiles=$Config.profiles
+    $current=$ProfileId
+    $seen=@{}
+    while($true){
+        if($seen.ContainsKey($current)){throw "Delivery profile alias cycle: $ProfileId -> $current"}
+        $seen[$current]=$true
+        $prop=$profiles.PSObject.Properties[$current]
+        if(-not $prop){throw "Unknown delivery profile in central configuration: $current"}
+        $profile=$prop.Value
+        if($profile.PSObject.Properties.Name -contains 'alias_of'){
+            $current=[string]$profile.alias_of
+            continue
+        }
+        return $profile
+    }
+}
+
 $MovieCapture=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CMovieCapture.ps1'
 $AudioGenerator=Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CSafeAmbient.py'
 foreach($p in @($MovieCapture,$AudioGenerator,($ProjectRoot+'\c11c-producer\C11CVisualDrillProducerEnvelopeGenerator.gd'),($ProjectRoot+'\core\presentation\rendering\VisualContentPlayer.tscn'))){if(-not(Test-Path -LiteralPath $p)){throw "Required backend file missing: $p"}}
@@ -57,20 +76,24 @@ try{
         if($LASTEXITCODE -ne 0){throw 'Drill source video encode failed.'}
         if($NoSound){Move-Item -LiteralPath $sourceSilent -Destination $finalSource -Force}else{
             $audio=Join-Path $stage ($baseProductId+'_music.wav'); & python $AudioGenerator $audio $Seed 1 $totalSeconds $Family 'drill'; if($LASTEXITCODE -ne 0){throw 'Drill audio generation failed.'}
-            & ffmpeg -y -hide_banner -loglevel error -i $sourceSilent -i $audio -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -profile:a aac_low -b:a 192k -ar 44100 -ac 2 -shortest -movflags +faststart $finalSource
+            & ffmpeg -y -hide_banner -loglevel error -i $sourceSilent -i $audio -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -profile:a aac_low -b:a 192k -ar 48000 -ac 2 -shortest -movflags +faststart $finalSource
             if($LASTEXITCODE -ne 0){throw 'Drill source audio mux failed.'}
         }
 
         $deliveryConfigPath=Join-Path $ProjectRoot 'profiles\delivery\c11c_video_delivery_profiles.json'
         if(-not(Test-Path -LiteralPath $deliveryConfigPath)){throw "Delivery profile configuration missing: $deliveryConfigPath"}
         $deliveryConfig=Get-Content -Raw -LiteralPath $deliveryConfigPath|ConvertFrom-Json
-        $deliveryProfileData=$deliveryConfig.profiles.$DeliveryProfile
-        if(-not $deliveryProfileData){throw "Unknown delivery profile in central configuration: $DeliveryProfile"}
-        $deliveryWidth=[int]$deliveryProfileData.width; $deliveryHeight=[int]$deliveryProfileData.height; $deliveryRate=[int]$deliveryProfileData.audio_sample_rate_hz; $deliveryFps=[int]$deliveryProfileData.fps
-        if($deliveryFps -ne 30){throw "C11-C Drill delivery currently requires 30 FPS; profile=$DeliveryProfile fps=$deliveryFps"}
+        $deliveryProfileData=Resolve-DeliveryProfileData -Config $deliveryConfig -ProfileId $DeliveryProfile
+        if(-not $deliveryProfileData.width -or -not $deliveryProfileData.height){throw "Delivery profile lacks dimensions: $DeliveryProfile"}
+        $deliveryWidth=[int]$deliveryProfileData.width; $deliveryHeight=[int]$deliveryProfileData.height; $deliveryRate=[int]$deliveryProfileData.audio_sample_rate_hz; $deliveryFps=if($deliveryProfileData.PSObject.Properties.Name -contains 'fps'){[int]$deliveryProfileData.fps}else{30}
+        $deliveryEncoder=if($deliveryProfileData.PSObject.Properties.Name -contains 'encoder'){[string]$deliveryProfileData.encoder}else{'libx264'}
+        $deliveryPreset=if($deliveryProfileData.PSObject.Properties.Name -contains 'preset'){[string]$deliveryProfileData.preset}else{'fast'}
+        $deliveryCrf=if($deliveryProfileData.PSObject.Properties.Name -contains 'crf'){[int]$deliveryProfileData.crf}else{18}
+        $deliveryGopFrames=if($deliveryProfileData.PSObject.Properties.Name -contains 'gop_frames'){[int]$deliveryProfileData.gop_frames}else{[int]([math]::Round($deliveryFps*3))}
+        if($deliveryFps -lt 24 -or $deliveryFps -gt 60){throw "Delivery profile FPS outside 24..60: $DeliveryProfile fps=$deliveryFps"}
         if($DeliveryProfile -eq 'REVIEW_720'){Copy-Item -LiteralPath $finalSource -Destination $finalDelivery -Force}
         else{
-            $ff=@('-y','-hide_banner','-loglevel','error','-i',$finalSource,'-vf',"scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos",'-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-r','30','-g','90','-keyint_min','90','-sc_threshold','0','-flags','+cgop','-x264-params','open_gop=0:keyint=90:min-keyint=90:scenecut=0')
+            $ff=@('-y','-hide_banner','-loglevel','error','-i',$finalSource,'-vf',"scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos",'-c:v',$deliveryEncoder,'-preset',$deliveryPreset,'-crf',[string]$deliveryCrf,'-pix_fmt','yuv420p','-r',[string]$deliveryFps,'-g',[string]$deliveryGopFrames,'-keyint_min',[string]$deliveryGopFrames,'-sc_threshold','0','-flags','+cgop','-x264-params',('open_gop=0:keyint={0}:min-keyint={0}:scenecut=0' -f $deliveryGopFrames))
             if($NoSound){$ff+=@('-an')}else{$ff+=@('-c:a','aac','-profile:a','aac_low','-b:a','192k','-ar',[string]$deliveryRate,'-ac','2')}
             $ff += $finalDelivery
             & ffmpeg @ff
@@ -88,7 +111,7 @@ try{
         Copy-Item -LiteralPath $stderr -Destination (Join-Path $productRoot 'godot_stderr.log') -Force
         if($KeepAvi){Copy-Item -LiteralPath $avi -Destination (Join-Path $productRoot ($productId+'.avi')) -Force}
         if($ExportGif){& ffmpeg -y -hide_banner -loglevel error -i (Join-Path $productRoot ($productId+'.mp4')) -vf 'fps=24,scale=360:640:flags=lanczos,pad=360:640:(ow-iw)/2:(oh-ih)/2' -loop 0 (Join-Path $productRoot ($productId+'.gif'));if($LASTEXITCODE -ne 0){throw 'GIF export failed.'}}
-        $manifest=[ordered]@{schema='C11-C-PRODUCER-VISUAL-DRILL-PRODUCT-V3';revision='2.17.9';backend='2.16.9';product_id=$productId;family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode_requested=$PacingMode;delivery_profile=$DeliveryProfile;source_capture_resolution="${sourceWidth}x${sourceHeight}";resolution="${deliveryWidth}x${deliveryHeight}";fps=30;pre_roll_seconds=3.0;gameplay_seconds=$gameplaySeconds;end_cta_seconds=3.0;total_duration_seconds=$totalSeconds;total_frames=$totalFrames;audio_enabled=(-not $NoSound);audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'});audio_sample_rate_hz=$(if($NoSound){0}else{$deliveryRate});audio_channels=$(if($NoSound){0}else{2});mp4=(Join-Path $productRoot ($productId+'.mp4'));envelope=(Join-Path $productRoot 'envelope.json');authoring=(Join-Path $productRoot 'authoring.json');ffprobe=$probe}
+        $manifest=[ordered]@{schema='C11-C-PRODUCER-VISUAL-DRILL-PRODUCT-V3';revision='2.18.0';backend='2.16.9';product_id=$productId;family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode_requested=$PacingMode;delivery_profile=$DeliveryProfile;source_capture_resolution="${sourceWidth}x${sourceHeight}";resolution="${deliveryWidth}x${deliveryHeight}";fps=30;pre_roll_seconds=3.0;gameplay_seconds=$gameplaySeconds;end_cta_seconds=3.0;total_duration_seconds=$totalSeconds;total_frames=$totalFrames;audio_enabled=(-not $NoSound);audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'});audio_sample_rate_hz=$(if($NoSound){0}else{$deliveryRate});audio_channels=$(if($NoSound){0}else{2});mp4=(Join-Path $productRoot ($productId+'.mp4'));envelope=(Join-Path $productRoot 'envelope.json');authoring=(Join-Path $productRoot 'authoring.json');ffprobe=$probe}
         [IO.File]::WriteAllText((Join-Path $productRoot 'production_manifest.json'),($manifest|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
         $hook=(Get-Content -Raw $authoringPath|ConvertFrom-Json).content.hook; $tags=if($Family -eq 'tracking'){'#VisualDrill #Tracking #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'saccade'){'#VisualDrill #Saccade #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'pursuit'){'#VisualDrill #Pursuit #VisualChallenge #GenerativeArt #GodotEngine'}else{'#VisualDrill #PeripheralScan #VisualChallenge #GenerativeArt #GodotEngine'}
         $copy="$hook`n`n$Family - ejercicio visual procedural determinista.`n`n$tags"; $social=@('COPY_PASTE_READY:',$copy,'','TITLE:',"VISUAL DRILL // $Family",'','DESCRIPTION:',$copy,'',"HASHTAGS: $tags",''); [IO.File]::WriteAllText((Join-Path $productRoot ($productId+'_social.txt')),(($social -join "`n")+"`n"),(New-Object Text.UTF8Encoding($false)))

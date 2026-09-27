@@ -1,3 +1,5 @@
+> SUPERSEDED: Producer 0.8.0 state. Current GUI: `docs/current/producer/C11C_PRODUCER_0.9.0_CURRENT_STATE.md`.
+
 # C11-C Producer 0.8.0 — Audit and Closure Record
 
 ## Audit scope

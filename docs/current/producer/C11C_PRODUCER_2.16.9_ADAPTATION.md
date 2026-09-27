@@ -43,3 +43,8 @@ The approved Producer 0.4.0 two-column light interface is preserved. The adaptat
 ## Backend boundary
 
 The GUI invokes PowerShell/Godot/Python launchers. Python does not reimplement mechanics, rendering or seed-variation algorithms.
+
+
+## Current amendment
+
+The 2.18.0 stabilization overlay supersedes the temporary 0.8.0 GUI surface while preserving its approved two-column information architecture. See `C11C_PRODUCER_0.9.0_CURRENT_STATE.md`.

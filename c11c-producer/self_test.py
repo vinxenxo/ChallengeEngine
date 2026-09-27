@@ -12,7 +12,11 @@ py_compile.compile(str(ROOT / "main.py"), doraise=True)
 py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
 
 schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
-assert schema["producer_version"] == "0.8.0"
+build_manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
+assert build_manifest["version"] == "0.9.1"
+assert build_manifest["backend_logic_modified"] is False
+
+assert schema["producer_version"] == "0.9.1"
 assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
 assert set(schema["drills"]) == {"tracking", "saccade", "pursuit", "peripheral_scan"}
 assert len(schema["families"]) == 5
@@ -27,6 +31,9 @@ assert profiles["profiles"]["MASTER_1080"]["width"] == 1080
 assert profiles["profiles"]["MASTER_1080"]["height"] == 1920
 assert profiles["profiles"]["MASTER_1080"]["audio_sample_rate_hz"] == 48000
 assert profiles["profiles"]["MASTER_1080"]["audio_channels"] == 2
+assert profiles["profiles"]["MASTER_1080"]["fps"] == 30
+assert profiles["profiles"]["MASTER_1080"]["encoder"] == "libx264"
+assert profiles["profiles"]["MASTER_1080"]["gop_frames"] == 90
 
 challenge_root = PROJECT / "challenges"
 challenge_paths = sorted(challenge_root.glob("CHALLENGE_[0-9][0-9][0-9].json"))
@@ -64,25 +71,39 @@ for token in ("MASTER_1080", "REVIEW_720", "MIN_540", "META_REELS_FINAL_V1", "LO
 loop_launcher = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_production.ps1"
 drill_launcher = ROOT / "run_visual_drill_production.ps1"
 assert loop_launcher.exists() and drill_launcher.exists()
-assert "DeliveryProfile" in loop_launcher.read_text(encoding="utf-8-sig")
-assert "DeliveryProfile" in drill_launcher.read_text(encoding="utf-8-sig")
 loop_text = loop_launcher.read_text(encoding="utf-8-sig")
 drill_text = drill_launcher.read_text(encoding="utf-8-sig")
+assert "DeliveryProfile" in loop_text
+assert "Resolve-DeliveryProfileData" in loop_text
+assert "DeliveryProfile" in drill_text
+assert "Resolve-DeliveryProfileData" in drill_text
+assert "-ar 48000" in drill_text
 assert "c11c_video_delivery_profiles.json" in loop_text
 assert "c11c_video_delivery_profiles.json" in drill_text
 assert "scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos" in loop_text
+assert "deliveryProfileData.width" in loop_text
+assert "encoder" in loop_text and "gop_frames" in loop_text
 assert "scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos" in drill_text
 assert "sourceWidth=720" in drill_text
+assert "revision='2.18.0'" in drill_text and "revision='2.18.0'" in loop_text
 assert "$TrackingGameplayDurationSeconds=21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_visual_drill_review.ps1").read_text(encoding="utf-8-sig")
 assert "TRACKING_GAMEPLAY_SECONDS: float = 21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
 main_text = (ROOT / "main.py").read_text(encoding="utf-8")
 assert "CHALLENGES = load_challenge_catalog()" in main_text
 assert "-OutputRoot" in main_text
 assert "recipe.delivery" in main_text
+assert "QSlider" in main_text
+assert "ALEATORIO" in main_text
+assert "Banner" not in main_text
+assert "type_info" not in main_text
+assert "PONER TODO EN ALEATORIO" not in main_text
+assert "QTableWidget::item:selected" in main_text
+assert "_recipe_already_produced" in main_text
+assert "YA PRODUCIDO" in main_text
 
 backend_source = PROJECT / schema["backend_profile_source"]
 assert backend_source.exists()
 actual_hash = hashlib.sha256(backend_source.read_bytes()).hexdigest()
 assert actual_hash == schema["backend_profile_sha256"], (schema["backend_profile_sha256"], actual_hash)
 
-print("C11-C Producer 0.8.0 self-test PASS")
+print("C11-C Producer 0.9.1 self-test PASS")

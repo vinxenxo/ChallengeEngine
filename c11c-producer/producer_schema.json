@@ -1225,7 +1225,7 @@
   ],
   "drill_seed_variation_sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567",
   "backend_truth": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
-  "loop_duration_policy": "20..23s",
+  "loop_duration_policy": "20..23s (family grammar range)",
   "review_workers": 7,
   "challenges": [
     {
@@ -1374,28 +1374,28 @@
   "delivery_profiles": [
     [
       "MASTER_1080",
-      "MASTER — 1080x1920 (ESTÁNDAR)"
+      "standard social master"
     ],
     [
       "REVIEW_720",
-      "REVIEW — 720x1280 (C11-C)"
+      "C11-C historical review delivery"
     ],
     [
       "MIN_540",
-      "MÍNIMO — 540x960"
+      "minimum compliant social output"
     ],
     [
       "META_REELS_FINAL_V1",
-      "META REELS FINAL — 1080x1920"
+      "compatibility alias retained for existing callers"
     ],
     [
       "LONGFORM_1080",
-      "LONGFORM — 1080x1920"
+      "1080x1920 longform; no 90s social cap"
     ]
   ],
   "batch_runner": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
   "challenge_production_launcher": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
-  "producer_version": "0.8.0",
+  "producer_version": "0.9.1",
   "utility_operations": [
     [
       "RUN_REGRESSION",

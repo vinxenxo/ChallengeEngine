@@ -21,6 +21,25 @@ param(
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $ProjectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
+function Resolve-DeliveryProfileData {
+    param([Parameter(Mandatory=$true)]$Config,[Parameter(Mandatory=$true)][string]$ProfileId)
+    $profiles=$Config.profiles
+    $current=$ProfileId
+    $seen=@{}
+    while($true){
+        if($seen.ContainsKey($current)){throw "Delivery profile alias cycle: $ProfileId -> $current"}
+        $seen[$current]=$true
+        $prop=$profiles.PSObject.Properties[$current]
+        if(-not $prop){throw "Unknown delivery profile in central configuration: $current"}
+        $profile=$prop.Value
+        if($profile.PSObject.Properties.Name -contains 'alias_of'){
+            $current=[string]$profile.alias_of
+            continue
+        }
+        return $profile
+    }
+}
+
 $launcher=Join-Path $ProjectRoot ("tools\prototypes\$Family\run_prototype.ps1")
 if (-not (Test-Path -LiteralPath $launcher)) { throw "Prototype launcher not found: $launcher" }
 $prefixMap=@{
@@ -68,17 +87,21 @@ $finalMp4=Join-Path $stage "$productId.mp4"
 $deliveryConfigPath=Join-Path $ProjectRoot 'profiles\delivery\c11c_video_delivery_profiles.json'
 if(-not (Test-Path -LiteralPath $deliveryConfigPath)){throw "Delivery profile configuration missing: $deliveryConfigPath"}
 $deliveryConfig=Get-Content -Raw -LiteralPath $deliveryConfigPath|ConvertFrom-Json
-$deliveryProfileData=$deliveryConfig.profiles.$DeliveryProfile
-if(-not $deliveryProfileData){throw "Unknown delivery profile in central configuration: $DeliveryProfile"}
+$deliveryProfileData=Resolve-DeliveryProfileData -Config $deliveryConfig -ProfileId $DeliveryProfile
+if(-not $deliveryProfileData.width -or -not $deliveryProfileData.height){throw "Delivery profile lacks dimensions: $DeliveryProfile"}
 $deliveryWidth=[int]$deliveryProfileData.width
 $deliveryHeight=[int]$deliveryProfileData.height
 $deliveryAudioRate=[int]$deliveryProfileData.audio_sample_rate_hz
-$deliveryFps=[int]$deliveryProfileData.fps
-if($deliveryFps -ne 30){throw "C11-C Loop delivery currently requires 30 FPS; profile=$DeliveryProfile fps=$deliveryFps"}
+$deliveryFps=if($deliveryProfileData.PSObject.Properties.Name -contains 'fps'){[int]$deliveryProfileData.fps}else{30}
+$deliveryEncoder=if($deliveryProfileData.PSObject.Properties.Name -contains 'encoder'){[string]$deliveryProfileData.encoder}else{'libx264'}
+$deliveryPreset=if($deliveryProfileData.PSObject.Properties.Name -contains 'preset'){[string]$deliveryProfileData.preset}else{'fast'}
+$deliveryCrf=if($deliveryProfileData.PSObject.Properties.Name -contains 'crf'){[int]$deliveryProfileData.crf}else{18}
+$deliveryGopFrames=if($deliveryProfileData.PSObject.Properties.Name -contains 'gop_frames'){[int]$deliveryProfileData.gop_frames}else{[int]([math]::Round($deliveryFps*3))}
+if($deliveryFps -lt 24 -or $deliveryFps -gt 60){throw "Delivery profile FPS outside 24..60: $DeliveryProfile fps=$deliveryFps"}
 if($DeliveryProfile -eq 'REVIEW_720'){
     Copy-Item -LiteralPath $sourceMp4 -Destination $finalMp4 -Force
 } else {
-    $ffArgs=@('-y','-hide_banner','-loglevel','error','-i',$sourceMp4,'-vf',"scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos",'-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-r',[string]$deliveryFps,'-g','90','-keyint_min','90','-sc_threshold','0','-flags','+cgop','-x264-params','open_gop=0:keyint=90:min-keyint=90:scenecut=0')
+    $ffArgs=@('-y','-hide_banner','-loglevel','error','-i',$sourceMp4,'-vf',"scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos",'-c:v',$deliveryEncoder,'-preset',$deliveryPreset,'-crf',[string]$deliveryCrf,'-pix_fmt','yuv420p','-r',[string]$deliveryFps,'-g',[string]$deliveryGopFrames,'-keyint_min',[string]$deliveryGopFrames,'-sc_threshold','0','-flags','+cgop','-x264-params',('open_gop=0:keyint={0}:min-keyint={0}:scenecut=0' -f $deliveryGopFrames))
     if($NoSound){$ffArgs+=@('-an')}else{$ffArgs+=@('-c:a','aac','-profile:a','aac_low','-b:a','192k','-ar',[string]$deliveryAudioRate,'-ac','2')}
     $ffArgs+=$finalMp4
     & ffmpeg @ffArgs
@@ -120,7 +143,7 @@ if($NoFooter){$repro+=' -NoFooter'}
 if($ExportGif){$repro+=' -ExportGif'}
 if($KeepAvi){$repro+=' -KeepAvi'}
 $prodManifest=[ordered]@{
-    schema='C11-C-PRODUCTION-PRODUCT-V3'; revision='2.17.9'; status='FINAL_PRODUCT'; product_id=$productId; family=$Family; seed=$Seed
+    schema='C11-C-PRODUCTION-PRODUCT-V3'; revision='2.18.0'; status='FINAL_PRODUCT'; product_id=$productId; family=$Family; seed=$Seed
     grammar_id=if([string]::IsNullOrWhiteSpace($Grammar)){[string]$sourceManifest.grammar_id}else{$Grammar}
     grammar_name=if([string]::IsNullOrWhiteSpace($Grammar)){[string]$sourceManifest.grammar}else{$Grammar}
     created_utc=[DateTime]::UtcNow.ToString('o'); source_canvas='720x1280'; canvas="${deliveryWidth}x${deliveryHeight}"; delivery_profile=$DeliveryProfile

@@ -1,6 +1,6 @@
 {
   "schema": "C11C-VIDEO-DELIVERY-PROFILES-V1",
-  "revision": "2.17.8",
+  "revision": "2.18.0",
   "logical_social_canvas": {
     "width": 540,
     "height": 960
@@ -27,7 +27,12 @@
       "audio_channels": 2,
       "duration_min_s": 3,
       "duration_max_s": 90,
-      "purpose": "standard social master"
+      "purpose": "standard social master",
+      "fps": 30,
+      "encoder": "libx264",
+      "preset": "fast",
+      "crf": 18,
+      "gop_frames": 90
     },
     "REVIEW_720": {
       "width": 720,
@@ -49,7 +54,12 @@
       "audio_channels": 2,
       "duration_min_s": 0,
       "duration_max_s": 90,
-      "purpose": "C11-C historical review delivery"
+      "purpose": "C11-C historical review delivery",
+      "fps": 30,
+      "encoder": "libx264",
+      "preset": "fast",
+      "crf": 18,
+      "gop_frames": 90
     },
     "MIN_540": {
       "width": 540,
@@ -71,7 +81,12 @@
       "audio_channels": 2,
       "duration_min_s": 0,
       "duration_max_s": 90,
-      "purpose": "minimum compliant social output"
+      "purpose": "minimum compliant social output",
+      "fps": 30,
+      "encoder": "libx264",
+      "preset": "fast",
+      "crf": 18,
+      "gop_frames": 90
     },
     "META_REELS_FINAL_V1": {
       "alias_of": "MASTER_1080",
@@ -97,7 +112,12 @@
       "audio_channels": 2,
       "duration_min_s": 0,
       "duration_max_s": 0,
-      "purpose": "1080x1920 longform; no 90s social cap"
+      "purpose": "1080x1920 longform; no 90s social cap",
+      "fps": 30,
+      "encoder": "libx264",
+      "preset": "fast",
+      "crf": 18,
+      "gop_frames": 90
     }
   }
 }

@@ -1,140 +1,137 @@
 {
-  "overlay": "C11C_2.17.9_PRODUCER_GUI_COMPLETION",
+  "schema": "C11C-PRODUCER-GUI-STABILIZATION-OVERLAY",
+  "revision": "2.18.0",
+  "status": "ACTIVE_CANDIDATE",
   "files": [
     {
-      "path": "C11C_2.17.9_PRODUCER_GUI_COMPLETION_OVERLAY.md",
-      "sha256": "b364e2693de402c4d5ab7d703511f60bded61313143b42f5e7aba9ee6c1c130e",
-      "bytes": 1909
+      "path": "C11C_2.18.0_PRODUCER_GUI_STABILIZATION_OVERLAY.md",
+      "sha256": "005d30bd85828f3062a50635975c92f27792bed04eb20788c998c42733481ee3",
+      "size": 2303
     },
     {
       "path": "c11c-producer/BUILD_MANIFEST.json",
-      "sha256": "8efd96280733c0bf430e21ad45feb86825e0ae053726fc6d505981d78b85d8f2",
-      "bytes": 895
+      "sha256": "ab4c2dac603b530b0aa465275672696858b054f1607b76dbcc3c13f340e01b74",
+      "size": 1061
     },
     {
       "path": "c11c-producer/README.md",
-      "sha256": "64b92ba8087ab4fbb5d326953ba0bb0cdd019be632fb94c704f83b7e7d23caa2",
-      "bytes": 2082
+      "sha256": "b4d614538bea2a6423ae9f6e0160eb2af4afbc5f846309bb8864fb790edbaf12",
+      "size": 2492
     },
     {
       "path": "c11c-producer/main.py",
-      "sha256": "4f062a3216f3138a4f01173549706b23832289d0d35c751105bd81b6a0c5aab3",
-      "bytes": 42086
+      "sha256": "74a2dd7a9ed24b6d3b9c1986cc34ddbe0468961872e101afb7090860f6011a40",
+      "size": 48288
     },
     {
       "path": "c11c-producer/preflight.py",
       "sha256": "fe366d181c45e01211f8bd402e51119ea55f36b87f2028f4fcd16f0f22a655e4",
-      "bytes": 350
+      "size": 350
     },
     {
       "path": "c11c-producer/producer_schema.json",
-      "sha256": "492b4e615e070bf97b1205973646d6d05b4763c591a3ddfdf44a4f83a885c6df",
-      "bytes": 32443
-    },
-    {
-      "path": "c11c-producer/producer_schema_source.json",
-      "sha256": "b6b7d807fe8ffca5cbbc8b58b47a76d61664449cdc04b12f5d2ad38ef4648e93",
-      "bytes": 32450
+      "sha256": "fa4cd2a9f2de5b481db574a60ad9388038668416d488821b361c04c32e42ffab",
+      "size": 32507
     },
     {
       "path": "c11c-producer/run_visual_drill_production.ps1",
-      "sha256": "9639350411de44c5d457d43f4d7e0731b8a7dcc94adcbd8f2943b1aba7be1dd4",
-      "bytes": 11456
+      "sha256": "910a8823ca37befa4d2347112437971b0490cb571067a50a885acbaf57ba8f8c",
+      "size": 13021
     },
     {
       "path": "c11c-producer/self_test.py",
-      "sha256": "a00dfd99f05453e75277b7081b31f3723c00609c8891f80c658743ee2a9535a1",
-      "bytes": 4338
+      "sha256": "dababbf3f9c466e80fd9aeba6615c457be0586fed9e8dbab3b1ccd83f2a897c4",
+      "size": 5470
     },
     {
       "path": "docs/current/02_DATA_AND_CONTRACTS.md",
       "sha256": "9f0b3a083ab9af1a1de3effe05cb2d80c65a588e6fc49d430d9346455bfb8ed5",
-      "bytes": 2383
+      "size": 2383
     },
     {
       "path": "docs/current/06_PRODUCTION_AND_DISTRIBUTION.md",
       "sha256": "10a6cc52159b9ad8737f0f9a876b9404eccfb22b38f5560401ff2ae87f138bca",
-      "bytes": 2005
+      "size": 2005
     },
     {
       "path": "docs/current/07_ROADMAP.md",
       "sha256": "a3c97a971fabc2a09faf2a09f3865219afe45a58eca8aad1c86930e2cceecf56",
-      "bytes": 1190
+      "size": 1190
     },
     {
-      "path": "docs/current/c11c/C11-C_2.17.9_CURRENT_STATE.md",
-      "sha256": "203fecb7f86e6400498ae599f61cf27eb230597988f7d78d4dd23b2f3983cb1d",
-      "bytes": 1705
-    },
-    {
-      "path": "docs/current/c11c/C11C_2.17.8_VIDEO_DELIVERY_STANDARD.md",
-      "sha256": "3ed482dabdd24ed4e5efa989d1bca5fc8e69b435625f6fac7906b9a590a26b94",
-      "bytes": 5054
+      "path": "docs/current/c11c/C11-C_2.18.0_GUI_AND_PRODUCTION_STATE.md",
+      "sha256": "17eb5c8c52707feeaa721bf27117af28d29a0ed1f84ea4950469331a99abc948",
+      "size": 3258
     },
     {
       "path": "docs/current/challenges/C11C_2.17.6_CHALLENGE_CAPTURE_CONTRACT_AUDIT.md",
       "sha256": "5278f07200cd98676001b3f66e2d3c1dfea7273cd3664831682af1212a4638cb",
-      "bytes": 3504
+      "size": 3504
     },
     {
       "path": "docs/current/challenges/CHALLENGE_PRODUCTION_CURRENT.md",
       "sha256": "d656208526046ffb447f611610c95d81f3aeb8b4ae547ebf592a8430dc9c8bd4",
-      "bytes": 1564
+      "size": 1564
     },
     {
       "path": "docs/current/producer/C11C_PRODUCER_0.8.0_AUDIT.md",
-      "sha256": "169b5a7137bd62410f086cb276e6d3c2fd8d54b5cd2fd26981309e1f38367e20",
-      "bytes": 1521
+      "sha256": "a0d53b163d7514af6a39af81b708d36c25cbbab5ecf33869f665e26b72110199",
+      "size": 1633
     },
     {
       "path": "docs/current/producer/C11C_PRODUCER_0.8.0_CURRENT_STATE.md",
-      "sha256": "38ef5ec26200a77f1002b9c0c06a7302fed7f4cf835f4d0cb03d87fbafd6559f",
-      "bytes": 3093
+      "sha256": "426db5928c912a41a3c42e97f6a97ea8df93c90d50184f99c971514ab492208d",
+      "size": 3205
     },
     {
       "path": "docs/current/producer/C11C_PRODUCER_0.8.0_RUNTIME_ACCEPTANCE.md",
-      "sha256": "d1b8f4d1ef57de233f79b958f20418798936b0ab68bb88fcf04491fba4c90cfa",
-      "bytes": 2089
+      "sha256": "ff7f491e4b0677e0e8f7a561d974285e37b578e92c869ebc68d2bc0af206ea55",
+      "size": 2201
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.0_CURRENT_STATE.md",
+      "sha256": "4d7c8ff34a45b5837053c2e398abd6e1224221034870d713660f5ea4c71261d9",
+      "size": 1328
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.0_RUNTIME_ACCEPTANCE.md",
+      "sha256": "7a75d789ddf3ab04621ba72290fb83039b61ea102ef6b0820422f0a8cb89ce74",
+      "size": 1173
     },
     {
       "path": "docs/current/producer/C11C_PRODUCER_2.16.9_ADAPTATION.md",
-      "sha256": "6966e69b3cd63c3b403878569e51d5a3a30819a76b4d8d2fa127889ae2c7a6a6",
-      "bytes": 1111
+      "sha256": "840f2720f1130a190f9ab7fed1130467f83703d6c7b607d2d4d68de40bfff018",
+      "size": 1322
     },
     {
       "path": "docs/history/C11-C_2.17_CHALLENGE_PRODUCTION_CHANGELOG.md",
       "sha256": "a67e2c11566917a59f6030fae4d3669e9c055b563dc6452afb8558522c5e46a4",
-      "bytes": 2076
+      "size": 2076
     },
     {
       "path": "docs/history/producer/C11C_PRODUCER_0.8.0_CHANGELOG.md",
       "sha256": "358422c5e198b04a77fb8a37133079ec90cb156de27e1b961c09048ab2c6cadd",
-      "bytes": 1604
+      "size": 1604
     },
     {
-      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.17.9_PRODUCER.md",
-      "sha256": "5fac2b3a3c70f1f3dcf56a8c19739c88242d3fe2ea3055ca26f053f99da39cf2",
-      "bytes": 1525
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.0_CHANGELOG.md",
+      "sha256": "2b4247a4d1d3e81c35615e4df1a137189229d388e9f9446b1775d49ed845e858",
+      "size": 1180
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.18.0_PRODUCER.md",
+      "sha256": "bcbf708dc188641633428a4cf4fc5d96f7a6f41bd88eb1e59ba18d1d64c2106e",
+      "size": 1608
     },
     {
       "path": "profiles/delivery/c11c_video_delivery_profiles.json",
-      "sha256": "e01264b8dcd377d025124b8bcf2493c836ea779b24becca5a1b37149e6b57957",
-      "bytes": 2718
-    },
-    {
-      "path": "tools/prototypes/c11c_bulk/C11CVisualDrillReviewEnvelopeGenerator.gd",
-      "sha256": "306dfbd896032b2bfa2dd99ec76cbec7816d3b3f25b6fa12c4e223c9a4e630f4",
-      "bytes": 8142
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "size": 3158
     },
     {
       "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
-      "sha256": "263f2c4f0e2d88389a0bbd812f4dab5d12ab37b3ce661409f7dc70fcf83d2636",
-      "bytes": 9094
-    },
-    {
-      "path": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
-      "sha256": "e5e05f71963e3e53d12cc65a2d507ebcdea8e217b52e2e40def1262f1b41ae99",
-      "bytes": 26839
+      "sha256": "891e6a48e2c832d12eeee5b90f2cf732369ec23bd270622b0ba08c0d338284b4",
+      "size": 10612
     }
   ]
 }
