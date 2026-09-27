@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)]
     [ValidateSet('c11c_geometric_waves_v1','c11c_fractal_bloom_v1','c11c_sacred_symmetry_v1','c11c_living_particles_v1','c11c_invisible_forces_v1')]
@@ -99,7 +99,13 @@ $deliveryCrf=if($deliveryProfileData.PSObject.Properties.Name -contains 'crf'){[
 $deliveryGopFrames=if($deliveryProfileData.PSObject.Properties.Name -contains 'gop_frames'){[int]$deliveryProfileData.gop_frames}else{[int]([math]::Round($deliveryFps*3))}
 if($deliveryFps -lt 24 -or $deliveryFps -gt 60){throw "Delivery profile FPS outside 24..60: $DeliveryProfile fps=$deliveryFps"}
 if($DeliveryProfile -eq 'REVIEW_720'){
-    Copy-Item -LiteralPath $sourceMp4 -Destination $finalMp4 -Force
+    # REVIEW_720 is the native review delivery. Its final path is intentionally
+    # identical to the source MP4 path; do not ask Copy-Item to copy a file onto itself.
+    $sourceFull=[System.IO.Path]::GetFullPath($sourceMp4)
+    $finalFull=[System.IO.Path]::GetFullPath($finalMp4)
+    if(-not [string]::Equals($sourceFull,$finalFull,[System.StringComparison]::OrdinalIgnoreCase)){
+        Copy-Item -LiteralPath $sourceMp4 -Destination $finalMp4 -Force
+    }
 } else {
     $ffArgs=@('-y','-hide_banner','-loglevel','error','-i',$sourceMp4,'-vf',"scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos",'-c:v',$deliveryEncoder,'-preset',$deliveryPreset,'-crf',[string]$deliveryCrf,'-pix_fmt','yuv420p','-r',[string]$deliveryFps,'-g',[string]$deliveryGopFrames,'-keyint_min',[string]$deliveryGopFrames,'-sc_threshold','0','-flags','+cgop','-x264-params',('open_gop=0:keyint={0}:min-keyint={0}:scenecut=0' -f $deliveryGopFrames))
     if($NoSound){$ffArgs+=@('-an')}else{$ffArgs+=@('-c:a','aac','-profile:a','aac_low','-b:a','192k','-ar',[string]$deliveryAudioRate,'-ac','2')}

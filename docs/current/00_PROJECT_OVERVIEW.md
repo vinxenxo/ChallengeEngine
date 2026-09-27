@@ -35,6 +35,10 @@ Invisible Forces is the artistic/productive name of `vector_field`; it is not a 
 - Review workers: 7.
 - AVI temporary; GIF opt-in.
 
-## Next phase
+## Current tooling phase
 
-Recover and organize the original Video Challenger definitions and their asset surface without changing the frozen C11-C manufacturing baseline.
+The next roadmap window is the C11-C Suite: a tooling-only consolidation of test, catalog, maintenance, configuration and Producer interfaces. The frozen C11-C manufacturing backend remains unchanged.
+
+## Next content phase
+
+After the Suite interfaces are stable, recover and organize the original Video Challenger definitions and their asset surface without changing the frozen C11-C manufacturing baseline.

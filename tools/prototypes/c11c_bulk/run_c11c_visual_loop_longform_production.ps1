@@ -67,7 +67,6 @@ function Get-LongformSeeds {
 }
 
 $seedValues=Get-LongformSeeds -Count $segments.Count -BaseSeed $Seed -FamilyKey $familyKey
-$listPath=Join-Path $productRoot 'concat_sources.txt'
 $segmentResults=@()
 $sourcePaths=@()
 for($i=0;$i -lt $segments.Count;$i++){
@@ -76,23 +75,38 @@ for($i=0;$i -lt $segments.Count;$i++){
     $duration=[double]$segment.duration_seconds
     $production=$familySchedule.production_id
     $launcher=Join-Path $ProjectRoot 'tools\prototypes\c11c_bulk\run_c11c_production.ps1'
+
+    # Canonical producer writes the final REVIEW_720 product under
+    # artifacts\production\audiovisual\<family>\<stem>. Its manifest is
+    # production_manifest.json; the original prototype manifest remains in
+    # artifacts\prototypes and must not be assumed to be inside the product.
     $source=Get-C11CProductionArtifacts -Production $production -Seed $segSeed
+    $productionManifestPath=Join-Path $source.Root 'production_manifest.json'
+    $prototypeMusic=Join-Path $ProjectRoot ("artifacts\prototypes\$production\$($source.Root | Split-Path -Leaf)_music.wav")
+    $sourceSocial=Join-Path $source.Root ("$($source.Root | Split-Path -Leaf)_social.txt")
+    $sourceMp4=$source.MP4
+
     $needsRender=$true
-    if(Test-Path -LiteralPath $source.Manifest){
+    if(Test-Path -LiteralPath $productionManifestPath){
         try{
-            $existing=Get-Content -Raw -LiteralPath $source.Manifest | ConvertFrom-Json
+            $existing=Get-Content -Raw -LiteralPath $productionManifestPath | ConvertFrom-Json
             $needsRender=([string]$existing.grammar_id -ne [string]$segment.grammar_id -or [math]::Abs([double]$existing.duration_seconds-$duration)-gt 0.01)
         }catch{$needsRender=$true}
     }
-    if($needsRender -or -not(Test-Path -LiteralPath $source.MP4)){
-        & $launcher -Family $production -Seed $segSeed -Grammar $segment.grammar_id -Duration $duration -Force
+    if($needsRender -or -not(Test-Path -LiteralPath $sourceMp4)){
+        & $launcher -Family $production -Seed $segSeed -Grammar $segment.grammar_id -Duration $duration -DeliveryProfile REVIEW_720 -Force
         if(-not $?){throw "Canonical production segment failed: $($segment.grammar_id) seed=$segSeed"}
         $source=Get-C11CProductionArtifacts -Production $production -Seed $segSeed
+        $productionManifestPath=Join-Path $source.Root 'production_manifest.json'
+        $sourceSocial=Join-Path $source.Root ("$($source.Root | Split-Path -Leaf)_social.txt")
+        $prototypeMusic=Join-Path $ProjectRoot ("artifacts\prototypes\$production\$($source.Root | Split-Path -Leaf)_music.wav")
+        $sourceMp4=$source.MP4
     }
-    foreach($req in @($source.Manifest,$source.Music,$source.Social,$source.MP4)){
+
+    foreach($req in @($sourceMp4,$productionManifestPath,$prototypeMusic,$sourceSocial)){
         if(-not(Test-Path -LiteralPath $req)){throw "Missing segment artifact: $req"}
     }
-    $probeJson=& ffprobe -v error -show_streams -show_format -of json $source.MP4
+    $probeJson=& ffprobe -v error -show_streams -show_format -of json $sourceMp4
     if($LASTEXITCODE -ne 0){throw "ffprobe failed for segment: $($segment.grammar_id)"}
     $probe=($probeJson -join "`n") | ConvertFrom-Json
     $video=@($probe.streams | Where-Object {$_.codec_type -eq 'video'}) | Select-Object -First 1
@@ -108,17 +122,16 @@ for($i=0;$i -lt $segments.Count;$i++){
         grammar_name=[string]$segment.grammar_name
         seed=$segSeed
         duration_seconds=$duration
-        source_product=$source.MP4
-        source_manifest=$source.Manifest
-        source_music=$source.Music
+        source_product=$sourceMp4
+        source_manifest=$productionManifestPath
+        source_music=$prototypeMusic
         loop_safe=$true
     }
-    $sourcePaths += [string]$source.MP4
+    $sourcePaths += [string]$sourceMp4
     $segmentManifestPath=Join-Path $segmentRoot ("{0:D2}_{1}_seed_{2}.json" -f ($i+1),$segment.grammar_id,$segSeed)
     [System.IO.File]::WriteAllText($segmentManifestPath,($segmentResults[-1]|ConvertTo-Json -Depth 8),(New-Object System.Text.UTF8Encoding($false)))
 }
 
-# Build filters without culture-sensitive PowerShell interpolation helpers.
 $filterParts=@()
 function Fmt([double]$value){ return $value.ToString('0.########', [System.Globalization.CultureInfo]::InvariantCulture) }
 $videoLabel='[0:v]'
@@ -170,7 +183,6 @@ $familyTags=@{
     living_particles='#LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt';
     invisible_forces='#InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt'
 }
-$first=$segmentResults[0]
 $hook='¿Puedes ver cómo cambia el universo visual sin notar el paso entre mundos?'
 $description="$($familySchedule.artistic_name.ToUpper()) - video long-form de arte generativa matemática y procedural.`n`nDuración: 180.00s`nSegmentos: $($segmentResults.Count) subfamilias visuales`nSeed base: $Seed`nAudio: música determinista por familia y subfamilia.`n`nLas variantes se enlazan mediante continuidad cromática y geométrica, sin fundidos a negro entre capítulos. El cierre final sí realiza un fundido a negro.`n`nDiseñado en código con #GodotEngine para contemplación prolongada."
 $hashtags="#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying $($familyTags[$familyKey])"
@@ -180,10 +192,9 @@ $social=@('COPY_PASTE_READY:',$copyPaste,'','TITLE:',"$($familySchedule.artistic
 [System.IO.File]::WriteAllLines($socialPath,$social,(New-Object System.Text.UTF8Encoding($false)))
 
 $transitionContract = "video_xfade_dissolve;audio_acrossfade;never_through_black"
-
 $manifest=[ordered]@{
     schema='C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2'
-    revision='2.16.0'
+    revision='2.18.3'
     status='FINAL_LONGFORM_PRODUCT'
     family=[ordered]@{technical_id=$familyKey;artistic_name=$familySchedule.artistic_name;production_id=$familySchedule.production_id}
     base_seed=$Seed
@@ -209,7 +220,6 @@ $manifest=[ordered]@{
 }
 $manifestPath=Join-Path $productRoot "${outStem}_manifest.json"
 [System.IO.File]::WriteAllText($manifestPath,($manifest|ConvertTo-Json -Depth 12),(New-Object System.Text.UTF8Encoding($false)))
-Remove-Item -LiteralPath $listPath -Force -ErrorAction SilentlyContinue
 Write-Host "[C11-C-LONGFORM] PASS family=$familyKey | segments=$($segments.Count) | raw=$rawTotal s | composed=$duration s | transitions=$transition s | final fade=$finalFade s"
 Write-Host "[C11-C-LONGFORM] MP4: $outMp4"
 Write-Host "[C11-C-LONGFORM] MANIFEST: $manifestPath"

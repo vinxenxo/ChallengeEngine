@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import subprocess
 from pathlib import Path
@@ -75,6 +75,8 @@ KNOWN_SUITES = {
     "C11CSeedSpreadContractTest.gd": "[C11C_SEED_SPREAD_CONTRACT_SUITE] PASS",
     "C11CSacredSymmetryContainmentContractTest.gd": "[C11C_SACRED_SYMMETRY_CONTAINMENT_CONTRACT_SUITE] PASS",
     "C11CVisualLoopLongformContractTest.gd": "[C11C_VISUAL_LOOP_LONGFORM_CONTRACT_SUITE] PASS",
+    "C11CVisualLoopLongformSourceArtifactContractTest.gd": "[C11C_LONGFORM_SOURCE_ARTIFACT_CONTRACT_SUITE] PASS",
+    "C11CProductionReviewCopySafetyTest.gd": "[C11C_PRODUCTION_REVIEW_COPY_SAFETY_SUITE] PASS",
     "C11CArtDirectionReviewResumeContractTest.gd": "[C11C_ART_DIRECTION_REVIEW_RESUME_CONTRACT_SUITE] PASS",
     "C11CArtDirectionProductionHygieneContractTest.gd": "[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS",
     "C11CVisualLoopSubtypeMusicCoverageContractTest.gd": "[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] PASS",

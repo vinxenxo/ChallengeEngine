@@ -12,7 +12,10 @@ Challenge and drill runtimes consume authored inputs and emit reproducible gamep
 `PresentationUI`, `C11CVisualEditorialLayer`, family renderers and presentation binders consume render-ready state. They may style, frame and animate editorial elements but do not calculate mechanics or RNG truth.
 
 ### Production orchestration
-Movie Maker, FFmpeg/FFprobe, audio export, social sidecars, manifests, batch/review runners and `c11c-producer` coordinate production.
+Movie Maker, FFmpeg/FFprobe, audio export, social sidecars, manifests, batch/review runners and the Producer coordinate production.
+
+### Operator GUI Suite
+`c11c-suite/` sits above production orchestration as an operator layer. It launches, inspects, edits declared configuration and packages the repository. It is forbidden from reproducing backend truth.
 
 ## Producer boundary
 
@@ -50,4 +53,17 @@ family renderer + editorial layer
 Movie Maker / FFmpeg
     ↓
 MP4 + audio + social.txt
+```
+
+## Suite path
+
+```text
+Operator
+  ↓
+C11C Suite
+  ├── Test → existing test/QA scripts
+  ├── Catalog → artifacts/ + ffprobe/ffmpeg read-only
+  ├── Maintenance → allowlisted maintenance scripts + ZIP
+  ├── Config → declared text/JSON surfaces
+  └── Producer → canonical production launchers
 ```

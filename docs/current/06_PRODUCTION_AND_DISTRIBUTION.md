@@ -56,7 +56,7 @@ The 3–90 second range is treated as a social delivery constraint for ordinary 
 
 ## Producer
 
-`c11c-producer` exposes the delivery profile for A LA CARTA production. Historical batch-review operations retain their established C11-C review behavior and do not silently reinterpret old batch contracts.
+`c11c-suite/c11c-producer` exposes the delivery profile for A LA CARTA production. Historical batch-review operations retain their established C11-C review behavior and do not silently reinterpret old batch contracts.
 
 ## Artifact policy
 
