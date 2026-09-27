@@ -5,3 +5,4 @@ ideas locas que voy apuntando conforme avanza el desarrollo
 - crear un IDE en qt para el motor
 -crear una versión para que el juego generado ya no sea solo un video y sea un juego real donde el usuario pueda parar el juego con el dedo desde el movil o haciendo click
 - crear un gui para limpiar, otro gui para generar, otro gui para pruebas...
+- crear un catalogo de videos que permita ver y exportar el texto rapidamente

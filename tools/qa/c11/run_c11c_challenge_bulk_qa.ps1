@@ -3,170 +3,95 @@ param(
     [string]$ProjectRoot = "",
     [string]$OutputRoot = "",
     [switch]$Resume
-    )
+)
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 if ([string]::IsNullOrWhiteSpace($ProjectRoot)) {
     $scriptPath = $MyInvocation.MyCommand.Path
-    if ([string]::IsNullOrWhiteSpace($scriptPath)) {
-        throw 'C11-C Challenge QA: no se pudo determinar la ruta del script.'
-    }
+    if ([string]::IsNullOrWhiteSpace($scriptPath)) { throw 'C11-C Challenge QA: no se pudo determinar la ruta del script.' }
     $ProjectRoot = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $scriptPath)))
 }
-
 if ([string]::IsNullOrWhiteSpace($OutputRoot)) {
     $OutputRoot = Join-Path $ProjectRoot 'artifacts/qa/c11c_challenge_720'
 } elseif (-not [IO.Path]::IsPathRooted($OutputRoot)) {
     $OutputRoot = Join-Path $ProjectRoot $OutputRoot
 }
+$ProjectRoot=[IO.Path]::GetFullPath($ProjectRoot)
+$OutputRoot=[IO.Path]::GetFullPath($OutputRoot)
+$RunsRoot=Join-Path $OutputRoot 'runs'
+$Producer=Join-Path $ProjectRoot 'tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1'
+$ChallengesRoot=Join-Path $ProjectRoot 'challenges'
+$RootManifest=Join-Path $OutputRoot 'C11C_CHALLENGE_720_BULK_MANIFEST.json'
 
-$ProjectRoot = [IO.Path]::GetFullPath($ProjectRoot)
-$OutputRoot = [IO.Path]::GetFullPath($OutputRoot)
-$RunsRoot = Join-Path $OutputRoot 'runs'
-$Producer = Join-Path $ProjectRoot 'tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1'
-$ChallengesRoot = Join-Path $ProjectRoot 'challenges'
-$RootManifest = Join-Path $OutputRoot 'C11C_CHALLENGE_720_BULK_MANIFEST.json'
-
-if (-not (Test-Path -LiteralPath $Producer -PathType Leaf)) {
-    throw "C11-C Challenge QA: falta el productor canónico: $Producer"
+foreach($required in @($Producer,$ChallengesRoot)){
+    if(-not(Test-Path -LiteralPath $required)){throw "C11-C Challenge QA: required path missing: $required"}
 }
-if (-not (Test-Path -LiteralPath $ChallengesRoot -PathType Container)) {
-    throw "C11-C Challenge QA: falta $ChallengesRoot"
-}
-foreach ($tool in @('ffmpeg','ffprobe','godot','powershell.exe')) {
-    if ($null -eq (Get-Command $tool -ErrorAction SilentlyContinue)) {
-        throw "C11-C Challenge QA: herramienta obligatoria no encontrada: $tool"
-    }
+foreach($tool in @('ffmpeg','ffprobe','godot','powershell.exe')){
+    if($null -eq (Get-Command $tool -ErrorAction SilentlyContinue)){throw "C11-C Challenge QA: herramienta obligatoria no encontrada: $tool"}
 }
 
-function Write-JsonUtf8 {
-    param([string]$Path, [object]$Value)
-    [IO.File]::WriteAllText($Path, ($Value | ConvertTo-Json -Depth 100), (New-Object System.Text.UTF8Encoding($false)))
-}
-
-function ToFrames {
-    param([double]$Seconds, [int]$Rate)
-    return [Math]::Max(0, [int][Math]::Floor(($Seconds * $Rate) + 0.5))
-}
-
+function Write-JsonUtf8 { param([string]$Path,[object]$Value);[IO.File]::WriteAllText($Path,($Value|ConvertTo-Json -Depth 100),(New-Object Text.UTF8Encoding($false))) }
+function ToFrames { param([double]$Seconds,[int]$Rate);return [Math]::Max(0,[int][Math]::Floor(($Seconds*$Rate)+0.5)) }
 function Get-ExpectedTimeline {
     param([object]$Video)
-    $fps = [int]$Video.fps
-    if ($fps -le 0) { throw 'video.fps debe ser > 0.' }
-    $hook = ToFrames ([double]$Video.hook_duration) $fps
-    $game = ToFrames ([double]$Video.game_duration) $fps
-    $reveal = ToFrames ([double]$Video.reveal_duration) $fps
-    $cta = ToFrames ([double]$Video.cta_duration) $fps
-    return [pscustomobject]@{
-        fps=$fps
-        hook_frames=$hook
-        game_frames=$game
-        reveal_frames=$reveal
-        cta_frames=$cta
-        total_frames=$hook+$game+$reveal+$cta
-    }
+    $fps=[int]$Video.fps
+    if($fps -le 0){throw 'video.fps debe ser > 0.'}
+    $hook=ToFrames ([double]$Video.hook_duration) $fps
+    $game=ToFrames ([double]$Video.game_duration) $fps
+    $reveal=ToFrames ([double]$Video.reveal_duration) $fps
+    $cta=ToFrames ([double]$Video.cta_duration) $fps
+    return [pscustomobject]@{fps=$fps;hook_frames=$hook;game_frames=$game;reveal_frames=$reveal;cta_frames=$cta;total_frames=$hook+$game+$reveal+$cta}
 }
-
-function Get-FFProbe {
-    param([string]$VideoPath)
-    $raw = & ffprobe -v error -select_streams v:0 -count_frames `
-        -show_entries stream=width,height,r_frame_rate,nb_read_frames,duration,codec_name,pix_fmt `
-        -of json -- $VideoPath 2>&1
-    if ($LASTEXITCODE -ne 0) { throw "ffprobe falló: $VideoPath`n$($raw -join "`n")" }
-    return (($raw -join "`n") | ConvertFrom-Json)
-}
-
-function Invoke-FrameMD5 {
-    param([string]$VideoPath, [string]$OutputPath)
-    & ffmpeg -v error -i $VideoPath -f framemd5 -an -sn -dn -y $OutputPath
-    if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $OutputPath -PathType Leaf)) {
-        throw "framemd5 falló: $VideoPath"
-    }
-}
-
+function Get-FFProbe { param([string]$VideoPath);$raw=& ffprobe -v error -select_streams v:0 -count_frames -show_entries stream=width,height,r_frame_rate,nb_read_frames,duration,codec_name,pix_fmt -of json -- $VideoPath 2>&1;if($LASTEXITCODE-ne 0){throw "ffprobe falló: $VideoPath`n$($raw -join "`n")"};return (($raw -join "`n")|ConvertFrom-Json) }
+function Invoke-FrameMD5 { param([string]$VideoPath,[string]$OutputPath);& ffmpeg -v error -i $VideoPath -f framemd5 -an -sn -dn -y $OutputPath;if($LASTEXITCODE-ne 0-or-not(Test-Path -LiteralPath $OutputPath -PathType Leaf)){throw "framemd5 falló: $VideoPath"} }
 function Select-ReviewFrames {
-    param([string]$VideoPath, [int[]]$Indices, [string]$FrameDirectory)
+    param([string]$VideoPath,[int[]]$Indices,[string]$FrameDirectory)
     New-Item -ItemType Directory -Force -Path $FrameDirectory | Out-Null
-    $seen = @()
-    foreach ($index in $Indices) {
-        if ($index -ge 0 -and $index -notin $seen) { $seen += $index }
-    }
-    for ($i=0; $i -lt $seen.Count; $i++) {
-        $frameIndex = [int]$seen[$i]
-        $out = Join-Path $FrameDirectory ("frame_{0:D2}_n{1:D5}.png" -f ($i+1), $frameIndex)
-        & ffmpeg -v error -i $VideoPath -vf ("select='eq(n,{0})'" -f $frameIndex) -frames:v 1 -y $out
-        if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $out -PathType Leaf)) {
-            throw "No se pudo extraer frame $frameIndex de $VideoPath"
-        }
-    }
+    $seen=@();foreach($index in $Indices){if($index-ge 0-and$index-notin$seen){$seen+=$index}}
+    for($i=0;$i-lt$seen.Count;$i++){ $frameIndex=[int]$seen[$i];$out=Join-Path $FrameDirectory ("frame_{0:D2}_n{1:D5}.png" -f ($i+1),$frameIndex);& ffmpeg -v error -i $VideoPath -vf ("select='eq(n,{0})'" -f $frameIndex) -frames:v 1 -y $out;if($LASTEXITCODE-ne 0-or-not(Test-Path -LiteralPath $out -PathType Leaf)){throw "No se pudo extraer frame $frameIndex de $VideoPath"} }
 }
-
 function Create-ContactSheet {
-    param([string]$FrameDirectory, [string]$OutputPath)
-    $frames = @(Get-ChildItem -LiteralPath $FrameDirectory -Filter 'frame_*.png' | Sort-Object Name)
-    if ($frames.Count -eq 0) { throw "No hay keyframes: $FrameDirectory" }
-    $inputs=@(); foreach($frame in $frames){$inputs += @('-i',$frame.FullName)}
-    $filters=@();
-    for($i=0;$i -lt $frames.Count;$i++){ $filters += "[$i`:v]scale=216:384[s$i]" }
-    $refs=(($frames|ForEach-Object -Begin{$i=0} -Process{"[s$($i)]";$i++}) -join '')
-    $filters += "$refs`hstack=inputs=$($frames.Count):shortest=1[out]"
-    & ffmpeg -v error @inputs -filter_complex ($filters -join ';') -map '[out]' -frames:v 1 -q:v 3 -y $OutputPath
-    if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $OutputPath -PathType Leaf)) {
-        throw "No se pudo crear contact sheet: $OutputPath"
-    }
+    param([string]$FrameDirectory,[string]$OutputPath)
+    $frames=@(Get-ChildItem -LiteralPath $FrameDirectory -Filter 'frame_*.png'|Sort-Object Name)
+    if($frames.Count-eq 0){throw "No hay keyframes: $FrameDirectory"}
+    $inputs=@();foreach($frame in $frames){$inputs+=@('-i',$frame.FullName)}
+    $filters=@();for($i=0;$i-lt$frames.Count;$i++){$filters+="[$i`:v]scale=216:384[s$i]"}
+    $refs=(($frames|ForEach-Object-Begin{$i=0}-Process{"[s$($i)]";$i++})-join '')
+    $filters+="$refs`hstack=inputs=$($frames.Count):shortest=1[out]"
+    & ffmpeg -v error @inputs -filter_complex ($filters-join ';') -map '[out]' -frames:v 1 -q:v 3 -y $OutputPath
+    if($LASTEXITCODE-ne 0-or-not(Test-Path -LiteralPath $OutputPath -PathType Leaf)){throw "No se pudo crear contact sheet: $OutputPath"}
 }
-
 function Read-TelemetryFromLog {
     param([string]$LogPath)
-    $lines = @(Get-Content -LiteralPath $LogPath -Encoding UTF8 | Where-Object { $_ -match '^\[TELEMETRY_JSON\]' })
-    if ($lines.Count -eq 0) { throw "No se encontró [TELEMETRY_JSON] en $LogPath" }
-    $line = [string]$lines[$lines.Count-1]
-    return (($line.Substring('[TELEMETRY_JSON]'.Length)) | ConvertFrom-Json)
+    $lines=@(Get-Content -LiteralPath $LogPath -Encoding UTF8|Where-Object{$_-match '^\[TELEMETRY_JSON\]'})
+    if($lines.Count-eq 0){throw "No se encontró [TELEMETRY_JSON] en $LogPath"}
+    $line=[string]$lines[$lines.Count-1]
+    return (($line.Substring('[TELEMETRY_JSON]'.Length))|ConvertFrom-Json)
 }
 
-$seedCases = @(
-    [pscustomobject]@{ Label='12345_A'; Seed=12345 },
-    [pscustomobject]@{ Label='54321'; Seed=54321 },
-    [pscustomobject]@{ Label='314159'; Seed=314159 },
-    [pscustomobject]@{ Label='7770001'; Seed=7770001 },
-    [pscustomobject]@{ Label='998877'; Seed=998877 },
-    [pscustomobject]@{ Label='12345_B'; Seed=12345 }
+$seedCases=@(
+    [pscustomobject]@{Label='12345_A';Seed=12345},
+    [pscustomobject]@{Label='54321';Seed=54321},
+    [pscustomobject]@{Label='314159';Seed=314159},
+    [pscustomobject]@{Label='7770001';Seed=7770001},
+    [pscustomobject]@{Label='998877';Seed=998877},
+    [pscustomobject]@{Label='12345_B';Seed=12345}
 )
-
-$challengeFiles = 1..9 | ForEach-Object {
-    $path = Join-Path $ChallengesRoot ("CHALLENGE_{0:D3}.json" -f $_)
-    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "Falta $path" }
-    Get-Item -LiteralPath $path
-}
-
+$challengeFiles=1..9|ForEach-Object{$path=Join-Path $ChallengesRoot ("CHALLENGE_{0:D3}.json"-f$_);if(-not(Test-Path -LiteralPath $path -PathType Leaf)){throw "Falta $path"};Get-Item -LiteralPath $path}
 New-Item -ItemType Directory -Force -Path $RunsRoot | Out-Null
+
 $plan=@()
 foreach($challengeFile in $challengeFiles){
-    $source = Get-Content -LiteralPath $challengeFile.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
-    if($source.challenge_id -ne $challengeFile.BaseName){throw "Mismatched challenge_id: $($challengeFile.Name)"}
+    $source=Get-Content -LiteralPath $challengeFile.FullName -Raw -Encoding UTF8|ConvertFrom-Json
+    if($source.challenge_id-ne$challengeFile.BaseName){throw "Mismatched challenge_id: $($challengeFile.Name)"}
     $timeline=Get-ExpectedTimeline $source.video
-    foreach($seedCase in $seedCases){
-        $plan += [pscustomobject]@{
-            challenge_id=$source.challenge_id
-            mechanic=[string]$source.mechanic
-            mechanic_version=if($null -ne $source.mechanic_version){[string]$source.mechanic_version}else{$null}
-            source_seed=[int64]$source.generation.seed
-            test_seed=[int64]$seedCase.Seed
-            seed_label=$seedCase.Label
-            rng_version=[string]$source.generation.rng_version
-            expected_timeline=$timeline
-            source_config=$challengeFile.FullName
-            run_id=("{0}_seed_{1}" -f $source.challenge_id.ToLowerInvariant(),$seedCase.Label)
-        }
-    }
+    foreach($seedCase in $seedCases){$plan+=[pscustomobject]@{challenge_id=$source.challenge_id;mechanic=[string]$source.mechanic;mechanic_version=if($null-ne$source.mechanic_version){[string]$source.mechanic_version}else{$null};source_seed=[int64]$source.generation.seed;test_seed=[int64]$seedCase.Seed;seed_label=$seedCase.Label;rng_version=[string]$source.generation.rng_version;expected_timeline=$timeline;source_config=$challengeFile.FullName;run_id=("{0}_seed_{1}"-f$source.challenge_id.ToLowerInvariant(),$seedCase.Label)}}
 }
 Write-JsonUtf8 (Join-Path $OutputRoot 'C11C_CHALLENGE_720_BULK_PLAN.json') $plan
-
-Write-Host "[C11-C-CHALLENGE] 9 challenges x 6 seeds = 54 runs" -ForegroundColor Cyan
-Write-Host "[C11-C-CHALLENGE] Physical target: 720x1280 / 9:16 / certified temporary Movie Maker override" -ForegroundColor Cyan
-Write-Host "[C11-C-CHALLENGE] Challenge capture uses the certified temporary C11-C Movie Maker override and restores override.cfg after every run; runs are sequential." -ForegroundColor Cyan
+Write-Host '[C11-C-CHALLENGE] 9 challenges x 6 seeds = 54 runs' -ForegroundColor Cyan
+Write-Host '[C11-C-CHALLENGE] Contract-safe path: native source 540x960 -> FFmpeg delivery 720x1280; Challenge runs are sequential.' -ForegroundColor Cyan
 
 $completed=0
 foreach($item in $plan){
@@ -176,105 +101,63 @@ foreach($item in $plan){
     $runOutput=Join-Path $runDir 'production'
     $effectiveConfig=Join-Path $runDir 'challenge_definition_effective.json'
     if(Test-Path -LiteralPath $runDir -PathType Container){
-        if($Resume -and (Test-Path -LiteralPath $recordPath -PathType Leaf)){
-            try{
-                $existing=Get-Content -LiteralPath $recordPath -Raw -Encoding UTF8 | ConvertFrom-Json
-                if($existing.status -eq 'COMPLETE'){
-                    Write-Host ("[{0}/54] SKIP COMPLETE {1}" -f $completed,$item.run_id) -ForegroundColor DarkGreen
-                    continue
-                }
-            }catch{}
-        }
+        if($Resume-and(Test-Path -LiteralPath $recordPath -PathType Leaf)){try{$existing=Get-Content -LiteralPath $recordPath -Raw -Encoding UTF8|ConvertFrom-Json;if($existing.status-eq'COMPLETE'){Write-Host ("[{0}/54] SKIP COMPLETE {1}"-f$completed,$item.run_id)-ForegroundColor DarkGreen;continue}}catch{}}
         Remove-Item -LiteralPath $runDir -Recurse -Force
     }
-    New-Item -ItemType Directory -Force -Path $runDir | Out-Null
-    New-Item -ItemType Directory -Force -Path $runOutput | Out-Null
-
-    $sourceDefinition=Get-Content -LiteralPath $item.source_config -Raw -Encoding UTF8 | ConvertFrom-Json
+    New-Item -ItemType Directory -Force -Path $runDir,$runOutput | Out-Null
+    $sourceDefinition=Get-Content -LiteralPath $item.source_config -Raw -Encoding UTF8|ConvertFrom-Json
     $sourceDefinition.generation.seed=[int64]$item.test_seed
     Write-JsonUtf8 $effectiveConfig $sourceDefinition
-
-    $record=[ordered]@{
-        status='RUNNING'; run_id=$item.run_id; challenge_id=$item.challenge_id; mechanic=$item.mechanic
-        mechanic_version=$item.mechanic_version; source_seed=$item.source_seed; test_seed=$item.test_seed
-        seed_label=$item.seed_label; rng_version=$item.rng_version; expected_timeline=$item.expected_timeline
-        source_config=$item.source_config; qa_config=$effectiveConfig; output_root=$runOutput
-        started_at_utc=[DateTimeOffset]::UtcNow.ToString('o'); completed_at_utc=$null; failure=$null
-        video=$null; telemetry=$null; framemd5=$null; review_frames=$null
-    }
+    $record=[ordered]@{status='RUNNING';run_id=$item.run_id;challenge_id=$item.challenge_id;mechanic=$item.mechanic;mechanic_version=$item.mechanic_version;source_seed=$item.source_seed;test_seed=$item.test_seed;seed_label=$item.seed_label;rng_version=$item.rng_version;expected_timeline=$item.expected_timeline;source_config=$item.source_config;qa_config=$effectiveConfig;output_root=$runOutput;started_at_utc=[DateTimeOffset]::UtcNow.ToString('o');completed_at_utc=$null;failure=$null;video=$null;telemetry=$null;framemd5=$null;review_frames=$null}
     Write-JsonUtf8 $recordPath $record
-    Write-Host ("[{0}/54] RUN {1} seed={2} -> 720x1280" -f $completed,$item.run_id,$item.test_seed) -ForegroundColor Yellow
+    Write-Host ("[{0}/54] RUN {1} seed={2} -> source 540x960 / delivery 720x1280"-f$completed,$item.run_id,$item.test_seed)-ForegroundColor Yellow
 
     $launcherLog=Join-Path $runDir 'challenge_production_launcher.log'
     $profile='REVIEW_720'
-    $oldEA=$ErrorActionPreference; $ErrorActionPreference='Continue'
-    try{
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Producer -ChallengeId $item.challenge_id -Seed ([int]$item.test_seed) -DeliveryProfile $profile -OutputRoot $runOutput -KeepAvi 2>&1 | Out-File -LiteralPath $launcherLog -Encoding utf8
-        $producerExit=$LASTEXITCODE
-    }finally{$ErrorActionPreference=$oldEA}
-    if($producerExit -ne 0){
-        $record.status='FAILED';$record.failure=[pscustomobject]@{code='PRODUCER_EXIT';message="run_c11c_challenge_production.ps1 exit=$producerExit"};$record.completed_at_utc=[DateTimeOffset]::UtcNow.ToString('o');Write-JsonUtf8 $recordPath $record
-        throw "C11-C Challenge $($item.run_id) failed. See $launcherLog"
-    }
+    $oldEA=$ErrorActionPreference;$ErrorActionPreference='Continue'
+    try{& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Producer -ChallengeId $item.challenge_id -Seed ([int]$item.test_seed) -DeliveryProfile $profile -OutputRoot $runOutput -KeepAvi 2>&1|Out-File -LiteralPath $launcherLog -Encoding utf8;$producerExit=$LASTEXITCODE}finally{$ErrorActionPreference=$oldEA}
+    if($producerExit-ne 0){$record.status='FAILED';$record.failure=[pscustomobject]@{code='PRODUCER_EXIT';message="run_c11c_challenge_production.ps1 exit=$producerExit"};$record.completed_at_utc=[DateTimeOffset]::UtcNow.ToString('o');Write-JsonUtf8 $recordPath $record;throw "C11-C Challenge $($item.run_id) failed. See $launcherLog"}
 
-    $mp4=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter '*.mp4' -File | Select-Object -First 1
-    $avi=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter '*.avi' -File | Select-Object -First 1
-    $manifestFile=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter 'production_manifest.json' -File | Select-Object -First 1
-    $godotLog=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter 'godot.log' -File | Select-Object -First 1
-    if($null -eq $mp4 -or $null -eq $avi -or $null -eq $manifestFile -or $null -eq $godotLog){throw "Incomplete production artifacts for $($item.run_id)"}
-
-    $manifest=Get-Content -LiteralPath $manifestFile.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+    $mp4=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter '*.mp4' -File|Select-Object -First 1
+    $avi=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter '*_source.avi' -File|Select-Object -First 1
+    $manifestFile=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter 'production_manifest.json' -File|Select-Object -First 1
+    $godotLog=Get-ChildItem -LiteralPath $runOutput -Recurse -Filter 'godot.log' -File|Select-Object -First 1
+    if($null-eq$mp4-or$null-eq$avi-or$null-eq$manifestFile-or$null-eq$godotLog){throw "Incomplete production artifacts for $($item.run_id)"}
+    $manifest=Get-Content -LiteralPath $manifestFile.FullName -Raw -Encoding UTF8|ConvertFrom-Json
     $telemetry=Read-TelemetryFromLog $godotLog.FullName
+    $sourceProbe=Get-FFProbe $avi.FullName
+    $sourceStream=$sourceProbe.streams[0]
     $probe=Get-FFProbe $mp4.FullName
     $stream=$probe.streams[0]
-    $observedWidth=[int]$stream.width;$observedHeight=[int]$stream.height;$observedFrames=[int]$stream.nb_read_frames;$observedFps=[string]$stream.r_frame_rate
-    if($observedWidth -ne 720 -or $observedHeight -ne 1280){throw "Resolution mismatch for $($item.run_id): $observedWidth x $observedHeight"}
-    if($observedFps -ne ("{0}/1" -f $item.expected_timeline.fps)){throw "FPS mismatch for $($item.run_id): $observedFps"}
-    if($observedFrames -ne [int]$item.expected_timeline.total_frames){throw "Frame mismatch for $($item.run_id): $observedFrames vs $($item.expected_timeline.total_frames)"}
-    if([int]$telemetry.initial_seed -ne [int]$item.test_seed){throw "Telemetry seed mismatch for $($item.run_id)"}
-    if([int]$telemetry.total_frames -ne [int]$item.expected_timeline.total_frames){throw "Telemetry timeline mismatch for $($item.run_id)"}
-    if(-not [bool]$telemetry.winning_frame_in_valid_window){throw "Winning frame invalid for $($item.run_id)"}
-    if([string]$manifest.resolution -ne '720x1280' -or [string]$manifest.delivery_profile -ne $profile){throw "Production manifest profile mismatch for $($item.run_id)"}
+    if([int]$sourceStream.width-ne 540-or[int]$sourceStream.height-ne 960){throw "Source resolution mismatch for $($item.run_id): $($sourceStream.width)x$($sourceStream.height)"}
+    if([int]$sourceStream.nb_read_frames-ne[int]$item.expected_timeline.total_frames){throw "Source frame mismatch for $($item.run_id): $($sourceStream.nb_read_frames) vs $($item.expected_timeline.total_frames)"}
+    if([string]$sourceStream.r_frame_rate-ne("{0}/1"-f$item.expected_timeline.fps)){throw "Source FPS mismatch for $($item.run_id): $($sourceStream.r_frame_rate)"}
+    if([int]$stream.width-ne 720-or[int]$stream.height-ne 1280){throw "Delivery resolution mismatch for $($item.run_id): $($stream.width)x$($stream.height)"}
+    if([string]$stream.r_frame_rate-ne("{0}/1"-f$item.expected_timeline.fps)){throw "Delivery FPS mismatch for $($item.run_id): $($stream.r_frame_rate)"}
+    if([string]$stream.pix_fmt -notin @('yuv420p','yuvj420p')){throw "Delivery pixel format is not YUV420-compatible for $($item.run_id): $($stream.pix_fmt)"}
+    if([int]$stream.nb_read_frames-ne[int]$item.expected_timeline.total_frames){throw "Delivery frame mismatch for $($item.run_id): $($stream.nb_read_frames) vs $($item.expected_timeline.total_frames)"}
+    if([int]$telemetry.initial_seed-ne[int]$item.test_seed){throw "Telemetry seed mismatch for $($item.run_id)"}
+    if([int]$telemetry.total_frames-ne[int]$item.expected_timeline.total_frames){throw "Telemetry timeline mismatch for $($item.run_id)"}
+    if(-not[bool]$telemetry.winning_frame_in_valid_window){throw "Winning frame invalid for $($item.run_id)"}
+    if([string]$manifest.source_movie_resolution-ne'540x960'-or[string]$manifest.delivery_resolution-ne'720x1280'){throw "Manifest resolution contract mismatch for $($item.run_id)"}
+    if(-not[bool]$manifest.legacy_total_duration_ignored){throw "Manifest does not declare canonical phase timing for $($item.run_id)"}
 
     $framemd5Path=Join-Path $runDir 'render.framemd5';Invoke-FrameMD5 $mp4.FullName $framemd5Path
     $totalFrames=[int]$telemetry.total_frames;$middle=[int][Math]::Floor(($totalFrames-1)/2);$quarter=[int][Math]::Floor(($totalFrames-1)*0.25);$threeQuarter=[int][Math]::Floor(($totalFrames-1)*0.75);$winning=[int]$telemetry.winning_frame
-    $reviewIndices=@(0,$quarter,$middle,$winning,$threeQuarter,($totalFrames-1))
-    $framesDir=Join-Path $runDir 'frames';Select-ReviewFrames $mp4.FullName ([int[]]$reviewIndices) $framesDir;Create-ContactSheet $framesDir (Join-Path $runDir 'contact_sheet.jpg')
-
-    $record.status='COMPLETE';$record.completed_at_utc=[DateTimeOffset]::UtcNow.ToString('o');$record.video=[pscustomobject]@{mp4=$mp4.FullName;avi=$avi.FullName;width=$observedWidth;height=$observedHeight;fps=$observedFps;frames=$observedFrames;duration=[double]$stream.duration};$record.telemetry=$telemetry;$record.production_manifest=$manifestFile.FullName;$record.framemd5=$framemd5Path;$record.review_frames=$reviewIndices
+    $reviewIndices=@(0,$quarter,$middle,$winning,$threeQuarter,($totalFrames-1));$framesDir=Join-Path $runDir 'frames';Select-ReviewFrames $mp4.FullName ([int[]]$reviewIndices) $framesDir;Create-ContactSheet $framesDir (Join-Path $runDir 'contact_sheet.jpg')
+    $record.status='COMPLETE';$record.completed_at_utc=[DateTimeOffset]::UtcNow.ToString('o');$record.video=[pscustomobject]@{source_avi=$avi.FullName;mp4=$mp4.FullName;source_width=[int]$sourceStream.width;source_height=[int]$sourceStream.height;width=[int]$stream.width;height=[int]$stream.height;fps=[string]$stream.r_frame_rate;frames=[int]$stream.nb_read_frames;duration=[double]$stream.duration};$record.telemetry=$telemetry;$record.production_manifest=$manifestFile.FullName;$record.framemd5=$framemd5Path;$record.review_frames=$reviewIndices
     Write-JsonUtf8 $recordPath $record
-    Write-Host ("[{0}/54] PASS {1} -> winning={2} frames={3}" -f $completed,$item.run_id,$telemetry.winning_frame,$observedFrames) -ForegroundColor Green
+    Write-Host ("[{0}/54] PASS {1} -> winning={2} frames={3}"-f$completed,$item.run_id,$telemetry.winning_frame,$stream.nb_read_frames)-ForegroundColor Green
 }
 
-$runDirs=@(Get-ChildItem -LiteralPath $RunsRoot -Directory | Sort-Object Name)
-if($runDirs.Count -ne 54){throw "C11-C Challenge QA: expected 54 run directories, found $($runDirs.Count)"}
-$items=@();$failures=@()
-foreach($runDir in $runDirs){
-    $record=Get-Content -LiteralPath (Join-Path $runDir 'run_record.json') -Raw -Encoding UTF8 | ConvertFrom-Json
-    if($record.status -ne 'COMPLETE'){$failures += "$($runDir.Name): status=$($record.status)";continue}
-    $items += $record
-}
-if($failures.Count -gt 0){$failures|ForEach-Object{Write-Host " - $_" -ForegroundColor Red};throw 'C11-C Challenge QA: incomplete runs.'}
-
+$runDirs=@(Get-ChildItem -LiteralPath $RunsRoot -Directory|Sort-Object Name)
+if($runDirs.Count-ne 54){throw "C11-C Challenge QA: expected 54 run directories, found $($runDirs.Count)"}
+$items=@();$failures=@();foreach($runDir in $runDirs){$record=Get-Content -LiteralPath (Join-Path $runDir 'run_record.json') -Raw -Encoding UTF8|ConvertFrom-Json;if($record.status-ne'COMPLETE'){$failures+="$($runDir.Name): status=$($record.status)";continue};$items+=$record}
+if($failures.Count-gt 0){$failures|ForEach-Object{Write-Host " - $_"-ForegroundColor Red};throw 'C11-C Challenge QA: incomplete runs.'}
 $ab=@();$determinismPass=$true
-foreach($challenge in (1..9|ForEach-Object{"CHALLENGE_{0:D3}" -f $_})){
-    $runs=@($items|Where-Object{$_.challenge_id -eq $challenge})
-    $a=$runs|Where-Object{$_.seed_label -eq '12345_A'}|Select-Object -First 1
-    $b=$runs|Where-Object{$_.seed_label -eq '12345_B'}|Select-Object -First 1
-    $md5A=Get-Content -LiteralPath ([string]$a.framemd5) -Raw -Encoding UTF8
-    $md5B=Get-Content -LiteralPath ([string]$b.framemd5) -Raw -Encoding UTF8
-    $pass=($md5A -eq $md5B)
-    if(-not $pass){$determinismPass=$false}
-    $ab += [pscustomobject]@{challenge_id=$challenge;pass=$pass;run_a=$a.run_id;run_b=$b.run_id;framemd5_equal=$pass}
-}
-
-$root=[ordered]@{
-    schema='C11-C-CHALLENGE-720-BULK-QA-V1';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.17.4'
-    physical_target='720x1280';delivery_profile=$profile;no_override_cfg_dependency=$true;per_process_resolution=$true;total_executions=54
-    seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count -eq 54);determinism_ab_pass=$determinismPass
-    executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')
-}
+foreach($challenge in (1..9|ForEach-Object{"CHALLENGE_{0:D3}"-f$_})){$runs=@($items|Where-Object{$_.challenge_id-eq$challenge});$a=$runs|Where-Object{$_.seed_label-eq'12345_A'}|Select-Object -First 1;$b=$runs|Where-Object{$_.seed_label-eq'12345_B'}|Select-Object -First 1;$md5A=Get-Content -LiteralPath ([string]$a.framemd5) -Raw -Encoding UTF8;$md5B=Get-Content -LiteralPath ([string]$b.framemd5) -Raw -Encoding UTF8;$pass=($md5A-eq$md5B);if(-not$pass){$determinismPass=$false};$ab+=[pscustomobject]@{challenge_id=$challenge;pass=$pass;run_a=$a.run_id;run_b=$b.run_id;framemd5_equal=$pass}}
+$root=[ordered]@{schema='C11-C-CHALLENGE-720-BULK-QA-V3';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.17.8';source_movie_resolution='540x960';delivery_resolution='720x1280';delivery_profile=$profile;post_capture_scale='ffmpeg_lanczos';override_cfg_dependency=$false;total_executions=54;seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count-eq54);determinism_ab_pass=$determinismPass;executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')}
 Write-JsonUtf8 $RootManifest $root
-if(-not $determinismPass){throw "C11-C Challenge QA: determinism A/B FAILED. Manifest: $RootManifest"}
-Write-Host '[C11-C-CHALLENGE] COMPLETE 54/54 — 720x1280 — determinism A/B PASS' -ForegroundColor Green
+if(-not$determinismPass){throw "C11-C Challenge QA: determinism A/B FAILED. Manifest: $RootManifest"}
+Write-Host '[C11-C-CHALLENGE] COMPLETE 54/54 — native source 540x960 -> delivery 720x1280 — determinism A/B PASS' -ForegroundColor Green
 Write-Host "[C11-C-CHALLENGE] Manifest: $RootManifest"

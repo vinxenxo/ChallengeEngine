@@ -1,25 +1,16 @@
-C11-C 2.17.5 — HISTORICAL CHALLENGE 720 CAPTURE REPAIR
+C11-C 2.17.8 — CHALLENGE VIDEO DELIVERY STANDARD + CAPTURE VALIDATION REPAIR
 
-BASELINE: C11-C 2.16.9 FROZEN + C11-C 2.17.x additive challenge production overlay.
+Apply over the installed 2.17.x Challenge-production state.
 
-ROOT CAUSE FIXED
-The 2.17.4 producer invoked Godot through the PowerShell native call operator. In this Windows/PowerShell 5.1 path, the arguments after `--` were not reaching OS.get_cmdline_user_args(), causing GeneradorMaestro to emit CHALLENGE_INVALID and Movie Maker to record exactly 1 frame.
+Fixes and contract work:
+- Challenge Movie Maker source capture remains native 540x960.
+- FFprobe of the real source AVI is authoritative for width/height/FPS/frame count; log text is telemetry only.
+- Godot stdout/stderr are decoded as UTF-8 to preserve Unicode diagnostics.
+- Windows custom arguments remain single native arguments: --config=<path> and --audio-output=<path>.
+- Delivery is post-capture FFmpeg scaling: 540x960 -> 720x1280, 1080x1920 or 540x960.
+- MASTER_1080 (1080x1920) is the default product delivery profile; REVIEW_720 remains C11-C review evidence.
+- Challenge timing derives only from hook+game+reveal+cta phase durations; stale total_duration is ignored.
+- Detailed current and historical docs are included under docs/current/ and docs/history/.
+- Frozen mechanics, RNG, SimulationResult, winning_frame, close_calls, C11-B geometry, C7 and C9 are untouched.
 
-2.17.5 fixes this by launching godot.exe through System.Diagnostics.ProcessStartInfo with explicit Windows quoting.
-
-PHYSICAL CAPTURE
-The producer now reuses tools/prototypes/c11c_common/C11CMovieCapture.ps1 and its certified temporary override.cfg mechanism to obtain 720x1280, while keeping the frozen logical 540x960 composition unchanged. override.cfg is restored/removed in finally after each sequential run.
-
-FAIL-CLOSED
-The producer verifies:
-- Movie Maker mode enabled
-- 720x1280 capture startup
-- Movie Maker completion
-- no CHALLENGE_INVALID in the log
-- captured AVI width/height = 720x1280
-- captured AVI frame count = expected exact frame count
-
-Do not run the 54-run bulk until the single CHALLENGE_001 / seed 12345 smoke passes.
-
-APPLY
-Expand-Archive -LiteralPath <this ZIP> -DestinationPath . -Force
+Do not run the 54-run Challenge bulk QA until the single CHALLENGE_001 smoke passes.
