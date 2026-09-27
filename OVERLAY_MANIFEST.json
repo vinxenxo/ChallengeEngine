@@ -1,0 +1,38 @@
+{
+  "overlay": "C11C_TEST_HOTFIX_2.18.4",
+  "suite_line": "0.1.2",
+  "status": "incremental repair",
+  "files": [
+    {
+      "path": "docs/current/c11c/C11-C_2.18.4_TEST_CONTRACT_ALIGNMENT.md",
+      "sha256": "6ee228d04f7d60818d7163e13958e928d66dbe607fdac0f9519d62535ecc1a69",
+      "size_bytes": 705
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.2_TEST_HOTFIX_2.18.4.md",
+      "sha256": "52f99194df0174d684c5e3c44023b5cccd84783d1c7fe12d77e0fad9eddd0a12",
+      "size_bytes": 1565
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_TEST_HOTFIX_2.18.4.md",
+      "sha256": "ee3668cfa82f3eac37b4a4b8edcba6820091405214a1ef04c0a7cdc3d8cbade5",
+      "size_bytes": 877
+    },
+    {
+      "path": "profiles/presentation/c11c_visual_duration_policy.json",
+      "sha256": "d15360dffdea49b6f865886709fae732ff0f1878432529288e0fce8eac2c1cfc",
+      "size_bytes": 1456
+    },
+    {
+      "path": "tests/C11CVisualDurationPolicyContractTest.gd",
+      "sha256": "4332137b979a93448208291c62f1a478679d8839670aeb2d38e9658ec2fa0244",
+      "size_bytes": 3244
+    },
+    {
+      "path": "tests/C11CVisualLoopLongformSourceArtifactContractTest.gd",
+      "sha256": "2d87092617d606dfd92e6e60a2510ec0bc5af06c6f2b82cec94ea1344d481445",
+      "size_bytes": 2135
+    }
+  ],
+  "frozen_boundaries_modified": false
+}

@@ -1,6 +1,6 @@
 {
   "schema": "C11-C-VISUAL-DURATION-POLICY-V1",
-  "revision": "2.14.0",
+  "revision": "2.18.4",
   "standard_range_seconds": {
     "min": 20.0,
     "max": 30.0
@@ -24,18 +24,18 @@
     "countdown_seconds": 3.0,
     "end_cta_seconds": 3.0,
     "gameplay_seconds": {
-      "tracking": 24.0,
-      "saccade": 21.0,
-      "pursuit": 24.0,
-      "peripheral_scan": 21.0
+      "tracking": 21.0,
+      "saccade": 17.0,
+      "pursuit": 17.0,
+      "peripheral_scan": 17.0
     },
     "total_presentation_seconds": {
-      "tracking": 30.0,
-      "saccade": 27.0,
-      "pursuit": 30.0,
-      "peripheral_scan": 27.0
+      "tracking": 27.0,
+      "saccade": 23.0,
+      "pursuit": 23.0,
+      "peripheral_scan": 23.0
     },
-    "note": "Visual Drill timing is unchanged in v2.14.0; its existing 3s countdown, gameplay and 3s CTA policy remains under separate art-direction review."
+    "note": "Current C11-C contract: 3s PRE_ROLL + family gameplay + 3s END_CTA. Tracking uses 21s gameplay / 27s total; Saccade, Pursuit and Peripheral Scan use 17s gameplay / 23s total."
   },
   "longform_visual_loops": {
     "target_seconds": 180.0,

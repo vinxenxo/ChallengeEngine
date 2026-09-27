@@ -1,0 +1,8 @@
+{
+  "docs/current/c11c/C11-C_2.18.4_TEST_CONTRACT_ALIGNMENT.md": "6ee228d04f7d60818d7163e13958e928d66dbe607fdac0f9519d62535ecc1a69",
+  "docs/current/suite/C11C_SUITE_0.1.2_TEST_HOTFIX_2.18.4.md": "52f99194df0174d684c5e3c44023b5cccd84783d1c7fe12d77e0fad9eddd0a12",
+  "docs/master-prompts/MASTER_HANDOVER_C11C_TEST_HOTFIX_2.18.4.md": "ee3668cfa82f3eac37b4a4b8edcba6820091405214a1ef04c0a7cdc3d8cbade5",
+  "profiles/presentation/c11c_visual_duration_policy.json": "d15360dffdea49b6f865886709fae732ff0f1878432529288e0fce8eac2c1cfc",
+  "tests/C11CVisualDurationPolicyContractTest.gd": "4332137b979a93448208291c62f1a478679d8839670aeb2d38e9658ec2fa0244",
+  "tests/C11CVisualLoopLongformSourceArtifactContractTest.gd": "2d87092617d606dfd92e6e60a2510ec0bc5af06c6f2b82cec94ea1344d481445"
+}
