@@ -1,9 +1,18 @@
-# C11-C Producer 0.4.0
+# C11-C Producer 0.7.0
 
-Producer mínimo basado en la interfaz de C11-C Producer 0.2.0. Se conserva el formulario original y se añade únicamente un selector superior de tipo de vídeo: CHALLENGES / VISUAL LOOPS / VISUAL DRILLS.
+Two-column light interface preserved from the 0.4.0 UI. This version is adapted to the frozen `ChallengeEngine-C11-C2.16.9 FROZEN.zip` backend.
 
-En esta fase solo VISUAL LOOPS tiene generación conectada. CHALLENGES y VISUAL DRILLS están presentes en el selector para preparar la expansión posterior, pero no ejecutan ningún launcher.
+## Supported orchestration
 
-Fuente única de verdad del backend: `ChallengeEngineV01_STATELESS-C11-C2.9.1.zip`. El Producer usa el `C11CVariationProfile.gd` real del proyecto y verifica su SHA-256.
+- A LA CARTA: Challenges, Visual Loops, Visual Drills
+- Visual Loop: 5 families / 27 grammars and seed-aware parameter planning
+- Visual Drill: 4 families / difficulty tiers / family parameters
+- Challenges: `CHALLENGE_001` … `CHALLENGE_009`
+- Review batches: 27 loops, 20 drills, 5 longforms, or any supported combination
+- Full regression launcher
+- Resume / Reset
+- 7-worker review orchestration
+- Optional GIF and AVI retention
+- Review 720×1280 and additive Meta Reels final delivery profiles
 
-La misma familia + seed reproduce el mismo perfil; seeds nuevas producen variantes nuevas. Los parámetros se dejan en `ALEATORIO (seed)` por defecto.
+Python remains orchestration-only. Mechanics, simulation, RNG and canonical renderers stay in the project backend.

@@ -1,7 +1,7 @@
 {
-  "schema_version": "4.0",
+  "schema_version": "7.0",
   "backend_profile_source": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
-  "backend_profile_version": "2.0.1",
+  "backend_profile_version": "2.16.9",
   "families": {
     "c11c_geometric_waves_v1": {
       "name": "Geometric Waves",
@@ -868,6 +868,10 @@
         [
           "topographic_basin",
           "TOPOGRAPHIC BASIN"
+        ],
+        [
+          "scalar_potential",
+          "SCALAR POTENTIAL"
         ]
       ],
       "params": [
@@ -1032,7 +1036,7 @@
       ]
     }
   },
-  "backend_profile_sha256": "9a900af817b9ae5b924a95490e48eef64759df11c1aad23637e300f4f73c9801",
+  "backend_profile_sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
   "video_types": [
     [
       "challenges",
@@ -1219,5 +1223,171 @@
     "profiles/difficulty/visual_drill_pursuit.json",
     "profiles/difficulty/visual_drill_peripheral_scan.json"
   ],
-  "drill_seed_variation_sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+  "drill_seed_variation_sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567",
+  "backend_truth": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
+  "loop_duration_policy": "20..23s",
+  "review_workers": 7,
+  "challenges": [
+    {
+      "id": "CHALLENGE_001",
+      "mechanic": "key",
+      "default_seed": 193847,
+      "fps": 60,
+      "duration_seconds": 9.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/lock.svg",
+        "object_path": "res://assets/c6/key.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_002",
+      "mechanic": "parking",
+      "default_seed": 987654,
+      "fps": 60,
+      "duration_seconds": 10.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/parking_target.svg",
+        "object_path": "res://assets/c6/car.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_003",
+      "mechanic": "pilot",
+      "default_seed": 314159,
+      "fps": 60,
+      "duration_seconds": 12.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/waypoint.svg",
+        "object_path": "res://assets/c6/pilot.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_004",
+      "mechanic": "parking_v2",
+      "default_seed": 314159,
+      "fps": 60,
+      "duration_seconds": 15.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/parking_target.svg",
+        "object_path": "res://assets/c6/car.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_005",
+      "mechanic": "hit_v1",
+      "default_seed": 998877,
+      "fps": 60,
+      "duration_seconds": 7.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/target.svg",
+        "object_path": "res://assets/c6/projectile.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_006",
+      "mechanic": "catch_v1",
+      "default_seed": 884422,
+      "fps": 60,
+      "duration_seconds": 9.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/target.svg",
+        "object_path": "res://assets/c6/catcher.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_007",
+      "mechanic": "find_v1",
+      "default_seed": 7770001,
+      "fps": 60,
+      "duration_seconds": 10.0,
+      "assets": {
+        "background_path": "res://assets/c6/garage_background.svg",
+        "target_path": "res://assets/c6/target.svg",
+        "object_path": "res://assets/c6/scanner.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_008",
+      "mechanic": "choose_v1",
+      "default_seed": 20260824,
+      "fps": 60,
+      "duration_seconds": 11.0,
+      "assets": {
+        "background_path": "res://assets/c6/choose_background.svg",
+        "target_path": "res://assets/c6/transparent.svg",
+        "object_path": "res://assets/c6/cursor.svg"
+      }
+    },
+    {
+      "id": "CHALLENGE_009",
+      "mechanic": "count_v1",
+      "default_seed": 20260901,
+      "fps": 60,
+      "duration_seconds": 11.0,
+      "assets": {
+        "background_path": "res://assets/c6/count_background.svg",
+        "target_path": "res://assets/c6/transparent.svg",
+        "object_path": "res://assets/c6/cursor.svg"
+      }
+    }
+  ],
+  "batch_operations": [
+    [
+      "A_LA_CARTA",
+      "A LA CARTA"
+    ],
+    [
+      "REVIEW_LOOPS",
+      "REVIEW — 27 VISUAL LOOPS"
+    ],
+    [
+      "REVIEW_DRILLS",
+      "REVIEW — 20 VISUAL DRILLS"
+    ],
+    [
+      "REVIEW_LONGFORMS",
+      "REVIEW — 5 LONGFORMS"
+    ],
+    [
+      "REVIEW_LOOPS_DRILLS",
+      "REVIEW — 27 + 20"
+    ],
+    [
+      "REVIEW_LOOPS_LONGFORMS",
+      "REVIEW — 27 + 5 LONGFORMS"
+    ],
+    [
+      "REVIEW_DRILLS_LONGFORMS",
+      "REVIEW — 20 + 5 LONGFORMS"
+    ],
+    [
+      "REVIEW_ALL",
+      "REVIEW — CORPUS 27 + 20 + 5"
+    ]
+  ],
+  "delivery_profiles": [
+    [
+      "C11C_REVIEW_720",
+      "C11-C REVIEW — 720x1280"
+    ],
+    [
+      "META_REELS_FINAL_V1",
+      "META REELS FINAL — 1080x1920"
+    ]
+  ],
+  "batch_runner": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+  "challenge_production_launcher": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+  "producer_version": "0.7.0",
+  "utility_operations": [
+    [
+      "RUN_REGRESSION",
+      "REGRESIÓN COMPLETA"
+    ]
+  ]
 }

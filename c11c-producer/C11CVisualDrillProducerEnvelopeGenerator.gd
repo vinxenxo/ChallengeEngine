@@ -1,7 +1,7 @@
 extends SceneTree
 
-## C11-C Producer Visual Drills overlay 0.1.1.
-## Producer-side bridge only: delegates all authoring/seed variation to the frozen 2.10.1 backend.
+## C11-C Producer Visual Drills overlay 0.7.0.
+## Producer-side bridge only: delegates all authoring/seed variation to the frozen 2.16.9 backend.
 const Request = preload("res://core/authoring/VisualAuthoringRequest.gd")
 const Context = preload("res://core/authoring/VisualAuthoringAssemblyContext.gd")
 const Generator = preload("res://core/authoring/VisualAuthoringGenerator.gd")
@@ -16,7 +16,7 @@ const AUTHORING_VERSION: String = "1.0"
 const PRESENTATION_PROFILE: String = "social_default_v1"
 const COORDINATE_SPACE: String = "2d"
 const ASSET_FAMILY: String = "fam_001"
-const AUDIO_PROFILE: String = "FAMILY_MUSIC_V3"
+const AUDIO_PROFILE: String = "FAMILY_MUSIC_V4"
 
 func _init() -> void:
     var args: PackedStringArray = OS.get_cmdline_user_args()
