@@ -19,7 +19,12 @@ $cfg.generation.seed=$Seed
 $video=$cfg.video
 $fps=[int]$video.fps
 if($fps -lt 24 -or $fps -gt 60){throw "Challenge FPS outside supported range: $fps"}
-$total=if($null -ne $video.total_duration){[double]$video.total_duration}else{[double]$video.hook_duration+[double]$video.game_duration+[double]$video.reveal_duration+[double]$video.cta_duration}
+$totalDurationProperty=$video.PSObject.Properties['total_duration']
+if($null -ne $totalDurationProperty -and $null -ne $totalDurationProperty.Value){
+    $total=[double]$totalDurationProperty.Value
+}else{
+    $total=[double]$video.hook_duration+[double]$video.game_duration+[double]$video.reveal_duration+[double]$video.cta_duration
+}
 $frames=[int][math]::Round($total*$fps)
 if($DeliveryProfile -eq 'META_REELS_FINAL_V1'){$width=1080;$height=1920;$gop=[int]($fps*3)}else{$width=720;$height=1280;$gop=[int]($fps*3)}
 if([string]::IsNullOrWhiteSpace($OutputRoot)){$OutputRoot=Join-Path $ProjectRoot 'artifacts\production\challenges'}
