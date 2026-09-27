@@ -82,6 +82,7 @@ artifacts/**/mp4/
 artifacts/**/gif/
 artifacts/**/media/
 artifacts/**/videos/
+artifacts/**/qa/
 
 # Explicitly disposable workspace
 artifacts/scratch/
@@ -89,3 +90,4 @@ artifacts/prototypes/
 artifacts/production/
 artifacts/batch/
 
+_qa/
