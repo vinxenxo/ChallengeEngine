@@ -1,0 +1,26 @@
+{
+  "version": "2.17.3",
+  "type": "additive_overlay",
+  "purpose": "Render historical CHALLENGE_001..009 corpus at 720x1280 using per-process Godot --resolution, without override.cfg dependency.",
+  "frozen_boundaries": [
+    "C11-B simulation truth",
+    "RNG ownership",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C7 contracts",
+    "C9 challenge authoring semantics"
+  ],
+  "files": [
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+      "sha256": "5ba604c099980220f2fdcc148879d6c083b6790e5f2484a53ae5710e8ec835f3"
+    },
+    {
+      "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+      "sha256": "c70ab2aeb6a1c0c250e89f8d369a63eba0129930ec019b258d52f96b7293c8bf"
+    }
+  ]
+}

@@ -1,21 +1,6 @@
 {
-  "revision": "2.17.2",
-  "purpose": "fix strict-mode challenge duration lookup; restore clean batch-v4; serialize legacy C11-C Movie Maker override across concurrent workers",
-  "files": [
-    {
-      "path": "prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
-      "sha256": "75f8b664c1a97a9719e2100eedbc981a59976635e16d6bf85365abb5ee2e1d1a",
-      "bytes": 6708
-    },
-    {
-      "path": "prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
-      "sha256": "682f9f36d424b84ce986436799d8de89f75f731778bcec64d790f5d0189fcea1",
-      "bytes": 18846
-    },
-    {
-      "path": "prototypes/c11c_common/C11CMovieCapture.ps1",
-      "sha256": "000ea6c7c8c713f2b4c24598232e87882bdccc4aeb0018ef5ab791294bf80bf3",
-      "bytes": 3408
-    }
-  ]
+  "purpose": "Exact single-file repair for run_c11c_art_direction_batch_v4.ps1",
+  "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+  "sha256": "682f9f36d424b84ce986436799d8de89f75f731778bcec64d790f5d0189fcea1",
+  "bytes": 18846
 }

@@ -1,0 +1,45 @@
+{
+  "version": "2.17.4",
+  "type": "C11-C historical Challenge 720 capture repair overlay",
+  "scope": [
+    "historical Challenge physical capture at 720x1280",
+    "per-process Godot resolution via --resolution",
+    "graphical Movie Maker capture; no --headless",
+    "fail-closed Movie Maker log verification",
+    "54-run historical QA runner retained"
+  ],
+  "frozen_boundaries": [
+    "C11-B simulation truth",
+    "RNG ownership",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C7 contracts",
+    "C9 Challenge authoring semantics"
+  ],
+  "files": [
+    "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+  ],
+  "delivery_profile": "REVIEW_720",
+  "physical_resolution": "720x1280",
+  "historical_seed_cases": [
+    "12345_A",
+    "54321",
+    "314159",
+    "7770001",
+    "998877",
+    "12345_B"
+  ],
+  "total_runs": 54,
+  "revision": "2.17.5",
+  "changes": [
+    "Launches Godot through System.Diagnostics.ProcessStartInfo so OS.get_cmdline_user_args receives --config and --audio-output reliably on Windows PowerShell 5.1.",
+    "Reuses the certified C11CMovieCapture.ps1 temporary viewport override for physical 720x1280 capture.",
+    "Removes dependence on --resolution as the physical viewport mechanism.",
+    "Fail-closed checks for 720x1280 Movie Maker startup, captured AVI resolution, and exact frame count.",
+    "Restores override.cfg in finally before scratch cleanup."
+  ]
+}

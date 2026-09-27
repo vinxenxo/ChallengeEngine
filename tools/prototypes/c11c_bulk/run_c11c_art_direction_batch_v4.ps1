@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$false)][string]$ReviewRoot='',
     [ValidateRange(1,7)][int]$Workers=7,
     [int[]]$Seeds=@(),
@@ -127,7 +127,7 @@ function Save-State {
         last_item=[ordered]@{key=$Key;status=$Status}
     }
     $tmp=$statePath+'.tmp'
-    [System.IO.File]::WriteAllText($tmp,($state|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
+    [System.IO.File]::WriteAllText($tmp,($state|ConvertTo-Json -Depth 10),(New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false))
     Move-Item -LiteralPath $tmp -Destination $statePath -Force
 }
 
@@ -216,7 +216,7 @@ function Start-LoopReviewJob {
 }
 
 Write-Host '[C11-C-ART-DIRECTION] =========================================='
-Write-Host '[C11-C-ART-DIRECTION] REVIEW V7 — selective stages / grouped / resumable / isolated artifacts'
+Write-Host '[C11-C-ART-DIRECTION] REVIEW V7 - selective stages / grouped / resumable / isolated artifacts'
 Write-Host "[C11-C-ART-DIRECTION] Root: $ReviewRoot"
 Write-Host "[C11-C-ART-DIRECTION] Workers: $Workers | seeds: $($Seeds.Count) | GIF=$ExportGif | Resume=$Resume | Loops=$($selection.loops) | Drills=$($selection.drills) | Longforms=$($selection.longforms)"
 Write-Host '[C11-C-ART-DIRECTION] AVI temporary by default; GIF opt-in.'
@@ -241,7 +241,7 @@ if($selection.loops){
         }
     }
     if($Resume){
-        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN — $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
+        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN - $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
     }
     $active=@()
     foreach($task in @($loopTasks)){
@@ -307,7 +307,7 @@ if($selection.longforms){
 if($selection.drills){
     $drillStage=Join-Path $ReviewRoot '_drill_stage'
     if($Resume -and (Test-DrillsComplete -Root $ReviewRoot)){
-        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills — complete.'
+        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills - complete.'
         Save-State -Stage 'DRILLS' -Key 'all' -Status 'SKIP_EXISTING'
     } else {
         $drillParams=@{
@@ -355,5 +355,5 @@ $manifest=[ordered]@{
     loop_families=@($loopFamilies.Keys)
     drill_families=@('tracking','saccade','pursuit','peripheral_scan')
 }
-[System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'),($manifest|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
-Write-Host "[C11-C-ART-DIRECTION] COMPLETE — grouped review root: $ReviewRoot"
+[System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'),($manifest|ConvertTo-Json -Depth 10),(New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false))
+Write-Host "[C11-C-ART-DIRECTION] COMPLETE - grouped review root: $ReviewRoot"

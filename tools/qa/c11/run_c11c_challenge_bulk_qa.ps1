@@ -1,8 +1,8 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$ProjectRoot = "",
     [string]$OutputRoot = "",
-    [switch]$Resume,
+    [switch]$Resume
     )
 
 $ErrorActionPreference = 'Stop'
@@ -43,7 +43,7 @@ foreach ($tool in @('ffmpeg','ffprobe','godot','powershell.exe')) {
 
 function Write-JsonUtf8 {
     param([string]$Path, [object]$Value)
-    [IO.File]::WriteAllText($Path, ($Value | ConvertTo-Json -Depth 100), [Text.UTF8Encoding]::new($false))
+    [IO.File]::WriteAllText($Path, ($Value | ConvertTo-Json -Depth 100), (New-Object System.Text.UTF8Encoding($false)))
 }
 
 function ToFrames {
@@ -165,8 +165,8 @@ foreach($challengeFile in $challengeFiles){
 Write-JsonUtf8 (Join-Path $OutputRoot 'C11C_CHALLENGE_720_BULK_PLAN.json') $plan
 
 Write-Host "[C11-C-CHALLENGE] 9 challenges x 6 seeds = 54 runs" -ForegroundColor Cyan
-Write-Host "[C11-C-CHALLENGE] Physical target: 720x1280 / 9:16 / per-process --resolution" -ForegroundColor Cyan
-Write-Host "[C11-C-CHALLENGE] No override.cfg mutation is used by this pipeline." -ForegroundColor Cyan
+Write-Host "[C11-C-CHALLENGE] Physical target: 720x1280 / 9:16 / certified temporary Movie Maker override" -ForegroundColor Cyan
+Write-Host "[C11-C-CHALLENGE] Challenge capture uses the certified temporary C11-C Movie Maker override and restores override.cfg after every run; runs are sequential." -ForegroundColor Cyan
 
 $completed=0
 foreach($item in $plan){
@@ -269,7 +269,7 @@ foreach($challenge in (1..9|ForEach-Object{"CHALLENGE_{0:D3}" -f $_})){
 }
 
 $root=[ordered]@{
-    schema='C11-C-CHALLENGE-720-BULK-QA-V1';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.17.0'
+    schema='C11-C-CHALLENGE-720-BULK-QA-V1';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.17.4'
     physical_target='720x1280';delivery_profile=$profile;no_override_cfg_dependency=$true;per_process_resolution=$true;total_executions=54
     seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count -eq 54);determinism_ab_pass=$determinismPass
     executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')
