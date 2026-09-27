@@ -1,4 +1,4 @@
-extends SceneTree
+﻿extends SceneTree
 
 ## C11-C 2.13.0 — Request-specific Visual Drill review envelope generator.
 ## Generates review-only envelopes for exactly the seeds requested by the PowerShell
@@ -13,7 +13,7 @@ const OUTPUT_ENV := "C11C_DRILL_REVIEW_ENVELOPE_ROOT"
 const SEEDS_ENV := "C11C_DRILL_REVIEW_SEEDS"
 const FAMILIES_ENV := "C11C_DRILL_REVIEW_FAMILIES"
 const DEFAULT_GAMEPLAY_SECONDS: float = 21.0
-const TRACKING_GAMEPLAY_SECONDS: float = 24.0
+const TRACKING_GAMEPLAY_SECONDS: float = 21.0
 const FPS: int = 30
 const TIER: int = 2
 const RNG_VERSION: String = "2.0"

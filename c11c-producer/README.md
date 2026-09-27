@@ -1,9 +1,35 @@
-# C11-C Producer 0.4.0
+# C11-C Producer 0.8.0
 
-Producer mínimo basado en la interfaz de C11-C Producer 0.2.0. Se conserva el formulario original y se añade únicamente un selector superior de tipo de vídeo: CHALLENGES / VISUAL LOOPS / VISUAL DRILLS.
+Two-column light interface preserved from the approved 0.4.0 UI. The Producer is the single orchestration surface for single content, selective review batches and logical regression.
 
-En esta fase solo VISUAL LOOPS tiene generación conectada. CHALLENGES y VISUAL DRILLS están presentes en el selector para preparar la expansión posterior, pero no ejecutan ningún launcher.
+## Supported single production
 
-Fuente única de verdad del backend: `ChallengeEngineV01_STATELESS-C11-C2.9.1.zip`. El Producer usa el `C11CVariationProfile.gd` real del proyecto y verifica su SHA-256.
+- **Challenges:** `CHALLENGE_001` … `CHALLENGE_009`, using canonical `challenges/*.json` and `tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1`.
+- **Visual Loops:** 5 families / 27 grammars, using the canonical C11-C producer launcher and seed planner.
+- **Visual Drills:** Tracking, Saccade, Pursuit and Peripheral Scan, using the C11-C Producer drill wrapper.
 
-La misma familia + seed reproduce el mismo perfil; seeds nuevas producen variantes nuevas. Los parámetros se dejan en `ALEATORIO (seed)` por defecto.
+## Delivery profiles
+
+The GUI reads `profiles/delivery/c11c_video_delivery_profiles.json` and defaults to `MASTER_1080`. The available profiles are `MASTER_1080`, `REVIEW_720`, `MIN_540`, `META_REELS_FINAL_V1` and `LONGFORM_1080`. Delivery resolution is a production concern; it never changes frozen mechanic truth.
+
+Challenges capture from the historical 540x960 source and scale after capture. Visual Loops and Visual Drills preserve their proven C11-C review capture and apply higher/lower delivery profiles after that capture.
+
+## Queue behavior
+
+A single recipe may contain multiple seeds. Challenge jobs are isolated by Challenge ID and seed output root, so a multi-seed queue never overwrites the previous seed. `RESUME` and `RESET` are mutually exclusive. Failed jobs remain visible as `ERROR` and the queue is left retryable without corrupted in-memory job state.
+
+## Backend safety
+
+The GUI verifies the frozen backend hash, requires all nine canonical Challenge definitions and requires the centralized delivery-profile file before enabling generation. Python does not implement mechanics, RNG, timing truth or renderers.
+
+## Validation
+
+Run:
+
+```powershell
+cd .\c11c-producer
+python .\self_test.py
+python .\preflight.py
+```
+
+The review runner is held to the current Visual Drill contract: Tracking 21s gameplay + 3s PRE_ROLL + 3s END_CTA = 27s / 810 frames; Saccade, Pursuit and Peripheral Scan remain 17s gameplay + 6s presentation = 23s / 690 frames.

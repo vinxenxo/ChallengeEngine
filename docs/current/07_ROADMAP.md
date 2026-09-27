@@ -1,4 +1,4 @@
-# Roadmap — Post C11-C 2.16 Freeze
+# Roadmap — Post C11-C 2.17.9
 
 ## CLOSED / FROZEN
 
@@ -9,29 +9,22 @@
 - C11-A / A.1 qualification
 - C11-B Unified Social Frame
 - C11-C Visual Loops / Visual Drills manufacturing milestone
+- 2.17 delivery hardening for historical Challenges
 
-## Phase 1 — Documentation consolidation
+## CURRENT — Phase 3 Producer consolidation
 
-Complete the current documentation surface and make historical continuity explicit. The 429-document baseline inventory is preserved in `docs/history/DOCUMENTATION_AUDIT_2.16.9.json`.
+- Producer GUI 0.8.0 audited and updated.
+- Central five-profile delivery catalogue integrated.
+- Canonical Challenge catalogue integrated.
+- Multi-seed challenge isolation integrated.
+- Visual Loop and Visual Drill delivery propagation integrated.
+- Tracking Drill timing normalized to the current 21+3+3 contract.
+- Remaining gate: final Windows/PySide6 GUI runtime acceptance.
 
-## Phase 2 — Delivery hardening
+## NEXT — Phase 4 Video Challenger + Asset Recovery
 
-Validate a separate Meta Reels final profile without changing the frozen review master.
+Recover the nine historical Challenge definitions and real assets, catalogue provenance, and reconstruct original challenge intent before implementing new challenge mechanics.
 
-## Phase 3 — Producer consolidation
+## LATER — Phase 5 New challenge work
 
-Finish `c11c-producer` so it can launch single Challenges, Visual Loops and Visual Drills, plus selective review batches and regression/audit operations, while preserving the approved two-column interface.
-
-## Phase 4 — Video Challenger + Asset Recovery
-
-Recover the nine existing challenge definitions, catalogue their assets and reconstruct the original challenge intent before adding new mechanics.
-
-Challenge corpus currently represented by the frozen baseline:
-
-`CHALLENGE_001` … `CHALLENGE_009`
-
-Mechanics: key, parking, pilot, parking_v2, hit_v1, catch_v1, find_v1, choose_v1, count_v1.
-
-## Phase 5 — New challenge work
-
-Only after asset recovery and challenge-intent recovery: implement the next challenger family with deterministic authoring, asset provenance, gameplay contracts, presentation integration and regression gates.
+Only after asset recovery: introduce new deterministic challenge authoring/runtime work with explicit contracts and regression gates.

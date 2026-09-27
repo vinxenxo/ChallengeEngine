@@ -1,9 +1,18 @@
 {
   "app": "C11-C Producer",
-  "version": "0.4.0",
-  "ui_base": "0.2.0",
-  "backend_truth": "ChallengeEngineV01_STATELESS-C11-C2.9.1.zip",
-  "scope": "UI producer; Visual Loops only; Challenges and Visual Drills selectors prepared but not wired",
-  "backend_logic_modified": false,
-  "seed_probe": "typed GDScript direct call to C11CVariationProfile.build()"
+  "version": "0.8.0",
+  "ui_base": "0.4.0-preserved",
+  "backend_truth": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
+  "backend_profile_version": "2.16.9",
+  "backend_profile_sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
+  "batch_runner": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+  "challenge_launcher": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+  "drill_launcher": "c11c-producer/run_visual_drill_production.ps1",
+  "review_workers_max": 7,
+  "interface_preserved": true,
+  "delivery_profiles": "profiles/delivery/c11c_video_delivery_profiles.json",
+  "default_delivery": "MASTER_1080",
+  "review_drill_launcher": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
+  "stabilization_revision": "2.17.9",
+  "producer_acceptance": "STATIC_PASS; WINDOWS_PYSIDE6_RUNTIME_PENDING"
 }

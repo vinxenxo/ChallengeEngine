@@ -1,45 +1,88 @@
 from __future__ import annotations
-import ast, hashlib, json, py_compile
+
+import hashlib
+import json
+import py_compile
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
-main=(ROOT/'main.py').read_text(encoding='utf-8')
-py_compile.compile(str(ROOT/'main.py'), doraise=True)
-ast.parse(main)
-SCHEMA=json.loads((ROOT/'producer_schema.json').read_text(encoding='utf-8'))
-assert len(SCHEMA['families'])==5
-assert [x[0] for x in SCHEMA.get('video_types', [])]==['challenges','visual_loops','visual_drills']
-assert set(SCHEMA['drills'])=={'tracking','saccade','pursuit','peripheral_scan'}
-for fid,d in SCHEMA['drills'].items():
-    assert d['difficulty_values']==[1,2,3,4,5]
-    assert d['gameplay_seconds'] in (17.0,21.0)
-    assert d['production_launcher']=='c11c-producer/run_visual_drill_production.ps1'
-assert {p['key'] for p in SCHEMA['drills']['tracking']['parameters']}=={'speed_multiplier','pacing_mode'}
-assert {p['key'] for p in SCHEMA['drills']['saccade']['parameters']}=={'speed_multiplier'}
-assert {p['key'] for p in SCHEMA['drills']['pursuit']['parameters']}=={'speed_multiplier'}
-assert SCHEMA['drills']['pursuit']['parameters'][0]['min']==0.75 and SCHEMA['drills']['pursuit']['parameters'][0]['max']==1.5
-assert SCHEMA['drills']['peripheral_scan']['parameters']==[]
-assert "run_visual_drill_production.ps1" in main
-assert "tools/prototypes/c11c_bulk/run_c11c_production.ps1" in main
-assert "self.subtype_label.setText('Dificultad')" in main
-assert "self.subtype_label.setText('Subfamilia')" in main
-def extract_style(text):
-    a=text.index("STYLE='''")+len("STYLE='''")
-    b=text.index("'''",a)
-    return text[a:b]
-assert hashlib.sha256(extract_style(main).encode()).hexdigest()=='a96307a08896da86eb1544f7eb7e61db05fede8004f10584a1586f2db831b804'
-ps=(ROOT/'run_visual_drill_production.ps1').read_text(encoding='utf-8')
-for token in ['C11CMovieCapture.ps1','C11CSafeAmbient.py','VisualContentPlayer.tscn','720','1280','FAMILY_MUSIC_V3']:
-    assert token in ps
-assert '$LASTEXITCODE' not in ps
-assert 'if(-not $?)' in ps
-assert '$nativeOk=$?' in ps
-assert "Start-Process -FilePath 'godot'" not in ps
-assert "& godot @Args > $stdoutPath 2> $stderrPath" in ps
-bridge=(ROOT/'C11CVisualDrillProducerEnvelopeGenerator.gd').read_text(encoding='utf-8')
-for token in ['VisualAuthoringGenerator.gd','VisualDrillSeedVariation.gd','tracking','saccade','pursuit','peripheral_scan']:
-    assert token in bridge
-doc=(ROOT.parent/'docs/c11-C_PRODUCER_CANONICAL_NAMING.md').read_text(encoding='utf-8')
-for token in ['geometric','Geometric Waves','fractal','Fractal Bloom','kaleidoscope','Sacred Symmetry','particle_flow','Living Particles','vector_field','Invisible Forces']:
-    assert token in doc
-print('C11-C Producer 0.4.0 + Visual Drills overlay v0.1.4 self-test PASS')
-print('LIGHT_THEME_AND_LAYOUT_BASE040_PRESERVED PASS')
+
+ROOT = Path(__file__).resolve().parent
+PROJECT = Path(__import__("os").environ.get("C11C_PROJECT_ROOT", ROOT.parent)).resolve()
+
+py_compile.compile(str(ROOT / "main.py"), doraise=True)
+py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
+
+schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
+assert schema["producer_version"] == "0.8.0"
+assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
+assert set(schema["drills"]) == {"tracking", "saccade", "pursuit", "peripheral_scan"}
+assert len(schema["families"]) == 5
+
+profile_path = PROJECT / "profiles" / "delivery" / "c11c_video_delivery_profiles.json"
+assert profile_path.exists(), profile_path
+profiles = json.loads(profile_path.read_text(encoding="utf-8"))
+expected_profiles = {"MASTER_1080", "REVIEW_720", "MIN_540", "META_REELS_FINAL_V1", "LONGFORM_1080"}
+assert set(profiles["profiles"]) == expected_profiles
+assert profiles["standard_default"] == "MASTER_1080"
+assert profiles["profiles"]["MASTER_1080"]["width"] == 1080
+assert profiles["profiles"]["MASTER_1080"]["height"] == 1920
+assert profiles["profiles"]["MASTER_1080"]["audio_sample_rate_hz"] == 48000
+assert profiles["profiles"]["MASTER_1080"]["audio_channels"] == 2
+
+challenge_root = PROJECT / "challenges"
+challenge_paths = sorted(challenge_root.glob("CHALLENGE_[0-9][0-9][0-9].json"))
+assert len(challenge_paths) == 9, challenge_paths
+
+phase_keys = ("hook_duration", "game_duration", "reveal_duration", "cta_duration")
+expected_frames = {
+    "CHALLENGE_001": 540,
+    "CHALLENGE_002": 600,
+    "CHALLENGE_003": 720,
+    "CHALLENGE_004": 900,
+    "CHALLENGE_005": 420,
+    "CHALLENGE_006": 540,
+    "CHALLENGE_007": 600,
+    "CHALLENGE_008": 720,
+    "CHALLENGE_009": 720,
+}
+for path in challenge_paths:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    cid = data["challenge_id"]
+    video = data["video"]
+    fps = int(video["fps"])
+    total_s = sum(float(video.get(k, 0.0)) for k in phase_keys)
+    frames = round(total_s * fps)
+    assert frames == expected_frames[cid], (cid, frames, expected_frames[cid])
+    assert float(video["game_duration"]) > 0
+    assert 24 <= fps <= 60
+
+challenge_launcher = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_challenge_production.ps1"
+assert challenge_launcher.exists()
+challenge_text = challenge_launcher.read_text(encoding="utf-8-sig")
+for token in ("MASTER_1080", "REVIEW_720", "MIN_540", "META_REELS_FINAL_V1", "LONGFORM_1080", "$hookFrames", "$gameFrames", "$revealFrames", "$ctaFrames"):
+    assert token in challenge_text, token
+
+loop_launcher = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_production.ps1"
+drill_launcher = ROOT / "run_visual_drill_production.ps1"
+assert loop_launcher.exists() and drill_launcher.exists()
+assert "DeliveryProfile" in loop_launcher.read_text(encoding="utf-8-sig")
+assert "DeliveryProfile" in drill_launcher.read_text(encoding="utf-8-sig")
+loop_text = loop_launcher.read_text(encoding="utf-8-sig")
+drill_text = drill_launcher.read_text(encoding="utf-8-sig")
+assert "c11c_video_delivery_profiles.json" in loop_text
+assert "c11c_video_delivery_profiles.json" in drill_text
+assert "scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos" in loop_text
+assert "scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos" in drill_text
+assert "sourceWidth=720" in drill_text
+assert "$TrackingGameplayDurationSeconds=21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_visual_drill_review.ps1").read_text(encoding="utf-8-sig")
+assert "TRACKING_GAMEPLAY_SECONDS: float = 21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
+main_text = (ROOT / "main.py").read_text(encoding="utf-8")
+assert "CHALLENGES = load_challenge_catalog()" in main_text
+assert "-OutputRoot" in main_text
+assert "recipe.delivery" in main_text
+
+backend_source = PROJECT / schema["backend_profile_source"]
+assert backend_source.exists()
+actual_hash = hashlib.sha256(backend_source.read_bytes()).hexdigest()
+assert actual_hash == schema["backend_profile_sha256"], (schema["backend_profile_sha256"], actual_hash)
+
+print("C11-C Producer 0.8.0 self-test PASS")

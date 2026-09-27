@@ -19,12 +19,47 @@ Total: 27 grammars.
 - Pursuit
 - Peripheral Scan
 
-Each family has deterministic authoring data and an auditable answer structure. Presentation cannot invent answer events.
+Current presentation timing is:
+
+- Tracking: 21 s gameplay + 3 s PRE_ROLL + 3 s END_CTA = 27 s / 810 frames.
+- Saccade/Pursuit/Peripheral Scan: 17 s gameplay + 3 s PRE_ROLL + 3 s END_CTA = 23 s / 690 frames.
+
+Presentation cannot invent answer events.
+
+## Historical Challenges
+
+The canonical Challenge corpus contains `CHALLENGE_001` through `CHALLENGE_009`.
+
+| Challenge | Mechanic | FPS | Canonical phase-sum duration | Frames |
+|---|---|---:|---:|---:|
+| 001 | key | 60 | 9 s | 540 |
+| 002 | parking | 60 | 10 s | 600 |
+| 003 | pilot | 60 | 12 s | 720 |
+| 004 | parking_v2 | 60 | 15 s | 900 |
+| 005 | hit_v1 | 60 | 7 s | 420 |
+| 006 | catch_v1 | 60 | 9 s | 540 |
+| 007 | find_v1 | 60 | 10 s | 600 |
+| 008 | choose_v1 | 60 | 12 s | 720 |
+| 009 | count_v1 | 60 | 12 s | 720 |
+
+Challenge duration is always derived from `hook_duration + game_duration + reveal_duration + cta_duration`. A legacy `video.total_duration` field is not authoritative for production timing.
+
+## Delivery profiles
+
+The single delivery catalogue is `profiles/delivery/c11c_video_delivery_profiles.json`.
+
+- `MASTER_1080`: 1080×1920, standard default.
+- `REVIEW_720`: 720×1280, historical C11-C review profile.
+- `MIN_540`: 540×960.
+- `META_REELS_FINAL_V1`: 1080×1920.
+- `LONGFORM_1080`: 1080×1920.
+
+Delivery scaling is post-capture. It cannot change simulation or gameplay coordinates.
 
 ## Seeds
 
-Seed choice is part of reproducibility. Production and review manifests must record the exact seed. Spread/random seed generation is allowed for new reviews; fixtures and historical evidence remain fixed.
+Seed choice is part of reproducibility. Production and review manifests record the exact seed. Seed variation must remain separate from frozen runtime RNG ownership.
 
 ## Contract reopening
 
-A gameplay-semantic change requires a new checkpoint, dedicated authoring/runtime contract, focused tests and full regression evidence. Art and production changes remain additive unless the contract itself is explicitly reopened.
+A gameplay-semantic change requires a new checkpoint, dedicated authoring/runtime contract, focused tests and full regression evidence. Art, delivery and producer orchestration changes remain additive unless an existing contract is explicitly reopened.
