@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+KERNEL: STACK FANTASMA // OBJETIVO: DINAMICA DE FLUIDOS // PARTICLES 168 | COLLISION 0.96
+
+KERNEL: STACK FANTASMA // OBJETIVO: DINAMICA DE FLUIDOS // PARTICLES 168 | COLLISION 0.96
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ORGANIC PULSE
+- Paleta: algae_green_aqua
+- Seed: 1065574018
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #ORGANICPULSE
+
+KERNEL: STACK FANTASMA // OBJETIVO: DINAMICA DE FLUIDOS // PARTICLES 168 | COLLISION 0.96
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ORGANIC PULSE
+- Paleta: algae_green_aqua
+- Seed: 1065574018
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+LIVING PARTICLES - ORGANIC PULSE
+
+DESCRIPTION:
+KERNEL: STACK FANTASMA // OBJETIVO: DINAMICA DE FLUIDOS // PARTICLES 168 | COLLISION 0.96
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ORGANIC PULSE
+- Paleta: algae_green_aqua
+- Seed: 1065574018
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: living_particles
+GRAMMAR: ORGANIC PULSE
+PALETTE: algae_green_aqua
+SEED: 1065574018
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+KERNEL: STACK FANTASMA // OBJETIVO: DINAMICA DE FLUIDOS // PARTICLES 168 | COLLISION 0.96
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #ORGANICPULSE
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 1065574018 -Grammar organic_pulse -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\04_Living_Particles -OutputTag organic_pulse
+
+CANONICAL MANIFEST:
+LivingParticles_v1_seed_1065574018_organic_pulse_manifest.json

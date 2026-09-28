@@ -1,4 +1,4 @@
-﻿param(
+param(
     [Parameter(Mandatory=$false)]
     [int[]]$Seeds = @(12345,54321,314159,7770001,998877),
     [switch]$ResetReviewAssets,

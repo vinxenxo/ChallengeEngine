@@ -1,58 +1,11 @@
-# C11-C Bulk / Review / Production Toolchain — v2.1.4
+# C11-C Bulk Review Tooling — 2.19.4
 
-## Canonical commands
+## Canonical Art Direction runner
 
-Preflight:
-```powershell
-.\tools\prototypes\c11c_bulk\validate_c11c_preflight.ps1
-```
+`run_c11c_art_direction_batch_v4.ps1` is the active 27-loop / 20-drill / 5-longform review orchestrator.
 
-New art-direction review corpus (5 random seeds × 5 families = 25 renders):
-```powershell
-.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -ResetReviewAssets
-```
+`-Workers 7` is a real concurrency contract. Loop captures are assigned to separate temporary Godot project roots, each with private Movie Maker `override.cfg` and `.godot` state. A project-global mutex is deliberately not used.
 
-Fixed five seeds:
-```powershell
-.\tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1 -Seeds 1234567,2345678,3456789,4567890,5678901 -ResetReviewAssets
-```
+The worker pool excludes generated `artifacts/`, `.godot/`, `.git/`, caches and retired `c11c-studio/` from its project copies. Each worker reports its slot and root, and the batch records maximum observed worker concurrency.
 
-Single product:
-```powershell
-.\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_invisible_forces_v1 -Seed 271828
-```
-
-Production batch — 5 random seeds × 5 families = 25 final products:
-```powershell
-.\tools\prototypes\c11c_bulk\run_c11c_production_25.ps1
-```
-
-Production batch with explicit five seeds:
-```powershell
-.\tools\prototypes\c11c_bulk\run_c11c_production_25.ps1 -Seeds 1234567,2345678,3456789,4567890,5678901
-```
-
-## Delivery contract
-
-- 720x1280, 9:16
-- 30 FPS
-- 20..23 s for Visual Loops; round(duration*30) frames
-- Visual Loop review baseline: 20..23 s; Visual Drill timing remains separate
-- default audio ON
-- `-NoSound` / `-Silent` disables audio
-- one canonical final MP4 per run
-- social sidecar required
-
-## Godot capture
-
-Each family launcher passes the movie resolution to Godot as **one argument**:
-
-`--resolution 720x1280`
-
-The frozen `project.godot` is not modified. A temporary `override.cfg` adjusts effective viewport/window settings and is restored/removed after capture.
-
-## Separation
-
-Review generation does not clean prototype artifacts. `-ResetReviewAssets` affects only `artifacts\prototypes\c11c_review_assets`.
-
-Production is stored under `artifacts\production\audiovisual` and is not targeted by review cleanup/reset.
+Historical runner variants remain evidence. New operational changes should target the canonical `run_c11c_art_direction_batch_v4.ps1` and related Suite surfaces.

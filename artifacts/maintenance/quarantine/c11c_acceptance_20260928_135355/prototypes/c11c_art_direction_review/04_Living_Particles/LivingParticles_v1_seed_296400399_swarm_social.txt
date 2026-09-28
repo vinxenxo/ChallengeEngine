@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+MODULANDO SWARM SINTETICO... [SINCRONIA] // PARTICLES 133 | COLLISION 0.72
+
+MODULANDO SWARM SINTETICO... [SINCRONIA] // PARTICLES 133 | COLLISION 0.72
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SWARM
+- Paleta: turquoise_aqua
+- Seed: 296400399
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #SWARM
+
+MODULANDO SWARM SINTETICO... [SINCRONIA] // PARTICLES 133 | COLLISION 0.72
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SWARM
+- Paleta: turquoise_aqua
+- Seed: 296400399
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+LIVING PARTICLES - SWARM
+
+DESCRIPTION:
+MODULANDO SWARM SINTETICO... [SINCRONIA] // PARTICLES 133 | COLLISION 0.72
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SWARM
+- Paleta: turquoise_aqua
+- Seed: 296400399
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: living_particles
+GRAMMAR: SWARM
+PALETTE: turquoise_aqua
+SEED: 296400399
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+MODULANDO SWARM SINTETICO... [SINCRONIA] // PARTICLES 133 | COLLISION 0.72
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #SWARM
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 296400399 -Grammar swarm -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\04_Living_Particles -OutputTag swarm
+
+CANONICAL MANIFEST:
+LivingParticles_v1_seed_296400399_swarm_manifest.json

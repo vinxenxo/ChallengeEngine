@@ -1,0 +1,14 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+
+=== GENERADOR MAESTRO INICIADO ===
+[VALIDATION] relative_winning_frame=315 absolute_winning_frame=495 valid_window=180-600 close_calls=1 valid=true
+[VALIDATION] relative_winning_frame=315 absolute_winning_frame=495 valid_window=180-600 close_calls=1 valid=true
+[C6-F4.3] Effective Runtime + independent legacy oracle: PASS
+[C6E_PROFILE] id=social_default_v1 source=(540.0, 960.0) master=(1080.0, 1920.0) safe=[P: (24.0, 24.0), S: (492.0, 912.0)]
+[C6_UI] root=UnifiedSocialFrame:<Control#53133444564> size=(540.0, 960.0) position=(0.0, 0.0)
+[C6_REFERENCE_FRAME] index=315 mode=WINNING_FRAME reason=Certified winning_frame
+[C6_SWEEP_AUDIT] id=CHALLENGE_007 mechanic=find_v1 mode=WINNING_FRAME frame_idx=315 reason=Certified winning_frame
+[TELEMETRY_JSON]{"attempts":1,"close_calls":1,"cta_frames":0,"final_seed":314159,"game_frames":420,"godot_version":"4.7.1-stable (official)","hook_frames":180,"initial_seed":314159,"minimum_distance":86.0438537597656,"reveal_frames":0,"rng_version":"2.0","score":0.0,"seed_used":314159,"total_frames":600,"validate_only":true,"winning_frame":495,"winning_frame_game":315,"winning_frame_in_valid_window":true,"winning_time":8.25,"winning_time_game":5.25}
+[AUDIO_EXPORT_JSON] {"audio_enabled":false}
+[C6_TARGET] space=0 presentation_pos=(378.5, 480.0)
+[C11B_VISIBILITY_JSON]{"audit_space":"Body_presentation_math","body_rect":"[P: (0.0, 144.0), S: (540.0, 672.0)]","challenge_id":"CHALLENGE_007","entities":[{"has_geometry":true,"id":"object","screen_rect":"[P: (149.8944, 408.5168), S: (100.0, 100.0)]","visible":true},{"has_geometry":true,"id":"target","screen_rect":"[P: (120.4608, 402.1453), S: (100.0, 100.0)]","visible":true}],"errors":[],"framing_policy":"STATIC_CANVAS","object_actual_position":"(199.8944, 458.5168)","object_expected_position":"(199.8944, 458.5168)","object_logical_position":"(339.6984, 898.6193)","pass":true,"presentation_frame_offset":"(0.0, 0.0)","winning_frame":495,"winning_frame_game":315}

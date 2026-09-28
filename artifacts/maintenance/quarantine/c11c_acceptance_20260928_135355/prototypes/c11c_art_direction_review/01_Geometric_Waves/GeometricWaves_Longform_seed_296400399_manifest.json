@@ -1,0 +1,133 @@
+{
+    "schema":  "C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2",
+    "revision":  "2.16.0",
+    "status":  "FINAL_LONGFORM_PRODUCT",
+    "family":  {
+                   "technical_id":  "geometric",
+                   "artistic_name":  "Geometric Waves",
+                   "production_id":  "c11c_geometric_waves_v1"
+               },
+    "base_seed":  296400399,
+    "duration_seconds":  180,
+    "fps":  30,
+    "frames":  5400,
+    "resolution":  "720x1280",
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "composition":  "per-segment audio acrossfade",
+                  "continuous_across_boundaries":  true
+              },
+    "composition_model":  "dissolve_continuity_v3",
+    "transition":  "video_xfade_dissolve;audio_acrossfade;never_through_black",
+    "raw_segment_seconds":  184,
+    "transition_duration_seconds":  0.5714285714285714,
+    "segment_overlap_count":  7,
+    "final_fade_seconds":  1,
+    "final_fade_color":  "black",
+    "transition_through_black":  false,
+    "loop_safe_segments":  true,
+    "overall_longform_loop":  false,
+    "composition":  "canonical production segments + FFmpeg xfade/acrossfade; no new renderer",
+    "segments":  [
+                     {
+                         "slot":  1,
+                         "family":  "geometric",
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "Harmonic Membrane",
+                         "seed":  182063010,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_182063010\\GeometricWaves_v1_seed_182063010.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_182063010\\GeometricWaves_v1_seed_182063010_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_182063010\\GeometricWaves_v1_seed_182063010_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  2,
+                         "family":  "geometric",
+                         "grammar_id":  "lattice_wave",
+                         "grammar_name":  "Lattice Wave",
+                         "seed":  429720239,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_429720239\\GeometricWaves_v1_seed_429720239.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_429720239\\GeometricWaves_v1_seed_429720239_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_429720239\\GeometricWaves_v1_seed_429720239_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  3,
+                         "family":  "geometric",
+                         "grammar_id":  "parametric_ribbon",
+                         "grammar_name":  "Parametric Ribbon",
+                         "seed":  742455542,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_742455542\\GeometricWaves_v1_seed_742455542.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_742455542\\GeometricWaves_v1_seed_742455542_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_742455542\\GeometricWaves_v1_seed_742455542_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  4,
+                         "family":  "geometric",
+                         "grammar_id":  "interference_plane",
+                         "grammar_name":  "Interference Plane",
+                         "seed":  953657123,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_953657123\\GeometricWaves_v1_seed_953657123.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_953657123\\GeometricWaves_v1_seed_953657123_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_953657123\\GeometricWaves_v1_seed_953657123_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  5,
+                         "family":  "geometric",
+                         "grammar_id":  "orbital_wave",
+                         "grammar_name":  "Orbital Wave",
+                         "seed":  1261383422,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1261383422\\GeometricWaves_v1_seed_1261383422.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1261383422\\GeometricWaves_v1_seed_1261383422_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1261383422\\GeometricWaves_v1_seed_1261383422_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  6,
+                         "family":  "geometric",
+                         "grammar_id":  "harmonic_membrane",
+                         "grammar_name":  "Harmonic Membrane",
+                         "seed":  1437406788,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1437406788\\GeometricWaves_v1_seed_1437406788.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1437406788\\GeometricWaves_v1_seed_1437406788_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1437406788\\GeometricWaves_v1_seed_1437406788_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  7,
+                         "family":  "geometric",
+                         "grammar_id":  "lattice_wave",
+                         "grammar_name":  "Lattice Wave",
+                         "seed":  1656338224,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1656338224\\GeometricWaves_v1_seed_1656338224.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1656338224\\GeometricWaves_v1_seed_1656338224_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1656338224\\GeometricWaves_v1_seed_1656338224_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  8,
+                         "family":  "geometric",
+                         "grammar_id":  "parametric_ribbon",
+                         "grammar_name":  "Parametric Ribbon",
+                         "seed":  1969592765,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1969592765\\GeometricWaves_v1_seed_1969592765.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1969592765\\GeometricWaves_v1_seed_1969592765_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1969592765\\GeometricWaves_v1_seed_1969592765_music.wav",
+                         "loop_safe":  true
+                     }
+                 ],
+    "output_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_geometric_waves_v1\\GeometricWaves_Longform_seed_296400399\\GeometricWaves_Longform_seed_296400399.mp4",
+    "social":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_geometric_waves_v1\\GeometricWaves_Longform_seed_296400399\\GeometricWaves_Longform_seed_296400399_social.txt"
+}

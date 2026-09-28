@@ -102,6 +102,9 @@ assert ".content.hook" not in drill_text
 assert "revision='2.19.1'" in drill_text and "revision='2.18.0'" in loop_text
 assert "$TrackingGameplayDurationSeconds=21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_visual_drill_review.ps1").read_text(encoding="utf-8-sig")
 assert "TRACKING_GAMEPLAY_SECONDS: float = 21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
+assert "New-C11CReviewWorkerPool" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")
+assert "WorkerRoot" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")
+assert "Mutex" not in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")
 main_text = (ROOT / "main.py").read_text(encoding="utf-8")
 assert "CHALLENGES = load_challenge_catalog()" in main_text
 assert "-OutputRoot" in main_text

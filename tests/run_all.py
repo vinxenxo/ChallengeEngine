@@ -78,6 +78,7 @@ KNOWN_SUITES = {
     "C11CVisualLoopLongformContractTest.gd": "[C11C_VISUAL_LOOP_LONGFORM_CONTRACT_SUITE] PASS",
     "C11CVisualLoopLongformSourceArtifactContractTest.gd": "[C11C_LONGFORM_SOURCE_ARTIFACT_CONTRACT_SUITE] PASS",
     "C11CProductionReviewCopySafetyTest.gd": "[C11C_PRODUCTION_REVIEW_COPY_SAFETY_SUITE] PASS",
+    "C11CParallelReviewWorkerIsolationContractTest.gd": "[C11C_PARALLEL_REVIEW_WORKER_ISOLATION_CONTRACT_SUITE] PASS",
     "C11CArtDirectionReviewResumeContractTest.gd": "[C11C_ART_DIRECTION_REVIEW_RESUME_CONTRACT_SUITE] PASS",
     "C11CArtDirectionProductionHygieneContractTest.gd": "[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS",
     "C11CVisualDrillMovieCaptureContractTest.gd": "[C11C_VISUAL_DRILL_MOVIE_CAPTURE_CONTRACT_SUITE] PASS",

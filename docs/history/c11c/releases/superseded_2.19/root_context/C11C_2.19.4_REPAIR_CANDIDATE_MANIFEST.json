@@ -1,0 +1,408 @@
+{
+  "candidate": "C11-C 2.19.4",
+  "status": "REPAIR_CANDIDATE_NOT_FROZEN",
+  "archive_role": "repository-root overlay; paths are relative to repository root",
+  "previous_freeze_claim": "2.19.2",
+  "previous_freeze_status": "INVALIDATED_FOR_FINAL_FREEZE",
+  "active_suite": "c11c-suite",
+  "retired_suite": "c11c-studio",
+  "worker_contract": {
+    "requested_workers": 7,
+    "isolation": "temporary_project_root_per_worker",
+    "global_mutex": false,
+    "required_runtime_observation": ">1 worker concurrently active in multi-item loop stage"
+  },
+  "runtime_note": "Windows PowerShell/Godot execution is not available in the build container; workstation runtime proof remains required.",
+  "changed_files": [
+    {
+      "path": ".continue/rules/CONTINUE.md",
+      "sha256": "843eabd7a9173e7f0ad82c9a22e5d23d3a77b3aa3009b21080ecac44e98fef49",
+      "bytes": 2406
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c43edaf8fbcc5db4994fc4dd1a13810368c719cdc7dbd243e45a8606d1c6cbc5",
+      "bytes": 3771
+    },
+    {
+      "path": "C11C_2.19.4_CONTEXT_INDEX.md",
+      "sha256": "7d1997e51b527d7eea44cb668908de798acc7c840a5cbd48846ff38da600367d",
+      "bytes": 2280
+    },
+    {
+      "path": "C11C_2.19.4_CONTEXT_PACK_README.md",
+      "sha256": "8845cbce9c5d4942694501b18a665ddebce4daa402a9a6dc34bc1799e06fcc5b",
+      "bytes": 659
+    },
+    {
+      "path": "C11C_2.19.4_STATIC_VALIDATION_REPORT.md",
+      "sha256": "2fa2ddf8f5b0f0127ad11377f333556672d77d25f909c35ce5bf3ebdca6af936",
+      "bytes": 1366
+    },
+    {
+      "path": "CHANGELOG_C11-C_2.19.4.md",
+      "sha256": "b97d75c306c7b713776ffd9d4cf50b924c4d56c90513a075b4ae62c408123cc0",
+      "bytes": 2009
+    },
+    {
+      "path": "FULL_ACCEPTANCE_C11C_2.19.4.ps1",
+      "sha256": "7d012206e3fa5b36a357dadd3a1c926a9eabcec75b3905d613f2596497fe6cf6",
+      "bytes": 2944
+    },
+    {
+      "path": "NEXT-PROMT.TXT",
+      "sha256": "16f405fb2ceb6636ff3bb691fb2675e6035e67bab7aa2f5d64c6f7eb1243ec00",
+      "bytes": 601
+    },
+    {
+      "path": "NEXT_PROMPT_C11C_2.19.4.txt",
+      "sha256": "b5b2bd186691d12b76c8c10aabaedf9a503251f126bf3981f590d165f945d90a",
+      "bytes": 1226
+    },
+    {
+      "path": "README.md",
+      "sha256": "6323f2794e0a6fc9df0fc21ae60d1ab703d18b4ebf2fc6818d01adfeb30e1b6e",
+      "bytes": 2021
+    },
+    {
+      "path": "README_C11C_2.19.4_TEST_REPAIR_CANDIDATE.md",
+      "sha256": "0120e98f0ce7754fd4a5671f24cc6857f331c892f79f24c75f7caafbe1d90156",
+      "bytes": 952
+    },
+    {
+      "path": "c11c-suite/README.md",
+      "sha256": "0f42824ce653ebab8d46d9939135cd4e9441798bc6a9a98ea6b4fff110b6c285",
+      "bytes": 1143
+    },
+    {
+      "path": "c11c-suite/c11c-maintenance/main.py",
+      "sha256": "dfc97d40ce36f9b395d1e23b38bb901d6e8998bed52dd51591b9500426795ff0",
+      "bytes": 4682
+    },
+    {
+      "path": "c11c-suite/c11c-producer/README.md",
+      "sha256": "0209f01961441820822bcade505abcc1a29294d61dcf9367c15152494f831061",
+      "bytes": 1332
+    },
+    {
+      "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+      "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808",
+      "bytes": 17066
+    },
+    {
+      "path": "c11c-suite/c11c-producer/self_test.py",
+      "sha256": "b837a432c848e7c6a60ffd5dd3f2ce8408214ff2af86a3548d5681db9a7f4504",
+      "bytes": 6550
+    },
+    {
+      "path": "c11c-suite/c11c-test/main.py",
+      "sha256": "cb654cba219982bc941cb14268e83bc4e781c367eae67f0900e91441fee2070d",
+      "bytes": 9303
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_suite.bat",
+      "sha256": "6739434ee82432ecc071c34cc6f2adecc4e4cff82390adbdc6e7fb652e3e95bd",
+      "bytes": 596
+    },
+    {
+      "path": "c11c-suite/main.py",
+      "sha256": "033fe805901784e522f28a5c4c1cfa3a0f48d922fa0c8f4c17c8e65c9fc8507c",
+      "bytes": 2228
+    },
+    {
+      "path": "c11c-suite/self_test.py",
+      "sha256": "00dc621c7216573cb2be357d44f6047437558ed1802e16a49bd258aba03153d9",
+      "bytes": 4761
+    },
+    {
+      "path": "core/presentation/rendering/VisualContentPlayer.gd",
+      "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+      "bytes": 13876
+    },
+    {
+      "path": "docs/current/00_PROJECT_OVERVIEW.md",
+      "sha256": "13477c5c01e5ee5f46b7f33f9f0b19db7323d049d2d00c37587bb4a62da1c742",
+      "bytes": 1550
+    },
+    {
+      "path": "docs/current/04_REPOSITORY_STRUCTURE.md",
+      "sha256": "db50a29d61920beb9966265839617f75f36b31059655f0458082e5231732d20c",
+      "bytes": 1721
+    },
+    {
+      "path": "docs/current/05_TESTING_AND_REGRESSION.md",
+      "sha256": "2883268cb9ebd4241039344fb36001ebb7ae3daef0fc0b5f5ea1397900606c59",
+      "bytes": 1396
+    },
+    {
+      "path": "docs/current/06_PRODUCTION_AND_DISTRIBUTION.md",
+      "sha256": "adb204a1bb1310fa0ab8193d83a9c9e26f61abdcc6551bb39f104dc0b794520f",
+      "bytes": 1697
+    },
+    {
+      "path": "docs/current/07_ROADMAP.md",
+      "sha256": "64f6d7f1bcc5a10752fedec3105c2781c11b8648db7cb0aa4f78494078e66be1",
+      "bytes": 2398
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_CHANGELOG.md",
+      "sha256": "d145ea96e1c5c198d43f0262bcb994b3a82e653530e72041caa8e51228ea555a",
+      "bytes": 549
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_ACCEPTANCE.md",
+      "sha256": "6c407b86d05d843ffde2f2670024c7ec9cfc4f123246e5082471bfc3ecba7f09",
+      "bytes": 565
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_MANIFEST.json",
+      "sha256": "96dc2da47de4acbf8fe1c96c344820076027a13c008b9af67838942455adb849",
+      "bytes": 398
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FROZEN_CURRENT_STATE.md",
+      "sha256": "84faf6c5050a78b128502e9614853272c631c063f60803d0443cfa50de17b105",
+      "bytes": 571
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "sha256": "1e350d0a7d05afc9c66a3743db1fde62518cd4ef7599e2c12584b9a8df2090d8",
+      "bytes": 593
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_ROOT_CLEANUP_COMMANDS.md",
+      "sha256": "6d3c5a4bfdc7623d585693db584d67030f5c9977ef730828e5dda5559eb9c17e",
+      "bytes": 573
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.4_ACCEPTANCE_GATE.md",
+      "sha256": "d573e659b1fc2e4251f791aac9917670b768b1f7737459f08736a15d40ad11d1",
+      "bytes": 2557
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.4_CONSOLIDATED_STATE.md",
+      "sha256": "fed44c4f8f4e45afe6292f25734a669414f75287b58924df2e478b16c5e4dc1c",
+      "bytes": 5959
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.4_DOCUMENTATION_INDEX.md",
+      "sha256": "59c8e2a713dd3325d44c223e24e8e461e1fa9dca0a2421dbd86d6fbb07bbdf41",
+      "bytes": 2887
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.4_REPAIR_MANIFEST.json",
+      "sha256": "1b25757b3da22ad5272e1b5bd99c2b9a63d224dadf185a5a0b5ecd58035e9b72",
+      "bytes": 1516
+    },
+    {
+      "path": "docs/current/c11c/README.md",
+      "sha256": "0f93934f0beb8ba65a1ba47fbfccddd67b5533668df45398018bf4e2dd233e5a",
+      "bytes": 486
+    },
+    {
+      "path": "docs/current/d/C11-D_BRANCH_START_V1.0.md",
+      "sha256": "fa35e331446cfba73d1acda0c5b183622874a58699f448f7ea2c0f9f433d6061",
+      "bytes": 1069
+    },
+    {
+      "path": "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+      "sha256": "23c5841a9bec3bdf5bf4e79b34dc79b44b571eb2a648f8682b4064de0c5c643c",
+      "bytes": 3428
+    },
+    {
+      "path": "docs/current/d/D0_CHALLENGE_RECOVERY_DOSSIER_SCHEMA.md",
+      "sha256": "24bc7d62d866e2f2692c58a52eba540d4b1c81f604e747257b51e5d48e0522e1",
+      "bytes": 1305
+    },
+    {
+      "path": "docs/current/d/D0_HISTORICAL_ROADMAP_SYNTHESIS.md",
+      "sha256": "9c0177defe660b31ce96c088385b6b47b4525e9ed43fa40332bd43835fcea56f",
+      "bytes": 1307
+    },
+    {
+      "path": "docs/current/d/D0_MIGRATION_MAP.md",
+      "sha256": "7cddec062552bd6c76e73d654063af60f6b45055d2effa13dd6553b2fbf99947",
+      "bytes": 1351
+    },
+    {
+      "path": "docs/current/d/D0_REPOSITORY_BASELINE_INVENTORY.md",
+      "sha256": "5e1f81261d4ad1ede6f0fe110b74bbe8f409a3e72f3d8a1531ad903a13b1a123",
+      "bytes": 1368
+    },
+    {
+      "path": "docs/current/d/D0_START_CHECKLIST.md",
+      "sha256": "8d5c4e91969d579164e3cf6273e79a421c58e5b43021febddd82665a2875f57a",
+      "bytes": 1226
+    },
+    {
+      "path": "docs/current/d/README.md",
+      "sha256": "7374d2e95740992b161a2b38e01ae000969b85373f41b66ce75698b7fe8e9a48",
+      "bytes": 496
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CONSOLE_TEST_COMMANDS.md",
+      "sha256": "c4a4e03e39884e68a59f33f0530bcaf7b5a1b557f0b6b8868ce391fe18008213",
+      "bytes": 855
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "sha256": "66238c7995001f6d29ce423ce602709f0a4477f0e007809331193768d9708838",
+      "bytes": 1617
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.3_RULES.md",
+      "sha256": "68488f7ddae15fa97cefb98a60f05c4298e0f62ba21abe3ac25f7c7db07978f2",
+      "bytes": 204
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.4_RULES.md",
+      "sha256": "bb9cdf904a0058e6557e2636f4530511e91351526b0f2bb4dc14f77e5fd0ca1c",
+      "bytes": 1419
+    },
+    {
+      "path": "docs/history/c11c/README.md",
+      "sha256": "1c93971a463770002e0cf3446f3d2fe664564c939da439330956f16392aaf0f5",
+      "bytes": 1331
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+      "sha256": "d300b3c439d65cf1bfe0738b73b81c179df88a9bbae1e635a3dbbbab19a942fd",
+      "bytes": 2003
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_CHANGELOG.md",
+      "sha256": "9a9375cb2b029a7cd5e80e7d3545c053afc0673e9f1ed4c91744d3a40908af1b",
+      "bytes": 1152
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_FREEZE_ACCEPTANCE.md",
+      "sha256": "6d2f3b53b9ef69b37959e06a379b5197d796c203837820905438974fd78151e1",
+      "bytes": 2281
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_FREEZE_MANIFEST.json",
+      "sha256": "38665516a3f606cecff33b086375017a22ddc438576b5a86f4a3dade65e36e26",
+      "bytes": 563666
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_FROZEN_CURRENT_STATE.md",
+      "sha256": "38d061d038e1e782831fe57c6a03b2dca52aa2ff39371ff9605dfe94e3a91878",
+      "bytes": 5209
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "sha256": "bc42fccc4d1e5be1ca5297e567ca85a3a987c7a7753bc3a7bb75a93de8f4fac2",
+      "bytes": 1995
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_ROOT_CLEANUP_COMMANDS.md",
+      "sha256": "0d905c91e66e4bf590c61307a8c8c64e00c541c1916dae5ab19a6ad1cb6ff78c",
+      "bytes": 1042
+    },
+    {
+      "path": "docs/history/c11c/releases/superseded_2.19/C11C_SUITE_0.1.3_RULES.md",
+      "sha256": "01a1f3973d677116bc2994ecfa733d407e6fc0da92be43ecc9a86a937e5dc541",
+      "bytes": 943
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.19.4_CONSOLIDATED.md",
+      "sha256": "16f9ebb9ad8c9cafd2fd36d673c390d1ca5303f7225d7d210fc75fa488bdb99e",
+      "bytes": 5181
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+      "sha256": "eef66a1361b52403c60dd1def4f0a424bc4afed1f4d1b1b1bd49821e488ff0b6",
+      "bytes": 751
+    },
+    {
+      "path": "docs/master-prompts/NEXT_PROMPT_C11D_V1.0_STATELESS.md",
+      "sha256": "242e4c25cfc17722c230ee776c8520cf2253e4bc29490dbdda4b77aead61be7e",
+      "bytes": 418
+    },
+    {
+      "path": "docs/master-prompts/NEXT_PROMPT_C11D_V1.0_STATELESS.txt",
+      "sha256": "5b229dee4319f4c17225f4c79b7971730d4e7dce1140f51a1a2748e6cd600662",
+      "bytes": 314
+    },
+    {
+      "path": "docs/master-prompts/README.md",
+      "sha256": "c6d3638aed02f9a6e93d2e9d882ac36701179d6f71d6c98fafc07d4ec7cccc62",
+      "bytes": 832
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11C_2.19.4_CONSOLIDATED.md",
+      "sha256": "f8a9017b5aa0931be8d9545dd9d9d71e0fcf8915ccd405edfdd09ab38011f7e1",
+      "bytes": 2749
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11D_V1.0_STATELESS.md",
+      "sha256": "e24a05af342b098bb8f0a5614a1ad8bb11f316f286287c0fae5313a06d18ff0d",
+      "bytes": 720
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11D_V1.0_STATELESS.txt",
+      "sha256": "336d6af3700a9cb7d6bcccee1d225e0ad0100bcd0d0412c281efb766dbeda350",
+      "bytes": 598
+    },
+    {
+      "path": "tests/C11A1FactoryIsolationContractTest.gd",
+      "sha256": "b57d4ec08160ed3e3631f853e16117758382a4b9f64c762af347447d816d45b8",
+      "bytes": 1853
+    },
+    {
+      "path": "tests/C11CParallelReviewWorkerIsolationContractTest.gd",
+      "sha256": "15d0354acfc4f48702b50e5431471aeadf260bdf5a8b19107b276f5943e2dafd",
+      "bytes": 2994
+    },
+    {
+      "path": "tests/C11CVisualLoopLongformSourceArtifactContractTest.gd",
+      "sha256": "ccf76f12f4ebc845492fa04c6deee05838b2dd19b0ab55b7859ef3b4582f6cfd",
+      "bytes": 2247
+    },
+    {
+      "path": "tests/run_all.py",
+      "sha256": "e83f62f5f51e3743d23ac2b8d409a8b6a12b60b6cf329856ab6ac45cf9414a62",
+      "bytes": 18810
+    },
+    {
+      "path": "tools/maintenance/consolidate_c11c_2_19_documentation.ps1",
+      "sha256": "a8b4e40415dac1fbf3c3c332f9ab8d4cb2988adaf11b36c60ab376ea59b51eca",
+      "bytes": 2541
+    },
+    {
+      "path": "tools/maintenance/prepare_c11c_acceptance_workspace.ps1",
+      "sha256": "91fd022a162c7ab8cbe1b71274adcdf02dee8ad75e6bacc7d6f11fd62e60f857",
+      "bytes": 2807
+    },
+    {
+      "path": "tools/maintenance/verify_repository_layout.ps1",
+      "sha256": "537575653d9a9ba9186531aeeab407f2b9a03e26b9cd79ad7a2fb6aeb99de659",
+      "bytes": 4345
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1",
+      "sha256": "76f4f28311e842cfe09a1b41b8871ba17e0d6a9847f1dbf4cae2b0a3d8d17d2b",
+      "bytes": 2291
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/README.md",
+      "sha256": "a1c985a6353dd33a1ef3907e4ee31f544fd1e40df58144ea635db6ed10712499",
+      "bytes": 800
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+      "sha256": "2230766e278c5f30824ab074f3b3771d6c04eedea1bbf6a8f23f6d5ab4361f98",
+      "bytes": 20917
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
+      "sha256": "d6c15279a5355f590356acf99cabaf7f2b2c8fc04c8153fbef37c01ff5a4322f",
+      "bytes": 26836
+    },
+    {
+      "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1",
+      "sha256": "f113b87b57ea4fa03982e4e3e931529628a55a7eea6fa0be098b62c8b52f7433",
+      "bytes": 19315
+    }
+  ]
+}

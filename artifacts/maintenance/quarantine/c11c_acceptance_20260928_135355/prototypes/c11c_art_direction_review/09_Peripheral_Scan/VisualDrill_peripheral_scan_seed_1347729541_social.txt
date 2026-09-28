@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+MantÃ©n tu mirada fija en el centro, pero cuenta cuÃ¡ntas veces pulsa la periferia.
+
+PERIPHERAL SCAN - Visual drill de presentación procedural y determinista.
+
+Familia: PERIPHERAL SCAN
+Seed: 1347729541
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt
+
+TITLE:
+PERIPHERAL SCAN - VISUAL DRILL
+
+DESCRIPTION:
+PERIPHERAL SCAN - Visual drill de presentación procedural y determinista.
+
+Familia: PERIPHERAL SCAN
+Seed: 1347729541
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: peripheral_scan
+SEED: 1347729541
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt
+
+HEADER HOOK:
+MantÃ©n tu mirada fija en el centro, pero cuenta cuÃ¡ntas veces pulsa la periferia.

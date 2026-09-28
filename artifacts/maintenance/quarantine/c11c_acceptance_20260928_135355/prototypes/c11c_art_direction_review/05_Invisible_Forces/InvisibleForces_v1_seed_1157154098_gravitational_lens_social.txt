@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+TRACE: LINEAS EQUIPOTENCIALES // TRACES 53 | PULSE 1.22 // EN MODO STEALTH
+
+TRACE: LINEAS EQUIPOTENCIALES // TRACES 53 | PULSE 1.22 // EN MODO STEALTH
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: GRAVITATIONAL LENS
+- Paleta: magenta_red_gold
+- Seed: 1157154098
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #GRAVITATIONALLENS
+
+TRACE: LINEAS EQUIPOTENCIALES // TRACES 53 | PULSE 1.22 // EN MODO STEALTH
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: GRAVITATIONAL LENS
+- Paleta: magenta_red_gold
+- Seed: 1157154098
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - GRAVITATIONAL LENS
+
+DESCRIPTION:
+TRACE: LINEAS EQUIPOTENCIALES // TRACES 53 | PULSE 1.22 // EN MODO STEALTH
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: GRAVITATIONAL LENS
+- Paleta: magenta_red_gold
+- Seed: 1157154098
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: GRAVITATIONAL LENS
+PALETTE: magenta_red_gold
+SEED: 1157154098
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / FLOWING_VECTOR
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+TRACE: LINEAS EQUIPOTENCIALES // TRACES 53 | PULSE 1.22 // EN MODO STEALTH
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #GRAVITATIONALLENS
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 1157154098 -Grammar gravitational_lens -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\05_Invisible_Forces -OutputTag gravitational_lens
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_1157154098_gravitational_lens_manifest.json

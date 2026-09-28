@@ -1,0 +1,61 @@
+{
+    "schema":  "C11-C-VISUAL-DRILL-REVIEW-V1",
+    "revision":  "2.16.9",
+    "family":  "pursuit",
+    "seed":  1065574018,
+    "route":  "visual_drill/pursuit",
+    "resolution":  "720x1280",
+    "fps":  30,
+    "duration_seconds":  21,
+    "gameplay_frame_count":  630,
+    "countdown_seconds":  3,
+    "countdown_frames":  90,
+    "end_cta_seconds":  3,
+    "end_cta_frames":  90,
+    "end_cta_main":  "¿LO CONSEGUISTE?",
+    "end_cta_sub":  "¿HASTA DÓNDE LLEGASTE?",
+    "hook":  "Como mirar una vela digital. MantÃ©n el objetivo bajo seguimiento continuo.",
+    "hook_index":  4,
+    "hook_bank_version":  "1.3.0",
+    "cta_position":  "HEADER",
+    "footer_during_cta":  "VISIBLE",
+    "total_duration_seconds":  27,
+    "total_frame_count":  810,
+    "matrix_enabled":  true,
+    "editorial_layout":  "shared_c11c_social",
+    "audio_mode":  "FAMILY_MUSIC_V4",
+    "audio_profile":  "ORGANIC_BLOOM",
+    "audio_semantic_key":  "family=pursuit|seed=1065574018",
+    "audio_master_sha256":  "da581957103e55e0a96c8248ffc00c43c17a9e668a50f510edfe643138773706",
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_drill_stage\\_envelopes\\visual_drill_pursuit_seed_1065574018\\envelope.json",
+    "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_drill_stage\\pursuit\\seed_1065574018\\VisualDrill_pursuit_seed_1065574018.mp4",
+    "gif":  null,
+    "export_gif":  false,
+    "keep_avi":  false,
+    "contact_sheet":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_drill_stage\\pursuit\\seed_1065574018\\contact_sheet.jpg",
+    "keyframes":  [
+                      "frame_001.png",
+                      "frame_002.png",
+                      "frame_003.png",
+                      "frame_004.png",
+                      "frame_005.png"
+                  ],
+    "ffprobe":  {
+                    "codec":  "h264",
+                    "width":  720,
+                    "height":  1280,
+                    "r_frame_rate":  "30/1",
+                    "nb_frames":  810,
+                    "duration_seconds":  27,
+                    "audio_streams":  1
+                },
+    "hashes":  {
+                   "mp4_sha256":  "e059e3498eca961084324000436d72d9ddde7887e9dbdc2bca3e1d8c18ca8d9c",
+                   "envelope_sha256":  "2c5c3fd41cf706dd0fa876144f4d5f1c9e921e51a4cc49578d49090f3c0efb60"
+               }
+}

@@ -7,9 +7,11 @@ if "%~1"=="" (
 )
 set "C11C_PROJECT_ROOT=%~dp0..\.."
 cd /d "%C11C_PROJECT_ROOT%"
-where godot.exe >nul 2>nul
+set "GODOT_CMD=%GODOT_BIN%"
+if not defined GODOT_CMD set "GODOT_CMD=godot.exe"
+where "%GODOT_CMD%" >nul 2>nul
 if not errorlevel 1 (
-  godot.exe --headless --path "%C11C_PROJECT_ROOT%" --script ".\tests\%~1"
+  "%GODOT_CMD%" --headless --path "%C11C_PROJECT_ROOT%" --script ".\tests\%~1"
   set "RC=%ERRORLEVEL%"
 ) else (
   echo ERROR: godot.exe no esta en PATH. Define GODOT_BIN o anade Godot al PATH.

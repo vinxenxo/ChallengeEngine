@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+[SYS] REENSAMBLANDO RAMIFICACIONES DE MICELIO A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // DETAIL 1.23 | BRANCH 1.11
+
+[SYS] REENSAMBLANDO RAMIFICACIONES DE MICELIO A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // DETAIL 1.23 | BRANCH 1.11
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: NESTED WORLDS
+- Paleta: ice_rose_nebula
+- Seed: 1141957028
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #NESTEDWORLDS
+
+[SYS] REENSAMBLANDO RAMIFICACIONES DE MICELIO A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // DETAIL 1.23 | BRANCH 1.11
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: NESTED WORLDS
+- Paleta: ice_rose_nebula
+- Seed: 1141957028
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+FRACTAL BLOOM - NESTED WORLDS
+
+DESCRIPTION:
+[SYS] REENSAMBLANDO RAMIFICACIONES DE MICELIO A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // DETAIL 1.23 | BRANCH 1.11
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: NESTED WORLDS
+- Paleta: ice_rose_nebula
+- Seed: 1141957028
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: NESTED WORLDS
+PALETTE: ice_rose_nebula
+SEED: 1141957028
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+[SYS] REENSAMBLANDO RAMIFICACIONES DE MICELIO A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // DETAIL 1.23 | BRANCH 1.11
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #NESTEDWORLDS
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 1141957028 -Grammar nested_worlds -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\02_Fractal_Bloom -OutputTag nested_worlds
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_1141957028_nested_worlds_manifest.json

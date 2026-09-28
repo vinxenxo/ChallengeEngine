@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+FijaciÃ³n balÃ­stica pura. Si tu ojo sigue una lÃ­nea, estÃ¡s perdiendo.
+
+SACCADE - Visual drill de presentación procedural y determinista.
+
+Familia: SACCADE
+Seed: 791270272
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt
+
+TITLE:
+SACCADE - VISUAL DRILL
+
+DESCRIPTION:
+SACCADE - Visual drill de presentación procedural y determinista.
+
+Familia: SACCADE
+Seed: 791270272
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: saccade
+SEED: 791270272
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt
+
+HEADER HOOK:
+FijaciÃ³n balÃ­stica pura. Si tu ojo sigue una lÃ­nea, estÃ¡s perdiendo.

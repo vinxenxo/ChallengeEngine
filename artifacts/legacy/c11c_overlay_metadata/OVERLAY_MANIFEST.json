@@ -1,0 +1,16 @@
+{
+  "overlay": "C11C 2.19.2 Producer Test Contract Alignment",
+  "version": "2.19.2",
+  "base": "ChallengeEngine-C11-C2.16.9 FROZEN.zip + applied 2.18.9 + 2.19.0 + 2.19.1 overlays",
+  "scope": [
+    "Align production hygiene contract with current temporary AVI Producer route",
+    "Fix brittle project-local --path . source assertion",
+    "Preserve 2.19.1 runtime implementation unchanged"
+  ],
+  "files": [
+    "README.md",
+    "CHANGELOG_C11-C_2.19.2.md",
+    "tests/C11CArtDirectionProductionHygieneContractTest.gd",
+    "tests/C11CVisualDrillMovieCaptureContractTest.gd"
+  ]
+}

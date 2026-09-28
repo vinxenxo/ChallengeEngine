@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Tu ojo tarda 200ms en registrar el salto. Â¿Puedes ganarle al algoritmo?
+
+SACCADE - Visual drill de presentación procedural y determinista.
+
+Familia: SACCADE
+Seed: 1157154098
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt
+
+TITLE:
+SACCADE - VISUAL DRILL
+
+DESCRIPTION:
+SACCADE - Visual drill de presentación procedural y determinista.
+
+Familia: SACCADE
+Seed: 1157154098
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: saccade
+SEED: 1157154098
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt
+
+HEADER HOOK:
+Tu ojo tarda 200ms en registrar el salto. Â¿Puedes ganarle al algoritmo?

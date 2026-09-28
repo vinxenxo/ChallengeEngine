@@ -1,0 +1,1984 @@
+{
+  "audit_id": "C11-C_2.19.2_DOCUMENTATION_AUDIT",
+  "baseline": "C11-C 2.19.2",
+  "reviewed_at": "2026-09-28",
+  "scope": "C11-C current documentation, C11-C historical documentation, cross-context prompts, D entry documentation, AGENTS.md and .continue/rules/CONTINUE.md",
+  "policy": "Historical checkpoint documents remain historically accurate; current meaning is expressed only in docs/current and current master/start prompts.",
+  "supersession_rules": {
+    "2.18.9": "OGV capture experiment is historical/superseded by 2.19.0 temporary AVI.",
+    "2.19.0": "AVI route remains part of final implementation; later social-hook repair added in 2.19.1.",
+    "2.19.1": "Runtime/product implementation lineage; repository freeze superseded as current identity by 2.19.2.",
+    "2.19.2": "Final repository/source freeze; test-contract alignment only."
+  },
+  "current_reference_audit": [
+    {
+      "path": "docs/current/00_PROJECT_OVERVIEW.md",
+      "term": "2.19.1",
+      "count": 1
+    },
+    {
+      "path": "docs/current/00_PROJECT_OVERVIEW.md",
+      "term": "2.19.2",
+      "count": 5
+    },
+    {
+      "path": "docs/current/04_REPOSITORY_STRUCTURE.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/05_TESTING_AND_REGRESSION.md",
+      "term": "2.19.2",
+      "count": 3
+    },
+    {
+      "path": "docs/current/06_PRODUCTION_AND_DISTRIBUTION.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/06_PRODUCTION_AND_DISTRIBUTION.md",
+      "term": "OGV",
+      "count": 1
+    },
+    {
+      "path": "docs/current/07_ROADMAP.md",
+      "term": "2.19.2",
+      "count": 2
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_CHANGELOG.md",
+      "term": "2.19.1",
+      "count": 2
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_CHANGELOG.md",
+      "term": "2.19.2",
+      "count": 4
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_CHANGELOG.md",
+      "term": "2.18.9",
+      "count": 2
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_CHANGELOG.md",
+      "term": "OGV",
+      "count": 1
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_ACCEPTANCE.md",
+      "term": "2.19.1",
+      "count": 1
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_ACCEPTANCE.md",
+      "term": "2.19.2",
+      "count": 8
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_MANIFEST.json",
+      "term": "2.19.1",
+      "count": 9
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_MANIFEST.json",
+      "term": "2.19.2",
+      "count": 14
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_MANIFEST.json",
+      "term": "2.18.9",
+      "count": 2
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FREEZE_MANIFEST.json",
+      "term": "OGV",
+      "count": 1
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FROZEN_CURRENT_STATE.md",
+      "term": "2.19.1",
+      "count": 2
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FROZEN_CURRENT_STATE.md",
+      "term": "2.19.2",
+      "count": 10
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_FROZEN_CURRENT_STATE.md",
+      "term": "OGV",
+      "count": 1
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "term": "2.19.1",
+      "count": 1
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "term": "2.19.2",
+      "count": 7
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "term": "2.18.9",
+      "count": 2
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "term": "OGV",
+      "count": 4
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.2_ROOT_CLEANUP_COMMANDS.md",
+      "term": "2.19.2",
+      "count": 4
+    },
+    {
+      "path": "docs/current/d/C11-D_BRANCH_START_V1.0.md",
+      "term": "2.19.1",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/C11-D_BRANCH_START_V1.0.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/D0_CHALLENGE_RECOVERY_DOSSIER_SCHEMA.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/D0_HISTORICAL_ROADMAP_SYNTHESIS.md",
+      "term": "2.19.2",
+      "count": 2
+    },
+    {
+      "path": "docs/current/d/D0_MIGRATION_MAP.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/D0_REPOSITORY_BASELINE_INVENTORY.md",
+      "term": "2.19.1",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/D0_REPOSITORY_BASELINE_INVENTORY.md",
+      "term": "2.19.2",
+      "count": 2
+    },
+    {
+      "path": "docs/current/d/D0_START_CHECKLIST.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/d/README.md",
+      "term": "2.19.2",
+      "count": 1
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "term": "2.19.1",
+      "count": 1
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "term": "2.19.2",
+      "count": 3
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.3_RULES.md",
+      "term": "2.19.2",
+      "count": 1
+    }
+  ],
+  "historical_inventory": [
+    {
+      "path": "docs/history/C11-C_2.17_CHALLENGE_PRODUCTION_CHANGELOG.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2076
+    },
+    {
+      "path": "docs/history/C11-C_2.9.0_STATUS_SNAPSHOT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 606
+    },
+    {
+      "path": "docs/history/C11-C_HISTORY_INDEX_2.9.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2897
+    },
+    {
+      "path": "docs/history/README.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 1,
+      "contains_ogv_refs": 0,
+      "bytes": 642
+    },
+    {
+      "path": "docs/history/c11/C11-README.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 11351
+    },
+    {
+      "path": "docs/history/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3554
+    },
+    {
+      "path": "docs/history/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1649
+    },
+    {
+      "path": "docs/history/c11/C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1538
+    },
+    {
+      "path": "docs/history/c11/C11B0_CONTRACT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2688
+    },
+    {
+      "path": "docs/history/c11/C11B0_IMPLEMENTATION.patch",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 25276
+    },
+    {
+      "path": "docs/history/c11/C11B1_CONTRACT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1322
+    },
+    {
+      "path": "docs/history/c11/README_C11A1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1599
+    },
+    {
+      "path": "docs/history/c11/README_C11A_FIX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 602
+    },
+    {
+      "path": "docs/history/c11/README_C11A_FIX_v2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 664
+    },
+    {
+      "path": "docs/history/c11/README_C11A_V3.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 493
+    },
+    {
+      "path": "docs/history/c11/README_C11B0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1523
+    },
+    {
+      "path": "docs/history/c11/README_C11B0_1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1018
+    },
+    {
+      "path": "docs/history/c11/README_C11B0_1_NEXT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 426
+    },
+    {
+      "path": "docs/history/c11/README_C11B0_2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2470
+    },
+    {
+      "path": "docs/history/c11/README_C11B0_2_V3.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1463
+    },
+    {
+      "path": "docs/history/c11/README_C11B0_2_V4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1403
+    },
+    {
+      "path": "docs/history/c11/README_C11B1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 322
+    },
+    {
+      "path": "docs/history/c11-freeze/00_INDEX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 906
+    },
+    {
+      "path": "docs/history/c11-freeze/01_REPOSITORY_LAYOUT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1631
+    },
+    {
+      "path": "docs/history/c11-freeze/02_TEST_REGISTRY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1988
+    },
+    {
+      "path": "docs/history/c11-freeze/03_RETROCOMPATIBILITY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1672
+    },
+    {
+      "path": "docs/history/c11-freeze/04_SEED_POLICY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1062
+    },
+    {
+      "path": "docs/history/c11-freeze/05_QA_VIDEO_TEXT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 595
+    },
+    {
+      "path": "docs/history/c11-freeze/06_FREEZE_CHECKLIST.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1146
+    },
+    {
+      "path": "docs/history/c11-freeze/07_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1178
+    },
+    {
+      "path": "docs/history/c11-freeze/08_DOCUMENTATION_LIFECYCLE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1307
+    },
+    {
+      "path": "docs/history/c11-freeze/09_CONSOLIDATION_V2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1156
+    },
+    {
+      "path": "docs/history/c11-freeze/10_LONG_TERM_PROJECT_GUIDE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2259
+    },
+    {
+      "path": "docs/history/c11-freeze/11_FINAL_FREEZE_GATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1039
+    },
+    {
+      "path": "docs/history/c11-freeze/12_DOCUMENTATION_INDEX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 695
+    },
+    {
+      "path": "docs/history/c11-freeze/13_ARCHITECTURE_MANIFESTO.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2206
+    },
+    {
+      "path": "docs/history/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1660
+    },
+    {
+      "path": "docs/history/c11-freeze/14_FREEZE_CERTIFICATE_TEMPLATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 646
+    },
+    {
+      "path": "docs/history/c11-freeze/15_FREEZE_OPERATING_RULES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 632
+    },
+    {
+      "path": "docs/history/c11-freeze/README_C11_FREEZE_CONSOLIDATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2812
+    },
+    {
+      "path": "docs/history/c11-freeze/README_C11_FREEZE_CONSOLIDATION_v2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2218
+    },
+    {
+      "path": "docs/history/c11-freeze/README_C11_FREEZE_FINAL.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1744
+    },
+    {
+      "path": "docs/history/c11c/README.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 1,
+      "contains_2_19_2_refs": 5,
+      "contains_ogv_refs": 1,
+      "bytes": 1382
+    },
+    {
+      "path": "docs/history/c11c/audits/C11-C_2.19.2_DOCUMENTATION_AUDIT.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 18,
+      "contains_2_19_2_refs": 47,
+      "contains_ogv_refs": 6,
+      "bytes": 56862
+    },
+    {
+      "path": "docs/history/c11c/manifests/C11-C_2.16_FREEZE_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 546
+    },
+    {
+      "path": "docs/history/c11c/manifests/C11-C_2.19.1_FREEZE_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 8,
+      "contains_2_19_2_refs": 2,
+      "contains_ogv_refs": 0,
+      "bytes": 907987
+    },
+    {
+      "path": "docs/history/c11c/manifests/C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1538
+    },
+    {
+      "path": "docs/history/c11c/manifests/C11C_2.17.6_CHALLENGE_CONTRACT_SAFE_CAPTURE_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1008
+    },
+    {
+      "path": "docs/history/c11c/manifests/C11C_2.17.7_VIDEO_DELIVERY_STANDARD_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 458
+    },
+    {
+      "path": "docs/history/c11c/manifests/C11C_2.17.8_VIDEO_DELIVERY_STANDARD_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 684
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.12_to_2.19.1_CUMULATIVE_HISTORY_HISTORICAL.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 10,
+      "contains_2_19_2_refs": 3,
+      "contains_ogv_refs": 5,
+      "bytes": 8854
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.12_to_2.19.2_CUMULATIVE_HISTORY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 1,
+      "contains_2_19_2_refs": 4,
+      "contains_ogv_refs": 2,
+      "bytes": 3085
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.15.1_ART_DIRECTION_CONTRACT_REPAIR.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 927
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.16_FINAL_FREEZE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2061
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.17.9_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1705
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.0_GUI_AND_PRODUCTION_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3258
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.4_TEST_CONTRACT_ALIGNMENT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 705
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.6_TEST_CONTRACT_HOTFIX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 550
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.7_PRODUCER_AVI_CAPTURE_HOTFIX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 483
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 1,
+      "bytes": 631
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.9_PRODUCER_NON_AVI_CAPTURE_HOTFIX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 1,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 3,
+      "bytes": 509
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.x_CHANGELOG.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 710
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.x_FREEZE_ACCEPTANCE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 3,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1806
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.x_FREEZE_MANIFEST.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1409
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.18.x_FROZEN_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 3,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3614
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19.1_FREEZE_ACCEPTANCE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 2,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1517
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19.1_FROZEN_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 4,
+      "contains_2_19_2_refs": 1,
+      "contains_ogv_refs": 0,
+      "bytes": 4273
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19.1_REPOSITORY_FREEZE_AND_D_HANDOFF.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 3,
+      "contains_2_19_2_refs": 1,
+      "contains_ogv_refs": 0,
+      "bytes": 3002
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19.1_ROOT_CLEANUP_COMMANDS.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 3,
+      "contains_2_19_2_refs": 2,
+      "contains_ogv_refs": 0,
+      "bytes": 5290
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19.x_CHANGELOG_HISTORICAL.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 5,
+      "contains_2_19_2_refs": 3,
+      "contains_ogv_refs": 1,
+      "bytes": 1783
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.17.7_VIDEO_DELIVERY_STANDARD.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2314
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.17.8_VIDEO_DELIVERY_STANDARD.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5054
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.17.9_PRODUCER_GUI_COMPLETION_OVERLAY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1909
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.18.0_PRODUCER_GUI_STABILIZATION_OVERLAY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2303
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.18.2_LONGFORM_REVIEW_COPY_FIX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1010
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.18.5_FINAL_FREEZE_CANDIDATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 3,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1322
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.18.9_PRODUCER_NON_AVI_CAPTURE_HOTFIX.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 1,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 8,
+      "bytes": 2208
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_2.19.0_PRODUCER_AVI_CAPTURE_ROUTE_REPAIR.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 3,
+      "contains_2_19_2_refs": 1,
+      "contains_ogv_refs": 2,
+      "bytes": 1496
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_SUITE_0.1.1_OVERLAY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1122
+    },
+    {
+      "path": "docs/history/c11c/releases/C11C_SUITE_0.1.2_OVERLAY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1004
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.15.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 515
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.15.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 826
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.16.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 899
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.16.2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1004
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.16.3.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1176
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.16_FINAL.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 458
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.19.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 2,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 800
+    },
+    {
+      "path": "docs/history/c11c/releases/CHANGELOG_C11-C_2.19.2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 2,
+      "contains_2_19_2_refs": 1,
+      "contains_ogv_refs": 1,
+      "bytes": 775
+    },
+    {
+      "path": "docs/history/c6/C6-D4_IMPLEMENTATION_AUDIT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1456
+    },
+    {
+      "path": "docs/history/c6/C6-E4_IMPLEMENTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1328
+    },
+    {
+      "path": "docs/history/c6/C6-E4_RUNTIME_INTEGRATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1731
+    },
+    {
+      "path": "docs/history/c6/C6-E_E3_IMPLEMENTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1411
+    },
+    {
+      "path": "docs/history/c6/C6-E_IMPLEMENTATION_NOTES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1188
+    },
+    {
+      "path": "docs/history/c6/C6-E_STEP0_E1_REPORT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3354
+    },
+    {
+      "path": "docs/history/c6/C6-F0.3.5_CTA_REGRESSION_REPAIR.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1055
+    },
+    {
+      "path": "docs/history/c6/C6-F0.3.5_FINAL_PATCH_README.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 382
+    },
+    {
+      "path": "docs/history/c6/C6-F0.3.5_IMPLEMENTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5144
+    },
+    {
+      "path": "docs/history/c6/C6-F0.3_MULTI-CONTENT-TEMPORAL-RUNTIME-FOUNDATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 14331
+    },
+    {
+      "path": "docs/history/c6/C6-F4.2_IMPLEMENTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2567
+    },
+    {
+      "path": "docs/history/c6/C6-F4.2_STATIC_MATRIX.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2020
+    },
+    {
+      "path": "docs/history/c6/C6-F4.3_IMPLEMENTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2327
+    },
+    {
+      "path": "docs/history/c6/C6-F4.4-P5-FIND-IMPLEMENTATION-NOTES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1359
+    },
+    {
+      "path": "docs/history/c6/C6-F4.4_PHASE1_PILOT_NATIVE_V2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2000
+    },
+    {
+      "path": "docs/history/c6/C6-F4.4_PHASE2_PARKING_NATIVE_V2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 915
+    },
+    {
+      "path": "docs/history/c6/C6-F4.4_PHASE4_CATCH_CLOSURE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3723
+    },
+    {
+      "path": "docs/history/c6/C6-F4.4_PHASE5_FIND_PREIMPLEMENTATION_AUDIT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3018
+    },
+    {
+      "path": "docs/history/c6/C6F4-P7-COUNT-BRIDGE-NOTE.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 191
+    },
+    {
+      "path": "docs/history/c6/C6_F0_3_4_CTA_REGRESSION_ROOT_CAUSE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2178
+    },
+    {
+      "path": "docs/history/c6/F1.1_FIX4_NOTES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1193
+    },
+    {
+      "path": "docs/history/c6/F1.1_IMPLEMENTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 581
+    },
+    {
+      "path": "docs/history/c6/F4.2_FIX_NOTES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 943
+    },
+    {
+      "path": "docs/history/c6/MIGRATION_1.1.0-C6-D3_TO_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1128
+    },
+    {
+      "path": "docs/history/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 18981
+    },
+    {
+      "path": "docs/history/c9/C9-D_AUTHORING_REPRODUCIBILITY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 668
+    },
+    {
+      "path": "docs/history/c9/C9-E_HIT_V1_AUTHORING.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 522
+    },
+    {
+      "path": "docs/history/c9/C9-F_CATCH_V1_AUTHORING.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 503
+    },
+    {
+      "path": "docs/history/c9/C9-G_REMAINING_MECHANICS_AUTHORING.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 992
+    },
+    {
+      "path": "docs/history/design/BRAINSTORMING.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 593
+    },
+    {
+      "path": "docs/history/legacy-tools/run_batch_export.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 7503
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/APPLY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1301
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/APPLY_NOTES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1025
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/C6F4-P7-COUNT-PATCH.diff",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2766
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/C6F4_CATCH_CLEANUP_AND_RUNNER-FIX1.ps1",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3691
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/C6F4_CATCH_CLEANUP_AND_RUNNER.ps1",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4030
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/C6F4_FIND_NATIVE_V2_APPLY-FIX1.ps1",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 7031
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/C6F4_FIND_NATIVE_V2_APPLY.ps1",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 6825
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/ChallengeDefinitionValidator_F1.1.patch",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 583
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/F4.2_GeneradorMaestro.patch",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 13245
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/F4.2_STATIC_TIMING_CHECK.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1713
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/WinningHighlightComponent.integration.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2982
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/audit_c3_e.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4276
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/audit_export_pipeline.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1943
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/audit_shadow.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2222
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/authoring_batch.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 741
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/authoring_remaining_c9_batch.json",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1399
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c6e_output_contract_test.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2214
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c8_a_provenance_mutation_test.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 10827
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c8_b_batch_reproducibility_test.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5412
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c8_b_reproducibility_test.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5667
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c9_b_parking_v2_production.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4137
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c9_c_batch_production.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4783
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c9_d_authoring_reproducibility.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3745
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c9_e_hit_v1_production.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2119
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c9_f_catch_v1_production.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2125
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/c9_g_remaining_mechanics_production.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4500
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/challenges_c7_injection.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 601
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/convert_to_gifs.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1422
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/patch_definitions.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2298
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/patch_f06_step2.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1629
+    },
+    {
+      "path": "docs/history/legacy-tools/scripts/phase_duration_contract_test.py",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1876
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 9235
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_C10_VISUAL_AUTHORING_FROZEN.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 8434
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_C6_F0_8_FROZEN.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 16856
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_C6_F0_8_FROZEN_v2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 11557
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 16469
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3636
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 13877
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.6.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4520
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 23787
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.9.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3418
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.0.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 6804
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 6896
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2919
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1658
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-F0.8-E.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4500
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.4_CLOSED.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 14185
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_C6-F0.3.5_IMPLEMENTED_PENDING_EXECUTION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4604
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_START_PROMPT_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1562
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_START_PROMPT_C6-F0.3.5.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 8335
+    },
+    {
+      "path": "docs/history/master-prompts/MASTER_START_PROMPT_C6-F0.8-E.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2272
+    },
+    {
+      "path": "docs/history/master-prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4583
+    },
+    {
+      "path": "docs/history/master-prompts/START_PROMPT_C10_CONTINUATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4225
+    },
+    {
+      "path": "docs/history/master-prompts/START_PROMPT_C6_F0_8_CONTINUATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 7049
+    },
+    {
+      "path": "docs/history/master-prompts/START_PROMPT_C6_F0_8_CONTINUATION_v2.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 7449
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.8.0_AUDIT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1633
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.8.0_CHANGELOG.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1604
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.8.0_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3205
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.8.0_RUNTIME_ACCEPTANCE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2201
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.0_CHANGELOG.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1180
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.0_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1328
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.0_RUNTIME_ACCEPTANCE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1173
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.1_CHANGELOG.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 915
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.1_CONSOLE_TEST_COMMANDS.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5675
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_0.9.1_CURRENT_STATE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1009
+    },
+    {
+      "path": "docs/history/producer/C11C_PRODUCER_2.16.9_ADAPTATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1322
+    },
+    {
+      "path": "docs/history/producer/legacy_context/C11C_PRODUCER_MASTER_HANDOVER_2026-09-25.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 8314
+    },
+    {
+      "path": "docs/history/producer/legacy_context/C11C_PRODUCER_START_PROMPT_2026-09-25.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3720
+    },
+    {
+      "path": "docs/history/reference/04_PRODUCTION_AND_ARTIFACTS.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1141
+    },
+    {
+      "path": "docs/history/reference/06_ROADMAP.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1058
+    },
+    {
+      "path": "docs/history/reference/ARCHITECTURE_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 8111
+    },
+    {
+      "path": "docs/history/reference/CHECKPOINT_0.3.6_DOCUMENTATION_CHANGELOG.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1319
+    },
+    {
+      "path": "docs/history/reference/CHECKPOINT_0.3.6_STATUS.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5472
+    },
+    {
+      "path": "docs/history/reference/CHECKPOINT_1.0.0_B_FIND_CONTRACT_DRAFT.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4212
+    },
+    {
+      "path": "docs/history/reference/DOCUMENTATION_0.9_1.0_UPDATE_SUMMARY.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1322
+    },
+    {
+      "path": "docs/history/reference/DOCUMENTATION_MIGRATION_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 995
+    },
+    {
+      "path": "docs/history/reference/DOCUMENTATION_STATUS_1.0.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1278
+    },
+    {
+      "path": "docs/history/reference/DOCUMENTATION_STATUS_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2222
+    },
+    {
+      "path": "docs/history/reference/DOCUMENTATION_STATUS_C6-F0.3.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1444
+    },
+    {
+      "path": "docs/history/reference/GOVERNANCE_HISTORICAL.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 6556
+    },
+    {
+      "path": "docs/history/reference/PACKAGE_CONTENTS.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 446
+    },
+    {
+      "path": "docs/history/reference/PACKAGE_MANIFEST_1.1.0-C6-D4.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1048
+    },
+    {
+      "path": "docs/history/reference/PACKAGE_MANIFEST_C6-F0.3.5.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2008
+    },
+    {
+      "path": "docs/history/reference/README-P7.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 582
+    },
+    {
+      "path": "docs/history/reference/README_INTEGRATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2185
+    },
+    {
+      "path": "docs/history/reference/README_PROJECT_ES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3429
+    },
+    {
+      "path": "docs/history/reference/RELEASE_NOTES_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 836
+    },
+    {
+      "path": "docs/history/reference/REPOSITORY_AUDIT_1.1.0-C6-D4.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1616
+    },
+    {
+      "path": "docs/history/reference/ROADMAP_PHASES.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 6096
+    },
+    {
+      "path": "docs/history/reference/contracts/CONTENT_SCHEMA_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5133
+    },
+    {
+      "path": "docs/history/reference/contracts/DATA_MODEL_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3402
+    },
+    {
+      "path": "docs/history/reference/contracts/DISTRIBUTION_SPEC_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3102
+    },
+    {
+      "path": "docs/history/reference/contracts/DOMAIN_MODEL_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 2497
+    },
+    {
+      "path": "docs/history/reference/contracts/MECHANICS_SPECIFICATION_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5018
+    },
+    {
+      "path": "docs/history/reference/contracts/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 7413
+    },
+    {
+      "path": "docs/history/reference/contracts/TESTING_STRATEGY_V0.1.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 5967
+    },
+    {
+      "path": "docs/history/reference/contracts/VALIDATION_PROTOCOL.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 3620
+    },
+    {
+      "path": "docs/history/reference/contracts/VIDEO_SPECIFICATION.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4308
+    },
+    {
+      "path": "docs/history/reference/mechanics/PARKING_MECHANIC_V2.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 7684
+    },
+    {
+      "path": "docs/history/reference/mechanics/PILOT_MECHANIC_V2.0.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 16553
+    },
+    {
+      "path": "docs/history/repository/README_DRAFT_GITHUB.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1779
+    },
+    {
+      "path": "docs/history/root/README_legacy.txt",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 1111
+    },
+    {
+      "path": "docs/history/suite/C11C_SUITE_0.1.0_ARCHITECTURE.md",
+      "kind": "historical",
+      "contains_2_19_1_refs": 0,
+      "contains_2_19_2_refs": 0,
+      "contains_ogv_refs": 0,
+      "bytes": 4947
+    }
+  ],
+  "conclusion": "No historical document is treated as current authority solely because it contains a later-looking version string. Current authority consistently points to C11-C 2.19.2."
+}

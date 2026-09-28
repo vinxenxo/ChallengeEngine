@@ -1,6 +1,6 @@
-# C11-C Producer 0.9.7 — Suite Member
+﻿# C11-C Producer 0.9.7 — Suite Member
 
-Compact cyberpunk orchestration interface for single production and predefined reviews.
+Compact orchestration interface for single production and predefined reviews.
 
 ## Supported single production
 
@@ -10,26 +10,24 @@ Compact cyberpunk orchestration interface for single production and predefined r
 
 ## Predefined reviews
 
-- `REVIEW — 9 CHALLENGES × 6 SEEDS` — historical C11-A.1 qualification/review matrix.
+- `REVIEW — 9 CHALLENGES × 6 SEEDS`
 - `REVIEW — 27 VISUAL LOOPS`
 - `REVIEW — 20 VISUAL DRILLS`
 - `REVIEW — 5 LONGFORMS`
-- existing combined review operations.
+- combined review operations.
 
-The Challenge review is deliberately routed to `tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1`; it does not reinterpret historical Challenge mechanics as C11-C mechanics.
+## Suite ownership
 
-## Queue isolation
+The live Producer is under `c11c-suite/c11c-producer/`. `c11c-studio` is retired and is not a dependency.
 
-A failed seed is recorded on the recipe and the remaining seeds continue. A failed batch/utility item is removed from the active queue and the next queued item starts automatically. The Producer does not use a modal error dialog for per-seed failures.
+## Visual Drill capture
 
-## Drill generation
+The single-Drill Producer uses temporary AVI Movie Maker capture, waits for the file to stabilize, converts video-only to MP4, then generates/muxes deterministic family music and resolves the requested delivery profile.
 
-Visual Drill envelope generation uses a direct `ProcessStartInfo` path so the Godot user argument after `--` is passed reliably on Windows PowerShell. Generator stdout/stderr are retained in the temporary producer stage when an envelope launch fails.
+## Art Direction worker review
+
+The canonical batch runner is `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`. Its 2.19.6 worker model uses a private temporary Godot project root per concurrent worker; the Producer does not own or serialize that pool.
 
 ## Backend safety
 
 The GUI remains orchestration-only. It does not implement mechanics, RNG, timing truth or rendering.
-
-## Visual Drill capture
-
-The single-Drill Producer does not depend on AVI or PNG sequences. Godot Movie Maker writes one temporary OGV container in the scratch directory; the runner waits for the container to stabilize, then FFmpeg converts its video stream into the canonical source MP4. The OGV is removed with the temporary stage after production.

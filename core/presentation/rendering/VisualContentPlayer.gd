@@ -113,10 +113,10 @@ func _ready() -> void:
 		_presentation_total_frames = VisualDrillPresentationPhaseLogic.total_presentation_frames(_total_frames, _stream.fps)
 		var gameplay_seconds: float = float(_total_frames) / float(maxi(1, _stream.fps))
 		var total_seconds: float = VisualDrillPresentationPhaseLogic.total_presentation_seconds(_total_frames, _stream.fps)
-		if total_seconds + 0.0001 < VISUAL_DRILL_MIN_TOTAL_SECONDS:
+		if not qa_mode and total_seconds + 0.0001 < VISUAL_DRILL_MIN_TOTAL_SECONDS:
 			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration is below the 20s C11-C contract.")
 			return
-		elif total_seconds - 0.0001 > VISUAL_DRILL_MAX_TOTAL_SECONDS:
+		elif not qa_mode and total_seconds - 0.0001 > VISUAL_DRILL_MAX_TOTAL_SECONDS:
 			push_error("[VISUAL_CONTENT_PLAYER] Visual Drill total presentation duration exceeds the 30s C11-C contract.")
 			return
 		else:

@@ -1,0 +1,47 @@
+{
+  "branch": "C11-C",
+  "candidate": "2.19.4",
+  "status": "REPAIR_CANDIDATE_NOT_FROZEN",
+  "previous_freeze_claim": "2.19.2",
+  "previous_freeze_status": "INVALIDATED_FOR_FINAL_FREEZE",
+  "suite_version": "0.1.4",
+  "producer_version": "0.9.7",
+  "godot": "4.7.1 stable Mono",
+  "ownership": {
+    "active_suite": "c11c-suite",
+    "retired_suite": "c11c-studio"
+  },
+  "geometry": {
+    "logical": "540x960",
+    "review": "720x1280 @ 30 FPS",
+    "master": "1080x1920"
+  },
+  "corpus": {
+    "visual_loop_families": 5,
+    "visual_loop_grammars": 27,
+    "visual_drill_families": 4,
+    "longforms": 5,
+    "longform_seconds": 180,
+    "c11a1_runs": 54
+  },
+  "worker_contract": {
+    "requested_workers": 7,
+    "isolation": "temporary_project_root_per_worker",
+    "private_override_cfg": true,
+    "private_godot_state": true,
+    "global_mutex": false,
+    "minimum_observed_concurrency_for_multi_item_loop_stage": 2
+  },
+  "canonical_acceptance": "FULL_ACCEPTANCE_C11C_2.19.4.ps1",
+  "canonical_context": [
+    "AGENTS.md",
+    ".continue/rules/CONTINUE.md",
+    "docs/master-prompts/MASTER_HANDOVER_C11C_2.19.4_CONSOLIDATED.md",
+    "docs/master-prompts/START_PROMPT_C11C_2.19.4_CONSOLIDATED.md",
+    "docs/current/c11c/C11-C_2.19.4_CONSOLIDATED_STATE.md",
+    "docs/current/c11c/C11-C_2.19.4_ACCEPTANCE_GATE.md",
+    "docs/current/suite/C11C_SUITE_0.1.4_RULES.md",
+    "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+    "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md"
+  ]
+}

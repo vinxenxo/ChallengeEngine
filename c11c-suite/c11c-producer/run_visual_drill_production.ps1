@@ -143,6 +143,9 @@ try{
             if((Test-Path -LiteralPath $reportedPath -PathType Leaf) -and $reportedPath -ne $avi){$avi=$reportedPath}
         }
         Wait-ForStableFile -Path $avi -Label "Godot Movie Maker AVI capture"
+        # Release the project-global override immediately after Godot capture.
+        Exit-C11CMovieOverride -State $state
+        $state = $null
         & ffmpeg -y -hide_banner -loglevel error -i $avi -an -c:v libx264 -preset fast -crf 21 -profile:v high -pix_fmt yuv420p -r 30 -g 90 -keyint_min 90 -sc_threshold 0 -flags +cgop -x264-params 'open_gop=0:keyint=90:min-keyint=90:scenecut=0' $sourceSilent
         if($LASTEXITCODE -ne 0){throw 'Drill source video encode from AVI failed.'}
         if($NoSound){Move-Item -LiteralPath $sourceSilent -Destination $finalSource -Force}else{
@@ -186,5 +189,5 @@ try{
         $hookDataPath=Join-Path $ProjectRoot 'profiles\presentation\c11c_visual_hooks.json'; if(-not(Test-Path -LiteralPath $hookDataPath)){throw "Visual hook bank missing: $hookDataPath"}; $hookData=Get-Content -Raw -LiteralPath $hookDataPath|ConvertFrom-Json; $hookEntry=$hookData.visual_drills.$Family; if($null -eq $hookEntry){throw "No Visual Drill hook bank for family: $Family"}; $hooks=@($hookEntry.hooks); if($hooks.Count -ne 10){throw "Visual Drill hook bank for $Family must contain exactly 10 hooks: got $($hooks.Count)"}; $hookIndex=(($Seed+[int]$hookEntry.family_offset)%$hooks.Count+$hooks.Count)%$hooks.Count; $hook=[string]$hooks[$hookIndex]; $tags=if($Family -eq 'tracking'){'#VisualDrill #Tracking #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'saccade'){'#VisualDrill #Saccade #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'pursuit'){'#VisualDrill #Pursuit #VisualChallenge #GenerativeArt #GodotEngine'}else{'#VisualDrill #PeripheralScan #VisualChallenge #GenerativeArt #GodotEngine'}
         $copy="$hook`n`n$Family - ejercicio visual procedural determinista.`n`n$tags"; $social=@('COPY_PASTE_READY:',$copy,'','TITLE:',"VISUAL DRILL // $Family",'','DESCRIPTION:',$copy,'',"HASHTAGS: $tags",''); [IO.File]::WriteAllText((Join-Path $productRoot ($productId+'_social.txt')),(($social -join "`n")+"`n"),(New-Object Text.UTF8Encoding($false)))
         Write-Host "[C11-C-PRODUCER-DRILL] FINAL PRODUCT PASS: $productRoot"
-    }finally{Exit-C11CMovieOverride -State $state}
+    }finally{if($null -ne $state){Exit-C11CMovieOverride -State $state}}
 }finally{if(Test-Path -LiteralPath $stage){Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue}}

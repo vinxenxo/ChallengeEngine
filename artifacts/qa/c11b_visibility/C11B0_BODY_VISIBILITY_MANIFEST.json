@@ -1,0 +1,1422 @@
+﻿{
+    "schema_version":  "1.0",
+    "checkpoint":  "C11-B.0",
+    "purpose":  "Unified Social Frame winning-frame visibility gate",
+    "source_manifest":  "qa/c11a1_challenge_qa/C11A1_CHALLENGE_BULK_MANIFEST.json",
+    "body_region":  {
+                        "x":  0,
+                        "y":  144,
+                        "width":  540,
+                        "height":  672
+                    },
+    "technical_runs":  54,
+    "visibility_pass_count":  54,
+    "visibility_fail_count":  0,
+    "overall_pass":  true,
+    "runs":  [
+                 {
+                     "run_id":  "challenge_001_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_001",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  401,
+                     "winning_frame":  401,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (219.7912, 429.7912), S: (100.4176, 100.4176)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.0, -499.4614), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_001_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_001",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  401,
+                     "winning_frame":  401,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (219.7912, 429.7912), S: (100.4176, 100.4176)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.0, -499.4614), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_001_seed_314159",
+                     "challenge_id":  "CHALLENGE_001",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  73,
+                     "winning_frame":  73,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (219.2955, 429.2955), S: (101.409, 101.409)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.0, 521.6276), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_001_seed_54321",
+                     "challenge_id":  "CHALLENGE_001",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  223,
+                     "winning_frame":  223,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (219.619, 429.619), S: (100.7619, 100.7619)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.0, 37.62897), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_001_seed_7770001",
+                     "challenge_id":  "CHALLENGE_001",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  191,
+                     "winning_frame":  191,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (219.9165, 429.9165), S: (100.1669, 100.1669)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.0, 189.6945), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_001_seed_998877",
+                     "challenge_id":  "CHALLENGE_001",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  44,
+                     "winning_frame":  44,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (219.4943, 429.4943), S: (101.0114, 101.0114)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.0, 582.1004), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_002_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_002",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  385,
+                     "winning_frame":  565,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (295.6084, 317.6063), S: (164.6283, 322.2888)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (278.5, 280.0), S: (200.0, 400.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_002_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_002",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  385,
+                     "winning_frame":  565,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (295.6084, 317.6063), S: (164.6283, 322.2888)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (278.5, 280.0), S: (200.0, 400.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_002_seed_314159",
+                     "challenge_id":  "CHALLENGE_002",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  384,
+                     "winning_frame":  564,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (298.4152, 321.6322), S: (160.5319, 320.2656)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (278.5, 280.0), S: (200.0, 400.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_002_seed_54321",
+                     "challenge_id":  "CHALLENGE_002",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  385,
+                     "winning_frame":  565,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (296.8508, 319.0628), S: (164.3084, 322.1323)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (278.5, 280.0), S: (200.0, 400.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_002_seed_7770001",
+                     "challenge_id":  "CHALLENGE_002",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  391,
+                     "winning_frame":  571,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (282.7942, 310.0948), S: (190.3656, 334.0449)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (278.5, 280.0), S: (200.0, 400.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_002_seed_998877",
+                     "challenge_id":  "CHALLENGE_002",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  394,
+                     "winning_frame":  574,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (286.8325, 312.4706), S: (184.5001, 331.5172)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (278.5, 280.0), S: (200.0, 400.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_003_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_003",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  298,
+                     "winning_frame":  478,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (334.3637, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (334.0573, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_003_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_003",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  298,
+                     "winning_frame":  478,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (334.3637, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (334.0573, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_003_seed_314159",
+                     "challenge_id":  "CHALLENGE_003",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  272,
+                     "winning_frame":  452,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (300.5208, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (300.5489, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_003_seed_54321",
+                     "challenge_id":  "CHALLENGE_003",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  118,
+                     "winning_frame":  298,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (102.073, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (102.0764, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_003_seed_7770001",
+                     "challenge_id":  "CHALLENGE_003",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  235,
+                     "winning_frame":  415,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (253.4233, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (252.864, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_003_seed_998877",
+                     "challenge_id":  "CHALLENGE_003",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  193,
+                     "winning_frame":  373,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (198.4003, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (198.7351, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_004_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_004",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  385,
+                     "winning_frame":  565,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (299.6071, 335.4289), S: (157.424, 282.0519)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (293.5, 310.0), S: (170.0, 340.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_004_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_004",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  385,
+                     "winning_frame":  565,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (299.6071, 335.4289), S: (157.424, 282.0519)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (293.5, 310.0), S: (170.0, 340.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_004_seed_314159",
+                     "challenge_id":  "CHALLENGE_004",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  394,
+                     "winning_frame":  574,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (302.1526, 340.9657), S: (152.6199, 279.9166)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (293.5, 310.0), S: (170.0, 340.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_004_seed_54321",
+                     "challenge_id":  "CHALLENGE_004",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  385,
+                     "winning_frame":  565,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (297.7214, 334.4803), S: (160.224, 283.263)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (293.5, 310.0), S: (170.0, 340.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_004_seed_7770001",
+                     "challenge_id":  "CHALLENGE_004",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  390,
+                     "winning_frame":  570,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (307.9919, 344.2379), S: (141.3833, 274.6513)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (293.5, 310.0), S: (170.0, 340.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_004_seed_998877",
+                     "challenge_id":  "CHALLENGE_004",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  391,
+                     "winning_frame":  571,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (308.6642, 343.9227), S: (138.971, 273.4733)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (293.5, 310.0), S: (170.0, 340.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_005_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_005",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  298,
+                     "winning_frame":  298,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (204.6892, 194.3606), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (204.7614, 195.0589), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_005_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_005",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  298,
+                     "winning_frame":  298,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (204.6892, 194.3606), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (204.7614, 195.0589), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_005_seed_314159",
+                     "challenge_id":  "CHALLENGE_005",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  346,
+                     "winning_frame":  346,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (223.6037, 216.4323), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (223.6093, 216.9709), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_005_seed_54321",
+                     "challenge_id":  "CHALLENGE_005",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  295,
+                     "winning_frame":  295,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (203.4491, 202.344), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (203.4635, 202.2243), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_005_seed_7770001",
+                     "challenge_id":  "CHALLENGE_005",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  335,
+                     "winning_frame":  335,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (234.0976, 188.8254), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (234.133, 188.3631), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_005_seed_998877",
+                     "challenge_id":  "CHALLENGE_005",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  344,
+                     "winning_frame":  344,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (230.1788, 193.8671), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (230.1613, 194.4555), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_006_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_006",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  153,
+                     "winning_frame":  153,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 381.6376), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (236.2581, 381.0638), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_006_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_006",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  153,
+                     "winning_frame":  153,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 381.6376), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (236.2581, 381.0638), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_006_seed_314159",
+                     "challenge_id":  "CHALLENGE_006",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  149,
+                     "winning_frame":  149,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 347.5482), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (216.9647, 348.4718), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_006_seed_54321",
+                     "challenge_id":  "CHALLENGE_006",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  155,
+                     "winning_frame":  155,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 380.6374), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (235.1765, 381.3098), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_006_seed_7770001",
+                     "challenge_id":  "CHALLENGE_006",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  170,
+                     "winning_frame":  170,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 379.6887), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (225.7344, 379.514), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_006_seed_998877",
+                     "challenge_id":  "CHALLENGE_006",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  142,
+                     "winning_frame":  142,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 349.6337), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (222.4247, 350.8472), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_007_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_007",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  85,
+                     "winning_frame":  265,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (197.4429, 603.1097), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.3635, 616.2202), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_007_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_007",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  85,
+                     "winning_frame":  265,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (197.4429, 603.1097), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (220.3635, 616.2202), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_007_seed_314159",
+                     "challenge_id":  "CHALLENGE_007",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (149.8944, 408.5168), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (120.4608, 402.1453), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_007_seed_54321",
+                     "challenge_id":  "CHALLENGE_007",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  123,
+                     "winning_frame":  303,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (230.8517, 243.0518), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (213.0231, 233.1119), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_007_seed_7770001",
+                     "challenge_id":  "CHALLENGE_007",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  38,
+                     "winning_frame":  218,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (172.4375, 549.5885), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (177.8998, 551.9353), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_007_seed_998877",
+                     "challenge_id":  "CHALLENGE_007",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  88,
+                     "winning_frame":  268,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (166.852, 609.3879), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (159.0117, 614.1735), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_008_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_008",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (125.5, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_008_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_008",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (125.5, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_008_seed_314159",
+                     "challenge_id":  "CHALLENGE_008",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (314.5, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_008_seed_54321",
+                     "challenge_id":  "CHALLENGE_008",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (125.5, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_008_seed_7770001",
+                     "challenge_id":  "CHALLENGE_008",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (220.0, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_008_seed_998877",
+                     "challenge_id":  "CHALLENGE_008",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (125.5, 430.0), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_009_seed_12345_A",
+                     "challenge_id":  "CHALLENGE_009",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (129.0, 391.5), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_009_seed_12345_B",
+                     "challenge_id":  "CHALLENGE_009",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (129.0, 391.5), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_009_seed_314159",
+                     "challenge_id":  "CHALLENGE_009",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (339.0, 391.5), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_009_seed_54321",
+                     "challenge_id":  "CHALLENGE_009",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (129.0, 391.5), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_009_seed_7770001",
+                     "challenge_id":  "CHALLENGE_009",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (129.0, 391.5), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 },
+                 {
+                     "run_id":  "challenge_009_seed_998877",
+                     "challenge_id":  "CHALLENGE_009",
+                     "pass":  true,
+                     "exit_code":  0,
+                     "winning_frame_game":  315,
+                     "winning_frame":  495,
+                     "body_rect":  "[P: (0.0, 144.0), S: (540.0, 672.0)]",
+                     "errors":  [
+
+                                ],
+                     "entities":  [
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "object",
+                                          "screen_rect":  "[P: (269.0, 391.5), S: (100.0, 100.0)]",
+                                          "visible":  true
+                                      },
+                                      {
+                                          "has_geometry":  true,
+                                          "id":  "target",
+                                          "screen_rect":  "[P: (265.0, 475.0), S: (10.0, 10.0)]",
+                                          "visible":  true
+                                      }
+                                  ]
+                 }
+             ]
+}

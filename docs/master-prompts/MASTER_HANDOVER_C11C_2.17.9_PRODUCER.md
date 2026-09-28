@@ -1,3 +1,5 @@
+> **Historical cross-context prompt.** Current repository authority is C11-C 2.19.2 under `docs/current/c11c/`.
+>
 # MASTER HANDOVER — ChallengeEngineV01_STATELESS — 2.17.9 Producer
 
 ## Authority

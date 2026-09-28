@@ -1,5 +1,7 @@
 @echo off
 setlocal
-set C11C_PROJECT_ROOT=%~dp0..\..
-python main.py %*
-endlocal
+set "C11C_PROJECT_ROOT=%~dp0..\.."
+cd /d "%C11C_PROJECT_ROOT%"
+python "%~dp0main.py" %*
+set "RC=%ERRORLEVEL%"
+endlocal & exit /b %RC%

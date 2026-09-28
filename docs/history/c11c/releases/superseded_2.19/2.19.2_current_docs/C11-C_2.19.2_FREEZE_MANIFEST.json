@@ -1,0 +1,7 @@
+{
+  "status": "SUPERSEDED_CURRENT_DOCUMENT",
+  "document": "C11-C_2.19.2_FREEZE_MANIFEST.json",
+  "superseded_by": "C11-C_2.19.4_CONSOLIDATED_STATE.md",
+  "historical_copy": "docs/history/c11c/releases/superseded_2.19/2.19.2_current_docs/C11-C_2.19.2_FREEZE_MANIFEST.json",
+  "reason": "The 2.19.2 freeze claim was invalidated for final-freeze purposes by later workstation acceptance findings."
+}

@@ -1,3 +1,5 @@
+> **Historical snapshot — final functional baseline: C11-C 2.19.1.** This file preserves the state, proposal or repair of its named release. Later integration through 2.19.1 (plus absorbed 2.19.2 test-only contract maintenance) is recorded in `docs/history/c11c/releases/C11-C_2.12_to_2.19.1_CUMULATIVE_HISTORY.md`. Historical text is preserved rather than rewritten.
+
 # START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.12.0
 
 Continue from validated C11-C 2.12.0 overlay on baseline C11-C 2.11.1.

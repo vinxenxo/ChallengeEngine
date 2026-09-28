@@ -1,3 +1,5 @@
+> **Historical cross-context prompt.** Current repository authority is C11-C 2.19.2 under `docs/current/c11c/`.
+>
 # START PROMPT — C11-C ART DIRECTION 2.0 — v2.1.4
 
 Continue `ChallengeEngineV01_STATELESS` from C11-C v2.1.4.

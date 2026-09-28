@@ -1,0 +1,15 @@
+{
+  "C11C_2.19.0_PRODUCER_AVI_CAPTURE_ROUTE_REPAIR.md": "b3666e98084b95d96a25eb12bd5e29df6be06b10d412a8c0a27062e14b22552b",
+  "CHANGELOG_C11-C_2.19.1.md": "705626a071dfb77b60965f0129d61c3504e572d431161a89a26d156dc11e20ce",
+  "README.md": "394be4a73e95932ee83e467fa27a698a51c300c49172b4d7f560d35d938840e6",
+  "c11c-suite/c11c-producer/BUILD_MANIFEST.json": "8e6935b758a6b0615016121614b84f0742d0e3f2159218f98f3829e4f83edac6",
+  "c11c-suite/c11c-producer/README.md": "b1805257f949dd4a265dfca458df1448acd632b66eacc3e8f382b4318c3e26bb",
+  "c11c-suite/c11c-producer/main.py": "b40c352fb5c311561c08e9193e648060428f36de064a2e68451d56b2cf41d928",
+  "c11c-suite/c11c-producer/producer_schema.json": "c958a19bb8d6c65c49e539cfeaa2533bc829ffdcd2ee068db93b93132e1cfcaf",
+  "c11c-suite/c11c-producer/producer_schema_source.json": "6c40b4c0da3a3f7b41a083aa283e01c3fb58638ef24c248c5c2280949da12def",
+  "c11c-suite/c11c-producer/run_visual_drill_production.ps1": "4d840e18242d5f7cbd2ca6111e913252fd10eb397857be3f4fbf076cbda2499d",
+  "c11c-suite/c11c-producer/self_test.py": "c4d8608e2f193c32d09b01aeec5c99044ee793563bf8bc07ec877f64b5670842",
+  "c11c-suite/c11c-producer/test_producer_gui_contract.py": "53cd90cf6db5460f7f0c49d917dddc1af2243de892d9a3538bfbc37a7fdcf7bb",
+  "c11c-suite/self_test.py": "d7e410a404a3a4ed43c062564b3d1f4444e8e4de8257a4da85ad5be557f5498e",
+  "tests/C11CVisualDrillMovieCaptureContractTest.gd": "e29a489cb60078bd40f1ab4503746d15ea95da556175b7e593825f5022b41add"
+}

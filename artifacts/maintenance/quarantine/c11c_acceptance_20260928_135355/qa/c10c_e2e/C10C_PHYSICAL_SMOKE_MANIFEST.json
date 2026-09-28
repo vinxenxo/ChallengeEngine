@@ -1,0 +1,53 @@
+﻿{
+    "test":  "C10-C",
+    "scope":  "authoring_to_runtime_to_physical_smoke",
+    "production_manifest":  false,
+    "godot_command_scene":  "core/presentation/rendering/VisualContentPlayer.tscn",
+    "fixed_fps":  30,
+    "frame_count":  60,
+    "duration_seconds":  2,
+    "artifacts":  [
+                      {
+                          "kind":  "visual_loop",
+                          "subtype":  "fractal",
+                          "definition":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\physical_smoke\\c10c_e2e\\definitions\\c10c_visual_loop_fractal.json",
+                          "raw_video":  {
+                                            "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\physical_smoke\\c10c_e2e\\avi\\c10c_visual_loop_fractal.avi",
+                                            "bytes":  2423260,
+                                            "sha256":  "054b400e857c201118ac98aa126a09fb35da05725b126e7f8e6c2d2a2f22326e",
+                                            "codec":  "mjpeg",
+                                            "width":  540,
+                                            "height":  960,
+                                            "r_frame_rate":  "30/1",
+                                            "nb_frames":  60,
+                                            "duration_seconds":  2
+                                        },
+                          "final_video":  {
+                                              "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\physical_smoke\\c10c_e2e\\mp4\\c10c_visual_loop_fractal.mp4",
+                                              "bytes":  31996,
+                                              "sha256":  "d26d59a5b453a983adc76831043aff359c1a7c75dcad409a16bd8533925bc992"
+                                          }
+                      },
+                      {
+                          "kind":  "visual_drill",
+                          "subtype":  "tracking",
+                          "definition":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\physical_smoke\\c10c_e2e\\definitions\\c10c_visual_drill_tracking.json",
+                          "raw_video":  {
+                                            "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\physical_smoke\\c10c_e2e\\avi\\c10c_visual_drill_tracking.avi",
+                                            "bytes":  1410940,
+                                            "sha256":  "230526bf541904c0901e6e72f03db1910f376b1967c3b4f05c7b699dc12cdf75",
+                                            "codec":  "mjpeg",
+                                            "width":  540,
+                                            "height":  960,
+                                            "r_frame_rate":  "30/1",
+                                            "nb_frames":  60,
+                                            "duration_seconds":  2
+                                        },
+                          "final_video":  {
+                                              "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\physical_smoke\\c10c_e2e\\mp4\\c10c_visual_drill_tracking.mp4",
+                                              "bytes":  13594,
+                                              "sha256":  "d766d339f6cb124beab089c36dbd1b2a96c11036ea583023bc6d09e15f6c841b"
+                                          }
+                      }
+                  ]
+}

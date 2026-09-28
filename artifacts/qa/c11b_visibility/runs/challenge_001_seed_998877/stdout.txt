@@ -1,0 +1,16 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+
+=== GENERADOR MAESTRO INICIADO ===
+best_frame=44 min_dist=0.0101658827625 tolerance=0.07853981633974
+[VALIDATION] relative_winning_frame=44 absolute_winning_frame=44 valid_window=0-420 close_calls=3 valid=true
+best_frame=44 min_dist=0.0101658827625 tolerance=0.07853981633974
+[VALIDATION] relative_winning_frame=44 absolute_winning_frame=44 valid_window=0-420 close_calls=3 valid=true
+[C6-F4.3] Effective Runtime + independent legacy oracle: PASS
+[C6E_PROFILE] id=social_default_v1 source=(540.0, 960.0) master=(1080.0, 1920.0) safe=[P: (24.0, 24.0), S: (492.0, 912.0)]
+[C6_UI] root=UnifiedSocialFrame:<Control#53133444564> size=(540.0, 960.0) position=(0.0, 0.0)
+[C6_REFERENCE_FRAME] index=44 mode=WINNING_FRAME reason=Certified winning_frame
+[C6_SWEEP_AUDIT] id=CHALLENGE_001 mechanic=key mode=WINNING_FRAME frame_idx=44 reason=Certified winning_frame
+[TELEMETRY_JSON]{"attempts":1,"close_calls":3,"cta_frames":120,"final_seed":998877,"game_frames":420,"godot_version":"4.7.1-stable (official)","hook_frames":0,"initial_seed":998877,"minimum_distance":0.0101658827625029,"reveal_frames":0,"rng_version":"1.0","score":0.642554341332093,"seed_used":998877,"total_frames":540,"validate_only":true,"winning_frame":44,"winning_frame_game":44,"winning_frame_in_valid_window":true,"winning_time":0.733333333333333,"winning_time_game":0.733333333333333}
+[AUDIO_EXPORT_JSON] {"audio_enabled":false}
+[C6_TARGET] space=0 presentation_pos=(270.0, 480.0)
+[C11B_VISIBILITY_JSON]{"audit_space":"Body_presentation_math","body_rect":"[P: (0.0, 144.0), S: (540.0, 672.0)]","challenge_id":"CHALLENGE_001","entities":[{"has_geometry":true,"id":"object","screen_rect":"[P: (219.4943, 429.4943), S: (101.0114, 101.0114)]","visible":true},{"has_geometry":true,"id":"target","screen_rect":"[P: (220.0, 582.1004), S: (100.0, 100.0)]","visible":true}],"errors":[],"framing_policy":"PRIMARY_FOCUS","object_actual_position":"(270.0, 480.0)","object_expected_position":"(270.0, 480.0)","object_logical_position":"(540.0, 525.4274)","pass":true,"presentation_frame_offset":"(0.0, 152.1004)","winning_frame":44,"winning_frame_game":44}

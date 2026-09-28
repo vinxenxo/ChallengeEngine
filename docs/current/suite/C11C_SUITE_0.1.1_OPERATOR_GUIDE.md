@@ -29,11 +29,6 @@ The historical misspelling remains available as a compatibility launcher:
 .\c11c-suite\c11c-maintenace\run.bat
 ```
 
-The former root launcher remains compatible:
-
-```powershell
-.\c11c-producer\run.bat
-```
 
 ## Preflight / static checks
 

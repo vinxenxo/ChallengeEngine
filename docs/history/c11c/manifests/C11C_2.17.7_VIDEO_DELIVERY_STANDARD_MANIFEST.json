@@ -1,0 +1,13 @@
+{
+  "schema": "C11C-2.17.7-VIDEO-DELIVERY-REPAIR",
+  "revision": "2.17.7",
+  "status": "ADDITIVE_PENDING_RUNTIME_SMOKE",
+  "supersedes": "C11C_2.17.6_CHALLENGE_CONTRACT_SAFE_CAPTURE_REPAIR.zip",
+  "standard_default": "MASTER_1080",
+  "files": [
+    "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "profiles/delivery/c11c_video_delivery_profiles.json",
+    "docs/current/c11c/C11C_2.17.7_VIDEO_DELIVERY_STANDARD.md",
+    "README.txt"
+  ]
+}

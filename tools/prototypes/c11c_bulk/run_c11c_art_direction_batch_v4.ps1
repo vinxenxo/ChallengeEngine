@@ -19,6 +19,7 @@ if($All -or (-not $Loops -and -not $Drills -and -not $Longforms)){ $selection.lo
 
 $ProjectRoot=(Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 . (Join-Path $PSScriptRoot 'C11CProductionBatchCommon.ps1')
+. (Join-Path $PSScriptRoot 'C11CReviewWorkerIsolation.ps1')
 if([string]::IsNullOrWhiteSpace($ReviewRoot)){ $ReviewRoot=Join-Path $ProjectRoot 'artifacts\prototypes\c11c_art_direction_review' }
 if($Reset -and (Test-Path -LiteralPath $ReviewRoot)){Remove-Item -LiteralPath $ReviewRoot -Recurse -Force}
 if($Resume -and -not (Test-Path -LiteralPath $ReviewRoot)){ throw "Cannot resume: review root does not exist: $ReviewRoot" }
@@ -33,7 +34,8 @@ if($Resume -and (Test-Path -LiteralPath $statePath)){
         $existingState=Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
         if($existingState.seeds){ $Seeds=@($existingState.seeds | ForEach-Object {[int]$_}) }
         # Only reuse the completion ledger when it belongs to this exact review revision.
-        # Frozen 2.16.9 is the authoritative review-tool revision.
+        # 2.16.9 remains the authoritative Visual Loop review-contract revision; 2.19.6
+        # changes only orchestration isolation and repository/tooling provenance.
         if([string]$existingState.revision -eq '2.16.9'){
             if($existingState.completed_loops){ foreach($item in @($existingState.completed_loops)){ $completedLoops[[string]$item]=$true } }
             if($existingState.completed_longforms){ foreach($item in @($existingState.completed_longforms)){ $completedLongforms[[string]$item]=$true } }
@@ -127,7 +129,7 @@ function Save-State {
         last_item=[ordered]@{key=$Key;status=$Status}
     }
     $tmp=$statePath+'.tmp'
-    [System.IO.File]::WriteAllText($tmp,($state|ConvertTo-Json -Depth 10),(New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false))
+    [System.IO.File]::WriteAllText($tmp,($state|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
     Move-Item -LiteralPath $tmp -Destination $statePath -Force
 }
 
@@ -181,11 +183,8 @@ function Test-DrillsComplete {
 }
 
 function Start-LoopReviewJob {
-    param([string]$FamilyId,[string]$Grammar,[int]$Seed,[string]$FamilyRoot)
-    $launcher=Join-Path $ProjectRoot ("tools\prototypes\$FamilyId\run_prototype.ps1")
-    # Invisible Forces has seven grammars and therefore reuses five seeds. The grammar tag
-    # must be part of every filename so concurrent workers can never delete/overwrite each
-    # other's authoring, manifest, social or MP4 artifacts.
+    param([string]$FamilyId,[string]$Grammar,[int]$Seed,[string]$FamilyRoot,[int]$WorkerSlot,[string]$WorkerRoot)
+    $launcherRelative=Join-Path ("tools\prototypes\$FamilyId") 'run_prototype.ps1'
     $stemPrefix=switch($FamilyId){
         'c11c_geometric_waves_v1' { 'GeometricWaves_v1' }
         'c11c_fractal_bloom_v1' { 'FractalBloom_v1' }
@@ -197,26 +196,36 @@ function Start-LoopReviewJob {
     $outputTagSafe=if([string]::IsNullOrWhiteSpace($Grammar)){ '' } else { '_' + ($Grammar -replace '[^A-Za-z0-9_-]','_') }
     $reviewStem="${stemPrefix}_seed_${Seed}${outputTagSafe}"
     $authoringOutputPath=Join-Path $FamilyRoot ($reviewStem + '_authoring.json')
-    $childArgs=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$launcher,'-Seed',$Seed,'-Grammar',$Grammar,'-Duration','23','-OutputRoot',$FamilyRoot,'-OutputTag',$Grammar)
-    if($NoSound){$childArgs += '-NoSound'}
-    if($ExportGif){$childArgs += '-ExportGif'}
+    $runnerArgs=@('-Seed',$Seed,'-Grammar',$Grammar,'-Duration','23','-OutputRoot',$FamilyRoot,'-OutputTag',$Grammar)
+    if($NoSound){$runnerArgs += '-NoSound'}
+    if($ExportGif){$runnerArgs += '-ExportGif'}
     $job=Start-Job -ScriptBlock {
-        param($ChildArgs,$Root,$AuthoringOutputPath)
-        Set-Location $Root
-        # Explicit per-worker authoring path. This is intentionally scoped to the child
-        # process so OutputRoot + grammar tag remain isolated under seven concurrent workers.
+        param($WorkerRoot,$LauncherRelative,$RunnerArgs,$AuthoringOutputPath,$WorkerSlot,$FamilyId,$Grammar,$Seed)
+        Set-Location $WorkerRoot
+        $env:C11C_REVIEW_WORKER_SLOT=[string]$WorkerSlot
         $env:C11C_AUTHORING_OUTPUT_PATH=[System.IO.Path]::GetFullPath($AuthoringOutputPath)
-        & powershell.exe @ChildArgs
-        if($LASTEXITCODE -ne 0){throw "Review render failed: exit=$LASTEXITCODE"}
-    } -ArgumentList (,$childArgs),$ProjectRoot,$authoringOutputPath
+        $activityMarker=Join-Path $WorkerRoot '.c11c_worker_active'
+        [System.IO.File]::WriteAllText($activityMarker,(Get-Date).ToString('o'),(New-Object System.Text.UTF8Encoding($false)))
+        $workerLauncher=Join-Path $WorkerRoot $LauncherRelative
+        if(-not(Test-Path -LiteralPath $workerLauncher)){throw "Worker launcher missing: $workerLauncher"}
+        try {
+            Write-Host "[C11-C-WORKER] slot=$WorkerSlot family=$FamilyId grammar=$Grammar seed=$Seed root=$WorkerRoot"
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $workerLauncher @RunnerArgs
+            if($LASTEXITCODE -ne 0){throw "Review render failed: exit=$LASTEXITCODE"}
+        } finally {
+            Remove-Item -LiteralPath $activityMarker -Force -ErrorAction SilentlyContinue
+        }
+    } -ArgumentList $WorkerRoot,$launcherRelative,$runnerArgs,$authoringOutputPath,$WorkerSlot,$FamilyId,$Grammar,$Seed
     $job | Add-Member NoteProperty C11Family $FamilyId
     $job | Add-Member NoteProperty C11Grammar $Grammar
     $job | Add-Member NoteProperty C11Seed $Seed
+    $job | Add-Member NoteProperty C11WorkerSlot $WorkerSlot
+    $job | Add-Member NoteProperty C11WorkerRoot $WorkerRoot
     return $job
 }
 
 Write-Host '[C11-C-ART-DIRECTION] =========================================='
-Write-Host '[C11-C-ART-DIRECTION] REVIEW V7 - selective stages / grouped / resumable / isolated artifacts'
+Write-Host '[C11-C-ART-DIRECTION] REVIEW V10 — 7-worker isolated / grouped / resumable / isolated artifacts / Godot class-cache bootstrap'
 Write-Host "[C11-C-ART-DIRECTION] Root: $ReviewRoot"
 Write-Host "[C11-C-ART-DIRECTION] Workers: $Workers | seeds: $($Seeds.Count) | GIF=$ExportGif | Resume=$Resume | Loops=$($selection.loops) | Drills=$($selection.drills) | Longforms=$($selection.longforms)"
 Write-Host '[C11-C-ART-DIRECTION] AVI temporary by default; GIF opt-in.'
@@ -241,13 +250,14 @@ if($selection.loops){
         }
     }
     if($Resume){
-        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN - $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
+        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN — $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
     }
-    $active=@()
-    foreach($task in @($loopTasks)){
-        $active += Start-LoopReviewJob -FamilyId $task.FamilyId -Grammar $task.Grammar -Seed $task.Seed -FamilyRoot $task.FamilyRoot
-        while(@($active | Where-Object {$_.State -eq 'Running'}).Count -ge $Workers){
-            Start-Sleep -Milliseconds 350
+    $workerPool=New-C11CReviewWorkerPool -ProjectRoot $ProjectRoot -Count $Workers
+    $maxObservedWorkerConcurrency=0
+    try {
+        $active=@()
+        $nextTaskIndex=0
+        while($nextTaskIndex -lt $loopTasks.Count -or $active.Count -gt 0){
             foreach($done in @($active | Where-Object {$_.State -in @('Completed','Failed','Stopped')})){
                 if($done.State -ne 'Completed'){
                     Receive-Job $done -ErrorAction Continue | Out-Host
@@ -258,24 +268,43 @@ if($selection.loops){
                 Save-State -Stage 'LOOPS' -Key "$($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)" -Status 'COMPLETE'
                 Remove-Job $done -Force
             }
-            $active=@($active | Where-Object {$_.State -eq 'Running'})
-        }
-    }
-    while($active.Count -gt 0){
-        Start-Sleep -Milliseconds 350
-        foreach($done in @($active | Where-Object {$_.State -in @('Completed','Failed','Stopped')})){
-            if($done.State -ne 'Completed'){
-                Receive-Job $done -ErrorAction Continue | Out-Host
-                Remove-Job $done -Force
-                throw "Parallel Visual Loop review render failed: $($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)"
+            $active=@($active | Where-Object {$_.State -notin @('Completed','Failed','Stopped')})
+            $currentWorkerConcurrency=0
+            foreach($worker in @($workerPool.Workers)){
+                if(Test-Path -LiteralPath (Join-Path ([string]$worker.Root) '.c11c_worker_active')){ $currentWorkerConcurrency++ }
             }
-            Receive-Job $done -ErrorAction Stop | Out-Host
-            Save-State -Stage 'LOOPS' -Key "$($done.C11Family)/$($done.C11Grammar)/$($done.C11Seed)" -Status 'COMPLETE'
-            Remove-Job $done -Force
-        }
-        $active=@($active | Where-Object {$_.State -eq 'Running'})
-    }
+            if($currentWorkerConcurrency -gt $maxObservedWorkerConcurrency){
+                $maxObservedWorkerConcurrency=$currentWorkerConcurrency
+                Write-Host "[C11-C-WORKER] observed_concurrency=$maxObservedWorkerConcurrency"
+            }
 
+            while($active.Count -lt $Workers -and $nextTaskIndex -lt $loopTasks.Count){
+                $task=$loopTasks[$nextTaskIndex]
+                $slot=-1
+                for($candidate=0;$candidate -lt $workerPool.Workers.Count;$candidate++){
+                    if(-not(@($active | Where-Object {$_.C11WorkerSlot -eq $candidate}).Count)){ $slot=$candidate; break }
+                }
+                if($slot -lt 0){break}
+                $workerRoot=[string]$workerPool.Workers[$slot].Root
+                $active += Start-LoopReviewJob -FamilyId $task.FamilyId -Grammar $task.Grammar -Seed $task.Seed -FamilyRoot $task.FamilyRoot -WorkerSlot $slot -WorkerRoot $workerRoot
+                $nextTaskIndex++
+            }
+
+            if($active.Count -gt 0){ Start-Sleep -Milliseconds 350 }
+        }
+    } finally {
+        foreach($job in @($active)){
+            if($job.State -eq 'Running'){ Stop-Job $job -ErrorAction SilentlyContinue }
+            if($job.State -in @('Completed','Failed','Stopped')){ Remove-Job $job -Force -ErrorAction SilentlyContinue }
+        }
+        Remove-C11CReviewWorkerPool -Pool ([string]$workerPool.Root)
+    }
+    if($loopTasks.Count -gt 1 -and $Workers -gt 1){
+        if($maxObservedWorkerConcurrency -lt 2){
+            throw "Parallel review contract failed: Workers=$Workers but maximum observed worker concurrency was $maxObservedWorkerConcurrency."
+        }
+        Write-Host "[C11-C-WORKER] MAX_OBSERVED_CONCURRENCY=$maxObservedWorkerConcurrency"
+    }
 }
 
 if($selection.longforms){
@@ -307,7 +336,7 @@ if($selection.longforms){
 if($selection.drills){
     $drillStage=Join-Path $ReviewRoot '_drill_stage'
     if($Resume -and (Test-DrillsComplete -Root $ReviewRoot)){
-        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills - complete.'
+        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills — complete.'
         Save-State -Stage 'DRILLS' -Key 'all' -Status 'SKIP_EXISTING'
     } else {
         $drillParams=@{
@@ -336,18 +365,22 @@ if($selection.drills){
 }
 
 $manifest=[ordered]@{
-    schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V5'
-    revision='2.16.9'
+    schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V6'
+    revision='2.19.6'
     status='COMPLETE'
     selected_stages=$selection
     root=$ReviewRoot
     workers=$Workers
+    worker_isolation='per_worker_temporary_godot_project'
+    worker_bootstrap='per_worker_godot_headless_editor_class_scan'
+    worker_global_script_class_cache='required'
+    max_observed_worker_concurrency=if($selection.loops){$maxObservedWorkerConcurrency}else{0}
     seeds=@($Seeds)
     resume_enabled=$true
     gif_enabled=[bool]$ExportGif
     avi_retained=$false
     final_structure='family-flat'
-    loop_duration_policy='20..23s; extraordinary review uses 23s for visual comparison'
+    loop_duration_policy='23s review capture; source visual production manifests remain revision 2.16.3'
     longform_duration='180s'
     longform_transition='dissolve continuity; never through black'
     longform_final_fade='1s to black'
@@ -355,5 +388,5 @@ $manifest=[ordered]@{
     loop_families=@($loopFamilies.Keys)
     drill_families=@('tracking','saccade','pursuit','peripheral_scan')
 }
-[System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'),($manifest|ConvertTo-Json -Depth 10),(New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false))
-Write-Host "[C11-C-ART-DIRECTION] COMPLETE - grouped review root: $ReviewRoot"
+[System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'),($manifest|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
+Write-Host "[C11-C-ART-DIRECTION] COMPLETE — grouped review root: $ReviewRoot"

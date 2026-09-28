@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Arte de sectores angulares. Tu cerebro procesa la periferia sin que te des cuenta.
+
+PERIPHERAL SCAN - Visual drill de presentación procedural y determinista.
+
+Familia: PERIPHERAL SCAN
+Seed: 1065574018
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt
+
+TITLE:
+PERIPHERAL SCAN - VISUAL DRILL
+
+DESCRIPTION:
+PERIPHERAL SCAN - Visual drill de presentación procedural y determinista.
+
+Familia: PERIPHERAL SCAN
+Seed: 1065574018
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: peripheral_scan
+SEED: 1065574018
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt
+
+HEADER HOOK:
+Arte de sectores angulares. Tu cerebro procesa la periferia sin que te des cuenta.

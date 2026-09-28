@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+SUBRUTINA // TERMINAL PSI -> CUADRUPOLO MAGNETICO // STEADY // TRACES 80 | PULSE 1.25
+
+SUBRUTINA // TERMINAL PSI -> CUADRUPOLO MAGNETICO // STEADY // TRACES 80 | PULSE 1.25
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SADDLE FIELD
+- Paleta: crimson_lime_gold
+- Seed: 382421507
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #SADDLEFIELD
+
+SUBRUTINA // TERMINAL PSI -> CUADRUPOLO MAGNETICO // STEADY // TRACES 80 | PULSE 1.25
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SADDLE FIELD
+- Paleta: crimson_lime_gold
+- Seed: 382421507
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - SADDLE FIELD
+
+DESCRIPTION:
+SUBRUTINA // TERMINAL PSI -> CUADRUPOLO MAGNETICO // STEADY // TRACES 80 | PULSE 1.25
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SADDLE FIELD
+- Paleta: crimson_lime_gold
+- Seed: 382421507
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: SADDLE FIELD
+PALETTE: crimson_lime_gold
+SEED: 382421507
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / FLOWING_VECTOR
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+SUBRUTINA // TERMINAL PSI -> CUADRUPOLO MAGNETICO // STEADY // TRACES 80 | PULSE 1.25
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #SADDLEFIELD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 382421507 -Grammar saddle_field -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\05_Invisible_Forces -OutputTag saddle_field
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_382421507_saddle_field_manifest.json

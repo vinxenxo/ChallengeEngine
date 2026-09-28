@@ -105,12 +105,10 @@ Historical C11-A.1 qualification is 9 Challenges × 6 seed cases = 54 executions
 
 ## Producer relocation
 
-The live Producer is now `c11c-suite/c11c-producer/`. The former `c11c-producer/` remains only as a compatibility launcher so older console workflows do not break. This is a tooling relocation, not a backend relocation.
+The live Producer is `c11c-suite/c11c-producer/`. Older root-level Producer material is historical only and is not part of the live source path. This is a filesystem/tooling relocation, not a backend relocation.
 
 ## Addendum 0.1.2 — test surface parity
 
 The Suite treats `tests/run_all.py` + `KNOWN_SUITES` as the canonical logical test registry. `c11c-test` reads that registry instead of maintaining a duplicated individual-suite list. Console launchers are provided alongside the GUI so the same test corpus remains operable without PySide6.
-
-## Addendum 0.1.2 — test surface parity
 
 `tests/run_all.py` + `KNOWN_SUITES` constituyen el registro canónico de suites lógicas. `c11c-test` lo consulta dinámicamente. Los lanzadores `run_all.bat` y `run_suite.bat` proporcionan la misma superficie básica sin depender del GUI.

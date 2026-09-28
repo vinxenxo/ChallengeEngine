@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Tu cerebro intentarÃ¡ predecir la curva... y va a fallar en el segundo 12.
+
+TRACKING - Visual drill de presentación procedural y determinista.
+
+Familia: TRACKING
+Seed: 1347729541
+Detalles: Duración 24s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt
+
+TITLE:
+TRACKING - VISUAL DRILL
+
+DESCRIPTION:
+TRACKING - Visual drill de presentación procedural y determinista.
+
+Familia: TRACKING
+Seed: 1347729541
+Detalles: Duración 24s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: tracking
+SEED: 1347729541
+DURATION: 30 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt
+
+HEADER HOOK:
+Tu cerebro intentarÃ¡ predecir la curva... y va a fallar en el segundo 12.

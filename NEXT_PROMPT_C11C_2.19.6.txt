@@ -1,0 +1,12 @@
+﻿AUTHORITATIVE NEXT CONTEXT: C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN
+
+Read first:
+- C11C_2.19.6_CONTEXT_INDEX.md
+- docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md
+- docs/master-prompts/START_PROMPT_C11C_2.19.6_CONSOLIDATED.md
+- docs/current/c11c/C11-C_2.19.6_CONSOLIDATED_STATE.md
+- docs/current/c11c/C11-C_2.19.6_ACCEPTANCE_GATE.md
+
+Runtime objective: focused worker contract PASS, then `run_c11c_art_direction_batch_v4.ps1 -Workers 7 -Loops -Reset` with per-worker class-cache bootstrap and `MAX_OBSERVED_CONCURRENCY > 1`.
+
+Never restore the global mutex or serialize the captures. `c11c-suite` is active; `c11c-studio` is retired.

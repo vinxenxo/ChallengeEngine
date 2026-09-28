@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+DEMONIO: CORTAFUEGOS CUANTICO // FRACTAL DE JULIA // DETAIL 0.91 | BRANCH 0.81
+
+DEMONIO: CORTAFUEGOS CUANTICO // FRACTAL DE JULIA // DETAIL 0.91 | BRANCH 0.81
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: FRACTAL FILIGREE
+- Paleta: acid_lime_violet
+- Seed: 1708519456
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #FRACTALFILIGREE
+
+DEMONIO: CORTAFUEGOS CUANTICO // FRACTAL DE JULIA // DETAIL 0.91 | BRANCH 0.81
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: FRACTAL FILIGREE
+- Paleta: acid_lime_violet
+- Seed: 1708519456
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+FRACTAL BLOOM - FRACTAL FILIGREE
+
+DESCRIPTION:
+DEMONIO: CORTAFUEGOS CUANTICO // FRACTAL DE JULIA // DETAIL 0.91 | BRANCH 0.81
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: FRACTAL FILIGREE
+- Paleta: acid_lime_violet
+- Seed: 1708519456
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: FRACTAL FILIGREE
+PALETTE: acid_lime_violet
+SEED: 1708519456
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+DEMONIO: CORTAFUEGOS CUANTICO // FRACTAL DE JULIA // DETAIL 0.91 | BRANCH 0.81
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #FRACTALFILIGREE
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 1708519456 -Grammar fractal_filigree -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\02_Fractal_Bloom -OutputTag fractal_filigree
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_1708519456_fractal_filigree_manifest.json

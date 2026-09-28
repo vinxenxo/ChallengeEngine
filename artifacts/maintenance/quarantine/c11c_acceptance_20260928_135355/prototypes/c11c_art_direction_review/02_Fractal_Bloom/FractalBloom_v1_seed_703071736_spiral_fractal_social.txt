@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+[DECK] ASTROLABIO DE LATON :: FRACTAL DE JULIA :: DETAIL 0.93 | BRANCH 1.21
+
+[DECK] ASTROLABIO DE LATON :: FRACTAL DE JULIA :: DETAIL 0.93 | BRANCH 1.21
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SPIRAL FRACTAL
+- Paleta: coral_ultraviolet
+- Seed: 703071736
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #SPIRALFRACTAL
+
+[DECK] ASTROLABIO DE LATON :: FRACTAL DE JULIA :: DETAIL 0.93 | BRANCH 1.21
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SPIRAL FRACTAL
+- Paleta: coral_ultraviolet
+- Seed: 703071736
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+FRACTAL BLOOM - SPIRAL FRACTAL
+
+DESCRIPTION:
+[DECK] ASTROLABIO DE LATON :: FRACTAL DE JULIA :: DETAIL 0.93 | BRANCH 1.21
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SPIRAL FRACTAL
+- Paleta: coral_ultraviolet
+- Seed: 703071736
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: SPIRAL FRACTAL
+PALETTE: coral_ultraviolet
+SEED: 703071736
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+[DECK] ASTROLABIO DE LATON :: FRACTAL DE JULIA :: DETAIL 0.93 | BRANCH 1.21
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #SPIRALFRACTAL
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 703071736 -Grammar spiral_fractal -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\02_Fractal_Bloom -OutputTag spiral_fractal
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_703071736_spiral_fractal_manifest.json

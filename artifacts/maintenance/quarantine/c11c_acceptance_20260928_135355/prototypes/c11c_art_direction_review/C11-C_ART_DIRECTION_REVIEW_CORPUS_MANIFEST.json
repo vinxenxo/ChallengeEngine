@@ -1,0 +1,51 @@
+{
+    "schema":  "C11-C-ART-DIRECTION-REVIEW-CORPUS-V5",
+    "revision":  "2.16.9",
+    "status":  "COMPLETE",
+    "selected_stages":  {
+                            "loops":  false,
+                            "drills":  false,
+                            "longforms":  true
+                        },
+    "root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review",
+    "workers":  7,
+    "seeds":  [
+                  1116832899,
+                  631853388,
+                  1335909959,
+                  359306462,
+                  1868840943
+              ],
+    "resume_enabled":  true,
+    "gif_enabled":  false,
+    "avi_retained":  false,
+    "final_structure":  "family-flat",
+    "loop_duration_policy":  "20..23s; extraordinary review uses 23s for visual comparison",
+    "longform_duration":  "180s",
+    "longform_transition":  "dissolve continuity; never through black",
+    "longform_final_fade":  "1s to black",
+    "family_folders":  {
+                           "geometric":  "01_Geometric_Waves",
+                           "fractal":  "02_Fractal_Bloom",
+                           "sacred_symmetry":  "03_Sacred_Symmetry",
+                           "living_particles":  "04_Living_Particles",
+                           "invisible_forces":  "05_Invisible_Forces",
+                           "tracking":  "06_Tracking",
+                           "saccade":  "07_Saccade",
+                           "pursuit":  "08_Pursuit",
+                           "peripheral_scan":  "09_Peripheral_Scan"
+                       },
+    "loop_families":  [
+                          "geometric",
+                          "fractal",
+                          "sacred_symmetry",
+                          "living_particles",
+                          "invisible_forces"
+                      ],
+    "drill_families":  [
+                           "tracking",
+                           "saccade",
+                           "pursuit",
+                           "peripheral_scan"
+                       ]
+}

@@ -1,0 +1,14 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+
+=== GENERADOR MAESTRO INICIADO ===
+[VALIDATION] relative_winning_frame=149 absolute_winning_frame=149 valid_window=0-420 close_calls=9 valid=true
+[VALIDATION] relative_winning_frame=149 absolute_winning_frame=149 valid_window=0-420 close_calls=9 valid=true
+[C6-F4.3] Effective Runtime + independent legacy oracle: PASS
+[C6E_PROFILE] id=social_default_v1 source=(540.0, 960.0) master=(1080.0, 1920.0) safe=[P: (24.0, 24.0), S: (492.0, 912.0)]
+[C6_UI] root=UnifiedSocialFrame:<Control#53133444564> size=(540.0, 960.0) position=(0.0, 0.0)
+[C6_REFERENCE_FRAME] index=149 mode=WINNING_FRAME reason=Certified winning_frame
+[C6_SWEEP_AUDIT] id=CHALLENGE_006 mechanic=catch_v1 mode=WINNING_FRAME frame_idx=149 reason=Certified winning_frame
+[TELEMETRY_JSON]{"attempts":1,"close_calls":9,"cta_frames":120,"final_seed":314159,"game_frames":420,"godot_version":"4.7.1-stable (official)","hook_frames":0,"initial_seed":314159,"minimum_distance":9.06491565704346,"reveal_frames":0,"rng_version":"2.0","score":0.798557429843479,"seed_used":314159,"total_frames":540,"validate_only":true,"winning_frame":149,"winning_frame_game":149,"winning_frame_in_valid_window":true,"winning_time":2.48333333333333,"winning_time_game":2.48333333333333}
+[AUDIO_EXPORT_JSON] {"audio_enabled":false}
+[C6_TARGET] space=0 presentation_pos=(378.5, 480.0)
+[C11B_VISIBILITY_JSON]{"audit_space":"Body_presentation_math","body_rect":"[P: (0.0, 144.0), S: (540.0, 672.0)]","challenge_id":"CHALLENGE_006","entities":[{"has_geometry":true,"id":"object","screen_rect":"[P: (220.0, 347.5482), S: (100.0, 100.0)]","visible":true},{"has_geometry":true,"id":"target","screen_rect":"[P: (216.9647, 348.4718), S: (100.0, 100.0)]","visible":true}],"errors":[],"framing_policy":"STATIC_CANVAS","object_actual_position":"(270.0, 397.5482)","object_expected_position":"(270.0, 397.5482)","object_logical_position":"(540.0, 724.4235)","pass":true,"presentation_frame_offset":"(0.0, 0.0)","winning_frame":149,"winning_frame_game":149}

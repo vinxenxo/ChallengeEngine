@@ -1,0 +1,53 @@
+{
+  "branch": "C11-C",
+  "revision": "2.19.5",
+  "status": "FINAL_REPAIR_CANDIDATE_NOT_FROZEN",
+  "purpose": "Final consolidation of the 2.19 branch: non-serialized worker-local Movie Maker capture, PowerShell worker interpolation repair, launcher audit and documentation consolidation.",
+  "test_harness_repair": {
+    "file": "tests/C11CParallelReviewWorkerIsolationContractTest.gd",
+    "before": "extends SceneTree + _ready() entrypoint",
+    "after": "extends SceneTree + _initialize() entrypoint",
+    "reason": "SceneTree inherits MainLoop; command-line MainLoop scripts use _initialize().",
+    "production_code_changed": false
+  },
+  "worker_architecture": {
+    "mode": "per_worker_temporary_godot_project",
+    "workers": "1..7",
+    "global_mutex": false,
+    "global_serialization": false,
+    "required_runtime_evidence": "MAX_OBSERVED_CONCURRENCY > 1",
+    "runtime_proof_required": "MAX_OBSERVED_CONCURRENCY > 1"
+  },
+  "suite": {
+    "version": "0.1.4",
+    "canonical_root": "c11c-suite",
+    "retired_root": "c11c-studio",
+    "retired_root_is_operational_dependency": false,
+    "launcher_policy": "all canonical c11c-suite launchers audited and normalized for repository-root execution + exit-code propagation; c11c-maintenace is compatibility alias only; c11c-studio retired"
+  },
+  "manufacturing": {
+    "social_logical": "540x960",
+    "review": "720x1280@30",
+    "master": "1080x1920",
+    "visual_loop_families": 5,
+    "visual_loop_grammars": 27,
+    "visual_drill_families": 4,
+    "tracking_seconds": 27,
+    "other_drill_seconds": 23,
+    "longforms": "5x180s"
+  },
+  "verification": {
+    "static_container_validation": true,
+    "windows_godot_runtime_validation": false,
+    "freeze_allowed": false
+  },
+  "final_repairs": {
+    "movie_capture_helper": "tools/prototypes/c11c_common/C11CMovieCapture.ps1",
+    "movie_capture_serialization": "forbidden; helper is lock-free because each worker has an isolated Godot project root",
+    "worker_helper": "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1",
+    "power_shell_interpolation": "$i: -> ${i}:",
+    "parallel_contract_test": "tests/C11CParallelReviewWorkerIsolationContractTest.gd",
+    "acceptance_manifest_check": "FULL_ACCEPTANCE_C11C_2.19.5.ps1",
+    "launcher_normalization": "canonical c11c-suite BAT launchers set C11C_PROJECT_ROOT, cd to repository root and preserve child exit codes"
+  }
+}

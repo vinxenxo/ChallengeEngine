@@ -1,25 +1,43 @@
-# Testing and Regression — Current
+﻿# Testing and Regression — C11-C 2.19.6
 
-## Mandatory gate
+## Current status
+
+The repository is under consolidated repair acceptance. The former 2.19.2 freeze claim is not the current acceptance authority.
+
+The 2.19.6 candidate adds a static contract for the Art Direction worker model and Suite self-test coverage for retired-studio isolation. Runtime Windows/Godot proof of concurrent capture remains an explicit acceptance gate.
+
+## Canonical logical commands
 
 ```powershell
+python .\c11c-suite\self_test.py
+python .\c11c-suite\c11c-producer\self_test.py
+python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
 python .\tests\run_all.py
 ```
 
-Every discovered `*Test.gd` requires an explicit entry in `KNOWN_SUITES` and an explicit PASS marker. Missing registration is a fatal error.
+Focused worker contract:
 
-When a suite fails, `run_all.py` re-runs that suite with `--verbose` and stores the diagnostic log in `artifacts/tests/logs/verbose/`.
+```powershell
+.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+```
 
-## C11-C focused contracts
+## Runtime concurrency proof
 
-Run focused C11-C tests when changing visual tooling, then run the full suite. Physical production success does not replace logical regression.
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File .\tools\prototypes\c11c_bulk\run_c11c_art_direction_batch_v4.ps1 `
+  -Workers 7 `
+  -Loops `
+  -Reset
+```
 
-## Producer / Suite tooling
+The run must report `MAX_OBSERVED_CONCURRENCY` greater than one. A one-at-a-time run is a failure of the 2.19.6 concurrency contract.
 
-`c11c-suite/c11c-producer/self_test.py` validates Producer syntax/schema/backend-profile alignment and launchers. `c11c-producer/` at the repository root is now compatibility-only.
+## Full candidate gate
 
-The Suite `c11c-test` GUI reads `tests/run_all.py` rather than maintaining a duplicated test registry.
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File .\FULL_ACCEPTANCE_C11C_2.19.6.ps1
+```
 
-## New focused production-wrapper regression
-
-`tests/C11CProductionReviewCopySafetyTest.gd` protects the REVIEW_720 same-path orchestration case: the canonical loop production wrapper must not call `Copy-Item` with identical source and destination paths.
+Physical production success does not replace logical regression, and a static concurrency contract does not replace a real multi-worker capture.

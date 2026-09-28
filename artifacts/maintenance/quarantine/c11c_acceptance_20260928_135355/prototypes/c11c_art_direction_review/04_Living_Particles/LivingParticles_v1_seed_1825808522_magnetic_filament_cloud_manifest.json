@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.4_LIVING_PARTICLES_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  1825808522,
+    "family_id":  "living_particles",
+    "technical_id":  "particle_flow",
+    "artistic_name":  "Living Particles",
+    "production_id":  "c11c_living_particles_v1",
+    "runtime_id":  "living_particles",
+    "display_name":  "LIVING PARTICLES",
+    "grammar_id":  "magnetic_filament_cloud",
+    "grammar":  "MAGNETIC FILAMENT CLOUD",
+    "palette":  "mint_chartreuse",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  23,
+                   "fps":  30,
+                   "frame_count":  690,
+                   "loop_cycles":  1,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "MAGNETIC_FILAMENT_CLOUD | DENSITY 1.01 | FLOW 0.66",
+                      "header_line_2":  "INDEXANDO MATERIA BIOLUMINISCENTE... [SINCRO] // PARTICLES 132 | COLLISION 0.83",
+                      "header_secondary":  "VISUAL LOOP / LIVING PARTICLES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "ORGANIC_BLOOM",
+                  "style":  "soft pulsed matter bed / rounded particle tones / fluid harmonic drift / midpoint swirl swell",
+                  "semantic_key":  "MAGNETIC FILAMENT CLOUD",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  23,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "LivingParticles_v1_seed_1825808522_magnetic_filament_cloud_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\04_Living_Particles",
+                            "output_tag":  "magnetic_filament_cloud"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_living_particles_v1\\run_prototype.ps1 -Seed 1825808522 -Grammar \"magnetic_filament_cloud\" -Duration 23 -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\04_Living_Particles\" -OutputTag \"magnetic_filament_cloud\"",
+    "technobabble":  "Indexando materia bioluminiscente... [SINCRO] // PARTICLES 132 | COLLISION 0.83",
+    "frozen_boundaries_modified":  false
+}

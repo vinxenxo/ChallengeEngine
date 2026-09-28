@@ -1,0 +1,57 @@
+{
+  "branch": "C11-C",
+  "revision": "2.19.6",
+  "status": "FINAL_REPAIR_CANDIDATE_NOT_FROZEN",
+  "purpose": "Consolidated 2.19 repair: genuine worker-local concurrency plus per-worker Godot class-cache bootstrap; active Suite ownership and 2.19 documentation consolidation.",
+  "root_cause": "Fresh worker project copies excluded .godot, so Godot lacked global_script_class_cache.cfg and could not resolve class_name PresentationProfile used by UnifiedSocialFrame.gd; Movie Maker then emitted gray/partial frames.",
+  "worker_architecture": {
+    "mode": "per_worker_temporary_godot_project",
+    "workers": "1..7",
+    "global_mutex": false,
+    "global_serialization": false,
+    "bootstrap": "godot --headless --editor --path <worker> --audio-driver Dummy --quit",
+    "class_cache": ".godot/global_script_class_cache.cfg",
+    "required_class": "PresentationProfile",
+    "capture_concurrency": "genuine; initialization only is sequential",
+    "runtime_evidence": "MAX_OBSERVED_CONCURRENCY > 1"
+  },
+  "suite": {
+    "version": "0.1.4",
+    "canonical_root": "c11c-suite",
+    "retired_root": "c11c-studio",
+    "retired_root_is_operational_dependency": false,
+    "compatibility_alias": "c11c-suite/c11c-maintenace/run.bat -> c11c-suite/c11c-maintenance/run.bat"
+  },
+  "producer": {
+    "version": "0.9.7",
+    "canonical_root": "c11c-suite/c11c-producer"
+  },
+  "manufacturing": {
+    "social_logical": "540x960",
+    "review": "720x1280@30",
+    "master": "1080x1920",
+    "visual_loop_families": 5,
+    "visual_loop_grammars": 27,
+    "visual_drill_families": 4,
+    "tracking_seconds": 27,
+    "other_drill_seconds": 23,
+    "longforms": "5x180s"
+  },
+  "frozen_boundaries": [
+    "C11-B simulation truth/math/mechanics",
+    "RNG algorithm/streams/ownership",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C7 audio contracts/ownership",
+    "C9 semantics",
+    "logical 540x960 social geometry"
+  ],
+  "verification": {
+    "static_container_validation": "required and recorded before delivery",
+    "windows_godot_runtime_validation": false,
+    "freeze_allowed": false
+  }
+}

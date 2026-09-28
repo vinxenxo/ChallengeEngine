@@ -1,0 +1,21 @@
+{
+  "overlay": "C11C_2.19.0_PRODUCER_AVI_CAPTURE_ROUTE_REPAIR",
+  "base": "C11-C 2.18.9",
+  "scope": "Producer Visual Drill capture route and version consistency",
+  "runtime_boundary": "No mechanics/simulation/RNG changes",
+  "files": [
+    "C11C_2.19.0_PRODUCER_AVI_CAPTURE_ROUTE_REPAIR.md",
+    "CHANGELOG_C11-C_2.19.0.md",
+    "README.md",
+    "c11c-suite/self_test.py",
+    "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+    "c11c-suite/c11c-producer/main.py",
+    "c11c-suite/c11c-producer/self_test.py",
+    "c11c-suite/c11c-producer/test_producer_gui_contract.py",
+    "c11c-suite/c11c-producer/README.md",
+    "c11c-suite/c11c-producer/BUILD_MANIFEST.json",
+    "c11c-suite/c11c-producer/producer_schema.json",
+    "c11c-suite/c11c-producer/producer_schema_source.json",
+    "tests/C11CVisualDrillMovieCaptureContractTest.gd"
+  ]
+}

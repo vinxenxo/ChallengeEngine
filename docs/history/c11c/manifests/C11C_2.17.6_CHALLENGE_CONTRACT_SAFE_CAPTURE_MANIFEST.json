@@ -1,0 +1,33 @@
+{
+  "revision": "2.17.6",
+  "baseline": "C11-C 2.17.5 additive Challenge wrapper over C11-C 2.16.9 FROZEN",
+  "status": "ADDITIVE_REPAIR_PENDING_USER_SMOKE",
+  "scope": [
+    "Challenge production orchestration",
+    "Challenge bulk QA orchestration",
+    "current Challenge capture contract documentation"
+  ],
+  "frozen_boundaries_untouched": [
+    "C11-B simulation truth",
+    "Challenge mechanics",
+    "RNG ownership",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream semantics",
+    "C7 audio contracts",
+    "C9 challenge authoring semantics",
+    "logical 540x960 social geometry"
+  ],
+  "physical_strategy": {
+    "godot_source": "540x960",
+    "review_720_delivery": "720x1280",
+    "meta_reels_delivery": "1080x1920",
+    "scale_stage": "post-capture FFmpeg",
+    "filter": "lanczos"
+  },
+  "timing_strategy": "phase_sum_only",
+  "legacy_total_duration_policy": "ignored",
+  "diagnostics_on_failure": "scratch_stage_retained"
+}

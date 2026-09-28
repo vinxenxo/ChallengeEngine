@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+MatemÃ¡tica ambiental hecha arte. Deja que tus ojos fluyan con la curva.
+
+PURSUIT - Visual drill de presentación procedural y determinista.
+
+Familia: PURSUIT
+Seed: 791270272
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Pursuit #SmoothPursuit #FovealAttention #VisualChallenge #ProceduralArt
+
+TITLE:
+PURSUIT - VISUAL DRILL
+
+DESCRIPTION:
+PURSUIT - Visual drill de presentación procedural y determinista.
+
+Familia: PURSUIT
+Seed: 791270272
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: pursuit
+SEED: 791270272
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Pursuit #SmoothPursuit #FovealAttention #VisualChallenge #ProceduralArt
+
+HEADER HOOK:
+MatemÃ¡tica ambiental hecha arte. Deja que tus ojos fluyan con la curva.

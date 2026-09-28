@@ -1,55 +1,39 @@
-# D0 — Historical / Legacy Roadmap Synthesis
+﻿# D0 — Historical / Legacy Roadmap Synthesis
 
-## Sources reviewed
+## Historical lineage
 
-The D sequence is derived from the frozen current roadmap plus the older roadmap and contracts preserved under `docs/history/`. The key references are:
+The preserved roadmap/contracts show a progression from deterministic mechanics and stateless RNG through authoring/runtime boundaries, audiovisual production, provenance and productization. The historical C11-D Final Export intent sits after the C11-C manufacturing layer.
 
-- `docs/07_ROADMAP.md` — current C11 freeze → C11-D Final Export → C11-E Distribution lineage.
-- `docs/history/reference/06_ROADMAP.md` — historical C11-C Art Direction, C11-D Final Export and C11-E Distribution.
-- `docs/history/reference/ROADMAP_PHASES.md` — historical architecture progression from base pipeline through stateless RNG, semantic streams, authoring/runtime boundaries and productization.
-- `docs/history/reference/contracts/MECHANICS_SPECIFICATION_V0.1.md` — six mathematical mechanic families and the distinction between mechanics and presentation/themes.
-- `docs/history/reference/contracts/PRODUCTION_PROVENANCE_CONTRACT_V1.0.md` — provenance categories, manifest authority, asset-family/version fields and canonical production evidence.
+## D interpretation
 
-## What this means for D
-
-### Recover before redesign
-
-The historical roadmaps consistently place asset/template work and production productization after the core mechanics/runtime contracts. Therefore D starts by recovering the nine existing Challenges and their asset intent rather than inventing a new mechanic immediately.
-
-### Reusable asset families
-
-The historical production provenance contract already treats `asset_family_version` as declarative provenance. The older roadmap also calls for production assets and reusable templates. D should turn that intent into a first-class versioned asset-family registry instead of copying graphics into each Challenge.
-
-### Final export lineage
-
-The historical C11-D wording emphasizes production-grade exports, metadata, quality validation and packaging. D should inherit those goals after the Challenge production request, provenance and artifact model are normalized.
-
-### Mechanics remain separate
-
-The historical mechanics contract defines six mathematical families and explicitly distinguishes themes such as retro/garage/sports/scifi from mathematical families. The proposed Atari-2600-inspired presentation for D therefore belongs to the asset/presentation layer, not to the mechanic taxonomy.
-
-## Recommended D order
+The appropriate D sequence is:
 
 ```text
-D0  baseline + recovery inventory
- ↓
-D1  Challenge visual convergence
- ↓
-D2  asset family/template registry
- ↓
-D3  procedural music V5 design + implementation
- ↓
-D4  per-video production request / personalization
- ↓
-D5  artifact + provenance normalization
- ↓
-D6  seed registry / anti-reuse / traceability
- ↓
-D7  Challenge production matrix
- ↓
-D8  media QA / export / release evidence
- ↓
-D9  Suite evolution
+D0 baseline + recovery inventory
+  ↓
+D1 Challenge visual parity
+  ↓
+D2 asset family/template registry
+  ↓
+D3 Procedural Music V5
+  ↓
+D4 production request/personalization
+  ↓
+D5 provenance/artifact normalization
+  ↓
+D6 seed registry/traceability
+  ↓
+D7 Challenge production matrix
+  ↓
+D8 media QA/release evidence
+  ↓
+D9 Suite evolution
 ```
 
-New mechanics should be scheduled after these layers are sufficiently stable to avoid rebuilding the production pipeline around every new content family.
+This sequence avoids tying historical Challenge recovery to another one-off pipeline.
+
+## Entry condition
+
+D remains blocked while **C11-C 2.19.6 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN** is under acceptance. The 2.19.2 freeze claim is historical and invalidated for final-freeze purposes; its executable contracts are retained only as evidence. The active source of truth is the 2.19.6 C11-C current-state documentation.
+
+Historical snapshots remain evidence and may be consulted for recovery, but they do not override the freeze.

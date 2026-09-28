@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+[SYS] REENSAMBLANDO DINAMICA DE FLUIDOS A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // PARTICLES 163 | COLLISION 1.08
+
+[SYS] REENSAMBLANDO DINAMICA DE FLUIDOS A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // PARTICLES 163 | COLLISION 1.08
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: MAGNETIC FILAMENT CLOUD
+- Paleta: emerald_sea_green
+- Seed: 1141957028
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #MAGNETICFILAMENTCLOUD
+
+[SYS] REENSAMBLANDO DINAMICA DE FLUIDOS A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // PARTICLES 163 | COLLISION 1.08
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: MAGNETIC FILAMENT CLOUD
+- Paleta: emerald_sea_green
+- Seed: 1141957028
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+LIVING PARTICLES - MAGNETIC FILAMENT CLOUD
+
+DESCRIPTION:
+[SYS] REENSAMBLANDO DINAMICA DE FLUIDOS A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // PARTICLES 163 | COLLISION 1.08
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: MAGNETIC FILAMENT CLOUD
+- Paleta: emerald_sea_green
+- Seed: 1141957028
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: living_particles
+GRAMMAR: MAGNETIC FILAMENT CLOUD
+PALETTE: emerald_sea_green
+SEED: 1141957028
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+[SYS] REENSAMBLANDO DINAMICA DE FLUIDOS A {VALUE:.1F} TEV // SIN PERDIDA DE FASE // PARTICLES 163 | COLLISION 1.08
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #MAGNETICFILAMENTCLOUD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 1141957028 -Grammar magnetic_filament_cloud -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\04_Living_Particles -OutputTag magnetic_filament_cloud
+
+CANONICAL MANIFEST:
+LivingParticles_v1_seed_1141957028_magnetic_filament_cloud_manifest.json

@@ -1,0 +1,133 @@
+{
+    "schema":  "C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2",
+    "revision":  "2.18.3",
+    "status":  "FINAL_LONGFORM_PRODUCT",
+    "family":  {
+                   "technical_id":  "living_particles",
+                   "artistic_name":  "Living Particles",
+                   "production_id":  "c11c_living_particles_v1"
+               },
+    "base_seed":  359306462,
+    "duration_seconds":  180,
+    "fps":  30,
+    "frames":  5400,
+    "resolution":  "720x1280",
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "composition":  "per-segment audio acrossfade",
+                  "continuous_across_boundaries":  true
+              },
+    "composition_model":  "dissolve_continuity_v3",
+    "transition":  "video_xfade_dissolve;audio_acrossfade;never_through_black",
+    "raw_segment_seconds":  184,
+    "transition_duration_seconds":  0.5714285714285714,
+    "segment_overlap_count":  7,
+    "final_fade_seconds":  1,
+    "final_fade_color":  "black",
+    "transition_through_black":  false,
+    "loop_safe_segments":  true,
+    "overall_longform_loop":  false,
+    "composition":  "canonical production segments + FFmpeg xfade/acrossfade; no new renderer",
+    "segments":  [
+                     {
+                         "slot":  1,
+                         "family":  "living_particles",
+                         "grammar_id":  "swarm",
+                         "grammar_name":  "Swarm",
+                         "seed":  212580432,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_212580432\\LivingParticles_v1_seed_212580432.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_212580432\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_212580432_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  2,
+                         "family":  "living_particles",
+                         "grammar_id":  "vortex",
+                         "grammar_name":  "Vortex",
+                         "seed":  478744280,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_478744280\\LivingParticles_v1_seed_478744280.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_478744280\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_478744280_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  3,
+                         "family":  "living_particles",
+                         "grammar_id":  "collision_cloud",
+                         "grammar_name":  "Collision Cloud",
+                         "seed":  671278851,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_671278851\\LivingParticles_v1_seed_671278851.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_671278851\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_671278851_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  4,
+                         "family":  "living_particles",
+                         "grammar_id":  "organic_pulse",
+                         "grammar_name":  "Organic Pulse",
+                         "seed":  1015101420,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1015101420\\LivingParticles_v1_seed_1015101420.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1015101420\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1015101420_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  5,
+                         "family":  "living_particles",
+                         "grammar_id":  "magnetic_filament_cloud",
+                         "grammar_name":  "Magnetic Filament Cloud",
+                         "seed":  1209339489,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1209339489\\LivingParticles_v1_seed_1209339489.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1209339489\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1209339489_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  6,
+                         "family":  "living_particles",
+                         "grammar_id":  "swarm",
+                         "grammar_name":  "Swarm",
+                         "seed":  1475376432,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1475376432\\LivingParticles_v1_seed_1475376432.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1475376432\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1475376432_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  7,
+                         "family":  "living_particles",
+                         "grammar_id":  "vortex",
+                         "grammar_name":  "Vortex",
+                         "seed":  1634891214,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1634891214\\LivingParticles_v1_seed_1634891214.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1634891214\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1634891214_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  8,
+                         "family":  "living_particles",
+                         "grammar_id":  "collision_cloud",
+                         "grammar_name":  "Collision Cloud",
+                         "seed":  1968511871,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1968511871\\LivingParticles_v1_seed_1968511871.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1968511871\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1968511871_music.wav",
+                         "loop_safe":  true
+                     }
+                 ],
+    "output_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_living_particles_v1\\LivingParticles_Longform_seed_359306462\\LivingParticles_Longform_seed_359306462.mp4",
+    "social":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_living_particles_v1\\LivingParticles_Longform_seed_359306462\\LivingParticles_Longform_seed_359306462_social.txt"
+}

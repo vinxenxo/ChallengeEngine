@@ -1,0 +1,133 @@
+{
+    "schema":  "C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2",
+    "revision":  "2.18.3",
+    "status":  "FINAL_LONGFORM_PRODUCT",
+    "family":  {
+                   "technical_id":  "invisible_forces",
+                   "artistic_name":  "Invisible Forces",
+                   "production_id":  "c11c_invisible_forces_v1"
+               },
+    "base_seed":  1868840943,
+    "duration_seconds":  180,
+    "fps":  30,
+    "frames":  5400,
+    "resolution":  "720x1280",
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "composition":  "per-segment audio acrossfade",
+                  "continuous_across_boundaries":  true
+              },
+    "composition_model":  "dissolve_continuity_v3",
+    "transition":  "video_xfade_dissolve;audio_acrossfade;never_through_black",
+    "raw_segment_seconds":  184,
+    "transition_duration_seconds":  0.5714285714285714,
+    "segment_overlap_count":  7,
+    "final_fade_seconds":  1,
+    "final_fade_color":  "black",
+    "transition_through_black":  false,
+    "loop_safe_segments":  true,
+    "overall_longform_loop":  false,
+    "composition":  "canonical production segments + FFmpeg xfade/acrossfade; no new renderer",
+    "segments":  [
+                     {
+                         "slot":  1,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "dipole_field",
+                         "grammar_name":  "Dipole Field",
+                         "seed":  227975177,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_227975177\\InvisibleForces_v1_seed_227975177.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_227975177\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_227975177_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  2,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "vortex_field",
+                         "grammar_name":  "Vortex Field",
+                         "seed":  524613966,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_524613966\\InvisibleForces_v1_seed_524613966.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_524613966\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_524613966_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  3,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "saddle_field",
+                         "grammar_name":  "Saddle Field",
+                         "seed":  761345408,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_761345408\\InvisibleForces_v1_seed_761345408.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_761345408\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_761345408_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  4,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "quadrupole_field",
+                         "grammar_name":  "Quadrupole Field",
+                         "seed":  886703870,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_886703870\\InvisibleForces_v1_seed_886703870.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_886703870\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_886703870_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  5,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "gravitational_lens",
+                         "grammar_name":  "Gravitational Lens",
+                         "seed":  1172190069,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1172190069\\InvisibleForces_v1_seed_1172190069.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1172190069\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1172190069_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  6,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "topographic_basin",
+                         "grammar_name":  "Topographic Basin",
+                         "seed":  1425742950,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1425742950\\InvisibleForces_v1_seed_1425742950.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1425742950\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1425742950_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  7,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "scalar_potential",
+                         "grammar_name":  "Scalar Potential",
+                         "seed":  1702615744,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1702615744\\InvisibleForces_v1_seed_1702615744.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1702615744\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1702615744_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  8,
+                         "family":  "invisible_forces",
+                         "grammar_id":  "dipole_field",
+                         "grammar_name":  "Dipole Field",
+                         "seed":  1909950308,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1909950308\\InvisibleForces_v1_seed_1909950308.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1909950308\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1909950308_music.wav",
+                         "loop_safe":  true
+                     }
+                 ],
+    "output_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_invisible_forces_v1\\InvisibleForces_Longform_seed_1868840943\\InvisibleForces_Longform_seed_1868840943.mp4",
+    "social":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_invisible_forces_v1\\InvisibleForces_Longform_seed_1868840943\\InvisibleForces_Longform_seed_1868840943_social.txt"
+}

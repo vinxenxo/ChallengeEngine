@@ -1,0 +1,133 @@
+{
+    "schema":  "C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2",
+    "revision":  "2.18.3",
+    "status":  "FINAL_LONGFORM_PRODUCT",
+    "family":  {
+                   "technical_id":  "sacred_symmetry",
+                   "artistic_name":  "Sacred Symmetry",
+                   "production_id":  "c11c_sacred_symmetry_v1"
+               },
+    "base_seed":  1335909959,
+    "duration_seconds":  180,
+    "fps":  30,
+    "frames":  5400,
+    "resolution":  "720x1280",
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "composition":  "per-segment audio acrossfade",
+                  "continuous_across_boundaries":  true
+              },
+    "composition_model":  "dissolve_continuity_v3",
+    "transition":  "video_xfade_dissolve;audio_acrossfade;never_through_black",
+    "raw_segment_seconds":  184,
+    "transition_duration_seconds":  0.5714285714285714,
+    "segment_overlap_count":  7,
+    "final_fade_seconds":  1,
+    "final_fade_color":  "black",
+    "transition_through_black":  false,
+    "loop_safe_segments":  true,
+    "overall_longform_loop":  false,
+    "composition":  "canonical production segments + FFmpeg xfade/acrossfade; no new renderer",
+    "segments":  [
+                     {
+                         "slot":  1,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "astrolabe",
+                         "grammar_name":  "Astrolabe",
+                         "seed":  261997549,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_261997549\\SacredSymmetry_v1_seed_261997549.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_261997549\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_261997549_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  2,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "gear_train",
+                         "grammar_name":  "Gear Train",
+                         "seed":  415693585,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_415693585\\SacredSymmetry_v1_seed_415693585.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_415693585\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_415693585_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  3,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "polygon_orrery",
+                         "grammar_name":  "Polygon Orrery",
+                         "seed":  677237984,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_677237984\\SacredSymmetry_v1_seed_677237984.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_677237984\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_677237984_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  4,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "origami_mandala",
+                         "grammar_name":  "Origami Mandala",
+                         "seed":  922498757,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_922498757\\SacredSymmetry_v1_seed_922498757.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_922498757\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_922498757_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  5,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "celestial_chart",
+                         "grammar_name":  "Celestial Chart",
+                         "seed":  1249697201,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1249697201\\SacredSymmetry_v1_seed_1249697201.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1249697201\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1249697201_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  6,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "astrolabe",
+                         "grammar_name":  "Astrolabe",
+                         "seed":  1427200156,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1427200156\\SacredSymmetry_v1_seed_1427200156.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1427200156\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1427200156_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  7,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "gear_train",
+                         "grammar_name":  "Gear Train",
+                         "seed":  1692812138,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1692812138\\SacredSymmetry_v1_seed_1692812138.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1692812138\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1692812138_music.wav",
+                         "loop_safe":  true
+                     },
+                     {
+                         "slot":  8,
+                         "family":  "sacred_symmetry",
+                         "grammar_id":  "polygon_orrery",
+                         "grammar_name":  "Polygon Orrery",
+                         "seed":  1848873964,
+                         "duration_seconds":  23,
+                         "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1848873964\\SacredSymmetry_v1_seed_1848873964.mp4",
+                         "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1848873964\\production_manifest.json",
+                         "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1848873964_music.wav",
+                         "loop_safe":  true
+                     }
+                 ],
+    "output_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_sacred_symmetry_v1\\SacredSymmetry_Longform_seed_1335909959\\SacredSymmetry_Longform_seed_1335909959.mp4",
+    "social":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_longform_stage\\c11c_sacred_symmetry_v1\\SacredSymmetry_Longform_seed_1335909959\\SacredSymmetry_Longform_seed_1335909959_social.txt"
+}

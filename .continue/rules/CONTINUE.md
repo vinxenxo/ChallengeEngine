@@ -1,43 +1,45 @@
-# ChallengeEngineV01_STATELESS — Continuity Rules
+﻿# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-C 2.19.6
 
-## Authority order
+## Authoritative baseline
 
-1. Executable source code and current declarative definitions.
-2. Live numbered docs under `docs/`.
-3. Executable tests and their explicit PASS markers.
-4. Checkpoint handovers.
-5. `docs/history/` only for historical context.
+The active repository state is **C11-C 2.19.6 consolidated final repair candidate — NOT FROZEN**.
 
-## Current state
+Read in order:
 
-C11-B is frozen. C11-C 2.18.x is now the frozen manufacturing baseline for the next D context. Do not absorb D work back into the C freeze.
+1. `AGENTS.md`
+2. `.continue/rules/CONTINUE.md`
+3. `C11C_2.19.6_CONTEXT_INDEX.md`
+4. `docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md`
+5. `docs/master-prompts/START_PROMPT_C11C_2.19.6_CONSOLIDATED.md`
+6. `docs/current/c11c/C11-C_2.19.6_CONSOLIDATED_STATE.md`
+7. `docs/current/c11c/C11-C_2.19.6_ACCEPTANCE_GATE.md`
+8. `docs/current/c11c/C11-C_2.19.6_DOCUMENTATION_INDEX.md`
 
-The D phase may extend presentation, production, asset, audio, provenance and Suite layers around the frozen runtime semantics, but a new engine contract requires an explicit D checkpoint.
+## Frozen C boundary
 
-## Architecture
+Do not alter without an explicit checkpoint:
 
-```text
-Definition -> deterministic simulation -> SimulationResult/FrameSnapshot
-           -> passive presentation -> RenderedFrameStream
-           -> production/export orchestration
-```
+- mechanics/simulation mathematics;
+- RNG algorithm, streams and ownership;
+- `SimulationResult`;
+- `winning_frame`;
+- `close_calls`;
+- `WinningFrameDetector`;
+- `RenderedFrameStream`;
+- C7 audio contracts/ownership;
+- C9 semantics;
+- logical 540×960 social geometry.
 
-`SimulationResult` is gameplay truth. Presentation must not recompute it. Structural RNG and cosmetic RNG remain separate.
+## Live C11-C worker contract
 
-## Repository rules
+Art Direction `Workers=7` is real concurrency. Each worker owns an independent temporary Godot project root. The source `.godot` is excluded, then the worker runs one headless editor class-cache bootstrap and verifies `global_script_class_cache.cfg` plus `PresentationProfile`. Only preparation is sequential; all Movie Maker captures remain concurrent.
 
-- New generated outputs belong under `artifacts/`.
-- Test fixtures belong under `tests/fixtures/`.
-- Active code belongs under `core/` or the established project entry points.
-- Historical scripts/documents belong under `docs/history/` rather than active tooling.
-- Do not recreate `output/`, `qa/` or `export/` as new source roots.
+Do not reintroduce a global mutex or serialize the batch. A run that only generates one video at a time is a contract failure.
 
-## Testing
+## Suite ownership
 
-The canonical logical runner is `python .\tests\run_all.py`. Every `*Test.gd` must be explicitly registered in `KNOWN_SUITES`.
+`c11c-suite/` is the only active Suite surface. `c11c-studio/` is retired and must remain untouched. Operational Suite launcher sources must not depend on it.
 
-For deterministic/release validation use the runbook at `docs/operations/TEST_RUNBOOK.md`.
+## D status
 
-## Suite parity
-
-Every new test, QA script or operational function must have a launcher in the relevant `c11c-suite` GUI and a direct console path where applicable. The canonical test registration remains `tests/run_all.py`.
+Do not start D work until C11-C 2.19.6 (or later) is formally accepted and frozen.

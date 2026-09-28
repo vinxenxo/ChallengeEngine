@@ -1,3 +1,5 @@
+> **Historical cross-context prompt.** Current repository authority is C11-C 2.19.2 under `docs/current/c11c/`.
+>
 # START PROMPT — C11-C ART DIRECTION
 
 ## Preconditions

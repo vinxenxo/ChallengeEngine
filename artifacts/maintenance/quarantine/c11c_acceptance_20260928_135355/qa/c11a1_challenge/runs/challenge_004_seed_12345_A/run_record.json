@@ -1,0 +1,45 @@
+{
+    "status":  "COMPLETE",
+    "run_id":  "challenge_004_seed_12345_A",
+    "challenge_id":  "CHALLENGE_004",
+    "mechanic":  "parking_v2",
+    "mechanic_version":  "2.0",
+    "source_seed":  314159,
+    "test_seed":  12345,
+    "seed_label":  "12345_A",
+    "rng_version":  "2.0",
+    "expected_timeline":  {
+                              "fps":  60,
+                              "hook_frames":  180,
+                              "game_frames":  420,
+                              "reveal_frames":  180,
+                              "cta_frames":  120,
+                              "total_frames":  900
+                          },
+    "source_config":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\challenges\\CHALLENGE_004.json",
+    "qa_config":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_004_seed_12345_A\\challenge_definition.json",
+    "artifact_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_004_seed_12345_A\\artifacts",
+    "started_at_utc":  "2026-09-17T23:36:50.2206106+00:00",
+    "completed_at_utc":  "2026-09-17T23:37:19.6683799+00:00",
+    "failure":  null,
+    "factory_exit_code":  0,
+    "factory_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_004_seed_12345_A\\artifacts\\CHALLENGE_004\\CHALLENGE_004_manifest.json",
+    "video":  {
+                  "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_004_seed_12345_A\\artifacts\\CHALLENGE_004\\CHALLENGE_004.mp4",
+                  "avi":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_004_seed_12345_A\\artifacts\\CHALLENGE_004\\CHALLENGE_004_raw.avi",
+                  "width":  1080,
+                  "height":  1920,
+                  "fps":  "60/1",
+                  "frames":  900,
+                  "duration":  15
+              },
+    "framemd5":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\qa\\c11a1_challenge_qa\\runs\\challenge_004_seed_12345_A\\render.framemd5",
+    "review_frames":  [
+                          0,
+                          224,
+                          449,
+                          565,
+                          674,
+                          899
+                      ]
+}

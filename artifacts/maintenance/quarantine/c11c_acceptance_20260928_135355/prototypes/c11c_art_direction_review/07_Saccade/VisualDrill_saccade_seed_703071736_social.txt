@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Hay un patrÃ³n matemÃ¡tico oculto en el orden de los saltos. Â¿Lo ves?
+
+SACCADE - Visual drill de presentación procedural y determinista.
+
+Familia: SACCADE
+Seed: 703071736
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt
+
+TITLE:
+SACCADE - VISUAL DRILL
+
+DESCRIPTION:
+SACCADE - Visual drill de presentación procedural y determinista.
+
+Familia: SACCADE
+Seed: 703071736
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: saccade
+SEED: 703071736
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Saccade #VisualChallenge #SpatialPrecision #Perception #ProceduralArt
+
+HEADER HOOK:
+Hay un patrÃ³n matemÃ¡tico oculto en el orden de los saltos. Â¿Lo ves?

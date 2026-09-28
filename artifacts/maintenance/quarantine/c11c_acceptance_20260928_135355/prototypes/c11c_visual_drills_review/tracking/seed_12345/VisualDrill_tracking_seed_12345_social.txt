@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Esta trayectoria de Lissajous estÃ¡ diseÃ±ada para relajar tu mente. PruÃ©balo.
+
+TRACKING - Visual drill de presentación procedural y determinista.
+
+Familia: TRACKING
+Seed: 12345
+Detalles: Duración 24s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt
+
+TITLE:
+TRACKING - VISUAL DRILL
+
+DESCRIPTION:
+TRACKING - Visual drill de presentación procedural y determinista.
+
+Familia: TRACKING
+Seed: 12345
+Detalles: Duración 24s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: tracking
+SEED: 12345
+DURATION: 30 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt
+
+HEADER HOOK:
+Esta trayectoria de Lissajous estÃ¡ diseÃ±ada para relajar tu mente. PruÃ©balo.

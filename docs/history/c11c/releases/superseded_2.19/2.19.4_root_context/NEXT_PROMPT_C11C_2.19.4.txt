@@ -1,0 +1,26 @@
+C11-C 2.19.4 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN
+
+Read first:
+1. AGENTS.md
+2. .continue/rules/CONTINUE.md
+3. docs/master-prompts/MASTER_HANDOVER_C11C_2.19.4_CONSOLIDATED.md
+4. docs/master-prompts/START_PROMPT_C11C_2.19.4_CONSOLIDATED.md
+5. docs/current/c11c/C11-C_2.19.4_CONSOLIDATED_STATE.md
+6. docs/current/c11c/C11-C_2.19.4_ACCEPTANCE_GATE.md
+
+Immediate task: validate the consolidated 2.19.4 candidate. The Art Direction batch MUST keep Workers=7 genuinely concurrent.
+
+The previous v2 mutex approach is superseded. Do not reintroduce a global mutex. Each worker must use its own temporary Godot project root with worker-local override.cfg/.godot state.
+
+c11c-studio is retired and must not be updated. Active Suite changes belong in c11c-suite only.
+
+Focused:
+.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+
+Runtime proof:
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prototypes\c11c_bulk\run_c11c_art_direction_batch_v4.ps1 -Workers 7 -Loops -Reset
+
+Complete gate:
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\FULL_ACCEPTANCE_C11C_2.19.4.ps1
+
+Do not begin D or reopen C11-B simulation truth until the new C11-C freeze is formally accepted.

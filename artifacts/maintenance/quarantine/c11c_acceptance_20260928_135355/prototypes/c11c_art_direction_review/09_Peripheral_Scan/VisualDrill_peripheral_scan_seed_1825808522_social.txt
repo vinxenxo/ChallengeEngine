@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Entrenamiento de visiÃ³n perifÃ©rica: No mires el estÃ­mulo de reojo de forma directa.
+
+PERIPHERAL SCAN - Visual drill de presentación procedural y determinista.
+
+Familia: PERIPHERAL SCAN
+Seed: 1825808522
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt
+
+TITLE:
+PERIPHERAL SCAN - VISUAL DRILL
+
+DESCRIPTION:
+PERIPHERAL SCAN - Visual drill de presentación procedural y determinista.
+
+Familia: PERIPHERAL SCAN
+Seed: 1825808522
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: peripheral_scan
+SEED: 1825808522
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #PeripheralScan #PeripheralVision #VisualChallenge #Perception #ProceduralArt
+
+HEADER HOOK:
+Entrenamiento de visiÃ³n perifÃ©rica: No mires el estÃ­mulo de reojo de forma directa.

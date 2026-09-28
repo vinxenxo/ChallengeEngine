@@ -1,0 +1,9 @@
+{
+	"authoring_version": "1.0",
+	"custom_parameters": {},
+	"difficulty_tier": 2,
+	"domain_family": "visual_loop",
+	"duration_seconds": 2.0,
+	"fps": 30,
+	"subtype": "particle_flow"
+}

@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+INDEXANDO MATERIA BIOLUMINISCENTE... [SINCRO] // PARTICLES 132 | COLLISION 0.83
+
+INDEXANDO MATERIA BIOLUMINISCENTE... [SINCRO] // PARTICLES 132 | COLLISION 0.83
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: MAGNETIC FILAMENT CLOUD
+- Paleta: mint_chartreuse
+- Seed: 1825808522
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #MAGNETICFILAMENTCLOUD
+
+INDEXANDO MATERIA BIOLUMINISCENTE... [SINCRO] // PARTICLES 132 | COLLISION 0.83
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: MAGNETIC FILAMENT CLOUD
+- Paleta: mint_chartreuse
+- Seed: 1825808522
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+LIVING PARTICLES - MAGNETIC FILAMENT CLOUD
+
+DESCRIPTION:
+INDEXANDO MATERIA BIOLUMINISCENTE... [SINCRO] // PARTICLES 132 | COLLISION 0.83
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: MAGNETIC FILAMENT CLOUD
+- Paleta: mint_chartreuse
+- Seed: 1825808522
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: living_particles
+GRAMMAR: MAGNETIC FILAMENT CLOUD
+PALETTE: mint_chartreuse
+SEED: 1825808522
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+INDEXANDO MATERIA BIOLUMINISCENTE... [SINCRO] // PARTICLES 132 | COLLISION 0.83
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #MAGNETICFILAMENTCLOUD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 1825808522 -Grammar magnetic_filament_cloud -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\04_Living_Particles -OutputTag magnetic_filament_cloud
+
+CANONICAL MANIFEST:
+LivingParticles_v1_seed_1825808522_magnetic_filament_cloud_manifest.json

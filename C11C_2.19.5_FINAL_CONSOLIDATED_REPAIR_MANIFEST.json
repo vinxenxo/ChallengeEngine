@@ -1,0 +1,209 @@
+{
+  "artifact": "C11-C 2.19.5 FINAL CONSOLIDATED REPAIR CANDIDATE",
+  "status": "NOT_FROZEN",
+  "root_overlay": true,
+  "source_revision": "2.19.5",
+  "file_count": 40,
+  "files": [
+    {
+      "path": "c11c-suite/run.bat",
+      "bytes": 150,
+      "sha256": "ca5be3c53a8878c5f617943bbd0699c6b92a37e51cf8900f90db3c4b4e6b0ecb"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run.bat",
+      "bytes": 153,
+      "sha256": "3ad08dc8c163421ac75c29801dc6b55627ca011b02089eab0e8f09ec4a61183a"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_all.bat",
+      "bytes": 159,
+      "sha256": "e253b3c90c1498a2c803147ca546013bd96870969357a5d72a5376061884cbd1"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_suite.bat",
+      "bytes": 596,
+      "sha256": "6739434ee82432ecc071c34cc6f2adecc4e4cff82390adbdc6e7fb652e3e95bd"
+    },
+    {
+      "path": "c11c-suite/c11c-test/main.py",
+      "bytes": 9440,
+      "sha256": "be83d04f8342b251c6d4255588852506b4eb600693b762727049400d2fc7c91c"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/run.bat",
+      "bytes": 153,
+      "sha256": "3ad08dc8c163421ac75c29801dc6b55627ca011b02089eab0e8f09ec4a61183a"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/test_gui_contract.bat",
+      "bytes": 151,
+      "sha256": "27d1bb3aa1ce4a872ceb151998f3a5cc567126778e2ad01a4b8a0272d3a93d48"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/BUILD_MANIFEST.json",
+      "bytes": 1460,
+      "sha256": "749afa66834c758b54f8958712d1c6fefa61e183efa1428032a9111e9848353e"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11C_PRODUCER_MASTER_HANDOVER_2026-09-28.md",
+      "bytes": 1762,
+      "sha256": "aeb3f78189e60f259ab32283c9d7d096dacc70d633a40fef12cd1e9bda5817e9"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11C_PRODUCER_START_PROMPT_2026-09-28.md",
+      "bytes": 1304,
+      "sha256": "740419f7c6c3cd940a17f0d29a7aa030bb64567ec082bc3160a20d2471531ff8"
+    },
+    {
+      "path": "c11c-suite/c11c-maintenance/run.bat",
+      "bytes": 153,
+      "sha256": "3ad08dc8c163421ac75c29801dc6b55627ca011b02089eab0e8f09ec4a61183a"
+    },
+    {
+      "path": "c11c-suite/c11c-catalog/run.bat",
+      "bytes": 153,
+      "sha256": "3ad08dc8c163421ac75c29801dc6b55627ca011b02089eab0e8f09ec4a61183a"
+    },
+    {
+      "path": "c11c-suite/c11c-config/run.bat",
+      "bytes": 153,
+      "sha256": "3ad08dc8c163421ac75c29801dc6b55627ca011b02089eab0e8f09ec4a61183a"
+    },
+    {
+      "path": "c11c-suite/c11c-maintenace/run.bat",
+      "bytes": 108,
+      "sha256": "f32e97cdb26e4db23dafc2aecc50783f58933f5e70414fa58189d1b1eb970ea3"
+    },
+    {
+      "path": "c11c-suite/test_retro_reference_contract.bat",
+      "bytes": 151,
+      "sha256": "cdf5f775c75a416abd819ca2e3f8f3bd4de1d9cd26658ece681372b07f8ce59d"
+    },
+    {
+      "path": "c11c-suite/self_test.py",
+      "bytes": 6482,
+      "sha256": "1d08b3aa99a5217186484c212daed1020c7b1b68a9096dd551e5bfc1cef1c0a6"
+    },
+    {
+      "path": "tests/C11CParallelReviewWorkerIsolationContractTest.gd",
+      "bytes": 3210,
+      "sha256": "5ed289460bbf9f4a9d531709034ac3a1aa408d4138d6589d1d2d93f03bacba61"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CMovieCapture.ps1",
+      "bytes": 1943,
+      "sha256": "916e95ebc01006efb436097df032626e666e3b1d80e2c50490c0eb2a3934ba1b"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1",
+      "bytes": 2315,
+      "sha256": "b56b2e9186ef5b4e5d1bbcad9557c60e8ef443bae9a5a204743fe2da8b0a10f0"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+      "bytes": 20917,
+      "sha256": "1d06a3a67e17ad5247ac3451116a40c813b84cbda37a8ebdfbc63be96d09bdbb"
+    },
+    {
+      "path": "tools/maintenance/consolidate_c11c_2_19_documentation.ps1",
+      "bytes": 4103,
+      "sha256": "58e72906ca49206f43b4151b26aca736531664a7723bf0b7bdad866679103998"
+    },
+    {
+      "path": "tools/c11freeze/finalize_c11c_2_19_5_freeze.ps1",
+      "bytes": 8567,
+      "sha256": "48efe8f3c6583bbc087867431fac21b7a86567f393c0692adcdb1746b8c3e245"
+    },
+    {
+      "path": "FULL_ACCEPTANCE_C11C_2.19.5.ps1",
+      "bytes": 5024,
+      "sha256": "936f4c6761c75f483657b1be1fee3d5fc4e7b0c33620d212c98dc76d039fcd17"
+    },
+    {
+      "path": "CHANGELOG_C11-C_2.19.5.md",
+      "bytes": 1959,
+      "sha256": "53bfede96ee73bdec99bd1c7ad42b220c050f0d9dd074df0715025599e9de869"
+    },
+    {
+      "path": "NEXT_PROMPT_C11C_2.19.5.txt",
+      "bytes": 965,
+      "sha256": "183a1f8cb6cb2b27675844373560c95f66d8fd6b4621515780eec8325e3ff2bc"
+    },
+    {
+      "path": "README_C11C_2.19.5_TEST_REPAIR_CANDIDATE.md",
+      "bytes": 905,
+      "sha256": "243b76f2f4e70980a95362a644454ba8e6d2806c8f886ebbd93dee6d0ddf5d8f"
+    },
+    {
+      "path": "C11C_2.19.5_CONTEXT_INDEX.md",
+      "bytes": 2158,
+      "sha256": "10003732884cdf1bbc812b48aee5168e2e6f1fc30353f8f5eca6fd03a7bfa0e8"
+    },
+    {
+      "path": "C11C_2.19.5_CONTEXT_PACK_README.md",
+      "bytes": 680,
+      "sha256": "6d78dbf0a3c1ad0c115ee6aa3730f4b3e8da5091004dccaa5c70bbe54c69986e"
+    },
+    {
+      "path": "C11C_2.19.5_STATIC_VALIDATION_REPORT.md",
+      "bytes": 2053,
+      "sha256": "32a5d5e4be01689ba85578d713217ad0630022612f922882806cb70ae78267c2"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.5_CONSOLIDATED_STATE.md",
+      "bytes": 6717,
+      "sha256": "9b3a2cd5d1e56ff1aa3ee3c9e28b643687483ec73d042a7982906ebce44b0a75"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.5_DOCUMENTATION_INDEX.md",
+      "bytes": 1600,
+      "sha256": "71437724912cf423e36996d302df49f99dbab8c267cda8a07b022fcbda01853b"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md",
+      "bytes": 1853,
+      "sha256": "bd2ba53196854d24e114985ba85d0b1ed20138a62361a8eb4f754bd403608684"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.5_REPAIR_MANIFEST.json",
+      "bytes": 2399,
+      "sha256": "b6ca18091b83ff183b5aa174d46053469456cab7f60fc96fcd65f085340557cb"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.5_FREEZE_COMMANDS.md",
+      "bytes": 2165,
+      "sha256": "fe70b7e95e6cbeae9078ebe61fc4465a9828ceb94432c72b199b39a3cbe40799"
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.4_RULES.md",
+      "bytes": 2184,
+      "sha256": "ed399cd155dc785cfed4600f25b37848ce1b18ef040c9509a2714baa09ecb79c"
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "bytes": 1915,
+      "sha256": "6bd29818fc12e5a4a3bf4a13bc48694d529b48ff3eb9d72e6f1353c600a01d1e"
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+      "bytes": 1954,
+      "sha256": "70cf6f120a65a1da9eabb6432f338a0f8d9ce038131c37b376748755918ca764"
+    },
+    {
+      "path": "docs/master-prompts/README.md",
+      "bytes": 809,
+      "sha256": "416119448198f37e8f7d955ce61f65282df8a817ef746a64ca7cf402cecb7aa9"
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.19.5_CONSOLIDATED.md",
+      "bytes": 4470,
+      "sha256": "8652717702b763c7a4daa6df0eaa7541c7ad611ff78f293f5912b8a56302b02d"
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11C_2.19.5_CONSOLIDATED.md",
+      "bytes": 1844,
+      "sha256": "c678ac2e13b5e20affd005c8badedecd1489c5da4c8d69a1a9779b948ea7ec45"
+    }
+  ]
+}

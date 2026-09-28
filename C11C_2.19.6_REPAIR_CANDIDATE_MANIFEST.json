@@ -1,0 +1,35 @@
+{
+  "branch": "C11-C",
+  "candidate": "2.19.6",
+  "status": "FINAL_REPAIR_CANDIDATE_NOT_FROZEN",
+  "created_utc": "2026-09-28",
+  "base": "C11-C 2.19.5 consolidated repair source",
+  "latest_defect": "fresh isolated worker project lacked .godot/global_script_class_cache.cfg; PresentationProfile parse failed in UnifiedSocialFrame.gd and Movie Maker emitted gray/empty frames",
+  "repair": "one headless Godot editor bootstrap per worker before any concurrent Movie Maker capture",
+  "bootstrap_command": "godot.exe --headless --editor --path <worker> --audio-driver Dummy --quit",
+  "bootstrap_requirements": [
+    ".godot/global_script_class_cache.cfg",
+    "PresentationProfile"
+  ],
+  "parallelism": "Workers=7 remains genuine; initialization only is sequential; capture remains concurrent",
+  "forbidden": [
+    "global System.Threading.Mutex",
+    "one-at-a-time capture fallback",
+    "c11c-studio as operational dependency"
+  ],
+  "active_suite": "c11c-suite 0.1.4",
+  "producer": "0.9.7",
+  "godot": "4.7.1 stable Mono",
+  "boundaries": [
+    "C11-B simulation truth/math/mechanics",
+    "RNG algorithm/streams/ownership",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C7 audio contracts/ownership",
+    "C9 semantics",
+    "logical 540x960 geometry"
+  ]
+}

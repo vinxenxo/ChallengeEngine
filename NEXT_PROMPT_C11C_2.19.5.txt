@@ -1,0 +1,16 @@
+Continue ChallengeEngineV01_STATELESS from **C11-C 2.19.5 FINAL REPAIR CANDIDATE — NOT FROZEN**.
+
+Read:
+- C11C_2.19.5_CONTEXT_INDEX.md
+- AGENTS.md
+- .continue/rules/CONTINUE.md
+- docs/master-prompts/MASTER_HANDOVER_C11C_2.19.5_CONSOLIDATED.md
+- docs/master-prompts/START_PROMPT_C11C_2.19.5_CONSOLIDATED.md
+- docs/current/c11c/C11-C_2.19.5_CONSOLIDATED_STATE.md
+- docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md
+
+The final repairs are: lock-free Movie Maker helper, worker-local project isolation, PowerShell `${i}:` syntax fix, strengthened parallel contract, canonical Suite launcher normalization, and 2.19 documentation consolidation.
+
+Immediate task: prove the focused parallel contract exits PASS and then prove genuine Workers=7 Art Direction concurrency with `MAX_OBSERVED_CONCURRENCY > 1` and 720×1280 captures.
+
+Do not revive the global mutex experiment, do not serialize workers, do not update/use c11c-studio, and do not reopen frozen engine truth.

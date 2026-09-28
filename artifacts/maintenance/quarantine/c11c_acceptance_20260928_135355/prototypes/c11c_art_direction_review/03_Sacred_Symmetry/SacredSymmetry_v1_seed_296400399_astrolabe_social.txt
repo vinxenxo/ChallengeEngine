@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+MODULANDO CARTA CELESTE... [SINCRONIA] // N=6 | GEAR 2:1
+
+MODULANDO CARTA CELESTE... [SINCRONIA] // N=6 | GEAR 2:1
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ASTROLABE
+- Paleta: copper_platinum
+- Seed: 296400399
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #ASTROLABE
+
+MODULANDO CARTA CELESTE... [SINCRONIA] // N=6 | GEAR 2:1
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ASTROLABE
+- Paleta: copper_platinum
+- Seed: 296400399
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+SACRED SYMMETRY - ASTROLABE
+
+DESCRIPTION:
+MODULANDO CARTA CELESTE... [SINCRONIA] // N=6 | GEAR 2:1
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ASTROLABE
+- Paleta: copper_platinum
+- Seed: 296400399
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: sacred_symmetry
+GRAMMAR: ASTROLABE
+PALETTE: copper_platinum
+SEED: 296400399
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / ORBITAL_RITUAL
+AUDIO PROFILE: ORBITAL_RITUAL
+
+HEADER HOOK:
+MODULANDO CARTA CELESTE... [SINCRONIA] // N=6 | GEAR 2:1
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #ASTROLABE
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 296400399 -Grammar astrolabe -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\03_Sacred_Symmetry -OutputTag astrolabe
+
+CANONICAL MANIFEST:
+SacredSymmetry_v1_seed_296400399_astrolabe_manifest.json

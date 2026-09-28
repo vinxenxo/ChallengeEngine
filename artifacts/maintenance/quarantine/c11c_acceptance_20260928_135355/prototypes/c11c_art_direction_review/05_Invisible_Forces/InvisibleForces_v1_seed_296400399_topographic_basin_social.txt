@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+MODULANDO CUADRUPOLO MAGNETICO... [SINCRONIA] // TRACES 50 | PULSE 0.99
+
+MODULANDO CUADRUPOLO MAGNETICO... [SINCRONIA] // TRACES 50 | PULSE 0.99
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: deep_red_amber
+- Seed: 296400399
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #TOPOGRAPHICBASIN
+
+MODULANDO CUADRUPOLO MAGNETICO... [SINCRONIA] // TRACES 50 | PULSE 0.99
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: deep_red_amber
+- Seed: 296400399
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - TOPOGRAPHIC BASIN
+
+DESCRIPTION:
+MODULANDO CUADRUPOLO MAGNETICO... [SINCRONIA] // TRACES 50 | PULSE 0.99
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: deep_red_amber
+- Seed: 296400399
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: TOPOGRAPHIC BASIN
+PALETTE: deep_red_amber
+SEED: 296400399
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / FLOWING_VECTOR
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+MODULANDO CUADRUPOLO MAGNETICO... [SINCRONIA] // TRACES 50 | PULSE 0.99
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #TOPOGRAPHICBASIN
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 296400399 -Grammar topographic_basin -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\05_Invisible_Forces -OutputTag topographic_basin
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_296400399_topographic_basin_manifest.json

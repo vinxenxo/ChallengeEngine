@@ -16,10 +16,10 @@ APPS = [
 ]
 class SuiteWindow(QMainWindow):
     def __init__(self):
-        super().__init__(); self.setWindowTitle('C11-C SUITE'); self.resize(980,620); self.procs=[]
+        super().__init__(); self.setWindowTitle('C11-C SUITE 0.1.4'); self.resize(980,620); self.procs=[]
         w=QWidget(); lay=QVBoxLayout(w); self.setCentralWidget(w)
         t=QLabel('C11-C SUITE'); t.setObjectName('title'); lay.addWidget(t)
-        s=QLabel('Operational interfaces around the frozen deterministic core.'); s.setObjectName('muted'); lay.addWidget(s)
+        s=QLabel('Operational interfaces around the deterministic core; c11c-suite is the canonical active operator surface.'); s.setObjectName('muted'); lay.addWidget(s)
         grid=QGridLayout(); lay.addLayout(grid)
         for i,(label,path,desc) in enumerate(APPS):
             b=QPushButton(f'{label}\n{desc}'); b.setMinimumHeight(100); b.clicked.connect(lambda _=False,p=path: self.launch(p)); grid.addWidget(b,i//2,i%2)

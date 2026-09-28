@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.2_FRACTAL_BLOOM_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  1157154098,
+    "family_id":  "fractal",
+    "technical_id":  "fractal",
+    "artistic_name":  "Fractal Bloom",
+    "production_id":  "c11c_fractal_bloom_v1",
+    "runtime_id":  "fractal",
+    "display_name":  "FRACTAL BLOOM",
+    "grammar_id":  "nested_worlds",
+    "grammar":  "NESTED WORLDS",
+    "palette":  "ultraviolet_mint",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  23,
+                   "fps":  30,
+                   "frame_count":  690,
+                   "loop_cycles":  2,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "z(n+1)=z(n)^2+c | NESTED_WORLDS | DETAIL 1.30",
+                      "header_line_2":  "TRACE: TRAMPAS DE ORBITA // DETAIL 1.30 | BRANCH 0.96 // EN MODO STEALTH",
+                      "header_secondary":  "VISUAL LOOP / FRACTAL BLOOM",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "ORGANIC_BLOOM",
+                  "style":  "evolving harmonic bloom / soft high-mid shimmer / nested overtones / midpoint spectral swell",
+                  "semantic_key":  "NESTED WORLDS",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  23,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "FractalBloom_v1_seed_1157154098_nested_worlds_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\02_Fractal_Bloom",
+                            "output_tag":  "nested_worlds"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_fractal_bloom_v1\\run_prototype.ps1 -Seed 1157154098 -Grammar \"nested_worlds\" -Duration 23 -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\02_Fractal_Bloom\" -OutputTag \"nested_worlds\"",
+    "technobabble":  "TRACE: trampas de orbita // DETAIL 1.30 | BRANCH 0.96 // en modo stealth",
+    "frozen_boundaries_modified":  false
+}

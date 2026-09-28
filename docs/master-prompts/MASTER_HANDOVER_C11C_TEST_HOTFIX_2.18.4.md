@@ -1,3 +1,8 @@
+> **Historical cross-context prompt.** Current repository authority is C11-C 2.19.2 under `docs/current/c11c/`.
+>
+> **Historical snapshot — final functional baseline: C11-C 2.19.1.** This prompt records a prior context only. It must not be used as the current D baseline.
+> Canonical D handover: `MASTER_HANDOVER_C11D_V1.0_STATELESS.md`.
+
 # MASTER HANDOVER — C11-C Test Hotfix 2.18.4
 
 ## Authority

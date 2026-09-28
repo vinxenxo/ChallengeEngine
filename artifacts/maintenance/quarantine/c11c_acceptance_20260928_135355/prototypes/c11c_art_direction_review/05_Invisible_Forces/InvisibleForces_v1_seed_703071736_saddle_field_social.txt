@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+[DECK] ASTROLABIO DE LATON :: TOPOGRAFIA GRAVITACIONAL :: TRACES 64 | PULSE 1.12
+
+[DECK] ASTROLABIO DE LATON :: TOPOGRAFIA GRAVITACIONAL :: TRACES 64 | PULSE 1.12
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SADDLE FIELD
+- Paleta: vermilion_peach_gold
+- Seed: 703071736
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #SADDLEFIELD
+
+[DECK] ASTROLABIO DE LATON :: TOPOGRAFIA GRAVITACIONAL :: TRACES 64 | PULSE 1.12
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SADDLE FIELD
+- Paleta: vermilion_peach_gold
+- Seed: 703071736
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - SADDLE FIELD
+
+DESCRIPTION:
+[DECK] ASTROLABIO DE LATON :: TOPOGRAFIA GRAVITACIONAL :: TRACES 64 | PULSE 1.12
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SADDLE FIELD
+- Paleta: vermilion_peach_gold
+- Seed: 703071736
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: SADDLE FIELD
+PALETTE: vermilion_peach_gold
+SEED: 703071736
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / FLOWING_VECTOR
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+[DECK] ASTROLABIO DE LATON :: TOPOGRAFIA GRAVITACIONAL :: TRACES 64 | PULSE 1.12
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #SADDLEFIELD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 703071736 -Grammar saddle_field -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\05_Invisible_Forces -OutputTag saddle_field
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_703071736_saddle_field_manifest.json

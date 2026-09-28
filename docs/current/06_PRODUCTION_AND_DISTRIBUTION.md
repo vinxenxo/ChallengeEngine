@@ -1,63 +1,43 @@
-# Production and Distribution — Current
+﻿# Production and Distribution — C11-C 2.19.6 Candidate
 
-## Standard video delivery
+## Standard delivery
 
-The default product master is `MASTER_1080`:
-
-- MP4 container.
-- 9:16.
-- 1080×1920.
-- Constant frame rate, progressive.
-- H.264 / yuv420p for the current default implementation.
-- Closed GOP, 3 seconds in the current 30 FPS profiles.
-- AAC-LC, 48 kHz stereo, 192 kbps in master delivery profiles.
-
-The delivery system is profile-driven and can emit 540×960, 720×1280 or 1080×1920 without changing the runtime mechanics.
+`MASTER_1080` is the default master: 1080×1920, 30 FPS, H.264/yuv420p with profile-defined GOP/encoder settings and AAC-LC 48 kHz stereo when audio is enabled.
 
 ## Capture versus delivery
 
-### Challenges
+- Historical Challenges keep their own canonical source/delivery boundary.
+- Visual Loops/Drills review capture is 720×1280 @ 30 FPS.
+- Delivery profiles may scale to 540×960, 720×1280 or 1080×1920 without changing simulation truth or logical social geometry.
 
-Historical Challenge production captures the native source at 540×960. Delivery scaling is a post-capture FFmpeg operation.
-
-```text
-Challenge runtime
-    ↓
-540×960 source AVI/MP4
-    ↓
-FFmpeg delivery profile
-    ├── MIN_540
-    ├── REVIEW_720
-    └── MASTER_1080
-```
-
-### Visual Loops / Visual Drills
-
-The proven C11-C review geometry is 720×1280. Visual Loops retain their established capture path; the single-Visual-Drill Producer captures a temporary PNG sequence at 720×1280 and immediately encodes it to MP4 before delivery processing.
+## Single-Drill Producer route
 
 ```text
-C11-C runtime / review capture
+Movie Maker temporary AVI
     ↓
-720×1280 source (Loop: established Movie Maker path; Drill: temporary PNG sequence)
+stable-file wait
     ↓
-FFmpeg source MP4 / delivery profile
-    ├── MIN_540
-    ├── REVIEW_720
-    └── MASTER_1080
+FFmpeg video-only silent source MP4
+    ↓
+FAMILY_MUSIC_V4 generated separately
+    ↓
+mux / profile delivery
+    ↓
+FINAL PRODUCT
 ```
 
-## Audio
+Godot Movie Maker uses project-local `--path .`, no explicit `--resolution` on the proven single-Drill route, the canonical `VisualContentPlayer` scene, the resolved envelope, fixed 30 FPS and the resolved total frame count.
 
-The delivery layer normalizes master output to AAC-LC / 48 kHz / stereo. Historical review runners may use an older source sample rate internally; that is normalized during master delivery rather than changing C7 ownership.
+AVI is an implementation intermediate only. OGV/PNG routes are historical and superseded.
 
-## Social limitations
+## Art Direction review concurrency
 
-The 3–90 second range is treated as a social delivery constraint for ordinary short-form profiles. `LONGFORM_1080` is not subject to that social-duration gate.
+The review batch uses temporary per-worker project roots. Each concurrent worker owns its own `override.cfg` and `.godot` state. The project-global mutex experiment from 2.19.3-v2 is not part of the current design.
 
-## Producer
+## Social copy / hook source
 
-`c11c-suite/c11c-producer` exposes the delivery profile for A LA CARTA production. Historical batch-review operations retain their established C11-C review behavior and do not silently reinterpret old batch contracts.
+Visual Drill social hooks are read from `profiles/presentation/c11c_visual_hooks.json` and selected deterministically. `authoring.json.content.hook` is not a valid live contract field.
 
 ## Artifact policy
 
-Generated product files belong under `artifacts/`. Historical Challenge source AVI remains part of the legacy C11-A production path; the single-Visual-Drill Producer does not use AVI and removes its temporary PNG sequence with the scratch stage. Historical evidence must not be silently replaced by later renders.
+Durable products and evidence belong under `artifacts/`. Scratch AVI and temporary worker roots are not source truth.

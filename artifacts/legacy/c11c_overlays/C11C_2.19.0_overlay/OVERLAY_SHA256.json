@@ -1,0 +1,62 @@
+{
+  "schema": "C11C_OVERLAY_SHA256",
+  "overlay": "2.19.0",
+  "files": {
+    "C11C_2.19.0_PRODUCER_AVI_CAPTURE_ROUTE_REPAIR.md": {
+      "sha256": "18cba741fec159a7f74e269c044237b02bc36146e9deb0850a2e83dc3c7f900a",
+      "size": 1499
+    },
+    "CHANGELOG_C11-C_2.19.0.md": {
+      "sha256": "69864286cbb1c20a034672bef0d4dc5e33b7621a88ffd1cce3ba5ef4c59c76e0",
+      "size": 485
+    },
+    "OVERLAY_MANIFEST.json": {
+      "sha256": "13f0b608807a27aa5c9949167a21f8e0e7edee45333dc4a53f45067495173002",
+      "size": 854
+    },
+    "README.md": {
+      "sha256": "b7afc0924a3c71d5c8789d5a93c0015b4c8c70248549178c3fd614123eb908b4",
+      "size": 390
+    },
+    "c11c-suite/c11c-producer/BUILD_MANIFEST.json": {
+      "sha256": "43ffa70591440d6fd2a98b3fff218d08ffff2c09cd60a9083c22bc7d6e754b8b",
+      "size": 1412
+    },
+    "c11c-suite/c11c-producer/README.md": {
+      "sha256": "2b75618346a12061e90b86ea0bdf4d8fbfe3c11e95e1a197703b164eca909edc",
+      "size": 1829
+    },
+    "c11c-suite/c11c-producer/main.py": {
+      "sha256": "d8580c64f398fb05041bc0267dff008252cbb0d502e1b062e74933c3b2df84db",
+      "size": 51116
+    },
+    "c11c-suite/c11c-producer/producer_schema.json": {
+      "sha256": "5a43140b1207c368fa274631af3e38af942c6028ce9063b9cfcb1abb1200e438",
+      "size": 32634
+    },
+    "c11c-suite/c11c-producer/producer_schema_source.json": {
+      "sha256": "1303838394558d7d927505cfe3f1cbe85ae0acd4b99de8ce93e38868f119cf81",
+      "size": 32577
+    },
+    "c11c-suite/c11c-producer/run_visual_drill_production.ps1": {
+      "sha256": "14e9226d68b892e5a3f2d578ecd14aa2e57495d90927f3af2c41f5d67625b3de",
+      "size": 16316
+    },
+    "c11c-suite/c11c-producer/self_test.py": {
+      "sha256": "2135db52c37259ec058ee5451823d9541b6ab290687e55004852c4e453e9bd36",
+      "size": 5994
+    },
+    "c11c-suite/c11c-producer/test_producer_gui_contract.py": {
+      "sha256": "038645e136550d9df054dd47b1a1df32ba7093dae2f6d2894a9f1ac5383d03e6",
+      "size": 1870
+    },
+    "c11c-suite/self_test.py": {
+      "sha256": "bde90f7df75cdf15efc2882ee2b0d9f743da9286a989eff9e3fbdd7b0cc2f90b",
+      "size": 2345
+    },
+    "tests/C11CVisualDrillMovieCaptureContractTest.gd": {
+      "sha256": "f02da8d69589fe756906f0d2210286de532c79f4325065be80867dedd09f0786",
+      "size": 1940
+    }
+  }
+}

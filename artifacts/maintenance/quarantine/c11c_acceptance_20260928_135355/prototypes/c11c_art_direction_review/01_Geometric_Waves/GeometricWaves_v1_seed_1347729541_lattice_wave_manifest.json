@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.1_GEOMETRIC_WAVES_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  1347729541,
+    "family_id":  "geometric",
+    "technical_id":  "geometric",
+    "artistic_name":  "Geometric Waves",
+    "production_id":  "c11c_geometric_waves_v1",
+    "runtime_id":  "geometric",
+    "display_name":  "GEOMETRIC WAVES",
+    "grammar_id":  "lattice_wave",
+    "grammar":  "LATTICE WAVE",
+    "palette":  "cyan_magenta",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  23,
+                   "fps":  30,
+                   "frame_count":  690,
+                   "loop_cycles":  1,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "LATTICE_WAVE | WAVE 23.5 | MORPH 0.84",
+                      "header_line_2":  "DEMONIO: FIRMWARE DE REALIDAD // CAMPO DE NODOS // WAVE 23.54 | MORPH 0.84",
+                      "header_secondary":  "VISUAL LOOP / GEOMETRIC WAVES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "CIRCUIT_PULSE",
+                  "style":  "harmonic glass pad / slow interference shimmer / clean partials / midpoint phase swell",
+                  "semantic_key":  "LATTICE WAVE",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  23,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "GeometricWaves_v1_seed_1347729541_lattice_wave_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\01_Geometric_Waves",
+                            "output_tag":  "lattice_wave"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_geometric_waves_v1\\run_prototype.ps1 -Seed 1347729541 -Grammar \"lattice_wave\" -Duration 23 -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\01_Geometric_Waves\" -OutputTag \"lattice_wave\"",
+    "technobabble":  "DEMONIO: firmware de realidad // campo de nodos // WAVE 23.54 | MORPH 0.84",
+    "frozen_boundaries_modified":  false
+}

@@ -1,0 +1,44 @@
+COPY_PASTE_READY:
+¿Puedes ver cómo cambia el universo visual sin notar el paso entre mundos?
+
+LIVING PARTICLES - video long-form de arte generativa matemática y procedural.
+
+Duración: 180.00s
+Segmentos: 8 subfamilias visuales
+Seed base: 1708519456
+Audio: música determinista por familia y subfamilia.
+
+Las variantes se enlazan mediante continuidad cromática y geométrica, sin fundidos a negro entre capítulos. El cierre final sí realiza un fundido a negro.
+
+Diseñado en código con #GodotEngine para contemplación prolongada.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt
+
+TITLE:
+Living Particles - LONGFORM
+
+DESCRIPTION:
+LIVING PARTICLES - video long-form de arte generativa matemática y procedural.
+
+Duración: 180.00s
+Segmentos: 8 subfamilias visuales
+Seed base: 1708519456
+Audio: música determinista por familia y subfamilia.
+
+Las variantes se enlazan mediante continuidad cromática y geométrica, sin fundidos a negro entre capítulos. El cierre final sí realiza un fundido a negro.
+
+Diseñado en código con #GodotEngine para contemplación prolongada.
+
+FAMILY: living_particles
+SEED: 1708519456
+DURATION: 180.00 s
+FPS: 30
+FRAMES: 5400
+TRANSITION: dissolve continuity; never through black
+FINAL FADE: 1 s to black
+
+HEADER HOOK:
+¿Puedes ver cómo cambia el universo visual sin notar el paso entre mundos?
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt

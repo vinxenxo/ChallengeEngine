@@ -38,10 +38,15 @@ C11_COMMANDS = [
     ('PRODUCER GUI CONTRACT', 'python', ['./c11c-suite/c11c-producer/test_producer_gui_contract.py'], 'Producer queue, review and drill-launch contracts.'),
     ('RETRO REFERENCE CONTRACT', 'python', ['./c11c-suite/test_retro_reference_contract.py'], 'Immutable C11-A.1 reference bundle.'),
     ('C11 VISUAL QA', 'ps', ['tools/qa/c11/run_c11a_visual_bulk_qa.ps1'], 'Historical visual bulk QA.'),
-    ('ART DIRECTION ALL', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-All'], 'Current review corpus.'),
+    ('ART DIRECTION ALL', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-Workers', '7', '-All'], 'Current review corpus with real 7-worker loop concurrency.'),
     ('ART DIRECTION LONGFORMS', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-Longforms'], '5 × 180s longforms.'),
     ('LONGFORM BULK', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production_bulk.ps1'], 'Canonical 5-family longform bulk production.'),
     ('REPOSITORY LAYOUT', 'ps', ['tools/maintenance/verify_repository_layout.ps1'], 'Repository structure contract.'),
+    ('C11-C 2.19.6 ACCEPTANCE', 'ps', ['FULL_ACCEPTANCE_C11C_2.19.6.ps1'], 'Consolidated C11-C candidate acceptance gate.'),
+    ('C11-C REVIEW PREP', 'ps', ['tools/maintenance/prepare_c11c_acceptance_workspace.ps1', '-RotateAcceptanceRoots'], 'Quarantine prior acceptance outputs without deleting evidence.'),
+    ('C11-C PARALLEL WORKER CONTRACT', 'godot', ['--headless', '--path', '.', '--script', './tests/C11CParallelReviewWorkerIsolationContractTest.gd'], 'Static contract for genuine parallel Art Direction worker isolation.'),
+    ('C11-C DOCS CONSOLIDATION', 'ps', ['tools/maintenance/consolidate_c11c_2_19_documentation.ps1'], 'Archive superseded 2.19.x patch docs into historical evidence.'),
+    ('C11-C FREEZE SEAL 2.19.6', 'ps', ['tools/c11freeze/finalize_c11c_2_19_6_freeze.ps1'], 'Seal the fully accepted C11-C 2.19.6 candidate.'),
     ('SEED STRESS 32×2', 'python', ['tools/c11freeze/run_seed_stress.py'], 'Deterministic seed stress regression.'),
 ]
 
@@ -188,6 +193,8 @@ class Window(QMainWindow):
             final_args.append('--verbose')
         if kind == 'ps':
             self.start(powershell(), ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File'] + final_args, name)
+        elif kind == 'godot':
+            self.start(godot_executable(), final_args, name)
         else:
             self.start(sys.executable, ['-u'] + final_args, name)
 

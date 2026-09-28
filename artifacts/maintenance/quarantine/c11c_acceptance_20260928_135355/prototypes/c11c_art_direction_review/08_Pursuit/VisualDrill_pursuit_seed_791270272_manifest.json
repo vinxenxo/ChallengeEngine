@@ -1,0 +1,61 @@
+{
+    "schema":  "C11-C-VISUAL-DRILL-REVIEW-V1",
+    "revision":  "2.16.9",
+    "family":  "pursuit",
+    "seed":  791270272,
+    "route":  "visual_drill/pursuit",
+    "resolution":  "720x1280",
+    "fps":  30,
+    "duration_seconds":  21,
+    "gameplay_frame_count":  630,
+    "countdown_seconds":  3,
+    "countdown_frames":  90,
+    "end_cta_seconds":  3,
+    "end_cta_frames":  90,
+    "end_cta_main":  "¿LO CONSEGUISTE?",
+    "end_cta_sub":  "¿HASTA DÓNDE LLEGASTE?",
+    "hook":  "MatemÃ¡tica ambiental hecha arte. Deja que tus ojos fluyan con la curva.",
+    "hook_index":  8,
+    "hook_bank_version":  "1.3.0",
+    "cta_position":  "HEADER",
+    "footer_during_cta":  "VISIBLE",
+    "total_duration_seconds":  27,
+    "total_frame_count":  810,
+    "matrix_enabled":  true,
+    "editorial_layout":  "shared_c11c_social",
+    "audio_mode":  "FAMILY_MUSIC_V4",
+    "audio_profile":  "ORGANIC_BLOOM",
+    "audio_semantic_key":  "family=pursuit|seed=791270272",
+    "audio_master_sha256":  "9d45d2eab0ed9439aaefd0f65559a671f198c32a849d4a02b93034cc4c3f4f15",
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_drill_stage\\_envelopes\\visual_drill_pursuit_seed_791270272\\envelope.json",
+    "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_drill_stage\\pursuit\\seed_791270272\\VisualDrill_pursuit_seed_791270272.mp4",
+    "gif":  null,
+    "export_gif":  false,
+    "keep_avi":  false,
+    "contact_sheet":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\_drill_stage\\pursuit\\seed_791270272\\contact_sheet.jpg",
+    "keyframes":  [
+                      "frame_001.png",
+                      "frame_002.png",
+                      "frame_003.png",
+                      "frame_004.png",
+                      "frame_005.png"
+                  ],
+    "ffprobe":  {
+                    "codec":  "h264",
+                    "width":  720,
+                    "height":  1280,
+                    "r_frame_rate":  "30/1",
+                    "nb_frames":  810,
+                    "duration_seconds":  27,
+                    "audio_streams":  1
+                },
+    "hashes":  {
+                   "mp4_sha256":  "2295d6bf118c9da49ad6f9b1cce42d3db00470ef70c30007b4a8df9e808e5cf5",
+                   "envelope_sha256":  "c32186db9b357dbea927cba10bdd7494a99c84831ade0a7811a61ee9b097259f"
+               }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "C11C-2.17.8-VIDEO-DELIVERY-REPAIR",
+  "revision": "2.17.8",
+  "status": "ADDITIVE_PENDING_RUNTIME_SMOKE",
+  "supersedes": "C11C_2.17.7_VIDEO_DELIVERY_STANDARD_REPAIR.zip",
+  "standard_default": "MASTER_1080",
+  "files": [
+    "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+    "profiles/delivery/c11c_video_delivery_profiles.json",
+    "docs/current/06_PRODUCTION_AND_DISTRIBUTION.md",
+    "docs/current/challenges/CHALLENGE_PRODUCTION_CURRENT.md",
+    "docs/current/c11c/C11C_2.17.8_VIDEO_DELIVERY_STANDARD.md",
+    "docs/history/C11-C_2.17_CHALLENGE_PRODUCTION_CHANGELOG.md",
+    "README.txt"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+    "schema":  "C11-C-ART-DIRECTION-REVIEW-STATE-V5",
+    "revision":  "2.16.9",
+    "status":  "LONGFORM",
+    "updated":  "2026-09-28T00:48:50.7030291+02:00",
+    "workers":  7,
+    "seeds":  [
+                  1116832899,
+                  631853388,
+                  1335909959,
+                  359306462,
+                  1868840943
+              ],
+    "resume_enabled":  true,
+    "completed_loops":  [
+
+                        ],
+    "completed_longforms":  [
+                                "fractal/631853388",
+                                "geometric/1116832899",
+                                "invisible_forces/1868840943",
+                                "living_particles/359306462",
+                                "sacred_symmetry/1335909959"
+                            ],
+    "drills_complete":  false,
+    "last_item":  {
+                      "key":  "invisible_forces/1868840943",
+                      "status":  "COMPLETE"
+                  }
+}

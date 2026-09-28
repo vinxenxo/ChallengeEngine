@@ -1,33 +1,33 @@
-# D0 — Migration Map from C11-C 2.18.x
+﻿# D0 — Migration Map from the next formal C11-C freeze
 
-## Keep frozen
+> D is dormant while C11-C 2.19.6 remains a repair candidate. Do not start migration work from the invalidated 2.19.2 freeze claim.
 
-C11-B simulation truth, RNG ownership, simulation result semantics, challenge mechanics and C9 authoring remain baseline inputs.
+## Frozen inputs carried into D
 
-## Evolve in D
+- C11-B deterministic simulation truth and certified mechanics;
+- 540×960 logical social geometry;
+- 27 Visual Loop grammars / 5 families;
+- 4 Visual Drill families and timing envelopes;
+- 5 family Longforms;
+- C11-A.1 54-run compatibility evidence;
+- profile-driven delivery;
+- C11-C Suite/Producer orchestration boundaries;
+- seed, provenance and historical Challenge evidence already present.
 
-- Challenge presentation binding;
-- Challenge assets through declarative families;
-- audio composition and profiles;
-- production request/personalization;
-- artifact topology;
+## D layers to evolve
+
+- Challenge visual binding;
+- asset families/templates;
+- Procedural Music V5;
+- per-video production request/personalization;
+- artifact/provenance topology;
 - seed registry;
-- Suite operator surfaces.
+- Challenge production matrix;
+- media/release QA;
+- Suite operator evolution.
 
 ## Recover before redesign
 
-For `CHALLENGE_001` … `CHALLENGE_009`, create dossiers recording:
+For each `CHALLENGE_001` … `CHALLENGE_009`, create a dossier containing mechanic identity/version, historical intent, current definition path, native timing, logical constraints, current asset references, asset role map, seed/QA evidence, provenance references, known mismatches and D0 disposition.
 
-```text
-challenge_id
-mechanic
-historical intent
-current definition path
-native timing
-current asset references
-asset role map
-known legacy evidence
-visual migration notes
-````
-
-The goal is to preserve intent before changing aesthetics.
+Historical evidence is not silently rewritten to fit the present implementation. Mismatches are recorded explicitly.

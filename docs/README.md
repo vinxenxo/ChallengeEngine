@@ -1,3 +1,5 @@
+> **Current baseline:** C11-C 2.19.1 FROZEN → Challenge Engine V1.0 STATELESS — D.
+>
 # Documentation Map
 
 ## Current operational documentation
