@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.18.4 — current Visual Loop / Visual Drill duration policy contract.
+## C11-C 2.18.6 — current Visual Loop / Visual Drill duration policy contract.
 ## Presentation/authoring contract only. No simulation/mechanics ownership.
 var failures: Array[String] = []
 
@@ -12,14 +12,21 @@ func _initialize() -> void:
     _assert(policy.find("\"1\": 20.0") >= 0, "One-cycle Visual Loop duration must be 20s.")
     _assert(policy.find("\"2\": 22.0") >= 0, "Two-cycle Visual Loop duration must be 22s.")
     _assert(policy.find("\"3\": 23.0") >= 0, "Three-cycle Visual Loop duration must be 23s.")
-    _assert(policy.find("\"tracking\": 21.0") >= 0, "Tracking gameplay duration must be 21s.")
-    _assert(policy.find("\"saccade\": 17.0") >= 0, "Saccade gameplay duration must be 17s.")
-    _assert(policy.find("\"pursuit\": 17.0") >= 0, "Pursuit gameplay duration must be 17s.")
-    _assert(policy.find("\"peripheral_scan\": 17.0") >= 0, "Peripheral Scan gameplay duration must be 17s.")
-    _assert(policy.find("\"tracking\": 27.0") >= 0, "Tracking total presentation duration must be 27s.")
-    _assert(policy.find("\"saccade\": 23.0") >= 0, "Saccade total presentation duration must be 23s.")
-    _assert(policy.find("\"pursuit\": 23.0") >= 0, "Pursuit total presentation duration must be 23s.")
-    _assert(policy.find("\"peripheral_scan\": 23.0") >= 0, "Peripheral Scan total presentation duration must be 23s.")
+    var parsed: Variant = JSON.parse_string(policy)
+    _assert(parsed is Dictionary, "Duration policy must be valid JSON.")
+    if parsed is Dictionary:
+        var root_data: Dictionary = parsed
+        var drill_data: Dictionary = root_data.get("visual_drills", {})
+        var gameplay: Dictionary = drill_data.get("gameplay_seconds", {})
+        var totals: Dictionary = drill_data.get("total_presentation_seconds", {})
+        _assert(is_equal_approx(float(gameplay.get("tracking", -1.0)), 21.0), "Tracking gameplay duration must be 21s.")
+        _assert(is_equal_approx(float(gameplay.get("saccade", -1.0)), 17.0), "Saccade gameplay duration must be 17s.")
+        _assert(is_equal_approx(float(gameplay.get("pursuit", -1.0)), 17.0), "Pursuit gameplay duration must be 17s.")
+        _assert(is_equal_approx(float(gameplay.get("peripheral_scan", -1.0)), 17.0), "Peripheral Scan gameplay duration must be 17s.")
+        _assert(is_equal_approx(float(totals.get("tracking", -1.0)), 27.0), "Tracking total presentation duration must be 27s.")
+        _assert(is_equal_approx(float(totals.get("saccade", -1.0)), 23.0), "Saccade total presentation duration must be 23s.")
+        _assert(is_equal_approx(float(totals.get("pursuit", -1.0)), 23.0), "Pursuit total presentation duration must be 23s.")
+        _assert(is_equal_approx(float(totals.get("peripheral_scan", -1.0)), 23.0), "Peripheral Scan total presentation duration must be 23s.")
 
     for path in [
         "res://tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",

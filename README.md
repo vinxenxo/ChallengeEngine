@@ -1,19 +1,30 @@
-# ChallengeEngineV01_STATELESS
+# C11-C 2.18.6 — Final Test Contract Hotfix
 
-## Current branch state
+Applies to the current C11-C 2.18.x freeze candidate.
 
-**C11-C 2.18.x — FROZEN CANDIDATE / FUTURE BASELINE**
+## Repairs
 
-The project has completed the current manufacturing branch: deterministic Challenge runtime, Visual Loops, Visual Drills, Longforms, delivery standardization, regression and the C11-C operator Suite.
+- Fixes the stale Visual Drill review default: non-Tracking families use 17s gameplay; Tracking remains 21s.
+- Makes the Longform source-artifact contract test self-contained by defining `_assert()`.
+- Adds the D1.5 platform layout template concept for versioned Header / Body / Footer / CTA / safe-area profiles.
 
-## Next phase
+## Apply
 
-**Challenge Engine V1.0 STATELESS — D**
+```powershell
+Expand-Archive -LiteralPath "$env:USERPROFILE\\Downloads\\C11C_2.18.6_TEST_HOTFIX_OVERLAY.zip" -DestinationPath "." -Force
+```
 
-Start with:
+## Focused tests
 
-- `docs/master-prompts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md`
-- `docs/master-prompts/START_PROMPT_C11D_V1.0_STATELESS.md`
-- `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
+```powershell
+.\\c11c-suite\\c11c-test\\run_suite.bat C11CVisualDurationPolicyContractTest.gd
+.\\c11c-suite\\c11c-test\\run_suite.bat C11CVisualLoopLongformSourceArtifactContractTest.gd
+```
 
-C11-C is not to be modified to absorb D work.
+## Full logical corpus
+
+```powershell
+python .\\tests\\run_all.py
+```
+
+No simulation, mechanics, RNG or authored gameplay truth is changed by this overlay.

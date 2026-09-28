@@ -17,6 +17,30 @@ Bring the historical Challenge family onto the visual language proven by C11-C V
 
 The first D deliverable should be a Challenge visual parity contract plus one representative Challenge pilot before propagation to all nine.
 
+## D1.5 — Platform Layout Template System
+
+Create versioned, declarative presentation-layout profiles so the same video content can target different platforms without embedding platform-specific composition logic into Challenges or Visual families.
+
+The layout profile should be able to define, at minimum:
+
+```text
+layout_profile_id
+platform
+version
+canvas / safe-area rules
+header template
+body template
+footer template
+CTA placement
+text constraints
+asset crop/fit rules
+metadata / provenance
+```
+
+Initial targets should cover the project's social outputs (for example Instagram, Facebook and other supported vertical/social destinations), while keeping the logical content model independent of the platform. A production request selects the layout profile explicitly, and the selected profile is recorded in provenance.
+
+This is presentation/delivery infrastructure only: it must not alter Challenge mechanics, deterministic authored truth or Visual Drill/Loop gameplay state.
+
 ## D2 — Challenge Asset Family / Template System
 
 Create a declarative, versioned asset-family system for the Atari-2600-inspired Challenge aesthetic. Assets are selected through semantic slots rather than copied into mechanic implementations.
@@ -62,6 +86,7 @@ Introduce a declarative production request that can select, per video:
 - editorial text/content;
 - audio profile;
 - delivery profile;
+- platform layout profile;
 - seed;
 - individual versus batch mode.
 

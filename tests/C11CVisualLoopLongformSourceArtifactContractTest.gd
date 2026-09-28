@@ -1,10 +1,14 @@
 extends SceneTree
 
-## C11-C 2.18.4 — Longform source-artifact contract.
+## C11-C 2.18.6 — Longform source-artifact contract.
 ## Contract-only test: validates that the compositor consumes the canonical
 ## Producer REVIEW_720 product surface without touching rendering/mechanics.
 
 var failures: Array[String] = []
+
+func _assert(condition: bool, message: String) -> void:
+    if not condition:
+        failures.append(message)
 
 func _initialize() -> void:
     var root := ProjectSettings.globalize_path("res://")

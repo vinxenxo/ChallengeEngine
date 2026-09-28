@@ -23,6 +23,7 @@ Presentation, production and asset systems may evolve around those boundaries.
 1. Recover the nine historical Challenge definitions and assets into dossiers.
 2. Establish Challenge visual parity with the C11-C visual system.
 3. Define the Atari-2600-inspired Challenge asset-family/template contract.
+4. Define versioned platform layout profiles for Header / Body / Footer / CTA / safe areas across supported social destinations.
 4. Define a normalized declarative production request and provenance model.
 5. Define the D seed registry and anti-reuse policy.
 6. Create the roadmap-driven procedural music V5 design before implementation.
@@ -39,9 +40,9 @@ Use semantic slots and versioned families so compatible assets can be exchanged 
 
 The next audio system should be richer than C11-C while remaining deterministic and mathematically driven. Design layered instrument/timbre, rhythm, harmony, motif and texture parameters before coding. Avoid hidden coupling to gameplay timing.
 
-## Personalization
+## Platform layouts and personalization
 
-Every production request should be able to select palette, asset family, typography, text template, audio profile, delivery profile and seed. Store the exact request and its hash.
+Production must be able to select a versioned platform layout profile (Header / Body / Footer / CTA / safe areas) independently from content and mechanics. Every production request should also be able to select palette, asset family, typography, text template, audio profile, delivery profile and seed. Store the exact request and its hash.
 
 ## Seed traceability
 

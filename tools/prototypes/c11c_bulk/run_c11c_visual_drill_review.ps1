@@ -30,7 +30,7 @@ $CountdownSeconds=3.0
 $EndCTASeconds=3.0
 $MinimumTotalDurationSeconds=20.0
 $MaximumTotalDurationSeconds=30.0
-$DefaultGameplayDurationSeconds=21.0
+$DefaultGameplayDurationSeconds=17.0
 $TrackingGameplayDurationSeconds=21.0
 
 if($Smoke){

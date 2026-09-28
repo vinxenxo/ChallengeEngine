@@ -23,6 +23,9 @@ Inventory the frozen C repository, manifests, assets, profiles, docs and seeds w
 ### D1
 Recover `CHALLENGE_001` … `CHALLENGE_009`, build intent/asset dossiers, then create the Challenge visual parity contract.
 
+### D1.5
+Design versioned platform layout profiles for Header / Body / Footer / CTA / safe areas and supported social destinations.
+
 ### D2
 Design the versioned interchangeable asset-family/template system for the retro Atari-2600-inspired Challenge layer.
 
