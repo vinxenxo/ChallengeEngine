@@ -1,0 +1,210 @@
+Excelente ya funciona todo lo de longform video ha funcionado la prueba desde consola, algunos bug en la suite d producer cuando intento general drills
+
+
+
+
+[LAUNCH] powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1 -ChallengeId CHALLENGE_007 -Seed 914213074 -DeliveryProfile MASTER_1080 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\production\audiovisual\challenges\CHALLENGE_007\seed_914213074
+[CHALLENGE] CHALLENGE_007 seed=914213074 profile=MASTER_1080 source=540x960 delivery=1080x1920 fps=60 duration=10 frames=600
+[CHALLENGE] Standard delivery profile: MASTER_1080=1080x1920; review/minimum profiles are additive; runtime capture remains native 540x960.
+[CHALLENGE] Contract-safe path: Godot source capture remains native 540x960; delivery scale is post-capture FFmpeg only.
+[CHALLENGE] PASS CHALLENGE_007 seed=914213074 -> C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\production\audiovisual\challenges\CHALLENGE_007\seed_914213074\CHALLENGE_007
+
+[CHALLENGE] Source  540x960 / 600 frames -> Delivery 1080x1920
+
+
+=== PRODUCCIÓN FINALIZADA ===
+[SEED PLANNER] búsqueda en curso
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+
+[SEEDS PLANNER] 1743207429
+
+[LAUNCH] powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_living_particles_v1 -Seed 1743207429 -DeliveryProfile MASTER_1080
+[C11-C-PRODUCTION] ==========================================
+
+[C11-C-PRODUCTION] Family=c11c_living_particles_v1 Seed=1743207429 Product=LivingParticles_v1_seed_1743207429_MASTER_1080 Delivery=MASTER_1080
+
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+--------------------------------------------------------------------------------
+
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\LivingParticles_v1_seed_1743207429_dd2a80de45104bdb8dbc327a504ed4b3.avi
+690 frames at 30 FPS (movie length: 00:00:23:00), recorded in 00:00:37 (62% of real-time speed).
+CPU render time: 0.31 seconds (average: 0.44 ms/frame)
+GPU render time: 6.48 seconds (average: 9.39 ms/frame)
+Encoding time: 5.71 seconds (average: 8.27 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-AUDIO] FAMILY_MUSIC_V4 generated: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_living_particles_v1\LivingParticles_v1_seed_1743207429_music.wav | 23.00s | family=living_particles | profile=ORGANIC_BLOOM | kind=loop | semantic=COLLISION CLOUD
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 690 frames / 23 s / AUDIO=True / LOOP / EDITORIAL
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_living_particles_v1\LivingParticles_v1_seed_1743207429.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_living_particles_v1\LivingParticles_v1_seed_1743207429_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_living_particles_v1\LivingParticles_v1_seed_1743207429_social.txt
+
+[C11-C-PRODUCTION] FINAL PRODUCT PASS - LivingParticles_v1_seed_1743207429_MASTER_1080 -> 1080x1920
+
+=== PRODUCCIÓN FINALIZADA ===
+[SEEDS RANDOM] 187401784
+
+[LAUNCH] powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\prototypes\c11c_bulk\run_c11c_production.ps1 -Family c11c_fractal_bloom_v1 -Seed 187401784 -DeliveryProfile MIN_540
+[C11-C-PRODUCTION] ==========================================
+
+[C11-C-PRODUCTION] Family=c11c_fractal_bloom_v1 Seed=187401784 Product=FractalBloom_v1_seed_187401784_MIN_540 Delivery=MIN_540
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+
+--------------------------------------------------------------------------------
+
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\FractalBloom_v1_seed_187401784_8aa2d84a19d7441c814bb04416dcd209.avi
+
+690 frames at 30 FPS (movie length: 00:00:23:00), recorded in 00:00:34 (67% of real-time speed).
+CPU render time: 0.27 seconds (average: 0.39 ms/frame)
+GPU render time: 1.48 seconds (average: 2.15 ms/frame)
+Encoding time: 7.56 seconds (average: 10.95 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-AUDIO] FAMILY_MUSIC_V4 generated: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_fractal_bloom_v1\FractalBloom_v1_seed_187401784_music.wav | 23.00s | family=fractal | profile=ORGANIC_BLOOM | kind=loop | semantic=SPIRAL FRACTAL
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 690 frames / 23 s / AUDIO=True / LOOP / EDITORIAL
+
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_fractal_bloom_v1\FractalBloom_v1_seed_187401784.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_fractal_bloom_v1\FractalBloom_v1_seed_187401784_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_fractal_bloom_v1\FractalBloom_v1_seed_187401784_social.txt
+[C11-C-PRODUCTION] FINAL PRODUCT PASS - FractalBloom_v1_seed_187401784_MIN_540 -> 540x960
+
+
+=== PRODUCCIÓN FINALIZADA ===
+
+[LAUNCH] powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\c11c-suite\c11c-producer\run_visual_drill_production.ps1 -Family tracking -Seed 712264950 -DifficultyTier 1 -SpeedMultiplier 1.24598 -PacingMode accelerating -DeliveryProfile MIN_540
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+[STDERR] Visual Drill envelope generator returned no response.
+En C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\c11c-suite\c11c-producer\run_visual_drill_production.ps1: 57 Carácter: 48
++ ... $response)){throw 'Visual Drill envelope generator returned no respon ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Visual Drill en...ed no response.:String) [], RuntimeException
+[STDERR]     + FullyQualifiedErrorId : Visual Drill envelope generator returned no response.
+
+[ERROR] Launcher terminó con código 1. Revisa el LOG.
+[LAUNCH] powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\c11c-suite\c11c-producer\run_visual_drill_production.ps1 -Family pursuit -Seed 1602090542 -DifficultyTier 1 -SpeedMultiplier 1.50000 -PacingMode constant -DeliveryProfile MASTER_1080
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+[STDERR] Visual Drill envelope generator returned no response.
+[STDERR] En C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\c11c-suite\c11c-producer\run_visual_drill_production.ps1: 57 Carácter: 48
+[STDERR] + ... $response)){throw 'Visual Drill envelope generator returned no respon ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Visual Drill en...ed no response.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Visual Drill envelope generator returned no response.
+
+[ERROR] Launcher terminó con código 1. Revisa el LOG.
+
+
+
+Otro bug que he notado es que cuando en el producer se produce un error al generar un video, ya no me deja generar mas, todos los demas tras el error de un video dan error tambien.
+
+
+
+
+
+ademas me me gustaria que a la suite c11-producer le añadieras a la lista predefinida de reviews: uno con mas la review completa de la familia CHALLENGE 
+
+
+
+otros errores menores en la suite de test:
+
+[TEST] RETROCOMPATIBILITY
+
+
+
+> C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/c11freeze/run_retrocompatibility.ps1
+
+
+
+[STDERR] Traceback (most recent call last):
+
+
+
+[STDERR]   File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11freeze\run_retrocompatibility.py", line 163, in <module>
+
+
+
+    raise SystemExit(main())
+
+
+
+                     ~~~~^^
+
+
+
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11freeze\run_retrocompatibility.py", line 97, in main
+
+
+
+    reference_path = resolve_reference(args.reference)
+
+
+
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11freeze\run_retrocompatibility.py", line 58, in resolve_reference
+
+
+
+    raise RuntimeError("C11-A.1 frozen reference manifest not found")
+
+
+
+RuntimeError: C11-A.1 frozen reference manifest not found
+
+
+
+[TEST] EXIT=1 STATUS=ExitStatus.NormalExit
+
+
+
+
+
+Cuando los test funcionen y el generador tambien, vamos a congelar esta rama C y pasaremos a la version Challenge Engine V1.0 STATELESS D
+
+
+
+Documenta, actualiza y organiza la documentación de esta rama.
+
+
+
+La dejaremos frozen y sera nuestro futuro baseline. La rama C11-C2.18.x es el motor completamente funcionando
+
+
+
+Crea un master overhand prompt y un start prompt para continuar el desarrollo de la rama D en otra ventana de contexto nueva.
+
+
+
+Revisa la información historica y legacy para consultar cuales serian los siguientes pasos en el desarrollo de nuestro proyecto para decidir tambien que toca despues.
+
+
+
+Ademas de lo que tu consideres que deben ser los siguientes pasos a seguir en D, en esta nueva fase mis intereses son:
+
+
+
+Evolucionar la familia CHALLENGE (rama A-B) para que lleve la misma guia visual que hemos marcado en los visual, composición , etc.
+
+Actualizar la familia CHALLENGE con los descubrimientos y mejoras de la familia de visuals (musica, textos, etc), normalizando la generación y producción de videos.
+
+Avanzar en la gestión de assets de cada challenge (recuerda que cada challenge tendrá estetica de videojuego retro de los atari 2600) tendra que tener una forma robusta de intercambiar familias de assets entre diferentes challenges como si fueran plantillas de graficos para esa mecanica
+
+Seguir profundizando en la generación y producción musical concibiendo musica ambiental mas exotica, profunda, con mas instrumentos..etc mas compleja y bonita pero ligado a la generación procedural matematica del proyecto
+
+Mayor personalización de videos : cambiar los colores, familias de assets, textos de fuente, que van aparecer en los videos, videos para producirlos individualmente
+
+Mayor orden y simplicidad y accesibilidad y separación de capas en la estructura de carpetas (videos generados, logs, etc) para videos producidos, logs, archivos generados, etc
+
+
+
+Esas son mis aportaciones a lo que yo haria.
+
+
+
+Adelante soluciona los errores del GUI producer y cerramos esta rama para trabajar ya en D en otra ventana de contexto.
+
+
+
