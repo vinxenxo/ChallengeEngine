@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+KERNEL: BUFFER DE ENTROPIA // OBJETIVO: LINEAS EQUIPOTENCIALES // TRACES 73 | PULSE 0.84
+
+KERNEL: BUFFER DE ENTROPIA // OBJETIVO: LINEAS EQUIPOTENCIALES // TRACES 73 | PULSE 0.84
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: VORTEX FIELD
+- Paleta: vermilion_peach_gold
+- Seed: 794731922
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #VORTEXFIELD
+
+KERNEL: BUFFER DE ENTROPIA // OBJETIVO: LINEAS EQUIPOTENCIALES // TRACES 73 | PULSE 0.84
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: VORTEX FIELD
+- Paleta: vermilion_peach_gold
+- Seed: 794731922
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - VORTEX FIELD
+
+DESCRIPTION:
+KERNEL: BUFFER DE ENTROPIA // OBJETIVO: LINEAS EQUIPOTENCIALES // TRACES 73 | PULSE 0.84
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: VORTEX FIELD
+- Paleta: vermilion_peach_gold
+- Seed: 794731922
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: VORTEX FIELD
+PALETTE: vermilion_peach_gold
+SEED: 794731922
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: ON / FLOWING_VECTOR
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+KERNEL: BUFFER DE ENTROPIA // OBJETIVO: LINEAS EQUIPOTENCIALES // TRACES 73 | PULSE 0.84
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #VORTEXFIELD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 794731922 -Grammar vortex_field -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\05_Invisible_Forces -OutputTag vortex_field
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_794731922_vortex_field_manifest.json

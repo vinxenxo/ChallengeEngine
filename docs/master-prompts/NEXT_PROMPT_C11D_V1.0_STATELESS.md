@@ -1,4 +1,4 @@
-﻿> **DORMANT — historical handoff, not current authority.** The former C11-C 2.19.2 freeze claim was superseded by later workstation acceptance findings. Current branch context is C11-C 2.19.6 consolidated repair candidate — NOT FROZEN.
+> **DORMANT — historical handoff, not current authority.** The former C11-C 2.19.2 freeze claim was superseded by later workstation acceptance findings. Current branch context is C11-C 2.19.6 final repair candidate — NOT FROZEN.
 
 # NEXT PROMPT — D (Dormant)
 

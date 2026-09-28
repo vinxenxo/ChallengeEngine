@@ -1,4 +1,4 @@
-﻿function Initialize-C11CReviewWorkerProject {
+function Initialize-C11CReviewWorkerProject {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)][string]$WorkerRoot,

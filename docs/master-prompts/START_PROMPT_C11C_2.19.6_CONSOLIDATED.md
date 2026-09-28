@@ -1,49 +1,45 @@
-﻿# START PROMPT — ChallengeEngineV01_STATELESS — C11-C 2.19.6
+# START PROMPT — ChallengeEngineV01_STATELESS — C11-C 2.19.6 Final Repair
 
 Continue from **C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN**.
 
-## Read first
+## First objective
 
-1. `C11C_2.19.6_CONTEXT_INDEX.md`
-2. `AGENTS.md`
-3. `.continue/rules/CONTINUE.md`
-4. `docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md`
-5. `docs/current/c11c/C11-C_2.19.6_CONSOLIDATED_STATE.md`
-6. `docs/current/c11c/C11-C_2.19.6_ACCEPTANCE_GATE.md`
-
-## Immediate objective
-
-First verify the focused worker contract. Then run the real parallel loop review.
+Verify the repaired worker contract. Do not alter the proven concurrent worker implementation.
 
 ```powershell
 python .\c11c-suite\self_test.py
 python .\c11c-suite\c11c-producer\self_test.py
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\verify_c11c_2_19_6_final_repair.ps1
 .\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+```
 
+The focused test must print:
+
+```text
+[C11C_PARALLEL_REVIEW_WORKER_ISOLATION_CONTRACT_SUITE] PASS
+```
+
+## Second objective
+
+Run the real 7-worker review:
+
+```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass `
   -File .\tools\prototypes\c11c_bulk\run_c11c_art_direction_batch_v4.ps1 `
   -Workers 7 -Loops -Reset
 ```
 
-The Art Direction log must show class-cache bootstrap PASS for each worker and then genuine capture concurrency. The required runtime proof is `MAX_OBSERVED_CONCURRENCY > 1`; every Movie Maker loop must report 720×1280 @ 30 FPS.
+Required runtime proof: worker bootstrap PASS, 720×1280 @ 30 FPS and `MAX_OBSERVED_CONCURRENCY > 1`. The workstation already demonstrated `7`.
 
-If a worker has a `PresentationProfile` parse error, do not accept its video. The bootstrap is specifically intended to prevent that failure.
+## Prohibited regression
 
-## Do not regress concurrency
+Do not add a mutex. Do not change the batch to one-at-a-time. Do not reintroduce `c11c-studio`.
 
-Never replace worker isolation with a global mutex. Never serialize captures one-by-one. Initialization may be sequential because it happens before any captures; the capture pool itself must remain concurrent.
-
-## Suite ownership
-
-`c11c-suite/` is the only active Suite surface. `c11c-studio/` is retired and must remain untouched.
-
-## After runtime proof
-
-Run:
+## Final stage
 
 ```powershell
 python .\tests\run_all.py
 .\FULL_ACCEPTANCE_C11C_2.19.6.ps1
 ```
 
-Only after a full PASS may the 2.19.6 freeze seal be considered.
+Only after full PASS can the formal 2.19.6 freeze seal be considered.

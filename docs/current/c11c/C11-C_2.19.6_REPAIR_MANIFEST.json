@@ -53,5 +53,8 @@
     "static_container_validation": "required and recorded before delivery",
     "windows_godot_runtime_validation": false,
     "freeze_allowed": false
-  }
+  },
+  "final_repair_test_defect": "C11CParallelReviewWorkerIsolationContractTest.gd previously matched the Start-LoopReviewJob function declaration instead of the first invocation.",
+  "final_repair_test": "Compare $workerPool=New-C11CReviewWorkerPool with Start-LoopReviewJob -FamilyId call-site markers.",
+  "production_batch_changed_for_test_repair": false
 }

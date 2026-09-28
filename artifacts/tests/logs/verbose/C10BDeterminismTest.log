@@ -1,0 +1,29 @@
+WorkerThreadPool: 22 threads, 6 max low-priority.
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Using "default" pen tablet driver...
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+.NET: Initializing module...
+Found hostfxr: C:/Program Files/dotnet/host/fxr/10.0.11/hostfxr.dll
+.NET: hostfxr initialized
+.NET: GodotPlugins initialized
+.NET: Failed to load project assembly
+CORE API HASH: 2244263461
+EDITOR API HASH: 3539082181
+Loading resource: res://tests/C10BDeterminismTest.gd remapped: res://tests/C10BDeterminismTest.gd
+Completed load for: 'res://tests/C10BDeterminismTest.gd' remapped 'res://tests/C10BDeterminismTest.gd' at thread -1
+SceneTreeFTI: traversal method DEFAULT
+[TEST] Running C10BDeterminismTest...
+[C10B] Identity determinism: 9/9
+[C10B] Seed injection isolation: 9/9
+[C10B] Tier-4 policy propagation: 9/9
+[C10B] Input immutability: 9/9
+[C10B_VISUAL_AUTHORING_DETERMINISM_SUITE] PASS — C10-B 9/9
+Loaded system CA certificates
+Unloading: Disposing tracked instances...
+Unloading: Finished disposing tracked instances.
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"

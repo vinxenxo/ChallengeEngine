@@ -1,7 +1,7 @@
-﻿# START PROMPT — Challenge Engine V1.0 STATELESS — D
+# START PROMPT — Challenge Engine V1.0 STATELESS — D
 
 > DORMANT — historical planning prompt, not current authority.
-> Current branch context: C11-C 2.19.6 consolidated repair candidate — NOT FROZEN.
+> Current branch context: C11-C 2.19.6 final repair candidate — NOT FROZEN.
 
 Do not begin D work until the next formal C11-C freeze is accepted.
 

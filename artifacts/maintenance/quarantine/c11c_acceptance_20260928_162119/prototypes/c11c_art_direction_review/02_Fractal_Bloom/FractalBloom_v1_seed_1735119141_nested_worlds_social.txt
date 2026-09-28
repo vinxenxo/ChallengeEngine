@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+[SYS] ACOPLANDO FRACTAL DE JULIA A {VALUE:.1F} MS // SINCRONIZADO AL KERNEL // DETAIL 1.01 | BRANCH 1.09
+
+[SYS] ACOPLANDO FRACTAL DE JULIA A {VALUE:.1F} MS // SINCRONIZADO AL KERNEL // DETAIL 1.01 | BRANCH 1.09
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: NESTED WORLDS
+- Paleta: gold_violet_nebula
+- Seed: 1735119141
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #NESTEDWORLDS
+
+[SYS] ACOPLANDO FRACTAL DE JULIA A {VALUE:.1F} MS // SINCRONIZADO AL KERNEL // DETAIL 1.01 | BRANCH 1.09
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: NESTED WORLDS
+- Paleta: gold_violet_nebula
+- Seed: 1735119141
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+FRACTAL BLOOM - NESTED WORLDS
+
+DESCRIPTION:
+[SYS] ACOPLANDO FRACTAL DE JULIA A {VALUE:.1F} MS // SINCRONIZADO AL KERNEL // DETAIL 1.01 | BRANCH 1.09
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: NESTED WORLDS
+- Paleta: gold_violet_nebula
+- Seed: 1735119141
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: NESTED WORLDS
+PALETTE: gold_violet_nebula
+SEED: 1735119141
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+[SYS] ACOPLANDO FRACTAL DE JULIA A {VALUE:.1F} MS // SINCRONIZADO AL KERNEL // DETAIL 1.01 | BRANCH 1.09
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #NESTEDWORLDS
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 1735119141 -Grammar nested_worlds -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\02_Fractal_Bloom -OutputTag nested_worlds
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_1735119141_nested_worlds_manifest.json

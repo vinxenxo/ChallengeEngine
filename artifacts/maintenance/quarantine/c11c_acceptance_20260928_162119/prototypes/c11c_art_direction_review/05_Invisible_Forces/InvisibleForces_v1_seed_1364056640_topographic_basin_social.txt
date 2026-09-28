@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+DECODIFICANDO LINEAS EQUIPOTENCIALES... [PARALEX] // TRACES 52 | PULSE 1.12
+
+DECODIFICANDO LINEAS EQUIPOTENCIALES... [PARALEX] // TRACES 52 | PULSE 1.12
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: crimson_lime_gold
+- Seed: 1364056640
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #TOPOGRAPHICBASIN
+
+DECODIFICANDO LINEAS EQUIPOTENCIALES... [PARALEX] // TRACES 52 | PULSE 1.12
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: crimson_lime_gold
+- Seed: 1364056640
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - TOPOGRAPHIC BASIN
+
+DESCRIPTION:
+DECODIFICANDO LINEAS EQUIPOTENCIALES... [PARALEX] // TRACES 52 | PULSE 1.12
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: crimson_lime_gold
+- Seed: 1364056640
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: TOPOGRAPHIC BASIN
+PALETTE: crimson_lime_gold
+SEED: 1364056640
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / FLOWING_VECTOR
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+DECODIFICANDO LINEAS EQUIPOTENCIALES... [PARALEX] // TRACES 52 | PULSE 1.12
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #TOPOGRAPHICBASIN
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 1364056640 -Grammar topographic_basin -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\05_Invisible_Forces -OutputTag topographic_basin
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_1364056640_topographic_basin_manifest.json

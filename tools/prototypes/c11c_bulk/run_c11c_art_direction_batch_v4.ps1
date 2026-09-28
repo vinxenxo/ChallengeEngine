@@ -1,4 +1,4 @@
-﻿param(
+param(
     [Parameter(Mandatory=$false)][string]$ReviewRoot='',
     [ValidateRange(1,7)][int]$Workers=7,
     [int[]]$Seeds=@(),
@@ -225,7 +225,7 @@ function Start-LoopReviewJob {
 }
 
 Write-Host '[C11-C-ART-DIRECTION] =========================================='
-Write-Host '[C11-C-ART-DIRECTION] REVIEW V10 — 7-worker isolated / grouped / resumable / isolated artifacts / Godot class-cache bootstrap'
+Write-Host '[C11-C-ART-DIRECTION] REVIEW V10 - 7-worker isolated / grouped / resumable / isolated artifacts / Godot class-cache bootstrap'
 Write-Host "[C11-C-ART-DIRECTION] Root: $ReviewRoot"
 Write-Host "[C11-C-ART-DIRECTION] Workers: $Workers | seeds: $($Seeds.Count) | GIF=$ExportGif | Resume=$Resume | Loops=$($selection.loops) | Drills=$($selection.drills) | Longforms=$($selection.longforms)"
 Write-Host '[C11-C-ART-DIRECTION] AVI temporary by default; GIF opt-in.'
@@ -250,7 +250,7 @@ if($selection.loops){
         }
     }
     if($Resume){
-        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN — $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
+        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN - $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
     }
     $workerPool=New-C11CReviewWorkerPool -ProjectRoot $ProjectRoot -Count $Workers
     $maxObservedWorkerConcurrency=0
@@ -336,7 +336,7 @@ if($selection.longforms){
 if($selection.drills){
     $drillStage=Join-Path $ReviewRoot '_drill_stage'
     if($Resume -and (Test-DrillsComplete -Root $ReviewRoot)){
-        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills — complete.'
+        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills - complete.'
         Save-State -Stage 'DRILLS' -Key 'all' -Status 'SKIP_EXISTING'
     } else {
         $drillParams=@{
@@ -389,4 +389,4 @@ $manifest=[ordered]@{
     drill_families=@('tracking','saccade','pursuit','peripheral_scan')
 }
 [System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'),($manifest|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
-Write-Host "[C11-C-ART-DIRECTION] COMPLETE — grouped review root: $ReviewRoot"
+Write-Host "[C11-C-ART-DIRECTION] COMPLETE - grouped review root: $ReviewRoot"

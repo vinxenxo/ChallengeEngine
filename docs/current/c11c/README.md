@@ -1,4 +1,4 @@
-﻿# C11-C 2.19.6 current documentation
+# C11-C 2.19.6 current documentation
 
 `C11-C_2.19.6_CONSOLIDATED_STATE.md` is the active state authority.
 

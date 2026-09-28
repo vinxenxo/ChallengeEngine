@@ -1,12 +1,9 @@
-﻿AUTHORITATIVE NEXT CONTEXT: C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN
+AUTHORITATIVE NEXT CONTEXT — C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN
 
-Read first:
-- C11C_2.19.6_CONTEXT_INDEX.md
-- docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md
-- docs/master-prompts/START_PROMPT_C11C_2.19.6_CONSOLIDATED.md
-- docs/current/c11c/C11-C_2.19.6_CONSOLIDATED_STATE.md
-- docs/current/c11c/C11-C_2.19.6_ACCEPTANCE_GATE.md
+The 7-worker runtime is already proven. The last failure was a false-negative ordering assertion in C11CParallelReviewWorkerIsolationContractTest.gd. The repaired test compares actual call sites.
 
-Runtime objective: focused worker contract PASS, then `run_c11c_art_direction_batch_v4.ps1 -Workers 7 -Loops -Reset` with per-worker class-cache bootstrap and `MAX_OBSERVED_CONCURRENCY > 1`.
+Read: C11C_2.19.6_CONTEXT_INDEX.md, AGENTS.md, docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md, docs/master-prompts/START_PROMPT_C11C_2.19.6_CONSOLIDATED.md.
 
-Never restore the global mutex or serialize the captures. `c11c-suite` is active; `c11c-studio` is retired.
+Run: static verifier -> focused worker contract -> Art Direction -Workers 7 -Loops -Reset -> tests/run_all.py -> FULL_ACCEPTANCE_C11C_2.19.6.ps1.
+
+Never introduce a mutex or one-at-a-time capture. c11c-suite is active; c11c-studio is retired.

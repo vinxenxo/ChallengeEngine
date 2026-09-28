@@ -1,6 +1,6 @@
-﻿# NEXT PROMPT — C11-D V1.0 STATELESS
+# NEXT PROMPT — C11-D V1.0 STATELESS
 
 > DORMANT — do not start D from this file.
-> Current branch context: C11-C 2.19.6 consolidated repair candidate — NOT FROZEN.
+> Current branch context: C11-C 2.19.6 final repair candidate — NOT FROZEN.
 
 Continue from the active C11-C 2.19.6 master/start prompts. D begins only after a new formal C11-C freeze and recorded acceptance evidence.

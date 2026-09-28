@@ -1,10 +1,10 @@
-﻿# C11-C Producer 0.9.7 — Current State / C11-C 2.19.6 Candidate
+# C11-C Producer 0.9.7 — Current State / C11-C 2.19.6 Candidate
 
 ## Authority
 
 The live Producer is `c11c-suite/c11c-producer/`.
 
-The current repository is **C11-C 2.19.6 final repair candidate — NOT FROZEN**. Producer version remains **0.9.7**.
+The current repository is **C11-C 2.19.6 final repair candidate — NOT FROZEN**. Producer version remains **0.9.7**. The final 2.19.6 repair does not modify Producer capture behavior.
 
 ## Runtime / capture
 

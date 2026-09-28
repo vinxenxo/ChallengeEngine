@@ -8,7 +8,7 @@ import re
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TESTS_DIR = PROJECT_ROOT / "tests"
 
-# Registro explícito y contractual de suites.
+# Registro expl?cito y contractual de suites.
 # La identidad es el path relativo desde la carpeta 'tests/'.
 KNOWN_SUITES = {
     "C6EAssetIntegrityTest.gd": "[C6E_ASSET_INTEGRITY_SUITE] PASS",
@@ -49,9 +49,9 @@ KNOWN_SUITES = {
     "C6F4ShadowRuntimeBridgeTest.gd": "[C6F4_SHADOW_RUNTIME_BRIDGE_SUITE] PASS",
     "C9EHitAuthoringProductiveTest.gd": "[C9E_HIT_V1_PRODUCTIVE_GENERATION] PASS",
     "C9FCatchAuthoringProductiveTest.gd": "[C9F_CATCH_V1_PRODUCTIVE_GENERATION] PASS",
-    "C10AVisualAuthoringPipelineTest.gd": "[C10A_VISUAL_AUTHORING_PIPELINE_SUITE] PASS — C10-A.1 9/9",
-    "C10BDeterminismTest.gd": "[C10B_VISUAL_AUTHORING_DETERMINISM_SUITE] PASS — C10-B 9/9",
-    "C10CEndToEndTest.gd": "[C10C_VISUAL_AUTHORING_RUNTIME_E2E_SUITE] PASS — 9/9",
+    "C10AVisualAuthoringPipelineTest.gd": "[C10A_VISUAL_AUTHORING_PIPELINE_SUITE] PASS - C10-A.1 9/9",
+    "C10BDeterminismTest.gd": "[C10B_VISUAL_AUTHORING_DETERMINISM_SUITE] PASS - C10-B 9/9",
+    "C10CEndToEndTest.gd": "[C10C_VISUAL_AUTHORING_RUNTIME_E2E_SUITE] PASS - 9/9",
     "C11A1FactoryIsolationContractTest.gd": "[C11A1_FACTORY_ISOLATION_CONTRACT_SUITE] PASS",
     "C11B0UnifiedSocialFrameContractTest.gd": "[C11B0_UNIFIED_SOCIAL_FRAME_CONTRACT_SUITE] PASS",
     "C11B02PresentationFramingContractTest.gd": "[C11B02_PRESENTATION_FRAMING_CONTRACT_SUITE] PASS",
@@ -192,7 +192,7 @@ def discover_test_suites():
                 
                 if rel_path not in KNOWN_SUITES:
                     print(f"[FATAL] Test no registrado descubierto: {rel_path}.")
-                    print("Por seguridad, debes registrar explícitamente su marcador de éxito en KNOWN_SUITES.")
+                    print("Por seguridad, debes registrar expl?citamente su marcador de ?xito en KNOWN_SUITES.")
                     sys.exit(1)
                 
                 pass_marker = KNOWN_SUITES[rel_path]
@@ -256,7 +256,7 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str, verbose: bool =
     for line in combined_output:
         for pattern in FATAL_PATTERNS:
             if pattern in line:
-                print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern.strip()}")
+                print(f"[RUNNER-FAIL] {name}: detectado patr?n fatal: {pattern.strip()}")
                 print(f"       Trazado: {line.strip()}")
                 return False
 
@@ -269,7 +269,7 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str, verbose: bool =
         print(f"[RUNNER-FAIL] {name}: suite emitted an explicit FAIL marker.")
         return False
     if pass_marker not in full_output:
-        print(f"[RUNNER-FAIL] {name}: falta marcador de éxito '{pass_marker}'.")
+        print(f"[RUNNER-FAIL] {name}: falta marcador de ?xito '{pass_marker}'.")
         return False
 
     print(f"[RUNNER-PASS] {name} -> OK")
@@ -281,11 +281,11 @@ def main() -> None:
     args = parser.parse_args()
 
     bootstrap_artifact_tree()
-    print("=== PYTHON TEST RUNNER — LOGICAL CORPUS ===")
+    print("=== PYTHON TEST RUNNER - LOGICAL CORPUS ===")
     
     suites = discover_test_suites()
     if not suites:
-        print("[BATCH-RUNNER] No se encontraron suites válidas (*Test.gd).")
+        print("[BATCH-RUNNER] No se encontraron suites v?lidas (*Test.gd).")
         sys.exit(1)
 
     results = []
@@ -299,11 +299,11 @@ def main() -> None:
     failed = [rel_path for rel_path, passed in results if not passed]
 
     if failed:
-        print(f"\n[BATCH-RUNNER] FAIL — {len(failed)} suite(s) fallaron.")
+        print(f"\n[BATCH-RUNNER] FAIL - {len(failed)} suite(s) fallaron.")
         for rel_path in failed:
             print(f"  - {rel_path}")
 
-        print("\n[BATCH-RUNNER] Reejecutando suites fallidas con --verbose para diagnóstico...")
+        print("\n[BATCH-RUNNER] Reejecutando suites fallidas con --verbose para diagn?stico...")
         failed_map = {rel_path: (suite_path, pass_marker) for rel_path, suite_path, pass_marker in suites}
         for rel_path in failed:
             suite_path, pass_marker = failed_map[rel_path]
@@ -311,7 +311,7 @@ def main() -> None:
 
         sys.exit(1)
 
-    print(f"\n[BATCH-RUNNER] PASS — {len(results)} logical suite(s) superaron la auditoría E2E.")
+    print(f"\n[BATCH-RUNNER] PASS - {len(results)} logical suite(s) superaron la auditor?a E2E.")
     sys.exit(0)
 
 if __name__ == "__main__":

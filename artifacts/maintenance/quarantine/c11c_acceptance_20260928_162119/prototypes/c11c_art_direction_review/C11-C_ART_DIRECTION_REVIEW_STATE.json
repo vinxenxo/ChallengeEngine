@@ -1,0 +1,50 @@
+{
+    "schema":  "C11-C-ART-DIRECTION-REVIEW-STATE-V5",
+    "revision":  "2.16.9",
+    "status":  "LOOPS",
+    "updated":  "2026-09-28T16:16:32.4625295+02:00",
+    "workers":  7,
+    "seeds":  [
+                  1364056640,
+                  794731922,
+                  1010551371,
+                  257246153,
+                  1735119141
+              ],
+    "resume_enabled":  true,
+    "completed_loops":  [
+                            "c11c_fractal_bloom_v1/dendritic_tunnel/794731922",
+                            "c11c_fractal_bloom_v1/fractal_filigree/257246153",
+                            "c11c_fractal_bloom_v1/nested_worlds/1735119141",
+                            "c11c_fractal_bloom_v1/radial_bloom/1364056640",
+                            "c11c_fractal_bloom_v1/spiral_fractal/1010551371",
+                            "c11c_geometric_waves_v1/interference_plane/257246153",
+                            "c11c_geometric_waves_v1/orbital_wave/1735119141",
+                            "c11c_geometric_waves_v1/parametric_ribbon/1010551371",
+                            "c11c_invisible_forces_v1/dipole_field/1364056640",
+                            "c11c_invisible_forces_v1/gravitational_lens/1735119141",
+                            "c11c_invisible_forces_v1/quadrupole_field/257246153",
+                            "c11c_invisible_forces_v1/saddle_field/1010551371",
+                            "c11c_invisible_forces_v1/scalar_potential/794731922",
+                            "c11c_invisible_forces_v1/topographic_basin/1364056640",
+                            "c11c_invisible_forces_v1/vortex_field/794731922",
+                            "c11c_living_particles_v1/collision_cloud/1010551371",
+                            "c11c_living_particles_v1/magnetic_filament_cloud/1735119141",
+                            "c11c_living_particles_v1/organic_pulse/257246153",
+                            "c11c_living_particles_v1/swarm/1364056640",
+                            "c11c_living_particles_v1/vortex/794731922",
+                            "c11c_sacred_symmetry_v1/astrolabe/1364056640",
+                            "c11c_sacred_symmetry_v1/celestial_chart/1735119141",
+                            "c11c_sacred_symmetry_v1/gear_train/794731922",
+                            "c11c_sacred_symmetry_v1/origami_mandala/257246153",
+                            "c11c_sacred_symmetry_v1/polygon_orrery/1010551371"
+                        ],
+    "completed_longforms":  [
+
+                            ],
+    "drills_complete":  false,
+    "last_item":  {
+                      "key":  "c11c_invisible_forces_v1/scalar_potential/794731922",
+                      "status":  "COMPLETE"
+                  }
+}

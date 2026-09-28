@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+ASTROLABIO DE LATON // MANDALA ORIGAMI // FOCUS // N=4 | GEAR 5:1
+
+ASTROLABIO DE LATON // MANDALA ORIGAMI // FOCUS // N=4 | GEAR 5:1
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: POLYGON ORRERY
+- Paleta: liquid_gold
+- Seed: 1010551371
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #POLYGONORRERY
+
+ASTROLABIO DE LATON // MANDALA ORIGAMI // FOCUS // N=4 | GEAR 5:1
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: POLYGON ORRERY
+- Paleta: liquid_gold
+- Seed: 1010551371
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+SACRED SYMMETRY - POLYGON ORRERY
+
+DESCRIPTION:
+ASTROLABIO DE LATON // MANDALA ORIGAMI // FOCUS // N=4 | GEAR 5:1
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: POLYGON ORRERY
+- Paleta: liquid_gold
+- Seed: 1010551371
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: sacred_symmetry
+GRAMMAR: POLYGON ORRERY
+PALETTE: liquid_gold
+SEED: 1010551371
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / ORBITAL_RITUAL
+AUDIO PROFILE: ORBITAL_RITUAL
+
+HEADER HOOK:
+ASTROLABIO DE LATON // MANDALA ORIGAMI // FOCUS // N=4 | GEAR 5:1
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #POLYGONORRERY
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 1010551371 -Grammar polygon_orrery -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\prototypes\c11c_art_direction_review\03_Sacred_Symmetry -OutputTag polygon_orrery
+
+CANONICAL MANIFEST:
+SacredSymmetry_v1_seed_1010551371_polygon_orrery_manifest.json

@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param([switch]$SkipHeavyPhysical,[switch]$SkipReviews)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
@@ -8,6 +8,7 @@ $stamp=Get-Date -Format 'yyyyMMdd_HHmmss'
 $A1Root="artifacts\qa\c11a1_challenge\full_acceptance_$stamp"
 $AcceptanceEvidence=[ordered]@{focused_parallel_contract=$false;art_direction_concurrency=$false;worker_class_cache_bootstrap=$false}
 function Invoke-Step([string]$Label,[scriptblock]$Action){ Write-Host "`n=============================================="; Write-Host $Label; Write-Host "=============================================="; & $Action; if($LASTEXITCODE -ne 0){throw "$Label failed with exit code $LASTEXITCODE"} }
+Invoke-Step 'C11-C final-repair static verifier' { powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\verify_c11c_2_19_6_final_repair.ps1 }
 Invoke-Step 'C11-C Suite 0.1.4 self-test' { python .\c11c-suite\self_test.py }
 Invoke-Step 'Producer 0.9.7 self-test' { python .\c11c-suite\c11c-producer\self_test.py }
 Invoke-Step 'Producer GUI contract' { python .\c11c-suite\c11c-producer\test_producer_gui_contract.py }

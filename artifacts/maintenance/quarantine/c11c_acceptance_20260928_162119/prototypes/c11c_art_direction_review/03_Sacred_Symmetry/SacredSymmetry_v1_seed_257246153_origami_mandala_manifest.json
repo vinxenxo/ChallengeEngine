@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.3_SACRED_SYMMETRY_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  257246153,
+    "family_id":  "sacred_symmetry",
+    "technical_id":  "kaleidoscope",
+    "artistic_name":  "Sacred Symmetry",
+    "production_id":  "c11c_sacred_symmetry_v1",
+    "runtime_id":  "sacred_symmetry",
+    "display_name":  "SACRED SYMMETRY",
+    "grammar_id":  "origami_mandala",
+    "grammar":  "ORIGAMI MANDALA",
+    "palette":  "liquid_gold",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  23,
+                   "fps":  30,
+                   "frame_count":  690,
+                   "loop_cycles":  1,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "ORIGAMI_MANDALA | N=12 | GEAR 2:1",
+                      "header_line_2":  "DEMONIO: SUBRUTINA NOCTURNA // EJE DE ALINEACION // N=12 | GEAR 2:1",
+                      "header_secondary":  "VISUAL LOOP / SACRED SYMMETRY",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "ORBITAL_RITUAL",
+                  "style":  "soft celestial chime bed / aligned harmonics / restrained bell overtones / midpoint orbit swell",
+                  "semantic_key":  "ORIGAMI MANDALA",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  23,
+                  "muxed_into_mp4":  true,
+                  "enabled":  true,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "SacredSymmetry_v1_seed_257246153_origami_mandala_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\03_Sacred_Symmetry",
+                            "output_tag":  "origami_mandala"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_sacred_symmetry_v1\\run_prototype.ps1 -Seed 257246153 -Grammar \"origami_mandala\" -Duration 23 -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_art_direction_review\\03_Sacred_Symmetry\" -OutputTag \"origami_mandala\"",
+    "technobabble":  "DEMONIO: subrutina nocturna // eje de alineacion // N=12 | GEAR 2:1",
+    "frozen_boundaries_modified":  false
+}

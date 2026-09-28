@@ -31,5 +31,8 @@
     "C7 audio contracts/ownership",
     "C9 semantics",
     "logical 540x960 geometry"
-  ]
+  ],
+  "final_repair_test_defect": "C11CParallelReviewWorkerIsolationContractTest.gd previously matched the Start-LoopReviewJob function declaration instead of the first invocation.",
+  "final_repair_test": "Compare $workerPool=New-C11CReviewWorkerPool with Start-LoopReviewJob -FamilyId call-site markers.",
+  "production_batch_changed_for_test_repair": false
 }
