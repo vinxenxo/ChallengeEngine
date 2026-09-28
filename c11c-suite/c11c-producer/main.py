@@ -36,7 +36,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.9.4"
+APP_VERSION = "0.9.7"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))

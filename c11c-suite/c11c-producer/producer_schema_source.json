@@ -1399,7 +1399,7 @@
   ],
   "batch_runner": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
   "challenge_production_launcher": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
-  "producer_version": "0.9.4",
+  "producer_version": "0.9.7",
   "utility_operations": [
     [
       "RUN_REGRESSION",

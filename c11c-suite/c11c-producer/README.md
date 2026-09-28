@@ -1,4 +1,4 @@
-# C11-C Producer 0.9.4 — Suite Member
+# C11-C Producer 0.9.7 — Suite Member
 
 Compact cyberpunk orchestration interface for single production and predefined reviews.
 
@@ -32,4 +32,4 @@ The GUI remains orchestration-only. It does not implement mechanics, RNG, timing
 
 ## Visual Drill capture
 
-The single-Drill Producer does not depend on AVI. Godot Movie Maker writes a temporary PNG frame sequence in the scratch directory; the runner waits for the first and final frames, then FFmpeg encodes the sequence directly into the delivery MP4. The PNG sequence is removed with the temporary stage after production.
+The single-Drill Producer does not depend on AVI or PNG sequences. Godot Movie Maker writes one temporary OGV container in the scratch directory; the runner waits for the container to stabilize, then FFmpeg converts its video stream into the canonical source MP4. The OGV is removed with the temporary stage after production.

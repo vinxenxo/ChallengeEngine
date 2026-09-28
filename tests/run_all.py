@@ -80,6 +80,7 @@ KNOWN_SUITES = {
     "C11CProductionReviewCopySafetyTest.gd": "[C11C_PRODUCTION_REVIEW_COPY_SAFETY_SUITE] PASS",
     "C11CArtDirectionReviewResumeContractTest.gd": "[C11C_ART_DIRECTION_REVIEW_RESUME_CONTRACT_SUITE] PASS",
     "C11CArtDirectionProductionHygieneContractTest.gd": "[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS",
+    "C11CVisualDrillMovieCaptureContractTest.gd": "[C11C_VISUAL_DRILL_MOVIE_CAPTURE_CONTRACT_SUITE] PASS",
     "C11CVisualLoopSubtypeMusicCoverageContractTest.gd": "[C11C_VISUAL_LOOP_SUBTYPE_MUSIC_COVERAGE_CONTRACT_SUITE] PASS",
     "C11CProductionBatchScheduleContractTest.gd": "[C11C_PRODUCTION_BATCH_SCHEDULE_CONTRACT_SUITE] PASS",
     "C11CPursuitMechanicContractTest.gd": "[C11C_PURSUIT_MECHANIC_CONTRACT_SUITE] PASS",

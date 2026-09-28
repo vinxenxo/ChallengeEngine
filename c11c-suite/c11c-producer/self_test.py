@@ -13,10 +13,10 @@ py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
 
 schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
 build_manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
-assert build_manifest["version"] == "0.9.4"
+assert build_manifest["version"] == "0.9.7"
 assert build_manifest["backend_logic_modified"] is False
 
-assert schema["producer_version"] == "0.9.4"
+assert schema["producer_version"] == "0.9.7"
 assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
 assert set(schema["drills"]) == {"tracking", "saccade", "pursuit", "peripheral_scan"}
 assert len(schema["families"]) == 5
@@ -89,14 +89,17 @@ assert "deliveryProfileData.width" in loop_text
 assert "encoder" in loop_text and "gop_frames" in loop_text
 assert "scale=${deliveryWidth}:${deliveryHeight}:flags=lanczos" in drill_text
 assert "function Wait-ForStableFile" in drill_text
-assert "Wait-ForStableFile -Path $lastFrame" in drill_text
-assert "'--write-movie',($pngBase+'.png')" in drill_text
-assert "-framerate 30 -start_number 0" in drill_text
-assert ".avi" not in drill_text
+assert "'--write-movie',$avi" in drill_text
+assert "-i $avi -an" in drill_text
+assert "Wait-ForStableFile -Path $avi" in drill_text
+assert "Start-Process -FilePath $godotExecutable" in drill_text
+assert "@('--path','.'" in drill_text
+assert "'--resolution'" not in drill_text
 assert "KeepAvi" not in drill_text
-assert "& $godotExecutable @args" in drill_text
-assert "sourceWidth=720" in drill_text
-assert "revision='2.18.8'" in drill_text and "revision='2.18.0'" in loop_text
+assert "temporary_avi" in drill_text
+assert "profiles\\presentation\\c11c_visual_hooks.json" in drill_text
+assert ".content.hook" not in drill_text
+assert "revision='2.19.1'" in drill_text and "revision='2.18.0'" in loop_text
 assert "$TrackingGameplayDurationSeconds=21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_visual_drill_review.ps1").read_text(encoding="utf-8-sig")
 assert "TRACKING_GAMEPLAY_SECONDS: float = 21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
 main_text = (ROOT / "main.py").read_text(encoding="utf-8")
@@ -117,4 +120,4 @@ assert backend_source.exists()
 actual_hash = hashlib.sha256(backend_source.read_bytes()).hexdigest()
 assert actual_hash == schema["backend_profile_sha256"], (schema["backend_profile_sha256"], actual_hash)
 
-print("C11-C Producer 0.9.4 self-test PASS")
+print("C11-C Producer 0.9.7 self-test PASS")
