@@ -1,6 +1,6 @@
 ﻿extends SceneTree
 
-## C11-C 2.15.0 — lightweight production output contract.
+## C11-C 2.18.8 — lightweight production output contract.
 var failures: Array[String] = []
 
 func _initialize() -> void:
@@ -28,6 +28,13 @@ func _initialize() -> void:
     _assert(drill.find("[switch]$ExportGif") >= 0, "Drill review must make GIF export optional.")
     _assert(drill.find("ReviewRootOverride") >= 0, "Drill review must accept an extraordinary review root.")
     _assert(drill.find("[switch]$KeepAvi") >= 0, "Drill review must expose optional AVI retention.")
+    var producer_drill := FileAccess.get_file_as_string("res://c11c-suite/c11c-producer/run_visual_drill_production.ps1")
+    _assert(producer_drill.find("function Wait-ForStableFile") >= 0, "Producer Drill runner must wait for the Movie Maker capture to complete before FFmpeg conversion.")
+    _assert(producer_drill.find("Wait-ForStableFile -Path $lastFrame") >= 0, "Producer Drill runner must verify the final PNG frame after Godot exits.")
+    _assert(producer_drill.find("'--write-movie',($pngBase+'.png')") >= 0, "Producer Drill runner must use PNG-sequence Movie Maker capture.")
+    _assert(producer_drill.find("-framerate 30") >= 0, "Producer Drill runner must encode the PNG sequence at 30 FPS.")
+    _assert(producer_drill.find(".avi") < 0, "Single-Drill Producer must not depend on AVI capture.")
+    _assert(producer_drill.find("& $godotExecutable @args") >= 0, "Producer Drill runner must use the resolved Godot executable consistently.")
     if failures.is_empty():
         print("[C11C_ART_DIRECTION_PRODUCTION_HYGIENE_CONTRACT_SUITE] PASS")
         quit(0)

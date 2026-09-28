@@ -1,6 +1,6 @@
 {
   "app": "C11-C Producer",
-  "version": "0.9.2",
+  "version": "0.9.4",
   "ui_base": "0.4.0-preserved",
   "backend_truth": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
   "backend_profile_version": "2.16.9",
@@ -13,12 +13,13 @@
   "delivery_profiles": "profiles/delivery/c11c_video_delivery_profiles.json",
   "default_delivery": "MASTER_1080",
   "review_drill_launcher": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
-  "stabilization_revision": "2.18.2",
+  "stabilization_revision": "2.18.8",
   "producer_acceptance": "STATIC_PASS; WINDOWS_PYSIDE6_RUNTIME_PASS_0.9.1; SUITE_RELOCATION_PENDING_RUNTIME",
-  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles.",
+  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; PNG-sequence Visual Drill capture; C11-A.1 factory isolation.",
   "backend_logic_modified": false,
   "suite_location": "c11c-suite/c11c-producer",
-  "producer_version": "0.9.2",
+  "producer_version": "0.9.4",
   "review_challenges_launcher": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1",
-  "queue_error_isolation": true
+  "queue_error_isolation": true,
+  "avi_capture": "disabled_for_single_visual_drill_producer"
 }

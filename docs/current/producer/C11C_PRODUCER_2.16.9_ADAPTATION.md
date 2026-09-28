@@ -28,7 +28,7 @@ The approved Producer 0.4.0 two-column light interface is preserved. The adaptat
 - 7 review workers.
 - Resume / Reset.
 - Optional GIF.
-- Optional AVI retention.
+- Visual Drill Producer: no AVI retention/capture dependency; temporary PNG sequence only. Legacy Loop/Challenge launchers retain their historical AVI options when invoked directly.
 
 ## Accessibility/usability priorities
 

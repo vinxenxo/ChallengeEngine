@@ -36,7 +36,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.9.2"
+APP_VERSION = "0.9.4"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -155,7 +155,6 @@ class Recipe:
     resume: bool = False
     reset: bool = False
     export_gif: bool = False
-    keep_avi: bool = False
     delivery: str = DEFAULT_DELIVERY
     targets: dict[str, Any] = field(default_factory=dict)
     ui_row: int = -1
@@ -362,7 +361,6 @@ class MainWindow(QMainWindow):
         self.resume = QCheckBox("RESUME")
         self.reset = QCheckBox("RESET")
         self.export_gif = QCheckBox("GIF")
-        self.keep_avi = QCheckBox("AVI")
         out.addWidget(QLabel("SALIDA"), 0, 0)
         out.addWidget(self.delivery, 0, 1, 1, 2)
         out.addWidget(QLabel("WORKERS"), 1, 0)
@@ -370,7 +368,6 @@ class MainWindow(QMainWindow):
         out.addWidget(self.resume, 1, 2)
         out.addWidget(self.reset, 2, 0)
         out.addWidget(self.export_gif, 2, 1)
-        out.addWidget(self.keep_avi, 2, 2)
         root.addLayout(out)
 
         self.variation_box = QGroupBox("VARIACIÓN")
@@ -568,7 +565,6 @@ class MainWindow(QMainWindow):
         self.resume.setEnabled(batch and not utility)
         self.reset.setEnabled(batch and not utility and op != "REVIEW_CHALLENGES")
         self.export_gif.setEnabled(not utility)
-        self.keep_avi.setEnabled(not utility)
         self.add.setEnabled(True)
         self.variation_box.setVisible(not batch and not utility and str(self.video_type.currentData()) != "challenges")
         if batch:
@@ -623,7 +619,6 @@ class MainWindow(QMainWindow):
                     reset=self.reset.isChecked(),
                     export_gif=self.export_gif.isChecked(),
                     no_sound=self.no_sound.isChecked(),
-                    keep_avi=self.keep_avi.isChecked(),
                     delivery="REVIEW_720",
                 )
                 self.queue.append(recipe)
@@ -649,7 +644,6 @@ class MainWindow(QMainWindow):
                     no_sound=self.no_sound.isChecked(),
                     force=self.force.isChecked(),
                     export_gif=self.export_gif.isChecked(),
-                    keep_avi=self.keep_avi.isChecked(),
                     delivery=delivery,
                 )
             else:
@@ -681,7 +675,6 @@ class MainWindow(QMainWindow):
                     targets=targets,
                     delivery=delivery,
                     export_gif=self.export_gif.isChecked(),
-                    keep_avi=self.keep_avi.isChecked(),
                 )
             already_produced = self._recipe_already_produced(recipe) and not recipe.force
             if already_produced:
@@ -995,8 +988,6 @@ class MainWindow(QMainWindow):
             args.append("-Force")
         if recipe.export_gif:
             args.append("-ExportGif")
-        if recipe.keep_avi:
-            args.append("-KeepAvi")
         self._set_recipe_status(recipe, f"GENERANDO {self.job_completed + 1}/{self.job_total} · {seed}")
         self._launch(args)
 
@@ -1038,8 +1029,6 @@ class MainWindow(QMainWindow):
             args.append("-Force")
         if recipe.export_gif:
             args.append("-ExportGif")
-        if recipe.keep_avi:
-            args.append("-KeepAvi")
         self._set_recipe_status(recipe, f"GENERANDO {job_index}/{self.job_total} · {seed}")
         self._launch(args)
 

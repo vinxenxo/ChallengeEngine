@@ -12,6 +12,7 @@ for rel in FILES:
     p=SUITE/rel; assert p.exists(), p
 for rel in [p for p in FILES if p.endswith('.py')]: py_compile.compile(str(SUITE/rel),doraise=True)
 runall=(ROOT/'tests'/'run_all.py').read_text(encoding='utf-8-sig'); assert 'C11CProductionReviewCopySafetyTest.gd' in runall
+assert 'C11A1FactoryIsolationContractTest.gd' in runall
 assert 'C11CVisualLoopLongformSourceArtifactContractTest.gd' in runall
 test_ui=(SUITE/'c11c-test'/'main.py').read_text(encoding='utf-8')
 for command in ('PRODUCER SELF-TEST','PRODUCER GUI CONTRACT','RETRO REFERENCE CONTRACT','SEED STRESS 32×2'):
@@ -22,7 +23,7 @@ prod=(ROOT/'tools'/'prototypes'/'c11c_bulk'/'run_c11c_production.ps1').read_text
 assert '$finalFull=[System.IO.Path]::GetFullPath($finalMp4)' in prod
 assert 'OrdinalIgnoreCase' in prod
 manifest=json.loads((SUITE/'c11c-producer'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
-assert manifest['version']=='0.9.2'
+assert manifest['version']=='0.9.4'
 assert manifest['drill_launcher']=='c11c-suite/c11c-producer/run_visual_drill_production.ps1'
 longform=(ROOT/'tools'/'prototypes'/'c11c_bulk'/'run_c11c_visual_loop_longform_production.ps1').read_text(encoding='utf-8-sig')
 assert '$productionManifestPath' in longform
@@ -30,4 +31,4 @@ assert 'production_manifest.json' in longform
 assert '-DeliveryProfile REVIEW_720' in longform
 assert '$source.Manifest' not in longform
 assert 'artifacts\\prototypes\\$production' in longform
-print('C11-C Suite 0.1.3 + Producer 0.9.2 + Longform source contract STATIC PASS')
+print('C11-C Suite 0.1.3 + Producer 0.9.4 + Longform source contract STATIC PASS')

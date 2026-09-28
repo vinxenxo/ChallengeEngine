@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)][ValidateSet('tracking','saccade','pursuit','peripheral_scan')][string]$Family,
     [Parameter(Mandatory=$true)][ValidateRange(1,2147483646)][int]$Seed,
@@ -9,7 +9,6 @@ param(
     [Alias('Silent')][switch]$NoSound,
     [switch]$Force,
     [switch]$ExportGif,
-    [switch]$KeepAvi,
     [string]$OutputRoot=''
 )
 $ErrorActionPreference='Stop'
@@ -83,6 +82,28 @@ function Invoke-GodotUserArgProcess{
 }
 function Invoke-Checked{param([string]$Exe,[string[]]$Args,[string]$Label);Write-Host "[C11-C-PRODUCER-DRILL] $Label";& $Exe @Args;if(-not $?){throw "$Label failed"}}
 function Get-Probe{param([string]$Path);$raw=& ffprobe -v error -show_streams -show_format -of json $Path;if(-not $?){throw "ffprobe failed: $Path"};return (($raw -join "`n")|ConvertFrom-Json)}
+function Wait-ForStableFile {
+    param(
+        [Parameter(Mandatory=$true)][string]$Path,
+        [Parameter(Mandatory=$true)][string]$Label,
+        [int]$TimeoutSeconds=90
+    )
+    $deadline=(Get-Date).AddSeconds($TimeoutSeconds)
+    $lastSize=-1L
+    $stableSamples=0
+    while((Get-Date) -lt $deadline){
+        if(Test-Path -LiteralPath $Path -PathType Leaf){
+            $item=Get-Item -LiteralPath $Path
+            $size=[int64]$item.Length
+            if($size -gt 0){
+                if($size -eq $lastSize){$stableSamples++}else{$stableSamples=0;$lastSize=$size}
+                if($stableSamples -ge 2){return}
+            }
+        }
+        Start-Sleep -Milliseconds 400
+    }
+    throw "$Label was not created/stabilized within ${TimeoutSeconds}s: $Path"
+}
 try{
     $generatorStdout=Join-Path $stage 'generator_stdout.log'
     $generatorStderr=Join-Path $stage 'generator_stderr.log'
@@ -106,15 +127,21 @@ try{
     $sourceWidth=720; $sourceHeight=1280; $fps=30; $gop=90
     $state=Enter-C11CMovieOverride -ProjectRoot $ProjectRoot -Width $sourceWidth -Height $sourceHeight
     try{
-        $avi=if($KeepAvi){Join-Path $stage ($baseProductId+'.avi')}else{Join-Path ([IO.Path]::GetTempPath()) ($baseProductId+'_'+[guid]::NewGuid().ToString('N')+'.avi')}
+        # AVI is deliberately not used by the single-Drill Producer. Godot Movie Maker
+        # writes a temporary PNG sequence; FFmpeg consumes that sequence directly.
+        $pngBase=Join-Path $stage ($baseProductId)
+        $firstFrame="${pngBase}00000000.png"
+        $lastFrame="${pngBase}{0:D8}.png" -f ($totalFrames-1)
+        $sourcePattern="${pngBase}%08d.png"
         $sourceSilent=Join-Path $stage ($baseProductId+'.source.silent.mp4'); $finalSource=Join-Path $stage ($baseProductId+'.source.mp4'); $finalDelivery=Join-Path $stage ($productId+'.mp4'); $stdout=Join-Path $stage 'godot_stdout.log'; $stderr=Join-Path $stage 'godot_stderr.log'
         $relativeEnvelope=$envelopePath.Substring($ProjectRoot.Length+1).Replace('\','/')
-        $args=@('--path',$ProjectRoot,'--scene','core/presentation/rendering/VisualContentPlayer.tscn',"--definition=$relativeEnvelope",'--write-movie',$avi,'--fixed-fps',([string]$fps),'--resolution',("${sourceWidth}x${sourceHeight}"),'--quit-after',([string]$totalFrames))
-        & godot @args > $stdout 2> $stderr; if(-not $?){throw "Godot drill render failed: $Family seed=$Seed"}
+        $args=@('--path',$ProjectRoot,'--scene','core/presentation/rendering/VisualContentPlayer.tscn',"--definition=$relativeEnvelope",'--write-movie',($pngBase+'.png'),'--fixed-fps',([string]$fps),'--resolution',("${sourceWidth}x${sourceHeight}"),'--quit-after',([string]$totalFrames))
+        & $godotExecutable @args > $stdout 2> $stderr; if(-not $?){throw "Godot drill render failed: $Family seed=$Seed"}
         $log=(Get-Content -Raw -LiteralPath $stdout)+"`n"+(Get-Content -Raw -LiteralPath $stderr)
         foreach($bad in @('SCRIPT ERROR:','Parse Error:','Compile Error:','Failed to compile depended scripts','Invalid call. Nonexistent function')){if($log -match [regex]::Escape($bad)){throw "Godot drill reported $bad"}}
-        if(-not(Test-Path -LiteralPath $avi)){throw "Godot did not create AVI: $avi"}
-        & ffmpeg -y -hide_banner -loglevel error -i $avi -an -c:v libx264 -preset fast -crf 21 -profile:v high -pix_fmt yuv420p -r 30 -g 90 -keyint_min 90 -sc_threshold 0 -flags +cgop -x264-params 'open_gop=0:keyint=90:min-keyint=90:scenecut=0' $sourceSilent
+        Wait-ForStableFile -Path $firstFrame -Label "Godot Movie Maker first PNG frame"
+        Wait-ForStableFile -Path $lastFrame -Label "Godot Movie Maker final PNG frame"
+        & ffmpeg -y -hide_banner -loglevel error -framerate 30 -start_number 0 -i $sourcePattern -frames:v $totalFrames -an -c:v libx264 -preset fast -crf 21 -profile:v high -pix_fmt yuv420p -r 30 -g 90 -keyint_min 90 -sc_threshold 0 -flags +cgop -x264-params 'open_gop=0:keyint=90:min-keyint=90:scenecut=0' $sourceSilent
         if($LASTEXITCODE -ne 0){throw 'Drill source video encode failed.'}
         if($NoSound){Move-Item -LiteralPath $sourceSilent -Destination $finalSource -Force}else{
             $audio=Join-Path $stage ($baseProductId+'_music.wav'); & python $AudioGenerator $audio $Seed 1 $totalSeconds $Family 'drill'; if($LASTEXITCODE -ne 0){throw 'Drill audio generation failed.'}
@@ -151,9 +178,8 @@ try{
         Copy-Item -LiteralPath $authoringPath -Destination (Join-Path $productRoot 'authoring.json') -Force
         Copy-Item -LiteralPath $stdout -Destination (Join-Path $productRoot 'godot_stdout.log') -Force
         Copy-Item -LiteralPath $stderr -Destination (Join-Path $productRoot 'godot_stderr.log') -Force
-        if($KeepAvi){Copy-Item -LiteralPath $avi -Destination (Join-Path $productRoot ($productId+'.avi')) -Force}
         if($ExportGif){& ffmpeg -y -hide_banner -loglevel error -i (Join-Path $productRoot ($productId+'.mp4')) -vf 'fps=24,scale=360:640:flags=lanczos,pad=360:640:(ow-iw)/2:(oh-ih)/2' -loop 0 (Join-Path $productRoot ($productId+'.gif'));if($LASTEXITCODE -ne 0){throw 'GIF export failed.'}}
-        $manifest=[ordered]@{schema='C11-C-PRODUCER-VISUAL-DRILL-PRODUCT-V3';revision='2.18.5';backend='2.16.9';product_id=$productId;family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode_requested=$PacingMode;delivery_profile=$DeliveryProfile;source_capture_resolution="${sourceWidth}x${sourceHeight}";resolution="${deliveryWidth}x${deliveryHeight}";fps=30;pre_roll_seconds=3.0;gameplay_seconds=$gameplaySeconds;end_cta_seconds=3.0;total_duration_seconds=$totalSeconds;total_frames=$totalFrames;audio_enabled=(-not $NoSound);audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'});audio_sample_rate_hz=$(if($NoSound){0}else{$deliveryRate});audio_channels=$(if($NoSound){0}else{2});mp4=(Join-Path $productRoot ($productId+'.mp4'));envelope=(Join-Path $productRoot 'envelope.json');authoring=(Join-Path $productRoot 'authoring.json');ffprobe=$probe}
+        $manifest=[ordered]@{schema='C11-C-PRODUCER-VISUAL-DRILL-PRODUCT-V3';revision='2.18.8';backend='2.16.9';product_id=$productId;family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode_requested=$PacingMode;delivery_profile=$DeliveryProfile;source_capture_resolution="${sourceWidth}x${sourceHeight}";source_capture_format='temporary_png_sequence';resolution="${deliveryWidth}x${deliveryHeight}";fps=30;pre_roll_seconds=3.0;gameplay_seconds=$gameplaySeconds;end_cta_seconds=3.0;total_duration_seconds=$totalSeconds;total_frames=$totalFrames;audio_enabled=(-not $NoSound);audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'});audio_sample_rate_hz=$(if($NoSound){0}else{$deliveryRate});audio_channels=$(if($NoSound){0}else{2});mp4=(Join-Path $productRoot ($productId+'.mp4'));envelope=(Join-Path $productRoot 'envelope.json');authoring=(Join-Path $productRoot 'authoring.json');ffprobe=$probe}
         [IO.File]::WriteAllText((Join-Path $productRoot 'production_manifest.json'),($manifest|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
         $hook=(Get-Content -Raw $authoringPath|ConvertFrom-Json).content.hook; $tags=if($Family -eq 'tracking'){'#VisualDrill #Tracking #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'saccade'){'#VisualDrill #Saccade #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'pursuit'){'#VisualDrill #Pursuit #VisualChallenge #GenerativeArt #GodotEngine'}else{'#VisualDrill #PeripheralScan #VisualChallenge #GenerativeArt #GodotEngine'}
         $copy="$hook`n`n$Family - ejercicio visual procedural determinista.`n`n$tags"; $social=@('COPY_PASTE_READY:',$copy,'','TITLE:',"VISUAL DRILL // $Family",'','DESCRIPTION:',$copy,'',"HASHTAGS: $tags",''); [IO.File]::WriteAllText((Join-Path $productRoot ($productId+'_social.txt')),(($social -join "`n")+"`n"),(New-Object Text.UTF8Encoding($false)))

@@ -1,4 +1,4 @@
-# C11-C Producer 0.9.2 — Suite Member
+# C11-C Producer 0.9.4 — Suite Member
 
 Compact cyberpunk orchestration interface for single production and predefined reviews.
 
@@ -29,3 +29,7 @@ Visual Drill envelope generation uses a direct `ProcessStartInfo` path so the Go
 ## Backend safety
 
 The GUI remains orchestration-only. It does not implement mechanics, RNG, timing truth or rendering.
+
+## Visual Drill capture
+
+The single-Drill Producer does not depend on AVI. Godot Movie Maker writes a temporary PNG frame sequence in the scratch directory; the runner waits for the first and final frames, then FFmpeg encodes the sequence directly into the delivery MP4. The PNG sequence is removed with the temporary stage after production.

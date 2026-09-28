@@ -33,14 +33,14 @@ FFmpeg delivery profile
 
 ### Visual Loops / Visual Drills
 
-The proven C11-C review capture is 720×1280. Delivery profiles can then produce 540×960, 720×1280 or 1080×1920.
+The proven C11-C review geometry is 720×1280. Visual Loops retain their established capture path; the single-Visual-Drill Producer captures a temporary PNG sequence at 720×1280 and immediately encodes it to MP4 before delivery processing.
 
 ```text
 C11-C runtime / review capture
     ↓
-720×1280 source
+720×1280 source (Loop: established Movie Maker path; Drill: temporary PNG sequence)
     ↓
-FFmpeg delivery profile
+FFmpeg source MP4 / delivery profile
     ├── MIN_540
     ├── REVIEW_720
     └── MASTER_1080
@@ -60,4 +60,4 @@ The 3–90 second range is treated as a social delivery constraint for ordinary 
 
 ## Artifact policy
 
-Generated product files belong under `artifacts/`. Intermediate source AVI is temporary unless explicitly retained. Historical evidence must not be silently replaced by later renders.
+Generated product files belong under `artifacts/`. Historical Challenge source AVI remains part of the legacy C11-A production path; the single-Visual-Drill Producer does not use AVI and removes its temporary PNG sequence with the scratch stage. Historical evidence must not be silently replaced by later renders.

@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$ProjectRoot = "",
     [string]$OutputRoot = "",
@@ -137,6 +137,51 @@ function Invoke-ProcessCapture {
         ExitCode = $process.ExitCode
         Stdout = $outText
         Stderr = $errText
+    }
+}
+
+function Invoke-C11A1FactoryIsolated {
+    param(
+        [string]$BuildFactory,
+        [string]$ConfigPath,
+        [string]$ArtifactRoot,
+        [string]$WorkingDirectory,
+        [string]$StdoutPath,
+        [string]$StderrPath
+    )
+
+    # C11-A.1 is historical Challenge qualification. It must not inherit a
+    # C11-C Movie Maker override from a previous child process.
+    $overridePath = Join-Path $WorkingDirectory 'override.cfg'
+    $backupPath = Join-Path ([IO.Path]::GetTempPath()) ('C11A1_override_backup_' + [Guid]::NewGuid().ToString('N') + '.cfg')
+    $hadOverride = Test-Path -LiteralPath $overridePath
+
+    if ($hadOverride) {
+        Copy-Item -LiteralPath $overridePath -Destination $backupPath -Force
+        Remove-Item -LiteralPath $overridePath -Force
+        Write-Host '[C11A1] Quarantined pre-existing override.cfg for this factory run.' -ForegroundColor DarkYellow
+    }
+
+    try {
+        return Invoke-ProcessCapture -FilePath 'python' -ArgumentList @(
+            '-u', $BuildFactory,
+            '--config', $ConfigPath,
+            '--output', $ArtifactRoot,
+            '--no-gif'
+        ) -WorkingDirectory $WorkingDirectory -StdoutPath $StdoutPath -StderrPath $StderrPath
+    }
+    finally {
+        # A C11-C launcher may have recreated override.cfg while the factory
+        # was running. Remove that leaked state before the next Challenge.
+        if (Test-Path -LiteralPath $overridePath) {
+            Remove-Item -LiteralPath $overridePath -Force
+            Write-Host '[C11A1] Removed leaked override.cfg after factory run.' -ForegroundColor DarkYellow
+        }
+
+        if ($hadOverride) {
+            Copy-Item -LiteralPath $backupPath -Destination $overridePath -Force
+            Remove-Item -LiteralPath $backupPath -Force -ErrorAction SilentlyContinue
+        }
     }
 }
 
@@ -312,12 +357,13 @@ foreach ($item in $plan) {
     $stdoutPath = Join-Path $runDir 'factory_stdout.txt'
     $stderrPath = Join-Path $runDir 'factory_stderr.txt'
 
-    $proc = Invoke-ProcessCapture -FilePath 'python' -ArgumentList @(
-        '-u', $buildFactory,
-        '--config', $configPath,
-        '--output', $artifactRoot,
-        '--no-gif'
-    ) -WorkingDirectory $ProjectRoot -StdoutPath $stdoutPath -StderrPath $stderrPath
+    $proc = Invoke-C11A1FactoryIsolated `
+        -BuildFactory $buildFactory `
+        -ConfigPath $configPath `
+        -ArtifactRoot $artifactRoot `
+        -WorkingDirectory $ProjectRoot `
+        -StdoutPath $stdoutPath `
+        -StderrPath $stderrPath
 
     if ($proc.ExitCode -ne 0) {
         $preRecord.status = 'FAILED'

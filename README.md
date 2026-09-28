@@ -1,30 +1,14 @@
-# C11-C 2.18.6 — Final Test Contract Hotfix
+# C11-C 2.18.8 — PNG Capture + C11-A.1 Isolation
 
-Applies to the current C11-C 2.18.x freeze candidate.
+Apply this overlay on top of the already-applied C11-C 2.18.7 Producer AVI hotfix.
 
 ## Repairs
 
-- Fixes the stale Visual Drill review default: non-Tracking families use 17s gameplay; Tracking remains 21s.
-- Makes the Longform source-artifact contract test self-contained by defining `_assert()`.
-- Adds the D1.5 platform layout template concept for versioned Header / Body / Footer / CTA / safe-area profiles.
+1. Single Visual Drill Producer no longer captures AVI. Godot Movie Maker writes a temporary PNG sequence and FFmpeg encodes it to MP4.
+2. Producer GUI no longer exposes the obsolete AVI retention control.
+3. C11-A.1 quarantines any root `override.cfg` before invoking the historical factory, removes leaks, and restores the original file afterward.
+4. New contract coverage is registered in `tests/run_all.py`, so console and Suite GUI regression use the same canonical test registry.
 
-## Apply
+## Frozen boundary
 
-```powershell
-Expand-Archive -LiteralPath "$env:USERPROFILE\\Downloads\\C11C_2.18.6_TEST_HOTFIX_OVERLAY.zip" -DestinationPath "." -Force
-```
-
-## Focused tests
-
-```powershell
-.\\c11c-suite\\c11c-test\\run_suite.bat C11CVisualDurationPolicyContractTest.gd
-.\\c11c-suite\\c11c-test\\run_suite.bat C11CVisualLoopLongformSourceArtifactContractTest.gd
-```
-
-## Full logical corpus
-
-```powershell
-python .\\tests\\run_all.py
-```
-
-No simulation, mechanics, RNG or authored gameplay truth is changed by this overlay.
+No C11-B simulation truth, RNG ownership, SimulationResult, winning_frame, close_calls, WinningFrameDetector, RenderedFrameStream, C7 ownership, C9 semantics, or logical 540x960 social geometry are modified.
