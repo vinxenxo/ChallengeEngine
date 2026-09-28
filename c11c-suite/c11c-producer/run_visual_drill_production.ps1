@@ -49,12 +49,54 @@ if((Test-Path -LiteralPath $productRoot) -and -not $Force){throw "Production pro
 $stageRoot=Join-Path $ProjectRoot 'artifacts\scratch\c11c_producer_drill'; $stage=Join-Path $stageRoot ([guid]::NewGuid().ToString('N')); New-Item -ItemType Directory -Force -Path $stage | Out-Null
 $request=Join-Path $stage 'request.json'; $response=Join-Path $stage 'response.json'
 [IO.File]::WriteAllText($request,([ordered]@{family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode=$PacingMode;no_sound=[bool]$NoSound}|ConvertTo-Json -Depth 10),(New-Object Text.UTF8Encoding($false)))
+function Invoke-GodotUserArgProcess{
+    param(
+        [Parameter(Mandatory=$true)][string]$Executable,
+        [Parameter(Mandatory=$true)][string[]]$Arguments,
+        [Parameter(Mandatory=$true)][string]$WorkingDirectory,
+        [Parameter(Mandatory=$true)][string]$StdoutPath,
+        [Parameter(Mandatory=$true)][string]$StderrPath
+    )
+    $psi=[Diagnostics.ProcessStartInfo]::new()
+    $psi.FileName=$Executable
+    $psi.WorkingDirectory=$WorkingDirectory
+    $psi.UseShellExecute=$false
+    $psi.CreateNoWindow=$true
+    $psi.RedirectStandardOutput=$true
+    $psi.RedirectStandardError=$true
+    $quoted=foreach($arg in $Arguments){
+        if($arg -notmatch '[\s"]'){$arg;continue}
+        '"' + (($arg -replace '(\\*)"','$1$1\"') -replace '(\\+)$','$1$1') + '"'
+    }
+    $psi.Arguments=$quoted -join ' '
+    $process=[Diagnostics.Process]::new()
+    $process.StartInfo=$psi
+    [void]$process.Start()
+    $stdout=$process.StandardOutput.ReadToEndAsync()
+    $stderr=$process.StandardError.ReadToEndAsync()
+    $process.WaitForExit()
+    $outText=$stdout.Result
+    $errText=$stderr.Result
+    [IO.File]::WriteAllText($StdoutPath,$outText,[Text.UTF8Encoding]::new($false))
+    [IO.File]::WriteAllText($StderrPath,$errText,[Text.UTF8Encoding]::new($false))
+    return [pscustomobject]@{ExitCode=$process.ExitCode;Stdout=$outText;Stderr=$errText}
+}
 function Invoke-Checked{param([string]$Exe,[string[]]$Args,[string]$Label);Write-Host "[C11-C-PRODUCER-DRILL] $Label";& $Exe @Args;if(-not $?){throw "$Label failed"}}
 function Get-Probe{param([string]$Path);$raw=& ffprobe -v error -show_streams -show_format -of json $Path;if(-not $?){throw "ffprobe failed: $Path"};return (($raw -join "`n")|ConvertFrom-Json)}
 try{
-    & godot --headless --path $ProjectRoot --script 'c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd' -- $request
-    if(-not $?){throw 'Visual Drill envelope generation failed.'}
-    if(-not(Test-Path -LiteralPath $response)){throw 'Visual Drill envelope generator returned no response.'}
+    $generatorStdout=Join-Path $stage 'generator_stdout.log'
+    $generatorStderr=Join-Path $stage 'generator_stderr.log'
+    $godotExecutable = if($env:GODOT_BIN){$env:GODOT_BIN}else{'godot'}
+    $generatorScript=[IO.Path]::GetFullPath((Join-Path $ProjectRoot 'c11c-suite\c11c-producer\C11CVisualDrillProducerEnvelopeGenerator.gd'))
+    $generatorResult=Invoke-GodotUserArgProcess -Executable $godotExecutable -WorkingDirectory $ProjectRoot `
+        -Arguments @('--headless','--path',$ProjectRoot,'--script',$generatorScript,'--',$request) `
+        -StdoutPath $generatorStdout -StderrPath $generatorStderr
+    if($generatorResult.ExitCode -ne 0){
+        throw "Visual Drill envelope generation failed (exit=$($generatorResult.ExitCode)). See $generatorStdout and $generatorStderr."
+    }
+    if(-not(Test-Path -LiteralPath $response)){
+        throw "Visual Drill envelope generator returned no response. See $generatorStdout and $generatorStderr."
+    }
     $resp=Get-Content -Raw -LiteralPath $response|ConvertFrom-Json
     if(-not $resp.ok){throw "Visual Drill authoring failed: $($resp.error)"}
     $envelopePath=[string]$resp.envelope; $authoringPath=[string]$resp.authoring; $gameplayFrames=[int]$resp.gameplay_frames; $gameplaySeconds=[double]$resp.duration
@@ -111,7 +153,7 @@ try{
         Copy-Item -LiteralPath $stderr -Destination (Join-Path $productRoot 'godot_stderr.log') -Force
         if($KeepAvi){Copy-Item -LiteralPath $avi -Destination (Join-Path $productRoot ($productId+'.avi')) -Force}
         if($ExportGif){& ffmpeg -y -hide_banner -loglevel error -i (Join-Path $productRoot ($productId+'.mp4')) -vf 'fps=24,scale=360:640:flags=lanczos,pad=360:640:(ow-iw)/2:(oh-ih)/2' -loop 0 (Join-Path $productRoot ($productId+'.gif'));if($LASTEXITCODE -ne 0){throw 'GIF export failed.'}}
-        $manifest=[ordered]@{schema='C11-C-PRODUCER-VISUAL-DRILL-PRODUCT-V3';revision='2.18.0';backend='2.16.9';product_id=$productId;family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode_requested=$PacingMode;delivery_profile=$DeliveryProfile;source_capture_resolution="${sourceWidth}x${sourceHeight}";resolution="${deliveryWidth}x${deliveryHeight}";fps=30;pre_roll_seconds=3.0;gameplay_seconds=$gameplaySeconds;end_cta_seconds=3.0;total_duration_seconds=$totalSeconds;total_frames=$totalFrames;audio_enabled=(-not $NoSound);audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'});audio_sample_rate_hz=$(if($NoSound){0}else{$deliveryRate});audio_channels=$(if($NoSound){0}else{2});mp4=(Join-Path $productRoot ($productId+'.mp4'));envelope=(Join-Path $productRoot 'envelope.json');authoring=(Join-Path $productRoot 'authoring.json');ffprobe=$probe}
+        $manifest=[ordered]@{schema='C11-C-PRODUCER-VISUAL-DRILL-PRODUCT-V3';revision='2.18.5';backend='2.16.9';product_id=$productId;family=$Family;seed=$Seed;difficulty_tier=$DifficultyTier;speed_multiplier=$SpeedMultiplier;pacing_mode_requested=$PacingMode;delivery_profile=$DeliveryProfile;source_capture_resolution="${sourceWidth}x${sourceHeight}";resolution="${deliveryWidth}x${deliveryHeight}";fps=30;pre_roll_seconds=3.0;gameplay_seconds=$gameplaySeconds;end_cta_seconds=3.0;total_duration_seconds=$totalSeconds;total_frames=$totalFrames;audio_enabled=(-not $NoSound);audio_mode=$(if($NoSound){'OFF'}else{'FAMILY_MUSIC_V4'});audio_sample_rate_hz=$(if($NoSound){0}else{$deliveryRate});audio_channels=$(if($NoSound){0}else{2});mp4=(Join-Path $productRoot ($productId+'.mp4'));envelope=(Join-Path $productRoot 'envelope.json');authoring=(Join-Path $productRoot 'authoring.json');ffprobe=$probe}
         [IO.File]::WriteAllText((Join-Path $productRoot 'production_manifest.json'),($manifest|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
         $hook=(Get-Content -Raw $authoringPath|ConvertFrom-Json).content.hook; $tags=if($Family -eq 'tracking'){'#VisualDrill #Tracking #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'saccade'){'#VisualDrill #Saccade #VisualChallenge #GenerativeArt #GodotEngine'}elseif($Family -eq 'pursuit'){'#VisualDrill #Pursuit #VisualChallenge #GenerativeArt #GodotEngine'}else{'#VisualDrill #PeripheralScan #VisualChallenge #GenerativeArt #GodotEngine'}
         $copy="$hook`n`n$Family - ejercicio visual procedural determinista.`n`n$tags"; $social=@('COPY_PASTE_READY:',$copy,'','TITLE:',"VISUAL DRILL // $Family",'','DESCRIPTION:',$copy,'',"HASHTAGS: $tags",''); [IO.File]::WriteAllText((Join-Path $productRoot ($productId+'_social.txt')),(($social -join "`n")+"`n"),(New-Object Text.UTF8Encoding($false)))

@@ -10,7 +10,9 @@
 
 ## Current state
 
-C11-B is frozen. The repository organization checkpoint must preserve that state. C11-C is presentation-only art direction.
+C11-B is frozen. C11-C 2.18.x is now the frozen manufacturing baseline for the next D context. Do not absorb D work back into the C freeze.
+
+The D phase may extend presentation, production, asset, audio, provenance and Suite layers around the frozen runtime semantics, but a new engine contract requires an explicit D checkpoint.
 
 ## Architecture
 
@@ -35,3 +37,7 @@ Definition -> deterministic simulation -> SimulationResult/FrameSnapshot
 The canonical logical runner is `python .\tests\run_all.py`. Every `*Test.gd` must be explicitly registered in `KNOWN_SUITES`.
 
 For deterministic/release validation use the runbook at `docs/operations/TEST_RUNBOOK.md`.
+
+## Suite parity
+
+Every new test, QA script or operational function must have a launcher in the relevant `c11c-suite` GUI and a direct console path where applicable. The canonical test registration remains `tests/run_all.py`.

@@ -1,37 +1,31 @@
-# C11-C Producer 0.9.1 — Suite Member
+# C11-C Producer 0.9.2 — Suite Member
 
-Compact two-column cyberpunk interface derived from the approved 0.4.0 layout; the header/banner and visible help text are intentionally removed to maximize workspace. The Producer is the single orchestration surface for single content, selective review batches and logical regression.
+Compact cyberpunk orchestration interface for single production and predefined reviews.
 
 ## Supported single production
 
-- **Challenges:** `CHALLENGE_001` … `CHALLENGE_009`, using canonical `challenges/*.json` and `tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1`.
-- **Visual Loops:** 5 families / 27 grammars, using the canonical C11-C producer launcher and seed planner.
-- **Visual Drills:** Tracking, Saccade, Pursuit and Peripheral Scan, using the C11-C Producer drill wrapper.
+- **Challenges:** `CHALLENGE_001` … `CHALLENGE_009`, using canonical Challenge definitions and production launcher.
+- **Visual Loops:** 5 families / 27 grammars.
+- **Visual Drills:** Tracking, Saccade, Pursuit and Peripheral Scan.
 
-## Delivery profiles
+## Predefined reviews
 
-The GUI reads `profiles/delivery/c11c_video_delivery_profiles.json` and defaults to `MASTER_1080`. The available profiles are `MASTER_1080`, `REVIEW_720`, `MIN_540`, `META_REELS_FINAL_V1` and `LONGFORM_1080`. Delivery resolution is a production concern; it never changes frozen mechanic truth.
+- `REVIEW — 9 CHALLENGES × 6 SEEDS` — historical C11-A.1 qualification/review matrix.
+- `REVIEW — 27 VISUAL LOOPS`
+- `REVIEW — 20 VISUAL DRILLS`
+- `REVIEW — 5 LONGFORMS`
+- existing combined review operations.
 
-Challenges capture from the historical 540x960 source and scale after capture. Visual Loops and Visual Drills preserve their proven C11-C review capture and apply higher/lower delivery profiles after that capture.
+The Challenge review is deliberately routed to `tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1`; it does not reinterpret historical Challenge mechanics as C11-C mechanics.
 
-## Queue behavior
+## Queue isolation
 
-A single recipe may contain multiple seeds. Challenge jobs are isolated by Challenge ID and seed output root, so a multi-seed queue never overwrites the previous seed. `RESUME` and `RESET` are mutually exclusive. Failed jobs remain visible as `ERROR` and the queue is left retryable without corrupted in-memory job state.
+A failed seed is recorded on the recipe and the remaining seeds continue. A failed batch/utility item is removed from the active queue and the next queued item starts automatically. The Producer does not use a modal error dialog for per-seed failures.
+
+## Drill generation
+
+Visual Drill envelope generation uses a direct `ProcessStartInfo` path so the Godot user argument after `--` is passed reliably on Windows PowerShell. Generator stdout/stderr are retained in the temporary producer stage when an envelope launch fails.
 
 ## Backend safety
 
-The GUI verifies the frozen backend hash, requires all nine canonical Challenge definitions and requires the centralized delivery-profile file before enabling generation. Python does not implement mechanics, RNG, timing truth or renderers.
-
-## Validation
-
-Run:
-
-```powershell
-cd .\c11c-producer
-python .\self_test.py
-python .\preflight.py
-```
-
-Variation controls use visual sliders with an explicit ALEATORIO checkbox; fixed values are selected only when ALEATORIO is disabled. Completed queue entries remain visible and dimmed, while the active row receives a strong selection highlight. Delivery profiles are resolved centrally, including aliases.
-
-The review runner is held to the current Visual Drill contract: Tracking 21s gameplay + 3s PRE_ROLL + 3s END_CTA = 27s / 810 frames; Saccade, Pursuit and Peripheral Scan remain 17s gameplay + 6s presentation = 23s / 690 frames.
+The GUI remains orchestration-only. It does not implement mechanics, RNG, timing truth or rendering.

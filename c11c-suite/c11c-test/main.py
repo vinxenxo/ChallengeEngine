@@ -34,11 +34,15 @@ C11_COMMANDS = [
     ('RETROCOMPATIBILITY', 'ps', ['tools/c11freeze/run_retrocompatibility.ps1'], '54-run comparison.'),
     ('PHYSICAL EXPORT', 'ps', ['tools/c11freeze/run_physical_export_suite.ps1'], 'Physical smoke + export.'),
     ('C11-A CHALLENGE QA', 'ps', ['tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1'], 'Historical 9×6 challenge matrix.'),
+    ('PRODUCER SELF-TEST', 'python', ['./c11c-suite/c11c-producer/self_test.py'], 'Producer package/static contract checks.'),
+    ('PRODUCER GUI CONTRACT', 'python', ['./c11c-suite/c11c-producer/test_producer_gui_contract.py'], 'Producer queue, review and drill-launch contracts.'),
+    ('RETRO REFERENCE CONTRACT', 'python', ['./c11c-suite/test_retro_reference_contract.py'], 'Immutable C11-A.1 reference bundle.'),
     ('C11 VISUAL QA', 'ps', ['tools/qa/c11/run_c11a_visual_bulk_qa.ps1'], 'Historical visual bulk QA.'),
     ('ART DIRECTION ALL', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-All'], 'Current review corpus.'),
     ('ART DIRECTION LONGFORMS', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-Longforms'], '5 × 180s longforms.'),
     ('LONGFORM BULK', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production_bulk.ps1'], 'Canonical 5-family longform bulk production.'),
     ('REPOSITORY LAYOUT', 'ps', ['tools/maintenance/verify_repository_layout.ps1'], 'Repository structure contract.'),
+    ('SEED STRESS 32×2', 'python', ['tools/c11freeze/run_seed_stress.py'], 'Deterministic seed stress regression.'),
 ]
 
 

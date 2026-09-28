@@ -13,9 +13,19 @@ Found hostfxr: C:/Program Files/dotnet/host/fxr/10.0.11/hostfxr.dll
 CORE API HASH: 2244263461
 EDITOR API HASH: 3539082181
 Loading resource: res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd remapped: res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd
+SCRIPT ERROR: Parse Error: Function "_assert()" not found in base self.
+   at: GDScript::reload (res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd:13)
+SCRIPT ERROR: Parse Error: Function "_assert()" not found in base self.
+   at: GDScript::reload (res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd:27)
+SCRIPT ERROR: Parse Error: Function "_assert()" not found in base self.
+   at: GDScript::reload (res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd:29)
+SCRIPT ERROR: Parse Error: Function "_assert()" not found in base self.
+   at: GDScript::reload (res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd:30)
+SCRIPT ERROR: Parse Error: Function "_assert()" not found in base self.
+   at: GDScript::reload (res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd:31)
+ERROR: Failed to load script "res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
 Completed load for: 'res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd' remapped 'res://tests/C11CVisualLoopLongformSourceArtifactContractTest.gd' at thread -1
-ERROR: Can't load the script "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tests\C11CVisualLoopLongformSourceArtifactContractTest.gd" as it doesn't inherit from SceneTree or MainLoop.
-   at: start (main/main.cpp:4381)
 Unloading: Disposing tracked instances...
 Unloading: Finished disposing tracked instances.
 XR: Clearing primary interface

@@ -1,34 +1,27 @@
-# Repository Structure — Current
+# Repository Structure — C11-C 2.18.x Frozen
 
 ```text
 ChallengeEngineV01_STATELESS/
-├── challenges/                  # canonical challenge definitions
-├── assets/                      # current project assets
-├── definitions/                 # visual/drill definitions
-├── profiles/                    # difficulty/presentation/music/delivery profiles
-├── core/                        # runtime, authoring and presentation
-├── tests/                       # complete logical regression corpus
-├── c11c-suite/                  # operator GUI suite
+├── challenges/
+├── assets/
+├── definitions/
+├── profiles/
+├── core/
+├── tests/
+│   └── reference/c11a1/          # immutable C11-A.1 retro fixture
+├── c11c-suite/
 │   ├── c11c-test/
 │   ├── c11c-catalog/
 │   ├── c11c-maintenance/
 │   ├── c11c-config/
-│   └── c11c-producer/           # relocated current Producer
-├── c11c-producer/               # compatibility launchers only
+│   └── c11c-producer/
+├── c11c-producer/                # compatibility launcher
 ├── tools/
-│   ├── c11freeze/
-│   ├── maintenance/
-│   └── prototypes/c11c_bulk/
-├── artifacts/                   # generated evidence/products
+├── artifacts/
 └── docs/
     ├── current/
     ├── master-prompts/
-    ├── operations/
-    ├── contracts/
-    ├── checkpoints/
     └── history/
 ```
 
-`docs/current/` is the source for present-state narrative. Historical documents are never overwritten to make them appear current.
-
-The Suite is an operator layer and does not replace canonical backend launchers.
+Generated C evidence is retained under the historical artifact tree. D will introduce a normalized product/review/log/index layout after the C baseline is frozen.

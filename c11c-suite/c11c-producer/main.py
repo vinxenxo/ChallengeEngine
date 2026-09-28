@@ -36,7 +36,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.9.1"
+APP_VERSION = "0.9.2"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -161,6 +161,8 @@ class Recipe:
     ui_row: int = -1
     status: str = "EN COLA"
     completed: bool = False
+    current_seed: int | None = None
+    failed_seeds: list[int] = field(default_factory=list)
 
 
 class ParamRow(QWidget):
@@ -564,7 +566,7 @@ class MainWindow(QMainWindow):
         self.delivery.setEnabled(not batch and not utility)
         self.workers.setEnabled(True)
         self.resume.setEnabled(batch and not utility)
-        self.reset.setEnabled(batch and not utility)
+        self.reset.setEnabled(batch and not utility and op != "REVIEW_CHALLENGES")
         self.export_gif.setEnabled(not utility)
         self.keep_avi.setEnabled(not utility)
         self.add.setEnabled(True)
@@ -831,6 +833,15 @@ class MainWindow(QMainWindow):
             self._launch_python_regression()
             return
         if recipe.operation != "A_LA_CARTA":
+            if recipe.operation == "REVIEW_CHALLENGES":
+                script = PROJECT / "tools" / "qa" / "c11" / "run_c11a1_challenge_bulk_qa.ps1"
+                args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script)]
+                if recipe.resume:
+                    args.append("-Resume")
+                self._set_recipe_status(recipe, "REVIEW CHALLENGES")
+                self._launch(args)
+                return
+
             script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1"
             args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), "-Workers", str(recipe.workers)]
             mapping = {
@@ -969,6 +980,7 @@ class MainWindow(QMainWindow):
         if recipe is None:
             return
         seed = self.jobs.pop(0)
+        recipe.current_seed = seed
         self.job_completed = self.job_total - len(self.jobs) - 1
         script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_challenge_production.ps1"
         args = [
@@ -996,6 +1008,7 @@ class MainWindow(QMainWindow):
         if recipe is None:
             return
         seed = self.jobs.pop(0)
+        recipe.current_seed = seed
         job_index = self.job_total - len(self.jobs)
         if recipe.video_type == "visual_drills":
             params = recipe.targets or {}
@@ -1034,15 +1047,23 @@ class MainWindow(QMainWindow):
         recipe = self.current_recipe
         if recipe is None:
             return
-        self._set_recipe_status(recipe, "COMPLETADA", "done")
-        recipe.completed = True
+        failed = len(recipe.failed_seeds)
+        if failed:
+            successful = max(0, self.job_total - failed)
+            self._set_recipe_status(recipe, f"FINALIZADA {successful}/{self.job_total} · {failed} ERROR", "error")
+            recipe.completed = False
+            self._set_status(f"Elemento finalizado con {failed} error(es)")
+        else:
+            self._set_recipe_status(recipe, "COMPLETADA", "done")
+            recipe.completed = True
+            self._set_status("Elemento completado")
+        recipe.current_seed = None
         if recipe in self.queue:
             self.queue.remove(recipe)
         self.current_recipe = None
         self.jobs = []
         self.job_total = 0
         self.job_completed = 0
-        self._set_status("Elemento completado")
         self._run_recipe()
         if not self.queue:
             self.table.clearSelection()
@@ -1056,6 +1077,7 @@ class MainWindow(QMainWindow):
         self.proc.readyReadStandardOutput.connect(self._out)
         self.proc.readyReadStandardError.connect(self._err)
         self.proc.finished.connect(self._done)
+        self.proc.errorOccurred.connect(self._process_error)
         self.proc.start()
 
     def _launch(self, args: list[str]) -> None:
@@ -1069,6 +1091,7 @@ class MainWindow(QMainWindow):
         self.proc.readyReadStandardOutput.connect(self._out)
         self.proc.readyReadStandardError.connect(self._err)
         self.proc.finished.connect(self._done)
+        self.proc.errorOccurred.connect(self._process_error)
         self.proc.start()
 
     @staticmethod
@@ -1087,17 +1110,68 @@ class MainWindow(QMainWindow):
             if data:
                 self.log.appendPlainText("[STDERR] " + data.rstrip())
 
+    def _process_error(self, error: QProcess.ProcessError) -> None:
+        if self.proc is None:
+            return
+        if error != QProcess.ProcessError.FailedToStart:
+            return
+        self._out()
+        self._err()
+        process = self.proc
+        self.proc = None
+        if process:
+            process.deleteLater()
+        self._finish_error("No se pudo iniciar el proceso externo (QProcess FailedToStart).")
+
     def _finish_error(self, message: str) -> None:
         recipe = self.current_recipe
-        if recipe:
-            self._set_recipe_status(recipe, "ERROR", "error")
+        self.log.appendPlainText("[ERROR] " + message)
+        if recipe is None:
+            self.generate.setEnabled(bool(self.queue))
+            self._set_status("Proceso fallido")
+            self._run_recipe()
+            return
+
+        # A single failed seed must not poison the rest of the queue.
+        if recipe.operation == "A_LA_CARTA" and recipe.current_seed is not None:
+            failed_seed = recipe.current_seed
+            if failed_seed not in recipe.failed_seeds:
+                recipe.failed_seeds.append(failed_seed)
+            remaining = len(self.jobs)
+            recipe.current_seed = None
+            if remaining:
+                self._set_recipe_status(
+                    recipe,
+                    f"ERROR {failed_seed} · CONTINÚA {self.job_total - remaining}/{self.job_total}",
+                    "error",
+                )
+                self._set_status(f"Seed {failed_seed} falló; continúa la cola")
+                self.log.appendPlainText(
+                    f"[JOB-ERROR] seed={failed_seed} registrado; continuando con {remaining} job(s) restantes."
+                )
+                if recipe.video_type == "challenges":
+                    self._run_challenge_job()
+                else:
+                    self._run_content_job()
+                return
+
+            # Last seed failed: finalize this recipe and continue with the next one.
+            self._job_complete()
+            return
+
+        # Batch/utility failure: isolate this recipe and continue with the next queue item.
+        self._set_recipe_status(recipe, "ERROR", "error")
+        recipe.completed = False
+        recipe.current_seed = None
         self.jobs = []
         self.job_total = 0
+        self.job_completed = 0
+        if recipe in self.queue:
+            self.queue.remove(recipe)
         self.current_recipe = None
-        self.generate.setEnabled(True)
-        self._set_status("Proceso fallido")
-        self.log.appendPlainText("[ERROR] " + message)
-        QMessageBox.critical(self, "Proceso fallido", message)
+        self.generate.setEnabled(bool(self.queue))
+        self._set_status("Proceso fallido · cola continua")
+        self._run_recipe()
 
     def _done(self, code: int, _status: Any) -> None:
         self._out()
@@ -1113,6 +1187,7 @@ class MainWindow(QMainWindow):
         recipe = self.current_recipe
         if recipe is None:
             return
+        recipe.current_seed = None
         if recipe.operation == "RUN_REGRESSION":
             self._job_complete()
             return

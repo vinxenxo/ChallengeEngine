@@ -10,6 +10,9 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 REF_DEFAULTS = [
+    # Immutable C11-A.1 fixture shipped with the repository.
+    ROOT / "tests/reference/c11a1/C11A1_CHALLENGE_BULK_MANIFEST.json",
+    # Historical generated artifact, retained as a fallback only.
     ROOT / "artifacts/qa/c11a1_challenge/C11A1_CHALLENGE_BULK_MANIFEST.json",
 ]
 INT_FIELDS = {
@@ -60,6 +63,9 @@ def resolve_reference(cli: str) -> Path:
 
 def resolve_run_dir(run_id: str) -> Path:
     roots = [
+        # Canonical immutable reference bundle.
+        ROOT / "tests/reference/c11a1/runs",
+        # Legacy generated locations, retained for compatibility with old reports.
         ROOT / "artifacts/qa/c11a1_challenge/runs",
         ROOT / "artifacts/qa/c11a1_challenge_qa/runs",
         ROOT / "qa/c11a1_challenge_qa/runs",
