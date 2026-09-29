@@ -1,0 +1,15 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+[VISUAL_CONTENT_PLAYER] Initializing playback host...
+[VISUAL_CONTENT_PLAYER] Loaded definition from path: artifacts/qa/c11c_family_coverage_smoke/20260929_184026/visual_drills/tracking/_envelopes/visual_drill_tracking_seed_24681357/envelope.json
+[VISUAL_CONTENT_PLAYER] Visual Drill presentation: 3.00s countdown + 21.00s gameplay + 3.00s end CTA = 27.00s total.
+[VISUAL_CONTENT_PLAYER] Ready [visual_drill/tracking]. Starting playback for 630 frames.
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\qa\c11c_family_coverage_smoke\20260929_184026\visual_drills\tracking\tracking\seed_24681357\VisualDrill_tracking_seed_24681357.avi
+810 frames at 30 FPS (movie length: 00:00:27:00), recorded in 00:01:04 (42% of real-time speed).
+CPU render time: 2.14 seconds (average: 2.64 ms/frame)
+GPU render time: 0.88 seconds (average: 1.09 ms/frame)
+Encoding time: 8.26 seconds (average: 10.20 ms/frame)
+--------------------------------------------------------------------------------

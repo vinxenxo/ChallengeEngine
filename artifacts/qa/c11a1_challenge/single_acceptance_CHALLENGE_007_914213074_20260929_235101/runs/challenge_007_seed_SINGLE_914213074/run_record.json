@@ -1,0 +1,30 @@
+{
+    "status":  "RUNNING",
+    "run_id":  "challenge_007_seed_SINGLE_914213074",
+    "challenge_id":  "CHALLENGE_007",
+    "mechanic":  "find_v1",
+    "mechanic_version":  null,
+    "source_seed":  7770001,
+    "test_seed":  914213074,
+    "seed_label":  "SINGLE_914213074",
+    "rng_version":  "2.0",
+    "expected_timeline":  {
+                              "fps":  60,
+                              "hook_frames":  180,
+                              "game_frames":  420,
+                              "reveal_frames":  0,
+                              "cta_frames":  0,
+                              "total_frames":  600
+                          },
+    "source_config":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\challenges\\CHALLENGE_007.json",
+    "qa_config":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11a1_challenge\\single_acceptance_CHALLENGE_007_914213074_20260929_235101\\runs\\challenge_007_seed_SINGLE_914213074\\challenge_definition.json",
+    "artifact_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11a1_challenge\\single_acceptance_CHALLENGE_007_914213074_20260929_235101\\runs\\challenge_007_seed_SINGLE_914213074\\artifacts",
+    "started_at_utc":  "2026-09-29T21:51:02.3319267+00:00",
+    "completed_at_utc":  null,
+    "failure":  null,
+    "factory_exit_code":  null,
+    "factory_manifest":  null,
+    "video":  null,
+    "framemd5":  null,
+    "review_frames":  null
+}

@@ -1,8 +1,12 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$ProjectRoot = "",
     [string]$OutputRoot = "",
-    [switch]$Resume
+    [switch]$Resume,
+    [ValidatePattern('^CHALLENGE_[0-9]{3}$')]
+    [string]$ChallengeId = "",
+    [ValidateRange(0,2147483646)]
+    [int64]$SingleSeed = 0
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,33 +28,57 @@ if ([string]::IsNullOrWhiteSpace($OutputRoot)) {
 $OutputRoot = [IO.Path]::GetFullPath($OutputRoot)
 $ProjectRoot = [IO.Path]::GetFullPath($ProjectRoot)
 
-$buildFactory = Join-Path $ProjectRoot 'build_factory.py'
+$producer = Join-Path $ProjectRoot 'tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1'
 $challengesRoot = Join-Path $ProjectRoot 'challenges'
+$buildFactory = Join-Path $ProjectRoot 'build_factory.py'
 
-if (-not (Test-Path -LiteralPath $buildFactory -PathType Leaf)) {
-    throw "C11A.1: no existe build_factory.py en $ProjectRoot"
+if (-not (Test-Path -LiteralPath $producer -PathType Leaf)) {
+    throw "C11A.1: no existe el productor canonico: $producer"
 }
 if (-not (Test-Path -LiteralPath $challengesRoot -PathType Container)) {
     throw "C11A.1: no existe la carpeta challenges/"
 }
 
-foreach ($tool in @('python','ffmpeg','ffprobe')) {
+foreach ($tool in @('ffmpeg','ffprobe','powershell.exe')) {
     if ($null -eq (Get-Command $tool -ErrorAction SilentlyContinue)) {
         throw "C11A.1: herramienta obligatoria no encontrada en PATH: $tool"
     }
 }
 
-# Matriz contractual: mismo orden para todos los challenges.
-$seedCases = @(
-    [pscustomobject]@{ Label = '12345_A'; Seed = 12345 },
-    [pscustomobject]@{ Label = '54321'; Seed = 54321 },
-    [pscustomobject]@{ Label = '314159'; Seed = 314159 },
-    [pscustomobject]@{ Label = '7770001'; Seed = 7770001 },
-    [pscustomobject]@{ Label = '998877'; Seed = 998877 },
-    [pscustomobject]@{ Label = '12345_B'; Seed = 12345 }
-)
+# build_factory.py is retained only as a legacy CLI compatibility wrapper.
+# C11-A.1 never invokes it; the canonical C11-C Challenge producer is authoritative.
+$buildFactoryBytes = if (Test-Path -LiteralPath $buildFactory -PathType Leaf) { (Get-Item -LiteralPath $buildFactory).Length } else { 0 }
+if ($buildFactoryBytes -le 0) {
+    Write-Host '[C11A1] build_factory.py is absent/empty; using canonical Challenge producer.' -ForegroundColor DarkYellow
+} else {
+    Write-Host '[C11A1] build_factory.py is legacy compatibility-only; using canonical Challenge producer.' -ForegroundColor DarkYellow
+}
 
-$challengeFiles = 1..9 | ForEach-Object {
+$singleMode = (-not [string]::IsNullOrWhiteSpace($ChallengeId)) -or ($SingleSeed -gt 0)
+if ($singleMode -and [string]::IsNullOrWhiteSpace($ChallengeId)) {
+    throw 'C11A.1 single mode: -ChallengeId es obligatorio cuando se usa -SingleSeed.'
+}
+if ($singleMode -and $SingleSeed -le 0) {
+    throw 'C11A.1 single mode: -SingleSeed debe ser > 0.'
+}
+
+if ($singleMode) {
+    $seedCases = @([pscustomobject]@{ Label = ('SINGLE_' + [string]$SingleSeed); Seed = [int64]$SingleSeed })
+    $challengeNumbers = @([int]$ChallengeId.Substring(10,3))
+} else {
+    # Matrix contractual: same order for all challenges.
+    $seedCases = @(
+        [pscustomobject]@{ Label = '12345_A'; Seed = 12345 },
+        [pscustomobject]@{ Label = '54321'; Seed = 54321 },
+        [pscustomobject]@{ Label = '314159'; Seed = 314159 },
+        [pscustomobject]@{ Label = '7770001'; Seed = 7770001 },
+        [pscustomobject]@{ Label = '998877'; Seed = 998877 },
+        [pscustomobject]@{ Label = '12345_B'; Seed = 12345 }
+    )
+    $challengeNumbers = 1..9
+}
+
+$challengeFiles = $challengeNumbers | ForEach-Object {
     $path = Join-Path $challengesRoot ("CHALLENGE_{0:D3}.json" -f $_)
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {
         throw "C11A.1: falta $path"
@@ -70,7 +98,11 @@ function Convert-ToExpectedTimeline {
 
     $hook = ToFrames ([double]$Video.hook_duration) $fps
     $game = ToFrames ([double]$Video.game_duration) $fps
-    $reveal = ToFrames ([double]$Video.reveal_duration) $fps
+    $reveal = 0.0
+    $revealProperty = $Video.PSObject.Properties['reveal_duration']
+    if ($null -ne $revealProperty) {
+        $reveal = ToFrames ([double]$revealProperty.Value) $fps
+    }
     $cta = ToFrames ([double]$Video.cta_duration) $fps
 
     return [pscustomobject]@{
@@ -140,49 +172,114 @@ function Invoke-ProcessCapture {
     }
 }
 
-function Invoke-C11A1FactoryIsolated {
+function Invoke-C11A1CanonicalProducer {
     param(
-        [string]$BuildFactory,
-        [string]$ConfigPath,
+        [string]$Producer,
+        [string]$ChallengeId,
+        [int64]$Seed,
         [string]$ArtifactRoot,
         [string]$WorkingDirectory,
         [string]$StdoutPath,
         [string]$StderrPath
     )
 
-    # C11-A.1 is historical Challenge qualification. It must not inherit a
-    # C11-C Movie Maker override from a previous child process.
-    $overridePath = Join-Path $WorkingDirectory 'override.cfg'
-    $backupPath = Join-Path ([IO.Path]::GetTempPath()) ('C11A1_override_backup_' + [Guid]::NewGuid().ToString('N') + '.cfg')
-    $hadOverride = Test-Path -LiteralPath $overridePath
+    # The canonical producer owns native Challenge override isolation and restores
+    # any pre-existing project override.cfg byte-for-byte.
+    return Invoke-ProcessCapture -FilePath 'powershell.exe' -ArgumentList @(
+        '-NoProfile',
+        '-ExecutionPolicy', 'Bypass',
+        '-File', $Producer,
+        '-ChallengeId', $ChallengeId,
+        '-Seed', [string]$Seed,
+        '-DeliveryProfile', 'MASTER_1080',
+        '-OutputRoot', $ArtifactRoot,
+        '-KeepAvi'
+    ) -WorkingDirectory $WorkingDirectory -StdoutPath $StdoutPath -StderrPath $StderrPath
+}
 
-    if ($hadOverride) {
-        Copy-Item -LiteralPath $overridePath -Destination $backupPath -Force
-        Remove-Item -LiteralPath $overridePath -Force
-        Write-Host '[C11A1] Quarantined pre-existing override.cfg for this factory run.' -ForegroundColor DarkYellow
+function Read-C11A1TelemetryFromLog {
+    param([string]$LogPath)
+    $lines = @(Get-Content -LiteralPath $LogPath -Encoding UTF8 | Where-Object { $_ -match '^\[TELEMETRY_JSON\]' })
+    if ($lines.Count -eq 0) {
+        throw "C11A.1: [TELEMETRY_JSON] not found en $LogPath"
     }
+    $line = [string]$lines[$lines.Count - 1]
+    return (($line.Substring('[TELEMETRY_JSON]'.Length)) | ConvertFrom-Json)
+}
 
-    try {
-        return Invoke-ProcessCapture -FilePath 'python' -ArgumentList @(
-            '-u', $BuildFactory,
-            '--config', $ConfigPath,
-            '--output', $ArtifactRoot,
-            '--no-gif'
-        ) -WorkingDirectory $WorkingDirectory -StdoutPath $StdoutPath -StderrPath $StderrPath
-    }
-    finally {
-        # A C11-C launcher may have recreated override.cfg while the factory
-        # was running. Remove that leaked state before the next Challenge.
-        if (Test-Path -LiteralPath $overridePath) {
-            Remove-Item -LiteralPath $overridePath -Force
-            Write-Host '[C11A1] Removed leaked override.cfg after factory run.' -ForegroundColor DarkYellow
+function Write-C11A1CompatibilityManifest {
+    param(
+        [string]$ManifestPath,
+        [string]$ChallengeId,
+        [int64]$Seed,
+        [object]$ProductionManifest,
+        [string]$ProductionManifestPath,
+        [object]$Telemetry,
+        [string]$FinalVideo,
+        [string]$RawVideo,
+        [string]$GodotLog
+    )
+
+    # All compatibility artifacts are siblings of the A1 adapter manifest.
+    # Use leaf names for Windows PowerShell 5.1 compatibility; do not depend on
+    # System.IO.Path.GetRelativePath, which is not a .NET Framework API.
+    $finalRelative = [IO.Path]::GetFileName($FinalVideo)
+    $rawRelative = [IO.Path]::GetFileName($RawVideo)
+    $logRelative = [IO.Path]::GetFileName($GodotLog)
+    $productionRelative = [IO.Path]::GetFileName($ProductionManifestPath)
+
+    $adapter = [ordered]@{
+        manifest_version = '1.0'
+        qa_id = 'C11-A.1'
+        schema = 'C11-A.1-CANONICAL-PRODUCER-ADAPTER-V1'
+        status = 'PASS'
+        adapter_reason = 'Historical A1 factory manifest contract adapted to the canonical C11-C Challenge producer; no second gameplay factory is introduced.'
+        challenge_id = $ChallengeId
+        seed = $Seed
+        delivery_profile = 'MASTER_1080'
+        source_movie_resolution = '540x960'
+        delivery_resolution = '1080x1920'
+        canonical_producer_status = [string]$ProductionManifest.status
+        canonical_producer_manifest = $productionRelative
+        telemetry = $Telemetry
+        artifacts = [ordered]@{
+            final_video = $finalRelative
+            raw_video = $rawRelative
+            production_manifest = $productionRelative
+            godot_log = $logRelative
         }
-
-        if ($hadOverride) {
-            Copy-Item -LiteralPath $backupPath -Destination $overridePath -Force
-            Remove-Item -LiteralPath $backupPath -Force -ErrorAction SilentlyContinue
-        }
+        generated_from = 'tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1'
     }
+    Write-JsonUtf8 $ManifestPath $adapter
+}
+
+
+function Resolve-C11A1FactoryArtifact {
+    param(
+        [string]$ManifestPath,
+        [string]$ArtifactValue,
+        [string]$ArtifactName
+    )
+
+    if ([string]::IsNullOrWhiteSpace($ArtifactValue)) {
+        throw "C11A.1: compatibility manifest has empty artifacts.$ArtifactName"
+    }
+    if ([IO.Path]::IsPathRooted($ArtifactValue)) {
+        $resolved = [IO.Path]::GetFullPath($ArtifactValue)
+    } else {
+        $resolved = [IO.Path]::GetFullPath((Join-Path (Split-Path -Parent $ManifestPath) $ArtifactValue))
+    }
+
+    $manifestRoot = [IO.Path]::GetFullPath((Split-Path -Parent $ManifestPath)).TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
+    $resolvedFull = [IO.Path]::GetFullPath($resolved)
+    $prefix = $manifestRoot + [IO.Path]::DirectorySeparatorChar
+    if (-not $resolvedFull.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase) -and $resolvedFull -ne $manifestRoot) {
+        throw "C11A.1: artifact escapes compatibility manifest directory ($ArtifactName): $resolvedFull"
+    }
+    if (-not (Test-Path -LiteralPath $resolvedFull -PathType Leaf)) {
+        throw "C11A.1: compatibility artifact missing ($ArtifactName): $resolvedFull"
+    }
+    return $resolvedFull
 }
 
 function Invoke-FFProbe {
@@ -190,7 +287,7 @@ function Invoke-FFProbe {
     $json = & ffprobe -v error -select_streams v:0 -count_frames `
         -show_entries stream=width,height,r_frame_rate,nb_read_frames,duration,codec_name,pix_fmt `
         -of json -- $VideoPath 2>&1
-    if ($LASTEXITCODE -ne 0) { throw "ffprobe falló para $VideoPath`n$json" }
+    if ($LASTEXITCODE -ne 0) { throw "ffprobe failed for $VideoPath`n$json" }
     return ($json -join "`n" | ConvertFrom-Json)
 }
 
@@ -198,7 +295,7 @@ function Invoke-FrameMD5 {
     param([string]$VideoPath, [string]$OutputPath)
     & ffmpeg -v error -i $VideoPath -f framemd5 -an -sn -dn -y $OutputPath
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $OutputPath -PathType Leaf)) {
-        throw "framemd5 falló para $VideoPath"
+        throw "framemd5 failed for $VideoPath"
     }
 }
 
@@ -252,9 +349,13 @@ function Create-ContactSheet {
 }
 
 Write-Host "[C11A1] Challenge Seed Qualification" -ForegroundColor Cyan
-Write-Host "[C11A1] Matrix: $($challengeFiles.Count) challenges x $($seedCases.Count) seeds = $($challengeFiles.Count * $seedCases.Count) runs"
+if ($singleMode) {
+    Write-Host "[C11A1] SINGLE RUN: $ChallengeId seed=$SingleSeed" -ForegroundColor Cyan
+} else {
+    Write-Host "[C11A1] Matrix: $($challengeFiles.Count) challenges x $($seedCases.Count) seeds = $($challengeFiles.Count * $seedCases.Count) runs"
+}
 Write-Host "[C11A1] Output: $OutputRoot"
-Write-Host "[C11A1] Core remains untouched; orchestration delegates to build_factory.py."
+Write-Host "[C11A1] Core remains untouched; orchestration delegates to canonical Challenge producer."
 
 New-Item -ItemType Directory -Force -Path (Join-Path $OutputRoot 'runs') | Out-Null
 
@@ -344,6 +445,7 @@ foreach ($item in $plan) {
         completed_at_utc = $null
         failure = $null
         factory_exit_code = $null
+        producer_exit_code = $null
         factory_manifest = $null
         video = $null
         framemd5 = $null
@@ -357,9 +459,10 @@ foreach ($item in $plan) {
     $stdoutPath = Join-Path $runDir 'factory_stdout.txt'
     $stderrPath = Join-Path $runDir 'factory_stderr.txt'
 
-    $proc = Invoke-C11A1FactoryIsolated `
-        -BuildFactory $buildFactory `
-        -ConfigPath $configPath `
+    $proc = Invoke-C11A1CanonicalProducer `
+        -Producer $producer `
+        -ChallengeId $item.challenge_id `
+        -Seed $item.test_seed `
         -ArtifactRoot $artifactRoot `
         -WorkingDirectory $ProjectRoot `
         -StdoutPath $stdoutPath `
@@ -367,31 +470,44 @@ foreach ($item in $plan) {
 
     if ($proc.ExitCode -ne 0) {
         $preRecord.status = 'FAILED'
-        $preRecord.failure = [pscustomobject]@{ code = 'FACTORY_EXIT'; message = "python build_factory.py exit=$($proc.ExitCode)" }
+        $preRecord.failure = [pscustomobject]@{ code = 'PRODUCER_EXIT'; message = "canonical Challenge producer exit=$($proc.ExitCode)" }
         $preRecord.completed_at_utc = [DateTimeOffset]::UtcNow.ToString('o')
         Write-JsonUtf8 $runRecordPath $preRecord
-        throw "C11A.1: $($item.run_id) failed in build_factory.py. See $stdoutPath / $stderrPath"
+        throw "C11A.1: $($item.run_id) failed in canonical Challenge producer. See $stdoutPath / $stderrPath"
     }
+
+    $productRoot = Join-Path $artifactRoot $item.challenge_id
+    $productionManifestPath = Join-Path $productRoot 'production_manifest.json'
+    $godotLogPath = Join-Path $productRoot 'godot.log'
+    $expectedMp4Path = Join-Path $productRoot ("{0}_seed_{1}.mp4" -f $item.challenge_id, $item.test_seed)
+    $expectedAviPath = Join-Path $productRoot ("{0}_seed_{1}_source.avi" -f $item.challenge_id, $item.test_seed)
+
+    if (-not (Test-Path -LiteralPath $productionManifestPath -PathType Leaf)) { throw "C11A.1: canonical producer manifest missing: $productionManifestPath" }
+    if (-not (Test-Path -LiteralPath $godotLogPath -PathType Leaf)) { throw "C11A.1: canonical producer godot.log missing: $godotLogPath" }
+    if (-not (Test-Path -LiteralPath $expectedMp4Path -PathType Leaf)) { throw "C11A.1: canonical producer MP4 missing: $expectedMp4Path" }
+    if (-not (Test-Path -LiteralPath $expectedAviPath -PathType Leaf)) { throw "C11A.1: canonical producer source AVI missing: $expectedAviPath" }
+
+    $productionManifest = Get-Content -LiteralPath $productionManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $telemetry = Read-C11A1TelemetryFromLog $godotLogPath
+    Write-C11A1CompatibilityManifest `
+        -ManifestPath $factoryManifestPath `
+        -ChallengeId $item.challenge_id `
+        -Seed $item.test_seed `
+        -ProductionManifest $productionManifest `
+        -ProductionManifestPath $productionManifestPath `
+        -Telemetry $telemetry `
+        -FinalVideo $expectedMp4Path `
+        -RawVideo $expectedAviPath `
+        -GodotLog $godotLogPath
 
     if (-not (Test-Path -LiteralPath $factoryManifestPath -PathType Leaf)) {
-        $preRecord.status = 'FAILED'
-        $preRecord.failure = [pscustomobject]@{ code = 'MISSING_FACTORY_MANIFEST'; message = $factoryManifestPath }
-        $preRecord.completed_at_utc = [DateTimeOffset]::UtcNow.ToString('o')
-        Write-JsonUtf8 $runRecordPath $preRecord
-        throw "C11A.1: missing factory manifest: $factoryManifestPath"
+        throw "C11A.1: compatibility manifest missing after canonical producer validation: $factoryManifestPath"
     }
-
     $factoryManifest = Get-Content -LiteralPath $factoryManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ([string]$factoryManifest.status -ne 'PASS') {
-        throw "C11A.1: factory manifest status != PASS for $($item.run_id)"
-    }
+    if ([string]$factoryManifest.status -ne 'PASS') { throw "C11A.1: compatibility manifest status != PASS for $($item.run_id)" }
+    $videoPath = Resolve-C11A1FactoryArtifact -ManifestPath $factoryManifestPath -ArtifactValue $factoryManifest.artifacts.final_video -ArtifactName 'final_video'
+    $rawVideoPath = Resolve-C11A1FactoryArtifact -ManifestPath $factoryManifestPath -ArtifactValue $factoryManifest.artifacts.raw_video -ArtifactName 'raw_video'
 
-    $telemetry = $factoryManifest.telemetry
-    $videoPath = Join-Path (Join-Path $artifactRoot $item.challenge_id) ([string]$factoryManifest.artifacts.final_video)
-    $rawVideoPath = Join-Path (Join-Path $artifactRoot $item.challenge_id) ([string]$factoryManifest.artifacts.raw_video)
-
-    if (-not (Test-Path -LiteralPath $videoPath -PathType Leaf)) { throw "C11A.1: MP4 missing: $videoPath" }
-    if (-not (Test-Path -LiteralPath $rawVideoPath -PathType Leaf)) { throw "C11A.1: AVI missing: $rawVideoPath" }
 
     $probe = Invoke-FFProbe $videoPath
     $stream = $probe.streams[0]
@@ -443,7 +559,9 @@ foreach ($item in $plan) {
     $preRecord.status = 'COMPLETE'
     $preRecord.completed_at_utc = [DateTimeOffset]::UtcNow.ToString('o')
     $preRecord.factory_exit_code = $proc.ExitCode
+    $preRecord.producer_exit_code = $proc.ExitCode
     $preRecord.factory_manifest = $factoryManifestPath
+    $preRecord.canonical_producer_manifest = Join-Path $productRoot 'production_manifest.json'
     $preRecord.video = [pscustomobject]@{
         mp4 = $videoPath
         avi = $rawVideoPath
@@ -462,6 +580,10 @@ foreach ($item in $plan) {
 }
 
 $elapsed = ([DateTimeOffset]::UtcNow - $startedAt).TotalSeconds
-Write-Host "[C11A1] Physical generation complete: $total/$total" -ForegroundColor Green
+if ($singleMode) {
+    Write-Host "[C11A1] SINGLE PASS: $total/$total run validated." -ForegroundColor Green
+} else {
+    Write-Host "[C11A1] Physical generation complete: $total/$total" -ForegroundColor Green
+}
 Write-Host ("[C11A1] Elapsed seconds: {0:N1}" -f $elapsed)
-Write-Host "[C11A1] Next command: .\tools\qa\c11\finalize_c11a1_challenge_bulk_qa.ps1"
+if (-not $singleMode) { Write-Host "[C11A1] Next command: .\tools\qa\c11\finalize_c11a1_challenge_bulk_qa.ps1" }

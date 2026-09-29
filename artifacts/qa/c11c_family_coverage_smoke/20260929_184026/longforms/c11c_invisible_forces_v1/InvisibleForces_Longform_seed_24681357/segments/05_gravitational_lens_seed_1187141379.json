@@ -1,0 +1,12 @@
+{
+    "slot":  5,
+    "family":  "invisible_forces",
+    "grammar_id":  "gravitational_lens",
+    "grammar_name":  "Gravitational Lens",
+    "seed":  1187141379,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1187141379\\InvisibleForces_v1_seed_1187141379.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1187141379\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_1187141379_music.wav",
+    "loop_safe":  true
+}

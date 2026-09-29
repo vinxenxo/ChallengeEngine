@@ -1,29 +1,78 @@
 # START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.19 CONSOLIDATED
 
-Continue from **C11-C 2.19.12 FINAL CLOSURE CANDIDATE — NOT FROZEN**.
+Continue from **C11-C 2.19.12 FULL CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN**.
 
 ## First reads
 
 1. `MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md`
-2. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-4. `docs/current/c11c/C11C_2.19.12_FINAL_CLOSURE_AND_2.16_CONTINUITY.md`
-5. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
-6. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
+2. `START_PROMPT_C11C_2.19_CONSOLIDATED.md`
+3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
+4. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
+5. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
+6. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
+7. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
+8. `docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md`
 
-## Final validation
+## Step 1 — static and focused contracts
 
 ```powershell
 python .\c11c-suite\self_test.py
-.\c11c-suite\c11c-test\test_powershell_parse.bat
-.\c11c-suite\c11c-test\run_c11c_complete_review.bat
+python .\c11c-suite\c11c-producer\self_test.py
+python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
+.\c11c-suite\c11c-producer\test_gui_contract.bat
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\verify_c11c_suite_launchers.ps1
+.\c11c-suite\c11c-test\run_suite.bat C11CVisualDrillReviewEnvelopePathContractTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+```
+
+The envelope-path test is valid only when the console ends after `[C11C_VISUAL_DRILL_ENVELOPE_PATH_CONTRACT_SUITE] PASS` with exit code 0. `PASS` followed by `FAIL (0 failure(s))` is a failed test.
+
+## Step 2 — focused validation
+
+```powershell
+.\c11c-suite\c11c-test\run_c11c_focused_validation.bat
+```
+
+## Step 3 — one video per content type
+
+```powershell
+.\c11c-suite\c11c-test\run_c11c_one_video_each_type.bat
+```
+
+This is the fast runtime smoke: 1 Visual Loop + 1 Visual Drill + 1 Longform. It must not be confused with the 52-video complete review.
+
+## Step 4 — full logical
+
+```powershell
+python .\tests\run_all.py
+```
+
+## Step 5 — complete 52-video review
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File .\tools\qa\c11\run_c11c_complete_video_review.ps1 `
+  -Workers 7 `
+  -Reset
+```
+
+`Workers=7` means real concurrent capture. Never serialize it to make a failure disappear.
+
+## Step 6 — final acceptance candidate
+
+```powershell
 .\c11c-suite\c11c-test\run_c11c_acceptance.bat
 ```
 
-`tests/run_all.py` now retries only exact `0xC06D007F` process exits and contains the canonical C10 PASS-marker strings (`PASS — ...`). The accepted attempt must still return 0 and emit every contract PASS marker. The current logical corpus contains 139 registered suites.
+## C11-A.1 final gate
 
-Do not reopen the frozen engine/RNG/C7/C9/social geometry boundaries. Do not modify `c11c-studio/`.
+The historical Challenge qualification must complete 9 Challenges x 6 seeds = 54 fresh runs. The canonical runner resolves `build_factory.py` manifests from the factory-reported `manifest_path`, then the historical canonical location, then a unique valid manifest inside the current run. It never fabricates evidence and fails on ambiguity.
 
-## D gate
+## Mandatory guardrails
 
-Do not begin C11-D implementation until final acceptance is green and the freeze receipt exists. D should then start from the immutable C11-C 2.19.12 baseline and normalize the Challenge family end-to-end.
+- `c11c-suite/` is the active Suite.
+- `c11c-studio/` is retired: do not update it and do not use it.
+- Private worker roots are the solution to capture-state collisions; the canonical field is `WorkerRoot`.
+- Do not add a global mutex or serial fallback.
+- Preserve all frozen engine/RNG/C7/C9/social geometry boundaries.
+- Do not freeze until fresh workstation evidence is fully green.

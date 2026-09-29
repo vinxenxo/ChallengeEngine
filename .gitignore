@@ -9,6 +9,8 @@ Thumbs.db
 Desktop.ini
 .vscode/
 .idea/
+.continue/rules/*
+.githooks/*
 
 # Godot generated state
 .godot/

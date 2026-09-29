@@ -1,0 +1,12 @@
+{
+    "slot":  5,
+    "family":  "sacred_symmetry",
+    "grammar_id":  "celestial_chart",
+    "grammar_name":  "Celestial Chart",
+    "seed":  1153576328,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1153576328\\SacredSymmetry_v1_seed_1153576328.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1153576328\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_1153576328_music.wav",
+    "loop_safe":  true
+}
