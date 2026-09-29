@@ -1,0 +1,12 @@
+{
+    "slot":  3,
+    "family":  "living_particles",
+    "grammar_id":  "collision_cloud",
+    "grammar_name":  "Collision Cloud",
+    "seed":  758624868,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_758624868\\LivingParticles_v1_seed_758624868.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_758624868\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_758624868_music.wav",
+    "loop_safe":  true
+}

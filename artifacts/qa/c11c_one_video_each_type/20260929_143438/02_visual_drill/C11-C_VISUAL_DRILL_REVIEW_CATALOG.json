@@ -1,0 +1,40 @@
+{
+    "schema":  "C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1",
+    "revision":  "2.19.12",
+    "backend_truth_revision":  "2.16.9",
+    "status":  "COMPLETE",
+    "family_count":  1,
+    "seed_count":  1,
+    "render_count":  1,
+    "countdown_seconds":  3,
+    "minimum_total_seconds":  20,
+    "maximum_total_seconds":  30,
+    "default_gameplay_seconds":  17,
+    "tracking_gameplay_seconds":  21,
+    "countdown_frames":  90,
+    "end_cta_seconds":  3,
+    "end_cta_frames":  90,
+    "max_total_frames":  810,
+    "seeds":  [
+                  314159
+              ],
+    "families":  [
+                     "tracking"
+                 ],
+    "delivery":  "720x1280 / 9:16 / 30 FPS",
+    "logical_social_frame":  "540x960 with Header 0..144, Body 144..816, Footer 816..960",
+    "matrix_enabled":  true,
+    "audio_mode":  "FAMILY_MUSIC_V4",
+    "audio_scope":  "PER-FAMILY-SEED",
+    "source_envelope_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_one_video_each_type\\20260929_143438\\02_visual_drill\\_envelopes",
+    "review_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_one_video_each_type\\20260929_143438\\02_visual_drill",
+    "cleanup_performed":  false,
+    "results":  [
+                    {
+                        "family":  "tracking",
+                        "seed":  314159,
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_one_video_each_type\\20260929_143438\\02_visual_drill\\tracking\\seed_314159\\VisualDrill_tracking_seed_314159.mp4",
+                        "status":  "PASS"
+                    }
+                ]
+}

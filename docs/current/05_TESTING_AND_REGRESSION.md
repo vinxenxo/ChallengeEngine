@@ -1,43 +1,29 @@
-﻿# Testing and Regression — C11-C 2.19.5
+﻿# Testing and Regression — C11-C 2.19.12
 
 ## Current status
 
-The repository is under consolidated repair acceptance. The former 2.19.2 freeze claim is not the current acceptance authority.
+C11-C is at the final 2.19.12 closure-candidate gate. Earlier 2.19.x acceptance documents are historical evidence.
 
-The 2.19.5 candidate adds a static contract for the Art Direction worker model and Suite self-test coverage for retired-studio isolation. Runtime Windows/Godot proof of concurrent capture remains an explicit acceptance gate.
+## Logical test corpus
 
-## Canonical logical commands
+Current corpus: 139 registered logical `*Test.gd` suites. Two physical-export suites are intentionally skipped by the default logical run.
+
+## Logical runner
 
 ```powershell
-python .\c11c-suite\self_test.py
-python .\c11c-suite\c11c-producer\self_test.py
-python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
 python .\tests\run_all.py
 ```
 
-Focused worker contract:
+The runner has a bounded process-level retry for exact Windows exit status `0xC06D007F` (up to three additional attempts). It never retries deterministic test FAIL markers, fatal patterns, timeouts, missing PASS markers after exit code 0, or other non-zero statuses.
+
+## Review
+
+The complete audiovisual corpus is 52 videos: 27 Visual Loop grammars + 20 Visual Drill renders + 5 Longforms. The Art Direction capture must observe concurrency greater than one with `Workers=7`.
+
+## Final gate
 
 ```powershell
-.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+.\c11c-suite\c11c-test\run_c11c_acceptance.bat
 ```
 
-## Runtime concurrency proof
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass `
-  -File .\tools\prototypes\c11c_bulk\run_c11c_art_direction_batch_v4.ps1 `
-  -Workers 7 `
-  -Loops `
-  -Reset
-```
-
-The run must report `MAX_OBSERVED_CONCURRENCY` greater than one. A one-at-a-time run is a failure of the 2.19.5 concurrency contract.
-
-## Full candidate gate
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass `
-  -File .\FULL_ACCEPTANCE_C11C_2.19.5.ps1
-```
-
-Physical production success does not replace logical regression, and a static concurrency contract does not replace a real multi-worker capture.
+Final acceptance must be green before the C11-C freeze receipt is created.

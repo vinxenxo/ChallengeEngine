@@ -1,0 +1,12 @@
+{
+    "slot":  6,
+    "family":  "living_particles",
+    "grammar_id":  "swarm",
+    "grammar_name":  "Swarm",
+    "seed":  1479521628,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1479521628\\LivingParticles_v1_seed_1479521628.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1479521628\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1479521628_music.wav",
+    "loop_safe":  true
+}

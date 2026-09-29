@@ -117,8 +117,7 @@ function Save-State {
     }
     $state=[ordered]@{
         schema='C11-C-ART-DIRECTION-REVIEW-STATE-V5'
-        revision='2.19.12'
-        backend_truth_revision='2.16.9'
+        revision='2.16.9'
         status=$Stage
         updated=(Get-Date).ToString('o')
         workers=$Workers
@@ -367,12 +366,14 @@ if($selection.drills){
 
 $manifest=[ordered]@{
     schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V5'
-    revision='2.19.12'
+    revision='2.19.11'
     status='COMPLETE'
     selected_stages=$selection
     root=$ReviewRoot
     workers=$Workers
     worker_isolation='per_worker_temporary_godot_project'
+    worker_bootstrap='per_worker_godot_headless_editor_class_scan'
+    worker_global_script_class_cache='required'
     max_observed_worker_concurrency=if($selection.loops){$maxObservedWorkerConcurrency}else{0}
     seeds=@($Seeds)
     resume_enabled=$true

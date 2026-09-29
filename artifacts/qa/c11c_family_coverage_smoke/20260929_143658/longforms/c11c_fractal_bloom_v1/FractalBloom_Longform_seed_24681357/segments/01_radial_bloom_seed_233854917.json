@@ -1,0 +1,12 @@
+{
+    "slot":  1,
+    "family":  "fractal",
+    "grammar_id":  "radial_bloom",
+    "grammar_name":  "Radial Bloom",
+    "seed":  233854917,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_233854917\\FractalBloom_v1_seed_233854917.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_233854917\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_233854917_music.wav",
+    "loop_safe":  true
+}

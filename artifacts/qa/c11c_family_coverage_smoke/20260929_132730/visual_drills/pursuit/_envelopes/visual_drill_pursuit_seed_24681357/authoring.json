@@ -1,0 +1,32 @@
+{
+	"authored": {
+		"answer_sheet": {
+			"event_frame_starts": [
+				130,
+				245,
+				398
+			],
+			"sizygia_count": 3
+		},
+		"seed": 24681357,
+		"task_summary": {
+			"distractor_count": null,
+			"sizygia_count": 3,
+			"threat_count": null,
+			"type": "pursuit"
+		},
+		"trajectory": {
+			"coordinate_space": "normalized_body_0_1",
+			"profile": "uniform_cubic_bspline_arc_length_v1",
+			"type": "uniform_cubic_bspline"
+		},
+		"variation_version": "VisualDrillSeedVariation/2.9.0"
+	},
+	"authoring_version": "1.0",
+	"custom_parameters": {},
+	"difficulty_tier": 2,
+	"domain_family": "visual_drill",
+	"duration_seconds": 17.0,
+	"fps": 30,
+	"subtype": "pursuit"
+}

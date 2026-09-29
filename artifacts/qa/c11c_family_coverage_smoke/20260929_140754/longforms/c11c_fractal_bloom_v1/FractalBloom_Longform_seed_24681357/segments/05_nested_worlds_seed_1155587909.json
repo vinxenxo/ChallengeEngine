@@ -1,0 +1,12 @@
+{
+    "slot":  5,
+    "family":  "fractal",
+    "grammar_id":  "nested_worlds",
+    "grammar_name":  "Nested Worlds",
+    "seed":  1155587909,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1155587909\\FractalBloom_v1_seed_1155587909.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1155587909\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1155587909_music.wav",
+    "loop_safe":  true
+}

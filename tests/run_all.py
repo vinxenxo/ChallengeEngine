@@ -4,6 +4,7 @@ import subprocess
 from pathlib import Path
 import argparse
 import re
+import time
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TESTS_DIR = PROJECT_ROOT / "tests"
@@ -154,6 +155,14 @@ KNOWN_SUITES = {
 
 SUITE_TIMEOUT_SECONDS = 120
 
+# Process/runtime-only retry policy. These are exact Windows representations of
+# 0xC06D007F observed during a transient first Godot/Mono launch; a deterministic
+# suite FAIL marker, parse/runtime fatal pattern, timeout, or non-zero exit of any
+# other code is never converted into PASS by this policy.
+TRANSIENT_PROCESS_EXIT_CODES = {3228369023, -1066598273}  # unsigned/signed 0xC06D007F
+TRANSIENT_PROCESS_RETRIES = 3
+TRANSIENT_PROCESS_RETRY_DELAY_SECONDS = 0.75
+
 PHYSICAL_EXTERNAL_SUITES = {
     "C6F06VisualDrillPhysicalExportTest.gd",
     "C6F06VisualLoopPhysicalExportTest.gd",
@@ -211,70 +220,105 @@ def run_suite(rel_path: str, suite_path: Path, pass_marker: str, verbose: bool =
     cmd = ["godot", "--headless", "--path", str(PROJECT_ROOT), "--script", str(suite_path)]
     if verbose:
         cmd.append("--verbose")
-    
-    try:
-        process = subprocess.Popen(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            cwd=str(PROJECT_ROOT)
-        )
 
-        # communicate() drena stdout mientras Godot corre. Iterar directamente sobre
-        # process.stdout puede bloquear indefinidamente si una suite queda viva sin cerrar
-        # correctamente su extremo del pipe. El timeout se aplica al proceso completo.
+    attempt_outputs = []
+    attempt = 0
+    while True:
+        attempt += 1
         try:
-            stdout_text, _ = process.communicate(timeout=SUITE_TIMEOUT_SECONDS)
-            combined_output = stdout_text.splitlines(keepends=True)
-        except subprocess.TimeoutExpired:
-            print(f"[RUNNER-FAIL] Timeout ejecutando {name} tras {SUITE_TIMEOUT_SECONDS}s.")
-            process.kill()
-            stdout_text, _ = process.communicate()
-            combined_output = stdout_text.splitlines(keepends=True)
-            for line in combined_output[-20:]:
-                print(f"       {line.rstrip()}")
-            return False
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                cwd=str(PROJECT_ROOT)
+            )
 
-    except OSError as exc:
-        print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
-        return False
-
-    if verbose:
-        verbose_dir = PROJECT_ROOT / "artifacts" / "tests" / "logs" / "verbose"
-        verbose_dir.mkdir(parents=True, exist_ok=True)
-        safe_name = rel_path.replace("/", "__").replace("\\", "__").replace(".gd", "")
-        log_path = verbose_dir / f"{safe_name}.log"
-        log_text = "".join(combined_output)
-        log_path.write_text(log_text, encoding="utf-8")
-        print(f"[RUNNER-VERBOSE] Log guardado: {log_path}")
-        print(f"[RUNNER-VERBOSE] ===== BEGIN {name} =====")
-        print(log_text, end="" if log_text.endswith("\n") else "\n")
-        print(f"[RUNNER-VERBOSE] ===== END {name} =====")
-
-    for line in combined_output:
-        for pattern in FATAL_PATTERNS:
-            if pattern in line:
-                print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern.strip()}")
-                print(f"       Trazado: {line.strip()}")
+            # communicate() drains stdout while Godot runs. The timeout applies to
+            # the full child process; timeouts are never retried as transient launch faults.
+            try:
+                stdout_text, _ = process.communicate(timeout=SUITE_TIMEOUT_SECONDS)
+                combined_output = stdout_text.splitlines(keepends=True)
+            except subprocess.TimeoutExpired:
+                print(f"[RUNNER-FAIL] Timeout ejecutando {name} tras {SUITE_TIMEOUT_SECONDS}s.")
+                process.kill()
+                stdout_text, _ = process.communicate()
+                combined_output = stdout_text.splitlines(keepends=True)
+                attempt_outputs.append((attempt, process.returncode, combined_output))
+                for line in combined_output[-20:]:
+                    print(f"       {line.rstrip()}")
                 return False
 
-    if process.returncode != 0:
+        except OSError as exc:
+            print(f"[RUNNER-FAIL] No se pudo iniciar Godot: {exc}")
+            return False
+
+        attempt_outputs.append((attempt, process.returncode, combined_output))
+        full_output = "".join(combined_output)
+
+        # Fatal/explicit FAIL markers always win over retry policy.
+        for line in combined_output:
+            for pattern in FATAL_PATTERNS:
+                if pattern in line:
+                    if verbose:
+                        _write_verbose_run_log(rel_path, attempt_outputs)
+                    print(f"[RUNNER-FAIL] {name}: detectado patrón fatal: {pattern.strip()}")
+                    print(f"       Trazado: {line.strip()}")
+                    return False
+
+        if re.search(r"\[[^\]]+_SUITE\] FAIL", full_output):
+            if verbose:
+                _write_verbose_run_log(rel_path, attempt_outputs)
+            print(f"[RUNNER-FAIL] {name}: suite emitted an explicit FAIL marker.")
+            return False
+
+        if process.returncode == 0:
+            if pass_marker not in full_output:
+                if verbose:
+                    _write_verbose_run_log(rel_path, attempt_outputs)
+                print(f"[RUNNER-FAIL] {name}: falta marcador de éxito '{pass_marker}'.")
+                return False
+            if verbose:
+                _write_verbose_run_log(rel_path, attempt_outputs)
+            if attempt > 1:
+                print(f"[RUNNER-PASS] {name} -> OK (successful retry; attempts={attempt})")
+            else:
+                print(f"[RUNNER-PASS] {name} -> OK")
+            return True
+
+        # Exact transient process-level failure only. A later successful execution
+        # remains subject to the normal PASS-marker and zero-exit contract.
+        if process.returncode in TRANSIENT_PROCESS_EXIT_CODES and attempt <= TRANSIENT_PROCESS_RETRIES:
+            print(
+                f"[RUNNER-RETRY] {name}: transient process exit {process.returncode} "
+                f"(0xC06D007F), retry {attempt}/{TRANSIENT_PROCESS_RETRIES}."
+            )
+            time.sleep(TRANSIENT_PROCESS_RETRY_DELAY_SECONDS)
+            continue
+
+        if verbose:
+            _write_verbose_run_log(rel_path, attempt_outputs)
         print(f"[RUNNER-FAIL] {name}: exit code {process.returncode}")
         return False
 
-    full_output = "".join(combined_output)
-    if re.search(r"\[[^\]]+_SUITE\] FAIL", full_output):
-        print(f"[RUNNER-FAIL] {name}: suite emitted an explicit FAIL marker.")
-        return False
-    if pass_marker not in full_output:
-        print(f"[RUNNER-FAIL] {name}: falta marcador de éxito '{pass_marker}'.")
-        return False
 
-    print(f"[RUNNER-PASS] {name} -> OK")
-    return True
+def _write_verbose_run_log(rel_path: str, attempt_outputs) -> None:
+    verbose_dir = PROJECT_ROOT / "artifacts" / "tests" / "logs" / "verbose"
+    verbose_dir.mkdir(parents=True, exist_ok=True)
+    safe_name = rel_path.replace("/", "__").replace("\\", "__").replace(".gd", "")
+    log_path = verbose_dir / f"{safe_name}.log"
+    chunks = []
+    for attempt, returncode, output in attempt_outputs:
+        chunks.append(f"===== ATTEMPT {attempt} EXIT {returncode} =====\n")
+        chunks.extend(output)
+    log_text = "".join(chunks)
+    log_path.write_text(log_text, encoding="utf-8")
+    print(f"[RUNNER-VERBOSE] Log guardado: {log_path}")
+    print(f"[RUNNER-VERBOSE] ===== BEGIN {Path(rel_path).name} =====")
+    print(log_text, end="" if log_text.endswith("\n") else "\n")
+    print(f"[RUNNER-VERBOSE] ===== END {Path(rel_path).name} =====")
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -282,7 +326,7 @@ def main() -> None:
     args = parser.parse_args()
 
     bootstrap_artifact_tree()
-    print("=== PYTHON TEST RUNNER — LOGICAL CORPUS ===")
+    print("=== PYTHON TEST RUNNER - LOGICAL CORPUS ===")
     
     suites = discover_test_suites()
     if not suites:
@@ -300,7 +344,7 @@ def main() -> None:
     failed = [rel_path for rel_path, passed in results if not passed]
 
     if failed:
-        print(f"\n[BATCH-RUNNER] FAIL — {len(failed)} suite(s) fallaron.")
+        print(f"\n[BATCH-RUNNER] FAIL - {len(failed)} suite(s) fallaron.")
         for rel_path in failed:
             print(f"  - {rel_path}")
 
@@ -312,7 +356,7 @@ def main() -> None:
 
         sys.exit(1)
 
-    print(f"\n[BATCH-RUNNER] PASS — {len(results)} logical suite(s) superaron la auditoría E2E.")
+    print(f"\n[BATCH-RUNNER] PASS - {len(results)} logical suite(s) superaron la auditoría E2E.")
     sys.exit(0)
 
 if __name__ == "__main__":

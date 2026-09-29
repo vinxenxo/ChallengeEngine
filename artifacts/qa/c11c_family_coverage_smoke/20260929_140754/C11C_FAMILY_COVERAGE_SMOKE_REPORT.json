@@ -1,0 +1,202 @@
+{
+    "schema":  "C11-C-FAMILY-COVERAGE-SMOKE-V1",
+    "revision":  "2.19.12",
+    "status":  "PASS",
+    "seed":  24681357,
+    "physical_profile":  "720x1280@30",
+    "counts":  {
+                   "longforms":  5,
+                   "visual_drills":  4,
+                   "challenges":  9,
+                   "visual_loops":  5
+               },
+    "total_products":  23,
+    "contracts":  {
+                      "visual_loops":  "5 families; 1 representative canonical grammar each; 23s / 690 frames",
+                      "visual_drills":  "4 families; tracking 27s/810 frames; others 23s/690 frames",
+                      "challenges":  "9 definitions; declarative four-phase timing; REVIEW_720 delivery",
+                      "longforms":  "5 families; 180s / 5400 frames"
+                  },
+    "items":  [
+                  {
+                      "kind":  "visual_loop",
+                      "family":  "c11c_geometric_waves_v1",
+                      "grammar":  "harmonic_membrane",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_24681357\\GeometricWaves_v1_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_loop",
+                      "family":  "c11c_fractal_bloom_v1",
+                      "grammar":  "radial_bloom",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_24681357\\FractalBloom_v1_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_loop",
+                      "family":  "c11c_sacred_symmetry_v1",
+                      "grammar":  "astrolabe",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_sacred_symmetry_v1\\SacredSymmetry_v1_seed_24681357\\SacredSymmetry_v1_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_loop",
+                      "family":  "c11c_living_particles_v1",
+                      "grammar":  "swarm",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_24681357\\LivingParticles_v1_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_loop",
+                      "family":  "c11c_invisible_forces_v1",
+                      "grammar":  "dipole_field",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_24681357\\InvisibleForces_v1_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_drill",
+                      "family":  "tracking",
+                      "grammar":  null,
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\visual_drills\\tracking\\tracking\\seed_24681357\\VisualDrill_tracking_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_drill",
+                      "family":  "saccade",
+                      "grammar":  null,
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\visual_drills\\saccade\\saccade\\seed_24681357\\VisualDrill_saccade_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_drill",
+                      "family":  "pursuit",
+                      "grammar":  null,
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\visual_drills\\pursuit\\pursuit\\seed_24681357\\VisualDrill_pursuit_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "visual_drill",
+                      "family":  "peripheral_scan",
+                      "grammar":  null,
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\visual_drills\\peripheral_scan\\peripheral_scan\\seed_24681357\\VisualDrill_peripheral_scan_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "key",
+                      "challenge_id":  "CHALLENGE_001",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_001\\CHALLENGE_001_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "parking",
+                      "challenge_id":  "CHALLENGE_002",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_002\\CHALLENGE_002_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "pilot",
+                      "challenge_id":  "CHALLENGE_003",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_003\\CHALLENGE_003_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "parking_v2",
+                      "challenge_id":  "CHALLENGE_004",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_004\\CHALLENGE_004_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "hit_v1",
+                      "challenge_id":  "CHALLENGE_005",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_005\\CHALLENGE_005_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "catch_v1",
+                      "challenge_id":  "CHALLENGE_006",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_006\\CHALLENGE_006_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "find_v1",
+                      "challenge_id":  "CHALLENGE_007",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_007\\CHALLENGE_007_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "choose_v1",
+                      "challenge_id":  "CHALLENGE_008",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_008\\CHALLENGE_008_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "challenge",
+                      "family":  "count_v1",
+                      "challenge_id":  "CHALLENGE_009",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\challenges\\CHALLENGE_009\\CHALLENGE_009_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "longform",
+                      "family":  "c11c_geometric_waves_v1",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\longforms\\c11c_geometric_waves_v1\\GeometricWaves_Longform_seed_24681357\\GeometricWaves_Longform_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "longform",
+                      "family":  "c11c_fractal_bloom_v1",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\longforms\\c11c_fractal_bloom_v1\\FractalBloom_Longform_seed_24681357\\FractalBloom_Longform_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "longform",
+                      "family":  "c11c_sacred_symmetry_v1",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\longforms\\c11c_sacred_symmetry_v1\\SacredSymmetry_Longform_seed_24681357\\SacredSymmetry_Longform_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "longform",
+                      "family":  "c11c_living_particles_v1",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\longforms\\c11c_living_particles_v1\\LivingParticles_Longform_seed_24681357\\LivingParticles_Longform_seed_24681357.mp4",
+                      "status":  "PASS"
+                  },
+                  {
+                      "kind":  "longform",
+                      "family":  "c11c_invisible_forces_v1",
+                      "seed":  24681357,
+                      "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260929_140754\\longforms\\c11c_invisible_forces_v1\\InvisibleForces_Longform_seed_24681357\\InvisibleForces_Longform_seed_24681357.mp4",
+                      "status":  "PASS"
+                  }
+              ],
+    "generated_at_utc":  "2026-09-29T12:22:06.3317195+00:00"
+}

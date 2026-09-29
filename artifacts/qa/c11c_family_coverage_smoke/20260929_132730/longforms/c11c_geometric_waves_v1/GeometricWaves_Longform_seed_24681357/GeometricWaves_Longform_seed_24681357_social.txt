@@ -1,0 +1,44 @@
+COPY_PASTE_READY:
+¿Puedes ver cómo cambia el universo visual sin notar el paso entre mundos?
+
+GEOMETRIC WAVES - video long-form de arte generativa matemática y procedural.
+
+Duración: 180.00s
+Segmentos: 8 subfamilias visuales
+Seed base: 24681357
+Audio: música determinista por familia y subfamilia.
+
+Las variantes se enlazan mediante continuidad cromática y geométrica, sin fundidos a negro entre capítulos. El cierre final sí realiza un fundido a negro.
+
+Diseñado en código con #GodotEngine para contemplación prolongada.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #GeometricWaves #WaveArt #MathematicalArt #ProceduralArt #DigitalArt #TechArt
+
+TITLE:
+Geometric Waves - LONGFORM
+
+DESCRIPTION:
+GEOMETRIC WAVES - video long-form de arte generativa matemática y procedural.
+
+Duración: 180.00s
+Segmentos: 8 subfamilias visuales
+Seed base: 24681357
+Audio: música determinista por familia y subfamilia.
+
+Las variantes se enlazan mediante continuidad cromática y geométrica, sin fundidos a negro entre capítulos. El cierre final sí realiza un fundido a negro.
+
+Diseñado en código con #GodotEngine para contemplación prolongada.
+
+FAMILY: geometric
+SEED: 24681357
+DURATION: 180.00 s
+FPS: 30
+FRAMES: 5400
+TRANSITION: dissolve continuity; never through black
+FINAL FADE: 1 s to black
+
+HEADER HOOK:
+¿Puedes ver cómo cambia el universo visual sin notar el paso entre mundos?
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #GeometricWaves #WaveArt #MathematicalArt #ProceduralArt #DigitalArt #TechArt

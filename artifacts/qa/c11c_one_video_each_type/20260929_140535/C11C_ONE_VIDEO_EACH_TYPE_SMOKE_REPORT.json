@@ -1,0 +1,13 @@
+﻿{
+    "schema":  "C11-C-ONE-VIDEO-EACH-TYPE-SMOKE-V1",
+    "revision":  "2.19.12",
+    "seed":  314159,
+    "status":  "PASS",
+    "physical_profile":  "720x1280@30",
+    "outputs":  {
+                    "visual_loop":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_one_video_each_type\\20260929_140535\\01_visual_loop\\GeometricWaves_v1_seed_314159_lattice_wave.mp4",
+                    "visual_drill":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_one_video_each_type\\20260929_140535\\02_visual_drill\\tracking\\seed_314159\\VisualDrill_tracking_seed_314159.mp4",
+                    "longform":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_one_video_each_type\\20260929_140535\\03_longform\\c11c_geometric_waves_v1\\GeometricWaves_Longform_seed_314159\\GeometricWaves_Longform_seed_314159.mp4"
+                },
+    "generated_at":  "2026-09-29T12:07:54.2072395Z"
+}

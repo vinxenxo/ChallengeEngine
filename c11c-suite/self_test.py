@@ -165,6 +165,9 @@ assert "$Workers" in worker_batch
 assert "Tee-Object -FilePath $bootstrapLog | Out-Null" in worker_helper
 assert "$null = Initialize-C11CReviewWorkerProject" in worker_helper
 assert "Initialize-C11CReviewWorkerProject" in worker_helper
+batch_script = (ROOT / "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")
+assert "worker_bootstrap='per_worker_godot_headless_editor_class_scan'" in batch_script
+assert "worker_global_script_class_cache='required'" in batch_script
 for marker in ("global_script_class_cache.cfg", "PresentationProfile", "--headless", "--editor", "--quit"):
     assert marker in worker_helper, f"Worker class-cache bootstrap marker missing: {marker}"
 assert "c11c-studio" not in worker_helper.lower()

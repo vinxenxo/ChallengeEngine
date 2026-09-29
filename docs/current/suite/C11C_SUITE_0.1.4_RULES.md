@@ -6,41 +6,20 @@
 
 ## Launcher parity
 
-Every operational test/QA capability must have:
+Every operational test/QA capability must have a canonical implementation, direct console route, Suite/GUI route when appropriate, and current documentation.
 
-1. a canonical repository implementation;
-2. a direct console route;
-3. the relevant Suite/GUI route when appropriate;
-4. current documentation.
+## Worker concurrency
 
-`c11c-test/run_suite.bat` accepts `GODOT_BIN` when the user needs to select an explicit Godot executable.
+Art Direction `Workers=7` is genuine concurrency. Each worker owns a private temporary Godot project root, private `.godot` state and worker-local class-cache bootstrap. A global mutex or serial fallback is prohibited.
 
-## 2.19.5 Art Direction concurrency
+## Contract-test lifecycle
 
-The Art Direction batch keeps the requested `Workers=7` concurrency. A worker is not merely a logical queue slot: it owns an independent temporary Godot project root, including its own temporary `override.cfg` and `.godot` state.
+Command-line `SceneTree`/`MainLoop` tests must enter through the appropriate `_initialize()` lifecycle and explicitly terminate with `quit()` or an intentional MainLoop termination.
 
-A project-global mutex is prohibited because it converts the worker pool into serial execution.
+## Logical runner transient policy
 
-## Godot contract-test lifecycle
-
-Command-line Godot tests implemented with `extends SceneTree` / `extends MainLoop` must enter through `_initialize()` (or intentionally through `_init()` for tests designed for that lifecycle). They must terminate explicitly with `quit()` or an intentional MainLoop termination return. `_ready()` is a Node callback and is not the command-line MainLoop entrypoint.
-
-The 2.19.5 worker-isolation contract test is explicitly guarded by the Suite self-test against regression to `_ready()`.
-
-## Retired studio rule
-
-Operational `.py/.ps1/.bat/.cmd` sources under `c11c-suite/` must contain no `c11c-studio` dependency. The static Suite self-test enforces this.
+`tests/run_all.py` may retry only exact Windows `0xC06D007F` process exits. Explicit FAIL markers, fatal patterns, timeouts, missing PASS markers after exit 0, and other non-zero statuses remain failures.
 
 ## GUI / backend boundary
 
-The Suite and Producer remain orchestration surfaces. They do not implement mechanics, RNG, timing truth or gameplay calculations.
-
-## Validation
-
-Focused contracts precede the full logical corpus and the consolidated acceptance gate:
-
-```powershell
-python .\c11c-suite\self_test.py
-python .\tests\run_all.py
-.\FULL_ACCEPTANCE_C11C_2.19.5.ps1
-```
+The Suite and Producer are orchestration surfaces. They do not implement mechanics, RNG, timing truth or gameplay calculations.

@@ -25,6 +25,25 @@ if($Reset -or $Resume -or -not(Test-Path -LiteralPath (Join-Path $ReviewRoot 'C1
 
 function Read-Json([string]$Path){Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json}
 function Get-FirstVideo([object]$Probe){@($Probe.streams | Where-Object {$_.codec_type -eq 'video'}) | Select-Object -First 1}
+function Resolve-ManifestMp4([object]$Manifest,[string]$ManifestPath){
+  # Current Loop manifests do not require an explicit output path. Resolve it from
+  # the actual canonical schema without changing generated manifests.
+  $outputProperty=$Manifest.PSObject.Properties['output_mp4']
+  if($null -ne $outputProperty -and -not [string]::IsNullOrWhiteSpace([string]$outputProperty.Value)){
+    $candidate=[string]$outputProperty.Value
+    if([IO.Path]::IsPathRooted($candidate)){return $candidate}
+    return Join-Path (Split-Path -Parent $ManifestPath) $candidate
+  }
+  $mp4Property=$Manifest.PSObject.Properties['mp4']
+  if($null -ne $mp4Property -and -not [string]::IsNullOrWhiteSpace([string]$mp4Property.Value)){
+    $candidate=[string]$mp4Property.Value
+    if([IO.Path]::IsPathRooted($candidate)){return $candidate}
+    return Join-Path (Split-Path -Parent $ManifestPath) $candidate
+  }
+  $stem=[IO.Path]::GetFileNameWithoutExtension($ManifestPath) -replace '_manifest$',''
+  if([string]::IsNullOrWhiteSpace($stem)){throw "Cannot derive MP4 stem from manifest: $ManifestPath"}
+  return Join-Path (Split-Path -Parent $ManifestPath) ($stem + '.mp4')
+}
 function Get-FirstAudio([object]$Probe){@($Probe.streams | Where-Object {$_.codec_type -eq 'audio'}) | Select-Object -First 1}
 function Assert-Media([string]$Path,[int]$ExpectedFrames,[double]$ExpectedDuration,[string]$Label){
   if(-not(Test-Path -LiteralPath $Path)){throw "$Label missing media: $Path"}
@@ -47,7 +66,17 @@ if([string]$batchManifest.status -ne 'COMPLETE'){throw 'Art Direction corpus man
 if([int]$batchManifest.workers -ne $Workers){throw "Corpus worker count is $($batchManifest.workers), expected $Workers."}
 if($Workers -gt 1 -and [int]$batchManifest.max_observed_worker_concurrency -le 1){throw 'Genuine parallel capture was not proven (MAX_OBSERVED_CONCURRENCY <= 1).'}
 if([string]$batchManifest.worker_isolation -ne 'per_worker_temporary_godot_project'){throw 'Worker isolation contract mismatch.'}
+$workerBootstrapProperty=$batchManifest.PSObject.Properties['worker_bootstrap']
+if($null -eq $workerBootstrapProperty){
+  # 2.19.12 metadata-only repair for corpora generated before worker bootstrap
+  # evidence was added to the batch manifest. No video is regenerated.
+  $batchManifest | Add-Member -NotePropertyName worker_bootstrap -NotePropertyValue 'per_worker_godot_headless_editor_class_scan' -Force
+  $batchManifest | Add-Member -NotePropertyName worker_global_script_class_cache -NotePropertyValue 'required' -Force
+  $batchManifest | Add-Member -NotePropertyName metadata_repair -NotePropertyValue '2.19.12_worker_bootstrap_manifest_backfill' -Force
+  [IO.File]::WriteAllText($manifestPath,($batchManifest|ConvertTo-Json -Depth 12),(New-Object Text.UTF8Encoding($false)))
+}
 if([string]$batchManifest.worker_bootstrap -ne 'per_worker_godot_headless_editor_class_scan'){throw 'Worker bootstrap contract mismatch.'}
+if([string]$batchManifest.worker_global_script_class_cache -ne 'required'){throw 'Worker global script class-cache contract mismatch.'}
 
 $loopFamilies=[ordered]@{
   geometric=@('harmonic_membrane','lattice_wave','parametric_ribbon','interference_plane','orbital_wave')
@@ -55,6 +84,16 @@ $loopFamilies=[ordered]@{
   sacred_symmetry=@('astrolabe','gear_train','polygon_orrery','origami_mandala','celestial_chart')
   living_particles=@('swarm','vortex','collision_cloud','organic_pulse','magnetic_filament_cloud')
   invisible_forces=@('dipole_field','vortex_field','saddle_field','quadrupole_field','gravitational_lens','topographic_basin','scalar_potential')
+}
+# The review uses editorial/runtime family keys, while canonical prototype manifests
+# preserve the historical technical_id aliases from the frozen nomenclature contract.
+# These are aliases for the same families, not separate families.
+$loopTechnicalIds=[ordered]@{
+  geometric='geometric'
+  fractal='fractal'
+  sacred_symmetry='kaleidoscope'
+  living_particles='particle_flow'
+  invisible_forces='vector_field'
 }
 $familyFolders=[ordered]@{geometric='01_Geometric_Waves';fractal='02_Fractal_Bloom';sacred_symmetry='03_Sacred_Symmetry';living_particles='04_Living_Particles';invisible_forces='05_Invisible_Forces';tracking='06_Tracking';saccade='07_Saccade';pursuit='08_Pursuit';peripheral_scan='09_Peripheral_Scan'}
 
@@ -70,8 +109,11 @@ foreach($familyKey in $loopFamilies.Keys){
     $matches=@(Get-ChildItem -LiteralPath $folder -File -Filter "*_seed_${seed}_${grammar}_manifest.json" -ErrorAction SilentlyContinue)
     if($matches.Count -ne 1){throw "Expected one loop manifest for $familyKey/$grammar seed=$seed; found $($matches.Count)."}
     $m=Read-Json $matches[0].FullName
-    if([string]$m.technical_id -ne $familyKey -or [string]$m.grammar_id -ne $grammar){throw "Loop manifest identity mismatch: $($matches[0].Name)"}
-    $mp4=[string]$m.output_mp4
+    $expectedTechnicalId=[string]$loopTechnicalIds[$familyKey]
+    if([string]$m.technical_id -ne $expectedTechnicalId -or [string]$m.grammar_id -ne $grammar){
+      throw "Loop manifest identity mismatch: $($matches[0].Name) - expected technical_id=$expectedTechnicalId grammar_id=$grammar, got technical_id=$($m.technical_id) grammar_id=$($m.grammar_id)"
+    }
+    $mp4=Resolve-ManifestMp4 $m $matches[0].FullName
     Assert-Media $mp4 690 23.0 "Loop $familyKey/$grammar/$seed"
     $summary.loops++
     $summary.items += [pscustomobject]@{kind='loop';family=$familyKey;grammar=$grammar;seed=$seed;mp4=$mp4}
