@@ -162,6 +162,12 @@ assert "New-C11CReviewWorkerPool" in worker_batch
 assert "WorkerRoot" in worker_batch and "WorkerRoot" in worker_helper
 assert "Mutex" not in worker_batch and "Mutex" not in worker_helper
 assert "$Workers" in worker_batch
+assert "Tee-Object -FilePath $bootstrapLog | Out-Null" in worker_helper
+assert "$null = Initialize-C11CReviewWorkerProject" in worker_helper
+assert "Initialize-C11CReviewWorkerProject" in worker_helper
+for marker in ("global_script_class_cache.cfg", "PresentationProfile", "--headless", "--editor", "--quit"):
+    assert marker in worker_helper, f"Worker class-cache bootstrap marker missing: {marker}"
+assert "c11c-studio" not in worker_helper.lower()
 
 operational_code = "".join(
     p.read_text(encoding="utf-8-sig", errors="ignore")
@@ -174,8 +180,6 @@ assert "c11c-studio" not in operational_code.lower()
 
 # Current acceptance and documentation anchors.
 assert (ROOT / "FULL_ACCEPTANCE_C11C_2.19.12.ps1").exists()
-assert (ROOT / "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md").exists()
-assert (ROOT / "START_PROMPT_C11C_2.19_CONSOLIDATED.md").exists()
 assert (ROOT / "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md").exists()
 assert (ROOT / "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md").exists()
 assert (ROOT / "docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md").exists()

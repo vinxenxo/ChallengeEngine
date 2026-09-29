@@ -72,7 +72,15 @@ A checkpoint must state contract, reason, alternatives rejected, affected tests,
 
 `run_c11c_art_direction_batch_v4.ps1 -Workers 7` must execute genuinely concurrently. It uses one temporary Godot project root per worker. Each worker owns its own `override.cfg` and `.godot` state. There is no project-global mutex and no global serialization workaround.
 
-The retired `c11c-studio/` tree is not an operational surface and must not be updated. Active suite code/launchers live under `c11c-suite/`; operational suite launcher sources must not reference `c11c-studio`.
+`c11c-studio` is no longer part of the project. It is retained only as historical reference material; all active management is split into smaller suites under `c11c-suite/`. Do not recreate or update it. Active management is split into smaller suites under `c11c-suite/`; operational suite launcher sources must not depend on or invoke `c11c-studio`. Historical documentation may mention it only to explain the migration.
+
+## Permanent QA hygiene
+
+- Active PowerShell scripts use UTF-8 with exactly one BOM and ASCII-safe punctuation where practical.
+- Diagnostic fixtures may mention retired tools as negative-test data; launcher audits must not classify those fixtures as operational dependencies.
+- Every human-facing QA PowerShell runner has a canonical `.bat` wrapper under `c11c-suite/c11c-test/` with root normalization and exit-code propagation.
+- Human-facing compatibility names must delegate to the canonical wrapper instead of duplicating QA logic.
+- New QA/operational runners must be registered in the Suite surface before they are considered part of the project toolchain.
 
 ## Test discipline
 
@@ -89,3 +97,14 @@ Do not declare a new freeze until the candidate gate is green on the workstation
 ## D status
 
 D is blocked until C11-C 2.19.12 (or a later consolidated C11-C candidate) is formally accepted and frozen. The existing C11-D prompts are retained as historical planning material, not current authority.
+
+## Permanent repository/QA rules
+
+- Active PowerShell scripts: UTF-8 with exactly one BOM; avoid rich-text punctuation and Unicode dashes in executable code.
+- Use `${variable}` when PowerShell interpolation is adjacent to `:` or similar punctuation.
+- With `Set-StrictMode`, check optional JSON properties and `$LASTEXITCODE` existence before reading them.
+- Never discard `ffprobe` objects before their properties are consumed.
+- Resolve project root from `$PSScriptRoot`; every human-facing QA/maintenance runner has a Suite wrapper.
+- New QA/operational runners are registered in `c11c-suite` before use.
+- Worker review: seven private project roots, per-worker class-cache bootstrap, no shared `override.cfg`, no global mutex, no serial fallback, observed concurrency > 1 required.
+- Repair discipline: `FAIL -> reproduce -> locate -> compare 2.16.9 -> minimal change -> targeted test -> regression -> checkpoint`.

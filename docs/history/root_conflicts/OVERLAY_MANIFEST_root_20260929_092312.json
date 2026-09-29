@@ -1,0 +1,25 @@
+{
+  "schema": "C11-C-2.19.12-V9-ROOT-RELATIVE-OVERLAY",
+  "status": "QA_REPAIR_ONLY",
+  "files": [
+    "AGENTS.md",
+    "OVERLAY_README.md",
+    "OVERLAY_MANIFEST.json",
+    "c11c-suite/self_test.py",
+    "c11c-suite/c11c-maintenance/organize_repository_root.ps1",
+    "docs/current/c11c/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+    "docs/current/c11c/C11-C_2.19_PERMANENT_RULES.md",
+    "docs/current/c11c/C11-C_2.19_ROOT_ORGANIZATION.md",
+    "docs/current/c11c/C11-C_2.19_V9_CLOSURE_NOTES.md",
+    "tests/C11CParallelReviewWorkerIsolationContractTest.gd",
+    "tools/maintenance/verify_repository_layout.ps1",
+    "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1"
+  ],
+  "forbidden_changes": [
+    "core/",
+    "challenges/*.json",
+    "definitions/",
+    "profiles/",
+    "assets/"
+  ]
+}

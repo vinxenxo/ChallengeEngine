@@ -33,6 +33,8 @@ func _initialize() -> void:
     _assert(helper.find("C11C_ReviewWorkers_") >= 0, "Worker pool must use a unique temporary pool root.")
     _assert(helper.find("WorkerRoot") >= 0 or helper.find("worker_00") >= 0, "Helper must materialize private worker roots.")
     _assert(helper.find("override.cfg") >= 0, "Worker isolation must exclude global override.cfg state.")
+    _assert(helper.find("Tee-Object -FilePath $bootstrapLog | Out-Null") >= 0, "Worker bootstrap console output must not contaminate New-C11CReviewWorkerPool return value.")
+    _assert(helper.find("$null = Initialize-C11CReviewWorkerProject") >= 0, "Worker pool must suppress bootstrap helper return output.")
 
     if _failures == 0:
         print("[C11C_PARALLEL_REVIEW_WORKER_ISOLATION_CONTRACT_SUITE] PASS")

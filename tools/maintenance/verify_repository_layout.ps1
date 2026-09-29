@@ -45,7 +45,7 @@ $requiredDirs = @(
     'c11c-suite/c11c-catalog',
     'c11c-suite/c11c-maintenance',
     'c11c-suite/c11c-config',
-    'c11c-suite/c11c-producer',
+    'c11c-suite/c11c-producer'
 )
 
 $requiredFiles = @(
@@ -59,8 +59,9 @@ $requiredFiles = @(
     'release_gate.py',
     'schemas/challenge_schema.json',
     'tests/run_all.py',
-    'docs/current/c11c/C11-C_2.19.6_REPAIR_MANIFEST.json',
-    'FULL_ACCEPTANCE_C11C_2.19.6.ps1',
+    'docs/current/c11c/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md',
+    'docs/current/c11c/C11-C_2.19_REPAIR_MANIFEST.json',
+    'FULL_ACCEPTANCE_C11C_2.19.12.ps1',
     'tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1',
     'tests/C11CParallelReviewWorkerIsolationContractTest.gd',
     'tests/helpers/ArtifactPaths.gd',
@@ -90,13 +91,15 @@ $requiredFiles = @(
     'docs/master-prompts/MASTER_HANDOVER_C11_B_REPOSITORY_ORGANIZATION.md',
     'docs/master-prompts/START_PROMPT_C11C_ART_DIRECTION.md',
     'docs/contracts/C11_ARCHITECTURE_MANIFESTO.md',
-    'docs/current/c11c/C11-C_2.19.6_CONSOLIDATED_STATE.md',
-    'docs/current/c11c/C11-C_2.19.6_ACCEPTANCE_GATE.md',
+    'docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md',
+    'docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md',
     'docs/current/c11c/README.md',
     'docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md',
     'docs/current/d/D0_START_CHECKLIST.md',
-    'docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md',
-    'docs/master-prompts/START_PROMPT_C11C_2.19.6_CONSOLIDATED.md',
+    'docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md',
+    'docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md',
+    'c11c-suite/c11c-maintenance/organize_repository_root.ps1',
+    'c11c-suite/c11c-maintenance/organize_repository_root.bat',
     '.continue/rules/CONTINUE.md'
 )
 

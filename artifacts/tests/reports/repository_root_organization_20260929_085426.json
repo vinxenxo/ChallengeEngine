@@ -1,0 +1,211 @@
+﻿{
+    "entries":  [
+                    {
+                        "source":  "C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+                        "destination":  "docs/history/root_conflicts/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "C11-D_ROADMAP_V1.0_STATELESS.md",
+                        "destination":  "docs/history/root_conflicts/C11-D_ROADMAP_V1.0_STATELESS.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+                        "destination":  "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+                        "destination":  "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+                        "destination":  "docs/history/root_conflicts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "START_PROMPT_C11D_V1.0_STATELESS.md",
+                        "destination":  "docs/history/root_conflicts/START_PROMPT_C11D_V1.0_STATELESS.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "NEXT-PROMT.TXT",
+                        "destination":  "docs/history/root/NEXT-PROMT_root_legacy.txt",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt",
+                        "destination":  "docs/master-prompts/NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "FULL_ACEPTANCE_REF.md",
+                        "destination":  "docs/current/c11c/FULL_ACCEPTANCE_REFERENCE.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CANDIDATE_RECEIPT.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_CANDIDATE_RECEIPT.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CONTEXT_INDEX.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_CONTEXT_INDEX.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CONTEXT_PACK_README.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_CONTEXT_PACK_README.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_REPAIR_CANDIDATE_MANIFEST.json",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_REPAIR_CANDIDATE_MANIFEST.json",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_STATIC_VALIDATION_REPORT.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_STATIC_VALIDATION_REPORT.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "CHANGELOG_C11-C_2.19.12.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_changelogs/CHANGELOG_C11-C_2.19.12.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "README_C11C_2.19.12_EXCLUSIVE_BUGFIX_CANDIDATE.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/README_C11C_2.19.12_EXCLUSIVE_BUGFIX_CANDIDATE.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "README_C11C_2.19.12_FULL_CONTEXT_PACK.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/README_C11C_2.19.12_FULL_CONTEXT_PACK.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "README_C11C_2.19_CONSOLIDATED_CANDIDATE.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/README_C11C_2.19_CONSOLIDATED_CANDIDATE.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_PRODUCER_0.9.1_CONSOLE_TEST_COMMANDS.md",
+                        "destination":  "docs/history/producer/C11C_PRODUCER_0.9.1_CONSOLE_TEST_COMMANDS.md",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "OVERLAY_MANIFEST.json",
+                        "destination":  "artifacts/legacy/c11c_overlay_metadata/OVERLAY_MANIFEST.json",
+                        "action":  "CONFLICT",
+                        "reason":  "Destination exists with different SHA-256; source was not moved."
+                    },
+                    {
+                        "source":  "OVERLAY_SHA256.json",
+                        "destination":  "artifacts/legacy/c11c_overlay_metadata/OVERLAY_SHA256.json",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "OVERLAY_README.md",
+                        "destination":  "artifacts/legacy/c11c_overlay_metadata/OVERLAY_README.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "MANIFEST.txt",
+                        "destination":  "artifacts/legacy/c11c_overlay_metadata/MANIFEST.txt",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "tree.txt",
+                        "destination":  "artifacts/legacy/repository_inventories/tree.txt",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "CONTINUE.md",
+                        "destination":  "docs/history/root/CONTINUE_root_legacy.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "clean-videos.ps1",
+                        "destination":  "tools/maintenance/clean-videos.ps1",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "Make_zip.ps1",
+                        "destination":  "tools/maintenance/Make_zip.ps1",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "prepare_c11c_acceptance_workspace.ps1",
+                        "destination":  "tools/maintenance/prepare_c11c_acceptance_workspace.ps1",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    },
+                    {
+                        "source":  "clean-godot.ps1",
+                        "destination":  "docs/history/root/clean-godot_root_legacy.ps1",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    }
+                ],
+    "conflicts":  1,
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "schema":  "C11-C-ROOT-ORGANIZATION-V1",
+    "applied_changes":  0,
+    "planned_changes":  29,
+    "untouched_roots":  [
+                            "project.godot",
+                            "GeneradorMaestro.gd",
+                            "Main.tscn",
+                            "build_factory.py",
+                            "release_gate.py",
+                            "AGENTS.md",
+                            "README.md",
+                            ".continue",
+                            ".githooks",
+                            "core",
+                            "assets",
+                            "challenges",
+                            "definitions",
+                            "profiles",
+                            "schemas",
+                            "tests",
+                            "tools",
+                            "c11c-suite",
+                            "docs"
+                        ],
+    "apply":  false
+}

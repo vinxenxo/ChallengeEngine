@@ -11,6 +11,7 @@ $required=[ordered]@{
   'c11c-suite\c11c-test\run_all.bat'=@('C11C_PROJECT_ROOT','tests\run_all.py')
   'c11c-suite\c11c-test\run_suite.bat'=@('C11C_PROJECT_ROOT','--headless','--path')
   'c11c-suite\c11c-test\run_c11c_complete_review.bat'=@('C11C_PROJECT_ROOT','run_c11c_complete_video_review.ps1','-Workers 7')
+  'c11c-suite\c11c-test\run_c11c_complete_video_review.bat'=@('C11C_PROJECT_ROOT','run_c11c_complete_review.bat','cd /d')
   'c11c-suite\c11c-test\run_c11c_acceptance.bat'=@('C11C_PROJECT_ROOT','FULL_ACCEPTANCE_C11C_2.19.12.ps1')
   'c11c-suite\c11c-test\run_c11c_one_video_each_type.bat'=@('C11C_PROJECT_ROOT','run_c11c_one_video_each_type.ps1')
   'c11c-suite\c11c-test\run_c11c_focused_validation.bat'=@('C11C_PROJECT_ROOT','run_c11c_focused_validation.ps1')
@@ -30,7 +31,7 @@ foreach($rel in $required.Keys){
 }
 
 $suiteFiles=@(Get-ChildItem -LiteralPath (Join-Path $Root 'c11c-suite') -Recurse -File | Where-Object {$_.Extension.ToLowerInvariant() -in @('.py','.ps1','.bat','.cmd')})
-$studioRefs=@($suiteFiles | Where-Object {$_.Name -ne 'self_test.py' -and (Get-Content -Raw -LiteralPath $_.FullName -ErrorAction SilentlyContinue).Contains('c11c-studio')})
+$studioRefs=@($suiteFiles | Where-Object { $_.Name -notin @('self_test.py','test_powershell_parse.py') -and (Get-Content -Raw -LiteralPath $_.FullName -ErrorAction SilentlyContinue).Contains('c11c-studio') })
 if($studioRefs.Count -gt 0){throw ('Operational c11c-studio dependency detected: ' + (($studioRefs | ForEach-Object {$_.FullName}) -join '; '))}
 
 $alias=(Get-Content -Raw -LiteralPath (Join-Path $Root 'c11c-suite\c11c-maintenace\run.bat')).ToLowerInvariant()
