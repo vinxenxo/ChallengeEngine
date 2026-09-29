@@ -39,6 +39,21 @@ challenge_root = PROJECT / "challenges"
 challenge_paths = sorted(challenge_root.glob("CHALLENGE_[0-9][0-9][0-9].json"))
 assert len(challenge_paths) == 9, challenge_paths
 assert any(op[0] == "REVIEW_CHALLENGES" for op in schema.get("batch_operations", []))
+assert any(op[0] == "REVIEW_CHALLENGE_FAMILY_FAST" for op in schema.get("batch_operations", []))
+producer_main_text = (ROOT / "main.py").read_text(encoding="utf-8")
+review_marker = 'if recipe.operation == "REVIEW_CHALLENGES":'
+assert review_marker in producer_main_text
+review_start = producer_main_text.index(review_marker)
+review_block = producer_main_text[review_start:review_start + 500]
+assert "run_c11c_challenge_bulk_qa.ps1" in review_block
+assert "run_c11a1_challenge_bulk_qa.ps1" not in review_block
+
+fast_marker = 'if recipe.operation == "REVIEW_CHALLENGE_FAMILY_FAST":'
+assert fast_marker in producer_main_text
+fast_start = producer_main_text.index(fast_marker)
+fast_block = producer_main_text[fast_start:fast_start + 500]
+assert "run_c11c_challenge_family_smoke.ps1" in fast_block
+assert "CHALLENGE_003" in fast_block and "MIN_540" in fast_block
 assert (ROOT / "test_producer_gui_contract.py").exists()
 assert "ProcessStartInfo" in (ROOT / "run_visual_drill_production.ps1").read_text(encoding="utf-8-sig")
 assert "generator_stdout.log" in (ROOT / "run_visual_drill_production.ps1").read_text(encoding="utf-8-sig")
@@ -79,6 +94,8 @@ loop_text = loop_launcher.read_text(encoding="utf-8-sig")
 drill_text = drill_launcher.read_text(encoding="utf-8-sig")
 assert "DeliveryProfile" in loop_text
 assert "Resolve-DeliveryProfileData" in loop_text
+assert "revision='2.19.12'" in loop_text
+assert (PROJECT / "tools" / "qa" / "c11" / "run_c11c_family_coverage_smoke.ps1").exists()
 assert "DeliveryProfile" in drill_text
 assert "Resolve-DeliveryProfileData" in drill_text
 assert "-ar 48000" in drill_text
@@ -99,9 +116,11 @@ assert "KeepAvi" not in drill_text
 assert "temporary_avi" in drill_text
 assert "profiles\\presentation\\c11c_visual_hooks.json" in drill_text
 assert ".content.hook" not in drill_text
-assert "revision='2.19.1'" in drill_text and "revision='2.18.0'" in loop_text
+assert "revision='2.19.12'" in drill_text and "revision='2.19.12'" in loop_text
 assert "$TrackingGameplayDurationSeconds=21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_visual_drill_review.ps1").read_text(encoding="utf-8-sig")
 assert "TRACKING_GAMEPLAY_SECONDS: float = 21.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
+assert "DEFAULT_GAMEPLAY_SECONDS: float = 17.0" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
+assert "if not output_root.is_absolute_path():" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "C11CVisualDrillReviewEnvelopeGenerator.gd").read_text(encoding="utf-8")
 assert "New-C11CReviewWorkerPool" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")
 assert "WorkerRoot" in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")
 assert "Mutex" not in (PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1").read_text(encoding="utf-8-sig")

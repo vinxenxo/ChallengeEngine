@@ -19,7 +19,8 @@
   "backend_logic_modified": false,
   "suite_location": "c11c-suite/c11c-producer",
   "producer_version": "0.9.7",
-  "review_challenges_launcher": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1",
+  "review_challenges_launcher": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+  "review_challenge_family_fast_launcher": "c11c-suite/c11c-test/run_c11c_challenge_family_smoke.ps1",
   "queue_error_isolation": true,
   "avi_capture": "temporary_intermediate_only"
 }

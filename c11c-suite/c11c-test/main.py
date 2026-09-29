@@ -42,12 +42,21 @@ C11_COMMANDS = [
     ('ART DIRECTION LONGFORMS', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-Longforms'], '5 × 180s longforms.'),
     ('LONGFORM BULK', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production_bulk.ps1'], 'Canonical 5-family longform bulk production.'),
     ('REPOSITORY LAYOUT', 'ps', ['tools/maintenance/verify_repository_layout.ps1'], 'Repository structure contract.'),
-    ('C11-C 2.19.6 ACCEPTANCE', 'ps', ['FULL_ACCEPTANCE_C11C_2.19.6.ps1'], 'Consolidated C11-C candidate acceptance gate.'),
+    ('C11-C 2.19 CONSOLIDATED ACCEPTANCE', 'ps', ['FULL_ACCEPTANCE_C11C_2.19.12.ps1'], 'Consolidated C11-C 2.19.12 acceptance gate.'),
+    ('C11-C ACCEPTANCE LAUNCHER', 'bat', ['c11c-suite/c11c-test/run_c11c_acceptance.bat'], 'Canonical full acceptance launcher.'),
     ('C11-C REVIEW PREP', 'ps', ['tools/maintenance/prepare_c11c_acceptance_workspace.ps1', '-RotateAcceptanceRoots'], 'Quarantine prior acceptance outputs without deleting evidence.'),
     ('C11-C PARALLEL WORKER CONTRACT', 'godot', ['--headless', '--path', '.', '--script', './tests/C11CParallelReviewWorkerIsolationContractTest.gd'], 'Static contract for genuine parallel Art Direction worker isolation.'),
-    ('C11-C DOCS CONSOLIDATION', 'ps', ['tools/maintenance/consolidate_c11c_2_19_documentation.ps1'], 'Archive superseded 2.19.x patch docs into historical evidence.'),
-    ('C11-C FREEZE SEAL 2.19.6', 'ps', ['tools/c11freeze/finalize_c11c_2_19_6_freeze.ps1'], 'Seal the fully accepted C11-C 2.19.6 candidate.'),
-    ('SEED STRESS 32×2', 'python', ['tools/c11freeze/run_seed_stress.py'], 'Deterministic seed stress regression.'),
+    ('C11-C VISUAL DRILL ENVELOPE PATH CONTRACT', 'godot', ['--headless', '--path', '.', '--script', './tests/C11CVisualDrillReviewEnvelopePathContractTest.gd'], 'Static contract for absolute Visual Drill review envelope roots and 17s/21s durations.'),
+    ('C11-C FOCUSED VALIDATION', 'ps', ['tools/qa/c11/run_c11c_focused_validation.ps1'], 'Contratos enfocados + smoke de 3 vídeos; no ejecuta la revisión completa.'),
+    ('C11-C ONE VIDEO EACH TYPE', 'ps', ['tools/qa/c11/run_c11c_one_video_each_type.ps1'], 'Smoke físico de 3 vídeos: Visual Loop + Visual Drill + Longform.'),
+    ('C11-C POWERSHELL 5.1 PARSE AUDIT', 'python', ['c11c-suite/c11c-test/test_powershell_parse.py'], 'Parse active PowerShell QA and production scripts with Windows PowerShell 5.1.'),
+    ('C11-C FAMILY COVERAGE SMOKE', 'ps', ['tools/qa/c11/run_c11c_family_coverage_smoke.ps1'], 'Cobertura física completa de 23 productos: 5 Loops + 4 Drills + 9 Challenges + 5 Longforms.'),
+    ('C11-C CHALLENGE SMOKE', 'ps', ['c11c-suite/c11c-test/run_c11c_challenge_smoke.ps1'], 'Smoke físico rápido de Challenge: por defecto CHALLENGE_001, 60 FPS según definición, video-only y control de override.cfg.'),
+    ('C11-C CHALLENGE FAMILY FAST SMOKE', 'ps', ['c11c-suite/c11c-test/run_c11c_challenge_family_smoke.ps1'], 'Diagnóstico rápido de Challenges: por defecto CHALLENGE_003 + MIN_540; no sustituye la revisión completa 9x6.'),
+    ('C11-C SUITE LAUNCHER AUDIT', 'ps', ['tools/qa/c11/verify_c11c_suite_launchers.ps1'], 'Verify active suite launchers and retired studio separation.'),
+    ('C11-C COMPLETE VIDEO REVIEW', 'ps', ['tools/qa/c11/run_c11c_complete_video_review.ps1', '-Workers', '7', '-Reset'], 'Generate and validate the complete 52-video C11-C review corpus.'),
+    ('C11-C DOCS CONSOLIDATION', 'ps', ['tools/maintenance/consolidate_c11c_2_19_documentation.ps1'], 'Archive superseded 2.19.x documentation into historical evidence.'),
+    ('SEED STRESS 32x2', 'python', ['tools/c11freeze/run_seed_stress.py'], 'Deterministic seed stress regression.'),
 ]
 
 
@@ -181,7 +190,7 @@ class Window(QMainWindow):
             return
         name, kind, args, _description = C11_COMMANDS[row]
         final_args = list(args)
-        if name == 'SEED STRESS 32×2':
+        if name == 'SEED STRESS 32x2':
             final_args = [
                 'tools/c11freeze/run_seed_stress.py',
                 '--repeat', str(self.repeat.value()),
@@ -191,7 +200,9 @@ class Window(QMainWindow):
                 final_args += ['--limit', str(self.limit.value())]
         if name == 'FULL LOGICAL' and self.verbose.isChecked():
             final_args.append('--verbose')
-        if kind == 'ps':
+        if kind == 'bat':
+            self.start('cmd.exe', ['/c'] + final_args, name)
+        elif kind == 'ps':
             self.start(powershell(), ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File'] + final_args, name)
         elif kind == 'godot':
             self.start(godot_executable(), final_args, name)

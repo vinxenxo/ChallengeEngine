@@ -1,0 +1,4 @@
+C11-C 2.19.x - Minimal PowerShell Parse Audit Repair
+Files:
+- c11c-suite/c11c-test/test_powershell_parse.py
+Scope: QA/audit runner only.

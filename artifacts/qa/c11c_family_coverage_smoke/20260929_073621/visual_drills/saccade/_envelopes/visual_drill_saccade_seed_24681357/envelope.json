@@ -1,0 +1,86 @@
+{
+	"assets": {
+		"family_id": "fam_001"
+	},
+	"audio": {
+		"enabled": false,
+		"profile_id": "FAMILY_MUSIC_V4"
+	},
+	"authoring_version": "1.0",
+	"content_id": "C11C_REVIEW_SACCADE_T2",
+	"content_version": "1.0.0",
+	"engine_version": "4.7.1",
+	"kind": "visual_drill",
+	"payload": {
+		"distractors": [],
+		"duration": 17.0,
+		"exercise_parameters": {
+			"difficulty_tier": 2,
+			"generator": "saccade",
+			"pacing_mode": "constant",
+			"speed_multiplier": 1.0
+		},
+		"fps": 30,
+		"frame_count": 510,
+		"seed_motion": {
+			"angle_offset": 0.857208688273204,
+			"angle_step": 2.39996322973,
+			"enabled": true,
+			"family": "saccade",
+			"radius_base": 140.02872,
+			"radius_variation": 17.142028,
+			"seed": 24681357,
+			"version": "2.9.0"
+		},
+		"stimulus": {
+			"active": true,
+			"radius": 12.0,
+			"type": "dot",
+			"x": 270.0,
+			"y": 480.0
+		},
+		"targets": [
+			{
+				"highlighted": true,
+				"id": "t1",
+				"radius": 12.0,
+				"status": "active",
+				"x": 270.0,
+				"y": 480.0
+			}
+		],
+		"task": {
+			"mode": "discrete_relocation",
+			"target_id": "t1",
+			"type": "saccade"
+		},
+		"trajectory": {
+			"angle_offset": 0.857208688273204,
+			"angle_step": 2.39996322973,
+			"appear_ms": 200.0,
+			"distribution": "polar_golden_angle",
+			"max_jump_distance": 300.0,
+			"min_jump_distance": 180.0,
+			"position_radius": 140.0,
+			"profile": "polar_golden_angle_seeded_v1",
+			"radius_base": 140.02872,
+			"radius_variation": 17.142028,
+			"seed_authoring_version": "2.9.0",
+			"seed_spatial_variant": 231479,
+			"type": "polar_golden_angle",
+			"vanish_ms": 50.0
+		}
+	},
+	"presentation": {
+		"coordinate_space": "2d",
+		"profile_id": "social_default_v1"
+	},
+	"provenance": {
+		"author": "c11c_visual_drill_review",
+		"timestamp_ms": 0
+	},
+	"rng_version": "2.0",
+	"schema_version": "2.0",
+	"seed": 24681357,
+	"subtype": "saccade"
+}

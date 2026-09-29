@@ -2,7 +2,7 @@
 
 ## Entry state
 
-**C11-C 2.19.6 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN** is the exact input baseline.
+**C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN** is the exact input baseline.
 
 ## Step 0 — prove the starting repository
 

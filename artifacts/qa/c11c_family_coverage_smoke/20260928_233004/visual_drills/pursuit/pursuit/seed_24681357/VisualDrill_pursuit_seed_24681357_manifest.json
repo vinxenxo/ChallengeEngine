@@ -1,0 +1,62 @@
+{
+    "schema":  "C11-C-VISUAL-DRILL-REVIEW-V1",
+    "revision":  "2.19.12",
+    "backend_truth_revision":  "2.16.9",
+    "family":  "pursuit",
+    "seed":  24681357,
+    "route":  "visual_drill/pursuit",
+    "resolution":  "720x1280",
+    "fps":  30,
+    "duration_seconds":  17,
+    "gameplay_frame_count":  510,
+    "countdown_seconds":  3,
+    "countdown_frames":  90,
+    "end_cta_seconds":  3,
+    "end_cta_frames":  90,
+    "end_cta_main":  "¿LO CONSEGUISTE?",
+    "end_cta_sub":  "¿HASTA DÓNDE LLEGASTE?",
+    "hook":  "Una deformaciÃ³n de campo de baja frecuencia. Sigue el estÃ­mulo dominante.",
+    "hook_index":  3,
+    "hook_bank_version":  "1.3.0",
+    "cta_position":  "HEADER",
+    "footer_during_cta":  "VISIBLE",
+    "total_duration_seconds":  23,
+    "total_frame_count":  690,
+    "matrix_enabled":  true,
+    "editorial_layout":  "shared_c11c_social",
+    "audio_mode":  "FAMILY_MUSIC_V4",
+    "audio_profile":  "ORGANIC_BLOOM",
+    "audio_semantic_key":  "family=pursuit|seed=24681357",
+    "audio_master_sha256":  "99e0e2d9f8c52874a6c51b97efce552a16282e2f123a25982df7a4c1b1d89d68",
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "source_envelope":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260928_233004\\visual_drills\\pursuit\\_envelopes\\visual_drill_pursuit_seed_24681357\\envelope.json",
+    "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260928_233004\\visual_drills\\pursuit\\pursuit\\seed_24681357\\VisualDrill_pursuit_seed_24681357.mp4",
+    "gif":  null,
+    "export_gif":  false,
+    "keep_avi":  false,
+    "contact_sheet":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_family_coverage_smoke\\20260928_233004\\visual_drills\\pursuit\\pursuit\\seed_24681357\\contact_sheet.jpg",
+    "keyframes":  [
+                      "frame_001.png",
+                      "frame_002.png",
+                      "frame_003.png",
+                      "frame_004.png",
+                      "frame_005.png"
+                  ],
+    "ffprobe":  {
+                    "codec":  "h264",
+                    "width":  720,
+                    "height":  1280,
+                    "r_frame_rate":  "30/1",
+                    "nb_frames":  690,
+                    "duration_seconds":  23,
+                    "audio_streams":  1
+                },
+    "hashes":  {
+                   "mp4_sha256":  "a0f0c333c0f08f273e87b4cb14930203a1b9d9193129f657ec7b8389b8d22915",
+                   "envelope_sha256":  "8f3fd408487bd8e4d33f7e507e82099d3e22d953a5e48a011355bcd5c0c0251c"
+               }
+}

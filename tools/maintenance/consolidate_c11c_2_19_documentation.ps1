@@ -15,7 +15,6 @@ function Archive-One([string]$Source,[string]$RelativeDestination){
     $destination=Join-Path $HistoryRoot $RelativeDestination
     if(Test-Path -LiteralPath $destination){
         if(Same-File $Source $destination){
-            Write-Host "[C11C-DOCS] already archived: $RelativeDestination"
             if(-not $DryRun){Remove-Item -LiteralPath $Source -Force}
             return
         }
@@ -27,43 +26,44 @@ function Archive-One([string]$Source,[string]$RelativeDestination){
     Move-Item -LiteralPath $Source -Destination $destination -Force
 }
 
-# Current documentation must contain only the single active 2.19.6 authority.
+$CurrentMinor=12
+function Test-Prior219([string]$Name){
+    $m=[regex]::Match($Name,'2\.19\.(\d+)')
+    if(-not $m.Success){ return $false }
+    return ([int]$m.Groups[1].Value -lt $CurrentMinor)
+}
+
 foreach($rootName in @('docs\current\c11c','docs\master-prompts')){
     $root=Join-Path $ProjectRoot $rootName
     if(-not(Test-Path -LiteralPath $root)){continue}
     foreach($file in @(Get-ChildItem -LiteralPath $root -File -Recurse -ErrorAction SilentlyContinue)){
-        $name=$file.Name
-        if($name -match '2\.19\.[0-5]' -or $name -match '2\.19\.x'){
+        if($file.Name -in @('C11-C_2.19_CONSOLIDATED_STATE.md','C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md','C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md','C11-C_2.19_COMMAND_SHEET.md','C11-C_2.19_DOCUMENTATION_INDEX.md')){ continue }
+        if((Test-Prior219 $file.Name)){
             $relative=$file.FullName.Substring($root.Length+1)
-            Archive-One $file.FullName (Join-Path ('current_snapshots\' + $rootName.Replace('\\','_')) $relative)
+            Archive-One $file.FullName (Join-Path ('current_snapshots\' + $rootName.Replace('\','_')) $relative)
         }
-        elseif($rootName -eq 'docs\master-prompts' -and $name -match 'C11C_PRODUCER_.*2026-09-2[5-7]'){
-            $relative=$file.Name
-            Archive-One $file.FullName (Join-Path 'producer_legacy_prompts' $relative)
+        elseif($rootName -eq 'docs\master-prompts' -and $file.Name -match 'C11C_PRODUCER_.*2026-09-2[5-7]'){
+            Archive-One $file.FullName (Join-Path 'producer_legacy_prompts' $file.Name)
         }
     }
 }
 
-# Root continuity files: preserve the newest 2.19.6 set, archive older 2.19.x.
 foreach($file in @(Get-ChildItem -LiteralPath $ProjectRoot -File -Filter '*2.19.*' -ErrorAction SilentlyContinue)){
-    if($file.Name -match '2\.19\.[0-5]'){ Archive-One $file.FullName (Join-Path 'root_context' $file.Name) }
+    if((Test-Prior219 $file.Name)){Archive-One $file.FullName (Join-Path 'root_context' $file.Name)}
 }
 foreach($file in @(Get-ChildItem -LiteralPath $ProjectRoot -File -Filter 'NEXT_PROMPT_C11C_2.19.*' -ErrorAction SilentlyContinue)){
-    if($file.Name -ne 'NEXT_PROMPT_C11C_2.19.6.txt'){ Archive-One $file.FullName (Join-Path 'root_context' $file.Name) }
+    if($file.Name -notmatch 'CONSOLIDATED' -and (Test-Prior219 $file.Name)){Archive-One $file.FullName (Join-Path 'root_context' $file.Name)}
 }
 
-# Producer context prompts live under the canonical Suite surface. Keep exactly one current dated pair.
+# Legacy dated Producer prompts stay historical; the active pair is updated separately in c11c-suite/c11c-producer.
 $producerRoot=Join-Path $ProjectRoot 'c11c-suite\c11c-producer'
 if(Test-Path -LiteralPath $producerRoot){
     foreach($file in @(Get-ChildItem -LiteralPath $producerRoot -File -Filter 'C11C_PRODUCER_MASTER_HANDOVER_2026-09-*.md' -ErrorAction SilentlyContinue)){
-        if($file.Name -ne 'C11C_PRODUCER_MASTER_HANDOVER_2026-09-28.md'){ Archive-One $file.FullName (Join-Path 'producer_legacy_prompts' $file.Name) }
+        if($file.Name -ne 'C11C_PRODUCER_MASTER_HANDOVER_2026-09-28.md'){Archive-One $file.FullName (Join-Path 'producer_legacy_prompts' $file.Name)}
     }
     foreach($file in @(Get-ChildItem -LiteralPath $producerRoot -File -Filter 'C11C_PRODUCER_START_PROMPT_2026-09-*.md' -ErrorAction SilentlyContinue)){
-        if($file.Name -ne 'C11C_PRODUCER_START_PROMPT_2026-09-28.md'){ Archive-One $file.FullName (Join-Path 'producer_legacy_prompts' $file.Name) }
+        if($file.Name -ne 'C11C_PRODUCER_START_PROMPT_2026-09-28.md'){Archive-One $file.FullName (Join-Path 'producer_legacy_prompts' $file.Name)}
     }
 }
-
-# Historical standalone 2.19 release notes and manifests already archived elsewhere are retained.
-Write-Host '[C11C-DOCS] 2.19 consolidation complete: one active 2.19.6 authority, older snapshots historical.'
-Write-Host "[C11C-DOCS] Historical archive: $HistoryRoot"
-if($DryRun){Write-Host '[C11C-DOCS] DRY RUN — no files moved.'}
+Write-Host '[C11C-DOCS] 2.19 documentation consolidation complete; prior numeric 2.19.x material is historical and the unversioned consolidated 2.19 set remains active.'
+if($DryRun){Write-Host '[C11C-DOCS] DRY RUN - no files moved.'}

@@ -1,5 +1,7 @@
-# C11-C 2.19.6 current documentation
+# C11-C Current Documentation
 
-`C11-C_2.19.6_CONSOLIDATED_STATE.md` is the active state authority.
+**Canonical active state: C11-C 2.19.5 consolidated repair candidate — NOT FROZEN.**
 
-The current repair is the per-worker Godot class-cache bootstrap required after excluding source `.godot` from the isolated worker copies. It preserves real `Workers=7` capture concurrency and does not introduce a global mutex.
+Read `C11-C_2.19.5_CONSOLIDATED_STATE.md` and `C11-C_2.19.5_ACCEPTANCE_GATE.md` first.
+
+The 2.19 branch is consolidated under a single current authority. Earlier 2.19.0–2.19.4 documents remain historical evidence under `docs/history/c11c/`.

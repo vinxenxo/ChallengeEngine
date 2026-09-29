@@ -1,8 +1,8 @@
-﻿# Roadmap — C11-C 2.19.6 Candidate → Final C11-C Freeze → D
+﻿# Roadmap — C11-C 2.19.5 Candidate → Final C11-C Freeze → D
 
 ## Current gate
 
-C11-C is at **2.19.6 consolidated repair candidate** status. The old 2.19.2 freeze claim is superseded for final-freeze purposes. The immediate objective is one consolidated workstation acceptance, not another patch chain.
+C11-C is at **2.19.5 consolidated repair candidate** status. The old 2.19.2 freeze claim is superseded for final-freeze purposes. The immediate objective is one consolidated workstation acceptance, not another patch chain.
 
 ## Acceptance sequence
 

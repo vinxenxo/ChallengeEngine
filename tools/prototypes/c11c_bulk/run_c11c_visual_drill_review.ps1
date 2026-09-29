@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$false)]
     [int[]]$Seeds = @(12345,54321,314159,7770001,998877),
     [switch]$ResetReviewAssets,
@@ -385,7 +385,8 @@ try {
 
             $manifest=[ordered]@{
                 schema='C11-C-VISUAL-DRILL-REVIEW-V1'
-                revision='2.16.9'
+                revision='2.19.12'
+                backend_truth_revision='2.16.9'
                 family=$family
                 seed=$seed
                 route='visual_drill/' + $family
@@ -435,7 +436,8 @@ try {
 
 $rootManifest=[ordered]@{
     schema='C11-C-VISUAL-DRILL-REVIEW-CATALOG-V1'
-    revision='2.16.9'
+    revision='2.19.12'
+    backend_truth_revision='2.16.9'
     status='COMPLETE'
     family_count=$Drills.Count
     seed_count=$Seeds.Count

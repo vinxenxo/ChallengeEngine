@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)]
     [ValidateSet('c11c_geometric_waves_v1','c11c_fractal_bloom_v1','c11c_sacred_symmetry_v1','c11c_living_particles_v1','c11c_invisible_forces_v1')]
@@ -149,7 +149,7 @@ if($NoFooter){$repro+=' -NoFooter'}
 if($ExportGif){$repro+=' -ExportGif'}
 if($KeepAvi){$repro+=' -KeepAvi'}
 $prodManifest=[ordered]@{
-    schema='C11-C-PRODUCTION-PRODUCT-V3'; revision='2.18.0'; status='FINAL_PRODUCT'; product_id=$productId; family=$Family; seed=$Seed
+    schema='C11-C-PRODUCTION-PRODUCT-V3'; revision='2.19.12'; status='FINAL_PRODUCT'; product_id=$productId; family=$Family; seed=$Seed; backend_truth_revision='2.16.9'
     grammar_id=if([string]::IsNullOrWhiteSpace($Grammar)){[string]$sourceManifest.grammar_id}else{$Grammar}
     grammar_name=if([string]::IsNullOrWhiteSpace($Grammar)){[string]$sourceManifest.grammar}else{$Grammar}
     created_utc=[DateTime]::UtcNow.ToString('o'); source_canvas='720x1280'; canvas="${deliveryWidth}x${deliveryHeight}"; delivery_profile=$DeliveryProfile

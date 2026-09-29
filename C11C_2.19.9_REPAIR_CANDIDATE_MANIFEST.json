@@ -1,0 +1,217 @@
+{
+  "revision": "2.19.9",
+  "status": "REPAIR_CANDIDATE_NOT_FROZEN",
+  "file_count": 42,
+  "files": [
+    {
+      "path": "C11C_2.19.9_CANDIDATE_RECEIPT.md",
+      "bytes": 592,
+      "sha256": "4326d674f22219744606bd13ba6e60a5ac39b51c4f0b590c84f11d33f4cf7843"
+    },
+    {
+      "path": "C11C_2.19.9_CONTEXT_INDEX.md",
+      "bytes": 1355,
+      "sha256": "c408046bd4ba72b3f5c90b244cb29bde0a8fe4957db5b27148d1bfda24e273b8"
+    },
+    {
+      "path": "C11C_2.19.9_CONTEXT_PACK_README.md",
+      "bytes": 431,
+      "sha256": "e10b4412fe5b346439c50c1df3ca417b4ea923faa6ec358a31b6bc376cd78e03"
+    },
+    {
+      "path": "C11C_2.19.9_STATIC_VALIDATION_REPORT.md",
+      "bytes": 1215,
+      "sha256": "c153786f8e7ab717dcb8427b58d0e00d4a168b17a41ad6861f2d002277593c32"
+    },
+    {
+      "path": "CHANGELOG_C11-C_2.19.9.md",
+      "bytes": 2506,
+      "sha256": "cd8cc6e84878051070b2be84112eabfc9867991d1f1f9fe2ec2cb7f02e30e9be"
+    },
+    {
+      "path": "FULL_ACCEPTANCE_C11C_2.19.9.ps1",
+      "bytes": 4434,
+      "sha256": "897f16851b45c72dc2afb4b16fb02dfb2c322ad9b24d36e4d78268aca19ce14e"
+    },
+    {
+      "path": "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 3252,
+      "sha256": "a87535ffa0f05fed8f6574bef620199d135a9c18ffcd19582d7b9de57cee6c40"
+    },
+    {
+      "path": "NEXT-PROMT.TXT",
+      "bytes": 2485,
+      "sha256": "42d4e37529ff49d81ccfa28c5e785a912a33aff2ff5426fc3a11b8b6e2ccc243"
+    },
+    {
+      "path": "NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt",
+      "bytes": 2485,
+      "sha256": "42d4e37529ff49d81ccfa28c5e785a912a33aff2ff5426fc3a11b8b6e2ccc243"
+    },
+    {
+      "path": "README_C11C_2.19.9_CONSOLIDATED_CANDIDATE.md",
+      "bytes": 1200,
+      "sha256": "1502c38675d3110b34b1479d3e673b7fa803e381c1736b1fe5fca8bd531bb9a9"
+    },
+    {
+      "path": "START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 2488,
+      "sha256": "4e05d1d4fd3b3c8dc42f76be6c9416db827f5ae667d045865a052a66939d168b"
+    },
+    {
+      "path": "c11c-suite/__pycache__/self_test.cpython-313.pyc",
+      "bytes": 8315,
+      "sha256": "8bf73fedaa06f5ba3d0fbc20b3c4d2efb9c2ef7f005309330e410aa650a91333"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11C_PRODUCER_MASTER_HANDOVER_2026-09-28.md",
+      "bytes": 233,
+      "sha256": "8bb36a21ee9166668a1745257b64c6762468b7620728ccc24445178748e9b63e"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11C_PRODUCER_START_PROMPT_2026-09-28.md",
+      "bytes": 252,
+      "sha256": "07bebf41cdd698013d6d5ca9bbdc53a56dd1474be17f9325849d5982c0bf65fe"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/__pycache__/self_test.cpython-313.pyc",
+      "bytes": 9320,
+      "sha256": "1bb133532053db8eade5b2e005757cfc12f0369a7e053de721b266579450b1c5"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/self_test.py",
+      "bytes": 6901,
+      "sha256": "de836a66a106d62365c0f9f90d6544ea6980f19328e81a52e23b1ff2759c7a6e"
+    },
+    {
+      "path": "c11c-suite/c11c-test/__pycache__/main.cpython-313.pyc",
+      "bytes": 16115,
+      "sha256": "13f92b6877549ac789b9cffee4d5cf44044c7defefae5745a9563bacbedd8dd2"
+    },
+    {
+      "path": "c11c-suite/c11c-test/main.py",
+      "bytes": 10126,
+      "sha256": "60c6171a8847f3a54e7e4b1baef60532fdb1eeb512d3aa23941af5d4e60f6614"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_c11c_acceptance.bat",
+      "bytes": 220,
+      "sha256": "c5d331f189b2b08e8ac582b66e13cb67a8b852372e40aacf5cd67ec6202d922a"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_c11c_complete_review.bat",
+      "bytes": 254,
+      "sha256": "4003ecd1b9ff18700847b12219252cff3c7e7529ec1e18bb42ca562fb43dd087"
+    },
+    {
+      "path": "c11c-suite/self_test.py",
+      "bytes": 6030,
+      "sha256": "62a142deb3c4b6a5569ebf322ba6f3496a28d720d79e8c9e9b287f3afd8bb2ba"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md",
+      "bytes": 1642,
+      "sha256": "1c7852a61f729b6042cfdf64f75b5ea4e34fb232182d237f1d594858fbfb97e7"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md",
+      "bytes": 950,
+      "sha256": "9bb9b0e3c8ad6a345bd505e6adb7a931c4f8e29985c6a720a85c07146448f652"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md",
+      "bytes": 816,
+      "sha256": "d888420130726fb7207bef6125da3714e166a98ecf0462d815cdb68ed0924a55"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md",
+      "bytes": 4101,
+      "sha256": "c0c469b6047dc43ecf2c2eea1825d1998b72db7e3d9e4f353dc58104c1b92528"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md",
+      "bytes": 651,
+      "sha256": "8c4080fa054c1806b1a467d94f9f1b506451d02dc9b4d7c1c47e7e20677559d5"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_FREEZE_COMMANDS.md",
+      "bytes": 458,
+      "sha256": "97a9a0ee10cf9abd8f1e4298439fa41d70c454b89dd664a70f652b72589de600"
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "bytes": 318,
+      "sha256": "1cb7171abe602c5013fa3a3a2f8c43237635d47817901c20f3be861d394593dd"
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.4_RULES.md",
+      "bytes": 465,
+      "sha256": "5adc8527fc0ecbd8768b394513473440e93e81fd5b027e37a60aea81876f4478"
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+      "bytes": 1622,
+      "sha256": "1d99c396ec5332275a8c7f02aef6458afdfce2f6638273241922c9fdaa3760f1"
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 3252,
+      "sha256": "a87535ffa0f05fed8f6574bef620199d135a9c18ffcd19582d7b9de57cee6c40"
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 2488,
+      "sha256": "4e05d1d4fd3b3c8dc42f76be6c9416db827f5ae667d045865a052a66939d168b"
+    },
+    {
+      "path": "tests/C11CVisualDrillReviewEnvelopePathContractTest.gd",
+      "bytes": 2443,
+      "sha256": "54ee0920050176eb7d0f0c8dab1966602e2640a56cfcf9ad8b1805e32e2f4986"
+    },
+    {
+      "path": "tests/__pycache__/run_all.cpython-313.pyc",
+      "bytes": 22787,
+      "sha256": "2b29fddf3a1b38891d87365a0830d48b485489cf75e003d08e1dd953658bbfda"
+    },
+    {
+      "path": "tests/run_all.py",
+      "bytes": 18926,
+      "sha256": "19711b70d2a152d9c0eaa1a1b6d206f33ea4668929276ef76e9d3c642d6a5cbd"
+    },
+    {
+      "path": "tools/maintenance/consolidate_c11c_2_19_documentation.ps1",
+      "bytes": 3683,
+      "sha256": "ff0630e14ca7c7cd57c318b3912182075337ac66b5ed3547c314f9113a9bfa0e"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1",
+      "bytes": 2291,
+      "sha256": "76f4f28311e842cfe09a1b41b8871ba17e0d6a9847f1dbf4cae2b0a3d8d17d2b"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/C11CVisualDrillReviewEnvelopeGenerator.gd",
+      "bytes": 8291,
+      "sha256": "2f907c35d322650b525414a94c616f49e7a7eeb171259357c38a303a8738ce9b"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+      "bytes": 20917,
+      "sha256": "2230766e278c5f30824ab074f3b3771d6c04eedea1bbf6a8f23f6d5ab4361f98"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
+      "bytes": 26836,
+      "sha256": "d6c15279a5355f590356acf99cabaf7f2b2c8fc04c8153fbef37c01ff5a4322f"
+    },
+    {
+      "path": "tools/qa/c11/run_c11c_complete_video_review.ps1",
+      "bytes": 8408,
+      "sha256": "fb4c9326b24f62943605c7f4d8e533220ac0dce1e6213780d5ba8074c580389b"
+    },
+    {
+      "path": "tools/qa/c11/verify_c11c_suite_launchers.ps1",
+      "bytes": 2531,
+      "sha256": "8f94a850a9e634ee9b0af6dbf1b53009adb9885bc4ef8355afb6a6d47fc57c9e"
+    }
+  ]
+}

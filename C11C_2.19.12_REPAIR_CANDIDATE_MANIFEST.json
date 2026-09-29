@@ -1,0 +1,52 @@
+{
+  "name": "C11-C 2.19.12 — EXCLUSIVE BUGFIX REPAIR CANDIDATE",
+  "status": "NOT_FROZEN",
+  "source": "C11C_2.19.11_REPAIR_CANDIDATE_CONSOLIDATED",
+  "scope": "exclusive_tooling_bugfixes_only",
+  "fixes": [
+    "c11c-suite/c11c-producer/test_gui_contract.bat -> test_producer_gui_contract.py",
+    "C11CReviewWorkerIsolation: expose WorkerRoot and consume WorkerRoot in Art Direction scheduler"
+  ],
+  "preserved": [
+    "real_7_worker_concurrency",
+    "private_worker_project_roots",
+    "no_global_mutex",
+    "no_serial_fallback",
+    "c11c-suite_authority",
+    "c11c-studio_retired"
+  ],
+  "immutable_boundaries": [
+    "C11-B simulation truth",
+    "RNG ownership",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C7 audio contracts",
+    "C9 semantics",
+    "logical 540x960 social geometry"
+  ],
+  "files": [
+    "c11c-suite/c11c-producer/test_gui_contract.bat",
+    "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1",
+    "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1",
+    "C11C_2.19.12_CANDIDATE_RECEIPT.md",
+    "C11C_2.19.12_CONTEXT_INDEX.md",
+    "C11C_2.19.12_CONTEXT_PACK_README.md",
+    "C11C_2.19.12_STATIC_VALIDATION_REPORT.md",
+    "CHANGELOG_C11-C_2.19.12.md",
+    "README_C11C_2.19.12_EXCLUSIVE_BUGFIX_CANDIDATE.md",
+    "docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md",
+    "docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md",
+    "docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md",
+    "docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md",
+    "docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md",
+    "docs/current/c11c/C11-C_2.19_FREEZE_COMMANDS.md",
+    "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+    "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+    "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+    "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+    "START_PROMPT_C11C_2.19_CONSOLIDATED.md"
+  ]
+}

@@ -1,52 +1,44 @@
-# START PROMPT — Challenge Engine V1.0 STATELESS — D
+# START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.19.5
 
-Continue `ChallengeEngineV01_STATELESS` from the exact repository state frozen at **C11-C 2.18.x**.
+Continue the ChallengeEngineV01_STATELESS project from:
+**C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN.**
 
-## First reads
+Read first:
 
-Read in this order:
+1. `AGENTS.md`
+2. `docs/current/c11c/C11-C_2.19_CURRENT_STATE.md`
+3. `docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md`
+4. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
+5. `MASTER_HANDOVER_C11D_V1.0_STATELESS.md`
 
-1. `docs/master-prompts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md`
-2. `docs/current/c11c/C11-C_2.18.x_FROZEN_CURRENT_STATE.md`
-3. `docs/current/c11c/C11-C_2.18.x_FREEZE_ACCEPTANCE.md`
-4. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
-5. `docs/current/d/D0_MIGRATION_MAP.md`
-6. `docs/current/00_PROJECT_OVERVIEW.md` through `docs/current/07_ROADMAP.md`
-7. `docs/current/suite/C11C_SUITE_0.1.3_RULES.md`
-8. `docs/history/` only where a recovery dossier requires historical evidence.
+## Mandatory current decisions
 
-## Immediate task order
+- Preserve genuine Art Direction parallelism. `-Workers 7` must remain functional.
+- The batch owns one 720x1280 Movie Maker override for the whole parallel stage.
+- Workers inherit `C11C_SHARED_MOVIE_OVERRIDE=1` and never mutate/remove project-root `override.cfg`.
+- Do not serialize workers as a workaround.
+- The two review contract tests are source-only and must terminate without render processes.
+- `run_suite.bat` is bounded at 120 seconds.
+- `c11c-suite` is canonical.
+- `c11c-studio` is retired and must not be updated or used.
+- `c11c-maintenace` is compatibility-only and delegates to `c11c-maintenance`.
 
-### D0
-Inventory the frozen C repository, manifests, assets, profiles, docs and seeds without modifying frozen contracts.
+## First commands
 
-### D1
-Recover `CHALLENGE_001` … `CHALLENGE_009`, build intent/asset dossiers, then create the Challenge visual parity contract.
+```powershell
+python .\c11c-suite\self_test.py
+python .\c11c-suite\c11c-producer\self_test.py
+.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C11CVisualDrillReviewEnvelopePathContractTest.gd
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\verify_c11c_suite_launchers.ps1
+```
 
-### D2
-Design the versioned interchangeable asset-family/template system for the retro Atari-2600-inspired Challenge layer.
+Then follow `docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md`.
 
-### D3
-Design Procedural Music V5 before implementation.
+## No micro-patch cycle
 
-### D4
-Design the declarative per-video production request and personalization model.
+Any further defect found in this acceptance cycle must be consolidated into the current 2.19.x candidate and reflected in current-state, acceptance and handover documentation. Do not restart a one-file patch chain.
 
-### D5
-Design artifact topology and seed registry.
+## Freeze condition
 
-Only after D1–D5 have stable contracts should broad Challenge propagation and new mechanics be scheduled.
-
-## Test discipline
-
-For every new test or operational script:
-
-- register it with the canonical test/runner surface;
-- expose it in `c11c-suite/c11c-test` or the relevant GUI;
-- provide a direct console launcher;
-- document its evidence;
-- run the focused test first and full regression second.
-
-## Safety against scope drift
-
-Do not use D as an excuse to “clean up” frozen C internals. Prefer adapters, declarative registries, presentation bindings and orchestration layers until a contract explicitly requires a new engine checkpoint.
+No freeze while a direct test hangs, launcher verification fails, workers are serialized, a launcher references `c11c-studio`, or a 720x1280 review worker records 540x960.

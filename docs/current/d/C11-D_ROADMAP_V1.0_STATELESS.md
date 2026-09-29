@@ -1,6 +1,6 @@
-# Challenge Engine V1.0 STATELESS — D Roadmap
+﻿# Challenge Engine V1.0 STATELESS — D Roadmap
 
-**Exact entry baseline: C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN.**
+**Exact entry baseline: C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN.**
 
 D is an additive productization branch around the frozen C11-C backend. C11-C is immutable input unless a named D checkpoint explicitly reopens a contract.
 
@@ -67,4 +67,4 @@ No D implementation may modify without checkpoint:
 
 ## D activation rule
 
-This roadmap is retained for planning. D execution starts only after C11-C 2.19.6 (or a later consolidated C11-C candidate) is formally accepted and frozen.
+This roadmap is retained for planning. D execution starts only after C11-C 2.19.5 (or a later consolidated C11-C candidate) is formally accepted and frozen.

@@ -1,9 +1,15 @@
-AUTHORITATIVE NEXT CONTEXT — C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN
+C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NEW CONTEXT POINTER
 
-The 7-worker runtime is already proven. The last failure was a false-negative ordering assertion in C11CParallelReviewWorkerIsolationContractTest.gd. The repaired test compares actual call sites.
+Use these as the current context documents:
+AGENTS.md
+MASTER_HANDOVER_C11D_V1.0_STATELESS.md
+START_PROMPT_C11D_V1.0_STATELESS.md
+docs/current/c11c/C11-C_2.19_CURRENT_STATE.md
+docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md
+docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md
 
-Read: C11C_2.19.6_CONTEXT_INDEX.md, AGENTS.md, docs/master-prompts/MASTER_HANDOVER_C11C_2.19.6_CONSOLIDATED.md, docs/master-prompts/START_PROMPT_C11C_2.19.6_CONSOLIDATED.md.
-
-Run: static verifier -> focused worker contract -> Art Direction -Workers 7 -Loops -Reset -> tests/run_all.py -> FULL_ACCEPTANCE_C11C_2.19.6.ps1.
-
-Never introduce a mutex or one-at-a-time capture. c11c-suite is active; c11c-studio is retired.
+Status: NOT FROZEN.
+Canonical suite: c11c-suite.
+Retired: c11c-studio — do not update/use.
+Parallel Art Direction: Workers=7-capable, parent-owned shared 720x1280 override.
+Further repairs: consolidate, document and retest; do not create another micro-patch chain.

@@ -40,7 +40,10 @@ function Get-ExpectedTimeline {
     if($fps -le 0){throw 'video.fps debe ser > 0.'}
     $hook=ToFrames ([double]$Video.hook_duration) $fps
     $game=ToFrames ([double]$Video.game_duration) $fps
-    $reveal=ToFrames ([double]$Video.reveal_duration) $fps
+    $revealSeconds=0.0
+    $revealProperty=$Video.PSObject.Properties['reveal_duration']
+    if($null -ne $revealProperty){$revealSeconds=[double]$revealProperty.Value}
+    $reveal=ToFrames $revealSeconds $fps
     $cta=ToFrames ([double]$Video.cta_duration) $fps
     return [pscustomobject]@{fps=$fps;hook_frames=$hook;game_frames=$game;reveal_frames=$reveal;cta_frames=$cta;total_frames=$hook+$game+$reveal+$cta}
 }

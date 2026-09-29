@@ -1,0 +1,44 @@
+{
+	"authored": {
+		"answer_sheet": {
+			"distractor_count": 7,
+			"distractor_frame_starts": [
+				121,
+				167,
+				191,
+				234,
+				308,
+				393,
+				455
+			],
+			"threat_count": 5,
+			"threat_frame_starts": [
+				42,
+				79,
+				282,
+				339,
+				413
+			]
+		},
+		"seed": 24681357,
+		"task_summary": {
+			"distractor_count": 7,
+			"sizygia_count": null,
+			"threat_count": 5,
+			"type": "peripheral_scan"
+		},
+		"trajectory": {
+			"coordinate_space": "normalized_body_0_1_min_dimension",
+			"profile": "polar_logistic_orbits_seeded_v1",
+			"type": "polar_logistic_orbits"
+		},
+		"variation_version": "VisualDrillSeedVariation/2.9.0"
+	},
+	"authoring_version": "1.0",
+	"custom_parameters": {},
+	"difficulty_tier": 2,
+	"domain_family": "visual_drill",
+	"duration_seconds": 17.0,
+	"fps": 30,
+	"subtype": "peripheral_scan"
+}

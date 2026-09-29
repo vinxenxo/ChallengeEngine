@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)][ValidatePattern('^CHALLENGE_[0-9]{3}$')][string]$ChallengeId,
     [Parameter(Mandatory=$true)][ValidateRange(1,2147483646)][int]$Seed,
@@ -36,7 +36,10 @@ function Convert-ToFrames {
 # Legacy total_duration, when present in old definitions, is intentionally ignored.
 $hookFrames=Convert-ToFrames ([double]$video.hook_duration) $fps
 $gameFrames=Convert-ToFrames ([double]$video.game_duration) $fps
-$revealFrames=Convert-ToFrames ([double]$video.reveal_duration) $fps
+$revealDuration=0.0
+$revealProperty=$video.PSObject.Properties['reveal_duration']
+if($null -ne $revealProperty){$revealDuration=[double]$revealProperty.Value}
+$revealFrames=Convert-ToFrames $revealDuration $fps
 $ctaFrames=Convert-ToFrames ([double]$video.cta_duration) $fps
 $frames=$hookFrames+$gameFrames+$revealFrames+$ctaFrames
 if($frames -le 0){throw "Challenge timeline has no frames: $ChallengeId"}
@@ -274,7 +277,7 @@ try{
         fps=$fps
         duration_seconds=$total
         frames=$frames
-        timing_source='hook_duration+game_duration+reveal_duration+cta_duration'
+        timing_source='hook_duration+game_duration+(optional)reveal_duration+cta_duration'
         legacy_total_duration_ignored=$true
         gop_seconds=3
         closed_gop_encoder_contract=$true

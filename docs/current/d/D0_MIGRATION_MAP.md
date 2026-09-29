@@ -1,6 +1,6 @@
 ﻿# D0 — Migration Map from the next formal C11-C freeze
 
-> D is dormant while C11-C 2.19.6 remains a repair candidate. Do not start migration work from the invalidated 2.19.2 freeze claim.
+> D is dormant while C11-C 2.19.5 remains a repair candidate. Do not start migration work from the invalidated 2.19.2 freeze claim.
 
 ## Frozen inputs carried into D
 

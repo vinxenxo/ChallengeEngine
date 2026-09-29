@@ -1,6 +1,6 @@
-﻿# Project Overview — C11-C 2.19.6 Consolidated Repair Candidate
+﻿# Project Overview — C11-C 2.19.5 Consolidated Repair Candidate
 
-`ChallengeEngineV01_STATELESS` is currently at **C11-C 2.19.6 consolidated repair candidate** status. It is not yet frozen for D.
+`ChallengeEngineV01_STATELESS` is currently at **C11-C 2.19.5 consolidated repair candidate** status. It is not yet frozen for D.
 
 ## Manufacturing surfaces
 
@@ -26,7 +26,7 @@
 
 The branch-level history is consolidated in `docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md`.
 
-2.19.2's former freeze claim is historical/superseded for final-freeze purposes. The current repair candidate is 2.19.6 and exists to finish acceptance without reopening backend truth.
+2.19.2's former freeze claim is historical/superseded for final-freeze purposes. The current repair candidate is 2.19.5 and exists to finish acceptance without reopening backend truth.
 
 ## Operational ownership
 
@@ -36,4 +36,4 @@ The Art Direction batch uses worker-local temporary Godot project roots so `Work
 
 ## Next gate
 
-Run `docs/current/c11c/C11-C_2.19.6_ACCEPTANCE_GATE.md`. D starts only after a new formal C11-C freeze is accepted and recorded.
+Run `docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md`. D starts only after a new formal C11-C freeze is accepted and recorded.

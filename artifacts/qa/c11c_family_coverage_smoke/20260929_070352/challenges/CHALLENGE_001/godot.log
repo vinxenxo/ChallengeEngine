@@ -1,0 +1,25 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 540×960 @ 60 FPS...
+=== GENERADOR MAESTRO INICIADO ===
+best_frame=130 min_dist=0.00062171685023 tolerance=0.07853981633974
+[VALIDATION] relative_winning_frame=130 absolute_winning_frame=130 valid_window=0-420 close_calls=0 valid=true
+best_frame=130 min_dist=0.00062171685023 tolerance=0.07853981633974
+[VALIDATION] relative_winning_frame=130 absolute_winning_frame=130 valid_window=0-420 close_calls=0 valid=true
+[C6-F4.3] Effective Runtime + independent legacy oracle: PASS
+[C6E_PROFILE] id=social_default_v1 source=(540.0, 960.0) master=(1080.0, 1920.0) safe=[P: (24.0, 24.0), S: (492.0, 912.0)]
+[C6_UI] root=UnifiedSocialFrame:<Control#54626616790> size=(540.0, 960.0) position=(0.0, 0.0)
+[C6_REFERENCE_FRAME] index=130 mode=WINNING_FRAME reason=Certified winning_frame
+[C6_SWEEP_AUDIT] id=CHALLENGE_001 mechanic=key mode=WINNING_FRAME frame_idx=130 reason=Certified winning_frame
+[TELEMETRY_JSON]{"attempts":1,"close_calls":0,"cta_frames":120,"final_seed":24681357,"game_frames":420,"godot_version":"4.7.1-stable (official)","hook_frames":0,"initial_seed":24681357,"minimum_distance":0.000621716850234044,"reveal_frames":0,"rng_version":"1.0","score":0.637740383324059,"seed_used":24681357,"total_frames":540,"validate_only":false,"winning_frame":130,"winning_frame_game":130,"winning_frame_in_valid_window":true,"winning_time":2.16666666666667,"winning_time_game":2.16666666666667}
+[AUDIO_EXPORT_JSON] {"audio_enabled":false}
+[C6_TARGET] space=0 presentation_pos=(270.0, 480.0)
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\scratch\challenge_production\3dce1329a2f54f28990d7e97b72c01b2\CHALLENGE_001_seed_24681357_source.avi
+540 frames at 60 FPS (movie length: 00:00:09:00), recorded in 00:00:10 (90% of real-time speed).
+CPU render time: 0.14 seconds (average: 0.26 ms/frame)
+GPU render time: 0.11 seconds (average: 0.20 ms/frame)
+Encoding time: 2.04 seconds (average: 3.78 ms/frame)
+--------------------------------------------------------------------------------
+

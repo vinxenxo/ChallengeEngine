@@ -34,6 +34,6 @@ This sequence avoids tying historical Challenge recovery to another one-off pipe
 
 ## Entry condition
 
-D remains blocked while **C11-C 2.19.6 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN** is under acceptance. The 2.19.2 freeze claim is historical and invalidated for final-freeze purposes; its executable contracts are retained only as evidence. The active source of truth is the 2.19.6 C11-C current-state documentation.
+D remains blocked while **C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN** is under acceptance. The 2.19.2 freeze claim is historical and invalidated for final-freeze purposes; its executable contracts are retained only as evidence. The active source of truth is the 2.19.5 C11-C current-state documentation.
 
 Historical snapshots remain evidence and may be consulted for recovery, but they do not override the freeze.

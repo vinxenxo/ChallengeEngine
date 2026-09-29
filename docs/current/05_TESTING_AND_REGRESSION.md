@@ -1,10 +1,10 @@
-﻿# Testing and Regression — C11-C 2.19.6
+﻿# Testing and Regression — C11-C 2.19.5
 
 ## Current status
 
 The repository is under consolidated repair acceptance. The former 2.19.2 freeze claim is not the current acceptance authority.
 
-The 2.19.6 candidate adds a static contract for the Art Direction worker model and Suite self-test coverage for retired-studio isolation. Runtime Windows/Godot proof of concurrent capture remains an explicit acceptance gate.
+The 2.19.5 candidate adds a static contract for the Art Direction worker model and Suite self-test coverage for retired-studio isolation. Runtime Windows/Godot proof of concurrent capture remains an explicit acceptance gate.
 
 ## Canonical logical commands
 
@@ -31,13 +31,13 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass `
   -Reset
 ```
 
-The run must report `MAX_OBSERVED_CONCURRENCY` greater than one. A one-at-a-time run is a failure of the 2.19.6 concurrency contract.
+The run must report `MAX_OBSERVED_CONCURRENCY` greater than one. A one-at-a-time run is a failure of the 2.19.5 concurrency contract.
 
 ## Full candidate gate
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass `
-  -File .\FULL_ACCEPTANCE_C11C_2.19.6.ps1
+  -File .\FULL_ACCEPTANCE_C11C_2.19.5.ps1
 ```
 
 Physical production success does not replace logical regression, and a static concurrency contract does not replace a real multi-worker capture.

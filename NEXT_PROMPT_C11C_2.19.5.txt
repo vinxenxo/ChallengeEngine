@@ -1,0 +1,14 @@
+Continue ChallengeEngineV01_STATELESS from **C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN**.
+
+Read first:
+- C11C_2.19.5_CONTEXT_INDEX.md
+- AGENTS.md
+- .continue/rules/CONTINUE.md
+- docs/master-prompts/MASTER_HANDOVER_C11C_2.19.5_CONSOLIDATED.md
+- docs/master-prompts/START_PROMPT_C11C_2.19.5_CONSOLIDATED.md
+- docs/current/c11c/C11-C_2.19.5_CONSOLIDATED_STATE.md
+- docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md
+
+Immediate task: verify the repaired parallel-worker contract test, then prove genuine Workers=7 Art Direction concurrency. Do not reintroduce the global mutex or serialize workers. Active Suite changes belong only in c11c-suite; c11c-studio is retired.
+
+Do not reopen C11-B simulation/RNG/truth contracts or logical 540x960 geometry.

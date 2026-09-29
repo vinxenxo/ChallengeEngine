@@ -1,16 +1,37 @@
 {
-  "overlay": "C11C 2.19.2 Producer Test Contract Alignment",
-  "version": "2.19.2",
-  "base": "ChallengeEngine-C11-C2.16.9 FROZEN.zip + applied 2.18.9 + 2.19.0 + 2.19.1 overlays",
-  "scope": [
-    "Align production hygiene contract with current temporary AVI Producer route",
-    "Fix brittle project-local --path . source assertion",
-    "Preserve 2.19.1 runtime implementation unchanged"
-  ],
-  "files": [
-    "README.md",
-    "CHANGELOG_C11-C_2.19.2.md",
-    "tests/C11CArtDirectionProductionHygieneContractTest.gd",
-    "tests/C11CVisualDrillMovieCaptureContractTest.gd"
+  "schema": "C11-C-2.19.12-QA-CLOSURE-OVERLAY-V2",
+  "status": "CONSOLIDATED_CANDIDATE",
+  "engine_modified": false,
+  "challenge_json_modified": false,
+  "paths": [
+    "C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT.md",
+    "CHANGELOG_C11-C_2.19.12.md",
+    "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+    "OVERLAY_MANIFEST.json",
+    "OVERLAY_README.md",
+    "START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+    "c11c-suite/c11c-maintenance/main.py",
+    "c11c-suite/c11c-producer/BUILD_MANIFEST.json",
+    "c11c-suite/c11c-producer/main.py",
+    "c11c-suite/c11c-producer/producer_schema.json",
+    "c11c-suite/c11c-producer/producer_schema_source.json",
+    "c11c-suite/c11c-producer/self_test.py",
+    "c11c-suite/c11c-producer/test_producer_gui_contract.py",
+    "c11c-suite/c11c-test/main.py",
+    "c11c-suite/c11c-test/run_c11c_challenge_family_smoke.bat",
+    "c11c-suite/c11c-test/run_c11c_challenge_family_smoke.ps1",
+    "c11c-suite/c11c-test/run_c11c_challenge_smoke.ps1",
+    "c11c-suite/self_test.py",
+    "docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md",
+    "docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md",
+    "docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md",
+    "docs/current/c11c/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+    "docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md",
+    "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+    "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+    "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+    "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+    "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
   ]
 }

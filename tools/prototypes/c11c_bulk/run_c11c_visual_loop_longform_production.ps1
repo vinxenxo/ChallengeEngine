@@ -194,10 +194,11 @@ $social=@('COPY_PASTE_READY:',$copyPaste,'','TITLE:',"$($familySchedule.artistic
 $transitionContract = "video_xfade_dissolve;audio_acrossfade;never_through_black"
 $manifest=[ordered]@{
     schema='C11-C-VISUAL-LOOP-LONGFORM-PRODUCTION-V2'
-    revision='2.18.3'
+    revision='2.19.12'
     status='FINAL_LONGFORM_PRODUCT'
     family=[ordered]@{technical_id=$familyKey;artistic_name=$familySchedule.artistic_name;production_id=$familySchedule.production_id}
     base_seed=$Seed
+    backend_truth_revision='2.16.9'
     duration_seconds=$duration
     fps=30
     frames=$frames

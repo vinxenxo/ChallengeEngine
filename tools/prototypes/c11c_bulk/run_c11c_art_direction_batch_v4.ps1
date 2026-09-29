@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$false)][string]$ReviewRoot='',
     [ValidateRange(1,7)][int]$Workers=7,
     [int[]]$Seeds=@(),
@@ -34,7 +34,7 @@ if($Resume -and (Test-Path -LiteralPath $statePath)){
         $existingState=Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
         if($existingState.seeds){ $Seeds=@($existingState.seeds | ForEach-Object {[int]$_}) }
         # Only reuse the completion ledger when it belongs to this exact review revision.
-        # 2.16.9 remains the authoritative Visual Loop review-contract revision; 2.19.6
+        # 2.16.9 remains the authoritative Visual Loop review-contract revision; 2.19.4
         # changes only orchestration isolation and repository/tooling provenance.
         if([string]$existingState.revision -eq '2.16.9'){
             if($existingState.completed_loops){ foreach($item in @($existingState.completed_loops)){ $completedLoops[[string]$item]=$true } }
@@ -117,7 +117,8 @@ function Save-State {
     }
     $state=[ordered]@{
         schema='C11-C-ART-DIRECTION-REVIEW-STATE-V5'
-        revision='2.16.9'
+        revision='2.19.12'
+        backend_truth_revision='2.16.9'
         status=$Stage
         updated=(Get-Date).ToString('o')
         workers=$Workers
@@ -225,7 +226,7 @@ function Start-LoopReviewJob {
 }
 
 Write-Host '[C11-C-ART-DIRECTION] =========================================='
-Write-Host '[C11-C-ART-DIRECTION] REVIEW V10 - 7-worker isolated / grouped / resumable / isolated artifacts / Godot class-cache bootstrap'
+Write-Host '[C11-C-ART-DIRECTION] REVIEW V9 — 7-worker isolated / grouped / resumable / isolated artifacts'
 Write-Host "[C11-C-ART-DIRECTION] Root: $ReviewRoot"
 Write-Host "[C11-C-ART-DIRECTION] Workers: $Workers | seeds: $($Seeds.Count) | GIF=$ExportGif | Resume=$Resume | Loops=$($selection.loops) | Drills=$($selection.drills) | Longforms=$($selection.longforms)"
 Write-Host '[C11-C-ART-DIRECTION] AVI temporary by default; GIF opt-in.'
@@ -250,7 +251,7 @@ if($selection.loops){
         }
     }
     if($Resume){
-        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN - $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
+        Write-Host "[C11-C-ART-DIRECTION] RESUME PLAN — $($loopTasks.Count) loop(s) pending; completed artifacts will be skipped."
     }
     $workerPool=New-C11CReviewWorkerPool -ProjectRoot $ProjectRoot -Count $Workers
     $maxObservedWorkerConcurrency=0
@@ -285,7 +286,7 @@ if($selection.loops){
                     if(-not(@($active | Where-Object {$_.C11WorkerSlot -eq $candidate}).Count)){ $slot=$candidate; break }
                 }
                 if($slot -lt 0){break}
-                $workerRoot=[string]$workerPool.Workers[$slot].Root
+                $workerRoot=[string]$workerPool.Workers[$slot].WorkerRoot
                 $active += Start-LoopReviewJob -FamilyId $task.FamilyId -Grammar $task.Grammar -Seed $task.Seed -FamilyRoot $task.FamilyRoot -WorkerSlot $slot -WorkerRoot $workerRoot
                 $nextTaskIndex++
             }
@@ -336,7 +337,7 @@ if($selection.longforms){
 if($selection.drills){
     $drillStage=Join-Path $ReviewRoot '_drill_stage'
     if($Resume -and (Test-DrillsComplete -Root $ReviewRoot)){
-        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills - complete.'
+        Write-Host '[C11-C-ART-DIRECTION] RESUME SKIP drills — complete.'
         Save-State -Stage 'DRILLS' -Key 'all' -Status 'SKIP_EXISTING'
     } else {
         $drillParams=@{
@@ -365,15 +366,13 @@ if($selection.drills){
 }
 
 $manifest=[ordered]@{
-    schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V6'
-    revision='2.19.6'
+    schema='C11-C-ART-DIRECTION-REVIEW-CORPUS-V5'
+    revision='2.19.12'
     status='COMPLETE'
     selected_stages=$selection
     root=$ReviewRoot
     workers=$Workers
     worker_isolation='per_worker_temporary_godot_project'
-    worker_bootstrap='per_worker_godot_headless_editor_class_scan'
-    worker_global_script_class_cache='required'
     max_observed_worker_concurrency=if($selection.loops){$maxObservedWorkerConcurrency}else{0}
     seeds=@($Seeds)
     resume_enabled=$true
@@ -389,4 +388,4 @@ $manifest=[ordered]@{
     drill_families=@('tracking','saccade','pursuit','peripheral_scan')
 }
 [System.IO.File]::WriteAllText((Join-Path $ReviewRoot 'C11-C_ART_DIRECTION_REVIEW_CORPUS_MANIFEST.json'),($manifest|ConvertTo-Json -Depth 10),(New-Object System.Text.UTF8Encoding($false)))
-Write-Host "[C11-C-ART-DIRECTION] COMPLETE - grouped review root: $ReviewRoot"
+Write-Host "[C11-C-ART-DIRECTION] COMPLETE — grouped review root: $ReviewRoot"

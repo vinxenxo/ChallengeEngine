@@ -1,0 +1,12 @@
+{
+    "slot":  4,
+    "family":  "invisible_forces",
+    "grammar_id":  "quadrupole_field",
+    "grammar_name":  "Quadrupole Field",
+    "seed":  996363265,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_996363265\\InvisibleForces_v1_seed_996363265.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_996363265\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_invisible_forces_v1\\InvisibleForces_v1_seed_996363265_music.wav",
+    "loop_safe":  true
+}

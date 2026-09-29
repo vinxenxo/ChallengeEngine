@@ -1,0 +1,67 @@
+# START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.19 CONSOLIDATED
+
+Continue from **C11-C 2.19.9 REPAIR CANDIDATE CONSOLIDATED — NOT FROZEN**.
+
+## Read first
+
+1. `C11C_2.19.9_CONTEXT_INDEX.md`
+2. `MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md`
+3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
+4. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
+5. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
+
+## Step 1 — static / focused contracts
+
+```powershell
+python .\c11c-suite\self_test.py
+python .\c11c-suite\c11c-producer\self_test.py
+python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\verify_c11c_suite_launchers.ps1
+.\c11c-suite\c11c-test\run_suite.bat C11CVisualDrillReviewEnvelopePathContractTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+```
+
+## Step 2 — one test per canonical game
+
+```powershell
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2CatchTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2ChooseTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2CountTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2FindTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2HitTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2ParkingTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C6F4CanonicalV2PilotTest.gd
+```
+
+## Step 3 — full logical corpus
+
+```powershell
+python .\tests\run_all.py
+```
+
+## Step 4 — canonical complete review
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File .\tools\qa\c11\run_c11c_complete_video_review.ps1 `
+  -Workers 7 `
+  -Reset
+```
+
+The complete review validates 27 Visual Loop products + 20 Visual Drill products + 5 Longforms = 52 videos. The Visual Drill envelope generator must report an `Envelope root resolved:` path matching the absolute review root supplied by the reviewer.
+
+## Step 5 — full acceptance
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass `
+  -File .\FULL_ACCEPTANCE_C11C_2.19.9.ps1
+```
+
+## Critical guardrails
+
+- Do NOT introduce a global mutex.
+- Do NOT serialize review capture. `Workers=7` must remain genuine concurrency.
+- Do NOT update `c11c-studio`; it is retired.
+- Keep Suite changes in `c11c-suite/` and its canonical root launch targets.
+- Do NOT reopen C11-B truth/RNG, C7 audio contracts, C9 semantics or logical 540x960 geometry.
+- Do NOT freeze yet.

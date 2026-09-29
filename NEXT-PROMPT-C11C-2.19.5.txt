@@ -1,0 +1,14 @@
+C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NEW CONTEXT ENTRY
+
+Read first:
+AGENTS.md
+docs/current/c11c/C11-C_2.19_CURRENT_STATE.md
+docs/current/c11c/C11-C_2.19.5_ACCEPTANCE_GATE.md
+MASTER_HANDOVER_C11D_V1.0_STATELESS_2.19.5.md
+START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md
+
+Current status: NOT FROZEN.
+Canonical active suite: c11c-suite.
+Retired: c11c-studio (do not update/use).
+Parallel Art Direction: MUST remain Workers=7-capable; shared 720x1280 override owned by parent batch.
+No patch-on-patch micro-cycle: consolidate any further fix into the current candidate and update docs.

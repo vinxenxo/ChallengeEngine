@@ -1,0 +1,168 @@
+{
+  "revision": "2.19.8",
+  "status": "REPAIR_CANDIDATE_NOT_FROZEN",
+  "base": "C11-C 2.19.4 workstation-validated functional state",
+  "scope": "tooling_documentation_suite_launcher_consolidation_only",
+  "files": [
+    {
+      "path": "C11C_2.19.8_CANDIDATE_RECEIPT.md",
+      "bytes": 476,
+      "sha256": "b310cb9b183a56155b73a469bbfa70fd8a1ce83af6cca5a00b3d073a2240cf00"
+    },
+    {
+      "path": "C11C_2.19.8_CONTEXT_INDEX.md",
+      "bytes": 1334,
+      "sha256": "0407b9910630e897ef8cbadae798175e90bf69d99f4217df98e26509d0ce7310"
+    },
+    {
+      "path": "C11C_2.19.8_CONTEXT_PACK_README.md",
+      "bytes": 624,
+      "sha256": "a5a6188c53e23506a2683927eefeef37ac778b9aeff82230557887a574374bbd"
+    },
+    {
+      "path": "C11C_2.19.8_STATIC_VALIDATION_REPORT.md",
+      "bytes": 1224,
+      "sha256": "531320033c0971dd708fa18c427d2543f16eb13f107356b76519fa4adf38464a"
+    },
+    {
+      "path": "CHANGELOG_C11-C_2.19.8.md",
+      "bytes": 1326,
+      "sha256": "d98490340935ed49f61018d3642693e77d5dd92a86fb8f7c6b6e273c2a312a1e"
+    },
+    {
+      "path": "FULL_ACCEPTANCE_C11C_2.19.8.ps1",
+      "bytes": 4174,
+      "sha256": "c1ca7598475224fdaffb57c82ad6ed792534217bd90bee919e92b5bc683154b6"
+    },
+    {
+      "path": "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 3054,
+      "sha256": "4afdcd833cbe416083833619b007684479ea98fe1d89d2f10b6f61b0a117f7fc"
+    },
+    {
+      "path": "NEXT-PROMT.TXT",
+      "bytes": 1781,
+      "sha256": "6ed7bab35b913635f9818a676cbb3fe816f5ebbc332784932ea4eaec04281329"
+    },
+    {
+      "path": "NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt",
+      "bytes": 1781,
+      "sha256": "6ed7bab35b913635f9818a676cbb3fe816f5ebbc332784932ea4eaec04281329"
+    },
+    {
+      "path": "README_C11C_2.19.8_CONSOLIDATED_CANDIDATE.md",
+      "bytes": 1112,
+      "sha256": "c560f9269a22c01aed84b88ca58dad347f040186f009e2bb635c14382e98d793"
+    },
+    {
+      "path": "START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 1784,
+      "sha256": "1e066868f74aef339b4250fd07b851c127126d5be9f139b550b4d2a65c93eb86"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11C_PRODUCER_MASTER_HANDOVER_2026-09-28.md",
+      "bytes": 550,
+      "sha256": "b2e6c68d897fa43941174e1a171a1fd8efc69eb1d74b747d5602bca478e875d9"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11C_PRODUCER_START_PROMPT_2026-09-28.md",
+      "bytes": 382,
+      "sha256": "a0602c83a8f203dc3eefc07d8d0744ca832721bd3c094d7f002b25ba7c1c06fd"
+    },
+    {
+      "path": "c11c-suite/c11c-test/main.py",
+      "bytes": 9870,
+      "sha256": "a67ba41564c1140e2576d37826ca1279791bb9d42f4a4ca2b833865c883c6bc3"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_c11c_acceptance.bat",
+      "bytes": 220,
+      "sha256": "c5be650e61f9d425e6ff0efdc27107ca4a35918d119e0b417ef1ed8e50032a4b"
+    },
+    {
+      "path": "c11c-suite/c11c-test/run_c11c_complete_review.bat",
+      "bytes": 254,
+      "sha256": "4003ecd1b9ff18700847b12219252cff3c7e7529ec1e18bb42ca562fb43dd087"
+    },
+    {
+      "path": "c11c-suite/self_test.py",
+      "bytes": 5786,
+      "sha256": "6821da643567ca567fcc5e9569db2d7107407236ed27f7a67eaf5932b199a0e4"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md",
+      "bytes": 1141,
+      "sha256": "96aabed1ec3e03b09aee15dd0ca2acef58d4263efcb6a2ea4e3a80401f4ac79d"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md",
+      "bytes": 1508,
+      "sha256": "146bab930c534422e338f1d0fedb79bcee6bcbad2133d194c34ded51366113cd"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md",
+      "bytes": 1362,
+      "sha256": "9dad732fcb5e310b6022d4158adbff4f5493010953468b619afb60d9d290943b"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md",
+      "bytes": 3121,
+      "sha256": "4556afba6afd70f47fd535dddf19e4c49b58d871c7b4f43298ea9348d47b3191"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md",
+      "bytes": 1275,
+      "sha256": "b147b9e53e616c2da993381c2ff34915f489675f4746790444e53e9bdf41d8a5"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_FREEZE_COMMANDS.md",
+      "bytes": 985,
+      "sha256": "e69de69f70396ca097c3d9778dcf0f243c78e12f2b582e734f1b100b8cb9d813"
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "bytes": 560,
+      "sha256": "ee0755a5ae8a24bd1e0311612ee6fe39d0af9eeb8e5dbe9dc5f3f3bc2dd228f5"
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_0.1.4_RULES.md",
+      "bytes": 1937,
+      "sha256": "debc26bf8c9384adc7d5f6b839e4ab2ebfaf7a5019f7e2984a92cf8ca2c7e7a4"
+    },
+    {
+      "path": "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+      "bytes": 2609,
+      "sha256": "862be59b6770582e522c7bd7a0a9690626910fb58c38a480a8a47ecfb0b89a11"
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 3054,
+      "sha256": "4afdcd833cbe416083833619b007684479ea98fe1d89d2f10b6f61b0a117f7fc"
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 1784,
+      "sha256": "1e066868f74aef339b4250fd07b851c127126d5be9f139b550b4d2a65c93eb86"
+    },
+    {
+      "path": "tools/c11freeze/finalize_c11c_2_19_8_freeze.ps1",
+      "bytes": 7044,
+      "sha256": "e6dc54169a5ec2798fa3385cc239f46f241666bc154ba2a15b7f2551cb4180c1"
+    },
+    {
+      "path": "tools/maintenance/consolidate_c11c_2_19_documentation.ps1",
+      "bytes": 3683,
+      "sha256": "1c0e7cb3f9d56482e7a6dd0233397ed1444310b8396930f04afe402861c66c78"
+    },
+    {
+      "path": "tools/qa/c11/run_c11c_complete_video_review.ps1",
+      "bytes": 8408,
+      "sha256": "0553581112b1ba3f849d21683fae3f3a26149f5305b6058b9cfdb81d6e2d9ac5"
+    },
+    {
+      "path": "tools/qa/c11/verify_c11c_suite_launchers.ps1",
+      "bytes": 2531,
+      "sha256": "25ce5dcb65ac25e0cb3391e27be97f638001030e8bf0b62df927068cbe69704c"
+    }
+  ]
+}

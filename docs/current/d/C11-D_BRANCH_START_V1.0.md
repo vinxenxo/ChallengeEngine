@@ -1,8 +1,8 @@
-# C11-D — Branch Start Record v1.1
+﻿# C11-D — Branch Start Record v1.1
 
 ## Entry state
 
-- Repository/source baseline: **C11-C 2.19.6 FINAL REPAIR CANDIDATE — NOT FROZEN**.
+- Repository/source baseline: **C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN**.
 - Runtime/product lineage: **2.19.1**.
 - Producer: **0.9.7**.
 - Godot: **4.7.1 stable Mono**.

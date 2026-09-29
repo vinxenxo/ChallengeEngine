@@ -1,20 +1,14 @@
 @echo off
 setlocal
+set "C11C_PROJECT_ROOT=%~dp0..\.."
+for %%I in ("%C11C_PROJECT_ROOT%") do set "C11C_PROJECT_ROOT=%%~fI"
 if "%~1"=="" (
-  echo Uso: run_suite.bat NombreTest.gd
-  echo Ejemplo: run_suite.bat C11CProductionReviewCopySafetyTest.gd
+  echo Usage: run_suite.bat ^<SuiteFile.gd^>
   endlocal & exit /b 2
 )
-set "C11C_PROJECT_ROOT=%~dp0..\.."
-cd /d "%C11C_PROJECT_ROOT%"
 set "GODOT_CMD=%GODOT_BIN%"
-if not defined GODOT_CMD set "GODOT_CMD=godot.exe"
-where "%GODOT_CMD%" >nul 2>nul
-if not errorlevel 1 (
-  "%GODOT_CMD%" --headless --path "%C11C_PROJECT_ROOT%" --script ".\tests\%~1"
-  set "RC=%ERRORLEVEL%"
-) else (
-  echo ERROR: godot.exe no esta en PATH. Define GODOT_BIN o anade Godot al PATH.
-  set "RC=127"
-)
-endlocal & exit /b %RC%
+if not defined GODOT_CMD set "GODOT_CMD=godot"
+cd /d "%C11C_PROJECT_ROOT%"
+"%GODOT_CMD%" --headless --path "%C11C_PROJECT_ROOT%" --script "%C11C_PROJECT_ROOT%\tests\%~1"
+set "EXITCODE=%ERRORLEVEL%"
+endlocal & exit /b %EXITCODE%

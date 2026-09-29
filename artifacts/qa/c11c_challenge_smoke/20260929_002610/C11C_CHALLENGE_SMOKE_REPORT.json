@@ -1,0 +1,20 @@
+{
+    "schema":  "C11-C-CHALLENGE-SMOKE-V1",
+    "revision":  "2.19.12",
+    "seed":  24681357,
+    "delivery_profile":  "REVIEW_720",
+    "all_canonical":  false,
+    "count":  1,
+    "results":  [
+                    {
+                        "challenge_id":  "CHALLENGE_001",
+                        "seed":  24681357,
+                        "fps":  60,
+                        "frames":  540,
+                        "duration_seconds":  9,
+                        "mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\qa\\c11c_challenge_smoke\\20260929_002610\\CHALLENGE_001\\CHALLENGE_001\\CHALLENGE_001_seed_24681357.mp4",
+                        "status":  "PASS"
+                    }
+                ],
+    "generated_at_utc":  "2026-09-28T22:26:23.6356425+00:00"
+}

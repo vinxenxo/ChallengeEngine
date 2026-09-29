@@ -12,7 +12,7 @@ const ContentRuntimeRegistry = preload("res://core/runtime/ContentRuntimeRegistr
 const OUTPUT_ENV := "C11C_DRILL_REVIEW_ENVELOPE_ROOT"
 const SEEDS_ENV := "C11C_DRILL_REVIEW_SEEDS"
 const FAMILIES_ENV := "C11C_DRILL_REVIEW_FAMILIES"
-const DEFAULT_GAMEPLAY_SECONDS: float = 21.0
+const DEFAULT_GAMEPLAY_SECONDS: float = 17.0
 const TRACKING_GAMEPLAY_SECONDS: float = 21.0
 const FPS: int = 30
 const TIER: int = 2
@@ -55,8 +55,11 @@ func _init() -> void:
         quit(1)
         return
 
-    var absolute_root := ProjectSettings.globalize_path(output_root)
+    var absolute_root := output_root
+    if not output_root.is_absolute_path():
+        absolute_root = ProjectSettings.globalize_path(output_root)
     DirAccess.make_dir_recursive_absolute(absolute_root)
+    print("[C11-C-DRILL] Envelope root resolved: %s" % absolute_root)
     var registry := ContentRuntimeRegistry.create_default()
     var selected_drills: Array[String] = []
     if families_raw.is_empty():

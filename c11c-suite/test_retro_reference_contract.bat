@@ -1,7 +1,8 @@
 @echo off
 setlocal
-set C11C_PROJECT_ROOT=%~dp0..
+set "C11C_PROJECT_ROOT=%~dp0.."
+for %%I in ("%C11C_PROJECT_ROOT%") do set "C11C_PROJECT_ROOT=%%~fI"
 cd /d "%C11C_PROJECT_ROOT%"
-python "%~dp0test_retro_reference_contract.py" %*
-set "RC=%ERRORLEVEL%"
-endlocal & exit /b %RC%
+python "%C11C_PROJECT_ROOT%\c11c-suite\test_retro_reference_contract.py" %*
+set "EXITCODE=%ERRORLEVEL%"
+endlocal & exit /b %EXITCODE%

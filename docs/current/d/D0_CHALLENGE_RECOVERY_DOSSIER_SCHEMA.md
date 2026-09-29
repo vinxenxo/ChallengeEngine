@@ -1,4 +1,4 @@
-﻿# Entry state: C11-C 2.19.6 consolidated repair candidate — NOT FROZEN
+﻿# Entry state: C11-C 2.19.5 consolidated repair candidate — NOT FROZEN
 
 > D remains dormant until a new C11-C freeze is formally accepted. This schema is retained for the future D0 evidence phase.
 

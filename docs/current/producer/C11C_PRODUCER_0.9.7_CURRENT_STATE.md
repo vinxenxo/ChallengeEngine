@@ -1,10 +1,10 @@
-# C11-C Producer 0.9.7 — Current State / C11-C 2.19.6 Candidate
+﻿# C11-C Producer 0.9.7 — Current State / C11-C 2.19.5 Candidate
 
 ## Authority
 
 The live Producer is `c11c-suite/c11c-producer/`.
 
-The current repository is **C11-C 2.19.6 final repair candidate — NOT FROZEN**. Producer version remains **0.9.7**. The final 2.19.6 repair does not modify Producer capture behavior.
+The current repository is **C11-C 2.19.5 consolidated repair candidate — NOT FROZEN**. Producer version remains **0.9.7**.
 
 ## Runtime / capture
 
@@ -23,19 +23,17 @@ Canonical source: `profiles/presentation/c11c_visual_hooks.json`.
 
 The Producer does not read `authoring.json.content.hook`.
 
-The shared Movie Maker helper is intentionally lock-free. Parallel Art Direction uses separate temporary worker project roots, so no project-global mutex is required or permitted.
-
 ## Suite ownership
 
-Producer GUI/launcher sources live under `c11c-suite/c11c-producer/`. Canonical BAT launchers set `C11C_PROJECT_ROOT`, change directory to the repository root, and preserve the child exit code. No operational path requires `c11c-studio`.
+Producer GUI/launcher sources live under `c11c-suite/c11c-producer/`. No operational path requires `c11c-studio`.
 
 ## Visual review relationship
 
-The Producer can invoke the canonical Art Direction review runner. Its 2.19.6 concurrency implementation is owned by `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`, which isolates each concurrent Movie Maker process in a private temporary Godot project root.
+The Producer can invoke the canonical Art Direction review runner. Its 2.19.5 concurrency implementation is owned by `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`, which isolates each concurrent Movie Maker process in a private temporary Godot project root.
 
 ## Validation provenance
 
-Previously recorded Windows/Godot 4.7.1 single-Tracking Producer smoke: seed `452878546`, T1, constant, S140, `MASTER_1080` → **FINAL PRODUCT PASS**. That evidence remains valid as historical runtime evidence; it does not by itself freeze the 2.19.6 candidate.
+Previously recorded Windows/Godot 4.7.1 single-Tracking Producer smoke: seed `452878546`, T1, constant, S140, `MASTER_1080` → **FINAL PRODUCT PASS**. That evidence remains valid as historical runtime evidence; it does not by itself freeze the 2.19.5 candidate.
 
 ## Boundary
 

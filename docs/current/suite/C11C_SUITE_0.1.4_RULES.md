@@ -1,30 +1,46 @@
-# C11-C Suite 0.1.4 — Operational Rules
+﻿# C11-C Suite 0.1.4 — Operational Rules
 
 ## Ownership
 
-`c11c-suite/` is the canonical active Suite. `c11c-studio/` is retired and must not be updated, imported or required for operation.
+`c11c-suite/` is the canonical active Suite surface. `c11c-studio/` is retired and must not be updated or required for operation.
 
-## Launcher contract
+## Launcher parity
 
-Operational Suite BAT/CMD launchers resolve the repository through `C11C_PROJECT_ROOT`, change to the project root and propagate the child exit code. `c11c-maintenace/run.bat` is compatibility-only and delegates to `c11c-maintenance/run.bat`.
+Every operational test/QA capability must have:
 
-The 2.19.6 final repair normalizes active BAT launchers to UTF-8 without BOM. It does not change their command semantics.
+1. a canonical repository implementation;
+2. a direct console route;
+3. the relevant Suite/GUI route when appropriate;
+4. current documentation.
 
-## Art Direction worker contract
+`c11c-test/run_suite.bat` accepts `GODOT_BIN` when the user needs to select an explicit Godot executable.
 
-`run_c11c_art_direction_batch_v4.ps1 -Workers 7` uses isolated project roots and a per-worker class-cache bootstrap. Initialization is sequential; Movie Maker capture is concurrent. Global mutexes are prohibited.
+## 2.19.5 Art Direction concurrency
 
-## Contract-test lifecycle
+The Art Direction batch keeps the requested `Workers=7` concurrency. A worker is not merely a logical queue slot: it owns an independent temporary Godot project root, including its own temporary `override.cfg` and `.godot` state.
 
-Command-line Godot tests using `extends SceneTree` must enter through `_initialize()` and must terminate explicitly.
+A project-global mutex is prohibited because it converts the worker pool into serial execution.
+
+## Godot contract-test lifecycle
+
+Command-line Godot tests implemented with `extends SceneTree` / `extends MainLoop` must enter through `_initialize()` (or intentionally through `_init()` for tests designed for that lifecycle). They must terminate explicitly with `quit()` or an intentional MainLoop termination return. `_ready()` is a Node callback and is not the command-line MainLoop entrypoint.
+
+The 2.19.5 worker-isolation contract test is explicitly guarded by the Suite self-test against regression to `_ready()`.
+
+## Retired studio rule
+
+Operational `.py/.ps1/.bat/.cmd` sources under `c11c-suite/` must contain no `c11c-studio` dependency. The static Suite self-test enforces this.
+
+## GUI / backend boundary
+
+The Suite and Producer remain orchestration surfaces. They do not implement mechanics, RNG, timing truth or gameplay calculations.
 
 ## Validation
 
+Focused contracts precede the full logical corpus and the consolidated acceptance gate:
+
 ```powershell
 python .\c11c-suite\self_test.py
-python .\c11c-suite\c11c-producer\self_test.py
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\verify_c11c_2_19_6_final_repair.ps1
-.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
 python .\tests\run_all.py
-.\FULL_ACCEPTANCE_C11C_2.19.6.ps1
+.\FULL_ACCEPTANCE_C11C_2.19.5.ps1
 ```

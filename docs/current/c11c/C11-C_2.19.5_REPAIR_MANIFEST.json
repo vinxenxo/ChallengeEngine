@@ -1,0 +1,42 @@
+{
+  "branch": "C11-C",
+  "revision": "2.19.5",
+  "status": "ACTIVE_REPAIR_CANDIDATE_NOT_FROZEN",
+  "purpose": "Consolidate the 2.19 branch and repair the parallel-worker contract test lifecycle without changing production concurrency architecture.",
+  "test_harness_repair": {
+    "file": "tests/C11CParallelReviewWorkerIsolationContractTest.gd",
+    "before": "extends SceneTree + _ready() entrypoint",
+    "after": "extends SceneTree + _initialize() entrypoint",
+    "reason": "SceneTree inherits MainLoop; command-line MainLoop scripts use _initialize().",
+    "production_code_changed": false
+  },
+  "worker_architecture": {
+    "mode": "per_worker_temporary_godot_project",
+    "workers": "1..7",
+    "global_mutex": false,
+    "global_serialization": false,
+    "required_runtime_evidence": "MAX_OBSERVED_CONCURRENCY > 1"
+  },
+  "suite": {
+    "version": "0.1.4",
+    "canonical_root": "c11c-suite",
+    "retired_root": "c11c-studio",
+    "retired_root_is_operational_dependency": false
+  },
+  "manufacturing": {
+    "social_logical": "540x960",
+    "review": "720x1280@30",
+    "master": "1080x1920",
+    "visual_loop_families": 5,
+    "visual_loop_grammars": 27,
+    "visual_drill_families": 4,
+    "tracking_seconds": 27,
+    "other_drill_seconds": 23,
+    "longforms": "5x180s"
+  },
+  "verification": {
+    "static_container_validation": true,
+    "windows_godot_runtime_validation": false,
+    "freeze_allowed": false
+  }
+}
