@@ -1,78 +1,59 @@
-# START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.19 CONSOLIDATED
+# START PROMPT - ChallengeEngineV01_STATELESS / C11-C 2.19 CONSOLIDATED
 
-Continue from **C11-C 2.19.12 FULL CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN**.
+Continue the closing C11-C branch at **2.19.12**.
+
+Current state: **final repair candidate - NOT FROZEN**.
 
 ## First reads
 
 1. `MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md`
-2. `START_PROMPT_C11C_2.19_CONSOLIDATED.md`
-3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-4. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-5. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
-6. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
-7. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
-8. `docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md`
+2. `docs/current/c11c/C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md`
+3. `docs/current/c11c/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md`
+4. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
+5. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
+6. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
 
-## Step 1 — static and focused contracts
+## Fast focused validation
 
 ```powershell
-python .\c11c-suite\self_test.py
-python .\c11c-suite\c11c-producer\self_test.py
-python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
-.\c11c-suite\c11c-producer\test_gui_contract.bat
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\verify_c11c_suite_launchers.ps1
-.\c11c-suite\c11c-test\run_suite.bat C11CVisualDrillReviewEnvelopePathContractTest.gd
-.\c11c-suite\c11c-test\run_suite.bat C11CParallelReviewWorkerIsolationContractTest.gd
+.\c11c-suite\c11c-test\run_suite.bat C11A1FactoryIsolationContractTest.gd
+.\c11c-suite\c11c-test\test_powershell_parse.bat
+.\FULL_ACCEPTANCE_C11C_2.19.12_A1_SINGLE.ps1 -ChallengeId CHALLENGE_001 -Seed 12345
 ```
 
-The envelope-path test is valid only when the console ends after `[C11C_VISUAL_DRILL_ENVELOPE_PATH_CONTRACT_SUITE] PASS` with exit code 0. `PASS` followed by `FAIL (0 failure(s))` is a failed test.
-
-## Step 2 — focused validation
+Optional second single smoke:
 
 ```powershell
-.\c11c-suite\c11c-test\run_c11c_focused_validation.bat
+.\FULL_ACCEPTANCE_C11C_2.19.12_A1_SINGLE.ps1 -ChallengeId CHALLENGE_007 -Seed 914213074
 ```
 
-## Step 3 — one video per content type
+## Final closure
+
+When focused evidence is green, execute:
 
 ```powershell
-.\c11c-suite\c11c-test\run_c11c_one_video_each_type.bat
+.\FULL_ACCEPTANCE_C11C_2.19.12.ps1
 ```
 
-This is the fast runtime smoke: 1 Visual Loop + 1 Visual Drill + 1 Longform. It must not be confused with the 52-video complete review.
+Do not substitute a partial acceptance with `-SkipHeavyPhysical` or `-SkipReviews` for the freeze gate.
 
-## Step 4 — full logical
+## Non-negotiable rules
 
-```powershell
-python .\tests\run_all.py
-```
+- No `core/` changes during this QA repair cycle.
+- No new parallel backend.
+- A1 routes through the canonical Challenge producer.
+- The historical A1 manifest is an adapter only.
+- `build_factory.py` is not the current A1 authority; the operator will supply the last historical copy at freeze time.
+- Under `StrictMode`, declare every property before later assignment.
+- Preserve real `Workers=7` concurrency; never serialize to hide a race.
+- Preserve C11-B/C frozen engineering boundaries.
 
-## Step 5 — complete 52-video review
+## Freeze
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass `
-  -File .\tools\qa\c11\run_c11c_complete_video_review.ps1 `
-  -Workers 7 `
-  -Reset
-```
+Only after the full acceptance prints:
 
-`Workers=7` means real concurrent capture. Never serialize it to make a failure disappear.
+`C11-C 2.19.12 - FINAL CONSOLIDATED ACCEPTANCE PASS`
 
-## Step 6 — final acceptance candidate
+is C11-C formally frozen.
 
-```powershell
-.\c11c-suite\c11c-test\run_c11c_acceptance.bat
-```
-
-## C11-A.1 final gate
-
-The historical Challenge qualification must complete 9 Challenges x 6 seeds = 54 fresh runs. The canonical runner resolves `build_factory.py` manifests from the factory-reported `manifest_path`, then the historical canonical location, then a unique valid manifest inside the current run. It never fabricates evidence and fails on ambiguity.
-
-## Mandatory guardrails
-
-- `c11c-suite/` is the active Suite.
-- `c11c-studio/` is retired: do not update it and do not use it.
-- Private worker roots are the solution to capture-state collisions; the canonical field is `WorkerRoot`.
-- Do not add a global mutex or serial fallback.
-- Preserve all frozen engine/RNG/C7/C9/social geometry boundaries.
-- Do not freeze until fresh workstation evidence is fully green.
+Then move to the D entry documents. D starts with read-only inventory and Challenge recovery, not a new mechanic.

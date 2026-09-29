@@ -447,6 +447,7 @@ foreach ($item in $plan) {
         factory_exit_code = $null
         producer_exit_code = $null
         factory_manifest = $null
+        canonical_producer_manifest = $null
         video = $null
         framemd5 = $null
         review_frames = $null

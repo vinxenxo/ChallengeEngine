@@ -19,6 +19,7 @@ func _initialize() -> void:
     _assert(source.find("function Resolve-C11A1FactoryArtifact") >= 0, "A1 compatibility artifact resolver missing.")
     _assert(source.find("buildFactoryBytes") >= 0, "Legacy build_factory state guard missing.")
     _assert(source.find("producer_exit_code = $null") >= 0, "A1 run record must predeclare producer_exit_code for StrictMode updates.")
+    _assert(source.find("canonical_producer_manifest = $null") >= 0, "A1 run record must predeclare canonical_producer_manifest for StrictMode updates.")
     _assert(source.find("Invoke-C11A1FactoryIsolated") < 0, "Obsolete factory invocation must not return.")
     _assert(source.find("-BuildFactory") < 0, "Obsolete build_factory argument binding must not return.")
     _assert(source.find("[int64]$SingleSeed = 0") >= 0, "Single-run seed parameter missing.")

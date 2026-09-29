@@ -1,30 +1,26 @@
 {
-  "schema": "C11-C-2.19.12-V18-OVERLAY-V1",
+  "schema": "C11-C-2.19.12-V19-OVERLAY-V1",
   "status": "REPAIR_CANDIDATE",
   "scope": [
-    "C11-A.1 StrictMode producer_exit_code initialization repair",
-    "legacy build_factory CLI compatibility wrapper"
+    "C11-A.1 StrictMode canonical_producer_manifest initialization repair",
+    "C11-C closure/freeze documentation consolidation",
+    "C11-D entry handover update"
   ],
   "frozen_boundaries_unchanged": true,
-  "historical_build_factory_recovery_available": false,
+  "build_factory_modified": false,
+  "build_factory_payload_included": false,
   "notes": [
-    "Incremental on V17. No core files included. Canonical Challenge producer remains authoritative. build_factory.py is a reconstructed non-authoritative wrapper, not a recovered original."
+    "V19 is incremental on V18.",
+    "No core files are included.",
+    "C11-A.1 routes through the canonical C11-C Challenge producer and uses a historical compatibility manifest adapter.",
+    "The V18 temporary build_factory.py compatibility wrapper is intentionally not included or changed by V19. The operator-supplied historical copy will replace it at final freeze time.",
+    "Formal C11-C freeze remains gated by FULL_ACCEPTANCE_C11C_2.19.12.ps1 and its exact final PASS marker."
   ],
   "files": [
     {
-      "path": "build_factory.py",
-      "sha256": "32bfa736801f8aa389d216869a1950cfbd7c9d342c9fa1121068cebd1328e0c9",
-      "size": 3375
-    },
-    {
-      "path": "C11C_2.19.12_A1_CLOSURE_RECEIPT_V18.md",
-      "sha256": "b81694c9f2f36083cbb41c66522216b7d74a1aa58ecc249a12359d6a9c9c037f",
-      "size": 943
-    },
-    {
-      "path": "C11C_2.19.12_REPAIR_CANDIDATE_MANIFEST.json",
-      "sha256": "c12c09b1b42d871563e03609627c926ba099432052f183446a540b75bda992fa",
-      "size": 1599
+      "path": "C11C_2.19.12_A1_CLOSURE_RECEIPT_V19.md",
+      "sha256": "1872f9a78fe631b9d27f2fe08ecf411b9fc69879757995d93ddd2635dfb4dd85",
+      "size": 1618
     },
     {
       "path": "FULL_ACCEPTANCE_C11C_2.19.12_A1_SINGLE.ps1",
@@ -32,29 +28,49 @@
       "size": 4316
     },
     {
+      "path": "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+      "sha256": "7e3da1379169906299fcbcf135873c8b64273c27595b5ed9d35935aaedd040d6",
+      "size": 3245
+    },
+    {
+      "path": "MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+      "sha256": "ea7a737c94f36fae6239f1945a90dea9a393eb0ae0640c54db9f9bf297e8a52f",
+      "size": 3598
+    },
+    {
       "path": "OVERLAY_README.md",
-      "sha256": "355871e00708439a2757a34d645fee5508eb6fb4fff3995d4d34f4b394d9a3b1",
-      "size": 1465
+      "sha256": "6ea1ee88daf797259b5d408becb650b4a39b1c9cccdf4edb3ff508d6ca696615",
+      "size": 1756
     },
     {
-      "path": "docs/current/c11c/C11-C_2.19_C11A1_CANONICAL_PRODUCER_CLOSURE_V18.md",
-      "sha256": "64764e7ad162201ce88b06b9984c5997b5e750497f082fea8cd3b795e03bb73e",
-      "size": 1232
+      "path": "START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+      "sha256": "3e70637cff77a826b254ecb205fb045373afa16387bf85743f38a2c856c8aeed",
+      "size": 1939
     },
     {
-      "path": "docs/current/c11c/C11C_2.19.12_A1_CLOSURE_CHANGELOG_V18.md",
-      "sha256": "4917ade9ce78ca94dda3b050dfa589eb1ea8baef9e5ddc1ef5e83ccf0b2191e7",
-      "size": 554
+      "path": "START_PROMPT_C11D_V1.0_STATELESS.md",
+      "sha256": "543ffaca9d636be1608efdcad3e4bb05978f0cff6dc7505986b4b8fac8f7a7b0",
+      "size": 1929
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md",
+      "sha256": "dd15757896486d1fd0f9b8453760096c058742a3c7d2af34033cf2434fdd36ca",
+      "size": 2179
+    },
+    {
+      "path": "docs/current/c11c/C11C_2.19.12_A1_CLOSURE_CHANGELOG_V19.md",
+      "sha256": "ce2103ceeb41e9d339d88f85caa7e49d0c96a40698583d6cf200b4f7ad755c89",
+      "size": 1159
     },
     {
       "path": "tests/C11A1FactoryIsolationContractTest.gd",
-      "sha256": "5bbd39a20605cd610c6da577d77e1f01731d3edee2e5b93ff670dc497efd81a8",
-      "size": 2652
+      "sha256": "537b0dcd93aadaefc1712dd7b8961b74dd72588e9edd39eecc8f076e9493f077",
+      "size": 2806
     },
     {
       "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1",
-      "sha256": "85b01655bb7945f76f9cf12bdf06aeb25642a34cff9ca736f6d82f2709a9ab0a",
-      "size": 25044
+      "sha256": "2f12186121ea7da95f922f3f46bbe9cee495532d09c3d157e65ed1df8415815f",
+      "size": 25088
     }
   ]
 }

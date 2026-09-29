@@ -1,8 +1,8 @@
-# MASTER HANDOVER — ChallengeEngineV01_STATELESS / C11-C 2.19 CONSOLIDATED
+# MASTER HANDOVER - ChallengeEngineV01_STATELESS / C11-C 2.19 CONSOLIDATED
 
-**Current state: C11-C 2.19.12 FULL CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN.**
+**Current state: C11-C 2.19.12 final repair candidate - NOT FROZEN.**
 
-This is the single operational handover for the 2.19 branch. Individual 2.19.x repair packages remain historical evidence.
+This is the operational handover for the closing C11-C branch. Historical 2.19.x repair files remain evidence, not active instructions.
 
 ## Read first
 
@@ -10,53 +10,69 @@ This is the single operational handover for the 2.19 branch. Individual 2.19.x r
 2. `.continue/rules/CONTINUE.md`
 3. `MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md`
 4. `START_PROMPT_C11C_2.19_CONSOLIDATED.md`
-5. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-6. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
+5. `docs/current/c11c/C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md`
+6. `docs/current/c11c/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md`
 7. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
 8. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
 9. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
-10. `docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md`
 
-## Authoritative current facts
+## Current operational facts
 
-- C11-C revision: 2.19.12, not frozen.
 - Suite: 0.1.4.
 - Producer: 0.9.7.
 - Five Visual Loop families / 27 grammars.
 - Four Visual Drill families.
-- 5 Longforms.
-- Complete review corpus: 52 videos.
-- Physical review: 720x1280 @ 30 FPS.
-- Tracking: 27s total / 810 frames.
-- Other drills: 23s total / 690 frames.
-- Art Direction `Workers=7` must be genuine concurrency.
-- Each worker receives a private temporary Godot project root.
-- No global mutex and no serial fallback.
+- Challenge family: nine canonical definitions.
+- Challenge capture: definition-driven FPS; current C11-C review delivery is video-only.
+- Visual review: 720x1280 @ 30 FPS.
+- Complete physical review target: 52 products.
+- Art Direction review must preserve genuine `Workers=7` concurrency.
+- Each review worker must use an isolated temporary project root and private `.godot` state.
+- `c11c-studio` is retired and must not be used.
 
-## 2.19.12 exclusive bugfix repair
+## C11-A.1 closure architecture
 
-The 2.19.11 lifecycle fix remains in place. The 2.19.12 delta adds two tooling fixes discovered after the 2.19.11 consolidation: `test_gui_contract.bat` now launches the existing `test_producer_gui_contract.py`, and `C11CReviewWorkerIsolation.ps1` exposes canonical `WorkerRoot` values for private worker sandboxes while keeping the compatibility alias `Root`. The Art Direction scheduler consumes `WorkerRoot`.
+The historical A1 qualification remains available for compatibility evidence, but its actual production route is now the canonical C11-C Challenge producer:
 
-## Focused validation launcher
+`tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1`
 
-```powershell
-.\c11c-suite\c11c-test\run_c11c_focused_validation.bat
-```
+The legacy A1 manifest shape is preserved by an adapter. No second gameplay factory is introduced.
 
-This is the preferred first runtime gate for a new context.
+Under Windows PowerShell 5.1 `Set-StrictMode`, the A1 run record predeclares all properties that are assigned later, including:
 
-## Suite ownership
+- `producer_exit_code`
+- `canonical_producer_manifest`
 
-All Suite launcher/UI/test changes belong in `c11c-suite/` and the canonical root tools it launches. `c11c-studio/` is retired, must not be modified, and must not be a runtime/launcher dependency. `c11c-maintenace` is compatibility-only.
+The contract test guards those declarations.
 
-## Freeze boundaries
+## build_factory.py
 
-Do not reopen C11-B simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio contracts, C9 semantics or logical 540x960 social geometry without an explicit engine checkpoint.
+The repository may contain a temporary non-authoritative compatibility wrapper until the operator supplies the last historical copy. The supplied historical copy is to be recorded and hashed at freeze time.
 
-## C11-A.1 closure hardening
+Do not make `build_factory.py` the current A1 authority merely because the file exists. The canonical producer remains the accepted production backend unless final repository evidence establishes a different current contract.
 
-The historical 54-run qualification delegates execution to `build_factory.py`. The runner resolves the factory manifest from the reported `manifest_path`, the historical canonical location, or a unique valid manifest discovered inside the current run. Missing or ambiguous manifests are hard failures. Factory artifacts are resolved relative to the resolved manifest directory.
+## Hard boundaries
 
-## Freeze rule
+Do not modify C11-B simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 contracts, C9 semantics or logical 540x960 geometry during closure.
 
-2.19.12 cannot be frozen until fresh workstation PASS evidence exists for the focused contracts, Suite/Producer/launcher tests, one-video smoke, full `tests/run_all.py`, complete 52-video review with observed concurrency >1, producer runtime smoke, C11-A.1 54-run qualification and final acceptance.
+## Freeze gate
+
+Do not declare C11-C frozen until fresh workstation evidence passes:
+
+1. Suite self-test.
+2. Producer self-test and GUI contract.
+3. PowerShell 5.1 parse audit.
+4. Focused contracts and one-video smoke.
+5. Full logical `tests/run_all.py`.
+6. C11-A.1 54/54 fresh runs.
+7. Retrocompatibility checks.
+8. C10 physical smoke/export.
+9. Complete 52-video review with genuine concurrency > 1.
+10. Producer runtime smoke.
+11. Root `override.cfg` integrity.
+
+The exact final marker is:
+
+`C11-C 2.19.12 - FINAL CONSOLIDATED ACCEPTANCE PASS`
+
+After that, freeze the repository and begin C11-D from the frozen tree.
