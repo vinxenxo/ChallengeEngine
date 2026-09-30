@@ -1,0 +1,48 @@
+﻿{
+    "checkpoint":  "C11-D D1.6",
+    "status":  "PASS",
+    "profile_validation":  "PASS",
+    "tests_total":  5,
+    "tests_passed":  5,
+    "tests_failed":  0,
+    "tests":  [
+                  {
+                      "test":  "C11B0UnifiedSocialFrameContractTest.gd",
+                      "exit_code":  0,
+                      "failure_marker":  false,
+                      "pass":  true
+                  },
+                  {
+                      "test":  "C11B02PresentationFramingContractTest.gd",
+                      "exit_code":  0,
+                      "failure_marker":  false,
+                      "pass":  true
+                  },
+                  {
+                      "test":  "C11B1SocialUIIntegrationContractTest.gd",
+                      "exit_code":  0,
+                      "failure_marker":  false,
+                      "pass":  true
+                  },
+                  {
+                      "test":  "C11CVisualDrillSocialPresentationContractTest.gd",
+                      "exit_code":  0,
+                      "failure_marker":  false,
+                      "pass":  true
+                  },
+                  {
+                      "test":  "C11CVisualDrillEndCTAContractTest.gd",
+                      "exit_code":  0,
+                      "failure_marker":  false,
+                      "pass":  true
+                  }
+              ],
+    "frozen_geometry":  {
+                            "logical_canvas":  "540x960",
+                            "header":  "0..144",
+                            "body":  "144..816",
+                            "footer":  "816..960",
+                            "delivery":  "720x1280"
+                        },
+    "source_modified":  false
+}
