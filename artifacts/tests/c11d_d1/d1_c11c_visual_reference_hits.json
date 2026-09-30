@@ -1,0 +1,1142 @@
+﻿[
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md",
+        "line":  13,
+        "keyword":  "editorial",
+        "text":  "- V32: Loop identity validation restored the documented editorial/backend crosswalk."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md",
+        "line":  34,
+        "keyword":  "presentation",
+        "text":  "Forbidden: changes to engine/runtime mechanics, C11-B geometry, structural RNG, result semantics or proven presentation behavior."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11C_2.19.12_CLOSURE_CHANGELOG.md",
+        "line":  19,
+        "keyword":  "CTA",
+        "text":  "`geometric -\u003e geometric`, `fractal -\u003e fractal`, `sacred_symmetry -\u003e kaleidoscope`, `living_particles -\u003e particle_flow`, `invisible_forces -\u003e vector_field`."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19.12_CONTRACT_COHERENCE_AUDIT.md",
+        "line":  5,
+        "keyword":  "editorial",
+        "text":  "| Editorial key | Historical `technical_id` | Production ID |"
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19.12_CONTRACT_COHERENCE_AUDIT.md",
+        "line":  8,
+        "keyword":  "CTA",
+        "text":  "| `fractal` | `fractal` | `c11c_fractal_bloom_v1` |"
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19.12_PREFREEZE_HARDENING_REPORT.md",
+        "line":  28,
+        "keyword":  "CTA",
+        "text":  "7. El freeze packager añade dry-run, gates de acceptance, comprobación estructural/hash de `build_factory.py`, exclusión de caches/archives/artefactos pesados y evidencia compacta dentro del release."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md",
+        "line":  37,
+        "keyword":  "editorial",
+        "text":  "Review folder keys may use editorial names while Loop manifests retain historical/backend identifiers. Canonical identity mapping is:"
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md",
+        "line":  40,
+        "keyword":  "CTA",
+        "text":  "- `fractal` → `fractal` → Fractal Bloom;"
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATED_STATE.md",
+        "line":  10,
+        "keyword":  "CTA",
+        "text":  "- Historical identity crosswalk: `geometric`, `fractal`, `kaleidoscope`, `particle_flow`, `vector_field`."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATED_STATE.md",
+        "line":  19,
+        "keyword":  "540",
+        "text":  "- Shared logical social canvas: 540x960."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATED_STATE.md",
+        "line":  20,
+        "keyword":  "30 FPS",
+        "text":  "- Review delivery: 720x1280 @ 30 FPS."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATED_STATE.md",
+        "line":  20,
+        "keyword":  "720x1280",
+        "text":  "- Review delivery: 720x1280 @ 30 FPS."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATED_STATE.md",
+        "line":  47,
+        "keyword":  "540",
+        "text":  "Do not change simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 ownership/contracts, C9 semantics or logical 540x960 geometry."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+        "line":  13,
+        "keyword":  "editorial",
+        "text":  "Visual Loop editorial family names and backend technical identifiers are not interchangeable strings. The canonical crosswalk is:"
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+        "line":  17,
+        "keyword":  "CTA",
+        "text":  "fractal         -\u003e fractal"
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_PERMANENT_RULES.md",
+        "line":  4,
+        "keyword":  "540",
+        "text":  "2. Never reopen C11-B/C simulation truth, mechanics, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio ownership/contracts, C9 semantics or logical 540x960 geometry without an explicit checkpoint."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_2.19_PERMANENT_RULES.md",
+        "line":  15,
+        "keyword":  "editorial",
+        "text":  "13. Historical/backend identifiers and editorial family names use explicit crosswalks; never infer equality by string similarity."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_MAINTENANCE_AND_FREEZE_PACKAGING.md",
+        "line":  42,
+        "keyword":  "CTA",
+        "text":  "4. Suite/QA enfocado, parse/layout/launcher y tests afectados por la modificación de tooling."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_MAINTENANCE_AND_FREEZE_PACKAGING.md",
+        "line":  51,
+        "keyword":  "540",
+        "text":  "Ninguna operación pre-freeze puede cambiar mecánicas, simulación, RNG, timing truth, renderer, presentación probada, contratos C7/C9 ni la geometría lógica 540x960."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_VIDEO_DELIVERY_META_REELS.md",
+        "line":  27,
+        "keyword":  "540",
+        "text":  "The frozen files satisfy the supplied minimum 540×960 resolution and the core vertical H.264/yuv420p/30-FPS delivery shape. They do **not** match the recommended 1080×1920 target, 48 kHz audio target or explicit closed-GOP target."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_VIDEO_DELIVERY_META_REELS.md",
+        "line":  36,
+        "keyword":  "30 FPS",
+        "text":  "The frozen C11-C review master remains 720×1280 / 30 FPS. It is intentionally not rewritten merely to match the final Meta delivery profile."
+    },
+    {
+        "path":  "docs\\current\\c11c\\C11-C_VIDEO_DELIVERY_META_REELS.md",
+        "line":  40,
+        "keyword":  "30 FPS",
+        "text":  "For a final Meta delivery profile we require an explicit encoder contract for 1080×1920, H.264/yuv420p, fixed 30 FPS, closed 3-second GOP, AAC-LC, 48 kHz stereo and 192 kbps audio."
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_BRANCH_START_V1.0.md",
+        "line":  26,
+        "keyword":  "540",
+        "text":  "Do not modify C11-B/C mechanics, simulation truth, RNG, result semantics, timing truth, proven rendering/presentation behavior, C7/C9 contracts or logical 540x960 geometry without an explicit new checkpoint."
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_BRANCH_START_V1.0.md",
+        "line":  26,
+        "keyword":  "presentation",
+        "text":  "Do not modify C11-B/C mechanics, simulation truth, RNG, result semantics, timing truth, proven rendering/presentation behavior, C7/C9 contracts or logical 540x960 geometry without an explicit new checkpoint."
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_MILESTONES_APPROVED.md",
+        "line":  12,
+        "keyword":  "editorial",
+        "text":  "| D1 | Challenge visual/editorial parity | parity contract, one pilot, focused regression, safe-area proof |"
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_MILESTONES_APPROVED.md",
+        "line":  12,
+        "keyword":  "safe-area",
+        "text":  "| D1 | Challenge visual/editorial parity | parity contract, one pilot, focused regression, safe-area proof |"
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_MILESTONES_APPROVED.md",
+        "line":  13,
+        "keyword":  "safe-area",
+        "text":  "| D1.5 | Layout/template sub-checkpoint | safe-area template contract; does not introduce a new branch or duplicate the D1 gate |"
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_ROADMAP_V1.0_STATELESS.md",
+        "line":  13,
+        "keyword":  "editorial",
+        "text":  "## D1 — Challenge visual/editorial parity"
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_ROADMAP_V1.0_STATELESS.md",
+        "line":  15,
+        "keyword":  "editorial",
+        "text":  "Apply the proven C11-C composition, typography, safe-area and editorial hierarchy to Challenges without changing Challenge timing, mechanics or answer truth."
+    },
+    {
+        "path":  "docs\\current\\d\\C11-D_ROADMAP_V1.0_STATELESS.md",
+        "line":  15,
+        "keyword":  "safe-area",
+        "text":  "Apply the proven C11-C composition, typography, safe-area and editorial hierarchy to Challenges without changing Challenge timing, mechanics or answer truth."
+    },
+    {
+        "path":  "docs\\current\\d\\D0_MIGRATION_MAP.md",
+        "line":  6,
+        "keyword":  "540",
+        "text":  "- 540x960 logical geometry."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  3,
+        "keyword":  "Body",
+        "text":  "Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  3,
+        "keyword":  "CTA",
+        "text":  "Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  3,
+        "keyword":  "Footer",
+        "text":  "Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  3,
+        "keyword":  "Header",
+        "text":  "Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  3,
+        "keyword":  "presentation",
+        "text":  "Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  3,
+        "keyword":  "safe area",
+        "text":  "Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop."
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  14,
+        "keyword":  "Header",
+        "text":  "\"header\": {},"
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  15,
+        "keyword":  "Body",
+        "text":  "\"body\": {},"
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  16,
+        "keyword":  "Footer",
+        "text":  "\"footer\": {},"
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  17,
+        "keyword":  "CTA",
+        "text":  "\"cta\": {},"
+    },
+    {
+        "path":  "docs\\current\\d\\D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "line":  23,
+        "keyword":  "presentation",
+        "text":  "The template contract belongs between visual parity and reusable assets so platform presentation is declarative before broad production."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+        "line":  44,
+        "keyword":  "CTA",
+        "text":  "The harness derives expected frame counts from each definition\u0027s `video.fps` and `hook_duration`, `game_duration`, `reveal_duration`, `cta_duration` using the same seconds-to-frames rounding contract used by `build_factory.py`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+        "line":  46,
+        "keyword":  "30fps",
+        "text":  "No global 540×960 / 30fps / 60-frame constraint is imposed."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+        "line":  46,
+        "keyword":  "540",
+        "text":  "No global 540×960 / 30fps / 60-frame constraint is imposed."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11A1_CURRENT_MATRIX_AUDIT.md",
+        "line":  7,
+        "keyword":  "540",
+        "text":  "| CHALLENGE_001 | key | 1.0 | 1.0 | 540 frames / 9.0 s |"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11A1_CURRENT_MATRIX_AUDIT.md",
+        "line":  12,
+        "keyword":  "540",
+        "text":  "| CHALLENGE_006 | catch_v1 | — | 2.0 | 540 frames / 9.0 s |"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  1,
+        "keyword":  "presentation",
+        "text":  "# C11-B.0.1 — Presentation Space Audit"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  10,
+        "keyword":  "Body",
+        "text":  "2. the coordinates that `CoordinateMapper` says should be rendered inside `BodyRegion`;"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  10,
+        "keyword":  "CoordinateMapper",
+        "text":  "2. the coordinates that `CoordinateMapper` says should be rendered inside `BodyRegion`;"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  11,
+        "keyword":  "presentation",
+        "text":  "3. the actual `Sprite2D` position observed by the presentation scene at the winning frame."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  29,
+        "keyword":  "presentation",
+        "text":  "A non-zero delta identifies a presentation integration problem rather than a simulation problem."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  33,
+        "keyword":  "540",
+        "text":  "With BodyRegion `Rect2(0,144,540,672)` and aspect-preserving fit, the logical sample `Y=1359.253` maps to approximately `Y=619.739`; `Y=821.9901` maps to approximately `Y=431.697`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  33,
+        "keyword":  "Body",
+        "text":  "With BodyRegion `Rect2(0,144,540,672)` and aspect-preserving fit, the logical sample `Y=1359.253` maps to approximately `Y=619.739`; `Y=821.9901` maps to approximately `Y=431.697`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  35,
+        "keyword":  "Body",
+        "text":  "Both are inside the BodyRegion. If the actual screen position reports the original logical Y instead, the render boundary is not consuming the mapper result as intended."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_1_PRESENTATION_SPACE_AUDIT.md",
+        "line":  39,
+        "keyword":  "presentation",
+        "text":  "C11-B.0.1 is diagnostic only. The final C11-B.0 gate remains based on actual presentation geometry."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  1,
+        "keyword":  "Body",
+        "text":  "# C11-B.0 — Unified Social Frame \u0026 Body Visibility"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  6,
+        "keyword":  "presentation",
+        "text":  "C11-A and C11-A.1 remain frozen. This phase changes presentation mapping only."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  11,
+        "keyword":  "540",
+        "text":  "Export canvas: `540x960`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  13,
+        "keyword":  "540",
+        "text":  "- HeaderRegion: `Rect2(0, 0, 540, 144)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  13,
+        "keyword":  "Header",
+        "text":  "- HeaderRegion: `Rect2(0, 0, 540, 144)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  14,
+        "keyword":  "540",
+        "text":  "- BodyRegion: `Rect2(0, 144, 540, 672)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  14,
+        "keyword":  "Body",
+        "text":  "- BodyRegion: `Rect2(0, 144, 540, 672)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  15,
+        "keyword":  "540",
+        "text":  "- FooterRegion: `Rect2(0, 816, 540, 144)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  15,
+        "keyword":  "Footer",
+        "text":  "- FooterRegion: `Rect2(0, 816, 540, 144)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  17,
+        "keyword":  "Body",
+        "text":  "Header/body/footer are structural regions shared by every product family."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  17,
+        "keyword":  "Footer",
+        "text":  "Header/body/footer are structural regions shared by every product family."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  17,
+        "keyword":  "Header",
+        "text":  "Header/body/footer are structural regions shared by every product family."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  18,
+        "keyword":  "CTA",
+        "text":  "Content roles such as hook, CTA, countdown, branding and information are not separate layouts."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  24,
+        "keyword":  "CoordinateMapper",
+        "text":  "`CoordinateMapper.map_position()` and `map_scalar_x()` now accept an optional `target_rect`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  25,
+        "keyword":  "CTA",
+        "text":  "When supplied for `CANVAS_1080X1920`, the source is fitted into the target rectangle with a uniform scale and centered offset."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  27,
+        "keyword":  "Body",
+        "text":  "For the canonical BodyRegion the fit is:"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  34,
+        "keyword":  "540",
+        "text":  "- logical `(540,1700)` → `(270,739)`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  40,
+        "keyword":  "CTA",
+        "text":  "`WinningFrameVisibilityGate.gd` validates the actual presentation rectangles at the authoritative winning frame."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  40,
+        "keyword":  "presentation",
+        "text":  "`WinningFrameVisibilityGate.gd` validates the actual presentation rectangles at the authoritative winning frame."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  46,
+        "keyword":  "Body",
+        "text":  "- extends outside BodyRegion."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  48,
+        "keyword":  "presentation",
+        "text":  "The gate is presentation-only and consumes already-produced geometry."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  52,
+        "keyword":  "Body",
+        "text":  "`GeneradorMaestro.gd` now projects challenge object/target presentation through BodyRegion."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  52,
+        "keyword":  "presentation",
+        "text":  "`GeneradorMaestro.gd` now projects challenge object/target presentation through BodyRegion."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  63,
+        "keyword":  "Body",
+        "text":  "`tools/run_c11b_body_visibility_audit.ps1` consumes the frozen C11-A.1 run set and reuses each `challenge_definition.json`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  69,
+        "keyword":  "Body",
+        "text":  "`qa/c11b_visibility_qa/C11B0_BODY_VISIBILITY_MANIFEST.json`"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  77,
+        "keyword":  "presentation",
+        "text":  "This checkpoint does not yet migrate `PresentationUI` and `VisualContentPlayer` onto `UnifiedSocialFrame`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  77,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "This checkpoint does not yet migrate `PresentationUI` and `VisualContentPlayer` onto `UnifiedSocialFrame`."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B0_CONTRACT.md",
+        "line":  81,
+        "keyword":  "Body",
+        "text":  "The `target_position` secondary binding is mapped through the same `BodyRegion` target rect as the primary entity. This keeps both winning-frame entities under the Unified Social Frame geometry."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  4,
+        "keyword":  "presentation",
+        "text":  "Integrate the frozen C11-B.0 UnifiedSocialFrame with the existing C6 presentation components without changing simulation, RNG, FrameSnapshot/SimulationResult semantics or the frozen ContentEnvelope schema."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  4,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "Integrate the frozen C11-B.0 UnifiedSocialFrame with the existing C6 presentation components without changing simulation, RNG, FrameSnapshot/SimulationResult semantics or the frozen ContentEnvelope schema."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  7,
+        "keyword":  "540",
+        "text":  "UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  7,
+        "keyword":  "Body",
+        "text":  "UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  7,
+        "keyword":  "Footer",
+        "text":  "UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  7,
+        "keyword":  "Header",
+        "text":  "UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  7,
+        "keyword":  "presentation",
+        "text":  "UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  7,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  10,
+        "keyword":  "CTA",
+        "text":  "PresentationUI, HookComponent, CTAComponent and PresentationProfile remain the UI primitives. SocialUIBinder is only an adapter from normalized render models / existing presentation metadata to PresentationUI."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  10,
+        "keyword":  "presentation",
+        "text":  "PresentationUI, HookComponent, CTAComponent and PresentationProfile remain the UI primitives. SocialUIBinder is only an adapter from normalized render models / existing presentation metadata to PresentationUI."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  13,
+        "keyword":  "presentation",
+        "text":  "No `ui_elements` or other new envelope property is added. Existing presentation metadata is read without mutation."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  16,
+        "keyword":  "Body",
+        "text":  "Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  16,
+        "keyword":  "CoordinateMapper",
+        "text":  "Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  16,
+        "keyword":  "presentation",
+        "text":  "Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  16,
+        "keyword":  "PresentationFramer",
+        "text":  "Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  16,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  19,
+        "keyword":  "Body",
+        "text":  "VisualContentPlayer mounts UnifiedSocialFrame and mounts ContentRendererHost under BodyContentRoot. RenderedFrameStream and existing visual generators/renderers remain untouched."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11B1_CONTRACT.md",
+        "line":  19,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "VisualContentPlayer mounts UnifiedSocialFrame and mounts ContentRendererHost under BodyContentRoot. RenderedFrameStream and existing visual generators/renderers remain untouched."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  196,
+        "keyword":  "CTA",
+        "text":  "\"route\": \"visual_loop/fractal\","
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  203,
+        "keyword":  "540",
+        "text":  "\"width\": 540,"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  252,
+        "keyword":  "safe area",
+        "text":  "| Safe area      | Nada importante queda mal colocado                   |"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  259,
+        "keyword":  "CTA",
+        "text":  "| Jerarquía      | Hook / juego / objetivo / CTA están claros           |"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  262,
+        "keyword":  "CTA",
+        "text":  "Y aquí creo que está **exactamente el problema que has detectado tú**."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  264,
+        "keyword":  "CTA",
+        "text":  "Por la inspección física del C10 smoke actual, hay indicios claros de que algunas rutas siguen teniendo una presentación muy básica: el fractal tiene una apariencia extremadamente simple y el tracking deja una cantidad importante de espacio visual sin utilizar. Eso no es un fallo de arquitectura matemática; es precisamente el tipo de problema que C11 debe convertir en evidencia cuantificable antes de empezar a “embellecer”."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  275,
+        "keyword":  "CTA",
+        "text":  "FRACTAL"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  306,
+        "keyword":  "CTA",
+        "text":  "pero con una regla absolutamente estricta:"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  329,
+        "keyword":  "CTA",
+        "text":  "Eso encaja perfectamente con la arquitectura existente, donde los temas visuales son contenido/presentación y no nuevas familias matemáticas."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  340,
+        "keyword":  "540",
+        "text":  "540 × 960"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  341,
+        "keyword":  "30 FPS",
+        "text":  "30 FPS"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  353,
+        "keyword":  "540",
+        "text":  "540 × 960"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  354,
+        "keyword":  "30 FPS",
+        "text":  "30 FPS"
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  372,
+        "keyword":  "CTA",
+        "text":  "o cualquier tercera solución que resulte técnicamente correcta."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  437,
+        "keyword":  "CTA",
+        "text":  "5. No inyectar RNG-level parameters."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  444,
+        "keyword":  "CTA",
+        "text":  "12. Detectar fallos técnicos."
+    },
+    {
+        "path":  "docs\\history\\c11\\C11-README.md",
+        "line":  488,
+        "keyword":  "CTA",
+        "text":  "Eso sería exactamente el tipo de contaminación arquitectónica que hemos evitado hasta C10."
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_FILES_SHA256.json",
+        "line":  3,
+        "keyword":  "editorial",
+        "text":  "\"core/presentation/C11CVisualEditorialLayer.gd\": \"f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_FILES_SHA256.json",
+        "line":  3,
+        "keyword":  "presentation",
+        "text":  "\"core/presentation/C11CVisualEditorialLayer.gd\": \"f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_FILES_SHA256.json",
+        "line":  6,
+        "keyword":  "presentation",
+        "text":  "\"tests/C11CCommonPresentationOverlayContractTest.gd\": \"eac84391f59ecbbbdfdaa7f00e6ed57ce03809470d5e78c7bc227c9cdd6efefd\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_FILES_SHA256.json",
+        "line":  9,
+        "keyword":  "CTA",
+        "text":  "\"tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd\": \"b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_FILES_SHA256.json",
+        "line":  10,
+        "keyword":  "CTA",
+        "text":  "\"tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1\": \"02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_MANIFEST.json",
+        "line":  6,
+        "keyword":  "editorial",
+        "text":  "\"core/presentation/C11CVisualEditorialLayer.gd\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_MANIFEST.json",
+        "line":  6,
+        "keyword":  "presentation",
+        "text":  "\"core/presentation/C11CVisualEditorialLayer.gd\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_MANIFEST.json",
+        "line":  9,
+        "keyword":  "presentation",
+        "text":  "\"tests/C11CCommonPresentationOverlayContractTest.gd\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_MANIFEST.json",
+        "line":  12,
+        "keyword":  "CTA",
+        "text":  "\"tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd\","
+    },
+    {
+        "path":  "docs\\history\\c11\\OVERLAY_MANIFEST.json",
+        "line":  13,
+        "keyword":  "CTA",
+        "text":  "\"tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1\","
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  3,
+        "keyword":  "presentation",
+        "text":  "This is a presentation-only delta against the C10 freeze."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  7,
+        "keyword":  "Body",
+        "text":  "- `UnifiedSocialFrame.tscn/.gd` — canonical Header/Body/Footer topology."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  7,
+        "keyword":  "Footer",
+        "text":  "- `UnifiedSocialFrame.tscn/.gd` — canonical Header/Body/Footer topology."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  7,
+        "keyword":  "Header",
+        "text":  "- `UnifiedSocialFrame.tscn/.gd` — canonical Header/Body/Footer topology."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  7,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "- `UnifiedSocialFrame.tscn/.gd` — canonical Header/Body/Footer topology."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  8,
+        "keyword":  "CoordinateMapper",
+        "text":  "- `CoordinateMapper.gd` — optional target-rect projection with aspect preservation."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  9,
+        "keyword":  "presentation",
+        "text":  "- `PresentationProfile.gd` — canonical social-region geometry without changing existing C6 composition semantics."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  10,
+        "keyword":  "presentation",
+        "text":  "- `WinningFrameVisibilityGate.gd` — deterministic presentation geometry gate."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  11,
+        "keyword":  "Body",
+        "text":  "- `GeneradorMaestro.gd` — challenge object/target mapping constrained to BodyRegion plus audit mode."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  12,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "- `C11B0UnifiedSocialFrameContractTest.gd` — contract test."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  13,
+        "keyword":  "Body",
+        "text":  "- `run_c11b_body_visibility_audit.ps1` — 54-run visibility audit using C11-A.1 artifacts."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  23,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "godot --headless --path . -s .\\tests\\C11B0UnifiedSocialFrameContractTest.gd"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  29,
+        "keyword":  "Body",
+        "text":  ".\\tools\\run_c11b_body_visibility_audit.ps1"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0.md",
+        "line":  35,
+        "keyword":  "Body",
+        "text":  "The `target_position` secondary binding is mapped through the same `BodyRegion` target rect as the primary entity. This keeps both winning-frame entities under the Unified Social Frame geometry."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1.md",
+        "line":  1,
+        "keyword":  "presentation",
+        "text":  "# C11-B.0.1 — Presentation Space Audit / Local Sprite Geometry"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1.md",
+        "line":  5,
+        "keyword":  "CoordinateMapper",
+        "text":  "The previous gate derived a Rect2 through `Sprite2D.get_global_transform()` and then converted it through `PresentationUILayer`. That is not the same coordinate space in which `CoordinateMapper` writes gameplay sprite positions."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1.md",
+        "line":  5,
+        "keyword":  "presentation",
+        "text":  "The previous gate derived a Rect2 through `Sprite2D.get_global_transform()` and then converted it through `PresentationUILayer`. That is not the same coordinate space in which `CoordinateMapper` writes gameplay sprite positions."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1.md",
+        "line":  7,
+        "keyword":  "presentation",
+        "text":  "This delta audits `Sprite2D.transform * Sprite2D.get_rect()` in `GestorJuego` local presentation space. It also emits:"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1.md",
+        "line":  28,
+        "keyword":  "UnifiedSocialFrame",
+        "text":  "godot --headless --path . -s .\\tests\\C11B0UnifiedSocialFrameContractTest.gd"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1.md",
+        "line":  29,
+        "keyword":  "Body",
+        "text":  ".\\tools\\run_c11b_body_visibility_audit.ps1"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1_NEXT.md",
+        "line":  4,
+        "keyword":  "Body",
+        "text":  "The audit now prints body_rect, logical, expected and actual positions for failed runs."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1_NEXT.md",
+        "line":  7,
+        "keyword":  "CTA",
+        "text":  "or whether the observed gate rectangle comes from a stale/different presentation path."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1_NEXT.md",
+        "line":  7,
+        "keyword":  "presentation",
+        "text":  "or whether the observed gate rectangle comes from a stale/different presentation path."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_1_NEXT.md",
+        "line":  10,
+        "keyword":  "Body",
+        "text":  ".\\tools\\run_c11b_body_visibility_audit.ps1"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  1,
+        "keyword":  "presentation",
+        "text":  "# C11-B.0.2 — Presentation Framing Contract v1"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  6,
+        "keyword":  "presentation",
+        "text":  "- Added `PresentationFramer.gd`."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  6,
+        "keyword":  "PresentationFramer",
+        "text":  "- Added `PresentationFramer.gd`."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  7,
+        "keyword":  "presentation",
+        "text":  "- Added declarative `presentation.framing_policy` resolution."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  8,
+        "keyword":  "presentation",
+        "text":  "- `PRIMARY_FOCUS` computes one constant presentation offset from the real winning-frame Sprite2D geometry."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  15,
+        "keyword":  "presentation",
+        "text":  "Do not hardcode `CHALLENGE_001` inside the auditor. Add this presentation-only field to the challenge definition copy used for C11-B:"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  18,
+        "keyword":  "presentation",
+        "text":  "\"presentation\": {"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  21,
+        "keyword":  "540",
+        "text":  "\"static_target_position\": [540.0, 960.0],"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  27,
+        "keyword":  "presentation",
+        "text":  "This changes presentation metadata only; it does not alter `generation`, mechanics, RNG or winning-frame math."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  32,
+        "keyword":  "Body",
+        "text":  "`.\\tools\\run_c11b_body_visibility_audit.ps1`"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  38,
+        "keyword":  "presentation",
+        "text":  "- non-zero `presentation_frame_offset` for those runs."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  40,
+        "keyword":  "Body",
+        "text":  "- the audited `object.screen_rect` is inside `body_rect`."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  48,
+        "keyword":  "presentation",
+        "text":  "`godot --headless --path . -s .\\tests\\C11B02PresentationFramingContractTest.gd`"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  56,
+        "keyword":  "Body",
+        "text":  "2. `build_winning_entity_audit()` now measures the post-framing Sprite2D in `PresentationUI` presentation space using the sprite global transform; it no longer compares `GestorJuego`-local geometry against the social BodyRegion. A defensive `force_update_transform()` is used immediately before reading the transform."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2.md",
+        "line":  56,
+        "keyword":  "presentation",
+        "text":  "2. `build_winning_entity_audit()` now measures the post-framing Sprite2D in `PresentationUI` presentation space using the sprite global transform; it no longer compares `GestorJuego`-local geometry against the social BodyRegion. A defensive `force_update_transform()` is used immediately before reading the transform."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  1,
+        "keyword":  "presentation",
+        "text":  "# C11-B.0.2 v3 — Pure Mathematical Presentation Framing"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  6,
+        "keyword":  "presentation",
+        "text":  "presentation geometry pipeline."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  21,
+        "keyword":  "presentation",
+        "text":  "Presentation pipeline:"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  23,
+        "keyword":  "CoordinateMapper",
+        "text":  "`FrameSnapshot` → `CoordinateMapper` → `PresentationFramer` → `WinningFrameVisibilityGate`"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  23,
+        "keyword":  "presentation",
+        "text":  "`FrameSnapshot` → `CoordinateMapper` → `PresentationFramer` → `WinningFrameVisibilityGate`"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  23,
+        "keyword":  "PresentationFramer",
+        "text":  "`FrameSnapshot` → `CoordinateMapper` → `PresentationFramer` → `WinningFrameVisibilityGate`"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  25,
+        "keyword":  "CTA",
+        "text":  "The entity rectangle is derived from the existing `FrameSnapshot` fields:"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  31,
+        "keyword":  "presentation",
+        "text":  "- presentation calibration."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  37,
+        "keyword":  "presentation",
+        "text":  "Add presentation metadata to `challenges/CHALLENGE_001.json`:"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  40,
+        "keyword":  "presentation",
+        "text":  "\"presentation\": {"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  43,
+        "keyword":  "540",
+        "text":  "\"static_target_position\": [540.0, 960.0],"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  49,
+        "keyword":  "presentation",
+        "text":  "Do not add a hardcoded challenge-id branch to the presentation code."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  55,
+        "keyword":  "presentation",
+        "text":  "godot --headless --path . -s .\\tests\\C11B02PresentationFramingContractTest.gd"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V3.md",
+        "line":  56,
+        "keyword":  "Body",
+        "text":  ".\\tools\\run_c11b_body_visibility_audit.ps1"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  6,
+        "keyword":  "presentation",
+        "text":  "FamilyAssets, target base position and final presentation asset state had been initialized."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  9,
+        "keyword":  "presentation",
+        "text":  "v4 defers `initialize_presentation_framing()` and `run_c11b_visibility_audit()` until after:"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  11,
+        "keyword":  "presentation",
+        "text":  "1. `FamilyAssets.configure_presentation()`;"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  13,
+        "keyword":  "presentation",
+        "text":  "3. asset validation / presentation calibration."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  20,
+        "keyword":  "presentation",
+        "text":  "`PRIMARY_FOCUS` presentation policy only in the six C11-A.1 QA copies."
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  35,
+        "keyword":  "presentation",
+        "text":  "\"presentation\": {"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  47,
+        "keyword":  "presentation",
+        "text":  "godot --headless --path . -s .\\tests\\C11B02PresentationFramingContractTest.gd"
+    },
+    {
+        "path":  "docs\\history\\c11\\README_C11B0_2_V4.md",
+        "line":  48,
+        "keyword":  "Body",
+        "text":  ".\\tools\\run_c11b_body_visibility_audit.ps1"
+    }
+]

@@ -1,0 +1,2178 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "mechanic_current":  "key",
+        "mechanic_version_current":  "1.0",
+        "mechanic_c7":  "key",
+        "mechanic_version_c7":  "1.0",
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "static_position",
+                                     "static_target_position":  [
+                                                                    540.0,
+                                                                    960.0
+                                                                ],
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "static_position",
+                                "static_target_position":  [
+                                                               540.0,
+                                                               960.0
+                                                           ],
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "hook_duration":  0.0,
+                              "game_duration":  7.0,
+                              "cta_duration":  2.0,
+                              "reveal_duration":  0.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "hook_duration":  0.0,
+                         "game_duration":  7.0,
+                         "cta_duration":  2.0,
+                         "reveal_duration":  0.0
+                     },
+        "current_video_profile":  "test_master_11s",
+        "current_video_profile_version":  "1.0",
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/lock.svg",
+                               "res://assets/c6/key.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/lock.svg",
+                          "res://assets/c6/key.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "asset_family",
+                                       "asset_family_version",
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "engine_version",
+                                       "generation",
+                                       "mechanic",
+                                       "mechanic_version",
+                                       "presentation",
+                                       "schema_version",
+                                       "theme",
+                                       "video",
+                                       "video_profile",
+                                       "video_profile_version"
+                                   ],
+        "c7_property_names":  [
+                                  "asset_family",
+                                  "asset_family_version",
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "engine_version",
+                                  "generation",
+                                  "mechanic",
+                                  "mechanic_version",
+                                  "presentation",
+                                  "schema_version",
+                                  "theme",
+                                  "video",
+                                  "video_profile",
+                                  "video_profile_version"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "0993b8a58e617c1b298fae1a1e2db14e984e363b91a4cfbffa3c6f0078f83189",
+                                             "55a15ac32b91eba538a5a3b5e54fb38f3cd89d2ee29e0e59d59be5ea95fb292f",
+                                             "91dd189e1bac1a283f0a74b52622b98a650483a627b17b0b9df9761a59c9b2e0",
+                                             "982afefbba892187d4b2a737398b68e306f85ae377ca10ee29175a2ea0d02675",
+                                             "e72bad097772eef4569a03342d3604f054d8a69902a1d8e605b0060d4b832e19"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_001_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "982afefbba892187d4b2a737398b68e306f85ae377ca10ee29175a2ea0d02675",
+                                           "mechanic":  "key",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "static_target_position":  [
+                                                                                               540.0,
+                                                                                               960.0
+                                                                                           ],
+                                                                "profile":  "social_default_v1",
+                                                                "framing_policy":  "PRIMARY_FOCUS"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/lock.svg",
+                                                          "object_path":  "res://assets/c6/key.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_001_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "982afefbba892187d4b2a737398b68e306f85ae377ca10ee29175a2ea0d02675",
+                                           "mechanic":  "key",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "static_target_position":  [
+                                                                                               540.0,
+                                                                                               960.0
+                                                                                           ],
+                                                                "profile":  "social_default_v1",
+                                                                "framing_policy":  "PRIMARY_FOCUS"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/lock.svg",
+                                                          "object_path":  "res://assets/c6/key.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_001_seed_314159\\challenge_definition.json",
+                                           "sha256":  "91dd189e1bac1a283f0a74b52622b98a650483a627b17b0b9df9761a59c9b2e0",
+                                           "mechanic":  "key",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "static_target_position":  [
+                                                                                               540.0,
+                                                                                               960.0
+                                                                                           ],
+                                                                "profile":  "social_default_v1",
+                                                                "framing_policy":  "PRIMARY_FOCUS"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/lock.svg",
+                                                          "object_path":  "res://assets/c6/key.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_001_seed_54321\\challenge_definition.json",
+                                           "sha256":  "e72bad097772eef4569a03342d3604f054d8a69902a1d8e605b0060d4b832e19",
+                                           "mechanic":  "key",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "static_target_position":  [
+                                                                                               540.0,
+                                                                                               960.0
+                                                                                           ],
+                                                                "profile":  "social_default_v1",
+                                                                "framing_policy":  "PRIMARY_FOCUS"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/lock.svg",
+                                                          "object_path":  "res://assets/c6/key.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_001_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "55a15ac32b91eba538a5a3b5e54fb38f3cd89d2ee29e0e59d59be5ea95fb292f",
+                                           "mechanic":  "key",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "static_target_position":  [
+                                                                                               540.0,
+                                                                                               960.0
+                                                                                           ],
+                                                                "profile":  "social_default_v1",
+                                                                "framing_policy":  "PRIMARY_FOCUS"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/lock.svg",
+                                                          "object_path":  "res://assets/c6/key.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_001_seed_998877\\challenge_definition.json",
+                                           "sha256":  "0993b8a58e617c1b298fae1a1e2db14e984e363b91a4cfbffa3c6f0078f83189",
+                                           "mechanic":  "key",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "static_target_position":  [
+                                                                                               540.0,
+                                                                                               960.0
+                                                                                           ],
+                                                                "profile":  "social_default_v1",
+                                                                "framing_policy":  "PRIMARY_FOCUS"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/lock.svg",
+                                                          "object_path":  "res://assets/c6/key.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "mechanic_current":  "parking",
+        "mechanic_version_current":  "1.0",
+        "mechanic_c7":  "parking",
+        "mechanic_version_c7":  "1.0",
+        "current_presentation":  {
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "hook_duration":  3.0,
+                              "game_duration":  7.0,
+                              "cta_duration":  0.0,
+                              "reveal_duration":  0.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "hook_duration":  3.0,
+                         "game_duration":  7.0,
+                         "cta_duration":  0.0,
+                         "reveal_duration":  0.0
+                     },
+        "current_video_profile":  "test_master_11s",
+        "current_video_profile_version":  "1.0",
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/parking_target.svg",
+                               "res://assets/c6/car.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/parking_target.svg",
+                          "res://assets/c6/car.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "asset_family",
+                                       "asset_family_version",
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "engine_version",
+                                       "generation",
+                                       "mechanic",
+                                       "mechanic_version",
+                                       "presentation",
+                                       "schema_version",
+                                       "theme",
+                                       "video",
+                                       "video_profile",
+                                       "video_profile_version"
+                                   ],
+        "c7_property_names":  [
+                                  "asset_family",
+                                  "asset_family_version",
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "engine_version",
+                                  "generation",
+                                  "mechanic",
+                                  "mechanic_version",
+                                  "presentation",
+                                  "schema_version",
+                                  "theme",
+                                  "video",
+                                  "video_profile",
+                                  "video_profile_version"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "2130bb0923e7efe3ca0cbda84835d163009bf9b6c43f17067cc35bd46a5d0d86",
+                                             "45b1a766d24303f38d61d5bf62119be421f3ff4aac4d960e08e69ab1a93beaac",
+                                             "7725cb060ce2500270ae40e345d01b4a105ccbe585b7242eabafa94a2a8d302f",
+                                             "d725c9fe3d16b6f8ac4bb9f63f179ab90a3944f59b1f783ee7ca616eee218475",
+                                             "d767487018c60376719da5a16677789169d03127ec926a45b26802f264d303e3"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "2130bb0923e7efe3ca0cbda84835d163009bf9b6c43f17067cc35bd46a5d0d86",
+                                           "mechanic":  "parking",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "2130bb0923e7efe3ca0cbda84835d163009bf9b6c43f17067cc35bd46a5d0d86",
+                                           "mechanic":  "parking",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_002_seed_314159\\challenge_definition.json",
+                                           "sha256":  "7725cb060ce2500270ae40e345d01b4a105ccbe585b7242eabafa94a2a8d302f",
+                                           "mechanic":  "parking",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_002_seed_54321\\challenge_definition.json",
+                                           "sha256":  "d767487018c60376719da5a16677789169d03127ec926a45b26802f264d303e3",
+                                           "mechanic":  "parking",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_002_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "45b1a766d24303f38d61d5bf62119be421f3ff4aac4d960e08e69ab1a93beaac",
+                                           "mechanic":  "parking",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_002_seed_998877\\challenge_definition.json",
+                                           "sha256":  "d725c9fe3d16b6f8ac4bb9f63f179ab90a3944f59b1f783ee7ca616eee218475",
+                                           "mechanic":  "parking",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "mechanic_current":  "pilot",
+        "mechanic_version_current":  "2.0",
+        "mechanic_c7":  "pilot",
+        "mechanic_version_c7":  "2.0",
+        "current_presentation":  {
+                                     "coordinate_space":  "PILOT_0X100",
+                                     "secondary_binding":  "target_x",
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "PILOT_0X100",
+                                "secondary_binding":  "target_x",
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "hook_duration":  3.0,
+                              "game_duration":  7.0,
+                              "cta_duration":  2.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "hook_duration":  3.0,
+                         "game_duration":  7.0,
+                         "cta_duration":  2.0
+                     },
+        "current_video_profile":  "test_master_11s",
+        "current_video_profile_version":  "1.0",
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/waypoint.svg",
+                               "res://assets/c6/pilot.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/waypoint.svg",
+                          "res://assets/c6/pilot.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "asset_family",
+                                       "asset_family_version",
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "engine_version",
+                                       "generation",
+                                       "mechanic",
+                                       "mechanic_version",
+                                       "presentation",
+                                       "schema_version",
+                                       "theme",
+                                       "video",
+                                       "video_profile",
+                                       "video_profile_version"
+                                   ],
+        "c7_property_names":  [
+                                  "asset_family",
+                                  "asset_family_version",
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "engine_version",
+                                  "generation",
+                                  "mechanic",
+                                  "mechanic_version",
+                                  "presentation",
+                                  "schema_version",
+                                  "theme",
+                                  "video",
+                                  "video_profile",
+                                  "video_profile_version"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "21b46ac8aa8513d857ca3e347d9fb95daf2ba91f531e1fccfa37628b47c7e37a",
+                                             "29ee170af4e059d3ad22d0b0261969ff3c414305c3353180680b7aa87f60d35e",
+                                             "2c3654511572fc029cc7ed6361c111ce6e9fe1e714dec435a90daf8427554c68",
+                                             "5eccd52531037a9dbaf8ec05a09bc4d2419193ef3bb10adef37fe49efb9fc859",
+                                             "883f4f7126ce99f54de2cdf28e4e22b320a17c9d3052f6c8a15642e60a1e1842"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_003_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "883f4f7126ce99f54de2cdf28e4e22b320a17c9d3052f6c8a15642e60a1e1842",
+                                           "mechanic":  "pilot",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "PILOT_0X100",
+                                                                "secondary_binding":  "target_x",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/waypoint.svg",
+                                                          "object_path":  "res://assets/c6/pilot.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_003_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "883f4f7126ce99f54de2cdf28e4e22b320a17c9d3052f6c8a15642e60a1e1842",
+                                           "mechanic":  "pilot",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "PILOT_0X100",
+                                                                "secondary_binding":  "target_x",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/waypoint.svg",
+                                                          "object_path":  "res://assets/c6/pilot.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_003_seed_314159\\challenge_definition.json",
+                                           "sha256":  "29ee170af4e059d3ad22d0b0261969ff3c414305c3353180680b7aa87f60d35e",
+                                           "mechanic":  "pilot",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "PILOT_0X100",
+                                                                "secondary_binding":  "target_x",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/waypoint.svg",
+                                                          "object_path":  "res://assets/c6/pilot.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_003_seed_54321\\challenge_definition.json",
+                                           "sha256":  "2c3654511572fc029cc7ed6361c111ce6e9fe1e714dec435a90daf8427554c68",
+                                           "mechanic":  "pilot",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "PILOT_0X100",
+                                                                "secondary_binding":  "target_x",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/waypoint.svg",
+                                                          "object_path":  "res://assets/c6/pilot.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_003_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "5eccd52531037a9dbaf8ec05a09bc4d2419193ef3bb10adef37fe49efb9fc859",
+                                           "mechanic":  "pilot",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "PILOT_0X100",
+                                                                "secondary_binding":  "target_x",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/waypoint.svg",
+                                                          "object_path":  "res://assets/c6/pilot.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_003_seed_998877\\challenge_definition.json",
+                                           "sha256":  "21b46ac8aa8513d857ca3e347d9fb95daf2ba91f531e1fccfa37628b47c7e37a",
+                                           "mechanic":  "pilot",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "PILOT_0X100",
+                                                                "secondary_binding":  "target_x",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/waypoint.svg",
+                                                          "object_path":  "res://assets/c6/pilot.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "mechanic_current":  "parking_v2",
+        "mechanic_version_current":  "2.0",
+        "mechanic_c7":  "parking_v2",
+        "mechanic_version_c7":  "2.0",
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "target_position",
+                                     "visual":  {
+                                                    "object_scale":  0.85,
+                                                    "object_offset":  [
+                                                                          0.0,
+                                                                          0.0
+                                                                      ],
+                                                    "target_scale":  0.85,
+                                                    "target_offset":  [
+                                                                          0.0,
+                                                                          0.0
+                                                                      ]
+                                                },
+                                     "ui":  {
+                                                "theme":  "default_c6"
+                                            },
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "target_position",
+                                "visual":  {
+                                               "object_scale":  0.85,
+                                               "object_offset":  [
+                                                                     0.0,
+                                                                     0.0
+                                                                 ],
+                                               "target_scale":  0.85,
+                                               "target_offset":  [
+                                                                     0.0,
+                                                                     0.0
+                                                                 ]
+                                           },
+                                "ui":  {
+                                           "theme":  "default_c6"
+                                       },
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "hook_duration":  3.0,
+                              "game_duration":  7.0,
+                              "reveal_duration":  3.0,
+                              "cta_duration":  2.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "hook_duration":  3.0,
+                         "game_duration":  7.0,
+                         "reveal_duration":  3.0,
+                         "cta_duration":  2.0
+                     },
+        "current_video_profile":  "test_master_11s",
+        "current_video_profile_version":  "1.0",
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/parking_target.svg",
+                               "res://assets/c6/car.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/parking_target.svg",
+                          "res://assets/c6/car.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "asset_family",
+                                       "asset_family_version",
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "engine_version",
+                                       "generation",
+                                       "mechanic",
+                                       "mechanic_version",
+                                       "presentation",
+                                       "schema_version",
+                                       "theme",
+                                       "video",
+                                       "video_profile",
+                                       "video_profile_version"
+                                   ],
+        "c7_property_names":  [
+                                  "asset_family",
+                                  "asset_family_version",
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "engine_version",
+                                  "generation",
+                                  "mechanic",
+                                  "mechanic_version",
+                                  "presentation",
+                                  "schema_version",
+                                  "theme",
+                                  "video",
+                                  "video_profile",
+                                  "video_profile_version"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "320fdbffb4df029538a105a7af06c6fd72765756e9e58723bf4604182f6d2aea",
+                                             "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0",
+                                             "65047692cef16f380ff6cc82da11705c6c029f9f05c17f18aab5753a100a4347",
+                                             "d761740750da6d08e98727d91de005e82dfc45ae2c7fd004fc8231cea11d44a0",
+                                             "eb2cbc03018c910777af8afc669353844f3d5d64c06988ced473a6df92fa2e57"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_004_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0",
+                                           "mechanic":  "parking_v2",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "visual":  {
+                                                                               "object_scale":  0.85,
+                                                                               "object_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ],
+                                                                               "target_scale":  0.85,
+                                                                               "target_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ]
+                                                                           },
+                                                                "ui":  {
+                                                                           "theme":  "default_c6"
+                                                                       },
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  3.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_004_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0",
+                                           "mechanic":  "parking_v2",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "visual":  {
+                                                                               "object_scale":  0.85,
+                                                                               "object_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ],
+                                                                               "target_scale":  0.85,
+                                                                               "target_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ]
+                                                                           },
+                                                                "ui":  {
+                                                                           "theme":  "default_c6"
+                                                                       },
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  3.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_004_seed_314159\\challenge_definition.json",
+                                           "sha256":  "eb2cbc03018c910777af8afc669353844f3d5d64c06988ced473a6df92fa2e57",
+                                           "mechanic":  "parking_v2",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "visual":  {
+                                                                               "object_scale":  0.85,
+                                                                               "object_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ],
+                                                                               "target_scale":  0.85,
+                                                                               "target_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ]
+                                                                           },
+                                                                "ui":  {
+                                                                           "theme":  "default_c6"
+                                                                       },
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  3.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_004_seed_54321\\challenge_definition.json",
+                                           "sha256":  "d761740750da6d08e98727d91de005e82dfc45ae2c7fd004fc8231cea11d44a0",
+                                           "mechanic":  "parking_v2",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "visual":  {
+                                                                               "object_scale":  0.85,
+                                                                               "object_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ],
+                                                                               "target_scale":  0.85,
+                                                                               "target_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ]
+                                                                           },
+                                                                "ui":  {
+                                                                           "theme":  "default_c6"
+                                                                       },
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  3.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_004_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "320fdbffb4df029538a105a7af06c6fd72765756e9e58723bf4604182f6d2aea",
+                                           "mechanic":  "parking_v2",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "visual":  {
+                                                                               "object_scale":  0.85,
+                                                                               "object_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ],
+                                                                               "target_scale":  0.85,
+                                                                               "target_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ]
+                                                                           },
+                                                                "ui":  {
+                                                                           "theme":  "default_c6"
+                                                                       },
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  3.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_004_seed_998877\\challenge_definition.json",
+                                           "sha256":  "65047692cef16f380ff6cc82da11705c6c029f9f05c17f18aab5753a100a4347",
+                                           "mechanic":  "parking_v2",
+                                           "mechanic_version":  "2.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "visual":  {
+                                                                               "object_scale":  0.85,
+                                                                               "object_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ],
+                                                                               "target_scale":  0.85,
+                                                                               "target_offset":  [
+                                                                                                     0.0,
+                                                                                                     0.0
+                                                                                                 ]
+                                                                           },
+                                                                "ui":  {
+                                                                           "theme":  "default_c6"
+                                                                       },
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  3.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/parking_target.svg",
+                                                          "object_path":  "res://assets/c6/car.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "mechanic_current":  "hit_v1",
+        "mechanic_version_current":  "1.0",
+        "mechanic_c7":  "hit_v1",
+        "mechanic_version_c7":  "1.0",
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "target_position",
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "target_position",
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "hook_duration":  0.0,
+                              "game_duration":  7.0,
+                              "cta_duration":  0.0,
+                              "reveal_duration":  0.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "hook_duration":  0.0,
+                         "game_duration":  7.0,
+                         "cta_duration":  0.0,
+                         "reveal_duration":  0.0
+                     },
+        "current_video_profile":  null,
+        "current_video_profile_version":  null,
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/target.svg",
+                               "res://assets/c6/projectile.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/target.svg",
+                          "res://assets/c6/projectile.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "generation",
+                                       "mechanic",
+                                       "mechanic_version",
+                                       "presentation",
+                                       "video"
+                                   ],
+        "c7_property_names":  [
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "generation",
+                                  "mechanic",
+                                  "mechanic_version",
+                                  "presentation",
+                                  "video"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "1a8f7242e95fc703bfbec72c4804801d4804d837c6fd3cbd4666f960c5b2fc6a",
+                                             "3887d7fcc8d1291887be5afe76428eb7b812ccc79a361971c66d09808344af55",
+                                             "518ff9c6357e388f08963af7d8bc96d60052bb5698bea5c9ae9706109552202c",
+                                             "e503ac69839e8175f50d78d4487c7cad71248b532c200e223afc3c1cf38aa423",
+                                             "ecf0d466d614ec7ebdc5f1705ef3453870da6680afa35a1ba8daa7df2bd96bcc"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_005_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "ecf0d466d614ec7ebdc5f1705ef3453870da6680afa35a1ba8daa7df2bd96bcc",
+                                           "mechanic":  "hit_v1",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/projectile.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_005_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "ecf0d466d614ec7ebdc5f1705ef3453870da6680afa35a1ba8daa7df2bd96bcc",
+                                           "mechanic":  "hit_v1",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/projectile.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_005_seed_314159\\challenge_definition.json",
+                                           "sha256":  "e503ac69839e8175f50d78d4487c7cad71248b532c200e223afc3c1cf38aa423",
+                                           "mechanic":  "hit_v1",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/projectile.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_005_seed_54321\\challenge_definition.json",
+                                           "sha256":  "1a8f7242e95fc703bfbec72c4804801d4804d837c6fd3cbd4666f960c5b2fc6a",
+                                           "mechanic":  "hit_v1",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/projectile.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_005_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "3887d7fcc8d1291887be5afe76428eb7b812ccc79a361971c66d09808344af55",
+                                           "mechanic":  "hit_v1",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/projectile.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_005_seed_998877\\challenge_definition.json",
+                                           "sha256":  "518ff9c6357e388f08963af7d8bc96d60052bb5698bea5c9ae9706109552202c",
+                                           "mechanic":  "hit_v1",
+                                           "mechanic_version":  "1.0",
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/projectile.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "mechanic_current":  "catch_v1",
+        "mechanic_version_current":  null,
+        "mechanic_c7":  "catch_v1",
+        "mechanic_version_c7":  null,
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "target_position",
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "target_position",
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "hook_duration":  0.0,
+                              "game_duration":  7.0,
+                              "cta_duration":  2.0,
+                              "reveal_duration":  0.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "hook_duration":  0.0,
+                         "game_duration":  7.0,
+                         "cta_duration":  2.0,
+                         "reveal_duration":  0.0
+                     },
+        "current_video_profile":  null,
+        "current_video_profile_version":  null,
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/target.svg",
+                               "res://assets/c6/catcher.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/target.svg",
+                          "res://assets/c6/catcher.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "generation",
+                                       "mechanic",
+                                       "presentation",
+                                       "video"
+                                   ],
+        "c7_property_names":  [
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "generation",
+                                  "mechanic",
+                                  "presentation",
+                                  "video"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "2cbb60b209c785f9de2919e4b0af9b2dc716d235667d91adaa1386f5a5dcb635",
+                                             "6a658bce0b840407399807636c9ec1e5b6f95f7ad131e4cb2a76e3af8073aab8",
+                                             "7819ac89e630bf6671e8455529c1a240a28026acd4f21a3d29abf34a7cdc8d5b",
+                                             "da4d142c2c336704ba9a5da4bd0dfe483908bbeae9713401c261aef2e15a87d5",
+                                             "ef6b40c86d2d2cd39f1eaeaa4abc28ff7b6de5b8258b1b09799ad6a35bf410db"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_006_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "2cbb60b209c785f9de2919e4b0af9b2dc716d235667d91adaa1386f5a5dcb635",
+                                           "mechanic":  "catch_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/catcher.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_006_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "2cbb60b209c785f9de2919e4b0af9b2dc716d235667d91adaa1386f5a5dcb635",
+                                           "mechanic":  "catch_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/catcher.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_006_seed_314159\\challenge_definition.json",
+                                           "sha256":  "7819ac89e630bf6671e8455529c1a240a28026acd4f21a3d29abf34a7cdc8d5b",
+                                           "mechanic":  "catch_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/catcher.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_006_seed_54321\\challenge_definition.json",
+                                           "sha256":  "ef6b40c86d2d2cd39f1eaeaa4abc28ff7b6de5b8258b1b09799ad6a35bf410db",
+                                           "mechanic":  "catch_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/catcher.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_006_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "da4d142c2c336704ba9a5da4bd0dfe483908bbeae9713401c261aef2e15a87d5",
+                                           "mechanic":  "catch_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/catcher.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_006_seed_998877\\challenge_definition.json",
+                                           "sha256":  "6a658bce0b840407399807636c9ec1e5b6f95f7ad131e4cb2a76e3af8073aab8",
+                                           "mechanic":  "catch_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "hook_duration":  0.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  2.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/catcher.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "mechanic_current":  "find_v1",
+        "mechanic_version_current":  null,
+        "mechanic_c7":  "find_v1",
+        "mechanic_version_c7":  null,
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "target_position",
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "target_position",
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "resolution":  [
+                                                 1080,
+                                                 1920
+                                             ],
+                              "fps":  60,
+                              "hook_duration":  3.0,
+                              "game_duration":  7.0,
+                              "cta_duration":  0.0,
+                              "reveal_duration":  0.0
+                          },
+        "c7_video":  {
+                         "resolution":  [
+                                            1080,
+                                            1920
+                                        ],
+                         "fps":  60,
+                         "hook_duration":  3.0,
+                         "game_duration":  7.0,
+                         "cta_duration":  0.0,
+                         "reveal_duration":  0.0
+                     },
+        "current_video_profile":  null,
+        "current_video_profile_version":  null,
+        "current_assets":  [
+                               "res://assets/c6/garage_background.svg",
+                               "res://assets/c6/target.svg",
+                               "res://assets/c6/scanner.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/garage_background.svg",
+                          "res://assets/c6/target.svg",
+                          "res://assets/c6/scanner.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "assets",
+                                       "autovetting",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "generation",
+                                       "mechanic",
+                                       "presentation",
+                                       "video"
+                                   ],
+        "c7_property_names":  [
+                                  "assets",
+                                  "autovetting",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "generation",
+                                  "mechanic",
+                                  "presentation",
+                                  "video"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "2e2ff2d53edd4b1bbe02f00ada2642cbb41181b19fc0d9213b6d3fc28a3caef9",
+                                             "94f6645a9e5073e49fd856b83b8c2fe85559401f25d3968779fda8269f0a3a34",
+                                             "b9c4cd950a6e1596d76d69b987ff442e3f8f1b921a1647c33ab7795bfb80c45a",
+                                             "e5be44d39854c198a506412225994ff08caaaffe48a3e94e86dcc953624d8b84",
+                                             "f5fa5b4e16f0728a0c05e4931957c08b8e41078424805779f4452eedc783cf7b"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_007_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "e5be44d39854c198a506412225994ff08caaaffe48a3e94e86dcc953624d8b84",
+                                           "mechanic":  "find_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "resolution":  [
+                                                                            1080,
+                                                                            1920
+                                                                        ],
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/scanner.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_007_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "e5be44d39854c198a506412225994ff08caaaffe48a3e94e86dcc953624d8b84",
+                                           "mechanic":  "find_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "resolution":  [
+                                                                            1080,
+                                                                            1920
+                                                                        ],
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/scanner.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_007_seed_314159\\challenge_definition.json",
+                                           "sha256":  "94f6645a9e5073e49fd856b83b8c2fe85559401f25d3968779fda8269f0a3a34",
+                                           "mechanic":  "find_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "resolution":  [
+                                                                            1080,
+                                                                            1920
+                                                                        ],
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/scanner.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_007_seed_54321\\challenge_definition.json",
+                                           "sha256":  "b9c4cd950a6e1596d76d69b987ff442e3f8f1b921a1647c33ab7795bfb80c45a",
+                                           "mechanic":  "find_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "resolution":  [
+                                                                            1080,
+                                                                            1920
+                                                                        ],
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/scanner.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_007_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "f5fa5b4e16f0728a0c05e4931957c08b8e41078424805779f4452eedc783cf7b",
+                                           "mechanic":  "find_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "resolution":  [
+                                                                            1080,
+                                                                            1920
+                                                                        ],
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/scanner.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_007_seed_998877\\challenge_definition.json",
+                                           "sha256":  "2e2ff2d53edd4b1bbe02f00ada2642cbb41181b19fc0d9213b6d3fc28a3caef9",
+                                           "mechanic":  "find_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "target_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "resolution":  [
+                                                                            1080,
+                                                                            1920
+                                                                        ],
+                                                         "fps":  60,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "cta_duration":  0.0,
+                                                         "reveal_duration":  0.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/garage_background.svg",
+                                                          "target_path":  "res://assets/c6/target.svg",
+                                                          "object_path":  "res://assets/c6/scanner.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "mechanic_current":  "choose_v1",
+        "mechanic_version_current":  null,
+        "mechanic_c7":  "choose_v1",
+        "mechanic_version_c7":  null,
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "static_position",
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "static_position",
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "total_duration":  11.0,
+                              "hook_duration":  3.0,
+                              "game_duration":  7.0,
+                              "reveal_duration":  0.0,
+                              "cta_duration":  2.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "total_duration":  11.0,
+                         "hook_duration":  3.0,
+                         "game_duration":  7.0,
+                         "reveal_duration":  0.0,
+                         "cta_duration":  2.0
+                     },
+        "current_video_profile":  null,
+        "current_video_profile_version":  null,
+        "current_assets":  [
+                               "res://assets/c6/choose_background.svg",
+                               "res://assets/c6/transparent.svg",
+                               "res://assets/c6/cursor.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/choose_background.svg",
+                          "res://assets/c6/transparent.svg",
+                          "res://assets/c6/cursor.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "generation",
+                                       "mechanic",
+                                       "presentation",
+                                       "video"
+                                   ],
+        "c7_property_names":  [
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "generation",
+                                  "mechanic",
+                                  "presentation",
+                                  "video"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "32d30387fb3a7537fbd074e554e8962a35fc5dd4768cb22362251af42099df08",
+                                             "4baf36d10ff162b307a3b9485d1f43d31ecdb2932eab8bb1aa3fdc8edef099c4",
+                                             "a1ff249a1cbe4a4bc7f13200b99bf61d017b3835a25aa4bff6fba960b8d3d04b",
+                                             "c5dd87a1910f20042fbe33d6cad8c83b29772dabbdd8a723b650ec7787f9ad4e",
+                                             "d449279061ee75931453ec823bde028299258c38caaac9dd06712b8ae44342a1"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_008_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "32d30387fb3a7537fbd074e554e8962a35fc5dd4768cb22362251af42099df08",
+                                           "mechanic":  "choose_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/choose_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_008_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "32d30387fb3a7537fbd074e554e8962a35fc5dd4768cb22362251af42099df08",
+                                           "mechanic":  "choose_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/choose_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_008_seed_314159\\challenge_definition.json",
+                                           "sha256":  "d449279061ee75931453ec823bde028299258c38caaac9dd06712b8ae44342a1",
+                                           "mechanic":  "choose_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/choose_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_008_seed_54321\\challenge_definition.json",
+                                           "sha256":  "a1ff249a1cbe4a4bc7f13200b99bf61d017b3835a25aa4bff6fba960b8d3d04b",
+                                           "mechanic":  "choose_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/choose_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_008_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "4baf36d10ff162b307a3b9485d1f43d31ecdb2932eab8bb1aa3fdc8edef099c4",
+                                           "mechanic":  "choose_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/choose_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_008_seed_998877\\challenge_definition.json",
+                                           "sha256":  "c5dd87a1910f20042fbe33d6cad8c83b29772dabbdd8a723b650ec7787f9ad4e",
+                                           "mechanic":  "choose_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/choose_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       }
+                                   ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "mechanic_current":  "count_v1",
+        "mechanic_version_current":  null,
+        "mechanic_c7":  "count_v1",
+        "mechanic_version_c7":  null,
+        "current_presentation":  {
+                                     "coordinate_space":  "CANVAS_1080X1920",
+                                     "secondary_binding":  "static_position",
+                                     "profile":  "social_default_v1"
+                                 },
+        "c7_presentation":  {
+                                "coordinate_space":  "CANVAS_1080X1920",
+                                "secondary_binding":  "static_position",
+                                "profile":  "social_default_v1"
+                            },
+        "current_video":  {
+                              "fps":  60,
+                              "total_duration":  11.0,
+                              "hook_duration":  3.0,
+                              "game_duration":  7.0,
+                              "reveal_duration":  0.0,
+                              "cta_duration":  2.0
+                          },
+        "c7_video":  {
+                         "fps":  60,
+                         "total_duration":  11.0,
+                         "hook_duration":  3.0,
+                         "game_duration":  7.0,
+                         "reveal_duration":  0.0,
+                         "cta_duration":  2.0
+                     },
+        "current_video_profile":  null,
+        "current_video_profile_version":  null,
+        "current_assets":  [
+                               "res://assets/c6/count_background.svg",
+                               "res://assets/c6/transparent.svg",
+                               "res://assets/c6/cursor.svg"
+                           ],
+        "c7_assets":  [
+                          "res://assets/c6/count_background.svg",
+                          "res://assets/c6/transparent.svg",
+                          "res://assets/c6/cursor.svg"
+                      ],
+        "c7_has_canonical_v2":  true,
+        "current_property_names":  [
+                                       "assets",
+                                       "challenge_id",
+                                       "content",
+                                       "difficulty",
+                                       "generation",
+                                       "mechanic",
+                                       "presentation",
+                                       "video"
+                                   ],
+        "c7_property_names":  [
+                                  "assets",
+                                  "canonical_v2",
+                                  "challenge_id",
+                                  "content",
+                                  "difficulty",
+                                  "generation",
+                                  "mechanic",
+                                  "presentation",
+                                  "video"
+                              ],
+        "historical_run_count":  6,
+        "historical_definition_hash_count":  5,
+        "historical_definition_hashes":  [
+                                             "294e2bf1b3ddae91e1ac2a66f88d720d6ecc1986d1b89c78ced72bdc6e920d6a",
+                                             "42e1c6fae313f43b4e3c5f39f9ede26d4a3313bfacaadac8d3192e43532945af",
+                                             "5462e140f713be15287fb54dc283f7d4a4869a8d889231c721454766fcf31fba",
+                                             "62a458d565d4f04a337ccea283392fdafafad576b0b2d7f9daa7da47bd1e2787",
+                                             "b6a290e953cf21668509a83231db57656dcb1ce911466abd3c57fb9775ee9992"
+                                         ],
+        "historical_definitions":  [
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_A\\challenge_definition.json",
+                                           "sha256":  "b6a290e953cf21668509a83231db57656dcb1ce911466abd3c57fb9775ee9992",
+                                           "mechanic":  "count_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/count_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_B\\challenge_definition.json",
+                                           "sha256":  "b6a290e953cf21668509a83231db57656dcb1ce911466abd3c57fb9775ee9992",
+                                           "mechanic":  "count_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/count_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_009_seed_314159\\challenge_definition.json",
+                                           "sha256":  "62a458d565d4f04a337ccea283392fdafafad576b0b2d7f9daa7da47bd1e2787",
+                                           "mechanic":  "count_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/count_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_009_seed_54321\\challenge_definition.json",
+                                           "sha256":  "294e2bf1b3ddae91e1ac2a66f88d720d6ecc1986d1b89c78ced72bdc6e920d6a",
+                                           "mechanic":  "count_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/count_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_009_seed_7770001\\challenge_definition.json",
+                                           "sha256":  "5462e140f713be15287fb54dc283f7d4a4869a8d889231c721454766fcf31fba",
+                                           "mechanic":  "count_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/count_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       },
+                                       {
+                                           "path":  "tests\\reference\\c11a1\\runs\\challenge_009_seed_998877\\challenge_definition.json",
+                                           "sha256":  "42e1c6fae313f43b4e3c5f39f9ede26d4a3313bfacaadac8d3192e43532945af",
+                                           "mechanic":  "count_v1",
+                                           "mechanic_version":  null,
+                                           "presentation":  {
+                                                                "coordinate_space":  "CANVAS_1080X1920",
+                                                                "secondary_binding":  "static_position",
+                                                                "profile":  "social_default_v1"
+                                                            },
+                                           "video":  {
+                                                         "fps":  60,
+                                                         "total_duration":  11.0,
+                                                         "hook_duration":  3.0,
+                                                         "game_duration":  7.0,
+                                                         "reveal_duration":  0.0,
+                                                         "cta_duration":  2.0
+                                                     },
+                                           "assets":  {
+                                                          "background_path":  "res://assets/c6/count_background.svg",
+                                                          "target_path":  "res://assets/c6/transparent.svg",
+                                                          "object_path":  "res://assets/c6/cursor.svg"
+                                                      }
+                                       }
+                                   ]
+    }
+]
