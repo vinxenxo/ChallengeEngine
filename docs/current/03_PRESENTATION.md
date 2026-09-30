@@ -1,5 +1,7 @@
 # Presentation — C11-C 2.19.12
 
-Shared logical social geometry is 540x960 with Header 0..144, Body 144..816 and Footer 816..960. Review delivery is 720x1280; master delivery is 1080x1920. Visual Loops and Visual Drills share editorial, typography, palette and audio-direction foundations.
+C11-C social presentation retains the logical 540x960 canvas and presents review media at 720x1280 / 30 FPS. Master delivery uses the declarative delivery profiles such as `MASTER_1080`.
 
-Presentation consumes authored state and never invents mechanic truth.
+Visual Loops and Visual Drills use the shared editorial/presentation layer. The 52-video review has passed physically.
+
+No presentation/runtime changes are authorized in the final pre-freeze pass.

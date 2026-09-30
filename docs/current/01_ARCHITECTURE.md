@@ -1,5 +1,21 @@
 # Architecture — C11-C 2.19.12
 
-C11-C layers are: canonical definitions -> deterministic authoring/runtime -> passive presentation -> Movie Maker/FFmpeg -> manifests/QA -> Suite orchestration.
+The tested architecture remains:
 
-Frozen boundaries include simulation truth, RNG ownership, SimulationResult, winning-frame semantics, RenderedFrameStream, C7, C9 and logical 540x960 geometry. C11-C additions remain presentation/production/orchestration unless a named checkpoint explicitly says otherwise.
+```text
+Definitions
+  ↓
+deterministic simulation / authoring
+  ↓
+SimulationResult / authored envelope
+  ↓
+passive presentation
+  ↓
+RenderedFrameStream / Movie Maker
+  ↓
+production/export orchestration
+```
+
+C11-C final hardening changes only operator tooling, documentation and release packaging. It does not introduce a second runtime path.
+
+`c11c-suite` is an operator shell over canonical repository tools, not a replacement backend.

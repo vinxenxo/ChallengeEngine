@@ -1,25 +1,36 @@
-# C11-C Suite 0.1.4 — Operator Shell
+# C11-C Suite — 0.1.4
 
-C11-C Suite is the active GUI/CLI operator shell for the canonical ChallengeEngineV01_STATELESS toolchain. GUI actions and direct console commands must use the same backend launchers.
-
-Freeze packaging is handled by `tools/maintenance/create_c11c_freeze_zip.ps1`.
-
-# C11-C Suite — 0.1.4 — C11-C 2.19.6 consolidated repair candidate
-
-Canonical active operator surface for the C11-C manufacturing branch. `c11c-studio` is retired and is not an operational dependency. All active suite changes belong under `c11c-suite/`.
+`c11c-suite` is the canonical GUI/CLI operator shell for `ChallengeEngineV01_STATELESS`.
 
 ## Surfaces
 
-- `c11c-test` — logical regression, QA runners and operational contract checks.
+- `c11c-test` — logical regression, QA and focused acceptance operations.
 - `c11c-catalog` — artifact browsing and metadata inspection.
-- `c11c-maintenance` — maintenance and archive operations.
+- `c11c-maintenance` — documentation consolidation, repository organization, safe cleanup, checks and freeze packaging.
 - `c11c-config` — declarative configuration inspection/editing.
-- `c11c-producer` — audiovisual orchestration.
+- `c11c-producer` — audiovisual orchestration for Challenges, Visual Loops and Visual Drills.
 
-## 2.19.6 worker-isolation rule
+## Operator parity
 
-The C11-C Art Direction batch runner keeps `Workers=7` as a real concurrent execution contract. Each worker receives an independent temporary Godot project root; `override.cfg` and `.godot` are worker-local. The review runner does **not** serialize captures behind a project-global mutex.
+The Suite does not own an alternative backend. GUI actions launch the same canonical scripts used directly from the repository root. During D, GUI and CLI may be used concurrently for authoring and verification without creating a second logic path.
 
-Static suite self-test additionally verifies that operational `.py/.ps1/.bat/.cmd` launchers do not reference `c11c-studio`.
+## Current versions
 
-All GUIs remain consumers/orchestrators. They do not implement mechanics, RNG or simulation truth.
+- Suite application: **0.1.4**.
+- Producer: **0.9.7**.
+- C11-C baseline: **2.19.12**.
+- Godot: **4.7.1 stable Mono**.
+
+The `C11C_SUITE_CURRENT_RULES.md` document is the current rules authority; the former version-labelled rules file is historical evidence.
+
+## Important routing
+
+`REVIEW_CHALLENGES` uses `tools/qa/c11/run_c11c_challenge_bulk_qa.ps1`.
+
+Historical C11-A.1 qualification remains available only as explicit compatibility/regression tooling.
+
+## Freeze
+
+The sole C11-C freeze authority is `tools/maintenance/create_c11c_freeze_zip.ps1`, exposed by:
+
+`c11c-suite/c11c-maintenance/run_freeze_package.bat`

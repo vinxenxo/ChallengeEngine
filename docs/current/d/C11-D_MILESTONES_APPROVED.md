@@ -1,27 +1,34 @@
-﻿# C11-D — Approved Milestones
+# C11-D — Approved Milestones
 
-**Decision:** APPROVED for execution after C11-C 2.19.12 is frozen.
+**Entry condition:** C11-C 2.19.12 sealed archive + verified archive SHA-256 + source-tree SHA-256 + freeze receipt.
 
-| ID | Milestone | Gate before next |
+## Invariant across all D milestones
+
+GUI and CLI are co-equal operator surfaces. Every new capability must have a canonical console path and a thin GUI wrapper over that operation, with identical inputs, provenance and reproducible outputs.
+
+| ID | Milestone | Required gate |
 |---|---|---|
-| D0 | Baseline proof, repository inventory and recovery of the 9 historical Challenges | Frozen tree verified; 9 dossiers complete; no mechanics changed |
-| D1 | Challenge visual/editorial parity with C11-C | One pilot proves composition/typography/copy/audio-direction without changing timing truth |
-| D1.5 | Declarative platform/layout template contract | Layout schema + focused contract test |
-| D2 | Reusable Atari-2600-inspired asset families/templates | Semantic slots, family registry, provenance and cross-Challenge binding test |
-| D3 | Procedural Music V5 | Design contract first; deterministic layered implementation + audio QA |
-| D4 | Declarative production request + per-video personalization | Exact request hash + reproduction test |
-| D5 | Artifact topology + provenance | Products/reviews/tests/logs/scratch/indexes separated and queryable |
-| D6 | Seed registry + anti-reuse policy | USED/RESERVED/RELEASED/INVALIDATED/HISTORICAL states + audit trail |
-| D7 | 9-Challenge production matrix | Shared visual/asset/music/seed/layout profiles drive matrix from one backend |
-| D8 | Media QA + release evidence | Technical A/V validation, package manifest, hashes, reproducibility |
-| D9 | Suite evolution | GUI and CLI remain parity surfaces; new capabilities only after stable contracts |
+| D0 | Baseline proof + 9 Challenge recovery dossiers | archive/tree hashes, inventory, nine dossiers, mismatch register, no C11 engine changes |
+| D1 | Challenge visual/editorial parity | parity contract, one pilot, focused regression, safe-area proof |
+| D1.5 | Layout/template sub-checkpoint | safe-area template contract; does not introduce a new branch or duplicate the D1 gate |
+| D2 | Reusable Atari-2600-inspired asset families/templates | schema, registry, slot compatibility, swap/provenance test |
+| D3 | Procedural Music V5 | design contract, deterministic A/V comparison, mobile/loudness QA |
+| D4 | Declarative production request + personalization | request schema, GUI/CLI parity, request hash, exact reproduction |
+| D5 | Provenance + artifact topology | topology contract, dry-run migration, preservation/safety tests |
+| D6 | Seed registry + governance | lifecycle schema, collision/reuse controls, GUI/CLI parity |
+| D7 | Nine-Challenge matrix + catalog | normalized matrix, catalog indexes, deterministic rerun |
+| D8 | Media QA + release pipeline | complete media audit, release candidate, hashes/evidence |
+| D9 | Suite integration/evolution | consistent exposure in Test/Producer/Maintenance/Catalog/Config |
+| D10 | New mechanics | authored truth, answer data, explicit timing semantics, focused + integration regression, rollback evidence |
 
-## Sequencing decision
+## Ordering rationale
 
-**D0 -> D1 -> D1.5 -> D2 -> D3 -> D4 -> D5 -> D6 -> D7 -> D8 -> D9.**
+D0-D2 recover and stabilize the Challenge visual/content foundation. D3 establishes deterministic music before personalization. D4-D6 make production requests, artifacts and seeds reproducible. D7-D9 industrialize the nine-Challenge production and operator surfaces. D10 remains last so new mechanics cannot destabilize the recovered foundation.
 
-Do not introduce new Challenge mechanics before D1-D6 are stable. D is not a reason to reopen C11-B/C engine truth.
+## Decision
 
-## Rationale
+**APPROVED.** Sequence:
 
-The sequence separates recovery, visual convergence, reusable content primitives, audio, production declaration, provenance and seed control before the large production matrix. This prevents the one-off pipeline fragmentation that C11-C spent 2.19.x eliminating.
+`D0 → D1 (+ D1.5 sub-checkpoint) → D2 → D3 → D4 → D5 → D6 → D7 → D8 → D9 → D10`
+
+D10 does not begin while D1-D6 foundations are unstable.

@@ -1,21 +1,22 @@
-# Master Prompts Index
+# ChallengeEngineV01_STATELESS — Master Prompts
 
-## Active C11-C context
+## Current transition
 
-Current authority: **C11-C 2.19.12 freeze-ready documentation.**
+C11-C 2.19.12 has passed final consolidated workstation acceptance and is in the final pre-freeze documentation/Maintenance stage.
 
-Use the root operational pair first:
+After the frozen archive is sealed, C11-D starts from that exact archive and its verified hashes.
+
+## C11-C handover
 
 - `MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md`
 - `START_PROMPT_C11C_2.19_CONSOLIDATED.md`
-- `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-- `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-- `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
 
-## Historical C11-C prompts
+## C11-D handover
 
-2.19.0–2.19.4 prompts remain preserved as historical evidence under `docs/history/c11c/releases/superseded_2.19/` and must not override the current C11-C 2.19.12 authority.
+- `MASTER_HANDOVER_C11D_V1.0_STATELESS.md`
+- `START_PROMPT_C11D_V1.0_STATELESS.md`
+- `C11D_CONTEXT_PACK_README.md`
 
-## C11-D prompts
+## Historical material
 
-C11-D prompts are the next-context handover. Use them only after the frozen C11-C 2.19.12 archive, SHA-256 and acceptance evidence have been verified.
+Older C11-B/C handovers and numbered repair prompts are preserved under `docs/history/` and are not current operating instructions.

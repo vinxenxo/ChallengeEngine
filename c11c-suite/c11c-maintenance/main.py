@@ -13,7 +13,7 @@ class Window(QMainWindow):
     super().__init__(); self.setWindowTitle('C11-C MAINTENANCE'); self.resize(1100,760); self.proc=None
     root=QWidget(); self.setCentralWidget(root); lay=QVBoxLayout(root); t=QLabel('MAINTENANCE'); t.setObjectName('title'); lay.addWidget(t)
     box=QGroupBox('Safe operations'); bl=QVBoxLayout(box); lay.addWidget(box)
-    for txt,fn in [('ANALIZAR LIMPIEZA',self.preview_cleanup),('LIMPIAR TRANSITORIOS SEGUROS',self.clean_cleanup),('VERIFICAR REPOSITORY LAYOUT',self.layout_check),('VALIDAR DELIVERY CONFIG',self.delivery_check),('CONSOLIDAR DOCS C11-C 2.19 · DRY RUN',self.docs_dry),('GENERAR ZIP FROZEN C11-C 2.19.12',self.make_zip)]:
+    for txt,fn in [('ANALIZAR LIMPIEZA SEGURA',self.preview_cleanup),('LIMPIAR TRANSITORIOS SEGUROS',self.clean_cleanup),('ANALIZAR MEDIA C11-C',self.c11c_media_preview),('LIMPIAR MEDIA C11-C',self.c11c_media_clean),('ORGANIZAR RAÍZ · DRY RUN',self.root_organize_dry),('ORGANIZAR RAÍZ · APPLY',self.root_organize_apply),('VERIFICAR REPOSITORY LAYOUT',self.layout_check),('VALIDAR DELIVERY CONFIG',self.delivery_check),('CONSOLIDAR DOCS C11-C 2.19 · DRY RUN',self.docs_dry),('FREEZE C11-C · DRY RUN',self.freeze_dry),('GENERAR ZIP FROZEN C11-C 2.19.12',self.make_zip)]:
       b=QPushButton(txt); b.clicked.connect(fn); bl.addWidget(b)
     self.log=QPlainTextEdit(); self.log.setReadOnly(True); lay.addWidget(self.log,1)
   def add(self,s): self.log.appendPlainText(s.rstrip())
@@ -48,10 +48,18 @@ class Window(QMainWindow):
       x=bytes(fn()).decode('utf-8','replace');
       if x:self.add(x)
   def finish(self,c,label): self.read(); self.add(f'[{label}] EXIT={c}'); self.proc=None
+  def c11c_media_preview(self): self.run_ps(['tools/prototypes/c11c_bulk/clean_c11c_artifacts.ps1'],'C11-C MEDIA DRY RUN')
+  def c11c_media_clean(self):
+    if QMessageBox.question(self,'Confirmar limpieza C11-C','Se eliminarán SOLO medios regenerables de los roots C11-C prototype permitidos por clean_c11c_artifacts.ps1. ¿Continuar?')==QMessageBox.Yes:
+      self.run_ps(['tools/prototypes/c11c_bulk/clean_c11c_artifacts.ps1','-Apply'],'C11-C MEDIA APPLY')
+  def root_organize_dry(self): self.run_ps(['c11c-suite/c11c-maintenance/organize_repository_root.ps1'],'ROOT ORGANIZE DRY RUN')
+  def root_organize_apply(self):
+    if QMessageBox.question(self,'Confirmar organización','Se aplicarán SOLO los movimientos allowlistados de organización de raíz y se archivará el alias c11c-maintenace sin borrar evidencia. ¿Continuar?')==QMessageBox.Yes:
+      self.run_ps(['c11c-suite/c11c-maintenance/organize_repository_root.ps1','-Apply'],'ROOT ORGANIZE APPLY')
   def layout_check(self): self.run_ps(['tools/maintenance/verify_repository_layout.ps1'],'LAYOUT')
   def delivery_check(self): self.run_ps(['tools/prototypes/c11c_bulk/validate_c11c_delivery_configuration.ps1'],'DELIVERY')
   def docs_dry(self): self.run_ps(['tools/maintenance/consolidate_c11c_2_19_documentation.ps1','-DryRun'],'DOCS C11-C 2.19 DRY RUN')
-  def make_zip(self):
-    self.run_ps(['tools/maintenance/create_c11c_freeze_zip.ps1'],'FREEZE ZIP C11-C 2.19.12')
+  def freeze_dry(self): self.run_ps(['tools/maintenance/create_c11c_freeze_zip.ps1','-DryRun'],'FREEZE DRY RUN C11-C 2.19.12')
+  def make_zip(self): self.run_ps(['tools/maintenance/create_c11c_freeze_zip.ps1'],'FREEZE ZIP C11-C 2.19.12')
 if __name__=='__main__':
  app=QApplication(sys.argv); app.setStyleSheet(CYBER_STYLE); w=Window(); w.show(); sys.exit(app.exec())

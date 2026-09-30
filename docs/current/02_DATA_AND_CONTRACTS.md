@@ -1,3 +1,7 @@
 # Data and Contracts — C11-C 2.19.12
 
-Challenge JSON is authoritative for Challenge timing and FPS. Visual content uses deterministic seeds and declared profiles. Production manifests record inputs and outputs. Missing optional Challenge phases are normalized to zero by QA; definitions are not rewritten solely to satisfy historical tooling.
+The final contracts are the tested C11-B/C engine truth plus the C11-C presentation/production contracts already covered by acceptance.
+
+Critical identity rule for Visual Loops: editorial family keys and historical/backend `technical_id` values use an explicit crosswalk and must not be globally renamed during closure.
+
+The final freeze is a source packaging operation; it does not alter definitions, simulation truth, RNG ownership or result semantics.

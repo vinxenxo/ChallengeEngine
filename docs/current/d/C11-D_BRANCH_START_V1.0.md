@@ -1,17 +1,30 @@
-# C11-D — Branch Start Record v1.0
+# C11-D — Branch Start V1.0
 
-## Entry
+## Entry condition
 
-C11-D starts only from the sealed **C11-C 2.19.12 FROZEN** archive.
+Start D only from the sealed C11-C 2.19.12 archive produced by the canonical Maintenance freeze packager, with verified archive SHA-256, source-tree SHA-256 and freeze receipt.
 
-## First work package
+## First action
 
-D0 baseline inventory and nine Challenge recovery dossiers.
+Create a new D workspace from the sealed archive. Do not develop D directly in the frozen C11-C source tree.
 
-## Architectural rule
+## D0
 
-C11-C engine truth is immutable. D evolves presentation, content/asset bindings, music, production requests, provenance, seed registry, catalog and operator tooling around the frozen contract.
+1. Verify archive and source-tree hashes.
+2. Run the frozen Suite/Producer/parser/layout checks before mutation.
+3. Inventory source, definitions, profiles, assets, manifests, seeds and preserved evidence.
+4. Recover `CHALLENGE_001` … `CHALLENGE_009` into evidence dossiers.
+5. Record current-vs-historical mismatches instead of rewriting historical evidence.
+6. Produce the D1 visual-parity contract.
 
-## Operator rule
+## Operator architecture
 
-Use `c11c-suite` concurrently with direct command-line development. Both surfaces must exercise the same canonical scripts and backends.
+GUI and CLI are co-equal. A D feature is not complete until its canonical console operation and GUI surface agree on inputs, provenance and reproducible outputs.
+
+## Frozen C boundary
+
+Do not modify C11-B/C mechanics, simulation truth, RNG, result semantics, timing truth, proven rendering/presentation behavior, C7/C9 contracts or logical 540x960 geometry without an explicit new checkpoint.
+
+## Approved roadmap
+
+`D0 → D1 → D2 → D3 → D4 → D5 → D6 → D7 → D8 → D9 → D10`

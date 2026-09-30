@@ -1,97 +1,79 @@
 # Challenge Engine V1.0 STATELESS — C11-D Roadmap
 
-**Entry baseline: C11-C 2.19.12 FROZEN.**
+**Entry baseline:** sealed C11-C 2.19.12 archive + verified SHA-256.
 
-D is an additive productization branch around an immutable C11-C baseline. GUI and command-line execution are co-equal operator surfaces: both call the same canonical backend commands, produce the same manifests and remain reproducible.
+D is an additive productization branch around an immutable C11-C baseline. GUI and command line are co-equal operator surfaces over the same canonical backend commands.
 
-## D0 — Baseline lock, inventory and recovery
+## D0 — Baseline proof + historical Challenge recovery
 
-Freeze and hash the C11-C archive; inventory source, profiles, assets, seeds, manifests, Suite surfaces and historical evidence. Recover `CHALLENGE_001` through `CHALLENGE_009` into dossiers before changing Challenge presentation.
+Verify the frozen archive/tree hashes, run the frozen checks, inventory source/profiles/assets/seed evidence and recover `CHALLENGE_001` … `CHALLENGE_009` into evidence dossiers.
 
-**Gate:** machine-readable inventory, nine recovery dossiers, verified baseline provenance.
+**Gate:** reproducible inventory, nine dossiers, provenance locked, no engine change.
 
-## D1 — Challenge visual parity
+## D1 — Challenge visual/editorial parity
 
-Define and implement the Challenge presentation binding that follows the established C11-C composition/editorial/typography hierarchy while preserving Challenge timing, mechanics and deterministic answer truth.
+Apply the proven C11-C composition, typography, safe-area and editorial hierarchy to Challenges without changing Challenge timing, mechanics or answer truth.
 
-**Gate:** visual-parity contract + one representative Challenge pilot + focused regression.
+**Gate:** visual-parity contract + one pilot + focused regression.
 
-## D2 — Atari-2600-inspired asset families and templates
+`D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md` is treated as a sub-checkpoint under D1, not a separate top-level branch.
 
-Create a declarative, versioned asset-family registry with semantic slots, compatible Challenge routes, palette/style metadata, preview references, hashes and provenance. Asset families must be interchangeable across Challenges without duplicating mechanic code.
+## D2 — Reusable Atari-2600-inspired asset families/templates
 
-**Gate:** schema, registry, swap test and provenance test.
+Create declarative, versioned asset-family templates with semantic slots, style/palette metadata, compatible routes, provenance and hashes. Assets are swappable without duplicating mechanic code.
+
+**Gate:** schema + registry + swap/provenance test.
 
 ## D3 — Procedural Music V5
 
-Design before implementation: layered timbre, harmony, rhythm, motif, texture and spatial treatment. Keep the system deterministic and mathematically parameterized while decoupled from gameplay event truth and structural RNG.
+Design before implementation. Add layered timbre/harmony/rhythm/motif/texture/spatial treatment while keeping deterministic generation decoupled from structural RNG and gameplay truth.
 
-**Gate:** design contract, deterministic render comparison, loudness/mobile QA.
+**Gate:** design contract + deterministic render comparison + loudness/mobile QA.
 
-## D4 — Declarative production request and personalization
+## D4 — Declarative production request + personalization
 
-One canonical request selects seed, content/Challenge, asset family, palette, typography, copy, music profile, delivery profile and single/batch mode. Hash the request and persist exact provenance.
+One canonical request selects Challenge/content, seed, asset family, palette, typography, copy, music profile, delivery profile and single/batch mode. Persist request hash and exact provenance.
 
-**Gate:** request schema + CLI/GUI parity test + reproducibility test.
+**Gate:** request schema + GUI/CLI parity test + reproduction test.
 
-## D5 — Artifact, manifest and provenance topology
+## D5 — Provenance + artifact topology
 
-Separate durable products, reviews, tests, logs, scratch and indexes. Preserve source/config hashes, commands and manifests. Migrate in stages; never delete historical evidence as part of reorganization.
+Separate durable production, review, test, log, scratch and index areas. Record commands, hashes, inputs and manifests without deleting historical evidence.
 
-**Gate:** topology contract + migration dry-run + artifact safety tests.
+**Gate:** topology contract + dry-run migration + safety tests.
 
-## D6 — Seed registry and traceability
+## D6 — Seed registry + governance
 
-Introduce states such as `USED`, `RESERVED`, `RELEASED`, `INVALIDATED`, `HISTORICAL`. Reject known-used seeds by default; deliberate reuse requires an explicit auditable operator action.
+Introduce explicit seed lifecycle states (`USED`, `RESERVED`, `RELEASED`, `INVALIDATED`, `HISTORICAL`) and reject known-used seeds by default. Deliberate reuse is auditable.
 
 **Gate:** registry schema + collision/reuse tests + GUI/CLI parity.
 
-## D7 — Challenge production matrix and catalog
+## D7 — Nine-Challenge production matrix + catalog
 
-Drive all nine Challenges through normalized asset, visual, music, seed and delivery layers. Make the matrix queryable through `c11c-catalog` and reproducible from the CLI.
+Drive all nine Challenges from normalized visual, asset, music, seed, layout and delivery declarations. `c11c-catalog` provides queryable evidence.
 
-**Gate:** controlled matrix, catalog indexes, deterministic rerun evidence.
+**Gate:** controlled matrix + catalog indexes + deterministic rerun.
 
-## D8 — Media QA and release pipeline
+## D8 — Media QA + release pipeline
 
-Recover the historical Final Export intent inside the new architecture: technical media checks, metadata, A/V QA, release packaging and reproducible evidence.
+Build the Final Export layer around the frozen backend: technical media validation, metadata, A/V QA, reproducible packaging and release evidence.
 
-**Gate:** release candidate package + full media audit.
+**Gate:** release candidate + full media audit + hashes.
 
-## D9 — Suite evolution
+## D9 — Suite integration/evolution
 
-Extend `c11c-suite` deliberately into Test, Producer, Maintenance, Catalog and Config surfaces. New Asset, Music and Seed Registry surfaces appear only when their contracts are mature.
+Extend Test, Producer, Maintenance, Catalog and Config surfaces as contracts mature. GUI actions remain thin wrappers around direct CLI operations.
 
-**Non-negotiable:** every GUI action has a direct CLI equivalent; no GUI-only logic path.
+**Gate:** operator parity for every new capability; no GUI-only logic.
 
-## D10 — New cognitive mechanics
+## D10 — New mechanics
 
-Only after D1-D6 are stable, schedule new mechanics from the historical Drill/Challenge roadmap: predictive occlusion/morphing, N-back/flash recognition, pursuit depth/flanker loading, peripheral quadrant/rhythm layers and future Challenge mechanics. Every new mechanic gets authored truth, answer data, focused contracts and explicit checkpoints.
+Only after D1-D6 are stable, schedule new cognitive/Challenge mechanics. Every new mechanic gets authored truth, answer data, focused tests, explicit timing semantics and a checkpoint.
 
-## Sequencing
+**Gate:** mechanic contract + focused regression + integration regression + rollback evidence.
 
-```text
-D0 baseline/recovery
-  ↓
-D1 visual parity
-  ↓
-D2 assets/templates
-  ↓
-D3 music V5
-  ↓
-D4 production request/personalization
-  ↓
-D5 artifacts/provenance
-  ↓
-D6 seed registry
-  ↓
-D7 production matrix/catalog
-  ↓
-D8 media QA/release
-  ↓
-D9 Suite evolution
-  ↓
-D10 new mechanics
-```
+## Approved sequence
 
-This ordering is designed to prevent another generation of one-off pipelines.
+`D0 → D1 → D2 → D3 → D4 → D5 → D6 → D7 → D8 → D9 → D10`
+
+**Decision: APPROVED.** This ordering deliberately delays mechanic expansion until visual/content/production/provenance foundations are stable.

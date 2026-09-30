@@ -20,7 +20,6 @@ $required=[ordered]@{
   'c11c-suite\c11c-catalog\run.bat'=@('C11C_PROJECT_ROOT','main.py','cd /d')
   'c11c-suite\c11c-config\run.bat'=@('C11C_PROJECT_ROOT','main.py','cd /d')
   'c11c-suite\test_retro_reference_contract.bat'=@('C11C_PROJECT_ROOT','test_retro_reference_contract.py')
-  'c11c-suite\c11c-maintenace\run.bat'=@('call','c11c-maintenance\run.bat')
 }
 foreach($rel in $required.Keys){
   $p=Join-Path $Root $rel
@@ -33,8 +32,12 @@ $suiteFiles=@(Get-ChildItem -LiteralPath (Join-Path $Root 'c11c-suite') -Recurse
 $studioRefs=@($suiteFiles | Where-Object {$_.Name -ne 'self_test.py' -and (Get-Content -Raw -LiteralPath $_.FullName -ErrorAction SilentlyContinue).Contains('c11c-studio')})
 if($studioRefs.Count -gt 0){throw ('Operational c11c-studio dependency detected: ' + (($studioRefs | ForEach-Object {$_.FullName}) -join '; '))}
 
-$alias=(Get-Content -Raw -LiteralPath (Join-Path $Root 'c11c-suite\c11c-maintenace\run.bat')).ToLowerInvariant()
-if($alias.IndexOf('c11c-maintenance\run.bat',[StringComparison]::OrdinalIgnoreCase) -lt 0){throw 'Compatibility maintenance launcher does not delegate to canonical c11c-maintenance.'}
+if(Test-Path -LiteralPath (Join-Path $Root 'c11c-suite\c11c-maintenace')){throw 'Obsolete misspelled c11c-maintenace directory is still active.'}
+foreach($canonical in @(
+  'c11c-suite\c11c-maintenance\organize_repository_root.bat',
+  'c11c-suite\c11c-maintenance\run_cleanup_safe.bat',
+  'c11c-suite\c11c-maintenance\run_freeze_package.bat'
+)){if(-not(Test-Path -LiteralPath (Join-Path $Root $canonical))){throw "Missing canonical maintenance launcher: $canonical"}}
 $producerSchemaPath=Join-Path $Root 'c11c-suite\c11c-producer\producer_schema.json'
 $producerManifestPath=Join-Path $Root 'c11c-suite\c11c-producer\BUILD_MANIFEST.json'
 $producerSchema=Get-Content -Raw -LiteralPath $producerSchemaPath | ConvertFrom-Json

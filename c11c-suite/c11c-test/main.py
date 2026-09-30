@@ -28,16 +28,16 @@ from common import PROJECT_ROOT, CYBER_STYLE, qprocess_environment, powershell
 
 C11_COMMANDS = [
     ('FULL LOGICAL', 'python', ['./tests/run_all.py'], 'Todas las suites registradas (KNOWN_SUITES).'),
-    ('FULL FREEZE GATE', 'ps', ['tools/c11freeze/run_all.ps1'], 'Core + C11 + logical + retro + physical + stress.'),
+    ('LEGACY C11 FREEZE GATE', 'ps', ['tools/c11freeze/run_all.ps1'], 'Historical low-level freeze regression: core + C11 + logical + retro + physical + stress.'),
     ('CORE', 'ps', ['tools/c11freeze/run_core_suite.ps1'], 'RNG / mechanics / DDI.'),
     ('C11 CONTRACTS', 'ps', ['tools/c11freeze/run_c11_suite.ps1'], 'Contratos C11-B.'),
     ('RETROCOMPATIBILITY', 'ps', ['tools/c11freeze/run_retrocompatibility.ps1'], '54-run comparison.'),
     ('PHYSICAL EXPORT', 'ps', ['tools/c11freeze/run_physical_export_suite.ps1'], 'Physical smoke + export.'),
-    ('C11-A CHALLENGE QA', 'ps', ['tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1'], 'Historical 9×6 challenge matrix.'),
+    ('C11-A.1 HISTORICAL CHALLENGE QA', 'ps', ['tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1'], 'Historical compatibility/regression route: 9×6 challenge matrix.'),
     ('PRODUCER SELF-TEST', 'python', ['./c11c-suite/c11c-producer/self_test.py'], 'Producer package/static contract checks.'),
     ('PRODUCER GUI CONTRACT', 'python', ['./c11c-suite/c11c-producer/test_producer_gui_contract.py'], 'Producer queue, review and drill-launch contracts.'),
     ('RETRO REFERENCE CONTRACT', 'python', ['./c11c-suite/test_retro_reference_contract.py'], 'Immutable C11-A.1 reference bundle.'),
-    ('C11 VISUAL QA', 'ps', ['tools/qa/c11/run_c11a_visual_bulk_qa.ps1'], 'Historical visual bulk QA.'),
+    ('C11-A HISTORICAL VISUAL QA', 'ps', ['tools/qa/c11/run_c11a_visual_bulk_qa.ps1'], 'Historical visual qualification route; not current C11-C review authority.'),
     ('ART DIRECTION ALL', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-Workers', '7', '-All'], 'Current review corpus with real 7-worker loop concurrency.'),
     ('ART DIRECTION LONGFORMS', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1', '-Longforms'], '5 × 180s longforms.'),
     ('LONGFORM BULK', 'ps', ['tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production_bulk.ps1'], 'Canonical 5-family longform bulk production.'),
@@ -51,8 +51,11 @@ C11_COMMANDS = [
     ('C11-C ONE VIDEO EACH TYPE', 'ps', ['tools/qa/c11/run_c11c_one_video_each_type.ps1'], 'Smoke físico de 3 vídeos: Visual Loop + Visual Drill + Longform.'),
     ('C11-C SUITE LAUNCHER AUDIT', 'ps', ['tools/qa/c11/verify_c11c_suite_launchers.ps1'], 'Verify active suite launchers and retired studio separation.'),
     ('C11-C POWERSHELL PARSE', 'bat', ['c11c-suite/c11c-test/test_powershell_parse.bat'], 'Parse all active PowerShell scripts with Windows PowerShell 5.1.'),
-    ('C11-C COMPLETE VIDEO REVIEW', 'ps', ['tools/qa/c11/run_c11c_complete_video_review.ps1', '-Workers', '7', '-Reset'], 'Generate and validate the complete 52-video C11-C review corpus.'),
+    ('C11-C COMPLETE VIDEO REVIEW', 'ps', ['tools/qa/c11/run_c11c_complete_video_review.ps1', '-Workers', '7'], 'Validate/generate the complete 52-video C11-C review corpus; preserves a COMPLETE corpus instead of forcing a reset.'),
     ('C11-C DOCS CONSOLIDATION', 'ps', ['tools/maintenance/consolidate_c11c_2_19_documentation.ps1'], 'Archive superseded 2.19.x documentation into historical evidence.'),
+    ('C11-C FREEZE DRY RUN', 'ps', ['tools/maintenance/create_c11c_freeze_zip.ps1', '-DryRun'], 'Validate acceptance, root cleanliness, build_factory lineage and frozen-package exclusions without creating a ZIP.'),
+    ('C11-C FREEZE PACKAGE', 'bat', ['c11c-suite/c11c-maintenance/run_freeze_package.bat'], 'Create the sealed C11-C 2.19.12 frozen archive through the canonical Maintenance packager.'),
+    ('C11-C CLEANUP CONTRACT', 'python', ['./c11c-suite/c11c-maintenance/test_cleanup_contract.py'], 'Static safety contract for artifact cleanup and frozen-package exclusions.'),
     ('SEED STRESS 32x2', 'python', ['tools/c11freeze/run_seed_stress.py'], 'Deterministic seed stress regression.'),
 ]
 

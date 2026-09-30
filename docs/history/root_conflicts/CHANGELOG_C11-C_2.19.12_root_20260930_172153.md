@@ -38,3 +38,11 @@
 - Preserved the exact Visual Loop identity crosswalk from V32 using a separately declared hashtable.
 - No generated media, engine/core, worker isolation, simulation, RNG or production-generation code was changed.
 
+## V35.1 pre-freeze workstation correction
+
+- Removed duplicate UTF-8 BOM from the documentation consolidator.
+- Made documentation consolidation `-DryRun` filesystem-neutral.
+- Converted avoidable root different-SHA conflicts into timestamped preservation archives under `docs/history/root_conflicts/`.
+- Extended Maintenance contract checks for these failure modes.
+- No runtime, renderer, simulation, RNG, presentation or production logic changed.
+

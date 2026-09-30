@@ -1,61 +1,35 @@
-﻿# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-C 2.19.12
+# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-C 2.19.12
 
-## Authoritative baseline
+## Current state
 
-The active repository state is **C11-C 2.19.12 consolidated repair candidate — NOT FROZEN**.
+C11-C 2.19.12 has reached `FINAL CONSOLIDATED ACCEPTANCE PASS`. The repository is in **pre-freeze hardening**: documentation and Maintenance/QA tooling may be refined; engine/runtime mechanics are closed.
 
-Canonical first reads:
+## First reads
 
 1. `AGENTS.md`
-2. `.continue/rules/CONTINUE.md`
-3. `docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md`
-4. `docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md`
-5. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-6. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-7. `docs/current/c11c/README.md`
-8. `docs/current/suite/C11C_SUITE_0.1.4_RULES.md`
-9. `docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md`
-10. `docs/current/c11c/C11-C_2.19.12_DOCUMENTATION_INDEX.md`
+2. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
+3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
+4. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
+5. `docs/current/suite/C11C_SUITE_CURRENT_RULES.md`
+6. `docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md`
+7. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md` after freeze
 
-## Frozen C boundary
+## Final pre-freeze rule
 
-Do not alter without an explicit checkpoint:
+Only these areas are open for hardening:
 
-- mechanics/simulation mathematics;
-- RNG algorithm, streams and ownership;
-- `SimulationResult`;
-- `winning_frame`;
-- `close_calls`;
-- `WinningFrameDetector`;
-- `RenderedFrameStream`;
-- C7 audio contracts/ownership;
-- C9 semantics;
-- logical 540×960 social geometry.
+- current documentation and cross-context handover;
+- repository/root organization;
+- Suite launcher routing and static parity checks;
+- safe artifact cleanup tooling;
+- freeze-package validation and provenance.
 
-## Live C11-C manufacturing contract
+Do not change simulation, mechanics, structural RNG, authoritative result semantics, C11-B geometry or proven presentation/runtime behavior.
 
-- 27 Loop grammars / 5 families.
-- 4 Drill families.
-- Tracking 27 s / 810 frames; Saccade/Pursuit/Peripheral Scan 23 s / 690 frames.
-- 5 Longforms / 180 s.
-- Review 720×1280 @ 30 FPS; Master 1080×1920.
-- Producer 0.9.7 under `c11c-suite/c11c-producer/`.
-- Single Drill capture: temporary AVI Movie Maker → video-only MP4 → family music → final delivery.
-- Movie Maker launch uses project-local `--path .` and no explicit `--resolution` on the proven Producer route.
-- Hooks come from `profiles/presentation/c11c_visual_hooks.json`.
+## Safe cleanup
 
-## Parallel review rule
+Review media cleanup remains allowlist-based and dry-run first. Release packaging independently excludes `artifacts/` and transient/editor caches and must not rely on a destructive cleanup to become safe.
 
-Art Direction `Workers=7` is a real concurrency contract. Each worker gets an independent temporary Godot project root. `override.cfg` and `.godot` are worker-local. Do not reintroduce a global mutex or serialize the batch to “fix” resolution races.
+## D
 
-## Suite ownership
-
-`c11c-suite/` is the only active Suite source. the retired legacy operator surface is retired and must not be modified. Do not add active launcher references to it.
-
-## Test rule
-
-Every new test must be registered in `tests/run_all.py` and exposed through the relevant Suite/GUI surface plus direct console execution. Run focused tests first, then the full candidate gate.
-
-## D status
-
-Do not start D work until C11-C 2.19.12 (or later consolidated candidate) is formally accepted and frozen.
+After the frozen package is sealed, D starts from that immutable archive. Follow the approved D sequence and retain the GUI/CLI parity rule throughout.

@@ -1,18 +1,34 @@
-# START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.19.12 FINALIZATION
+# START PROMPT — ChallengeEngineV01_STATELESS / C11-C 2.19.12 FINAL SEAL
 
-Continue from the final C11-C 2.19.12 candidate. Do not reopen frozen engine boundaries.
+Continue from the accepted C11-C 2.19.12 workspace.
 
-First execute the focused current authority checks:
+## Current truth
 
-```powershell
-python .\c11c-suite\self_test.py
-python .\c11c-suite\c11c-producer\self_test.py
-python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
-.\c11c-suite\c11c-test\test_powershell_parse.bat
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\verify_c11c_suite_launchers.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\verify_repository_layout.ps1
-```
+The final workstation acceptance has already passed. The remaining work is a non-runtime pre-freeze hardening pass: consolidate documentation, quarantine stale root/Suite aliases, verify active GUI/CLI routing, and seal the source archive.
 
-Then execute the final acceptance. Only after it returns the exact final PASS marker should the verified historical `build_factory.py` be installed and the Maintenance freeze ZIP created.
+## Mandatory first reads
 
-The final archive is the baseline for D.
+- `AGENTS.md`
+- `.continue/rules/CONTINUE.md`
+- `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
+- `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
+- `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
+- `docs/current/c11c/C11-C_MAINTENANCE_AND_FREEZE_PACKAGING.md`
+- `docs/current/suite/C11C_SUITE_CURRENT_RULES.md`
+- `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
+
+## Do not change
+
+No mechanics, simulation, RNG, authoritative result semantics, C11-B geometry or proven runtime/presentation implementation.
+
+## Final gates
+
+After any active Suite/Maintenance change:
+
+1. focused static checks;
+2. PowerShell parse/layout/launcher checks;
+3. `FULL_ACCEPTANCE_C11C_2.19.12.ps1`;
+4. Maintenance freeze dry-run;
+5. real freeze package.
+
+Only the frozen archive/hash opens C11-D.

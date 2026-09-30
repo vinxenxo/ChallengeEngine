@@ -1,19 +1,17 @@
 # D0 — Frozen C11-C Baseline Inventory Target
 
-The inventory generated at D0 must capture:
+Record:
 
-- exact frozen archive SHA-256;
-- source tree SHA-256;
-- Godot/Producer/tool versions;
+- archive SHA-256 and source-tree SHA-256;
+- Godot, Suite and Producer versions;
 - Challenge definitions 001..009;
-- five Loop families / 27 grammars;
-- four Drill families;
+- 5 Loop families / 27 grammars;
+- 4 Drill families;
 - Longform set;
 - delivery profiles;
-- C11-C Suite surfaces and direct launchers;
-- assets and provenance;
-- historical evidence references;
+- Suite surfaces and direct launchers;
+- assets/provenance;
 - seed usage evidence;
 - acceptance and freeze receipts.
 
-No source modification is part of this inventory.
+No source modification belongs in the inventory step.

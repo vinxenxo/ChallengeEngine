@@ -1,0 +1,205 @@
+﻿{
+    "entries":  [
+                    {
+                        "source":  "c11c-suite/c11c-maintenace",
+                        "destination":  "docs/history/root_conflicts/c11c-maintenace_20260930_171918",
+                        "action":  "WOULD_QUARANTINE_DIR",
+                        "reason":  "Misspelled compatibility alias; canonical c11c-maintenance exists."
+                    },
+                    {
+                        "source":  "MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+                        "destination":  "docs/history/root_conflicts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+                        "destination":  "docs/history/root_conflicts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+                        "destination":  "docs/history/root_conflicts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "START_PROMPT_C11D_V1.0_STATELESS.md",
+                        "destination":  "docs/history/root_conflicts/START_PROMPT_C11D_V1.0_STATELESS.md",
+                        "action":  "WOULD_ARCHIVE_ROOT_CONFLICT",
+                        "reason":  "Canonical destination differs; root snapshot would be preserved in history."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_A1_CLOSURE_RECEIPT_V16.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_A1_CLOSURE_RECEIPT_V16.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_A1_CLOSURE_RECEIPT_V17.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_A1_CLOSURE_RECEIPT_V17.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_A1_CLOSURE_RECEIPT_V18.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_A1_CLOSURE_RECEIPT_V18.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_A1_CLOSURE_RECEIPT_V19.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_A1_CLOSURE_RECEIPT_V19.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CANDIDATE_RECEIPT.md",
+                        "destination":  "docs/history/root_conflicts/C11C_2.19.12_CANDIDATE_RECEIPT_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CLOSURE_BUGFIX_OVERLAY_V27.manifest.json",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_CLOSURE_BUGFIX_OVERLAY_V27.manifest.json",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CLOSURE_BUGFIX_OVERLAY_V27_README.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_CLOSURE_BUGFIX_OVERLAY_V27_README.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CONTEXT_INDEX.md",
+                        "destination":  "docs/history/root_conflicts/C11C_2.19.12_CONTEXT_INDEX_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_CONTEXT_PACK_README.md",
+                        "destination":  "docs/history/root_conflicts/C11C_2.19.12_CONTEXT_PACK_README_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT.md",
+                        "destination":  "docs/history/root_conflicts/C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_PRE_FREEZE_FINAL_REVIEW.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_PRE_FREEZE_FINAL_REVIEW.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_PRE_FREEZE_RECOVERY_V22_RECEIPT.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_PRE_FREEZE_RECOVERY_V22_RECEIPT.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_PRE_FREEZE_V22_VALIDATION.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_PRE_FREEZE_V22_VALIDATION.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_REPAIR_CANDIDATE_MANIFEST.json",
+                        "destination":  "docs/history/root_conflicts/C11C_2.19.12_REPAIR_CANDIDATE_MANIFEST_root_20260930_171918.json",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_STATIC_VALIDATION_REPORT.md",
+                        "destination":  "docs/history/root_conflicts/C11C_2.19.12_STATIC_VALIDATION_REPORT_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "C11C_2.19.12_V20_FREEZE_READINESS_RECEIPT.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_V20_FREEZE_READINESS_RECEIPT.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_V21_PRE_FREEZE_READINESS_RECEIPT.md",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_V21_PRE_FREEZE_READINESS_RECEIPT.md",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "C11C_2.19.12_V21_REPAIR_MANIFEST.json",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_V21_REPAIR_MANIFEST.json",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "CHANGELOG_C11-C_2.19.12.md",
+                        "destination":  "docs/history/root_conflicts/CHANGELOG_C11-C_2.19.12_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "FULL_ACCEPTANCE_C11C_2.19.12_A1_SINGLE.ps1",
+                        "destination":  "docs/history/c11c/releases/superseded_2.19/root_context/FULL_ACCEPTANCE_C11C_2.19.12_A1_SINGLE.ps1",
+                        "action":  "WOULD_MOVE",
+                        "reason":  ""
+                    },
+                    {
+                        "source":  "OVERLAY_README.md",
+                        "destination":  "docs/history/root_conflicts/OVERLAY_README_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "CONTINUE.md",
+                        "destination":  "docs/history/root_conflicts/CONTINUE_root_20260930_171918.md",
+                        "action":  "WOULD_ARCHIVE_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence."
+                    },
+                    {
+                        "source":  "Make_zip.ps1",
+                        "destination":  "tools/maintenance/Make_zip.ps1",
+                        "action":  "WOULD_REMOVE_DUPLICATE",
+                        "reason":  "Destination already contains identical bytes."
+                    }
+                ],
+    "conflicts":  0,
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "schema":  "C11-C-ROOT-ORGANIZATION-V1",
+    "applied_changes":  0,
+    "planned_changes":  29,
+    "untouched_roots":  [
+                            "project.godot",
+                            "GeneradorMaestro.gd",
+                            "Main.tscn",
+                            "build_factory.py",
+                            "release_gate.py",
+                            "AGENTS.md",
+                            "README.md",
+                            ".continue",
+                            ".githooks",
+                            "core",
+                            "assets",
+                            "challenges",
+                            "definitions",
+                            "profiles",
+                            "schemas",
+                            "tests",
+                            "tools",
+                            "c11c-suite",
+                            "docs"
+                        ],
+    "apply":  false
+}

@@ -1,9 +1,0 @@
-TARGETED C11 freeze finalization fix.
-
-Changed:
-tools/c11freeze/run_seed_stress.py
-tools/c11freeze/run_all.ps1
-tools/c11freeze/finalize_c11_freeze.ps1
-docs/c11-freeze/13_SEAL_AND_REPRODUCIBILITY.md
-
-No simulation, RNG, presentation, mechanic, asset, or production code changes.

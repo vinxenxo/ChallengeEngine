@@ -1,42 +1,44 @@
-﻿# C11-C Producer 0.9.7 — Current Console Commands
+# C11-C Producer 0.9.7 — Console Test Commands
 
 Run from the repository root.
 
-## Fast Producer checks
+## Producer static checks
 
 ```powershell
-python .\c11c-suite\self_test.py
 python .\c11c-suite\c11c-producer\self_test.py
 python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
 ```
 
-## Current Challenge review
+## Producer runtime entry point
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\run_c11c_challenge_bulk_qa.ps1
+Use the canonical Producer command surface under:
+
+`c11c-suite/c11c-producer/`
+
+The Producer delegates to the C11-C backend/prototype launchers. It does not reimplement simulation, mechanics or the visual backend.
+
+## Visual Loop review
+
+The current Art Direction review authority is:
+
+```text
+.\tools\prototypes\c11c_bulk\run_c11c_art_direction_batch_v4.ps1
 ```
 
-## Historical C11-A.1 qualification
+The consolidated 52-product review authority is:
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\run_c11a1_challenge_bulk_qa.ps1
+```text
+.\tools\qa\c11\run_c11c_complete_video_review.ps1
 ```
 
-Use the historical A1 runner only for the explicit qualification/compatibility gate.
+## Visual Drill production
 
-## Challenge production
+The current Producer-side launcher is:
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1 `
-  -ChallengeId CHALLENGE_001 `
-  -Seed 12345 `
-  -DeliveryProfile MASTER_1080
+```text
+.\c11c-suite\c11c-producer\run_visual_drill_production.ps1
 ```
 
-## Visual Loop / Drill production
+## Operator rule for D
 
-Use the canonical root Loop launcher or the Suite Drill producer wrapper. Delivery profiles remain declarative and do not change mechanic truth.
-
-## Freeze boundary
-
-Before creating the frozen archive, rerun the complete 2.19.12 acceptance after any change to active Suite/Producer routing.
+When D introduces a new production/test capability, first establish or preserve its canonical console command. The GUI must invoke that same operation rather than becoming a second backend.

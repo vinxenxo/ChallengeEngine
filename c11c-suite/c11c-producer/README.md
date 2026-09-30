@@ -1,33 +1,25 @@
-﻿# C11-C Producer 0.9.7 — Suite Member
+# C11-C Producer 0.9.7 — Operator Surface
 
-Compact orchestration interface for single production and predefined reviews.
+The Producer is the audiovisual orchestration surface inside `c11c-suite`.
 
-## Supported single production
+## Current backend routing
 
-- **Challenges:** `CHALLENGE_001` … `CHALLENGE_009`, using canonical Challenge definitions and production launcher.
-- **Visual Loops:** 5 families / 27 grammars.
-- **Visual Drills:** Tracking, Saccade, Pursuit and Peripheral Scan.
+- Challenge review: `tools/qa/c11/run_c11c_challenge_bulk_qa.ps1`.
+- Historical C11-A.1 qualification: `tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1` only for explicit compatibility evidence.
+- Visual Loop production: canonical C11-C bulk production launchers.
+- Visual Drill production: `run_visual_drill_production.ps1` delegates to the canonical authoring/review path.
+- Art Direction bulk review: `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1` with the established private-worker model.
 
-## Predefined reviews
+## Operator parity
 
-- `REVIEW — 9 CHALLENGES × 6 SEEDS`
-- `REVIEW — 27 VISUAL LOOPS`
-- `REVIEW — 20 VISUAL DRILLS`
-- `REVIEW — 5 LONGFORMS`
-- combined review operations.
+The GUI is an orchestration client. It does not implement mechanics, simulation, structural RNG or a duplicate renderer. The same canonical commands must remain available from the console.
 
-## Suite ownership
+During D, use the Producer GUI and direct CLI together. A GUI success must be reproducible through the corresponding canonical command and manifest/provenance path.
 
-The live Producer is under `c11c-suite/c11c-producer/`. `c11c-studio` is retired and is not a dependency.
+## Engine-lineage terminology
 
-## Visual Drill capture
+The Producer schema may identify the certified engine/profile lineage as 2.16.9. This is provenance for the underlying immutable engine contract. It does not replace the current C11-C 2.19.12 orchestration/tooling baseline.
 
-The single-Drill Producer uses temporary AVI Movie Maker capture, waits for the file to stabilize, converts video-only to MP4, then generates/muxes deterministic family music and resolves the requested delivery profile.
+## Current release state
 
-## Art Direction worker review
-
-The canonical batch runner is `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`. Its 2.19.6 worker model uses a private temporary Godot project root per concurrent worker; the Producer does not own or serialize that pool.
-
-## Backend safety
-
-The GUI remains orchestration-only. It does not implement mechanics, RNG, timing truth or rendering.
+Producer 0.9.7 has passed the final C11-C 2.19.12 acceptance together with the GUI contract. Any active Producer/Suite routing change after acceptance requires a fresh full acceptance before freeze.

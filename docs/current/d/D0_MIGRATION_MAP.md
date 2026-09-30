@@ -1,20 +1,20 @@
-# D0 — Migration Map from frozen C11-C 2.19.12
+# D0 — Migration Map from sealed C11-C 2.19.12
 
-## Immutable C11-C inputs
+## Immutable inputs
 
-- C11-B deterministic simulation truth and RNG contracts.
-- 540x960 logical social geometry.
-- 27 Visual Loop grammars / 5 families.
-- 4 Visual Drill families.
+- C11-B/C deterministic engine truth and RNG contracts.
+- 540x960 logical geometry.
+- 5 Loop families / 27 grammars.
+- 4 Drill families.
 - 5 Longforms.
-- C11-A.1 54-run qualification and compatibility adapter.
-- Producer 0.9.7 and current C11-C Suite.
-- Final acceptance and freeze-package provenance.
+- C11-A.1 compatibility evidence.
+- Producer 0.9.7 and active C11-C Suite.
+- Final acceptance and freeze evidence.
 
-## Recovery dossiers
+## Recovery work
 
-For every Challenge create: mechanic identity/version, native timing, definition path, asset references and semantic roles, historical intent, seed/QA evidence, known mismatches, provenance and D0 disposition.
+Create one evidence dossier per Challenge `001` … `009` covering mechanic identity/version, timing, definitions, asset references, historical intent, seed/QA evidence, mismatches and provenance.
 
-## GUI/CLI rule
+## Migration principle
 
-The GUI never becomes a second backend. A GUI action must compile to the same canonical command and request model that works from the command line. Every D tool must have a direct CLI launcher.
+D features are additive adapters/declarative layers until a deliberate checkpoint authorizes a new mechanic or engine contract.

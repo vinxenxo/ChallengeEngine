@@ -21,7 +21,7 @@ $moves['MASTER_HANDOVER_C11D_V1.0_STATELESS.md'] = 'docs/master-prompts/MASTER_H
 $moves['START_PROMPT_C11D_V1.0_STATELESS.md'] = 'docs/master-prompts/START_PROMPT_C11D_V1.0_STATELESS.md'
 $moves['NEXT-PROMT.TXT'] = 'docs/history/root/NEXT-PROMT_root_legacy.txt'
 $moves['NEXT_PROMPT_C11D_V1.0_STATELESS.txt'] = 'docs/master-prompts/NEXT_PROMPT_C11D_V1.0_STATELESS.txt'
-$moves['NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt'] = 'docs/master-prompts/NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt'
+$moves['NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt'] = 'docs/history/root/NEXT_PROMPT_C11C_2.19_CONSOLIDATED_legacy.txt'
 $moves['FULL_ACEPTANCE_REF.md'] = 'docs/current/c11c/FULL_ACCEPTANCE_REFERENCE.md'
 
 # Historical 2.19 root context / candidate evidence.
@@ -56,6 +56,23 @@ foreach ($name in @('clean-videos.ps1','Make_zip.ps1','prepare_c11c_acceptance_w
 $moves['clean-godot.ps1'] = 'docs/history/root/clean-godot_root_legacy.ps1'
 
 $report = [System.Collections.Generic.List[object]]::new()
+
+# Retire the misspelled Suite alias only when the canonical maintenance tree exists.
+# The full directory is moved intact to history; no bytes are deleted.
+$legacyMaintenanceAlias = Join-Path $ProjectRoot 'c11c-suite\c11c-maintenace'
+$canonicalMaintenance = Join-Path $ProjectRoot 'c11c-suite\c11c-maintenance'
+if ((Test-Path -LiteralPath $legacyMaintenanceAlias -PathType Container) -and (Test-Path -LiteralPath $canonicalMaintenance -PathType Container)) {
+    $archiveAlias = Join-Path $ProjectRoot ('docs\history\root_conflicts\c11c-maintenace_' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
+    $item = [ordered]@{source='c11c-suite/c11c-maintenace';destination=$archiveAlias.Substring($ProjectRoot.Length + 1).Replace('\','/');action='WOULD_QUARANTINE_DIR';reason='Misspelled compatibility alias; canonical c11c-maintenance exists.'}
+    if ($Apply) {
+        New-Item -ItemType Directory -Force -Path (Split-Path -Parent $archiveAlias) | Out-Null
+        if (Test-Path -LiteralPath $archiveAlias) { $archiveAlias = $archiveAlias + '_' + ([guid]::NewGuid().ToString('N').Substring(0,8)); $item.destination=$archiveAlias.Substring($ProjectRoot.Length + 1).Replace('\','/') }
+        Move-Item -LiteralPath $legacyMaintenanceAlias -Destination $archiveAlias -Force
+        $item.action='QUARANTINED_DIR'
+        $item.reason='Misspelled compatibility alias archived intact; canonical maintenance tree retained.'
+    }
+    $report.Add([pscustomobject]$item)
+}
 foreach ($entry in $moves.GetEnumerator()) {
     $src = Join-Path $ProjectRoot $entry.Key
     $dst = Join-Path $ProjectRoot $entry.Value
@@ -104,8 +121,22 @@ foreach ($entry in $moves.GetEnumerator()) {
                 $item.reason = 'Root overlay manifest differs from legacy metadata; root snapshot would be preserved instead of overwriting legacy evidence.'
             }
         } else {
-            $item.action = 'CONFLICT'
-            $item.reason = 'Destination exists with different SHA-256; source was not moved.'
+            $archiveName = [System.IO.Path]::GetFileNameWithoutExtension($entry.Key) + '_root_' + (Get-Date -Format 'yyyyMMdd_HHmmss') + [System.IO.Path]::GetExtension($entry.Key)
+            $archive = Join-Path $ProjectRoot ('docs/history/root_conflicts/' + $archiveName)
+            if ($Apply) {
+                New-Item -ItemType Directory -Force -Path (Split-Path -Parent $archive) | Out-Null
+                if (Test-Path -LiteralPath $archive) {
+                    $archive = Join-Path $ProjectRoot ('docs/history/root_conflicts/' + [System.IO.Path]::GetFileNameWithoutExtension($archiveName) + '_' + ([guid]::NewGuid().ToString('N').Substring(0,8)) + [System.IO.Path]::GetExtension($archiveName))
+                }
+                Move-Item -LiteralPath $src -Destination $archive
+                $item.action = 'ARCHIVED_CONFLICT'
+                $item.destination = $archive.Substring($ProjectRoot.Length + 1).Replace('\','/')
+                $item.reason = 'Destination contains different bytes; root source preserved intact in history instead of overwriting canonical evidence.'
+            } else {
+                $item.action = 'WOULD_ARCHIVE_CONFLICT'
+                $item.destination = $archive.Substring($ProjectRoot.Length + 1).Replace('\','/')
+                $item.reason = 'Destination contains different bytes; root source would be preserved intact in history instead of overwriting canonical evidence.'
+            }
         }
     } else {
         if ($Apply) {
@@ -120,8 +151,8 @@ foreach ($entry in $moves.GetEnumerator()) {
 }
 
 $conflicts = @($report | Where-Object action -eq 'CONFLICT')
-$planned = @($report | Where-Object action -in @('WOULD_MOVE','WOULD_REMOVE_DUPLICATE','WOULD_ARCHIVE_ROOT_CONFLICT'))
-$moved = @($report | Where-Object action -in @('MOVED','REMOVED_DUPLICATE','ARCHIVED_ROOT_CONFLICT'))
+$planned = @($report | Where-Object action -in @('WOULD_MOVE','WOULD_REMOVE_DUPLICATE','WOULD_ARCHIVE_ROOT_CONFLICT','WOULD_ARCHIVE_CONFLICT','WOULD_QUARANTINE_DIR'))
+$moved = @($report | Where-Object action -in @('MOVED','REMOVED_DUPLICATE','ARCHIVED_ROOT_CONFLICT','ARCHIVED_CONFLICT','QUARANTINED_DIR'))
 
 Write-Host ('[ROOT-ORGANIZER] Project root: ' + $ProjectRoot)
 Write-Host ('[ROOT-ORGANIZER] Apply=' + [bool]$Apply)
