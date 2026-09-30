@@ -2,11 +2,11 @@
 
 ## Current phase
 
-C11-D â€” Declarative Challenge recovery, visual/editorial parity, reusable asset families, production and provenance pipeline.
+C11-D — Declarative Challenge recovery, visual/editorial parity, reusable asset families, production and provenance pipeline.
 
 ## Current checkpoint
 
-D2.1 â€” Declarative Asset Family Registry / Evidence Binding
+D2.1 — Declarative Asset Family Registry / Evidence Binding
 STATUS: ACTIVE
 
 ## Frozen reference baseline
@@ -27,17 +27,17 @@ build_factory.py SHA-256:
 
 ## Closed checkpoints
 
-D0 â€” CLOSED / PASS
+D0 — CLOSED / PASS
 9/9 Challenge dossiers recovered and evidenced.
 
-D1 â€” functional checkpoints complete.
+D1 — functional checkpoints complete.
 D1.0 source audit: PASS
 D1.1 visual/editorial mapping: PASS
 D1.5 canonical Instagram Reels layout profile established
 D1.6 contract regression: 5/5 PASS
 D1.7 declarative Challenge mapping: 9/9 PASS
 
-D2.0 â€” CLOSED / PASS
+D2.0 — CLOSED / PASS
 15 logical C6 assets audited.
 9/9 Challenges audited.
 9/9 D0 dossiers discovered.
@@ -64,7 +64,7 @@ artifacts\tests\c11d_d2\d2_0_validation_receipt.json
 
 Build an additive declarative asset-family registry from the D2.0 audit evidence.
 
-The registry is an evidence-binding layer, not runtime activation authority.
+The registry is an evidence-binding layer, not a renderer change and not runtime activation authority.
 
 Rules:
 1. Preserve explicit asset_family and asset_family_version evidence.
@@ -97,7 +97,7 @@ artifacts\tests\c11d_d2\d2_1_validation_receipt.json
 
 ## Next-context rule
 
-A new context must read MASTER_HANDOVER_C11D_CURRENT.md first, then START_PROMPT_C11D_CURRENT.md, then the D2.0 audit and D2.1 registry, contract and receipt.
+A new context must read MASTER_HANDOVER_C11D_CURRENT.md first, then START_PROMPT_C11D_CURRENT.md, then the D2.1 registry, contract and receipt.
 Do not reopen D2.0 unless new contradictory evidence appears.
 
 ## Prompt maintenance rule
