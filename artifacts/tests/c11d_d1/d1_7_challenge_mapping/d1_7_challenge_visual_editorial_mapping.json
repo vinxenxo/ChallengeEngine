@@ -1,0 +1,629 @@
+﻿{
+    "schema":  "C11-D-D1.7-CHALLENGE-VISUAL-EDITORIAL-MAPPING-V1",
+    "checkpoint":  "D1.7",
+    "status":  "PASS",
+    "layout_profile_id":  "instagram_reels_v1",
+    "challenge_count":  9,
+    "mappings":  [
+                     {
+                         "challenge_id":  "CHALLENGE_001",
+                         "mechanic":  "key",
+                         "mechanic_version":  "1.0",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=key. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  74,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_002",
+                         "mechanic":  "parking",
+                         "mechanic_version":  "1.0",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=parking. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  26,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_003",
+                         "mechanic":  "pilot",
+                         "mechanic_version":  "2.0",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=pilot. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  23,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_004",
+                         "mechanic":  "parking_v2",
+                         "mechanic_version":  "2.0",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=parking_v2. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  26,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_005",
+                         "mechanic":  "hit_v1",
+                         "mechanic_version":  "1.0",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=hit_v1. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  19,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_006",
+                         "mechanic":  "catch_v1",
+                         "mechanic_version":  "UNKNOWN",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=catch_v1. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  18,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_007",
+                         "mechanic":  "find_v1",
+                         "mechanic_version":  "UNKNOWN",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=find_v1. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  17,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_008",
+                         "mechanic":  "choose_v1",
+                         "mechanic_version":  "UNKNOWN",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=choose_v1. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  11,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     },
+                     {
+                         "challenge_id":  "CHALLENGE_009",
+                         "mechanic":  "count_v1",
+                         "mechanic_version":  "UNKNOWN",
+                         "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=count_v1. No additional historical intent was inferred beyond repository evidence.",
+                         "canonical_layout":  {
+                                                  "layout_profile_id":  "instagram_reels_v1",
+                                                  "logical_canvas":  "540x960",
+                                                  "delivery":  "720x1280",
+                                                  "header":  "0..144",
+                                                  "body":  "144..816",
+                                                  "footer":  "816..960",
+                                                  "structural_owner":  "UnifiedSocialFrame",
+                                                  "body_projection":  "CoordinateMapper",
+                                                  "framing_policy":  "PresentationFramer",
+                                                  "challenge_override_allowed":  false
+                                              },
+                         "visual_binding":  {
+                                                "video_status":  "UNKNOWN",
+                                                "presentation_status":  "UNKNOWN",
+                                                "delivery_profile_status":  "UNKNOWN",
+                                                "timing_status":  "UNKNOWN",
+                                                "geometry_status":  "UNKNOWN",
+                                                "body_content_status":  "DECLARATIVE_BINDING",
+                                                "assets":  {
+                                                               "status":  "EVIDENCED",
+                                                               "reference_count":  3,
+                                                               "role_count":  3
+                                                           },
+                                                "editorial_copy":  {
+                                                                       "status":  "UNKNOWN",
+                                                                       "rule":  "Do not invent Challenge-specific copy."
+                                                                   },
+                                                "typography":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not infer Challenge-specific typography."
+                                                               },
+                                                "safe_areas":  {
+                                                                   "status":  "UNKNOWN",
+                                                                   "rule":  "Do not invent generic inset or padding values."
+                                                               },
+                                                "cta":  {
+                                                            "status":  "UNKNOWN",
+                                                            "rule":  "Do not invent Challenge-specific CTA values."
+                                                        },
+                                                "asset_fit":  {
+                                                                  "status":  "UNKNOWN",
+                                                                  "rule":  "Do not infer fit or crop policy from asset existence alone."
+                                                              }
+                                            },
+                         "provenance":  {
+                                            "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                            "d1_1_mapping":  ".\\artifacts\\tests\\c11d_d1\\d1_1_visual_editorial_mapping.json",
+                                            "historical_document_count":  32,
+                                            "historical_only_material_is_reference_only":  true
+                                        },
+                         "boundaries":  {
+                                            "simulation":  "UNCHANGED",
+                                            "mechanics":  "UNCHANGED",
+                                            "rng":  "UNCHANGED",
+                                            "timing_truth":  "UNCHANGED",
+                                            "winning_frame":  "UNCHANGED",
+                                            "close_calls":  "UNCHANGED",
+                                            "renderer":  "UNCHANGED",
+                                            "frozen_c11c":  "UNCHANGED"
+                                        },
+                         "d1_7_status":  "MAPPED_DECLARATIVELY"
+                     }
+                 ],
+    "rules":  [
+                  "D1.5 owns canonical structural layout.",
+                  "Challenge records consume the shared layout.",
+                  "Challenge records cannot redefine Header, Body or Footer geometry.",
+                  "UNKNOWN is explicit and is never converted into a guess.",
+                  "Historical-only evidence remains reference material.",
+                  "D1.7 introduces no renderer, simulation, mechanics or RNG change."
+              ]
+}

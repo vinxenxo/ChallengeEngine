@@ -1,0 +1,22 @@
+﻿{
+    "checkpoint":  "D1.7",
+    "status":  "PASS",
+    "challenge_count":  9,
+    "unique_challenge_count":  9,
+    "layout_profile":  "instagram_reels_v1",
+    "logical_canvas":  "540x960",
+    "delivery":  "720x1280",
+    "header":  "0..144",
+    "body":  "144..816",
+    "footer":  "816..960",
+    "challenge_layout_overrides":  false,
+    "protected_source_changes":  0,
+    "simulation_changed":  false,
+    "mechanics_changed":  false,
+    "rng_changed":  false,
+    "timing_truth_changed":  false,
+    "renderer_changed":  false,
+    "frozen_c11c_changed":  false,
+    "mapping_json":  ".\\artifacts\\tests\\c11d_d1\\d1_7_challenge_mapping\\d1_7_challenge_visual_editorial_mapping.json",
+    "contract_markdown":  ".\\docs\\current\\d\\D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md"
+}
