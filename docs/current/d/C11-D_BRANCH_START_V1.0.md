@@ -1,29 +1,17 @@
-﻿# C11-D — Branch Start Record v1.1
+# C11-D — Branch Start Record v1.0
 
-## Entry state
+## Entry
 
-- Repository/source baseline: **C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN**.
-- Runtime/product lineage: **2.19.1**.
-- Producer: **0.9.7**.
-- Godot: **4.7.1 stable Mono**.
-- C11-A.1: **54/54 PASS**.
-- Final user regression: **all suites PASS**.
-- Windows single Visual Drill smoke: **FINAL PRODUCT PASS**.
+C11-D starts only from the sealed **C11-C 2.19.12 FROZEN** archive.
 
-## Branch rule
+## First work package
 
-D is additive around the frozen C11-C repository. A D requirement must not silently become a mechanic, RNG, simulation or logical-geometry change.
+D0 baseline inventory and nine Challenge recovery dossiers.
 
-## Initial work package
+## Architectural rule
 
-D0 only:
+C11-C engine truth is immutable. D evolves presentation, content/asset bindings, music, production requests, provenance, seed registry, catalog and operator tooling around the frozen contract.
 
-1. prove the exact frozen repository/baseline;
-2. inventory source, profiles, assets, provenance and evidence;
-3. recover `CHALLENGE_001` … `CHALLENGE_009` into dossiers;
-4. identify historical/current mismatches without rewriting historical evidence;
-5. prepare the D1 visual-parity input set.
+## Operator rule
 
-## D0 completion gate
-
-All nine dossiers exist, every material claim points to repository or historical evidence, and no unresolved D requirement silently depends on reopening the frozen backend.
+Use `c11c-suite` concurrently with direct command-line development. Both surfaces must exercise the same canonical scripts and backends.

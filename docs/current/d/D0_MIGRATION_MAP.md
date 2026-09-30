@@ -1,33 +1,20 @@
-﻿# D0 — Migration Map from the next formal C11-C freeze
+# D0 — Migration Map from frozen C11-C 2.19.12
 
-> D is dormant while C11-C 2.19.5 remains a repair candidate. Do not start migration work from the invalidated 2.19.2 freeze claim.
+## Immutable C11-C inputs
 
-## Frozen inputs carried into D
+- C11-B deterministic simulation truth and RNG contracts.
+- 540x960 logical social geometry.
+- 27 Visual Loop grammars / 5 families.
+- 4 Visual Drill families.
+- 5 Longforms.
+- C11-A.1 54-run qualification and compatibility adapter.
+- Producer 0.9.7 and current C11-C Suite.
+- Final acceptance and freeze-package provenance.
 
-- C11-B deterministic simulation truth and certified mechanics;
-- 540×960 logical social geometry;
-- 27 Visual Loop grammars / 5 families;
-- 4 Visual Drill families and timing envelopes;
-- 5 family Longforms;
-- C11-A.1 54-run compatibility evidence;
-- profile-driven delivery;
-- C11-C Suite/Producer orchestration boundaries;
-- seed, provenance and historical Challenge evidence already present.
+## Recovery dossiers
 
-## D layers to evolve
+For every Challenge create: mechanic identity/version, native timing, definition path, asset references and semantic roles, historical intent, seed/QA evidence, known mismatches, provenance and D0 disposition.
 
-- Challenge visual binding;
-- asset families/templates;
-- Procedural Music V5;
-- per-video production request/personalization;
-- artifact/provenance topology;
-- seed registry;
-- Challenge production matrix;
-- media/release QA;
-- Suite operator evolution.
+## GUI/CLI rule
 
-## Recover before redesign
-
-For each `CHALLENGE_001` … `CHALLENGE_009`, create a dossier containing mechanic identity/version, historical intent, current definition path, native timing, logical constraints, current asset references, asset role map, seed/QA evidence, provenance references, known mismatches and D0 disposition.
-
-Historical evidence is not silently rewritten to fit the present implementation. Mismatches are recorded explicitly.
+The GUI never becomes a second backend. A GUI action must compile to the same canonical command and request model that works from the command line. Every D tool must have a direct CLI launcher.

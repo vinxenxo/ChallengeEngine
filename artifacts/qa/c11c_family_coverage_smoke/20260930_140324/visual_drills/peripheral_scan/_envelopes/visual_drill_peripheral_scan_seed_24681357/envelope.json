@@ -1,0 +1,277 @@
+{
+	"assets": {
+		"family_id": "fam_001"
+	},
+	"audio": {
+		"enabled": false,
+		"profile_id": "FAMILY_MUSIC_V4"
+	},
+	"authoring_version": "1.0",
+	"content_id": "C11C_REVIEW_PERIPHERAL_SCAN_T2",
+	"content_version": "1.0.0",
+	"engine_version": "4.7.1",
+	"kind": "visual_drill",
+	"payload": {
+		"distractors": [
+			{
+				"id": "d1",
+				"x": -50.0,
+				"y": -50.0
+			}
+		],
+		"duration": 17.0,
+		"exercise_parameters": {
+			"difficulty_tier": 2,
+			"generator": "peripheral_scan",
+			"pacing_mode": "authored_polar_schedule",
+			"speed_multiplier": 1.0
+		},
+		"fps": 30,
+		"frame_count": 510,
+		"seed_motion": {
+			"anchor_interval_frames": 90,
+			"distractor_count": 7,
+			"enabled": true,
+			"family": "peripheral_scan",
+			"logistic_parameter": 3.87752348,
+			"seed": 24681357,
+			"threat_count": 5,
+			"version": "2.9.0"
+		},
+		"stimulus": {
+			"active": true,
+			"radius": 10.0,
+			"type": "dot",
+			"x": 0.0,
+			"y": 0.0
+		},
+		"targets": [
+			{
+				"highlighted": true,
+				"id": "t1",
+				"status": "active",
+				"x": 50.0,
+				"y": 50.0
+			}
+		],
+		"task": {
+			"anchor_fixed": true,
+			"anchor_interval_frames": 90,
+			"anchor_sequence": [
+				"TRIANGLE",
+				"CIRCLE",
+				"SQUARE"
+			],
+			"answer_sheet": {
+				"distractor_count": 7,
+				"distractor_frame_starts": [
+					121,
+					167,
+					191,
+					234,
+					308,
+					393,
+					455
+				],
+				"threat_count": 5,
+				"threat_frame_starts": [
+					42,
+					79,
+					282,
+					339,
+					413
+				]
+			},
+			"distractor_count": 7,
+			"events": [
+				{
+					"angle_deg": 343.331827262033,
+					"angle_rad": 5.99227081261091,
+					"duration_frames": 8,
+					"duration_ms": 266.666666666667,
+					"frame_start": 42,
+					"id": "e1",
+					"kind": "threat",
+					"pulse_pattern": "double",
+					"radius_norm": 0.245,
+					"ring_index": 0,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 61.6387741455925,
+					"angle_rad": 1.07579955573374,
+					"duration_frames": 9,
+					"duration_ms": 300.0,
+					"frame_start": 79,
+					"id": "e2",
+					"kind": "threat",
+					"pulse_pattern": "double",
+					"radius_norm": 0.355,
+					"ring_index": 1,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 198.083504701349,
+					"angle_rad": 3.45720935092821,
+					"duration_frames": 17,
+					"duration_ms": 566.666666666667,
+					"frame_start": 121,
+					"id": "e3",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.45,
+					"ring_index": 2,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 345.454887818129,
+					"angle_rad": 6.02932520953399,
+					"duration_frames": 13,
+					"duration_ms": 433.333333333333,
+					"frame_start": 167,
+					"id": "e4",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.245,
+					"ring_index": 0,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 54.1203195998809,
+					"angle_rad": 0.944577769249541,
+					"duration_frames": 9,
+					"duration_ms": 300.0,
+					"frame_start": 191,
+					"id": "e5",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.245,
+					"ring_index": 0,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 178.304751255339,
+					"angle_rad": 3.11200498135517,
+					"duration_frames": 7,
+					"duration_ms": 233.333333333333,
+					"frame_start": 234,
+					"id": "e6",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.45,
+					"ring_index": 2,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 348.946159056011,
+					"angle_rad": 6.09025938771522,
+					"duration_frames": 16,
+					"duration_ms": 533.333333333333,
+					"frame_start": 282,
+					"id": "e7",
+					"kind": "threat",
+					"pulse_pattern": "double",
+					"radius_norm": 0.355,
+					"ring_index": 1,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 41.5454597184819,
+					"angle_rad": 0.725105061342185,
+					"duration_frames": 6,
+					"duration_ms": 200.0,
+					"frame_start": 308,
+					"id": "e8",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.45,
+					"ring_index": 2,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 142.502652962175,
+					"angle_rad": 2.4871404870168,
+					"duration_frames": 14,
+					"duration_ms": 466.666666666667,
+					"frame_start": 339,
+					"id": "e9",
+					"kind": "threat",
+					"pulse_pattern": "double",
+					"radius_norm": 0.245,
+					"ring_index": 0,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 333.832680139426,
+					"angle_rad": 5.82647941919007,
+					"duration_frames": 17,
+					"duration_ms": 566.666666666667,
+					"frame_start": 393,
+					"id": "e10",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.45,
+					"ring_index": 2,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 94.0892545703872,
+					"angle_rad": 1.64216728300038,
+					"duration_frames": 9,
+					"duration_ms": 300.0,
+					"frame_start": 413,
+					"id": "e11",
+					"kind": "threat",
+					"pulse_pattern": "double",
+					"radius_norm": 0.245,
+					"ring_index": 0,
+					"simultaneous_allowed": false
+				},
+				{
+					"angle_deg": 269.480814208859,
+					"angle_rad": 4.70332747889971,
+					"duration_frames": 11,
+					"duration_ms": 366.666666666667,
+					"frame_start": 455,
+					"id": "e12",
+					"kind": "distractor",
+					"pulse_pattern": "single",
+					"radius_norm": 0.355,
+					"ring_index": 1,
+					"simultaneous_allowed": false
+				}
+			],
+			"target_id": "central_anchor",
+			"threat_count": 5,
+			"type": "peripheral_scan"
+		},
+		"trajectory": {
+			"center_normalized": [
+				0.5,
+				0.5
+			],
+			"coordinate_space": "normalized_body_0_1_min_dimension",
+			"logistic_parameter": 3.87752348,
+			"profile": "polar_logistic_orbits_seeded_v1",
+			"ring_radii_normalized": [
+				0.245,
+				0.355,
+				0.45
+			],
+			"seed_authoring_version": "2.9.0",
+			"type": "polar_logistic_orbits"
+		}
+	},
+	"presentation": {
+		"coordinate_space": "2d",
+		"profile_id": "social_default_v1"
+	},
+	"provenance": {
+		"author": "c11c_visual_drill_review",
+		"timestamp_ms": 0
+	},
+	"rng_version": "2.0",
+	"schema_version": "2.0",
+	"seed": 24681357,
+	"subtype": "peripheral_scan"
+}

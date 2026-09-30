@@ -1,9 +1,11 @@
-﻿> **DORMANT — historical handoff, not current authority.** The former C11-C 2.19.2 freeze claim was superseded by later workstation acceptance findings. Current branch context is C11-C 2.19.5 consolidated repair candidate — NOT FROZEN.
+# START PROMPT — Challenge Engine V1.0 STATELESS — D
 
-# START PROMPT — Challenge Engine V1.0 STATELESS — D (Dormant)
+Continue from the exact repository state sealed as **C11-C 2.19.12 FROZEN**.
 
-Do not start D work yet. The current C11-C repository state is **2.19.5 consolidated repair candidate — NOT FROZEN**.
+Start with D0. Verify the frozen archive/tree hashes, run the frozen C11-C focused self-tests, inventory the repository and recover `CHALLENGE_001` through `CHALLENGE_009` into dossiers.
 
-Read `docs/master-prompts/MASTER_HANDOVER_C11C_2.19.5_CONSOLIDATED.md` and `docs/master-prompts/START_PROMPT_C11C_2.19.5_CONSOLIDATED.md` first.
+Only then open D1 visual parity, D2 Atari-2600-inspired asset families/templates, D3 Procedural Music V5, D4 production request/personalization, D5 provenance/artifacts, D6 seed registry, D7 matrix/catalog, D8 media/release QA and D9 Suite evolution. New mechanics are D10 and come later.
 
-Once C11-C receives its next formal freeze, D begins at D0 baseline inventory and Challenge recovery, preserving the frozen C11-B/C boundaries.
+Use the GUI and command line together. Every GUI action must invoke the same canonical backend operation available from CLI, with identical provenance and reproducibility.
+
+Focused contract first, aggregate regression second, physical evidence where relevant. Never hide a regression by weakening validation.

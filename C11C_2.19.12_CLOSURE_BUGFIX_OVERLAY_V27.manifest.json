@@ -1,0 +1,49 @@
+{
+  "schema": "C11-C-OVERLAY-MANIFEST-V1",
+  "release": "C11-C 2.19.12",
+  "overlay": "CLOSURE_BUGFIX_V27",
+  "baseline": "ChallengeEngineV01_STATELESS_C11-C2.19.12-V2X-UNSTABLE.zip",
+  "files": [
+    {
+      "path": "C11C_2.19.12_CLOSURE_BUGFIX_OVERLAY_V27_README.md",
+      "sha256": "0262e2bea5d5b0123fb835d8fdb97e0a573f4cf551f233a645d9bfa86fcb38f7",
+      "size": 2269,
+      "action": "add"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/BUILD_MANIFEST.json",
+      "sha256": "9bd97efc73ddcda7e8476bf28e41e248c62da521b78d9950a0839f453e9af529",
+      "size": 1435,
+      "action": "replace",
+      "baseline_sha256": "e91e345bcf1a8c8256c336578ae013e28cb2f90ca4dde85833e5aac626bf703e"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/main.py",
+      "sha256": "6fd910f1b77ada4e2cd606c63db97210e5c5323a52370ff3e523f49cdc338e5e",
+      "size": 51115,
+      "action": "replace",
+      "baseline_sha256": "b40c352fb5c311561c08e9193e648060428f36de064a2e68451d56b2cf41d928"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "e2ca45794d61d28aab645e9f169818c5263a767ec645ccd1f9381f033d27c39d",
+      "size": 32713,
+      "action": "replace",
+      "baseline_sha256": "c958a19bb8d6c65c49e539cfeaa2533bc829ffdcd2ee068db93b93132e1cfcaf"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/test_producer_gui_contract.py",
+      "sha256": "29f3eea51d2450452c392eba87c3e8e8e3b304494d2fc3d38eafc8e31d516bb4",
+      "size": 1927,
+      "action": "replace",
+      "baseline_sha256": "53cd90cf6db5460f7f0c49d917dddc1af2243de892d9a3538bfbc37a7fdcf7bb"
+    },
+    {
+      "path": "tools/qa/c11/verify_c11c_suite_launchers.ps1",
+      "sha256": "4d098cb098797e42f75b89ddd26fe317d60db38abdb9e47ef3d44765b11b99da",
+      "size": 3587,
+      "action": "replace",
+      "baseline_sha256": "4222b5b33a3abe0e8c591e3f1ac422f2d22cdf5f4f6d0ae0fbad44915f4a3f12"
+    }
+  ]
+}

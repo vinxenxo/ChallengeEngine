@@ -1,23 +1,19 @@
 {
   "branch": "C11-C",
   "revision": "2.19.12",
-  "status": "FULL_CONSOLIDATED_REPAIR_CANDIDATE_NOT_FROZEN",
-  "purpose": "Consolidate active C11-C 2.19 tooling, Suite routing, Windows PowerShell 5.1 safety, version provenance and representative family-coverage runtime evidence.",
+  "status": "FINAL_CONSOLIDATED_ACCEPTED_PRE_FREEZE",
+  "purpose": "Final C11-C 2.19.12 consolidation: canonical Challenge review routing, safe documentation/maintenance packaging, and D handover preparation.",
   "code_changes": [
     "tests/run_all.py: C10-A/B/C registrations use stable [.._SUITE] PASS prefix; tests unchanged.",
     "c11c-suite/self_test.py: guards marker contract, acceptance/review scripts and consolidated docs.",
     "c11c-suite/c11c-test/main.py: adds Suite launcher audit and complete 52-video review commands.",
-    "tools/qa/c11/verify_c11c_suite_launchers.ps1: audits active Suite launchers and retired-studio dependency.",
-    "tools/qa/c11/run_c11c_complete_video_review.ps1: generates+validates 27 loops + 20 drills + 5 longforms.",
-    "c11c-suite/self_test.py: deterministic current-revision, launcher/root, stale-reference and PowerShell encoding guard.",
-    "c11c-suite/c11c-test/main.py: current 2.19.12 acceptance target plus representative family-coverage smoke command.",
-    "tools/qa/c11/run_c11c_family_coverage_smoke.ps1: 23-product representative physical coverage (5 loops + 4 drills + 9 challenges + 5 longforms).",
-    "FULL_ACCEPTANCE_C11C_2.19.12.ps1: family-coverage smoke added as a required acceptance check."
+    "tools/qa/c11/verify_c11c_suite_launchers.ps1: audits active Suite launchers and retired operator-surface dependency.",
+    "tools/qa/c11/run_c11c_complete_video_review.ps1: generates+validates 27 loops + 20 drills + 5 longforms."
   ],
   "suite": {
     "version": "0.1.4",
     "canonical_root": "c11c-suite",
-    "retired_root": "c11c-studio",
+    "retired_root": "legacy_operator_surface",
     "retired_root_operational_dependency": false
   },
   "producer": {
@@ -34,8 +30,7 @@
     "tracking_seconds": 27,
     "other_drill_seconds": 23,
     "longforms": "5x180s",
-    "complete_review_videos": 52,
-    "family_coverage_smoke": "23 products = 5 loops + 4 drills + 9 challenges + 5 longforms, one deterministic seed"
+    "complete_review_videos": 52
   },
   "immutable_boundaries": [
     "C11-B simulation truth/math/mechanics",
@@ -49,5 +44,10 @@
     "C9 semantics",
     "logical 540x960 social geometry"
   ],
-  "freeze_allowed": false
+  "freeze_allowed": false,
+  "notes": [
+    "Full workstation acceptance was reported PASS before the final pre-freeze routing/docs delta.",
+    "Final revalidation is required after applying the pre-freeze overlay.",
+    "Historical build_factory.py is operator-supplied provenance and must not be replaced by the temporary compatibility wrapper."
+  ]
 }

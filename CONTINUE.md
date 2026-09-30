@@ -1,10 +1,10 @@
-﻿# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-C 2.19.12
+# CONTINUE — ChallengeEngineV01_STATELESS / C11-C 2.19.12
 
-## Authoritative baseline
+## Current state
 
-The active repository state is **C11-C 2.19.12 final closure candidate — NOT FROZEN**.
+C11-C 2.19.12 has completed the final workstation acceptance path. Before the frozen archive is sealed, perform the explicit Maintenance pre-freeze package check and confirm the operator-supplied historical `build_factory.py` copy is present and hashed.
 
-Canonical first reads:
+## Read order
 
 1. `AGENTS.md`
 2. `.continue/rules/CONTINUE.md`
@@ -12,28 +12,15 @@ Canonical first reads:
 4. `START_PROMPT_C11C_2.19_CONSOLIDATED.md`
 5. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
 6. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-7. `docs/current/c11c/C11C_2.19.12_FINAL_CLOSURE_AND_2.16_CONTINUITY.md`
+7. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
+8. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
+9. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
+10. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
 
-## Frozen C boundary
+## Frozen boundaries
 
-Do not alter mechanics/simulation mathematics, RNG algorithm/streams/ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio contracts/ownership, C9 semantics or logical 540x960 social geometry without an explicit checkpoint.
+Do not reopen C11-B simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 contracts, C9 semantics or logical 540x960 geometry without an explicit engine checkpoint.
 
-## Logical test corpus
+## D entry
 
-The current tree contains 139 registered `*Test.gd` suites. PASS markers are part of the runner contract and must match canonical emitted output.
-
-## Logical runner
-
-`tests/run_all.py` retries only the exact Windows process exit `0xC06D007F` up to three additional attempts. This is process/runtime recovery, not a contract waiver.
-
-## Parallel review
-
-Art Direction `Workers=7` is a real concurrency contract. Each worker gets an independent temporary Godot root. No global mutex and no serial fallback.
-
-## Suite ownership
-
-`c11c-suite/` is the only active Suite source. `c11c-studio/` is retired.
-
-## D status
-
-Do not start D until C11-C 2.19.12 is formally accepted and frozen.
+D starts only from the exact C11-C 2.19.12 frozen archive and its recorded source tree hash.

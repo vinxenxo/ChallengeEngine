@@ -1,29 +1,17 @@
-# Video Challenger + Asset Recovery — Starting Point
+﻿# Video Challenger + Asset Recovery — D0 Starting Point
 
-## Why this phase is next
+## Entry baseline
 
-The project has now accumulated the visual-generation experience, regression discipline and production know-how needed to recover the original Video Challenger family without mixing mechanics truth with presentation experimentation.
+The source for D is the exact frozen C11-C 2.19.12 repository. Historical Challenge evidence remains evidence; it must not overwrite current definitions or invent missing history.
 
-## Existing challenge corpus in the frozen baseline
+## Challenge corpus
 
-| ID | Mechanic | Seed | FPS | Duration |
-|---|---|---:|---:|---:|
-| CHALLENGE_001 | key | 193847 | 60 | 9 s |
-| CHALLENGE_002 | parking | 987654 | 60 | 10 s |
-| CHALLENGE_003 | pilot | 314159 | 60 | 12 s |
-| CHALLENGE_004 | parking_v2 | 314159 | 60 | 15 s |
-| CHALLENGE_005 | hit_v1 | 998877 | 60 | 7 s |
-| CHALLENGE_006 | catch_v1 | 884422 | 60 | 9 s |
-| CHALLENGE_007 | find_v1 | 7770001 | 60 | 10 s |
-| CHALLENGE_008 | choose_v1 | 20260824 | 60 | 11 s |
-| CHALLENGE_009 | count_v1 | 20260901 | 60 | 11 s |
+`CHALLENGE_001` … `CHALLENGE_009` are the nine canonical definitions. D0 must build a dossier for each one containing mechanic identity/version, native timing/FPS, geometry, assets, tests, seeds, provenance, historical intent and known mismatches.
 
-## Current asset surface
+## Asset recovery direction
 
-The frozen baseline contains 15 C6 asset files under `assets/c6/`, including backgrounds, targets, mechanic objects and transparent/cursor assets.
+The existing C6 asset set is the starting evidence, not the final D visual system. D1 establishes visual/editorial parity with C11-C; D2 then introduces versioned reusable Atari-2600-inspired asset families/templates bound through semantic slots rather than mechanic-specific graphics.
 
-The next step is to map **challenge → mechanic → asset role → presentation binding → provenance → authoring/runtime contract**.
+## Rule
 
-## Rule for new work
-
-Do not add a new asset merely because a renderer lacks a desired visual. First determine whether the original challenge intended that asset, whether a vector/constructed asset is sufficient, and where asset truth belongs in the architecture.
+Do not add an asset merely because a renderer lacks a desired visual. First identify the historical intent, the semantic slot, the compatible asset-family contract and the provenance path.

@@ -1,28 +1,21 @@
-> **Current baseline:** C11-C 2.19.1 FROZEN → Challenge Engine V1.0 STATELESS — D.
->
-# Documentation Map
-
-## Current operational documentation
-
-- `00_PROJECT_OVERVIEW.md` — current project state.
-- `01_ARCHITECTURE.md` — layer boundaries and determinism rules.
-- `02_DATA_AND_CONTRACTS.md` — Visual Drill authoring data and answer-sheet contracts.
-- `03_PRESENTATION.md` — social frame, phases, CTA, typography and backgrounds.
-- `04_REPOSITORY_STRUCTURE.md` — current live files.
-- `05_TESTING_AND_REGRESSION.md` — regression workflow and corpus validation.
-- `06_PRODUCTION_AND_DISTRIBUTION.md` — physical production and social/audio delivery.
-- `07_ROADMAP.md` — current C11-C gate and future C11-D.
+# Documentation Map — ChallengeEngineV01_STATELESS
 
 ## Current C11-C authority
 
-- `c11/C11-C_2.10.1_CURRENT_STATE.md`
-- `c11/MASTER_HANDOVER_C11-C_2.10.1.md`
-- `c11/START_PROMPT_C11C_NEXT_CONTEXT_2.10.1.md`
-- `c11/C11-C_VISUAL_TYPOGRAPHY_CONTRACT_v1.0.md`
-- `c11/C11-C_VISUAL_MUSIC_DIRECTION_v3.0.md`
-- `../CHANGELOG_C11-C_2.10.1.md`
+- `current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
+- `current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
+- `current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
+- `current/c11c/C11-C_2.19_COMMAND_SHEET.md`
+- `current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
 
-## Historical continuity
+## Active operator surface
 
-- `history/C11-C_HISTORY_INDEX_2.9.0.md` — version-by-version continuity map through the current checkpoint.
-- `history/` and versioned C11-C documents preserve previous checkpoints and are not current instructions unless explicitly referenced by the active handover.
+`c11c-suite` is the operational GUI/CLI shell. `c11c-studio` is retired and is not a runtime dependency.
+
+## C11-D
+
+The D sequence is defined in `current/d/C11-D_ROADMAP_V1.0_STATELESS.md`.
+
+## Historical evidence
+
+Older versioned C11-C documents remain available under history/current snapshots for provenance and diagnosis. They do not override the consolidated current authority.

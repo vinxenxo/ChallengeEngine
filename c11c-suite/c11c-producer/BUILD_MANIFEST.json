@@ -13,14 +13,13 @@
   "delivery_profiles": "profiles/delivery/c11c_video_delivery_profiles.json",
   "default_delivery": "MASTER_1080",
   "review_drill_launcher": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
-  "stabilization_revision": "2.19.6",
-  "producer_acceptance": "STATIC_PASS; WINDOWS_PYSIDE6_RUNTIME_PASS_HISTORICAL; C11-C_2.19.6_FINAL_FREEZE_RUNTIME_PENDING",
+  "stabilization_revision": "2.19.12",
+  "producer_acceptance": "FINAL-CLOSURE-CANDIDATE; workstation acceptance required before freeze",
   "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation.",
   "backend_logic_modified": false,
   "suite_location": "c11c-suite/c11c-producer",
   "producer_version": "0.9.7",
   "review_challenges_launcher": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
-  "review_challenge_family_fast_launcher": "c11c-suite/c11c-test/run_c11c_challenge_family_smoke.ps1",
   "queue_error_isolation": true,
   "avi_capture": "temporary_intermediate_only"
 }

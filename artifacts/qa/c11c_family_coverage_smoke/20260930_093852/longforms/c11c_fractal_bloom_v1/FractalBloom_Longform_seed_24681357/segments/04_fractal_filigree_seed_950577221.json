@@ -1,0 +1,12 @@
+{
+    "slot":  4,
+    "family":  "fractal",
+    "grammar_id":  "fractal_filigree",
+    "grammar_name":  "Fractal Filigree",
+    "seed":  950577221,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_950577221\\FractalBloom_v1_seed_950577221.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_950577221\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_950577221_music.wav",
+    "loop_safe":  true
+}

@@ -1,43 +1,31 @@
-# C11-C 2.19.12 V19 - A1 StrictMode closure + freeze documentation
+# C11-C 2.19.12 - V21 PRE-FREEZE / SUITE + MAINTENANCE CONSOLIDATION
 
-ROOT-RELATIVE INCREMENTAL OVERLAY
+Apply this root-relative overlay on the already-installed C11-C 2.19.12/V19 state.
 
-V19 is a surgical repair on V18. It fixes the observed Windows PowerShell 5.1 `Set-StrictMode -Version Latest` failure where `canonical_producer_manifest` was assigned to the per-run record after creation without being predeclared.
+## Scope
+- Aligns c11c-suite GUI/CLI routing with the current 2.19.12 canonical scripts.
+- Keeps historical C11-A.1 qualification separate from current C11-C Challenge review.
+- Hardens Suite self-test against stale acceptance references.
+- Keeps Maintenance cleanup conservative and adds fail-closed frozen-source packaging validation.
+- Makes the frozen package contain the current D handover and operational 2.19.12 acceptance launchers while excluding generated artifacts/caches.
+- Consolidates active C11-C/D documentation and leaves historical evidence intact for the documentation archiver.
 
-V19 also updates the active C11-C closure documentation and the C11-D entry handover so the next fresh context uses C11-C 2.19.12 as the intended immutable baseline after the final acceptance PASS.
+## Safety
+No `core/` files are modified. No simulation/RNG/SimulationResult/winning_frame/close_calls/WinningFrameDetector/RenderedFrameStream/C7/C9/logical-geometry changes are included.
 
-Changed:
-- tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1
-- tests/C11A1FactoryIsolationContractTest.gd
-- MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md
-- START_PROMPT_C11C_2.19_CONSOLIDATED.md
-- docs/current/c11c/C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md
-- docs/current/c11c/C11C_2.19.12_A1_CLOSURE_CHANGELOG_V19.md
-- MASTER_HANDOVER_C11D_V1.0_STATELESS.md
-- START_PROMPT_C11D_V1.0_STATELESS.md
-- C11C_2.19.12_A1_CLOSURE_RECEIPT_V19.md
+## Final workstation sequence
+```powershell
+python .\c11c-suite\self_test.py
+python .\c11c-suite\c11c-producer\self_test.py
+python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\verify_c11c_suite_launchers.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\verify_repository_layout.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\consolidate_c11c_2_19_documentation.ps1 -DryRun
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\maintenance\consolidate_c11c_2_19_documentation.ps1
+python .\tests\run_all.py
+.\FULL_ACCEPTANCE_C11C_2.19.12.ps1
+```
 
-Not changed:
-- no `core/` files;
-- no simulation or mechanic files;
-- no RNG implementation;
-- no C7/C9 contracts;
-- no authoritative `build_factory.py` recovery.
+Then install the final historical `build_factory.py`, verify its SHA-256, and use Maintenance -> `CREAR ZIP FROZEN C11-C 2.19.12`.
 
-The V18 compatibility `build_factory.py` is intentionally left untouched. The operator has located the last historical copy and will supply it at freeze time. Its provenance and SHA-256 must be recorded in the final freeze receipt.
-
-Apply at repository root with:
-
-`Expand-Archive -LiteralPath <zip> -DestinationPath . -Force`
-
-Fast validation:
-
-`.\c11c-suite\c11c-test\run_suite.bat C11A1FactoryIsolationContractTest.gd`
-
-`.\c11c-suite\c11c-test\test_powershell_parse.bat`
-
-`.\FULL_ACCEPTANCE_C11C_2.19.12_A1_SINGLE.ps1 -ChallengeId CHALLENGE_001 -Seed 12345`
-
-Final closure remains:
-
-`.\FULL_ACCEPTANCE_C11C_2.19.12.ps1`
+Do not use the generic root `Make_zip.ps1` or `clean-videos.ps1` for the C11-C freeze.

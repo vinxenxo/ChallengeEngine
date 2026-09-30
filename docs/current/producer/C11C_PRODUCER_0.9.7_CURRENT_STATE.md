@@ -1,19 +1,7 @@
-﻿# C11-C Producer 0.9.7 — Current State / C11-C 2.19.12 Closure Candidate
+# C11-C Producer 0.9.7 — Current State
 
-## Authority
+The Producer is an orchestration layer around canonical C11-C scripts for Challenges, Visual Loops and Visual Drills.
 
-The live Producer is `c11c-suite/c11c-producer/`.
+Current Challenge review launcher: `tools/qa/c11/run_c11c_challenge_bulk_qa.ps1`. The historical A1 qualification runner is retained separately for regression evidence and is not used by `REVIEW_CHALLENGES`.
 
-C11-C 2.19.12 is the final closure candidate, not yet frozen. Producer version remains 0.9.7.
-
-## Boundary
-
-Producer remains orchestration-only. It invokes canonical launchers and does not duplicate engine mechanics, RNG, timing truth or gameplay calculations.
-
-## Review relationship
-
-The Producer invokes the canonical Art Direction review runner, whose `Workers=7` contract uses private worker-local Godot roots and canonical `WorkerRoot` values.
-
-## Suite ownership
-
-No operational path requires the retired `c11c-studio/`.
+The Producer does not implement mechanics, RNG, simulation truth or renderers. `Workers=7` concurrency remains owned by the canonical Art Direction runner.

@@ -1,0 +1,33 @@
+COPY_PASTE_READY:
+Si tu ojo se desvÃ­a, tu nivel de concentraciÃ³n actual es bajo. Ponlo a prueba.
+
+TRACKING - Visual drill de presentación procedural y determinista.
+
+Familia: TRACKING
+Seed: 314159
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt
+
+TITLE:
+TRACKING - VISUAL DRILL
+
+DESCRIPTION:
+TRACKING - Visual drill de presentación procedural y determinista.
+
+Familia: TRACKING
+Seed: 314159
+Detalles: Duración 21s de juego + cuenta atrás/CTA editorial, música ambiental determinista.
+
+Diseñado en código con #GodotEngine para este reto visual procedimental.
+
+FAMILY: tracking
+SEED: 314159
+DURATION: 27 s
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #VisualDrill #Tracking #SmoothPursuit #VisualChallenge #Perception #ProceduralArt
+
+HEADER HOOK:
+Si tu ojo se desvÃ­a, tu nivel de concentraciÃ³n actual es bajo. Ponlo a prueba.

@@ -1,8 +1,10 @@
-﻿# Branch D — Start Here
+# Branch D — Start Here
 
-**Exact baseline:** C11-C 2.19.5 CONSOLIDATED REPAIR CANDIDATE — NOT FROZEN.
+**Exact entry baseline: C11-C 2.19.12 FROZEN.**
 
-Use these documents in order:
+D is dormant until the frozen-source archive, SHA-256 and acceptance evidence are sealed.
+
+Read in order:
 
 1. `C11-D_ROADMAP_V1.0_STATELESS.md`
 2. `D0_REPOSITORY_BASELINE_INVENTORY.md`
@@ -11,4 +13,4 @@ Use these documents in order:
 5. `D0_START_CHECKLIST.md`
 6. `D0_CHALLENGE_RECOVERY_DOSSIER_SCHEMA.md`
 
-D begins with recovery and inventory. The nine historical Challenges must be understood and documented before their visual system is changed.
+The first implementation target is not a new mechanic. It is a verified recovery of the nine historical Challenges and a stable visual/asset/provenance foundation for D.

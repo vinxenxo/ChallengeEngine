@@ -1,0 +1,23 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 540×960 @ 60 FPS...
+=== GENERADOR MAESTRO INICIADO ===
+[VALIDATION] relative_winning_frame=149 absolute_winning_frame=149 valid_window=0-420 close_calls=9 valid=true
+[VALIDATION] relative_winning_frame=149 absolute_winning_frame=149 valid_window=0-420 close_calls=9 valid=true
+[C6-F4.3] Effective Runtime + independent legacy oracle: PASS
+[C6E_PROFILE] id=social_default_v1 source=(540.0, 960.0) master=(1080.0, 1920.0) safe=[P: (24.0, 24.0), S: (492.0, 912.0)]
+[C6_UI] root=UnifiedSocialFrame:<Control#54626616790> size=(540.0, 960.0) position=(0.0, 0.0)
+[C6_REFERENCE_FRAME] index=149 mode=WINNING_FRAME reason=Certified winning_frame
+[C6_SWEEP_AUDIT] id=CHALLENGE_006 mechanic=catch_v1 mode=WINNING_FRAME frame_idx=149 reason=Certified winning_frame
+[TELEMETRY_JSON]{"attempts":1,"close_calls":9,"cta_frames":120,"final_seed":314159,"game_frames":420,"godot_version":"4.7.1-stable (official)","hook_frames":0,"initial_seed":314159,"minimum_distance":9.06491565704346,"reveal_frames":0,"rng_version":"2.0","score":0.798557429843479,"seed_used":314159,"total_frames":540,"validate_only":false,"winning_frame":149,"winning_frame_game":149,"winning_frame_in_valid_window":true,"winning_time":2.48333333333333,"winning_time_game":2.48333333333333}
+[AUDIO_EXPORT_JSON] {"audio_enabled":false}
+[C6_TARGET] space=0 presentation_pos=(378.5, 480.0)
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\scratch\challenge_production\bc2a5884d9634294b3f58538094078e8\CHALLENGE_006_seed_314159_source.avi
+540 frames at 60 FPS (movie length: 00:00:09:00), recorded in 00:00:10 (90% of real-time speed).
+CPU render time: 0.20 seconds (average: 0.37 ms/frame)
+GPU render time: 0.15 seconds (average: 0.27 ms/frame)
+Encoding time: 3.23 seconds (average: 5.98 ms/frame)
+--------------------------------------------------------------------------------
+

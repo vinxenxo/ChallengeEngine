@@ -1,0 +1,12 @@
+{
+    "slot":  7,
+    "family":  "living_particles",
+    "grammar_id":  "vortex",
+    "grammar_name":  "Vortex",
+    "seed":  1702025987,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1702025987\\LivingParticles_v1_seed_1702025987.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_living_particles_v1\\LivingParticles_v1_seed_1702025987\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_living_particles_v1\\LivingParticles_v1_seed_1702025987_music.wav",
+    "loop_safe":  true
+}

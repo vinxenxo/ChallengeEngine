@@ -1,0 +1,43 @@
+{
+    "manifest_version":  "1.0",
+    "qa_id":  "C11-A.1",
+    "schema":  "C11-A.1-CANONICAL-PRODUCER-ADAPTER-V1",
+    "status":  "PASS",
+    "adapter_reason":  "Historical A1 factory manifest contract adapted to the canonical C11-C Challenge producer; no second gameplay factory is introduced.",
+    "challenge_id":  "CHALLENGE_003",
+    "seed":  12345,
+    "delivery_profile":  "MASTER_1080",
+    "source_movie_resolution":  "540x960",
+    "delivery_resolution":  "1080x1920",
+    "canonical_producer_status":  "CONTRACT_SAFE_ADDITIVE_WRAPPER_PENDING_SMOKE",
+    "canonical_producer_manifest":  "production_manifest.json",
+    "telemetry":  {
+                      "attempts":  1,
+                      "close_calls":  1,
+                      "cta_frames":  120,
+                      "final_seed":  12345,
+                      "game_frames":  420,
+                      "godot_version":  "4.7.1-stable (official)",
+                      "hook_frames":  180,
+                      "initial_seed":  12345,
+                      "minimum_distance":  0.000729898689662889,
+                      "reveal_frames":  0,
+                      "rng_version":  "2.0",
+                      "score":  0.908167569407386,
+                      "seed_used":  12345,
+                      "total_frames":  720,
+                      "validate_only":  false,
+                      "winning_frame":  478,
+                      "winning_frame_game":  298,
+                      "winning_frame_in_valid_window":  true,
+                      "winning_time":  7.96666666666667,
+                      "winning_time_game":  4.96666666666667
+                  },
+    "artifacts":  {
+                      "final_video":  "CHALLENGE_003_seed_12345.mp4",
+                      "raw_video":  "CHALLENGE_003_seed_12345_source.avi",
+                      "production_manifest":  "production_manifest.json",
+                      "godot_log":  "godot.log"
+                  },
+    "generated_from":  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+}

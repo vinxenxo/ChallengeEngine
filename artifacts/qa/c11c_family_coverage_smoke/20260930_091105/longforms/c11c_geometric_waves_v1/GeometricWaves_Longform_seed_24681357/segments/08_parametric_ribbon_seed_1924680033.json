@@ -1,0 +1,12 @@
+{
+    "slot":  8,
+    "family":  "geometric",
+    "grammar_id":  "parametric_ribbon",
+    "grammar_name":  "Parametric Ribbon",
+    "seed":  1924680033,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1924680033\\GeometricWaves_v1_seed_1924680033.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1924680033\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1924680033_music.wav",
+    "loop_safe":  true
+}

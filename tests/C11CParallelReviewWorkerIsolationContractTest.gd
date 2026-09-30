@@ -1,6 +1,6 @@
-extends SceneTree
+﻿extends SceneTree
 
-## C11-C 2.19.11 — real parallel review worker isolation contract.
+## C11-C 2.19.12 — real parallel review worker isolation contract.
 ## This is a source-level contract: Workers>1 must use private worker roots,
 ## and the scheduler must not be replaced by a global mutex or serial fallback.
 
@@ -33,8 +33,9 @@ func _initialize() -> void:
     _assert(helper.find("C11C_ReviewWorkers_") >= 0, "Worker pool must use a unique temporary pool root.")
     _assert(helper.find("WorkerRoot") >= 0 or helper.find("worker_00") >= 0, "Helper must materialize private worker roots.")
     _assert(helper.find("override.cfg") >= 0, "Worker isolation must exclude global override.cfg state.")
-    _assert(helper.find("Tee-Object -FilePath $bootstrapLog | Out-Null") >= 0, "Worker bootstrap console output must not contaminate New-C11CReviewWorkerPool return value.")
-    _assert(helper.find("$null = Initialize-C11CReviewWorkerProject") >= 0, "Worker pool must suppress bootstrap helper return output.")
+    _assert(helper.find("Initialize-C11CReviewWorkerClassCache") >= 0, "Worker pool must use explicit class-cache initialization.")
+    _assert(helper.find("not launch the editor inside a temporary worker project") >= 0, "Worker class-cache bootstrap must avoid repeated editor startup per worker.")
+    _assert(helper.find("source_project_godot_class_cache_then_private_worker_clone") >= 0, "Worker bootstrap mode must clone a valid source-project cache into private workers.")
 
     if _failures == 0:
         print("[C11C_PARALLEL_REVIEW_WORKER_ISOLATION_CONTRACT_SUITE] PASS")

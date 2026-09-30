@@ -1,51 +1,38 @@
-# Challenge Production — Current 2.17.8
+﻿# Challenge Production — Current C11-C 2.19.12
 
-## Scope
+The nine canonical Challenge definitions remain authoritative. Current production and current review use one canonical Challenge producer path; historical C11-A.1 qualification is a separate compatibility QA surface.
 
-Post-freeze production orchestration for CHALLENGE_001…009. This wrapper consumes the existing Challenge definitions and never reimplements gameplay truth.
-
-## Pipeline
+## Current production pipeline
 
 ```text
 challenge JSON
-   ↓ copy + seed replacement
-phase-sum timeline
+   ↓ disposable seed-specific definition
+phase-sum timeline / definition FPS
    ↓
-Godot Movie Maker 540×960
-   ↓
-source AVI
+Godot Movie Maker source 540×960
    ↓
 FFmpeg delivery profile
+   ├── REVIEW_720 → 720×1280
+   ├── MASTER_1080 → 1080×1920
+   └── MIN_540 → 540×960
    ↓
-MP4 + manifest + social metadata
+MP4 + production manifest + telemetry/logs
 ```
 
-## Historical matrix
+Challenge delivery never changes mechanic truth, RNG ownership or the frozen logical social geometry.
 
-| ID | Mechanic | FPS | Duration | Frames |
-|---|---|---:|---:|---:|
-| 001 | key | 60 | 9 s | 540 |
-| 002 | parking | 60 | 10 s | 600 |
-| 003 | pilot | 60 | 12 s | 720 |
-| 004 | parking_v2 | 60 | 15 s | 900 |
-| 005 | hit_v1 | 60 | 7 s | 420 |
-| 006 | catch_v1 | 60 | 9 s | 540 |
-| 007 | find_v1 | 60 | 10 s | 600 |
-| 008 | choose_v1 | 60 | 12 s | 720 |
-| 009 | count_v1 | 60 | 12 s | 720 |
+## Current review
+
+`tools/qa/c11/run_c11c_challenge_bulk_qa.ps1` is the current 9 Challenge × 6 seed review. It derives timing from the four canonical phase fields. An absent optional `reveal_duration` is normalized to zero; stale `video.total_duration` is not authoritative.
+
+## Historical A1 qualification
+
+`tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1` remains the historical 54-run qualification surface. Its current rendering implementation delegates to the canonical producer and writes a deterministic compatibility adapter manifest.
 
 ## Seed rule
 
-Only the disposable effective definition receives the requested `generation.seed`. The original Challenge JSON is not rewritten.
-
-## Resolution rule
-
-The Challenge runtime/source capture remains 540×960. `MASTER_1080`, `REVIEW_720` and `MIN_540` are output profiles applied after capture. This is the mechanism that permits multiple qualities without changing mechanics or simulation truth.
+Only the disposable effective definition receives the requested `generation.seed`. Original Challenge JSON files are not rewritten by QA.
 
 ## Diagnostics
 
-Every failed run retains its complete scratch directory, including effective JSON, command line, stdout, stderr and Godot log.
-
-## Gate
-
-Run one `CHALLENGE_001` smoke and verify source + delivery before starting the 54-run matrix. The bulk QA remains sequential because `override.cfg` is project-wide.
+Failed runs retain their diagnostic directories. Production and QA are kept separate from durable source/evidence.

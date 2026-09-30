@@ -1,4 +1,7 @@
-﻿function New-C11CReviewWorkerPool {
+﻿[CmdletBinding()]
+param()
+
+function New-C11CReviewWorkerPool {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)][string]$ProjectRoot,
@@ -33,20 +36,58 @@
                 throw "Worker sandbox copy failed for slot ${i}: robocopy exit=$robocopyExit"
             }
 
-            $null = Initialize-C11CReviewWorkerProject -WorkerRoot $workerRoot
-
             $workers += [pscustomobject]@{
                 Slot       = $i
                 WorkerRoot = $workerRoot
-                # Root is retained as a compatibility alias for older orchestration code.
                 Root       = $workerRoot
             }
+        }
+
+        # Preferred path: reuse the source project's already-valid Godot class cache.
+        # Fallback path: generate it once in the real project root. We deliberately do
+        # not launch the editor inside a temporary worker project because that native
+        # startup was the source of the previous 0xC0000005 acceptance failure.
+        $sourceCache = Initialize-C11CReviewSourceClassCache -ProjectRoot $sourceRoot
+
+        # The worker clone intentionally starts without the source project's `.godot` tree.
+        # C11-C editorial typography uses imported font resources, however, and Godot's
+        # Movie Maker runtime must see the same read-only `.fontdata` cache that exists
+        # after the source project has been initialized/tested. Propagate only the two
+        # active C11-C font import artifacts into each worker's private `.godot`.
+        $sourceImportedDir = Join-Path $sourceRoot '.godot\imported'
+        $fontImportPatterns = @(
+            'Inter-Bold.otf-*.fontdata',
+            'NotoSansMono-Regular.ttf-*.fontdata'
+        )
+        $sourceFontImports = @()
+        if (Test-Path -LiteralPath $sourceImportedDir -PathType Container) {
+            foreach ($pattern in $fontImportPatterns) {
+                $sourceFontImports += @(Get-ChildItem -LiteralPath $sourceImportedDir -File -Filter $pattern -ErrorAction SilentlyContinue)
+            }
+        }
+        if ($sourceFontImports.Count -ne 2) {
+            throw "C11-C worker font-cache bootstrap expected exactly two imported font resources in source `.godot\imported`: $sourceImportedDir"
+        }
+
+        foreach ($worker in @($workers)) {
+            $workerRoot = [string]$worker.WorkerRoot
+            $godotDir = Join-Path $workerRoot '.godot'
+            $importedDir = Join-Path $godotDir 'imported'
+            $cacheFile = Join-Path $godotDir 'global_script_class_cache.cfg'
+            New-Item -ItemType Directory -Force -Path $godotDir | Out-Null
+            New-Item -ItemType Directory -Force -Path $importedDir | Out-Null
+            Copy-Item -LiteralPath $sourceCache -Destination $cacheFile -Force
+            foreach ($fontImport in @($sourceFontImports)) {
+                Copy-Item -LiteralPath $fontImport.FullName -Destination (Join-Path $importedDir $fontImport.Name) -Force
+            }
+            Assert-C11CReviewWorkerClassCache -WorkerRoot $workerRoot
         }
 
         return [pscustomobject]@{
             Root = $poolRoot
             Workers = $workers
             SourceRoot = $sourceRoot
+            BootstrapMode = 'source_project_godot_class_cache_then_private_worker_clone'
         }
     } catch {
         Remove-C11CReviewWorkerPool -Pool $poolRoot
@@ -54,36 +95,73 @@
     }
 }
 
-function Initialize-C11CReviewWorkerProject {
+function Initialize-C11CReviewSourceClassCache {
     [CmdletBinding()]
-    param([Parameter(Mandatory=$true)][string]$WorkerRoot)
+    param(
+        [Parameter(Mandatory=$true)][string]$ProjectRoot
+    )
 
-    $projectFile = Join-Path $WorkerRoot 'project.godot'
-    $presentationProfile = Join-Path $WorkerRoot 'core\presentation\PresentationProfile.gd'
-    $godotDir = Join-Path $WorkerRoot '.godot'
+    $projectRoot = (Resolve-Path $ProjectRoot).Path
+    $projectFile = Join-Path $projectRoot 'project.godot'
+    $presentationProfile = Join-Path $projectRoot 'core\presentation\PresentationProfile.gd'
+    $godotDir = Join-Path $projectRoot '.godot'
     $cacheFile = Join-Path $godotDir 'global_script_class_cache.cfg'
     $bootstrapLog = Join-Path $godotDir '.c11c_worker_class_cache_bootstrap.log'
 
     if (-not (Test-Path -LiteralPath $projectFile -PathType Leaf)) {
-        throw "Worker project bootstrap missing project.godot: $WorkerRoot"
+        throw "Source project bootstrap missing project.godot: $projectRoot"
     }
     if (-not (Test-Path -LiteralPath $presentationProfile -PathType Leaf)) {
-        throw "Worker project bootstrap missing PresentationProfile.gd: $presentationProfile"
+        throw "Source project bootstrap missing PresentationProfile.gd: $presentationProfile"
     }
 
     New-Item -ItemType Directory -Force -Path $godotDir | Out-Null
+
+    if (Test-Path -LiteralPath $cacheFile -PathType Leaf) {
+        $cacheText = Get-Content -Raw -LiteralPath $cacheFile -ErrorAction Stop
+        if ($cacheText -match 'PresentationProfile') {
+            return $cacheFile
+        }
+        Remove-Item -LiteralPath $cacheFile -Force -ErrorAction SilentlyContinue
+    }
+
     $nativeEap = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
     try {
-        & godot --headless --editor --path $WorkerRoot --quit 2>&1 | Tee-Object -FilePath $bootstrapLog | Out-Null
+        & godot --headless --editor --path $projectRoot --quit 2>&1 | Tee-Object -FilePath $bootstrapLog | Out-Null
         $godotExit = $LASTEXITCODE
     } finally {
         $ErrorActionPreference = $nativeEap
     }
 
     if ($godotExit -ne 0) {
-        throw "Worker Godot class-cache bootstrap failed: exit=$godotExit root=$WorkerRoot"
+        throw "Source Godot class-cache bootstrap failed: exit=$godotExit root=$projectRoot"
     }
+    if (-not (Test-Path -LiteralPath $cacheFile -PathType Leaf)) {
+        throw "Source Godot class-cache bootstrap produced no global_script_class_cache.cfg: $projectRoot"
+    }
+
+    $cacheText = Get-Content -Raw -LiteralPath $cacheFile -ErrorAction Stop
+    if ($cacheText -notmatch 'PresentationProfile') {
+        throw "Source Godot class-cache bootstrap did not register PresentationProfile: $projectRoot"
+    }
+
+    return $cacheFile
+}
+
+function Initialize-C11CReviewWorkerClassCache {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$WorkerRoot
+    )
+    Assert-C11CReviewWorkerClassCache -WorkerRoot $WorkerRoot
+}
+
+function Assert-C11CReviewWorkerClassCache {
+    [CmdletBinding()]
+    param([Parameter(Mandatory=$true)][string]$WorkerRoot)
+
+    $cacheFile = Join-Path $WorkerRoot '.godot\global_script_class_cache.cfg'
     if (-not (Test-Path -LiteralPath $cacheFile -PathType Leaf)) {
         throw "Worker Godot class-cache bootstrap produced no global_script_class_cache.cfg: $WorkerRoot"
     }
@@ -93,7 +171,6 @@ function Initialize-C11CReviewWorkerProject {
         throw "Worker Godot class-cache bootstrap did not register PresentationProfile: $WorkerRoot"
     }
 
-    # Marker used only to make the bootstrap state explicit in worker evidence.
     $readyMarker = Join-Path $WorkerRoot '.c11c_worker_class_cache_ready'
     [System.IO.File]::WriteAllText(
         $readyMarker,

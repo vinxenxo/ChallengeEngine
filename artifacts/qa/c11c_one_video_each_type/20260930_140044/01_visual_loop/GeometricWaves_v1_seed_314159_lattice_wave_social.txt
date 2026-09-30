@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+DEMONIO: PUERTO DE SINGULARIDAD // PLANO DE INTERFERENCIA // WAVE 22.32 | MORPH 0.58
+
+DEMONIO: PUERTO DE SINGULARIDAD // PLANO DE INTERFERENCIA // WAVE 22.32 | MORPH 0.58
+
+GEOMETRIC WAVES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: LATTICE WAVE
+- Paleta: violet_gold
+- Seed: 314159
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #GeometricWaves #WaveArt #MathematicalArt #ProceduralArt #DigitalArt #TechArt #LATTICEWAVE
+
+DEMONIO: PUERTO DE SINGULARIDAD // PLANO DE INTERFERENCIA // WAVE 22.32 | MORPH 0.58
+
+GEOMETRIC WAVES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: LATTICE WAVE
+- Paleta: violet_gold
+- Seed: 314159
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+GEOMETRIC WAVES - LATTICE WAVE
+
+DESCRIPTION:
+DEMONIO: PUERTO DE SINGULARIDAD // PLANO DE INTERFERENCIA // WAVE 22.32 | MORPH 0.58
+
+GEOMETRIC WAVES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: LATTICE WAVE
+- Paleta: violet_gold
+- Seed: 314159
+- Detalles: Duración 23.00s, 1 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: geometric
+GRAMMAR: LATTICE WAVE
+PALETTE: violet_gold
+SEED: 314159
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: ON / CIRCUIT_PULSE
+AUDIO PROFILE: CIRCUIT_PULSE
+
+HEADER HOOK:
+DEMONIO: PUERTO DE SINGULARIDAD // PLANO DE INTERFERENCIA // WAVE 22.32 | MORPH 0.58
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #GeometricWaves #WaveArt #MathematicalArt #ProceduralArt #DigitalArt #TechArt #LATTICEWAVE
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 314159 -Grammar lattice_wave -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\qa\c11c_one_video_each_type\20260930_140044\01_visual_loop -OutputTag lattice_wave
+
+CANONICAL MANIFEST:
+GeometricWaves_v1_seed_314159_lattice_wave_manifest.json

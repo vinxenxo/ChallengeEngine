@@ -1,0 +1,12 @@
+{
+    "slot":  2,
+    "family":  "fractal",
+    "grammar_id":  "dendritic_tunnel",
+    "grammar_name":  "Dendritic Tunnel",
+    "seed":  512591694,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_512591694\\FractalBloom_v1_seed_512591694.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_512591694\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_512591694_music.wav",
+    "loop_safe":  true
+}

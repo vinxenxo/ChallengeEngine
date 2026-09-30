@@ -1,0 +1,22 @@
+{
+    "attempts":  1,
+    "close_calls":  0,
+    "cta_frames":  0,
+    "final_seed":  998877,
+    "game_frames":  420,
+    "godot_version":  "4.7.1-stable (official)",
+    "hook_frames":  180,
+    "initial_seed":  998877,
+    "minimum_distance":  26.2441654205322,
+    "reveal_frames":  0,
+    "rng_version":  "2.0",
+    "score":  0.691245112699621,
+    "seed_used":  998877,
+    "total_frames":  600,
+    "validate_only":  false,
+    "winning_frame":  268,
+    "winning_frame_game":  88,
+    "winning_frame_in_valid_window":  true,
+    "winning_time":  4.46666666666667,
+    "winning_time_game":  1.46666666666667
+}

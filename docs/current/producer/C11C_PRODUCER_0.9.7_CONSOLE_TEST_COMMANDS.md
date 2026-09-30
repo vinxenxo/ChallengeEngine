@@ -1,31 +1,42 @@
-# C11-C Producer 0.9.7 — Console Test Commands
+﻿# C11-C Producer 0.9.7 — Current Console Commands
 
 Run from the repository root.
+
+## Fast Producer checks
 
 ```powershell
 python .\c11c-suite\self_test.py
 python .\c11c-suite\c11c-producer\self_test.py
 python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
-python .\tests\run_all.py
 ```
 
-Single Visual Drill production smoke:
+## Current Challenge review
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\c11c-suite\c11c-producer\run_visual_drill_production.ps1 `
-  -Family tracking `
-  -Seed 452878546 `
-  -DifficultyTier 1 `
-  -SpeedMultiplier 1.39686 `
-  -PacingMode constant `
-  -DeliveryProfile MASTER_1080 `
-  -Force
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\run_c11c_challenge_bulk_qa.ps1
 ```
 
-Expected terminal marker:
+## Historical C11-A.1 qualification
 
-```text
-[C11-C-PRODUCER-DRILL] FINAL PRODUCT PASS:
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\qa\c11\run_c11a1_challenge_bulk_qa.ps1
 ```
 
-The Art Direction multi-worker review is outside the single-product Producer route and is run through `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`.
+Use the historical A1 runner only for the explicit qualification/compatibility gate.
+
+## Challenge production
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1 `
+  -ChallengeId CHALLENGE_001 `
+  -Seed 12345 `
+  -DeliveryProfile MASTER_1080
+```
+
+## Visual Loop / Drill production
+
+Use the canonical root Loop launcher or the Suite Drill producer wrapper. Delivery profiles remain declarative and do not change mechanic truth.
+
+## Freeze boundary
+
+Before creating the frozen archive, rerun the complete 2.19.12 acceptance after any change to active Suite/Producer routing.

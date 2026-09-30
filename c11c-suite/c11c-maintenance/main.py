@@ -1,7 +1,7 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 import os, sys, json, subprocess, shutil, zipfile, time
 from pathlib import Path
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QPlainTextEdit, QCheckBox, QMessageBox, QGroupBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel, QPlainTextEdit, QMessageBox, QGroupBox
 from PySide6.QtCore import QProcess
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from common import PROJECT_ROOT, CYBER_STYLE, qprocess_environment, powershell, human_size
@@ -13,9 +13,8 @@ class Window(QMainWindow):
     super().__init__(); self.setWindowTitle('C11-C MAINTENANCE'); self.resize(1100,760); self.proc=None
     root=QWidget(); self.setCentralWidget(root); lay=QVBoxLayout(root); t=QLabel('MAINTENANCE'); t.setObjectName('title'); lay.addWidget(t)
     box=QGroupBox('Safe operations'); bl=QVBoxLayout(box); lay.addWidget(box)
-    for txt,fn in [('ANALIZAR LIMPIEZA',self.preview_cleanup),('LIMPIAR TRANSITORIOS SEGUROS',self.clean_cleanup),('VERIFICAR REPOSITORY LAYOUT',self.layout_check),('VALIDAR DELIVERY CONFIG',self.delivery_check),('CHALLENGE FAMILY FAST QA',self.challenge_family_fast),('ORGANIZAR RAÍZ - DRY RUN',self.root_organize_dry),('VERIFICAR CONTRATO ORGANIZACIÓN',self.root_organize_contract),('CONSOLIDAR DOCS C11-C 2.19 · DRY RUN',self.docs_dry),('GENERAR ZIP DEL PROYECTO',self.make_zip)]:
+    for txt,fn in [('ANALIZAR LIMPIEZA',self.preview_cleanup),('LIMPIAR TRANSITORIOS SEGUROS',self.clean_cleanup),('VERIFICAR REPOSITORY LAYOUT',self.layout_check),('VALIDAR DELIVERY CONFIG',self.delivery_check),('CONSOLIDAR DOCS C11-C 2.19 · DRY RUN',self.docs_dry),('GENERAR ZIP FROZEN C11-C 2.19.12',self.make_zip)]:
       b=QPushButton(txt); b.clicked.connect(fn); bl.addWidget(b)
-    opt=QHBoxLayout(); self.include_art=QCheckBox('Incluir artifacts/'); self.include_art.setChecked(False); opt.addWidget(self.include_art); bl.addLayout(opt)
     self.log=QPlainTextEdit(); self.log.setReadOnly(True); lay.addWidget(self.log,1)
   def add(self,s): self.log.appendPlainText(s.rstrip())
   def preview_cleanup(self):
@@ -27,7 +26,7 @@ class Window(QMainWindow):
         if f.is_file():
           try: n=f.stat().st_size; total+=n; lines.append(f'{f.relative_to(PROJECT_ROOT)} | {human_size(n)}')
           except OSError: pass
-    self.add('[CLEANUP PREVIEW] '+str(len(lines))+' files | '+human_size(total)); self.add('/n'.join(lines[:500]) if lines else 'Nada para limpiar.')
+    self.add('[CLEANUP PREVIEW] '+str(len(lines))+' files | '+human_size(total)); self.add('\n'.join(lines[:500]) if lines else 'Nada para limpiar.')
   def clean_cleanup(self):
     self.preview_cleanup()
     if QMessageBox.question(self,'Confirmar limpieza','Se eliminarán SOLO los contenidos de artifacts/scratch y artifacts/tests/logs/verbose. ¿Continuar?')!=QMessageBox.Yes:return
@@ -51,22 +50,8 @@ class Window(QMainWindow):
   def finish(self,c,label): self.read(); self.add(f'[{label}] EXIT={c}'); self.proc=None
   def layout_check(self): self.run_ps(['tools/maintenance/verify_repository_layout.ps1'],'LAYOUT')
   def delivery_check(self): self.run_ps(['tools/prototypes/c11c_bulk/validate_c11c_delivery_configuration.ps1'],'DELIVERY')
-  def challenge_family_fast(self): self.run_ps(['c11c-suite/c11c-test/run_c11c_challenge_family_smoke.ps1','-ChallengeId','CHALLENGE_003','-DeliveryProfile','MIN_540'],'CHALLENGE FAMILY FAST QA')
   def docs_dry(self): self.run_ps(['tools/maintenance/consolidate_c11c_2_19_documentation.ps1','-DryRun'],'DOCS C11-C 2.19 DRY RUN')
-  def root_organize_dry(self): self.run_ps(['c11c-suite/c11c-maintenance/organize_repository_root.ps1'],'ROOT ORGANIZATION DRY RUN')
-  def root_organize_contract(self): self.run_ps(['c11c-suite/c11c-maintenance/test_root_organization_contract.py'],'ROOT ORGANIZATION CONTRACT')
   def make_zip(self):
-    out=PROJECT_ROOT/'artifacts'/'releases'/f'ChallengeEngineV01_STATELESS_{time.strftime("%Y%m%d_%H%M%S")}.zip'; out.parent.mkdir(parents=True,exist_ok=True)
-    exclude_parts=['.git','.godot','__pycache__','.pytest_cache']
-    if not self.include_art.isChecked(): exclude_parts.append('artifacts')
-    count=0
-    with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
-      for p in PROJECT_ROOT.rglob('*'):
-        if not p.is_file() or p==out:continue
-        rel=p.relative_to(PROJECT_ROOT).as_posix(); parts=set(Path(rel).parts)
-        if any(part in parts for part in exclude_parts):continue
-        if rel.endswith('.pyc'):continue
-        z.write(p,rel); count+=1
-    self.add(f'[ZIP] {out.relative_to(PROJECT_ROOT)} | {human_size(out.stat().st_size)} | files={count}')
+    self.run_ps(['tools/maintenance/create_c11c_freeze_zip.ps1'],'FREEZE ZIP C11-C 2.19.12')
 if __name__=='__main__':
  app=QApplication(sys.argv); app.setStyleSheet(CYBER_STYLE); w=Window(); w.show(); sys.exit(app.exec())

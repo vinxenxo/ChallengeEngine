@@ -562,8 +562,8 @@ class MainWindow(QMainWindow):
         self.force.setEnabled(not batch and not utility)
         self.delivery.setEnabled(not batch and not utility)
         self.workers.setEnabled(True)
-        self.resume.setEnabled(batch and not utility and op not in {"REVIEW_CHALLENGES", "REVIEW_CHALLENGE_FAMILY_FAST"})
-        self.reset.setEnabled(batch and not utility and op not in {"REVIEW_CHALLENGES", "REVIEW_CHALLENGE_FAMILY_FAST"})
+        self.resume.setEnabled(batch and not utility)
+        self.reset.setEnabled(batch and not utility and op != "REVIEW_CHALLENGES")
         self.export_gif.setEnabled(not utility)
         self.add.setEnabled(True)
         self.variation_box.setVisible(not batch and not utility and str(self.video_type.currentData()) != "challenges")
@@ -832,13 +832,6 @@ class MainWindow(QMainWindow):
                 if recipe.resume:
                     args.append("-Resume")
                 self._set_recipe_status(recipe, "REVIEW CHALLENGES")
-                self._launch(args)
-                return
-
-            if recipe.operation == "REVIEW_CHALLENGE_FAMILY_FAST":
-                script = PROJECT / "c11c-suite" / "c11c-test" / "run_c11c_challenge_family_smoke.ps1"
-                args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), "-ChallengeId", "CHALLENGE_003", "-DeliveryProfile", "MIN_540"]
-                self._set_recipe_status(recipe, "CHALLENGE FAMILY FAST")
                 self._launch(args)
                 return
 

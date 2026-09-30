@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param([switch]$DryRun)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
@@ -26,7 +26,7 @@ function Archive-One([string]$Source,[string]$RelativeDestination){
     Move-Item -LiteralPath $Source -Destination $destination -Force
 }
 
-$CurrentMinor=12
+$CurrentMinor=11
 function Test-Prior219([string]$Name){
     $m=[regex]::Match($Name,'2\.19\.(\d+)')
     if(-not $m.Success){ return $false }

@@ -40,15 +40,15 @@ function Get-ExpectedTimeline {
     if($fps -le 0){throw 'video.fps debe ser > 0.'}
     $hook=ToFrames ([double]$Video.hook_duration) $fps
     $game=ToFrames ([double]$Video.game_duration) $fps
-    $revealSeconds=0.0
-    $revealProperty=$Video.PSObject.Properties['reveal_duration']
-    if($null -ne $revealProperty){$revealSeconds=[double]$revealProperty.Value}
-    $reveal=ToFrames $revealSeconds $fps
+    $revealDuration = 0.0
+    $revealProperty = $Video.PSObject.Properties['reveal_duration']
+    if ($null -ne $revealProperty) { $revealDuration = [double]$revealProperty.Value }
+    $reveal=ToFrames $revealDuration $fps
     $cta=ToFrames ([double]$Video.cta_duration) $fps
     return [pscustomobject]@{fps=$fps;hook_frames=$hook;game_frames=$game;reveal_frames=$reveal;cta_frames=$cta;total_frames=$hook+$game+$reveal+$cta}
 }
-function Get-FFProbe { param([string]$VideoPath);$raw=& ffprobe -v error -select_streams v:0 -count_frames -show_entries stream=width,height,r_frame_rate,nb_read_frames,duration,codec_name,pix_fmt -of json -- $VideoPath 2>&1;if($LASTEXITCODE-ne 0){throw "ffprobe falló: $VideoPath`n$($raw -join "`n")"};return (($raw -join "`n")|ConvertFrom-Json) }
-function Invoke-FrameMD5 { param([string]$VideoPath,[string]$OutputPath);& ffmpeg -v error -i $VideoPath -f framemd5 -an -sn -dn -y $OutputPath;if($LASTEXITCODE-ne 0-or-not(Test-Path -LiteralPath $OutputPath -PathType Leaf)){throw "framemd5 falló: $VideoPath"} }
+function Get-FFProbe { param([string]$VideoPath);$raw=& ffprobe -v error -select_streams v:0 -count_frames -show_entries stream=width,height,r_frame_rate,nb_read_frames,duration,codec_name,pix_fmt -of json -- $VideoPath 2>&1;if($LASTEXITCODE-ne 0){throw "ffprobe fallo: $VideoPath`n$($raw -join "`n")"};return (($raw -join "`n")|ConvertFrom-Json) }
+function Invoke-FrameMD5 { param([string]$VideoPath,[string]$OutputPath);& ffmpeg -v error -i $VideoPath -f framemd5 -an -sn -dn -y $OutputPath;if($LASTEXITCODE-ne 0-or-not(Test-Path -LiteralPath $OutputPath -PathType Leaf)){throw "framemd5 fallo: $VideoPath"} }
 function Select-ReviewFrames {
     param([string]$VideoPath,[int[]]$Indices,[string]$FrameDirectory)
     New-Item -ItemType Directory -Force -Path $FrameDirectory | Out-Null
@@ -69,7 +69,7 @@ function Create-ContactSheet {
 function Read-TelemetryFromLog {
     param([string]$LogPath)
     $lines=@(Get-Content -LiteralPath $LogPath -Encoding UTF8|Where-Object{$_-match '^\[TELEMETRY_JSON\]'})
-    if($lines.Count-eq 0){throw "No se encontró [TELEMETRY_JSON] en $LogPath"}
+    if($lines.Count-eq 0){throw "No se encontro [TELEMETRY_JSON] en $LogPath"}
     $line=[string]$lines[$lines.Count-1]
     return (($line.Substring('[TELEMETRY_JSON]'.Length))|ConvertFrom-Json)
 }
@@ -89,8 +89,11 @@ $plan=@()
 foreach($challengeFile in $challengeFiles){
     $source=Get-Content -LiteralPath $challengeFile.FullName -Raw -Encoding UTF8|ConvertFrom-Json
     if($source.challenge_id-ne$challengeFile.BaseName){throw "Mismatched challenge_id: $($challengeFile.Name)"}
+    $mechanicVersion = $null
+    $mechanicVersionProperty = $source.PSObject.Properties['mechanic_version']
+    if ($null -ne $mechanicVersionProperty) { $mechanicVersion = [string]$mechanicVersionProperty.Value }
     $timeline=Get-ExpectedTimeline $source.video
-    foreach($seedCase in $seedCases){$plan+=[pscustomobject]@{challenge_id=$source.challenge_id;mechanic=[string]$source.mechanic;mechanic_version=if($null-ne$source.mechanic_version){[string]$source.mechanic_version}else{$null};source_seed=[int64]$source.generation.seed;test_seed=[int64]$seedCase.Seed;seed_label=$seedCase.Label;rng_version=[string]$source.generation.rng_version;expected_timeline=$timeline;source_config=$challengeFile.FullName;run_id=("{0}_seed_{1}"-f$source.challenge_id.ToLowerInvariant(),$seedCase.Label)}}
+    foreach($seedCase in $seedCases){$plan+=[pscustomobject]@{challenge_id=$source.challenge_id;mechanic=[string]$source.mechanic;mechanic_version=$mechanicVersion;source_seed=[int64]$source.generation.seed;test_seed=[int64]$seedCase.Seed;seed_label=$seedCase.Label;rng_version=[string]$source.generation.rng_version;expected_timeline=$timeline;source_config=$challengeFile.FullName;run_id=("{0}_seed_{1}"-f$source.challenge_id.ToLowerInvariant(),$seedCase.Label)}}
 }
 Write-JsonUtf8 (Join-Path $OutputRoot 'C11C_CHALLENGE_720_BULK_PLAN.json') $plan
 Write-Host '[C11-C-CHALLENGE] 9 challenges x 6 seeds = 54 runs' -ForegroundColor Cyan
@@ -159,8 +162,8 @@ $items=@();$failures=@();foreach($runDir in $runDirs){$record=Get-Content -Liter
 if($failures.Count-gt 0){$failures|ForEach-Object{Write-Host " - $_"-ForegroundColor Red};throw 'C11-C Challenge QA: incomplete runs.'}
 $ab=@();$determinismPass=$true
 foreach($challenge in (1..9|ForEach-Object{"CHALLENGE_{0:D3}"-f$_})){$runs=@($items|Where-Object{$_.challenge_id-eq$challenge});$a=$runs|Where-Object{$_.seed_label-eq'12345_A'}|Select-Object -First 1;$b=$runs|Where-Object{$_.seed_label-eq'12345_B'}|Select-Object -First 1;$md5A=Get-Content -LiteralPath ([string]$a.framemd5) -Raw -Encoding UTF8;$md5B=Get-Content -LiteralPath ([string]$b.framemd5) -Raw -Encoding UTF8;$pass=($md5A-eq$md5B);if(-not$pass){$determinismPass=$false};$ab+=[pscustomobject]@{challenge_id=$challenge;pass=$pass;run_a=$a.run_id;run_b=$b.run_id;framemd5_equal=$pass}}
-$root=[ordered]@{schema='C11-C-CHALLENGE-720-BULK-QA-V3';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.17.8';source_movie_resolution='540x960';delivery_resolution='720x1280';delivery_profile=$profile;post_capture_scale='ffmpeg_lanczos';override_cfg_dependency=$false;total_executions=54;seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count-eq54);determinism_ab_pass=$determinismPass;executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')}
+$root=[ordered]@{schema='C11-C-CHALLENGE-720-BULK-QA-V3';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.19.12';source_movie_resolution='540x960';delivery_resolution='720x1280';delivery_profile=$profile;post_capture_scale='ffmpeg_lanczos';override_cfg_dependency=$false;total_executions=54;seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count-eq54);determinism_ab_pass=$determinismPass;executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')}
 Write-JsonUtf8 $RootManifest $root
 if(-not$determinismPass){throw "C11-C Challenge QA: determinism A/B FAILED. Manifest: $RootManifest"}
-Write-Host '[C11-C-CHALLENGE] COMPLETE 54/54 — native source 540x960 -> delivery 720x1280 — determinism A/B PASS' -ForegroundColor Green
+Write-Host '[C11-C-CHALLENGE] COMPLETE 54/54 - native source 540x960 -> delivery 720x1280 - determinism A/B PASS' -ForegroundColor Green
 Write-Host "[C11-C-CHALLENGE] Manifest: $RootManifest"

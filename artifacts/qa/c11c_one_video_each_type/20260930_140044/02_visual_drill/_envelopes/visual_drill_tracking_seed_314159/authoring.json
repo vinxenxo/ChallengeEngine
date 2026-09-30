@@ -1,0 +1,25 @@
+{
+	"authored": {
+		"answer_sheet": {},
+		"seed": 314159,
+		"task_summary": {
+			"distractor_count": null,
+			"sizygia_count": null,
+			"threat_count": null,
+			"type": "tracking"
+		},
+		"trajectory": {
+			"coordinate_space": "",
+			"profile": "lissajous_seeded_v1",
+			"type": "lissajous"
+		},
+		"variation_version": "VisualDrillSeedVariation/2.9.0"
+	},
+	"authoring_version": "1.0",
+	"custom_parameters": {},
+	"difficulty_tier": 2,
+	"domain_family": "visual_drill",
+	"duration_seconds": 21.0,
+	"fps": 30,
+	"subtype": "tracking"
+}

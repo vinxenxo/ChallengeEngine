@@ -1,6 +1,6 @@
-﻿# Entry state: C11-C 2.19.5 consolidated repair candidate — NOT FROZEN
+# Entry state: C11-C 2.19.12 FROZEN
 
-> D remains dormant until a new C11-C freeze is formally accepted. This schema is retained for the future D0 evidence phase.
+> D0 is active only after the frozen archive, SHA-256 and final acceptance report are verified.
 
 # D0 — Challenge Recovery Dossier Schema
 

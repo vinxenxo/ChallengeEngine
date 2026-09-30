@@ -18,7 +18,7 @@ assert "current_seed" in main_text
 assert 'QProcess.ProcessError.FailedToStart' in main_text
 assert 'REVIEW_CHALLENGES' in main_text
 assert 'run_c11c_challenge_bulk_qa.ps1' in main_text
-assert 'run_c11a1_challenge_bulk_qa.ps1' not in main_text[main_text.index('if recipe.operation == \"REVIEW_CHALLENGES\"'):main_text.index('if recipe.operation == \"REVIEW_CHALLENGES\"') + 500]
+assert 'run_c11a1_challenge_bulk_qa.ps1' not in main_text
 assert 'self.proc.errorOccurred.connect(self._process_error)' in main_text
 
 # The old blocking behavior is prohibited: a per-seed failure must not clear all pending jobs.
@@ -33,13 +33,6 @@ schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
 ops = {row[0]: row[1] for row in schema["batch_operations"]}
 assert "REVIEW_CHALLENGES" in ops
 assert "CHALLENGES" in ops["REVIEW_CHALLENGES"]
-assert "REVIEW_CHALLENGE_FAMILY_FAST" in ops
-assert "CHALLENGE_003" in ops["REVIEW_CHALLENGE_FAMILY_FAST"]
-
-assert 'run_c11c_challenge_family_smoke.ps1' in main_text
-fast_at = main_text.index('if recipe.operation == "REVIEW_CHALLENGE_FAMILY_FAST":')
-fast_gui_block = main_text[fast_at:fast_at + 500]
-assert "MIN_540" in fast_gui_block
 
 ps = DRILL.read_text(encoding="utf-8-sig")
 assert "[Diagnostics.ProcessStartInfo]::new()" in ps

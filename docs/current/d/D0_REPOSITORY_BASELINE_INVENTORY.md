@@ -1,34 +1,19 @@
-﻿# D0 — Deferred Repository Baseline Inventory
+# D0 — Frozen C11-C Baseline Inventory Target
 
-> D0 is dormant. The exact C11-C 2.19.5 repair-candidate repository must first pass workstation acceptance and receive a new formal C11-C freeze.
+The inventory generated at D0 must capture:
 
-## Deferred entry identity
+- exact frozen archive SHA-256;
+- source tree SHA-256;
+- Godot/Producer/tool versions;
+- Challenge definitions 001..009;
+- five Loop families / 27 grammars;
+- four Drill families;
+- Longform set;
+- delivery profiles;
+- C11-C Suite surfaces and direct launchers;
+- assets and provenance;
+- historical evidence references;
+- seed usage evidence;
+- acceptance and freeze receipts.
 
-- Current repository candidate: **C11-C 2.19.5 consolidated repair candidate — NOT FROZEN**
-- Runtime/product lineage: **2.19.1**
-- The former C11-C 2.19.2 freeze claim is historical and invalidated for final-freeze purposes.
-- Producer: **0.9.7**
-- Godot: **4.7.1 stable Mono**
-- Logical frame: **540×960**
-- Physical review capture: **720×1280 @ 30 FPS**
-- Default master delivery: **1080×1920**
-
-## Corpus
-
-- 9 historical Challenges;
-- C11-A.1: 54/54 historical runs PASS;
-- 27 Visual Loop grammars / 5 families;
-- 4 Visual Drill families;
-- 5 Longforms / 180 s.
-
-## Historical validation evidence
-
-- Earlier workstation regressions are retained as historical evidence; they do not establish the current 2.19.5 acceptance gate.
-- C11A1FactoryIsolationContractTest: PASS;
-- Producer 0.9.7 self-test: PASS;
-- Producer GUI contract: PASS;
-- Windows Tracking Producer smoke: FINAL PRODUCT PASS.
-
-## D0 authority
-
-No D0 freeze authority exists yet. The active authority remains `docs/current/c11c/C11-C_2.19.5_CONSOLIDATED_STATE.md` and `docs/current/c11c/C11-C_2.19.5_REPAIR_MANIFEST.json` until a new C11-C freeze is formally accepted.
+No source modification is part of this inventory.

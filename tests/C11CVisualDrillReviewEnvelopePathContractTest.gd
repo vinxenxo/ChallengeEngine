@@ -1,6 +1,6 @@
 extends SceneTree
 
-## C11-C 2.19.11 — Visual Drill review envelope path contract.
+## C11-C 2.19.12 — Visual Drill review envelope path contract.
 ## Prevents an absolute Windows output root from being passed through
 ## ProjectSettings.globalize_path(), which would reinterpret it relative to the project.
 ## Also locks the shared Drill duration contract: Tracking=21s, others=17s gameplay.

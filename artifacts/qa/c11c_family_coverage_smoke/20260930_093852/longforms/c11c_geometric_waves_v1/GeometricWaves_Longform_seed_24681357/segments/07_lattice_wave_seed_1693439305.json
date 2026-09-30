@@ -1,0 +1,12 @@
+{
+    "slot":  7,
+    "family":  "geometric",
+    "grammar_id":  "lattice_wave",
+    "grammar_name":  "Lattice Wave",
+    "seed":  1693439305,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1693439305\\GeometricWaves_v1_seed_1693439305.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1693439305\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_geometric_waves_v1\\GeometricWaves_v1_seed_1693439305_music.wav",
+    "loop_safe":  true
+}

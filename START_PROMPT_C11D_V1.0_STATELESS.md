@@ -1,6 +1,6 @@
 # START PROMPT - Challenge Engine V1.0 STATELESS - D
 
-Begin D only from the exact repository frozen as **C11-C 2.19.12**.
+Begin D only from the exact repository frozen as **C11-C 2.19.12**. Verify the frozen archive SHA-256, freeze receipt and final acceptance report first.
 
 The C freeze is a prerequisite. Do not assume it from documentation alone: verify the frozen archive, acceptance marker and source hash.
 

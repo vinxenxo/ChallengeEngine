@@ -1,15 +1,33 @@
 ﻿# C11-C Producer 0.9.7 — Suite Member
 
-Compact orchestration interface for Challenges, Visual Loops, Visual Drills and predefined reviews.
+Compact orchestration interface for single production and predefined reviews.
 
-## Current C11-C state
+## Supported single production
 
-Operational branch: C11-C 2.19.12 consolidated repair candidate. The Producer remains orchestration-only and does not implement mechanics, RNG, timing truth or rendering.
+- **Challenges:** `CHALLENGE_001` … `CHALLENGE_009`, using canonical Challenge definitions and production launcher.
+- **Visual Loops:** 5 families / 27 grammars.
+- **Visual Drills:** Tracking, Saccade, Pursuit and Peripheral Scan.
 
-Supported content: 9 Challenges, 5 Visual Loop families / 27 grammars, 4 Visual Drill families. Predefined reviews include 9x6 Challenges, 27 Loops, 20 Drills and 5 Longforms.
+## Predefined reviews
 
-Single Visual Drill production uses temporary AVI Movie Maker capture, stabilized file handling, video-only MP4 conversion, deterministic family music and central delivery profiles.
+- `REVIEW — 9 CHALLENGES × 6 SEEDS`
+- `REVIEW — 27 VISUAL LOOPS`
+- `REVIEW — 20 VISUAL DRILLS`
+- `REVIEW — 5 LONGFORMS`
+- combined review operations.
 
-The Art Direction review runner is `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`; `Workers=7` means genuine concurrent capture with private temporary Godot project roots and no mutex.
+## Suite ownership
 
-`c11c-suite/` is canonical. `c11c-studio/` is retired.
+The live Producer is under `c11c-suite/c11c-producer/`. `c11c-studio` is retired and is not a dependency.
+
+## Visual Drill capture
+
+The single-Drill Producer uses temporary AVI Movie Maker capture, waits for the file to stabilize, converts video-only to MP4, then generates/muxes deterministic family music and resolves the requested delivery profile.
+
+## Art Direction worker review
+
+The canonical batch runner is `tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1`. Its 2.19.6 worker model uses a private temporary Godot project root per concurrent worker; the Producer does not own or serialize that pool.
+
+## Backend safety
+
+The GUI remains orchestration-only. It does not implement mechanics, RNG, timing truth or rendering.

@@ -1,0 +1,25 @@
+﻿{
+    "revision":  "2.19.12",
+    "status":  "PASS",
+    "generated_at":  "2026-09-30T14:04:48.8025335Z",
+    "skip_heavy_physical":  false,
+    "skip_reviews":  false,
+    "checks":  {
+                   "docs_consolidated":  true,
+                   "suite_self_test":  true,
+                   "producer_self_test":  true,
+                   "producer_gui":  true,
+                   "launcher_audit":  true,
+                   "parallel_contract":  true,
+                   "envelope_path_contract":  true,
+                   "one_video_smoke":  true,
+                   "family_coverage_smoke":  true,
+                   "retro_reference":  true,
+                   "logical":  true,
+                   "c11a1":  true,
+                   "retro":  true,
+                   "physical_smoke":  true,
+                   "physical_export":  true,
+                   "video_review":  true
+               }
+}

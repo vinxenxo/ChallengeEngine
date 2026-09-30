@@ -1,6 +1,6 @@
 # MASTER HANDOVER - Challenge Engine V1.0 STATELESS - D
 
-**Entry baseline:** C11-C 2.19.12, to be frozen only after the final workstation acceptance marker is produced.
+**Entry baseline:** C11-C 2.19.12, prepared as the next baseline; activate D only after the final workstation acceptance marker, frozen ZIP and SHA-256 are sealed.
 
 This document is the D handover. It must not be treated as active until the C11-C freeze receipt exists and the frozen repository hash is recorded.
 

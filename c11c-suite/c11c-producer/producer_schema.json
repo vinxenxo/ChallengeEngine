@@ -1347,10 +1347,6 @@
       "REVIEW — 9 CHALLENGES × 6 SEEDS"
     ],
     [
-      "REVIEW_CHALLENGE_FAMILY_FAST",
-      "QA — CHALLENGE FAMILY FAST (CHALLENGE_003)"
-    ],
-    [
       "REVIEW_LOOPS",
       "REVIEW — 27 VISUAL LOOPS"
     ],
@@ -1412,5 +1408,6 @@
   ],
   "standard_delivery_profile": "MASTER_1080",
   "challenge_timing_policy": "phase_sum_only; legacy total_duration is ignored",
-  "challenge_catalog_source": "challenges/CHALLENGE_001.json..CHALLENGE_009.json"
+  "challenge_catalog_source": "challenges/CHALLENGE_001.json..CHALLENGE_009.json",
+  "review_challenges_launcher": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
 }

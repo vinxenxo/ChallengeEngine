@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+CALDERA DE FASE // SINAPSIS L-SYSTEM // FOCUS // DETAIL 1.23 | BRANCH 1.23
+
+CALDERA DE FASE // SINAPSIS L-SYSTEM // FOCUS // DETAIL 1.23 | BRANCH 1.23
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: DENDRITIC TUNNEL
+- Paleta: cyan_lime_nebula
+- Seed: 995467343
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #DENDRITICTUNNEL
+
+CALDERA DE FASE // SINAPSIS L-SYSTEM // FOCUS // DETAIL 1.23 | BRANCH 1.23
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: DENDRITIC TUNNEL
+- Paleta: cyan_lime_nebula
+- Seed: 995467343
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+FRACTAL BLOOM - DENDRITIC TUNNEL
+
+DESCRIPTION:
+CALDERA DE FASE // SINAPSIS L-SYSTEM // FOCUS // DETAIL 1.23 | BRANCH 1.23
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: DENDRITIC TUNNEL
+- Paleta: cyan_lime_nebula
+- Seed: 995467343
+- Detalles: Duración 23.00s, 2 ciclo(s) completo(s), música ambiental determinista.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: DENDRITIC TUNNEL
+PALETTE: cyan_lime_nebula
+SEED: 995467343
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: ON / ORGANIC_BLOOM
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+CALDERA DE FASE // SINAPSIS L-SYSTEM // FOCUS // DETAIL 1.23 | BRANCH 1.23
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #DENDRITICTUNNEL
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 995467343 -Grammar dendritic_tunnel -Duration 23 -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\qa\c11c_font_worker_smoke -OutputTag font_worker_smoke
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_995467343_font_worker_smoke_manifest.json

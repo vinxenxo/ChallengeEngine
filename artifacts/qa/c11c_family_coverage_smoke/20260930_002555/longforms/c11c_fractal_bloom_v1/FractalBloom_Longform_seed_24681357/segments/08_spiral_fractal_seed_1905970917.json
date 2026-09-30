@@ -1,0 +1,12 @@
+{
+    "slot":  8,
+    "family":  "fractal",
+    "grammar_id":  "spiral_fractal",
+    "grammar_name":  "Spiral Fractal",
+    "seed":  1905970917,
+    "duration_seconds":  23,
+    "source_product":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1905970917\\FractalBloom_v1_seed_1905970917.mp4",
+    "source_manifest":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\audiovisual\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1905970917\\production_manifest.json",
+    "source_music":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\prototypes\\c11c_fractal_bloom_v1\\FractalBloom_v1_seed_1905970917_music.wav",
+    "loop_safe":  true
+}

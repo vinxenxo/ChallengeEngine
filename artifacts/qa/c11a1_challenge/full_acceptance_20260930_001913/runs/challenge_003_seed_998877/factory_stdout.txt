@@ -1,0 +1,5 @@
+[CHALLENGE] CHALLENGE_003 seed=998877 profile=MASTER_1080 source=540x960 delivery=1080x1920 fps=60 duration=12 frames=720
+[CHALLENGE] Standard delivery profile: MASTER_1080=1080x1920; review/minimum profiles are additive; runtime capture remains native 540x960.
+[CHALLENGE] Contract-safe path: Godot source capture remains native 540x960; delivery scale is post-capture FFmpeg only.
+[CHALLENGE] PASS CHALLENGE_003 seed=998877 -> C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\qa\c11a1_challenge\full_acceptance_20260930_001913\runs\challenge_003_seed_998877\artifacts\CHALLENGE_003
+[CHALLENGE] Source  540x960 / 720 frames -> Delivery 1080x1920
