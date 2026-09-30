@@ -1,0 +1,37 @@
+﻿{
+    "entries":  [
+                    {
+                        "source":  "CHANGELOG_C11-C_2.19.12.md",
+                        "destination":  "docs/history/root_conflicts/CHANGELOG_C11-C_2.19.12_root_20260930_175634.md",
+                        "action":  "ARCHIVED_CONFLICT",
+                        "reason":  "Destination contains different bytes; root source preserved intact in history instead of overwriting canonical evidence."
+                    }
+                ],
+    "conflicts":  0,
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "schema":  "C11-C-ROOT-ORGANIZATION-V1",
+    "applied_changes":  1,
+    "planned_changes":  0,
+    "untouched_roots":  [
+                            "project.godot",
+                            "GeneradorMaestro.gd",
+                            "Main.tscn",
+                            "build_factory.py",
+                            "release_gate.py",
+                            "AGENTS.md",
+                            "README.md",
+                            ".continue",
+                            ".githooks",
+                            "core",
+                            "assets",
+                            "challenges",
+                            "definitions",
+                            "profiles",
+                            "schemas",
+                            "tests",
+                            "tools",
+                            "c11c-suite",
+                            "docs"
+                        ],
+    "apply":  true
+}

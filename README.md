@@ -1,9 +1,10 @@
-# C11-C 2.19.12 — V38 Pre-freeze maintenance correction
+# C11-C 2.19.12 — V40 freeze ZIP overlay
 
-Minimal maintenance-only correction.
+Minimal correction over V39.
 
-The V36 Maintenance repair note was accidentally left under `docs/current/c11c/`, so the freeze correctly rejected the tree as stale.
+Scope:
+- keeps the V39 freeze ZIP quarantine exclusion;
+- contains ONLY the corrected freeze packager;
+- intentionally does NOT contain root CHANGELOG_C11-C_2.19.12.md or any runtime/software files.
 
-V38 explicitly archives `C11-C_2.19.12_PREFREEZE_MAINTENANCE_FIX_V36.md` through the existing documentation consolidator. No runtime, renderer, mechanics, simulation, RNG, definitions, profiles or product tests are changed.
-
-After applying V38, run the documentation consolidator and then the freeze dry-run. Do not rerun the 52-video corpus solely for this documentation move.
+Before the final freeze, run the existing root organizer in -Apply mode so any root CHANGELOG_C11-C_2.19.12.md is archived under docs/history/root_conflicts/.

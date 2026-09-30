@@ -182,12 +182,14 @@ $zipPath = Join-Path $OutputRoot $zipName
 $tempManifest = Join-Path ([IO.Path]::GetTempPath()) ('c11c_freeze_manifest_' + [guid]::NewGuid().ToString('N') + '.json')
 
 $excludeDirNames = @('.git','.godot','.mono','.import','.vscode','.idea','__pycache__','.pytest_cache','.mypy_cache','.ruff_cache','.venv','venv','env','artifacts','c11c-studio','c11c-maintenace')
+$excludeRelativePrefixes = @('docs/history/root_conflicts/')
 $excludeFiles = @('*.pyc','*.pyo','*.pyd','*.uid','*.import','*.tmp','*.temp','*.bak','*.old','*.orig','*.swp','*.swo','*~','*.zip','*.7z','*.rar','.DS_Store','Thumbs.db','Desktop.ini','*.coverage','*.dmp','*.stackdump')
 
 $files = @(Get-ChildItem -LiteralPath $root -Recurse -File -Force | Where-Object {
     $rel = $_.FullName.Substring($root.Length + 1).Replace('\','/')
     $parts = $rel.Split('/')
     if ($parts | Where-Object { $excludeDirNames -contains $_ }) { return $false }
+    foreach ($prefix in $excludeRelativePrefixes) { if ($rel.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)) { return $false } }
     foreach ($pattern in $excludeFiles) { if ($_.Name -like $pattern) { return $false } }
     return $true
 }) | Sort-Object FullName
@@ -233,6 +235,7 @@ $manifest = [ordered]@{
     source_file_count=@($entries).Count
     evidence_files=$evidenceEntries
     excluded_directory_names=$excludeDirNames
+    excluded_relative_prefixes=$excludeRelativePrefixes
     excluded_file_patterns=$excludeFiles
     source_files=$entries
 }
