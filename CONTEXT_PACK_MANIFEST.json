@@ -1,0 +1,318 @@
+{
+  "schema": "C11-C-PREFREEZE-CONTEXT-PACK-V34",
+  "baseline": "ChallengeEngineV01_STATELESS-C11-C2.19.12-V33-STABLE.zip",
+  "acceptance_marker": "C11-C 2.19.12 - FINAL CONSOLIDATED ACCEPTANCE PASS",
+  "file_count": 62,
+  "files": [
+    {
+      "path": ".continue/rules/CONTINUE.md",
+      "bytes": 1484,
+      "sha256": "1ef712c24e377d1a4c1b184de0e19ddcf0ee369f228845c392ad5ff5cb5ce933"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3092,
+      "sha256": "8e067c58a372fc8e0e5394438babde2cfebeeb59a367c41d9a3f0d756f910880"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2752,
+      "sha256": "bc142545b4bbc6545ff7eefd8940e07f0601468c9d872ba72f641d3daf4014c5"
+    },
+    {
+      "path": "c11c-suite/README.md",
+      "bytes": 1460,
+      "sha256": "e1ff90b41a3ff68be764fca5d83a2afbcc09895337296293660c66c04e4cd94a"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/README.md",
+      "bytes": 1516,
+      "sha256": "11d9df79ad85f0c3ba04946cb984178f6920de200dffe9f7ed148404c2ed1b48"
+    },
+    {
+      "path": "docs/current/00_PROJECT_OVERVIEW.md",
+      "bytes": 469,
+      "sha256": "13613a850e354fe27f2dbb03539a170430e369cf46c3f3f2dedb0a70fa112c72"
+    },
+    {
+      "path": "docs/current/01_ARCHITECTURE.md",
+      "bytes": 514,
+      "sha256": "8b51eefe9e0a7e7e0d8dcdfc67b80a55128a1c6860d9da695728e80c401bebb6"
+    },
+    {
+      "path": "docs/current/02_DATA_AND_CONTRACTS.md",
+      "bytes": 495,
+      "sha256": "0ea82068b74a450f45fe56648689b63ce24e4fa7b487238fa3020b5ec5aac029"
+    },
+    {
+      "path": "docs/current/03_PRESENTATION.md",
+      "bytes": 419,
+      "sha256": "bc8b18f1b1432d45084c20b1f0e1481a4c3cc64071ba7d0902cba4a29392d5a0"
+    },
+    {
+      "path": "docs/current/04_REPOSITORY_STRUCTURE.md",
+      "bytes": 963,
+      "sha256": "fe632f94e11ccfe2a29826f7fe014eb051930e5417423cd3fb16e9bd21a4366a"
+    },
+    {
+      "path": "docs/current/05_TESTING_AND_REGRESSION.md",
+      "bytes": 540,
+      "sha256": "6e9b28a03b334c7d35a2b6af5a1dc515f09f743dbb7b44ccb085c0d35c4a87a4"
+    },
+    {
+      "path": "docs/current/06_PRODUCTION_AND_DISTRIBUTION.md",
+      "bytes": 538,
+      "sha256": "6a3d887b5c795728047f446955509352cbeb8b9d43f72ce12dafd21aa87a7956"
+    },
+    {
+      "path": "docs/current/07_ROADMAP.md",
+      "bytes": 752,
+      "sha256": "87f41531731e761d762b0bc8929b4fc8cac329489426d00ae1cec90f513e8e36"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.12_ACCEPTANCE_EVIDENCE.md",
+      "bytes": 1592,
+      "sha256": "f1d651b414ff1c62e8c7214cf208b9fb3a1e5a664384b9241a2adafd21892eba"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.12_CLOSURE_AND_FREEZE_READINESS.md",
+      "bytes": 1644,
+      "sha256": "35fd8a61b8f202d68d9d880bb2340099668bfc9021942cbfd78808f298d4307f"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.12_CONTRACT_COHERENCE_AUDIT.md",
+      "bytes": 1466,
+      "sha256": "f93c3a2c0534573eee9169d6ce2c577c0806fb6e0fd867b961ca00d7d8d347a6"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19.12_PREFREEZE_HARDENING_REPORT.md",
+      "bytes": 2055,
+      "sha256": "a9e54bf5eddd30d4849d138ecd17c5b721d3397903caa59b61e55fcaa0092d55"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md",
+      "bytes": 2274,
+      "sha256": "8b65ba3f0d9c892128600ad5e0203f83af954a92364f29fe4b053cd0afb1d19a"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md",
+      "bytes": 1961,
+      "sha256": "927cff979a2eda2b787602bc41d0069462da830057352c094ead322ae5768002"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md",
+      "bytes": 1171,
+      "sha256": "3356080f8ac46dce8c8c454017c50e134015660879a3776b01e32730769ef9a2"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md",
+      "bytes": 2576,
+      "sha256": "a142675cdd25277ac586b4fed18afed790d0d63fa08ce382e3ef248622203175"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md",
+      "bytes": 2093,
+      "sha256": "a6b357d84f40704fed480ca73d20a9749677cc75b714bd3c68b74b94c08092d7"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md",
+      "bytes": 2073,
+      "sha256": "97c26676d34bc5da600d6ef978347f4e4a8c5c2b8f5d68899474f7cdbccf6bdc"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_FREEZE_CHECKLIST.md",
+      "bytes": 1264,
+      "sha256": "ab04c0db03632880f6f23d60009d92d9063f5e60698eca4bb7f8d9068caa51d0"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_FREEZE_COMMANDS.md",
+      "bytes": 1176,
+      "sha256": "337b08d7f1f4bce4dddb27bb79334e113bf79d450c25698670d00136e73dcced"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_PERMANENT_RULES.md",
+      "bytes": 2422,
+      "sha256": "df569dc0ca656c3e7a25a03e8586ff6296af496ef9904e4afefd8e611299fc39"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_ROOT_ORGANIZATION.md",
+      "bytes": 1277,
+      "sha256": "63926427c7aea7a940f39cfedbf57a8a36b8ea7c86b8d4524bbe3fb557662820"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_2.19_WORKSTATION_TEST_COMMANDS.md",
+      "bytes": 1137,
+      "sha256": "002b2467a2bfb1d4b9fd428317da83cd171ceb5ccb4c806e59da9c9a1b6f3571"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_BATCH_REVIEW_RUNNER.md",
+      "bytes": 715,
+      "sha256": "4381a9423571398052dc14f823b4c591a36ea1a93e14e70cdd426bcd365430b9"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_MAINTENANCE_AND_FREEZE_PACKAGING.md",
+      "bytes": 2454,
+      "sha256": "c832fb329dea94a7d9fc809a2d8f74d5a48d1cc4136844bd9250bc3177a789f4"
+    },
+    {
+      "path": "docs/current/c11c/C11-C_VIDEO_DELIVERY_META_REELS.md",
+      "bytes": 2379,
+      "sha256": "acf3278b62179fc0f707b9086c502404953da31d33c6894de859ec9fc86ab759"
+    },
+    {
+      "path": "docs/current/c11c/C11C_2.19.12_CLOSURE_CHANGELOG.md",
+      "bytes": 2145,
+      "sha256": "92ef8700367079b5b9ae225a91d6612a8ae61d8ec8e3f7d0a48b0be3c629be98"
+    },
+    {
+      "path": "docs/current/c11c/README.md",
+      "bytes": 1063,
+      "sha256": "c4d73d5eb56c6d62e4232c5f813308e10549a10a35702d5441027abe77b2eb26"
+    },
+    {
+      "path": "docs/current/challenges/CHALLENGE_ASSET_RECOVERY_STARTING_POINT.md",
+      "bytes": 1048,
+      "sha256": "77cae0647f90a16628630d1ec5215adf94ade6136fbe564c16973bf852e5e987"
+    },
+    {
+      "path": "docs/current/challenges/CHALLENGE_PRODUCTION_CURRENT.md",
+      "bytes": 1574,
+      "sha256": "715035d0c9de897ac5c6d07c480ad2cc2df2ee64d21f5ed85dff20b886af8f79"
+    },
+    {
+      "path": "docs/current/challenges/README.md",
+      "bytes": 260,
+      "sha256": "652771ca3018c9d8d903414150e3b836f199d02cfe7aa2e91a1fd21e81b902d3"
+    },
+    {
+      "path": "docs/current/d/C11-D_BRANCH_START_V1.0.md",
+      "bytes": 1285,
+      "sha256": "3334fc823a29f4f8dc7e7a5d6538ce7dce325f5491fdab3faca69c314282e492"
+    },
+    {
+      "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+      "bytes": 2376,
+      "sha256": "16813b08b9ed5e5ea2d001b7c85b5fcde8f0eac6fbd18c71e111a0826d1fc8ab"
+    },
+    {
+      "path": "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+      "bytes": 3826,
+      "sha256": "69200178ed396222a9d063ebd0095a5d137e2181dae675182ae273c2958e570d"
+    },
+    {
+      "path": "docs/current/d/D0_CHALLENGE_RECOVERY_DOSSIER_SCHEMA.md",
+      "bytes": 652,
+      "sha256": "afae95481ff465ca4bcd6c13c3fed7bd9c381be1b09946051fdfc296300084ac"
+    },
+    {
+      "path": "docs/current/d/D0_HISTORICAL_ROADMAP_SYNTHESIS.md",
+      "bytes": 563,
+      "sha256": "04105a91f4f8d724c151a6440242b0bb2ca9422240a7708e62255fabf64eb52d"
+    },
+    {
+      "path": "docs/current/d/D0_MIGRATION_MAP.md",
+      "bytes": 707,
+      "sha256": "634f881587705a19e8fb080f7d543c8ebaab1c19571c2f3630f5643d07899c49"
+    },
+    {
+      "path": "docs/current/d/D0_REPOSITORY_BASELINE_INVENTORY.md",
+      "bytes": 435,
+      "sha256": "422cedd1c8575f9419257b20139a2fcd86f89d094c3a60364d86faba12502060"
+    },
+    {
+      "path": "docs/current/d/D0_START_CHECKLIST.md",
+      "bytes": 550,
+      "sha256": "ccd0e3133b913e71af38c62670b2838cc3271e3690f231205b124161c2ad1c62"
+    },
+    {
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "bytes": 654,
+      "sha256": "a5f439d10f87a9daf8b0cf6ebf117cc5c23aa6280746badff56a03a44e3b168c"
+    },
+    {
+      "path": "docs/current/d/README.md",
+      "bytes": 504,
+      "sha256": "4fadabc533ad6f69d80a53380e43a1b77d281e9ee34e919ea2c929334a07449e"
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CONSOLE_TEST_COMMANDS.md",
+      "bytes": 1102,
+      "sha256": "8eb096ceb25a813c237e2dec0a5d2fae9f9f21caecf5c10f68142dfe56b72bc9"
+    },
+    {
+      "path": "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md",
+      "bytes": 923,
+      "sha256": "89591c899ff2e16efe2811a2805bd2a649ba418a52dc22f317902f4efb1c01f1"
+    },
+    {
+      "path": "docs/current/producer/README.md",
+      "bytes": 293,
+      "sha256": "5c4a89c45a094951e6dfa1f6a1440a9cbffe5c1a085de7230b77fecfcb1ff5a8"
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_CURRENT_RULES.md",
+      "bytes": 3007,
+      "sha256": "e269f907f213fc8f4bd32612399b2e94bfb8707ba90c63884c7da8086f832383"
+    },
+    {
+      "path": "docs/current/suite/C11C_SUITE_TOOLING_MATRIX.md",
+      "bytes": 3418,
+      "sha256": "fda56b74a58348c6eb98ab461ac4e6a66e24f97cac055affd92c6b12b2d91dc8"
+    },
+    {
+      "path": "docs/current/suite/README.md",
+      "bytes": 413,
+      "sha256": "5a294183e3b22f9e007a09bba44835bff5ded2089fd70609598e6ecbed5b0626"
+    },
+    {
+      "path": "docs/master-prompts/C11C_2.19.12_PREFREEZE_CONTEXT_PACK_V34.md",
+      "bytes": 4803,
+      "sha256": "e16124a78147ceb2bc27189f43da1214e23e5837145ed66cc6dbffc3dcadb42b"
+    },
+    {
+      "path": "docs/master-prompts/C11C_2.19.12_PREFREEZE_CONTEXT_PACK_V34.md",
+      "bytes": 4803,
+      "sha256": "e16124a78147ceb2bc27189f43da1214e23e5837145ed66cc6dbffc3dcadb42b"
+    },
+    {
+      "path": "docs/master-prompts/C11D_CONTEXT_PACK_README.md",
+      "bytes": 710,
+      "sha256": "86aaad9960506644890a6272aac86e6b13ac4a63a8437a3a7cf9e3317b2d5aa5"
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 2048,
+      "sha256": "0a9a1f7b7a59065d733f3ca76e2898cd63d17254494740d85cd0bba0367a24fc"
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md",
+      "bytes": 1209,
+      "sha256": "38295b4af5b68740a673673cb6fa1f8c7a0a2cecdb84d87a38c022434f617162"
+    },
+    {
+      "path": "docs/master-prompts/NEXT_PROMPT_C11D_V1.0_STATELESS.md",
+      "bytes": 923,
+      "sha256": "d5d28d4a0e633c862081d98c1af866d3279587c9c5c5e4b5f1e0149269e4783c"
+    },
+    {
+      "path": "docs/master-prompts/README.md",
+      "bytes": 705,
+      "sha256": "a7a5611f68217954cea8f70d00f4b5ee603b9c3ff1b6e16d06efa35d8d382776"
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11C_2.19_CONSOLIDATED.md",
+      "bytes": 1208,
+      "sha256": "9820a593d5454fef86816545ae47392bdd4d6148477936cd82eab0e20158c3a4"
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11C_ART_DIRECTION.md",
+      "bytes": 685,
+      "sha256": "6f473020e155ea0959acef2bd765361c863301609306a1df0f526586ba41d9cb"
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11D_V1.0_STATELESS.md",
+      "bytes": 1223,
+      "sha256": "a6261dac0cff4754d014429981dd4642ff87149dd8feb2194f252210f9c053f7"
+    }
+  ]
+}

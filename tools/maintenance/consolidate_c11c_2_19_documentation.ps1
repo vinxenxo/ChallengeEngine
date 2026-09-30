@@ -48,7 +48,8 @@ foreach($fileName in @(
     'C11C_2.19.12_A1_CLOSURE_CHANGELOG_V16.md',
     'C11C_2.19.12_A1_CLOSURE_CHANGELOG_V17.md',
     'C11C_2.19.12_A1_CLOSURE_CHANGELOG_V18.md',
-    'C11C_2.19.12_A1_CLOSURE_CHANGELOG_V19.md'
+    'C11C_2.19.12_A1_CLOSURE_CHANGELOG_V19.md',
+    'C11-C_2.19.12_PREFREEZE_MAINTENANCE_FIX_V36.md'
 )) {
     Archive-One (Join-Path $ProjectRoot ('docs\current\c11c\' + $fileName)) (Join-Path 'current_repair_history' $fileName)
 }

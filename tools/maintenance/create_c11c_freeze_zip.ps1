@@ -77,7 +77,7 @@ if (Test-Path -LiteralPath $override -PathType Leaf) {
     throw 'C11-C freeze blocked: repository root override.cfg is present.'
 }
 $leaked = @(Get-ChildItem -LiteralPath $root -Filter '.override.challenge_quarantine_*.cfg' -File -ErrorAction SilentlyContinue)
-if ($leaked.Count -gt 0) { throw 'C11-C freeze blocked: override quarantine residue exists in repository root.' }
+if (@($leaked).Count -gt 0) { throw 'C11-C freeze blocked: override quarantine residue exists in repository root.' }
 
 $required = @(
     'project.godot',
@@ -115,7 +115,7 @@ $required = @(
     'c11c-suite/c11c-maintenance/run_freeze_package.bat'
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath (Join-Path $root $_) -PathType Leaf) })
-if ($missing.Count -gt 0) { throw ('C11-C freeze blocked: missing required files: ' + ($missing -join ', ')) }
+if (@($missing).Count -gt 0) { throw ('C11-C freeze blocked: missing required files: ' + ($missing -join ', ')) }
 
 $staleRoot = @(
     'C11C_2.19.12_CONTEXT_INDEX.md',
@@ -132,7 +132,7 @@ $staleRoot = @(
     'clean-godot.ps1',
     'prepare_c11c_acceptance_workspace.ps1'
 ) | Where-Object { Test-Path -LiteralPath (Join-Path $root $_) -PathType Leaf }
-if ($staleRoot.Count -gt 0) { throw ('C11-C freeze blocked: stale root documentation/tool entries remain: ' + ($staleRoot -join ', ')) }
+if (@($staleRoot).Count -gt 0) { throw ('C11-C freeze blocked: stale root documentation/tool entries remain: ' + ($staleRoot -join ', ')) }
 
 if (Test-Path -LiteralPath (Join-Path $root 'c11c-suite\c11c-maintenace') -PathType Container) {
     throw 'C11-C freeze blocked: obsolete misspelled c11c-suite/c11c-maintenace directory remains.'
@@ -171,7 +171,7 @@ $dynamicStale += @(
     Get-ChildItem -LiteralPath (Join-Path $root 'docs\current\producer') -File -Filter 'C11C_PRODUCER_0.8.*' -ErrorAction SilentlyContinue |
         ForEach-Object { $_.FullName.Substring($root.Length + 1).Replace('\','/') }
 )
-if ($staleCurrent.Count -gt 0 -or $dynamicStale.Count -gt 0) {
+if (@($staleCurrent).Count -gt 0 -or @($dynamicStale).Count -gt 0) {
     $allStale = @($staleCurrent + $dynamicStale | Select-Object -Unique)
     throw ('C11-C freeze blocked: stale current documentation remains: ' + ($allStale -join ', '))
 }
@@ -230,7 +230,7 @@ $manifest = [ordered]@{
     build_factory_sha256=$buildFactoryHash
     hash_algorithm='SHA-256'
     source_tree_sha256=$treeSha
-    source_file_count=$entries.Count
+    source_file_count=@($entries).Count
     evidence_files=$evidenceEntries
     excluded_directory_names=$excludeDirNames
     excluded_file_patterns=$excludeFiles
@@ -242,8 +242,8 @@ $manifestJson = $manifest | ConvertTo-Json -Depth 10
 if ($DryRun) {
     Remove-Item -LiteralPath $tempManifest -Force -ErrorAction SilentlyContinue
     Write-Host '[C11C-FREEZE-ZIP] DRY-RUN PASS - all freeze gates and package-content checks passed.'
-    Write-Host ('[C11C-FREEZE-ZIP] SOURCE FILES=' + $entries.Count)
-    Write-Host ('[C11C-FREEZE-ZIP] EVIDENCE FILES=' + $evidenceEntries.Count)
+    Write-Host ('[C11C-FREEZE-ZIP] SOURCE FILES=' + @($entries).Count)
+    Write-Host ('[C11C-FREEZE-ZIP] EVIDENCE FILES=' + @($evidenceEntries).Count)
     Write-Host ('[C11C-FREEZE-ZIP] TREE SHA-256=' + $treeSha)
     Write-Host ('[C11C-FREEZE-ZIP] build_factory.py SHA-256=' + $buildFactoryHash)
     exit 0
@@ -278,7 +278,7 @@ try {
         $_.ToLowerInvariant().Contains('/__pycache__/') -or
         $_.ToLowerInvariant().EndsWith('.pyc')
     })
-    if ($badEntries.Count -gt 0) { throw ('C11-C freeze ZIP validation failed: forbidden entries: ' + ($badEntries -join ', ')) }
+    if (@($badEntries).Count -gt 0) { throw ('C11-C freeze ZIP validation failed: forbidden entries: ' + ($badEntries -join ', ')) }
     foreach ($requiredEntry in $required) {
         $normalized = $requiredEntry.Replace('\','/')
         if ($entryNames -notcontains $normalized) { throw ('C11-C freeze ZIP validation failed: missing entry: ' + $normalized) }
@@ -287,7 +287,7 @@ try {
         if ($entryNames -notcontains $evidenceEntry.path) { throw ('C11-C freeze ZIP validation failed: missing evidence entry: ' + $evidenceEntry.path) }
     }
     if ($entryNames -notcontains 'release/C11C_FREEZE_PACKAGE_MANIFEST.json') { throw 'C11-C freeze ZIP validation failed: package manifest entry missing.' }
-    if ($entryNames.Count -lt ($entries.Count + $evidenceEntries.Count + 1)) { throw 'C11-C freeze ZIP validation failed: archive entry count is unexpectedly small.' }
+    if (@($entryNames).Count -lt (@($entries).Count + @($evidenceEntries).Count + 1)) { throw 'C11-C freeze ZIP validation failed: archive entry count is unexpectedly small.' }
 } finally {
     $zip.Dispose()
 }
@@ -299,8 +299,8 @@ $sidecar = [ordered]@{
     archive_sha256=$zipHash
     source_tree_sha256=$treeSha
     build_factory_sha256=$buildFactoryHash
-    source_file_count=$entries.Count
-    evidence_file_count=$evidenceEntries.Count
+    source_file_count=@($entries).Count
+    evidence_file_count=@($evidenceEntries).Count
     generated_at_utc=(Get-Date).ToUniversalTime().ToString('o')
 }
 $receiptPath = Join-Path $OutputRoot ('C11-C_2.19.12_FROZEN_PACKAGE_RECEIPT_' + $stamp + '.json')
@@ -310,7 +310,7 @@ Write-Host ('[C11C-FREEZE-ZIP] PASS - archive=' + $zipPath)
 Write-Host ('[C11C-FREEZE-ZIP] SHA-256=' + $zipHash)
 Write-Host ('[C11C-FREEZE-ZIP] TREE SHA-256=' + $treeSha)
 Write-Host ('[C11C-FREEZE-ZIP] build_factory.py SHA-256=' + $buildFactoryHash)
-Write-Host ('[C11C-FREEZE-ZIP] SOURCE FILES=' + $entries.Count)
-Write-Host ('[C11C-FREEZE-ZIP] EVIDENCE FILES=' + $evidenceEntries.Count)
+Write-Host ('[C11C-FREEZE-ZIP] SOURCE FILES=' + @($entries).Count)
+Write-Host ('[C11C-FREEZE-ZIP] EVIDENCE FILES=' + @($evidenceEntries).Count)
 Write-Host ('[C11C-FREEZE-ZIP] RECEIPT=' + $receiptPath)
 exit 0

@@ -10,6 +10,7 @@ assert BAT.exists()
 text = SCRIPT.read_text(encoding='utf-8-sig')
 assert '[switch]$Apply' in text
 assert 'root_conflicts' in text
+assert "CHANGELOG_C11-C_2.19.12.md" in text and "root_changelogs/CHANGELOG_C11-C_2.19.12.md" in text
 assert 'ARCHIVED_CONFLICT' in text
 assert 'WOULD_ARCHIVE_CONFLICT' in text
 assert "project.godot" in text and "untouched_roots" in text

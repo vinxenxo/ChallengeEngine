@@ -23,6 +23,9 @@ $moves['NEXT-PROMT.TXT'] = 'docs/history/root/NEXT-PROMT_root_legacy.txt'
 $moves['NEXT_PROMPT_C11D_V1.0_STATELESS.txt'] = 'docs/master-prompts/NEXT_PROMPT_C11D_V1.0_STATELESS.txt'
 $moves['NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt'] = 'docs/history/root/NEXT_PROMPT_C11C_2.19_CONSOLIDATED_legacy.txt'
 $moves['FULL_ACEPTANCE_REF.md'] = 'docs/current/c11c/FULL_ACCEPTANCE_REFERENCE.md'
+# Explicitly archive the active-looking root 2.19.12 changelog.
+# Do not rely on provider wildcard matching for this governed freeze entry.
+$moves['CHANGELOG_C11-C_2.19.12.md'] = 'docs/history/c11c/releases/superseded_2.19/root_changelogs/CHANGELOG_C11-C_2.19.12.md'
 
 # Historical 2.19 root context / candidate evidence.
 foreach ($file in Get-ChildItem -LiteralPath $ProjectRoot -File -Filter 'C11C_2.19.*' | Sort-Object Name) {
@@ -30,6 +33,7 @@ foreach ($file in Get-ChildItem -LiteralPath $ProjectRoot -File -Filter 'C11C_2.
     $moves[$file.Name] = "docs/history/c11c/releases/superseded_2.19/root_context/$($file.Name)"
 }
 foreach ($file in Get-ChildItem -LiteralPath $ProjectRoot -File -Filter 'CHANGELOG_C11-C_2.19.*.md' | Sort-Object Name) {
+    if ($file.Name -eq 'CHANGELOG_C11-C_2.19.12.md') { continue }
     $moves[$file.Name] = "docs/history/c11c/releases/superseded_2.19/root_changelogs/$($file.Name)"
 }
 foreach ($file in Get-ChildItem -LiteralPath $ProjectRoot -File -Filter 'README_C11C_2.19*.md' | Sort-Object Name) {

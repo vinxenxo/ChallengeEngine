@@ -1,4 +1,4 @@
-﻿# C11-C 2.19.12 — Maintenance and Freeze Packaging
+# C11-C 2.19.12 — Maintenance and Freeze Packaging
 
 ## Estado
 
@@ -56,3 +56,7 @@ The documentation consolidator is filesystem-neutral during `-DryRun`: no histor
 
 Before applying root organization, verify that different-SHA collisions are reported as `WOULD_ARCHIVE_CONFLICT`. This preserves both evidence copies and clears the root-cleanliness gate without overwriting canonical documentation.
 
+
+## V38
+
+The pre-freeze documentation consolidator explicitly archives the V36 Maintenance repair note if it remains in `docs/current/c11c`. The freeze gate remains strict and continues to reject stale current documentation.
