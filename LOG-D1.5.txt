@@ -1,0 +1,902 @@
+==================================================
+ C11-D D1.5 — LAYOUT REFERENCE AUDIT
+==================================================
+
+Total reference hits: 5301
+
+=== HIGH-VALUE LAYOUT REFERENCES ===
+
+core\authoring\VisualDrillSeedVariation.gd:96: [144] trajectory["radius_base"] = lerpf(136.0, 144.0, _unit(seed_value, 227))
+core\presentation\C11CVisualEditorialLayer.gd:14: [144] const HEADER_HEIGHT := 144.0
+core\presentation\C11CVisualEditorialLayer.gd:15: [144] const FOOTER_HEIGHT := 144.0
+core\presentation\C11CVisualEditorialLayer.gd:32: [UnifiedSocialFrame] var _frame: UnifiedSocialFrame
+core\presentation\C11CVisualEditorialLayer.gd:48: [UnifiedSocialFrame] func mount(frame: UnifiedSocialFrame) -> bool:
+core\presentation\CoordinateMapper.gd:1: [CoordinateMapper] # res://core/presentation/CoordinateMapper.gd
+core\presentation\CoordinateMapper.gd:2: [CoordinateMapper] class_name CoordinateMapper
+core\presentation\CoordinateMapper.gd:21: [144] const DEFAULT_SOCIAL_BODY_RECT: Rect2 = Rect2(0.0, 144.0, 540.0, 672.0)
+core\presentation\PresentationFramer.gd:1: [PresentationFramer] class_name PresentationFramer
+core\presentation\PresentationProfile.gd:208: [540x960] errors.append("source_canvas_size is immutable and must remain 540x960")
+core\presentation\PresentationUI.gd:28: [UnifiedSocialFrame] var unified_frame: UnifiedSocialFrame = null
+core\presentation\PresentationUI.gd:29: [UnifiedSocialFrame] if root_control != null and root_control is UnifiedSocialFrame:
+core\presentation\PresentationUI.gd:30: [UnifiedSocialFrame] unified_frame = root_control as UnifiedSocialFrame
+core\presentation\PresentationUI.gd:33: [UnifiedSocialFrame] # UnifiedSocialFrame owns the structural geometry. Avoid creating an
+core\presentation\PresentationUI.gd:57: [UnifiedSocialFrame] func _build_unified_frame_ui(frame: UnifiedSocialFrame) -> void:
+core\presentation\rendering\C11CDrillEnvironment.gd:9: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\presentation\rendering\PeripheralScanRenderer.gd:6: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\presentation\rendering\PursuitRenderer.gd:6: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\presentation\rendering\SaccadeRenderer.gd:8: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\presentation\rendering\TrackingRenderer.gd:12: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\presentation\rendering\VisualContentPlayer.gd:19: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+core\presentation\rendering\VisualContentPlayer.gd:32: [UnifiedSocialFrame] @onready var unified_social_frame: UnifiedSocialFrame = get_node_or_null("UnifiedSocialFrame") as UnifiedSocialFrame
+core\presentation\rendering\VisualContentPlayer.gd:63: [UnifiedSocialFrame] unified_social_frame = UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+core\presentation\rendering\VisualContentPlayer.gd:65: [UnifiedSocialFrame] unified_social_frame.name = "UnifiedSocialFrame"
+core\presentation\rendering\VisualContentPlayer.gd:69: [UnifiedSocialFrame] push_error("[VISUAL_CONTENT_PLAYER] UnifiedSocialFrame could not be mounted.")
+core\presentation\rendering\VisualContentPlayer.gd:93: [540x960] # frozen 540x960 frame and scale the complete composition to 720x1280.
+core\presentation\rendering\VisualContentPlayer.gd:93: [720x1280] # frozen 540x960 frame and scale the complete composition to 720x1280.
+core\presentation\SocialUIBinder.gd:5: [UnifiedSocialFrame] ## C11-B.1 — Presentation-only bridge from normalized render data to UnifiedSocialFrame.
+core\presentation\UnifiedSocialFrame.gd:1: [UnifiedSocialFrame] # res://core/presentation/UnifiedSocialFrame.gd
+core\presentation\UnifiedSocialFrame.gd:2: [UnifiedSocialFrame] class_name UnifiedSocialFrame
+core\presentation\VisualDrillPresentationBinder.gd:53: [540x960] # Shared C6/C11-C geometry payload. The logical composition remains 540x960;
+core\presentation\VisualDrillPresentationBinder.gd:54: [720x1280] # physical 720x1280 is a capture concern and is intentionally not baked into the frame state.
+core\presentation\VisualDrillPresentationBinder.gd:64: [144] "header_rect": Rect2(0.0, 0.0, 540.0, 144.0),
+core\presentation\VisualDrillPresentationBinder.gd:65: [144] "body_rect": Rect2(0.0, 144.0, 540.0, 672.0),
+core\presentation\VisualDrillPresentationBinder.gd:66: [144] "footer_rect": Rect2(0.0, 816.0, 540.0, 144.0)
+core\presentation\VisualDrillPresentationBinder.gd:66: [816] "footer_rect": Rect2(0.0, 816.0, 540.0, 144.0)
+core\presentation\VisualDrillPresentationBinder.gd:184: [720x1280] "line_2": "GEN %s | PALETTE %s | AUDIO %s | SOCIAL 720X1280" % [display_name, str(editorial_colors.get("palette_name", "DEFAULT")), str(VisualMusic.profile_for("visual_drill/" + subtype)) if audio_enabled else "OFF"],
+core\runtime\visual_drill\generators\PeripheralScanGenerator.gd:9: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\runtime\visual_drill\generators\PursuitGenerator.gd:9: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\runtime\visual_drill\generators\SaccadeGenerator.gd:9: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+core\runtime\visual_drill\generators\SaccadeGenerator.gd:17: [144] const MAX_RADIUS_BASE: float = 144.0
+core\runtime\visual_drill\generators\TrackingGenerator.gd:9: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+docs\current\c11c\C11-C_2.19_CONSOLIDATED_STATE.md:19: [540x960] - Shared logical social canvas: 540x960.
+docs\current\c11c\C11-C_2.19_CONSOLIDATED_STATE.md:20: [720x1280] - Review delivery: 720x1280 @ 30 FPS.
+docs\current\c11c\C11-C_2.19_CONSOLIDATED_STATE.md:47: [540x960] Do not change simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 ownership/contracts, C9 semantics or logical 540x960 geometry.
+docs\current\c11c\C11-C_2.19_PERMANENT_RULES.md:4: [540x960] 2. Never reopen C11-B/C simulation truth, mechanics, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio ownership/contracts, C9 semantics or logical 540x960 geometry without an explicit checkpoint.
+docs\current\c11c\C11-C_MAINTENANCE_AND_FREEZE_PACKAGING.md:51: [540x960] Ninguna operación pre-freeze puede cambiar mecánicas, simulación, RNG, timing truth, renderer, presentación probada, contratos C7/C9 ni la geometría lógica 540x960.
+docs\history\c11\C11B0_1_PRESENTATION_SPACE_AUDIT.md:10: [CoordinateMapper] 2. the coordinates that `CoordinateMapper` says should be rendered inside `BodyRegion`;
+docs\history\c11\C11B0_1_PRESENTATION_SPACE_AUDIT.md:33: [144] With BodyRegion `Rect2(0,144,540,672)` and aspect-preserving fit, the logical sample `Y=1359.253` maps to approximately `Y=619.739`; `Y=821.9901` maps to approximately `Y=431.697`.
+docs\history\c11\C11B0_CONTRACT.md:11: [540x960] Export canvas: `540x960`.
+docs\history\c11\C11B0_CONTRACT.md:13: [144] - HeaderRegion: `Rect2(0, 0, 540, 144)`
+docs\history\c11\C11B0_CONTRACT.md:14: [144] - BodyRegion: `Rect2(0, 144, 540, 672)`
+docs\history\c11\C11B0_CONTRACT.md:15: [144] - FooterRegion: `Rect2(0, 816, 540, 144)`
+docs\history\c11\C11B0_CONTRACT.md:15: [816] - FooterRegion: `Rect2(0, 816, 540, 144)`
+docs\history\c11\C11B0_CONTRACT.md:24: [CoordinateMapper] `CoordinateMapper.map_position()` and `map_scalar_x()` now accept an optional `target_rect`.
+docs\history\c11\C11B0_CONTRACT.md:32: [144] - logical `(0,0)` → `(81,144)`
+docs\history\c11\C11B0_CONTRACT.md:33: [816] - logical `(1080,1920)` → `(459,816)`
+docs\history\c11\C11B0_CONTRACT.md:77: [UnifiedSocialFrame] This checkpoint does not yet migrate `PresentationUI` and `VisualContentPlayer` onto `UnifiedSocialFrame`.
+docs\history\c11\C11B1_CONTRACT.md:4: [UnifiedSocialFrame] Integrate the frozen C11-B.0 UnifiedSocialFrame with the existing C6 presentation components without changing simulation, RNG, FrameSnapshot/SimulationResult semantics or the frozen ContentEnvelope schema.
+docs\history\c11\C11B1_CONTRACT.md:7: [144] UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays.
+docs\history\c11\C11B1_CONTRACT.md:7: [540x960] UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays.
+docs\history\c11\C11B1_CONTRACT.md:7: [816] UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays.
+docs\history\c11\C11B1_CONTRACT.md:7: [UnifiedSocialFrame] UnifiedSocialFrame is 540x960: Header 0..144, Body 144..816, Footer 816..960. BodyContentRoot is offset -144 inside the clipped BodyRegion, preserving existing full-canvas presentation coordinates while making the Body a real visual sandbox. BodyUIOverlay hosts presentation overlays.
+docs\history\c11\C11B1_CONTRACT.md:16: [CoordinateMapper] Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space.
+docs\history\c11\C11B1_CONTRACT.md:16: [PresentationFramer] Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space.
+docs\history\c11\C11B1_CONTRACT.md:16: [UnifiedSocialFrame] Main.tscn mounts UnifiedSocialFrame and places GestorJuego under BodyContentRoot. Existing C11-B.0 CoordinateMapper/PresentationFramer logic therefore keeps its established coordinate space.
+docs\history\c11\C11B1_CONTRACT.md:19: [UnifiedSocialFrame] VisualContentPlayer mounts UnifiedSocialFrame and mounts ContentRendererHost under BodyContentRoot. RenderedFrameStream and existing visual generators/renderers remain untouched.
+docs\history\c11\OVERLAY_FILES_SHA256.json:2: [144] "CHANGELOG_C11-C_2.16.3.md": "90f14439f202d04e885b0d62ae99e96548323b2dff0c90403a72ca29754efd1b",
+docs\history\c11\OVERLAY_FILES_SHA256.json:8: [816] "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1": "a533b4003eda831bcc5a2348349fe8faa6725b029018ff7cd83347a816628240",
+docs\history\c11\README_C11B0.md:7: [UnifiedSocialFrame] - `UnifiedSocialFrame.tscn/.gd` — canonical Header/Body/Footer topology.
+docs\history\c11\README_C11B0.md:8: [CoordinateMapper] - `CoordinateMapper.gd` — optional target-rect projection with aspect preservation.
+docs\history\c11\README_C11B0.md:12: [UnifiedSocialFrame] - `C11B0UnifiedSocialFrameContractTest.gd` — contract test.
+docs\history\c11\README_C11B0.md:23: [UnifiedSocialFrame] godot --headless --path . -s .\tests\C11B0UnifiedSocialFrameContractTest.gd
+docs\history\c11\README_C11B0_1.md:5: [CoordinateMapper] The previous gate derived a Rect2 through `Sprite2D.get_global_transform()` and then converted it through `PresentationUILayer`. That is not the same coordinate space in which `CoordinateMapper` writes gameplay sprite positions.
+docs\history\c11\README_C11B0_1.md:28: [UnifiedSocialFrame] godot --headless --path . -s .\tests\C11B0UnifiedSocialFrameContractTest.gd
+docs\history\c11\README_C11B0_2.md:6: [PresentationFramer] - Added `PresentationFramer.gd`.
+docs\history\c11\README_C11B0_2_V3.md:23: [CoordinateMapper] `FrameSnapshot` → `CoordinateMapper` → `PresentationFramer` → `WinningFrameVisibilityGate`
+docs\history\c11\README_C11B0_2_V3.md:23: [PresentationFramer] `FrameSnapshot` → `CoordinateMapper` → `PresentationFramer` → `WinningFrameVisibilityGate`
+docs\history\c11c\audits\C11-C_2.19.2_DOCUMENTATION_AUDIT.json:980: [144] "bytes": 5144
+docs\history\c11c\audits\C11-C_2.19.2_DOCUMENTATION_AUDIT.json:1788: [144] "bytes": 1444
+docs\history\c11c\manifests\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:5: [720x1280] "historical Challenge physical capture at 720x1280",
+docs\history\c11c\manifests\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:27: [720x1280] "physical_resolution": "720x1280",
+docs\history\c11c\manifests\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:40: [720x1280] "Reuses the certified C11CMovieCapture.ps1 temporary viewport override for physical 720x1280 capture.",
+docs\history\c11c\manifests\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:42: [720x1280] "Fail-closed checks for 720x1280 Movie Maker startup, captured AVI resolution, and exact frame count.",
+docs\history\c11c\manifests\C11C_2.17.6_CHALLENGE_CONTRACT_SAFE_CAPTURE_MANIFEST.json:21: [540x960] "logical 540x960 social geometry"
+docs\history\c11c\manifests\C11C_2.17.6_CHALLENGE_CONTRACT_SAFE_CAPTURE_MANIFEST.json:24: [540x960] "godot_source": "540x960",
+docs\history\c11c\manifests\C11C_2.17.6_CHALLENGE_CONTRACT_SAFE_CAPTURE_MANIFEST.json:25: [720x1280] "review_720_delivery": "720x1280",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:13: [540x960] "logical": "540x960",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14: [720x1280] "review": "720x1280 @ 30 FPS",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:140: [144] "sha256": "4f10144c62c7bc149bd46aa37494b1df40c7185544b8477153150eec71c1aaf9"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:275: [144] "sha256": "43ffa70591440d6fd2a98b3fff218d08ffff2c09cd60a9083c22bc7d6e754b8b"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:325: [816] "sha256": "382f8f47956a2163027d5d4ddd777bd22107b814a332134cde65d301ab778161"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:565: [816] "sha256": "619189fe1b164ca46336a35ddd7940a4c6c873fe9bef97945a799e8162767415"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:835: [816] "sha256": "d57e1816784dba823879248b33fc9ffdf65bad276bbc5e39b3d5cbd3a5a80142"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:855: [144] "sha256": "af5fb80b790675ccb355289c556514421aa6106e8f924a87126e22cd59f31505"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:980: [816] "sha256": "dd45e7af6da2a0e4ead390f0cf9b14e09088ec2816a96c98990ebcd9fd3b5645"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1180: [144] "sha256": "32079cd7e40246e04def0eb39514454659b25646ad8061bddc915fb152334177"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1210: [816] "sha256": "01a8dab1017e45171d7afd9266d766ca1b5816aed15ec20ea99382589f2e8b9c"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1300: [144] "sha256": "f9f1239b4bcca9317180312dfe93a2144444204e394edc0d6782e59ac295c7c2"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1520: [144] "sha256": "f8c4223f985e3dd76326e4a780b02e5ba081449d39d5410292f965d15e308ebd"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1540: [816] "sha256": "2bfb0d291d2f953e9375ec12e2463a940f5b8168df590186a5ad64a1cff9d51b"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1670: [816] "sha256": "5fc5e86c216f6a56ce1f6d9aeb986b2f4b65866dfd0514da816ce63521918e0f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:1930: [144] "sha256": "d6814cc3ca39dc336e3d332f4dbf62e931ae89df56f21180febc246ab6144a7d"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:2065: [816] "sha256": "9208dc943734e4554eff267f593af9f4126a4ec3759b543816120ea6733a787f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:2195: [816] "sha256": "7c8fb4b1c5b13ceb6816bfe973d9156c8b16c61b7cdceac9e71830214e103dbf"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:2325: [816] "sha256": "e2cb8c37024384e9ebd7880b8e57cd13447b0053d816fec1affddaf97a6ac1aa"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:2580: [144] "sha256": "e01532e546805d01446a261cf94968bfe37cfdee53c929157aa4600247ac2bb1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:2790: [816] "sha256": "1ccce05d0487a35c816294816e77bc79edbe849d17649ae4c8436c578876e627"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3050: [816] "sha256": "d3718a5da0a909e0786fe3ec8edf55118721f894816947d70461a6b188d8e192"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3105: [144] "sha256": "4e7800de55ab19bca43f60836144debf3dedf8cdfb399fbd60f7f210e699dcb7"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3188: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/PRODUCT.txt",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3193: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/SacredSymmetry_v1_seed_214481141_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3198: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/SacredSymmetry_v1_seed_214481141_ffprobe.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3203: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/SacredSymmetry_v1_seed_214481141_godot.log",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3208: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/SacredSymmetry_v1_seed_214481141_manifest.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3213: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/SacredSymmetry_v1_seed_214481141_social.txt",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3218: [144] "path": "artifacts/production/audiovisual/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141/production_manifest.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3245: [144] "sha256": "3e3fa77f4528a2bf2f1e8144bd5d099568dd5f8f4061b055688e354803f9b45f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3320: [816] "sha256": "8f43613562d4fae25178166d6c569ed804532b32aeca0beb158a0d15b128b368"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3420: [144] "sha256": "30ec0da695918377e728f0583cc89b1d46d110c144f504a063f69f51d503f4ee"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3560: [144] "sha256": "144a8e8d2f900cef8a38d7ea18790da585464094a96f3482d93a67319cda8eab"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3670: [816] "sha256": "2e816cf2f9d721085678b070821b7ea9a990b2349cab37316e87ea31e537edc9"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3700: [816] "sha256": "ab794816f4a16d3086e2571b6e2ad83caa8bf0e5b4e4ae279e27253e96a4dba1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3719: [144] "bytes": 3144,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3775: [144] "sha256": "e4fa9515b24abeb4541441d2d750b3e8ccd88808e2012bf1c7c205d2a76b3b42"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:3830: [144] "sha256": "8e9d7ffd013fb9a95a6daa1f8b2c988c60d1682daa8ad6cce28d144ea75422c8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4125: [816] "sha256": "0b357e5428b13b378c9f7394bcefae87d52bc26cd107816208139687ad622952"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4155: [144] "sha256": "fac65bb1443e64193890df82a9da01801a00f082f3a4b9eeffda00653728c9d6"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4330: [144] "sha256": "92e762b1b75e150c9f144f7156bb5007c4724221bcb1dd54a9347f5e99956930"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4410: [816] "sha256": "40e99b89a02838169e3a15ee0837f53afd9261e1913d4491b9c6140aef6b542f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4428: [144] "path": "artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_1440057849_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4433: [144] "path": "artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_1440057849_ffprobe.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4438: [144] "path": "artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_1440057849_godot.log",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4443: [144] "path": "artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_1440057849_manifest.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4448: [144] "path": "artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_1440057849_social.txt",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4650: [816] "sha256": "71bafdd99256c4438a25dfe084b3cc8d5a6e6c5f2e682bdebd816232485e212c"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4665: [144] "sha256": "af5fb80b790675ccb355289c556514421aa6106e8f924a87126e22cd59f31505"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:4758: [144] "path": "artifacts/prototypes/c11c_fractal_bloom_v1/FractalBloom_v1_seed_383144015_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5030: [144] "sha256": "32079cd7e40246e04def0eb39514454659b25646ad8061bddc915fb152334177"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5090: [816] "sha256": "01a8dab1017e45171d7afd9266d766ca1b5816aed15ec20ea99382589f2e8b9c"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5210: [144] "sha256": "f9f1239b4bcca9317180312dfe93a2144444204e394edc0d6782e59ac295c7c2"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5375: [816] "sha256": "232767ad614ea54651138dd1ecb84f3df4481650a4c5cbac29a02a1a816bd9bf"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5415: [816] "sha256": "e17fb7d816dab92297b853a3363750463d391e4482e176d28d356d5fad61a0b0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5465: [144] "sha256": "f8c4223f985e3dd76326e4a780b02e5ba081449d39d5410292f965d15e308ebd"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5483: [144] "path": "artifacts/prototypes/c11c_geometric_waves_v1/GeometricWaves_v1_seed_383144015_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5625: [816] "sha256": "5fc5e86c216f6a56ce1f6d9aeb986b2f4b65866dfd0514da816ce63521918e0f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5684: [144] "bytes": 1144,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:5970: [144] "sha256": "d6814cc3ca39dc336e3d332f4dbf62e931ae89df56f21180febc246ab6144a7d"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6158: [144] "path": "artifacts/prototypes/c11c_invisible_forces_v1/InvisibleForces_v1_seed_383144015_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6275: [816] "sha256": "7c8fb4b1c5b13ceb6816bfe973d9156c8b16c61b7cdceac9e71830214e103dbf"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6300: [144] "sha256": "25efc0591a02f134144eede721c2884ea5f30ae5f5c7a6d0a85a391b6b800430"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6330: [144] "sha256": "d0b12091161eebc9ce920e6d22ae592d5de26c7c44c85a3873b97f136c144301"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6435: [816] "sha256": "e2cb8c37024384e9ebd7880b8e57cd13447b0053d816fec1affddaf97a6ac1aa"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6490: [816] "sha256": "0d96e939777253af816a6429da5828a35f72b0e22c0c7ff1eca92e28f50f87d9"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6725: [144] "sha256": "e01532e546805d01446a261cf94968bfe37cfdee53c929157aa4600247ac2bb1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6783: [144] "path": "artifacts/prototypes/c11c_living_particles_v1/LivingParticles_v1_seed_383144015_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:6980: [816] "sha256": "1ccce05d0487a35c816294816e77bc79edbe849d17649ae4c8436c578876e627"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7390: [144] "sha256": "4e7800de55ab19bca43f60836144debf3dedf8cdfb399fbd60f7f210e699dcb7"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7478: [144] "path": "artifacts/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7483: [144] "path": "artifacts/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141_ffprobe.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7488: [144] "path": "artifacts/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141_godot.log",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7493: [144] "path": "artifacts/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141_manifest.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7498: [144] "path": "artifacts/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_214481141_social.txt",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7508: [144] "path": "artifacts/prototypes/c11c_sacred_symmetry_v1/SacredSymmetry_v1_seed_383144015_authoring.json",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7535: [144] "sha256": "3e3fa77f4528a2bf2f1e8144bd5d099568dd5f8f4061b055688e354803f9b45f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7625: [816] "sha256": "8f43613562d4fae25178166d6c569ed804532b32aeca0beb158a0d15b128b368"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7680: [144] "sha256": "7453f1728184ec44cbef3a2299985286f39b045034c422514409a6498b356e0c"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:7805: [816] "sha256": "a023c45acb24ba659cce7df0829a5b9a7752b8a8dcf16e6c61791ebc850816f0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8190: [816] "sha256": "7bb3d94eaaf1c9516574f69ab8654c311c35b66ab987f088163b75214bc579fb"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8224: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8264: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8304: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8344: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8384: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8424: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8450: [144] "sha256": "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8490: [144] "sha256": "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8565: [816] "sha256": "18161acdf2bdac1d2f154c808753bbab1fabcebb9323c0b43daf6aa6e91b57e8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8595: [144] "sha256": "2f079dbc6732c6e6b4ccf7bd2599494d5ef89a8aba24792e461560d2f1fa144f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8630: [144] "sha256": "848cd2b144f9853376dbb537ca6cf2db37b7966dd2e58a06d1453b0963272b33"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8704: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8744: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8784: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8824: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8864: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:8904: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9070: [144] "sha256": "5d345e7ecd738ce0e6f9b6d05a26278ed83a8967f14441ce173d4c3d741e867d"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9345: [144] "sha256": "bf5087e8e5cdc987c63a04aba6ebbe18e5d554f7abbf01b144adc2d5de215df9"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9424: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9464: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9504: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9544: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9584: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9624: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9664: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9704: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9744: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9784: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9824: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9864: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:9940: [816] "sha256": "1397690a28030e7aca87eb0ffb6b8fe5e3e816b569cfbb749acf386b4c613872"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:10045: [816] "sha256": "3f71cea0e74221505d6bc5bd2471ad763686816e504fb0359bb2b05b52f33b06"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:10245: [144] "sha256": "400d82499144a614d72dc36161fb32e9cb1760fc59da2f7c93be3d23786093e5"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:10485: [816] "sha256": "bfbbb2b172e4f9eb2ef44e558169236dc0aa0c853b2d417362d508f67de43e50"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:11010: [144] "sha256": "4a4f9b76714433a492db7833fc80eef758cd8e648c75bd52ebdd2ebdd76f16f5"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:11020: [144] "sha256": "4a4f9b76714433a492db7833fc80eef758cd8e648c75bd52ebdd2ebdd76f16f5"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:11685: [816] "sha256": "ee6a0a80bfbbbcc55b60fba95512c321c8254456f57cfa00e816b7994e9c2bd5"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:11860: [144] "sha256": "448e3067144ebfc9cd1a2b15c166ffe915126bbe6eb63675b72ea4d4bde045ee"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:11870: [144] "sha256": "3596889a144970b14111c2aa1fc072f16c96b90414a2e0790eab338ac26ef434"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12015: [144] "sha256": "b0e1ea3a01bc8d2b2b92144f8154384d323450fc2989d64ae12717602af848b8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12200: [144] "sha256": "23af6b79ee9ae8f295f14c3bc73c468ec1f45c5ee3ad3fcebbbd9dbadee144b7"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12215: [816] "sha256": "311a533740540f377d4dcd0050162c84eddf6544ee6db40529875e89d6fe8816"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12230: [144] "sha256": "e9a62d87dde74284b2cd9c9476166e50a1816a763b3a144377d9d08889444ad1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12230: [816] "sha256": "e9a62d87dde74284b2cd9c9476166e50a1816a763b3a144377d9d08889444ad1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12270: [816] "sha256": "f8862d1562a9cd31a083e8078165a10626366b74739bc63f2e720a196c20a0c7"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12330: [816] "sha256": "b9d34a66d578cd31f7b46bc29761361067b5a5518169469695b74c4b3822e873"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12810: [144] "sha256": "72e7ca760aa58269dfd73c328a8be72ed45e82c0f2b8561d18d50b1442b34ab5"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:12960: [816] "sha256": "b816d0b7f0ece75467f091ba2ae2c6957623c2babd447bc48e0ec3148f6ed768"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:13599: [144] "bytes": 1446,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:13610: [816] "sha256": "15273bc64b0f67c8125f91e94f0f29a5d735368be9a488167c091640e4d2afd1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:13795: [816] "sha256": "1eb9b67267bc5c926341ce46fbfdedc26ae078d6bf32fce578de8169c32a1320"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:13960: [816] "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14135: [816] "sha256": "6556062402816fa04328e2aa58648de403befd7126a575de9fb0804c9afb1d98"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14185: [144] "sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14213: [CoordinateMapper] "path": "core/presentation/CoordinateMapper.gd",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14233: [PresentationFramer] "path": "core/presentation/PresentationFramer.gd",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14250: [144] "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14263: [UnifiedSocialFrame] "path": "core/presentation/UnifiedSocialFrame.gd",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14268: [UnifiedSocialFrame] "path": "core/presentation/UnifiedSocialFrame.tscn",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14335: [144] "sha256": "5e4eaef17a972f302782483a495a6144f5f7fa1aae9d14c7f99123dee0bddb2a"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14490: [144] "sha256": "961e976a359e358104ced1447fdc44f104cb1016eaa17eb5211f734166d14022"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14755: [816] "sha256": "92cb52096374a15b74dc2ce7280234ab810db2b9fe8dccbe34816ad616ed8c37"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14790: [144] "sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:14930: [144] "sha256": "b50bd3d2400fae75b5c3bdf1d7c95f3d1445aaed8f53d5f5afddffa61d3c6fe6"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:15135: [144] "sha256": "36144e3534f237dda554293e967264523f6e31477e1607172d1adea96be39a89"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:15145: [816] "sha256": "0503fb816f60020e42bcc97d5c4a4895fd49006c83e2a639fa013617c48e35b6"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:15240: [144] "sha256": "4781a86e91145c0f71d6a17abcccbf5bf723b46a5eb2d952e144018a707944a0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:15485: [816] "sha256": "f4b06707e03c9d8bada91b2a94fa90c879ec3c4f7b9f45dcf76f2f81666b5c1e"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:15840: [144] "sha256": "3af4eef20daa87f7723ded91c2cedd65dbf5bbbc2e97fe8aec7eb48144e60d72"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:15890: [816] "sha256": "70d5860e3af674f7b442816e97c6222969d3709752873ba35f8e17a96c235b11"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16070: [816] "sha256": "816471f0412997a990e1a2856a04427e4bab1dcccaf9d86b20c632765af714d8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16085: [816] "sha256": "3213ab6a433cbcff16fd4bba36816f1802742f8f27fa271791de9c2715ea6af1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16155: [816] "sha256": "e86e42f788b6faec755312c1b7563cc81687d77994821f782c567ba1ba21ffcd"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16200: [816] "sha256": "46c11e7345a7a139fb25f5836535c9b0c7433d50624ed20f5b98165aea4e1062"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16255: [144] "sha256": "d1bbf4234f11dab9d71268dc96effdf5a1e93437b2ade021449451770fe5ed1b"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16480: [144] "sha256": "90f14439f202d04e885b0d62ae99e96548323b2dff0c90403a72ca29754efd1b"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16539: [144] "bytes": 5144,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16610: [816] "sha256": "9ef3d9e981400c3b1dd04801686d38707e4d7c7df56027e3414a816a3bb47e72"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:16860: [144] "sha256": "e5cc8605e207fde99fe1d35ba7144f06955fdcc3aaba3fbef6137394b58acfda"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17044: [144] "bytes": 1444,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17070: [816] "sha256": "272ab21d8aacbe1783c9c2d58b8911b786d2a6d07c38816f36b1975a4fc6cbd6"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17085: [816] "sha256": "7ac37c2c1b64dba9ed5e0e56809816c14e60faca69b7bc117d4268e762fba7aa"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17165: [816] "sha256": "5ad59da15084134212715b27cefd30766d554c172d1602919bb68169f966d824"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17195: [144] "sha256": "cd33715c45c96f3c64c5b105bf62686b75dbbc1446336c16184be2110a6e2309"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17220: [144] "sha256": "db3a5a251a8511c9932a58b144de39bc578a2ff78479fbd43beea1f2dba560a1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17280: [816] "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17459: [144] "bytes": 1443,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17499: [816] "bytes": 8167,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17500: [816] "sha256": "33a84abe1de70f8169b1549f616d9976a4a802d5702686d03b581f79e63601c0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17628: [UnifiedSocialFrame] "path": "tests/C11B0UnifiedSocialFrameContractTest.gd",
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17635: [816] "sha256": "7dfc47dbe97dd816f0aa7102e301f7f78e2d92f008f2b0cb224c927d49f23ec8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17655: [816] "sha256": "a2e9b4c029560ddff1ae0816a2f5f4cc145963e7e8f461e07e2efbb370ae3c5c"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17720: [144] "sha256": "c270da9fc58057ca15ce5e942917bc0898a8ae09e11a5e9b6999b1448aa7ad39"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17770: [144] "sha256": "2d87092617d606dfd92e6e60a2510ec0bc5af06c6f2b82cec94ea1344d481445"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:17815: [816] "sha256": "38165b3e2ee6441cbde716c9d44eed9bde92c3c793d1795d88d09fec03c5a05b"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18240: [144] "sha256": "31e096bdeb057c987a1b6de418301f8c50361e736666eb0ae389e1449057b5e1"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18250: [144] "sha256": "a584da86373665e0003f144d8ae2f061a9bb91f21af8bef4a61efd1cbe648ea2"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18495: [816] "sha256": "a023c45acb24ba659cce7df0829a5b9a7752b8a8dcf16e6c61791ebc850816f0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18880: [816] "sha256": "7bb3d94eaaf1c9516574f69ab8654c311c35b66ab987f088163b75214bc579fb"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18914: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18954: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:18994: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19034: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19074: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19114: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19140: [144] "sha256": "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19180: [144] "sha256": "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19255: [816] "sha256": "18161acdf2bdac1d2f154c808753bbab1fabcebb9323c0b43daf6aa6e91b57e8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19285: [144] "sha256": "2f079dbc6732c6e6b4ccf7bd2599494d5ef89a8aba24792e461560d2f1fa144f"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19320: [144] "sha256": "848cd2b144f9853376dbb537ca6cf2db37b7966dd2e58a06d1453b0963272b33"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19394: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19434: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19474: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19514: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19554: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19594: [816] "bytes": 33816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:19760: [144] "sha256": "5d345e7ecd738ce0e6f9b6d05a26278ed83a8967f14441ce173d4c3d741e867d"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20035: [144] "sha256": "bf5087e8e5cdc987c63a04aba6ebbe18e5d554f7abbf01b144adc2d5de215df9"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20114: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20154: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20194: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20234: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20274: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20314: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20354: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20394: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20434: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20474: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20514: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20554: [816] "bytes": 57816,
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20670: [816] "sha256": "84334e9ec2e2c4671ab0474ca81689b67e34f48a1a13c9fa88c300b1d42819f8"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20725: [816] "sha256": "306dfbd896032b2bfa2dd99ec76cbec7816d3b3f25b6fa12c4e223c9a4e630f4"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:20900: [144] "sha256": "8a54509cc47a114f7eb7b95c1d0636d18951fda77a590a70d144bb1def1f29ac"
+docs\history\c11c\manifests\C11-C_2.19.1_FREEZE_MANIFEST.json:21149: [144] "bytes": 11442,
+docs\history\c11c\releases\C11-C_2.16_FINAL_FREEZE.md:11: [720x1280] - Visual Loop manufacturing contract at 720x1280 / 30 FPS.
+docs\history\c11c\releases\C11C_2.18.9_PRODUCER_NON_AVI_CAPTURE_HOTFIX.md:8: [540x960] Post-freeze additive production repair. C11-B simulation truth, RNG ownership, SimulationResult, winning_frame, close_calls, WinningFrameDetector, RenderedFrameStream, C7 ownership, C9 semantics and logical 540x960 geometry remain untouched.
+docs\history\c11c\releases\C11-C_2.18.x_FREEZE_MANIFEST.json:18: [540x960] "540x960 logical social geometry"
+docs\history\c11c\releases\C11-C_2.19.x_CONSOLIDATED_CHANGELOG.md:45: [540x960] The root cause of the observed 540x960 fallback during a 720x1280 `Workers=7` Art Direction batch was concurrent mutation of the one project-root `override.cfg`. The correct solution is not serial execution.
+docs\history\c11c\releases\C11-C_2.19.x_CONSOLIDATED_CHANGELOG.md:45: [720x1280] The root cause of the observed 540x960 fallback during a 720x1280 `Workers=7` Art Direction batch was concurrent mutation of the one project-root `override.cfg`. The correct solution is not serial execution.
+docs\history\c11c\releases\C11-C_2.19.x_CONSOLIDATED_CHANGELOG.md:49: [720x1280] - creates one 720x1280 override;
+docs\history\c11c\releases\C11-C_2.19_CONSOLIDATED_HISTORY.md:24: [540x960] C11-B simulation truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio ownership/contracts, C9 semantics and logical 540x960 social geometry are frozen boundaries unless a new explicit engine checkpoint reopens them.
+docs\history\c11c\releases\superseded_2.19\2.19.4_current_docs\C11-C_2.19.4_REPAIR_MANIFEST.json:15: [540x960] "logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\2.19.4_current_docs\C11-C_2.19.4_REPAIR_MANIFEST.json:16: [720x1280] "review": "720x1280 @ 30 FPS",
+docs\history\c11c\releases\superseded_2.19\challenge_legacy_current_docs\C11C_2.17.6_CHALLENGE_CAPTURE_CONTRACT_AUDIT.md:60: [CoordinateMapper] C11-B defines the logical Unified Social Frame as 540×960 and maps the 1080×1920 simulation into the 540×960 BodyRegion through `CoordinateMapper`.
+docs\history\c11c\releases\superseded_2.19\challenge_legacy_current_docs\C11C_2.17.6_CHALLENGE_CAPTURE_CONTRACT_AUDIT.md:62: [UnifiedSocialFrame] The frozen `Main.tscn` contains a fixed 540×960 `UnifiedSocialFrame`. The historical Challenge path does not establish the same explicit 4/3 whole-composition transform that C11-C Visual Loops/Drills use for their 720×1280 physical output.
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19.12_PREFREEZE_REPAIR_V24.md:26: [540x960] No C11-B simulation truth, RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio, C9 semantics, or logical 540x960 geometry are changed.
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19.12_PREFREEZE_REPAIR_V25.md:15: [540x960] No `core/` files, C11-B simulation truth, RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio contracts, C9 semantics, or logical 540x960 geometry were changed.
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19_C11A1_CANONICAL_PRODUCER_CLOSURE_V16.md:13: [540x960] The producer captures the Challenge natively at `540x960`, creates the requested `MASTER_1080` delivery at `1080x1920`, writes `production_manifest.json` and preserves `godot.log`/source AVI evidence. The A1 runner then validates those real artifacts and creates a compatibility manifest matching the historical A1 consumer contract.
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19_C11A1_MANIFEST_PATH_CLOSURE.md:35: [540x960] This repair affects historical QA orchestration only. It does not modify C11-B simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio, C9 semantics or logical 540x960 social geometry.
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19_CURRENT_STATE.md:9: [540x960] The frozen backend boundary remains C11-B simulation truth, RNG ownership, SimulationResult, winning-frame/close-call semantics, RenderedFrameStream, C7/C9 contracts and logical 540x960 geometry.
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19_REPAIR_MANIFEST.json:24: [540x960] "logical_social": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19_REPAIR_MANIFEST.json:25: [720x1280] "review": "720x1280@30",
+docs\history\c11c\releases\superseded_2.19\current_repair_history\C11-C_2.19_REPAIR_MANIFEST.json:45: [540x960] "logical 540x960 social geometry"
+docs\history\c11c\releases\superseded_2.19\current_repair_history\FULL_ACCEPTANCE_REFERENCE.md:97: [UnifiedSocialFrame] 043 C11B0UnifiedSocialFrameContractTest.gd
+docs\history\c11c\releases\superseded_2.19\current_repair_history\FULL_ACCEPTANCE_REFERENCE.md:269: [UnifiedSocialFrame] C11B0UnifiedSocialFrameContractTest
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.3_REPAIR_CANDIDATE.md:19: [540x960] No C11-B simulation truth, mechanics, structural RNG, `SimulationResult`, `winning_frame`, `close_calls`, C7 ownership, C9 authoring semantics or 540x960 social geometry is changed.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.4_REPAIR_MANIFEST.json:15: [540x960] "logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.4_REPAIR_MANIFEST.json:16: [720x1280] "review": "720x1280 @ 30 FPS",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.5_REPAIR_MANIFEST.json:29: [540x960] "social_logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.5_REPAIR_MANIFEST.json:30: [720x1280] "review": "720x1280@30",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.6_REPAIR_MANIFEST.json:6: [UnifiedSocialFrame] "root_cause": "Fresh worker project copies excluded .godot, so Godot lacked global_script_class_cache.cfg and could not resolve class_name PresentationProfile used by UnifiedSocialFrame.gd; Movie Maker then emitted gray/partial frames.",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.6_REPAIR_MANIFEST.json:30: [540x960] "social_logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.6_REPAIR_MANIFEST.json:31: [720x1280] "review": "720x1280@30",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs\current\c11c\C11-C_2.19.6_REPAIR_MANIFEST.json:50: [540x960] "logical 540x960 social geometry"
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.16_FINAL_FREEZE.md:11: [720x1280] - Visual Loop manufacturing contract at 720x1280 / 30 FPS.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.17.3_HISTORICAL_CHALLENGE_720_MANIFEST.json:4: [720x1280] "purpose": "Render historical CHALLENGE_001..009 corpus at 720x1280 using per-process Godot --resolution, without override.cfg dependency.",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:5: [720x1280] "historical Challenge physical capture at 720x1280",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:27: [720x1280] "physical_resolution": "720x1280",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:40: [720x1280] "Reuses the certified C11CMovieCapture.ps1 temporary viewport override for physical 720x1280 capture.",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.17.4_HISTORICAL_CHALLENGE_720_MANIFEST.json:42: [720x1280] "Fail-closed checks for 720x1280 Movie Maker startup, captured AVI resolution, and exact frame count.",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:5: [540x960] Post-freeze additive repair. No C11-B simulation truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 ownership, C9 semantics, or logical 540x960 geometry are changed.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:21: [540x960] Historical Challenge qualification requires a native 540x960 source. The C11-A.1 runner now quarantines any pre-existing root `override.cfg` before invoking `build_factory.py`, removes any override leaked by the factory, and restores the original file after the isolated run. This prevents C11-C 720x1280 Movie Maker state from contaminating historical Challenge source capture.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:21: [720x1280] Historical Challenge qualification requires a native 540x960 source. The C11-A.1 runner now quarantines any pre-existing root `override.cfg` before invoking `build_factory.py`, removes any override leaked by the factory, and restores the original file after the isolated run. This prevents C11-C 720x1280 Movie Maker state from contaminating historical Challenge source capture.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:33: [540x960] - Historical C11-A.1: native source remains 540x960 regardless of a pre-existing C11-C root `override.cfg`.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:5: [540x960] Post-freeze additive repair. No C11-B simulation truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 ownership, C9 semantics, or logical 540x960 geometry are changed.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:21: [540x960] Historical Challenge qualification requires a native 540x960 source. The C11-A.1 runner now quarantines any pre-existing root `override.cfg` before invoking `build_factory.py`, removes any override leaked by the factory, and restores the original file after the isolated run. This prevents C11-C 720x1280 Movie Maker state from contaminating historical Challenge source capture.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:21: [720x1280] Historical Challenge qualification requires a native 540x960 source. The C11-A.1 runner now quarantines any pre-existing root `override.cfg` before invoking `build_factory.py`, removes any override leaked by the factory, and restores the original file after the isolated run. This prevents C11-C 720x1280 Movie Maker state from contaminating historical Challenge source capture.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.18.8_PRODUCER_PNG_CAPTURE_AND_C11A1_ISOLATION.md:33: [540x960] - Historical C11-A.1: native source remains 540x960 regardless of a pre-existing C11-C root `override.cfg`.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11C_2.18.9_PRODUCER_NON_AVI_CAPTURE_HOTFIX.md:5: [540x960] Post-freeze additive production repair. C11-B simulation truth, RNG ownership, SimulationResult, winning_frame, close_calls, WinningFrameDetector, RenderedFrameStream, C7 ownership, C9 semantics and logical 540x960 geometry remain untouched.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.18.9_PRODUCER_NON_AVI_CAPTURE_HOTFIX.md:5: [540x960] Post-freeze additive production repair. C11-B simulation truth, RNG ownership, SimulationResult, winning_frame, close_calls, WinningFrameDetector, RenderedFrameStream, C7 ownership, C9 semantics and logical 540x960 geometry remain untouched.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.18.x_FREEZE_MANIFEST.json:18: [540x960] "540x960 logical social geometry"
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_ACCEPTANCE_GATE.md:47: [540x960] A 540x960 render appearing in a 720x1280 parallel review is a blocker. It indicates that the shared Movie Maker override was not active for the worker process. Do not solve this by reducing `Workers` to `1`; inspect the shared-override contract instead.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_ACCEPTANCE_GATE.md:47: [720x1280] A 540x960 render appearing in a 720x1280 parallel review is a blocker. It indicates that the shared Movie Maker override was not active for the worker process. Do not solve this by reducing `Workers` to `1`; inspect the shared-override contract instead.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_ACCEPTANCE_GATE_20260930_074032.md:47: [540x960] A 540x960 render appearing in a 720x1280 parallel review is a blocker. It indicates that the shared Movie Maker override was not active for the worker process. Do not solve this by reducing `Workers` to `1`; inspect the shared-override contract instead.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_ACCEPTANCE_GATE_20260930_074032.md:47: [720x1280] A 540x960 render appearing in a 720x1280 parallel review is a blocker. It indicates that the shared Movie Maker override was not active for the worker process. Do not solve this by reducing `Workers` to `1`; inspect the shared-override contract instead.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_REPAIR_MANIFEST.json:27: [540x960] "social_logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_REPAIR_MANIFEST.json:28: [720x1280] "review": "720x1280@30",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_REPAIR_MANIFEST_20260930_074033.json:27: [540x960] "social_logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19.5_REPAIR_MANIFEST_20260930_074033.json:28: [720x1280] "review": "720x1280@30",
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19_DIVERGENCE_AUDIT_2.16.9_VS_2.19.14.md:22: [540x960] - Logical 540x960 social geometry remains frozen; 720x1280 is a delivery boundary.
+docs\history\c11c\releases\superseded_2.19\current_snapshots\docs_current_c11c\C11-C_2.19_DIVERGENCE_AUDIT_2.16.9_VS_2.19.14.md:22: [720x1280] - Logical 540x960 social geometry remains frozen; 720x1280 is a delivery boundary.
+docs\history\c11c\releases\superseded_2.19\current_snapshots_2.19.5\C11-C_2.19.5_REPAIR_MANIFEST.json:29: [540x960] "social_logical": "540x960",
+docs\history\c11c\releases\superseded_2.19\current_snapshots_2.19.5\C11-C_2.19.5_REPAIR_MANIFEST.json:30: [720x1280] "review": "720x1280@30",
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\C11C_2.19.12_V33_PREFREEZE_CONTEXT_PACK.md:25: [540x960] No pre-freeze work may change simulation truth, mechanics, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540x960 geometry or proven C11-C rendering/presentation behavior.
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:15: [540x960] C11 introduced and validated a unified social presentation structure without changing deterministic simulation truth. The shared output frame is 540x960:
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:17: [144] - Header: 0..144
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:18: [144] - Body: 144..816
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:18: [816] - Body: 144..816
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:19: [816] - Footer: 816..960
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:21: [CoordinateMapper] `UnifiedSocialFrame` provides the structure. `CoordinateMapper` projects logical simulation geometry into Body space. `PresentationFramer` makes framing policy explicit.
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:21: [PresentationFramer] `UnifiedSocialFrame` provides the structure. `CoordinateMapper` projects logical simulation geometry into Body space. `PresentationFramer` makes framing policy explicit.
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\MASTER_HANDOVER_C11_B_FREEZE.md:21: [UnifiedSocialFrame] `UnifiedSocialFrame` provides the structure. `CoordinateMapper` projects logical simulation geometry into Body space. `PresentationFramer` makes framing policy explicit.
+docs\history\c11c\releases\superseded_2.19\master_prompts_history\NEXT_PROMPT_C11C_2.19_CONSOLIDATED.txt:66: [540x960] - Do NOT reopen C11-B truth/RNG, C7 audio contracts, C9 semantics or logical 540x960 geometry.
+docs\history\c11c\releases\superseded_2.19\master_prompts_legacy\MASTER_HANDOVER_C11-C_ART_DIRECTION_2.0.md:16: [720x1280] - 720x1280 / 9:16
+docs\history\c11c\releases\superseded_2.19\master_prompts_legacy\MASTER_HANDOVER_C11-C_ART_DIRECTION_2.0.md:25: [540x960] - 540x960 was unsuitable for Facebook/mobile presentation; C11-C capture is 720x1280.
+docs\history\c11c\releases\superseded_2.19\master_prompts_legacy\MASTER_HANDOVER_C11-C_ART_DIRECTION_2.0.md:25: [720x1280] - 540x960 was unsuitable for Facebook/mobile presentation; C11-C capture is 720x1280.
+docs\history\c11c\releases\superseded_2.19\master_prompts_legacy\MASTER_HANDOVER_C11-C_ART_DIRECTION_2.0.md:38: [720x1280] - Godot receives `--resolution 720x1280` as a single CLI argument.
+docs\history\c11c\releases\superseded_2.19\master_prompts_legacy\START_PROMPT_C11-C_ART_DIRECTION_2.0.md:11: [720x1280] Current delivery baseline: 720x1280, 9:16, 30 FPS, 540 frames, 18.00 s. Default audio ON; `-NoSound` / `-Silent` disables audio. One final MP4 per run.
+docs\history\c11c\releases\superseded_2.19\master_prompts_legacy\START_PROMPT_C11-C_ART_DIRECTION_2.0.md:23: [720x1280] Godot capture resolution must remain exactly `--resolution 720x1280` as one argument. Do not modify `project.godot`.
+docs\history\c11c\releases\superseded_2.19\producer_legacy_prompts\C11C_PRODUCER_0.8.0_CURRENT_STATE.md:39: [720x1280] The GUI calls `tools/prototypes/c11c_bulk/run_c11c_production.ps1`. The proven C11-C 720x1280 review render remains the source; non-review delivery profiles are post-capture FFmpeg transformations.
+docs\history\c11c\releases\superseded_2.19\producer_legacy_prompts\C11C_PRODUCER_0.8.0_CURRENT_STATE.md:43: [720x1280] The GUI calls `c11c-producer/run_visual_drill_production.ps1`. The proven C11-C 720x1280 review capture remains the source; higher/lower delivery profiles are post-capture transformations.
+docs\history\c11c\releases\superseded_2.19\root_changelogs\CHANGELOG_C11-C_2.19.12.md:15: [540x960] - C11-B/C7/C9 and logical 540x960 frozen boundaries.
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.10_REPAIR_CANDIDATE_MANIFEST.json:19: [540x960] "logical 540x960 social geometry"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.11_REPAIR_CANDIDATE_MANIFEST.json:21: [540x960] "logical 540x960 social geometry"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.11_STATIC_VALIDATION_REPORT.md:9: [720x1280] - New one-video smoke references the canonical Visual Loop, Visual Drill and Longform launchers and checks 720x1280 output.
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_CLOSURE_BUGFIX_OVERLAY_V27_README.md:5: [540x960] This overlay is limited to final tooling/contract closure. It does not modify `core/`, simulation truth, RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7, C9 or logical 540x960 geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_CONTEXT_INDEX.md:27: [540x960] - Do not reopen C11-B simulation truth, RNG, C7, C9 or logical 540x960 geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:95: [144] "sha256": "ccf24144e17008ca6ccfff9ac27a9faf5f5f197abd5576cc1dae9f8a11242961"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:174: [144] "size": 1447,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:310: [144] "sha256": "4f10144c62c7bc149bd46aa37494b1df40c7185544b8477153150eec71c1aaf9"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:940: [816] "sha256": "1eb9b67267bc5c926341ce46fbfdedc26ae078d6bf32fce578de8169c32a1320"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1175: [144] "sha256": "d416067452ded1669a50eaf027a354a22a3117950144a6d53f4d6d51d7add20b"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1215: [144] "sha256": "1efd47301535561459537b7f1403e6847068466677014471fb7661cb98661e6e"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1270: [816] "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1375: [144] "sha256": "4056ae41da14427e216f5591659c1a37f5aec262a4ecb7904dc31d1314bdadb3"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1610: [816] "sha256": "6556062402816fa04328e2aa58648de403befd7126a575de9fb0804c9afb1d98"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1710: [144] "sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1768: [CoordinateMapper] "path": "core/presentation/CoordinateMapper.gd",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1773: [CoordinateMapper] "path": "core/presentation/CoordinateMapper.gd.uid",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1808: [PresentationFramer] "path": "core/presentation/PresentationFramer.gd",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1813: [PresentationFramer] "path": "core/presentation/PresentationFramer.gd.uid",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1840: [144] "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1845: [144] "sha256": "db56534ba2e15814461b0319b16e57e0e48249195dfae8d6218a07ae36951364"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1868: [UnifiedSocialFrame] "path": "core/presentation/UnifiedSocialFrame.gd",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1873: [UnifiedSocialFrame] "path": "core/presentation/UnifiedSocialFrame.gd.uid",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1878: [UnifiedSocialFrame] "path": "core/presentation/UnifiedSocialFrame.tscn",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:1890: [816] "sha256": "1fc29816317ecfe1ce16549cbb2ae1b3f57c2b480a1c667546c15d94f4129fe7"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2005: [144] "sha256": "5e4eaef17a972f302782483a495a6144f5f7fa1aae9d14c7f99123dee0bddb2a"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2010: [816] "sha256": "b4dd781e2b07d6ebf087aea63773bc24c8168a7a76fbde0b5f5bc7dd8b361255"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2235: [816] "sha256": "126bff8025d950e486d5283080f6867426a583959903e6f3e8165062faf2a742"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2265: [144] "sha256": "11ffc51e68a8b8ee002f835ab5dab9366c45c144156c7a62ecf6a60daa343966"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2310: [144] "sha256": "961e976a359e358104ced1447fdc44f104cb1016eaa17eb5211f734166d14022"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2710: [816] "sha256": "92cb52096374a15b74dc2ce7280234ab810db2b9fe8dccbe34816ad616ed8c37"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2745: [144] "sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:2880: [144] "sha256": "b50bd3d2400fae75b5c3bdf1d7c95f3d1445aaed8f53d5f5afddffa61d3c6fe6"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3085: [144] "sha256": "36144e3534f237dda554293e967264523f6e31477e1607172d1adea96be39a89"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3095: [816] "sha256": "0503fb816f60020e42bcc97d5c4a4895fd49006c83e2a639fa013617c48e35b6"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3195: [144] "sha256": "4781a86e91145c0f71d6a17abcccbf5bf723b46a5eb2d952e144018a707944a0"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3395: [144] "sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3485: [816] "sha256": "f4b06707e03c9d8bada91b2a94fa90c879ec3c4f7b9f45dcf76f2f81666b5c1e"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3905: [144] "sha256": "3af4eef20daa87f7723ded91c2cedd65dbf5bbbc2e97fe8aec7eb48144e60d72"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:3960: [816] "sha256": "70d5860e3af674f7b442816e97c6222969d3709752873ba35f8e17a96c235b11"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4030: [144] "sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4140: [816] "sha256": "0f704865ad9763fa6e88848f9455e30e491816b7d4c13766a44fa9fbe19d6978"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4220: [816] "sha256": "f0c9c214a4fb02e777150266e37740981685417e740bb8d19983548253d15417"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4430: [144] "sha256": "90f14439f202d04e885b0d62ae99e96548323b2dff0c90403a72ca29754efd1b"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4620: [816] "sha256": "3213ab6a433cbcff16fd4bba36816f1802742f8f27fa271791de9c2715ea6af1"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4680: [144] "sha256": "f33e420587d1028552cf1a73aee91a0511d23d3f44e37ab6144899b90e860a40"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4710: [144] "sha256": "d1bbf4234f11dab9d71268dc96effdf5a1e93437b2ade021449451770fe5ed1b"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4810: [816] "sha256": "e86e42f788b6faec755312c1b7563cc81687d77994821f782c567ba1ba21ffcd"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:4855: [816] "sha256": "46c11e7345a7a139fb25f5836535c9b0c7433d50624ed20f5b98165aea4e1062"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:5110: [144] "sha256": "90f14439f202d04e885b0d62ae99e96548323b2dff0c90403a72ca29754efd1b"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:5405: [816] "sha256": "15273bc64b0f67c8125f91e94f0f29a5d735368be9a488167c091640e4d2afd1"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:5435: [816] "sha256": "2bcc902563211800b5eca4b3c9d314816f6024829219c2f7bb16829231ad7e0b"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:5679: [144] "size": 5144,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:5750: [816] "sha256": "9ef3d9e981400c3b1dd04801686d38707e4d7c7df56027e3414a816a3bb47e72"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6000: [144] "sha256": "e5cc8605e207fde99fe1d35ba7144f06955fdcc3aaba3fbef6137394b58acfda"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6184: [144] "size": 1444,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6210: [816] "sha256": "272ab21d8aacbe1783c9c2d58b8911b786d2a6d07c38816f36b1975a4fc6cbd6"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6225: [816] "sha256": "7ac37c2c1b64dba9ed5e0e56809816c14e60faca69b7bc117d4268e762fba7aa"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6305: [816] "sha256": "5ad59da15084134212715b27cefd30766d554c172d1602919bb68169f966d824"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6460: [816] "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6649: [144] "size": 1443,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6689: [816] "size": 8167,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6690: [816] "sha256": "33a84abe1de70f8169b1549f616d9976a4a802d5702686d03b581f79e63601c0"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6830: [816] "sha256": "b57d4ec08160ed3e3631f853e16117758382a4b9f64c762af347447d816d45b8"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6858: [UnifiedSocialFrame] "path": "tests/C11B0UnifiedSocialFrameContractTest.gd",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6863: [UnifiedSocialFrame] "path": "tests/C11B0UnifiedSocialFrameContractTest.gd.uid",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6870: [816] "sha256": "7dfc47dbe97dd816f0aa7102e301f7f78e2d92f008f2b0cb224c927d49f23ec8"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6910: [816] "sha256": "a2e9b4c029560ddff1ae0816a2f5f4cc145963e7e8f461e07e2efbb370ae3c5c"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:6965: [816] "sha256": "6125fcfd5e905711ed28e0394f0f52dea87657b47408487cfa8164d98e531fec"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:7050: [144] "sha256": "c270da9fc58057ca15ce5e942917bc0898a8ae09e11a5e9b6999b1448aa7ad39"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:7250: [816] "sha256": "38165b3e2ee6441cbde716c9d44eed9bde92c3c793d1795d88d09fec03c5a05b"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:7575: [144] "sha256": "455293f60ad2a5d838bf00f246accc47752f282b15918b5144221dc829d08ff2"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:7755: [144] "sha256": "bf342744441d60e755d26dd7a24b144761c5cf3b15343a2247dab586e988b8d7"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:7785: [144] "sha256": "741144e809c248d9db4f75a9d65e75c103d9718ec41d4bdc0deaffee07309340"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8100: [144] "sha256": "31e096bdeb057c987a1b6de418301f8c50361e736666eb0ae389e1449057b5e1"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8120: [144] "sha256": "a584da86373665e0003f144d8ae2f061a9bb91f21af8bef4a61efd1cbe648ea2"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8285: [144] "sha256": "309cdefc049daf7b949ceaef71ce259d38f2ff6bb8403d894a69452ec6014412"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8755: [816] "sha256": "7bb3d94eaaf1c9516574f69ab8654c311c35b66ab987f088163b75214bc579fb"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8784: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8819: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8854: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8889: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8924: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8959: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:8980: [144] "sha256": "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9015: [144] "sha256": "4f46f48144304c985814f46d9df3cd23fe6ec738d3dbb271a91ab7ee29a124d0"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9110: [144] "sha256": "2f079dbc6732c6e6b4ccf7bd2599494d5ef89a8aba24792e461560d2f1fa144f"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9140: [144] "sha256": "848cd2b144f9853376dbb537ca6cf2db37b7966dd2e58a06d1453b0963272b33"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9204: [816] "size": 33816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9239: [816] "size": 33816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9274: [816] "size": 33816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9309: [816] "size": 33816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9344: [816] "size": 33816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9379: [816] "size": 33816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9525: [144] "sha256": "5d345e7ecd738ce0e6f9b6d05a26278ed83a8967f14441ce173d4c3d741e867d"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9765: [144] "sha256": "bf5087e8e5cdc987c63a04aba6ebbe18e5d554f7abbf01b144adc2d5de215df9"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9834: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9869: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9904: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9939: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:9974: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10009: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10044: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10079: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10114: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10149: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10184: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10219: [816] "size": 57816,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10355: [816] "sha256": "84334e9ec2e2c4671ab0474ca81689b67e34f48a1a13c9fa88c300b1d42819f8"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10470: [144] "sha256": "a1c985a6353dd33a1ef3907e4ee31f544fd1e40df58144ea635db6ed10712499"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10620: [144] "sha256": "8a54509cc47a114f7eb7b95c1d0636d18951fda77a590a70d144bb1def1f29ac"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:10959: [144] "size": 11442,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json:11164: [144] "size": 1441,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT.md:32: [540x960] No reopening of C11-B simulation truth, RNG ownership/algorithm, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio contracts, C9 semantics or logical 540x960 social geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_REPAIR_CANDIDATE_MANIFEST.json:28: [540x960] "logical 540x960 social geometry"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.12_V21_REPAIR_MANIFEST.json:14: [144] "bytes": 1448,
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.2_FREEZE_RECEIPT.md:11: [816] - Frozen source tree hash: `7de61ae88d27085f6960f2161c001347750f4b30a9b09edc2f8169d639ec90ab`
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.4_REPAIR_CANDIDATE_MANIFEST.json:84: [144] "sha256": "0209f01961441820822bcade505abcc1a29294d61dcf9367c15152494f831061",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.4_REPAIR_CANDIDATE_MANIFEST.json:99: [144] "sha256": "cb654cba219982bc941cb14268e83bc4e781c367eae67f0900e91441fee2070d",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.4_REPAIR_CANDIDATE_MANIFEST.json:204: [144] "sha256": "fa35e331446cfba73d1acda0c5b183622874a58699f448f7ea2c0f9f433d6061",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.4_REPAIR_CANDIDATE_MANIFEST.json:349: [816] "sha256": "b57d4ec08160ed3e3631f853e16117758382a4b9f64c762af347447d816d45b8",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.4_REPAIR_CANDIDATE_MANIFEST.json:389: [144] "sha256": "a1c985a6353dd33a1ef3907e4ee31f544fd1e40df58144ea635db6ed10712499",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.4_STATIC_VALIDATION_REPORT.md:22: [720x1280] The real Art Direction loop command must run with `-Workers 7` and report `MAX_OBSERVED_CONCURRENCY > 1`, while every concurrent Movie Maker log remains `720x1280 @ 30 FPS`. Only the subsequent complete acceptance gate can establish a new freeze candidate.
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.6_REPAIR_CANDIDATE_MANIFEST.json:7: [UnifiedSocialFrame] "latest_defect": "fresh isolated worker project lacked .godot/global_script_class_cache.cfg; PresentationProfile parse failed in UnifiedSocialFrame.gd and Movie Maker emitted gray/empty frames",
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.6_REPAIR_CANDIDATE_MANIFEST.json:33: [540x960] "logical 540x960 geometry"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.8_REPAIR_CANDIDATE_MANIFEST.json:45: [816] "sha256": "6ed7bab35b913635f9818a676cbb3fe816f5ebbc332784932ea4eaec04281329"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.8_REPAIR_CANDIDATE_MANIFEST.json:50: [816] "sha256": "6ed7bab35b913635f9818a676cbb3fe816f5ebbc332784932ea4eaec04281329"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.8_REPAIR_CANDIDATE_MANIFEST.json:155: [144] "sha256": "1c0e7cb3f9d56482e7a6dd0233397ed1444310b8396930f04afe402861c66c78"
+docs\history\c11c\releases\superseded_2.19\root_context\C11C_2.19.9_REPAIR_CANDIDATE_MANIFEST.json:123: [816] "bytes": 816,
+docs\history\c11c\releases\superseded_2.19\root_context\CHANGELOG_C11-C_2.19.5_20260929_083227.md:11: [540x960] The previous 720x1280 -> 540x960 regression was traced to concurrent workers mutating the same project-root `override.cfg`.
+docs\history\c11c\releases\superseded_2.19\root_context\CHANGELOG_C11-C_2.19.5_20260929_083227.md:11: [720x1280] The previous 720x1280 -> 540x960 regression was traced to concurrent workers mutating the same project-root `override.cfg`.
+docs\history\c11c\releases\superseded_2.19\root_context\CHANGELOG_C11-C_2.19.5_20260929_083227.md:15: [720x1280] - parent batch creates the single 720x1280 Movie Maker override;
+docs\history\c11c\releases\superseded_2.19\root_context\CHANGELOG_C11-C_2.19.5_20260929_083227.md:45: [540x960] No C11-B simulation truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio contract, C9 semantics or logical 540x960 social geometry is changed.
+docs\history\c11c\releases\superseded_2.19\root_context\CHANGELOG_C11-C_2.19.8.md:19: [540x960] No changes to simulation truth, RNG ownership, C11-B mechanics, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio ownership/contracts, C9 semantics, logical 540x960 geometry or the proven per-worker capture architecture.
+docs\history\c11c\releases\superseded_2.19\root_context\CHANGELOG_C11-C_2.19.9.md:30: [540x960] No changes to C11-B simulation truth, RNG ownership/algorithm/streams, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio ownership/contracts, C9 semantics or logical 540x960 social geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\MASTER_HANDOVER_C11D_V1.0_STATELESS_2.19.5.md:24: [720x1280] - parent creates one 720x1280 override;
+docs\history\c11c\releases\superseded_2.19\root_context\MASTER_HANDOVER_C11D_V1.0_STATELESS_2.19.5.md:54: [540x960] - logical 540x960 social geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\NEXT_PROMPT_C11C_2.19.5_20260929_083228.txt:14: [540x960] Do not reopen C11-B simulation/RNG/truth contracts or logical 540x960 geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\NEXT-PROMPT-C11C-2.19.5.txt:13: [720x1280] Parallel Art Direction: MUST remain Workers=7-capable; shared 720x1280 override owned by parent batch.
+docs\history\c11c\releases\superseded_2.19\root_context\README_C11C_2.19.5_REPAIR_CANDIDATE.md:11: [720x1280] - The parent batch creates the single 720x1280 Movie Maker override.
+docs\history\c11c\releases\superseded_2.19\root_context\README_C11C_2.19.5_REPAIR_CANDIDATE.md:34: [540x960] No C11-B simulation truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `RenderedFrameStream`, C7 audio contract, C9 authoring semantics or logical 540x960 social geometry is modified by this repair.
+docs\history\c11c\releases\superseded_2.19\root_context\README_C11C_2.19.5_REPAIR_CANDIDATE.md:40: [540x960] Do not solve a 720x1280 regression by reducing workers to one. A valid acceptance result must demonstrate more than one concurrent worker and no 540x960 fallback.
+docs\history\c11c\releases\superseded_2.19\root_context\README_C11C_2.19.5_REPAIR_CANDIDATE.md:40: [720x1280] Do not solve a 720x1280 regression by reducing workers to one. A valid acceptance result must demonstrate more than one concurrent worker and no 540x960 fallback.
+docs\history\c11c\releases\superseded_2.19\root_context\README_C11C_2.19.8_CONSOLIDATED_CANDIDATE.md:5: [540x960] It does **not** reopen or alter C11-C visual mechanics, worker isolation implementation, C11-B simulation truth, RNG ownership, C7 audio contracts, C9 semantics or logical 540x960 geometry.
+docs\history\c11c\releases\superseded_2.19\root_context\START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md:21: [540x960] - The historical 540x960/720x1280 regression came from multiple workers mutating the same project-root `override.cfg`.
+docs\history\c11c\releases\superseded_2.19\root_context\START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md:21: [720x1280] - The historical 540x960/720x1280 regression came from multiple workers mutating the same project-root `override.cfg`.
+docs\history\c11c\releases\superseded_2.19\root_context\START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md:22: [720x1280] - The repaired architecture has one batch-owned 720x1280 override plus `C11C_SHARED_MOVIE_OVERRIDE=1` inherited by all workers.
+docs\history\c11c\releases\superseded_2.19\root_context\START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md:43: [540x960] Do not alter C11-B simulation truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `RenderedFrameStream`, C7 audio contracts, C9 semantics or 540x960 logical social geometry as part of a C11-C tooling repair.
+docs\history\c11c\releases\superseded_2.19\root_context\START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md:47: [540x960] No freeze declaration while any test hangs, any launcher references `c11c-studio`, workers are silently serialized, or any render falls back to 540x960 during the 720x1280 review corpus.
+docs\history\c11c\releases\superseded_2.19\root_context\START_PROMPT_C11D_V1.0_STATELESS_2.19.5.md:47: [720x1280] No freeze declaration while any test hangs, any launcher references `c11c-studio`, workers are silently serialized, or any render falls back to 540x960 during the 720x1280 review corpus.
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md:3062: [144] Header = y 0..144
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md:3063: [144] Body   = y 144..816
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md:3063: [816] Body   = y 144..816
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md:3064: [816] Footer = y 816..960
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION_20260930_074033.md:3062: [144] Header = y 0..144
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION_20260930_074033.md:3063: [144] Body   = y 144..816
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION_20260930_074033.md:3063: [816] Body   = y 144..816
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION_20260930_074033.md:3064: [816] Footer = y 816..960
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md:746: [540x960] `Movie Maker resolution mismatch: expected 720x1280, received 540x960.`
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md:746: [720x1280] `Movie Maker resolution mismatch: expected 720x1280, received 540x960.`
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md:785: [144] - Header 0..144
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md:786: [144] - Body 144..816
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md:786: [816] - Body 144..816
+docs\history\c11c\releases\superseded_2.19\studio_legacy_current_docs\C11C_STUDIO_SUPER_PROMPT_PRINCIPAL_DEVELOPER_v2.1.4.md:787: [816] - Footer 816..960
+docs\history\c11c\releases\superseded_2.19\tooling\finalize_c11c_2_19_5_freeze.ps1:68: [540x960] geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'}
+docs\history\c11c\releases\superseded_2.19\tooling\finalize_c11c_2_19_5_freeze.ps1:68: [720x1280] geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'}
+tests\C11B02PresentationFramingContractTest.gd:3: [PresentationFramer] const PresentationFramer = preload("res://core/presentation/PresentationFramer.gd")
+tests\C11B02PresentationFramingContractTest.gd:24: [PresentationFramer] PresentationFramer.resolve_policy(config) == PresentationFramer.POLICY_PRIMARY_FOCUS,
+tests\C11B02PresentationFramingContractTest.gd:28: [144] var body := Rect2(0.0, 144.0, 540.0, 672.0)
+tests\C11B02PresentationFramingContractTest.gd:42: [PresentationFramer] var offset: Vector2 = PresentationFramer.calculate_presentation_offset(
+tests\C11B02PresentationFramingContractTest.gd:45: [PresentationFramer] PresentationFramer.POLICY_PRIMARY_FOCUS,
+tests\C11B0UnifiedSocialFrameContractTest.gd:4: [UnifiedSocialFrame] print("[TEST] Running C11B0UnifiedSocialFrameContractTest...")
+tests\C11B0UnifiedSocialFrameContractTest.gd:29: [144] if header != Rect2(0.0, 0.0, 540.0, 144.0):
+tests\C11B0UnifiedSocialFrameContractTest.gd:31: [144] if body != Rect2(0.0, 144.0, 540.0, 672.0):
+tests\C11B0UnifiedSocialFrameContractTest.gd:33: [144] if footer != Rect2(0.0, 816.0, 540.0, 144.0):
+tests\C11B0UnifiedSocialFrameContractTest.gd:33: [816] if footer != Rect2(0.0, 816.0, 540.0, 144.0):
+tests\C11B0UnifiedSocialFrameContractTest.gd:37: [CoordinateMapper] var body := CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
+tests\C11B0UnifiedSocialFrameContractTest.gd:38: [CoordinateMapper] var top_left := CoordinateMapper.map_position(
+tests\C11B0UnifiedSocialFrameContractTest.gd:40: [CoordinateMapper] CoordinateMapper.CoordinateSpace.CANVAS_1080X1920,
+tests\C11B0UnifiedSocialFrameContractTest.gd:41: [CoordinateMapper] CoordinateMapper.PRESENTATION_SIZE,
+tests\C11B0UnifiedSocialFrameContractTest.gd:44: [CoordinateMapper] var bottom_right := CoordinateMapper.map_position(
+tests\C11B0UnifiedSocialFrameContractTest.gd:46: [CoordinateMapper] CoordinateMapper.CoordinateSpace.CANVAS_1080X1920,
+tests\C11B0UnifiedSocialFrameContractTest.gd:47: [CoordinateMapper] CoordinateMapper.PRESENTATION_SIZE,
+tests\C11B0UnifiedSocialFrameContractTest.gd:50: [CoordinateMapper] var deep_y := CoordinateMapper.map_position(
+tests\C11B0UnifiedSocialFrameContractTest.gd:52: [CoordinateMapper] CoordinateMapper.CoordinateSpace.CANVAS_1080X1920,
+tests\C11B0UnifiedSocialFrameContractTest.gd:53: [CoordinateMapper] CoordinateMapper.PRESENTATION_SIZE,
+tests\C11B0UnifiedSocialFrameContractTest.gd:57: [144] if not top_left.is_equal_approx(Vector2(81.0, 144.0)):
+tests\C11B0UnifiedSocialFrameContractTest.gd:59: [816] if not bottom_right.is_equal_approx(Vector2(459.0, 816.0)):
+tests\C11B0UnifiedSocialFrameContractTest.gd:65: [CoordinateMapper] var body := CoordinateMapper.DEFAULT_SOCIAL_BODY_RECT
+tests\C11B0UnifiedSocialFrameContractTest.gd:91: [UnifiedSocialFrame] var scene := load("res://core/presentation/UnifiedSocialFrame.tscn")
+tests\C11B0UnifiedSocialFrameContractTest.gd:93: [UnifiedSocialFrame] failures.append("UnifiedSocialFrame.tscn could not be loaded.")
+tests\C11B0UnifiedSocialFrameContractTest.gd:97: [UnifiedSocialFrame] failures.append("UnifiedSocialFrame.tscn could not be instantiated.")
+tests\C11B0UnifiedSocialFrameContractTest.gd:103: [144] if body != Rect2(0.0, 144.0, 540.0, 672.0):
+tests\C11B0UnifiedSocialFrameContractTest.gd:104: [UnifiedSocialFrame] failures.append("UnifiedSocialFrame BodyRegion mismatch: %s" % str(body))
+tests\C11B1SocialUIIntegrationContractTest.gd:3: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tests\C11B1SocialUIIntegrationContractTest.gd:11: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tests\C11B1SocialUIIntegrationContractTest.gd:13: [UnifiedSocialFrame] failures.append("UnifiedSocialFrame scene could not instantiate.")
+tests\C11B1SocialUIIntegrationContractTest.gd:19: [144] _assert_rect(frame.get_header_rect(), Rect2(0, 0, 540, 144), "HeaderRegion")
+tests\C11B1SocialUIIntegrationContractTest.gd:20: [144] _assert_rect(frame.get_body_rect(), Rect2(0, 144, 540, 672), "BodyRegion")
+tests\C11B1SocialUIIntegrationContractTest.gd:21: [144] _assert_rect(frame.get_footer_rect(), Rect2(0, 816, 540, 144), "FooterRegion")
+tests\C11B1SocialUIIntegrationContractTest.gd:21: [816] _assert_rect(frame.get_footer_rect(), Rect2(0, 816, 540, 144), "FooterRegion")
+tests\C11B1SocialUIIntegrationContractTest.gd:42: [UnifiedSocialFrame] if not main_text.contains("UnifiedSocialFrame"):
+tests\C11B1SocialUIIntegrationContractTest.gd:43: [UnifiedSocialFrame] failures.append("Main.tscn missing UnifiedSocialFrame.")
+tests\C11B1SocialUIIntegrationContractTest.gd:45: [UnifiedSocialFrame] if not visual_text.contains("UnifiedSocialFrame"):
+tests\C11B1SocialUIIntegrationContractTest.gd:46: [UnifiedSocialFrame] failures.append("VisualContentPlayer.tscn missing UnifiedSocialFrame.")
+tests\C11CSaccadeMechanicContractTest.gd:7: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+tests\C11CTrackingMechanicContractTest.gd:8: [144] const BODY_RECT := Rect2(0.0, 144.0, 540.0, 672.0)
+tests\C11CVisualDrillEndCTAContractTest.gd:84: [UnifiedSocialFrame] var frame_scene: PackedScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tests\C11CVisualDrillEndCTAContractTest.gd:85: [UnifiedSocialFrame] var unified: UnifiedSocialFrame = frame_scene.instantiate() as UnifiedSocialFrame
+tests\C11CVisualDrillEndCTAContractTest.gd:86: [UnifiedSocialFrame] _assert(unified != null, "UnifiedSocialFrame must instantiate for the shared CTA path.")
+tests\C11CVisualDrillEndCTAContractTest.gd:92: [UnifiedSocialFrame] # UnifiedSocialFrame exposes its mount points through @onready members.
+tests\C11CVisualDrillEndCTAContractTest.gd:98: [UnifiedSocialFrame] _assert(ui != null, "PresentationUI must instantiate for the shared UnifiedSocialFrame path.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:6: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:17: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tests\C11CVisualDrillSocialPresentationContractTest.gd:19: [UnifiedSocialFrame] failures.append("UnifiedSocialFrame could not instantiate.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:25: [144] _assert(frame.get_header_rect() == Rect2(0, 0, 540, 144), "Header geometry changed.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:26: [144] _assert(frame.get_body_rect() == Rect2(0, 144, 540, 672), "Body geometry changed.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:27: [144] _assert(frame.get_footer_rect() == Rect2(0, 816, 540, 144), "Footer geometry changed.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:27: [816] _assert(frame.get_footer_rect() == Rect2(0, 816, 540, 144), "Footer geometry changed.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:86: [540x960] _assert(is_equal_approx(VisualContentPlayer.PHYSICAL_SOCIAL_SCALE, 4.0 / 3.0), "Visual Drill physical social scale must map 540x960 logical space to 720x1280.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:86: [720x1280] _assert(is_equal_approx(VisualContentPlayer.PHYSICAL_SOCIAL_SCALE, 4.0 / 3.0), "Visual Drill physical social scale must map 540x960 logical space to 720x1280.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:87: [540x960] _assert(VisualContentPlayer.LOGICAL_SOCIAL_CANVAS_SIZE == Vector2(540.0, 960.0), "Logical social canvas must remain 540x960.")
+tests\C11CVisualDrillSocialPresentationContractTest.gd:88: [720x1280] _assert(VisualContentPlayer.PHYSICAL_SOCIAL_OUTPUT_SIZE == Vector2(720.0, 1280.0), "Physical social output must remain 720x1280.")
+tests\C6F08TrackingPlaybackValidationTest.gd:78: [144] _assert(captured_position.y >= 144.0 and captured_position.y <= 816.0, "[%s] Tracking target must remain inside Body." % mode)
+tests\C6F08TrackingPlaybackValidationTest.gd:78: [816] _assert(captured_position.y >= 144.0 and captured_position.y <= 816.0, "[%s] Tracking target must remain inside Body." % mode)
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:207: [144] "mp4_sha256_a":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:207: [816] "mp4_sha256_a":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:208: [144] "mp4_sha256_b":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:208: [816] "mp4_sha256_b":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:667: [816] "score":  0.908167569407386,
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:669: [144] "mp4_sha256":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:669: [816] "mp4_sha256":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:697: [816] "score":  0.908167569407386,
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:699: [144] "mp4_sha256":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:699: [816] "mp4_sha256":  "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:906: [816] "minimum_distance":  2.64212083816528,
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:1511: [144] "framemd5_sha256":  "bf5087e8e5cdc987c63a04aba6ebbe18e5d554f7abbf01b144adc2d5de215df9",
+tests\reference\c11a1\C11A1_CHALLENGE_BULK_MANIFEST.json:1690: [144] "avi_sha256":  "6975603f2801b61447f3176a7eac9cac83a1cd72505ee902068d6fd89d9c0d6e",
+tests\reference\c11a1\runs\challenge_001_seed_12345_A\artifacts\CHALLENGE_001\CHALLENGE_001_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_12345_A\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_12345_B\artifacts\CHALLENGE_001\CHALLENGE_001_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_12345_B\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_314159\artifacts\CHALLENGE_001\CHALLENGE_001_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_314159\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_54321\artifacts\CHALLENGE_001\CHALLENGE_001_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_54321\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_7770001\artifacts\CHALLENGE_001\CHALLENGE_001_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_7770001\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_998877\artifacts\CHALLENGE_001\CHALLENGE_001_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_001_seed_998877\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_12345_A\artifacts\CHALLENGE_002\CHALLENGE_002_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_12345_A\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_12345_B\artifacts\CHALLENGE_002\CHALLENGE_002_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_12345_B\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_314159\artifacts\CHALLENGE_002\CHALLENGE_002_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_314159\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_54321\artifacts\CHALLENGE_002\CHALLENGE_002_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_54321\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_7770001\artifacts\CHALLENGE_002\CHALLENGE_002_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_7770001\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_998877\artifacts\CHALLENGE_002\CHALLENGE_002_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_002_seed_998877\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:88: [816] "score": 0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:102: [144] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:102: [816] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\factory_stdout.txt:93: [816] "score": 0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\factory_stdout.txt:107: [144] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\factory_stdout.txt:107: [816] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\simulation_summary.json:13: [816] "score":  0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_A\telemetry.json:13: [816] "score":  0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:88: [816] "score": 0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:102: [144] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:102: [816] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\factory_stdout.txt:93: [816] "score": 0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\factory_stdout.txt:107: [144] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\factory_stdout.txt:107: [816] "final_video_sha256": "0ec0ac3d9751f1e02c3937b508ad81648d7bbf73a32aa6efd5fd35b414410601"
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\simulation_summary.json:13: [816] "score":  0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_12345_B\telemetry.json:13: [816] "score":  0.908167569407386,
+tests\reference\c11a1\runs\challenge_003_seed_314159\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_314159\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_54321\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_54321\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_7770001\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_7770001\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_998877\artifacts\CHALLENGE_003\CHALLENGE_003_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_003_seed_998877\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_12345_A\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_12345_A\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_12345_B\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_12345_B\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_314159\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_314159\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:85: [816] "minimum_distance": 2.64212083816528,
+tests\reference\c11a1\runs\challenge_004_seed_314159\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_314159\factory_stdout.txt:90: [816] "minimum_distance": 2.64212083816528,
+tests\reference\c11a1\runs\challenge_004_seed_314159\simulation_summary.json:12: [816] "minimum_distance":  2.64212083816528,
+tests\reference\c11a1\runs\challenge_004_seed_314159\telemetry.json:10: [816] "minimum_distance":  2.64212083816528,
+tests\reference\c11a1\runs\challenge_004_seed_54321\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_54321\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_7770001\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_7770001\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_998877\artifacts\CHALLENGE_004\CHALLENGE_004_manifest.json:57: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_004_seed_998877\factory_stdout.txt:62: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_12345_A\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_12345_A\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_12345_B\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_12345_B\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_314159\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_314159\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_54321\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_54321\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_7770001\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_7770001\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_998877\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_998877\artifacts\CHALLENGE_005\CHALLENGE_005_manifest.json:60: [816] "provenance_sha256": "97ce2118e79b581f56da4c81602b6c72e056aa279787aeac07d93123600d747a"
+tests\reference\c11a1\runs\challenge_005_seed_998877\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_005_seed_998877\factory_stdout.txt:65: [816] "provenance_sha256": "97ce2118e79b581f56da4c81602b6c72e056aa279787aeac07d93123600d747a"
+tests\reference\c11a1\runs\challenge_006_seed_12345_A\artifacts\CHALLENGE_006\CHALLENGE_006_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_12345_A\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_12345_B\artifacts\CHALLENGE_006\CHALLENGE_006_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_12345_B\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_314159\artifacts\CHALLENGE_006\CHALLENGE_006_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_314159\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_54321\artifacts\CHALLENGE_006\CHALLENGE_006_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_54321\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_7770001\artifacts\CHALLENGE_006\CHALLENGE_006_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_7770001\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_998877\artifacts\CHALLENGE_006\CHALLENGE_006_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_006_seed_998877\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_12345_A\artifacts\CHALLENGE_007\CHALLENGE_007_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_12345_A\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_12345_B\artifacts\CHALLENGE_007\CHALLENGE_007_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_12345_B\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_12345_B\run_record.json:23: [816] "completed_at_utc":  "2026-09-17T23:45:20.6081679+00:00",
+tests\reference\c11a1\runs\challenge_007_seed_314159\artifacts\CHALLENGE_007\CHALLENGE_007_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_314159\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_54321\artifacts\CHALLENGE_007\CHALLENGE_007_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_54321\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_7770001\artifacts\CHALLENGE_007\CHALLENGE_007_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_7770001\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_998877\artifacts\CHALLENGE_007\CHALLENGE_007_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_007_seed_998877\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_12345_A\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_12345_A\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_12345_B\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_12345_B\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_314159\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_314159\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_54321\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_54321\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_7770001\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_7770001\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:89: [144] "raw_video_sha256": "6975603f2801b61447f3176a7eac9cac83a1cd72505ee902068d6fd89d9c0d6e",
+tests\reference\c11a1\runs\challenge_008_seed_7770001\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_7770001\factory_stdout.txt:94: [144] "raw_video_sha256": "6975603f2801b61447f3176a7eac9cac83a1cd72505ee902068d6fd89d9c0d6e",
+tests\reference\c11a1\runs\challenge_008_seed_998877\artifacts\CHALLENGE_008\CHALLENGE_008_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_008_seed_998877\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_12345_A\artifacts\CHALLENGE_009\CHALLENGE_009_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_12345_A\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_12345_B\artifacts\CHALLENGE_009\CHALLENGE_009_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_12345_B\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_314159\artifacts\CHALLENGE_009\CHALLENGE_009_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_314159\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_54321\artifacts\CHALLENGE_009\CHALLENGE_009_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_54321\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_7770001\artifacts\CHALLENGE_009\CHALLENGE_009_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_7770001\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_998877\artifacts\CHALLENGE_009\CHALLENGE_009_manifest.json:51: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\reference\c11a1\runs\challenge_009_seed_998877\factory_stdout.txt:56: [816] "sha256": "c98c268c39b816f0eac058512ac477539efc8dc32f1b808343c365991fe8bfbd"
+tests\run_all.py:57: [UnifiedSocialFrame] "C11B0UnifiedSocialFrameContractTest.gd": "[C11B0_UNIFIED_SOCIAL_FRAME_CONTRACT_SUITE] PASS",
+tools\c11freeze\finalize_c11c_2_19_6_freeze.ps1:16: [540x960] $stamp=(Get-Date).ToUniversalTime().ToString('o'); $rm=[ordered]@{freeze_id='C11-C';repository_freeze='2.19.6';status='CLOSED_CERTIFIED_FROZEN';sealed_at_utc=$stamp;engine='Godot 4.7.1 stable Mono';suite='0.1.4';producer='0.9.7';geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'};corpus=[ordered]@{visual_loop_families=5;visual_loop_grammars=27;visual_drill_families=4;longforms=5;longform_duration_seconds=180};worker_isolation=[ordered]@{mode='per_worker_temporary_godot_project';workers=7;max_observed_concurrency=[int]$m.max_observed_worker_concurrency;global_mutex=$false;bootstrap='per_worker_godot_headless_editor_class_scan';global_script_class_cache='required';required_class='PresentationProfile'};acceptance=[ordered]@{status='PASS';focused_parallel_contract=$true;art_direction_concurrency=$true;worker_class_cache_bootstrap=$true};suite_ownership=[ordered]@{canonical_root='c11c-suite';retired_root='c11c-studio';retired_root_operational_dependency=$false};tree_sha256=$treeHash;file_count=$entries.Count;files=@($entries)}
+tools\c11freeze\finalize_c11c_2_19_6_freeze.ps1:16: [720x1280] $stamp=(Get-Date).ToUniversalTime().ToString('o'); $rm=[ordered]@{freeze_id='C11-C';repository_freeze='2.19.6';status='CLOSED_CERTIFIED_FROZEN';sealed_at_utc=$stamp;engine='Godot 4.7.1 stable Mono';suite='0.1.4';producer='0.9.7';geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'};corpus=[ordered]@{visual_loop_families=5;visual_loop_grammars=27;visual_drill_families=4;longforms=5;longform_duration_seconds=180};worker_isolation=[ordered]@{mode='per_worker_temporary_godot_project';workers=7;max_observed_concurrency=[int]$m.max_observed_worker_concurrency;global_mutex=$false;bootstrap='per_worker_godot_headless_editor_class_scan';global_script_class_cache='required';required_class='PresentationProfile'};acceptance=[ordered]@{status='PASS';focused_parallel_contract=$true;art_direction_concurrency=$true;worker_class_cache_bootstrap=$true};suite_ownership=[ordered]@{canonical_root='c11c-suite';retired_root='c11c-studio';retired_root_operational_dependency=$false};tree_sha256=$treeHash;file_count=$entries.Count;files=@($entries)}
+tools\c11freeze\finalize_c11c_2_19_7_freeze.ps1:26: [540x960] $rm=[ordered]@{freeze_id='C11-C';repository_freeze='2.19.7';status='CLOSED_CERTIFIED_FROZEN';sealed_at_utc=$stamp;engine='Godot 4.7.1 stable Mono';suite='0.1.4';producer='0.9.7';geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'};corpus=[ordered]@{visual_loop_families=5;visual_loop_grammars=27;visual_drill_families=4;visual_drill_videos=20;longforms=5;complete_review_videos=52;longform_duration_seconds=180};worker_isolation=[ordered]@{mode='per_worker_temporary_godot_project';workers=7;max_observed_concurrency=[int]$m.max_observed_worker_concurrency;global_mutex=$false;bootstrap='per_worker_godot_headless_editor_class_scan';global_script_class_cache='required';required_class='PresentationProfile'};acceptance=[ordered]@{status='PASS';report='artifacts/tests/reports/C11C_2.19.7_ACCEPTANCE_REPORT.json';complete_video_review='artifacts/prototypes/c11c_art_direction_review/C11-C_COMPLETE_VIDEO_REVIEW_REPORT.json'};suite_ownership=[ordered]@{canonical_root='c11c-suite';retired_root='c11c-studio';retired_root_operational_dependency=$false};tree_sha256=$treeHash;file_count=$entries.Count;files=@($entries)}
+tools\c11freeze\finalize_c11c_2_19_7_freeze.ps1:26: [720x1280] $rm=[ordered]@{freeze_id='C11-C';repository_freeze='2.19.7';status='CLOSED_CERTIFIED_FROZEN';sealed_at_utc=$stamp;engine='Godot 4.7.1 stable Mono';suite='0.1.4';producer='0.9.7';geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'};corpus=[ordered]@{visual_loop_families=5;visual_loop_grammars=27;visual_drill_families=4;visual_drill_videos=20;longforms=5;complete_review_videos=52;longform_duration_seconds=180};worker_isolation=[ordered]@{mode='per_worker_temporary_godot_project';workers=7;max_observed_concurrency=[int]$m.max_observed_worker_concurrency;global_mutex=$false;bootstrap='per_worker_godot_headless_editor_class_scan';global_script_class_cache='required';required_class='PresentationProfile'};acceptance=[ordered]@{status='PASS';report='artifacts/tests/reports/C11C_2.19.7_ACCEPTANCE_REPORT.json';complete_video_review='artifacts/prototypes/c11c_art_direction_review/C11-C_COMPLETE_VIDEO_REVIEW_REPORT.json'};suite_ownership=[ordered]@{canonical_root='c11c-suite';retired_root='c11c-studio';retired_root_operational_dependency=$false};tree_sha256=$treeHash;file_count=$entries.Count;files=@($entries)}
+tools\c11freeze\finalize_c11c_2_19_8_freeze.ps1:23: [540x960] $rm=[ordered]@{freeze_id='C11-C';repository_freeze='2.19.8';status='CLOSED_CERTIFIED_FROZEN';sealed_at_utc=$stamp;engine='Godot 4.7.1 stable Mono';suite='0.1.4';producer='0.9.7';geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'};corpus=[ordered]@{visual_loop_families=5;visual_loop_grammars=27;visual_drill_families=4;visual_drill_videos=20;longforms=5;complete_review_videos=52;longform_duration_seconds=180};worker_isolation=[ordered]@{mode='per_worker_temporary_godot_project';workers=7;max_observed_concurrency=[int]$m.max_observed_worker_concurrency;global_mutex=$false;bootstrap='per_worker_godot_headless_editor_class_scan';global_script_class_cache='required';required_class='PresentationProfile'};acceptance=[ordered]@{status='PASS';report='artifacts/tests/reports/C11C_2.19.8_ACCEPTANCE_REPORT.json';complete_video_review='artifacts/prototypes/c11c_art_direction_review/C11-C_COMPLETE_VIDEO_REVIEW_REPORT.json'};suite_ownership=[ordered]@{canonical_root='c11c-suite';retired_root='c11c-studio';retired_root_operational_dependency=$false};tree_sha256=$treeHash;file_count=$entries.Count;files=@($entries)}
+tools\c11freeze\finalize_c11c_2_19_8_freeze.ps1:23: [720x1280] $rm=[ordered]@{freeze_id='C11-C';repository_freeze='2.19.8';status='CLOSED_CERTIFIED_FROZEN';sealed_at_utc=$stamp;engine='Godot 4.7.1 stable Mono';suite='0.1.4';producer='0.9.7';geometry=[ordered]@{logical='540x960';review='720x1280 @ 30 FPS';master='1080x1920'};corpus=[ordered]@{visual_loop_families=5;visual_loop_grammars=27;visual_drill_families=4;visual_drill_videos=20;longforms=5;complete_review_videos=52;longform_duration_seconds=180};worker_isolation=[ordered]@{mode='per_worker_temporary_godot_project';workers=7;max_observed_concurrency=[int]$m.max_observed_worker_concurrency;global_mutex=$false;bootstrap='per_worker_godot_headless_editor_class_scan';global_script_class_cache='required';required_class='PresentationProfile'};acceptance=[ordered]@{status='PASS';report='artifacts/tests/reports/C11C_2.19.8_ACCEPTANCE_REPORT.json';complete_video_review='artifacts/prototypes/c11c_art_direction_review/C11-C_COMPLETE_VIDEO_REVIEW_REPORT.json'};suite_ownership=[ordered]@{canonical_root='c11c-suite';retired_root='c11c-studio';retired_root_operational_dependency=$false};tree_sha256=$treeHash;file_count=$entries.Count;files=@($entries)}
+tools\c11freeze\finalize_c11c_2_19_8_freeze.ps1:48: [540x960] C11-B simulation/RNG/truth, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7 audio contracts, C9 semantics and logical 540x960 social geometry remain outside this repair seal.
+tools\c11freeze\run_c11_suite.ps1:5: [UnifiedSocialFrame] "tests/C11B0UnifiedSocialFrameContractTest.gd",
+tools\c11freeze\update_readme_c11_freeze.ps1:15: [540x960] The C11 cycle unified challenge and visual presentation around a common 540x960 social structure:
+tools\c11freeze\update_readme_c11_freeze.ps1:17: [144] - Header: 0..144
+tools\c11freeze\update_readme_c11_freeze.ps1:18: [144] - Body: 144..816
+tools\c11freeze\update_readme_c11_freeze.ps1:18: [816] - Body: 144..816
+tools\c11freeze\update_readme_c11_freeze.ps1:19: [816] - Footer: 816..960
+tools\prototypes\c11c_bulk\C11C_PRODUCTION_POLICY.md:17: [720x1280] - 720x1280 / 9:16
+tools\prototypes\c11c_bulk\C11C_TOOLCHAIN_CANONICAL.md:26: [720x1280] `--resolution 720x1280`
+tools\prototypes\c11c_bulk\C11C_TOOLCHAIN_CANONICAL.md:32: [720x1280] - 720x1280 / 9:16
+tools\prototypes\c11c_bulk\C11CProductionBatchCommon.ps1:179: [720x1280] Resolution: 720x1280
+tools\prototypes\c11c_bulk\C11CProductionBatchCommon.ps1:200: [720x1280] visual=[ordered]@{resolution='720x1280';fps=[int]$sourceManifest.visual.fps;duration_seconds=[double]$sourceManifest.visual.duration_seconds;frames=[int]$sourceManifest.visual.frame_count}
+tools\prototypes\c11c_bulk\run_c11c_art_direction_review.ps1:44: [720x1280] $seedManifest=[ordered]@{schema='C11-C-ART-DIRECTION-REVIEW-SEEDS-V3';revision='2.14.0';mode=$seedMode;family_count=5;variations_per_family=$VariationsPerFamily;render_count=$expected;seeds=@($Seeds);review_root=$ReviewRoot;prototype_cleanup_performed=$false;review_assets_reset=[bool]$ResetReviewAssets;delivery_contract='720x1280 / 30 FPS / Visual Loop 20..23 s policy-driven / frames=round(duration*30)'}
+tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1:165: [540x960] Write-Host "[CHALLENGE] Standard delivery profile: MASTER_1080=1080x1920; review/minimum profiles are additive; runtime capture remains native 540x960."
+tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1:166: [540x960] Write-Host '[CHALLENGE] Contract-safe path: Godot source capture remains native 540x960; delivery scale is post-capture FFmpeg only.'
+tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1:272: [540x960] logical_presentation='540x960'
+tools\prototypes\c11c_bulk\run_c11c_challenge_production.ps1:273: [540x960] source_movie_resolution='540x960'
+tools\prototypes\c11c_bulk\run_c11c_multiseed_bulk.ps1:44: [720x1280] Write-Host "[C11-C-MULTISEED] PASS family=$family seed=$seed 720x1280 / 30 FPS / $expectedFrames frames / $duration s"
+tools\prototypes\c11c_bulk\run_c11c_multiseed_bulk.ps1:47: [720x1280] $manifest=[ordered]@{schema='C11-C-MULTISEED-BULK-V2';revision='2.14.0';status='COMPLETE';seeds=@($Seeds);family_count=$families.Count;seed_count=$Seeds.Count;render_count=$families.Count*$Seeds.Count;results=$results;visual_contract=[ordered]@{canvas='720x1280';body='y=192..1088';fps=30;duration_seconds='20..23 policy-driven';frames='round(duration_seconds*30)'};audio_contract='default ON; safe mobile ambient; -NoSound/-Silent disables audio';frozen_boundaries_modified=$false}
+tools\prototypes\c11c_bulk\run_c11c_production.ps1:155: [720x1280] created_utc=[DateTime]::UtcNow.ToString('o'); source_canvas='720x1280'; canvas="${deliveryWidth}x${deliveryHeight}"; delivery_profile=$DeliveryProfile
+tools\prototypes\c11c_bulk\run_c11c_production.ps1:169: [720x1280] Source capture: 720x1280
+tools\prototypes\c11c_bulk\run_c11c_production_25.ps1:165: [720x1280] resolution = '720x1280'
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:134: [720x1280] if([int]$video.width -ne 720 -or [int]$video.height -ne 1280){throw "720x1280 contract failed: $Path -> $($video.width)x$($video.height)"}
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:231: [720x1280] Write-Host '[C11-C-DRILL] 720x1280 / 30 FPS / 3s countdown + gameplay (17s/21s) + 3s end CTA = 23s/27s total'
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:393: [720x1280] resolution='720x1280'
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:430: [720x1280] Write-Host "[C11-C-DRILL] PASS $runId -> 720x1280 / $frames frames / $duration s"
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:456: [720x1280] delivery='720x1280 / 9:16 / 30 FPS'
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:457: [144] logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:457: [540x960] logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
+tools\prototypes\c11c_bulk\run_c11c_visual_drill_review.ps1:457: [816] logical_social_frame='540x960 with Header 0..144, Body 144..816, Footer 816..960'
+tools\prototypes\c11c_bulk\run_c11c_visual_loop_longform_production.ps1:205: [720x1280] resolution='720x1280'
+tools\prototypes\c11c_bulk\validate_c11c_delivery_configuration.ps1:4: [720x1280] $DeliveryResolution='720x1280'
+tools\prototypes\c11c_bulk\validate_c11c_delivery_configuration.ps1:27: [720x1280] Write-Host '[C11C-DELIVERY-VALIDATION] PASS - Godot 720x1280, typed PowerShell arrays/switches, no nested PowerShell, review/production separation.'
+tools\prototypes\c11c_common\C11C_VARIATION_PROFILE_SPEC_v1.0.json:63: [144] "body": "y=144..816",
+tools\prototypes\c11c_common\C11C_VARIATION_PROFILE_SPEC_v1.0.json:63: [816] "body": "y=144..816",
+tools\prototypes\c11c_common\C11C_VARIATION_PROFILE_SPEC_v1.0.json:64: [540x960] "canvas": "540x960",
+tools\prototypes\c11c_common\C11CDrillPaletteBank.gd:111: [816] {"name":"AQUA_ORANGE_STORM", "background":"07100F", "accent":"4AE8D4", "secondary":"FF9147", "tertiary":"C9FFF5", "target":"FFFFFB", "target_soft":"E7FFF7", "text_primary":"FFD1AF", "text_secondary":"F2FFF9", "text_data":"E7FFF7", "rule":"4A9D8F", "counter":"0D1816"},
+tools\prototypes\c11c_common\C11CMovieCapture.ps1:13: [540x960] # C11-B remains frozen at 540x960. This temporary override changes only the effective
+tools\prototypes\c11c_common\C11CTronDepthBackground.gd:6: [144] const BODY_TOP: float = 144.0
+tools\prototypes\c11c_common\C11CTronDepthBackground.gd:7: [816] const BODY_BOTTOM: float = 816.0
+tools\prototypes\c11c_fractal_bloom_v1\FractalBloomPrototype.gd:8: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tools\prototypes\c11c_fractal_bloom_v1\FractalBloomPrototype.gd:69: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tools\prototypes\c11c_fractal_bloom_v1\FractalBloomPrototype.gd:70: [UnifiedSocialFrame] frame.name = "UnifiedSocialFrame"
+tools\prototypes\c11c_fractal_bloom_v1\FractalBloomPrototype.gd:86: [UnifiedSocialFrame] func _mount_editorial(frame: UnifiedSocialFrame) -> void:
+tools\prototypes\c11c_fractal_bloom_v1\FractalBloomRenderer.gd:8: [144] const BODY_TOP := 144.0
+tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1:53: [720x1280] Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
+tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1:54: [720x1280] $DeliveryResolution='720x1280'
+tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1:78: [720x1280] if (-not $captureLine) { throw "Movie Maker resolution contract failed. Expected 720x1280 in Godot log: $GodotLog" }
+tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1:152: [720x1280] canvas = '720x1280'
+tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1:201: [720x1280] Write-Host "[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+tools\prototypes\c11c_geometric_waves_v1\definition.json:11: [144] 144
+tools\prototypes\c11c_geometric_waves_v1\definition.json:14: [144] 144,
+tools\prototypes\c11c_geometric_waves_v1\definition.json:15: [816] 816
+tools\prototypes\c11c_geometric_waves_v1\definition.json:18: [816] 816,
+tools\prototypes\c11c_geometric_waves_v1\GeometricWavesPrototype.gd:8: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tools\prototypes\c11c_geometric_waves_v1\GeometricWavesPrototype.gd:69: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tools\prototypes\c11c_geometric_waves_v1\GeometricWavesPrototype.gd:70: [UnifiedSocialFrame] frame.name = "UnifiedSocialFrame"
+tools\prototypes\c11c_geometric_waves_v1\GeometricWavesPrototype.gd:87: [UnifiedSocialFrame] func _mount_editorial(frame: UnifiedSocialFrame) -> void:
+tools\prototypes\c11c_geometric_waves_v1\GeometricWavesRenderer.gd:8: [144] const BODY_TOP := 144.0
+tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1:53: [720x1280] Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
+tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1:54: [720x1280] $DeliveryResolution='720x1280'
+tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1:78: [720x1280] if (-not $captureLine) { throw "Movie Maker resolution contract failed. Expected 720x1280 in Godot log: $GodotLog" }
+tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1:152: [720x1280] canvas = '720x1280'
+tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1:201: [720x1280] Write-Host "[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+tools\prototypes\c11c_invisible_forces_v1\InvisibleForcesPrototype.gd:8: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tools\prototypes\c11c_invisible_forces_v1\InvisibleForcesPrototype.gd:69: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tools\prototypes\c11c_invisible_forces_v1\InvisibleForcesPrototype.gd:70: [UnifiedSocialFrame] frame.name = "UnifiedSocialFrame"
+tools\prototypes\c11c_invisible_forces_v1\InvisibleForcesPrototype.gd:87: [UnifiedSocialFrame] func _mount_editorial(frame: UnifiedSocialFrame) -> void:
+tools\prototypes\c11c_invisible_forces_v1\InvisibleForcesRenderer.gd:6: [144] const BODY_TOP := 144.0
+tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1:53: [720x1280] Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
+tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1:54: [720x1280] $DeliveryResolution='720x1280'
+tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1:78: [720x1280] if (-not $captureLine) { throw "Movie Maker resolution contract failed. Expected 720x1280 in Godot log: $GodotLog" }
+tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1:152: [720x1280] canvas = '720x1280'
+tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1:201: [720x1280] Write-Host "[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+tools\prototypes\c11c_living_particles_v1\LivingParticlesPrototype.gd:8: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tools\prototypes\c11c_living_particles_v1\LivingParticlesPrototype.gd:69: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tools\prototypes\c11c_living_particles_v1\LivingParticlesPrototype.gd:70: [UnifiedSocialFrame] frame.name = "UnifiedSocialFrame"
+tools\prototypes\c11c_living_particles_v1\LivingParticlesPrototype.gd:88: [UnifiedSocialFrame] func _mount_editorial(frame: UnifiedSocialFrame) -> void:
+tools\prototypes\c11c_living_particles_v1\LivingParticlesRenderer.gd:7: [144] const BODY_TOP := 144.0
+tools\prototypes\c11c_living_particles_v1\LivingParticlesTronRoad.gd:7: [144] const BODY_TOP := 144.0
+tools\prototypes\c11c_living_particles_v1\LivingParticlesTronRoad.gd:8: [816] const BODY_BOTTOM := 816.0
+tools\prototypes\c11c_living_particles_v1\run_prototype.ps1:53: [720x1280] Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
+tools\prototypes\c11c_living_particles_v1\run_prototype.ps1:54: [720x1280] $DeliveryResolution='720x1280'
+tools\prototypes\c11c_living_particles_v1\run_prototype.ps1:78: [720x1280] if (-not $captureLine) { throw "Movie Maker resolution contract failed. Expected 720x1280 in Godot log: $GodotLog" }
+tools\prototypes\c11c_living_particles_v1\run_prototype.ps1:152: [720x1280] canvas = '720x1280'
+tools\prototypes\c11c_living_particles_v1\run_prototype.ps1:201: [720x1280] Write-Host "[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1:53: [720x1280] Write-Host '[C11C-RESOLUTION] Movie Maker override active: 720x1280'
+tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1:54: [720x1280] $DeliveryResolution='720x1280'
+tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1:78: [720x1280] if (-not $captureLine) { throw "Movie Maker resolution contract failed. Expected 720x1280 in Godot log: $GodotLog" }
+tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1:152: [720x1280] canvas = '720x1280'
+tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1:201: [720x1280] Write-Host "[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / $FrameCount frames / $DurationSeconds s / AUDIO=$(-not $NoSound) / LOOP / EDITORIAL"
+tools\prototypes\c11c_sacred_symmetry_v1\SacredSymmetryPrototype.gd:8: [UnifiedSocialFrame] const UnifiedSocialFrameScene = preload("res://core/presentation/UnifiedSocialFrame.tscn")
+tools\prototypes\c11c_sacred_symmetry_v1\SacredSymmetryPrototype.gd:69: [UnifiedSocialFrame] var frame := UnifiedSocialFrameScene.instantiate() as UnifiedSocialFrame
+tools\prototypes\c11c_sacred_symmetry_v1\SacredSymmetryPrototype.gd:70: [UnifiedSocialFrame] frame.name = "UnifiedSocialFrame"
+tools\prototypes\c11c_sacred_symmetry_v1\SacredSymmetryPrototype.gd:86: [UnifiedSocialFrame] func _mount_editorial(frame: UnifiedSocialFrame) -> void:
+tools\prototypes\c11c_sacred_symmetry_v1\SacredSymmetryRenderer.gd:7: [144] const BODY_TOP := 144.0
+tools\qa\c11\run_c11a1_challenge_bulk_qa.ps1:240: [540x960] source_movie_resolution = '540x960'
+tools\qa\c11\run_c11b_body_visibility_audit.ps1:97: [144] body_region = [pscustomobject]@{ x=0; y=144; width=540; height=672 }
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:100: [540x960] Write-Host '[C11-C-CHALLENGE] Contract-safe path: native source 540x960 -> FFmpeg delivery 720x1280; Challenge runs are sequential.' -ForegroundColor Cyan
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:100: [720x1280] Write-Host '[C11-C-CHALLENGE] Contract-safe path: native source 540x960 -> FFmpeg delivery 720x1280; Challenge runs are sequential.' -ForegroundColor Cyan
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:119: [540x960] Write-Host ("[{0}/54] RUN {1} seed={2} -> source 540x960 / delivery 720x1280"-f$completed,$item.run_id,$item.test_seed)-ForegroundColor Yellow
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:119: [720x1280] Write-Host ("[{0}/54] RUN {1} seed={2} -> source 540x960 / delivery 720x1280"-f$completed,$item.run_id,$item.test_seed)-ForegroundColor Yellow
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:148: [540x960] if([string]$manifest.source_movie_resolution-ne'540x960'-or[string]$manifest.delivery_resolution-ne'720x1280'){throw "Manifest resolution contract mismatch for $($item.run_id)"}
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:148: [720x1280] if([string]$manifest.source_movie_resolution-ne'540x960'-or[string]$manifest.delivery_resolution-ne'720x1280'){throw "Manifest resolution contract mismatch for $($item.run_id)"}
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:165: [540x960] $root=[ordered]@{schema='C11-C-CHALLENGE-720-BULK-QA-V3';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.19.12';source_movie_resolution='540x960';delivery_resolution='720x1280';delivery_profile=$profile;post_capture_scale='ffmpeg_lanczos';override_cfg_dependency=$false;total_executions=54;seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count-eq54);determinism_ab_pass=$determinismPass;executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')}
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:165: [720x1280] $root=[ordered]@{schema='C11-C-CHALLENGE-720-BULK-QA-V3';status=if($determinismPass){'PASS'}else{'FAIL'};revision='2.19.12';source_movie_resolution='540x960';delivery_resolution='720x1280';delivery_profile=$profile;post_capture_scale='ffmpeg_lanczos';override_cfg_dependency=$false;total_executions=54;seed_cases=@('12345_A','54321','314159','7770001','998877','12345_B');technical_pass=($items.Count-eq54);determinism_ab_pass=$determinismPass;executions=$items;determinism_ab=$ab;finalized_at_utc=[DateTimeOffset]::UtcNow.ToString('o')}
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:168: [540x960] Write-Host '[C11-C-CHALLENGE] COMPLETE 54/54 - native source 540x960 -> delivery 720x1280 - determinism A/B PASS' -ForegroundColor Green
+tools\qa\c11\run_c11c_challenge_bulk_qa.ps1:168: [720x1280] Write-Host '[C11-C-CHALLENGE] COMPLETE 54/54 - native source 540x960 -> delivery 720x1280 - determinism A/B PASS' -ForegroundColor Green
+tools\qa\c11\run_c11c_complete_video_review.ps1:122: [720x1280] if([int]$m.fps -ne 30 -or [string]$m.resolution -ne '720x1280'){throw "Longform format metadata mismatch: $($matches[0].Name)"}
+tools\qa\c11\run_c11c_family_coverage_smoke.ps1:172: [720x1280] physical_profile='720x1280@30'
+tools\qa\c11\run_c11c_one_video_each_type.ps1:44: [720x1280] if ([int]$stream.width -ne 720 -or [int]$stream.height -ne 1280) { throw "$Label resolution mismatch: $($stream.width)x$($stream.height); expected 720x1280." }
+tools\qa\c11\run_c11c_one_video_each_type.ps1:78: [720x1280] physical_profile = '720x1280@30'
+tools\qa\c11\verify_c11b01_installation.ps1:4: [CoordinateMapper] $cm = Join-Path $root 'core\presentation\CoordinateMapper.gd'
+tools\qa\c11\verify_c11b01_installation.ps1:6: [CoordinateMapper] if (-not (Test-Path $cm)) { throw 'Missing CoordinateMapper.gd' }
+tools\qa\c11\verify_c11b02_installation.ps1:6: [PresentationFramer] @{ Name = "PresentationFramer exists"; Path = "$root\core\presentation\PresentationFramer.gd" },
+tools\qa\c11\verify_c11b02_installation.ps1:7: [PresentationFramer] @{ Name = "Generador imports PresentationFramer"; Path = "$root\GeneradorMaestro.gd" },
+tools\qa\c11\verify_c11b1_installation.ps1:5: [UnifiedSocialFrame] @{ Name = "UnifiedSocialFrame exposes UI mount points"; Pass = (Test-Path ".\core\presentation\UnifiedSocialFrame.tscn" -PathType Leaf) -and ((Get-Content ".\core\presentation\UnifiedSocialFrame.tscn" -Raw) -match "HeaderContent") -and ((Get-Content ".\core\presentation\UnifiedSocialFrame.tscn" -Raw) -match "BodyContentRoot") -and ((Get-Content ".\core\presentation\UnifiedSocialFrame.tscn" -Raw) -match "FooterContent") },
+tools\qa\c11\verify_c11b1_installation.ps1:6: [UnifiedSocialFrame] @{ Name = "PresentationUI supports UnifiedSocialFrame"; Pass = ((Get-Content ".\core\presentation\PresentationUI.gd" -Raw) -match "_build_unified_frame_ui") },
+tools\qa\c11\verify_c11b1_installation.ps1:8: [UnifiedSocialFrame] @{ Name = "Main.tscn integrates UnifiedSocialFrame"; Pass = ((Get-Content ".\Main.tscn" -Raw) -match "UnifiedSocialFrame") },
+tools\qa\c11\verify_c11b1_installation.ps1:9: [UnifiedSocialFrame] @{ Name = "VisualContentPlayer.tscn integrates UnifiedSocialFrame"; Pass = ((Get-Content ".\core\presentation\rendering\VisualContentPlayer.tscn" -Raw) -match "UnifiedSocialFrame") },
+
+=== EVIDENCE ===
+.\artifacts\tests\c11d_d1\d1_5_layout_reference_hits.json
+.\artifacts\tests\c11d_d1\d1_5_layout_reference_hits.txt
+
+==================================================
+ C11-D D1.5 — REFERENCE AUDIT PASS
+==================================================
+
+Read-only evidence captured.
+No renderer or frozen C11-C source modified.
+
+[READY] Next step: extract canonical geometry from verified references.
+PS C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS>

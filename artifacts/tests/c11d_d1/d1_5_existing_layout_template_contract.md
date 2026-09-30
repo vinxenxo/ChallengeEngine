@@ -1,0 +1,24 @@
+﻿# D1.5 — Platform Layout Template Contract
+
+Layout profiles are versioned declarative presentation targets. They describe canvas, safe areas, Header/Body/Footer, CTA, typography/copy constraints and asset fit/crop.
+
+They do not calculate mechanics, timing truth or RNG.
+
+```json
+{
+  "layout_profile_id": "instagram_reels_v1",
+  "platform": "instagram",
+  "version": 1,
+  "canvas": {},
+  "safe_areas": {},
+  "header": {},
+  "body": {},
+  "footer": {},
+  "cta": {},
+  "text_constraints": {},
+  "asset_fit": {}
+}
+```
+
+The template contract belongs between visual parity and reusable assets so platform presentation is declarative before broad production.
+

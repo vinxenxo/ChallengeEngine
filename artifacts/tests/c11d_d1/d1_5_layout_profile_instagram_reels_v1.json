@@ -1,0 +1,56 @@
+﻿{
+    "layout_profile_id":  "instagram_reels_v1",
+    "platform":  "instagram",
+    "version":  1,
+    "canvas":  {
+                   "logical_width":  540,
+                   "logical_height":  960,
+                   "delivery_width":  720,
+                   "delivery_height":  1280,
+                   "delivery_relation":  "post_capture_from_logical_canvas"
+               },
+    "safe_areas":  {
+                       "status":  "UNKNOWN",
+                       "basis":  "No explicit safe-area inset, padding or margin values were recovered from the audited C11-B/C corpus."
+                   },
+    "header":  {
+                   "status":  "RECOVERED",
+                   "x":  0,
+                   "y":  0,
+                   "width":  540,
+                   "height":  144
+               },
+    "body":  {
+                 "status":  "RECOVERED",
+                 "x":  0,
+                 "y":  144,
+                 "width":  540,
+                 "height":  672
+             },
+    "footer":  {
+                   "status":  "RECOVERED",
+                   "x":  0,
+                   "y":  816,
+                   "width":  540,
+                   "height":  144
+               },
+    "cta":  {
+                "status":  "UNKNOWN",
+                "basis":  "No single generic Challenge CTA geometry was recovered as part of the shared frame contract."
+            },
+    "text_constraints":  {
+                             "status":  "UNKNOWN",
+                             "basis":  "No single generic Challenge typography constraint set was recovered as part of the shared frame geometry."
+                         },
+    "asset_fit":  {
+                      "status":  "UNKNOWN",
+                      "basis":  "Asset-specific fit and crop rules remain Challenge-dependent."
+                  },
+    "source_basis":  [
+                         "UnifiedSocialFrame",
+                         "CoordinateMapper",
+                         "PresentationFramer",
+                         "C11CVisualEditorialLayer",
+                         "C11-B/C presentation contracts and tests"
+                     ]
+}
