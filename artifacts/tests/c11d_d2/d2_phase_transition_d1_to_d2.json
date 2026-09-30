@@ -1,0 +1,11 @@
+﻿{
+    "transition":  "D1 -\u003e D2",
+    "phase":  "C11-D",
+    "status":  "D2_ACTIVE",
+    "D1_status":  "CLOSED",
+    "D2_0_status":  "READY_TO_EXECUTE",
+    "master_handover":  ".\\docs\\current\\d\\MASTER_HANDOVER_C11D_CURRENT.md",
+    "start_prompt":  ".\\docs\\current\\d\\START_PROMPT_C11D_CURRENT.md",
+    "history_root":  ".\\docs\\history\\master-prompts\\c11d",
+    "timestamp":  "2026-09-30T20:02:47.2310584+02:00"
+}
