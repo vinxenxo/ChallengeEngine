@@ -1,0 +1,256 @@
+﻿[
+    {
+        "path":  "c11c-catalog\\main.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-catalog\\run.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-config\\main.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-config\\run.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\main.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\organize_repository_root.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\organize_repository_root.ps1",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\run.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\run_cleanup_safe.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\run_freeze_package.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\test_cleanup_contract.py",
+        "roles":  [
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\test_root_organization_contract.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-maintenance\\test_root_organization_contract.py",
+        "roles":  [
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "roles":  [
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\main.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\run.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\run_visual_drill_production.ps1",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\self_test.py",
+        "roles":  [
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\test_gui_contract.bat",
+        "roles":  [
+                      "GUI_CANDIDATE",
+                      "CLI_OR_SCRIPT_ENTRYPOINT",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-producer\\test_producer_gui_contract.py",
+        "roles":  [
+                      "GUI_CANDIDATE",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\main.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_all.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_acceptance.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_challenge_family_smoke.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_challenge_family_smoke.ps1",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_challenge_smoke.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_challenge_smoke.ps1",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_complete_review.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_complete_video_review.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_family_coverage_smoke.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_focused_validation.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_c11c_one_video_each_type.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\run_suite.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\test_powershell_parse.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "c11c-test\\test_powershell_parse.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "main.py",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "run.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT"
+                  ]
+    },
+    {
+        "path":  "self_test.py",
+        "roles":  [
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "test_retro_reference_contract.bat",
+        "roles":  [
+                      "CLI_OR_SCRIPT_ENTRYPOINT",
+                      "SUITE_ROLE"
+                  ]
+    },
+    {
+        "path":  "test_retro_reference_contract.py",
+        "roles":  [
+                      "SUITE_ROLE"
+                  ]
+    }
+]

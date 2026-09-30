@@ -17,7 +17,7 @@ Loading resource: res://tests/c11freeze/C11FreezeRepositoryContractTest.gd remap
 Completed load for: 'res://tests/c11freeze/C11FreezeRepositoryContractTest.gd' remapped 'res://tests/c11freeze/C11FreezeRepositoryContractTest.gd' at thread -1
 SceneTreeFTI: traversal method DEFAULT
 Loaded system CA certificates
-[FAIL] Missing required repository file: res://docs/master-prompts/START_PROMPT_C11C_ART_DIRECTION.md
+[FAIL] Missing required repository directory: res://artifacts/releases/c11-b
 [C11FREEZE_REPOSITORY_CONTRACT_SUITE] FAIL
 Unloading: Disposing tracked instances...
 Unloading: Finished disposing tracked instances.

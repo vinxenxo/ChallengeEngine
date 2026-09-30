@@ -1,0 +1,68 @@
+﻿[
+    {
+        "Root":  "assets",
+        "Exists":  true,
+        "FileCount":  40,
+        "TotalBytes":  1374058
+    },
+    {
+        "Root":  "challenges",
+        "Exists":  true,
+        "FileCount":  9,
+        "TotalBytes":  10251
+    },
+    {
+        "Root":  "core",
+        "Exists":  true,
+        "FileCount":  334,
+        "TotalBytes":  562989
+    },
+    {
+        "Root":  "definitions",
+        "Exists":  true,
+        "FileCount":  9,
+        "TotalBytes":  148579
+    },
+    {
+        "Root":  "schemas",
+        "Exists":  true,
+        "FileCount":  2,
+        "TotalBytes":  7800
+    },
+    {
+        "Root":  "profiles",
+        "Exists":  true,
+        "FileCount":  59,
+        "TotalBytes":  59788
+    },
+    {
+        "Root":  "tests",
+        "Exists":  true,
+        "FileCount":  748,
+        "TotalBytes":  4456798
+    },
+    {
+        "Root":  "tools",
+        "Exists":  true,
+        "FileCount":  205,
+        "TotalBytes":  1228267
+    },
+    {
+        "Root":  "c11c-suite",
+        "Exists":  true,
+        "FileCount":  72,
+        "TotalBytes":  430833
+    },
+    {
+        "Root":  "docs",
+        "Exists":  true,
+        "FileCount":  906,
+        "TotalBytes":  4100497
+    },
+    {
+        "Root":  "artifacts",
+        "Exists":  true,
+        "FileCount":  16385,
+        "TotalBytes":  19541116268
+    }
+]

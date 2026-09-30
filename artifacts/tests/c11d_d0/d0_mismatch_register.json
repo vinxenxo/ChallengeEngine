@@ -1,0 +1,55 @@
+﻿[
+    {
+        "mismatch_id":  "D0-M01",
+        "category":  "HISTORICAL_FIELD",
+        "status":  "OPEN_REVIEW",
+        "severity":  "INFO",
+        "description":  "canonical_v2 exists in C7 fixtures but is absent from current and C11A1 challenge definitions.",
+        "affected":  [
+                         "CHALLENGE_001",
+                         "CHALLENGE_002",
+                         "CHALLENGE_003",
+                         "CHALLENGE_004",
+                         "CHALLENGE_005",
+                         "CHALLENGE_006",
+                         "CHALLENGE_007",
+                         "CHALLENGE_008",
+                         "CHALLENGE_009"
+                     ],
+        "action":  "Do not reintroduce during D0/D1. Preserve as historical contract metadata unless a later contract explicitly requires it."
+    },
+    {
+        "mismatch_id":  "D0-M02",
+        "category":  "SPARSE_METADATA",
+        "status":  "OPEN_REVIEW",
+        "severity":  "INFO",
+        "description":  "Current challenge definitions 005-009 omit some metadata fields that are present for 001-004.",
+        "affected":  [
+                         "CHALLENGE_005",
+                         "CHALLENGE_006",
+                         "CHALLENGE_007",
+                         "CHALLENGE_008",
+                         "CHALLENGE_009"
+                     ],
+        "action":  "Treat absence as historical/current schema behavior. Do not synthesize values before a D2 declarative contract explicitly defines them."
+    },
+    {
+        "mismatch_id":  "D0-M04",
+        "category":  "ENTRYPOINT_TOPOLOGY",
+        "status":  "OPEN_REVIEW",
+        "severity":  "INFO",
+        "description":  "Some Challenges have explicit Challenge-specific launcher references while others resolve through shared producer/tooling.",
+        "affected":  [
+                         "CHALLENGE_001",
+                         "CHALLENGE_002",
+                         "CHALLENGE_003",
+                         "CHALLENGE_004",
+                         "CHALLENGE_005",
+                         "CHALLENGE_006",
+                         "CHALLENGE_007",
+                         "CHALLENGE_008",
+                         "CHALLENGE_009"
+                     ],
+        "action":  "Do not create nine independent launchers. Resolve shared Producer/Suite entrypoints during D4."
+    }
+]

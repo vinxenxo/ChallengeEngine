@@ -1,0 +1,83 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "total_references":  306,
+        "definition_references":  2,
+        "test_references":  109,
+        "launcher_references":  3,
+        "current_doc_references":  5,
+        "historical_references":  184
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "total_references":  201,
+        "definition_references":  2,
+        "test_references":  103,
+        "launcher_references":  0,
+        "current_doc_references":  0,
+        "historical_references":  97
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "total_references":  218,
+        "definition_references":  2,
+        "test_references":  107,
+        "launcher_references":  0,
+        "current_doc_references":  0,
+        "historical_references":  105
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "total_references":  220,
+        "definition_references":  1,
+        "test_references":  110,
+        "launcher_references":  0,
+        "current_doc_references":  0,
+        "historical_references":  109
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "total_references":  184,
+        "definition_references":  1,
+        "test_references":  104,
+        "launcher_references":  0,
+        "current_doc_references":  0,
+        "historical_references":  78
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "total_references":  195,
+        "definition_references":  1,
+        "test_references":  104,
+        "launcher_references":  0,
+        "current_doc_references":  0,
+        "historical_references":  85
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "total_references":  174,
+        "definition_references":  1,
+        "test_references":  98,
+        "launcher_references":  0,
+        "current_doc_references":  1,
+        "historical_references":  73
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "total_references":  168,
+        "definition_references":  1,
+        "test_references":  99,
+        "launcher_references":  0,
+        "current_doc_references":  0,
+        "historical_references":  67
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "total_references":  201,
+        "definition_references":  1,
+        "test_references":  101,
+        "launcher_references":  0,
+        "current_doc_references":  4,
+        "historical_references":  88
+    }
+]

@@ -1,0 +1,65 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "files":  [
+                      "challenges/CHALLENGE_001.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "files":  [
+                      "challenges/CHALLENGE_002.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "files":  [
+                      "challenges/CHALLENGE_003.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "files":  [
+                      "challenges/CHALLENGE_004.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "files":  [
+                      "challenges/CHALLENGE_005.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "files":  [
+                      "challenges/CHALLENGE_006.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "files":  [
+                      "challenges/CHALLENGE_007.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "files":  [
+                      "challenges/CHALLENGE_008.json"
+                  ],
+        "file_count":  1
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "files":  [
+                      "challenges/CHALLENGE_009.json"
+                  ],
+        "file_count":  1
+    }
+]

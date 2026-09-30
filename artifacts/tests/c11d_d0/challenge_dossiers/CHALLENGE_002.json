@@ -1,0 +1,121 @@
+﻿{
+    "challenge_id":  "CHALLENGE_002",
+    "mechanic":  "parking",
+    "mechanic_version":  "1.0",
+    "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=parking. No additional historical intent was inferred beyond repository evidence.",
+    "current_definition_path":  ".\\challenges\\CHALLENGE_002.json",
+    "native_timing":  null,
+    "logical_geometry":  null,
+    "source_capture_contract":  {
+                                    "current_video":  {
+                                                          "fps":  60,
+                                                          "hook_duration":  3.0,
+                                                          "game_duration":  7.0,
+                                                          "cta_duration":  0.0,
+                                                          "reveal_duration":  0.0
+                                                      },
+                                    "current_presentation":  {
+                                                                 "profile":  "social_default_v1"
+                                                             },
+                                    "source_profile":  "test_master_11s",
+                                    "source_profile_version":  "1.0"
+                                },
+    "delivery_profiles":  [
+                              {
+                                  "profile":  "test_master_11s",
+                                  "version":  "1.0",
+                                  "source":  ".\\challenges\\CHALLENGE_002.json"
+                              }
+                          ],
+    "asset_references":  [
+                             "res://assets/c6/car.svg",
+                             "res://assets/c6/garage_background.svg",
+                             "res://assets/c6/parking_target.svg"
+                         ],
+    "asset_role_map":  {
+                           "background_path":  "res://assets/c6/garage_background.svg",
+                           "target_path":  "res://assets/c6/parking_target.svg",
+                           "object_path":  "res://assets/c6/car.svg"
+                       },
+    "seed_evidence":  [
+                          "seed=12345 :: tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_A",
+                          "seed=12345 :: tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_B",
+                          "seed=314159 :: tests\\reference\\c11a1\\runs\\challenge_002_seed_314159",
+                          "seed=54321 :: tests\\reference\\c11a1\\runs\\challenge_002_seed_54321",
+                          "seed=7770001 :: tests\\reference\\c11a1\\runs\\challenge_002_seed_7770001",
+                          "seed=998877 :: tests\\reference\\c11a1\\runs\\challenge_002_seed_998877"
+                      ],
+    "production_evidence":  [
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_A\\artifacts\\CHALLENGE_002\\CHALLENGE_002_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_A\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_A\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_A\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_B\\artifacts\\CHALLENGE_002\\CHALLENGE_002_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_B\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_B\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_12345_B\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_314159\\artifacts\\CHALLENGE_002\\CHALLENGE_002_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_314159\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_314159\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_314159\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_54321\\artifacts\\CHALLENGE_002\\CHALLENGE_002_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_54321\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_54321\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_54321\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_7770001\\artifacts\\CHALLENGE_002\\CHALLENGE_002_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_7770001\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_7770001\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_7770001\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_998877\\artifacts\\CHALLENGE_002\\CHALLENGE_002_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_998877\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_998877\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_002_seed_998877\\run_record.json"
+                            ],
+    "test_evidence":  [
+                          "tests/C6F4ShadowRuntimeBridgeTest.gd",
+                          "tests/C7A07MultiProfileCorpusTest.gd",
+                          "tests/C7A08AudioVisualCorpusExportTest.gd",
+                          "tests/C7A501OfficialAudioArtifactManifestTest.gd",
+                          "tests/DeterministicLCGStatelessTest.gd"
+                      ],
+    "historical_docs":  [
+                            "docs/history/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+                            "docs/history/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
+                            "docs/history/c11c/manifests/C11-C_2.19.1_FREEZE_MANIFEST.json",
+                            "docs/history/c11c/releases/C11-C_2.19_CONSOLIDATED_HISTORY.md",
+                            "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json",
+                            "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_FULL_CONSOLIDATED_RECEIPT.md",
+                            "docs/history/c6/C6-F4.2_IMPLEMENTATION.md",
+                            "docs/history/c6/C6-F4.2_STATIC_MATRIX.json",
+                            "docs/history/c6/F1.1_IMPLEMENTATION.md",
+                            "docs/history/legacy-tools/scripts/F4.2_STATIC_TIMING_CHECK.json",
+                            "docs/history/legacy-tools/scripts/phase_duration_contract_test.py",
+                            "docs/history/master-prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
+                            "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.3.6.md",
+                            "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.0.md",
+                            "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.4.1.md",
+                            "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_0.8.1.md",
+                            "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-A.md",
+                            "docs/history/reference/CHECKPOINT_0.3.6_STATUS.md",
+                            "docs/history/reference/contracts/CONTENT_SCHEMA_V0.1.md",
+                            "docs/history/reference/contracts/DATA_MODEL_V0.1.md",
+                            "docs/history/reference/GOVERNANCE_HISTORICAL.md",
+                            "docs/history/reference/mechanics/PILOT_MECHANIC_V2.0.md",
+                            "docs/history/reference/PACKAGE_MANIFEST_1.1.0-C6-D4.txt",
+                            "docs/history/reference/RELEASE_NOTES_1.1.0-C6-D4.md",
+                            "docs/history/reference/ROADMAP_PHASES.md",
+                            "docs/history/root_conflicts/C11-C_2.19_CONSOLIDATION_AND_FAILURE_PREVENTION.md"
+                        ],
+    "known_mismatches":  [
+                             "D0-M01 :: C7 fixture contains canonical_v2; current definition does not; C11A1 reference definition does not. Current definition is authoritative for current state."
+                         ],
+    "open_questions":  [
+                           "native_timing is not explicitly present in the current Challenge definition.",
+                           "logical_geometry is not explicitly present in the current Challenge definition.",
+                           "Seed governance remains deferred to D6; C11A1 seed evidence is retained without promotion to a governed registry."
+                       ],
+    "frozen_contracts_touched":  [
+
+                                 ],
+    "d0_disposition":  "RECOVERED_READ_ONLY. Current Challenge definition, historical C7 fixture, C11A1 reference runs and repository test evidence recorded. No frozen contract modified."
+}

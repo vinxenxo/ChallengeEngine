@@ -1,0 +1,202 @@
+﻿[
+    {
+        "path":  "c6\\car.svg",
+        "bytes":  208,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\car.svg.import",
+        "bytes":  1019,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\catcher.svg",
+        "bytes":  165,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\catcher.svg.import",
+        "bytes":  1032,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\choose_background.svg",
+        "bytes":  797,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\choose_background.svg.import",
+        "bytes":  1062,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\count_background.svg",
+        "bytes":  364,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\count_background.svg.import",
+        "bytes":  1059,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\cursor.svg",
+        "bytes":  194,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\cursor.svg.import",
+        "bytes":  1028,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\garage_background.svg",
+        "bytes":  127,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\garage_background.svg.import",
+        "bytes":  1062,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\key.svg",
+        "bytes":  361,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\key.svg.import",
+        "bytes":  1019,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\lock.svg",
+        "bytes":  301,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\lock.svg.import",
+        "bytes":  1022,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\parking_target.svg",
+        "bytes":  192,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\parking_target.svg.import",
+        "bytes":  1053,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\pilot.svg",
+        "bytes":  156,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\pilot.svg.import",
+        "bytes":  1026,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\projectile.svg",
+        "bytes":  145,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\projectile.svg.import",
+        "bytes":  1041,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\scanner.svg",
+        "bytes":  328,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\scanner.svg.import",
+        "bytes":  1032,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\target.svg",
+        "bytes":  227,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\target.svg.import",
+        "bytes":  1029,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\transparent.svg",
+        "bytes":  136,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\transparent.svg.import",
+        "bytes":  1044,
+        "extension":  ".import"
+    },
+    {
+        "path":  "c6\\waypoint.svg",
+        "bytes":  200,
+        "extension":  ".svg"
+    },
+    {
+        "path":  "c6\\waypoint.svg.import",
+        "bytes":  1034,
+        "extension":  ".import"
+    },
+    {
+        "path":  "fonts\\Comic-Sans-MS.ttf",
+        "bytes":  135484,
+        "extension":  ".ttf"
+    },
+    {
+        "path":  "fonts\\Comic-Sans-MS.ttf.import",
+        "bytes":  777,
+        "extension":  ".import"
+    },
+    {
+        "path":  "fonts\\courier-regular.ttf",
+        "bytes":  61680,
+        "extension":  ".ttf"
+    },
+    {
+        "path":  "fonts\\courier-regular.ttf.import",
+        "bytes":  783,
+        "extension":  ".import"
+    },
+    {
+        "path":  "fonts\\Inter-Bold.otf",
+        "bytes":  631880,
+        "extension":  ".otf"
+    },
+    {
+        "path":  "fonts\\Inter-Bold.otf.import",
+        "bytes":  768,
+        "extension":  ".import"
+    },
+    {
+        "path":  "fonts\\LICENSE-C11C-FONTS.txt",
+        "bytes":  11586,
+        "extension":  ".txt"
+    },
+    {
+        "path":  "fonts\\NotoSansMono-Regular.ttf",
+        "bytes":  510612,
+        "extension":  ".ttf"
+    },
+    {
+        "path":  "fonts\\NotoSansMono-Regular.ttf.import",
+        "bytes":  798,
+        "extension":  ".import"
+    },
+    {
+        "path":  "reference\\README.md",
+        "bytes":  227,
+        "extension":  ".md"
+    }
+]

@@ -1,0 +1,126 @@
+﻿{
+    "challenge_id":  "CHALLENGE_009",
+    "mechanic":  "count_v1",
+    "mechanic_version":  null,
+    "historical_intent":  "RECOVERY EVIDENCE ONLY — mechanic=count_v1. No additional historical intent was inferred beyond repository evidence.",
+    "current_definition_path":  ".\\challenges\\CHALLENGE_009.json",
+    "native_timing":  null,
+    "logical_geometry":  null,
+    "source_capture_contract":  {
+                                    "current_video":  {
+                                                          "fps":  60,
+                                                          "total_duration":  11.0,
+                                                          "hook_duration":  3.0,
+                                                          "game_duration":  7.0,
+                                                          "reveal_duration":  0.0,
+                                                          "cta_duration":  2.0
+                                                      },
+                                    "current_presentation":  {
+                                                                 "coordinate_space":  "CANVAS_1080X1920",
+                                                                 "secondary_binding":  "static_position",
+                                                                 "profile":  "social_default_v1"
+                                                             },
+                                    "source_profile":  null,
+                                    "source_profile_version":  null
+                                },
+    "delivery_profiles":  [
+
+                          ],
+    "asset_references":  [
+                             "res://assets/c6/count_background.svg",
+                             "res://assets/c6/cursor.svg",
+                             "res://assets/c6/transparent.svg"
+                         ],
+    "asset_role_map":  {
+                           "background_path":  "res://assets/c6/count_background.svg",
+                           "target_path":  "res://assets/c6/transparent.svg",
+                           "object_path":  "res://assets/c6/cursor.svg"
+                       },
+    "seed_evidence":  [
+                          "seed=12345 :: tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_A",
+                          "seed=12345 :: tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_B",
+                          "seed=314159 :: tests\\reference\\c11a1\\runs\\challenge_009_seed_314159",
+                          "seed=54321 :: tests\\reference\\c11a1\\runs\\challenge_009_seed_54321",
+                          "seed=7770001 :: tests\\reference\\c11a1\\runs\\challenge_009_seed_7770001",
+                          "seed=998877 :: tests\\reference\\c11a1\\runs\\challenge_009_seed_998877"
+                      ],
+    "production_evidence":  [
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_A\\artifacts\\CHALLENGE_009\\CHALLENGE_009_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_A\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_A\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_A\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_B\\artifacts\\CHALLENGE_009\\CHALLENGE_009_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_B\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_B\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_12345_B\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_314159\\artifacts\\CHALLENGE_009\\CHALLENGE_009_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_314159\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_314159\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_314159\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_54321\\artifacts\\CHALLENGE_009\\CHALLENGE_009_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_54321\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_54321\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_54321\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_7770001\\artifacts\\CHALLENGE_009\\CHALLENGE_009_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_7770001\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_7770001\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_7770001\\run_record.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_998877\\artifacts\\CHALLENGE_009\\CHALLENGE_009_manifest.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_998877\\challenge_definition.json",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_998877\\factory_stdout.txt",
+                                "tests\\reference\\c11a1\\runs\\challenge_009_seed_998877\\run_record.json"
+                            ],
+    "test_evidence":  [
+                          "tests/C6E3RuntimePresentationValidationTest.gd",
+                          "tests/C6EAssetIntegrityTest.gd",
+                          "tests/C6F4CanonicalV2CountTest.gd",
+                          "tests/C6F4ShadowRuntimeBridgeTest.gd"
+                      ],
+    "historical_docs":  [
+                            "docs/current/challenges/CHALLENGE_ASSET_RECOVERY_STARTING_POINT.md",
+                            "docs/current/d/C11-D_BRANCH_START_V1.0.md",
+                            "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+                            "docs/current/d/D0_CHALLENGE_RECOVERY_DOSSIER_SCHEMA.md",
+                            "docs/history/c11/C11A1_CHALLENGE_SEED_QUALIFICATION_CONTRACT.md",
+                            "docs/history/c11/C11A1_CURRENT_MATRIX_AUDIT.md",
+                            "docs/history/c11c/manifests/C11-C_2.19.1_FREEZE_MANIFEST.json",
+                            "docs/history/c11c/releases/C11C_2.17.8_VIDEO_DELIVERY_STANDARD.md",
+                            "docs/history/c11c/releases/superseded_2.19/challenge_legacy_current_docs/C11C_2.17.6_CHALLENGE_CAPTURE_CONTRACT_AUDIT.md",
+                            "docs/history/c11c/releases/superseded_2.19/current_snapshots/docs_current_c11c/C11C_2.17.8_VIDEO_DELIVERY_STANDARD.md",
+                            "docs/history/c11c/releases/superseded_2.19/producer_legacy_current_docs/C11C_PRODUCER_2.16.9_ADAPTATION.md",
+                            "docs/history/c11c/releases/superseded_2.19/producer_legacy_prompts/C11C_PRODUCER_0.8.0_RUNTIME_ACCEPTANCE.md",
+                            "docs/history/c11c/releases/superseded_2.19/root_context/C11C_2.19.12_FINAL_CLOSURE_CANDIDATE_MANIFEST.json",
+                            "docs/history/c11c/releases/superseded_2.19/studio_legacy_current_docs/C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION.md",
+                            "docs/history/c11c/releases/superseded_2.19/studio_legacy_current_docs/C11C_STUDIO_MASTER_SPEC_v2.1.4_FULL_CONFIGURATION_20260930_074033.md",
+                            "docs/history/c11c/releases/superseded_2.19/suite_legacy_current_docs/C11C_SUITE_0.1.0_ARCHITECTURE.md",
+                            "docs/history/c11c/releases/superseded_2.19/suite_legacy_current_docs/C11C_SUITE_0.1.1_ARCHITECTURE.md",
+                            "docs/history/c11-freeze/03_RETROCOMPATIBILITY.md",
+                            "docs/history/c6/C6-E_IMPLEMENTATION_NOTES.md",
+                            "docs/history/c6/C6-E_STEP0_E1_REPORT.md",
+                            "docs/history/c6/C6-F4.2_IMPLEMENTATION.md",
+                            "docs/history/c6/C6-F4.2_STATIC_MATRIX.json",
+                            "docs/history/c6/SECONDARY_PROGRAMMER_NAVIGATION_C6_F0_8_C7.md",
+                            "docs/history/legacy-tools/scripts/F4.2_STATIC_TIMING_CHECK.json",
+                            "docs/history/master-prompts/MASTER HANDOVER #U2014 ChallengeEngineV01_STATELESS #U2014 C7-A3 FROZEN - CERTIFIED.md",
+                            "docs/history/master-prompts/MASTER_HANDOVER_CHECKPOINT_1.1.0-C6-E-E1.md",
+                            "docs/history/master-prompts/START PROMPT #U2014 ChallengeEngineV01_STATELESS #U2014 Continuaci#U00f3n despu#U00e9s de C7-A3.md",
+                            "docs/history/producer/C11C_PRODUCER_0.8.0_RUNTIME_ACCEPTANCE.md",
+                            "docs/history/producer/C11C_PRODUCER_2.16.9_ADAPTATION.md",
+                            "docs/history/reference/contracts/CONTENT_SCHEMA_V0.1.md",
+                            "docs/history/reference/contracts/DATA_MODEL_V0.1.md",
+                            "docs/history/suite/C11C_SUITE_0.1.0_ARCHITECTURE.md"
+                        ],
+    "known_mismatches":  [
+                             "D0-M01 :: C7 fixture contains canonical_v2; current definition does not; C11A1 reference definition does not. Current definition is authoritative for current state.",
+                             "D0-M02 :: Current metadata surface is sparse relative to CHALLENGE_001-004; absent fields are not synthesized."
+                         ],
+    "open_questions":  [
+                           "native_timing is not explicitly present in the current Challenge definition.",
+                           "logical_geometry is not explicitly present in the current Challenge definition.",
+                           "Seed governance remains deferred to D6; C11A1 seed evidence is retained without promotion to a governed registry."
+                       ],
+    "frozen_contracts_touched":  [
+
+                                 ],
+    "d0_disposition":  "RECOVERED_READ_ONLY. Current Challenge definition, historical C7 fixture, C11A1 reference runs and repository test evidence recorded. No frozen contract modified."
+}

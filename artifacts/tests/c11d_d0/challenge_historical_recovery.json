@@ -1,0 +1,518 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "fixture_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "reference_properties":  [
+                                     "asset_family",
+                                     "asset_family_version",
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "engine_version",
+                                     "generation",
+                                     "mechanic",
+                                     "mechanic_version",
+                                     "presentation",
+                                     "schema_version",
+                                     "theme",
+                                     "video",
+                                     "video_profile",
+                                     "video_profile_version"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "fixture_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "reference_properties":  [
+                                     "asset_family",
+                                     "asset_family_version",
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "engine_version",
+                                     "generation",
+                                     "mechanic",
+                                     "mechanic_version",
+                                     "presentation",
+                                     "schema_version",
+                                     "theme",
+                                     "video",
+                                     "video_profile",
+                                     "video_profile_version"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "fixture_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "reference_properties":  [
+                                     "asset_family",
+                                     "asset_family_version",
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "engine_version",
+                                     "generation",
+                                     "mechanic",
+                                     "mechanic_version",
+                                     "presentation",
+                                     "schema_version",
+                                     "theme",
+                                     "video",
+                                     "video_profile",
+                                     "video_profile_version"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "fixture_properties":  [
+                                   "asset_family",
+                                   "asset_family_version",
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "engine_version",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "schema_version",
+                                   "theme",
+                                   "video",
+                                   "video_profile",
+                                   "video_profile_version"
+                               ],
+        "reference_properties":  [
+                                     "asset_family",
+                                     "asset_family_version",
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "engine_version",
+                                     "generation",
+                                     "mechanic",
+                                     "mechanic_version",
+                                     "presentation",
+                                     "schema_version",
+                                     "theme",
+                                     "video",
+                                     "video_profile",
+                                     "video_profile_version"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "video"
+                               ],
+        "fixture_properties":  [
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "mechanic_version",
+                                   "presentation",
+                                   "video"
+                               ],
+        "reference_properties":  [
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "generation",
+                                     "mechanic",
+                                     "mechanic_version",
+                                     "presentation",
+                                     "video"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "fixture_properties":  [
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "reference_properties":  [
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "generation",
+                                     "mechanic",
+                                     "presentation",
+                                     "video"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "assets",
+                                   "autovetting",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "fixture_properties":  [
+                                   "assets",
+                                   "autovetting",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "reference_properties":  [
+                                     "assets",
+                                     "autovetting",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "generation",
+                                     "mechanic",
+                                     "presentation",
+                                     "video"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "fixture_properties":  [
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "reference_properties":  [
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "generation",
+                                     "mechanic",
+                                     "presentation",
+                                     "video"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "current_exists":  true,
+        "fixture_c7_exists":  true,
+        "reference_c11a1_exists":  true,
+        "current_properties":  [
+                                   "assets",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "fixture_properties":  [
+                                   "assets",
+                                   "canonical_v2",
+                                   "challenge_id",
+                                   "content",
+                                   "difficulty",
+                                   "generation",
+                                   "mechanic",
+                                   "presentation",
+                                   "video"
+                               ],
+        "reference_properties":  [
+                                     "assets",
+                                     "challenge_id",
+                                     "content",
+                                     "difficulty",
+                                     "generation",
+                                     "mechanic",
+                                     "presentation",
+                                     "video"
+                                 ],
+        "current_only":  [
+
+                         ],
+        "fixture_only":  [
+                             "canonical_v2"
+                         ],
+        "reference_only":  [
+
+                           ]
+    }
+]

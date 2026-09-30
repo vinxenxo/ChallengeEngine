@@ -1,0 +1,38 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "matches":  306
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "matches":  201
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "matches":  218
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "matches":  220
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "matches":  184
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "matches":  195
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "matches":  174
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "matches":  168
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "matches":  201
+    }
+]

@@ -1,0 +1,191 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "current":  {
+                        "mechanic":  "key",
+                        "mechanic_version":  "1.0",
+                        "schema_version":  "1.0",
+                        "asset_family":  "fam_001"
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "key",
+                           "mechanic_version":  "1.0",
+                           "schema_version":  "1.0",
+                           "asset_family":  "fam_001"
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "key",
+                                "mechanic_version":  "1.0",
+                                "schema_version":  "1.0",
+                                "asset_family":  "fam_001"
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "current":  {
+                        "mechanic":  "parking",
+                        "mechanic_version":  "1.0",
+                        "schema_version":  "1.0",
+                        "asset_family":  "fam_garage_01"
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "parking",
+                           "mechanic_version":  "1.0",
+                           "schema_version":  "1.0",
+                           "asset_family":  "fam_garage_01"
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "parking",
+                                "mechanic_version":  "1.0",
+                                "schema_version":  "1.0",
+                                "asset_family":  "fam_garage_01"
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "current":  {
+                        "mechanic":  "pilot",
+                        "mechanic_version":  "2.0",
+                        "schema_version":  "1.0",
+                        "asset_family":  "fam_001"
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "pilot",
+                           "mechanic_version":  "2.0",
+                           "schema_version":  "1.0",
+                           "asset_family":  "fam_001"
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "pilot",
+                                "mechanic_version":  "2.0",
+                                "schema_version":  "1.0",
+                                "asset_family":  "fam_001"
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "current":  {
+                        "mechanic":  "parking_v2",
+                        "mechanic_version":  "2.0",
+                        "schema_version":  "1.0",
+                        "asset_family":  "fam_garage_01"
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "parking_v2",
+                           "mechanic_version":  "2.0",
+                           "schema_version":  "1.0",
+                           "asset_family":  "fam_garage_01"
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "parking_v2",
+                                "mechanic_version":  "2.0",
+                                "schema_version":  "1.0",
+                                "asset_family":  "fam_garage_01"
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "current":  {
+                        "mechanic":  "hit_v1",
+                        "mechanic_version":  "1.0",
+                        "schema_version":  null,
+                        "asset_family":  null
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "hit_v1",
+                           "mechanic_version":  "1.0",
+                           "schema_version":  null,
+                           "asset_family":  null
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "hit_v1",
+                                "mechanic_version":  "1.0",
+                                "schema_version":  null,
+                                "asset_family":  null
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "current":  {
+                        "mechanic":  "catch_v1",
+                        "mechanic_version":  null,
+                        "schema_version":  null,
+                        "asset_family":  null
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "catch_v1",
+                           "mechanic_version":  null,
+                           "schema_version":  null,
+                           "asset_family":  null
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "catch_v1",
+                                "mechanic_version":  null,
+                                "schema_version":  null,
+                                "asset_family":  null
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "current":  {
+                        "mechanic":  "find_v1",
+                        "mechanic_version":  null,
+                        "schema_version":  null,
+                        "asset_family":  null
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "find_v1",
+                           "mechanic_version":  null,
+                           "schema_version":  null,
+                           "asset_family":  null
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "find_v1",
+                                "mechanic_version":  null,
+                                "schema_version":  null,
+                                "asset_family":  null
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "current":  {
+                        "mechanic":  "choose_v1",
+                        "mechanic_version":  null,
+                        "schema_version":  null,
+                        "asset_family":  null
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "choose_v1",
+                           "mechanic_version":  null,
+                           "schema_version":  null,
+                           "asset_family":  null
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "choose_v1",
+                                "mechanic_version":  null,
+                                "schema_version":  null,
+                                "asset_family":  null
+                            }
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "current":  {
+                        "mechanic":  "count_v1",
+                        "mechanic_version":  null,
+                        "schema_version":  null,
+                        "asset_family":  null
+                    },
+        "c7_fixture":  {
+                           "mechanic":  "count_v1",
+                           "mechanic_version":  null,
+                           "schema_version":  null,
+                           "asset_family":  null
+                       },
+        "c11a1_reference":  {
+                                "mechanic":  "count_v1",
+                                "mechanic_version":  null,
+                                "schema_version":  null,
+                                "asset_family":  null
+                            }
+    }
+]

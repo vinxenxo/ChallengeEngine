@@ -1,0 +1,182 @@
+﻿[
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_001",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_002",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_003",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_004",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_005",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_006",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_007",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_008",
+        "seed":  "998877"
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "seed":  "12345"
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "seed":  "314159"
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "seed":  "54321"
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "seed":  "7770001"
+    },
+    {
+        "challenge_id":  "CHALLENGE_009",
+        "seed":  "998877"
+    }
+]
