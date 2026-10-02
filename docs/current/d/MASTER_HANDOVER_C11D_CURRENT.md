@@ -2,105 +2,72 @@
 
 ## Current phase
 
-C11-D â€” Declarative Challenge recovery, visual/editorial parity, reusable asset families, production and provenance pipeline.
+C11-D â€” Normalization of Challenge video generation using recovered C11-A/C11-B Challenge content and mature declarative production contracts from C11-C.
 
-## Current checkpoint
+## Strategic objective
 
-D2.1 â€” Declarative Asset Family Registry / Evidence Binding
-STATUS: ACTIVE
+Create one robust, reproducible, declarative production architecture for Challenge videos.
+C11-C Visual Loop and Visual Drill are reference families whose production contracts inform normalization; they are not being reclassified as Challenge families.
 
-## Frozen reference baseline
+## C11-D status
 
-C11-C 2.19.12 is FROZEN and IMMUTABLE.
+D0: CLOSED / PASS
+D1: functional checkpoints complete
+D2.0: CLOSED / PASS
+D2.1: PASS / VALIDATED
+D2.2: PASS / CLOSED
+D2.3: PASS / CLOSED
+D2: CLOSED
+D3: ACTIVE
 
-Frozen ZIP:
-ChallengeEngineV01_STATELESS_C11-C_2.19.12_FROZEN_20260930_175709.zip
+## D2.3 canonical registry
 
-Frozen ZIP SHA-256:
-D85425CF18C5211C8497574F4FC66202D613EACC0EC14CD4E2FEF0B24F634A32
-
-Frozen tree SHA-256:
-2D39B7B923B42CDC6647A4D25493B75023CDD19CEE18214BBDE1FDD295B8F256
-
-build_factory.py SHA-256:
-3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F6771F0679D2A3
-
-## Closed checkpoints
-
-D0 â€” CLOSED / PASS
-9/9 Challenge dossiers recovered and evidenced.
-
-D1 â€” functional checkpoints complete.
-D1.0 source audit: PASS
-D1.1 visual/editorial mapping: PASS
-D1.5 canonical Instagram Reels layout profile established
-D1.6 contract regression: 5/5 PASS
-D1.7 declarative Challenge mapping: 9/9 PASS
-
-D2.0 â€” CLOSED / PASS
-15 logical C6 assets audited.
-9/9 Challenges audited.
-9/9 D0 dossiers discovered.
-2 explicit asset family groups.
-5 Challenges remain UNKNOWN for asset family.
-27 asset references.
-0 unresolved asset references.
-0 family promotions.
-0 family merges.
-0 protected C11-C source modifications.
-
-## D2.0 evidence
-
-Audit:
-artifacts\tests\c11d_d2\d2_0_asset_family_audit.json
+definitions\c11d\asset_families\C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json
 
 Contract:
-docs\current\d\D2.0_ASSET_FAMILY_AUDIT_CONTRACT.md
+docs\current\d\D2.3_ASSET_FAMILY_INTEGRATION_CONTRACT.md
 
 Receipt:
-artifacts\tests\c11d_d2\d2_0_validation_receipt.json
+artifacts\tests\c11d_d2\d2_3_validation_receipt.json
 
-## D2.1 active scope
+D2 final handoff:
+artifacts\tests\c11d_d2\d2_phase_closure_d3_handoff.json
 
-Build an additive declarative asset-family registry from the D2.0 audit evidence.
+## D2 final evidence
 
-The registry is an evidence-binding layer, not runtime activation authority.
+15 logical C6 assets.
+2 explicit asset families.
+9 Challenge bindings.
+5 UNKNOWN family Challenge bindings retained.
+15 explicit role assets.
+0 UNKNOWN role assets.
+1 CROSS_FAMILY_REUSE.
+0 TRUE_FAMILY_CONFLICT.
+27 asset references.
+0 unresolved references.
+Runtime authority remains NONE.
 
-Rules:
-1. Preserve explicit asset_family and asset_family_version evidence.
-2. Preserve UNKNOWN where evidence is insufficient.
-3. Do not infer family membership from filenames alone.
-4. Do not collapse assets solely because SHA-256 values match.
-5. Preserve current Challenge references and D0 provenance separately.
-6. Historical evidence remains provenance/reference until explicitly promoted.
-7. Do not modify simulation, mechanics, RNG, SimulationResult, winning_frame, close_calls, WinningFrameDetector, RenderedFrameStream, C7, C9, frozen C11-C presentation, or frozen C11-C production.
+## D3 â€” Procedural Music V5
 
-## Explicit D2.0 family groups
+D3 is the next major C11-D phase.
+Objective: normalize procedural music generation as a declarative, deterministic production component for Challenge videos without changing Challenge simulation truth.
 
-System.Object[]
+Required D3 boundaries:
+1. deterministic generation
+2. declarative music profile/configuration
+3. provenance of generated audio
+4. no simulation or mechanics changes
+5. no reopening frozen C11-C production
+6. compatibility with later normalized Production Request
 
-## UNKNOWN bindings
+## Frozen reference
 
-System.Object[]
+C11-C 2.19.12 remains FROZEN and IMMUTABLE.
+ZIP SHA-256: D85425CF18C5211C8497574F4FC66202D613EACC0EC14CD4E2FEF0B24F634A32
+TREE SHA-256: 2D39B7B923B42CDC6647A4D25493B75023CDD19CEE18214BBDE1FDD295B8F256
+build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F6771F0679D2A3
 
-## D2.1 registry
+## Context switching
 
-definitions\c11d\asset_families\C11D_ASSET_FAMILY_REGISTRY_V1.json
-
-## D2.1 contract
-
-docs\current\d\D2.1_ASSET_FAMILY_REGISTRY_CONTRACT.md
-
-## D2.1 receipt
-
-artifacts\tests\c11d_d2\d2_1_validation_receipt.json
-
-## Next-context rule
-
-A new context must read MASTER_HANDOVER_C11D_CURRENT.md first, then START_PROMPT_C11D_CURRENT.md, then the D2.0 audit and D2.1 registry, contract and receipt.
-Do not reopen D2.0 unless new contradictory evidence appears.
-
-## Prompt maintenance rule
-
-Update MASTER HANDOVER and START PROMPT at every major milestone and checkpoint handoff.
-Snapshot the previous living prompts under docs\history\master-prompts\c11d before replacing them.
+Read MASTER_HANDOVER_C11D_CURRENT.md first, then START_PROMPT_C11D_CURRENT.md, then D3 artifacts.
+Living prompts must be snapshotted before each major milestone update.

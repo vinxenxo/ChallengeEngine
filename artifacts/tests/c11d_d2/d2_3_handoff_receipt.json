@@ -1,0 +1,15 @@
+{
+    "checkpoint":  "C11-D D2.3",
+    "status":  "ACTIVE",
+    "handoff_from":  "D2.2",
+    "d2_2_receipt":  "artifacts\\tests\\c11d_d2\\d2_2_validation_receipt.json",
+    "d2_1_registry":  "definitions\\c11d\\asset_families\\C11D_ASSET_FAMILY_REGISTRY_V1.json",
+    "contract":  "docs\\current\\d\\D2.3_ASSET_FAMILY_INTEGRATION_CONTRACT.md",
+    "scope":  "Canonical declarative binding layer; no runtime activation.",
+    "protected_runtime_changes":  false,
+    "renderer_changes":  false,
+    "simulation_changes":  false,
+    "mechanics_changes":  false,
+    "rng_changes":  false,
+    "next_checkpoint":  "D2.3 implementation / validation"
+}

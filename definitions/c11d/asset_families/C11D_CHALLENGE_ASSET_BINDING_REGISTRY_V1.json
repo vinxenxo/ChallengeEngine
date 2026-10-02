@@ -1,0 +1,1028 @@
+{
+    "registry_id":  "c11d_challenge_asset_binding_registry_v1",
+    "schema_version":  "1.0",
+    "phase":  "C11-D",
+    "checkpoint":  "D2.3",
+    "status":  "CLOSED",
+    "runtime_authority":  "NONE",
+    "purpose":  "Canonical declarative binding between recovered Challenge production metadata and reusable asset-family evidence.",
+    "identity_separation":  {
+                                "asset_id":  "Concrete asset identity based on declared source path.",
+                                "asset_family":  "Reusable family identity.",
+                                "asset_role":  "Semantic role backed by evidence.",
+                                "provenance":  "Source evidence location and lineage."
+                            },
+    "source_evidence":  {
+                            "d2_0_audit":  "artifacts\\tests\\c11d_d2\\d2_0_asset_family_audit.json",
+                            "d2_0_receipt":  "artifacts\\tests\\c11d_d2\\d2_0_validation_receipt.json",
+                            "d2_1_registry":  "definitions\\c11d\\asset_families\\C11D_ASSET_FAMILY_REGISTRY_V1.json",
+                            "d2_1_receipt":  "artifacts\\tests\\c11d_d2\\d2_1_validation_receipt.json",
+                            "d2_2_matrix":  "artifacts\\tests\\c11d_d2\\d2_2_asset_role_evidence_matrix.json",
+                            "d2_2_receipt":  "artifacts\\tests\\c11d_d2\\d2_2_validation_receipt.json"
+                        },
+    "rules":  [
+                  "Explicit family evidence is preserved.",
+                  "UNKNOWN family evidence remains explicit.",
+                  "Explicit role evidence is preserved.",
+                  "Filename semantics alone are not authoritative.",
+                  "SHA-256 equality does not authorize asset merging.",
+                  "Cross-family reuse is admissible reuse.",
+                  "True family conflict count must remain zero.",
+                  "Historical evidence remains provenance.",
+                  "Registry is declarative and has no runtime authority."
+              ],
+    "counts":  {
+                   "logical_assets":  15,
+                   "families":  2,
+                   "challenges":  9,
+                   "unknown_family_challenges":  5,
+                   "cross_family_reuse":  1,
+                   "true_family_conflicts":  0
+               },
+    "assets":  [
+                   {
+                       "asset_id":  "c6:assets/c6/car.svg",
+                       "asset_path":  "assets\\c6\\car.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  208,
+                       "sha256":  "93A6F78D9654F7917AB2287800858A937E9C68C458CC60BF417D6F2B98C1A96D",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/catcher.svg",
+                       "asset_path":  "assets\\c6\\catcher.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  165,
+                       "sha256":  "2C99475157623F88DC7C874169589EC048696F7848E8673477852348FBAEC8BD",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/choose_background.svg",
+                       "asset_path":  "assets\\c6\\choose_background.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  797,
+                       "sha256":  "11B3AC5E70AB6F1E15AC99FCF1B5AC36626A553E14A450B592A8FD598FA6DCE2",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/count_background.svg",
+                       "asset_path":  "assets\\c6\\count_background.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  364,
+                       "sha256":  "19936242890592B04BFB43FC4C27D3A3CE08688321FE60D008D3E75584885FA7",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/cursor.svg",
+                       "asset_path":  "assets\\c6\\cursor.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  194,
+                       "sha256":  "8B62FDD3AF3F868CA0222C0089DDA5C086BACA7596C02A75F6B5CC7FB577BF4B",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/garage_background.svg",
+                       "asset_path":  "assets\\c6\\garage_background.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  127,
+                       "sha256":  "C9D8ACDAE725CA7726FC8AD23A046E4AAC4D9E454B45DB40D2C770732B31AB1E",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/key.svg",
+                       "asset_path":  "assets\\c6\\key.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  361,
+                       "sha256":  "817FE28028A153F0895CA6CC24CE6F17294691DE31E2D9CED5BAC952585D9121",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/lock.svg",
+                       "asset_path":  "assets\\c6\\lock.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  301,
+                       "sha256":  "4FC1637D3ACD24B5B853DBAC380D76459DF8F2D324B4B093FF21862741615167",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/parking_target.svg",
+                       "asset_path":  "assets\\c6\\parking_target.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  192,
+                       "sha256":  "EC2DCAFD7DFC99FF501EB2D93B93906680A30C48CF0741807CBBDD915A18CFB3",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/pilot.svg",
+                       "asset_path":  "assets\\c6\\pilot.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  156,
+                       "sha256":  "AEDDC9783AF06B86A188F8400F60447F6F8E4EAC1BA7A40C0DCF88B981AE94FB",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/projectile.svg",
+                       "asset_path":  "assets\\c6\\projectile.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  145,
+                       "sha256":  "2D2F4DFE893AD00E85DACAFE930AD3BF60968EAAFA359898473C4A8A465C5254",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/scanner.svg",
+                       "asset_path":  "assets\\c6\\scanner.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  328,
+                       "sha256":  "90BC530D130C7550C54FEED3EAA07EE90B6BF9DE087A2AFD5D5D1F74540E6804",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/target.svg",
+                       "asset_path":  "assets\\c6\\target.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  227,
+                       "sha256":  "7EBB32EB86848C01E2F03370BC33106928B94ECD02EB5B663F8E6E7930A52547",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/transparent.svg",
+                       "asset_path":  "assets\\c6\\transparent.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  136,
+                       "sha256":  "091CE32577CE45D14F91C8249F942289B6AB926C735CE69000D6ECEC8574DB21",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   },
+                   {
+                       "asset_id":  "c6:assets/c6/waypoint.svg",
+                       "asset_path":  "assets\\c6\\waypoint.svg",
+                       "extension":  ".svg",
+                       "size_bytes":  200,
+                       "sha256":  "49C3292BD900C865441DE92F5A3E5DD21814EEEB3108E9827BFE6515310EB142",
+                       "identity_basis":  "DECLARED_SOURCE_PATH",
+                       "semantic_role":  "EVIDENCE_FROM_D2.2"
+                   }
+               ],
+    "families":  [
+                     {
+                         "asset_family":  "fam_001",
+                         "asset_family_versions":  [
+                                                       "1.0"
+                                                   ],
+                         "lifecycle":  "EVIDENCE_BACKED",
+                         "runtime_activation":  "NONE",
+                         "challenge_bindings":  [
+                                                    "CHALLENGE_001",
+                                                    "CHALLENGE_003"
+                                                ],
+                         "evidence_records":  [
+                                                  {
+                                                      "challenge_id":  "CHALLENGE_001",
+                                                      "source_kind":  "CURRENT_CHALLENGE_DEFINITION",
+                                                      "source_file":  "challenges\\CHALLENGE_001.json",
+                                                      "asset_family":  "fam_001",
+                                                      "asset_family_version":  "1.0",
+                                                      "evidence_status":  "EXPLICIT"
+                                                  },
+                                                  {
+                                                      "challenge_id":  "CHALLENGE_003",
+                                                      "source_kind":  "CURRENT_CHALLENGE_DEFINITION",
+                                                      "source_file":  "challenges\\CHALLENGE_003.json",
+                                                      "asset_family":  "fam_001",
+                                                      "asset_family_version":  "1.0",
+                                                      "evidence_status":  "EXPLICIT"
+                                                  }
+                                              ]
+                     },
+                     {
+                         "asset_family":  "fam_garage_01",
+                         "asset_family_versions":  [
+                                                       "1.0"
+                                                   ],
+                         "lifecycle":  "EVIDENCE_BACKED",
+                         "runtime_activation":  "NONE",
+                         "challenge_bindings":  [
+                                                    "CHALLENGE_002",
+                                                    "CHALLENGE_004"
+                                                ],
+                         "evidence_records":  [
+                                                  {
+                                                      "challenge_id":  "CHALLENGE_002",
+                                                      "source_kind":  "CURRENT_CHALLENGE_DEFINITION",
+                                                      "source_file":  "challenges\\CHALLENGE_002.json",
+                                                      "asset_family":  "fam_garage_01",
+                                                      "asset_family_version":  "1.0",
+                                                      "evidence_status":  "EXPLICIT"
+                                                  },
+                                                  {
+                                                      "challenge_id":  "CHALLENGE_004",
+                                                      "source_kind":  "CURRENT_CHALLENGE_DEFINITION",
+                                                      "source_file":  "challenges\\CHALLENGE_004.json",
+                                                      "asset_family":  "fam_garage_01",
+                                                      "asset_family_version":  "1.0",
+                                                      "evidence_status":  "EXPLICIT"
+                                                  }
+                                              ]
+                     }
+                 ],
+    "challenges":  [
+                       {
+                           "challenge_id":  "CHALLENGE_001",
+                           "mechanic":  "key",
+                           "mechanic_version":  "1.0",
+                           "current_definition":  "challenges\\CHALLENGE_001.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                           "asset_family":  "fam_001",
+                           "asset_family_version":  "1.0",
+                           "family_binding_status":  "EXPLICIT",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/key.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\key.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/lock.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\lock.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/lock.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/key.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_001.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_002",
+                           "mechanic":  "parking",
+                           "mechanic_version":  "1.0",
+                           "current_definition":  "challenges\\CHALLENGE_002.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                           "asset_family":  "fam_garage_01",
+                           "asset_family_version":  "1.0",
+                           "family_binding_status":  "EXPLICIT",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/car.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\car.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/parking_target.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\parking_target.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/parking_target.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/car.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_002.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_003",
+                           "mechanic":  "pilot",
+                           "mechanic_version":  "2.0",
+                           "current_definition":  "challenges\\CHALLENGE_003.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                           "asset_family":  "fam_001",
+                           "asset_family_version":  "1.0",
+                           "family_binding_status":  "EXPLICIT",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/pilot.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\pilot.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/waypoint.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\waypoint.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/waypoint.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/pilot.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_003.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_004",
+                           "mechanic":  "parking_v2",
+                           "mechanic_version":  "2.0",
+                           "current_definition":  "challenges\\CHALLENGE_004.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                           "asset_family":  "fam_garage_01",
+                           "asset_family_version":  "1.0",
+                           "family_binding_status":  "EXPLICIT",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/car.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\car.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/parking_target.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\parking_target.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/parking_target.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/car.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_004.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_005",
+                           "mechanic":  "hit_v1",
+                           "mechanic_version":  "1.0",
+                           "current_definition":  "challenges\\CHALLENGE_005.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                           "asset_family":  "UNKNOWN",
+                           "asset_family_version":  null,
+                           "family_binding_status":  "UNKNOWN",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/projectile.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\projectile.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/target.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\target.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/target.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/projectile.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_005.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_006",
+                           "mechanic":  "catch_v1",
+                           "mechanic_version":  null,
+                           "current_definition":  "challenges\\CHALLENGE_006.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                           "asset_family":  "UNKNOWN",
+                           "asset_family_version":  null,
+                           "family_binding_status":  "UNKNOWN",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/catcher.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\catcher.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/target.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\target.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/target.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/catcher.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_006.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_007",
+                           "mechanic":  "find_v1",
+                           "mechanic_version":  null,
+                           "current_definition":  "challenges\\CHALLENGE_007.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                           "asset_family":  "UNKNOWN",
+                           "asset_family_version":  null,
+                           "family_binding_status":  "UNKNOWN",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/garage_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\garage_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/scanner.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\scanner.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/target.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\target.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/garage_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/target.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/scanner.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_007.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_008",
+                           "mechanic":  "choose_v1",
+                           "mechanic_version":  null,
+                           "current_definition":  "challenges\\CHALLENGE_008.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                           "asset_family":  "UNKNOWN",
+                           "asset_family_version":  null,
+                           "family_binding_status":  "UNKNOWN",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/choose_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\choose_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/cursor.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\cursor.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/transparent.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\transparent.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/choose_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/transparent.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/cursor.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_008.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       },
+                       {
+                           "challenge_id":  "CHALLENGE_009",
+                           "mechanic":  "count_v1",
+                           "mechanic_version":  null,
+                           "current_definition":  "challenges\\CHALLENGE_009.json",
+                           "d0_dossier":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                           "asset_family":  "UNKNOWN",
+                           "asset_family_version":  null,
+                           "family_binding_status":  "UNKNOWN",
+                           "asset_references":  [
+                                                    {
+                                                        "reference":  "res://assets/c6/count_background.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\count_background.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                                        "json_path":  "asset_references[0]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/cursor.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\cursor.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                                        "json_path":  "asset_references[1]"
+                                                    },
+                                                    {
+                                                        "reference":  "res://assets/c6/transparent.svg",
+                                                        "resolved_asset_path":  "assets\\c6\\transparent.svg",
+                                                        "resolution":  "LEAF_NAME_MATCH",
+                                                        "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                                        "json_path":  "asset_references[2]"
+                                                    }
+                                                ],
+                           "role_evidence":  [
+                                                 {
+                                                     "role":  "background_path",
+                                                     "reference":  "res://assets/c6/count_background.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "target_path",
+                                                     "reference":  "res://assets/c6/transparent.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 },
+                                                 {
+                                                     "role":  "object_path",
+                                                     "reference":  "res://assets/c6/cursor.svg",
+                                                     "source_kind":  "D0_DOSSIER",
+                                                     "source_file":  "artifacts\\tests\\c11d_d0\\challenge_dossiers\\CHALLENGE_009.json",
+                                                     "evidence_status":  "EXPLICIT"
+                                                 }
+                                             ],
+                           "provenance_status":  "EVIDENCE_BACKED"
+                       }
+                   ],
+    "asset_usage":  [
+                        {
+                            "asset_id":  "c6:assets/c6/car.svg",
+                            "asset_path":  "assets\\c6\\car.svg",
+                            "sha256":  "93A6F78D9654F7917AB2287800858A937E9C68C458CC60BF417D6F2B98C1A96D",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/catcher.svg",
+                            "asset_path":  "assets\\c6\\catcher.svg",
+                            "sha256":  "2C99475157623F88DC7C874169589EC048696F7848E8673477852348FBAEC8BD",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/choose_background.svg",
+                            "asset_path":  "assets\\c6\\choose_background.svg",
+                            "sha256":  "11B3AC5E70AB6F1E15AC99FCF1B5AC36626A553E14A450B592A8FD598FA6DCE2",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/count_background.svg",
+                            "asset_path":  "assets\\c6\\count_background.svg",
+                            "sha256":  "19936242890592B04BFB43FC4C27D3A3CE08688321FE60D008D3E75584885FA7",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/cursor.svg",
+                            "asset_path":  "assets\\c6\\cursor.svg",
+                            "sha256":  "8B62FDD3AF3F868CA0222C0089DDA5C086BACA7596C02A75F6B5CC7FB577BF4B",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/garage_background.svg",
+                            "asset_path":  "assets\\c6\\garage_background.svg",
+                            "sha256":  "C9D8ACDAE725CA7726FC8AD23A046E4AAC4D9E454B45DB40D2C770732B31AB1E",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/key.svg",
+                            "asset_path":  "assets\\c6\\key.svg",
+                            "sha256":  "817FE28028A153F0895CA6CC24CE6F17294691DE31E2D9CED5BAC952585D9121",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/lock.svg",
+                            "asset_path":  "assets\\c6\\lock.svg",
+                            "sha256":  "4FC1637D3ACD24B5B853DBAC380D76459DF8F2D324B4B093FF21862741615167",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/parking_target.svg",
+                            "asset_path":  "assets\\c6\\parking_target.svg",
+                            "sha256":  "EC2DCAFD7DFC99FF501EB2D93B93906680A30C48CF0741807CBBDD915A18CFB3",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/pilot.svg",
+                            "asset_path":  "assets\\c6\\pilot.svg",
+                            "sha256":  "AEDDC9783AF06B86A188F8400F60447F6F8E4EAC1BA7A40C0DCF88B981AE94FB",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/projectile.svg",
+                            "asset_path":  "assets\\c6\\projectile.svg",
+                            "sha256":  "2D2F4DFE893AD00E85DACAFE930AD3BF60968EAAFA359898473C4A8A465C5254",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/scanner.svg",
+                            "asset_path":  "assets\\c6\\scanner.svg",
+                            "sha256":  "90BC530D130C7550C54FEED3EAA07EE90B6BF9DE087A2AFD5D5D1F74540E6804",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/target.svg",
+                            "asset_path":  "assets\\c6\\target.svg",
+                            "sha256":  "7EBB32EB86848C01E2F03370BC33106928B94ECD02EB5B663F8E6E7930A52547",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/transparent.svg",
+                            "asset_path":  "assets\\c6\\transparent.svg",
+                            "sha256":  "091CE32577CE45D14F91C8249F942289B6AB926C735CE69000D6ECEC8574DB21",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        },
+                        {
+                            "asset_id":  "c6:assets/c6/waypoint.svg",
+                            "asset_path":  "assets\\c6\\waypoint.svg",
+                            "sha256":  "49C3292BD900C865441DE92F5A3E5DD21814EEEB3108E9827BFE6515310EB142",
+                            "challenge_ids":  [
+
+                                              ],
+                            "asset_families":  [
+
+                                               ],
+                            "semantic_roles":  [
+
+                                               ],
+                            "reuse_class":  "SINGLE_FAMILY_OR_UNRESOLVED",
+                            "provenance_sources":  [
+
+                                                   ]
+                        }
+                    ]
+}

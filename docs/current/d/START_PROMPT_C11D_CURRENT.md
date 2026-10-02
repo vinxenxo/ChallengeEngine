@@ -1,54 +1,53 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from the current C11-D checkpoint.
+Continue ChallengeEngineV01_STATELESS from C11-D D3.
 
 ## Read first
 
-1. docs\current\d\MASTER_HANDOVER_C11D_CURRENT.md
-2. docs\current\d\START_PROMPT_C11D_CURRENT.md
-3. artifacts\tests\c11d_d2\d2_0_validation_receipt.json
-4. artifacts\tests\c11d_d2\d2_0_asset_family_audit.json
-5. definitions\c11d\asset_families\C11D_ASSET_FAMILY_REGISTRY_V1.json
-6. docs\current\d\D2.1_ASSET_FAMILY_REGISTRY_CONTRACT.md
-7. artifacts\tests\c11d_d2\d2_1_validation_receipt.json
+docs\current\d\MASTER_HANDOVER_C11D_CURRENT.md
+docs\current\d\START_PROMPT_C11D_CURRENT.md
+artifacts\tests\c11d_d2\d2_3_validation_receipt.json
+artifacts\tests\c11d_d2\d2_phase_closure_d3_handoff.json
+definitions\c11d\asset_families\C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json
 
-## State
+## Closed state
 
-C11-D D0: CLOSED / PASS
-C11-D D1: functional checkpoints complete
-C11-D D2.0: CLOSED / PASS
-C11-D D2.1: ACTIVE
+D0 = CLOSED / PASS
+D1 = functional checkpoints complete
+D2.0 = CLOSED / PASS
+D2.1 = PASS / VALIDATED
+D2.2 = PASS / CLOSED
+D2.3 = PASS / CLOSED
+D2 = CLOSED
+D3 = ACTIVE
 
-## D2.0 confirmed evidence
+## D2 outcome
 
-15 logical C6 assets
-9/9 Challenges
-9/9 D0 dossiers
-2 explicit asset families
-5 UNKNOWN family bindings
-27 asset references
-0 unresolved references
+The C11-D Challenge asset layer is now declarative and evidence-backed.
+The canonical binding layer separates asset identity, family identity, role identity and provenance.
+Runtime authority remains NONE.
 
-## Current D2.1 task
+## D3 objective
 
-Maintain the declarative asset-family registry as evidence binding only.
-Keep explicit family metadata authoritative where present.
-Keep UNKNOWN explicit where absent.
-Keep historical provenance separate from current declarations.
-Do not alter frozen C11-C runtime/rendering/simulation/mechanics contracts.
+Procedural Music V5.
 
-## Current registry
+Normalize deterministic procedural music as a declarative production component for Challenge video generation.
+Keep generated audio reproducible and provenance-backed.
+Prepare the music contract for later normalized Production Request integration.
 
-definitions\c11d\asset_families\C11D_ASSET_FAMILY_REGISTRY_V1.json
+## D3 guardrails
 
-## Required next action
+Do not change Challenge simulation truth.
+Do not change mechanics.
+Do not change RNG used by Challenge simulation.
+Do not modify SimulationResult, winning_frame, close_calls, WinningFrameDetector or RenderedFrameStream.
+Do not reopen frozen C11-C production.
 
-Validate the D2.1 registry against D2.0 evidence, verify deterministic Challenge bindings and role evidence, then produce the D2.1 PASS receipt before deciding the next D2 checkpoint.
+## Strategic direction
 
-## Frozen baseline
+The purpose of C11-D is normalization: converge the robust declarative production lessons of C11-C with the recovered Challenge content of C11-A/C11-B.
+Do not create artificial family identities merely to match Visual Loop or Visual Drill naming.
 
-ZIP SHA-256: D85425CF18C5211C8497574F4FC66202D613EACC0EC14CD4E2FEF0B24F634A32
-TREE SHA-256: 2D39B7B923B42CDC6647A4D25493B75023CDD19CEE18214BBDE1FDD295B8F256
-build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F6771F0679D2A3
+## Next step
 
-Never reopen the frozen C11-C baseline without explicit checkpoint, contract and regression evidence.
+Start D3.0 with a source/provenance audit of the existing procedural audio path and historical music requirements before implementation.

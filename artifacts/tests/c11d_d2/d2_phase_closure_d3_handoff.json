@@ -1,0 +1,27 @@
+{
+    "phase":  "C11-D D2",
+    "result":  "CLOSED",
+    "timestamp_utc":  "2026-10-02T06:16:40.6816631Z",
+    "closed_checkpoints":  [
+                               "D2.0 PASS",
+                               "D2.1 PASS / VALIDATED",
+                               "D2.2 PASS / CLOSED",
+                               "D2.3 PASS / CLOSED"
+                           ],
+    "evidence":  {
+                     "logical_assets":  15,
+                     "families":  2,
+                     "challenges":  9,
+                     "unknown_family_challenges":  5,
+                     "explicit_role_assets":  15,
+                     "unknown_role_assets":  0,
+                     "cross_family_reuse":  1,
+                     "true_family_conflicts":  0
+                 },
+    "canonical_binding_registry":  "definitions\\c11d\\asset_families\\C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json",
+    "d2_3_receipt":  "artifacts\\tests\\c11d_d2\\d2_3_validation_receipt.json",
+    "master_snapshot":  "docs\\history\\master-prompts\\c11d\\MASTER_HANDOVER_C11D_PRE_D3_20261002_081640.md",
+    "start_snapshot":  "docs\\history\\master-prompts\\c11d\\START_PROMPT_C11D_PRE_D3_20261002_081640.md",
+    "no_protected_runtime_changes":  true,
+    "next_phase":  "D3"
+}
