@@ -2,65 +2,52 @@
 
 ## Current phase
 
-C11-D â€” Normalization of Challenge video generation using recovered C11-A/C11-B Challenge content and mature declarative production contracts from C11-C.
+C11-D â€” Normalize Challenge video generation using recovered C11-A/C11-B Challenge content and mature production contracts from C11-C.
 
 ## Strategic objective
 
-Create one robust, reproducible, declarative production architecture for Challenge videos.
-C11-C Visual Loop and Visual Drill are reference families whose production contracts inform normalization; they are not being reclassified as Challenge families.
+Create one robust declarative production architecture rather than duplicated per-family pipelines.
+Visual Loop and Visual Drill remain unchanged. Their mature production contracts and musical behavior are reference material for the common layer.
+Challenge later uses an 8-bit/chiptune style profile over the normalized music pipeline.
 
-## C11-D status
+## Status
 
 D0: CLOSED / PASS
 D1: functional checkpoints complete
-D2.0: CLOSED / PASS
-D2.1: PASS / VALIDATED
-D2.2: PASS / CLOSED
-D2.3: PASS / CLOSED
 D2: CLOSED
+D3.0: PASS / DESIGN READY
 D3: ACTIVE
 
-## D2.3 canonical registry
+## D3.0 artifacts
 
-definitions\c11d\asset_families\C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json
+Audit: artifacts\tests\c11d_d3\d3_0_music_source_audit.json
+Contract: docs\current\d\D3.0_PROCEDURAL_MUSIC_V5_DESIGN_CONTRACT.md
+Receipt: artifacts\tests\c11d_d3\d3_0_validation_receipt.json
 
-Contract:
-docs\current\d\D2.3_ASSET_FAMILY_INTEGRATION_CONTRACT.md
+## D3.0 design
 
-Receipt:
-artifacts\tests\c11d_d2\d2_3_validation_receipt.json
+Shared procedural music pipeline.
+Style profile separated from engine.
+Challenge style = 8-bit/chiptune.
+Layers = timbre, harmony, rhythm, motif, texture, spatial treatment.
+Deterministic generation.
+Music seed decoupled from structural/gameplay RNG.
+Presentation synchronization without simulation mutation.
+Provenance required.
 
-D2 final handoff:
-artifacts\tests\c11d_d2\d2_phase_closure_d3_handoff.json
+## D3 gates
 
-## D2 final evidence
+Design contract: PASS / READY.
+Source/provenance audit: PASS / READY.
+Deterministic render comparison: pending.
+Loudness/mobile QA: pending.
 
-15 logical C6 assets.
-2 explicit asset families.
-9 Challenge bindings.
-5 UNKNOWN family Challenge bindings retained.
-15 explicit role assets.
-0 UNKNOWN role assets.
-1 CROSS_FAMILY_REUSE.
-0 TRUE_FAMILY_CONFLICT.
-27 asset references.
-0 unresolved references.
-Runtime authority remains NONE.
+## D3.1 next
 
-## D3 â€” Procedural Music V5
+Shared Music Engine V5 / Challenge 8-bit Style Profile.
+Before implementation, reuse or cleanly extract existing shared music functions where possible. Preserve Visual Loop and Visual Drill behavior.
 
-D3 is the next major C11-D phase.
-Objective: normalize procedural music generation as a declarative, deterministic production component for Challenge videos without changing Challenge simulation truth.
-
-Required D3 boundaries:
-1. deterministic generation
-2. declarative music profile/configuration
-3. provenance of generated audio
-4. no simulation or mechanics changes
-5. no reopening frozen C11-C production
-6. compatibility with later normalized Production Request
-
-## Frozen reference
+## Frozen C11-C baseline
 
 C11-C 2.19.12 remains FROZEN and IMMUTABLE.
 ZIP SHA-256: D85425CF18C5211C8497574F4FC66202D613EACC0EC14CD4E2FEF0B24F634A32
@@ -69,5 +56,4 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 
 ## Context switching
 
-Read MASTER_HANDOVER_C11D_CURRENT.md first, then START_PROMPT_C11D_CURRENT.md, then D3 artifacts.
-Living prompts must be snapshotted before each major milestone update.
+Read MASTER_HANDOVER_C11D_CURRENT.md, then START_PROMPT_C11D_CURRENT.md, then D3.0 artifacts before implementation.

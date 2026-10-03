@@ -1,53 +1,61 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D3.
+Continue ChallengeEngineV01_STATELESS from C11-D D3.0.
 
 ## Read first
 
 docs\current\d\MASTER_HANDOVER_C11D_CURRENT.md
 docs\current\d\START_PROMPT_C11D_CURRENT.md
-artifacts\tests\c11d_d2\d2_3_validation_receipt.json
-artifacts\tests\c11d_d2\d2_phase_closure_d3_handoff.json
-definitions\c11d\asset_families\C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json
+artifacts\tests\c11d_d3\d3_0_music_source_audit.json
+docs\current\d\D3.0_PROCEDURAL_MUSIC_V5_DESIGN_CONTRACT.md
+artifacts\tests\c11d_d3\d3_0_validation_receipt.json
 
-## Closed state
+## Current state
 
 D0 = CLOSED / PASS
 D1 = functional checkpoints complete
-D2.0 = CLOSED / PASS
-D2.1 = PASS / VALIDATED
-D2.2 = PASS / CLOSED
-D2.3 = PASS / CLOSED
 D2 = CLOSED
+D3.0 = PASS / DESIGN READY
 D3 = ACTIVE
 
-## D2 outcome
+## Core objective
 
-The C11-D Challenge asset layer is now declarative and evidence-backed.
-The canonical binding layer separates asset identity, family identity, role identity and provenance.
-Runtime authority remains NONE.
+Normalize procedural music for Challenge video generation using shared infrastructure.
+Do not duplicate a music pipeline for Challenge when existing reusable functionality can be reused or cleanly extracted without behavior change.
+Visual Loop and Visual Drill behavior must remain unchanged.
 
-## D3 objective
+## Challenge music
 
-Procedural Music V5.
+Challenge uses an 8-bit/chiptune style profile. The profile is separate from the shared music engine.
 
-Normalize deterministic procedural music as a declarative production component for Challenge video generation.
-Keep generated audio reproducible and provenance-backed.
-Prepare the music contract for later normalized Production Request integration.
+## Musical layers
 
-## D3 guardrails
+timbre
+harmony
+rhythm
+motif
+texture
+spatial treatment
 
-Do not change Challenge simulation truth.
-Do not change mechanics.
-Do not change RNG used by Challenge simulation.
-Do not modify SimulationResult, winning_frame, close_calls, WinningFrameDetector or RenderedFrameStream.
+## Determinism
+
+Music seed must be independent from structural/gameplay RNG.
+Music generation must not mutate gameplay/simulation RNG.
+Presentation synchronization must not modify simulation truth.
+
+## Gate
+
+D3.0 design contract = PASS / READY.
+D3.0 source/provenance audit = PASS / READY.
+Deterministic render comparison = pending.
+Loudness/mobile QA = pending.
+
+## Next checkpoint
+
+D3.1 â€” Shared Music Engine V5 / Challenge 8-bit Style Profile.
+
+## Frozen guardrails
+
+Do not modify renderer, simulation, mechanics, RNG, SimulationResult, winning_frame, close_calls, WinningFrameDetector or RenderedFrameStream.
+Do not modify Visual Loop or Visual Drill runtime behavior.
 Do not reopen frozen C11-C production.
-
-## Strategic direction
-
-The purpose of C11-D is normalization: converge the robust declarative production lessons of C11-C with the recovered Challenge content of C11-A/C11-B.
-Do not create artificial family identities merely to match Visual Loop or Visual Drill naming.
-
-## Next step
-
-Start D3.0 with a source/provenance audit of the existing procedural audio path and historical music requirements before implementation.
