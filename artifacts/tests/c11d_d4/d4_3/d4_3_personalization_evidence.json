@@ -1,0 +1,54 @@
+{
+  "checkpoint": "C11-D D4.3",
+  "result": "PASS",
+  "status": "CLOSED",
+  "registry_id": "c11d_personalization_profile_registry",
+  "registry_version": "1.0",
+  "profile_count": 2,
+  "tests": {
+    "neutral_profile_passes": true,
+    "editorial_profile_passes": true,
+    "strings_trimmed": true,
+    "language_lowercase": true,
+    "missing_optional_values_unknown": true,
+    "non_allowlisted_field_rejected": true,
+    "winning_frame_rejected": true,
+    "close_calls_rejected": true,
+    "simulation_result_rejected": true,
+    "gui_cli_canonical_json_equal": true,
+    "gui_cli_sha256_equal": true,
+    "seed_music_seed_isolation": true
+  },
+  "gui_cli_parity": {
+    "canonical_json_equal": true,
+    "sha256_equal": true,
+    "sha256": "3b615fde77519520161e7ec0d22dd271031a29829ac60f697ddf69d03c69aa25"
+  },
+  "seed_isolation": {
+    "seed_identical": true,
+    "music_seed_identical": true,
+    "personalization_hash_differs": true
+  },
+  "example_personalization": {
+    "enabled": true,
+    "profile_id": "editorial_text_v1",
+    "profile_version": "1.0",
+    "scope": "EDITORIAL_PRESENTATION",
+    "values": {
+      "title": "UNKNOWN",
+      "subtitle": "UNKNOWN",
+      "call_to_action": "UNKNOWN",
+      "language": "es",
+      "player_name": "TEST",
+      "challenge_label": "UNKNOWN"
+    }
+  },
+  "example_sha256": "3b615fde77519520161e7ec0d22dd271031a29829ac60f697ddf69d03c69aa25",
+  "runtime_authority": "NONE",
+  "gui_activation": false,
+  "cli_activation": false,
+  "renderer_activation": false,
+  "orchestrator_activation": false,
+  "simulation_changes": false,
+  "next": "D4.4 - Canonical Production Orchestrator"
+}

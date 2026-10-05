@@ -1,5 +1,19 @@
 # C11-D MASTER HANDOVER
 
+## Current state — D4.3
+
+D0: CLOSED / PASS  
+D1: functional checkpoints complete  
+D2: CLOSED  
+D3: CLOSED / PASS  
+D4.0: PASS / CLOSED  
+D4.1: PASS / CLOSED  
+D4.2: PASS / CLOSED  
+D4.3: PASS / CLOSED  
+NEXT: D4.4 — Canonical Production Orchestrator.
+
+The D4.3 personalization resolver is declarative and pure JSON processing. GUI, CLI production, renderer, orchestrator, and simulation remain inactive; runtime authority is NONE.
+
 ## Strategic objective
 
 Normalize Challenge video generation using recovered C11-A/C11-B Challenge content and mature C11-C production contracts.
@@ -150,4 +164,18 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - No orchestrator activation.
 - Runtime authority remains NONE.
 - Next active checkpoint: **D4.3 - Personalization Contract**.
+
+<!-- C11D_D4_3_HANDOFF_V1 -->
+
+## C11-D D4.3 CLOSED / PASS
+
+- Added declarative personalization profile registry v1.0 with `none_v1` and `editorial_text_v1`.
+- Added a pure JSON resolver with allowlisted editorial fields, deterministic normalization, canonical JSON, and SHA-256.
+- Verified trim/language normalization, UNKNOWN defaults, rejection of non-allowlisted and simulation-truth fields, GUI/CLI parity, and seed/music-seed isolation.
+- `seed` and `music_seed` remain unchanged when personalization changes.
+- GUI, CLI production, renderer, orchestrator, and simulation remain inactive; runtime authority is NONE.
+- Contract: `docs/current/d/D4.3_PERSONALIZATION_CONTRACT.md`.
+- Evidence: `artifacts/tests/c11d_d4/d4_3/d4_3_personalization_evidence.json`.
+- Receipt: `artifacts/tests/c11d_d4/d4_3/d4_3_validation_receipt.json`.
+- Next active checkpoint: **D4.4 - Canonical Production Orchestrator**.
 
