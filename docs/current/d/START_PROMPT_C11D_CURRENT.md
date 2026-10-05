@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from **C11-D D4.3 CLOSED / PASS**.
+Continue ChallengeEngineV01_STATELESS from **C11-D D4.5 CLOSED / PASS**.
 
 ## Current D state
 
@@ -12,11 +12,13 @@ D4.0 = PASS / CLOSED
 D4.1 = PASS / CLOSED  
 D4.2 = PASS / CLOSED  
 D4.3 = PASS / CLOSED  
-NEXT = D4.4 — Canonical Production Orchestrator.
+D4.4 = PASS / CLOSED  
+D4.5 = PASS / CLOSED  
+NEXT = D4.6 — GUI Adapter.
 
-Runtime authority remains NONE. GUI, CLI production, renderer, orchestrator, and simulation remain inactive. C11-C 2.19.12 remains frozen and immutable.
+Runtime authority remains NONE. The D4.5 CLI creates plans only; production execution, renderer, GUI, and simulation remain inactive. C11-C 2.19.12 remains frozen and immutable.
 
-Continue ChallengeEngineV01_STATELESS from C11-D D4.3.
+Continue ChallengeEngineV01_STATELESS from C11-D D4.5.
 
 ## Read first
 
@@ -25,6 +27,10 @@ docs\current\d\START_PROMPT_C11D_CURRENT.md
 docs\current\d\D4.3_PERSONALIZATION_CONTRACT.md
 artifacts\tests\c11d_d4\d4_3\d4_3_validation_receipt.json
 artifacts\tests\c11d_d4\d4_3\d4_3_personalization_evidence.json
+docs\current\d\D4.4_CANONICAL_PRODUCTION_ORCHESTRATOR_CONTRACT.md
+docs\current\d\D4.5_CLI_ADAPTER_CONTRACT.md
+artifacts\tests\c11d_d4\d4_4\d4_4_validation_receipt.json
+artifacts\tests\c11d_d4\d4_5\d4_5_validation_receipt.json
 artifacts\tests\c11d_d3\d3_0_validation_receipt.json
 artifacts\tests\c11d_d3\d3_1_validation_receipt.json
 definitions\c11d\music\C11D_MUSIC_ENGINE_V5_SPEC_V1.json
@@ -184,6 +190,18 @@ D3.2 - Deterministic Music Implementation / Render Comparison.
 - Contract: `docs/current/d/D4.3_PERSONALIZATION_CONTRACT.md`.
 - Evidence and receipt: `artifacts/tests/c11d_d4/d4_3/`.
 - Next active checkpoint: **D4.4 - Canonical Production Orchestrator**.
+
+<!-- C11D_D4_5_HANDOFF_V1 -->
+
+## C11-D D4.5 CLOSED / PASS
+
+- CLI adapter reuses the canonical D4.2 normalizer, D4.3 resolver, and D4.4 orchestrator.
+- REVIEW and PRODUCTION modes both produce plans only.
+- Invalid requests/personalization and forbidden simulation controls are rejected by their authoritative components.
+- Repeat plan/hash are deterministic; CLI adds no fields and uses D4.4 for plan identity.
+- Renderer activation and production execution remain false; runtime authority is NONE.
+- Contract: `docs/current/d/D4.5_CLI_ADAPTER_CONTRACT.md`; receipt: `artifacts/tests/c11d_d4/d4_5/d4_5_validation_receipt.json`.
+- Next active checkpoint: **D4.6 - GUI Adapter**.
 
 <!-- C11D_D4_4_HANDOFF_V1 -->
 

@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state — D4.3
+## Current state — D4.5
 
 D0: CLOSED / PASS  
 D1: functional checkpoints complete  
@@ -10,9 +10,11 @@ D4.0: PASS / CLOSED
 D4.1: PASS / CLOSED  
 D4.2: PASS / CLOSED  
 D4.3: PASS / CLOSED  
-NEXT: D4.4 — Canonical Production Orchestrator.
+D4.4: PASS / CLOSED  
+D4.5: PASS / CLOSED  
+NEXT: D4.6 — GUI Adapter.
 
-The D4.3 personalization resolver is declarative and pure JSON processing. GUI, CLI production, renderer, orchestrator, and simulation remain inactive; runtime authority is NONE.
+The D4.5 CLI traverses D4.2 normalization, D4.3 personalization resolution, and D4.4 plan construction. It performs no production execution; renderer activation remains false and runtime authority is NONE.
 
 ## Strategic objective
 
@@ -178,6 +180,19 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Evidence: `artifacts/tests/c11d_d4/d4_3/d4_3_personalization_evidence.json`.
 - Receipt: `artifacts/tests/c11d_d4/d4_3/d4_3_validation_receipt.json`.
 - Next active checkpoint: **D4.4 - Canonical Production Orchestrator**.
+
+<!-- C11D_D4_5_HANDOFF_V1 -->
+
+## C11-D D4.5 CLOSED / PASS
+
+- Added a thin CLI adapter that directly reuses D4.2, D4.3, and D4.4 modules.
+- REVIEW and PRODUCTION requests both produce canonical plans; PRODUCTION does not execute production.
+- Invalid requests are rejected by D4.2; invalid personalization by D4.3; forbidden simulation controls are rejected.
+- Deterministic repeat plan and SHA-256 verified. Plan identity comes only from D4.4, and the adapter adds no plan fields.
+- Renderer activation and production execution remain false; runtime authority is NONE.
+- Contract: `docs/current/d/D4.5_CLI_ADAPTER_CONTRACT.md`.
+- Evidence, fixtures, plan, and receipt: `artifacts/tests/c11d_d4/d4_5/`.
+- Next active checkpoint: **D4.6 - GUI Adapter**.
 
 <!-- C11D_D4_4_HANDOFF_V1 -->
 
