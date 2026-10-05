@@ -100,3 +100,16 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D3 is CLOSED.
 - Next active checkpoint: **D4 - Declarative Production Request + Personalization + GUI/CLI Parity**.
 
+<!-- C11D_D4_0_HANDOFF_V1 -->
+
+## C11-D D4.0 CLOSED / PASS
+
+- C11-C 2.19.12 frozen archive SHA-256 verified against the package receipt.
+- Production flow audit completed from active source and contract evidence.
+- No GUI launch, CLI production run, renderer activation, C11-C source change, simulation truth change or RNG change.
+- Canonical Production Request schema and request hash are NEW D4.1 work.
+- Reuse the existing Challenge definitions, D2 asset binding, D3 music contract, delivery profiles, launchers and provenance validators.
+- Audit: `artifacts/tests/c11d_d4/d4_0_production_flow_audit.json`.
+- Contract: `docs/current/d/D4.0_PRODUCTION_FLOW_AUDIT_CONTRACT.md`.
+- Receipt: `artifacts/tests/c11d_d4/d4_0_validation_receipt.json`.
+- Next active checkpoint: **D4.1 - Canonical Production Request Schema**.

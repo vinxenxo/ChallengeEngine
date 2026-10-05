@@ -1,0 +1,19 @@
+{
+    "schema":  "C11D-VALIDATION-RECEIPT-V1",
+    "checkpoint":  "C11-D D4.0",
+    "result":  "PASS",
+    "status":  "CLOSED",
+    "objective":  "Production Flow / Request Audit",
+    "audit_only":  true,
+    "production_activated":  false,
+    "gui_launched":  false,
+    "cli_production_launched":  false,
+    "c11c_baseline_archive_sha256":  "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+    "c11c_source_tree_sha256":  "2d39b7b923b42cdc6647a4d25493b75023cdd19cee18214bbde1fdd295b8f256",
+    "audit_artifact":  "artifacts/tests/c11d_d4/d4_0_production_flow_audit.json",
+    "audit_artifact_sha256":  "907d04d686d099e228248a876e3a6fc36715f94d08832ac59987c9beb5f99cdc",
+    "contract":  "docs/current/d/D4.0_PRODUCTION_FLOW_AUDIT_CONTRACT.md",
+    "contract_sha256":  "920686c9e751978d1d278ce3778061bd971b8ec811435fad66f3c4219c3d8322",
+    "next":  "D4.1 - Canonical Production Request Schema",
+    "generated_at_utc":  "2026-10-05T20:55:42.5022507Z"
+}

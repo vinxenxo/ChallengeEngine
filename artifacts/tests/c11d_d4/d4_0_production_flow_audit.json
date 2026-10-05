@@ -1,0 +1,422 @@
+{
+    "schema":  "C11D-D4.0-PRODUCTION-FLOW-AUDIT-V1",
+    "checkpoint":  "C11-D D4.0",
+    "result":  "PASS",
+    "status":  "AUDIT COMPLETE / D4.1 READY",
+    "generated_at_utc":  "2026-10-05T20:55:42.5022507Z",
+    "baseline":  {
+                     "release":  "C11-C 2.19.12",
+                     "archive":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-C_2.19.12_FROZEN_20260930_175709.zip",
+                     "archive_sha256":  "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+                     "source_tree_sha256":  "2d39b7b923b42cdc6647a4d25493b75023cdd19cee18214bbde1fdd295b8f256",
+                     "package_receipt":  "artifacts/releases/C11-C_2.19.12_FROZEN_PACKAGE_RECEIPT_20260930_175709.json",
+                     "package_receipt_sha256":  "35da86d23bcd092c0a9ad70e8a65952b420185b482b129c557d2ff585d0da908"
+                 },
+    "scope":  {
+                  "static_source_audit":  true,
+                  "production_activated":  false,
+                  "gui_launched":  false,
+                  "cli_production_launched":  false,
+                  "c11c_engine_modified":  false,
+                  "simulation_truth_modified":  false,
+                  "rng_modified":  false
+              },
+    "inventory":  {
+                      "challenge_definitions":  [
+                                                    "CHALLENGE_001",
+                                                    "CHALLENGE_002",
+                                                    "CHALLENGE_003",
+                                                    "CHALLENGE_004",
+                                                    "CHALLENGE_005",
+                                                    "CHALLENGE_006",
+                                                    "CHALLENGE_007",
+                                                    "CHALLENGE_008",
+                                                    "CHALLENGE_009"
+                                                ],
+                      "challenge_count":  9,
+                      "c11c_visual_loop_families":  [
+                                                        "c11c_geometric_waves_v1",
+                                                        "c11c_fractal_bloom_v1",
+                                                        "c11c_sacred_symmetry_v1",
+                                                        "c11c_living_particles_v1",
+                                                        "c11c_invisible_forces_v1"
+                                                    ],
+                      "c11c_visual_drill_families":  [
+                                                         "tracking",
+                                                         "saccade",
+                                                         "pursuit",
+                                                         "peripheral_scan"
+                                                     ],
+                      "delivery_profiles":  [
+                                                "MASTER_1080",
+                                                "REVIEW_720",
+                                                "MIN_540",
+                                                "META_REELS_FINAL_V1",
+                                                "LONGFORM_1080"
+                                            ],
+                      "canonical_production_request_schema_found":  false,
+                      "gui_surface":  "c11c-suite -\u003e c11c-producer (Producer 0.9.7)",
+                      "cli_surfaces":  [
+                                           "Challenge: tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+                                           "Visual Loop: tools/prototypes/c11c_bulk/run_c11c_production.ps1",
+                                           "Visual Drill: c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+                                           "Legacy/general factory: build_factory.py --config/--batch"
+                                       ]
+                  },
+    "field_findings":  [
+                           {
+                               "field":  "production_request",
+                               "disposition":  "NEW",
+                               "state":  "No single canonical request schema/object is present; UI Recipe is an in-memory operator model.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/main.py: Recipe",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "challenge_selection",
+                               "disposition":  "REUSE",
+                               "state":  "Challenge catalog reads challenges/CHALLENGE_*.json and CLI launchers accept ChallengeId; normalize the selector in D4.1.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/main.py: load_challenge_catalog",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "seed",
+                               "disposition":  "ADAPT",
+                               "state":  "UI supports generated/manual seeds; challenge and visual production launchers consume seeds separately.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/main.py: Recipe.manual_seeds",
+                                                  "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "music_seed",
+                               "disposition":  "REUSE",
+                               "state":  "D3 defines a dedicated deterministic music seed, independent of gameplay and structural RNG; carry it explicitly in the canonical request.",
+                               "candidates":  [
+                                                  "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+                                                  "tools/c11d/d3/c11d_music_engine_v5.py"
+                                              ]
+                           },
+                           {
+                               "field":  "visual_presentation_profile",
+                               "disposition":  "ADAPT",
+                               "state":  "C11-C family/grammar controls and D2 Challenge asset binding exist as separate declarations; request should reference stable IDs.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/producer_schema.json",
+                                                  "definitions/c11d/asset_families/C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json"
+                                              ]
+                           },
+                           {
+                               "field":  "duration",
+                               "disposition":  "REUSE",
+                               "state":  "Challenge duration is derived from declarative hook/game/reveal/CTA timing; Loop duration has a separate bounded launcher parameter.",
+                               "candidates":  [
+                                                  "challenges/CHALLENGE_001.json",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "format_resolution_fps",
+                               "disposition":  "ADAPT",
+                               "state":  "Central delivery profiles exist; Challenge launcher also carries its own profile table, creating duplicated policy to reconcile.",
+                               "candidates":  [
+                                                  "profiles/delivery/c11c_video_delivery_profiles.json",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "personalization",
+                               "disposition":  "ADAPT",
+                               "state":  "Producer exposes family-specific grammar, palette and parameter controls plus footer/audio options; no cross-family personalization contract exists.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/producer_schema.json",
+                                                  "c11c-suite/c11c-producer/main.py: Recipe.targets"
+                                              ]
+                           },
+                           {
+                               "field":  "metadata_editorial",
+                               "disposition":  "REUSE",
+                               "state":  "Challenge declarations and production manifests already carry editorial/declarative metadata.",
+                               "candidates":  [
+                                                  "challenges/CHALLENGE_001.json",
+                                                  "build_factory.py: build_declarative_metadata"
+                                              ]
+                           },
+                           {
+                               "field":  "render_mode",
+                               "disposition":  "ADAPT",
+                               "state":  "GUI operation modes distinguish review/production/batch-like jobs, while adapters select separate launchers; normalize mode without erasing behavior differences.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/main.py: Recipe.operation/video_type",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "artifact_destination",
+                               "disposition":  "ADAPT",
+                               "state":  "Production, QA/review and scratch use distinct roots; preserve those policies while representing destination intent declaratively.",
+                               "candidates":  [
+                                                  "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
+                                                  "build_factory.py",
+                                                  "artifacts/production",
+                                                  "artifacts/qa",
+                                                  "artifacts/scratch"
+                                              ]
+                           },
+                           {
+                               "field":  "provenance",
+                               "disposition":  "REUSE",
+                               "state":  "Existing manifests retain input definition hashes, git identity, output hashes and validation; bind these to a canonical request hash.",
+                               "candidates":  [
+                                                  "build_factory.py: audit_unit_manifest",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "cli_entrypoints",
+                               "disposition":  "REUSE",
+                               "state":  "Direct console launchers exist for Challenge, Visual Loop and Visual Drill flows; retain as adapters over one orchestrator.",
+                               "candidates":  [
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
+                                                  "c11c-suite/c11c-producer/run_visual_drill_production.ps1"
+                                              ]
+                           },
+                           {
+                               "field":  "gui_entrypoints",
+                               "disposition":  "REUSE",
+                               "state":  "c11c-suite routes to Producer; Producer uses QProcess to invoke canonical PowerShell launchers.",
+                               "candidates":  [
+                                                  "c11c-suite/main.py",
+                                                  "c11c-suite/c11c-producer/main.py"
+                                              ]
+                           },
+                           {
+                               "field":  "validators",
+                               "disposition":  "REUSE",
+                               "state":  "Challenge schema/runtime validation, manifest/provenance audit, delivery probing and Producer preflight exist; D4.2 should compose rather than duplicate.",
+                               "candidates":  [
+                                                  "build_factory.py",
+                                                  "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+                                                  "c11c-suite/c11c-producer/preflight.py"
+                                              ]
+                           },
+                           {
+                               "field":  "planners_orchestrators",
+                               "disposition":  "ADAPT",
+                               "state":  "GUI Recipe queue, C11-C batch schedule and backend factory each orchestrate part of production; no single shared request orchestrator is evidenced.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/main.py: Recipe",
+                                                  "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1",
+                                                  "build_factory.py"
+                                              ]
+                           },
+                           {
+                               "field":  "request_hash",
+                               "disposition":  "NEW",
+                               "state":  "Artifact/input hashes exist, but no hash over a normalized canonical production request is evidenced.",
+                               "candidates":  [
+                                                  "build_factory.py: provenance_sha256",
+                                                  "D4.1 schema requirement"
+                                              ]
+                           },
+                           {
+                               "field":  "simulation_truth_rng",
+                               "disposition":  "PROTECTED",
+                               "state":  "Challenge truth, gameplay/structural RNG ownership and frozen C11-C engine contracts remain outside D4 adapters.",
+                               "candidates":  [
+                                                  "AGENTS.md: Frozen engine boundary",
+                                                  "docs/current/d/D3.1_SHARED_MUSIC_ENGINE_V5_CONTRACT.md"
+                                              ]
+                           },
+                           {
+                               "field":  "legacy_producer_lineage",
+                               "disposition":  "HISTORICAL",
+                               "state":  "Producer schema engine/profile lineage 2.16.9 is provenance, not the current C11-C 2.19.12 orchestration baseline.",
+                               "candidates":  [
+                                                  "c11c-suite/c11c-producer/producer_schema.json",
+                                                  "docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md"
+                                              ]
+                           }
+                       ],
+    "evidence":  [
+                     {
+                         "path":  "c11c-suite\\c11c-producer\\main.py",
+                         "role":  "GUI Recipe model, selection controls, seed generation and CLI delegation",
+                         "present":  true,
+                         "sha256":  "6fd910f1b77ada4e2cd606c63db97210e5c5323a52370ff3e523f49cdc338e5e",
+                         "bytes":  51115
+                     },
+                     {
+                         "path":  "c11c-suite\\c11c-producer\\producer_schema.json",
+                         "role":  "Active Producer family, grammar and personalization control definitions",
+                         "present":  true,
+                         "sha256":  "e2ca45794d61d28aab645e9f169818c5263a767ec645ccd1f9381f033d27c39d",
+                         "bytes":  32713
+                     },
+                     {
+                         "path":  "c11c-suite\\c11c-producer\\producer_schema_source.json",
+                         "role":  "Producer schema source",
+                         "present":  true,
+                         "sha256":  "6c40b4c0da3a3f7b41a083aa283e01c3fb58638ef24c248c5c2280949da12def",
+                         "bytes":  32577
+                     },
+                     {
+                         "path":  "c11c-suite\\c11c-producer\\run_visual_drill_production.ps1",
+                         "role":  "Visual Drill console adapter",
+                         "present":  true,
+                         "sha256":  "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808",
+                         "bytes":  17066
+                     },
+                     {
+                         "path":  "c11c-suite\\main.py",
+                         "role":  "Canonical Suite GUI application routing",
+                         "present":  true,
+                         "sha256":  "033fe805901784e522f28a5c4c1cfa3a0f48d922fa0c8f4c17c8e65c9fc8507c",
+                         "bytes":  2228
+                     },
+                     {
+                         "path":  "tools\\prototypes\\c11c_bulk\\run_c11c_challenge_production.ps1",
+                         "role":  "Challenge console production launcher",
+                         "present":  true,
+                         "sha256":  "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+                         "bytes":  18191
+                     },
+                     {
+                         "path":  "tools\\prototypes\\c11c_bulk\\run_c11c_production.ps1",
+                         "role":  "Visual Loop console production launcher",
+                         "present":  true,
+                         "sha256":  "21e60e7bb1e493735b4b726c66e6adf3d77395ab1b98bdb0a21b1bd02bead2dc",
+                         "bytes":  11039
+                     },
+                     {
+                         "path":  "tools\\prototypes\\c11c_bulk\\C11CProductionBatchCommon.ps1",
+                         "role":  "Visual Loop schedule, seed planning and batch orchestration",
+                         "present":  true,
+                         "sha256":  "efa3f243cb2308c3c7bfe59df02b3d03f298eb7ada48ff0d5f0c66132dec2bbe",
+                         "bytes":  15776
+                     },
+                     {
+                         "path":  "build_factory.py",
+                         "role":  "Challenge CLI production, validation, manifest and provenance backend",
+                         "present":  true,
+                         "sha256":  "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+                         "bytes":  82863
+                     },
+                     {
+                         "path":  "profiles\\delivery\\c11c_video_delivery_profiles.json",
+                         "role":  "Shared C11-C delivery profile definitions",
+                         "present":  true,
+                         "sha256":  "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+                         "bytes":  3158
+                     },
+                     {
+                         "path":  "challenges\\CHALLENGE_001.json",
+                         "role":  "Declarative Challenge timing, metadata, generation and asset fields",
+                         "present":  true,
+                         "sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+                         "bytes":  1085
+                     },
+                     {
+                         "path":  "definitions\\c11d\\asset_families\\C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json",
+                         "role":  "D2 evidence-backed Challenge asset binding",
+                         "present":  true,
+                         "sha256":  "3001c0a4cf104a7814cf0b60f36805e8886e0f7ac79fc6e926a630769911f903",
+                         "bytes":  67760
+                     },
+                     {
+                         "path":  "definitions\\c11d\\music\\C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+                         "role":  "D3 shared deterministic music interface and dedicated music seed",
+                         "present":  true,
+                         "sha256":  "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+                         "bytes":  3313
+                     },
+                     {
+                         "path":  "definitions\\c11d\\music\\C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+                         "role":  "D3 declarative Challenge music style profile",
+                         "present":  true,
+                         "sha256":  "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+                         "bytes":  2818
+                     },
+                     {
+                         "path":  "artifacts\\tests\\c11d_d3\\d3_3\\d3_3_validation_receipt.json",
+                         "role":  "D3 closed-state evidence",
+                         "present":  true,
+                         "sha256":  "86325d77bfbb0a81a0c47f917b1550c5dc78e2372cacccc0690813352e4f455d",
+                         "bytes":  1270
+                     },
+                     {
+                         "path":  "tools\\qa\\c11\\run_c11a1_challenge_bulk_qa.ps1",
+                         "role":  "Historical compatibility QA path; not current production adapter",
+                         "present":  true,
+                         "sha256":  "2f12186121ea7da95f922f3f46bbe9cee495532d09c3d157e65ed1df8415815f",
+                         "bytes":  25088
+                     },
+                     {
+                         "path":  "artifacts\\releases\\C11-C_2.19.12_FROZEN_PACKAGE_RECEIPT_20260930_175709.json",
+                         "role":  "Frozen C11-C archive and source-tree provenance",
+                         "present":  true,
+                         "sha256":  "35da86d23bcd092c0a9ad70e8a65952b420185b482b129c557d2ff585d0da908",
+                         "bytes":  592
+                     }
+                 ],
+    "evidence_sha256":  {
+                            "c11c-suite/c11c-producer/run_visual_drill_production.ps1":  "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808",
+                            "tools/prototypes/c11c_bulk/run_c11c_production.ps1":  "21e60e7bb1e493735b4b726c66e6adf3d77395ab1b98bdb0a21b1bd02bead2dc",
+                            "c11c-suite/main.py":  "033fe805901784e522f28a5c4c1cfa3a0f48d922fa0c8f4c17c8e65c9fc8507c",
+                            "artifacts/tests/c11d_d3/d3_3/d3_3_validation_receipt.json":  "86325d77bfbb0a81a0c47f917b1550c5dc78e2372cacccc0690813352e4f455d",
+                            "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1":  "efa3f243cb2308c3c7bfe59df02b3d03f298eb7ada48ff0d5f0c66132dec2bbe",
+                            "profiles/delivery/c11c_video_delivery_profiles.json":  "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+                            "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1":  "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+                            "build_factory.py":  "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+                            "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json":  "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+                            "c11c-suite/c11c-producer/producer_schema.json":  "e2ca45794d61d28aab645e9f169818c5263a767ec645ccd1f9381f033d27c39d",
+                            "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1":  "2f12186121ea7da95f922f3f46bbe9cee495532d09c3d157e65ed1df8415815f",
+                            "c11c-suite/c11c-producer/main.py":  "6fd910f1b77ada4e2cd606c63db97210e5c5323a52370ff3e523f49cdc338e5e",
+                            "artifacts/releases/C11-C_2.19.12_FROZEN_PACKAGE_RECEIPT_20260930_175709.json":  "35da86d23bcd092c0a9ad70e8a65952b420185b482b129c557d2ff585d0da908",
+                            "definitions/c11d/asset_families/C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json":  "3001c0a4cf104a7814cf0b60f36805e8886e0f7ac79fc6e926a630769911f903",
+                            "c11c-suite/c11c-producer/producer_schema_source.json":  "6c40b4c0da3a3f7b41a083aa283e01c3fb58638ef24c248c5c2280949da12def",
+                            "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json":  "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+                            "challenges/CHALLENGE_001.json":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"
+                        },
+    "disposition":  {
+                        "reuse":  [
+                                      "Challenge definitions/catalog",
+                                      "delivery profile definitions",
+                                      "D2 Challenge asset binding",
+                                      "D3 shared music engine/style profile and independent music seed",
+                                      "C11-C GUI and console launchers",
+                                      "manifest/provenance validators"
+                                  ],
+                        "adapt":  [
+                                      "GUI Recipe input model",
+                                      "seed handling",
+                                      "presentation/profile binding",
+                                      "duration and delivery policy normalization",
+                                      "REVIEW/PRODUCTION mode mapping",
+                                      "artifact destination intent",
+                                      "orchestrator composition"
+                                  ],
+                        "new":  [
+                                    "canonical Production Request schema",
+                                    "normalization contract",
+                                    "cross-domain personalization contract",
+                                    "canonical request hash",
+                                    "single backend orchestrator"
+                                ],
+                        "protected":  [
+                                          "C11-C frozen archive/tree",
+                                          "simulation truth",
+                                          "gameplay and structural RNG",
+                                          "C11-C renderers and existing runtime contracts"
+                                      ],
+                        "historical":  [
+                                           "Producer engine/profile lineage 2.16.9 when used as engine provenance"
+                                       ]
+                    },
+    "next":  "D4.1 - Canonical Production Request Schema"
+}
