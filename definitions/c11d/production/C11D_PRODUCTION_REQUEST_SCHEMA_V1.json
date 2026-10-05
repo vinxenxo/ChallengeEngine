@@ -1,0 +1,272 @@
+{
+    "schema_id":  "c11d_production_request",
+    "schema_version":  "1.0",
+    "status":  "ACTIVE_SCHEMA",
+    "runtime_authority":  "NONE",
+    "checkpoint":  "C11-D D4.1",
+    "purpose":  "Canonical declarative request submitted by every production interface before orchestration.",
+    "invariants":  [
+                       "GUI and CLI must normalize to the same canonical request object.",
+                       "No interface-specific production business logic may survive normalization.",
+                       "seed is structurally separate from music_seed.",
+                       "music_seed is isolated from gameplay and structural RNG.",
+                       "winning_frame is simulation-derived evidence, never a request control.",
+                       "close_calls is simulation-derived evidence, never a request control.",
+                       "REVIEW and PRODUCTION are explicit modes.",
+                       "Personalization is declarative data, not simulation mutation.",
+                       "Delivery profile is declarative and reusable.",
+                       "Unknown information must remain UNKNOWN rather than being invented.",
+                       "The request schema does not activate a renderer or orchestrator."
+                   ],
+    "canonical_field_order":  [
+                                  "request_id",
+                                  "schema_version",
+                                  "mode",
+                                  "challenge_id",
+                                  "challenge_version",
+                                  "seed",
+                                  "music_seed",
+                                  "delivery_profile_id",
+                                  "presentation_profile_id",
+                                  "duration_seconds",
+                                  "variation_index",
+                                  "personalization",
+                                  "editorial",
+                                  "output",
+                                  "provenance"
+                              ],
+    "fields":  [
+                   {
+                       "name":  "request_id",
+                       "type":  "string",
+                       "required":  true,
+                       "nullable":  false,
+                       "rule":  "Unique production request identity within the job scope."
+                   },
+                   {
+                       "name":  "schema_version",
+                       "type":  "string",
+                       "required":  true,
+                       "nullable":  false,
+                       "fixed_value":  "1.0"
+                   },
+                   {
+                       "name":  "mode",
+                       "type":  "enum",
+                       "required":  true,
+                       "nullable":  false,
+                       "allowed_values":  [
+                                              "REVIEW",
+                                              "PRODUCTION"
+                                          ],
+                       "rule":  "Explicit intent. No implicit production mode."
+                   },
+                   {
+                       "name":  "challenge_id",
+                       "type":  "string",
+                       "required":  true,
+                       "nullable":  false,
+                       "allowed_values":  [
+                                              "CHALLENGE_001",
+                                              "CHALLENGE_002",
+                                              "CHALLENGE_003",
+                                              "CHALLENGE_004",
+                                              "CHALLENGE_005",
+                                              "CHALLENGE_006",
+                                              "CHALLENGE_007",
+                                              "CHALLENGE_008",
+                                              "CHALLENGE_009"
+                                          ],
+                       "rule":  "Must resolve to a known Challenge definition."
+                   },
+                   {
+                       "name":  "challenge_version",
+                       "type":  "string_or_unknown",
+                       "required":  false,
+                       "nullable":  true,
+                       "rule":  "Only evidence-backed Challenge version."
+                   },
+                   {
+                       "name":  "seed",
+                       "type":  "integer",
+                       "required":  true,
+                       "nullable":  false,
+                       "rule":  "Structural/gameplay seed."
+                   },
+                   {
+                       "name":  "music_seed",
+                       "type":  "integer",
+                       "required":  true,
+                       "nullable":  false,
+                       "rule":  "Dedicated music seed. Must not consume structural/gameplay RNG."
+                   },
+                   {
+                       "name":  "delivery_profile_id",
+                       "type":  "string",
+                       "required":  true,
+                       "nullable":  false,
+                       "vocabulary_status":  "EVIDENCE_BACKED",
+                       "evidence_values":  [
+                                               "LONGFORM_1080",
+                                               "MASTER_1080",
+                                               "META_REELS_FINAL_V1",
+                                               "MIN_540",
+                                               "REVIEW_720"
+                                           ],
+                       "reported_count":  5,
+                       "rule":  "Must resolve to the reusable delivery-profile registry."
+                   },
+                   {
+                       "name":  "presentation_profile_id",
+                       "type":  "string_or_unknown",
+                       "required":  false,
+                       "nullable":  true,
+                       "rule":  "Declarative presentation/framing profile."
+                   },
+                   {
+                       "name":  "duration_seconds",
+                       "type":  "number",
+                       "required":  true,
+                       "nullable":  false,
+                       "minimum":  0,
+                       "rule":  "Requested delivery duration. Does not redefine simulation truth."
+                   },
+                   {
+                       "name":  "variation_index",
+                       "type":  "integer",
+                       "required":  false,
+                       "nullable":  true,
+                       "minimum":  0,
+                       "default":  0,
+                       "rule":  "Deterministic variation selector independent of gameplay RNG."
+                   },
+                   {
+                       "name":  "personalization",
+                       "type":  "object",
+                       "required":  true,
+                       "nullable":  false,
+                       "properties":  {
+                                          "enabled":  {
+                                                          "type":  "boolean",
+                                                          "required":  true,
+                                                          "default":  false
+                                                      },
+                                          "profile_id":  {
+                                                             "type":  "string_or_unknown",
+                                                             "required":  false,
+                                                             "nullable":  true
+                                                         },
+                                          "values":  {
+                                                         "type":  "object",
+                                                         "required":  false,
+                                                         "nullable":  true
+                                                     }
+                                      }
+                   },
+                   {
+                       "name":  "editorial",
+                       "type":  "object",
+                       "required":  true,
+                       "nullable":  false,
+                       "properties":  {
+                                          "title":  "string_or_unknown",
+                                          "subtitle":  "string_or_unknown",
+                                          "language":  "string_or_unknown",
+                                          "call_to_action":  "string_or_unknown"
+                                      }
+                   },
+                   {
+                       "name":  "output",
+                       "type":  "object",
+                       "required":  true,
+                       "nullable":  false,
+                       "properties":  {
+                                          "container":  "string_or_unknown",
+                                          "width":  "integer_or_unknown",
+                                          "height":  "integer_or_unknown",
+                                          "fps":  "number_or_unknown",
+                                          "audio_enabled":  {
+                                                                "type":  "boolean",
+                                                                "default":  true
+                                                            }
+                                      }
+                   },
+                   {
+                       "name":  "provenance",
+                       "type":  "object",
+                       "required":  true,
+                       "nullable":  false,
+                       "properties":  {
+                                          "source_revision":  "string_or_unknown",
+                                          "request_origin":  {
+                                                                 "type":  "enum",
+                                                                 "allowed_values":  [
+                                                                                        "CLI",
+                                                                                        "GUI",
+                                                                                        "API",
+                                                                                        "TEST",
+                                                                                        "UNKNOWN"
+                                                                                    ]
+                                                             },
+                                          "parent_request_id":  "string_or_unknown"
+                                      }
+                   }
+               ],
+    "normalization":  {
+                          "steps":  [
+                                        "Parse interface input.",
+                                        "Validate required fields.",
+                                        "Resolve Challenge identity.",
+                                        "Resolve delivery profile.",
+                                        "Normalize optional values.",
+                                        "Preserve UNKNOWN when evidence is unavailable.",
+                                        "Separate seed and music_seed.",
+                                        "Apply deterministic defaults.",
+                                        "Canonicalize field order.",
+                                        "Compute SHA-256 canonical request hash.",
+                                        "Submit canonical object to future orchestrator."
+                                    ],
+                          "rules":  [
+                                        "GUI and CLI semantically equivalent inputs must generate identical canonical JSON.",
+                                        "GUI and CLI semantically equivalent inputs must generate identical request SHA-256.",
+                                        "No GUI-specific or CLI-specific renderer call belongs in normalization.",
+                                        "Do not infer identity from filenames.",
+                                        "Do not derive music_seed by consuming gameplay or structural RNG.",
+                                        "Do not accept winning_frame as a request control.",
+                                        "Do not accept close_calls as a request control."
+                                    ]
+                      },
+    "hash_contract":  {
+                          "algorithm":  "SHA-256",
+                          "canonicalization":  "stable field order + deterministic defaults + explicit UNKNOWN values",
+                          "purpose":  "Canonical request identity and GUI/CLI parity.",
+                          "runtime_authority":  "NONE"
+                      },
+    "runtime_boundary":  {
+                             "gui_activation":  false,
+                             "cli_production_activation":  false,
+                             "orchestrator_activation":  false,
+                             "renderer_activation":  false,
+                             "simulation_changes":  false
+                         },
+    "protected":  [
+                      "C11-C frozen source",
+                      "simulation truth",
+                      "winning_frame",
+                      "close_calls",
+                      "gameplay RNG",
+                      "structural RNG",
+                      "C11-C Visual Loops",
+                      "C11-C Visual Drills"
+                  ],
+    "evidence":  {
+                     "source_checkpoint":  "D4.0",
+                     "audit":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d4\\d4_0_production_flow_audit.json",
+                     "receipt":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d4\\d4_0_validation_receipt.json",
+                     "challenge_count":  9,
+                     "delivery_profile_count_reported":  5,
+                     "delivery_profile_names_extracted":  5,
+                     "delivery_profile_vocabulary_status":  "EVIDENCE_BACKED"
+                 },
+    "next_checkpoint":  "D4.2 - Production Request Normalization + Validation"
+}
