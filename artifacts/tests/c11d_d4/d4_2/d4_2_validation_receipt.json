@@ -1,0 +1,45 @@
+{
+  "checkpoint": "C11-D D4.2",
+  "result": "PASS",
+  "status": "CLOSED",
+  "schema_id": "c11d_production_request",
+  "schema_version": "1.0",
+  "challenge_count": 9,
+  "delivery_profile_count": 5,
+  "gui_cli_parity": {
+    "canonical_json_equal": true,
+    "sha256_equal": true,
+    "sha256": "5ded17b8c766382b0d156c69f331753917ed265aefe725a5c8a8be4aa8d83959"
+  },
+  "unknown_default_normalization": true,
+  "negative_tests": {
+    "missing_music_seed": true,
+    "invalid_delivery_profile": true,
+    "nested_winning_frame_rejected": true,
+    "nested_close_calls_rejected": true,
+    "nested_simulation_result_rejected": true,
+    "nested_simulation_truth_rejected": true,
+    "unknown_top_level_field_rejected": true,
+    "non_finite_duration_rejected": true,
+    "boolean_seed_rejected": true,
+    "invalid_mode": true
+  },
+  "semantic_normalization": {
+    "interface_origin_removed_from_identity": true,
+    "parent_request_id_removed_from_identity": true,
+    "request_id_preserved_for_traceability": true
+  },
+  "seed_isolation": {
+    "seed_field_required": true,
+    "music_seed_field_required": true,
+    "distinct_fields": true,
+    "gameplay_rng_consumption": false
+  },
+  "forbidden_simulation_controls_rejected": true,
+  "runtime_authority": "NONE",
+  "gui_activation": false,
+  "cli_production_activation": false,
+  "renderer_activation": false,
+  "orchestrator_activation": false,
+  "next": "D4.3 - Personalization Contract"
+}
