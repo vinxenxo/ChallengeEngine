@@ -1,0 +1,38 @@
+{
+  "request_id": "D4.6-GUI-PRODUCTION-001",
+  "schema_version": "1.0",
+  "mode": "PRODUCTION",
+  "challenge_id": "CHALLENGE_001",
+  "challenge_version": "1.0",
+  "seed": 123456,
+  "music_seed": 654321,
+  "delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "UNKNOWN",
+  "duration_seconds": 10,
+  "variation_index": 0,
+  "personalization": {
+    "enabled": true,
+    "profile_id": "editorial_text_v1",
+    "values": {
+      "player_name": "TEST"
+    }
+  },
+  "editorial": {
+    "title": "TEST",
+    "subtitle": "UNKNOWN",
+    "language": "es",
+    "call_to_action": "JUEGA"
+  },
+  "output": {
+    "container": "mp4",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "audio_enabled": true
+  },
+  "provenance": {
+    "source_revision": "D4.6",
+    "request_origin": "GUI",
+    "parent_request_id": "UNKNOWN"
+  }
+}

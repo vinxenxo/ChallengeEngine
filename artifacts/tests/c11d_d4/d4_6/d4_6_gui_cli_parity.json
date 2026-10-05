@@ -1,0 +1,7 @@
+{
+  "gui_cli_canonical_request_equal": true,
+  "gui_cli_plan_equal": true,
+  "gui_cli_sha256_equal": true,
+  "canonical_request_sha256": "98a1648ec6f0ca220f4ead51d267df6c8ba6cba19a9500d49b3c3cd6fca8a009",
+  "production_plan_sha256": "46f79dfc009208f5e09e4d089137142e85f1e20c98bf643ba102db19efeb6c8a"
+}

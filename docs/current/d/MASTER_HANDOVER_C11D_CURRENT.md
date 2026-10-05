@@ -1,20 +1,21 @@
 # C11-D MASTER HANDOVER
 
-## Current state — D4.5
+## Current state - D4.6
 
-D0: CLOSED / PASS  
-D1: functional checkpoints complete  
-D2: CLOSED  
-D3: CLOSED / PASS  
-D4.0: PASS / CLOSED  
-D4.1: PASS / CLOSED  
-D4.2: PASS / CLOSED  
-D4.3: PASS / CLOSED  
-D4.4: PASS / CLOSED  
-D4.5: PASS / CLOSED  
-NEXT: D4.6 — GUI Adapter.
+D0: CLOSED / PASS
+D1: functional checkpoints complete
+D2: CLOSED
+D3: CLOSED / PASS
+D4.0: PASS / CLOSED
+D4.1: PASS / CLOSED
+D4.2: PASS / CLOSED
+D4.3: PASS / CLOSED
+D4.4: PASS / CLOSED
+D4.5: PASS / CLOSED
+D4.6: PASS / CLOSED
+NEXT: D4.7 - GUI/CLI Parity.
 
-The D4.5 CLI traverses D4.2 normalization, D4.3 personalization resolution, and D4.4 plan construction. It performs no production execution; renderer activation remains false and runtime authority is NONE.
+D4.6 provides a toolkit-independent GUI data adapter into the same D4.2/D4.3/D4.4 pipeline as the CLI. GUI activation, renderer activation, and production execution remain false; runtime authority is NONE.
 
 ## Strategic objective
 
@@ -213,3 +214,16 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - runtime_authority remains NONE.
 - Next active checkpoint: **D4.5 - CLI Adapter**.
 
+<!-- C11D_D4_6_HANDOFF_V1 -->
+
+## C11-D D4.6 CLOSED / PASS
+
+- Added a toolkit-independent GUI data adapter using the canonical D4.2 normalizer, D4.3 personalization resolver, and D4.4 orchestrator.
+- REVIEW and PRODUCTION requests produce plans only; the renderer and physical execution remain inactive.
+- GUI and CLI canonical requests, Production Plans, and plan SHA-256 values match for semantically equivalent payloads.
+- Personalization changes its hash and plan identity without changing seed or music_seed.
+- Invalid requests, invalid personalization, and forbidden simulation controls are rejected by their canonical components.
+- Runtime authority remains NONE.
+- Contract: `docs/current/d/D4.6_GUI_ADAPTER_CONTRACT.md`.
+- Evidence, plan, parity, fixtures, and receipt: `artifacts/tests/c11d_d4/d4_6/`.
+- Next active checkpoint: **D4.7 - GUI/CLI Parity**.

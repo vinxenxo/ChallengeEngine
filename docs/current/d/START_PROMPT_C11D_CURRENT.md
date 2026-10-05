@@ -1,24 +1,23 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from **C11-D D4.5 CLOSED / PASS**.
+Continue ChallengeEngineV01_STATELESS from C11-D D4.6 CLOSED / PASS.
 
 ## Current D state
 
-D0 = CLOSED / PASS  
-D1 = functional checkpoints complete  
-D2 = CLOSED  
-D3 = CLOSED / PASS  
-D4.0 = PASS / CLOSED  
-D4.1 = PASS / CLOSED  
-D4.2 = PASS / CLOSED  
-D4.3 = PASS / CLOSED  
-D4.4 = PASS / CLOSED  
-D4.5 = PASS / CLOSED  
-NEXT = D4.6 — GUI Adapter.
+D0 = CLOSED / PASS
+D1 = functional checkpoints complete
+D2 = CLOSED
+D3 = CLOSED / PASS
+D4.0 = PASS / CLOSED
+D4.1 = PASS / CLOSED
+D4.2 = PASS / CLOSED
+D4.3 = PASS / CLOSED
+D4.4 = PASS / CLOSED
+D4.5 = PASS / CLOSED
+D4.6 = PASS / CLOSED
+NEXT = D4.7 - GUI/CLI Parity.
 
-Runtime authority remains NONE. The D4.5 CLI creates plans only; production execution, renderer, GUI, and simulation remain inactive. C11-C 2.19.12 remains frozen and immutable.
-
-Continue ChallengeEngineV01_STATELESS from C11-D D4.5.
+The GUI adapter is data-only and reuses the canonical D4.2/D4.3/D4.4 pipeline. GUI, renderer, and production execution remain inactive; runtime authority is NONE. C11-C 2.19.12 remains frozen and immutable.
 
 ## Read first
 
@@ -222,3 +221,16 @@ D3.2 - Deterministic Music Implementation / Render Comparison.
 - runtime_authority remains NONE.
 - Next active checkpoint: **D4.5 - CLI Adapter**.
 
+<!-- C11D_D4_6_HANDOFF_V1 -->
+
+## C11-D D4.6 CLOSED / PASS
+
+- Added a toolkit-independent GUI data adapter using the canonical D4.2 normalizer, D4.3 personalization resolver, and D4.4 orchestrator.
+- REVIEW and PRODUCTION requests produce plans only; the renderer and physical execution remain inactive.
+- GUI and CLI canonical requests, Production Plans, and plan SHA-256 values match for semantically equivalent payloads.
+- Personalization changes its hash and plan identity without changing seed or music_seed.
+- Invalid requests, invalid personalization, and forbidden simulation controls are rejected by their canonical components.
+- Runtime authority remains NONE.
+- Contract: `docs/current/d/D4.6_GUI_ADAPTER_CONTRACT.md`.
+- Evidence, plan, parity, fixtures, and receipt: `artifacts/tests/c11d_d4/d4_6/`.
+- Next active checkpoint: **D4.7 - GUI/CLI Parity**.
