@@ -1,0 +1,21 @@
+{
+    "checkpoint":  "C11-D D3.2",
+    "engine_id":  "c11d_music_engine_v5",
+    "engine_version":  "5.0",
+    "style_profile_id":  "challenge_8bit_v1",
+    "style_profile_version":  "1.0",
+    "deterministic_seed":  840001,
+    "parameter_hash":  "b47c8a4bd3e1088db34ed28378b313c318ae1deb984323eee4a5c97480415ed4",
+    "output_hash":  "f9772d01ec8cff98d1821818a83dc296cb86bf729f0cb715bc29cfac5c92f11f",
+    "synchronization":  "presentation_timeline_only",
+    "simulation_truth_mutation":  false,
+    "winning_frame_mutation":  false,
+    "close_calls_mutation":  false,
+    "gameplay_rng_consumption":  false,
+    "structural_rng_consumption":  false,
+    "worker_count_dependency":  false,
+    "render_order_dependency":  false,
+    "runtime_activation":  false,
+    "output_path_hardening":  "SHORT_TEMP_RENDER_PATH",
+    "variable_collision_hardening":  "SEMANTICALLY_UNIQUE_VARIABLE_NAMES"
+}
