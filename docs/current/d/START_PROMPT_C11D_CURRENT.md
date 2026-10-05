@@ -54,3 +54,33 @@ Frozen C11-C unchanged.
 ## Next
 
 D3.2 - Deterministic Music Implementation / Render Comparison.
+
+<!-- C11D_D3_2_HANDOFF -->
+
+## C11-D D3.2 CLOSED
+
+- Shared Music Engine V5 deterministic renderer implemented.
+- Challenge `challenge_8bit_v1` rendered.
+- Same seed produced identical WAV hash.
+- Different music seed changed the WAV hash.
+- No gameplay/structural RNG consumption.
+- No simulation truth or runtime activation.
+- Receipt: `artifacts/tests/c11d_d3/d3_2_validation_receipt.json`.
+- Next active checkpoint: **D3.3 - Loudness / Mobile Audio QA**.
+
+<!-- C11D_D3_2_HANDOFF_V4 -->
+
+## C11-D D3.2 CLOSED
+
+- Shared Music Engine V5 deterministic renderer implemented.
+- Challenge `challenge_8bit_v1` rendered.
+- Same seed produced identical WAV SHA-256.
+- Different music seed produced a different WAV SHA-256.
+- Gameplay and structural RNG consumption remain isolated.
+- No simulation truth, `winning_frame` or `close_calls` mutation.
+- No C11-C runtime activation.
+- Windows MAX_PATH hardened with short temporary render paths.
+- PowerShell 5.1 variable collisions eliminated.
+- Receipt: `artifacts/tests/c11d_d3/d3_2/d3_2_validation_receipt.json`.
+- Next active checkpoint: **D3.3 - Loudness / Mobile Audio QA**.
+
