@@ -1,0 +1,137 @@
+{
+  "case_count": 26,
+  "cases": [
+    {
+      "case": "duplicate_authority",
+      "expected": "AUTHORITY_COLLISION",
+      "result": "PASS"
+    },
+    {
+      "case": "duplicate_seed_identity",
+      "expected": "IDENTITY_COLLISION",
+      "result": "PASS"
+    },
+    {
+      "case": "identity_conflicting_domain",
+      "expected": "IDENTITY_CONFLICT",
+      "result": "PASS"
+    },
+    {
+      "case": "ownership_conflict",
+      "expected": "OWNERSHIP_CONFLICT",
+      "result": "PASS"
+    },
+    {
+      "case": "gameplay_to_music_consumer",
+      "expected": "CROSS_DOMAIN_CONSUMPTION",
+      "result": "PASS"
+    },
+    {
+      "case": "music_to_gameplay_consumer",
+      "expected": "CROSS_DOMAIN_CONSUMPTION",
+      "result": "PASS"
+    },
+    {
+      "case": "unknown_authority",
+      "expected": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+      "result": "PASS"
+    },
+    {
+      "case": "unknown_finding_canonical",
+      "expected": "UNKNOWN_PROMOTED_TO_CANONICAL",
+      "result": "PASS"
+    },
+    {
+      "case": "shared_rng_canonical",
+      "expected": "SHARED_RNG_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "producer_auto_canonical",
+      "expected": "PRODUCER_AUTO_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "master_seed_canonical",
+      "expected": "MASTER_SEED_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "master_seed_gameplay_parent",
+      "expected": "MASTER_SEED_PARENT_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "case": "master_seed_music_parent",
+      "expected": "MASTER_SEED_PARENT_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "case": "winning_frame_protected",
+      "expected": "PROTECTED_SURFACE_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "close_calls_protected",
+      "expected": "PROTECTED_SURFACE_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "simulation_result_protected",
+      "expected": "PROTECTED_SURFACE_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "winning_frame_detector_protected",
+      "expected": "PROTECTED_SURFACE_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "rendered_frame_stream_protected",
+      "expected": "PROTECTED_SURFACE_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "c7_c9_contracts_protected",
+      "expected": "PROTECTED_SURFACE_PROMOTED",
+      "result": "PASS"
+    },
+    {
+      "case": "numeric_equality_across_independent_domains",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "case": "gameplay_seed_change_music_unchanged",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "case": "music_seed_change_gameplay_unchanged",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "case": "derived_same_input_repeat",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "case": "derived_domain_separation",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "case": "derived_algorithm_version_separation",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "case": "derived_parent_separation",
+      "expected": "PASS",
+      "result": "PASS"
+    }
+  ],
+  "checkpoint": "C11-D D6.3",
+  "result": "PASS"
+}

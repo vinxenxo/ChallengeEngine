@@ -6,11 +6,11 @@ D is an additive productization branch around immutable C11-C engine truth.
 
 ## Current checkpoint
 
-D6.2 = PASS / CLOSED. The resolver uses D4.2 canonical requests and independently resolves explicit `request.seed` to GAMEPLAY and `request.music_seed` to MUSIC. SHA-256 derivation capability is available but inactive under D6.1 policy; `master_seed` remains NOT_ADOPTED. Seventeen negative cases, D3/D4 gates, frozen C11-C identity, identical reruns and the mutation guard passed. Runtime authority is NONE; production execution is false.
+D6.3 = PASS / CLOSED. GAMEPLAY and MUSIC remain isolated through the D6.2 resolver; equal numeric values are valid across independent authorities. The collision matrix detected modeled identity, authority, ownership, domain and consumer conflicts. The fixed 32-case derivation corpus had zero observed collisions. Shared RNG, Producer automatic selections and 896 unknown findings remain governance evidence only. D3/D4 gates, frozen C11-C identity, 26 validation cases, identical reruns and the mutation guard passed. Runtime authority is NONE; production execution is false.
 
-**NEXT = D6.3 — Seed Isolation + Collision Validator.**
+**NEXT = D6.4 — Request / Plan / Provenance Integration.**
 
-Read `docs/current/d/D6.2_SEED_RESOLVER_DETERMINISTIC_DERIVATION_CONTRACT.md` and the current D handover before D6.3.
+Read `docs/current/d/D6.3_SEED_ISOLATION_COLLISION_VALIDATOR_CONTRACT.md` and the current D handover before D6.4.
 
 ## First reads
 

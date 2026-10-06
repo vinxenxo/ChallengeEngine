@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D6.2 PASS / CLOSED.
+Continue ChallengeEngineV01_STATELESS from C11-D D6.3 PASS / CLOSED.
 
 ## Current D state
 
@@ -30,9 +30,10 @@ D5.5 = PASS / CLOSED
 D6.0 = PASS / CLOSED
 D6.1 = PASS / CLOSED
 D6.2 = PASS / CLOSED
+D6.3 = PASS / CLOSED
 
 D5 = CLOSED
-NEXT = D6.3 — Seed Isolation + Collision Validator
+NEXT = D6.4 — Request / Plan / Provenance Integration
 
 D5.5 consumed and accepted D5.0-D5.4, with two full runner executions producing identical matrix, summary, and receipt hashes. Cross-check totals are 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates outside the graph. D4.8 remains BLOCKED; C11-C frozen ZIP/tree/build hashes are preserved. The runner mutation guard passed on both runs; no cleanup or production execution occurred, and runtime authority is NONE. D5.0's 19 receipts are the D1-D4 inventory total, of which 14 are D3/D4 receipt paths.
 
@@ -41,6 +42,8 @@ D6.0 completed a deterministic, read-only seed/RNG audit and passed its mutation
 D6.1 is PASS / CLOSED. The registry contains only evidence-backed `gameplay` (`request.seed`) and `music` (`request.music_seed`) authorities. All 896 unknown findings and legacy/historical/test observations remain evidence outside the registry. Two runs passed deterministic evidence comparison and the mutation guard. No master-seed decision was made.
 
 D6.2 is PASS / CLOSED. D4.2 canonical request normalization remains the sole request interpretation. The resolver maps independent explicit seeds to GAMEPLAY and MUSIC; same numeric values are valid. SHA-256 derivation vectors pass, but policy disables derivation in resolution. `master_seed` remains NOT_ADOPTED. Seventeen negative cases, D3/D4 gates, frozen C11-C identity, deterministic rerun and mutation guard passed. Runtime authority is NONE; production execution is false.
+
+D6.3 is PASS / CLOSED. The two D6.1 authorities and D6.2 resolver remain isolated; request changes in one seed leave the other domain unchanged. Equal numeric seeds across authorities are valid reuse, not identity collision. All modeled authority/identity/domain/owner/consumer and forbidden promotion conflicts were detected. The 32-case derivation corpus had zero observed collisions. Shared RNG remains observed and unpromoted, Producer's six automatic selections remain NOT_CANONICAL, and all 896 unknown findings remain evidence. D3/D4 gates, frozen C11-C identity, 26 validation cases, deterministic rerun and mutation guard passed. Runtime authority is NONE; production execution is false.
 
 ## Read first
 
@@ -348,4 +351,4 @@ D6.1 is PASS / CLOSED. The canonical registry contains exactly two evidence-back
 
 D6.2 is PASS / CLOSED. It resolves only explicit canonical D4.2 `seed` and `music_seed` values to their independent GAMEPLAY and MUSIC authorities. Derivation capability is available but inactive under policy; `master_seed` remains NOT_ADOPTED. Seventeen negative cases and domain-isolation vectors passed. D3/D4 compatibility, D4.8 production block, frozen C11-C identity, deterministic rerun and mutation guard passed. Runtime authority is NONE; production execution is false.
 
-NEXT = D6.3 — Seed Isolation + Collision Validator. Do not begin D6.3 until separately requested.
+NEXT = D6.4 — Request / Plan / Provenance Integration. Do not begin D6.4 until separately requested.

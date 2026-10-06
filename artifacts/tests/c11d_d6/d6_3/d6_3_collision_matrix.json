@@ -1,0 +1,473 @@
+{
+  "all_conflicts_detected": true,
+  "checkpoint": "C11-D D6.3",
+  "collision_categories": [
+    {
+      "case": "AUTHORITY_COLLISION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "AUTHORITY_COLLISION",
+          "identity": "gameplay.seed"
+        }
+      ]
+    },
+    {
+      "case": "IDENTITY_COLLISION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "IDENTITY_COLLISION",
+          "identity": "gameplay"
+        }
+      ]
+    },
+    {
+      "case": "IDENTITY_CONFLICT",
+      "detected": true,
+      "findings": [
+        {
+          "category": "AUTHORITY_COLLISION",
+          "identity": "duplicate.seed"
+        },
+        {
+          "category": "IDENTITY_COLLISION",
+          "identity": "same"
+        },
+        {
+          "category": "IDENTITY_CONFLICT",
+          "identity": "duplicate.seed"
+        },
+        {
+          "category": "IDENTITY_CONFLICT",
+          "identity": "same"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "duplicate.seed"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "duplicate.seed"
+        }
+      ]
+    },
+    {
+      "case": "OWNERSHIP_CONFLICT",
+      "detected": true,
+      "findings": [
+        {
+          "category": "AUTHORITY_COLLISION",
+          "identity": "gameplay.seed"
+        },
+        {
+          "category": "OWNERSHIP_CONFLICT",
+          "identity": "gameplay.seed"
+        }
+      ]
+    },
+    {
+      "case": "CROSS_DOMAIN_CONSUMPTION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "CROSS_DOMAIN_CONSUMPTION",
+          "identity": "gameplay.seed"
+        }
+      ]
+    },
+    {
+      "case": "AMBIGUOUS_CANONICAL_AUTHORITY",
+      "detected": true,
+      "findings": [
+        {
+          "category": "AUTHORITY_COLLISION",
+          "identity": "gameplay.seed"
+        }
+      ]
+    },
+    {
+      "case": "UNGOVERNED_AUTHORITY",
+      "detected": true,
+      "findings": [
+        {
+          "category": "UNGOVERNED_AUTHORITY_PROMOTION",
+          "identity": "unregistered.seed"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "unregistered.seed"
+        }
+      ]
+    },
+    {
+      "case": "UNKNOWN_AUTHORITY_PROMOTION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "unknown.seed"
+        },
+        {
+          "category": "UNKNOWN_PROMOTED_TO_CANONICAL",
+          "identity": "unknown.seed"
+        }
+      ]
+    },
+    {
+      "case": "SHARED_RNG_PROMOTION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "SHARED_RNG_PROMOTED",
+          "identity": "shared_rng"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "shared_rng"
+        }
+      ]
+    },
+    {
+      "case": "PRODUCER_AUTO_PROMOTION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "PRODUCER_AUTO_PROMOTED",
+          "identity": "producer_auto"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "producer_auto"
+        }
+      ]
+    },
+    {
+      "case": "MASTER_SEED_PROMOTION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "MASTER_SEED_PROMOTED",
+          "identity": "master_seed"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "master_seed"
+        }
+      ]
+    },
+    {
+      "case": "PROTECTED_SURFACE_PROMOTION",
+      "detected": true,
+      "findings": [
+        {
+          "category": "PROTECTED_SURFACE_PROMOTED",
+          "identity": "winning_frame"
+        },
+        {
+          "category": "UNKNOWN_OR_UNGOVERNED_AUTHORITY",
+          "identity": "winning_frame"
+        }
+      ]
+    }
+  ],
+  "derived_seed_corpus": {
+    "algorithm_version_separation": true,
+    "case_count": 32,
+    "collision_claim": "No collision was observed in this deterministic validation corpus; this does not claim SHA-256 collision impossibility.",
+    "deterministic": true,
+    "domain_separation": true,
+    "namespace_complete": true,
+    "namespace_fields": [
+      "algorithm",
+      "algorithm_version",
+      "domain",
+      "parent_seed"
+    ],
+    "observed_collision_count": 0,
+    "observed_collisions": [],
+    "parent_separation": true,
+    "vectors": [
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 13060779478826756895,
+        "domain": "GAMEPLAY",
+        "parent_seed": 0
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 8171270640605242223,
+        "domain": "GAMEPLAY",
+        "parent_seed": 0
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 3627870658896569967,
+        "domain": "MUSIC",
+        "parent_seed": 0
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 4046491596572673787,
+        "domain": "MUSIC",
+        "parent_seed": 0
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 10397755335027734049,
+        "domain": "GAMEPLAY",
+        "parent_seed": 1
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 8728109423426933824,
+        "domain": "GAMEPLAY",
+        "parent_seed": 1
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 9342720862426276970,
+        "domain": "MUSIC",
+        "parent_seed": 1
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 4542097744556510662,
+        "domain": "MUSIC",
+        "parent_seed": 1
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 5933194299267313579,
+        "domain": "GAMEPLAY",
+        "parent_seed": 2
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 3018782754572053034,
+        "domain": "GAMEPLAY",
+        "parent_seed": 2
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 9190180748897646511,
+        "domain": "MUSIC",
+        "parent_seed": 2
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 14080050093031805190,
+        "domain": "MUSIC",
+        "parent_seed": 2
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 17318097414182784611,
+        "domain": "GAMEPLAY",
+        "parent_seed": 100
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 11522678203974996411,
+        "domain": "GAMEPLAY",
+        "parent_seed": 100
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 8032158240436812039,
+        "domain": "MUSIC",
+        "parent_seed": 100
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 9035114364266092331,
+        "domain": "MUSIC",
+        "parent_seed": 100
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 12271836268010366292,
+        "domain": "GAMEPLAY",
+        "parent_seed": 101
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 12099417803141340140,
+        "domain": "GAMEPLAY",
+        "parent_seed": 101
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 2618620217363365893,
+        "domain": "MUSIC",
+        "parent_seed": 101
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 3790907174707201147,
+        "domain": "MUSIC",
+        "parent_seed": 101
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 1620271156368119090,
+        "domain": "GAMEPLAY",
+        "parent_seed": 123
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 5999755996940234345,
+        "domain": "GAMEPLAY",
+        "parent_seed": 123
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 9164056702892819442,
+        "domain": "MUSIC",
+        "parent_seed": 123
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 13236492045399967491,
+        "domain": "MUSIC",
+        "parent_seed": 123
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 10605961018472401319,
+        "domain": "GAMEPLAY",
+        "parent_seed": 424242
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 16278015702963321936,
+        "domain": "GAMEPLAY",
+        "parent_seed": 424242
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 2739574642911824978,
+        "domain": "MUSIC",
+        "parent_seed": 424242
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 6534680102180494960,
+        "domain": "MUSIC",
+        "parent_seed": 424242
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 17099531342453106430,
+        "domain": "GAMEPLAY",
+        "parent_seed": 4294967295
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 4334671207606219974,
+        "domain": "GAMEPLAY",
+        "parent_seed": 4294967295
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "1",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 15740111500991704514,
+        "domain": "MUSIC",
+        "parent_seed": 4294967295
+      },
+      {
+        "algorithm_id": "SHA-256",
+        "algorithm_version": "2",
+        "canonical_encoding": "UTF-8 sorted-key compact JSON",
+        "derived_value": 17552386007413884410,
+        "domain": "MUSIC",
+        "parent_seed": 4294967295
+      }
+    ]
+  },
+  "master_seed": "NOT_ADOPTED",
+  "numeric_value_reuse": {
+    "classification": "VALUE_REUSE",
+    "collision": false,
+    "domains": [
+      "GAMEPLAY",
+      "MUSIC"
+    ],
+    "same_value": 424242,
+    "valid": true
+  },
+  "result": "PASS",
+  "same_domain_explicit_reuse": {
+    "challenge_ids": [
+      "CHALLENGE_001",
+      "CHALLENGE_002"
+    ],
+    "classification": "VALUE_REUSE",
+    "collision": false,
+    "domain": "GAMEPLAY",
+    "same_value": 123,
+    "valid": true
+  },
+  "unknown_findings_promoted": false
+}

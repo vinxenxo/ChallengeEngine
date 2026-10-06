@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D6.2 CLOSED
+## Current state - D6.3 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -28,10 +28,11 @@ D5.5: PASS / CLOSED
 D6.0: PASS / CLOSED
 D6.1: PASS / CLOSED
 D6.2: PASS / CLOSED
+D6.3: PASS / CLOSED
 
 D5 = CLOSED
 D6 = ACTIVE
-NEXT = D6.3 — Seed Isolation + Collision Validator
+NEXT = D6.4 — Request / Plan / Provenance Integration
 
 D5.0 audited 19,938 repository files and inventoried 19 receipts across D1-D4 (14 receipt paths are D3/D4). It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphan candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -361,3 +362,16 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Two runner executions produced identical evidence hashes. Mutation guard passed; registry, policy, spec, D3 and D4 inputs remained unchanged.
 - Runtime authority is NONE. Production, renderer, Godot production and FFmpeg production execution are false.
 - **D6.2 = PASS / CLOSED. NEXT = D6.3 — Seed Isolation + Collision Validator.**
+
+<!-- C11D_D6_3_HANDOFF_V1 -->
+
+## C11-D D6.3 CLOSED / PASS
+
+- Both D6.1 authorities retain single-domain consumers; gameplay→music and music→gameplay are rejected. D6.2 request-isolation probes passed, and equal numeric values across independent domains are valid `VALUE_REUSE`.
+- The collision matrix separately detected authority, seed identity, conflicting domain, ownership, cross-domain consumer, ambiguous and ungoverned authority cases, plus unknown/shared-RNG/Producer/master-seed/protected-surface promotions.
+- A fixed 32-case derivation corpus across parent values, domains and algorithm versions had **zero observed collisions**. This is a corpus result, not a claim that SHA-256 collisions are impossible.
+- Shared RNG remains `OBSERVED_SHARED_RNG_STATE` and is not canonical; cross-domain engine sharing is not proven. Six Producer nondeterministic selections remain `NOT_CANONICAL`. All 896 unknown findings remain preserved.
+- D3 isolation, D4 field separation, D4.8 production block and frozen C11-C hashes passed. Twenty-six validation cases passed, including negative rejection tests and positive controls.
+- Two runs produced identical four-file evidence hashes. Mutation guard passed; D6.0-D6.2, D3, D4, registry and policy inputs remained unchanged.
+- Runtime authority is NONE; production, renderer, Godot production and FFmpeg production execution are false. No physical authorization was inferred.
+- **D6.3 = PASS / CLOSED. NEXT = D6.4 — Request / Plan / Provenance Integration.**

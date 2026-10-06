@@ -1,0 +1,71 @@
+{
+  "authorities_valid": true,
+  "canonical_authority_count": 2,
+  "checkpoint": "C11-D D6.3",
+  "consumption": [
+    {
+      "consumer": "GAMEPLAY",
+      "result": "PASS",
+      "source": "GAMEPLAY"
+    },
+    {
+      "consumer": "MUSIC",
+      "result": "PASS",
+      "source": "MUSIC"
+    },
+    {
+      "consumer": "MUSIC",
+      "policy": "FORBIDDEN",
+      "result": "REJECT",
+      "source": "GAMEPLAY"
+    },
+    {
+      "consumer": "GAMEPLAY",
+      "policy": "FORBIDDEN",
+      "result": "REJECT",
+      "source": "MUSIC"
+    }
+  ],
+  "d3_music_isolation": true,
+  "d4_8_production_blocked": true,
+  "d4_schema_fields_distinct": true,
+  "d4_seed_music_seed_separation": true,
+  "derivation_runtime_activation": false,
+  "master_seed": "NOT_ADOPTED",
+  "numeric_equality_across_independent_domains": {
+    "accepted": true,
+    "gameplay_value": 424242,
+    "identity_collision": false,
+    "music_value": 424242
+  },
+  "preservation": {
+    "producer_auto_not_canonical": true,
+    "shared_rng_not_canonical": true,
+    "unknown_findings": 896,
+    "unknown_preserved": true
+  },
+  "producer_auto_selection": {
+    "canonical_authority": false,
+    "count": 6,
+    "status": "NOT_CANONICAL"
+  },
+  "request_isolation": {
+    "gameplay_changed_music_same": true,
+    "music_changed_gameplay_same": true,
+    "pass": true
+  },
+  "result": "PASS",
+  "shared_rng": {
+    "canonical_authority": false,
+    "classification": "OBSERVED_SHARED_RNG_STATE",
+    "cross_domain_engine_sharing_proven": false,
+    "isolation_finding": "NONE_PROVEN",
+    "observed": true
+  },
+  "unknown_authority_rejected": true,
+  "unknown_evidence": {
+    "count": 896,
+    "preserved": true,
+    "promoted": false
+  }
+}
