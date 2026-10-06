@@ -1,0 +1,37 @@
+{
+  "artifact_identity_algorithm": "SHA-256",
+  "canonical_manifest": true,
+  "checkpoint": "C11-D D5.1",
+  "content_integrity_algorithm": "SHA-256",
+  "d3_provenance_covered": true,
+  "d4_provenance_covered": true,
+  "deterministic_ordering": true,
+  "frozen_c11c_preserved": true,
+  "idempotency": true,
+  "manifest_evidence_sha256": "bbd537bc5d84e54dadeeb841b33d10f66b44e6dac735aa3dd21205251e13aafe",
+  "manifest_sha256": "0c2d8242ebcef8eee60e0e049bdaee38f1b6ab16d0e70da866cb227cd38f048b",
+  "next": "D5.2 - Provenance Lineage Registry",
+  "orphan_candidates": 12304,
+  "orphan_cleanup_performed": false,
+  "output_sha256": {
+    "evidence_sha256": "bbd537bc5d84e54dadeeb841b33d10f66b44e6dac735aa3dd21205251e13aafe",
+    "manifest_sha256": "0c2d8242ebcef8eee60e0e049bdaee38f1b6ab16d0e70da866cb227cd38f048b"
+  },
+  "path_independent_identity": true,
+  "plan_authorization_lineage": true,
+  "production_execution": false,
+  "request_plan_lineage": true,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "status": "CLOSED",
+  "tests": {
+    "A_determinism": true,
+    "B_ordering": true,
+    "C_identity_path_independence": true,
+    "D_content_integrity": true,
+    "E_lifecycle_states": true,
+    "F_d3_d4_provenance_coverage": true,
+    "G_frozen_c11c": true,
+    "H_idempotency": true
+  }
+}

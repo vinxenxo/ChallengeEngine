@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D5.0 PASS / CLOSED.
+Continue ChallengeEngineV01_STATELESS from C11-D D5.2 PASS / CLOSED.
 
 ## Current D state
 
@@ -20,10 +20,17 @@ D4.8 = PASS / CLOSED
 D4.9 = PASS / CLOSED
 D4 = CLOSED
 D5.0 = PASS / CLOSED
-D5 = ACTIVE
-NEXT = D5.1 - Canonical Artifact Manifest
+D5.1 = PASS / CLOSED
 
-D5.0 inspected the repository without moving or deleting artifacts. It found zero topology conflicts and zero unclassified active artifacts; request-to-plan and plan-to-authorization lineage passed against D4 evidence. The frozen C11-C archive SHA-256 matches. There are 12,304 orphaned artifact candidates recorded for lifecycle follow-up. Renderer policy remains DISABLED; runtime authority is NONE; production execution is false. C11-C 2.19.12 remains frozen and immutable.
+D5.2 = PASS / CLOSED
+
+
+
+
+D5 = ACTIVE
+NEXT = D5.3 - Artifact Topology Validator
+
+D5.2 builds an evidence-backed lineage DAG from the D5.1 canonical manifest. It records 75 logical nodes across 79 physical locations, 11 evidence-backed edges, and 9 retained ORPHANED nodes; the 12,304 global candidates remain outside the governed graph. D4.8 governance is recorded as BLOCKED, not as an authorization grant. No files were moved or deleted; runtime authority is NONE and production execution is false.
 
 ## Read first
 
@@ -31,6 +38,12 @@ docs\current\d\MASTER_HANDOVER_C11D_CURRENT.md
 docs\current\d\START_PROMPT_C11D_CURRENT.md
 docs\current\d\D5.0_ARTIFACT_TOPOLOGY_PROVENANCE_AUDIT_CONTRACT.md
 artifacts\tests\c11d_d5\d5_0\d5_0_validation_receipt.json
+docs\current\d\D5.1_CANONICAL_ARTIFACT_MANIFEST_CONTRACT.md
+definitions\c11d\artifacts\C11D_ARTIFACT_MANIFEST_SCHEMA_V1.json
+artifacts\tests\c11d_d5\d5_1\d5_1_validation_receipt.json
+docs\current\d\D5.2_PROVENANCE_LINEAGE_REGISTRY_CONTRACT.md
+definitions\c11d\provenance\C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json
+artifacts\tests\c11d_d5\d5_2\d5_2_validation_receipt.json
 docs\current\d\D4.3_PERSONALIZATION_CONTRACT.md
 artifacts\tests\c11d_d4\d4_3\d4_3_validation_receipt.json
 artifacts\tests\c11d_d4\d4_3\d4_3_personalization_evidence.json
@@ -85,7 +98,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D5.1 - Canonical Artifact Manifest.
+D5.3 - Artifact Topology Validator.
 
 <!-- C11D_D3_2_HANDOFF -->
 
@@ -288,3 +301,6 @@ D5.1 - Canonical Artifact Manifest.
 - D4.9 contract: `docs/current/d/D4.9_FULL_D4_ACCEPTANCE_CONTRACT.md`.
 - Matrix, regression evidence, and receipt: `artifacts/tests/c11d_d4/d4_9/`.
 - D4 is CLOSED. Next: **D5 - Artifact Topology + Provenance**.
+<!-- C11D_D5_2_HANDOFF_V1 -->
+
+D5.2 builds a deterministic evidence-backed lineage DAG from the D5.1 manifest: 75 logical nodes, 79 referenced locations, 11 edges, and 9 retained ORPHANED nodes. D3/D4 lineage, duplicate identity collapse, synthetic cycle detection, and invalid-parent rejection passed. The 12,304 global unmanaged candidates remain outside the registry; no files were moved or deleted. D4.8 remains a blocked authorization decision. Runtime authority is NONE and production execution is false.

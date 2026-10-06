@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.invalid/schemas/c11d-artifact-manifest-v1.json",
+  "title": "C11-D Canonical Artifact Manifest",
+  "description": "Declarative inventory of governed D3, D4, and D5 artifacts. Identity is independent of filesystem location; this manifest grants no runtime or production authority.",
+  "type": "object",
+  "required": [
+    "manifest_id",
+    "manifest_version",
+    "status",
+    "runtime_authority",
+    "artifact_identity",
+    "lifecycle_states",
+    "artifact_types",
+    "artifacts",
+    "lineage",
+    "statistics",
+    "source_audit",
+    "unmanaged_inventory",
+    "next"
+  ],
+  "properties": {
+    "manifest_id": { "const": "c11d_artifact_manifest" },
+    "manifest_version": { "const": "1.0" },
+    "status": { "const": "ACTIVE" },
+    "runtime_authority": { "const": "NONE" },
+    "production_execution": { "const": false },
+    "artifact_identity": {
+      "type": "object",
+      "required": ["algorithm", "canonical_fields", "serialization", "path_independent"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "canonical_fields": { "const": ["artifact_type", "artifact_role", "artifact_version", "producer_component", "parent_artifact_ids"] },
+        "serialization": { "const": "UTF-8 JSON; sorted keys; compact separators; no insignificant whitespace" },
+        "path_independent": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "lifecycle_states": {
+      "const": ["ACTIVE", "HISTORICAL", "TEMPORARY", "QUARANTINED", "ORPHANED"]
+    },
+    "artifact_types": {
+      "const": ["REQUEST", "PLAN", "AUTHORIZATION", "MEDIA", "MANIFEST", "PROVENANCE", "VALIDATION_RECEIPT", "EVIDENCE", "REPORT", "SNAPSHOT", "LOG", "TEMPORARY"]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifact" }
+    },
+    "lineage": { "type": "object" },
+    "statistics": { "type": "object" },
+    "source_audit": { "type": "object" },
+    "unmanaged_inventory": { "type": "object" },
+    "next": { "const": "D5.2 - Provenance Lineage Registry" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "artifact": {
+      "type": "object",
+      "required": ["artifact_id", "artifact_type", "artifact_role", "artifact_version", "lifecycle_state", "governed", "relative_path", "content_sha256", "content_hash_state", "producer_component", "producer_version", "parent_artifact_ids", "request_sha256", "plan_sha256", "authorization_sha256", "canonical"],
+      "properties": {
+        "artifact_id": { "$ref": "#/$defs/sha256" },
+        "artifact_type": { "enum": ["REQUEST", "PLAN", "AUTHORIZATION", "MEDIA", "MANIFEST", "PROVENANCE", "VALIDATION_RECEIPT", "EVIDENCE", "REPORT", "SNAPSHOT", "LOG", "TEMPORARY"] },
+        "artifact_role": { "type": "string", "minLength": 1 },
+        "artifact_version": { "type": "string", "minLength": 1 },
+        "lifecycle_state": { "enum": ["ACTIVE", "HISTORICAL", "TEMPORARY", "QUARANTINED", "ORPHANED"] },
+        "governed": { "type": "boolean" },
+        "relative_path": { "type": "string", "minLength": 1 },
+        "content_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "content_hash_state": { "enum": ["VERIFIED", "GENERATED_AFTER_WRITE", "UNKNOWN"] },
+        "producer_component": { "type": "string", "minLength": 1 },
+        "producer_version": { "type": "string", "minLength": 1 },
+        "parent_artifact_ids": { "type": "array", "items": { "$ref": "#/$defs/sha256" }, "uniqueItems": true },
+        "request_sha256": { "type": ["string", "null"] },
+        "plan_sha256": { "type": ["string", "null"] },
+        "authorization_sha256": { "type": ["string", "null"] },
+        "challenge_id": { "type": ["string", "null"] },
+        "challenge_version": { "type": ["string", "null"] },
+        "seed": { "type": ["integer", "string", "null"] },
+        "music_seed": { "type": ["integer", "string", "null"] },
+        "delivery_profile_id": { "type": ["string", "null"] },
+        "delivery_profile_version": { "type": ["string", "null"] },
+        "personalization_profile_id": { "type": ["string", "null"] },
+        "personalization_profile_version": { "type": ["string", "null"] },
+        "canonical": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

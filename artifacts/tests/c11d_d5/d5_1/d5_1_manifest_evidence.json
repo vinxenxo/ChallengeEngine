@@ -1,0 +1,13 @@
+{
+  "artifact_ids_sorted": true,
+  "checkpoint": "C11-D D5.1",
+  "governed_artifact_count": 66,
+  "manifest_id": "c11d_artifact_manifest",
+  "manifest_sha256": "0c2d8242ebcef8eee60e0e049bdaee38f1b6ab16d0e70da866cb227cd38f048b",
+  "orphan_candidates": 12304,
+  "orphan_cleanup_performed": false,
+  "production_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "status": "CLOSED"
+}

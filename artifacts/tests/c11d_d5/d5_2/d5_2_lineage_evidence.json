@@ -1,0 +1,93 @@
+{
+  "checkpoint": "C11-D D5.2",
+  "d3_lineage_edges": [
+    {
+      "confidence": "EVIDENCE_BACKED",
+      "edge_id": "13354c469506a2bba48e71b3fd0d83d6b0bfa2899c68e1ee92ff5012165545d8",
+      "evidence": {
+        "claim": "D3.3 receipt reports PASS/CLOSED and names the delivery master",
+        "source_artifact_id": "4697846a7c96cf581530a5430aae8ecdd71da4f990524e4dbd7bad71fc295946",
+        "source_checkpoint": "C11-D D3.3",
+        "source_path": "artifacts/tests/c11d_d3/d3_3/d3_3_validation_receipt.json",
+        "source_type": "receipt"
+      },
+      "relation": "VALIDATED_BY",
+      "source_artifact_id": "28c93b3172a0ee6cb0d02dff916aa56995be3a2b79d04e3d51f9cdb4205b0bf0",
+      "target_artifact_id": "4697846a7c96cf581530a5430aae8ecdd71da4f990524e4dbd7bad71fc295946"
+    },
+    {
+      "confidence": "EVIDENCE_BACKED",
+      "edge_id": "83ffa86599921e842702bbb654433c5335cf4f56d931d6d958738044c2c35acd",
+      "evidence": {
+        "claim": "D3.3 receipt declares source_render and delivery_master physical locations",
+        "source_artifact_id": "4697846a7c96cf581530a5430aae8ecdd71da4f990524e4dbd7bad71fc295946",
+        "source_checkpoint": "C11-D D3.3",
+        "source_path": "artifacts/tests/c11d_d3/d3_3/d3_3_validation_receipt.json",
+        "source_type": "receipt"
+      },
+      "relation": "DERIVED_FROM",
+      "source_artifact_id": "28c93b3172a0ee6cb0d02dff916aa56995be3a2b79d04e3d51f9cdb4205b0bf0",
+      "target_artifact_id": "3004f1f321e00af921c6082de7b67859752edc45eb5e2f543a2693fd4635de1f"
+    },
+    {
+      "confidence": "EVIDENCE_BACKED",
+      "edge_id": "d4b58e237527e3b8f34adfcbcbe48e8a44bd008e3756ee93ec65972e97090f6f",
+      "evidence": {
+        "claim": "D3.2 receipt render output hash equals the manifest raw media content_sha256",
+        "source_artifact_id": "67b25d2fbf140ca63dc637bb710d00dfc326a3fcc0952b1a6769013747ce3afb",
+        "source_checkpoint": "C11-D D3.2",
+        "source_path": "artifacts/tests/c11d_d3/d3_2/d3_2_validation_receipt.json",
+        "source_type": "receipt"
+      },
+      "relation": "VALIDATED_BY",
+      "source_artifact_id": "3004f1f321e00af921c6082de7b67859752edc45eb5e2f543a2693fd4635de1f",
+      "target_artifact_id": "67b25d2fbf140ca63dc637bb710d00dfc326a3fcc0952b1a6769013747ce3afb"
+    }
+  ],
+  "d4_lineage_edges": [
+    {
+      "confidence": "EVIDENCE_BACKED",
+      "edge_id": "3e5023990c25cb157c1c2f890c8469a081a3f0b6d4d53f86b586f18ca4529a6b",
+      "evidence": {
+        "claim": "D4.9 hash_integrity confirms D4.8 plan identity and authorization hash link",
+        "source_artifact_id": "6b183ce813288bab2961d78d8b537059e7ea00ac50732b95f56b7b997e9ec6d7",
+        "source_checkpoint": "C11-D D4.9",
+        "source_path": "artifacts/tests/c11d_d4/d4_9/d4_9_regression_evidence.json",
+        "source_type": "evidence"
+      },
+      "relation": "GENERATED_FROM",
+      "source_artifact_id": "6245dacabcb652d7e939fab12f3f8e5be484af223574fc1593e86c36b881fe6a",
+      "target_artifact_id": "675c2968728f474b21748f91c04e2bc8dbfb456b6e1cded016a866a5f69b2900"
+    },
+    {
+      "confidence": "EVIDENCE_BACKED",
+      "edge_id": "8cc7a4e4c1173a801e3fa767f4b2fe75ae218325669952ad760ee0bd88c6558e",
+      "evidence": {
+        "claim": "D4.9 acceptance evidence validates D4.6 plan identity through D4.8 hash links",
+        "source_artifact_id": "6b183ce813288bab2961d78d8b537059e7ea00ac50732b95f56b7b997e9ec6d7",
+        "source_checkpoint": "C11-D D4.9",
+        "source_path": "artifacts/tests/c11d_d4/d4_9/d4_9_regression_evidence.json",
+        "source_type": "evidence"
+      },
+      "relation": "VALIDATED_BY",
+      "source_artifact_id": "675c2968728f474b21748f91c04e2bc8dbfb456b6e1cded016a866a5f69b2900",
+      "target_artifact_id": "ecffd502f772b86039a58611067ddcab4ee8e1e1b9563704e5cd964f2a0700dd"
+    }
+  ],
+  "frozen_c11c_sha256": "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+  "production_execution": false,
+  "registry_sha256": "8c5984a2a8286707d6c2762365155368d96f027d036d6c6c12aa566173715db0",
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "source_manifest": {
+    "logical_nodes": 75,
+    "path": "artifacts/tests/c11d_d5/d5_1/d5_1_canonical_artifact_manifest.json",
+    "physical_locations": 79,
+    "sha256": "0c2d8242ebcef8eee60e0e049bdaee38f1b6ab16d0e70da866cb227cd38f048b"
+  },
+  "status": "CLOSED",
+  "synthetic_tests": {
+    "missing_parent_rejected": true,
+    "synthetic_cycle_detected": true
+  }
+}

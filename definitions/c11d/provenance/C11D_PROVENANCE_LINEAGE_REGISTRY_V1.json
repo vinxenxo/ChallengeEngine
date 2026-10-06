@@ -1,0 +1,35 @@
+{
+  "registry_id": "c11d_provenance_lineage",
+  "registry_version": "1.0",
+  "status": "ACTIVE",
+  "runtime_authority": "NONE",
+  "direction_convention": "SOURCE describes its relationship to TARGET; derived artifact points to its source or supporting evidence.",
+  "node_authority": "D5.1 canonical artifact manifest only",
+  "relation_types": [
+    "DERIVED_FROM",
+    "GENERATED_FROM",
+    "AUTHORIZED_BY",
+    "VALIDATED_BY",
+    "DOCUMENTED_BY",
+    "SNAPSHOT_OF"
+  ],
+  "accepted_edge_requirements": [
+    "source_artifact_id resolves to exactly one D5.1 logical node",
+    "target_artifact_id resolves to exactly one D5.1 logical node",
+    "evidence names a manifest, receipt, contract, audit, or evidence artifact",
+    "no filename, folder, or guess-only relationship is accepted"
+  ],
+  "authorization_policy": {
+    "blocked_decision_is_not_a_grant": true,
+    "authorization_evidence_may_document_a_decision_without_an_AUTHORIZED_BY_edge": true
+  },
+  "cycle_policy": "Accepted lineage graph must be a DAG. Synthetic cycle fixtures remain in-memory only.",
+  "orphan_policy": {
+    "manifest_orphan_nodes_retained": true,
+    "global_unmanaged_candidate_count_expanded_to_nodes": false,
+    "cleanup_authority": "NONE"
+  },
+  "runtime_authority": "NONE",
+  "production_execution": false,
+  "next": "D5.3 - Artifact Topology Validator"
+}

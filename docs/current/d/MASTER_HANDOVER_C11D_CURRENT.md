@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D5.0 CLOSED
+## Current state - D5.2 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -18,8 +18,15 @@ D4.8: PASS / CLOSED
 D4.9: PASS / CLOSED
 D4: CLOSED
 D5.0: PASS / CLOSED
+D5.1: PASS / CLOSED
+
+D5.2: PASS / CLOSED
+
+
+
+
 D5 = ACTIVE
-NEXT = D5.1 - Canonical Artifact Manifest
+NEXT = D5.3 - Artifact Topology Validator
 
 D5.0 audited 19,938 repository files and discovered 19 D3/D4 receipts. It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphaned artifact candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -36,9 +43,18 @@ Visual Loop and Visual Drill remain unchanged.
 - Raw D3.2 WAVs and D3.3 delivery master are separate hashed media records.
 - Provenance gaps remain inventoried; D5.0 does not mint new artifact IDs or a runtime manifest.
 
+## D5.1 evidence
+
+- Contract: `docs/current/d/D5.1_CANONICAL_ARTIFACT_MANIFEST_CONTRACT.md`.
+- Schema: `definitions/c11d/artifacts/C11D_ARTIFACT_MANIFEST_SCHEMA_V1.json`.
+- Manifest, evidence, and receipt: `artifacts/tests/c11d_d5/d5_1/`.
+- Identity is SHA-256 over type, role, version, producer, and parent IDs; path is excluded.
+- The 12,304 orphan candidates remain unmanaged with cleanup authority NONE.
+- Followed by: **D5.2 - Provenance Lineage Registry**.
+
 ## Next
 
-D5.1 - Canonical Artifact Manifest.
+D5.3 - Artifact Topology Validator.
 
 ## Frozen baseline
 
@@ -251,3 +267,15 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D4.9 contract: `docs/current/d/D4.9_FULL_D4_ACCEPTANCE_CONTRACT.md`.
 - Matrix, regression evidence, and receipt: `artifacts/tests/c11d_d4/d4_9/`.
 - D4 is CLOSED. Next: **D5 - Artifact Topology + Provenance**.
+<!-- C11D_D5_2_HANDOFF_V1 -->
+
+## C11-D D5.2 CLOSED / PASS
+
+- The registry consumes the D5.1 manifest as the sole node source: 75 logical nodes retain 79 physical locations; 9 ORPHANED nodes remain governed as non-cleanup records.
+- Evidence-backed graph contains 11 accepted edges; D3 raw-to-master and QA lineage and D4 request/plan/governance/acceptance evidence are validated. Blocked D4.8 governance is recorded as BLOCKED, not as a grant.
+- The 12,304 global unmanaged candidates remain external inventory; no files were moved or deleted.
+- Synthetic cycle and missing-parent rejection checks passed; registry is deterministic/idempotent and C11-C frozen SHA-256 is preserved.
+- Runtime authority is NONE; production execution is false.
+- Contract: `docs/current/d/D5.2_PROVENANCE_LINEAGE_REGISTRY_CONTRACT.md`.
+- Registry, evidence, and receipt: `artifacts/tests/c11d_d5/d5_2/`.
+- Next: **D5.3 - Artifact Topology Validator**.
