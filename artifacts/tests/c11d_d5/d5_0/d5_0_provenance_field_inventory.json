@@ -1,0 +1,310 @@
+{
+  "fields": [
+    {
+      "derivable_from_receipts": false,
+      "field": "artifact_id",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "artifact_type",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "artifact_version",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "artifact_sha256",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "lifecycle_state",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "request_sha256",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "plan_sha256",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "authorization_sha256",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "challenge_id",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "challenge_version",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "seed",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "music_seed",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "delivery_profile_id",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "delivery_profile_version",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "personalization_profile_id",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "personalization_profile_version",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "music_engine_id",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "music_engine_version",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "style_profile_id",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "style_profile_version",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "source_revision",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "created_by_component",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "parent_artifact_ids",
+      "present": false,
+      "status": "MISSING"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "mode",
+      "present": true,
+      "status": "PRESENT"
+    },
+    {
+      "derivable_from_receipts": false,
+      "field": "runtime_authority",
+      "present": true,
+      "status": "PRESENT"
+    }
+  ],
+  "receipt_checkpoints": [
+    {
+      "checkpoint": "D1.7",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d1/d1_7_challenge_mapping/d1_7_validation_receipt.json",
+      "result": "UNKNOWN",
+      "runtime_authority": "UNKNOWN",
+      "status": "PASS"
+    },
+    {
+      "checkpoint": "C11-D D2.0",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d2/d2_0_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "checkpoint": "C11-D D2.1",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d2/d2_1_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "UNKNOWN"
+    },
+    {
+      "checkpoint": "C11-D D2.2",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d2/d2_2_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D2.3",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d2/d2_3_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D3.0",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d3/d3_0_validation_receipt.json",
+      "result": "PASS / DESIGN READY",
+      "runtime_authority": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "checkpoint": "C11-D D3.1",
+      "next": "UNKNOWN",
+      "receipt_path": "artifacts/tests/c11d_d3/d3_1_validation_receipt.json",
+      "result": "PASS / SPECIFIED",
+      "runtime_authority": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "checkpoint": "C11-D D3.2",
+      "next": "D3.3 - Loudness / Mobile Audio QA",
+      "receipt_path": "artifacts/tests/c11d_d3/d3_2/d3_2_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "UNKNOWN",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D3.3",
+      "next": "D4",
+      "receipt_path": "artifacts/tests/c11d_d3/d3_3/d3_3_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "UNKNOWN",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.0",
+      "next": "D4.1 - Canonical Production Request Schema",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_0_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "UNKNOWN",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.1",
+      "next": "D4.2 - Production Request Normalization + Validation",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_1/d4_1_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.2",
+      "next": "D4.3 - Personalization Contract",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_2/d4_2_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.3",
+      "next": "D4.4 - Canonical Production Orchestrator",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_3/d4_3_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.4",
+      "next": "D4.5 - CLI Adapter",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_4/d4_4_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "UNKNOWN",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.5",
+      "next": "D4.6 - GUI Adapter",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_5/d4_5_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.6",
+      "next": "D4.7 - GUI/CLI Parity",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_6/d4_6_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.7",
+      "next": "D4.8 - Production Activation Governance",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_7/d4_7_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.8",
+      "next": "D4.9 - Full D4 Acceptance",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_8/d4_8_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    },
+    {
+      "checkpoint": "C11-D D4.9",
+      "next": "D5 - Artifact Topology + Provenance",
+      "receipt_path": "artifacts/tests/c11d_d4/d4_9/d4_9_validation_receipt.json",
+      "result": "PASS",
+      "runtime_authority": "NONE",
+      "status": "CLOSED"
+    }
+  ],
+  "receipt_count": 19,
+  "schema": "C11D-D5.0-PROVENANCE-FIELD-INVENTORY-V1"
+}

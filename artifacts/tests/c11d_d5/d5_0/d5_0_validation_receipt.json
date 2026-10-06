@@ -1,0 +1,30 @@
+{
+  "active_historical_boundary_defined": true,
+  "artifact_taxonomy_defined": true,
+  "checkpoint": "C11-D D5.0",
+  "frozen_c11c_preserved": true,
+  "idempotency": true,
+  "lifecycle_states_defined": true,
+  "next": "D5.1 - Canonical Artifact Manifest",
+  "orphaned_artifacts": 12304,
+  "plan_to_authorization_lineage": true,
+  "production_execution": false,
+  "provenance_field_inventory": true,
+  "request_plan_authorization_lineage": true,
+  "request_to_plan_lineage": true,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "status": "CLOSED",
+  "tests": {
+    "A_d4_9_closed": true,
+    "B_taxonomy_complete": true,
+    "C_lifecycle_complete": true,
+    "D_request_plan_authorization_lineage": true,
+    "E_synthetic_topology_conflict": true,
+    "F_synthetic_orphan": true,
+    "G_frozen_c11c_hash": true,
+    "H_idempotent_generation": true
+  },
+  "topology_conflicts": 0,
+  "unclassified_active_artifacts": 0
+}

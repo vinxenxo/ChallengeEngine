@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D4 CLOSED
+## Current state - D5.0 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -17,9 +17,11 @@ D4.7: PASS / CLOSED
 D4.8: PASS / CLOSED
 D4.9: PASS / CLOSED
 D4: CLOSED
-NEXT: D5 - Artifact Topology + Provenance.
+D5.0: PASS / CLOSED
+D5 = ACTIVE
+NEXT = D5.1 - Canonical Artifact Manifest
 
-D4 closure consolidates the declarative request pipeline and governance. It does not activate physical production; renderer policy remains DISABLED and runtime authority remains NONE.
+D5.0 audited 19,938 repository files and discovered 19 D3/D4 receipts. It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphaned artifact candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
 ## Strategic objective
 
@@ -27,44 +29,16 @@ Normalize Challenge video generation using recovered C11-A/C11-B Challenge conte
 Use shared production infrastructure instead of duplicating family-specific pipelines.
 Visual Loop and Visual Drill remain unchanged.
 
-## Current state
+## D5.0 evidence
 
-D0: CLOSED / PASS
-D1: functional checkpoints complete
-D2: CLOSED
-D3.0: PASS / DESIGN READY
-D3.1: PASS / SPECIFIED
-D3: ACTIVE
-
-## D3.1
-
-Shared Music Engine V5 specified.
-Challenge style profile challenge_8bit_v1 specified.
-Six musical layers specified.
-Dedicated music seed specified.
-Structural/gameplay RNG decoupling specified.
-Presentation synchronization without simulation mutation specified.
-Audio provenance specified.
-Visual Loop protected.
-Visual Drill protected.
-Runtime activation not performed.
-
-Engine:
-definitions\c11d\music\C11D_MUSIC_ENGINE_V5_SPEC_V1.json
-
-Challenge profile:
-definitions\c11d\music\C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json
-
-Contract:
-docs\current\d\D3.1_SHARED_MUSIC_ENGINE_V5_CONTRACT.md
-
-Receipt:
-artifacts\tests\c11d_d3\d3_1_validation_receipt.json
+- Contract: `docs/current/d/D5.0_ARTIFACT_TOPOLOGY_PROVENANCE_AUDIT_CONTRACT.md`.
+- Audit, provenance inventory, and receipt: `artifacts/tests/c11d_d5/d5_0/`.
+- Raw D3.2 WAVs and D3.3 delivery master are separate hashed media records.
+- Provenance gaps remain inventoried; D5.0 does not mint new artifact IDs or a runtime manifest.
 
 ## Next
 
-D3.2 - Deterministic Music Implementation / Render Comparison.
-D3.2 must prove deterministic same-input/same-output behavior before runtime rollout.
+D5.1 - Canonical Artifact Manifest.
 
 ## Frozen baseline
 

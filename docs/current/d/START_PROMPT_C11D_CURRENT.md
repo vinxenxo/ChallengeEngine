@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D4 CLOSED / PASS.
+Continue ChallengeEngineV01_STATELESS from C11-D D5.0 PASS / CLOSED.
 
 ## Current D state
 
@@ -19,14 +19,18 @@ D4.7 = PASS / CLOSED
 D4.8 = PASS / CLOSED
 D4.9 = PASS / CLOSED
 D4 = CLOSED
-NEXT = D5 - Artifact Topology + Provenance.
+D5.0 = PASS / CLOSED
+D5 = ACTIVE
+NEXT = D5.1 - Canonical Artifact Manifest
 
-D4 closure does not activate physical production. Renderer policy remains DISABLED; runtime authority is NONE. C11-C 2.19.12 remains frozen and immutable.
+D5.0 inspected the repository without moving or deleting artifacts. It found zero topology conflicts and zero unclassified active artifacts; request-to-plan and plan-to-authorization lineage passed against D4 evidence. The frozen C11-C archive SHA-256 matches. There are 12,304 orphaned artifact candidates recorded for lifecycle follow-up. Renderer policy remains DISABLED; runtime authority is NONE; production execution is false. C11-C 2.19.12 remains frozen and immutable.
 
 ## Read first
 
 docs\current\d\MASTER_HANDOVER_C11D_CURRENT.md
 docs\current\d\START_PROMPT_C11D_CURRENT.md
+docs\current\d\D5.0_ARTIFACT_TOPOLOGY_PROVENANCE_AUDIT_CONTRACT.md
+artifacts\tests\c11d_d5\d5_0\d5_0_validation_receipt.json
 docs\current\d\D4.3_PERSONALIZATION_CONTRACT.md
 artifacts\tests\c11d_d4\d4_3\d4_3_validation_receipt.json
 artifacts\tests\c11d_d4\d4_3\d4_3_personalization_evidence.json
@@ -81,7 +85,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D3.2 - Deterministic Music Implementation / Render Comparison.
+D5.1 - Canonical Artifact Manifest.
 
 <!-- C11D_D3_2_HANDOFF -->
 
