@@ -1,0 +1,74 @@
+{
+  "checkpoint": "C11-D D4.8",
+  "result": "PASS",
+  "status": "CLOSED",
+  "total_cases": 8,
+  "passed_cases": 8,
+  "failed_cases": 0,
+  "cases": [
+    {
+      "case_id": "D4.8-001",
+      "case": "valid_production_renderer_disabled",
+      "validated": true,
+      "authorized": false,
+      "expected_reason": "RENDERER_POLICY_DISABLED",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-002",
+      "case": "valid_review_never_authorized",
+      "validated": true,
+      "authorized": false,
+      "expected_reason": "REVIEW_MODE",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-003",
+      "case": "predecessor_open",
+      "validated": false,
+      "authorized": false,
+      "expected_reason": "PREDECESSOR_NOT_CLOSED",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-004",
+      "case": "tampered_duration",
+      "validated": false,
+      "authorized": false,
+      "expected_reason": "PLAN_HASH_MISMATCH",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-005",
+      "case": "tampered_music_seed",
+      "validated": false,
+      "authorized": false,
+      "expected_reason": "PLAN_HASH_MISMATCH",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-006",
+      "case": "seed_collision",
+      "validated": false,
+      "authorized": false,
+      "expected_reason": "SEED_COLLISION",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-007",
+      "case": "tampered_personalization",
+      "validated": false,
+      "authorized": false,
+      "expected_reason": "PLAN_HASH_MISMATCH",
+      "pass": true
+    },
+    {
+      "case_id": "D4.8-008",
+      "case": "tampered_request_hash",
+      "validated": false,
+      "authorized": false,
+      "expected_reason": "REQUEST_HASH_MISMATCH",
+      "pass": true
+    }
+  ]
+}

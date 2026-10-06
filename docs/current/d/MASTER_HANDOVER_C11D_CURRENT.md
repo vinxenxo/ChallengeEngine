@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D4.7
+## Current state - D4.8
 
 D0: CLOSED / PASS
 D1: functional checkpoints complete
@@ -14,9 +14,10 @@ D4.4: PASS / CLOSED
 D4.5: PASS / CLOSED
 D4.6: PASS / CLOSED
 D4.7: PASS / CLOSED
-NEXT: D4.8 - Production Activation Governance.
+D4.8: PASS / CLOSED
+NEXT: D4.9 - Full D4 Acceptance.
 
-D4.7 passed all 102 exact GUI/CLI parity cases. Runtime authority remains NONE; renderer activation and production execution remain false.
+D4.8 governance is active as a decision-only gate. Renderer policy is DISABLED and physical production is NOT AUTHORIZED; runtime authority is NONE.
 
 ## Strategic objective
 
@@ -243,3 +244,20 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Contract: `docs/current/d/D4.7_GUI_CLI_PARITY_CONTRACT.md`.
 - Matrix, evidence, and receipt: `artifacts/tests/c11d_d4/d4_7/`.
 - Next active checkpoint: **D4.8 - Production Activation Governance**.
+
+<!-- C11D_D4_8_HANDOFF_V1 -->
+
+## C11-D D4.8 CLOSED / PASS
+
+- Added versioned production activation policy and decision-only governance evaluator.
+- D4.2-D4.7 receipts must all be PASS/CLOSED.
+- D4.2 request identity, D4.4 plan identity, D4.3 personalization profile/version, D4.1 delivery profile vocabulary, seeds, and provenance are checked.
+- REVIEW is validated but blocked with `REVIEW_MODE`.
+- PRODUCTION passes validation but is blocked with `RENDERER_POLICY_DISABLED`.
+- Tampered plan, request, seed, and personalization data are rejected; seed collision is explicitly rejected.
+- Authorization is deterministic. D4.4 remains owner of Production Plan hashes.
+- Renderer, FFmpeg/Godot production calls, and physical execution remain false; runtime authority is NONE.
+- Contract: `docs/current/d/D4.8_PRODUCTION_ACTIVATION_GOVERNANCE_CONTRACT.md`.
+- Policy: `definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json`.
+- Evidence, matrix, and receipt: `artifacts/tests/c11d_d4/d4_8/`.
+- Next active checkpoint: **D4.9 - Full D4 Acceptance**.
