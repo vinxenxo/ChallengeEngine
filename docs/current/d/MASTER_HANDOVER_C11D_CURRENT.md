@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D5.4 CLOSED
+## Current state - D5.5 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -24,11 +24,12 @@ D5.2: PASS / CLOSED
 
 D5.3: PASS / CLOSED
 D5.4: PASS / CLOSED
+D5.5: PASS / CLOSED
 
-D5 = ACTIVE
-NEXT = D5.5 - Full D5 Acceptance
+D5 = CLOSED
+NEXT = D6 — Seed Registry and Governance
 
-D5.0 audited 19,938 repository files and discovered 19 D3/D4 receipts. It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphaned artifact candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
+D5.0 audited 19,938 repository files and inventoried 19 receipts across D1-D4 (14 receipt paths are D3/D4). It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphan candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
 ## Strategic objective
 
@@ -54,7 +55,7 @@ Visual Loop and Visual Drill remain unchanged.
 
 ## Next
 
-D5.5 - Full D5 Acceptance.
+D6 — Seed Registry and Governance.
 
 ## Frozen baseline
 
@@ -304,4 +305,18 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Policy: `definitions/c11d/artifacts/C11D_ARTIFACT_LIFECYCLE_POLICY_V1.json`.
 - Contract: `docs/current/d/D5.4_ARTIFACT_LIFECYCLE_QUARANTINE_RULES_CONTRACT.md`.
 - Validation, quarantine matrix, and receipt: `artifacts/tests/c11d_d5/d5_4/`.
-- Next: **D5.5 - Full D5 Acceptance**.
+- Closed by D5.5 Full D5 Acceptance. Next: **D6 — Seed Registry and Governance**.
+
+<!-- C11D_D5_5_HANDOFF_V1 -->
+
+## C11-D D5.5 CLOSED / PASS - D5 CLOSED
+
+- Full acceptance consumed the actual D5.0-D5.4 receipts, contracts, manifest, lineage, topology, lifecycle policy, and D3/D4 evidence without rewriting predecessor outputs.
+- Cross-check passed: 75 logical identities, 79 physical locations, 11 evidence-backed edges, 9 governed ORPHANED records, and 12,304 unmanaged global candidates outside the graph.
+- D3/D4 consistency passed; D4.8 remains BLOCKED and no authorization grant is inferred. Negative tests, determinism, and idempotency passed.
+- Both full runner executions passed the worktree mutation guard and produced identical matrix, summary, and receipt hashes. No files were moved/deleted; runtime authority is NONE and production execution is false.
+- Frozen C11-C ZIP, tree, and `build_factory.py` SHA-256 values were verified.
+- D5.1 validation receipt self-hash remains `DECLARATION ABSENT / NON-BLOCKING SCHEMA DECLARATION`; its manifest and evidence hashes remain verified.
+- Contract: `docs/current/d/D5.5_FULL_D5_ACCEPTANCE_CONTRACT.md`.
+- Acceptance matrix, summary, and receipt: `artifacts/tests/c11d_d5/d5_5/`.
+- Next: **D6 — Seed Registry and Governance**.

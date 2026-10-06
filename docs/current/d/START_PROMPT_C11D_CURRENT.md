@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D5.4 PASS / CLOSED.
+Continue ChallengeEngineV01_STATELESS from C11-D D5.5 PASS / CLOSED.
 
 ## Current D state
 
@@ -26,11 +26,12 @@ D5.2 = PASS / CLOSED
 
 D5.3 = PASS / CLOSED
 D5.4 = PASS / CLOSED
+D5.5 = PASS / CLOSED
 
-D5 = ACTIVE
-NEXT = D5.5 - Full D5 Acceptance
+D5 = CLOSED
+NEXT = D6 — Seed Registry and Governance
 
-D5.4 formalizes lifecycle transitions and quarantine governance without changing artifacts. Two runs passed with identical hashes; 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global unmanaged candidates are preserved. D4.8 remains BLOCKED. No input files were moved, deleted, or modified; runtime authority is NONE and production execution is false.
+D5.5 consumed and accepted D5.0-D5.4, with two full runner executions producing identical matrix, summary, and receipt hashes. Cross-check totals are 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates outside the graph. D4.8 remains BLOCKED; C11-C frozen ZIP/tree/build hashes are preserved. The runner mutation guard passed on both runs; no cleanup or production execution occurred, and runtime authority is NONE. D5.0's 19 receipts are the D1-D4 inventory total, of which 14 are D3/D4 receipt paths.
 
 ## Read first
 
@@ -104,7 +105,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D5.5 - Full D5 Acceptance.
+D6 — Seed Registry and Governance.
 
 <!-- C11D_D3_2_HANDOFF -->
 
@@ -317,3 +318,11 @@ D5.3 validates filesystem, D5.1 manifest, and D5.2 lineage agreement: 75 logical
 <!-- C11D_D5_4_HANDOFF_V1 -->
 
 D5.4 lifecycle and quarantine policy passed twice with identical validation, matrix, and receipt hashes. It preserves 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates. The D5.4 runner confirmed its watched input trees were unchanged. No movement, deletion, cleanup, candidate promotion, or production activation occurred; D4.8 remains BLOCKED and runtime authority is NONE.
+
+<!-- C11D_D5_5_HANDOFF_V1 -->
+
+D5.5 Full D5 Acceptance is PASS / CLOSED; D5 is CLOSED. Two full runner executions passed the worktree mutation guard and produced identical acceptance matrix, summary, and receipt hashes. Verified totals: 75 logical identities, 79 physical locations, 11 evidence-backed lineage edges, 9 governed ORPHANED records, and 12,304 unmanaged candidates outside the graph. D3/D4 consistency passed, D4.8 remains BLOCKED, and the frozen C11-C ZIP/tree/build identities are preserved. No files were moved or deleted; runtime authority is NONE and production execution is false.
+
+Acceptance evidence: `artifacts/tests/c11d_d5/d5_5/`. Contract: `docs/current/d/D5.5_FULL_D5_ACCEPTANCE_CONTRACT.md`.
+
+NEXT = D6 — Seed Registry and Governance. Do not begin D6 until separately requested.
