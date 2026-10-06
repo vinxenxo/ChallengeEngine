@@ -1,0 +1,123 @@
+{
+  "case_count": 17,
+  "cases": [
+    {
+      "actual_error": "MISSING_CANONICAL_SEED",
+      "case": "missing_gameplay_seed",
+      "expected_error": "MISSING_CANONICAL_SEED",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "MISSING_CANONICAL_SEED",
+      "case": "missing_music_seed",
+      "expected_error": "MISSING_CANONICAL_SEED",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "INVALID_SEED",
+      "case": "invalid_gameplay_seed",
+      "expected_error": "INVALID_SEED",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "INVALID_SEED",
+      "case": "invalid_music_seed",
+      "expected_error": "INVALID_SEED",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "UNKNOWN_SEED_AUTHORITY",
+      "case": "unknown_seed_authority",
+      "expected_error": "UNKNOWN_SEED_AUTHORITY",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "CROSS_DOMAIN_CONSUMPTION_FORBIDDEN",
+      "case": "gameplay_to_music",
+      "expected_error": "CROSS_DOMAIN_CONSUMPTION_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "CROSS_DOMAIN_CONSUMPTION_FORBIDDEN",
+      "case": "music_to_gameplay",
+      "expected_error": "CROSS_DOMAIN_CONSUMPTION_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "DERIVATION_POLICY_DISABLED",
+      "case": "derivation_while_disabled",
+      "expected_error": "DERIVATION_POLICY_DISABLED",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "NONDETERMINISTIC_SOURCE_FORBIDDEN",
+      "case": "nondeterministic_source",
+      "expected_error": "NONDETERMINISTIC_SOURCE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "SHARED_RNG_NOT_AUTHORITY",
+      "case": "shared_rng_authority",
+      "expected_error": "SHARED_RNG_NOT_AUTHORITY",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "PRODUCER_SELECTION_NOT_CANONICAL",
+      "case": "producer_automatic_authority",
+      "expected_error": "PRODUCER_SELECTION_NOT_CANONICAL",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "UNKNOWN_SEED_AUTHORITY",
+      "case": "master_seed_authority",
+      "expected_error": "UNKNOWN_SEED_AUTHORITY",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "protected_surface_authority",
+      "expected_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "simulation_result_protected_surface",
+      "expected_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "rendered_stream_protected_surface",
+      "expected_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "c7_c9_contract_protected_surface",
+      "expected_error": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual_error": "UNKNOWN_SEED_AUTHORITY",
+      "case": "master_seed_request_field",
+      "expected_error": "UNKNOWN_SEED_AUTHORITY",
+      "result": "PASS"
+    }
+  ],
+  "checkpoint": "C11-D D6.2",
+  "positive_isolation_cases": [
+    {
+      "case": "same_numeric_value_independent_authorities",
+      "pass": true
+    },
+    {
+      "case": "gameplay_change_does_not_change_music",
+      "pass": true
+    },
+    {
+      "case": "music_change_does_not_change_gameplay",
+      "pass": true
+    }
+  ],
+  "result": "PASS"
+}

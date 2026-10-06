@@ -1,0 +1,54 @@
+{
+  "canonical_request_source": "tools/c11d/d4/production_request_normalizer.py",
+  "canonical_resolution": {
+    "master_seed": null,
+    "master_seed_authority": "NOT_ADOPTED",
+    "resolution_status": "RESOLVED",
+    "resolver_id": "c11d_seed_resolver",
+    "runtime_authority": "NONE",
+    "schema_version": "1.0",
+    "seeds": {
+      "gameplay": {
+        "authority": "gameplay.seed",
+        "derivation_status": "NOT_USED",
+        "derived": false,
+        "deterministic": true,
+        "domain": "GAMEPLAY",
+        "mode": "EXPLICIT",
+        "source": "request.seed",
+        "value": 123456
+      },
+      "music": {
+        "authority": "music.seed",
+        "derivation_status": "NOT_USED",
+        "derived": false,
+        "deterministic": true,
+        "domain": "MUSIC",
+        "mode": "EXPLICIT",
+        "source": "request.music_seed",
+        "value": 654321
+      }
+    }
+  },
+  "checkpoint": "C11-D D6.2",
+  "cross_domain_isolation": true,
+  "d3_music_isolation": true,
+  "d4_8_production_blocked": true,
+  "d4_seed_music_seed_separation": true,
+  "derivation_capability": "AVAILABLE",
+  "derivation_runtime_activation": "DISABLED",
+  "ffmpeg_production_execution": false,
+  "gameplay_change_music_unchanged": true,
+  "godot_production_execution": false,
+  "invalid_seed_rejection": true,
+  "master_seed": "NOT_ADOPTED",
+  "missing_seed_rejection": true,
+  "music_change_gameplay_unchanged": true,
+  "negative_tests_pass": true,
+  "production_execution": false,
+  "renderer_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "same_numeric_independent_domains_valid": true,
+  "same_request_same_resolution": true
+}

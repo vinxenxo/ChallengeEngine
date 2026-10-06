@@ -1,0 +1,38 @@
+{
+  "spec_id": "c11d_seed_derivation_spec",
+  "schema_version": "1.0",
+  "checkpoint": "C11-D D6.2",
+  "derivation_capability": "AVAILABLE",
+  "derivation_runtime_activation": "DISABLED",
+  "canonical_resolution": {
+    "request_schema": "c11d_production_request/1.0",
+    "normalizer": "tools/c11d/d4/production_request_normalizer.py",
+    "gameplay": {"authority_id": "gameplay.seed", "request_field": "seed", "domain": "GAMEPLAY", "mode": "EXPLICIT"},
+    "music": {"authority_id": "music.seed", "request_field": "music_seed", "domain": "MUSIC", "mode": "EXPLICIT"},
+    "missing_seed": "REJECT",
+    "automatic_generation": "FORBIDDEN"
+  },
+  "master_seed": {"canonical_authority": "NOT_ADOPTED", "request_field": "NOT_ALLOWED", "derivation_parent": "NOT_SELECTED"},
+  "derivation": {
+    "algorithm": "SHA-256",
+    "algorithm_version": "1",
+    "canonicalization": "UTF-8 JSON object with sorted keys, compact separators, no ASCII escaping",
+    "input_fields": ["algorithm", "algorithm_version", "domain", "parent_seed"],
+    "integer_encoding": "parent_seed is a base-10 JSON integer; booleans are invalid",
+    "output_conversion": "Interpret the first 8 digest bytes as an unsigned big-endian 64-bit integer",
+    "domain_separation": "Domain is a required uppercase governed domain and is part of the hashed canonical object",
+    "state": "PURE_FUNCTION_ONLY",
+    "uses_python_hash": false,
+    "uses_random_time_uuid_or_entropy": false,
+    "cross_platform_stable": true
+  },
+  "governance": {
+    "policy_source": "definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json",
+    "derivation_allowed_by_current_policy": false,
+    "derived_seed_resolution": "REJECT_WITH_DERIVATION_POLICY_DISABLED",
+    "producer_automatic_selection": "NOT_CANONICAL",
+    "shared_rng_authority": "FORBIDDEN",
+    "cross_domain_consumption": "FORBIDDEN",
+    "protected_simulation_outputs_as_inputs": "FORBIDDEN"
+  }
+}

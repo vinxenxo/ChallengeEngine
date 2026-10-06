@@ -1,0 +1,38 @@
+{
+  "algorithm": "SHA-256",
+  "all_pass": true,
+  "canonicalization": "UTF-8 JSON object with sorted keys, compact separators, no ASCII escaping",
+  "checkpoint": "C11-D D6.2",
+  "output_conversion": "Interpret the first 8 digest bytes as an unsigned big-endian 64-bit integer",
+  "runtime_activation": "DISABLED",
+  "vectors": [
+    {
+      "case": "same_parent_same_domain",
+      "expected_equal": true,
+      "left": 1620271156368119090,
+      "pass": true,
+      "right": 1620271156368119090
+    },
+    {
+      "case": "same_parent_different_domain",
+      "expected_equal": false,
+      "left": 1620271156368119090,
+      "pass": true,
+      "right": 9164056702892819442
+    },
+    {
+      "case": "different_parent_same_domain",
+      "expected_equal": false,
+      "left": 1620271156368119090,
+      "pass": true,
+      "right": 14844043744035109031
+    },
+    {
+      "case": "different_algorithm_version",
+      "expected_equal": false,
+      "left": 1620271156368119090,
+      "pass": true,
+      "right": 5999755996940234345
+    }
+  ]
+}

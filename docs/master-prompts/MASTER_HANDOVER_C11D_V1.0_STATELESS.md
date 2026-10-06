@@ -6,11 +6,11 @@ D is an additive productization branch around immutable C11-C engine truth.
 
 ## Current checkpoint
 
-D6.1 = PASS / CLOSED. The canonical seed registry contains two evidence-backed authorities: `gameplay` (`request.seed`, owner `c11d_production_request`) and `music` (`request.music_seed`, owner `d3_music_engine_v5`). D3/D4 isolation, negative cases, frozen C11-C identity, deterministic rerun and mutation guard passed. Unknown, legacy, historical and test findings remain evidence outside the registry. Shared RNG and six Producer nondeterministic selections were not promoted. Runtime authority is NONE; production execution is false.
+D6.2 = PASS / CLOSED. The resolver uses D4.2 canonical requests and independently resolves explicit `request.seed` to GAMEPLAY and `request.music_seed` to MUSIC. SHA-256 derivation capability is available but inactive under D6.1 policy; `master_seed` remains NOT_ADOPTED. Seventeen negative cases, D3/D4 gates, frozen C11-C identity, identical reruns and the mutation guard passed. Runtime authority is NONE; production execution is false.
 
-**NEXT = D6.2 — Seed Resolver / Deterministic Derivation.** D6.1 made no master-seed decision.
+**NEXT = D6.3 — Seed Isolation + Collision Validator.**
 
-Read `docs/current/d/D6.1_CANONICAL_SEED_REGISTRY_CONTRACT.md` and the current D handover before D6.2.
+Read `docs/current/d/D6.2_SEED_RESOLVER_DETERMINISTIC_DERIVATION_CONTRACT.md` and the current D handover before D6.3.
 
 ## First reads
 

@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D6.1 CLOSED
+## Current state - D6.2 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -27,10 +27,11 @@ D5.4: PASS / CLOSED
 D5.5: PASS / CLOSED
 D6.0: PASS / CLOSED
 D6.1: PASS / CLOSED
+D6.2: PASS / CLOSED
 
 D5 = CLOSED
 D6 = ACTIVE
-NEXT = D6.2 — Seed Resolver / Deterministic Derivation
+NEXT = D6.3 — Seed Isolation + Collision Validator
 
 D5.0 audited 19,938 repository files and inventoried 19 receipts across D1-D4 (14 receipt paths are D3/D4). It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphan candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -347,4 +348,16 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D6.0's 896 unknown findings remain preserved. Legacy, historical and test fixture findings remain evidence only. Shared RNG remains `OBSERVED_SHARED_RNG_STATE`; six Producer nondeterministic selections remain unpromoted.
 - Two validator runs produced identical four-file evidence and SHA-256 values. Mutation guard passed; no source, registry, policy, D4, D3 or C11-C inputs were rewritten.
 - Runtime authority is NONE. Production, renderer, Godot production and FFmpeg production execution are false.
-- **D6.1 = PASS / CLOSED. NEXT = D6.2 — Seed Resolver / Deterministic Derivation.** D6.2 will decide whether a master seed is evidence-backed; D6.1 makes no such decision.
+- **D6.1 = PASS / CLOSED.** NEXT: D6.2 — Seed Resolver / Deterministic Derivation.
+
+<!-- C11D_D6_2_HANDOFF_V1 -->
+
+## C11-D D6.2 CLOSED / PASS
+
+- Canonical requests are checked using the existing D4.2 normalizer. Explicit `request.seed` resolves to GAMEPLAY and explicit `request.music_seed` resolves to MUSIC; equal numeric values are allowed while authorities remain independent.
+- The SHA-256 derivation capability is available with domain/version separation and stable UTF-8 canonical input. Current governance keeps derivation runtime disabled; attempts to derive are rejected. `master_seed` remains `NOT_ADOPTED`.
+- Seventeen negative cases passed, including missing/invalid values, unknown authority, cross-domain use, nondeterminism, shared RNG, Producer auto-selection, master seed, and protected simulation/C7/C9 surfaces. Positive isolation vectors passed for independent seed changes.
+- D3 music isolation, D4 field separation and D4.8 production-blocked fence passed. Frozen C11-C ZIP/tree/build hashes were verified.
+- Two runner executions produced identical evidence hashes. Mutation guard passed; registry, policy, spec, D3 and D4 inputs remained unchanged.
+- Runtime authority is NONE. Production, renderer, Godot production and FFmpeg production execution are false.
+- **D6.2 = PASS / CLOSED. NEXT = D6.3 — Seed Isolation + Collision Validator.**
