@@ -1,0 +1,47 @@
+{
+  "checkpoint": "C11-D D4.7",
+  "result": "PASS",
+  "status": "CLOSED",
+  "test_cases": 102,
+  "passed_cases": 102,
+  "failed_cases": 0,
+  "challenge_coverage": 9,
+  "delivery_profile_coverage": 5,
+  "mode_coverage": 2,
+  "personalization_profiles_covered": 2,
+  "canonical_request_parity": true,
+  "interface_origin_normalized_unknown": true,
+  "request_sha256_parity": true,
+  "production_plan_parity": true,
+  "plan_sha256_parity": true,
+  "seed_isolation": true,
+  "personalization_isolation": true,
+  "personalization_identity_tests": {
+    "gui": {
+      "seed_identical": true,
+      "music_seed_identical": true,
+      "personalization_hash_differs": true,
+      "plan_hash_differs": true,
+      "pass": true
+    },
+    "cli": {
+      "seed_identical": true,
+      "music_seed_identical": true,
+      "personalization_hash_differs": true,
+      "plan_hash_differs": true,
+      "pass": true
+    }
+  },
+  "negative_tests": {
+    "invalid_request_rejected_by_d42": true,
+    "invalid_personalization_rejected_by_d43": true,
+    "forbidden_simulation_control_rejected": true,
+    "pass": true
+  },
+  "renderer_activation": false,
+  "production_execution": false,
+  "runtime_authority": "NONE",
+  "plan_hash_owned_by_d44": true,
+  "plan_hash_owner": "canonical_production_orchestrator",
+  "next": "D4.8 - Production Activation Governance"
+}

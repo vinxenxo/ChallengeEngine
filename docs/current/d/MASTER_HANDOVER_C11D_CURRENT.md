@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D4.6
+## Current state - D4.7
 
 D0: CLOSED / PASS
 D1: functional checkpoints complete
@@ -13,9 +13,10 @@ D4.3: PASS / CLOSED
 D4.4: PASS / CLOSED
 D4.5: PASS / CLOSED
 D4.6: PASS / CLOSED
-NEXT: D4.7 - GUI/CLI Parity.
+D4.7: PASS / CLOSED
+NEXT: D4.8 - Production Activation Governance.
 
-D4.6 provides a toolkit-independent GUI data adapter into the same D4.2/D4.3/D4.4 pipeline as the CLI. GUI activation, renderer activation, and production execution remain false; runtime authority is NONE.
+D4.7 passed all 102 exact GUI/CLI parity cases. Runtime authority remains NONE; renderer activation and production execution remain false.
 
 ## Strategic objective
 
@@ -227,3 +228,18 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Contract: `docs/current/d/D4.6_GUI_ADAPTER_CONTRACT.md`.
 - Evidence, plan, parity, fixtures, and receipt: `artifacts/tests/c11d_d4/d4_6/`.
 - Next active checkpoint: **D4.7 - GUI/CLI Parity**.
+
+<!-- C11D_D4_7_HANDOFF_V1 -->
+
+## C11-D D4.7 CLOSED / PASS
+
+- Exact 102/102 GUI/CLI parity cases passed: 90 Challenge/profile/mode combinations and 12 personalization combinations.
+- Canonical request JSON and SHA-256 matched for every pair.
+- Production Plan JSON and SHA-256 matched for every pair.
+- `request_origin` is normalized to UNKNOWN and excluded from semantic identity.
+- Personalization changes its identity and plan hash without changing `seed` or `music_seed` through either adapter.
+- D4.2/D4.3 negative validation remained authoritative; forbidden simulation controls are rejected.
+- D4.4 owns plan identity. Renderer activation and production execution remain false; runtime authority is NONE.
+- Contract: `docs/current/d/D4.7_GUI_CLI_PARITY_CONTRACT.md`.
+- Matrix, evidence, and receipt: `artifacts/tests/c11d_d4/d4_7/`.
+- Next active checkpoint: **D4.8 - Production Activation Governance**.
