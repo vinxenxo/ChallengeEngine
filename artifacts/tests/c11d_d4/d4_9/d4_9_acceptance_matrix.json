@@ -1,0 +1,95 @@
+{
+  "checkpoint": "C11-D D4.9",
+  "result": "PASS",
+  "status": "CLOSED",
+  "d4_complete": true,
+  "checkpoints": {
+    "d4_0": "PASS/CLOSED",
+    "d4_1": "PASS/CLOSED",
+    "d4_2": "PASS/CLOSED",
+    "d4_3": "PASS/CLOSED",
+    "d4_4": "PASS/CLOSED",
+    "d4_5": "PASS/CLOSED",
+    "d4_6": "PASS/CLOSED",
+    "d4_7": "PASS/CLOSED",
+    "d4_8": "PASS/CLOSED"
+  },
+  "gates": {
+    "all_checkpoints_closed": true,
+    "architecture_coherent": true,
+    "gui_cli_parity_102_of_102": true,
+    "production_governance_8_of_8": true,
+    "hash_chain_valid": true,
+    "frozen_c11c_preserved": true,
+    "runtime_boundary_clean": true,
+    "idempotency_and_regression": true
+  },
+  "all_predecessor_runners_pass": true,
+  "gui_cli_parity": true,
+  "production_governance": true,
+  "hash_integrity": true,
+  "frozen_c11c_preserved": true,
+  "runtime_boundary_clean": true,
+  "idempotency": true,
+  "parity_cases": {
+    "cases": 102,
+    "passed": 102,
+    "failed": 0,
+    "challenge_coverage": 9,
+    "delivery_profile_coverage": 5,
+    "mode_coverage": 2,
+    "personalization_profiles_covered": 2,
+    "request_sha_parity": true,
+    "plan_sha_parity": true,
+    "canonical_request_parity": true,
+    "production_plan_parity": true,
+    "plan_hash_owner": "canonical_production_orchestrator"
+  },
+  "governance_cases": {
+    "cases": 8,
+    "passed": 8,
+    "failed": 0,
+    "renderer_policy": "DISABLED",
+    "production_authorization": false,
+    "renderer_called": false,
+    "ffmpeg_production_called": false,
+    "godot_production_called": false
+  },
+  "frozen_c11c": {
+    "expected_archive_sha256": "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+    "receipt_archive_sha256": "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+    "audit_archive_sha256": "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+    "frozen_c11c_modified": false,
+    "preserved": true
+  },
+  "hash_integrity_checks": {
+    "d42_request_sha_present_and_equal": true,
+    "d44_plan_sha_matches_d44": true,
+    "d45_plan_sha_matches_d44_hash_owner": true,
+    "d46_request_sha_matches_d42": true,
+    "d46_plan_sha_matches_d44": true,
+    "d47_gui_cli_request_and_plan_hash_parity": true,
+    "d48_request_identity_matches_d46": true,
+    "d48_plan_identity_matches_d46": true,
+    "d48_authorization_hash_linked": true
+  },
+  "runtime": {
+    "static_execution_patterns": {
+      "production_cli.py": [],
+      "gui_production_adapter.py": [],
+      "canonical_production_orchestrator.py": [],
+      "production_activation_governance.py": [],
+      "production_request_normalizer.py": [],
+      "personalization_resolver.py": []
+    },
+    "renderer_activation": false,
+    "production_execution": false,
+    "runtime_authority": "NONE",
+    "clean": true
+  },
+  "renderer_activation": false,
+  "production_execution": false,
+  "runtime_authority": "NONE",
+  "next": "D5 - Artifact Topology + Provenance",
+  "acceptance_sha256": "cf071770a050ed8a2c2549a96548ce214f62c46c407f2a71a3a6590e14875d94"
+}
