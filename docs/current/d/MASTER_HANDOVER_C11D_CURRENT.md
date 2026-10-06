@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D5.3 CLOSED
+## Current state - D5.4 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -23,9 +23,10 @@ D5.1: PASS / CLOSED
 D5.2: PASS / CLOSED
 
 D5.3: PASS / CLOSED
+D5.4: PASS / CLOSED
 
 D5 = ACTIVE
-NEXT = D5.4 - Artifact Lifecycle / Quarantine Rules
+NEXT = D5.5 - Full D5 Acceptance
 
 D5.0 audited 19,938 repository files and discovered 19 D3/D4 receipts. It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphaned artifact candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -53,7 +54,7 @@ Visual Loop and Visual Drill remain unchanged.
 
 ## Next
 
-D5.4 - Artifact Lifecycle / Quarantine Rules.
+D5.5 - Full D5 Acceptance.
 
 ## Frozen baseline
 
@@ -289,4 +290,18 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - No repository files were moved or deleted; cleanup was not performed. Runtime authority is NONE and production execution is false.
 - Contract: `docs/current/d/D5.3_ARTIFACT_TOPOLOGY_VALIDATOR_CONTRACT.md`.
 - Validation, consistency matrix, and receipt: `artifacts/tests/c11d_d5/d5_3/`.
-- Next: **D5.4 - Artifact Lifecycle / Quarantine Rules**.
+- Followed by: **D5.4 - Artifact Lifecycle / Quarantine Rules**.
+
+<!-- C11D_D5_4_HANDOFF_V1 -->
+
+## C11-D D5.4 CLOSED / PASS
+
+- Governance-only lifecycle policy and quarantine rules are formalized; transitions require explicit decisions and validation gates.
+- Protected inventory remains 75 logical identities, 79 physical locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates outside the graph.
+- Negative governance controls passed. D4.8 remains BLOCKED; no authorization is inferred.
+- Two runner executions passed the filesystem mutation guard and produced identical output hashes. D5.3 verified the frozen C11-C identity. No input files were moved, deleted, or modified.
+- Runtime authority is NONE; production execution is false.
+- Policy: `definitions/c11d/artifacts/C11D_ARTIFACT_LIFECYCLE_POLICY_V1.json`.
+- Contract: `docs/current/d/D5.4_ARTIFACT_LIFECYCLE_QUARANTINE_RULES_CONTRACT.md`.
+- Validation, quarantine matrix, and receipt: `artifacts/tests/c11d_d5/d5_4/`.
+- Next: **D5.5 - Full D5 Acceptance**.

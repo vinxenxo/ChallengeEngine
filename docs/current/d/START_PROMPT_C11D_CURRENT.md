@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D5.3 PASS / CLOSED.
+Continue ChallengeEngineV01_STATELESS from C11-D D5.4 PASS / CLOSED.
 
 ## Current D state
 
@@ -25,11 +25,12 @@ D5.1 = PASS / CLOSED
 D5.2 = PASS / CLOSED
 
 D5.3 = PASS / CLOSED
+D5.4 = PASS / CLOSED
 
 D5 = ACTIVE
-NEXT = D5.4 - Artifact Lifecycle / Quarantine Rules
+NEXT = D5.5 - Full D5 Acceptance
 
-D5.3 confirms that filesystem paths, D5.1 identities, and D5.2 lineage agree: 75 logical identities, 79 locations, and 11 evidence-backed edges. All negative fixtures passed; 66 governed ACTIVE artifacts and 9 retained ORPHANED nodes remain distinct. The 12,304 unmanaged candidates stay outside the graph. D4.8 remains BLOCKED, no repository files were moved or deleted, runtime authority is NONE, and production execution is false.
+D5.4 formalizes lifecycle transitions and quarantine governance without changing artifacts. Two runs passed with identical hashes; 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global unmanaged candidates are preserved. D4.8 remains BLOCKED. No input files were moved, deleted, or modified; runtime authority is NONE and production execution is false.
 
 ## Read first
 
@@ -45,6 +46,9 @@ definitions\c11d\provenance\C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json
 artifacts\tests\c11d_d5\d5_2\d5_2_validation_receipt.json
 docs\current\d\D5.3_ARTIFACT_TOPOLOGY_VALIDATOR_CONTRACT.md
 artifacts\tests\c11d_d5\d5_3\d5_3_validation_receipt.json
+docs\current\d\D5.4_ARTIFACT_LIFECYCLE_QUARANTINE_RULES_CONTRACT.md
+definitions\c11d\artifacts\C11D_ARTIFACT_LIFECYCLE_POLICY_V1.json
+artifacts\tests\c11d_d5\d5_4\d5_4_lifecycle_receipt.json
 
 docs\current\d\D4.3_PERSONALIZATION_CONTRACT.md
 artifacts\tests\c11d_d4\d4_3\d4_3_validation_receipt.json
@@ -100,7 +104,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D5.4 - Artifact Lifecycle / Quarantine Rules.
+D5.5 - Full D5 Acceptance.
 
 <!-- C11D_D3_2_HANDOFF -->
 
@@ -309,3 +313,7 @@ D5.2 builds a deterministic evidence-backed lineage DAG from the D5.1 manifest: 
 <!-- C11D_D5_3_HANDOFF_V1 -->
 
 D5.3 validates filesystem, D5.1 manifest, and D5.2 lineage agreement: 75 logical identities, 79 physical locations, 11 edges, 0 missing artifacts, 0 hash mismatches, and 0 topology conflicts. D3/D4 consistency and all five negative fixtures pass. The 9 ORPHANED nodes and 12,304 global unmanaged candidates remain untouched and outside cleanup authority. C11-C is preserved; runtime authority is NONE and production execution is false.
+
+<!-- C11D_D5_4_HANDOFF_V1 -->
+
+D5.4 lifecycle and quarantine policy passed twice with identical validation, matrix, and receipt hashes. It preserves 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates. The D5.4 runner confirmed its watched input trees were unchanged. No movement, deletion, cleanup, candidate promotion, or production activation occurred; D4.8 remains BLOCKED and runtime authority is NONE.

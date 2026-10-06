@@ -1,0 +1,87 @@
+{
+  "policy_id": "c11d_artifact_lifecycle_policy",
+  "schema_version": "1.0",
+  "checkpoint": "D5.4",
+  "title": "C11-D Artifact Lifecycle / Quarantine Rules",
+  "mode": "GOVERNANCE_ONLY",
+  "runtime_authority": "NONE",
+  "production_execution": false,
+  "filesystem_mutation": false,
+  "states": {
+    "ACTIVE": {
+      "meaning": "Governed artifact with current identity, manifest presence and usable evidence.",
+      "production_allowed": true,
+      "automatic_transition_allowed": false
+    },
+    "ORPHANED": {
+      "meaning": "Governed identity retained for governance, but not currently attributable to an active governed topology.",
+      "production_allowed": false,
+      "automatic_transition_allowed": false
+    },
+    "CANDIDATE_GLOBAL": {
+      "meaning": "Unmanaged filesystem candidate outside the governed manifest/lineage graph.",
+      "production_allowed": false,
+      "automatic_transition_allowed": false
+    },
+    "QUARANTINED": {
+      "meaning": "Explicitly isolated governance state; artifact remains physically present and traceable.",
+      "production_allowed": false,
+      "automatic_transition_allowed": false
+    },
+    "RETIRED": {
+      "meaning": "Explicitly retired governance state; physical deletion is a separate operation and is not authorized here.",
+      "production_allowed": false,
+      "automatic_transition_allowed": false
+    }
+  },
+  "transition_rules": [
+    {
+      "from": "ACTIVE",
+      "to": "QUARANTINED",
+      "requires": ["explicit_quarantine_decision", "identity_valid", "lineage_dependencies_checked"],
+      "automatic": false
+    },
+    {
+      "from": "ORPHANED",
+      "to": "QUARANTINED",
+      "requires": ["explicit_quarantine_decision", "identity_valid", "lineage_dependencies_checked"],
+      "automatic": false
+    },
+    {
+      "from": "CANDIDATE_GLOBAL",
+      "to": "ACTIVE",
+      "requires": ["explicit_promotion_decision", "manifest_identity_created", "physical_hash_recorded", "evidence_backed", "lineage_validated"],
+      "automatic": false,
+      "prohibited_by_presence_alone": true
+    },
+    {
+      "from": "QUARANTINED",
+      "to": "ACTIVE",
+      "requires": ["explicit_restoration_decision", "identity_revalidated", "evidence_revalidated", "lineage_revalidated"],
+      "automatic": false
+    },
+    {
+      "from": "QUARANTINED",
+      "to": "RETIRED",
+      "requires": ["explicit_retirement_decision", "retention_record_preserved"],
+      "automatic": false
+    }
+  ],
+  "hard_blocks": [
+    "No automatic cleanup",
+    "No physical move",
+    "No physical deletion",
+    "No promotion of global candidates by path, filename or mere discoverability",
+    "No production activation from ORPHANED, CANDIDATE_GLOBAL, QUARANTINED or RETIRED",
+    "No authorization is inferred from D4.8 BLOCKED evidence",
+    "No mutation of frozen C11-C artifacts or their identity"
+  ],
+  "protected_observations": {
+    "expected_logical_identities": 75,
+    "expected_physical_locations": 79,
+    "expected_orphaned_governed_nodes": 9,
+    "expected_global_candidates": 12304,
+    "expected_lineage_edges": 11,
+    "d4_8_authorization_state": "BLOCKED"
+  }
+}
