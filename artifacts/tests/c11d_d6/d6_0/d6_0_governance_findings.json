@@ -1,0 +1,4668 @@
+{
+  "blocking_finding_count": 0,
+  "checkpoint": "C11-D D6.0",
+  "deterministic": true,
+  "findings": [
+    {
+      "code": "SHARED_OR_GLOBAL_RNG_STATE",
+      "details": [
+        {
+          "evidence": "module-level Python random singleton is imported and consumed in this component",
+          "line": 6,
+          "path": "c11c-suite/c11c-producer/main.py"
+        }
+      ],
+      "interpretation": "Module/global RNG use is present; cross-domain engine-state flow is not established by this audit.",
+      "severity": "WARNING"
+    },
+    {
+      "code": "NONDETERMINISTIC_PRODUCER_SEED_SELECTION",
+      "count": 6,
+      "details": [
+        {
+          "evidence": "seed = random.randint(1, 2_147_483_646)",
+          "line": 886,
+          "path": "c11c-suite/c11c-producer/main.py",
+          "production_tool_relevant": true,
+          "runtime_relevant": false
+        },
+        {
+          "evidence": "\"start_seed\": random.randint(1, 2_147_483_646),",
+          "line": 900,
+          "path": "c11c-suite/c11c-producer/main.py",
+          "production_tool_relevant": true,
+          "runtime_relevant": false
+        },
+        {
+          "evidence": "value = random.randint(1, 2_147_483_646)",
+          "line": 952,
+          "path": "c11c-suite/c11c-producer/main.py",
+          "production_tool_relevant": true,
+          "runtime_relevant": false
+        },
+        {
+          "evidence": "tier = int(recipe.grammar) if recipe.grammar not in (\"auto\", \"AUTO\", \"\") else random.randint(1, 5)",
+          "line": 1006,
+          "path": "c11c-suite/c11c-producer/main.py",
+          "production_tool_relevant": true,
+          "runtime_relevant": false
+        },
+        {
+          "evidence": "speed = float(params.get(\"speed_multiplier\", random.uniform(*DRILLS[recipe.family].get(\"random_speed_range\", [1.0, 1.0]))))",
+          "line": 1007,
+          "path": "c11c-suite/c11c-producer/main.py",
+          "production_tool_relevant": true,
+          "runtime_relevant": false
+        },
+        {
+          "evidence": "pacing = str(params.get(\"pacing_mode\", random.choice([\"constant\", \"accelerating\", \"pulsed\"]))) if recipe.family == \"tracking\" else \"constant\"",
+          "line": 1008,
+          "path": "c11c-suite/c11c-producer/main.py",
+          "production_tool_relevant": true,
+          "runtime_relevant": false
+        }
+      ],
+      "interpretation": "Automatic Producer seed/parameter selection uses module-level random; it is upstream job selection, not the gameplay RNG object.",
+      "severity": "WARNING"
+    },
+    {
+      "code": "SEED_DOMAIN_OR_BEHAVIOR_UNKNOWN",
+      "count": 896,
+      "finding_keys": [
+        {
+          "field": "seed",
+          "line": 48,
+          "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 49,
+          "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 71,
+          "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 131,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 168,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 178,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 717,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 719,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 725,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 886,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 887,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 888,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 890,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 900,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 911,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 943,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 952,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 975,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 976,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 981,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 983,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 991,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1001,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1002,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1006,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1007,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1008,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1012,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1020,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1032,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1137,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 1139,
+          "path": "c11c-suite/c11c-producer/main.py"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "c11c-suite/c11c-producer/preflight.py"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 42,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 242,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 271,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 445,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 474,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 637,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 666,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 846,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 883,
+          "path": "c11c-suite/c11c-producer/producer_schema.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 42,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 242,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 271,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 445,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 474,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 637,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 666,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 846,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 883,
+          "path": "c11c-suite/c11c-producer/producer_schema_source.json"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 43,
+          "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 48,
+          "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 152,
+          "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 189,
+          "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 32,
+          "path": "c11c-suite/c11c-producer/seed_probe.gd"
+        },
+        {
+          "field": "seed",
+          "line": 36,
+          "path": "c11c-suite/c11c-producer/seed_probe.gd"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "c11c-suite/c11c-producer/seed_probe.gd"
+        },
+        {
+          "field": "seed",
+          "line": 40,
+          "path": "c11c-suite/c11c-producer/seed_probe.gd"
+        },
+        {
+          "field": "seed",
+          "line": 44,
+          "path": "c11c-suite/c11c-producer/seed_probe.gd"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "c11c-suite/c11c-producer/test_producer_gui_contract.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "challenges/CHALLENGE_003.json"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "core/audio/AudioRNGContext.gd"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "core/audio/AudioRNGContext.gd"
+        },
+        {
+          "field": "seed",
+          "line": 75,
+          "path": "core/authoring/CanonicalV2Assembler.gd"
+        },
+        {
+          "field": "seed",
+          "line": 83,
+          "path": "core/authoring/CanonicalV2Assembler.gd"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "core/authoring/ChallengeAuthoringRequest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "core/authoring/ChallengeAuthoringRequest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 46,
+          "path": "core/authoring/ChallengeAuthoringRequest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 47,
+          "path": "core/authoring/ChallengeAuthoringRequest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 76,
+          "path": "core/authoring/ChallengeAuthoringRequest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 477,
+          "path": "core/authoring/ChallengeGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 501,
+          "path": "core/authoring/ChallengeGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 506,
+          "path": "core/authoring/ChallengeGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 92,
+          "path": "core/authoring/ChallengeMigrationAdapter.gd"
+        },
+        {
+          "field": "seed",
+          "line": 167,
+          "path": "core/authoring/ChallengeMigrationAdapter.gd"
+        },
+        {
+          "field": "seed",
+          "line": 16,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 31,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "seed",
+          "line": 84,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "seed",
+          "line": 85,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "seed",
+          "line": 86,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "seed",
+          "line": 150,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "seed",
+          "line": 168,
+          "path": "core/authoring/ContentEnvelope.gd"
+        },
+        {
+          "field": "seed",
+          "line": 65,
+          "path": "core/authoring/VisualAuthoringGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 19,
+          "path": "core/deterministic/CosmeticRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "core/deterministic/CosmeticRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 26,
+          "path": "core/deterministic/CosmeticRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 31,
+          "path": "core/deterministic/CosmeticRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 33,
+          "path": "core/deterministic/CosmeticRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "core/deterministic/CosmeticRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 18,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 25,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 26,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 35,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 39,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 40,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 50,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 77,
+          "path": "core/deterministic/DeterministicLCG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "core/deterministic/MechanicRNGContext.gd"
+        },
+        {
+          "field": "seed",
+          "line": 18,
+          "path": "core/deterministic/MechanicRNGContext.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 22,
+          "path": "core/deterministic/MechanicRNGContext.gd"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "core/deterministic/MechanicRNGContext.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 51,
+          "path": "core/deterministic/MechanicRNGContext.gd"
+        },
+        {
+          "field": "seed",
+          "line": 18,
+          "path": "core/deterministic/PresentationRNGContext.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 22,
+          "path": "core/deterministic/PresentationRNGContext.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 51,
+          "path": "core/deterministic/PresentationRNGContext.gd"
+        },
+        {
+          "field": "seed",
+          "line": 111,
+          "path": "core/deterministic/RNGStreamRegistry.gd"
+        },
+        {
+          "field": "seed",
+          "line": 19,
+          "path": "core/deterministic/StructuralRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "core/deterministic/StructuralRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 26,
+          "path": "core/deterministic/StructuralRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 31,
+          "path": "core/deterministic/StructuralRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 33,
+          "path": "core/deterministic/StructuralRNG.gd"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "core/deterministic/StructuralRNG.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 84,
+          "path": "core/execution/ChallengeExecutionPipeline.gd"
+        },
+        {
+          "field": "seed",
+          "line": 124,
+          "path": "core/execution/ChallengeExecutionPipeline.gd"
+        },
+        {
+          "field": "seed",
+          "line": 83,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "seed",
+          "line": 185,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "seed",
+          "line": 200,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 208,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 400,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "seed",
+          "line": 419,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "seed",
+          "line": 541,
+          "path": "core/execution/ChallengeRuntimeBridge.gd"
+        },
+        {
+          "field": "seed",
+          "line": 93,
+          "path": "core/mechanics/choose/ChooseMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 94,
+          "path": "core/mechanics/choose/ChooseMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "core/mechanics/choose/ChooseMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 62,
+          "path": "core/mechanics/count/CountMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 63,
+          "path": "core/mechanics/count/CountMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 66,
+          "path": "core/mechanics/count/CountMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 104,
+          "path": "core/mechanics/key/KeyMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 316,
+          "path": "core/mechanics/parking/ParkingMechanic.gd"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "core/mechanics/parking/ParkingMechanicV2.gd"
+        },
+        {
+          "field": "seed",
+          "line": 82,
+          "path": "core/mechanics/parking/ParkingMechanicV2.gd"
+        },
+        {
+          "field": "seed",
+          "line": 32,
+          "path": "core/presentation/C11CVisualHookBank.gd"
+        },
+        {
+          "field": "seed",
+          "line": 45,
+          "path": "core/presentation/C11CVisualHookBank.gd"
+        },
+        {
+          "field": "seed",
+          "line": 143,
+          "path": "core/presentation/VisualDrillPresentationBinder.gd"
+        },
+        {
+          "field": "seed",
+          "line": 183,
+          "path": "core/presentation/VisualDrillPresentationBinder.gd"
+        },
+        {
+          "field": "seed",
+          "line": 203,
+          "path": "core/presentation/rendering/VisualContentPlayer.gd"
+        },
+        {
+          "field": "seed",
+          "line": 248,
+          "path": "core/presentation/rendering/VisualContentPlayer.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 249,
+          "path": "core/presentation/rendering/VisualContentPlayer.gd"
+        },
+        {
+          "field": "seed",
+          "line": 255,
+          "path": "core/presentation/rendering/VisualContentPlayer.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 256,
+          "path": "core/presentation/rendering/VisualContentPlayer.gd"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "core/presentation/rendering/shaders/vector_field.gdshader"
+        },
+        {
+          "field": "seed",
+          "line": 32,
+          "path": "core/presentation/rendering/shaders/vector_field.gdshader"
+        },
+        {
+          "field": "seed",
+          "line": 114,
+          "path": "core/runtime/VisualDrillRuntime.gd"
+        },
+        {
+          "field": "seed",
+          "line": 115,
+          "path": "core/runtime/VisualLoopRuntime.gd"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "core/validation/C6FChallengeSchemaValidator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 31,
+          "path": "core/validation/C6FChallengeSchemaValidator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "core/validation/ChallengeDefinitionValidator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "core/validation/ChallengeDefinitionValidator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 78,
+          "path": "definitions/c11d/artifacts/C11D_ARTIFACT_MANIFEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 68,
+          "path": "definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json"
+        },
+        {
+          "field": "music_seed",
+          "line": 69,
+          "path": "definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "music_seed",
+          "line": 12,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "music_seed",
+          "line": 28,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 94,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "music_seed",
+          "line": 97,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 101,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 141,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 223,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 257,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 258,
+          "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 148,
+          "path": "tests/C10AVisualAuthoringPipelineTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 159,
+          "path": "tests/C10AVisualAuthoringPipelineTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 74,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 111,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 116,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 117,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 121,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 122,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 124,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 125,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 129,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 161,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 217,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 228,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 229,
+          "path": "tests/C10BDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 39,
+          "path": "tests/C10CEndToEndTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 84,
+          "path": "tests/C10CEndToEndTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 107,
+          "path": "tests/C10CEndToEndTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 108,
+          "path": "tests/C10CEndToEndTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tests/C10CPreparePhysicalFixtures.gd"
+        },
+        {
+          "field": "seed",
+          "line": 35,
+          "path": "tests/C10CPreparePhysicalFixtures.gd"
+        },
+        {
+          "field": "seed",
+          "line": 25,
+          "path": "tests/C11A1FactoryIsolationContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tests/C11A1FactoryIsolationContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 16,
+          "path": "tests/C11CArtDirectionReviewResumeContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "tests/C11CArtDirectionReviewResumeContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tests/C11CPeripheralScanMechanicContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "tests/C11CProductionBatchScheduleContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tests/C11CProductionBatchScheduleContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 30,
+          "path": "tests/C11CPursuitMechanicContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 48,
+          "path": "tests/C11CPursuitMechanicContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 8,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 9,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 10,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 19,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 20,
+          "path": "tests/C11CSeedSpreadContractTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 162,
+          "path": "tests/C6F041VisualLoopRuntimeTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 163,
+          "path": "tests/C6F041VisualLoopRuntimeTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 128,
+          "path": "tests/C6F042VisualDrillRuntimeTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 129,
+          "path": "tests/C6F042VisualDrillRuntimeTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 112,
+          "path": "tests/C6F05PhysicalRenderingTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 45,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 50,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 52,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 56,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 61,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 71,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 73,
+          "path": "tests/C6F08ContentDefinitionDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 124,
+          "path": "tests/C6F08CosmeticRNGContractTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 76,
+          "path": "tests/C6F08F1ContentEnvelopeAuditTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 146,
+          "path": "tests/C6F08F1ContentEnvelopeAuditTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 149,
+          "path": "tests/C6F08F1ContentEnvelopeAuditTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 51,
+          "path": "tests/C6F08FractalPilotTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tests/C6F08FractalPilotTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "tests/C6F08FractalPilotTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 68,
+          "path": "tests/C6F08FractalPlaybackValidationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 59,
+          "path": "tests/C6F08GeometricPlaybackValidationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 59,
+          "path": "tests/C6F08KaleidoscopePlaybackValidationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 59,
+          "path": "tests/C6F08ParticleFlowPlaybackValidationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 43,
+          "path": "tests/C6F08PeripheralScanPilotTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 103,
+          "path": "tests/C6F08StreamVariationContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 39,
+          "path": "tests/C6F0_1_5CanonicalAssemblerTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 26,
+          "path": "tests/C6F0_1_6AuthoringPipelineTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 65,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 105,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 107,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 108,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 122,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 138,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 146,
+          "path": "tests/C6F1MigrationEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tests/C6F2AuthoringDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tests/C6F2AuthoringGeneratorContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tests/C6F2AuthoringRequestContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "tests/C6F2AuthoringRequestContractTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 112,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 133,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 136,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 137,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 178,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 208,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 223,
+          "path": "tests/C6F2LegacyEquivalenceTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 47,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 160,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 162,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 167,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 175,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 177,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 182,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 211,
+          "path": "tests/C6F2ProductiveGeneratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 23,
+          "path": "tests/C6F3SimulationOrchestratorTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 79,
+          "path": "tests/C6F3SimulationOrchestratorTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "tests/C6F3TimelineBuilderTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 70,
+          "path": "tests/C6F4CanonicalV2ChooseTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "tests/C6F4CanonicalV2ChooseTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 64,
+          "path": "tests/C6F4CanonicalV2CountTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 66,
+          "path": "tests/C6F4CanonicalV2CountTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 74,
+          "path": "tests/C6F4CanonicalV2CountTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 18,
+          "path": "tests/C6F4EffectiveRuntimeTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 74,
+          "path": "tests/C6F4ShadowRuntimeBridgeTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 85,
+          "path": "tests/C6F4ShadowRuntimeBridgeTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 86,
+          "path": "tests/C6F4ShadowRuntimeBridgeTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 54,
+          "path": "tests/C7A01AudioDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 66,
+          "path": "tests/C7A04AudioExportBridgeTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 33,
+          "path": "tests/C7A06MultiGeneratorDeterminismTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 136,
+          "path": "tests/C7A06MultiGeneratorDeterminismTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 112,
+          "path": "tests/C7A07MultiProfileCorpusTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 116,
+          "path": "tests/C7A07MultiProfileCorpusTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 76,
+          "path": "tests/C7A501OfficialAudioArtifactManifestTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 77,
+          "path": "tests/C7A501OfficialAudioArtifactManifestTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "tests/C7A501OfficialAudioArtifactManifestTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 102,
+          "path": "tests/C7A501OfficialAudioArtifactManifestTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tests/C9AParkingV2AuthoringProductiveTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tests/C9BParkingV2ProductiveGenerationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 147,
+          "path": "tests/C9BParkingV2ProductiveGenerationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 89,
+          "path": "tests/C9CBatchAuthoringGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "tests/C9CBatchAuthoringGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 33,
+          "path": "tests/C9EHitAuthoringProductiveTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 33,
+          "path": "tests/C9FCatchAuthoringProductiveTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 4,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 30,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 31,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 37,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 39,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 46,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 48,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 55,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 57,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 59,
+          "path": "tests/DeterministicLCGStatelessTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 23,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 31,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 32,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 42,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 46,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 86,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 93,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 115,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 138,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 181,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 182,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 192,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 200,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 204,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 206,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 210,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 217,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 257,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 261,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 279,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 282,
+          "path": "tests/ParkingMechanicV2IsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 34,
+          "path": "tests/PilotMechanicDDIHardeningTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 35,
+          "path": "tests/PilotMechanicDDIHardeningTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 253,
+          "path": "tests/PilotMechanicDDIHardeningTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 255,
+          "path": "tests/PilotMechanicDDIHardeningTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 279,
+          "path": "tests/PilotMechanicDDIHardeningTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 35,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 37,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 45,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 47,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 63,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 69,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 78,
+          "path": "tests/PilotMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "tests/RNGArchitectureTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 16,
+          "path": "tests/RNGArchitectureTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 20,
+          "path": "tests/RNGArchitectureTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/C7_AUDIO_CHALLENGE_002.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/C7_VIDEO_ONLY_CHALLENGE_001.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_001.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_002.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_003.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_003.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_004.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_005.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_006.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_007.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_008.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/fixtures/c7/challenges/CHALLENGE_009.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/c7_a2_mixed/CHALLENGE_001.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/fixtures/c7_a2_mixed/CHALLENGE_VIDEO_OFF_001.json"
+        },
+        {
+          "field": "seed",
+          "line": 19,
+          "path": "tests/mechanics/choose/ChooseMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 25,
+          "path": "tests/mechanics/find/FindMechanicIsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 187,
+          "path": "tests/mechanics/find/FindMechanicIsolationTest.gd"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 199,
+          "path": "tests/mechanics/hit/HitMechanicIsolationTest.gd"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/C11A1_CHALLENGE_BULK_MANIFEST.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_001_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_001_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_001_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_001_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_001_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_001_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_002_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_002_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_002_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_002_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_002_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_002_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 36,
+          "path": "tests/reference/c11a1/runs/challenge_003_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_004_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_004_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_004_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_004_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_004_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tests/reference/c11a1/runs/challenge_004_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/reference/c11a1/runs/challenge_005_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/reference/c11a1/runs/challenge_005_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/reference/c11a1/runs/challenge_005_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/reference/c11a1/runs/challenge_005_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/reference/c11a1/runs/challenge_005_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tests/reference/c11a1/runs/challenge_005_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_006_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_006_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_006_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_006_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_006_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_006_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/reference/c11a1/runs/challenge_007_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/reference/c11a1/runs/challenge_007_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/reference/c11a1/runs/challenge_007_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/reference/c11a1/runs/challenge_007_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/reference/c11a1/runs/challenge_007_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tests/reference/c11a1/runs/challenge_007_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_008_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_008_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_008_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_008_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_008_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_008_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_009_seed_12345_A/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_009_seed_12345_B/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_009_seed_314159/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_009_seed_54321/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_009_seed_7770001/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tests/reference/c11a1/runs/challenge_009_seed_998877/challenge_definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "tools/c11d/d3/c11d_music_engine_v5.py"
+        },
+        {
+          "field": "seed",
+          "line": 45,
+          "path": "tools/c11d/d3/c11d_music_engine_v5.py"
+        },
+        {
+          "field": "seed",
+          "line": 61,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 191,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 193,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 228,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 253,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 259,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 324,
+          "path": "tools/c11d/d3/run_d3_0_music_source_audit.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 246,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 247,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 248,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 279,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 323,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 324,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 397,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 398,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 399,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 531,
+          "path": "tools/c11d/d3/run_d3_1_shared_music_engine_v5.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 43,
+          "path": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 44,
+          "path": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 46,
+          "path": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 140,
+          "path": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 143,
+          "path": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 93,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 95,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 98,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 99,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 101,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 102,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 158,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 183,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 184,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 217,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 218,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 332,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 333,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 340,
+          "path": "tools/c11d/d4/canonical_production_orchestrator.py"
+        },
+        {
+          "field": "seed",
+          "line": 81,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "seed",
+          "line": 221,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 222,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "seed",
+          "line": 227,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 228,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 241,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "seed",
+          "line": 249,
+          "path": "tools/c11d/d4/gui_cli_parity.py"
+        },
+        {
+          "field": "seed",
+          "line": 181,
+          "path": "tools/c11d/d4/gui_production_adapter.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 182,
+          "path": "tools/c11d/d4/gui_production_adapter.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 190,
+          "path": "tools/c11d/d4/gui_production_adapter.py"
+        },
+        {
+          "field": "seed",
+          "line": 198,
+          "path": "tools/c11d/d4/gui_production_adapter.py"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "seed",
+          "line": 81,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "seed",
+          "line": 156,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 157,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "seed",
+          "line": 192,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "seed",
+          "line": 218,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 219,
+          "path": "tools/c11d/d4/personalization_resolver.py"
+        },
+        {
+          "field": "seed",
+          "line": 108,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "seed",
+          "line": 110,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 111,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "seed",
+          "line": 116,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 126,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "seed",
+          "line": 312,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "seed",
+          "line": 320,
+          "path": "tools/c11d/d4/production_activation_governance.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 172,
+          "path": "tools/c11d/d4/production_cli.py"
+        },
+        {
+          "field": "seed",
+          "line": 181,
+          "path": "tools/c11d/d4/production_cli.py"
+        },
+        {
+          "field": "seed",
+          "line": 435,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 436,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 437,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 441,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 442,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 499,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 500,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 552,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 553,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 589,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 590,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "music_seed",
+          "line": 691,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 737,
+          "path": "tools/c11d/d4/production_request_normalizer.py"
+        },
+        {
+          "field": "seed",
+          "line": 74,
+          "path": "tools/c11d/d4/run_d4_2_normalization.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 87,
+          "path": "tools/c11d/d4/run_d4_4_canonical_orchestrator.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 124,
+          "path": "tools/c11d/d4/run_d4_6_gui_adapter.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 184,
+          "path": "tools/c11d/d4/run_d4_6_gui_adapter.ps1"
+        },
+        {
+          "field": "music_seed",
+          "line": 87,
+          "path": "tools/c11d/d4/run_d4_7_gui_cli_parity.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/c11d/d4/run_d4_7_gui_cli_parity.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 210,
+          "path": "tools/c11d/d4/run_d4_7_gui_cli_parity.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 110,
+          "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 152,
+          "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+        },
+        {
+          "field": "music_seed",
+          "line": 218,
+          "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 219,
+          "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 221,
+          "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/c11freeze/finalize_c11_freeze.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 176,
+          "path": "tools/c11freeze/finalize_c11_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 15,
+          "path": "tools/c11freeze/finalize_c11c_2_19_6_freeze.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 42,
+          "path": "tools/c11freeze/finalize_c11c_2_19_6_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 44,
+          "path": "tools/c11freeze/finalize_c11c_2_19_6_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "tools/c11freeze/finalize_c11c_2_19_7_freeze.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 52,
+          "path": "tools/c11freeze/finalize_c11c_2_19_7_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 55,
+          "path": "tools/c11freeze/finalize_c11c_2_19_7_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "tools/c11freeze/finalize_c11c_2_19_8_freeze.ps1"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 48,
+          "path": "tools/c11freeze/finalize_c11c_2_19_8_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 51,
+          "path": "tools/c11freeze/finalize_c11c_2_19_8_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 15,
+          "path": "tools/c11freeze/generate_qa_video_configs.py"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/c11freeze/generate_qa_video_configs.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 30,
+          "path": "tools/c11freeze/generate_qa_video_configs.py"
+        },
+        {
+          "field": "seed",
+          "line": 34,
+          "path": "tools/c11freeze/generate_qa_video_configs.py"
+        },
+        {
+          "field": "seed",
+          "line": 35,
+          "path": "tools/c11freeze/generate_qa_video_configs.py"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 47,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 51,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 52,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 57,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 63,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 64,
+          "path": "tools/c11freeze/generate_qa_video_matrix.py"
+        },
+        {
+          "field": "seed",
+          "line": 8,
+          "path": "tools/c11freeze/generate_seed_corpus.py"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/c11freeze/generate_seed_corpus.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 23,
+          "path": "tools/c11freeze/generate_seed_corpus.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 27,
+          "path": "tools/c11freeze/generate_seed_corpus.py"
+        },
+        {
+          "field": "seed",
+          "line": 47,
+          "path": "tools/c11freeze/generate_seed_corpus.py"
+        },
+        {
+          "field": "seed",
+          "line": 93,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "seed",
+          "line": 95,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "seed",
+          "line": 124,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "seed",
+          "line": 127,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "seed",
+          "line": 150,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "seed",
+          "line": 176,
+          "path": "tools/c11freeze/run_seed_stress.py"
+        },
+        {
+          "field": "RNG_STATE_OR_API",
+          "line": 21,
+          "path": "tools/c11freeze/update_readme_c11_freeze.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tools/prototypes/bootstrap/bootstrap_c11c_producer_v0.4.0.py"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tools/prototypes/bootstrap/bootstrap_studio_v0.4.1.py"
+        },
+        {
+          "field": "seed",
+          "line": 56,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 57,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 69,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 77,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 80,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 92,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 101,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 126,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 134,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 136,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 138,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 145,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 148,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 149,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 150,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 152,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 164,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 178,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 185,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 199,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 206,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 210,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 223,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 224,
+          "path": "tools/prototypes/c11c_bulk/C11CProductionBatchCommon.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "tools/prototypes/c11c_bulk/C11CReviewWorkerIsolation.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_bulk/C11C_PRODUCTION_SEED_BANK_v1.json"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "tools/prototypes/c11c_bulk/C11C_PRODUCTION_SEED_BANK_v1.json"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_bulk/SEED_MATRIX_C11C_V1.json"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_bulk/export_review_gifs.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 16,
+          "path": "tools/prototypes/c11c_bulk/export_review_keyframes.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 94,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 103,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 106,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 137,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 138,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 140,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 153,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 154,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 156,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 172,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 173,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 174,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 186,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 197,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 199,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 203,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 212,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 218,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 221,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 242,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 244,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 245,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 246,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 249,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 289,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 314,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 317,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 318,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 319,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 323,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 330,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 353,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 354,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_batch_v4.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 33,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 35,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 60,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 62,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 85,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 86,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 104,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 105,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v2.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 85,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 87,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 88,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 94,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 129,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 131,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 144,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 145,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 147,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 163,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 164,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 165,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 177,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 191,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 193,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 207,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 225,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 227,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 228,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 229,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 232,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 240,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 274,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 277,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 278,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 279,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 283,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 290,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 310,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 311,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_art_direction_review_v3.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 23,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 69,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 71,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 72,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 73,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 74,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 147,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 164,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 248,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 253,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 254,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 266,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 294,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 8,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_full_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_monthly_production_batch.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 24,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 37,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 38,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 40,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 42,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 43,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 44,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_multiseed_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 8,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 52,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 61,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 63,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 144,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 152,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 167,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 55,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 56,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 57,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 66,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 67,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 71,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 82,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 138,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_25.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 21,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 23,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 26,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_production_bulk.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "tools/prototypes/c11c_bulk/run_c11c_weekly_production_batch.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 3,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 10,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "tools/prototypes/c11c_bulk/run_fractal_bloom_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 9,
+          "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 10,
+          "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 16,
+          "path": "tools/prototypes/c11c_bulk/run_geometric_waves_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 3,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 8,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 13,
+          "path": "tools/prototypes/c11c_bulk/run_invisible_forces_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 3,
+          "path": "tools/prototypes/c11c_bulk/run_living_particles_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "tools/prototypes/c11c_bulk/run_living_particles_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tools/prototypes/c11c_bulk/run_living_particles_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tools/prototypes/c11c_bulk/run_living_particles_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 3,
+          "path": "tools/prototypes/c11c_bulk/run_sacred_symmetry_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "tools/prototypes/c11c_bulk/run_sacred_symmetry_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tools/prototypes/c11c_bulk/run_sacred_symmetry_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 6,
+          "path": "tools/prototypes/c11c_bulk/run_sacred_symmetry_grammar_coverage.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 20,
+          "path": "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd"
+        },
+        {
+          "field": "seed",
+          "line": 23,
+          "path": "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd"
+        },
+        {
+          "field": "seed",
+          "line": 237,
+          "path": "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd"
+        },
+        {
+          "field": "seed",
+          "line": 238,
+          "path": "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd"
+        },
+        {
+          "field": "seed",
+          "line": 10,
+          "path": "tools/prototypes/c11c_common/C11CMovieCapture.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py"
+        },
+        {
+          "field": "seed",
+          "line": 28,
+          "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py"
+        },
+        {
+          "field": "seed",
+          "line": 41,
+          "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py"
+        },
+        {
+          "field": "seed",
+          "line": 4,
+          "path": "tools/prototypes/c11c_common/C11C_VARIATION_PROFILE_SPEC_v1.0.json"
+        },
+        {
+          "field": "seed",
+          "line": 7,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 12,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 22,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 27,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 32,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 37,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 42,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 47,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 52,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 57,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 62,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 67,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 72,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 77,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 82,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 87,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 92,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 102,
+          "path": "tools/prototypes/c11c_common/TECHNOBABBLE_DETERMINISM_FIXTURE.json"
+        },
+        {
+          "field": "seed",
+          "line": 63,
+          "path": "tools/prototypes/c11c_common/TechnobabbleGenerator.gd"
+        },
+        {
+          "field": "seed",
+          "line": 9,
+          "path": "tools/prototypes/c11c_common/generate_c11c_ambient_audio.py"
+        },
+        {
+          "field": "seed",
+          "line": 10,
+          "path": "tools/prototypes/c11c_common/generate_c11c_ambient_audio.py"
+        },
+        {
+          "field": "seed",
+          "line": 14,
+          "path": "tools/prototypes/c11c_common/generate_c11c_ambient_audio.py"
+        },
+        {
+          "field": "seed",
+          "line": 56,
+          "path": "tools/prototypes/c11c_common/write_social_metadata.py"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "tools/prototypes/c11c_common/write_social_metadata.py"
+        },
+        {
+          "field": "seed",
+          "line": 100,
+          "path": "tools/prototypes/c11c_common/write_social_metadata.py"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 194,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 28,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 195,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 5,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 34,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 28,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 97,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 195,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 28,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 98,
+          "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 196,
+          "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 28,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 194,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd"
+        },
+        {
+          "field": "seed",
+          "line": 2,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 17,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 28,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 29,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 90,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 128,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 141,
+          "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 328,
+          "path": "tools/qa/c11/finalize_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 138,
+          "path": "tools/qa/c11/finalize_c11a_visual_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 139,
+          "path": "tools/qa/c11/finalize_c11a_visual_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "tools/qa/c11/resume_c11c_full_art_direction_corpus_after_longform.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 66,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 71,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 72,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 73,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 74,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 75,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 76,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 179,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 193,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 214,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 238,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 351,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 353,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 368,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 369,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 379,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 380,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 427,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 457,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 466,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 496,
+          "path": "tools/qa/c11/run_c11a1_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 235,
+          "path": "tools/qa/c11/run_c11a_visual_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 339,
+          "path": "tools/qa/c11/run_c11a_visual_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 78,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 79,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 80,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 81,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 82,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 83,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 115,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 119,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 124,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 145,
+          "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 82,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 83,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 84,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 89,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 91,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 96,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 98,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 107,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 108,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 110,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 117,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 119,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 120,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 123,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 125,
+          "path": "tools/qa/c11/run_c11c_complete_video_review.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 3,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 84,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 85,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 86,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 92,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 101,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 106,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 130,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 131,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 135,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 149,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 153,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 155,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 171,
+          "path": "tools/qa/c11/run_c11c_family_coverage_smoke.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 52,
+          "path": "tools/qa/c11/run_c11c_full_art_direction_corpus.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 168,
+          "path": "tools/qa/c11/run_c11c_full_art_direction_corpus.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 3,
+          "path": "tools/qa/c11/run_c11c_one_video_each_type.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 11,
+          "path": "tools/qa/c11/run_c11c_one_video_each_type.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 56,
+          "path": "tools/qa/c11/run_c11c_one_video_each_type.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 62,
+          "path": "tools/qa/c11/run_c11c_one_video_each_type.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 68,
+          "path": "tools/qa/c11/run_c11c_one_video_each_type.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 76,
+          "path": "tools/qa/c11/run_c11c_one_video_each_type.ps1"
+        },
+        {
+          "field": "seed",
+          "line": 25,
+          "path": "tools/qa/c7/prepare_c7_a2_video_only_fixture.ps1"
+        }
+      ],
+      "severity": "UNKNOWN"
+    },
+    {
+      "code": "LEGACY_SEED_SURFACES",
+      "count": 519,
+      "severity": "LEGACY"
+    }
+  ],
+  "nondeterministic_sources": {
+    "active_runtime_source_found": false,
+    "active_runtime_sources": [],
+    "checked": true,
+    "matches": [
+      {
+        "evidence": "seed = random.randint(1, 2_147_483_646)",
+        "line": 886,
+        "path": "c11c-suite/c11c-producer/main.py",
+        "production_tool_relevant": true,
+        "runtime_relevant": false
+      },
+      {
+        "evidence": "\"start_seed\": random.randint(1, 2_147_483_646),",
+        "line": 900,
+        "path": "c11c-suite/c11c-producer/main.py",
+        "production_tool_relevant": true,
+        "runtime_relevant": false
+      },
+      {
+        "evidence": "value = random.randint(1, 2_147_483_646)",
+        "line": 952,
+        "path": "c11c-suite/c11c-producer/main.py",
+        "production_tool_relevant": true,
+        "runtime_relevant": false
+      },
+      {
+        "evidence": "tier = int(recipe.grammar) if recipe.grammar not in (\"auto\", \"AUTO\", \"\") else random.randint(1, 5)",
+        "line": 1006,
+        "path": "c11c-suite/c11c-producer/main.py",
+        "production_tool_relevant": true,
+        "runtime_relevant": false
+      },
+      {
+        "evidence": "speed = float(params.get(\"speed_multiplier\", random.uniform(*DRILLS[recipe.family].get(\"random_speed_range\", [1.0, 1.0]))))",
+        "line": 1007,
+        "path": "c11c-suite/c11c-producer/main.py",
+        "production_tool_relevant": true,
+        "runtime_relevant": false
+      },
+      {
+        "evidence": "pacing = str(params.get(\"pacing_mode\", random.choice([\"constant\", \"accelerating\", \"pulsed\"]))) if recipe.family == \"tracking\" else \"constant\"",
+        "line": 1008,
+        "path": "c11c-suite/c11c-producer/main.py",
+        "production_tool_relevant": true,
+        "runtime_relevant": false
+      },
+      {
+        "evidence": "PAYLOAD={'main.py': 'from __future__ import annotations\\nimport hashlib, json, os, random, re, sys\\nfrom dataclasses import dataclass\\nfrom pathlib import Path\\nfrom typing import Any\\nfrom PySide6.QtCore import QProcess, QTimer, Qt\\nfrom PySide6.QtGui import QFont\\nfrom PySide6.QtWidgets import QAp",
+        "line": 6,
+        "path": "tools/prototypes/bootstrap/bootstrap_c11c_producer_v0.4.0.py",
+        "production_tool_relevant": false,
+        "runtime_relevant": false
+      }
+    ]
+  },
+  "protected_surfaces": [
+    {
+      "authority": "simulation-derived truth; not a seed control",
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "winning_frame"
+    },
+    {
+      "authority": "simulation-derived truth; not a seed control",
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "close_calls"
+    },
+    {
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "SimulationResult"
+    },
+    {
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "WinningFrameDetector"
+    },
+    {
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "RenderedFrameStream"
+    },
+    {
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "C7 audio contracts"
+    },
+    {
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "C9 authoring contracts"
+    },
+    {
+      "classification": "PROTECTED / NO_SEED_AUTHORITY",
+      "surface": "C11-C frozen archive/runtime"
+    }
+  ],
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "shared_rng_state": {
+    "checked": true,
+    "cross_domain_engine_state_proven": false,
+    "evidence": [
+      {
+        "evidence": "module-level Python random singleton is imported and consumed in this component",
+        "line": 6,
+        "path": "c11c-suite/c11c-producer/main.py"
+      }
+    ],
+    "shared_or_global_rng_found": true
+  },
+  "unknown_finding_count": 896
+}

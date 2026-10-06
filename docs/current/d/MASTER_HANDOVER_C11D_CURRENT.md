@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D5.5 CLOSED
+## Current state - D6.0 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -25,9 +25,11 @@ D5.2: PASS / CLOSED
 D5.3: PASS / CLOSED
 D5.4: PASS / CLOSED
 D5.5: PASS / CLOSED
+D6.0: PASS / CLOSED
 
 D5 = CLOSED
-NEXT = D6 — Seed Registry and Governance
+D6 = ACTIVE
+NEXT = D6.1 — Canonical Seed Registry + Governance Policy
 
 D5.0 audited 19,938 repository files and inventoried 19 receipts across D1-D4 (14 receipt paths are D3/D4). It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphan candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -55,7 +57,7 @@ Visual Loop and Visual Drill remain unchanged.
 
 ## Next
 
-D6 — Seed Registry and Governance.
+D6.1 — Canonical Seed Registry + Governance Policy.
 
 ## Frozen baseline
 
@@ -305,7 +307,7 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Policy: `definitions/c11d/artifacts/C11D_ARTIFACT_LIFECYCLE_POLICY_V1.json`.
 - Contract: `docs/current/d/D5.4_ARTIFACT_LIFECYCLE_QUARANTINE_RULES_CONTRACT.md`.
 - Validation, quarantine matrix, and receipt: `artifacts/tests/c11d_d5/d5_4/`.
-- Closed by D5.5 Full D5 Acceptance. Next: **D6 — Seed Registry and Governance**.
+- Closed by D5.5 and D6.0. Next: **D6.1 — Canonical Seed Registry + Governance Policy**.
 
 <!-- C11D_D5_5_HANDOFF_V1 -->
 
@@ -319,4 +321,16 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D5.1 validation receipt self-hash remains `DECLARATION ABSENT / NON-BLOCKING SCHEMA DECLARATION`; its manifest and evidence hashes remain verified.
 - Contract: `docs/current/d/D5.5_FULL_D5_ACCEPTANCE_CONTRACT.md`.
 - Acceptance matrix, summary, and receipt: `artifacts/tests/c11d_d5/d5_5/`.
-- Next: **D6 — Seed Registry and Governance**.
+- D6.0 closed this audit-only stage. Next: **D6.1 — Canonical Seed Registry + Governance Policy**.
+
+<!-- C11D_D6_0_HANDOFF_V1 -->
+
+## C11-D D6.0 CLOSED / PASS
+
+- Read-only audit recorded 1,157 seed/RNG observations across 796 source/config files. Findings are classified by evidence; 879 remain explicitly `UNKNOWN` in domain or behavior rather than being guessed.
+- D3 Music Engine V5 consumes its dedicated `music_seed`; D3 structural/gameplay decoupling and D4 request `seed`/`music_seed` separation passed. Personalization is not a seed source. D4.8 remains blocked with no production authorization.
+- Governance warnings record the Producer 0.9.7 module-global `random` use and six automatic seed/parameter selection calls. These are upstream authoring/job selection, not proven shared gameplay-engine RNG state. No active nondeterministic gameplay-runtime source or blocking finding was detected.
+- The frozen C11-C ZIP/tree/build identities remain preserved. Two complete runs passed the mutation guard and produced identical hashes for all four D6.0 outputs. Runtime authority is NONE; production, renderer, Godot production, and FFmpeg production execution are false.
+- Contract: `docs/current/d/D6.0_SEED_GOVERNANCE_AUDIT_CONTRACT.md`.
+- Inventory, usage matrix, findings, and receipt: `artifacts/tests/c11d_d6/d6_0/`.
+- Next: **D6.1 — Canonical Seed Registry + Governance Policy**.
