@@ -1,0 +1,91 @@
+{
+  "checkpoint": "C11-D D5.3",
+  "cleanup_performed": false,
+  "consistency_matrix": "artifacts/tests/c11d_d5/d5_3/d5_3_consistency_matrix.json",
+  "consistency_matrix_sha256": "bb853325f3826d69f98b76601ff64d8be78a4fd106172783197346ad97b3d161",
+  "files_deleted": false,
+  "files_moved": false,
+  "filesystem_manifest": {
+    "checked": 79,
+    "deferred_hash_paths": [
+      "artifacts/tests/c11d_d5/d5_1/d5_1_validation_receipt.json"
+    ],
+    "hash_mismatches": 0,
+    "hashes_not_declared": 1,
+    "missing": 0
+  },
+  "frozen_c11c_sha256": "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+  "identity": {
+    "copy_conflicts": 0,
+    "identity_mismatches": 0,
+    "logical_ids": 75
+  },
+  "input_audit": {
+    "path": "artifacts/tests/c11d_d5/d5_0/d5_0_artifact_topology_audit.json",
+    "sha256": "db408044afdc4cb61643c7cb62d06423b49fa589167bc9ab20eb86176eccf341"
+  },
+  "input_lineage": {
+    "path": "artifacts/tests/c11d_d5/d5_2/d5_2_lineage_registry.json",
+    "sha256": "8c5984a2a8286707d6c2762365155368d96f027d036d6c6c12aa566173715db0"
+  },
+  "input_manifest": {
+    "path": "artifacts/tests/c11d_d5/d5_1/d5_1_canonical_artifact_manifest.json",
+    "sha256": "0c2d8242ebcef8eee60e0e049bdaee38f1b6ab16d0e70da866cb227cd38f048b"
+  },
+  "lifecycle": {
+    "active_conflicts": 0,
+    "historical_conflicts": 0,
+    "orphan_state_conflicts": 0,
+    "quarantined_conflicts": 0,
+    "temporary_conflicts": 0
+  },
+  "lineage": {
+    "dag_valid": true,
+    "edges_checked": 11,
+    "missing_evidence": 0,
+    "missing_manifest_nodes": 0,
+    "nodes_checked": 75,
+    "unknown_lineage_nodes": 0,
+    "unknown_sources": 0,
+    "unknown_targets": 0
+  },
+  "next": "D5.4 - Artifact Lifecycle / Quarantine Rules",
+  "phase_gates": {
+    "d3": {
+      "master_exists_in_manifest": true,
+      "master_provenance_to_raw": true,
+      "master_validated_by_d33": true,
+      "raw_and_master_distinct": true,
+      "raw_exists_in_manifest": true,
+      "raw_master_consistency": true,
+      "raw_validated_by_d32": true
+    },
+    "d4": {
+      "acceptance_consistency": true,
+      "blocked_authorization_preserved": true,
+      "governance_consistency": true,
+      "request_plan_consistency": true,
+      "request_plan_edges_checked": 2
+    },
+    "governance": {
+      "cleanup_performed": false,
+      "global_candidates_not_promoted": true,
+      "global_unmanaged_candidates": 12304,
+      "governed_active": 66,
+      "orphan_nodes_valid": true,
+      "orphaned_nodes": 9
+    }
+  },
+  "production_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "status": "CLOSED",
+  "synthetic_negative_tests": {
+    "content_hash_mismatch_detected": true,
+    "identity_content_conflict_detected": true,
+    "lifecycle_conflict_detected": true,
+    "missing_physical_artifact_detected": true,
+    "unknown_lineage_target_detected": true
+  },
+  "topology_conflicts": 0
+}

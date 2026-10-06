@@ -1,0 +1,63 @@
+{
+  "checkpoint": "C11-D D5.3",
+  "d3": {
+    "master_exists_in_manifest": true,
+    "master_provenance_to_raw": true,
+    "master_validated_by_d33": true,
+    "raw_and_master_distinct": true,
+    "raw_exists_in_manifest": true,
+    "raw_master_consistency": true,
+    "raw_validated_by_d32": true
+  },
+  "d4": {
+    "acceptance_consistency": true,
+    "blocked_authorization_preserved": true,
+    "governance_consistency": true,
+    "request_plan_consistency": true,
+    "request_plan_edges_checked": 2
+  },
+  "filesystem_manifest": {
+    "checked": 79,
+    "deferred_hash_paths": [
+      "artifacts/tests/c11d_d5/d5_1/d5_1_validation_receipt.json"
+    ],
+    "hash_mismatches": 0,
+    "hashes_not_declared": 1,
+    "missing": 0
+  },
+  "findings": [],
+  "governance": {
+    "cleanup_performed": false,
+    "global_candidates_not_promoted": true,
+    "global_unmanaged_candidates": 12304,
+    "governed_active": 66,
+    "orphan_nodes_valid": true,
+    "orphaned_nodes": 9
+  },
+  "identity": {
+    "copy_conflicts": 0,
+    "identity_mismatches": 0,
+    "logical_ids": 75
+  },
+  "lifecycle": {
+    "active_conflicts": 0,
+    "historical_conflicts": 0,
+    "orphan_state_conflicts": 0,
+    "quarantined_conflicts": 0,
+    "temporary_conflicts": 0
+  },
+  "lineage": {
+    "dag_valid": true,
+    "edges_checked": 11,
+    "missing_evidence": 0,
+    "missing_manifest_nodes": 0,
+    "nodes_checked": 75,
+    "unknown_lineage_nodes": 0,
+    "unknown_sources": 0,
+    "unknown_targets": 0
+  },
+  "production_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "status": "CLOSED"
+}

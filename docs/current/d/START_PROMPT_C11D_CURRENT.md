@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D5.2 PASS / CLOSED.
+Continue ChallengeEngineV01_STATELESS from C11-D D5.3 PASS / CLOSED.
 
 ## Current D state
 
@@ -24,13 +24,12 @@ D5.1 = PASS / CLOSED
 
 D5.2 = PASS / CLOSED
 
-
-
+D5.3 = PASS / CLOSED
 
 D5 = ACTIVE
-NEXT = D5.3 - Artifact Topology Validator
+NEXT = D5.4 - Artifact Lifecycle / Quarantine Rules
 
-D5.2 builds an evidence-backed lineage DAG from the D5.1 canonical manifest. It records 75 logical nodes across 79 physical locations, 11 evidence-backed edges, and 9 retained ORPHANED nodes; the 12,304 global candidates remain outside the governed graph. D4.8 governance is recorded as BLOCKED, not as an authorization grant. No files were moved or deleted; runtime authority is NONE and production execution is false.
+D5.3 confirms that filesystem paths, D5.1 identities, and D5.2 lineage agree: 75 logical identities, 79 locations, and 11 evidence-backed edges. All negative fixtures passed; 66 governed ACTIVE artifacts and 9 retained ORPHANED nodes remain distinct. The 12,304 unmanaged candidates stay outside the graph. D4.8 remains BLOCKED, no repository files were moved or deleted, runtime authority is NONE, and production execution is false.
 
 ## Read first
 
@@ -44,6 +43,9 @@ artifacts\tests\c11d_d5\d5_1\d5_1_validation_receipt.json
 docs\current\d\D5.2_PROVENANCE_LINEAGE_REGISTRY_CONTRACT.md
 definitions\c11d\provenance\C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json
 artifacts\tests\c11d_d5\d5_2\d5_2_validation_receipt.json
+docs\current\d\D5.3_ARTIFACT_TOPOLOGY_VALIDATOR_CONTRACT.md
+artifacts\tests\c11d_d5\d5_3\d5_3_validation_receipt.json
+
 docs\current\d\D4.3_PERSONALIZATION_CONTRACT.md
 artifacts\tests\c11d_d4\d4_3\d4_3_validation_receipt.json
 artifacts\tests\c11d_d4\d4_3\d4_3_personalization_evidence.json
@@ -98,7 +100,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D5.3 - Artifact Topology Validator.
+D5.4 - Artifact Lifecycle / Quarantine Rules.
 
 <!-- C11D_D3_2_HANDOFF -->
 
@@ -304,3 +306,6 @@ D5.3 - Artifact Topology Validator.
 <!-- C11D_D5_2_HANDOFF_V1 -->
 
 D5.2 builds a deterministic evidence-backed lineage DAG from the D5.1 manifest: 75 logical nodes, 79 referenced locations, 11 edges, and 9 retained ORPHANED nodes. D3/D4 lineage, duplicate identity collapse, synthetic cycle detection, and invalid-parent rejection passed. The 12,304 global unmanaged candidates remain outside the registry; no files were moved or deleted. D4.8 remains a blocked authorization decision. Runtime authority is NONE and production execution is false.
+<!-- C11D_D5_3_HANDOFF_V1 -->
+
+D5.3 validates filesystem, D5.1 manifest, and D5.2 lineage agreement: 75 logical identities, 79 physical locations, 11 edges, 0 missing artifacts, 0 hash mismatches, and 0 topology conflicts. D3/D4 consistency and all five negative fixtures pass. The 9 ORPHANED nodes and 12,304 global unmanaged candidates remain untouched and outside cleanup authority. C11-C is preserved; runtime authority is NONE and production execution is false.
