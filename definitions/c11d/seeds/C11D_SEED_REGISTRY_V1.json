@@ -1,0 +1,44 @@
+{
+  "registry_id": "c11d_seed_registry",
+  "schema_version": "1.0",
+  "checkpoint": "C11-D D6.1",
+  "runtime_authority": "NONE",
+  "entries": [
+    {
+      "seed_id": "gameplay",
+      "authority_id": "gameplay.seed",
+      "schema_version": "1.0",
+      "domain": "GAMEPLAY",
+      "authority": "CANONICAL",
+      "semantic_kind": "CANONICAL_AUTHORITY",
+      "input_field": "request.seed",
+      "owner": "c11d_production_request",
+      "producer": "c11d_production_request",
+      "consumer_scope": ["gameplay", "structural_semantics"],
+      "determinism": "REQUIRED",
+      "derivation": {"mode": "NONE", "contract": null},
+      "cross_domain_sharing": false,
+      "runtime_activation": "NOT_ACTIVE",
+      "status": "GOVERNED",
+      "evidence": ["definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json", "artifacts/tests/c11d_d6/d6_0/d6_0_seed_usage_matrix.json"]
+    },
+    {
+      "seed_id": "music",
+      "authority_id": "music.seed",
+      "schema_version": "1.0",
+      "domain": "MUSIC",
+      "authority": "CANONICAL",
+      "semantic_kind": "CANONICAL_AUTHORITY",
+      "input_field": "request.music_seed",
+      "owner": "d3_music_engine_v5",
+      "producer": "c11d_production_request",
+      "consumer_scope": ["music"],
+      "determinism": "REQUIRED",
+      "derivation": {"mode": "NONE", "contract": null},
+      "cross_domain_sharing": false,
+      "runtime_activation": "NOT_ACTIVE",
+      "status": "GOVERNED",
+      "evidence": ["definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json", "tools/c11d/d3/c11d_music_engine_v5.py", "artifacts/tests/c11d_d6/d6_0/d6_0_seed_usage_matrix.json"]
+    }
+  ]
+}

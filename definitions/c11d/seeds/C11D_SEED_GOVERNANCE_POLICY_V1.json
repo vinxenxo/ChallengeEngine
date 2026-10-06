@@ -1,0 +1,48 @@
+{
+  "policy_id": "c11d_seed_governance_policy",
+  "schema_version": "1.0",
+  "checkpoint": "C11-D D6.1",
+  "domains": ["GAMEPLAY", "MUSIC", "VISUAL_VARIATION", "PRESENTATION", "EDITORIAL", "DELIVERY"],
+  "semantics": {
+    "CANONICAL_AUTHORITY": "Governed source with stable identity, owner, domain and allowed consumer scope.",
+    "OBSERVED_SEED": "Audit observation; not an authority unless separately evidenced and registered.",
+    "DERIVED_SEED": "Deterministic output of a separately governed derivation contract.",
+    "LEGACY": "Compatibility or legacy evidence; not promoted by observation alone.",
+    "HISTORICAL": "Historical evidence; not a runtime authority.",
+    "TEST_FIXTURE": "Test-only seed/RNG evidence; not a production authority.",
+    "UNKNOWN": "Unresolved evidence; preserve without inventing a domain or meaning."
+  },
+  "defaults": {
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "implicit_seed_authority": "FORBIDDEN",
+    "undocumented_derivation": "FORBIDDEN",
+    "derivation_allowed": false,
+    "nondeterministic_canonical_authority": "FORBIDDEN",
+    "global_shared_rng_as_canonical_authority": "FORBIDDEN",
+    "automatic_ungoverned_producer_selection": "NOT_CANONICAL",
+    "runtime_activation": "NONE"
+  },
+  "ownership_rules": {
+    "GAMEPLAY": {"owner": "c11d_production_request", "consumer_scope": ["gameplay", "structural_semantics"]},
+    "MUSIC": {"owner": "d3_music_engine_v5", "consumer_scope": ["music"]},
+    "VISUAL_VARIATION": {"owner": null, "consumer_scope": [], "authority_registered": false},
+    "PRESENTATION": {"owner": null, "consumer_scope": [], "authority_registered": false},
+    "EDITORIAL": {"owner": null, "consumer_scope": [], "authority_registered": false},
+    "DELIVERY": {"owner": null, "consumer_scope": [], "authority_registered": false}
+  },
+  "isolation_matrix": {
+    "GAMEPLAY": {"GAMEPLAY": true, "MUSIC": false, "VISUAL_VARIATION": false, "PRESENTATION": false, "EDITORIAL": false, "DELIVERY": false},
+    "MUSIC": {"GAMEPLAY": false, "MUSIC": true, "VISUAL_VARIATION": false, "PRESENTATION": false, "EDITORIAL": false, "DELIVERY": false},
+    "VISUAL_VARIATION": {"GAMEPLAY": false, "MUSIC": false, "VISUAL_VARIATION": true, "PRESENTATION": false, "EDITORIAL": false, "DELIVERY": false},
+    "PRESENTATION": {"GAMEPLAY": false, "MUSIC": false, "VISUAL_VARIATION": false, "PRESENTATION": true, "EDITORIAL": false, "DELIVERY": false},
+    "EDITORIAL": {"GAMEPLAY": false, "MUSIC": false, "VISUAL_VARIATION": false, "PRESENTATION": false, "EDITORIAL": true, "DELIVERY": false},
+    "DELIVERY": {"GAMEPLAY": false, "MUSIC": false, "VISUAL_VARIATION": false, "PRESENTATION": false, "EDITORIAL": false, "DELIVERY": true}
+  },
+  "future_derivation": {"prepared_for": "D6.2", "activation": "DISABLED", "requires_explicit_contract": true, "master_seed_decision": "NOT_DECIDED"},
+  "observed_findings": {
+    "shared_rng_state": {"classification": "OBSERVED_SHARED_RNG_STATE", "count": 1, "promoted": false, "runtime_change": false},
+    "producer_nondeterministic_seed_selection": {"count": 6, "warnings": 2, "promoted": false, "functional_change": false},
+    "unknown_findings": {"count": 896, "preserved_as_evidence": true, "resolved_or_rewritten": false},
+    "legacy_historical_test_findings_preserved": true
+  }
+}

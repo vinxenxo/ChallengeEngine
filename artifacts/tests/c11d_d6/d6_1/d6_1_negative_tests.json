@@ -1,0 +1,101 @@
+{
+  "case_count": 13,
+  "cases": [
+    {
+      "case": "duplicate_seed_id",
+      "errors": [
+        "duplicate_canonical_authority",
+        "duplicate_seed_id"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "duplicate_canonical_authority",
+      "errors": [
+        "authority_conflicting_domains",
+        "duplicate_canonical_authority"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "authority_conflicting_domain",
+      "errors": [
+        "illegal_consumer_scope"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "gameplay_seed_consumed_by_music",
+      "errors": [
+        "illegal_consumer_scope"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "music_seed_consumed_by_gameplay",
+      "errors": [
+        "illegal_consumer_scope"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "unknown_domain",
+      "errors": [
+        "illegal_consumer_scope",
+        "unknown_domain"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "missing_owner",
+      "errors": [
+        "missing_owner"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "missing_schema_version",
+      "errors": [
+        "missing_schema_version"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "derived_without_contract",
+      "errors": [
+        "derived_without_contract"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "nondeterministic_authority",
+      "errors": [
+        "nondeterministic_canonical_authority"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "global_shared_rng_canonical",
+      "errors": [
+        "shared_rng_canonical_authority"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "ungoverned_producer_selection",
+      "errors": [
+        "ungoverned_producer_selection"
+      ],
+      "rejected": true
+    },
+    {
+      "case": "protected_c11c_surface",
+      "errors": [
+        "protected_surface_registered"
+      ],
+      "rejected": true
+    }
+  ],
+  "checkpoint": "C11-D D6.1",
+  "result": "PASS"
+}

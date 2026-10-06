@@ -1,0 +1,39 @@
+{
+  "canonical_authorities": [
+    "gameplay",
+    "music"
+  ],
+  "canonical_authority_count": 2,
+  "canonical_registry_valid": true,
+  "checkpoint": "C11-D D6.1",
+  "d3_music_isolation": true,
+  "d4_seed_music_seed_separation": true,
+  "deterministic": true,
+  "evidence_sha256": {
+    "d6_1_governance_matrix.json": "eb8636465bd86adfa74cb33f87744c05a1d2878c9d91c9089d7b26197e9d0312",
+    "d6_1_negative_tests.json": "d0da8684077a97377c096f313d4c9fa629774b951239b1142b3a21c662bdbea2",
+    "d6_1_registry_validation.json": "841c23fe86ec7ac306e4cb29388feae49f80890d3e534fcf1755ae1b438da733"
+  },
+  "ffmpeg_production_execution": false,
+  "frozen_c11c_preserved": true,
+  "gameplay_authority_valid": true,
+  "godot_production_execution": false,
+  "governance_policy_valid": true,
+  "idempotent": true,
+  "legacy_historical_test_observations_preserved": true,
+  "music_authority_valid": true,
+  "mutation_guard": true,
+  "negative_tests": true,
+  "next": "D6.2 - Seed Resolver / Deterministic Derivation",
+  "producer_nondeterministic_selections": 6,
+  "producer_selections_not_promoted": true,
+  "production_execution": false,
+  "renderer_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "shared_rng_finding": "OBSERVED_SHARED_RNG_STATE",
+  "shared_rng_not_promoted": true,
+  "status": "CLOSED",
+  "unknown_findings": 896,
+  "unknown_findings_preserved": true
+}

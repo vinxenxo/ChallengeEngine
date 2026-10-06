@@ -1,0 +1,39 @@
+{
+  "all_authorities_evidence_backed": true,
+  "canonical_authorities": [
+    {
+      "domain": "GAMEPLAY",
+      "input_field": "request.seed",
+      "owner": "c11d_production_request",
+      "seed_id": "gameplay"
+    },
+    {
+      "domain": "MUSIC",
+      "input_field": "request.music_seed",
+      "owner": "d3_music_engine_v5",
+      "seed_id": "music"
+    }
+  ],
+  "canonical_authority_count": 2,
+  "checkpoint": "C11-D D6.1",
+  "d3_music_isolation": true,
+  "d4_seed_music_seed_separation": true,
+  "ffmpeg_production_execution": false,
+  "frozen_c11c": {
+    "build_factory_sha256": "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+    "preserved": true,
+    "source_errors": [],
+    "source_file_count": 1935,
+    "tree_sha256": "2d39b7b923b42cdc6647a4d25493b75023cdd19cee18214bbde1fdd295b8f256",
+    "workspace_build_factory_sha256": "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+    "zip_sha256": "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32"
+  },
+  "godot_production_execution": false,
+  "policy_valid": true,
+  "production_execution": false,
+  "registry_valid": true,
+  "renderer_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "validation_errors": []
+}

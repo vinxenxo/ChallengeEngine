@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D6.0 PASS / CLOSED.
+Continue ChallengeEngineV01_STATELESS from C11-D D6.1 PASS / CLOSED.
 
 ## Current D state
 
@@ -28,13 +28,16 @@ D5.3 = PASS / CLOSED
 D5.4 = PASS / CLOSED
 D5.5 = PASS / CLOSED
 D6.0 = PASS / CLOSED
+D6.1 = PASS / CLOSED
 
 D5 = CLOSED
-NEXT = D6.1 — Canonical Seed Registry + Governance Policy
+NEXT = D6.2 — Seed Resolver / Deterministic Derivation
 
 D5.5 consumed and accepted D5.0-D5.4, with two full runner executions producing identical matrix, summary, and receipt hashes. Cross-check totals are 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates outside the graph. D4.8 remains BLOCKED; C11-C frozen ZIP/tree/build hashes are preserved. The runner mutation guard passed on both runs; no cleanup or production execution occurred, and runtime authority is NONE. D5.0's 19 receipts are the D1-D4 inventory total, of which 14 are D3/D4 receipt paths.
 
-D6.0 completed a deterministic, read-only seed/RNG audit and passed its mutation guard twice with identical four-file output hashes. It found 1,157 source/config observations. D3 music isolation, D4 `seed`/`music_seed` separation, D4.8 blocked governance, and frozen C11-C identity all pass. Findings retain `UNKNOWN` where evidence is insufficient. The current Producer uses a module-global random source for six automatic seed/parameter selections (warning; not the gameplay RNG object); no active nondeterministic source was found in the core gameplay runtime. Runtime authority is NONE and production execution is false.
+D6.0 completed a deterministic, read-only seed/RNG audit and passed its mutation guard twice with identical four-file output hashes. It found 1,174 observations across 796 files and 896 unknown findings. D3 music isolation, D4 `seed`/`music_seed` separation, D4.8 blocked governance, and frozen C11-C identity all pass. Shared/global RNG state was observed; six Producer nondeterministic selections and two warnings remain governance findings. None has been promoted or modified. Runtime authority is NONE and production execution is false.
+
+D6.1 is PASS / CLOSED. The registry contains only evidence-backed `gameplay` (`request.seed`) and `music` (`request.music_seed`) authorities. All 896 unknown findings and legacy/historical/test observations remain evidence outside the registry. Two runs passed deterministic evidence comparison and the mutation guard. No master-seed decision was made.
 
 ## Read first
 
@@ -108,7 +111,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D6.1 — Canonical Seed Registry + Governance Policy.
+D6.2 — Seed Resolver / Deterministic Derivation.
 
 <!-- C11D_D3_2_HANDOFF -->
 
@@ -328,10 +331,14 @@ D5.5 Full D5 Acceptance is PASS / CLOSED; D5 is CLOSED. Two full runner executio
 
 Acceptance evidence: `artifacts/tests/c11d_d5/d5_5/`. Contract: `docs/current/d/D5.5_FULL_D5_ACCEPTANCE_CONTRACT.md`.
 
-NEXT = D6.1 — Canonical Seed Registry + Governance Policy. Do not begin D6.1 until separately requested.
+NEXT = D6.2 — Seed Resolver / Deterministic Derivation. Do not begin D6.2 until separately requested.
 
 <!-- C11D_D6_0_HANDOFF_V1 -->
 
-D6.0 is PASS / CLOSED. The read-only inventory contains 1,157 observations across 796 source/config files; 879 remain explicitly UNKNOWN in domain or behavior. D3 Music Engine V5 / gameplay RNG isolation, D4 request seed/music_seed separation, D4.8 blocked authorization, and frozen C11-C identity passed. Two full runs passed the mutation guard and produced identical four-output hashes. Warnings identify module-global random use and six automatic seed/parameter choices in Producer 0.9.7; these do not prove shared RNG state inside gameplay. No active nondeterministic source was found in core gameplay. Runtime authority is NONE and production execution is false.
+D6.0 is PASS / CLOSED. The read-only inventory contains 1,174 observations across 796 files and 896 unknown findings. D3 Music Engine V5 / gameplay RNG isolation, D4 request seed/music_seed separation, D4.8 blocked governance, and frozen C11-C identity passed. Shared/global RNG state is observed but not promoted; six Producer nondeterministic selections remain governance findings. No active runtime nondeterministic source was found. Runtime authority is NONE and production execution is false.
 
-NEXT = D6.1 — Canonical Seed Registry + Governance Policy.
+<!-- C11D_D6_1_HANDOFF_V1 -->
+
+D6.1 is PASS / CLOSED. The canonical registry contains exactly two evidence-backed authorities: `gameplay` / `request.seed` owned by `c11d_production_request`, and `music` / `request.music_seed` owned by `d3_music_engine_v5`. D4 separation, D3 isolation, 13 negative tests, frozen C11-C identity, determinism, idempotency and mutation guard passed. All 896 unknown findings and legacy/historical/test evidence remain outside the registry. Shared RNG and six Producer nondeterministic selections were not promoted. Runtime authority is NONE; production execution is false.
+
+NEXT = D6.2 — Seed Resolver / Deterministic Derivation. D6.1 did not decide whether a master_seed is legitimate. Do not begin D6.2 until separately requested.

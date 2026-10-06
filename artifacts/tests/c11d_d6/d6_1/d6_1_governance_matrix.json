@@ -1,0 +1,101 @@
+{
+  "canonical_authority_count": 2,
+  "checkpoint": "C11-D D6.1",
+  "cross_domain_seed_sharing": "FORBIDDEN",
+  "d6_0_evidence_inventory": {
+    "classification_counts": {
+      "DERIVED_SEED": 7,
+      "EXPLICIT_SEED": 130,
+      "HISTORICAL": 61,
+      "LEGACY": 458,
+      "NONDETERMINISTIC_SOURCE": 7,
+      "RNG_CONSUMPTION": 10,
+      "RNG_INITIALIZATION": 1,
+      "TEST_FIXTURE": 249,
+      "UNKNOWN": 251
+    },
+    "domain_counts": {
+      "DELIVERY": 3,
+      "EDITORIAL": 4,
+      "GAMEPLAY": 52,
+      "MUSIC": 176,
+      "PRESENTATION": 16,
+      "UNKNOWN": 781,
+      "VISUAL_VARIATION": 142
+    },
+    "legacy_historical_test_preserved": true,
+    "total_observations": 1174,
+    "unknown_findings": 896,
+    "unknown_preserved": true
+  },
+  "derivation": {
+    "activation": "DISABLED",
+    "allowed": false,
+    "master_seed_decision": "NOT_DECIDED"
+  },
+  "isolation_matrix": {
+    "DELIVERY": {
+      "DELIVERY": true,
+      "EDITORIAL": false,
+      "GAMEPLAY": false,
+      "MUSIC": false,
+      "PRESENTATION": false,
+      "VISUAL_VARIATION": false
+    },
+    "EDITORIAL": {
+      "DELIVERY": false,
+      "EDITORIAL": true,
+      "GAMEPLAY": false,
+      "MUSIC": false,
+      "PRESENTATION": false,
+      "VISUAL_VARIATION": false
+    },
+    "GAMEPLAY": {
+      "DELIVERY": false,
+      "EDITORIAL": false,
+      "GAMEPLAY": true,
+      "MUSIC": false,
+      "PRESENTATION": false,
+      "VISUAL_VARIATION": false
+    },
+    "MUSIC": {
+      "DELIVERY": false,
+      "EDITORIAL": false,
+      "GAMEPLAY": false,
+      "MUSIC": true,
+      "PRESENTATION": false,
+      "VISUAL_VARIATION": false
+    },
+    "PRESENTATION": {
+      "DELIVERY": false,
+      "EDITORIAL": false,
+      "GAMEPLAY": false,
+      "MUSIC": false,
+      "PRESENTATION": true,
+      "VISUAL_VARIATION": false
+    },
+    "VISUAL_VARIATION": {
+      "DELIVERY": false,
+      "EDITORIAL": false,
+      "GAMEPLAY": false,
+      "MUSIC": false,
+      "PRESENTATION": false,
+      "VISUAL_VARIATION": true
+    }
+  },
+  "producer_nondeterministic_selections": {
+    "canonical_authority": false,
+    "count": 6,
+    "warnings": 2
+  },
+  "registry_domains": [
+    "GAMEPLAY",
+    "MUSIC"
+  ],
+  "runtime_activation": "NONE",
+  "shared_rng": {
+    "canonical_authority": false,
+    "finding": "OBSERVED_SHARED_RNG_STATE",
+    "observed": true
+  }
+}

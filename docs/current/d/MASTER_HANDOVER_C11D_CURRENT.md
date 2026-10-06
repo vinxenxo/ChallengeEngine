@@ -1,6 +1,6 @@
 # C11-D MASTER HANDOVER
 
-## Current state - D6.0 CLOSED
+## Current state - D6.1 CLOSED
 
 D0: CLOSED / PASS
 D1: CLOSED / PASS
@@ -26,10 +26,11 @@ D5.3: PASS / CLOSED
 D5.4: PASS / CLOSED
 D5.5: PASS / CLOSED
 D6.0: PASS / CLOSED
+D6.1: PASS / CLOSED
 
 D5 = CLOSED
 D6 = ACTIVE
-NEXT = D6.1 — Canonical Seed Registry + Governance Policy
+NEXT = D6.2 — Seed Resolver / Deterministic Derivation
 
 D5.0 audited 19,938 repository files and inventoried 19 receipts across D1-D4 (14 receipt paths are D3/D4). It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphan candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -327,10 +328,23 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 
 ## C11-D D6.0 CLOSED / PASS
 
-- Read-only audit recorded 1,157 seed/RNG observations across 796 source/config files. Findings are classified by evidence; 879 remain explicitly `UNKNOWN` in domain or behavior rather than being guessed.
+- Read-only audit recorded 1,174 seed/RNG observations across 796 files. It retained 896 unknown findings; 781 observations have UNKNOWN domain and 251 UNKNOWN classification. Findings remain evidence, not registry entries.
 - D3 Music Engine V5 consumes its dedicated `music_seed`; D3 structural/gameplay decoupling and D4 request `seed`/`music_seed` separation passed. Personalization is not a seed source. D4.8 remains blocked with no production authorization.
-- Governance warnings record the Producer 0.9.7 module-global `random` use and six automatic seed/parameter selection calls. These are upstream authoring/job selection, not proven shared gameplay-engine RNG state. No active nondeterministic gameplay-runtime source or blocking finding was detected.
+- Governance findings record shared/global RNG state and six Producer nondeterministic seed selections (two warnings). Neither was promoted into canonical authority or modified. No active runtime nondeterministic source or blocking finding was detected.
 - The frozen C11-C ZIP/tree/build identities remain preserved. Two complete runs passed the mutation guard and produced identical hashes for all four D6.0 outputs. Runtime authority is NONE; production, renderer, Godot production, and FFmpeg production execution are false.
 - Contract: `docs/current/d/D6.0_SEED_GOVERNANCE_AUDIT_CONTRACT.md`.
 - Inventory, usage matrix, findings, and receipt: `artifacts/tests/c11d_d6/d6_0/`.
-- Next: **D6.1 — Canonical Seed Registry + Governance Policy**.
+- D6.1 contract: `docs/current/d/D6.1_CANONICAL_SEED_REGISTRY_CONTRACT.md`.
+- D6.1 registry and policy: `definitions/c11d/seeds/`; validation evidence: `artifacts/tests/c11d_d6/d6_1/`.
+- Next: **D6.2 — Seed Resolver / Deterministic Derivation**. No master-seed decision has been made.
+
+<!-- C11D_D6_1_HANDOFF_V1 -->
+
+## C11-D D6.1 CLOSED / PASS
+
+- Canonical registry is deliberately limited to `gameplay` (`GAMEPLAY`, `request.seed`, owner `c11d_production_request`) and `music` (`MUSIC`, `request.music_seed`, owner `d3_music_engine_v5`). Both are deterministic, evidence-backed, domain-isolated and inactive at runtime.
+- D4 seed/music_seed separation, D3 Music Engine V5 isolation, 13 required negative tests, and frozen C11-C ZIP/tree/build identity passed.
+- D6.0's 896 unknown findings remain preserved. Legacy, historical and test fixture findings remain evidence only. Shared RNG remains `OBSERVED_SHARED_RNG_STATE`; six Producer nondeterministic selections remain unpromoted.
+- Two validator runs produced identical four-file evidence and SHA-256 values. Mutation guard passed; no source, registry, policy, D4, D3 or C11-C inputs were rewritten.
+- Runtime authority is NONE. Production, renderer, Godot production and FFmpeg production execution are false.
+- **D6.1 = PASS / CLOSED. NEXT = D6.2 — Seed Resolver / Deterministic Derivation.** D6.2 will decide whether a master seed is evidence-backed; D6.1 makes no such decision.
