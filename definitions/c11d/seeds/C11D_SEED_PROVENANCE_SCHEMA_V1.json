@@ -1,0 +1,53 @@
+{
+  "schema_id": "c11d_seed_provenance",
+  "schema_version": "1.0",
+  "checkpoint": "C11-D D6.4",
+  "runtime_authority": "NONE",
+  "production_execution": false,
+  "purpose": "Reference-only provenance shape linking the canonical D4 request, D6.2 seed resolution, D6.1 registry/policy and D4.4 production plan without replacing any owner.",
+  "ownership": {
+    "request_hash": "c11d_production_request_normalizer",
+    "seed_resolution_hash": "c11d_seed_resolver",
+    "registry_identity": "c11d_seed_registry",
+    "policy_identity": "c11d_seed_governance_policy",
+    "plan_hash": "canonical_production_orchestrator",
+    "integration_evidence": "seed_request_plan_integrator"
+  },
+  "canonical_mappings": [
+    {
+      "request_field": "request.seed",
+      "authority_id": "gameplay.seed",
+      "seed_id": "gameplay",
+      "domain": "GAMEPLAY"
+    },
+    {
+      "request_field": "request.music_seed",
+      "authority_id": "music.seed",
+      "seed_id": "music",
+      "domain": "MUSIC"
+    }
+  ],
+  "rules": {
+    "explicit_values_pass_through_unchanged": true,
+    "numeric_equality_across_independent_domains_is_valid": true,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "derivation_runtime_activation": "DISABLED",
+    "master_seed": "NOT_ADOPTED",
+    "personalization_is_seed_source": false,
+    "variation_index_is_seed_source": false,
+    "shared_rng_is_canonical": false,
+    "producer_automatic_selection_is_canonical": false,
+    "d4_8_blocked_is_authorization": false,
+    "d5_lineage_registry_mutation": false
+  },
+  "required_chain": [
+    "request",
+    "request_sha256",
+    "seed_resolution",
+    "seed_authority",
+    "registry_identity",
+    "policy_identity",
+    "plan",
+    "plan_sha256"
+  ]
+}

@@ -23,3 +23,11 @@ D0 recovery → D1 visual parity → D2 assets/templates → D3 Music V5 → D4 
 ## Safety
 
 Do not use D as justification to clean up or alter frozen C internals. Prefer declarative registries, adapters, presentation bindings and orchestration layers until a contract explicitly requires new mechanics.
+
+## Current checkpoint
+
+D6.4 — Request / Plan / Provenance Integration is the active checkpoint. Before implementing D6.5, read `docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md` and the current D handover.
+
+D6.4 must remain an adapter: D4.2 owns request identity, D6.2 owns seed resolution, D6.1 owns seed registry/policy, D4.4 owns the canonical plan and plan hash, D5 lineage is read-only, and D6.4 owns only integration evidence.
+
+Canonical seed mappings are `request.seed -> gameplay.seed -> GAMEPLAY` and `request.music_seed -> music.seed -> MUSIC`. Derivation remains inactive and `master_seed` remains `NOT_ADOPTED`. D4.8 remains `BLOCKED`; no physical authorization may be inferred.

@@ -6,11 +6,11 @@ D is an additive productization branch around immutable C11-C engine truth.
 
 ## Current checkpoint
 
-D6.3 = PASS / CLOSED. GAMEPLAY and MUSIC remain isolated through the D6.2 resolver; equal numeric values are valid across independent authorities. The collision matrix detected modeled identity, authority, ownership, domain and consumer conflicts. The fixed 32-case derivation corpus had zero observed collisions. Shared RNG, Producer automatic selections and 896 unknown findings remain governance evidence only. D3/D4 gates, frozen C11-C identity, 26 validation cases, identical reruns and the mutation guard passed. Runtime authority is NONE; production execution is false.
+D6.4 = ACTIVE / IMPLEMENTATION READY. D6.4 integrates the canonical D4.2 request, the D6.2 explicit seed resolution and the D4.4 canonical production plan through reference-only provenance evidence. `request.seed` remains GAMEPLAY, `request.music_seed` remains MUSIC, equal numeric values remain valid across independent authorities, derivation remains inactive, and `master_seed` remains NOT_ADOPTED. D5 lineage is consumed read-only, D4.8 remains BLOCKED, and no physical authorization is inferred. Runtime authority is NONE; production execution is false.
 
 **NEXT = D6.4 — Request / Plan / Provenance Integration.**
 
-Read `docs/current/d/D6.3_SEED_ISOLATION_COLLISION_VALIDATOR_CONTRACT.md` and the current D handover before D6.4.
+Read `docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md` and the current D handover before implementing or validating D6.4. Do not start D6.5 until D6.4 has a PASS/CLOSED receipt.
 
 ## First reads
 
@@ -19,18 +19,43 @@ Read `docs/current/d/D6.3_SEED_ISOLATION_COLLISION_VALIDATOR_CONTRACT.md` and th
 3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
 4. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
 5. `docs/current/d/C11-D_MILESTONES_APPROVED.md`
-6. `docs/current/d/D0_REPOSITORY_BASELINE_INVENTORY.md`
-7. `docs/current/d/D0_MIGRATION_MAP.md`
-8. `docs/current/d/D0_CHALLENGE_RECOVERY_DOSSIER_SCHEMA.md`
-9. `docs/current/d/D0_START_CHECKLIST.md`
+6. `docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md`
+7. `docs/current/d/README_D6.4.md`
 
 ## Frozen boundary
 
 Do not change C11-B/C simulation truth, RNG algorithm/ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7, C9 or logical 540x960 geometry without an explicit checkpoint.
 
-## Operator architecture
+## D6.4 integration ownership
 
-GUI and CLI are co-equal. Every D operation must have a direct CLI path, identical inputs/provenance and reproducible output.
+- D4.2 owns canonical request identity.
+- D6.2 owns seed resolution identity.
+- D6.1 owns seed registry and governance policy identity.
+- D4.4 owns canonical Production Plan and its SHA-256.
+- D6.4 owns only integration/provenance evidence.
+
+## Seed invariants
+
+- `request.seed -> gameplay.seed -> GAMEPLAY`.
+- `request.music_seed -> music.seed -> MUSIC`.
+- Numeric equality across independent authorities is valid.
+- Cross-domain consumption is forbidden.
+- Derivation capability remains available but runtime activation is disabled.
+- `master_seed = NOT_ADOPTED`.
+- Personalization and `variation_index` are not seed authorities.
+- Shared/global RNG and Producer automatic selection are not canonical authorities.
+
+## D4/D5 boundaries
+
+D4.4 remains the only Production Plan constructor and plan-hash owner. D5 lineage remains read-only. D4.8 remains BLOCKED and cannot be converted into an authorization grant by downstream evidence.
+
+## Runtime fence
+
+`runtime_authority = NONE`.
+
+`production_execution = false`.
+
+Renderer, Godot production and FFmpeg production execution remain false.
 
 ## Approved sequence
 
