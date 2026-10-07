@@ -1,0 +1,16 @@
+{
+  "overlay_id": "C11D_D7.3_RUNNER_FORMATFIX_V2",
+  "checkpoint": "D7.3",
+  "purpose": "Repair D7.3 mutation guard scope while preserving the existing canonical catalog builder contract.",
+  "modified_files": [
+    "tools/c11d/d7/run_d7_3_canonical_catalog.ps1"
+  ],
+  "scope": {
+    "allowed_mutation": "artifacts/tests/c11d_d7/d7_3/",
+    "guard_behavior": "Repository snapshot excludes the D7.3 evidence directory; evidence scope and four-file contract are validated separately.",
+    "production_execution": false,
+    "renderer_execution": false,
+    "runtime_authority": "NONE"
+  },
+  "powershell": "5.1"
+}

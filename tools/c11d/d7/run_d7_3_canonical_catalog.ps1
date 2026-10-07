@@ -7,22 +7,43 @@ $pythonScript = Join-Path $PSScriptRoot 'production_catalog_builder.py'
 $outputDirectory = Join-Path $repoRoot 'artifacts\tests\c11d_d7\d7_3'
 New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null
 
-function Get-TreeSnapshot {
+function Get-TreeSnapshotOutsideD73Evidence {
     param([string]$Root)
-    $snapshotText = & python $pythonScript --root $Root --snapshot-only
-    if ($LASTEXITCODE -ne 0) { throw 'Unable to capture D7.3 repository snapshot.' }
-    return ($snapshotText | ConvertFrom-Json)
+
+    $tempDirectory = Join-Path ([System.IO.Path]::GetTempPath()) ('c11d_d7_3_guard_' + [guid]::NewGuid().ToString('N'))
+    $outputWasPresent = Test-Path -LiteralPath $outputDirectory
+
+    if ($outputWasPresent) {
+        Move-Item -LiteralPath $outputDirectory -Destination $tempDirectory -Force
+    }
+
+    try {
+        $snapshotText = & python $pythonScript --root $Root --snapshot-only
+        if ($LASTEXITCODE -ne 0) { throw 'Unable to capture D7.3 repository snapshot.' }
+        return ($snapshotText | ConvertFrom-Json)
+    }
+    finally {
+        if (Test-Path -LiteralPath $outputDirectory) {
+            Remove-Item -LiteralPath $outputDirectory -Recurse -Force
+        }
+        if ($outputWasPresent -and (Test-Path -LiteralPath $tempDirectory)) {
+            Move-Item -LiteralPath $tempDirectory -Destination $outputDirectory -Force
+        }
+        elseif (Test-Path -LiteralPath $tempDirectory) {
+            Remove-Item -LiteralPath $tempDirectory -Recurse -Force
+        }
+    }
 }
 
-$baseline = Get-TreeSnapshot -Root $repoRoot
-Write-Host ('[OK] Mutation guard baseline captured: {0} worktree files.' -f $baseline.files)
+$baseline = Get-TreeSnapshotOutsideD73Evidence -Root $repoRoot
+Write-Host ('[OK] Mutation guard baseline captured: {0} worktree files outside d7_3 evidence.' -f $baseline.files)
 
 for ($runIndex = 1; $runIndex -le 2; $runIndex++) {
     & python $pythonScript --root $repoRoot
     if ($LASTEXITCODE -ne 0) { throw ('D7.3 catalog builder run {0} failed.' -f $runIndex) }
 }
 
-$after = Get-TreeSnapshot -Root $repoRoot
+$after = Get-TreeSnapshotOutsideD73Evidence -Root $repoRoot
 if ($baseline.files -ne $after.files -or $baseline.sha256 -ne $after.sha256) {
     throw ('FILESYSTEM_MUTATION_FAILURE: before={0}/{1}; after={2}/{3}' -f $baseline.files,$baseline.sha256,$after.files,$after.sha256)
 }
