@@ -95,7 +95,10 @@ def build_context(root: Path) -> dict[str, Any]:
         raise ValueError('D7.3 validation must be PASS')
     _, catalog_receipt = require_pass_closed(root, CATALOG_RECEIPT_REL, 'D7.3 receipt')
     matrix_path = require_file(root, MATRIX_REL, 'D7.1 matrix')
-    matrix_validation_path, matrix_validation = require_pass_closed(root, MATRIX_VALIDATION_REL, 'D7.2 validation')
+    matrix_validation_path = require_file(root, MATRIX_VALIDATION_REL, 'D7.2 validation')
+    matrix_validation = load_json(matrix_validation_path)
+    if not isinstance(matrix_validation, dict) or matrix_validation.get('result') != 'PASS':
+        raise ValueError('D7.2 constraint validation must be PASS')
     d72_path, d72 = require_pass_closed(root, D72_RECEIPT_REL, 'D7.2 receipt')
     d65_path, d65 = require_pass_closed(root, D65_RECEIPT_REL, 'D6.5 receipt')
     d64_path, d64 = require_pass_closed(root, D64_REL, 'D6.4 integration receipt')
