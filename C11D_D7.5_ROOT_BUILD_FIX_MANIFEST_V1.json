@@ -1,0 +1,21 @@
+{
+  "checkpoint": "C11-D D7.5",
+  "overlay_id": "D7.5-ROOT-BUILD-FIX-V4",
+  "scope": "final D7.5 full acceptance repair",
+  "changes": [
+    "Preserve discover_build_factory() result instead of overwriting it with tools/build_factory.py.",
+    "Canonical active C11-C build_factory.py is resolved from the repository tree and may be at the repository root.",
+    "Mutation guard remains limited to artifacts/tests/c11d_d7/d7_5/.",
+    "Python bytecode generation remains disabled by the runner."
+  ],
+  "protected": [
+    "C11-C simulation/mechanics/RNG",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C11-C presentation/production",
+    "release/"
+  ]
+}

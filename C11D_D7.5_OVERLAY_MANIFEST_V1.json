@@ -1,0 +1,30 @@
+{
+  "checkpoint": "D7.5",
+  "evidence_scope": "artifacts/tests/c11d_d7/d7_5/",
+  "files": [
+    "definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_SPEC_V1.json",
+    "definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json",
+    "tools/c11d/d7/d7_5_full_acceptance_builder.py",
+    "tools/c11d/d7/run_d7_5_full_acceptance.ps1",
+    "tools/c11d/d7/close_d7_5_handover.ps1",
+    "docs/current/d/D7.5_FULL_ACCEPTANCE_CONTRACT.md",
+    "docs/current/d/D7.5_HANDOVER.md",
+    "docs/master-prompts/START_PROMPT_C11D_D7.5.md",
+    "docs/master-prompts/MASTER_HANDOVER_C11D_D7.5.md",
+    "README_D7.5_OVERLAY.md",
+    "C11D_D7.5_OVERLAY_MANIFEST_V1.json"
+  ],
+  "hardening": {
+    "build_factory_resolution": "active-tree filename discovery + frozen SHA-256 match; fixed path is not assumed",
+    "mutation_guard_scope": "artifacts/tests/c11d_d7/d7_5/ only",
+    "overlay_files_after_apply_are_baseline": true,
+    "pycache_disabled": true,
+    "release_write_forbidden": true
+  },
+  "next": "D8 - Media QA + Release Pipeline",
+  "overlay_id": "C11D_D7.5_FULL_ACCEPTANCE_V1",
+  "revision": "V3_PS51_BUILD_IDENTITY_AND_MUTATION_HARDENING",
+  "scope": "Full D7 Acceptance",
+  "status": "READY",
+  "version": "1.0"
+}
