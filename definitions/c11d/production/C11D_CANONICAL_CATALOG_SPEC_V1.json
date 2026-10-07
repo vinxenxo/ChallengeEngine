@@ -1,0 +1,61 @@
+{
+  "catalog_id": "c11d_production_catalog",
+  "schema_version": "1.0",
+  "version": "1.0",
+  "authority": "D7.3",
+  "status": "CANONICAL",
+  "purpose": "Canonical deterministic catalog of production intents derived from the validated D7.1 matrix; catalog metadata is not evidence of rendered media or production execution.",
+  "source_of_truth": "D7.1 canonical production matrix plus D7.2 coverage validation",
+  "identity": {
+    "catalog_key": "matrix_key",
+    "catalog_item_id": "stable prefix plus SHA-256 of catalog_key",
+    "identity_hash": "SHA-256 of canonical catalog item content excluding identity_hash"
+  },
+  "coverage": {
+    "source_matrix_core_cases": 90,
+    "expected_catalog_items": 90,
+    "one_to_one_with_matrix_rows": true,
+    "personalization_core_default": "none_v1",
+    "variation_index_core_default": null
+  },
+  "dimensions": {
+    "challenge_id": {"required": true},
+    "challenge_version": {"required": true},
+    "delivery_profile_id": {"required": true},
+    "mode": {"allowed": ["REVIEW", "PRODUCTION"], "required": true},
+    "matrix_key": {"required": true, "unique": true}
+  },
+  "seed_bindings": {
+    "GAMEPLAY": {"authority": "gameplay", "source_field": "request.seed", "resolution": "D6.2 explicit"},
+    "MUSIC": {"authority": "music", "source_field": "request.music_seed", "resolution": "D6.2 explicit"}
+  },
+  "governance": {
+    "catalog_authority": "CANONICAL_D7_3",
+    "matrix_authority_required": "CANONICAL_D7_1",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "automatic_seed_generation": false,
+    "runtime_authority": "NONE",
+    "production_execution": false,
+    "renderer_execution": false,
+    "media_rendered_by_catalog": false
+  },
+  "provenance": {
+    "required_sources": [
+      "D7.1 canonical matrix",
+      "D7.2 coverage validation",
+      "D6.1 seed registry",
+      "D6.2 seed resolver",
+      "D6.4 request/plan/provenance integration"
+    ],
+    "plan_owner": "canonical_production_orchestrator"
+  },
+  "protected_semantics": [
+    "winning_frame",
+    "close_calls",
+    "SimulationResult",
+    "WinningFrameDetector",
+    "RenderedFrameStream"
+  ]
+}

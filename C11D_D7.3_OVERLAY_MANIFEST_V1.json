@@ -1,0 +1,26 @@
+{
+  "overlay_id": "C11D_D7.3_CANONICAL_CATALOG_BUILDER_V1",
+  "checkpoint": "D7.3",
+  "root_relative": true,
+  "writes_release": false,
+  "files": [
+    "definitions/c11d/production/C11D_CANONICAL_CATALOG_SPEC_V1.json",
+    "definitions/c11d/production/C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json",
+    "tools/c11d/d7/production_catalog_builder.py",
+    "tools/c11d/d7/run_d7_3_canonical_catalog.ps1",
+    "tools/c11d/d7/close_d7_3_handover.ps1",
+    "docs/current/d/D7.3_CANONICAL_CATALOG_BUILDER_CONTRACT.md",
+    "docs/current/d/D7.3_HANDOVER.md",
+    "docs/master-prompts/MASTER_HANDOVER_C11D_D7.3.md",
+    "docs/master-prompts/START_PROMPT_C11D_D7.3.md",
+    "README_D7.3_OVERLAY.md",
+    "C11D_D7.3_OVERLAY_MANIFEST_V1.json"
+  ],
+  "evidence_directory": "artifacts/tests/c11d_d7/d7_3/",
+  "evidence_files": [
+    "d7_3_canonical_catalog.json",
+    "d7_3_catalog_validation.json",
+    "d7_3_negative_tests.json",
+    "d7_3_catalog_receipt.json"
+  ]
+}

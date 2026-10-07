@@ -1,0 +1,1 @@
+{"catalog_authority":"NOT_ESTABLISHED_IN_D7_1","d7_1_authority":"D7.1","d7_1_status":"CANONICAL","errors":[],"ffmpeg_production_execution":false,"godot_production_execution":false,"policy_ok":true,"production_execution":false,"renderer_execution":false,"result":"PASS","runtime_authority":"NONE","seed_bindings":{"GAMEPLAY":"request.seed","MUSIC":"request.music_seed"}}

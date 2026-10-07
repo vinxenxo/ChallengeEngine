@@ -1,0 +1,19 @@
+{
+  "overlay_id": "c11d_d7_2_matrix_coverage_validator_v1",
+  "checkpoint": "D7.2",
+  "version": "1.0",
+  "files": [
+    "definitions/c11d/production/C11D_PRODUCTION_MATRIX_COVERAGE_POLICY_V1.json",
+    "tools/c11d/d7/production_matrix_coverage_validator.py",
+    "tools/c11d/d7/run_d7_2_matrix_coverage_validator.ps1",
+    "docs/current/d/D7.2_MATRIX_COVERAGE_CONSTRAINT_VALIDATOR_CONTRACT.md",
+    "docs/current/d/D7.2_HANDOVER.md",
+    "docs/master-prompts/MASTER_HANDOVER_C11D_D7.2.md",
+    "docs/master-prompts/START_PROMPT_C11D_D7.2.md",
+    "README_D7.2_OVERLAY.md",
+    "C11D_D7.2_OVERLAY_MANIFEST_V1.json"
+  ],
+  "output_root": "artifacts/tests/c11d_d7/d7_2",
+  "runtime_authority": "NONE",
+  "production_execution": false
+}

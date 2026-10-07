@@ -1,0 +1,18 @@
+{
+  "overlay_id": "C11D_D7.3_RUNNER_FORMATFIX_V1",
+  "purpose": "Fix PowerShell formatting error in the final D7.3 runner status line only.",
+  "base": "C11D_D7.3_CANONICAL_CATALOG_BUILDER_V1",
+  "modified_files": [
+    "tools/c11d/d7/run_d7_3_canonical_catalog.ps1"
+  ],
+  "preserved": [
+    "D7.3 catalog builder",
+    "canonical catalog/spec/governance",
+    "D7.3 evidence schema",
+    "mutation guard",
+    "C11-C frozen surfaces",
+    "runtime/production disabled gates"
+  ],
+  "change": "Replace invalid -f placeholder {4} with the correct four-argument message.",
+  "expected": "Runner completes with C11-D D7.3 - PASS / CLOSED."
+}

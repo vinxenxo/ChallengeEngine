@@ -1,0 +1,15 @@
+{
+  "checkpoint": "D7.2",
+  "files": [
+    {
+      "path": "README_C11D_D7.2_AUTHORITY_FIX_V1.md",
+      "sha256": "4805b83ef37aed9016760a2df310c7334cef958da3111cc3250ea9d7d44bff76"
+    },
+    {
+      "path": "tools/c11d/d7/production_matrix_coverage_validator.py",
+      "sha256": "8dbe698cbbe863e2ea31dfa2498ff9ac95cc62be467fcda1e869df5c4d50fe93"
+    }
+  ],
+  "overlay_id": "c11d_d7_2_authority_fix_v1",
+  "schema_version": "1.0"
+}

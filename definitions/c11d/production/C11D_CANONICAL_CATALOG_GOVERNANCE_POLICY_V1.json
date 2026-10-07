@@ -1,0 +1,27 @@
+{
+  "policy_id": "c11d_canonical_catalog_governance",
+  "schema_version": "1.0",
+  "authority": "D7.3",
+  "catalog_authority": "CANONICAL_D7_3",
+  "matrix_authority": "CANONICAL_D7_1",
+  "rules": {
+    "source_of_truth": "C11D_CANONICAL_CATALOG_SPEC_V1.json",
+    "source_matrix_must_be_d7_1": true,
+    "source_matrix_must_pass_d7_2": true,
+    "one_catalog_item_per_matrix_row": true,
+    "catalog_keys_unique": true,
+    "catalog_ids_unique": true,
+    "catalog_identity_deterministic": true,
+    "seed_values_not_generated_by_catalog": true,
+    "personalization_not_a_seed_source": true,
+    "variation_not_a_seed_source": true,
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "automatic_seed_generation": false,
+    "production_execution": false,
+    "renderer_execution": false,
+    "media_rendered_by_catalog": false,
+    "runtime_authority": "NONE",
+    "plan_owner": "canonical_production_orchestrator"
+  }
+}
