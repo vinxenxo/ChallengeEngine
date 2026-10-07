@@ -33,7 +33,7 @@ D6.4: ACTIVE / IMPLEMENTATION READY
 
 D5 = CLOSED
 D6 = ACTIVE
-NEXT = D6.4 — Request / Plan / Provenance Integration
+NEXT = D7 - Production Matrix + Catalog
 
 D5.0 audited 19,938 repository files and inventoried 19 receipts across D1-D4 (14 receipt paths are D3/D4). It found zero topology conflicts and zero unclassified active artifacts, verified request-to-plan and plan-to-authorization lineage against D4 evidence, and confirmed the frozen C11-C archive SHA-256. It also reports 12,304 orphan candidates for lifecycle follow-up. No files were moved or deleted. Renderer policy remains DISABLED, runtime authority remains NONE, and production execution is false.
 
@@ -61,7 +61,7 @@ Visual Loop and Visual Drill remain unchanged.
 
 ## Next
 
-D6.1 — Canonical Seed Registry + Governance Policy.
+D6.1 â€” Canonical Seed Registry + Governance Policy.
 
 ## Frozen baseline
 
@@ -311,7 +311,7 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Policy: `definitions/c11d/artifacts/C11D_ARTIFACT_LIFECYCLE_POLICY_V1.json`.
 - Contract: `docs/current/d/D5.4_ARTIFACT_LIFECYCLE_QUARANTINE_RULES_CONTRACT.md`.
 - Validation, quarantine matrix, and receipt: `artifacts/tests/c11d_d5/d5_4/`.
-- Closed by D5.5 and D6.0. Next: **D6.1 — Canonical Seed Registry + Governance Policy**.
+- Closed by D5.5 and D6.0. Next: **D6.1 â€” Canonical Seed Registry + Governance Policy**.
 
 <!-- C11D_D5_5_HANDOFF_V1 -->
 
@@ -325,7 +325,7 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D5.1 validation receipt self-hash remains `DECLARATION ABSENT / NON-BLOCKING SCHEMA DECLARATION`; its manifest and evidence hashes remain verified.
 - Contract: `docs/current/d/D5.5_FULL_D5_ACCEPTANCE_CONTRACT.md`.
 - Acceptance matrix, summary, and receipt: `artifacts/tests/c11d_d5/d5_5/`.
-- D6.0 closed this audit-only stage. Next: **D6.1 — Canonical Seed Registry + Governance Policy**.
+- D6.0 closed this audit-only stage. Next: **D6.1 â€” Canonical Seed Registry + Governance Policy**.
 
 <!-- C11D_D6_0_HANDOFF_V1 -->
 
@@ -339,7 +339,7 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - Inventory, usage matrix, findings, and receipt: `artifacts/tests/c11d_d6/d6_0/`.
 - D6.1 contract: `docs/current/d/D6.1_CANONICAL_SEED_REGISTRY_CONTRACT.md`.
 - D6.1 registry and policy: `definitions/c11d/seeds/`; validation evidence: `artifacts/tests/c11d_d6/d6_1/`.
-- Next: **D6.2 — Seed Resolver / Deterministic Derivation**. No master-seed decision has been made.
+- Next: **D6.2 â€” Seed Resolver / Deterministic Derivation**. No master-seed decision has been made.
 
 <!-- C11D_D6_1_HANDOFF_V1 -->
 
@@ -350,7 +350,7 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D6.0's 896 unknown findings remain preserved. Legacy, historical and test fixture findings remain evidence only. Shared RNG remains `OBSERVED_SHARED_RNG_STATE`; six Producer nondeterministic selections remain unpromoted.
 - Two validator runs produced identical four-file evidence and SHA-256 values. Mutation guard passed; no source, registry, policy, D4, D3 or C11-C inputs were rewritten.
 - Runtime authority is NONE. Production, renderer, Godot production and FFmpeg production execution are false.
-- **D6.1 = PASS / CLOSED.** NEXT: D6.2 — Seed Resolver / Deterministic Derivation.
+- **D6.1 = PASS / CLOSED
 
 <!-- C11D_D6_2_HANDOFF_V1 -->
 
@@ -362,17 +362,19 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - D3 music isolation, D4 field separation and D4.8 production-blocked fence passed. Frozen C11-C ZIP/tree/build hashes were verified.
 - Two runner executions produced identical evidence hashes. Mutation guard passed; registry, policy, spec, D3 and D4 inputs remained unchanged.
 - Runtime authority is NONE. Production, renderer, Godot production and FFmpeg production execution are false.
-- **D6.2 = PASS / CLOSED. NEXT = D6.3 — Seed Isolation + Collision Validator.**
+- **D6.2 = PASS / CLOSED
 
 <!-- C11D_D6_3_HANDOFF_V1 -->
 
 ## C11-D D6.3 CLOSED / PASS
 
-- Both D6.1 authorities retain single-domain consumers; gameplay→music and music→gameplay are rejected. D6.2 request-isolation probes passed, and equal numeric values across independent domains are valid `VALUE_REUSE`.
+- Both D6.1 authorities retain single-domain consumers; gameplayâ†’music and musicâ†’gameplay are rejected. D6.2 request-isolation probes passed, and equal numeric values across independent domains are valid `VALUE_REUSE`.
 - The collision matrix separately detected authority, seed identity, conflicting domain, ownership, cross-domain consumer, ambiguous and ungoverned authority cases, plus unknown/shared-RNG/Producer/master-seed/protected-surface promotions.
 - A fixed 32-case derivation corpus across parent values, domains and algorithm versions had **zero observed collisions**. This is a corpus result, not a claim that SHA-256 collisions are impossible.
 - Shared RNG remains `OBSERVED_SHARED_RNG_STATE` and is not canonical; cross-domain engine sharing is not proven. Six Producer nondeterministic selections remain `NOT_CANONICAL`. All 896 unknown findings remain preserved.
 - D3 isolation, D4 field separation, D4.8 production block and frozen C11-C hashes passed. Twenty-six validation cases passed, including negative rejection tests and positive controls.
 - Two runs produced identical four-file evidence hashes. Mutation guard passed; D6.0-D6.2, D3, D4, registry and policy inputs remained unchanged.
 - Runtime authority is NONE; production, renderer, Godot production and FFmpeg production execution are false. No physical authorization was inferred.
-- **D6.3 = PASS / CLOSED. NEXT = D6.4 — Request / Plan / Provenance Integration.**
+- **D6.3 = PASS / CLOSED
+
+D6.5 = PASS / CLOSED

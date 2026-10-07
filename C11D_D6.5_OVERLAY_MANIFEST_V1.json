@@ -1,0 +1,16 @@
+{
+  "checkpoint": "C11-D D6.5",
+  "files": {
+    "README_D6.5_OVERLAY.md": "b1aa7e9b41b5e42ecbb217183fee35e4af4d292222d5f542dde4e91f415b4772",
+    "docs/current/d/D6.5_FULL_D6_ACCEPTANCE_CONTRACT.md": "ba6dd044f40aa656602663c8aee0105c7318c8ce76ffe976b546480aa6bd88ad",
+    "docs/current/d/D6.5_HANDOVER.md": "bf587e0008a91a04dfec241e675beede93b08d9c235ef2e029cedaf4b01f577a",
+    "docs/master-prompts/MASTER_HANDOVER_C11D_D6.5.md": "218b0729ca08749b7057bf772b40650f9a45fb3e4e88ad4ec1e44caeae9b4e53",
+    "docs/master-prompts/START_PROMPT_C11D_D6.5.md": "d340adf9561596c7a08f2d872f2b09d008ca2f1ecffacc12dd462c53a9018e33",
+    "tools/c11d/d6/close_d6_5_handover.ps1": "b0448f4e96710651420cbb1093d1c51f990ac8df9a133693a2ed7d582708136c",
+    "tools/c11d/d6/full_d6_acceptance.py": "3f43ff0a52d0ffb71c20f620e28e5b0eb9e8e5cb4e4d416f61657cc469fa796e",
+    "tools/c11d/d6/run_d6_5_full_d6_acceptance.ps1": "59dc0ebe43ed5ea48df662d45846c602f09f6a35ee1e2ccfcdf9d32a9cbbff3a"
+  },
+  "overlay_id": "C11D_D6.5_FULL_D6_ACCEPTANCE_V1",
+  "root_relative": true,
+  "status": "ACTIVE / ACCEPTANCE"
+}

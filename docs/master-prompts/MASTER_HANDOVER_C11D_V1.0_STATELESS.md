@@ -1,4 +1,4 @@
-# MASTER HANDOVER — Challenge Engine V1.0 STATELESS — D
+# MASTER HANDOVER â€” Challenge Engine V1.0 STATELESS â€” D
 
 **Entry baseline:** sealed C11-C 2.19.12 archive + verified archive/tree SHA-256.
 
@@ -6,9 +6,9 @@ D is an additive productization branch around immutable C11-C engine truth.
 
 ## Current checkpoint
 
-D6.4 = ACTIVE / IMPLEMENTATION READY. D6.4 integrates the canonical D4.2 request, the D6.2 explicit seed resolution and the D4.4 canonical production plan through reference-only provenance evidence. `request.seed` remains GAMEPLAY, `request.music_seed` remains MUSIC, equal numeric values remain valid across independent authorities, derivation remains inactive, and `master_seed` remains NOT_ADOPTED. D5 lineage is consumed read-only, D4.8 remains BLOCKED, and no physical authorization is inferred. Runtime authority is NONE; production execution is false.
+D6.4 = PASS / CLOSED
 
-**NEXT = D6.4 — Request / Plan / Provenance Integration.**
+**NEXT = D7 - Production Matrix + Catalog
 
 Read `docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md` and the current D handover before implementing or validating D6.4. Do not start D6.5 until D6.4 has a PASS/CLOSED receipt.
 
@@ -59,6 +59,8 @@ Renderer, Godot production and FFmpeg production execution remain false.
 
 ## Approved sequence
 
-D0 → D1 → D2 → D3 → D4 → D5 → D6 → D7 → D8 → D9 → D10.
+D0 â†’ D1 â†’ D2 â†’ D3 â†’ D4 â†’ D5 â†’ D6 â†’ D7 â†’ D8 â†’ D9 â†’ D10.
 
 Do not start D10 mechanics while D1-D6 foundations are unstable.
+
+D6.5 = PASS / CLOSED

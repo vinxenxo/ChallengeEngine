@@ -1,0 +1,32 @@
+﻿{
+    "entries":  [
+
+                ],
+    "conflicts":  0,
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "schema":  "C11-C-ROOT-ORGANIZATION-V1",
+    "applied_changes":  0,
+    "planned_changes":  0,
+    "untouched_roots":  [
+                            "project.godot",
+                            "GeneradorMaestro.gd",
+                            "Main.tscn",
+                            "build_factory.py",
+                            "release_gate.py",
+                            "AGENTS.md",
+                            "README.md",
+                            ".continue",
+                            ".githooks",
+                            "core",
+                            "assets",
+                            "challenges",
+                            "definitions",
+                            "profiles",
+                            "schemas",
+                            "tests",
+                            "tools",
+                            "c11c-suite",
+                            "docs"
+                        ],
+    "apply":  false
+}

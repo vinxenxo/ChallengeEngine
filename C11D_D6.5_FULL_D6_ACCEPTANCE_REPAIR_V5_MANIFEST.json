@@ -1,0 +1,17 @@
+{
+  "base": "D6.5 FULL ACCEPTANCE + REPAIR V4",
+  "files": [
+    {
+      "bytes": 671,
+      "path": "README_D6.5_ACCEPTANCE_REPAIR_V5.md",
+      "sha256": "201db62ad566da60202e0515762d106f133d96d33e23bc08b32a2ca192abcb0f"
+    },
+    {
+      "bytes": 28024,
+      "path": "tools/c11d/d6/full_d6_acceptance.py",
+      "sha256": "41f0937f0d6fec8378e2e49a768018d82e2ea5b42671c9515149824d0a8722d6"
+    }
+  ],
+  "overlay_id": "C11D_D6.5_FULL_D6_ACCEPTANCE_REPAIR_V5",
+  "version": "1.0"
+}

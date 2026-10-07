@@ -1,0 +1,45 @@
+{
+  "files": [
+    {
+      "bytes": 719,
+      "path": "README_D6.5_ACCEPTANCE_REPAIR_V2.md",
+      "sha256": "2cac0ef4b3e551bad20d9529679ab5fbb1e636836f6d19f56eab555bde9e9444"
+    },
+    {
+      "bytes": 2979,
+      "path": "docs/current/d/D6.5_FULL_D6_ACCEPTANCE_CONTRACT.md",
+      "sha256": "ba6dd044f40aa656602663c8aee0105c7318c8ce76ffe976b546480aa6bd88ad"
+    },
+    {
+      "bytes": 720,
+      "path": "docs/current/d/D6.5_HANDOVER.md",
+      "sha256": "bf587e0008a91a04dfec241e675beede93b08d9c235ef2e029cedaf4b01f577a"
+    },
+    {
+      "bytes": 964,
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11D_D6.5.md",
+      "sha256": "218b0729ca08749b7057bf772b40650f9a45fb3e4e88ad4ec1e44caeae9b4e53"
+    },
+    {
+      "bytes": 615,
+      "path": "docs/master-prompts/START_PROMPT_C11D_D6.5.md",
+      "sha256": "d340adf9561596c7a08f2d872f2b09d008ca2f1ecffacc12dd462c53a9018e33"
+    },
+    {
+      "bytes": 2156,
+      "path": "tools/c11d/d6/close_d6_5_handover.ps1",
+      "sha256": "b0448f4e96710651420cbb1093d1c51f990ac8df9a133693a2ed7d582708136c"
+    },
+    {
+      "bytes": 25631,
+      "path": "tools/c11d/d6/full_d6_acceptance.py",
+      "sha256": "ed2ec3d3ace58c0a2a2a578871ad33ef75cba3c84aa9874034a93f554589bd4e"
+    },
+    {
+      "bytes": 3266,
+      "path": "tools/c11d/d6/run_d6_5_full_d6_acceptance.ps1",
+      "sha256": "59dc0ebe43ed5ea48df662d45846c602f09f6a35ee1e2ccfcdf9d32a9cbbff3a"
+    }
+  ],
+  "overlay_id": "C11D_D6.5_FULL_D6_ACCEPTANCE_REPAIR_V2"
+}

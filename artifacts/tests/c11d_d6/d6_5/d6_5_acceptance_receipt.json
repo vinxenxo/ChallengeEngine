@@ -1,0 +1,33 @@
+{
+  "canonical_authorities": 2,
+  "checkpoint": "C11-D D6.5",
+  "d3_d4_pass": true,
+  "ffmpeg_production_execution": false,
+  "frozen_c11c_preserved": true,
+  "godot_production_execution": false,
+  "hard_invariants_pass": true,
+  "negative_tests": {
+    "count": 34,
+    "pass": true,
+    "passed": 34
+  },
+  "next": "D7 - Production Matrix + Catalog",
+  "output_sha256": {
+    "d6_5_acceptance_matrix.json": "b7e7ac79d406b2e18baebe349e99ff71f2ca28a5fc64eb67f31b864713012692",
+    "d6_5_acceptance_summary.json": "ce4a5c8f4aae5eedd77d874af2d02d252ad013427b1661606b665134a780ce0b",
+    "d6_5_negative_tests.json": "a7c4fefa06de12c88c949a66bac9157ada006dadb84300d80bcb66ab8feaa177"
+  },
+  "predecessors": {
+    "D6.0": true,
+    "D6.1": true,
+    "D6.2": true,
+    "D6.3": true,
+    "D6.4": true
+  },
+  "production_execution": false,
+  "renderer_execution": false,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "schema_version": "1.0",
+  "status": "CLOSED"
+}

@@ -1,0 +1,9 @@
+{
+  "behavior": "Accept D6.4 d4_8_blocked as canonical boolean true or explicit BLOCKED string; preserve semantic D4.8 gate.",
+  "files": [
+    "tools/c11d/d6/full_d6_acceptance.py",
+    "tools/c11d/d6/run_d6_5_full_d6_acceptance.ps1"
+  ],
+  "overlay": "C11D_D6.5_FULL_D6_ACCEPTANCE_REPAIR_V3",
+  "purpose": "Fix D6.5 core gate mismatch for D6.4 d4_8_blocked boolean representation."
+}

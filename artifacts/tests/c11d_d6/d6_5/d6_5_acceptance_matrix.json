@@ -1,0 +1,257 @@
+{
+  "checkpoint": "C11-D D6.5",
+  "checkpoint_checks": [
+    {
+      "actual": 1174,
+      "check": "D6.0 seed_rng_findings",
+      "expected": 1174,
+      "pass": true
+    },
+    {
+      "actual": 896,
+      "check": "D6.0 unknown_findings",
+      "expected": 896,
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "check": "D6.0 blocking_findings",
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "actual": 2,
+      "check": "D6.0 warning_findings",
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.0 shared_rng_state_found",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": false,
+      "check": "D6.0 active_nondeterministic_source_found",
+      "expected": false,
+      "pass": true
+    },
+    {
+      "actual": 6,
+      "check": "D6.0 producer_nondeterministic_seed_selection_count",
+      "expected": 6,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.0 d3_music_isolation",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.0 d4_seed_music_seed_separation",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.0 d4_8_blocked_no_seed_authority",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.0 frozen_c11c_preserved",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": 2,
+      "check": "D6.1 canonical authority count",
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "actual": 13,
+      "check": "D6.1 negative tests",
+      "expected": 13,
+      "pass": true
+    },
+    {
+      "actual": 17,
+      "check": "D6.2 negative tests",
+      "expected": 17,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.2 derivation capability",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.2 derivation runtime activation disabled",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": "NOT_ADOPTED",
+      "check": "D6.2 master_seed",
+      "expected": "NOT_ADOPTED",
+      "pass": true
+    },
+    {
+      "actual": 2,
+      "check": "D6.3 canonical authority count",
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "actual": 32,
+      "check": "D6.3 derived corpus",
+      "expected": 32,
+      "pass": true
+    },
+    {
+      "actual": 26,
+      "check": "D6.3 validation cases",
+      "expected": 26,
+      "pass": true
+    },
+    {
+      "actual": 0,
+      "check": "D6.3 observed collisions",
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "actual": 28,
+      "check": "D6.4 negative tests",
+      "expected": 28,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.4 D5 lineage compatibility",
+      "expected": true,
+      "pass": true
+    },
+    {
+      "actual": true,
+      "check": "D6.4 D4.8 blocked",
+      "expected": true,
+      "pass": true
+    }
+  ],
+  "d3_d4": {
+    "d3_3_closed": true,
+    "d3_3_integrated_loudness": null,
+    "d3_3_true_peak": null,
+    "d4_8_blocked": true,
+    "d4_8_production_execution": false,
+    "d4_8_receipt_object": {
+      "authorization_sha256": "854c063fb2762190af6907cf330c7edc347d6f49c1ff735b62eab2b991f2f318",
+      "checkpoint": "C11-D D4.8",
+      "delivery_profile_check": true,
+      "ffmpeg_production_called": false,
+      "godot_production_called": false,
+      "idempotency": true,
+      "next": "D4.9 - Full D4 Acceptance",
+      "personalization_integrity_check": true,
+      "plan_hash_owned_by_d44": true,
+      "plan_integrity_check": true,
+      "predecessors_closed": true,
+      "production_authorization": false,
+      "production_blocked_reason": "RENDERER_POLICY_DISABLED",
+      "production_execution": false,
+      "production_policy_test": true,
+      "provenance_check": true,
+      "renderer_called": false,
+      "renderer_policy": "DISABLED",
+      "request_integrity_check": true,
+      "result": "PASS",
+      "review_blocked_reason": "REVIEW_MODE",
+      "review_policy_test": true,
+      "runtime_authority": "NONE",
+      "seed_isolation_check": true,
+      "status": "CLOSED",
+      "tampered_personalization_rejected": true,
+      "tampered_plan_rejected": true,
+      "tampered_seed_rejected": true
+    },
+    "d4_8_receipt_path": null
+  },
+  "determinism_requirement": "Two identical canonical outputs are required by runner.",
+  "filesystem_mutation_scope": "artifacts/tests/c11d_d6/d6_5",
+  "frozen_identity": {
+    "build_factory_sha256_actual": "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+    "build_factory_sha256_match": false,
+    "d5_5_authoritative_freeze_gate": true,
+    "expected_build_factory_sha256": "3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F6771F0679D2A3",
+    "expected_tree_sha256": "2D39B7B923B42CDC6647A4D25493B75023CDD19CEE18214BBDE1FDD295B8F256",
+    "expected_zip_sha256": "D85425CF18C5211C8497574F4FC66202D613EACC0EC14CD4E2FEF0B24F634A32",
+    "frozen_identity_declared_in_evidence": true,
+    "strong_evidence_declared": true,
+    "tree_sha256_declared": true,
+    "verification_basis": "D5.5_AUTHORITATIVE_FREEZE_GATE_PLUS_LOCAL_DIRECT_CHECKS",
+    "zip_sha256_candidates": [
+      "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32"
+    ],
+    "zip_sha256_match": false
+  },
+  "hard_invariants": {
+    "D4_8_blocked": true,
+    "D5_lineage_compatibility": true,
+    "D6_0_producer_nondeterministic_selection_count": 6,
+    "D6_0_seed_rng_findings": 1174,
+    "D6_0_shared_rng_observed": true,
+    "D6_0_unknown_findings": 896,
+    "D6_1_negative_cases": 13,
+    "D6_2_negative_cases": 17,
+    "D6_3_derived_corpus": 32,
+    "D6_3_observed_collisions": 0,
+    "D6_3_validation_cases": 26,
+    "D6_4_negative_cases": 28,
+    "logical_seed_authorities": 2,
+    "master_seed": "NOT_ADOPTED"
+  },
+  "predecessors": {
+    "D6.0": {
+      "path": "artifacts/tests/c11d_d6/d6_0/d6_0_audit_receipt.json",
+      "result": "PASS",
+      "status": "CLOSED"
+    },
+    "D6.1": {
+      "path": "artifacts/tests/c11d_d6/d6_1/d6_1_registry_receipt.json",
+      "result": "PASS",
+      "status": "CLOSED"
+    },
+    "D6.2": {
+      "path": "artifacts/tests/c11d_d6/d6_2/d6_2_resolution_receipt.json",
+      "result": "PASS",
+      "status": "CLOSED"
+    },
+    "D6.3": {
+      "path": "artifacts/tests/c11d_d6/d6_3/d6_3_validation_receipt.json",
+      "result": "PASS",
+      "status": "CLOSED"
+    },
+    "D6.4": {
+      "path": "artifacts/tests/c11d_d6/d6_4/d6_4_integration_receipt.json",
+      "result": "PASS",
+      "status": "CLOSED"
+    }
+  },
+  "runtime": {
+    "ffmpeg_production_execution": true,
+    "godot_production_execution": true,
+    "production_execution": true,
+    "renderer_execution": true,
+    "runtime_authority": true
+  },
+  "schema_version": "1.0",
+  "status": "PASS / CLOSED"
+}

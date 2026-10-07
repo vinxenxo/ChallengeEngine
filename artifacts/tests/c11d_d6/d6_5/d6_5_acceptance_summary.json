@@ -1,0 +1,13 @@
+{
+  "canonical_authorities": 2,
+  "checkpoint": "C11-D D6.5",
+  "core_checks_pass": true,
+  "d3_d4_checks_pass": true,
+  "frozen_identity_pass": true,
+  "negative_tests_pass": true,
+  "next": "D7 - Production Matrix + Catalog",
+  "predecessors_all_closed": true,
+  "result": "PASS",
+  "runtime_checks_pass": true,
+  "status": "CLOSED"
+}

@@ -1,6 +1,6 @@
 # C11-D START PROMPT
 
-Continue ChallengeEngineV01_STATELESS from C11-D D6.3 PASS / CLOSED and implement D6.4 — Request / Plan / Provenance Integration.
+Continue ChallengeEngineV01_STATELESS from C11-D D6.3 PASS / CLOSED and implement D6.4 â€” Request / Plan / Provenance Integration.
 
 ## Current D state
 
@@ -31,10 +31,10 @@ D6.0 = PASS / CLOSED
 D6.1 = PASS / CLOSED
 D6.2 = PASS / CLOSED
 D6.3 = PASS / CLOSED
-D6.4 = ACTIVE / IMPLEMENTATION READY
+D6.4 = PASS / CLOSED
 
 D5 = CLOSED
-NEXT = D6.4 — Request / Plan / Provenance Integration
+NEXT = D7 - Production Matrix + Catalog
 
 D5.5 consumed and accepted D5.0-D5.4, with two full runner executions producing identical matrix, summary, and receipt hashes. Cross-check totals are 75 identities, 79 locations, 11 lineage edges, 9 ORPHANED records, and 12,304 global candidates outside the graph. D4.8 remains BLOCKED; C11-C frozen ZIP/tree/build hashes are preserved. The runner mutation guard passed on both runs; no cleanup or production execution occurred, and runtime authority is NONE. D5.0's 19 receipts are the D1-D4 inventory total, of which 14 are D3/D4 receipt paths.
 
@@ -119,7 +119,7 @@ Frozen C11-C unchanged.
 
 ## Next
 
-D6.4 — Request / Plan / Provenance Integration.
+D6.4 â€” Request / Plan / Provenance Integration.
 
 <!-- C11D_D3_2_HANDOFF -->
 
@@ -339,7 +339,7 @@ D5.5 Full D5 Acceptance is PASS / CLOSED; D5 is CLOSED. Two full runner executio
 
 Acceptance evidence: `artifacts/tests/c11d_d5/d5_5/`. Contract: `docs/current/d/D5.5_FULL_D5_ACCEPTANCE_CONTRACT.md`.
 
-D6.1 = PASS / CLOSED. NEXT = D6.2 — Seed Resolver / Deterministic Derivation. D6.1 preserved unknown and historical evidence and did not decide whether to adopt master_seed.
+D6.1 = PASS / CLOSED
 
 <!-- C11D_D6_0_HANDOFF_V1 -->
 
@@ -353,4 +353,6 @@ D6.1 is PASS / CLOSED. The canonical registry contains exactly two evidence-back
 
 D6.2 is PASS / CLOSED. It resolves only explicit canonical D4.2 `seed` and `music_seed` values to their independent GAMEPLAY and MUSIC authorities. Derivation capability is available but inactive under policy; `master_seed` remains NOT_ADOPTED. Seventeen negative cases and domain-isolation vectors passed. D3/D4 compatibility, D4.8 production block, frozen C11-C identity, deterministic rerun and mutation guard passed. Runtime authority is NONE; production execution is false.
 
-NEXT = D6.4 — Request / Plan / Provenance Integration. D6.4 is the current active checkpoint and must not start D6.5 until closed.
+NEXT = D7 - Production Matrix + Catalog
+
+D6.5 = PASS / CLOSED
