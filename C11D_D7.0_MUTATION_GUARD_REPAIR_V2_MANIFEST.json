@@ -1,0 +1,17 @@
+{
+  "overlay_id": "C11D_D7.0_MUTATION_GUARD_REPAIR_V2",
+  "checkpoint": "D7.0",
+  "purpose": "Exclude D7.0 own evidence tree from recursive source discovery so the second audit run is idempotent.",
+  "modified_files": [
+    "tools/c11d/d7/production_matrix_catalog_audit.py"
+  ],
+  "non_modifications": [
+    "No D4/D5/D6 changes",
+    "No runtime changes",
+    "No release/ writes",
+    "No handover changes"
+  ],
+  "verification": {
+    "python_compile": "PASS"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "file_count": 7,
+  "files": [
+    {
+      "path": "README_D7.0_OVERLAY.md",
+      "sha256": "ad75b33bfb1f6f65c80c3213351ff9a543401436a19ae88fb30b6345b680ad5d",
+      "size": 657
+    },
+    {
+      "path": "docs/current/d/D7.0_HANDOVER.md",
+      "sha256": "bafea984347ed0720592b446665e95238a67c206aa6743ea62ac08b0a8c7f243",
+      "size": 383
+    },
+    {
+      "path": "docs/current/d/D7.0_PRODUCTION_MATRIX_CATALOG_AUDIT_CONTRACT.md",
+      "sha256": "e01640ed9e57e8322060cda19fe7f2003405945b164caa0e5afd64714bf9f598",
+      "size": 3026
+    },
+    {
+      "path": "docs/master-prompts/MASTER_HANDOVER_C11D_D7.0.md",
+      "sha256": "fdaa7a4edbc42fb22ee13eec3e6487423330740f4505718ea1f3e1f141972907",
+      "size": 613
+    },
+    {
+      "path": "docs/master-prompts/START_PROMPT_C11D_D7.0.md",
+      "sha256": "3b8bf5267c99f859262660dffce609197a3a4d033075311fac8520cb678c72cf",
+      "size": 572
+    },
+    {
+      "path": "tools/c11d/d7/production_matrix_catalog_audit.py",
+      "sha256": "35f1be6154ddaeec1c1e3a744d9cf5ba570f1a0e51091d35872e106db3311024",
+      "size": 13180
+    },
+    {
+      "path": "tools/c11d/d7/run_d7_0_production_matrix_catalog_audit.ps1",
+      "sha256": "0d7f2b501839cb32fca7fbbae5b8288b488e393ea972318156d0193ca4adac77",
+      "size": 3201
+    }
+  ],
+  "overlay_id": "c11d_d7_0_production_matrix_catalog_audit_v1",
+  "root_relative": true,
+  "schema_version": "1.0",
+  "self_hash_excluded": true,
+  "self_hash_exclusion_reason": "Manifest is a descriptor of the overlay and cannot contain its own recursive content hash."
+}

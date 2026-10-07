@@ -1,0 +1,1 @@
+{"blocking_findings":0,"catalog_promotion":"DISABLED","findings":[{"code":"EXISTING_PRODUCTION_ARTIFACTS_DISCOVERED","count":1871,"severity":"INFO"},{"code":"EXISTING_CATALOG_ARTIFACTS_DISCOVERED","count":78,"severity":"INFO"}],"info_findings":2,"matrix_promotion":"DISABLED","orchestration_activation":"DISABLED","unknowns_must_be_preserved":true,"warning_findings":0}
