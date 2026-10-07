@@ -1,0 +1,14 @@
+{
+  "overlay_id": "C11D_D7.4_CATALOG_IDENTITY_PROVENANCE_V1",
+  "checkpoint": "D7.4",
+  "baseline": "ChallengeEngineV01_STATELESS_C11-C_2.19.12_FROZEN_20260930_175709.zip",
+  "scope": "catalog identity, source hash freshness, 1:1 matrix linkage, provenance chain validation",
+  "mutates_frozen_c11c": false,
+  "production_execution": false,
+  "renderer_execution": false,
+  "runtime_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_output_directory": "artifacts/tests/c11d_d7/d7_4/",
+  "expected_evidence_files": 4,
+  "next": "D7.5 - Full D7 Acceptance"
+}

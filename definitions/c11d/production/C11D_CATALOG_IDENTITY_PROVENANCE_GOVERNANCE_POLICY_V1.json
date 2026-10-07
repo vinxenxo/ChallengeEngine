@@ -1,0 +1,31 @@
+{
+  "policy_id": "c11d_catalog_identity_provenance_governance",
+  "schema_version": "1.0",
+  "version": "1.0",
+  "authority": "D7.4",
+  "status": "CANONICAL",
+  "source_of_truth": "D7.3 canonical catalog",
+  "rules": {
+    "identity_is_deterministic": true,
+    "catalog_item_id_is_derived_only_from_catalog_key": true,
+    "identity_hash_excludes_identity_hash_field": true,
+    "matrix_link_is_one_to_one": true,
+    "source_hashes_must_match_current_sources": true,
+    "provenance_paths_must_resolve": true,
+    "plan_owner": "canonical_production_orchestrator",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "automatic_seed_generation": false,
+    "runtime_authority": "NONE",
+    "production_execution": false,
+    "renderer_execution": false,
+    "media_rendered_by_catalog": false,
+    "d4_8": "BLOCKED",
+    "catalog_writes_release": false,
+    "catalog_mutates_frozen_c11c": false
+  },
+  "allowed_mutation_scope": "artifacts/tests/c11d_d7/d7_4/",
+  "negative_validation_required": true,
+  "deterministic_repeated_validation_required": true
+}
