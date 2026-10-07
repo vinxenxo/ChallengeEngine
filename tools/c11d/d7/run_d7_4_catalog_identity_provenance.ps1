@@ -2,6 +2,9 @@
 [CmdletBinding()]
 param()
 $ErrorActionPreference = 'Stop'
+
+# Prevent Python from mutating repository __pycache__ files during the mutation-guarded run.
+$env:PYTHONDONTWRITEBYTECODE = '1'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $pythonScript = Join-Path $PSScriptRoot 'catalog_identity_provenance_builder.py'
 $outputDirectory = Join-Path $repoRoot 'artifacts\tests\c11d_d7\d7_4'

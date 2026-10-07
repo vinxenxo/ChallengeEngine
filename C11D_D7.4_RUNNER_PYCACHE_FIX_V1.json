@@ -1,0 +1,10 @@
+{
+  "checkpoint": "C11-D D7.4",
+  "overlay": "runner_pycache_fix_v1",
+  "status": "PASS_READY",
+  "modified_files": [
+    "tools/c11d/d7/run_d7_4_catalog_identity_provenance.ps1"
+  ],
+  "mutation_guard": "strict_outside_d7_4",
+  "python_bytecode": "PYTHONDONTWRITEBYTECODE=1"
+}
