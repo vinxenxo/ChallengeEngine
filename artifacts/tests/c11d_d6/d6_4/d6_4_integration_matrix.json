@@ -1,0 +1,68 @@
+{
+  "canonical_plan": {
+    "owner": "canonical_production_orchestrator",
+    "plan_sha256": "59bda12d7cc820828ef6ed7eadf58eb8b05610e8f2c4843b767cef67abfe11b7"
+  },
+  "canonical_request": {
+    "owner": "c11d_production_request_normalizer",
+    "request_sha256": "989d6642c333002b3e8e9a677f29d3cb42b3d58c7cb8da618fb01481d273f2db"
+  },
+  "checkpoint": "C11-D D6.4",
+  "d3_music_isolation": true,
+  "d4_8_blocked": true,
+  "d4_seed_music_seed_separation": true,
+  "d5_lineage_compatibility": {
+    "artifact_present": true,
+    "blocked_decision_not_grant": true,
+    "directionality_declared": "SOURCE describes its relationship to TARGET; derived artifact points to its source or supporting evidence.",
+    "edge_count": 11,
+    "expected_75_nodes_11_edges_when_declared": true,
+    "logical_node_count": 75,
+    "production_execution": false,
+    "runtime_authority": "NONE",
+    "schema_valid": true
+  },
+  "derivation_capability": true,
+  "derivation_runtime_activation": false,
+  "gameplay_change_music_unchanged": true,
+  "master_seed": "NOT_ADOPTED",
+  "music_change_gameplay_unchanged": true,
+  "numeric_equality": true,
+  "personalization_seed_isolation": true,
+  "production_execution": false,
+  "request_plan_consistency": true,
+  "result": "PASS",
+  "runtime_authority": "NONE",
+  "seed_resolution": {
+    "master_seed": null,
+    "master_seed_authority": "NOT_ADOPTED",
+    "resolution_status": "RESOLVED",
+    "resolver_id": "c11d_seed_resolver",
+    "runtime_authority": "NONE",
+    "schema_version": "1.0",
+    "seeds": {
+      "gameplay": {
+        "authority": "gameplay.seed",
+        "derivation_status": "NOT_USED",
+        "derived": false,
+        "deterministic": true,
+        "domain": "GAMEPLAY",
+        "mode": "EXPLICIT",
+        "source": "request.seed",
+        "value": 123456
+      },
+      "music": {
+        "authority": "music.seed",
+        "derivation_status": "NOT_USED",
+        "derived": false,
+        "deterministic": true,
+        "domain": "MUSIC",
+        "mode": "EXPLICIT",
+        "source": "request.music_seed",
+        "value": 654321
+      }
+    }
+  },
+  "seed_resolution_sha256": "6369e978ac3efead937c15d4eef15c4736d5a6a97e3503196049c7429106f4c3",
+  "variation_seed_isolation": true
+}

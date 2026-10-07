@@ -1,0 +1,175 @@
+{
+  "case_count": 28,
+  "cases": [
+    {
+      "actual": "REQUEST_HASH_MISMATCH",
+      "case": "request_hash_mismatch",
+      "expected": "REQUEST_HASH_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "PLAN_HASH_MISMATCH",
+      "case": "plan_hash_mismatch",
+      "expected": "PLAN_HASH_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "SEED_RESOLUTION_HASH_MISMATCH",
+      "case": "seed_resolution_hash_mismatch",
+      "expected": "SEED_RESOLUTION_HASH_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "GAMEPLAY_SEED_VALUE_MISMATCH",
+      "case": "gameplay_seed_value_mismatch",
+      "expected": "GAMEPLAY_SEED_VALUE_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "MUSIC_SEED_VALUE_MISMATCH",
+      "case": "music_seed_value_mismatch",
+      "expected": "MUSIC_SEED_VALUE_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "AUTHORITY_DOMAIN_MISMATCH",
+      "case": "authority_domain_mismatch",
+      "expected": "AUTHORITY_DOMAIN_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "AUTHORITY_DOMAIN_MISMATCH",
+      "case": "request_seed_mapped_to_music",
+      "expected": "AUTHORITY_DOMAIN_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "AUTHORITY_DOMAIN_MISMATCH",
+      "case": "request_music_seed_mapped_to_gameplay",
+      "expected": "AUTHORITY_DOMAIN_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "GAMEPLAY_SEED_VALUE_MISMATCH",
+      "case": "missing_gameplay_seed",
+      "expected": "GAMEPLAY_SEED_VALUE_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "MUSIC_SEED_VALUE_MISMATCH",
+      "case": "missing_music_seed",
+      "expected": "MUSIC_SEED_VALUE_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "DERIVATION_POLICY_DISABLED",
+      "case": "derivation_activated_without_policy",
+      "expected": "DERIVATION_POLICY_DISABLED",
+      "result": "PASS"
+    },
+    {
+      "actual": "MASTER_SEED_NOT_ADOPTED",
+      "case": "master_seed_introduced",
+      "expected": "MASTER_SEED_NOT_ADOPTED",
+      "result": "PASS"
+    },
+    {
+      "actual": "D4_8_AUTHORIZATION_BYPASS",
+      "case": "d4_8_blocked_presented_as_authorization",
+      "expected": "D4_8_AUTHORIZATION_BYPASS",
+      "result": "PASS"
+    },
+    {
+      "actual": "REGISTRY_IDENTITY_MISMATCH",
+      "case": "tampered_registry_identity",
+      "expected": "REGISTRY_IDENTITY_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "RESOLVER_IDENTITY_MISMATCH",
+      "case": "tampered_resolver_identity",
+      "expected": "RESOLVER_IDENTITY_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "actual": "PERSONALIZATION_NOT_SEED_SOURCE",
+      "case": "personalization_used_as_seed_source",
+      "expected": "PERSONALIZATION_NOT_SEED_SOURCE",
+      "result": "PASS"
+    },
+    {
+      "actual": "VARIATION_INDEX_NOT_SEED_SOURCE",
+      "case": "variation_index_used_as_seed_source",
+      "expected": "VARIATION_INDEX_NOT_SEED_SOURCE",
+      "result": "PASS"
+    },
+    {
+      "actual": "SHARED_RNG_NOT_AUTHORITY",
+      "case": "shared_rng_used_as_authority",
+      "expected": "SHARED_RNG_NOT_AUTHORITY",
+      "result": "PASS"
+    },
+    {
+      "actual": "PRODUCER_SELECTION_NOT_CANONICAL",
+      "case": "producer_auto_selection_used_as_source",
+      "expected": "PRODUCER_SELECTION_NOT_CANONICAL",
+      "result": "PASS"
+    },
+    {
+      "actual": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "protected_c11c_field_used_as_source",
+      "expected": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "protected_close_calls_used_as_source",
+      "expected": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual": "PROTECTED_SURFACE_FORBIDDEN",
+      "case": "protected_simulation_result_used_as_source",
+      "expected": "PROTECTED_SURFACE_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "actual": "INTEGRATION_REQUIRED_FIELD_MISSING",
+      "case": "unexpected_authorization_field",
+      "expected": "INTEGRATION_REQUIRED_FIELD_MISSING",
+      "result": "PASS"
+    },
+    {
+      "actual": "MISSING_CANONICAL_SEED",
+      "case": "missing_gameplay_request_seed",
+      "expected": "MISSING_CANONICAL_SEED",
+      "result": "PASS"
+    },
+    {
+      "actual": "MISSING_CANONICAL_SEED",
+      "case": "missing_music_request_seed",
+      "expected": "MISSING_CANONICAL_SEED",
+      "result": "PASS"
+    },
+    {
+      "actual": "PASS",
+      "case": "numeric_equality_across_independent_domains",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "actual": "PASS",
+      "case": "personalization_does_not_change_seed_resolution",
+      "expected": "PASS",
+      "result": "PASS"
+    },
+    {
+      "actual": "PASS",
+      "case": "variation_does_not_change_seed_resolution",
+      "expected": "PASS",
+      "result": "PASS"
+    }
+  ],
+  "checkpoint": "C11-D D6.4",
+  "result": "PASS"
+}

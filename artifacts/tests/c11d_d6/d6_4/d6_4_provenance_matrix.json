@@ -1,0 +1,73 @@
+{
+  "chain": [
+    {
+      "owner": "c11d_production_request_normalizer",
+      "request_sha256": "989d6642c333002b3e8e9a677f29d3cb42b3d58c7cb8da618fb01481d273f2db",
+      "stage": "request"
+    },
+    {
+      "owner": "c11d_seed_resolver",
+      "seed_resolution_sha256": "6369e978ac3efead937c15d4eef15c4736d5a6a97e3503196049c7429106f4c3",
+      "stage": "seed_resolution"
+    },
+    {
+      "owner": "c11d_seed_registry",
+      "registry_id": "c11d_seed_registry",
+      "registry_sha256": "546283f37aaebfd04bc5d12d587b7a9570bc932f5eb28dad84664b7b5e19ee23",
+      "stage": "registry"
+    },
+    {
+      "owner": "c11d_seed_governance_policy",
+      "policy_id": "c11d_seed_governance_policy",
+      "policy_sha256": "5329bf071fc437d08f706c9605609e53773ae00cb90eb704052e04e3e98e8b88",
+      "stage": "policy"
+    },
+    {
+      "owner": "canonical_production_orchestrator",
+      "plan_sha256": "59bda12d7cc820828ef6ed7eadf58eb8b05610e8f2c4843b767cef67abfe11b7",
+      "stage": "plan"
+    },
+    {
+      "owner": "c11d_provenance_lineage",
+      "reference_only": true,
+      "registry_path": "definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json",
+      "stage": "d5_lineage"
+    }
+  ],
+  "checkpoint": "C11-D D6.4",
+  "ownership": {
+    "d6_4_integration_evidence_owner": "seed_request_plan_integrator",
+    "governance_policy_identity_owner": "c11d_seed_governance_policy",
+    "plan_hash_owner": "canonical_production_orchestrator",
+    "registry_identity_owner": "c11d_seed_registry",
+    "request_hash_owner": "c11d_production_request_normalizer",
+    "seed_resolution_hash_owner": "c11d_seed_resolver"
+  },
+  "result": "PASS",
+  "seed_provenance": [
+    {
+      "authority": "gameplay.seed",
+      "authority_owner": "c11d_production_request",
+      "derived": false,
+      "deterministic": true,
+      "domain": "GAMEPLAY",
+      "registry_seed_id": "gameplay",
+      "request_field": "request.seed",
+      "resolution_mode": "EXPLICIT",
+      "seed_id": "gameplay",
+      "value": 123456
+    },
+    {
+      "authority": "music.seed",
+      "authority_owner": "d3_music_engine_v5",
+      "derived": false,
+      "deterministic": true,
+      "domain": "MUSIC",
+      "registry_seed_id": "music",
+      "request_field": "request.music_seed",
+      "resolution_mode": "EXPLICIT",
+      "seed_id": "music",
+      "value": 654321
+    }
+  ]
+}

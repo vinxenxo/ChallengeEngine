@@ -1,0 +1,26 @@
+{
+  "overlay_id": "C11D_D6.4_RUNNER_REPAIR_V5",
+  "purpose": "Fix D6.4 D3.3 receipt path injection NameError; preserve V4 runner fixes",
+  "files": [
+    {
+      "path": "README_D6.4_RUNNER_REPAIR_V5.md",
+      "sha256": "e151c1246df346f8468d79b9b4ee452d3a50c3152b8113f4d0aa2a172582be63",
+      "bytes": 582
+    },
+    {
+      "path": "docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md",
+      "sha256": "45fefcff90e46670f886a06aee38814acbcbf0061bbc96abccf3495665eec4c8",
+      "bytes": 4760
+    },
+    {
+      "path": "tools/c11d/d6/run_d6_4_seed_request_plan_integrator.ps1",
+      "sha256": "5cbd7bc4c4f57d43fde180616a0a13ecacdb4883aa162ab86f70db0a707f4ae3",
+      "bytes": 7321
+    },
+    {
+      "path": "tools/c11d/d6/seed_request_plan_integrator.py",
+      "sha256": "d614e4ec6c93d68b85c8059fc463e4a4387664b7a5ad6bb17c2d71a9a1a2b3d7",
+      "bytes": 38746
+    }
+  ]
+}

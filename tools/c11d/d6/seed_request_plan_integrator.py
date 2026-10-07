@@ -209,6 +209,7 @@ def build_integration(root: Path, request: dict[str, Any], modules: dict[str, An
     schema = inputs["schema"]
     registry = inputs["registry"]
     policy = inputs["policy"]
+    d3_receipt_path = inputs["d3_receipt_path"]
 
     # D4.2 remains the sole request normalizer.
     canonical_request = normalizer.normalize_request(copy.deepcopy(request), schema)
@@ -528,6 +529,8 @@ def run(root: Path) -> int:
         "provenance_schema": provenance_schema,
         "personalization_registry": personalization_registry,
         "d62_receipt": receipts["d62"],
+        "d3_receipt_path": receipts["d33"][0],
+        "d3_receipt": receipts["d33"][1],
     }
     request = make_fixture(modules["normalizer"], schema, modules["personalizer"], gameplay=123456, music=654321, variation=0, mode="PRODUCTION")
     baseline_build = build_integration(root, request, modules, inputs)
@@ -573,9 +576,10 @@ def run(root: Path) -> int:
         raise IntegrationError(f"BASELINE_INTEGRATION_INVALID:{getattr(exc, 'code', str(exc))}") from exc
 
     d3_receipt_path, d3_receipt = receipts["d33"]
-    d3_ok = baseline_build["resolved"]["seeds"]["music"]["domain"] == "MUSIC" and (
-        d3_receipt.get("runtime_activation") is False
-        or d3_receipt.get("runtime_activation") is None
+    d3_ok = (
+        d3_receipt.get("result") == "PASS"
+        and d3_receipt.get("status") == "CLOSED"
+        and baseline_build["resolved"]["seeds"]["music"]["domain"] == "MUSIC"
     )
     d4_ok = receipts["d42"].get("result") == "PASS" and receipts["d44"].get("result") == "PASS" and schema.get("runtime_authority") == "NONE" and "seed" in {f.get("name") for f in schema.get("fields", [])} and "music_seed" in {f.get("name") for f in schema.get("fields", [])} and "master_seed" not in {f.get("name") for f in schema.get("fields", [])}
     request_plan_consistent = (
