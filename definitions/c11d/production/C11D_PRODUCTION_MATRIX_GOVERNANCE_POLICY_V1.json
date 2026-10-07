@@ -1,0 +1,21 @@
+{
+  "policy_id": "c11d_production_matrix_governance",
+  "schema_version": "1.0",
+  "authority": "D7.1",
+  "matrix_authority": "CANONICAL_D7_1",
+  "catalog_authority": "NOT_ESTABLISHED_IN_D7_1",
+  "rules": {
+    "source_of_truth": "C11D_PRODUCTION_MATRIX_SPEC_V1.json",
+    "all_core_dimension_combinations_required": true,
+    "review_mode_allowed": true,
+    "production_mode_described_but_execution_disabled": true,
+    "seed_authority_must_reference_d6_registry": true,
+    "seed_values_not_generated_by_matrix": true,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "personalization_as_seed_source": "FORBIDDEN",
+    "variation_as_seed_source": "FORBIDDEN",
+    "master_seed": "NOT_ADOPTED",
+    "automatic_seed_generation": "FORBIDDEN",
+    "runtime_authority": "NONE"
+  }
+}

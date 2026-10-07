@@ -1,0 +1,68 @@
+{
+  "matrix_id": "c11d_production_matrix",
+  "schema_version": "1.0",
+  "version": "1.0",
+  "authority": "D7.1",
+  "status": "CANONICAL",
+  "purpose": "Canonical production coverage matrix for deterministic plan generation; no renderer or production execution authority.",
+  "dimensions": {
+    "challenge_id": {
+      "source": "challenges/CHALLENGE_*.json",
+      "required": true,
+      "unique": true
+    },
+    "delivery_profile_id": {
+      "source": "D4.2 canonical production request schema / evidence-backed delivery profile registry",
+      "required": true,
+      "unique": true
+    },
+    "mode": {
+      "allowed": ["REVIEW", "PRODUCTION"],
+      "required": true
+    }
+  },
+  "coverage": {
+    "core_formula": "challenge_count * delivery_profile_count * mode_count",
+    "core_matrix_required_complete": true,
+    "current_expected_challenge_count": 9,
+    "current_expected_delivery_profile_count": 5,
+    "current_expected_mode_count": 2,
+    "current_expected_core_cases": 90
+  },
+  "seed_bindings": {
+    "GAMEPLAY": {
+      "authority": "gameplay",
+      "source_field": "request.seed",
+      "resolution": "D6.2 explicit"
+    },
+    "MUSIC": {
+      "authority": "music",
+      "source_field": "request.music_seed",
+      "resolution": "D6.2 explicit"
+    }
+  },
+  "governance": {
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "automatic_seed_generation": false,
+    "runtime_authority": "NONE",
+    "production_execution": false,
+    "renderer_execution": false,
+    "catalog_authority": "NOT_ESTABLISHED_IN_D7_1"
+  },
+  "personalization": {
+    "core_matrix_default": "none_v1",
+    "personalization_is_not_a_seed_source": true
+  },
+  "variation": {
+    "variation_index_is_not_a_seed_authority": true
+  },
+  "protected_surfaces": [
+    "winning_frame",
+    "close_calls",
+    "SimulationResult",
+    "WinningFrameDetector",
+    "RenderedFrameStream"
+  ]
+}
