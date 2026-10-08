@@ -1,3 +1,5 @@
+# This script inventories the ChallengeEngineV01_STATELESS repository and produces a D8.0 closure receipt for C11-D Challenge production.
+
 [CmdletBinding()]
 param(
     [string]$ProjectRoot = '',

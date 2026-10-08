@@ -1,3 +1,5 @@
+# This script consolidates the D2.2 checkpoint closure and prepares the D2.3 checkpoint handoff for C11-D Challenge production.
+
 Set-StrictMode -Version 1.0
 $ErrorActionPreference = 'Stop'
 

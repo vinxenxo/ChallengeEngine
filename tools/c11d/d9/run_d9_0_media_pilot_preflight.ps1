@@ -1,3 +1,5 @@
+# This script performs a preflight check for the D9.0 media pilot phase of the C11-D Challenge, ensuring that all prerequisites are met before proceeding with the pilot execution.
+
 #requires -Version 5.1
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 1.0

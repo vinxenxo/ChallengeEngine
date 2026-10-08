@@ -1,3 +1,6 @@
+# This script applies a hotfix to the C11C 2.9.1 codebase by inserting a declaration for the _environment variable in PeripheralScanRenderer.gd if it is not already present.
+# 
+
 $ErrorActionPreference = 'Stop'
 $path = Join-Path $PSScriptRoot '..\..\core\presentation\rendering\PeripheralScanRenderer.gd'
 $path = [System.IO.Path]::GetFullPath($path)

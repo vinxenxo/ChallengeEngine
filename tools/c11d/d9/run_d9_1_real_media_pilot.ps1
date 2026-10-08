@@ -1,3 +1,5 @@
+# This script executes the D9.1 real media pilot for the C11-D Challenge, generating a single visual pilot video in MP4 format without audio, and producing a receipt of the pilot execution.
+
 #requires -Version 5.1
 [CmdletBinding()]
 param(
