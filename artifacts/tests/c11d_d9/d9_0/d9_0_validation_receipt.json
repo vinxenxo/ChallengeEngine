@@ -1,0 +1,12 @@
+{
+    "contract":  "C11-D-D9.0-VALIDATION-RECEIPT-V1",
+    "checkpoint":  "D9.0",
+    "result":  "PASS",
+    "status":  "PREFLIGHT_ONLY",
+    "media_scope_candidates":  0,
+    "pilot_authorized":  false,
+    "production_execution":  false,
+    "renderer_execution":  false,
+    "release_authority":  "NONE",
+    "next":  "D9.1 - Single-case real media render"
+}

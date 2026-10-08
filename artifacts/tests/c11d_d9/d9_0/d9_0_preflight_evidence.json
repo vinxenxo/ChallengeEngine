@@ -1,0 +1,27 @@
+{
+    "contract":  "C11-D-D9.0-MEDIA-PILOT-PREFLIGHT-V1",
+    "phase":  "D9.0",
+    "result":  "PASS",
+    "status":  "PREFLIGHT_ONLY",
+    "d8_7":  {
+                 "result":  "PASS_NO_MEDIA",
+                 "status":  "CLOSED",
+                 "control_plane":  "ACCEPTED",
+                 "receipt_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d8\\d8_7\\d8_7_receipt.json"
+             },
+    "media_scope":  {
+                        "scope_mode":  "EXPLICIT_REGISTRY_ONLY",
+                        "candidate_count":  0
+                    },
+    "producer":  {
+                     "canonical_orchestrator_present":  true,
+                     "path":  "tools/c11d/d4/canonical_production_orchestrator.py"
+                 },
+    "authorization":  {
+                          "pilot_authorized":  false,
+                          "production_execution":  false,
+                          "renderer_execution":  false,
+                          "release_authority":  "NONE"
+                      },
+    "forbidden_actions_performed":  false
+}

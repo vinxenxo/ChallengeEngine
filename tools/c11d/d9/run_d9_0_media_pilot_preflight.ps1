@@ -15,9 +15,13 @@ function Write-Json([string]$Path,[object]$Object) {
     [System.IO.File]::WriteAllBytes($Path,[System.Text.Encoding]::UTF8.GetBytes($json + [Environment]::NewLine))
 }
 
-$d87 = Read-JsonFile (Join-Path $ProjectRoot 'artifacts\tests\c11d_d8\d8_7\d8_7_acceptance_receipt.json')
-if([string]$d87.result -notin @('PASS_NO_MEDIA','PASS')) { throw 'D8.7 acceptance is not PASS.' }
-if([string]$d87.status -ne 'CLOSED') { throw 'D8.7 acceptance is not CLOSED.' }
+$d87Path = Join-Path $ProjectRoot 'artifacts\tests\c11d_d8\d8_7\d8_7_receipt.json'
+$d87 = Read-JsonFile $d87Path
+if([string]$d87.result -notin @('PASS_NO_MEDIA','PASS')) { throw 'D8.7 receipt result is not PASS.' }
+if([string]$d87.status -ne 'CLOSED') { throw 'D8.7 receipt is not CLOSED.' }
+if([string]$d87.d8_control_plane -ne 'ACCEPTED') { throw 'D8.7 control plane is not ACCEPTED.' }
+if([bool]$d87.physical_media_mutation_performed) { throw 'D8.7 reports physical media mutation.' }
+if([bool]$d87.release_product_mutation_performed) { throw 'D8.7 reports release product mutation.' }
 
 $scopePath = Join-Path $ProjectRoot 'definitions\c11d\d8\D8_MEDIA_SCOPE_V1.json'
 $scope = Read-JsonFile $scopePath
@@ -37,7 +41,7 @@ $evidence = [ordered]@{
     phase='D9.0'
     result='PASS'
     status='PREFLIGHT_ONLY'
-    d8_7=[ordered]@{result=[string]$d87.result;status=[string]$d87.status}
+    d8_7=[ordered]@{result=[string]$d87.result;status=[string]$d87.status;control_plane=[string]$d87.d8_control_plane;receipt_path=$d87Path}
     media_scope=[ordered]@{scope_mode=[string]$scope.scope_mode;candidate_count=[int]$scope.candidate_count}
     producer=[ordered]@{canonical_orchestrator_present=$true;path='tools/c11d/d4/canonical_production_orchestrator.py'}
     authorization=[ordered]@{pilot_authorized=[bool]$pilot.authorized;production_execution=[bool]$pilot.execution;renderer_execution=[bool]$pilot.renderer_execution;release_authority=[string]$pilot.release_authority}
