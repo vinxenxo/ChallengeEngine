@@ -22,15 +22,15 @@ Version numbers for future targets below are planned, not active until the suite
 | D9.x | Surface | Planned version | Gate |
 |---|---|---|---|
 | D9.5.1 | Producer | **0.10.0** | D4 request and personalization inputs; D4.6/D4.5 parity; 90 core + 12 personalization + 4 negatives; preserve old Producer/backend fingerprint |
-| D9.5.2 | Producer | 0.10.x | Contract-safe text-to-media path discovered/implemented without changing protected C11-C truth or silently bypassing D4.8; real MP4 contains proved text changes |
-| D9.5.3 | Producer | 0.10.x | Windows GUI interaction, request save/reload/reproduction, job/log/error/cancel smoke |
-| D9.6 | Catalog | **0.2.0** | D7 intents + explicit D9.4 media manifest + D9.5.1 Producer plan records; provenance/seed/profile/hash/replay inspection; D8 scope gate plus negatives for hash/path/parity tamper | Overlay implemented; pure-data and static GUI tests PASS; Windows GUI/local evidence pending |
-| D9.7 | Config | **0.2.0** | D2/D3/D4/D6 registries/profiles, validated edits/snapshots/backups and invalid-config negatives |
+| D9.5.2 | Producer / future frozen D GUI | 0.10.x | Connect D4.3 editorial fields to the definitive D renderer after C11-D production freeze; never modify the frozen C11-C renderer to force the new D fields into media | DEFERRED by operator architecture decision |
+| D9.5.3 | Producer | 0.10.x | Windows request/plan smoke and existing C11-C production regression; job/log/error/cancel evidence in D9.12 | D request/plan GUI reported working; full E2E pending |
+| D9.6 | Catalog | **0.2.0** | D7 intents, D9.4 hash-verified pilots, D9.5.1 plans and provenance/replay; path/hash/parity negatives | PASS: user confirms Windows GUI works |
+| D9.7 | Config | **0.2.0** | Read-only D2–D9 registries; operator profile schema; explicit independent seeds; validate/hash/diff/save/backup/validated restore; invalid/unknown-field/seed/path negatives | Overlay prepared; isolated tests PASS; Windows GUI acceptance pending |
 | D9.8 | Maintenance | **0.2.0** | D5/D8/D9 dry-run, quarantine, cleanup, repository/docs organization and freeze surfaces; protected-root negatives |
 | D9.9 | Test | **0.2.0** | D2–D9 test command registration, GUI-triggered execution, output/exit/error/cancel states and GUI E2E entrypoints |
 | D9.10 | Existing Suite shell | **0.1.5** | surface version/preflight, shared launch/process status/log behavior only if required; all five apps stay canonical |
 | D9.11 | Cross-suite | no new app | producer → catalog → test → maintenance/config provenance/replay/lifecycle integration |
-| D9.12 | Windows GUI E2E | — | real video/A-V from GUI, ffprobe/visual/audio QA, catalog record, reproducibility and changed-seed control |
+| D9.12 | Windows GUI E2E | — | Produce a real fixed-seed video/A-V through the existing Producer C11-C GUI route; ffprobe/media QA; Catalog provenance; Config profile/hash; replay + changed-music-seed control; overwrite/error/cancel negatives. D request tab remains plan-only until the future frozen D GUI. | Pending |
 | D9.13 | All suites | — | full version matrix, all focused self-tests, GUI/CLI parity and safety negatives |
 | D9.14 | D9 close | — | docs/prompts/changelog, receipts, freeze/acceptance package, handover; only then D9 CLOSED |
 
@@ -38,7 +38,7 @@ Version numbers for future targets below are planned, not active until the suite
 
 Producer 0.10.0 adds a tab to the existing Producer GUI; no `c11d-control` suite and no `c11c-studio`. It collects Challenge, mode, gameplay seed, independent music seed, delivery/presentation profile, variation, audio choice and D4.3 text fields. It calls `tools/c11d/d4/gui_production_adapter.py` and compares against `tools/c11d/d4/production_cli.py`; D4 remains the normalization/personalization/plan authority. Successful runs persist a request, canonical request, personalization, plan, parity and receipt under `artifacts/tests/c11d_d9/producer_gui/<request_id>/`.
 
-D9.5.1 does **not** render a video. D4.8 remains BLOCKED, `renderer_activation=false`, `production_execution=false`, `runtime_authority=NONE`, `release_authority=NONE`. The request form's editorial fields are not claimed to affect actual pixels yet. D9.5.2 must close that gap under an explicit safe integration design before final acceptance claims personalized media.
+D9.5.1 does **not** render a video. D4.8 remains BLOCKED, `renderer_activation=false`, `production_execution=false`, `runtime_authority=NONE`, `release_authority=NONE`. By operator decision, editorial-field-to-renderer integration is deferred to the definitive GUI after the C11-D production baseline freezes; the frozen C11-C renderer must not be modified to force D request fields into pixels.
 
 ## Real GUI acceptance contract
 
@@ -46,9 +46,9 @@ The real Windows acceptance will not stop at “the app opened” or “self-tes
 
 1. Launch the existing `c11c-suite` and open each updated surface.
 2. Create/edit a request from Producer; validate request, resolved personalization, plan hash and GUI/CLI parity.
-3. Through the authorized existing GUI production route, render a single Challenge with fixed gameplay and music seeds; do not activate D4.8 unless its own policy gate is explicitly changed.
+3. Through the existing Producer C11-C GUI production route, render one Challenge with fixed gameplay/music seeds. The D request tab remains plan-only during the frozen C11-C phase; do not activate D4.8 or alter the C11-C renderer.
 4. Verify MP4 streams/dimensions/FPS/frames/duration, audio codec/rate/channels, visual QA and audio QA.
-5. Confirm Catalog discovers the media and provenance; Config can show/validate the profiles and exact text request; Test can invoke acceptance; Maintenance dry-run leaves protected products unchanged.
+5. Confirm Catalog discovers media/provenance; Config validates and saves an operator profile with explicit independent seeds and a stable hash; Test invokes acceptance; Maintenance dry-run leaves protected products unchanged.
 6. Replay the same saved request and verify the correct deterministic identities; change only `music_seed` and prove gameplay seed remains fixed and audio/media identities change as designed.
 7. Run negative request/config, overwrite protection, absent dependency, process error and cancellation checks.
 8. Archive receipts/logs and rerun consolidated suite acceptance.
@@ -57,14 +57,12 @@ The real Windows acceptance will not stop at “the app opened” or “self-tes
 
 No changes to protected C11-C simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry or proven C11-C production behavior. Do not auto-generate seeds. Do not merge gameplay/music seed streams. Do not create a sixth suite. D10 remains BLOCKED.
 
-## D9.6 implementation checkpoint
+## D9.6 implementation checkpoint — Catalog 0.2.0 (PASS)
 
-The existing `c11c-catalog` is advanced to 0.2.0 in an additive overlay. It keeps its generic artifact browser and adds a `C11-D PRODUCTS / PROVENANCE` tab. C11-D records are admitted only from exact D7/D9 receipts/manifests; arbitrary artifact filenames are never promoted to product records. D7 intents and D9.5.1 records stay PLAN_ONLY; D9.4-listed media stays VALIDATED_PILOT / NOT_REGISTERED_FOR_D8_RELEASE. SHA-256/size checks, project-root path confinement and request/plan/parity checks are required. The catalog has no renderer or release authority.
+The existing `c11c-catalog` keeps its generic artifact browser and adds the `C11-D PRODUCTS / PROVENANCE` tab. D7 intents and D9.5.1 plans remain non-release products; D9.4 media remains `VALIDATED_PILOT / NOT_REGISTERED_FOR_D8_RELEASE`. Hash/size checks, project-root path confinement and request/plan/parity checks are enforced. The operator confirmed that Catalog's Windows GUI works. Renderer and release authority remain NONE.
 
-Focused isolated tests cover 90 canonical-intent fixture rows, five explicit media fixture rows, one Producer plan, five negative controls including D8 scope drift, GUI contract and consolidated Suite integration. Local Windows Qt bring-up plus validation against the real local D9.1–D9.4 artifacts are still required; D9.6 remains acceptance-pending until that evidence is returned.
+## D9.7 implementation checkpoint — Config 0.2.0 (Windows acceptance pending)
 
-## D9.6 implementation checkpoint
+The existing `c11c-config` keeps Repository Config and adds `C11-D CONTRACTS` plus `C11-D OPERATOR PROFILES`. Twenty D2–D9 canonical JSON contracts are read-only and inspected with status/SHA-256/governance invariants. Profiles live under `profiles/c11d/operator/`, require explicit independent integer `seed` and `music_seed`, known Challenge/delivery/music/personalization IDs, schema validation, SHA-256/diff, explicit save, backup and validated restore. Blank profiles carry no operational defaults.
 
-The existing `c11c-catalog` is advanced to 0.2.0 in an additive overlay. It keeps its generic artifact browser and adds a `C11-D PRODUCTS / PROVENANCE` tab. C11-D records are admitted only from exact D7/D9 receipts/manifests; arbitrary artifact filenames are never promoted to product records. D7 intents and D9.5.1 records stay PLAN_ONLY; D9.4-listed media stays VALIDATED_PILOT / NOT_REGISTERED_FOR_D8_RELEASE. SHA-256/size checks, project-root path confinement and request/plan/parity checks are required. The catalog has no renderer or release authority.
-
-Focused isolated tests cover 90 canonical-intent fixture rows, five explicit media fixture rows, one Producer plan, five negative controls including D8 scope drift, GUI contract and consolidated Suite integration. Local Windows Qt bring-up plus validation against the real local D9.1–D9.4 artifacts are still required; D9.6 remains acceptance-pending until that evidence is returned.
+The generic Repository Config editor protects all profile paths and `challenges/`, `definitions/`, `schemas/`, `assets/`, `core/`, `tools/`, `tests/` and `c11c-suite/`. Only the dedicated Operator Profiles tab can write allowlisted operator JSON. Pure-data tests cover 20/20 contracts, seven negative controls and save/backup/validated-restore lifecycle. Isolated tests pass; Windows Qt and real filesystem interaction remain pending. Profiles do not auto-feed Producer, and D4.8/runtime/renderer/production/release authority remain disabled.

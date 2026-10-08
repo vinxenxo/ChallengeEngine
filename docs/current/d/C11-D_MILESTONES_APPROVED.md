@@ -23,10 +23,10 @@ C11-C 2.19.12 remains immutable. `master_seed=NOT_ADOPTED`; no runtime/automatic
 | D8.0–D8.7 | Media QA and release control-plane | PASS / CLOSED; D8.7 `PASS_NO_MEDIA` |
 | D9.1–D9.3 | Real video, A/V, deterministic repeat + negative | PASS |
 | D9.4 | Real-media acceptance checkpoint | PASS / CLOSED as checkpoint; overall D9 remains ACTIVE |
-| D9.5.1 | Producer 0.10.0 D4 request/personalization tab + canonical planning parity | Static/canonical adapter tests PASS; Windows GUI interaction pending |
-| D9.5.2–D9.5.3 | Personalized real-media bridge and Windows Producer GUI smoke | PENDING |
-| D9.6 | Catalog 0.2.0 integration and tests | PLANNED |
-| D9.7 | Config 0.2.0 integration and tests | PLANNED |
+| D9.5.1 | Producer 0.10.0 D4 request/personalization tab + canonical planning parity | PASS: canonical adapter tests and operator-confirmed Windows plan generation |
+| D9.5.2 | D request/personalization-to-renderer binding | DEFERRED to definitive GUI after future C11-D production freeze; C11-C remains immutable |
+| D9.6 | Catalog 0.2.0 integration and tests | PASS: operator-confirmed Windows GUI |
+| D9.7 | Config 0.2.0 integration and tests | Config overlay prepared; 20/20 contracts, 7/7 negatives, root-protection and save/backup/restore tests PASS; Windows GUI/filesystem acceptance pending |
 | D9.8 | Maintenance 0.2.0 integration and tests | PLANNED |
 | D9.9 | Test 0.2.0 integration and tests | PLANNED |
 | D9.10 | Existing Suite shell/common 0.1.5 integration and tests | PLANNED |

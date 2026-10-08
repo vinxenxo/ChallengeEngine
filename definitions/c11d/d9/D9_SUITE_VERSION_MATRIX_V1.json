@@ -1,0 +1,139 @@
+{
+  "schema": "C11-D-D9-SUITE-VERSION-MATRIX-V1",
+  "status": "D9_ACTIVE",
+  "d9_4": "PASS_CHECKPOINT_NOT_FINAL_D9_CLOSURE",
+  "d10": "BLOCKED_UNTIL_D9_14_PASS_CLOSED",
+  "active_suite_topology": [
+    "c11c-test",
+    "c11c-producer",
+    "c11c-catalog",
+    "c11c-maintenance",
+    "c11c-config"
+  ],
+  "retired": {
+    "c11c-studio": "RETIRED_DO_NOT_REVIVE"
+  },
+  "suites": [
+    {
+      "id": "c11c-test",
+      "current_version": "0.1.4 inherited suite test surface",
+      "target_version": "0.2.0",
+      "gate": "D9.9",
+      "status": "PLANNED",
+      "required_tests": [
+        "registered command path check",
+        "GUI invocation/output/exit code",
+        "failure/cancel",
+        "D2-D9 validators",
+        "GUI E2E entrypoints"
+      ]
+    },
+    {
+      "id": "c11c-producer",
+      "current_version": "0.10.0",
+      "target_version": "0.10.x incremental",
+      "gate": "D9.5.1-D9.5.3",
+      "status": "D9.5.1_USER_CONFIRMED_PLAN_GUI_PASS",
+      "notes": "C11-D tab generates request/personalization/plan only. Media/text rendering is deferred until the future C11-D production baseline is frozen; do not change frozen C11-C renderer.",
+      "required_tests": [
+        "90 canonical cases",
+        "12 personalization cases",
+        "4 negatives",
+        "GUI-CLI plan parity",
+        "existing C11-C production regression",
+        "jobs/logs/error/cancel/replay"
+      ]
+    },
+    {
+      "id": "c11c-catalog",
+      "current_version": "0.2.0",
+      "target_version": "0.2.0",
+      "gate": "D9.6",
+      "status": "USER_CONFIRMED_WINDOWS_GUI_PASS",
+      "required_tests": [
+        "90 intents",
+        "pilot media hash/path",
+        "producer plan/provenance",
+        "replay command",
+        "five negatives"
+      ]
+    },
+    {
+      "id": "c11c-maintenance",
+      "current_version": "0.1.x inherited",
+      "target_version": "0.2.0",
+      "gate": "D9.8",
+      "status": "PLANNED",
+      "required_tests": [
+        "dry-run first",
+        "allowlisted cleanup/archive",
+        "quarantine/restore",
+        "protected-root mutation negatives",
+        "freeze/doc consolidation",
+        "failure recovery"
+      ]
+    },
+    {
+      "id": "c11c-config",
+      "current_version": "0.2.0",
+      "target_version": "0.2.0",
+      "gate": "D9.7",
+      "status": "OVERLAY_PREPARED_ISOLATED_TESTS_PASS_WINDOWS_QT_PENDING",
+      "required_tests": [
+        "20 canonical registries",
+        "seven configuration negatives",
+        "explicit seed isolation",
+        "profile schema/path checks",
+        "save/backup/restore",
+        "generic editor protected-root policy",
+        "Windows GUI/filesystem smoke"
+      ]
+    },
+    {
+      "id": "c11c-suite",
+      "current_version": "0.1.4",
+      "target_version": "0.1.5 only if needed",
+      "gate": "D9.10",
+      "status": "CONDITIONAL",
+      "required_tests": [
+        "launch each of five apps",
+        "environment/preflight reporting",
+        "child process/exit/log/cancel lifecycle"
+      ]
+    }
+  ],
+  "shared_gates": [
+    {
+      "gate": "D9.11",
+      "name": "cross-suite job lifecycle",
+      "status": "PENDING"
+    },
+    {
+      "gate": "D9.12",
+      "name": "Windows GUI real-media/replay E2E through existing C11-C producer path",
+      "status": "PENDING"
+    },
+    {
+      "gate": "D9.13",
+      "name": "five-suite acceptance and safety negatives",
+      "status": "PENDING"
+    },
+    {
+      "gate": "D9.14",
+      "name": "final D9 docs/receipts/freeze/handover",
+      "status": "PENDING"
+    }
+  ],
+  "governance": {
+    "d4_8": "BLOCKED",
+    "master_seed": "NOT_ADOPTED",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "runtime_authority": "NONE",
+    "renderer_execution": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "frozen_c11c_mutation": "FORBIDDEN"
+  }
+}

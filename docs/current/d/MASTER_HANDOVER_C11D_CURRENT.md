@@ -1,83 +1,41 @@
 # C11-D MASTER HANDOVER — D9 Suite Integration/Evolution ACTIVE
 
-## Current state of record
+## State of record
 
-- D0–D8: PASS / CLOSED.
-- D7: FROZEN.
-- D8.7: `PASS_NO_MEDIA` control-plane acceptance; release authority remains NONE.
+- D0–D8: PASS/CLOSED; D7 FROZEN.
+- D8.7: `PASS_NO_MEDIA` control-plane acceptance; `release_authority=NONE`.
 - D9.1: real video pilot PASS.
 - D9.2: real A/V pilot PASS, AAC 48 kHz stereo.
-- D9.3: exact repeated WAV/MP4 hashes and negative music-seed control PASS.
-- D9.4: PASS as a media acceptance checkpoint. It is not final D9 closure.
-- D9.5.1: existing Producer advanced to 0.10.0 with additive D4 request/personalization/plan GUI tab; 90 core, 12 personalization and 4 negative canonical cases pass in isolated tests. Windows GUI interaction still pending.
-- D9: ACTIVE until all five existing suite surfaces are updated/tested and GUI E2E evidence is complete.
-- D10: BLOCKED.
+- D9.3: exact repeat WAV/MP4 hashes and changed-music-seed negative PASS.
+- D9.4: PASS/CLOSED as a media checkpoint only; overall D9 remains ACTIVE.
+- D9.5.1 Producer 0.10.0: operator confirms D request/personalization GUI creates plans. It does not render video.
+- D9.6 Catalog 0.2.0: operator confirms Windows GUI works.
+- D9.7 Config 0.2.0: implementation overlay prepared; isolated tests PASS; Windows GUI/filesystem acceptance pending.
+- D10: BLOCKED until D9.14 PASS/CLOSED.
 
-## Exact source snapshot inspected
+## Source snapshot
 
-`ChallengeEngineV01_STATELESS_C11-D_9_4_LATEST_20261008_224201.zip`  
-SHA-256 of uploaded archive: `f4713f3466caaa78e827a94335a964bee72784ab1a06698d3ced984d53d6cec0`.
+`ChallengeEngineV01_STATELESS_C11-D_9_4_LATEST_20261008_224201.zip` is the inspected starting snapshot. The D9.5.1 and D9.6 overlays are the acknowledged increments applied over that snapshot. This is a workspace snapshot, not a replacement for the frozen D7.5 baseline.
 
-This archive excludes runtime `artifacts/`; local receipt gates must be checked in the active Windows repository. It is not a replacement for the frozen D7.5 baseline and must not be described as a new full freeze.
+## Canonical suite topology
 
-## Current canonical app architecture
+Only these existing applications are active: `c11c-test`, `c11c-producer`, `c11c-catalog`, `c11c-maintenance`, `c11c-config`. Do not add another suite. `c11c-studio` is RETIRED and must not be revived.
 
-Only the existing `c11c-suite` surfaces are active:
+## D9 roadmap and next operator action
 
-- `c11c-test`
-- `c11c-producer`
-- `c11c-catalog`
-- `c11c-maintenance`
-- `c11c-config`
+1. D9.5.1 Producer 0.10.0: request/personalization/planning integration PASS in user GUI. Text-to-renderer output is deferred until future C11-D production freeze; never alter frozen C11-C renderer to force D text into MP4.
+2. D9.6 Catalog 0.2.0: user-confirmed Windows GUI PASS.
+3. D9.7 Config 0.2.0: apply `C11D_D9.7_CONFIG_INTEGRATION_OVERLAY_V1.zip`, run Config self-test/GUI contract and consolidated Suite self-test, launch Windows GUI and validate protected-root behavior plus operator-profile save/backup/restore.
+4. D9.8 Maintenance 0.2.0; D9.9 Test 0.2.0; D9.10 existing shell 0.1.5 only if common process/version routing changes are necessary. Each suite gets a version manifest and focused positive/negative tests.
+5. D9.11 cross-suite lifecycle; D9.12 Windows real-media GUI E2E through the existing C11-C Producer route, plus Catalog/Config/Test/Maintenance checks; D9.13 full suite acceptance; D9.14 final docs/receipts/manifest/handover/freeze checkpoint.
 
-The shared shell is currently 0.1.4. Producer alone is advanced to 0.10.0 at D9.5.1. Do not introduce a sixth `c11d-control` or revive `c11c-studio`.
+## D9.7 Config scope
 
-## First implementation overlay
+The existing Config GUI keeps Repository Config, adds read-only D2–D9 contract status/SHA-256 and a dedicated operator-profile workflow. Generic Repository Config is read-only for `challenges/`, `definitions/`, `schemas/`, `assets/`, `core/`, `tools/`, `tests/`, `c11c-suite/`, and all profile paths. Only the dedicated Operator Profiles tab may save `profiles/c11d/operator/*.json`, with schema/registry validation, independent explicit seeds, diff/hash, explicit confirmation, backup and validated restore. Saved profiles do not auto-feed Producer yet.
 
-`C11D_D9.5.1_PRODUCER_GUI_REQUEST_INTEGRATION_OVERLAY_V1.zip` modifies the existing Producer, its self-tests, suite self-test, active Suite/D documentation and start/handover prompts. It adds the toolkit-independent `c11d_gui_request.py` helper and `test_d9_producer_integration.py`.
+## Frozen governance boundaries
 
-The GUI addition consumes the canonical D4.6 GUI adapter and D4.5 CLI processing path. D4.2/D4.3/D4.4/D4.6/D4.7 receipts are required for the planning action in the user's actual repo. The UI records request, canonical request, resolved personalization, plan/hash and parity in `artifacts/tests/c11d_d9/producer_gui/<request_id>/`.
-
-## Planned next gates
-
-1. D9.5.1 on Windows: parse/launch actual Qt window, use the new tab, prove receipt gates, valid request/plan evidence and CLI replay command.
-2. D9.5.2: design and evidence the safe bridge from the six editorial fields to actual rendered Challenge media. Do not claim pixels change yet. Do not modify protected C11-C behavior or bypass D4.8 silently.
-3. D9.5.3: Windows Producer GUI smoke/error/cancel/replay.
-4. D9.6 Catalog 0.2.0; D9.7 Config 0.2.0; D9.8 Maintenance 0.2.0; D9.9 Test 0.2.0; each with own focused and negative tests.
-5. D9.10 Suite shell target 0.1.5 only if common routing/process-state support requires a versioned update.
-6. D9.11 cross-suite provenance/lifecycle; D9.12 real GUI A/V and replay E2E; D9.13 full suite acceptance; D9.14 docs/receipts/freeze/final closure.
-
-## Governance locks
-
-- D4.8 remains BLOCKED.
-- `master_seed=NOT_ADOPTED`.
-- Gameplay seed = `request.seed`; music seed = `request.music_seed`.
-- Cross-domain seed sharing forbidden; automatic/runtime derivation disabled.
-- D4 plan tab: renderer/product/release activation false; `runtime_authority=NONE`; `release_authority=NONE`.
-- No D10 until D9.14 acceptance is PASS/CLOSED.
-
-## Frozen C11-C boundary
-
-Do not modify simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry or proven C11-C presentation/production behavior. Producer 0.10.0 must preserve the existing backend fingerprint and old C11-C UI workflows.
-
-## Required next action
-
-Apply D9.5.1 overlay; run Producer self-test, Producer GUI contract test and Suite self-test; then launch `c11c-suite\run.bat` on Windows and exercise the existing Producer GUI. Only claim Qt interaction pass after observing it directly. After that, proceed to D9.5.2 only with a safe text-to-media integration design.
-
-
-## Latest D9 state — Catalog integration checkpoint
-
-- D9.4 remains a real-media checkpoint; overall D9 remains ACTIVE. D10 remains BLOCKED.
-- Producer D9.5.1 / version 0.10.0 is acknowledged by user as generating plans successfully in the current GUI. Actual personalized-pixel output remains deferred to the future D freeze/rebase decision; do not claim these editorial fields are in MP4 yet.
-- D9.6 Catalog 0.2.0 is implemented as an additive overlay against the latest D9.4 workspace. The existing Catalog app is retained; no sixth suite and no c11c-studio dependency.
-- Catalog rows use exact governed D7/D9 receipts/manifests; D7 is intent-only, D9.5.1 is plan-only, D9.4 media is validation-pilot-only and not D8 release-eligible.
-- D9.6 focused isolated/static tests pass in the build workspace. Required next proof: apply overlay, run focused tests and consolidated `c11c-suite/self_test.py`, open Catalog on Windows, and verify it reads local D9.1-D9.4 files correctly.
-
-
-## Latest D9 state — Catalog integration checkpoint
-
-- D9.4 remains a real-media checkpoint; overall D9 remains ACTIVE. D10 remains BLOCKED.
-- Producer D9.5.1 / version 0.10.0 is acknowledged by user as generating plans successfully in the current GUI. Actual personalized-pixel output remains deferred to the future D freeze/rebase decision; do not claim these editorial fields are in MP4 yet.
-- D9.6 Catalog 0.2.0 is implemented as an additive overlay against the latest D9.4 workspace. The existing Catalog app is retained; no sixth suite and no c11c-studio dependency.
-- Catalog rows use exact governed D7/D9 receipts/manifests; D7 is intent-only, D9.5.1 is plan-only, D9.4 media is validation-pilot-only and not D8 release-eligible.
-- D9.6 focused isolated/static tests pass in the build workspace. Required next proof: apply overlay, run focused tests and consolidated `c11c-suite/self_test.py`, open Catalog on Windows, and verify it reads local D9.1-D9.4 files correctly.
+- C11-C 2.19.12 simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry and proven C11-C production behavior remain immutable.
+- Gameplay seed is `request.seed`; music seed is `request.music_seed`; `master_seed=NOT_ADOPTED`. Automatic/runtime derivation is disabled; cross-domain sharing is FORBIDDEN.
+- D4.8 remains BLOCKED. `runtime_authority=NONE`; no D plan-tab renderer/production execution; `release_authority=NONE`.
+- D9.4 is a checkpoint; D9 is not closed until D9.14; D10 remains BLOCKED.

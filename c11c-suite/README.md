@@ -7,7 +7,7 @@
 - `c11c-test` — logical regression, QA and focused acceptance.
 - `c11c-catalog` — artifact browsing and metadata inspection; version 0.2.0 adds receipt-driven C11-D product/provenance/replay records.
 - `c11c-maintenance` — documentation consolidation, repository organization, cleanup and freeze packaging.
-- `c11c-config` — declarative configuration inspection/editing.
+- `c11c-config` — declarative configuration inspection/editing; 0.2.0 adds read-only D2–D9 contract governance and explicit C11-D operator profiles with validation, hash/diff and backup/restore.
 - `c11c-producer` — audiovisual orchestration for Challenges, Visual Loops and Visual Drills.
 
 ## Producer 0.10.0
@@ -22,10 +22,10 @@ The Suite does not own an alternative backend. GUI actions launch the same canon
 
 - Suite application: **0.1.4**
 - Producer: **0.10.0**
-- Catalog: **0.2.0** (D9.6 overlay; Windows GUI acceptance pending)
-- Catalog: **0.2.0** (D9.6 overlay; Windows GUI acceptance pending)
+- Catalog: **0.2.0** (D9.6 Windows GUI confirmed by operator)
+- Config: **0.2.0** (D9.7 overlay prepared; Windows GUI acceptance pending)
 - C11-C baseline: **2.19.12 FROZEN**
-- C11-D: **D0–D8 CLOSED · D9 ACTIVE · D9.4 CHECKPOINT PASS · D10 BLOCKED**
+- C11-D: **D0–D8 CLOSED · D9 ACTIVE · D9.4 CHECKPOINT PASS · D9.5.1 Producer plan GUI PASS · D9.6 Catalog GUI PASS · D9.7 Config 0.2.0 pending Windows GUI · D10 BLOCKED**
 - Godot: **4.7.1 stable Mono**
 
 ## Important routing
@@ -55,3 +55,8 @@ C11-C is immutable; D7 is frozen. D8 must add QA/release governance without chan
 - `self_test.py`
 - `test_retro_reference_contract.bat`
 - `test_retro_reference_contract.py`
+
+
+## Config 0.2.0 — D9.7
+
+The existing Config GUI now exposes read-only D2–D9 canonical registry/policy inspection and a dedicated, validated C11-D Operator Profiles workflow. Generic Repository Config cannot write under challenges, definitions, schemas, assets, core, tools, tests, c11c-suite or any profiles path. Only the dedicated tab writes `profiles/c11d/operator/*.json`, with explicit confirmation, schema validation, hash/diff, `.bak` and validated restore. Profiles are not yet auto-fed into Producer; execution/release remain disabled. Windows Qt/filesystem acceptance is still pending.

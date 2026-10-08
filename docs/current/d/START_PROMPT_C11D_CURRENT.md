@@ -1,44 +1,40 @@
-# C11-D START PROMPT — D9.5.1 / Producer GUI Request Integration
+# C11-D START PROMPT — Continue D9 Suite Integration/Evolution
 
-Continue from the user's latest local tree represented by `ChallengeEngineV01_STATELESS_C11-D_9_4_LATEST_20261008_224201.zip` and the current workspace with D9.4 PASS.
+Use the active Windows repository `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`, starting from the latest user's D9.4 snapshot with D9.5.1 Producer and D9.6 Catalog overlays already applied and confirmed working.
 
-## State
+## Current state
 
-D0–D8 PASS/CLOSED; D7 FROZEN; D9.1–D9.4 PASS as real-media checkpoint. Overall D9 is ACTIVE because the five existing suite GUIs still need integration and real Windows GUI E2E acceptance. D10 is BLOCKED.
+- D0–D8 PASS/CLOSED; D7 FROZEN. D8.7 is `PASS_NO_MEDIA`, release authority NONE.
+- D9.1–D9.4 PASS as real media checkpoint; overall D9 remains ACTIVE.
+- Producer 0.10.0 D9 request/personalization/plan tab works in Windows but remains plan-only.
+- Catalog 0.2.0 Windows GUI works.
+- Next overlay is D9.7 Config 0.2.0; its pure-data/static tests pass, but Windows GUI/filesystem acceptance is still required.
+- D10 remains BLOCKED.
 
-## First patch
+## D9.7 Config action
 
-Apply `C11D_D9.5.1_PRODUCER_GUI_REQUEST_INTEGRATION_OVERLAY_V1.zip` to the existing repo root. It updates `c11c-producer` to 0.10.0 by adding a D4 request/personalization/planning tab in the existing GUI, shared with D4.6/D4.5 canonical adapters. It does not create a sixth suite and does not revive c11c-studio.
-
-Run:
+Apply `C11D_D9.7_CONFIG_INTEGRATION_OVERLAY_V1.zip` to repo root, then run:
 
 ```powershell
-python .\c11c-suite\c11c-producer\self_test.py
-python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
+python .\c11c-suite\c11c-config\self_test.py
+python .\c11c-suite\c11c-config\test_config_gui_contract.py
 python .\c11c-suite\self_test.py
 .\c11c-suite\run.bat
 ```
 
-After launch, manually exercise the `C11-D · REQUEST + PERSONALIZACIÓN` tab. The local repo must contain PASS/CLOSED receipts for D4.2, D4.3, D4.4, D4.6 and D4.7; otherwise the UI planning action should block and report the missing receipt rather than guessing.
+Open `c11c-config`; inspect `C11-D CONTRACTS`; create a blank operator profile in `C11-D OPERATOR PROFILES`; confirm no defaults are silently inserted; set explicit gameplay/music seeds, known Challenge/profile IDs and optional valid editorial fields; validate/hash/diff; save only after confirmation; confirm `.bak`; test validated restore. In Repository Config, verify the whole `profiles/` tree is read-only and canonical/protected roots cannot be edited. Never test by modifying a canonical contract.
 
-## Next target
+## Remaining D9 roadmap
 
-Once the Qt GUI has been exercised, D9.5.2 studies the safe way to bring the editorial values into real Challenge media. Preserve the frozen C11-C boundary and D4.8 BLOCKED status; do not claim a personalization is visible in the MP4 until a real physical render and visual evidence prove it.
+- D9.8: update existing `c11c-maintenance` to target 0.2.0 with dry-run, quarantine, cleanup, docs organization, freeze and protected-root tests.
+- D9.9: update existing `c11c-test` to target 0.2.0 with D2–D9 command registry, GUI execution/log/exit/cancel and E2E entrypoints.
+- D9.10: existing shared shell 0.1.5 only if process/status/log routing needs a common change.
+- D9.11: cross-suite lifecycle. D9.12: real Windows GUI media production via current C11-C Producer route; Catalog/Config/Test/Maintenance checks; replay and negative controls. D9.13: five-suite acceptance. D9.14: docs, receipts, version matrix, freeze and final D9 closure.
 
-## D9 later suite updates
+## Important architectural decision
 
-D9.6 Catalog 0.2.0, D9.7 Config 0.2.0, D9.8 Maintenance 0.2.0, D9.9 Test 0.2.0, D9.10 common shell 0.1.5 (only if needed), followed by cross-suite lifecycle, real GUI E2E, negatives and D9 final acceptance. See `docs/current/d/D9_SUITE_INTEGRATION_PLAN_V1.md`.
+Do not create a sixth suite or revive `c11c-studio`. Extend only `c11c-test`, `c11c-producer`, `c11c-catalog`, `c11c-maintenance`, and `c11c-config`. D4.3 editorial-to-renderer is deferred until the future C11-D production baseline is frozen. Do not alter the frozen C11-C renderer or bypass D4.8.
 
-## Non-negotiable boundaries
+## Governance
 
-No sixth suite; c11c-studio is retired. C11-C simulation/mechanics/RNG, timing truth, C7/C9, logical 540×960 geometry and proven production behavior are immutable. `master_seed` remains NOT_ADOPTED; seed domains stay isolated; D4.8 remains BLOCKED; release authority NONE. D10 may not begin before D9 is formally closed.
-
-
-## Latest handover — D9.6 Catalog overlay
-
-Current work is D9 Suite Integration/Evolution. D9.4 is a PASS checkpoint only, not overall D9 closure; D10 is BLOCKED. Producer 0.10.0 D9.5.1 plan/personalization GUI passed user Windows interaction (plan generation works; not media rendering). D9.6 Catalog 0.2.0 overlay adds `C11-D PRODUCTS / PROVENANCE` inside the existing Catalog GUI. Apply `C11D_D9.6_CATALOG_INTEGRATION_OVERLAY_V1.zip` then run catalog self-test, GUI contract and consolidated Suite self-test. Windows Qt bring-up and reading local D9.4 manifest/media still need acceptance. Never create a sixth suite or revive c11c-studio.
-
-
-## Latest handover — D9.6 Catalog overlay
-
-Current work is D9 Suite Integration/Evolution. D9.4 is a PASS checkpoint only, not overall D9 closure; D10 is BLOCKED. Producer 0.10.0 D9.5.1 plan/personalization GUI passed user Windows interaction (plan generation works; not media rendering). D9.6 Catalog 0.2.0 overlay adds `C11-D PRODUCTS / PROVENANCE` inside the existing Catalog GUI. Apply `C11D_D9.6_CATALOG_INTEGRATION_OVERLAY_V1.zip` then run catalog self-test, GUI contract and consolidated Suite self-test. Windows Qt bring-up and reading local D9.4 manifest/media still need acceptance. Never create a sixth suite or revive c11c-studio.
+`master_seed=NOT_ADOPTED`; gameplay seed=`request.seed`; music seed=`request.music_seed`; automatic/runtime derivation disabled; cross-domain seed sharing FORBIDDEN. D4.8 BLOCKED; `runtime_authority=NONE`; release authority NONE. D9.4 is a checkpoint only. D10 cannot start until D9.14 is PASS/CLOSED.

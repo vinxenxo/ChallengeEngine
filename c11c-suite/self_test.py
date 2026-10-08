@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SUITE=ROOT/'c11c-suite'
 FILES=[
  'main.py','common.py',
- 'c11c-test/main.py','c11c-test/run_all.bat','c11c-test/run_suite.bat','c11c-test/run_c11c_complete_review.bat','c11c-test/run_c11c_acceptance.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','test_retro_reference_contract.py','c11c-producer/test_gui_contract.bat','c11c-catalog/main.py','c11c-catalog/c11d_catalog.py','c11c-catalog/self_test.py','c11c-catalog/test_catalog_gui_contract.py','c11c-catalog/BUILD_MANIFEST.json','c11c-catalog/c11d_catalog.py','c11c-catalog/self_test.py','c11c-catalog/test_catalog_gui_contract.py','c11c-catalog/BUILD_MANIFEST.json','c11c-maintenance/main.py','c11c-config/main.py',
+ 'c11c-test/main.py','c11c-test/run_all.bat','c11c-test/run_suite.bat','c11c-test/run_c11c_complete_review.bat','c11c-test/run_c11c_acceptance.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','test_retro_reference_contract.py','c11c-producer/test_gui_contract.bat','c11c-catalog/main.py','c11c-catalog/c11d_catalog.py','c11c-catalog/self_test.py','c11c-catalog/test_catalog_gui_contract.py','c11c-catalog/BUILD_MANIFEST.json','c11c-catalog/c11d_catalog.py','c11c-catalog/self_test.py','c11c-catalog/test_catalog_gui_contract.py','c11c-catalog/BUILD_MANIFEST.json','c11c-maintenance/main.py','c11c-config/main.py','c11c-config/c11d_config.py','c11c-config/self_test.py','c11c-config/test_config_gui_contract.py','c11c-config/BUILD_MANIFEST.json',
  'run.bat','test_retro_reference_contract.bat','c11c-catalog/run.bat','c11c-config/run.bat','c11c-maintenance/run.bat','c11c-producer/main.py','c11c-producer/self_test.py','c11c-producer/test_producer_gui_contract.py','c11c-producer/c11d_gui_request.py','c11c-producer/test_d9_producer_integration.py','c11c-producer/preflight.py','c11c-producer/run_visual_drill_production.ps1','c11c-producer/run.bat','c11c-maintenance/main.py','c11c-producer/test_gui_contract.bat','c11c-test/run.bat','c11c-test/run_all.bat','c11c-test/run_suite.bat',
 ]
 for rel in FILES:
@@ -244,5 +244,13 @@ assert 'pilot_media=5/5' in catalog_test.stdout and 'negative_controls=5/5' in c
 catalog_contract = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'test_catalog_gui_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert catalog_contract.returncode == 0, catalog_contract.stdout + '\n' + catalog_contract.stderr
 assert 'version=0.2.0' in catalog_contract.stdout
-print('C11-C Suite 0.1.4 + Producer 0.10.0 + Catalog 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6 integration PASS')
+config_test = subprocess.run([sys.executable, str(SUITE/'c11c-config'/'self_test.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
+assert config_test.returncode == 0, config_test.stdout + '\n' + config_test.stderr
+assert 'registries=' in config_test.stdout and 'negative=7/7' in config_test.stdout
+config_contract = subprocess.run([sys.executable, str(SUITE/'c11c-config'/'test_config_gui_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
+assert config_contract.returncode == 0, config_contract.stdout + '\n' + config_contract.stderr
+assert 'version=0.2.0' in config_contract.stdout
+config_manifest = json.loads((SUITE/'c11c-config'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
+assert config_manifest['version'] == '0.2.0' and config_manifest['release_authority'] == 'NONE'
+print('C11-C Suite 0.1.4 + Producer 0.10.0 + Catalog 0.2.0 + Config 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7 integration PASS')
 

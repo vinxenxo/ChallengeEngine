@@ -1,0 +1,56 @@
+{
+  "suite_id": "c11c-config",
+  "version": "0.2.0",
+  "branch": "C11-D D9.7",
+  "entrypoint": "c11c-suite/c11c-config/main.py",
+  "modules": [
+    "c11c-suite/c11c-config/c11d_config.py"
+  ],
+  "tests": [
+    "c11c-suite/c11c-config/self_test.py",
+    "c11c-suite/c11c-config/test_config_gui_contract.py"
+  ],
+  "governed_domains": [
+    "D2 asset family/binding",
+    "D3 Music V5 style/spec",
+    "D4 request/personalization/activation",
+    "D5 provenance",
+    "D6 seeds",
+    "D7 matrix/catalog",
+    "D8 QA/release",
+    "D9 acceptance"
+  ],
+  "canonical_contracts_access": "READ_ONLY",
+  "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
+  "operator_profile_root": "profiles/c11d/operator",
+  "operator_profile_operations": [
+    "validate",
+    "sha256",
+    "diff",
+    "explicit-save",
+    "backup",
+    "validated-restore"
+  ],
+  "generic_repository_config_write_policy": "READ_ONLY_FOR_ALL_PROTECTED_ROOTS_AND_ALL_PROFILES",
+  "dedicated_operator_profile_write_allowlist": [
+    "profiles/c11d/operator/*.json"
+  ],
+  "protected_roots": [
+    "challenges/**",
+    "definitions/**",
+    "schemas/**",
+    "assets/**",
+    "core/**",
+    "tools/**",
+    "tests/**",
+    "c11c-suite/**",
+    "profiles/** in generic editor"
+  ],
+  "automatic_seed_generation": false,
+  "cross_domain_seed_sharing": "FORBIDDEN",
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "windows_qt_acceptance": "PENDING_OPERATOR_RUN"
+}
