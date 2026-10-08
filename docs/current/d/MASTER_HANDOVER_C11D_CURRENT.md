@@ -1,41 +1,93 @@
-# C11-D MASTER HANDOVER — D9 Suite Integration/Evolution ACTIVE
+# C11-D MASTER HANDOVER — D9 Second-Stage Suite Integration
 
-## State of record
+## Current status
 
-- D0–D8: PASS/CLOSED; D7 FROZEN.
-- D8.7: `PASS_NO_MEDIA` control-plane acceptance; `release_authority=NONE`.
-- D9.1: real video pilot PASS.
-- D9.2: real A/V pilot PASS, AAC 48 kHz stereo.
-- D9.3: exact repeat WAV/MP4 hashes and changed-music-seed negative PASS.
-- D9.4: PASS/CLOSED as a media checkpoint only; overall D9 remains ACTIVE.
-- D9.5.1 Producer 0.10.0: operator confirms D request/personalization GUI creates plans. It does not render video.
-- D9.6 Catalog 0.2.0: operator confirms Windows GUI works.
-- D9.7 Config 0.2.0: implementation overlay prepared; isolated tests PASS; Windows GUI/filesystem acceptance pending.
-- D10: BLOCKED until D9.14 PASS/CLOSED.
+**D0–D8.7 = PASS / CLOSED.**
 
-## Source snapshot
+**D9.0–D9.4 = PASS. D9.4 = CLOSED checkpoint.**
 
-`ChallengeEngineV01_STATELESS_C11-D_9_4_LATEST_20261008_224201.zip` is the inspected starting snapshot. The D9.5.1 and D9.6 overlays are the acknowledged increments applied over that snapshot. This is a workspace snapshot, not a replacement for the frozen D7.5 baseline.
+**D9 = OPEN — Suite integration/evolution, second stage.**
 
-## Canonical suite topology
+**D10 = BLOCKED.**
 
-Only these existing applications are active: `c11c-test`, `c11c-producer`, `c11c-catalog`, `c11c-maintenance`, `c11c-config`. Do not add another suite. `c11c-studio` is RETIRED and must not be revived.
+## Important correction of scope
 
-## D9 roadmap and next operator action
+D9 is not complete when the media pilot and backend tests pass. The roadmap requirement is to extend the existing `c11c-suite` surfaces so the D capabilities become fully operable and observable from GUI:
 
-1. D9.5.1 Producer 0.10.0: request/personalization/planning integration PASS in user GUI. Text-to-renderer output is deferred until future C11-D production freeze; never alter frozen C11-C renderer to force D text into MP4.
-2. D9.6 Catalog 0.2.0: user-confirmed Windows GUI PASS.
-3. D9.7 Config 0.2.0: apply `C11D_D9.7_CONFIG_INTEGRATION_OVERLAY_V1.zip`, run Config self-test/GUI contract and consolidated Suite self-test, launch Windows GUI and validate protected-root behavior plus operator-profile save/backup/restore.
-4. D9.8 Maintenance 0.2.0; D9.9 Test 0.2.0; D9.10 existing shell 0.1.5 only if common process/version routing changes are necessary. Each suite gets a version manifest and focused positive/negative tests.
-5. D9.11 cross-suite lifecycle; D9.12 Windows real-media GUI E2E through the existing C11-C Producer route, plus Catalog/Config/Test/Maintenance checks; D9.13 full suite acceptance; D9.14 final docs/receipts/manifest/handover/freeze checkpoint.
+- `c11c-producer` — production, request, personalization, editorial configuration and later real D production;
+- `c11c-catalog` — products, catalog identity, provenance and reproduction;
+- `c11c-config` — contracts, profiles, snapshots and controlled editing;
+- `c11c-maintenance` — cleanup, quarantine, organization and freeze;
+- `c11c-test` — registration, QA, parity, GUI E2E and negative acceptance.
 
-## D9.7 Config scope
+No new suite is allowed for this purpose.
 
-The existing Config GUI keeps Repository Config, adds read-only D2–D9 contract status/SHA-256 and a dedicated operator-profile workflow. Generic Repository Config is read-only for `challenges/`, `definitions/`, `schemas/`, `assets/`, `core/`, `tools/`, `tests/`, `c11c-suite/`, and all profile paths. Only the dedicated Operator Profiles tab may save `profiles/c11d/operator/*.json`, with schema/registry validation, independent explicit seeds, diff/hash, explicit confirmation, backup and validated restore. Saved profiles do not auto-feed Producer yet.
+The old `c11c-studio` experiment is retired and must not be revived.
 
-## Frozen governance boundaries
+## Completed D9 evidence
 
-- C11-C 2.19.12 simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry and proven C11-C production behavior remain immutable.
-- Gameplay seed is `request.seed`; music seed is `request.music_seed`; `master_seed=NOT_ADOPTED`. Automatic/runtime derivation is disabled; cross-domain sharing is FORBIDDEN.
-- D4.8 remains BLOCKED. `runtime_authority=NONE`; no D plan-tab renderer/production execution; `release_authority=NONE`.
-- D9.4 is a checkpoint; D9 is not closed until D9.14; D10 remains BLOCKED.
+D9.1 real video: PASS.
+
+D9.2 A/V: PASS.
+
+D9.3 deterministic repeatability/negative: PASS.
+
+D9.4 acceptance checkpoint: PASS/CLOSED.
+
+D9.5.1 Producer 0.10.0 request/personalization GUI: implemented and Windows-validated.
+
+D9.6 Catalog 0.2.0: implemented and Windows-validated.
+
+D9.7 Config 0.2.0: overlay prepared; confirm Windows bring-up in the current working context before declaring it closed.
+
+## Key product direction
+
+The current Producer D tab is Challenge-centric because D4.3 originally defined Challenge editorial personalization. That is not the final D9 target.
+
+The target is a **Universal Editorial Model** across:
+
+- Challenge;
+- Visual Loop families and grammar/subfamily variants;
+- Visual Drill families/types/variants;
+- Longform where the production contract supports it.
+
+Editable editorial data must remain separate from derived telemetry, provenance and simulation truth.
+
+## C11-C freeze boundary
+
+Do not modify C11-C 2.19.12 simulation/mechanics/RNG/truth, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry or proven C11-C presentation/production behavior during this integration stage.
+
+## D4/D6/D7/D8 governance locks
+
+- `master_seed=NOT_ADOPTED`.
+- gameplay seed = `request.seed`.
+- music seed = `request.music_seed`.
+- cross-domain sharing = `FORBIDDEN`.
+- runtime derivation disabled.
+- automatic seed generation disabled.
+- D4.8 `BLOCKED`.
+- `release_authority=NONE` unless an explicit future checkpoint changes it.
+
+## Next work
+
+1. D9.8 — canonical Universal Editorial Model.
+2. D9.9 — Producer coverage for all content/family/subfamily variants.
+3. D9.10 — editorial-to-render bridge, dependent on a future D frozen baseline.
+4. D9.11 — Maintenance 0.2.0.
+5. D9.12 — Test 0.2.0.
+6. D9.13 — cross-suite lifecycle.
+7. D9.14–D9.16 — real GUI production and final GUI acceptance.
+8. D9.17 — D9 final closure.
+
+## New-context read order
+
+1. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
+2. `docs/current/d/C11-D_MILESTONES_APPROVED.md`
+3. `docs/current/d/D9_UNIVERSAL_EDITORIAL_MODEL_V1.md`
+4. `docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md`
+5. `docs/current/d/D9.4_ACCEPTANCE_CHECKPOINT.md`
+6. `docs/current/suite/C11C_SUITE_CURRENT_RULES.md`
+7. `docs/current/suite/C11C_SUITE_TOOLING_MATRIX.md`
+8. `docs/current/d/START_PROMPT_C11D_CURRENT.md`
+
+Do not use the D9.4 ZIP upload as the current working tree if later D9 overlays have already been applied locally.

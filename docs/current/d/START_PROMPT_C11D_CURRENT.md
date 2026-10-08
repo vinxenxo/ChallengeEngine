@@ -1,40 +1,66 @@
-# C11-D START PROMPT — Continue D9 Suite Integration/Evolution
+# C11-D START PROMPT — D9 Second-Stage Suite Integration
 
-Use the active Windows repository `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`, starting from the latest user's D9.4 snapshot with D9.5.1 Producer and D9.6 Catalog overlays already applied and confirmed working.
+Continue `ChallengeEngineV01_STATELESS` from the **current local working tree**, not from the earlier D9.4 upload, because D9.5.1/D9.6/D9.7 overlays may already be applied locally.
 
-## Current state
+## State of record
 
-- D0–D8 PASS/CLOSED; D7 FROZEN. D8.7 is `PASS_NO_MEDIA`, release authority NONE.
-- D9.1–D9.4 PASS as real media checkpoint; overall D9 remains ACTIVE.
-- Producer 0.10.0 D9 request/personalization/plan tab works in Windows but remains plan-only.
-- Catalog 0.2.0 Windows GUI works.
-- Next overlay is D9.7 Config 0.2.0; its pure-data/static tests pass, but Windows GUI/filesystem acceptance is still required.
-- D10 remains BLOCKED.
+- C11-C 2.19.12 = immutable frozen reference.
+- D0–D8.7 = PASS/CLOSED.
+- D9.0–D9.4 = PASS; D9.4 is a closed checkpoint only.
+- D9 = OPEN.
+- D10 = BLOCKED.
 
-## D9.7 Config action
+## Architecture rule
 
-Apply `C11D_D9.7_CONFIG_INTEGRATION_OVERLAY_V1.zip` to repo root, then run:
+Use the existing `c11c-suite` surfaces only:
 
-```powershell
-python .\c11c-suite\c11c-config\self_test.py
-python .\c11c-suite\c11c-config\test_config_gui_contract.py
-python .\c11c-suite\self_test.py
-.\c11c-suite\run.bat
-```
+- `c11c-test`;
+- `c11c-producer`;
+- `c11c-catalog`;
+- `c11c-config`;
+- `c11c-maintenance`.
 
-Open `c11c-config`; inspect `C11-D CONTRACTS`; create a blank operator profile in `C11-D OPERATOR PROFILES`; confirm no defaults are silently inserted; set explicit gameplay/music seeds, known Challenge/profile IDs and optional valid editorial fields; validate/hash/diff; save only after confirmation; confirm `.bak`; test validated restore. In Repository Config, verify the whole `profiles/` tree is read-only and canonical/protected roots cannot be edited. Never test by modifying a canonical contract.
+Do not create `c11d-control`, `c11c-studio`, or any other sixth operational suite.
 
-## Remaining D9 roadmap
+## Current integration state
 
-- D9.8: update existing `c11c-maintenance` to target 0.2.0 with dry-run, quarantine, cleanup, docs organization, freeze and protected-root tests.
-- D9.9: update existing `c11c-test` to target 0.2.0 with D2–D9 command registry, GUI execution/log/exit/cancel and E2E entrypoints.
-- D9.10: existing shared shell 0.1.5 only if process/status/log routing needs a common change.
-- D9.11: cross-suite lifecycle. D9.12: real Windows GUI media production via current C11-C Producer route; Catalog/Config/Test/Maintenance checks; replay and negative controls. D9.13: five-suite acceptance. D9.14: docs, receipts, version matrix, freeze and final D9 closure.
+- Producer 0.10.0: D4 Request + Challenge editorial personalization integrated and Windows-validated.
+- Catalog 0.2.0: D7/D9 product/provenance/reproduction integration Windows-validated.
+- Config 0.2.0: D integration prepared; verify the Windows bring-up state from the current tree.
 
-## Important architectural decision
+## Strategic objective
 
-Do not create a sixth suite or revive `c11c-studio`. Extend only `c11c-test`, `c11c-producer`, `c11c-catalog`, `c11c-maintenance`, and `c11c-config`. D4.3 editorial-to-renderer is deferred until the future C11-D production baseline is frozen. Do not alter the frozen C11-C renderer or bypass D4.8.
+Complete D9 so that the existing Suite becomes the real operator surface for the whole D branch. The GUI must expose the same capabilities and identities as CLI without duplicating backend logic.
 
-## Governance
+The next target is not merely more Challenge text fields. It is a Universal Editorial Model covering all supported content types, families, subfamilies/grammars/types and individual variants.
 
-`master_seed=NOT_ADOPTED`; gameplay seed=`request.seed`; music seed=`request.music_seed`; automatic/runtime derivation disabled; cross-domain seed sharing FORBIDDEN. D4.8 BLOCKED; `runtime_authority=NONE`; release authority NONE. D9.4 is a checkpoint only. D10 cannot start until D9.14 is PASS/CLOSED.
+## Universal editorial requirements
+
+Editable editorial data must remain distinct from:
+
+- telemetry;
+- provenance;
+- simulation truth.
+
+The same gameplay/music seed contracts remain mandatory.
+
+## Renderer rule
+
+Do not reopen the frozen C11-C renderer merely to obtain early editorial rendering. Physical editorial-to-media materialization should be implemented in the future D frozen baseline when the branch can safely absorb both the C11-C and D improvements.
+
+## D9 sequence
+
+D9.8 Universal Editorial Model → D9.9 Producer universal coverage → D9.10 editorial-to-render bridge → D9.11 Maintenance 0.2.0 → D9.12 Test 0.2.0 → D9.13 cross-suite lifecycle → D9.14 GUI real-media production → D9.15 operational acceptance → D9.16 full acceptance → D9.17 D9 CLOSED.
+
+## First action in the new context
+
+Read:
+
+1. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
+2. `docs/current/d/C11-D_MILESTONES_APPROVED.md`
+3. `docs/current/d/D9_UNIVERSAL_EDITORIAL_MODEL_V1.md`
+4. `docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md`
+5. `docs/current/suite/C11C_SUITE_CURRENT_RULES.md`
+6. `docs/current/suite/C11C_SUITE_TOOLING_MATRIX.md`
+
+Then inspect the actual current `c11c-suite` tree before modifying any code.

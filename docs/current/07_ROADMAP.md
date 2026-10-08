@@ -1,16 +1,18 @@
-# Roadmap — C11-C 2.19.12 → C11-D D8
+# Roadmap — C11-C 2.19.12 → C11-D D9 Second-Stage Suite Integration
 
 ## Current closure
 
-C11-C 2.19.12 is frozen and immutable. C11-D D0 through D7.5 are PASS/CLOSED. D7 is FROZEN.
+C11-C 2.19.12 is frozen and immutable.
 
-## D7 frozen baseline
+D0–D8.7 are PASS/CLOSED.
 
-`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`
+D9.0–D9.4 are PASS, with D9.4 closed as a **media acceptance checkpoint**.
 
-SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
+D9 remains OPEN because the roadmap's “Suite integration/evolution” requirement includes the complete existing Suite GUI/CLI surface and real GUI production certification.
 
-## Approved D sequence
+D10 is BLOCKED until D9 closes.
+
+## Approved sequence
 
 ```text
 D0 baseline proof + Challenge recovery
@@ -29,13 +31,25 @@ D6 seed registry + governance
   ↓
 D7 nine-Challenge production matrix + catalog — FROZEN
   ↓
-D8 media QA + release pipeline — NEXT
+D8 media QA + release pipeline — CLOSED
   ↓
-D9 Suite integration/evolution
+D9 Suite integration/evolution — ACTIVE
   ↓
-D10 new mechanics
+D10 new mechanics — BLOCKED
 ```
 
-D8 sub-sequence: D8.0 boundary/inventory → D8.1 ffprobe integrity → D8.2 visual QA → D8.3 audio QA → D8.4 artifact eligibility/provenance-to-media → D8.5 release manifest/staging → D8.6 release dry-run + negatives → D8.7 full acceptance/freeze.
+## D9 current direction
 
-No new mechanics are introduced before the established content/asset/production/provenance foundation and D8 media gate are stable.
+D9 must upgrade the existing five suites:
+
+- Producer;
+- Catalog;
+- Config;
+- Maintenance;
+- Test.
+
+No new suite is to be created. The old Studio attempt is retired historical context.
+
+The next key capability is a universal editorial model spanning Challenge, Visual Loop, Visual Drill and Longform content, with family/subfamily/grammar/type/variant inheritance and controlled overrides.
+
+Physical editorial rendering across the full content corpus is a D-baseline task; do not reopen frozen C11-C solely to achieve it early.

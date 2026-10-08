@@ -1,69 +1,65 @@
-# C11-C Suite — Current Operator Rules
+# C11-C Suite — Current Operator Rules / C11-D Integration State
 
-**Suite:** 0.1.4  
-**C11-C:** 2.19.12  
-**Producer:** 0.10.0  
-**Estado:** C11-C 2.19.12 FROZEN; C11-D D9 Suite Integration/Evolution ACTIVE.
+**Suite shell:** 0.1.4
+**C11-C:** 2.19.12 FROZEN
+**Producer:** 0.10.0
+**Catalog:** 0.2.0
+**Config:** 0.2.0 target/integration (Windows confirmation tracked by D9)
+**Maintenance:** current C11-C operator baseline; D9 target 0.2.0
+**Test:** current C11-C operator baseline; D9 target 0.2.0
 
-## Modelo operativo
+## Architecture
 
-La GUI y la línea de comandos son superficies co-iguales. La GUI debe ser una capa fina que invoque los mismos scripts canónicos que se ejecutan desde PowerShell/BAT. No se admite lógica exclusiva de GUI para generar, validar o cambiar la semántica del producto.
+`c11c-suite` is the canonical operator surface. It is composed of existing suites with separate responsibilities:
 
-Superficies activas:
+- `c11c-test` — testing, QA and acceptance.
+- `c11c-producer` — production, review and job orchestration.
+- `c11c-catalog` — catalog, product identity, provenance and reproduction.
+- `c11c-config` — configuration, profiles, snapshots and controlled editing.
+- `c11c-maintenance` — cleanup, organization, quarantine, documentation and freeze operations.
 
-- `c11c-suite/c11c-test` — pruebas y QA.
-- `c11c-suite/c11c-producer` — producción y review.
-- `c11c-suite/c11c-maintenance` — limpieza, organización, consolidación documental y freeze.
-- `c11c-suite/c11c-catalog` — catálogo e inspección de productos/artefactos.
-- `c11c-suite/c11c-config` — configuración declarativa y perfiles.
+**Do not create a sixth operational suite.**
 
-`c11c-studio` está retirado. El alias mal escrito `c11c-suite/c11c-maintenace` es histórico y debe quedar archivado antes del freeze.
+The historical `c11c-studio` attempt is retired/archived context. It is not an implementation target, operational dependency or source of current architecture.
 
-## Rutas canónicas actuales
+## GUI/CLI invariant
 
-Complete review:
-`tools/qa/c11/run_c11c_complete_video_review.ps1 -Workers 7`
+GUI and CLI are co-equal surfaces over the same canonical backend commands. GUI must not duplicate production, validation, media-cleanup, provenance or packaging logic.
 
-La operación normal no fuerza `-Reset`: si existe un corpus `COMPLETE`, se conserva; si falta, el propio flujo genera lo necesario.
+A D capability is complete only when:
 
-Acceptance:
-`FULL_ACCEPTANCE_C11C_2.19.12.ps1`
+1. canonical CLI works;
+2. existing Suite can invoke the same canonical path;
+3. GUI inputs normalize to the same request/plan identity;
+4. provenance/reproducibility is equivalent;
+5. focused parity tests exist.
 
-Freeze dry-run:
-`tools/maintenance/create_c11c_freeze_zip.ps1 -DryRun`
+## Current D9 integration state
 
-Freeze real:
-`c11c-suite/c11c-maintenance/run_freeze_package.bat`
+### Producer 0.10.0
 
-## Limpieza
+D4 Request + D4.3 Challenge personalization is integrated into the existing producer GUI. Universal editorial coverage across all content families is the next D9 stage.
 
-La limpieza rutinaria de media C11-C es:
-`tools/prototypes/c11c_bulk/clean_c11c_artifacts.ps1`
+### Catalog 0.2.0
 
-Es allowlist-based y solo actúa sobre roots de prototype C11-C explícitos y extensiones de media regenerable. Conserva metadatos y no entra en `legacy`, `qa`, `regression`, `releases`, `production` ni `tests`.
+D7 matrix/catalog and D9 pilot/product provenance can be inspected through the existing catalog surface. Pilot media remains validation-only and does not imply release authority.
 
-`reset_c11c_artifacts.ps1` es destructivo y queda separado del flujo normal. No debe formar parte de Test, Review ni Freeze.
+### Config 0.2.0
 
-`tools/maintenance/clean-videos.ps1`, `clean-godot.ps1` y `Make_zip.ps1` son herramientas manuales/legacy y no son la autoridad de freeze.
+D contracts and operator profiles are exposed through the existing Config surface. Generic editing must remain blocked for protected/canonical roots.
 
-## Freeze
+### Maintenance 0.2.0 target
 
-`create_c11c_freeze_zip.ps1` es la única autoridad de empaquetado de C11-C. Antes de crear el archivo verifica acceptance, documentación actual, higiene de raíz, la identidad estructural de `build_factory.py` y las exclusiones de residuos/caches/archives.
+Will expose D9-safe cleanup, quarantine, organization and freeze workflows without deleting evidence or bypassing guards.
 
-El ZIP incluye dos evidencias compactas bajo `release/evidence/`: el acceptance report y el complete video review report. El árbol pesado `artifacts/` se mantiene fuera del release y permanece en la workstation como evidencia de fabricación.
+### Test 0.2.0 target
 
-## Versiones
+Will register D2–D9 contracts and GUI E2E acceptance without becoming a second backend.
 
-`0.1.4` es la versión runtime de Suite. `0.10.0` es la versión activa de Producer; añade la pestaña D4 request/personalization en modo plan-only, sin activar D4.8. Una referencia como `2.16.9` en Producer puede identificar la lineage del backend certificado y no debe interpretarse como versión activa del Suite.
+## Production authority
 
-## D
+D4.8 remains `BLOCKED` until a future explicit governance checkpoint authorizes physical production through the D renderer. D9 GUI integration must not infer authority from successful planning or from D8/D9 pilot evidence.
 
-En C11-D cada capacidad debe existir en CLI y GUI con los mismos inputs, provenance y resultados reproducibles. La paridad GUI/CLI es un invariante transversal de todos los hitos D, no un trabajo reservado para D9.
+## Protected C11-C boundary
 
-## Estado C11-D / D9
-
-D0–D8 están PASS/CLOSED (D7 FROZEN). D9.4 PASS es un checkpoint de medios real, no el cierre global de D9. D9 sigue ACTIVE hasta actualizar y probar cada superficie existente (`c11c-producer`, `c11c-catalog`, `c11c-config`, `c11c-maintenance`, `c11c-test`) y certificar producción/reproducción real desde GUI. D10 permanece BLOCKED.
-
-## Inventario canónico
-
-La matriz `docs/current/suite/C11C_SUITE_TOOLING_MATRIX.md` es la referencia única para distinguir rutas activas de compatibilidad histórica y comprobar la paridad GUI/CLI.
+Do not modify C11-C simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 semantics, logical 540×960 geometry or proven C11-C presentation/production behavior merely to support GUI integration.

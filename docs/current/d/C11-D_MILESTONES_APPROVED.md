@@ -1,41 +1,55 @@
 # C11-D — Approved Milestones and Current State
 
-**Current:** D0–D8 PASS/CLOSED; D7 FROZEN. **D9 ACTIVE: Suite Integration/Evolution. D9.4 is a valid checkpoint, not final D9 closure. D10 BLOCKED.**
+## Current state
 
-## Frozen reference and governance
+**D9 is OPEN — second-stage Suite integration.**
 
-`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`  
-SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
-
-C11-C 2.19.12 remains immutable. `master_seed=NOT_ADOPTED`; no runtime/automatic seed derivation; cross-domain seed sharing is forbidden; D4.8 is BLOCKED; `runtime_authority=NONE`; D9.5.1 has no renderer/production/release authority.
+D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9.6 are integrated and Windows-validated. D9.7 is prepared; its Windows confirmation is tracked explicitly. D10 is BLOCKED.
 
 ## Milestone status
 
 | ID | Milestone | Status |
 |---|---|---|
-| D0–D3 | Baseline, Challenge recovery, reusable assets, Music V5 | PASS / CLOSED |
-| D4.0–D4.7 | Request, personalization, plan and GUI/CLI contracts | PASS / CLOSED |
+| D0 | Baseline proof + Challenge recovery dossiers | PASS / CLOSED |
+| D1 | Challenge visual/editorial parity | PASS / CLOSED |
+| D2 | Reusable asset families/templates | PASS / CLOSED |
+| D3 | Procedural Music V5 | PASS / CLOSED |
+| D4.0–D4.7 | Request/personalization/GUI-CLI contracts | PASS / CLOSED |
 | D4.8 | Production activation governance | BLOCKED by policy |
 | D4.9 | Full D4 acceptance | PASS / CLOSED |
 | D5.0–D5.5 | Provenance/topology/lifecycle | PASS / CLOSED |
 | D6.0–D6.5 | Seed governance | PASS / CLOSED |
-| D7.0–D7.5 | Matrix/catalog/identity/acceptance | PASS / CLOSED; D7 FROZEN |
-| D8.0–D8.7 | Media QA and release control-plane | PASS / CLOSED; D8.7 `PASS_NO_MEDIA` |
-| D9.1–D9.3 | Real video, A/V, deterministic repeat + negative | PASS |
-| D9.4 | Real-media acceptance checkpoint | PASS / CLOSED as checkpoint; overall D9 remains ACTIVE |
-| D9.5.1 | Producer 0.10.0 D4 request/personalization tab + canonical planning parity | PASS: canonical adapter tests and operator-confirmed Windows plan generation |
-| D9.5.2 | D request/personalization-to-renderer binding | DEFERRED to definitive GUI after future C11-D production freeze; C11-C remains immutable |
-| D9.6 | Catalog 0.2.0 integration and tests | PASS: operator-confirmed Windows GUI |
-| D9.7 | Config 0.2.0 integration and tests | Config overlay prepared; 20/20 contracts, 7/7 negatives, root-protection and save/backup/restore tests PASS; Windows GUI/filesystem acceptance pending |
-| D9.8 | Maintenance 0.2.0 integration and tests | PLANNED |
-| D9.9 | Test 0.2.0 integration and tests | PLANNED |
-| D9.10 | Existing Suite shell/common 0.1.5 integration and tests | PLANNED |
-| D9.11–D9.13 | Cross-suite lifecycle, real GUI E2E, all-suite acceptance | PENDING |
-| D9.14 | Documentation, receipts, handover and D9 final closure | PENDING |
-| D10 | New mechanics | BLOCKED until D9.14 PASS/CLOSED |
+| D7.0–D7.5 | Matrix/catalog/identity/full acceptance | PASS / CLOSED |
+| D7 | Phase freeze | FROZEN |
+| D8.0–D8.7 | Media QA + release pipeline | PASS / CLOSED |
+| D9.0 | Real media preflight | PASS |
+| D9.1 | Physical video pilot | PASS |
+| D9.2 | Audio-enabled A/V pilot | PASS |
+| D9.3 | Deterministic A/V repeat + negative | PASS |
+| D9.4 | Acceptance checkpoint | PASS / CLOSED |
+| D9.5.1 | Producer 0.10.0 request/personalization GUI | PASS / Windows validated |
+| D9.6 | Catalog 0.2.0 D integration | PASS / Windows validated |
+| D9.7 | Config 0.2.0 D integration | IMPLEMENTED / Windows confirmation pending |
+| D9.8 | Universal editorial model | NEXT |
+| D9.9 | Producer universal editorial coverage | PLANNED |
+| D9.10 | Editorial-to-render bridge | PLANNED / D baseline dependent |
+| D9.11 | Maintenance 0.2.0 | PLANNED |
+| D9.12 | Test 0.2.0 | PLANNED |
+| D9.13 | Cross-suite lifecycle | PLANNED |
+| D9.14 | Real GUI production certification | PLANNED |
+| D9.15 | GUI operational acceptance | PLANNED |
+| D9.16 | Full D9 acceptance | PLANNED |
+| D9.17 | D9 final closure | BLOCKED until all above PASS |
+| D10 | New mechanics | BLOCKED |
 
-## D9 acceptance rule
+## Suite update requirement
 
-Each of the five current apps (`c11c-test`, `c11c-producer`, `c11c-catalog`, `c11c-maintenance`, `c11c-config`) must receive its own implementation/version update and focused tests. The common `c11c-suite` shell is updated only if required for routing/status/job handling. No sixth suite is permitted. D9 cannot close on static tests alone: successful real GUI production, catalog/provenance, replay/repeatability, negative cases and protected-root checks are mandatory on Windows.
+D9 must update and test **all five existing Suite surfaces**, not create another suite:
 
-The detailed sequence and version targets are maintained in `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md` and `docs/current/d/D9_SUITE_INTEGRATION_PLAN_V1.md`.
+- Producer 0.10.0 → universal editorial → D renderer bridge.
+- Catalog 0.2.0 → D product/provenance/reproduction coverage.
+- Config 0.2.0 → D contracts/operator profiles.
+- Maintenance 0.2.0 → D cleanup/quarantine/organization/freeze.
+- Test 0.2.0 → D registrations + GUI E2E/negative acceptance.
+
+The shell remains 0.1.4 unless a common launcher/registry contract genuinely changes.
