@@ -235,6 +235,23 @@ if commands:
 
 assert (ROOT/'docs'/'current'/'suite'/'C11C_SUITE_CURRENT_RULES.md').exists()
 assert (ROOT/'docs'/'current'/'suite'/'C11C_SUITE_TOOLING_MATRIX.md').exists()
+# The shared launcher must expose exactly the five approved operational surfaces.
+shell_tree = ast.parse((SUITE/'main.py').read_text(encoding='utf-8-sig'))
+app_rows = None
+for node in ast.walk(shell_tree):
+    if isinstance(node, ast.Assign) and any(isinstance(target, ast.Name) and target.id == 'APPS' for target in node.targets):
+        app_rows = ast.literal_eval(node.value)
+        break
+assert app_rows is not None, 'Suite launcher APPS registry not found'
+expected_apps = {'c11c-test/main.py', 'c11c-catalog/main.py', 'c11c-maintenance/main.py', 'c11c-config/main.py', 'c11c-producer/main.py'}
+actual_apps = {row[1] for row in app_rows}
+assert actual_apps == expected_apps, f'Non-canonical Suite topology: {actual_apps}'
+assert len(app_rows) == 5 and all(row[0] != 'C11-D CONTROL' for row in app_rows)
+
+editorial_test = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_universal_editorial_model.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
+assert editorial_test.returncode == 0, editorial_test.stdout + '\n' + editorial_test.stderr
+assert 'challenge=9/9' in editorial_test.stdout and 'loops=5 families/27 grammars' in editorial_test.stdout and 'drills=4 types/20 tiers' in editorial_test.stdout and 'negative=25/25' in editorial_test.stdout
+
 integration = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d9_producer_integration.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert integration.returncode == 0, integration.stdout + '\n' + integration.stderr
 assert 'core=90/90' in integration.stdout and 'personalization=12/12' in integration.stdout and 'negative=4/4' in integration.stdout
@@ -252,5 +269,5 @@ assert config_contract.returncode == 0, config_contract.stdout + '\n' + config_c
 assert 'version=0.2.0' in config_contract.stdout
 config_manifest = json.loads((SUITE/'c11c-config'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
 assert config_manifest['version'] == '0.2.0' and config_manifest['release_authority'] == 'NONE'
-print('C11-C Suite 0.1.4 + Producer 0.10.0 + Catalog 0.2.0 + Config 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7 integration PASS')
+print('C11-C Suite 0.1.4 + Producer 0.10.0 + Catalog 0.2.0 + Config 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8 model integration PASS')
 

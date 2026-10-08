@@ -15,4 +15,6 @@ assert 'save_operator_profile(PROJECT_ROOT' in main and 'restore_operator_profil
 assert 'os.replace(temporary, target)' in module and 'shutil.copy2(target, Path(str(target) + ".bak"))' in module
 assert manifest['version']=='0.2.0' and manifest['renderer_activation'] is False and manifest['production_execution'] is False and manifest['release_authority']=='NONE'
 assert "PROFILE_RELATIVE_ROOT = Path('profiles') / 'c11d' / 'operator'" in module and 'path.relative_to(root)' in module
+assert 'D9_UNIVERSAL_EDITORIAL_MODEL' in module and 'C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json' in module
+assert manifest.get('universal_editorial_model_access') == 'READ_ONLY_CANONICAL'
 print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')

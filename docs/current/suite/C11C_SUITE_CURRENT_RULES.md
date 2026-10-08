@@ -4,7 +4,7 @@
 **C11-C:** 2.19.12 FROZEN
 **Producer:** 0.10.0
 **Catalog:** 0.2.0
-**Config:** 0.2.0 target/integration (Windows confirmation tracked by D9)
+**Config:** 0.2.0 integration; canonical D9.8 model registered read-only (Windows confirmation still tracked by D9)
 **Maintenance:** current C11-C operator baseline; D9 target 0.2.0
 **Test:** current C11-C operator baseline; D9 target 0.2.0
 
@@ -18,7 +18,7 @@
 - `c11c-config` — configuration, profiles, snapshots and controlled editing.
 - `c11c-maintenance` — cleanup, organization, quarantine, documentation and freeze operations.
 
-**Do not create a sixth operational suite.**
+**Do not create a sixth operational suite.** The shared launcher must expose exactly these five paths and no other operational surface. The `c11d-control` folder present in the incoming D9.7.2 archive is a legacy/unregistered path, not a canonical suite; do not register or launch it. Archive/quarantine reconciliation must go through Maintenance because the incoming freeze manifest references that path.
 
 The historical `c11c-studio` attempt is retired/archived context. It is not an implementation target, operational dependency or source of current architecture.
 
@@ -63,3 +63,8 @@ D4.8 remains `BLOCKED` until a future explicit governance checkpoint authorizes 
 ## Protected C11-C boundary
 
 Do not modify C11-C simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 semantics, logical 540×960 geometry or proven C11-C presentation/production behavior merely to support GUI integration.
+
+
+## D9.8 universal editorial contract
+
+The read-only canonical model is `definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json`, resolved by `tools/c11d/d9/universal_editorial_model.py`. Config may inspect/hash/validate it; it must not make generic edits to the canonical contract. Resolver coverage now reflects 9 Challenges, 5 Loop families/27 concrete grammars and 4 Drill types/20 declared tiers. Longform is shown but disabled until the D request schema supports it. Only Challenge is currently D4 request/plan compatible; Loop/Drill GUI/CLI plan support belongs to D9.9.

@@ -62,6 +62,8 @@ No sixth operational suite is to be created. Historical `c11c-studio` material i
 
 ### D9.8 — Universal editorial model
 
+**Implementation status: PASS for the canonical declarative model, strict selector/editorial resolver and static contract tests. Producer GUI/CLI universal coverage remains D9.9; this does not close D9.**
+
 Create one declarative editorial model spanning the content system rather than a Challenge-only personalization surface.
 
 Coverage:

@@ -4,7 +4,7 @@
 
 **D9 is OPEN — second-stage Suite integration.**
 
-D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9.6 are integrated and Windows-validated. D9.7 is prepared; its Windows confirmation is tracked explicitly. D10 is BLOCKED.
+D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9.6 are integrated and Windows-validated. D9.7 is implemented with Windows confirmation still tracked explicitly. D9.8 has a canonical declarative model/resolver and static tests; D9.9 is next. D10 is BLOCKED.
 
 ## Milestone status
 
@@ -30,7 +30,7 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.5.1 | Producer 0.10.0 request/personalization GUI | PASS / Windows validated |
 | D9.6 | Catalog 0.2.0 D integration | PASS / Windows validated |
 | D9.7 | Config 0.2.0 D integration | IMPLEMENTED / Windows confirmation pending |
-| D9.8 | Universal editorial model | NEXT |
+| D9.8 | Universal editorial model V1 + strict resolver + live inventory/negative tests | PASS / static contract tests; GUI integration deferred to D9.9 |
 | D9.9 | Producer universal editorial coverage | PLANNED |
 | D9.10 | Editorial-to-render bridge | PLANNED / D baseline dependent |
 | D9.11 | Maintenance 0.2.0 | PLANNED |

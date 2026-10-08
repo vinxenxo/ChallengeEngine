@@ -2,13 +2,13 @@
   "schema": "C11-D-D9-SUITE-VERSION-MATRIX-V1",
   "status": "D9_ACTIVE",
   "d9_4": "PASS_CHECKPOINT_NOT_FINAL_D9_CLOSURE",
-  "d10": "BLOCKED_UNTIL_D9_14_PASS_CLOSED",
+  "d10": "BLOCKED_UNTIL_D9_17_PASS_CLOSED",
   "active_suite_topology": [
     "c11c-test",
     "c11c-producer",
     "c11c-catalog",
-    "c11c-maintenance",
-    "c11c-config"
+    "c11c-config",
+    "c11c-maintenance"
   ],
   "retired": {
     "c11c-studio": "RETIRED_DO_NOT_REVIVE"
@@ -18,7 +18,7 @@
       "id": "c11c-test",
       "current_version": "0.1.4 inherited suite test surface",
       "target_version": "0.2.0",
-      "gate": "D9.9",
+      "gate": "D9.12",
       "status": "PLANNED",
       "required_tests": [
         "registered command path check",
@@ -32,9 +32,9 @@
       "id": "c11c-producer",
       "current_version": "0.10.0",
       "target_version": "0.10.x incremental",
-      "gate": "D9.5.1-D9.5.3",
-      "status": "D9.5.1_USER_CONFIRMED_PLAN_GUI_PASS",
-      "notes": "C11-D tab generates request/personalization/plan only. Media/text rendering is deferred until the future C11-D production baseline is frozen; do not change frozen C11-C renderer.",
+      "gate": "D9.9",
+      "status": "D9.5.1_PASS_D9.9_UNIVERSAL_COVERAGE_PENDING",
+      "notes": "Current 0.10.0 Challenge request/personalization remains the only current D4 plan-compatible content path. D9.9 adds universal GUI/editorial selection without duplicating backend logic. Physical rendering waits for the future D baseline.",
       "required_tests": [
         "90 canonical cases",
         "12 personalization cases",
@@ -49,7 +49,7 @@
       "current_version": "0.2.0",
       "target_version": "0.2.0",
       "gate": "D9.6",
-      "status": "USER_CONFIRMED_WINDOWS_GUI_PASS",
+      "status": "WINDOWS_VALIDATED_PASS",
       "required_tests": [
         "90 intents",
         "pilot media hash/path",
@@ -62,7 +62,7 @@
       "id": "c11c-maintenance",
       "current_version": "0.1.x inherited",
       "target_version": "0.2.0",
-      "gate": "D9.8",
+      "gate": "D9.11",
       "status": "PLANNED",
       "required_tests": [
         "dry-run first",
@@ -77,10 +77,11 @@
       "id": "c11c-config",
       "current_version": "0.2.0",
       "target_version": "0.2.0",
-      "gate": "D9.7",
-      "status": "OVERLAY_PREPARED_ISOLATED_TESTS_PASS_WINDOWS_QT_PENDING",
+      "gate": "D9.7-D9.8",
+      "status": "D9.7_OVERLAY_PREPARED_ISOLATED_TESTS_PASS_WINDOWS_QT_PENDING_D9.8_MODEL_REGISTERED",
       "required_tests": [
-        "20 canonical registries",
+        "21 canonical registries",
+        "D9.8 model schema/seed/data-class invariants",
         "seven configuration negatives",
         "explicit seed isolation",
         "profile schema/path checks",
@@ -93,35 +94,67 @@
       "id": "c11c-suite",
       "current_version": "0.1.4",
       "target_version": "0.1.5 only if needed",
-      "gate": "D9.10",
-      "status": "CONDITIONAL",
+      "gate": "D9.13",
+      "status": "FIVE_CANONICAL_SURFACES_ONLY_CROSS_SUITE_LIFECYCLE_PENDING",
       "required_tests": [
-        "launch each of five apps",
+        "launch each of five canonical apps",
+        "GUI/CLI canonical identity parity",
         "environment/preflight reporting",
-        "child process/exit/log/cancel lifecycle"
+        "child process/exit/log/cancel lifecycle",
+        "no sixth operational suite registered"
       ]
     }
   ],
   "shared_gates": [
     {
+      "gate": "D9.8",
+      "name": "Universal editorial model V1: canonical registry, resolver, inventory and negative tests",
+      "status": "PASS_STATIC_MODEL_RESOLVER_AND_NEGATIVE_TESTS"
+    },
+    {
+      "gate": "D9.9",
+      "name": "Producer universal editorial GUI/CLI coverage across supported content families and variants",
+      "status": "PENDING"
+    },
+    {
+      "gate": "D9.10",
+      "name": "Editorial-to-render bridge; physical renderer integration deferred until the future D frozen baseline",
+      "status": "PLANNED_D_BASELINE_DEPENDENT"
+    },
+    {
       "gate": "D9.11",
-      "name": "cross-suite job lifecycle",
+      "name": "Maintenance 0.2.0: allowlists, quarantine, archive and freeze lifecycle",
       "status": "PENDING"
     },
     {
       "gate": "D9.12",
-      "name": "Windows GUI real-media/replay E2E through existing C11-C producer path",
+      "name": "Test 0.2.0: D2-D9 registrations, parity, GUI E2E and negative acceptance",
       "status": "PENDING"
     },
     {
       "gate": "D9.13",
-      "name": "five-suite acceptance and safety negatives",
+      "name": "Cross-suite lifecycle: Config → Producer → Test/QA → Catalog → Maintenance",
       "status": "PENDING"
     },
     {
       "gate": "D9.14",
-      "name": "final D9 docs/receipts/freeze/handover",
+      "name": "Windows GUI real-media production and reproduction across supported content types",
       "status": "PENDING"
+    },
+    {
+      "gate": "D9.15",
+      "name": "GUI operational acceptance",
+      "status": "PENDING"
+    },
+    {
+      "gate": "D9.16",
+      "name": "Full D9 acceptance",
+      "status": "PENDING"
+    },
+    {
+      "gate": "D9.17",
+      "name": "D9 final closure after all D9 gates pass",
+      "status": "BLOCKED"
     }
   ],
   "governance": {
@@ -135,5 +168,8 @@
     "production_execution": false,
     "release_authority": "NONE",
     "frozen_c11c_mutation": "FORBIDDEN"
+  },
+  "non_canonical_operational_paths": {
+    "c11d-control": "UNREGISTERED_FROM_SHARED_LAUNCHER; QUARANTINE/ARCHIVE THROUGH D9.11 MAINTENANCE WITH MANIFEST RECONCILIATION"
   }
 }

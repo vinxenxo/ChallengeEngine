@@ -166,3 +166,29 @@ The GUI must block:
 - attempts to edit derived telemetry as if it were editorial;
 - attempts to alter simulation truth;
 - release execution without authority.
+
+
+## D9.8 implementation record — 2026-10-09
+
+Canonical source: `definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json` (`C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1`). The small backend resolver is `tools/c11d/d9/universal_editorial_model.py`; it reads the canonical model and the existing Producer inventory and returns selection/editorial resolution only. It does **not** build a D4 request, plan identity, production job, renderer input, or media.
+
+### Inventory discovered from the current Producer contract
+
+- Challenge: 9 declared IDs. Mechanic/family grouping is derived from the `mechanic` field; each Challenge ID is the current D4-compatible variant identity.
+- Visual Loop: 5 declared families and 27 concrete grammars. The `auto` entry, when present, is classified as a selector mode, not counted as a concrete grammar.
+- Visual Drill: 4 declared drill types and 20 explicit type/tier variants (five declared tiers per type in the current inventory).
+- Longform: visible in the model as **disabled**. The current D4 request schema and Producer `video_types` do not define Longform as a producible content type. `LONGFORM_1080` is a delivery profile, not proof of a supported Longform request.
+
+### Editorial fields and inheritance
+
+V1 enables `title`, `subtitle`, `call_to_action`, and `language` across Challenge/Loop/Drill; `player_name` and `challenge_label` are Challenge-only. Values are trimmed, language is normalized to lowercase, optional empty/null values become `UNKNOWN`, and text is limited to 160 characters. Inheritance runs in this exact order: `global → content_type → family → subtype → variant → production_override`; the resolver rejects unknown layers, fields, unsupported scopes, reserved fields and overlong/non-string values. It does not persist or mutate profiles.
+
+Editorial keys are structurally separated from derived telemetry (including seeds, FPS, duration, frames, palettes and difficulty tier), provenance/identity (request/plan/personalization hashes and artifact/media digests), and simulation truth (mechanics, target/speed/collision/timing, `winning_frame`, `close_calls`, simulation result and RNG ownership). Gameplay and music seed ownership remain `request.seed` and `request.music_seed`; `master_seed=NOT_ADOPTED`, cross-domain sharing is forbidden, and automatic/runtime derivation stays disabled.
+
+### Integration and acceptance boundary
+
+The shared Config surface now registers this contract read-only. The shared launcher is restricted to exactly the five canonical surfaces; the legacy `c11d-control` directory in the incoming ZIP is **not registered**. Its physical archive/removal is deferred to the Maintenance/quarantine workflow because the current freeze package manifest references it and must be reconciled deliberately.
+
+The current resolver can resolve editorial scopes for Loop/Drill but marks them **not D4 request/plan compatible** until D9.9 supplies canonical universal request adapters and GUI/CLI parity. Only Challenge is currently D4 plan compatible. Renderer activation, production execution and release authority remain disabled. D9.10 is the future bridge-planning checkpoint; physical editorial-to-media materialization remains deferred to the future D frozen baseline. C11-C 2.19.12 sources, simulation truth and renderer were not changed for this checkpoint.
+
+Primary static test: `python tools/c11d/d9/test_universal_editorial_model.py`. It covers live inventory counts, inheritance/normalization, current request compatibility, protected data-class negatives, unsupported Longform and unchanged canonical source hashes. D9.8 PASS does not imply D9 closure, Windows Qt acceptance of Config, D9.9 completion, or D10 authorization.

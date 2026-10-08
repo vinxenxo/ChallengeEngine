@@ -13,6 +13,7 @@ D_REGISTRIES = (
  {'domain':'D3 · AUDIO','id':'D3_MUSIC_ENGINE','path':'definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · REQUEST','id':'D4_REQUEST_SCHEMA','path':'definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · PERSONALIZATION','id':'D4_PERSONALIZATION_REGISTRY','path':'definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · EDITORIAL','id':'D9_UNIVERSAL_EDITORIAL_MODEL','path':'definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · GOVERNANCE','id':'D4_ACTIVATION_POLICY','path':'definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D5 · PROVENANCE','id':'D5_LINEAGE_REGISTRY','path':'definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D6 · SEEDS','id':'D6_SEED_REGISTRY','path':'definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
@@ -114,6 +115,26 @@ def validate_c11d_contracts(project_root: Path) -> tuple[list[dict[str,Any]],lis
     need(d.get('D8_ACCEPTANCE_FREEZE',{}).get('media_dependent_acceptance_with_zero_media')=='PASS_NO_MEDIA','D8 zero-media acceptance must remain PASS_NO_MEDIA')
     d9=d.get('D9_ACCEPTANCE_CLOSURE',{})
     need(d9.get('release_authority')=='NONE' and d9.get('production_execution') is False and d9.get('renderer_execution') is False,'D9 checkpoint must remain non-execution/non-release')
+    editorial=d.get('D9_UNIVERSAL_EDITORIAL_MODEL',{})
+    need(editorial.get('schema')=='C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1' and editorial.get('checkpoint')=='D9.8','D9.8 universal editorial model schema/checkpoint mismatch')
+    need(editorial.get('status')=='CANONICAL_DECLARATIVE_MODEL','D9.8 model must be a declarative canonical contract')
+    authority=editorial.get('authority',{})
+    need(authority.get('runtime_authority')=='NONE' and authority.get('renderer_activation') is False and authority.get('production_execution') is False and authority.get('release_authority')=='NONE','D9.8 model must not grant runtime/renderer/production/release authority')
+    seed_contract=editorial.get('seed_contract',{})
+    need(seed_contract.get('master_seed')=='NOT_ADOPTED' and seed_contract.get('gameplay_seed')=='request.seed' and seed_contract.get('music_seed')=='request.music_seed','D9.8 must preserve explicit gameplay/music seed ownership')
+    need(seed_contract.get('cross_domain_seed_sharing')=='FORBIDDEN' and seed_contract.get('runtime_seed_derivation') is False and seed_contract.get('automatic_seed_generation') is False,'D9.8 must forbid shared/derived/automatic seeds')
+    need(editorial.get('inheritance_order')==['global','content_type','family','subtype','variant','production_override'],'D9.8 editorial inheritance order mismatch')
+    content_types=editorial.get('content_types',{})
+    longform=content_types.get('longform',{})
+    need(longform.get('enabled_for_selection') is False and longform.get('editable_fields')==[] and longform.get('request_plan_compatibility')=='NOT_SUPPORTED_BY_CURRENT_D4_REQUEST_SCHEMA','D9.8 Longform must stay explicitly disabled until the D request contract supports it')
+    data_classes=editorial.get('data_classes',{})
+    editable=set(data_classes.get('editable_editorial',{}).get('editable_keys',[]))
+    protected_fields=set()
+    for group_name in ('derived_telemetry','provenance','simulation_truth'):
+        group=data_classes.get(group_name,{})
+        need(group.get('editable') is False,f'D9.8 protected class must remain non-editable: {group_name}')
+        protected_fields.update(group.get('fields',[]))
+    need(not editable.intersection(protected_fields),'D9.8 editable editorial keys overlap protected telemetry/provenance/simulation truth')
     return rows,errors
 
 def profile_path(project_root: Path, profile_id: str) -> Path:

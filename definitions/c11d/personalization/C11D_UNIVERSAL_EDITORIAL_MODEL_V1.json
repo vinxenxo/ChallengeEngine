@@ -1,0 +1,428 @@
+{
+  "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+  "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.8",
+  "status": "CANONICAL_DECLARATIVE_MODEL",
+  "purpose": "Define one content-aware editorial model for the existing C11-D branch without conflating editorial values with telemetry, provenance, simulation truth, seed governance, or production authority.",
+  "authority": {
+    "runtime_authority": "NONE",
+    "renderer_activation": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "canonical_request_plan_identity_owner": "tools/c11d/d4 canonical request/personalization/plan adapters",
+    "producer_gui_integration": "D9.9",
+    "physical_editorial_to_media_materialization": "D9.10_BRIDGE_PLANNING_ONLY; PHYSICAL_MATERIALIZATION_DEFERRED_UNTIL_FUTURE_C11-D_FROZEN_BASELINE",
+    "frozen_c11c_renderer_mutation": "FORBIDDEN"
+  },
+  "source_of_truth": {
+    "producer_inventory": "c11c-suite/c11c-producer/producer_schema.json",
+    "challenge_details": "challenges/CHALLENGE_*.json",
+    "personalization_profile_registry": "definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json",
+    "current_d4_request_contract": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json",
+    "resolution_policy": "Read current registries; never duplicate or silently rename their identities in this model."
+  },
+  "operator_selection_path": [
+    "content_type",
+    "family_id (when declared)",
+    "subtype_id / grammar / drill type (when declared)",
+    "variant_id (when declared)",
+    "editorial profile",
+    "individual production override"
+  ],
+  "inheritance_order": [
+    "global",
+    "content_type",
+    "family",
+    "subtype",
+    "variant",
+    "production_override"
+  ],
+  "inheritance_policy": {
+    "merge": "later applicable layer overrides earlier value",
+    "unknown_fields": "REJECT",
+    "unknown_selection": "REJECT",
+    "unsupported_content_type": "REJECT_FOR_ACTIVE_RESOLUTION",
+    "no_silent_fallback": "true",
+    "empty_optional_string": "NORMALIZE_TO_UNKNOWN",
+    "strings": "TRIM",
+    "language": "LOWERCASE_AFTER_TRIM",
+    "max_string_length": 160,
+    "explicit_empty_does_not_delete_higher_layer": "EMPTY_NORMALIZES_TO_UNKNOWN",
+    "global_layer_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ]
+  },
+  "editorial_fields": {
+    "title": {
+      "type": "string",
+      "enabled": true,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ],
+      "normalization": "TRIM",
+      "max_length": 160
+    },
+    "subtitle": {
+      "type": "string",
+      "enabled": true,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ],
+      "normalization": "TRIM",
+      "max_length": 160
+    },
+    "call_to_action": {
+      "type": "string",
+      "enabled": true,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ],
+      "normalization": "TRIM",
+      "max_length": 160
+    },
+    "language": {
+      "type": "string",
+      "enabled": true,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ],
+      "normalization": "TRIM_LOWERCASE",
+      "max_length": 160
+    },
+    "player_name": {
+      "type": "string",
+      "enabled": true,
+      "content_types": [
+        "challenges"
+      ],
+      "normalization": "TRIM",
+      "max_length": 160
+    },
+    "challenge_label": {
+      "type": "string",
+      "enabled": true,
+      "content_types": [
+        "challenges"
+      ],
+      "normalization": "TRIM",
+      "max_length": 160
+    },
+    "hook": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "preparation_text": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "final_text": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "header_line_1": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "header_line_2": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "footer_line_1": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "footer_line_2": {
+      "type": "string",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "show_title": {
+      "type": "boolean",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "show_subtitle": {
+      "type": "boolean",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "show_call_to_action": {
+      "type": "boolean",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "show_header": {
+      "type": "boolean",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    },
+    "show_footer": {
+      "type": "boolean",
+      "enabled": false,
+      "content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills",
+        "longform"
+      ],
+      "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED"
+    }
+  },
+  "data_classes": {
+    "editable_editorial": {
+      "meaning": "Human-authored text/visibility values explicitly allowlisted by the selected content type.",
+      "editable_keys": [
+        "title",
+        "subtitle",
+        "call_to_action",
+        "language",
+        "player_name",
+        "challenge_label"
+      ]
+    },
+    "derived_telemetry": {
+      "editable": false,
+      "fields": [
+        "seed",
+        "music_seed",
+        "fps",
+        "duration_seconds",
+        "frame_count",
+        "palette_name",
+        "palette_id",
+        "system_id",
+        "generated_family_statistics",
+        "difficulty_tier"
+      ]
+    },
+    "provenance": {
+      "editable": false,
+      "fields": [
+        "request_id",
+        "request_hash",
+        "plan_hash",
+        "personalization_hash",
+        "source_revision",
+        "profile_id",
+        "generator_identity",
+        "tool_identity",
+        "artifact_sha256",
+        "media_sha256",
+        "provenance"
+      ]
+    },
+    "simulation_truth": {
+      "editable": false,
+      "fields": [
+        "mechanics",
+        "target",
+        "speed",
+        "collision",
+        "timing",
+        "winning_frame",
+        "close_calls",
+        "simulation_result",
+        "simulation_truth",
+        "gameplay_rng",
+        "structural_rng"
+      ]
+    }
+  },
+  "content_types": {
+    "challenges": {
+      "operator_label": "Challenge",
+      "model_state": "ACTIVE",
+      "request_plan_compatibility": "CURRENT_D4_CHALLENGE_REQUEST_ONLY",
+      "inventory": {
+        "source": "c11c-suite/c11c-producer/producer_schema.json",
+        "collection": "challenges",
+        "id_field": "id",
+        "family_field": "mechanic",
+        "subtype_field": null
+      },
+      "selection": {
+        "family_is_derived_from": "mechanic",
+        "variant_is": "challenge_id",
+        "subtype_required": false
+      },
+      "editable_fields": [
+        "title",
+        "subtitle",
+        "call_to_action",
+        "language",
+        "player_name",
+        "challenge_label"
+      ],
+      "profile_id": "editorial_text_v1"
+    },
+    "visual_loops": {
+      "operator_label": "Visual Loop",
+      "model_state": "ACTIVE_MODEL_ONLY",
+      "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+      "inventory": {
+        "source": "c11c-suite/c11c-producer/producer_schema.json",
+        "collection": "families",
+        "family_id": "dictionary_key",
+        "family_label": "name",
+        "subtype_collection": "grammars",
+        "subtype_id_index": 0,
+        "subtype_label_index": 1,
+        "selector_modes": [
+          "auto"
+        ],
+        "selector_modes_are_concrete_grammars": false
+      },
+      "selection": {
+        "family_required": true,
+        "subtype_required": true,
+        "variant_scope_identity": "family_id/subtype_id",
+        "additional_native_variant_registry": "NOT_DECLARED_IN_CURRENT_PRODUCER_SCHEMA"
+      },
+      "editable_fields": [
+        "title",
+        "subtitle",
+        "call_to_action",
+        "language"
+      ],
+      "technical_generator_parameters": "NOT_EDITORIAL; remain on existing C11-C Producer surface"
+    },
+    "visual_drills": {
+      "operator_label": "Visual Drill",
+      "model_state": "ACTIVE_MODEL_ONLY",
+      "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+      "inventory": {
+        "source": "c11c-suite/c11c-producer/producer_schema.json",
+        "collection": "drills",
+        "family_id": "dictionary_key",
+        "family_label": "name",
+        "variant_collection": "difficulty_values",
+        "variant_id_pattern": "tier-{difficulty}"
+      },
+      "selection": {
+        "family_required": true,
+        "subtype_required": false,
+        "variant_required": true,
+        "variant_is": "explicit difficulty tier from current producer schema"
+      },
+      "editable_fields": [
+        "title",
+        "subtitle",
+        "call_to_action",
+        "language"
+      ],
+      "difficulty_tier": "DERIVED_VARIANT_SELECTOR_NOT_AN_EDITORIAL_FIELD"
+    },
+    "longform": {
+      "operator_label": "Longform",
+      "model_state": "VISIBLE_BUT_DISABLED",
+      "request_plan_compatibility": "NOT_SUPPORTED_BY_CURRENT_D4_REQUEST_SCHEMA",
+      "enabled_for_selection": false,
+      "inventory": null,
+      "editable_fields": [],
+      "reason": "Longform is not a current producer_schema.video_types entry and the current D4 request requires challenge_id. LONGFORM_1080 is only a delivery profile and is not proof that Longform is a supported D content type."
+    }
+  },
+  "seed_contract": {
+    "master_seed": "NOT_ADOPTED",
+    "gameplay_seed": "request.seed",
+    "music_seed": "request.music_seed",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "runtime_seed_derivation": false,
+    "automatic_seed_generation": false,
+    "editorial_changes_may_mutate_gameplay_seed": false,
+    "editorial_changes_may_mutate_music_seed": false,
+    "editorial_changes_may_mutate_simulation_truth": false,
+    "music_seed_changes_are_audio_domain_only": true
+  },
+  "acceptance_gates": {
+    "D9.8": "Canonical source model + strict resolver + live-registry coverage tests",
+    "D9.9": "Existing Producer GUI/CLI integration and request/plan parity across supported types",
+    "D9.10": "Editorial-to-render bridge planning only; physical renderer integration deferred to the future D frozen baseline",
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE"
+  }
+}

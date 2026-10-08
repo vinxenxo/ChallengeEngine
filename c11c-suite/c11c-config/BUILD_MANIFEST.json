@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-config",
   "version": "0.2.0",
-  "branch": "C11-D D9.7",
+  "branch": "C11-D D9.7–D9.8",
   "entrypoint": "c11c-suite/c11c-config/main.py",
   "modules": [
     "c11c-suite/c11c-config/c11d_config.py"
@@ -18,7 +18,8 @@
     "D6 seeds",
     "D7 matrix/catalog",
     "D8 QA/release",
-    "D9 acceptance"
+    "D9 acceptance",
+    "D9 universal editorial model (declarative; no renderer/production authority)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -52,5 +53,7 @@
   "renderer_activation": false,
   "production_execution": false,
   "release_authority": "NONE",
-  "windows_qt_acceptance": "PENDING_OPERATOR_RUN"
+  "windows_qt_acceptance": "PENDING_OPERATOR_RUN",
+  "universal_editorial_model": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+  "universal_editorial_model_access": "READ_ONLY_CANONICAL"
 }
