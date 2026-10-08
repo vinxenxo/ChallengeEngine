@@ -1,22 +1,22 @@
 # C11-C Suite — Current Documentation
 
 **Suite runtime:** 0.1.4  
-**Producer:** 0.9.7  
+**Producer:** 0.10.0  
 **C11-C:** 2.19.12
 
-La Suite activa está separada en Test, Producer y Maintenance. GUI y CLI comparten las mismas rutas canónicas.
+La Suite activa tiene cinco superficies diferenciadas: Test, Producer, Catalog, Maintenance y Config. GUI y CLI comparten las mismas autoridades canónicas; no se crean suites paralelas.
 
 `C11C_SUITE_CURRENT_RULES.md` es la autoridad operativa actual.
 
 Los documentos de reglas anteriores son históricos y no constituyen autoridad operativa.
 
-## Current D7/D8 state
+## Current D8/D9 state
 
-C11-C 2.19.12 is frozen. C11-D D7 is PASS/CLOSED and FROZEN; D8.0 is the next phase. The active C11-D baseline is `ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip` (SHA-256 `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`).
+C11-C 2.19.12 is frozen. D0–D8 are PASS/CLOSED; D7 remains FROZEN. D9 is ACTIVE for integration/evolution of the existing Test, Producer, Maintenance, Catalog and Config GUIs. D9.4 is the real-media checkpoint only. D10 remains BLOCKED until GUI production, reproducibility and safety E2E acceptance is complete.
 
-## Current D7/D8 state
+## Current D8/D9 state
 
-C11-C 2.19.12 is frozen. C11-D D7 is PASS/CLOSED and FROZEN; D8.0 is the next phase. The active C11-D baseline is `ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip` (SHA-256 `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`).
+C11-C 2.19.12 is frozen. D0–D8 are PASS/CLOSED; D7 remains FROZEN. D9 is ACTIVE for integration/evolution of the existing Test, Producer, Maintenance, Catalog and Config GUIs. D9.4 is the real-media checkpoint only. D10 remains BLOCKED until GUI production, reproducibility and safety E2E acceptance is complete.
 
 ## Directory contents
 

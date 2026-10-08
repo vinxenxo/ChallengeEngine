@@ -8,7 +8,7 @@
 - 4 Drill families.
 - 5 Longforms.
 - C11-A.1 compatibility evidence.
-- Producer 0.9.7 and active C11-C Suite.
+- Producer 0.10.0 and active C11-C Suite; its D9.5.1 request/planning tab is additive, with C11-C backend fingerprint preserved.
 - Final acceptance and freeze evidence.
 
 ## Recovery work

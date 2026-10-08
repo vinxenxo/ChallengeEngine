@@ -1,38 +1,34 @@
-# C11-D START PROMPT — D8.0
+# C11-D START PROMPT — D9.5.1 / Producer GUI Request Integration
 
-Continue `ChallengeEngineV01_STATELESS` from the immutable D7.5 baseline:
+Continue from the user's latest local tree represented by `ChallengeEngineV01_STATELESS_C11-D_9_4_LATEST_20261008_224201.zip` and the current workspace with D9.4 PASS.
 
-`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`
+## State
 
-SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
+D0–D8 PASS/CLOSED; D7 FROZEN; D9.1–D9.4 PASS as real-media checkpoint. Overall D9 is ACTIVE because the five existing suite GUIs still need integration and real Windows GUI E2E acceptance. D10 is BLOCKED.
 
-## Current state
+## First patch
 
-D0–D7.5 = PASS / CLOSED. D7 = FROZEN. Next = D8.0.
+Apply `C11D_D9.5.1_PRODUCER_GUI_REQUEST_INTEGRATION_OVERLAY_V1.zip` to the existing repo root. It updates `c11c-producer` to 0.10.0 by adding a D4 request/personalization/planning tab in the existing GUI, shared with D4.6/D4.5 canonical adapters. It does not create a sixth suite and does not revive c11c-studio.
 
-D7 authorities: matrix `CANONICAL_D7_1`; catalog `CANONICAL_D7_3`; identity/provenance `CANONICAL_D7_4`; full acceptance `CANONICAL_D7_5`.
+Run:
 
-Coverage = 9 Challenges × 5 profiles × 2 modes = 90 core cases.
+```powershell
+python .\c11c-suite\c11c-producer\self_test.py
+python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
+python .\c11c-suite\self_test.py
+.\c11c-suite\run.bat
+```
 
-## Governance locks
+After launch, manually exercise the `C11-D · REQUEST + PERSONALIZACIÓN` tab. The local repo must contain PASS/CLOSED receipts for D4.2, D4.3, D4.4, D4.6 and D4.7; otherwise the UI planning action should block and report the missing receipt rather than guessing.
 
-`master_seed=NOT_ADOPTED`; runtime derivation disabled; automatic seed generation disabled; cross-domain seed sharing `FORBIDDEN`; D4.8 `BLOCKED`; runtime `NONE`; production `false`; renderer `false`.
+## Next target
 
-## Frozen boundary
+Once the Qt GUI has been exercised, D9.5.2 studies the safe way to bring the editorial values into real Challenge media. Preserve the frozen C11-C boundary and D4.8 BLOCKED status; do not claim a personalization is visible in the MP4 until a real physical render and visual evidence prove it.
 
-Protect C11-C simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry, and proven C11-C presentation/production behavior.
+## D9 later suite updates
 
-## D8 roadmap
+D9.6 Catalog 0.2.0, D9.7 Config 0.2.0, D9.8 Maintenance 0.2.0, D9.9 Test 0.2.0, D9.10 common shell 0.1.5 (only if needed), followed by cross-suite lifecycle, real GUI E2E, negatives and D9 final acceptance. See `docs/current/d/D9_SUITE_INTEGRATION_PLAN_V1.md`.
 
-D8.0 inventory/boundary → D8.1 ffprobe integrity → D8.2 visual QA → D8.3 audio QA → D8.4 artifact eligibility/provenance-to-media → D8.5 release manifest/staging → D8.6 release dry-run + negatives → D8.7 full acceptance/freeze.
+## Non-negotiable boundaries
 
-## First action
-
-Inventory the existing media QA and release tooling/evidence in the frozen repository. Establish the canonical D8.0 contract and explicit execution boundary. Do not render media or enable release execution merely because D7 is frozen.
-
-## Read first
-
-- `docs/master-prompts/MASTER_HANDOVER_C11D_D7_FROZEN.md`
-- `docs/current/d/D7_DOCUMENTATION_CLOSURE.md`
-- `docs/current/d/D8.0_ENTRY_BRIEF.md`
-- `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
+No sixth suite; c11c-studio is retired. C11-C simulation/mechanics/RNG, timing truth, C7/C9, logical 540×960 geometry and proven production behavior are immutable. `master_seed` remains NOT_ADOPTED; seed domains stay isolated; D4.8 remains BLOCKED; release authority NONE. D10 may not begin before D9 is formally closed.

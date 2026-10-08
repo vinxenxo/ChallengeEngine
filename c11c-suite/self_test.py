@@ -1,12 +1,12 @@
 from __future__ import annotations
-import ast, json, py_compile
+import ast, json, py_compile, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SUITE=ROOT/'c11c-suite'
 FILES=[
- 'main.py','common.py','c11d-control/main.py','c11d-control/self_test.py',
+ 'main.py','common.py',
  'c11c-test/main.py','c11c-test/run_all.bat','c11c-test/run_suite.bat','c11c-test/run_c11c_complete_review.bat','c11c-test/run_c11c_acceptance.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','test_retro_reference_contract.py','c11c-producer/test_gui_contract.bat','c11c-catalog/main.py','c11c-maintenance/main.py','c11c-config/main.py',
- 'run.bat','test_retro_reference_contract.bat','c11c-catalog/run.bat','c11c-config/run.bat','c11c-maintenance/run.bat','c11c-producer/main.py','c11c-producer/self_test.py','c11c-producer/test_producer_gui_contract.py','c11c-producer/preflight.py','c11c-producer/run_visual_drill_production.ps1','c11c-producer/run.bat','c11c-maintenance/main.py','c11c-producer/test_gui_contract.bat','c11c-test/run.bat','c11c-test/run_all.bat','c11c-test/run_suite.bat',
+ 'run.bat','test_retro_reference_contract.bat','c11c-catalog/run.bat','c11c-config/run.bat','c11c-maintenance/run.bat','c11c-producer/main.py','c11c-producer/self_test.py','c11c-producer/test_producer_gui_contract.py','c11c-producer/c11d_gui_request.py','c11c-producer/test_d9_producer_integration.py','c11c-producer/preflight.py','c11c-producer/run_visual_drill_production.ps1','c11c-producer/run.bat','c11c-maintenance/main.py','c11c-producer/test_gui_contract.bat','c11c-test/run.bat','c11c-test/run_all.bat','c11c-test/run_suite.bat',
 ]
 for rel in FILES:
     p=SUITE/rel; assert p.exists(), p
@@ -32,12 +32,6 @@ assert 'test_cleanup_contract.py' in test_ui
 assert 'verify_c11c_suite_launchers.ps1' in test_ui
 assert 'FULL_ACCEPTANCE_C11C_2.19.12.ps1' in test_ui
 assert 'C11-C ACCEPTANCE LAUNCHER' in test_ui
-control=(SUITE/'c11d-control'/'main.py').read_text(encoding='utf-8')
-assert 'D9.4 · CHECKPOINT' in control
-assert 'D10' in control
-assert 'release_authority' in control
-assert 'c11c-studio' not in control.lower()
-assert (SUITE/'c11d-control'/'run.bat').exists()
 assert 'C11-C 2.19.4 ACCEPTANCE' not in test_ui
 assert 'C11-C 2.19.10 ACCEPTANCE' not in test_ui
 assert "'-Workers', '7', '-All'" in test_ui
@@ -64,7 +58,10 @@ prod=(ROOT/'tools'/'prototypes'/'c11c_bulk'/'run_c11c_production.ps1').read_text
 assert '$finalFull=[System.IO.Path]::GetFullPath($finalMp4)' in prod
 assert 'OrdinalIgnoreCase' in prod
 manifest=json.loads((SUITE/'c11c-producer'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
-assert manifest['version']=='0.9.7'
+assert manifest['version']=='0.10.0'
+assert manifest['d_request_tab'] is True
+assert manifest['d_request_runtime_execution'] is False
+assert manifest['d_request_release_authority']=='NONE'
 assert manifest['drill_launcher']=='c11c-suite/c11c-producer/run_visual_drill_production.ps1'
 assert (ROOT/'FULL_ACCEPTANCE_C11C_2.19.12.ps1').exists()
 assert (ROOT/'docs'/'master-prompts'/'MASTER_HANDOVER_C11C_2.19_CONSOLIDATED.md').exists()
@@ -238,5 +235,8 @@ if commands:
 
 assert (ROOT/'docs'/'current'/'suite'/'C11C_SUITE_CURRENT_RULES.md').exists()
 assert (ROOT/'docs'/'current'/'suite'/'C11C_SUITE_TOOLING_MATRIX.md').exists()
-print('C11-C Suite 0.1.4 + Producer 0.9.7 + C11-C 2.19.12 full consolidated contracts STATIC PASS')
+integration = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d9_producer_integration.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
+assert integration.returncode == 0, integration.stdout + '\n' + integration.stderr
+assert 'core=90/90' in integration.stdout and 'personalization=12/12' in integration.stdout and 'negative=4/4' in integration.stdout
+print('C11-C Suite 0.1.4 + Producer 0.10.0 + C11-C 2.19.12 + D9.5.1 integration PASS')
 

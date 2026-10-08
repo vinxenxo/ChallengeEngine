@@ -2,8 +2,8 @@
 
 **Suite:** 0.1.4  
 **C11-C:** 2.19.12  
-**Producer:** 0.9.7  
-**Estado:** acceptance final PASS; freeze pendiente.
+**Producer:** 0.10.0  
+**Estado:** C11-C 2.19.12 FROZEN; C11-D D9 Suite Integration/Evolution ACTIVE.
 
 ## Modelo operativo
 
@@ -14,6 +14,8 @@ Superficies activas:
 - `c11c-suite/c11c-test` — pruebas y QA.
 - `c11c-suite/c11c-producer` — producción y review.
 - `c11c-suite/c11c-maintenance` — limpieza, organización, consolidación documental y freeze.
+- `c11c-suite/c11c-catalog` — catálogo e inspección de productos/artefactos.
+- `c11c-suite/c11c-config` — configuración declarativa y perfiles.
 
 `c11c-studio` está retirado. El alias mal escrito `c11c-suite/c11c-maintenace` es histórico y debe quedar archivado antes del freeze.
 
@@ -52,11 +54,15 @@ El ZIP incluye dos evidencias compactas bajo `release/evidence/`: el acceptance 
 
 ## Versiones
 
-`0.1.4` es la versión runtime de Suite. `0.9.7` es la versión activa de Producer. Una referencia como `2.16.9` en Producer puede identificar la lineage del backend certificado y no debe interpretarse como versión activa del Suite.
+`0.1.4` es la versión runtime de Suite. `0.10.0` es la versión activa de Producer; añade la pestaña D4 request/personalization en modo plan-only, sin activar D4.8. Una referencia como `2.16.9` en Producer puede identificar la lineage del backend certificado y no debe interpretarse como versión activa del Suite.
 
 ## D
 
 En C11-D cada capacidad debe existir en CLI y GUI con los mismos inputs, provenance y resultados reproducibles. La paridad GUI/CLI es un invariante transversal de todos los hitos D, no un trabajo reservado para D9.
+
+## Estado C11-D / D9
+
+D0–D8 están PASS/CLOSED (D7 FROZEN). D9.4 PASS es un checkpoint de medios real, no el cierre global de D9. D9 sigue ACTIVE hasta actualizar y probar cada superficie existente (`c11c-producer`, `c11c-catalog`, `c11c-config`, `c11c-maintenance`, `c11c-test`) y certificar producción/reproducción real desde GUI. D10 permanece BLOCKED.
 
 ## Inventario canónico
 

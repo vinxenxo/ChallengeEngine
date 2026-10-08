@@ -1,15 +1,15 @@
 # Producer — Current
 
-**Producer:** 0.9.7  
+**Producer:** 0.10.0  
 **C11-C:** 2.19.12
 
 Active operator surface: `c11c-suite/c11c-producer/`.
 
 The Producer orchestrates canonical commands and does not duplicate runtime/mechanic logic. Use its GUI together with the equivalent console commands during D development.
 
-## Current D7/D8 state
+## Current D9 state
 
-C11-C 2.19.12 is frozen. C11-D D7 is PASS/CLOSED and FROZEN; D8.0 is the next phase. The active C11-D baseline is `ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip` (SHA-256 `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`).
+Producer 0.10.0 preserves all existing C11-C workflows and adds the C11-D D4 request/personalization/plan tab. It is plan-only (D4.8 remains BLOCKED). Overall D9 is ACTIVE; D9.4 is a media checkpoint, and D10 remains BLOCKED until all five existing suites and real GUI E2E are accepted. Read `C11D_PRODUCER_0.10.0_CURRENT_STATE.md` and `docs/current/d/D9_SUITE_INTEGRATION_PLAN_V1.md`.
 
 ## Directory contents
 
@@ -18,4 +18,5 @@ C11-C 2.19.12 is frozen. C11-D D7 is PASS/CLOSED and FROZEN; D8.0 is the next ph
 
 ### Representative files
 - `C11C_PRODUCER_0.9.7_CONSOLE_TEST_COMMANDS.md`
-- `C11C_PRODUCER_0.9.7_CURRENT_STATE.md`
+- `C11C_PRODUCER_0.9.7_CURRENT_STATE.md` (historical C11-C baseline)
+- `C11D_PRODUCER_0.10.0_CURRENT_STATE.md` (current D9.5.1 integration)

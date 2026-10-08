@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "profile_id": "editorial_text_v1",
+  "profile_version": "1.0",
+  "scope": "EDITORIAL_PRESENTATION",
+  "values": {
+    "title": "esto es una prueba",
+    "subtitle": "subtitulo",
+    "call_to_action": "cta prueba",
+    "language": "es",
+    "player_name": "vicente",
+    "challenge_label": "KEY"
+  }
+}

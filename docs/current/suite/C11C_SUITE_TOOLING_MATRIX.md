@@ -1,9 +1,9 @@
-# C11-C Suite — Tooling Matrix at 2.19.12 Freeze
+# C11-C Suite — Tooling Matrix and D9 Integration Status
 
 **Suite runtime:** 0.1.4  
-**Producer:** 0.9.7  
+**Producer:** 0.10.0  
 **C11-C:** 2.19.12  
-**Status:** final acceptance PASS; freeze packaging pending.
+**Status:** C11-C 2.19.12 FROZEN; C11-D D9 integration ACTIVE.
 
 ## Operator rule
 
@@ -14,7 +14,7 @@ The Suite is an operator shell, not a second backend. GUI actions must invoke th
 | Surface | Purpose | Canonical authority | State |
 |---|---|---|---|
 | `c11c-test` | logical regression, focused QA, C11-C acceptance/review | `tests/run_all.py`, `tools/qa/c11/*`, `FULL_ACCEPTANCE_C11C_2.19.12.ps1` | active |
-| `c11c-producer` | audiovisual orchestration | Producer 0.9.7 + canonical C11-C production/review tools | active |
+| `c11c-producer` | audiovisual orchestration + D4 request/personalization/planning | Producer 0.10.0 + canonical C11-C tools + D4.6/D4.5 adapters | active; D4.8 execution blocked |
 | `c11c-maintenance` | cleanup, repository organization, docs consolidation, freeze | `tools/maintenance/*` + C11-C cleanup script | active |
 | `c11c-catalog` | catalog inspection | catalog entrypoint | active |
 | `c11c-config` | declarative configuration inspection/editing | config entrypoint | active |
@@ -34,6 +34,13 @@ The Suite is an operator shell, not a second backend. GUI actions must invoke th
 | Cleanup safety contract | Test/Maintenance | `c11c-suite/c11c-maintenance/test_cleanup_contract.py` | static contract |
 | Freeze dry-run | Test/Maintenance | `tools/maintenance/create_c11c_freeze_zip.ps1 -DryRun` | validates gates/exclusions, no ZIP |
 | Freeze package | Maintenance | `c11c-suite/c11c-maintenance/run_freeze_package.bat` | sole C11-C freeze package path |
+
+## C11-D D9 integration status
+
+- Producer 0.10.0: D4.1 request form, D4.3 editorial personalization inputs, D4.6/D4.5 exact plan parity and request/plan evidence. Plan-only; no renderer activation.
+- Catalog update is planned for D9.6; Config for D9.7; Maintenance for D9.8; Test for D9.9; common launcher/job integration for D9.10.
+- D9.11–D9.14 cover cross-suite provenance/replay, real GUI production and repeatability, safety negatives, all-suite acceptance and final closure.
+- D9.4 remains a PASS checkpoint, not overall D9 completion. D10 is blocked pending GUI E2E acceptance.
 
 ## Historical routes kept deliberately
 

@@ -12,7 +12,7 @@ SCHEMA = ROOT / "producer_schema.json"
 
 main_text = MAIN.read_text(encoding="utf-8")
 tree = ast.parse(main_text)
-assert 'APP_VERSION = "0.9.7"' in main_text
+assert 'APP_VERSION = "0.10.0"' in main_text
 assert "failed_seeds" in main_text
 assert "current_seed" in main_text
 assert 'QProcess.ProcessError.FailedToStart' in main_text
@@ -20,6 +20,17 @@ assert 'REVIEW_CHALLENGES' in main_text
 assert 'run_c11c_challenge_bulk_qa.ps1' in main_text
 assert 'run_c11a1_challenge_bulk_qa.ps1' not in main_text
 assert 'self.proc.errorOccurred.connect(self._process_error)' in main_text
+assert 'C11-D · REQUEST + PERSONALIZACIÓN' in main_text
+assert 'build_production_request' in main_text
+assert 'evaluate_gui_request' in main_text
+assert '_verify_c11d_planning_predecessors' in main_text
+assert 'D4.8 = BLOCKED' in main_text
+assert 'production_execution' in main_text
+helper_text = (ROOT / 'c11d_gui_request.py').read_text(encoding='utf-8')
+assert 'gui_production_adapter.py' in helper_text or 'gui_production_adapter' in helper_text
+assert 'production_cli.py' in helper_text or 'production_cli' in helper_text
+assert 'renderer_activation_false' in helper_text
+assert 'release_authority' in helper_text
 
 # The old blocking behavior is prohibited: a per-seed failure must not clear all pending jobs.
 finish = main_text[main_text.index('    def _finish_error'):main_text.index('    def _done', main_text.index('    def _finish_error'))]

@@ -6,9 +6,17 @@ import os
 import random
 import re
 import sys
+import uuid
+from datetime import datetime, timezone
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+
+from c11d_gui_request import (
+    build_production_request,
+    evaluate_gui_request,
+    resolve_delivery_profile_data,
+)
 
 from PySide6.QtCore import QProcess, Qt
 from PySide6.QtGui import QFont
@@ -32,11 +40,12 @@ from PySide6.QtWidgets import (
     QSpinBox,
     QTableWidget,
     QTableWidgetItem,
+    QTabWidget,
     QVBoxLayout,
     QWidget,
 )
 
-APP_VERSION = "0.9.7"
+APP_VERSION = "0.10.0"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -61,20 +70,9 @@ DELIVERY_ORDER = [
 
 
 def resolve_delivery_profile(profile_id: str) -> tuple[str, dict[str, Any]]:
-    profiles = DELIVERY_CONFIG.get("profiles", {})
-    seen: set[str] = set()
-    current = profile_id
-    while True:
-        if current in seen:
-            raise ValueError(f"Delivery profile alias cycle: {profile_id}")
-        seen.add(current)
-        profile = profiles.get(current)
-        if not isinstance(profile, dict):
-            raise ValueError(f"Unknown delivery profile: {current}")
-        target = profile.get("alias_of")
-        if not target:
-            return current, profile
-        current = str(target)
+    # Shared with the D9.5.1 request adapter so UI labels and D4 requests
+    # consume the same central delivery registry/alias semantics.
+    return resolve_delivery_profile_data(profile_id, DELIVERY_CONFIG)
 
 
 def delivery_label(profile_id: str) -> str:
@@ -282,11 +280,18 @@ class MainWindow(QMainWindow):
         main.setContentsMargins(9, 9, 9, 7)
         main.setSpacing(7)
 
+        self.tabs = QTabWidget()
+        c11c_tab = QWidget()
+        c11c_layout = QVBoxLayout(c11c_tab)
+        c11c_layout.setContentsMargins(4, 4, 4, 4)
         cols = QHBoxLayout()
         cols.setSpacing(8)
         cols.addWidget(self._build_recipe(), 1)
         cols.addWidget(self._build_queue(), 1)
-        main.addLayout(cols, 1)
+        c11c_layout.addLayout(cols, 1)
+        self.tabs.addTab(c11c_tab, "C11-C · PRODUCTOR EXISTENTE")
+        self.tabs.addTab(self._build_c11d_request_tab(), "C11-D · REQUEST + PERSONALIZACIÓN")
+        main.addWidget(self.tabs, 1)
 
         self.statusBar().showMessage("Preparado")
 
@@ -441,6 +446,316 @@ class MainWindow(QMainWindow):
         self.remove.clicked.connect(self.remove_selected)
         self.clear.clicked.connect(self._clear)
         return box
+
+    def _build_c11d_request_tab(self) -> QWidget:
+        tab = QWidget()
+        layout = QHBoxLayout(tab)
+        layout.setContentsMargins(6, 6, 6, 6)
+        layout.setSpacing(10)
+
+        form_box = QGroupBox("D4 · PRODUCTION REQUEST")
+        form = QGridLayout(form_box)
+        form.setHorizontalSpacing(8)
+        form.setVerticalSpacing(6)
+        row = 0
+
+        self.d_mode = QComboBox()
+        self.d_mode.addItem("REVIEW · PLAN", "REVIEW")
+        self.d_mode.addItem("PRODUCTION · PLAN ONLY (D4.8 BLOCKED)", "PRODUCTION")
+        form.addWidget(QLabel("Modo"), row, 0)
+        form.addWidget(self.d_mode, row, 1, 1, 2)
+        row += 1
+
+        self.d_challenge = QComboBox()
+        for cid, item in sorted(CHALLENGES.items()):
+            self.d_challenge.addItem(
+                f"{cid} · {str(item['mechanic']).upper()} · {item['duration_seconds']:.0f}s",
+                cid,
+            )
+        form.addWidget(QLabel("Challenge"), row, 0)
+        form.addWidget(self.d_challenge, row, 1, 1, 2)
+        row += 1
+
+        self.d_seed = QSpinBox()
+        self.d_seed.setRange(1, 2147483646)
+        self.d_seed.setValue(12345)
+        self.d_music_seed = QSpinBox()
+        self.d_music_seed.setRange(1, 2147483646)
+        self.d_music_seed.setValue(840001)
+        form.addWidget(QLabel("Gameplay seed"), row, 0)
+        form.addWidget(self.d_seed, row, 1)
+        form.addWidget(QLabel("Music seed"), row, 2)
+        form.addWidget(self.d_music_seed, row, 3)
+        row += 1
+
+        self.d_delivery = QComboBox()
+        for profile_id in DELIVERY_PROFILES:
+            self.d_delivery.addItem(delivery_label(profile_id), profile_id)
+        review_index = self.d_delivery.findData("REVIEW_720")
+        self.d_delivery.setCurrentIndex(review_index if review_index >= 0 else 0)
+        form.addWidget(QLabel("Delivery profile"), row, 0)
+        form.addWidget(self.d_delivery, row, 1, 1, 3)
+        row += 1
+
+        self.d_presentation = QLineEdit("social_default_v1")
+        self.d_presentation.setPlaceholderText("presentation_profile_id")
+        form.addWidget(QLabel("Presentation profile"), row, 0)
+        form.addWidget(self.d_presentation, row, 1, 1, 3)
+        row += 1
+
+        self.d_variation = QSpinBox()
+        self.d_variation.setRange(0, 1000000)
+        self.d_variation.setValue(0)
+        self.d_audio = QCheckBox("Audio enabled")
+        self.d_audio.setChecked(True)
+        form.addWidget(QLabel("Variation index"), row, 0)
+        form.addWidget(self.d_variation, row, 1)
+        form.addWidget(self.d_audio, row, 2, 1, 2)
+        row += 1
+
+        divider = QLabel("PERSONALIZACIÓN EDITORIAL · editorial_text_v1")
+        divider.setObjectName("SectionHeader")
+        form.addWidget(divider, row, 0, 1, 4)
+        row += 1
+
+        self.d_personalization = QCheckBox("Activar personalización editorial")
+        self.d_personalization.setChecked(True)
+        form.addWidget(self.d_personalization, row, 0, 1, 4)
+        row += 1
+
+        self.d_title = QLineEdit()
+        self.d_subtitle = QLineEdit()
+        self.d_cta = QLineEdit()
+        self.d_language = QLineEdit("es")
+        self.d_player_name = QLineEdit()
+        self.d_challenge_label = QLineEdit()
+        for edit, placeholder in (
+            (self.d_title, "Título / hook"),
+            (self.d_subtitle, "Subtítulo (opcional)"),
+            (self.d_cta, "Llamada a la acción"),
+            (self.d_language, "Idioma, p. ej. es"),
+            (self.d_player_name, "Nombre de jugador (opcional)"),
+            (self.d_challenge_label, "Etiqueta del Challenge"),
+        ):
+            edit.setMaxLength(160)
+            edit.setPlaceholderText(placeholder)
+        for label, widget in (
+            ("Título", self.d_title),
+            ("Subtítulo", self.d_subtitle),
+            ("CTA", self.d_cta),
+            ("Idioma", self.d_language),
+            ("Player name", self.d_player_name),
+            ("Challenge label", self.d_challenge_label),
+        ):
+            form.addWidget(QLabel(label), row, 0)
+            form.addWidget(widget, row, 1, 1, 3)
+            row += 1
+
+        self.d_load_defaults = QPushButton("CARGAR TEXTOS BASE DEL CHALLENGE")
+        self.d_load_defaults.clicked.connect(self._load_c11d_editorial_defaults)
+        form.addWidget(self.d_load_defaults, row, 0, 1, 4)
+        row += 1
+
+        self.d_validate = QPushButton("VALIDAR REQUEST + GENERAR PLAN")
+        self.d_validate.setObjectName("Primary")
+        self.d_validate.setMinimumHeight(42)
+        self.d_validate.clicked.connect(self._validate_c11d_request)
+        form.addWidget(self.d_validate, row, 0, 1, 4)
+        row += 1
+
+        self.d_notice = QLabel(
+            "D4.8 = BLOCKED · Esta vista valida request, personalización y plan. "
+            "No activa renderer, no genera MP4 y no publica productos. La conexión "
+            "de los textos al render real se certificará en D9.5.2."
+        )
+        self.d_notice.setWordWrap(True)
+        self.d_notice.setObjectName("D4Notice")
+        form.addWidget(self.d_notice, row, 0, 1, 4)
+        layout.addWidget(form_box, 1)
+
+        output_box = QGroupBox("CANONICAL OUTPUT / PARIDAD / EVIDENCIA")
+        output_layout = QVBoxLayout(output_box)
+        self.d_output_tabs = QTabWidget()
+        self.d_request_view = QPlainTextEdit()
+        self.d_canonical_view = QPlainTextEdit()
+        self.d_personalization_view = QPlainTextEdit()
+        self.d_plan_view = QPlainTextEdit()
+        self.d_parity_view = QPlainTextEdit()
+        self.d_command_view = QPlainTextEdit()
+        for view in (
+            self.d_request_view,
+            self.d_canonical_view,
+            self.d_personalization_view,
+            self.d_plan_view,
+            self.d_parity_view,
+            self.d_command_view,
+        ):
+            view.setReadOnly(True)
+            view.setLineWrapMode(QPlainTextEdit.NoWrap)
+        for title, view in (
+            ("GUI REQUEST", self.d_request_view),
+            ("D4.2 CANONICAL", self.d_canonical_view),
+            ("D4.3 PERSONALIZATION", self.d_personalization_view),
+            ("D4.4 PLAN", self.d_plan_view),
+            ("GUI ↔ CLI PARITY", self.d_parity_view),
+            ("REPRODUCIBILITY", self.d_command_view),
+        ):
+            self.d_output_tabs.addTab(view, title)
+        output_layout.addWidget(self.d_output_tabs, 1)
+        self.d_evidence_label = QLabel("Todavía no se ha generado una evidencia D9.5.1.")
+        self.d_evidence_label.setWordWrap(True)
+        output_layout.addWidget(self.d_evidence_label)
+        layout.addWidget(output_box, 1)
+
+        self.d_personalization.toggled.connect(self._sync_c11d_personalization_controls)
+        self.d_challenge.currentIndexChanged.connect(self._update_c11d_presentation_default)
+        self._sync_c11d_personalization_controls(self.d_personalization.isChecked())
+        self._load_c11d_editorial_defaults()
+        return tab
+
+    def _sync_c11d_personalization_controls(self, enabled: bool) -> None:
+        for widget in (
+            self.d_title,
+            self.d_subtitle,
+            self.d_cta,
+            self.d_language,
+            self.d_player_name,
+            self.d_challenge_label,
+        ):
+            widget.setEnabled(enabled)
+
+    def _selected_c11d_challenge_document(self) -> dict[str, Any]:
+        cid = str(self.d_challenge.currentData() or "")
+        item = CHALLENGES.get(cid)
+        if not item:
+            raise ValueError("Selecciona un Challenge válido.")
+        path = Path(item["path"])
+        document = json.loads(path.read_text(encoding="utf-8-sig"))
+        if str(document.get("challenge_id", "")) != cid:
+            raise ValueError(f"Challenge ID/file mismatch: {cid}")
+        return document
+
+    def _update_c11d_presentation_default(self, _index: int = -1) -> None:
+        try:
+            document = self._selected_c11d_challenge_document()
+            profile_id = str((document.get("presentation") or {}).get("profile", "UNKNOWN"))
+            if not self.d_presentation.text().strip() or self.d_presentation.text().strip() == "social_default_v1":
+                self.d_presentation.setText(profile_id)
+        except Exception:
+            return
+
+    def _load_c11d_editorial_defaults(self) -> None:
+        try:
+            document = self._selected_c11d_challenge_document()
+            content = document.get("content") or {}
+            self.d_title.setText(str(content.get("hook", ""))[:160])
+            self.d_cta.setText(str(content.get("cta", ""))[:160])
+            self.d_challenge_label.setText(str(document.get("mechanic", "UNKNOWN")).upper()[:160])
+            self.d_presentation.setText(str((document.get("presentation") or {}).get("profile", "UNKNOWN")))
+            self.statusBar().showMessage("Textos base cargados desde la definición existente; los cambios aún son plan-only.")
+        except Exception as exc:
+            QMessageBox.warning(self, "C11-D Request", str(exc))
+
+    def _verify_c11d_planning_predecessors(self) -> None:
+        receipt_paths = (
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_2" / "d4_2_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_3" / "d4_3_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_4" / "d4_4_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_6" / "d4_6_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_7" / "d4_7_validation_receipt.json",
+        )
+        for receipt_path in receipt_paths:
+            if not receipt_path.is_file():
+                raise RuntimeError(f"Falta evidencia PASS/CLOSED previa de D4: {receipt_path}")
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8-sig"))
+            if receipt.get("result") != "PASS" or receipt.get("status") != "CLOSED":
+                raise RuntimeError(f"El checkpoint D4 no está PASS/CLOSED: {receipt_path}")
+
+    def _validate_c11d_request(self) -> None:
+        try:
+            self._verify_c11d_planning_predecessors()
+            challenge_document = self._selected_c11d_challenge_document()
+            requested_profile = str(self.d_delivery.currentData())
+            _resolved_id, resolved_profile = resolve_delivery_profile(requested_profile)
+            request_id = "C11D-GUI-{0}-{1}".format(
+                datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
+                uuid.uuid4().hex[:10].upper(),
+            )
+            editorial_values = {
+                "title": self.d_title.text(),
+                "subtitle": self.d_subtitle.text(),
+                "call_to_action": self.d_cta.text(),
+                "language": self.d_language.text(),
+                "player_name": self.d_player_name.text(),
+                "challenge_label": self.d_challenge_label.text(),
+            }
+            request = build_production_request(
+                request_id=request_id,
+                mode=str(self.d_mode.currentData()),
+                challenge_document=challenge_document,
+                delivery_profile_id=requested_profile,
+                resolved_delivery_profile=resolved_profile,
+                presentation_profile_id=self.d_presentation.text().strip() or "UNKNOWN",
+                seed=int(self.d_seed.value()),
+                music_seed=int(self.d_music_seed.value()),
+                audio_enabled=bool(self.d_audio.isChecked()),
+                variation_index=int(self.d_variation.value()),
+                personalization_enabled=bool(self.d_personalization.isChecked()),
+                editorial_values=editorial_values,
+            )
+            result = evaluate_gui_request(request, PROJECT)
+
+            evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_gui"
+            evidence_root.mkdir(parents=True, exist_ok=True)
+            run_root = evidence_root / request_id
+            run_root.mkdir(parents=False, exist_ok=False)
+
+            def write_json(path: Path, value: Any) -> None:
+                path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+            write_json(run_root / "request.json", result["request"])
+            write_json(run_root / "canonical_request.json", result["canonical_request"])
+            write_json(run_root / "resolved_personalization.json", result["resolved_personalization"])
+            write_json(run_root / "production_plan.json", result["plan"])
+            write_json(run_root / "gui_cli_parity.json", result["parity"])
+            receipt = {
+                "schema": "C11-D-D9.5.1-PRODUCER-GUI-RECEIPT-V1",
+                "phase": "D9.5.1",
+                "result": "PASS_PLAN_ONLY",
+                "status": "PLANNED",
+                "request_id": request_id,
+                "request_hash": result["request_hash"],
+                "personalization_hash": result["personalization_hash"],
+                "plan_hash": result["plan_hash"],
+                "gui_cli_parity": result["parity"]["status"],
+                "renderer_execution": False,
+                "production_execution": False,
+                "release_authority": "NONE",
+                "d4_8": "BLOCKED",
+                "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
+            }
+            write_json(run_root / "producer_gui_receipt.json", receipt)
+
+            relative_request = str((run_root / "request.json").relative_to(PROJECT)).replace("/", "\\")
+            relative_plan = str((run_root / "production_plan_cli.json").relative_to(PROJECT)).replace("/", "\\")
+            command = f'python .\\tools\\c11d\\d4\\production_cli.py --request ".\\{relative_request}" --output ".\\{relative_plan}"'
+            self.d_request_view.setPlainText(json.dumps(request, ensure_ascii=False, indent=2))
+            self.d_canonical_view.setPlainText(json.dumps(result["canonical_request"], ensure_ascii=False, indent=2))
+            self.d_personalization_view.setPlainText(json.dumps(result["resolved_personalization"], ensure_ascii=False, indent=2))
+            self.d_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
+            self.d_parity_view.setPlainText(json.dumps(result["parity"], ensure_ascii=False, indent=2))
+            self.d_command_view.setPlainText(
+                "PLAN ONLY — reproduce with the canonical D4.5 CLI:\n\n" + command
+                + "\n\nThe CLI command consumes the saved request; it does not activate the renderer."
+            )
+            self.d_evidence_label.setText(f"Evidencia: {run_root}")
+            self.d_output_tabs.setCurrentWidget(self.d_parity_view)
+            self.statusBar().showMessage(
+                f"D9.5.1 PLAN PASS · GUI/CLI parity exact · plan={result['plan_hash'][:12]} · D4.8 BLOCKED"
+            )
+        except Exception as exc:
+            self.statusBar().showMessage("D9.5.1 plan failed; no product was created.")
+            QMessageBox.warning(self, "C11-D Request / Personalización", str(exc))
 
     def _clear_rows(self) -> None:
         while self.pl.count():

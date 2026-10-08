@@ -1,6 +1,6 @@
 {
   "app": "C11-C Producer",
-  "version": "0.9.7",
+  "version": "0.10.0",
   "ui_base": "0.4.0-preserved",
   "backend_truth": "ChallengeEngine-C11-C2.16.9 FROZEN.zip",
   "backend_profile_version": "2.16.9",
@@ -15,11 +15,17 @@
   "review_drill_launcher": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
   "stabilization_revision": "2.19.12",
   "producer_acceptance": "FINAL-CLOSURE-CANDIDATE; workstation acceptance required before freeze",
-  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation.",
+  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation. Additive C11-D D4.1 request/personalization/plan tab via canonical D4.6 GUI adapter and D4.5 parity; plan-only while D4.8 is BLOCKED.",
   "backend_logic_modified": false,
   "suite_location": "c11c-suite/c11c-producer",
-  "producer_version": "0.9.7",
+  "producer_version": "0.10.0",
   "review_challenges_launcher": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
   "queue_error_isolation": true,
-  "avi_capture": "temporary_intermediate_only"
+  "avi_capture": "temporary_intermediate_only",
+  "d_request_tab": true,
+  "d_request_adapter": "tools/c11d/d4/gui_production_adapter.py",
+  "d_cli_adapter": "tools/c11d/d4/production_cli.py",
+  "d_request_runtime_execution": false,
+  "d_request_renderer_activation": false,
+  "d_request_release_authority": "NONE"
 }

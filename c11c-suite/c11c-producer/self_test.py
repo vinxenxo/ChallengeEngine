@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import hashlib
 import json
@@ -10,13 +10,15 @@ PROJECT = Path(__import__("os").environ.get("C11C_PROJECT_ROOT", ROOT.parents[1]
 
 py_compile.compile(str(ROOT / "main.py"), doraise=True)
 py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
+py_compile.compile(str(ROOT / "c11d_gui_request.py"), doraise=True)
+py_compile.compile(str(ROOT / "test_d9_producer_integration.py"), doraise=True)
 
 schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
 build_manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
-assert build_manifest["version"] == "0.9.7"
+assert build_manifest["version"] == "0.10.0"
 assert build_manifest["backend_logic_modified"] is False
 
-assert schema["producer_version"] == "0.9.7"
+assert schema["producer_version"] == "0.10.0"
 assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
 assert set(schema["drills"]) == {"tracking", "saccade", "pursuit", "peripheral_scan"}
 assert len(schema["families"]) == 5
@@ -40,6 +42,11 @@ challenge_paths = sorted(challenge_root.glob("CHALLENGE_[0-9][0-9][0-9].json"))
 assert len(challenge_paths) == 9, challenge_paths
 assert any(op[0] == "REVIEW_CHALLENGES" for op in schema.get("batch_operations", []))
 assert (ROOT / "test_producer_gui_contract.py").exists()
+assert (ROOT / "c11d_gui_request.py").exists()
+assert (ROOT / "test_d9_producer_integration.py").exists()
+assert build_manifest["d_request_tab"] is True
+assert build_manifest["d_request_runtime_execution"] is False
+assert build_manifest["d_request_renderer_activation"] is False
 drill_runtime = (ROOT / "run_visual_drill_production.ps1").read_text(encoding="utf-8-sig")
 assert ("ProcessStartInfo" in drill_runtime) or ("Start-Process" in drill_runtime)
 assert "generator_stdout.log" in drill_runtime
@@ -129,4 +136,7 @@ assert backend_source.exists()
 actual_hash = hashlib.sha256(backend_source.read_bytes()).hexdigest()
 assert actual_hash == schema["backend_profile_sha256"], (schema["backend_profile_sha256"], actual_hash)
 
-print("C11-C Producer 0.9.7 self-test PASS")
+from test_d9_producer_integration import run_checks
+_d9_counts = run_checks()
+assert _d9_counts == {"core_cases": 90, "personalization_cases": 12, "negative_cases": 4}
+print("C11-C Producer 0.10.0 + C11-D D9.5.1 integration self-test PASS | core=90 | personalization=12 | negative=4")
