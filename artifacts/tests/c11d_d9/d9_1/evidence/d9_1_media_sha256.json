@@ -1,0 +1,12 @@
+[
+    {
+        "path":  "artifacts/tests/c11d_d9/d9_1/pilot_media/CHALLENGE_001/CHALLENGE_001_seed_12345.mp4",
+        "sha256":  "5560bf416fb77387b57a67362f5e80698776a5607183e5f129022123738e981a",
+        "bytes":  2011026
+    },
+    {
+        "path":  "artifacts/tests/c11d_d9/d9_1/pilot_media/CHALLENGE_001/CHALLENGE_001_seed_12345_source.avi",
+        "sha256":  "08735b8c2215caad294e668b06cf9d159e75c3c07af6321b173c75418ed30708",
+        "bytes":  7862816
+    }
+]

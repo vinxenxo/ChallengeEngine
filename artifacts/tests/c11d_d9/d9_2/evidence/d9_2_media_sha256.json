@@ -1,0 +1,12 @@
+[
+    {
+        "path":  "artifacts/tests/c11d_d9/d9_2/pilot_media/CHALLENGE_001_seed_12345_AV.mp4",
+        "sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+        "bytes":  2237361
+    },
+    {
+        "path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\c11d92\\music.wav",
+        "sha256":  "8acf42204bb535c3882b2e24c984779a122d9a1921cf58f7a2c63084b7631908",
+        "bytes":  793844
+    }
+]

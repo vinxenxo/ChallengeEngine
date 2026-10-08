@@ -1,0 +1,38 @@
+{
+    "request_id":  "D9.1-PILOT-001",
+    "schema_version":  "1.0",
+    "mode":  "REVIEW",
+    "challenge_id":  "CHALLENGE_001",
+    "challenge_version":  "1.0",
+    "seed":  12345,
+    "music_seed":  840001,
+    "delivery_profile_id":  "REVIEW_720",
+    "presentation_profile_id":  "social_default_v1",
+    "duration_seconds":  9,
+    "variation_index":  0,
+    "personalization":  {
+                            "enabled":  false,
+                            "profile_id":  "none_v1",
+                            "values":  {
+
+                                       }
+                        },
+    "editorial":  {
+                      "title":  "CHALLENGE_001 Â· key",
+                      "subtitle":  "D9.1 REAL MEDIA PILOT",
+                      "language":  "es",
+                      "call_to_action":  "Â¡INTÃ‰NTALO TÃš TAMBIÃ‰N!"
+                  },
+    "output":  {
+                   "container":  "mp4",
+                   "width":  720,
+                   "height":  1280,
+                   "fps":  60,
+                   "audio_enabled":  false
+               },
+    "provenance":  {
+                       "source_revision":  "D7-FROZEN",
+                       "request_origin":  "TEST",
+                       "parent_request_id":  "UNKNOWN"
+                   }
+}

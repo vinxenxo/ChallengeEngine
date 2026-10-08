@@ -1,0 +1,56 @@
+{
+  "contract_id": "C11-D-D9-REAL-MEDIA-PILOT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.1",
+  "status": "PILOT_ONLY",
+  "purpose": "Single physical C11-D media render pilot using existing proven challenge production renderer; not release authorization.",
+  "pilot_case": {
+    "challenge_id": "CHALLENGE_001",
+    "challenge_version": "1.0",
+    "mode": "REVIEW",
+    "seed": 12345,
+    "music_seed": 840001,
+    "delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "audio_enabled": false,
+    "variation_index": 0
+  },
+  "execution": {
+    "authorization": "EXPLICIT_SINGLE_CASE",
+    "global_production_authority": "NONE",
+    "release_authority": "NONE",
+    "renderer_execution_global": false,
+    "pilot_renderer_execution": true,
+    "bulk_execution": false,
+    "release_staging": false
+  },
+  "renderer_bridge": {
+    "producer": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "source_resolution": "540x960",
+    "delivery_resolution": "720x1280",
+    "delivery_profile": "REVIEW_720",
+    "audio": "OFF_FOR_VISUAL_PILOT",
+    "ffmpeg_delivery_allowed": true,
+    "godot_movie_maker_allowed": true
+  },
+  "protected": [
+    "C11-C simulation/mechanics/RNG",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C7/C9 contracts",
+    "logical 540x960 geometry",
+    "D7 canonical matrix/catalog/identity authorities",
+    "artifacts/releases",
+    "release"
+  ],
+  "postconditions": {
+    "physical_media_expected": true,
+    "one_pilot_product_expected": true,
+    "release_product_expected": false,
+    "scope_registration_expected": false,
+    "d8_scope_mutation_expected": false
+  }
+}

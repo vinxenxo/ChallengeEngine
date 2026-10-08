@@ -1,0 +1,13 @@
+{
+    "result":  "PASS",
+    "audio_stream_present":  true,
+    "codec":  "aac",
+    "sample_rate_hz":  48000,
+    "channels":  2,
+    "max_volume_db":  -9.2,
+    "mean_volume_db":  -20.3,
+    "non_silent":  true,
+    "d3_2_music_engine":  "c11d_music_engine_v5",
+    "style_profile":  "challenge_8bit_v1",
+    "music_seed":  840001
+}
