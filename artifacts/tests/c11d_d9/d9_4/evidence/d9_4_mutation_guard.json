@@ -1,0 +1,8 @@
+{
+    "schema":  "C11-D-D9-MUTATION-GUARD-V1",
+    "result":  "PASS",
+    "allowed_write_root":  "artifacts/tests/c11d_d9/d9_4",
+    "physical_media_mutation_performed":  true,
+    "release_product_mutation_performed":  false,
+    "protected_roots_equal":  true
+}

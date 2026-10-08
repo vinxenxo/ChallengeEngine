@@ -1,0 +1,56 @@
+{
+    "schema":  "C11-D-D9-ACCEPTANCE-MANIFEST-V1",
+    "checkpoint":  "D9.4",
+    "result":  "PASS",
+    "d9_status":  "CLOSED",
+    "d9_0":  "PASS/PREFLIGHT_ONLY",
+    "d9_1":  "PASS/PILOT_COMPLETE",
+    "d9_2":  "PASS/PILOT_COMPLETE",
+    "d9_3":  "PASS/PILOT_REPEAT_COMPLETE",
+    "d9_3_repeatability":  "EXACT",
+    "d9_3_negative_control":  "PASS",
+    "real_media_present":  true,
+    "physical_media_mutation_performed":  true,
+    "release_product_mutation_performed":  false,
+    "release_authority":  "NONE",
+    "production_execution":  false,
+    "renderer_execution":  false,
+    "allowed_write_root":  "artifacts/tests/c11d_d9/d9_4",
+    "media":  [
+                  {
+                      "name":  "D9.1_VIDEO",
+                      "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d9\\d9_1\\pilot_media\\CHALLENGE_001\\CHALLENGE_001_seed_12345.mp4",
+                      "exists":  true,
+                      "sha256":  "5560bf416fb77387b57a67362f5e80698776a5607183e5f129022123738e981a",
+                      "bytes":  2011026
+                  },
+                  {
+                      "name":  "D9.2_AV",
+                      "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d9\\d9_2\\pilot_media\\CHALLENGE_001_seed_12345_AV.mp4",
+                      "exists":  true,
+                      "sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+                      "bytes":  2237361
+                  },
+                  {
+                      "name":  "D9.3_REPEAT_A",
+                      "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d9\\d9_3\\pilot_media\\repeat_a\\CHALLENGE_001_seed_12345_AV_repeat_A.mp4",
+                      "exists":  true,
+                      "sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+                      "bytes":  2237361
+                  },
+                  {
+                      "name":  "D9.3_REPEAT_B",
+                      "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d9\\d9_3\\pilot_media\\repeat_b\\CHALLENGE_001_seed_12345_AV_repeat_B.mp4",
+                      "exists":  true,
+                      "sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+                      "bytes":  2237361
+                  },
+                  {
+                      "name":  "D9.3_NEGATIVE",
+                      "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11d_d9\\d9_3\\pilot_media\\negative_music_seed\\CHALLENGE_001_seed_12345_AV_musicseed_840002.mp4",
+                      "exists":  true,
+                      "sha256":  "7fc26a70d5acf0b9328dbf77a0b20d3be590defd09487cbb96433b9033be2895",
+                      "bytes":  2236434
+                  }
+              ]
+}

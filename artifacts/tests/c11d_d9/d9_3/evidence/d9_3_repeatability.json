@@ -1,0 +1,24 @@
+{
+    "result":  "PASS",
+    "deterministic_inputs":  {
+                                 "challenge_id":  "CHALLENGE_001",
+                                 "seed":  12345,
+                                 "music_seed":  840001,
+                                 "delivery_profile_id":  "REVIEW_720",
+                                 "source_video":  "artifacts/tests/c11d_d9/d9_1/pilot_media/CHALLENGE_001/CHALLENGE_001_seed_12345.mp4"
+                             },
+    "repeat_a":  {
+                     "wav_sha256":  "8acf42204bb535c3882b2e24c984779a122d9a1921cf58f7a2c63084b7631908",
+                     "wav_bytes":  793844,
+                     "mp4_sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+                     "mp4_bytes":  2237361
+                 },
+    "repeat_b":  {
+                     "wav_sha256":  "8acf42204bb535c3882b2e24c984779a122d9a1921cf58f7a2c63084b7631908",
+                     "wav_bytes":  793844,
+                     "mp4_sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+                     "mp4_bytes":  2237361
+                 },
+    "exact_wav_match":  true,
+    "exact_mp4_match":  true
+}

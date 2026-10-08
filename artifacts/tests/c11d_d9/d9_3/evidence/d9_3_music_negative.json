@@ -1,0 +1,18 @@
+{
+    "channels":  2,
+    "duration_seconds":  9.0,
+    "engine_id":  "c11d_music_engine_v5",
+    "engine_version":  "5.0",
+    "frame_count":  198450,
+    "max_abs_pcm":  10192,
+    "music_seed":  840002,
+    "output_hash":  "7ebe776abb85ee6ae648ae320b7335140d69068bf9c38c77520e25987b28f569",
+    "parameter_hash":  "1fc5ee08801c2355d7dbbae9cee430159fc1a93cbce5640cc22a6c56d4c830c8",
+    "peak_linear":  0.3110488255517722,
+    "rms_linear":  0.09647340974256655,
+    "sample_rate":  22050,
+    "style_profile_id":  "challenge_8bit_v1",
+    "style_profile_version":  "1.0",
+    "tempo_bpm":  104.0,
+    "variation_index":  0
+}

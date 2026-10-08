@@ -1,0 +1,11 @@
+{
+    "result":  "PASS",
+    "baseline_music_seed":  840001,
+    "negative_music_seed":  840002,
+    "baseline_wav_sha256":  "8acf42204bb535c3882b2e24c984779a122d9a1921cf58f7a2c63084b7631908",
+    "negative_wav_sha256":  "7ebe776abb85ee6ae648ae320b7335140d69068bf9c38c77520e25987b28f569",
+    "baseline_mp4_sha256":  "15316b26020b3d4b99b58984d9adde47e6ba9d3c877be174540c6327feb5059d",
+    "negative_mp4_sha256":  "7fc26a70d5acf0b9328dbf77a0b20d3be590defd09487cbb96433b9033be2895",
+    "wav_changed":  true,
+    "mp4_changed":  true
+}

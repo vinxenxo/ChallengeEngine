@@ -1,0 +1,50 @@
+[
+    {
+        "case":  "repeat_a",
+        "path":  "artifacts/tests/c11d_d9/d9_3/pilot_media/repeat_a/CHALLENGE_001_seed_12345_AV_repeat_A.mp4",
+        "probe":  {
+                      "video_width":  720,
+                      "video_height":  1280,
+                      "video_fps":  "60/1",
+                      "video_frames":  540,
+                      "video_duration":  9,
+                      "audio_codec":  "aac",
+                      "audio_sample_rate_hz":  48000,
+                      "audio_channels":  2,
+                      "audio_duration":  9,
+                      "size_bytes":  2237361
+                  }
+    },
+    {
+        "case":  "repeat_b",
+        "path":  "artifacts/tests/c11d_d9/d9_3/pilot_media/repeat_b/CHALLENGE_001_seed_12345_AV_repeat_B.mp4",
+        "probe":  {
+                      "video_width":  720,
+                      "video_height":  1280,
+                      "video_fps":  "60/1",
+                      "video_frames":  540,
+                      "video_duration":  9,
+                      "audio_codec":  "aac",
+                      "audio_sample_rate_hz":  48000,
+                      "audio_channels":  2,
+                      "audio_duration":  9,
+                      "size_bytes":  2237361
+                  }
+    },
+    {
+        "case":  "negative_music_seed",
+        "path":  "artifacts/tests/c11d_d9/d9_3/pilot_media/negative_music_seed/CHALLENGE_001_seed_12345_AV_musicseed_840002.mp4",
+        "probe":  {
+                      "video_width":  720,
+                      "video_height":  1280,
+                      "video_fps":  "60/1",
+                      "video_frames":  540,
+                      "video_duration":  9,
+                      "audio_codec":  "aac",
+                      "audio_sample_rate_hz":  48000,
+                      "audio_channels":  2,
+                      "audio_duration":  9,
+                      "size_bytes":  2236434
+                  }
+    }
+]
