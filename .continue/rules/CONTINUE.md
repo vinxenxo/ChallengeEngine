@@ -1,35 +1,40 @@
-# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-C 2.19.12
+# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-D D7 FROZEN
 
 ## Current state
 
-C11-C 2.19.12 has reached `FINAL CONSOLIDATED ACCEPTANCE PASS`. The repository is in **pre-freeze hardening**: documentation and Maintenance/QA tooling may be refined; engine/runtime mechanics are closed.
+C11-D D7.5 is **PASS / CLOSED** and D7 is **FROZEN**. The next checkpoint is D8.0 — Media QA + Release Pipeline.
 
-## First reads
+Source baseline:
+`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`
 
-1. `AGENTS.md`
-2. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-4. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
-5. `docs/current/suite/C11C_SUITE_CURRENT_RULES.md`
-6. `docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md`
-7. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md` after freeze
+SHA-256:
+`396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
 
-## Final pre-freeze rule
+## Core architecture
 
-Only these areas are open for hardening:
+The project is a deterministic, stateless Godot 4.7.1 challenge/video factory. C11-C engine truth is immutable; C11-D adds declarative productization around it.
 
-- current documentation and cross-context handover;
-- repository/root organization;
-- Suite launcher routing and static parity checks;
-- safe artifact cleanup tooling;
-- freeze-package validation and provenance.
+Key protected boundaries include simulation mathematics, mechanic truth, RNG ownership, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry and proven C11-C presentation behavior.
 
-Do not change simulation, mechanics, structural RNG, authoritative result semantics, C11-B geometry or proven presentation/runtime behavior.
+## D7 governance
 
-## Safe cleanup
+D7 is metadata/governance only. It does not authorize production execution or release creation.
 
-Review media cleanup remains allowlist-based and dry-run first. Release packaging independently excludes `artifacts/` and transient/editor caches and must not rely on a destructive cleanup to become safe.
+- Matrix `CANONICAL_D7_1`
+- Catalog `CANONICAL_D7_3`
+- Identity/provenance `CANONICAL_D7_4`
+- Acceptance `CANONICAL_D7_5`
+- `master_seed=NOT_ADOPTED`
+- runtime derivation disabled
+- automatic seed generation disabled
+- cross-domain seed sharing `FORBIDDEN`
+- D4.8 `BLOCKED`
+- runtime `NONE`
+- production `false`
+- renderer `false`
 
-## D
+## D8 entry discipline
 
-After the frozen package is sealed, D starts from that immutable archive. Follow the approved D sequence and retain the GUI/CLI parity rule throughout.
+First inventory existing media QA and release-related tooling/evidence. Establish the D8.0 boundary contract before implementing release execution. Never infer authorization from D7 alone.
+
+PowerShell 5.1 remains a required compatibility target. Keep changes additive and evidence-backed.

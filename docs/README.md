@@ -1,21 +1,56 @@
 # Documentation Map — ChallengeEngineV01_STATELESS
 
-## Current C11-C authority
+## Current authority
 
-- `current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-- `current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-- `current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
-- `current/c11c/C11-C_2.19_COMMAND_SHEET.md`
-- `current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
+- `current/c11c/` — frozen C11-C state, acceptance and operator documentation.
+- `current/d/` — active C11-D milestone contracts and status.
+- `master-prompts/` — cross-context master handovers and start prompts.
 
-## Active operator surface
+## Historical authority
 
-`c11c-suite` is the operational GUI/CLI shell. `c11c-studio` is retired and is not a runtime dependency.
+- `history/` — retained evidence only. Historical documents are not rewritten to look current and do not override active contracts.
 
-## C11-D
+## Current phase
 
-The D sequence is defined in `current/d/C11-D_ROADMAP_V1.0_STATELESS.md`.
+**C11-D D7 = FROZEN / CLOSED. Next = D8.0 — Media QA + Release Pipeline.**
 
-## Historical evidence
+Frozen D7.5 baseline:
+`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`
 
-Older versioned C11-C documents remain available under history/current snapshots for provenance and diagnosis. They do not override the consolidated current authority.
+SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
+
+## D8 entry
+
+Start with:
+
+`master-prompts/MASTER_HANDOVER_C11D_D7_FROZEN.md`
+
+`master-prompts/START_PROMPT_C11D_D8.0.md`
+
+`current/d/D8.0_ENTRY_BRIEF.md`
+
+The first D8.0 activity is inventory/boundary analysis, not release execution.
+
+## Directory contents
+
+### Subdirectories
+- `C11-C_VISUAL_CONTRACTS_v1.0/`
+- `c11/`
+- `c11c/`
+- `checkpoints/`
+- `contracts/`
+- `current/`
+- `history/`
+- `master-prompts/`
+- `mechanics/`
+- `operations/`
+
+### Representative files
+- `00_PROJECT_OVERVIEW.md`
+- `01_ARCHITECTURE.md`
+- `02_DATA_AND_CONTRACTS.md`
+- `03_PRESENTATION.md`
+- `04_REPOSITORY_STRUCTURE.md`
+- `05_TESTING_AND_REGRESSION.md`
+- `06_PRODUCTION_AND_DISTRIBUTION.md`
+- `07_ROADMAP.md`

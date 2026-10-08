@@ -16,3 +16,29 @@ These helpers do not modify C11-B engine semantics, C7 ownership/contracts or C9
 
 
 Duration is resolved by `C11CVisualLoopDuration.gd` for Visual Loop renderers. Audio generation receives the resolved duration so visual and audio periods remain aligned. Long-form production composes canonical rendered segments rather than duplicating family renderers.
+
+## Current D7/D8 state
+
+C11-C 2.19.12 is frozen. C11-D D7 is PASS/CLOSED and FROZEN; D8.0 is the next phase. The active C11-D baseline is `ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip` (SHA-256 `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`).
+
+## Directory contents
+
+### Subdirectories
+- None.
+
+### Representative files
+- `C11CColorBoost.gd`
+- `C11CDrillPaletteBank.gd`
+- `C11CEditorialAnimator.gd`
+- `C11CEditorialColors.gd`
+- `C11CHeaderAnimatorV2.gd`
+- `C11CMovieCapture.ps1`
+- `C11CPaletteBank.gd`
+- `C11CSafeAmbient.py`
+- `C11CTheme.gd`
+- `C11CTronDepthBackground.gd`
+- `C11CVariationProfile.gd`
+- `C11CVisualLoopDuration.gd`
+- `C11C_VARIATION_PROFILE_SPEC_v1.0.json`
+- `C11C_VISUAL_GRAMMAR_SPEC_v1.5.json`
+- … 10 additional files.

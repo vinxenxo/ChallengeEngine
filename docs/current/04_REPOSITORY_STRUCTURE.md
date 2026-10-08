@@ -1,18 +1,20 @@
-# Repository Structure — C11-C 2.19.12
+# Repository Structure — C11-D D7 FROZEN
 
 ```text
 ChallengeEngineV01_STATELESS/
-├── core/                  # deterministic engine/runtime boundaries
-├── challenges/            # declarative Challenge definitions
-├── definitions/           # authoring/runtime definitions
-├── profiles/              # delivery/presentation/audio profiles
-├── assets/                # source assets
-├── schemas/               # data contracts
-├── tests/                 # canonical regression suites
-├── c11c-suite/            # active GUI/CLI operator shell
-├── tools/                 # canonical operational/QA/maintenance tools
-├── artifacts/             # generated evidence/output; excluded from frozen source package
-└── docs/                  # current + historical documentation
+├── core/                  # protected deterministic engine/runtime boundaries
+├── challenges/            # nine canonical Challenge definitions
+├── definitions/           # versioned declarations and C11-D policies
+├── profiles/              # delivery/presentation/audio/difficulty profiles
+├── assets/                # tracked source/reference assets
+├── schemas/               # normative data schemas
+├── tests/                 # regression, compatibility and acceptance suites
+├── c11c-suite/            # canonical GUI/CLI operator shell
+├── tools/                 # canonical QA, D-milestone and maintenance tooling
+├── release/               # pre-existing/provenance material; not D7 release authority
+└── docs/                  # current, historical and cross-context documentation
 ```
 
-The misspelled `c11c-suite/c11c-maintenace` compatibility tree is historical residue and must be quarantined before freeze.
+The D7.5 source baseline is frozen at `ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`.
+
+Every directory in the frozen source tree has a local `README.md` navigation file. Generated evidence directories are governed by their producing contracts and are not used as general documentation roots.

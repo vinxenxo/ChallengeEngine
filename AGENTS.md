@@ -1,29 +1,27 @@
-# AGENTS.md — ChallengeEngineV01_STATELESS
+# AGENTS.md — ChallengeEngineV01_STATELESS / C11-D D7 FROZEN
 
 ## Current authority
 
-**C11-C 2.19.12 — FINAL CONSOLIDATED ACCEPTANCE PASS achieved; freeze is the only remaining C11-C seal step.**
+**C11-D D7.5 = PASS / CLOSED; D7 = FROZEN. Next = D8.0 Media QA + Release Pipeline.**
 
-The current baseline for this pre-freeze hardening pass is:
-`ChallengeEngineV01_STATELESS-C11-C2.19.12-V33-STABLE.zip`
+Immutable D7.5 baseline:
+`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`
 
-After the Maintenance freeze package is sealed, that exact archive and its SHA-256 become the immutable C11-D entry baseline.
+ZIP SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
 
-## First reads
+Do not resume from earlier D7 candidate overlays.
+
+## Mandatory first reads for D8
 
 1. `AGENTS.md`
 2. `.continue/rules/CONTINUE.md`
-3. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_STATE.md`
-4. `docs/current/c11c/C11-C_2.19_CONSOLIDATED_ACCEPTANCE_GATE.md`
-5. `docs/current/c11c/C11-C_2.19_COMPLETE_VIDEO_REVIEW_RUNBOOK.md`
-6. `docs/current/c11c/C11-C_2.19_COMMAND_SHEET.md`
-7. `docs/current/c11c/C11-C_2.19_DOCUMENTATION_INDEX.md`
-8. `docs/current/suite/C11C_SUITE_CURRENT_RULES.md`
-9. `docs/current/producer/C11C_PRODUCER_0.9.7_CURRENT_STATE.md`
-10. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md` after C11-C freeze
-11. `docs/master-prompts/MASTER_HANDOVER_C11D_V1.0_STATELESS.md` after C11-C freeze
+3. `docs/master-prompts/MASTER_HANDOVER_C11D_D7_FROZEN.md`
+4. `docs/master-prompts/START_PROMPT_C11D_D8.0.md`
+5. `docs/current/d/D7_DOCUMENTATION_CLOSURE.md`
+6. `docs/current/d/D8.0_ENTRY_BRIEF.md`
+7. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
 
-## Frozen engine boundary
+## Frozen C11-C boundary
 
 Do not modify without an explicit checkpoint, contract update, focused regression and rollback evidence:
 
@@ -36,33 +34,30 @@ Do not modify without an explicit checkpoint, contract update, focused regressio
 - `RenderedFrameStream`;
 - C7 audio contracts/ownership;
 - C9 authoring semantics;
-- logical 540x960 C11-B social geometry.
+- logical 540×960 C11-B social geometry;
+- proven C11-C presentation/production behavior.
 
-The final pre-freeze work is restricted to documentation, repository organization and QA/Maintenance tooling.
+## D7 frozen boundary
 
-## C11-C manufacturing contract
+D7 created metadata/governance only. It established a deterministic 90-case production matrix and catalog chain but did **not** authorize media production or release execution.
 
-- Visual Loops: 5 families / 27 grammars.
-- Historical family crosswalk: `geometric`, `fractal`, `kaleidoscope`, `particle_flow`, `vector_field`.
-- Editorial names: Geometric Waves, Fractal Bloom, Sacred Symmetry, Living Particles, Invisible Forces.
-- Visual Drills: Tracking, Saccade, Pursuit, Peripheral Scan.
-- Review corpus: 27 Loops + 20 Drills + 5 Longforms = 52 videos.
-- Review delivery: 720x1280 @ 30 FPS.
-- Master delivery profile: `MASTER_1080` / 1080x1920.
-- Producer: 0.9.7.
-- Suite application: 0.1.4; current Suite rules are maintained separately from the application version.
-- Art Direction review: `Workers=7` genuine concurrency, private worker Godot roots, worker-local `.godot` and capture override state.
+- Matrix authority: `CANONICAL_D7_1`.
+- Catalog authority: `CANONICAL_D7_3`.
+- Identity/provenance authority: `CANONICAL_D7_4`.
+- Full acceptance authority: `CANONICAL_D7_5`.
+- `master_seed=NOT_ADOPTED`.
+- Cross-domain seed sharing: `FORBIDDEN`.
+- D4.8: `BLOCKED`.
+- Runtime: `NONE`.
+- Production: `false`.
+- Renderer: `false`.
 
 ## Operator parity
 
-`c11c-suite` is the canonical GUI operator shell. GUI actions delegate to the same canonical PowerShell/Python/Godot launchers used directly from the command line.
+`c11c-suite` remains the canonical GUI operator shell. GUI actions must continue to delegate to the same canonical PowerShell/Python/Godot paths used directly from the command line.
 
-For D, GUI and CLI are intended to be used simultaneously during authoring/testing; no GUI-only backend or GUI-only state may be introduced.
+For D, GUI and CLI may be used simultaneously during authoring/testing; no GUI-only backend or state may be introduced.
 
 ## Test discipline
 
-Focused checks come before expensive aggregate execution. Any new `*Test.gd` is registered in `tests/run_all.py`; any new QA/Maintenance operation has a direct console launcher and a Suite surface where appropriate.
-
-## D entry
-
-Do not begin D implementation against the unfrozen workspace. Seal C11-C first, then verify archive SHA-256 and use that exact archive as the D baseline.
+Focused checks come before expensive aggregate execution. PowerShell 5.1 compatibility is mandatory. Python validation should use `-B` or `PYTHONDONTWRITEBYTECODE=1` when repository mutation guards are active.
