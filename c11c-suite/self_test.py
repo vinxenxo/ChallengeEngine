@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SUITE=ROOT/'c11c-suite'
 FILES=[
- 'main.py','common.py',
+ 'main.py','common.py','c11d-control/main.py','c11d-control/self_test.py',
  'c11c-test/main.py','c11c-test/run_all.bat','c11c-test/run_suite.bat','c11c-test/run_c11c_complete_review.bat','c11c-test/run_c11c_acceptance.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','c11c-test/run_c11c_one_video_each_type.bat','c11c-test/run_c11c_focused_validation.bat','test_retro_reference_contract.py','c11c-producer/test_gui_contract.bat','c11c-catalog/main.py','c11c-maintenance/main.py','c11c-config/main.py',
  'run.bat','test_retro_reference_contract.bat','c11c-catalog/run.bat','c11c-config/run.bat','c11c-maintenance/run.bat','c11c-producer/main.py','c11c-producer/self_test.py','c11c-producer/test_producer_gui_contract.py','c11c-producer/preflight.py','c11c-producer/run_visual_drill_production.ps1','c11c-producer/run.bat','c11c-maintenance/main.py','c11c-producer/test_gui_contract.bat','c11c-test/run.bat','c11c-test/run_all.bat','c11c-test/run_suite.bat',
 ]
@@ -32,6 +32,12 @@ assert 'test_cleanup_contract.py' in test_ui
 assert 'verify_c11c_suite_launchers.ps1' in test_ui
 assert 'FULL_ACCEPTANCE_C11C_2.19.12.ps1' in test_ui
 assert 'C11-C ACCEPTANCE LAUNCHER' in test_ui
+control=(SUITE/'c11d-control'/'main.py').read_text(encoding='utf-8')
+assert 'D9.4 · CHECKPOINT' in control
+assert 'D10' in control
+assert 'release_authority' in control
+assert 'c11c-studio' not in control.lower()
+assert (SUITE/'c11d-control'/'run.bat').exists()
 assert 'C11-C 2.19.4 ACCEPTANCE' not in test_ui
 assert 'C11-C 2.19.10 ACCEPTANCE' not in test_ui
 assert "'-Workers', '7', '-All'" in test_ui

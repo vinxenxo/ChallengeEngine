@@ -13,6 +13,7 @@ APPS = [
  ('MAINTENANCE','c11c-maintenance/main.py','Cleanup / layout / ZIP'),
  ('CONFIG','c11c-config/main.py','JSON / definitions / contracts'),
  ('PRODUCER','c11c-producer/main.py','A LA CARTA audiovisual production'),
+ ('C11-D CONTROL','c11d-control/main.py','D4–D9 integration / governance / operators'),
 ]
 class SuiteWindow(QMainWindow):
     def __init__(self):

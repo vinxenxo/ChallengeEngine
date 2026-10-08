@@ -1,0 +1,88 @@
+{
+  "schema": "C11-D-D9-SUITE-INTEGRATION-MATRIX-V1",
+  "phase": "D9.5.0",
+  "status": "FOUNDATION",
+  "canonical_surface": "c11c-suite",
+  "operator_rule": "GUI_AND_CLI_COEQUAL_OVER_CANONICAL_BACKEND",
+  "studio_architecture_policy": "PORT_PRINCIPLES_INTO_CANONICAL_SUITE; DO_NOT_CREATE_A_PARALLEL_OPERATOR_ROOT",
+  "d10_gate": "BLOCKED_UNTIL_D9_GUI_ACCEPTANCE",
+  "surfaces": [
+    {
+      "domain": "D2",
+      "capability": "Asset Families / Binding / Provenance",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d2/*",
+      "authority": "NONE"
+    },
+    {
+      "domain": "D3",
+      "capability": "Procedural Music V5 / Audio Identity",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d3/*",
+      "authority": "NONE"
+    },
+    {
+      "domain": "D4",
+      "capability": "Production Request / Personalization / Plan",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d4/run_d4_2_normalization.ps1; tools/c11d/d4/run_d4_4_canonical_orchestrator.ps1",
+      "authority": "D4.8 BLOCKED"
+    },
+    {
+      "domain": "D4",
+      "capability": "GUI / CLI Parity",
+      "gui_state": "OPERABLE",
+      "canonical": "tools/c11d/d4/run_d4_7_gui_cli_parity.ps1",
+      "authority": "NONE"
+    },
+    {
+      "domain": "D5",
+      "capability": "Artifact Topology / Provenance / Lifecycle",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d5/*",
+      "authority": "NONE"
+    },
+    {
+      "domain": "D6",
+      "capability": "Seed Governance / Isolation / Request-Plan Integration",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d6/*",
+      "authority": "NONE"
+    },
+    {
+      "domain": "D7",
+      "capability": "Matrix / Catalog / Identity / Provenance",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d7/*",
+      "authority": "FROZEN"
+    },
+    {
+      "domain": "D8",
+      "capability": "Media QA / Eligibility / Release Control Plane",
+      "gui_state": "FOUNDATION",
+      "canonical": "tools/c11d/d8/*",
+      "authority": "RELEASE NONE"
+    },
+    {
+      "domain": "D9",
+      "capability": "Real Media Pilot / A-V Repeat / Negative Controls",
+      "gui_state": "OPERABLE",
+      "canonical": "tools/c11d/d9/*",
+      "authority": "EXPLICIT PILOT ONLY"
+    },
+    {
+      "domain": "D9",
+      "capability": "Native integrated Production UX",
+      "gui_state": "NEXT",
+      "canonical": "shared canonical backends",
+      "authority": "NOT_CERTIFIED"
+    },
+    {
+      "domain": "D9",
+      "capability": "Real GUI end-to-end acceptance",
+      "gui_state": "NEXT",
+      "canonical": "Suite + canonical backends",
+      "authority": "GATE_TO_D10"
+    }
+  ]
+}

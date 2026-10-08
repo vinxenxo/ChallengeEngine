@@ -1,6 +1,6 @@
 # C11-D — Approved Milestones and Current State
 
-**Current:** D7 FROZEN / CLOSED. **Next:** D8.0 Media QA + Release Pipeline.
+**Current:** D9 ACTIVE — Suite integration/evolution. **D9.4 = PASS/CLOSED checkpoint. D10 = BLOCKED.**
 
 ## Frozen D7.5 baseline
 
@@ -23,9 +23,16 @@ SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
 | D5.0–D5.5 | Provenance/topology/lifecycle | PASS / CLOSED |
 | D6.0–D6.5 | Seed governance | PASS / CLOSED |
 | D7.0–D7.5 | Matrix/catalog/identity/full acceptance | PASS / CLOSED |
-| D7 | Phase freeze | **FROZEN** |
-| D8.0–D8.7 | Media QA + release pipeline | NEXT |
-| D9 | Suite integration/evolution | FUTURE |
-| D10 | New mechanics | FUTURE |
+| D7 | Phase freeze | FROZEN |
+| D8.0–D8.7 | Media QA + release pipeline | PASS / CLOSED |
+| D9.0 | Real media preflight | PASS |
+| D9.1 | First physical video pilot | PASS |
+| D9.2 | Audio-enabled A/V pilot | PASS |
+| D9.3 | Deterministic A/V repeat + negatives | PASS |
+| D9.4 | Real-media acceptance checkpoint | PASS / CLOSED |
+| D9.5 | Suite / Studio architecture integration | ACTIVE |
+| D9.6 | Native GUI completion + real GUI E2E | PENDING |
+| D9.7 | Final D9 acceptance / closure | PENDING |
+| D10 | New mechanics | **BLOCKED** |
 
-GUI/CLI parity remains a transverse invariant.
+GUI/CLI parity remains a transverse invariant. D10 is not eligible until D9.7.
