@@ -1,0 +1,14 @@
+{
+  "contract": "C11-D-D8-RELEASE-MANIFEST-V1",
+  "phase": "D8",
+  "checkpoint": "D8.5",
+  "status": "CANONICAL_DETERMINISTIC_MANIFEST_RULES",
+  "source_scope": "D8_MEDIA_SCOPE_V1",
+  "manifest_authority": "NON_AUTHORITY_PREVIEW",
+  "sort_key": "catalog_key_ascending",
+  "wall_clock_timestamp_in_manifest": false,
+  "filesystem_discovery_creates_candidate": false,
+  "historical_media_creates_candidate": false,
+  "release_authority_required_for_physical_staging": true,
+  "physical_staging_when_release_authority_NONE": false
+}

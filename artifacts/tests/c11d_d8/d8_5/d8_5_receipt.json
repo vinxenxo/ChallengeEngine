@@ -1,0 +1,19 @@
+{
+    "contract":  "C11-D-D8-RELEASE-MANIFEST-V1",
+    "checkpoint":  "D8.5",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "scope_mode":  "EXPLICIT_REGISTRY_ONLY",
+    "scope_candidate_count":  0,
+    "manifest_entry_count":  0,
+    "physical_staging_performed":  false,
+    "release_authority":  "NONE",
+    "production_execution":  false,
+    "renderer_execution":  false,
+    "runtime_authority":  "NONE",
+    "master_seed":  "NOT_ADOPTED",
+    "cross_domain_seed_sharing":  "FORBIDDEN",
+    "d4_8":  "BLOCKED",
+    "manifest_authority":  "NON_AUTHORITY_PREVIEW",
+    "predecessor_receipt_schema":  "D8.1 validation/status; D8.2 validation/status; D8.3 validation/status; D8.4 result+status"
+}

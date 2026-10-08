@@ -1,0 +1,30 @@
+{
+    "contract":  "C11-D-D8-RELEASE-MANIFEST-NEGATIVES-V1",
+    "result":  "PASS",
+    "tests":  [
+                  {
+                      "id":  "filesystem_discovery_does_not_create_candidate",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "historical_media_does_not_create_candidate",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "filename_only_does_not_create_candidate",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "directory_only_does_not_create_candidate",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "release_authority_none_blocks_physical_staging",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "manifest_is_non_authority_preview",
+                      "pass":  true
+                  }
+              ]
+}

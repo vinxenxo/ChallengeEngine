@@ -1,0 +1,8 @@
+{
+    "result":  "PASS",
+    "before_protected_roots_sha256":  "3a9a75b75f8a9abb0d6c4d297f188e724c9b6514dbaac5643d31850128c74f49",
+    "after_protected_roots_sha256":  "3a9a75b75f8a9abb0d6c4d297f188e724c9b6514dbaac5643d31850128c74f49",
+    "allowed_write_root":  "artifacts/tests/c11d_d8/d8_6",
+    "physical_media_mutation_performed":  false,
+    "release_product_mutation_performed":  false
+}

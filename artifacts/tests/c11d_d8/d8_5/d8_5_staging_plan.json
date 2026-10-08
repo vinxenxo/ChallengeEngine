@@ -1,0 +1,13 @@
+{
+    "contract":  "C11-D-D8-RELEASE-STAGING-V1",
+    "checkpoint":  "D8.5",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "action":  "NO_OP",
+    "physical_copy_performed":  false,
+    "staging_directory_created":  false,
+    "reason":  "release_authority_NONE_and_no_physical_staging_authorized",
+    "source_scope":  "D8_MEDIA_SCOPE_V1",
+    "source_entry_count":  0,
+    "release_authority":  "NONE"
+}

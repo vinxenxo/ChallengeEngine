@@ -1,0 +1,15 @@
+{
+  "contract": "C11-D-D8.6-RELEASE-DRY-RUN-V1",
+  "phase": "D8",
+  "checkpoint": "D8.6",
+  "status": "CANONICAL_DRY_RUN_RULES",
+  "source_scope": "D8_MEDIA_SCOPE_V1",
+  "release_authority_required_for_physical_staging": true,
+  "physical_staging_when_release_authority_NONE": false,
+  "filesystem_discovery_creates_candidate": false,
+  "historical_media_creates_candidate": false,
+  "synthetic_candidate_when_authority_NONE": "BLOCKED_AUTHORITY_NONE",
+  "deterministic_manifest_sort_key": "catalog_key_ascending",
+  "wall_clock_timestamp_in_manifest": false,
+  "allowed_write_root": "artifacts/tests/c11d_d8/d8_6"
+}

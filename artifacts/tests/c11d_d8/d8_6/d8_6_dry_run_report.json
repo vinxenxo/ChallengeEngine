@@ -1,0 +1,14 @@
+{
+    "contract":  "C11-D-D8.6-RELEASE-DRY-RUN-V1",
+    "checkpoint":  "D8.6",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "scope_mode":  "EXPLICIT_REGISTRY_ONLY",
+    "scope_candidate_count":  0,
+    "manifest_entry_count":  0,
+    "release_authority":  "NONE",
+    "physical_actions_performed":  false,
+    "release_products_created":  false,
+    "deterministic_manifest_sha256":  "5473a2d3dc76de897c461e13641e737d2e70523e5827e39961a00eb43e9bec15",
+    "synthetic_negative_decision":  "BLOCKED_AUTHORITY_NONE"
+}

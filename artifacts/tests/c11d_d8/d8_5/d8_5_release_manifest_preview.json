@@ -1,0 +1,14 @@
+{
+    "contract":  "C11-D-D8-RELEASE-MANIFEST-V1",
+    "checkpoint":  "D8.5",
+    "manifest_status":  "NON_AUTHORITY_PREVIEW",
+    "release_authority":  "NONE",
+    "production_execution":  false,
+    "renderer_execution":  false,
+    "runtime_authority":  "NONE",
+    "scope_mode":  "EXPLICIT_REGISTRY_ONLY",
+    "entry_count":  0,
+    "entries":  [
+
+                ]
+}

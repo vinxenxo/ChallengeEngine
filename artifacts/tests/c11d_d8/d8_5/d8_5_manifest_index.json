@@ -1,0 +1,8 @@
+{
+    "contract":  "C11-D-D8-RELEASE-MANIFEST-INDEX-V1",
+    "manifest_file":  "artifacts/tests/c11d_d8/d8_5/d8_5_release_manifest_preview.json",
+    "manifest_sha256":  "e438606b456f1718c47c526fc6b5cc2566cafc8a9eac5f1b3c025e282dd6be15",
+    "authority":  "NON_AUTHORITY_PREVIEW",
+    "deterministic_order":  "catalog_key_ascending",
+    "predecessor_receipt_schema":  "stage-native validation receipt contracts"
+}

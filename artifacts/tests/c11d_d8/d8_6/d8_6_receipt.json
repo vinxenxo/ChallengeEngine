@@ -1,0 +1,14 @@
+{
+    "contract":  "C11-D-D8.6-RELEASE-DRY-RUN-V1",
+    "checkpoint":  "D8.6",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "scope_candidate_count":  0,
+    "manifest_entry_count":  0,
+    "deterministic_manifest_pass":  true,
+    "negative_tests_pass":  true,
+    "physical_actions_performed":  false,
+    "release_products_created":  false,
+    "release_authority":  "NONE",
+    "next":  "D8.7"
+}

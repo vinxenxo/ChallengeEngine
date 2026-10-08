@@ -1,0 +1,8 @@
+{
+    "contract":  "C11-D-D8.6-DETERMINISM-V1",
+    "manifest_sha256_run1":  "5473a2d3dc76de897c461e13641e737d2e70523e5827e39961a00eb43e9bec15",
+    "manifest_sha256_run2":  "5473a2d3dc76de897c461e13641e737d2e70523e5827e39961a00eb43e9bec15",
+    "equal":  true,
+    "canonical_order":  "catalog_key_ascending",
+    "wall_clock_timestamp_in_manifest":  false
+}
