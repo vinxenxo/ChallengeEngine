@@ -378,3 +378,28 @@ build_factory.py SHA-256: 3DB8FBC21CF0C78430018424F83A9EED5B42DF34A3908BA152F677
 - **D6.3 = PASS / CLOSED
 
 D6.5 = PASS / CLOSED
+
+
+<!-- C11D_D7_5_HANDOFF -->
+
+## C11-D D7.5 CLOSED
+
+- D7.0-D7.4 PASS/CLOSED.
+- D7 full acceptance PASS/CLOSED.
+- Canonical authorities: matrix CANONICAL_D7_1; catalog CANONICAL_D7_3; identity/provenance CANONICAL_D7_4.
+- Coverage: 9 challenges Ã— 5 delivery profiles Ã— 2 modes = 90 core cases.
+- D4.8 remains BLOCKED; runtime NONE; production and renderer execution disabled.
+- Next active checkpoint: **D8 - Media QA + Release Pipeline**.
+
+
+<!-- C11D_D7_FREEZE_HANDOFF -->
+
+## C11-D D7 FROZEN / D8 READY
+
+- D7.0-D7.5 PASS/CLOSED.
+- D7 phase FROZEN.
+- Canonical authorities: matrix CANONICAL_D7_1; catalog CANONICAL_D7_3; identity/provenance CANONICAL_D7_4; full acceptance CANONICAL_D7_5.
+- Coverage: 9 challenges x 5 delivery profiles x 2 modes = 90 core cases.
+- Governance remains locked; D4.8 BLOCKED; runtime NONE; production/renderer false.
+- Next active checkpoint: D8.0 - Media QA + Release Pipeline.
+

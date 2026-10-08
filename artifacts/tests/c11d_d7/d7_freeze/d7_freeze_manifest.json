@@ -1,0 +1,38 @@
+{
+    "checkpoint":  "C11-D D7.5",
+    "phase":  "D7",
+    "status":  "FROZEN",
+    "library_baseline_note":  "D7.5 PASS frozen baseline is stored in the project Library; exact Library display name is the external canonical artifact identity.",
+    "frozen_c11c_baseline":  "ChallengeEngineV01_STATELESS_C11-C_2.19.12_FROZEN_20260930_175709.zip",
+    "frozen_c11c_zip_sha256":  "d85425cf18c5211c8497574f4fc66202d613eacc0ec14cd4e2fef0b24f634a32",
+    "build_factory_path":  "build_factory.py",
+    "build_factory_sha256":  "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+    "d7_authorities":  {
+                           "matrix":  "CANONICAL_D7_1",
+                           "catalog":  "CANONICAL_D7_3",
+                           "identity_provenance":  "CANONICAL_D7_4",
+                           "full_acceptance":  "CANONICAL_D7_5"
+                       },
+    "coverage":  {
+                     "challenges":  9,
+                     "delivery_profiles":  5,
+                     "modes":  2,
+                     "matrix_rows":  90,
+                     "catalog_items":  90,
+                     "core_cases":  90
+                 },
+    "governance":  {
+                       "master_seed":  "NOT_ADOPTED",
+                       "derivation_runtime_activation":  false,
+                       "cross_domain_seed_sharing":  "FORBIDDEN",
+                       "automatic_seed_generation":  false,
+                       "d4_8":  "BLOCKED",
+                       "runtime_authority":  "NONE",
+                       "production_execution":  false,
+                       "renderer_execution":  false,
+                       "release_directory_forbidden":  true
+                   },
+    "included_record_count":  1655,
+    "governed_tree_sha256":  "e28139195131b749df27e1bbdff7a4acea7ed94fd6e0ef2669ed73810942d9dd",
+    "created_at_utc":  "2026-10-08T08:16:44.4386879Z"
+}

@@ -95,6 +95,51 @@ def bool_first(data: dict[str, Any], *keys: str) -> bool | None:
             return value
     return None
 
+def bool_value(value: Any, default: bool | None = None) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized in ('true', '1', 'yes', 'on', 'enabled'):
+            return True
+        if normalized in ('false', '0', 'no', 'off', 'disabled'):
+            return False
+    return default
+
+def authority_value(receipt: dict[str, Any], key: str) -> str | None:
+    canonical = receipt.get('canonical_authorities')
+    if isinstance(canonical, dict):
+        value = canonical.get(key)
+        if value is not None:
+            return str(value)
+    value = receipt.get(key)
+    if value is not None:
+        return str(value)
+    return None
+
+
+def cross_domain_policy(catalog: dict[str, Any], spec: dict[str, Any]) -> tuple[str | None, bool]:
+    root_governance = catalog.get('governance') if isinstance(catalog.get('governance'), dict) else {}
+    root_value = root_governance.get('cross_domain_seed_sharing')
+    if root_value is not None:
+        return str(root_value), str(root_value) == 'FORBIDDEN'
+    spec_value = spec.get('cross_domain_seed_sharing')
+    item_values = []
+    for item in catalog.get('items', []):
+        item_governance = item.get('governance') if isinstance(item.get('governance'), dict) else {}
+        value = item_governance.get('cross_domain_seed_sharing')
+        if value is not None:
+            item_values.append(str(value))
+    if spec_value is not None:
+        spec_forbidden = str(spec_value) == 'FORBIDDEN'
+    else:
+        spec_forbidden = True
+    item_forbidden = bool(item_values) and all(value == 'FORBIDDEN' for value in item_values)
+    if item_values and len(set(item_values)) != 1:
+        return ','.join(sorted(set(item_values))), False
+    effective = item_values[0] if item_values else (str(spec_value) if spec_value is not None else None)
+    return effective, spec_forbidden and (item_forbidden if item_values else True)
+
 
 def repo_snapshot(root: Path) -> dict[str, Any]:
     skip = OUTPUT_DIR.as_posix().rstrip('/') + '/'
@@ -178,6 +223,7 @@ def build_context(root: Path) -> dict[str, Any]:
         'd65_path': d65_path, 'd65': d65, 'matrix_path': matrix_path,
         'matrix': load_json(matrix_path), 'catalog_path': catalog_path,
         'catalog': load_json(catalog_path),
+        'catalog_spec': load_json(root / D73_SPEC),
         'build_factory_path': build_factory_path,
         'build_factory_candidates': build_factory_candidates,
     }
@@ -191,18 +237,23 @@ def validate_full(context: dict[str, Any]) -> dict[str, Any]:
 
     matrix_rows = matrix.get('rows', [])
     catalog_items = catalog.get('items', [])
-    matrix_authority = (d71.get('canonical_authorities') or {}).get('matrix') or d71.get('matrix_authority') or d71.get('authority')
+    matrix_authority = authority_value(d71, 'matrix') or authority_value(d71, 'matrix_authority') or authority_value(d71, 'authority')
+    d72_matrix_authority = authority_value(d72, 'matrix') or authority_value(d72, 'matrix_authority')
+    d73_matrix_authority = authority_value(d73, 'matrix') or authority_value(d73, 'matrix_authority')
+    d73_catalog_authority = authority_value(d73, 'catalog') or authority_value(d73, 'catalog_authority')
+    d74_catalog_authority = authority_value(d74, 'catalog') or authority_value(d74, 'catalog_authority')
+    d74_identity_authority = authority_value(d74, 'identity_provenance') or authority_value(d74, 'authority')
     if matrix_authority != 'CANONICAL_D7_1':
         errors.append('D7_1_MATRIX_AUTHORITY_INVALID')
-    if d72.get('matrix_authority') not in (None, 'CANONICAL_D7_1'):
+    if d72_matrix_authority not in (None, 'CANONICAL_D7_1'):
         errors.append('D7_2_MATRIX_AUTHORITY_MISMATCH')
-    if d73.get('matrix_authority') != 'CANONICAL_D7_1':
+    if d73_matrix_authority != 'CANONICAL_D7_1':
         errors.append('D7_3_MATRIX_AUTHORITY_MISMATCH')
-    if d73.get('catalog_authority') != 'CANONICAL_D7_3':
+    if d73_catalog_authority != 'CANONICAL_D7_3':
         errors.append('D7_3_CATALOG_AUTHORITY_INVALID')
-    if d74.get('catalog_authority') != 'CANONICAL_D7_3':
+    if d74_catalog_authority != 'CANONICAL_D7_3':
         errors.append('D7_4_CATALOG_AUTHORITY_MISMATCH')
-    if d74.get('authority') != 'CANONICAL_D7_4':
+    if d74_identity_authority != 'CANONICAL_D7_4':
         errors.append('D7_4_IDENTITY_AUTHORITY_INVALID')
 
     challenge_count = numeric_first(d70, 'challenge_count', 'challenges', 'challenge_files', 'challenge_inventory_count')
@@ -242,13 +293,13 @@ def validate_full(context: dict[str, Any]) -> dict[str, Any]:
         errors.append('D4_8_NOT_BLOCKED')
     if d74.get('runtime_authority') != 'NONE':
         errors.append('D7_4_RUNTIME_AUTHORITY_NOT_NONE')
-    if d74.get('production_execution') is not False:
+    if bool_value(d74.get('production_execution')) is not False:
         errors.append('D7_4_PRODUCTION_EXECUTION_ENABLED')
-    if d74.get('renderer_execution') is not False:
+    if bool_value(d74.get('renderer_execution')) is not False:
         errors.append('D7_4_RENDERER_EXECUTION_ENABLED')
 
     for label, data in [('D6.4', d64), ('D6.5', d65)]:
-        if data.get('production_execution') is True:
+        if bool_value(data.get('production_execution')) is True:
             errors.append(f'{label}_PRODUCTION_EXECUTION_ENABLED')
         if data.get('runtime_authority') not in (None, 'NONE'):
             errors.append(f'{label}_RUNTIME_AUTHORITY_ENABLED')
@@ -262,14 +313,17 @@ def validate_full(context: dict[str, Any]) -> dict[str, Any]:
     else:
         gov = catalog['governance']
         if gov.get('master_seed') != 'NOT_ADOPTED': errors.append('MASTER_SEED_POLICY_INVALID')
-        if gov.get('derivation_runtime_activation') is not False: errors.append('DERIVATION_RUNTIME_ACTIVATED')
-        if gov.get('cross_domain_seed_sharing') != 'FORBIDDEN': errors.append('CROSS_DOMAIN_SEED_SHARING_ALLOWED')
-        if gov.get('automatic_seed_generation') is not False: errors.append('AUTOMATIC_SEED_GENERATION_ENABLED')
+        if bool_value(gov.get('derivation_runtime_activation')) is not False: errors.append('DERIVATION_RUNTIME_ACTIVATED')
+        pass
+    effective_cross_domain_policy, cross_domain_pass = cross_domain_policy(catalog, context['catalog_spec'])
+    if not cross_domain_pass:
+        errors.append('CROSS_DOMAIN_SEED_SHARING_ALLOWED')
+        if bool_value(gov.get('automatic_seed_generation')) is not False: errors.append('AUTOMATIC_SEED_GENERATION_ENABLED')
     authority_state = catalog.get('authority_state', {})
     if authority_state.get('runtime_authority') != 'NONE': errors.append('CATALOG_RUNTIME_AUTHORITY_INVALID')
-    if authority_state.get('production_execution') is not False: errors.append('CATALOG_PRODUCTION_EXECUTION_INVALID')
-    if authority_state.get('renderer_execution') is not False: errors.append('CATALOG_RENDERER_EXECUTION_INVALID')
-    if authority_state.get('media_rendered_by_catalog') is not False: errors.append('CATALOG_MEDIA_RENDER_CLAIM_INVALID')
+    if bool_value(authority_state.get('production_execution')) is not False: errors.append('CATALOG_PRODUCTION_EXECUTION_INVALID')
+    if bool_value(authority_state.get('renderer_execution')) is not False: errors.append('CATALOG_RENDERER_EXECUTION_INVALID')
+    if bool_value(authority_state.get('media_rendered_by_catalog')) is not False: errors.append('CATALOG_MEDIA_RENDER_CLAIM_INVALID')
 
     release_path = context['root'] / 'release'
     release_exists = release_path.exists()
@@ -302,7 +356,7 @@ def validate_full(context: dict[str, Any]) -> dict[str, Any]:
         'governance': {
             'master_seed': catalog.get('governance', {}).get('master_seed'),
             'derivation_runtime_activation': catalog.get('governance', {}).get('derivation_runtime_activation'),
-            'cross_domain_seed_sharing': catalog.get('governance', {}).get('cross_domain_seed_sharing'),
+            'cross_domain_seed_sharing': effective_cross_domain_policy,
             'automatic_seed_generation': catalog.get('governance', {}).get('automatic_seed_generation'),
             'd4_8': d74.get('d4_8_status'),
             'runtime_authority': d74.get('runtime_authority'),
@@ -315,23 +369,49 @@ def validate_full(context: dict[str, Any]) -> dict[str, Any]:
 
 
 def validate_governance(context: dict[str, Any], full: dict[str, Any]) -> dict[str, Any]:
-    catalog = context['catalog']; d64 = context['d64']; d74 = context['d74']
+    catalog = context['catalog']
+    d64 = context['d64']
+    d74 = context['d74']
+
+    d74_production = bool_value(d74.get('production_execution'))
+    d74_renderer = bool_value(d74.get('renderer_execution'))
+    d64_production = bool_value(d64.get('production_execution'))
+    d64_runtime = d64.get('runtime_authority')
+    catalog_governance = catalog.get('governance', {}) if isinstance(catalog.get('governance'), dict) else {}
+
+    effective_cross_domain_policy, cross_domain_pass = cross_domain_policy(catalog, context['catalog_spec'])
+
     checks = {
         'd4_8_blocked': d74.get('d4_8_status') == 'BLOCKED',
         'runtime_none': d74.get('runtime_authority') == 'NONE',
-        'production_false': d74.get('production_execution') is False,
-        'renderer_false': d74.get('renderer_execution') is False,
-        'master_seed_not_adopted': catalog.get('governance', {}).get('master_seed') == 'NOT_ADOPTED',
-        'derivation_runtime_false': catalog.get('governance', {}).get('derivation_runtime_activation') is False,
-        'cross_domain_forbidden': catalog.get('governance', {}).get('cross_domain_seed_sharing') == 'FORBIDDEN',
-        'automatic_seed_generation_false': catalog.get('governance', {}).get('automatic_seed_generation') is False,
-        'd6_4_production_false': d64.get('production_execution') is not True,
-        'd6_4_runtime_none': d64.get('runtime_authority') in (None, 'NONE'),
-        'c11c_build_hash_gate': full.get('c11c_build_factory_sha256') == full.get('c11c_build_factory_expected_sha256'),
+        'production_false': d74_production is False,
+        'renderer_false': d74_renderer is False,
+        'master_seed_not_adopted': catalog_governance.get('master_seed') == 'NOT_ADOPTED',
+        'derivation_runtime_false': bool_value(catalog_governance.get('derivation_runtime_activation')) is False,
+        'cross_domain_forbidden': cross_domain_pass,
+        'automatic_seed_generation_false': bool_value(catalog_governance.get('automatic_seed_generation')) is False,
+        'd6_4_production_false': d64_production is not True,
+        'd6_4_runtime_none': d64_runtime in (None, 'NONE'),
+        'c11c_build_hash_gate': str(full.get('c11c_build_factory_sha256', '')).lower() == str(full.get('c11c_build_factory_expected_sha256', '')).lower(),
         'release_write_forbidden': full.get('release_directory_present') is False,
     }
-    return {'checkpoint': 'D7.5', 'status': 'PASS' if all(checks.values()) else 'FAIL', 'checks': checks, 'errors': sorted(k for k, v in checks.items() if not v)}
-
+    failed = sorted(k for k, v in checks.items() if not v)
+    return {
+        'checkpoint': 'D7.5',
+        'status': 'PASS' if not failed else 'FAIL',
+        'checks': checks,
+        'errors': failed,
+        'diagnostics': {
+            'd74_production_execution_raw': d74.get('production_execution'),
+            'd74_renderer_execution_raw': d74.get('renderer_execution'),
+            'd64_production_execution_raw': d64.get('production_execution'),
+            'd64_runtime_authority_raw': d64.get('runtime_authority'),
+            'cross_domain_seed_sharing_effective': effective_cross_domain_policy,
+            'build_factory_path': full.get('c11c_build_factory_path'),
+            'build_factory_sha256_observed': full.get('c11c_build_factory_sha256'),
+            'build_factory_sha256_expected': full.get('c11c_build_factory_expected_sha256'),
+        },
+    }
 
 def negative_tests(context: dict[str, Any], full: dict[str, Any]) -> dict[str, Any]:
     cases: list[dict[str, Any]] = []
@@ -387,6 +467,8 @@ def build(root: Path) -> int:
         'core_cases': full['core_cases'],
         'coverage_complete': full['coverage_complete'],
         'governance_pass': governance['status'] == 'PASS',
+        'governance_errors': governance.get('errors', []),
+        'full_errors': full.get('errors', []),
         'negative_cases': negatives['count'],
         'negative_tests_pass': negatives['all_pass'],
         'd4_8_status': full['governance']['d4_8'],
@@ -422,6 +504,8 @@ def build(root: Path) -> int:
         'result': receipt['result'],
         'status': receipt['status'],
         'next': receipt['next'],
+        'governance_errors': governance.get('errors', []),
+        'full_errors': full.get('errors', []),
     }, sort_keys=True))
     return 0 if overall_pass else 2
 

@@ -1,0 +1,16 @@
+{
+  "checkpoint": "C11-D D7.5 -> D7 Freeze",
+  "version": "V5",
+  "root_build_factory": "build_factory.py",
+  "protected": [
+    "C11-C simulation/mechanics/RNG",
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C11-C presentation/production",
+    "release/"
+  ],
+  "mutation_scope": "artifacts/tests/c11d_d7/d7_5/ during D7.5; freeze evidence moves to artifacts/tests/c11d_d7/d7_freeze/ after D7.5 closure"
+}

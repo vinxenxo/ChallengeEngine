@@ -1,0 +1,11 @@
+{
+    "checkpoint":  "C11-D D7 FREEZE",
+    "result":  "PASS",
+    "status":  "FROZEN",
+    "d7_5_receipt_sha256":  "43af0032db5b07733b7784f499db7c12c9f69a0ca85d6bd0021f9a9b6a9c642a",
+    "c11c_build_factory_sha256":  "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+    "governed_tree_sha256":  "e28139195131b749df27e1bbdff7a4acea7ed94fd6e0ef2669ed73810942d9dd",
+    "governed_tree_records":  1655,
+    "library_baseline_note":  "D7.5 PASS frozen baseline is stored in the project Library; exact Library display name is the external canonical artifact identity.",
+    "next":  "D8.0 - Media QA + Release Pipeline"
+}
