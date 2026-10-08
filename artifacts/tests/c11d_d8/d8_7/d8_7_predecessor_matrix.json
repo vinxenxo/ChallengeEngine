@@ -1,0 +1,41 @@
+{
+    "contract":  "C11-D-D8.7-PREDECESSOR-MATRIX-V1",
+    "phases":  [
+                   {
+                       "phase":  "D8.0",
+                       "result":  "PASS",
+                       "status":  "PASS"
+                   },
+                   {
+                       "phase":  "D8.1",
+                       "result":  "PASS_NO_MEDIA",
+                       "status":  "PASS_NO_MEDIA"
+                   },
+                   {
+                       "phase":  "D8.2",
+                       "result":  "PASS_NO_MEDIA",
+                       "status":  "PASS_NO_MEDIA"
+                   },
+                   {
+                       "phase":  "D8.3",
+                       "result":  "PASS_NO_MEDIA",
+                       "status":  "PASS_NO_MEDIA"
+                   },
+                   {
+                       "phase":  "D8.4",
+                       "result":  "PASS_NO_MEDIA",
+                       "status":  "CLOSED"
+                   },
+                   {
+                       "phase":  "D8.5",
+                       "result":  "PASS_NO_MEDIA",
+                       "status":  "CLOSED"
+                   },
+                   {
+                       "phase":  "D8.6",
+                       "result":  "PASS_NO_MEDIA",
+                       "status":  "CLOSED"
+                   }
+               ],
+    "all_pass":  true
+}

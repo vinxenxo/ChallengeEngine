@@ -1,0 +1,13 @@
+{
+    "contract":  "C11-D-D8-ACCEPTANCE-FREEZE-V1",
+    "checkpoint":  "D8.7",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "d8_control_plane":  "ACCEPTED",
+    "scope_candidate_count":  0,
+    "release_authority":  "NONE",
+    "physical_media_mutation_performed":  false,
+    "release_product_mutation_performed":  false,
+    "mutation_guard":  "PASS",
+    "next":  "POST_D8_MEDIA_QUALIFICATION"
+}

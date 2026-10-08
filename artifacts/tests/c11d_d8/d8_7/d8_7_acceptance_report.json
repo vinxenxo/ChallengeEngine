@@ -1,0 +1,55 @@
+{
+    "contract":  "C11-D-D8-ACCEPTANCE-FREEZE-V1",
+    "checkpoint":  "D8.7",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "d8_control_plane":  "ACCEPTED",
+    "d8_freeze":  "AUTHORIZED_BY_D8_7_ACCEPTANCE_ONLY",
+    "scope_mode":  "EXPLICIT_REGISTRY_ONLY",
+    "scope_candidate_count":  0,
+    "media_dependent_acceptance":  "PASS_NO_MEDIA",
+    "release_authority":  "NONE",
+    "production_execution":  false,
+    "renderer_execution":  false,
+    "runtime_authority":  "NONE",
+    "master_seed":  "NOT_ADOPTED",
+    "cross_domain_seed_sharing":  "FORBIDDEN",
+    "predecessors":  [
+                         {
+                             "phase":  "D8.0",
+                             "result":  "PASS",
+                             "status":  "PASS"
+                         },
+                         {
+                             "phase":  "D8.1",
+                             "result":  "PASS_NO_MEDIA",
+                             "status":  "PASS_NO_MEDIA"
+                         },
+                         {
+                             "phase":  "D8.2",
+                             "result":  "PASS_NO_MEDIA",
+                             "status":  "PASS_NO_MEDIA"
+                         },
+                         {
+                             "phase":  "D8.3",
+                             "result":  "PASS_NO_MEDIA",
+                             "status":  "PASS_NO_MEDIA"
+                         },
+                         {
+                             "phase":  "D8.4",
+                             "result":  "PASS_NO_MEDIA",
+                             "status":  "CLOSED"
+                         },
+                         {
+                             "phase":  "D8.5",
+                             "result":  "PASS_NO_MEDIA",
+                             "status":  "CLOSED"
+                         },
+                         {
+                             "phase":  "D8.6",
+                             "result":  "PASS_NO_MEDIA",
+                             "status":  "CLOSED"
+                         }
+                     ],
+    "no_media_actions_performed":  true
+}

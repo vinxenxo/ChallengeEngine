@@ -1,0 +1,11 @@
+{
+  "contract": "C11-D-D8-ACCEPTANCE-FREEZE-V1",
+  "scope_mode": "EXPLICIT_REGISTRY_ONLY",
+  "required_predecessors": ["D8.0","D8.1","D8.2","D8.3","D8.4","D8.5","D8.6"],
+  "release_authority_required": "NONE",
+  "production_execution_required": false,
+  "renderer_execution_required": false,
+  "runtime_authority_required": "NONE",
+  "media_dependent_acceptance_with_zero_media": "PASS_NO_MEDIA",
+  "allowed_write_root": "artifacts/tests/c11d_d8/d8_7"
+}
