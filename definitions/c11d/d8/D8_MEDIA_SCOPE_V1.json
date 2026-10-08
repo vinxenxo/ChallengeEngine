@@ -1,0 +1,24 @@
+{
+  "contract": "C11-D-D8-MEDIA-SCOPE-V1",
+  "phase": "D8",
+  "status": "CANONICAL_SCOPE_DECLARATION",
+  "scope_mode": "EXPLICIT_REGISTRY_ONLY",
+  "registry": [],
+  "candidate_count": 0,
+  "historical_roots": [
+    "artifacts/maintenance",
+    "artifacts/production",
+    "artifacts/prototypes",
+    "artifacts/qa",
+    "artifacts/tests",
+    "artifacts/regression",
+    "artifacts/releases"
+  ],
+  "historical_media_is_not_release_authority": true,
+  "release_authority": "NONE",
+  "production_execution": false,
+  "renderer_execution": false,
+  "runtime_authority": "NONE",
+  "master_seed": "NOT_ADOPTED",
+  "cross_domain_seed_sharing": "FORBIDDEN"
+}

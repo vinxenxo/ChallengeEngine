@@ -12,15 +12,16 @@ $ErrorActionPreference = 'Stop'
 # Using $PSScriptRoot in a parameter default is unsafe here because it may be empty
 # during nested PowerShell invocation. The script path itself is stable in the body.
 if ([string]::IsNullOrWhiteSpace($ProjectRoot)) {
-    $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
-    if ([string]::IsNullOrWhiteSpace($scriptRoot)) {
-        throw 'Unable to resolve D8.0 runner directory.'
-    }
-    $ProjectRoot = Join-Path $scriptRoot '..\..\..'
+    $ProjectRoot = (Get-Location).Path
 }
 $ProjectRoot = (Resolve-Path -LiteralPath $ProjectRoot).Path
+if(-not (Test-Path -LiteralPath (Join-Path $ProjectRoot 'tools/c11d/d8') -PathType Container)){
+    throw "ProjectRoot does not look like ChallengeEngineV01_STATELESS: $ProjectRoot"
+}
 $EvidenceRoot = Join-Path $ProjectRoot 'artifacts/tests/c11d_d8/d8_0'
 $EvidenceRel = 'artifacts/tests/c11d_d8/d8_0'
+. (Join-Path $PSScriptRoot 'd8_media_scope.ps1')
+
 
 function Write-Utf8NoBom([string]$Path, [string]$Text) {
     $enc = New-Object System.Text.UTF8Encoding($false)
@@ -104,7 +105,7 @@ function Get-TotalBytes($Files) {
 }
 
 function MediaExtensions {
-    return @('.mp4','.mov','.mkv','.webm','.avi','.wmv','.mxf','.gif','.wav','.mp3','.m4a','.aac','.flac','.ogg','.opus','.pcm','.aiff','.alac')
+    return @(Get-D8MediaExtensions)
 }
 
 function Inventory-Media {
@@ -223,6 +224,7 @@ $inventory = [ordered]@{
     governance=(Find-GovernanceEvidence)
     binaries=@(Discover-Command 'ffmpeg'; Discover-Command 'ffprobe')
     media=(Inventory-Media)
+    d8_media_scope=[ordered]@{declaration_path='definitions/c11d/d8/D8_MEDIA_SCOPE_V1.json';scope_mode='EXPLICIT_REGISTRY_ONLY';candidate_count=@(Resolve-D8MediaScope $ProjectRoot).Count}
     relevant_files=(Inventory-RelevantFiles)
     ffmpeg_ffprobe_callers=(Inventory-FFmpegCallers)
     forbidden_execution_flags=[ordered]@{d4_8='BLOCKED'; runtime_authority='NONE'; production_execution=$false; renderer_execution=$false; master_seed='NOT_ADOPTED'; runtime_derivation_enabled=$false; automatic_seed_generation=$false; cross_domain_seed_sharing='FORBIDDEN'}
