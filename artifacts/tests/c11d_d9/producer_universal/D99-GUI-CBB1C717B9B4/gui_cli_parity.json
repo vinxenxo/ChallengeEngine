@@ -1,0 +1,27 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-GUI-CLI-PARITY-V1",
+  "status": "PASS",
+  "content_type": "visual_drills",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "pursuit",
+    "subtype_id": null,
+    "variant_id": "tier-1",
+    "variant_scope_id": "visual-drill:pursuit:tier-1",
+    "difficulty_tier": 1
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true
+  },
+  "gui_request_hash": "0781939ab6a10cf2e1e4e4b3c60cd303baa5f98b35f97590290617506e4502e4",
+  "cli_request_hash": "0781939ab6a10cf2e1e4e4b3c60cd303baa5f98b35f97590290617506e4502e4",
+  "gui_plan_hash": "aa000689803d50381653a6996e1e3ded6e5e8e5136f168ff37f17ab8e3258444",
+  "cli_plan_hash": "aa000689803d50381653a6996e1e3ded6e5e8e5136f168ff37f17ab8e3258444",
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

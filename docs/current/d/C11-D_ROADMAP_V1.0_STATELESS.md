@@ -54,7 +54,7 @@ No sixth operational suite is to be created. Historical `c11c-studio` material i
 - D9.2: audio-enabled A/V pilot PASS.
 - D9.3: deterministic A/V repeat + negative control PASS.
 - D9.4: acceptance checkpoint PASS/CLOSED.
-- D9.5.1: existing `c11c-producer` extended with D4 Request/Personalization planning surface. Producer target/version: **0.10.0**. Windows GUI bring-up passed in the current working tree.
+- D9.5.1: existing `c11c-producer` extended with D4 Request/Personalization planning surface. Producer version at D9.5.1: **0.10.0**. Windows GUI bring-up passed for that checkpoint; D9.9 expands the same application to Producer 0.11.0.
 - D9.6: existing `c11c-catalog` extended with D branch product/provenance/reproduction view. Catalog target/version: **0.2.0**. Windows GUI bring-up passed in the current working tree.
 - D9.7: existing `c11c-config` extended with D contracts and controlled operator profiles. Config target/version: **0.2.0**. Overlay is prepared; Windows bring-up is pending explicit confirmation if not yet executed in the current context.
 
@@ -62,7 +62,7 @@ No sixth operational suite is to be created. Historical `c11c-studio` material i
 
 ### D9.8 — Universal editorial model
 
-**Implementation status: PASS for the canonical declarative model, strict selector/editorial resolver and static contract tests. Producer GUI/CLI universal coverage remains D9.9; this does not close D9.**
+**Implementation status: PASS — canonical declarative model, strict resolver, live inventory and 25 negative tests. D9.8 is a closed model checkpoint only; it does not close D9.**
 
 Create one declarative editorial model spanning the content system rather than a Challenge-only personalization surface.
 
@@ -80,7 +80,7 @@ The model must distinguish editable editorial fields from derived telemetry, pro
 
 ### D9.9 — Producer universal editorial coverage
 
-Extend the **existing `c11c-producer`** so the operator can select content type → family → subfamily/grammar/variant and edit the permitted editorial surface for that content. GUI configuration must resolve through the canonical D request/plan path.
+Extend the **existing `c11c-producer`** (Producer 0.11.0) with the universal editorial tab: content type → family → subfamily/grammar/variant, editable scoped editorial fields, canonical request/plan output and reproducibility evidence. Both GUI and CLI use `tools/c11d/d9/universal_producer.py`; Challenge delegates to the existing D4 request/plan adapter, while Loop/Drill produce only a deterministic editorial-intent plan until the future D renderer baseline.
 
 Required tests:
 
@@ -91,6 +91,8 @@ Required tests:
 - GUI/CLI canonical plan parity;
 - unsupported-field negatives;
 - unchanged gameplay/music seeds.
+
+**Implementation status: PASS (plan-only scope).** The inventory matrix resolves all 9 Challenge IDs, 27 concrete Loop grammars plus five family-level `auto` selectors, and 20 Drill type/tier variants. Separate CLI-process parity is certified for Challenge, Loop and Drill; 20 negative controls pass. Renderer/production remain off, `release_authority=NONE`, and Windows GUI/manual bring-up remains part of later D9.14–D9.16 acceptance. This does not close D9.
 
 ### D9.10 — Editorial-to-render bridge planning
 
@@ -167,7 +169,7 @@ Only when D9.8–D9.16 are accepted. D10 remains BLOCKED until D9.17 closes.
 | Surface | Current/confirmed D9 version | Next target | Required acceptance |
 |---|---:|---:|---|
 | `c11c-suite` shell | 0.1.4 | keep 0.1.4 unless common launcher contract changes | full launcher/registry acceptance |
-| `c11c-producer` | 0.10.0 | 0.11.x after universal editorial/render bridge | request → personalization → plan → real GUI production |
+| `c11c-producer` | 0.11.0 | 0.11.x only for approved additive D coverage | universal request → editorial resolution → plan-only; real media remains a later authorized D gate |
 | `c11c-catalog` | 0.2.0 | 0.2.x | product identity → provenance → reproduction |
 | `c11c-config` | 0.2.0 | 0.2.x | profiles → validation → save/restore → protected roots |
 | `c11c-maintenance` | C11-C active baseline | 0.2.0 | dry-run → cleanup/quarantine → organization/freeze |

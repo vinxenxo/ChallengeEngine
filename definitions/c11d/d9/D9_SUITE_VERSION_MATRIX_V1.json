@@ -30,18 +30,20 @@
     },
     {
       "id": "c11c-producer",
-      "current_version": "0.10.0",
-      "target_version": "0.10.x incremental",
+      "current_version": "0.11.0",
+      "target_version": "0.11.0 D9.9 plan-only coverage; later 0.11.x only with approved additive changes",
       "gate": "D9.9",
-      "status": "D9.5.1_PASS_D9.9_UNIVERSAL_COVERAGE_PENDING",
-      "notes": "Current 0.10.0 Challenge request/personalization remains the only current D4 plan-compatible content path. D9.9 adds universal GUI/editorial selection without duplicating backend logic. Physical rendering waits for the future D baseline.",
+      "status": "D9.9_PASS_STATIC_MATRIX_AND_CLI_PARITY_WINDOWS_GUI_ACCEPTANCE_PENDING",
+      "notes": "Producer 0.11.0 adds the universal editorial tab and canonical D9.9 adapter. All 61 live selectors resolve; actual separate-process GUI/CLI parity is proven for each supported content type. Loop/Drill plans are editorial-intent only; renderer, execution, release authority remain disabled. Windows GUI acceptance is still a later gate.",
       "required_tests": [
-        "90 canonical cases",
-        "12 personalization cases",
-        "4 negatives",
-        "GUI-CLI plan parity",
+        "9 Challenge identities reusing canonical D4 subordinate plan",
+        "5 Loop families / 27 concrete grammars plus auto selector per family",
+        "4 Drill types / 20 tier identities",
+        "GUI/CLI canonical request, plan and hash parity per supported content type",
+        "20 negative universal request/data-class controls",
+        "gameplay/music seed isolation and invariance under editorial changes",
         "existing C11-C production regression",
-        "jobs/logs/error/cancel/replay"
+        "renderer remains OFF; release_authority NONE"
       ]
     },
     {
@@ -114,7 +116,7 @@
     {
       "gate": "D9.9",
       "name": "Producer universal editorial GUI/CLI coverage across supported content families and variants",
-      "status": "PENDING"
+      "status": "PASS_UNIVERSAL_SELECTOR_MATRIX_AND_STATIC_CLI_PARITY_WINDOWS_GUI_ACCEPTANCE_PENDING"
     },
     {
       "gate": "D9.10",

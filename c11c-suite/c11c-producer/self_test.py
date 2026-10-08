@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import py_compile
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -12,13 +14,16 @@ py_compile.compile(str(ROOT / "main.py"), doraise=True)
 py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
 py_compile.compile(str(ROOT / "c11d_gui_request.py"), doraise=True)
 py_compile.compile(str(ROOT / "test_d9_producer_integration.py"), doraise=True)
+D9_DIR = PROJECT / "tools" / "c11d" / "d9"
+for d9_file in ("universal_producer.py", "universal_producer_cli.py", "test_universal_producer.py"):
+    py_compile.compile(str(D9_DIR / d9_file), doraise=True)
 
 schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
 build_manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
-assert build_manifest["version"] == "0.10.0"
+assert build_manifest["version"] == "0.11.0"
 assert build_manifest["backend_logic_modified"] is False
 
-assert schema["producer_version"] == "0.10.0"
+assert schema["producer_version"] == "0.11.0"
 assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
 assert set(schema["drills"]) == {"tracking", "saccade", "pursuit", "peripheral_scan"}
 assert len(schema["families"]) == 5
@@ -45,6 +50,14 @@ assert (ROOT / "test_producer_gui_contract.py").exists()
 assert (ROOT / "c11d_gui_request.py").exists()
 assert (ROOT / "test_d9_producer_integration.py").exists()
 assert build_manifest["d_request_tab"] is True
+assert build_manifest["d9_universal_editorial_tab"] is True
+assert build_manifest["d9_universal_request_adapter"] == "tools/c11d/d9/universal_producer.py"
+assert build_manifest["d9_universal_cli_adapter"] == "tools/c11d/d9/universal_producer_cli.py"
+assert build_manifest["d9_universal_gui_cli_parity"] is True
+assert build_manifest["d9_universal_plan_only"] is True
+assert build_manifest["d9_universal_renderer_activation"] is False
+assert build_manifest["d9_universal_production_execution"] is False
+assert build_manifest["d9_universal_release_authority"] == "NONE"
 assert build_manifest["d_request_runtime_execution"] is False
 assert build_manifest["d_request_renderer_activation"] is False
 drill_runtime = (ROOT / "run_visual_drill_production.ps1").read_text(encoding="utf-8-sig")
@@ -139,4 +152,11 @@ assert actual_hash == schema["backend_profile_sha256"], (schema["backend_profile
 from test_d9_producer_integration import run_checks
 _d9_counts = run_checks()
 assert _d9_counts == {"core_cases": 90, "personalization_cases": 12, "negative_cases": 4}
-print("C11-C Producer 0.10.0 + C11-D D9.5.1 integration self-test PASS | core=90 | personalization=12 | negative=4")
+print("C11-D D9.5.1 Challenge integration subtest PASS | core=90 | personalization=12 | negative=4")
+
+
+# D9.9 universal editor: every live selector resolves, and separate CLI process shares the same adapter.
+d9_universal = subprocess.run([sys.executable, str(D9_DIR / "test_universal_producer.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=120)
+assert d9_universal.returncode == 0, d9_universal.stdout + "\n" + d9_universal.stderr
+assert "challenge=9/9" in d9_universal.stdout and "drill_variants=20/20" in d9_universal.stdout and "GUI/CLI parity=3/3" in d9_universal.stdout and "negative=20/20" in d9_universal.stdout
+print("C11-C Producer 0.11.0 self-test PASS | D9.5.1 Challenge + D9.9 universal matrix / plan-only / GUI-CLI backend parity")

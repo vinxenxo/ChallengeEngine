@@ -1,0 +1,87 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-PLAN-V1",
+  "plan_version": "1.0",
+  "request_id": "D99-GUI-CBB1C717B9B4",
+  "mode": "REVIEW",
+  "plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+  "request_hash": "0781939ab6a10cf2e1e4e4b3c60cd303baa5f98b35f97590290617506e4502e4",
+  "editorial_hash": "04fa6072bb61b8d912532bb66ab61f8e3a163ae95dca49bf369f94214b15f169",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "pursuit",
+    "subtype_id": null,
+    "variant_id": "tier-1",
+    "variant_scope_id": "visual-drill:pursuit:tier-1",
+    "difficulty_tier": 1
+  },
+  "editorial": {
+    "title": "titulo",
+    "subtitle": "descripcion",
+    "call_to_action": "cta",
+    "language": "es"
+  },
+  "seed": 12345,
+  "music_seed": 840001,
+  "delivery_profile_id": "MASTER_1080",
+  "resolved_delivery_profile_id": "MASTER_1080",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+  "d4_request_hash": null,
+  "d4_plan_hash": null,
+  "steps": [
+    {
+      "step_id": "validate_universal_request",
+      "type": "VALIDATION",
+      "authority": "C11D_D9.9_CANONICAL_ADAPTER"
+    },
+    {
+      "step_id": "resolve_content_identity",
+      "type": "CONTENT_SELECTION",
+      "content_type": "visual_drills",
+      "variant_scope_id": "visual-drill:pursuit:tier-1",
+      "authority": "D9.8_UNIVERSAL_EDITORIAL_MODEL"
+    },
+    {
+      "step_id": "resolve_editorial",
+      "type": "EDITORIAL_RESOLUTION",
+      "editorial_hash": "04fa6072bb61b8d912532bb66ab61f8e3a163ae95dca49bf369f94214b15f169",
+      "authority": "D9.8_UNIVERSAL_EDITORIAL_MODEL"
+    },
+    {
+      "step_id": "preserve_seed_contract",
+      "type": "SEED_GOVERNANCE",
+      "gameplay_seed_field": "seed",
+      "music_seed_field": "music_seed",
+      "cross_domain_sharing": "FORBIDDEN",
+      "automatic_generation": false,
+      "runtime_derivation": false
+    },
+    {
+      "step_id": "resolve_delivery_profile",
+      "type": "DELIVERY_PROFILE",
+      "requested_id": "MASTER_1080",
+      "resolved_id": "MASTER_1080"
+    },
+    {
+      "step_id": "production_intent_plan",
+      "type": "PLAN_ONLY",
+      "renderer": false,
+      "production_execution": false,
+      "release_authority": "NONE"
+    }
+  ],
+  "runtime_authority": "NONE",
+  "simulation_truth_mutation": false,
+  "winning_frame_mutation": false,
+  "close_calls_mutation": false,
+  "gameplay_rng_consumption": false,
+  "structural_rng_consumption": false,
+  "automatic_seed_generation": false,
+  "runtime_seed_derivation": false,
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED"
+}

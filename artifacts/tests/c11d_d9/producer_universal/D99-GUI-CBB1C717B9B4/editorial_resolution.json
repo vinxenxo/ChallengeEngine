@@ -1,0 +1,42 @@
+{
+  "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-RESOLUTION-V1",
+  "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "pursuit",
+    "subtype_id": null,
+    "variant_id": "tier-1",
+    "variant_scope_id": "visual-drill:pursuit:tier-1",
+    "scope_keys": {
+      "content_type": "visual_drills",
+      "family": "visual-drill-type:pursuit",
+      "subtype": null,
+      "variant": "visual-drill:pursuit:tier-1"
+    },
+    "request_plan_compatible": false,
+    "difficulty_tier": 1,
+    "editable_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER"
+  },
+  "values": {
+    "title": "titulo",
+    "subtitle": "descripcion",
+    "call_to_action": "cta",
+    "language": "es"
+  },
+  "applied_layers": [
+    "variant",
+    "production_override"
+  ],
+  "request_plan_compatible": false,
+  "request_plan_state": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

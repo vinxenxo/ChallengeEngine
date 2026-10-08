@@ -2,7 +2,7 @@
 
 **Suite shell:** 0.1.4
 **C11-C:** 2.19.12 FROZEN
-**Producer:** 0.10.0
+**Producer:** 0.11.0
 **Catalog:** 0.2.0
 **Config:** 0.2.0 integration; canonical D9.8 model registered read-only (Windows confirmation still tracked by D9)
 **Maintenance:** current C11-C operator baseline; D9 target 0.2.0
@@ -36,9 +36,9 @@ A D capability is complete only when:
 
 ## Current D9 integration state
 
-### Producer 0.10.0
+### Producer 0.11.0
 
-D4 Request + D4.3 Challenge personalization is integrated into the existing producer GUI. Universal editorial coverage across all content families is the next D9 stage.
+D4 Request + D4.3 Challenge personalization remains integrated. The additive D9.9 universal editorial tab uses the same canonical adapter as the CLI and covers all 9 Challenge identities, 27 concrete Loop grammars (+ five auto selectors) and 20 Drill type/tier variants. Challenge delegates to the existing D4 plan; Loop/Drill return declarative editorial-intent plans only, not renderable products.
 
 ### Catalog 0.2.0
 
@@ -67,4 +67,9 @@ Do not modify C11-C simulation/mechanics/RNG, `SimulationResult`, `winning_frame
 
 ## D9.8 universal editorial contract
 
-The read-only canonical model is `definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json`, resolved by `tools/c11d/d9/universal_editorial_model.py`. Config may inspect/hash/validate it; it must not make generic edits to the canonical contract. Resolver coverage now reflects 9 Challenges, 5 Loop families/27 concrete grammars and 4 Drill types/20 declared tiers. Longform is shown but disabled until the D request schema supports it. Only Challenge is currently D4 request/plan compatible; Loop/Drill GUI/CLI plan support belongs to D9.9.
+The read-only canonical model is `definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json`, resolved by `tools/c11d/d9/universal_editorial_model.py`. Config may inspect/hash/validate it; it must not make generic edits to the canonical contract. Resolver coverage now reflects 9 Challenges, 5 Loop families/27 concrete grammars and 4 Drill types/20 declared tiers. Longform is shown but disabled until the D request schema supports it. D9.9 supplies a universal request identity and deterministic plan for all supported types. Only Challenge embeds a canonical D4 subordinate plan; Loop/Drill remain editorial-intent plans until the future D renderer baseline. Longform remains disabled.
+
+
+## D9.9 Producer universal editorial contract
+
+Producer 0.11.0 exposes the universal editorial controls inside the existing `c11c-producer` application. GUI and CLI call `tools/c11d/d9/universal_producer.py`; the GUI also invokes the canonical CLI as a separate process and compares the normalized request, request hash, editorial hash, plan and plan hash. The static acceptance matrix covers every live selector and 20 negative cases. This certifies a plan-only adapter, not physical production: renderer and execution remain `false`, D4.8 remains `BLOCKED`, `release_authority=NONE`, and Windows GUI/real-media acceptance remains pending for later D9 gates.

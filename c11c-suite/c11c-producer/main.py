@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import copy
 import hashlib
+import importlib.util
 import json
 import os
 import random
 import re
+import subprocess
 import sys
 import uuid
 from datetime import datetime, timezone
@@ -45,7 +48,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.10.0"
+APP_VERSION = "0.11.0"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -59,6 +62,26 @@ if DELIVERY_FILE.exists():
     DELIVERY_CONFIG = json.loads(DELIVERY_FILE.read_text(encoding="utf-8"))
 else:
     DELIVERY_CONFIG = {"standard_default": "MASTER_1080", "profiles": {}}
+
+
+def _load_universal_producer_module():
+    """Load the canonical D9.9 backend; GUI contains controls, not request logic."""
+    module_path = PROJECT / "tools" / "c11d" / "d9" / "universal_producer.py"
+    module_dir = str(module_path.parent)
+    if module_dir not in sys.path:
+        sys.path.insert(0, module_dir)
+    spec = importlib.util.spec_from_file_location("c11d_d99_universal_producer", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load D9.9 universal Producer adapter: {module_path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+D9_UNIVERSAL = _load_universal_producer_module()
+D9_EDITORIAL_CATALOG = D9_UNIVERSAL.build_catalog(PROJECT)
+D9_EDITORIAL_MODEL = D9_UNIVERSAL.load_model(PROJECT)
 
 DELIVERY_ORDER = [
     "MASTER_1080",
@@ -291,6 +314,7 @@ class MainWindow(QMainWindow):
         c11c_layout.addLayout(cols, 1)
         self.tabs.addTab(c11c_tab, "C11-C · PRODUCTOR EXISTENTE")
         self.tabs.addTab(self._build_c11d_request_tab(), "C11-D · REQUEST + PERSONALIZACIÓN")
+        self.tabs.addTab(self._build_d9_universal_editorial_tab(), "C11-D · EDITORIAL UNIVERSAL (D9.9)")
         main.addWidget(self.tabs, 1)
 
         self.statusBar().showMessage("Preparado")
@@ -612,6 +636,461 @@ class MainWindow(QMainWindow):
         self._sync_c11d_personalization_controls(self.d_personalization.isChecked())
         self._load_c11d_editorial_defaults()
         return tab
+
+    def _build_d9_universal_editorial_tab(self) -> QWidget:
+        tab = QWidget()
+        layout = QHBoxLayout(tab)
+        layout.setContentsMargins(6, 6, 6, 6)
+        layout.setSpacing(10)
+
+        form_box = QGroupBox("D9.9 · EDITORIAL UNIVERSAL / PLAN CANÓNICO")
+        form = QGridLayout(form_box)
+        form.setHorizontalSpacing(8)
+        form.setVerticalSpacing(6)
+        row = 0
+
+        self.d9_content_type = QComboBox()
+        self.d9_content_type.addItem("Challenge", "challenges")
+        self.d9_content_type.addItem("Visual Loop", "visual_loops")
+        self.d9_content_type.addItem("Visual Drill", "visual_drills")
+        self.d9_content_type.addItem("Longform · DESHABILITADO", "longform")
+        try:
+            self.d9_content_type.model().item(3).setEnabled(False)
+        except (AttributeError, TypeError):
+            pass
+        form.addWidget(QLabel("Tipo de contenido"), row, 0)
+        form.addWidget(self.d9_content_type, row, 1, 1, 3)
+        row += 1
+
+        self.d9_family = QComboBox()
+        self.d9_subtype = QComboBox()
+        self.d9_variant = QComboBox()
+        form.addWidget(QLabel("Familia / mecánica"), row, 0)
+        form.addWidget(self.d9_family, row, 1, 1, 3)
+        row += 1
+        form.addWidget(QLabel("Gramática / subtipo"), row, 0)
+        form.addWidget(self.d9_subtype, row, 1, 1, 3)
+        row += 1
+        form.addWidget(QLabel("Variante / tier"), row, 0)
+        form.addWidget(self.d9_variant, row, 1, 1, 3)
+        row += 1
+
+        self.d9_mode = QComboBox()
+        self.d9_mode.addItem("REVIEW · PLAN", "REVIEW")
+        self.d9_mode.addItem("PRODUCTION · PLAN ONLY (D4.8 BLOCKED)", "PRODUCTION")
+        form.addWidget(QLabel("Modo"), row, 0)
+        form.addWidget(self.d9_mode, row, 1, 1, 3)
+        row += 1
+
+        self.d9_seed = QSpinBox()
+        self.d9_seed.setRange(1, 2147483646)
+        self.d9_seed.setValue(12345)
+        self.d9_music_seed = QSpinBox()
+        self.d9_music_seed.setRange(1, 2147483646)
+        self.d9_music_seed.setValue(840001)
+        form.addWidget(QLabel("Gameplay seed"), row, 0)
+        form.addWidget(self.d9_seed, row, 1)
+        form.addWidget(QLabel("Music seed"), row, 2)
+        form.addWidget(self.d9_music_seed, row, 3)
+        row += 1
+
+        self.d9_delivery = QComboBox()
+        for profile_id in DELIVERY_PROFILES:
+            self.d9_delivery.addItem(delivery_label(profile_id), profile_id)
+        review_index = self.d9_delivery.findData("REVIEW_720")
+        self.d9_delivery.setCurrentIndex(review_index if review_index >= 0 else 0)
+        form.addWidget(QLabel("Delivery profile"), row, 0)
+        form.addWidget(self.d9_delivery, row, 1, 1, 3)
+        row += 1
+
+        self.d9_presentation = QLineEdit("social_default_v1")
+        self.d9_presentation.setMaxLength(160)
+        self.d9_variation = QSpinBox()
+        self.d9_variation.setRange(0, 1000000)
+        self.d9_variation.setValue(0)
+        form.addWidget(QLabel("Presentation profile"), row, 0)
+        form.addWidget(self.d9_presentation, row, 1, 1, 3)
+        row += 1
+        form.addWidget(QLabel("Variation index"), row, 0)
+        form.addWidget(self.d9_variation, row, 1)
+        self.d9_audio = QCheckBox("Audio enabled")
+        self.d9_audio.setChecked(True)
+        form.addWidget(self.d9_audio, row, 2, 1, 2)
+        row += 1
+
+        divider = QLabel("MODELO EDITORIAL · HERENCIA + OVERRIDE")
+        divider.setObjectName("SectionHeader")
+        form.addWidget(divider, row, 0, 1, 4)
+        row += 1
+        self.d9_personalization = QCheckBox("Activar datos editoriales en este plan")
+        self.d9_personalization.setChecked(True)
+        form.addWidget(self.d9_personalization, row, 0, 1, 4)
+        row += 1
+        self.d9_scope = QComboBox()
+        form.addWidget(QLabel("Editar ámbito"), row, 0)
+        form.addWidget(self.d9_scope, row, 1, 1, 3)
+        row += 1
+
+        self.d9_title = QLineEdit()
+        self.d9_subtitle = QLineEdit()
+        self.d9_cta = QLineEdit()
+        self.d9_language = QLineEdit("es")
+        self.d9_player_name = QLineEdit()
+        self.d9_challenge_label = QLineEdit()
+        self.d9_editorial_fields = {
+            "title": self.d9_title,
+            "subtitle": self.d9_subtitle,
+            "call_to_action": self.d9_cta,
+            "language": self.d9_language,
+            "player_name": self.d9_player_name,
+            "challenge_label": self.d9_challenge_label,
+        }
+        for field_name, label, widget, placeholder in (
+            ("title", "Título", self.d9_title, "Título editorial (máx. 160)"),
+            ("subtitle", "Subtítulo", self.d9_subtitle, "Descriptor / subtítulo"),
+            ("call_to_action", "CTA", self.d9_cta, "Llamada a la acción"),
+            ("language", "Idioma", self.d9_language, "es"),
+            ("player_name", "Player name", self.d9_player_name, "Solo Challenge"),
+            ("challenge_label", "Challenge label", self.d9_challenge_label, "Solo Challenge"),
+        ):
+            widget.setMaxLength(160)
+            widget.setPlaceholderText(placeholder)
+            form.addWidget(QLabel(label), row, 0)
+            form.addWidget(widget, row, 1, 1, 3)
+            row += 1
+
+        self.d9_validate = QPushButton("RESOLVER EDITORIAL + PLAN (SIN RENDER)")
+        self.d9_validate.setObjectName("Primary")
+        self.d9_validate.setMinimumHeight(42)
+        self.d9_validate.clicked.connect(self._run_d9_universal_plan)
+        form.addWidget(self.d9_validate, row, 0, 1, 4)
+        row += 1
+        notice = QLabel(
+            "Challenge reutiliza el subplan D4 canónico. Visual Loop y Visual Drill generan "
+            "identidad editorial y plan de intención D9.9; no se simula un contrato D4 ni se "
+            "activa el renderer. Seeds explícitas; D4.8 BLOCKED; release_authority=NONE."
+        )
+        notice.setWordWrap(True)
+        notice.setObjectName("D4Notice")
+        form.addWidget(notice, row, 0, 1, 4)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setWidget(form_box)
+        layout.addWidget(scroll, 1)
+
+        output_box = QGroupBox("RESOLUCIÓN / IDENTIDAD / PARIDAD GUI ↔ CLI")
+        output_layout = QVBoxLayout(output_box)
+        self.d9_output_tabs = QTabWidget()
+        self.d9_request_view = QPlainTextEdit()
+        self.d9_editorial_view = QPlainTextEdit()
+        self.d9_plan_view = QPlainTextEdit()
+        self.d9_parity_view = QPlainTextEdit()
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_parity_view):
+            view.setReadOnly(True)
+            view.setLineWrapMode(QPlainTextEdit.NoWrap)
+        for title, view in (
+            ("CANONICAL REQUEST", self.d9_request_view),
+            ("EFFECTIVE EDITORIAL", self.d9_editorial_view),
+            ("UNIVERSAL PLAN", self.d9_plan_view),
+            ("GUI ↔ CLI PARITY", self.d9_parity_view),
+        ):
+            self.d9_output_tabs.addTab(view, title)
+        output_layout.addWidget(self.d9_output_tabs, 1)
+        self.d9_evidence_label = QLabel("Todavía no se ha generado evidencia D9.9.")
+        self.d9_evidence_label.setWordWrap(True)
+        output_layout.addWidget(self.d9_evidence_label)
+        layout.addWidget(output_box, 1)
+
+        self.d9_profile_values = {layer: {} for layer in ("global", "content_type", "family", "subtype", "variant")}
+        self.d9_production_override: dict[str, str] = {}
+        self.d9_active_scope: tuple[str, str | None] | None = None
+        self.d9_content_type.currentIndexChanged.connect(self._d9_universal_type_changed)
+        self.d9_family.currentIndexChanged.connect(self._d9_universal_family_changed)
+        self.d9_subtype.currentIndexChanged.connect(self._d9_universal_selection_changed)
+        self.d9_variant.currentIndexChanged.connect(self._d9_universal_selection_changed)
+        self.d9_scope.currentIndexChanged.connect(self._d9_universal_scope_changed)
+        self.d9_personalization.toggled.connect(self._d9_sync_universal_editorial_controls)
+        self._d9_universal_type_changed(self.d9_content_type.currentIndex())
+        return tab
+
+    def _d9_universal_selection_input(self) -> dict[str, Any]:
+        content_type = str(self.d9_content_type.currentData() or "")
+        selection: dict[str, Any] = {"content_type": content_type}
+        family_id = self.d9_family.currentData()
+        if family_id not in (None, ""):
+            selection["family_id"] = str(family_id)
+        if content_type == "visual_loops":
+            subtype_id = self.d9_subtype.currentData()
+            if subtype_id not in (None, ""):
+                selection["subtype_id"] = str(subtype_id)
+        if content_type in {"challenges", "visual_drills"}:
+            variant_id = self.d9_variant.currentData()
+            if variant_id not in (None, ""):
+                selection["variant_id"] = str(variant_id)
+        return selection
+
+    def _d9_universal_type_changed(self, _index: int = -1) -> None:
+        self._d9_save_universal_editorial_inputs()
+        content_type = str(self.d9_content_type.currentData() or "")
+        content_spec = D9_EDITORIAL_CATALOG["content_types"].get(content_type, {})
+        families = content_spec.get("families", [])
+        self.d9_family.blockSignals(True)
+        self.d9_family.clear()
+        for family in families:
+            self.d9_family.addItem(str(family.get("label", family["id"])), family["id"])
+        self.d9_family.blockSignals(False)
+        self.d9_family.setEnabled(bool(families))
+        self._d9_universal_family_changed(self.d9_family.currentIndex())
+
+    def _d9_universal_family_changed(self, _index: int = -1) -> None:
+        self._d9_save_universal_editorial_inputs()
+        content_type = str(self.d9_content_type.currentData() or "")
+        family_id = self.d9_family.currentData()
+        content_spec = D9_EDITORIAL_CATALOG["content_types"].get(content_type, {})
+        family = next((item for item in content_spec.get("families", []) if item.get("id") == family_id), None)
+        self.d9_subtype.blockSignals(True)
+        self.d9_variant.blockSignals(True)
+        self.d9_subtype.clear()
+        self.d9_variant.clear()
+        if family and content_type == "visual_loops":
+            for subtype in family.get("subtypes", []):
+                self.d9_subtype.addItem(str(subtype.get("label", subtype["id"])), subtype["id"])
+            self.d9_variant.addItem("Sin variante nativa · usa variation index", None)
+            self.d9_subtype.setEnabled(True)
+            self.d9_variant.setEnabled(False)
+        elif family and content_type in {"challenges", "visual_drills"}:
+            self.d9_subtype.addItem("No aplica al contrato de este tipo", None)
+            self.d9_subtype.setEnabled(False)
+            for variant in family.get("variants", []):
+                label = variant.get("label", variant["id"])
+                if content_type == "visual_drills":
+                    label = f"Tier {variant.get('difficulty_tier')} · {variant['id']}"
+                self.d9_variant.addItem(str(label), variant["id"])
+            self.d9_variant.setEnabled(True)
+        else:
+            self.d9_subtype.addItem("No disponible", None)
+            self.d9_variant.addItem("No disponible", None)
+            self.d9_subtype.setEnabled(False)
+            self.d9_variant.setEnabled(False)
+        self.d9_subtype.blockSignals(False)
+        self.d9_variant.blockSignals(False)
+        self._d9_refresh_universal_scope_choices()
+
+    def _d9_universal_selection_changed(self, _index: int = -1) -> None:
+        self._d9_save_universal_editorial_inputs()
+        self._d9_refresh_universal_scope_choices()
+
+    def _d9_universal_scope_changed(self, _index: int = -1) -> None:
+        """Persist edits in the prior scope, then load values for the new scope."""
+        self._d9_save_universal_editorial_inputs()
+        self._d9_load_universal_editorial_inputs()
+
+    def _d9_scope_descriptor(self, layer: str) -> tuple[str, str | None]:
+        selection = self._d9_universal_selection_input()
+        if layer == "production_override":
+            return layer, None
+        if layer == "global":
+            return layer, None
+        if layer == "content_type":
+            return layer, str(selection.get("content_type", ""))
+        try:
+            node = D9_UNIVERSAL.resolve_editorial_values(selection, {}, {}, PROJECT)["selection"]
+            key = node.get("scope_keys", {}).get(layer)
+        except Exception:
+            key = None
+        if not key:
+            return layer, None
+        return layer, str(key)
+
+    def _d9_refresh_universal_scope_choices(self) -> None:
+        content_type = str(self.d9_content_type.currentData() or "")
+        layers = [("Producción · override individual", "production_override"), ("Global · predeterminado", "global"), ("Tipo de contenido", "content_type")]
+        try:
+            node = D9_UNIVERSAL.resolve_editorial_values(self._d9_universal_selection_input(), {}, {}, PROJECT)["selection"]
+            scope_keys = node.get("scope_keys", {})
+            if scope_keys.get("family"):
+                layers.append(("Familia / mecánica", "family"))
+            if scope_keys.get("subtype"):
+                layers.append(("Subtipo / gramática", "subtype"))
+            if scope_keys.get("variant"):
+                layers.append(("Variante seleccionada", "variant"))
+        except Exception:
+            # Unsupported/empty selector state still exposes only the local override/global scopes.
+            pass
+        old_layer = self.d9_scope.currentData() if self.d9_scope.count() else "production_override"
+        self.d9_scope.blockSignals(True)
+        self.d9_scope.clear()
+        for label, key in layers:
+            self.d9_scope.addItem(label, key)
+        index = self.d9_scope.findData(old_layer)
+        if index < 0:
+            index = self.d9_scope.findData("production_override")
+        self.d9_scope.setCurrentIndex(max(0, index))
+        self.d9_scope.blockSignals(False)
+        self._d9_load_universal_editorial_inputs()
+
+    def _d9_scope_values(self) -> dict[str, str]:
+        if self.d9_active_scope is None:
+            return {}
+        layer, scope_id = self.d9_active_scope
+        if layer == "production_override":
+            return self.d9_production_override
+        if layer == "global":
+            return self.d9_profile_values["global"]
+        if scope_id is None:
+            return {}
+        return self.d9_profile_values[layer].get(scope_id, {})
+
+    def _d9_save_universal_editorial_inputs(self) -> None:
+        if self.d9_active_scope is None or not hasattr(self, "d9_editorial_fields"):
+            return
+        if not self.d9_personalization.isChecked():
+            return
+        layer, scope_id = self.d9_active_scope
+        target: dict[str, str]
+        if layer == "production_override":
+            target = self.d9_production_override
+        elif layer == "global":
+            target = self.d9_profile_values["global"]
+        elif scope_id is not None:
+            target = self.d9_profile_values[layer].setdefault(scope_id, {})
+        else:
+            return
+        for field_name, widget in self.d9_editorial_fields.items():
+            value = widget.text().strip()
+            if widget.isEnabled() and value:
+                target[field_name] = value
+            elif widget.isEnabled():
+                target.pop(field_name, None)
+        if layer not in {"production_override", "global"} and scope_id is not None and not target:
+            self.d9_profile_values[layer].pop(scope_id, None)
+
+    def _d9_load_universal_editorial_inputs(self) -> None:
+        layer = str(self.d9_scope.currentData() or "production_override")
+        descriptor = self._d9_scope_descriptor(layer)
+        self.d9_active_scope = descriptor
+        values = self._d9_scope_values()
+        for field_name, widget in self.d9_editorial_fields.items():
+            widget.blockSignals(True)
+            widget.setText(str(values.get(field_name, "")))
+            widget.blockSignals(False)
+        self._d9_sync_universal_editorial_controls(self.d9_personalization.isChecked())
+
+    def _d9_sync_universal_editorial_controls(self, enabled: bool) -> None:
+        content_type = str(self.d9_content_type.currentData() or "")
+        model_spec = D9_EDITORIAL_MODEL.get("content_types", {}).get(content_type, {})
+        allowed = set(model_spec.get("editable_fields", []))
+        layer = str(self.d9_scope.currentData() or "production_override")
+        if layer == "global":
+            allowed.intersection_update({"title", "subtitle", "call_to_action", "language"})
+        for field_name, widget in self.d9_editorial_fields.items():
+            widget.setEnabled(bool(enabled and field_name in allowed))
+
+    def _run_d9_universal_plan(self) -> None:
+        try:
+            self._d9_save_universal_editorial_inputs()
+            content_type = str(self.d9_content_type.currentData() or "")
+            selection = self._d9_universal_selection_input()
+            request_id = "D99-GUI-" + uuid.uuid4().hex[:12].upper()
+            enabled = bool(self.d9_personalization.isChecked())
+            editorial_profile = copy.deepcopy(self.d9_profile_values) if enabled else {}
+            production_override = copy.deepcopy(self.d9_production_override) if enabled else {}
+            raw_request = {
+                "schema": D9_UNIVERSAL.REQUEST_SCHEMA_ID,
+                "schema_version": "1.0",
+                "request_id": request_id,
+                "mode": str(self.d9_mode.currentData()),
+                "selection": selection,
+                "seed": int(self.d9_seed.value()),
+                "music_seed": int(self.d9_music_seed.value()),
+                "delivery_profile_id": str(self.d9_delivery.currentData()),
+                "presentation_profile_id": self.d9_presentation.text().strip() or "UNKNOWN",
+                "variation_index": int(self.d9_variation.value()),
+                "audio_enabled": bool(self.d9_audio.isChecked()),
+                "personalization_enabled": enabled,
+                "editorial_profile": editorial_profile,
+                "production_override": production_override,
+                "provenance": {"source_revision": "C11D-D9.9-PRODUCER-0.11.0", "request_origin": "GUI"},
+            }
+            result = D9_UNIVERSAL.evaluate_universal_request(raw_request, PROJECT)
+            evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_universal"
+            evidence_root.mkdir(parents=True, exist_ok=True)
+            run_root = evidence_root / request_id
+            run_root.mkdir(parents=False, exist_ok=False)
+
+            def write_json(path: Path, value: Any) -> None:
+                path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+            request_path = run_root / "request.json"
+            request_path.write_text(json.dumps(raw_request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            cli_path = PROJECT / "tools" / "c11d" / "d9" / "universal_producer_cli.py"
+            cli_run = subprocess.run(
+                [sys.executable, str(cli_path), "--request", str(request_path), "--print-json"],
+                cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=45,
+            )
+            if cli_run.returncode != 0:
+                raise RuntimeError("D9.9 canonical CLI failed: " + cli_run.stderr.strip())
+            cli_result = json.loads(cli_run.stdout)
+            parity_checks = {
+                "canonical_request_equal": result["canonical_request"] == cli_result["canonical_request"],
+                "request_hash_equal": result["request_hash"] == cli_result["request_hash"],
+                "editorial_hash_equal": result["editorial_hash"] == cli_result["editorial_hash"],
+                "plan_equal": result["plan"] == cli_result["plan"],
+                "plan_hash_equal": result["plan_hash"] == cli_result["plan_hash"],
+            }
+            parity = {
+                "schema": "C11-D-D9.9-UNIVERSAL-GUI-CLI-PARITY-V1",
+                "status": "PASS" if all(parity_checks.values()) else "FAIL",
+                "content_type": content_type,
+                "selection": result["canonical_request"]["selection"],
+                "checks": parity_checks,
+                "gui_request_hash": result["request_hash"],
+                "cli_request_hash": cli_result["request_hash"],
+                "gui_plan_hash": result["plan_hash"],
+                "cli_plan_hash": cli_result["plan_hash"],
+                "renderer": False,
+                "production_execution": False,
+                "release_authority": "NONE",
+            }
+            write_json(run_root / "canonical_request.json", result["canonical_request"])
+            write_json(run_root / "editorial_resolution.json", result["editorial_resolution"])
+            write_json(run_root / "universal_plan.json", result["plan"])
+            write_json(run_root / "d4_subplan_evidence.json", result["d4_evidence"] or {"status": "NOT_APPLICABLE"})
+            write_json(run_root / "gui_cli_parity.json", parity)
+            receipt = {
+                "schema": "C11-D-D9.9-PRODUCER-UNIVERSAL-RECEIPT-V1",
+                "phase": "D9.9",
+                "result": "PASS_PLAN_ONLY" if parity["status"] == "PASS" else "FAIL",
+                "status": result["status"],
+                "request_id": request_id,
+                "request_hash": result["request_hash"],
+                "editorial_hash": result["editorial_hash"],
+                "plan_hash": result["plan_hash"],
+                "gui_cli_parity": parity["status"],
+                "content_type": content_type,
+                "selection": result["canonical_request"]["selection"],
+                "renderer_execution": False,
+                "production_execution": False,
+                "release_authority": "NONE",
+                "d4_8": "BLOCKED",
+                "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
+            }
+            write_json(run_root / "producer_universal_receipt.json", receipt)
+            self.d9_request_view.setPlainText(json.dumps(result["canonical_request"], ensure_ascii=False, indent=2))
+            self.d9_editorial_view.setPlainText(json.dumps(result["editorial_resolution"], ensure_ascii=False, indent=2))
+            self.d9_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
+            self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
+            self.d9_evidence_label.setText(f"Evidencia D9.9: {run_root}")
+            self.d9_output_tabs.setCurrentWidget(self.d9_parity_view)
+            if parity["status"] != "PASS":
+                raise AssertionError("D9.9 GUI/CLI request or plan identity mismatch")
+            self.statusBar().showMessage(
+                f"D9.9 UNIVERSAL PLAN PASS · {content_type} · GUI/CLI exact · plan={result['plan_hash'][:12]} · renderer OFF"
+            )
+        except Exception as exc:
+            self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
+            QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))
 
     def _sync_c11d_personalization_controls(self, enabled: bool) -> None:
         for widget in (

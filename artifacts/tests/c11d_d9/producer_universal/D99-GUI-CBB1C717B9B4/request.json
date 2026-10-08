@@ -1,0 +1,42 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "request_id": "D99-GUI-CBB1C717B9B4",
+  "mode": "REVIEW",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "pursuit",
+    "variant_id": "tier-1"
+  },
+  "seed": 12345,
+  "music_seed": 840001,
+  "delivery_profile_id": "MASTER_1080",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "personalization_enabled": true,
+  "editorial_profile": {
+    "global": {},
+    "content_type": {},
+    "family": {},
+    "subtype": {},
+    "variant": {
+      "visual-drill:pursuit:tier-1": {
+        "title": "titulo test",
+        "subtitle": "subtitulo",
+        "call_to_action": "cta",
+        "language": "es"
+      }
+    }
+  },
+  "production_override": {
+    "title": "titulo",
+    "subtitle": "descripcion",
+    "call_to_action": "cta",
+    "language": "es"
+  },
+  "provenance": {
+    "source_revision": "C11D-D9.9-PRODUCER-0.11.0",
+    "request_origin": "GUI"
+  }
+}

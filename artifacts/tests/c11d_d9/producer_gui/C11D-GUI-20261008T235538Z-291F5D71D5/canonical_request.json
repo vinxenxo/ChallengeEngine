@@ -1,0 +1,43 @@
+{
+  "request_id": "C11D-GUI-20261008T235538Z-291F5D71D5",
+  "schema_version": "1.0",
+  "mode": "REVIEW",
+  "challenge_id": "CHALLENGE_008",
+  "challenge_version": "UNKNOWN",
+  "seed": 12345,
+  "music_seed": 840001,
+  "delivery_profile_id": "MIN_540",
+  "presentation_profile_id": "social_default_v1",
+  "duration_seconds": 12.0,
+  "variation_index": 0,
+  "personalization": {
+    "enabled": true,
+    "profile_id": "editorial_text_v1",
+    "values": {
+      "call_to_action": "¡INTÉNTALO TÚ TAMBIÉN!",
+      "challenge_label": "KEY",
+      "language": "es",
+      "player_name": "asdfasdfa",
+      "subtitle": "asdfasdf",
+      "title": "¡SOLO EL 1% LLEGA AL CENTRO!"
+    }
+  },
+  "editorial": {
+    "title": "¡SOLO EL 1% LLEGA AL CENTRO!",
+    "subtitle": "asdfasdf",
+    "language": "es",
+    "call_to_action": "¡INTÉNTALO TÚ TAMBIÉN!"
+  },
+  "output": {
+    "container": "mp4",
+    "width": 540,
+    "height": 960,
+    "fps": 30.0,
+    "audio_enabled": true
+  },
+  "provenance": {
+    "source_revision": "C11D-D9.5.1",
+    "request_origin": "UNKNOWN",
+    "parent_request_id": "UNKNOWN"
+  }
+}

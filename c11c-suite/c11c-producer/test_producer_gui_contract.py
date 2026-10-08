@@ -12,7 +12,7 @@ SCHEMA = ROOT / "producer_schema.json"
 
 main_text = MAIN.read_text(encoding="utf-8")
 tree = ast.parse(main_text)
-assert 'APP_VERSION = "0.10.0"' in main_text
+assert 'APP_VERSION = "0.11.0"' in main_text
 assert "failed_seeds" in main_text
 assert "current_seed" in main_text
 assert 'QProcess.ProcessError.FailedToStart' in main_text
@@ -21,6 +21,30 @@ assert 'run_c11c_challenge_bulk_qa.ps1' in main_text
 assert 'run_c11a1_challenge_bulk_qa.ps1' not in main_text
 assert 'self.proc.errorOccurred.connect(self._process_error)' in main_text
 assert 'C11-D · REQUEST + PERSONALIZACIÓN' in main_text
+assert 'C11-D · EDITORIAL UNIVERSAL (D9.9)' in main_text
+assert 'def _build_d9_universal_editorial_tab' in main_text
+assert 'self.d9_scope.currentIndexChanged.connect(self._d9_universal_scope_changed)' in main_text
+assert 'def _d9_universal_scope_changed(' in main_text
+
+# Catch runtime AttributeError regressions: every MainWindow self-method used as
+# a Qt signal callback must actually exist on MainWindow (static text checks alone
+# previously missed a missing scope-change handler).
+main_window = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == 'MainWindow')
+main_window_methods = {node.name for node in main_window.body if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))}
+missing_callbacks = set()
+for node in ast.walk(main_window):
+    if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Attribute) or node.func.attr != 'connect' or not node.args:
+        continue
+    callback = node.args[0]
+    if isinstance(callback, ast.Attribute) and isinstance(callback.value, ast.Name) and callback.value.id == 'self':
+        if callback.attr.startswith('_') and callback.attr not in main_window_methods:
+            missing_callbacks.add(callback.attr)
+assert not missing_callbacks, f'Qt callbacks reference missing MainWindow methods: {sorted(missing_callbacks)}'
+assert 'D9_UNIVERSAL.evaluate_universal_request(raw_request, PROJECT)' in main_text
+assert 'universal_producer_cli.py' in main_text
+assert 'canonical_request_equal' in main_text and 'plan_hash_equal' in main_text
+assert 'Longform · DESHABILITADO' in main_text
+assert 'release_authority' in main_text and 'renderer OFF' in main_text
 assert 'build_production_request' in main_text
 assert 'evaluate_gui_request' in main_text
 assert '_verify_c11d_planning_predecessors' in main_text
@@ -52,4 +76,4 @@ assert "generator_stdout.log" in ps
 assert "generator_stderr.log" in ps
 assert "Visual Drill envelope generator returned no response" in ps
 
-print("C11C_PRODUCER_GUI_CONTRACT_SUITE PASS")
+print("C11C_PRODUCER_GUI_CONTRACT_SUITE PASS | Producer 0.11.0 | D9.9 universal tab wired to canonical GUI/CLI backend")

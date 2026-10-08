@@ -1,0 +1,59 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "status": "ACTIVE_PLAN_ONLY",
+  "checkpoint": "D9.9",
+  "purpose": "Canonical universal editorial planning request shared by the existing Producer GUI and CLI for supported C11-C content identities.",
+  "top_level_fields": [
+    "schema",
+    "schema_version",
+    "request_id",
+    "mode",
+    "selection",
+    "seed",
+    "music_seed",
+    "delivery_profile_id",
+    "presentation_profile_id",
+    "variation_index",
+    "audio_enabled",
+    "personalization_enabled",
+    "editorial_profile",
+    "production_override",
+    "provenance"
+  ],
+  "selection_fields": [
+    "content_type",
+    "family_id",
+    "subtype_id",
+    "variant_id"
+  ],
+  "supported_content_types": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "unsupported_content_types": {
+    "longform": "DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM"
+  },
+  "rules": {
+    "canonical_backend": "tools/c11d/d9/universal_producer.py",
+    "gui_and_cli": "MUST_USE_THE_SAME_CANONICAL_BACKEND",
+    "editorial_fields": "RESOLVED_BY_C11D_UNIVERSAL_EDITORIAL_MODEL_V1",
+    "gameplay_seed": "request.seed",
+    "music_seed": "request.music_seed",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "simulation_truth_mutation": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "d4_8": "BLOCKED",
+    "longform_enabled": false
+  },
+  "plan_kinds": {
+    "challenges": "UNIVERSAL_PLAN_WITH_CANONICAL_D4_CHALLENGE_SUBPLAN",
+    "visual_loops": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+    "visual_drills": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY"
+  }
+}
