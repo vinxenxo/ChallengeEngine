@@ -24,7 +24,7 @@ Version numbers for future targets below are planned, not active until the suite
 | D9.5.1 | Producer | **0.10.0** | D4 request and personalization inputs; D4.6/D4.5 parity; 90 core + 12 personalization + 4 negatives; preserve old Producer/backend fingerprint |
 | D9.5.2 | Producer | 0.10.x | Contract-safe text-to-media path discovered/implemented without changing protected C11-C truth or silently bypassing D4.8; real MP4 contains proved text changes |
 | D9.5.3 | Producer | 0.10.x | Windows GUI interaction, request save/reload/reproduction, job/log/error/cancel smoke |
-| D9.6 | Catalog | **0.2.0** | D5/D7/D8/D9 product identity, lineage, seeds, personalization, media stream metadata, hashes and reproduction |
+| D9.6 | Catalog | **0.2.0** | D7 intents + explicit D9.4 media manifest + D9.5.1 Producer plan records; provenance/seed/profile/hash/replay inspection; D8 scope gate plus negatives for hash/path/parity tamper | Overlay implemented; pure-data and static GUI tests PASS; Windows GUI/local evidence pending |
 | D9.7 | Config | **0.2.0** | D2/D3/D4/D6 registries/profiles, validated edits/snapshots/backups and invalid-config negatives |
 | D9.8 | Maintenance | **0.2.0** | D5/D8/D9 dry-run, quarantine, cleanup, repository/docs organization and freeze surfaces; protected-root negatives |
 | D9.9 | Test | **0.2.0** | D2–D9 test command registration, GUI-triggered execution, output/exit/error/cancel states and GUI E2E entrypoints |
@@ -56,3 +56,15 @@ The real Windows acceptance will not stop at “the app opened” or “self-tes
 ## Freeze boundaries
 
 No changes to protected C11-C simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, C7/C9 contracts, logical 540×960 geometry or proven C11-C production behavior. Do not auto-generate seeds. Do not merge gameplay/music seed streams. Do not create a sixth suite. D10 remains BLOCKED.
+
+## D9.6 implementation checkpoint
+
+The existing `c11c-catalog` is advanced to 0.2.0 in an additive overlay. It keeps its generic artifact browser and adds a `C11-D PRODUCTS / PROVENANCE` tab. C11-D records are admitted only from exact D7/D9 receipts/manifests; arbitrary artifact filenames are never promoted to product records. D7 intents and D9.5.1 records stay PLAN_ONLY; D9.4-listed media stays VALIDATED_PILOT / NOT_REGISTERED_FOR_D8_RELEASE. SHA-256/size checks, project-root path confinement and request/plan/parity checks are required. The catalog has no renderer or release authority.
+
+Focused isolated tests cover 90 canonical-intent fixture rows, five explicit media fixture rows, one Producer plan, five negative controls including D8 scope drift, GUI contract and consolidated Suite integration. Local Windows Qt bring-up plus validation against the real local D9.1–D9.4 artifacts are still required; D9.6 remains acceptance-pending until that evidence is returned.
+
+## D9.6 implementation checkpoint
+
+The existing `c11c-catalog` is advanced to 0.2.0 in an additive overlay. It keeps its generic artifact browser and adds a `C11-D PRODUCTS / PROVENANCE` tab. C11-D records are admitted only from exact D7/D9 receipts/manifests; arbitrary artifact filenames are never promoted to product records. D7 intents and D9.5.1 records stay PLAN_ONLY; D9.4-listed media stays VALIDATED_PILOT / NOT_REGISTERED_FOR_D8_RELEASE. SHA-256/size checks, project-root path confinement and request/plan/parity checks are required. The catalog has no renderer or release authority.
+
+Focused isolated tests cover 90 canonical-intent fixture rows, five explicit media fixture rows, one Producer plan, five negative controls including D8 scope drift, GUI contract and consolidated Suite integration. Local Windows Qt bring-up plus validation against the real local D9.1–D9.4 artifacts are still required; D9.6 remains acceptance-pending until that evidence is returned.

@@ -32,3 +32,13 @@ D9.6 Catalog 0.2.0, D9.7 Config 0.2.0, D9.8 Maintenance 0.2.0, D9.9 Test 0.2.0, 
 ## Non-negotiable boundaries
 
 No sixth suite; c11c-studio is retired. C11-C simulation/mechanics/RNG, timing truth, C7/C9, logical 540×960 geometry and proven production behavior are immutable. `master_seed` remains NOT_ADOPTED; seed domains stay isolated; D4.8 remains BLOCKED; release authority NONE. D10 may not begin before D9 is formally closed.
+
+
+## Latest handover — D9.6 Catalog overlay
+
+Current work is D9 Suite Integration/Evolution. D9.4 is a PASS checkpoint only, not overall D9 closure; D10 is BLOCKED. Producer 0.10.0 D9.5.1 plan/personalization GUI passed user Windows interaction (plan generation works; not media rendering). D9.6 Catalog 0.2.0 overlay adds `C11-D PRODUCTS / PROVENANCE` inside the existing Catalog GUI. Apply `C11D_D9.6_CATALOG_INTEGRATION_OVERLAY_V1.zip` then run catalog self-test, GUI contract and consolidated Suite self-test. Windows Qt bring-up and reading local D9.4 manifest/media still need acceptance. Never create a sixth suite or revive c11c-studio.
+
+
+## Latest handover — D9.6 Catalog overlay
+
+Current work is D9 Suite Integration/Evolution. D9.4 is a PASS checkpoint only, not overall D9 closure; D10 is BLOCKED. Producer 0.10.0 D9.5.1 plan/personalization GUI passed user Windows interaction (plan generation works; not media rendering). D9.6 Catalog 0.2.0 overlay adds `C11-D PRODUCTS / PROVENANCE` inside the existing Catalog GUI. Apply `C11D_D9.6_CATALOG_INTEGRATION_OVERLAY_V1.zip` then run catalog self-test, GUI contract and consolidated Suite self-test. Windows Qt bring-up and reading local D9.4 manifest/media still need acceptance. Never create a sixth suite or revive c11c-studio.

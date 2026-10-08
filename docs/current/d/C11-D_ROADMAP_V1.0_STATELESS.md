@@ -32,12 +32,16 @@ C11-D is an additive productization branch around immutable C11-C behavior. The 
 
 ### D9.x implementation and acceptance sequence
 
+**Current implementation checkpoint: D9.6 Catalog 0.2.0 overlay prepared.** The catalog continues to separate D7 plan intents, D9.5.1 plan-only requests and D9.4-validated pilot media; it does not infer release eligibility.
+
+**Current implementation checkpoint: D9.6 Catalog 0.2.0 overlay prepared.** The catalog continues to separate D7 plan intents, D9.5.1 plan-only requests and D9.4-validated pilot media; it does not infer release eligibility.
+
 | Milestone | Existing surface / version target | Work and required tests | Status |
 |---|---|---|---|
 | **D9.5.1** | `c11c-producer` **0.10.0** | Additive D4 Production Request + D4.3 editorial personalization tab; exact D4.6/D4.5 plan parity; 90 core + 12 personalization + negative tests; preserve existing C11-C Producer flows and backend fingerprint. | Implemented in overlay; static + canonical adapter matrix PASS; Windows GUI interaction pending |
 | **D9.5.2** | `c11c-producer` 0.10.x | Inspect/implement a contract-safe bridge between the request's editorial fields and actual Challenge media. Must not modify protected C11-C truth/geometry or silently bypass D4.8. Prove text is visible in actual MP4, with render manifests/hashes and QA. | Next |
 | **D9.5.3** | `c11c-producer` 0.10.x | Windows GUI smoke: open app, create/edit/save request, inspect normalized request/plan, error/cancel paths, rerun from saved request. Existing C11-C workflows regression-tested. | Pending |
-| **D9.6** | `c11c-catalog` target **0.2.0** | Add D5/D7/D8/D9 product and artifact records: Challenge, both seeds, delivery/presentation/personalization, hashes, manifest/provenance, media streams, eligibility/status and canonical reproduction command. Test with D9.1–D9.3 and future GUI products; missing/ambiguous provenance negatives. | Planned |
+| **D9.6** | `c11c-catalog` **0.2.0** | Existing artifact browser preserved; receipt-driven D7 intents, D9.4 hash-verified pilot media and D9.5.1 plan/provenance/replay records; negatives for D8 scope drift, tampered hashes, traversal, missing companions and invalid parity. | Implemented in overlay; isolated tests PASS; Windows GUI/local-evidence acceptance pending |
 | **D9.7** | `c11c-config` target **0.2.0** | Governed access to D2 asset bindings, D3 Music V5 style/registry, D4 delivery/presentation/personalization profiles, D6 seed settings and request snapshots. Validate schemas, diff/hash, explicit save, backup/restore, invalid config and forbidden-seed negatives. No silent defaults or auto-seed. | Planned |
 | **D9.8** | `c11c-maintenance` target **0.2.0** | Expose current D cleanup, repository organization, quarantine, docs consolidation, verification and freeze operations. Dry-run-first, allowlisted targets, immutable evidence, protected-root guard tests and failure recovery. No automatic destructive action. | Planned |
 | **D9.9** | `c11c-test` target **0.2.0** | Add GUI-accessible D2–D9 canonical test commands: D4 planning/parity, D6 seed governance, D7 matrix/catalog, D8 ffprobe/visual/audio/eligibility negatives, D9 GUI/job lifecycle and E2E. Verify command registry targets, output, exit codes, cancel/failure behavior. | Planned |

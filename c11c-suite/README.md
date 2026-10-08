@@ -5,7 +5,7 @@
 ## Surfaces
 
 - `c11c-test` — logical regression, QA and focused acceptance.
-- `c11c-catalog` — artifact browsing and metadata inspection.
+- `c11c-catalog` — artifact browsing and metadata inspection; version 0.2.0 adds receipt-driven C11-D product/provenance/replay records.
 - `c11c-maintenance` — documentation consolidation, repository organization, cleanup and freeze packaging.
 - `c11c-config` — declarative configuration inspection/editing.
 - `c11c-producer` — audiovisual orchestration for Challenges, Visual Loops and Visual Drills.
@@ -22,6 +22,8 @@ The Suite does not own an alternative backend. GUI actions launch the same canon
 
 - Suite application: **0.1.4**
 - Producer: **0.10.0**
+- Catalog: **0.2.0** (D9.6 overlay; Windows GUI acceptance pending)
+- Catalog: **0.2.0** (D9.6 overlay; Windows GUI acceptance pending)
 - C11-C baseline: **2.19.12 FROZEN**
 - C11-D: **D0–D8 CLOSED · D9 ACTIVE · D9.4 CHECKPOINT PASS · D10 BLOCKED**
 - Godot: **4.7.1 stable Mono**

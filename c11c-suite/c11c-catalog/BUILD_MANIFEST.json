@@ -1,0 +1,21 @@
+{
+  "app": "C11-C Catalog",
+  "version": "0.2.0",
+  "suite_root": "c11c-suite/c11c-catalog",
+  "ui_base": "0.1.x-preserved",
+  "scope": "Existing artifact browser plus explicit receipt-driven C11-D canonical intent, Producer GUI plan and D9.4 pilot-media views.",
+  "d7_catalog_intents": true,
+  "d94_manifest_media": true,
+  "producer_gui_plan_records": true,
+  "hash_verified_media": true,
+  "safe_project_root_paths_only": true,
+  "arbitrary_media_promotion": false,
+  "d_records": true,
+  "reproduction_command_copy": true,
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "media_rendered_by_catalog": false,
+  "suite_added": false,
+  "c11c_studio_dependency": false
+}

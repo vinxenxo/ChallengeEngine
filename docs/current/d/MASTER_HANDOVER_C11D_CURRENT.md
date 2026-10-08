@@ -63,3 +63,21 @@ Do not modify simulation/mechanics/RNG, `SimulationResult`, `winning_frame`, `cl
 ## Required next action
 
 Apply D9.5.1 overlay; run Producer self-test, Producer GUI contract test and Suite self-test; then launch `c11c-suite\run.bat` on Windows and exercise the existing Producer GUI. Only claim Qt interaction pass after observing it directly. After that, proceed to D9.5.2 only with a safe text-to-media integration design.
+
+
+## Latest D9 state — Catalog integration checkpoint
+
+- D9.4 remains a real-media checkpoint; overall D9 remains ACTIVE. D10 remains BLOCKED.
+- Producer D9.5.1 / version 0.10.0 is acknowledged by user as generating plans successfully in the current GUI. Actual personalized-pixel output remains deferred to the future D freeze/rebase decision; do not claim these editorial fields are in MP4 yet.
+- D9.6 Catalog 0.2.0 is implemented as an additive overlay against the latest D9.4 workspace. The existing Catalog app is retained; no sixth suite and no c11c-studio dependency.
+- Catalog rows use exact governed D7/D9 receipts/manifests; D7 is intent-only, D9.5.1 is plan-only, D9.4 media is validation-pilot-only and not D8 release-eligible.
+- D9.6 focused isolated/static tests pass in the build workspace. Required next proof: apply overlay, run focused tests and consolidated `c11c-suite/self_test.py`, open Catalog on Windows, and verify it reads local D9.1-D9.4 files correctly.
+
+
+## Latest D9 state — Catalog integration checkpoint
+
+- D9.4 remains a real-media checkpoint; overall D9 remains ACTIVE. D10 remains BLOCKED.
+- Producer D9.5.1 / version 0.10.0 is acknowledged by user as generating plans successfully in the current GUI. Actual personalized-pixel output remains deferred to the future D freeze/rebase decision; do not claim these editorial fields are in MP4 yet.
+- D9.6 Catalog 0.2.0 is implemented as an additive overlay against the latest D9.4 workspace. The existing Catalog app is retained; no sixth suite and no c11c-studio dependency.
+- Catalog rows use exact governed D7/D9 receipts/manifests; D7 is intent-only, D9.5.1 is plan-only, D9.4 media is validation-pilot-only and not D8 release-eligible.
+- D9.6 focused isolated/static tests pass in the build workspace. Required next proof: apply overlay, run focused tests and consolidated `c11c-suite/self_test.py`, open Catalog on Windows, and verify it reads local D9.1-D9.4 files correctly.
