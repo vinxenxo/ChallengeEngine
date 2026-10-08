@@ -1,0 +1,17 @@
+{
+    "result":  "PASS",
+    "d7_chain":  [
+                     "D7.3 canonical catalog",
+                     "D7.4 identity/provenance"
+                 ],
+    "mapping_basis":  "explicit_registry_entry",
+    "filename_only_inference":  false,
+    "directory_only_inference":  false,
+    "historical_auto_promotion":  false,
+    "candidates":  [
+
+                   ],
+    "rejections":  [
+
+                   ]
+}

@@ -1,0 +1,19 @@
+{
+    "contract":  "C11-D-D8-ARTIFACT-MEDIA-ELIGIBILITY-V1",
+    "checkpoint":  "D8.4",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "scope_candidate_count":  0,
+    "eligible_candidate_count":  0,
+    "rejected_candidate_count":  0,
+    "d7_catalog_items":  90,
+    "d7_receipt":  "PASS/CLOSED",
+    "d7_provenance":  "PASS",
+    "release_authority":  "NONE",
+    "production_execution":  false,
+    "renderer_execution":  false,
+    "runtime_authority":  "NONE",
+    "master_seed":  "NOT_ADOPTED",
+    "cross_domain_seed_sharing":  "FORBIDDEN",
+    "d4_8":  "BLOCKED"
+}

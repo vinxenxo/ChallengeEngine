@@ -1,0 +1,6 @@
+{
+    "result":  "PASS",
+    "before_sha256":  "f69820038b73c9b08ed5ecd3ae99163a1ea2e143bd1653c12ff01e810bc9596c",
+    "after_sha256":  "f69820038b73c9b08ed5ecd3ae99163a1ea2e143bd1653c12ff01e810bc9596c",
+    "allowed_write_root":  "artifacts/tests/c11d_d8/d8_4"
+}

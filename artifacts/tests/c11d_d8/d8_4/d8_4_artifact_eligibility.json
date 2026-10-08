@@ -1,0 +1,13 @@
+{
+    "contract":  "C11-D-D8-ARTIFACT-MEDIA-ELIGIBILITY-V1",
+    "result":  "PASS_NO_MEDIA",
+    "status":  "CLOSED",
+    "scope_mode":  "EXPLICIT_REGISTRY_ONLY",
+    "scope_candidate_count":  0,
+    "eligible_candidate_count":  0,
+    "rejected_candidate_count":  0,
+    "d7_catalog_items":  90,
+    "d7_catalog_authority":  "CANONICAL_D7_3",
+    "d7_identity_provenance_authority":  "CANONICAL_D7_4",
+    "release_authority":  "NONE"
+}

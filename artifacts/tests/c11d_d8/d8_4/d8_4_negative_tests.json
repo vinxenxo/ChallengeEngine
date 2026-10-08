@@ -1,0 +1,25 @@
+{
+    "result":  "PASS",
+    "tests":  [
+                  {
+                      "id":  "filename_only_inference",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "directory_only_inference",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "historical_auto_promotion",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "blocked_authorization_is_not_grant",
+                      "pass":  true
+                  },
+                  {
+                      "id":  "release_authority_remains_none",
+                      "pass":  true
+                  }
+              ]
+}

@@ -1,0 +1,37 @@
+{
+  "contract": "C11-D-D8-ARTIFACT-MEDIA-ELIGIBILITY-V1",
+  "phase": "D8.4",
+  "status": "CANONICAL",
+  "purpose": "Define deterministic eligibility and D7 identity/provenance linkage for explicitly registered physical media without granting release authority.",
+  "scope_source": "definitions/c11d/d8/D8_MEDIA_SCOPE_V1.json",
+  "d7_identity_authority": "CANONICAL_D7_4",
+  "d7_catalog_authority": "CANONICAL_D7_3",
+  "eligibility_mode": "EXPLICIT_REGISTRY_ONLY",
+  "mapping_rules": {
+    "one_media_candidate_requires_one_registry_entry": true,
+    "catalog_key_must_resolve_to_d7_catalog_item": true,
+    "catalog_item_id_must_match_resolved_d7_item": true,
+    "media_path_must_be_explicit": true,
+    "media_sha256_must_be_explicit": true,
+    "provenance_evidence_ids_must_be_explicit": true,
+    "filename_only_inference_forbidden": true,
+    "directory_only_inference_forbidden": true,
+    "historical_media_auto_promotion_forbidden": true,
+    "copy_or_move_does_not_create_authority": true
+  },
+  "eligible_state": "ELIGIBLE_FOR_D8_QA_ONLY",
+  "release_authorization": "NONE",
+  "production_execution": false,
+  "renderer_execution": false,
+  "runtime_authority": "NONE",
+  "master_seed": "NOT_ADOPTED",
+  "cross_domain_seed_sharing": "FORBIDDEN",
+  "d4_8": "BLOCKED",
+  "protected_semantics": [
+    "winning_frame",
+    "close_calls",
+    "SimulationResult",
+    "WinningFrameDetector",
+    "RenderedFrameStream"
+  ]
+}
