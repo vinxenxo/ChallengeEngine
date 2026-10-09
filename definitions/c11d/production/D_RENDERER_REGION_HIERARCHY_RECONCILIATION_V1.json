@@ -1,0 +1,192 @@
+{
+  "schema": "C11-D-RENDERER-REGION-HIERARCHY-RECONCILIATION-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_RECONCILIATION_NOT_RENDERER_INPUT",
+  "decision": "EXISTING_SHARED_FRAME_AND_CONTENT_SPECIFIC_COMPOSITION_TAKE_PRECEDENCE",
+  "purpose": "Reconcile the future D renderer layout model with existing D1.5 social-frame geometry and existing family/profile composition without editing or reimplementing the frozen C11-C source.",
+  "source_of_truth": {
+    "logical_frame_contract": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+    "delivery_profiles": "profiles/delivery/c11c_video_delivery_profiles.json",
+    "visual_family_catalog": "profiles/presentation/c11c_visual_family_catalog.json",
+    "presentation_profile_implementation": "core/presentation/PresentationProfile.gd",
+    "visual_loop_binder": "core/presentation/VisualLoopPresentationBinder.gd",
+    "visual_loop_renderer_router": "core/presentation/rendering/VisualLoopRenderer.gd",
+    "semantic_region_proposal_retained_as_unapproved": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1.json",
+    "frozen_c11c_manifest": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "scope": {
+    "content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "longform": "UNSUPPORTED_FAIL_CLOSED",
+    "unknown_content_type": "FAIL_CLOSED"
+  },
+  "delivery_and_logical_frame": {
+    "delivery_profile_is_metadata_only": true,
+    "logical_canvas": {
+      "width": 540,
+      "height": 960,
+      "units": "LOGICAL_PRESENTATION_COORDINATES"
+    },
+    "delivery_canvas_policy": "Resolve width, height and FPS from the selected delivery profile; delivery metadata does not authorize rendering.",
+    "shared_regions_authority": "EXISTING_D1_5_CONTRACT_NOT_A_NEW_D_GEOMETRY_PROPOSAL",
+    "shared_regions": [
+      {
+        "region_id": "HEADER",
+        "x": 0,
+        "y": 0,
+        "width": 540,
+        "height": 144,
+        "units": "LOGICAL_PRESENTATION_COORDINATES",
+        "authority": "D1.5_EXISTING"
+      },
+      {
+        "region_id": "BODY",
+        "x": 0,
+        "y": 144,
+        "width": 540,
+        "height": 672,
+        "units": "LOGICAL_PRESENTATION_COORDINATES",
+        "authority": "D1.5_EXISTING"
+      },
+      {
+        "region_id": "FOOTER",
+        "x": 0,
+        "y": 816,
+        "width": 540,
+        "height": 144,
+        "units": "LOGICAL_PRESENTATION_COORDINATES",
+        "authority": "D1.5_EXISTING"
+      }
+    ],
+    "region_semantics": "The shared frame is the existing structural partition. It must not be replaced by the previous normalized-permille HEADER/CONTENT_STAGE/CHALLENGE_OVERLAY/FOOTER boxes."
+  },
+  "geometry_hierarchy": [
+    {
+      "level": 1,
+      "owner": "DELIVERY_PROFILE",
+      "role": "Delivery dimensions and encoding metadata",
+      "spatial_authority": "PROFILE_METADATA",
+      "coordinate_emission": false
+    },
+    {
+      "level": 2,
+      "owner": "D1_5_SHARED_SOCIAL_FRAME",
+      "role": "Existing HEADER/BODY/FOOTER partition of the 540x960 logical canvas",
+      "spatial_authority": "EXISTING_CANONICAL_CONTRACT",
+      "coordinate_emission": false
+    },
+    {
+      "level": 3,
+      "owner": "PRESENTATION_PROFILE",
+      "role": "Existing profile-driven safe-area/content geometry and composition policy",
+      "spatial_authority": "RESOLVE_FROM_EXISTING_PROFILE_PER_CONTENT",
+      "coordinate_emission": false
+    },
+    {
+      "level": 4,
+      "owner": "CONTENT_FAMILY_RENDERER_OR_BINDER",
+      "role": "Family/mechanic-specific visual payload and its current composition behavior",
+      "spatial_authority": "EXISTING_FAMILY_IMPLEMENTATION",
+      "coordinate_emission": false
+    },
+    {
+      "level": 5,
+      "owner": "PRESENTATION_OVERLAY_LAYER",
+      "role": "Editorial/Challenge overlay roles where supported by the content presentation contract",
+      "spatial_authority": "EXISTING_BODY_UI_OVERLAY_OR_CONTENT_BINDER; NO_NEW_FIXED_RECTANGLE",
+      "coordinate_emission": false
+    }
+  ],
+  "non_equivalent_geometry_contracts": {
+    "get_social_regions": "Full-width HEADER/BODY/FOOTER partition for the logical social frame.",
+    "get_composition_geometry": "Profile-driven canvas/safe/header/content/footer geometry; content_rect is constrained by safe_area and the selected profile.",
+    "must_remain_distinct": true,
+    "reason": "The existing PresentationProfile deliberately exposes both methods with different semantics. The D candidate must not collapse the shared frame, profile safe area and family content geometry into one newly invented rectangle."
+  },
+  "visual_loop_families": {
+    "catalog_path": "profiles/presentation/c11c_visual_family_catalog.json",
+    "identity_catalog_defines_family_specific_rectangles": false,
+    "composition_authority": "Existing PresentationProfile + VisualLoopPresentationBinder + VisualLoopRenderer family route and generators.",
+    "routing_must_preserve_source_aliases": true,
+    "family_count": 5,
+    "canonical_identities": [
+      {
+        "technical_id": "geometric",
+        "artistic_name": "Geometric Waves",
+        "production_id": "c11c_geometric_waves_v1",
+        "runtime_id": "geometric"
+      },
+      {
+        "technical_id": "fractal",
+        "artistic_name": "Fractal Bloom",
+        "production_id": "c11c_fractal_bloom_v1",
+        "runtime_id": "fractal"
+      },
+      {
+        "technical_id": "kaleidoscope",
+        "artistic_name": "Sacred Symmetry",
+        "production_id": "c11c_sacred_symmetry_v1",
+        "runtime_id": "sacred_symmetry"
+      },
+      {
+        "technical_id": "particle_flow",
+        "artistic_name": "Living Particles",
+        "production_id": "c11c_living_particles_v1",
+        "runtime_id": "living_particles"
+      },
+      {
+        "technical_id": "vector_field",
+        "artistic_name": "Invisible Forces",
+        "production_id": "c11c_invisible_forces_v1",
+        "runtime_id": "invisible_forces"
+      }
+    ]
+  },
+  "overlay_policy": {
+    "body_ui_overlay_reserved_by_d1_5": true,
+    "challenge_overlay_region_id_from_previous_proposal": "NOT_A_CANONICAL_FIXED_REGION",
+    "challenge_overlay_fixed_bounds": "NOT_DEFINED; resolve only from the existing content/presentation contract when supported.",
+    "editorial_field_placement": "Use existing editorial binder/layer contracts; do not infer independent spatial rectangles from text-field names.",
+    "safe_area_and_font_fit": "Resolve from the selected profile and existing typography/layout contracts; unknown values remain unknown."
+  },
+  "previous_normalized_region_proposal": {
+    "contract_path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1.json",
+    "disposition": "RETAINED_AS_UNAPPROVED_EXPLORATORY_PROPOSAL_ONLY",
+    "status_must_remain": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+    "numeric_bounds_are_canonical": false,
+    "may_drive_temporal_schedule": false,
+    "may_emit_pixel_coordinates": false,
+    "may_drive_renderer_dispatch": false
+  },
+  "temporal_schedule": {
+    "state": "NOT_DEFINED",
+    "next_source_of_truth": "A separate proposal must derive any schedule from an explicit, supported duration/timeline contract for the selected content type; this reconciliation supplies no timings.",
+    "frame_indices_emitted": false,
+    "durations_emitted": false,
+    "transitions_emitted": false
+  },
+  "required_locks": {
+    "source_adapter_mode": "PREPARE_ONLY",
+    "existing_c11c_source_mutation": false,
+    "frozen_manifest_mutation": false,
+    "geometry_approved_by_this_contract": false,
+    "pixel_coordinates_emitted": false,
+    "frame_schedule_defined": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  }
+}

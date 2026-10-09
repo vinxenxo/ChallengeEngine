@@ -4,6 +4,12 @@
 **Purpose:** independent review of the proposed semantic region vocabulary and normalized bounds before temporal scheduling.  
 **Owner boundary:** C11-D only. The C11-C 2.19.12 source and historical manifest are immutable.
 
+## Authoritative clarification — existing frame/family layout takes precedence (2026-10-10)
+
+The focused Windows test above verifies proposal generation and fail-closed behavior; it does **not** approve the listed numeric boxes as layout truth. Review against D1.5 and the existing frozen presentation implementation showed that the shared 540×960 `HEADER` / `BODY` / `FOOTER` frame already exists, and family/profile composition is represented by existing profile/binder/renderer behavior. The four normalized-permille boxes remain exploratory and are **not** the spatial source for a future schedule or renderer.
+
+Current source hierarchy: `D_RENDERER_REGION_HIERARCHY_RECONCILIATION_CHECKPOINT_V1.md`. Do not infer a fixed `CHALLENGE_OVERLAY` rectangle from editorial field names. D1.5 reserves `BodyUIOverlay`, while `PresentationProfile.get_social_regions()` and `get_composition_geometry()` intentionally expose distinct geometry semantics.
+
 ## Why this increment exists
 
 The operator has confirmed Windows PASS for the neutral frame program (3/3 content types, determinism 3/3, editorial flow 3/3, negative controls 19/19, structural schema 3/3; optional `jsonschema` is not installed in Windows). The program carries semantic text declarations but deliberately has no pixel geometry or schedule.
@@ -34,9 +40,9 @@ These bounds are design proposals only. Review for hierarchy, visual safe areas,
 
 The focused test must confirm the exact proposed regions, valid normalized bounds, field-to-region mapping, no self-approval, source-lineage continuity, and no schedule/pixel/media/render/dispatch authority. It writes no files and launches no external process. Keep this test separate from the 22-step aggregate until focused Windows acceptance and review.
 
-## Gate to the first video
+## Gate to the first video — corrected after hierarchy reconciliation
 
-This is the final layout-review prerequisite, not the video test itself. The next stages are: (1) operator/technical approval or revision of this D-owned semantic layout; (2) a duration/frame schedule contract derived from an explicit, supported content-duration input; (3) an isolated test renderer candidate and deterministic visual/audio test plan; (4) source fingerprint and independent renderer-baseline review; and (5) separate explicit D4.8 governance authorization before any governed real-media D9.14 execution. No local code or passing test may grant that authorization.
+The proposal's normalized rectangles are not a required layout approval checkpoint because the repository already has an existing shared frame and profile/family composition authority. The active spatial reference is `D_RENDERER_REGION_HIERARCHY_RECONCILIATION_CHECKPOINT_V1.md`. The next stages are: (1) accept the hierarchy-reconciliation contract on Windows; (2) prepare a separate temporal proposal from explicit supported duration/timeline contracts, leaving unknown values unknown; (3) build an isolated test renderer candidate and deterministic visual/audio test plan; (4) fingerprint and independently review the renderer baseline; and (5) obtain separate explicit D4.8 governance authorization before any governed real-media D9.14 execution. No local code or passing test may grant that authorization.
 
 ## Invariants
 

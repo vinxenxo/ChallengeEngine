@@ -5,17 +5,18 @@
 **Date:** 2026-10-09  
 **Owner boundary:** C11-D only; C11-C 2.19.12 and its freeze manifest remain immutable.
 
-## Latest accepted increment — logical composition V1 (2026-10-10)
+## Current spatial-contract reconciliation — 2026-10-10
 
-The operator verified the logical-composition increment on Windows: `test_d_renderer_logical_composition.py` reports content types 3/3, deterministic 3/3, editorial flow 3/3, negative 17/17 and structural schema 3/3. The Windows environment does not have the optional `jsonschema` package; full Draft 2020-12 schema validation 3/3 was separately performed in the preparation workspace. Existing binding preview, D9.10 bridge, D9.13 lifecycle, candidate preflight and Suite 22/22 also passed. D9.15 remains canonical `PASS_CLOSED`; candidate stays blocked by five independent blockers.
+The first normalized semantic-region boxes passed their proposal-generator tests on Windows, but those PASS results did not approve the geometry. D1.5 already specifies the shared 540×960 logical `HEADER` / `BODY` / `FOOTER` frame, and the existing profile distinguishes this social frame from profile-driven safe/content geometry. Family-specific layout behavior remains with the existing profile/binder/renderers. See `D_RENDERER_REGION_HIERARCHY_RECONCILIATION_CHECKPOINT_V1.md`; do not drive the temporal proposal from the previous normalized box set.
 
-The previously planned `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1` is now accepted by the operator on Windows. The next isolated increment is `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1`, a normalized layout proposal derived from the validated frame program. It orders exact editorial text-binding declarations and records proposed semantic regions without approving them. It defines no frame ranges, durations, transitions or pixel coordinates; it is not executable or renderer-native input. Its contract and focused test are prepared; **Windows acceptance of this increment was subsequently confirmed by the operator.** See `D_RENDERER_SEMANTIC_REGION_PROPOSAL_CHECKPOINT_V1.md`. Keep the aggregate at 22 steps until focused Windows acceptance and independent design review.
 
-## Latest accepted increment — renderer-neutral frame program V1 (2026-10-10)
+## Current hierarchy status after proposal testing — 2026-10-10
 
-The operator confirmed Windows PASS for `test_d_renderer_frame_program.py`: content types 3/3, determinism 3/3, editorial flow 3/3, negative 19/19, schema 3/3; Windows lacks the optional `jsonschema` package, so this result is strict structural schema validation rather than a library-backed Draft 2020-12 validation claim. `test_d_renderer_logical_composition.py` passed 3/3 content, 3/3 determinism, 3/3 editorial flow and 17/17 negatives; binding preview, D9.10 bridge, D9.13 lifecycle, candidate preflight and the aggregate Suite 22/22 also passed.
+The operator has confirmed the logical-composition, renderer-neutral frame-program and normalized region-proposal focused tests on Windows. Those passes establish deterministic preparation contracts and fail-closed behavior; they do not approve a renderer or layout. The normalized region proposal was intentionally not promoted. Source review has since reconciled the future D renderer with the existing D1.5 540×960 `HEADER` / `BODY` / `FOOTER` frame, the separate profile-driven safe/content geometry, and the existing family-specific binder/renderer paths. The active checkpoint is `D_RENDERER_REGION_HIERARCHY_RECONCILIATION_CHECKPOINT_V1.md`; follow it instead of treating the old proposed rectangles as canonical.
 
-The next isolated increment is `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1`: a source-bound, normalized-permille layout proposal for `HEADER`, `CONTENT_STAGE`, `CHALLENGE_OVERLAY` and `FOOTER`. All bounds remain `PROPOSED_NOT_APPROVED`; it is neither a frame schedule nor a renderer-native input. Focused Windows acceptance is pending. See `D_RENDERER_SEMANTIC_REGION_PROPOSAL_CHECKPOINT_V1.md`.
+Windows confirmed the region-proposal test: content types 3/3, deterministic 3/3, editorial flow 3/3, negative 20/20 and structural schema 3/3. The optional `jsonschema` package was absent on Windows; preparation-workspace Draft 2020-12 validation succeeded for that proposal. This evidence validates the proposal builder and its locks only, not its coordinates.
+
+The next design item after the hierarchy-reconciliation focused test is a separate temporal proposal that derives timing from explicit supported duration/timeline contracts. Unknown duration or phase timing remains unknown; no values should be synthesized from the normalized region proposal.
 
 ## 1. Why this is the next work item
 

@@ -1,3 +1,13 @@
+# CURRENT AUTHORITATIVE UPDATE — region hierarchy reconciliation (2026-10-10)
+
+Windows operator accepted `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1` as a proposal generator, not as approved geometry. The next source review clarified that D1.5 and the frozen presentation code already establish the 540×960 logical social `HEADER` / `BODY` / `FOOTER` frame and the distinct profile/family composition layers. The four normalized-permille boxes remain exploratory and must not drive a temporal schedule. The new increment `D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1` formalizes this source hierarchy and tests it read-only. **Windows verification of its focused test is pending.**
+
+Apply `C11D_RENDERER_REGION_HIERARCHY_RECONCILIATION_OVERLAY_V1.zip` only after verifying the supplied SHA-256, then re-check the required C11-C manifest hash. Run the new focused hierarchy test, followed by the existing renderer region proposal test and the established parent checks. Keep the focused test outside the 22-step aggregate until Windows acceptance.
+
+No timing schedule, pixels, renderer-native input or media are emitted by this increment. D9.10 stays `PREPARE_ONLY`; renderer OFF; media false; D4.8 BLOCKED; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. Do not approve or freeze a renderer/C11-D baseline. The next design item after focused acceptance is a timing proposal derived from explicit supported duration contracts, with unknown durations left unknown.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — Renderer-neutral frame program candidate (2026-10-10)
 
 The operator confirmed the logical composition increment on Windows: `test_d_renderer_logical_composition.py` PASS (content types 3/3, determinism 3/3, editorial flow 3/3, negatives 17/17, structural schema 3/3; `jsonschema` not installed on Windows). The binding preview, D9.10 bridge, D9.13 lifecycle, candidate preflight and existing Suite also passed: bridge parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter negatives 9/9, lifecycle negative 14/14 and parity regression 4/4, candidate five blockers / `freeze_eligible=false`, Suite 22/22. D9.15 is canonically PASS/CLOSED (13/13).

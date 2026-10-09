@@ -1,3 +1,13 @@
+# CURRENT START INSTRUCTION — reconcile shared frame and family geometry (2026-10-10)
+
+Use the active checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. The last Windows run accepted the normalized semantic-region proposal as a proposal-only contract/test; it did not approve its coordinates. D1.5 already defines the 540×960 logical `HEADER` / `BODY` / `FOOTER` regions, while the selected presentation profile and existing family renderer define content-specific composition. The normalized four-box layout must not be treated as canonical.
+
+Next overlay: `C11D_RENDERER_REGION_HIERARCHY_RECONCILIATION_OVERLAY_V1.zip`. Verify the ZIP SHA-256 before extraction; after extraction, verify `release/C11C_FREEZE_PACKAGE_MANIFEST.json` SHA-256 is still `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Run `test_d_renderer_region_hierarchy.py`, then the prior semantic-region proposal test, frame-program, logical-composition, candidate-binding, bridge, D9.13 lifecycle, candidate preflight and aggregate Suite. The new focused test is intentionally not registered in the aggregate.
+
+Do not emit a timing schedule until a separate timing proposal is grounded in explicit supported duration/timeline contracts. Renderer OFF, no media, D4.8 BLOCKED, `release_authority=NONE`, D9 OPEN, D10 BLOCKED; no renderer baseline approval/freeze. C11-C remains immutable.
+
+---
+
 # CURRENT START INSTRUCTION — Renderer-neutral frame program candidate (2026-10-10)
 
 Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. D9.15 is canonically PASS/CLOSED (13/13) and consumed by D9.16 and candidate preflight. Windows accepted the D renderer logical-composition increment: 3/3 content types, deterministic 3/3, editorial flow 3/3, negatives 17/17, structural schema 3/3. The Windows environment lacks optional `jsonschema`; full schema-library validation passed 3/3 in preparation. Existing bridge, lifecycle, candidate and Suite runs also pass; candidate remains at five blockers, `freeze_eligible=false`, aggregate stays 22/22.

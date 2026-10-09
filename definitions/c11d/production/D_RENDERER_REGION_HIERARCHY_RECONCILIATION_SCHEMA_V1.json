@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-region-hierarchy-reconciliation:v1",
+  "title": "C11-D Renderer Region Hierarchy Reconciliation V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "content_type",
+    "contract_sha256",
+    "manifest_sha256",
+    "logical_canvas",
+    "shared_regions",
+    "visual_loop_families",
+    "previous_proposal_disposition",
+    "temporal_schedule",
+    "execution_boundary",
+    "reconciliation_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-REGION-HIERARCHY-RECONCILIATION-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_RECONCILIATION_NOT_RENDERER_INPUT"
+    },
+    "content_type": {
+      "enum": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ]
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "logical_canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "units"
+      ],
+      "properties": {
+        "width": {
+          "const": 540
+        },
+        "height": {
+          "const": 960
+        },
+        "units": {
+          "const": "LOGICAL_PRESENTATION_COORDINATES"
+        }
+      }
+    },
+    "shared_regions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "region_id",
+          "x",
+          "y",
+          "width",
+          "height",
+          "units",
+          "authority"
+        ],
+        "properties": {
+          "region_id": {
+            "enum": [
+              "HEADER",
+              "BODY",
+              "FOOTER"
+            ]
+          },
+          "x": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "y": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "units": {
+            "const": "LOGICAL_PRESENTATION_COORDINATES"
+          },
+          "authority": {
+            "const": "D1.5_EXISTING"
+          }
+        }
+      }
+    },
+    "visual_loop_families": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "technical_id",
+          "artistic_name",
+          "production_id",
+          "runtime_id"
+        ],
+        "properties": {
+          "technical_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artistic_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "production_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "runtime_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "previous_proposal_disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "numeric_bounds_are_canonical",
+        "may_drive_temporal_schedule"
+      ],
+      "properties": {
+        "status": {
+          "const": "RETAINED_AS_UNAPPROVED_EXPLORATORY_PROPOSAL_ONLY"
+        },
+        "numeric_bounds_are_canonical": {
+          "const": false
+        },
+        "may_drive_temporal_schedule": {
+          "const": false
+        }
+      }
+    },
+    "temporal_schedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "frame_indices_emitted",
+        "durations_emitted",
+        "transitions_emitted"
+      ],
+      "properties": {
+        "state": {
+          "const": "NOT_DEFINED"
+        },
+        "frame_indices_emitted": {
+          "const": false
+        },
+        "durations_emitted": {
+          "const": false
+        },
+        "transitions_emitted": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_adapter_mode",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "media_output_created",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "source_adapter_mode": {
+          "const": "PREPARE_ONLY"
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "reconciliation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

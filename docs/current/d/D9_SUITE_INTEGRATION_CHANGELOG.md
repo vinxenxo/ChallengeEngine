@@ -1,5 +1,14 @@
 # D9 Suite Integration — Change Log
 
+
+## Renderer region hierarchy reconciliation V1 — preparation increment (2026-10-10)
+
+- Reconciled the future D renderer layout model with the existing D1.5 540×960 logical social frame and the distinct profile-driven composition geometry in `PresentationProfile`.
+- Preserved the five Visual Loop family identities/routing. The family catalog is not treated as a declaration of normalized family rectangles.
+- Explicitly retained the prior normalized region proposal as unapproved exploratory data; it cannot drive timing, pixel coordinates or renderer dispatch. No invented fixed `CHALLENGE_OVERLAY` box is adopted.
+- Added a strict output schema, read-only report builder and 21 negative controls; test is not registered in the aggregate and awaits Windows acceptance.
+- No C11-C file/manifest mutation, renderer-native input, dispatch, activation, timing schedule or media. D4.8 remains BLOCKED; authority NONE.
+
 ## D renderer candidate logical composition V1 — preparation increment (2026-10-10)
 
 - Added a D-owned versioned contract/schema and a pure in-memory logical-composition builder over the previously validated binding preview. Exact canonical editorial values map to semantic text-element `text_value` fields; locale is attached to all text elements and per-value SHA-256 values are recorded.
