@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-temporal-schedule-proposal:v1",
+  "title": "C11-D Renderer Temporal Schedule Proposal Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "content_type",
+    "manifest_sha256",
+    "source_lineage",
+    "temporal_topology",
+    "spatial_integration",
+    "instantiation",
+    "execution_boundary",
+    "proposal_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-TEMPORAL-TOPOLOGY-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_TEMPORAL_TOPOLOGY_NOT_RENDERER_INPUT"
+    },
+    "content_type": {
+      "enum": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ]
+    },
+    "manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "temporal_topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model",
+        "timeline_class",
+        "timeline_source",
+        "phase_sequence",
+        "sequence_authority",
+        "duration_authority",
+        "fps_authority",
+        "frame_count_rule",
+        "zero_length_policy",
+        "subphase_policy",
+        "schedule_state"
+      ],
+      "properties": {
+        "model": {
+          "enum": [
+            "EXISTING_CHALLENGE_PHASE_SEQUENCE",
+            "EXISTING_CONTINUOUS_LOOP_SPAN",
+            "EXISTING_CONTINUOUS_DRILL_SPAN"
+          ]
+        },
+        "timeline_class": {
+          "enum": [
+            "ChallengeTimeline",
+            "VisualLoopTimeline",
+            "VisualDrillTimeline"
+          ]
+        },
+        "timeline_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase_sequence": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "HOOK",
+              "GAME",
+              "REVEAL",
+              "CTA"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "sequence_authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_authority": {
+          "enum": [
+            "RESOLVED_VIDEO_PROFILE_PHASE_DURATIONS",
+            "BOUND_PAYLOAD_DURATION_WITH_RUNTIME_FRAME_COUNT_CHECK"
+          ]
+        },
+        "fps_authority": {
+          "enum": [
+            "RESOLVED_VIDEO_PROFILE_FPS",
+            "BOUND_PAYLOAD_FPS"
+          ]
+        },
+        "frame_count_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "zero_length_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subphase_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schedule_state": {
+          "const": "TOPOLOGY_ONLY_NO_INSTANCE"
+        }
+      }
+    },
+    "spatial_integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hierarchy_source",
+        "D1_5_shared_frame_is_unchanged",
+        "prior_normalized_permille_proposal_is_canonical",
+        "spatial_bounds_used_by_schedule",
+        "pixel_coordinates_emitted"
+      ],
+      "properties": {
+        "hierarchy_source": {
+          "const": "definitions/c11d/production/D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1.json"
+        },
+        "D1_5_shared_frame_is_unchanged": {
+          "const": true
+        },
+        "prior_normalized_permille_proposal_is_canonical": {
+          "const": false
+        },
+        "spatial_bounds_used_by_schedule": {
+          "const": false
+        },
+        "pixel_coordinates_emitted": {
+          "const": false
+        }
+      }
+    },
+    "instantiation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "concrete_schedule_instantiated",
+        "duration_values_emitted",
+        "frame_indices_emitted",
+        "frame_ranges_emitted",
+        "timeline_instantiated",
+        "duration_state"
+      ],
+      "properties": {
+        "concrete_schedule_instantiated": {
+          "const": false
+        },
+        "duration_values_emitted": {
+          "const": false
+        },
+        "frame_indices_emitted": {
+          "const": false
+        },
+        "frame_ranges_emitted": {
+          "const": false
+        },
+        "timeline_instantiated": {
+          "const": false
+        },
+        "duration_state": {
+          "const": "UNBOUND_PROPOSAL_NOT_APPROVED"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_adapter_mode",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "c11c_source_mutation"
+      ],
+      "properties": {
+        "source_adapter_mode": {
+          "const": "PREPARE_ONLY"
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "const": null
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      }
+    },
+    "proposal_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

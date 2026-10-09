@@ -271,3 +271,6 @@ Next candidate increment: `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1`, a pure in-me
 
 Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run is not yet authorized: a separately approved/frozen D renderer baseline and explicit D4.8 governance authorization are required. C11-C 2.19.12/manifest immutable; adapter PREPARE_ONLY; renderer OFF; media false; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
 
+## Latest renderer preparation checkpoint — temporal topology (2026-10-10)
+
+See `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. This proposal is source-pinned to the frozen C11-C manifest and the existing timeline/runtime files. Challenges use the existing `HOOK → GAME → REVEAL → CTA` phase order. Visual Loops and Visual Drills use bound duration/FPS/frame-count payloads as continuous spans; Visual Drill subphases are not defined. No concrete schedule, durations, frame indices/ranges, renderer input or media are produced. D1.5 region hierarchy remains spatial authority; the normalized-permille proposal is not canonical. D9.10 stays `PREPARE_ONLY`, D4.8 remains BLOCKED, release authority NONE, D9 OPEN and D10 BLOCKED.

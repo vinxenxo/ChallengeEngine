@@ -203,3 +203,7 @@ The prior D9.15 candidate-only waiver is superseded for live operational status 
 - Added the strict D-owned `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1` contract/schema and in-memory builder/validator. Proposed normalized-permille bounds cover HEADER, CONTENT_STAGE, CHALLENGE_OVERLAY and FOOTER; all remain `PROPOSED_NOT_APPROVED`. Source lineage to frame program retained.
 - The proposal/test does not define timing, emit pixel coordinates/renderer-native input, dispatch, activate, or produce media. Focused Windows acceptance pending; keep separate from 22-step aggregate until reviewed.
 - Video remains gated: independent renderer-baseline approval/freeze plus explicit D4.8 authorization are required before governed D9.14 real-media execution. C11-C immutable, adapter PREPARE_ONLY, renderer OFF, media false, release authority NONE.
+
+## 2026-10-10 — Renderer temporal topology proposal V1
+
+Added the D-only source-pinned temporal topology proposal and focused test. The proposal models existing Challenge phases and continuous Visual Loop/Visual Drill spans without emitting request-specific durations or frame indices. It consumes D1.5 region-hierarchy reconciliation and rejects canonicalization of the prior normalized-permille rectangles. The new focused test remains separate from the aggregate 22-step Suite pending Windows operator acceptance. No media, renderer activation, or authority change.

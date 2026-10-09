@@ -46,3 +46,7 @@ Prepare the temporal schedule as a separate proposal only after confirming that 
 - No renderer-native input, dispatch, activation, production, media, or output path.
 - `D4.8=BLOCKED`, `release_authority=NONE`; D9 OPEN; D9.14/D9.16 gated; D9.17 `BLOCKED_NO_GO`; D10 BLOCKED.
 - No geometry/schedule approval, renderer-baseline approval/freeze, or C11-D baseline freeze is created here.
+
+## Temporal-topology follow-up (2026-10-10)
+
+The next isolated increment is documented in `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. It derives topology strictly from the existing C11-C timing sources: Challenge phase order is `HOOK → GAME → REVEAL → CTA`; Visual Loops and Visual Drills remain continuous spans without invented subphases. No concrete durations or frame coordinates/ranges are emitted. The earlier normalized-permille proposal remains noncanonical and is not a temporal source.

@@ -280,3 +280,6 @@ Next candidate increment: `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1`, a pure in-me
 
 Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run is not yet authorized: a separately approved/frozen D renderer baseline and explicit D4.8 governance authorization are required. C11-C 2.19.12/manifest immutable; adapter PREPARE_ONLY; renderer OFF; media false; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
 
+## Latest preparation state (2026-10-10)
+
+The D renderer now has a source-pinned temporal topology proposal in `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. Before using it, run its focused Windows test and the prescribed regressions. It emits no concrete schedule or media. Keep the hierarchy reconciliation as spatial authority; do not use normalized-permille proposal bounds. Challenge phases come from existing `ChallengeTimeline`; Visual Loops/Drills remain continuous spans with upstream-bound `duration`, `fps` and `frame_count`. No D4.8 authorization or baseline approval is implied.

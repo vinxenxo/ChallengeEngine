@@ -103,3 +103,7 @@ python -u .\c11c-suite\self_test.py
 ```
 
 Expected baseline state: bridge/lifecycle pass; D9.15 remains `PASS_CLOSED`; candidate preflight passes as an audit with the five independent blockers, `freeze_eligible=false`; aggregate Suite 22/22. Recompute the candidate source fingerprint after every accepted change; the last previously observed value is historical and will change after this documentation overlay.
+
+## 2026-10-10 temporal topology increment
+
+`D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md` is the next isolated preparation contract. It distinguishes existing Challenge phase semantics from the single continuous spans used by Visual Loops and Visual Drills. Timing values remain upstream-bound and uninstantiated. Do not use the older normalized-permille proposal as canonical geometry. This increment does not create a renderer baseline, output schedule, media or production authority.
