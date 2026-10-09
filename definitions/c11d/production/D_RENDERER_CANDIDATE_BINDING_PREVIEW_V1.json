@@ -1,0 +1,91 @@
+{
+  "schema": "C11-D-RENDERER-CANDIDATE-BINDING-PREVIEW-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_CANDIDATE_PREPARATION",
+  "status": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+  "purpose": "Define a deterministic, inspection-only binding preview between the hash-bound D9.10 PREPARE_ONLY envelope and a proposed D-owned renderer contract without emitting renderer-native input or invoking a renderer.",
+  "source_contracts": {
+    "adapter_contract": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+    "adapter_schema": "C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1",
+    "editorial_model": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "delivery_profiles": "profiles/delivery/c11c_video_delivery_profiles.json"
+  },
+  "preview_contract": {
+    "schema": "C11-D-D9-RENDERER-CANDIDATE-BINDING-PREVIEW-V1",
+    "status": "PREPARATION_ONLY_NOT_RENDERER_INPUT",
+    "purpose": "Inspection object only. It is not renderer-native input, a dispatch request, a render job or authorization.",
+    "file_output": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "json_schema": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json"
+  },
+  "scope": {
+    "owner": "C11-D_ONLY",
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "unsupported_content_types": {
+      "longform": "REJECT_UNTIL_CANONICAL_D_REQUEST_AND_RENDERER_CONTRACT_SUPPORT_IT"
+    },
+    "c11c_source_mutation": false
+  },
+  "proposed_editorial_slot_ids": {
+    "title": "social_frame.header.title",
+    "subtitle": "social_frame.header.subtitle",
+    "call_to_action": "social_frame.footer.call_to_action",
+    "language": "metadata.editorial_language",
+    "player_name": "challenge_overlay.player_name",
+    "challenge_label": "challenge_overlay.challenge_label"
+  },
+  "binding_rules": {
+    "content_identity": "Copy canonical D plan selection; immutable identity only.",
+    "editorial_values": "Copy only model-allowlisted fields; preserve values exactly as resolved by D9.9.",
+    "slot_ids": "PROPOSED_NOT_APPROVED; these IDs are candidate review targets, not current renderer API fields.",
+    "delivery_profile": "Resolve only by the existing delivery registry; record registry and resolved-profile hashes.",
+    "presentation_profile": "Pass through the exact canonical profile identifier; do not infer or synthesize values. This preview does not independently resolve the profile.",
+    "variation_index": "Explicit canonical value only; no runtime derivation.",
+    "gameplay_seed": "canonical request seed; GAMEPLAY domain only.",
+    "music_seed": "canonical request music_seed; MUSIC domain only.",
+    "seed_domain_sharing": "FORBIDDEN",
+    "simulation_truth": "NOT_BOUND",
+    "derived_telemetry": "NOT_BOUND",
+    "determinism": "Canonical JSON hashing; no timestamp, random ID, environment path or worker/runtime details in preview identity."
+  },
+  "forbidden_operations": [
+    "emit renderer-native input",
+    "invoke or dispatch renderer",
+    "create files or media",
+    "launch Godot or FFmpeg",
+    "bind SimulationResult, winning_frame, close_calls or derived telemetry",
+    "derive or auto-generate seeds",
+    "modify C11-C source or its frozen manifest",
+    "change D4.8 or release authority"
+  ],
+  "required_locks": {
+    "adapter_mode": "PREPARE_ONLY",
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  },
+  "approval_state": {
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "release_authority": "NONE"
+  }
+}

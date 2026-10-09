@@ -1,5 +1,12 @@
 # D9 Suite Integration — Change Log
 
+## D renderer candidate logical composition V1 — preparation increment (2026-10-10)
+
+- Added a D-owned versioned contract/schema and a pure in-memory logical-composition builder over the previously validated binding preview. Exact canonical editorial values map to semantic text-element `text_value` fields; locale is attached to all text elements and per-value SHA-256 values are recorded.
+- Added 16 fail-closed regressions including tampered element values, re-sealed hashes, mapping self-promotion, unauthorized renderer input/activation/media/release claims, lineage mismatch, unknown fields/slots, Longform rejection, and attempted contract self-approval. Schema validation passed for all three supported content types in the preparation workspace.
+- No aggregate-suite registration was added; existing Suite remains 22/22. The new focused test is pending operator Windows confirmation.
+- This is not a renderer implementation that encodes frames; it creates no files/media and is not renderer-native input. Target mapping is still `PROPOSED_NOT_APPROVED`. Adapter remains `PREPARE_ONLY`; renderer OFF; D4.8 BLOCKED; release authority NONE.
+
 ## D9.15 sealed-checkpoint consumer integration — 2026-10-09
 
 - Latest Windows outputs confirmed canonical D9.15 `PASS_CLOSED` (13/13 pairings) but exposed stale consumers: D9.16 still printed operator evidence REQUIRED and candidate preflight preferred the historical candidate-only waiver.

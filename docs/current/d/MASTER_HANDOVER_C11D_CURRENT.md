@@ -1,3 +1,15 @@
+# CURRENT AUTHORITATIVE UPDATE — D renderer candidate logical composition (2026-10-10)
+
+The operator has confirmed the first D renderer binding-preview increment on Windows: `test_d_renderer_candidate.py` PASS (`content_types=3/3`, `deterministic=3/3`, `negative=13/13`); D9.10 bridge PASS (content/parity/adapter 3/3, negatives 15/15 + 9/9); D9.13 lifecycle PASS (content 3/3, stages 5/5, parity 3/3, catalog 3/3, maintenance audit 3/3, negative 14/14, persisted parity regression 4/4); candidate preflight PASS with five blockers and `freeze_eligible=false`; aggregate Suite PASS 22/22. D9.15 remains canonical PASS/CLOSED (13/13).
+
+The next preparation increment is `D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1`, which converts a validated binding preview into a deterministic in-memory semantic composition plan. Editorial strings are carried in `text_value` properties for intended elements, proving logical value-flow beyond source metadata. It does not render images/video/audio, write output, emit renderer-native input or dispatch anything. Mapping roles/regions remain `PROPOSED_NOT_APPROVED`. The focused preparation-workspace test passed 3/3 content types, 3/3 determinism, 3/3 editorial flow, 17/17 negatives and 3/3 schema validation; **the new focused test still requires Windows verification**.
+
+Apply `C11D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_OVERLAY_V1.zip` only after verifying its supplied SHA-256. Run its focused test, then the existing binding-preview/bridge/lifecycle checks, candidate preflight and Suite. Keep the aggregate at 22 steps; this new test has not been registered in it.
+
+Governance remains unchanged: C11-C 2.19.12 and its manifest SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` are immutable; D9.10 adapter `PREPARE_ONLY`; renderer input/dispatch/activation OFF; media false; D4.8 BLOCKED; `release_authority=NONE`; D9 OPEN; D9.14/D9.16/D9.17 unresolved; D10 BLOCKED. No approval/freeze checkpoint is created.
+
+---
+
 # C11-D MASTER HANDOVER — D9.15 accepted; D9.14/D9.16 remain gated (2026-10-09)
 
 ## Latest operator-confirmed state — D9.15 checkpoint consumed; next work is renderer-baseline preparation (2026-10-09)

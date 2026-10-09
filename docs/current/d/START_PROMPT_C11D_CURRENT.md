@@ -1,3 +1,13 @@
+# CURRENT START INSTRUCTION — D renderer logical composition (2026-10-10)
+
+Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. D9.15 is canonically PASS/CLOSED (13/13) and is consumed by D9.16 and candidate preflight. The current binding-preview increment is operator-confirmed on Windows; the latest supplied run kept candidate blockers at 5, `freeze_eligible=false`, and Suite PASS 22/22.
+
+The next incremental overlay `C11D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_OVERLAY_V1.zip` adds a strict schema and in-memory semantic composition plan. Its current preparation-copy checks report `content_types=3/3`, `deterministic=3/3`, `editorial_flow=3/3`, `negative=17/17`, and `schema=3/3`. These are not yet Windows results. Verify the ZIP SHA before extraction, verify the immutable C11-C manifest immediately afterward, and run the new focused test followed by existing tests. The new test is intentionally not added to the 22-step aggregate yet.
+
+This output is semantic review data, not a renderer input. No image/video/audio is created; no renderer is called; field targets remain proposed, unapproved. Do not change D9.10 `PREPARE_ONLY`, dispatch locks or approval policy. The candidate remains non-freeze-eligible; D4.8 BLOCKED; renderer OFF; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The definitive GUI remains deferred.
+
+---
+
 # C11-D START PROMPT — D9.15 PASS/CLOSED; D9.14 remains blocked (2026-10-09)
 
 ## Current authoritative status after checkpoint-consumption fix

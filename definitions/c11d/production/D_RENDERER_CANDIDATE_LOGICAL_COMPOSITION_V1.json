@@ -1,0 +1,117 @@
+{
+  "schema": "C11-D-RENDERER-CANDIDATE-LOGICAL-COMPOSITION-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_CANDIDATE_PREPARATION",
+  "status": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+  "purpose": "Transform a validated D9.10 PREPARE_ONLY-derived binding preview into a deterministic, in-memory semantic composition plan that demonstrates editorial values bound to intended text elements. This object is not renderer-native input and cannot be dispatched.",
+  "source_contracts": {
+    "binding_preview_contract": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+    "binding_preview_schema": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json",
+    "adapter_mode": "PREPARE_ONLY"
+  },
+  "output_contract": {
+    "schema": "C11-D-D9-LOGICAL-COMPOSITION-PLAN-V1",
+    "json_schema": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
+    "status": "PREPARATION_ONLY_LOGICAL_SCENE_NOT_RENDERER_INPUT",
+    "persistence": "IN_MEMORY_ONLY",
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null
+  },
+  "supported_content_types": ["challenges", "visual_loops", "visual_drills"],
+  "unsupported_content_types": {
+    "longform": "REJECT_UNTIL_CANONICAL_D_REQUEST_AND_RENDERER_CONTRACT_SUPPORT_IT",
+    "unknown": "FAIL_CLOSED"
+  },
+  "required_editorial_fields": {
+    "challenges": ["title", "subtitle", "call_to_action", "language", "player_name", "challenge_label"],
+    "visual_loops": ["title", "subtitle", "call_to_action", "language"],
+    "visual_drills": ["title", "subtitle", "call_to_action", "language"]
+  },
+  "field_targets": {
+    "title": {
+      "source_preview_slot_id": "social_frame.header.title",
+      "element_id": "editorial.title",
+      "semantic_role": "HEADER_TITLE",
+      "target_region": "HEADER",
+      "z_order": 20,
+      "mapping_state": "PROPOSED_NOT_APPROVED"
+    },
+    "subtitle": {
+      "source_preview_slot_id": "social_frame.header.subtitle",
+      "element_id": "editorial.subtitle",
+      "semantic_role": "HEADER_SUBTITLE",
+      "target_region": "HEADER",
+      "z_order": 21,
+      "mapping_state": "PROPOSED_NOT_APPROVED"
+    },
+    "call_to_action": {
+      "source_preview_slot_id": "social_frame.footer.call_to_action",
+      "element_id": "editorial.call_to_action",
+      "semantic_role": "FOOTER_CALL_TO_ACTION",
+      "target_region": "FOOTER",
+      "z_order": 80,
+      "mapping_state": "PROPOSED_NOT_APPROVED"
+    },
+    "player_name": {
+      "source_preview_slot_id": "challenge_overlay.player_name",
+      "element_id": "editorial.player_name",
+      "semantic_role": "CHALLENGE_PLAYER_NAME",
+      "target_region": "CHALLENGE_OVERLAY",
+      "z_order": 40,
+      "mapping_state": "PROPOSED_NOT_APPROVED"
+    },
+    "challenge_label": {
+      "source_preview_slot_id": "challenge_overlay.challenge_label",
+      "element_id": "editorial.challenge_label",
+      "semantic_role": "CHALLENGE_LABEL",
+      "target_region": "CHALLENGE_OVERLAY",
+      "z_order": 41,
+      "mapping_state": "PROPOSED_NOT_APPROVED"
+    }
+  },
+  "composition_rules": {
+    "text_binding": "Every required non-language editorial value is copied exactly into an element.text_value; that property is part of the logical composition payload, not merely provenance metadata.",
+    "language_binding": "The canonical language value is attached to every text element and exposed as composition localization.locale.",
+    "ordering": "Order text elements by ascending z_order, then element_id; do not rely on dict iteration or hash order.",
+    "geometry": "Only resolved delivery geometry and frame-rate identity are copied. No pixel coordinates, shader IDs, renderer resource paths, frame timeline or engine-native command is emitted.",
+    "content_identity": "Copy only canonical selection identity from the source preview; do not bind simulation truth or derived telemetry.",
+    "seed_isolation": "Preserve domain rules as metadata only. This composition has no seed-dependent visual or audio behavior.",
+    "determinism": "Canonical JSON SHA-256; no timestamp, random ID, environment path or process details in the plan hash."
+  },
+  "forbidden_operations": [
+    "emit renderer-native input",
+    "write plan or media files",
+    "invoke or dispatch a renderer",
+    "launch Godot or FFmpeg",
+    "produce video, image, audio or other media",
+    "bind SimulationResult, winning_frame, close_calls or derived telemetry",
+    "derive or auto-generate seeds",
+    "modify C11-C source or its freeze manifest",
+    "change D4.8, release authority or any activation policy"
+  ],
+  "required_locks": {
+    "source_adapter_mode": "PREPARE_ONLY",
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  },
+  "approval_state": {
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "release_authority": "NONE"
+  }
+}
