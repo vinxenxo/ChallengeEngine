@@ -274,3 +274,14 @@ Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run
 ## Latest renderer preparation checkpoint — temporal topology (2026-10-10)
 
 See `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. This proposal is source-pinned to the frozen C11-C manifest and the existing timeline/runtime files. Challenges use the existing `HOOK → GAME → REVEAL → CTA` phase order. Visual Loops and Visual Drills use bound duration/FPS/frame-count payloads as continuous spans; Visual Drill subphases are not defined. No concrete schedule, durations, frame indices/ranges, renderer input or media are produced. D1.5 region hierarchy remains spatial authority; the normalized-permille proposal is not canonical. D9.10 stays `PREPARE_ONLY`, D4.8 remains BLOCKED, release authority NONE, D9 OPEN and D10 BLOCKED.
+
+
+<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_HANDOVER -->
+
+## Latest D9 editorial-review increment (2026-10-10)
+
+The editorial review manifest now audits the canonical D9.9â†’D9.10 chain against the temporal reference. Current focused test expected result: 3/3 content types, 3/3 determinism, 3/3 editorial chain, 3/3 temporal reference, 28/28 negative cases, 3/3 structural schema checks and 3/3 Draft 2020-12 schema checks when `jsonschema` is installed.
+
+Known unresolved issues that must remain visible: CHALLENGE_004 source FPS 60 vs REVIEW_720 target FPS 30; Visual Loop family-level and Drill type/tier-level timing references do not yet bind the generated visual payload; editorial-field frame windows remain undefined. This manifest permits copy review only. It does not make a video render-ready.
+
+Governance remains unchanged: C11-C frozen and immutable; renderer OFF; media_created=false; D4.8 BLOCKED; release authority NONE; D baseline approval/freeze and full acceptance still pending.

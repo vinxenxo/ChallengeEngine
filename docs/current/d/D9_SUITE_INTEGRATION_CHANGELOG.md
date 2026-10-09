@@ -228,3 +228,10 @@ Added the D-only source-pinned temporal topology proposal and focused test. The 
 - Focused test: `python .\tools\c11d\d9\test_d_renderer_temporal_bound_preview.py`.
 - Not added to the 22-step aggregate yet; keep the increment isolated until Windows acceptance and explicit suite-integration review.
 - Frame ranges are review-only data, not renderer-native input. No media, output path, C11-C mutation, D4.8 grant or release authority.
+
+
+<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_CHANGELOG -->
+
+## 2026-10-10 â€” D9.9â†’D9.10 editorial review manifest V1
+
+Added a non-renderable cross-contract audit manifest and focused test. It pins 25 upstream sources, checks exact editorial text/hash continuity, identifies challenge source/delivery FPS mismatch, and retains explicit gaps for Visual Loop grammar payload, Visual Drill request payload and per-field frame windows. No production, dispatch, media output, D4.8 authorization or release authority is enabled.

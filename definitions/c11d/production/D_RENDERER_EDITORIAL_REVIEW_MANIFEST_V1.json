@@ -1,0 +1,180 @@
+{
+  "schema": "C11-D-RENDERER-EDITORIAL-REVIEW-MANIFEST-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_EDITORIAL_REVIEW_MANIFEST_NOT_RENDERER_INPUT",
+  "purpose": "Join the canonical D9.9 editorial request chain to a source-grounded temporal reference and expose unresolved per-field visibility/FPS bindings before any video test.",
+  "supported_content_types": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "editorial_payload": "D9.9 canonical plan.editorial, identity carried through D9.10 bridge and PREPARE_ONLY adapter",
+    "semantic_field_declarations": "validated D logical composition + renderer-neutral frame program; region IDs remain proposed/unapproved",
+    "temporal_reference": "D renderer temporal bound preview generated from one existing canonical source per supported content type",
+    "spatial_hierarchy": "D1.5 shared frame + existing profile and family presentation binder; no coordinates emitted",
+    "selection_timing_alignment": {
+      "challenges": "EXACT_CHALLENGE_VARIANT_SOURCE_REQUIRED",
+      "visual_loops": "FAMILY_LEVEL_TIMING_REFERENCE_ONLY; SELECTED_GRAMMAR_VISUAL_INSTANCE_NOT_BOUND",
+      "visual_drills": "DRILL_TYPE_AND_TIER_TIMING_REFERENCE; GENERATED_REQUEST_PAYLOAD_INSTANCE_NOT_BOUND"
+    },
+    "field_visibility": "No existing contract assigns a per-field start/end frame; manifest must keep visibility frame ranges null.",
+    "fps_policy": "Source and delivery FPS are compared, never silently converted. A mismatch blocks video readiness until a separate normalization contract exists.",
+    "delivery_profile_registry": "Pinned profiles/delivery/c11c_video_delivery_profiles.json; resolved dimensions/FPS are metadata only"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1.json",
+      "sha256": "d6bb63d23b30e34ee011c26b90fe005750b4d5a459aeb71223aeb866d3c5fd93"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json",
+      "sha256": "7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json",
+      "sha256": "61d0a86ff16a49610ccc74e5f0e82fe54c01a6f948bbabae9735ea6951a4b056"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
+      "sha256": "101bdf4234fbbafa7f591439800f8985839ad60ed554dd03481a769590648657"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+      "sha256": "c09d570865c8fcb8b0de3c1bef200a118e6801a476ab040a819b1fb698d30584"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+      "sha256": "b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164"
+    }
+  ],
+  "output_contract": {
+    "schema": "C11-D-D9-RENDERER-EDITORIAL-REVIEW-MANIFEST-V1",
+    "schema_version": "1.0",
+    "json_schema": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
+    "deterministic": "CANONICAL_JSON_SHA256",
+    "construction": "IN_MEMORY_ONLY",
+    "persistent_output": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null
+  },
+  "review_rules": {
+    "editorial_value_source": "FRAME_PROGRAM_INSTRUCTIONS_REVALIDATED_AGAINST_D9_9_CANONICAL_PLAN",
+    "field_text_integrity": "EXACT_STRING_AND_SHA256_PARITY; NO_REWRITING_OR_NORMALIZATION_AFTER_CANONICAL_RESOLUTION",
+    "field_region_mapping": "PRESERVE_EXISTING_SEMANTIC_REGION_ID_AND_PROPOSED_STATE; NEVER_PROMOTE_TO_APPROVED",
+    "timing": "REPORT_CANONICAL_SOURCE_SEGMENTS; DO_NOT_ASSIGN_TEXT_FIELD_FRAME_WINDOWS",
+    "delivery_fps": "EXPLICIT_COMPARE_ONLY; NO_AUTOMATIC_FRAME_RATE_CONVERSION",
+    "visual_loop_alignment": "FAMILY_REFERENCE_MAY_NOT_CLAIM_SELECTED_GRAMMAR_RENDER_PAYLOAD_IDENTITY",
+    "visual_drill_alignment": "TYPE_AND_DIFFICULTY_TIER_REFERENCE_MAY_NOT_CLAIM_GENERATED_PAYLOAD_IDENTITY",
+    "review_readiness": "HUMAN_COPY_REVIEW_ALLOWED_IF_CHAIN_PASSES; VIDEO_RENDER_READY_ALWAYS_FALSE_IN_THIS_CONTRACT",
+    "unknown_type": "REJECT",
+    "longform": "REJECT_UNTIL_CANONICAL_REQUEST_AND_TEMPORAL_CONTRACT_EXIST"
+  },
+  "required_locks": {
+    "review_mode": "IN_MEMORY_EDITORIAL_CHAIN_AUDIT",
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false,
+    "video_render_ready": false
+  },
+  "approval_state": {
+    "editorial_review_manifest_approved": false,
+    "semantic_region_mapping_approved": false,
+    "temporal_topology_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  }
+}

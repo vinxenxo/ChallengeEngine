@@ -283,3 +283,10 @@ Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run
 ## Latest preparation state (2026-10-10)
 
 The D renderer now has a source-pinned temporal topology proposal in `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. Before using it, run its focused Windows test and the prescribed regressions. It emits no concrete schedule or media. Keep the hierarchy reconciliation as spatial authority; do not use normalized-permille proposal bounds. Challenge phases come from existing `ChallengeTimeline`; Visual Loops/Drills remain continuous spans with upstream-bound `duration`, `fps` and `frame_count`. No D4.8 authorization or baseline approval is implied.
+
+
+<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_START_PROMPT -->
+
+## Current context addendum â€” editorial review manifest V1 (2026-10-10)
+
+Before advancing temporal/render integration, run `python .\tools\c11d\d9\test_d_renderer_editorial_review_manifest.py`. It verifies exact canonical copy and temporal-source lineage, while preserving `video_render_ready=false`. Review the reported source/delivery FPS mismatch for challenges and the unbound Visual Loop/Drill instances and text-field frame windows; do not silently normalize, invent timing, or activate rendering. Repeat the candidate preflight and aggregate regression on the operator checkout after each overlay.

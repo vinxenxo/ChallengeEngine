@@ -111,3 +111,14 @@ Expected baseline state: bridge/lifecycle pass; D9.15 remains `PASS_CLOSED`; can
 ## 2026-10-10 — Source-bound temporal preview (preparation only)
 
 The topology-only temporal proposal is now complemented by `D_RENDERER_TEMPORAL_BOUND_PREVIEW_CHECKPOINT_V1.md`. The new contract produces in-memory half-open frame intervals from pinned representative sources: CHALLENGE_004 (`HOOK>GAME>REVEAL>CTA`, 900 frames at 60 FPS), geometric Visual Loop (60 frames at 30 FPS) and tracking Visual Drill (630 frames at 30 FPS). It checks the exact frame-count arithmetic, source lineage and fail-closed execution boundary. It does not create a video, renderer input, or output artifact; `D4.8=BLOCKED`, `release_authority=NONE`, D9 OPEN, D10 BLOCKED. Windows acceptance is pending. The next step is to bind this report to actual canonical D9.9/D9.10 request/payload results, then assemble an editorial review manifest for the first visual proof. Any real-media attempt remains gated by separately approved/frozen D renderer baseline plus explicit D4.8 authorization.
+
+
+<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_PLAN -->
+
+## D9.9â†’D9.10 editorial review manifest â€” preparation update (2026-10-10)
+
+`tools/c11d/d9/d_renderer_editorial_review_manifest.py` joins the canonical request/plan, D9.10 bridge, PREPARE_ONLY adapter envelope, binding preview, logical composition, frame program and temporal reference into a deterministic in-memory review manifest. The focused test covers challenges, Visual Loops and Visual Drills with strict schema and negative validation.
+
+Open integration findings are explicit: CHALLENGE_004 timing is 60 FPS while REVIEW_720 is 30 FPS and requires a separate normalization policy; Visual Loop timing is family-level, Visual Drill timing is type/tier-level, and per-field text visibility frame windows are not defined. Do not infer missing bindings or enable renderer execution to hide these gaps.
+
+This contract is review-only: `video_render_ready=false`, renderer OFF, media not created, D4.8 BLOCKED and release authority NONE. Baseline freeze remains blocked until all D acceptance and governance gates are met.
