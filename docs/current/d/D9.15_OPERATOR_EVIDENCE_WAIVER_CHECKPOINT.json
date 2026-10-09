@@ -1,0 +1,37 @@
+{
+  "schema": "C11-D-D9.15-OPERATOR-EVIDENCE-WAIVER-CHECKPOINT-V1",
+  "schema_version": "1.0",
+  "checkpoint_id": "D9.15_OPERATOR_EVIDENCE_WAIVER_20261009",
+  "decision": "WAIVED_FOR_CANDIDATE_EVALUATION_ONLY",
+  "decision_date": "2026-10-09",
+  "decision_source": "Explicit operator instruction in this work session",
+  "operator_assertion": "The operator states that the five GUIs work and directs proceeding without collecting the 13 screenshot/log evidence pairings.",
+  "candidate_id": "C11-D-BASELINE-CANDIDATE-0.1",
+  "historical_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "required_pairings": 13,
+  "captured_pairings": 0,
+  "evidence_capture_status": "NOT_CAPTURED_BY_OPERATOR_DECISION",
+  "d9_15_acceptance_status": "NOT_CLOSED_BY_THIS_WAIVER",
+  "d9_15_pass_claimed": false,
+  "candidate_blocker_waived": "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED",
+  "waiver_scope": "Remove only the D9.15 operator-evidence-capture blocker from C11-D baseline-candidate readiness evaluation. This waiver does not attest that screenshots/logs were captured and does not mark D9.15 PASS/CLOSED.",
+  "does_not_authorize": [
+    "D4.8",
+    "renderer_activation",
+    "production_execution",
+    "D9.14 real-media acceptance",
+    "D9.16 full acceptance",
+    "D9.17 closure",
+    "D baseline freeze",
+    "release authority"
+  ],
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "candidate_freeze_eligible": false
+  },
+  "waiver_sha256": "5d9c6d549f9b57ae0ef8db1220ccffed92ba2aca86af30d75c0fc42dbfc12d0f"
+}

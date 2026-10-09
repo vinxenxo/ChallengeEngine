@@ -54,3 +54,14 @@ assert manifest.get('d_baseline_candidate_policy') == 'definitions/c11d/baseline
 assert manifest.get('d_baseline_candidate_policy_access') == 'READ_ONLY_CANONICAL'
 assert manifest.get('d_baseline_candidate_freeze_eligible') is False and manifest.get('d_baseline_candidate_d4_8') == 'BLOCKED' and manifest.get('d_baseline_candidate_release_authority') == 'NONE'
 print('C11C_CONFIG_D_BASELINE_CANDIDATE_POLICY PASS | read_only=true | freeze_eligible=false | D4.8=BLOCKED | renderer=false | media=false | release_authority=NONE')
+
+# D9.15 append-only operator evidence requirements are canonical/read-only; evidence capture grants no authority.
+operator_evidence_contract = HERE.parents[1] / 'definitions/c11d/baseline/D_BASELINE_OPERATOR_EVIDENCE_REQUIREMENTS_V1.json'
+operator_evidence = json.loads(operator_evidence_contract.read_text(encoding='utf-8'))
+assert operator_evidence['schema'] == 'C11-D-BASELINE-OPERATOR-EVIDENCE-REQUIREMENTS-V1'
+assert len(operator_evidence['required_evidence_pairings']) == 13
+assert 'D_BASELINE_OPERATOR_EVIDENCE_REQUIREMENTS' in module
+assert manifest.get('d_baseline_operator_evidence_requirements_access') == 'READ_ONLY_CANONICAL'
+assert manifest.get('d9_15_required_evidence_pairings') == 13
+assert operator_evidence['governance'] == {'renderer_activation': False, 'production_execution': False, 'media_created': False, 'd4_8': 'BLOCKED', 'release_authority': 'NONE'}
+print('C11C_CONFIG_D9_15_OPERATOR_EVIDENCE_REQUIREMENTS PASS | pairings=13 | read_only=true | renderer=false | media=false | release_authority=NONE')

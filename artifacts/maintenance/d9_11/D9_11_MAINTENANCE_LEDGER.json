@@ -131,6 +131,67 @@
       "source_path": "c11c-suite/c11d-control",
       "suite_registration": "UNREGISTERED_BEFORE_AND_AFTER_QUARANTINE",
       "tree_sha256": "63edcf7791b9a79c6a39ca752baab3023ca349d9a8476976f969ed0fd79633c7"
+    },
+    {
+      "d4_8": "BLOCKED",
+      "destination_path": "docs/history/root_conflicts/c11d-control_quarantine_20261009T172225Z",
+      "directory_count": 0,
+      "event_id": "QUARANTINED-20261009T172225Z-63edcf7791b9",
+      "event_type": "QUARANTINED",
+      "file_count": 4,
+      "files": [
+        {
+          "bytes": 708,
+          "path": "README.md",
+          "sha256": "05b554b7a3c3c4f34ac53c513ca8dc0a8b3342d39b4acd773290371de0ab8ec6"
+        },
+        {
+          "bytes": 21265,
+          "path": "main.py",
+          "sha256": "6f428e356ba266977b4d6be1539ad5f35598040590d16c9568e29c534946f385"
+        },
+        {
+          "bytes": 272,
+          "path": "run.bat",
+          "sha256": "55420b2c9fe260d4af8e9654a566a63fd67afd065721e7cea6200713f8cb0150"
+        },
+        {
+          "bytes": 969,
+          "path": "self_test.py",
+          "sha256": "fd50a98b08cf60e72b63f1975cc1ef30de6de7bc2c2d9cbbcb9e5ce82090fda7"
+        }
+      ],
+      "historical_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "historical_manifest_references": [
+        {
+          "bytes": 21265,
+          "path": "c11c-suite/c11d-control/main.py",
+          "sha256": "6f428e356ba266977b4d6be1539ad5f35598040590d16c9568e29c534946f385"
+        },
+        {
+          "bytes": 708,
+          "path": "c11c-suite/c11d-control/README.md",
+          "sha256": "05b554b7a3c3c4f34ac53c513ca8dc0a8b3342d39b4acd773290371de0ab8ec6"
+        },
+        {
+          "bytes": 272,
+          "path": "c11c-suite/c11d-control/run.bat",
+          "sha256": "55420b2c9fe260d4af8e9654a566a63fd67afd065721e7cea6200713f8cb0150"
+        },
+        {
+          "bytes": 969,
+          "path": "c11c-suite/c11d-control/self_test.py",
+          "sha256": "fd50a98b08cf60e72b63f1975cc1ef30de6de7bc2c2d9cbbcb9e5ce82090fda7"
+        }
+      ],
+      "historical_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "manifest_treatment": "PRESERVED_UNMODIFIED_HISTORICAL_EVIDENCE; RECONCILED_BY_APPEND_ONLY_LEDGER",
+      "occurred_at_utc": "2026-10-09T17:22:25Z",
+      "release_authority": "NONE",
+      "resource": "c11c-suite/c11d-control",
+      "source_path": "c11c-suite/c11d-control",
+      "suite_registration": "UNREGISTERED_BEFORE_AND_AFTER_QUARANTINE",
+      "tree_sha256": "63edcf7791b9a79c6a39ca752baab3023ca349d9a8476976f969ed0fd79633c7"
     }
   ],
   "schema": "C11-D-D9.11-MAINTENANCE-LEDGER-V1",

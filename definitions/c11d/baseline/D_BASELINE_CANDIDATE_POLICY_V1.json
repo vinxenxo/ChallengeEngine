@@ -43,7 +43,7 @@
     "Exactly five canonical operational surfaces are registered; no sixth surface is exposed.",
     "D9.14 real-media GUI acceptance has been authorized by a separate governance checkpoint and its required cases have passed with actual media provenance and deterministic replay.",
     "D4.8 activation governance is explicitly authorized by a separate approved checkpoint; this candidate preflight cannot grant authorization.",
-    "D9.15 operator evidence matrix records all eight capabilities across all five GUIs.",
+    "D9.15 operator evidence matrix is recorded as accepted, or the exact D9.15 operator-evidence-capture blocker is waived by a validated candidate-only operator checkpoint. The waiver does not claim D9.15 PASS/CLOSED and does not waive D9.14, D9.16 or D9.17.",
     "D9.16 full acceptance passes against the complete evidence packet and authorized media evidence.",
     "D9.17 closure adjudication is PASS/CLOSED after the required evidence is reviewed.",
     "Legacy c11d-control is reviewed and reversibly quarantined or otherwise dispositioned by an explicit operator action.",
@@ -59,5 +59,22 @@
     "changes_c11c_source": false,
     "grants_d4_8": false,
     "grants_release_authority": false
+  },
+  "operator_evidence_waiver": {
+    "checkpoint": "docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json",
+    "decision": "WAIVED_FOR_CANDIDATE_EVALUATION_ONLY",
+    "removes_only_blocker": "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED",
+    "d9_15_acceptance_closed_by_waiver": false,
+    "captured_evidence_claimed": false,
+    "cannot_authorize": [
+      "D4.8",
+      "renderer_activation",
+      "production_execution",
+      "D9.14 real-media acceptance",
+      "D9.16 full acceptance",
+      "D9.17 closure",
+      "D baseline freeze",
+      "release authority"
+    ]
   }
 }

@@ -36,6 +36,7 @@ REQUIRED_ROUTES = {
     "D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)": ("python", "tools/c11d/d9/test_gui_real_media_certification.py"),
     "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)": ("python", "tools/c11d/d9/test_gui_operational_acceptance.py"),
     "D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)": ("python", "tools/c11d/d9/test_full_acceptance.py"),
+    "D9.15 OPERATOR EVIDENCE LEDGER AUDIT (NO MEDIA)": ("python", "tools/c11d/baseline_candidate/operator_evidence.py"),
 }
 
 
@@ -74,6 +75,11 @@ def run_checks() -> dict[str, int]:
         raise AssertionError("D9.15 operational acceptance preflight route not registered")
     if "D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)" not in route_names:
         raise AssertionError("D9.16 full-acceptance preflight route not registered")
+    evidence_route = by_name["D9.15 OPERATOR EVIDENCE LEDGER AUDIT (NO MEDIA)"]
+    if evidence_route[1] != "python" or evidence_route[2][:2] != ["tools/c11d/baseline_candidate/operator_evidence.py", "status"]:
+        raise AssertionError("D9.15 operator evidence ledger route target drift")
+    if "no media" not in evidence_route[3].lower() or "authority" not in evidence_route[3].lower():
+        raise AssertionError("D9.15 evidence route must retain no-media/no-authority boundary")
     if manifest.get("d9_16_full_acceptance_closed") is not False or manifest.get("d9_16_real_media_evidence") != "BLOCKED_D4_8_AND_AUTHORIZED_D_RENDERER_BASELINE_REQUIRED":
         raise AssertionError("D9.16 must stay blocked pending real-media evidence")
     gate_row=by_name["D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)"]
@@ -113,7 +119,11 @@ def run_checks() -> dict[str, int]:
         raise AssertionError("Build manifest GUI route index does not match the Test GUI registry")
     if CANDIDATE_ENTRY not in manifest.get("tests", []):
         raise AssertionError("D candidate test missing from Test BUILD_MANIFEST")
-    return {"routes": len(REQUIRED_ROUTES), "all_routes": len(rows), "surfaces": len(shell_rows), "tests": len(manifest.get("tests", [])), "candidate_routes": 1}
+    if "tools/c11d/baseline_candidate/test_operator_evidence.py" not in manifest.get("tests", []):
+        raise AssertionError("D9.15 operator evidence test missing from Test BUILD_MANIFEST")
+    if manifest.get("d9_15_operator_evidence_pairings") != 13 or manifest.get("d9_15_operator_evidence_status") != "REQUIRED_UNTIL_ALL_PAIRINGS_PASS":
+        raise AssertionError("D9.15 evidence recorder registry must remain pending operator evidence")
+    return {"routes": len(REQUIRED_ROUTES), "all_routes": len(rows), "surfaces": len(shell_rows), "tests": len(manifest.get("tests", [])), "candidate_routes": 1, "operator_evidence_routes": 1}
 
 
 if __name__ == "__main__":
@@ -121,6 +131,6 @@ if __name__ == "__main__":
     print(
         "C11C_TEST_GUI_CONTRACT PASS | version=0.2.0 | "
         f"D2-D9 routes={counts['routes']}/{counts['routes']} | all_gui_routes={counts['all_routes']} | "
-        f"canonical_surfaces={counts['surfaces']}/5 | manifest_tests={counts['tests']} | baseline_candidate_routes={counts['candidate_routes']} | "
+        f"canonical_surfaces={counts['surfaces']}/5 | manifest_tests={counts['tests']} | baseline_candidate_routes={counts['candidate_routes']} | operator_evidence_routes={counts['operator_evidence_routes']} | "
         "renderer=false | media_created=false | release_authority=NONE"
     )

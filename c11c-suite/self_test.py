@@ -248,46 +248,46 @@ actual_apps = {row[1] for row in app_rows}
 assert actual_apps == expected_apps, f'Non-canonical Suite topology: {actual_apps}'
 assert len(app_rows) == 5 and all(row[0] != 'C11-D CONTROL' for row in app_rows)
 
-print('[C11C-SUITE-SELF-TEST] 1/20 editorial_test', flush=True)
+print('[C11C-SUITE-SELF-TEST] 1/21 editorial_test', flush=True)
 editorial_test = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_universal_editorial_model.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert editorial_test.returncode == 0, editorial_test.stdout + '\n' + editorial_test.stderr
 assert 'challenge=9/9' in editorial_test.stdout and 'loops=5 families/27 grammars' in editorial_test.stdout and 'drills=4 types/20 tiers' in editorial_test.stdout and 'negative=25/25' in editorial_test.stdout
 
-print('[C11C-SUITE-SELF-TEST] 2/20 integration', flush=True)
+print('[C11C-SUITE-SELF-TEST] 2/21 integration', flush=True)
 integration = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d9_producer_integration.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert integration.returncode == 0, integration.stdout + '\n' + integration.stderr
 assert 'core=90/90' in integration.stdout and 'personalization=12/12' in integration.stdout and 'negative=4/4' in integration.stdout
-print('[C11C-SUITE-SELF-TEST] 3/20 universal_producer', flush=True)
+print('[C11C-SUITE-SELF-TEST] 3/21 universal_producer', flush=True)
 universal_producer = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_universal_producer.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', timeout=120)
 assert universal_producer.returncode == 0, universal_producer.stdout + '\n' + universal_producer.stderr
 assert 'challenge=9/9' in universal_producer.stdout and 'loop_selectors=32' in universal_producer.stdout and 'drill_variants=20/20' in universal_producer.stdout and 'GUI/CLI parity=3/3' in universal_producer.stdout and 'negative=20/20' in universal_producer.stdout
-print('[C11C-SUITE-SELF-TEST] 4/20 producer_gui_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 4/21 producer_gui_contract', flush=True)
 producer_gui_contract = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_producer_gui_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', timeout=30)
 assert producer_gui_contract.returncode == 0, producer_gui_contract.stdout + '\n' + producer_gui_contract.stderr
 assert 'Producer 0.11.1' in producer_gui_contract.stdout and 'D9.14 fail-closed certification gate' in producer_gui_contract.stdout
-print('[C11C-SUITE-SELF-TEST] 5/20 bridge_test', flush=True)
+print('[C11C-SUITE-SELF-TEST] 5/21 bridge_test', flush=True)
 bridge_test = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_editorial_render_bridge.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', timeout=120)
 assert bridge_test.returncode == 0, bridge_test.stdout + '\n' + bridge_test.stderr
 assert 'content_types=3/3' in bridge_test.stdout and 'CLI bridge parity=3/3' in bridge_test.stdout and 'negative=15/15' in bridge_test.stdout
-print('[C11C-SUITE-SELF-TEST] 6/20 catalog_test', flush=True)
+print('[C11C-SUITE-SELF-TEST] 6/21 catalog_test', flush=True)
 catalog_test = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'self_test.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert catalog_test.returncode == 0, catalog_test.stdout + '\n' + catalog_test.stderr
 assert 'pilot_media=5/5' in catalog_test.stdout and 'negative_controls=5/5' in catalog_test.stdout
-print('[C11C-SUITE-SELF-TEST] 7/20 catalog_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 7/21 catalog_contract', flush=True)
 catalog_contract = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'test_catalog_gui_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert catalog_contract.returncode == 0, catalog_contract.stdout + '\n' + catalog_contract.stderr
 assert 'version=0.2.0' in catalog_contract.stdout
-print('[C11C-SUITE-SELF-TEST] 8/20 config_test', flush=True)
+print('[C11C-SUITE-SELF-TEST] 8/21 config_test', flush=True)
 config_test = subprocess.run([sys.executable, str(SUITE/'c11c-config'/'self_test.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert config_test.returncode == 0, config_test.stdout + '\n' + config_test.stderr
 assert 'registries=' in config_test.stdout and 'negative=7/7' in config_test.stdout
-print('[C11C-SUITE-SELF-TEST] 9/20 config_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 9/21 config_contract', flush=True)
 config_contract = subprocess.run([sys.executable, str(SUITE/'c11c-config'/'test_config_gui_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert config_contract.returncode == 0, config_contract.stdout + '\n' + config_contract.stderr
 assert 'version=0.2.0' in config_contract.stdout
 config_manifest = json.loads((SUITE/'c11c-config'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
 assert config_manifest['version'] == '0.2.0' and config_manifest['release_authority'] == 'NONE'
-print('[C11C-SUITE-SELF-TEST] 10/20 maintenance_test', flush=True)
+print('[C11C-SUITE-SELF-TEST] 10/21 maintenance_test', flush=True)
 maintenance_test = subprocess.run([sys.executable, str(SUITE/'c11c-maintenance'/'self_test.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=180)
 assert maintenance_test.returncode == 0, maintenance_test.stdout + '\n' + maintenance_test.stderr
 assert 'C11-C Maintenance 0.2.0 + C11-D D9.11 self-test PASS' in maintenance_test.stdout, maintenance_test.stdout
@@ -297,41 +297,41 @@ assert maintenance_manifest['historical_manifest_access'] == 'READ_ONLY_PRESERVE
 assert maintenance_manifest['c11d_control_registered'] is False
 
 # D9.12 Test 0.2.0: route/manifest/topology contract and GUI E2E plan preflight.
-print('[C11C-SUITE-SELF-TEST] 11/20 test_route_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 11/21 test_route_contract', flush=True)
 test_route_contract = subprocess.run([sys.executable, str(SUITE/'c11c-test'/'test_d9_test_integration.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
 assert test_route_contract.returncode == 0, test_route_contract.stdout + '\n' + test_route_contract.stderr
 assert 'C11C_TEST_GUI_CONTRACT PASS | version=0.2.0' in test_route_contract.stdout, test_route_contract.stdout
-print('[C11C-SUITE-SELF-TEST] 12/20 certification_preflight', flush=True)
+print('[C11C-SUITE-SELF-TEST] 12/21 certification_preflight', flush=True)
 certification_preflight = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_gui_e2e_certification_plan.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
 assert certification_preflight.returncode == 0, certification_preflight.stdout + '\n' + certification_preflight.stderr
 assert 'cases=11/11' in certification_preflight.stdout and 'media_created=false' in certification_preflight.stdout
 
 # D9.13: five-surface lifecycle end-to-end intent chain; no media or release is created.
-print('[C11C-SUITE-SELF-TEST] 13/20 d913_lifecycle', flush=True)
+print('[C11C-SUITE-SELF-TEST] 13/21 d913_lifecycle', flush=True)
 d913_lifecycle = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_cross_suite_lifecycle.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=240)
 assert d913_lifecycle.returncode == 0, d913_lifecycle.stdout + "\n" + d913_lifecycle.stderr
 assert 'content_types=3/3' in d913_lifecycle.stdout and 'stages=5/5' in d913_lifecycle.stdout and 'negative=12/12' in d913_lifecycle.stdout, d913_lifecycle.stdout
 
-print('[C11C-SUITE-SELF-TEST] 14/20 producer_lifecycle_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 14/21 producer_lifecycle_contract', flush=True)
 producer_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d913_lifecycle_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
 assert producer_lifecycle_contract.returncode == 0, producer_lifecycle_contract.stdout + "\n" + producer_lifecycle_contract.stderr
-print('[C11C-SUITE-SELF-TEST] 15/20 catalog_lifecycle_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 15/21 catalog_lifecycle_contract', flush=True)
 catalog_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'test_d913_lifecycle_projection.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
 assert catalog_lifecycle_contract.returncode == 0, catalog_lifecycle_contract.stdout + "\n" + catalog_lifecycle_contract.stderr
-print('[C11C-SUITE-SELF-TEST] 16/20 maintenance_lifecycle_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 16/21 maintenance_lifecycle_contract', flush=True)
 maintenance_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-maintenance'/'test_d913_lifecycle_audit_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
 assert maintenance_lifecycle_contract.returncode == 0, maintenance_lifecycle_contract.stdout + "\n" + maintenance_lifecycle_contract.stderr
 
 # D9.14 real-media GUI certification gate is intentionally blocked: preflight only, no media.
-print('[C11C-SUITE-SELF-TEST] 17/20 d914_gate', flush=True)
+print('[C11C-SUITE-SELF-TEST] 17/21 d914_gate', flush=True)
 d914_gate = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_gui_real_media_certification.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=45)
 assert d914_gate.returncode == 0, d914_gate.stdout + "\n" + d914_gate.stderr
 assert 'gate=BLOCKED_AS_REQUIRED' in d914_gate.stdout and 'media_created=false' in d914_gate.stdout
-print('[C11C-SUITE-SELF-TEST] 18/20 producer_d914_contract', flush=True)
+print('[C11C-SUITE-SELF-TEST] 18/21 producer_d914_contract', flush=True)
 producer_d914_contract = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d914_certification_gate_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
 assert producer_d914_contract.returncode == 0, producer_d914_contract.stdout + "\n" + producer_d914_contract.stderr
 
-print('[C11C-SUITE-SELF-TEST] 19/20 d915_operational_preflight', flush=True)
+print('[C11C-SUITE-SELF-TEST] 19/21 d915_operational_preflight', flush=True)
 d915_operational_preflight = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_gui_operational_acceptance.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=45)
 assert d915_operational_preflight.returncode == 0, d915_operational_preflight.stdout + "\n" + d915_operational_preflight.stderr
 assert 'capabilities=8/8' in d915_operational_preflight.stdout and 'surfaces=5/5' in d915_operational_preflight.stdout and 'operator_confirmation=REQUIRED' in d915_operational_preflight.stdout
@@ -345,6 +345,7 @@ print('[C11C-SUITE-SELF-TEST] 21/21 d_baseline_candidate_preflight', flush=True)
 d_baseline_candidate = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'baseline_candidate'/'test_d_baseline_candidate.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=90)
 assert d_baseline_candidate.returncode == 0, d_baseline_candidate.stdout + "\n" + d_baseline_candidate.stderr
 assert 'freeze_eligible=false' in d_baseline_candidate.stdout and 'release_authority=NONE' in d_baseline_candidate.stdout
+assert 'D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY' in d_baseline_candidate.stdout
 
-print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED/D_BASELINE_CANDIDATE_PREFLIGHT_PASS_FREEZE_BLOCKED_AS_REQUIRED PASS')
+print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED/D_BASELINE_CANDIDATE_PREFLIGHT_PASS_FREEZE_BLOCKED_AS_REQUIRED/D9.15_CAPTURE_WAIVED_CANDIDATE_ONLY PASS')
 
