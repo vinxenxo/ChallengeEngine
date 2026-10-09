@@ -202,3 +202,11 @@ D9.9 implements the universal GUI and CLI request/plan surface in the existing P
 ## D9.10 bridge record boundary
 
 `definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` specifies the downstream mapping of content identity, model-allowlisted editorial values, explicit independent seed domains, profile references and immutable provenance. `tools/c11d/d9/editorial_render_bridge.py` validates the D9.9 plan and emits a hashed `C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1` inspection record only. It is intentionally not an executable renderer input. The future D frozen baseline must separately define/version/hash the adapter, certify binders, receive explicit D4.8 authorization, test determinism/seed isolation and complete media QA/catalog reproduction gates before rendering can be activated.
+
+## D9.10 D-only adapter envelope update (2026-10-09)
+
+The former bridge-only path now feeds `tools/c11d/d9/d_render_adapter.py` after canonical D9.9 request/editorial/plan generation and D9.10 bridge validation. The adapter maps only the model-allowlisted editorial fields, explicit profiles/audio flag, provenance hashes and the separate `request.seed` / `request.music_seed` domains into an inspection-only binding preview. It does not bind `SimulationResult`, `winning_frame`, `close_calls`, derived telemetry or RNG consumption.
+
+The envelope is not renderer-native input. `renderer_dispatch_invoked=false`, `renderer_input_emitted=false`, `production_execution=false`, `media_output_created=false`, `D4.8=BLOCKED` and `release_authority=NONE` are mandatory. It is prepared only for the three currently supported content types; Longform stays disabled. GUI/CLI adapter-envelope parity is 3/3 and adapter-specific negatives are 9/9 in the focused contract.
+
+The Producer GUI is still the existing test/operator GUI, not the definitive GUI. Definitive GUI work starts only after D9 closure and the D baseline is frozen. No screenshots are needed for automated contract evidence; `capture_d910_acceptance.py` produces a hash-bound JSON report plus logs and explicitly does not claim to have interactively observed the GUI.

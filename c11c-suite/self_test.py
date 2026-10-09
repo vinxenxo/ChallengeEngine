@@ -268,7 +268,7 @@ assert 'Producer 0.11.1' in producer_gui_contract.stdout and 'D9.14 fail-closed 
 print('[C11C-SUITE-SELF-TEST] 5/21 bridge_test', flush=True)
 bridge_test = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_editorial_render_bridge.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', timeout=120)
 assert bridge_test.returncode == 0, bridge_test.stdout + '\n' + bridge_test.stderr
-assert 'content_types=3/3' in bridge_test.stdout and 'CLI bridge parity=3/3' in bridge_test.stdout and 'negative=15/15' in bridge_test.stdout
+assert 'content_types=3/3' in bridge_test.stdout and 'CLI bridge parity=3/3' in bridge_test.stdout and 'adapter parity=3/3' in bridge_test.stdout and 'negative=15/15' in bridge_test.stdout and 'adapter_negative=9/9' in bridge_test.stdout
 print('[C11C-SUITE-SELF-TEST] 6/21 catalog_test', flush=True)
 catalog_test = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'self_test.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert catalog_test.returncode == 0, catalog_test.stdout + '\n' + catalog_test.stderr

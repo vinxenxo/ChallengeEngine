@@ -1,14 +1,14 @@
 # C11-D MASTER HANDOVER — D9 Second-Stage Suite Integration
 
-## Current status
+## Current status — updated 2026-10-09
 
-**D0–D8.7 = PASS / CLOSED.**
+**C11-C 2.19.12 remains immutable. D9 remains OPEN, D9.17 remains NO-GO, and D10 remains BLOCKED.**
 
-**D9.0–D9.4 = PASS. D9.4 = CLOSED checkpoint.**
+D9.10 now connects the canonical D9.9 request/editorial/plan and bridge record to a versioned D-only adapter binding preview. The adapter is PREPARE_ONLY; it does not emit renderer input or dispatch production. Automated focused checks pass in the preparation workspace; Windows UI runtime for the new adapter tab is not claimed by the automation report.
 
-**D9 = OPEN — Suite integration/evolution, second stage.**
+D9.14 bounded qualification run `D914_COLON_FIX_20261009_E` passed on Windows and sealed four final A/V MP4s, eight checks, report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f` and qualification-baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. This does not close full D9.14 GUI/E2E acceptance, activate general D rendering, authorize D4.8 or approve the final D baseline.
 
-**D10 = BLOCKED.**
+The existing Producer window is a **test/operator GUI only**. Work on the definitive GUI is deferred until all D acceptance gates are closed and the D baseline has been frozen. The 13 D9.15 screenshot/log requirement was waived for candidate-readiness only; do not infer canonical D9.15 PASS/CLOSED.
 
 ## Important correction of scope
 
@@ -74,17 +74,17 @@ Do not modify C11-C 2.19.12 simulation/mechanics/RNG/truth, `SimulationResult`, 
 - D9.9: PASS for the universal request/plan adapter and GUI/CLI parity; the operator confirms Windows GUI successfully generated plans for all currently implemented D content types.
 - D9.9 Windows UTF-8 CLI defect: repaired; the operator reports the five focused/aggregate checks PASS.
 - D9.9 GUI callback defect: repaired; the operator confirms Producer starts and generates plans without errors.
-- D9.10: PASS for deterministic plan-only bridge records, CLI bridge-record parity for Challenge/Loop/Drill and 15 negative controls. Producer 0.11.1 adds the bridge record inside the existing application. **The operator has confirmed the D9.10 bridge-output tab opens and displays the plan-only record in Windows.**
-- D9.10 never emits renderer input or creates physical media. C11-C 2.19.12 remains immutable; D4.8 remains BLOCKED; release authority NONE.
+- D9.10 bridge planning: original 3-type bridge records, CLI parity 3/3, 15 negatives; subsequent addendum implemented D-only adapter envelope preparation, adapter parity 3/3 and adapter negatives 9/9. See the current `D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md` and its superseded prior checkpoint in `docs/history/c11d/d9/`.
+- D9.10 envelope remains inspection-only; no renderer-native input is emitted. C11-C 2.19.12 is immutable; D4.8 remains BLOCKED; release authority NONE.
 
 ## Next work
 
-1. Operator smoke check of the new D9.10 bridge-output tab in Windows (`run.bat`, then generate one plan each for Challenge, Visual Loop and Visual Drill).
-2. D9.11 — Maintenance 0.2.0: implementation/static acceptance PASS; Windows Maintenance GUI/operator acceptance pending. See `docs/current/d/D9.11_MAINTENANCE_0.2.0_CHECKPOINT.md`.
-3. D9.12 — Test 0.2.0.
-4. D9.13 — cross-suite lifecycle.
-5. D9.14–D9.16 — authorized real GUI production, operational and full acceptance gates.
-6. D9.17 — D9 final closure.
+1. Run `python .\tools\c11d\d9\capture_d910_acceptance.py --run-id D910_WINDOWS_ACCEPTANCE_01` to create machine-verifiable JSON and per-command logs without screenshots.
+2. Open the **test-only** Producer GUI, exercise one Challenge, one Visual Loop and one Visual Drill, and inspect the `D-ONLY RENDER ADAPTER (PREPARED / OFF)` tab. No screenshots are requested; report any runtime defect only.
+3. Run the focused/aggregate tests listed in the D9.10 runbook and retain the automated report under `artifacts/tests/c11d_d9/d910_adapter_acceptance/`.
+4. Complete the real editorial-to-render path only after the required D renderer baseline and separate dispatch authorization are eligible. The current adapter does not emit render input.
+5. Advance D9.14 full GUI/E2E acceptance, D9.16, then D9.17 adjudication; only after all gates pass and explicit approvals may the final D baseline be frozen.
+6. Keep definitive GUI implementation deferred until the D baseline is closed and frozen.
 
 ## New-context read order
 
@@ -110,3 +110,11 @@ Expected current result: `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED`. 
 ## Operator D9.15 capture waiver — candidate-only (2026-10-09)
 
 Per explicit operator decision, do not require the 13 screenshot/log captures to continue **candidate-readiness evaluation**. The sealed checkpoint is `docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json`; the baseline candidate evaluator validates its seal and scope. Expected candidate output includes `D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY` and `blockers=5`, with `freeze_eligible=false`. Do not represent the waiver as captured evidence or D9.15 PASS/CLOSED. Canonical D9.15 remains operationally unclosed and D9.17 remains BLOCKED/NO-GO; D9.14 and D9.16 remain blocked, D4.8 remains BLOCKED, renderer/production remain OFF, media remains absent, and release authority remains NONE. C11-C 2.19.12 and its frozen manifest remain immutable.
+
+## D9.10 + bounded D9.14 latest evidence (2026-10-09)
+
+- New `C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json` is a read-only Config registry contract (Config now 30/30).
+- D-only envelope is schema `C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1`; it preserves canonical request/plan/bridge/model hashes, editorial allowlist, explicit profiles/audio flag, and disjoint gameplay/music seed domains.
+- Focused D9.10 result: content types 3/3, CLI bridge parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter negatives 9/9. Automated acceptance runner has five focused checks by default; the aggregate Suite is opt-in with `--include-aggregate` and records `operator_gui_runtime_observed=false`; the report is not an assertion of interactive GUI observation.
+- Actual D9.14 bounded qualification: run `D914_COLON_FIX_20261009_E`, four final A/V MP4s, report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`, qualification baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`.
+- Current candidate preflight is expected to PASS as an audit but remain `freeze_eligible=false` with five blockers. D4.8 BLOCKED, renderer dispatch OFF, release authority NONE.

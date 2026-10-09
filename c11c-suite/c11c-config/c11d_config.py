@@ -15,6 +15,7 @@ D_REGISTRIES = (
  {'domain':'D4 · PERSONALIZATION','id':'D4_PERSONALIZATION_REGISTRY','path':'definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · EDITORIAL','id':'D9_UNIVERSAL_EDITORIAL_MODEL','path':'definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · BRIDGE PLANNING','id':'D9_EDITORIAL_RENDER_BRIDGE','path':'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · RENDER ADAPTER BOUNDARY','id':'D9_D_ONLY_RENDER_ADAPTER_BOUNDARY','path':'definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · MAINTENANCE','id':'D9_MAINTENANCE_POLICY','path':'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · CROSS-SUITE LIFECYCLE','id':'D9_CROSS_SUITE_LIFECYCLE','path':'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · REAL-MEDIA GUI CERTIFICATION GATE','id':'D9_REAL_MEDIA_CERTIFICATION_GATE','path':'definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json','authority':'READ_ONLY_CANONICAL'},
@@ -145,6 +146,16 @@ def validate_c11d_contracts(project_root: Path) -> tuple[list[dict[str,Any]],lis
     need(bridge_governance.get('renderer_activation') is False and bridge_governance.get('production_execution') is False and bridge_governance.get('d4_8')=='BLOCKED' and bridge_governance.get('release_authority')=='NONE','D9.10 must not grant renderer/production/D4.8/release authority')
     need(set(bridge.get('supported_content_types',[]))=={'challenges','visual_loops','visual_drills'},'D9.10 supported content types mismatch')
     need(bridge.get('unsupported_content_types',{}).get('longform')=='DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM','D9.10 Longform must remain disabled')
+    adapter=d.get('D9_D_ONLY_RENDER_ADAPTER_BOUNDARY',{})
+    need(adapter.get('schema')=='C11-D-D9.10-RENDER-ADAPTER-BOUNDARY-CONTRACT-V1' and adapter.get('checkpoint')=='D9.10','D9.10 D-only render adapter boundary schema/checkpoint mismatch')
+    need(adapter.get('status')=='ADAPTER_PREPARATION_ENABLED_RENDERER_DISPATCH_DISABLED','D9.10 adapter boundary must permit preparation only')
+    adapter_policy=adapter.get('policy',{})
+    need(adapter_policy.get('scope')=='C11-D_ONLY' and adapter_policy.get('adapter_prepare_enabled') is True,'D9.10 adapter preparation must be D-only and explicitly enabled')
+    need(adapter_policy.get('renderer_dispatch_enabled') is False and adapter_policy.get('renderer_activation') is False and adapter_policy.get('renderer_input_emitted') is False,'D9.10 adapter contract must keep renderer dispatch/input/activation disabled')
+    need(adapter_policy.get('production_execution') is False and adapter_policy.get('media_output_created') is False and adapter_policy.get('c11c_source_mutation') is False,'D9.10 adapter contract must forbid production/media/C11-C mutation')
+    need(adapter_policy.get('d4_8')=='BLOCKED' and adapter_policy.get('release_authority')=='NONE','D9.10 adapter contract must preserve D4.8/release locks')
+    need(adapter.get('output_contract',{}).get('renderer_input_emitted') is False and adapter.get('output_contract',{}).get('media_output_created') is False,'D9.10 adapter envelope must not be renderer input or media')
+    need(adapter.get('scope',{}).get('source_reference')=='C11-C_2.19.12_IMMUTABLE_REFERENCE','D9.10 adapter boundary must preserve frozen C11-C reference')
     required_bridge_gates={'FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED','RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED','D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION','GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS','CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS'}
     need(required_bridge_gates.issubset(set(bridge.get('future_d_frozen_baseline_gates',[]))),'D9.10 missing mandatory future baseline gates')
     lifecycle=d.get('D9_CROSS_SUITE_LIFECYCLE',{})

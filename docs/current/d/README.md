@@ -1,19 +1,20 @@
-# C11-D — Current Documentation / D7 FROZEN → D8 READY
+# C11-D — Current Documentation / D9 ACTIVE → D10 BLOCKED
 
 C11-D is the additive productization branch around the immutable C11-C 2.19.12 baseline.
 
-## Current state
+## Current state (2026-10-09)
 
-- D0 — PASS / CLOSED
-- D1 — PASS / CLOSED
-- D2 — PASS / CLOSED
-- D3 — PASS / CLOSED
-- D4 — PASS / CLOSED; D4.8 remains `BLOCKED`
-- D5 — PASS / CLOSED
-- D6 — PASS / CLOSED
-- D7.0–D7.5 — PASS / CLOSED
-- D7 — **FROZEN**
-- Next — **D8.0 Media QA + Release Pipeline**
+- C11-C 2.19.12 — **IMMUTABLE FROZEN REFERENCE**.
+- D0–D8 — completed checkpoints retained as governed history; D7 remains FROZEN.
+- D9.8/D9.9 — universal editorial model/request/plan accepted for stated scope.
+- D9.10 — D-only adapter envelope **PREPARE_ONLY**; bridge/adapter parity 3/3 and adapter negatives 9/9. No renderer input or dispatch.
+- D9.11–D9.13 — integration/lifecycle checkpoints retained; current suite has five canonical surfaces.
+- D9.14 — bounded production qualification PASS (4 final A/V MP4s, 8 checks); full GUI/E2E certification remains BLOCKED.
+- D9.15 — screenshot/log waiver is candidate-readiness only; not canonical D9.15 closure.
+- D9.16 — full acceptance BLOCKED_AS_REQUIRED; D9.17 — NO-GO / D9 OPEN.
+- D4.8 — `BLOCKED`; general D renderer dispatch — OFF; release authority — `NONE`.
+- Next — D9.10 Windows acceptance runner + focused/aggregate regression, then D9.14 full E2E prerequisite work.
+- Definitive GUI — deferred until final D baseline is accepted, closed and frozen.
 
 ## D7 frozen authorities
 
@@ -47,6 +48,20 @@ SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
 - `START_PROMPT_C11D_CURRENT.md`
 
 The current docs directory contains both authoritative contracts and historical repair notes. Files named `README_*`, `*_OVERLAY*`, repair manifests and earlier handovers are evidence/history unless explicitly referenced by the current handover.
+
+## Current D9 entry points
+
+- `C11-D_ROADMAP_V1.0_STATELESS.md` — active roadmap and current D9 state.
+- `D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md` — live D9.10 adapter boundary and test matrix.
+- `D9.10_D_ONLY_RENDER_ADAPTER_ACCEPTANCE_RUNBOOK.md` — automated evidence capture without screenshots.
+- `D9.14_PRODUCTION_QUALIFICATION_RUNBOOK_V1.md` — bounded media qualification and known successful Windows run.
+- `D9.14_GUI_REAL_MEDIA_CERTIFICATION_GATE_CHECKPOINT.md` — full gate remains blocked.
+- `MASTER_HANDOVER_C11D_CURRENT.md` and `START_PROMPT_C11D_CURRENT.md` — authoritative handover and next actions.
+- `docs/history/c11d/d9/` — preserved superseded checkpoint and qualification result record.
+
+## D7 frozen baseline history
+
+The D7 frozen reference remains historical context. It does not describe the current D9 development phase.
 
 ## Directory contents
 

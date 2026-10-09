@@ -58,3 +58,20 @@
 - Only `c11c-suite/c11d-control` is eligible for legacy quarantine. The operation is not performed when applying the overlay; it requires explicit GUI/CLI confirmation and records the original tree and historical manifest file references in an append-only ledger.
 - The historical C11-C manifest is never rewritten. Cleanup has exactly two allowed transient roots and archives rather than permanently deleting. Freeze preflight never creates a release archive.
 - Static backend, Maintenance GUI-contract, prior cleanup/organization and aggregated Suite tests pass. Windows Maintenance GUI/operator acceptance remains pending; D9 stays OPEN and D10 BLOCKED.
+
+## D9.10 addendum — D-only render-adapter envelope (2026-10-09)
+
+- Added `definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json` and `tools/c11d/d9/d_render_adapter.py`.
+- Canonical request + allowlisted editorial + production plan + bridge record now map to a versioned, hash-bound binding-preview envelope for Challenge, Visual Loop and Visual Drill.
+- CLI includes the envelope; the existing Producer test GUI shows a `D-ONLY RENDER ADAPTER (PREPARED / OFF)` view and writes per-request `d_render_adapter_envelope.json`; GUI/CLI compares envelope identity.
+- Adapter-specific negatives cover forged hash/fields, activation/dispatch/media claims, C11-C mutation and seed-domain violations. Adapter preparation is enabled, but no renderer input is emitted and there is no dispatch control.
+- Config registers the adapter boundary read-only; canonical registry validation is 30/30.
+- `tools/c11d/d9/capture_d910_acceptance.py` automates report/log generation for backend, CLI and static GUI-contract checks. It does not require screenshots and does not claim interactive Qt launch.
+- Preserve the earlier plan-only checkpoint at `docs/history/c11d/d9/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT_SUPERSEDED_20261009.md`.
+
+## D9.14 addendum — bounded production qualification passed (2026-10-09)
+
+- Operator run `D914_COLON_FIX_20261009_E` generated and audited four final A/V MP4 outputs; eight qualification checks passed.
+- Report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`; qualification-only baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`.
+- Challenge D3 Music Engine V5 mux, deterministic same-seed Loop replay and changed-music-seed isolation passed.
+- This is qualification-only using proven generators; full D9.14 GUI/E2E remains blocked, D4.8 is BLOCKED, general D renderer dispatch remains OFF, D9.16/D9.17 remain blocked and release authority is NONE.

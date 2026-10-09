@@ -22,11 +22,15 @@ This is a candidate-evaluation track, not a freeze or release. C11-C is not repl
 
 1. D9.14 has no real-media acceptance evidence authorized through the universal GUI. The real-media gate correctly remains blocked.
 2. D4.8 is `BLOCKED`; no candidate tool or GUI route may change this.
-3. D9.15 operator evidence covering all eight capabilities across all five surfaces is not recorded as a consolidated ledger.
-4. D9.16 has only a fail-closed preflight PASS, not full acceptance against real-media/operator evidence.
+3. D9.15's 13 screenshot/log pairings were not captured. The operator explicitly waived capture **only as a candidate-readiness blocker**; the evaluator reports `WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY`, not D9.15 PASS/CLOSED.
+4. D9.16 has only a fail-closed preflight PASS, not full acceptance against authorized real-media evidence.
 5. D9.17 records NO-GO; D9 remains open and D10 remains blocked.
-6. The D renderer baseline approval checkpoint is absent. The candidate track does not itself supply approval or a renderer adapter.
-7. The unregistered `c11c-suite/c11d-control` legacy tree requires explicit, reversible Maintenance disposition. If absent without a valid QUARANTINED ledger and matching archived tree, the audit reports four unresolved manifest references and remains blocked. This evaluator never moves it.
+6. The D renderer baseline approval checkpoint and the exact-source D baseline approval checkpoint are both absent.
+7. The historic `c11c-suite/c11d-control` entries are reconciled by the D9.11 quarantine ledger and per-file hashes; they are no longer an active blocker in the verified tree.
+
+### D9.15 capture waiver record
+
+`docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json` records the operator's explicit decision not to collect the 13 captures. It is bound to the unchanged C11-C manifest identity and validated by the candidate evaluator. It removes only `D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED` from the candidate readiness blocker list. It does not create or imply evidence, does not close canonical D9.15, and cannot authorize D4.8, renderer activation, production, D9.14, D9.16, D9.17, a D freeze or release authority. D9.15 remains **NOT CLOSED BY THIS WAIVER**.
 
 ## Run
 
@@ -43,3 +47,7 @@ The first test is also registered in the existing Test 0.2.0 GUI as `D BASELINE 
 ## Non-negotiable invariants
 
 `master_seed=NOT_ADOPTED`; gameplay seed remains `request.seed`; music seed remains `request.music_seed`; cross-domain sharing forbidden; auto/runtime derivation disabled; `D4.8=BLOCKED`; renderer and production execution false; media creation false; `release_authority=NONE`; Longform remains disabled. No release or freeze archive is created.
+
+## D9.10 adapter and D9.14 qualification evidence addendum (2026-10-09)
+
+D9.10 now includes a D-only prepare-only adapter contract and hash-bound envelope; it is static/CLI/GUI-contract accepted in the prepared workspace, not a renderer authorization. The user-run bounded D9.14 qualification also passed with four final A/V MP4s and sealed qualification baseline `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. Neither evidence changes baseline-candidate policy. The latest readiness preflight remains `freeze_eligible=false` with five blockers; D4.8 remains BLOCKED, general renderer dispatch OFF, no release authority. The D9.15 capture waiver is honored only for candidate-readiness evaluation; no screenshot or operational acceptance is fabricated.

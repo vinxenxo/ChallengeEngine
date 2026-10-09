@@ -1,3 +1,19 @@
+# Latest authoritative update — D9.10 adapter + D9.14 qualification (2026-10-09)
+
+This update supersedes older statements below when they conflict; older records remain as historical trace.
+
+- **D9.10:** D-only adapter envelope preparation implemented in `tools/c11d/d9/d_render_adapter.py`; canonical request, editorial, plan and bridge provenance are hash-bound. Focused result in prepared workspace: content types 3/3, bridge CLI parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter-specific negatives 9/9. It is PREPARE_ONLY; no renderer-native input, dispatch, production, media or release authority.
+- **Config:** 30/30 read-only contracts, negative 7/7. Test integration keeps exactly five canonical surfaces; D9.10 assertions are integrated in the existing aggregate Suite.
+- **Automated D9.10 acceptance:** `python .\tools\c11d\d9\capture_d910_acceptance.py --run-id D910_WINDOWS_ACCEPTANCE_01`. It writes a hash-bound JSON report and per-check logs, no screenshots/media, and honestly marks `operator_gui_runtime_observed=false`.
+- **D9.14 bounded qualification:** Windows run `D914_COLON_FIX_20261009_E` PASS; 4 final A/V MP4s, 8 checks. Report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`; qualification baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. This is not full D9.14 GUI/E2E closure.
+- **GUI policy:** the current Producer GUI is test-only. Do not work on the definitive GUI until the D baseline is fully accepted and frozen.
+- **D9.15 capture waiver:** candidate-readiness only; it does not close D9.15. Candidate preflight must retain `D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY` and `freeze_eligible=false`.
+- **Governance:** D9 remains OPEN; D9.17 remains BLOCKED/NO-GO; D10 BLOCKED; D4.8 BLOCKED; renderer dispatch OFF; release authority NONE; C11-C 2.19.12 and its manifest remain immutable.
+
+Next: run the automated D9.10 acceptance script on Windows, optionally open the test-only Producer tab to visually inspect its prepared envelope (no screenshot required), then use focused + aggregate regression. Do not use the adapter to render; no dispatch flag exists in this increment.
+
+---
+
 # C11-D START PROMPT — D9.17 Closure Adjudication / D9 Remains OPEN
 
 Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip` (SHA-256: `526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62`) as the source-of-truth working tree. The D9.8 changes below are a development overlay on that archive; do not treat this overlay as a D9/D branch freeze.
@@ -165,3 +181,7 @@ Current candidate: `C11-D-BASELINE-CANDIDATE-0.1`, evaluation only. Begin with `
 ## D baseline candidate remediation (2026-10-09)
 
 The `C11-D-BASELINE-CANDIDATE-0.1` evaluator is read-only and must stay `freeze_eligible=false`. Run `python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py`; it has 22 negative controls and reports mismatched `c11d-control` file names. See `docs/current/d/D_BASELINE_CANDIDATE_REMEDIATION_PLAN_V1.md` for the exact historical snapshot reconciliation process. Preserve the previous mismatched archive and ledger event; restore the exact four manifest-matching files only if the source directory is absent, then preview and explicitly apply `maintenance.py quarantine-legacy-control` with `--confirm QUARANTINE_C11D_CONTROL`. The audit separately requires approved renderer and candidate baseline checkpoints; do not use preflight to authorize D4.8 or release.
+
+## Latest operator decision — D9.15 candidate-only waiver (2026-10-09)
+
+The operator declines to capture the 13 D9.15 screenshot/log evidence pairings and asserts that the five GUIs function. Honor `docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json` for candidate readiness only. Candidate status must say `D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY`; do not mark canonical D9.15 PASS/CLOSED. Five blockers remain (`D9.14`, `D9.16`, `D9.17`, D renderer approval, D baseline approval); `freeze_eligible=false`, `D4.8=BLOCKED`, renderer/production OFF, `media_created=false`, `release_authority=NONE`. D9.17 is still NO-GO and D10 remains blocked. Do not add or use the optional screenshot recorder overlay.

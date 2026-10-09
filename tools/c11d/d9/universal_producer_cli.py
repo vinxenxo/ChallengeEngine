@@ -6,6 +6,7 @@ from pathlib import Path
 
 from universal_producer import evaluate_universal_request
 from editorial_render_bridge import build_bridge_planning_record
+from d_render_adapter import prepare_d_only_adapter_envelope
 
 
 def _write_utf8(stream, text: str) -> None:
@@ -27,7 +28,7 @@ def _write_utf8(stream, text: str) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="C11-D universal Producer planner with D9.10 plan-only render-bridge record.")
+    parser = argparse.ArgumentParser(description="C11-D universal Producer planner with D9.10 bridge record and D-only prepare-disabled render adapter envelope.")
     parser.add_argument("--request", required=True, help="Universal D9.9 request JSON")
     parser.add_argument("--output", help="Optional result JSON output path")
     parser.add_argument("--print-json", action="store_true", help="Print complete canonical result JSON")
@@ -38,7 +39,9 @@ def main() -> int:
         project_root = Path(__file__).resolve().parents[3]
         result = evaluate_universal_request(raw, project_root)
         result_payload = dict(result)
-        result_payload["bridge_planning_record"] = build_bridge_planning_record(result, project_root)
+        bridge_record = build_bridge_planning_record(result, project_root)
+        result_payload["bridge_planning_record"] = bridge_record
+        result_payload["d_only_adapter_envelope"] = prepare_d_only_adapter_envelope(result, bridge_record, project_root)
         payload = json.dumps(result_payload, ensure_ascii=False, indent=2) + "\n"
         if args.output:
             output_path = Path(args.output).resolve()
@@ -54,6 +57,9 @@ def main() -> int:
                     "plan_hash": result["plan_hash"],
                     "bridge_plan_hash": result_payload["bridge_planning_record"]["record_hash"],
                     "bridge_status": result_payload["bridge_planning_record"]["status"],
+                    "d_only_adapter_status": result_payload["d_only_adapter_envelope"]["status"],
+                    "d_only_adapter_envelope_hash": result_payload["d_only_adapter_envelope"]["envelope_hash"],
+                    "renderer_dispatch_invoked": False,
                     "renderer": False,
                     "release_authority": "NONE",
                 },

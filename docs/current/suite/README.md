@@ -1,7 +1,7 @@
 # C11-C Suite — Current Documentation
 
 **Suite runtime:** 0.1.4  
-**Producer:** 0.10.0  
+**Producer:** 0.11.1  
 **C11-C:** 2.19.12
 
 La Suite activa tiene cinco superficies diferenciadas: Test, Producer, Catalog, Maintenance y Config. GUI y CLI comparten las mismas autoridades canónicas; no se crean suites paralelas.
@@ -10,13 +10,13 @@ La Suite activa tiene cinco superficies diferenciadas: Test, Producer, Catalog, 
 
 Los documentos de reglas anteriores son históricos y no constituyen autoridad operativa.
 
-## Current D8/D9 state
+## Current D9 state — 2026-10-09
 
-C11-C 2.19.12 is frozen. D0–D8 are PASS/CLOSED; D7 remains FROZEN. D9 is ACTIVE for integration/evolution of the existing Test, Producer, Maintenance, Catalog and Config GUIs. D9.4 is the real-media checkpoint only. D10 remains BLOCKED until GUI production, reproducibility and safety E2E acceptance is complete.
+C11-C 2.19.12 is immutable. D9 is OPEN across the five existing surfaces; D10 remains BLOCKED. D9.10 implements a D-only adapter envelope in PREPARE_ONLY mode (3/3 content types, CLI parity 3/3, adapter parity 3/3, adapter negatives 9/9). Config validation is 30/30. The D9.14 bounded qualification has four real final A/V MP4s and a sealed qualification-only baseline, but full D9.14 GUI/E2E acceptance, D9.16 and D9.17 remain blocked. D4.8 is BLOCKED, renderer dispatch is OFF and release authority is NONE. The current Producer is a test GUI; the definitive GUI is deferred until final D baseline freeze.
 
-## Current D8/D9 state
+## Current D9 state — 2026-10-09
 
-C11-C 2.19.12 is frozen. D0–D8 are PASS/CLOSED; D7 remains FROZEN. D9 is ACTIVE for integration/evolution of the existing Test, Producer, Maintenance, Catalog and Config GUIs. D9.4 is the real-media checkpoint only. D10 remains BLOCKED until GUI production, reproducibility and safety E2E acceptance is complete.
+C11-C 2.19.12 is immutable. D9 is OPEN across the five existing surfaces; D10 remains BLOCKED. D9.10 implements a D-only adapter envelope in PREPARE_ONLY mode (3/3 content types, CLI parity 3/3, adapter parity 3/3, adapter negatives 9/9). Config validation is 30/30. The D9.14 bounded qualification has four real final A/V MP4s and a sealed qualification-only baseline, but full D9.14 GUI/E2E acceptance, D9.16 and D9.17 remain blocked. D4.8 is BLOCKED, renderer dispatch is OFF and release authority is NONE. The current Producer is a test GUI; the definitive GUI is deferred until final D baseline freeze.
 
 ## Directory contents
 

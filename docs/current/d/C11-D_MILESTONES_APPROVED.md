@@ -2,7 +2,7 @@
 
 ## Current state
 
-**D9 is OPEN — D9.17 closure adjudication is BLOCKED, not PASS/CLOSED.**
+**D9 is OPEN — D9.17 remains NO-GO, not PASS/CLOSED. D9.10's D-only adapter is implemented prepare-only; D9.14 has a bounded qualification PASS (four real A/V MP4s), but the full D9.14 GUI/end-to-end gate, D9.16, D9.17 and final D baseline approvals remain unresolved.**
 
 The operator confirmed in Windows that D9.16's no-media preflight route opens and executes, Config validates 27/27 contracts, Test validates 25/25 D routes and the 20/20 aggregate ends in `D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED PASS`. This is successful verification of the fail-closed gate, not full D9 acceptance. D9.14 remains blocked pending a separately authorized future D frozen renderer baseline and explicit D4.8 governance approval; D9.15 still requires a consolidated operator evidence matrix for all five GUIs. D9.17 therefore records a formal no-go decision: do not claim D9 closed. D10 remains BLOCKED.
 
@@ -32,11 +32,11 @@ The operator confirmed in Windows that D9.16's no-media preflight route opens an
 | D9.7 | Config 0.2.0 D integration | IMPLEMENTED / Windows confirmation pending |
 | D9.8 | Universal editorial model V1 + strict resolver + live inventory/negative tests | PASS / static contract tests; GUI integration deferred to D9.9 |
 | D9.9 | Producer 0.11.0 universal editorial selectors + canonical plan-only adapter | PASS / static matrix + CLI-process parity; Windows plan generation confirmed by operator |
-| D9.10 | Editorial-to-render bridge planning (Producer 0.11.1) | PASS / 3 content types, CLI record parity 3/3, negatives 15/15; Windows GUI output-tab check confirmed; physical renderer deferred |
+| D9.10 | Editorial-to-render bridge + D-only adapter boundary | PREPARE-ONLY IMPLEMENTED / 3 content types, CLI parity 3/3, adapter parity 3/3, adapter negatives 9/9; new envelope GUI tab's Windows runtime view is not claimed by automated evidence; dispatch OFF |
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
 | D9.12 | Test 0.2.0 | PASS / Windows GUI opened and D9.14 gate route executed successfully |
 | D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
-| D9.14 | Real GUI production certification | FAIL-CLOSED GATE PASS / REAL-MEDIA BLOCKED pending authorized future D baseline + explicit D4.8 |
+| D9.14 | Real GUI production certification | BOUNDED QUALIFICATION PASS (4 final A/V MP4s, 8 checks; baseline sealed) / FULL GUI E2E GATE BLOCKED pending future D baseline + explicit D4.8 |
 | D9.15 | GUI operational acceptance | PREFLIGHT PASS (8 capabilities / 5 surfaces); consolidated capability-level GUI evidence across all five surfaces REQUIRED |
 | D9.16 | Full D9 acceptance | WINDOWS PREFLIGHT + 20/20 AGGREGATE PASS / FULL ACCEPTANCE BLOCKED AS REQUIRED |
 | D9.17 | D9 final closure adjudication | BLOCKED / D9 REMAINS OPEN: real-media gate + D9.15 evidence matrix unmet |
@@ -104,3 +104,9 @@ Until all three conditions are met, `D9=OPEN`, `D9.17=BLOCKED`, `D10=BLOCKED`, `
 | `C11-D-BASELINE-CANDIDATE-0.1` | PREFLIGHT PASS / FREEZE BLOCKED AS REQUIRED | Evaluate the integrated D working tree without replacing the immutable C11-C 2.19.12 reference. No freeze package, renderer activation, media creation, D4.8 authorization, or release authority is emitted. |
 
 The current candidate audit verifies the historical C11-C manifest identity, presence of all 2,545 manifest-listed files or strict D9.11 ledger reconciliation for the exact legacy `c11d-control` entries (any other missing path is fatal), byte-level hashes for the protected C source paths, confinement of changes in C-manifest-listed files to the declared D integration/documentation roots, and exactly five registered GUI surfaces. Its blocked state remains expected until D9.14 real-media GUI acceptance is explicitly authorized and passed, the D9.15 evidence matrix is recorded, D9.16 passes against the resulting evidence, D9.17 is re-adjudicated, and the unregistered legacy `c11d-control` path is dispositioned through Maintenance with explicit operator confirmation. This track does not revise the D9.17 NO-GO or D10 BLOCKED.
+
+## D9.10 adapter and D9.14 qualification update (2026-10-09)
+
+The D9.10 adapter now prepares a D-only hash-bound envelope after canonical request → personalization → plan → bridge validation. The adapter envelope is inspection-only; it is not renderer input. Focused prepared-workspace verification: 3/3 supported content types, 3/3 CLI bridge parity, 3/3 adapter parity, 15/15 bridge negatives and 9/9 adapter negatives. Config contracts now validate 30/30. Automated evidence is available through `tools/c11d/d9/capture_d910_acceptance.py`; no screenshot collection is required for these automated contract checks.
+
+The operator also completed bounded D9.14 qualification on Windows (`D914_COLON_FIX_20261009_E`): 4 final A/V MP4s, 8 checks, report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`, qualification-baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. It does not close the D9.14 full GUI/E2E gate or authorize general D renderer dispatch. The Producer window remains a test-only GUI; the definitive GUI is deferred until after D is fully closed and frozen.

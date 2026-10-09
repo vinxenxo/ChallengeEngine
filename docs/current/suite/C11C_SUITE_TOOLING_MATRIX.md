@@ -7,10 +7,10 @@
 
 | Surface | Responsibility | D9 current state | Target |
 |---|---|---|---|
-| `c11c-test` | QA / regression / acceptance | Test 0.2.0; legacy C11-C routes preserved + 25 D routes / 55 total GUI routes, negative/parity bundles, no-media E2E preflight, D9.14 blocked gate, D9.15 operational preflight and D9.16 full-acceptance preflight; Test GUI gate launch/execute confirmed on Windows | 0.2.0 |
-| `c11c-producer` | production / review / job orchestration | 0.11.1; D4 GUI preserved + D9.9 universal editorial, D9.10 plan-only bridge, D9.13 lifecycle receipt and D9.14 blocked certification-gate view (Windows confirmed) | D9.9 selector matrix and D9.10 bridge contract/CLI parity PASS; operator-confirmed Windows plan-only bridge output tab |
+| `c11c-test` | QA / regression / acceptance | Test 0.2.0; legacy C11-C routes preserved + 26 D routes / 57 total GUI routes, negative/parity bundles, no-media E2E preflight, D9.14 blocked gate, D9.15 operational preflight and D9.16 full-acceptance preflight; Test GUI gate launch/execute confirmed on Windows | 0.2.0 |
+| `c11c-producer` | production / review / job orchestration | 0.11.1; D4 GUI preserved + D9.9 universal editorial, D9.10 D-only adapter envelope (prepare-only), D9.13 lifecycle receipt and D9.14 blocked certification-gate view | D9.10 CLI/adapter parity 3/3; new adapter tab static contract PASS; interactive runtime confirmation not asserted by automated report |
 | `c11c-catalog` | catalog / product / provenance / reproduction | 0.2.0; D7 + D9 pilot coverage integrated | 0.2.x |
-| `c11c-config` | configuration / profiles / snapshots | 0.2.0; D9.8 model + D9.10 bridge + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix and D9.16 full-acceptance gate registered read-only; 27/27 contracts validate; all-surface Windows GUI evidence pending | 0.2.x |
+| `c11c-config` | configuration / profiles / snapshots | 0.2.0; D9.8 model + D9.10 bridge and adapter boundary + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix and D9.16 full-acceptance gate registered read-only; 30/30 contracts validate | 0.2.x |
 | `c11c-maintenance` | cleanup / organization / quarantine / freeze | 0.2.0 D9.11 PASS/CLOSED; operator-confirmed Windows GUI and full Suite acceptance passed | 0.2.0 |
 
 ## Canonical D routes
@@ -22,10 +22,10 @@
 | D4 plan identity | Producer | D4.4 canonical orchestrator | integrated |
 | D7 catalog inspection | Catalog | canonical catalog/identity | integrated |
 | D9 pilot product inspection | Catalog | D9 acceptance/provenance | integrated |
-| D9 configuration contracts | Config | D2–D9 contract registry (read-only, 27 contracts) | D9.10–D9.16 invariants registered; 27/27 Config contracts PASS; Windows Config GUI acceptance pending |
+| D9 configuration contracts | Config | D2–D9 contract registry (read-only, 30 contracts) | D9.10 adapter-boundary through D9.16 invariants registered; 30/30 Config contracts PASS |
 | D9.8 universal editorial model | Config (read-only registry) + shared resolver | `definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json` + `tools/c11d/d9/universal_editorial_model.py` | model/resolver and negative matrix PASS |
 | D9.9 universal Producer | Existing Producer GUI + CLI | `tools/c11d/d9/universal_producer.py` + `tools/c11d/d9/universal_producer_cli.py` | all current selectors resolve; CLI process parity per type; plan-only; Windows GUI plan creation confirmed by operator |
-| D9.10 bridge planning | Existing Producer GUI + CLI | `definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` + `tools/c11d/d9/editorial_render_bridge.py` | 3/3 content types; bridge-record CLI parity 3/3; 15 negatives; renderer input/media not emitted; Windows plan-only output-tab check confirmed by operator |
+| D9.10 bridge + adapter preview | Existing Producer test GUI + CLI | `C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` + `C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json` + `d_render_adapter.py` | 3/3 types; bridge parity 3/3; adapter parity 3/3; bridge negatives 15/15; adapter negatives 9/9; renderer input/media not emitted |
 | D9 real GUI production | Producer/Test | future D renderer authority | pending |
 | D9 maintenance operations | Maintenance 0.2.0 + canonical backend | `tools/c11d/d9/maintenance.py` | PASS/CLOSED; Windows GUI and Windows focused/full regression confirmed by operator |
 | D9 GUI E2E | Test 0.2.0 | `docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md` + canonical backends | preflight route PASS; real-media GUI execution remains a later D9.14 gate |
@@ -110,3 +110,9 @@ The existing Test 0.2.0 GUI registers `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO ME
 | `c11c-config` 0.2.0 | `D_BASELINE_CANDIDATE_POLICY` | Expose the candidate baseline rules and immutable-reference relationship | `READ_ONLY_CANONICAL` |
 
 A `PASS` means the candidate audit is trustworthy and keeps unresolved gates blocked; it is not a baseline freeze approval. C11-C 2.19.12 remains the immutable reference. The candidate is not freeze-eligible while D9.14/D4.8, D9.15 evidence, D9.16, D9.17, D renderer-baseline approval, or legacy-path disposition remains unresolved.
+
+## D9.10 D-only adapter and D9.14 bounded qualification update (2026-10-09)
+
+The adapter envelope is exposed only for inspection in the existing Producer test GUI. It is hash-bound to canonical request/editorial/plan/bridge and contract identities, allows only Universal Editorial Model fields, preserves separate gameplay/music seeds and refuses any dispatch/media/authority claims. It emits no renderer-native input. The automated acceptance runner saves JSON and logs; it does not demand screenshots or claim an interactive GUI launch.
+
+D9.14 bounded qualification PASS: Windows generated four final A/V MP4s and sealed `C11D_PRODUCTION_QUALIFICATION_BASELINE_V1.json` (`15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`). Full GUI E2E certification remains blocked. The 5 canonical suite surfaces are unchanged; no definitive GUI is built until after final D baseline freeze.

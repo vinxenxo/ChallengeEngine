@@ -4,9 +4,9 @@
 **C11-C:** 2.19.12 FROZEN
 **Producer:** 0.11.1
 **Catalog:** 0.2.0
-**Config:** 0.2.0 integration; D9.8 model, D9.10 bridge, D9.11 maintenance, D9.13 lifecycle, D9.14 fail-closed gate, D9.15 operational matrix and D9.16 full-acceptance preflight registered read-only (27/27 registry validation; all-surface Windows GUI evidence remains pending)
+**Config:** 0.2.0 integration; D9.8 model, D9.10 bridge + D-only adapter boundary, D9.11 maintenance, D9.13 lifecycle, D9.14 fail-closed gate, D9.15 operational matrix and D9.16 full-acceptance preflight registered read-only (30/30 registry validation; all-surface GUI evidence is not inferred)
 **Maintenance:** 0.2.0 PASS/CLOSED for D9.11; Windows GUI opens and focused/full Suite tests pass
-**Test:** 0.2.0 D9.12 route/manifest contract PASS; D9.13 lifecycle, D9.14 blocked gate, D9.15 operational preflight and D9.16 full-acceptance preflight registered; 25/25 D routes, 55 total GUI routes; Windows Test GUI and D9.14 gate route confirmed
+**Test:** 0.2.0 D9.12 route/manifest contract PASS; D9.13 lifecycle, D9.14 blocked gate, D9.15 operational preflight and D9.16 full-acceptance preflight registered; 26/26 D routes, 57 total GUI routes; Windows Test GUI and D9.14 gate route confirmed
 
 ## Architecture
 
@@ -46,7 +46,7 @@ D7 matrix/catalog and D9 pilot/product provenance can be inspected through the e
 
 ### Config 0.2.0
 
-D contracts and operator profiles are exposed through the existing Config surface. The read-only registry includes D9.10 bridge, D9.11 maintenance, D9.13 lifecycle, D9.14 blocked gate, D9.15 operational acceptance and D9.16 full-acceptance preflight contracts. The 27/27 registry check validates that renderer input/media remain absent, D4.8 remains BLOCKED, and release authority remains NONE. Generic editing must remain blocked for protected/canonical roots.
+D contracts and operator profiles are exposed through the existing Config surface. The read-only registry includes D9.10 bridge, D9.11 maintenance, D9.13 lifecycle, D9.14 blocked gate, D9.15 operational acceptance and D9.16 full-acceptance preflight contracts. The 30/30 registry check validates the new read-only D-only adapter boundary alongside the existing contracts. It verifies that renderer input/media remain absent, D4.8 remains BLOCKED, and release authority remains NONE. Generic editing must remain blocked for protected/canonical roots.
 
 ### Maintenance 0.2.0 target
 
@@ -75,10 +75,11 @@ The read-only canonical model is `definitions/c11d/personalization/C11D_UNIVERSA
 Producer 0.11.1 exposes the universal editorial controls and D9.10 bridge-planning record inside the existing `c11c-producer` application. GUI and CLI call `tools/c11d/d9/universal_producer.py`; the GUI also invokes the canonical CLI as a separate process and compares the normalized request, request hash, editorial hash, plan and plan hash. The static acceptance matrix covers every live selector and 20 negative cases. The operator confirmed that both universal plan generation and the D9.10 bridge-output tab work in Windows. This certifies a plan-only adapter, not physical production: renderer and execution remain `false`, D4.8 remains `BLOCKED`, `release_authority=NONE`, and real-media GUI production acceptance remains a later D9 gate.
 
 
-## D9.10 bridge-planning boundary
+## D9.10 bridge + adapter preparation boundary
 
-The Producer tab displays the canonical `C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1` record from `tools/c11d/d9/editorial_render_bridge.py`. The same record is emitted by `universal_producer_cli.py` and compared by hash/content in GUI/CLI parity. `renderer_input_emitted=false`, `renderer_adapter_invoked=false`, `media_output_created=false`, `D4.8=BLOCKED`, and `release_authority=NONE` are mandatory. The newly added bridge output tab's interactive Windows check is a checkpoint-level operator action; previous D9.9 plan-creation confirmation does not constitute real-media GUI acceptance.
+The Producer test GUI and `tools/c11d/d9/universal_producer_cli.py` emit the canonical bridge record and a `C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1`. The envelope is derived from the normalized D9.9 canonical request, allowlisted editorial resolution, plan and bridge identities. It exposes a hash-bound binding preview, not renderer-native input. Challenge, Visual Loop and Visual Drill each pass separate-process parity: bridge 3/3 and adapter 3/3. Bridge negative controls are 15/15; adapter-specific negatives are 9/9.
 
+The output boundary is explicitly PREPARE_ONLY: `renderer_dispatch_invoked=false`, `renderer_input_emitted=false`, `production_execution=false`, `media_output_created=false`, `D4.8=BLOCKED`, and `release_authority=NONE`. Config exposes the adapter boundary contract read-only (30/30 contracts). The existing Producer GUI remains a test/operator GUI; the definitive GUI is deferred until after final D baseline acceptance and freeze. Automated acceptance reports and per-command logs are generated without screenshot capture, with `operator_gui_runtime_observed=false` unless an actual GUI observation is separately recorded.
 
 ## D9.13 cross-suite lifecycle
 
@@ -95,8 +96,14 @@ D9.14 adds a read-only, fail-closed real-media certification gate to the existin
 
 ## D9.14–D9.16 acceptance boundaries
 
-D9.14 is operator-confirmed visible/executable in Producer and Test, but **real-media certification remains BLOCKED**. D9.15 structural preflight passes (8 capabilities/5 surfaces, 19 negatives), while recorded GUI evidence for all five surfaces is still required. D9.16 adds `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)` in Test and a read-only Config registration; its static acceptance is deliberately `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`, with 9/9 evidence routes and 21 negative controls. It does not close D9, fabricate operator evidence, create media or grant release authority. The aggregate Suite self-test now has 20 steps.
+D9.14 is operator-confirmed visible/executable in Producer and Test, but **real-media certification remains BLOCKED**. D9.15 structural preflight passes (8 capabilities/5 surfaces, 19 negatives), while recorded GUI evidence for all five surfaces is still required. D9.16 adds `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)` in Test and a read-only Config registration; its static acceptance is deliberately `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`, with 9/9 evidence routes and 21 negative controls. It does not close D9, fabricate operator evidence, create media or grant release authority. The current aggregate Suite self-test has 21 steps; D9.10 bridge and D-only adapter assertions are integrated in the existing `bridge_test` step (no additional suite or step).
 
 ## D baseline candidate evaluation route (2026-10-09)
 
 The existing `c11c-test` surface includes `D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)`, and Config exposes `D_BASELINE_CANDIDATE_POLICY` read-only. This is a source-integrity/governance preflight, not a freeze operation. It checks the preserved C11-C manifest and protected source hashes while reporting blockers to D freeze eligibility. It must not create release archives/media, activate a renderer, unlock D4.8, or grant authority. The expected passing status is `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED`.
+
+## Current D9.10 and D9.14 update — 2026-10-09
+
+D9.10 now has a D-only adapter **prepare-only** boundary: canonical request → editorial personalization → plan → bridge → hash-bound binding preview. Adapter parity is 3/3, adapter-specific negatives 9/9, Config is 30/30, and the adapter test is part of the current aggregate `bridge_test`. The output is not renderer-native input and cannot dispatch. A no-screenshot automated acceptance runner is available at `tools/c11d/d9/capture_d910_acceptance.py`; it stores a report and per-check logs and marks `operator_gui_runtime_observed=false` honestly.
+
+D9.14 bounded production qualification subsequently passed on Windows using existing verified production launchers: four final A/V MP4s, eight checks, sealed qualification-baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. This does not close the full D9.14 GUI/end-to-end gate or authorize general D renderer use. C11-C 2.19.12 remains immutable, D4.8 remains BLOCKED, the Producer UI remains test-only, the definitive GUI is deferred until after baseline freeze, and `release_authority=NONE`.

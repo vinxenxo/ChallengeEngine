@@ -1,6 +1,6 @@
 # Challenge Engine V1.0 STATELESS — C11-D Roadmap
 
-**Current phase: D9.17 — closure adjudication. D9 remains OPEN: D9.14 real-media certification is BLOCKED by governance/baseline prerequisites, and D9.15 still requires a recorded five-surface GUI evidence matrix. D9.16's preflight is verified PASS in Windows but explicitly reports full acceptance BLOCKED. D10 remains BLOCKED.**
+**Current phase: D9.10 D-only adapter prepare-only implemented; D9 remains OPEN.** D9.10 now binds canonical request/editorial/plan/bridge identity into an inspectable D-only envelope, with renderer dispatch OFF. D9.14 bounded production qualification generated and audited four real A/V MP4s (qualification-only); this does not close the full D9.14 GUI gate. D9.15's screenshot waiver applies only to candidate readiness, D9.16 remains blocked, D9.17 remains NO-GO, and D10 remains BLOCKED.
 
 ## Governing baseline
 
@@ -94,15 +94,15 @@ Required tests:
 
 **Implementation status: PASS (plan-only scope).** The inventory matrix resolves all 9 Challenge IDs, 27 concrete Loop grammars plus five family-level `auto` selectors, and 20 Drill type/tier variants. Separate CLI-process parity is certified for Challenge, Loop and Drill; 21 negative controls pass. Renderer/production remain off, `release_authority=NONE`, and the operator has now confirmed Windows GUI plan generation for all currently implemented D types without errors. This does not constitute real-media GUI acceptance or close D9.
 
-### D9.10 — Editorial-to-render bridge planning
+### D9.10 — Editorial-to-render bridge + D-only adapter envelope
 
-**Implementation status: PASS — deterministic bridge planning, 3/3 CLI-process record parity cases, 15/15 negative controls, static GUI contract and operator-confirmed Windows GUI output-tab check. This is plan-only acceptance; physical renderer integration remains deferred.**
+**Implementation status: PREPARE-ONLY IMPLEMENTED.** The canonical contract `definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` validates the bridge mapping; the new `definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json` defines the D-only adapter boundary. `tools/c11d/d9/d_render_adapter.py` consumes the canonical D9.9 request/editorial/plan and D9.10 bridge record and emits a hash-bound binding-preview envelope for Challenge, Visual Loop and Visual Drill.
 
-The canonical contract `definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` and backend `tools/c11d/d9/editorial_render_bridge.py` describe mappings from the D9.9 canonical plan to a future D renderer. Producer GUI exposes the resulting `EDITORIAL → RENDER BRIDGE (PLAN ONLY)` view; the CLI emits the same record, and parity checks compare the full record and hash.
+Prepared-workspace acceptance: three supported types 3/3; bridge CLI parity 3/3; adapter-envelope parity 3/3; bridge/governance negatives 15/15; adapter-specific negatives 9/9. The existing Producer test GUI exposes `D-ONLY RENDER ADAPTER (PREPARED / OFF)` and persists `d_render_adapter_envelope.json`; its CLI parity is checked through a separate process. Config registers the boundary read-only and validates 30/30 canonical contracts.
 
-The record is **not renderer input**. It only declares content identity, the current editorial allowlist, independent gameplay/music seed ownership, delivery/presentation references, provenance identities, and prerequisites for the future D frozen baseline. Renderer input is not emitted, no adapter is invoked, no media is created, `D4.8=BLOCKED`, and `release_authority=NONE`. Do not reopen or modify the frozen C11-C renderer to materialize editorial values. Physical implementation belongs to a future D frozen baseline after all listed gates are satisfied.
+The preview is **not renderer-native input**. The adapter may prepare the binding envelope but must not invoke a renderer, emit renderer input, create media, or authorize production. `renderer_dispatch_enabled=false`, `renderer_activation=false`, `D4.8=BLOCKED`, and `release_authority=NONE` are invariant. Definitive GUI work is deferred until the D branch has completed acceptance and the final D baseline is frozen; the current Producer remains a test/operator GUI.
 
-Focused validation: `python .\tools\c11d\d9\test_editorial_render_bridge.py`. The operator has confirmed the GUI displays the plan-only bridge record without errors.
+Focused validation: `python .\tools\c11d\d9\test_editorial_render_bridge.py`. No screenshots are required for automated D9.10 contract acceptance. Run `python .\tools\c11d\d9\capture_d910_acceptance.py --run-id D910_ACCEPTANCE_RUN` to create the hash-bound JSON report and per-check logs; the report explicitly does not claim the Qt window was interactively observed.
 
 ### D9.11 — Maintenance integration
 
@@ -238,3 +238,17 @@ The candidate audit must return `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQU
 ### D baseline candidate remediation status (2026-10-09)
 
 The candidate audit now prints per-file legacy quarantine mismatch names, verifies each manifest/ledger/archive hash, and requires a separate D baseline approval checkpoint in addition to renderer baseline approval. See `docs/current/d/D_BASELINE_CANDIDATE_REMEDIATION_PLAN_V1.md`. Its exit remains a pass of the audit with `freeze_eligible=false`; never interpret it as a freeze approval.
+
+## Operator D9.15 capture waiver — candidate-only (2026-10-09)
+
+The operator explicitly directs proceeding without collecting the 13 D9.15 screenshot/log pairings and states the five GUIs function. The sealed record `docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json` is honored **only by the D baseline-candidate readiness evaluator**. The candidate report must show `D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY`; this is not operational acceptance and does not change canonical D9.15 from `OPERATOR_EVIDENCE_REQUIRED`, nor the D9.17 `BLOCKED / NO-GO` adjudication. Five independent candidate blockers remain: D9.14 real-media authorization/evidence, D9.16 full acceptance, D9.17 closure, D renderer-baseline approval and D baseline approval. `D4.8=BLOCKED`, renderer/production OFF, no media, no freeze eligibility and release authority `NONE` remain mandatory.
+
+## D9.10 D-only adapter implementation update (2026-10-09)
+
+The earlier bridge-planning checkpoint has advanced to **adapter envelope preparation only**. `tools/c11d/d9/d_render_adapter.py` consumes the canonical D9.9 request/plan and D9.10 bridge record and emits a hash-bound binding preview. CLI and the existing test-only Producer GUI expose it; GUI/CLI envelope parity is covered for all three supported content types. The output is not renderer-native input. No dispatcher, render callback or production flag is added. Config now validates 30/30 canonical registry entries including the read-only adapter boundary.
+
+`tools/c11d/d9/capture_d910_acceptance.py` automates focused backend/static GUI contract checks and writes hash-bound JSON plus command logs under `artifacts/tests/c11d_d9/d910_adapter_acceptance/`; no screenshots or media are required for those automated checks. Its report explicitly says the Qt GUI was not interactively observed. The test GUI remains test-only; definitive GUI work is deferred until after the final D baseline is closed and frozen.
+
+## D9.14 bounded production qualification result (2026-10-09)
+
+Windows run `D914_COLON_FIX_20261009_E` passed and sealed a qualification-only baseline with 4 final A/V MP4s and 8 checks. Report SHA-256: `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`; qualification baseline SHA-256: `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. Challenge Music Engine V5 mux, deterministic Loop replay and music-seed isolation passed. This is bounded smoke qualification using established launchers; it is not full D9.14 GUI certification, D4.8 authorization, general renderer activation, final baseline approval or release.

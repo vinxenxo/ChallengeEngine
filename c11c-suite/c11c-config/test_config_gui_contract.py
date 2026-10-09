@@ -18,8 +18,20 @@ assert "PROFILE_RELATIVE_ROOT = Path('profiles') / 'c11d' / 'operator'" in modul
 assert 'D9_UNIVERSAL_EDITORIAL_MODEL' in module and 'C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json' in module
 assert manifest.get('universal_editorial_model_access') == 'READ_ONLY_CANONICAL'
 assert 'D9_EDITORIAL_RENDER_BRIDGE' in module and 'C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json' in module, 'D9.10 bridge contract must be visible in read-only Config registry'
+assert 'D9_D_ONLY_RENDER_ADAPTER_BOUNDARY' in module and 'C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json' in module, 'D9.10 D-only render adapter boundary must be visible in read-only Config registry'
 assert manifest.get('editorial_render_bridge_contract') == 'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json'
 assert manifest.get('editorial_render_bridge_contract_access') == 'READ_ONLY_CANONICAL'
+adapter_contract = HERE.parents[1] / 'definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json'
+assert adapter_contract.is_file()
+adapter_data = json.loads(adapter_contract.read_text(encoding='utf-8'))
+assert adapter_data.get('schema') == 'C11-D-D9.10-RENDER-ADAPTER-BOUNDARY-CONTRACT-V1'
+assert adapter_data.get('policy', {}).get('adapter_prepare_enabled') is True
+assert adapter_data.get('policy', {}).get('renderer_dispatch_enabled') is False
+assert adapter_data.get('policy', {}).get('renderer_activation') is False
+assert adapter_data.get('policy', {}).get('production_execution') is False
+assert manifest.get('d9_10_render_adapter_boundary_contract') == 'definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json'
+assert manifest.get('d9_10_render_adapter_boundary_access') == 'READ_ONLY_CANONICAL'
+assert manifest.get('d9_10_renderer_dispatch_enabled') is False and manifest.get('d9_10_release_authority') == 'NONE'
 assert 'D9_MAINTENANCE_POLICY' in module and 'D9_11_MAINTENANCE_POLICY_V1.json' in module
 assert manifest.get('maintenance_policy') == 'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json'
 assert manifest.get('maintenance_policy_access') == 'READ_ONLY_CANONICAL'
@@ -37,7 +49,7 @@ assert manifest.get('d9_15_operational_acceptance_contract') == 'definitions/c11
 assert manifest.get('d9_15_operational_acceptance_contract_access') == 'READ_ONLY_CANONICAL'
 assert manifest.get('d9_15_operational_acceptance_closed') is False and manifest.get('d9_15_renderer_activation') is False and manifest.get('d9_15_media_created') is False and manifest.get('d9_15_d4_8') == 'BLOCKED' and manifest.get('d9_15_release_authority') == 'NONE'
 assert 'BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION' in d914_contract.read_text(encoding='utf-8')
-print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix + D9.16 full-acceptance gate registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
+print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D-only renderer adapter boundary + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix + D9.16 full-acceptance gate registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
 
 d916_contract = HERE.parents[1] / 'definitions/c11d/d9/D9_16_FULL_ACCEPTANCE_V1.json'
 assert d916_contract.is_file() and 'D9_FULL_ACCEPTANCE' in module

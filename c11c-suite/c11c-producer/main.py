@@ -81,6 +81,7 @@ def _load_universal_producer_module():
 
 D9_UNIVERSAL = _load_universal_producer_module()
 from editorial_render_bridge import build_bridge_planning_record as build_d9_bridge_planning_record
+from d_render_adapter import prepare_d_only_adapter_envelope as prepare_d9_d_only_adapter_envelope
 from gui_real_media_certification import build_certification_gate as build_d914_certification_gate, validate_certification_gate as validate_d914_certification_gate
 
 
@@ -788,10 +789,10 @@ class MainWindow(QMainWindow):
         form.addWidget(self.d9_certification_preflight, row, 0, 1, 4)
         row += 1
         notice = QLabel(
-            "D9.10 prepara un registro de mapeo editorial → renderer para el futuro baseline D. "
-            "Es planificación únicamente: no emite entradas de renderer ni crea medios. Challenge "
-            "reutiliza su subplan D4; Loop/Drill necesitan adaptadores D futuros. D4.8 BLOCKED; "
-            "release_authority=NONE."
+            "D9.10 prepara una envolvente de bindings exclusiva de C11-D desde la petición canónica, "
+            "la personalización, el plan y sus hashes. La envolvente es solo inspeccionable: no es "
+            "entrada nativa del renderer y no se despacha. El renderer/producción siguen OFF hasta "
+            "superar las autorizaciones D; C11-C permanece intacto. D4.8 BLOCKED; release_authority=NONE."
         )
         notice.setWordWrap(True)
         notice.setObjectName("D4Notice")
@@ -810,10 +811,11 @@ class MainWindow(QMainWindow):
         self.d9_plan_view = QPlainTextEdit()
         self.d9_parity_view = QPlainTextEdit()
         self.d9_bridge_view = QPlainTextEdit()
+        self.d9_adapter_view = QPlainTextEdit()
         self.d9_lifecycle_view = QPlainTextEdit()
         self.d9_certification_view = QPlainTextEdit()
         self.d9_certification_view.setPlainText("D9.14 GATE = BLOCKED. Future D frozen renderer baseline and explicit D4.8 authorization are absent. This view is preflight-only; no renderer or media will be started.")
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_parity_view):
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_parity_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
@@ -821,6 +823,7 @@ class MainWindow(QMainWindow):
             ("EFFECTIVE EDITORIAL", self.d9_editorial_view),
             ("UNIVERSAL PLAN", self.d9_plan_view),
             ("EDITORIAL → RENDER BRIDGE (PLAN ONLY)", self.d9_bridge_view),
+            ("D-ONLY RENDER ADAPTER (PREPARED / OFF)", self.d9_adapter_view),
             ("CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)", self.d9_lifecycle_view),
             ("D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)", self.d9_certification_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
@@ -1045,6 +1048,7 @@ class MainWindow(QMainWindow):
             }
             result = D9_UNIVERSAL.evaluate_universal_request(raw_request, PROJECT)
             bridge_record = build_d9_bridge_planning_record(result, PROJECT)
+            adapter_envelope = prepare_d9_d_only_adapter_envelope(result, bridge_record, PROJECT)
             evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_universal"
             evidence_root.mkdir(parents=True, exist_ok=True)
             run_root = evidence_root / request_id
@@ -1070,9 +1074,10 @@ class MainWindow(QMainWindow):
                 "plan_equal": result["plan"] == cli_result["plan"],
                 "plan_hash_equal": result["plan_hash"] == cli_result["plan_hash"],
                 "bridge_planning_record_equal": bridge_record == cli_result.get("bridge_planning_record"),
+                "d_only_adapter_envelope_equal": adapter_envelope == cli_result.get("d_only_adapter_envelope"),
             }
             parity = {
-                "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-BRIDGE-PARITY-V1",
+                "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
                 "status": "PASS" if all(parity_checks.values()) else "FAIL",
                 "content_type": content_type,
                 "selection": result["canonical_request"]["selection"],
@@ -1083,6 +1088,10 @@ class MainWindow(QMainWindow):
                 "cli_plan_hash": cli_result["plan_hash"],
                 "bridge_record_hash": bridge_record["record_hash"],
                 "cli_bridge_record_hash": (cli_result.get("bridge_planning_record") or {}).get("record_hash"),
+                "d_only_adapter_envelope_hash": adapter_envelope["envelope_hash"],
+                "cli_d_only_adapter_envelope_hash": (cli_result.get("d_only_adapter_envelope") or {}).get("envelope_hash"),
+                "d_only_adapter_prepare_invoked": True,
+                "renderer_dispatch_invoked": False,
                 "renderer_input_emitted": False,
                 "renderer": False,
                 "production_execution": False,
@@ -1092,6 +1101,7 @@ class MainWindow(QMainWindow):
             write_json(run_root / "editorial_resolution.json", result["editorial_resolution"])
             write_json(run_root / "universal_plan.json", result["plan"])
             write_json(run_root / "editorial_render_bridge_plan.json", bridge_record)
+            write_json(run_root / "d_render_adapter_envelope.json", adapter_envelope)
             write_json(run_root / "d4_subplan_evidence.json", result["d4_evidence"] or {"status": "NOT_APPLICABLE"})
             write_json(run_root / "gui_cli_parity.json", parity)
             receipt = {
@@ -1104,6 +1114,9 @@ class MainWindow(QMainWindow):
                 "editorial_hash": result["editorial_hash"],
                 "plan_hash": result["plan_hash"],
                 "bridge_record_hash": bridge_record["record_hash"],
+                "d_only_adapter_envelope_hash": adapter_envelope["envelope_hash"],
+                "d_only_adapter_status": adapter_envelope["status"],
+                "renderer_dispatch_invoked": False,
                 "gui_cli_parity": parity["status"],
                 "content_type": content_type,
                 "selection": result["canonical_request"]["selection"],
@@ -1121,10 +1134,11 @@ class MainWindow(QMainWindow):
             self.d9_editorial_view.setPlainText(json.dumps(result["editorial_resolution"], ensure_ascii=False, indent=2))
             self.d9_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
             self.d9_bridge_view.setPlainText(json.dumps(bridge_record, ensure_ascii=False, indent=2))
+            self.d9_adapter_view.setPlainText(json.dumps(adapter_envelope, ensure_ascii=False, indent=2))
             self.d9_lifecycle_view.setPlainText(json.dumps(lifecycle_receipt, ensure_ascii=False, indent=2))
             self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
-            self.d9_evidence_label.setText(f"Evidencia D9.9/D9.10/D9.13 (renderer OFF): {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
-            self.d9_output_tabs.setCurrentWidget(self.d9_lifecycle_view if parity["status"] == "PASS" else self.d9_parity_view)
+            self.d9_evidence_label.setText(f"Evidencia D9.9/D9.10/D9.13 (adaptador preparado, dispatch OFF): {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
+            self.d9_output_tabs.setCurrentWidget(self.d9_adapter_view if parity["status"] == "PASS" else self.d9_parity_view)
             if parity["status"] != "PASS":
                 raise AssertionError("D9.9 GUI/CLI request or plan identity mismatch")
             self.statusBar().showMessage(

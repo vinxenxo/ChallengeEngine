@@ -16,14 +16,14 @@
   "suites": [
     {
       "id": "c11c-test",
-      "current_version": "0.2.0 D9.12 routes + D9.13 lifecycle + D9.14 certification gate preflight",
+      "current_version": "0.2.0 D9.12 routes + D9.13 lifecycle + D9.14 gate + D9.15/D9.16 preflights",
       "target_version": "0.2.0",
       "gate": "D9.12–D9.14",
-      "status": "D9.14_GATE_BLOCKED_NO_MEDIA_WINDOWS_GUI_CONFIRMATION_PENDING",
+      "status": "D9.10_ADAPTER_ASSERTIONS_IN_AGGREGATE_D9_14_BOUNDED_QUALIFICATION_PASS_FULL_GATE_BLOCKED",
       "required_tests": [
         "registered GUI command path and all target file checks",
-        "preserve inherited C11-C test routes and five-surface topology",
-        "23 registered D routes and 53 total GUI routes",
+        "preserve inherited C11-C test routes and five-surface topology; no sixth suite",
+        "26 registered D routes and 57 total GUI routes",
         "11-case GUI E2E certification plan preflight; no media created",
         "D9 negative acceptance and GUI/CLI parity bundles",
         "D9.13 five-stage cross-suite lifecycle test for Challenge, Loop and Drill",
@@ -33,11 +33,11 @@
     },
     {
       "id": "c11c-producer",
-      "current_version": "0.11.1 D9.13 lifecycle + D9.14 blocked certification-gate view; no production execution",
-      "target_version": "0.11.1 D9.10 plan-only editorial-render bridge; physical rendering deferred to future D frozen baseline",
+      "current_version": "0.11.1 D9.9 universal editorial + D9.10 D-only adapter prepare-only + D9.13 lifecycle + D9.14 gate; no renderer dispatch",
+      "target_version": "0.11.1 D9.10 prepare-only envelope; definitive GUI deferred until after D baseline freeze",
       "gate": "D9.9-D9.13",
-      "status": "D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_CONFIRMATION_PENDING",
-      "notes": "Producer 0.11.1 retains D9.9 universal editorial planning and D9.10 bridge planning and adds the D9.13 sealed cross-suite lifecycle receipt view. Canonical request/plan/bridge are replayed; renderer input/media are not emitted; D4.8 BLOCKED; release_authority NONE. Operator Windows GUI confirmation for the new lifecycle view is pending.",
+      "status": "D9_10_ADAPTER_PREPARE_ONLY_CONTRACT_PASS_WINDOWS_RUNTIME_TAB_CONFIRMATION_NOT_ASSERTED",
+      "notes": "Existing Producer remains the test/operator GUI. D9.10 binds canonical request, allowlisted editorial, plan and bridge hashes into an inspection-only D-only envelope. Adapter parity 3/3 and adapter negatives 9/9 pass. No renderer-native input, dispatch, media or release authority. Definitive GUI is deferred until the D baseline is fully closed and frozen.",
       "required_tests": [
         "9 Challenge identities reusing canonical D4 subordinate plan",
         "5 Loop families / 27 concrete grammars plus auto selector per family",
@@ -50,13 +50,16 @@
         "D9.10 bridge record validation for Challenge, Visual Loop and Visual Drill",
         "3 separate-process GUI/CLI bridge record parity cases",
         "15 negative bridge/governance/integrity controls",
-        "renderer input not emitted; no renderer adapter, media output or artifact path",
-        "operator-confirmed Windows D9.10 bridge-output tab; plan-only; no real media claim",
+        "D-only adapter envelope emitted for inspection; renderer-native input and dispatch not emitted, no media output or artifact path",
+        "static GUI contract covers D9.10 adapter tab; automated report does not claim interactive Qt observation",
         "build SHA-256-sealed five-surface lifecycle receipt from persisted canonical request/plan/bridge evidence",
         "GUI/CLI parity for Challenge, Visual Loop and Visual Drill",
         "reject altered receipt hash, stage order, identity, seeds, profiles, paths and media/release claims",
         "operator confirms lifecycle receipt view in the Windows GUI; plan-only",
-        "D9.14 gate visibly BLOCKED until future D renderer baseline + D4.8 authority; no production/media callback"
+        "D9.14 gate visibly BLOCKED until future D renderer baseline + D4.8 authority; no production/media callback",
+        "D-only adapter envelope parity for Challenge, Visual Loop and Visual Drill",
+        "adapter-specific forged-envelope/seed-domain/governance negatives 9/9",
+        "automated D9.10 acceptance emits hash-bound JSON and logs without screenshots/media"
       ]
     },
     {
@@ -100,10 +103,10 @@
       "id": "c11c-config",
       "current_version": "0.2.0",
       "target_version": "0.2.0",
-      "gate": "D9.7–D9.14",
-      "status": "D9.14_GATE_READ_ONLY_25_OF_25_CONFIG_PASS_WINDOWS_GUI_PENDING",
+      "gate": "D9.7–D9.16",
+      "status": "D9_10_ADAPTER_BOUNDARY_READ_ONLY_30_OF_30_CONFIG_PASS_D9_14_FULL_GATE_BLOCKED",
       "required_tests": [
-        "25 canonical registries",
+        "30 canonical registries",
         "D9.10 bridge schema/governance/output invariants",
         "D9.8 model schema/seed/data-class invariants",
         "seven configuration negatives",
@@ -113,7 +116,7 @@
         "generic editor protected-root policy",
         "Windows GUI/filesystem smoke"
       ],
-      "notes": "Config 0.2.0 registers D9.8, D9.10, D9.11, D9.13 and the fail-closed D9.14 certification gate read-only. All 25/25 registries must validate; real-media execution remains blocked and Windows Config GUI acceptance remains pending."
+      "notes": "Config 0.2.0 registers D9.8, D9.10 bridge, D9.10 D-only adapter boundary, D9.11, D9.13, D9.14 gate, D9.15 and D9.16 read-only. All 30/30 registries validate. Adapter is preparation-only; rendering and dispatch remain disabled."
     },
     {
       "id": "c11c-suite",
@@ -144,8 +147,8 @@
     },
     {
       "gate": "D9.10",
-      "name": "Editorial-to-render bridge; physical renderer integration deferred until the future D frozen baseline",
-      "status": "PASS_BRIDGE_CONTRACT_CLI_PARITY_STATIC_GUI_WINDOWS_PLAN_ONLY_TAB_CONFIRMED"
+      "name": "Editorial-to-render bridge plus D-only render-adapter envelope preparation (no dispatch)",
+      "status": "ADAPTER_PREPARE_ONLY_IMPLEMENTED_3_CONTENT_TYPES_CLI_PARITY_3_OF_3_ADAPTER_PARITY_3_OF_3_NEGATIVE_15_PLUS_9_RENDERER_INPUT_NOT_EMITTED"
     },
     {
       "gate": "D9.11",
@@ -164,23 +167,23 @@
     },
     {
       "gate": "D9.14",
-      "name": "Windows GUI real-media production certification; gated by future D frozen renderer baseline + D4.8 authorization",
-      "status": "PREFLIGHT_PASS_GATE_BLOCKED_REAL_MEDIA_ACCEPTANCE_NOT_RUN_NO_AUTHORIZED_D_BASELINE_D4_8_BLOCKED"
+      "name": "Bounded real A/V production qualification PASS; full GUI/end-to-end certification remains gated by D baseline + D4.8",
+      "status": "BOUNDED_QUALIFICATION_PASS_4_FINAL_AV_MP4_FULL_GUI_E2E_GATE_BLOCKED_D4_8_BLOCKED"
     },
     {
       "gate": "D9.15",
       "name": "GUI operational acceptance",
-      "status": "PENDING"
+      "status": "CANDIDATE_ONLY_CAPTURE_WAIVER_NOT_OPERATIONAL_CLOSURE"
     },
     {
       "gate": "D9.16",
       "name": "Full D9 acceptance",
-      "status": "PENDING"
+      "status": "PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED"
     },
     {
       "gate": "D9.17",
       "name": "D9 final closure after all D9 gates pass",
-      "status": "BLOCKED"
+      "status": "BLOCKED_D9_OPEN_NO_GO_UNTIL_ALL_ACCEPTANCE_GATES_PASS"
     }
   ],
   "governance": {
@@ -193,7 +196,10 @@
     "renderer_execution": false,
     "production_execution": false,
     "release_authority": "NONE",
-    "frozen_c11c_mutation": "FORBIDDEN"
+    "frozen_c11c_mutation": "FORBIDDEN",
+    "renderer_dispatch": false,
+    "d_only_adapter_prepare": true,
+    "definitive_gui": "DEFERRED_UNTIL_D_BASELINE_CLOSED_AND_FROZEN"
   },
   "non_canonical_operational_paths": {
     "c11d-control": "UNREGISTERED; explicit D9.11 quarantine/restore only via canonical Maintenance and append-only manifest reconciliation; historical C11-C manifest bytes remain unchanged"

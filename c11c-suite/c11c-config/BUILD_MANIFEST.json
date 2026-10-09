@@ -26,7 +26,8 @@
     "D9.14 real-media GUI certification gate (read-only; BLOCKED until authorized future D frozen baseline; no execution/media/release authority)",
     "D9.15 GUI operational acceptance matrix (read-only; operator GUI evidence required; no execution/media/release authority)",
     "D9.16 full acceptance preflight (read-only; blocked until authorized real-media evidence and five-surface operator GUI evidence; no execution/media/release authority)",
-    "D9.15 operator evidence recorder requirements (read-only contract; actual evidence is append-only and requires explicit operator attestation; no execution/media/release authority)"
+    "D9.15 operator evidence recorder requirements (read-only contract; actual evidence is append-only and requires explicit operator attestation; no execution/media/release authority)",
+    "D9.10 D-only render adapter boundary contract (read-only; prepares inspectable binding envelope, renderer dispatch remains disabled)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -106,5 +107,14 @@
   "d9_15_operator_evidence_recorder": "tools/c11d/baseline_candidate/operator_evidence.py",
   "d9_15_operator_evidence_ledger": "artifacts/evidence/d9_15_operator/D9_15_OPERATOR_EVIDENCE_LEDGER.json",
   "d9_15_required_evidence_pairings": 13,
-  "d9_15_operator_evidence_status": "REQUIRED_UNTIL_ALL_PAIRINGS_PASS"
+  "d9_15_operator_evidence_status": "REQUIRED_UNTIL_ALL_PAIRINGS_PASS",
+  "d9_10_render_adapter_boundary_contract": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+  "d9_10_render_adapter_boundary_access": "READ_ONLY_CANONICAL",
+  "d9_10_adapter_prepare_enabled": true,
+  "d9_10_renderer_dispatch_enabled": false,
+  "d9_10_renderer_activation": false,
+  "d9_10_production_execution": false,
+  "d9_10_media_output_created": false,
+  "d9_10_d4_8": "BLOCKED",
+  "d9_10_release_authority": "NONE"
 }

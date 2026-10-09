@@ -52,8 +52,14 @@ The third tab, **C11-D · EDITORIAL UNIVERSAL (D9.9)**, selects Challenge, Visua
 Challenge plans embed the existing D4 canonical subordinate plan. Loop/Drill plans are declarative editorial intent only—not renderer input and not a physical production. Seeds remain explicit and separate; renderer/production are disabled and `release_authority=NONE`. Focused test: `python tools/c11d/d9/test_universal_producer.py`. Full D9.9 scope and limitations: `docs/current/d/D9.9_PRODUCER_UNIVERSAL_COVERAGE_CHECKPOINT.md`.
 
 
-## D9.10 — Editorial-to-render bridge planning
+## D9.10 — Editorial-to-render bridge
 
-The same universal Producer view adds **EDITORIAL → RENDER BRIDGE (PLAN ONLY)**. It calls `tools/c11d/d9/editorial_render_bridge.py` after the canonical D9.9 request/plan, and the GUI compares its record byte-semantically with the record emitted by the canonical CLI process. Evidence includes `editorial_render_bridge_plan.json` and bridge-hash parity in the existing request evidence directory. The contract describes content identity, allowlisted editorial bindings, seed domains, profiles and provenance, plus the required future D frozen-baseline gates.
+The universal Producer surface emits the canonical `C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1` record after request/editorial/plan normalization. The CLI emits the same bridge record and parity compares the exact content/hash. This is the historical bridge-planning layer; it does not itself create renderer input or media.
 
-This checkpoint emits a deterministic planning record only. It deliberately does not emit renderer input, invoke an adapter, write a media path, create audio/video, authorize production or change the frozen C11-C renderer. D4.8 remains `BLOCKED`; `release_authority=NONE`. Focused validation: `python tools/c11d/d9/test_editorial_render_bridge.py`.
+## D9.10 — D-only render adapter (prepare-only)
+
+The universal editorial request, effective personalization and canonical plan now flow through the D9.10 bridge into `tools/c11d/d9/d_render_adapter.py`. Its output is a hash-bound `binding_preview` envelope, not renderer-native input. It is restricted to Challenge, Visual Loop and Visual Drill, with editorial fields allowlisted by the canonical model and gameplay/music seeds kept in distinct domains.
+
+The existing GUI now exposes `D-ONLY RENDER ADAPTER (PREPARED / OFF)` and stores `d_render_adapter_envelope.json` in the current test-run evidence folder. CLI emits the same envelope; the focused contract verifies 3/3 adapter parity and 9/9 adapter-specific negatives. Config registers `C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json` read-only. Focused automation: `python tools/c11d/d9/test_editorial_render_bridge.py`; hash-bound multi-check report: `python tools/c11d/d9/capture_d910_acceptance.py --run-id D910_ACCEPTANCE_RUN`.
+
+**Not activated:** the adapter does not invoke a renderer, emit native renderer input or create media. D4.8 remains BLOCKED and release authority NONE. The Producer GUI remains a test GUI. Do not build the definitive GUI until the D baseline has completed acceptance and is frozen.
