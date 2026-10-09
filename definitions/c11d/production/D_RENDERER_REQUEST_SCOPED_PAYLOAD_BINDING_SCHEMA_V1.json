@@ -1,0 +1,389 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-request-scoped-payload-binding:v1",
+  "title": "C11-D request-scoped payload source binding review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "content_type",
+    "source_identity",
+    "content_selection",
+    "source_binding",
+    "unresolved_requirements",
+    "readiness",
+    "execution_boundary",
+    "binding_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-REQUEST-SCOPED-PAYLOAD-BINDING-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_REQUEST_SCOPED_PAYLOAD_BINDING_REVIEW_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "content_type": {
+      "enum": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ]
+    },
+    "source_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_id",
+        "request_hash",
+        "plan_hash",
+        "editorial_hash",
+        "bridge_record_hash",
+        "adapter_envelope_hash",
+        "binding_preview_sha256",
+        "logical_composition_sha256",
+        "frame_program_sha256",
+        "temporal_preview_sha256",
+        "delivery_projection_sha256",
+        "editorial_review_manifest_sha256",
+        "definition_source_sha256",
+        "registry_sha256",
+        "contract_sha256",
+        "schema_sha256",
+        "implementation_sha256",
+        "source_lineage_sha256",
+        "frozen_c11c_manifest_sha256"
+      ],
+      "properties": {
+        "request_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "request_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "plan_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "editorial_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bridge_record_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "adapter_envelope_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "binding_preview_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_composition_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "frame_program_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "temporal_preview_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "delivery_projection_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "editorial_review_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "definition_source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "registry_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "contract_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_lineage_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "content_selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selection",
+        "gameplay_seed",
+        "music_seed",
+        "variation_index",
+        "presentation_profile_id",
+        "delivery_profile_id"
+      ],
+      "properties": {
+        "selection": {
+          "type": "object"
+        },
+        "gameplay_seed": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "music_seed": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "variation_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "presentation_profile_id": {
+          "type": "string"
+        },
+        "delivery_profile_id": {
+          "type": "string"
+        }
+      }
+    },
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_reference",
+        "definition_reference",
+        "request_seed",
+        "request_variation_index",
+        "definition_seed",
+        "definition_seed_matches_request",
+        "exact_request_payload_instance_materialized",
+        "payload_instance_id",
+        "payload_instance_sha256",
+        "payload_output_path",
+        "source_class",
+        "resolved_identity",
+        "selection_resolution_state",
+        "definition_matches_selection",
+        "selected_grammar_materialized",
+        "selected_tier_materialized",
+        "d4_subplan_status",
+        "definition_payload_summary"
+      ],
+      "properties": {
+        "registry_reference": {
+          "$ref": "#/$defs/fileRef"
+        },
+        "definition_reference": {
+          "$ref": "#/$defs/fileRef"
+        },
+        "request_seed": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "request_variation_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "definition_seed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "definition_seed_matches_request": {
+          "type": "boolean"
+        },
+        "exact_request_payload_instance_materialized": {
+          "const": false
+        },
+        "payload_instance_id": {
+          "type": "null"
+        },
+        "payload_instance_sha256": {
+          "type": "null"
+        },
+        "payload_output_path": {
+          "type": "null"
+        },
+        "source_class": {
+          "type": "string"
+        },
+        "resolved_identity": {
+          "type": "object"
+        },
+        "selection_resolution_state": {
+          "type": "string"
+        },
+        "definition_matches_selection": {
+          "const": true
+        },
+        "selected_grammar_materialized": {
+          "const": false
+        },
+        "selected_tier_materialized": {
+          "type": "boolean"
+        },
+        "d4_subplan_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "definition_payload_summary": {
+          "type": "object"
+        }
+      }
+    },
+    "unresolved_requirements": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_selection_resolved",
+        "source_definition_hash_bound",
+        "selected_family_or_variant_reference_resolved",
+        "request_scoped_visual_payload_instance_bound",
+        "payload_instance_materialized",
+        "editorial_review_chain_passed",
+        "video_render_ready"
+      ],
+      "properties": {
+        "canonical_selection_resolved": {
+          "const": true
+        },
+        "source_definition_hash_bound": {
+          "const": true
+        },
+        "selected_family_or_variant_reference_resolved": {
+          "const": true
+        },
+        "request_scoped_visual_payload_instance_bound": {
+          "const": false
+        },
+        "payload_instance_materialized": {
+          "const": false
+        },
+        "editorial_review_chain_passed": {
+          "const": true
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "source_adapter_mode",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "c11c_source_mutation"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_SOURCE_BINDING_REVIEW_ONLY"
+        },
+        "source_adapter_mode": {
+          "const": "PREPARE_ONLY"
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      }
+    },
+    "binding_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {
+    "fileRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

@@ -121,3 +121,12 @@ The contract deliberately reports a known FPS mismatch: `CHALLENGE_004` timeline
 ## Next renderer preparation increment — delivery timebase projection (2026-10-10)
 
 `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1` introduces a source-pinned, in-memory proposal for cumulative frame-boundary projection from canonical source FPS to an explicit delivery-profile FPS. The representative `CHALLENGE_004`/`REVIEW_720` result is 900@60 FPS to 450@30 FPS with phase spans 90/210/90/60. The policy remains `PROPOSED_NOT_APPROVED`. It does not determine simulation frame samples, event-anchor mapping, interpolation, audio resampling, generated loop/drill payload identity, or field visibility windows. No renderer input or media is emitted; D4.8 BLOCKED and release authority NONE.
+
+
+<!-- C11D_REQUEST_SCOPED_PAYLOAD_BINDING_V1_PLAN -->
+
+## Request-scoped payload source binding â€” 2026-10-10
+
+`tools/c11d/d9/d_renderer_request_scoped_payload_binding.py` now resolves the exact selection in the canonical D9.9 request against a pinned canonical source and audits the complete D9.9â†’D9.10â†’renderer-neutral review chain. V1 covers only `parking_v2/CHALLENGE_004`, `c11c_geometric_waves_v1/harmonic_membrane`, and `tracking/tier-2`, because the current temporal/editorial reference contracts are pinned to those examples. Other pairs fail closed.
+
+Critical distinction: source resolution is not instance materialization. Challenge runtime payload remains absent; the Visual Loop family profile is not a grammar-specific instance; a Visual Drill type/tier example is not a request-generated instance. Payload instance ID/hash/path remain null and `video_render_ready=false`. Next required engineering item is a separately governed request-specific payload materializer that consumes the real seed/profile/selection and emits a hash-bound in-memory or approved review artifact without mutation of C11-C.

@@ -1,0 +1,216 @@
+{
+  "schema": "C11-D-RENDERER-REQUEST-SCOPED-PAYLOAD-BINDING-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING",
+  "status": "PREPARATION_ONLY_SOURCE_RESOLUTION_NOT_PAYLOAD_MATERIALIZATION_NOT_RENDERER_INPUT",
+  "purpose": "Resolve the exact selected request against the canonical Challenge definition or family/type payload-definition reference and carry its identity through the validated D9.9→D9.10→D renderer-neutral review chain. It deliberately does not claim a request-specific visual instance exists.",
+  "supported_content_types": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "canonical_selector_registry": "c11c-suite/c11c-producer/producer_schema.json",
+    "challenges": "Exact CHALLENGE_004 source document; runtime payload remains unmaterialized in this review chain.",
+    "visual_loops": "Selected family and concrete grammar are resolved from producer_schema; family-level canonical payload definition is not a generated grammar-specific instance.",
+    "visual_drills": "Selected drill type and tier are resolved from producer_schema; tier/seed in the canonical definition are evidence only, not a generated request instance.",
+    "editorial_chain": "D9.9 canonical request/plan → D9.10 bridge → PREPARE_ONLY adapter → binding preview → logical composition → frame program → temporal preview/timebase projection → editorial review manifest.",
+    "no_truth": "SimulationResult, winning_frame, close_calls, derived telemetry and gameplay RNG are not read or emitted."
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json",
+      "sha256": "61d0a86ff16a49610ccc74e5f0e82fe54c01a6f948bbabae9735ea6951a4b056"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
+      "sha256": "101bdf4234fbbafa7f591439800f8985839ad60ed554dd03481a769590648657"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+      "sha256": "c09d570865c8fcb8b0de3c1bef200a118e6801a476ab040a819b1fb698d30584"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json",
+      "sha256": "7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_SCHEMA_V1.json",
+      "sha256": "878500113033eda7dec07f87894b4541cf8f44435407ce0c962caecb7d05296d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
+      "sha256": "359728eeb0d675ed5957ca7a9d53d1955eb31523fb29b81749faf20e051a74c2"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+      "sha256": "b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_delivery_timebase_projection.py",
+      "sha256": "63f6aa6cdb446c9faa9ca4bafe0933d79b2e3e297e3668d00a48fd59da54b3ac"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
+      "sha256": "1e722423ad9d9ac9f0cfcbf332bcd9c4468726bcc25300667ed04b8ca1a7e8cf"
+    }
+  ],
+  "representative_source_matrix": {
+    "challenges": {
+      "required_selection": {
+        "content_type": "challenges",
+        "family_id": "parking_v2",
+        "variant_id": "CHALLENGE_004"
+      },
+      "payload_source_path": "challenges/CHALLENGE_004.json"
+    },
+    "visual_loops": {
+      "required_selection": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "subtype_id": "harmonic_membrane"
+      },
+      "payload_source_path": "definitions/visual_loop_geometric_canonical.json"
+    },
+    "visual_drills": {
+      "required_selection": {
+        "content_type": "visual_drills",
+        "family_id": "tracking",
+        "variant_id": "tier-2"
+      },
+      "payload_source_path": "definitions/visual_drill_tracking_canonical.json"
+    }
+  },
+  "payload_binding_rules": {
+    "exact_selection": "Selection must match its canonical producer registry and the explicitly pinned V1 review example.",
+    "challenge": "variant_id and family_id must match the exact challenge definition; D4 subplan must remain PASS; no runtime SimulationResult is copied.",
+    "visual_loop": "family_id and concrete subtype_id must exist in the registry; AUTO is not a concrete grammar; backend family must match canonical family definition; selected grammar instance remains unmaterialized.",
+    "visual_drill": "family_id and tier-N variant must exist in registry; source generator must match drill type; canonical tier/seed match are reported but do not prove a generated request-scoped instance.",
+    "payload_instance": "Always false in this contract; payload_instance_id, payload SHA and output path remain null.",
+    "frame_timing": "Consumes current temporal preview and delivery projection only; does not choose simulation samples, interpolation or text visibility windows.",
+    "fail_closed": "Unknown content, Longform, mismatched selector, missing source, stale hash, altered upstream artifact or attempted readiness promotion is rejected."
+  },
+  "required_locks": {
+    "in_memory_only": true,
+    "payload_instance_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  },
+  "approval_state": {
+    "payload_binding_contract_approved": false,
+    "selected_payload_instance_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "forbidden_operations": [
+    "claim family-level definition is a selected grammar instance",
+    "claim drill type/tier reference is generated request payload",
+    "infer simulation samples or map winning_frame/close_calls",
+    "invent editorial visibility frame windows",
+    "write a media/payload artifact or launch Godot/FFmpeg",
+    "modify frozen C11-C sources or its manifest",
+    "activate renderer, approve D4.8 or grant release authority"
+  ]
+}

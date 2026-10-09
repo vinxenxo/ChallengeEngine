@@ -286,3 +286,10 @@ The topology-only temporal proposal is now complemented by `D_RENDERER_TEMPORAL_
 ## 2026-10-10 — Delivery timebase projection proposal
 
 `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1` now formalizes cumulative nearest-tick projection of canonical source frame boundaries into an explicit delivery profile FPS. With `CHALLENGE_004` (900 frames/60 FPS) and `REVIEW_720` (30 FPS), the preview projects the challenge to 450 delivery frames with `HOOK>GAME>REVEAL>CTA = 90>210>90>60`. Visual Loop and Drill canonical reference spans remain unchanged at matching 30 FPS. The policy is `PROPOSED_NOT_APPROVED`; simulation frame sampling/anchor mapping, interpolation, audio resampling, generated instance identity and per-field editorial windows remain unresolved. Renderer OFF, no media, D4.8 BLOCKED, release authority NONE, D9 OPEN, D10 BLOCKED. C11-C manifest remains immutable at SHA-256 `{MANIFEST_SHA}`.
+
+
+<!-- C11D_REQUEST_SCOPED_PAYLOAD_BINDING_V1_HANDOVER -->
+
+## Request-scoped payload binding checkpoint (2026-10-10)
+
+Run `python .\tools\c11d\d9\test_d_renderer_request_scoped_payload_binding.py`. V1 validates the exact representative selection/source references and the D9.9â†’D9.10â†’renderer-neutral/temporal/editorial chain. It deliberately reports `exact_request_payload_instance_materialized=false` for all three types. Visual Loop family definitions are not grammar-generated instances, and Visual Drill type/tier definitions are not per-request generated payloads. The renderer remains OFF and no media is created.

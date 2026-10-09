@@ -238,3 +238,10 @@ The manifest reveals rather than conceals current gaps: the CHALLENGE_004 60-FPS
 ## 2026-10-10 — D renderer delivery timebase projection proposal
 
 Added the standalone `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1` contract, schema, implementation and focused tests. The proposal projects cumulative temporal source boundaries to an explicit delivery-profile FPS using integer-ratio half-up rounding; Challenge 60→30 FPS preserves the four ordered phases for the representative 15-second source. It is not an approved render conversion: simulation sampling, event-anchor mapping, interpolation, audio resampling, specific generated visual payload binding and field visibility windows remain open. No change to the 22-step aggregate, C11-C source, D4.8 or release authority.
+
+
+<!-- C11D_REQUEST_SCOPED_PAYLOAD_BINDING_V1_CHANGELOG -->
+
+## 2026-10-10 â€” request-scoped visual source binding V1
+
+Added a fail-closed audit for three representative canonical D9.9 requests. It hashes the selected definition and registry and validates source identity through the bridge, PREPARE_ONLY adapter, binding preview, logical composition, frame program, temporal projection and editorial review. It explicitly does not claim that a request-specific visual payload has been generated and does not enable renderer/media output.

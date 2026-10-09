@@ -297,3 +297,10 @@ Interpretation: a PASS validates a text/identity chain and the listed timing ref
 ### Latest renderer preparation — delivery timebase projection (2026-10-10)
 
 See `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_CHECKPOINT_V1.md` and run `tools/c11d/d9/test_d_renderer_delivery_timebase_projection.py`. This review-only proposal projects cumulative source frame boundaries to delivery FPS; CHALLENGE_004 gives 900@60 → 450@30 (phase counts 90/210/90/60) for REVIEW_720. Policy is PROPOSED_NOT_APPROVED. Simulation frame sampling/event mapping, interpolation, audio resampling, generated visual-instance binding, and per-field visibility windows remain unresolved. Never emit renderer input or media; preserve C11-C freeze, PREPARE_ONLY, D4.8 BLOCKED and release authority NONE.
+
+
+<!-- C11D_REQUEST_SCOPED_PAYLOAD_BINDING_V1_START_PROMPT -->
+
+## Current context addendum â€” request-scoped payload binding V1 (2026-10-10)
+
+After the delivery-timebase, temporal-preview and editorial-review tests pass, run the request-scoped payload binding test. Treat its PASS as a source-resolution/chain-integrity PASS only, not as proof a visual instance is generated. The next engineering stage is the governed request-specific payload materializer and explicit visual/editorial review; do not activate renderer or produce media until the independent D baseline approval and D4.8 authorization gates are met.
