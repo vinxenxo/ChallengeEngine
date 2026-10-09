@@ -5,8 +5,8 @@
 **Producer:** 0.11.1
 **Catalog:** 0.2.0
 **Config:** 0.2.0 integration; D9.8 model, D9.10 bridge and D9.11 maintenance policy registered read-only (23/23 static registry validation; Windows Config Qt acceptance still pending)
-**Maintenance:** 0.2.0 implemented for D9.11; Windows GUI/operator acceptance pending
-**Test:** current C11-C operator baseline; D9 target 0.2.0
+**Maintenance:** 0.2.0 PASS/CLOSED for D9.11; Windows GUI opens and focused/full Suite tests pass
+**Test:** 0.2.0 implemented for D9.12; static route/manifest contract PASS; Windows GUI acceptance pending
 
 ## Architecture
 
@@ -50,11 +50,11 @@ D contracts and operator profiles are exposed through the existing Config surfac
 
 ### Maintenance 0.2.0 target
 
-Exposes D9-safe dry-run, two-root allowlisted reversible cleanup, legacy-surface quarantine/restore, conflict handling, documentation audit and freeze preflight through one canonical backend. Quarantine/restore is confirmation-gated, ledgered, non-overwriting and does not rewrite the historical C11-C manifest. Freeze preflight cannot create archives or grant authority.
+Exposes D9-safe dry-run, two-root allowlisted reversible cleanup, legacy-surface quarantine/restore, conflict handling, documentation audit and freeze preflight through one canonical backend. Quarantine/restore is confirmation-gated, ledgered, non-overwriting and does not rewrite the historical C11-C manifest. Freeze preflight cannot create archives or grant authority. The operator confirmed Windows GUI bring-up and the focused/full Suite tests now pass; D9.11 is PASS/CLOSED.
 
 ### Test 0.2.0 target
 
-Will register D2–D9 contracts and GUI E2E acceptance without becoming a second backend.
+Test 0.2.0 registers D2–D9 validation, seed governance, provenance, media QA, negative controls, GUI/CLI parity, and a no-media GUI E2E certification preflight. It invokes existing canonical tests/backends and does not duplicate domain logic.
 
 ## Production authority
 

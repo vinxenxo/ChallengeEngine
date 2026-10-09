@@ -1,0 +1,148 @@
+{
+  "suite_id": "c11c-test",
+  "version": "0.2.0",
+  "branch": "C11-D D9.12",
+  "entrypoint": "c11c-suite/c11c-test/main.py",
+  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface.",
+  "canonical_backends": [
+    "tools/c11d/d2/validate_d2_1_registry.ps1",
+    "tools/c11d/d2/validate_d2_2_asset_role_evidence_v2.ps1",
+    "tools/c11d/d3/run_d3_2_deterministic_music.ps1",
+    "tools/c11d/d4/d4_full_acceptance.py",
+    "tools/c11d/d4/run_d4_7_gui_cli_parity.ps1",
+    "tools/c11d/d4/run_d4_8_activation_governance.ps1",
+    "tools/c11d/d5/full_d5_acceptance.py",
+    "tools/c11d/d6/full_d6_acceptance.py",
+    "tools/c11d/d7/run_d7_4_catalog_identity_provenance.ps1",
+    "tools/c11d/d8/run_d8_2_visual_qa.ps1",
+    "tools/c11d/d8/run_d8_3_audio_qa.ps1",
+    "tools/c11d/d8/run_d8_6_release_dry_run.ps1",
+    "tools/c11d/d9/universal_editorial_model.py",
+    "tools/c11d/d9/universal_producer.py",
+    "tools/c11d/d9/editorial_render_bridge.py",
+    "tools/c11d/d9/maintenance.py"
+  ],
+  "gui_routes": [
+    {
+      "name": "D2 ASSET FAMILY / BINDING REGISTRY",
+      "kind": "ps",
+      "entry": "tools/c11d/d2/validate_d2_1_registry.ps1"
+    },
+    {
+      "name": "D2 ASSET ROLE / EVIDENCE",
+      "kind": "ps",
+      "entry": "tools/c11d/d2/validate_d2_2_asset_role_evidence_v2.ps1"
+    },
+    {
+      "name": "D3 MUSIC V5 DETERMINISM",
+      "kind": "ps",
+      "entry": "tools/c11d/d3/run_d3_2_deterministic_music.ps1"
+    },
+    {
+      "name": "D4 REQUEST / PERSONALIZATION ACCEPTANCE",
+      "kind": "python",
+      "entry": "tools/c11d/d4/d4_full_acceptance.py"
+    },
+    {
+      "name": "D4 GUI/CLI PLAN PARITY",
+      "kind": "ps",
+      "entry": "tools/c11d/d4/run_d4_7_gui_cli_parity.ps1"
+    },
+    {
+      "name": "D4.8 ACTIVATION GOVERNANCE (BLOCKED GATE)",
+      "kind": "ps",
+      "entry": "tools/c11d/d4/run_d4_8_activation_governance.ps1"
+    },
+    {
+      "name": "D5 PROVENANCE / ARTIFACT LIFECYCLE",
+      "kind": "python",
+      "entry": "tools/c11d/d5/full_d5_acceptance.py"
+    },
+    {
+      "name": "D6 SEED GOVERNANCE / ISOLATION",
+      "kind": "python",
+      "entry": "tools/c11d/d6/full_d6_acceptance.py"
+    },
+    {
+      "name": "D7 CATALOG IDENTITY / PROVENANCE",
+      "kind": "ps",
+      "entry": "tools/c11d/d7/run_d7_4_catalog_identity_provenance.ps1"
+    },
+    {
+      "name": "CATALOG 0.2.0 SELF-TEST",
+      "kind": "python",
+      "entry": "./c11c-suite/c11c-catalog/self_test.py"
+    },
+    {
+      "name": "D8 VISUAL MEDIA QA",
+      "kind": "ps",
+      "entry": "tools/c11d/d8/run_d8_2_visual_qa.ps1"
+    },
+    {
+      "name": "D8 AUDIO MEDIA QA",
+      "kind": "ps",
+      "entry": "tools/c11d/d8/run_d8_3_audio_qa.ps1"
+    },
+    {
+      "name": "D8 RELEASE DRY-RUN (NO RELEASE)",
+      "kind": "ps",
+      "entry": "tools/c11d/d8/run_d8_6_release_dry_run.ps1"
+    },
+    {
+      "name": "D9.8 UNIVERSAL EDITORIAL MODEL",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_universal_editorial_model.py"
+    },
+    {
+      "name": "D9.9 UNIVERSAL PRODUCER / GUI-CLI",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_universal_producer.py"
+    },
+    {
+      "name": "D9.10 EDITORIAL-RENDER BRIDGE (PLAN ONLY)",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_editorial_render_bridge.py"
+    },
+    {
+      "name": "D9.11 MAINTENANCE 0.2.0",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_maintenance.py"
+    },
+    {
+      "name": "D9 NEGATIVE ACCEPTANCE BUNDLE",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_d9_negative_acceptance.py"
+    },
+    {
+      "name": "D9 GUI/CLI PARITY BUNDLE",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_d9_gui_cli_parity.py"
+    },
+    {
+      "name": "D9 REAL-MEDIA GUI CERTIFICATION PREFLIGHT (NO MEDIA)",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_gui_e2e_certification_plan.py"
+    },
+    {
+      "name": "D9.12 TEST 0.2.0 INTEGRATION CONTRACT",
+      "kind": "python",
+      "entry": "./c11c-suite/c11c-test/test_d9_test_integration.py"
+    }
+  ],
+  "tests": [
+    "c11c-suite/c11c-test/test_d9_test_integration.py",
+    "tools/c11d/d9/test_gui_e2e_certification_plan.py",
+    "tools/c11d/d9/test_d9_negative_acceptance.py",
+    "tools/c11d/d9/test_d9_gui_cli_parity.py"
+  ],
+  "certification_plan": "docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md",
+  "real_media_gui_certification": "OPERATOR_REQUIRED_FUTURE_D9_14_GATE",
+  "renderer_activation": false,
+  "media_creation": false,
+  "production_execution": false,
+  "d4_8": "BLOCKED",
+  "release_authority": "NONE",
+  "legacy_c11_c_routes_preserved": true,
+  "c11d_control_registered": false,
+  "operational_surface_count": 5
+}

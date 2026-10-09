@@ -4,7 +4,7 @@
 
 **D9 is OPEN — second-stage Suite integration.**
 
-D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9.6 are integrated and Windows-validated. D9.7 is implemented with Windows confirmation still tracked explicitly. D9.8 is PASS/CLOSED as a model/resolver checkpoint. D9.9 is PASS for universal selector coverage and plan-only GUI/CLI adapter parity; the operator confirmed in Windows that the GUI generates plans for every D content type currently implemented. D9.10 is PASS for the bridge-planning contract, CLI record parity, static GUI integration and the operator-confirmed Windows bridge-output tab; physical media and full GUI acceptance remain later gates. D9.11 Maintenance 0.2.0 is implemented with static tests for dry-run, allowlisted reversible cleanup, quarantine/restore, append-only manifest reconciliation and freeze preflight. Windows Maintenance GUI/operator acceptance is pending. D9 remains OPEN and D10 is BLOCKED.
+D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9.6 are integrated and Windows-validated. D9.7 is implemented with Windows confirmation still tracked explicitly. D9.8 is PASS/CLOSED as a model/resolver checkpoint. D9.9 is PASS for universal selector coverage and plan-only GUI/CLI adapter parity; the operator confirmed in Windows that the GUI generates plans for every D content type currently implemented. D9.10 is PASS for the bridge-planning contract, CLI record parity, static GUI integration and the operator-confirmed Windows bridge-output tab; physical media and full GUI acceptance remain later gates. D9.11 Maintenance 0.2.0 is PASS/CLOSED: Windows GUI opened successfully; `test_maintenance.py`, Maintenance self-test and full Suite self-test pass after restoring the original immutable C11-C manifest byte-for-byte. D9 remains OPEN and D10 is BLOCKED.
 
 ## Milestone status
 
@@ -33,8 +33,8 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.8 | Universal editorial model V1 + strict resolver + live inventory/negative tests | PASS / static contract tests; GUI integration deferred to D9.9 |
 | D9.9 | Producer 0.11.0 universal editorial selectors + canonical plan-only adapter | PASS / static matrix + CLI-process parity; Windows plan generation confirmed by operator |
 | D9.10 | Editorial-to-render bridge planning (Producer 0.11.1) | PASS / 3 content types, CLI record parity 3/3, negatives 15/15; Windows GUI output-tab check confirmed; physical renderer deferred |
-| D9.11 | Maintenance 0.2.0 | IMPLEMENTED / static acceptance PASS; Windows GUI/operator acceptance pending |
-| D9.12 | Test 0.2.0 | PLANNED |
+| D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
+| D9.12 | Test 0.2.0 | IMPLEMENTED / static route contract and GUI E2E preflight PASS; Windows Test GUI acceptance pending |
 | D9.13 | Cross-suite lifecycle | PLANNED |
 | D9.14 | Real GUI production certification | PLANNED |
 | D9.15 | GUI operational acceptance | PLANNED |

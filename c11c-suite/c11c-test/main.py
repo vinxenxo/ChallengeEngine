@@ -57,6 +57,28 @@ C11_COMMANDS = [
     ('C11-C FREEZE PACKAGE', 'bat', ['c11c-suite/c11c-maintenance/run_freeze_package.bat'], 'Create the sealed C11-C 2.19.12 frozen archive through the canonical Maintenance packager.'),
     ('C11-C CLEANUP CONTRACT', 'python', ['./c11c-suite/c11c-maintenance/test_cleanup_contract.py'], 'Static safety contract for artifact cleanup and frozen-package exclusions.'),
     ('SEED STRESS 32x2', 'python', ['tools/c11freeze/run_seed_stress.py'], 'Deterministic seed stress regression.'),
+    # C11-D D9.12: additive D contract and acceptance routes, backed by existing canonical commands.
+    ('D2 ASSET FAMILY / BINDING REGISTRY', 'ps', ['tools/c11d/d2/validate_d2_1_registry.ps1'], 'Read/validate D2 declarative asset-family registry; no production execution.'),
+    ('D2 ASSET ROLE / EVIDENCE', 'ps', ['tools/c11d/d2/validate_d2_2_asset_role_evidence_v2.ps1'], 'Validate D2 role/evidence contracts.'),
+    ('D3 MUSIC V5 DETERMINISM', 'ps', ['tools/c11d/d3/run_d3_2_deterministic_music.ps1'], 'D3 procedural music determinism contract.'),
+    ('D4 REQUEST / PERSONALIZATION ACCEPTANCE', 'python', ['tools/c11d/d4/d4_full_acceptance.py'], 'Canonical D4 request, personalization and plan acceptance; D4.8 remains governed.'),
+    ('D4 GUI/CLI PLAN PARITY', 'ps', ['tools/c11d/d4/run_d4_7_gui_cli_parity.ps1'], 'Canonical D4 GUI/CLI normalized request and plan parity.'),
+    ('D4.8 ACTIVATION GOVERNANCE (BLOCKED GATE)', 'ps', ['tools/c11d/d4/run_d4_8_activation_governance.ps1'], 'Verify activation remains blocked without an explicit governance checkpoint.'),
+    ('D5 PROVENANCE / ARTIFACT LIFECYCLE', 'python', ['tools/c11d/d5/full_d5_acceptance.py'], 'Canonical D5 topology, manifests, provenance and lifecycle acceptance.'),
+    ('D6 SEED GOVERNANCE / ISOLATION', 'python', ['tools/c11d/d6/full_d6_acceptance.py'], 'Canonical gameplay/music seed governance and cross-domain isolation checks.'),
+    ('D7 CATALOG IDENTITY / PROVENANCE', 'ps', ['tools/c11d/d7/run_d7_4_catalog_identity_provenance.ps1'], 'Canonical D7 identity and provenance builder/validator route.'),
+    ('CATALOG 0.2.0 SELF-TEST', 'python', ['./c11c-suite/c11c-catalog/self_test.py'], 'C11-D product identity, provenance, media receipts and reproduction checks.'),
+    ('D8 VISUAL MEDIA QA', 'ps', ['tools/c11d/d8/run_d8_2_visual_qa.ps1'], 'Visual QA only against governed D8 scope.'),
+    ('D8 AUDIO MEDIA QA', 'ps', ['tools/c11d/d8/run_d8_3_audio_qa.ps1'], 'Audio QA only against governed D8 scope.'),
+    ('D8 RELEASE DRY-RUN (NO RELEASE)', 'ps', ['tools/c11d/d8/run_d8_6_release_dry_run.ps1'], 'Non-authoritative release dry-run; must not create release products or grant authority.'),
+    ('D9.8 UNIVERSAL EDITORIAL MODEL', 'python', ['tools/c11d/d9/test_universal_editorial_model.py'], 'Universal editorial model inventory, resolver and negative controls.'),
+    ('D9.9 UNIVERSAL PRODUCER / GUI-CLI', 'python', ['tools/c11d/d9/test_universal_producer.py'], 'Universal selectors, canonical plan parity and unsupported-field negatives.'),
+    ('D9.10 EDITORIAL-RENDER BRIDGE (PLAN ONLY)', 'python', ['tools/c11d/d9/test_editorial_render_bridge.py'], 'Bridge record parity; renderer input and media output remain absent.'),
+    ('D9.11 MAINTENANCE 0.2.0', 'python', ['tools/c11d/d9/test_maintenance.py'], 'Dry-run, reversible allowlists, quarantine/restore and immutable manifest guards.'),
+    ('D9 NEGATIVE ACCEPTANCE BUNDLE', 'python', ['tools/c11d/d9/test_d9_negative_acceptance.py'], 'Run the canonical D9.8–D9.11 negative matrices without duplicating backend logic.'),
+    ('D9 GUI/CLI PARITY BUNDLE', 'python', ['tools/c11d/d9/test_d9_gui_cli_parity.py'], 'Aggregate universal Producer and render-bridge process parity.'),
+    ('D9 REAL-MEDIA GUI CERTIFICATION PREFLIGHT (NO MEDIA)', 'python', ['tools/c11d/d9/test_gui_e2e_certification_plan.py'], 'Plan preflight only; NO MEDIA is created, and real-media operator execution is gated and not started.'),
+    ('D9.12 TEST 0.2.0 INTEGRATION CONTRACT', 'python', ['./c11c-suite/c11c-test/test_d9_test_integration.py'], 'Validate canonical D2–D9 route registry, protected topology and test GUI contract.'),
 ]
 
 
@@ -81,7 +103,7 @@ def godot_executable() -> str:
 class Window(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle('C11-C TEST')
+        self.setWindowTitle('C11-C TEST · Test 0.2.0')
         self.resize(1200, 760)
         self.proc: QProcess | None = None
 

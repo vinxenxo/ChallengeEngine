@@ -285,5 +285,14 @@ maintenance_manifest = json.loads((SUITE/'c11c-maintenance'/'BUILD_MANIFEST.json
 assert maintenance_manifest['version'] == '0.2.0' and maintenance_manifest['release_authority'] == 'NONE'
 assert maintenance_manifest['historical_manifest_access'] == 'READ_ONLY_PRESERVED_BYTE_FOR_BYTE'
 assert maintenance_manifest['c11d_control_registered'] is False
-print('C11-C Suite 0.1.4 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11 PASS')
+
+# D9.12 Test 0.2.0: route/manifest/topology contract and GUI E2E plan preflight.
+test_route_contract = subprocess.run([sys.executable, str(SUITE/'c11c-test'/'test_d9_test_integration.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
+assert test_route_contract.returncode == 0, test_route_contract.stdout + '\n' + test_route_contract.stderr
+assert 'C11C_TEST_GUI_CONTRACT PASS | version=0.2.0' in test_route_contract.stdout, test_route_contract.stdout
+certification_preflight = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_gui_e2e_certification_plan.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
+assert certification_preflight.returncode == 0, certification_preflight.stdout + '\n' + certification_preflight.stderr
+assert 'cases=11/11' in certification_preflight.stdout and 'media_created=false' in certification_preflight.stdout
+
+print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12 PASS')
 

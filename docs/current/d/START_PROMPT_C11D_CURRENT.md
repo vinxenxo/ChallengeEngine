@@ -1,4 +1,4 @@
-# C11-D START PROMPT — D9.11 Maintenance / D9.12 Test Integration
+# C11-D START PROMPT — D9.12 Test 0.2.0 / D9.13 Cross-Suite Lifecycle
 
 Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip` (SHA-256: `526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62`) as the source-of-truth working tree. The D9.8 changes below are a development overlay on that archive; do not treat this overlay as a D9/D branch freeze.
 
@@ -13,7 +13,8 @@ Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngine
 - D9.8 Universal Editorial Model V1 = PASS for declarative model, strict resolver, live inventory checks and static negatives. This is not D9 closure and does not certify universal Producer GUI coverage.
 - D9.9 = PASS: universal request/plan, GUI/CLI parity and operator-confirmed Windows plan generation across currently implemented D content types. Producer UTF-8 CLI and Qt scope-handler fixes have been applied and verified by the operator.
 - D9.10 = PASS for bridge contract/planning record, CLI record parity (3/3), static GUI contract and operator-confirmed Windows plan-only bridge-output tab. Producer 0.11.1; physical rendering remains deferred.
-- D9.11 = Maintenance 0.2.0 implemented; backend/GUI-contract/Config/Suite static tests PASS, Windows Maintenance GUI/operator acceptance pending. Canonical backend: `tools/c11d/d9/maintenance.py`. Next after this checkpoint: D9.12 Test 0.2.0. D9 remains OPEN; D10 remains BLOCKED.
+- D9.11 = PASS/CLOSED. Operator confirmed the Windows Maintenance GUI opens; `test_maintenance.py`, Maintenance self-test and full Suite self-test pass after restoring the authentic historical C11-C freeze manifest byte-for-byte (SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`). Canonical backend: `tools/c11d/d9/maintenance.py`.
+- D9.12 = Test 0.2.0 implemented; 21/21 D routes, five-surface topology, 11/11 GUI-E2E plan cases, aggregate D9 negatives and GUI/CLI parity bundles pass statically. Windows Test GUI bring-up is pending. Canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`. D9 remains OPEN; D10 remains BLOCKED.
 
 ## Architecture rule — five operational surfaces only
 
@@ -43,7 +44,7 @@ Do not create or register `c11d-control`, `c11c-studio`, or any sixth operationa
 
 ## D9 sequence
 
-D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **(static PASS; Windows acceptance pending)** → D9.12 Test 0.2.0 → D9.13 cross-suite lifecycle → D9.14 real GUI production → D9.15 operational acceptance → D9.16 full acceptance → D9.17 D9 closure.
+D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **implemented/static PASS; Windows Test GUI pending** → D9.13 cross-suite lifecycle → D9.14 real GUI production → D9.15 operational acceptance → D9.16 full acceptance → D9.17 D9 closure.
 
 ## Baseline reading and inspection order
 
@@ -71,7 +72,7 @@ python .\c11c-suite\c11c-producer\test_d9_producer_integration.py
 python .\c11c-suite\self_test.py
 ```
 
-Current D9.8–D9.10 evidence: 9/9 Challenge IDs; five Loop families/27 concrete grammars; four Drill types/20 variants; D9.8 negatives 25/25; D9.9 selectors and negatives 61/61 + 20/20 with GUI/CLI process parity 3/3; D9.10 bridge record coverage 3/3, CLI parity 3/3 and negatives 15/15. The operator confirmed D9.9 plan generation in Windows. The D9.10 bridge-output tab smoke check and Config GUI acceptance remain open. Re-run the focused commands below after code changes; no renderer/media activation.
+Current D9.8–D9.12 evidence: 9/9 Challenge IDs; five Loop families/27 concrete grammars; four Drill types/20 variants; D9.8 negatives 25/25; D9.9 selectors and negatives 61/61 + 20/20 with GUI/CLI process parity 3/3; D9.10 bridge record coverage 3/3, CLI parity 3/3 and negatives 15/15. The operator confirmed D9.9 plan generation, D9.10 bridge output, and D9.11 Maintenance GUI in Windows. D9.12 adds D2–D9 Test GUI route registry, a no-media preflight for 11 GUI E2E cases, and aggregate D9 negative/parity runners. The Test GUI itself still requires Windows bring-up. Re-run focused commands after code changes; no renderer/media activation.
 
 
 ## D9.10 canonical editorial-to-render bridge
@@ -91,3 +92,13 @@ python .\c11c-suite\c11c-producer\self_test.py
 python .\c11c-suite\c11c-producer\test_producer_gui_contract.py
 python .\c11c-suite\self_test.py
 ```
+
+
+## D9.12 Test 0.2.0
+
+- GUI route manifest: `c11c-suite/c11c-test/BUILD_MANIFEST.json`; GUI route registry remains in `c11c-suite/c11c-test/main.py`.
+- Contract: `python .\c11c-suite\c11c-test\test_d9_test_integration.py` (21 D routes, all route targets, all manifest test paths and exactly five operational surfaces).
+- GUI E2E plan preflight: `python .\tools\c11d\d9\test_gui_e2e_certification_plan.py` (11/11 named cases; plan-only, no media).
+- Negative bundle: `python .\tools\c11d\d9\test_d9_negative_acceptance.py`; parity bundle: `python .\tools\c11d\d9\test_d9_gui_cli_parity.py`. Both delegate to existing canonical test scripts.
+- Full suite: `python .\c11c-suite\self_test.py`.
+- Windows next action: open `c11c-suite\c11c-test\run.bat`, confirm GUI opens, inspect the D2–D9 route list and execute the no-media certification preflight. Actual real-media GUI execution remains D9.14 and is not authorized by this preflight.

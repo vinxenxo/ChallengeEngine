@@ -37,7 +37,7 @@ The user's later local working tree contains the post-D7.5 D8/D9 implementation 
 
 D9 is **Suite integration/evolution**, not merely another test phase. The roadmap requirement is to extend the existing operator surfaces:
 
-- `c11c-test` → validation, QA and acceptance;
+- `c11c-test` → validation, QA and acceptance (0.2.0: D2–D9 routes, negative controls, GUI/CLI parity and real-media certification preflight).
 - `c11c-producer` → production, review and job orchestration;
 - `c11c-maintenance` → cleanup, organization, quarantine and freeze operations;
 - `c11c-catalog` → catalog, products, provenance and reproducibility;
@@ -106,7 +106,7 @@ Focused validation: `python .\tools\c11d\d9\test_editorial_render_bridge.py`. Th
 
 ### D9.11 — Maintenance integration
 
-Implementation status: **Maintenance 0.2.0 implemented; static backend, Config, Maintenance contract and full Suite regression PASS; Windows Maintenance GUI/operator acceptance is pending.** The implementation stays inside the existing `c11c-maintenance` surface and delegates GUI/CLI operations to `tools/c11d/d9/maintenance.py`.
+Implementation status: **PASS/CLOSED — Maintenance 0.2.0 backend and full Suite regression PASS; the operator confirmed the Windows Maintenance GUI opens, and `test_maintenance.py`, Maintenance self-test and Suite self-test all pass after restoring the original read-only C11-C manifest byte-for-byte.** The implementation stays inside the existing `c11c-maintenance` surface and delegates GUI/CLI operations to `tools/c11d/d9/maintenance.py`.
 
 Expose and test:
 
@@ -124,6 +124,8 @@ The canonical policy `definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json` is e
 Focused validation: `python .\tools\c11d\d9\test_maintenance.py`. Windows bring-up and operator review of the preview actions remain required.
 
 ### D9.12 — Test integration
+
+Implementation status: **IMPLEMENTED — Test 0.2.0 route registry, negative/parity bundles and GUI E2E certification preflight are integrated; static contract acceptance is available, and Windows GUI bring-up remains an operator check.**
 
 Upgrade existing `c11c-test` to target **0.2.0**.
 
@@ -182,8 +184,8 @@ Only when D9.8–D9.16 are accepted. D10 remains BLOCKED until D9.17 closes.
 | `c11c-producer` | 0.11.1 | 0.11.x only for approved additive D coverage | universal request → editorial resolution → plan-only; real media remains a later authorized D gate |
 | `c11c-catalog` | 0.2.0 | 0.2.x | product identity → provenance → reproduction |
 | `c11c-config` | 0.2.0 | 0.2.x | profiles → validation → save/restore → protected roots |
-| `c11c-maintenance` | 0.2.0 implemented; Windows acceptance pending | 0.2.0 | dry-run → reversible allowlist archive/quarantine → doc/freeze preflight |
-| `c11c-test` | C11-C active baseline | 0.2.0 | D2–D9 registration + GUI E2E + negative acceptance |
+| `c11c-maintenance` | 0.2.0 PASS/CLOSED; operator-confirmed Windows GUI and focused/regression tests passed | 0.2.0 | dry-run → reversible allowlist archive/quarantine → doc/freeze preflight |
+| `c11c-test` | 0.2.0 implemented; static contract PASS; Windows GUI check pending | 0.2.0 | D2–D9 registration + GUI E2E preflight + negative acceptance + parity routes |
 
 Versions labelled “next target” are planning targets, not claims of current release.
 

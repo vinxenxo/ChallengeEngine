@@ -92,3 +92,24 @@ The GUI must surface:
 ## Final gate
 
 D9 cannot close while the GUI merely constructs a plan. It must prove the real operational path for the D content model and its editorial configuration, with physical media evidence where the current D renderer baseline supports it.
+
+
+## D9.12 Test 0.2.0 operator route matrix
+
+The existing `c11c-test` GUI exposes a preflight route for this matrix. The preflight validates this plan only; it **does not start production, renderer work, media creation, release staging, or maintenance mutations**. Actual GUI production certification remains an operator-controlled future D9.14 gate and requires a separately authorized D renderer baseline.
+
+| Case ID | Required evidence | Current gate |
+|---|---|---|
+| `D9-GUI-001` | Challenge request with custom editorial payload, audio enabled, fixed independent gameplay/music seeds, canonical plan identity | Plan-only checks available; physical media requires future D authorization |
+| `D9-GUI-002` | At least one Visual Loop from each of the five supported families | Future D renderer baseline required |
+| `D9-GUI-003` | Representative Visual Drill coverage across all four types and supported tiers | Future D renderer baseline required |
+| `D9-GUI-004` | Longform production only if a future canonical D request contract enables it | Explicitly disabled today |
+| `D9-GUI-005` | Repeated identical request and seeds preserve request/plan identity | Canonical plan parity available now |
+| `D9-GUI-006` | Changing music seed changes audio identity without changing gameplay seed/identity | Contract negative/determinism test now; physical audio compare requires future authorization |
+| `D9-GUI-007` | Changing editorial payload changes editorial identity while both seed domains remain unchanged | Canonical plan hash check available now |
+| `D9-GUI-008` | Missing seed, invalid profile/editorial field/family is blocked | Negative controls available now |
+| `D9-GUI-009` | Protected-root mutation is blocked | Config/Maintenance negative tests available now |
+| `D9-GUI-010` | Release mutation without authority is blocked | Governance gate; `release_authority=NONE` |
+| `D9-GUI-011` | Cleanup/quarantine outside allowlists is blocked and reversible operations preserve evidence | Maintenance 0.2.0 acceptance available now |
+
+The GUI certification preflight must report all 11 case IDs, `operator_execution=REQUIRED`, `renderer_activation=false`, `media_created=false`, `D4.8=BLOCKED`, and `release_authority=NONE`. A preflight PASS is not real-media acceptance and cannot close D9.
