@@ -155,3 +155,8 @@ Next: D9.14 real GUI production certification is not enabled by D9.13; it requir
 ## D9.17 decision and next context
 
 D9.17 was adjudicated on 2026-10-09 and is **BLOCKED / NOT CLOSED**. The latest operator output verifies the D9.16 no-media GUI preflight and all 20 aggregate steps. Do not repeat this preflight expecting it to unlock production. The only acceptable next steps are: (1) prepare a traceable operator evidence ledger for the eight D9.15 capabilities across the five canonical GUIs, using no-media/read-only actions only; and (2) wait for a separately approved future D frozen renderer baseline plus explicit D4.8 governance authorization before any D9.14 real-media case is attempted. Preserve `D4.8=BLOCKED`, renderer/media/release authority false/none until that external authorization is actually issued. If the D renderer baseline/authority is out of scope, keep D9 OPEN and D10 BLOCKED rather than inventing acceptance.
+
+
+## New parallel track: D baseline candidate evaluation (2026-10-09)
+
+Current candidate: `C11-D-BASELINE-CANDIDATE-0.1`, evaluation only. Begin with `docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md` and `docs/current/d/D_BASELINE_CANDIDATE_TEST_MATRIX_V1.md`; run `python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py` and the updated `c11c-suite` regression. Candidate preflight is expected to PASS while `candidate_freeze_eligible=false`. Do not create a freeze archive, do not write into `release/`, do not change the immutable C11-C manifest, do not activate a renderer, and do not grant D4.8/release authority. D9 remains OPEN and D10 BLOCKED; candidate work is parallel readiness testing, not a reversal of D9.17 NO-GO.

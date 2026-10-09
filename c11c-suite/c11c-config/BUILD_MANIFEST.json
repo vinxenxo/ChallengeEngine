@@ -91,5 +91,13 @@
   "d9_16_production_execution": false,
   "d9_16_media_created": false,
   "d9_16_d4_8": "BLOCKED",
-  "d9_16_release_authority": "NONE"
+  "d9_16_release_authority": "NONE",
+  "d_baseline_candidate_policy": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+  "d_baseline_candidate_policy_access": "READ_ONLY_CANONICAL",
+  "d_baseline_candidate_status": "PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED",
+  "d_baseline_candidate_freeze_eligible": false,
+  "d_baseline_candidate_renderer_activation": false,
+  "d_baseline_candidate_media_created": false,
+  "d_baseline_candidate_d4_8": "BLOCKED",
+  "d_baseline_candidate_release_authority": "NONE"
 }

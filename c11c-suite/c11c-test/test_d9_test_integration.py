@@ -7,6 +7,8 @@ ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "c11c-suite/c11c-test/main.py"
 MANIFEST = ROOT / "c11c-suite/c11c-test/BUILD_MANIFEST.json"
 SHELL = ROOT / "c11c-suite/main.py"
+CANDIDATE_ROUTE = "D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)"
+CANDIDATE_ENTRY = "tools/c11d/baseline_candidate/test_d_baseline_candidate.py"
 
 REQUIRED_ROUTES = {
     "D2 ASSET FAMILY / BINDING REGISTRY": ("ps", "tools/c11d/d2/validate_d2_1_registry.ps1"),
@@ -94,10 +96,24 @@ def run_checks() -> dict[str, int]:
     for rel in manifest.get("tests", []):
         if not (ROOT / rel).is_file():
             raise AssertionError(f"Manifest test missing: {rel}")
+    if CANDIDATE_ROUTE not in route_names:
+        raise AssertionError("D baseline candidate integrity preflight route not registered")
+    candidate_row = by_name[CANDIDATE_ROUTE]
+    if candidate_row[1] != "python" or candidate_row[2][0].replace("\\", "/") != CANDIDATE_ENTRY:
+        raise AssertionError("D baseline candidate route target drift")
+    if "no freeze" not in candidate_row[3].lower() and "no-freeze" not in candidate_row[3].lower():
+        raise AssertionError("D baseline candidate route must explicitly state no freeze")
+    candidate_path = (ROOT / CANDIDATE_ENTRY).resolve()
+    if not candidate_path.is_file() or ROOT.resolve() not in candidate_path.parents:
+        raise AssertionError("D baseline candidate target missing/outside repository")
+    if manifest.get("d_baseline_candidate_freeze_eligible") is not False or manifest.get("d_baseline_candidate_release_authority") != "NONE":
+        raise AssertionError("D candidate must stay preflight-only and non-authoritative")
     manifest_route_names = {route["name"] for route in manifest.get("gui_routes", [])}
-    if manifest_route_names != set(REQUIRED_ROUTES):
+    if manifest_route_names != set(REQUIRED_ROUTES) | {CANDIDATE_ROUTE}:
         raise AssertionError("Build manifest GUI route index does not match the Test GUI registry")
-    return {"routes": len(REQUIRED_ROUTES), "all_routes": len(rows), "surfaces": len(shell_rows), "tests": len(manifest.get("tests", []))}
+    if CANDIDATE_ENTRY not in manifest.get("tests", []):
+        raise AssertionError("D candidate test missing from Test BUILD_MANIFEST")
+    return {"routes": len(REQUIRED_ROUTES), "all_routes": len(rows), "surfaces": len(shell_rows), "tests": len(manifest.get("tests", [])), "candidate_routes": 1}
 
 
 if __name__ == "__main__":
@@ -105,6 +121,6 @@ if __name__ == "__main__":
     print(
         "C11C_TEST_GUI_CONTRACT PASS | version=0.2.0 | "
         f"D2-D9 routes={counts['routes']}/{counts['routes']} | all_gui_routes={counts['all_routes']} | "
-        f"canonical_surfaces={counts['surfaces']}/5 | manifest_tests={counts['tests']} | "
+        f"canonical_surfaces={counts['surfaces']}/5 | manifest_tests={counts['tests']} | baseline_candidate_routes={counts['candidate_routes']} | "
         "renderer=false | media_created=false | release_authority=NONE"
     )

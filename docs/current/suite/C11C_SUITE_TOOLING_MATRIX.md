@@ -101,3 +101,12 @@ The canonical contract `definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.
 ## D9.16 — Full D9 acceptance preflight (blocked as required)
 
 The existing Test 0.2.0 GUI registers `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)`. Config 0.2.0 registers `D9_16_FULL_ACCEPTANCE_V1.json` read-only (27 governed contracts). The preflight verifies D9.8–D9.16 test paths, exact five-surface topology, the immutable historical C11-C manifest hash, D9.14's fail-closed state, and that D9.15 has not inferred five-surface operator evidence. It runs no renderer and writes no evidence. Expected focused result is `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED` with 21/21 negative controls; this is not D9.16 acceptance closure.
+
+## D baseline candidate preflight (evaluation-only)
+
+| Existing surface | Route / contract | Purpose | Authority |
+|---|---|---|---|
+| `c11c-test` 0.2.0 | `D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)` → `tools/c11d/baseline_candidate/test_d_baseline_candidate.py` | Validate C11-C protected-source integrity, C manifest path inventory, allowed D integration drift, five-surface topology and current freeze blockers | Read-only; no freeze/media/release side effects |
+| `c11c-config` 0.2.0 | `D_BASELINE_CANDIDATE_POLICY` | Expose the candidate baseline rules and immutable-reference relationship | `READ_ONLY_CANONICAL` |
+
+A `PASS` means the candidate audit is trustworthy and keeps unresolved gates blocked; it is not a baseline freeze approval. C11-C 2.19.12 remains the immutable reference. The candidate is not freeze-eligible while D9.14/D4.8, D9.15 evidence, D9.16, D9.17, D renderer-baseline approval, or legacy-path disposition remains unresolved.

@@ -83,6 +83,7 @@ C11_COMMANDS = [
     ('D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)', 'python', ['tools/c11d/d9/test_gui_real_media_certification.py'], 'Evaluate the real-media GUI certification gate only; it remains BLOCKED and creates no media until future D renderer baseline + explicit D4.8 authorization.'),
     ('D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)', 'python', ['tools/c11d/d9/test_gui_operational_acceptance.py'], 'Inspect readiness of Config, Producer, Test, Catalog, provenance, logs, Maintenance and reproducibility; requires explicit operator GUI evidence and creates no media.'),
     ('D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)', 'python', ['tools/c11d/d9/test_full_acceptance.py'], 'Aggregate D9.8–D9.16 evidence wiring; full acceptance remains BLOCKED until authorized real-media evidence and five-surface operator GUI evidence exist; creates no media.'),
+    ('D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)', 'python', ['tools/c11d/baseline_candidate/test_d_baseline_candidate.py'], 'Audit D as a future frozen-baseline candidate while preserving immutable C11-C; no freeze archive, renderer, media or release authority.'),
 ]
 
 

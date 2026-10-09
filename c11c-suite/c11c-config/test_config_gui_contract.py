@@ -46,3 +46,11 @@ assert manifest.get('d9_16_full_acceptance_contract_access') == 'READ_ONLY_CANON
 assert manifest.get('d9_16_preflight_status') == 'PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED'
 assert manifest.get('d9_16_full_acceptance_closed') is False and manifest.get('d9_16_renderer_activation') is False and manifest.get('d9_16_production_execution') is False and manifest.get('d9_16_media_created') is False and manifest.get('d9_16_d4_8') == 'BLOCKED' and manifest.get('d9_16_release_authority') == 'NONE'
 print('C11C_CONFIG_D9_16_CONTRACT PASS | read_only=true | full_acceptance=BLOCKED_AS_REQUIRED | renderer=false | media=false | release_authority=NONE')
+
+# D baseline candidate policy is visible in Config as read-only governance only.
+candidate_policy = HERE.parents[1] / 'definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json'
+assert candidate_policy.is_file() and 'D_BASELINE_CANDIDATE_POLICY' in module
+assert manifest.get('d_baseline_candidate_policy') == 'definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json'
+assert manifest.get('d_baseline_candidate_policy_access') == 'READ_ONLY_CANONICAL'
+assert manifest.get('d_baseline_candidate_freeze_eligible') is False and manifest.get('d_baseline_candidate_d4_8') == 'BLOCKED' and manifest.get('d_baseline_candidate_release_authority') == 'NONE'
+print('C11C_CONFIG_D_BASELINE_CANDIDATE_POLICY PASS | read_only=true | freeze_eligible=false | D4.8=BLOCKED | renderer=false | media=false | release_authority=NONE')

@@ -95,3 +95,12 @@ Remaining closure prerequisites:
 3. **D9.16:** rerun full acceptance after the above evidence/prerequisites become eligible. Its current PASS means only that the gate fails closed correctly.
 
 Until all three conditions are met, `D9=OPEN`, `D9.17=BLOCKED`, `D10=BLOCKED`, `D4.8=BLOCKED`, `renderer_activation=false`, `media_created=false`, `release_authority=NONE`. C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable.
+
+
+## Parallel D baseline candidate track (opened 2026-10-09)
+
+| Candidate | Status | Rule |
+|---|---|---|
+| `C11-D-BASELINE-CANDIDATE-0.1` | PREFLIGHT PASS / FREEZE BLOCKED AS REQUIRED | Evaluate the integrated D working tree without replacing the immutable C11-C 2.19.12 reference. No freeze package, renderer activation, media creation, D4.8 authorization, or release authority is emitted. |
+
+The current candidate audit verifies the historical C11-C manifest identity, presence of all 2,545 manifest-listed files or strict D9.11 ledger reconciliation for the exact legacy `c11d-control` entries (any other missing path is fatal), byte-level hashes for the protected C source paths, confinement of changes in C-manifest-listed files to the declared D integration/documentation roots, and exactly five registered GUI surfaces. Its blocked state remains expected until D9.14 real-media GUI acceptance is explicitly authorized and passed, the D9.15 evidence matrix is recorded, D9.16 passes against the resulting evidence, D9.17 is re-adjudicated, and the unregistered legacy `c11d-control` path is dispositioned through Maintenance with explicit operator confirmation. This track does not revise the D9.17 NO-GO or D10 BLOCKED.

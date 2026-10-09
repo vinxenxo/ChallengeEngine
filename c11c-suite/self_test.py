@@ -336,10 +336,15 @@ d915_operational_preflight = subprocess.run([sys.executable, str(ROOT/'tools'/'c
 assert d915_operational_preflight.returncode == 0, d915_operational_preflight.stdout + "\n" + d915_operational_preflight.stderr
 assert 'capabilities=8/8' in d915_operational_preflight.stdout and 'surfaces=5/5' in d915_operational_preflight.stdout and 'operator_confirmation=REQUIRED' in d915_operational_preflight.stdout
 
-print('[C11C-SUITE-SELF-TEST] 20/20 d916_full_acceptance_preflight', flush=True)
+print('[C11C-SUITE-SELF-TEST] 20/21 d916_full_acceptance_preflight', flush=True)
 d916_full_acceptance = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_full_acceptance.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=45)
 assert d916_full_acceptance.returncode == 0, d916_full_acceptance.stdout + "\n" + d916_full_acceptance.stderr
 assert 'full_acceptance=BLOCKED_AS_REQUIRED' in d916_full_acceptance.stdout and 'media_created=false' in d916_full_acceptance.stdout
 
-print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED PASS')
+print('[C11C-SUITE-SELF-TEST] 21/21 d_baseline_candidate_preflight', flush=True)
+d_baseline_candidate = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'baseline_candidate'/'test_d_baseline_candidate.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=90)
+assert d_baseline_candidate.returncode == 0, d_baseline_candidate.stdout + "\n" + d_baseline_candidate.stderr
+assert 'freeze_eligible=false' in d_baseline_candidate.stdout and 'release_authority=NONE' in d_baseline_candidate.stdout
+
+print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED/D_BASELINE_CANDIDATE_PREFLIGHT_PASS_FREEZE_BLOCKED_AS_REQUIRED PASS')
 

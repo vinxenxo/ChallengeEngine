@@ -217,3 +217,19 @@ D10 = **BLOCKED** until:
 `D9.17 PASS/CLOSED`
 
 and the GUI has successfully demonstrated the complete operator lifecycle for the unified content/editorial model.
+
+
+## Parallel track — D baseline candidate evaluation (2026-10-09)
+
+**Status: PREFLIGHT IMPLEMENTED / CANDIDATE NOT FREEZE-ELIGIBLE.** The user has elected to evaluate the integrated D tree as a future candidate baseline rather than treat C11-C 2.19.12 as the operating baseline for future D work. This does **not** supersede, mutate, or unfreeze C11-C: its historical manifest and protected core/assets/challenges/schemas/tests and critical engine entrypoints must continue matching their C11-C hashes.
+
+Candidate identity: `C11-D-BASELINE-CANDIDATE-0.1`. Policy: `definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json`. Read-only evaluator: `tools/c11d/baseline_candidate/d_baseline_candidate.py`; test: `tools/c11d/baseline_candidate/test_d_baseline_candidate.py`; existing Test GUI route: `D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)`.
+
+This candidate track is a source-integrity and readiness assessment only. It must not create a freeze/release archive, produce media, activate a renderer, grant D4.8, or grant release authority. The current run must report `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED` while D9.14/D9.15/D9.16/D9.17 blockers remain. Candidate promotion requires a separate governance checkpoint and a new candidate identity/hash after the required real-media and five-surface operator evidence have been accepted. The legacy `c11d-control` path is not an active surface and remains an operator-controlled quarantine/disposition item; the preflight never moves it.
+
+
+## D baseline candidate track (parallel, not a freeze)
+
+The user has authorized evaluating the integrated D tree as a **candidate** future baseline in place of using C11-C as the active development baseline for D. C11-C 2.19.12 remains an immutable certified reference and is not altered or erased. Candidate identity: `C11-D-BASELINE-CANDIDATE-0.1`. The read-only integrity audit is registered in Config (policy access read-only) and Test (preflight route).
+
+The candidate audit must return `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED`: this means protected C source integrity and candidate governance are sound while freeze eligibility remains false. Current freeze blockers are the D9.14 real-media gate/D4.8 authorization, missing consolidated D9.15 operator evidence, D9.16 full acceptance, D9.17 NO-GO, absence of a separate D renderer-baseline approval checkpoint, and pending explicit disposition of the unregistered `c11d-control` legacy path. No freeze package or release authority is created by the candidate-evaluation track. Only a later separate governance decision may promote an identified D candidate.

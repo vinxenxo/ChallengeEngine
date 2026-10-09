@@ -1,0 +1,63 @@
+{
+  "schema": "C11-D-BASELINE-CANDIDATE-POLICY-V1",
+  "schema_version": "1.0",
+  "candidate_id": "C11-D-BASELINE-CANDIDATE-0.1",
+  "status": "EVALUATION_ONLY_NOT_A_FREEZE",
+  "purpose": "Evaluate the integrated D working tree as a possible future operating/frozen baseline without replacing or mutating the immutable C11-C 2.19.12 reference.",
+  "immutable_reference": {
+    "release": "C11-C 2.19.12",
+    "manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "disposition": "IMMUTABLE_REFERENCE_ONLY"
+  },
+  "d_branch_source": "Current integrated D9.17 development tree plus this candidate-evaluation overlay; this is not a freeze package.",
+  "protected_c_paths": [
+    "core/",
+    "assets/",
+    "challenges/",
+    "schemas/",
+    "tests/",
+    "build_factory.py",
+    "release_gate.py",
+    "GeneradorMaestro.gd",
+    "Main.tscn",
+    "project.godot"
+  ],
+  "allowed_d_integration_change_roots": [
+    "c11c-suite/",
+    "definitions/c11d/",
+    "docs/current/d/",
+    "docs/current/suite/",
+    "tools/c11d/"
+  ],
+  "canonical_operational_surfaces": [
+    "c11c-test/main.py",
+    "c11c-producer/main.py",
+    "c11c-catalog/main.py",
+    "c11c-config/main.py",
+    "c11c-maintenance/main.py"
+  ],
+  "freeze_eligibility_requirements": [
+    "C11-C protected source paths match their historical manifest hashes.",
+    "Every C11-C manifest entry is present at its original path, or a missing path belongs only to the exact legacy c11d-control tree and is fully reconciled by the append-only D9.11 quarantine ledger, destination tree hash, per-file hashes and unchanged historical manifest hash. Any missing non-legacy path blocks the audit.",
+    "Exactly five canonical operational surfaces are registered; no sixth surface is exposed.",
+    "D9.14 real-media GUI acceptance has been authorized by a separate governance checkpoint and its required cases have passed with actual media provenance and deterministic replay.",
+    "D4.8 activation governance is explicitly authorized by a separate approved checkpoint; this candidate preflight cannot grant authorization.",
+    "D9.15 operator evidence matrix records all eight capabilities across all five GUIs.",
+    "D9.16 full acceptance passes against the complete evidence packet and authorized media evidence.",
+    "D9.17 closure adjudication is PASS/CLOSED after the required evidence is reviewed.",
+    "Legacy c11d-control is reviewed and reversibly quarantined or otherwise dispositioned by an explicit operator action.",
+    "A separate D baseline approval/freeze checkpoint authorizes the exact candidate source identity and hash.",
+    "Release authority remains NONE until a distinct release governance decision."
+  ],
+  "non_effects": {
+    "writes_to_repository": false,
+    "creates_freeze_archive": false,
+    "creates_media": false,
+    "activates_renderer": false,
+    "changes_c11c_manifest": false,
+    "changes_c11c_source": false,
+    "grants_d4_8": false,
+    "grants_release_authority": false
+  }
+}

@@ -96,3 +96,7 @@ D9.14 adds a read-only, fail-closed real-media certification gate to the existin
 ## D9.14–D9.16 acceptance boundaries
 
 D9.14 is operator-confirmed visible/executable in Producer and Test, but **real-media certification remains BLOCKED**. D9.15 structural preflight passes (8 capabilities/5 surfaces, 19 negatives), while recorded GUI evidence for all five surfaces is still required. D9.16 adds `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)` in Test and a read-only Config registration; its static acceptance is deliberately `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`, with 9/9 evidence routes and 21 negative controls. It does not close D9, fabricate operator evidence, create media or grant release authority. The aggregate Suite self-test now has 20 steps.
+
+## D baseline candidate evaluation route (2026-10-09)
+
+The existing `c11c-test` surface includes `D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)`, and Config exposes `D_BASELINE_CANDIDATE_POLICY` read-only. This is a source-integrity/governance preflight, not a freeze operation. It checks the preserved C11-C manifest and protected source hashes while reporting blockers to D freeze eligibility. It must not create release archives/media, activate a renderer, unlock D4.8, or grant authority. The expected passing status is `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED`.

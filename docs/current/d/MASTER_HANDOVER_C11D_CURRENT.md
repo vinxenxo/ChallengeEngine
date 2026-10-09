@@ -98,3 +98,11 @@ Do not modify C11-C 2.19.12 simulation/mechanics/RNG/truth, `SimulationResult`, 
 8. `docs/current/d/START_PROMPT_C11D_CURRENT.md`
 
 Do not use the D9.4 ZIP upload as the current working tree if later D9 overlays have already been applied locally.
+
+## Parallel D baseline candidate track — 2026-10-09
+
+The user has requested testing the integrated D branch as a future frozen-baseline candidate instead of treating C11-C as the active future-development baseline. This is a parallel **evaluation-only** track: C11-C 2.19.12 remains immutable and continues as the certified comparison reference. No C11-C source, renderer, mechanics, RNG, simulation truth or historical manifest is replaced.
+
+Candidate: `C11-D-BASELINE-CANDIDATE-0.1`. Start with `docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md`, `docs/current/d/D_BASELINE_CANDIDATE_TEST_MATRIX_V1.md`, and `python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py`. The test is registered in the existing Test 0.2.0 GUI as `D BASELINE CANDIDATE INTEGRITY PREFLIGHT (NO FREEZE)` and its policy is read-only in Config 0.2.0.
+
+Expected current result: `PREFLIGHT_PASS_CANDIDATE_FREEZE_BLOCKED_AS_REQUIRED`. This confirms integrity/gate correctness and intentionally does not grant freeze eligibility. D9.14 real-media authorization/evidence, D9.15 five-surface operator evidence, D9.16 full acceptance, D9.17 closure, separate D renderer-baseline approval and the operator-controlled disposition of `c11d-control` remain blockers. `D4.8=BLOCKED`, renderer/media remain off and release authority remains `NONE`.
