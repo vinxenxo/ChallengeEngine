@@ -1,0 +1,90 @@
+{
+  "schema": "C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1",
+  "schema_version": "1.0",
+  "status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+  "adapter_contract_identity": {
+    "schema": "C11-D-D9.10-RENDER-ADAPTER-BOUNDARY-CONTRACT-V1",
+    "schema_version": "1.0",
+    "sha256": "af3494d7fa100a75b95994f824bfe256c76fe7d9095e3905fa4d28647e3863df"
+  },
+  "bridge_contract_identity": {
+    "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+    "schema_version": "1.0",
+    "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+  },
+  "editorial_model_identity": {
+    "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+    "schema_version": "1.0",
+    "checkpoint": "D9.8",
+    "sha256": "4ac36f54527a92c50c0910b3180d622b031011e625aa99717e8f43885be3b7ba"
+  },
+  "source_identity": {
+    "request_id": "D99-GUI-C74D3E5888B9",
+    "request_hash": "fe6bd712584c59cadfd116d588fc1d314a7928c31de31c85a5cedac93e3a23ab",
+    "editorial_hash": "ff89ad46a488159698e77ca409d1f11f4c5025fcbc556acb981cc25c004461a6",
+    "plan_hash": "5e000674af470f5dd38b93ded93d840451c4f5a7f905a7d744c83cc2c9a8d210",
+    "bridge_record_hash": "5a29a18bd73c6d514e972a90352af0e173d123bdcd9b0403a3eb2b326a300e1c"
+  },
+  "content_identity": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_006",
+    "variant_scope_id": "challenge:CHALLENGE_006",
+    "difficulty_tier": null
+  },
+  "binding_preview": {
+    "editorial_bindings": {
+      "title": "D9.10 runtime acceptance · challenges",
+      "subtitle": "UNKNOWN",
+      "call_to_action": "UNKNOWN",
+      "language": "UNKNOWN",
+      "player_name": "UNKNOWN",
+      "challenge_label": "UNKNOWN"
+    },
+    "editorial_allowlist_fields": [
+      "call_to_action",
+      "challenge_label",
+      "language",
+      "player_name",
+      "subtitle",
+      "title"
+    ],
+    "delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "variation_index": 0,
+    "audio_enabled": true,
+    "seed_contract": {
+      "gameplay_seed": 41001,
+      "gameplay_seed_source": "canonical_request.seed",
+      "gameplay_seed_domain": "GAMEPLAY",
+      "music_seed": 840101,
+      "music_seed_source": "canonical_request.music_seed",
+      "music_seed_domain": "MUSIC",
+      "cross_domain_seed_sharing": "FORBIDDEN",
+      "automatic_seed_generation": false,
+      "runtime_seed_derivation": false
+    },
+    "simulation_truth": "NOT_BOUND",
+    "derived_telemetry": "NOT_BOUND"
+  },
+  "adapter_execution": {
+    "mode": "PREPARE_ONLY",
+    "scope": "C11-D_ONLY",
+    "adapter_prepare_enabled": true,
+    "renderer_dispatch_invoked": false,
+    "reason_not_dispatched": "D4.8_BLOCKED_AND_D_BASELINE_NOT_APPROVED"
+  },
+  "d_only_adapter_prepare_invoked": true,
+  "renderer_dispatch_invoked": false,
+  "renderer_input_emitted": false,
+  "renderer_activation": false,
+  "production_execution": false,
+  "media_output_created": false,
+  "output_artifact_path": null,
+  "d4_8": "BLOCKED",
+  "release_authority": "NONE",
+  "c11c_source_mutation": false,
+  "policy_identity": null,
+  "envelope_hash": "344d18608991a67e683799da40116bc226d8c2da184ae3f45c83a6c9e98a1c48"
+}

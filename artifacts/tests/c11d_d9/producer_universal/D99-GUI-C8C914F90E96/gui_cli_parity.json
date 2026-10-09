@@ -1,0 +1,36 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+  "status": "PASS",
+  "content_type": "challenges",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_006",
+    "variant_scope_id": "challenge:CHALLENGE_006",
+    "difficulty_tier": null
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true,
+    "d_only_adapter_envelope_equal": true
+  },
+  "gui_request_hash": "a96c15fe07fcd5d67319181428fbeb0be80a7e5c5b415fcb0938ae377e958da8",
+  "cli_request_hash": "a96c15fe07fcd5d67319181428fbeb0be80a7e5c5b415fcb0938ae377e958da8",
+  "gui_plan_hash": "18174fea98dc20ba58baf2d7bd4c5e686535aaa009337b72cc2fb9e66ec6ac07",
+  "cli_plan_hash": "18174fea98dc20ba58baf2d7bd4c5e686535aaa009337b72cc2fb9e66ec6ac07",
+  "bridge_record_hash": "c4138f41d1091d9805d14fac70903a98cfbc8986f5e48f7e3b39ad52cf975033",
+  "cli_bridge_record_hash": "c4138f41d1091d9805d14fac70903a98cfbc8986f5e48f7e3b39ad52cf975033",
+  "d_only_adapter_envelope_hash": "84bb785deb4bd5d4bf7a358b830069925b94712e4a6ee3967b978efd48d60d5a",
+  "cli_d_only_adapter_envelope_hash": "84bb785deb4bd5d4bf7a358b830069925b94712e4a6ee3967b978efd48d60d5a",
+  "d_only_adapter_prepare_invoked": true,
+  "renderer_dispatch_invoked": false,
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

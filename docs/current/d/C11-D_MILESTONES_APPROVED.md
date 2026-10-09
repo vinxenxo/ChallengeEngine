@@ -114,3 +114,7 @@ The operator also completed bounded D9.14 qualification on Windows (`D914_COLON_
 ## D9.10.2 runtime harness status (2026-10-09)
 
 A dependency-free contract for the optional Qt runtime harness is registered in the aggregate Suite as step 22/22. The actual Qt runtime run must be generated on Windows; no runtime PASS is inferred from a static contract. The runner is limited to the current test/operator GUI and prepare-only adapter. It does not close D9.14, D9.16 or D9.17 and cannot lift D4.8.
+
+## D9.10.2 — Qt runtime incident update (2026-10-09)
+
+The Qt runtime has now been attempted on Windows; do not continue calling it “pending/unrun.” Observed results: static harness contract PASS; aggregate Suite PASS 22/22; direct Qt runtime FAIL 0/3; combined acceptance FAIL 6/7 due to that runtime failure. Root cause is not yet established from the console summary; inspect the exception/report/log paths in `D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md`. Screenshot evidence is not required. All governance locks remain unchanged.

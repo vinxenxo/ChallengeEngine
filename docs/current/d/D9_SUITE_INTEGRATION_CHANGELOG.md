@@ -1,5 +1,13 @@
 # D9 Suite Integration — Change Log
 
+## D9.10 post-runtime integration follow-up — 2026-10-09
+
+- Windows Qt runtime `D910_QT_GUI_RUNTIME_FIX_01` PASS 3/3 after the seven-key persisted-parity schema repair.
+- D9.13 lifecycle PASS with 14/14 negative cases and persisted parity regression 4/4.
+- Combined acceptance `D910_QT_ACCEPTANCE_FIX_01` remains FAIL 5/7: candidate preflight rejects an altered `docs/current/07_ROADMAP.md` outside approved D roots; aggregate Suite step 13 has a stale assertion for `negative=12/12`.
+- Follow-up overlay restores the roadmap to the exact immutable manifest hash and synchronizes the aggregate assertion to `negative=14/14`, requiring `persisted_parity_regression=4/4` plus the governance fields. It does not change the manifest or weaken the candidate audit.
+- Offscreen runtime does not claim human GUI observation, so `operator_gui_runtime_observed=false` remains correct. Re-run runtime and combined acceptance under fresh IDs; D9 remains OPEN until full gates pass.
+
 ## D9.5.1 — Producer 0.10.0
 
 - Added a C11-D Production Request + Personalization tab to the existing `c11c-producer` GUI.
@@ -92,3 +100,14 @@
 - Added a dependency-free static guard `test_d910_gui_runtime_contract.py` as aggregate Suite check 22/22. Extended `capture_d910_acceptance.py` with opt-in `--include-qt-gui-runtime`, which records the offscreen run in per-check logs and binds its result into the hash-bound acceptance report. No screenshots required.
 - Windows runtime acceptance is pending; PySide6 is unavailable in the package-preparation environment. The static contract and aggregate suite can be validated here, but no runtime PASS is claimed.
 - No renderer-native input, renderer dispatch, media production, release authority or definitive GUI work is introduced. C11-C remains immutable; D4.8 BLOCKED, D9 remains OPEN, and D10 remains BLOCKED.
+
+## D9.10 Qt GUI runtime — persisted parity schema correction (2026-10-09)
+
+- Inspected the operator's diagnostic bundle (`C11D_D910_QT_RUNTIME_DIAGNOSTICS_20261009_202637.zip`, SHA-256 `c1b6cb2c76b4a3f8b8dade00e0dfda8adea0df0f4355f39e1d67e86a73556a81`). The actual exception was `Persisted GUI/CLI parity receipt is not a complete PASS`, raised while the Producer GUI callback requested the D9.13 lifecycle receipt.
+- Root cause: the live D9.10 Producer GUI records seven parity checks, while the D9.13 lifecycle validator hard-coded an exact six-check set. The GUI's valid `d_only_adapter_envelope_equal` check caused a deterministic fail-closed rejection.
+- Corrected the required schema to include adapter-envelope parity, with SHA-256 binding across GUI, CLI and Producer receipt. The validator remains exact-schema and fail-closed.
+- Updated the lifecycle fixture to use the canonical D-only adapter/CLI envelope and added positive and negative persisted-parity regression coverage.
+- Preparation-copy checks pass for the static Qt harness contract, Producer GUI contract, bridge/adapter 3/3, bridge negatives 15/15, adapter negatives 9/9, focused parity receipt regression positive 1/1 + negative 4/4, and Config self-test 30/30 with negatives 7/7.
+- Windows Qt runtime has **not yet been re-run**. The expected runtime 3/3, combined acceptance 7/7 and aggregate Suite 22/22 are targets, not asserted results. The full lifecycle test in the clean source-archive copy stopped later at the maintenance-plan guard because archive packaging excludes the working D9.11 ledger/quarantine evidence; the check was not weakened.
+- Governance unchanged: C11-C 2.19.12/manifest immutable; D9.10 adapter `PREPARE_ONLY`; D4.8 BLOCKED; renderer OFF; media false; `release_authority=NONE`; D9 OPEN; D10 BLOCKED.
+- Incident detail: `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_PARITY_SCHEMA_FIX_20261009.md`.

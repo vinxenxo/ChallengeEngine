@@ -1,0 +1,29 @@
+{
+  "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+  "phase": "D9.10",
+  "result": "PASS_BRIDGE_PLANNING_ONLY",
+  "status": "PLANNED",
+  "request_id": "D99-GUI-A0EA03123F99",
+  "request_hash": "1c19d16d12fcb8b1401ee042888b1ec0e9a37cc9462b0244084c20e9aac0cd26",
+  "editorial_hash": "d8cc251decf884e8daf2a67c4ed4309d6ff761b4b7d68c715e83c5cbb0889e44",
+  "plan_hash": "b138f47c02825567cc5699476fefffe05871bae803cf612115eaec11fc4c67c3",
+  "bridge_record_hash": "fd9f1244e7e454294b0c17bd0476e6c579c0a962cb904bacba6078c68e47bc4b",
+  "d_only_adapter_envelope_hash": "819fa1a90a6d3d70de0250f212b5e54cd70e350143a21b57c599afe3c45bd7eb",
+  "d_only_adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+  "renderer_dispatch_invoked": false,
+  "gui_cli_parity": "PASS",
+  "content_type": "visual_loops",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_fractal_bloom_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/auto",
+    "difficulty_tier": null
+  },
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-A0EA03123F99"
+}

@@ -1,0 +1,327 @@
+{
+  "schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-RECEIPT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.13",
+  "status": "PASS_PLAN_ONLY",
+  "lifecycle_id": "D9L13-8A6B684301350E4263D8A2DF",
+  "identity_sha256": "a39926e6282c90fa157ec1b4e66320d6aa6d0c973b07d3372c1ecad7dbd41c17",
+  "identity": {
+    "request_id": "D99-GUI-10CBD61E0B8E",
+    "content_type": "visual_loops",
+    "selection": {
+      "content_type": "visual_loops",
+      "difficulty_tier": null,
+      "family_id": "c11c_fractal_bloom_v1",
+      "subtype_id": "auto",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/auto"
+    },
+    "request_hash": "268ba3757be804534093d0691e25b1532be427f353daf6f3947ae11646daaf78",
+    "editorial_hash": "d8cc251decf884e8daf2a67c4ed4309d6ff761b4b7d68c715e83c5cbb0889e44",
+    "plan_hash": "500938603a7e4c8427507504de1fdd31f48cb61696040ddb26a3c1c9943ea208",
+    "bridge_record_hash": "4b9e021518ed3251a6ea984f735e53020e3f534af567e2cfd7e045bb031a6929",
+    "gameplay_seed": 41002,
+    "music_seed": 840102,
+    "delivery_profile_id": "REVIEW_720",
+    "resolved_delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "audio_enabled": true,
+    "personalization_enabled": true
+  },
+  "binding_sha256": "f6136def0f8435e0ff1aaf3b7b8a4cc27599ad1b83a59007287bd1be1b680dd8",
+  "stages": [
+    {
+      "surface": "c11c-config",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-8A6B684301350E4263D8A2DF",
+      "identity_sha256": "a39926e6282c90fa157ec1b4e66320d6aa6d0c973b07d3372c1ecad7dbd41c17",
+      "binding_sha256": "f6136def0f8435e0ff1aaf3b7b8a4cc27599ad1b83a59007287bd1be1b680dd8",
+      "status": "PASS_READ_ONLY_CONFIG_BINDINGS",
+      "evidence": {
+        "config_registry_sha256": "3a79ae52eec0143a896ea9d3a384c34098ca267a5a46d5fa53ac235ed183813a",
+        "registry_count": 30,
+        "contract_hashes": [
+          {
+            "id": "D2_ASSET_FAMILIES",
+            "path": "definitions/c11d/asset_families/C11D_ASSET_FAMILY_REGISTRY_V1.json",
+            "sha256": "a447ef78419cd7081ad516ef5a16acc99777b22ae8e5794fd8caa76d7773c333"
+          },
+          {
+            "id": "D2_CHALLENGE_BINDINGS",
+            "path": "definitions/c11d/asset_families/C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json",
+            "sha256": "3001c0a4cf104a7814cf0b60f36805e8886e0f7ac79fc6e926a630769911f903"
+          },
+          {
+            "id": "D3_MUSIC_STYLE",
+            "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+            "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+          },
+          {
+            "id": "D3_MUSIC_ENGINE",
+            "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+            "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+          },
+          {
+            "id": "D4_REQUEST_SCHEMA",
+            "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json",
+            "sha256": "82a889cf199c9dafdf95665c83be28da1affa83e1cbf4472d30e40969030dd5e"
+          },
+          {
+            "id": "D4_PERSONALIZATION_REGISTRY",
+            "path": "definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json",
+            "sha256": "7712c4e83d0dadc7934e595244d15e67a09490b1e07351beb52a7396a6a6daaf"
+          },
+          {
+            "id": "D9_UNIVERSAL_EDITORIAL_MODEL",
+            "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+            "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+          },
+          {
+            "id": "D9_EDITORIAL_RENDER_BRIDGE",
+            "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+            "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+          },
+          {
+            "id": "D9_D_ONLY_RENDER_ADAPTER_BOUNDARY",
+            "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+            "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+          },
+          {
+            "id": "D9_MAINTENANCE_POLICY",
+            "path": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
+            "sha256": "7f8a629df1d039963c492de8a70289fa32bc12ad974c0f85994fdef288958dbd"
+          },
+          {
+            "id": "D9_CROSS_SUITE_LIFECYCLE",
+            "path": "definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json",
+            "sha256": "255001360c2f183c4e5b9ca309e416dd6da33ac8beeecf8b24094e32be877201"
+          },
+          {
+            "id": "D9_REAL_MEDIA_CERTIFICATION_GATE",
+            "path": "definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json",
+            "sha256": "213eaf4b7d1b7a89942f2157a7901088f7e044fe5aa60333f2d5b9d8102312fa"
+          },
+          {
+            "id": "D9_GUI_OPERATIONAL_ACCEPTANCE",
+            "path": "definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.json",
+            "sha256": "63cf7f7b09e402598739ec08b8df7b5bbefe42faa9fd5e40819bf62b49eb7492"
+          },
+          {
+            "id": "D9_FULL_ACCEPTANCE",
+            "path": "definitions/c11d/d9/D9_16_FULL_ACCEPTANCE_V1.json",
+            "sha256": "a1b966f363307a89db5d60b88135646bee491ef55afd139033c1f25c85864fcc"
+          },
+          {
+            "id": "D_BASELINE_CANDIDATE_POLICY",
+            "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+            "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e"
+          },
+          {
+            "id": "D_BASELINE_OPERATOR_EVIDENCE_REQUIREMENTS",
+            "path": "definitions/c11d/baseline/D_BASELINE_OPERATOR_EVIDENCE_REQUIREMENTS_V1.json",
+            "sha256": "173f1758d8c00cea29b2a3b0af6231b06281e60e1925379738f552ea167b9883"
+          },
+          {
+            "id": "D4_ACTIVATION_POLICY",
+            "path": "definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json",
+            "sha256": "cf970424b1b079d80cda41085a700129e094e90c87e48b04122c5acdabebae16"
+          },
+          {
+            "id": "D5_LINEAGE_REGISTRY",
+            "path": "definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json",
+            "sha256": "eeb8e221d13ce9f751434f04d0fc5637fd32d06f96c26aa34bd32e0ac2e6b048"
+          },
+          {
+            "id": "D6_SEED_REGISTRY",
+            "path": "definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json",
+            "sha256": "546283f37aaebfd04bc5d12d587b7a9570bc932f5eb28dad84664b7b5e19ee23"
+          },
+          {
+            "id": "D6_SEED_GOVERNANCE",
+            "path": "definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json",
+            "sha256": "5329bf071fc437d08f706c9605609e53773ae00cb90eb704052e04e3e98e8b88"
+          },
+          {
+            "id": "D6_DERIVATION_SPEC",
+            "path": "definitions/c11d/seeds/C11D_SEED_DERIVATION_SPEC_V1.json",
+            "sha256": "fca16311f6d2599490b7812ef761372e706301bbcc0e98576e737fa73ac6f671"
+          },
+          {
+            "id": "D7_MATRIX_SPEC",
+            "path": "definitions/c11d/production/C11D_PRODUCTION_MATRIX_SPEC_V1.json",
+            "sha256": "d7807c917ecba8371c00b834b0661ae93c2378e658632b675a979d93810ab359"
+          },
+          {
+            "id": "D7_CATALOG_SPEC",
+            "path": "definitions/c11d/production/C11D_CANONICAL_CATALOG_SPEC_V1.json",
+            "sha256": "1bc97e932d0a6d9880adb7847a21de42a56247fc2b020bcb587de37a7c7a3299"
+          },
+          {
+            "id": "D8_MEDIA_SCOPE",
+            "path": "definitions/c11d/d8/D8_MEDIA_SCOPE_V1.json",
+            "sha256": "11d59c90bbae72007042772179929a3b1376c10a17ab09fad8d303bf26a44f3d"
+          },
+          {
+            "id": "D8_VISUAL_QA",
+            "path": "definitions/c11d/d8/D8_VISUAL_QA_V1.json",
+            "sha256": "b4b258162a4f24f6babc5ac7b18b46f4852cffc0c47496461e60507bd7e301b9"
+          },
+          {
+            "id": "D8_AUDIO_QA",
+            "path": "definitions/c11d/d8/D8_AUDIO_QA_V1.json",
+            "sha256": "addafcaa9151b27d2e0de620f8caf2c185aaf68151a548ee6ef049b65a6c227c"
+          },
+          {
+            "id": "D8_MEDIA_ELIGIBILITY",
+            "path": "definitions/c11d/d8/D8_ARTIFACT_MEDIA_ELIGIBILITY_V1.json",
+            "sha256": "1401af02640dfa90d27cc5ca8ee759bb2d6886e8ccb62ba048b93be4a6f205b1"
+          },
+          {
+            "id": "D8_RELEASE_MANIFEST",
+            "path": "definitions/c11d/d8/D8_RELEASE_MANIFEST_V1.json",
+            "sha256": "96b2d4cb5cbca67c76b3b6cefa335de8f2308e36dc069f2e635ef56eb31cd267"
+          },
+          {
+            "id": "D8_ACCEPTANCE_FREEZE",
+            "path": "definitions/c11d/d8/D8_ACCEPTANCE_FREEZE_V1.json",
+            "sha256": "f5d8875c2e5ad4840e22f57e7f3abd4417b7c5ad92428e66fed89a9ab732bb8e"
+          },
+          {
+            "id": "D9_ACCEPTANCE_CLOSURE",
+            "path": "definitions/c11d/d9/D9_ACCEPTANCE_CLOSURE_V1.json",
+            "sha256": "6f83aa73a0cebba3a26496f3bd5a781363394e2a6709f93cbbb5749ab73647b9"
+          }
+        ],
+        "delivery_profile_registry_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+        "profile_bindings": {
+          "delivery_profile_id": "REVIEW_720",
+          "resolved_delivery_profile_id": "REVIEW_720",
+          "presentation_profile_id": "social_default_v1",
+          "personalization_enabled": true
+        },
+        "profile_bindings_sha256": "eab192ebee5725a0ee4ab84aee739788fe8a0a2c2244a63e96356d3f46b878a4",
+        "canonical_contracts_access": "READ_ONLY"
+      }
+    },
+    {
+      "surface": "c11c-producer",
+      "version": "0.11.1",
+      "lifecycle_id": "D9L13-8A6B684301350E4263D8A2DF",
+      "identity_sha256": "a39926e6282c90fa157ec1b4e66320d6aa6d0c973b07d3372c1ecad7dbd41c17",
+      "binding_sha256": "f6136def0f8435e0ff1aaf3b7b8a4cc27599ad1b83a59007287bd1be1b680dd8",
+      "status": "PASS_CANONICAL_PLAN_ONLY",
+      "evidence": {
+        "persisted_evidence_directory": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-10CBD61E0B8E",
+        "producer_manifest_sha256": "a99b6444f1609e4dd2777637816e6dc44ebdf424921472a3c777a636816f21f6",
+        "request_hash": "268ba3757be804534093d0691e25b1532be427f353daf6f3947ae11646daaf78",
+        "editorial_hash": "d8cc251decf884e8daf2a67c4ed4309d6ff761b4b7d68c715e83c5cbb0889e44",
+        "plan_hash": "500938603a7e4c8427507504de1fdd31f48cb61696040ddb26a3c1c9943ea208",
+        "bridge_record_hash": "4b9e021518ed3251a6ea984f735e53020e3f534af567e2cfd7e045bb031a6929",
+        "source_revision": "C11D-D9.9-PRODUCER-0.11.0",
+        "gameplay_seed": 41002,
+        "music_seed": 840102,
+        "delivery_profile_id": "REVIEW_720",
+        "resolved_delivery_profile_id": "REVIEW_720",
+        "presentation_profile_id": "social_default_v1",
+        "audio_enabled": true,
+        "personalization_enabled": true,
+        "content_type": "visual_loops",
+        "selection": {
+          "content_type": "visual_loops",
+          "difficulty_tier": null,
+          "family_id": "c11c_fractal_bloom_v1",
+          "subtype_id": "auto",
+          "variant_id": null,
+          "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/auto"
+        },
+        "gameplay_seed_source": "canonical_request.seed",
+        "music_seed_source": "canonical_request.music_seed",
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "automatic_seed_generation": false,
+        "runtime_seed_derivation": false
+      }
+    },
+    {
+      "surface": "c11c-test",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-8A6B684301350E4263D8A2DF",
+      "identity_sha256": "a39926e6282c90fa157ec1b4e66320d6aa6d0c973b07d3372c1ecad7dbd41c17",
+      "binding_sha256": "f6136def0f8435e0ff1aaf3b7b8a4cc27599ad1b83a59007287bd1be1b680dd8",
+      "status": "PASS_PLAN_ONLY_QA_CONTRACT",
+      "evidence": {
+        "build_manifest_sha256": "b56fe484858a8a8fca04ba6a5f197c56160bd4ee6d0170b104855f829c9b7e36",
+        "integration_contract_sha256": "665b52ad6567ca5f3ed18022f94a1524b880cc4d60059f5e7c902c261520c1d0",
+        "route_source_sha256": "71b87c93f74a82d928d9e4e100c9576a15470eb97d904358a5c4c030af00d141",
+        "registered_route_count": 57,
+        "canonical_surface_count": 5,
+        "negative_acceptance_reference": "tools/c11d/d9/test_d9_negative_acceptance.py",
+        "gui_cli_parity_reference": "tools/c11d/d9/test_d9_gui_cli_parity.py",
+        "plan_identity_validation": "PASS",
+        "media_qa": "NOT_APPLICABLE_NO_MEDIA_CREATED",
+        "no_media": true
+      }
+    },
+    {
+      "surface": "c11c-catalog",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-8A6B684301350E4263D8A2DF",
+      "identity_sha256": "a39926e6282c90fa157ec1b4e66320d6aa6d0c973b07d3372c1ecad7dbd41c17",
+      "binding_sha256": "f6136def0f8435e0ff1aaf3b7b8a4cc27599ad1b83a59007287bd1be1b680dd8",
+      "status": "PASS_READ_ONLY_IDENTITY_PROJECTION",
+      "evidence": {
+        "catalog_manifest_sha256": "6b4b2ab247d963cad768721d3c08d727cfc2c1ac7fdcdfa2050ceaff4aaedec4",
+        "projection_schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-CATALOG-PROJECTION-V1",
+        "projection_sha256": "64555d73831f634a601dc5965518a2582733fcec4f13409ae1b6fa1813d1527f",
+        "record_type": "CROSS_SUITE_LIFECYCLE_INTENT",
+        "media_created": false,
+        "media_path": null,
+        "media_sha256": null,
+        "release_authority": "NONE"
+      }
+    },
+    {
+      "surface": "c11c-maintenance",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-8A6B684301350E4263D8A2DF",
+      "identity_sha256": "a39926e6282c90fa157ec1b4e66320d6aa6d0c973b07d3372c1ecad7dbd41c17",
+      "binding_sha256": "f6136def0f8435e0ff1aaf3b7b8a4cc27599ad1b83a59007287bd1be1b680dd8",
+      "status": "PASS_READ_ONLY_MAINTENANCE_AUDIT",
+      "evidence": {
+        "maintenance_manifest_sha256": "fd96be1ba782947f1e99e5dc46fcecebcd744bc7229b3c9b36cadd95ef1c1201",
+        "maintenance_policy_sha256": "7f8a629df1d039963c492de8a70289fa32bc12ad974c0f85994fdef288958dbd",
+        "historical_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "historical_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "maintenance_plan_status": "PASS",
+        "registered_surface_count": 5,
+        "freeze_ready": false,
+        "side_effects": {
+          "files_moved": false,
+          "files_deleted": false,
+          "manifest_rewritten": false,
+          "archive_created": false
+        }
+      }
+    }
+  ],
+  "governance": {
+    "renderer_activation": false,
+    "renderer_input_emitted": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "runtime_authority": "NONE",
+    "release_authority": "NONE",
+    "c11c_frozen_reference_mutation": "FORBIDDEN"
+  },
+  "media_created": false,
+  "media_path": null,
+  "media_sha256": null,
+  "release_authority": "NONE",
+  "evidence": {
+    "producer_evidence_directory": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-10CBD61E0B8E",
+    "producer_gui_cli_parity": "PASS",
+    "catalog_projection_sha256": "64555d73831f634a601dc5965518a2582733fcec4f13409ae1b6fa1813d1527f",
+    "maintenance_is_dry_run": true
+  },
+  "receipt_sha256": "f637591bd8b501715acd61a4d4578b8134a5215307318e7a32ca1a33fc986945"
+}

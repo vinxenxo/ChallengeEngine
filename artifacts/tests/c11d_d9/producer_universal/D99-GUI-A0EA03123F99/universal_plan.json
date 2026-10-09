@@ -1,0 +1,87 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-PLAN-V1",
+  "plan_version": "1.0",
+  "request_id": "D99-GUI-A0EA03123F99",
+  "mode": "REVIEW",
+  "plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+  "request_hash": "1c19d16d12fcb8b1401ee042888b1ec0e9a37cc9462b0244084c20e9aac0cd26",
+  "editorial_hash": "d8cc251decf884e8daf2a67c4ed4309d6ff761b4b7d68c715e83c5cbb0889e44",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_fractal_bloom_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/auto",
+    "difficulty_tier": null
+  },
+  "editorial": {
+    "title": "D9.10 runtime acceptance · visual_loops",
+    "subtitle": "UNKNOWN",
+    "call_to_action": "UNKNOWN",
+    "language": "UNKNOWN"
+  },
+  "seed": 41002,
+  "music_seed": 840102,
+  "delivery_profile_id": "REVIEW_720",
+  "resolved_delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+  "d4_request_hash": null,
+  "d4_plan_hash": null,
+  "steps": [
+    {
+      "step_id": "validate_universal_request",
+      "type": "VALIDATION",
+      "authority": "C11D_D9.9_CANONICAL_ADAPTER"
+    },
+    {
+      "step_id": "resolve_content_identity",
+      "type": "CONTENT_SELECTION",
+      "content_type": "visual_loops",
+      "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/auto",
+      "authority": "D9.8_UNIVERSAL_EDITORIAL_MODEL"
+    },
+    {
+      "step_id": "resolve_editorial",
+      "type": "EDITORIAL_RESOLUTION",
+      "editorial_hash": "d8cc251decf884e8daf2a67c4ed4309d6ff761b4b7d68c715e83c5cbb0889e44",
+      "authority": "D9.8_UNIVERSAL_EDITORIAL_MODEL"
+    },
+    {
+      "step_id": "preserve_seed_contract",
+      "type": "SEED_GOVERNANCE",
+      "gameplay_seed_field": "seed",
+      "music_seed_field": "music_seed",
+      "cross_domain_sharing": "FORBIDDEN",
+      "automatic_generation": false,
+      "runtime_derivation": false
+    },
+    {
+      "step_id": "resolve_delivery_profile",
+      "type": "DELIVERY_PROFILE",
+      "requested_id": "REVIEW_720",
+      "resolved_id": "REVIEW_720"
+    },
+    {
+      "step_id": "production_intent_plan",
+      "type": "PLAN_ONLY",
+      "renderer": false,
+      "production_execution": false,
+      "release_authority": "NONE"
+    }
+  ],
+  "runtime_authority": "NONE",
+  "simulation_truth_mutation": false,
+  "winning_frame_mutation": false,
+  "close_calls_mutation": false,
+  "gameplay_rng_consumption": false,
+  "structural_rng_consumption": false,
+  "automatic_seed_generation": false,
+  "runtime_seed_derivation": false,
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED"
+}

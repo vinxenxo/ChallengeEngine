@@ -23,6 +23,7 @@ from cross_suite_lifecycle import (  # noqa: E402
     canonical_json,
     sha256,
     validate_lifecycle_receipt,
+    _validate_persisted_gui_cli_parity_receipt,
 )
 
 
@@ -48,6 +49,8 @@ def _seed_evidence(request: dict[str, Any], run_dir: Path) -> tuple[dict[str, An
     bridge_backend = _module("bridge_backend", "tools/c11d/d9/editorial_render_bridge.py")
     result = producer.evaluate_universal_request(request, ROOT)
     bridge = bridge_backend.build_bridge_planning_record(result, ROOT)
+    adapter_backend = _module("adapter_backend", "tools/c11d/d9/d_render_adapter.py")
+    adapter = adapter_backend.prepare_d_only_adapter_envelope(result, bridge, ROOT)
     request_path = run_dir / "request.json"
     _write_json(request_path, request)
     cli_script = ROOT / "tools/c11d/d9/universal_producer_cli.py"
@@ -70,11 +73,12 @@ def _seed_evidence(request: dict[str, Any], run_dir: Path) -> tuple[dict[str, An
         "plan_equal": result["plan"] == cli_result["plan"],
         "plan_hash_equal": result["plan_hash"] == cli_result["plan_hash"],
         "bridge_planning_record_equal": bridge == cli_result.get("bridge_planning_record"),
+        "d_only_adapter_envelope_equal": adapter == cli_result.get("d_only_adapter_envelope"),
     }
     if not all(parity_checks.values()):
         raise AssertionError(f"GUI/CLI semantic parity failed: {parity_checks}")
     parity = {
-        "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-BRIDGE-PARITY-V1",
+        "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
         "status": "PASS",
         "content_type": result["canonical_request"]["selection"]["content_type"],
         "selection": result["canonical_request"]["selection"],
@@ -85,6 +89,9 @@ def _seed_evidence(request: dict[str, Any], run_dir: Path) -> tuple[dict[str, An
         "cli_plan_hash": cli_result["plan_hash"],
         "bridge_record_hash": bridge["record_hash"],
         "cli_bridge_record_hash": cli_result["bridge_planning_record"]["record_hash"],
+        "d_only_adapter_envelope_hash": adapter["envelope_hash"],
+        "cli_d_only_adapter_envelope_hash": cli_result["d_only_adapter_envelope"]["envelope_hash"],
+        "d_only_adapter_prepare_invoked": True,
         "renderer_input_emitted": False,
         "renderer": False,
         "production_execution": False,
@@ -94,6 +101,7 @@ def _seed_evidence(request: dict[str, Any], run_dir: Path) -> tuple[dict[str, An
     _write_json(run_dir / "editorial_resolution.json", result["editorial_resolution"])
     _write_json(run_dir / "universal_plan.json", result["plan"])
     _write_json(run_dir / "editorial_render_bridge_plan.json", bridge)
+    _write_json(run_dir / "d_render_adapter_envelope.json", adapter)
     _write_json(run_dir / "d4_subplan_evidence.json", result.get("d4_evidence") or {"status": "NOT_APPLICABLE"})
     _write_json(run_dir / "gui_cli_parity.json", parity)
     receipt = {
@@ -106,6 +114,8 @@ def _seed_evidence(request: dict[str, Any], run_dir: Path) -> tuple[dict[str, An
         "editorial_hash": result["editorial_hash"],
         "plan_hash": result["plan_hash"],
         "bridge_record_hash": bridge["record_hash"],
+        "d_only_adapter_envelope_hash": adapter["envelope_hash"],
+        "d_only_adapter_status": adapter["status"],
         "gui_cli_parity": "PASS",
         "content_type": result["canonical_request"]["selection"]["content_type"],
         "selection": result["canonical_request"]["selection"],
@@ -135,7 +145,63 @@ def _must_reject(label: str, receipt: dict[str, Any], *, reseal: bool = True) ->
     raise AssertionError(f"D9.13 negative case accepted: {label}")
 
 
+def run_parity_receipt_contract_regressions() -> int:
+    """Exercise the persisted parity schema regression independently of Qt/runtime artifacts."""
+    adapter_hash = "3" * 64
+    valid = {
+        "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+        "status": "PASS",
+        "checks": {
+            "canonical_request_equal": True,
+            "request_hash_equal": True,
+            "editorial_hash_equal": True,
+            "plan_equal": True,
+            "plan_hash_equal": True,
+            "bridge_planning_record_equal": True,
+            "d_only_adapter_envelope_equal": True,
+        },
+        "gui_plan_hash": "1" * 64,
+        "bridge_record_hash": "2" * 64,
+        "d_only_adapter_envelope_hash": adapter_hash,
+        "cli_d_only_adapter_envelope_hash": adapter_hash,
+    }
+    producer_receipt = {"d_only_adapter_envelope_hash": adapter_hash}
+    _validate_persisted_gui_cli_parity_receipt(
+        valid, producer_receipt, expected_plan_hash="1" * 64, expected_bridge_record_hash="2" * 64
+    )
+
+    negatives = 0
+    def must_reject(label: str, parity: dict[str, Any], receipt: dict[str, Any] = producer_receipt) -> None:
+        nonlocal negatives
+        try:
+            _validate_persisted_gui_cli_parity_receipt(
+                parity, receipt, expected_plan_hash="1" * 64, expected_bridge_record_hash="2" * 64
+            )
+        except CrossSuiteLifecycleError:
+            negatives += 1
+            return
+        raise AssertionError(f"D9.13 accepted invalid persisted parity receipt: {label}")
+
+    missing_adapter_check = copy.deepcopy(valid)
+    missing_adapter_check["checks"].pop("d_only_adapter_envelope_equal")
+    must_reject("missing D9.10 adapter parity check", missing_adapter_check)
+
+    false_adapter_check = copy.deepcopy(valid)
+    false_adapter_check["checks"]["d_only_adapter_envelope_equal"] = False
+    must_reject("false D9.10 adapter parity check", false_adapter_check)
+
+    mismatched_cli_hash = copy.deepcopy(valid)
+    mismatched_cli_hash["cli_d_only_adapter_envelope_hash"] = "4" * 64
+    must_reject("GUI/CLI adapter envelope hash mismatch", mismatched_cli_hash)
+
+    mismatched_producer_hash = {"d_only_adapter_envelope_hash": "5" * 64}
+    must_reject("Producer receipt adapter hash mismatch", copy.deepcopy(valid), mismatched_producer_hash)
+    return negatives
+
+
 def run_checks() -> dict[str, int]:
+    parity_receipt_regressions = run_parity_receipt_contract_regressions()
+    assert parity_receipt_regressions == 4
     config_module = _module("config_backend", "c11c-suite/c11c-config/c11d_config.py")
     rows, config_errors = config_module.validate_c11d_contracts(ROOT)
     assert not config_errors, config_errors
@@ -229,6 +295,31 @@ def run_checks() -> dict[str, int]:
                 _must_reject("evidence path traversal", m); all_negatives += 1
                 m = copy.deepcopy(receipt); m["stages"][4]["evidence"]["side_effects"]["files_deleted"] = True
                 _must_reject("maintenance side-effect overclaim", m); all_negatives += 1
+                # Regression for the D9.10 Qt failure: the Producer GUI now persists
+                # seven parity checks, including D-only adapter envelope parity. A
+                # missing or false adapter check must still fail closed.
+                parity_path = run_dir / "gui_cli_parity.json"
+                valid_parity = json.loads(parity_path.read_text(encoding="utf-8"))
+                for label, mutation in (
+                    ("persisted adapter parity check missing", lambda candidate: candidate["checks"].pop("d_only_adapter_envelope_equal")),
+                    ("persisted adapter parity check false", lambda candidate: candidate["checks"].__setitem__("d_only_adapter_envelope_equal", False)),
+                ):
+                    candidate = copy.deepcopy(valid_parity)
+                    mutation(candidate)
+                    _write_json(parity_path, candidate)
+                    try:
+                        build_lifecycle_receipt(request, ROOT, run_dir)
+                    except CrossSuiteLifecycleError as exc:
+                        if str(exc) != "Persisted GUI/CLI parity receipt is not a complete PASS":
+                            raise AssertionError(
+                                f"{label} was rejected by the wrong guard: {exc}"
+                            ) from exc
+                        all_negatives += 1
+                    else:
+                        raise AssertionError(f"D9.13 accepted incomplete adapter parity evidence: {label}")
+                    finally:
+                        _write_json(parity_path, valid_parity)
+
                 bad_request = copy.deepcopy(request); bad_request["selection"] = {"content_type": "longform", "family_id": "any", "variant_id": "longform"}
                 try:
                     _module("producer_negative", "tools/c11d/d9/universal_producer.py").evaluate_universal_request(bad_request, ROOT)
@@ -245,16 +336,25 @@ def run_checks() -> dict[str, int]:
     historical_hash_after = __import__("hashlib").sha256(manifest_path.read_bytes()).hexdigest()
     assert historical_hash_after == historical_hash_before, "D9.13 must not mutate historical C11-C manifest"
     assert parity_cases == catalog_cases == maintenance_cases == 3
-    assert all_negatives == 12
-    return {"content_types": 3, "stages": 5, "parity": parity_cases, "catalog": catalog_cases, "maintenance": maintenance_cases, "negative": all_negatives}
+    assert all_negatives == 14
+    return {"content_types": 3, "stages": 5, "parity": parity_cases, "catalog": catalog_cases, "maintenance": maintenance_cases, "negative": all_negatives, "parity_receipt_regressions": parity_receipt_regressions}
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--parity-contract-only", action="store_true", help="run the focused D9.10/D9.13 persisted parity receipt regression checks")
+    args = parser.parse_args()
+    if args.parity_contract_only:
+        negatives = run_parity_receipt_contract_regressions()
+        assert negatives == 4
+        print(f"C11-D D9.10/D9.13 PERSISTED PARITY RECEIPT REGRESSION PASS | positive=1/1 | negative={negatives}/{negatives}")
+        raise SystemExit(0)
     counts = run_checks()
     print(
         "C11-D D9.13 CROSS-SUITE LIFECYCLE PASS | "
         f"content_types={counts['content_types']}/3 | stages={counts['stages']}/5 | "
         f"identity_continuity=PASS | GUI/CLI parity={counts['parity']}/3 | "
         f"catalog_projection={counts['catalog']}/3 | maintenance_audit={counts['maintenance']}/3 | "
-        f"negative={counts['negative']}/{counts['negative']} | renderer=OFF | media_created=false | release_authority=NONE"
+        f"negative={counts['negative']}/{counts['negative']} | persisted_parity_regression={counts['parity_receipt_regressions']}/{counts['parity_receipt_regressions']} | renderer=OFF | media_created=false | release_authority=NONE"
     )

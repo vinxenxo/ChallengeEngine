@@ -1,3 +1,29 @@
+# Latest authoritative next action — D9.10 post-runtime integration repair (2026-10-09)
+
+Windows has now confirmed `D910_QT_GUI_RUNTIME_FIX_01` **PASS 3/3**. The parity schema fix is valid: `test_cross_suite_lifecycle.py` reports PASS with `negative=14/14` and `persisted_parity_regression=4/4`. However, combined acceptance `D910_QT_ACCEPTANCE_FIX_01` is **FAIL 5/7** and is not closed: candidate preflight reports unauthorized drift in `docs/current/07_ROADMAP.md`, while aggregate Suite step 13 still asserts the stale text `negative=12/12`. The combined report's `GUI_runtime_observed=false` is intentional and truthful for offscreen automation, not itself a failed acceptance check.
+
+Apply `C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.zip`. It (1) updates step 13 to require the actual 14/14 negative result and persisted-parity regression 4/4 without weakening any checks, (2) restores `docs/current/07_ROADMAP.md` to the exact SHA-256 recorded in the immutable C11-C manifest, and (3) updates this current state and the incident history. Before running tests, verify the manifest hash is still `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` and the roadmap hash is `5e847ead237c614d1618e0a012f823e92ef95068441e8ce4872a225beee5d989`.
+
+Then run the verification sequence in `docs/current/d/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` using fresh IDs `D910_QT_GUI_RUNTIME_FIX_02` and `D910_QT_ACCEPTANCE_FIX_02`. Do not reuse existing artifact directories. Target: runtime 3/3, combined 7/7, Suite 22/22, candidate preflight PASS with `freeze_eligible=false` and five blockers retained. If the candidate preflight still fails, preserve its exact exception; do not weaken the manifest audit.
+
+C11-C 2.19.12 and manifest remain immutable. Adapter `PREPARE_ONLY`; D4.8 `BLOCKED`; renderer OFF; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The GUI under test remains test/operator-only; the definitive GUI is deferred until the full D baseline is accepted and frozen.
+
+---
+
+# Latest authoritative next action — D9.10 Qt runtime parity schema fix (2026-10-09)
+
+The Windows diagnostics are now available and the exact cause of the previous runtime `FAIL 0/3` is confirmed. The callback showed: `Persisted GUI/CLI parity receipt is not a complete PASS`. The Producer GUI emits seven parity checks, including `d_only_adapter_envelope_equal`, but the D9.13 lifecycle validator expected an exact six-key schema. The fix overlay makes the seventh check required, binds the adapter-envelope hashes, updates the persisted-evidence fixture, and adds positive/negative regression coverage. It does not relax fail-closed checks.
+
+The preparation-copy checks pass: Qt harness static contract; Producer GUI contract; bridge/adapter content 3/3, parity 3/3 and negatives 15/15 + 9/9; focused parity receipt regression positive 1/1 + negative 4/4; Config self-test 30/30 with negatives 7/7. These are not actual Windows Qt runtime results. The runtime 3/3, combined acceptance 7/7 and aggregate Suite 22/22 remain unverified until the operator runs them.
+
+Apply the repair overlay to the active Windows checkout, then run the exact sequence in `docs/current/d/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` using fresh run IDs `D910_QT_GUI_RUNTIME_FIX_01` and `D910_QT_ACCEPTANCE_FIX_01`. Run `test_cross_suite_lifecycle.py` on that active checkout; do not use a clean extraction that lacks the local D9.11 maintenance ledger/quarantine evidence as a substitute for the operator tree.
+
+C11-C 2.19.12/manifest remain immutable; D9.10 adapter `PREPARE_ONLY`; D4.8 BLOCKED; renderer OFF; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The current GUI is test/operator-only. Defer the definitive GUI until the full D baseline is accepted and frozen.
+
+See `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_PARITY_SCHEMA_FIX_20261009.md` for the diagnosis and test evidence. Older historical sections below are retained, but this is the current instruction.
+
+---
+
 # Latest authoritative next action — D9.10 offscreen Qt GUI runtime (2026-10-09)
 
 The D9.10 adapter overlay has been applied on Windows. After restoring `README_C11D_D9.5.1_OVERLAY.md` and `README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md` byte-for-byte, the operator confirmed candidate preflight PASS (`blockers=5`, `freeze_eligible=false`), automated D9.10 acceptance PASS 5/5 (`GUI_runtime_observed=false` is an honest scope field), and the aggregate Suite PASS 21/21.

@@ -1,0 +1,32 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "request_id": "D99-GUI-C8C914F90E96",
+  "mode": "REVIEW",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "variant_id": "CHALLENGE_006"
+  },
+  "seed": 41001,
+  "music_seed": 840101,
+  "delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "personalization_enabled": true,
+  "editorial_profile": {
+    "global": {},
+    "content_type": {},
+    "family": {},
+    "subtype": {},
+    "variant": {}
+  },
+  "production_override": {
+    "title": "D9.10 runtime acceptance · challenges"
+  },
+  "provenance": {
+    "source_revision": "C11D-D9.10-PRODUCER-0.11.1",
+    "request_origin": "GUI"
+  }
+}

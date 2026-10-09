@@ -1,0 +1,36 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+  "status": "PASS",
+  "content_type": "visual_loops",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_fractal_bloom_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/auto",
+    "difficulty_tier": null
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true,
+    "d_only_adapter_envelope_equal": true
+  },
+  "gui_request_hash": "268ba3757be804534093d0691e25b1532be427f353daf6f3947ae11646daaf78",
+  "cli_request_hash": "268ba3757be804534093d0691e25b1532be427f353daf6f3947ae11646daaf78",
+  "gui_plan_hash": "500938603a7e4c8427507504de1fdd31f48cb61696040ddb26a3c1c9943ea208",
+  "cli_plan_hash": "500938603a7e4c8427507504de1fdd31f48cb61696040ddb26a3c1c9943ea208",
+  "bridge_record_hash": "4b9e021518ed3251a6ea984f735e53020e3f534af567e2cfd7e045bb031a6929",
+  "cli_bridge_record_hash": "4b9e021518ed3251a6ea984f735e53020e3f534af567e2cfd7e045bb031a6929",
+  "d_only_adapter_envelope_hash": "850dba29839adb4ba2a3889a704cb65cc6125c77b7bf58738f7f0d5064c80dd5",
+  "cli_d_only_adapter_envelope_hash": "850dba29839adb4ba2a3889a704cb65cc6125c77b7bf58738f7f0d5064c80dd5",
+  "d_only_adapter_prepare_invoked": true,
+  "renderer_dispatch_invoked": false,
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

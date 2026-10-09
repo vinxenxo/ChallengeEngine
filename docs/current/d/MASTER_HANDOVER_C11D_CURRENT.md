@@ -1,3 +1,23 @@
+# C11-D MASTER HANDOVER — D9.10 post-runtime integration repair (2026-10-09)
+
+## Latest operator-observed state
+
+- `D910_QT_GUI_RUNTIME_FIX_01`: **PASS 3/3**; C11-C manifest match true, screenshots not required, renderer OFF, media false, D4.8 BLOCKED, release authority NONE.
+- `test_cross_suite_lifecycle.py --parity-contract-only`: PASS, positive 1/1, negative 4/4.
+- Full `test_cross_suite_lifecycle.py`: PASS; content types 3/3, stages 5/5, identity continuity PASS, GUI/CLI parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted parity regression 4/4.
+- Static Qt harness, editorial bridge/adapter and Producer GUI contract: PASS.
+- `D910_QT_ACCEPTANCE_FIX_01`: **FAIL 5/7**, not accepted. Remaining failures are (a) candidate preflight flags `docs/current/07_ROADMAP.md` as unapproved C-source drift and (b) aggregate Suite step 13 expects `negative=12/12` although the stronger lifecycle test correctly reports `negative=14/14`.
+- `c11c-suite/self_test.py` must assert `negative=14/14` and `persisted_parity_regression=4/4`, while retaining all current safety/governance assertions. The frozen manifest records the canonical roadmap hash `5e847ead237c614d1618e0a012f823e92ef95068441e8ce4872a225beee5d989`; restoring the exact bytes is required to remove accidental drift.
+- `operator_gui_runtime_observed=false` is retained by design. It reports that this test used an offscreen GUI and no human visual observation; it does not invalidate a successful runtime exercise.
+
+Next: apply `C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.zip`, confirm both immutable hashes, then rerun with `D910_QT_GUI_RUNTIME_FIX_02` and `D910_QT_ACCEPTANCE_FIX_02`. Do not mark combined acceptance accepted until 7/7 and Suite 22/22 PASS. Candidate freeze remains blocked with five blockers.
+
+## Governance boundary
+
+C11-C 2.19.12 and its manifest remain immutable; D9.10 adapter `PREPARE_ONLY`; no renderer-native input or dispatch; D4.8 `BLOCKED`; renderer OFF; no media; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The current Producer window remains a temporary test/operator GUI. Definitive GUI work waits until the complete D baseline is accepted and frozen.
+
+---
+
 # C11-D MASTER HANDOVER — D9 Second-Stage Suite Integration
 
 ## Current status — updated 2026-10-09
@@ -139,3 +159,18 @@ python -u .\c11c-suite\self_test.py
 ```
 
 The runtime test is a real Qt code path exercised offscreen, not a manual visual review; `operator_interactive_visual_observation=false` must remain truthful. PySide6 is not installed in the preparation environment, so no Qt runtime result has been claimed yet. The static harness contract is included in aggregate step 22/22. No media is created. Do not enable dispatch or attempt to consume the adapter envelope as renderer input; D4.8 remains BLOCKED, D9.14 full E2E/D9.16/D9.17 and final baseline approvals remain open, release authority NONE. The GUI remains test-only; the definitive GUI comes after final D baseline freeze.
+
+---
+
+# Latest authoritative update — D9.10 Qt runtime parity schema fix (2026-10-09)
+
+This section supersedes older statements above that describe the Qt runtime as not yet diagnosed.
+
+- The operator-provided diagnostic bundle SHA-256 is `c1b6cb2c76b4a3f8b8dade00e0dfda8adea0df0f4355f39e1d67e86a73556a81`.
+- Confirmed exception: `RuntimeError: Qt GUI callback raised a modal warning for challenges: C11-D Editorial Universal: Persisted GUI/CLI parity receipt is not a complete PASS`.
+- Root cause: current Producer GUI persists seven parity checks, including `d_only_adapter_envelope_equal`; D9.13 lifecycle validation expected exactly six. The valid current receipt was rejected fail-closed before a lifecycle receipt could be created. Qt font and `propagateSizeHints()` messages were incidental.
+- Repair overlay updates `tools/c11d/d9/cross_suite_lifecycle.py` to require the current seven-check schema and bind the GUI/CLI/Producer adapter-envelope SHA-256 fields. `tools/c11d/d9/test_cross_suite_lifecycle.py` now generates a matching adapter parity fixture and covers one positive plus four focused negative receipt cases. No check was removed or loosened.
+- Preparation-copy verification: Qt harness static contract PASS; Producer GUI static contract PASS; bridge/adapter content 3/3, CLI bridge parity 3/3, adapter parity 3/3, negatives 15/15 + 9/9; focused receipt regression positive 1/1 and negative 4/4; Config self-test 30/30 and negative 7/7.
+- **Windows re-acceptance remains pending.** Do not claim runtime 3/3, combined acceptance 7/7 or aggregate 22/22 until the fresh runs report those results. Run the complete lifecycle test and the required commands in `docs/current/d/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` on the active Windows checkout. The clean archive copy lacks runtime-only D9.11 ledger/quarantine evidence, so its complete lifecycle test stops later at the existing maintenance guard; that guard was not weakened.
+- Immutable boundaries remain: C11-C 2.19.12 and manifest SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; adapter `PREPARE_ONLY`; D4.8 `BLOCKED`; renderer OFF; no Qt-test media; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The definitive GUI remains deferred until the full D baseline is accepted and frozen.
+- Incident record: `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_PARITY_SCHEMA_FIX_20261009.md`.

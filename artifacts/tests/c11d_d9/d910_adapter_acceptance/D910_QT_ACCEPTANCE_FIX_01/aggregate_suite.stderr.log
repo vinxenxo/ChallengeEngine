@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\c11c-suite\self_test.py", line 313, in <module>
+    assert 'content_types=3/3' in d913_lifecycle.stdout and 'stages=5/5' in d913_lifecycle.stdout and 'negative=12/12' in d913_lifecycle.stdout, d913_lifecycle.stdout
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: C11-D D9.13 CROSS-SUITE LIFECYCLE PASS | content_types=3/3 | stages=5/5 | identity_continuity=PASS | GUI/CLI parity=3/3 | catalog_projection=3/3 | maintenance_audit=3/3 | negative=14/14 | persisted_parity_regression=4/4 | renderer=OFF | media_created=false | release_authority=NONE
+

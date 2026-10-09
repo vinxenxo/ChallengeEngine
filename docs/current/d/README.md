@@ -88,3 +88,7 @@ The D7 frozen reference remains historical context. It does not describe the cur
 ## Latest D9.10 runtime-automation addition (2026-10-09)
 
 The D9.10 acceptance path now includes `test_d910_gui_runtime_acceptance.py` to exercise the existing test/operator GUI offscreen. The dependency-free harness contract is in aggregate Suite step 22/22. The actual Qt test still needs its Windows run. This does not switch on the renderer, close D9 or authorize the definitive GUI.
+
+## New-context handover — 2026-10-09
+
+Use `MASTER_HANDOVER_C11D_CURRENT.md`, `START_PROMPT_C11D_CURRENT.md` and `D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md`. The latest source snapshot uploaded by the operator is `ChallengeEngineV01_STATELESS_C11-D D9.10_20261009_220331.zip` (SHA-256 `fa3c4e2299ecf7ecffa81925689313c1a79b47e437edbfc539f16e10973379b2`). The runtime incident is captured in `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_INCIDENT_20261009.md`.

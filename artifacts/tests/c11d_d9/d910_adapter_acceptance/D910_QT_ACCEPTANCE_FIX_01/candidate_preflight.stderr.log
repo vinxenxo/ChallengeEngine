@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11d\baseline_candidate\test_d_baseline_candidate.py", line 238, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11d\baseline_candidate\test_d_baseline_candidate.py", line 131, in main
+    record = dbc.build_candidate_preflight(ROOT)
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11d\baseline_candidate\d_baseline_candidate.py", line 512, in build_candidate_preflight
+    raise CandidateAuditError(f"C11-C source changes outside D extension roots: {inventory['c_manifest_unapproved_drift'][:10]}")
+d_baseline_candidate.CandidateAuditError: C11-C source changes outside D extension roots: ['docs/current/07_ROADMAP.md']

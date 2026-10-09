@@ -122,3 +122,7 @@ D9.14 bounded qualification PASS: Windows generated four final A/V MP4s and seal
 The aggregate suite adds a dependency-free static guard for the optional offscreen Qt runtime test at 22/22. The actual runtime test is deliberately opt-in and Windows-validated: it instantiates the existing test GUI, clicks the bridge action for Challenge/Loop/Drill and verifies canonical/CLI/bridge/adapter artifacts. This proves GUI-to-prepare-only-adapter propagation, not renderer-to-pixel materialization. The final D GUI is deferred until D baseline freeze.
 
 | D9.10 offscreen GUI runtime | Existing Producer test/operator GUI | `test_d910_gui_runtime_acceptance.py` and `capture_d910_acceptance.py --include-qt-gui-runtime` | Optional Qt offscreen callback for Challenge/Loop/Drill; editorial override propagation and GUI/CLI parity; no screenshots/media; actual runtime result must be generated on Windows |
+
+## D9.10 Qt runtime attempt — 2026-10-09
+
+The runtime test has a real Windows result, currently FAIL rather than pending: `D910_QT_GUI_RUNTIME_01` produced `content_types=0/3`; bound capture `D910_QT_ACCEPTANCE_01` produced `checks=6/7`. Static contract is PASS and aggregate 22/22 PASS because the suite only registers the dependency-free contract, not the optional actual Qt run. The current troubleshooting target and paths are in `docs/current/d/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md`.

@@ -111,3 +111,7 @@ D9.14 bounded production qualification subsequently passed on Windows using exis
 ## D9.10 automated Qt runtime acceptance (2026-10-09)
 
 `tools/c11d/d9/test_d910_gui_runtime_contract.py` is a dependency-free static contract and is registered as step 22/22 in `c11c-suite/self_test.py`. On Windows, the optional `test_d910_gui_runtime_acceptance.py` instantiates the actual Producer test/operator GUI offscreen and executes the same D9.10 callback for Challenge, Visual Loop and Visual Drill. It verifies editorial override propagation, parity and the prepare-only adapter locks without screenshots or media. Include it in the bound report with `capture_d910_acceptance.py --include-qt-gui-runtime --include-aggregate`. This is not the definitive GUI and does not authorize renderer dispatch or close D9.14.
+
+## D9.10 Qt runtime status — operator result (2026-10-09)
+
+The dependency-free harness contract is PASS and `c11c-suite/self_test.py` passed 22/22. The separate offscreen Qt runner failed 0/3 content types, and the combined report failed 6/7 because the optional runtime check failed. The aggregate result therefore verifies the static safety contract only. Diagnose the recorded exception and logs before reporting runtime PASS; screenshots are not required and production remains forbidden in the harness.

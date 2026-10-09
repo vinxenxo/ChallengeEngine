@@ -310,7 +310,19 @@ assert 'cases=11/11' in certification_preflight.stdout and 'media_created=false'
 print('[C11C-SUITE-SELF-TEST] 13/22 d913_lifecycle', flush=True)
 d913_lifecycle = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_cross_suite_lifecycle.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=240)
 assert d913_lifecycle.returncode == 0, d913_lifecycle.stdout + "\n" + d913_lifecycle.stderr
-assert 'content_types=3/3' in d913_lifecycle.stdout and 'stages=5/5' in d913_lifecycle.stdout and 'negative=12/12' in d913_lifecycle.stdout, d913_lifecycle.stdout
+assert (
+    'content_types=3/3' in d913_lifecycle.stdout
+    and 'stages=5/5' in d913_lifecycle.stdout
+    and 'identity_continuity=PASS' in d913_lifecycle.stdout
+    and 'GUI/CLI parity=3/3' in d913_lifecycle.stdout
+    and 'catalog_projection=3/3' in d913_lifecycle.stdout
+    and 'maintenance_audit=3/3' in d913_lifecycle.stdout
+    and 'negative=14/14' in d913_lifecycle.stdout
+    and 'persisted_parity_regression=4/4' in d913_lifecycle.stdout
+    and 'renderer=OFF' in d913_lifecycle.stdout
+    and 'media_created=false' in d913_lifecycle.stdout
+    and 'release_authority=NONE' in d913_lifecycle.stdout
+), d913_lifecycle.stdout
 
 print('[C11C-SUITE-SELF-TEST] 14/22 producer_lifecycle_contract', flush=True)
 producer_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d913_lifecycle_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)

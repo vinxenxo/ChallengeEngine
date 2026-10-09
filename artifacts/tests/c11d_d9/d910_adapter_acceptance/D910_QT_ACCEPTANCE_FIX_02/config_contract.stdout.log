@@ -1,0 +1,4 @@
+C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D-only renderer adapter boundary + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix + D9.16 full-acceptance gate registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false
+C11C_CONFIG_D9_16_CONTRACT PASS | read_only=true | full_acceptance=BLOCKED_AS_REQUIRED | renderer=false | media=false | release_authority=NONE
+C11C_CONFIG_D_BASELINE_CANDIDATE_POLICY PASS | read_only=true | freeze_eligible=false | D4.8=BLOCKED | renderer=false | media=false | release_authority=NONE
+C11C_CONFIG_D9_15_OPERATOR_EVIDENCE_REQUIREMENTS PASS | pairings=13 | read_only=true | renderer=false | media=false | release_authority=NONE

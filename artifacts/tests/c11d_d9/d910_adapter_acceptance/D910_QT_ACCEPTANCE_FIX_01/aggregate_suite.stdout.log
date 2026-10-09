@@ -1,0 +1,13 @@
+[C11C-SUITE-SELF-TEST] 1/22 editorial_test
+[C11C-SUITE-SELF-TEST] 2/22 integration
+[C11C-SUITE-SELF-TEST] 3/22 universal_producer
+[C11C-SUITE-SELF-TEST] 4/22 producer_gui_contract
+[C11C-SUITE-SELF-TEST] 5/22 bridge_test
+[C11C-SUITE-SELF-TEST] 6/22 catalog_test
+[C11C-SUITE-SELF-TEST] 7/22 catalog_contract
+[C11C-SUITE-SELF-TEST] 8/22 config_test
+[C11C-SUITE-SELF-TEST] 9/22 config_contract
+[C11C-SUITE-SELF-TEST] 10/22 maintenance_test
+[C11C-SUITE-SELF-TEST] 11/22 test_route_contract
+[C11C-SUITE-SELF-TEST] 12/22 certification_preflight
+[C11C-SUITE-SELF-TEST] 13/22 d913_lifecycle

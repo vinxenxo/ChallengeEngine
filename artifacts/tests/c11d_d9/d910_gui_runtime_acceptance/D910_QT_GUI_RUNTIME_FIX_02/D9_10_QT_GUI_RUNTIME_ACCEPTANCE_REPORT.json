@@ -1,0 +1,85 @@
+{
+  "schema": "C11-D-D9.10-QT-GUI-RUNTIME-ACCEPTANCE-V1",
+  "schema_version": "1.0",
+  "run_id": "D910_QT_GUI_RUNTIME_FIX_02",
+  "started_at_utc": "2026-10-09T20:43:48.825741+00:00",
+  "completed_at_utc": "2026-10-09T20:43:51.237024+00:00",
+  "status": "PASS",
+  "scope": "Offscreen runtime exercise of the existing test/operator Producer Qt window; three content types, explicit editorial override propagation, GUI/CLI parity, D-only adapter locks; no screenshots or media.",
+  "qt_gui_runtime_exercised": true,
+  "operator_interactive_visual_observation": false,
+  "screenshots_required": false,
+  "checks": [
+    {
+      "content_type": "challenges",
+      "status": "PASS",
+      "request_id": "D99-GUI-C74D3E5888B9",
+      "run_root": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-C74D3E5888B9",
+      "request_hash": "fe6bd712584c59cadfd116d588fc1d314a7928c31de31c85a5cedac93e3a23ab",
+      "plan_hash": "5e000674af470f5dd38b93ded93d840451c4f5a7f905a7d744c83cc2c9a8d210",
+      "bridge_record_hash": "5a29a18bd73c6d514e972a90352af0e173d123bdcd9b0403a3eb2b326a300e1c",
+      "d_only_adapter_envelope_hash": "344d18608991a67e683799da40116bc226d8c2da184ae3f45c83a6c9e98a1c48",
+      "editorial_override_propagated": true,
+      "gui_cli_parity": "PASS",
+      "renderer_dispatch_invoked": false,
+      "media_output_created": false
+    },
+    {
+      "content_type": "visual_loops",
+      "status": "PASS",
+      "request_id": "D99-GUI-10CBD61E0B8E",
+      "run_root": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-10CBD61E0B8E",
+      "request_hash": "268ba3757be804534093d0691e25b1532be427f353daf6f3947ae11646daaf78",
+      "plan_hash": "500938603a7e4c8427507504de1fdd31f48cb61696040ddb26a3c1c9943ea208",
+      "bridge_record_hash": "4b9e021518ed3251a6ea984f735e53020e3f534af567e2cfd7e045bb031a6929",
+      "d_only_adapter_envelope_hash": "850dba29839adb4ba2a3889a704cb65cc6125c77b7bf58738f7f0d5064c80dd5",
+      "editorial_override_propagated": true,
+      "gui_cli_parity": "PASS",
+      "renderer_dispatch_invoked": false,
+      "media_output_created": false
+    },
+    {
+      "content_type": "visual_drills",
+      "status": "PASS",
+      "request_id": "D99-GUI-16ABA097291D",
+      "run_root": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-16ABA097291D",
+      "request_hash": "ddee63bd881c00756ba2fbb457a90655e1c0c67bd42c61c64fda5f4419799b02",
+      "plan_hash": "efa5e33a921b19bb149da88312e0e49434f2db9f52a1d64623f089c66b402b7d",
+      "bridge_record_hash": "2bb4c587e79b8064b7fd8e63b9b7364fab5d4a2fd2cdccfd5c0fdca39bb2bfdd",
+      "d_only_adapter_envelope_hash": "2dc062819166778fb5313a8b5c52449d0b6fb8b2725bd96d436808fe2a902fdb",
+      "editorial_override_propagated": true,
+      "gui_cli_parity": "PASS",
+      "renderer_dispatch_invoked": false,
+      "media_output_created": false
+    }
+  ],
+  "error": null,
+  "governance": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_match": true,
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "content_type_checks": "3/3",
+    "editorial_override_propagation_required": true,
+    "qt_platform": "offscreen",
+    "screenshot_collection_required": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "definitive_gui": "DEFERRED_UNTIL_FINAL_D_BASELINE_FROZEN"
+  },
+  "outputs": {
+    "relative_run_root": "artifacts/tests/c11d_d9/d910_gui_runtime_acceptance/D910_QT_GUI_RUNTIME_FIX_02",
+    "report_file": "D9_10_QT_GUI_RUNTIME_ACCEPTANCE_REPORT.json",
+    "media_created": false
+  },
+  "report_hash": "75ab98edf08d1012a4df323eb6e2f6f09f98e0287e81a492f1a0cbe715a47962"
+}

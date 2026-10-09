@@ -208,6 +208,42 @@ def _stage(surface: str, lifecycle_id: str, identity_sha256: str, status: str, e
     }
 
 
+def _validate_persisted_gui_cli_parity_receipt(
+    parity: Any,
+    producer_receipt: Mapping[str, Any],
+    *,
+    expected_plan_hash: str,
+    expected_bridge_record_hash: str,
+) -> None:
+    """Validate the current D9.10 GUI/CLI parity receipt without relaxing its schema."""
+    expected_checks = {
+        "canonical_request_equal",
+        "request_hash_equal",
+        "editorial_hash_equal",
+        "plan_equal",
+        "plan_hash_equal",
+        "bridge_planning_record_equal",
+        # The live Producer GUI also proves that the D-only adapter envelope
+        # returned by GUI and CLI is identical. This seventh check is required.
+        "d_only_adapter_envelope_equal",
+    }
+    if not isinstance(parity, Mapping):
+        raise CrossSuiteLifecycleError("Persisted GUI/CLI parity receipt must be an object")
+    checks = parity.get("checks")
+    if parity.get("status") != "PASS" or not isinstance(checks, dict) or set(checks) != expected_checks or not all(checks.values()):
+        raise CrossSuiteLifecycleError("Persisted GUI/CLI parity receipt is not a complete PASS")
+    if parity.get("bridge_record_hash") != expected_bridge_record_hash or parity.get("gui_plan_hash") != expected_plan_hash:
+        raise CrossSuiteLifecycleError("Persisted GUI/CLI parity receipt does not bind to the canonical plan and bridge")
+    adapter_hash = parity.get("d_only_adapter_envelope_hash")
+    if (
+        not isinstance(adapter_hash, str)
+        or not re.fullmatch(r"[0-9a-f]{64}", adapter_hash)
+        or parity.get("cli_d_only_adapter_envelope_hash") != adapter_hash
+        or producer_receipt.get("d_only_adapter_envelope_hash") != adapter_hash
+    ):
+        raise CrossSuiteLifecycleError("Persisted GUI/CLI parity receipt does not bind to the D-only adapter envelope")
+
+
 def build_catalog_projection(identity: Mapping[str, Any], lifecycle_id: str, identity_sha256: str, evidence_path: str, project_root: Path | str | None = None) -> dict[str, Any]:
     """Call the existing Catalog backend's read-only D9.13 plan projection adapter."""
     root = _root(project_root)
@@ -231,12 +267,12 @@ def build_lifecycle_receipt(
     result = producer.evaluate_universal_request(raw_request, root)
     bridge = bridge_module.build_bridge_planning_record(result, root)
     parity = docs["gui_cli_parity.json"]
-    parity_checks = parity.get("checks") if isinstance(parity, dict) else None
-    expected_parity_checks = {
-        "canonical_request_equal", "request_hash_equal", "editorial_hash_equal", "plan_equal", "plan_hash_equal", "bridge_planning_record_equal"
-    }
-    if parity.get("status") != "PASS" or not isinstance(parity_checks, dict) or set(parity_checks) != expected_parity_checks or not all(parity_checks.values()):
-        raise CrossSuiteLifecycleError("Persisted GUI/CLI parity receipt is not a complete PASS")
+    _validate_persisted_gui_cli_parity_receipt(
+        parity,
+        docs["producer_universal_receipt.json"],
+        expected_plan_hash=result["plan_hash"],
+        expected_bridge_record_hash=bridge["record_hash"],
+    )
     if docs["canonical_request.json"] != result["canonical_request"]:
         raise CrossSuiteLifecycleError("Persisted canonical request does not match the canonical Producer backend")
     if docs["universal_plan.json"] != result["plan"]:
@@ -250,8 +286,6 @@ def build_lifecycle_receipt(
     for name, expected in (("request_hash", result["request_hash"]), ("editorial_hash", result["editorial_hash"]), ("plan_hash", result["plan_hash"])):
         if docs["producer_universal_receipt.json"].get(name) != expected:
             raise CrossSuiteLifecycleError(f"Persisted Producer receipt {name} mismatch")
-    if parity.get("bridge_record_hash") != bridge.get("record_hash") or parity.get("gui_plan_hash") != result["plan_hash"]:
-        raise CrossSuiteLifecycleError("Persisted GUI/CLI parity receipt does not bind to the canonical plan and bridge")
 
     plan = result["plan"]
     canonical_request = result["canonical_request"]
