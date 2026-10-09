@@ -30,6 +30,36 @@ def _readj(path: Path) -> dict[str, Any]:
     return value
 def _root(project_root: Path | str | None = None) -> Path: return Path(project_root).resolve() if project_root is not None else ROOT.resolve()
 
+D9_15_CHECKPOINT_REL = Path("docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json")
+D9_15_RECORDER_REL = Path("tools/c11d/baseline_candidate/operator_evidence.py")
+D9_15_REQUIRED_BLOCKER = "D9_15_OPERATOR_GUI_EVIDENCE_NOT_RECORDED_FOR_ALL_FIVE_SURFACES"
+
+def _inspect_d915_checkpoint(root: Path) -> dict[str, Any]:
+    """Accept D9.15 only when its sealed checkpoint and hash-bound evidence ledger validate live."""
+    path = root / D9_15_CHECKPOINT_REL
+    result: dict[str, Any] = {"exists": path.is_file(), "valid": False, "status": "MISSING", "sha256": None, "ledger_sha256": None, "error": None}
+    if not path.is_file():
+        return result
+    try:
+        recorder = root / D9_15_RECORDER_REL
+        if not recorder.is_file() or recorder.is_symlink():
+            raise FullAcceptanceError("D9.15 evidence recorder is missing or unsafe")
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("c11d_d915_operator_evidence_full_acceptance", recorder)
+        if spec is None or spec.loader is None:
+            raise FullAcceptanceError("cannot load D9.15 evidence recorder")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        valid, reason = module.validate_acceptance_checkpoint(root, raise_on_error=False)
+        checkpoint = _readj(path)
+        result.update({"valid": bool(valid), "status": "PASS_CLOSED" if valid else "INVALID_CHECKPOINT",
+                       "sha256": sha256_file(path), "ledger_sha256": checkpoint.get("ledger_sha256"),
+                       "error": None if valid else str(reason)})
+        return result
+    except Exception as exc:
+        result.update({"status": "INVALID_CHECKPOINT", "sha256": sha256_file(path), "error": str(exc)})
+        return result
+
 def build_full_acceptance_preflight(project_root: Path | str | None = None) -> dict[str, Any]:
     root=_root(project_root); errors=[]; checks=[]
     contract_path=(root/CONTRACT_REL).resolve()
@@ -96,14 +126,23 @@ def build_full_acceptance_preflight(project_root: Path | str | None = None) -> d
     try:
         import gui_operational_acceptance as d915
         op=d915.build_operational_preflight(root); d915.validate_operational_preflight(op,root)
-        d915_safe=(op.get("status")=="PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED" and op.get("operational_acceptance_closed") is False and op.get("operator_acceptance",{}).get("confirmed") is False and op.get("surface_count")==5)
-    except Exception as exc: d915_safe=False; errors.append(f"D9.15 preflight validation failed: {exc}")
+        static_d915_safe=(op.get("status")=="PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED" and op.get("operational_acceptance_closed") is False and op.get("operator_acceptance",{}).get("confirmed") is False and op.get("surface_count")==5)
+    except Exception as exc: static_d915_safe=False; errors.append(f"D9.15 preflight validation failed: {exc}")
+    d915_checkpoint=_inspect_d915_checkpoint(root)
+    if d915_checkpoint["exists"] and not d915_checkpoint["valid"]:
+        errors.append(f"D9.15 acceptance checkpoint exists but is invalid/stale: {d915_checkpoint['error']}")
+    d915_safe=static_d915_safe and (not d915_checkpoint["exists"] or d915_checkpoint["valid"])
+    checks.append({"check_id":"d9_15_operator_evidence_not_inferred","status":"PASS" if d915_safe else "BLOCKED",
+                   "static_preflight_status":op.get("status") if 'op' in locals() else "BLOCKED",
+                   "canonical_checkpoint_status":d915_checkpoint["status"]})
+    if not d915_safe: errors.append("D9.15 checkpoint/preflight is missing consistency or evidence validation")
     checks.append({"check_id":"d9_14_blocked_gate_preserved","status":"PASS" if d914_safe else "BLOCKED"})
-    checks.append({"check_id":"d9_15_operator_evidence_not_inferred","status":"PASS" if d915_safe else "BLOCKED"})
     if not d914_safe: errors.append("D9.14 must remain blocked until separately authorized baseline and D4.8")
-    if not d915_safe: errors.append("D9.15 cannot infer five-surface operator evidence from static preflight")
 
+    d915_closed=d915_checkpoint["valid"] is True
     blockers=list(contract.get("full_acceptance_blockers",[]))
+    if d915_closed:
+        blockers=[item for item in blockers if item != D9_15_REQUIRED_BLOCKER]
     static_pass=not errors and len(checks)==5 and all(x["status"]=="PASS" for x in checks) and len(evidence_rows)==9 and all(x["registered"] for x in evidence_rows)
     # This preflight explicitly is not a full acceptance and cannot be closed by local flags.
     record={
@@ -114,11 +153,12 @@ def build_full_acceptance_preflight(project_root: Path | str | None = None) -> d
       "full_acceptance_closed":False,"operator_confirmation_required":True,
       "case_count":len(evidence_rows),"cases":evidence_rows,"checks":checks,"check_count":len(checks),
       "blockers":blockers,"errors":errors,
-      "operator_evidence":{"status":"REQUIRED","five_surface_evidence_recorded":False,"evidence_ref":None},
+      "operator_evidence":({"status":"PASS_CLOSED","five_surface_evidence_recorded":True,"evidence_ref":D9_15_CHECKPOINT_REL.as_posix()} if d915_closed else {"status":"REQUIRED","five_surface_evidence_recorded":False,"evidence_ref":None}),
       "governance":copy.deepcopy(contract.get("governance",{})),
       "side_effects":{"files_written":False,"renderer_activated":False,"production_executed":False,"media_created":False,"release_created":False},
-      "references":{"contract_sha256":sha256_file(contract_path),"historical_c11c_manifest_sha256":manifest_hash},
-      "d9_14_gate_status":"BLOCKED","d9_15_operator_status":"REQUIRED",
+      "references":{"contract_sha256":sha256_file(contract_path),"historical_c11c_manifest_sha256":manifest_hash,
+                     "d9_15_checkpoint_sha256":d915_checkpoint.get("sha256"),"d9_15_ledger_sha256":d915_checkpoint.get("ledger_sha256")},
+      "d9_14_gate_status":"BLOCKED","d9_15_operator_status":"PASS_CLOSED" if d915_closed else d915_checkpoint["status"] if d915_checkpoint["exists"] else "REQUIRED",
     }
     return _seal(record)
 
@@ -134,12 +174,19 @@ def validate_full_acceptance_preflight(record: Mapping[str,Any], project_root: P
     if candidate.get("governance")!=expected_gov: raise FullAcceptanceError("D9.16 governance invariants drifted")
     if candidate.get("side_effects")!={"files_written":False,"renderer_activated":False,"production_executed":False,"media_created":False,"release_created":False}: raise FullAcceptanceError("D9.16 preflight must be side-effect-free")
     required=set(_readj(root/CONTRACT_REL).get("full_acceptance_blockers",[]))
+    if candidate.get("d9_15_operator_status")=="PASS_CLOSED":
+        required.discard(D9_15_REQUIRED_BLOCKER)
     if not required.issubset(set(candidate.get("blockers",[]))): raise FullAcceptanceError("D9.16 blocker inventory incomplete")
-    if candidate.get("operator_evidence")!={"status":"REQUIRED","five_surface_evidence_recorded":False,"evidence_ref":None}: raise FullAcceptanceError("D9.16 cannot invent operator evidence")
-    if candidate.get("d9_14_gate_status")!="BLOCKED" or candidate.get("d9_15_operator_status")!="REQUIRED": raise FullAcceptanceError("D9.14/D9.15 blocker state drifted")
+    if candidate.get("d9_14_gate_status")!="BLOCKED": raise FullAcceptanceError("D9.14 must remain BLOCKED until separately authorized")
+    if candidate.get("d9_15_operator_status") not in ("REQUIRED","PASS_CLOSED"):
+        raise FullAcceptanceError("D9.15 state must be REQUIRED or backed by a verified PASS_CLOSED checkpoint")
     if len(candidate.get("cases",[]))!=9 or candidate.get("case_count")!=9: raise FullAcceptanceError("D9.16 acceptance scope must contain nine checkpoints D9.8–D9.16")
     if candidate.get("errors")!=[]: raise FullAcceptanceError("passing static preflight cannot contain errors")
     current=build_full_acceptance_preflight(root)
     if current.get("status")!="PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED": raise FullAcceptanceError("current D9.16 preflight no longer passes")
+    if candidate.get("operator_evidence")!=current.get("operator_evidence") or candidate.get("d9_15_operator_status")!=current.get("d9_15_operator_status"):
+        raise FullAcceptanceError("D9.15 evidence/checkpoint state differs from the current sealed ledger")
+    if candidate.get("references")!=current.get("references"):
+        raise FullAcceptanceError("D9.16 contract, manifest or D9.15 checkpoint hashes differ from current state")
     if current.get("preflight_sha256")!=given: raise FullAcceptanceError("stale D9.16 preflight record")
     return {"valid":True,"status":"PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED","full_acceptance_closed":False}

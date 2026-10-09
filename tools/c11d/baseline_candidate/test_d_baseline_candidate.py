@@ -99,6 +99,51 @@ def _test_legacy_disposition_contract() -> None:
         assert "ARCHIVE_HASH_DIFFERS_FROM_HISTORICAL_MANIFEST" in mismatched_readme["reasons"]
 
 
+def _test_operator_acceptance_checkpoint_contract() -> None:
+    """Build an isolated sealed D9.15 ledger; verify checkpoint and evidence tampering are rejected."""
+    import importlib.util
+    with tempfile.TemporaryDirectory(prefix="d915_operator_acceptance_checkpoint_") as temp_name:
+        temp_root = Path(temp_name)
+        for rel in (
+            "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+            "definitions/c11d/baseline/D_BASELINE_OPERATOR_EVIDENCE_REQUIREMENTS_V1.json",
+            "tools/c11d/baseline_candidate/operator_evidence.py",
+        ):
+            source = ROOT / rel
+            target = temp_root / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+        recorder_path = temp_root / "tools/c11d/baseline_candidate/operator_evidence.py"
+        spec = importlib.util.spec_from_file_location("d915_checkpoint_fixture_recorder", recorder_path)
+        assert spec is not None and spec.loader is not None
+        recorder = importlib.util.module_from_spec(spec); spec.loader.exec_module(recorder)
+        recorder.init_ledger(temp_root)
+        req = recorder._requirements(temp_root)
+        evidence_root = temp_root / req["evidence_root"]
+        evidence_root.mkdir(parents=True, exist_ok=True)
+        for idx, row in enumerate(req["required_evidence_pairings"], 1):
+            rel = f"{req['evidence_root']}/fixture_{idx:02d}.txt"
+            evidence = temp_root / rel
+            evidence.write_text(f"isolated D9.15 evidence fixture {idx:02d}: no media\n", encoding="utf-8")
+            recorder.record_event(temp_root, surface=row["surface_id"], capability=row["capability_id"],
+                action=f"Isolated fixture verifies pairing {idx:02d}", evidence_file=rel,
+                observed_status="PASS", operator="test fixture", operator_attestation=recorder.ATTESTATION)
+        recorder.finalize_acceptance(temp_root, operator_attestation="I_CONFIRM_ALL_D915_PAIRINGS_REVIEWED_NO_MEDIA")
+        verified = dbc._inspect_operator_acceptance_checkpoint(temp_root)
+        assert verified["valid"] is True and verified["status"] == "PASS_CLOSED", verified
+        checkpoint = temp_root / dbc.D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT_REL
+        original = checkpoint.read_bytes()
+        tampered = json.loads(original.decode("utf-8")); tampered["passed_pairings"] = 12
+        checkpoint.write_text(json.dumps(tampered, ensure_ascii=False, indent=2), encoding="utf-8")
+        rejected = dbc._inspect_operator_acceptance_checkpoint(temp_root)
+        assert rejected["exists"] is True and rejected["valid"] is False and rejected["status"] == "INVALID_OR_STALE", rejected
+        checkpoint.write_bytes(original)
+        first_evidence = next(evidence_root.glob("fixture_*.txt"))
+        first_evidence.write_text("changed after checkpoint sealing; tampering must fail\n", encoding="utf-8")
+        rejected = dbc._inspect_operator_acceptance_checkpoint(temp_root)
+        assert rejected["valid"] is False and "changed after recording" in str(rejected["error"]), rejected
+
+
 def _test_operator_evidence_waiver_contract() -> None:
     """The waiver is sealed/scope-limited and never claims screenshot evidence."""
     valid = dbc._inspect_operator_evidence_waiver(ROOT, dbc.EXPECTED_C_MANIFEST_SHA256)
@@ -128,6 +173,7 @@ def _test_operator_evidence_waiver_contract() -> None:
 def main() -> int:
     _test_legacy_disposition_contract()
     _test_operator_evidence_waiver_contract()
+    _test_operator_acceptance_checkpoint_contract()
     record = dbc.build_candidate_preflight(ROOT)
     result = dbc.validate_candidate_preflight(record, ROOT)
     assert result["valid"] is True and result["freeze_eligible"] is False
@@ -164,8 +210,16 @@ def main() -> int:
     assert must_block.issubset(set(record["blockers"])), sorted(set(must_block) - set(record["blockers"]))
     assert record["governance"]["d9_15_operator_evidence_waiver_valid"] is True
     assert record["governance"]["d9_15_operator_evidence_waiver_status"] == "VALID_WAIVER"
-    assert record["governance"]["d9_15_candidate_evidence_gate_status"] == "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY"
-    assert record["governance"]["d9_15_operator_evidence_pass_closed"] is False
+    if record["governance"]["d9_15_operator_acceptance_checkpoint_valid"] is True:
+        assert record["governance"]["d9_15_candidate_evidence_gate_status"] == "D9.15_OPERATOR_EVIDENCE_PASS_CLOSED"
+        assert record["governance"]["d9_15_operator_evidence_pass_closed"] is True
+        assert record["governance"]["d9_15_operator_acceptance_checkpoint_status"] == "PASS_CLOSED"
+        assert len(record["governance"]["d9_15_operator_acceptance_checkpoint_sha256"]) == 64
+        assert record["governance"]["d9_16_full_acceptance_blocker_count"] == 1
+    else:
+        assert record["governance"]["d9_15_candidate_evidence_gate_status"] == "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY"
+        assert record["governance"]["d9_15_operator_evidence_pass_closed"] is False
+        assert record["governance"]["d9_16_full_acceptance_blocker_count"] == 2
     assert "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED" not in record["blockers"]
     assert record["side_effects"] == {"repository_files_written": False, "freeze_archive_created": False, "media_created": False, "renderer_activation": False, "manifest_modified": False, "release_authority_granted": False}
 
@@ -195,7 +249,10 @@ def main() -> int:
     reject("claim changed paths outside extensions are acceptable", lambda x: x["inventory"].update(c_manifest_changed_entries_confined_to_d_roots=False))
     reject("sixth surface", lambda x: x["canonical_surfaces"].update(count=6))
     reject("claim D9.14 pass", lambda x: x["blockers"].remove("D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED"))
-    reject("forge D9.15 PASS from waiver", lambda x: x["governance"].update(d9_15_candidate_evidence_gate_status="D9.15_OPERATOR_EVIDENCE_PASS_CLOSED", d9_15_operator_evidence_pass_closed=True))
+    if record["governance"]["d9_15_operator_acceptance_checkpoint_valid"] is True:
+        reject("downgrade canonical D9.15 checkpoint", lambda x: x["governance"].update(d9_15_candidate_evidence_gate_status="WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY", d9_15_operator_evidence_pass_closed=False, d9_15_operator_acceptance_checkpoint_valid=False))
+    else:
+        reject("forge D9.15 PASS from waiver", lambda x: x["governance"].update(d9_15_candidate_evidence_gate_status="D9.15_OPERATOR_EVIDENCE_PASS_CLOSED", d9_15_operator_evidence_pass_closed=True, d9_15_operator_acceptance_checkpoint_valid=True, d9_15_operator_acceptance_checkpoint_status="PASS_CLOSED", d9_15_operator_acceptance_checkpoint_sha256="0"*64, d9_15_operator_acceptance_checkpoint_ledger_sha256="0"*64))
     reject("claim D9.16 closed", lambda x: x["blockers"].remove("D9_16_FULL_ACCEPTANCE_NOT_CLOSED"))
     reject("claim D9.17 closed", lambda x: x["blockers"].remove("D9_17_CLOSURE_NO_GO"))
     reject("claim renderer approval", lambda x: x["blockers"].remove("D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED"))

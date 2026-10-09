@@ -75,6 +75,44 @@ def _load_json(path: Path) -> dict[str, Any]:
     return data
 
 
+D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT_REL = "docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json"
+D9_15_OPERATOR_EVIDENCE_RECORDER_REL = "tools/c11d/baseline_candidate/operator_evidence.py"
+
+
+def _inspect_operator_acceptance_checkpoint(root: Path) -> dict[str, Any]:
+    """Verify canonical D9.15 acceptance against its sealed checkpoint and live hash-bound evidence ledger."""
+    path = root / D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT_REL
+    result: dict[str, Any] = {
+        "exists": path.is_file(), "valid": False, "status": "MISSING",
+        "path": D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT_REL, "sha256": None,
+        "ledger_sha256": None, "error": None,
+    }
+    if not path.is_file():
+        return result
+    try:
+        recorder_path = root / D9_15_OPERATOR_EVIDENCE_RECORDER_REL
+        if not recorder_path.is_file() or recorder_path.is_symlink():
+            raise CandidateAuditError("D9.15 evidence recorder is missing or unsafe")
+        spec = importlib.util.spec_from_file_location("c11d_d915_operator_evidence_candidate_audit", recorder_path)
+        if spec is None or spec.loader is None:
+            raise CandidateAuditError("Cannot load D9.15 evidence recorder for checkpoint verification")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        valid, reason = module.validate_acceptance_checkpoint(root, raise_on_error=False)
+        checkpoint = _load_json(path)
+        result.update({
+            "valid": bool(valid),
+            "status": "PASS_CLOSED" if valid else "INVALID_OR_STALE",
+            "sha256": _hash_file(path),
+            "ledger_sha256": checkpoint.get("ledger_sha256"),
+            "error": None if valid else str(reason),
+        })
+        return result
+    except Exception as exc:
+        result.update({"status": "INVALID_OR_STALE", "sha256": _hash_file(path), "error": str(exc)})
+        return result
+
+
 def _inspect_operator_evidence_waiver(root: Path, manifest_sha256: str) -> dict[str, Any]:
     """Validate the narrow D9.15 capture waiver without marking operational acceptance closed."""
     path = root / D9_15_OPERATOR_EVIDENCE_WAIVER_REL
@@ -377,12 +415,18 @@ def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any], *, c
     d16gov = d16.get("governance", {})
     if "BLOCKED" in str(d14.get("status", "")) or d14gov.get("d4_8") == "BLOCKED":
         blockers.append("D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED")
+    acceptance_checkpoint = _inspect_operator_acceptance_checkpoint(root)
+    if acceptance_checkpoint["exists"] and not acceptance_checkpoint["valid"]:
+        # A present but invalid checkpoint must fail closed; a candidate-only waiver is not a fallback for tampered evidence.
+        raise CandidateAuditError(f"D9.15 acceptance checkpoint is present but invalid/stale: {acceptance_checkpoint['error']}")
+    canonical_d915_closed = bool(acceptance_checkpoint.get("valid"))
     waiver = _inspect_operator_evidence_waiver(root, manifest_sha256)
     waiver_valid = bool(waiver.get("valid"))
-    if d15.get("status") != "PASS_CLOSED" and d15gov.get("media_created") is False and not waiver_valid:
+    if not canonical_d915_closed and d15gov.get("media_created") is False and not waiver_valid:
         blockers.append("D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED")
+    # Canonical, live-verified operational closure takes precedence over the historical candidate-only waiver.
     d9_15_candidate_evidence_status = (
-        "D9.15_OPERATOR_EVIDENCE_PASS_CLOSED" if d15.get("status") == "PASS_CLOSED"
+        "D9.15_OPERATOR_EVIDENCE_PASS_CLOSED" if canonical_d915_closed
         else "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY" if waiver_valid
         else "OPERATOR_EVIDENCE_REQUIRED"
     )
@@ -458,15 +502,20 @@ def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any], *, c
         raise CandidateAuditError("D governance invariant drift detected; candidate preflight refuses to continue")
     return blockers, {
         "d9_14_status": d14.get("status"),
-        "d9_15_status": d15.get("status"),
+        "d9_15_status": "PASS_CLOSED" if canonical_d915_closed else d15.get("status"),
         "d9_15_candidate_evidence_gate_status": d9_15_candidate_evidence_status,
-        "d9_15_operator_evidence_pass_closed": d15.get("status") == "PASS_CLOSED",
+        "d9_15_operator_evidence_pass_closed": canonical_d915_closed,
+        "d9_15_operator_acceptance_checkpoint_valid": canonical_d915_closed,
+        "d9_15_operator_acceptance_checkpoint_status": acceptance_checkpoint.get("status", "MISSING"),
+        "d9_15_operator_acceptance_checkpoint_sha256": acceptance_checkpoint.get("sha256"),
+        "d9_15_operator_acceptance_checkpoint_ledger_sha256": acceptance_checkpoint.get("ledger_sha256"),
+        "d9_15_operator_acceptance_checkpoint_error": acceptance_checkpoint.get("error"),
         "d9_15_operator_evidence_waiver_valid": waiver_valid,
         "d9_15_operator_evidence_waiver_status": waiver.get("status", "MISSING"),
         "d9_15_operator_evidence_waiver_sha256": waiver.get("sha256"),
         "d9_15_operator_evidence_waiver_error": waiver.get("error"),
         "d9_16_status": d16.get("status"),
-        "d9_16_full_acceptance_blocker_count": len(d16.get("full_acceptance_blockers", [])),
+        "d9_16_full_acceptance_blocker_count": len([item for item in d16.get("full_acceptance_blockers", []) if not (canonical_d915_closed and item == "D9_15_OPERATOR_GUI_EVIDENCE_NOT_RECORDED_FOR_ALL_FIVE_SURFACES")]),
         "d9_17_closure_status": "BLOCKED_NO_GO" if "D9_17_CLOSURE_NO_GO" in blockers else "REVIEW_REQUIRED",
         "d4_8": "BLOCKED",
         "renderer_activation": False,
@@ -623,8 +672,18 @@ def _validate_candidate_record_invariants(record: dict[str, Any]) -> None:
         raise CandidateAuditError("Candidate lost one or more mandatory freeze blockers")
     governance = record.get("governance", {})
     d915_blocker = "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED" in blockers
+    checkpoint_valid = governance.get("d9_15_operator_acceptance_checkpoint_valid") is True
     waiver_valid = governance.get("d9_15_operator_evidence_waiver_valid") is True
-    if waiver_valid:
+    if checkpoint_valid:
+        if d915_blocker or governance.get("d9_15_operator_acceptance_checkpoint_status") != "PASS_CLOSED":
+            raise CandidateAuditError("Accepted D9.15 checkpoint must remove only its own candidate evidence blocker")
+        if governance.get("d9_15_candidate_evidence_gate_status") != "D9.15_OPERATOR_EVIDENCE_PASS_CLOSED" or governance.get("d9_15_operator_evidence_pass_closed") is not True:
+            raise CandidateAuditError("D9.15 canonical acceptance checkpoint was not reflected as PASS/CLOSED")
+        for field in ("d9_15_operator_acceptance_checkpoint_sha256", "d9_15_operator_acceptance_checkpoint_ledger_sha256"):
+            value = governance.get(field)
+            if not isinstance(value, str) or len(value) != 64 or any(ch not in "0123456789abcdef" for ch in value):
+                raise CandidateAuditError(f"D9.15 accepted checkpoint is missing a valid {field}")
+    elif waiver_valid:
         if d915_blocker or governance.get("d9_15_operator_evidence_waiver_status") != "VALID_WAIVER":
             raise CandidateAuditError("Validated D9.15 waiver must remove only the candidate evidence-capture blocker")
         if governance.get("d9_15_candidate_evidence_gate_status") != "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY" or governance.get("d9_15_operator_evidence_pass_closed") is not False:

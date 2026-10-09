@@ -1,5 +1,12 @@
 # C11-D START PROMPT — D9.15 PASS/CLOSED; D9.14 remains blocked (2026-10-09)
 
+## Current integration issue — canonical D9.15 checkpoint consumption (2026-10-09)
+
+D9.15 canonical operational acceptance is sealed `PASS_CLOSED` (13/13 pairings). The most recent D9.15/D9.16/candidate commands exposed an integration inconsistency: static D9.15 preflight correctly says operator confirmation is required because it cannot infer human evidence, but D9.16 and candidate preflight also kept saying D9.15 evidence was required / candidate-only waived. The latter two must consult the sealed checkpoint and live hash-bound ledger, not the static D9.15 contract status.
+
+Apply and verify the latest integration overlay before proceeding. Expected: D9.16 reports `D9.15_operator_evidence=PASS_CLOSED` while remaining `BLOCKED_AS_REQUIRED` due D9.14; candidate reports canonical D9.15 `PASS_CLOSED` while `freeze_eligible=false` and five non-D9.15 blockers remain; aggregate Suite passes. Invalid/stale present checkpoints must fail closed. D9.14 remains blocked by missing approved/frozen future D renderer baseline and explicit D4.8 authorization.
+
+
 Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. This top section supersedes older pending/waiver-only status notes retained below for historical trace.
 
 ## Latest operator-confirmed state

@@ -1,4 +1,17 @@
-# D9.15 canonical operator evidence PASS/CLOSED — 2026-10-09
+# D9 Suite Integration — Change Log
+
+## D9.15 sealed-checkpoint consumer integration — 2026-10-09
+
+- Latest Windows outputs confirmed canonical D9.15 `PASS_CLOSED` (13/13 pairings) but exposed stale consumers: D9.16 still printed operator evidence REQUIRED and candidate preflight preferred the historical candidate-only waiver.
+- Updated the candidate evaluator to validate the actual D9.15 checkpoint with the shared recorder, bind status to current ledger/evidence hashes, prefer canonical closure over the waiver, and fail closed for a present invalid/stale checkpoint.
+- Updated D9.16 preflight to report D9.15 `PASS_CLOSED` only when the same canonical checkpoint validates; it removes only the satisfied D9.15 blocker from the dynamic full-acceptance blocker list. D9.14 remains BLOCKED and D9.16 full acceptance remains BLOCKED_AS_REQUIRED.
+- Updated the aggregate Suite assertion/summary so it recognizes either canonical D9.15 closure or the earlier candidate-only waiver according to current sealed state; no governance control is bypassed.
+- Added a regression that builds a ledger/checkpoint in a temporary isolated tree and rejects tampered checkpoint fields and changed evidence bytes.
+- Preparation verification: Python compilation PASS; focused D9.16 test PASS in both no-checkpoint/REQUIRED and sealed-checkpoint/PASS_CLOSED scenarios; candidate test PASS in both waiver and canonical-closure scenarios. Full aggregate packaging-tree run was unable to pass the unrelated Maintenance step because the isolated source snapshot lacks the live D9.11 quarantine ledger; Windows checkout must rerun the listed tests.
+- Candidate must remain `freeze_eligible=false`; D9.14 remains `BLOCKED_AS_REQUIRED`; renderer OFF; no media; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
+
+
+## D9.15 canonical operator evidence PASS/CLOSED — 2026-10-09
 
 - Operator ran `operator_evidence.py status`: 13/13 recorded PASS pairings, 0 blocked, 0 pending, 13 events, no media, release authority NONE.
 - Operator ran `operator_evidence.py finalize --operator-attestation I_CONFIRM_ALL_D915_PAIRINGS_REVIEWED_NO_MEDIA` and received `D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`.
@@ -9,9 +22,6 @@
 - C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; adapter remains `PREPARE_ONLY`.
 
 ---
-
-# D9 Suite Integration — Change Log
-
 
 ## D9.10 Qt runtime accepted; next gate D9.14 (2026-10-09)
 

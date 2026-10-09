@@ -357,7 +357,7 @@ print('[C11C-SUITE-SELF-TEST] 21/22 d_baseline_candidate_preflight', flush=True)
 d_baseline_candidate = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'baseline_candidate'/'test_d_baseline_candidate.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=90)
 assert d_baseline_candidate.returncode == 0, d_baseline_candidate.stdout + "\n" + d_baseline_candidate.stderr
 assert 'freeze_eligible=false' in d_baseline_candidate.stdout and 'release_authority=NONE' in d_baseline_candidate.stdout
-assert 'D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY' in d_baseline_candidate.stdout
+assert ('D9.15=D9.15_OPERATOR_EVIDENCE_PASS_CLOSED' in d_baseline_candidate.stdout or 'D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY' in d_baseline_candidate.stdout), d_baseline_candidate.stdout
 
 # D9.10 automated offscreen-GUI runner contract. The Qt runtime itself is an
 # opt-in Windows acceptance check; this aggregate gate stays dependency-free.
@@ -366,5 +366,6 @@ d910_gui_runtime_contract = subprocess.run([sys.executable, str(ROOT/'tools'/'c1
 assert d910_gui_runtime_contract.returncode == 0, d910_gui_runtime_contract.stdout + "\n" + d910_gui_runtime_contract.stderr
 assert 'content_types=3/3' in d910_gui_runtime_contract.stdout and 'screenshots=NOT_REQUIRED' in d910_gui_runtime_contract.stdout
 
-print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED/D_BASELINE_CANDIDATE_PREFLIGHT_PASS_FREEZE_BLOCKED_AS_REQUIRED/D9.15_CAPTURE_WAIVED_CANDIDATE_ONLY/D9.10_QT_GUI_RUNTIME_HARNESS_CONTRACT PASS')
+d915_candidate_status = 'D9.15_OPERATOR_EVIDENCE_PASS_CLOSED' if 'D9.15=D9.15_OPERATOR_EVIDENCE_PASS_CLOSED' in d_baseline_candidate.stdout else 'D9.15_CAPTURE_WAIVED_CANDIDATE_ONLY'
+print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED/D_BASELINE_CANDIDATE_PREFLIGHT_PASS_FREEZE_BLOCKED_AS_REQUIRED/' + d915_candidate_status + '/D9.10_QT_GUI_RUNTIME_HARNESS_CONTRACT PASS')
 

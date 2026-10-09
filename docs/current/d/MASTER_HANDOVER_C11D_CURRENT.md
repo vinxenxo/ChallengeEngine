@@ -1,5 +1,16 @@
 # C11-D MASTER HANDOVER — D9.15 accepted; D9.14/D9.16 remain gated (2026-10-09)
 
+## Integration correction after D9.15 finalization — 2026-10-09
+
+The operator has now rerun D9.15/D9.16/candidate preflights after the canonical checkpoint was sealed. The ledger is valid and D9.15 is `PASS_CLOSED`, but the old D9.16 and candidate code did not consume that checkpoint: D9.16 still reported `D9.15_operator_evidence=REQUIRED`, and candidate status still preferred the historical candidate-only waiver. This is a state-integration defect, not a failure of the 13 accepted observations.
+
+A minimal integration overlay now makes D9.16 and candidate preflight validate `operator_evidence.py validate_acceptance_checkpoint()` against the live sealed ledger and each evidence file. A present but invalid/stale checkpoint fails closed and cannot fall back to the waiver. A valid canonical checkpoint supersedes the candidate-only waiver for status reporting and removes only the D9.15 evidence blocker from D9.16's dynamic blocker list. It does not change the D9.14 block, baseline approval requirements, freeze eligibility, renderer/media permissions or release authority.
+
+The static D9.15 GUI preflight may still print `operator_confirmation=REQUIRED`: that command tests static surface/control readiness and is intentionally forbidden from inferring human evidence. The canonical operational closure is the separately sealed `D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json` plus hash-bound ledger.
+
+**Pending Windows confirmation for the integration overlay:** D9.16 should report `D9.15_operator_evidence=PASS_CLOSED` while `full_acceptance=BLOCKED_AS_REQUIRED`; the candidate should report `D9.15=D9.15_OPERATOR_EVIDENCE_PASS_CLOSED` with the five independent blockers retained and `freeze_eligible=false`; the aggregate Suite must accept either a valid canonical closure or the candidate-only waiver depending on the active tree. Do not close D9.14 or D9.16.
+
+
 ## Latest operator-confirmed state — authoritative
 
 The operator has completed and finalized canonical D9.15 no-media GUI operational acceptance on the active Windows checkout. The `operator_evidence.py status` and `finalize` outputs are provided by the operator in this conversation.

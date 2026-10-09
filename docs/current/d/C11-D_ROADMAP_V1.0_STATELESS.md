@@ -1,5 +1,10 @@
 **Current authoritative phase (2026-10-09): D9.10 runtime PASS 3/3; bound acceptance PASS 7/7; aggregate Suite PASS 22/22; D9.15 canonical operator GUI acceptance PASS/CLOSED (13/13 pairings).** D9.14 gate remains `BLOCKED_AS_REQUIRED`; D9.16 is a passing preflight only and full acceptance remains blocked; D9 remains OPEN. The D9.15 checkpoint is sealed at SHA-256 `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f`, bound to ledger SHA-256 `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`. Next safe action: re-run D9.15/D9.16/candidate preflights against this checkpoint and record actual current outputs. Full D9.14 remains blocked until a separately approved/frozen universal D renderer baseline and explicit `D4.8` governance authorization exist. D9.17 remains `BLOCKED/NO-GO`; D10 remains BLOCKED.
 
+## D9.15 checkpoint-consumption integration fix — 2026-10-09
+
+The canonical D9.15 evidence ledger/checkpoint is now sealed PASS/CLOSED (13/13, no blocked or pending pairings). The latest operator preflights showed that the old consumers were stale: D9.16 still returned `D9.15_operator_evidence=REQUIRED` and candidate preflight still used the candidate-only waiver status. The next safe action is to apply the integration correction that validates the current D9.15 checkpoint and ledger in both consumers. A valid closure removes only the D9.15 evidence requirement from D9.16's dynamic blocker list and sets the candidate D9.15 gate to canonical PASS/CLOSED; a present invalid/stale checkpoint is a hard failure. The candidate still has five independent blockers and is not freeze-eligible. D9.14, D4.8, renderer and release authority remain blocked.
+
+
 # Challenge Engine V1.0 STATELESS — C11-D Roadmap
 
 **Governance boundary remains unchanged:** C11-C 2.19.12 and its manifest are immutable; adapter `PREPARE_ONLY`; renderer OFF; no media; `D4.8=BLOCKED`; `release_authority=NONE`. The definitive GUI remains deferred until the complete D baseline is accepted and frozen.

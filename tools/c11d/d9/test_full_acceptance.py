@@ -15,7 +15,9 @@ def main() -> int:
     expect(validation["valid"] is True and validation["full_acceptance_closed"] is False,"D9.16 validator result mismatch")
     expect(record["case_count"]==9 and record["check_count"]==5,"D9.16 count mismatch")
     expect(all(x["registered"] for x in record["cases"]),"one or more D9.8-D9.16 evidence routes are missing")
-    expect(record["d9_14_gate_status"]=="BLOCKED" and record["d9_15_operator_status"]=="REQUIRED","required blockers were not preserved")
+    expected_d915 = "PASS_CLOSED" if record["operator_evidence"]["status"] == "PASS_CLOSED" else "REQUIRED"
+    expect(record["d9_14_gate_status"]=="BLOCKED" and record["d9_15_operator_status"]==expected_d915,"D9.14/D9.15 state did not match current validated checkpoints")
+    expect(record["operator_evidence"]["five_surface_evidence_recorded"] is (expected_d915 == "PASS_CLOSED"), "D9.15 evidence was not bound to the accepted checkpoint")
     expect(record["governance"]["renderer_activation"] is False and record["governance"]["media_created"] is False and record["governance"]["d4_8"]=="BLOCKED" and record["governance"]["release_authority"]=="NONE","governance drift")
     negative=0
     def reject(label,mutate,reseal=True):
@@ -28,7 +30,7 @@ def main() -> int:
     reject("claim full acceptance",lambda x:x.update(full_acceptance_status="PASS",full_acceptance_closed=True))
     reject("claim operator evidence",lambda x:x["operator_evidence"].update(five_surface_evidence_recorded=True,evidence_ref="artifacts/fake.png"))
     reject("unlock D9.14",lambda x:x.update(d9_14_gate_status="AUTHORIZED"))
-    reject("infer D9.15 GUI evidence",lambda x:x.update(d9_15_operator_status="PASS"))
+    reject("forge D9.15 GUI evidence state",lambda x:x.update(d9_15_operator_status=("REQUIRED" if expected_d915 == "PASS_CLOSED" else "PASS_CLOSED")))
     reject("renderer activated",lambda x:x["governance"].update(renderer_activation=True))
     reject("renderer input emitted",lambda x:x["governance"].update(renderer_input_emitted=True))
     reject("production executed",lambda x:x["governance"].update(production_execution=True))
@@ -47,6 +49,6 @@ def main() -> int:
     reject("preflight status promoted",lambda x:x.update(status="PASS",static_preflight_pass=True))
     reject("raw seal tamper",lambda x:x.update(full_acceptance_closed=True),reseal=False)
     expect(negative==21,f"negative controls mismatch: {negative}/20")
-    print(f"C11-D D9.16 FULL ACCEPTANCE PREFLIGHT PASS | static_checks=5/5 | evidence_routes=9/9 | negative={negative}/21 | full_acceptance=BLOCKED_AS_REQUIRED | D9.14=BLOCKED | D9.15_operator_evidence=REQUIRED | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    print(f"C11-D D9.16 FULL ACCEPTANCE PREFLIGHT PASS | static_checks=5/5 | evidence_routes=9/9 | negative={negative}/21 | full_acceptance=BLOCKED_AS_REQUIRED | D9.14=BLOCKED | D9.15_operator_evidence={record['d9_15_operator_status']} | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 if __name__=="__main__": raise SystemExit(main())
