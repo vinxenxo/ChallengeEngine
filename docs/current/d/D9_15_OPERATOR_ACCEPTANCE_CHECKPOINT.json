@@ -1,0 +1,31 @@
+{
+  "schema": "C11-D-D9.15-OPERATOR-ACCEPTANCE-CHECKPOINT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.15",
+  "status": "PASS_CLOSED",
+  "decision": "OPERATIONAL_GUI_ACCEPTANCE_ONLY",
+  "candidate_id": "C11-D-BASELINE-CANDIDATE-0.1",
+  "accepted_at_utc": "2026-10-09T21:23:59.203882+00:00",
+  "accepted_by": "I_CONFIRM_ALL_D915_PAIRINGS_REVIEWED_NO_MEDIA",
+  "requirements_sha256": "ac648de4e6852c45763b05d1c4d0f508f59645153f9aee561cf7a1c9dec52424",
+  "ledger_path": "artifacts/evidence/d9_15_operator/D9_15_OPERATOR_EVIDENCE_LEDGER.json",
+  "ledger_sha256": "dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa",
+  "required_pairings": 13,
+  "passed_pairings": 13,
+  "blocked_pairings": 0,
+  "pending_pairings": 0,
+  "historical_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "d9_14_real_media_status": "BLOCKED_AS_REQUIRED",
+  "renderer_activation": false,
+  "production_execution": false,
+  "media_created": false,
+  "d4_8": "BLOCKED",
+  "release_authority": "NONE",
+  "full_acceptance_authorized": false,
+  "baseline_freeze_authorized": false,
+  "limitations": [
+    "This checkpoint closes only D9.15 operator GUI operational acceptance.",
+    "It does not authorize renderer activation, media generation, D4.8, D9.14 real-media acceptance, D9.16 full acceptance, D9.17 closure, baseline freeze or release authority."
+  ],
+  "checkpoint_sha256": "2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5"
+}

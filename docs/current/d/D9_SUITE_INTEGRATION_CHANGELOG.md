@@ -124,3 +124,13 @@
 - Windows Qt runtime has **not yet been re-run**. The expected runtime 3/3, combined acceptance 7/7 and aggregate Suite 22/22 are targets, not asserted results. The full lifecycle test in the clean source-archive copy stopped later at the maintenance-plan guard because archive packaging excludes the working D9.11 ledger/quarantine evidence; the check was not weakened.
 - Governance unchanged: C11-C 2.19.12/manifest immutable; D9.10 adapter `PREPARE_ONLY`; D4.8 BLOCKED; renderer OFF; media false; `release_authority=NONE`; D9 OPEN; D10 BLOCKED.
 - Incident detail: `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_PARITY_SCHEMA_FIX_20261009.md`.
+
+
+## D9.14 / D9.16 no-media gate verification — Windows (2026-10-09)
+
+- `test_gui_real_media_certification.py`: PASS, gate `BLOCKED_AS_REQUIRED`, cases 10/10 and negatives 20/20. Renderer OFF, media false, D4.8 BLOCKED, release authority NONE.
+- `test_full_acceptance.py`: PASS, static checks 5/5, evidence routes 9/9, negatives 21/21; full acceptance remains `BLOCKED_AS_REQUIRED`, D9.14 BLOCKED and canonical D9.15 operator evidence REQUIRED.
+- Candidate preflight: PASS, C11-C immutable reference match; protected entries 854/854; negative 22/22; legacy reconciliation 4/4; five blockers; `freeze_eligible=false`; `baseline_approval=MISSING`. Observed tree SHA-256 `877198711170beb4d57bbc8bd9bc610c5d76c60e36d6a9035b29c2cc500ee4d1`.
+- Aggregate Suite: PASS 22/22. D9.10 Qt runtime remains PASS 3/3 and bound acceptance PASS 7/7.
+- Next actionable no-media work: capture and seal canonical D9.15 operator evidence, all 13 pairings across the five existing GUIs. Candidate-only waiver does not substitute.
+- These gate passes are not real-media acceptance or D9 closure. D9.14 full GUI/E2E remains blocked by the absent separately approved/frozen universal D renderer baseline and explicit D4.8 governance checkpoint. D9.16 and D9.17 remain blocked; D10 blocked; renderer OFF; release authority NONE.

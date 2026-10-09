@@ -1,4 +1,4 @@
-# C11-D START PROMPT — D9.10 runtime accepted; D9.14 constrained continuation (2026-10-09)
+# C11-D START PROMPT — D9.10 accepted; D9.14/D9.16 preflights verified; D9.15 next (2026-10-09)
 
 Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. The latest operator evidence supersedes all older pending/failure notes below.
 
@@ -13,18 +13,20 @@ Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STAT
 - Aggregate Suite PASS 22/22.
 - C11-C manifest SHA-256: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 
-## Next work
+## Next work — D9.15 canonical operator evidence
 
-Continue with D9.14/D9.16 no-media gate verification and evidence review. Do not attempt real-media universal GUI E2E or unblock D4.8: the future D renderer baseline has not been separately approved/frozen and release authority is NONE. D9.15's waiver is candidate-only, not canonical acceptance. D9 remains OPEN; D9.17 remains BLOCKED/NO-GO; D10 remains BLOCKED.
+The latest Windows results verify no-media gate behavior:
 
-```powershell
-python .\tools\c11d\d9\test_gui_real_media_certification.py
-python .\tools\c11d\d9\test_full_acceptance.py
-python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
-python -u .\c11c-suite\self_test.py
-```
+- D9.14 test: `BLOCKED_AS_REQUIRED`, 10/10 gate cases and 20/20 negative controls.
+- D9.16 preflight: 5/5 static checks, 9/9 evidence routes and 21/21 negative controls; full acceptance remains blocked as required.
+- Candidate audit: PASS with five blockers, `freeze_eligible=false`, protected entries 854/854, negatives 22/22 and legacy reconciliation 4/4.
+- Aggregate Suite: PASS 22/22.
 
-Expected behavior: D9.14 gate stays `BLOCKED_AS_REQUIRED`, D9.16 reports `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`, candidate freeze stays blocked with five blockers, suite 22/22 PASS. A PASS here means the governance gate correctly denies unauthorized action, not that real-media acceptance happened.
+Next, use `docs/current/d/D9.15_OPERATOR_EVIDENCE_CAPTURE_GUIDE.md` to collect/record the 13 real operator evidence pairings for Config, Producer, Test, Catalog and Maintenance. Start with `python .\tools\c11d\baseline_candidate\operator_evidence.py status`; if and only if the ledger is missing, initialize it once with `python .\tools\c11d\baseline_candidate\operator_evidence.py init`. Capture only actual observed GUI states or copied visible logs; for a blocked/incomplete control, record `BLOCKED`, not `PASS`. Do not repeat `init` if the ledger exists.
+
+When and only when all 13 latest entries are PASS and inspected, use the guide's explicit `finalize` command, then rerun candidate preflight and D9.16 preflight. This closes only the D9.15 operational GUI matrix. It does not authorize real media, renderer dispatch, D4.8, full D9.16, D9.17, baseline freeze or release.
+
+D9.14 full GUI/E2E remains blocked until a separately approved/frozen universal D renderer baseline and explicit D4.8 governance authorization exist. C11-C stays immutable, adapter PREPARE_ONLY, renderer OFF, release authority NONE, D9 OPEN and D10 BLOCKED.
 
 ## Non-negotiable boundaries
 
