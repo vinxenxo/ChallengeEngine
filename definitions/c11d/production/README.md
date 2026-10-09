@@ -13,6 +13,7 @@ Declarative C11-D schemas, policies and registries. These are the primary contra
 - `C11D_D7_FULL_ACCEPTANCE_SPEC_V1.json` — declarative/configuration or evidence JSON.
 - `C11D_PRODUCTION_MATRIX_SPEC_V1.json` — declarative/configuration or evidence JSON.
 - `C11D_PRODUCTION_REQUEST_SCHEMA_V1.json` — declarative/configuration or evidence JSON.
+- `C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` — D9.10 canonical bridge mapping, planning-only outputs and future-baseline gates.
 - `C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json` — declarative/configuration or evidence JSON.
 - `C11D_CATALOG_IDENTITY_PROVENANCE_GOVERNANCE_POLICY_V1.json` — declarative/configuration or evidence JSON.
 - `C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json` — declarative/configuration or evidence JSON.

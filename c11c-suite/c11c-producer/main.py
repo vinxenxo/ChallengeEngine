@@ -48,7 +48,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.11.0"
+APP_VERSION = "0.11.1"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -80,6 +80,7 @@ def _load_universal_producer_module():
 
 
 D9_UNIVERSAL = _load_universal_producer_module()
+from editorial_render_bridge import build_bridge_planning_record as build_d9_bridge_planning_record
 D9_EDITORIAL_CATALOG = D9_UNIVERSAL.build_catalog(PROJECT)
 D9_EDITORIAL_MODEL = D9_UNIVERSAL.load_model(PROJECT)
 
@@ -643,7 +644,7 @@ class MainWindow(QMainWindow):
         layout.setContentsMargins(6, 6, 6, 6)
         layout.setSpacing(10)
 
-        form_box = QGroupBox("D9.9 · EDITORIAL UNIVERSAL / PLAN CANÓNICO")
+        form_box = QGroupBox("D9.9–D9.10 · EDITORIAL UNIVERSAL / PLAN DE PUENTE")
         form = QGridLayout(form_box)
         form.setHorizontalSpacing(8)
         form.setVerticalSpacing(6)
@@ -759,16 +760,17 @@ class MainWindow(QMainWindow):
             form.addWidget(widget, row, 1, 1, 3)
             row += 1
 
-        self.d9_validate = QPushButton("RESOLVER EDITORIAL + PLAN (SIN RENDER)")
+        self.d9_validate = QPushButton("RESOLVER + PLAN EDITORIAL / PUENTE (SIN RENDER)")
         self.d9_validate.setObjectName("Primary")
         self.d9_validate.setMinimumHeight(42)
         self.d9_validate.clicked.connect(self._run_d9_universal_plan)
         form.addWidget(self.d9_validate, row, 0, 1, 4)
         row += 1
         notice = QLabel(
-            "Challenge reutiliza el subplan D4 canónico. Visual Loop y Visual Drill generan "
-            "identidad editorial y plan de intención D9.9; no se simula un contrato D4 ni se "
-            "activa el renderer. Seeds explícitas; D4.8 BLOCKED; release_authority=NONE."
+            "D9.10 prepara un registro de mapeo editorial → renderer para el futuro baseline D. "
+            "Es planificación únicamente: no emite entradas de renderer ni crea medios. Challenge "
+            "reutiliza su subplan D4; Loop/Drill necesitan adaptadores D futuros. D4.8 BLOCKED; "
+            "release_authority=NONE."
         )
         notice.setWordWrap(True)
         notice.setObjectName("D4Notice")
@@ -786,18 +788,20 @@ class MainWindow(QMainWindow):
         self.d9_editorial_view = QPlainTextEdit()
         self.d9_plan_view = QPlainTextEdit()
         self.d9_parity_view = QPlainTextEdit()
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_parity_view):
+        self.d9_bridge_view = QPlainTextEdit()
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_parity_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
             ("CANONICAL REQUEST", self.d9_request_view),
             ("EFFECTIVE EDITORIAL", self.d9_editorial_view),
             ("UNIVERSAL PLAN", self.d9_plan_view),
+            ("EDITORIAL → RENDER BRIDGE (PLAN ONLY)", self.d9_bridge_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
         ):
             self.d9_output_tabs.addTab(view, title)
         output_layout.addWidget(self.d9_output_tabs, 1)
-        self.d9_evidence_label = QLabel("Todavía no se ha generado evidencia D9.9.")
+        self.d9_evidence_label = QLabel("Todavía no se ha generado evidencia D9.9/D9.10.")
         self.d9_evidence_label.setWordWrap(True)
         output_layout.addWidget(self.d9_evidence_label)
         layout.addWidget(output_box, 1)
@@ -1011,9 +1015,10 @@ class MainWindow(QMainWindow):
                 "personalization_enabled": enabled,
                 "editorial_profile": editorial_profile,
                 "production_override": production_override,
-                "provenance": {"source_revision": "C11D-D9.9-PRODUCER-0.11.0", "request_origin": "GUI"},
+                "provenance": {"source_revision": "C11D-D9.10-PRODUCER-0.11.1", "request_origin": "GUI"},
             }
             result = D9_UNIVERSAL.evaluate_universal_request(raw_request, PROJECT)
+            bridge_record = build_d9_bridge_planning_record(result, PROJECT)
             evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_universal"
             evidence_root.mkdir(parents=True, exist_ok=True)
             run_root = evidence_root / request_id
@@ -1030,7 +1035,7 @@ class MainWindow(QMainWindow):
                 cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=45,
             )
             if cli_run.returncode != 0:
-                raise RuntimeError("D9.9 canonical CLI failed: " + cli_run.stderr.strip())
+                raise RuntimeError("D9.9/D9.10 canonical CLI failed: " + cli_run.stderr.strip())
             cli_result = json.loads(cli_run.stdout)
             parity_checks = {
                 "canonical_request_equal": result["canonical_request"] == cli_result["canonical_request"],
@@ -1038,9 +1043,10 @@ class MainWindow(QMainWindow):
                 "editorial_hash_equal": result["editorial_hash"] == cli_result["editorial_hash"],
                 "plan_equal": result["plan"] == cli_result["plan"],
                 "plan_hash_equal": result["plan_hash"] == cli_result["plan_hash"],
+                "bridge_planning_record_equal": bridge_record == cli_result.get("bridge_planning_record"),
             }
             parity = {
-                "schema": "C11-D-D9.9-UNIVERSAL-GUI-CLI-PARITY-V1",
+                "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-BRIDGE-PARITY-V1",
                 "status": "PASS" if all(parity_checks.values()) else "FAIL",
                 "content_type": content_type,
                 "selection": result["canonical_request"]["selection"],
@@ -1049,6 +1055,9 @@ class MainWindow(QMainWindow):
                 "cli_request_hash": cli_result["request_hash"],
                 "gui_plan_hash": result["plan_hash"],
                 "cli_plan_hash": cli_result["plan_hash"],
+                "bridge_record_hash": bridge_record["record_hash"],
+                "cli_bridge_record_hash": (cli_result.get("bridge_planning_record") or {}).get("record_hash"),
+                "renderer_input_emitted": False,
                 "renderer": False,
                 "production_execution": False,
                 "release_authority": "NONE",
@@ -1056,17 +1065,19 @@ class MainWindow(QMainWindow):
             write_json(run_root / "canonical_request.json", result["canonical_request"])
             write_json(run_root / "editorial_resolution.json", result["editorial_resolution"])
             write_json(run_root / "universal_plan.json", result["plan"])
+            write_json(run_root / "editorial_render_bridge_plan.json", bridge_record)
             write_json(run_root / "d4_subplan_evidence.json", result["d4_evidence"] or {"status": "NOT_APPLICABLE"})
             write_json(run_root / "gui_cli_parity.json", parity)
             receipt = {
-                "schema": "C11-D-D9.9-PRODUCER-UNIVERSAL-RECEIPT-V1",
-                "phase": "D9.9",
-                "result": "PASS_PLAN_ONLY" if parity["status"] == "PASS" else "FAIL",
+                "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+                "phase": "D9.10",
+                "result": "PASS_BRIDGE_PLANNING_ONLY" if parity["status"] == "PASS" else "FAIL",
                 "status": result["status"],
                 "request_id": request_id,
                 "request_hash": result["request_hash"],
                 "editorial_hash": result["editorial_hash"],
                 "plan_hash": result["plan_hash"],
+                "bridge_record_hash": bridge_record["record_hash"],
                 "gui_cli_parity": parity["status"],
                 "content_type": content_type,
                 "selection": result["canonical_request"]["selection"],
@@ -1080,9 +1091,10 @@ class MainWindow(QMainWindow):
             self.d9_request_view.setPlainText(json.dumps(result["canonical_request"], ensure_ascii=False, indent=2))
             self.d9_editorial_view.setPlainText(json.dumps(result["editorial_resolution"], ensure_ascii=False, indent=2))
             self.d9_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
+            self.d9_bridge_view.setPlainText(json.dumps(bridge_record, ensure_ascii=False, indent=2))
             self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
-            self.d9_evidence_label.setText(f"Evidencia D9.9: {run_root}")
-            self.d9_output_tabs.setCurrentWidget(self.d9_parity_view)
+            self.d9_evidence_label.setText(f"Evidencia D9.9/D9.10 (renderer OFF): {run_root}")
+            self.d9_output_tabs.setCurrentWidget(self.d9_bridge_view if parity["status"] == "PASS" else self.d9_parity_view)
             if parity["status"] != "PASS":
                 raise AssertionError("D9.9 GUI/CLI request or plan identity mismatch")
             self.statusBar().showMessage(

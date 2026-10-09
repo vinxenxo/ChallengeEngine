@@ -1,10 +1,10 @@
 # C11-C Config 0.2.0 — C11-D governed configuration
 
-D9.7 extends the existing `c11c-config` application; it creates no new suite.
+D9.7 introduced the governed Config surface, and D9.10 extends its read-only contract registry; it creates no new suite.
 
 ## New surfaces
 
-- **C11-D Contracts:** read-only D2–D9 contract browser with JSON status, SHA-256, category and authority label. `VALIDAR TODOS LOS CONTRATOS D` checks parsing and core governance invariants.
+- **C11-D Contracts:** read-only D2–D9 contract browser with JSON status, SHA-256, category and authority label. The registry now contains 22 canonical JSON contracts, including the D9.10 editorial-to-render bridge; `VALIDAR TODOS LOS CONTRATOS D` checks parsing and core governance invariants.
 - **C11-D Operator Profiles:** user-owned JSON presets under `profiles/c11d/operator/` with validation, SHA-256, diff, explicit save, `.bak` and validated restore.
 - **Repository Config** remains available for inspection and ordinary non-protected configuration files.
 
@@ -26,4 +26,4 @@ python .\c11c-suite\c11c-config\test_config_gui_contract.py
 python .\c11c-suite\self_test.py
 ```
 
-Qt GUI and filesystem interactions must still be exercised on the Windows workstation before D9.7 is accepted.
+Qt GUI and filesystem interactions must still be exercised on the Windows workstation before Config GUI acceptance is closed. D9.10 bridge-contract registration and static validation pass, but do not substitute for Windows Config GUI acceptance.

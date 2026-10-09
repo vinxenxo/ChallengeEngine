@@ -54,7 +54,7 @@ No sixth operational suite is to be created. Historical `c11c-studio` material i
 - D9.2: audio-enabled A/V pilot PASS.
 - D9.3: deterministic A/V repeat + negative control PASS.
 - D9.4: acceptance checkpoint PASS/CLOSED.
-- D9.5.1: existing `c11c-producer` extended with D4 Request/Personalization planning surface. Producer version at D9.5.1: **0.10.0**. Windows GUI bring-up passed for that checkpoint; D9.9 expands the same application to Producer 0.11.0.
+- D9.5.1: existing `c11c-producer` extended with D4 Request/Personalization planning surface. Producer version at D9.5.1: **0.10.0**. Windows GUI bring-up passed for that checkpoint; D9.9 expanded the same application to Producer 0.11.0; the additive D9.10 bridge-planning view is Producer 0.11.1.
 - D9.6: existing `c11c-catalog` extended with D branch product/provenance/reproduction view. Catalog target/version: **0.2.0**. Windows GUI bring-up passed in the current working tree.
 - D9.7: existing `c11c-config` extended with D contracts and controlled operator profiles. Config target/version: **0.2.0**. Overlay is prepared; Windows bring-up is pending explicit confirmation if not yet executed in the current context.
 
@@ -80,7 +80,7 @@ The model must distinguish editable editorial fields from derived telemetry, pro
 
 ### D9.9 — Producer universal editorial coverage
 
-Extend the **existing `c11c-producer`** (Producer 0.11.0) with the universal editorial tab: content type → family → subfamily/grammar/variant, editable scoped editorial fields, canonical request/plan output and reproducibility evidence. Both GUI and CLI use `tools/c11d/d9/universal_producer.py`; Challenge delegates to the existing D4 request/plan adapter, while Loop/Drill produce only a deterministic editorial-intent plan until the future D renderer baseline.
+Extend the **existing `c11c-producer`** (Producer 0.11.0 at D9.9; 0.11.1 with D9.10 additive bridge planning) with the universal editorial tab: content type → family → subfamily/grammar/variant, editable scoped editorial fields, canonical request/plan output and reproducibility evidence. Both GUI and CLI use `tools/c11d/d9/universal_producer.py`; Challenge delegates to the existing D4 request/plan adapter, while Loop/Drill produce only a deterministic editorial-intent plan until the future D renderer baseline.
 
 Required tests:
 
@@ -92,11 +92,17 @@ Required tests:
 - unsupported-field negatives;
 - unchanged gameplay/music seeds.
 
-**Implementation status: PASS (plan-only scope).** The inventory matrix resolves all 9 Challenge IDs, 27 concrete Loop grammars plus five family-level `auto` selectors, and 20 Drill type/tier variants. Separate CLI-process parity is certified for Challenge, Loop and Drill; 20 negative controls pass. Renderer/production remain off, `release_authority=NONE`, and Windows GUI/manual bring-up remains part of later D9.14–D9.16 acceptance. This does not close D9.
+**Implementation status: PASS (plan-only scope).** The inventory matrix resolves all 9 Challenge IDs, 27 concrete Loop grammars plus five family-level `auto` selectors, and 20 Drill type/tier variants. Separate CLI-process parity is certified for Challenge, Loop and Drill; 20 negative controls pass. Renderer/production remain off, `release_authority=NONE`, and the operator has now confirmed Windows GUI plan generation for all currently implemented D types without errors. This does not constitute real-media GUI acceptance or close D9.
 
 ### D9.10 — Editorial-to-render bridge planning
 
-Prepare the canonical bridge so the D editorial payload becomes renderer input **without reopening C11-C**. Until a future D frozen baseline exists, physical renderer changes remain deferred when they would mutate the frozen C11-C source of truth.
+**Implementation status: PASS for deterministic bridge planning, 3/3 CLI-process record parity cases, 15/15 negative controls and static GUI-contract integration. Windows interactive confirmation of the new bridge-output tab remains pending.**
+
+The canonical contract `definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` and backend `tools/c11d/d9/editorial_render_bridge.py` describe mappings from the D9.9 canonical plan to a future D renderer. Producer GUI exposes the resulting `EDITORIAL → RENDER BRIDGE (PLAN ONLY)` view; the CLI emits the same record, and parity checks compare the full record and hash.
+
+The record is **not renderer input**. It only declares content identity, the current editorial allowlist, independent gameplay/music seed ownership, delivery/presentation references, provenance identities, and prerequisites for the future D frozen baseline. Renderer input is not emitted, no adapter is invoked, no media is created, `D4.8=BLOCKED`, and `release_authority=NONE`. Do not reopen or modify the frozen C11-C renderer to materialize editorial values. Physical implementation belongs to a future D frozen baseline after all listed gates are satisfied.
+
+Focused validation: `python .\tools\c11d\d9\test_editorial_render_bridge.py`.
 
 ### D9.11 — Maintenance integration
 
@@ -169,7 +175,7 @@ Only when D9.8–D9.16 are accepted. D10 remains BLOCKED until D9.17 closes.
 | Surface | Current/confirmed D9 version | Next target | Required acceptance |
 |---|---:|---:|---|
 | `c11c-suite` shell | 0.1.4 | keep 0.1.4 unless common launcher contract changes | full launcher/registry acceptance |
-| `c11c-producer` | 0.11.0 | 0.11.x only for approved additive D coverage | universal request → editorial resolution → plan-only; real media remains a later authorized D gate |
+| `c11c-producer` | 0.11.1 | 0.11.x only for approved additive D coverage | universal request → editorial resolution → plan-only; real media remains a later authorized D gate |
 | `c11c-catalog` | 0.2.0 | 0.2.x | product identity → provenance → reproduction |
 | `c11c-config` | 0.2.0 | 0.2.x | profiles → validation → save/restore → protected roots |
 | `c11c-maintenance` | C11-C active baseline | 0.2.0 | dry-run → cleanup/quarantine → organization/freeze |

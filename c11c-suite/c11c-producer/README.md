@@ -1,4 +1,4 @@
-# C11-C/D Producer 0.11.0 — Operator Surface
+# C11-C/D Producer 0.11.1 — Operator Surface
 
 The Producer is the audiovisual orchestration surface inside `c11c-suite`.
 
@@ -22,7 +22,7 @@ This milestone creates and records canonical requests/plans only. D4.8 remains B
 
 ## Current state
 
-Producer 0.11.0 adds the D9.9 universal editorial tab to the same application, preserving the frozen C11-C backend profile hash and current C11-C workflows. D9.4 is a valid real-media checkpoint; overall D9 remains ACTIVE until all five existing suite surfaces are upgraded and GUI E2E production/reproduction/negative tests pass.
+Producer 0.11.1 preserves the D9.9 universal editorial tab and adds the D9.10 plan-only editorial-to-render bridge record to the same application. The GUI and canonical CLI generate identical bridge records for Challenge, Visual Loop and Visual Drill. The record describes future mappings and blockers; it is not a renderer input, does not create media, and does not grant production authority. The operator has confirmed D9.9 plan creation through the Windows GUI for all implemented D types; the newly added D9.10 bridge tab still needs a quick Windows GUI confirmation. Overall D9 remains OPEN until the five existing suite surfaces and the later GUI E2E production/reproduction/negative gates are accepted.
 
 ## Directory contents
 
@@ -50,3 +50,10 @@ Producer 0.11.0 adds the D9.9 universal editorial tab to the same application, p
 The third tab, **C11-D · EDITORIAL UNIVERSAL (D9.9)**, selects Challenge, Visual Loop family/grammar, or Visual Drill type/tier and edits only model-permitted editorial fields across global/type/family/subtype/variant/production-override scopes. Longform is disabled because it is not a supported Producer request type. It exposes normalized request, effective editorial values, universal plan and GUI↔CLI parity evidence. The UI uses `tools/c11d/d9/universal_producer.py`; `tools/c11d/d9/universal_producer_cli.py` invokes the same adapter.
 
 Challenge plans embed the existing D4 canonical subordinate plan. Loop/Drill plans are declarative editorial intent only—not renderer input and not a physical production. Seeds remain explicit and separate; renderer/production are disabled and `release_authority=NONE`. Focused test: `python tools/c11d/d9/test_universal_producer.py`. Full D9.9 scope and limitations: `docs/current/d/D9.9_PRODUCER_UNIVERSAL_COVERAGE_CHECKPOINT.md`.
+
+
+## D9.10 — Editorial-to-render bridge planning
+
+The same universal Producer view adds **EDITORIAL → RENDER BRIDGE (PLAN ONLY)**. It calls `tools/c11d/d9/editorial_render_bridge.py` after the canonical D9.9 request/plan, and the GUI compares its record byte-semantically with the record emitted by the canonical CLI process. Evidence includes `editorial_render_bridge_plan.json` and bridge-hash parity in the existing request evidence directory. The contract describes content identity, allowlisted editorial bindings, seed domains, profiles and provenance, plus the required future D frozen-baseline gates.
+
+This checkpoint emits a deterministic planning record only. It deliberately does not emit renderer input, invoke an adapter, write a media path, create audio/video, authorize production or change the frozen C11-C renderer. D4.8 remains `BLOCKED`; `release_authority=NONE`. Focused validation: `python tools/c11d/d9/test_editorial_render_bridge.py`.

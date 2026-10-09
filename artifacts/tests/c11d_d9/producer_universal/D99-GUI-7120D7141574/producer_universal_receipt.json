@@ -1,0 +1,26 @@
+{
+  "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+  "phase": "D9.10",
+  "result": "PASS_BRIDGE_PLANNING_ONLY",
+  "status": "PLANNED",
+  "request_id": "D99-GUI-7120D7141574",
+  "request_hash": "de9a9350367d0a514ddafe30d457cafe0d9a1e504f3c73a8c9c8ec0e6459b6bf",
+  "editorial_hash": "b637f37430d36dcc9efbc2a33214f586ed2082a3a3f40e6c7c25188ded79402d",
+  "plan_hash": "4d107db46e1d6393ffcabca37d55722e48edb0cf8db50728c5572f8266319d70",
+  "bridge_record_hash": "2450cd14080fd602c2b7ddd7b0e74ec51284d7b55dc3e6657f7ae1f6b3579f2e",
+  "gui_cli_parity": "PASS",
+  "content_type": "visual_loops",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_invisible_forces_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_invisible_forces_v1/auto",
+    "difficulty_tier": null
+  },
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-7120D7141574"
+}

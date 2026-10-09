@@ -1,0 +1,31 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-BRIDGE-PARITY-V1",
+  "status": "PASS",
+  "content_type": "visual_loops",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_invisible_forces_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_invisible_forces_v1/auto",
+    "difficulty_tier": null
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true
+  },
+  "gui_request_hash": "de9a9350367d0a514ddafe30d457cafe0d9a1e504f3c73a8c9c8ec0e6459b6bf",
+  "cli_request_hash": "de9a9350367d0a514ddafe30d457cafe0d9a1e504f3c73a8c9c8ec0e6459b6bf",
+  "gui_plan_hash": "4d107db46e1d6393ffcabca37d55722e48edb0cf8db50728c5572f8266319d70",
+  "cli_plan_hash": "4d107db46e1d6393ffcabca37d55722e48edb0cf8db50728c5572f8266319d70",
+  "bridge_record_hash": "2450cd14080fd602c2b7ddd7b0e74ec51284d7b55dc3e6657f7ae1f6b3579f2e",
+  "cli_bridge_record_hash": "2450cd14080fd602c2b7ddd7b0e74ec51284d7b55dc3e6657f7ae1f6b3579f2e",
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

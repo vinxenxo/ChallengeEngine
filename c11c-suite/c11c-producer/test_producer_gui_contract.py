@@ -12,7 +12,7 @@ SCHEMA = ROOT / "producer_schema.json"
 
 main_text = MAIN.read_text(encoding="utf-8")
 tree = ast.parse(main_text)
-assert 'APP_VERSION = "0.11.0"' in main_text
+assert 'APP_VERSION = "0.11.1"' in main_text
 assert "failed_seeds" in main_text
 assert "current_seed" in main_text
 assert 'QProcess.ProcessError.FailedToStart' in main_text
@@ -22,6 +22,10 @@ assert 'run_c11a1_challenge_bulk_qa.ps1' not in main_text
 assert 'self.proc.errorOccurred.connect(self._process_error)' in main_text
 assert 'C11-D · REQUEST + PERSONALIZACIÓN' in main_text
 assert 'C11-D · EDITORIAL UNIVERSAL (D9.9)' in main_text
+assert 'EDITORIAL → RENDER BRIDGE (PLAN ONLY)' in main_text
+assert 'build_d9_bridge_planning_record(result, PROJECT)' in main_text
+assert 'bridge_planning_record_equal' in main_text
+assert 'editorial_render_bridge_plan.json' in main_text
 assert 'def _build_d9_universal_editorial_tab' in main_text
 assert 'self.d9_scope.currentIndexChanged.connect(self._d9_universal_scope_changed)' in main_text
 assert 'def _d9_universal_scope_changed(' in main_text
@@ -76,4 +80,4 @@ assert "generator_stdout.log" in ps
 assert "generator_stderr.log" in ps
 assert "Visual Drill envelope generator returned no response" in ps
 
-print("C11C_PRODUCER_GUI_CONTRACT_SUITE PASS | Producer 0.11.0 | D9.9 universal tab wired to canonical GUI/CLI backend")
+print("C11C_PRODUCER_GUI_CONTRACT_SUITE PASS | Producer 0.11.1 | D9.9 universal editorial + D9.10 bridge planning wired to canonical GUI/CLI backend")

@@ -68,16 +68,23 @@ Do not modify C11-C 2.19.12 simulation/mechanics/RNG/truth, `SimulationResult`, 
 - D4.8 `BLOCKED`.
 - `release_authority=NONE` unless an explicit future checkpoint changes it.
 
+## D9.8–D9.10 completion record
+
+- D9.8: PASS/CLOSED for the universal editorial model/resolver and its static contract tests.
+- D9.9: PASS for the universal request/plan adapter and GUI/CLI parity; the operator confirms Windows GUI successfully generated plans for all currently implemented D content types.
+- D9.9 Windows UTF-8 CLI defect: repaired; the operator reports the five focused/aggregate checks PASS.
+- D9.9 GUI callback defect: repaired; the operator confirms Producer starts and generates plans without errors.
+- D9.10: PASS for deterministic plan-only bridge records, CLI bridge-record parity for Challenge/Loop/Drill and 15 negative controls. Producer 0.11.1 adds the bridge record inside the existing application. **A Windows check of the newly added D9.10 bridge-output tab is still pending.**
+- D9.10 never emits renderer input or creates physical media. C11-C 2.19.12 remains immutable; D4.8 remains BLOCKED; release authority NONE.
+
 ## Next work
 
-1. D9.8 — canonical Universal Editorial Model.
-2. D9.9 — Producer coverage for all content/family/subfamily variants.
-3. D9.10 — editorial-to-render bridge, dependent on a future D frozen baseline.
-4. D9.11 — Maintenance 0.2.0.
-5. D9.12 — Test 0.2.0.
-6. D9.13 — cross-suite lifecycle.
-7. D9.14–D9.16 — real GUI production and final GUI acceptance.
-8. D9.17 — D9 final closure.
+1. Operator smoke check of the new D9.10 bridge-output tab in Windows (`run.bat`, then generate one plan each for Challenge, Visual Loop and Visual Drill).
+2. D9.11 — Maintenance 0.2.0.
+3. D9.12 — Test 0.2.0.
+4. D9.13 — cross-suite lifecycle.
+5. D9.14–D9.16 — authorized real GUI production, operational and full acceptance gates.
+6. D9.17 — D9 final closure.
 
 ## New-context read order
 

@@ -14,6 +14,7 @@ D_REGISTRIES = (
  {'domain':'D4 · REQUEST','id':'D4_REQUEST_SCHEMA','path':'definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · PERSONALIZATION','id':'D4_PERSONALIZATION_REGISTRY','path':'definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · EDITORIAL','id':'D9_UNIVERSAL_EDITORIAL_MODEL','path':'definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · BRIDGE PLANNING','id':'D9_EDITORIAL_RENDER_BRIDGE','path':'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · GOVERNANCE','id':'D4_ACTIVATION_POLICY','path':'definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D5 · PROVENANCE','id':'D5_LINEAGE_REGISTRY','path':'definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D6 · SEEDS','id':'D6_SEED_REGISTRY','path':'definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
@@ -127,6 +128,18 @@ def validate_c11d_contracts(project_root: Path) -> tuple[list[dict[str,Any]],lis
     content_types=editorial.get('content_types',{})
     longform=content_types.get('longform',{})
     need(longform.get('enabled_for_selection') is False and longform.get('editable_fields')==[] and longform.get('request_plan_compatibility')=='NOT_SUPPORTED_BY_CURRENT_D4_REQUEST_SCHEMA','D9.8 Longform must stay explicitly disabled until the D request contract supports it')
+    bridge=d.get('D9_EDITORIAL_RENDER_BRIDGE',{})
+    need(bridge.get('schema')=='C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1' and bridge.get('checkpoint')=='D9.10','D9.10 editorial-render bridge schema/checkpoint mismatch')
+    need(bridge.get('status')=='PLANNING_ONLY_FUTURE_D_FROZEN_BASELINE_REQUIRED','D9.10 must remain plan-only until a future D frozen baseline')
+    bridge_output=bridge.get('output',{})
+    need(bridge_output.get('renderer_input_emitted') is False and bridge_output.get('renderer_adapter_invoked') is False and bridge_output.get('media_output_created') is False and bridge_output.get('output_artifact_path') is None,'D9.10 must not emit renderer input or create media')
+    bridge_governance=bridge.get('governance',{})
+    need(bridge_governance.get('master_seed')=='NOT_ADOPTED' and bridge_governance.get('cross_domain_seed_sharing')=='FORBIDDEN','D9.10 must preserve seed-domain governance')
+    need(bridge_governance.get('renderer_activation') is False and bridge_governance.get('production_execution') is False and bridge_governance.get('d4_8')=='BLOCKED' and bridge_governance.get('release_authority')=='NONE','D9.10 must not grant renderer/production/D4.8/release authority')
+    need(set(bridge.get('supported_content_types',[]))=={'challenges','visual_loops','visual_drills'},'D9.10 supported content types mismatch')
+    need(bridge.get('unsupported_content_types',{}).get('longform')=='DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM','D9.10 Longform must remain disabled')
+    required_bridge_gates={'FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED','RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED','D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION','GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS','CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS'}
+    need(required_bridge_gates.issubset(set(bridge.get('future_d_frozen_baseline_gates',[]))),'D9.10 missing mandatory future baseline gates')
     data_classes=editorial.get('data_classes',{})
     editable=set(data_classes.get('editable_editorial',{}).get('editable_keys',[]))
     protected_fields=set()

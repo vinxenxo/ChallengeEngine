@@ -58,7 +58,7 @@ prod=(ROOT/'tools'/'prototypes'/'c11c_bulk'/'run_c11c_production.ps1').read_text
 assert '$finalFull=[System.IO.Path]::GetFullPath($finalMp4)' in prod
 assert 'OrdinalIgnoreCase' in prod
 manifest=json.loads((SUITE/'c11c-producer'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
-assert manifest['version']=='0.11.0'
+assert manifest['version']=='0.11.1'
 assert manifest['d_request_tab'] is True
 assert manifest['d_request_runtime_execution'] is False
 assert manifest['d_request_release_authority']=='NONE'
@@ -260,7 +260,10 @@ assert universal_producer.returncode == 0, universal_producer.stdout + '\n' + un
 assert 'challenge=9/9' in universal_producer.stdout and 'loop_selectors=32' in universal_producer.stdout and 'drill_variants=20/20' in universal_producer.stdout and 'GUI/CLI parity=3/3' in universal_producer.stdout and 'negative=20/20' in universal_producer.stdout
 producer_gui_contract = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_producer_gui_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', timeout=30)
 assert producer_gui_contract.returncode == 0, producer_gui_contract.stdout + '\n' + producer_gui_contract.stderr
-assert 'Producer 0.11.0' in producer_gui_contract.stdout and 'D9.9 universal tab' in producer_gui_contract.stdout
+assert 'Producer 0.11.1' in producer_gui_contract.stdout and 'D9.10 bridge planning' in producer_gui_contract.stdout
+bridge_test = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_editorial_render_bridge.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', timeout=120)
+assert bridge_test.returncode == 0, bridge_test.stdout + '\n' + bridge_test.stderr
+assert 'content_types=3/3' in bridge_test.stdout and 'CLI bridge parity=3/3' in bridge_test.stdout and 'negative=15/15' in bridge_test.stdout
 catalog_test = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'self_test.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8')
 assert catalog_test.returncode == 0, catalog_test.stdout + '\n' + catalog_test.stderr
 assert 'pilot_media=5/5' in catalog_test.stdout and 'negative_controls=5/5' in catalog_test.stdout
@@ -275,5 +278,5 @@ assert config_contract.returncode == 0, config_contract.stdout + '\n' + config_c
 assert 'version=0.2.0' in config_contract.stdout
 config_manifest = json.loads((SUITE/'c11c-config'/'BUILD_MANIFEST.json').read_text(encoding='utf-8'))
 assert config_manifest['version'] == '0.2.0' and config_manifest['release_authority'] == 'NONE'
-print('C11-C Suite 0.1.4 + Producer 0.11.0 + Catalog 0.2.0 + Config 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9 universal editorial integration PASS')
+print('C11-C Suite 0.1.4 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10 editorial bridge planning PASS')
 

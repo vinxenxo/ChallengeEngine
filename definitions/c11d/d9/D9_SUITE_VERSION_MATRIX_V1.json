@@ -30,11 +30,11 @@
     },
     {
       "id": "c11c-producer",
-      "current_version": "0.11.0",
-      "target_version": "0.11.0 D9.9 plan-only coverage; later 0.11.x only with approved additive changes",
-      "gate": "D9.9",
-      "status": "D9.9_PASS_STATIC_MATRIX_AND_CLI_PARITY_WINDOWS_GUI_ACCEPTANCE_PENDING",
-      "notes": "Producer 0.11.0 adds the universal editorial tab and canonical D9.9 adapter. All 61 live selectors resolve; actual separate-process GUI/CLI parity is proven for each supported content type. Loop/Drill plans are editorial-intent only; renderer, execution, release authority remain disabled. Windows GUI acceptance is still a later gate.",
+      "current_version": "0.11.1",
+      "target_version": "0.11.1 D9.10 plan-only editorial-render bridge; physical rendering deferred to future D frozen baseline",
+      "gate": "D9.10",
+      "status": "D9.10_PASS_BRIDGE_CONTRACT_CLI_PARITY_STATIC_GUI_WINDOWS_BRIDGE_TAB_CONFIRMATION_PENDING",
+      "notes": "Producer 0.11.1 retains D9.9 universal editorial planning and adds a deterministic D9.10 bridge-planning record with GUI/CLI record parity. The operator confirmed D9.9 GUI plan generation in Windows. D9.10 bridge output is plan-only; new output-tab Windows smoke check remains pending. Renderer input/media are not emitted; D4.8 BLOCKED; release_authority NONE.",
       "required_tests": [
         "9 Challenge identities reusing canonical D4 subordinate plan",
         "5 Loop families / 27 concrete grammars plus auto selector per family",
@@ -43,7 +43,11 @@
         "20 negative universal request/data-class controls",
         "gameplay/music seed isolation and invariance under editorial changes",
         "existing C11-C production regression",
-        "renderer remains OFF; release_authority NONE"
+        "renderer remains OFF; release_authority NONE",
+        "D9.10 bridge record validation for Challenge, Visual Loop and Visual Drill",
+        "3 separate-process GUI/CLI bridge record parity cases",
+        "15 negative bridge/governance/integrity controls",
+        "renderer input not emitted; no renderer adapter, media output or artifact path"
       ]
     },
     {
@@ -79,10 +83,11 @@
       "id": "c11c-config",
       "current_version": "0.2.0",
       "target_version": "0.2.0",
-      "gate": "D9.7-D9.8",
-      "status": "D9.7_OVERLAY_PREPARED_ISOLATED_TESTS_PASS_WINDOWS_QT_PENDING_D9.8_MODEL_REGISTERED",
+      "gate": "D9.7-D9.10",
+      "status": "D9.10_BRIDGE_CONTRACT_REGISTERED_READ_ONLY_22_OF_22_VALID_CONFIG_GUI_PENDING",
       "required_tests": [
-        "21 canonical registries",
+        "22 canonical registries",
+        "D9.10 bridge schema/governance/output invariants",
         "D9.8 model schema/seed/data-class invariants",
         "seven configuration negatives",
         "explicit seed isolation",
@@ -90,7 +95,8 @@
         "save/backup/restore",
         "generic editor protected-root policy",
         "Windows GUI/filesystem smoke"
-      ]
+      ],
+      "notes": "Config 0.2.0 keeps canonical contracts read-only, now including D9.10 editorial-render bridge. Bridge invariants are validated; Windows Config GUI/filesystem acceptance remains pending."
     },
     {
       "id": "c11c-suite",

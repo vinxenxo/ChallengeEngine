@@ -15,15 +15,15 @@ py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
 py_compile.compile(str(ROOT / "c11d_gui_request.py"), doraise=True)
 py_compile.compile(str(ROOT / "test_d9_producer_integration.py"), doraise=True)
 D9_DIR = PROJECT / "tools" / "c11d" / "d9"
-for d9_file in ("universal_producer.py", "universal_producer_cli.py", "test_universal_producer.py"):
+for d9_file in ("universal_producer.py", "universal_producer_cli.py", "test_universal_producer.py", "editorial_render_bridge.py", "test_editorial_render_bridge.py"):
     py_compile.compile(str(D9_DIR / d9_file), doraise=True)
 
 schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
 build_manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
-assert build_manifest["version"] == "0.11.0"
+assert build_manifest["version"] == "0.11.1"
 assert build_manifest["backend_logic_modified"] is False
 
-assert schema["producer_version"] == "0.11.0"
+assert schema["producer_version"] == "0.11.1"
 assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
 assert set(schema["drills"]) == {"tracking", "saccade", "pursuit", "peripheral_scan"}
 assert len(schema["families"]) == 5
@@ -58,6 +58,13 @@ assert build_manifest["d9_universal_plan_only"] is True
 assert build_manifest["d9_universal_renderer_activation"] is False
 assert build_manifest["d9_universal_production_execution"] is False
 assert build_manifest["d9_universal_release_authority"] == "NONE"
+assert build_manifest["d9_10_editorial_render_bridge_planning"] is True
+assert build_manifest["d9_10_bridge_plan_only"] is True
+assert build_manifest["d9_10_bridge_cli_parity"] is True
+assert build_manifest["d9_10_renderer_input_emitted"] is False
+assert build_manifest["d9_10_renderer_adapter_invoked"] is False
+assert build_manifest["d9_10_media_output_created"] is False
+assert build_manifest["d9_10_release_authority"] == "NONE"
 assert build_manifest["d_request_runtime_execution"] is False
 assert build_manifest["d_request_renderer_activation"] is False
 drill_runtime = (ROOT / "run_visual_drill_production.ps1").read_text(encoding="utf-8-sig")
@@ -159,4 +166,9 @@ print("C11-D D9.5.1 Challenge integration subtest PASS | core=90 | personalizati
 d9_universal = subprocess.run([sys.executable, str(D9_DIR / "test_universal_producer.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=120)
 assert d9_universal.returncode == 0, d9_universal.stdout + "\n" + d9_universal.stderr
 assert "challenge=9/9" in d9_universal.stdout and "drill_variants=20/20" in d9_universal.stdout and "GUI/CLI parity=3/3" in d9_universal.stdout and "negative=20/20" in d9_universal.stdout
-print("C11-C Producer 0.11.0 self-test PASS | D9.5.1 Challenge + D9.9 universal matrix / plan-only / GUI-CLI backend parity")
+print("C11-C Producer 0.11.1 base checks PASS | D9.5.1 Challenge + D9.9 universal matrix + D9.10 bridge planning / plan-only / GUI-CLI backend parity")
+
+bridge_test = subprocess.run([sys.executable, str(D9_DIR / "test_editorial_render_bridge.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=120)
+assert bridge_test.returncode == 0, bridge_test.stdout + "\n" + bridge_test.stderr
+assert "content_types=3/3" in bridge_test.stdout and "CLI bridge parity=3/3" in bridge_test.stdout and "negative=15/15" in bridge_test.stdout
+print("C11-C Producer 0.11.1 self-test PASS | D9.9 universal plans + D9.10 plan-only bridge contract")
