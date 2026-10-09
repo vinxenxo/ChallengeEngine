@@ -13,7 +13,7 @@ C11-D is the additive productization branch around the immutable C11-C 2.19.12 b
 - D9.15 — screenshot/log waiver is candidate-readiness only; not canonical D9.15 closure.
 - D9.16 — full acceptance BLOCKED_AS_REQUIRED; D9.17 — NO-GO / D9 OPEN.
 - D4.8 — `BLOCKED`; general D renderer dispatch — OFF; release authority — `NONE`.
-- Next — D9.10 Windows acceptance runner + focused/aggregate regression, then D9.14 full E2E prerequisite work.
+- Next — restore the two manifest-pinned historical root README files with `C11D_D9.10_ACCEPTANCE_README_RESTORE_FIX_OVERLAY_V1.zip`, rerun D9.10 acceptance (expected 5/5) and aggregate regression, then proceed with D9.14 full E2E prerequisite work.
 - Definitive GUI — deferred until final D baseline is accepted, closed and frozen.
 
 ## D7 frozen authorities
@@ -57,7 +57,7 @@ The current docs directory contains both authoritative contracts and historical 
 - `D9.14_PRODUCTION_QUALIFICATION_RUNBOOK_V1.md` — bounded media qualification and known successful Windows run.
 - `D9.14_GUI_REAL_MEDIA_CERTIFICATION_GATE_CHECKPOINT.md` — full gate remains blocked.
 - `MASTER_HANDOVER_C11D_CURRENT.md` and `START_PROMPT_C11D_CURRENT.md` — authoritative handover and next actions.
-- `docs/history/c11d/d9/` — preserved superseded checkpoint and qualification result record.
+- `docs/history/c11d/d9/` — preserved superseded checkpoint, qualification result and `D9.10_ACCEPTANCE_README_MANIFEST_REPAIR_20261009.md` incident record.
 
 ## D7 frozen baseline history
 

@@ -75,3 +75,12 @@
 - Report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`; qualification-only baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`.
 - Challenge D3 Music Engine V5 mux, deterministic same-seed Loop replay and changed-music-seed isolation passed.
 - This is qualification-only using proven generators; full D9.14 GUI/E2E remains blocked, D4.8 is BLOCKED, general D renderer dispatch remains OFF, D9.16/D9.17 remain blocked and release authority is NONE.
+
+
+## D9.10 acceptance readme restoration fix (2026-10-09)
+
+- Restored the two historical root README files exactly as specified by the immutable C11-C source manifest after a candidate preflight found them absent in the active checkout.
+- This was a repository-inventory defect. No C11-C manifest rewrite, protected-code change, D adapter dispatch or renderer activation was performed.
+- Prepared-workspace validation: candidate preflight PASS; 854/854 protected entries; 22/22 negative controls; five candidate blockers retained; freeze eligibility false. Automated D9.10 acceptance returns 5/5 with the default five focused checks.
+- `operator_gui_runtime_observed=false` remains an accurate scope annotation, not an acceptance failure. Backend/CLI/static GUI checks need no screenshots. This does not claim the live GUI was launched by the acceptance runner.
+- See `docs/history/c11d/d9/D9.10_ACCEPTANCE_README_MANIFEST_REPAIR_20261009.md`.

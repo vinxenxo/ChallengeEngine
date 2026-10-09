@@ -118,3 +118,10 @@ Per explicit operator decision, do not require the 13 screenshot/log captures to
 - Focused D9.10 result: content types 3/3, CLI bridge parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter negatives 9/9. Automated acceptance runner has five focused checks by default; the aggregate Suite is opt-in with `--include-aggregate` and records `operator_gui_runtime_observed=false`; the report is not an assertion of interactive GUI observation.
 - Actual D9.14 bounded qualification: run `D914_COLON_FIX_20261009_E`, four final A/V MP4s, report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`, qualification baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`.
 - Current candidate preflight is expected to PASS as an audit but remain `freeze_eligible=false` with five blockers. D4.8 BLOCKED, renderer dispatch OFF, release authority NONE.
+
+
+## D9.10 acceptance regression repair — 2026-10-09
+
+The first Windows acceptance capture after the D9.10 adapter overlay showed 4/5 focused checks because the candidate preflight found two historical root README paths missing: `README_C11D_D9.5.1_OVERLAY.md` and `README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md`. The aggregate Suite then failed only when it reached that same candidate preflight. This is fixed by the additive restoration overlay `C11D_D9.10_ACCEPTANCE_README_RESTORE_FIX_OVERLAY_V1.zip`, which reinstates the two files byte-for-byte at their immutable manifest hashes. It does not change C11-C source or manifest.
+
+Prepared-workspace revalidation: candidate preflight PASS (protected 854/854; negative 22/22; 34 allowlisted D changes; five blockers retained; `freeze_eligible=false`); default D9.10 acceptance PASS 5/5. `operator_gui_runtime_observed=false` is not a failed check; it records that the automated runner does not launch/observe an interactive Qt session. Do not require screenshots for those five backend/CLI/static-GUI checks. Windows needs to rerun the restored candidate, acceptance capture and aggregate suite. All governance locks remain unchanged.

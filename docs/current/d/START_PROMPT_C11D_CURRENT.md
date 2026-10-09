@@ -1,3 +1,11 @@
+# Latest authoritative follow-up — D9.10 acceptance manifest repair (2026-10-09)
+
+The first Windows run after the D9.10 D-only adapter overlay reached the candidate-preflight stage but failed because two root-level README paths still present in the immutable C11-C manifest were absent from that checkout. Apply `C11D_D9.10_ACCEPTANCE_README_RESTORE_FIX_OVERLAY_V1.zip` to restore `README_C11D_D9.5.1_OVERLAY.md` and `README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md` byte-for-byte; expected SHA-256 values are recorded in the D9.10 runbook and the incident history. This also resolves the single candidate check causing the automated capture to report 4/5 and the aggregate suite to fail at step 21. In the prepared workspace, candidate preflight passes and `capture_d910_acceptance.py` reports 5/5. Its `GUI_runtime_observed=false` is a truthful scope field, not a failed check; no screenshots are required for the automated checks. Re-run candidate preflight, capture with a fresh `--run-id`, and the aggregate suite in Windows after extraction.
+
+Governance remains unchanged: C11-C 2.19.12 and its manifest immutable, adapter `PREPARE_ONLY`, general renderer OFF, production/media false, D4.8 BLOCKED, D9 OPEN, D9.17 NO-GO, D10 BLOCKED, release authority NONE. Do not infer final D9.10 GUI runtime acceptance from the static contracts.
+
+---
+
 # Latest authoritative update — D9.10 adapter + D9.14 qualification (2026-10-09)
 
 This update supersedes older statements below when they conflict; older records remain as historical trace.
