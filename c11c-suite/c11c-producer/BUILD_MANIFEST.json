@@ -15,7 +15,7 @@
   "review_drill_launcher": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
   "stabilization_revision": "2.19.12",
   "producer_acceptance": "FINAL-CLOSURE-CANDIDATE; workstation acceptance required before freeze",
-  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation. Additive C11-D D4.1 request/personalization/plan tab via canonical D4.6 GUI adapter and D4.5 parity; plan-only while D4.8 is BLOCKED. Additive D9.9 universal editorial selector/request/plan tab using one canonical adapter for GUI and CLI across all current Challenge, Visual Loop grammar and Visual Drill tier identities; declarative Loop/Drill intent plans only until a future D frozen renderer baseline. Additive D9.10 plan-only editorial-to-render bridge mapping record, canonical GUI/CLI parity, no renderer input/media execution. Additive D9.13 five-surface cross-suite lifecycle receipt built from persisted canonical Producer evidence; same identity, seed/profile bindings and provenance; plan-only, no media.",
+  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation. Additive C11-D D4.1 request/personalization/plan tab via canonical D4.6 GUI adapter and D4.5 parity; plan-only while D4.8 is BLOCKED. Additive D9.9 universal editorial selector/request/plan tab using one canonical adapter for GUI and CLI across all current Challenge, Visual Loop grammar and Visual Drill tier identities; declarative Loop/Drill intent plans only until a future D frozen renderer baseline. Additive D9.10 plan-only editorial-to-render bridge mapping record, canonical GUI/CLI parity, no renderer input/media execution. Additive D9.13 five-surface cross-suite lifecycle receipt built from persisted canonical Producer evidence; same identity, seed/profile bindings and provenance; plan-only, no media. Additive D9.14 fail-closed real-media GUI certification readiness gate; operator-visible blocker only, no renderer activation or media execution.",
   "backend_logic_modified": false,
   "suite_location": "c11c-suite/c11c-producer",
   "producer_version": "0.11.1",
@@ -53,6 +53,16 @@
   "d9_13_media_created": false,
   "d9_13_release_authority": "NONE",
   "tests": [
-    "c11c-suite/c11c-producer/test_d913_lifecycle_contract.py"
-  ]
+    "c11c-suite/c11c-producer/test_d913_lifecycle_contract.py",
+    "c11c-suite/c11c-producer/test_d914_certification_gate_contract.py",
+    "tools/c11d/d9/test_gui_real_media_certification.py"
+  ],
+  "d9_14_real_media_certification_gate": true,
+  "d9_14_gate_backend": "tools/c11d/d9/gui_real_media_certification.py",
+  "d9_14_gate_contract": "definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json",
+  "d9_14_gate_status": "BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION",
+  "d9_14_real_media_execution": false,
+  "d9_14_renderer_activation": false,
+  "d9_14_media_created": false,
+  "d9_14_release_authority": "NONE"
 }

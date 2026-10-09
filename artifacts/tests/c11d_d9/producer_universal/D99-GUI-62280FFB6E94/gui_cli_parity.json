@@ -1,0 +1,31 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-BRIDGE-PARITY-V1",
+  "status": "PASS",
+  "content_type": "challenges",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_006",
+    "variant_scope_id": "challenge:CHALLENGE_006",
+    "difficulty_tier": null
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true
+  },
+  "gui_request_hash": "80544b4f3fee7d59eeb91d33754cb1551d5a2c457a04ef9bc2ddadb54d5fc94a",
+  "cli_request_hash": "80544b4f3fee7d59eeb91d33754cb1551d5a2c457a04ef9bc2ddadb54d5fc94a",
+  "gui_plan_hash": "c7325b0d81a2e3e5436db01f04ee9911fe0a054286e80569c8a1d0a98c6c2177",
+  "cli_plan_hash": "c7325b0d81a2e3e5436db01f04ee9911fe0a054286e80569c8a1d0a98c6c2177",
+  "bridge_record_hash": "041a9258ffd7d772125af7ab63eb34c3bb348d1ad53a354cf5e5d6089501e275",
+  "cli_bridge_record_hash": "041a9258ffd7d772125af7ab63eb34c3bb348d1ad53a354cf5e5d6089501e275",
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

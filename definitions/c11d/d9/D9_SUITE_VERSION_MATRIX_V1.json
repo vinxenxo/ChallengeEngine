@@ -16,23 +16,24 @@
   "suites": [
     {
       "id": "c11c-test",
-      "current_version": "0.2.0; D9.12 CLI/static PASS; D9.13 lifecycle route integrated; Windows GUI acceptance pending",
+      "current_version": "0.2.0 D9.12 routes + D9.13 lifecycle + D9.14 certification gate preflight",
       "target_version": "0.2.0",
-      "gate": "D9.12-D9.13",
-      "status": "D9.12_PASS_CLI_STATIC_D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_CONFIRMATION_PENDING",
+      "gate": "D9.12–D9.14",
+      "status": "D9.14_GATE_BLOCKED_NO_MEDIA_WINDOWS_GUI_CONFIRMATION_PENDING",
       "required_tests": [
         "registered GUI command path and all target file checks",
         "preserve inherited C11-C test routes and five-surface topology",
-        "22 registered D routes and 52 total GUI routes",
+        "23 registered D routes and 53 total GUI routes",
         "11-case GUI E2E certification plan preflight; no media created",
         "D9 negative acceptance and GUI/CLI parity bundles",
         "D9.13 five-stage cross-suite lifecycle test for Challenge, Loop and Drill",
-        "operator confirms Test GUI opens and D9.13 lifecycle route runs without errors"
+        "operator confirms Test GUI opens and D9.13 lifecycle route runs without errors",
+        "D9.14 real-media GUI certification gate fail-closed and no-media until future baseline/D4.8 authority"
       ]
     },
     {
       "id": "c11c-producer",
-      "current_version": "0.11.1 D9.13 cross-suite lifecycle receipt integrated; plan-only",
+      "current_version": "0.11.1 D9.13 lifecycle + D9.14 blocked certification-gate view; no production execution",
       "target_version": "0.11.1 D9.10 plan-only editorial-render bridge; physical rendering deferred to future D frozen baseline",
       "gate": "D9.9-D9.13",
       "status": "D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_CONFIRMATION_PENDING",
@@ -54,7 +55,8 @@
         "build SHA-256-sealed five-surface lifecycle receipt from persisted canonical request/plan/bridge evidence",
         "GUI/CLI parity for Challenge, Visual Loop and Visual Drill",
         "reject altered receipt hash, stage order, identity, seeds, profiles, paths and media/release claims",
-        "operator confirms lifecycle receipt view in the Windows GUI; plan-only"
+        "operator confirms lifecycle receipt view in the Windows GUI; plan-only",
+        "D9.14 gate visibly BLOCKED until future D renderer baseline + D4.8 authority; no production/media callback"
       ]
     },
     {
@@ -76,7 +78,7 @@
     },
     {
       "id": "c11c-maintenance",
-      "current_version": "0.2.0 D9.11 PASS/CLOSED; D9.13 read-only lifecycle audit integrated",
+      "current_version": "0.2.0 D9.11 PASS/CLOSED; D9.13 read-only lifecycle audit integrated; fixture-only legacy tree simulation",
       "target_version": "0.2.0",
       "gate": "D9.11+D9.13",
       "status": "D9.11_WINDOWS_VALIDATED_D9.13_READ_ONLY_AUDIT_BACKEND_PASS_WINDOWS_VIEW_PENDING",
@@ -98,10 +100,10 @@
       "id": "c11c-config",
       "current_version": "0.2.0",
       "target_version": "0.2.0",
-      "gate": "D9.7-D9.13",
-      "status": "D9.13_LIFECYCLE_CONTRACT_READ_ONLY_24_OF_24_CONFIG_PASS_WINDOWS_GUI_PENDING",
+      "gate": "D9.7–D9.14",
+      "status": "D9.14_GATE_READ_ONLY_25_OF_25_CONFIG_PASS_WINDOWS_GUI_PENDING",
       "required_tests": [
-        "24 canonical registries",
+        "25 canonical registries",
         "D9.10 bridge schema/governance/output invariants",
         "D9.8 model schema/seed/data-class invariants",
         "seven configuration negatives",
@@ -111,14 +113,14 @@
         "generic editor protected-root policy",
         "Windows GUI/filesystem smoke"
       ],
-      "notes": "Config 0.2.0 registers D9.8 editorial model, D9.10 bridge, D9.11 maintenance policy and D9.13 cross-suite lifecycle contract as read-only. All 24/24 registries validate; Windows Config GUI/filesystem acceptance still requires explicit operator confirmation."
+      "notes": "Config 0.2.0 registers D9.8, D9.10, D9.11, D9.13 and the fail-closed D9.14 certification gate read-only. All 25/25 registries must validate; real-media execution remains blocked and Windows Config GUI acceptance remains pending."
     },
     {
       "id": "c11c-suite",
-      "current_version": "0.1.4",
+      "current_version": "0.1.4; D9.12 Test route registry + D9.13 lifecycle + D9.14 fail-closed gate",
       "target_version": "0.1.5 only if needed",
       "gate": "D9.12-D9.13",
-      "status": "FIVE_CANONICAL_SURFACES_ONLY_D9.12_CLI_PASS_D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_PENDING",
+      "status": "FIVE_CANONICAL_SURFACES_ONLY_D9.12_CLI_PASS_D9.13_BACKEND_PASS_D9.14_GATE_BLOCKED_NO_MEDIA",
       "required_tests": [
         "launch each of five canonical apps in Windows",
         "GUI/CLI canonical identity parity and D9.13 receipt continuity",
@@ -162,8 +164,8 @@
     },
     {
       "gate": "D9.14",
-      "name": "Windows GUI real-media production and reproduction across supported content types",
-      "status": "PENDING"
+      "name": "Windows GUI real-media production certification; gated by future D frozen renderer baseline + D4.8 authorization",
+      "status": "PREFLIGHT_PASS_GATE_BLOCKED_REAL_MEDIA_ACCEPTANCE_NOT_RUN_NO_AUTHORIZED_D_BASELINE_D4_8_BLOCKED"
     },
     {
       "gate": "D9.15",

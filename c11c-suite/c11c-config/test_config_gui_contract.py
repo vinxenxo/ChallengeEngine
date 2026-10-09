@@ -27,4 +27,9 @@ lifecycle_contract = ROOT / 'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.
 assert lifecycle_contract.is_file()
 assert 'D9_CROSS_SUITE_LIFECYCLE' in module
 assert manifest.get('cross_suite_lifecycle_contract_access') == 'READ_ONLY_CANONICAL'
-print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance + D9.13 lifecycle registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
+d914_contract = HERE.parents[1] / 'definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json'
+assert d914_contract.is_file() and 'D9_REAL_MEDIA_CERTIFICATION_GATE' in module
+assert manifest.get('d9_14_certification_gate_access') == 'READ_ONLY_CANONICAL'
+assert manifest.get('d9_14_renderer_activation') is False and manifest.get('d9_14_production_execution') is False and manifest.get('d9_14_release_authority') == 'NONE'
+assert 'BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION' in d914_contract.read_text(encoding='utf-8')
+print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked certification gate registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')

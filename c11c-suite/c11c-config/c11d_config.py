@@ -17,6 +17,7 @@ D_REGISTRIES = (
  {'domain':'D9 · BRIDGE PLANNING','id':'D9_EDITORIAL_RENDER_BRIDGE','path':'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · MAINTENANCE','id':'D9_MAINTENANCE_POLICY','path':'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · CROSS-SUITE LIFECYCLE','id':'D9_CROSS_SUITE_LIFECYCLE','path':'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · REAL-MEDIA GUI CERTIFICATION GATE','id':'D9_REAL_MEDIA_CERTIFICATION_GATE','path':'definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · GOVERNANCE','id':'D4_ACTIVATION_POLICY','path':'definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D5 · PROVENANCE','id':'D5_LINEAGE_REGISTRY','path':'definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D6 · SEEDS','id':'D6_SEED_REGISTRY','path':'definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
@@ -153,6 +154,19 @@ def validate_c11d_contracts(project_root: Path) -> tuple[list[dict[str,Any]],lis
     governance=lifecycle.get('governance',{})
     need(governance.get('renderer_activation') is False and governance.get('renderer_input_emitted') is False and governance.get('production_execution') is False and governance.get('media_output_created') is False and governance.get('d4_8')=='BLOCKED' and governance.get('release_authority')=='NONE','D9.13 must remain plan-only and non-authoritative')
     need(lifecycle.get('catalog_projection',{}).get('media_created') is False and lifecycle.get('catalog_projection',{}).get('release_authority')=='NONE','D9.13 Catalog projection must be explicitly no-media/non-release')
+    d914=d.get('D9_REAL_MEDIA_CERTIFICATION_GATE',{})
+    need(d914.get('schema')=='C11-D-D9.14-GUI-REAL-MEDIA-CERTIFICATION-GATE-V1' and d914.get('checkpoint')=='D9.14','D9.14 GUI real-media gate schema/checkpoint mismatch')
+    need(d914.get('status')=='BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION','D9.14 real-media gate must remain blocked until authorized future D baseline')
+    gate_state=d914.get('current_gate_state',{})
+    need(gate_state.get('future_d_frozen_baseline')=='ABSENT_NOT_AUTHORIZED' and gate_state.get('d4_8')=='BLOCKED','D9.14 future D baseline and D4.8 authorization must remain blocked')
+    need(gate_state.get('renderer_activation') is False and gate_state.get('production_execution') is False and gate_state.get('release_authority')=='NONE','D9.14 must not grant renderer/production/release authority')
+    need(gate_state.get('master_seed')=='NOT_ADOPTED' and gate_state.get('gameplay_seed_source')=='request.seed' and gate_state.get('music_seed_source')=='request.music_seed' and gate_state.get('cross_domain_seed_sharing')=='FORBIDDEN','D9.14 must preserve distinct gameplay/music seed governance')
+    d914_cases=d914.get('case_matrix',[])
+    need(len(d914_cases)==10 and len({x.get('case_id') for x in d914_cases if isinstance(x,dict)})==10,'D9.14 must retain its 10 unique E2E certification cases')
+    need(set(d914.get('certification_scope',{}).get('supported_content_types_when_authorized',[]))=={'challenges','visual_loops','visual_drills'},'D9.14 supported content types mismatch')
+    need(d914.get('certification_scope',{}).get('unsupported_content_types',{}).get('longform')=='DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM','D9.14 Longform must remain disabled until D4 request schema support')
+    d914_output=d914.get('output_contract',{})
+    need(d914_output.get('preflight_status')=='BLOCKED' and d914_output.get('renderer_activation') is False and d914_output.get('production_execution') is False and d914_output.get('media_output_created') is False and d914_output.get('release_authority')=='NONE','D9.14 gate output must be blocked and no-media/no-authority')
     maintenance=d.get('D9_MAINTENANCE_POLICY',{})
     need(maintenance.get('schema')=='C11-D-D9.11-MAINTENANCE-POLICY-V1' and maintenance.get('checkpoint')=='D9.11','D9.11 maintenance policy schema/checkpoint mismatch')
     need(maintenance.get('surface')=='c11c-maintenance' and maintenance.get('version')=='0.2.0','D9.11 must target existing Maintenance 0.2.0')

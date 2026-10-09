@@ -1,0 +1,42 @@
+{
+  "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-RESOLUTION-V1",
+  "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_006",
+    "variant_scope_id": "challenge:CHALLENGE_006",
+    "scope_keys": {
+      "content_type": "challenges",
+      "family": "challenge-family:catch_v1",
+      "subtype": null,
+      "variant": "challenge:CHALLENGE_006"
+    },
+    "request_plan_compatible": true,
+    "editable_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language",
+      "player_name",
+      "challenge_label"
+    ],
+    "request_plan_compatibility": "CURRENT_D4_CHALLENGE_REQUEST_ONLY"
+  },
+  "values": {
+    "title": "UNKNOWN",
+    "subtitle": "UNKNOWN",
+    "call_to_action": "UNKNOWN",
+    "language": "UNKNOWN",
+    "player_name": "UNKNOWN",
+    "challenge_label": "UNKNOWN"
+  },
+  "applied_layers": [],
+  "request_plan_compatible": true,
+  "request_plan_state": "CURRENT_D4_CHALLENGE_PATH",
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-config",
   "version": "0.2.0",
-  "branch": "C11-D D9.7–D9.13",
+  "branch": "C11-D D9.7–D9.14",
   "entrypoint": "c11c-suite/c11c-config/main.py",
   "modules": [
     "c11c-suite/c11c-config/c11d_config.py"
@@ -22,7 +22,8 @@
     "D9 universal editorial model (declarative; no renderer/production authority)",
     "D9.10 editorial-render bridge planning contract (read-only; renderer/production inactive)",
     "D9.11 maintenance policy (read-only registry; allowlisted reversible maintenance only)",
-    "D9.13 cross-suite lifecycle identity binding (read-only; five surfaces; plan-only; no renderer/media/release authority)"
+    "D9.13 cross-suite lifecycle identity binding (read-only; five surfaces; plan-only; no renderer/media/release authority)",
+    "D9.14 real-media GUI certification gate (read-only; BLOCKED until authorized future D frozen baseline; no execution/media/release authority)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -64,5 +65,12 @@
   "maintenance_policy": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
   "maintenance_policy_access": "READ_ONLY_CANONICAL",
   "cross_suite_lifecycle_contract": "definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json",
-  "cross_suite_lifecycle_contract_access": "READ_ONLY_CANONICAL"
+  "cross_suite_lifecycle_contract_access": "READ_ONLY_CANONICAL",
+  "d9_14_certification_gate_contract": "definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json",
+  "d9_14_certification_gate_access": "READ_ONLY_CANONICAL",
+  "d9_14_gate_status": "BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION",
+  "d9_14_renderer_activation": false,
+  "d9_14_production_execution": false,
+  "d9_14_media_created": false,
+  "d9_14_release_authority": "NONE"
 }

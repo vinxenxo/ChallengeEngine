@@ -15,7 +15,7 @@ py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
 py_compile.compile(str(ROOT / "c11d_gui_request.py"), doraise=True)
 py_compile.compile(str(ROOT / "test_d9_producer_integration.py"), doraise=True)
 D9_DIR = PROJECT / "tools" / "c11d" / "d9"
-for d9_file in ("universal_producer.py", "universal_producer_cli.py", "test_universal_producer.py", "editorial_render_bridge.py", "test_editorial_render_bridge.py"):
+for d9_file in ("universal_producer.py", "universal_producer_cli.py", "test_universal_producer.py", "editorial_render_bridge.py", "test_editorial_render_bridge.py", "gui_real_media_certification.py", "test_gui_real_media_certification.py"):
     py_compile.compile(str(D9_DIR / d9_file), doraise=True)
 
 schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -65,6 +65,11 @@ assert build_manifest["d9_10_renderer_input_emitted"] is False
 assert build_manifest["d9_10_renderer_adapter_invoked"] is False
 assert build_manifest["d9_10_media_output_created"] is False
 assert build_manifest["d9_10_release_authority"] == "NONE"
+assert build_manifest["d9_14_real_media_certification_gate"] is True
+assert build_manifest["d9_14_real_media_execution"] is False
+assert build_manifest["d9_14_renderer_activation"] is False
+assert build_manifest["d9_14_media_created"] is False
+assert build_manifest["d9_14_release_authority"] == "NONE"
 assert build_manifest["d_request_runtime_execution"] is False
 assert build_manifest["d_request_renderer_activation"] is False
 drill_runtime = (ROOT / "run_visual_drill_production.ps1").read_text(encoding="utf-8-sig")
@@ -177,3 +182,11 @@ print("C11-C Producer 0.11.1 self-test PASS | D9.9 universal plans + D9.10 plan-
 d913_contract = subprocess.run([sys.executable, str(PROJECT / "c11c-suite" / "c11c-producer" / "test_d913_lifecycle_contract.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
 assert d913_contract.returncode == 0, d913_contract.stdout + "\n" + d913_contract.stderr
 assert "C11C_PRODUCER_D9_13_LIFECYCLE_CONTRACT PASS" in d913_contract.stdout
+
+# D9.14: gate is visible in Producer but cannot execute a renderer or claim media.
+d914_contract = subprocess.run([sys.executable, str(PROJECT / "c11c-suite" / "c11c-producer" / "test_d914_certification_gate_contract.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+assert d914_contract.returncode == 0, d914_contract.stdout + "\n" + d914_contract.stderr
+d914_gate = subprocess.run([sys.executable, str(D9_DIR / "test_gui_real_media_certification.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=45)
+assert d914_gate.returncode == 0, d914_gate.stdout + "\n" + d914_gate.stderr
+assert "gate=BLOCKED_AS_REQUIRED" in d914_gate.stdout and "media_created=false" in d914_gate.stdout
+print("C11-C Producer 0.11.1 D9.14 gate checks PASS | gate remains BLOCKED, renderer OFF, media=false")

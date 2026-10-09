@@ -1,0 +1,302 @@
+{
+  "schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-RECEIPT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.13",
+  "status": "PASS_PLAN_ONLY",
+  "lifecycle_id": "D9L13-5A3D9FF7F5F0C387BC092B81",
+  "identity_sha256": "651e8c34c9fbd09a7f180e8e44e92b94803ee945519e2d09300cf507bf5b541d",
+  "identity": {
+    "request_id": "D99-GUI-62280FFB6E94",
+    "content_type": "challenges",
+    "selection": {
+      "content_type": "challenges",
+      "difficulty_tier": null,
+      "family_id": "catch_v1",
+      "subtype_id": null,
+      "variant_id": "CHALLENGE_006",
+      "variant_scope_id": "challenge:CHALLENGE_006"
+    },
+    "request_hash": "80544b4f3fee7d59eeb91d33754cb1551d5a2c457a04ef9bc2ddadb54d5fc94a",
+    "editorial_hash": "ec500b0e5180bc5e9696e4b3062ed9c7349142d53f397b0e8345e07206fae878",
+    "plan_hash": "c7325b0d81a2e3e5436db01f04ee9911fe0a054286e80569c8a1d0a98c6c2177",
+    "bridge_record_hash": "041a9258ffd7d772125af7ab63eb34c3bb348d1ad53a354cf5e5d6089501e275",
+    "gameplay_seed": 12345,
+    "music_seed": 840010,
+    "delivery_profile_id": "MASTER_1080",
+    "resolved_delivery_profile_id": "MASTER_1080",
+    "presentation_profile_id": "social_default_v1",
+    "audio_enabled": true,
+    "personalization_enabled": true
+  },
+  "binding_sha256": "b64a0f05ee4050957c83ee667d603f4ad700517ce709f7d47434051ea484c41f",
+  "stages": [
+    {
+      "surface": "c11c-config",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-5A3D9FF7F5F0C387BC092B81",
+      "identity_sha256": "651e8c34c9fbd09a7f180e8e44e92b94803ee945519e2d09300cf507bf5b541d",
+      "binding_sha256": "b64a0f05ee4050957c83ee667d603f4ad700517ce709f7d47434051ea484c41f",
+      "status": "PASS_READ_ONLY_CONFIG_BINDINGS",
+      "evidence": {
+        "config_registry_sha256": "bc99c9b7d317e8453d75313eda5a528fd63898bf6089823174aa8c679bd4c93f",
+        "registry_count": 25,
+        "contract_hashes": [
+          {
+            "id": "D2_ASSET_FAMILIES",
+            "path": "definitions/c11d/asset_families/C11D_ASSET_FAMILY_REGISTRY_V1.json",
+            "sha256": "a447ef78419cd7081ad516ef5a16acc99777b22ae8e5794fd8caa76d7773c333"
+          },
+          {
+            "id": "D2_CHALLENGE_BINDINGS",
+            "path": "definitions/c11d/asset_families/C11D_CHALLENGE_ASSET_BINDING_REGISTRY_V1.json",
+            "sha256": "3001c0a4cf104a7814cf0b60f36805e8886e0f7ac79fc6e926a630769911f903"
+          },
+          {
+            "id": "D3_MUSIC_STYLE",
+            "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+            "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+          },
+          {
+            "id": "D3_MUSIC_ENGINE",
+            "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+            "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+          },
+          {
+            "id": "D4_REQUEST_SCHEMA",
+            "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json",
+            "sha256": "82a889cf199c9dafdf95665c83be28da1affa83e1cbf4472d30e40969030dd5e"
+          },
+          {
+            "id": "D4_PERSONALIZATION_REGISTRY",
+            "path": "definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json",
+            "sha256": "7712c4e83d0dadc7934e595244d15e67a09490b1e07351beb52a7396a6a6daaf"
+          },
+          {
+            "id": "D9_UNIVERSAL_EDITORIAL_MODEL",
+            "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+            "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+          },
+          {
+            "id": "D9_EDITORIAL_RENDER_BRIDGE",
+            "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+            "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+          },
+          {
+            "id": "D9_MAINTENANCE_POLICY",
+            "path": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
+            "sha256": "7f8a629df1d039963c492de8a70289fa32bc12ad974c0f85994fdef288958dbd"
+          },
+          {
+            "id": "D9_CROSS_SUITE_LIFECYCLE",
+            "path": "definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json",
+            "sha256": "255001360c2f183c4e5b9ca309e416dd6da33ac8beeecf8b24094e32be877201"
+          },
+          {
+            "id": "D9_REAL_MEDIA_CERTIFICATION_GATE",
+            "path": "definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json",
+            "sha256": "213eaf4b7d1b7a89942f2157a7901088f7e044fe5aa60333f2d5b9d8102312fa"
+          },
+          {
+            "id": "D4_ACTIVATION_POLICY",
+            "path": "definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json",
+            "sha256": "cf970424b1b079d80cda41085a700129e094e90c87e48b04122c5acdabebae16"
+          },
+          {
+            "id": "D5_LINEAGE_REGISTRY",
+            "path": "definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json",
+            "sha256": "eeb8e221d13ce9f751434f04d0fc5637fd32d06f96c26aa34bd32e0ac2e6b048"
+          },
+          {
+            "id": "D6_SEED_REGISTRY",
+            "path": "definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json",
+            "sha256": "546283f37aaebfd04bc5d12d587b7a9570bc932f5eb28dad84664b7b5e19ee23"
+          },
+          {
+            "id": "D6_SEED_GOVERNANCE",
+            "path": "definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json",
+            "sha256": "5329bf071fc437d08f706c9605609e53773ae00cb90eb704052e04e3e98e8b88"
+          },
+          {
+            "id": "D6_DERIVATION_SPEC",
+            "path": "definitions/c11d/seeds/C11D_SEED_DERIVATION_SPEC_V1.json",
+            "sha256": "fca16311f6d2599490b7812ef761372e706301bbcc0e98576e737fa73ac6f671"
+          },
+          {
+            "id": "D7_MATRIX_SPEC",
+            "path": "definitions/c11d/production/C11D_PRODUCTION_MATRIX_SPEC_V1.json",
+            "sha256": "d7807c917ecba8371c00b834b0661ae93c2378e658632b675a979d93810ab359"
+          },
+          {
+            "id": "D7_CATALOG_SPEC",
+            "path": "definitions/c11d/production/C11D_CANONICAL_CATALOG_SPEC_V1.json",
+            "sha256": "1bc97e932d0a6d9880adb7847a21de42a56247fc2b020bcb587de37a7c7a3299"
+          },
+          {
+            "id": "D8_MEDIA_SCOPE",
+            "path": "definitions/c11d/d8/D8_MEDIA_SCOPE_V1.json",
+            "sha256": "11d59c90bbae72007042772179929a3b1376c10a17ab09fad8d303bf26a44f3d"
+          },
+          {
+            "id": "D8_VISUAL_QA",
+            "path": "definitions/c11d/d8/D8_VISUAL_QA_V1.json",
+            "sha256": "b4b258162a4f24f6babc5ac7b18b46f4852cffc0c47496461e60507bd7e301b9"
+          },
+          {
+            "id": "D8_AUDIO_QA",
+            "path": "definitions/c11d/d8/D8_AUDIO_QA_V1.json",
+            "sha256": "addafcaa9151b27d2e0de620f8caf2c185aaf68151a548ee6ef049b65a6c227c"
+          },
+          {
+            "id": "D8_MEDIA_ELIGIBILITY",
+            "path": "definitions/c11d/d8/D8_ARTIFACT_MEDIA_ELIGIBILITY_V1.json",
+            "sha256": "1401af02640dfa90d27cc5ca8ee759bb2d6886e8ccb62ba048b93be4a6f205b1"
+          },
+          {
+            "id": "D8_RELEASE_MANIFEST",
+            "path": "definitions/c11d/d8/D8_RELEASE_MANIFEST_V1.json",
+            "sha256": "96b2d4cb5cbca67c76b3b6cefa335de8f2308e36dc069f2e635ef56eb31cd267"
+          },
+          {
+            "id": "D8_ACCEPTANCE_FREEZE",
+            "path": "definitions/c11d/d8/D8_ACCEPTANCE_FREEZE_V1.json",
+            "sha256": "f5d8875c2e5ad4840e22f57e7f3abd4417b7c5ad92428e66fed89a9ab732bb8e"
+          },
+          {
+            "id": "D9_ACCEPTANCE_CLOSURE",
+            "path": "definitions/c11d/d9/D9_ACCEPTANCE_CLOSURE_V1.json",
+            "sha256": "6f83aa73a0cebba3a26496f3bd5a781363394e2a6709f93cbbb5749ab73647b9"
+          }
+        ],
+        "delivery_profile_registry_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+        "profile_bindings": {
+          "delivery_profile_id": "MASTER_1080",
+          "resolved_delivery_profile_id": "MASTER_1080",
+          "presentation_profile_id": "social_default_v1",
+          "personalization_enabled": true
+        },
+        "profile_bindings_sha256": "a6901d6a0669eb217c8c0a65bce767e82f22bd0cd50143b8d88f8fa1c7f6499f",
+        "canonical_contracts_access": "READ_ONLY"
+      }
+    },
+    {
+      "surface": "c11c-producer",
+      "version": "0.11.1",
+      "lifecycle_id": "D9L13-5A3D9FF7F5F0C387BC092B81",
+      "identity_sha256": "651e8c34c9fbd09a7f180e8e44e92b94803ee945519e2d09300cf507bf5b541d",
+      "binding_sha256": "b64a0f05ee4050957c83ee667d603f4ad700517ce709f7d47434051ea484c41f",
+      "status": "PASS_CANONICAL_PLAN_ONLY",
+      "evidence": {
+        "persisted_evidence_directory": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-62280FFB6E94",
+        "producer_manifest_sha256": "13a593386ac554b0591787fc28fb33b9c0f47d4853ae735986539a4d82d6649c",
+        "request_hash": "80544b4f3fee7d59eeb91d33754cb1551d5a2c457a04ef9bc2ddadb54d5fc94a",
+        "editorial_hash": "ec500b0e5180bc5e9696e4b3062ed9c7349142d53f397b0e8345e07206fae878",
+        "plan_hash": "c7325b0d81a2e3e5436db01f04ee9911fe0a054286e80569c8a1d0a98c6c2177",
+        "bridge_record_hash": "041a9258ffd7d772125af7ab63eb34c3bb348d1ad53a354cf5e5d6089501e275",
+        "source_revision": "C11D-D9.9-PRODUCER-0.11.0",
+        "gameplay_seed": 12345,
+        "music_seed": 840010,
+        "delivery_profile_id": "MASTER_1080",
+        "resolved_delivery_profile_id": "MASTER_1080",
+        "presentation_profile_id": "social_default_v1",
+        "audio_enabled": true,
+        "personalization_enabled": true,
+        "content_type": "challenges",
+        "selection": {
+          "content_type": "challenges",
+          "difficulty_tier": null,
+          "family_id": "catch_v1",
+          "subtype_id": null,
+          "variant_id": "CHALLENGE_006",
+          "variant_scope_id": "challenge:CHALLENGE_006"
+        },
+        "gameplay_seed_source": "canonical_request.seed",
+        "music_seed_source": "canonical_request.music_seed",
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "automatic_seed_generation": false,
+        "runtime_seed_derivation": false
+      }
+    },
+    {
+      "surface": "c11c-test",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-5A3D9FF7F5F0C387BC092B81",
+      "identity_sha256": "651e8c34c9fbd09a7f180e8e44e92b94803ee945519e2d09300cf507bf5b541d",
+      "binding_sha256": "b64a0f05ee4050957c83ee667d603f4ad700517ce709f7d47434051ea484c41f",
+      "status": "PASS_PLAN_ONLY_QA_CONTRACT",
+      "evidence": {
+        "build_manifest_sha256": "f5805872ddc5555245256a1363b741b525ee4a9827429db17cf4e3e17e4d2a90",
+        "integration_contract_sha256": "6d0bc36b50b4bbd69ed0b43ff4a5821046c83ccff77905f31430d801ae43bb16",
+        "route_source_sha256": "06c286f9ad217c9ce74896693691e39645649e94f85c695f566809e37ea4829e",
+        "registered_route_count": 53,
+        "canonical_surface_count": 5,
+        "negative_acceptance_reference": "tools/c11d/d9/test_d9_negative_acceptance.py",
+        "gui_cli_parity_reference": "tools/c11d/d9/test_d9_gui_cli_parity.py",
+        "plan_identity_validation": "PASS",
+        "media_qa": "NOT_APPLICABLE_NO_MEDIA_CREATED",
+        "no_media": true
+      }
+    },
+    {
+      "surface": "c11c-catalog",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-5A3D9FF7F5F0C387BC092B81",
+      "identity_sha256": "651e8c34c9fbd09a7f180e8e44e92b94803ee945519e2d09300cf507bf5b541d",
+      "binding_sha256": "b64a0f05ee4050957c83ee667d603f4ad700517ce709f7d47434051ea484c41f",
+      "status": "PASS_READ_ONLY_IDENTITY_PROJECTION",
+      "evidence": {
+        "catalog_manifest_sha256": "6b4b2ab247d963cad768721d3c08d727cfc2c1ac7fdcdfa2050ceaff4aaedec4",
+        "projection_schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-CATALOG-PROJECTION-V1",
+        "projection_sha256": "91f568a73ca4585fb4a7b761439d2064beda3c81e84b50f63973bd0d723bff92",
+        "record_type": "CROSS_SUITE_LIFECYCLE_INTENT",
+        "media_created": false,
+        "media_path": null,
+        "media_sha256": null,
+        "release_authority": "NONE"
+      }
+    },
+    {
+      "surface": "c11c-maintenance",
+      "version": "0.2.0",
+      "lifecycle_id": "D9L13-5A3D9FF7F5F0C387BC092B81",
+      "identity_sha256": "651e8c34c9fbd09a7f180e8e44e92b94803ee945519e2d09300cf507bf5b541d",
+      "binding_sha256": "b64a0f05ee4050957c83ee667d603f4ad700517ce709f7d47434051ea484c41f",
+      "status": "PASS_READ_ONLY_MAINTENANCE_AUDIT",
+      "evidence": {
+        "maintenance_manifest_sha256": "fd96be1ba782947f1e99e5dc46fcecebcd744bc7229b3c9b36cadd95ef1c1201",
+        "maintenance_policy_sha256": "7f8a629df1d039963c492de8a70289fa32bc12ad974c0f85994fdef288958dbd",
+        "historical_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "historical_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "maintenance_plan_status": "PASS",
+        "registered_surface_count": 5,
+        "freeze_ready": false,
+        "side_effects": {
+          "files_moved": false,
+          "files_deleted": false,
+          "manifest_rewritten": false,
+          "archive_created": false
+        }
+      }
+    }
+  ],
+  "governance": {
+    "renderer_activation": false,
+    "renderer_input_emitted": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "runtime_authority": "NONE",
+    "release_authority": "NONE",
+    "c11c_frozen_reference_mutation": "FORBIDDEN"
+  },
+  "media_created": false,
+  "media_path": null,
+  "media_sha256": null,
+  "release_authority": "NONE",
+  "evidence": {
+    "producer_evidence_directory": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-62280FFB6E94",
+    "producer_gui_cli_parity": "PASS",
+    "catalog_projection_sha256": "91f568a73ca4585fb4a7b761439d2064beda3c81e84b50f63973bd0d723bff92",
+    "maintenance_is_dry_run": true
+  },
+  "receipt_sha256": "ebbc36098ca22886174128818a7dd001769084cd968a8515614723837e0b6183"
+}

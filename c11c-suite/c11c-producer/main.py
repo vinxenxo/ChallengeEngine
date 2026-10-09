@@ -81,6 +81,7 @@ def _load_universal_producer_module():
 
 D9_UNIVERSAL = _load_universal_producer_module()
 from editorial_render_bridge import build_bridge_planning_record as build_d9_bridge_planning_record
+from gui_real_media_certification import build_certification_gate as build_d914_certification_gate, validate_certification_gate as validate_d914_certification_gate
 
 
 def _load_d913_lifecycle_module():
@@ -782,6 +783,10 @@ class MainWindow(QMainWindow):
         self.d9_validate.clicked.connect(self._run_d9_universal_plan)
         form.addWidget(self.d9_validate, row, 0, 1, 4)
         row += 1
+        self.d9_certification_preflight = QPushButton("D9.14 REAL-MEDIA CERTIFICATION PREFLIGHT · NO MEDIA")
+        self.d9_certification_preflight.clicked.connect(self._run_d914_certification_preflight)
+        form.addWidget(self.d9_certification_preflight, row, 0, 1, 4)
+        row += 1
         notice = QLabel(
             "D9.10 prepara un registro de mapeo editorial → renderer para el futuro baseline D. "
             "Es planificación únicamente: no emite entradas de renderer ni crea medios. Challenge "
@@ -806,7 +811,9 @@ class MainWindow(QMainWindow):
         self.d9_parity_view = QPlainTextEdit()
         self.d9_bridge_view = QPlainTextEdit()
         self.d9_lifecycle_view = QPlainTextEdit()
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_lifecycle_view, self.d9_parity_view):
+        self.d9_certification_view = QPlainTextEdit()
+        self.d9_certification_view.setPlainText("D9.14 GATE = BLOCKED. Future D frozen renderer baseline and explicit D4.8 authorization are absent. This view is preflight-only; no renderer or media will be started.")
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_parity_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
@@ -815,6 +822,7 @@ class MainWindow(QMainWindow):
             ("UNIVERSAL PLAN", self.d9_plan_view),
             ("EDITORIAL → RENDER BRIDGE (PLAN ONLY)", self.d9_bridge_view),
             ("CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)", self.d9_lifecycle_view),
+            ("D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)", self.d9_certification_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
         ):
             self.d9_output_tabs.addTab(view, title)
@@ -1125,6 +1133,22 @@ class MainWindow(QMainWindow):
         except Exception as exc:
             self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
             QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))
+
+    def _run_d914_certification_preflight(self) -> None:
+        """Show the canonical D9.14 readiness gate; never launches production."""
+        try:
+            gate = build_d914_certification_gate(PROJECT)
+            result = validate_d914_certification_gate(gate, PROJECT)
+            display = {"gate": gate, "validation": result}
+            self.d9_certification_view.setPlainText(json.dumps(display, ensure_ascii=False, indent=2))
+            self.d9_output_tabs.setCurrentWidget(self.d9_certification_view)
+            self.statusBar().showMessage(
+                f"D9.14 GATE BLOCKED AS REQUIRED · cases={gate['case_count']} · renderer OFF · media=false · D4.8 BLOCKED"
+            )
+        except Exception as exc:
+            self.d9_certification_view.setPlainText(json.dumps({"status": "FAIL_CLOSED", "error": str(exc)}, ensure_ascii=False, indent=2))
+            self.d9_output_tabs.setCurrentWidget(self.d9_certification_view)
+            self.statusBar().showMessage("D9.14 preflight failed closed; no renderer or media was started.")
 
     def _sync_c11d_personalization_controls(self, enabled: bool) -> None:
         for widget in (

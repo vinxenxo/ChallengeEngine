@@ -80,6 +80,7 @@ C11_COMMANDS = [
     ('D9 REAL-MEDIA GUI CERTIFICATION PREFLIGHT (NO MEDIA)', 'python', ['tools/c11d/d9/test_gui_e2e_certification_plan.py'], 'Plan preflight only; NO MEDIA is created, and real-media operator execution is gated and not started.'),
     ('D9.12 TEST 0.2.0 INTEGRATION CONTRACT', 'python', ['./c11c-suite/c11c-test/test_d9_test_integration.py'], 'Validate canonical D2–D9 route registry, protected topology and test GUI contract.'),
     ('D9.13 CROSS-SUITE LIFECYCLE CHAIN', 'python', ['tools/c11d/d9/test_cross_suite_lifecycle.py'], 'Verify one canonical plan-only identity across Config, Producer, Test, Catalog and Maintenance; no media or release.'),
+    ('D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)', 'python', ['tools/c11d/d9/test_gui_real_media_certification.py'], 'Evaluate the real-media GUI certification gate only; it remains BLOCKED and creates no media until future D renderer baseline + explicit D4.8 authorization.'),
 ]
 
 

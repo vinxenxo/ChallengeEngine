@@ -151,7 +151,13 @@ with one SHA-256 sealed `lifecycle_id`, `identity_sha256` and `binding_sha256`, 
 
 ### D9.14 — Real GUI production certification
 
-Run real Windows GUI cases. Certification is not satisfied by button reachability. A GUI production job must be observed from request through output, QA, catalog and reproduction.
+**Current implementation status: GATE/PREFLIGHT PASS; REAL-MEDIA CERTIFICATION BLOCKED.** The existing Producer now exposes the D9.14 certification gate and `c11c-test` registers the same canonical test. The preflight seals the state and lists the ten required cases, but never starts production. The future D renderer baseline is not present/authorized and D4.8 remains BLOCKED; therefore no real-media case is claimed or executed by this checkpoint.
+
+Do not bypass this blocker using the frozen C11-C renderer or by invoking legacy media scripts from the new universal editorial GUI. A future approved D frozen baseline and an explicit governance checkpoint must first version/hash the renderer adapter, authorize D4.8, pass seed/editorial determinism and media provenance/QA gates, and approve real-media Windows E2E. No local file or GUI toggle can confer that authority.
+
+Run the gate with `python .\tools\c11d\d9\test_gui_real_media_certification.py`. The expected gate status is `BLOCKED`, while the gate test itself is PASS only if it remains blocked and creates no media.
+
+Required end-to-end cases after those gates are authorized:
 
 Minimum end-to-end set:
 

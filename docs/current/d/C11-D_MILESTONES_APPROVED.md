@@ -36,7 +36,7 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
 | D9.12 | Test 0.2.0 | PASS / CLI and aggregate acceptance; Windows GUI bring-up not explicitly confirmed |
 | D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
-| D9.14 | Real GUI production certification | PLANNED |
+| D9.14 | Real GUI production certification | GATE/PREFLIGHT IMPLEMENTED; REAL-MEDIA BLOCKED until future D frozen baseline + explicit D4.8 authorization |
 | D9.15 | GUI operational acceptance | PLANNED |
 | D9.16 | Full D9 acceptance | PLANNED |
 | D9.17 | D9 final closure | BLOCKED until all above PASS |
@@ -53,3 +53,8 @@ D9 must update and test **all five existing Suite surfaces**, not create another
 - Test 0.2.0 → D registrations + GUI E2E/negative acceptance.
 
 The shell remains 0.1.4 unless a common launcher/registry contract genuinely changes.
+
+
+## D9.14 readiness-gate checkpoint (2026-10-09)
+
+The real-media GUI certification gate is integrated into the existing Producer and Test surfaces. Its test PASS means **the gate correctly remains BLOCKED**, not that D9.14 real-media acceptance passed. Current reasons: no authorized future D frozen renderer baseline, D4.8 remains BLOCKED, renderer activation and production execution remain false, and release authority is NONE. The gate enumerates the ten roadmap cases and refuses any report that claims renderer activation/media output. C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable.

@@ -113,3 +113,8 @@ The existing `c11c-test` GUI exposes a preflight route for this matrix. The pref
 | `D9-GUI-011` | Cleanup/quarantine outside allowlists is blocked and reversible operations preserve evidence | Maintenance 0.2.0 acceptance available now |
 
 The GUI certification preflight must report all 11 case IDs, `operator_execution=REQUIRED`, `renderer_activation=false`, `media_created=false`, `D4.8=BLOCKED`, and `release_authority=NONE`. A preflight PASS is not real-media acceptance and cannot close D9.
+
+
+## D9.14 real-media GUI certification gate (2026-10-09)
+
+The existing Producer GUI and Test GUI now expose a fail-closed certification gate. This is not media certification: it confirms the current preconditions and enumerates the required ten cases, while returning `BLOCKED` because the future D renderer baseline and explicit D4.8 authorization do not exist. The gate test must not create media, invoke a renderer, write output artifact paths or grant release authority. Run `python .\tools\c11d\d9\test_gui_real_media_certification.py`. Do not use the frozen C11-C renderer to materialize D9 universal editorial bindings.

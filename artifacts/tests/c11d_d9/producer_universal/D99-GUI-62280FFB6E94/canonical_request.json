@@ -1,0 +1,33 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "request_id": "D99-GUI-62280FFB6E94",
+  "mode": "REVIEW",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_006",
+    "variant_scope_id": "challenge:CHALLENGE_006",
+    "difficulty_tier": null
+  },
+  "seed": 12345,
+  "music_seed": 840010,
+  "delivery_profile_id": "MASTER_1080",
+  "resolved_delivery_profile_id": "MASTER_1080",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "personalization_enabled": true,
+  "editorial": {
+    "title": "UNKNOWN",
+    "subtitle": "UNKNOWN",
+    "call_to_action": "UNKNOWN",
+    "language": "UNKNOWN",
+    "player_name": "UNKNOWN",
+    "challenge_label": "UNKNOWN"
+  },
+  "editorial_layers_applied": [],
+  "source_revision": "C11D-D9.9-PRODUCER-0.11.0",
+  "request_origin": "UNKNOWN"
+}

@@ -4,9 +4,9 @@
 **C11-C:** 2.19.12 FROZEN
 **Producer:** 0.11.1
 **Catalog:** 0.2.0
-**Config:** 0.2.0 integration; D9.8 model, D9.10 bridge, D9.11 maintenance and D9.13 lifecycle registered read-only (24/24 static registry validation; Windows Config Qt acceptance still pending)
+**Config:** 0.2.0 integration; D9.8 model, D9.10 bridge, D9.11 maintenance, D9.13 lifecycle and D9.14 fail-closed gate registered read-only (25/25 static registry validation; Windows Config Qt acceptance still pending)
 **Maintenance:** 0.2.0 PASS/CLOSED for D9.11; Windows GUI opens and focused/full Suite tests pass
-**Test:** 0.2.0 D9.12 route/manifest contract PASS; D9.13 route registered; 22/22 D routes, 52 total GUI routes; Windows Test GUI bring-up not explicitly confirmed
+**Test:** 0.2.0 D9.12 route/manifest contract PASS; D9.13 lifecycle and D9.14 blocked gate registered; 23/23 D routes, 53 total GUI routes; Windows Test GUI bring-up not explicitly confirmed
 
 ## Architecture
 
@@ -18,7 +18,7 @@
 - `c11c-config` — configuration, profiles, snapshots and controlled editing.
 - `c11c-maintenance` — cleanup, organization, quarantine, documentation and freeze operations.
 
-**Do not create a sixth operational suite.** The shared launcher must expose exactly these five paths and no other operational surface. The `c11d-control` folder present in the incoming D9.7.2 archive is a legacy/unregistered path, not a canonical suite; do not register or launch it. Archive/quarantine reconciliation must go through Maintenance because the incoming freeze manifest references that path.
+**Do not create a sixth operational suite.** The shared launcher must expose exactly these five paths and no other operational surface. The legacy `c11d-control` surface is non-canonical and must not be recreated in the live tree; any simulated legacy tree exists only inside temporary Maintenance test fixtures. Do not register or launch it.
 
 The historical `c11c-studio` attempt is retired/archived context. It is not an implementation target, operational dependency or source of current architecture.
 
@@ -54,7 +54,7 @@ Exposes D9-safe dry-run, two-root allowlisted reversible cleanup, legacy-surface
 
 ### Test 0.2.0 target
 
-Test 0.2.0 registers D2–D9 validation, seed governance, provenance, media QA, negative controls, GUI/CLI parity, a no-media GUI E2E certification preflight and D9.13 five-surface lifecycle tests. It invokes existing canonical tests/backends and does not duplicate domain logic.
+Test 0.2.0 registers D2–D9 validation, seed governance, provenance, media QA, negative controls, GUI/CLI parity, a no-media GUI E2E certification preflight, D9.13 lifecycle tests and the D9.14 fail-closed real-media certification gate. It invokes existing canonical tests/backends and does not duplicate domain logic.
 
 ## Production authority
 
@@ -83,3 +83,6 @@ The Producer tab displays the canonical `C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLA
 ## D9.13 cross-suite lifecycle
 
 Producer's `CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)` view builds the canonical receipt through `tools/c11d/d9/cross_suite_lifecycle.py` from persisted request, editorial resolution, plan, bridge and GUI/CLI parity evidence. Config, Producer, Test, Catalog and Maintenance all bind the same lifecycle ID, identity SHA-256 and seed/profile binding SHA-256 in exact stage order. Catalog projects the sealed receipt as `CROSS_SUITE_LIFECYCLE_INTENT` with no media; Maintenance validates the same receipt read-only. The latest static regression passes for Challenge, Visual Loop and Visual Drill, including 12 negatives. Operator must still confirm the new Producer tab, Catalog filter and Maintenance audit button in Windows.
+
+
+D9.14 adds a read-only, fail-closed real-media certification gate to the existing Producer/Test surfaces. The gate is expected to stay BLOCKED until a separately approved future D frozen renderer baseline and an explicit D4.8 governance checkpoint exist. The gate route is preflight-only, exposes the ten required cases, and cannot create media, invoke a renderer or grant authority.

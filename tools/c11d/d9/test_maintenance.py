@@ -36,6 +36,7 @@ def make_fixture(root: Path) -> None:
         "docs/current/d/D9.11_MAINTENANCE_0.2.0_CHECKPOINT.md",
         "docs/current/d/D9.12_TEST_0.2.0_CHECKPOINT.md",
         "docs/current/d/D9.13_CROSS_SUITE_LIFECYCLE_CHECKPOINT.md",
+        "docs/current/d/D9.14_GUI_REAL_MEDIA_CERTIFICATION_GATE_CHECKPOINT.md",
         "c11c-suite/main.py",
         "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
     ]

@@ -1,9 +1,9 @@
 {
   "suite_id": "c11c-test",
   "version": "0.2.0",
-  "branch": "C11-D D9.12–D9.13",
+  "branch": "C11-D D9.12–D9.14",
   "entrypoint": "c11c-suite/c11c-test/main.py",
-  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface. D9.13 receipt-chain validation across the same five operational surfaces; preserves identity, seed/profile binding and plan-only/no-media governance.",
+  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface. D9.13 receipt-chain validation across the same five operational surfaces; preserves identity, seed/profile binding and plan-only/no-media governance. D9.14 fail-closed real-media certification readiness gate, explicitly blocked pending a future authorized D frozen baseline and D4.8 checkpoint; no media execution.",
   "canonical_backends": [
     "tools/c11d/d2/validate_d2_1_registry.ps1",
     "tools/c11d/d2/validate_d2_2_asset_role_evidence_v2.ps1",
@@ -21,7 +21,8 @@
     "tools/c11d/d9/universal_producer.py",
     "tools/c11d/d9/editorial_render_bridge.py",
     "tools/c11d/d9/maintenance.py",
-    "tools/c11d/d9/cross_suite_lifecycle.py"
+    "tools/c11d/d9/cross_suite_lifecycle.py",
+    "tools/c11d/d9/gui_real_media_certification.py"
   ],
   "gui_routes": [
     {
@@ -133,14 +134,21 @@
       "name": "D9.13 CROSS-SUITE LIFECYCLE CHAIN",
       "kind": "python",
       "entry": "tools/c11d/d9/test_cross_suite_lifecycle.py"
+    },
+    {
+      "name": "D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_gui_real_media_certification.py"
     }
   ],
   "tests": [
+    "c11c-suite/c11c-producer/test_d914_certification_gate_contract.py",
     "c11c-suite/c11c-test/test_d9_test_integration.py",
-    "tools/c11d/d9/test_gui_e2e_certification_plan.py",
-    "tools/c11d/d9/test_d9_negative_acceptance.py",
+    "tools/c11d/d9/test_cross_suite_lifecycle.py",
     "tools/c11d/d9/test_d9_gui_cli_parity.py",
-    "tools/c11d/d9/test_cross_suite_lifecycle.py"
+    "tools/c11d/d9/test_d9_negative_acceptance.py",
+    "tools/c11d/d9/test_gui_e2e_certification_plan.py",
+    "tools/c11d/d9/test_gui_real_media_certification.py"
   ],
   "certification_plan": "docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md",
   "real_media_gui_certification": "OPERATOR_REQUIRED_FUTURE_D9_14_GATE",
@@ -161,5 +169,10 @@
     "c11c-maintenance"
   ],
   "d9_13_media_created": false,
-  "d9_13_release_authority": "NONE"
+  "d9_13_release_authority": "NONE",
+  "d9_14_real_media_certification_gate": true,
+  "d9_14_gate_status": "BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION",
+  "d9_14_renderer_activation": false,
+  "d9_14_media_created": false,
+  "d9_14_release_authority": "NONE"
 }
