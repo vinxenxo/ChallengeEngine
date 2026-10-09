@@ -112,13 +112,12 @@ Expected baseline state: bridge/lifecycle pass; D9.15 remains `PASS_CLOSED`; can
 
 The topology-only temporal proposal is now complemented by `D_RENDERER_TEMPORAL_BOUND_PREVIEW_CHECKPOINT_V1.md`. The new contract produces in-memory half-open frame intervals from pinned representative sources: CHALLENGE_004 (`HOOK>GAME>REVEAL>CTA`, 900 frames at 60 FPS), geometric Visual Loop (60 frames at 30 FPS) and tracking Visual Drill (630 frames at 30 FPS). It checks the exact frame-count arithmetic, source lineage and fail-closed execution boundary. It does not create a video, renderer input, or output artifact; `D4.8=BLOCKED`, `release_authority=NONE`, D9 OPEN, D10 BLOCKED. Windows acceptance is pending. The next step is to bind this report to actual canonical D9.9/D9.10 request/payload results, then assemble an editorial review manifest for the first visual proof. Any real-media attempt remains gated by separately approved/frozen D renderer baseline plus explicit D4.8 authorization.
 
+## Increment — D Renderer Editorial Review Manifest V1 (2026-10-10)
 
-<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_PLAN -->
+Added `D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1` to join D9.9 canonical editorial identity through the D9.10 bridge/adapter, candidate binding, logical composition, neutral frame program and a source-bound temporal reference. The manifest asserts exact editorial value parity and self-hashes the in-memory result while keeping proposed region targets unapproved and per-field frame windows unresolved.
 
-## D9.9â†’D9.10 editorial review manifest â€” preparation update (2026-10-10)
+The contract deliberately reports a known FPS mismatch: `CHALLENGE_004` timeline source is 60 FPS while `REVIEW_720` delivery metadata is 30 FPS. It does not resample. Visual Loop is family-level timing reference only; Visual Drill is type/tier timing reference only. No item is declared video-render-ready. The new focused test stays separate from the immutable 22-step aggregate until local acceptance and an explicitly reviewed integration change.
 
-`tools/c11d/d9/d_renderer_editorial_review_manifest.py` joins the canonical request/plan, D9.10 bridge, PREPARE_ONLY adapter envelope, binding preview, logical composition, frame program and temporal reference into a deterministic in-memory review manifest. The focused test covers challenges, Visual Loops and Visual Drills with strict schema and negative validation.
+## Next renderer preparation increment — delivery timebase projection (2026-10-10)
 
-Open integration findings are explicit: CHALLENGE_004 timing is 60 FPS while REVIEW_720 is 30 FPS and requires a separate normalization policy; Visual Loop timing is family-level, Visual Drill timing is type/tier-level, and per-field text visibility frame windows are not defined. Do not infer missing bindings or enable renderer execution to hide these gaps.
-
-This contract is review-only: `video_render_ready=false`, renderer OFF, media not created, D4.8 BLOCKED and release authority NONE. Baseline freeze remains blocked until all D acceptance and governance gates are met.
+`D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1` introduces a source-pinned, in-memory proposal for cumulative frame-boundary projection from canonical source FPS to an explicit delivery-profile FPS. The representative `CHALLENGE_004`/`REVIEW_720` result is 900@60 FPS to 450@30 FPS with phase spans 90/210/90/60. The policy remains `PROPOSED_NOT_APPROVED`. It does not determine simulation frame samples, event-anchor mapping, interpolation, audio resampling, generated loop/drill payload identity, or field visibility windows. No renderer input or media is emitted; D4.8 BLOCKED and release authority NONE.

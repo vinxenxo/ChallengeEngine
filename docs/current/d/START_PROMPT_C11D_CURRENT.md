@@ -284,9 +284,16 @@ Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run
 
 The D renderer now has a source-pinned temporal topology proposal in `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. Before using it, run its focused Windows test and the prescribed regressions. It emits no concrete schedule or media. Keep the hierarchy reconciliation as spatial authority; do not use normalized-permille proposal bounds. Challenge phases come from existing `ChallengeTimeline`; Visual Loops/Drills remain continuous spans with upstream-bound `duration`, `fps` and `frame_count`. No D4.8 authorization or baseline approval is implied.
 
+## 2026-10-10 — Source-bound temporal preview (preparation only)
 
-<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_START_PROMPT -->
+The topology-only temporal proposal is now complemented by `D_RENDERER_TEMPORAL_BOUND_PREVIEW_CHECKPOINT_V1.md`. The new contract produces in-memory half-open frame intervals from pinned representative sources: CHALLENGE_004 (`HOOK>GAME>REVEAL>CTA`, 900 frames at 60 FPS), geometric Visual Loop (60 frames at 30 FPS) and tracking Visual Drill (630 frames at 30 FPS). It checks the exact frame-count arithmetic, source lineage and fail-closed execution boundary. It does not create a video, renderer input, or output artifact; `D4.8=BLOCKED`, `release_authority=NONE`, D9 OPEN, D10 BLOCKED. Windows acceptance is pending. The next step is to bind this report to actual canonical D9.9/D9.10 request/payload results, then assemble an editorial review manifest for the first visual proof. Any real-media attempt remains gated by separately approved/frozen D renderer baseline plus explicit D4.8 authorization.
 
-## Current context addendum â€” editorial review manifest V1 (2026-10-10)
+## Resume point — Renderer Editorial Review Manifest V1 (2026-10-10)
 
-Before advancing temporal/render integration, run `python .\tools\c11d\d9\test_d_renderer_editorial_review_manifest.py`. It verifies exact canonical copy and temporal-source lineage, while preserving `video_render_ready=false`. Review the reported source/delivery FPS mismatch for challenges and the unbound Visual Loop/Drill instances and text-field frame windows; do not silently normalize, invent timing, or activate rendering. Repeat the candidate preflight and aggregate regression on the operator checkout after each overlay.
+Latest overlay to apply/test: `C11D_RENDERER_EDITORIAL_REVIEW_MANIFEST_OVERLAY_V1.zip`. Run `python -m py_compile .\tools\c11d\d9\d_renderer_editorial_review_manifest.py .\tools\c11d\d9\test_d_renderer_editorial_review_manifest.py` and `python .\tools\c11d\d9\test_d_renderer_editorial_review_manifest.py`, then repeat the established renderer-focused suite, baseline preflight and `python -u .\c11c-suite\self_test.py`.
+
+Interpretation: a PASS validates a text/identity chain and the listed timing references, not render readiness. Expected deliberate gap: CHALLENGE_004 source timing 60 FPS vs REVIEW_720 delivery 30 FPS; family-level Visual Loop timing; type/tier Visual Drill timing; no per-field text frame windows. Do not enable render/media, do not authorize D4.8, and do not freeze D until the remaining independent gates close.
+
+### Latest renderer preparation — delivery timebase projection (2026-10-10)
+
+See `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_CHECKPOINT_V1.md` and run `tools/c11d/d9/test_d_renderer_delivery_timebase_projection.py`. This review-only proposal projects cumulative source frame boundaries to delivery FPS; CHALLENGE_004 gives 900@60 → 450@30 (phase counts 90/210/90/60) for REVIEW_720. Policy is PROPOSED_NOT_APPROVED. Simulation frame sampling/event mapping, interpolation, audio resampling, generated visual-instance binding, and per-field visibility windows remain unresolved. Never emit renderer input or media; preserve C11-C freeze, PREPARE_ONLY, D4.8 BLOCKED and release authority NONE.

@@ -229,9 +229,12 @@ Added the D-only source-pinned temporal topology proposal and focused test. The 
 - Not added to the 22-step aggregate yet; keep the increment isolated until Windows acceptance and explicit suite-integration review.
 - Frame ranges are review-only data, not renderer-native input. No media, output path, C11-C mutation, D4.8 grant or release authority.
 
+## 2026-10-10 — D Renderer Editorial Review Manifest V1
 
-<!-- C11D_EDITORIAL_REVIEW_MANIFEST_V1_CHANGELOG -->
+Added an in-memory cross-contract editorial review manifest with strict source lineage and tests for three supported content types. It links canonical request/plan, D9.10 bridge, adapter envelope, binding preview, logical composition, frame program and source timing reference. Exact editorial strings are checked against canonical plan values and hashes; proposed semantic region targets and absent per-field frame windows are preserved, not promoted.
 
-## 2026-10-10 â€” D9.9â†’D9.10 editorial review manifest V1
+The manifest reveals rather than conceals current gaps: the CHALLENGE_004 60-FPS temporal source and REVIEW_720 30-FPS delivery target need a separately specified normalization policy; Visual Loop timing is only a family-level reference; Visual Drill timing is only a type/tier reference; text-field frame visibility is unresolved. Renderer remains OFF and D4.8 remains BLOCKED.
 
-Added a non-renderable cross-contract audit manifest and focused test. It pins 25 upstream sources, checks exact editorial text/hash continuity, identifies challenge source/delivery FPS mismatch, and retains explicit gaps for Visual Loop grammar payload, Visual Drill request payload and per-field frame windows. No production, dispatch, media output, D4.8 authorization or release authority is enabled.
+## 2026-10-10 — D renderer delivery timebase projection proposal
+
+Added the standalone `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1` contract, schema, implementation and focused tests. The proposal projects cumulative temporal source boundaries to an explicit delivery-profile FPS using integer-ratio half-up rounding; Challenge 60→30 FPS preserves the four ordered phases for the representative 15-second source. It is not an approved render conversion: simulation sampling, event-anchor mapping, interpolation, audio resampling, specific generated visual payload binding and field visibility windows remain open. No change to the 22-step aggregate, C11-C source, D4.8 or release authority.

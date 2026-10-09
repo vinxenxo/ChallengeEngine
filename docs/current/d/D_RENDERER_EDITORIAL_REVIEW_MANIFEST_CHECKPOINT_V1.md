@@ -35,3 +35,7 @@ python .\tools\c11d\d9\test_d_renderer_editorial_review_manifest.py
 ## Governance
 
 This checkpoint does not approve editorial layout, temporal topology, the D renderer baseline, or D4.8. It does not turn renderer dispatch on. C11-C remains an immutable reference. Baseline preflight, full D acceptance and explicit governance approval are still required before any controlled video test.
+
+## Follow-up — delivery timebase projection (2026-10-10)
+
+The identified Challenge source/delivery FPS mismatch is now expressed by separate contract `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1`. Its cumulative-boundary mapping is review-only and unapproved; the editorial review manifest's open simulation sampling and per-field visibility decisions remain unresolved. This does not promote `video_render_ready`.

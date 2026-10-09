@@ -1,0 +1,144 @@
+{
+  "schema": "C11-D-RENDERER-DELIVERY-TIMEBASE-PROJECTION-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_DELIVERY_TIMEBASE_PROJECTION",
+  "status": "PREPARATION_ONLY_DELIVERY_TIMEBASE_PROJECTION_NOT_RENDERER_INPUT",
+  "purpose": "Project canonical temporal preview boundaries from source FPS into an explicit delivery profile FPS for review only; never emit renderer instructions or media.",
+  "supported_content_types": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_timeline": "D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1_FROM_PINNED_C11C_TIMING_PAYLOADS",
+    "delivery_fps": "EXPLICIT_REQUESTED_DELIVERY_PROFILE_RESOLVED_AGAINST_PINNED_PROFILE_REGISTRY",
+    "challenge_60_to_30_case": "CHALLENGE_004_SOURCE_60FPS_AND_REVIEW_720_DELIVERY_30FPS",
+    "boundary_policy": "PROPOSED_CUMULATIVE_BOUNDARY_NEAREST_DELIVERY_TICK; NOT_APPROVED",
+    "simulation_truth": "NOT_READ; WINNING_FRAME/CLOSE_CALLS/TELEMETRY_NOT_MAPPED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json",
+      "sha256": "96ee3cffe8223e24673e7eb90c93308d45bb3a350961b2afc5eacbe66b54fbf8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "1744e2f748c1ce196e8655c85299bef16f475c4a71b45d5db5b6838418fa4b37"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json",
+      "sha256": "7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_schedule.py",
+      "sha256": "04b85a077f06d6ef9ffc7569d3fda0a92471b9ee5e1d6e57d3b50dbf6a6247cd"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+      "sha256": "b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164"
+    },
+    {
+      "path": "core/authoring/TemporalCore.gd",
+      "sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966"
+    }
+  ],
+  "delivery_profile_resolution": {
+    "registry_path": "profiles/delivery/c11c_video_delivery_profiles.json",
+    "resolve_alias_once": true,
+    "profile_fps_must_be_positive_integer": true,
+    "request_profile_is_explicit_input": true,
+    "default_profile_id": "REVIEW_720",
+    "profile_data_is_metadata_only": true
+  },
+  "normalization_policy": {
+    "name": "CUMULATIVE_SOURCE_BOUNDARY_NEAREST_DELIVERY_TICK",
+    "state": "PROPOSED_NOT_APPROVED",
+    "source_timebase": "CANONICAL_ZERO_BASED_HALF_OPEN_SOURCE_FRAME_BOUNDARIES",
+    "mapping_formula": "delivery_boundary = floor(source_boundary * delivery_fps / source_fps + 0.5)",
+    "integer_implementation": "floor((2 * source_boundary * delivery_fps + source_fps) / (2 * source_fps))",
+    "quantization": "PROJECT_CUMULATIVE_BOUNDARIES; SEGMENT_COUNTS_ARE_DIFFERENCES_OF_PROJECTED_BOUNDARIES",
+    "phase_order": "PRESERVE_SOURCE_TIMELINE_ORDER",
+    "zero_length_output_span": "PRESERVE_ZERO_LENGTH; NEVER_FORCE_A_FRAME",
+    "source_timeline_mutation": false,
+    "simulation_frame_sampling": "UNRESOLVED_NOT_DEFINED_NOT_EMITTED",
+    "simulation_anchor_mapping": "UNRESOLVED_NOT_DEFINED_NOT_EMITTED",
+    "interpolation_policy": "UNRESOLVED_NOT_DEFINED_NOT_EMITTED",
+    "audio_resampling_policy": "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED",
+    "per_field_visibility_windows": "UNRESOLVED_NOT_DEFINED_NOT_EMITTED",
+    "renderer_input_emission": false,
+    "media_creation": false
+  },
+  "projection_rules": {
+    "source_preview": "BUILD_AND_VALIDATE_EXISTING_D_RENDERER_TEMPORAL_BOUND_PREVIEW",
+    "boundaries": "PROJECT_EACH_SOURCE_SEGMENT_START_AND_END; SEGMENT_COUNTS_ARE_BOUNDARY_DIFFERENCES",
+    "accumulation": "CUMULATIVE_SOURCE_BOUNDARIES_PREVENT_PER_SEGMENT_ROUNDING_DRIFT",
+    "rational_arithmetic": "INTEGER_RATIO_HALF_UP; NO_FLOAT_ROUNDING_FOR_FRAME_BOUNDARIES",
+    "continuity": "SOURCE_AND_DELIVERY_SEGMENTS_MUST_REMAIN_ORDERED_CONTIGUOUS_AND_NON_OVERLAPPING",
+    "zero_length": "LEGAL_IF_QUANTIZATION_COLLAPSES_A_SPAN; MARK_DISABLED; DO_NOT_INVENT_FRAME",
+    "duration_delta": "EXACT_RATIONAL_DELTA_BETWEEN_PROJECTED_DELIVERY_DURATION_AND_SOURCE_FRAME_SPAN_DURATION",
+    "visual_loop_and_drill_payload_identity": "UNCHANGED; THIS PROJECTION DOES_NOT_BIND_A_GENERATED_INSTANCE",
+    "simulation_frame_sampling": "NOT_DEFINED; THIS_IS_NOT_A_SOURCE_FRAME_SELECTION_OR_INTERPOLATION_PLAN",
+    "field_visibility_windows": "REMAIN_NULL_UNRESOLVED"
+  },
+  "required_locks": {
+    "projection_mode": "IN_MEMORY_REVIEW_ONLY",
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "video_render_ready": false
+  },
+  "approval_state": {
+    "timebase_projection_policy_approved": false,
+    "temporal_topology_approved": false,
+    "semantic_region_mapping_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "forbidden_operations": [
+    "rewrite any canonical challenge/loop/drill payload to make conversion pass",
+    "mutate frozen C11-C files or its manifest",
+    "round each segment length independently instead of projecting cumulative boundaries",
+    "force a minimum of one delivery frame for zero-length quantized spans",
+    "map winning_frame, close_calls, SimulationResult or derived telemetry",
+    "invent simulation samples, interpolation, audio resampling or per-field visibility windows",
+    "emit renderer-native input, dispatch a renderer, invoke Godot/FFmpeg or create any media",
+    "approve this policy, a renderer baseline, D4.8 or release authority from a projection result"
+  ]
+}
