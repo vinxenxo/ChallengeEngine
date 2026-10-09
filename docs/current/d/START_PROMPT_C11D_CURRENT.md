@@ -14,9 +14,11 @@ Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngine
 - D9.9 = PASS: universal request/plan, GUI/CLI parity and operator-confirmed Windows plan generation across currently implemented D content types. Producer UTF-8 CLI and Qt scope-handler fixes have been applied and verified by the operator.
 - D9.10 = PASS for bridge contract/planning record, CLI record parity (3/3), static GUI contract and operator-confirmed Windows plan-only bridge-output tab. Producer 0.11.1; physical rendering remains deferred.
 - D9.11 = PASS/CLOSED. Operator confirmed the Windows Maintenance GUI opens; `test_maintenance.py`, Maintenance self-test and full Suite self-test pass after restoring the authentic historical C11-C freeze manifest byte-for-byte (SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`). Canonical backend: `tools/c11d/d9/maintenance.py`.
-- D9.12 = Test 0.2.0 CLI/contract acceptance PASS; current route contract 23/23 D routes and 53 total GUI routes after D9.13/D9.14 registration; 11/11 GUI-E2E preflight and negative/GUI-CLI parity bundles PASS. The Test GUI `run.bat` bring-up has not been explicitly confirmed. Canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`.
-- D9.13 = PASS for backend/aggregate lifecycle contract: 3 supported content types, 5/5 stages, identity/replay continuity, GUI/CLI parity 3/3, Catalog projection 3/3, Maintenance audit 3/3, negative 12/12. Windows lifecycle views remain pending explicit operator confirmation. Maintenance fixture now simulates retired legacy tree only in temporary test storage; do not recreate `c11c-suite/c11d-control` in the live tree.
+- D9.12 = Test 0.2.0 PASS; Windows Test GUI opened and the D9.14 gate route was executed successfully. Current route contract after D9.15: 24/24 D routes and 54 total GUI routes; canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`.
+- D9.13 = backend/aggregate PASS: 3 types, 5/5 stages, parity 3/3, Catalog 3/3, Maintenance audit 3/3, negative 12/12. Maintenance fixture now synthesizes retired `c11d-control` only in temporary storage. D9.15 GUI evidence will explicitly exercise the remaining five-surface operator views; do not recreate the retired surface in the live tree.
 - D9.14 = FAIL-CLOSED GUI certification gate implemented and regression-tested. This is NOT real-media acceptance: future D frozen renderer baseline absent/not authorized, `D4.8=BLOCKED`, renderer/production/media false, `release_authority=NONE`. Operator must verify Producer gate and Test route appear in Windows GUI; actual real-media E2E remains blocked.
+
+- D9.15 = operational acceptance preflight PASS for 8 capabilities/5 surfaces. Windows operator confirmation across Config, Producer, Test, Catalog and Maintenance is REQUIRED; do not mark D9.15 closed based on static preflight.
 
 ## Architecture rule — five operational surfaces only
 
@@ -46,7 +48,7 @@ Do not create or register `c11d-control`, `c11c-studio`, or any sixth operationa
 
 ## D9 sequence
 
-D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **CLI/static PASS; GUI bring-up unconfirmed** → D9.13 cross-suite lifecycle **backend/aggregate PASS; Windows lifecycle views pending** → D9.14 **fail-closed gate PASS / real-media certification BLOCKED** → D9.15 operational acceptance → D9.16 full acceptance → D9.17 D9 closure.
+D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **CLI/static PASS; GUI bring-up unconfirmed** → D9.13 cross-suite lifecycle **backend/aggregate PASS; Windows lifecycle views pending** → D9.14 **fail-closed gate PASS / real-media certification BLOCKED; Windows gate UI confirmed** → D9.15 **operational preflight PASS / all-surface GUI evidence REQUIRED** → D9.16 full acceptance → D9.17 D9 closure.
 
 ## Baseline reading and inspection order
 

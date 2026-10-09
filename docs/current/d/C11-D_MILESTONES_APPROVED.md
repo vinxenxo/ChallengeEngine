@@ -36,8 +36,8 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
 | D9.12 | Test 0.2.0 | PASS / CLI and aggregate acceptance; Windows GUI bring-up not explicitly confirmed |
 | D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
-| D9.14 | Real GUI production certification | GATE/PREFLIGHT IMPLEMENTED; REAL-MEDIA BLOCKED until future D frozen baseline + explicit D4.8 authorization |
-| D9.15 | GUI operational acceptance | PLANNED |
+| D9.14 | Real GUI production certification | BLOCKED gate confirmed visible/executable in Producer and Test GUIs; REAL-MEDIA remains BLOCKED pending authorized future D baseline + explicit D4.8 |
+| D9.15 | GUI operational acceptance | PREFLIGHT PASS (8 capabilities / 5 surfaces); Windows operator evidence across all five surfaces REQUIRED |
 | D9.16 | Full D9 acceptance | PLANNED |
 | D9.17 | D9 final closure | BLOCKED until all above PASS |
 | D10 | New mechanics | BLOCKED |
@@ -58,3 +58,13 @@ The shell remains 0.1.4 unless a common launcher/registry contract genuinely cha
 ## D9.14 readiness-gate checkpoint (2026-10-09)
 
 The real-media GUI certification gate is integrated into the existing Producer and Test surfaces. Its test PASS means **the gate correctly remains BLOCKED**, not that D9.14 real-media acceptance passed. Current reasons: no authorized future D frozen renderer baseline, D4.8 remains BLOCKED, renderer activation and production execution remain false, and release authority is NONE. The gate enumerates the ten roadmap cases and refuses any report that claims renderer activation/media output. C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable.
+
+
+## D9.15 GUI operational acceptance checkpoint (2026-10-09)
+
+- Canonical contract: `definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.json` (Config registry, `READ_ONLY_CANONICAL`).
+- Backend: `tools/c11d/d9/gui_operational_acceptance.py`; acceptance test: `tools/c11d/d9/test_gui_operational_acceptance.py`.
+- Existing `c11c-test` route: `D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)`; no sixth suite added.
+- Static readiness validates 8 capabilities across Config, Producer, Test, Catalog and Maintenance, launcher/manifest identity, GUI tokens, frozen manifest SHA-256, and the still-blocked D9.14 gate. It does not write evidence or execute production.
+- **Status: PREFLIGHT PASS / OPERATOR GUI ACCEPTANCE REQUIRED.** The operator confirmed Producer and Test launch and D9.14 gate execution, but has not yet confirmed all eight D9.15 operational capabilities across all five GUIs. Record evidence before marking D9.15 PASS.
+- `D4.8=BLOCKED`; renderer, production and media creation remain false; `release_authority=NONE`; C11-C 2.19.12 and its historical manifest remain immutable.

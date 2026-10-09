@@ -32,6 +32,7 @@ REQUIRED_ROUTES = {
     "D9.12 TEST 0.2.0 INTEGRATION CONTRACT": ("python", "./c11c-suite/c11c-test/test_d9_test_integration.py"),
     "D9.13 CROSS-SUITE LIFECYCLE CHAIN": ("python", "tools/c11d/d9/test_cross_suite_lifecycle.py"),
     "D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)": ("python", "tools/c11d/d9/test_gui_real_media_certification.py"),
+    "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)": ("python", "tools/c11d/d9/test_gui_operational_acceptance.py"),
 }
 
 
@@ -66,6 +67,8 @@ def run_checks() -> dict[str, int]:
     route_names = set(by_name)
     if "D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)" not in route_names:
         raise AssertionError("D9.14 blocked real-media certification gate route not registered")
+    if "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)" not in route_names:
+        raise AssertionError("D9.15 operational acceptance preflight route not registered")
     gate_row=by_name["D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)"]
     if "no media" not in gate_row[3].lower() and "no-media" not in gate_row[3].lower():
         raise AssertionError("D9.14 certification gate route must state no media")

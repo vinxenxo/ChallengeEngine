@@ -86,3 +86,8 @@ Producer's `CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)` view builds the canonica
 
 
 D9.14 adds a read-only, fail-closed real-media certification gate to the existing Producer/Test surfaces. The gate is expected to stay BLOCKED until a separately approved future D frozen renderer baseline and an explicit D4.8 governance checkpoint exist. The gate route is preflight-only, exposes the ten required cases, and cannot create media, invoke a renderer or grant authority.
+
+
+## D9.15 operational acceptance (preflight ready; operator confirmation required)
+
+`tools/c11d/d9/gui_operational_acceptance.py` performs a side-effect-free structural preflight over the exact five canonical surfaces and eight operator capabilities. `c11c-test` exposes `D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)` and Config registers the canonical matrix read-only. A static PASS is not closure: collect Windows GUI evidence for Config, Producer, Test, Catalog and Maintenance. Keep D9.14 real-media gate blocked; no real media, renderer or release authority is implied.

@@ -18,6 +18,7 @@ D_REGISTRIES = (
  {'domain':'D9 · MAINTENANCE','id':'D9_MAINTENANCE_POLICY','path':'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · CROSS-SUITE LIFECYCLE','id':'D9_CROSS_SUITE_LIFECYCLE','path':'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · REAL-MEDIA GUI CERTIFICATION GATE','id':'D9_REAL_MEDIA_CERTIFICATION_GATE','path':'definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · GUI OPERATIONAL ACCEPTANCE','id':'D9_GUI_OPERATIONAL_ACCEPTANCE','path':'definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · GOVERNANCE','id':'D4_ACTIVATION_POLICY','path':'definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D5 · PROVENANCE','id':'D5_LINEAGE_REGISTRY','path':'definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D6 · SEEDS','id':'D6_SEED_REGISTRY','path':'definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},

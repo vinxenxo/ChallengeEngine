@@ -174,7 +174,11 @@ Minimum end-to-end set:
 
 ### D9.15 — GUI operational acceptance
 
-Verify from the GUI that an operator can inspect and operate the actual D state: configuration, production, validation, catalog, provenance, logs, maintenance and reproducibility.
+**Current implementation status: PREFLIGHT PASS; OPERATOR GUI ACCEPTANCE REQUIRED.** `tools/c11d/d9/gui_operational_acceptance.py` validates the eight operational capabilities across exactly the five canonical surfaces. `c11c-test` registers the same canonical preflight; Config registers its policy as read-only. A passing preflight is not operational acceptance: the operator must inspect and execute the specified no-media actions in Windows and capture evidence.
+
+Eight operational capabilities: (1) Config contracts/profiles/validate/hash/backup/restore; (2) Producer universal Challenge/Loop/Drill planning, D9.10 bridge, D9.13 lifecycle and D9.14 blocked gate; (3) Test validation/preflight/logging; (4) Catalog identity; (5) provenance/hashes; (6) process logs; (7) Maintenance read-only/dry-run operations; (8) reproduction and lifecycle identity continuity. D9.14 real-media execution remains blocked; this checkpoint must not claim real-media acceptance.
+
+Run `python .\tools\c11d\d9\test_gui_operational_acceptance.py`, the Config/Test contract tests, and the aggregate Suite test. Operator GUI evidence must cover all five surfaces, show the same request/plan/lifecycle hashes where applicable, preserve separate gameplay/music seed identity, and confirm no renderer/media/release side effects. No APPLY, freeze archive creation or physical production is part of D9.15.
 
 ### D9.16 — D9 final acceptance
 

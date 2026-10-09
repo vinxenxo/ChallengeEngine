@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-config",
   "version": "0.2.0",
-  "branch": "C11-D D9.7–D9.14",
+  "branch": "C11-D D9.7–D9.15",
   "entrypoint": "c11c-suite/c11c-config/main.py",
   "modules": [
     "c11c-suite/c11c-config/c11d_config.py"
@@ -23,7 +23,8 @@
     "D9.10 editorial-render bridge planning contract (read-only; renderer/production inactive)",
     "D9.11 maintenance policy (read-only registry; allowlisted reversible maintenance only)",
     "D9.13 cross-suite lifecycle identity binding (read-only; five surfaces; plan-only; no renderer/media/release authority)",
-    "D9.14 real-media GUI certification gate (read-only; BLOCKED until authorized future D frozen baseline; no execution/media/release authority)"
+    "D9.14 real-media GUI certification gate (read-only; BLOCKED until authorized future D frozen baseline; no execution/media/release authority)",
+    "D9.15 GUI operational acceptance matrix (read-only; operator GUI evidence required; no execution/media/release authority)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -72,5 +73,13 @@
   "d9_14_renderer_activation": false,
   "d9_14_production_execution": false,
   "d9_14_media_created": false,
-  "d9_14_release_authority": "NONE"
+  "d9_14_release_authority": "NONE",
+  "d9_15_operational_acceptance_contract": "definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.json",
+  "d9_15_operational_acceptance_contract_access": "READ_ONLY_CANONICAL",
+  "d9_15_operational_acceptance_closed": false,
+  "d9_15_renderer_activation": false,
+  "d9_15_production_execution": false,
+  "d9_15_media_created": false,
+  "d9_15_d4_8": "BLOCKED",
+  "d9_15_release_authority": "NONE"
 }

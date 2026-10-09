@@ -1,0 +1,280 @@
+{
+  "schema": "C11-D-D9.15-GUI-OPERATIONAL-ACCEPTANCE-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.15",
+  "status": "PREFLIGHT_ONLY_OPERATOR_CONFIRMATION_REQUIRED",
+  "purpose": "Prove statically that the existing five C11C Suite GUI surfaces expose the operational controls needed for D9; require explicit human Windows GUI evidence before operational acceptance can close.",
+  "surfaces": [
+    {
+      "surface_id": "c11c-config",
+      "version": "0.2.0",
+      "main": "c11c-suite/c11c-config/main.py",
+      "launcher": "c11c-suite/c11c-config/run.bat",
+      "manifest": "c11c-suite/c11c-config/BUILD_MANIFEST.json"
+    },
+    {
+      "surface_id": "c11c-producer",
+      "version": "0.11.1",
+      "main": "c11c-suite/c11c-producer/main.py",
+      "launcher": "c11c-suite/c11c-producer/run.bat",
+      "manifest": "c11c-suite/c11c-producer/BUILD_MANIFEST.json"
+    },
+    {
+      "surface_id": "c11c-test",
+      "version": "0.2.0",
+      "main": "c11c-suite/c11c-test/main.py",
+      "launcher": "c11c-suite/c11c-test/run.bat",
+      "manifest": "c11c-suite/c11c-test/BUILD_MANIFEST.json"
+    },
+    {
+      "surface_id": "c11c-catalog",
+      "version": "0.2.0",
+      "main": "c11c-suite/c11c-catalog/main.py",
+      "launcher": "c11c-suite/c11c-catalog/run.bat",
+      "manifest": "c11c-suite/c11c-catalog/BUILD_MANIFEST.json"
+    },
+    {
+      "surface_id": "c11c-maintenance",
+      "version": "0.2.0",
+      "main": "c11c-suite/c11c-maintenance/main.py",
+      "launcher": "c11c-suite/c11c-maintenance/run.bat",
+      "manifest": "c11c-suite/c11c-maintenance/BUILD_MANIFEST.json"
+    }
+  ],
+  "capabilities": [
+    {
+      "capability_id": "configuration",
+      "label": "Configuration and governed profiles",
+      "surface_ids": [
+        "c11c-config"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-config/main.py",
+          "token": "C11-D CONTRACTS"
+        },
+        {
+          "path": "c11c-suite/c11c-config/main.py",
+          "token": "C11-D OPERATOR PROFILES"
+        },
+        {
+          "path": "c11c-suite/c11c-config/main.py",
+          "token": "VALIDAR + HASH"
+        },
+        {
+          "path": "c11c-suite/c11c-config/main.py",
+          "token": "GUARDAR + BACKUP"
+        },
+        {
+          "path": "c11c-suite/c11c-config/main.py",
+          "token": "RESTAURAR .BAK"
+        }
+      ],
+      "operator_action": "Open Config; inspect D9.15 read-only contract and operator profiles; verify validation/hash, diff, backup and restore controls are visible. Do not edit canonical contracts."
+    },
+    {
+      "capability_id": "production_planning",
+      "label": "Universal production planning and fail-closed gate",
+      "surface_ids": [
+        "c11c-producer"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-producer/main.py",
+          "token": "C11-D · EDITORIAL UNIVERSAL"
+        },
+        {
+          "path": "c11c-suite/c11c-producer/main.py",
+          "token": "EDITORIAL → RENDER BRIDGE (PLAN ONLY)"
+        },
+        {
+          "path": "c11c-suite/c11c-producer/main.py",
+          "token": "CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)"
+        },
+        {
+          "path": "c11c-suite/c11c-producer/main.py",
+          "token": "D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)"
+        }
+      ],
+      "operator_action": "Create a Challenge, Visual Loop and Visual Drill plan; inspect bridge and lifecycle identities; confirm D9.14 stays BLOCKED and renderer/media stay off."
+    },
+    {
+      "capability_id": "validation",
+      "label": "Test and acceptance routes",
+      "surface_ids": [
+        "c11c-test"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-test/main.py",
+          "token": "D9.13 CROSS-SUITE LIFECYCLE CHAIN"
+        },
+        {
+          "path": "c11c-suite/c11c-test/main.py",
+          "token": "D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)"
+        },
+        {
+          "path": "c11c-suite/c11c-test/main.py",
+          "token": "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)"
+        }
+      ],
+      "operator_action": "Run D9.15 preflight and the D9.13 lifecycle/D9.14 blocked-gate checks from the Test GUI; verify the printed status and logs."
+    },
+    {
+      "capability_id": "catalog_identity",
+      "label": "Catalog identity and product inspection",
+      "surface_ids": [
+        "c11c-catalog"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-catalog/main.py",
+          "token": "C11-D PRODUCTS / PROVENANCE"
+        },
+        {
+          "path": "c11c-suite/c11c-catalog/main.py",
+          "token": "CROSS-SUITE LIFECYCLE"
+        },
+        {
+          "path": "c11c-suite/c11c-catalog/main.py",
+          "token": "identity"
+        }
+      ],
+      "operator_action": "Inspect canonical intent, Producer plan and lifecycle intent projections; distinguish intent from actual pilot media and release products."
+    },
+    {
+      "capability_id": "provenance",
+      "label": "Provenance, hashes and lineage",
+      "surface_ids": [
+        "c11c-producer",
+        "c11c-catalog"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-producer/main.py",
+          "token": "provenance"
+        },
+        {
+          "path": "c11c-suite/c11c-catalog/main.py",
+          "token": "provenance"
+        },
+        {
+          "path": "c11c-suite/c11c-catalog/main.py",
+          "token": "sha256"
+        }
+      ],
+      "operator_action": "Inspect request, editorial, plan and lifecycle identity hashes; confirm Catalog projection is read-only and non-authoritative."
+    },
+    {
+      "capability_id": "logs",
+      "label": "Operator-visible process logs",
+      "surface_ids": [
+        "c11c-producer",
+        "c11c-test",
+        "c11c-maintenance"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-producer/main.py",
+          "token": "LOG"
+        },
+        {
+          "path": "c11c-suite/c11c-test/main.py",
+          "token": "self.log.appendPlainText"
+        },
+        {
+          "path": "c11c-suite/c11c-maintenance/main.py",
+          "token": "self.log.appendPlainText"
+        }
+      ],
+      "operator_action": "Run one no-media diagnostic from Producer, Test and Maintenance; verify stdout/stderr or result text is visible and final PASS/BLOCKED state is unambiguous."
+    },
+    {
+      "capability_id": "maintenance",
+      "label": "Maintenance, audit and reversible safety controls",
+      "surface_ids": [
+        "c11c-maintenance"
+      ],
+      "required_controls": [
+        {
+          "path": "c11c-suite/c11c-maintenance/main.py",
+          "token": "D9.11 PLAN · DRY RUN"
+        },
+        {
+          "path": "c11c-suite/c11c-maintenance/main.py",
+          "token": "D9.11 FREEZE PREFLIGHT"
+        },
+        {
+          "path": "c11c-suite/c11c-maintenance/main.py",
+          "token": "D9.13 LIFECYCLE AUDIT · READ ONLY"
+        },
+        {
+          "path": "c11c-suite/c11c-maintenance/main.py",
+          "token": "ARCHIVAR TRANSITORIOS · REVERSIBLE (D9.11)"
+        }
+      ],
+      "operator_action": "Run plan, docs audit, freeze preflight and lifecycle audit read-only/dry-run only; do not run APPLY or create a release archive for this acceptance."
+    },
+    {
+      "capability_id": "reproducibility",
+      "label": "Reproduction and identity continuity",
+      "surface_ids": [
+        "c11c-producer",
+        "c11c-catalog",
+        "c11c-maintenance"
+      ],
+      "required_controls": [
+        {
+          "path": "tools/c11d/d9/cross_suite_lifecycle.py",
+          "token": "canonical_request[\"seed\"]"
+        },
+        {
+          "path": "tools/c11d/d9/cross_suite_lifecycle.py",
+          "token": "canonical_request[\"music_seed\"]"
+        },
+        {
+          "path": "c11c-suite/c11c-catalog/main.py",
+          "token": "reproduction_command"
+        },
+        {
+          "path": "c11c-suite/c11c-maintenance/main.py",
+          "token": "D9.13 LIFECYCLE AUDIT · READ ONLY"
+        }
+      ],
+      "operator_action": "Repeat canonical plan resolution, compare lifecycle/request/plan hashes and inspect the Catalog reproduction command; do not claim media-level determinism without media."
+    }
+  ],
+  "operator_evidence_requirements": [
+    "Operator records the exact GUI window/surface and visible result for each of the eight capabilities.",
+    "Evidence includes date/time, command/action label, final status and screenshot or copied GUI log excerpt.",
+    "Evidence is recorded only under an approved D9 acceptance evidence directory; this preflight does not write it.",
+    "No real-media case may be marked accepted by D9.15 while D9.14 remains blocked."
+  ],
+  "governance": {
+    "master_seed": "NOT_ADOPTED",
+    "gameplay_seed_source": "request.seed",
+    "music_seed_source": "request.music_seed",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "renderer_activation": false,
+    "renderer_input_emitted": false,
+    "production_execution": false,
+    "media_created": false,
+    "release_authority": "NONE",
+    "d4_8": "BLOCKED",
+    "longform": "DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM",
+    "c11c_frozen_reference_mutation": "FORBIDDEN"
+  },
+  "immutable_reference": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "access": "READ_ONLY"
+  },
+  "notes": [
+    "A passing D9.15 preflight proves structural GUI readiness only; it does not constitute operator GUI acceptance.",
+    "Actual Windows GUI confirmation across all five surfaces is required before D9.15 can be marked PASS/CLOSED.",
+    "D9.14 real-media certification remains BLOCKED until a future authorized D frozen renderer baseline and explicit D4.8 governance checkpoint exist.",
+    "No GUI control or local evidence file can create production or release authority."
+  ]
+}

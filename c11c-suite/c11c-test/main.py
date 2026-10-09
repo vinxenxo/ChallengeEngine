@@ -81,6 +81,7 @@ C11_COMMANDS = [
     ('D9.12 TEST 0.2.0 INTEGRATION CONTRACT', 'python', ['./c11c-suite/c11c-test/test_d9_test_integration.py'], 'Validate canonical D2–D9 route registry, protected topology and test GUI contract.'),
     ('D9.13 CROSS-SUITE LIFECYCLE CHAIN', 'python', ['tools/c11d/d9/test_cross_suite_lifecycle.py'], 'Verify one canonical plan-only identity across Config, Producer, Test, Catalog and Maintenance; no media or release.'),
     ('D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)', 'python', ['tools/c11d/d9/test_gui_real_media_certification.py'], 'Evaluate the real-media GUI certification gate only; it remains BLOCKED and creates no media until future D renderer baseline + explicit D4.8 authorization.'),
+    ('D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)', 'python', ['tools/c11d/d9/test_gui_operational_acceptance.py'], 'Inspect readiness of Config, Producer, Test, Catalog, provenance, logs, Maintenance and reproducibility; requires explicit operator GUI evidence and creates no media.'),
 ]
 
 
