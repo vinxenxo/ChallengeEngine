@@ -1,0 +1,93 @@
+{
+  "schema": "C11-D-D9.11-MAINTENANCE-POLICY-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.11",
+  "surface": "c11c-maintenance",
+  "version": "0.2.0",
+  "status": "CANONICAL_GOVERNED_MAINTENANCE_POLICY",
+  "authority": {
+    "runtime_authority": "NONE",
+    "renderer_activation": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "c11c_frozen_reference_mutation": "FORBIDDEN",
+    "d4_8": "BLOCKED"
+  },
+  "active_suite_topology": [
+    "c11c-test",
+    "c11c-producer",
+    "c11c-catalog",
+    "c11c-config",
+    "c11c-maintenance"
+  ],
+  "safe_transient_roots": [
+    "artifacts/scratch",
+    "artifacts/tests/logs/verbose"
+  ],
+  "cleanup_policy": {
+    "mode": "EXPLICIT_ALLOWLIST_ONLY",
+    "default": "DRY_RUN",
+    "apply_requires_confirmation": true,
+    "apply_action": "REVERSIBLE_ARCHIVE_THEN_LEDGER",
+    "permanent_deletion": false,
+    "archive_root": "artifacts/maintenance/d9_11/cleanup_quarantine"
+  },
+  "quarantine_policy": {
+    "only_allowed_source": "c11c-suite/c11d-control",
+    "reason": "Legacy unregistered operational surface; preserve intact and never register it.",
+    "destination_prefix": "docs/history/root_conflicts/c11d-control_quarantine_",
+    "allow_overwrite": false,
+    "conflict_policy": "UNIQUE_DESTINATION_OR_BLOCK; NEVER_OVERWRITE",
+    "manifest_reconciliation": "APPEND_ONLY_LEDGER; PRESERVE_C11C_FREEZE_MANIFEST_BYTES",
+    "restore_requires_source_absent": true,
+    "restore_requires_tree_hash_match": true,
+    "restore_requires_manifest_hash_match": true
+  },
+  "ledger": {
+    "path": "artifacts/maintenance/d9_11/D9_11_MAINTENANCE_LEDGER.json",
+    "mode": "APPEND_ONLY_EVENTS",
+    "atomic_write": true
+  },
+  "protected_paths": [
+    "assets/",
+    "challenges/",
+    "core/",
+    "definitions/",
+    "schemas/",
+    "tools/",
+    "tests/",
+    "profiles/",
+    "release/",
+    "project.godot",
+    "build_factory.py",
+    "release_gate.py",
+    "GeneradorMaestro.gd",
+    "Main.tscn",
+    "c11c-suite/main.py",
+    "c11c-suite/common.py",
+    "c11c-suite/c11c-test/",
+    "c11c-suite/c11c-producer/",
+    "c11c-suite/c11c-catalog/",
+    "c11c-suite/c11c-config/",
+    "c11c-suite/c11c-maintenance/"
+  ],
+  "historical_manifest": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "policy": "READ_ONLY_HISTORICAL_EVIDENCE",
+    "rewrite_allowed": false,
+    "quarantined_paths_reconciled_by": "D9_11_MAINTENANCE_LEDGER.json"
+  },
+  "freeze_preparation": {
+    "mode": "PREFLIGHT_ONLY",
+    "may_create_release_archive": false,
+    "requires_future_d_frozen_baseline": true,
+    "checks": [
+      "immutable C11-C reference hashes are present in roadmap",
+      "release_authority remains NONE",
+      "D4.8 remains BLOCKED",
+      "five canonical Suite surfaces only",
+      "D9.8/D9.9/D9.10 checkpoints exist",
+      "current C11-C generated manifest is reported, never overwritten"
+    ]
+  }
+}

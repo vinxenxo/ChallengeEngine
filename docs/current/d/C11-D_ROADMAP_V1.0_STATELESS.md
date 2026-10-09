@@ -96,17 +96,17 @@ Required tests:
 
 ### D9.10 — Editorial-to-render bridge planning
 
-**Implementation status: PASS for deterministic bridge planning, 3/3 CLI-process record parity cases, 15/15 negative controls and static GUI-contract integration. Windows interactive confirmation of the new bridge-output tab remains pending.**
+**Implementation status: PASS — deterministic bridge planning, 3/3 CLI-process record parity cases, 15/15 negative controls, static GUI contract and operator-confirmed Windows GUI output-tab check. This is plan-only acceptance; physical renderer integration remains deferred.**
 
 The canonical contract `definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json` and backend `tools/c11d/d9/editorial_render_bridge.py` describe mappings from the D9.9 canonical plan to a future D renderer. Producer GUI exposes the resulting `EDITORIAL → RENDER BRIDGE (PLAN ONLY)` view; the CLI emits the same record, and parity checks compare the full record and hash.
 
 The record is **not renderer input**. It only declares content identity, the current editorial allowlist, independent gameplay/music seed ownership, delivery/presentation references, provenance identities, and prerequisites for the future D frozen baseline. Renderer input is not emitted, no adapter is invoked, no media is created, `D4.8=BLOCKED`, and `release_authority=NONE`. Do not reopen or modify the frozen C11-C renderer to materialize editorial values. Physical implementation belongs to a future D frozen baseline after all listed gates are satisfied.
 
-Focused validation: `python .\tools\c11d\d9\test_editorial_render_bridge.py`.
+Focused validation: `python .\tools\c11d\d9\test_editorial_render_bridge.py`. The operator has confirmed the GUI displays the plan-only bridge record without errors.
 
 ### D9.11 — Maintenance integration
 
-Upgrade existing `c11c-maintenance` to target **0.2.0**.
+Implementation status: **Maintenance 0.2.0 implemented; static backend, Config, Maintenance contract and full Suite regression PASS; Windows Maintenance GUI/operator acceptance is pending.** The implementation stays inside the existing `c11c-maintenance` surface and delegates GUI/CLI operations to `tools/c11d/d9/maintenance.py`.
 
 Expose and test:
 
@@ -118,6 +118,10 @@ Expose and test:
 - documentation consolidation;
 - freeze preparation;
 - protected-root enforcement.
+
+The canonical policy `definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json` is exposed read-only in Config. Cleanup has a two-root allowlist and archives reversibly instead of permanently deleting. The unregistered `c11c-suite/c11d-control` path can only be quarantined/restored by explicit operator confirmation; its legacy manifest references are recorded in an append-only ledger while `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remains byte-for-byte unchanged. Freeze preflight is read-only, creates no archive and grants no authority.
+
+Focused validation: `python .\tools\c11d\d9\test_maintenance.py`. Windows bring-up and operator review of the preview actions remain required.
 
 ### D9.12 — Test integration
 
@@ -178,7 +182,7 @@ Only when D9.8–D9.16 are accepted. D10 remains BLOCKED until D9.17 closes.
 | `c11c-producer` | 0.11.1 | 0.11.x only for approved additive D coverage | universal request → editorial resolution → plan-only; real media remains a later authorized D gate |
 | `c11c-catalog` | 0.2.0 | 0.2.x | product identity → provenance → reproduction |
 | `c11c-config` | 0.2.0 | 0.2.x | profiles → validation → save/restore → protected roots |
-| `c11c-maintenance` | C11-C active baseline | 0.2.0 | dry-run → cleanup/quarantine → organization/freeze |
+| `c11c-maintenance` | 0.2.0 implemented; Windows acceptance pending | 0.2.0 | dry-run → reversible allowlist archive/quarantine → doc/freeze preflight |
 | `c11c-test` | C11-C active baseline | 0.2.0 | D2–D9 registration + GUI E2E + negative acceptance |
 
 Versions labelled “next target” are planning targets, not claims of current release.

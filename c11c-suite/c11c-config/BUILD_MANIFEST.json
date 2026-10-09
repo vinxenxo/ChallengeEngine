@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-config",
   "version": "0.2.0",
-  "branch": "C11-D D9.7–D9.10",
+  "branch": "C11-D D9.7–D9.11",
   "entrypoint": "c11c-suite/c11c-config/main.py",
   "modules": [
     "c11c-suite/c11c-config/c11d_config.py"
@@ -20,7 +20,8 @@
     "D8 QA/release",
     "D9 acceptance",
     "D9 universal editorial model (declarative; no renderer/production authority)",
-    "D9.10 editorial-render bridge planning contract (read-only; renderer/production inactive)"
+    "D9.10 editorial-render bridge planning contract (read-only; renderer/production inactive)",
+    "D9.11 maintenance policy (read-only registry; allowlisted reversible maintenance only)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -58,5 +59,7 @@
   "universal_editorial_model": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
   "universal_editorial_model_access": "READ_ONLY_CANONICAL",
   "editorial_render_bridge_contract": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
-  "editorial_render_bridge_contract_access": "READ_ONLY_CANONICAL"
+  "editorial_render_bridge_contract_access": "READ_ONLY_CANONICAL",
+  "maintenance_policy": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
+  "maintenance_policy_access": "READ_ONLY_CANONICAL"
 }

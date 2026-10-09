@@ -33,8 +33,8 @@
       "current_version": "0.11.1",
       "target_version": "0.11.1 D9.10 plan-only editorial-render bridge; physical rendering deferred to future D frozen baseline",
       "gate": "D9.10",
-      "status": "D9.10_PASS_BRIDGE_CONTRACT_CLI_PARITY_STATIC_GUI_WINDOWS_BRIDGE_TAB_CONFIRMATION_PENDING",
-      "notes": "Producer 0.11.1 retains D9.9 universal editorial planning and adds a deterministic D9.10 bridge-planning record with GUI/CLI record parity. The operator confirmed D9.9 GUI plan generation in Windows. D9.10 bridge output is plan-only; new output-tab Windows smoke check remains pending. Renderer input/media are not emitted; D4.8 BLOCKED; release_authority NONE.",
+      "status": "D9.10_PASS_BRIDGE_CONTRACT_CLI_PARITY_WINDOWS_GUI_CONFIRMED_PLAN_ONLY",
+      "notes": "Producer 0.11.1 retains D9.9 universal editorial planning and adds deterministic D9.10 bridge-planning GUI/CLI parity. The operator confirmed Windows GUI plan generation for all supported D types and the D9.10 bridge-output tab. Renderer input/media are not emitted; D4.8 BLOCKED; release_authority NONE.",
       "required_tests": [
         "9 Challenge identities reusing canonical D4 subordinate plan",
         "5 Loop families / 27 concrete grammars plus auto selector per family",
@@ -47,7 +47,8 @@
         "D9.10 bridge record validation for Challenge, Visual Loop and Visual Drill",
         "3 separate-process GUI/CLI bridge record parity cases",
         "15 negative bridge/governance/integrity controls",
-        "renderer input not emitted; no renderer adapter, media output or artifact path"
+        "renderer input not emitted; no renderer adapter, media output or artifact path",
+        "operator-confirmed Windows D9.10 bridge-output tab; plan-only; no real media claim"
       ]
     },
     {
@@ -66,17 +67,19 @@
     },
     {
       "id": "c11c-maintenance",
-      "current_version": "0.1.x inherited",
+      "current_version": "0.2.0 implemented; Windows GUI/operator acceptance pending",
       "target_version": "0.2.0",
       "gate": "D9.11",
-      "status": "PLANNED",
+      "status": "IMPLEMENTED_STATIC_PASS_WINDOWS_GUI_OPERATOR_ACCEPTANCE_PENDING",
       "required_tests": [
-        "dry-run first",
-        "allowlisted cleanup/archive",
-        "quarantine/restore",
+        "dry-run first and read-only plan",
+        "exact cleanup allowlist with reversible archive/restore",
+        "c11d-control quarantine/restore with tree and manifest hash reconciliation",
         "protected-root mutation negatives",
-        "freeze/doc consolidation",
-        "failure recovery"
+        "documentation audit and conflict handling without overwrites",
+        "freeze preflight without archive creation or release authority",
+        "atomic ledger write, rollback and recovery-required reporting",
+        "Windows GUI bring-up and operator review of preview outputs"
       ]
     },
     {
@@ -84,9 +87,9 @@
       "current_version": "0.2.0",
       "target_version": "0.2.0",
       "gate": "D9.7-D9.10",
-      "status": "D9.10_BRIDGE_CONTRACT_REGISTERED_READ_ONLY_22_OF_22_VALID_CONFIG_GUI_PENDING",
+      "status": "D9.11_MAINTENANCE_POLICY_REGISTERED_READ_ONLY_23_OF_23_CONFIG_GUI_PENDING",
       "required_tests": [
-        "22 canonical registries",
+        "23 canonical registries",
         "D9.10 bridge schema/governance/output invariants",
         "D9.8 model schema/seed/data-class invariants",
         "seven configuration negatives",
@@ -96,7 +99,7 @@
         "generic editor protected-root policy",
         "Windows GUI/filesystem smoke"
       ],
-      "notes": "Config 0.2.0 keeps canonical contracts read-only, now including D9.10 editorial-render bridge. Bridge invariants are validated; Windows Config GUI/filesystem acceptance remains pending."
+      "notes": "Config 0.2.0 registers D9.8 editorial model, D9.10 bridge and D9.11 maintenance policy as read-only contracts. Maintenance policy cannot grant filesystem paths outside the declared allowlists. Windows Config GUI/filesystem acceptance remains pending."
     },
     {
       "id": "c11c-suite",
@@ -127,12 +130,12 @@
     {
       "gate": "D9.10",
       "name": "Editorial-to-render bridge; physical renderer integration deferred until the future D frozen baseline",
-      "status": "PLANNED_D_BASELINE_DEPENDENT"
+      "status": "PASS_BRIDGE_CONTRACT_CLI_PARITY_STATIC_GUI_WINDOWS_PLAN_ONLY_TAB_CONFIRMED"
     },
     {
       "gate": "D9.11",
       "name": "Maintenance 0.2.0: allowlists, quarantine, archive and freeze lifecycle",
-      "status": "PENDING"
+      "status": "IMPLEMENTED_STATIC_PASS_WINDOWS_GUI_OPERATOR_ACCEPTANCE_PENDING"
     },
     {
       "gate": "D9.12",
@@ -178,6 +181,6 @@
     "frozen_c11c_mutation": "FORBIDDEN"
   },
   "non_canonical_operational_paths": {
-    "c11d-control": "UNREGISTERED_FROM_SHARED_LAUNCHER; QUARANTINE/ARCHIVE THROUGH D9.11 MAINTENANCE WITH MANIFEST RECONCILIATION"
+    "c11d-control": "UNREGISTERED; explicit D9.11 quarantine/restore only via canonical Maintenance and append-only manifest reconciliation; historical C11-C manifest bytes remain unchanged"
   }
 }

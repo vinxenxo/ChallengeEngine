@@ -20,4 +20,7 @@ assert manifest.get('universal_editorial_model_access') == 'READ_ONLY_CANONICAL'
 assert 'D9_EDITORIAL_RENDER_BRIDGE' in module and 'C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json' in module, 'D9.10 bridge contract must be visible in read-only Config registry'
 assert manifest.get('editorial_render_bridge_contract') == 'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json'
 assert manifest.get('editorial_render_bridge_contract_access') == 'READ_ONLY_CANONICAL'
-print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
+assert 'D9_MAINTENANCE_POLICY' in module and 'D9_11_MAINTENANCE_POLICY_V1.json' in module
+assert manifest.get('maintenance_policy') == 'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json'
+assert manifest.get('maintenance_policy_access') == 'READ_ONLY_CANONICAL'
+print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance policy registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')

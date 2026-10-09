@@ -48,4 +48,13 @@
 - Tested Challenge/Loop/Drill route planning, 3/3 CLI process parity cases and 15 negative controls. Tests are registered in Producer and consolidated Suite self-tests.
 - Each planning record includes SHA-256 identities for the canonical bridge contract and the D9.8 editorial model in addition to request/editorial/plan identity. The bridge emits no renderer input, invokes no renderer, creates no media, and has no output artifact path. D4.8 remains BLOCKED and `release_authority=NONE`.
 - The operator should confirm the newly added D9.10 output tab launches and shows the bridge record in Windows before this GUI addition is considered interactively accepted.
-- Config 0.2.0 registers the bridge contract read-only and validates the non-execution/governance locks; its registry now contains 22 canonical contracts. See `docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md`.
+- Config 0.2.0 registers the bridge contract read-only and validates the non-execution/governance locks; its registry contained 22 canonical contracts at D9.10; D9.11 adds the maintenance policy and brings it to 23. See `docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md`.
+
+
+## D9.11 — Maintenance 0.2.0 implementation
+
+- Added `D9_11_MAINTENANCE_POLICY_V1.json` and registered it read-only in Config (23/23 contracts).
+- The existing Maintenance GUI calls `tools/c11d/d9/maintenance.py` for dry-run plan, documentation audit, freeze preflight, allowlisted reversible cleanup, quarantine/restore and recovery operations.
+- Only `c11c-suite/c11d-control` is eligible for legacy quarantine. The operation is not performed when applying the overlay; it requires explicit GUI/CLI confirmation and records the original tree and historical manifest file references in an append-only ledger.
+- The historical C11-C manifest is never rewritten. Cleanup has exactly two allowed transient roots and archives rather than permanently deleting. Freeze preflight never creates a release archive.
+- Static backend, Maintenance GUI-contract, prior cleanup/organization and aggregated Suite tests pass. Windows Maintenance GUI/operator acceptance remains pending; D9 stays OPEN and D10 BLOCKED.

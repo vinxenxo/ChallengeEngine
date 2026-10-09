@@ -1,0 +1,41 @@
+{
+  "suite_id": "c11c-maintenance",
+  "version": "0.2.0",
+  "branch": "C11-D D9.11",
+  "entrypoint": "c11c-suite/c11c-maintenance/main.py",
+  "canonical_backend": "tools/c11d/d9/maintenance.py",
+  "policy": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
+  "modules": [
+    "tools/c11d/d9/maintenance.py",
+    "c11c-suite/c11c-maintenance/main.py"
+  ],
+  "tests": [
+    "tools/c11d/d9/test_maintenance.py",
+    "c11c-suite/c11c-maintenance/test_d9_maintenance_contract.py",
+    "c11c-suite/c11c-maintenance/test_cleanup_contract.py",
+    "c11c-suite/c11c-maintenance/test_root_organization_contract.py"
+  ],
+  "gui_cli_backend": "SHARED_CANONICAL",
+  "operations": [
+    "dry-run plan",
+    "allowlisted reversible transient archive",
+    "legacy unregistered control quarantine and verified restore",
+    "manifest reconciliation by append-only ledger",
+    "documentation audit",
+    "D freeze preflight only",
+    "protected-root enforcement"
+  ],
+  "cleanup_allowlist": [
+    "artifacts/scratch",
+    "artifacts/tests/logs/verbose"
+  ],
+  "historical_manifest_access": "READ_ONLY_PRESERVED_BYTE_FOR_BYTE",
+  "c11d_control_registered": false,
+  "renderer_activation": false,
+  "production_execution": false,
+  "d4_8": "BLOCKED",
+  "runtime_authority": "NONE",
+  "release_authority": "NONE",
+  "frozen_c11c_mutation": "FORBIDDEN",
+  "windows_gui_acceptance": "PENDING_OPERATOR_RUN"
+}

@@ -15,6 +15,7 @@ D_REGISTRIES = (
  {'domain':'D4 · PERSONALIZATION','id':'D4_PERSONALIZATION_REGISTRY','path':'definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · EDITORIAL','id':'D9_UNIVERSAL_EDITORIAL_MODEL','path':'definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · BRIDGE PLANNING','id':'D9_EDITORIAL_RENDER_BRIDGE','path':'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · MAINTENANCE','id':'D9_MAINTENANCE_POLICY','path':'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · GOVERNANCE','id':'D4_ACTIVATION_POLICY','path':'definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D5 · PROVENANCE','id':'D5_LINEAGE_REGISTRY','path':'definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D6 · SEEDS','id':'D6_SEED_REGISTRY','path':'definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
@@ -140,6 +141,22 @@ def validate_c11d_contracts(project_root: Path) -> tuple[list[dict[str,Any]],lis
     need(bridge.get('unsupported_content_types',{}).get('longform')=='DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM','D9.10 Longform must remain disabled')
     required_bridge_gates={'FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED','RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED','D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION','GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS','CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS'}
     need(required_bridge_gates.issubset(set(bridge.get('future_d_frozen_baseline_gates',[]))),'D9.10 missing mandatory future baseline gates')
+    maintenance=d.get('D9_MAINTENANCE_POLICY',{})
+    need(maintenance.get('schema')=='C11-D-D9.11-MAINTENANCE-POLICY-V1' and maintenance.get('checkpoint')=='D9.11','D9.11 maintenance policy schema/checkpoint mismatch')
+    need(maintenance.get('surface')=='c11c-maintenance' and maintenance.get('version')=='0.2.0','D9.11 must target existing Maintenance 0.2.0')
+    ma=maintenance.get('authority',{})
+    need(ma.get('runtime_authority')=='NONE' and ma.get('renderer_activation') is False and ma.get('production_execution') is False and ma.get('release_authority')=='NONE' and ma.get('d4_8')=='BLOCKED','D9.11 must not grant runtime/renderer/production/D4.8/release authority')
+    need(ma.get('c11c_frozen_reference_mutation')=='FORBIDDEN','D9.11 must preserve the immutable C11-C reference')
+    need(maintenance.get('active_suite_topology')==['c11c-test','c11c-producer','c11c-catalog','c11c-config','c11c-maintenance'],'D9.11 must retain exactly five canonical Suite surfaces')
+    need(maintenance.get('safe_transient_roots')==['artifacts/scratch','artifacts/tests/logs/verbose'],'D9.11 cleanup allowlist unexpectedly broadened')
+    cleanup_policy=maintenance.get('cleanup_policy',{})
+    need(cleanup_policy.get('permanent_deletion') is False and cleanup_policy.get('apply_requires_confirmation') is True,'D9.11 cleanup must be explicit and reversible')
+    quarantine_policy=maintenance.get('quarantine_policy',{})
+    need(quarantine_policy.get('only_allowed_source')=='c11c-suite/c11d-control' and quarantine_policy.get('allow_overwrite') is False,'D9.11 quarantine must remain exact-path allowlisted/non-overwriting')
+    historical=maintenance.get('historical_manifest',{})
+    need(historical.get('rewrite_allowed') is False and historical.get('policy')=='READ_ONLY_HISTORICAL_EVIDENCE','D9.11 must preserve the historical C11-C manifest byte-for-byte')
+    freeze_policy=maintenance.get('freeze_preparation',{})
+    need(freeze_policy.get('mode')=='PREFLIGHT_ONLY' and freeze_policy.get('may_create_release_archive') is False,'D9.11 freeze preflight must not create release archives')
     data_classes=editorial.get('data_classes',{})
     editable=set(data_classes.get('editable_editorial',{}).get('editable_keys',[]))
     protected_fields=set()
