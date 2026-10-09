@@ -1,3 +1,15 @@
+# D9.15 canonical operator evidence PASS/CLOSED — 2026-10-09
+
+- Operator ran `operator_evidence.py status`: 13/13 recorded PASS pairings, 0 blocked, 0 pending, 13 events, no media, release authority NONE.
+- Operator ran `operator_evidence.py finalize --operator-attestation I_CONFIRM_ALL_D915_PAIRINGS_REVIEWED_NO_MEDIA` and received `D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`.
+- Sealed checkpoint `docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json`; checkpoint SHA-256 `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`; ledger SHA-256 `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`.
+- This supersedes the earlier candidate-only capture-waiver limitation for canonical D9.15 operator GUI acceptance. The waiver remains historical/candidate-scope documentation and is not used to fabricate evidence.
+- Next action: re-run D9.15 focused preflight, D9.16 full-acceptance preflight, candidate preflight and aggregate Suite after the checkpoint. Do not assume updated blocker counts before observing output.
+- D9.14 remains `BLOCKED_AS_REQUIRED` (Windows gate 10/10 cases, 20/20 negatives); D9.16 remains full-acceptance blocked pending the approved/frozen future D renderer baseline and explicit D4.8 authorization. Renderer OFF, no media, `release_authority=NONE`, D9 OPEN, D10 BLOCKED.
+- C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; adapter remains `PREPARE_ONLY`.
+
+---
+
 # D9 Suite Integration — Change Log
 
 

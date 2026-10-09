@@ -1,36 +1,37 @@
-# C11-D START PROMPT — D9.10 accepted; D9.14/D9.16 preflights verified; D9.15 next (2026-10-09)
+# C11-D START PROMPT — D9.15 PASS/CLOSED; D9.14 remains blocked (2026-10-09)
 
-Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. The latest operator evidence supersedes all older pending/failure notes below.
+Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. This top section supersedes older pending/waiver-only status notes retained below for historical trace.
 
-## Verified status
+## Latest operator-confirmed state
 
-- D9.10 Qt runtime `D910_QT_GUI_RUNTIME_FIX_02`: **PASS 3/3**.
-- D9.10 bound acceptance `D910_QT_ACCEPTANCE_FIX_02`: **PASS 7/7** (five focused checks + Qt runtime + aggregate); `GUI_runtime_observed=false` correctly identifies offscreen automation.
-- D9.13 full lifecycle: PASS; content types 3/3, stages 5/5, GUI/CLI parity 3/3, catalog 3/3, maintenance 3/3, negative 14/14, persisted parity regression 4/4.
-- D9.10 bridge/adapter: PASS; bridge negatives 15/15, adapter negatives 9/9; adapter remains `PREPARE_ONLY`.
-- Producer GUI contract PASS.
-- Candidate preflight PASS, protected entries 854/854, negative 22/22, five blockers retained, `freeze_eligible=false`, `baseline_approval=MISSING`.
-- Aggregate Suite PASS 22/22.
-- C11-C manifest SHA-256: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+- **Canonical D9.15 operator evidence: `D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`.** The operator recorded all 13 required pairings across the five canonical GUI surfaces, then finalized successfully.
+- Pairings: 13/13 PASS; blocked 0; pending 0; ledger events 13.
+- Checkpoint: `docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json`.
+- Checkpoint SHA-256: `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`.
+- Sealed ledger SHA-256: `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`.
+- D9.10 runtime `D910_QT_GUI_RUNTIME_FIX_02`: PASS 3/3; bound acceptance `D910_QT_ACCEPTANCE_FIX_02`: PASS 7/7.
+- D9.13 lifecycle: PASS; content types 3/3, stages 5/5, GUI/CLI parity 3/3, Catalog 3/3, Maintenance 3/3, negative 14/14, persisted parity regression 4/4.
+- Bridge/adapter: PASS; adapter is still `PREPARE_ONLY`; bridge negatives 15/15 and adapter negatives 9/9.
+- D9.14 no-media certification gate: `BLOCKED_AS_REQUIRED`, 10/10 cases and 20/20 negatives.
+- D9.16 preflight (last observed before D9.15 finalize): 5/5 static checks, 9/9 evidence routes and 21/21 negative controls; full acceptance `BLOCKED_AS_REQUIRED`.
+- Aggregate suite: PASS 22/22.
+- C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 
-## Next work — D9.15 canonical operator evidence
+## Next commands — re-evaluate after D9.15 closure
 
-The latest Windows results verify no-media gate behavior:
+```powershell
+python .\tools\c11d\baseline_candidate\operator_evidence.py status
+python .\tools\c11d\d9\test_gui_operational_acceptance.py
+python .\tools\c11d\d9\test_full_acceptance.py
+python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
+python -u .\c11c-suite\self_test.py
+```
 
-- D9.14 test: `BLOCKED_AS_REQUIRED`, 10/10 gate cases and 20/20 negative controls.
-- D9.16 preflight: 5/5 static checks, 9/9 evidence routes and 21/21 negative controls; full acceptance remains blocked as required.
-- Candidate audit: PASS with five blockers, `freeze_eligible=false`, protected entries 854/854, negatives 22/22 and legacy reconciliation 4/4.
-- Aggregate Suite: PASS 22/22.
-
-Next, use `docs/current/d/D9.15_OPERATOR_EVIDENCE_CAPTURE_GUIDE.md` to collect/record the 13 real operator evidence pairings for Config, Producer, Test, Catalog and Maintenance. Start with `python .\tools\c11d\baseline_candidate\operator_evidence.py status`; if and only if the ledger is missing, initialize it once with `python .\tools\c11d\baseline_candidate\operator_evidence.py init`. Capture only actual observed GUI states or copied visible logs; for a blocked/incomplete control, record `BLOCKED`, not `PASS`. Do not repeat `init` if the ledger exists.
-
-When and only when all 13 latest entries are PASS and inspected, use the guide's explicit `finalize` command, then rerun candidate preflight and D9.16 preflight. This closes only the D9.15 operational GUI matrix. It does not authorize real media, renderer dispatch, D4.8, full D9.16, D9.17, baseline freeze or release.
-
-D9.14 full GUI/E2E remains blocked until a separately approved/frozen universal D renderer baseline and explicit D4.8 governance authorization exist. C11-C stays immutable, adapter PREPARE_ONLY, renderer OFF, release authority NONE, D9 OPEN and D10 BLOCKED.
+Capture the actual outputs before updating any candidate blocker count or tree SHA. D9.15 finalization does not authorize real media or bypass D9.14. Full D9.14 is still blocked by the absent separately approved/frozen D renderer baseline and explicit D4.8 governance authorization. D9.16 full acceptance and D9.17 closure therefore remain blocked.
 
 ## Non-negotiable boundaries
 
-C11-C 2.19.12 and its manifest are immutable; D9.10 adapter `PREPARE_ONLY`; no renderer input/dispatch; D4.8 `BLOCKED`; renderer OFF; media false; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. Do not start definitive GUI implementation until the entire D baseline is accepted and frozen.
+C11-C 2.19.12 and its manifest are immutable; D9.10 adapter `PREPARE_ONLY`; no renderer-native input/dispatch; D4.8 `BLOCKED`; renderer OFF; production/media false; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The current GUI is test/operator-only; defer definitive GUI work until the complete D baseline is accepted and frozen.
 
 ---
 

@@ -1,43 +1,50 @@
-# C11-D MASTER HANDOVER — D9.10 accepted; D9.14 next constrained gate (2026-10-09)
+# C11-D MASTER HANDOVER — D9.15 accepted; D9.14/D9.16 remain gated (2026-10-09)
 
 ## Latest operator-confirmed state — authoritative
 
-**D9.10 Qt runtime acceptance is PASS.** The Windows operator executed the following on the active checkout:
+The operator has completed and finalized canonical D9.15 no-media GUI operational acceptance on the active Windows checkout. The `operator_evidence.py status` and `finalize` outputs are provided by the operator in this conversation.
 
-- `test_cross_suite_lifecycle.py --parity-contract-only`: PASS, positive 1/1 and negative 4/4.
-- `test_cross_suite_lifecycle.py`: PASS; content types 3/3, stages 5/5, identity continuity PASS, GUI/CLI parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted-parity regression 4/4.
-- `test_d910_gui_runtime_contract.py`: PASS, content types 3/3; screenshots not required; production forbidden.
-- `test_editorial_render_bridge.py`: PASS; content types 3/3, bridge CLI parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter negatives 9/9.
-- `test_producer_gui_contract.py`: PASS, Producer 0.11.1.
-- Direct Qt runtime `D910_QT_GUI_RUNTIME_FIX_02`: **PASS 3/3**; `C11-C_manifest_match=true`; `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`.
-- Combined capture `D910_QT_ACCEPTANCE_FIX_02`: **PASS 7/7**; `qt_gui_runtime=PASS`; `C11-C_manifest_match=true`; `GUI_runtime_observed=false` is intentional for offscreen automation and is not a failure.
-- Candidate preflight: **PASS**; immutable C11-C match; protected entries 854/854; negatives 22/22; legacy disposition reconciled 4/4; five blockers retained; `freeze_eligible=false`; `baseline_approval=MISSING`. Candidate tree SHA-256: `99870ec3bbebc3035f587c310cbd60ddfa49e2cf27077794a2a5a14cee11d7f8`.
-- Aggregate `python -u .\c11c-suite\self_test.py`: **PASS 22/22**.
-- Manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. The protected `docs/current/07_ROADMAP.md` is restored to canonical SHA-256 `5e847ead237c614d1618e0a012f823e92ef95068441e8ce4872a225beee5d989`.
+- D9.15 recorder status before finalization: `recorded_pass_pairings=13/13`, `blocked_pairings=0`, `pending_pairings=0`, `events=13`, `complete=true`.
+- Finalization: **`D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`**.
+- Sealed acceptance checkpoint: `docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json`.
+- Checkpoint SHA-256: `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`.
+- Ledger SHA-256: `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`.
+- D9.15 scope is only the no-media operational GUI matrix across Config, Producer, Test, Catalog and Maintenance. It grants no renderer, production, D4.8, D9.16, baseline-freeze or release authority.
 
-The original Qt defect is resolved: the GUI produced seven parity checks while the D9.13 validator required six. The exact seven-key schema, adapter-envelope equality and hash binding are now validated; the regression keeps missing/false/mismatched evidence fail-closed.
+## Latest verified D9.10/D9.13 acceptance
 
-## Next active work — canonical D9.15 operator evidence (no media)
+- D9.13 persisted parity contract: PASS, positive 1/1 and negative 4/4.
+- D9.13 lifecycle: PASS; content types 3/3, stages 5/5, identity continuity PASS, GUI/CLI parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted-parity regression 4/4.
+- D9.10 bridge/adapter: PASS; content types 3/3, CLI bridge parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter negatives 9/9. Adapter remains `PREPARE_ONLY`.
+- Direct Qt runtime `D910_QT_GUI_RUNTIME_FIX_02`: **PASS 3/3**; C11-C manifest match true.
+- Combined capture `D910_QT_ACCEPTANCE_FIX_02`: **PASS 7/7**; `GUI_runtime_observed=false` is correct for offscreen automation, not an error.
+- Aggregate suite: **PASS 22/22**.
+- C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 
-The operator completed the no-media gate verification on Windows on 2026-10-09. Results are recorded from the terminal output supplied for this checkout:
+## Latest no-media gate results — 2026-10-09
 
-- `test_gui_real_media_certification.py`: PASS, `gate=BLOCKED_AS_REQUIRED`, `cases=10/10`, `negative=20/20`, renderer OFF, no media, D4.8 BLOCKED, release authority NONE.
-- `test_full_acceptance.py`: PASS, `static_checks=5/5`, `evidence_routes=9/9`, `negative=21/21`; `full_acceptance=BLOCKED_AS_REQUIRED`, D9.14 BLOCKED and D9.15 operator evidence REQUIRED.
-- `test_d_baseline_candidate.py`: PASS; C11-C immutable reference match, protected entries 854/854, negative 22/22, legacy reconciliation 4/4, five blockers, `freeze_eligible=false`. Observed candidate tree SHA-256: `877198711170beb4d57bbc8bd9bc610c5d76c60e36d6a9035b29c2cc500ee4d1` (tree identity will change as future D-only documentation/evidence is added).
-- `python -u .\c11c-suite\self_test.py`: PASS 22/22.
-- The D9.10 Qt runtime remains PASS 3/3 and bound D9.10 acceptance PASS 7/7 from `D910_QT_GUI_RUNTIME_FIX_02` and `D910_QT_ACCEPTANCE_FIX_02`.
+- `test_gui_real_media_certification.py`: PASS, `gate=BLOCKED_AS_REQUIRED`, cases 10/10, negatives 20/20, renderer OFF, no media, D4.8 BLOCKED, release authority NONE.
+- `test_full_acceptance.py`: PASS as preflight; static checks 5/5, evidence routes 9/9, negatives 21/21. Full D9.16 acceptance remains `BLOCKED_AS_REQUIRED` because D9.14 real-media acceptance is not authorized/available.
+- Candidate preflight before D9.15 finalization: PASS, C11-C immutable reference match, protected entries 854/854, negatives 22/22, legacy reconciliation 4/4, five blockers, `freeze_eligible=false`; tree SHA-256 at that point was `877198711170beb4d57bbc8bd9bc610c5d76c60e36d6a9035b29c2cc500ee4d1`. Re-run after finalization; do not assume the blocker count remains unchanged.
+- Aggregate suite before D9.15 finalization: PASS 22/22.
 
-These are passing **preflight / fail-closed** checks, not permission to create media or close the checkpoints. The next available acceptance task is to capture and register the 13 authentic D9.15 operator-observation pairings across the five existing GUI surfaces. Use `docs/current/d/D9.15_OPERATOR_EVIDENCE_CAPTURE_GUIDE.md`; evidence must come from actual Windows GUI actions and be saved under `artifacts/evidence/d9_15_operator/`. The candidate-only waiver is not canonical D9.15 evidence. Do not synthesize PASS artifacts or record PASS for blocked/incomplete functionality.
+## Next active work — re-evaluate D9.16 and candidate after D9.15 closure
 
-Full D9.14 real-media GUI/E2E remains blocked until the universal D renderer baseline is separately approved/frozen and a distinct D4.8 governance checkpoint explicitly authorizes dispatch. After D9.15 evidence is reviewed/sealed, rerun D9.16 preflight; it must continue to block full acceptance until D9.14's actual authorized evidence exists. D9.17 remains BLOCKED/NO-GO; D10 remains BLOCKED.
+1. Verify the sealed D9.15 record with `python .\tools\c11d\baseline_candidate\operator_evidence.py status`.
+2. Re-run `python .\tools\c11d\d9\test_gui_operational_acceptance.py` and `python .\tools\c11d\d9\test_full_acceptance.py`.
+3. Re-run `python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py` and `python -u .\c11c-suite\self_test.py`.
+4. Record their actual outputs and new candidate tree SHA-256. D9.15 is no longer pending, but do not assume that D9.16 or candidate blocker counts change until verified.
+
+D9.14 full real-media GUI/E2E remains `BLOCKED_AS_REQUIRED` until a separately approved/frozen future D renderer baseline and an independent, explicit D4.8 governance checkpoint authorize the work. Do not run full production-media acceptance before those conditions exist.
 
 ## Governance boundary
 
-- C11-C 2.19.12 and its manifest remain byte-for-byte immutable.
-- D9.10 adapter remains `PREPARE_ONLY`; no renderer-native input or dispatch.
+- C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable; manifest SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+- D9.10 adapter = `PREPARE_ONLY`; no renderer-native input or dispatch.
 - D4.8 `BLOCKED`; renderer OFF; production/media OFF; `release_authority=NONE`.
-- D9 OPEN; full D9.14, canonical D9.15 evidence, D9.16 full acceptance and D9.17 closure unresolved; D10 BLOCKED.
-- The existing Producer window is a test/operator GUI only. Definitive GUI work remains deferred until all D acceptance gates are closed and the D baseline is frozen.
+- D9.15 canonical operational GUI matrix = PASS/CLOSED, checkpoint above.
+- D9 remains OPEN; D9.14 full GUI/E2E, D9.16 full acceptance and D9.17 closure remain unresolved; D10 BLOCKED.
+- Existing Producer window is test/operator GUI only. Definitive GUI work is deferred until all D acceptance gates are closed and the D baseline is frozen.
 
 ---
 
