@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "profile_id": "editorial_text_v1",
+  "profile_version": "1.0",
+  "scope": "EDITORIAL_PRESENTATION",
+  "values": {
+    "title": "¡SOLO EL 1% LLEGA AL CENTRO!",
+    "subtitle": "UNKNOWN",
+    "call_to_action": "¡INTÉNTALO TÚ TAMBIÉN!",
+    "language": "es",
+    "player_name": "UNKNOWN",
+    "challenge_label": "KEY"
+  }
+}

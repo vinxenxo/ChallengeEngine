@@ -1,0 +1,31 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "request_id": "D99-GUI-6E9856BAEE98",
+  "mode": "REVIEW",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_invisible_forces_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_invisible_forces_v1/auto",
+    "difficulty_tier": null
+  },
+  "seed": 12345,
+  "music_seed": 840001,
+  "delivery_profile_id": "REVIEW_720",
+  "resolved_delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "personalization_enabled": true,
+  "editorial": {
+    "title": "UNKNOWN",
+    "subtitle": "UNKNOWN",
+    "call_to_action": "UNKNOWN",
+    "language": "UNKNOWN"
+  },
+  "editorial_layers_applied": [],
+  "source_revision": "C11D-D9.9-PRODUCER-0.11.0",
+  "request_origin": "UNKNOWN"
+}

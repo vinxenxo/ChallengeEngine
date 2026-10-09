@@ -1,0 +1,38 @@
+{
+  "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-RESOLUTION-V1",
+  "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_invisible_forces_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_invisible_forces_v1/auto",
+    "scope_keys": {
+      "content_type": "visual_loops",
+      "family": "visual-loop-family:c11c_invisible_forces_v1",
+      "subtype": "visual-loop-grammar:c11c_invisible_forces_v1/auto",
+      "variant": "visual-loop:c11c_invisible_forces_v1/auto"
+    },
+    "request_plan_compatible": false,
+    "editable_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER"
+  },
+  "values": {
+    "title": "UNKNOWN",
+    "subtitle": "UNKNOWN",
+    "call_to_action": "UNKNOWN",
+    "language": "UNKNOWN"
+  },
+  "applied_layers": [],
+  "request_plan_compatible": false,
+  "request_plan_state": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

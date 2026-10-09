@@ -1,0 +1,26 @@
+{
+  "schema": "C11-D-D9.5.1-GUI-CLI-PARITY-V1",
+  "status": "PASS",
+  "gui_request_hash": "c2623533e1cccf2b8c5d09f74aa2c8258d1f94350562c3592021ec231e4a3e19",
+  "cli_request_hash": "c2623533e1cccf2b8c5d09f74aa2c8258d1f94350562c3592021ec231e4a3e19",
+  "request_hash_equal": true,
+  "canonical_request_equal": true,
+  "gui_plan_hash": "79aa7c5b723c1803643e53863fe5471cfdaad6d0b67463612a9247ebc52f5a1b",
+  "cli_plan_hash": "79aa7c5b723c1803643e53863fe5471cfdaad6d0b67463612a9247ebc52f5a1b",
+  "plan_equal": true,
+  "plan_hash_equal": true,
+  "guard_checks": {
+    "runtime_authority_none": true,
+    "renderer_activation_false": true,
+    "gui_activation_false": true,
+    "orchestrator_execution_false": true,
+    "simulation_truth_mutation_false": true,
+    "winning_frame_mutation_false": true,
+    "close_calls_mutation_false": true,
+    "gameplay_rng_consumption_false": true,
+    "structural_rng_consumption_false": true
+  },
+  "execution": false,
+  "renderer": false,
+  "release_authority": "NONE"
+}

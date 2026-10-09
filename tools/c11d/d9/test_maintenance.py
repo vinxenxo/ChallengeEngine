@@ -14,6 +14,8 @@ import maintenance as maint
 
 def copy_file(root: Path, rel: str) -> None:
     source = ROOT / rel
+    if not source.is_file():
+        raise FileNotFoundError(f"Maintenance fixture dependency missing: {rel} (expected at {source})")
     target = root / rel
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, target)
@@ -36,13 +38,31 @@ def make_fixture(root: Path) -> None:
         "docs/current/d/D9.13_CROSS_SUITE_LIFECYCLE_CHECKPOINT.md",
         "c11c-suite/main.py",
         "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
-        "c11c-suite/c11d-control/README.md",
-        "c11c-suite/c11d-control/main.py",
-        "c11c-suite/c11d-control/run.bat",
-        "c11c-suite/c11d-control/self_test.py",
     ]
     for rel in required:
         copy_file(root, rel)
+
+    # The retired sixth surface is intentionally absent from the live repository.
+    # Exercise quarantine/restore against a synthetic legacy tree inside the
+    # temporary fixture instead of requiring c11d-control to exist operationally.
+    legacy_root = root / maint.QUARANTINE_SOURCE
+    legacy_root.mkdir(parents=True, exist_ok=True)
+    (legacy_root / "README.md").write_text(
+        "# Simulated retired c11d-control\n\nFixture-only legacy content; not an operational suite.\n",
+        encoding="utf-8",
+    )
+    (legacy_root / "main.py").write_text(
+        "# Fixture-only placeholder for retired legacy surface.\n",
+        encoding="utf-8",
+    )
+    (legacy_root / "run.bat").write_text(
+        "@echo off\r\necho fixture-only legacy surface\r\n",
+        encoding="ascii",
+    )
+    (legacy_root / "self_test.py").write_text(
+        "# Fixture-only placeholder; never executed.\n",
+        encoding="utf-8",
+    )
 
 
 def expect(condition: bool, message: str) -> None:

@@ -1,0 +1,154 @@
+{
+  "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1",
+  "schema_version": "1.0",
+  "status": "PLANNING_ONLY_NOT_RENDERABLE",
+  "contract_schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+  "contract_identity": {
+    "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+    "schema_version": "1.0",
+    "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+  },
+  "editorial_model_identity": {
+    "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+    "schema_version": "1.0",
+    "checkpoint": "D9.8",
+    "sha256": "4ac36f54527a92c50c0910b3180d622b031011e625aa99717e8f43885be3b7ba"
+  },
+  "request_id": "D99-GUI-6E9856BAEE98",
+  "content_type": "visual_loops",
+  "route": {
+    "route_id": "FUTURE_D_NATIVE_VISUAL_LOOP_ADAPTER_REQUIRED",
+    "required_plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+    "required_d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+    "render_adapter_state": "NOT_DEFINED"
+  },
+  "identity": {
+    "request_hash": "eaac8239aaa9852c7050f9416554f44a72079ebd8770caf35c59928973cdada5",
+    "editorial_hash": "cb0758c8abb8cf39977cd127ac009bc7a2d898e6e74fbcb1614df707a638b5be",
+    "plan_hash": "28e2d64b1523a37fcf1a40f3791a92751afac2a1879bb4f3c4c6b1907a9e6889",
+    "d4_request_hash": null,
+    "d4_plan_hash": null
+  },
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_invisible_forces_v1",
+    "subtype_id": "auto",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_invisible_forces_v1/auto",
+    "difficulty_tier": null
+  },
+  "editorial": {
+    "fields": [
+      "call_to_action",
+      "language",
+      "subtitle",
+      "title"
+    ],
+    "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "destination_contract": "FUTURE_D_RENDERER_BINDER_NOT_DEFINED",
+    "values_hash": "bbe1077928e148c9070b939f7b1fa034d290a4e014a7b123b30b011dc9c55339"
+  },
+  "field_mappings": {
+    "content_identity": {
+      "source": "plan.selection",
+      "destination": "future_d_renderer_contract.content_identity",
+      "classification": "IDENTITY_ONLY",
+      "editable": false
+    },
+    "editorial": {
+      "source": "plan.editorial",
+      "destination": "future_d_renderer_contract.editorial_bindings",
+      "classification": "EDITORIAL_ALLOWLIST_ONLY",
+      "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "must_not_override_simulation_or_telemetry": true
+    },
+    "gameplay_seed": {
+      "source": "plan.seed",
+      "domain": "GAMEPLAY",
+      "owner": "request.seed",
+      "derivation": false,
+      "cross_domain_sharing": "FORBIDDEN"
+    },
+    "music_seed": {
+      "source": "plan.music_seed",
+      "domain": "MUSIC",
+      "owner": "request.music_seed",
+      "derivation": false,
+      "cross_domain_sharing": "FORBIDDEN"
+    },
+    "delivery_profile": {
+      "source": "plan.resolved_delivery_profile_id",
+      "destination": "future_d_renderer_contract.delivery_profile_id",
+      "classification": "REGISTERED_PROFILE_REFERENCE_ONLY"
+    },
+    "presentation_profile": {
+      "source": "plan.presentation_profile_id",
+      "destination": "future_d_renderer_contract.presentation_profile_id",
+      "classification": "REGISTERED_PROFILE_REFERENCE_ONLY"
+    },
+    "variation": {
+      "source": "plan.variation_index",
+      "classification": "TECHNICAL_REQUEST_VALUE_NOT_EDITORIAL",
+      "runtime_derivation": false
+    },
+    "audio": {
+      "source": "plan.audio_enabled",
+      "classification": "EXPLICIT_REQUEST_FLAG_ONLY",
+      "music_seed_domain": "MUSIC"
+    },
+    "provenance": {
+      "sources": [
+        "result.request_hash",
+        "result.editorial_hash",
+        "result.plan_hash"
+      ],
+      "classification": "IMMUTABLE_LINEAGE",
+      "sha256_required_for_future_media": true
+    }
+  },
+  "seed_contract": {
+    "gameplay_seed_source": "canonical_plan.seed",
+    "gameplay_seed": 12345,
+    "gameplay_seed_domain": "GAMEPLAY",
+    "music_seed_source": "canonical_plan.music_seed",
+    "music_seed": 840001,
+    "music_seed_domain": "MUSIC",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false
+  },
+  "delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "future_d_frozen_baseline_gates": [
+    "FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED",
+    "RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED",
+    "CONTENT_BINDER_COMPATIBILITY_MATRIX_PASS",
+    "D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION",
+    "GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS",
+    "EDITORIAL_ONLY_MUTATION_DETERMINISM_TESTS_PASS",
+    "RENDERER_AND_MEDIA_PROVENANCE_CHAIN_PASS",
+    "VISUAL_AND_AUDIO_QA_GATES_PASS",
+    "CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS"
+  ],
+  "governance": {
+    "master_seed": "NOT_ADOPTED",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "renderer_activation": false,
+    "production_execution": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "renderer_input_emitted": false,
+  "renderer_adapter_invoked": false,
+  "renderer_activation": false,
+  "production_execution": false,
+  "media_output_created": false,
+  "output_artifact_path": null,
+  "d4_8": "BLOCKED",
+  "release_authority": "NONE",
+  "record_hash": "a3407d8f24c84d4b3f157b1f456fbc9ea0586a819f3e8e6f1e29a661f521638f"
+}

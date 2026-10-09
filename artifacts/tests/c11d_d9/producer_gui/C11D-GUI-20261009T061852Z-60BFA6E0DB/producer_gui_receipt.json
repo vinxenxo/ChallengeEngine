@@ -1,0 +1,16 @@
+{
+  "schema": "C11-D-D9.5.1-PRODUCER-GUI-RECEIPT-V1",
+  "phase": "D9.5.1",
+  "result": "PASS_PLAN_ONLY",
+  "status": "PLANNED",
+  "request_id": "C11D-GUI-20261009T061852Z-60BFA6E0DB",
+  "request_hash": "c2623533e1cccf2b8c5d09f74aa2c8258d1f94350562c3592021ec231e4a3e19",
+  "personalization_hash": "30e6e7cef6bae9b4be403b815bdb74203c61f67a2219ea3dd1ab60edf95ed9c6",
+  "plan_hash": "79aa7c5b723c1803643e53863fe5471cfdaad6d0b67463612a9247ebc52f5a1b",
+  "gui_cli_parity": "PASS",
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_gui\\C11D-GUI-20261009T061852Z-60BFA6E0DB"
+}
