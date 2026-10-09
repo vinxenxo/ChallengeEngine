@@ -5,11 +5,11 @@
 **Date:** 2026-10-09  
 **Owner boundary:** C11-D only; C11-C 2.19.12 and its freeze manifest remain immutable.
 
-## Latest incremental implementation — logical composition V1 (2026-10-10)
+## Latest accepted increment — logical composition V1 (2026-10-10)
 
-The operator-confirmed binding-preview increment has passed on Windows: logical inputs for Challenge/Loop/Drill are represented by a hash-bound preview; bridge and D9.13 tests pass; candidate preflight passes with five blockers; Suite remains 22/22. The next isolated preparation increment adds `D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1`: it places exact canonical editorial strings into logical `text_value` properties for semantic text elements.
+The operator verified the logical-composition increment on Windows: `test_d_renderer_logical_composition.py` reports content types 3/3, deterministic 3/3, editorial flow 3/3, negative 17/17 and structural schema 3/3. The Windows environment does not have the optional `jsonschema` package; full Draft 2020-12 schema validation 3/3 was separately performed in the preparation workspace. Existing binding preview, D9.10 bridge, D9.13 lifecycle, candidate preflight and Suite 22/22 also passed. D9.15 remains canonical `PASS_CLOSED`; candidate stays blocked by five independent blockers.
 
-The logical composition is in-memory review data only, not renderer-native input. The field-targets and regions remain `PROPOSED_NOT_APPROVED`; no renderer consumes this plan. Its preparation-copy focused test currently reports content types 3/3, determinism 3/3, editorial flow 3/3, negatives 17/17 and schema validation 3/3. **Windows verification of this new increment is pending.** See `D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_CHECKPOINT_V1.md`. Do not register it as an aggregate-suite step until Windows acceptance and separate review.
+The next isolated increment is `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1`, a pure in-memory, renderer-neutral declaration plan derived only from the validated logical composition. It orders exact editorial text-binding declarations and records proposed semantic regions without approving them. It defines no frame ranges, durations, transitions or pixel coordinates; it is not executable or renderer-native input. Its contract and focused test are prepared; **Windows acceptance of this new increment is pending**. See `D_RENDERER_NEUTRAL_FRAME_PROGRAM_CHECKPOINT_V1.md`. Keep the aggregate at 22 steps until focused Windows acceptance and independent design review.
 
 ## 1. Why this is the next work item
 

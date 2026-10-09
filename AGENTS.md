@@ -61,4 +61,3 @@ For D, GUI and CLI may be used simultaneously during authoring/testing; no GUI-o
 ## Test discipline
 
 Focused checks come before expensive aggregate execution. PowerShell 5.1 compatibility is mandatory. Python validation should use `-B` or `PYTHONDONTWRITEBYTECODE=1` when repository mutation guards are active.
-

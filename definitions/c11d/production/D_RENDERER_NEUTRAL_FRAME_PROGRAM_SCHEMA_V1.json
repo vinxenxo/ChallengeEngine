@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-neutral-frame-program:v1",
+  "title": "C11-D Renderer-Neutral Frame Program V1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-NEUTRAL-FRAME-PROGRAM-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_RENDERER_NEUTRAL_FRAME_PROGRAM_NOT_RENDERER_INPUT"
+    },
+    "contract_identity": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "C11-D-RENDERER-NEUTRAL-FRAME-PROGRAM-CONTRACT-V1"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_composition_contract_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_composition_schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "schema",
+        "schema_version",
+        "sha256",
+        "output_schema_sha256",
+        "logical_composition_contract_sha256",
+        "logical_composition_schema_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "implementation_identity": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "const": "tools/c11d/d9/d_renderer_frame_program.py"
+        },
+        "version": {
+          "const": "0.1.0-preparation"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "module",
+        "version",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "source_identity": {
+      "type": "object",
+      "properties": {
+        "request_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "editorial_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "plan_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bridge_record_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "adapter_envelope_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "binding_preview_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_composition_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "request_hash",
+        "editorial_hash",
+        "plan_hash",
+        "bridge_record_hash",
+        "adapter_envelope_hash",
+        "binding_preview_sha256",
+        "logical_composition_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "content_identity": {
+      "type": "object",
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "family_id": {
+          "type": "string"
+        },
+        "subtype_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_scope_id": {
+          "type": "string"
+        },
+        "difficulty_tier": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "content_type",
+        "family_id",
+        "subtype_id",
+        "variant_id",
+        "variant_scope_id",
+        "difficulty_tier"
+      ],
+      "additionalProperties": false
+    },
+    "canvas_descriptor": {
+      "type": "object",
+      "properties": {
+        "delivery_profile_requested_id": {
+          "type": "string"
+        },
+        "delivery_profile_resolved_id": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "aspect_ratio": {
+          "type": "string"
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "pixel_format": {
+          "type": "string"
+        },
+        "descriptor_semantics": {
+          "const": "DELIVERY_METADATA_ONLY_NOT_RENDER_AUTHORIZATION"
+        },
+        "pixel_coordinates_emitted": {
+          "const": false
+        }
+      },
+      "required": [
+        "delivery_profile_requested_id",
+        "delivery_profile_resolved_id",
+        "width",
+        "height",
+        "aspect_ratio",
+        "fps",
+        "pixel_format",
+        "descriptor_semantics",
+        "pixel_coordinates_emitted"
+      ],
+      "additionalProperties": false
+    },
+    "localization": {
+      "type": "object",
+      "properties": {
+        "locale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_field": {
+          "const": "language"
+        },
+        "source_value_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "locale",
+        "source_field",
+        "source_value_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "region_declarations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "enum": [
+              "HEADER",
+              "FOOTER",
+              "CHALLENGE_OVERLAY"
+            ]
+          },
+          "semantic_scope": {
+            "type": "string"
+          },
+          "mapping_state": {
+            "const": "PROPOSED_NOT_APPROVED"
+          },
+          "geometry_state": {
+            "const": "UNRESOLVED_NO_COORDINATES"
+          }
+        },
+        "required": [
+          "region_id",
+          "semantic_scope",
+          "mapping_state",
+          "geometry_state"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "instructions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "instruction_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "instruction_type": {
+            "const": "DECLARE_SEMANTIC_TEXT_BINDING"
+          },
+          "element_id": {
+            "type": "string"
+          },
+          "semantic_role": {
+            "type": "string"
+          },
+          "source_field": {
+            "type": "string",
+            "enum": [
+              "title",
+              "subtitle",
+              "call_to_action",
+              "player_name",
+              "challenge_label"
+            ]
+          },
+          "region_id": {
+            "type": "string",
+            "enum": [
+              "HEADER",
+              "FOOTER",
+              "CHALLENGE_OVERLAY"
+            ]
+          },
+          "z_order": {
+            "type": "integer"
+          },
+          "text_value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content_binding": {
+            "const": "DIRECT_CANONICAL_EDITORIAL_VALUE"
+          },
+          "target_mapping_state": {
+            "const": "PROPOSED_NOT_APPROVED"
+          },
+          "layout_binding_state": {
+            "const": "UNRESOLVED_NO_COORDINATES"
+          },
+          "temporal_binding_state": {
+            "const": "NOT_SCHEDULED_NO_FRAME_RANGE"
+          }
+        },
+        "required": [
+          "instruction_index",
+          "instruction_type",
+          "element_id",
+          "semantic_role",
+          "source_field",
+          "region_id",
+          "z_order",
+          "text_value",
+          "text_sha256",
+          "language",
+          "content_binding",
+          "target_mapping_state",
+          "layout_binding_state",
+          "temporal_binding_state"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 5
+    },
+    "temporal_model": {
+      "type": "object",
+      "properties": {
+        "schedule_state": {
+          "const": "NOT_DEFINED"
+        },
+        "frame_ranges_defined": {
+          "const": false
+        },
+        "frame_ranges": {
+          "type": "null"
+        },
+        "duration_frames": {
+          "type": "null"
+        },
+        "timing_source": {
+          "const": "NOT_PROVIDED_BY_LOGICAL_COMPOSITION"
+        }
+      },
+      "required": [
+        "schedule_state",
+        "frame_ranges_defined",
+        "frame_ranges",
+        "duration_frames",
+        "timing_source"
+      ],
+      "additionalProperties": false
+    },
+    "seed_isolation": {
+      "type": "object",
+      "properties": {
+        "gameplay_seed_source": {
+          "type": "string"
+        },
+        "gameplay_seed_domain": {
+          "const": "GAMEPLAY"
+        },
+        "music_seed_source": {
+          "type": "string"
+        },
+        "music_seed_domain": {
+          "const": "MUSIC"
+        },
+        "cross_domain_seed_sharing": {
+          "const": "FORBIDDEN"
+        },
+        "visual_instructions_seed_derived": {
+          "const": false
+        },
+        "audio_rendered": {
+          "const": false
+        }
+      },
+      "required": [
+        "gameplay_seed_source",
+        "gameplay_seed_domain",
+        "music_seed_source",
+        "music_seed_domain",
+        "cross_domain_seed_sharing",
+        "visual_instructions_seed_derived",
+        "audio_rendered"
+      ],
+      "additionalProperties": false
+    },
+    "truth_and_telemetry": {
+      "type": "object",
+      "properties": {
+        "simulation_truth": {
+          "const": "NOT_BOUND"
+        },
+        "derived_telemetry": {
+          "const": "NOT_BOUND"
+        }
+      },
+      "required": [
+        "simulation_truth",
+        "derived_telemetry"
+      ],
+      "additionalProperties": false
+    },
+    "execution_boundary": {
+      "type": "object",
+      "properties": {
+        "program_mode": {
+          "const": "IN_MEMORY_DECLARATIVE_REVIEW_ONLY"
+        },
+        "program_executable": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "frame_schedule_defined": {
+          "const": false
+        },
+        "pixel_coordinates_emitted": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      },
+      "required": [
+        "program_mode",
+        "program_executable",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "frame_schedule_defined",
+        "pixel_coordinates_emitted",
+        "d4_8",
+        "release_authority",
+        "c11c_source_mutation"
+      ],
+      "additionalProperties": false
+    },
+    "program_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_identity",
+    "implementation_identity",
+    "source_identity",
+    "content_identity",
+    "canvas_descriptor",
+    "localization",
+    "region_declarations",
+    "instructions",
+    "temporal_model",
+    "seed_isolation",
+    "truth_and_telemetry",
+    "execution_boundary",
+    "program_sha256"
+  ],
+  "additionalProperties": false
+}

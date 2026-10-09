@@ -1,10 +1,10 @@
-# CURRENT START INSTRUCTION — D renderer logical composition (2026-10-10)
+# CURRENT START INSTRUCTION — Renderer-neutral frame program candidate (2026-10-10)
 
-Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. D9.15 is canonically PASS/CLOSED (13/13) and is consumed by D9.16 and candidate preflight. The current binding-preview increment is operator-confirmed on Windows; the latest supplied run kept candidate blockers at 5, `freeze_eligible=false`, and Suite PASS 22/22.
+Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. D9.15 is canonically PASS/CLOSED (13/13) and consumed by D9.16 and candidate preflight. Windows accepted the D renderer logical-composition increment: 3/3 content types, deterministic 3/3, editorial flow 3/3, negatives 17/17, structural schema 3/3. The Windows environment lacks optional `jsonschema`; full schema-library validation passed 3/3 in preparation. Existing bridge, lifecycle, candidate and Suite runs also pass; candidate remains at five blockers, `freeze_eligible=false`, aggregate stays 22/22.
 
-The next incremental overlay `C11D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_OVERLAY_V1.zip` adds a strict schema and in-memory semantic composition plan. Its current preparation-copy checks report `content_types=3/3`, `deterministic=3/3`, `editorial_flow=3/3`, `negative=17/17`, and `schema=3/3`. These are not yet Windows results. Verify the ZIP SHA before extraction, verify the immutable C11-C manifest immediately afterward, and run the new focused test followed by existing tests. The new test is intentionally not added to the 22-step aggregate yet.
+The next overlay `C11D_RENDERER_NEUTRAL_FRAME_PROGRAM_OVERLAY_V1.zip` adds a renderer-neutral declaration plan derived from logical composition. Verify the supplied ZIP SHA-256, extract it, and immediately verify the immutable C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Then run the sequence in `D_RENDERER_NEUTRAL_FRAME_PROGRAM_CHECKPOINT_V1.md`. The new focused test must be Windows-accepted before any suite registration.
 
-This output is semantic review data, not a renderer input. No image/video/audio is created; no renderer is called; field targets remain proposed, unapproved. Do not change D9.10 `PREPARE_ONLY`, dispatch locks or approval policy. The candidate remains non-freeze-eligible; D4.8 BLOCKED; renderer OFF; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The definitive GUI remains deferred.
+The plan is in-memory and non-executable: no renderer-native input, dispatch, frame schedule, pixel coordinates, media or renderer activation. Region/field mappings remain `PROPOSED_NOT_APPROVED`. Preserve `PREPARE_ONLY`, D4.8 BLOCKED, renderer OFF, `release_authority=NONE`, D9 OPEN and D10 BLOCKED. Do not approve/freeze the renderer baseline or start the definitive GUI.
 
 ---
 

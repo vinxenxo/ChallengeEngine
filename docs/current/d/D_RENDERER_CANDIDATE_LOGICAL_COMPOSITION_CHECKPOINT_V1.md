@@ -39,9 +39,9 @@ C11-D D9.10 EDITORIAL-RENDER BRIDGE PLANNING PASS | content_types=3/3 | CLI brid
 Python compilation: PASS
 ```
 
-The schema was structurally checked for all three plans; full JSON Schema validation used `jsonschema` 4.26.0 in the preparation environment. On Windows, the focused test still performs structural schema checks if the optional `jsonschema` package is absent and reports that fact explicitly. These are preparation-workspace results, **not** claims that the new logical-composition test has been run on the operator's Windows checkout.
+Windows operator verification is now confirmed: `test_d_renderer_logical_composition.py` PASS with content types 3/3, determinism 3/3, editorial flow 3/3, negatives 17/17 and structural schema 3/3. The operator environment reports `jsonschema=NOT_INSTALLED`, so it performed the strict structural checks but did not claim full JSON Schema library validation. In the preparation environment, `jsonschema` validation passed 3/3.
 
-The reconstructed preparation copy lacks the active Windows D9.11 quarantine-ledger event; its broad D9.13 lifecycle test consequently stops at the existing maintenance read-only guard. Do not weaken that guard. The operator previously confirmed D9.13 lifecycle PASS on the active Windows checkout. Re-run the Windows sequence below against the active repository to validate this incremental change in context.
+The operator then confirmed the full Windows sequence: binding-preview PASS (3/3; 13/13 negatives), D9.10 bridge PASS (3/3; parity 3/3; adapter 3/3; negatives 15/15 and 9/9), D9.13 lifecycle PASS (3/3 content, 5/5 stages, negatives 14/14, parity regression 4/4), candidate preflight PASS with D9.15 `PASS_CLOSED` and five blockers, and aggregate Suite PASS 22/22. The reconstructed preparation copy can still lack the live D9.11 quarantine-ledger event; do not weaken that guard to make a clean archive mimic the operator checkout.
 
 ## Windows verification
 
@@ -65,4 +65,4 @@ Expected new focused result: content types 3/3; determinism 3/3; editorial flow 
 - `renderer_input_emitted=false`; `renderer_dispatch_invoked=false`; `renderer_activation=false`; `production_execution=false`; `media_output_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`.
 - This checkpoint does not approve/freeze the D renderer baseline and does not unblock D9.14/D9.16/D9.17. Definitive GUI work remains deferred.
 
-After Windows acceptance, the next design review should decide whether to approve the semantic roles/layout targets and then define a separate renderer-neutral frame-program contract. Do not implement a backend, emit native renderer input, create media, or alter gate policies in this increment.
+Windows acceptance is recorded for logical composition. The next separate increment proposes `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1`; it carries ordered semantic binding declarations only, with no timing schedule, pixel coordinates or executable commands. Semantic roles/regions remain unapproved until independent technical review. Do not implement a backend, emit native renderer input, create media, or alter gate policies in that increment.

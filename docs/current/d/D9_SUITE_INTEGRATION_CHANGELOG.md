@@ -177,3 +177,12 @@ Windows confirmation after the checkpoint-consumption overlay:
 - Aggregate Suite PASS 22/22.
 
 The prior D9.15 candidate-only waiver is superseded for live operational status by the canonical checkpoint. No renderer, production, media, freeze or release authority was granted. The next approved engineering activity is preparation and static verification of a separately versioned D-owned renderer baseline candidate, per `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`; real-media D9.14 remains forbidden until independent renderer-baseline approval and explicit D4.8 governance authorization exist.
+
+
+## 2026-10-10 — Renderer-neutral frame program candidate V1 (preparation)
+
+- Added `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1` contract/schema and an in-memory builder that projects the accepted logical composition into ordered semantic text-binding declarations.
+- The candidate preserves direct editorial values and hash lineage; region mappings remain `PROPOSED_NOT_APPROVED`; no frame schedule, pixel coordinates, transitions, output path or executable renderer command is emitted.
+- Preparation workspace focused verification: content types 3/3, determinism 3/3, editorial flow 3/3, negative 19/19, schema 3/3, full JSON Schema 3/3; Python compile PASS. Windows verification of this increment is pending.
+- The prior logical-composition increment is now operator-confirmed Windows PASS (content 3/3, determinism 3/3, editorial flow 3/3, negative 17/17, structural schema 3/3; optional `jsonschema` absent on Windows). Existing aggregate remains 22/22; frame program is not yet registered there.
+- C11-C/manifest unchanged; adapter `PREPARE_ONLY`; renderer OFF; no media; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
