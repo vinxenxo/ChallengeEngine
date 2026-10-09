@@ -36,7 +36,7 @@ Observed in the preparation workspace:
 C11-D RENDERER-NEUTRAL FRAME PROGRAM PASS | content_types=3/3 | deterministic=3/3 | editorial_flow=3/3 | negative=19/19 | schema=3/3 | jsonschema=3/3 | renderer_input=NOT_EMITTED | frame_schedule=NOT_DEFINED | pixel_coordinates=NOT_EMITTED | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE
 ```
 
-Python compilation passes. The Draft 2020-12 schema validates all three fixtures in that environment. These are preparation-workspace results; Windows verification of this new increment remains required.
+Python compilation passes. The Draft 2020-12 schema validates all three fixtures in that environment. Windows operator verification is now confirmed: content types 3/3, deterministic 3/3, editorial flow 3/3, negative 19/19 and schema 3/3. The operator environment reported `jsonschema=NOT_INSTALLED`; strict structural checks passed, but full library-backed Draft 2020-12 validation was not claimed on Windows. The parent logical-composition, binding preview, bridge, D9.13 lifecycle, candidate preflight and aggregate Suite were also confirmed PASS by the operator.
 
 ## Windows verification
 
@@ -69,4 +69,4 @@ The new focused test is not registered in the 22-step aggregate Suite. Keep it s
 
 ## Next design review
 
-After Windows acceptance, review the semantic role/region vocabulary independently. Only after that review may a subsequent increment propose a temporal schedule contract. Do not implement an image/video backend or dispatch adapter in this step.
+After Windows acceptance, the next increment is the D-owned semantic region proposal in `D_RENDERER_SEMANTIC_REGION_PROPOSAL_CHECKPOINT_V1.md`. Its geometry is normalized and remains PROPOSED_NOT_APPROVED. Only after independent review/approval may a subsequent increment propose temporal scheduling. A real-video run remains gated on separate renderer-baseline approval/freeze and explicit D4.8 authorization.

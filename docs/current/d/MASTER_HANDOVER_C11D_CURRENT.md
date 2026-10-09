@@ -252,3 +252,12 @@ This section supersedes older statements above that describe the Qt runtime as n
 - **Windows re-acceptance remains pending.** Do not claim runtime 3/3, combined acceptance 7/7 or aggregate 22/22 until the fresh runs report those results. Run the complete lifecycle test and the required commands in `docs/current/d/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` on the active Windows checkout. The clean archive copy lacks runtime-only D9.11 ledger/quarantine evidence, so its complete lifecycle test stops later at the existing maintenance guard; that guard was not weakened.
 - Immutable boundaries remain: C11-C 2.19.12 and manifest SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; adapter `PREPARE_ONLY`; D4.8 `BLOCKED`; renderer OFF; no Qt-test media; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The definitive GUI remains deferred until the full D baseline is accepted and frozen.
 - Incident record: `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_PARITY_SCHEMA_FIX_20261009.md`.
+
+## 2026-10-10 — Renderer-neutral frame program accepted; semantic region proposal next
+
+Operator-confirmed Windows results for `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1`: focused PASS, content types 3/3, determinism 3/3, editorial flow 3/3, negative 19/19, structural schema 3/3. Windows reports `jsonschema=NOT_INSTALLED`, so no claim of library-backed Draft 2020-12 validation is made for that run. Logical composition, binding preview, D9.10 bridge, D9.13 lifecycle, candidate preflight and C11-C Suite 22/22 all passed.
+
+Next candidate increment: `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1`, a pure in-memory D-owned proposal for normalized-permille bounds of HEADER, CONTENT_STAGE, CHALLENGE_OVERLAY and FOOTER. All mappings/bounds remain `PROPOSED_NOT_APPROVED`; no pixel coordinates, frame schedule, renderer-native input, output path or media are emitted. Windows test is pending. Review checkpoint: `docs/current/d/D_RENDERER_SEMANTIC_REGION_PROPOSAL_CHECKPOINT_V1.md`.
+
+Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run is not yet authorized: a separately approved/frozen D renderer baseline and explicit D4.8 governance authorization are required. C11-C 2.19.12/manifest immutable; adapter PREPARE_ONLY; renderer OFF; media false; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
+

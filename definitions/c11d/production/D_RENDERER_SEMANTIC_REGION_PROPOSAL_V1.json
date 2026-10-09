@@ -1,0 +1,143 @@
+{
+  "schema": "C11-D-RENDERER-SEMANTIC-REGION-PROPOSAL-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+  "purpose": "Propose D-owned normalized region bounds and semantic field routing for independent review before a temporal schedule or any raster/media implementation.",
+  "source_contract": {
+    "frame_program_contract": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+    "frame_program_schema": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+    "required_frame_program_status": "PREPARATION_ONLY_RENDERER_NEUTRAL_FRAME_PROGRAM_NOT_RENDERER_INPUT"
+  },
+  "coordinate_model": {
+    "space": "NORMALIZED_PERMILLE",
+    "x_axis_min": 0,
+    "x_axis_max": 1000,
+    "y_axis_min": 0,
+    "y_axis_max": 1000,
+    "meaning": "Review-only normalized bounds relative to the resolved delivery canvas. These are not pixel coordinates and cannot be dispatched.",
+    "canvas_aspect_ratio_source": "RESOLVED_DELIVERY_PROFILE_METADATA_ONLY",
+    "layout_state": "PROPOSED_NOT_APPROVED"
+  },
+  "content_scope": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "unsupported_scope": {
+    "longform": "REJECT_UNTIL_CANONICAL_D_REQUEST_AND_RENDERER_CONTRACT_SUPPORT_IT",
+    "unknown": "FAIL_CLOSED"
+  },
+  "regions": [
+    {
+      "region_id": "HEADER",
+      "semantic_scope": "EDITORIAL_TITLE_AND_SUBTITLE",
+      "mapped_fields": [
+        "title",
+        "subtitle"
+      ],
+      "bounds_permille": {
+        "x": 50,
+        "y": 40,
+        "width": 900,
+        "height": 140
+      },
+      "layer_policy": "ABOVE_CONTENT_STAGE",
+      "overlap_policy": "NO_OVERLAP_WITH_CONTENT_STAGE_OR_FOOTER",
+      "geometry_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "region_id": "CONTENT_STAGE",
+      "semantic_scope": "PRIMARY_CHALLENGE_OR_VISUAL_LOOP_OR_DRILL_CONTENT",
+      "mapped_fields": [],
+      "bounds_permille": {
+        "x": 35,
+        "y": 200,
+        "width": 930,
+        "height": 610
+      },
+      "layer_policy": "PRIMARY_VISUAL_STAGE",
+      "overlap_policy": "CHALLENGE_OVERLAY_MAY_OVERLAP_CONTENT_STAGE",
+      "geometry_state": "PROPOSED_NOT_APPROVED",
+      "payload_contract": "NOT_DEFINED_NOT_BOUND"
+    },
+    {
+      "region_id": "CHALLENGE_OVERLAY",
+      "semantic_scope": "CHALLENGE_SPECIFIC_EDITORIAL_LABELS",
+      "mapped_fields": [
+        "player_name",
+        "challenge_label"
+      ],
+      "bounds_permille": {
+        "x": 70,
+        "y": 705,
+        "width": 860,
+        "height": 85
+      },
+      "layer_policy": "OVERLAY_ABOVE_CONTENT_STAGE",
+      "overlap_policy": "INTENTIONAL_CONTAINED_OVERLAP_WITH_CONTENT_STAGE",
+      "geometry_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "region_id": "FOOTER",
+      "semantic_scope": "EDITORIAL_CALL_TO_ACTION",
+      "mapped_fields": [
+        "call_to_action"
+      ],
+      "bounds_permille": {
+        "x": 50,
+        "y": 850,
+        "width": 900,
+        "height": 100
+      },
+      "layer_policy": "BELOW_CONTENT_STAGE",
+      "overlap_policy": "NO_OVERLAP_WITH_HEADER_OR_CONTENT_STAGE",
+      "geometry_state": "PROPOSED_NOT_APPROVED"
+    }
+  ],
+  "field_targets": {
+    "title": "HEADER",
+    "subtitle": "HEADER",
+    "player_name": "CHALLENGE_OVERLAY",
+    "challenge_label": "CHALLENGE_OVERLAY",
+    "call_to_action": "FOOTER"
+  },
+  "review_rules": {
+    "region_order": [
+      "HEADER",
+      "CONTENT_STAGE",
+      "CHALLENGE_OVERLAY",
+      "FOOTER"
+    ],
+    "visual_payload": "CONTENT_STAGE is an unresolved placeholder. Do not bind SimulationResult, winning_frame, close_calls or derived telemetry in this proposal.",
+    "frame_timing": "NOT_DEFINED; no start/end frame, duration, transitions or animation curve is emitted.",
+    "render_integration": "PROPOSAL_ONLY; not renderer-native input and not dispatchable.",
+    "approval": "No local test, hash or self-attestation may change PROPOSED_NOT_APPROVED to APPROVED.",
+    "determinism": "Bounds and field target mapping are fixed by this contract; output hash is canonical JSON SHA-256."
+  },
+  "required_locks": {
+    "source_adapter_mode": "PREPARE_ONLY",
+    "region_layout_approved": false,
+    "pixel_coordinates_emitted": false,
+    "frame_schedule_defined": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  },
+  "approval_state": {
+    "semantic_region_mapping_approved": false,
+    "temporal_schedule_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "release_authority": "NONE"
+  }
+}

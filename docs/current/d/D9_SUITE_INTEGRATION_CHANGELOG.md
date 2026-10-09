@@ -186,3 +186,11 @@ The prior D9.15 candidate-only waiver is superseded for live operational status 
 - Preparation workspace focused verification: content types 3/3, determinism 3/3, editorial flow 3/3, negative 19/19, schema 3/3, full JSON Schema 3/3; Python compile PASS. Windows verification of this increment is pending.
 - The prior logical-composition increment is now operator-confirmed Windows PASS (content 3/3, determinism 3/3, editorial flow 3/3, negative 17/17, structural schema 3/3; optional `jsonschema` absent on Windows). Existing aggregate remains 22/22; frame program is not yet registered there.
 - C11-C/manifest unchanged; adapter `PREPARE_ONLY`; renderer OFF; no media; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
+
+
+## D Renderer Semantic Region Proposal V1 — 2026-10-10
+
+- Operator-confirmed Windows acceptance of the preceding neutral frame program: content types 3/3, determinism 3/3, editorial flow 3/3, negatives 19/19, structural schema 3/3. Windows lacks the optional `jsonschema` library; no full library-backed validation claim is made for that run.
+- Added the strict D-owned `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1` contract/schema and in-memory builder/validator. Proposed normalized-permille bounds cover HEADER, CONTENT_STAGE, CHALLENGE_OVERLAY and FOOTER; all remain `PROPOSED_NOT_APPROVED`. Source lineage to frame program retained.
+- The proposal/test does not define timing, emit pixel coordinates/renderer-native input, dispatch, activate, or produce media. Focused Windows acceptance pending; keep separate from 22-step aggregate until reviewed.
+- Video remains gated: independent renderer-baseline approval/freeze plus explicit D4.8 authorization are required before governed D9.14 real-media execution. C11-C immutable, adapter PREPARE_ONLY, renderer OFF, media false, release authority NONE.

@@ -261,3 +261,12 @@ The `C11-D-BASELINE-CANDIDATE-0.1` evaluator is read-only and must stay `freeze_
 ## Latest operator decision — D9.15 candidate-only waiver (2026-10-09)
 
 The operator declines to capture the 13 D9.15 screenshot/log evidence pairings and asserts that the five GUIs function. Honor `docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json` for candidate readiness only. Candidate status must say `D9.15=WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY`; do not mark canonical D9.15 PASS/CLOSED. Five blockers remain (`D9.14`, `D9.16`, `D9.17`, D renderer approval, D baseline approval); `freeze_eligible=false`, `D4.8=BLOCKED`, renderer/production OFF, `media_created=false`, `release_authority=NONE`. D9.17 is still NO-GO and D10 remains blocked. Do not add or use the optional screenshot recorder overlay.
+
+## 2026-10-10 — Renderer-neutral frame program accepted; semantic region proposal next
+
+Operator-confirmed Windows results for `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1`: focused PASS, content types 3/3, determinism 3/3, editorial flow 3/3, negative 19/19, structural schema 3/3. Windows reports `jsonschema=NOT_INSTALLED`, so no claim of library-backed Draft 2020-12 validation is made for that run. Logical composition, binding preview, D9.10 bridge, D9.13 lifecycle, candidate preflight and C11-C Suite 22/22 all passed.
+
+Next candidate increment: `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1`, a pure in-memory D-owned proposal for normalized-permille bounds of HEADER, CONTENT_STAGE, CHALLENGE_OVERLAY and FOOTER. All mappings/bounds remain `PROPOSED_NOT_APPROVED`; no pixel coordinates, frame schedule, renderer-native input, output path or media are emitted. Windows test is pending. Review checkpoint: `docs/current/d/D_RENDERER_SEMANTIC_REGION_PROPOSAL_CHECKPOINT_V1.md`.
+
+Five candidate blockers remain; `freeze_eligible=false`. A real video/ D9.14 run is not yet authorized: a separately approved/frozen D renderer baseline and explicit D4.8 governance authorization are required. C11-C 2.19.12/manifest immutable; adapter PREPARE_ONLY; renderer OFF; media false; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED.
+
