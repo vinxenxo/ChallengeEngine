@@ -2,9 +2,9 @@
 
 ## Current state
 
-**D9 is OPEN — second-stage Suite integration.**
+**D9 is OPEN — D9.17 closure adjudication is BLOCKED, not PASS/CLOSED.**
 
-D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9.6 are integrated and Windows-validated. D9.7 is implemented with Windows confirmation still tracked explicitly. D9.8 is PASS/CLOSED as a model/resolver checkpoint. D9.9 is PASS for universal selector coverage and plan-only GUI/CLI adapter parity; the operator confirmed in Windows that the GUI generates plans for every D content type currently implemented. D9.10 is PASS for the bridge-planning contract, CLI record parity, static GUI integration and the operator-confirmed Windows bridge-output tab; physical media and full GUI acceptance remain later gates. D9.11 Maintenance 0.2.0 is PASS/CLOSED: Windows GUI opened successfully; `test_maintenance.py`, Maintenance self-test and full Suite self-test pass after restoring the original immutable C11-C manifest byte-for-byte. D9 remains OPEN and D10 is BLOCKED.
+The operator confirmed in Windows that D9.16's no-media preflight route opens and executes, Config validates 27/27 contracts, Test validates 25/25 D routes and the 20/20 aggregate ends in `D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED PASS`. This is successful verification of the fail-closed gate, not full D9 acceptance. D9.14 remains blocked pending a separately authorized future D frozen renderer baseline and explicit D4.8 governance approval; D9.15 still requires a consolidated operator evidence matrix for all five GUIs. D9.17 therefore records a formal no-go decision: do not claim D9 closed. D10 remains BLOCKED.
 
 ## Milestone status
 
@@ -36,10 +36,10 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
 | D9.12 | Test 0.2.0 | PASS / Windows GUI opened and D9.14 gate route executed successfully |
 | D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
-| D9.14 | Real GUI production certification | BLOCKED gate confirmed visible/executable in Producer and Test GUIs; REAL-MEDIA remains BLOCKED pending authorized future D baseline + explicit D4.8 |
-| D9.15 | GUI operational acceptance | PREFLIGHT PASS (8 capabilities / 5 surfaces); Windows operator evidence across all five surfaces REQUIRED |
-| D9.16 | Full D9 acceptance | PREPARED-PACKAGE PREFLIGHT PASS / FULL ACCEPTANCE BLOCKED AS REQUIRED; Windows validation pending |
-| D9.17 | D9 final closure | BLOCKED until all above PASS |
+| D9.14 | Real GUI production certification | FAIL-CLOSED GATE PASS / REAL-MEDIA BLOCKED pending authorized future D baseline + explicit D4.8 |
+| D9.15 | GUI operational acceptance | PREFLIGHT PASS (8 capabilities / 5 surfaces); consolidated capability-level GUI evidence across all five surfaces REQUIRED |
+| D9.16 | Full D9 acceptance | WINDOWS PREFLIGHT + 20/20 AGGREGATE PASS / FULL ACCEPTANCE BLOCKED AS REQUIRED |
+| D9.17 | D9 final closure adjudication | BLOCKED / D9 REMAINS OPEN: real-media gate + D9.15 evidence matrix unmet |
 | D10 | New mechanics | BLOCKED |
 
 ## Suite update requirement
@@ -82,3 +82,16 @@ The real-media GUI certification gate is integrated into the existing Producer a
 ## D9.16 package verification (2026-10-09)
 
 The prepared D9.16 overlay passes in the packaging workspace: focused preflight `static_checks=5/5`, `evidence_routes=9/9`, `negative=21/21`, `full_acceptance=BLOCKED_AS_REQUIRED`; Config validates 27/27 contracts; Test validates 25/25 D routes and 55 total GUI routes; the 20/20 aggregate self-test passes. These are package-side results, not yet operator-confirmed Windows results for D9.16. The operator has confirmed that Producer and Test GUIs display/run the D9.14 gate. This is not full D9 acceptance: all-five-surface D9.15 operator evidence and authorized real-media production evidence remain blockers.
+
+
+## D9.17 closure adjudication (2026-10-09)
+
+**Disposition: NO-GO for D9 closure.** Operator Windows output confirms D9.16 preflight `static_checks=5/5`, `evidence_routes=9/9`, `negative=21/21`; Config `registries=27/27`; Test `D routes=25/25`, `all_gui_routes=55`; all 20 steps of `c11c-suite/self_test.py`; and successful execution of the D9.16 route in the Test GUI with exit code 0. The expected state remains `full_acceptance=BLOCKED_AS_REQUIRED`.
+
+Remaining closure prerequisites:
+
+1. **D9.14:** the real-media certification gate must remain blocked until a separately approved future D frozen renderer baseline and explicit D4.8 governance checkpoint exist. No media was created by D9.14/D9.16.
+2. **D9.15:** record the required action/status/log or screenshot evidence for all eight operational capabilities across Config, Producer, Test, Catalog and Maintenance. Existing point-in-time GUI confirmations and contract tests are not a substitute for this consolidated evidence packet.
+3. **D9.16:** rerun full acceptance after the above evidence/prerequisites become eligible. Its current PASS means only that the gate fails closed correctly.
+
+Until all three conditions are met, `D9=OPEN`, `D9.17=BLOCKED`, `D10=BLOCKED`, `D4.8=BLOCKED`, `renderer_activation=false`, `media_created=false`, `release_authority=NONE`. C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable.

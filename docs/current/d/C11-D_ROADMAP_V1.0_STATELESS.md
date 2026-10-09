@@ -1,6 +1,6 @@
 # Challenge Engine V1.0 STATELESS — C11-D Roadmap
 
-**Current phase: D9 — Suite integration/evolution, second stage. D9.4 is a closed media checkpoint; D9 remains OPEN until the canonical C11C Suite surfaces expose and certify the D branch end-to-end. D10 is BLOCKED.**
+**Current phase: D9.17 — closure adjudication. D9 remains OPEN: D9.14 real-media certification is BLOCKED by governance/baseline prerequisites, and D9.15 still requires a recorded five-surface GUI evidence matrix. D9.16's preflight is verified PASS in Windows but explicitly reports full acceptance BLOCKED. D10 remains BLOCKED.**
 
 ## Governing baseline
 
@@ -188,9 +188,14 @@ This is not D9.16 closure. Full acceptance still requires (1) authorized real-me
 
 Run `python .\tools\c11d\d9\test_full_acceptance.py`, then the entire `python -u .\c11c-suite\self_test.py`. The preflight itself should report `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`; the aggregate suite PASS proves only that all gates correctly behave, not that physical real-media acceptance occurred.
 
-### D9.17 — D9 CLOSED
+### D9.17 — D9 closure adjudication (2026-10-09)
 
-Only when D9.8–D9.16 are genuinely accepted, including real-media GUI evidence and five-surface operator acceptance. D10 remains BLOCKED until D9.17 closes.
+**Decision: BLOCKED — D9 remains OPEN. D9.17 has not achieved PASS/CLOSED.** The Windows-confirmed D9.16 preflight and 20/20 aggregate prove that the acceptance gates behave correctly; they do not satisfy the required acceptance payload. Two closure prerequisites remain unsatisfied:
+
+1. **D9.14 real-media GUI certification:** the fail-closed gate is visible and executable in Producer and Test, but no authorized future D frozen renderer baseline exists, `D4.8=BLOCKED`, no D9.14 media evidence has been produced by the universal GUI, and `release_authority=NONE`. Do not route around this through the frozen C11-C renderer or legacy scripts. A separately approved D baseline and explicit governance checkpoint are required before real-media E2E can even be attempted.
+2. **D9.15 operational evidence:** the preflight passes for 8 capabilities and 5 surfaces, but an evidence packet/log ledger showing operator actions and outcomes for Config, Producer, Test, Catalog and Maintenance has not been recorded as required. Individual GUI bring-ups and focused checks do not substitute for the complete capability-level evidence matrix.
+
+D9.17 may be reconsidered only after both prerequisites are satisfied and D9.16 is rerun with complete evidence. Until then: `D9=OPEN`, `D9.17=BLOCKED`, `D10=BLOCKED`, `renderer_activation=false`, `media_created=false`, and `release_authority=NONE`. C11-C 2.19.12 and its historical freeze manifest remain immutable.
 
 ## Suite version/update plan
 
@@ -201,7 +206,7 @@ Only when D9.8–D9.16 are genuinely accepted, including real-media GUI evidence
 | `c11c-catalog` | 0.2.0 | 0.2.x | product identity → provenance → reproduction |
 | `c11c-config` | 0.2.0 | 0.2.x | profiles → validation → save/restore → protected roots |
 | `c11c-maintenance` | 0.2.0 PASS/CLOSED; operator-confirmed Windows GUI and focused/regression tests passed | 0.2.0 | dry-run → reversible allowlist archive/quarantine → doc/freeze preflight |
-| `c11c-test` | 0.2.0 implemented; D9.14/D9.15/D9.16 preflight routes integrated; Windows Test GUI and D9.14 gate execution confirmed | 0.2.0 | D2–D9 registration + full-acceptance preflight; real-media evidence remains blocked |
+| `c11c-test` | 0.2.0 implemented; D9.14/D9.15/D9.16 routes integrated; Windows D9.14 gate and D9.16 preflight confirmed | 0.2.0 | D2–D9 registration + full-acceptance preflight; real-media evidence remains blocked |
 
 Versions labelled “next target” are planning targets, not claims of current release.
 
