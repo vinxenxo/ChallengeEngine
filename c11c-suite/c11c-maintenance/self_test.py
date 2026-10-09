@@ -9,6 +9,7 @@ checks = [
     (ROOT / "c11c-suite" / "c11c-maintenance" / "test_root_organization_contract.py", "C11C_ROOT_ORGANIZATION_CONTRACT PASS"),
     (ROOT / "tools" / "c11d" / "d9" / "test_maintenance.py", "C11-D D9.11 MAINTENANCE PASS"),
     (ROOT / "c11c-suite" / "c11c-maintenance" / "test_d9_maintenance_contract.py", "C11C_MAINTENANCE_GUI_CONTRACT PASS"),
+    (ROOT / "c11c-suite" / "c11c-maintenance" / "test_d913_lifecycle_audit_contract.py", "C11C_MAINTENANCE_D9_13_AUDIT_CONTRACT PASS"),
 ]
 for script, token in checks:
     result = subprocess.run([sys.executable, str(script)], cwd=str(ROOT), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)

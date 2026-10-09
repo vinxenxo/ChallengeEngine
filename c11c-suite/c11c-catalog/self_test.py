@@ -1,5 +1,5 @@
 from __future__ import annotations
-import hashlib, json, tempfile
+import hashlib, json, tempfile, subprocess
 from pathlib import Path
 import sys
 HERE=Path(__file__).resolve().parent
@@ -98,3 +98,8 @@ def run_checks():
 if __name__=='__main__':
     counts=run_checks()
     print('C11-D D9.6 Catalog integration PASS | intents={canonical_intents}/90 | pilot_media={pilot_media}/5 | producer_plans={producer_plans}/1 | negative_controls={negative_controls}/5'.format(**counts))
+
+# D9.13: keep lifecycle Catalog projection receipt-validated and non-authoritative.
+_contract = subprocess.run([sys.executable, str(HERE.parents[1] / "c11c-suite" / "c11c-catalog" / "test_d913_lifecycle_projection.py")], cwd=str(HERE.parents[1]), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+assert _contract.returncode == 0, _contract.stdout + "\n" + _contract.stderr
+assert "C11C_CATALOG_D9_13_PROJECTION PASS" in _contract.stdout

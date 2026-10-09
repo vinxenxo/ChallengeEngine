@@ -141,11 +141,13 @@ Register D2–D9 contracts and GUI integration tests without duplicating the can
 
 ### D9.13 — Cross-suite lifecycle
 
-Prove the same production intent survives:
+Implementation status: **BACKEND/STATIC PASS — canonical receipt builder/validator, five-surface lifecycle test and aggregated regression PASS; Windows GUI receipt/audit confirmation remains an operator check.**
+
+The shared `tools/c11d/d9/cross_suite_lifecycle.py` adapter proves that the same production intent survives:
 
 `Config → Producer → Test/QA → Catalog → Maintenance`
 
-with a single identity/provenance chain and no suite-specific reinterpretation of seeds, profiles or editorial payload.
+with one SHA-256 sealed `lifecycle_id`, `identity_sha256` and `binding_sha256`, and no suite-specific reinterpretation of seeds, profiles or editorial payload. The test replays the persisted request/plan/bridge through canonical backends, checks separate CLI-process parity for Challenge/Loop/Drill, validates Catalog's non-authoritative intent projection, and runs Maintenance's read-only audit. It covers 12 negative cases. Longform remains unsupported; no media or release artifact is created.
 
 ### D9.14 — Real GUI production certification
 

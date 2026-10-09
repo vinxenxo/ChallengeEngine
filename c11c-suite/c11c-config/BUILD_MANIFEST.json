@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-config",
   "version": "0.2.0",
-  "branch": "C11-D D9.7–D9.11",
+  "branch": "C11-D D9.7–D9.13",
   "entrypoint": "c11c-suite/c11c-config/main.py",
   "modules": [
     "c11c-suite/c11c-config/c11d_config.py"
@@ -21,7 +21,8 @@
     "D9 acceptance",
     "D9 universal editorial model (declarative; no renderer/production authority)",
     "D9.10 editorial-render bridge planning contract (read-only; renderer/production inactive)",
-    "D9.11 maintenance policy (read-only registry; allowlisted reversible maintenance only)"
+    "D9.11 maintenance policy (read-only registry; allowlisted reversible maintenance only)",
+    "D9.13 cross-suite lifecycle identity binding (read-only; five surfaces; plan-only; no renderer/media/release authority)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -61,5 +62,7 @@
   "editorial_render_bridge_contract": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
   "editorial_render_bridge_contract_access": "READ_ONLY_CANONICAL",
   "maintenance_policy": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
-  "maintenance_policy_access": "READ_ONLY_CANONICAL"
+  "maintenance_policy_access": "READ_ONLY_CANONICAL",
+  "cross_suite_lifecycle_contract": "definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json",
+  "cross_suite_lifecycle_contract_access": "READ_ONLY_CANONICAL"
 }

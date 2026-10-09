@@ -16,6 +16,7 @@ D_REGISTRIES = (
  {'domain':'D9 · EDITORIAL','id':'D9_UNIVERSAL_EDITORIAL_MODEL','path':'definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · BRIDGE PLANNING','id':'D9_EDITORIAL_RENDER_BRIDGE','path':'definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D9 · MAINTENANCE','id':'D9_MAINTENANCE_POLICY','path':'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
+ {'domain':'D9 · CROSS-SUITE LIFECYCLE','id':'D9_CROSS_SUITE_LIFECYCLE','path':'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D4 · GOVERNANCE','id':'D4_ACTIVATION_POLICY','path':'definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D5 · PROVENANCE','id':'D5_LINEAGE_REGISTRY','path':'definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
  {'domain':'D6 · SEEDS','id':'D6_SEED_REGISTRY','path':'definitions/c11d/seeds/C11D_SEED_REGISTRY_V1.json','authority':'READ_ONLY_CANONICAL'},
@@ -141,6 +142,17 @@ def validate_c11d_contracts(project_root: Path) -> tuple[list[dict[str,Any]],lis
     need(bridge.get('unsupported_content_types',{}).get('longform')=='DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM','D9.10 Longform must remain disabled')
     required_bridge_gates={'FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED','RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED','D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION','GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS','CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS'}
     need(required_bridge_gates.issubset(set(bridge.get('future_d_frozen_baseline_gates',[]))),'D9.10 missing mandatory future baseline gates')
+    lifecycle=d.get('D9_CROSS_SUITE_LIFECYCLE',{})
+    need(lifecycle.get('schema')=='C11-D-D9.13-CROSS-SUITE-LIFECYCLE-CONTRACT-V1' and lifecycle.get('checkpoint')=='D9.13','D9.13 cross-suite lifecycle schema/checkpoint mismatch')
+    need(lifecycle.get('status')=='CANONICAL_PLAN_ONLY_LIFECYCLE_CHAIN','D9.13 lifecycle must remain a plan-only chain')
+    expected_pipeline=[('c11c-config','0.2.0'),('c11c-producer','0.11.1'),('c11c-test','0.2.0'),('c11c-catalog','0.2.0'),('c11c-maintenance','0.2.0')]
+    need([(x.get('surface'),x.get('version')) for x in lifecycle.get('pipeline',[]) if isinstance(x,dict)]==expected_pipeline,'D9.13 pipeline must preserve exactly five canonical surfaces/versions')
+    seed_contract=lifecycle.get('seed_contract',{})
+    need(seed_contract.get('master_seed')=='NOT_ADOPTED' and seed_contract.get('gameplay_seed_source')=='canonical_request.seed' and seed_contract.get('music_seed_source')=='canonical_request.music_seed','D9.13 seed sources must remain explicit and independent')
+    need(seed_contract.get('cross_domain_seed_sharing')=='FORBIDDEN' and seed_contract.get('automatic_seed_generation') is False and seed_contract.get('runtime_seed_derivation') is False,'D9.13 must forbid seed sharing, generation and runtime derivation')
+    governance=lifecycle.get('governance',{})
+    need(governance.get('renderer_activation') is False and governance.get('renderer_input_emitted') is False and governance.get('production_execution') is False and governance.get('media_output_created') is False and governance.get('d4_8')=='BLOCKED' and governance.get('release_authority')=='NONE','D9.13 must remain plan-only and non-authoritative')
+    need(lifecycle.get('catalog_projection',{}).get('media_created') is False and lifecycle.get('catalog_projection',{}).get('release_authority')=='NONE','D9.13 Catalog projection must be explicitly no-media/non-release')
     maintenance=d.get('D9_MAINTENANCE_POLICY',{})
     need(maintenance.get('schema')=='C11-D-D9.11-MAINTENANCE-POLICY-V1' and maintenance.get('checkpoint')=='D9.11','D9.11 maintenance policy schema/checkpoint mismatch')
     need(maintenance.get('surface')=='c11c-maintenance' and maintenance.get('version')=='0.2.0','D9.11 must target existing Maintenance 0.2.0')

@@ -81,6 +81,22 @@ def _load_universal_producer_module():
 
 D9_UNIVERSAL = _load_universal_producer_module()
 from editorial_render_bridge import build_bridge_planning_record as build_d9_bridge_planning_record
+
+
+def _load_d913_lifecycle_module():
+    module_path = PROJECT / "tools" / "c11d" / "d9" / "cross_suite_lifecycle.py"
+    if str(module_path.parent) not in sys.path:
+        sys.path.insert(0, str(module_path.parent))
+    spec = importlib.util.spec_from_file_location("c11d_d913_cross_suite_lifecycle", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load D9.13 lifecycle adapter: {module_path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+D9_LIFECYCLE = _load_d913_lifecycle_module()
 D9_EDITORIAL_CATALOG = D9_UNIVERSAL.build_catalog(PROJECT)
 D9_EDITORIAL_MODEL = D9_UNIVERSAL.load_model(PROJECT)
 
@@ -789,7 +805,8 @@ class MainWindow(QMainWindow):
         self.d9_plan_view = QPlainTextEdit()
         self.d9_parity_view = QPlainTextEdit()
         self.d9_bridge_view = QPlainTextEdit()
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_parity_view):
+        self.d9_lifecycle_view = QPlainTextEdit()
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_lifecycle_view, self.d9_parity_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
@@ -797,6 +814,7 @@ class MainWindow(QMainWindow):
             ("EFFECTIVE EDITORIAL", self.d9_editorial_view),
             ("UNIVERSAL PLAN", self.d9_plan_view),
             ("EDITORIAL → RENDER BRIDGE (PLAN ONLY)", self.d9_bridge_view),
+            ("CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)", self.d9_lifecycle_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
         ):
             self.d9_output_tabs.addTab(view, title)
@@ -1088,17 +1106,21 @@ class MainWindow(QMainWindow):
                 "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
             }
             write_json(run_root / "producer_universal_receipt.json", receipt)
+            lifecycle_receipt = D9_LIFECYCLE.build_lifecycle_receipt(raw_request, PROJECT, run_root)
+            write_json(run_root / "cross_suite_lifecycle_receipt.json", lifecycle_receipt)
+            D9_LIFECYCLE.validate_lifecycle_receipt(lifecycle_receipt, PROJECT, verify_current=True)
             self.d9_request_view.setPlainText(json.dumps(result["canonical_request"], ensure_ascii=False, indent=2))
             self.d9_editorial_view.setPlainText(json.dumps(result["editorial_resolution"], ensure_ascii=False, indent=2))
             self.d9_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
             self.d9_bridge_view.setPlainText(json.dumps(bridge_record, ensure_ascii=False, indent=2))
+            self.d9_lifecycle_view.setPlainText(json.dumps(lifecycle_receipt, ensure_ascii=False, indent=2))
             self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
-            self.d9_evidence_label.setText(f"Evidencia D9.9/D9.10 (renderer OFF): {run_root}")
-            self.d9_output_tabs.setCurrentWidget(self.d9_bridge_view if parity["status"] == "PASS" else self.d9_parity_view)
+            self.d9_evidence_label.setText(f"Evidencia D9.9/D9.10/D9.13 (renderer OFF): {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
+            self.d9_output_tabs.setCurrentWidget(self.d9_lifecycle_view if parity["status"] == "PASS" else self.d9_parity_view)
             if parity["status"] != "PASS":
                 raise AssertionError("D9.9 GUI/CLI request or plan identity mismatch")
             self.statusBar().showMessage(
-                f"D9.9 UNIVERSAL PLAN PASS · {content_type} · GUI/CLI exact · plan={result['plan_hash'][:12]} · renderer OFF"
+                f"D9.13 LIFECYCLE PASS · {content_type} · lifecycle={lifecycle_receipt['lifecycle_id']} · plan-only / renderer OFF"
             )
         except Exception as exc:
             self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")

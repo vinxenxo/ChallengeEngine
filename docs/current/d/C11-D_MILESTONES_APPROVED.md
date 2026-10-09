@@ -34,8 +34,8 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.9 | Producer 0.11.0 universal editorial selectors + canonical plan-only adapter | PASS / static matrix + CLI-process parity; Windows plan generation confirmed by operator |
 | D9.10 | Editorial-to-render bridge planning (Producer 0.11.1) | PASS / 3 content types, CLI record parity 3/3, negatives 15/15; Windows GUI output-tab check confirmed; physical renderer deferred |
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
-| D9.12 | Test 0.2.0 | IMPLEMENTED / static route contract and GUI E2E preflight PASS; Windows Test GUI acceptance pending |
-| D9.13 | Cross-suite lifecycle | PLANNED |
+| D9.12 | Test 0.2.0 | PASS / CLI and aggregate acceptance; Windows GUI bring-up not explicitly confirmed |
+| D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
 | D9.14 | Real GUI production certification | PLANNED |
 | D9.15 | GUI operational acceptance | PLANNED |
 | D9.16 | Full D9 acceptance | PLANNED |

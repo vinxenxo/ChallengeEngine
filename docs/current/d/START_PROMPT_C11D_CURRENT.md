@@ -1,4 +1,4 @@
-# C11-D START PROMPT — D9.12 Test 0.2.0 / D9.13 Cross-Suite Lifecycle
+# C11-D START PROMPT — D9.13 Cross-Suite Lifecycle / D9.14 GUI Certification
 
 Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip` (SHA-256: `526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62`) as the source-of-truth working tree. The D9.8 changes below are a development overlay on that archive; do not treat this overlay as a D9/D branch freeze.
 
@@ -14,7 +14,7 @@ Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngine
 - D9.9 = PASS: universal request/plan, GUI/CLI parity and operator-confirmed Windows plan generation across currently implemented D content types. Producer UTF-8 CLI and Qt scope-handler fixes have been applied and verified by the operator.
 - D9.10 = PASS for bridge contract/planning record, CLI record parity (3/3), static GUI contract and operator-confirmed Windows plan-only bridge-output tab. Producer 0.11.1; physical rendering remains deferred.
 - D9.11 = PASS/CLOSED. Operator confirmed the Windows Maintenance GUI opens; `test_maintenance.py`, Maintenance self-test and full Suite self-test pass after restoring the authentic historical C11-C freeze manifest byte-for-byte (SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`). Canonical backend: `tools/c11d/d9/maintenance.py`.
-- D9.12 = Test 0.2.0 implemented; 21/21 D routes, five-surface topology, 11/11 GUI-E2E plan cases, aggregate D9 negatives and GUI/CLI parity bundles pass statically. Windows Test GUI bring-up is pending. Canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`. D9 remains OPEN; D10 remains BLOCKED.
+- D9.12 = Test 0.2.0 CLI/contract acceptance PASS; route contract 22/22 after D9.13 registration, 52 GUI routes total, 11/11 GUI-E2E preflight, negative and GUI/CLI parity bundles PASS. The operator pasted all CLI acceptance results; GUI `run.bat` bring-up was not explicitly reported. Canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`.
 
 ## Architecture rule — five operational surfaces only
 
@@ -44,7 +44,7 @@ Do not create or register `c11d-control`, `c11c-studio`, or any sixth operationa
 
 ## D9 sequence
 
-D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **implemented/static PASS; Windows Test GUI pending** → D9.13 cross-suite lifecycle → D9.14 real GUI production → D9.15 operational acceptance → D9.16 full acceptance → D9.17 D9 closure.
+D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **CLI/static PASS; GUI bring-up unconfirmed** → D9.13 cross-suite lifecycle **backend/static PASS; Windows GUI confirmation pending** → D9.14 real GUI production → D9.15 operational acceptance → D9.16 full acceptance → D9.17 D9 closure.
 
 ## Baseline reading and inspection order
 
@@ -72,7 +72,7 @@ python .\c11c-suite\c11c-producer\test_d9_producer_integration.py
 python .\c11c-suite\self_test.py
 ```
 
-Current D9.8–D9.12 evidence: 9/9 Challenge IDs; five Loop families/27 concrete grammars; four Drill types/20 variants; D9.8 negatives 25/25; D9.9 selectors and negatives 61/61 + 20/20 with GUI/CLI process parity 3/3; D9.10 bridge record coverage 3/3, CLI parity 3/3 and negatives 15/15. The operator confirmed D9.9 plan generation, D9.10 bridge output, and D9.11 Maintenance GUI in Windows. D9.12 adds D2–D9 Test GUI route registry, a no-media preflight for 11 GUI E2E cases, and aggregate D9 negative/parity runners. The Test GUI itself still requires Windows bring-up. Re-run focused commands after code changes; no renderer/media activation.
+Current D9.8–D9.13 evidence: 9/9 Challenge IDs; five Loop families/27 concrete grammars; four Drill types/20 variants; D9.8 negatives 25/25; D9.9 selectors and negatives 61/61 + 20/20 with GUI/CLI process parity 3/3; D9.10 bridge record coverage 3/3, CLI parity 3/3 and negatives 15/15. The operator confirmed D9.9 plan generation, D9.10 bridge output, and D9.11 Maintenance GUI in Windows. D9.12 adds D2–D9 Test GUI route registry, a no-media preflight for 11 GUI E2E cases, and aggregate D9 negative/parity runners. D9.13 adds a SHA-256 sealed five-surface receipt/replay validator, Catalog non-authoritative intent projection and Maintenance read-only audit: three supported content types, 5/5 ordered stages, parity 3/3, Catalog projection 3/3, Maintenance audit 3/3, negative=12/12, full suite PASS. Next operator check is to apply the D9.13 overlay, run the focused commands, confirm Producer opens and generates the lifecycle receipt, then confirm Catalog shows `CROSS-SUITE LIFECYCLE INTENT` and Maintenance `D9.13 LIFECYCLE AUDIT · READ ONLY` returns PASS. No renderer/media activation.
 
 
 ## D9.10 canonical editorial-to-render bridge
@@ -97,8 +97,32 @@ python .\c11c-suite\self_test.py
 ## D9.12 Test 0.2.0
 
 - GUI route manifest: `c11c-suite/c11c-test/BUILD_MANIFEST.json`; GUI route registry remains in `c11c-suite/c11c-test/main.py`.
-- Contract: `python .\c11c-suite\c11c-test\test_d9_test_integration.py` (21 D routes, all route targets, all manifest test paths and exactly five operational surfaces).
+- Contract: `python .\c11c-suite\c11c-test\test_d9_test_integration.py` (22 D routes, 52 total GUI routes, all route targets, all manifest test paths and exactly five operational surfaces).
 - GUI E2E plan preflight: `python .\tools\c11d\d9\test_gui_e2e_certification_plan.py` (11/11 named cases; plan-only, no media).
 - Negative bundle: `python .\tools\c11d\d9\test_d9_negative_acceptance.py`; parity bundle: `python .\tools\c11d\d9\test_d9_gui_cli_parity.py`. Both delegate to existing canonical test scripts.
 - Full suite: `python .\c11c-suite\self_test.py`.
 - Windows next action: open `c11c-suite\c11c-test\run.bat`, confirm GUI opens, inspect the D2–D9 route list and execute the no-media certification preflight. Actual real-media GUI execution remains D9.14 and is not authorized by this preflight.
+
+
+## D9.13 Cross-Suite Lifecycle
+
+- Canonical contract: `definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json`.
+- Canonical builder/validator: `tools/c11d/d9/cross_suite_lifecycle.py`.
+- Test: `tools/c11d/d9/test_cross_suite_lifecycle.py`.
+- Receipt is stored below the existing Producer evidence root as `cross_suite_lifecycle_receipt.json`; it seals one `lifecycle_id`, `identity_sha256` and `binding_sha256` across Config → Producer → Test → Catalog → Maintenance.
+- Replay verifies canonical request, plan and bridge evidence; seeds retain distinct sources (`request.seed` and `request.music_seed`), profile and editorial identity are bound, Catalog exposes a non-authoritative intent projection, and Maintenance audits the receipt read-only.
+- Acceptance so far: three supported content types, 5/5 ordered stages, GUI/CLI parity 3/3, Catalog projection 3/3, Maintenance audit 3/3, 12 negative controls, full aggregate PASS. This is backend/static acceptance only until the operator opens the Producer lifecycle view, Catalog projection and Maintenance audit in Windows.
+- Governance remains plan-only: renderer input not emitted, renderer OFF, no media, `D4.8=BLOCKED`, `release_authority=NONE`; C11-C 2.19.12 is immutable.
+
+### D9.13 focused verification
+
+```powershell
+python .\tools\c11d\d9\test_cross_suite_lifecycle.py
+python .\c11c-suite\c11c-producer\test_d913_lifecycle_contract.py
+python .\c11c-suite\c11c-catalog\test_d913_lifecycle_projection.py
+python .\c11c-suite\c11c-maintenance\test_d913_lifecycle_audit_contract.py
+python .\c11c-suite\c11c-test\test_d9_test_integration.py
+python .\c11c-suite\self_test.py
+```
+
+Next: D9.14 real GUI production certification is not enabled by D9.13; it requires the future authorized D renderer baseline and media evidence.

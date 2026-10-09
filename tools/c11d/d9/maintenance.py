@@ -405,6 +405,8 @@ def build_plan(root: Path = ROOT) -> dict[str, Any]:
         "docs/current/d/D9.9_PRODUCER_UNIVERSAL_COVERAGE_CHECKPOINT.md",
         "docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md",
         "docs/current/d/D9.11_MAINTENANCE_0.2.0_CHECKPOINT.md",
+        "docs/current/d/D9.12_TEST_0.2.0_CHECKPOINT.md",
+        "docs/current/d/D9.13_CROSS_SUITE_LIFECYCLE_CHECKPOINT.md",
     ]
     missing_docs = []
     for rel in required_docs:
@@ -724,6 +726,8 @@ def docs_audit(root: Path = ROOT) -> dict[str, Any]:
             "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md", "docs/current/d/C11-D_MILESTONES_APPROVED.md",
             "docs/current/suite/C11C_SUITE_CURRENT_RULES.md", "docs/current/suite/C11C_SUITE_TOOLING_MATRIX.md",
             "docs/current/d/D9.11_MAINTENANCE_0.2.0_CHECKPOINT.md",
+        "docs/current/d/D9.12_TEST_0.2.0_CHECKPOINT.md",
+        "docs/current/d/D9.13_CROSS_SUITE_LIFECYCLE_CHECKPOINT.md",
         ],
         "historical_policy": "Keep dated/older duplicates under docs/history; do not overwrite conflicting evidence.",
         "c11c_consolidator_invoked": False,
@@ -751,12 +755,54 @@ def freeze_preflight(root: Path = ROOT) -> dict[str, Any]:
     }
 
 
+def audit_cross_suite_lifecycle(root: Path = ROOT, receipt_relative_path: str = "") -> dict[str, Any]:
+    """Read-only audit of an explicit, canonical Producer D9.13 lifecycle receipt."""
+    root = root.resolve()
+    path = relative_path(root, receipt_relative_path)
+    normalized = path.relative_to(root).as_posix()
+    if not normalized.startswith("artifacts/tests/c11d_d9/producer_universal/") or not normalized.endswith("/cross_suite_lifecycle_receipt.json"):
+        raise ValueError("D9.13 receipt must be beneath the canonical Producer universal evidence root")
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("D9.13 lifecycle receipt must be an existing regular file")
+    module_path = root / "tools/c11d/d9/cross_suite_lifecycle.py"
+    import importlib.util, sys
+    key = "_c11d_d913_maintenance_validator"
+    if str(module_path.parent) not in sys.path:
+        sys.path.insert(0, str(module_path.parent))
+    spec = importlib.util.spec_from_file_location(key, module_path)
+    if spec is None or spec.loader is None:
+        raise ValueError("D9.13 lifecycle validator cannot be loaded")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[key] = module
+    spec.loader.exec_module(module)
+    receipt = read_json(path)
+    checked = module.validate_lifecycle_receipt(receipt, root, verify_current=True)
+    plan = build_plan(root)
+    if plan.get("status") != "PASS":
+        raise ValueError("Current Maintenance plan is not PASS: " + "; ".join(plan.get("errors", [])))
+    evidence = receipt["stages"][4]["evidence"]
+    if plan.get("historical_manifest", {}).get("sha256") != evidence.get("historical_c11c_manifest_sha256"):
+        raise ValueError("Current historical C11-C manifest hash differs from lifecycle receipt")
+    if sha256_file(root / POLICY_REL) != evidence.get("maintenance_policy_sha256"):
+        raise ValueError("Current D9.11 policy hash differs from lifecycle receipt")
+    return {
+        "schema": "C11-D-D9.13-LIFECYCLE-AUDIT-V1",
+        "operation": "READ_ONLY_AUDIT",
+        **checked,
+        "receipt_path": normalized,
+        "maintenance_plan_status": plan["status"],
+        "side_effects": {"files_written": False, "files_moved": False, "files_deleted": False, "manifest_rewritten": False, "media_created": False},
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="C11-D D9.11 safe maintenance (dry-run by default)")
     subs = parser.add_subparsers(dest="command", required=True)
     subs.add_parser("plan", help="inspect D9.11 maintenance plan without filesystem mutation")
     subs.add_parser("docs-audit", help="read-only current governance documentation audit")
     subs.add_parser("freeze-preflight", help="read-only D-branch freeze preparation check")
+    lifecycle = subs.add_parser("audit-lifecycle", help="read-only D9.13 cross-suite lifecycle receipt audit")
+    lifecycle.add_argument("--receipt", required=True, help="Repository-relative Producer cross_suite_lifecycle_receipt.json")
     subs.add_parser("cleanup-preview", help="inspect allowlisted transient files")
     cleanup = subs.add_parser("cleanup-allowlisted", help="reversibly archive allowlisted transient files")
     cleanup.add_argument("--apply", action="store_true")
@@ -778,6 +824,8 @@ def main(argv: list[str] | None = None) -> int:
             result = docs_audit(ROOT)
         elif args.command == "freeze-preflight":
             result = freeze_preflight(ROOT)
+        elif args.command == "audit-lifecycle":
+            result = audit_cross_suite_lifecycle(ROOT, args.receipt)
         elif args.command == "cleanup-preview":
             result = cleanup_allowlisted(ROOT, apply=False)
         elif args.command == "cleanup-allowlisted":

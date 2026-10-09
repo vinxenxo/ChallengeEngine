@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "suite_root": "c11c-suite/c11c-catalog",
   "ui_base": "0.1.x-preserved",
-  "scope": "Existing artifact browser plus explicit receipt-driven C11-D canonical intent, Producer GUI plan and D9.4 pilot-media views.",
+  "scope": "Existing artifact browser plus explicit receipt-driven C11-D canonical intent, Producer GUI plan and D9.4 pilot-media views. Receipt-validated, non-authoritative D9.13 cross-suite lifecycle intent projections; no media creation or release promotion.",
   "d7_catalog_intents": true,
   "d94_manifest_media": true,
   "producer_gui_plan_records": true,
@@ -17,5 +17,13 @@
   "release_authority": "NONE",
   "media_rendered_by_catalog": false,
   "suite_added": false,
-  "c11c_studio_dependency": false
+  "c11c_studio_dependency": false,
+  "d9_13_cross_suite_lifecycle_projection": true,
+  "d9_13_receipt_validator": "tools/c11d/d9/cross_suite_lifecycle.py",
+  "d9_13_record_type": "CROSS_SUITE_LIFECYCLE_INTENT",
+  "d9_13_media_created": false,
+  "d9_13_release_authority": "NONE",
+  "tests": [
+    "c11c-suite/c11c-catalog/test_d913_lifecycle_projection.py"
+  ]
 }

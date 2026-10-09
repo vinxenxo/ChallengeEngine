@@ -15,7 +15,7 @@
   "review_drill_launcher": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
   "stabilization_revision": "2.19.12",
   "producer_acceptance": "FINAL-CLOSURE-CANDIDATE; workstation acceptance required before freeze",
-  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation. Additive C11-D D4.1 request/personalization/plan tab via canonical D4.6 GUI adapter and D4.5 parity; plan-only while D4.8 is BLOCKED. Additive D9.9 universal editorial selector/request/plan tab using one canonical adapter for GUI and CLI across all current Challenge, Visual Loop grammar and Visual Drill tier identities; declarative Loop/Drill intent plans only until a future D frozen renderer baseline. Additive D9.10 plan-only editorial-to-render bridge mapping record, canonical GUI/CLI parity, no renderer input/media execution.",
+  "scope": "Compact cyberpunk GUI; A LA CARTA Challenges/Loops/Drills; selective reviews; regression; central delivery profiles; temporary AVI Visual Drill capture; canonical Visual Drill hook bank; C11-A.1 factory isolation. Additive C11-D D4.1 request/personalization/plan tab via canonical D4.6 GUI adapter and D4.5 parity; plan-only while D4.8 is BLOCKED. Additive D9.9 universal editorial selector/request/plan tab using one canonical adapter for GUI and CLI across all current Challenge, Visual Loop grammar and Visual Drill tier identities; declarative Loop/Drill intent plans only until a future D frozen renderer baseline. Additive D9.10 plan-only editorial-to-render bridge mapping record, canonical GUI/CLI parity, no renderer input/media execution. Additive D9.13 five-surface cross-suite lifecycle receipt built from persisted canonical Producer evidence; same identity, seed/profile bindings and provenance; plan-only, no media.",
   "backend_logic_modified": false,
   "suite_location": "c11c-suite/c11c-producer",
   "producer_version": "0.11.1",
@@ -43,5 +43,16 @@
   "d9_10_renderer_input_emitted": false,
   "d9_10_renderer_adapter_invoked": false,
   "d9_10_media_output_created": false,
-  "d9_10_release_authority": "NONE"
+  "d9_10_release_authority": "NONE",
+  "d9_13_cross_suite_lifecycle": true,
+  "d9_13_lifecycle_backend": "tools/c11d/d9/cross_suite_lifecycle.py",
+  "d9_13_contract": "definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json",
+  "d9_13_receipt": "artifacts/tests/c11d_d9/producer_universal/<request_id>/cross_suite_lifecycle_receipt.json",
+  "d9_13_five_surface_identity_chain": true,
+  "d9_13_renderer_activation": false,
+  "d9_13_media_created": false,
+  "d9_13_release_authority": "NONE",
+  "tests": [
+    "c11c-suite/c11c-producer/test_d913_lifecycle_contract.py"
+  ]
 }

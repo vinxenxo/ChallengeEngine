@@ -16,25 +16,27 @@
   "suites": [
     {
       "id": "c11c-test",
-      "current_version": "0.1.4 inherited suite test surface",
+      "current_version": "0.2.0; D9.12 CLI/static PASS; D9.13 lifecycle route integrated; Windows GUI acceptance pending",
       "target_version": "0.2.0",
-      "gate": "D9.12",
-      "status": "PLANNED",
+      "gate": "D9.12-D9.13",
+      "status": "D9.12_PASS_CLI_STATIC_D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_CONFIRMATION_PENDING",
       "required_tests": [
-        "registered command path check",
-        "GUI invocation/output/exit code",
-        "failure/cancel",
-        "D2-D9 validators",
-        "GUI E2E entrypoints"
+        "registered GUI command path and all target file checks",
+        "preserve inherited C11-C test routes and five-surface topology",
+        "22 registered D routes and 52 total GUI routes",
+        "11-case GUI E2E certification plan preflight; no media created",
+        "D9 negative acceptance and GUI/CLI parity bundles",
+        "D9.13 five-stage cross-suite lifecycle test for Challenge, Loop and Drill",
+        "operator confirms Test GUI opens and D9.13 lifecycle route runs without errors"
       ]
     },
     {
       "id": "c11c-producer",
-      "current_version": "0.11.1",
+      "current_version": "0.11.1 D9.13 cross-suite lifecycle receipt integrated; plan-only",
       "target_version": "0.11.1 D9.10 plan-only editorial-render bridge; physical rendering deferred to future D frozen baseline",
-      "gate": "D9.10",
-      "status": "D9.10_PASS_BRIDGE_CONTRACT_CLI_PARITY_WINDOWS_GUI_CONFIRMED_PLAN_ONLY",
-      "notes": "Producer 0.11.1 retains D9.9 universal editorial planning and adds deterministic D9.10 bridge-planning GUI/CLI parity. The operator confirmed Windows GUI plan generation for all supported D types and the D9.10 bridge-output tab. Renderer input/media are not emitted; D4.8 BLOCKED; release_authority NONE.",
+      "gate": "D9.9-D9.13",
+      "status": "D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_CONFIRMATION_PENDING",
+      "notes": "Producer 0.11.1 retains D9.9 universal editorial planning and D9.10 bridge planning and adds the D9.13 sealed cross-suite lifecycle receipt view. Canonical request/plan/bridge are replayed; renderer input/media are not emitted; D4.8 BLOCKED; release_authority NONE. Operator Windows GUI confirmation for the new lifecycle view is pending.",
       "required_tests": [
         "9 Challenge identities reusing canonical D4 subordinate plan",
         "5 Loop families / 27 concrete grammars plus auto selector per family",
@@ -48,29 +50,36 @@
         "3 separate-process GUI/CLI bridge record parity cases",
         "15 negative bridge/governance/integrity controls",
         "renderer input not emitted; no renderer adapter, media output or artifact path",
-        "operator-confirmed Windows D9.10 bridge-output tab; plan-only; no real media claim"
+        "operator-confirmed Windows D9.10 bridge-output tab; plan-only; no real media claim",
+        "build SHA-256-sealed five-surface lifecycle receipt from persisted canonical request/plan/bridge evidence",
+        "GUI/CLI parity for Challenge, Visual Loop and Visual Drill",
+        "reject altered receipt hash, stage order, identity, seeds, profiles, paths and media/release claims",
+        "operator confirms lifecycle receipt view in the Windows GUI; plan-only"
       ]
     },
     {
       "id": "c11c-catalog",
       "current_version": "0.2.0",
       "target_version": "0.2.0",
-      "gate": "D9.6",
-      "status": "WINDOWS_VALIDATED_PASS",
+      "gate": "D9.6+D9.13",
+      "status": "D9.6_WINDOWS_VALIDATED_D9.13_READ_ONLY_PROJECTION_BACKEND_PASS_WINDOWS_VIEW_PENDING",
       "required_tests": [
         "90 intents",
         "pilot media hash/path",
         "producer plan/provenance",
         "replay command",
-        "five negatives"
+        "five negatives",
+        "D9.13 validated lifecycle receipt projection as non-authoritative intent",
+        "reject malformed SHA-256, unsafe path, unsupported type and invalid seed domain",
+        "operator confirms CROSS-SUITE LIFECYCLE filter and record in Windows GUI"
       ]
     },
     {
       "id": "c11c-maintenance",
-      "current_version": "0.2.0 implemented; Windows GUI/operator acceptance pending",
+      "current_version": "0.2.0 D9.11 PASS/CLOSED; D9.13 read-only lifecycle audit integrated",
       "target_version": "0.2.0",
-      "gate": "D9.11",
-      "status": "IMPLEMENTED_STATIC_PASS_WINDOWS_GUI_OPERATOR_ACCEPTANCE_PENDING",
+      "gate": "D9.11+D9.13",
+      "status": "D9.11_WINDOWS_VALIDATED_D9.13_READ_ONLY_AUDIT_BACKEND_PASS_WINDOWS_VIEW_PENDING",
       "required_tests": [
         "dry-run first and read-only plan",
         "exact cleanup allowlist with reversible archive/restore",
@@ -79,17 +88,20 @@
         "documentation audit and conflict handling without overwrites",
         "freeze preflight without archive creation or release authority",
         "atomic ledger write, rollback and recovery-required reporting",
-        "Windows GUI bring-up and operator review of preview outputs"
+        "Windows GUI bring-up and operator review of preview outputs",
+        "D9.13 read-only audit verifies lifecycle receipt/current policy/historic freeze manifest",
+        "zero filesystem mutation during lifecycle audit",
+        "operator confirms D9.13 LIFECYCLE AUDIT · READ ONLY in Windows GUI"
       ]
     },
     {
       "id": "c11c-config",
       "current_version": "0.2.0",
       "target_version": "0.2.0",
-      "gate": "D9.7-D9.10",
-      "status": "D9.11_MAINTENANCE_POLICY_REGISTERED_READ_ONLY_23_OF_23_CONFIG_GUI_PENDING",
+      "gate": "D9.7-D9.13",
+      "status": "D9.13_LIFECYCLE_CONTRACT_READ_ONLY_24_OF_24_CONFIG_PASS_WINDOWS_GUI_PENDING",
       "required_tests": [
-        "23 canonical registries",
+        "24 canonical registries",
         "D9.10 bridge schema/governance/output invariants",
         "D9.8 model schema/seed/data-class invariants",
         "seven configuration negatives",
@@ -99,20 +111,21 @@
         "generic editor protected-root policy",
         "Windows GUI/filesystem smoke"
       ],
-      "notes": "Config 0.2.0 registers D9.8 editorial model, D9.10 bridge and D9.11 maintenance policy as read-only contracts. Maintenance policy cannot grant filesystem paths outside the declared allowlists. Windows Config GUI/filesystem acceptance remains pending."
+      "notes": "Config 0.2.0 registers D9.8 editorial model, D9.10 bridge, D9.11 maintenance policy and D9.13 cross-suite lifecycle contract as read-only. All 24/24 registries validate; Windows Config GUI/filesystem acceptance still requires explicit operator confirmation."
     },
     {
       "id": "c11c-suite",
       "current_version": "0.1.4",
       "target_version": "0.1.5 only if needed",
-      "gate": "D9.13",
-      "status": "FIVE_CANONICAL_SURFACES_ONLY_CROSS_SUITE_LIFECYCLE_PENDING",
+      "gate": "D9.12-D9.13",
+      "status": "FIVE_CANONICAL_SURFACES_ONLY_D9.12_CLI_PASS_D9.13_BACKEND_STATIC_PASS_WINDOWS_GUI_PENDING",
       "required_tests": [
-        "launch each of five canonical apps",
-        "GUI/CLI canonical identity parity",
+        "launch each of five canonical apps in Windows",
+        "GUI/CLI canonical identity parity and D9.13 receipt continuity",
         "environment/preflight reporting",
         "child process/exit/log/cancel lifecycle",
-        "no sixth operational suite registered"
+        "no sixth operational suite registered",
+        "D9.13 Catalog read-only projection and Maintenance read-only audit; no media/release"
       ]
     }
   ],
@@ -140,12 +153,12 @@
     {
       "gate": "D9.12",
       "name": "Test 0.2.0: D2-D9 registrations, parity, GUI E2E and negative acceptance",
-      "status": "PENDING"
+      "status": "PASS_CLI_STATIC_AND_AGGREGATE_WINDOWS_TEST_GUI_CONFIRMATION_PENDING"
     },
     {
       "gate": "D9.13",
       "name": "Cross-suite lifecycle: Config → Producer → Test/QA → Catalog → Maintenance",
-      "status": "PENDING"
+      "status": "PASS_BACKEND_STATIC_3_CONTENT_TYPES_5_STAGES_NEGATIVE_12_OF_12_WINDOWS_GUI_CONFIRMATION_PENDING"
     },
     {
       "gate": "D9.14",

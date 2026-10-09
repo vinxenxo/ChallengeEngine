@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-maintenance",
   "version": "0.2.0",
-  "branch": "C11-D D9.11",
+  "branch": "C11-D D9.11–D9.13",
   "entrypoint": "c11c-suite/c11c-maintenance/main.py",
   "canonical_backend": "tools/c11d/d9/maintenance.py",
   "policy": "definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json",
@@ -13,7 +13,8 @@
     "tools/c11d/d9/test_maintenance.py",
     "c11c-suite/c11c-maintenance/test_d9_maintenance_contract.py",
     "c11c-suite/c11c-maintenance/test_cleanup_contract.py",
-    "c11c-suite/c11c-maintenance/test_root_organization_contract.py"
+    "c11c-suite/c11c-maintenance/test_root_organization_contract.py",
+    "c11c-suite/c11c-maintenance/test_d913_lifecycle_audit_contract.py"
   ],
   "gui_cli_backend": "SHARED_CANONICAL",
   "operations": [
@@ -23,7 +24,8 @@
     "manifest reconciliation by append-only ledger",
     "documentation audit",
     "D freeze preflight only",
-    "protected-root enforcement"
+    "protected-root enforcement",
+    "D9.13 read-only cross-suite lifecycle receipt audit"
   ],
   "cleanup_allowlist": [
     "artifacts/scratch",
@@ -37,5 +39,8 @@
   "runtime_authority": "NONE",
   "release_authority": "NONE",
   "frozen_c11c_mutation": "FORBIDDEN",
-  "windows_gui_acceptance": "PENDING_OPERATOR_RUN"
+  "windows_gui_acceptance": "PENDING_OPERATOR_RUN",
+  "d9_13_lifecycle_audit": "READ_ONLY",
+  "d9_13_side_effects": false,
+  "d9_13_gui_operation": "D9.13 LIFECYCLE AUDIT · READ ONLY"
 }

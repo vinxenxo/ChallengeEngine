@@ -1,0 +1,53 @@
+{
+  "schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.13",
+  "status": "CANONICAL_PLAN_ONLY_LIFECYCLE_CHAIN",
+  "purpose": "Prove that one canonical D9 production intent retains identical request, editorial, seed, profile, plan and provenance identities across the five existing Suite surfaces.",
+  "pipeline": [
+    {"surface": "c11c-config", "version": "0.2.0", "role": "READ_ONLY_CONTRACT_AND_PROFILE_BINDINGS"},
+    {"surface": "c11c-producer", "version": "0.11.1", "role": "CANONICAL_REQUEST_PLAN_AND_BRIDGE"},
+    {"surface": "c11c-test", "version": "0.2.0", "role": "PLAN_IDENTITY_QA_AND_NEGATIVE_GATES"},
+    {"surface": "c11c-catalog", "version": "0.2.0", "role": "READ_ONLY_IDENTITY_PROJECTION"},
+    {"surface": "c11c-maintenance", "version": "0.2.0", "role": "READ_ONLY_POLICY_MANIFEST_AND_TOPOLOGY_AUDIT"}
+  ],
+  "identity_fields": [
+    "request_id", "content_type", "selection", "request_hash", "editorial_hash", "plan_hash", "bridge_record_hash",
+    "gameplay_seed", "music_seed", "delivery_profile_id", "resolved_delivery_profile_id", "presentation_profile_id",
+    "audio_enabled", "personalization_enabled"
+  ],
+  "seed_contract": {
+    "master_seed": "NOT_ADOPTED",
+    "gameplay_seed_source": "canonical_request.seed",
+    "music_seed_source": "canonical_request.music_seed",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false
+  },
+  "catalog_projection": {
+    "record_type": "CROSS_SUITE_LIFECYCLE_INTENT",
+    "media_created": false,
+    "media_path": null,
+    "media_sha256": null,
+    "release_authority": "NONE"
+  },
+  "governance": {
+    "renderer_activation": false,
+    "renderer_input_emitted": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "runtime_authority": "NONE",
+    "release_authority": "NONE",
+    "c11c_frozen_reference_mutation": "FORBIDDEN"
+  },
+  "unsupported": {
+    "longform": "DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM"
+  },
+  "receipt": {
+    "schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-RECEIPT-V1",
+    "hash_field": "receipt_sha256",
+    "hash_algorithm": "SHA-256",
+    "hash_encoding": "UTF-8 compact canonical JSON with lexicographically sorted object keys"
+  }
+}

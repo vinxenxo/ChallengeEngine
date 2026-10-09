@@ -23,4 +23,8 @@ assert manifest.get('editorial_render_bridge_contract_access') == 'READ_ONLY_CAN
 assert 'D9_MAINTENANCE_POLICY' in module and 'D9_11_MAINTENANCE_POLICY_V1.json' in module
 assert manifest.get('maintenance_policy') == 'definitions/c11d/d9/D9_11_MAINTENANCE_POLICY_V1.json'
 assert manifest.get('maintenance_policy_access') == 'READ_ONLY_CANONICAL'
-print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance policy registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
+lifecycle_contract = ROOT / 'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json' if 'ROOT' in globals() else (HERE.parents[1] / 'definitions/c11d/d9/D9_13_CROSS_SUITE_LIFECYCLE_V1.json')
+assert lifecycle_contract.is_file()
+assert 'D9_CROSS_SUITE_LIFECYCLE' in module
+assert manifest.get('cross_suite_lifecycle_contract_access') == 'READ_ONLY_CANONICAL'
+print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance + D9.13 lifecycle registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')

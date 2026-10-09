@@ -11,4 +11,7 @@ manifest=json.loads((ROOT/'c11c-catalog'/'BUILD_MANIFEST.json').read_text(encodi
 assert manifest['version']=='0.2.0'
 assert manifest['d_records'] is True
 assert manifest['release_authority']=='NONE'
-print('C11-C Catalog GUI contract PASS | version=0.2.0 | D product provenance/replay=REGISTERED | release_authority=NONE')
+assert manifest['d9_13_cross_suite_lifecycle_projection'] is True
+assert 'CROSS-SUITE LIFECYCLE' in main and 'CROSS_SUITE_LIFECYCLE_INTENT' in main
+assert manifest['d9_13_media_created'] is False
+print('C11-C Catalog GUI contract PASS | version=0.2.0 | D product provenance/replay + D9.13 lifecycle intent=REGISTERED | media=false | release_authority=NONE')

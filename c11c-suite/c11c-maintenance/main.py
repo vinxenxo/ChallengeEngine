@@ -15,7 +15,7 @@ class Window(QMainWindow):
     box=QGroupBox('Safe operations'); bl=QVBoxLayout(box); lay.addWidget(box)
     for txt,fn in [('ANALIZAR LIMPIEZA SEGURA',self.preview_cleanup),('ARCHIVAR TRANSITORIOS · REVERSIBLE (D9.11)',self.clean_cleanup),('ANALIZAR MEDIA C11-C',self.c11c_media_preview),('LIMPIAR MEDIA C11-C',self.c11c_media_clean),('ORGANIZAR RAÍZ · DRY RUN',self.root_organize_dry),('ORGANIZAR RAÍZ · APPLY',self.root_organize_apply),('VERIFICAR REPOSITORY LAYOUT',self.layout_check),('VALIDAR DELIVERY CONFIG',self.delivery_check),('CONSOLIDAR DOCS C11-C 2.19 · DRY RUN',self.docs_dry),('FREEZE C11-C · DRY RUN',self.freeze_dry),('GENERAR ZIP FROZEN C11-C 2.19.12',self.make_zip)]:
       b=QPushButton(txt); b.clicked.connect(fn); bl.addWidget(b)
-    d9box=QGroupBox('C11-D D9.11 · Maintenance 0.2.0 — canonical backend / dry-run first')
+    d9box=QGroupBox('C11-D D9.11/D9.13 · Maintenance 0.2.0 — canonical backend / dry-run first')
     d9grid=QGridLayout(d9box)
     d9actions=[
       ('D9.11 PLAN · DRY RUN',self.d9_plan),
@@ -28,6 +28,7 @@ class Window(QMainWindow):
       ('D9.11 CONTROL RESTORE · APPLY',self.d9_restore_apply),
       ('D9.11 CLEANUP RESTORE · DRY RUN',self.d9_cleanup_restore_preview),
       ('D9.11 CLEANUP RESTORE · APPLY',self.d9_cleanup_restore_apply),
+      ('D9.13 LIFECYCLE AUDIT · READ ONLY',self.d9_lifecycle_audit),
     ]
     for index,(txt,fn) in enumerate(d9actions):
       b=QPushButton(txt); b.clicked.connect(fn); d9grid.addWidget(b,index//3,index%3)
@@ -78,6 +79,20 @@ class Window(QMainWindow):
       self.add('[D9.11 BLOCKED] Canonical maintenance backend missing: '+str(script)); return
     self.add('> '+label+' | canonical tools/c11d/d9/maintenance.py')
     self.proc=QProcess(self); self.proc.setProcessEnvironment(qprocess_environment()); self.proc.setWorkingDirectory(str(PROJECT_ROOT)); self.proc.readyReadStandardOutput.connect(self.read); self.proc.readyReadStandardError.connect(self.read); self.proc.finished.connect(lambda c,s:self.finish(c,label)); self.proc.start(sys.executable,[str(script)]+list(args))
+  def d9_lifecycle_audit(self):
+    base=PROJECT_ROOT/'artifacts'/'tests'/'c11d_d9'/'producer_universal'
+    receipts=[]
+    if base.is_dir():
+      for p in base.glob('*/cross_suite_lifecycle_receipt.json'):
+        try:
+          if p.is_file() and not p.is_symlink(): receipts.append(p)
+        except OSError: pass
+    if not receipts:
+      self.add('[D9.13 NOT PRESENT] Genera un plan universal desde Producer; no hay recibo de lifecycle para auditar.')
+      return
+    latest=max(receipts,key=lambda p:p.stat().st_mtime)
+    rel=latest.relative_to(PROJECT_ROOT).as_posix()
+    self.run_d9_maintenance(['audit-lifecycle','--receipt',rel],'D9.13 CROSS-SUITE LIFECYCLE AUDIT · READ ONLY')
   def d9_plan(self): self.run_d9_maintenance(['plan'],'D9.11 MAINTENANCE PLAN')
   def d9_docs_audit(self): self.run_d9_maintenance(['docs-audit'],'D9.11 DOCUMENTATION AUDIT · DRY RUN')
   def d9_freeze_preflight(self): self.run_d9_maintenance(['freeze-preflight'],'D9.11 FREEZE PREFLIGHT · READ ONLY')

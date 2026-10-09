@@ -294,5 +294,17 @@ certification_preflight = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d
 assert certification_preflight.returncode == 0, certification_preflight.stdout + '\n' + certification_preflight.stderr
 assert 'cases=11/11' in certification_preflight.stdout and 'media_created=false' in certification_preflight.stdout
 
-print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12 PASS')
+# D9.13: five-surface lifecycle end-to-end intent chain; no media or release is created.
+d913_lifecycle = subprocess.run([sys.executable, str(ROOT/'tools'/'c11d'/'d9'/'test_cross_suite_lifecycle.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=240)
+assert d913_lifecycle.returncode == 0, d913_lifecycle.stdout + "\n" + d913_lifecycle.stderr
+assert 'content_types=3/3' in d913_lifecycle.stdout and 'stages=5/5' in d913_lifecycle.stdout and 'negative=12/12' in d913_lifecycle.stdout, d913_lifecycle.stdout
+
+producer_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-producer'/'test_d913_lifecycle_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
+assert producer_lifecycle_contract.returncode == 0, producer_lifecycle_contract.stdout + "\n" + producer_lifecycle_contract.stderr
+catalog_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-catalog'/'test_d913_lifecycle_projection.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
+assert catalog_lifecycle_contract.returncode == 0, catalog_lifecycle_contract.stdout + "\n" + catalog_lifecycle_contract.stderr
+maintenance_lifecycle_contract = subprocess.run([sys.executable, str(SUITE/'c11c-maintenance'/'test_d913_lifecycle_audit_contract.py')], cwd=str(ROOT), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
+assert maintenance_lifecycle_contract.returncode == 0, maintenance_lifecycle_contract.stdout + "\n" + maintenance_lifecycle_contract.stderr
+
+print('C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13 PASS')
 

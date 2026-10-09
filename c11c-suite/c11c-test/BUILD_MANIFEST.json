@@ -1,9 +1,9 @@
 {
   "suite_id": "c11c-test",
   "version": "0.2.0",
-  "branch": "C11-D D9.12",
+  "branch": "C11-D D9.12–D9.13",
   "entrypoint": "c11c-suite/c11c-test/main.py",
-  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface.",
+  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface. D9.13 receipt-chain validation across the same five operational surfaces; preserves identity, seed/profile binding and plan-only/no-media governance.",
   "canonical_backends": [
     "tools/c11d/d2/validate_d2_1_registry.ps1",
     "tools/c11d/d2/validate_d2_2_asset_role_evidence_v2.ps1",
@@ -20,7 +20,8 @@
     "tools/c11d/d9/universal_editorial_model.py",
     "tools/c11d/d9/universal_producer.py",
     "tools/c11d/d9/editorial_render_bridge.py",
-    "tools/c11d/d9/maintenance.py"
+    "tools/c11d/d9/maintenance.py",
+    "tools/c11d/d9/cross_suite_lifecycle.py"
   ],
   "gui_routes": [
     {
@@ -127,13 +128,19 @@
       "name": "D9.12 TEST 0.2.0 INTEGRATION CONTRACT",
       "kind": "python",
       "entry": "./c11c-suite/c11c-test/test_d9_test_integration.py"
+    },
+    {
+      "name": "D9.13 CROSS-SUITE LIFECYCLE CHAIN",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_cross_suite_lifecycle.py"
     }
   ],
   "tests": [
     "c11c-suite/c11c-test/test_d9_test_integration.py",
     "tools/c11d/d9/test_gui_e2e_certification_plan.py",
     "tools/c11d/d9/test_d9_negative_acceptance.py",
-    "tools/c11d/d9/test_d9_gui_cli_parity.py"
+    "tools/c11d/d9/test_d9_gui_cli_parity.py",
+    "tools/c11d/d9/test_cross_suite_lifecycle.py"
   ],
   "certification_plan": "docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md",
   "real_media_gui_certification": "OPERATOR_REQUIRED_FUTURE_D9_14_GATE",
@@ -144,5 +151,15 @@
   "release_authority": "NONE",
   "legacy_c11_c_routes_preserved": true,
   "c11d_control_registered": false,
-  "operational_surface_count": 5
+  "operational_surface_count": 5,
+  "d9_13_cross_suite_lifecycle": true,
+  "d9_13_stage_order": [
+    "c11c-config",
+    "c11c-producer",
+    "c11c-test",
+    "c11c-catalog",
+    "c11c-maintenance"
+  ],
+  "d9_13_media_created": false,
+  "d9_13_release_authority": "NONE"
 }

@@ -1,0 +1,77 @@
+{
+  "events": [
+    {
+      "d4_8": "BLOCKED",
+      "destination_path": "docs/history/root_conflicts/c11d-control_quarantine_20261009T060017Z",
+      "directory_count": 1,
+      "event_id": "QUARANTINED-20261009T060017Z-095ebd8bd681",
+      "event_type": "QUARANTINED",
+      "file_count": 6,
+      "files": [
+        {
+          "bytes": 708,
+          "path": "README.md",
+          "sha256": "05b554b7a3c3c4f34ac53c513ca8dc0a8b3342d39b4acd773290371de0ab8ec6"
+        },
+        {
+          "bytes": 33570,
+          "path": "__pycache__/main.cpython-313.pyc",
+          "sha256": "a211b773d9810e9530ef9b19ce5ce03132a5551c328c68110c69a9239ab08a55"
+        },
+        {
+          "bytes": 1543,
+          "path": "__pycache__/self_test.cpython-313.pyc",
+          "sha256": "00e3be03b425ea5bff48d4a5ed360a9df21db6c506a92e5e663cb6648ac8745b"
+        },
+        {
+          "bytes": 21265,
+          "path": "main.py",
+          "sha256": "6f428e356ba266977b4d6be1539ad5f35598040590d16c9568e29c534946f385"
+        },
+        {
+          "bytes": 272,
+          "path": "run.bat",
+          "sha256": "55420b2c9fe260d4af8e9654a566a63fd67afd065721e7cea6200713f8cb0150"
+        },
+        {
+          "bytes": 969,
+          "path": "self_test.py",
+          "sha256": "fd50a98b08cf60e72b63f1975cc1ef30de6de7bc2c2d9cbbcb9e5ce82090fda7"
+        }
+      ],
+      "historical_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "historical_manifest_references": [
+        {
+          "bytes": 21265,
+          "path": "c11c-suite/c11d-control/main.py",
+          "sha256": "6f428e356ba266977b4d6be1539ad5f35598040590d16c9568e29c534946f385"
+        },
+        {
+          "bytes": 708,
+          "path": "c11c-suite/c11d-control/README.md",
+          "sha256": "05b554b7a3c3c4f34ac53c513ca8dc0a8b3342d39b4acd773290371de0ab8ec6"
+        },
+        {
+          "bytes": 272,
+          "path": "c11c-suite/c11d-control/run.bat",
+          "sha256": "55420b2c9fe260d4af8e9654a566a63fd67afd065721e7cea6200713f8cb0150"
+        },
+        {
+          "bytes": 969,
+          "path": "c11c-suite/c11d-control/self_test.py",
+          "sha256": "fd50a98b08cf60e72b63f1975cc1ef30de6de7bc2c2d9cbbcb9e5ce82090fda7"
+        }
+      ],
+      "historical_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "manifest_treatment": "PRESERVED_UNMODIFIED_HISTORICAL_EVIDENCE; RECONCILED_BY_APPEND_ONLY_LEDGER",
+      "occurred_at_utc": "2026-10-09T06:00:17Z",
+      "release_authority": "NONE",
+      "resource": "c11c-suite/c11d-control",
+      "source_path": "c11c-suite/c11d-control",
+      "suite_registration": "UNREGISTERED_BEFORE_AND_AFTER_QUARANTINE",
+      "tree_sha256": "095ebd8bd681597c12644412e699d7dae46a169891532466035589819fa63cae"
+    }
+  ],
+  "schema": "C11-D-D9.11-MAINTENANCE-LEDGER-V1",
+  "schema_version": "1.0"
+}

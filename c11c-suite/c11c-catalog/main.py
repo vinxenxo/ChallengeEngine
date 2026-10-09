@@ -35,7 +35,7 @@ class Window(QMainWindow):
     page=QWidget(); lay=QVBoxLayout(page)
     top=QHBoxLayout(); lay.addLayout(top)
     self.d_summary=QLabel('C11-D catalog records'); self.d_summary.setObjectName('muted'); top.addWidget(self.d_summary,2)
-    self.d_filter=QComboBox(); self.d_filter.addItems(['ALL RECORDS','CANONICAL INTENT','PRODUCER PLAN','PILOT MEDIA']); self.d_filter.currentTextChanged.connect(self.refresh_d_table); top.addWidget(self.d_filter)
+    self.d_filter=QComboBox(); self.d_filter.addItems(['ALL RECORDS','CANONICAL INTENT','PRODUCER PLAN','PILOT MEDIA','CROSS-SUITE LIFECYCLE']); self.d_filter.currentTextChanged.connect(self.refresh_d_table); top.addWidget(self.d_filter)
     b=QPushButton('REFRESCAR D'); b.clicked.connect(self.refresh_d_products); top.addWidget(b)
     split=QSplitter(Qt.Horizontal); lay.addWidget(split,1)
     self.d_table=QTableWidget(0,8); self.d_table.setHorizontalHeaderLabels(['Tipo','ID / Challenge','Estado','Gameplay seed','Music seed','Delivery','Personalización','Media / Hash']); self.d_table.setSelectionBehavior(QTableWidget.SelectRows); self.d_table.setSelectionMode(QTableWidget.SingleSelection); self.d_table.itemSelectionChanged.connect(self.show_d_selected); split.addWidget(self.d_table)
@@ -108,7 +108,7 @@ class Window(QMainWindow):
 
   def refresh_d_products(self):
     result=build_catalog_data(PROJECT_ROOT); self.d_records=result['records']; self.d_issues=result['issues']; self.d_source_status=result['source_status']; self.refresh_d_table()
-    s=result['summary']; self.d_summary.setText(f"D Catalog {CATALOG_VERSION} · intents={s['canonical_intents']} · plans={s['producer_plans']} · pilot media={s['pilot_media']} · release products={s['release_products']} · release authority=NONE")
+    s=result['summary']; self.d_summary.setText(f"D Catalog {CATALOG_VERSION} · intents={s['canonical_intents']} · plans={s['producer_plans']} · pilot media={s['pilot_media']} · lifecycle intents={s.get('lifecycle_intents',0)} · release products={s['release_products']} · release authority=NONE")
     details={"summary":s,"source_status":self.d_source_status,"issues":self.d_issues,"policy":{"mode":"EXPLICIT RECEIPTS / HASH-VERIFIED MEDIA","D7":"canonical intent only; not executed media","D9.4 media":"validation pilot only; not release eligible","D9.5.1":"plan only; D4.8 remains BLOCKED","release_authority":"NONE"}}
     if not self.d_table.currentRow() >= 0:
       self.d_detail.setPlainText(json.dumps(details,ensure_ascii=False,indent=2))
@@ -116,7 +116,7 @@ class Window(QMainWindow):
   def refresh_d_table(self):
     if not hasattr(self,'d_records'): return
     choice=self.d_filter.currentText() if hasattr(self,'d_filter') else 'ALL RECORDS'
-    type_map={'CANONICAL INTENT':'CANONICAL_INTENT','PRODUCER PLAN':'PRODUCER_PLAN','PILOT MEDIA':'PILOT_MEDIA'}
+    type_map={'CANONICAL INTENT':'CANONICAL_INTENT','PRODUCER PLAN':'PRODUCER_PLAN','PILOT MEDIA':'PILOT_MEDIA','CROSS-SUITE LIFECYCLE':'CROSS_SUITE_LIFECYCLE_INTENT'}
     visible=[r for r in self.d_records if choice=='ALL RECORDS' or r['record_type']==type_map.get(choice)]
     self.d_table.setRowCount(len(visible))
     for i,r in enumerate(visible):
@@ -138,7 +138,7 @@ class Window(QMainWindow):
     if item is None: return
     index=item.data(Qt.UserRole)
     # Resolve the row against the filtered view, not the full record list.
-    choice=self.d_filter.currentText(); type_map={'CANONICAL INTENT':'CANONICAL_INTENT','PRODUCER PLAN':'PRODUCER_PLAN','PILOT MEDIA':'PILOT_MEDIA'}
+    choice=self.d_filter.currentText(); type_map={'CANONICAL INTENT':'CANONICAL_INTENT','PRODUCER PLAN':'PRODUCER_PLAN','PILOT MEDIA':'PILOT_MEDIA','CROSS-SUITE LIFECYCLE':'CROSS_SUITE_LIFECYCLE_INTENT'}
     visible=[r for r in self.d_records if choice=='ALL RECORDS' or r['record_type']==type_map.get(choice)]
     if not isinstance(index,int) or index<0 or index>=len(visible): return
     self.d_selected=visible[index]

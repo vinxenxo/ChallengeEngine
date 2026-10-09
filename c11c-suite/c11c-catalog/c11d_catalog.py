@@ -9,8 +9,11 @@ release, or mutate canonical artifacts. Only these governed sources are projecte
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import os
+import re
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -415,6 +418,101 @@ def _load_producer_plans(root: Path, records: list[dict[str, Any]], issues: list
     return "PASS" if invalid == 0 else "PARTIAL/INVALID"
 
 
+def project_cross_suite_lifecycle_intent(identity: dict[str, Any], lifecycle_id: str, identity_sha256: str, evidence_path: str) -> dict[str, Any]:
+    """Project a D9.13 plan-only lifecycle receipt as intent, never as physical media."""
+    required = {
+        "request_id", "content_type", "selection", "request_hash", "editorial_hash", "plan_hash",
+        "bridge_record_hash", "gameplay_seed", "music_seed", "delivery_profile_id",
+        "resolved_delivery_profile_id", "presentation_profile_id", "audio_enabled", "personalization_enabled",
+    }
+    if not isinstance(identity, dict) or not required.issubset(identity):
+        raise ValueError("D9.13 Catalog projection requires the complete canonical identity payload")
+    if not re.fullmatch(r"D9L13-[A-F0-9]{24}", str(lifecycle_id)):
+        raise ValueError("D9.13 lifecycle ID is malformed")
+    if not isinstance(identity_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", identity_sha256):
+        raise ValueError("D9.13 identity SHA-256 is malformed")
+    for hash_field in ("request_hash", "editorial_hash", "plan_hash", "bridge_record_hash"):
+        if not isinstance(identity.get(hash_field), str) or not re.fullmatch(r"[0-9a-f]{64}", identity[hash_field]):
+            raise ValueError(f"D9.13 {hash_field} is not a canonical SHA-256")
+    if identity.get("content_type") not in {"challenges", "visual_loops", "visual_drills"}:
+        raise ValueError("D9.13 Catalog projection refuses unsupported content type")
+    if not isinstance(identity.get("gameplay_seed"), int) or isinstance(identity.get("gameplay_seed"), bool):
+        raise ValueError("D9.13 gameplay seed must remain an explicit integer")
+    if not isinstance(identity.get("music_seed"), int) or isinstance(identity.get("music_seed"), bool):
+        raise ValueError("D9.13 music seed must remain an explicit integer")
+    normalized_evidence = evidence_path.replace("\\", "/") if isinstance(evidence_path, str) else ""
+    if (not normalized_evidence.startswith("artifacts/tests/c11d_d9/producer_universal/")
+            or not normalized_evidence.endswith("/cross_suite_lifecycle_receipt.json")
+            or any(part in {"", ".", ".."} for part in normalized_evidence.split("/"))):
+        raise ValueError("D9.13 Catalog evidence path is outside the canonical Producer evidence root")
+    return {
+        "schema": "C11-D-D9.13-CROSS-SUITE-LIFECYCLE-CATALOG-PROJECTION-V1",
+        "record_type": "CROSS_SUITE_LIFECYCLE_INTENT",
+        "record_id": lifecycle_id,
+        "lifecycle_id": lifecycle_id,
+        "challenge_id": str(identity.get("selection", {}).get("variant_id") or identity.get("selection", {}).get("subtype_id") or identity.get("selection", {}).get("family_id") or "UNIVERSAL"),
+        "content_type": identity["content_type"],
+        "status": "PASS_PLAN_ONLY",
+        "gameplay_seed": str(identity["gameplay_seed"]),
+        "music_seed": str(identity["music_seed"]),
+        "delivery_profile_id": identity["resolved_delivery_profile_id"],
+        "personalization_profile": identity["presentation_profile_id"],
+        "request_hash": identity["request_hash"],
+        "editorial_hash": identity["editorial_hash"],
+        "plan_hash": identity["plan_hash"],
+        "identity_hash": identity_sha256,
+        "bridge_record_hash": identity["bridge_record_hash"],
+        "media_path": None,
+        "media_sha256": None,
+        "media_bytes": None,
+        "media_eligibility": "NO_MEDIA_CREATED",
+        "release_authority": "NONE",
+        "execution": "CROSS-SUITE INTENT ONLY; RENDERER OFF",
+        "evidence_path": evidence_path,
+        "evidence_paths": [evidence_path],
+        "provenance": {"checkpoint": "D9.13", "lifecycle_id": lifecycle_id, "stages": ["c11c-config", "c11c-producer", "c11c-test", "c11c-catalog", "c11c-maintenance"], "identity_sha256": identity_sha256},
+        "reproduction_command": f'python .\\tools\\c11d\\d9\\cross_suite_lifecycle.py --receipt ".\\{evidence_path.replace("/", chr(92))}"',
+        "source_status": "PASS_PLAN_ONLY",
+        "search_text": " ".join(str(v) for v in (lifecycle_id, identity["request_id"], identity["content_type"], identity["request_hash"], identity_sha256)).lower(),
+    }
+
+
+def _load_d913_lifecycle_records(root: Path, records: list[dict[str, Any]], issues: list[dict[str, str]]) -> str:
+    base = root / Path("artifacts/tests/c11d_d9/producer_universal")
+    if not base.is_dir():
+        return "NOT_PRESENT"
+    found = 0
+    invalid = 0
+    module_path = root / "tools/c11d/d9/cross_suite_lifecycle.py"
+    key = "_c11d_d913_catalog_validator"
+    try:
+        if str(module_path.parent) not in sys.path:
+            sys.path.insert(0, str(module_path.parent))
+        spec = importlib.util.spec_from_file_location(key, module_path)
+        if spec is None or spec.loader is None:
+            raise ValueError("D9.13 lifecycle validator cannot be loaded")
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[key] = module
+        spec.loader.exec_module(module)
+    except Exception as exc:
+        _add_issue(issues, "D9.13", "LIFECYCLE_VALIDATOR_UNAVAILABLE", str(exc))
+        return "INVALID"
+    for path in sorted(base.glob("*/cross_suite_lifecycle_receipt.json")):
+        found += 1
+        rel = _relative(root, path)
+        try:
+            receipt = _load_json(path)
+            module.validate_lifecycle_receipt(receipt, root, verify_current=True)
+            projected = project_cross_suite_lifecycle_intent(receipt["identity"], receipt["lifecycle_id"], receipt["identity_sha256"], str(rel))
+            records.append(projected)
+        except Exception as exc:
+            invalid += 1
+            _add_issue(issues, "D9.13", "LIFECYCLE_RECEIPT_INVALID", f"{rel or path.name}: {exc}")
+    if found == 0:
+        return "NOT_PRESENT"
+    return "PASS" if invalid == 0 else "PARTIAL/INVALID"
+
+
 def build_catalog_data(project_root: Path) -> dict[str, Any]:
     root = Path(project_root).resolve()
     records: list[dict[str, Any]] = []
@@ -425,6 +523,7 @@ def build_catalog_data(project_root: Path) -> dict[str, Any]:
         "D7_canonical_intents": _load_d7_intents(root, records, issues),
         "D9_4_pilot_media": _load_d94_media(root, records, issues, d8_scope_valid=(d8_scope_status == "PASS_NO_MEDIA/CLOSED")),
         "D9_5_1_producer_plans": _load_producer_plans(root, records, issues),
+        "D9_13_cross_suite_lifecycle": _load_d913_lifecycle_records(root, records, issues),
     }
     records.sort(key=lambda x: (x["record_type"], x["challenge_id"], x["record_id"]))
     return {
@@ -439,6 +538,7 @@ def build_catalog_data(project_root: Path) -> dict[str, Any]:
             "canonical_intents": sum(r["record_type"] == "CANONICAL_INTENT" for r in records),
             "producer_plans": sum(r["record_type"] == "PRODUCER_PLAN" for r in records),
             "pilot_media": sum(r["record_type"] == "PILOT_MEDIA" for r in records),
+            "lifecycle_intents": sum(r["record_type"] == "CROSS_SUITE_LIFECYCLE_INTENT" for r in records),
             "release_products": 0,
             "release_authority": "NONE",
         },

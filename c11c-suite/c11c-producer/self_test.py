@@ -171,4 +171,9 @@ print("C11-C Producer 0.11.1 base checks PASS | D9.5.1 Challenge + D9.9 universa
 bridge_test = subprocess.run([sys.executable, str(D9_DIR / "test_editorial_render_bridge.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=120)
 assert bridge_test.returncode == 0, bridge_test.stdout + "\n" + bridge_test.stderr
 assert "content_types=3/3" in bridge_test.stdout and "CLI bridge parity=3/3" in bridge_test.stdout and "negative=15/15" in bridge_test.stdout
-print("C11-C Producer 0.11.1 self-test PASS | D9.9 universal plans + D9.10 plan-only bridge contract")
+print("C11-C Producer 0.11.1 self-test PASS | D9.9 universal plans + D9.10 plan-only bridge + D9.13 lifecycle contract")
+
+# D9.13: verify the Producer lifecycle tab uses the canonical five-surface receipt backend.
+d913_contract = subprocess.run([sys.executable, str(PROJECT / "c11c-suite" / "c11c-producer" / "test_d913_lifecycle_contract.py")], cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+assert d913_contract.returncode == 0, d913_contract.stdout + "\n" + d913_contract.stderr
+assert "C11C_PRODUCER_D9_13_LIFECYCLE_CONTRACT PASS" in d913_contract.stdout
