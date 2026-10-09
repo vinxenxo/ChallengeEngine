@@ -207,3 +207,24 @@ The prior D9.15 candidate-only waiver is superseded for live operational status 
 ## 2026-10-10 — Renderer temporal topology proposal V1
 
 Added the D-only source-pinned temporal topology proposal and focused test. The proposal models existing Challenge phases and continuous Visual Loop/Visual Drill spans without emitting request-specific durations or frame indices. It consumes D1.5 region-hierarchy reconciliation and rejects canonicalization of the prior normalized-permille rectangles. The new focused test remains separate from the aggregate 22-step Suite pending Windows operator acceptance. No media, renderer activation, or authority change.
+
+## D9 — Source-bound temporal preview (2026-10-10; separate focused test)
+
+- Added `D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1` to bind the existing topology proposal to three pinned canonical timing sources without engine/render execution.
+- Focused test: `python .\tools\c11d\d9\test_d_renderer_temporal_bound_preview.py`.
+- Not added to the 22-step aggregate yet; keep the increment isolated until Windows acceptance and explicit suite-integration review.
+- Frame ranges are review-only data, not renderer-native input. No media, output path, C11-C mutation, D4.8 grant or release authority.
+
+## D9 — Source-bound temporal preview (2026-10-10; separate focused test)
+
+- Added `D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1` to bind the existing topology proposal to three pinned canonical timing sources without engine/render execution.
+- Focused test: `python .\tools\c11d\d9\test_d_renderer_temporal_bound_preview.py`.
+- Not added to the 22-step aggregate yet; keep the increment isolated until Windows acceptance and explicit suite-integration review.
+- Frame ranges are review-only data, not renderer-native input. No media, output path, C11-C mutation, D4.8 grant or release authority.
+
+## D9 — Source-bound temporal preview (2026-10-10; separate focused test)
+
+- Added `D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1` to bind the existing topology proposal to three pinned canonical timing sources without engine/render execution.
+- Focused test: `python .\tools\c11d\d9\test_d_renderer_temporal_bound_preview.py`.
+- Not added to the 22-step aggregate yet; keep the increment isolated until Windows acceptance and explicit suite-integration review.
+- Frame ranges are review-only data, not renderer-native input. No media, output path, C11-C mutation, D4.8 grant or release authority.

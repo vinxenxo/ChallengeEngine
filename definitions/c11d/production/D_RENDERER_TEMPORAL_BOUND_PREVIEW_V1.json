@@ -1,0 +1,180 @@
+{
+  "schema": "C11-D-RENDERER-TEMPORAL-BOUND-PREVIEW-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_TEMPORAL_BOUND_PREVIEW",
+  "status": "PREPARATION_ONLY_SOURCE_BOUND_TEMPORAL_PREVIEW_NOT_APPROVED_NOT_FROZEN",
+  "purpose": "Build an in-memory review-only temporal preview from pinned existing content timing sources. Report zero-based half-open frame spans for a representative Challenge, Visual Loop and Visual Drill without emitting renderer-native input or creating media.",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_lineage": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json",
+        "sha256": "96ee3cffe8223e24673e7eb90c93308d45bb3a350961b2afc5eacbe66b54fbf8"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_SCHEMA_V1.json",
+        "sha256": "1744e2f748c1ce196e8655c85299bef16f475c4a71b45d5db5b6838418fa4b37"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1.json",
+        "sha256": "d6bb63d23b30e34ee011c26b90fe005750b4d5a459aeb71223aeb866d3c5fd93"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_temporal_schedule.py",
+        "sha256": "04b85a077f06d6ef9ffc7569d3fda0a92471b9ee5e1d6e57d3b50dbf6a6247cd"
+      },
+      {
+        "path": "core/authoring/ChallengeTimeLiine.gd",
+        "sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71"
+      },
+      {
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+      },
+      {
+        "path": "core/authoring/VisualLoopTimeline.gd",
+        "sha256": "3560047db470a4cd5162fcf44635bb0289dac9d887b20fd5b776fcd4dfc58c96"
+      },
+      {
+        "path": "core/authoring/VisualDrillTimeline.gd",
+        "sha256": "ccf8658544319514173a7ba6dc9a7374a459e4abb5736dfa2c323cb69e43127b"
+      },
+      {
+        "path": "core/authoring/TemporalCore.gd",
+        "sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966"
+      },
+      {
+        "path": "core/runtime/VisualLoopRuntime.gd",
+        "sha256": "961e976a359e358104ced1447fdc44f104cb1016eaa17eb5211f734166d14022"
+      },
+      {
+        "path": "core/runtime/VisualDrillRuntime.gd",
+        "sha256": "13749de32b13d610e2139798dbd66c87e7310a6b5ce41b437d09b4b3f0cd9741"
+      },
+      {
+        "path": "challenges/CHALLENGE_004.json",
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+      },
+      {
+        "path": "definitions/visual_loop_geometric_canonical.json",
+        "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+      },
+      {
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+      }
+    ],
+    "upstream_temporal_topology_contract": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json",
+    "spatial_hierarchy_contract": "definitions/c11d/production/D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1.json"
+  },
+  "registered_review_sources": {
+    "challenges": {
+      "path": "challenges/CHALLENGE_004.json",
+      "expected_source_id": "CHALLENGE_004",
+      "model": "EXISTING_CHALLENGE_PHASE_SEQUENCE",
+      "timing_object": "video",
+      "fps_field": "fps",
+      "duration_fields": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "segment_ids": [
+        "HOOK",
+        "GAME",
+        "REVEAL",
+        "CTA"
+      ],
+      "duration_authority": "INLINE_CANONICAL_CHALLENGE_VIDEO_PHASE_DURATIONS",
+      "frame_rule": "GODOT_TEMPORALCORE_DURATION_TO_FRAMES_PER_PHASE_ROUNDING",
+      "zero_frame_policy": "PRESERVE_ZERO_LENGTH_PHASE_AS_ZERO_SPAN_AND_DISABLED",
+      "simulation_dependency": "NONE; no SimulationResult, winning_frame or close_calls is read"
+    },
+    "visual_loops": {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "expected_kind": "visual_loop",
+      "model": "EXISTING_CONTINUOUS_LOOP_SPAN",
+      "timing_object": "payload",
+      "fps_field": "fps",
+      "duration_fields": [
+        "duration"
+      ],
+      "frame_count_field": "frame_count",
+      "segment_id": "CONTINUOUS_LOOP",
+      "duration_authority": "CANONICAL_PAYLOAD_DURATION_FPS_AND_FRAME_COUNT",
+      "frame_rule": "GODOT_TEMPORALCORE_ROUND_AND_EXISTING_RUNTIME_FRAME_COUNT_EQUALITY",
+      "subphase_policy": "NO_FAMILY_OR_EDITORIAL_SUBPHASES_INFERRED"
+    },
+    "visual_drills": {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "expected_kind": "visual_drill",
+      "model": "EXISTING_CONTINUOUS_DRILL_SPAN",
+      "timing_object": "payload",
+      "fps_field": "fps",
+      "duration_fields": [
+        "duration"
+      ],
+      "frame_count_field": "frame_count",
+      "segment_id": "CONTINUOUS_DRILL",
+      "duration_authority": "CANONICAL_PAYLOAD_DURATION_FPS_AND_FRAME_COUNT",
+      "frame_rule": "GODOT_TEMPORALCORE_ROUND_AND_EXISTING_RUNTIME_FRAME_COUNT_EQUALITY",
+      "subphase_policy": "NO_EXERCISE_SUBPHASES_INFERRED"
+    }
+  },
+  "preview_rules": {
+    "in_memory_only": true,
+    "frame_index_convention": "ZERO_BASED_HALF_OPEN",
+    "segment_order": "SOURCE_TIMELINE_ORDER",
+    "segment_start": "PREVIOUS_SEGMENT_END_FRAME_EXCLUSIVE",
+    "segment_end": "START_FRAME_PLUS_FRAME_COUNT",
+    "duration_to_frames": "MAX_ZERO_INT_ROUND_NONNEGATIVE_SECONDS_TIMES_FPS_MATCHING_GODOT_TEMPORALCORE",
+    "visual_payload_frame_count": "MUST_EQUAL_DURATION_TO_FRAMES_RESULT; NO_REPAIR_OR_MUTATION",
+    "challenge_phase_duration": "EACH_SOURCE_PHASE_ROUNDED_SEPARATELY_BEFORE_SUMMING; DO_NOT_ROUND_ONLY_TOTAL_DURATION",
+    "declared_total_duration": "NOT_A_TIMELINE_AUTHORITY; ONLY_EXPLICIT_PHASE_DURATIONS_DEFINE_CHALLENGE_SPAN",
+    "spatial_geometry": "D1.5_AND_REGION_HIERARCHY_REMAIN_SPATIAL_AUTHORITY; NO_COORDINATES_IN_PREVIEW",
+    "topology_approval": "NOT_GRANTED",
+    "renderer_native_input": false,
+    "renderer_dispatch": false,
+    "media_creation": false
+  },
+  "required_locks": {
+    "source_adapter_mode": "PREPARE_ONLY",
+    "review_preview_only": true,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  },
+  "approval_state": {
+    "temporal_topology_approved": false,
+    "temporal_preview_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "forbidden_operations": [
+    "change or rewrite a canonical source payload to make the timing pass",
+    "use Python bankers-rounding where it differs from the existing Godot nonnegative round rule",
+    "infer Visual Loop or Visual Drill subphases from a subtype/family label",
+    "derive frame timing from editorial text, winning_frame, close_calls or simulation telemetry",
+    "treat preview segments as renderer-native commands or an executable schedule",
+    "emit pixel coordinates or use unapproved normalized-permille bounds",
+    "invoke Godot/FFmpeg, create media, write output artifacts or dispatch a renderer",
+    "change D4.8, release authority or the frozen C11-C manifest/source"
+  ]
+}

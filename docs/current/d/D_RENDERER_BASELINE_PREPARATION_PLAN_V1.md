@@ -107,3 +107,7 @@ Expected baseline state: bridge/lifecycle pass; D9.15 remains `PASS_CLOSED`; can
 ## 2026-10-10 temporal topology increment
 
 `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md` is the next isolated preparation contract. It distinguishes existing Challenge phase semantics from the single continuous spans used by Visual Loops and Visual Drills. Timing values remain upstream-bound and uninstantiated. Do not use the older normalized-permille proposal as canonical geometry. This increment does not create a renderer baseline, output schedule, media or production authority.
+
+## 2026-10-10 — Source-bound temporal preview (preparation only)
+
+The topology-only temporal proposal is now complemented by `D_RENDERER_TEMPORAL_BOUND_PREVIEW_CHECKPOINT_V1.md`. The new contract produces in-memory half-open frame intervals from pinned representative sources: CHALLENGE_004 (`HOOK>GAME>REVEAL>CTA`, 900 frames at 60 FPS), geometric Visual Loop (60 frames at 30 FPS) and tracking Visual Drill (630 frames at 30 FPS). It checks the exact frame-count arithmetic, source lineage and fail-closed execution boundary. It does not create a video, renderer input, or output artifact; `D4.8=BLOCKED`, `release_authority=NONE`, D9 OPEN, D10 BLOCKED. Windows acceptance is pending. The next step is to bind this report to actual canonical D9.9/D9.10 request/payload results, then assemble an editorial review manifest for the first visual proof. Any real-media attempt remains gated by separately approved/frozen D renderer baseline plus explicit D4.8 authorization.
