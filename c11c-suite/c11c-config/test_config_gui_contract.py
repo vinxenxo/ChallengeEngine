@@ -37,4 +37,12 @@ assert manifest.get('d9_15_operational_acceptance_contract') == 'definitions/c11
 assert manifest.get('d9_15_operational_acceptance_contract_access') == 'READ_ONLY_CANONICAL'
 assert manifest.get('d9_15_operational_acceptance_closed') is False and manifest.get('d9_15_renderer_activation') is False and manifest.get('d9_15_media_created') is False and manifest.get('d9_15_d4_8') == 'BLOCKED' and manifest.get('d9_15_release_authority') == 'NONE'
 assert 'BLOCKED_UNTIL_FUTURE_D_FROZEN_BASELINE_AND_D4_8_AUTHORIZATION' in d914_contract.read_text(encoding='utf-8')
-print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
+print('C11C_CONFIG_GUI_CONTRACT PASS | version=0.2.0 | canonical_contracts=READ_ONLY | D9.10 bridge + D9.11 maintenance + D9.13 lifecycle + D9.14 blocked gate + D9.15 operational matrix + D9.16 full-acceptance gate registered | profiles=ALLOWLISTED | diff/hash/backup/restore=EXPOSED | execution=false')
+
+d916_contract = HERE.parents[1] / 'definitions/c11d/d9/D9_16_FULL_ACCEPTANCE_V1.json'
+assert d916_contract.is_file() and 'D9_FULL_ACCEPTANCE' in module
+assert manifest.get('d9_16_full_acceptance_contract') == 'definitions/c11d/d9/D9_16_FULL_ACCEPTANCE_V1.json'
+assert manifest.get('d9_16_full_acceptance_contract_access') == 'READ_ONLY_CANONICAL'
+assert manifest.get('d9_16_preflight_status') == 'PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED'
+assert manifest.get('d9_16_full_acceptance_closed') is False and manifest.get('d9_16_renderer_activation') is False and manifest.get('d9_16_production_execution') is False and manifest.get('d9_16_media_created') is False and manifest.get('d9_16_d4_8') == 'BLOCKED' and manifest.get('d9_16_release_authority') == 'NONE'
+print('C11C_CONFIG_D9_16_CONTRACT PASS | read_only=true | full_acceptance=BLOCKED_AS_REQUIRED | renderer=false | media=false | release_authority=NONE')

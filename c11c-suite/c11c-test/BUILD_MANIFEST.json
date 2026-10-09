@@ -1,9 +1,9 @@
 {
   "suite_id": "c11c-test",
   "version": "0.2.0",
-  "branch": "C11-D D9.12–D9.15",
+  "branch": "C11-D D9.12–D9.16",
   "entrypoint": "c11c-suite/c11c-test/main.py",
-  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface. D9.13 receipt-chain validation across the same five operational surfaces; preserves identity, seed/profile binding and plan-only/no-media governance. D9.14 fail-closed real-media certification readiness gate, explicitly blocked pending a future authorized D frozen baseline and D4.8 checkpoint; no media execution. D9.15 GUI operational-acceptance preflight validates the eight operator capabilities across exactly five existing surfaces and remains pending explicit Windows GUI evidence; no renderer/media/release authority.",
+  "scope": "Additive D2-D9 test, QA, negative acceptance, GUI/CLI parity and GUI-E2E certification-plan routes inside the existing C11C Test surface. D9.13 receipt-chain validation across the same five operational surfaces; preserves identity, seed/profile binding and plan-only/no-media governance. D9.14 fail-closed real-media certification readiness gate, explicitly blocked pending a future authorized D frozen baseline and D4.8 checkpoint; no media execution. D9.15 GUI operational-acceptance preflight validates the eight operator capabilities across exactly five existing surfaces and remains pending explicit Windows GUI evidence; no renderer/media/release authority. D9.16 full-acceptance aggregate preflight validates D9.8–D9.15 wiring and preserves explicit blockers for unauthorized real-media evidence and incomplete five-surface operator GUI evidence; preflight only, no media or release authority.",
   "canonical_backends": [
     "tools/c11d/d2/validate_d2_1_registry.ps1",
     "tools/c11d/d2/validate_d2_2_asset_role_evidence_v2.ps1",
@@ -23,7 +23,8 @@
     "tools/c11d/d9/maintenance.py",
     "tools/c11d/d9/cross_suite_lifecycle.py",
     "tools/c11d/d9/gui_real_media_certification.py",
-    "tools/c11d/d9/gui_operational_acceptance.py"
+    "tools/c11d/d9/gui_operational_acceptance.py",
+    "tools/c11d/d9/full_acceptance.py"
   ],
   "gui_routes": [
     {
@@ -145,6 +146,11 @@
       "name": "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)",
       "kind": "python",
       "entry": "tools/c11d/d9/test_gui_operational_acceptance.py"
+    },
+    {
+      "name": "D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)",
+      "kind": "python",
+      "entry": "tools/c11d/d9/test_full_acceptance.py"
     }
   ],
   "tests": [
@@ -155,7 +161,8 @@
     "tools/c11d/d9/test_d9_negative_acceptance.py",
     "tools/c11d/d9/test_gui_e2e_certification_plan.py",
     "tools/c11d/d9/test_gui_real_media_certification.py",
-    "tools/c11d/d9/test_gui_operational_acceptance.py"
+    "tools/c11d/d9/test_gui_operational_acceptance.py",
+    "tools/c11d/d9/test_full_acceptance.py"
   ],
   "certification_plan": "docs/current/d/D9_GUI_E2E_CERTIFICATION_PLAN_V1.md",
   "real_media_gui_certification": "OPERATOR_REQUIRED_FUTURE_D9_14_GATE",
@@ -190,5 +197,10 @@
   "d9_15_renderer_activation": false,
   "d9_15_media_created": false,
   "d9_15_d4_8": "BLOCKED",
-  "d9_15_release_authority": "NONE"
+  "d9_15_release_authority": "NONE",
+  "d9_16_full_acceptance": true,
+  "d9_16_status": "PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED",
+  "d9_16_real_media_evidence": "BLOCKED_D4_8_AND_AUTHORIZED_D_RENDERER_BASELINE_REQUIRED",
+  "d9_16_operator_gui_evidence": "REQUIRED_ACROSS_FIVE_SURFACES",
+  "d9_16_full_acceptance_closed": false
 }

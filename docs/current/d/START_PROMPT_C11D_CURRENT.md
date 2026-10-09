@@ -1,4 +1,4 @@
-# C11-D START PROMPT — D9.14 Fail-Closed GUI Certification Gate
+# C11-D START PROMPT — D9.16 Full Acceptance Preflight / Blocked As Required
 
 Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip` (SHA-256: `526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62`) as the source-of-truth working tree. The D9.8 changes below are a development overlay on that archive; do not treat this overlay as a D9/D branch freeze.
 
@@ -14,7 +14,7 @@ Continue `ChallengeEngineV01_STATELESS` from the library upload `ChallengeEngine
 - D9.9 = PASS: universal request/plan, GUI/CLI parity and operator-confirmed Windows plan generation across currently implemented D content types. Producer UTF-8 CLI and Qt scope-handler fixes have been applied and verified by the operator.
 - D9.10 = PASS for bridge contract/planning record, CLI record parity (3/3), static GUI contract and operator-confirmed Windows plan-only bridge-output tab. Producer 0.11.1; physical rendering remains deferred.
 - D9.11 = PASS/CLOSED. Operator confirmed the Windows Maintenance GUI opens; `test_maintenance.py`, Maintenance self-test and full Suite self-test pass after restoring the authentic historical C11-C freeze manifest byte-for-byte (SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`). Canonical backend: `tools/c11d/d9/maintenance.py`.
-- D9.12 = Test 0.2.0 PASS; Windows Test GUI opened and the D9.14 gate route was executed successfully. Current route contract after D9.15: 24/24 D routes and 54 total GUI routes; canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`.
+- D9.12 = Test 0.2.0 PASS; Windows Test GUI opened and the D9.14 gate route was executed successfully. Current route contract after D9.16: 25/25 D routes and 55 total GUI routes; canonical route index: `c11c-suite/c11c-test/BUILD_MANIFEST.json`.
 - D9.13 = backend/aggregate PASS: 3 types, 5/5 stages, parity 3/3, Catalog 3/3, Maintenance audit 3/3, negative 12/12. Maintenance fixture now synthesizes retired `c11d-control` only in temporary storage. D9.15 GUI evidence will explicitly exercise the remaining five-surface operator views; do not recreate the retired surface in the live tree.
 - D9.14 = FAIL-CLOSED GUI certification gate implemented and regression-tested. This is NOT real-media acceptance: future D frozen renderer baseline absent/not authorized, `D4.8=BLOCKED`, renderer/production/media false, `release_authority=NONE`. Operator must verify Producer gate and Test route appear in Windows GUI; actual real-media E2E remains blocked.
 
@@ -48,7 +48,7 @@ Do not create or register `c11d-control`, `c11c-studio`, or any sixth operationa
 
 ## D9 sequence
 
-D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **CLI/static PASS; GUI bring-up unconfirmed** → D9.13 cross-suite lifecycle **backend/aggregate PASS; Windows lifecycle views pending** → D9.14 **fail-closed gate PASS / real-media certification BLOCKED; Windows gate UI confirmed** → D9.15 **operational preflight PASS / all-surface GUI evidence REQUIRED** → D9.16 full acceptance → D9.17 D9 closure.
+D9.8 Universal Editorial Model **PASS (static/model scope)** → D9.9 Producer universal coverage **PASS (operator-confirmed Windows plan creation)** → D9.10 editorial-to-render bridge planning **PASS (plan-only; Windows GUI confirmed)** → D9.11 Maintenance 0.2.0 **PASS/CLOSED (Windows GUI + regression confirmed)** → D9.12 Test 0.2.0 **PASS; Windows GUI opened and D9.14 gate route executed successfully** → D9.13 cross-suite lifecycle **backend/aggregate PASS; Windows lifecycle views pending** → D9.14 **fail-closed gate PASS / real-media certification BLOCKED; Windows gate UI confirmed** → D9.15 **operational preflight PASS / all-surface GUI evidence REQUIRED** → D9.16 full acceptance → D9.17 D9 closure.
 
 ## Baseline reading and inspection order
 
@@ -76,7 +76,7 @@ python .\c11c-suite\c11c-producer\test_d9_producer_integration.py
 python .\c11c-suite\self_test.py
 ```
 
-Current D9.8–D9.13 evidence: 9/9 Challenge IDs; five Loop families/27 concrete grammars; four Drill types/20 variants; D9.8 negatives 25/25; D9.9 selectors and negatives 61/61 + 20/20 with GUI/CLI process parity 3/3; D9.10 bridge record coverage 3/3, CLI parity 3/3 and negatives 15/15. The operator confirmed D9.9 plan generation, D9.10 bridge output, and D9.11 Maintenance GUI in Windows. D9.12 adds D2–D9 Test GUI route registry, a no-media preflight for 11 GUI E2E cases, and aggregate D9 negative/parity runners. D9.13 adds a SHA-256-sealed five-surface receipt/replay validator, Catalog non-authoritative intent projection and Maintenance read-only audit: three supported content types, 5/5 stages, parity 3/3, projection 3/3, audit 3/3, negatives 12/12. D9.14 adds a fail-closed gate with 10 real-media E2E cases and 20 negative controls; the preflight passing means the gate correctly remains BLOCKED, not that real media was produced. The aggregate self-test now prints visible progress through its 18 subprocess checks and passes with the D9.14 gate present.
+Current D9.8–D9.13 evidence: 9/9 Challenge IDs; five Loop families/27 concrete grammars; four Drill types/20 variants; D9.8 negatives 25/25; D9.9 selectors and negatives 61/61 + 20/20 with GUI/CLI process parity 3/3; D9.10 bridge record coverage 3/3, CLI parity 3/3 and negatives 15/15. The operator confirmed D9.9 plan generation, D9.10 bridge output, and D9.11 Maintenance GUI in Windows. D9.12 adds D2–D9 Test GUI route registry, a no-media preflight for 11 GUI E2E cases, and aggregate D9 negative/parity runners. D9.13 adds a SHA-256-sealed five-surface receipt/replay validator, Catalog non-authoritative intent projection and Maintenance read-only audit: three supported content types, 5/5 stages, parity 3/3, projection 3/3, audit 3/3, negatives 12/12. D9.14 adds a fail-closed gate with 10 real-media E2E cases and 20 negative controls; the preflight passing means the gate correctly remains BLOCKED, not that real media was produced. The aggregate self-test now prints visible progress through its 20 subprocess checks and passes with the D9.16 preflight integrated.
 
 
 ## D9.10 canonical editorial-to-render bridge
@@ -135,3 +135,15 @@ Next: D9.14 real GUI production certification is not enabled by D9.13; it requir
 ## D9.14 current gate
 
 `tools/c11d/d9/gui_real_media_certification.py` is a fail-closed readiness gate, not a renderer. The Producer gate view and Test route must report `BLOCKED` until a future D frozen renderer baseline and explicit D4.8 authorization are approved. GUI has no production/media callback. Longform remains unsupported until canonical D request schema support is added. Run `python .\tools\c11d\d9\test_gui_real_media_certification.py`, `python .\c11c-suite\c11c-producer\test_d914_certification_gate_contract.py`, `python .\c11c-suite\c11c-config\test_config_gui_contract.py`, `python .\c11c-suite\c11c-test\test_d9_test_integration.py`, then `python .\c11c-suite\self_test.py`. In Windows, open Producer and Test GUIs and verify the gate is visible without output media.
+
+
+# D9.16 Current Handover (2026-10-09)
+
+- D9.8–D9.13 backend/static checkpoints pass; D9.11 Maintenance is operator-confirmed and Windows focused/full regression passed. D9.12 Test 0.2.0 passes on Windows.
+- D9.14 gate is operator-confirmed visible/executable in Producer and Test GUIs, but real-media certification remains BLOCKED because no authorized future D renderer baseline exists and `D4.8=BLOCKED`.
+- D9.15 preflight passes (8 capabilities/5 surfaces), but do not infer full operational acceptance from static checks; record operator GUI evidence for all five surfaces.
+- D9.16 adds a full-acceptance preflight only. Focused test is `tools/c11d/d9/test_full_acceptance.py`, registered in `c11c-test` and in the aggregate `c11c-suite/self_test.py` as step 20/20 in the current 20-step aggregate. Expected result: `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`; full acceptance remains false.
+- The preflight validates nine D9 checkpoint evidence routes, exact five-surface topology, Config/Test registry, D9.14 fail-closed state, D9.15 evidence requirement, and immutable manifest hash; 21 negative cases guard against fabricated acceptance, operator evidence, renderer/media/release authority, and seed-governance drift.
+- Latest operator-provided output confirms the full 20/20 aggregate with D9.16 integrated, and confirms that the D9.14 blocked gate appears and executes in both Producer and Test GUIs. The complete D9.15 GUI operational matrix across all five surfaces has not yet been explicitly confirmed.
+- D10 remains BLOCKED. Do not activate renderer, create real media through the universal GUI, grant release authority, modify C11-C 2.19.12, or alter `release/C11C_FREEZE_PACKAGE_MANIFEST.json`.
+- Current handover: D9.16 overlay is prepared and its focused preflight, Config/Test contracts and 20-step aggregate pass in the packaging workspace. Windows application and the D9.16 Test GUI route are still pending operator confirmation. Apply the overlay on the D9.15 tree, run `python .\tools\c11d\d9\test_full_acceptance.py`, focused Config/Test checks, then `python -u .\c11c-suite\self_test.py`. Full D9 closure still requires separately authorized media and all five-surface GUI evidence.

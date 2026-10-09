@@ -1,7 +1,7 @@
 {
   "suite_id": "c11c-config",
   "version": "0.2.0",
-  "branch": "C11-D D9.7–D9.15",
+  "branch": "C11-D D9.7–D9.16",
   "entrypoint": "c11c-suite/c11c-config/main.py",
   "modules": [
     "c11c-suite/c11c-config/c11d_config.py"
@@ -24,7 +24,8 @@
     "D9.11 maintenance policy (read-only registry; allowlisted reversible maintenance only)",
     "D9.13 cross-suite lifecycle identity binding (read-only; five surfaces; plan-only; no renderer/media/release authority)",
     "D9.14 real-media GUI certification gate (read-only; BLOCKED until authorized future D frozen baseline; no execution/media/release authority)",
-    "D9.15 GUI operational acceptance matrix (read-only; operator GUI evidence required; no execution/media/release authority)"
+    "D9.15 GUI operational acceptance matrix (read-only; operator GUI evidence required; no execution/media/release authority)",
+    "D9.16 full acceptance preflight (read-only; blocked until authorized real-media evidence and five-surface operator GUI evidence; no execution/media/release authority)"
   ],
   "canonical_contracts_access": "READ_ONLY",
   "operator_profile_schema": "definitions/c11d/config/C11D_OPERATOR_CONFIGURATION_SCHEMA_V1.json",
@@ -81,5 +82,14 @@
   "d9_15_production_execution": false,
   "d9_15_media_created": false,
   "d9_15_d4_8": "BLOCKED",
-  "d9_15_release_authority": "NONE"
+  "d9_15_release_authority": "NONE",
+  "d9_16_full_acceptance_contract": "definitions/c11d/d9/D9_16_FULL_ACCEPTANCE_V1.json",
+  "d9_16_full_acceptance_contract_access": "READ_ONLY_CANONICAL",
+  "d9_16_preflight_status": "PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED",
+  "d9_16_full_acceptance_closed": false,
+  "d9_16_renderer_activation": false,
+  "d9_16_production_execution": false,
+  "d9_16_media_created": false,
+  "d9_16_d4_8": "BLOCKED",
+  "d9_16_release_authority": "NONE"
 }

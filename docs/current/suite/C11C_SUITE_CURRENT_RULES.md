@@ -4,9 +4,9 @@
 **C11-C:** 2.19.12 FROZEN
 **Producer:** 0.11.1
 **Catalog:** 0.2.0
-**Config:** 0.2.0 integration; D9.8 model, D9.10 bridge, D9.11 maintenance, D9.13 lifecycle and D9.14 fail-closed gate registered read-only (25/25 static registry validation; Windows Config Qt acceptance still pending)
+**Config:** 0.2.0 integration; D9.8 model, D9.10 bridge, D9.11 maintenance, D9.13 lifecycle, D9.14 fail-closed gate, D9.15 operational matrix and D9.16 full-acceptance preflight registered read-only (27/27 registry validation; all-surface Windows GUI evidence remains pending)
 **Maintenance:** 0.2.0 PASS/CLOSED for D9.11; Windows GUI opens and focused/full Suite tests pass
-**Test:** 0.2.0 D9.12 route/manifest contract PASS; D9.13 lifecycle and D9.14 blocked gate registered; 23/23 D routes, 53 total GUI routes; Windows Test GUI bring-up not explicitly confirmed
+**Test:** 0.2.0 D9.12 route/manifest contract PASS; D9.13 lifecycle, D9.14 blocked gate, D9.15 operational preflight and D9.16 full-acceptance preflight registered; 25/25 D routes, 55 total GUI routes; Windows Test GUI and D9.14 gate route confirmed
 
 ## Architecture
 
@@ -46,7 +46,7 @@ D7 matrix/catalog and D9 pilot/product provenance can be inspected through the e
 
 ### Config 0.2.0
 
-D contracts and operator profiles are exposed through the existing Config surface. The read-only registry now includes the D9.10 editorial-render bridge contract and validates that renderer input/media remain absent, D4.8 remains BLOCKED, and release authority remains NONE. Generic editing must remain blocked for protected/canonical roots.
+D contracts and operator profiles are exposed through the existing Config surface. The read-only registry includes D9.10 bridge, D9.11 maintenance, D9.13 lifecycle, D9.14 blocked gate, D9.15 operational acceptance and D9.16 full-acceptance preflight contracts. The 27/27 registry check validates that renderer input/media remain absent, D4.8 remains BLOCKED, and release authority remains NONE. Generic editing must remain blocked for protected/canonical roots.
 
 ### Maintenance 0.2.0 target
 
@@ -54,7 +54,7 @@ Exposes D9-safe dry-run, two-root allowlisted reversible cleanup, legacy-surface
 
 ### Test 0.2.0 target
 
-Test 0.2.0 registers D2–D9 validation, seed governance, provenance, media QA, negative controls, GUI/CLI parity, a no-media GUI E2E certification preflight, D9.13 lifecycle tests and the D9.14 fail-closed real-media certification gate. It invokes existing canonical tests/backends and does not duplicate domain logic.
+Test 0.2.0 registers 25 D routes in 55 total GUI routes, including D2–D9 validation, seed governance, provenance, media QA, negative controls, GUI/CLI parity, no-media GUI E2E preflight, D9.13 lifecycle, D9.14 fail-closed real-media gate, D9.15 operational preflight and D9.16 full-acceptance preflight. It invokes existing canonical tests/backends and does not duplicate domain logic.
 
 ## Production authority
 
@@ -91,3 +91,8 @@ D9.14 adds a read-only, fail-closed real-media certification gate to the existin
 ## D9.15 operational acceptance (preflight ready; operator confirmation required)
 
 `tools/c11d/d9/gui_operational_acceptance.py` performs a side-effect-free structural preflight over the exact five canonical surfaces and eight operator capabilities. `c11c-test` exposes `D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)` and Config registers the canonical matrix read-only. A static PASS is not closure: collect Windows GUI evidence for Config, Producer, Test, Catalog and Maintenance. Keep D9.14 real-media gate blocked; no real media, renderer or release authority is implied.
+
+
+## D9.14–D9.16 acceptance boundaries
+
+D9.14 is operator-confirmed visible/executable in Producer and Test, but **real-media certification remains BLOCKED**. D9.15 structural preflight passes (8 capabilities/5 surfaces, 19 negatives), while recorded GUI evidence for all five surfaces is still required. D9.16 adds `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)` in Test and a read-only Config registration; its static acceptance is deliberately `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`, with 9/9 evidence routes and 21 negative controls. It does not close D9, fabricate operator evidence, create media or grant release authority. The aggregate Suite self-test now has 20 steps.

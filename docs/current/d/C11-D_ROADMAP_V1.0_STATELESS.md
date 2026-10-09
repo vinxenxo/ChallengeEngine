@@ -92,7 +92,7 @@ Required tests:
 - unsupported-field negatives;
 - unchanged gameplay/music seeds.
 
-**Implementation status: PASS (plan-only scope).** The inventory matrix resolves all 9 Challenge IDs, 27 concrete Loop grammars plus five family-level `auto` selectors, and 20 Drill type/tier variants. Separate CLI-process parity is certified for Challenge, Loop and Drill; 20 negative controls pass. Renderer/production remain off, `release_authority=NONE`, and the operator has now confirmed Windows GUI plan generation for all currently implemented D types without errors. This does not constitute real-media GUI acceptance or close D9.
+**Implementation status: PASS (plan-only scope).** The inventory matrix resolves all 9 Challenge IDs, 27 concrete Loop grammars plus five family-level `auto` selectors, and 20 Drill type/tier variants. Separate CLI-process parity is certified for Challenge, Loop and Drill; 21 negative controls pass. Renderer/production remain off, `release_authority=NONE`, and the operator has now confirmed Windows GUI plan generation for all currently implemented D types without errors. This does not constitute real-media GUI acceptance or close D9.
 
 ### D9.10 — Editorial-to-render bridge planning
 
@@ -182,11 +182,15 @@ Run `python .\tools\c11d\d9\test_gui_operational_acceptance.py`, the Config/Test
 
 ### D9.16 — D9 final acceptance
 
-Run the full Suite acceptance with GUI/CLI parity, real-media evidence, negative cases, protected-root checks and documentation closure.
+**Current implementation status: PREFLIGHT PASS / FULL ACCEPTANCE BLOCKED AS REQUIRED.** The canonical full-acceptance preflight checks the D9.8–D9.16 evidence wiring, the five-surface topology, Config/Test registration, the immutable C11-C manifest hash, the D9.14 fail-closed gate and the D9.15 operator-evidence state. It provides a sealed record and 21 negative controls without executing the test suite recursively or creating files/media.
+
+This is not D9.16 closure. Full acceptance still requires (1) authorized real-media GUI evidence for the required cases after a separately approved D frozen renderer baseline and an explicit D4.8 governance checkpoint, and (2) recorded operator GUI evidence across all five existing Suite surfaces. No local file, preflight, or button may unlock D4.8. `D9.14=BLOCKED`, `D9.15=OPERATOR_EVIDENCE_REQUIRED`, `renderer_activation=false`, `media_created=false`, and `release_authority=NONE` remain mandatory.
+
+Run `python .\tools\c11d\d9\test_full_acceptance.py`, then the entire `python -u .\c11c-suite\self_test.py`. The preflight itself should report `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`; the aggregate suite PASS proves only that all gates correctly behave, not that physical real-media acceptance occurred.
 
 ### D9.17 — D9 CLOSED
 
-Only when D9.8–D9.16 are accepted. D10 remains BLOCKED until D9.17 closes.
+Only when D9.8–D9.16 are genuinely accepted, including real-media GUI evidence and five-surface operator acceptance. D10 remains BLOCKED until D9.17 closes.
 
 ## Suite version/update plan
 
@@ -197,7 +201,7 @@ Only when D9.8–D9.16 are accepted. D10 remains BLOCKED until D9.17 closes.
 | `c11c-catalog` | 0.2.0 | 0.2.x | product identity → provenance → reproduction |
 | `c11c-config` | 0.2.0 | 0.2.x | profiles → validation → save/restore → protected roots |
 | `c11c-maintenance` | 0.2.0 PASS/CLOSED; operator-confirmed Windows GUI and focused/regression tests passed | 0.2.0 | dry-run → reversible allowlist archive/quarantine → doc/freeze preflight |
-| `c11c-test` | 0.2.0 implemented; static contract PASS; Windows GUI check pending | 0.2.0 | D2–D9 registration + GUI E2E preflight + negative acceptance + parity routes |
+| `c11c-test` | 0.2.0 implemented; D9.14/D9.15/D9.16 preflight routes integrated; Windows Test GUI and D9.14 gate execution confirmed | 0.2.0 | D2–D9 registration + full-acceptance preflight; real-media evidence remains blocked |
 
 Versions labelled “next target” are planning targets, not claims of current release.
 

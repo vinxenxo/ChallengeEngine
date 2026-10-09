@@ -33,6 +33,7 @@ REQUIRED_ROUTES = {
     "D9.13 CROSS-SUITE LIFECYCLE CHAIN": ("python", "tools/c11d/d9/test_cross_suite_lifecycle.py"),
     "D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)": ("python", "tools/c11d/d9/test_gui_real_media_certification.py"),
     "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)": ("python", "tools/c11d/d9/test_gui_operational_acceptance.py"),
+    "D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)": ("python", "tools/c11d/d9/test_full_acceptance.py"),
 }
 
 
@@ -69,6 +70,10 @@ def run_checks() -> dict[str, int]:
         raise AssertionError("D9.14 blocked real-media certification gate route not registered")
     if "D9.15 GUI OPERATIONAL ACCEPTANCE PREFLIGHT (PLAN ONLY)" not in route_names:
         raise AssertionError("D9.15 operational acceptance preflight route not registered")
+    if "D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)" not in route_names:
+        raise AssertionError("D9.16 full-acceptance preflight route not registered")
+    if manifest.get("d9_16_full_acceptance_closed") is not False or manifest.get("d9_16_real_media_evidence") != "BLOCKED_D4_8_AND_AUTHORIZED_D_RENDERER_BASELINE_REQUIRED":
+        raise AssertionError("D9.16 must stay blocked pending real-media evidence")
     gate_row=by_name["D9.14 REAL GUI PRODUCTION CERTIFICATION GATE (BLOCKED)"]
     if "no media" not in gate_row[3].lower() and "no-media" not in gate_row[3].lower():
         raise AssertionError("D9.14 certification gate route must state no media")

@@ -34,11 +34,11 @@ D9.4 is a valid closed media checkpoint, not the final D9 closure. D9.5.1 and D9
 | D9.9 | Producer 0.11.0 universal editorial selectors + canonical plan-only adapter | PASS / static matrix + CLI-process parity; Windows plan generation confirmed by operator |
 | D9.10 | Editorial-to-render bridge planning (Producer 0.11.1) | PASS / 3 content types, CLI record parity 3/3, negatives 15/15; Windows GUI output-tab check confirmed; physical renderer deferred |
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
-| D9.12 | Test 0.2.0 | PASS / CLI and aggregate acceptance; Windows GUI bring-up not explicitly confirmed |
+| D9.12 | Test 0.2.0 | PASS / Windows GUI opened and D9.14 gate route executed successfully |
 | D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
 | D9.14 | Real GUI production certification | BLOCKED gate confirmed visible/executable in Producer and Test GUIs; REAL-MEDIA remains BLOCKED pending authorized future D baseline + explicit D4.8 |
 | D9.15 | GUI operational acceptance | PREFLIGHT PASS (8 capabilities / 5 surfaces); Windows operator evidence across all five surfaces REQUIRED |
-| D9.16 | Full D9 acceptance | PLANNED |
+| D9.16 | Full D9 acceptance | PREPARED-PACKAGE PREFLIGHT PASS / FULL ACCEPTANCE BLOCKED AS REQUIRED; Windows validation pending |
 | D9.17 | D9 final closure | BLOCKED until all above PASS |
 | D10 | New mechanics | BLOCKED |
 
@@ -68,3 +68,17 @@ The real-media GUI certification gate is integrated into the existing Producer a
 - Static readiness validates 8 capabilities across Config, Producer, Test, Catalog and Maintenance, launcher/manifest identity, GUI tokens, frozen manifest SHA-256, and the still-blocked D9.14 gate. It does not write evidence or execute production.
 - **Status: PREFLIGHT PASS / OPERATOR GUI ACCEPTANCE REQUIRED.** The operator confirmed Producer and Test launch and D9.14 gate execution, but has not yet confirmed all eight D9.15 operational capabilities across all five GUIs. Record evidence before marking D9.15 PASS.
 - `D4.8=BLOCKED`; renderer, production and media creation remain false; `release_authority=NONE`; C11-C 2.19.12 and its historical manifest remain immutable.
+
+
+## D9.16 Full D9 acceptance checkpoint (2026-10-09)
+
+- Canonical contract: `definitions/c11d/d9/D9_16_FULL_ACCEPTANCE_V1.json` (Config registry, `READ_ONLY_CANONICAL`).
+- Backend/preflight: `tools/c11d/d9/full_acceptance.py`; focused test: `tools/c11d/d9/test_full_acceptance.py`; existing Test route: `D9.16 FULL D9 ACCEPTANCE PREFLIGHT (NO MEDIA)`.
+- Preflight checks nine checkpoint evidence routes (D9.8–D9.16), five static governance/topology checks, the five canonical surfaces, the D9.14 blocked gate, D9.15 operator-evidence requirement and the immutable C11-C manifest SHA-256. Twenty-one negative controls reject status promotion, renderer/media/release side effects, governance drift and fabricated operator evidence.
+- **Status: PREFLIGHT PASS / FULL ACCEPTANCE BLOCKED AS REQUIRED.** The gate does not close D9.16; real-media evidence remains unauthorized because the future D frozen renderer baseline is absent and D4.8 is BLOCKED. D9.15 still requires recorded GUI evidence across Config, Producer, Test, Catalog and Maintenance.
+- Applying/running this checkpoint does not create media, alter C11-C or grant release authority. D9 remains OPEN; D10 BLOCKED.
+
+
+## D9.16 package verification (2026-10-09)
+
+The prepared D9.16 overlay passes in the packaging workspace: focused preflight `static_checks=5/5`, `evidence_routes=9/9`, `negative=21/21`, `full_acceptance=BLOCKED_AS_REQUIRED`; Config validates 27/27 contracts; Test validates 25/25 D routes and 55 total GUI routes; the 20/20 aggregate self-test passes. These are package-side results, not yet operator-confirmed Windows results for D9.16. The operator has confirmed that Producer and Test GUIs display/run the D9.14 gate. This is not full D9 acceptance: all-five-surface D9.15 operator evidence and authorized real-media production evidence remain blockers.
