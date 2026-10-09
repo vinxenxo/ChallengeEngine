@@ -6,6 +6,7 @@ param(
     [ValidateRange(1,2147483646)][int]$ChallengeSeed = 42001,
     [ValidateRange(1,2147483646)][int]$GameplaySeed = 42002,
     [ValidateRange(1,2147483646)][int]$DrillSeed = 42003,
+    [ValidateRange(1,2147483646)][int]$ChallengeMusicSeed = 73020,
     [ValidateRange(1,2147483646)][int]$MusicSeedA = 73021,
     [ValidateRange(1,2147483646)][int]$MusicSeedB = 73022,
     [string]$RunId = ''
@@ -20,7 +21,7 @@ $FFprobe = Get-Command ffprobe -ErrorAction Stop
 $Godot = Get-Command godot.exe -ErrorAction SilentlyContinue
 if (-not $Godot) { $Godot = Get-Command godot -ErrorAction SilentlyContinue }
 if (-not $Godot) { throw 'No se encontró Godot en PATH. La cualificación requiere ejecución real del renderizador existente.' }
-if ($MusicSeedA -eq $MusicSeedB) { throw 'MusicSeedA y MusicSeedB deben ser diferentes para probar aislamiento de audio.' }
+if ($ChallengeMusicSeed -eq $MusicSeedA -or $ChallengeMusicSeed -eq $MusicSeedB -or $MusicSeedA -eq $MusicSeedB) { throw 'ChallengeMusicSeed, MusicSeedA y MusicSeedB deben ser distintos para conservar el aislamiento de audio.' }
 if ([string]::IsNullOrWhiteSpace($RunId)) { $RunId = (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ') }
 if ($RunId -notmatch '^[A-Za-z0-9_-]{8,40}$') { throw 'RunId debe tener entre 8 y 40 caracteres alfanuméricos, guion o guion bajo.' }
 
@@ -40,6 +41,9 @@ $ChallengeRunner = Join-Path $ProjectRoot 'tools\prototypes\c11c_bulk\run_c11c_c
 $LoopRunner = Join-Path $ProjectRoot 'tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1'
 $DrillRunner = Join-Path $ProjectRoot 'c11c-suite\c11c-producer\run_visual_drill_production.ps1'
 $AmbientScript = Join-Path $ProjectRoot 'tools\prototypes\c11c_common\C11CSafeAmbient.py'
+$MusicEngine = Join-Path $ProjectRoot 'tools\c11d\d3\c11d_music_engine_v5.py'
+$MusicEngineSpec = Join-Path $ProjectRoot 'definitions\c11d\music\C11D_MUSIC_ENGINE_V5_SPEC_V1.json'
+$ChallengeMusicProfile = Join-Path $ProjectRoot 'definitions\c11d\music\C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json'
 $CManifest = Join-Path $ProjectRoot 'release\C11C_FREEZE_PACKAGE_MANIFEST.json'
 $ExpectedCManifest = 'e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953'
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
@@ -71,6 +75,50 @@ function Get-SourceTreeHash {
     if (-not $match.Success) { throw "No se pudo leer tree_sha256 de la auditoría: $LogPath" }
     return $match.Groups[1].Value
 }
+function Get-AudioMaxVolumeDb {
+    param([string]$Path)
+    # FFmpeg's volumedetect emits successful analysis messages (including Input #0 and
+    # max_volume) on stderr at info level. Windows PowerShell 5.1 can promote redirected
+    # native stderr records to terminating errors under the script-wide Stop preference.
+    # Relax the preference only within this capture scope, then restore it unconditionally;
+    # the native exit code and required max_volume statistic remain mandatory.
+    $previousPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        $raw = & ffmpeg -hide_banner -nostats -v info -i $Path -map 0:a:0 -af volumedetect -f null - 2>&1
+        $exitCode = $LASTEXITCODE
+        $text = (($raw | ForEach-Object { [string]$_ }) -join "`n")
+    }
+    finally {
+        $ErrorActionPreference = $previousPreference
+    }
+    if ($exitCode -ne 0) { throw "FFmpeg audio loudness audit failed for $Path : $text" }
+    $match = [regex]::Match($text,'max_volume:\s*(-inf|-?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))\s*dB',[System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+    if (-not $match.Success) { throw "FFmpeg did not report max_volume for $Path" }
+    if ($match.Groups[1].Value -eq '-inf') { throw "Audio is silent (max_volume=-inf dB): $Path" }
+    $value = [double]::Parse($match.Groups[1].Value,[Globalization.CultureInfo]::InvariantCulture)
+    if ($value -le -90.0) { throw "Audio is silent/inaudible by qualification threshold (max_volume=$value dB): $Path" }
+    return $value
+}
+function Invoke-ChallengeMusicEngineV5 {
+    param([string]$OutputPath,[string]$ReceiptPath,[int]$Seed,[double]$Duration)
+    $durationArg = $Duration.ToString([Globalization.CultureInfo]::InvariantCulture)
+    $musicArgs = @($MusicEngine,'--engine',$MusicEngineSpec,'--profile',$ChallengeMusicProfile,'--output',$OutputPath,'--seed',[string]$Seed,'--tempo','104','--duration',$durationArg,'--variation','0')
+    $raw = & python @musicArgs 2>&1
+    if ($LASTEXITCODE -ne 0) { throw "C11-D Music Engine V5 failed for Challenge seed=${Seed}: $(($raw | Out-String))" }
+    $line = @($raw | ForEach-Object { [string]$_ } | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Select-Object -Last 1)
+    if ($line.Count -ne 1) { throw 'C11-D Music Engine V5 returned no JSON receipt for Challenge.' }
+    try { $receipt = $line[0] | ConvertFrom-Json } catch { throw 'C11-D Music Engine V5 returned invalid JSON receipt for Challenge.' }
+    if ([string]$receipt.engine_id -ne 'c11d_music_engine_v5' -or [string]$receipt.engine_version -ne '5.0') { throw 'Challenge music engine identity/version mismatch.' }
+    if ([string]$receipt.style_profile_id -ne 'challenge_8bit_v1' -or [int]$receipt.music_seed -ne $Seed) { throw 'Challenge music style/seed receipt mismatch.' }
+    if ([math]::Abs([double]$receipt.duration_seconds - $Duration) -gt 0.01) { throw 'Challenge music duration mismatch.' }
+    if ([double]$receipt.peak_linear -le 0 -or [double]$receipt.rms_linear -le 0) { throw 'Challenge music engine output is silent.' }
+    if (-not (Test-Path -LiteralPath $OutputPath -PathType Leaf) -or (Get-Item -LiteralPath $OutputPath).Length -le 4096) { throw 'Challenge music WAV is missing or implausibly small.' }
+    $actualHash = Get-FileSha256 $OutputPath
+    if ([string]$receipt.output_hash -ne $actualHash) { throw 'Challenge music receipt output hash mismatch.' }
+    [IO.File]::WriteAllText($ReceiptPath,($receipt | ConvertTo-Json -Depth 12),$Utf8NoBom)
+    return $receipt
+}
 function Get-Probe {
     param([string]$Path)
     $raw = & ffprobe -v error -count_frames -show_streams -show_format -of json -- $Path 2>&1
@@ -92,7 +140,8 @@ function Get-Probe {
     if (-not $audio) { throw "El vídeo final debe llevar audio: $Path" }
     if ([int]$audio.channels -ne 2) { throw "Se esperaba audio estéreo en $Path" }
     if ($null -ne $video.duration -and $null -ne $audio.duration -and [math]::Abs([double]$video.duration-[double]$audio.duration) -gt 0.20) { throw "Desfase de duración A/V superior a 200 ms: $Path" }
-    return [ordered]@{width=[int]$video.width;height=[int]$video.height;fps=$fps;frames=[int]$video.nb_read_frames;duration_seconds=$duration;video_codec=[string]$video.codec_name;pixel_format=[string]$video.pix_fmt;audio_codec=[string]$audio.codec_name;audio_sample_rate=[int]$audio.sample_rate;audio_channels=[int]$audio.channels}
+    $maxVolumeDb = Get-AudioMaxVolumeDb $Path
+    return [ordered]@{width=[int]$video.width;height=[int]$video.height;fps=$fps;frames=[int]$video.nb_read_frames;duration_seconds=$duration;video_codec=[string]$video.codec_name;pixel_format=[string]$video.pix_fmt;audio_codec=[string]$audio.codec_name;audio_sample_rate=[int]$audio.sample_rate;audio_channels=[int]$audio.channels;audio_max_volume_db=$maxVolumeDb}
 }
 function Get-FrameDigests {
     param([string]$VideoPath,[string]$DigestPath)
@@ -132,7 +181,7 @@ try {
     & python $Contract authorize-check --project-root $ProjectRoot --token $ConfirmProductionQualification
     if ($LASTEXITCODE -ne 0) { throw 'El contrato no autoriza esta ejecución acotada.' }
     if ((Get-FileSha256 $CManifest) -ne $ExpectedCManifest) { throw 'El manifest congelado C11-C no coincide. Se aborta sin render.' }
-    foreach ($required in @($ChallengeRunner,$LoopRunner,$DrillRunner,$AmbientScript,$CandidateAudit)) {
+    foreach ($required in @($ChallengeRunner,$LoopRunner,$DrillRunner,$AmbientScript,$MusicEngine,$MusicEngineSpec,$ChallengeMusicProfile,$CandidateAudit)) {
         if (-not (Test-Path -LiteralPath $required -PathType Leaf)) { throw "Falta dependencia requerida: $required" }
     }
     $sourceBefore = Get-SourceTreeHash (Join-Path $RunRoot 'source_tree_preflight_before.txt')
@@ -144,10 +193,21 @@ try {
     $FFprobeVersion = (($FFprobeVersionLines | Select-Object -First 1) | Out-String).Trim()
     $PythonVersion = (& python --version 2>&1 | Out-String).Trim()
 
-    # 1) Challenge real con el launcher de producción existente; incluye su ruta de audio C7.
-    Invoke-QualificationScript -ScriptPath $ChallengeRunner -Arguments @{ChallengeId='CHALLENGE_001';Seed=$ChallengeSeed;DeliveryProfile='REVIEW_720';OutputRoot=$ChallengeRoot} -LogPath (Join-Path $RunRoot 'challenge_launcher.log') -ExpectedMarker '[CHALLENGE] PASS'
+    # 1) Render the existing frozen Challenge visual as video-only, then use the canonical D3 Music Engine V5
+    # (the already-qualified D9.2 A/V path) to create a final audiovisual MP4 without mutating C11-C.
+    Invoke-QualificationScript -ScriptPath $ChallengeRunner -Arguments @{ChallengeId='CHALLENGE_001';Seed=$ChallengeSeed;DeliveryProfile='REVIEW_720';NoSound=$true;OutputRoot=$ChallengeRoot} -LogPath (Join-Path $RunRoot 'challenge_launcher.log') -ExpectedMarker '[CHALLENGE] PASS'
     $challengeMp4 = Join-Path $ChallengeRoot (Join-Path 'CHALLENGE_001' "CHALLENGE_001_seed_${ChallengeSeed}.mp4")
-    if (-not (Test-Path -LiteralPath $challengeMp4 -PathType Leaf)) { throw "MP4 challenge ausente: $challengeMp4" }
+    $challengeManifestPath = Join-Path $ChallengeRoot (Join-Path 'CHALLENGE_001' 'production_manifest.json')
+    if (-not (Test-Path -LiteralPath $challengeMp4 -PathType Leaf) -or -not (Test-Path -LiteralPath $challengeManifestPath -PathType Leaf)) { throw "Challenge MP4/production manifest ausente: $challengeMp4" }
+    $challengeManifest = Get-Content -Raw -LiteralPath $challengeManifestPath | ConvertFrom-Json
+    $challengeDuration = [double]$challengeManifest.duration_seconds
+    if ($challengeDuration -lt 3 -or $challengeManifest.audio_present -ne $false) { throw 'Challenge source must be a valid video-only capture before the governed audio mux.' }
+    $challengeWav = Join-Path $MediaRoot "challenge_music_seed_${ChallengeMusicSeed}.wav"
+    $challengeMusicReceiptPath = Join-Path $RunRoot 'challenge_music_engine_v5_receipt.json'
+    $challengeMusicReceipt = Invoke-ChallengeMusicEngineV5 -OutputPath $challengeWav -ReceiptPath $challengeMusicReceiptPath -Seed $ChallengeMusicSeed -Duration $challengeDuration
+    $challengeFinal = Join-Path $MediaRoot "challenge_seed_${ChallengeSeed}_music_${ChallengeMusicSeed}.mp4"
+    Invoke-Mux -SilentVideo $challengeMp4 -AudioWav $challengeWav -OutputPath $challengeFinal
+    [IO.File]::WriteAllText((Join-Path $RunRoot 'challenge_audio_mux.log'),"engine=c11d_music_engine_v5`nseed=$ChallengeMusicSeed`nsource_video=$challengeMp4`nsource_wav=$challengeWav`nfinal_mp4=$challengeFinal`n",$Utf8NoBom)
 
     # 2) Two genuine, silent loop renders with identical gameplay seed; music is generated separately.
     Invoke-QualificationScript -ScriptPath $LoopRunner -Arguments @{Seed=$GameplaySeed;Grammar='harmonic_membrane';NoSound=$true;OutputRoot=$LoopARoot;OutputTag='replay_a'} -LogPath (Join-Path $RunRoot 'loop_replay_a_launcher.log') -ExpectedMarker '[C11-C-2.16.3] PASS'
@@ -180,7 +240,7 @@ try {
     [IO.File]::WriteAllText($frameSequencePathB,$framesTextB,$Utf8NoBom)
 
     # 3) Real Visual Drill production capture with music seeded independently from gameplay.
-    Invoke-QualificationScript -ScriptPath $DrillRunner -Arguments @{Family='tracking';Seed=$DrillSeed;DifficultyTier=1;SpeedMultiplier=1.0;PacingMode='constant';DeliveryProfile='REVIEW_720';NoSound=$true;OutputRoot=$DrillRoot} -LogPath (Join-Path $RunRoot 'drill_launcher.log') -ExpectedMarker '[C11C-PRODUCER-DRILL] FINAL PRODUCT PASS'
+    Invoke-QualificationScript -ScriptPath $DrillRunner -Arguments @{Family='tracking';Seed=$DrillSeed;DifficultyTier=1;SpeedMultiplier=1.0;PacingMode='constant';DeliveryProfile='REVIEW_720';NoSound=$true;OutputRoot=$DrillRoot} -LogPath (Join-Path $RunRoot 'drill_launcher.log') -ExpectedMarker '[C11-C-PRODUCER-DRILL] FINAL PRODUCT PASS'
     $drillManifestItem = Get-ChildItem -LiteralPath $DrillRoot -Filter 'production_manifest.json' -File -Recurse | Select-Object -First 1
     $drillSilentItem = Get-ChildItem -LiteralPath $DrillRoot -Filter '*.mp4' -File -Recurse | Select-Object -First 1
     if (-not $drillManifestItem -or -not $drillSilentItem) { throw 'Salida/manifest de Visual Drill ausente.' }
@@ -200,7 +260,7 @@ try {
     # 4) Probe every final asset and create deterministic, hash-bound run evidence.
     $mediaOutputs = @()
     foreach ($entry in @(
-        @{kind='challenge';path=$challengeMp4},
+        @{kind='challenge';path=$challengeFinal},
         @{kind='visual_loop_music_seed_A';path=$loopFinalA},
         @{kind='visual_loop_music_seed_B';path=$loopFinalB},
         @{kind='visual_drill';path=$drillFinal}
@@ -228,9 +288,10 @@ try {
         source_tree_sha256_after=$sourceAfter
         c11c_manifest_sha256=(Get-FileSha256 $CManifest)
         tools=[ordered]@{godot=$GodotVersion;ffmpeg=$FFmpegVersion;ffprobe=$FFprobeVersion;python_version=$PythonVersion}
-        seeds=[ordered]@{challenge_gameplay=$ChallengeSeed;loop_gameplay=$GameplaySeed;drill_gameplay=$DrillSeed;music_a=$MusicSeedA;music_b=$MusicSeedB}
+        seeds=[ordered]@{challenge_gameplay=$ChallengeSeed;challenge_music=$ChallengeMusicSeed;loop_gameplay=$GameplaySeed;drill_gameplay=$DrillSeed;music_a=$MusicSeedA;music_b=$MusicSeedB}
         checks=[ordered]@{
             challenge_video='PASS'
+            challenge_audio_mux='PASS'
             visual_loop_video='PASS'
             visual_drill_video='PASS'
             same_seed_loop_video_replay='PASS'
@@ -241,6 +302,7 @@ try {
             c11d_gui_lifecycle='NOT_RUN_BY_THIS_RUNNER'
         }
         media_outputs=$mediaOutputs
+        challenge_audio_evidence=[ordered]@{engine_id=[string]$challengeMusicReceipt.engine_id;engine_version=[string]$challengeMusicReceipt.engine_version;style_profile_id=[string]$challengeMusicReceipt.style_profile_id;seed=$ChallengeMusicSeed;duration_seconds=[double]$challengeMusicReceipt.duration_seconds;peak_linear=[double]$challengeMusicReceipt.peak_linear;rms_linear=[double]$challengeMusicReceipt.rms_linear;source_wav_path=[IO.Path]::GetFullPath($challengeWav);source_wav_sha256=(Get-FileSha256 $challengeWav);engine_receipt_path=[IO.Path]::GetFullPath($challengeMusicReceiptPath);engine_receipt_sha256=(Get-FileSha256 $challengeMusicReceiptPath);final_media_path=[IO.Path]::GetFullPath($challengeFinal);final_media_sha256=(Get-FileSha256 $challengeFinal)}
         determinism_evidence=[ordered]@{
             loop_frame_count=$framesA.Count
             loop_frame_sequence_sha256_a=(Get-FileSha256 $frameSequencePathA)
@@ -272,7 +334,7 @@ try {
     $baselinePath = Join-Path $RunRoot 'C11D_PRODUCTION_QUALIFICATION_BASELINE_V1.json'
     & python $Contract audit-baseline --baseline $baselinePath --project-root $ProjectRoot
     if ($LASTEXITCODE -ne 0) { throw 'Final qualification baseline audit failed.' }
-    Write-Host '[C11-D-QUALIFICATION] PASS | 4 final MP4 | deterministic loop replay PASS | music seed isolation PASS | D9.14 full acceptance NOT CLOSED | release_authority=NONE'
+    Write-Host '[C11-D-QUALIFICATION] PASS | 4 final A/V MP4 | Challenge D3 Music Engine V5 mux PASS | deterministic loop replay PASS | music seed isolation PASS | D9.14 full acceptance NOT CLOSED | release_authority=NONE'
 }
 catch {
     $failure = [ordered]@{schema='C11-D-D9.14-PRODUCTION-QUALIFICATION-FAILURE-V1';run_id=$RunId;failed_utc=(Get-Date).ToUniversalTime().ToString('o');status='FAILED_FAIL_CLOSED';error=$_.Exception.Message;run_root=$RunRoot;release_authority='NONE';D9_14='NOT_CLOSED';D4_8='LIMITED_QUALIFICATION_ONLY_NOT_GLOBAL_ACTIVATION'}

@@ -13,6 +13,7 @@ POLICY_REL = "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json"
 C_MANIFEST_REL = "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
 D_RENDERER_BASELINE_APPROVAL_REL = "docs/current/d/D_RENDERER_BASELINE_APPROVAL_CHECKPOINT.md"
 D_BASELINE_APPROVAL_REL = "docs/current/d/D_BASELINE_APPROVAL_CHECKPOINT.json"
+D9_15_OPERATOR_EVIDENCE_WAIVER_REL = "docs/current/d/D9.15_OPERATOR_EVIDENCE_WAIVER_CHECKPOINT.json"
 LEGACY_CONTROL_PREFIX = "c11c-suite/c11d-control/"
 LEGACY_CONTROL_DIR = "c11c-suite/c11d-control"
 MAINTENANCE_LEDGER_REL = "artifacts/maintenance/d9_11/D9_11_MAINTENANCE_LEDGER.json"
@@ -72,6 +73,48 @@ def _load_json(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise CandidateAuditError(f"Expected JSON object at {path}")
     return data
+
+
+def _inspect_operator_evidence_waiver(root: Path, manifest_sha256: str) -> dict[str, Any]:
+    """Validate the narrow D9.15 capture waiver without marking operational acceptance closed."""
+    path = root / D9_15_OPERATOR_EVIDENCE_WAIVER_REL
+    result: dict[str, Any] = {"valid": False, "status": "MISSING", "path": D9_15_OPERATOR_EVIDENCE_WAIVER_REL, "sha256": None, "error": None}
+    if not path.is_file():
+        return result
+    try:
+        waiver = _load_json(path)
+        unsigned = dict(waiver)
+        supplied_seal = unsigned.pop("waiver_sha256", None)
+        if not isinstance(supplied_seal, str) or _sha_bytes(_canonical_json(unsigned)) != supplied_seal:
+            raise CandidateAuditError("D9.15 operator waiver seal mismatch")
+        expected = {
+            "schema": "C11-D-D9.15-OPERATOR-EVIDENCE-WAIVER-CHECKPOINT-V1",
+            "schema_version": "1.0",
+            "checkpoint_id": "D9.15_OPERATOR_EVIDENCE_WAIVER_20261009",
+            "decision": "WAIVED_FOR_CANDIDATE_EVALUATION_ONLY",
+            "decision_date": "2026-10-09",
+            "decision_source": "Explicit operator instruction in this work session",
+            "operator_assertion": "The operator states that the five GUIs work and directs proceeding without collecting the 13 screenshot/log evidence pairings.",
+            "candidate_id": "C11-D-BASELINE-CANDIDATE-0.1",
+            "historical_c11c_manifest_sha256": manifest_sha256,
+            "required_pairings": 13,
+            "captured_pairings": 0,
+            "evidence_capture_status": "NOT_CAPTURED_BY_OPERATOR_DECISION",
+            "d9_15_acceptance_status": "NOT_CLOSED_BY_THIS_WAIVER",
+            "d9_15_pass_claimed": False,
+            "candidate_blocker_waived": "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED",
+            "waiver_scope": "Remove only the D9.15 operator-evidence-capture blocker from C11-D baseline-candidate readiness evaluation. This waiver does not attest that screenshots/logs were captured and does not mark D9.15 PASS/CLOSED.",
+            "does_not_authorize": ["D4.8", "renderer_activation", "production_execution", "D9.14 real-media acceptance", "D9.16 full acceptance", "D9.17 closure", "D baseline freeze", "release authority"],
+            "governance": {"renderer_activation": False, "production_execution": False, "media_created": False, "d4_8": "BLOCKED", "release_authority": "NONE", "candidate_freeze_eligible": False},
+        }
+        for key, value in expected.items():
+            if waiver.get(key) != value:
+                raise CandidateAuditError(f"D9.15 operator waiver field mismatch: {key}")
+        result.update({"valid": True, "status": "VALID_WAIVER", "sha256": _hash_file(path)})
+        return result
+    except Exception as exc:
+        result.update({"status": "INVALID", "error": str(exc)})
+        return result
 
 
 def _parse_assignment(path: Path, name: str) -> Any:
@@ -334,8 +377,15 @@ def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any], *, c
     d16gov = d16.get("governance", {})
     if "BLOCKED" in str(d14.get("status", "")) or d14gov.get("d4_8") == "BLOCKED":
         blockers.append("D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED")
-    if d15.get("status") != "PASS_CLOSED" and d15gov.get("media_created") is False:
+    waiver = _inspect_operator_evidence_waiver(root, manifest_sha256)
+    waiver_valid = bool(waiver.get("valid"))
+    if d15.get("status") != "PASS_CLOSED" and d15gov.get("media_created") is False and not waiver_valid:
         blockers.append("D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED")
+    d9_15_candidate_evidence_status = (
+        "D9.15_OPERATOR_EVIDENCE_PASS_CLOSED" if d15.get("status") == "PASS_CLOSED"
+        else "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY" if waiver_valid
+        else "OPERATOR_EVIDENCE_REQUIRED"
+    )
     if d16.get("full_acceptance_blockers") or "BLOCKED" in str(d16.get("status", "")):
         blockers.append("D9_16_FULL_ACCEPTANCE_NOT_CLOSED")
     if "Decision: BLOCKED / NO-GO" in d17_text and "D9 remains OPEN" in d17_text:
@@ -409,6 +459,12 @@ def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any], *, c
     return blockers, {
         "d9_14_status": d14.get("status"),
         "d9_15_status": d15.get("status"),
+        "d9_15_candidate_evidence_gate_status": d9_15_candidate_evidence_status,
+        "d9_15_operator_evidence_pass_closed": d15.get("status") == "PASS_CLOSED",
+        "d9_15_operator_evidence_waiver_valid": waiver_valid,
+        "d9_15_operator_evidence_waiver_status": waiver.get("status", "MISSING"),
+        "d9_15_operator_evidence_waiver_sha256": waiver.get("sha256"),
+        "d9_15_operator_evidence_waiver_error": waiver.get("error"),
         "d9_16_status": d16.get("status"),
         "d9_16_full_acceptance_blocker_count": len(d16.get("full_acceptance_blockers", [])),
         "d9_17_closure_status": "BLOCKED_NO_GO" if "D9_17_CLOSURE_NO_GO" in blockers else "REVIEW_REQUIRED",
@@ -557,14 +613,24 @@ def _validate_candidate_record_invariants(record: dict[str, Any]) -> None:
         raise CandidateAuditError("Governance fail-closed invariants changed")
     required = {
         "D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED",
-        "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED",
         "D9_16_FULL_ACCEPTANCE_NOT_CLOSED",
         "D9_17_CLOSURE_NO_GO",
         "D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED",
         "D_BASELINE_APPROVAL_NOT_RECORDED",
     }
-    if not required.issubset(set(record.get("blockers", []))):
+    blockers = set(record.get("blockers", []))
+    if not required.issubset(blockers):
         raise CandidateAuditError("Candidate lost one or more mandatory freeze blockers")
+    governance = record.get("governance", {})
+    d915_blocker = "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED" in blockers
+    waiver_valid = governance.get("d9_15_operator_evidence_waiver_valid") is True
+    if waiver_valid:
+        if d915_blocker or governance.get("d9_15_operator_evidence_waiver_status") != "VALID_WAIVER":
+            raise CandidateAuditError("Validated D9.15 waiver must remove only the candidate evidence-capture blocker")
+        if governance.get("d9_15_candidate_evidence_gate_status") != "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY" or governance.get("d9_15_operator_evidence_pass_closed") is not False:
+            raise CandidateAuditError("D9.15 candidate waiver cannot claim operational PASS/CLOSED")
+    elif not d915_blocker:
+        raise CandidateAuditError("D9.15 evidence blocker is absent without an accepted checkpoint or valid waiver")
     effects = record.get("side_effects", {})
     if effects != {"repository_files_written": False, "freeze_archive_created": False, "media_created": False, "renderer_activation": False, "manifest_modified": False, "release_authority_granted": False}:
         raise CandidateAuditError("Candidate preflight declared a forbidden side effect")

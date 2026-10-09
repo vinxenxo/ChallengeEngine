@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -42,6 +43,11 @@ def main() -> int:
     expect(auth_data["immutable_reference"]["manifest_sha256"] == contract.EXPECTED_C_MANIFEST_SHA256, "C11-C ref hash drift")
 
     runner = (ROOT / "tools/c11d/d9/run_d9_14_production_qualification.ps1").read_text(encoding="utf-8-sig")
+    # PowerShell interprets "$Variable:" as a scoped/provider variable reference.
+    # Keep colons after variable interpolation explicitly braced (for example, ${Seed}:).
+    invalid_colon_interpolations = re.findall(r"\$[A-Za-z_][A-Za-z0-9_]*:(?=\s|[\"'])", runner)
+    expect(not invalid_colon_interpolations, f"invalid PowerShell variable/colon interpolation remains: {invalid_colon_interpolations}")
+    expect("seed=${Seed}:" in runner, "Challenge Music Engine failure diagnostic must brace Seed before colon")
     for marker in (
         "RUN_C11D_PRODUCTION_QUALIFICATION_NO_RELEASE",
         "ChallengeId='CHALLENGE_001'",
@@ -52,9 +58,28 @@ def main() -> int:
         "c11d_editorial_renderer_binding='NOT_CERTIFIED_BY_THIS_RUN'",
         "release_authority='NONE'",
         "sourceBefore -ne $sourceAfter",
+        "ExpectedMarker '[C11-C-PRODUCER-DRILL] FINAL PRODUCT PASS'",
+        "ChallengeMusicSeed = 73020",
+        "NoSound=$true",
+        "Invoke-ChallengeMusicEngineV5",
+        "c11d_music_engine_v5",
+        "challenge_audio_mux='PASS'",
+        "challenge_audio_evidence=",
+        "Get-AudioMaxVolumeDb",
+        "max_volume",
+        "$previousPreference = $ErrorActionPreference",
+        "$ErrorActionPreference = 'Continue'",
+        "$ErrorActionPreference = $previousPreference",
+        "$exitCode = $LASTEXITCODE",
     ):
         expect(marker in runner, f"runner lacks required control/qualification marker: {marker}")
+    expect("ExpectedMarker '[C11C-PRODUCER-DRILL] FINAL PRODUCT PASS'" not in runner, "stale Visual Drill PASS marker remains")
     expect("-Force'" not in runner and "Remove-Item -Recurse" not in runner, "runner must not overwrite/delete qualification assets")
+
+    expect(abs(contract.parse_max_volume_db("[Parsed_volumedetect] max_volume: -12.3 dB", Path("fixture.mp4")) + 12.3) < 0.001, "volume parser failed valid audible signal")
+    reject("reject silent negative infinity", lambda: contract.parse_max_volume_db("[Parsed_volumedetect] max_volume: -inf dB", Path("silent.mp4")))
+    reject("reject inaudible signal below -90 dB", lambda: contract.parse_max_volume_db("[Parsed_volumedetect] max_volume: -95.0 dB", Path("quiet.mp4")))
+    reject("reject missing volume statistic", lambda: contract.parse_max_volume_db("no max volume", Path("unknown.mp4")))
 
     bad_report = {
         "schema": contract.REPORT_SCHEMA,
@@ -67,7 +92,7 @@ def main() -> int:
     bad_report["d9_15"] = "PASS"
     reject("cannot promote waived D9.15 to PASS", lambda: contract.validate_report_shape(bad_report, ROOT))
 
-    print("C11-D D9.14 PRODUCTION QUALIFICATION CONTRACT PASS | authorization_scope=BOUNDED_ONLY | negative=3/3 | C11-C=IMMUTABLE | general_D_renderer=OFF | release_authority=NONE")
+    print("C11-D D9.14 PRODUCTION QUALIFICATION CONTRACT PASS | authorization_scope=BOUNDED_ONLY | negative=6/6 | audio_loudness=ENFORCED | challenge_audio=ENGINE_V5_MUXED | C11-C=IMMUTABLE | general_D_renderer=OFF | release_authority=NONE")
     return 0
 
 

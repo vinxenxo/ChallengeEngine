@@ -4,6 +4,8 @@ import argparse
 import hashlib
 import json
 import subprocess
+import math
+import re
 from pathlib import Path
 from typing import Any
 
@@ -42,6 +44,42 @@ def read_json(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         raise QualificationContractError(f"Expected JSON object: {path}")
     return data
+
+
+def parse_max_volume_db(output: str, media_path: Path) -> float:
+    match = re.search(r"max_volume:\s*(-inf|-?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))\s*dB", output, re.IGNORECASE)
+    if not match:
+        raise QualificationContractError(f"FFmpeg volumedetect did not report max_volume: {media_path}")
+    if match.group(1).lower() == "-inf":
+        raise QualificationContractError(f"audio is silent (max_volume=-inf dB): {media_path}")
+    value = float(match.group(1))
+    if not math.isfinite(value) or value <= -90.0:
+        raise QualificationContractError(f"audio is silent/inaudible by qualification threshold (max_volume={value} dB): {media_path}")
+    return value
+
+
+def actual_audio_max_volume_db(media_path: Path) -> float:
+    try:
+        completed = subprocess.run(
+            ["ffmpeg", "-hide_banner", "-nostats", "-v", "info", "-i", str(media_path), "-map", "0:a:0", "-af", "volumedetect", "-f", "null", "-"],
+            check=False, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise QualificationContractError(f"cannot execute FFmpeg audio QA on {media_path}: {exc}") from exc
+    if completed.returncode != 0:
+        raise QualificationContractError(f"FFmpeg audio QA failed on {media_path}: {completed.stderr.strip()}")
+    return parse_max_volume_db(completed.stdout + "\n" + completed.stderr, media_path)
+
+
+def bounded_qualification_path(raw_path: Any, root: Path, label: str) -> Path:
+    path = Path(str(raw_path or "")).resolve()
+    try:
+        path.relative_to(root.resolve() / "artifacts" / "production" / "c11d_qualification")
+    except ValueError as exc:
+        raise QualificationContractError(f"{label} escaped qualification root: {path}") from exc
+    if not path.is_file():
+        raise QualificationContractError(f"{label} is missing: {path}")
+    return path
 
 
 def validate_authorization(project_root: Path, token: str) -> dict[str, Any]:
@@ -102,6 +140,7 @@ def validate_report_shape(report: dict[str, Any], project_root: Path) -> dict[st
         raise QualificationContractError("source tree changed during qualification")
     required_checks = {
         "challenge_video": "PASS",
+        "challenge_audio_mux": "PASS",
         "visual_loop_video": "PASS",
         "visual_drill_video": "PASS",
         "same_seed_loop_video_replay": "PASS",
@@ -115,6 +154,52 @@ def validate_report_shape(report: dict[str, Any], project_root: Path) -> dict[st
             raise QualificationContractError(f"required production qualification check not PASS: {name}")
     if checks.get("c11d_editorial_renderer_binding") != "NOT_CERTIFIED_BY_THIS_RUN":
         raise QualificationContractError("C11-D editorial renderer binding must not be certified by this runner")
+
+    challenge_evidence = report.get("challenge_audio_evidence", {})
+    if challenge_evidence.get("engine_id") != "c11d_music_engine_v5" or str(challenge_evidence.get("engine_version")) != "5.0":
+        raise QualificationContractError("Challenge audio must be bound to C11-D Music Engine V5")
+    if challenge_evidence.get("style_profile_id") != "challenge_8bit_v1":
+        raise QualificationContractError("Challenge music style profile mismatch")
+    seeds = report.get("seeds", {})
+    try:
+        configured_music_seeds = (int(seeds.get("challenge_music", -1)), int(seeds.get("music_a", -2)), int(seeds.get("music_b", -3)))
+        if len(set(configured_music_seeds)) != 3:
+            raise QualificationContractError("Challenge and loop music seeds must be distinct")
+        if int(challenge_evidence.get("seed", -1)) != int(seeds.get("challenge_music", -2)):
+            raise QualificationContractError("Challenge audio seed disagrees with report seed ledger")
+        if float(challenge_evidence.get("peak_linear", 0)) <= 0 or float(challenge_evidence.get("rms_linear", 0)) <= 0:
+            raise QualificationContractError("Challenge music receipt indicates silent audio")
+        if float(challenge_evidence.get("duration_seconds", 0)) < 3:
+            raise QualificationContractError("Challenge music duration is invalid")
+    except (TypeError, ValueError) as exc:
+        raise QualificationContractError("Challenge audio evidence numeric fields are invalid") from exc
+    challenge_wav = bounded_qualification_path(challenge_evidence.get("source_wav_path"), root, "Challenge music WAV")
+    challenge_receipt = bounded_qualification_path(challenge_evidence.get("engine_receipt_path"), root, "Challenge music engine receipt")
+    challenge_final = bounded_qualification_path(challenge_evidence.get("final_media_path"), root, "Challenge final MP4")
+    for label, path, key in (
+        ("Challenge music WAV", challenge_wav, "source_wav_sha256"),
+        ("Challenge engine receipt", challenge_receipt, "engine_receipt_sha256"),
+        ("Challenge final MP4", challenge_final, "final_media_sha256"),
+    ):
+        if sha256_file(path) != challenge_evidence.get(key):
+            raise QualificationContractError(f"{label} SHA-256 mismatch")
+    receipt = read_json(challenge_receipt)
+    if receipt.get("engine_id") != "c11d_music_engine_v5" or str(receipt.get("engine_version")) != "5.0":
+        raise QualificationContractError("Challenge engine receipt identity mismatch")
+    if int(receipt.get("music_seed", -1)) != int(challenge_evidence["seed"]):
+        raise QualificationContractError("Challenge engine receipt seed mismatch")
+    if abs(float(receipt.get("duration_seconds", 0)) - float(challenge_evidence["duration_seconds"])) > 0.01:
+        raise QualificationContractError("Challenge engine receipt duration mismatch")
+    if float(receipt.get("peak_linear", 0)) <= 0 or float(receipt.get("rms_linear", 0)) <= 0:
+        raise QualificationContractError("Challenge engine receipt declares silent music")
+    if receipt.get("output_hash") != sha256_file(challenge_wav):
+        raise QualificationContractError("Challenge engine receipt does not bind the source WAV bytes")
+    challenge_media_item = next((item for item in report.get("media_outputs", []) if item.get("kind") == "challenge"), None)
+    if challenge_media_item is None or Path(str(challenge_media_item.get("path", ""))).resolve() != challenge_final:
+        raise QualificationContractError("Challenge final media path is not the reported Challenge output")
+    if challenge_media_item.get("sha256") != challenge_evidence.get("final_media_sha256"):
+        raise QualificationContractError("Challenge final media hash disagrees with media output ledger")
+
     for item in report.get("media_outputs", []):
         media_path = Path(str(item.get("path", ""))).resolve()
         try:
@@ -163,7 +248,16 @@ def validate_report_shape(report: dict[str, Any], project_root: Path) -> dict[st
             raise QualificationContractError(f"actual A/V duration metadata invalid: {media_path}") from exc
         if abs(video_duration - audio_duration) > 0.20:
             raise QualificationContractError(f"actual A/V duration mismatch: {media_path}")
+        actual_max_volume_db = actual_audio_max_volume_db(media_path)
         reported_probe = item.get("probe", {})
+        try:
+            reported_max_volume_db = float(reported_probe.get("audio_max_volume_db"))
+        except (TypeError, ValueError) as exc:
+            raise QualificationContractError(f"reported audio loudness is missing/invalid: {media_path}") from exc
+        if not math.isfinite(reported_max_volume_db) or reported_max_volume_db <= -90.0:
+            raise QualificationContractError(f"reported audio is silent/inaudible: {media_path}")
+        if abs(reported_max_volume_db - actual_max_volume_db) > 1.0:
+            raise QualificationContractError(f"reported audio loudness disagrees with decoded media: {media_path}")
         checks_numeric = (
             ("width", int(video.get("width", 0)), 0),
             ("height", int(video.get("height", 0)), 0),
@@ -182,6 +276,9 @@ def validate_report_shape(report: dict[str, Any], project_root: Path) -> dict[st
             raise QualificationContractError(f"reported timing disagrees with actual media: {media_path}")
     if len(report.get("media_outputs", [])) < 4:
         raise QualificationContractError("expected challenge, two loop variants and visual drill media")
+    challenge_media_probe = next(item.get("probe", {}) for item in report.get("media_outputs", []) if item.get("kind") == "challenge")
+    if abs(float(challenge_media_probe.get("duration_seconds", 0)) - float(challenge_evidence.get("duration_seconds", 0))) > 0.20:
+        raise QualificationContractError("Challenge music duration does not match final video duration")
     det = report.get("determinism_evidence", {})
     if int(det.get("loop_frame_count", 0)) <= 1 or det.get("loop_frame_sequence_sha256_a") != det.get("loop_frame_sequence_sha256_b"):
         raise QualificationContractError("same-seed loop frame replay evidence is invalid")

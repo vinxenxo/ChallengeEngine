@@ -99,8 +99,35 @@ def _test_legacy_disposition_contract() -> None:
         assert "ARCHIVE_HASH_DIFFERS_FROM_HISTORICAL_MANIFEST" in mismatched_readme["reasons"]
 
 
+def _test_operator_evidence_waiver_contract() -> None:
+    """The waiver is sealed/scope-limited and never claims screenshot evidence."""
+    valid = dbc._inspect_operator_evidence_waiver(ROOT, dbc.EXPECTED_C_MANIFEST_SHA256)
+    assert valid["valid"] is True and valid["status"] == "VALID_WAIVER", valid
+    source = ROOT / dbc.D9_15_OPERATOR_EVIDENCE_WAIVER_REL
+    original = json.loads(source.read_text(encoding="utf-8"))
+    with tempfile.TemporaryDirectory(prefix="d915_operator_waiver_") as temp_name:
+        temp_root = Path(temp_name)
+        target = temp_root / dbc.D9_15_OPERATOR_EVIDENCE_WAIVER_REL
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(original, ensure_ascii=False, indent=2), encoding="utf-8")
+        assert dbc._inspect_operator_evidence_waiver(temp_root, dbc.EXPECTED_C_MANIFEST_SHA256)["valid"] is True
+        tampered = copy.deepcopy(original)
+        tampered["captured_pairings"] = 13
+        target.write_text(json.dumps(tampered, ensure_ascii=False, indent=2), encoding="utf-8")
+        result = dbc._inspect_operator_evidence_waiver(temp_root, dbc.EXPECTED_C_MANIFEST_SHA256)
+        assert result["valid"] is False and result["status"] == "INVALID"
+        resealed = copy.deepcopy(original)
+        resealed["d9_15_pass_claimed"] = True
+        unsigned = dict(resealed); unsigned.pop("waiver_sha256", None)
+        resealed["waiver_sha256"] = dbc._sha_bytes(dbc._canonical_json(unsigned))
+        target.write_text(json.dumps(resealed, ensure_ascii=False, indent=2), encoding="utf-8")
+        result = dbc._inspect_operator_evidence_waiver(temp_root, dbc.EXPECTED_C_MANIFEST_SHA256)
+        assert result["valid"] is False and "d9_15_pass_claimed" in str(result["error"])
+
+
 def main() -> int:
     _test_legacy_disposition_contract()
+    _test_operator_evidence_waiver_contract()
     record = dbc.build_candidate_preflight(ROOT)
     result = dbc.validate_candidate_preflight(record, ROOT)
     assert result["valid"] is True and result["freeze_eligible"] is False
@@ -129,13 +156,17 @@ def main() -> int:
     assert record["governance"]["release_authority"] == "NONE"
     must_block = {
         "D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED",
-        "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED",
         "D9_16_FULL_ACCEPTANCE_NOT_CLOSED",
         "D9_17_CLOSURE_NO_GO",
         "D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED",
         "D_BASELINE_APPROVAL_NOT_RECORDED",
     }
     assert must_block.issubset(set(record["blockers"])), sorted(set(must_block) - set(record["blockers"]))
+    assert record["governance"]["d9_15_operator_evidence_waiver_valid"] is True
+    assert record["governance"]["d9_15_operator_evidence_waiver_status"] == "VALID_WAIVER"
+    assert record["governance"]["d9_15_candidate_evidence_gate_status"] == "WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY"
+    assert record["governance"]["d9_15_operator_evidence_pass_closed"] is False
+    assert "D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED" not in record["blockers"]
     assert record["side_effects"] == {"repository_files_written": False, "freeze_archive_created": False, "media_created": False, "renderer_activation": False, "manifest_modified": False, "release_authority_granted": False}
 
     negatives = 0
@@ -164,7 +195,7 @@ def main() -> int:
     reject("claim changed paths outside extensions are acceptable", lambda x: x["inventory"].update(c_manifest_changed_entries_confined_to_d_roots=False))
     reject("sixth surface", lambda x: x["canonical_surfaces"].update(count=6))
     reject("claim D9.14 pass", lambda x: x["blockers"].remove("D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED"))
-    reject("claim D9.15 evidence", lambda x: x["blockers"].remove("D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED"))
+    reject("forge D9.15 PASS from waiver", lambda x: x["governance"].update(d9_15_candidate_evidence_gate_status="D9.15_OPERATOR_EVIDENCE_PASS_CLOSED", d9_15_operator_evidence_pass_closed=True))
     reject("claim D9.16 closed", lambda x: x["blockers"].remove("D9_16_FULL_ACCEPTANCE_NOT_CLOSED"))
     reject("claim D9.17 closed", lambda x: x["blockers"].remove("D9_17_CLOSURE_NO_GO"))
     reject("claim renderer approval", lambda x: x["blockers"].remove("D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED"))
@@ -195,6 +226,7 @@ def main() -> int:
         f"manifest_exact={record['inventory']['c_manifest_exact_matches']}/{record['inventory']['c_manifest_entries']} | "
         f"allowed_D_changes={len(record['inventory']['c_manifest_changed_entries'])} | "
         f"active_surfaces={record['canonical_surfaces']['count']}/5 | negative={negatives}/22 | "
+        f"D9.15={record['governance']['d9_15_candidate_evidence_gate_status']} | "
         f"baseline_approval={record['governance']['baseline_approval_checkpoint_status']} | "
         f"freeze_eligible=false | blockers={len(record['blockers'])} | "
         f"tree_files={record['tree_identity']['included_files']} | tree_sha256={record['tree_identity']['sha256']} | "
