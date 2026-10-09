@@ -32,7 +32,7 @@ The operator confirmed in Windows that D9.16's no-media preflight route opens an
 | D9.7 | Config 0.2.0 D integration | IMPLEMENTED / Windows confirmation pending |
 | D9.8 | Universal editorial model V1 + strict resolver + live inventory/negative tests | PASS / static contract tests; GUI integration deferred to D9.9 |
 | D9.9 | Producer 0.11.0 universal editorial selectors + canonical plan-only adapter | PASS / static matrix + CLI-process parity; Windows plan generation confirmed by operator |
-| D9.10 | Editorial-to-render bridge + D-only adapter boundary | PREPARE-ONLY IMPLEMENTED / 3 content types, CLI parity 3/3, adapter parity 3/3, adapter negatives 9/9; new envelope GUI tab's Windows runtime view is not claimed by automated evidence; dispatch OFF |
+| D9.10 | Editorial-to-render bridge + D-only adapter boundary | PREPARE-ONLY IMPLEMENTED / 3 content types, CLI parity 3/3, adapter parity 3/3, adapter negatives 9/9; optional offscreen Qt runtime harness prepared, Windows runtime result pending; dispatch OFF |
 | D9.11 | Maintenance 0.2.0 | PASS / CLOSED; Windows GUI confirmed and full Suite acceptance PASS |
 | D9.12 | Test 0.2.0 | PASS / Windows GUI opened and D9.14 gate route executed successfully |
 | D9.13 | Cross-suite lifecycle | BACKEND/STATIC PASS / 3 content types, 5 stages, parity 3/3, Catalog 3/3, Maintenance 3/3, negatives 12/12; Windows GUI presentation confirmation pending |
@@ -110,3 +110,7 @@ The current candidate audit verifies the historical C11-C manifest identity, pre
 The D9.10 adapter now prepares a D-only hash-bound envelope after canonical request → personalization → plan → bridge validation. The adapter envelope is inspection-only; it is not renderer input. Focused prepared-workspace verification: 3/3 supported content types, 3/3 CLI bridge parity, 3/3 adapter parity, 15/15 bridge negatives and 9/9 adapter negatives. Config contracts now validate 30/30. Automated evidence is available through `tools/c11d/d9/capture_d910_acceptance.py`; no screenshot collection is required for these automated contract checks.
 
 The operator also completed bounded D9.14 qualification on Windows (`D914_COLON_FIX_20261009_E`): 4 final A/V MP4s, 8 checks, report SHA-256 `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`, qualification-baseline SHA-256 `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. It does not close the D9.14 full GUI/E2E gate or authorize general D renderer dispatch. The Producer window remains a test-only GUI; the definitive GUI is deferred until after D is fully closed and frozen.
+
+## D9.10.2 runtime harness status (2026-10-09)
+
+A dependency-free contract for the optional Qt runtime harness is registered in the aggregate Suite as step 22/22. The actual Qt runtime run must be generated on Windows; no runtime PASS is inferred from a static contract. The runner is limited to the current test/operator GUI and prepare-only adapter. It does not close D9.14, D9.16 or D9.17 and cannot lift D4.8.

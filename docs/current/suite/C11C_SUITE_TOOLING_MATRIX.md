@@ -116,3 +116,9 @@ A `PASS` means the candidate audit is trustworthy and keeps unresolved gates blo
 The adapter envelope is exposed only for inspection in the existing Producer test GUI. It is hash-bound to canonical request/editorial/plan/bridge and contract identities, allows only Universal Editorial Model fields, preserves separate gameplay/music seeds and refuses any dispatch/media/authority claims. It emits no renderer-native input. The automated acceptance runner saves JSON and logs; it does not demand screenshots or claim an interactive GUI launch.
 
 D9.14 bounded qualification PASS: Windows generated four final A/V MP4s and sealed `C11D_PRODUCTION_QUALIFICATION_BASELINE_V1.json` (`15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`). Full GUI E2E certification remains blocked. The 5 canonical suite surfaces are unchanged; no definitive GUI is built until after final D baseline freeze.
+
+## D9.10 GUI runtime harness — 2026-10-09
+
+The aggregate suite adds a dependency-free static guard for the optional offscreen Qt runtime test at 22/22. The actual runtime test is deliberately opt-in and Windows-validated: it instantiates the existing test GUI, clicks the bridge action for Challenge/Loop/Drill and verifies canonical/CLI/bridge/adapter artifacts. This proves GUI-to-prepare-only-adapter propagation, not renderer-to-pixel materialization. The final D GUI is deferred until D baseline freeze.
+
+| D9.10 offscreen GUI runtime | Existing Producer test/operator GUI | `test_d910_gui_runtime_acceptance.py` and `capture_d910_acceptance.py --include-qt-gui-runtime` | Optional Qt offscreen callback for Challenge/Loop/Drill; editorial override propagation and GUI/CLI parity; no screenshots/media; actual runtime result must be generated on Windows |

@@ -1,3 +1,21 @@
+# Latest authoritative next action — D9.10 offscreen Qt GUI runtime (2026-10-09)
+
+The D9.10 adapter overlay has been applied on Windows. After restoring `README_C11D_D9.5.1_OVERLAY.md` and `README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md` byte-for-byte, the operator confirmed candidate preflight PASS (`blockers=5`, `freeze_eligible=false`), automated D9.10 acceptance PASS 5/5 (`GUI_runtime_observed=false` is an honest scope field), and the aggregate Suite PASS 21/21.
+
+The next increment adds an optional no-screenshot runtime harness for the existing **test/operator** Producer GUI. Run:
+
+```powershell
+python .\tools\c11d\d9\test_d910_gui_runtime_acceptance.py --run-id D910_QT_GUI_RUNTIME_01
+python .\tools\c11d\d9\capture_d910_acceptance.py --run-id D910_QT_ACCEPTANCE_01 --include-qt-gui-runtime --include-aggregate
+python -u .\c11c-suite\self_test.py
+```
+
+The Qt test uses `QT_QPA_PLATFORM=offscreen`, selects Challenge/Visual Loop/Visual Drill, clicks the current D9.10 plan action, and confirms a custom editorial title reaches the hash-bound D-only prepared envelope with CLI parity. It does not create media or dispatch to a renderer. The static contract is added to Suite step 22/22. The actual Qt runtime harness has not been executed in the package-preparation environment because PySide6 is unavailable there; no runtime PASS is claimed until Windows reports it.
+
+Do not mistake this for actual renderer output. Adapter remains PREPARE_ONLY; C11-C 2.19.12 and its manifest remain immutable; D4.8 remains BLOCKED; renderer/production/media OFF; release authority NONE; D9 remains OPEN; D10 blocked. D9.14 full GUI/E2E, D9.16, D9.17 and final D baseline approval remain unresolved. The GUI remains test-only until after final D baseline freeze.
+
+---
+
 # Latest authoritative follow-up — D9.10 acceptance manifest repair (2026-10-09)
 
 The first Windows run after the D9.10 D-only adapter overlay reached the candidate-preflight stage but failed because two root-level README paths still present in the immutable C11-C manifest were absent from that checkout. Apply `C11D_D9.10_ACCEPTANCE_README_RESTORE_FIX_OVERLAY_V1.zip` to restore `README_C11D_D9.5.1_OVERLAY.md` and `README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md` byte-for-byte; expected SHA-256 values are recorded in the D9.10 runbook and the incident history. This also resolves the single candidate check causing the automated capture to report 4/5 and the aggregate suite to fail at step 21. In the prepared workspace, candidate preflight passes and `capture_d910_acceptance.py` reports 5/5. Its `GUI_runtime_observed=false` is a truthful scope field, not a failed check; no screenshots are required for the automated checks. Re-run candidate preflight, capture with a fresh `--run-id`, and the aggregate suite in Windows after extraction.

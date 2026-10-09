@@ -84,3 +84,11 @@
 - Prepared-workspace validation: candidate preflight PASS; 854/854 protected entries; 22/22 negative controls; five candidate blockers retained; freeze eligibility false. Automated D9.10 acceptance returns 5/5 with the default five focused checks.
 - `operator_gui_runtime_observed=false` remains an accurate scope annotation, not an acceptance failure. Backend/CLI/static GUI checks need no screenshots. This does not claim the live GUI was launched by the acceptance runner.
 - See `docs/history/c11d/d9/D9.10_ACCEPTANCE_README_MANIFEST_REPAIR_20261009.md`.
+
+## D9.10.2 — automated offscreen GUI runtime harness (2026-10-09)
+
+- Added `tools/c11d/d9/test_d910_gui_runtime_acceptance.py` to exercise the actual PySide6 Producer test/operator GUI offscreen for Challenge, Visual Loop and Visual Drill. The test clicks the existing D9.10 planning action and validates the generated canonical request, editorial resolution, plan, bridge record, adapter envelope, lifecycle receipt and separate-process GUI/CLI parity.
+- Every type carries an explicit editorial title override; the test requires that value to arrive in the allowlisted adapter binding preview and verifies the envelope hash and all prepare-only/governance locks.
+- Added a dependency-free static guard `test_d910_gui_runtime_contract.py` as aggregate Suite check 22/22. Extended `capture_d910_acceptance.py` with opt-in `--include-qt-gui-runtime`, which records the offscreen run in per-check logs and binds its result into the hash-bound acceptance report. No screenshots required.
+- Windows runtime acceptance is pending; PySide6 is unavailable in the package-preparation environment. The static contract and aggregate suite can be validated here, but no runtime PASS is claimed.
+- No renderer-native input, renderer dispatch, media production, release authority or definitive GUI work is introduced. C11-C remains immutable; D4.8 BLOCKED, D9 remains OPEN, and D10 remains BLOCKED.

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11d\d9\test_d910_gui_runtime_acceptance.py", line 235, in main
+    results = _run_gui_cases(root)
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11d\d9\test_d910_gui_runtime_acceptance.py", line 128, in _run_gui_cases
+    raise RuntimeError(f"Qt GUI callback raised a modal warning for {content_type}: {warnings[-1]}")
+RuntimeError: Qt GUI callback raised a modal warning for challenges: C11-D Editorial Universal: Persisted GUI/CLI parity receipt is not a complete PASS

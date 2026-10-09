@@ -1,0 +1,42 @@
+{
+  "schema": "C11-D-D9.10-QT-GUI-RUNTIME-ACCEPTANCE-V1",
+  "schema_version": "1.0",
+  "run_id": "D910_QT_GUI_RUNTIME_01",
+  "started_at_utc": "2026-10-09T19:59:38.819182+00:00",
+  "completed_at_utc": "2026-10-09T19:59:40.253340+00:00",
+  "status": "FAIL",
+  "scope": "Offscreen runtime exercise of the existing test/operator Producer Qt window; three content types, explicit editorial override propagation, GUI/CLI parity, D-only adapter locks; no screenshots or media.",
+  "qt_gui_runtime_exercised": false,
+  "operator_interactive_visual_observation": false,
+  "screenshots_required": false,
+  "checks": [],
+  "error": "RuntimeError: Qt GUI callback raised a modal warning for challenges: C11-D Editorial Universal: Persisted GUI/CLI parity receipt is not a complete PASS",
+  "governance": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_match": true,
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "content_type_checks": "0/3",
+    "editorial_override_propagation_required": true,
+    "qt_platform": "offscreen",
+    "screenshot_collection_required": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "definitive_gui": "DEFERRED_UNTIL_FINAL_D_BASELINE_FROZEN"
+  },
+  "outputs": {
+    "relative_run_root": "artifacts/tests/c11d_d9/d910_gui_runtime_acceptance/D910_QT_GUI_RUNTIME_01",
+    "report_file": "D9_10_QT_GUI_RUNTIME_ACCEPTANCE_REPORT.json",
+    "media_created": false
+  },
+  "report_hash": "cf6bce7bd394a61e9bc49d3e231c1d2da60ade9a84c3f59d7b443797a5b613b2"
+}

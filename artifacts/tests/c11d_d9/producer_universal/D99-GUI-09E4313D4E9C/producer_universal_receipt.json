@@ -1,0 +1,29 @@
+{
+  "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+  "phase": "D9.10",
+  "result": "PASS_BRIDGE_PLANNING_ONLY",
+  "status": "PLANNED",
+  "request_id": "D99-GUI-09E4313D4E9C",
+  "request_hash": "c92a6acc757b1b8d7a612172a131aa662d8109f5bf2fde7828cb68614e4488d4",
+  "editorial_hash": "ff89ad46a488159698e77ca409d1f11f4c5025fcbc556acb981cc25c004461a6",
+  "plan_hash": "e4816097c2a60b504bc66a074f5c77237836b2f15f7fedfd0ee7330dfb9bacdb",
+  "bridge_record_hash": "143cd9275fe21459282a78b4b66a5c029c9abd53907eaae17f82098198883d99",
+  "d_only_adapter_envelope_hash": "e845b48eb4d5b1c82fc69973a4ee9a409a13f47d582f03074d323051a72fde64",
+  "d_only_adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+  "renderer_dispatch_invoked": false,
+  "gui_cli_parity": "PASS",
+  "content_type": "challenges",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "catch_v1",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_006",
+    "variant_scope_id": "challenge:CHALLENGE_006",
+    "difficulty_tier": null
+  },
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-09E4313D4E9C"
+}

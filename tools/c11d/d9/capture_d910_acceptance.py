@@ -1,6 +1,6 @@
 """Automate D9.10 adapter acceptance evidence without screenshots or media.
 
-Runs focused D9.10 backend/CLI/static-GUI contracts, Config/Test integration, candidate preflight and the aggregate suite; writes a hash-bound JSON report and per-command logs. This script does not launch Qt, a renderer, FFmpeg/Godot media production, or write any output under artifacts/production.
+Runs focused D9.10 backend/CLI/static-GUI contracts, Config integration and candidate preflight. Optional flags exercise the existing test/operator Qt GUI offscreen and/or include the aggregate Suite. No mode launches a renderer or media production.
 """
 from __future__ import annotations
 
@@ -38,6 +38,7 @@ def main() -> int:
     parser.add_argument("--run-id", default="D910_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"))
     parser.add_argument("--output-root", default="artifacts/tests/c11d_d9/d910_adapter_acceptance")
     parser.add_argument("--include-aggregate", action="store_true", help="also run the full c11c-suite/self_test.py aggregate and bind its result into this report")
+    parser.add_argument("--include-qt-gui-runtime", action="store_true", help="instantiate the existing Producer test GUI offscreen and exercise the D9.10 callback for Challenge, Loop and Drill; no screenshots or media")
     args = parser.parse_args()
     run_id = clean_run_id(args.run_id)
     root = Path(__file__).resolve().parents[3]
@@ -60,6 +61,8 @@ def main() -> int:
         ("config_self_test", [sys.executable, "c11c-suite/c11c-config/self_test.py"], 90),
         ("candidate_preflight", [sys.executable, "tools/c11d/baseline_candidate/test_d_baseline_candidate.py"], 120),
     ]
+    if args.include_qt_gui_runtime:
+        commands.append(("qt_gui_runtime", [sys.executable, "tools/c11d/d9/test_d910_gui_runtime_acceptance.py", "--run-id", run_id], 240))
     if args.include_aggregate:
         commands.append(("aggregate_suite", [sys.executable, "-u", "c11c-suite/self_test.py"], 600))
     results: list[dict[str, Any]] = []
@@ -112,10 +115,11 @@ def main() -> int:
         "started_at_utc": started,
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
         "status": "PASS" if all_pass and manifest_hash == EXPECTED_C11C_MANIFEST_SHA256 else "FAIL",
-        "scope": "Five focused checks for the D9.10 bridge/adapter, static Producer/Config GUI contracts, Config registry and candidate audit; optional aggregate Suite via --include-aggregate; no screenshots required for these automated checks",
+        "scope": "Five focused backend/CLI/static-GUI/Config/candidate checks; optional offscreen Qt runtime exercise via --include-qt-gui-runtime and aggregate Suite via --include-aggregate; no screenshots or media",
         "operator_gui_runtime_observed": False,
+        "qt_gui_runtime_exercised": any(item["name"] == "qt_gui_runtime" and item["exit_code"] == 0 for item in results),
         "operator_screenshots_required_for_this_report": False,
-        "gui_runtime_limit": "Static GUI contract is tested here; this report does not claim the Qt window was interactively launched or observed.",
+        "gui_runtime_limit": "The optional Qt mode instantiates the existing Producer test GUI offscreen and clicks its D9.10 plan action. It does not claim a human visually observed the window and does not test the definitive GUI.",
         "checks": results,
         "governance": {
             "c11c_frozen_manifest_sha256": manifest_hash,
@@ -123,7 +127,9 @@ def main() -> int:
             "c11c_frozen_manifest_match": manifest_hash == EXPECTED_C11C_MANIFEST_SHA256,
             "d_only_adapter_prepare_enabled": True,
             "aggregate_suite_included": args.include_aggregate,
-            "focused_check_count": 5,
+            "qt_gui_runtime_included": args.include_qt_gui_runtime,
+            "qt_gui_runtime_exercised": any(item["name"] == "qt_gui_runtime" and item["exit_code"] == 0 for item in results),
+            "focused_check_count": sum(1 for item in results if item["name"] != "aggregate_suite"),
             "screenshot_collection_required": False,
             "renderer_dispatch_invoked": False,
             "renderer_input_emitted": False,
@@ -147,7 +153,7 @@ def main() -> int:
         "C11-D D9.10 AUTOMATED ACCEPTANCE " + report["status"]
         + f" | checks={sum(x['exit_code'] == 0 for x in results)}/{len(results)}"
         + f" | C11-C_manifest_match={str(report['governance']['c11c_frozen_manifest_match']).lower()}"
-        + " | GUI_runtime_observed=false | renderer=OFF | media_created=false | release_authority=NONE"
+        + f" | GUI_runtime_observed=false | qt_gui_runtime={'PASS' if any(item['name'] == 'qt_gui_runtime' and item['exit_code'] == 0 for item in results) else ('NOT_REQUESTED' if not args.include_qt_gui_runtime else 'FAIL')} | renderer=OFF | media_created=false | release_authority=NONE"
         + f" | report={run_root.relative_to(root).as_posix()}/D9_10_AUTOMATED_ACCEPTANCE_REPORT.json"
     )
     return 0 if report["status"] == "PASS" else 1

@@ -125,3 +125,17 @@ Per explicit operator decision, do not require the 13 screenshot/log captures to
 The first Windows acceptance capture after the D9.10 adapter overlay showed 4/5 focused checks because the candidate preflight found two historical root README paths missing: `README_C11D_D9.5.1_OVERLAY.md` and `README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md`. The aggregate Suite then failed only when it reached that same candidate preflight. This is fixed by the additive restoration overlay `C11D_D9.10_ACCEPTANCE_README_RESTORE_FIX_OVERLAY_V1.zip`, which reinstates the two files byte-for-byte at their immutable manifest hashes. It does not change C11-C source or manifest.
 
 Prepared-workspace revalidation: candidate preflight PASS (protected 854/854; negative 22/22; 34 allowlisted D changes; five blockers retained; `freeze_eligible=false`); default D9.10 acceptance PASS 5/5. `operator_gui_runtime_observed=false` is not a failed check; it records that the automated runner does not launch/observe an interactive Qt session. Do not require screenshots for those five backend/CLI/static-GUI checks. Windows needs to rerun the restored candidate, acceptance capture and aggregate suite. All governance locks remain unchanged.
+
+## D9.10 next phase — offscreen Qt GUI runtime (2026-10-09)
+
+The operator has restored both historical README files byte-for-byte, confirmed the candidate preflight PASS with five blockers retained, run D9.10 automated acceptance PASS 5/5 and aggregate Suite PASS 21/21. The next increment adds an opt-in offscreen Qt GUI runtime runner for the existing Producer test/operator GUI. It drives the D9.10 action for all three content types and audits editorial override propagation through canonical request, plan, bridge record and adapter envelope with exact CLI parity. No screenshots required.
+
+**Next Windows command:**
+
+```powershell
+python .\tools\c11d\d9\test_d910_gui_runtime_acceptance.py --run-id D910_QT_GUI_RUNTIME_01
+python .\tools\c11d\d9\capture_d910_acceptance.py --run-id D910_QT_ACCEPTANCE_01 --include-qt-gui-runtime --include-aggregate
+python -u .\c11c-suite\self_test.py
+```
+
+The runtime test is a real Qt code path exercised offscreen, not a manual visual review; `operator_interactive_visual_observation=false` must remain truthful. PySide6 is not installed in the preparation environment, so no Qt runtime result has been claimed yet. The static harness contract is included in aggregate step 22/22. No media is created. Do not enable dispatch or attempt to consume the adapter envelope as renderer input; D4.8 remains BLOCKED, D9.14 full E2E/D9.16/D9.17 and final baseline approvals remain open, release authority NONE. The GUI remains test-only; the definitive GUI comes after final D baseline freeze.

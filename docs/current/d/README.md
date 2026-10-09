@@ -84,3 +84,7 @@ The D7 frozen reference remains historical context. It does not describe the cur
 - `C11D_D6.4_RUNNER_REPAIR_V5_MANIFEST.json`
 - `C11D_D6.5_FULL_D6_ACCEPTANCE_REPAIR_V2_MANIFEST.json`
 - … 110 additional files.
+
+## Latest D9.10 runtime-automation addition (2026-10-09)
+
+The D9.10 acceptance path now includes `test_d910_gui_runtime_acceptance.py` to exercise the existing test/operator GUI offscreen. The dependency-free harness contract is in aggregate Suite step 22/22. The actual Qt test still needs its Windows run. This does not switch on the renderer, close D9 or authorize the definitive GUI.

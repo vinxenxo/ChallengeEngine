@@ -1,6 +1,6 @@
 # Challenge Engine V1.0 STATELESS — C11-D Roadmap
 
-**Current phase: D9.10 D-only adapter prepare-only implemented; D9 remains OPEN.** D9.10 now binds canonical request/editorial/plan/bridge identity into an inspectable D-only envelope, with renderer dispatch OFF. D9.14 bounded production qualification generated and audited four real A/V MP4s (qualification-only); this does not close the full D9.14 GUI gate. D9.15's screenshot waiver applies only to candidate readiness, D9.16 remains blocked, D9.17 remains NO-GO, and D10 remains BLOCKED.
+**Current phase: D9.10 D-only adapter PREPARE_ONLY implemented; canonical/CLI/static-GUI contracts and aggregate Suite pass on Windows. Optional automated offscreen Qt GUI runtime harness is prepared; Windows runtime result is the next check. D9 remains OPEN.** D9.10 now binds canonical request/editorial/plan/bridge identity into an inspectable D-only envelope, with renderer dispatch OFF. D9.14 bounded production qualification generated and audited four real A/V MP4s (qualification-only); this does not close the full D9.14 GUI gate. D9.15's screenshot waiver applies only to candidate readiness, D9.16 remains blocked, D9.17 remains NO-GO, and D10 remains BLOCKED.
 
 ## Governing baseline
 
@@ -252,3 +252,9 @@ The earlier bridge-planning checkpoint has advanced to **adapter envelope prepar
 ## D9.14 bounded production qualification result (2026-10-09)
 
 Windows run `D914_COLON_FIX_20261009_E` passed and sealed a qualification-only baseline with 4 final A/V MP4s and 8 checks. Report SHA-256: `daa5e5676224d606e9d67ac7a7ed7e88c3c02a63c76ecdc579c3bc2dd320853f`; qualification baseline SHA-256: `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. Challenge Music Engine V5 mux, deterministic Loop replay and music-seed isolation passed. This is bounded smoke qualification using established launchers; it is not full D9.14 GUI certification, D4.8 authorization, general renderer activation, final baseline approval or release.
+
+## D9.10 offscreen Qt GUI automation — 2026-10-09
+
+The default D9.10 automated acceptance has passed 5/5 checks in Windows, the candidate preflight passes with five blockers retained, and the aggregate Suite passed 21/21 after restoring both manifest-pinned historical README files. To replace optional manual screenshots with machine evidence, `test_d910_gui_runtime_acceptance.py` exercises the existing Producer test GUI offscreen for all three supported content types and checks that an explicit editorial override arrives in the D-only prepared envelope with exact GUI/CLI parity. Use `capture_d910_acceptance.py --include-qt-gui-runtime --include-aggregate` for one bound report. The offscreen runtime test is prepared but not yet executed in the package preparation environment because PySide6 is unavailable there; Windows must record its result. No renderer input or media is emitted by this test.
+
+The test/operator GUI remains temporary acceptance tooling. The definitive GUI remains deferred until the final D baseline has been accepted, D9 has been closed and that baseline is frozen. D4.8 remains BLOCKED, D9.14 full E2E/D9.16/D9.17 remain open gates, and release authority remains NONE.
