@@ -1,0 +1,29 @@
+{
+  "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+  "phase": "D9.10",
+  "result": "PASS_BRIDGE_PLANNING_ONLY",
+  "status": "PLANNED",
+  "request_id": "D99-GUI-6C79A7F84AAA",
+  "request_hash": "65b714568f317ec30e79a92b1a4a088a587c26b6c8eb5c5a2f9eeb6836268d7b",
+  "editorial_hash": "7a1b7ef3955707e5ffda6776f2650ca4041be84a81651ec897388fa754dc627d",
+  "plan_hash": "f093452d341d5aeecb4fb53f9419fb9ef356a897a554351452b334f3dd466b68",
+  "bridge_record_hash": "d9a30ddc7dd1437d376c59dcdbb85fb6c1292c549fa39aa57e1d10ace9f61c09",
+  "d_only_adapter_envelope_hash": "355a92b6cd785898136c12715f74193c3ceb5e20828d6fe651da516d4d4b4aab",
+  "d_only_adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+  "renderer_dispatch_invoked": false,
+  "gui_cli_parity": "PASS",
+  "content_type": "visual_drills",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "peripheral_scan",
+    "subtype_id": null,
+    "variant_id": "tier-1",
+    "variant_scope_id": "visual-drill:peripheral_scan:tier-1",
+    "difficulty_tier": 1
+  },
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-6C79A7F84AAA"
+}

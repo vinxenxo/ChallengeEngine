@@ -1,0 +1,147 @@
+{
+  "schema": "C11-D-D9.10-AUTOMATED-ACCEPTANCE-REPORT-V1",
+  "schema_version": "1.0",
+  "run_id": "D910_QT_ACCEPTANCE_FIX_02",
+  "started_at_utc": "2026-10-09T20:43:51.492580+00:00",
+  "completed_at_utc": "2026-10-09T20:45:20.717094+00:00",
+  "status": "PASS",
+  "scope": "Five focused backend/CLI/static-GUI/Config/candidate checks; optional offscreen Qt runtime exercise via --include-qt-gui-runtime and aggregate Suite via --include-aggregate; no screenshots or media",
+  "operator_gui_runtime_observed": false,
+  "qt_gui_runtime_exercised": true,
+  "operator_screenshots_required_for_this_report": false,
+  "gui_runtime_limit": "The optional Qt mode instantiates the existing Producer test GUI offscreen and clicks its D9.10 plan action. It does not claim a human visually observed the window and does not test the definitive GUI.",
+  "checks": [
+    {
+      "name": "d910_bridge_and_adapter",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "tools/c11d/d9/test_editorial_render_bridge.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 0.795,
+      "stdout_sha256": "e1bc2b2f2e30831d670c359f9bf36148fd35302d615e8b437046045cd6da05a2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "d910_bridge_and_adapter.stdout.log",
+      "stderr_log": "d910_bridge_and_adapter.stderr.log",
+      "error": null
+    },
+    {
+      "name": "producer_gui_contract",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "c11c-suite/c11c-producer/test_producer_gui_contract.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 0.144,
+      "stdout_sha256": "e9e9528c68276db08ce0ef7b99d2a16bc8ff1119ce69db5af24fc911ad2473b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "producer_gui_contract.stdout.log",
+      "stderr_log": "producer_gui_contract.stderr.log",
+      "error": null
+    },
+    {
+      "name": "config_contract",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "c11c-suite/c11c-config/test_config_gui_contract.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 0.097,
+      "stdout_sha256": "e8585ccd1352ee2e5e6c7cab447ebf96fa293e3b00f9d8356523b7b092392b77",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "config_contract.stdout.log",
+      "stderr_log": "config_contract.stderr.log",
+      "error": null
+    },
+    {
+      "name": "config_self_test",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "c11c-suite/c11c-config/self_test.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 0.291,
+      "stdout_sha256": "26b14f95123a2659e227841a3a2ab7e7777ceb7aae92c89b2173a85185c1737f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "config_self_test.stdout.log",
+      "stderr_log": "config_self_test.stderr.log",
+      "error": null
+    },
+    {
+      "name": "candidate_preflight",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "tools/c11d/baseline_candidate/test_d_baseline_candidate.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 42.269,
+      "stdout_sha256": "d435644d6ad408e0679daefe71a5107b2fd6b324bd6c39ad7630671353780052",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "candidate_preflight.stdout.log",
+      "stderr_log": "candidate_preflight.stderr.log",
+      "error": null
+    },
+    {
+      "name": "qt_gui_runtime",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "tools/c11d/d9/test_d910_gui_runtime_acceptance.py",
+        "--run-id",
+        "D910_QT_ACCEPTANCE_FIX_02"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 2.322,
+      "stdout_sha256": "2f526c29d7bd7ae30e2b547d95f1fc9d29d70d61e09f67bf3ea468505a54ae83",
+      "stderr_sha256": "6505e6ec3ee42080ebab0abb9e9866cf19d69f3bab63b62f8fabebe7d902271a",
+      "stdout_log": "qt_gui_runtime.stdout.log",
+      "stderr_log": "qt_gui_runtime.stderr.log",
+      "error": null
+    },
+    {
+      "name": "aggregate_suite",
+      "command": [
+        "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-u",
+        "c11c-suite/self_test.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_seconds": 43.28,
+      "stdout_sha256": "57c30460ff8b76abec494f8f4b541a06a1d37e84f1b38e21c8516a1578d1322e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_log": "aggregate_suite.stdout.log",
+      "stderr_log": "aggregate_suite.stderr.log",
+      "error": null
+    }
+  ],
+  "governance": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_match": true,
+    "d_only_adapter_prepare_enabled": true,
+    "aggregate_suite_included": true,
+    "qt_gui_runtime_included": true,
+    "qt_gui_runtime_exercised": true,
+    "focused_check_count": 6,
+    "screenshot_collection_required": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "outputs": {
+    "relative_run_root": "artifacts/tests/c11d_d9/d910_adapter_acceptance/D910_QT_ACCEPTANCE_FIX_02",
+    "report_file": "D9_10_AUTOMATED_ACCEPTANCE_REPORT.json",
+    "media_created": false
+  },
+  "report_hash": "e67811a71edfd15158b44b711c3db1b6cc0146bd5ae18eeb14951d7b0a27812d"
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+  "status": "PASS",
+  "content_type": "visual_drills",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "peripheral_scan",
+    "subtype_id": null,
+    "variant_id": "tier-1",
+    "variant_scope_id": "visual-drill:peripheral_scan:tier-1",
+    "difficulty_tier": 1
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true,
+    "d_only_adapter_envelope_equal": true
+  },
+  "gui_request_hash": "65b714568f317ec30e79a92b1a4a088a587c26b6c8eb5c5a2f9eeb6836268d7b",
+  "cli_request_hash": "65b714568f317ec30e79a92b1a4a088a587c26b6c8eb5c5a2f9eeb6836268d7b",
+  "gui_plan_hash": "f093452d341d5aeecb4fb53f9419fb9ef356a897a554351452b334f3dd466b68",
+  "cli_plan_hash": "f093452d341d5aeecb4fb53f9419fb9ef356a897a554351452b334f3dd466b68",
+  "bridge_record_hash": "d9a30ddc7dd1437d376c59dcdbb85fb6c1292c549fa39aa57e1d10ace9f61c09",
+  "cli_bridge_record_hash": "d9a30ddc7dd1437d376c59dcdbb85fb6c1292c549fa39aa57e1d10ace9f61c09",
+  "d_only_adapter_envelope_hash": "355a92b6cd785898136c12715f74193c3ceb5e20828d6fe651da516d4d4b4aab",
+  "cli_d_only_adapter_envelope_hash": "355a92b6cd785898136c12715f74193c3ceb5e20828d6fe651da516d4d4b4aab",
+  "d_only_adapter_prepare_invoked": true,
+  "renderer_dispatch_invoked": false,
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

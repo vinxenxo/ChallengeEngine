@@ -1,0 +1,23 @@
+[C11C-SUITE-SELF-TEST] 1/22 editorial_test
+[C11C-SUITE-SELF-TEST] 2/22 integration
+[C11C-SUITE-SELF-TEST] 3/22 universal_producer
+[C11C-SUITE-SELF-TEST] 4/22 producer_gui_contract
+[C11C-SUITE-SELF-TEST] 5/22 bridge_test
+[C11C-SUITE-SELF-TEST] 6/22 catalog_test
+[C11C-SUITE-SELF-TEST] 7/22 catalog_contract
+[C11C-SUITE-SELF-TEST] 8/22 config_test
+[C11C-SUITE-SELF-TEST] 9/22 config_contract
+[C11C-SUITE-SELF-TEST] 10/22 maintenance_test
+[C11C-SUITE-SELF-TEST] 11/22 test_route_contract
+[C11C-SUITE-SELF-TEST] 12/22 certification_preflight
+[C11C-SUITE-SELF-TEST] 13/22 d913_lifecycle
+[C11C-SUITE-SELF-TEST] 14/22 producer_lifecycle_contract
+[C11C-SUITE-SELF-TEST] 15/22 catalog_lifecycle_contract
+[C11C-SUITE-SELF-TEST] 16/22 maintenance_lifecycle_contract
+[C11C-SUITE-SELF-TEST] 17/22 d914_gate
+[C11C-SUITE-SELF-TEST] 18/22 producer_d914_contract
+[C11C-SUITE-SELF-TEST] 19/22 d915_operational_preflight
+[C11C-SUITE-SELF-TEST] 20/22 d916_full_acceptance_preflight
+[C11C-SUITE-SELF-TEST] 21/22 d_baseline_candidate_preflight
+[C11C-SUITE-SELF-TEST] 22/22 d910_gui_runtime_contract
+C11-C Suite 0.1.4 + Test 0.2.0 + Producer 0.11.1 + Catalog 0.2.0 + Config 0.2.0 + Maintenance 0.2.0 + C11-C 2.19.12 + D9.5.1/D9.6/D9.7/D9.8/D9.9/D9.10/D9.11/D9.12/D9.13/D9.14_GATE_BLOCKED_AS_REQUIRED/D9.15_PREFLIGHT_PASS_OPERATOR_CONFIRMATION_REQUIRED/D9.16_PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED/D_BASELINE_CANDIDATE_PREFLIGHT_PASS_FREEZE_BLOCKED_AS_REQUIRED/D9.15_CAPTURE_WAIVED_CANDIDATE_ONLY/D9.10_QT_GUI_RUNTIME_HARNESS_CONTRACT PASS

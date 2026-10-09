@@ -1,0 +1,85 @@
+{
+  "schema": "C11-D-D9.10-QT-GUI-RUNTIME-ACCEPTANCE-V1",
+  "schema_version": "1.0",
+  "run_id": "D910_QT_ACCEPTANCE_FIX_02",
+  "started_at_utc": "2026-10-09T20:44:35.242590+00:00",
+  "completed_at_utc": "2026-10-09T20:44:37.391416+00:00",
+  "status": "PASS",
+  "scope": "Offscreen runtime exercise of the existing test/operator Producer Qt window; three content types, explicit editorial override propagation, GUI/CLI parity, D-only adapter locks; no screenshots or media.",
+  "qt_gui_runtime_exercised": true,
+  "operator_interactive_visual_observation": false,
+  "screenshots_required": false,
+  "checks": [
+    {
+      "content_type": "challenges",
+      "status": "PASS",
+      "request_id": "D99-GUI-37A90F760667",
+      "run_root": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-37A90F760667",
+      "request_hash": "1ba1286dd78ac99e0edf25293d78f54f2a9ab140a05b55d3a737bd458e458aa7",
+      "plan_hash": "6229001d9cfd7face699ff726b6cf523d0cb490e6289d45b4e2ec8d1f266bbfa",
+      "bridge_record_hash": "ce667863a72c01046e31baa4a755df2d8f9c0c3c0eda400e5b612dc9e81bf6dd",
+      "d_only_adapter_envelope_hash": "24fad35d2e940175c0f5a9b94138460d5c5b8053cf66d0bbea71e02c26120858",
+      "editorial_override_propagated": true,
+      "gui_cli_parity": "PASS",
+      "renderer_dispatch_invoked": false,
+      "media_output_created": false
+    },
+    {
+      "content_type": "visual_loops",
+      "status": "PASS",
+      "request_id": "D99-GUI-9DF90B808F04",
+      "run_root": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-9DF90B808F04",
+      "request_hash": "f58b77c70135db172f734b4df5332494dd4ec18a37c360f8e420c96bbb071033",
+      "plan_hash": "ec50d9b3e83422fb66cf0d2fc0627a7ac73acf81639aa48819d39a9cf0b96d6b",
+      "bridge_record_hash": "e57f33fdf037aebe02cfe8e493074d2b10f64e3c1b53085b329462c731f8623c",
+      "d_only_adapter_envelope_hash": "0009c08311eacf39c610a81e8df62e6cc65ced65edaa919722659600208e7120",
+      "editorial_override_propagated": true,
+      "gui_cli_parity": "PASS",
+      "renderer_dispatch_invoked": false,
+      "media_output_created": false
+    },
+    {
+      "content_type": "visual_drills",
+      "status": "PASS",
+      "request_id": "D99-GUI-6C79A7F84AAA",
+      "run_root": "artifacts/tests/c11d_d9/producer_universal/D99-GUI-6C79A7F84AAA",
+      "request_hash": "65b714568f317ec30e79a92b1a4a088a587c26b6c8eb5c5a2f9eeb6836268d7b",
+      "plan_hash": "f093452d341d5aeecb4fb53f9419fb9ef356a897a554351452b334f3dd466b68",
+      "bridge_record_hash": "d9a30ddc7dd1437d376c59dcdbb85fb6c1292c549fa39aa57e1d10ace9f61c09",
+      "d_only_adapter_envelope_hash": "355a92b6cd785898136c12715f74193c3ceb5e20828d6fe651da516d4d4b4aab",
+      "editorial_override_propagated": true,
+      "gui_cli_parity": "PASS",
+      "renderer_dispatch_invoked": false,
+      "media_output_created": false
+    }
+  ],
+  "error": null,
+  "governance": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_frozen_manifest_match": true,
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "content_type_checks": "3/3",
+    "editorial_override_propagation_required": true,
+    "qt_platform": "offscreen",
+    "screenshot_collection_required": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "definitive_gui": "DEFERRED_UNTIL_FINAL_D_BASELINE_FROZEN"
+  },
+  "outputs": {
+    "relative_run_root": "artifacts/tests/c11d_d9/d910_gui_runtime_acceptance/D910_QT_ACCEPTANCE_FIX_02",
+    "report_file": "D9_10_QT_GUI_RUNTIME_ACCEPTANCE_REPORT.json",
+    "media_created": false
+  },
+  "report_hash": "97f3ce8b3f757f52d6348989538d27cd886ca1ba64ddf4928a8ee1ca86e6d05c"
+}

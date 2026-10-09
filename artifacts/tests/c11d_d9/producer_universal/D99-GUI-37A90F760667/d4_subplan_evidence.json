@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "request_hash": "ae437f89abd98ebf02c014b3c6b80eb602df1170ef5c70a10bdbe888bd9651e3",
+  "plan_hash": "e67443c16112388ae3daf5be13d15d84b4be8df9f52a135ed1495f308c8db18c",
+  "parity": {
+    "schema": "C11-D-D9.5.1-GUI-CLI-PARITY-V1",
+    "status": "PASS",
+    "gui_request_hash": "ae437f89abd98ebf02c014b3c6b80eb602df1170ef5c70a10bdbe888bd9651e3",
+    "cli_request_hash": "ae437f89abd98ebf02c014b3c6b80eb602df1170ef5c70a10bdbe888bd9651e3",
+    "request_hash_equal": true,
+    "canonical_request_equal": true,
+    "gui_plan_hash": "e67443c16112388ae3daf5be13d15d84b4be8df9f52a135ed1495f308c8db18c",
+    "cli_plan_hash": "e67443c16112388ae3daf5be13d15d84b4be8df9f52a135ed1495f308c8db18c",
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "guard_checks": {
+      "runtime_authority_none": true,
+      "renderer_activation_false": true,
+      "gui_activation_false": true,
+      "orchestrator_execution_false": true,
+      "simulation_truth_mutation_false": true,
+      "winning_frame_mutation_false": true,
+      "close_calls_mutation_false": true,
+      "gameplay_rng_consumption_false": true,
+      "structural_rng_consumption_false": true
+    },
+    "execution": false,
+    "renderer": false,
+    "release_authority": "NONE"
+  },
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "orchestrator_execution": false
+}
