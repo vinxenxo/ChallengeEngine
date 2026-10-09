@@ -1,12 +1,34 @@
-# Latest authoritative next action — D9.10 post-runtime integration repair (2026-10-09)
+# C11-D START PROMPT — D9.10 runtime accepted; D9.14 constrained continuation (2026-10-09)
 
-Windows has now confirmed `D910_QT_GUI_RUNTIME_FIX_01` **PASS 3/3**. The parity schema fix is valid: `test_cross_suite_lifecycle.py` reports PASS with `negative=14/14` and `persisted_parity_regression=4/4`. However, combined acceptance `D910_QT_ACCEPTANCE_FIX_01` is **FAIL 5/7** and is not closed: candidate preflight reports unauthorized drift in `docs/current/07_ROADMAP.md`, while aggregate Suite step 13 still asserts the stale text `negative=12/12`. The combined report's `GUI_runtime_observed=false` is intentional and truthful for offscreen automation, not itself a failed acceptance check.
+Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. The latest operator evidence supersedes all older pending/failure notes below.
 
-Apply `C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.zip`. It (1) updates step 13 to require the actual 14/14 negative result and persisted-parity regression 4/4 without weakening any checks, (2) restores `docs/current/07_ROADMAP.md` to the exact SHA-256 recorded in the immutable C11-C manifest, and (3) updates this current state and the incident history. Before running tests, verify the manifest hash is still `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` and the roadmap hash is `5e847ead237c614d1618e0a012f823e92ef95068441e8ce4872a225beee5d989`.
+## Verified status
 
-Then run the verification sequence in `docs/current/d/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` using fresh IDs `D910_QT_GUI_RUNTIME_FIX_02` and `D910_QT_ACCEPTANCE_FIX_02`. Do not reuse existing artifact directories. Target: runtime 3/3, combined 7/7, Suite 22/22, candidate preflight PASS with `freeze_eligible=false` and five blockers retained. If the candidate preflight still fails, preserve its exact exception; do not weaken the manifest audit.
+- D9.10 Qt runtime `D910_QT_GUI_RUNTIME_FIX_02`: **PASS 3/3**.
+- D9.10 bound acceptance `D910_QT_ACCEPTANCE_FIX_02`: **PASS 7/7** (five focused checks + Qt runtime + aggregate); `GUI_runtime_observed=false` correctly identifies offscreen automation.
+- D9.13 full lifecycle: PASS; content types 3/3, stages 5/5, GUI/CLI parity 3/3, catalog 3/3, maintenance 3/3, negative 14/14, persisted parity regression 4/4.
+- D9.10 bridge/adapter: PASS; bridge negatives 15/15, adapter negatives 9/9; adapter remains `PREPARE_ONLY`.
+- Producer GUI contract PASS.
+- Candidate preflight PASS, protected entries 854/854, negative 22/22, five blockers retained, `freeze_eligible=false`, `baseline_approval=MISSING`.
+- Aggregate Suite PASS 22/22.
+- C11-C manifest SHA-256: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 
-C11-C 2.19.12 and manifest remain immutable. Adapter `PREPARE_ONLY`; D4.8 `BLOCKED`; renderer OFF; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The GUI under test remains test/operator-only; the definitive GUI is deferred until the full D baseline is accepted and frozen.
+## Next work
+
+Continue with D9.14/D9.16 no-media gate verification and evidence review. Do not attempt real-media universal GUI E2E or unblock D4.8: the future D renderer baseline has not been separately approved/frozen and release authority is NONE. D9.15's waiver is candidate-only, not canonical acceptance. D9 remains OPEN; D9.17 remains BLOCKED/NO-GO; D10 remains BLOCKED.
+
+```powershell
+python .\tools\c11d\d9\test_gui_real_media_certification.py
+python .\tools\c11d\d9\test_full_acceptance.py
+python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
+python -u .\c11c-suite\self_test.py
+```
+
+Expected behavior: D9.14 gate stays `BLOCKED_AS_REQUIRED`, D9.16 reports `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`, candidate freeze stays blocked with five blockers, suite 22/22 PASS. A PASS here means the governance gate correctly denies unauthorized action, not that real-media acceptance happened.
+
+## Non-negotiable boundaries
+
+C11-C 2.19.12 and its manifest are immutable; D9.10 adapter `PREPARE_ONLY`; no renderer input/dispatch; D4.8 `BLOCKED`; renderer OFF; media false; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. Do not start definitive GUI implementation until the entire D baseline is accepted and frozen.
 
 ---
 

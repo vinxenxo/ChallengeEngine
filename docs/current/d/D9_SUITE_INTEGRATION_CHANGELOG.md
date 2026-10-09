@@ -1,5 +1,18 @@
 # D9 Suite Integration — Change Log
 
+
+## D9.10 Qt runtime accepted; next gate D9.14 (2026-10-09)
+
+- Confirmed direct Windows PySide6 offscreen acceptance `D910_QT_GUI_RUNTIME_FIX_02`: PASS 3/3.
+- Confirmed combined D9.10 acceptance `D910_QT_ACCEPTANCE_FIX_02`: PASS 7/7, with `C11-C_manifest_match=true`, `qt_gui_runtime=PASS`, renderer OFF, media false and release authority NONE.
+- Confirmed D9.13 lifecycle PASS: 3/3 content types, 5/5 stages, GUI/CLI parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted parity regression 4/4.
+- Confirmed aggregate Suite PASS 22/22 and baseline candidate preflight PASS with protected entries 854/854, negative 22/22, five blockers retained, `freeze_eligible=false` and `baseline_approval=MISSING`.
+- Root cause was the mismatch between seven GUI parity checks and a six-check exact validator schema; fixed by making `d_only_adapter_envelope_equal` required with hash binding. No fail-closed, parity or governance assertions were removed.
+- `GUI_runtime_observed=false` is accurate for automated offscreen execution. It is not a human visual-review claim and is not a failed check.
+- Next active work is no-media verification of the D9.14 certification gate and D9.16 preflight. Full D9.14 remains blocked until a separately approved/frozen D renderer baseline and explicit D4.8 checkpoint. D9.15 waiver remains candidate-only; D9.17 NO-GO; D9 OPEN; D10 BLOCKED.
+- C11-C manifest SHA remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; adapter `PREPARE_ONLY`; renderer OFF; no media; `release_authority=NONE`.
+
+
 ## D9.10 post-runtime integration follow-up — 2026-10-09
 
 - Windows Qt runtime `D910_QT_GUI_RUNTIME_FIX_01` PASS 3/3 after the seven-key persisted-parity schema repair.

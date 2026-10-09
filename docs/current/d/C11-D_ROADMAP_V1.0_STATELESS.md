@@ -1,6 +1,8 @@
 # Challenge Engine V1.0 STATELESS — C11-D Roadmap
 
-**Current phase: D9.10 adapter PREPARE_ONLY; backend/static contracts and aggregate Suite 22/22 PASS, but the optional Windows offscreen Qt runtime acceptance currently FAILS 0/3 and is the immediate next repair. D9 remains OPEN.** D9.10 now binds canonical request/editorial/plan/bridge identity into an inspectable D-only envelope, with renderer dispatch OFF. D9.14 bounded production qualification generated and audited four real A/V MP4s (qualification-only); this does not close the full D9.14 GUI gate. D9.15's screenshot waiver applies only to candidate readiness, D9.16 remains blocked, D9.17 remains NO-GO, and D10 remains BLOCKED.
+**Current phase: D9.10 Qt runtime acceptance PASS (3/3), bound acceptance PASS (7/7), aggregate Suite PASS (22/22). D9 remains OPEN.** The offscreen Qt runtime issue was a stale D9.13 persisted parity schema; the required GUI/CLI/adapter receipt now validates the exact seven-check schema and its hashes. The next safe activity is no-media D9.14 gate and D9.16 preflight verification. Full D9.14 GUI/E2E remains BLOCKED by the missing separately approved/frozen D renderer baseline and `D4.8=BLOCKED`; D9.15 waiver applies only to candidate readiness; D9.17 remains NO-GO; D10 remains BLOCKED.
+
+**Current phase: D9.10 D-only adapter PREPARE_ONLY implemented; canonical/CLI/static-GUI contracts and aggregate Suite pass on Windows. Optional automated offscreen Qt GUI runtime harness is prepared; Windows runtime result is the next check. D9 remains OPEN.** D9.10 now binds canonical request/editorial/plan/bridge identity into an inspectable D-only envelope, with renderer dispatch OFF. D9.14 bounded production qualification generated and audited four real A/V MP4s (qualification-only); this does not close the full D9.14 GUI gate. D9.15's screenshot waiver applies only to candidate readiness, D9.16 remains blocked, D9.17 remains NO-GO, and D10 remains BLOCKED.
 
 ## Governing baseline
 
@@ -255,12 +257,19 @@ Windows run `D914_COLON_FIX_20261009_E` passed and sealed a qualification-only b
 
 ## D9.10 offscreen Qt GUI automation — 2026-10-09
 
-The default D9.10 automated acceptance had passed 5/5 checks before the optional Qt runtime was added. The current aggregate Suite passes 22/22; its step 22 is a dependency-free static harness contract. On Windows, the optional offscreen Qt runtime has now been attempted and fails 0/3 content types; the bound `capture_d910_acceptance.py --include-qt-gui-runtime --include-aggregate` report fails 6/7 due to that runtime check. Inspect the recorded exception, JSON and nested logs before proposing a fix. No renderer input or media is emitted by this test.
+The default D9.10 automated acceptance has passed 5/5 checks in Windows, the candidate preflight passes with five blockers retained, and the aggregate Suite passed 21/21 after restoring both manifest-pinned historical README files. To replace optional manual screenshots with machine evidence, `test_d910_gui_runtime_acceptance.py` exercises the existing Producer test GUI offscreen for all three supported content types and checks that an explicit editorial override arrives in the D-only prepared envelope with exact GUI/CLI parity. Use `capture_d910_acceptance.py --include-qt-gui-runtime --include-aggregate` for one bound report. The offscreen runtime test is prepared but not yet executed in the package preparation environment because PySide6 is unavailable there; Windows must record its result. No renderer input or media is emitted by this test.
 
 The test/operator GUI remains temporary acceptance tooling. The definitive GUI remains deferred until the final D baseline has been accepted, D9 has been closed and that baseline is frozen. D4.8 remains BLOCKED, D9.14 full E2E/D9.16/D9.17 remain open gates, and release authority remains NONE.
 
-## D9.10.2 Windows Qt runtime result — superseding status (2026-10-09)
 
-The dependency-free `test_d910_gui_runtime_contract.py` and aggregate Suite step 22/22 pass. However, the optional real offscreen Qt run `D910_QT_GUI_RUNTIME_01` returned `FAIL | content_types=0/3`. The bound run `D910_QT_ACCEPTANCE_01` returned `FAIL | checks=6/7` because its optional runtime check failed while the focused checks and aggregate passed. The visible `QFontDatabase` and `propagateSizeHints()` messages are warnings, not established root cause. Diagnose from the run's `exception.txt`, JSON report and bound stdout/stderr before coding.
+## D9.10 Qt runtime acceptance closure — 2026-10-09
 
-No screenshot is required; no media or renderer dispatch is permitted. Current D9.10 status is backend/static PASS + Qt runtime acceptance unresolved. See `D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` and the incident at `docs/history/c11d/d9/D9.10_QT_GUI_RUNTIME_ACCEPTANCE_INCIDENT_20261009.md`.
+Operator-confirmed Windows result:
+
+- Direct offscreen Qt runtime `D910_QT_GUI_RUNTIME_FIX_02`: PASS, `content_types=3/3`, C11-C manifest match true, renderer OFF, media false.
+- Combined `D910_QT_ACCEPTANCE_FIX_02`: PASS, checks 7/7; the `GUI_runtime_observed=false` field remains intentionally truthful because the GUI was automated/offscreen.
+- D9.13 lifecycle: PASS, content types 3/3, stages 5/5, parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted parity regression 4/4.
+- Aggregate Suite: PASS 22/22.
+- Candidate preflight: PASS as a readiness audit, still `freeze_eligible=false` with five blockers; baseline approval missing; C11-C immutable reference match.
+
+The D9.10 Qt-runtime sub-gate is accepted. This does not close D9.14, D9.15 canonical operator evidence, D9.16 or D9.17. No D4.8 authorization, renderer activation, production/media, freeze or release authority is granted. See `D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` and incident history for the root cause and evidence.

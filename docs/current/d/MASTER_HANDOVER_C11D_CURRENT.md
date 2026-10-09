@@ -1,20 +1,44 @@
-# C11-D MASTER HANDOVER — D9.10 post-runtime integration repair (2026-10-09)
+# C11-D MASTER HANDOVER — D9.10 accepted; D9.14 next constrained gate (2026-10-09)
 
-## Latest operator-observed state
+## Latest operator-confirmed state — authoritative
 
-- `D910_QT_GUI_RUNTIME_FIX_01`: **PASS 3/3**; C11-C manifest match true, screenshots not required, renderer OFF, media false, D4.8 BLOCKED, release authority NONE.
-- `test_cross_suite_lifecycle.py --parity-contract-only`: PASS, positive 1/1, negative 4/4.
-- Full `test_cross_suite_lifecycle.py`: PASS; content types 3/3, stages 5/5, identity continuity PASS, GUI/CLI parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted parity regression 4/4.
-- Static Qt harness, editorial bridge/adapter and Producer GUI contract: PASS.
-- `D910_QT_ACCEPTANCE_FIX_01`: **FAIL 5/7**, not accepted. Remaining failures are (a) candidate preflight flags `docs/current/07_ROADMAP.md` as unapproved C-source drift and (b) aggregate Suite step 13 expects `negative=12/12` although the stronger lifecycle test correctly reports `negative=14/14`.
-- `c11c-suite/self_test.py` must assert `negative=14/14` and `persisted_parity_regression=4/4`, while retaining all current safety/governance assertions. The frozen manifest records the canonical roadmap hash `5e847ead237c614d1618e0a012f823e92ef95068441e8ce4872a225beee5d989`; restoring the exact bytes is required to remove accidental drift.
-- `operator_gui_runtime_observed=false` is retained by design. It reports that this test used an offscreen GUI and no human visual observation; it does not invalidate a successful runtime exercise.
+**D9.10 Qt runtime acceptance is PASS.** The Windows operator executed the following on the active checkout:
 
-Next: apply `C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.zip`, confirm both immutable hashes, then rerun with `D910_QT_GUI_RUNTIME_FIX_02` and `D910_QT_ACCEPTANCE_FIX_02`. Do not mark combined acceptance accepted until 7/7 and Suite 22/22 PASS. Candidate freeze remains blocked with five blockers.
+- `test_cross_suite_lifecycle.py --parity-contract-only`: PASS, positive 1/1 and negative 4/4.
+- `test_cross_suite_lifecycle.py`: PASS; content types 3/3, stages 5/5, identity continuity PASS, GUI/CLI parity 3/3, catalog projection 3/3, maintenance audit 3/3, negative 14/14, persisted-parity regression 4/4.
+- `test_d910_gui_runtime_contract.py`: PASS, content types 3/3; screenshots not required; production forbidden.
+- `test_editorial_render_bridge.py`: PASS; content types 3/3, bridge CLI parity 3/3, adapter parity 3/3, bridge negatives 15/15, adapter negatives 9/9.
+- `test_producer_gui_contract.py`: PASS, Producer 0.11.1.
+- Direct Qt runtime `D910_QT_GUI_RUNTIME_FIX_02`: **PASS 3/3**; `C11-C_manifest_match=true`; `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`.
+- Combined capture `D910_QT_ACCEPTANCE_FIX_02`: **PASS 7/7**; `qt_gui_runtime=PASS`; `C11-C_manifest_match=true`; `GUI_runtime_observed=false` is intentional for offscreen automation and is not a failure.
+- Candidate preflight: **PASS**; immutable C11-C match; protected entries 854/854; negatives 22/22; legacy disposition reconciled 4/4; five blockers retained; `freeze_eligible=false`; `baseline_approval=MISSING`. Candidate tree SHA-256: `99870ec3bbebc3035f587c310cbd60ddfa49e2cf27077794a2a5a14cee11d7f8`.
+- Aggregate `python -u .\c11c-suite\self_test.py`: **PASS 22/22**.
+- Manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. The protected `docs/current/07_ROADMAP.md` is restored to canonical SHA-256 `5e847ead237c614d1618e0a012f823e92ef95068441e8ce4872a225beee5d989`.
+
+The original Qt defect is resolved: the GUI produced seven parity checks while the D9.13 validator required six. The exact seven-key schema, adapter-envelope equality and hash binding are now validated; the regression keeps missing/false/mismatched evidence fail-closed.
+
+## Next active work — D9.14 gate readiness, no production authorization
+
+D9.10's Qt-runtime sub-gate is accepted. This **does not close D9** and does not authorize the renderer. Continue with no-media evidence and blocked-gate verification for D9.14 and D9.16. Full D9.14 GUI/E2E remains blocked until a separately approved future D frozen renderer baseline and an explicit D4.8 governance checkpoint exist. D9.15 operator evidence across all five existing GUI surfaces is still canonically required; its waiver applies only to candidate readiness. D9.16 full acceptance and D9.17 closure remain blocked.
+
+Suggested next Windows checks (all must remain fail-closed and create no media):
+
+```powershell
+python .\tools\c11d\d9\test_gui_real_media_certification.py
+python .\tools\c11d\d9\test_full_acceptance.py
+python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
+python -u .\c11c-suite\self_test.py
+```
+
+Expected dispositions: D9.14 gate `BLOCKED_AS_REQUIRED`; D9.16 `PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED`; candidate audit PASS with `freeze_eligible=false` and five blockers; aggregate PASS. A passing gate test proves fail-closed behavior, not authorization or production acceptance.
 
 ## Governance boundary
 
-C11-C 2.19.12 and its manifest remain immutable; D9.10 adapter `PREPARE_ONLY`; no renderer-native input or dispatch; D4.8 `BLOCKED`; renderer OFF; no media; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The current Producer window remains a temporary test/operator GUI. Definitive GUI work waits until the complete D baseline is accepted and frozen.
+- C11-C 2.19.12 and its manifest remain byte-for-byte immutable.
+- D9.10 adapter remains `PREPARE_ONLY`; no renderer-native input or dispatch.
+- D4.8 `BLOCKED`; renderer OFF; production/media OFF; `release_authority=NONE`.
+- D9 OPEN; full D9.14, canonical D9.15 evidence, D9.16 full acceptance and D9.17 closure unresolved; D10 BLOCKED.
+- The existing Producer window is a test/operator GUI only. Definitive GUI work remains deferred until all D acceptance gates are closed and the D baseline is frozen.
 
 ---
 
