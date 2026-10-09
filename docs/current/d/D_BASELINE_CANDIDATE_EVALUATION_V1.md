@@ -22,7 +22,7 @@ This is a candidate-evaluation track, not a freeze or release. C11-C is not repl
 
 1. D9.14 has no real-media acceptance evidence authorized through the universal GUI. The real-media gate correctly remains blocked.
 2. D4.8 is `BLOCKED`; no candidate tool or GUI route may change this.
-3. D9.15's 13 screenshot/log pairings were not captured. The operator explicitly waived capture **only as a candidate-readiness blocker**; the evaluator reports `WAIVED_NOT_EVIDENCED_FOR_CANDIDATE_ONLY`, not D9.15 PASS/CLOSED.
+3. Canonical D9.15 is now PASS/CLOSED after the operator recorded and reviewed 13/13 evidence pairings. This condition is satisfied and is no longer a blocker; the candidate-only waiver is historical and superseded for current status.
 4. D9.16 has only a fail-closed preflight PASS, not full acceptance against authorized real-media evidence.
 5. D9.17 records NO-GO; D9 remains open and D10 remains blocked.
 6. The D renderer baseline approval checkpoint and the exact-source D baseline approval checkpoint are both absent.
@@ -51,3 +51,10 @@ The first test is also registered in the existing Test 0.2.0 GUI as `D BASELINE 
 ## D9.10 adapter and D9.14 qualification evidence addendum (2026-10-09)
 
 D9.10 now includes a D-only prepare-only adapter contract and hash-bound envelope; it is static/CLI/GUI-contract accepted in the prepared workspace, not a renderer authorization. The user-run bounded D9.14 qualification also passed with four final A/V MP4s and sealed qualification baseline `15343119f0f8338b13b47b0ea98546e5470d4a1a8895b65dbe1f41ee183e66d3`. Neither evidence changes baseline-candidate policy. The latest readiness preflight remains `freeze_eligible=false` with five blockers; D4.8 remains BLOCKED, general renderer dispatch OFF, no release authority. The D9.15 capture waiver is honored only for candidate-readiness evaluation; no screenshot or operational acceptance is fabricated.
+
+
+## Latest candidate status after D9.15 canonical closure — 2026-10-09
+
+The operator reran the candidate audit after D9.15 checkpoint-consumption was corrected. Observed output: `C11-C=IMMUTABLE_REFERENCE_MATCH`; protected entries 854/854; negative 22/22; legacy quarantine reconciled 4/4 with no mismatches; `D9.15=D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`; five blockers; `freeze_eligible=false`; renderer OFF; no media; D4.8 BLOCKED; release authority NONE. Last observed tree SHA-256 before this documentation update: `b2970567cfe688653899a7e29cfecc36ae6224fdb8eb12386bf5a6a0e6caa331` (recompute after documentation changes).
+
+The five outstanding blockers are D9.14 real-media certification, D9.16 full acceptance, D9.17 closure, D renderer-baseline approval, and exact-source D baseline approval. See `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md` for the next no-dispatch engineering track.

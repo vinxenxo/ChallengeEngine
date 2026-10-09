@@ -278,3 +278,10 @@ Operator-confirmed Windows result:
 - Candidate preflight: PASS as a readiness audit, still `freeze_eligible=false` with five blockers; baseline approval missing; C11-C immutable reference match.
 
 The D9.10 Qt-runtime sub-gate is accepted. This does not close D9.14, D9.15 canonical operator evidence, D9.16 or D9.17. No D4.8 authorization, renderer activation, production/media, freeze or release authority is granted. See `D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md` and incident history for the root cause and evidence.
+
+
+## Latest Windows confirmation — D9.15 checkpoint consumption complete (2026-10-09)
+
+The operator-confirmed latest run now establishes: D9.15 canonical operational acceptance PASS/CLOSED (13/13; checkpoint `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`; ledger `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`); D9.15 static preflight 8/8 capabilities, 5/5 surfaces, negative 19/19; D9.14 gate PASS as `BLOCKED_AS_REQUIRED` (10/10 cases, 20/20 negatives); D9.16 preflight PASS (5/5 static checks, 9/9 evidence routes, 21/21 negatives, `D9.15_operator_evidence=PASS_CLOSED`, overall full acceptance blocked); candidate preflight PASS with five remaining blockers and `freeze_eligible=false`; aggregate Suite PASS 22/22. The historical candidate-only D9.15 waiver is superseded for current operational status by the validated canonical checkpoint.
+
+**Next active work:** prepare and statically verify a separately versioned D-owned renderer baseline candidate under `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`. This is engineering preparation only. Do not dispatch the D9.10 envelope, run D9.14 real-media GUI E2E, change the production activation policy, or create approval checkpoints before independent renderer review and explicit D4.8 governance authorization. C11-C and its manifest remain immutable.

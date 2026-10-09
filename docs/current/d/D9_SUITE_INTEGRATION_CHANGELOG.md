@@ -156,3 +156,17 @@
 - Aggregate Suite: PASS 22/22. D9.10 Qt runtime remains PASS 3/3 and bound acceptance PASS 7/7.
 - Next actionable no-media work: capture and seal canonical D9.15 operator evidence, all 13 pairings across the five existing GUIs. Candidate-only waiver does not substitute.
 - These gate passes are not real-media acceptance or D9 closure. D9.14 full GUI/E2E remains blocked by the absent separately approved/frozen universal D renderer baseline and explicit D4.8 governance checkpoint. D9.16 and D9.17 remain blocked; D10 blocked; renderer OFF; release authority NONE.
+
+
+## 2026-10-09 — Canonical D9.15 checkpoint consumed; D renderer baseline is next
+
+Windows confirmation after the checkpoint-consumption overlay:
+
+- D9.15 recorder status `PASS_CLOSED`, 13/13 pairings, checkpoint SHA-256 `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`, ledger SHA-256 `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`.
+- D9.15 static preflight 8/8 capabilities, 5/5 surfaces, negative 19/19; operator confirmation remains required in that static route by design.
+- D9.14 gate PASS as `BLOCKED_AS_REQUIRED`, 10/10 cases and 20/20 negatives.
+- D9.16 preflight PASS with 5/5 static checks, 9/9 evidence routes, 21/21 negatives, canonical D9.15 `PASS_CLOSED`, and full acceptance still `BLOCKED_AS_REQUIRED`.
+- Candidate preflight PASS; protected entries 854/854, negative 22/22, legacy reconciliation 4/4, canonical D9.15 PASS_CLOSED, five blockers and `freeze_eligible=false`.
+- Aggregate Suite PASS 22/22.
+
+The prior D9.15 candidate-only waiver is superseded for live operational status by the canonical checkpoint. No renderer, production, media, freeze or release authority was granted. The next approved engineering activity is preparation and static verification of a separately versioned D-owned renderer baseline candidate, per `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`; real-media D9.14 remains forbidden until independent renderer-baseline approval and explicit D4.8 governance authorization exist.

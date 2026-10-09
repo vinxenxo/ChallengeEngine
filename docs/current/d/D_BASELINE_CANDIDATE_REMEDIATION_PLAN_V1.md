@@ -58,14 +58,15 @@ Expected reconciliation state: `legacy_missing=4/4` because the historic files a
 
 ## Gate 2 — Record remaining approval/evidence gates
 
-After legacy reconciliation, this candidate preflight should still block for:
+After the operator's confirmed D9.15 PASS/CLOSED and legacy reconciliation, this candidate preflight should still block for five independent reasons:
 
 1. `D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED` and `D4.8=BLOCKED`.
-2. `D9_15_OPERATOR_EVIDENCE_MATRIX_REQUIRED` — eight capabilities across all five canonical GUIs, with route/action, timestamp, observed status, relevant hashes and screenshot/log references.
-3. `D9_16_FULL_ACCEPTANCE_NOT_CLOSED` — rerun against complete authorized evidence.
-4. `D9_17_CLOSURE_NO_GO` — remains open until D9.14 and D9.15 are genuinely accepted.
-5. `D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED` — a separate D-owned renderer/baseline checkpoint with explicit approval and D4.8 governance.
-6. `D_BASELINE_APPROVAL_NOT_RECORDED` — a separate checkpoint JSON bound to the exact candidate source fingerprint (excluding its own file), immutable C11-C manifest hash, approved renderer checkpoint hash, reviewer and timestamp.
+2. `D9_16_FULL_ACCEPTANCE_NOT_CLOSED` — preflight only; rerun full acceptance after authorized D9.14 evidence exists.
+3. `D9_17_CLOSURE_NO_GO` — remains open until the required D9.14/D9.16 evidence is accepted and formally adjudicated.
+4. `D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED` — a separate D-owned renderer/baseline checkpoint with explicit approval and D4.8 governance.
+5. `D_BASELINE_APPROVAL_NOT_RECORDED` — a separate checkpoint JSON bound to the exact candidate source fingerprint (excluding its own file), immutable C11-C manifest hash, approved renderer checkpoint hash, reviewer and timestamp.
+
+Canonical D9.15 operator evidence is now PASS/CLOSED (13/13) and is consumed by the evaluator; it is no longer an outstanding blocker. The old candidate-only waiver remains historical only.
 
 Neither this candidate preflight nor its tests may authorize D4.8, turn on a renderer, create media, create a freeze/release archive or grant release authority. `D10=BLOCKED` until a separately approved D freeze and release path exists.
 
@@ -74,3 +75,8 @@ Neither this candidate preflight nor its tests may authorize D4.8, turn on a ren
 - The read-only report includes per-file expected, ledger and archived sizes/hashes plus explicit reasons when a quarantine archive does not match C11-C historical bytes.
 - The audit now requires a separate renderer baseline checkpoint and a separate exact-source candidate approval checkpoint; a missing or malformed approval cannot be unlocked by mere file presence.
 - Negative acceptance is `22/22`, including a synthetic quarantine whose tree seal is valid but one file differs from the historical manifest.
+
+
+## Current Windows outcome and next work — 2026-10-09
+
+Canonical D9.15 is validated PASS/CLOSED and the last operator run reports five remaining blockers with `freeze_eligible=false`. Continue with the no-dispatch D renderer baseline preparation plan in `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`. Do not create an approved renderer checkpoint or exact-source baseline approval JSON until implementation, acceptance evidence and the independent governance decision genuinely exist.

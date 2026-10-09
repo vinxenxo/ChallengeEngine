@@ -1,5 +1,30 @@
 # C11-D MASTER HANDOVER — D9.15 accepted; D9.14/D9.16 remain gated (2026-10-09)
 
+## Latest operator-confirmed state — D9.15 checkpoint consumed; next work is renderer-baseline preparation (2026-10-09)
+
+The Windows integration rerun after `C11D_D915_CHECKPOINT_CONSUMPTION_FIX_OVERLAY_V1.zip` is now confirmed. This block supersedes any older text below saying canonical D9.15 evidence is still required or the candidate-only waiver remains the current D9.15 status.
+
+- `operator_evidence.py status`: `D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`; 13/13 pass pairings, 0 blocked, 0 pending, 13 events; checkpoint `PASS_CLOSED`.
+- D9.15 ledger SHA-256: `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`.
+- D9.15 checkpoint SHA-256: `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`.
+- D9.15 static GUI preflight: PASS, capabilities 8/8, surfaces 5/5, negative 19/19; `operator_confirmation=REQUIRED` remains truthful for that static test because it must not infer human evidence.
+- D9.14 gate: PASS as `BLOCKED_AS_REQUIRED`, cases 10/10, negative 20/20; renderer OFF, no media, D4.8 BLOCKED, release authority NONE.
+- D9.16 preflight: PASS, static checks 5/5, evidence routes 9/9, negative 21/21; `D9.15_operator_evidence=PASS_CLOSED`; full acceptance remains `BLOCKED_AS_REQUIRED` due D9.14.
+- Candidate preflight: PASS as a read-only audit; C11-C immutable reference match, protected entries 854/854, negative 22/22, legacy quarantine reconciled 4/4, canonical D9.15 `PASS_CLOSED`, five blockers retained, `freeze_eligible=false`.
+- Last observed candidate tree fingerprint before this documentation-only update: 2,641 files; SHA-256 `b2970567cfe688653899a7e29cfecc36ae6224fdb8eb12386bf5a6a0e6caa331`.
+- Aggregate `c11c-suite/self_test.py`: PASS 22/22.
+- D9.10 Qt runtime / bound acceptance previously confirmed: PASS 3/3 and 7/7; D9.13 parity/lifecycle and bridge regressions pass.
+- Historical C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+
+Canonical D9.15 is no longer a candidate blocker. The old D9.15 waiver remains historical evidence only. The remaining five candidate blockers are D9.14 real-media certification, D9.16 full acceptance, D9.17 closure, D renderer-baseline approval, and exact-source D baseline approval.
+
+## Next active engineering track — future D-owned renderer baseline (PREPARATION ONLY)
+
+Do not run D9.14 real-media E2E or change activation policy yet. Start the D-owned renderer-baseline preparation track described in `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`. The first deliverable is a separately versioned and hash-bound D renderer implementation/contract which can be reviewed and tested without dispatch. D9.10 stays PREPARE_ONLY; any future dispatcher must be a separately governed component and may not reinterpret the prepared envelope as renderer-native input.
+
+The renderer baseline is not approved/frozen merely because its design or static tests pass. D9.14 requires both a separately approved/frozen future D renderer baseline and an explicit D4.8 governance checkpoint before authorized real-media tests. Neither approval is being created by this update. `D4.8=BLOCKED`, renderer OFF, production/media false, `release_authority=NONE`, D9 OPEN, D10 BLOCKED, C11-C immutable.
+
+
 ## Integration correction after D9.15 finalization — 2026-10-09
 
 The operator has now rerun D9.15/D9.16/candidate preflights after the canonical checkpoint was sealed. The ledger is valid and D9.15 is `PASS_CLOSED`, but the old D9.16 and candidate code did not consume that checkpoint: D9.16 still reported `D9.15_operator_evidence=REQUIRED`, and candidate status still preferred the historical candidate-only waiver. This is a state-integration defect, not a failure of the 13 accepted observations.

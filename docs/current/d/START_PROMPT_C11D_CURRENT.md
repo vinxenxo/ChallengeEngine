@@ -1,44 +1,26 @@
 # C11-D START PROMPT — D9.15 PASS/CLOSED; D9.14 remains blocked (2026-10-09)
 
-## Current integration issue — canonical D9.15 checkpoint consumption (2026-10-09)
+## Current authoritative status after checkpoint-consumption fix
 
-D9.15 canonical operational acceptance is sealed `PASS_CLOSED` (13/13 pairings). The most recent D9.15/D9.16/candidate commands exposed an integration inconsistency: static D9.15 preflight correctly says operator confirmation is required because it cannot infer human evidence, but D9.16 and candidate preflight also kept saying D9.15 evidence was required / candidate-only waived. The latter two must consult the sealed checkpoint and live hash-bound ledger, not the static D9.15 contract status.
+The latest Windows run is now confirmed: D9.15 canonical checkpoint is valid and consumed by D9.16 and the candidate evaluator; `test_full_acceptance.py` reports `D9.15_operator_evidence=PASS_CLOSED`; candidate preflight reports `D9.15=D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`; aggregate Suite is PASS 22/22. The D9.15 waiver is historical and is not the operative status.
 
-Apply and verify the latest integration overlay before proceeding. Expected: D9.16 reports `D9.15_operator_evidence=PASS_CLOSED` while remaining `BLOCKED_AS_REQUIRED` due D9.14; candidate reports canonical D9.15 `PASS_CLOSED` while `freeze_eligible=false` and five non-D9.15 blockers remain; aggregate Suite passes. Invalid/stale present checkpoints must fail closed. D9.14 remains blocked by missing approved/frozen future D renderer baseline and explicit D4.8 authorization.
+Latest operator evidence: D9.15 ledger SHA-256 `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`; acceptance checkpoint SHA-256 `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`. The last observed candidate audit reported five blockers, `freeze_eligible=false`, legacy reconciliation 4/4, protected entries 854/854 and tree SHA-256 `b2970567cfe688653899a7e29cfecc36ae6224fdb8eb12386bf5a6a0e6caa331` before this docs-only overlay.
 
+## Next work
 
-Use the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. This top section supersedes older pending/waiver-only status notes retained below for historical trace.
+Proceed with the future D-owned renderer-baseline preparation track in `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`. Do not execute D9.14 full real-media E2E yet. First specify/build and statically verify the D-only renderer candidate in a separate path; do not mutate C11-C or turn the D9.10 adapter into a dispatcher. Only an independently reviewed renderer-baseline checkpoint and explicit D4.8 governance decision can authorize D9.14 real-media E2E. This prompt creates neither approval.
 
-## Latest operator-confirmed state
+## Fresh Windows verification already confirmed
 
-- **Canonical D9.15 operator evidence: `D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`.** The operator recorded all 13 required pairings across the five canonical GUI surfaces, then finalized successfully.
-- Pairings: 13/13 PASS; blocked 0; pending 0; ledger events 13.
-- Checkpoint: `docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json`.
-- Checkpoint SHA-256: `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f5`.
-- Sealed ledger SHA-256: `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`.
-- D9.10 runtime `D910_QT_GUI_RUNTIME_FIX_02`: PASS 3/3; bound acceptance `D910_QT_ACCEPTANCE_FIX_02`: PASS 7/7.
-- D9.13 lifecycle: PASS; content types 3/3, stages 5/5, GUI/CLI parity 3/3, Catalog 3/3, Maintenance 3/3, negative 14/14, persisted parity regression 4/4.
-- Bridge/adapter: PASS; adapter is still `PREPARE_ONLY`; bridge negatives 15/15 and adapter negatives 9/9.
-- D9.14 no-media certification gate: `BLOCKED_AS_REQUIRED`, 10/10 cases and 20/20 negatives.
-- D9.16 preflight (last observed before D9.15 finalize): 5/5 static checks, 9/9 evidence routes and 21/21 negative controls; full acceptance `BLOCKED_AS_REQUIRED`.
-- Aggregate suite: PASS 22/22.
-- C11-C manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+- `test_gui_operational_acceptance.py`: PASS, 8/8 capabilities, 5/5 surfaces, 19/19 negatives; static `operator_confirmation=REQUIRED` is intentional.
+- `test_gui_real_media_certification.py`: PASS as `BLOCKED_AS_REQUIRED`, 10/10 cases, 20/20 negatives.
+- `test_full_acceptance.py`: PASS preflight, 5/5 static, 9/9 routes, 21/21 negatives; `D9.15_operator_evidence=PASS_CLOSED`, `D9.14=BLOCKED`, full acceptance blocked.
+- Candidate preflight: PASS with canonical D9.15 closed and five blockers, freeze false.
+- `c11c-suite/self_test.py`: PASS 22/22.
 
-## Next commands — re-evaluate after D9.15 closure
+## Invariants
 
-```powershell
-python .\tools\c11d\baseline_candidate\operator_evidence.py status
-python .\tools\c11d\d9\test_gui_operational_acceptance.py
-python .\tools\c11d\d9\test_full_acceptance.py
-python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
-python -u .\c11c-suite\self_test.py
-```
-
-Capture the actual outputs before updating any candidate blocker count or tree SHA. D9.15 finalization does not authorize real media or bypass D9.14. Full D9.14 is still blocked by the absent separately approved/frozen D renderer baseline and explicit D4.8 governance authorization. D9.16 full acceptance and D9.17 closure therefore remain blocked.
-
-## Non-negotiable boundaries
-
-C11-C 2.19.12 and its manifest are immutable; D9.10 adapter `PREPARE_ONLY`; no renderer-native input/dispatch; D4.8 `BLOCKED`; renderer OFF; production/media false; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The current GUI is test/operator-only; defer definitive GUI work until the complete D baseline is accepted and frozen.
+C11-C 2.19.12 and its manifest are immutable; adapter PREPARE_ONLY; renderer OFF; no dispatch or media; D4.8 BLOCKED; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The test/operator GUI remains temporary and the definitive GUI is deferred until the entire D baseline has passed acceptance and is separately frozen.
 
 ---
 
