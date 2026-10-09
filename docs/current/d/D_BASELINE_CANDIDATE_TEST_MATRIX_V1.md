@@ -3,7 +3,7 @@
 | Gate | Assertion | Current expected result |
 |---|---|---|
 | Historical reference | C11-C manifest SHA-256 equals the frozen identity | PASS |
-| C inventory | Every one of 2,545 historical manifest paths exists | PASS |
+| C inventory | Every historical manifest path exists at source or is exactly reconciled by the verified legacy quarantine ledger/archive | PASS only when source/archive disposition is valid |
 | C protected source | Each protected path matches its historical byte count and SHA-256 | PASS |
 | D extension isolation | Historical-manifest differences are inside declared D integration/documentation roots | PASS |
 | Operator topology | Exactly the five canonical surfaces are registered | PASS |

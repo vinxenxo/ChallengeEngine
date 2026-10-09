@@ -65,6 +65,38 @@ def _test_legacy_disposition_contract() -> None:
         reconciled = dbc._legacy_control_disposition(temp_root, synthetic_manifest, dbc.EXPECTED_C_MANIFEST_SHA256)
         assert reconciled["status"] == "QUARANTINED_LEDGER_RECONCILED" and reconciled["reconciled"]
         assert reconciled["tree_hash_verified"] and reconciled["manifest_hash_verified"] and reconciled["entry_hashes_reconciled"]
+        assert len(reconciled["entry_reconciliation"]) == 4
+        assert all(row["matches"] for row in reconciled["entry_reconciliation"])
+
+        # A valid tree/manifest ledger seal is not sufficient if a quarantined file differs from C11-C.
+        bad_destination_rel = f"{dbc.QUARANTINE_DESTINATION_PREFIX}synthetic_mismatch"
+        bad_destination = temp_root / bad_destination_rel
+        bad_destination.mkdir(parents=True, exist_ok=True)
+        for name, payload in blobs.items():
+            altered = payload + (b"tampered" if name == "README.md" else b"")
+            (bad_destination / name).write_bytes(altered)
+        bad_inventory = maintenance.inventory_tree(bad_destination)
+        bad_ledger = {
+            "schema": "C11-D-D9.11-MAINTENANCE-LEDGER-V1",
+            "schema_version": "1.0",
+            "events": [{
+                "event_id": "QUARANTINED-SYNTHETIC-MISMATCH",
+                "event_type": "QUARANTINED",
+                "resource": dbc.LEGACY_CONTROL_DIR,
+                "destination_path": bad_destination_rel,
+                "tree_sha256": bad_inventory["tree_sha256"],
+                "files": bad_inventory["files"],
+                "historical_manifest_sha256": dbc.EXPECTED_C_MANIFEST_SHA256,
+            }],
+        }
+        ledger_path.write_text(json.dumps(bad_ledger), encoding="utf-8")
+        mismatch = dbc._legacy_control_disposition(temp_root, synthetic_manifest, dbc.EXPECTED_C_MANIFEST_SHA256)
+        assert mismatch["status"] == "QUARANTINED_MANIFEST_ENTRY_MISMATCH"
+        assert mismatch["tree_hash_verified"] and mismatch["manifest_hash_verified"]
+        assert not mismatch["entry_hashes_reconciled"] and not mismatch["reconciled"]
+        assert len([row for row in mismatch["entry_reconciliation"] if not row["matches"]]) == 1
+        mismatched_readme = next(row for row in mismatch["entry_reconciliation"] if row["manifest_path"].endswith("/README.md"))
+        assert "ARCHIVE_HASH_DIFFERS_FROM_HISTORICAL_MANIFEST" in mismatched_readme["reasons"]
 
 
 def main() -> int:
@@ -101,6 +133,7 @@ def main() -> int:
         "D9_16_FULL_ACCEPTANCE_NOT_CLOSED",
         "D9_17_CLOSURE_NO_GO",
         "D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED",
+        "D_BASELINE_APPROVAL_NOT_RECORDED",
     }
     assert must_block.issubset(set(record["blockers"])), sorted(set(must_block) - set(record["blockers"]))
     assert record["side_effects"] == {"repository_files_written": False, "freeze_archive_created": False, "media_created": False, "renderer_activation": False, "manifest_modified": False, "release_authority_granted": False}
@@ -135,23 +168,34 @@ def main() -> int:
     reject("claim D9.16 closed", lambda x: x["blockers"].remove("D9_16_FULL_ACCEPTANCE_NOT_CLOSED"))
     reject("claim D9.17 closed", lambda x: x["blockers"].remove("D9_17_CLOSURE_NO_GO"))
     reject("claim renderer approval", lambda x: x["blockers"].remove("D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED"))
+    reject("claim D baseline approval", lambda x: x["blockers"].remove("D_BASELINE_APPROVAL_NOT_RECORDED"))
     reject("remove no-write invariant", lambda x: x["side_effects"].update(repository_files_written=True))
     reject("create freeze archive", lambda x: x["side_effects"].update(freeze_archive_created=True))
     reject("mutate C manifest", lambda x: x["side_effects"].update(manifest_modified=True))
     reject("tamper tree fingerprint", lambda x: x["tree_identity"].update(sha256="0" * 64))
     reject("raw seal tamper", lambda x: x.update(candidate_freeze_eligible=True), reseal=False)
-    assert negatives == 21, f"negative controls mismatch: {negatives}/21"
+    assert negatives == 22, f"negative controls mismatch: {negatives}/22"
     blockers = ",".join(record["blockers"])
+    legacy = record["inventory"]["legacy_c11d_control_disposition"]
+    mismatch_rows = [row for row in legacy.get("entry_reconciliation", []) if not row.get("matches")]
+    if legacy.get("status") == "QUARANTINED_MANIFEST_ENTRY_MISMATCH":
+        mismatch_names = ",".join(Path(row["manifest_path"]).name for row in mismatch_rows) or "unspecified"
+    elif legacy.get("reconciled"):
+        mismatch_names = "none"
+    else:
+        mismatch_names = "not_applicable"
+    reconciled_count = 4 if legacy.get("reconciled") else 0
     print(
         "C11-D BASELINE CANDIDATE PREFLIGHT PASS | "
         f"candidate=C11-D-BASELINE-CANDIDATE-0.1 | C11-C=IMMUTABLE_REFERENCE_MATCH | "
         f"manifest_paths_present={record['inventory']['c_manifest_source_present_entries']}/{record['inventory']['c_manifest_entries']} | "
         f"legacy_missing={len(record['inventory']['c_manifest_missing_legacy_entries'])}/4 | "
-        f"legacy_disposition={record['inventory']['legacy_c11d_control_disposition']['status']} | "
+        f"legacy_disposition={legacy['status']} | legacy_reconciled_files={reconciled_count}/4 | legacy_mismatch_files={mismatch_names} | "
         f"protected_entries={record['inventory']['protected_c_entries']}/{record['inventory']['protected_c_entries']} | "
         f"manifest_exact={record['inventory']['c_manifest_exact_matches']}/{record['inventory']['c_manifest_entries']} | "
         f"allowed_D_changes={len(record['inventory']['c_manifest_changed_entries'])} | "
-        f"active_surfaces={record['canonical_surfaces']['count']}/5 | negative={negatives}/21 | "
+        f"active_surfaces={record['canonical_surfaces']['count']}/5 | negative={negatives}/22 | "
+        f"baseline_approval={record['governance']['baseline_approval_checkpoint_status']} | "
         f"freeze_eligible=false | blockers={len(record['blockers'])} | "
         f"tree_files={record['tree_identity']['included_files']} | tree_sha256={record['tree_identity']['sha256']} | "
         "renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE"

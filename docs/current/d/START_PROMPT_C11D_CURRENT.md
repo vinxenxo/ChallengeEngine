@@ -160,3 +160,8 @@ D9.17 was adjudicated on 2026-10-09 and is **BLOCKED / NOT CLOSED**. The latest 
 ## New parallel track: D baseline candidate evaluation (2026-10-09)
 
 Current candidate: `C11-D-BASELINE-CANDIDATE-0.1`, evaluation only. Begin with `docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md` and `docs/current/d/D_BASELINE_CANDIDATE_TEST_MATRIX_V1.md`; run `python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py` and the updated `c11c-suite` regression. Candidate preflight is expected to PASS while `candidate_freeze_eligible=false`. Do not create a freeze archive, do not write into `release/`, do not change the immutable C11-C manifest, do not activate a renderer, and do not grant D4.8/release authority. D9 remains OPEN and D10 BLOCKED; candidate work is parallel readiness testing, not a reversal of D9.17 NO-GO.
+
+
+## D baseline candidate remediation (2026-10-09)
+
+The `C11-D-BASELINE-CANDIDATE-0.1` evaluator is read-only and must stay `freeze_eligible=false`. Run `python .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py`; it has 22 negative controls and reports mismatched `c11d-control` file names. See `docs/current/d/D_BASELINE_CANDIDATE_REMEDIATION_PLAN_V1.md` for the exact historical snapshot reconciliation process. Preserve the previous mismatched archive and ledger event; restore the exact four manifest-matching files only if the source directory is absent, then preview and explicitly apply `maintenance.py quarantine-legacy-control` with `--confirm QUARANTINE_C11D_CONTROL`. The audit separately requires approved renderer and candidate baseline checkpoints; do not use preflight to authorize D4.8 or release.

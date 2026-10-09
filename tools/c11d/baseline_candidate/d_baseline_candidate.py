@@ -11,6 +11,8 @@ from typing import Any
 
 POLICY_REL = "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json"
 C_MANIFEST_REL = "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+D_RENDERER_BASELINE_APPROVAL_REL = "docs/current/d/D_RENDERER_BASELINE_APPROVAL_CHECKPOINT.md"
+D_BASELINE_APPROVAL_REL = "docs/current/d/D_BASELINE_APPROVAL_CHECKPOINT.json"
 LEGACY_CONTROL_PREFIX = "c11c-suite/c11d-control/"
 LEGACY_CONTROL_DIR = "c11c-suite/c11d-control"
 MAINTENANCE_LEDGER_REL = "artifacts/maintenance/d9_11/D9_11_MAINTENANCE_LEDGER.json"
@@ -96,9 +98,13 @@ def _iter_candidate_files(root: Path):
                 yield rel, path
 
 
-def _candidate_tree_fingerprint(root: Path) -> tuple[int, str]:
+def _candidate_tree_fingerprint(root: Path, *, exclude_paths: set[str] | None = None) -> tuple[int, str]:
+    """Fingerprint candidate files; a governance approval record may exclude itself from its binding."""
+    excluded = {p.replace("\\", "/") for p in (exclude_paths or set())}
     rows: list[str] = []
     for rel, path in _iter_candidate_files(root):
+        if rel in excluded:
+            continue
         data_hash = _hash_file(path)
         rows.append(f"{rel}\0{path.stat().st_size}\0{data_hash}\n")
     payload = "".join(sorted(rows)).encode("utf-8")
@@ -172,17 +178,17 @@ def _load_maintenance_module(root: Path):
 
 
 def _legacy_control_disposition(root: Path, manifest: dict[str, Any], manifest_sha256: str) -> dict[str, Any]:
-    """Read-only reconciliation of the C-manifest legacy paths with D9.11 quarantine evidence.
-
-    Missing historical paths are never silently accepted: they remain an explicit blocker unless
-    the canonical append-only Maintenance ledger proves an exact, hash-matched quarantine.
-    """
+    """Read-only reconciliation of legacy paths with D9.11 ledger and exact file hashes."""
     legacy_entries = [
         row for row in manifest.get("source_files", [])
         if isinstance(row, dict) and isinstance(row.get("path"), str)
         and row["path"].replace("\\", "/").startswith(LEGACY_CONTROL_PREFIX)
     ]
     source = root / LEGACY_CONTROL_DIR
+    expected_by_suffix = {
+        row["path"].replace("\\", "/")[len(LEGACY_CONTROL_PREFIX):]: row
+        for row in legacy_entries
+    }
     result: dict[str, Any] = {
         "source_path": LEGACY_CONTROL_DIR,
         "source_present": source.is_dir(),
@@ -196,11 +202,27 @@ def _legacy_control_disposition(root: Path, manifest: dict[str, Any], manifest_s
         "entry_hashes_reconciled": False,
         "reconciled": False,
         "status": "SOURCE_PRESENT_REVIEW_REQUIRED" if source.is_dir() else "SOURCE_MISSING_UNTRACKED",
+        "entry_reconciliation": [
+            {
+                "manifest_path": f"{LEGACY_CONTROL_PREFIX}{suffix}",
+                "expected_bytes": expected.get("bytes"),
+                "expected_sha256": expected.get("sha256"),
+                "ledger_bytes": None,
+                "ledger_sha256": None,
+                "archive_bytes": None,
+                "archive_sha256": None,
+                "matches": False,
+                "reasons": ["SOURCE_OR_LEDGER_RECONCILIATION_NOT_YET_ESTABLISHED"],
+            }
+            for suffix, expected in sorted(expected_by_suffix.items())
+        ],
     }
     if source.exists():
+        result["entry_reconciliation_status"] = "SOURCE_PRESENT_REVIEW_REQUIRED"
         return result
     ledger_path = root / MAINTENANCE_LEDGER_REL
     if not ledger_path.is_file():
+        result["entry_reconciliation_status"] = "LEDGER_MISSING"
         return result
     try:
         maintenance = _load_maintenance_module(root)
@@ -209,20 +231,25 @@ def _legacy_control_disposition(root: Path, manifest: dict[str, Any], manifest_s
     except Exception as exc:
         result["status"] = "LEDGER_INVALID_REVIEW_REQUIRED"
         result["ledger_error"] = str(exc)
+        result["entry_reconciliation_status"] = "LEDGER_INVALID"
         return result
     if not isinstance(event, dict):
+        result["entry_reconciliation_status"] = "NO_LIFECYCLE_EVENT"
         return result
     result["ledger_event"] = event.get("event_type")
     result["destination_path"] = event.get("destination_path")
     if event.get("event_type") != "QUARANTINED":
         result["status"] = "NOT_QUARANTINED_LATEST_EVENT"
+        result["entry_reconciliation_status"] = "LATEST_EVENT_NOT_QUARANTINED"
         return result
     destination_rel = event.get("destination_path")
     if not isinstance(destination_rel, str) or not destination_rel.startswith(QUARANTINE_DESTINATION_PREFIX):
         result["status"] = "QUARANTINE_DESTINATION_NOT_ALLOWLISTED"
+        result["entry_reconciliation_status"] = "DESTINATION_NOT_ALLOWLISTED"
         return result
     if event.get("historical_manifest_sha256") != manifest_sha256:
         result["status"] = "QUARANTINE_MANIFEST_HASH_MISMATCH"
+        result["entry_reconciliation_status"] = "MANIFEST_HASH_MISMATCH"
         return result
     result["manifest_hash_verified"] = True
     try:
@@ -231,36 +258,58 @@ def _legacy_control_disposition(root: Path, manifest: dict[str, Any], manifest_s
     except Exception as exc:
         result["status"] = "QUARANTINE_DESTINATION_UNVERIFIABLE"
         result["verification_error"] = str(exc)
+        result["entry_reconciliation_status"] = "DESTINATION_UNVERIFIABLE"
         return result
     if actual.get("tree_sha256") != event.get("tree_sha256"):
         result["status"] = "QUARANTINE_TREE_HASH_MISMATCH"
+        result["entry_reconciliation_status"] = "TREE_HASH_MISMATCH"
         return result
     result["tree_hash_verified"] = True
-    expected_by_suffix = {
-        row["path"].replace("\\", "/")[len(LEGACY_CONTROL_PREFIX):]: row
-        for row in legacy_entries
-    }
     event_files = event.get("files")
     actual_files = actual.get("files")
     if not isinstance(event_files, list) or not isinstance(actual_files, list):
         result["status"] = "QUARANTINE_FILE_INVENTORY_MISSING"
+        result["entry_reconciliation_status"] = "FILE_INVENTORY_MISSING"
         return result
     event_by_suffix = {row.get("path"): row for row in event_files if isinstance(row, dict)}
     actual_by_suffix = {row.get("path"): row for row in actual_files if isinstance(row, dict)}
-    matches = True
-    for suffix, expected in expected_by_suffix.items():
-        quarantined = event_by_suffix.get(suffix)
-        on_disk = actual_by_suffix.get(suffix)
-        if not quarantined or not on_disk:
-            matches = False
-            break
-        for row in (quarantined, on_disk):
-            if row.get("bytes") != expected.get("bytes") or row.get("sha256") != expected.get("sha256"):
-                matches = False
-                break
-        if not matches:
-            break
-    result["entry_hashes_reconciled"] = matches and len(actual_by_suffix) == len(expected_by_suffix)
+    diagnostics: list[dict[str, Any]] = []
+    all_match = True
+    for suffix, expected in sorted(expected_by_suffix.items()):
+        ledger_row = event_by_suffix.get(suffix)
+        archive_row = actual_by_suffix.get(suffix)
+        reasons: list[str] = []
+        if not isinstance(ledger_row, dict):
+            reasons.append("LEDGER_ENTRY_MISSING")
+        else:
+            if ledger_row.get("bytes") != expected.get("bytes"):
+                reasons.append("LEDGER_SIZE_DIFFERS_FROM_HISTORICAL_MANIFEST")
+            if ledger_row.get("sha256") != expected.get("sha256"):
+                reasons.append("LEDGER_HASH_DIFFERS_FROM_HISTORICAL_MANIFEST")
+        if not isinstance(archive_row, dict):
+            reasons.append("ARCHIVE_ENTRY_MISSING")
+        else:
+            if archive_row.get("bytes") != expected.get("bytes"):
+                reasons.append("ARCHIVE_SIZE_DIFFERS_FROM_HISTORICAL_MANIFEST")
+            if archive_row.get("sha256") != expected.get("sha256"):
+                reasons.append("ARCHIVE_HASH_DIFFERS_FROM_HISTORICAL_MANIFEST")
+        matches = not reasons
+        all_match = all_match and matches
+        diagnostics.append({
+            "manifest_path": f"{LEGACY_CONTROL_PREFIX}{suffix}",
+            "expected_bytes": expected.get("bytes"),
+            "expected_sha256": expected.get("sha256"),
+            "ledger_bytes": ledger_row.get("bytes") if isinstance(ledger_row, dict) else None,
+            "ledger_sha256": ledger_row.get("sha256") if isinstance(ledger_row, dict) else None,
+            "archive_bytes": archive_row.get("bytes") if isinstance(archive_row, dict) else None,
+            "archive_sha256": archive_row.get("sha256") if isinstance(archive_row, dict) else None,
+            "matches": matches,
+            "reasons": reasons,
+        })
+    exact_cardinality = len(event_by_suffix) == len(expected_by_suffix) == len(actual_by_suffix)
+    result["entry_reconciliation"] = diagnostics
+    result["entry_hashes_reconciled"] = all_match and exact_cardinality
+    result["entry_reconciliation_status"] = "MATCHED" if result["entry_hashes_reconciled"] else "MISMATCH"
     if result["entry_hashes_reconciled"]:
         result["reconciled"] = True
         result["status"] = "QUARANTINED_LEDGER_RECONCILED"
@@ -269,7 +318,7 @@ def _legacy_control_disposition(root: Path, manifest: dict[str, Any], manifest_s
     return result
 
 
-def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any]) -> tuple[list[str], dict[str, Any]]:
+def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any], *, candidate_source_sha256: str, manifest_sha256: str) -> tuple[list[str], dict[str, Any]]:
     blockers: list[str] = []
     d14 = _load_json(root / "definitions/c11d/d9/D9_14_GUI_REAL_MEDIA_CERTIFICATION_GATE_V1.json")
     d15 = _load_json(root / "definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.json")
@@ -291,8 +340,48 @@ def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any]) -> t
         blockers.append("D9_16_FULL_ACCEPTANCE_NOT_CLOSED")
     if "Decision: BLOCKED / NO-GO" in d17_text and "D9 remains OPEN" in d17_text:
         blockers.append("D9_17_CLOSURE_NO_GO")
-    if not (root / "docs/current/d/D_RENDERER_BASELINE_APPROVAL_CHECKPOINT.md").is_file():
+    renderer_checkpoint_path = root / D_RENDERER_BASELINE_APPROVAL_REL
+    renderer_checkpoint_sha256 = None
+    renderer_checkpoint_status = "MISSING"
+    if not renderer_checkpoint_path.is_file():
         blockers.append("D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED")
+    else:
+        renderer_text = renderer_checkpoint_path.read_text(encoding="utf-8-sig")
+        if "Decision: APPROVED" not in renderer_text or "D4.8=AUTHORIZED" not in renderer_text:
+            blockers.append("D_RENDERER_BASELINE_APPROVAL_NOT_APPROVED")
+            renderer_checkpoint_status = "PRESENT_NOT_APPROVED"
+        else:
+            renderer_checkpoint_sha256 = _hash_file(renderer_checkpoint_path)
+            renderer_checkpoint_status = "APPROVED_CHECKPOINT_PRESENT"
+    baseline_approval_path = root / D_BASELINE_APPROVAL_REL
+    baseline_approval_status = "MISSING"
+    baseline_approval_valid = False
+    if not baseline_approval_path.is_file():
+        blockers.append("D_BASELINE_APPROVAL_NOT_RECORDED")
+    else:
+        try:
+            approval = _load_json(baseline_approval_path)
+            approval_matches = (
+                approval.get("schema") == "C11-D-BASELINE-APPROVAL-CHECKPOINT-V1"
+                and approval.get("schema_version") == "1.0"
+                and approval.get("candidate_id") == "C11-D-BASELINE-CANDIDATE-0.1"
+                and approval.get("decision") == "APPROVED"
+                and approval.get("candidate_source_sha256") == candidate_source_sha256
+                and approval.get("historical_c11c_manifest_sha256") == manifest_sha256
+                and approval.get("renderer_baseline_checkpoint_sha256") == renderer_checkpoint_sha256
+                and bool(str(approval.get("approved_by", "")).strip())
+                and bool(str(approval.get("approved_at_utc", "")).strip())
+                and renderer_checkpoint_status == "APPROVED_CHECKPOINT_PRESENT"
+            )
+            if approval_matches:
+                baseline_approval_valid = True
+                baseline_approval_status = "APPROVED_CHECKPOINT_MATCHES_CURRENT_CANDIDATE"
+            else:
+                baseline_approval_status = "PRESENT_INVALID_OR_STALE"
+                blockers.append("D_BASELINE_APPROVAL_NOT_RECORDED")
+        except Exception as exc:
+            baseline_approval_status = "PRESENT_INVALID_OR_STALE"
+            blockers.append("D_BASELINE_APPROVAL_NOT_RECORDED")
     if not legacy_disposition.get("reconciled"):
         blockers.append("LEGACY_C11D_CONTROL_QUARANTINE_REVIEW_REQUIRED")
     if not legacy_disposition.get("reconciled") and legacy_disposition.get("missing_source_reference_count", 0) > 0:
@@ -328,6 +417,11 @@ def _governance_and_closure(root: Path, legacy_disposition: dict[str, Any]) -> t
         "production_execution": False,
         "media_created": False,
         "release_authority": "NONE",
+        "renderer_baseline_checkpoint_status": renderer_checkpoint_status,
+        "renderer_baseline_checkpoint_sha256": renderer_checkpoint_sha256,
+        "baseline_approval_checkpoint_status": baseline_approval_status,
+        "baseline_approval_checkpoint_valid": baseline_approval_valid,
+        "candidate_source_sha256_excluding_approval_checkpoint": candidate_source_sha256,
         "legacy_c11d_control_disposition": legacy_disposition,
     }
 
@@ -365,7 +459,12 @@ def build_candidate_preflight(project_root: Path) -> dict[str, Any]:
     surfaces = [row[1] for row in shell_apps]
     if len(surfaces) != 5 or set(surfaces) != EXPECTED_SURFACES:
         raise CandidateAuditError(f"Canonical operational topology drift: count={len(surfaces)}, rows={surfaces}")
-    blockers, governance = _governance_and_closure(root, legacy_disposition)
+    _, candidate_source_sha256 = _candidate_tree_fingerprint(root, exclude_paths={D_BASELINE_APPROVAL_REL})
+    blockers, governance = _governance_and_closure(
+        root, legacy_disposition,
+        candidate_source_sha256=candidate_source_sha256,
+        manifest_sha256=actual_manifest_sha,
+    )
     source_file_count, tree_sha256 = _candidate_tree_fingerprint(root)
 
     checks = [
@@ -375,6 +474,7 @@ def build_candidate_preflight(project_root: Path) -> dict[str, Any]:
         {"id": "D_EXTENSIONS_CONFINED", "passed": True, "detail": f"{len(inventory['c_manifest_changed_entries'])} manifest-listed paths changed only inside approved D extension roots"},
         {"id": "FIVE_SURFACES_CANONICAL", "passed": True, "detail": "exactly five active GUI surfaces"},
         {"id": "GOVERNANCE_FAIL_CLOSED", "passed": True, "detail": "D4.8 blocked, renderer/media off, release authority NONE"},
+        {"id": "D_BASELINE_APPROVAL_SEPARATE_CHECKPOINT", "passed": True, "detail": governance["baseline_approval_checkpoint_status"]},
         {"id": "CANDIDATE_ADJUDICATION_CONSISTENT", "passed": True, "detail": "the preflight cannot close D9 or authorize production"},
     ]
     record = {
@@ -461,6 +561,7 @@ def _validate_candidate_record_invariants(record: dict[str, Any]) -> None:
         "D9_16_FULL_ACCEPTANCE_NOT_CLOSED",
         "D9_17_CLOSURE_NO_GO",
         "D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED",
+        "D_BASELINE_APPROVAL_NOT_RECORDED",
     }
     if not required.issubset(set(record.get("blockers", []))):
         raise CandidateAuditError("Candidate lost one or more mandatory freeze blockers")
@@ -471,8 +572,8 @@ def _validate_candidate_record_invariants(record: dict[str, Any]) -> None:
     if not isinstance(tree.get("sha256"), str) or len(tree["sha256"]) != 64 or any(c not in "0123456789abcdef" for c in tree["sha256"]):
         raise CandidateAuditError("Candidate tree identity fingerprint is malformed")
     checks = record.get("checks", [])
-    expected_ids = {"C11C_MANIFEST_IDENTITY", "C11C_SOURCE_INVENTORY_BOUNDARY_VALID", "C11C_PROTECTED_SOURCE_IMMUTABLE", "D_EXTENSIONS_CONFINED", "FIVE_SURFACES_CANONICAL", "GOVERNANCE_FAIL_CLOSED", "CANDIDATE_ADJUDICATION_CONSISTENT"}
-    if record.get("check_count") != 7 or {c.get("id") for c in checks if isinstance(c, dict)} != expected_ids or any(c.get("passed") is not True for c in checks if isinstance(c, dict)):
+    expected_ids = {"C11C_MANIFEST_IDENTITY", "C11C_SOURCE_INVENTORY_BOUNDARY_VALID", "C11C_PROTECTED_SOURCE_IMMUTABLE", "D_EXTENSIONS_CONFINED", "FIVE_SURFACES_CANONICAL", "GOVERNANCE_FAIL_CLOSED", "D_BASELINE_APPROVAL_SEPARATE_CHECKPOINT", "CANDIDATE_ADJUDICATION_CONSISTENT"}
+    if record.get("check_count") != 8 or {c.get("id") for c in checks if isinstance(c, dict)} != expected_ids or any(c.get("passed") is not True for c in checks if isinstance(c, dict)):
         raise CandidateAuditError("Candidate preflight check ledger is malformed or contains failed checks")
 
 

@@ -13,7 +13,7 @@ This is a candidate-evaluation track, not a freeze or release. C11-C is not repl
 - Historical C manifest SHA-256: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 - The source manifest lists 2,545 original entries. The audit distinguishes entries present at their original paths from missing historical references.
 - Missing non-legacy paths are fatal integrity errors. The only exception is the exact `c11c-suite/c11d-control/` legacy tree; missing references remain a freeze blocker unless the D9.11 append-only ledger proves `QUARANTINED`, the destination path is in the exact quarantine allowlist, the destination tree hash matches, all four manifest-listed file hashes/sizes match, and the historical manifest hash is unchanged.
-- Protected C paths (core, assets, challenges, schemas, tests, plus critical root engine/project files) must match each historical entry byte-for-byte.
+- Protected C paths (core, assets, challenges, schemas, tests, plus critical root engine/project files) must match each historical entry byte-for-byte. The summary distinguishes source-path presence from hash-verified archival reconciliation.
 - Existing D integration changes to C-manifest-listed files are accepted only inside the declared integration/documentation roots (`c11c-suite/`, `definitions/c11d/`, `docs/current/d/`, `docs/current/suite/`, `tools/c11d/`). Any drift outside these roots fails the candidate audit.
 - The active GUI topology remains exactly five surfaces: Test, Producer, Catalog, Config and Maintenance.
 - The candidate tree fingerprint is recomputed from current non-transient source files on every run; the report is sealed and is not written to disk by the evaluator.
