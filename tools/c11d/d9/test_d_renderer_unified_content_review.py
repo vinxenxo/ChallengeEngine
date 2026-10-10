@@ -173,7 +173,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 13)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 14)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
@@ -182,10 +182,34 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual([x["content_type"] for x in report["content_items"]], ["visual_loops", "visual_drills", "challenges"])
         self.assertEqual(len(report["unresolved_gates"]), 8)
         self.assertEqual(report["cross_artifact_checks"]["coordinate_projection_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["challenge_sample_selection_proposal_parity"], True)
         challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
         self.assertEqual(challenge_item["materialization"], "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT")
         self.assertEqual(challenge_item["coordinate_projection"]["projected_records"], 420)
+        self.assertEqual(challenge_item["sample_selection"]["source_snapshot_count"], 420)
+        self.assertEqual(challenge_item["sample_selection"]["delivery_snapshot_count"], 210)
+        self.assertEqual(challenge_item["sample_selection"]["interpolation"], "NONE")
+        self.assertEqual(challenge_item["sample_selection"]["state"], "PROPOSED_NOT_APPROVED")
+        self.assertEqual(report["approval_state"]["simulation_sample_selection_policy_approved"], False)
+        self.assertIn("CHALLENGE_SIMULATION_SAMPLE_SELECTION_AND_INTERPOLATION_UNRESOLVED", report["unresolved_gates"])
         validate_review_manifest(report, self.schema)
+
+    def test_sample_selection_anchor_mismatch_rejected(self) -> None:
+        summaries = make_summaries()
+        summaries["challenge_runtime"]["instance"]["winning_frame_local"] = 395
+        summaries["profile_identity"]["simulation_invariance"]["winning_frame_before"] = 395
+        summaries["profile_identity"]["simulation_invariance"]["winning_frame_after"] = 395
+        with self.assertRaisesRegex(UnifiedContentReviewError, "sample-selection anchor does not match runtime winning_frame"):
+            validate_harness_summaries(summaries)
+
+    def test_sample_selection_proposal_cannot_be_marked_approved(self) -> None:
+        report = self.report()
+        challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
+        challenge_item["sample_selection"]["state"] = "APPROVED"
+        report.pop("review_manifest_sha256")
+        report["review_manifest_sha256"] = sha256_json(report)
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
+            validate_review_manifest(report, self.schema)
 
     def test_payload_asset_binding_uses_runtime_summary_texture_key(self) -> None:
         summaries = make_summaries()
@@ -307,8 +331,8 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=13/13" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/13)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=10/10 | negative=10/10 | source_lineage=13/13 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=14/14" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/14)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=11/11 | negative=12/12 | source_lineage=14/14 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 

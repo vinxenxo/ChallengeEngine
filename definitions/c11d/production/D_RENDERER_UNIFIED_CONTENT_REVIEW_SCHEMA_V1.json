@@ -34,7 +34,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 13,
+      "minItems": 14,
       "items": {
         "type": "object",
         "required": [
@@ -52,7 +52,8 @@
           }
         },
         "additionalProperties": false
-      }
+      },
+      "maxItems": 14
     },
     "content_items": {
       "type": "array",
@@ -90,9 +91,113 @@
           },
           "materialization": {
             "type": "string"
+          },
+          "sample_selection": {
+            "type": "object",
+            "required": [
+              "policy_id",
+              "state",
+              "proposal_contract_sha256",
+              "preview_sha256",
+              "source_snapshot_count",
+              "delivery_snapshot_count",
+              "stride",
+              "sampling_origin",
+              "first_source_snapshot_index",
+              "last_source_snapshot_index",
+              "interpolation",
+              "winning_frame_local_game_index",
+              "winning_frame_absolute_source_index",
+              "winning_delivery_game_frame_index",
+              "winning_absolute_delivery_frame_index",
+              "anchor_mapping_status",
+              "close_calls_count",
+              "close_calls_used_for_timing",
+              "renderer_native_input_emitted"
+            ],
+            "properties": {
+              "policy_id": {
+                "const": "C11D_CHALLENGE_SAMPLE_EVERY_SECOND_SOURCE_SNAPSHOT_NO_INTERPOLATION_V1"
+              },
+              "state": {
+                "const": "PROPOSED_NOT_APPROVED"
+              },
+              "proposal_contract_sha256": {
+                "const": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+              },
+              "preview_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source_snapshot_count": {
+                "const": 420
+              },
+              "delivery_snapshot_count": {
+                "const": 210
+              },
+              "stride": {
+                "const": 2
+              },
+              "sampling_origin": {
+                "const": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX"
+              },
+              "first_source_snapshot_index": {
+                "const": 0
+              },
+              "last_source_snapshot_index": {
+                "const": 418
+              },
+              "interpolation": {
+                "const": "NONE"
+              },
+              "winning_frame_local_game_index": {
+                "const": 394
+              },
+              "winning_frame_absolute_source_index": {
+                "const": 574
+              },
+              "winning_delivery_game_frame_index": {
+                "const": 197
+              },
+              "winning_absolute_delivery_frame_index": {
+                "const": 287
+              },
+              "anchor_mapping_status": {
+                "const": "EXACT_SELECTED_SAMPLE_AND_DELIVERY_TICK"
+              },
+              "close_calls_count": {
+                "const": 1
+              },
+              "close_calls_used_for_timing": {
+                "const": false
+              },
+              "renderer_native_input_emitted": {
+                "const": false
+              }
+            },
+            "additionalProperties": false
           }
         },
-        "additionalProperties": true
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "content_type": {
+                  "const": "challenges"
+                }
+              },
+              "required": [
+                "content_type"
+              ]
+            },
+            "then": {
+              "required": [
+                "sample_selection"
+              ]
+            }
+          }
+        ]
       }
     },
     "harness_evidence": {
@@ -150,7 +255,8 @@
         "simulation_invariance",
         "governance_boundary",
         "challenge_visual_payload_identity",
-        "coordinate_projection_parity"
+        "coordinate_projection_parity",
+        "challenge_sample_selection_proposal_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -181,6 +287,9 @@
           "const": true
         },
         "coordinate_projection_parity": {
+          "const": true
+        },
+        "challenge_sample_selection_proposal_parity": {
           "const": true
         }
       },

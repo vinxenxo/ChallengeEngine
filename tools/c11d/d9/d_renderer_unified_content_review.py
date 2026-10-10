@@ -7,6 +7,12 @@ import math
 from pathlib import Path
 from typing import Any, Mapping
 
+from d_renderer_challenge_simulation_sample_selection import (
+    ChallengeSampleSelectionError,
+    build_sample_selection_preview,
+    validate_sample_selection_preview,
+)
+
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
 CONTRACT_ID = "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1"
@@ -28,6 +34,7 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json", "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
     "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_UNDECLARED",
@@ -109,6 +116,11 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         raise UnifiedContentReviewError("Review readiness must not be promoted to video ready")
     if policy.get("report_persistence") != "NONE_CONSOLE_ONLY" or policy.get("reject_runtime_error_logs_even_if_pass_marker_is_present") is not True:
         raise UnifiedContentReviewError("Console-only/error-log gate drift")
+    if policy.get("challenge_sample_selection_interpolation") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Sample-selection proposal must be included for review only, never applied or approved here")
+    approval_state = contract.get("approval_state", {})
+    if approval_state.get("simulation_sample_selection_policy_approved") is not False or approval_state.get("interpolation_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve simulation sample selection or interpolation")
     boundary = contract.get("execution_boundary", {})
     required_boundary = {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
@@ -142,7 +154,7 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
     return contract, schema
 
 
-def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[str, Any]:
+def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_root: Path | str | None = None) -> dict[str, Any]:
     expected_names = [item["name"] for item in EXPECTED_HARNESSES]
     if list(summaries.keys()) != expected_names:
         raise UnifiedContentReviewError("All seven runtime summaries must be provided in canonical order")
@@ -412,6 +424,51 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[
         if coordinate_lineage.get(path) != expected_sha:
             raise UnifiedContentReviewError(f"Coordinate projection source lineage mismatch: {path}")
 
+    # Review the proposal as a deterministic mapping preview only. Nothing here
+    # applies resampling to the Challenge visual payload or emits renderer input.
+    root = _root(project_root)
+    try:
+        sample_selection_preview = build_sample_selection_preview(root)
+        validate_sample_selection_preview(sample_selection_preview, root)
+    except ChallengeSampleSelectionError as exc:
+        raise UnifiedContentReviewError(f"Challenge sample-selection proposal preview invalid: {exc}") from exc
+    proposal_sha = "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    proposal = sample_selection_preview
+    sample_time = proposal.get("source_timebase", {})
+    delivery_time = proposal.get("delivery_timebase", {})
+    game = proposal.get("game_segment", {})
+    anchor = proposal.get("anchor_mapping", {})
+    assessment = proposal.get("sample_assessment", {})
+    sample_policy = proposal.get("sampling_policy", {})
+    source_game = next((item for item in source_segments if isinstance(item, dict) and item.get("phase") == "GAME"), {})
+    delivery_game = next((item for item in delivery_segments if isinstance(item, dict) and item.get("phase") == "GAME"), {})
+    if proposal.get("proposal_state") != "PROPOSED_NOT_APPROVED" or proposal.get("proposal_contract_sha256") != proposal_sha:
+        raise UnifiedContentReviewError("Challenge sample-selection proposal identity/state mismatch")
+    if (sample_time.get("fps"), sample_time.get("total_frames"), delivery_time.get("fps"), delivery_time.get("total_frames")) != (60, 900, 30, 450):
+        raise UnifiedContentReviewError("Challenge sample-selection proposal timebase mismatch")
+    if (game.get("source_start_frame"), game.get("source_end_frame_exclusive"), game.get("source_snapshot_count"), game.get("delivery_start_frame"), game.get("delivery_end_frame_exclusive"), game.get("delivery_snapshot_count")) != (source_game.get("start_frame"), source_game.get("end_frame"), source_game.get("frame_count"), delivery_game.get("start_frame"), delivery_game.get("end_frame"), delivery_game.get("frame_count")):
+        raise UnifiedContentReviewError("Challenge sample-selection GAME window does not match delivery timeline")
+    winning_local = challenge_instance.get("winning_frame_local")
+    if anchor.get("winning_frame_local_game_index") != winning_local:
+        raise UnifiedContentReviewError("Challenge sample-selection anchor does not match runtime winning_frame")
+    if anchor.get("winning_frame_absolute_source_index") != source_game.get("start_frame", -1) + int(winning_local):
+        raise UnifiedContentReviewError("Challenge sample-selection absolute source anchor mismatch")
+    winning_delivery_local = anchor.get("winning_delivery_game_frame_index")
+    samples = proposal.get("samples", [])
+    if not isinstance(winning_delivery_local, int) or isinstance(winning_delivery_local, bool) or not (0 <= winning_delivery_local < len(samples)):
+        raise UnifiedContentReviewError("Challenge sample-selection delivery anchor is out of range")
+    selected_anchor = samples[winning_delivery_local]
+    if selected_anchor.get("source_game_snapshot_index") != winning_local or selected_anchor.get("source_absolute_frame_index") != anchor.get("winning_frame_absolute_source_index"):
+        raise UnifiedContentReviewError("Challenge winning_frame is not represented by the proposed selected-sample cadence")
+    if anchor.get("anchor_mapping_status") != "EXACT_SELECTED_SAMPLE_AND_DELIVERY_TICK" or anchor.get("winning_source_snapshot_selected") is not True:
+        raise UnifiedContentReviewError("Challenge winning_frame does not land on the proposed delivery tick")
+    if (assessment.get("source_snapshot_count"), assessment.get("delivery_snapshot_count"), assessment.get("stride"), assessment.get("first_source_snapshot_index"), assessment.get("last_source_snapshot_index"), assessment.get("source_indices_follow_stride"), assessment.get("interpolation_used")) != (420, 210, 2, 0, 418, True, False):
+        raise UnifiedContentReviewError("Challenge sample-selection cadence assessment mismatch")
+    if sample_policy.get("interpolation") != "NONE" or sample_policy.get("synthetic_or_interpolated_simulation_states") is not False or sample_policy.get("simulation_result_mutation") is not False or sample_policy.get("canonical_payload_mutation") is not False:
+        raise UnifiedContentReviewError("Challenge sample-selection proposal exceeds the non-mutating no-interpolation boundary")
+    if anchor.get("close_calls_used_for_timing") is not False or anchor.get("close_calls_count") != 1:
+        raise UnifiedContentReviewError("Challenge sample-selection proposal incorrectly uses close_calls as timing")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -422,6 +479,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[
         "challenge_visual_payload": challenge_visual,
         "coordinate_projection": coordinate,
         "coordinate_projected_frames_sha256": coord_frames["projected_records_sha256"],
+        "sample_selection_preview": sample_selection_preview,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
@@ -456,6 +514,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "editorial_review": {"field_window_mapping": "CHALLENGE_PROPOSAL_2_VISIBLE_FIELDS_1_EMPTY_SUPPRESSED", "fields": windows["fields"], "policy_state": "PROPOSED_NOT_APPROVED"},
             "materialization": "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT",
             "coordinate_projection": {"policy_id": joined["coordinate_projection"]["projection"]["policy_id"], "state": "PROPOSED_NOT_APPROVED", "projected_records": 420, "projected_records_sha256": joined["coordinate_projected_frames_sha256"], "combined_scale": joined["coordinate_projection"]["projection"]["combined_scale"]},
+            "sample_selection": {"policy_id": joined["sample_selection_preview"]["proposal_id"], "state": joined["sample_selection_preview"]["proposal_state"], "proposal_contract_sha256": joined["sample_selection_preview"]["proposal_contract_sha256"], "preview_sha256": joined["sample_selection_preview"]["preview_sha256"], "source_snapshot_count": joined["sample_selection_preview"]["sample_assessment"]["source_snapshot_count"], "delivery_snapshot_count": joined["sample_selection_preview"]["sample_assessment"]["delivery_snapshot_count"], "stride": joined["sample_selection_preview"]["sample_assessment"]["stride"], "sampling_origin": joined["sample_selection_preview"]["sampling_policy"]["sampling_origin"], "first_source_snapshot_index": joined["sample_selection_preview"]["sample_assessment"]["first_source_snapshot_index"], "last_source_snapshot_index": joined["sample_selection_preview"]["sample_assessment"]["last_source_snapshot_index"], "interpolation": joined["sample_selection_preview"]["sampling_policy"]["interpolation"], "winning_frame_local_game_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_frame_local_game_index"], "winning_frame_absolute_source_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_frame_absolute_source_index"], "winning_delivery_game_frame_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_delivery_game_frame_index"], "winning_absolute_delivery_frame_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_absolute_delivery_frame_index"], "anchor_mapping_status": joined["sample_selection_preview"]["anchor_mapping"]["anchor_mapping_status"], "close_calls_count": joined["sample_selection_preview"]["anchor_mapping"]["close_calls_count"], "close_calls_used_for_timing": joined["sample_selection_preview"]["anchor_mapping"]["close_calls_used_for_timing"], "renderer_native_input_emitted": False},
         },
     ]
     unresolved = list(EXPECTED_UNRESOLVED_GATES)
@@ -479,6 +538,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "governance_boundary": True,
             "challenge_visual_payload_identity": True,
             "coordinate_projection_parity": True,
+            "challenge_sample_selection_proposal_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -511,7 +571,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -540,6 +600,26 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     coord = challenge.get("coordinate_projection", {})
     if coord.get("state") != "PROPOSED_NOT_APPROVED" or coord.get("projected_records") != 420 or not _is_sha256(coord.get("projected_records_sha256")):
         raise UnifiedContentReviewError("Challenge coordinate projection evidence is missing or incorrectly approved")
+    sample = challenge.get("sample_selection", {})
+    expected_sample = {
+        "policy_id": "C11D_CHALLENGE_SAMPLE_EVERY_SECOND_SOURCE_SNAPSHOT_NO_INTERPOLATION_V1",
+        "state": "PROPOSED_NOT_APPROVED",
+        "proposal_contract_sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3",
+        "source_snapshot_count": 420, "delivery_snapshot_count": 210, "stride": 2,
+        "sampling_origin": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX",
+        "first_source_snapshot_index": 0, "last_source_snapshot_index": 418,
+        "interpolation": "NONE", "winning_frame_local_game_index": 394,
+        "winning_frame_absolute_source_index": 574, "winning_delivery_game_frame_index": 197,
+        "winning_absolute_delivery_frame_index": 287,
+        "anchor_mapping_status": "EXACT_SELECTED_SAMPLE_AND_DELIVERY_TICK",
+        "close_calls_count": 1, "close_calls_used_for_timing": False, "renderer_native_input_emitted": False,
+    }
+    if sample.get("preview_sha256") is None or not _is_sha256(sample.get("preview_sha256")):
+        raise UnifiedContentReviewError("Challenge sample-selection preview digest is malformed")
+    if sample != {**expected_sample, "preview_sha256": sample.get("preview_sha256")}:
+        raise UnifiedContentReviewError("Challenge sample-selection proposal summary mismatch or approval drift")
+    if report.get("approval_state", {}).get("simulation_sample_selection_policy_approved") is not False or report.get("approval_state", {}).get("interpolation_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve simulation sample selection or interpolation")
     challenge_identity = challenge.get("identity", {})
     if not _is_sha256(challenge_identity.get("challenge_visual_payload_sha256")) or not _is_sha256(challenge_identity.get("source_frame_records_sha256")) or not _is_sha256(challenge_identity.get("projected_frame_records_sha256")):
         raise UnifiedContentReviewError("Challenge visual payload or projected-record identities are malformed")

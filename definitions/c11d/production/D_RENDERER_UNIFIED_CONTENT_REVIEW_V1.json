@@ -2,7 +2,7 @@
   "schema": "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT",
-  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check the three content types, including Challenge visual payload and coordinate projection, in one console-only manifest without creating media or renderer-native input.",
+  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check the three content types, including Challenge visual payload, coordinate projection, and a proposal-only simulation sample-selection preview, in one console-only manifest without creating media or renderer-native input.",
   "supported_content_types": [
     "visual_loops",
     "visual_drills",
@@ -60,6 +60,10 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
       "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
     }
   ],
   "runtime_harnesses": [
@@ -114,7 +118,7 @@
     "visual_loop_editorial_mapping": "UNRESOLVED_NO_MAPPING_DECLARED",
     "visual_drill_editorial_mapping": "UNRESOLVED_NO_MAPPING_DECLARED",
     "challenge_visual_payload": "MATERIALIZED_IN_MEMORY_SOURCE_TIMEBASE_NOT_RENDERER_INPUT",
-    "challenge_sample_selection_interpolation": "UNRESOLVED_NOT_EMITTED",
+    "challenge_sample_selection_interpolation": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "delivery_timebase_policy": "PROPOSED_NOT_APPROVED",
     "editorial_field_window_policy": "PROPOSED_NOT_APPROVED",
     "coordinate_projection": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
@@ -127,7 +131,9 @@
     "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
     "d9_17_closure": "BLOCKED_NO_GO",
     "d10": "BLOCKED",
-    "release_authority": "NONE"
+    "release_authority": "NONE",
+    "simulation_sample_selection_policy_approved": false,
+    "interpolation_policy_approved": false
   },
   "execution_boundary": {
     "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
