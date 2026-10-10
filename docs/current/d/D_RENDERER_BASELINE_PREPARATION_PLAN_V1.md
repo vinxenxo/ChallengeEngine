@@ -136,3 +136,9 @@ Critical distinction: source resolution is not instance materialization. Challen
 
 D9 V1 now contains a headless, in-memory materialization harness for the exact Visual Loop `harmonic_membrane` and Visual Drill `tracking/tier-2` review fixtures using existing C11-C authoring APIs. It prints only hashes and frame/timing summaries, does not persist payloads or media, and leaves Challenge runtime output unresolved. `variation_index` is metadata-only in this V1. See `D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_CHECKPOINT_V1.md`.
 
+
+<!-- C11D_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1 -->
+## D9 CHALLENGE_004 in-memory runtime output preview
+
+The challenge runtime preview invokes the frozen `ChallengeRuntimeBridge.run_effective_pipeline` twice for source `CHALLENGE_004.json` and summarizes only in-memory runtime results. The SimulationResult is real runtime evidence, but is **not** a rendered/visual challenge payload; no image/video or renderer input is produced. See `D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_CHECKPOINT_V1.md`.
+

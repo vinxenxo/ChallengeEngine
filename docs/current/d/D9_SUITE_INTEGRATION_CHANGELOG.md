@@ -251,3 +251,9 @@ Added a fail-closed audit for three representative canonical D9.9 requests. It h
 
 Added a headless in-memory materialization contract/harness for exact Visual Loop and Visual Drill review fixtures, with source lineage, deterministic payload digests, and negative governance tests. No persisted output, renderer invocation, media generation, C11-C source mutation or D4.8 authorization.
 
+
+<!-- C11D_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1 -->
+### D renderer Challenge runtime output preview V1
+
+Added a headless in-memory evidence harness for CHALLENGE_004 using the frozen effective ChallengeRuntimeBridge, two-run deterministic digest comparison, GAME-local frame-signature summary, canonical editorial copy, phase cardinality and presentation-binding metadata. No files/media/renderer input; no C11-C source mutation; D4.8 remains blocked.
+

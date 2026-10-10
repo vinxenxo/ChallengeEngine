@@ -1,0 +1,181 @@
+{
+  "schema": "C11-D-RENDERER-PROFILE-IDENTITY-SEPARATION-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_PROFILE_IDENTITY_SEPARATION",
+  "status": "PREPARATION_ONLY_IDENTITY_RECONCILIATION_NOT_RENDERER_INPUT",
+  "purpose": "Keep legacy video_profile metadata, explicit source presentation profile, and D delivery profile as separate identities. Rebind a D-owned presentation copy in memory only and verify frozen Challenge simulation state remains byte-equivalent at the snapshot signature level.",
+  "scope": {
+    "challenge_id": "CHALLENGE_004",
+    "legacy_video_profile_id": "test_master_11s",
+    "source_presentation_profile_id": "social_default_v1",
+    "d_delivery_profile_id": "REVIEW_720",
+    "source_timeline": "INLINE_CANONICAL_VIDEO_CONFIG",
+    "runtime_binding_behavior": "LEGACY_MIGRATION_CURRENTLY_BINDS_VIDEO_PROFILE_ID_AS_PRESENTATION_PROFILE_ID"
+  },
+  "observed_source_facts": {
+    "legacy_video_profile": {
+      "fps": 30,
+      "phase_seconds": {
+        "hook": 2.0,
+        "game": 6.0,
+        "reveal": 1.0,
+        "cta": 2.0
+      },
+      "duration_seconds": 11.0,
+      "total_frames": 330
+    },
+    "inline_timeline": {
+      "fps": 60,
+      "phase_seconds": {
+        "hook": 3.0,
+        "game": 7.0,
+        "reveal": 3.0,
+        "cta": 2.0
+      },
+      "duration_seconds": 15.0,
+      "total_frames": 900
+    },
+    "matching_named_timeline_profile_id": "parking_v2_social_15s",
+    "source_presentation_profile_id": "social_default_v1",
+    "delivery_profile": {
+      "id": "REVIEW_720",
+      "fps": 30,
+      "width": 720,
+      "height": 1280
+    },
+    "runtime_profile_binding": "test_master_11s",
+    "finding": "LEGACY_VIDEO_PROFILE_ID_IS_CONFLATED_WITH_PRESENTATION_PROFILE_ID; INLINE_TIMELINE_AND_NESTED_PRESENTATION_INTENT_MUST_BE_EXPLICIT_IN_D_REQUEST"
+  },
+  "d_identity_separation": {
+    "legacy_video_profile_id": "PRESERVE_AS_SOURCE_METADATA_ONLY",
+    "source_timeline": "USE_CANONICAL_INLINE_VIDEO_TIMING_AS_RUNTIME_RESULT_SOURCE; DO_NOT_MUTATE",
+    "presentation_profile_id": "BIND_FROM_EXPLICIT_SOURCE_PRESENTATION_PROFILE_AND_EXPLICIT_D_REQUEST",
+    "delivery_profile_id": "RESOLVE_INDEPENDENTLY_FROM_DELIVERY_REGISTRY",
+    "representative_values": {
+      "presentation_profile_id": "social_default_v1",
+      "delivery_profile_id": "REVIEW_720",
+      "delivery_fps": 30
+    },
+    "timebase_projection_policy": "REMAINS_PROPOSED_NOT_APPROVED; DO NOT EXECUTE OR EMIT FRAME MAPPING"
+  },
+  "runtime_rebind_contract": {
+    "run_frozen_effective_runtime": true,
+    "copy_canonical_v2_before_changing_presentation_binding": true,
+    "only_allowed_copy_mutation": "canonical_v2_copy.presentation.profile_id = source_challenge.presentation.profile",
+    "reuse_same_simulation_result_and_timeline": true,
+    "verify_simulation_frame_signature_before_after": true,
+    "verify_winning_frame_score_minimum_distance_tolerance_and_frame_count_unchanged": true,
+    "rebound_profile_id_must_equal": "social_default_v1",
+    "no_runtime_source_mutation": true
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "profiles/video/test_master_11s.json",
+      "sha256": "6ac5ddd620d5300f1e365dd4dd8ca6c04e0f97c2ceb95ec48438d52059bff93b"
+    },
+    {
+      "path": "profiles/video/parking_v2_social_15s.json",
+      "sha256": "12b49f14e0ee755d290f7dd36471723da6337ab3244461fc0088a3e3b77c5a82"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+    },
+    {
+      "path": "core/authoring/ChallengeMigrationAdapter.gd",
+      "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+    },
+    {
+      "path": "core/authoring/PresentationBindingValidator.gd",
+      "sha256": "39077f01d366054f8ae58841c6dce798c4da92308f07204686423b6c91ddc229"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_runtime_output_preview.py",
+      "sha256": "e0f31c486b864b61a1c9d0b235174e9397470fbc7327bda498d304b69795ef60"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_runtime_output_in_memory.gd",
+      "sha256": "43031f59d9cd0d83521eea6fa726e8adc3094c9fd4d19af17cc21697a251c053"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    }
+  ],
+  "required_locks": {
+    "mode": "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY",
+    "c11c_source_mutation": false,
+    "runtime_report_file_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "video_render_ready": false
+  },
+  "approval_state": {
+    "profile_identity_separation_approved": false,
+    "timebase_projection_policy_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "forbidden_operations": [
+    "modify any frozen C11-C source or manifest",
+    "rewrite CHALLENGE_004 video_profile or inline timeline to hide the identity conflict",
+    "change SimulationResult, frames, winning_frame, close_calls or gameplay RNG",
+    "mutate the original canonical V2 dictionary in place",
+    "treat test_master_11s as D delivery or presentation profile without explicit request binding",
+    "approve or execute the proposed 60-to-30 projection",
+    "emit renderer input, invoke rendering or create media",
+    "grant D4.8 or release authority"
+  ]
+}

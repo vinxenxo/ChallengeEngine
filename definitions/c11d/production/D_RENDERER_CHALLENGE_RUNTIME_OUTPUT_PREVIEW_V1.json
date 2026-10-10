@@ -1,0 +1,175 @@
+{
+  "schema": "C11-D-RENDERER-CHALLENGE-RUNTIME-OUTPUT-PREVIEW-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_RUNTIME_RESULT_PREVIEW_NOT_RENDERER_INPUT",
+  "purpose": "Use the frozen C11-C effective ChallengeRuntimeBridge pipeline for CHALLENGE_004 to capture a deterministic in-memory runtime-result review summary. This is not a visual payload or renderer input.",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "challenge_source": "challenges/CHALLENGE_004.json",
+    "effective_runtime_entrypoint": "core/execution/ChallengeRuntimeBridge.gd::run_effective_pipeline",
+    "simulation_authority": "core/execution/ChallengeExecutionPipeline.gd",
+    "timeline_authority": "core/execution/ChallengeTimelineBuilder.gd",
+    "presentation_binding_authority": "core/presentation/ChallengePresentationBinder.gd"
+  },
+  "scope": {
+    "challenge_id": "CHALLENGE_004",
+    "mechanic": "parking_v2",
+    "mechanic_version": "2.0",
+    "asset_family": "fam_garage_01",
+    "seed_requested": 314159,
+    "rng_version": "2.0",
+    "fps": 60,
+    "phases_seconds": {
+      "hook": 3.0,
+      "game": 7.0,
+      "reveal": 3.0,
+      "cta": 2.0
+    },
+    "phases_frames": {
+      "hook": 180,
+      "game": 420,
+      "reveal": 180,
+      "cta": 120
+    },
+    "total_frames": 900,
+    "duration_seconds": 15.0,
+    "repeat_runs_required": 2,
+    "execution_mode": "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY"
+  },
+  "materialization_rules": {
+    "calls_frozen_effective_runtime": true,
+    "entrypoint": "ChallengeRuntimeBridge.run_effective_pipeline",
+    "uses_actual_simulation_result_frames": true,
+    "uses_actual_timeline_and_presentation_binding": true,
+    "copies_editorial_text_from_canonical_v2": true,
+    "duplicates_simulation_or_winning_frame_logic": false,
+    "rewrites_simulation_or_timeline": false,
+    "reads_physical_asset_paths_without_loading_assets": true,
+    "persists_runtime_result": false,
+    "emits_renderer_native_input": false,
+    "invokes_renderer": false,
+    "creates_media": false
+  },
+  "required_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false,
+    "runtime_report_file_written": false,
+    "challenge_runtime_result_in_memory": true,
+    "challenge_visual_payload_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "output_artifact_path": null
+  },
+  "approval_state": {
+    "challenge_runtime_preview_approved": false,
+    "selected_payload_instances_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+    },
+    {
+      "path": "core/execution/ChallengeExecutionPipeline.gd",
+      "sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeContext.gd",
+      "sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0"
+    },
+    {
+      "path": "core/authoring/ChallengeMigrationAdapter.gd",
+      "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"
+    },
+    {
+      "path": "core/authoring/ChallengeTimeLiine.gd",
+      "sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71"
+    },
+    {
+      "path": "core/authoring/TemporalCore.gd",
+      "sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966"
+    },
+    {
+      "path": "core/timeline/VideoTimeline.gd",
+      "sha256": "0887364e8ca682e729908cef337c5d7877343d9b85e27954312ca1d104450114"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+    },
+    {
+      "path": "core/presentation/PresentationBindingResult.gd",
+      "sha256": "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+    },
+    {
+      "path": "core/simulation/SimulationResult.gd",
+      "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+    },
+    {
+      "path": "core/data/FrameSnapshot.gd",
+      "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+    },
+    {
+      "path": "core/validation/ChallengeValidator.gd",
+      "sha256": "db512e574ba3f9e25dda5709dea4784edc2e9da8f13fb9f2586d4645fbc03bf0"
+    },
+    {
+      "path": "core/validation/C6FChallengeSchemaValidator.gd",
+      "sha256": "7aebf3fc3bc7fb707a9b9012a5f9d2afbc4e99138e937887ccb391d871b23c35"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "34da34366d84c6be93d445b58e258c5cfff099ae8feb6189733b221f42a953a1"
+    }
+  ],
+  "output_contract": {
+    "schema": "C11-D-D9-RENDERER-CHALLENGE-RUNTIME-OUTPUT-PREVIEW-V1",
+    "json_schema": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_SCHEMA_V1.json",
+    "challenge_id": "CHALLENGE_004",
+    "instances": 1,
+    "repeat_runs_required": 2,
+    "runtime_result_in_memory_only": true,
+    "challenge_visual_payload_materialized": false
+  }
+}

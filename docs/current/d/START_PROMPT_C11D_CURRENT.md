@@ -310,3 +310,9 @@ After the delivery-timebase, temporal-preview and editorial-review tests pass, r
 
 The latest isolated increment is the D renderer in-memory visual payload materialization preview. Run the Python contract test and the Godot headless harness. It prepares Visual Loop and Visual Drill review payloads only; it does not write payload files, render video or resolve the Challenge runtime payload. Treat `variation_index` as metadata-only until an explicit policy is approved.
 
+
+<!-- C11D_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1 -->
+## Current renderer-preparation state — Challenge runtime output preview
+
+To test the CHALLENGE_004 runtime preview run the Python contract test and `godot --headless --path . --script res://tools/c11d/d9/materialize_challenge_runtime_output_in_memory.gd`. This harness calls `ChallengeRuntimeBridge.run_effective_pipeline` twice and prints digest-only in-memory evidence. It does not render or persist output. A real SimulationResult is not a visual challenge payload; keep renderer OFF, D4.8 BLOCKED, authority NONE.
+

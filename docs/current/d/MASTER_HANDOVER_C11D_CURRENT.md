@@ -299,3 +299,9 @@ Run `python .\tools\c11d\d9\test_d_renderer_request_scoped_payload_binding.py`. 
 
 The current preview stage materializes two exact request-scoped visual authoring payloads in memory through the existing C11-C API: geometric/harmonic_membrane and tracking/tier-2. This is not renderer input. CHALLENGE_004 remains dependent on frozen ChallengeExecutionPipeline output. C11-C stays immutable; renderer OFF; no media; D4.8 BLOCKED; release authority NONE.
 
+
+<!-- C11D_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1 -->
+## Latest increment — CHALLENGE_004 frozen runtime output preview
+
+An isolated Godot headless harness runs the existing effective C11-C Challenge runtime twice and compares stable summaries in memory. It captures source editorial copy, timing phases, actual GAME SimulationResult frame signature, read-only local winning_frame, and presentation/asset binding metadata. This does not materialize the challenge visual payload, invoke the renderer, create media or grant authority.
+

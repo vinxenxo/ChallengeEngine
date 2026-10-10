@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-challenge-runtime-output-preview:v1",
+  "title": "C11-D Challenge Runtime Output Preview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "challenge_source_sha256",
+    "challenge_runtime_output_materialized",
+    "challenge_visual_payload_materialized",
+    "instance",
+    "deterministic_repeat_pass",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-CHALLENGE-RUNTIME-OUTPUT-PREVIEW-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "challenge_source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "challenge_runtime_output_materialized": {
+      "const": true
+    },
+    "challenge_visual_payload_materialized": {
+      "const": false
+    },
+    "instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "challenge_id",
+        "mechanic",
+        "mechanic_version",
+        "asset_family",
+        "asset_family_version",
+        "seed_requested",
+        "seed_used",
+        "rng_version",
+        "editorial_content",
+        "fps",
+        "phase_frames",
+        "total_frames",
+        "duration_seconds",
+        "game_frame_count",
+        "winning_frame_local",
+        "score",
+        "minimum_distance",
+        "tolerance_threshold",
+        "simulation_error_state",
+        "attempts",
+        "frame_signature_sha256",
+        "presentation_binding_success",
+        "presentation_profile_id",
+        "physical_asset_bindings",
+        "presentation_render_model_sha256",
+        "runtime_output_sha256",
+        "materialization"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "challenges"
+        },
+        "challenge_id": {
+          "const": "CHALLENGE_004"
+        },
+        "mechanic": {
+          "const": "parking_v2"
+        },
+        "mechanic_version": {
+          "const": "2.0"
+        },
+        "asset_family": {
+          "const": "fam_garage_01"
+        },
+        "asset_family_version": {
+          "const": "1.0"
+        },
+        "seed_requested": {
+          "const": 314159
+        },
+        "seed_used": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rng_version": {
+          "const": "2.0"
+        },
+        "editorial_content": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hook",
+            "reveal",
+            "cta"
+          ],
+          "properties": {
+            "hook": {
+              "const": "¡SOLO EL 1% APARCA SIN ROZAR!"
+            },
+            "reveal": {
+              "type": "string"
+            },
+            "cta": {
+              "const": "¿Lo has clavado?"
+            }
+          }
+        },
+        "fps": {
+          "const": 60
+        },
+        "phase_frames": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hook",
+            "game",
+            "reveal",
+            "cta"
+          ],
+          "properties": {
+            "hook": {
+              "const": 180
+            },
+            "game": {
+              "const": 420
+            },
+            "reveal": {
+              "const": 180
+            },
+            "cta": {
+              "const": 120
+            }
+          }
+        },
+        "total_frames": {
+          "const": 900
+        },
+        "duration_seconds": {
+          "const": 15
+        },
+        "game_frame_count": {
+          "const": 420
+        },
+        "winning_frame_local": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 419
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minimum_distance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tolerance_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "simulation_error_state": {
+          "const": "OK"
+        },
+        "attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "frame_signature_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "presentation_binding_success": {
+          "const": true
+        },
+        "presentation_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "physical_asset_bindings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "background_path",
+            "target_path",
+            "object_path"
+          ],
+          "properties": {
+            "background_path": {
+              "type": "string",
+              "pattern": "^res://"
+            },
+            "target_path": {
+              "type": "string",
+              "pattern": "^res://"
+            },
+            "object_path": {
+              "type": "string",
+              "pattern": "^res://"
+            }
+          }
+        },
+        "presentation_render_model_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runtime_output_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "materialization": {
+          "const": "IN_MEMORY_ONLY_RUNTIME_RESULT_NOT_VISUAL_PAYLOAD"
+        }
+      }
+    },
+    "deterministic_repeat_pass": {
+      "const": true
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "runtime_called",
+        "simulation_executed",
+        "runtime_report_file_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "c11c_source_mutation"
+      ],
+      "properties": {
+        "mode": {
+          "const": "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY"
+        },
+        "runtime_called": {
+          "const": true
+        },
+        "simulation_executed": {
+          "const": true
+        },
+        "runtime_report_file_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      }
+    }
+  }
+}
