@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-challenge-coordinate-projection-preview:v1",
+  "title": "C11-D Challenge Coordinate Projection Preview Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "challenge_source_sha256",
+    "projection",
+    "source_timeline",
+    "delivery_profile",
+    "projected_frames",
+    "assets",
+    "determinism",
+    "simulation_invariance",
+    "execution_boundary",
+    "source_lineage"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-CHALLENGE-COORDINATE-PROJECTION-PREVIEW-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "IN_MEMORY_REVIEW_ONLY_PROJECTION_PREVIEW_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "challenge_source_sha256": {
+      "const": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "state",
+        "source_coordinate_space",
+        "source_size",
+        "presentation_source_canvas",
+        "presentation_master_output",
+        "delivery_size",
+        "stage_scales",
+        "combined_scale",
+        "target_position",
+        "transform_semantics",
+        "sampling_or_interpolation"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1"
+        },
+        "state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "source_coordinate_space": {
+          "const": "CANVAS_1080X1920"
+        },
+        "source_size": {
+          "const": {
+            "width": 1080,
+            "height": 1920
+          }
+        },
+        "presentation_source_canvas": {
+          "const": {
+            "width": 540,
+            "height": 960
+          }
+        },
+        "presentation_master_output": {
+          "const": {
+            "width": 1080,
+            "height": 1920
+          }
+        },
+        "delivery_size": {
+          "const": {
+            "width": 720,
+            "height": 1280
+          }
+        },
+        "stage_scales": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": 0.499999,
+                  "maximum": 0.500001
+                },
+                {
+                  "type": "number",
+                  "minimum": 0.499999,
+                  "maximum": 0.500001
+                }
+              ]
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": 1.333332,
+                  "maximum": 1.333335
+                },
+                {
+                  "type": "number",
+                  "minimum": 1.333332,
+                  "maximum": 1.333335
+                }
+              ]
+            }
+          ]
+        },
+        "combined_scale": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0.666665,
+              "maximum": 0.666668
+            },
+            {
+              "type": "number",
+              "minimum": 0.666665,
+              "maximum": 0.666668
+            }
+          ]
+        },
+        "target_position": {
+          "type": "object",
+          "required": [
+            "source",
+            "presentation_canvas",
+            "delivery"
+          ],
+          "properties": {
+            "source": {
+              "const": [
+                850.0,
+                960.0
+              ]
+            },
+            "presentation_canvas": {
+              "const": [
+                425.0,
+                480.0
+              ]
+            },
+            "delivery": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": 566.6665,
+                  "maximum": 566.6669
+                },
+                {
+                  "const": 640.0
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "additionalProperties": false
+        },
+        "transform_semantics": {
+          "const": "POSITIONS_AND_INTRINSIC_BASE_DIMENSIONS_PROJECTED; LOCAL_SIMULATION_SCALE_ROTATION_OPACITY_TEXTURE_INDEX_VARIANT_ID_PRESERVED"
+        },
+        "sampling_or_interpolation": {
+          "const": "UNRESOLVED_NOT_APPLIED"
+        }
+      }
+    },
+    "source_timeline": {
+      "type": "object",
+      "required": [
+        "fps",
+        "total_frames",
+        "duration_seconds",
+        "game_frame_count"
+      ],
+      "properties": {
+        "fps": {
+          "const": 60
+        },
+        "total_frames": {
+          "const": 900
+        },
+        "duration_seconds": {
+          "const": 15.0
+        },
+        "game_frame_count": {
+          "const": 420
+        }
+      },
+      "additionalProperties": false
+    },
+    "delivery_profile": {
+      "type": "object",
+      "required": [
+        "profile_id",
+        "fps",
+        "width",
+        "height",
+        "total_frames",
+        "duration_seconds"
+      ],
+      "properties": {
+        "profile_id": {
+          "const": "REVIEW_720"
+        },
+        "fps": {
+          "const": 30
+        },
+        "width": {
+          "const": 720
+        },
+        "height": {
+          "const": 1280
+        },
+        "total_frames": {
+          "const": 450
+        },
+        "duration_seconds": {
+          "const": 15.0
+        }
+      },
+      "additionalProperties": false
+    },
+    "projected_frames": {
+      "type": "object",
+      "required": [
+        "source_records",
+        "projected_records",
+        "source_records_sha256",
+        "projected_records_sha256",
+        "order_preserved",
+        "local_scale_preserved",
+        "other_snapshot_fields_preserved"
+      ],
+      "properties": {
+        "source_records": {
+          "const": 420
+        },
+        "projected_records": {
+          "const": 420
+        },
+        "source_records_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "projected_records_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "order_preserved": {
+          "const": true
+        },
+        "local_scale_preserved": {
+          "const": true
+        },
+        "other_snapshot_fields_preserved": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "resource_path",
+          "sha256",
+          "intrinsic_size",
+          "projected_delivery_base_size",
+          "declared_scale_preserved_separately",
+          "declared_offset_source",
+          "declared_offset_delivery",
+          "loaded_as_texture2d"
+        ],
+        "properties": {
+          "role": {
+            "enum": [
+              "BACKGROUND",
+              "ANIMATED_OBJECT",
+              "TARGET"
+            ]
+          },
+          "resource_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "intrinsic_size": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "projected_delivery_base_size": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "declared_scale_preserved_separately": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "declared_offset_source": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "declared_offset_delivery": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "loaded_as_texture2d": {
+            "const": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "determinism": {
+      "type": "object",
+      "required": [
+        "runtime_repeat_equal",
+        "projection_repeat_equal",
+        "source_frame_signature_repeat_equal"
+      ],
+      "properties": {
+        "runtime_repeat_equal": {
+          "const": true
+        },
+        "projection_repeat_equal": {
+          "const": true
+        },
+        "source_frame_signature_repeat_equal": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "simulation_invariance": {
+      "type": "object",
+      "required": [
+        "frame_signature_unchanged",
+        "winning_frame_unchanged",
+        "metrics_unchanged",
+        "frame_count_unchanged"
+      ],
+      "properties": {
+        "frame_signature_unchanged": {
+          "const": true
+        },
+        "winning_frame_unchanged": {
+          "const": true
+        },
+        "metrics_unchanged": {
+          "const": true
+        },
+        "frame_count_unchanged": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution_boundary": {
+      "type": "object",
+      "required": [
+        "mode",
+        "source_mutation",
+        "projected_payload_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "media_created",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY"
+        },
+        "source_mutation": {
+          "const": false
+        },
+        "projected_payload_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 13,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

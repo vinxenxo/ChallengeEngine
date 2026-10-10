@@ -1,0 +1,100 @@
+{
+  "schema": "C11-D-D9-RENDERER-CHALLENGE-COORDINATE-PROJECTION-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PROPOSED_NOT_APPROVED_NOT_FROZEN",
+  "purpose": "Build a deterministic in-memory coordinate-projection preview for the authentic CHALLENGE_004 visual payload. It must use the existing C11-C CoordinateMapper behavior, project only a detached review representation from CANVAS_1080X1920 through the 540x960 logical social canvas to REVIEW_720 720x1280, and never mutate source SimulationResult snapshots or emit renderer-native input.",
+  "authority": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "challenge_source_path": "challenges/CHALLENGE_004.json",
+    "challenge_source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+    "input_payload_contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+    "input_payload_contract_sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+  },
+  "source_pins": [
+    {"path": "challenges/CHALLENGE_004.json", "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"},
+    {"path": "core/presentation/CoordinateMapper.gd", "sha256": "244bace2eaf87e29d653715ae18c0b4824cdf9503e915932be53d0f52bbe461c"},
+    {"path": "core/presentation/PresentationProfile.gd", "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"},
+    {"path": "core/presentation/ChallengePresentationBinder.gd", "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"},
+    {"path": "core/execution/ChallengeRuntimeBridge.gd", "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"},
+    {"path": "core/execution/ChallengeTimelineBuilder.gd", "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"},
+    {"path": "core/mechanics/parking/ParkingMechanicV2.gd", "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"},
+    {"path": "core/data/FrameSnapshot.gd", "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"},
+    {"path": "profiles/delivery/c11c_video_delivery_profiles.json", "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"},
+    {"path": "assets/c6/garage_background.svg", "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"},
+    {"path": "assets/c6/car.svg", "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"},
+    {"path": "assets/c6/parking_target.svg", "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"},
+    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"}
+  ],
+  "projection": {
+    "policy_id": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1",
+    "state": "PROPOSED_NOT_APPROVED",
+    "source_coordinate_space": "CANVAS_1080X1920",
+    "source_size": {"width": 1080, "height": 1920},
+    "presentation_source_canvas": {"width": 540, "height": 960},
+    "presentation_master_output": {"width": 1080, "height": 1920},
+    "delivery_profile_id": "REVIEW_720",
+    "delivery_size": {"width": 720, "height": 1280},
+    "stages": [
+      {"from": "CANVAS_1080X1920", "to": "PROFILE_SOURCE_CANVAS_540X960", "scale": [0.5, 0.5], "offset": [0.0, 0.0], "implementation_source": "CoordinateMapper.map_position/get_fit_transform", "preserve_aspect": true},
+      {"from": "PROFILE_SOURCE_CANVAS_540X960", "to": "REVIEW_720_720X1280", "scale": [1.3333333333333333, 1.3333333333333333], "offset": [0.0, 0.0], "implementation_source": "delivery-profile logical-canvas ratio", "preserve_aspect": true}
+    ],
+    "combined_scale": [0.6666666666666666, 0.6666666666666666],
+    "combined_offset": [0.0, 0.0],
+    "coordinate_positions": "PROJECTED_IN_DETACHED_REVIEW_COPY_ONLY",
+    "asset_intrinsic_dimensions": "PROJECTED_BY_COMBINED_SCALE_IN_METADATA_ONLY",
+    "simulation_local_scale_multipliers": "PRESERVED_UNCHANGED_AS_SEPARATE_VALUES",
+    "declared_object_and_target_scale": "PRESERVED_SEPARATELY_NOT_MULTIPLIED_INTO_SIMULATION_SNAPSHOT",
+    "rotation_opacity_texture_index_variant_id": "PRESERVED_UNCHANGED",
+    "clipping": "NOT_APPLIED",
+    "sampling_or_interpolation": "UNRESOLVED_NOT_APPLIED",
+    "rendering": "NOT_PERFORMED"
+  },
+  "expected_review_facts": {
+    "challenge_id": "CHALLENGE_004",
+    "mechanic": "parking_v2",
+    "source_fps": 60,
+    "source_total_frames": 900,
+    "game_frame_count": 420,
+    "source_duration_seconds": 15,
+    "delivery_profile_id": "REVIEW_720",
+    "delivery_fps": 30,
+    "delivery_total_frames": 450,
+    "delivery_duration_seconds": 15,
+    "target_position_source": [850.0, 960.0],
+    "target_position_delivery_expected": [566.6666666666666, 640.0],
+    "asset_intrinsic_sizes": {
+      "BACKGROUND": [1080, 1920],
+      "ANIMATED_OBJECT": [160, 320],
+      "TARGET": [200, 400]
+    },
+    "asset_delivery_base_sizes_expected": {
+      "BACKGROUND": [720.0, 1280.0],
+      "ANIMATED_OBJECT": [106.66666666666667, 213.33333333333334],
+      "TARGET": [133.33333333333334, 266.6666666666667]
+    }
+  },
+  "required_invariants": [
+    "The frozen C11-C manifest and every pinned source/asset hash remain unchanged.",
+    "The CoordinateMapper stage maps the four source-canvas corners to the four 540x960 source-canvas corners with uniform scale 0.5 and zero offset.",
+    "The delivery stage maps 540x960 to 720x1280 with uniform scale 4/3 and zero offset.",
+    "The composed source-to-delivery point map is uniform 2/3; no aspect distortion or clipping is introduced.",
+    "Exactly 420 GAME snapshot positions are projected in original order into a detached preview copy.",
+    "Snapshot local scale multipliers, rotations, opacity, texture index and variant ID are copied unchanged.",
+    "The static target position and asset intrinsic display sizes are projected using the same uniform coordinate scale, while declared per-object scale and offset remain separate metadata.",
+    "The source SimulationResult, frame signature, winning_frame and all simulation metrics remain unchanged.",
+    "No sample selection, resampling, interpolation, frame drawing, renderer dispatch, filesystem output or media generation occurs."
+  ],
+  "governance_locks": {
+    "source_adapter_mode": "PREPARE_ONLY",
+    "c11c_source_mutation": false,
+    "policy_approved": false,
+    "renderer_input_emitted": false,
+    "renderer_activation": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false
+  }
+}
