@@ -2,27 +2,109 @@
   "schema": "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT",
-  "purpose": "Orchestrate existing deterministic in-memory C11-D review harnesses and cross-check the three content types in one console-only review manifest without generating media or renderer-native input.",
-  "supported_content_types": ["visual_loops", "visual_drills", "challenges"],
+  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check the three content types, including Challenge visual payload and coordinate projection, in one console-only manifest without creating media or renderer-native input.",
+  "supported_content_types": [
+    "visual_loops",
+    "visual_drills",
+    "challenges"
+  ],
   "source_lineage": [
-    {"path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
-    {"path": "challenges/CHALLENGE_004.json", "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"},
-    {"path": "profiles/delivery/c11c_video_delivery_profiles.json", "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"},
-    {"path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json", "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"},
-    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"},
-    {"path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json", "sha256": "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"},
-    {"path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"},
-    {"path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json", "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"},
-    {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"},
-    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json", "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"},
-    {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"}
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json",
+      "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json",
+      "sha256": "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json",
+      "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
+      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+    }
   ],
   "runtime_harnesses": [
-    {"name": "visual_payloads", "script": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd", "pass_marker": "C11-D RENDERER VISUAL PAYLOAD MATERIALIZATION PREVIEW PASS", "summary_prefix": "C11-D VISUAL PAYLOAD PREVIEW SUMMARY="},
-    {"name": "challenge_runtime", "script": "tools/c11d/d9/materialize_challenge_runtime_output_in_memory.gd", "pass_marker": "C11-D RENDERER CHALLENGE RUNTIME OUTPUT PREVIEW PASS", "summary_prefix": "C11-D CHALLENGE RUNTIME OUTPUT PREVIEW SUMMARY="},
-    {"name": "profile_identity", "script": "tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd", "pass_marker": "C11-D RENDERER PROFILE IDENTITY SEPARATION PASS", "summary_prefix": "C11-D PROFILE IDENTITY SEPARATION SUMMARY="},
-    {"name": "delivery_timeline", "script": "tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd", "pass_marker": "C11-D RENDERER CHALLENGE DELIVERY TIMELINE REVIEW PASS", "summary_prefix": "C11-D CHALLENGE DELIVERY TIMELINE REVIEW SUMMARY="},
-    {"name": "editorial_windows", "script": "tools/c11d/d9/review_editorial_field_windows_in_memory.gd", "pass_marker": "C11-D RENDERER EDITORIAL FIELD WINDOW PROPOSAL PASS", "summary_prefix": "C11-D EDITORIAL FIELD WINDOW PROPOSAL SUMMARY="}
+    {
+      "name": "visual_payloads",
+      "script": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "pass_marker": "C11-D RENDERER VISUAL PAYLOAD MATERIALIZATION PREVIEW PASS",
+      "summary_prefix": "C11-D VISUAL PAYLOAD PREVIEW SUMMARY="
+    },
+    {
+      "name": "challenge_runtime",
+      "script": "tools/c11d/d9/materialize_challenge_runtime_output_in_memory.gd",
+      "pass_marker": "C11-D RENDERER CHALLENGE RUNTIME OUTPUT PREVIEW PASS",
+      "summary_prefix": "C11-D CHALLENGE RUNTIME OUTPUT PREVIEW SUMMARY="
+    },
+    {
+      "name": "profile_identity",
+      "script": "tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd",
+      "pass_marker": "C11-D RENDERER PROFILE IDENTITY SEPARATION PASS",
+      "summary_prefix": "C11-D PROFILE IDENTITY SEPARATION SUMMARY="
+    },
+    {
+      "name": "delivery_timeline",
+      "script": "tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd",
+      "pass_marker": "C11-D RENDERER CHALLENGE DELIVERY TIMELINE REVIEW PASS",
+      "summary_prefix": "C11-D CHALLENGE DELIVERY TIMELINE REVIEW SUMMARY="
+    },
+    {
+      "name": "editorial_windows",
+      "script": "tools/c11d/d9/review_editorial_field_windows_in_memory.gd",
+      "pass_marker": "C11-D RENDERER EDITORIAL FIELD WINDOW PROPOSAL PASS",
+      "summary_prefix": "C11-D EDITORIAL FIELD WINDOW PROPOSAL SUMMARY="
+    },
+    {
+      "name": "challenge_visual_payload",
+      "script": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "pass_marker": "C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW PASS",
+      "summary_prefix": "C11-D CHALLENGE VISUAL PAYLOAD PREVIEW SUMMARY="
+    },
+    {
+      "name": "coordinate_projection",
+      "script": "tools/c11d/d9/review_challenge_coordinate_projection_in_memory.gd",
+      "pass_marker": "C11-D RENDERER CHALLENGE COORDINATE PROJECTION PREVIEW PASS",
+      "summary_prefix": "C11-D CHALLENGE COORDINATE PROJECTION SUMMARY="
+    }
   ],
   "review_policy": {
     "report_persistence": "NONE_CONSOLE_ONLY",
@@ -31,10 +113,11 @@
     "review_status": "REVIEW_CHAIN_CONSISTENT_NOT_VIDEO_READY",
     "visual_loop_editorial_mapping": "UNRESOLVED_NO_MAPPING_DECLARED",
     "visual_drill_editorial_mapping": "UNRESOLVED_NO_MAPPING_DECLARED",
-    "challenge_visual_payload": "NOT_MATERIALIZED",
+    "challenge_visual_payload": "MATERIALIZED_IN_MEMORY_SOURCE_TIMEBASE_NOT_RENDERER_INPUT",
     "challenge_sample_selection_interpolation": "UNRESOLVED_NOT_EMITTED",
     "delivery_timebase_policy": "PROPOSED_NOT_APPROVED",
-    "editorial_field_window_policy": "PROPOSED_NOT_APPROVED"
+    "editorial_field_window_policy": "PROPOSED_NOT_APPROVED",
+    "coordinate_projection": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
   },
   "approval_state": {
     "renderer_baseline_approval": "EXTERNAL_GATE_NOT_ASSERTED_BY_THIS_REVIEW",

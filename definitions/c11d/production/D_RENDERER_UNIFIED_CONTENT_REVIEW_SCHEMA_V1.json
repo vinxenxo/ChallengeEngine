@@ -34,7 +34,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 11,
+      "minItems": 13,
       "items": {
         "type": "object",
         "required": [
@@ -97,8 +97,8 @@
     },
     "harness_evidence": {
       "type": "array",
-      "minItems": 5,
-      "maxItems": 5,
+      "minItems": 7,
+      "maxItems": 7,
       "items": {
         "type": "object",
         "required": [
@@ -148,7 +148,9 @@
         "delivery_timeline_parity",
         "field_window_parity",
         "simulation_invariance",
-        "governance_boundary"
+        "governance_boundary",
+        "challenge_visual_payload_identity",
+        "coordinate_projection_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -173,6 +175,12 @@
           "const": true
         },
         "governance_boundary": {
+          "const": true
+        },
+        "challenge_visual_payload_identity": {
+          "const": true
+        },
+        "coordinate_projection_parity": {
           "const": true
         }
       },

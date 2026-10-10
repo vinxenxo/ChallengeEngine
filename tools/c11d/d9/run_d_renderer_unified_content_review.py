@@ -22,7 +22,7 @@ from d_renderer_unified_content_review import (
     validate_review_manifest,
 )
 
-ERROR_MARKERS = ("SCRIPT ERROR:", "ERROR:", "RENDERER VISUAL PAYLOAD MATERIALIZATION PREVIEW FAIL", "CHALLENGE RUNTIME OUTPUT PREVIEW FAIL", "PROFILE IDENTITY SEPARATION FAIL", "CHALLENGE DELIVERY TIMELINE REVIEW FAIL", "EDITORIAL FIELD WINDOW PROPOSAL FAIL")
+ERROR_MARKERS = ("SCRIPT ERROR:", "ERROR:", "RENDERER VISUAL PAYLOAD MATERIALIZATION PREVIEW FAIL", "CHALLENGE RUNTIME OUTPUT PREVIEW FAIL", "PROFILE IDENTITY SEPARATION FAIL", "CHALLENGE DELIVERY TIMELINE REVIEW FAIL", "EDITORIAL FIELD WINDOW PROPOSAL FAIL", "CHALLENGE VISUAL PAYLOAD PREVIEW FAIL", "CHALLENGE COORDINATE PROJECTION PREVIEW FAIL")
 SUMMARY_PREFIXES = {item["name"]: item["summary_prefix"] for item in EXPECTED_HARNESSES}
 
 
@@ -86,7 +86,7 @@ def _run_harness(executable: str, root: Path, item: dict[str, str], timeout_seco
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run the existing five C11-D in-memory content review harnesses and emit a console-only joined manifest.")
+    parser = argparse.ArgumentParser(description="Run the seven C11-D in-memory content review harnesses and emit a console-only joined manifest.")
     parser.add_argument("--godot", default=os.environ.get("C11D_GODOT_EXECUTABLE") or shutil.which("godot") or "godot", help="Godot 4.7.1 console executable or command on PATH")
     parser.add_argument("--timeout", type=int, default=120, help="Per-harness timeout in seconds (default: 120)")
     args = parser.parse_args()
@@ -116,11 +116,12 @@ def main() -> int:
     print(
         "\nC11-D RENDERER UNIFIED CONTENT REVIEW PASS"
         f" | content_types={len(report['content_items'])}/3"
-        f" | harnesses={len(report['harness_evidence'])}/5"
-        " | cross_artifact=8/8"
+        f" | harnesses={len(report['harness_evidence'])}/7"
+        " | cross_artifact=10/10"
         f" | loop={loops['timing']['frame_count']}@{loops['timing']['fps']}FPS"
         f" | drill={drills['timing']['frame_count']}@{drills['timing']['fps']}FPS"
         f" | challenge={challenge['timing']['source_total_frames']}@{challenge['timing']['source_fps']}_TO_{challenge['timing']['delivery_total_frames']}@{challenge['timing']['delivery_fps']}FPS"
+        f" | challenge_visual=420@60FPS_PROJECTED_420_RECORDS"
         " | editorial_fields=2_VISIBLE_1_EMPTY_SUPPRESSED"
         f" | unresolved_gates={len(report['unresolved_gates'])}"
         " | review=CONSISTENT_NOT_VIDEO_READY"

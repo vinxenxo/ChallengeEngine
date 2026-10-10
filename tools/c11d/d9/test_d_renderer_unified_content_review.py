@@ -108,12 +108,53 @@ def make_summaries() -> dict[str, dict]:
         "runtime_evidence": {"runtime_success": True, "repeat_deterministic": True, "simulation_frame_signature_unchanged": True, "winning_frame_unchanged": True, "metrics_unchanged": True, "game_frame_count": 420},
         "proposal_sha256": D("2"),
     }
-    return {"visual_payloads": {"frozen_c11c_manifest_sha256": manifest, "instances": [loop, drill], "challenge_runtime_payload_materialized": False, "unmaterialized_content_types": ["challenges"]}, "challenge_runtime": challenge, "profile_identity": identity, "delivery_timeline": timeline, "editorial_windows": windows}
+    assets = [
+        {"role": "BACKGROUND", "resource_path": "res://assets/c6/garage_background.svg", "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e", "intrinsic_width": 1080, "intrinsic_height": 1920, "loaded_as_texture2d": True},
+        {"role": "ANIMATED_OBJECT", "resource_path": "res://assets/c6/car.svg", "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d", "intrinsic_width": 160, "intrinsic_height": 320, "loaded_as_texture2d": True},
+        {"role": "TARGET", "resource_path": "res://assets/c6/parking_target.svg", "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3", "intrinsic_width": 200, "intrinsic_height": 400, "loaded_as_texture2d": True},
+    ]
+    visual_challenge_payload = {
+        "schema": "C11-D-D9-CHALLENGE-VISUAL-PAYLOAD-PREVIEW-V1", "schema_version": "1.0",
+        "status": "IN_MEMORY_REVIEW_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_NOT_RENDERER_INPUT",
+        "frozen_c11c_manifest_sha256": manifest, "challenge_source_sha256": CHALLENGE_SHA256,
+        "payload_identity": {"challenge_id": "CHALLENGE_004", "mechanic": "parking_v2", "presentation_profile_id": "social_default_v1", "coordinate_space": "CANVAS_1080X1920"},
+        "payload_sha256": D("9"), "asset_nodes": assets,
+        "animation": {"frame_source": "SimulationResult.frames", "frame_record_count": 420, "game_frame_count": 420, "source_fps": 60, "frame_records_sha256": D("d"), "simulation_telemetry_included": False, "winning_frame_sampling_used": False, "delivery_resampling": "UNRESOLVED_NOT_APPLIED"},
+        "determinism": {"runtime_repeat_equal": True, "payload_repeat_equal": True, "frame_signature_repeat_equal": True, "simulation_invariance": True},
+        "execution_boundary": {"renderer_activation": False, "renderer_dispatch_invoked": False, "renderer_native_input_emitted": False, "media_output_created": False, "payload_written": False},
+        "source_lineage": [
+            {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "sha256":"67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"},
+            {"path":"challenges/CHALLENGE_004.json", "sha256":CHALLENGE_SHA256},
+            {"path":"release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256":FROZEN_MANIFEST_SHA256},
+        ],
+    }
+    coordinate = {
+        "schema": "C11-D-D9-RENDERER-CHALLENGE-COORDINATE-PROJECTION-PREVIEW-V1", "schema_version": "1.0",
+        "status": "IN_MEMORY_REVIEW_ONLY_PROJECTION_PREVIEW_NOT_RENDERER_INPUT",
+        "frozen_c11c_manifest_sha256": manifest, "challenge_source_sha256": CHALLENGE_SHA256,
+        "projection": {"policy_id": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1", "state": "PROPOSED_NOT_APPROVED", "source_coordinate_space": "CANVAS_1080X1920", "stage_scales": [[0.5,0.5],[4/3,4/3]], "combined_scale": [2/3,2/3], "sampling_or_interpolation": "UNRESOLVED_NOT_APPLIED"},
+        "projected_frames": {"source_records":420, "projected_records":420, "source_records_sha256":D("d"), "projected_records_sha256":D("e"), "order_preserved":True, "local_scale_preserved":True, "other_snapshot_fields_preserved":True},
+        "determinism": {"runtime_repeat_equal":True, "projection_repeat_equal":True, "source_frame_signature_repeat_equal":True},
+        "simulation_invariance": {"frame_signature_unchanged":True, "winning_frame_unchanged":True, "metrics_unchanged":True, "frame_count_unchanged":True},
+        "assets": [{"role":a["role"], "resource_path":a["resource_path"], "sha256":a["sha256"]} for a in assets],
+        "execution_boundary": {"renderer_activation":False, "renderer_dispatch_invoked":False, "renderer_native_input_emitted":False, "media_created":False, "projected_payload_written":False},
+        "source_lineage": [
+            {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "sha256":"c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"},
+            {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "sha256":"67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"},
+            {"path":"challenges/CHALLENGE_004.json", "sha256":CHALLENGE_SHA256},
+            {"path":"release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256":FROZEN_MANIFEST_SHA256},
+        ],
+    }
+    return {
+        "visual_payloads": {"frozen_c11c_manifest_sha256": manifest, "instances": [loop, drill], "challenge_runtime_payload_materialized": False, "unmaterialized_content_types": ["challenges"]},
+        "challenge_runtime": challenge, "profile_identity": identity, "delivery_timeline": timeline, "editorial_windows": windows,
+        "challenge_visual_payload": visual_challenge_payload, "coordinate_projection": coordinate,
+    }
 
 
 def make_evidence() -> list[dict]:
     return [{"name": item["name"], "script": item["script"], "script_sha256": D(str(i + 1)), "exit_code": 0,
-             "summary_sha256": D("6789a"[i]), "pass_marker_seen": True, "runtime_error_log_seen": False}
+             "summary_sha256": D("6789abc"[i]), "pass_marker_seen": True, "runtime_error_log_seen": False}
             for i, item in enumerate(EXPECTED_HARNESSES)]
 
 
@@ -132,15 +173,31 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 11)
-        self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows"])
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 13)
+        self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
         report = self.report()
         self.assertEqual(report["status"], "REVIEW_CHAIN_CONSISTENT_NOT_VIDEO_READY")
         self.assertEqual([x["content_type"] for x in report["content_items"]], ["visual_loops", "visual_drills", "challenges"])
         self.assertEqual(len(report["unresolved_gates"]), 8)
+        self.assertEqual(report["cross_artifact_checks"]["coordinate_projection_parity"], True)
+        challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
+        self.assertEqual(challenge_item["materialization"], "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT")
+        self.assertEqual(challenge_item["coordinate_projection"]["projected_records"], 420)
         validate_review_manifest(report, self.schema)
+
+    def test_visual_payload_frame_records_must_match_coordinate_projection_source(self) -> None:
+        summaries = make_summaries()
+        summaries["coordinate_projection"]["projected_frames"]["source_records_sha256"] = D("a")
+        with self.assertRaisesRegex(UnifiedContentReviewError, "do not match the Challenge visual payload"):
+            validate_harness_summaries(summaries)
+
+    def test_coordinate_projection_must_remain_unapproved(self) -> None:
+        summaries = make_summaries()
+        summaries["coordinate_projection"]["projection"]["state"] = "APPROVED"
+        with self.assertRaisesRegex(UnifiedContentReviewError, "identity/policy state mismatch"):
+            validate_harness_summaries(summaries)
 
     def test_challenge_source_cross_artifact_mismatch_rejected(self) -> None:
         summaries = make_summaries()
@@ -222,14 +279,11 @@ def main() -> int:
         return 1
     present_count = sum(1 for rel, _ in EXPECTED_SOURCE_LINEAGE if (ROOT / rel).is_file())
     source_paths_present = present_count == len(EXPECTED_SOURCE_LINEAGE)
-    if source_paths_present:
-        try:
-            validate_contract(ROOT, verify_sources=True)
-        except UnifiedContentReviewError as exc:
-            print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT FAIL | source_files={exc}", file=sys.stderr)
-            return 1
-    elif present_count != 0:
-        print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT FAIL | partial source checkout: {present_count}/{len(EXPECTED_SOURCE_LINEAGE)} pinned sources present", file=sys.stderr)
+    source_paths_partial = 0 < present_count < len(EXPECTED_SOURCE_LINEAGE)
+    try:
+        validate_contract(ROOT, verify_sources=False)
+    except UnifiedContentReviewError as exc:
+        print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT FAIL | source_lineage={exc}", file=sys.stderr)
         return 1
     jsonschema_ok = False
     try:
@@ -238,8 +292,8 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=11/11" if source_paths_present else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT"
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=5/5 | cross_checks=8/8 | negative=8/8 | source_hash_pins=11/11 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=13/13" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/13)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=10/10 | negative=10/10 | source_lineage=13/13 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 

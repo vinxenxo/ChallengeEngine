@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -25,12 +26,14 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json", "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"),
     ("definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
     "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_UNDECLARED",
     "VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_UNDECLARED",
-    "CHALLENGE_VISUAL_PAYLOAD_NOT_MATERIALIZED",
     "CHALLENGE_SIMULATION_SAMPLE_SELECTION_AND_INTERPOLATION_UNRESOLVED",
+    "CHALLENGE_COORDINATE_PROJECTION_POLICY_NOT_APPROVED",
     "DELIVERY_TIMEBASE_PROJECTION_POLICY_NOT_APPROVED",
     "EDITORIAL_FIELD_WINDOW_POLICY_NOT_APPROVED",
     "D_RENDERER_BASELINE_APPROVAL_EXTERNAL_GATE_NOT_ASSERTED_HERE",
@@ -42,6 +45,8 @@ EXPECTED_HARNESSES = [
     {"name": "profile_identity", "script": "tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd", "pass_marker": "C11-D RENDERER PROFILE IDENTITY SEPARATION PASS", "summary_prefix": "C11-D PROFILE IDENTITY SEPARATION SUMMARY="},
     {"name": "delivery_timeline", "script": "tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd", "pass_marker": "C11-D RENDERER CHALLENGE DELIVERY TIMELINE REVIEW PASS", "summary_prefix": "C11-D CHALLENGE DELIVERY TIMELINE REVIEW SUMMARY="},
     {"name": "editorial_windows", "script": "tools/c11d/d9/review_editorial_field_windows_in_memory.gd", "pass_marker": "C11-D RENDERER EDITORIAL FIELD WINDOW PROPOSAL PASS", "summary_prefix": "C11-D EDITORIAL FIELD WINDOW PROPOSAL SUMMARY="},
+    {"name": "challenge_visual_payload", "script": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd", "pass_marker": "C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW PASS", "summary_prefix": "C11-D CHALLENGE VISUAL PAYLOAD PREVIEW SUMMARY="},
+    {"name": "coordinate_projection", "script": "tools/c11d/d9/review_challenge_coordinate_projection_in_memory.gd", "pass_marker": "C11-D RENDERER CHALLENGE COORDINATE PROJECTION PREVIEW PASS", "summary_prefix": "C11-D CHALLENGE COORDINATE PROJECTION SUMMARY="},
 ]
 
 
@@ -140,17 +145,19 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
 def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[str, Any]:
     expected_names = [item["name"] for item in EXPECTED_HARNESSES]
     if list(summaries.keys()) != expected_names:
-        raise UnifiedContentReviewError("All five runtime summaries must be provided in canonical order")
+        raise UnifiedContentReviewError("All seven runtime summaries must be provided in canonical order")
     visual = summaries["visual_payloads"]
     challenge = summaries["challenge_runtime"]
     identity = summaries["profile_identity"]
     timeline = summaries["delivery_timeline"]
     windows = summaries["editorial_windows"]
+    challenge_visual = summaries["challenge_visual_payload"]
+    coordinate = summaries["coordinate_projection"]
 
     frozen = FROZEN_MANIFEST_SHA256
-    if any(x.get("frozen_c11c_manifest_sha256") != frozen for x in (visual, challenge, identity, timeline, windows)):
-        raise UnifiedContentReviewError("The five harnesses do not agree on the frozen C11-C manifest")
-    if any(x.get("challenge_source_sha256") != CHALLENGE_SHA256 for x in (challenge, identity, timeline, windows)):
+    if any(x.get("frozen_c11c_manifest_sha256") != frozen for x in (visual, challenge, identity, timeline, windows, challenge_visual, coordinate)):
+        raise UnifiedContentReviewError("The seven harnesses do not agree on the frozen C11-C manifest")
+    if any(x.get("challenge_source_sha256") != CHALLENGE_SHA256 for x in (challenge, identity, timeline, windows, challenge_visual, coordinate)):
         raise UnifiedContentReviewError("Challenge source SHA-256 identity mismatch across runtime reviews")
 
     instances = visual.get("instances")
@@ -173,9 +180,9 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[
                 raise UnifiedContentReviewError(f"Malformed {key}: {expected_type}")
 
     if visual.get("challenge_runtime_payload_materialized") is not False or visual.get("unmaterialized_content_types") != ["challenges"]:
-        raise UnifiedContentReviewError("Visual payload harness must continue to leave Challenge payload unmaterialized")
+        raise UnifiedContentReviewError("Base Loop/Drill payload harness must leave Challenge materialization to the dedicated Challenge harness")
     if challenge.get("challenge_runtime_output_materialized") is not True or challenge.get("challenge_visual_payload_materialized") is not False or challenge.get("deterministic_repeat_pass") is not True:
-        raise UnifiedContentReviewError("Challenge runtime result must be deterministic, but its visual payload must remain unmaterialized")
+        raise UnifiedContentReviewError("Challenge runtime summary must remain a simulation result; visual payload is verified by its dedicated harness")
     challenge_instance = challenge.get("instance", {})
     if not isinstance(challenge_instance, dict) or challenge_instance.get("challenge_id") != "CHALLENGE_004":
         raise UnifiedContentReviewError("Unexpected challenge runtime identity")
@@ -316,6 +323,95 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[
     if win_ev.get("game_frame_count") != 420:
         raise UnifiedContentReviewError("Field-window review game frame count mismatch")
 
+    # Dedicated Challenge visual-payload harness: source-timebase logical payload only.
+    payload_identity = challenge_visual.get("payload_identity", {})
+    payload_animation = challenge_visual.get("animation", {})
+    payload_boundary = challenge_visual.get("execution_boundary", {})
+    if challenge_visual.get("schema") != "C11-D-D9-CHALLENGE-VISUAL-PAYLOAD-PREVIEW-V1" or challenge_visual.get("status") != "IN_MEMORY_REVIEW_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_NOT_RENDERER_INPUT":
+        raise UnifiedContentReviewError("Challenge visual payload harness schema/status mismatch")
+    if payload_identity.get("challenge_id") != "CHALLENGE_004" or payload_identity.get("mechanic") != "parking_v2" or payload_identity.get("presentation_profile_id") != "social_default_v1" or payload_identity.get("coordinate_space") != "CANVAS_1080X1920":
+        raise UnifiedContentReviewError("Challenge visual payload identity/coordinate space mismatch")
+    if not _is_sha256(challenge_visual.get("payload_sha256")):
+        raise UnifiedContentReviewError("Challenge visual payload digest is malformed")
+    if payload_animation.get("frame_source") != "SimulationResult.frames" or payload_animation.get("frame_record_count") != 420 or payload_animation.get("game_frame_count") != 420 or payload_animation.get("source_fps") != 60:
+        raise UnifiedContentReviewError("Challenge visual payload does not preserve the 420 source-timebase GAME records")
+    if payload_animation.get("simulation_telemetry_included") is not False or payload_animation.get("winning_frame_sampling_used") is not False or payload_animation.get("delivery_resampling") != "UNRESOLVED_NOT_APPLIED":
+        raise UnifiedContentReviewError("Challenge visual payload unexpectedly includes telemetry or applies delivery sampling")
+    frame_records_sha = payload_animation.get("frame_records_sha256")
+    if not _is_sha256(frame_records_sha):
+        raise UnifiedContentReviewError("Challenge visual payload frame-record digest is malformed")
+    if not all(challenge_visual.get("determinism", {}).get(k) is True for k in ("runtime_repeat_equal", "payload_repeat_equal", "frame_signature_repeat_equal", "simulation_invariance")):
+        raise UnifiedContentReviewError("Challenge visual payload determinism/invariance evidence failed")
+    expected_payload_assets = {
+        "BACKGROUND": ("res://assets/c6/garage_background.svg", "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"),
+        "ANIMATED_OBJECT": ("res://assets/c6/car.svg", "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"),
+        "TARGET": ("res://assets/c6/parking_target.svg", "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"),
+    }
+    payload_nodes = challenge_visual.get("asset_nodes")
+    if not isinstance(payload_nodes, list) or len(payload_nodes) != 3:
+        raise UnifiedContentReviewError("Challenge visual payload must contain exactly three canonical asset nodes")
+    payload_assets = {str(row.get("role")): row for row in payload_nodes if isinstance(row, dict)}
+    if set(payload_assets) != set(expected_payload_assets):
+        raise UnifiedContentReviewError("Challenge visual payload asset roles mismatch")
+    for role, (path_expected, hash_expected) in expected_payload_assets.items():
+        row = payload_assets[role]
+        if row.get("resource_path") != path_expected or row.get("sha256") != hash_expected or row.get("loaded_as_texture2d") is not True:
+            raise UnifiedContentReviewError(f"Challenge visual payload asset binding mismatch: {role}")
+    if payload_boundary.get("renderer_activation") is not False or payload_boundary.get("renderer_dispatch_invoked") is not False or payload_boundary.get("renderer_native_input_emitted") is not False or payload_boundary.get("media_output_created") is not False or payload_boundary.get("payload_written") is not False:
+        raise UnifiedContentReviewError("Challenge visual payload exceeded the in-memory review boundary")
+
+    # Coordinate projection must consume precisely the same 420 source records.
+    coord_projection = coordinate.get("projection", {})
+    coord_frames = coordinate.get("projected_frames", {})
+    coord_boundary = coordinate.get("execution_boundary", {})
+    if coordinate.get("schema") != "C11-D-D9-RENDERER-CHALLENGE-COORDINATE-PROJECTION-PREVIEW-V1" or coordinate.get("status") != "IN_MEMORY_REVIEW_ONLY_PROJECTION_PREVIEW_NOT_RENDERER_INPUT":
+        raise UnifiedContentReviewError("Coordinate projection harness schema/status mismatch")
+    if coordinate.get("challenge_source_sha256") != CHALLENGE_SHA256 or coord_projection.get("state") != "PROPOSED_NOT_APPROVED" or coord_projection.get("policy_id") != "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1":
+        raise UnifiedContentReviewError("Coordinate projection identity/policy state mismatch")
+    for key, expected_value in (("source_coordinate_space", "CANVAS_1080X1920"),):
+        if coord_projection.get(key) != expected_value:
+            raise UnifiedContentReviewError(f"Coordinate projection {key} mismatch")
+    for key, expected_value in (("source_records", 420), ("projected_records", 420), ("order_preserved", True), ("local_scale_preserved", True), ("other_snapshot_fields_preserved", True)):
+        if coord_frames.get(key) != expected_value:
+            raise UnifiedContentReviewError(f"Coordinate projection frame invariant mismatch: {key}")
+    if coord_frames.get("source_records_sha256") != frame_records_sha or not _is_sha256(coord_frames.get("projected_records_sha256")):
+        raise UnifiedContentReviewError("Coordinate projection source records do not match the Challenge visual payload")
+    actual_stages = coord_projection.get("stage_scales")
+    expected_stages = [[0.5, 0.5], [4 / 3, 4 / 3]]
+    if not isinstance(actual_stages, list) or len(actual_stages) != len(expected_stages):
+        raise UnifiedContentReviewError("Coordinate projection stage_scales shape mismatch")
+    for actual_row, expected_row in zip(actual_stages, expected_stages):
+        if not isinstance(actual_row, list) or len(actual_row) != 2 or any(not isinstance(a, (int, float)) or isinstance(a, bool) or not math.isclose(float(a), float(e), rel_tol=1e-5, abs_tol=1e-5) for a, e in zip(actual_row, expected_row)):
+            raise UnifiedContentReviewError("Coordinate projection stage_scales values mismatch")
+    actual_combined = coord_projection.get("combined_scale")
+    if not isinstance(actual_combined, list) or len(actual_combined) != 2 or any(not isinstance(a, (int, float)) or isinstance(a, bool) or not math.isclose(float(a), 2 / 3, rel_tol=1e-5, abs_tol=1e-5) for a in actual_combined):
+        raise UnifiedContentReviewError("Coordinate projection combined_scale values mismatch")
+    if coord_projection.get("sampling_or_interpolation") != "UNRESOLVED_NOT_APPLIED":
+        raise UnifiedContentReviewError("Coordinate projection must not apply delivery sampling/interpolation")
+    if not all(coordinate.get("determinism", {}).get(k) is True for k in ("runtime_repeat_equal", "projection_repeat_equal", "source_frame_signature_repeat_equal")):
+        raise UnifiedContentReviewError("Coordinate projection determinism evidence failed")
+    if not all(coordinate.get("simulation_invariance", {}).get(k) is True for k in ("frame_signature_unchanged", "winning_frame_unchanged", "metrics_unchanged", "frame_count_unchanged")):
+        raise UnifiedContentReviewError("Coordinate projection altered source simulation state")
+    if coord_boundary.get("renderer_activation") is not False or coord_boundary.get("renderer_dispatch_invoked") is not False or coord_boundary.get("renderer_native_input_emitted") is not False or coord_boundary.get("media_created") is not False or coord_boundary.get("projected_payload_written") is not False:
+        raise UnifiedContentReviewError("Coordinate projection exceeded the in-memory review boundary")
+    coordinate_assets = coordinate.get("assets")
+    if not isinstance(coordinate_assets, list) or len(coordinate_assets) != 3:
+        raise UnifiedContentReviewError("Coordinate projection must preserve exactly three asset nodes")
+    asset_signatures = {(row.get("resource_path"), row.get("sha256"), row.get("role")) for row in coordinate_assets if isinstance(row, dict)}
+    expected_asset_signatures = {(path, digest, role) for role, (path, digest) in expected_payload_assets.items()}
+    if asset_signatures != expected_asset_signatures:
+        raise UnifiedContentReviewError("Coordinate projection asset identities differ from the Challenge visual payload")
+    if not _is_sha256(coordinate.get("source_lineage") and sha256_json(coordinate["source_lineage"])):
+        raise UnifiedContentReviewError("Coordinate projection source lineage summary is malformed")
+    challenge_payload_lineage = {row.get("path"): row.get("sha256") for row in challenge_visual.get("source_lineage", []) if isinstance(row, dict)}
+    coordinate_lineage = {row.get("path"): row.get("sha256") for row in coordinate.get("source_lineage", []) if isinstance(row, dict)}
+    for path, expected_sha in (("definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"), ("challenges/CHALLENGE_004.json", CHALLENGE_SHA256), ("release/C11C_FREEZE_PACKAGE_MANIFEST.json", FROZEN_MANIFEST_SHA256)):
+        if challenge_payload_lineage.get(path) != expected_sha:
+            raise UnifiedContentReviewError(f"Challenge visual payload source lineage mismatch: {path}")
+    for path, expected_sha in (("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"), ("challenges/CHALLENGE_004.json", CHALLENGE_SHA256), ("release/C11C_FREEZE_PACKAGE_MANIFEST.json", FROZEN_MANIFEST_SHA256)):
+        if coordinate_lineage.get(path) != expected_sha:
+            raise UnifiedContentReviewError(f"Coordinate projection source lineage mismatch: {path}")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -323,6 +419,10 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[
         "identity": identity,
         "timeline": timeline,
         "windows": windows,
+        "challenge_visual_payload": challenge_visual,
+        "coordinate_projection": coordinate,
+        "coordinate_projected_frames_sha256": coord_frames["projected_records_sha256"],
+        "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
 
@@ -351,10 +451,11 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
         {
             "content_type": "challenges",
             "selection": {"challenge_id": challenge["challenge_id"], "mechanic": challenge["mechanic"], "mechanic_version": challenge["mechanic_version"], "asset_family": challenge["asset_family"], "asset_family_version": challenge["asset_family_version"]},
-            "identity": {"seed_requested": challenge["seed_requested"], "seed_used": challenge["seed_used"], "runtime_output_sha256": challenge["runtime_output_sha256"], "simulation_frame_signature_sha256": challenge["frame_signature_sha256"], "d_presentation_render_model_sha256": joined["d_render_model_sha256"], "legacy_runtime_profile_id": "test_master_11s", "d_presentation_profile_id": "social_default_v1"},
+            "identity": {"seed_requested": challenge["seed_requested"], "seed_used": challenge["seed_used"], "runtime_output_sha256": challenge["runtime_output_sha256"], "simulation_frame_signature_sha256": challenge["frame_signature_sha256"], "d_presentation_render_model_sha256": joined["d_render_model_sha256"], "challenge_visual_payload_sha256": joined["challenge_visual_payload_sha256"], "source_frame_records_sha256": joined["challenge_visual_payload"]["animation"]["frame_records_sha256"], "projected_frame_records_sha256": joined["coordinate_projected_frames_sha256"], "legacy_runtime_profile_id": "test_master_11s", "d_presentation_profile_id": "social_default_v1"},
             "timing": {"source_fps": 60, "source_total_frames": 900, "game_frame_count": 420, "delivery_profile_id": "REVIEW_720", "delivery_fps": 30, "delivery_total_frames": 450, "delivery_segments": timeline["delivery_segments"], "field_windows_proposal_sha256": windows["proposal_sha256"]},
             "editorial_review": {"field_window_mapping": "CHALLENGE_PROPOSAL_2_VISIBLE_FIELDS_1_EMPTY_SUPPRESSED", "fields": windows["fields"], "policy_state": "PROPOSED_NOT_APPROVED"},
-            "materialization": "IN_MEMORY_ONLY_RUNTIME_RESULT_VISUAL_PAYLOAD_NOT_MATERIALIZED",
+            "materialization": "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT",
+            "coordinate_projection": {"policy_id": joined["coordinate_projection"]["projection"]["policy_id"], "state": "PROPOSED_NOT_APPROVED", "projected_records": 420, "projected_records_sha256": joined["coordinate_projected_frames_sha256"], "combined_scale": joined["coordinate_projection"]["projection"]["combined_scale"]},
         },
     ]
     unresolved = list(EXPECTED_UNRESOLVED_GATES)
@@ -376,6 +477,8 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "field_window_parity": True,
             "simulation_invariance": True,
             "governance_boundary": True,
+            "challenge_visual_payload_identity": True,
+            "coordinate_projection_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -408,7 +511,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -432,8 +535,14 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
         raise UnifiedContentReviewError("Unified Challenge source/delivery timing mismatch")
     if loop.get("editorial_review", {}).get("field_window_mapping") != "UNRESOLVED_NO_MAPPING_DECLARED" or drill.get("editorial_review", {}).get("field_window_mapping") != "UNRESOLVED_NO_MAPPING_DECLARED":
         raise UnifiedContentReviewError("Visual Loop/Drill field mappings must remain unresolved until explicitly defined")
-    if challenge.get("materialization") != "IN_MEMORY_ONLY_RUNTIME_RESULT_VISUAL_PAYLOAD_NOT_MATERIALIZED" or challenge.get("editorial_review", {}).get("policy_state") != "PROPOSED_NOT_APPROVED":
-        raise UnifiedContentReviewError("Challenge review must not claim a visual payload or approved editorial policy")
+    if challenge.get("materialization") != "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT" or challenge.get("editorial_review", {}).get("policy_state") != "PROPOSED_NOT_APPROVED":
+        raise UnifiedContentReviewError("Challenge review must record the in-memory payload while keeping the editorial policy unapproved")
+    coord = challenge.get("coordinate_projection", {})
+    if coord.get("state") != "PROPOSED_NOT_APPROVED" or coord.get("projected_records") != 420 or not _is_sha256(coord.get("projected_records_sha256")):
+        raise UnifiedContentReviewError("Challenge coordinate projection evidence is missing or incorrectly approved")
+    challenge_identity = challenge.get("identity", {})
+    if not _is_sha256(challenge_identity.get("challenge_visual_payload_sha256")) or not _is_sha256(challenge_identity.get("source_frame_records_sha256")) or not _is_sha256(challenge_identity.get("projected_frame_records_sha256")):
+        raise UnifiedContentReviewError("Challenge visual payload or projected-record identities are malformed")
     if report.get("execution_boundary") != {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
         "persistent_report_written": False,
