@@ -304,3 +304,9 @@ See `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_CHECKPOINT_V1.md` and run `tools/c1
 ## Current context addendum â€” request-scoped payload binding V1 (2026-10-10)
 
 After the delivery-timebase, temporal-preview and editorial-review tests pass, run the request-scoped payload binding test. Treat its PASS as a source-resolution/chain-integrity PASS only, not as proof a visual instance is generated. The next engineering stage is the governed request-specific payload materializer and explicit visual/editorial review; do not activate renderer or produce media until the independent D baseline approval and D4.8 authorization gates are met.
+
+<!-- C11D_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1 -->
+## Current renderer-preparation state â€” visual payload materialization preview
+
+The latest isolated increment is the D renderer in-memory visual payload materialization preview. Run the Python contract test and the Godot headless harness. It prepares Visual Loop and Visual Drill review payloads only; it does not write payload files, render video or resolve the Challenge runtime payload. Treat `variation_index` as metadata-only until an explicit policy is approved.
+

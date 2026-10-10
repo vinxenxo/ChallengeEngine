@@ -130,3 +130,9 @@ The contract deliberately reports a known FPS mismatch: `CHALLENGE_004` timeline
 `tools/c11d/d9/d_renderer_request_scoped_payload_binding.py` now resolves the exact selection in the canonical D9.9 request against a pinned canonical source and audits the complete D9.9â†’D9.10â†’renderer-neutral review chain. V1 covers only `parking_v2/CHALLENGE_004`, `c11c_geometric_waves_v1/harmonic_membrane`, and `tracking/tier-2`, because the current temporal/editorial reference contracts are pinned to those examples. Other pairs fail closed.
 
 Critical distinction: source resolution is not instance materialization. Challenge runtime payload remains absent; the Visual Loop family profile is not a grammar-specific instance; a Visual Drill type/tier example is not a request-generated instance. Payload instance ID/hash/path remain null and `video_render_ready=false`. Next required engineering item is a separately governed request-specific payload materializer that consumes the real seed/profile/selection and emits a hash-bound in-memory or approved review artifact without mutation of C11-C.
+
+<!-- C11D_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1 -->
+## D9 visual payload materialization preview V1
+
+D9 V1 now contains a headless, in-memory materialization harness for the exact Visual Loop `harmonic_membrane` and Visual Drill `tracking/tier-2` review fixtures using existing C11-C authoring APIs. It prints only hashes and frame/timing summaries, does not persist payloads or media, and leaves Challenge runtime output unresolved. `variation_index` is metadata-only in this V1. See `D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_CHECKPOINT_V1.md`.
+

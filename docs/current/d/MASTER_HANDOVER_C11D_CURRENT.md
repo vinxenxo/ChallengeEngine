@@ -293,3 +293,9 @@ The topology-only temporal proposal is now complemented by `D_RENDERER_TEMPORAL_
 ## Request-scoped payload binding checkpoint (2026-10-10)
 
 Run `python .\tools\c11d\d9\test_d_renderer_request_scoped_payload_binding.py`. V1 validates the exact representative selection/source references and the D9.9â†’D9.10â†’renderer-neutral/temporal/editorial chain. It deliberately reports `exact_request_payload_instance_materialized=false` for all three types. Visual Loop family definitions are not grammar-generated instances, and Visual Drill type/tier definitions are not per-request generated payloads. The renderer remains OFF and no media is created.
+
+<!-- C11D_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1 -->
+## Latest increment â€” in-memory visual payload materialization preview
+
+The current preview stage materializes two exact request-scoped visual authoring payloads in memory through the existing C11-C API: geometric/harmonic_membrane and tracking/tier-2. This is not renderer input. CHALLENGE_004 remains dependent on frozen ChallengeExecutionPipeline output. C11-C stays immutable; renderer OFF; no media; D4.8 BLOCKED; release authority NONE.
+

@@ -1,0 +1,205 @@
+{
+  "schema": "C11-D-RENDERER-VISUAL-PAYLOAD-MATERIALIZATION-PREVIEW-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_IN_MEMORY_VISUAL_PAYLOAD_PREVIEW_NOT_RENDERER_INPUT",
+  "purpose": "Invoke existing C11-C authoring/variation APIs through Godot headless to materialize request-scoped Visual Loop and Visual Drill review payloads in memory only; Challenge runtime payload remains separately unresolved.",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "request_binding_contract": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+    "authoring_api": "core/authoring/VisualAuthoringGenerator.gd",
+    "visual_loop_variation_api": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+    "visual_drill_seed_variation_api": "core/authoring/VisualDrillSeedVariation.gd",
+    "challenge_runtime_api": "core/execution/ChallengeExecutionPipeline.gd"
+  },
+  "scope": {
+    "materialized_content_types": [
+      "visual_loops",
+      "visual_drills"
+    ],
+    "not_materialized_content_types": [
+      "challenges"
+    ],
+    "request_fixtures": [
+      {
+        "content_type": "visual_loops",
+        "request_id": "D-PAYLOAD-BIND-VISUAL_LOOPS",
+        "family_id": "c11c_geometric_waves_v1",
+        "subtype_id": "harmonic_membrane",
+        "internal_generator": "geometric",
+        "seed": 12345,
+        "variation_index": 0,
+        "delivery_profile_id": "REVIEW_720"
+      },
+      {
+        "content_type": "visual_drills",
+        "request_id": "D-PAYLOAD-BIND-VISUAL_DRILLS",
+        "family_id": "tracking",
+        "variant_id": "tier-2",
+        "internal_generator": "tracking",
+        "seed": 12345,
+        "variation_index": 0,
+        "delivery_profile_id": "REVIEW_720"
+      }
+    ],
+    "challenge_reason": "CHALLENGE_004 requires the frozen ChallengeExecutionPipeline runtime output and must not be synthesized by this visual-authoring harness."
+  },
+  "materialization_rules": {
+    "in_memory_only": true,
+    "uses_existing_authoring_generator": true,
+    "visual_loop_grammar_is_explicit_recipe_overlay": true,
+    "visual_loop_duration_source": "C11CVisualLoopDuration.policy_seconds_for_cycles",
+    "visual_loop_duration_environment_override_used": false,
+    "visual_drill_seed_transform_source": "VisualDrillSeedVariation.apply",
+    "variation_index_is_metadata_only_in_v1": true,
+    "challenge_runtime_called": false,
+    "simulation_truth_replicated": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null
+  },
+  "required_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false,
+    "payload_file_written": false,
+    "challenge_instance_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "output_artifact_path": null
+  },
+  "approval_state": {
+    "payload_materialization_preview_approved": false,
+    "selected_payload_instances_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "profiles/difficulty/visual_loop_geometric.json",
+      "sha256": "43fa93d9f5ac56f92e9ee242ea99edea0488524448a78855bcf0742d985e74ac"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_tracking.json",
+      "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringGenerator.gd",
+      "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequest.gd",
+      "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+      "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+      "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+      "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+    },
+    {
+      "path": "core/authoring/VisualDifficultyResolver.gd",
+      "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+    },
+    {
+      "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+    },
+    {
+      "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+      "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+    },
+    {
+      "path": "core/authoring/VisualDrillSeedVariation.gd",
+      "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11C_VISUAL_GRAMMAR_SPEC_v1.6.json",
+      "sha256": "340f7853e716ed6b7ec3d5647735ddd65a1b365326e7c1e60949df7d43db7688"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "core/execution/ChallengeExecutionPipeline.gd",
+      "sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0"
+    }
+  ],
+  "output_contract": {
+    "schema": "C11-D-D9-RENDERER-VISUAL-PAYLOAD-MATERIALIZATION-PREVIEW-V1",
+    "json_schema": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+    "required_instances": 2,
+    "required_materialized_types": [
+      "visual_loops",
+      "visual_drills"
+    ],
+    "challenge_instance_materialized": false
+  }
+}

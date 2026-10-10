@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-visual-payload-materialization-preview:v1",
+  "title": "C11-D renderer Visual Payload Materialization Preview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "instances",
+    "unmaterialized_content_types",
+    "challenge_runtime_payload_materialized",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-VISUAL-PAYLOAD-MATERIALIZATION-PREVIEW-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "instances": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "instance_id",
+          "selection",
+          "seed",
+          "variation_index",
+          "fps",
+          "duration_seconds",
+          "frame_count",
+          "authoring_envelope_sha256",
+          "payload_instance_sha256",
+          "materialization",
+          "deterministic_repeat_pass",
+          "instance_parameters_bound"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "visual_loops",
+              "visual_drills"
+            ]
+          },
+          "instance_id": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 100
+          },
+          "selection": {
+            "type": "object"
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "variation_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "fps": {
+            "const": 30
+          },
+          "duration_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "frame_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "authoring_envelope_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "payload_instance_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "materialization": {
+            "const": "IN_MEMORY_ONLY"
+          },
+          "deterministic_repeat_pass": {
+            "const": true
+          },
+          "instance_parameters_bound": {
+            "const": true
+          }
+        }
+      }
+    },
+    "unmaterialized_content_types": {
+      "const": [
+        "challenges"
+      ]
+    },
+    "challenge_runtime_payload_materialized": {
+      "const": false
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "payload_file_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "c11c_source_mutation"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_REVIEW_ONLY"
+        },
+        "payload_file_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      }
+    }
+  }
+}

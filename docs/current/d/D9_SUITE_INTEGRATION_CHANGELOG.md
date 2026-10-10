@@ -245,3 +245,9 @@ Added the standalone `D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1` contract, sche
 ## 2026-10-10 â€” request-scoped visual source binding V1
 
 Added a fail-closed audit for three representative canonical D9.9 requests. It hashes the selected definition and registry and validates source identity through the bridge, PREPARE_ONLY adapter, binding preview, logical composition, frame program, temporal projection and editorial review. It explicitly does not claim that a request-specific visual payload has been generated and does not enable renderer/media output.
+
+<!-- C11D_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1 -->
+### D renderer visual payload materialization preview V1
+
+Added a headless in-memory materialization contract/harness for exact Visual Loop and Visual Drill review fixtures, with source lineage, deterministic payload digests, and negative governance tests. No persisted output, renderer invocation, media generation, C11-C source mutation or D4.8 authorization.
+
