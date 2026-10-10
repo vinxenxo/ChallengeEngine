@@ -64,7 +64,7 @@ func _run() -> void:
     var after_hash := _frame_signature_sha256(ctx.simulation_result)
     var winning_unchanged := int(ctx.simulation_result.winning_frame) == before_winning
     var metrics_unchanged := is_equal_approx(float(ctx.simulation_result.score), before_score) and is_equal_approx(float(ctx.simulation_result.minimum_distance), before_min_dist) and is_equal_approx(float(ctx.simulation_result.tolerance_threshold), before_tolerance)
-    var frames_unchanged := before_hash == after_hash and ctx.simulation_result.frames.size() == 420
+    var frames_unchanged: bool = (before_hash == after_hash) and (int(ctx.simulation_result.frames.size()) == 420)
     if not frames_unchanged or not winning_unchanged or not metrics_unchanged: _fail("D presentation binding mutated simulation state."); return
 
     var review_profile: Dictionary = delivery_registry.get("profiles", {}).get("REVIEW_720", {})

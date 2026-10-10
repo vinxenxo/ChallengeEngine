@@ -316,3 +316,6 @@ The latest isolated increment is the D renderer in-memory visual payload materia
 
 To test the CHALLENGE_004 runtime preview run the Python contract test and `godot --headless --path . --script res://tools/c11d/d9/materialize_challenge_runtime_output_in_memory.gd`. This harness calls `ChallengeRuntimeBridge.run_effective_pipeline` twice and prints digest-only in-memory evidence. It does not render or persist output. A real SimulationResult is not a visual challenge payload; keep renderer OFF, D4.8 BLOCKED, authority NONE.
 
+## Resume â€” Profile Identity Separation V1 (2026-10-10)
+
+Run `python .\tools\c11d\d9\test_d_renderer_profile_identity_separation.py` and `godot --headless --path . --script res://tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd`. This increment separates legacy video profile, inline timeline, explicit presentation profile and D delivery profile; it must not modify C11-C or approve 60â†’30 projection, renderer baseline, D4.8 or release authority. Investigate any Godot error before proceeding.

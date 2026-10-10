@@ -257,3 +257,6 @@ Added a headless in-memory materialization contract/harness for exact Visual Loo
 
 Added a headless in-memory evidence harness for CHALLENGE_004 using the frozen effective ChallengeRuntimeBridge, two-run deterministic digest comparison, GAME-local frame-signature summary, canonical editorial copy, phase cardinality and presentation-binding metadata. No files/media/renderer input; no C11-C source mutation; D4.8 remains blocked.
 
+## D Renderer Profile Identity Separation V1 â€” 2026-10-10
+
+Added a read-only source audit and Godot headless harness distinguishing legacy video profile identity, inline challenge timing, explicit presentation profile and D delivery profile. The D-owned in-memory rebind verifies simulation invariance and keeps renderer/media/authority disabled. See `D_RENDERER_PROFILE_IDENTITY_SEPARATION_CHECKPOINT_V1.md`.

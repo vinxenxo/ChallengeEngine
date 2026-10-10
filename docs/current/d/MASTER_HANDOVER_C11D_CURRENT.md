@@ -305,3 +305,6 @@ The current preview stage materializes two exact request-scoped visual authoring
 
 An isolated Godot headless harness runs the existing effective C11-C Challenge runtime twice and compares stable summaries in memory. It captures source editorial copy, timing phases, actual GAME SimulationResult frame signature, read-only local winning_frame, and presentation/asset binding metadata. This does not materialize the challenge visual payload, invoke the renderer, create media or grant authority.
 
+## Profile Identity Separation V1 (2026-10-10)
+
+The next validation step is `tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd`. It explicitly separates source `social_default_v1` presentation intent from legacy `test_master_11s` binding and `REVIEW_720` delivery. Run the Python contract test and the Godot headless harness; this is not a renderer invocation. Preserve the C11-C frozen manifest and keep the timebase projection unapproved, D4.8 blocked and release authority none.
