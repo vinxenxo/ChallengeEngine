@@ -260,3 +260,7 @@ Added a headless in-memory evidence harness for CHALLENGE_004 using the frozen e
 ## D Renderer Profile Identity Separation V1 â€” 2026-10-10
 
 Added a read-only source audit and Godot headless harness distinguishing legacy video profile identity, inline challenge timing, explicit presentation profile and D delivery profile. The D-owned in-memory rebind verifies simulation invariance and keeps renderer/media/authority disabled. See `D_RENDERER_PROFILE_IDENTITY_SEPARATION_CHECKPOINT_V1.md`.
+
+## D Renderer Challenge Delivery Timeline Review V1 â€” 2026-10-10
+
+Added a Godot headless in-memory review that joins `CHALLENGE_004` runtime timing, explicit presentation binding, and proposed delivery phase projection. It asserts simulation invariance and deliberately leaves per-field visibility ranges, simulation sampling, interpolation and winning-frame mapping unresolved. No renderer/media/authority change. See `D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_CHECKPOINT_V1.md`.

@@ -1,0 +1,3 @@
+# D Renderer Challenge Delivery Timeline Review V1 — 2026-10-10
+
+Added a D-owned review-only join of effective `CHALLENGE_004` runtime output, explicit D presentation binding and the proposed 60→30 FPS cumulative-boundary projection. The expected boundaries are source `[0,180,600,780,900]` and delivery `[0,90,300,390,450]` with phase counts `90/210/90/60` at delivery. Runtime repeat determinism and simulation invariance are checked in Godot headless using an in-memory deep-copy presentation rebind. Text-field visibility ranges, simulation sampling, winning-frame mapping and interpolation remain unresolved. No renderer input, report file, or media is emitted. Timebase policy remains unapproved; D4.8 is blocked and release authority is none.

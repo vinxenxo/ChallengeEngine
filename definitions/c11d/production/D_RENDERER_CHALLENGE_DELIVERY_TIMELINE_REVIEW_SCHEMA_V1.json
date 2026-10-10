@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_SCHEMA_V1.json",
+  "title": "C11-D Challenge Delivery Timeline Review Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "challenge_source_sha256",
+    "profile_identity",
+    "source_timeline",
+    "delivery_profile",
+    "source_segments",
+    "delivery_segments",
+    "field_visibility",
+    "runtime_evidence",
+    "policy_state",
+    "source_lineage",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-CHALLENGE-DELIVERY-TIMELINE-REVIEW-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "challenge_source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "profile_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "challenge_id",
+        "legacy_video_profile_id",
+        "source_presentation_profile_id",
+        "d_presentation_profile_id",
+        "delivery_profile_id"
+      ],
+      "properties": {
+        "challenge_id": {
+          "const": "CHALLENGE_004"
+        },
+        "legacy_video_profile_id": {
+          "const": "test_master_11s"
+        },
+        "source_presentation_profile_id": {
+          "const": "social_default_v1"
+        },
+        "d_presentation_profile_id": {
+          "const": "social_default_v1"
+        },
+        "delivery_profile_id": {
+          "const": "REVIEW_720"
+        }
+      }
+    },
+    "source_timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fps",
+        "total_frames",
+        "duration_seconds",
+        "phase_order",
+        "boundary_frames"
+      ],
+      "properties": {
+        "fps": {
+          "const": 60
+        },
+        "total_frames": {
+          "const": 900
+        },
+        "duration_seconds": {
+          "const": 15
+        },
+        "phase_order": {
+          "const": [
+            "HOOK",
+            "GAME",
+            "REVEAL",
+            "CTA"
+          ]
+        },
+        "boundary_frames": {
+          "const": [
+            0,
+            180,
+            600,
+            780,
+            900
+          ]
+        }
+      }
+    },
+    "delivery_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "fps",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "profile_id": {
+          "const": "REVIEW_720"
+        },
+        "fps": {
+          "const": 30
+        },
+        "width": {
+          "const": 720
+        },
+        "height": {
+          "const": 1280
+        }
+      }
+    },
+    "source_segments": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/segment"
+      }
+    },
+    "delivery_segments": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/segment"
+      }
+    },
+    "field_visibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "frame_ranges"
+      ],
+      "properties": {
+        "state": {
+          "const": "UNRESOLVED_NO_PER_FIELD_FRAME_WINDOWS"
+        },
+        "frame_ranges": {
+          "type": "null"
+        }
+      }
+    },
+    "runtime_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "runtime_success",
+        "repeat_deterministic",
+        "simulation_frame_signature_unchanged",
+        "winning_frame_unchanged",
+        "metrics_unchanged",
+        "game_frame_count"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "NOT_RUN_BY_PYTHON_CONTRACT_TEST",
+            "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY"
+          ]
+        },
+        "runtime_success": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "repeat_deterministic": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "simulation_frame_signature_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "winning_frame_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "metrics_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "game_frame_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "policy_state": {
+      "const": "PROPOSED_NOT_APPROVED"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report_file_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "media_created",
+        "c11c_source_mutation",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "video_render_ready"
+      ],
+      "properties": {
+        "report_file_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "identity_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacy_runtime_bound_presentation_profile_id",
+        "d_presentation_render_model_sha256",
+        "winning_frame_mapping"
+      ],
+      "properties": {
+        "legacy_runtime_bound_presentation_profile_id": {
+          "const": "test_master_11s"
+        },
+        "d_presentation_render_model_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "winning_frame_mapping": {
+          "const": "NOT_MAPPED_BY_POLICY"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "start_frame",
+        "end_frame",
+        "frame_count"
+      ],
+      "properties": {
+        "phase": {
+          "enum": [
+            "HOOK",
+            "GAME",
+            "REVEAL",
+            "CTA"
+          ]
+        },
+        "start_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_frame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frame_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

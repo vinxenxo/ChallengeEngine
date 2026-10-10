@@ -308,3 +308,7 @@ An isolated Godot headless harness runs the existing effective C11-C Challenge r
 ## Profile Identity Separation V1 (2026-10-10)
 
 The next validation step is `tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd`. It explicitly separates source `social_default_v1` presentation intent from legacy `test_master_11s` binding and `REVIEW_720` delivery. Run the Python contract test and the Godot headless harness; this is not a renderer invocation. Preserve the C11-C frozen manifest and keep the timebase projection unapproved, D4.8 blocked and release authority none.
+
+## Challenge Delivery Timeline Review V1 (2026-10-10)
+
+Run `python .\tools\c11d\d9\test_d_renderer_challenge_delivery_timeline_review.py` and `godot --headless --path . --script res://tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd`. This produces only an in-memory review summary. Source phase frames are `180/420/180/120` at 60 FPS; proposed `REVIEW_720@30FPS` phase frames are `90/210/90/60`. Do not interpret phase ranges as editorial field windows, do not map `winning_frame`, and do not activate the renderer. The timebase policy is not approved, D4.8 remains blocked, and release authority remains none.

@@ -319,3 +319,7 @@ To test the CHALLENGE_004 runtime preview run the Python contract test and `godo
 ## Resume â€” Profile Identity Separation V1 (2026-10-10)
 
 Run `python .\tools\c11d\d9\test_d_renderer_profile_identity_separation.py` and `godot --headless --path . --script res://tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd`. This increment separates legacy video profile, inline timeline, explicit presentation profile and D delivery profile; it must not modify C11-C or approve 60â†’30 projection, renderer baseline, D4.8 or release authority. Investigate any Godot error before proceeding.
+
+## Resume â€” Challenge Delivery Timeline Review V1 (2026-10-10)
+
+Validate `tools/c11d/d9/d_renderer_challenge_delivery_timeline_review.py` and run `godot --headless --path . --script res://tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd`. The harness joins the actual frozen Challenge timeline to `social_default_v1` presentation and the proposed `REVIEW_720@30FPS` projection, preserving simulation hashes and `winning_frame`. Expected delivery phases are `90>210>90>60` / total 450 frames. Editorial field visibility, sampling/interpolation and winning-frame mapping stay unresolved; the timebase policy stays proposed/unapproved, renderer OFF, media false, D4.8 blocked, release authority none. Run regressions after the Godot harness passes.
