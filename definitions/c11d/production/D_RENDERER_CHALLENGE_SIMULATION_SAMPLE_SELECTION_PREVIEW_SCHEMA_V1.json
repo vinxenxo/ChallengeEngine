@@ -1,0 +1,493 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-challenge-simulation-sample-selection-preview:v1",
+  "title": "C11-D challenge simulation sample-selection proposal preview",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "proposal_id",
+    "proposal_state",
+    "proposal_contract_sha256",
+    "frozen_c11c_manifest_sha256",
+    "content_identity",
+    "source_timebase",
+    "delivery_timebase",
+    "game_segment",
+    "sampling_policy",
+    "samples",
+    "sample_assessment",
+    "anchor_mapping",
+    "governance",
+    "approval_state",
+    "source_lineage",
+    "preview_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-CHALLENGE-SIMULATION-SAMPLE-SELECTION-PREVIEW-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PROPOSAL_PREVIEW_ONLY_NOT_RENDERER_INPUT"
+    },
+    "proposal_id": {
+      "const": "C11D_CHALLENGE_SAMPLE_EVERY_SECOND_SOURCE_SNAPSHOT_NO_INTERPOLATION_V1"
+    },
+    "proposal_state": {
+      "const": "PROPOSED_NOT_APPROVED"
+    },
+    "proposal_contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "content_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "challenge_id",
+        "mechanic",
+        "mechanic_version",
+        "seed_requested",
+        "seed_used"
+      ],
+      "properties": {
+        "challenge_id": {
+          "const": "CHALLENGE_004"
+        },
+        "mechanic": {
+          "const": "parking_v2"
+        },
+        "mechanic_version": {
+          "const": "2.0"
+        },
+        "seed_requested": {
+          "const": 314159
+        },
+        "seed_used": {
+          "const": 314159
+        }
+      }
+    },
+    "source_timebase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fps",
+        "total_frames"
+      ],
+      "properties": {
+        "fps": {
+          "const": 60
+        },
+        "total_frames": {
+          "const": 900
+        }
+      }
+    },
+    "delivery_timebase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fps",
+        "total_frames"
+      ],
+      "properties": {
+        "fps": {
+          "const": 30
+        },
+        "total_frames": {
+          "const": 450
+        }
+      }
+    },
+    "game_segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_start_frame",
+        "source_end_frame_exclusive",
+        "source_snapshot_count",
+        "delivery_start_frame",
+        "delivery_end_frame_exclusive",
+        "delivery_snapshot_count",
+        "duration_seconds"
+      ],
+      "properties": {
+        "source_start_frame": {
+          "const": 180
+        },
+        "source_end_frame_exclusive": {
+          "const": 600
+        },
+        "source_snapshot_count": {
+          "const": 420
+        },
+        "delivery_start_frame": {
+          "const": 90
+        },
+        "delivery_end_frame_exclusive": {
+          "const": 300
+        },
+        "delivery_snapshot_count": {
+          "const": 210
+        },
+        "duration_seconds": {
+          "const": 7
+        }
+      }
+    },
+    "sampling_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "state",
+        "sampling_origin",
+        "selection_formula",
+        "interpolation",
+        "synthetic_or_interpolated_simulation_states",
+        "output_order",
+        "source_snapshot_stride",
+        "anchor_mapping_formula",
+        "anchor_tie_rule",
+        "winning_frame_role",
+        "close_calls_role",
+        "simulation_result_mutation",
+        "canonical_payload_mutation"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "C11D_CHALLENGE_SAMPLE_EVERY_SECOND_SOURCE_SNAPSHOT_NO_INTERPOLATION_V1"
+        },
+        "state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "sampling_origin": {
+          "const": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX"
+        },
+        "selection_formula": {
+          "const": "source_game_snapshot_index = delivery_game_frame_index * 2"
+        },
+        "interpolation": {
+          "const": "NONE"
+        },
+        "synthetic_or_interpolated_simulation_states": {
+          "const": false
+        },
+        "output_order": {
+          "const": "STRICTLY_INCREASING_SOURCE_INDEX_AND_CONTIGUOUS_DELIVERY_INDEX"
+        },
+        "source_snapshot_stride": {
+          "const": 2
+        },
+        "anchor_mapping_formula": {
+          "const": "nearest_delivery_tick_half_up = floor(source_frame_index * delivery_fps / source_fps + 0.5)"
+        },
+        "anchor_tie_rule": {
+          "const": "HALF_UP_TOWARD_LATER_DELIVERY_TICK"
+        },
+        "winning_frame_role": {
+          "const": "SOLE_CHALLENGE_TEMPORAL_ANCHOR_READ_ONLY; NEVER_REWRITTEN"
+        },
+        "close_calls_role": {
+          "const": "EPISODE_COUNT_ONLY; NEVER_USED_AS_A_TIME_OR_FRAME_SOURCE"
+        },
+        "simulation_result_mutation": {
+          "const": false
+        },
+        "canonical_payload_mutation": {
+          "const": false
+        }
+      }
+    },
+    "samples": {
+      "type": "array",
+      "minItems": 210,
+      "maxItems": 210,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "delivery_game_frame_index",
+          "delivery_absolute_frame_index",
+          "source_game_snapshot_index",
+          "source_absolute_frame_index"
+        ],
+        "properties": {
+          "delivery_game_frame_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 209
+          },
+          "delivery_absolute_frame_index": {
+            "type": "integer",
+            "minimum": 90,
+            "maximum": 299
+          },
+          "source_game_snapshot_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 419
+          },
+          "source_absolute_frame_index": {
+            "type": "integer",
+            "minimum": 180,
+            "maximum": 599
+          }
+        }
+      }
+    },
+    "sample_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_snapshot_count",
+        "delivery_snapshot_count",
+        "stride",
+        "first_source_snapshot_index",
+        "last_source_snapshot_index",
+        "source_index_sha256",
+        "all_source_indices_unique",
+        "delivery_indices_contiguous",
+        "source_indices_follow_stride",
+        "sample_ratio_exact",
+        "interpolation_used"
+      ],
+      "properties": {
+        "source_snapshot_count": {
+          "const": 420
+        },
+        "delivery_snapshot_count": {
+          "const": 210
+        },
+        "stride": {
+          "const": 2
+        },
+        "first_source_snapshot_index": {
+          "const": 0
+        },
+        "last_source_snapshot_index": {
+          "const": 418
+        },
+        "source_index_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "all_source_indices_unique": {
+          "const": true
+        },
+        "delivery_indices_contiguous": {
+          "const": true
+        },
+        "source_indices_follow_stride": {
+          "const": true
+        },
+        "sample_ratio_exact": {
+          "const": true
+        },
+        "interpolation_used": {
+          "const": false
+        }
+      }
+    },
+    "anchor_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "winning_frame_local_game_index",
+        "winning_frame_absolute_source_index",
+        "winning_delivery_game_frame_index",
+        "winning_absolute_delivery_frame_index",
+        "anchor_mapping_status",
+        "winning_source_snapshot_selected",
+        "source_frame_rounding_error_numerator",
+        "source_frame_rounding_error_denominator",
+        "close_calls_count",
+        "close_calls_used_for_timing"
+      ],
+      "properties": {
+        "winning_frame_local_game_index": {
+          "const": 394
+        },
+        "winning_frame_absolute_source_index": {
+          "const": 574
+        },
+        "winning_delivery_game_frame_index": {
+          "const": 197
+        },
+        "winning_absolute_delivery_frame_index": {
+          "const": 287
+        },
+        "anchor_mapping_status": {
+          "const": "EXACT_SELECTED_SAMPLE_AND_DELIVERY_TICK"
+        },
+        "winning_source_snapshot_selected": {
+          "const": true
+        },
+        "source_frame_rounding_error_numerator": {
+          "const": 0
+        },
+        "source_frame_rounding_error_denominator": {
+          "const": 1
+        },
+        "close_calls_count": {
+          "const": 1
+        },
+        "close_calls_used_for_timing": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "payload_files_written",
+        "persistent_report_written",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "video_render_ready"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_POLICY_PREVIEW_ONLY"
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "persistent_report_written": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "simulation_sample_selection_policy_approved",
+        "interpolation_policy_approved",
+        "delivery_timebase_projection_policy_approved",
+        "coordinate_projection_policy_approved",
+        "editorial_field_window_policy_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "d9_14_full_acceptance",
+        "d9_16_full_acceptance",
+        "d9_17_closure",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "simulation_sample_selection_policy_approved": {
+          "const": false
+        },
+        "interpolation_policy_approved": {
+          "const": false
+        },
+        "delivery_timebase_projection_policy_approved": {
+          "const": false
+        },
+        "coordinate_projection_policy_approved": {
+          "const": false
+        },
+        "editorial_field_window_policy_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17_closure": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "preview_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
