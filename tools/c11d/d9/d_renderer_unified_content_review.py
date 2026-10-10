@@ -355,7 +355,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]]) -> dict[
         raise UnifiedContentReviewError("Challenge visual payload asset roles mismatch")
     for role, (path_expected, hash_expected) in expected_payload_assets.items():
         row = payload_assets[role]
-        if row.get("resource_path") != path_expected or row.get("sha256") != hash_expected or row.get("loaded_as_texture2d") is not True:
+        if row.get("resource_path") != path_expected or row.get("sha256") != hash_expected or row.get("resource_loaded_as_texture2d") is not True:
             raise UnifiedContentReviewError(f"Challenge visual payload asset binding mismatch: {role}")
     if payload_boundary.get("renderer_activation") is not False or payload_boundary.get("renderer_dispatch_invoked") is not False or payload_boundary.get("renderer_native_input_emitted") is not False or payload_boundary.get("media_output_created") is not False or payload_boundary.get("payload_written") is not False:
         raise UnifiedContentReviewError("Challenge visual payload exceeded the in-memory review boundary")

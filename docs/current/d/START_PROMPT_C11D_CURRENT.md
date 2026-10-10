@@ -335,3 +335,11 @@ Run the unified contract test, then `python .\tools\c11d\d9\run_d_renderer_unifi
 ## Resume â€” Challenge Visual Payload Preview V1
 
 Validate `tools/c11d/d9/test_d_renderer_challenge_visual_payload_preview.py`, then run `godot --headless --path . --script res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd`, requiring a clean `C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW PASS`. If clean, rerun the contract test. The result only proves an in-memory source-timebase logical payload (3 assets + 420 GAME transform records) and simulation invariance. Coordinate projection and delivery sampling remain unresolved. Keep renderer OFF, D4.8 BLOCKED and release authority NONE.
+<!-- C11D_CHALLENGE_COORDINATE_PROJECTION_PREVIEW_V1 -->
+## Next check - Coordinate Projection Preview V1
+
+Validate the contract test and execute the in-memory Godot coordinate projection harness. Accept only clean deterministic output and simulation invariance. The transform is 0.5 to 540x960 and 4/3 to REVIEW_720 720x1280 (combined 2/3); sample selection/interpolation remains unresolved and production locks remain active.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Next Check - Unified Visual Payload and Coordinate Projection
+
+Execute the 7-harness unified review using the real Godot 4.7.1 executable. Require 7/7 clean harnesses, 10/10 cross-artifact checks, frozen C11-C identity and matching Challenge frame-record hashes between source-timebase visual payload and coordinate projection. Do not apply delivery resampling/interpolation, activate rendering, create media or claim baseline approval.

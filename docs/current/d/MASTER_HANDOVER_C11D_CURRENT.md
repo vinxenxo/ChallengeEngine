@@ -324,3 +324,11 @@ Use `python .\tools\c11d\d9\test_d_renderer_unified_content_review.py`, then `py
 ## Challenge Visual Payload Preview V1
 
 After the 10-source contract test, run `godot --headless --path . --script res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd`, then rerun the Python contract test. Accept only a clean Godot PASS with no `ERROR:`/`SCRIPT ERROR:` lines. This harness binds the authentic source-timebase GAME snapshots and canonical static assets into a deterministic in-memory logical payload. It intentionally does not resolve the CANVAS_1080X1920 versus profile source-canvas projection or resample to 30 FPS. No scene nodes, media, files, renderer input or authority are created. The current unified review runner has not yet incorporated this sixth harness; its follow-on integration must consume this preview before the unified gate summary is treated as current.
+<!-- C11D_CHALLENGE_COORDINATE_PROJECTION_PREVIEW_V1 -->
+## Resume - Coordinate Projection Preview V1
+
+Run python tools/c11d/d9/test_d_renderer_challenge_coordinate_projection.py, then godot --headless --path . --script res://tools/c11d/d9/review_challenge_coordinate_projection_in_memory.gd. Require a clean PASS and no ERROR or SCRIPT ERROR. Expected stages are 1080x1920 -> 540x960 (0.5) -> REVIEW_720 720x1280 (4/3), combined 2/3. Keep sampling/interpolation unresolved, renderer OFF, D4.8 BLOCKED, release authority NONE.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Unified Review - Seven Harnesses
+
+Run python tools/c11d/d9/test_d_renderer_unified_content_review.py and then python tools/c11d/d9/run_d_renderer_unified_content_review.py --godot godot. The review now joins Loop, Drill, Challenge runtime, profile identity, delivery timeline, editorial windows, Challenge visual payload and coordinate projection. Accept only seven clean harness exits and ten cross-artifact checks. Source-timebase payload and coordinate projection remain in-memory review artifacts, not renderer input. The unresolved sample/interpolation, projection/timebase/editorial policies, external baseline approval and D4.8 authorization remain blocked.

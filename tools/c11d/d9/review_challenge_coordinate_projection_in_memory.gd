@@ -219,21 +219,12 @@ func _run() -> void:
     var target_source := Vector2(float(target_values[0]), float(target_values[1]))
     var target_presentation := CoordinateMapper.map_position(target_source, CoordinateMapper.CoordinateSpace.CANVAS_1080X1920, presentation_canvas)
     var target_delivery := Vector2(target_presentation.x * delivery_scale.x, target_presentation.y * delivery_scale.y)
-    # Godot Vector2 uses single-precision components in this build. The source-to-
-    # presentation coordinates are integral and checked tightly; the composed
-    # 4/3 delivery multiplier is not exactly representable, so allow 1e-4 px for
-    # the X result instead of the generic 1e-6 comparison tolerance.
-    var target_projection_ok: bool = (
-        _near(target_presentation.x, 425.0)
-        and _near(target_presentation.y, 480.0)
-        and _near(target_delivery.x, 850.0 * 2.0 / 3.0, 0.0001)
-        and _near(target_delivery.y, 640.0, 0.0001)
-    )
-    if not target_projection_ok:
-        _fail(
-            "Canonical target position projected incorrectly: source=%s presentation=%s delivery=%s expected_presentation=(425,480) expected_delivery=(566.666667,640) tolerance_delivery_px=0.0001"
-            % [_vector2_value(target_source), _vector2_value(target_presentation), _vector2_value(target_delivery)]
-        )
+    # Vector2 stores components at engine float precision, so the composed
+    # delivery x coordinate (~566.666667 px) can differ from its scalar ideal
+    # by a few 1e-5 px. Keep source and presentation checks exact to 1e-6, but
+    # use a sub-pixel 1e-4 tolerance for the final projected Vector2 values.
+    if not _near(target_presentation.x, 425.0) or not _near(target_presentation.y, 480.0) or not _near(target_delivery.x, 850.0 * 2.0 / 3.0, 0.0001) or not _near(target_delivery.y, 640.0, 0.0001):
+        _fail("Canonical target position projected incorrectly: source=%s presentation=%s delivery=%s; expected presentation=(425, 480), delivery=(566.666667, 640)." % [target_source, target_presentation, target_delivery])
         return
 
     var source_records_sha: String = _sha256_text(JSON.stringify(_stable_value(source_frame_records)))
@@ -253,6 +244,13 @@ func _run() -> void:
     var lineage: Array[Dictionary] = [{"path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": FrozenManifestSha}]
     for rel_path: String in SourcePins.keys():
         lineage.append({"path": rel_path, "sha256": str(SourcePins[rel_path])})
+    # Include this report's own contract by runtime hash, avoiding an impossible
+    # self-referential SHA-256 pin inside the contract JSON itself.
+    var contract_lineage_bytes: PackedByteArray = FileAccess.get_file_as_bytes(ContractPath)
+    if contract_lineage_bytes.is_empty():
+        _fail("Coordinate projection contract unavailable for source lineage.")
+        return
+    lineage.append({"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "sha256": _sha256_bytes(contract_lineage_bytes)})
     lineage.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.get("path", "")) < str(b.get("path", "")))
 
     var report: Dictionary = {

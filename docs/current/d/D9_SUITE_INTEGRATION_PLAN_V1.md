@@ -66,3 +66,11 @@ The existing `c11c-catalog` keeps its generic artifact browser and adds the `C11
 The existing `c11c-config` keeps Repository Config and adds `C11-D CONTRACTS` plus `C11-D OPERATOR PROFILES`. Twenty D2–D9 canonical JSON contracts are read-only and inspected with status/SHA-256/governance invariants. Profiles live under `profiles/c11d/operator/`, require explicit independent integer `seed` and `music_seed`, known Challenge/delivery/music/personalization IDs, schema validation, SHA-256/diff, explicit save, backup and validated restore. Blank profiles carry no operational defaults.
 
 The generic Repository Config editor protects all profile paths and `challenges/`, `definitions/`, `schemas/`, `assets/`, `core/`, `tools/`, `tests/` and `c11c-suite/`. Only the dedicated Operator Profiles tab can write allowlisted operator JSON. Pure-data tests cover 20/20 contracts, seven negative controls and save/backup/validated-restore lifecycle. Isolated tests pass; Windows Qt and real filesystem interaction remain pending. Profiles do not auto-feed Producer, and D4.8/runtime/renderer/production/release authority remain disabled.
+<!-- C11D_CHALLENGE_COORDINATE_PROJECTION_PREVIEW_V1 -->
+## Increment - Challenge Coordinate Projection Preview V1
+
+Added a proposed, D-owned coordinate projection preview using the frozen CoordinateMapper: CANVAS_1080X1920 -> 540x960 at 0.5, then -> REVIEW_720 720x1280 at 4/3, composing to 2/3. A detached in-memory list projects 420 GAME positions and three asset intrinsic base sizes while preserving local snapshot multipliers and other snapshot values. Delivery sampling/interpolation remains unresolved; no rendering, renderer input, file output or media is produced.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Increment - Unified Challenge Payload Projection
+
+The unified review now validates the source-timebase Challenge visual payload and the detached coordinate-projection view from the same 420 GAME records. The composition-ready review still lacks approved coordinate policy, approved temporal resampling/interpolation, and complete editorial field mappings for Loops/Drills. No renderer-native input or media is generated.

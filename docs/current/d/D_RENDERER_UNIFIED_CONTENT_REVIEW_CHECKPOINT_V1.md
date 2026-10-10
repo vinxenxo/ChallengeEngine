@@ -38,3 +38,7 @@ Each child must exit zero, print its unique PASS marker, print exactly one JSON 
 ## Execution boundary
 
 `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, no C11-C mutation, no renderer-native input, no dispatch, no persistent report. This checkpoint does not assert D baseline eligibility, D9.14/D9.16 full acceptance, D9.17 closure, or D10 readiness.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Follow-on - Challenge Visual Payload and Coordinate Projection
+
+The unified review now runs seven sequential Godot headless in-memory harnesses. The Challenge visual-payload harness materializes three canonical SVG assets and 420 source-timebase GAME records. The coordinate-projection harness projects the same 420 records from CANVAS_1080X1920 to 540x960 and REVIEW_720 720x1280. Cross-artifact validation requires the projection source-record hash to equal the visual-payload frame-record hash. Coordinate policy remains PROPOSED_NOT_APPROVED; delivery sampling/interpolation is not applied. Renderer remains OFF, no media is created, D4.8 remains BLOCKED and release authority NONE.

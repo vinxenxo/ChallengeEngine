@@ -276,3 +276,11 @@ Added an in-memory cross-artifact coordinator for the Visual Loop and Drill mate
 ## D Renderer Challenge Visual Payload Preview V1
 
 Added a D-owned headless harness to build a deterministic source-timebase Challenge visual payload in memory from the authentic runtime result, canonical PresentationBinder render model and three physical SVG assets. The 420 GAME snapshot transforms remain in source order at 60 FPS; visual telemetry fields are omitted. No frame drawing, renderer-native input, persistence or media is produced. This harness remains separately accepted pending its Windows Godot run; it has not been added to the 22-step aggregate.
+<!-- C11D_CHALLENGE_COORDINATE_PROJECTION_PREVIEW_V1 -->
+## Challenge Coordinate Projection Preview V1
+
+Added a source-pinned Python contract and Godot headless preview for the proposed coordinate transform CANVAS_1080X1920 -> 540x960 -> REVIEW_720 720x1280. The harness maps all 420 GAME positions in a detached in-memory descriptor list, projects intrinsic asset base dimensions and verifies determinism/source simulation invariance. No rendering, resampling, files, renderer input, or media is created.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Unified Content Review Integration V2
+
+Extended the console-only unified review from five to seven headless in-memory Godot harnesses. Challenge source-timebase visual payload and coordinate projection are now included, with three SVG asset identity checks and a cross-artifact SHA-256 equality check tying 420 payload GAME records to the coordinate projection source records. The payload/projection remains non-rendering and unapproved.

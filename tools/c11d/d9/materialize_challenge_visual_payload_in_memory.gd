@@ -103,6 +103,13 @@ func _run() -> void:
     source_lineage.append({"path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": FrozenManifestSha})
     for rel_path: String in SourcePins.keys():
         source_lineage.append({"path": rel_path, "sha256": str(SourcePins[rel_path])})
+    # Include the dynamically hashed input contract itself in the emitted lineage.
+    # It is intentionally not self-pinned inside its own JSON document.
+    var contract_lineage_bytes: PackedByteArray = FileAccess.get_file_as_bytes(ContractPath)
+    if contract_lineage_bytes.is_empty():
+        _fail("Visual payload contract unavailable for source lineage.")
+        return
+    source_lineage.append({"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "sha256": _sha256_bytes(contract_lineage_bytes)})
     source_lineage.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.get("path", "")) < str(b.get("path", "")))
 
     var report: Dictionary = {

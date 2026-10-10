@@ -109,9 +109,9 @@ def make_summaries() -> dict[str, dict]:
         "proposal_sha256": D("2"),
     }
     assets = [
-        {"role": "BACKGROUND", "resource_path": "res://assets/c6/garage_background.svg", "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e", "intrinsic_width": 1080, "intrinsic_height": 1920, "loaded_as_texture2d": True},
-        {"role": "ANIMATED_OBJECT", "resource_path": "res://assets/c6/car.svg", "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d", "intrinsic_width": 160, "intrinsic_height": 320, "loaded_as_texture2d": True},
-        {"role": "TARGET", "resource_path": "res://assets/c6/parking_target.svg", "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3", "intrinsic_width": 200, "intrinsic_height": 400, "loaded_as_texture2d": True},
+        {"role": "BACKGROUND", "resource_path": "res://assets/c6/garage_background.svg", "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e", "intrinsic_width": 1080, "intrinsic_height": 1920, "resource_loaded_as_texture2d": True},
+        {"role": "ANIMATED_OBJECT", "resource_path": "res://assets/c6/car.svg", "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d", "intrinsic_width": 160, "intrinsic_height": 320, "resource_loaded_as_texture2d": True},
+        {"role": "TARGET", "resource_path": "res://assets/c6/parking_target.svg", "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3", "intrinsic_width": 200, "intrinsic_height": 400, "resource_loaded_as_texture2d": True},
     ]
     visual_challenge_payload = {
         "schema": "C11-D-D9-CHALLENGE-VISUAL-PAYLOAD-PREVIEW-V1", "schema_version": "1.0",
@@ -186,6 +186,21 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(challenge_item["materialization"], "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT")
         self.assertEqual(challenge_item["coordinate_projection"]["projected_records"], 420)
         validate_review_manifest(report, self.schema)
+
+    def test_payload_asset_binding_uses_runtime_summary_texture_key(self) -> None:
+        summaries = make_summaries()
+        joined = validate_harness_summaries(summaries)
+        self.assertEqual(len(joined["challenge_visual_payload"]["asset_nodes"]), 3)
+        summaries["challenge_visual_payload"]["asset_nodes"][0]["resource_loaded_as_texture2d"] = False
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Challenge visual payload asset binding mismatch: BACKGROUND"):
+            validate_harness_summaries(summaries)
+
+    def test_coordinate_projection_target_guard_allows_vector_float_precision(self) -> None:
+        harness_path = ROOT / "tools/c11d/d9/review_challenge_coordinate_projection_in_memory.gd"
+        source = harness_path.read_text(encoding="utf-8")
+        self.assertIn("_near(target_delivery.x, 850.0 * 2.0 / 3.0, 0.0001)", source)
+        self.assertIn("_near(target_delivery.y, 640.0, 0.0001)", source)
+        self.assertIn("source=%s presentation=%s delivery=%s", source)
 
     def test_visual_payload_frame_records_must_match_coordinate_projection_source(self) -> None:
         summaries = make_summaries()

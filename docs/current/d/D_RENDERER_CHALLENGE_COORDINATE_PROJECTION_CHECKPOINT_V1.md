@@ -30,3 +30,7 @@ The projected frame descriptors retain original ordering and copy rotation, simu
 5. D baseline approval/freeze and D4.8 authorization remain independent external gates.
 
 No self-approval or baseline freeze is implied by this checkpoint.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Unified Review Integration
+
+The coordinate-projection harness is now included in the seven-harness unified review. The unified coordinator checks 420 source record identities against the Challenge visual-payload harness and checks all three SVG asset identities. Projection remains an unapproved in-memory proposal only; no renderer input, output files or media are created.

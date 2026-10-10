@@ -34,3 +34,11 @@ python .\tools\c11d\d9\test_d_renderer_challenge_visual_payload_preview.py
 ```
 
 Expected runtime marker: `C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW PASS`. Do not count a Python contract PASS as a substitute for the Godot runtime execution.
+<!-- C11D_CHALLENGE_COORDINATE_PROJECTION_PREVIEW_V1 -->
+## Follow-on - Coordinate Projection Preview V1
+
+The projection proposal formalizes CANVAS_1080X1920 -> 540x960 at uniform scale 0.5 and 540x960 -> REVIEW_720 720x1280 at uniform scale 4/3. The composed coordinate scale is 2/3. Use tools/c11d/d9/review_challenge_coordinate_projection_in_memory.gd only for a headless in-memory review, after passing its Python contract. This does not approve the mapping and does not resolve delivery resampling or interpolation.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_COORDINATE_INTEGRATION_V1 -->
+## Unified Review Integration
+
+The Challenge visual-payload harness is now included in the seven-harness unified review. Its 420 source-timebase GAME records must match the input-record digest of the coordinate-projection harness. This closes the prior NOT_MATERIALIZED report gate only at the in-memory logical payload level; it does not mean renderer-native input or rendered pixels exist.
