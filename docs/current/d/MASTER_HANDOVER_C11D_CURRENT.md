@@ -316,3 +316,7 @@ Run `python .\tools\c11d\d9\test_d_renderer_challenge_delivery_timeline_review.p
 ## Latest increment â€” editorial field-window proposal
 
 The new in-memory proposal gives CHALLENGE_004 hook/CTA field windows only under explicit policy `C11D_SAME_NAME_EDITORIAL_FIELD_TO_PHASE_FULL_WINDOW_V1`; empty reveal is suppressed. It preserves copy exactly and hashes it. Visual Loop/Drill editorial windows remain unresolved; policy is PROPOSED_NOT_APPROVED and no renderer input or media is produced.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_V1 -->
+## Unified Content Review V1
+
+Use `python .\tools\c11d\d9\test_d_renderer_unified_content_review.py`, then `python .\tools\c11d\d9\run_d_renderer_unified_content_review.py --godot godot`. The runner executes five existing Godot 4.7.1 in-memory harnesses, verifies their summary hashes, source identity, timing, editorial field-window and simulation invariance cross-checks, and emits a joined JSON summary to stdout only. It does not write the report. A PASS means review-chain consistency only, not render readiness. Keep the Loop/Drill editorial maps unresolved, Challenge visual payload unmaterialized, timebase/field-window policies proposed, renderer OFF, D4.8 blocked and release authority NONE.

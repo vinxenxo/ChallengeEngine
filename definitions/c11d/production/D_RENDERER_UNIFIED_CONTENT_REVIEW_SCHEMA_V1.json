@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.local/schemas/c11d/d-renderer-unified-content-review-v1.json",
+  "title": "C11-D Unified Content Review Manifest V1",
+  "type": "object",
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "content_items",
+    "harness_evidence",
+    "cross_artifact_checks",
+    "unresolved_gates",
+    "execution_boundary",
+    "review_manifest_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-UNIFIED-CONTENT-REVIEW-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "REVIEW_CHAIN_CONSISTENT_NOT_VIDEO_READY"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 11,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "content_items": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "content_type",
+          "selection",
+          "identity",
+          "timing",
+          "editorial_review",
+          "materialization"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "visual_loops",
+              "visual_drills",
+              "challenges"
+            ]
+          },
+          "selection": {
+            "type": "object"
+          },
+          "identity": {
+            "type": "object"
+          },
+          "timing": {
+            "type": "object"
+          },
+          "editorial_review": {
+            "type": "object"
+          },
+          "materialization": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "harness_evidence": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "script",
+          "script_sha256",
+          "exit_code",
+          "summary_sha256",
+          "pass_marker_seen",
+          "runtime_error_log_seen"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "script": {
+            "type": "string"
+          },
+          "exit_code": {
+            "const": 0
+          },
+          "summary_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "pass_marker_seen": {
+            "const": true
+          },
+          "runtime_error_log_seen": {
+            "const": false
+          },
+          "script_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "cross_artifact_checks": {
+      "type": "object",
+      "required": [
+        "c11c_manifest_identity",
+        "challenge_source_identity",
+        "payload_repeat_determinism",
+        "profile_identity_parity",
+        "delivery_timeline_parity",
+        "field_window_parity",
+        "simulation_invariance",
+        "governance_boundary"
+      ],
+      "properties": {
+        "c11c_manifest_identity": {
+          "const": true
+        },
+        "challenge_source_identity": {
+          "const": true
+        },
+        "payload_repeat_determinism": {
+          "const": true
+        },
+        "profile_identity_parity": {
+          "const": true
+        },
+        "delivery_timeline_parity": {
+          "const": true
+        },
+        "field_window_parity": {
+          "const": true
+        },
+        "simulation_invariance": {
+          "const": true
+        },
+        "governance_boundary": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "unresolved_gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approval_state": {
+      "type": "object"
+    },
+    "execution_boundary": {
+      "type": "object",
+      "required": [
+        "persistent_report_written",
+        "payload_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "video_render_ready",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "persistent_report_written": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "video_render_ready": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "additionalProperties": true
+    },
+    "review_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

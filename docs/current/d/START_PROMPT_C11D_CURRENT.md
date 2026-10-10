@@ -327,3 +327,7 @@ Validate `tools/c11d/d9/d_renderer_challenge_delivery_timeline_review.py` and ru
 ## Resume â€” editorial field-window proposal V1
 
 Run the Python contract test and `godot --headless --path . --script res://tools/c11d/d9/review_editorial_field_windows_in_memory.gd`. This proposes `hook=[0,90)`, suppresses empty reveal, and proposes `cta=[390,450)` at REVIEW_720; it does not approve the policy. Do not infer corresponding windows for Loops/Drills or start rendering.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_V1 -->
+## Resume â€” Unified Content Review V1
+
+Run the unified contract test, then `python .\tools\c11d\d9\run_d_renderer_unified_content_review.py --godot godot`. This launches the five established review-only Godot harnesses sequentially and joins their outputs in memory. The runner must fail on nonzero exit, missing PASS/summary markers, source/hash drift, or any `ERROR:`/`SCRIPT ERROR:` log even if a harness prints PASS. Expected review is consistent but not video-ready. Do not turn the console summary into a renderer input or persistent report; no media is authorized.

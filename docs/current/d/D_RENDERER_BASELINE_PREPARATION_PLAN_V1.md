@@ -153,3 +153,7 @@ The D review harness now joins actual frozen `CHALLENGE_004` runtime timing with
 ## D9 editorial field-window proposal V1
 
 Added a proposal-only field-to-phase map for CHALLENGE_004: canonical `hook` maps to delivery frames `[0,90)`, empty `reveal` is suppressed, and canonical `cta` maps to `[390,450)`. This is an explicit per-field policy candidate, not an inference that phase ranges always equal text visibility. Visual Loop and Drill field maps remain unresolved. See `D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_CHECKPOINT_V1.md`.
+<!-- C11D_UNIFIED_CONTENT_REVIEW_V1 -->
+## Increment â€” Unified Content Review V1
+
+Added a console-only orchestrator which sequentially runs the existing Visual Loop/Drill payload, Challenge runtime, profile identity, delivery timeline and editorial field-window harnesses. It joins summaries by pinned source identity and digest and rejects any Godot `ERROR:`/`SCRIPT ERROR:` line even when a PASS marker is present. The result distinguishes a consistent review chain from video readiness: Loop/Drill editorial mappings and Challenge visual payload/sample-selection policy remain unresolved. No persistent report, renderer input, media or authority change.
