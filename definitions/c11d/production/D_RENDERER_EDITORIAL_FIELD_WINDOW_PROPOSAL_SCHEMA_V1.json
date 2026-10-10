@@ -1,0 +1,696 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.invalid/schemas/C11-D-D9-RENDERER-EDITORIAL-FIELD-WINDOW-PROPOSAL-V1.json",
+  "title": "C11-D renderer editorial field-window proposal review record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "challenge_source_sha256",
+    "challenge_id",
+    "profile_identity",
+    "source_timeline",
+    "delivery_profile",
+    "source_segments",
+    "delivery_segments",
+    "policy",
+    "fields",
+    "unresolved_content_types",
+    "source_lineage",
+    "runtime_evidence",
+    "identity_evidence",
+    "execution_boundary",
+    "proposal_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-EDITORIAL-FIELD-WINDOW-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "challenge_source_sha256": {
+      "const": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    "challenge_id": {
+      "const": "CHALLENGE_004"
+    },
+    "profile_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacy_video_profile_id",
+        "source_presentation_profile_id",
+        "d_presentation_profile_id",
+        "delivery_profile_id"
+      ],
+      "properties": {
+        "legacy_video_profile_id": {
+          "const": "test_master_11s"
+        },
+        "source_presentation_profile_id": {
+          "const": "social_default_v1"
+        },
+        "d_presentation_profile_id": {
+          "const": "social_default_v1"
+        },
+        "delivery_profile_id": {
+          "const": "REVIEW_720"
+        }
+      }
+    },
+    "source_timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fps",
+        "total_frames",
+        "duration_seconds",
+        "phase_order",
+        "boundary_frames"
+      ],
+      "properties": {
+        "fps": {
+          "const": 60
+        },
+        "total_frames": {
+          "const": 900
+        },
+        "duration_seconds": {
+          "const": 15
+        },
+        "phase_order": {
+          "const": [
+            "HOOK",
+            "GAME",
+            "REVEAL",
+            "CTA"
+          ]
+        },
+        "boundary_frames": {
+          "const": [
+            0,
+            180,
+            600,
+            780,
+            900
+          ]
+        }
+      }
+    },
+    "delivery_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "fps",
+        "total_frames",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "profile_id": {
+          "const": "REVIEW_720"
+        },
+        "fps": {
+          "const": 30
+        },
+        "total_frames": {
+          "const": 450
+        },
+        "width": {
+          "const": 720
+        },
+        "height": {
+          "const": 1280
+        }
+      }
+    },
+    "source_segments": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "HOOK"
+            },
+            "start_frame": {
+              "const": 0
+            },
+            "end_frame": {
+              "const": 180
+            },
+            "frame_count": {
+              "const": 180
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "GAME"
+            },
+            "start_frame": {
+              "const": 180
+            },
+            "end_frame": {
+              "const": 600
+            },
+            "frame_count": {
+              "const": 420
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "REVEAL"
+            },
+            "start_frame": {
+              "const": 600
+            },
+            "end_frame": {
+              "const": 780
+            },
+            "frame_count": {
+              "const": 180
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "CTA"
+            },
+            "start_frame": {
+              "const": 780
+            },
+            "end_frame": {
+              "const": 900
+            },
+            "frame_count": {
+              "const": 120
+            }
+          }
+        }
+      ],
+      "minItems": 4,
+      "maxItems": 4,
+      "items": false
+    },
+    "delivery_segments": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "HOOK"
+            },
+            "start_frame": {
+              "const": 0
+            },
+            "end_frame": {
+              "const": 90
+            },
+            "frame_count": {
+              "const": 90
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "GAME"
+            },
+            "start_frame": {
+              "const": 90
+            },
+            "end_frame": {
+              "const": 300
+            },
+            "frame_count": {
+              "const": 210
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "REVEAL"
+            },
+            "start_frame": {
+              "const": 300
+            },
+            "end_frame": {
+              "const": 390
+            },
+            "frame_count": {
+              "const": 90
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "phase",
+            "start_frame",
+            "end_frame",
+            "frame_count"
+          ],
+          "properties": {
+            "phase": {
+              "const": "CTA"
+            },
+            "start_frame": {
+              "const": 390
+            },
+            "end_frame": {
+              "const": 450
+            },
+            "frame_count": {
+              "const": 60
+            }
+          }
+        }
+      ],
+      "minItems": 4,
+      "maxItems": 4,
+      "items": false
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "state",
+        "interval_convention",
+        "visible_window_rule",
+        "empty_value_rule"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "C11D_SAME_NAME_EDITORIAL_FIELD_TO_PHASE_FULL_WINDOW_V1"
+        },
+        "state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "interval_convention": {
+          "const": "ZERO_BASED_HALF_OPEN_DELIVERY_FRAME_RANGE"
+        },
+        "visible_window_rule": {
+          "const": "ASSIGN_THE_FULL_DELIVERY_PHASE_RANGE_ONLY_AFTER_EXPLICIT_FIELD_TO_PHASE_MAPPING"
+        },
+        "empty_value_rule": {
+          "const": "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW"
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "field_id",
+            "phase",
+            "source_text",
+            "source_text_sha256",
+            "state",
+            "visibility_range"
+          ],
+          "properties": {
+            "field_id": {
+              "const": "hook"
+            },
+            "phase": {
+              "const": "HOOK"
+            },
+            "source_text": {
+              "const": "¡SOLO EL 1% APARCA SIN ROZAR!"
+            },
+            "source_text_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "state": {
+              "const": "PROPOSED_VISIBLE_WINDOW"
+            },
+            "visibility_range": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "start_frame",
+                "end_frame",
+                "frame_count"
+              ],
+              "properties": {
+                "start_frame": {
+                  "const": 0
+                },
+                "end_frame": {
+                  "const": 90
+                },
+                "frame_count": {
+                  "const": 90
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "field_id",
+            "phase",
+            "source_text",
+            "source_text_sha256",
+            "state",
+            "visibility_range"
+          ],
+          "properties": {
+            "field_id": {
+              "const": "reveal"
+            },
+            "phase": {
+              "const": "REVEAL"
+            },
+            "source_text": {
+              "const": ""
+            },
+            "source_text_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "state": {
+              "const": "SUPPRESSED_EMPTY_EDITORIAL_FIELD"
+            },
+            "visibility_range": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "field_id",
+            "phase",
+            "source_text",
+            "source_text_sha256",
+            "state",
+            "visibility_range"
+          ],
+          "properties": {
+            "field_id": {
+              "const": "cta"
+            },
+            "phase": {
+              "const": "CTA"
+            },
+            "source_text": {
+              "const": "¿Lo has clavado?"
+            },
+            "source_text_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "state": {
+              "const": "PROPOSED_VISIBLE_WINDOW"
+            },
+            "visibility_range": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "start_frame",
+                "end_frame",
+                "frame_count"
+              ],
+              "properties": {
+                "start_frame": {
+                  "const": 390
+                },
+                "end_frame": {
+                  "const": 450
+                },
+                "frame_count": {
+                  "const": 60
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minItems": 3,
+      "maxItems": 3,
+      "items": false
+    },
+    "unresolved_content_types": {
+      "const": {
+        "visual_loops": "NO_EDITORIAL_FIELD_WINDOW_MAPPING_DECLARED",
+        "visual_drills": "NO_EDITORIAL_FIELD_WINDOW_MAPPING_DECLARED"
+      }
+    },
+    "source_lineage": {
+      "const": [
+        {
+          "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+          "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        {
+          "path": "challenges/CHALLENGE_004.json",
+          "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+        },
+        {
+          "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+          "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json",
+          "sha256": "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+          "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+          "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json",
+          "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json",
+          "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"
+        }
+      ]
+    },
+    "runtime_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "runtime_success",
+        "repeat_deterministic",
+        "simulation_frame_signature_unchanged",
+        "winning_frame_unchanged",
+        "metrics_unchanged",
+        "game_frame_count"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "PYTHON_CONTRACT_ONLY",
+            "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY"
+          ]
+        },
+        "runtime_success": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "repeat_deterministic": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "simulation_frame_signature_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "winning_frame_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "metrics_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "game_frame_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "identity_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacy_runtime_bound_presentation_profile_id",
+        "d_presentation_render_model_sha256",
+        "winning_frame_mapping"
+      ],
+      "properties": {
+        "legacy_runtime_bound_presentation_profile_id": {
+          "const": "test_master_11s"
+        },
+        "d_presentation_render_model_sha256": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          ]
+        },
+        "winning_frame_mapping": {
+          "const": "NOT_MAPPED_BY_POLICY"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report_file_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "media_created",
+        "c11c_source_mutation",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "video_render_ready"
+      ],
+      "properties": {
+        "report_file_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "proposal_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {}
+}

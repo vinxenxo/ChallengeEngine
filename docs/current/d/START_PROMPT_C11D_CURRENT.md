@@ -323,3 +323,7 @@ Run `python .\tools\c11d\d9\test_d_renderer_profile_identity_separation.py` and 
 ## Resume â€” Challenge Delivery Timeline Review V1 (2026-10-10)
 
 Validate `tools/c11d/d9/d_renderer_challenge_delivery_timeline_review.py` and run `godot --headless --path . --script res://tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd`. The harness joins the actual frozen Challenge timeline to `social_default_v1` presentation and the proposed `REVIEW_720@30FPS` projection, preserving simulation hashes and `winning_frame`. Expected delivery phases are `90>210>90>60` / total 450 frames. Editorial field visibility, sampling/interpolation and winning-frame mapping stay unresolved; the timebase policy stays proposed/unapproved, renderer OFF, media false, D4.8 blocked, release authority none. Run regressions after the Godot harness passes.
+<!-- C11D_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1 -->
+## Resume â€” editorial field-window proposal V1
+
+Run the Python contract test and `godot --headless --path . --script res://tools/c11d/d9/review_editorial_field_windows_in_memory.gd`. This proposes `hook=[0,90)`, suppresses empty reveal, and proposes `cta=[390,450)` at REVIEW_720; it does not approve the policy. Do not infer corresponding windows for Loops/Drills or start rendering.

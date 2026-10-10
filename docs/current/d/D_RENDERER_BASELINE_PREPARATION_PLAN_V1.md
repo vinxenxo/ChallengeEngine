@@ -149,3 +149,7 @@ The profile identity review separates four roles for CHALLENGE_004: legacy `vide
 ## Increment â€” Challenge Delivery Timeline Review V1 (2026-10-10)
 
 The D review harness now joins actual frozen `CHALLENGE_004` runtime timing with the D-owned `social_default_v1` presentation bind and the still-proposed `REVIEW_720@30FPS` delivery projection. It checks repeated runtime determinism and simulation invariance, then derives source ranges `[0,180,600,780,900]` and delivery ranges `[0,90,300,390,450]`. Phase ranges are not text-visibility windows; those remain unresolved. No source simulation truth is mapped to delivery frames, no renderer input is emitted, and no media is created. The timebase proposal remains unapproved and D4.8 remains BLOCKED.
+<!-- C11D_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1 -->
+## D9 editorial field-window proposal V1
+
+Added a proposal-only field-to-phase map for CHALLENGE_004: canonical `hook` maps to delivery frames `[0,90)`, empty `reveal` is suppressed, and canonical `cta` maps to `[390,450)`. This is an explicit per-field policy candidate, not an inference that phase ranges always equal text visibility. Visual Loop and Drill field maps remain unresolved. See `D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_CHECKPOINT_V1.md`.

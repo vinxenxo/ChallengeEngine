@@ -312,3 +312,7 @@ The next validation step is `tools/c11d/d9/rebind_challenge_presentation_profile
 ## Challenge Delivery Timeline Review V1 (2026-10-10)
 
 Run `python .\tools\c11d\d9\test_d_renderer_challenge_delivery_timeline_review.py` and `godot --headless --path . --script res://tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd`. This produces only an in-memory review summary. Source phase frames are `180/420/180/120` at 60 FPS; proposed `REVIEW_720@30FPS` phase frames are `90/210/90/60`. Do not interpret phase ranges as editorial field windows, do not map `winning_frame`, and do not activate the renderer. The timebase policy is not approved, D4.8 remains blocked, and release authority remains none.
+<!-- C11D_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1 -->
+## Latest increment â€” editorial field-window proposal
+
+The new in-memory proposal gives CHALLENGE_004 hook/CTA field windows only under explicit policy `C11D_SAME_NAME_EDITORIAL_FIELD_TO_PHASE_FULL_WINDOW_V1`; empty reveal is suppressed. It preserves copy exactly and hashes it. Visual Loop/Drill editorial windows remain unresolved; policy is PROPOSED_NOT_APPROVED and no renderer input or media is produced.

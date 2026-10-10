@@ -264,3 +264,7 @@ Added a read-only source audit and Godot headless harness distinguishing legacy 
 ## D Renderer Challenge Delivery Timeline Review V1 â€” 2026-10-10
 
 Added a Godot headless in-memory review that joins `CHALLENGE_004` runtime timing, explicit presentation binding, and proposed delivery phase projection. It asserts simulation invariance and deliberately leaves per-field visibility ranges, simulation sampling, interpolation and winning-frame mapping unresolved. No renderer/media/authority change. See `D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_CHECKPOINT_V1.md`.
+<!-- C11D_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1 -->
+### D renderer editorial field-window proposal V1
+
+Added a source-pinned, deterministic field-to-phase proposal for CHALLENGE_004, including exact editorial text digests, half-open delivery-frame windows, empty-field suppression, 53 negative cases, and a Godot runtime/invariance harness. No renderer input, media, or authority change.
