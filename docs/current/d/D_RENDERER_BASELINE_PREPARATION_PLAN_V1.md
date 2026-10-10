@@ -157,3 +157,7 @@ Added a proposal-only field-to-phase map for CHALLENGE_004: canonical `hook` map
 ## Increment â€” Unified Content Review V1
 
 Added a console-only orchestrator which sequentially runs the existing Visual Loop/Drill payload, Challenge runtime, profile identity, delivery timeline and editorial field-window harnesses. It joins summaries by pinned source identity and digest and rejects any Godot `ERROR:`/`SCRIPT ERROR:` line even when a PASS marker is present. The result distinguishes a consistent review chain from video readiness: Loop/Drill editorial mappings and Challenge visual payload/sample-selection policy remain unresolved. No persistent report, renderer input, media or authority change.
+<!-- C11D_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1 -->
+## Increment â€” Challenge Visual Payload Preview V1
+
+Added a Godot headless in-memory logical visual payload builder for CHALLENGE_004. It invokes the frozen runtime twice, rebinds social_default_v1 on a deep copy, loads and hashes the three canonical SVG Texture2D assets, preserves all 420 GAME transform snapshots at source 60 FPS, excludes telemetry/winning_frame/close_calls, and checks simulation invariance. Coordinate projection and 30 FPS sample selection/interpolation remain unresolved and are not applied. The payload is not renderer input and is never written to disk.

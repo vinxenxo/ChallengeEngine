@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-challenge-visual-payload-preview:v1",
+  "title": "C11-D Challenge Visual Payload Preview Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "status", "frozen_c11c_manifest_sha256", "challenge_source_sha256", "payload_sha256", "payload_identity", "asset_nodes", "source_timeline", "animation", "presentation", "determinism", "execution_boundary", "source_lineage"],
+  "properties": {
+    "schema": {"const": "C11-D-D9-CHALLENGE-VISUAL-PAYLOAD-PREVIEW-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "IN_MEMORY_REVIEW_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_NOT_RENDERER_INPUT"},
+    "frozen_c11c_manifest_sha256": {"const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
+    "challenge_source_sha256": {"const": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"},
+    "payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "payload_identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["challenge_id", "mechanic", "mechanic_version", "presentation_profile_id", "coordinate_space", "materialization"],
+      "properties": {
+        "challenge_id": {"const": "CHALLENGE_004"},
+        "mechanic": {"const": "parking_v2"},
+        "mechanic_version": {"const": "2.0"},
+        "presentation_profile_id": {"const": "social_default_v1"},
+        "coordinate_space": {"const": "CANVAS_1080X1920"},
+        "materialization": {"const": "IN_MEMORY_ONLY_SOURCE_TIMEBASE"}
+      }
+    },
+    "asset_nodes": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["role", "resource_path", "sha256", "resource_loaded_as_texture2d", "intrinsic_width", "intrinsic_height", "binding_source", "declared_transform"],
+        "properties": {
+          "role": {"enum": ["BACKGROUND", "ANIMATED_OBJECT", "TARGET"]},
+          "resource_path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "resource_loaded_as_texture2d": {"const": true},
+          "intrinsic_width": {"type": "integer", "minimum": 1},
+          "intrinsic_height": {"type": "integer", "minimum": 1},
+          "binding_source": {"type": "string", "minLength": 1},
+          "declared_transform": {"type": "object"}
+        }
+      }
+    },
+    "source_timeline": {
+      "type": "object", "additionalProperties": false,
+      "required": ["fps", "total_frames", "duration_seconds", "phase_order", "phase_segments"],
+      "properties": {
+        "fps": {"const": 60}, "total_frames": {"const": 900}, "duration_seconds": {"const": 15},
+        "phase_order": {"const": ["HOOK", "GAME", "REVEAL", "CTA"]},
+        "phase_segments": {"type": "array", "minItems": 4, "maxItems": 4}
+      }
+    },
+    "animation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["frame_source", "source_fps", "game_frame_count", "frame_record_count", "frame_records_sha256", "snapshot_fields_included", "simulation_telemetry_included", "winning_frame_sampling_used", "delivery_resampling"],
+      "properties": {
+        "frame_source": {"const": "SimulationResult.frames"},
+        "source_fps": {"const": 60},
+        "game_frame_count": {"const": 420},
+        "frame_record_count": {"const": 420},
+        "frame_records_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "snapshot_fields_included": {"const": ["position", "rotation", "scale", "opacity", "texture_index", "variant_id"]},
+        "simulation_telemetry_included": {"const": false},
+        "winning_frame_sampling_used": {"const": false},
+        "delivery_resampling": {"const": "UNRESOLVED_NOT_APPLIED"}
+      }
+    },
+    "presentation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["render_model_sha256", "profile_source_canvas", "profile_master_output", "source_coordinate_space", "coordinate_projection"],
+      "properties": {
+        "render_model_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "profile_source_canvas": {"type": "object", "required": ["width", "height"], "properties": {"width": {"const": 540}, "height": {"const": 960}}},
+        "profile_master_output": {"type": "object", "required": ["width", "height"], "properties": {"width": {"const": 1080}, "height": {"const": 1920}}},
+        "source_coordinate_space": {"const": "CANVAS_1080X1920"},
+        "coordinate_projection": {"const": "UNRESOLVED_NOT_APPLIED"}
+      }
+    },
+    "determinism": {
+      "type": "object", "additionalProperties": false,
+      "required": ["runtime_repeat_equal", "payload_repeat_equal", "frame_signature_repeat_equal", "simulation_invariance"],
+      "properties": {"runtime_repeat_equal": {"const": true}, "payload_repeat_equal": {"const": true}, "frame_signature_repeat_equal": {"const": true}, "simulation_invariance": {"const": true}}
+    },
+    "execution_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "payload_written", "media_output_created", "renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "c11c_source_mutation", "d4_8", "release_authority", "output_artifact_path"],
+      "properties": {
+        "mode": {"const": "GODOT_HEADLESS_IN_MEMORY_REVIEW_ONLY"},
+        "payload_written": {"const": false}, "media_output_created": {"const": false},
+        "renderer_native_input_emitted": {"const": false}, "renderer_dispatch_invoked": {"const": false}, "renderer_activation": {"const": false},
+        "c11c_source_mutation": {"const": false}, "d4_8": {"const": "BLOCKED"}, "release_authority": {"const": "NONE"}, "output_artifact_path": {"type": ["null"]}
+      }
+    },
+    "source_lineage": {"type": "array", "minItems": 10, "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}
+  }
+}

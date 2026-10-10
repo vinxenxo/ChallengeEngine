@@ -331,3 +331,7 @@ Run the Python contract test and `godot --headless --path . --script res://tools
 ## Resume â€” Unified Content Review V1
 
 Run the unified contract test, then `python .\tools\c11d\d9\run_d_renderer_unified_content_review.py --godot godot`. This launches the five established review-only Godot harnesses sequentially and joins their outputs in memory. The runner must fail on nonzero exit, missing PASS/summary markers, source/hash drift, or any `ERROR:`/`SCRIPT ERROR:` log even if a harness prints PASS. Expected review is consistent but not video-ready. Do not turn the console summary into a renderer input or persistent report; no media is authorized.
+<!-- C11D_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1 -->
+## Resume â€” Challenge Visual Payload Preview V1
+
+Validate `tools/c11d/d9/test_d_renderer_challenge_visual_payload_preview.py`, then run `godot --headless --path . --script res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd`, requiring a clean `C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW PASS`. If clean, rerun the contract test. The result only proves an in-memory source-timebase logical payload (3 assets + 420 GAME transform records) and simulation invariance. Coordinate projection and delivery sampling remain unresolved. Keep renderer OFF, D4.8 BLOCKED and release authority NONE.

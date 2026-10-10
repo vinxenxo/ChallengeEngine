@@ -272,3 +272,7 @@ Added a source-pinned, deterministic field-to-phase proposal for CHALLENGE_004, 
 ## D Renderer Unified Content Review V1
 
 Added an in-memory cross-artifact coordinator for the Visual Loop and Drill materialization previews, real Challenge runtime output, profile identity split, delivery timeline review and editorial field-window proposal. It records each child harness and summary digest, checks cross-artifact identity and invariance, and rejects false PASS caused by runtime error logs. No harness is added to the frozen 22-step aggregate in this increment; no renderer/media/authority change.
+<!-- C11D_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1 -->
+## D Renderer Challenge Visual Payload Preview V1
+
+Added a D-owned headless harness to build a deterministic source-timebase Challenge visual payload in memory from the authentic runtime result, canonical PresentationBinder render model and three physical SVG assets. The 420 GAME snapshot transforms remain in source order at 60 FPS; visual telemetry fields are omitted. No frame drawing, renderer-native input, persistence or media is produced. This harness remains separately accepted pending its Windows Godot run; it has not been added to the 22-step aggregate.
