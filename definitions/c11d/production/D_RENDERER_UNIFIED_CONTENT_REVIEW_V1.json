@@ -2,7 +2,7 @@
   "schema": "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT",
-  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check the three content types, including Challenge visual payload, coordinate projection, and a proposal-only simulation sample-selection preview, in one console-only manifest without creating media or renderer-native input.",
+  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check the three content types, including Challenge visual payload, coordinate projection, proposal-only sample selection, and spatial/temporal composition parity, in one console-only manifest without creating media or renderer-native input.",
   "supported_content_types": [
     "visual_loops",
     "visual_drills",
@@ -64,6 +64,10 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
       "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
+      "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
     }
   ],
   "runtime_harnesses": [
@@ -121,7 +125,8 @@
     "challenge_sample_selection_interpolation": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "delivery_timebase_policy": "PROPOSED_NOT_APPROVED",
     "editorial_field_window_policy": "PROPOSED_NOT_APPROVED",
-    "coordinate_projection": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+    "coordinate_projection": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+    "challenge_coordinate_sample_composition": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
   },
   "approval_state": {
     "renderer_baseline_approval": "EXTERNAL_GATE_NOT_ASSERTED_BY_THIS_REVIEW",
@@ -133,7 +138,8 @@
     "d10": "BLOCKED",
     "release_authority": "NONE",
     "simulation_sample_selection_policy_approved": false,
-    "interpolation_policy_approved": false
+    "interpolation_policy_approved": false,
+    "coordinate_sample_composition_policy_approved": false
   },
   "execution_boundary": {
     "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",

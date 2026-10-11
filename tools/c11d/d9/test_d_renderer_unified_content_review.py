@@ -132,7 +132,7 @@ def make_summaries() -> dict[str, dict]:
         "schema": "C11-D-D9-RENDERER-CHALLENGE-COORDINATE-PROJECTION-PREVIEW-V1", "schema_version": "1.0",
         "status": "IN_MEMORY_REVIEW_ONLY_PROJECTION_PREVIEW_NOT_RENDERER_INPUT",
         "frozen_c11c_manifest_sha256": manifest, "challenge_source_sha256": CHALLENGE_SHA256,
-        "projection": {"policy_id": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1", "state": "PROPOSED_NOT_APPROVED", "source_coordinate_space": "CANVAS_1080X1920", "stage_scales": [[0.5,0.5],[4/3,4/3]], "combined_scale": [2/3,2/3], "sampling_or_interpolation": "UNRESOLVED_NOT_APPLIED"},
+        "projection": {"policy_id": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1", "state": "PROPOSED_NOT_APPROVED", "source_coordinate_space": "CANVAS_1080X1920", "stage_scales": [[0.5,0.5],[4/3,4/3]], "combined_scale": [2/3,2/3], "sampling_or_interpolation": "UNRESOLVED_NOT_APPLIED", "target_position": {"source": [850.0, 960.0], "presentation_canvas": [425.0, 480.0], "delivery": [566.6666666666666, 640.0]}},
         "projected_frames": {"source_records":420, "projected_records":420, "source_records_sha256":D("d"), "projected_records_sha256":D("e"), "order_preserved":True, "local_scale_preserved":True, "other_snapshot_fields_preserved":True},
         "determinism": {"runtime_repeat_equal":True, "projection_repeat_equal":True, "source_frame_signature_repeat_equal":True},
         "simulation_invariance": {"frame_signature_unchanged":True, "winning_frame_unchanged":True, "metrics_unchanged":True, "frame_count_unchanged":True},
@@ -173,7 +173,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 14)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 15)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
@@ -183,6 +183,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(len(report["unresolved_gates"]), 8)
         self.assertEqual(report["cross_artifact_checks"]["coordinate_projection_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["challenge_sample_selection_proposal_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["challenge_coordinate_sample_composition_proposal_parity"], True)
         challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
         self.assertEqual(challenge_item["materialization"], "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT")
         self.assertEqual(challenge_item["coordinate_projection"]["projected_records"], 420)
@@ -190,7 +191,14 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(challenge_item["sample_selection"]["delivery_snapshot_count"], 210)
         self.assertEqual(challenge_item["sample_selection"]["interpolation"], "NONE")
         self.assertEqual(challenge_item["sample_selection"]["state"], "PROPOSED_NOT_APPROVED")
+        composition = challenge_item["coordinate_sample_composition"]
+        self.assertEqual(composition["state"], "PROPOSED_NOT_APPROVED_NOT_FROZEN")
+        self.assertEqual(composition["projected_source_snapshot_count"], 420)
+        self.assertEqual(composition["delivery_candidate_snapshot_count"], 210)
+        self.assertFalse(composition["delivery_candidate_materialized"])
+        self.assertFalse(composition["policy_approved"])
         self.assertEqual(report["approval_state"]["simulation_sample_selection_policy_approved"], False)
+        self.assertEqual(report["approval_state"]["coordinate_sample_composition_policy_approved"], False)
         self.assertIn("CHALLENGE_SIMULATION_SAMPLE_SELECTION_AND_INTERPOLATION_UNRESOLVED", report["unresolved_gates"])
         validate_review_manifest(report, self.schema)
 
@@ -210,6 +218,27 @@ class UnifiedContentReviewTests(unittest.TestCase):
         report["review_manifest_sha256"] = sha256_json(report)
         with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
             validate_review_manifest(report, self.schema)
+
+    def test_coordinate_sample_composition_proposal_cannot_self_promote(self) -> None:
+        report = self.report()
+        challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
+        challenge_item["coordinate_sample_composition"]["policy_approved"] = True
+        report.pop("review_manifest_sha256")
+        report["review_manifest_sha256"] = sha256_json(report)
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
+            validate_review_manifest(report, self.schema)
+
+    def test_coordinate_sample_composition_operation_order_drift_rejected(self) -> None:
+        from d_renderer_challenge_coordinate_sample_composition import validate_contract as validate_composition
+        result = validate_composition(ROOT)
+        result = copy.deepcopy(result)
+        result["contract"]["composition"]["operation_order"] = [
+            "SELECT_EVEN_ZERO_BASED_GAME_LOCAL_INDICES",
+            "PROJECT_ALL_GAME_COORDINATES_IN_ORIGINAL_ORDER",
+        ]
+        with patch("d_renderer_unified_content_review.validate_coordinate_sample_composition_contract", return_value=result):
+            with self.assertRaisesRegex(UnifiedContentReviewError, "Coordinate/sample composition operation order drift"):
+                validate_harness_summaries(make_summaries())
 
     def test_payload_asset_binding_uses_runtime_summary_texture_key(self) -> None:
         summaries = make_summaries()
@@ -331,8 +360,8 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=14/14" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/14)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=11/11 | negative=12/12 | source_lineage=14/14 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=15/15" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/15)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=12/12 | negative=14/14 | source_lineage=15/15 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 
