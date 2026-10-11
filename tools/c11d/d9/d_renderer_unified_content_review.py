@@ -25,6 +25,14 @@ from d_renderer_challenge_temporal_alignment_policy import (
     build_preview as build_temporal_alignment_preview,
     validate_preview as validate_temporal_alignment_preview,
 )
+from d_renderer_unified_delivery_timebase_policy import (
+    EXPECTED_MATRIX as EXPECTED_UNIFIED_DELIVERY_MATRIX,
+    EXPECTED_TARGET_PROFILE as EXPECTED_UNIFIED_DELIVERY_PROFILE,
+    POLICY_ID as UNIFIED_DELIVERY_POLICY_ID,
+    UnifiedDeliveryPolicyError,
+    build_preview as build_unified_delivery_policy_preview,
+    validate_preview as validate_unified_delivery_policy_preview,
+)
 
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
@@ -51,6 +59,7 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json", "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"),
     ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
     "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED",
@@ -142,6 +151,8 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         raise UnifiedContentReviewError("Loop/Drill editorial field-window proposal must remain review-only and unapplied")
     if policy.get("challenge_temporal_alignment") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
         raise UnifiedContentReviewError("Challenge temporal alignment must remain proposal-only and unapplied")
+    if policy.get("unified_delivery_timebase_policy") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Unified delivery timebase policy must remain proposal-only and unapplied")
     approval_state = contract.get("approval_state", {})
     if (
         approval_state.get("simulation_sample_selection_policy_approved") is not False
@@ -151,8 +162,9 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         or approval_state.get("drill_editorial_field_mapping_approved") is not False
         or approval_state.get("loop_drill_editorial_field_window_policy_approved") is not False
         or approval_state.get("challenge_temporal_alignment_policy_approved") is not False
+        or approval_state.get("unified_delivery_timebase_policy_approved") is not False
     ):
-        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, temporal alignment, or Loop/Drill editorial window policies")
+        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, temporal alignment, Loop/Drill editorial windows, or unified delivery policy")
     boundary = contract.get("execution_boundary", {})
     required_boundary = {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
@@ -645,6 +657,30 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
     if temporal_alignment_preview.get("approval_state", {}).get("challenge_temporal_alignment_policy_approved") is not False or temporal_alignment_preview.get("execution_boundary", {}).get("renderer_native_input_emitted") is not False or temporal_alignment_preview.get("execution_boundary", {}).get("d4_8") != "BLOCKED" or temporal_alignment_preview.get("execution_boundary", {}).get("release_authority") != "NONE":
         raise UnifiedContentReviewError("Challenge temporal-alignment governance lock changed")
 
+    # Unify timebase metadata across all three content types without making media.
+    # Loop/Drill preserve their already-30-FPS timelines; Challenge references the
+    # separate boundary and sample-selection proposals. Audio/music remains out of scope.
+    try:
+        unified_delivery_policy_preview = build_unified_delivery_policy_preview(root, verify_sources=False)
+        validate_unified_delivery_policy_preview(unified_delivery_policy_preview, root, verify_sources=False)
+    except UnifiedDeliveryPolicyError as exc:
+        raise UnifiedContentReviewError(f"Unified delivery timebase proposal invalid: {exc}") from exc
+    target_profile = unified_delivery_policy_preview.get("target_delivery_profile", {})
+    delivery_profile_facts = identity.get("identity_facts", {})
+    if (delivery_profile_facts.get("delivery_profile_id"), delivery_profile_facts.get("delivery_profile_fps"), delivery_profile_facts.get("delivery_width"), delivery_profile_facts.get("delivery_height")) != (target_profile.get("profile_id"), target_profile.get("fps"), target_profile.get("width"), target_profile.get("height")):
+        raise UnifiedContentReviewError("Unified delivery target profile does not match profile-identity runtime evidence")
+    matrix = {row["content_type"]: row for row in unified_delivery_policy_preview.get("content_matrix", [])}
+    for row, content_type in ((loop, "visual_loops"), (drill, "visual_drills")):
+        rule = matrix[content_type]
+        if (row.get("fps"), row.get("frame_count"), row.get("duration_seconds")) != (rule["delivery_fps"], rule["delivery_frame_count"], rule["duration_seconds"]):
+            raise UnifiedContentReviewError(f"Unified delivery timebase does not preserve {content_type} request-scoped payload timing")
+        if rule["source_fps"] != rule["delivery_fps"] or rule["timebase_mode"] != "IDENTITY_NO_RESAMPLING":
+            raise UnifiedContentReviewError(f"Unified delivery policy unexpectedly resamples {content_type}")
+    if (source_timeline.get("fps"), source_timeline.get("total_frames"), delivery_fps, delivery_total_frames, delivery_counts) != (matrix["challenges"]["source_fps"], matrix["challenges"]["source_frame_count"], matrix["challenges"]["delivery_fps"], matrix["challenges"]["delivery_frame_count"], matrix["challenges"]["delivery_phase_frame_counts"]):
+        raise UnifiedContentReviewError("Unified delivery timebase Challenge matrix differs from runtime/timeline evidence")
+    if unified_delivery_policy_preview.get("policy_approved") is not False or unified_delivery_policy_preview.get("delivery_candidate_materialized") is not False or unified_delivery_policy_preview.get("renderer_native_input_emitted") is not False or unified_delivery_policy_preview.get("audio_music_policy") != "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED":
+        raise UnifiedContentReviewError("Unified delivery policy crossed an approval, execution, or audio/music scope boundary")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -663,6 +699,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         "loop_drill_editorial_field_window_fixtures": editorial_fixtures,
         "temporal_alignment_preview": temporal_alignment_preview,
         "temporal_alignment_contract_sha256": temporal_alignment_contract_sha256,
+        "unified_delivery_policy_preview": unified_delivery_policy_preview,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
@@ -759,6 +796,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
         "source_lineage": copy.deepcopy(contract["source_lineage"]),
         "content_items": items,
         "harness_evidence": harness_evidence,
+        "unified_delivery_policy": {**copy.deepcopy(joined["unified_delivery_policy_preview"]), "preview_sha256": sha256_json(joined["unified_delivery_policy_preview"])},
         "cross_artifact_checks": {
             "c11c_manifest_identity": True,
             "challenge_source_identity": True,
@@ -774,6 +812,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "challenge_coordinate_sample_composition_proposal_parity": True,
             "loop_drill_editorial_field_window_proposal_parity": True,
             "challenge_temporal_alignment_policy_parity": True,
+            "unified_delivery_policy_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -806,7 +845,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -911,6 +950,24 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
         raise UnifiedContentReviewError("Challenge temporal-alignment summary mismatch or approval drift")
     if report.get("approval_state", {}).get("challenge_temporal_alignment_policy_approved") is not False:
         raise UnifiedContentReviewError("Unified review cannot approve Challenge temporal alignment")
+    delivery_policy = report.get("unified_delivery_policy", {})
+    delivery_policy_unsigned = {k: copy.deepcopy(v) for k, v in delivery_policy.items() if k != "preview_sha256"}
+    if delivery_policy.get("schema") != "C11-D-D9-UNIFIED-DELIVERY-TIMEBASE-POLICY-PREVIEW-V1" or delivery_policy.get("policy_id") != UNIFIED_DELIVERY_POLICY_ID or delivery_policy.get("policy_state") != "PROPOSED_NOT_APPROVED":
+        raise UnifiedContentReviewError("Unified delivery policy identity/state mismatch")
+    if delivery_policy.get("proposal_contract_sha256") != "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921":
+        raise UnifiedContentReviewError("Unified delivery policy contract identity pin mismatch")
+    if delivery_policy.get("target_delivery_profile") != EXPECTED_UNIFIED_DELIVERY_PROFILE or delivery_policy.get("content_matrix") != EXPECTED_UNIFIED_DELIVERY_MATRIX:
+        raise UnifiedContentReviewError("Unified delivery policy target-profile or cross-content matrix mismatch")
+    if delivery_policy.get("shared_invariants") != ["DELIVERY_PROFILE_IS_EXPLICIT_AND_RESOLVED_ONCE", "PRESERVE_ELAPSED_DURATION", "PRESERVE_PHASE_ORDER_AND_HALF_OPEN_BOUNDARY_CONTINUITY", "DO_NOT_MUTATE_SOURCE_SIMULATION_OR_CANONICAL_CONTENT", "NO_INTERPOLATED_SIMULATION_STATE", "WINNING_FRAME_IS_READ_ONLY_AND_NOT_A_SAMPLE_SELECTION_INPUT", "CLOSE_CALLS_IS_COUNT_ONLY_AND_NOT_TIMING"]:
+        raise UnifiedContentReviewError("Unified delivery policy shared invariants drift")
+    if delivery_policy.get("audio_music_policy") != "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED" or delivery_policy.get("delivery_candidate_materialized") is not False or delivery_policy.get("policy_approved") is not False or delivery_policy.get("renderer_native_input_emitted") is not False or delivery_policy.get("media_created") is not False:
+        raise UnifiedContentReviewError("Unified delivery policy approval, audio/music or execution boundary drift")
+    if delivery_policy.get("approval_state", {}).get("unified_delivery_timebase_policy_approved") is not False or delivery_policy.get("execution_boundary", {}).get("d4_8") != "BLOCKED" or delivery_policy.get("execution_boundary", {}).get("release_authority") != "NONE":
+        raise UnifiedContentReviewError("Unified delivery policy cannot approve itself, D4.8 or release authority")
+    if not _is_sha256(delivery_policy.get("preview_sha256")) or sha256_json(delivery_policy_unsigned) != delivery_policy.get("preview_sha256"):
+        raise UnifiedContentReviewError("Unified delivery policy preview digest mismatch")
+    if report.get("approval_state", {}).get("unified_delivery_timebase_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve the unified delivery policy")
     challenge_identity = challenge.get("identity", {})
     if not _is_sha256(challenge_identity.get("challenge_visual_payload_sha256")) or not _is_sha256(challenge_identity.get("source_frame_records_sha256")) or not _is_sha256(challenge_identity.get("projected_frame_records_sha256")):
         raise UnifiedContentReviewError("Challenge visual payload or projected-record identities are malformed")

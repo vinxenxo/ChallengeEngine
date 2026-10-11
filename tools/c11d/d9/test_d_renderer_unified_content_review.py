@@ -173,7 +173,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 17)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 18)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
@@ -197,6 +197,15 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(report["cross_artifact_checks"]["challenge_coordinate_sample_composition_proposal_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["loop_drill_editorial_field_window_proposal_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["challenge_temporal_alignment_policy_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["unified_delivery_policy_parity"], True)
+        self.assertEqual(report["unified_delivery_policy"]["policy_id"], "C11D_UNIFIED_DELIVERY_TIMEBASE_ALL_CONTENT_TYPES_V1")
+        self.assertEqual(report["unified_delivery_policy"]["policy_state"], "PROPOSED_NOT_APPROVED")
+        self.assertEqual(len(report["unified_delivery_policy"]["content_matrix"]), 3)
+        self.assertEqual(report["unified_delivery_policy"]["content_matrix"][0]["delivery_frame_count"], 600)
+        self.assertEqual(report["unified_delivery_policy"]["content_matrix"][1]["delivery_frame_count"], 630)
+        self.assertEqual(report["unified_delivery_policy"]["content_matrix"][2]["delivery_frame_count"], 450)
+        self.assertEqual(report["unified_delivery_policy"]["audio_music_policy"], "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED")
+        self.assertFalse(report["approval_state"]["unified_delivery_timebase_policy_approved"])
         challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
         temporal = challenge_item["temporal_alignment"]
         self.assertEqual(temporal["policy_id"], "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1")
@@ -345,7 +354,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
         source = (ROOT / "tools/c11d/d9/run_d_renderer_unified_content_review.py").read_text(encoding="utf-8")
         self.assertIn("challenge_temporal_alignment=", source)
         self.assertIn("BOUNDARIES_EXACT_PROPOSAL_ONLY", source)
-        self.assertNotIn("cross_artifact=13/13", source)
+        self.assertIn("unified_delivery=REVIEW_720_30FPS_3_CONTENT_TYPES_PROPOSAL_ONLY", source)
 
     def test_temporal_alignment_policy_cannot_self_promote(self) -> None:
         report = self.report()
@@ -385,31 +394,6 @@ class UnifiedContentReviewTests(unittest.TestCase):
                         _run_harness("godot", Path(tmp), spec, 2)
 
 
-def main() -> int:
-    suite = unittest.defaultTestLoader.loadTestsFromTestCase(UnifiedContentReviewTests)
-    result = unittest.TextTestRunner(verbosity=0).run(suite)
-    if not result.wasSuccessful():
-        return 1
-    present_count = sum(1 for rel, _ in EXPECTED_SOURCE_LINEAGE if (ROOT / rel).is_file())
-    source_paths_present = present_count == len(EXPECTED_SOURCE_LINEAGE)
-    source_paths_partial = 0 < present_count < len(EXPECTED_SOURCE_LINEAGE)
-    try:
-        validate_contract(ROOT, verify_sources=False)
-    except UnifiedContentReviewError as exc:
-        print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT FAIL | source_lineage={exc}", file=sys.stderr)
-        return 1
-    jsonschema_ok = False
-    try:
-        import jsonschema  # noqa: F401
-        jsonschema_ok = True
-    except ImportError:
-        jsonschema_ok = False
-    schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=17/17" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/17)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=14/14 | negative=16/16 | source_lineage=17/17 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
-    return 0
-
-
     def test_loop_drill_payload_identity_must_match_editorial_proposal_fixture(self) -> None:
         summaries = make_summaries()
         summaries["visual_payloads"]["instances"][0]["payload_instance_sha256"] = D("b")
@@ -431,6 +415,54 @@ def main() -> int:
         report["review_manifest_sha256"] = sha256_json(report)
         with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
             validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_delivery_policy_promotion_rejected(self) -> None:
+        report = self.report()
+        report["unified_delivery_policy"]["policy_state"] = "APPROVED"
+        report["unified_delivery_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_delivery_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError): validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_delivery_policy_matrix_drift_rejected(self) -> None:
+        report = self.report()
+        report["unified_delivery_policy"]["content_matrix"][0]["delivery_frame_count"] = 599
+        report["unified_delivery_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_delivery_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError): validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_delivery_policy_audio_scope_promotion_rejected(self) -> None:
+        report = self.report()
+        report["unified_delivery_policy"]["audio_music_policy"] = "NORMALIZED"
+        report["unified_delivery_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_delivery_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError): validate_review_manifest(report, self.schema)
+
+
+def main() -> int:
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(UnifiedContentReviewTests)
+    result = unittest.TextTestRunner(verbosity=0).run(suite)
+    if not result.wasSuccessful():
+        return 1
+    present_count = sum(1 for rel, _ in EXPECTED_SOURCE_LINEAGE if (ROOT / rel).is_file())
+    source_paths_present = present_count == len(EXPECTED_SOURCE_LINEAGE)
+    source_paths_partial = 0 < present_count < len(EXPECTED_SOURCE_LINEAGE)
+    try:
+        validate_contract(ROOT, verify_sources=False)
+    except UnifiedContentReviewError as exc:
+        print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT FAIL | source_lineage={exc}", file=sys.stderr)
+        return 1
+    jsonschema_ok = False
+    try:
+        import jsonschema  # noqa: F401
+        jsonschema_ok = True
+    except ImportError:
+        jsonschema_ok = False
+    schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
+    source_label = "source_files=18/18" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/18)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=15/15 | negative=23/23 | source_lineage=18/18 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    return 0
+
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

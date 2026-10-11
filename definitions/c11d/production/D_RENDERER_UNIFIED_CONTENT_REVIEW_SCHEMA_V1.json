@@ -13,7 +13,8 @@
     "cross_artifact_checks",
     "unresolved_gates",
     "execution_boundary",
-    "review_manifest_sha256"
+    "review_manifest_sha256",
+    "unified_delivery_policy"
   ],
   "properties": {
     "schema": {
@@ -34,7 +35,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 17,
+      "minItems": 18,
       "items": {
         "type": "object",
         "required": [
@@ -53,7 +54,7 @@
         },
         "additionalProperties": false
       },
-      "maxItems": 17
+      "maxItems": 18
     },
     "content_items": {
       "type": "array",
@@ -655,7 +656,8 @@
         "challenge_sample_selection_proposal_parity",
         "challenge_coordinate_sample_composition_proposal_parity",
         "loop_drill_editorial_field_window_proposal_parity",
-        "challenge_temporal_alignment_policy_parity"
+        "challenge_temporal_alignment_policy_parity",
+        "unified_delivery_policy_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -698,6 +700,9 @@
           "const": true
         },
         "challenge_temporal_alignment_policy_parity": {
+          "const": true
+        },
+        "unified_delivery_policy_parity": {
           "const": true
         }
       },
@@ -769,6 +774,207 @@
     "review_manifest_sha256": {
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
+    },
+    "unified_delivery_policy": {
+      "type": "object",
+      "required": [
+        "schema",
+        "schema_version",
+        "policy_id",
+        "policy_state",
+        "proposal_contract_sha256",
+        "target_delivery_profile",
+        "content_matrix",
+        "shared_invariants",
+        "audio_music_policy",
+        "delivery_candidate_materialized",
+        "policy_approved",
+        "renderer_native_input_emitted",
+        "media_created",
+        "approval_state",
+        "execution_boundary",
+        "preview_sha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-UNIFIED-DELIVERY-TIMEBASE-POLICY-PREVIEW-V1"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "policy_id": {
+          "const": "C11D_UNIFIED_DELIVERY_TIMEBASE_ALL_CONTENT_TYPES_V1"
+        },
+        "policy_state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "proposal_contract_sha256": {
+          "const": "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"
+        },
+        "target_delivery_profile": {
+          "const": {
+            "profile_id": "REVIEW_720",
+            "width": 720,
+            "height": 1280,
+            "fps": 30,
+            "aspect_ratio": "9:16",
+            "codec": "h264",
+            "container": "mp4",
+            "constant_fps": true,
+            "profile_fields_are_metadata_only": true,
+            "resolved_alias_count": 0
+          }
+        },
+        "content_matrix": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "oneOf": [
+              {
+                "const": {
+                  "content_type": "visual_loops",
+                  "source_fps": 30,
+                  "delivery_fps": 30,
+                  "source_frame_count": 600,
+                  "delivery_frame_count": 600,
+                  "duration_seconds": 20.0,
+                  "timebase_mode": "IDENTITY_NO_RESAMPLING",
+                  "sampling_policy": "PRESERVE_REQUEST_SCOPED_PAYLOAD_FRAME_TIMELINE",
+                  "source_snapshot_count": 600,
+                  "delivery_snapshot_count": 600,
+                  "delivery_candidate_materialized": false
+                }
+              },
+              {
+                "const": {
+                  "content_type": "visual_drills",
+                  "source_fps": 30,
+                  "delivery_fps": 30,
+                  "source_frame_count": 630,
+                  "delivery_frame_count": 630,
+                  "duration_seconds": 21.0,
+                  "timebase_mode": "IDENTITY_NO_RESAMPLING",
+                  "sampling_policy": "PRESERVE_REQUEST_SCOPED_PAYLOAD_FRAME_TIMELINE",
+                  "source_snapshot_count": 630,
+                  "delivery_snapshot_count": 630,
+                  "delivery_candidate_materialized": false
+                }
+              },
+              {
+                "const": {
+                  "content_type": "challenges",
+                  "source_fps": 60,
+                  "delivery_fps": 30,
+                  "source_frame_count": 900,
+                  "delivery_frame_count": 450,
+                  "duration_seconds": 15.0,
+                  "timebase_mode": "CUMULATIVE_BOUNDARY_PROJECTION_AND_SEPARATE_GAME_SAMPLE_SELECTION_PROPOSAL",
+                  "sampling_policy": "EVERY_SECOND_ZERO_BASED_GAME_LOCAL_SNAPSHOT_PROPOSAL_NOT_APPLIED",
+                  "source_snapshot_count": 420,
+                  "delivery_snapshot_count": 210,
+                  "source_phase_boundaries": [
+                    0,
+                    180,
+                    600,
+                    780,
+                    900
+                  ],
+                  "delivery_phase_boundaries": [
+                    0,
+                    90,
+                    300,
+                    390,
+                    450
+                  ],
+                  "source_phase_frame_counts": [
+                    180,
+                    420,
+                    180,
+                    120
+                  ],
+                  "delivery_phase_frame_counts": [
+                    90,
+                    210,
+                    90,
+                    60
+                  ],
+                  "winning_frame_source_absolute_index": 574,
+                  "winning_frame_delivery_absolute_index": 287,
+                  "interpolation": "NONE",
+                  "delivery_candidate_materialized": false
+                }
+              }
+            ]
+          }
+        },
+        "shared_invariants": {
+          "const": [
+            "DELIVERY_PROFILE_IS_EXPLICIT_AND_RESOLVED_ONCE",
+            "PRESERVE_ELAPSED_DURATION",
+            "PRESERVE_PHASE_ORDER_AND_HALF_OPEN_BOUNDARY_CONTINUITY",
+            "DO_NOT_MUTATE_SOURCE_SIMULATION_OR_CANONICAL_CONTENT",
+            "NO_INTERPOLATED_SIMULATION_STATE",
+            "WINNING_FRAME_IS_READ_ONLY_AND_NOT_A_SAMPLE_SELECTION_INPUT",
+            "CLOSE_CALLS_IS_COUNT_ONLY_AND_NOT_TIMING"
+          ]
+        },
+        "audio_music_policy": {
+          "const": "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED"
+        },
+        "delivery_candidate_materialized": {
+          "const": false
+        },
+        "policy_approved": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "approval_state": {
+          "const": {
+            "unified_delivery_timebase_policy_approved": false,
+            "loop_drill_no_resampling_policy_approved": false,
+            "challenge_sample_selection_policy_approved": false,
+            "challenge_temporal_alignment_policy_approved": false,
+            "coordinate_projection_policy_approved": false,
+            "editorial_field_window_policy_approved": false,
+            "music_audio_policy_approved": false,
+            "renderer_baseline_approved": false,
+            "renderer_baseline_frozen": false,
+            "d4_8_authorized": false,
+            "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+            "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+            "d9_17_closure": "BLOCKED_NO_GO",
+            "d10": "BLOCKED",
+            "release_authority": "NONE"
+          }
+        },
+        "execution_boundary": {
+          "const": {
+            "mode": "STATIC_UNIFIED_DELIVERY_POLICY_REVIEW_ONLY",
+            "delivery_candidate_materialized": false,
+            "payload_files_written": false,
+            "renderer_native_input_emitted": false,
+            "renderer_dispatch_invoked": false,
+            "renderer_activation": false,
+            "production_execution": false,
+            "media_created": false,
+            "c11c_source_mutation": false,
+            "d4_8": "BLOCKED",
+            "release_authority": "NONE",
+            "video_render_ready": false
+          }
+        },
+        "preview_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": true

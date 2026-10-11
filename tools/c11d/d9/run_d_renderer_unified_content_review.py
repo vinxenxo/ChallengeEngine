@@ -125,6 +125,7 @@ def main() -> int:
         f" | challenge_sampling={challenge['sample_selection']['source_snapshot_count']}TO{challenge['sample_selection']['delivery_snapshot_count']}_{challenge['sample_selection']['stride']}:1_PROPOSAL_ONLY"
         " | coordinate_sample_composition=PROJECT_THEN_SELECT_420_TO_210_PROPOSAL_ONLY"
         " | loop_drill_editorial=FULL_SPAN_NONEMPTY_FIELDS_PROPOSAL_ONLY"
+        " | unified_delivery=REVIEW_720_30FPS_3_CONTENT_TYPES_PROPOSAL_ONLY"
         f" | challenge_temporal_alignment={len(challenge['temporal_alignment']['source_boundaries'])}/{len(challenge['temporal_alignment']['delivery_boundaries'])}_BOUNDARIES_EXACT_PROPOSAL_ONLY"
         " | editorial_fields=2_VISIBLE_1_EMPTY_SUPPRESSED"
         f" | unresolved_gates={len(report['unresolved_gates'])}"

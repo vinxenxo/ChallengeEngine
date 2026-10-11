@@ -76,6 +76,10 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
       "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "sha256": "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"
     }
   ],
   "runtime_harnesses": [
@@ -136,7 +140,8 @@
     "coordinate_projection": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
     "challenge_coordinate_sample_composition": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "loop_drill_editorial_field_windows": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
-    "challenge_temporal_alignment": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
+    "challenge_temporal_alignment": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
+    "unified_delivery_timebase_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
   },
   "approval_state": {
     "renderer_baseline_approval": "EXTERNAL_GATE_NOT_ASSERTED_BY_THIS_REVIEW",
@@ -153,7 +158,8 @@
     "loop_editorial_field_mapping_approved": false,
     "drill_editorial_field_mapping_approved": false,
     "loop_drill_editorial_field_window_policy_approved": false,
-    "challenge_temporal_alignment_policy_approved": false
+    "challenge_temporal_alignment_policy_approved": false,
+    "unified_delivery_timebase_policy_approved": false
   },
   "execution_boundary": {
     "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",

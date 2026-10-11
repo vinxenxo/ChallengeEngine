@@ -1,0 +1,233 @@
+{
+  "schema": "C11-D-D9-UNIFIED-DELIVERY-TIMEBASE-POLICY-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+  "purpose": "Define one reviewable delivery-timebase contract across Visual Loops, Visual Drills and Challenges while preserving the distinctions between same-timebase payloads and the Challenge 60-to-30 FPS conversion. The contract proposes policy only; it neither approves the policy nor creates any delivery artifact.",
+  "authority": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "delivery_profile_registry_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+    "target_profile_id": "REVIEW_720"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json",
+      "sha256": "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json",
+      "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
+      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
+      "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+    }
+  ],
+  "target_delivery_profile": {
+    "profile_id": "REVIEW_720",
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "aspect_ratio": "9:16",
+    "codec": "h264",
+    "container": "mp4",
+    "constant_fps": true,
+    "profile_fields_are_metadata_only": true,
+    "resolved_alias_count": 0
+  },
+  "policy": {
+    "policy_id": "C11D_UNIFIED_DELIVERY_TIMEBASE_ALL_CONTENT_TYPES_V1",
+    "state": "PROPOSED_NOT_APPROVED",
+    "target_profile_id": "REVIEW_720",
+    "target_profile_resolution": "EXPLICIT_PROFILE_ID_RESOLVED_ONCE_FROM_PINNED_DELIVERY_REGISTRY",
+    "target_profile_metadata_only": true,
+    "target_fps": 30,
+    "target_canvas": [
+      720,
+      1280
+    ],
+    "content_specific_timebase_rules": {
+      "visual_loops": "SOURCE_AND_DELIVERY_FPS_MATCH; PRESERVE_REQUEST_SCOPED_PAYLOAD_FRAME_COUNT_AND_ORDER; NO_RESAMPLING",
+      "visual_drills": "SOURCE_AND_DELIVERY_FPS_MATCH; PRESERVE_REQUEST_SCOPED_PAYLOAD_FRAME_COUNT_AND_ORDER; NO_RESAMPLING",
+      "challenges": "PROJECT_CUMULATIVE_PHASE_BOUNDARIES_60_TO_30; USE_SEPARATE_EVEN_GAME_SNAPSHOT_SELECTION_PROPOSAL; NO_INTERPOLATION"
+    },
+    "challenge_phase_boundary_policy": "CUMULATIVE_HALF_UP_BOUNDARY_PROJECTION; HALF_OPEN_SEGMENTS; ZERO_LENGTH_SPANS_NOT_FORCED",
+    "challenge_sampling_policy": "REFERENCE_EXISTING_PROPOSAL_ONLY; 420_GAME_SNAPSHOTS_TO_210; EVEN_ZERO_BASED_GAME_LOCAL_INDICES",
+    "spatial_policy": "REFERENCE_COORDINATE_PROJECTION_AND_PROJECT_THEN_SELECT_COMPOSITION_PROPOSALS_ONLY",
+    "editorial_policy": "REFERENCE_DECLARED_FIELD_WINDOW_PROPOSALS; NO_TEXT_VISIBILITY_INFERRED_FROM_PHASE_NAMES",
+    "common_timebase_invariants": [
+      "DELIVERY_PROFILE_IS_EXPLICIT_AND_RESOLVED_ONCE",
+      "PRESERVE_ELAPSED_DURATION",
+      "PRESERVE_PHASE_ORDER_AND_HALF_OPEN_BOUNDARY_CONTINUITY",
+      "DO_NOT_MUTATE_SOURCE_SIMULATION_OR_CANONICAL_CONTENT",
+      "NO_INTERPOLATED_SIMULATION_STATE",
+      "WINNING_FRAME_IS_READ_ONLY_AND_NOT_A_SAMPLE_SELECTION_INPUT",
+      "CLOSE_CALLS_IS_COUNT_ONLY_AND_NOT_TIMING"
+    ],
+    "audio_music_policy": "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED",
+    "renderer_native_input_emission": false,
+    "media_creation": false
+  },
+  "content_matrix": [
+    {
+      "content_type": "visual_loops",
+      "source_fps": 30,
+      "delivery_fps": 30,
+      "source_frame_count": 600,
+      "delivery_frame_count": 600,
+      "duration_seconds": 20.0,
+      "timebase_mode": "IDENTITY_NO_RESAMPLING",
+      "sampling_policy": "PRESERVE_REQUEST_SCOPED_PAYLOAD_FRAME_TIMELINE",
+      "source_snapshot_count": 600,
+      "delivery_snapshot_count": 600,
+      "delivery_candidate_materialized": false
+    },
+    {
+      "content_type": "visual_drills",
+      "source_fps": 30,
+      "delivery_fps": 30,
+      "source_frame_count": 630,
+      "delivery_frame_count": 630,
+      "duration_seconds": 21.0,
+      "timebase_mode": "IDENTITY_NO_RESAMPLING",
+      "sampling_policy": "PRESERVE_REQUEST_SCOPED_PAYLOAD_FRAME_TIMELINE",
+      "source_snapshot_count": 630,
+      "delivery_snapshot_count": 630,
+      "delivery_candidate_materialized": false
+    },
+    {
+      "content_type": "challenges",
+      "source_fps": 60,
+      "delivery_fps": 30,
+      "source_frame_count": 900,
+      "delivery_frame_count": 450,
+      "duration_seconds": 15.0,
+      "timebase_mode": "CUMULATIVE_BOUNDARY_PROJECTION_AND_SEPARATE_GAME_SAMPLE_SELECTION_PROPOSAL",
+      "sampling_policy": "EVERY_SECOND_ZERO_BASED_GAME_LOCAL_SNAPSHOT_PROPOSAL_NOT_APPLIED",
+      "source_snapshot_count": 420,
+      "delivery_snapshot_count": 210,
+      "source_phase_boundaries": [
+        0,
+        180,
+        600,
+        780,
+        900
+      ],
+      "delivery_phase_boundaries": [
+        0,
+        90,
+        300,
+        390,
+        450
+      ],
+      "source_phase_frame_counts": [
+        180,
+        420,
+        180,
+        120
+      ],
+      "delivery_phase_frame_counts": [
+        90,
+        210,
+        90,
+        60
+      ],
+      "winning_frame_source_absolute_index": 574,
+      "winning_frame_delivery_absolute_index": 287,
+      "interpolation": "NONE",
+      "delivery_candidate_materialized": false
+    }
+  ],
+  "excluded_policy_domains": {
+    "audio_music": "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED",
+    "font_text_wrapping": "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED",
+    "renderer_backend_and_codec_execution": "NOT_EXECUTED",
+    "delivery_candidate_materialization": "FORBIDDEN_IN_THIS_PROPOSAL"
+  },
+  "approval_state": {
+    "unified_delivery_timebase_policy_approved": false,
+    "loop_drill_no_resampling_policy_approved": false,
+    "challenge_sample_selection_policy_approved": false,
+    "challenge_temporal_alignment_policy_approved": false,
+    "coordinate_projection_policy_approved": false,
+    "editorial_field_window_policy_approved": false,
+    "music_audio_policy_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "execution_boundary": {
+    "mode": "STATIC_UNIFIED_DELIVERY_POLICY_REVIEW_ONLY",
+    "delivery_candidate_materialized": false,
+    "payload_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "video_render_ready": false
+  },
+  "forbidden_operations": [
+    "activate or dispatch the renderer",
+    "create or persist source or delivery frame payloads",
+    "create a video or any media",
+    "mutate frozen C11-C sources or manifest",
+    "infer editorial visibility from phase names",
+    "apply challenge sampling or interpolation",
+    "derive sample selection from winning_frame or close_calls",
+    "define or alter music/audio resampling",
+    "promote any proposal to approved from validation output",
+    "authorize D4.8, baseline freeze, D9 closure, D10 or release authority"
+  ]
+}
