@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "status", "purpose", "authority", "scope", "mapping_policy", "review_fixtures", "source_lineage", "approval_state", "execution_boundary"],
+  "properties": {
+    "schema": {"const": "C11-D-D9-RENDERER-LOOP-DRILL-EDITORIAL-FIELD-WINDOW-PROPOSAL-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PROPOSAL_ONLY_NOT_RENDERER_INPUT"},
+    "purpose": {"type": "string", "minLength": 1},
+    "authority": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+    "scope": {"type": "object", "required": ["supported_content_types", "unsupported_content_types", "source_span_model", "visibility_intervals", "per_field_time_source", "text_transformations", "geometry_or_style", "simulation_sampling_or_interpolation"], "properties": {
+      "supported_content_types": {"const": ["visual_loops", "visual_drills"]},
+      "unsupported_content_types": {"const": ["challenges"]},
+      "source_span_model": {"const": "ONE_CONTINUOUS_PAYLOAD_SPAN_NO_INFERRED_SUBPHASES"},
+      "visibility_intervals": {"const": "ZERO_BASED_HALF_OPEN_FRAME_RANGES"},
+      "per_field_time_source": {"type": "string"}, "text_transformations": {"const": "NONE_EXACT_EDITORIAL_VALUE_PRESERVED"}, "geometry_or_style": {"type": "string"}, "simulation_sampling_or_interpolation": {"type": "string"}
+    }, "additionalProperties": false},
+    "mapping_policy": {"type": "object", "required": ["policy_id", "state", "visible_fields", "metadata_only_fields", "empty_value_rule", "unknown_field_rule", "subphase_rule", "interval_rule", "window_formula", "payload_frame_count_authority", "approval_state"], "properties": {
+      "policy_id": {"const": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1"}, "state": {"const": "PROPOSED_NOT_APPROVED"},
+      "visible_fields": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object", "required": ["field_id", "target_region", "condition", "window_rule"], "properties": {"field_id": {"enum": ["title", "subtitle", "call_to_action"]}, "target_region": {"enum": ["HEADER", "FOOTER"]}, "condition": {"const": "NONEMPTY_STRING"}, "window_rule": {"const": "FULL_CONTINUOUS_PAYLOAD_SPAN"}}, "additionalProperties": false}},
+      "metadata_only_fields": {"const": [{"field_id": "language", "rule": "METADATA_ONLY_NO_VISIBILITY_WINDOW"}]},
+      "empty_value_rule": {"const": "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW"}, "unknown_field_rule": {"const": "REJECT_UNTIL_EXPLICIT_MAPPING_IS_ADDED"}, "subphase_rule": {"const": "DO_NOT_INFER_LOOP_CYCLE_OR_DRILL_EXERCISE_SUBPHASES"}, "interval_rule": {"const": "START_FRAME_INCLUSIVE_END_FRAME_EXCLUSIVE"}, "window_formula": {"const": "NONEMPTY_VISUAL_FIELD_WINDOW_EQUALS_[0,GENERATED_PAYLOAD_FRAME_COUNT)"}, "payload_frame_count_authority": {"const": "REQUEST_SCOPED_IN_MEMORY_MATERIALIZED_PAYLOAD_INSTANCE"}, "approval_state": {"const": "PROPOSED_NOT_APPROVED"}
+    }, "additionalProperties": false},
+    "review_fixtures": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "object", "required": ["content_type", "request_id", "instance_id", "payload_instance_sha256", "selection", "delivery_profile_id", "fps", "frame_count", "duration_seconds", "timing_source"], "properties": {
+      "content_type": {"enum": ["visual_loops", "visual_drills"]}, "request_id": {"type": "string"}, "instance_id": {"type": "string"}, "payload_instance_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "selection": {"type": "object"}, "delivery_profile_id": {"const": "REVIEW_720"}, "fps": {"const": 30}, "frame_count": {"type": "integer", "minimum": 1}, "duration_seconds": {"type": "number", "exclusiveMinimum": 0}, "timing_source": {"const": "MATERIALIZED_REQUEST_SCOPED_PAYLOAD"}
+    }, "additionalProperties": false}},
+    "source_lineage": {"type": "array", "minItems": 10, "maxItems": 10, "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}, "additionalProperties": false}},
+    "approval_state": {"type": "object", "properties": {"loop_editorial_field_mapping_approved": {"const": false}, "drill_editorial_field_mapping_approved": {"const": false}, "field_window_policy_approved": {"const": false}, "delivery_timebase_projection_approved": {"const": false}, "renderer_baseline_approved": {"const": false}, "renderer_baseline_frozen": {"const": false}, "d4_8_authorized": {"const": false}, "d9_14_full_acceptance": {"const": "BLOCKED_AS_REQUIRED"}, "d9_16_full_acceptance": {"const": "BLOCKED_AS_REQUIRED"}, "d9_17_closure": {"const": "BLOCKED_NO_GO"}, "d10": {"const": "BLOCKED"}, "release_authority": {"const": "NONE"}}, "required": ["loop_editorial_field_mapping_approved", "drill_editorial_field_mapping_approved", "field_window_policy_approved", "delivery_timebase_projection_approved", "renderer_baseline_approved", "renderer_baseline_frozen", "d4_8_authorized", "d9_14_full_acceptance", "d9_16_full_acceptance", "d9_17_closure", "d10", "release_authority"], "additionalProperties": false},
+    "execution_boundary": {"type": "object", "properties": {"mode": {"const": "IN_MEMORY_REVIEW_ONLY"}, "renderer": {"const": "OFF"}, "renderer_native_input_emitted": {"const": false}, "renderer_dispatch_invoked": {"const": false}, "renderer_activation": {"const": false}, "production_execution": {"const": false}, "payload_files_written": {"const": false}, "media_created": {"const": false}, "c11c_source_mutation": {"const": false}, "video_render_ready": {"const": false}, "d4_8": {"const": "BLOCKED"}, "release_authority": {"const": "NONE"}}, "required": ["mode", "renderer", "renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "production_execution", "payload_files_written", "media_created", "c11c_source_mutation", "video_render_ready", "d4_8", "release_authority"], "additionalProperties": false}
+  }
+}
