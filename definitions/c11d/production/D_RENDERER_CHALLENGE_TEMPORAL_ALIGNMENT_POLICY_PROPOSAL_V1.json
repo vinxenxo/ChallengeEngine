@@ -1,0 +1,128 @@
+{
+  "schema": "C11-D-D9-RENDERER-CHALLENGE-TEMPORAL-ALIGNMENT-POLICY-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+  "purpose": "Specify and validate the source-to-delivery phase boundary alignment and its relationship to the separately proposed editorial windows and GAME snapshot selection for the exact CHALLENGE_004 review case. The contract is non-executable, proposal-only, and emits no renderer input.",
+  "policy": {
+    "policy_id": "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1",
+    "state": "PROPOSED_NOT_APPROVED",
+    "supported_case_only": {
+      "source_fps": 60,
+      "delivery_fps": 30,
+      "source_frames_per_delivery_frame": 2,
+      "unsupported_case_rule": "FAIL_CLOSED_REQUIRES_SEPARATE_PROPOSAL"
+    },
+    "indexing": "ZERO_BASED",
+    "interval_convention": "HALF_OPEN_START_INCLUSIVE_END_EXCLUSIVE",
+    "boundary_projection": {
+      "formula": "floor((2 * source_boundary * delivery_fps + source_fps) / (2 * source_fps))",
+      "rounding": "NEAREST_DELIVERY_TICK_HALF_UP",
+      "all_pinned_phase_boundaries_exactly_divisible_by_ratio": true
+    },
+    "duration_rule": "PRESERVE_ELAPSED_DURATION; DO_NOT_EXTEND_OR_TRUNCATE_PHASES",
+    "sampling_rule": "REFERENCE_SAMPLE_SELECTION_PROPOSAL_ONLY; NOT_EXECUTED_BY_THIS_CONTRACT",
+    "interpolation_rule": "NONE; NO_SYNTHETIC_SIMULATION_STATE",
+    "editorial_rule": "USE_EXPLICIT_FIELD_WINDOW_PROPOSAL; PHASE_NAME_ALONE_NEVER_ASSIGNS_TEXT_VISIBILITY",
+    "audio_rule": "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED"
+  },
+  "fixture": {
+    "challenge_id": "CHALLENGE_004",
+    "mechanic": "parking_v2",
+    "source_fps": 60,
+    "source_total_frames": 900,
+    "delivery_profile_id": "REVIEW_720",
+    "delivery_fps": 30,
+    "delivery_width": 720,
+    "delivery_height": 1280,
+    "duration_seconds": 15,
+    "phase_order": ["HOOK", "GAME", "REVEAL", "CTA"],
+    "source_boundaries": [0, 180, 600, 780, 900],
+    "source_phase_frame_counts": [180, 420, 180, 120],
+    "delivery_boundaries": [0, 90, 300, 390, 450],
+    "delivery_phase_frame_counts": [90, 210, 90, 60]
+  },
+  "phase_alignment": [
+    {"phase": "HOOK", "source_range": [0, 180], "delivery_range": [0, 90], "source_frames": 180, "delivery_frames": 90},
+    {"phase": "GAME", "source_range": [180, 600], "delivery_range": [90, 300], "source_frames": 420, "delivery_frames": 210},
+    {"phase": "REVEAL", "source_range": [600, 780], "delivery_range": [300, 390], "source_frames": 180, "delivery_frames": 90},
+    {"phase": "CTA", "source_range": [780, 900], "delivery_range": [390, 450], "source_frames": 120, "delivery_frames": 60}
+  ],
+  "winning_anchor_reference": {
+    "role": "READ_ONLY_REFERENCE_FOR_ALIGNMENT_VALIDATION",
+    "source_absolute_frame_index": 574,
+    "source_game_local_index": 394,
+    "selected_by_even_local_index_cadence": true,
+    "delivery_game_local_index": 197,
+    "delivery_absolute_frame_index": 287,
+    "formula": "delivery_game_start + (source_game_local_index / 2) WHEN_SOURCE_LOCAL_INDEX_IS_SELECTED",
+    "winning_frame_mutated": false,
+    "close_calls": 1,
+    "close_calls_used_for_timing": false
+  },
+  "editorial_windows_reference": {
+    "contract_path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+    "contract_sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f",
+    "state": "PROPOSED_NOT_APPROVED",
+    "interval_convention": "ZERO_BASED_HALF_OPEN_DELIVERY_FRAME_RANGE",
+    "expected_field_ranges": {
+      "hook": [0, 90],
+      "reveal": null,
+      "cta": [390, 450]
+    },
+    "empty_reveal_rule": "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW",
+    "phase_ranges_are_not_implicitly_text_visibility": true
+  },
+  "sample_selection_reference": {
+    "contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+    "contract_sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3",
+    "state": "PROPOSED_NOT_APPROVED",
+    "sampling_origin": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX",
+    "stride": 2,
+    "selected_local_indices": "0,2,4,...,418",
+    "source_game_snapshots": 420,
+    "delivery_game_snapshots": 210,
+    "interpolation": "NONE",
+    "selection_uses_winning_frame_as_input": false,
+    "selection_uses_close_calls_as_timing": false
+  },
+  "source_lineage": [
+    {"path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
+    {"path": "challenges/CHALLENGE_004.json", "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"},
+    {"path": "profiles/delivery/c11c_video_delivery_profiles.json", "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"},
+    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"},
+    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json", "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"},
+    {"path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"},
+    {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"},
+    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json", "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"}
+  ],
+  "approval_state": {
+    "challenge_temporal_alignment_policy_approved": false,
+    "delivery_timebase_projection_policy_approved": false,
+    "simulation_sample_selection_policy_approved": false,
+    "interpolation_policy_approved": false,
+    "editorial_field_window_policy_approved": false,
+    "coordinate_projection_policy_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "execution_boundary": {
+    "mode": "STATIC_POLICY_REVIEW_ONLY",
+    "c11c_source_mutation": false,
+    "payload_files_written": false,
+    "persistent_report_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "video_render_ready": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.local/schemas/c11d/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_SCHEMA_V1.json",
+  "title": "C11-D Challenge Temporal Alignment Policy Proposal V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "status", "purpose", "policy", "fixture", "phase_alignment", "winning_anchor_reference", "editorial_windows_reference", "sample_selection_reference", "source_lineage", "approval_state", "execution_boundary"],
+  "properties": {
+    "schema": {"const": "C11-D-D9-RENDERER-CHALLENGE-TEMPORAL-ALIGNMENT-POLICY-PROPOSAL-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PROPOSAL_ONLY_NOT_RENDERER_INPUT"},
+    "purpose": {"type": "string", "minLength": 1},
+    "policy": {"type": "object"},
+    "fixture": {"type": "object"},
+    "phase_alignment": {"type": "array", "minItems": 4, "maxItems": 4},
+    "winning_anchor_reference": {"type": "object"},
+    "editorial_windows_reference": {"type": "object"},
+    "sample_selection_reference": {"type": "object"},
+    "source_lineage": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}},
+    "approval_state": {"type": "object"},
+    "execution_boundary": {"type": "object"}
+  }
+}
