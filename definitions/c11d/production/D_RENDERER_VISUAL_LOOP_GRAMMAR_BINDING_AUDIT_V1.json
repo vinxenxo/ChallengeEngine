@@ -1,0 +1,159 @@
+{
+  "schema": "C11D-RENDERER-VISUAL-LOOP-GRAMMAR-BINDING-AUDIT-V1",
+  "schema_version": "1.0",
+  "status": "READ_ONLY_SOURCE_PINNED_GODOT_RUNTIME_PROBE_NOT_EXACT_PAYLOAD",
+  "purpose": "Prove the currently pinned geometric Visual Loop selector can be traced through the frozen C11-C prototype grammar override, ordered renderer style setter, and shader branch, while retaining the truthful limitation that D authoring still emits a family-level geometric envelope rather than a grammar-specific renderer payload.",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "internal_family": "geometric",
+    "subtype_id": "harmonic_membrane",
+    "variation_index_semantics": "METADATA_ONLY_NOT_A_GRAMMAR_SELECTOR"
+  },
+  "grammar_binding": {
+    "environment_override": "C11C_VISUAL_GRAMMAR",
+    "prototype_grammar_ids": [
+      "harmonic_membrane",
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "selected_grammar_id": "harmonic_membrane",
+    "selected_grammar_index": 0,
+    "selected_shader_branch": "field_harmonic_membrane",
+    "shader_uniform": "grammar_mode",
+    "style_parameter_order": [
+      "grammar_mode",
+      "palette_mode",
+      "morph",
+      "wave_frequency",
+      "line_width",
+      "glow_strength",
+      "polygon_sides",
+      "wave_ratio",
+      "shape_rotation",
+      "layer_spread",
+      "radial_wave_amplitude",
+      "liss_x_frequency",
+      "liss_y_frequency",
+      "interference_scale",
+      "hero_scale",
+      "perspective_strength",
+      "depth_strength",
+      "secondary_phase",
+      "color_phase",
+      "stroke_scale"
+    ],
+    "style_parameter_count": 20,
+    "runtime_seed_set": [
+      12345,
+      54321,
+      0,
+      2147483646
+    ],
+    "renderer_style_argument_order": [
+      "grammar_mode",
+      "palette_mode",
+      "morph_value",
+      "wave_frequency",
+      "line_width",
+      "glow_strength",
+      "polygon_sides",
+      "wave_ratio",
+      "shape_rotation",
+      "layer_spread",
+      "radial_wave_amplitude",
+      "liss_x_frequency",
+      "liss_y_frequency",
+      "interference_scale",
+      "hero_scale",
+      "perspective_strength",
+      "depth_strength",
+      "secondary_phase",
+      "color_phase",
+      "stroke_scale"
+    ]
+  },
+  "truthful_limitations": {
+    "selector_to_prototype_grammar_source_trace": "AUDITABLE_FROM_PINNED_SOURCE",
+    "c11c_profile_runtime_values": "PROBED_IN_MEMORY",
+    "actual_prototype_override_executed": false,
+    "renderer_instance_created": false,
+    "shader_executed": false,
+    "exact_selector_payload_materialized": false,
+    "d_authoring_envelope": "FAMILY_LEVEL_GEOMETRIC_ONLY",
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false
+  },
+  "governance": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_mutation_allowed": false,
+    "candidate_input_admissible": false,
+    "renderer": "OFF",
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "renderer_baseline_approval": "MISSING",
+    "d_baseline_approval": "MISSING"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "sha256": "4707055450166f33aba7b1c18815d4f70ba4d2d551ff1a0cffc8b7d0d96aaa47"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V1.json",
+      "sha256": "a879cadc866c19c09b34d2098baaea1924a659038f3f95c669c5bb7bc8307769"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "69f627a5fe4745a05f5d86b060e9f6a99be07d11428a24fe62e1689c752eea0a"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+      "sha256": "2a477a92fcf18c6aa61d014ee4e20d990cb110607c8ca3c64bff530d0ee1f836"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringGenerator.gd",
+      "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+    },
+    {
+      "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+    }
+  ]
+}

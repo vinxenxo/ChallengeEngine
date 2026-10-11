@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-visual-loop-grammar-binding-receipt:v1",
+  "title": "C11-D Visual Loop Grammar Binding In-Memory Probe Receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "selection",
+    "mapping",
+    "seed_cases",
+    "findings",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-VISUAL-LOOP-GRAMMAR-BINDING-PROBE-RECEIPT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "READ_ONLY_IN_MEMORY_PROTOTYPE_GRAMMAR_PARAMETER_PROBE"
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "internal_family",
+        "subtype_id"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "internal_family": {
+          "const": "geometric"
+        },
+        "subtype_id": {
+          "const": "harmonic_membrane"
+        }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment_override",
+        "grammar_ids",
+        "selected_grammar_id",
+        "selected_grammar_index",
+        "selected_shader_branch",
+        "style_parameter_count"
+      ],
+      "properties": {
+        "environment_override": {
+          "const": "C11C_VISUAL_GRAMMAR"
+        },
+        "grammar_ids": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "selected_grammar_id": {
+          "const": "harmonic_membrane"
+        },
+        "selected_grammar_index": {
+          "const": 0
+        },
+        "selected_shader_branch": {
+          "const": "field_harmonic_membrane"
+        },
+        "style_parameter_count": {
+          "const": 20
+        }
+      }
+    },
+    "seed_cases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seed",
+          "seed_profile_grammar_before_override",
+          "bound_grammar_id",
+          "bound_grammar_index",
+          "style_parameter_count",
+          "style_sha256",
+          "repeat_style_sha256",
+          "deterministic_repeat"
+        ],
+        "properties": {
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483646
+          },
+          "seed_profile_grammar_before_override": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bound_grammar_id": {
+            "const": "harmonic_membrane"
+          },
+          "bound_grammar_index": {
+            "const": 0
+          },
+          "style_parameter_count": {
+            "const": 20
+          },
+          "style_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "repeat_style_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "deterministic_repeat": {
+            "const": true
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prototype_override_source_pinned",
+        "renderer_set_style_source_pinned",
+        "shader_branch_source_pinned",
+        "family_envelope_grammar_gap_remains",
+        "seed_profile_changes_style_parameters",
+        "selected_grammar_is_seed_independent",
+        "exact_selector_payload_materialized"
+      ],
+      "properties": {
+        "prototype_override_source_pinned": {
+          "const": true
+        },
+        "renderer_set_style_source_pinned": {
+          "const": true
+        },
+        "shader_branch_source_pinned": {
+          "const": true
+        },
+        "family_envelope_grammar_gap_remains": {
+          "const": true
+        },
+        "seed_profile_changes_style_parameters": {
+          "const": true
+        },
+        "selected_grammar_is_seed_independent": {
+          "const": true
+        },
+        "exact_selector_payload_materialized": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_mode",
+        "renderer_native_input_emitted",
+        "renderer_instance_created",
+        "renderer_dispatch_invoked",
+        "shader_executed",
+        "media_created",
+        "disk_writes",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "renderer",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "probe_mode": {
+          "const": "GODOT_HEADLESS_PROFILE_AND_SOURCE_PROBE_ONLY"
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_instance_created": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "shader_executed": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "disk_writes": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    }
+  }
+}
