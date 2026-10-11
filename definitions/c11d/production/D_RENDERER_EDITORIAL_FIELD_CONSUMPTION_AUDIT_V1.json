@@ -1,0 +1,340 @@
+{
+  "schema": "C11-D-RENDERER-EDITORIAL-FIELD-CONSUMPTION-AUDIT-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_FIELD_CONSUMPTION_GAP_AUDIT_NOT_RENDERER_INPUT",
+  "purpose": "Audit the exact separation between canonical D9.9 editorial-value resolution, renderer-neutral human-review instructions, and visual payload consumption for the three currently pinned fixtures. This is an audit only; it does not transport arbitrary requests or change payloads.",
+  "scope": {
+    "content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "fixtures": {
+      "challenges": {
+        "request_id": "D-PAYLOAD-BIND-CHALLENGES",
+        "variant_id": "CHALLENGE_004"
+      },
+      "visual_loops": {
+        "request_id": "D-PAYLOAD-BIND-VISUAL_LOOPS",
+        "subtype_id": "harmonic_membrane"
+      },
+      "visual_drills": {
+        "request_id": "D-PAYLOAD-BIND-VISUAL_DRILLS",
+        "variant_id": "tier-2"
+      }
+    },
+    "dynamic_request_transport": "NOT_IMPLEMENTED",
+    "payload_output": "IN_MEMORY_REVIEW_FIXTURES_ONLY",
+    "renderer_native_input": "NOT_EMITTED",
+    "raw_editorial_values_in_audit_receipt": false
+  },
+  "field_classification": {
+    "enabled_fields": [
+      {
+        "field": "title",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills"
+        ],
+        "current_visual_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+        "review_chain_state": "EXACT_VALUE_AND_SHA256_PARITY_IN_REVIEW_MANIFEST",
+        "layout_state": "UNRESOLVED_NO_COORDINATES",
+        "temporal_state": "NOT_SCHEDULED_NO_FRAME_RANGE"
+      },
+      {
+        "field": "subtitle",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills"
+        ],
+        "current_visual_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+        "review_chain_state": "EXACT_VALUE_AND_SHA256_PARITY_IN_REVIEW_MANIFEST",
+        "layout_state": "UNRESOLVED_NO_COORDINATES",
+        "temporal_state": "NOT_SCHEDULED_NO_FRAME_RANGE"
+      },
+      {
+        "field": "call_to_action",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills"
+        ],
+        "current_visual_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+        "review_chain_state": "EXACT_VALUE_AND_SHA256_PARITY_IN_REVIEW_MANIFEST",
+        "layout_state": "UNRESOLVED_NO_COORDINATES",
+        "temporal_state": "NOT_SCHEDULED_NO_FRAME_RANGE"
+      },
+      {
+        "field": "language",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills"
+        ],
+        "current_visual_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+        "review_chain_state": "LANGUAGE_METADATA_ONLY",
+        "layout_state": "UNRESOLVED_NO_COORDINATES",
+        "temporal_state": "NOT_SCHEDULED_NO_FRAME_RANGE"
+      },
+      {
+        "field": "player_name",
+        "content_types": [
+          "challenges"
+        ],
+        "current_visual_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+        "review_chain_state": "EXACT_VALUE_AND_SHA256_PARITY_IN_REVIEW_MANIFEST",
+        "layout_state": "UNRESOLVED_NO_COORDINATES",
+        "temporal_state": "NOT_SCHEDULED_NO_FRAME_RANGE"
+      },
+      {
+        "field": "challenge_label",
+        "content_types": [
+          "challenges"
+        ],
+        "current_visual_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+        "review_chain_state": "EXACT_VALUE_AND_SHA256_PARITY_IN_REVIEW_MANIFEST",
+        "layout_state": "UNRESOLVED_NO_COORDINATES",
+        "temporal_state": "NOT_SCHEDULED_NO_FRAME_RANGE"
+      }
+    ],
+    "disabled_reserved_fields": [
+      {
+        "field": "hook",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "preparation_text",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "final_text",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "header_line_1",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "header_line_2",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "footer_line_1",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "footer_line_2",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "show_title",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "show_subtitle",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "show_call_to_action",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "show_header",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      },
+      {
+        "field": "show_footer",
+        "status": "RESERVED_NOT_ENABLED_UNTIL_BINDER_AND_D_REQUEST_CONTRACT_ARE_CERTIFIED",
+        "content_types": [
+          "challenges",
+          "visual_loops",
+          "visual_drills",
+          "longform"
+        ]
+      }
+    ],
+    "rule": "An enabled field may be counted as consumed by a visual payload only when the current payload source exposes that exact field/value as a first-class payload member. Presence in the D9.9 plan, bridge, frame program, or review manifest alone is review-chain parity, not visual-payload consumption.",
+    "language_rule": "language is metadata on frame-program instructions and is not a visual text instruction itself.",
+    "payload_field_scan_keys": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language",
+      "player_name",
+      "challenge_label",
+      "editorial_fields",
+      "text_value"
+    ],
+    "expected_payload_consumption": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
+      "sha256": "359728eeb0d675ed5957ca7a9d53d1955eb31523fb29b81749faf20e051a74c2"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
+      "sha256": "1e722423ad9d9ac9f0cfcbf332bcd9c4468726bcc25300667ed04b8ca1a7e8cf"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+      "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+      "sha256": "c09d570865c8fcb8b0de3c1bef200a118e6801a476ab040a819b1fb698d30584"
+    }
+  ],
+  "execution_boundary": {
+    "mode": "IN_MEMORY_AUDIT_ONLY",
+    "payload_files_written": false,
+    "receipt_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "approval_state": {
+    "audit_contract_approved": false,
+    "editorial_values_visually_consumed": false,
+    "editorial_layout_approved": false,
+    "editorial_visibility_windows_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  }
+}

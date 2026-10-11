@@ -1,0 +1,372 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-editorial-field-consumption-audit:v1",
+  "title": "C11-D D9 renderer editorial field-consumption gap audit receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "audit_contract_sha256",
+    "implementation_sha256",
+    "source_lineage",
+    "content_results",
+    "summary",
+    "unresolved_gaps",
+    "execution_boundary",
+    "approval_state",
+    "audit_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-EDITORIAL-FIELD-CONSUMPTION-AUDIT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_FIELD_CONSUMPTION_GAP_AUDIT_REVIEW_CHAIN_ONLY"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "audit_contract_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "implementation_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 18,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "content_results": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "request_id",
+          "canonical_request_sha256",
+          "plan_sha256",
+          "review_manifest_sha256",
+          "payload_harness_path",
+          "payload_field_scan",
+          "canonical_editorial_field_count",
+          "review_instruction_field_count",
+          "editorial_fields",
+          "canonical_review_parity",
+          "visual_payload_consumption_complete",
+          "video_render_ready"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "challenges",
+              "visual_loops",
+              "visual_drills"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "canonical_request_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "plan_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "review_manifest_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "payload_harness_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "payload_field_scan": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "scanned_keys",
+              "editorial_keys_found",
+              "no_editorial_value_keys_found"
+            ],
+            "properties": {
+              "scanned_keys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "editorial_keys_found": {
+                "type": "array",
+                "maxItems": 0,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "no_editorial_value_keys_found": {
+                "const": true
+              }
+            }
+          },
+          "canonical_editorial_field_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "review_instruction_field_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "editorial_fields": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "field",
+                "value_sha256",
+                "canonical_request_state",
+                "review_chain_state",
+                "visual_payload_consumption_state",
+                "layout_state",
+                "temporal_state",
+                "visibility_frame_range"
+              ],
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "value_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "canonical_request_state": {
+                  "const": "EXACT_VALUE_PRESENT_IN_CANONICAL_D9_9_PLAN"
+                },
+                "review_chain_state": {
+                  "enum": [
+                    "EXACT_VALUE_AND_SHA256_PARITY_IN_REVIEW_MANIFEST",
+                    "LANGUAGE_METADATA_ONLY"
+                  ]
+                },
+                "visual_payload_consumption_state": {
+                  "const": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS"
+                },
+                "layout_state": {
+                  "const": "UNRESOLVED_NO_COORDINATES"
+                },
+                "temporal_state": {
+                  "const": "NOT_SCHEDULED_NO_FRAME_RANGE"
+                },
+                "visibility_frame_range": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          "canonical_review_parity": {
+            "const": "PASS"
+          },
+          "visual_payload_consumption_complete": {
+            "const": false
+          },
+          "video_render_ready": {
+            "const": false
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supported_content_types",
+        "content_types_reviewed",
+        "enabled_field_instances",
+        "exact_review_chain_field_instances",
+        "visual_payload_consumed_field_instances",
+        "all_canonical_review_values_match",
+        "visual_payload_consumption_complete",
+        "candidate_input_admissible"
+      ],
+      "properties": {
+        "supported_content_types": {
+          "const": 3
+        },
+        "content_types_reviewed": {
+          "const": 3
+        },
+        "enabled_field_instances": {
+          "const": 14
+        },
+        "exact_review_chain_field_instances": {
+          "const": 14
+        },
+        "visual_payload_consumed_field_instances": {
+          "const": 0
+        },
+        "all_canonical_review_values_match": {
+          "const": true
+        },
+        "visual_payload_consumption_complete": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        }
+      }
+    },
+    "unresolved_gaps": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "payload_files_written",
+        "receipt_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_AUDIT_ONLY"
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audit_contract_approved",
+        "editorial_values_visually_consumed",
+        "editorial_layout_approved",
+        "editorial_visibility_windows_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "audit_contract_approved": {
+          "const": false
+        },
+        "editorial_values_visually_consumed": {
+          "const": false
+        },
+        "editorial_layout_approved": {
+          "const": false
+        },
+        "editorial_visibility_windows_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "audit_sha256": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

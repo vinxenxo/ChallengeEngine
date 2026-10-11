@@ -1,3 +1,9 @@
+# CURRENT AUTHORITATIVE UPDATE — editorial field-consumption gap audit (2026-10-11)
+
+The user confirmed the fixed-fixture request-scoped materialization/binding increment is green on Windows. The newest audit checkpoint `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md` confirms exact D9.9-to-review parity for 14/14 enabled field instances; current visual payload harnesses consume 0/14 editorial field instances. This separates canonical editorial identity/human copy review from actual visual materialization. The next engineering step is to contract the field-to-region and per-field visibility-window/timebase semantics under explicit review/approval before implementing payload-side consumption. Do not select unapproved coordinates or timing heuristics. Policies remain proposals; renderer OFF, media false, D4.8 blocked, release authority NONE; candidate preflight remains not freeze-eligible with five blockers.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — bounded request/payload join (2026-10-11)
 
 `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md` now describes the bounded follow-up to the candidate I/O proposal. It binds exactly three fixed canonical D9.9 request chains to existing in-memory payload digests. The implementation is source pinned and outputs a console-only review receipt; it does not implement dynamic request transport, persist payloads, emit renderer input, dispatch, create media or approve policy. The Python test passes 9/9 with 14 negatives, but its harness outputs are mocked. The next evidence gate is a real run of the runner against both Godot 4.7.1 headless in-memory harnesses on Windows, followed by request-binding/payload-preview/I/O/review/lifecycle/preflight regressions. Five baseline blockers remain; `freeze_eligible=false`.

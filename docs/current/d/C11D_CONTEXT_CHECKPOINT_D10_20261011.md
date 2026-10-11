@@ -1,3 +1,9 @@
+# CURRENT AUTHORITATIVE ADDENDUM — editorial field-consumption gap audit (2026-10-11)
+
+The user confirmed the request-scoped payload materialization/binding overlay and its Windows checks are green. The field-level audit is recorded in `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md`: 3/3 content types, 14/14 enabled field instances resolve to the D9.9 plan and have exact reviewer-chain parity, but 0/14 are consumed by the current visual payload harnesses. This is the expected gap, not a new failing acceptance gate. Current harnesses use fixed request fixtures; dynamic arbitrary request transport remains unimplemented. Region mapping and visibility frame windows remain unresolved/unapproved. The next step is to identify and contract the minimum approved field-to-region/window semantics; until those policies are approved, do not implement visual text consumption. Renderer OFF, no media, D4.8 blocked, release authority NONE; candidate remains inadmissible with five blockers.
+
+---
+
 # CURRENT AUTHORITATIVE ADDENDUM — fixed-fixture request-scoped payload binding (2026-10-11)
 
 The I/O-contract follow-up has a new checkpoint: `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md`. The fixed-fixture runner joins canonical request chains for Challenge `CHALLENGE_004`, Loop `harmonic_membrane`, and Drill `tracking/tier-2` to existing in-memory payload digests. Receipt is stdout-only. Dynamic request transport and full editorial-value consumption are not implemented; Challenge's ID is a derived receipt alias. The Python test passed 9/9 with 14 negatives, but Godot outputs were mocked in that unit test. The user's Windows results confirmed all predecessor tests and preflight; real execution of the new runner against Godot 4.7.1 is still required. The baseline auditor still has five blockers and `freeze_eligible=false`. No renderer input, dispatch, media, approval, or release is enabled.

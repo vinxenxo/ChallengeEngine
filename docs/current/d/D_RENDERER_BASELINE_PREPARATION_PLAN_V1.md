@@ -1,3 +1,11 @@
+# CURRENT AUTHORITATIVE UPDATE — editorial field-consumption gap audit (2026-10-11)
+
+The fixed-fixture request/payload join is confirmed green by the user. The next bounded plan item, implemented as `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md`, now audits canonical editorial fields against the actual frame-program/review chain and the pinned visual payload harnesses. Result in the preparation workspace: **11/11 tests**, canonical-to-review parity 14/14, but payload visual consumption 0/14. This is intentional evidence, not an implementation failure: current harnesses do not consume D9.9 text values as visual payload fields, and region geometry plus per-field visibility windows remain unresolved/unapproved.
+
+Next work must resolve the D-owned semantic field mapping and timing/visibility policy boundary before adding any visual-field consumer. Do not render, emit renderer-native input, modify C11-C or infer an approval from an audit PASS. Keep dynamic arbitrary request transport separate from these three fixed review fixtures. Renderer OFF; `media_created=false`; D4.8 BLOCKED; `release_authority=NONE`; baseline approval missing and the five candidate blockers remain.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — request-scoped payload materialization/binding (2026-10-11)
 
 The previous plan item “source-bound materialization/binding path” now has a bounded, fixed-fixture implementation proposal recorded in `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md`. It joins the exact three D9.9 review fixture request chains to hashes from the two existing in-memory Godot harnesses and issues a reproducible receipt to stdout only. It does not persist payload/receipt files, emit renderer-native input, invoke renderer dispatch, or claim video readiness.

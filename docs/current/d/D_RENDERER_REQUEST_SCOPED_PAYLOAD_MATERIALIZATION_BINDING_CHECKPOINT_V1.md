@@ -1,3 +1,9 @@
+# CURRENT FOLLOW-UP — editorial consumption gap audit (2026-10-11)
+
+The next-stage field-level audit is now available in `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md`. It confirms the canonical D9.9 values match the renderer-neutral review chain for 14/14 enabled field instances, while the current visual payload harnesses consume 0/14 of those fields. This does not invalidate the fixed-fixture request/payload hash join below; it clarifies its boundary. Text value presence in the plan/review manifest is not visual materialization. The following checkpoint is the historical source record for fixed-fixture payload binding; its previous “next action: perform field-level audit” is superseded by the new audit checkpoint.
+
+---
+
 # D Renderer Request-Scoped Payload Materialization/Binding — Checkpoint V1
 
 **State:** `PREPARATION_ONLY_FIXED_REVIEW_FIXTURES_REQUEST_BOUND_NOT_RENDERER_INPUT`  

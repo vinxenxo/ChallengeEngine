@@ -1,3 +1,11 @@
+# CURRENT START INSTRUCTION — editorial field-consumption gap audit (2026-10-11)
+
+Continue from the user's active Windows checkout at `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`, not by extracting the context ZIP over it. The user confirmed the fixed-fixture request/payload materialization-binding checks are green. The latest audit checkpoint is `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md`: canonical D9.9/review chain parity is 14/14 enabled field instances; current visual payload consumption is 0/14. This is a deliberate gap statement, not a release blocker that may be bypassed. Before implementation, establish the correct D-owned field-to-region and field-visibility/timebase approval contract. All unresolved geometry/timing stays unresolved. No renderer input, dispatch, media or release. C11-C and its freeze manifest are immutable; D4.8 BLOCKED; `release_authority=NONE`; baseline not approved/frozen; the five candidate blockers remain.
+
+For each future increment, provide a single straightforward copy/paste PowerShell block with the overlay SHA-256 embedded as a constant; do not use `Read-Host`, require a downloaded sidecar, or ask the operator to paste a hash. Verify base files and frozen manifest before applying. Do not run the whole-context ZIP over the live checkout.
+
+---
+
 # CURRENT START INSTRUCTION — D request-scoped materialization binding (2026-10-11)
 
 Continue from the active Windows checkout; do not extract the source ZIP wholesale. Read `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md` and apply only the matching small overlay after hash/base checks. The new receipt joins fixed D9.9 review requests for Challenge `CHALLENGE_004`, Loop `harmonic_membrane`, and Drill `tracking/tier-2` to existing in-memory payload digests. It prints to stdout only, emits no renderer-native input, and cannot make video render ready. Python test is 9/9 with 14 negative mutations, but subprocess summaries are mocked; run the new runner with actual Godot 4.7.1 next, then execute the listed regressions. Do not register the test in aggregate Suite yet. Dynamic request transport and full editorial-value consumption remain open. Preserve C11-C freeze, renderer OFF, media false, D4.8 BLOCKED, D9.14/D9.16 blocked, D9.17 NO-GO, D10 BLOCKED, release authority NONE.

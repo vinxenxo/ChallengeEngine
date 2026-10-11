@@ -1,3 +1,9 @@
+# CURRENT AUTHORITATIVE UPDATE — editorial field-consumption gap audit (2026-10-11)
+
+Read `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md`. The fixed request/payload join was confirmed green on the user's Windows checkout. The new read-only audit is a bounded next step: 14/14 enabled editorial field instances have exact D9.9 plan/review-manifest parity, while visual payload consumption remains 0/14. It distinguishes metadata/review parity from fields actually present in visual payloads. Current harnesses are pinned and fixed-fixture only; dynamic request transport is not implemented. The next engineering task is to define the approved D-owned semantic field-to-region and visibility-window contract before any visual consumer is added. Do not invent coordinates/windows or alter simulation truth. C11-C immutable; renderer OFF; media false; D4.8 BLOCKED; release authority NONE; baseline approval MISSING; five blockers remain.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — fixed-fixture payload binding (2026-10-11)
 
 Read `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md`. This increment adds a strict D-owned source-pinned contract/schema, a console-only runner and focused tests to join exactly three canonical D9.9 fixture requests to hashes returned by existing in-memory payload harnesses. The receipt is not renderer input and is not persisted. Dynamic request transport/full editorial consumption and Challenge native payload identity remain unresolved. The focused Python test passes 9/9 / 14 negative mutations, but uses mocked harness subprocess summaries; user Windows must run the new runner with real Godot 4.7.1. The previously reported Windows precursor/lifecycle/preflight tests remain PASS. Candidate baseline still reports five blockers, `baseline_approval=MISSING`, `freeze_eligible=false`. Preserve all governance locks.
