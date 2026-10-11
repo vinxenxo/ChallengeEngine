@@ -34,15 +34,15 @@ D = lambda char: char * 64
 
 def make_summaries() -> dict[str, dict]:
     loop = {
-        "content_type": "visual_loops", "instance_id": "D-VLP-test", "selection": {"family_id": "c11c_geometric_waves_v1", "subtype_id": "harmonic_membrane"},
+        "content_type": "visual_loops", "instance_id": "D-VLP-5ac67e64ff717d97", "selection": {"family_id": "c11c_geometric_waves_v1", "subtype_id": "harmonic_membrane"},
         "seed": 12345, "variation_index": 0, "fps": 30, "duration_seconds": 20.0, "frame_count": 600,
-        "authoring_envelope_sha256": D("a"), "payload_instance_sha256": D("b"), "materialization": "IN_MEMORY_ONLY",
+        "authoring_envelope_sha256": D("a"), "payload_instance_sha256": "5ac67e64ff717d9756b37152dd1ee1ff81a1b0e754f83c06a618964c9a62e090", "materialization": "IN_MEMORY_ONLY",
         "deterministic_repeat_pass": True, "instance_parameters_bound": True,
     }
     drill = {
-        "content_type": "visual_drills", "instance_id": "D-VDP-test", "selection": {"family_id": "tracking", "variant_id": "tier-2"},
+        "content_type": "visual_drills", "instance_id": "D-VDP-1a96afdd7a0d950e", "selection": {"family_id": "tracking", "variant_id": "tier-2"},
         "seed": 12345, "variation_index": 0, "fps": 30, "duration_seconds": 21.0, "frame_count": 630,
-        "authoring_envelope_sha256": D("c"), "payload_instance_sha256": D("d"), "materialization": "IN_MEMORY_ONLY",
+        "authoring_envelope_sha256": D("c"), "payload_instance_sha256": "1a96afdd7a0d950ef3eabb5531fe13496b4206a7d4fd1d7f233892b0329a592b", "materialization": "IN_MEMORY_ONLY",
         "deterministic_repeat_pass": True, "instance_parameters_bound": True,
     }
     manifest = FROZEN_MANIFEST_SHA256
@@ -173,17 +173,29 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 15)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 16)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
         report = self.report()
         self.assertEqual(report["status"], "REVIEW_CHAIN_CONSISTENT_NOT_VIDEO_READY")
         self.assertEqual([x["content_type"] for x in report["content_items"]], ["visual_loops", "visual_drills", "challenges"])
+        loops_item, drills_item = report["content_items"][:2]
+        for item, frame_count in ((loops_item, 600), (drills_item, 630)):
+            editorial = item["editorial_review"]
+            self.assertEqual(editorial["field_window_mapping"], "PROPOSED_NOT_APPROVED_FULL_SPAN_NONEMPTY_VISUAL_FIELDS")
+            self.assertEqual(editorial["policy_state"], "PROPOSED_NOT_APPROVED")
+            self.assertEqual(editorial["payload_frame_count"], frame_count)
+            self.assertIsNone(editorial["visibility_windows"])
+            self.assertEqual(editorial["visibility_window_evaluation"], "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY")
+            self.assertFalse(editorial["renderer_native_input_emitted"])
         self.assertEqual(len(report["unresolved_gates"]), 8)
+        self.assertIn("VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED", report["unresolved_gates"])
+        self.assertIn("VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_NOT_APPROVED", report["unresolved_gates"])
         self.assertEqual(report["cross_artifact_checks"]["coordinate_projection_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["challenge_sample_selection_proposal_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["challenge_coordinate_sample_composition_proposal_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["loop_drill_editorial_field_window_proposal_parity"], True)
         challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
         self.assertEqual(challenge_item["materialization"], "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT")
         self.assertEqual(challenge_item["coordinate_projection"]["projected_records"], 420)
@@ -360,10 +372,32 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=15/15" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/15)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=12/12 | negative=14/14 | source_lineage=15/15 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=16/16" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/16)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=13/13 | negative=14/14 | source_lineage=16/16 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
+
+    def test_loop_drill_payload_identity_must_match_editorial_proposal_fixture(self) -> None:
+        summaries = make_summaries()
+        summaries["visual_payloads"]["instances"][0]["payload_instance_sha256"] = D("b")
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Loop/Drill editorial proposal payload identity/timing mismatch: visual_loops.payload_instance_sha256"):
+            validate_harness_summaries(summaries)
+
+    def test_loop_drill_editorial_policy_cannot_be_self_promoted(self) -> None:
+        report = self.report()
+        report["content_items"][0]["editorial_review"]["policy_state"] = "APPROVED"
+        report.pop("review_manifest_sha256")
+        report["review_manifest_sha256"] = sha256_json(report)
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
+            validate_review_manifest(report, self.schema)
+
+    def test_loop_drill_editorial_mapping_cannot_emit_windows_without_raw_values(self) -> None:
+        report = self.report()
+        report["content_items"][0]["editorial_review"]["visibility_windows"] = [{"field_id":"title","start_frame":0,"end_frame":600}]
+        report.pop("review_manifest_sha256")
+        report["review_manifest_sha256"] = sha256_json(report)
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
+            validate_review_manifest(report, self.schema)
 
 if __name__ == "__main__":
     raise SystemExit(main())

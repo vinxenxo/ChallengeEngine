@@ -34,7 +34,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 15,
+      "minItems": 16,
       "items": {
         "type": "object",
         "required": [
@@ -53,7 +53,7 @@
         },
         "additionalProperties": false
       },
-      "maxItems": 15
+      "maxItems": 16
     },
     "content_items": {
       "type": "array",
@@ -87,7 +87,98 @@
             "type": "object"
           },
           "editorial_review": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "field_window_mapping": {
+                "type": "string"
+              },
+              "policy_id": {
+                "type": "string"
+              },
+              "policy_state": {
+                "type": "string"
+              },
+              "proposal_contract_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "visible_field_rules": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "field_id",
+                    "target_region",
+                    "condition",
+                    "window_rule"
+                  ],
+                  "properties": {
+                    "field_id": {
+                      "enum": [
+                        "title",
+                        "subtitle",
+                        "call_to_action"
+                      ]
+                    },
+                    "target_region": {
+                      "enum": [
+                        "HEADER",
+                        "FOOTER"
+                      ]
+                    },
+                    "condition": {
+                      "const": "NONEMPTY_STRING"
+                    },
+                    "window_rule": {
+                      "const": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "metadata_only_fields": {
+                "const": [
+                  {
+                    "field_id": "language",
+                    "rule": "METADATA_ONLY_NO_VISIBILITY_WINDOW"
+                  }
+                ]
+              },
+              "empty_value_rule": {
+                "const": "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW"
+              },
+              "interval_rule": {
+                "const": "START_FRAME_INCLUSIVE_END_FRAME_EXCLUSIVE"
+              },
+              "window_formula": {
+                "const": "NONEMPTY_VISUAL_FIELD_WINDOW_EQUALS_[0,GENERATED_PAYLOAD_FRAME_COUNT)"
+              },
+              "payload_frame_count_authority": {
+                "const": "REQUEST_SCOPED_IN_MEMORY_MATERIALIZED_PAYLOAD_INSTANCE"
+              },
+              "payload_frame_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "visibility_windows": {
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "visibility_window_evaluation": {
+                "type": "string"
+              },
+              "renderer_native_input_emitted": {
+                "const": false
+              },
+              "fields": {
+                "type": "array"
+              }
+            },
+            "additionalProperties": true
           },
           "materialization": {
             "type": "string"
@@ -264,6 +355,114 @@
                 "coordinate_sample_composition"
               ]
             }
+          },
+          {
+            "if": {
+              "properties": {
+                "content_type": {
+                  "const": "visual_loops"
+                }
+              },
+              "required": [
+                "content_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "editorial_review": {
+                  "required": [
+                    "field_window_mapping",
+                    "policy_id",
+                    "policy_state",
+                    "proposal_contract_sha256",
+                    "visible_field_rules",
+                    "metadata_only_fields",
+                    "empty_value_rule",
+                    "interval_rule",
+                    "window_formula",
+                    "payload_frame_count_authority",
+                    "payload_frame_count",
+                    "visibility_windows",
+                    "visibility_window_evaluation",
+                    "renderer_native_input_emitted"
+                  ],
+                  "properties": {
+                    "field_window_mapping": {
+                      "const": "PROPOSED_NOT_APPROVED_FULL_SPAN_NONEMPTY_VISUAL_FIELDS"
+                    },
+                    "policy_id": {
+                      "const": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1"
+                    },
+                    "policy_state": {
+                      "const": "PROPOSED_NOT_APPROVED"
+                    },
+                    "payload_frame_count": {
+                      "const": 600
+                    },
+                    "visibility_windows": {
+                      "type": "null"
+                    },
+                    "visibility_window_evaluation": {
+                      "const": "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "content_type": {
+                  "const": "visual_drills"
+                }
+              },
+              "required": [
+                "content_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "editorial_review": {
+                  "required": [
+                    "field_window_mapping",
+                    "policy_id",
+                    "policy_state",
+                    "proposal_contract_sha256",
+                    "visible_field_rules",
+                    "metadata_only_fields",
+                    "empty_value_rule",
+                    "interval_rule",
+                    "window_formula",
+                    "payload_frame_count_authority",
+                    "payload_frame_count",
+                    "visibility_windows",
+                    "visibility_window_evaluation",
+                    "renderer_native_input_emitted"
+                  ],
+                  "properties": {
+                    "field_window_mapping": {
+                      "const": "PROPOSED_NOT_APPROVED_FULL_SPAN_NONEMPTY_VISUAL_FIELDS"
+                    },
+                    "policy_id": {
+                      "const": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1"
+                    },
+                    "policy_state": {
+                      "const": "PROPOSED_NOT_APPROVED"
+                    },
+                    "payload_frame_count": {
+                      "const": 630
+                    },
+                    "visibility_windows": {
+                      "type": "null"
+                    },
+                    "visibility_window_evaluation": {
+                      "const": "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY"
+                    }
+                  }
+                }
+              }
+            }
           }
         ]
       }
@@ -325,7 +524,8 @@
         "challenge_visual_payload_identity",
         "coordinate_projection_parity",
         "challenge_sample_selection_proposal_parity",
-        "challenge_coordinate_sample_composition_proposal_parity"
+        "challenge_coordinate_sample_composition_proposal_parity",
+        "loop_drill_editorial_field_window_proposal_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -362,6 +562,9 @@
           "const": true
         },
         "challenge_coordinate_sample_composition_proposal_parity": {
+          "const": true
+        },
+        "loop_drill_editorial_field_window_proposal_parity": {
           "const": true
         }
       },

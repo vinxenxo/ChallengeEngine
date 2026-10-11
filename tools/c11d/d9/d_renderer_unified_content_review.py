@@ -16,6 +16,10 @@ from d_renderer_challenge_coordinate_sample_composition import (
     CompositionContractError,
     validate_contract as validate_coordinate_sample_composition_contract,
 )
+from d_renderer_loop_drill_editorial_field_windows import (
+    FieldWindowProposalError,
+    validate_contract as validate_loop_drill_editorial_field_window_contract,
+)
 
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
@@ -40,10 +44,11 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json", "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json", "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"),
+    ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
-    "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_UNDECLARED",
-    "VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_UNDECLARED",
+    "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED",
+    "VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_NOT_APPROVED",
     "CHALLENGE_SIMULATION_SAMPLE_SELECTION_AND_INTERPOLATION_UNRESOLVED",
     "CHALLENGE_COORDINATE_PROJECTION_POLICY_NOT_APPROVED",
     "DELIVERY_TIMEBASE_PROJECTION_POLICY_NOT_APPROVED",
@@ -125,9 +130,20 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         raise UnifiedContentReviewError("Sample-selection proposal must be included for review only, never applied or approved here")
     if policy.get("challenge_coordinate_sample_composition") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
         raise UnifiedContentReviewError("Coordinate/sample composition must remain proposal-only and must not be applied here")
+    if policy.get("visual_loop_editorial_mapping") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED" or policy.get("visual_drill_editorial_mapping") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Loop/Drill editorial field-window mappings must be present for review only and remain unapproved")
+    if policy.get("loop_drill_editorial_field_windows") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Loop/Drill editorial field-window proposal must remain review-only and unapplied")
     approval_state = contract.get("approval_state", {})
-    if approval_state.get("simulation_sample_selection_policy_approved") is not False or approval_state.get("interpolation_policy_approved") is not False or approval_state.get("coordinate_sample_composition_policy_approved") is not False:
-        raise UnifiedContentReviewError("Unified review cannot approve sample selection, interpolation or coordinate/sample composition")
+    if (
+        approval_state.get("simulation_sample_selection_policy_approved") is not False
+        or approval_state.get("interpolation_policy_approved") is not False
+        or approval_state.get("coordinate_sample_composition_policy_approved") is not False
+        or approval_state.get("loop_editorial_field_mapping_approved") is not False
+        or approval_state.get("drill_editorial_field_mapping_approved") is not False
+        or approval_state.get("loop_drill_editorial_field_window_policy_approved") is not False
+    ):
+        raise UnifiedContentReviewError("Unified review cannot approve sample/composition or Loop/Drill editorial window policies")
     boundary = contract.get("execution_boundary", {})
     required_boundary = {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
@@ -172,6 +188,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
     windows = summaries["editorial_windows"]
     challenge_visual = summaries["challenge_visual_payload"]
     coordinate = summaries["coordinate_projection"]
+    root = _root(project_root)
 
     frozen = FROZEN_MANIFEST_SHA256
     if any(x.get("frozen_c11c_manifest_sha256") != frozen for x in (visual, challenge, identity, timeline, windows, challenge_visual, coordinate)):
@@ -200,6 +217,47 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
 
     if visual.get("challenge_runtime_payload_materialized") is not False or visual.get("unmaterialized_content_types") != ["challenges"]:
         raise UnifiedContentReviewError("Base Loop/Drill payload harness must leave Challenge materialization to the dedicated Challenge harness")
+
+    # Join the Loop/Drill editorial-window proposal as metadata only. The Godot
+    # payload harness deliberately omits raw editorial text, so this stage records
+    # the mapping rules and exact payload timing without fabricating per-field windows.
+    try:
+        loop_drill_editorial = validate_loop_drill_editorial_field_window_contract(root)
+    except FieldWindowProposalError as exc:
+        raise UnifiedContentReviewError(f"Loop/Drill editorial field-window proposal invalid: {exc}") from exc
+    editorial_contract = loop_drill_editorial["contract"]
+    editorial_policy = editorial_contract.get("mapping_policy", {})
+    editorial_fixtures = loop_drill_editorial["fixtures"]
+    if editorial_contract.get("status") != "PROPOSAL_ONLY_NOT_RENDERER_INPUT" or editorial_policy.get("state") != "PROPOSED_NOT_APPROVED":
+        raise UnifiedContentReviewError("Loop/Drill editorial field-window policy must remain proposal-only")
+    expected_visible_rules = [
+        {"field_id": "title", "target_region": "HEADER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
+        {"field_id": "subtitle", "target_region": "HEADER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
+        {"field_id": "call_to_action", "target_region": "FOOTER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
+    ]
+    if editorial_policy.get("visible_fields") != expected_visible_rules:
+        raise UnifiedContentReviewError("Loop/Drill editorial field mapping rules drift")
+    if editorial_policy.get("metadata_only_fields") != [{"field_id": "language", "rule": "METADATA_ONLY_NO_VISIBILITY_WINDOW"}]:
+        raise UnifiedContentReviewError("Loop/Drill language must remain metadata-only")
+    if editorial_policy.get("empty_value_rule") != "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW" or editorial_policy.get("interval_rule") != "START_FRAME_INCLUSIVE_END_FRAME_EXCLUSIVE":
+        raise UnifiedContentReviewError("Loop/Drill editorial empty-value or interval convention drift")
+    if (editorial_policy.get("window_formula"), editorial_policy.get("payload_frame_count_authority")) != (
+        "NONEMPTY_VISUAL_FIELD_WINDOW_EQUALS_[0,GENERATED_PAYLOAD_FRAME_COUNT)",
+        "REQUEST_SCOPED_IN_MEMORY_MATERIALIZED_PAYLOAD_INSTANCE",
+    ):
+        raise UnifiedContentReviewError("Loop/Drill editorial window formula or timing authority drift")
+    for row, content_type in ((loop, "visual_loops"), (drill, "visual_drills")):
+        fixture = editorial_fixtures[content_type]
+        for key in ("instance_id", "payload_instance_sha256", "fps", "frame_count", "duration_seconds"):
+            if row.get(key) != fixture.get(key):
+                raise UnifiedContentReviewError(f"Loop/Drill editorial proposal payload identity/timing mismatch: {content_type}.{key}")
+        if fixture.get("delivery_profile_id") != "REVIEW_720":
+            raise UnifiedContentReviewError(f"Loop/Drill editorial proposal fixture delivery profile mismatch: {content_type}")
+        if row.get("selection") != fixture.get("selection"):
+            raise UnifiedContentReviewError(f"Loop/Drill editorial proposal selection mismatch: {content_type}")
+    if editorial_contract.get("approval_state", {}).get("loop_editorial_field_mapping_approved") is not False or editorial_contract.get("approval_state", {}).get("drill_editorial_field_mapping_approved") is not False or editorial_contract.get("approval_state", {}).get("field_window_policy_approved") is not False:
+        raise UnifiedContentReviewError("Loop/Drill editorial approval locks must remain false")
+    editorial_contract_sha256 = sha256_bytes((root / "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json").read_bytes())
     if challenge.get("challenge_runtime_output_materialized") is not True or challenge.get("challenge_visual_payload_materialized") is not False or challenge.get("deterministic_repeat_pass") is not True:
         raise UnifiedContentReviewError("Challenge runtime summary must remain a simulation result; visual payload is verified by its dedicated harness")
     challenge_instance = challenge.get("instance", {})
@@ -545,8 +603,34 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         "sample_selection_preview": sample_selection_preview,
         "coordinate_sample_composition": coordinate_sample_composition,
         "coordinate_sample_composition_contract_sha256": sha256_bytes((root / "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json").read_bytes()),
+        "loop_drill_editorial_field_window_contract": editorial_contract,
+        "loop_drill_editorial_field_window_contract_sha256": editorial_contract_sha256,
+        "loop_drill_editorial_field_window_fixtures": editorial_fixtures,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
+    }
+
+
+def _loop_drill_editorial_review(joined: Mapping[str, Any], content_type: str, frame_count: int) -> dict[str, Any]:
+    contract = joined["loop_drill_editorial_field_window_contract"]
+    policy = contract["mapping_policy"]
+    # Raw editorial text is intentionally not echoed from this preview harness.
+    # Report proposal rules separately from evaluated runtime visibility windows.
+    return {
+        "field_window_mapping": "PROPOSED_NOT_APPROVED_FULL_SPAN_NONEMPTY_VISUAL_FIELDS",
+        "policy_id": policy["policy_id"],
+        "policy_state": policy["state"],
+        "proposal_contract_sha256": joined["loop_drill_editorial_field_window_contract_sha256"],
+        "visible_field_rules": copy.deepcopy(policy["visible_fields"]),
+        "metadata_only_fields": copy.deepcopy(policy["metadata_only_fields"]),
+        "empty_value_rule": policy["empty_value_rule"],
+        "interval_rule": policy["interval_rule"],
+        "window_formula": policy["window_formula"],
+        "payload_frame_count_authority": policy["payload_frame_count_authority"],
+        "payload_frame_count": frame_count,
+        "visibility_windows": None,
+        "visibility_window_evaluation": "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY",
+        "renderer_native_input_emitted": False,
     }
 
 
@@ -560,7 +644,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "selection": loop.get("selection", {}),
             "identity": {"instance_id": loop["instance_id"], "seed": loop["seed"], "variation_index": loop["variation_index"], "payload_instance_sha256": loop["payload_instance_sha256"], "authoring_envelope_sha256": loop["authoring_envelope_sha256"]},
             "timing": {"fps": loop["fps"], "duration_seconds": loop["duration_seconds"], "frame_count": loop["frame_count"], "delivery_profile_id": "REVIEW_720"},
-            "editorial_review": {"field_window_mapping": "UNRESOLVED_NO_MAPPING_DECLARED", "visibility_windows": None},
+            "editorial_review": _loop_drill_editorial_review(joined, "visual_loops", loop["frame_count"]),
             "materialization": "IN_MEMORY_ONLY_VISUAL_PAYLOAD_MATERIALIZED",
         },
         {
@@ -568,7 +652,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "selection": drill.get("selection", {}),
             "identity": {"instance_id": drill["instance_id"], "seed": drill["seed"], "variation_index": drill["variation_index"], "payload_instance_sha256": drill["payload_instance_sha256"], "authoring_envelope_sha256": drill["authoring_envelope_sha256"]},
             "timing": {"fps": drill["fps"], "duration_seconds": drill["duration_seconds"], "frame_count": drill["frame_count"], "delivery_profile_id": "REVIEW_720"},
-            "editorial_review": {"field_window_mapping": "UNRESOLVED_NO_MAPPING_DECLARED", "visibility_windows": None},
+            "editorial_review": _loop_drill_editorial_review(joined, "visual_drills", drill["frame_count"]),
             "materialization": "IN_MEMORY_ONLY_VISUAL_PAYLOAD_MATERIALIZED",
         },
         {
@@ -606,6 +690,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "coordinate_projection_parity": True,
             "challenge_sample_selection_proposal_parity": True,
             "challenge_coordinate_sample_composition_proposal_parity": True,
+            "loop_drill_editorial_field_window_proposal_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -638,7 +723,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -660,8 +745,29 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     challenge_timing = challenge.get("timing", {})
     if (challenge_timing.get("source_fps"), challenge_timing.get("source_total_frames"), challenge_timing.get("game_frame_count"), challenge_timing.get("delivery_profile_id"), challenge_timing.get("delivery_fps"), challenge_timing.get("delivery_total_frames")) != (60, 900, 420, "REVIEW_720", 30, 450):
         raise UnifiedContentReviewError("Unified Challenge source/delivery timing mismatch")
-    if loop.get("editorial_review", {}).get("field_window_mapping") != "UNRESOLVED_NO_MAPPING_DECLARED" or drill.get("editorial_review", {}).get("field_window_mapping") != "UNRESOLVED_NO_MAPPING_DECLARED":
-        raise UnifiedContentReviewError("Visual Loop/Drill field mappings must remain unresolved until explicitly defined")
+    expected_editorial_review_keys = ("policy_id", "policy_state", "proposal_contract_sha256", "visible_field_rules", "metadata_only_fields", "empty_value_rule", "interval_rule", "window_formula", "payload_frame_count_authority", "payload_frame_count", "visibility_windows", "visibility_window_evaluation", "renderer_native_input_emitted")
+    for content, expected_frames in ((loop, 600), (drill, 630)):
+        editorial_review = content.get("editorial_review", {})
+        if editorial_review.get("field_window_mapping") != "PROPOSED_NOT_APPROVED_FULL_SPAN_NONEMPTY_VISUAL_FIELDS":
+            raise UnifiedContentReviewError("Visual Loop/Drill field-window mapping must remain proposal-only")
+        if any(key not in editorial_review for key in expected_editorial_review_keys):
+            raise UnifiedContentReviewError("Visual Loop/Drill editorial review is missing proposal metadata")
+        if (editorial_review.get("policy_id"), editorial_review.get("policy_state"), editorial_review.get("proposal_contract_sha256")) != ("C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1", "PROPOSED_NOT_APPROVED", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"):
+            raise UnifiedContentReviewError("Visual Loop/Drill editorial policy identity/state mismatch")
+        if editorial_review.get("payload_frame_count") != expected_frames or editorial_review.get("visibility_windows") is not None or editorial_review.get("visibility_window_evaluation") != "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY":
+            raise UnifiedContentReviewError("Visual Loop/Drill review must not fabricate evaluated windows without raw editorial values")
+        if editorial_review.get("renderer_native_input_emitted") is not False:
+            raise UnifiedContentReviewError("Visual Loop/Drill field-window proposal cannot emit renderer input")
+        if editorial_review.get("visible_field_rules") != [
+            {"field_id": "title", "target_region": "HEADER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
+            {"field_id": "subtitle", "target_region": "HEADER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
+            {"field_id": "call_to_action", "target_region": "FOOTER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
+        ] or editorial_review.get("metadata_only_fields") != [{"field_id": "language", "rule": "METADATA_ONLY_NO_VISIBILITY_WINDOW"}]:
+            raise UnifiedContentReviewError("Visual Loop/Drill field mapping rules drifted")
+        if editorial_review.get("empty_value_rule") != "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW" or editorial_review.get("interval_rule") != "START_FRAME_INCLUSIVE_END_FRAME_EXCLUSIVE" or editorial_review.get("window_formula") != "NONEMPTY_VISUAL_FIELD_WINDOW_EQUALS_[0,GENERATED_PAYLOAD_FRAME_COUNT)" or editorial_review.get("payload_frame_count_authority") != "REQUEST_SCOPED_IN_MEMORY_MATERIALIZED_PAYLOAD_INSTANCE":
+            raise UnifiedContentReviewError("Visual Loop/Drill editorial window semantics drifted")
+    if report.get("approval_state", {}).get("loop_editorial_field_mapping_approved") is not False or report.get("approval_state", {}).get("drill_editorial_field_mapping_approved") is not False or report.get("approval_state", {}).get("loop_drill_editorial_field_window_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve Loop/Drill editorial field-window policies")
     if challenge.get("materialization") != "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT" or challenge.get("editorial_review", {}).get("policy_state") != "PROPOSED_NOT_APPROVED":
         raise UnifiedContentReviewError("Challenge review must record the in-memory payload while keeping the editorial policy unapproved")
     coord = challenge.get("coordinate_projection", {})

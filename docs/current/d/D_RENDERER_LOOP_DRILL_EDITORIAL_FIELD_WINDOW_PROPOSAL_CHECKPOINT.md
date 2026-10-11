@@ -35,6 +35,6 @@ The validator checks the pinned C11-C manifest, payload/temporal/editorial contr
 
 ## Approval and execution boundary
 
-This proposal does **not** automatically clear `VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_UNDECLARED` or `VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_UNDECLARED`. The unified review should continue reporting these gates unresolved until a separately authorized integration/approval step exists.
+The proposal is now linked into the unified content-review contract by `D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md`. The corresponding gates remain unresolved under the clearer statuses `VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED` and `VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_NOT_APPROVED`: integration proves contract/payload parity, but it does not approve editorial policy. The unified report leaves `visibility_windows=null` because the current Godot payload summary does not expose raw editorial strings; it records the policy rules without fabricating per-field evaluated windows.
 
 C11-C remains immutable; renderer OFF; renderer-native input false; dispatch false; production false; payload files not written; media not created; D4.8 blocked; release authority none; D9.14/D9.16 full acceptance blocked as required; D9.17 no-go; D10 blocked.
