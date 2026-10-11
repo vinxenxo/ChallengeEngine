@@ -2,7 +2,7 @@
   "schema": "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT",
-  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check all three content types, including proposal-only temporal alignment, delivery timebase and technical audio timeline/profile parity, without creating media or renderer-native input.",
+  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check the three content types, including proposal-only editorial, presentation-region, temporal alignment, delivery timebase and technical audio timeline/profile parity, without creating media or renderer-native input.",
   "supported_content_types": [
     "visual_loops",
     "visual_drills",
@@ -84,6 +84,18 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
       "sha256": "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
     }
   ],
   "runtime_harnesses": [
@@ -146,7 +158,8 @@
     "loop_drill_editorial_field_windows": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "challenge_temporal_alignment": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "unified_delivery_timebase_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
-    "unified_audio_music_delivery_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
+    "unified_audio_music_delivery_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
+    "unified_presentation_region_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
   },
   "approval_state": {
     "renderer_baseline_approval": "EXTERNAL_GATE_NOT_ASSERTED_BY_THIS_REVIEW",
@@ -169,7 +182,10 @@
     "music_selection_policy_approved": false,
     "mixing_policy_approved": false,
     "loudness_policy_approved": false,
-    "audio_timeline_policy_approved": false
+    "audio_timeline_policy_approved": false,
+    "semantic_region_mapping_approved": false,
+    "shared_presentation_region_policy_approved": false,
+    "frame_program_approved": false
   },
   "execution_boundary": {
     "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",

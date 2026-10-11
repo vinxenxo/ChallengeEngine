@@ -41,6 +41,12 @@ from d_renderer_unified_audio_music_delivery_policy import (
     build_preview as build_unified_audio_music_policy_preview,
     validate_preview as validate_unified_audio_music_policy_preview,
 )
+from d_renderer_unified_presentation_region_policy import (
+    POLICY_ID as UNIFIED_PRESENTATION_REGION_POLICY_ID,
+    UnifiedPresentationRegionPolicyError,
+    build_preview as build_unified_presentation_region_policy_preview,
+    validate_preview as validate_unified_presentation_region_policy_preview,
+)
 
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
@@ -69,6 +75,9 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"),
     ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"),
     ("definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json", "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238"),
+    ("definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json", "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"),
+    ("definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json", "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json", "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
     "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED",
@@ -78,6 +87,7 @@ EXPECTED_UNRESOLVED_GATES = [
     "DELIVERY_TIMEBASE_PROJECTION_POLICY_NOT_APPROVED",
     "AUDIO_MUSIC_DELIVERY_AND_EDITORIAL_POLICY_NOT_APPROVED",
     "EDITORIAL_FIELD_WINDOW_POLICY_NOT_APPROVED",
+    "SHARED_PRESENTATION_SEMANTIC_REGION_POLICY_NOT_APPROVED",
     "D_RENDERER_BASELINE_APPROVAL_EXTERNAL_GATE_NOT_ASSERTED_HERE",
     "D4_8_REMAINS_BLOCKED",
 ]
@@ -165,6 +175,8 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         raise UnifiedContentReviewError("Unified delivery timebase policy must remain proposal-only and unapplied")
     if policy.get("unified_audio_music_delivery_policy") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
         raise UnifiedContentReviewError("Unified audio/music delivery policy must remain proposal-only and unapplied")
+    if policy.get("unified_presentation_region_policy") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Shared presentation semantic-region policy must remain proposal-only and unapplied")
     approval_state = contract.get("approval_state", {})
     if (
         approval_state.get("simulation_sample_selection_policy_approved") is not False
@@ -180,8 +192,11 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         or approval_state.get("mixing_policy_approved") is not False
         or approval_state.get("loudness_policy_approved") is not False
         or approval_state.get("audio_timeline_policy_approved") is not False
+        or approval_state.get("semantic_region_mapping_approved") is not False
+        or approval_state.get("shared_presentation_region_policy_approved") is not False
+        or approval_state.get("frame_program_approved") is not False
     ):
-        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, editorial, delivery-timebase or audio/music policies")
+        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, editorial, presentation-region, delivery-timebase or audio/music policies")
     boundary = contract.get("execution_boundary", {})
     required_boundary = {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
@@ -723,6 +738,19 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
     if unified_audio_music_policy_preview.get("policy_approved") is not False or unified_audio_music_policy_preview.get("audio_samples_emitted") is not False or unified_audio_music_policy_preview.get("audio_payload_materialized") is not False or unified_audio_music_policy_preview.get("music_asset_selected") is not False:
         raise UnifiedContentReviewError("Audio/music delivery policy crossed an approval or materialization boundary")
 
+    # Reconcile existing semantic field-to-region declarations across the three
+    # content types. This does not infer geometry, typography, animation or timing.
+    try:
+        unified_presentation_policy_preview = build_unified_presentation_region_policy_preview(root, verify_sources=True)
+        validate_unified_presentation_region_policy_preview(unified_presentation_policy_preview, root, verify_sources=True)
+    except UnifiedPresentationRegionPolicyError as exc:
+        raise UnifiedContentReviewError(f"Unified presentation region proposal invalid: {exc}") from exc
+    target_canvas = unified_presentation_policy_preview.get("target_canvas", {})
+    if (target_canvas.get("profile_id"), target_canvas.get("fps"), target_canvas.get("width"), target_canvas.get("height")) != (target_profile.get("profile_id"), target_profile.get("fps"), target_profile.get("width"), target_profile.get("height")):
+        raise UnifiedContentReviewError("Unified presentation target canvas does not match unified delivery profile")
+    if unified_presentation_policy_preview.get("policy_approved") is not False or unified_presentation_policy_preview.get("execution_boundary", {}).get("coordinates_emitted") is not False or unified_presentation_policy_preview.get("execution_boundary", {}).get("renderer_native_input_emitted") is not False or unified_presentation_policy_preview.get("execution_boundary", {}).get("d4_8") != "BLOCKED" or unified_presentation_policy_preview.get("execution_boundary", {}).get("release_authority") != "NONE":
+        raise UnifiedContentReviewError("Unified presentation region policy crossed approval, geometry-emission or execution boundary")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -743,6 +771,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         "temporal_alignment_contract_sha256": temporal_alignment_contract_sha256,
         "unified_delivery_policy_preview": unified_delivery_policy_preview,
         "unified_audio_music_policy_preview": unified_audio_music_policy_preview,
+        "unified_presentation_policy_preview": unified_presentation_policy_preview,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
@@ -796,7 +825,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "content_type": "challenges",
             "selection": {"challenge_id": challenge["challenge_id"], "mechanic": challenge["mechanic"], "mechanic_version": challenge["mechanic_version"], "asset_family": challenge["asset_family"], "asset_family_version": challenge["asset_family_version"]},
             "identity": {"seed_requested": challenge["seed_requested"], "seed_used": challenge["seed_used"], "runtime_output_sha256": challenge["runtime_output_sha256"], "simulation_frame_signature_sha256": challenge["frame_signature_sha256"], "d_presentation_render_model_sha256": joined["d_render_model_sha256"], "challenge_visual_payload_sha256": joined["challenge_visual_payload_sha256"], "source_frame_records_sha256": joined["challenge_visual_payload"]["animation"]["frame_records_sha256"], "projected_frame_records_sha256": joined["coordinate_projected_frames_sha256"], "legacy_runtime_profile_id": "test_master_11s", "d_presentation_profile_id": "social_default_v1"},
-            "timing": {"source_fps": 60, "source_total_frames": 900, "game_frame_count": 420, "delivery_profile_id": "REVIEW_720", "delivery_fps": 30, "delivery_total_frames": 450, "delivery_segments": timeline["delivery_segments"], "field_windows_proposal_sha256": windows["proposal_sha256"]},
+            "timing": {"source_fps": 60, "source_total_frames": 900, "game_frame_count": 420, "delivery_profile_id": "REVIEW_720", "delivery_fps": 30, "delivery_total_frames": 450, "duration_seconds": joined["temporal_alignment_preview"]["delivery_timeline"]["duration_seconds"], "delivery_segments": timeline["delivery_segments"], "field_windows_proposal_sha256": windows["proposal_sha256"]},
             "editorial_review": {"field_window_mapping": "CHALLENGE_PROPOSAL_2_VISIBLE_FIELDS_1_EMPTY_SUPPRESSED", "fields": windows["fields"], "policy_state": "PROPOSED_NOT_APPROVED"},
             "materialization": "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT",
             "coordinate_projection": {"policy_id": joined["coordinate_projection"]["projection"]["policy_id"], "state": "PROPOSED_NOT_APPROVED", "projected_records": 420, "projected_records_sha256": joined["coordinate_projected_frames_sha256"], "combined_scale": joined["coordinate_projection"]["projection"]["combined_scale"]},
@@ -841,6 +870,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
         "harness_evidence": harness_evidence,
         "unified_delivery_policy": {**copy.deepcopy(joined["unified_delivery_policy_preview"]), "preview_sha256": sha256_json(joined["unified_delivery_policy_preview"])},
         "unified_audio_music_policy": {**copy.deepcopy(joined["unified_audio_music_policy_preview"]), "preview_sha256": sha256_json(joined["unified_audio_music_policy_preview"])},
+        "unified_presentation_policy": {**copy.deepcopy(joined["unified_presentation_policy_preview"]), "preview_sha256": sha256_json(joined["unified_presentation_policy_preview"])},
         "cross_artifact_checks": {
             "c11c_manifest_identity": True,
             "challenge_source_identity": True,
@@ -858,6 +888,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "challenge_temporal_alignment_policy_parity": True,
             "unified_delivery_policy_parity": True,
             "unified_audio_music_policy_parity": True,
+            "unified_presentation_region_policy_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -890,7 +921,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity", "unified_audio_music_policy_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity", "unified_audio_music_policy_parity", "unified_presentation_region_policy_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -1042,6 +1073,28 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
             raise UnifiedContentReviewError(f"Audio duration does not match unified video timing: {content_type}")
     if report.get("approval_state", {}).get("audio_delivery_profile_policy_approved") is not False or report.get("approval_state", {}).get("music_selection_policy_approved") is not False or report.get("approval_state", {}).get("mixing_policy_approved") is not False or report.get("approval_state", {}).get("loudness_policy_approved") is not False or report.get("approval_state", {}).get("audio_timeline_policy_approved") is not False:
         raise UnifiedContentReviewError("Unified review cannot approve audio delivery, music selection, mixing, loudness or timeline policy")
+    presentation_policy = report.get("unified_presentation_policy", {})
+    presentation_unsigned = {k: copy.deepcopy(v) for k, v in presentation_policy.items() if k != "preview_sha256"}
+    try:
+        expected_presentation_policy = build_unified_presentation_region_policy_preview(_root(), verify_sources=True)
+    except UnifiedPresentationRegionPolicyError as exc:
+        raise UnifiedContentReviewError(f"Unified presentation region policy source validation failed: {exc}") from exc
+    if presentation_unsigned != expected_presentation_policy:
+        raise UnifiedContentReviewError("Unified presentation-region policy identity, field map, unresolved style domains, approval or execution boundary mismatch")
+    if presentation_policy.get("policy_id") != UNIFIED_PRESENTATION_REGION_POLICY_ID or presentation_policy.get("policy_state") != "PROPOSED_NOT_APPROVED" or presentation_policy.get("policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified presentation region policy must remain proposal-only and unapproved")
+    if presentation_policy.get("target_canvas") != EXPECTED_UNIFIED_DELIVERY_PROFILE:
+        # Compare the common identity fields; a source metadata label is present only in the presentation proposal.
+        canvas = presentation_policy.get("target_canvas", {})
+        if (canvas.get("profile_id"), canvas.get("fps"), canvas.get("width"), canvas.get("height")) != (EXPECTED_UNIFIED_DELIVERY_PROFILE.get("profile_id"), EXPECTED_UNIFIED_DELIVERY_PROFILE.get("fps"), EXPECTED_UNIFIED_DELIVERY_PROFILE.get("width"), EXPECTED_UNIFIED_DELIVERY_PROFILE.get("height")):
+            raise UnifiedContentReviewError("Unified presentation target canvas differs from delivery profile")
+    if presentation_policy.get("approval_state", {}).get("semantic_region_mapping_approved") is not False or presentation_policy.get("approval_state", {}).get("shared_presentation_region_policy_approved") is not False or presentation_policy.get("approval_state", {}).get("frame_program_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve shared presentation-region mapping or frame program")
+    if not _is_sha256(presentation_policy.get("preview_sha256")) or sha256_json(presentation_unsigned) != presentation_policy.get("preview_sha256"):
+        raise UnifiedContentReviewError("Unified presentation-region policy preview digest mismatch")
+    if report.get("approval_state", {}).get("semantic_region_mapping_approved") is not False or report.get("approval_state", {}).get("shared_presentation_region_policy_approved") is not False or report.get("approval_state", {}).get("frame_program_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve presentation-region/frame-program policies")
+
     challenge_identity = challenge.get("identity", {})
     if not _is_sha256(challenge_identity.get("challenge_visual_payload_sha256")) or not _is_sha256(challenge_identity.get("source_frame_records_sha256")) or not _is_sha256(challenge_identity.get("projected_frame_records_sha256")):
         raise UnifiedContentReviewError("Challenge visual payload or projected-record identities are malformed")

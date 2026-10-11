@@ -173,7 +173,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 19)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 22)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
@@ -189,7 +189,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
             self.assertIsNone(editorial["visibility_windows"])
             self.assertEqual(editorial["visibility_window_evaluation"], "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY")
             self.assertFalse(editorial["renderer_native_input_emitted"])
-        self.assertEqual(len(report["unresolved_gates"]), 9)
+        self.assertEqual(len(report["unresolved_gates"]), 10)
         self.assertIn("VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED", report["unresolved_gates"])
         self.assertIn("VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_NOT_APPROVED", report["unresolved_gates"])
         self.assertEqual(report["cross_artifact_checks"]["coordinate_projection_parity"], True)
@@ -199,6 +199,21 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(report["cross_artifact_checks"]["challenge_temporal_alignment_policy_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["unified_delivery_policy_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["unified_audio_music_policy_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["unified_presentation_region_policy_parity"], True)
+        self.assertIn("SHARED_PRESENTATION_SEMANTIC_REGION_POLICY_NOT_APPROVED", report["unresolved_gates"])
+        presentation = report["unified_presentation_policy"]
+        self.assertEqual(presentation["policy_id"], "C11D_UNIFIED_PRESENTATION_SEMANTIC_REGIONS_ALL_CONTENT_TYPES_V1")
+        self.assertEqual(presentation["policy_state"], "PROPOSED_NOT_APPROVED")
+        self.assertEqual([x["content_type"] for x in presentation["content_matrix"]], ["visual_loops", "visual_drills", "challenges"])
+        self.assertEqual(presentation["target_canvas"]["width"], 720)
+        self.assertEqual(presentation["target_canvas"]["height"], 1280)
+        self.assertEqual(presentation["content_matrix"][0]["fields"], presentation["content_matrix"][1]["fields"])
+        challenge_region_fields = {x["field"]: x["target_region"] for x in presentation["content_matrix"][2]["fields"]}
+        self.assertEqual(challenge_region_fields["player_name"], "CHALLENGE_OVERLAY")
+        self.assertEqual(challenge_region_fields["challenge_label"], "CHALLENGE_OVERLAY")
+        self.assertEqual(presentation["unresolved_presentation_domains"]["region_geometry"], "UNRESOLVED_NO_COORDINATES")
+        self.assertFalse(presentation["policy_approved"])
+        self.assertFalse(report["approval_state"]["shared_presentation_region_policy_approved"])
         self.assertEqual(report["unified_delivery_policy"]["policy_id"], "C11D_UNIFIED_DELIVERY_TIMEBASE_ALL_CONTENT_TYPES_V1")
         self.assertEqual(report["unified_delivery_policy"]["policy_state"], "PROPOSED_NOT_APPROVED")
         self.assertEqual(len(report["unified_delivery_policy"]["content_matrix"]), 3)
@@ -465,6 +480,46 @@ class UnifiedContentReviewTests(unittest.TestCase):
             validate_review_manifest(report, self.schema)
 
 
+    def test_negative_unified_presentation_policy_self_approval_rejected(self) -> None:
+        report = self.report()
+        report["unified_presentation_policy"]["policy_approved"] = True
+        report["unified_presentation_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_presentation_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_presentation_region_drift_rejected(self) -> None:
+        report = self.report()
+        report["unified_presentation_policy"]["field_region_targets"]["title"]["target_region"] = "FOOTER"
+        report["unified_presentation_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_presentation_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_presentation_coordinate_invention_rejected(self) -> None:
+        report = self.report()
+        report["unified_presentation_policy"]["region_definitions"]["HEADER"]["x"] = 10
+        report["unified_presentation_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_presentation_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_presentation_policy_visibility_inference_rejected(self) -> None:
+        report = self.report()
+        report["unified_presentation_policy"]["visibility_timing_behavior"] = "INFER_FROM_PHASE_NAMES"
+        report["unified_presentation_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_presentation_policy"].items() if k != "preview_sha256"})
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+    def test_negative_top_level_presentation_approval_rejected(self) -> None:
+        report = self.report()
+        report["approval_state"]["shared_presentation_region_policy_approved"] = True
+        report["review_manifest_sha256"] = sha256_json({k:v for k,v in report.items() if k != "review_manifest_sha256"})
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+
 def main() -> int:
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(UnifiedContentReviewTests)
     result = unittest.TextTestRunner(verbosity=0).run(suite)
@@ -485,8 +540,8 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=19/19" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/19)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=16/16 | negative=25/25 | source_lineage=19/19 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=22/22" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/22)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=17/17 | negative=30/30 | source_lineage=22/22 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 

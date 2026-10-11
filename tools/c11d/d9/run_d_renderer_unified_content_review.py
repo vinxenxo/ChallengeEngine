@@ -127,6 +127,7 @@ def main() -> int:
         " | loop_drill_editorial=FULL_SPAN_NONEMPTY_FIELDS_PROPOSAL_ONLY"
         " | unified_delivery=REVIEW_720_30FPS_3_CONTENT_TYPES_PROPOSAL_ONLY"
         " | unified_audio=48KHZ_AACLC_192KBPS_STEREO_3_CONTENT_TYPES_TIMELINE_ONLY_PROPOSAL"
+        " | unified_presentation=3_CONTENT_TYPES_SHARED_REGIONS_PROPOSAL_ONLY"
         f" | challenge_temporal_alignment={len(challenge['temporal_alignment']['source_boundaries'])}/{len(challenge['temporal_alignment']['delivery_boundaries'])}_BOUNDARIES_EXACT_PROPOSAL_ONLY"
         " | editorial_fields=2_VISIBLE_1_EMPTY_SUPPRESSED"
         f" | unresolved_gates={len(report['unresolved_gates'])}"

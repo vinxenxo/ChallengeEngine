@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "C11-D-D9-UNIFIED-PRESENTATION-REGION-POLICY-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+  "purpose": "Define a proposal-only semantic field-to-region agreement across Visual Loops, Visual Drills and Challenges by reconciling the existing logical-composition and renderer-neutral frame-program contracts. It defines no geometry or render behavior.",
+  "supported_content_types": [
+    "visual_loops",
+    "visual_drills",
+    "challenges"
+  ],
+  "authority": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "delivery_profile_registry_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+    "logical_composition_contract_sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e",
+    "neutral_frame_program_contract_sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315",
+    "target_profile_id": "REVIEW_720"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    }
+  ],
+  "policy": {
+    "policy_id": "C11D_UNIFIED_PRESENTATION_SEMANTIC_REGIONS_ALL_CONTENT_TYPES_V1",
+    "state": "PROPOSED_NOT_APPROVED",
+    "scope": "SHARED_SEMANTIC_FIELD_TO_REGION_MAPPING_ONLY",
+    "target_delivery_profile_id": "REVIEW_720",
+    "target_canvas": {
+      "profile_id": "REVIEW_720",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "aspect_ratio": "9:16",
+      "source": "PINNED_DELIVERY_PROFILE_METADATA_ONLY"
+    },
+    "field_region_targets": {
+      "title": {
+        "target_region": "HEADER",
+        "semantic_role": "HEADER_TITLE",
+        "z_order": 20
+      },
+      "subtitle": {
+        "target_region": "HEADER",
+        "semantic_role": "HEADER_SUBTITLE",
+        "z_order": 21
+      },
+      "call_to_action": {
+        "target_region": "FOOTER",
+        "semantic_role": "FOOTER_CALL_TO_ACTION",
+        "z_order": 80
+      },
+      "player_name": {
+        "target_region": "CHALLENGE_OVERLAY",
+        "semantic_role": "CHALLENGE_PLAYER_NAME",
+        "z_order": 40
+      },
+      "challenge_label": {
+        "target_region": "CHALLENGE_OVERLAY",
+        "semantic_role": "CHALLENGE_LABEL",
+        "z_order": 41
+      }
+    },
+    "region_definitions": {
+      "HEADER": {
+        "semantic_scope": "EDITORIAL_TITLE_AND_SUBTITLE",
+        "mapping_state": "PROPOSED_NOT_APPROVED",
+        "geometry_state": "UNRESOLVED_NO_COORDINATES"
+      },
+      "FOOTER": {
+        "semantic_scope": "EDITORIAL_CALL_TO_ACTION",
+        "mapping_state": "PROPOSED_NOT_APPROVED",
+        "geometry_state": "UNRESOLVED_NO_COORDINATES"
+      },
+      "CHALLENGE_OVERLAY": {
+        "semantic_scope": "CHALLENGE_SPECIFIC_EDITORIAL_LABELS",
+        "mapping_state": "PROPOSED_NOT_APPROVED",
+        "geometry_state": "UNRESOLVED_NO_COORDINATES"
+      }
+    },
+    "content_matrix": [
+      {
+        "content_type": "visual_loops",
+        "fields": [
+          {
+            "field": "title",
+            "target_region": "HEADER",
+            "semantic_role": "HEADER_TITLE",
+            "z_order": 20
+          },
+          {
+            "field": "subtitle",
+            "target_region": "HEADER",
+            "semantic_role": "HEADER_SUBTITLE",
+            "z_order": 21
+          },
+          {
+            "field": "call_to_action",
+            "target_region": "FOOTER",
+            "semantic_role": "FOOTER_CALL_TO_ACTION",
+            "z_order": 80
+          }
+        ],
+        "metadata_only_fields": [
+          "language"
+        ],
+        "geometry_state": "UNRESOLVED_NO_COORDINATES",
+        "visibility_windows": "NOT_COMPUTED_BY_REGION_POLICY"
+      },
+      {
+        "content_type": "visual_drills",
+        "fields": [
+          {
+            "field": "title",
+            "target_region": "HEADER",
+            "semantic_role": "HEADER_TITLE",
+            "z_order": 20
+          },
+          {
+            "field": "subtitle",
+            "target_region": "HEADER",
+            "semantic_role": "HEADER_SUBTITLE",
+            "z_order": 21
+          },
+          {
+            "field": "call_to_action",
+            "target_region": "FOOTER",
+            "semantic_role": "FOOTER_CALL_TO_ACTION",
+            "z_order": 80
+          }
+        ],
+        "metadata_only_fields": [
+          "language"
+        ],
+        "geometry_state": "UNRESOLVED_NO_COORDINATES",
+        "visibility_windows": "NOT_COMPUTED_BY_REGION_POLICY"
+      },
+      {
+        "content_type": "challenges",
+        "fields": [
+          {
+            "field": "title",
+            "target_region": "HEADER",
+            "semantic_role": "HEADER_TITLE",
+            "z_order": 20
+          },
+          {
+            "field": "subtitle",
+            "target_region": "HEADER",
+            "semantic_role": "HEADER_SUBTITLE",
+            "z_order": 21
+          },
+          {
+            "field": "player_name",
+            "target_region": "CHALLENGE_OVERLAY",
+            "semantic_role": "CHALLENGE_PLAYER_NAME",
+            "z_order": 40
+          },
+          {
+            "field": "challenge_label",
+            "target_region": "CHALLENGE_OVERLAY",
+            "semantic_role": "CHALLENGE_LABEL",
+            "z_order": 41
+          },
+          {
+            "field": "call_to_action",
+            "target_region": "FOOTER",
+            "semantic_role": "FOOTER_CALL_TO_ACTION",
+            "z_order": 80
+          }
+        ],
+        "metadata_only_fields": [
+          "language"
+        ],
+        "geometry_state": "UNRESOLVED_NO_COORDINATES",
+        "visibility_windows": "DELEGATED_TO_SEPARATE_EDITORIAL_WINDOW_PROPOSALS"
+      }
+    ],
+    "metadata_only_fields": [
+      "language"
+    ],
+    "empty_field_behavior": "INHERIT_SEPARATE_EDITORIAL_RULES_SUPPRESS_EMPTY_NO_PLACEHOLDER",
+    "visibility_timing_behavior": "NOT_DEFINED_HERE_USE_SEPARATELY_REVIEWED_PROPOSAL_CONTRACTS",
+    "unresolved_presentation_domains": {
+      "region_geometry": "UNRESOLVED_NO_COORDINATES",
+      "safe_area_and_margins": "NOT_DEFINED_NOT_APPROVED",
+      "typography_fonts_sizes_weights": "NOT_DEFINED_NOT_APPROVED",
+      "color_contrast_outlines_shadows": "NOT_DEFINED_NOT_APPROVED",
+      "animation_entry_exit_transitions": "NOT_DEFINED_NOT_APPROVED",
+      "z_order_runtime_compositing": "DECLARATIVE_SOURCE_ORDER_ONLY_NOT_RENDERED",
+      "content_specific_style_variants": "NOT_DEFINED_NOT_APPROVED"
+    },
+    "shared_invariants": [
+      "SUPPORT_EXACTLY_VISUAL_LOOPS_VISUAL_DRILLS_AND_CHALLENGES",
+      "COPY_CANONICAL_EDITORIAL_FIELD_IDENTITIES_WITHOUT_REWRITING_TEXT",
+      "TITLE_AND_SUBTITLE_TARGET_HEADER_FOR_ALL_THREE_CONTENT_TYPES",
+      "CALL_TO_ACTION_TARGETS_FOOTER_FOR_ALL_THREE_CONTENT_TYPES",
+      "PLAYER_NAME_AND_CHALLENGE_LABEL_TARGET_CHALLENGE_OVERLAY_ONLY",
+      "LANGUAGE_IS_METADATA_ONLY_NOT_A_VISIBLE_REGION_ELEMENT",
+      "REGION_IDS_ARE_SEMANTIC_LABELS_NOT_COORDINATES_OR_SAFE_AREAS",
+      "VISIBILITY_TIMING_REMAINS_SEPARATE_FROM_REGION_MAPPING",
+      "NO_SIMULATION_TRUTH_OR_DERIVED_TELEMETRY_IS_BOUND"
+    ],
+    "forbidden_operations": [
+      "emit renderer-native input or executable instructions",
+      "invent coordinates, safe areas, pixel geometry, or element dimensions",
+      "select fonts, typography, palette, animation, transitions, or z-order compositing behavior",
+      "rewrite canonical editorial strings or synthesize placeholder copy",
+      "derive or bind SimulationResult, winning_frame, close_calls, or derived telemetry",
+      "write render plans, image, video, audio, or other media files",
+      "invoke or dispatch a renderer, Godot, or FFmpeg",
+      "mutate frozen C11-C source or its freeze manifest",
+      "promote a proposal to approved or change D4.8/release authority"
+    ]
+  },
+  "approval_state": {
+    "semantic_region_mapping_approved": false,
+    "shared_presentation_region_policy_approved": false,
+    "frame_program_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "execution_boundary": {
+    "mode": "STATIC_SHARED_PRESENTATION_REGION_POLICY_REVIEW_ONLY",
+    "region_mapping_policy_approved": false,
+    "coordinates_emitted": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "video_render_ready": false
+  }
+}

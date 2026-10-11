@@ -15,7 +15,8 @@
     "execution_boundary",
     "review_manifest_sha256",
     "unified_delivery_policy",
-    "unified_audio_music_policy"
+    "unified_audio_music_policy",
+    "unified_presentation_policy"
   ],
   "properties": {
     "schema": {
@@ -36,7 +37,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 19,
+      "minItems": 22,
       "items": {
         "type": "object",
         "required": [
@@ -55,7 +56,7 @@
         },
         "additionalProperties": false
       },
-      "maxItems": 19
+      "maxItems": 22
     },
     "content_items": {
       "type": "array",
@@ -659,7 +660,8 @@
         "loop_drill_editorial_field_window_proposal_parity",
         "challenge_temporal_alignment_policy_parity",
         "unified_delivery_policy_parity",
-        "unified_audio_music_policy_parity"
+        "unified_audio_music_policy_parity",
+        "unified_presentation_region_policy_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -709,6 +711,9 @@
         },
         "unified_audio_music_policy_parity": {
           "const": true
+        },
+        "unified_presentation_region_policy_parity": {
+          "const": true
         }
       },
       "additionalProperties": false
@@ -722,7 +727,23 @@
       }
     },
     "approval_state": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "semantic_region_mapping_approved",
+        "shared_presentation_region_policy_approved",
+        "frame_program_approved"
+      ],
+      "properties": {
+        "semantic_region_mapping_approved": {
+          "const": false
+        },
+        "shared_presentation_region_policy_approved": {
+          "const": false
+        },
+        "frame_program_approved": {
+          "const": false
+        }
+      }
     },
     "execution_boundary": {
       "type": "object",
@@ -1161,6 +1182,531 @@
           "pattern": "^[a-f0-9]{64}$"
         }
       },
+      "additionalProperties": false
+    },
+    "unified_presentation_policy": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-UNIFIED-PRESENTATION-REGION-POLICY-PREVIEW-V1"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "policy_id": {
+          "const": "C11D_UNIFIED_PRESENTATION_SEMANTIC_REGIONS_ALL_CONTENT_TYPES_V1"
+        },
+        "policy_state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "proposal_contract_sha256": {
+          "const": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+        },
+        "target_canvas": {
+          "type": "object",
+          "properties": {
+            "profile_id": {
+              "const": "REVIEW_720"
+            },
+            "width": {
+              "const": 720
+            },
+            "height": {
+              "const": 1280
+            },
+            "fps": {
+              "const": 30
+            },
+            "aspect_ratio": {
+              "const": "9:16"
+            },
+            "source": {
+              "const": "PINNED_DELIVERY_PROFILE_METADATA_ONLY"
+            }
+          },
+          "required": [
+            "profile_id",
+            "width",
+            "height",
+            "fps",
+            "aspect_ratio",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "field_region_targets": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "object",
+              "properties": {
+                "target_region": {
+                  "enum": [
+                    "HEADER",
+                    "FOOTER",
+                    "CHALLENGE_OVERLAY"
+                  ]
+                },
+                "semantic_role": {
+                  "type": "string"
+                },
+                "z_order": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "target_region",
+                "semantic_role",
+                "z_order"
+              ],
+              "additionalProperties": false
+            },
+            "subtitle": {
+              "type": "object",
+              "properties": {
+                "target_region": {
+                  "enum": [
+                    "HEADER",
+                    "FOOTER",
+                    "CHALLENGE_OVERLAY"
+                  ]
+                },
+                "semantic_role": {
+                  "type": "string"
+                },
+                "z_order": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "target_region",
+                "semantic_role",
+                "z_order"
+              ],
+              "additionalProperties": false
+            },
+            "call_to_action": {
+              "type": "object",
+              "properties": {
+                "target_region": {
+                  "enum": [
+                    "HEADER",
+                    "FOOTER",
+                    "CHALLENGE_OVERLAY"
+                  ]
+                },
+                "semantic_role": {
+                  "type": "string"
+                },
+                "z_order": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "target_region",
+                "semantic_role",
+                "z_order"
+              ],
+              "additionalProperties": false
+            },
+            "player_name": {
+              "type": "object",
+              "properties": {
+                "target_region": {
+                  "enum": [
+                    "HEADER",
+                    "FOOTER",
+                    "CHALLENGE_OVERLAY"
+                  ]
+                },
+                "semantic_role": {
+                  "type": "string"
+                },
+                "z_order": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "target_region",
+                "semantic_role",
+                "z_order"
+              ],
+              "additionalProperties": false
+            },
+            "challenge_label": {
+              "type": "object",
+              "properties": {
+                "target_region": {
+                  "enum": [
+                    "HEADER",
+                    "FOOTER",
+                    "CHALLENGE_OVERLAY"
+                  ]
+                },
+                "semantic_role": {
+                  "type": "string"
+                },
+                "z_order": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "target_region",
+                "semantic_role",
+                "z_order"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "title",
+            "subtitle",
+            "call_to_action",
+            "player_name",
+            "challenge_label"
+          ],
+          "additionalProperties": false
+        },
+        "region_definitions": {
+          "type": "object",
+          "properties": {
+            "HEADER": {
+              "type": "object",
+              "properties": {
+                "semantic_scope": {
+                  "type": "string"
+                },
+                "mapping_state": {
+                  "const": "PROPOSED_NOT_APPROVED"
+                },
+                "geometry_state": {
+                  "const": "UNRESOLVED_NO_COORDINATES"
+                }
+              },
+              "required": [
+                "semantic_scope",
+                "mapping_state",
+                "geometry_state"
+              ],
+              "additionalProperties": false
+            },
+            "FOOTER": {
+              "type": "object",
+              "properties": {
+                "semantic_scope": {
+                  "type": "string"
+                },
+                "mapping_state": {
+                  "const": "PROPOSED_NOT_APPROVED"
+                },
+                "geometry_state": {
+                  "const": "UNRESOLVED_NO_COORDINATES"
+                }
+              },
+              "required": [
+                "semantic_scope",
+                "mapping_state",
+                "geometry_state"
+              ],
+              "additionalProperties": false
+            },
+            "CHALLENGE_OVERLAY": {
+              "type": "object",
+              "properties": {
+                "semantic_scope": {
+                  "type": "string"
+                },
+                "mapping_state": {
+                  "const": "PROPOSED_NOT_APPROVED"
+                },
+                "geometry_state": {
+                  "const": "UNRESOLVED_NO_COORDINATES"
+                }
+              },
+              "required": [
+                "semantic_scope",
+                "mapping_state",
+                "geometry_state"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "HEADER",
+            "FOOTER",
+            "CHALLENGE_OVERLAY"
+          ],
+          "additionalProperties": false
+        },
+        "content_matrix": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content_type": {
+                "enum": [
+                  "visual_loops",
+                  "visual_drills",
+                  "challenges"
+                ]
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "target_region": {
+                      "enum": [
+                        "HEADER",
+                        "FOOTER",
+                        "CHALLENGE_OVERLAY"
+                      ]
+                    },
+                    "semantic_role": {
+                      "type": "string"
+                    },
+                    "z_order": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "field",
+                    "target_region",
+                    "semantic_role",
+                    "z_order"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 3,
+                "maxItems": 5
+              },
+              "metadata_only_fields": {
+                "type": "array",
+                "items": {
+                  "const": "language"
+                },
+                "minItems": 1,
+                "maxItems": 1
+              },
+              "geometry_state": {
+                "const": "UNRESOLVED_NO_COORDINATES"
+              },
+              "visibility_windows": {
+                "enum": [
+                  "NOT_COMPUTED_BY_REGION_POLICY",
+                  "DELEGATED_TO_SEPARATE_EDITORIAL_WINDOW_PROPOSALS"
+                ]
+              }
+            },
+            "required": [
+              "content_type",
+              "fields",
+              "metadata_only_fields",
+              "geometry_state",
+              "visibility_windows"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "metadata_only_fields": {
+          "type": "array",
+          "items": {
+            "const": "language"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "empty_field_behavior": {
+          "const": "INHERIT_SEPARATE_EDITORIAL_RULES_SUPPRESS_EMPTY_NO_PLACEHOLDER"
+        },
+        "visibility_timing_behavior": {
+          "const": "NOT_DEFINED_HERE_USE_SEPARATELY_REVIEWED_PROPOSAL_CONTRACTS"
+        },
+        "unresolved_presentation_domains": {
+          "type": "object",
+          "required": [
+            "region_geometry",
+            "safe_area_and_margins",
+            "typography_fonts_sizes_weights",
+            "color_contrast_outlines_shadows",
+            "animation_entry_exit_transitions",
+            "z_order_runtime_compositing",
+            "content_specific_style_variants"
+          ],
+          "properties": {
+            "region_geometry": {
+              "type": "string"
+            },
+            "safe_area_and_margins": {
+              "type": "string"
+            },
+            "typography_fonts_sizes_weights": {
+              "type": "string"
+            },
+            "color_contrast_outlines_shadows": {
+              "type": "string"
+            },
+            "animation_entry_exit_transitions": {
+              "type": "string"
+            },
+            "z_order_runtime_compositing": {
+              "type": "string"
+            },
+            "content_specific_style_variants": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "shared_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 9,
+          "maxItems": 9
+        },
+        "policy_approved": {
+          "const": false
+        },
+        "approval_state": {
+          "type": "object",
+          "properties": {
+            "semantic_region_mapping_approved": {
+              "const": false
+            },
+            "shared_presentation_region_policy_approved": {
+              "const": false
+            },
+            "frame_program_approved": {
+              "const": false
+            },
+            "renderer_baseline_approved": {
+              "const": false
+            },
+            "renderer_baseline_frozen": {
+              "const": false
+            },
+            "d4_8_authorized": {
+              "const": false
+            },
+            "d9_14_full_acceptance": {
+              "const": "BLOCKED_AS_REQUIRED"
+            },
+            "d9_16_full_acceptance": {
+              "const": "BLOCKED_AS_REQUIRED"
+            },
+            "d9_17_closure": {
+              "const": "BLOCKED_NO_GO"
+            },
+            "d10": {
+              "const": "BLOCKED"
+            },
+            "release_authority": {
+              "const": "NONE"
+            }
+          },
+          "required": [
+            "semantic_region_mapping_approved",
+            "shared_presentation_region_policy_approved",
+            "frame_program_approved",
+            "renderer_baseline_approved",
+            "renderer_baseline_frozen",
+            "d4_8_authorized",
+            "d9_14_full_acceptance",
+            "d9_16_full_acceptance",
+            "d9_17_closure",
+            "d10",
+            "release_authority"
+          ],
+          "additionalProperties": false
+        },
+        "execution_boundary": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "STATIC_SHARED_PRESENTATION_REGION_POLICY_REVIEW_ONLY"
+            },
+            "region_mapping_policy_approved": {
+              "const": false
+            },
+            "coordinates_emitted": {
+              "const": false
+            },
+            "renderer_native_input_emitted": {
+              "const": false
+            },
+            "renderer_dispatch_invoked": {
+              "const": false
+            },
+            "renderer_activation": {
+              "const": false
+            },
+            "production_execution": {
+              "const": false
+            },
+            "media_created": {
+              "const": false
+            },
+            "c11c_source_mutation": {
+              "const": false
+            },
+            "d4_8": {
+              "const": "BLOCKED"
+            },
+            "release_authority": {
+              "const": "NONE"
+            },
+            "video_render_ready": {
+              "const": false
+            }
+          },
+          "required": [
+            "mode",
+            "region_mapping_policy_approved",
+            "coordinates_emitted",
+            "renderer_native_input_emitted",
+            "renderer_dispatch_invoked",
+            "renderer_activation",
+            "production_execution",
+            "media_created",
+            "c11c_source_mutation",
+            "d4_8",
+            "release_authority",
+            "video_render_ready"
+          ],
+          "additionalProperties": false
+        },
+        "preview_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema",
+        "schema_version",
+        "policy_id",
+        "policy_state",
+        "proposal_contract_sha256",
+        "target_canvas",
+        "field_region_targets",
+        "region_definitions",
+        "content_matrix",
+        "metadata_only_fields",
+        "empty_field_behavior",
+        "visibility_timing_behavior",
+        "unresolved_presentation_domains",
+        "shared_invariants",
+        "policy_approved",
+        "approval_state",
+        "execution_boundary",
+        "preview_sha256"
+      ],
       "additionalProperties": false
     }
   },
