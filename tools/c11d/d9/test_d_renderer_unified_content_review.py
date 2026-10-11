@@ -173,7 +173,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 18)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 19)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
@@ -189,7 +189,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
             self.assertIsNone(editorial["visibility_windows"])
             self.assertEqual(editorial["visibility_window_evaluation"], "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY")
             self.assertFalse(editorial["renderer_native_input_emitted"])
-        self.assertEqual(len(report["unresolved_gates"]), 8)
+        self.assertEqual(len(report["unresolved_gates"]), 9)
         self.assertIn("VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED", report["unresolved_gates"])
         self.assertIn("VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_NOT_APPROVED", report["unresolved_gates"])
         self.assertEqual(report["cross_artifact_checks"]["coordinate_projection_parity"], True)
@@ -198,6 +198,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(report["cross_artifact_checks"]["loop_drill_editorial_field_window_proposal_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["challenge_temporal_alignment_policy_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["unified_delivery_policy_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["unified_audio_music_policy_parity"], True)
         self.assertEqual(report["unified_delivery_policy"]["policy_id"], "C11D_UNIFIED_DELIVERY_TIMEBASE_ALL_CONTENT_TYPES_V1")
         self.assertEqual(report["unified_delivery_policy"]["policy_state"], "PROPOSED_NOT_APPROVED")
         self.assertEqual(len(report["unified_delivery_policy"]["content_matrix"]), 3)
@@ -206,6 +207,15 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(report["unified_delivery_policy"]["content_matrix"][2]["delivery_frame_count"], 450)
         self.assertEqual(report["unified_delivery_policy"]["audio_music_policy"], "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED")
         self.assertFalse(report["approval_state"]["unified_delivery_timebase_policy_approved"])
+        self.assertIn("AUDIO_MUSIC_DELIVERY_AND_EDITORIAL_POLICY_NOT_APPROVED", report["unresolved_gates"])
+        audio = report["unified_audio_music_policy"]
+        self.assertEqual(audio["policy_id"], "C11D_UNIFIED_AUDIO_DELIVERY_ALIGNMENT_ALL_CONTENT_TYPES_V1")
+        self.assertEqual(audio["policy_state"], "PROPOSED_NOT_APPROVED")
+        self.assertEqual(audio["target_audio_profile"]["audio_sample_rate_hz"], 48000)
+        self.assertEqual([x["target_pcm_sample_count"] for x in audio["content_matrix"]], [960000, 1008000, 720000])
+        self.assertFalse(audio["music_asset_selected"])
+        self.assertFalse(audio["audio_samples_emitted"])
+        self.assertFalse(audio["policy_approved"])
         challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
         temporal = challenge_item["temporal_alignment"]
         self.assertEqual(temporal["policy_id"], "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1")
@@ -438,6 +448,23 @@ class UnifiedContentReviewTests(unittest.TestCase):
         with self.assertRaises(UnifiedContentReviewError): validate_review_manifest(report, self.schema)
 
 
+    def test_negative_unified_audio_music_policy_cannot_self_promote(self) -> None:
+        report = self.report()
+        report["unified_audio_music_policy"]["policy_approved"] = True
+        report["unified_audio_music_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_audio_music_policy"].items() if k != "preview_sha256"})
+        unsigned = dict(report); unsigned.pop("review_manifest_sha256", None); report["review_manifest_sha256"] = sha256_json(unsigned)
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+    def test_negative_unified_audio_music_sample_count_drift_rejected(self) -> None:
+        report = self.report()
+        report["unified_audio_music_policy"]["content_matrix"][0]["target_pcm_sample_count"] = 959999
+        report["unified_audio_music_policy"]["preview_sha256"] = sha256_json({k:v for k,v in report["unified_audio_music_policy"].items() if k != "preview_sha256"})
+        unsigned = dict(report); unsigned.pop("review_manifest_sha256", None); report["review_manifest_sha256"] = sha256_json(unsigned)
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+
 def main() -> int:
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(UnifiedContentReviewTests)
     result = unittest.TextTestRunner(verbosity=0).run(suite)
@@ -458,8 +485,8 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=18/18" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/18)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=15/15 | negative=23/23 | source_lineage=18/18 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=19/19" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/19)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=16/16 | negative=25/25 | source_lineage=19/19 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 

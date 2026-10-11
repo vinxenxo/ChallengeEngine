@@ -21,7 +21,11 @@ Challenge source phase boundaries `[0,180,600,780,900]` map to delivery boundari
 
 ## Audio/music boundary
 
-Audio/music resampling, soundtrack selection, mixing and loudness policy are explicitly `OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED`. Shared video-profile metadata must not be misread as a music-production policy. A future common pipeline still needs an independently tested audio/music policy and GUI/CLI parity evidence.
+At this milestone, audio/music resampling, soundtrack selection, mixing and loudness were explicitly `OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED`. The separate checkpoint `D9_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_CHECKPOINT.md` now adds a review-only technical audio-delivery envelope and pre-encode timeline arithmetic, sourced from the same pinned `REVIEW_720` profile. It still does not define soundtrack selection, mixing, loudness, or a materialization/encoding procedure.
+
+## Follow-on milestone — 2026-10-11
+
+A separate audio/music delivery proposal is now integrated into the unified review as `unified_audio_music_policy`. The combined review has 16 cross-artifact checks and 9 unresolved gates, including `AUDIO_MUSIC_DELIVERY_AND_EDITORIAL_POLICY_NOT_APPROVED`. This does not change the timebase policy state (`PROPOSED_NOT_APPROVED`) or its original exclusions.
 
 ## Verification contract
 

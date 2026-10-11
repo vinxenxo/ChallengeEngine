@@ -33,6 +33,14 @@ from d_renderer_unified_delivery_timebase_policy import (
     build_preview as build_unified_delivery_policy_preview,
     validate_preview as validate_unified_delivery_policy_preview,
 )
+from d_renderer_unified_audio_music_delivery_policy import (
+    EXPECTED_MATRIX as EXPECTED_AUDIO_DELIVERY_MATRIX,
+    EXPECTED_PROFILE as EXPECTED_AUDIO_DELIVERY_PROFILE,
+    POLICY_ID as UNIFIED_AUDIO_MUSIC_POLICY_ID,
+    UnifiedAudioMusicDeliveryPolicyError,
+    build_preview as build_unified_audio_music_policy_preview,
+    validate_preview as validate_unified_audio_music_policy_preview,
+)
 
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
@@ -60,6 +68,7 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"),
     ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json", "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
     "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED",
@@ -67,6 +76,7 @@ EXPECTED_UNRESOLVED_GATES = [
     "CHALLENGE_SIMULATION_SAMPLE_SELECTION_AND_INTERPOLATION_UNRESOLVED",
     "CHALLENGE_COORDINATE_PROJECTION_POLICY_NOT_APPROVED",
     "DELIVERY_TIMEBASE_PROJECTION_POLICY_NOT_APPROVED",
+    "AUDIO_MUSIC_DELIVERY_AND_EDITORIAL_POLICY_NOT_APPROVED",
     "EDITORIAL_FIELD_WINDOW_POLICY_NOT_APPROVED",
     "D_RENDERER_BASELINE_APPROVAL_EXTERNAL_GATE_NOT_ASSERTED_HERE",
     "D4_8_REMAINS_BLOCKED",
@@ -153,6 +163,8 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         raise UnifiedContentReviewError("Challenge temporal alignment must remain proposal-only and unapplied")
     if policy.get("unified_delivery_timebase_policy") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
         raise UnifiedContentReviewError("Unified delivery timebase policy must remain proposal-only and unapplied")
+    if policy.get("unified_audio_music_delivery_policy") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Unified audio/music delivery policy must remain proposal-only and unapplied")
     approval_state = contract.get("approval_state", {})
     if (
         approval_state.get("simulation_sample_selection_policy_approved") is not False
@@ -163,8 +175,13 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         or approval_state.get("loop_drill_editorial_field_window_policy_approved") is not False
         or approval_state.get("challenge_temporal_alignment_policy_approved") is not False
         or approval_state.get("unified_delivery_timebase_policy_approved") is not False
+        or approval_state.get("audio_delivery_profile_policy_approved") is not False
+        or approval_state.get("music_selection_policy_approved") is not False
+        or approval_state.get("mixing_policy_approved") is not False
+        or approval_state.get("loudness_policy_approved") is not False
+        or approval_state.get("audio_timeline_policy_approved") is not False
     ):
-        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, temporal alignment, Loop/Drill editorial windows, or unified delivery policy")
+        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, editorial, delivery-timebase or audio/music policies")
     boundary = contract.get("execution_boundary", {})
     required_boundary = {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
@@ -681,6 +698,31 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
     if unified_delivery_policy_preview.get("policy_approved") is not False or unified_delivery_policy_preview.get("delivery_candidate_materialized") is not False or unified_delivery_policy_preview.get("renderer_native_input_emitted") is not False or unified_delivery_policy_preview.get("audio_music_policy") != "OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED":
         raise UnifiedContentReviewError("Unified delivery policy crossed an approval, execution, or audio/music scope boundary")
 
+    # Review the independent technical audio delivery envelope. This only checks
+    # pinned output metadata and exact pre-encode timeline arithmetic; it never
+    # chooses music, creates silence, or materializes audio samples.
+    try:
+        unified_audio_music_policy_preview = build_unified_audio_music_policy_preview(root, verify_sources=True)
+        validate_unified_audio_music_policy_preview(unified_audio_music_policy_preview, root, verify_sources=True)
+    except UnifiedAudioMusicDeliveryPolicyError as exc:
+        raise UnifiedContentReviewError(f"Unified audio/music delivery proposal invalid: {exc}") from exc
+    audio_profile = unified_audio_music_policy_preview.get("target_audio_profile", {})
+    if audio_profile != EXPECTED_AUDIO_DELIVERY_PROFILE:
+        raise UnifiedContentReviewError("Unified audio delivery fields drift from the pinned REVIEW_720 profile")
+    audio_matrix = {row["content_type"]: row for row in unified_audio_music_policy_preview.get("content_matrix", [])}
+    timebase_matrix = {row["content_type"]: row for row in unified_delivery_policy_preview.get("content_matrix", [])}
+    for content_type in ("visual_loops", "visual_drills", "challenges"):
+        audio_row = audio_matrix[content_type]
+        video_row = timebase_matrix[content_type]
+        if (audio_row["duration_seconds"], audio_row["delivery_fps"], audio_row["delivery_frame_count"]) != (video_row["duration_seconds"], video_row["delivery_fps"], video_row["delivery_frame_count"]):
+            raise UnifiedContentReviewError(f"Audio pre-encode timeline does not match video delivery timeline: {content_type}")
+        if audio_row["target_pcm_sample_count"] != int(audio_row["duration_seconds"] * audio_row["audio_sample_rate_hz"]):
+            raise UnifiedContentReviewError(f"Audio pre-encode sample count is not an exact integer: {content_type}")
+        if audio_row["source_audio_selected"] is not False or audio_row["music_asset_selected"] is not False or audio_row["audio_samples_emitted"] is not False or audio_row["audio_delivery_materialized"] is not False:
+            raise UnifiedContentReviewError(f"Audio policy may not select or emit audio: {content_type}")
+    if unified_audio_music_policy_preview.get("policy_approved") is not False or unified_audio_music_policy_preview.get("audio_samples_emitted") is not False or unified_audio_music_policy_preview.get("audio_payload_materialized") is not False or unified_audio_music_policy_preview.get("music_asset_selected") is not False:
+        raise UnifiedContentReviewError("Audio/music delivery policy crossed an approval or materialization boundary")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -700,6 +742,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         "temporal_alignment_preview": temporal_alignment_preview,
         "temporal_alignment_contract_sha256": temporal_alignment_contract_sha256,
         "unified_delivery_policy_preview": unified_delivery_policy_preview,
+        "unified_audio_music_policy_preview": unified_audio_music_policy_preview,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
@@ -797,6 +840,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
         "content_items": items,
         "harness_evidence": harness_evidence,
         "unified_delivery_policy": {**copy.deepcopy(joined["unified_delivery_policy_preview"]), "preview_sha256": sha256_json(joined["unified_delivery_policy_preview"])},
+        "unified_audio_music_policy": {**copy.deepcopy(joined["unified_audio_music_policy_preview"]), "preview_sha256": sha256_json(joined["unified_audio_music_policy_preview"])},
         "cross_artifact_checks": {
             "c11c_manifest_identity": True,
             "challenge_source_identity": True,
@@ -813,6 +857,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "loop_drill_editorial_field_window_proposal_parity": True,
             "challenge_temporal_alignment_policy_parity": True,
             "unified_delivery_policy_parity": True,
+            "unified_audio_music_policy_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -845,7 +890,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity", "unified_audio_music_policy_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -968,6 +1013,35 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
         raise UnifiedContentReviewError("Unified delivery policy preview digest mismatch")
     if report.get("approval_state", {}).get("unified_delivery_timebase_policy_approved") is not False:
         raise UnifiedContentReviewError("Unified review cannot approve the unified delivery policy")
+    audio_policy = report.get("unified_audio_music_policy", {})
+    audio_unsigned = {k: copy.deepcopy(v) for k, v in audio_policy.items() if k != "preview_sha256"}
+    if audio_policy.get("schema") != "C11-D-D9-UNIFIED-AUDIO-MUSIC-DELIVERY-POLICY-PREVIEW-V1" or audio_policy.get("policy_id") != UNIFIED_AUDIO_MUSIC_POLICY_ID or audio_policy.get("policy_state") != "PROPOSED_NOT_APPROVED":
+        raise UnifiedContentReviewError("Unified audio/music delivery policy identity/state mismatch")
+    if audio_policy.get("proposal_contract_sha256") != "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238":
+        raise UnifiedContentReviewError("Unified audio/music delivery proposal contract identity pin mismatch")
+    if audio_policy.get("target_audio_profile") != EXPECTED_AUDIO_DELIVERY_PROFILE or audio_policy.get("content_matrix") != EXPECTED_AUDIO_DELIVERY_MATRIX:
+        raise UnifiedContentReviewError("Unified audio/music target profile or pre-encode timeline matrix mismatch")
+    if audio_policy.get("shared_invariants") != ["USE_EXPLICIT_REVIEW_720_AUDIO_FIELDS_FROM_PINNED_DELIVERY_REGISTRY", "PRE_ENCODE_PCM_TIMELINE_DURATION_EQUALS_VIDEO_DELIVERY_DURATION", "PCM_SAMPLE_COUNT_EQUALS_DURATION_SECONDS_TIMES_48000_EXACTLY", "DO_NOT_SELECT_OR_SYNTHESIZE_MUSIC_OR_SOUND_EFFECTS", "DO_NOT_INFER_SILENCE_AS_DEFAULT_WHEN_AUDIO_ASSET_IS_ABSENT", "DO_NOT_MIX_DUCK_FADE_LOOP_OR_CROSSFADE_AUDIO", "DO_NOT_APPLY_GAIN_OR_LOUDNESS_NORMALIZATION", "CODEC_PRIMING_AND_POST_ENCODE_DURATION_TOLERANCE_REMAIN_UNDEFINED", "NO_AUDIO_PAYLOAD_OR_MEDIA_IS_EMITTED_BY_THIS_REVIEW"]:
+        raise UnifiedContentReviewError("Unified audio/music delivery policy invariants drift")
+    if audio_policy.get("audio_payload_materialized") is not False or audio_policy.get("audio_samples_emitted") is not False or audio_policy.get("music_asset_selected") is not False or audio_policy.get("policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified audio/music delivery review cannot select, emit or approve audio")
+    if audio_policy.get("approval_state", {}).get("audio_delivery_profile_policy_approved") is not False or audio_policy.get("approval_state", {}).get("music_selection_policy_approved") is not False or audio_policy.get("approval_state", {}).get("mixing_policy_approved") is not False or audio_policy.get("approval_state", {}).get("loudness_policy_approved") is not False or audio_policy.get("approval_state", {}).get("audio_timeline_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified audio/music delivery policy approvals must remain false")
+    audio_exec = audio_policy.get("execution_boundary", {})
+    if audio_exec.get("audio_samples_emitted") is not False or audio_exec.get("audio_payload_materialized") is not False or audio_exec.get("music_asset_selected") is not False or audio_exec.get("renderer_native_input_emitted") is not False or audio_exec.get("renderer_activation") is not False or audio_exec.get("media_created") is not False or audio_exec.get("d4_8") != "BLOCKED" or audio_exec.get("release_authority") != "NONE":
+        raise UnifiedContentReviewError("Unified audio/music delivery execution/governance boundary drift")
+    if not _is_sha256(audio_policy.get("preview_sha256")) or sha256_json(audio_unsigned) != audio_policy.get("preview_sha256"):
+        raise UnifiedContentReviewError("Unified audio/music delivery preview digest mismatch")
+    for content_type, expected_duration, expected_frames in (("visual_loops", 20.0, 600), ("visual_drills", 21.0, 630), ("challenges", 15.0, 450)):
+        row = next((x for x in EXPECTED_AUDIO_DELIVERY_MATRIX if x["content_type"] == content_type), None)
+        item_row = loop if content_type == "visual_loops" else drill if content_type == "visual_drills" else challenge
+        if row is None or row["duration_seconds"] != expected_duration or row["target_pcm_sample_count"] != int(expected_duration * 48000):
+            raise UnifiedContentReviewError(f"Audio duration/sample-count invariant failed: {content_type}")
+        actual_duration = item_row.get("timing", {}).get("duration_seconds")
+        if actual_duration != expected_duration:
+            raise UnifiedContentReviewError(f"Audio duration does not match unified video timing: {content_type}")
+    if report.get("approval_state", {}).get("audio_delivery_profile_policy_approved") is not False or report.get("approval_state", {}).get("music_selection_policy_approved") is not False or report.get("approval_state", {}).get("mixing_policy_approved") is not False or report.get("approval_state", {}).get("loudness_policy_approved") is not False or report.get("approval_state", {}).get("audio_timeline_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve audio delivery, music selection, mixing, loudness or timeline policy")
     challenge_identity = challenge.get("identity", {})
     if not _is_sha256(challenge_identity.get("challenge_visual_payload_sha256")) or not _is_sha256(challenge_identity.get("source_frame_records_sha256")) or not _is_sha256(challenge_identity.get("projected_frame_records_sha256")):
         raise UnifiedContentReviewError("Challenge visual payload or projected-record identities are malformed")

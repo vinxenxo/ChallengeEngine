@@ -2,7 +2,7 @@
   "schema": "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT",
-  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check all three content types, including proposal-only temporal alignment parity for Challenge source/delivery boundaries, without creating media or renderer-native input.",
+  "purpose": "Orchestrate seven deterministic in-memory C11-D review harnesses and cross-check all three content types, including proposal-only temporal alignment, delivery timebase and technical audio timeline/profile parity, without creating media or renderer-native input.",
   "supported_content_types": [
     "visual_loops",
     "visual_drills",
@@ -80,6 +80,10 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
       "sha256": "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "sha256": "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238"
     }
   ],
   "runtime_harnesses": [
@@ -141,7 +145,8 @@
     "challenge_coordinate_sample_composition": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "loop_drill_editorial_field_windows": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
     "challenge_temporal_alignment": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
-    "unified_delivery_timebase_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
+    "unified_delivery_timebase_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
+    "unified_audio_music_delivery_policy": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
   },
   "approval_state": {
     "renderer_baseline_approval": "EXTERNAL_GATE_NOT_ASSERTED_BY_THIS_REVIEW",
@@ -159,7 +164,12 @@
     "drill_editorial_field_mapping_approved": false,
     "loop_drill_editorial_field_window_policy_approved": false,
     "challenge_temporal_alignment_policy_approved": false,
-    "unified_delivery_timebase_policy_approved": false
+    "unified_delivery_timebase_policy_approved": false,
+    "audio_delivery_profile_policy_approved": false,
+    "music_selection_policy_approved": false,
+    "mixing_policy_approved": false,
+    "loudness_policy_approved": false,
+    "audio_timeline_policy_approved": false
   },
   "execution_boundary": {
     "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
