@@ -1,0 +1,524 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-editorial-field-routing-visibility-reconciliation:v1",
+  "title": "C11-D editorial field routing/visibility reconciliation proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "authority",
+    "sources",
+    "scope",
+    "field_domain_separation",
+    "routing_policy",
+    "field_routes",
+    "source_lineage",
+    "approval_state",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-EDITORIAL-FIELD-ROUTING-VISIBILITY-RECONCILIATION-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_RECONCILIATION_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_c11c_manifest_path",
+        "frozen_c11c_manifest_sha256",
+        "owner_boundary",
+        "matrix_state"
+      ],
+      "properties": {
+        "frozen_c11c_manifest_path": {
+          "const": "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "owner_boundary": {
+          "const": "C11-D_ONLY"
+        },
+        "matrix_state": {
+          "const": "RECONCILIATION_ONLY_PROPOSALS_REMAIN_UNAPPROVED"
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_composition",
+        "neutral_frame_program",
+        "semantic_region_proposal",
+        "challenge_phase_field_window_proposal",
+        "loop_drill_field_window_proposal",
+        "field_consumption_audit",
+        "temporal_bound_preview"
+      ],
+      "properties": {
+        "logical_composition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "neutral_frame_program": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_region_proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "challenge_phase_field_window_proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "loop_drill_field_window_proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field_consumption_audit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "temporal_bound_preview": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supported_content_types",
+        "required_field_instances",
+        "visual_field_instances",
+        "metadata_only_field_instances",
+        "dynamic_request_transport",
+        "raw_editorial_values_in_visual_payload_summary",
+        "geometry",
+        "visibility",
+        "longform"
+      ],
+      "properties": {
+        "supported_content_types": {
+          "const": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "required_field_instances": {
+          "const": 14
+        },
+        "visual_field_instances": {
+          "const": 11
+        },
+        "metadata_only_field_instances": {
+          "const": 3
+        },
+        "dynamic_request_transport": {
+          "const": "NOT_IMPLEMENTED_BY_THIS_RECONCILIATION"
+        },
+        "raw_editorial_values_in_visual_payload_summary": {
+          "const": "NOT_EXPOSED"
+        },
+        "geometry": {
+          "const": "SEMANTIC_REGION_IDS_ONLY_NO_COORDINATES_OR_BOUNDS"
+        },
+        "visibility": {
+          "const": "PROPOSED_RULES_ONLY_NO_EVALUATED_WINDOWS"
+        },
+        "longform": {
+          "const": "UNSUPPORTED_FAIL_CLOSED"
+        }
+      }
+    },
+    "field_domain_separation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "universal_editorial_namespace",
+        "challenge_phase_namespace",
+        "challenge_phase_policy_id",
+        "challenge_phase_fields",
+        "challenge_phase_fields_are_aliases_of_universal_fields",
+        "prohibited_implicit_aliases",
+        "rule"
+      ],
+      "properties": {
+        "universal_editorial_namespace": {
+          "const": "D9_9_UNIVERSAL_PRODUCER_FIELDS"
+        },
+        "challenge_phase_namespace": {
+          "const": "CHALLENGE_004_PHASE_EDITORIAL_FIELDS"
+        },
+        "challenge_phase_policy_id": {
+          "const": "C11D_SAME_NAME_EDITORIAL_FIELD_TO_PHASE_FULL_WINDOW_V1"
+        },
+        "challenge_phase_fields": {
+          "const": [
+            "hook",
+            "reveal",
+            "cta"
+          ]
+        },
+        "challenge_phase_fields_are_aliases_of_universal_fields": {
+          "const": false
+        },
+        "prohibited_implicit_aliases": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "phase_field",
+              "universal_field"
+            ],
+            "properties": {
+              "phase_field": {
+                "enum": [
+                  "hook",
+                  "reveal",
+                  "cta"
+                ]
+              },
+              "universal_field": {
+                "enum": [
+                  "title",
+                  "subtitle",
+                  "call_to_action"
+                ]
+              }
+            }
+          }
+        },
+        "rule": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "routing_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_state",
+        "mapping_agreement_required",
+        "semantic_target_only",
+        "geometry_source",
+        "challenge_overlay_geometry",
+        "window_interval_convention",
+        "loop_drill_rule",
+        "challenge_universal_rule",
+        "language_rule",
+        "empty_value_rule",
+        "unknown_field_rule",
+        "text_transformations",
+        "simulation_truth"
+      ],
+      "properties": {
+        "mapping_state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "mapping_agreement_required": {
+          "const": "LOGICAL_COMPOSITION_FRAME_PROGRAM_AND_SEMANTIC_REGION_PROPOSAL_MUST_AGREE"
+        },
+        "semantic_target_only": {
+          "const": "REGION_IDS_ARE_ROLES_NOT_GEOMETRY"
+        },
+        "geometry_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "challenge_overlay_geometry": {
+          "const": "UNRESOLVED_NO_COORDINATES; DO_NOT_USE_EXPLORATORY_NORMALIZED_BOUNDS"
+        },
+        "window_interval_convention": {
+          "const": "ZERO_BASED_HALF_OPEN"
+        },
+        "loop_drill_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "challenge_universal_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "empty_value_rule": {
+          "const": "SUPPRESS_WITH_NO_WINDOW"
+        },
+        "unknown_field_rule": {
+          "const": "FAIL_CLOSED"
+        },
+        "text_transformations": {
+          "const": "NONE_EXACT_SOURCE_VALUE_REQUIRED"
+        },
+        "simulation_truth": {
+          "const": "NOT_CONSUMED_OR_MAPPED"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 27,
+      "maxItems": 27,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "routing_matrix_approved",
+        "semantic_region_mapping_approved",
+        "editorial_field_window_policy_approved",
+        "editorial_values_visually_consumed",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "routing_matrix_approved": {
+          "const": false
+        },
+        "semantic_region_mapping_approved": {
+          "const": false
+        },
+        "editorial_field_window_policy_approved": {
+          "const": false
+        },
+        "editorial_values_visually_consumed": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "persistent_report_written",
+        "payload_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "output_artifact_path",
+        "c11c_source_mutation",
+        "renderer",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_RECONCILIATION_ONLY"
+        },
+        "persistent_report_written": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "field_routes": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "source_field",
+          "field_kind",
+          "semantic_region_id",
+          "region_mapping_state",
+          "geometry_state",
+          "visibility_policy_id",
+          "visibility_rule",
+          "visibility_state",
+          "evaluated_window",
+          "payload_consumption_state",
+          "approval_state"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "challenges",
+              "visual_loops",
+              "visual_drills"
+            ]
+          },
+          "source_field": {
+            "enum": [
+              "title",
+              "subtitle",
+              "call_to_action",
+              "language",
+              "player_name",
+              "challenge_label"
+            ]
+          },
+          "field_kind": {
+            "enum": [
+              "VISUAL_TEXT",
+              "METADATA"
+            ]
+          },
+          "semantic_region_id": {
+            "enum": [
+              "HEADER",
+              "FOOTER",
+              "CHALLENGE_OVERLAY",
+              null
+            ]
+          },
+          "region_mapping_state": {
+            "enum": [
+              "PROPOSED_NOT_APPROVED",
+              "NOT_APPLICABLE_METADATA_ONLY"
+            ]
+          },
+          "geometry_state": {
+            "enum": [
+              "UNRESOLVED_NO_COORDINATES",
+              "NOT_APPLICABLE_METADATA_ONLY"
+            ]
+          },
+          "visibility_policy_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "visibility_rule": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "visibility_state": {
+            "enum": [
+              "NO_D9_9_FIELD_WINDOW_MAPPING",
+              "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+              "METADATA_ONLY_NO_WINDOW"
+            ]
+          },
+          "evaluated_window": {
+            "type": "null"
+          },
+          "payload_consumption_state": {
+            "enum": [
+              "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+              "METADATA_NOT_VISUAL"
+            ]
+          },
+          "approval_state": {
+            "enum": [
+              "PROPOSED_NOT_APPROVED",
+              "NOT_A_VISUAL_ROUTING_DECISION"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

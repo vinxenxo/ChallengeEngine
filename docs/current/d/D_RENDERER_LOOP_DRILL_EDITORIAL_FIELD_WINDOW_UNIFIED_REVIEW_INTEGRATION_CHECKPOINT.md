@@ -51,3 +51,7 @@ The new seven-harness Godot orchestration has **not** been executed in the prepa
 ## Next action
 
 Apply `C11D_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.zip`, run the proposal, unified review, lifecycle, baseline-candidate preflight and aggregate suite in Windows, and preserve the eight unresolved gates. Do not approve the policy or enable the renderer merely because contracts pass.
+
+## Joined field-routing/visibility matrix — 2026-10-11
+
+`D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now cross-checks the Loop/Drill mapping alongside semantic region routing for all three content types. The six full-span Loop/Drill rules remain proposed, are not evaluated to concrete per-field windows, and are not approved. Current runtime summary does not expose the raw editorial values, so `visibility_windows` continues to be `null`. This matrix does not modify this integration's contracts or add a harness.

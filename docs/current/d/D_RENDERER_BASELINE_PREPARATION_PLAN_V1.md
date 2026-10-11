@@ -1,3 +1,11 @@
+# CURRENT AUTHORITATIVE UPDATE — editorial field routing/visibility reconciliation (2026-10-11)
+
+`D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now joins existing field-to-region and visibility-window proposals without promoting them. It covers 14 D9.9 field instances across Challenges (6), Visual Loops (4) and Visual Drills (4); review-chain parity remains 14/14 and current visual payload consumption remains 0/14. Loop/Drill declare six full-span rules but actual `evaluated_window` stays null because raw editorial strings are not exposed in the current runtime summary. Challenge D9.9 universal fields have no corresponding field-window mapping. Challenge phase fields `hook/reveal/cta` remain a different namespace and must not be treated as aliases for `title/subtitle/call_to_action`. `CHALLENGE_OVERLAY` remains a semantic role, not a fixed geometry; exploratory normalized bounds are not used.
+
+The new source-bound reconciliation contract pins 24 existing artifacts. Preparation-workspace verification: 13/13 focused tests PASS; CLI confirms 14/14 fields, 14/14 review parity, 0/14 payload consumption and zero evaluated visibility windows. This is proposal reconciliation only, not policy approval, renderer input or runtime acceptance. The new test remains outside the aggregate until the user confirms Windows acceptance. Next gate: user runs the focused test, field-consumption audit, unified review, lifecycle and candidate preflight; keep `baseline_approval=MISSING`, five blockers, renderer OFF, media false, D4.8 BLOCKED and release authority NONE.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — editorial field-consumption gap audit (2026-10-11)
 
 The fixed-fixture request/payload join is confirmed green by the user. The next bounded plan item, implemented as `D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md`, now audits canonical editorial fields against the actual frame-program/review chain and the pinned visual payload harnesses. Result in the preparation workspace: **11/11 tests**, canonical-to-review parity 14/14, but payload visual consumption 0/14. This is intentional evidence, not an implementation failure: current harnesses do not consume D9.9 text values as visual payload fields, and region geometry plus per-field visibility windows remain unresolved/unapproved.

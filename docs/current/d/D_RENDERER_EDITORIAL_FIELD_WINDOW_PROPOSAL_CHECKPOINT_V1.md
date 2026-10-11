@@ -36,3 +36,7 @@ The policy ID is `C11D_SAME_NAME_EDITORIAL_FIELD_TO_PHASE_FULL_WINDOW_V1`. It as
 3. Only after Godot reports PASS, run `append_editorial_field_window_proposal_doc_updates.ps1` and the focused regression suite.
 
 A Python contract PASS is not the same as the Godot runtime PASS. Neither result approves the policy, enables the renderer, authorizes D4.8, or freezes the D baseline.
+
+## Namespace reconciliation — 2026-10-11
+
+The current joined field routing/visibility matrix is `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md`. The Challenge-only phase mapping (`hook`, `reveal`, `cta`) is distinct from D9.9 universal producer fields; no implicit aliases are allowed. Thus this phase proposal does not supply visibility windows for D9.9 `title`, `subtitle`, `call_to_action`, `player_name`, or `challenge_label`. The proposal remains unapproved and geometry remains out of scope.

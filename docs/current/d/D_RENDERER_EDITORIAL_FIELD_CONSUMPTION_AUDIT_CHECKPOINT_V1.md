@@ -38,3 +38,7 @@ Do not add text to simulation truth, C11-C payload internals, or renderer output
 ## Governance locks
 
 `candidate_input_admissible=false`; `video_render_ready=false`; `renderer=OFF`; `media_created=false`; no renderer-native input; no dispatch; `D4.8=BLOCKED`; `release_authority=NONE`; D9.14/D9.16 blocked; D9.17 `BLOCKED_NO_GO`; D10 blocked. The five candidate-preflight blockers remain unchanged. Do not approve or freeze a baseline from this audit PASS.
+
+## Follow-up — routing/visibility reconciliation (2026-10-11)
+
+`D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now joins the existing region and field-window declarations into a 14-instance matrix. It preserves the original audit result: review-chain parity 14/14, visual payload consumption 0/14. Six Loop/Drill field-window rules exist as proposals but are not evaluated; all five visual D9.9 Challenge fields remain without a matching window policy. Challenge phase fields `hook/reveal/cta` are not aliases for D9.9 `title/subtitle/call_to_action`. No field consumer, geometry or timing policy is approved by the reconciliation.

@@ -1,0 +1,414 @@
+{
+  "schema": "C11-D-RENDERER-EDITORIAL-FIELD-ROUTING-VISIBILITY-RECONCILIATION-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_RECONCILIATION_NOT_RENDERER_INPUT",
+  "purpose": "Join existing editorial source fields, semantic region roles, and visibility-policy scopes into one fail-closed reconciliation matrix without promoting any proposal, defining layout geometry, fabricating evaluated windows, or emitting renderer input.",
+  "authority": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "owner_boundary": "C11-D_ONLY",
+    "matrix_state": "RECONCILIATION_ONLY_PROPOSALS_REMAIN_UNAPPROVED"
+  },
+  "sources": {
+    "logical_composition": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+    "neutral_frame_program": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+    "semantic_region_proposal": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1.json",
+    "challenge_phase_field_window_proposal": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+    "loop_drill_field_window_proposal": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+    "field_consumption_audit": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
+    "temporal_bound_preview": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json"
+  },
+  "scope": {
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "required_field_instances": 14,
+    "visual_field_instances": 11,
+    "metadata_only_field_instances": 3,
+    "dynamic_request_transport": "NOT_IMPLEMENTED_BY_THIS_RECONCILIATION",
+    "raw_editorial_values_in_visual_payload_summary": "NOT_EXPOSED",
+    "geometry": "SEMANTIC_REGION_IDS_ONLY_NO_COORDINATES_OR_BOUNDS",
+    "visibility": "PROPOSED_RULES_ONLY_NO_EVALUATED_WINDOWS",
+    "longform": "UNSUPPORTED_FAIL_CLOSED"
+  },
+  "field_domain_separation": {
+    "universal_editorial_namespace": "D9_9_UNIVERSAL_PRODUCER_FIELDS",
+    "challenge_phase_namespace": "CHALLENGE_004_PHASE_EDITORIAL_FIELDS",
+    "challenge_phase_policy_id": "C11D_SAME_NAME_EDITORIAL_FIELD_TO_PHASE_FULL_WINDOW_V1",
+    "challenge_phase_fields": [
+      "hook",
+      "reveal",
+      "cta"
+    ],
+    "challenge_phase_fields_are_aliases_of_universal_fields": false,
+    "prohibited_implicit_aliases": [
+      {
+        "phase_field": "hook",
+        "universal_field": "title"
+      },
+      {
+        "phase_field": "reveal",
+        "universal_field": "subtitle"
+      },
+      {
+        "phase_field": "cta",
+        "universal_field": "call_to_action"
+      }
+    ],
+    "rule": "The challenge phase-field policy is a separate source namespace. It MUST NOT supply visibility windows for D9.9 universal fields unless a future explicit, independently reviewed alias contract is added."
+  },
+  "routing_policy": {
+    "mapping_state": "PROPOSED_NOT_APPROVED",
+    "mapping_agreement_required": "LOGICAL_COMPOSITION_FRAME_PROGRAM_AND_SEMANTIC_REGION_PROPOSAL_MUST_AGREE",
+    "semantic_target_only": "REGION_IDS_ARE_ROLES_NOT_GEOMETRY",
+    "geometry_source": "D1_5_SHARED_FRAME_AND_EXISTING_PROFILE_COMPOSITION; NOT REPLACED BY THIS MATRIX",
+    "challenge_overlay_geometry": "UNRESOLVED_NO_COORDINATES; DO_NOT_USE_EXPLORATORY_NORMALIZED_BOUNDS",
+    "window_interval_convention": "ZERO_BASED_HALF_OPEN",
+    "loop_drill_rule": "For non-empty title, subtitle, and call_to_action, retain the existing proposed full continuous-span rule [0, materialized_payload.frame_count); do not compute a concrete interval when raw editorial value evaluation is unavailable.",
+    "challenge_universal_rule": "No explicit visibility-window mapping exists for D9.9 universal challenge fields in the current challenge phase-window contract; evaluated_window MUST remain null.",
+    "language_rule": "language is metadata-only and MUST NOT map to a visual region or visibility window.",
+    "empty_value_rule": "SUPPRESS_WITH_NO_WINDOW",
+    "unknown_field_rule": "FAIL_CLOSED",
+    "text_transformations": "NONE_EXACT_SOURCE_VALUE_REQUIRED",
+    "simulation_truth": "NOT_CONSUMED_OR_MAPPED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
+      "sha256": "101bdf4234fbbafa7f591439800f8985839ad60ed554dd03481a769590648657"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+      "sha256": "c09d570865c8fcb8b0de3c1bef200a118e6801a476ab040a819b1fb698d30584"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1.json",
+      "sha256": "99f08cdf80443bb9aa37afbbf8dc2570973df1b71ed8c0b76ffa761fdad9e6e7"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "85269f7c2624637382e7573709076ccf6aecb74ebdfe187f564d22176b033c8b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_semantic_regions.py",
+      "sha256": "7f10aea38bf0ee9a9111db0cc0673466f54ef168511be80a75ce439fe9ee9943"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "216c9a2574fa3cc05d3cdc247a8683d334ea98f22701754c9a5b4e6ab9e68c2b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_window_proposal.py",
+      "sha256": "52279d96093f6c201ac36931cce82a7153ba38cef57a39df027ec14f20c2f4de"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "e27b679968da67c368882b915f2d7993472331031c24a783fb039021d7c5d13e"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_loop_drill_editorial_field_windows.py",
+      "sha256": "98d195413e24fe35c41e4d88fcac3d3f604633a4beed0764aa45a703635cdf90"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
+      "sha256": "4601f10f15d0404c0630790ed08f2157dbc0e848a1edad9db4e13c012acc6be5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
+      "sha256": "8608c91c8a66b65b87867282c1a345ab79cbc7837b176ee058e6cb303eeb5d6b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_consumption_audit.py",
+      "sha256": "7001098cec9239027784abfc20ed17024f5bb45993b20f308e1debfb7fd5b85a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json",
+      "sha256": "7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+      "sha256": "b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_SCHEMA_V1.json",
+      "sha256": "98503bb96f2ff0b89ab65d31914e8369076490974e468ee706ec19cda24edd40"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_routing_visibility_reconciliation.py",
+      "sha256": "ac490fd9ab5a6794ff673c8af71eac39ccefa1884baaa84cd3c96a888f1b5e7d"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_editorial_field_routing_visibility_reconciliation.py",
+      "sha256": "1f29f4aa47361df410a7a3d7eafb31d438e6dcf0a31cd4a3ad67c7cfd7334b75"
+    }
+  ],
+  "approval_state": {
+    "routing_matrix_approved": false,
+    "semantic_region_mapping_approved": false,
+    "editorial_field_window_policy_approved": false,
+    "editorial_values_visually_consumed": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "execution_boundary": {
+    "mode": "IN_MEMORY_RECONCILIATION_ONLY",
+    "persistent_report_written": false,
+    "payload_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "output_artifact_path": null,
+    "c11c_source_mutation": false,
+    "renderer": "OFF",
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "field_routes": [
+    {
+      "content_type": "challenges",
+      "source_field": "title",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "HEADER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "NO_D9_9_FIELD_WINDOW_MAPPING",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "challenges",
+      "source_field": "subtitle",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "HEADER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "NO_D9_9_FIELD_WINDOW_MAPPING",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "challenges",
+      "source_field": "call_to_action",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "FOOTER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "NO_D9_9_FIELD_WINDOW_MAPPING",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "challenges",
+      "source_field": "language",
+      "field_kind": "METADATA",
+      "semantic_region_id": null,
+      "region_mapping_state": "NOT_APPLICABLE_METADATA_ONLY",
+      "geometry_state": "NOT_APPLICABLE_METADATA_ONLY",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "METADATA_ONLY_NO_WINDOW",
+      "evaluated_window": null,
+      "payload_consumption_state": "METADATA_NOT_VISUAL",
+      "approval_state": "NOT_A_VISUAL_ROUTING_DECISION"
+    },
+    {
+      "content_type": "challenges",
+      "source_field": "player_name",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "CHALLENGE_OVERLAY",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "NO_D9_9_FIELD_WINDOW_MAPPING",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "challenges",
+      "source_field": "challenge_label",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "CHALLENGE_OVERLAY",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "NO_D9_9_FIELD_WINDOW_MAPPING",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_loops",
+      "source_field": "title",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "HEADER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
+      "visibility_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN_IF_NONEMPTY",
+      "visibility_state": "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_loops",
+      "source_field": "subtitle",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "HEADER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
+      "visibility_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN_IF_NONEMPTY",
+      "visibility_state": "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_loops",
+      "source_field": "call_to_action",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "FOOTER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
+      "visibility_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN_IF_NONEMPTY",
+      "visibility_state": "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_loops",
+      "source_field": "language",
+      "field_kind": "METADATA",
+      "semantic_region_id": null,
+      "region_mapping_state": "NOT_APPLICABLE_METADATA_ONLY",
+      "geometry_state": "NOT_APPLICABLE_METADATA_ONLY",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "METADATA_ONLY_NO_WINDOW",
+      "evaluated_window": null,
+      "payload_consumption_state": "METADATA_NOT_VISUAL",
+      "approval_state": "NOT_A_VISUAL_ROUTING_DECISION"
+    },
+    {
+      "content_type": "visual_drills",
+      "source_field": "title",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "HEADER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
+      "visibility_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN_IF_NONEMPTY",
+      "visibility_state": "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_drills",
+      "source_field": "subtitle",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "HEADER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
+      "visibility_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN_IF_NONEMPTY",
+      "visibility_state": "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_drills",
+      "source_field": "call_to_action",
+      "field_kind": "VISUAL_TEXT",
+      "semantic_region_id": "FOOTER",
+      "region_mapping_state": "PROPOSED_NOT_APPROVED",
+      "geometry_state": "UNRESOLVED_NO_COORDINATES",
+      "visibility_policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
+      "visibility_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN_IF_NONEMPTY",
+      "visibility_state": "PROPOSED_RULE_NOT_EVALUATED_RAW_EDITORIAL_VALUES_NOT_EXPOSED",
+      "evaluated_window": null,
+      "payload_consumption_state": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+      "approval_state": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "content_type": "visual_drills",
+      "source_field": "language",
+      "field_kind": "METADATA",
+      "semantic_region_id": null,
+      "region_mapping_state": "NOT_APPLICABLE_METADATA_ONLY",
+      "geometry_state": "NOT_APPLICABLE_METADATA_ONLY",
+      "visibility_policy_id": null,
+      "visibility_rule": null,
+      "visibility_state": "METADATA_ONLY_NO_WINDOW",
+      "evaluated_window": null,
+      "payload_consumption_state": "METADATA_NOT_VISUAL",
+      "approval_state": "NOT_A_VISUAL_ROUTING_DECISION"
+    }
+  ]
+}
