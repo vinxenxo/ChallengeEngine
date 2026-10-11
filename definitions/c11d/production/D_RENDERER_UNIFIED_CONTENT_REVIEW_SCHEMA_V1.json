@@ -34,7 +34,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 16,
+      "minItems": 17,
       "items": {
         "type": "object",
         "required": [
@@ -53,7 +53,7 @@
         },
         "additionalProperties": false
       },
-      "maxItems": 16
+      "maxItems": 17
     },
     "content_items": {
       "type": "array",
@@ -334,6 +334,134 @@
               }
             },
             "additionalProperties": false
+          },
+          "temporal_alignment": {
+            "type": "object",
+            "required": [
+              "policy_id",
+              "policy_state",
+              "proposal_contract_sha256",
+              "preview_sha256",
+              "source_fps",
+              "source_total_frames",
+              "source_boundaries",
+              "source_phase_frame_counts",
+              "delivery_fps",
+              "delivery_total_frames",
+              "delivery_boundaries",
+              "delivery_phase_frame_counts",
+              "phase_order",
+              "duration_seconds",
+              "phase_boundaries_exact",
+              "winning_anchor_source_absolute_frame_index",
+              "winning_anchor_delivery_absolute_frame_index",
+              "editorial_windows_policy_state",
+              "sample_selection_policy_state",
+              "interpolation",
+              "delivery_candidate_materialized",
+              "policy_approved",
+              "renderer_native_input_emitted"
+            ],
+            "properties": {
+              "policy_id": {
+                "const": "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1"
+              },
+              "policy_state": {
+                "const": "PROPOSED_NOT_APPROVED"
+              },
+              "proposal_contract_sha256": {
+                "const": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+              },
+              "preview_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source_fps": {
+                "const": 60
+              },
+              "source_total_frames": {
+                "const": 900
+              },
+              "source_boundaries": {
+                "const": [
+                  0,
+                  180,
+                  600,
+                  780,
+                  900
+                ]
+              },
+              "source_phase_frame_counts": {
+                "const": [
+                  180,
+                  420,
+                  180,
+                  120
+                ]
+              },
+              "delivery_fps": {
+                "const": 30
+              },
+              "delivery_total_frames": {
+                "const": 450
+              },
+              "delivery_boundaries": {
+                "const": [
+                  0,
+                  90,
+                  300,
+                  390,
+                  450
+                ]
+              },
+              "delivery_phase_frame_counts": {
+                "const": [
+                  90,
+                  210,
+                  90,
+                  60
+                ]
+              },
+              "phase_order": {
+                "const": [
+                  "HOOK",
+                  "GAME",
+                  "REVEAL",
+                  "CTA"
+                ]
+              },
+              "duration_seconds": {
+                "const": 15
+              },
+              "phase_boundaries_exact": {
+                "const": true
+              },
+              "winning_anchor_source_absolute_frame_index": {
+                "const": 574
+              },
+              "winning_anchor_delivery_absolute_frame_index": {
+                "const": 287
+              },
+              "editorial_windows_policy_state": {
+                "const": "PROPOSED_NOT_APPROVED"
+              },
+              "sample_selection_policy_state": {
+                "const": "PROPOSED_NOT_APPROVED"
+              },
+              "interpolation": {
+                "const": "NONE"
+              },
+              "delivery_candidate_materialized": {
+                "const": false
+              },
+              "policy_approved": {
+                "const": false
+              },
+              "renderer_native_input_emitted": {
+                "const": false
+              }
+            },
+            "additionalProperties": false
           }
         },
         "additionalProperties": true,
@@ -352,7 +480,8 @@
             "then": {
               "required": [
                 "sample_selection",
-                "coordinate_sample_composition"
+                "coordinate_sample_composition",
+                "temporal_alignment"
               ]
             }
           },
@@ -525,7 +654,8 @@
         "coordinate_projection_parity",
         "challenge_sample_selection_proposal_parity",
         "challenge_coordinate_sample_composition_proposal_parity",
-        "loop_drill_editorial_field_window_proposal_parity"
+        "loop_drill_editorial_field_window_proposal_parity",
+        "challenge_temporal_alignment_policy_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -565,6 +695,9 @@
           "const": true
         },
         "loop_drill_editorial_field_window_proposal_parity": {
+          "const": true
+        },
+        "challenge_temporal_alignment_policy_parity": {
           "const": true
         }
       },

@@ -173,7 +173,7 @@ class UnifiedContentReviewTests(unittest.TestCase):
 
     def test_contract_scope_and_lineage(self) -> None:
         self.assertEqual(self.contract["supported_content_types"], ["visual_loops", "visual_drills", "challenges"])
-        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 16)
+        self.assertEqual(len(EXPECTED_SOURCE_LINEAGE), 17)
         self.assertEqual([x["name"] for x in EXPECTED_HARNESSES], ["visual_payloads", "challenge_runtime", "profile_identity", "delivery_timeline", "editorial_windows", "challenge_visual_payload", "coordinate_projection"])
 
     def test_synthetic_join_passes_schema_and_digest(self) -> None:
@@ -196,7 +196,17 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(report["cross_artifact_checks"]["challenge_sample_selection_proposal_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["challenge_coordinate_sample_composition_proposal_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["loop_drill_editorial_field_window_proposal_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["challenge_temporal_alignment_policy_parity"], True)
         challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
+        temporal = challenge_item["temporal_alignment"]
+        self.assertEqual(temporal["policy_id"], "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1")
+        self.assertEqual(temporal["source_boundaries"], [0, 180, 600, 780, 900])
+        self.assertEqual(temporal["delivery_boundaries"], [0, 90, 300, 390, 450])
+        self.assertEqual(temporal["winning_anchor_source_absolute_frame_index"], 574)
+        self.assertEqual(temporal["winning_anchor_delivery_absolute_frame_index"], 287)
+        self.assertFalse(temporal["policy_approved"])
+        self.assertFalse(temporal["delivery_candidate_materialized"])
+        self.assertRegex(temporal["preview_sha256"], r"^[a-f0-9]{64}$")
         self.assertEqual(challenge_item["materialization"], "IN_MEMORY_ONLY_SOURCE_TIMEBASE_VISUAL_PAYLOAD_MATERIALIZED_NOT_RENDERER_INPUT")
         self.assertEqual(challenge_item["coordinate_projection"]["projected_records"], 420)
         self.assertEqual(challenge_item["sample_selection"]["source_snapshot_count"], 420)
@@ -331,6 +341,29 @@ class UnifiedContentReviewTests(unittest.TestCase):
         with self.assertRaises(UnifiedContentReviewError):
             validate_harness_summaries(summaries)
 
+    def test_runner_summary_reports_temporal_alignment_as_proposal_only(self) -> None:
+        source = (ROOT / "tools/c11d/d9/run_d_renderer_unified_content_review.py").read_text(encoding="utf-8")
+        self.assertIn("challenge_temporal_alignment=", source)
+        self.assertIn("BOUNDARIES_EXACT_PROPOSAL_ONLY", source)
+        self.assertNotIn("cross_artifact=13/13", source)
+
+    def test_temporal_alignment_policy_cannot_self_promote(self) -> None:
+        report = self.report()
+        challenge_item = next(item for item in report["content_items"] if item["content_type"] == "challenges")
+        challenge_item["temporal_alignment"]["policy_approved"] = True
+        report.pop("review_manifest_sha256")
+        report["review_manifest_sha256"] = sha256_json(report)
+        with self.assertRaisesRegex(UnifiedContentReviewError, "Unified review manifest failed JSON Schema"):
+            validate_review_manifest(report, self.schema)
+
+    def test_temporal_alignment_preview_mutation_is_rejected(self) -> None:
+        from d_renderer_challenge_temporal_alignment_policy import build_preview as build_temporal_preview
+        altered = build_temporal_preview(ROOT, verify_source_lineage=False)
+        altered["delivery_timeline"]["boundaries"][1] = 91
+        with patch("d_renderer_unified_content_review.build_temporal_alignment_preview", return_value=altered):
+            with self.assertRaisesRegex(UnifiedContentReviewError, "Challenge temporal-alignment proposal invalid"):
+                validate_harness_summaries(make_summaries())
+
     def test_renderer_activation_rejected(self) -> None:
         report = self.report()
         report["execution_boundary"]["renderer_activation"] = True
@@ -372,8 +405,8 @@ def main() -> int:
     except ImportError:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
-    source_label = "source_files=16/16" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/16)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=13/13 | negative=14/14 | source_lineage=16/16 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    source_label = "source_files=17/17" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/17)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=14/14 | negative=16/16 | source_lineage=17/17 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 

@@ -20,6 +20,11 @@ from d_renderer_loop_drill_editorial_field_windows import (
     FieldWindowProposalError,
     validate_contract as validate_loop_drill_editorial_field_window_contract,
 )
+from d_renderer_challenge_temporal_alignment_policy import (
+    ChallengeTemporalAlignmentError,
+    build_preview as build_temporal_alignment_preview,
+    validate_preview as validate_temporal_alignment_preview,
+)
 
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
@@ -45,6 +50,7 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json", "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json", "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"),
     ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"),
 ]
 EXPECTED_UNRESOLVED_GATES = [
     "VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED",
@@ -134,6 +140,8 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         raise UnifiedContentReviewError("Loop/Drill editorial field-window mappings must be present for review only and remain unapproved")
     if policy.get("loop_drill_editorial_field_windows") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
         raise UnifiedContentReviewError("Loop/Drill editorial field-window proposal must remain review-only and unapplied")
+    if policy.get("challenge_temporal_alignment") != "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED":
+        raise UnifiedContentReviewError("Challenge temporal alignment must remain proposal-only and unapplied")
     approval_state = contract.get("approval_state", {})
     if (
         approval_state.get("simulation_sample_selection_policy_approved") is not False
@@ -142,8 +150,9 @@ def validate_contract(project_root: Path | str | None = None, *, verify_sources:
         or approval_state.get("loop_editorial_field_mapping_approved") is not False
         or approval_state.get("drill_editorial_field_mapping_approved") is not False
         or approval_state.get("loop_drill_editorial_field_window_policy_approved") is not False
+        or approval_state.get("challenge_temporal_alignment_policy_approved") is not False
     ):
-        raise UnifiedContentReviewError("Unified review cannot approve sample/composition or Loop/Drill editorial window policies")
+        raise UnifiedContentReviewError("Unified review cannot approve sample/composition, temporal alignment, or Loop/Drill editorial window policies")
     boundary = contract.get("execution_boundary", {})
     required_boundary = {
         "mode": "SEQUENTIAL_HEADLESS_IN_MEMORY_REVIEW_ONLY",
@@ -590,6 +599,52 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
     if composition_contract.get("governance_locks", {}).get("policy_approved") is not False or composition_contract.get("governance_locks", {}).get("coordinate_projection_policy_approved") is not False or composition_contract.get("governance_locks", {}).get("sample_selection_policy_approved") is not False:
         raise UnifiedContentReviewError("Coordinate/sample composition policy approval locks must remain false")
 
+    # Join Challenge source/delivery phase boundaries to a separately versioned
+    # temporal-alignment proposal. This is a consistency check only: it neither
+    # resamples snapshots nor infers editorial visibility or renderer readiness.
+    try:
+        temporal_alignment_preview = build_temporal_alignment_preview(root, verify_source_lineage=False)
+        validate_temporal_alignment_preview(temporal_alignment_preview, root, verify_source_lineage=False)
+    except ChallengeTemporalAlignmentError as exc:
+        raise UnifiedContentReviewError(f"Challenge temporal-alignment proposal invalid: {exc}") from exc
+    temporal_source = temporal_alignment_preview.get("source_timeline", {})
+    temporal_delivery = temporal_alignment_preview.get("delivery_timeline", {})
+    source_boundaries = [source_segments[0].get("start_frame")] + [segment.get("end_frame") for segment in source_segments]
+    delivery_boundaries = [delivery_segments[0].get("start_frame")] + [segment.get("end_frame") for segment in delivery_segments]
+    source_phase_counts = [segment.get("frame_count") for segment in source_segments]
+    delivery_phase_counts = [segment.get("frame_count") for segment in delivery_segments]
+    expected_phase_order = ["HOOK", "GAME", "REVEAL", "CTA"]
+    temporal_phase_alignment = temporal_alignment_preview.get("phase_alignment", [])
+    if temporal_source.get("boundaries") != source_boundaries or temporal_source.get("phase_frames") != source_phase_counts or temporal_source.get("fps") != source_timeline.get("fps") or temporal_source.get("total_frames") != source_timeline.get("total_frames"):
+        raise UnifiedContentReviewError("Challenge temporal-alignment source timeline parity mismatch")
+    if temporal_delivery.get("boundaries") != delivery_boundaries or temporal_delivery.get("phase_frames") != delivery_counts or temporal_delivery.get("fps") != delivery_fps or temporal_delivery.get("total_frames") != delivery_total_frames:
+        raise UnifiedContentReviewError("Challenge temporal-alignment delivery timeline parity mismatch")
+    if [phase.get("phase") for phase in temporal_phase_alignment] != expected_phase_order:
+        raise UnifiedContentReviewError("Challenge temporal-alignment phase order mismatch")
+    for index, phase in enumerate(temporal_phase_alignment):
+        expected_source_range = [source_segments[index].get("start_frame"), source_segments[index].get("end_frame")]
+        expected_delivery_range = [delivery_segments[index].get("start_frame"), delivery_segments[index].get("end_frame")]
+        if phase.get("source_range") != expected_source_range or phase.get("delivery_range") != expected_delivery_range or phase.get("boundary_exact") is not True:
+            raise UnifiedContentReviewError(f"Challenge temporal-alignment phase range mismatch: {phase.get('phase')}")
+    temporal_windows = temporal_alignment_preview.get("editorial_windows", {})
+    actual_field_ranges = {
+        row.get("field_id"): None if row.get("visibility_range") is None else [row["visibility_range"].get("start_frame"), row["visibility_range"].get("end_frame")]
+        for row in window_rows
+    }
+    if temporal_windows.get("state") != "PROPOSED_NOT_APPROVED" or temporal_windows.get("expected_field_ranges") != actual_field_ranges:
+        raise UnifiedContentReviewError("Challenge temporal-alignment editorial window parity mismatch")
+    temporal_sample = temporal_alignment_preview.get("sample_selection", {})
+    if temporal_sample.get("state") != proposal.get("proposal_state") or (temporal_sample.get("source_game_snapshots"), temporal_sample.get("delivery_game_snapshots"), temporal_sample.get("stride"), temporal_sample.get("interpolation")) != (assessment.get("source_snapshot_count"), assessment.get("delivery_snapshot_count"), assessment.get("stride"), sample_policy.get("interpolation")):
+        raise UnifiedContentReviewError("Challenge temporal-alignment sample-selection parity mismatch")
+    temporal_anchor = temporal_alignment_preview.get("winning_anchor", {})
+    if (temporal_anchor.get("source_absolute_frame_index"), temporal_anchor.get("source_game_local_index"), temporal_anchor.get("delivery_game_local_index"), temporal_anchor.get("delivery_absolute_frame_index")) != (anchor.get("winning_frame_absolute_source_index"), anchor.get("winning_frame_local_game_index"), anchor.get("winning_delivery_game_frame_index"), anchor.get("winning_absolute_delivery_frame_index")):
+        raise UnifiedContentReviewError("Challenge temporal-alignment winning-anchor parity mismatch")
+    temporal_alignment_contract_sha256 = sha256_bytes((root / "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json").read_bytes())
+    if temporal_alignment_preview.get("policy_state") != "PROPOSED_NOT_APPROVED" or temporal_alignment_preview.get("summary_facts") != {"phase_boundaries_exact": True, "phase_count": 4, "duration_preserved": True, "delivery_candidate_materialized": False, "text_visibility_inferred_from_phase_names": False}:
+        raise UnifiedContentReviewError("Challenge temporal-alignment proposal status/evidence mismatch")
+    if temporal_alignment_preview.get("approval_state", {}).get("challenge_temporal_alignment_policy_approved") is not False or temporal_alignment_preview.get("execution_boundary", {}).get("renderer_native_input_emitted") is not False or temporal_alignment_preview.get("execution_boundary", {}).get("d4_8") != "BLOCKED" or temporal_alignment_preview.get("execution_boundary", {}).get("release_authority") != "NONE":
+        raise UnifiedContentReviewError("Challenge temporal-alignment governance lock changed")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -606,6 +661,8 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         "loop_drill_editorial_field_window_contract": editorial_contract,
         "loop_drill_editorial_field_window_contract_sha256": editorial_contract_sha256,
         "loop_drill_editorial_field_window_fixtures": editorial_fixtures,
+        "temporal_alignment_preview": temporal_alignment_preview,
+        "temporal_alignment_contract_sha256": temporal_alignment_contract_sha256,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
@@ -665,6 +722,31 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "coordinate_projection": {"policy_id": joined["coordinate_projection"]["projection"]["policy_id"], "state": "PROPOSED_NOT_APPROVED", "projected_records": 420, "projected_records_sha256": joined["coordinate_projected_frames_sha256"], "combined_scale": joined["coordinate_projection"]["projection"]["combined_scale"]},
             "sample_selection": {"policy_id": joined["sample_selection_preview"]["proposal_id"], "state": joined["sample_selection_preview"]["proposal_state"], "proposal_contract_sha256": joined["sample_selection_preview"]["proposal_contract_sha256"], "preview_sha256": joined["sample_selection_preview"]["preview_sha256"], "source_snapshot_count": joined["sample_selection_preview"]["sample_assessment"]["source_snapshot_count"], "delivery_snapshot_count": joined["sample_selection_preview"]["sample_assessment"]["delivery_snapshot_count"], "stride": joined["sample_selection_preview"]["sample_assessment"]["stride"], "sampling_origin": joined["sample_selection_preview"]["sampling_policy"]["sampling_origin"], "first_source_snapshot_index": joined["sample_selection_preview"]["sample_assessment"]["first_source_snapshot_index"], "last_source_snapshot_index": joined["sample_selection_preview"]["sample_assessment"]["last_source_snapshot_index"], "interpolation": joined["sample_selection_preview"]["sampling_policy"]["interpolation"], "winning_frame_local_game_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_frame_local_game_index"], "winning_frame_absolute_source_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_frame_absolute_source_index"], "winning_delivery_game_frame_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_delivery_game_frame_index"], "winning_absolute_delivery_frame_index": joined["sample_selection_preview"]["anchor_mapping"]["winning_absolute_delivery_frame_index"], "anchor_mapping_status": joined["sample_selection_preview"]["anchor_mapping"]["anchor_mapping_status"], "close_calls_count": joined["sample_selection_preview"]["anchor_mapping"]["close_calls_count"], "close_calls_used_for_timing": joined["sample_selection_preview"]["anchor_mapping"]["close_calls_used_for_timing"], "renderer_native_input_emitted": False},
             "coordinate_sample_composition": {"state": joined["coordinate_sample_composition"]["contract"]["status"], "proposal_contract_sha256": joined["coordinate_sample_composition_contract_sha256"], "coordinate_projection_policy_id": joined["coordinate_projection"]["projection"]["policy_id"], "sample_selection_policy_id": joined["sample_selection_preview"]["proposal_id"], "operation_order": joined["coordinate_sample_composition"]["contract"]["composition"]["operation_order"], "projected_source_snapshot_count": joined["coordinate_sample_composition"]["contract"]["composition"]["spatial_projection_record_count"], "delivery_candidate_snapshot_count": joined["coordinate_sample_composition"]["contract"]["composition"]["composed_delivery_record_count"], "selection_stride": joined["coordinate_sample_composition"]["contract"]["composition"]["sampling_stride"], "interpolation": joined["coordinate_sample_composition"]["contract"]["composition"]["interpolation"], "equivalence_claim": "DECLARED_FOR_AFFINE_UNIFORM_TRANSFORM_ONLY", "projected_then_selected_indices_match_sampling_proposal": True, "delivery_candidate_materialized": False, "policy_approved": False, "renderer_native_input_emitted": False},
+            "temporal_alignment": {
+                "policy_id": joined["temporal_alignment_preview"]["policy_id"],
+                "policy_state": joined["temporal_alignment_preview"]["policy_state"],
+                "proposal_contract_sha256": joined["temporal_alignment_contract_sha256"],
+                "preview_sha256": sha256_json(joined["temporal_alignment_preview"]),
+                "source_fps": joined["temporal_alignment_preview"]["source_timeline"]["fps"],
+                "source_total_frames": joined["temporal_alignment_preview"]["source_timeline"]["total_frames"],
+                "source_boundaries": joined["temporal_alignment_preview"]["source_timeline"]["boundaries"],
+                "source_phase_frame_counts": joined["temporal_alignment_preview"]["source_timeline"]["phase_frames"],
+                "delivery_fps": joined["temporal_alignment_preview"]["delivery_timeline"]["fps"],
+                "delivery_total_frames": joined["temporal_alignment_preview"]["delivery_timeline"]["total_frames"],
+                "delivery_boundaries": joined["temporal_alignment_preview"]["delivery_timeline"]["boundaries"],
+                "delivery_phase_frame_counts": joined["temporal_alignment_preview"]["delivery_timeline"]["phase_frames"],
+                "phase_order": [phase["phase"] for phase in joined["temporal_alignment_preview"]["phase_alignment"]],
+                "duration_seconds": joined["temporal_alignment_preview"]["delivery_timeline"]["duration_seconds"],
+                "phase_boundaries_exact": joined["temporal_alignment_preview"]["summary_facts"]["phase_boundaries_exact"],
+                "winning_anchor_source_absolute_frame_index": joined["temporal_alignment_preview"]["winning_anchor"]["source_absolute_frame_index"],
+                "winning_anchor_delivery_absolute_frame_index": joined["temporal_alignment_preview"]["winning_anchor"]["delivery_absolute_frame_index"],
+                "editorial_windows_policy_state": joined["temporal_alignment_preview"]["editorial_windows"]["state"],
+                "sample_selection_policy_state": joined["temporal_alignment_preview"]["sample_selection"]["state"],
+                "interpolation": joined["temporal_alignment_preview"]["sample_selection"]["interpolation"],
+                "delivery_candidate_materialized": joined["temporal_alignment_preview"]["summary_facts"]["delivery_candidate_materialized"],
+                "policy_approved": False,
+                "renderer_native_input_emitted": joined["temporal_alignment_preview"]["execution_boundary"]["renderer_native_input_emitted"],
+            },
         },
     ]
     unresolved = list(EXPECTED_UNRESOLVED_GATES)
@@ -691,6 +773,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "challenge_sample_selection_proposal_parity": True,
             "challenge_coordinate_sample_composition_proposal_parity": True,
             "loop_drill_editorial_field_window_proposal_parity": True,
+            "challenge_temporal_alignment_policy_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -723,7 +806,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:
@@ -807,6 +890,27 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
         raise UnifiedContentReviewError("Challenge coordinate/sample composition summary mismatch or approval drift")
     if report.get("approval_state", {}).get("simulation_sample_selection_policy_approved") is not False or report.get("approval_state", {}).get("interpolation_policy_approved") is not False or report.get("approval_state", {}).get("coordinate_sample_composition_policy_approved") is not False:
         raise UnifiedContentReviewError("Unified review cannot approve simulation sample selection, interpolation or coordinate/sample composition")
+    temporal = challenge.get("temporal_alignment", {})
+    expected_temporal = {
+        "policy_id": "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1",
+        "policy_state": "PROPOSED_NOT_APPROVED",
+        "proposal_contract_sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4",
+        "source_fps": 60, "source_total_frames": 900, "source_boundaries": [0, 180, 600, 780, 900],
+        "source_phase_frame_counts": [180, 420, 180, 120],
+        "delivery_fps": 30, "delivery_total_frames": 450, "delivery_boundaries": [0, 90, 300, 390, 450],
+        "delivery_phase_frame_counts": [90, 210, 90, 60], "phase_order": ["HOOK", "GAME", "REVEAL", "CTA"],
+        "duration_seconds": 15, "phase_boundaries_exact": True,
+        "winning_anchor_source_absolute_frame_index": 574,
+        "winning_anchor_delivery_absolute_frame_index": 287,
+        "editorial_windows_policy_state": "PROPOSED_NOT_APPROVED",
+        "sample_selection_policy_state": "PROPOSED_NOT_APPROVED",
+        "interpolation": "NONE", "delivery_candidate_materialized": False,
+        "policy_approved": False, "renderer_native_input_emitted": False,
+    }
+    if temporal != {**expected_temporal, "preview_sha256": temporal.get("preview_sha256")} or not _is_sha256(temporal.get("preview_sha256")):
+        raise UnifiedContentReviewError("Challenge temporal-alignment summary mismatch or approval drift")
+    if report.get("approval_state", {}).get("challenge_temporal_alignment_policy_approved") is not False:
+        raise UnifiedContentReviewError("Unified review cannot approve Challenge temporal alignment")
     challenge_identity = challenge.get("identity", {})
     if not _is_sha256(challenge_identity.get("challenge_visual_payload_sha256")) or not _is_sha256(challenge_identity.get("source_frame_records_sha256")) or not _is_sha256(challenge_identity.get("projected_frame_records_sha256")):
         raise UnifiedContentReviewError("Challenge visual payload or projected-record identities are malformed")

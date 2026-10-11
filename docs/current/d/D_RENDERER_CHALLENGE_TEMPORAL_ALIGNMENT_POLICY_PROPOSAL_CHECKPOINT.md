@@ -39,3 +39,12 @@ All boundaries in this pinned case land exactly on the 2:1 cadence, so there is 
 ## Verification
 
 Run `python .\tools\c11d\d9\test_d_renderer_challenge_temporal_alignment_policy.py` from the repository root. This validates the contract, exact cumulative phase boundaries, half-open coverage, 15-second duration parity, winning-anchor alignment, editorial/sample proposal parity, source lineage, and fail-closed governance. A PASS is not approval.
+
+## Unified-review integration (2026-10-11)
+
+The proposal is now referenced by the unified in-memory review contract via `challenge_temporal_alignment_policy_parity`. The integration checks timeline boundaries, phase ranges/counts, editorial-window references, sample-selection cadence, winning-anchor mapping, preview status, and governance locks. This remains `PROPOSED_NOT_APPROVED`; integration does not execute temporal resampling or authorize rendering.
+
+- Proposal contract SHA-256: `bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4`.
+- Unified contract lineage: 17/17.
+- Unified cross-artifact checks: 14/14.
+- Unresolved pre-video gates remain eight.
