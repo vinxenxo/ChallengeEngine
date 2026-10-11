@@ -1,0 +1,11 @@
+﻿{
+    "schema":  "C11-C-FROZEN-PACKAGE-RECEIPT-V2",
+    "release":  "C11-C 2.19.12",
+    "archive":  "ChallengeEngineV01_STATELESS_C11-C_2.19.12_FROZEN_20261011_203730.zip",
+    "archive_sha256":  "be4bcefa097705c80913e56de97e43c5b6c651ede01e09c8796b97ad241992de",
+    "source_tree_sha256":  "4c1f0962d70867f9eb4c351cde5dbe712b88dcbd92d7e434c22281cb2e136784",
+    "build_factory_sha256":  "3db8fbc21cf0c78430018424f83a9eed5b42df34a3908ba152f6771f0679d2a3",
+    "source_file_count":  2851,
+    "evidence_file_count":  2,
+    "generated_at_utc":  "2026-10-11T18:38:03.0103204Z"
+}
