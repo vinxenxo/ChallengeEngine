@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-request-scoped-editorial-value-input:v1",
+  "title": "Strict editorial-only override input for C11-D D9.9 carrier V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "values_by_content_type"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-REQUEST-SCOPED-EDITORIAL-VALUE-OVERRIDES-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "values_by_content_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 3,
+      "properties": {
+        "challenges": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 6,
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "call_to_action": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "player_name": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "challenge_label": {
+              "type": "string",
+              "maxLength": 160
+            }
+          }
+        },
+        "visual_loops": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 4,
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "call_to_action": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 160
+            }
+          }
+        },
+        "visual_drills": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "maxProperties": 4,
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "call_to_action": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 160
+            }
+          }
+        }
+      }
+    }
+  }
+}

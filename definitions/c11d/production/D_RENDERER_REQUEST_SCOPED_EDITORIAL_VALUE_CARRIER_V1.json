@@ -1,0 +1,265 @@
+{
+  "schema": "C11-D-RENDERER-REQUEST-SCOPED-EDITORIAL-VALUE-CARRIER-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_HASH_BOUND_EDITORIAL_SIDECAR_NOT_VISUAL_CONSUMPTION",
+  "purpose": "Transport canonical D9.9 editorial field values as a D-owned, hash-bound in-memory sidecar associated with one of three already verified fixed review payload identities. It does not modify the payload or turn the values into visible text.",
+  "scope": {
+    "owner": "C11-D_ONLY",
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "request_identity_scope": "fixed canonical review selection, gameplay seed, music seed, variation index and profile only",
+    "editable_input": "optional overrides for enabled D9.9 editorial fields; all values pass through the existing canonical request resolver",
+    "arbitrary_request_selection_seed_profile_transport": "NOT_IMPLEMENTED",
+    "carrier_kind": "D_OWNED_IN_MEMORY_SIDECAR",
+    "visual_payload_member_mutation": false,
+    "editorial_value_visual_consumption": "NOT_IMPLEMENTED",
+    "geometry_or_visibility_policy_application": "NONE",
+    "payload_persistence": "NONE",
+    "receipt_persistence": "NONE",
+    "renderer_native_input": "NOT_EMITTED"
+  },
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "canonical_request_resolver": "tools/c11d/d9/universal_producer.py",
+    "fixed_payload_review": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+    "field_consumption_audit": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
+    "routing_visibility_reconciliation": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
+    "output_schema": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_SCHEMA_V1.json",
+    "input_schema": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_INPUT_SCHEMA_V1.json"
+  },
+  "supported_fields_by_content_type": {
+    "challenges": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language",
+      "player_name",
+      "challenge_label"
+    ],
+    "visual_loops": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "visual_drills": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ]
+  },
+  "field_classification": {
+    "visual_text_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "player_name",
+      "challenge_label"
+    ],
+    "metadata_only_fields": [
+      "language"
+    ],
+    "disabled_fields_remain_disabled": true,
+    "challenge_phase_fields_are_not_aliases": [
+      "hook",
+      "reveal",
+      "cta"
+    ]
+  },
+  "linkage_rules": [
+    "Build and validate the existing fixed review payloads with the pinned Godot 4.7.1 materialization runner first.",
+    "Resolve optional editorial-only overrides through the canonical D9.9 request/plan/bridge/adapter chain.",
+    "Reject any selection, seed, variation or delivery/presentation-profile drift from the fixed base request.",
+    "Bind the sidecar to the existing payload instance hash and the canonical request hash; explicitly retain both hashes if editorial values differ from the base fixture.",
+    "Do not claim the fixed visual payload has consumed, rendered, or embedded sidecar values.",
+    "Keep semantic region, geometry, visibility window, timebase, sample/interpolation, coordinate, audio/mux and renderer gates unresolved."
+  ],
+  "unresolved_policy_gates": [
+    "DYNAMIC_ARBITRARY_REQUEST_TRANSPORT_NOT_IMPLEMENTED_FIXED_SELECTION_SEED_PROFILE_ONLY",
+    "VISUAL_PAYLOAD_EDITORIAL_TEXT_CONSUMPTION_REMAINS_ZERO_OF_14",
+    "EDITORIAL_LAYOUT_GEOMETRY_NOT_APPROVED_OR_APPLIED",
+    "EDITORIAL_FIELD_VISIBILITY_WINDOWS_NOT_APPROVED_OR_APPLIED",
+    "CHALLENGE_HOOK_REVEAL_CTA_ARE_NOT_ALIASES_FOR_D9_9_UNIVERSAL_FIELDS",
+    "DELIVERY_TIMEBASE_SAMPLE_SELECTION_COORDINATE_COMPOSITION_AND_PROJECTION_POLICIES_NOT_APPROVED",
+    "AUDIO_MUSIC_DELIVERY_MUX_AND_QA_NOT_PERFORMED",
+    "D_RENDERER_IMPLEMENTATION_AND_INDEPENDENT_BASELINE_APPROVAL_ABSENT",
+    "D4_8_AUTHORIZATION_BLOCKED"
+  ],
+  "candidate_input_admissible": false,
+  "approval_state": {
+    "editorial_value_carrier_approved": false,
+    "editorial_values_visually_consumed": false,
+    "editorial_layout_approved": false,
+    "editorial_visibility_windows_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "execution_boundary": {
+    "mode": "IN_MEMORY_REVIEW_ONLY_SIDECAR",
+    "payload_files_written": false,
+    "receipt_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "payload_mutated": false,
+    "editorial_values_injected_into_visual_payload": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+      "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "6407fc1cf7b6560b83362445452c79204233e9bb39e261b7042d12acdb6219f6"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+      "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
+      "sha256": "4601f10f15d0404c0630790ed08f2157dbc0e848a1edad9db4e13c012acc6be5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
+      "sha256": "8608c91c8a66b65b87867282c1a345ab79cbc7837b176ee058e6cb303eeb5d6b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_consumption_audit.py",
+      "sha256": "7001098cec9239027784abfc20ed17024f5bb45993b20f308e1debfb7fd5b85a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
+      "sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_SCHEMA_V1.json",
+      "sha256": "98503bb96f2ff0b89ab65d31914e8369076490974e468ee706ec19cda24edd40"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_routing_visibility_reconciliation.py",
+      "sha256": "ac490fd9ab5a6794ff673c8af71eac39ccefa1884baaa84cd3c96a888f1b5e7d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+      "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "34da34366d84c6be93d445b58e258c5cfff099ae8feb6189733b221f42a953a1"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "aec1b48a1082a9535017c2ac97f5d9732fcac4b69ff069814586001672baca5e"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_SCHEMA_V1.json",
+      "sha256": "c203ba78da64ad78279e02e2d23fecc3dd28098a9d6c172f326ee63267d7cb61"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_INPUT_SCHEMA_V1.json",
+      "sha256": "16e0bf89808cef0e6da2dc253af8ce24c5f7d4bc854e54ed33338dc8c59e1d50"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_editorial_value_carrier.py",
+      "sha256": "77d7af66cecff878de925bdcc63b1b12db812f32928a8ae873ee404199dafb17"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_request_scoped_editorial_value_carrier.py",
+      "sha256": "abf915d7032138c50b1e6023d82533565985ce4eab71242806310be9ef12dcb0"
+    }
+  ]
+}

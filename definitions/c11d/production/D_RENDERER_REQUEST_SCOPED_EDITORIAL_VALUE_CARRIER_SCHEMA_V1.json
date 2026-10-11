@@ -1,0 +1,609 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-request-scoped-editorial-value-carrier:v1",
+  "title": "C11-D request-scoped editorial value carrier receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "candidate_input_admissible",
+    "runtime_identity",
+    "input",
+    "upstream_review_identity",
+    "content_bindings",
+    "summary",
+    "unresolved_policy_gates",
+    "source_lineage",
+    "execution_boundary",
+    "approval_state",
+    "carrier_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-REQUEST-SCOPED-EDITORIAL-VALUE-CARRIER-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_HASH_BOUND_EDITORIAL_SIDECAR_NOT_VISUAL_CONSUMPTION"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "candidate_input_admissible": {
+      "const": false
+    },
+    "runtime_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_path",
+        "contract_sha256",
+        "schema_path",
+        "schema_sha256",
+        "input_schema_path",
+        "input_schema_sha256",
+        "implementation_path",
+        "implementation_sha256",
+        "test_path",
+        "test_sha256"
+      ],
+      "properties": {
+        "contract_path": {
+          "type": "string"
+        },
+        "contract_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "schema_path": {
+          "type": "string"
+        },
+        "schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "input_schema_path": {
+          "type": "string"
+        },
+        "input_schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "implementation_path": {
+          "type": "string"
+        },
+        "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "test_path": {
+          "type": "string"
+        },
+        "test_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "override_values_supplied",
+        "override_input_sha256",
+        "override_field_count",
+        "canonical_d9_9_normalization_applied"
+      ],
+      "properties": {
+        "override_values_supplied": {
+          "type": "boolean"
+        },
+        "override_input_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "override_field_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "canonical_d9_9_normalization_applied": {
+          "const": true
+        }
+      }
+    },
+    "upstream_review_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "materialization_receipt_sha256",
+        "editorial_audit_contract_sha256",
+        "routing_reconciliation_sha256"
+      ],
+      "properties": {
+        "materialization_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "routing_reconciliation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "editorial_audit_contract_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "content_bindings": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/content_binding"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_types",
+        "enabled_editorial_field_instances",
+        "hash_bound_sidecar_field_values",
+        "visual_text_values_in_sidecar",
+        "metadata_only_values_in_sidecar",
+        "visual_payload_text_consumed",
+        "payload_member_injection",
+        "all_changes_editorial_only",
+        "video_render_ready"
+      ],
+      "properties": {
+        "content_types": {
+          "const": 3
+        },
+        "enabled_editorial_field_instances": {
+          "const": 14
+        },
+        "hash_bound_sidecar_field_values": {
+          "const": 14
+        },
+        "visual_text_values_in_sidecar": {
+          "const": 11
+        },
+        "metadata_only_values_in_sidecar": {
+          "const": 3
+        },
+        "visual_payload_text_consumed": {
+          "const": 0
+        },
+        "payload_member_injection": {
+          "const": false
+        },
+        "all_changes_editorial_only": {
+          "const": true
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "unresolved_policy_gates": {
+      "type": "array",
+      "minItems": 9,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 18,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "payload_files_written",
+        "receipt_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "payload_mutated",
+        "editorial_values_injected_into_visual_payload",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_REVIEW_ONLY_SIDECAR"
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "const": null
+        },
+        "payload_mutated": {
+          "const": false
+        },
+        "editorial_values_injected_into_visual_payload": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "editorial_value_carrier_approved",
+        "editorial_values_visually_consumed",
+        "editorial_layout_approved",
+        "editorial_visibility_windows_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "editorial_value_carrier_approved": {
+          "const": false
+        },
+        "editorial_values_visually_consumed": {
+          "const": false
+        },
+        "editorial_layout_approved": {
+          "const": false
+        },
+        "editorial_visibility_windows_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "carrier_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {
+    "field_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field_name",
+        "field_kind",
+        "value",
+        "value_sha256",
+        "value_origin",
+        "operator_override_supplied",
+        "presentation_applied",
+        "semantic_region_id",
+        "layout_geometry",
+        "visibility_window",
+        "visual_payload_consumption_state"
+      ],
+      "properties": {
+        "field_name": {
+          "type": "string",
+          "enum": [
+            "title",
+            "subtitle",
+            "call_to_action",
+            "language",
+            "player_name",
+            "challenge_label"
+          ]
+        },
+        "field_kind": {
+          "type": "string",
+          "enum": [
+            "VISUAL_TEXT",
+            "METADATA_ONLY"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "value_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "value_origin": {
+          "const": "CANONICAL_D9_9_RESOLVED_EDITORIAL_MAP"
+        },
+        "operator_override_supplied": {
+          "type": "boolean"
+        },
+        "presentation_applied": {
+          "const": false
+        },
+        "semantic_region_id": {
+          "const": null
+        },
+        "layout_geometry": {
+          "const": null
+        },
+        "visibility_window": {
+          "const": null
+        },
+        "visual_payload_consumption_state": {
+          "const": "NOT_CONSUMED"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "field_name": {
+                "const": "language"
+              }
+            },
+            "required": [
+              "field_name"
+            ]
+          },
+          "then": {
+            "properties": {
+              "field_kind": {
+                "const": "METADATA_ONLY"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "field_kind": {
+                "const": "VISUAL_TEXT"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "content_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "request_id",
+        "canonical_request_sha256",
+        "base_materialization_request_sha256",
+        "request_hash_matches_base_materialization_request",
+        "editorial_only_delta_from_base_request",
+        "selection_seed_profile_match",
+        "payload_instance_id",
+        "payload_instance_sha256",
+        "payload_linkage_basis",
+        "payload_mutated",
+        "editorial_values_injected_into_visual_payload",
+        "visual_payload_consumed_editorial_text",
+        "editorial_values_sha256",
+        "fields",
+        "carrier_binding_sha256"
+      ],
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "canonical_request_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "base_materialization_request_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_hash_matches_base_materialization_request": {
+          "type": "boolean"
+        },
+        "editorial_only_delta_from_base_request": {
+          "const": true
+        },
+        "selection_seed_profile_match": {
+          "const": true
+        },
+        "payload_instance_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "payload_instance_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "payload_linkage_basis": {
+          "type": "string",
+          "enum": [
+            "BASE_REVIEW_PAYLOAD_HASH_AND_FIXED_SELECTOR_SEED_PROFILE"
+          ]
+        },
+        "payload_mutated": {
+          "const": false
+        },
+        "editorial_values_injected_into_visual_payload": {
+          "const": false
+        },
+        "visual_payload_consumed_editorial_text": {
+          "const": false
+        },
+        "editorial_values_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_binding"
+          },
+          "minItems": 4,
+          "maxItems": 6
+        },
+        "carrier_binding_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "content_type": {
+                "const": "challenges"
+              }
+            },
+            "required": [
+              "content_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "fields": {
+                "minItems": 6,
+                "maxItems": 6
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "content_type": {
+                "enum": [
+                  "visual_loops",
+                  "visual_drills"
+                ]
+              }
+            },
+            "required": [
+              "content_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "fields": {
+                "minItems": 4,
+                "maxItems": 4
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
