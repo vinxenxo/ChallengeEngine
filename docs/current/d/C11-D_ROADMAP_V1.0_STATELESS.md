@@ -1,3 +1,9 @@
+# CURRENT AUTHORITATIVE UPDATE — bounded request/payload join (2026-10-11)
+
+`D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md` now describes the bounded follow-up to the candidate I/O proposal. It binds exactly three fixed canonical D9.9 request chains to existing in-memory payload digests. The implementation is source pinned and outputs a console-only review receipt; it does not implement dynamic request transport, persist payloads, emit renderer input, dispatch, create media or approve policy. The Python test passes 9/9 with 14 negatives, but its harness outputs are mocked. The next evidence gate is a real run of the runner against both Godot 4.7.1 headless in-memory harnesses on Windows, followed by request-binding/payload-preview/I/O/review/lifecycle/preflight regressions. Five baseline blockers remain; `freeze_eligible=false`.
+
+---
+
 # Latest authoritative update — renderer candidate I/O contract (2026-10-11)
 
 The active renderer-baseline preparation step now has a versioned proposal in `D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md` and strict future input/output-manifest schemas. The contract binds 30 source artifacts and remains `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`. No renderer-native input instance, output manifest, dispatcher, renderer implementation, media or approval has been created. It remains inadmissible until a request-specific payload instance and all explicitly approved policies, the independent D renderer baseline and D4.8 authorization exist.

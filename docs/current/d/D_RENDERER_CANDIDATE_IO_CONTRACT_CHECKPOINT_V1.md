@@ -1,3 +1,7 @@
+## Superseding next-step update — fixed-fixture request-scoped binding (2026-10-11)
+
+The immediate next step below has been implemented as a bounded proposal in `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md`. It joins only the three fixed D9.9 review requests to the existing in-memory payload harness digests. This does not change this I/O contract's proposal status or make candidate input admissible. Obtain a real Godot 4.7.1 Windows run of both harnesses through the new console-only runner before considering dynamic request transport. Editorial-value consumption, temporal/sample and coordinate semantics, audio/mux/QA and every approval gate remain unresolved. Renderer stays OFF; no media or release authority is granted.
+
 # D Renderer Candidate I/O Contract V1 — Checkpoint
 
 **State:** `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`  
@@ -30,7 +34,7 @@ The prospective output manifest records input/source lineage, renderer contract/
 
 ## Current admission and governance state
 
-The candidate input is **not admissible**. The actual request-specific payload instance is not established for all three content types. Presentation regions, delivery timebase, Challenge sample/time alignment, coordinate composition/projection, editorial field windows and audio/music delivery remain proposals. The D renderer implementation and independent renderer-baseline approval are absent, and D4.8 remains blocked.
+The candidate input is **not admissible**. A later fixed-fixture checkpoint joins three representative canonical D9.9 requests to existing in-memory payload digests, but dynamic/arbitrary request transport and full editorial-value consumption are not established. Presentation regions, delivery timebase, Challenge sample/time alignment, coordinate composition/projection, editorial field windows and audio/music delivery remain proposals. The D renderer implementation and independent renderer-baseline approval are absent, and D4.8 remains blocked.
 
 No input instance, output manifest instance, artifact path, renderer implementation, dispatcher, media file or approval checkpoint is created by this increment. C11-C 2.19.12 and its manifest remain immutable (`e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`). `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, D9 remains open and D10 remains blocked.
 

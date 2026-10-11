@@ -1,3 +1,9 @@
+# CURRENT AUTHORITATIVE UPDATE — fixed-fixture payload binding (2026-10-11)
+
+Read `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md`. This increment adds a strict D-owned source-pinned contract/schema, a console-only runner and focused tests to join exactly three canonical D9.9 fixture requests to hashes returned by existing in-memory payload harnesses. The receipt is not renderer input and is not persisted. Dynamic request transport/full editorial consumption and Challenge native payload identity remain unresolved. The focused Python test passes 9/9 / 14 negative mutations, but uses mocked harness subprocess summaries; user Windows must run the new runner with real Godot 4.7.1. The previously reported Windows precursor/lifecycle/preflight tests remain PASS. Candidate baseline still reports five blockers, `baseline_approval=MISSING`, `freeze_eligible=false`. Preserve all governance locks.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — D renderer candidate I/O boundary (2026-10-11)
 
 The next D-owned renderer-baseline preparation increment has been implemented as an inert, source-pinned interface proposal. Read `D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md`, `D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json`, and the associated strict input/output schemas. State is `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`; no renderer input/output instance is emitted, no implementation or dispatch is added, and no policy is promoted to approved.

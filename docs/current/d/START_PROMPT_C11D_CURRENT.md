@@ -1,3 +1,9 @@
+# CURRENT START INSTRUCTION — D request-scoped materialization binding (2026-10-11)
+
+Continue from the active Windows checkout; do not extract the source ZIP wholesale. Read `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md` and apply only the matching small overlay after hash/base checks. The new receipt joins fixed D9.9 review requests for Challenge `CHALLENGE_004`, Loop `harmonic_membrane`, and Drill `tracking/tier-2` to existing in-memory payload digests. It prints to stdout only, emits no renderer-native input, and cannot make video render ready. Python test is 9/9 with 14 negative mutations, but subprocess summaries are mocked; run the new runner with actual Godot 4.7.1 next, then execute the listed regressions. Do not register the test in aggregate Suite yet. Dynamic request transport and full editorial-value consumption remain open. Preserve C11-C freeze, renderer OFF, media false, D4.8 BLOCKED, D9.14/D9.16 blocked, D9.17 NO-GO, D10 BLOCKED, release authority NONE.
+
+---
+
 # CURRENT START INSTRUCTION — D renderer candidate I/O contract (2026-10-11)
 
 Use the active checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`; do not replace it with a wholesale extraction of the exported ZIP. The latest package is only a context export and has a duplicate historical C11-C manifest path and omissions of runtime ledgers that the user confirmed are present in Windows. Their directly supplied Windows output confirms the freeze manifest hash, D9.13 cross-suite lifecycle PASS and candidate preflight PASS with five blockers and `freeze_eligible=false`.

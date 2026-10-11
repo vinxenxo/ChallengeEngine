@@ -1,0 +1,302 @@
+{
+  "schema": "C11-D-RENDERER-REQUEST-SCOPED-PAYLOAD-MATERIALIZATION-BINDING-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_FIXED_REVIEW_FIXTURES_REQUEST_BOUND_NOT_RENDERER_INPUT",
+  "candidate_input_admissible": false,
+  "purpose": "Build a sealed in-memory receipt joining the three canonical D9.9 fixture request chains to existing, deterministic, in-memory payload summaries; receipt is printed to stdout only and never becomes renderer-native input.",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "request_binding_contract": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+    "visual_payload_contract": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+    "challenge_payload_contract": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+    "candidate_io_contract": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json"
+  },
+  "scope": {
+    "content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "other_types": "REJECTED_UNTIL_EXPLICIT_CONTRACTED",
+    "dynamic_request_transport": "NOT_IMPLEMENTED",
+    "request_fixture_binding": "EXACT_SELECTOR_SEED_AND_PROFILE_EQUALITY_ONLY",
+    "full_request_semantics": "NOT_CLAIMED",
+    "payload_persistence": "NONE",
+    "receipt_persistence": "NONE",
+    "renderer_native_input": "NOT_EMITTED"
+  },
+  "fixed_request_fixtures": [
+    {
+      "content_type": "challenges",
+      "request_id": "D-PAYLOAD-BIND-CHALLENGES",
+      "selection": {
+        "content_type": "challenges",
+        "family_id": "parking_v2",
+        "variant_id": "CHALLENGE_004"
+      },
+      "gameplay_seed": 314159,
+      "music_seed": 840001,
+      "variation_index": 0,
+      "presentation_profile_id": "social_default_v1",
+      "delivery_profile_id": "REVIEW_720"
+    },
+    {
+      "content_type": "visual_loops",
+      "request_id": "D-PAYLOAD-BIND-VISUAL_LOOPS",
+      "selection": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "subtype_id": "harmonic_membrane"
+      },
+      "gameplay_seed": 12345,
+      "music_seed": 840001,
+      "variation_index": 0,
+      "presentation_profile_id": "social_default_v1",
+      "delivery_profile_id": "REVIEW_720"
+    },
+    {
+      "content_type": "visual_drills",
+      "request_id": "D-PAYLOAD-BIND-VISUAL_DRILLS",
+      "selection": {
+        "content_type": "visual_drills",
+        "family_id": "tracking",
+        "variant_id": "tier-2"
+      },
+      "gameplay_seed": 12345,
+      "music_seed": 840001,
+      "variation_index": 0,
+      "presentation_profile_id": "social_default_v1",
+      "delivery_profile_id": "REVIEW_720"
+    }
+  ],
+  "harnesses": [
+    {
+      "name": "visual_loop_drill_materialization",
+      "script": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "pass_marker": "C11-D RENDERER VISUAL PAYLOAD MATERIALIZATION PREVIEW PASS",
+      "summary_prefix": "C11-D VISUAL PAYLOAD PREVIEW SUMMARY=",
+      "required_fixture_tokens": [
+        "const REQUEST_SEED := 12345",
+        "const VARIATION_INDEX := 0",
+        "\"request_id\":\"D-PAYLOAD-BIND-VISUAL_LOOPS\"",
+        "\"request_id\":\"D-PAYLOAD-BIND-VISUAL_DRILLS\"",
+        "\"delivery_profile_id\":\"REVIEW_720\""
+      ]
+    },
+    {
+      "name": "challenge_visual_payload_materialization",
+      "script": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "pass_marker": "C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW PASS",
+      "summary_prefix": "C11-D CHALLENGE VISUAL PAYLOAD PREVIEW SUMMARY=",
+      "required_fixture_tokens": [
+        "const ChallengePath := \"res://challenges/CHALLENGE_004.json\"",
+        "const ChallengeSha :=",
+        "RuntimeBridge.run_effective_pipeline(source)",
+        "\"renderer_native_input_emitted\": false",
+        "\"coordinate_projection\": \"UNRESOLVED_NOT_APPLIED\""
+      ]
+    }
+  ],
+  "execution_boundary": {
+    "payload_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "approval_state": {
+    "materialization_binding_contract_approved": false,
+    "selected_payload_instances_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "unresolved_policy_gates": [
+    "FIXED_FIXTURE_JOIN_ONLY_DYNAMIC_REQUEST_TRANSPORT_AND_ARBITRARY_REQUEST_MATERIALIZATION_NOT_IMPLEMENTED",
+    "EDITORIAL_FIELDS_ARE_VALIDATED_UPSTREAM_BUT_NOT_CONSUMED_BY_THE_VISUAL_PAYLOAD_HARNESSES",
+    "VARIATION_INDEX_IS_METADATA_ONLY_FOR_CURRENT_LOOP_DRILL_HARNESS_AND_NOT_CONSUMED_BY_CHALLENGE_RUNTIME",
+    "REVIEW_720_DELIVERY_PROFILE_IS_NOT_A_RENDERED_DELIVERY_RESULT",
+    "CHALLENGE_SOURCE_TIMEBASE_REMAINS_60FPS_AND_NO_SAMPLE_SELECTION_OR_RESAMPLING_IS_APPLIED",
+    "COORDINATE_PROJECTION_AND_SEMANTIC_REGION_GEOMETRY_REMAIN_UNRESOLVED_AND_UNAPPROVED",
+    "EDITORIAL_FIELD_VISIBILITY_WINDOWS_REMAIN_UNRESOLVED_AND_UNAPPROVED",
+    "AUDIO_MUSIC_GENERATION_MUX_AND_QA_REMAIN_UNIMPLEMENTED",
+    "D_RENDERER_IMPLEMENTATION_AND_SEPARATE_BASELINE_APPROVAL_FREEZE_ARE_ABSENT",
+    "D9_14_D9_16_D9_17_D4_8_AND_D10_GOVERNANCE_GATES_REMAIN_OPEN"
+  ],
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+      "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
+      "sha256": "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json",
+      "sha256": "2ccfe916f35445f4543a61028c454a7ab886891aa4ab30b62445d12e73af8afd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
+      "sha256": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+      "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "sha256": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
+      "sha256": "4dfdd8eb1e79282cd911f92fedde715d0b226281e25a4aa70ca235b95bdf994d"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+      "sha256": "b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_delivery_timebase_projection.py",
+      "sha256": "63f6aa6cdb446c9faa9ca4bafe0933d79b2e3e297e3668d00a48fd59da54b3ac"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
+      "sha256": "1e722423ad9d9ac9f0cfcbf332bcd9c4468726bcc25300667ed04b8ca1a7e8cf"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "34da34366d84c6be93d445b58e258c5cfff099ae8feb6189733b221f42a953a1"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "aec1b48a1082a9535017c2ac97f5d9732fcac4b69ff069814586001672baca5e"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_request_scoped_payload_binding.py",
+      "sha256": "19bb15027495fa103c7dd77c4c72e4a2758a22c3fe4a2df81c4fd2b32157812f"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "6407fc1cf7b6560b83362445452c79204233e9bb39e261b7042d12acdb6219f6"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+      "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+    }
+  ]
+}

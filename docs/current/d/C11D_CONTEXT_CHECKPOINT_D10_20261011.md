@@ -1,3 +1,9 @@
+# CURRENT AUTHORITATIVE ADDENDUM — fixed-fixture request-scoped payload binding (2026-10-11)
+
+The I/O-contract follow-up has a new checkpoint: `D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md`. The fixed-fixture runner joins canonical request chains for Challenge `CHALLENGE_004`, Loop `harmonic_membrane`, and Drill `tracking/tier-2` to existing in-memory payload digests. Receipt is stdout-only. Dynamic request transport and full editorial-value consumption are not implemented; Challenge's ID is a derived receipt alias. The Python test passed 9/9 with 14 negatives, but Godot outputs were mocked in that unit test. The user's Windows results confirmed all predecessor tests and preflight; real execution of the new runner against Godot 4.7.1 is still required. The baseline auditor still has five blockers and `freeze_eligible=false`. No renderer input, dispatch, media, approval, or release is enabled.
+
+---
+
 # C11-D Context Checkpoint — 2026-10-11
 
 ## 0. Newest preparation increment — renderer candidate I/O contract
