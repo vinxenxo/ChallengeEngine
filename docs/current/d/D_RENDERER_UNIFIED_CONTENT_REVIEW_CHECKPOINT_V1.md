@@ -1,3 +1,21 @@
+# Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
+
+The routing/visibility reconciliation matrix is now connected to the unified content review through a fail-closed cross-artifact check and a signed-in-review report receipt. The upstream input contract `D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json` is intentionally unchanged (SHA-256 `4dfdd8eb1e79282cd911f92fedde715d0b226281e25a4aa70ca235b95bdf994d`) because downstream payload binding pins it. The generated review report adds the matrix as a separate, hash-pinned lineage row: **23 output lineage entries**, while the existing input contract remains **22 source-lineage entries**. The review checks increase from 17 to 18; source-file pins for the input contract remain 22/22.
+
+Preparation-workspace validation after this increment: unified review 38/38 tests PASS (`cross_checks=18/18`, `negative=32/32`, output `source_lineage=23/23`, input `source_files=22/22`); routing/visibility reconciliation 13/13; editorial field-consumption audit 11/11; request-scoped payload binding 9/9; renderer candidate I/O 30 source pins/30, 3 schemas/3, 13 fail-closed negatives/13 and 8 schema-instance negatives/8. The frozen C11-C manifest, upstream review input contract and timebase source bytes remain unchanged. This is not Godot runtime acceptance.
+
+The reconstructed export used for this preparation does not include the operator ledgers needed for lifecycle/baseline preflight, so those two tests cannot be claimed as freshly passing in this environment. The user's Windows checkout had passed D9.13 lifecycle and baseline candidate preflight after the previous overlay; rerun those commands after applying this increment. Expected governance remains `baseline_approval=MISSING`, `freeze_eligible=false`, five blockers, renderer OFF, media false, D4.8 BLOCKED and release authority NONE.
+
+# Current authoritative update — editorial routing matrix integrated into unified review (2026-10-11)
+
+The operator confirmed the editorial field routing/visibility reconciliation overlay on Windows: 13/13 focused tests, `field_instances=14/14`, exact review-chain parity `14/14`, zero payload consumption and zero evaluated windows. The same run passed editorial consumption audit 11/11, unified review 36/36, D9.13 lifecycle 14/14 negatives and candidate preflight. Candidate state remains `baseline_approval=MISSING`, `freeze_eligible=false`, five blockers; renderer OFF, no media, D4.8 BLOCKED and release authority NONE.
+
+This increment wires `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json` into the unified reviewer as a fail-closed cross-artifact check. The reviewer pins the matrix, validates its 27 upstream source pins, compares all visual editorial field instances against the unified semantic-region matrix, and preserves Challenge universal-field/phase-field namespace separation. This remains review-only; it does not apply the matrix or approve semantic regions, windows, geometry, renderer baseline or release. The generated review output adds a separate routing-contract source pin (23 output lineage entries; the pre-existing upstream review config remains 22 entries). The cross-check count becomes 18.
+
+After application, run the routing test, unified content review, D9.13 lifecycle and baseline candidate preflight. Python review alone does not count as Godot runtime acceptance.
+
+---
+
 # C11-D Unified Content Review V1 — Checkpoint
 
 **State:** `REVIEW_CHAIN_CONSISTENT_NOT_VIDEO_READY` (proposal/review only, subject to the Windows run).

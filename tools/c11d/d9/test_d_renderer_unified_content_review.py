@@ -200,6 +200,9 @@ class UnifiedContentReviewTests(unittest.TestCase):
         self.assertEqual(report["cross_artifact_checks"]["unified_delivery_policy_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["unified_audio_music_policy_parity"], True)
         self.assertEqual(report["cross_artifact_checks"]["unified_presentation_region_policy_parity"], True)
+        self.assertEqual(report["cross_artifact_checks"]["editorial_field_routing_visibility_reconciliation_parity"], True)
+        self.assertEqual(report["source_lineage"][-1], {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json", "sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"})
+        self.assertEqual(report["editorial_field_routing_reconciliation"], {"contract_sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc", "reconciliation_sha256": "33f3f947dd529b11960336d84548c756ac5bf59d91ca93ee23e4d5ac6bf18012", "content_types_reviewed": 3, "field_instances_reviewed": 14, "canonical_review_chain_parity": "PASS_14_OF_14", "current_visual_payload_consumption": "ZERO_OF_14", "evaluated_visibility_windows": 0, "routing_matrix_approved": False, "renderer_native_input_emitted": False})
         self.assertIn("SHARED_PRESENTATION_SEMANTIC_REGION_POLICY_NOT_APPROVED", report["unresolved_gates"])
         presentation = report["unified_presentation_policy"]
         self.assertEqual(presentation["policy_id"], "C11D_UNIFIED_PRESENTATION_SEMANTIC_REGIONS_ALL_CONTENT_TYPES_V1")
@@ -520,6 +523,22 @@ class UnifiedContentReviewTests(unittest.TestCase):
             validate_review_manifest(report, self.schema)
 
 
+    def test_editorial_routing_reconciliation_check_cannot_be_skipped(self) -> None:
+        report = self.report()
+        report["cross_artifact_checks"]["editorial_field_routing_visibility_reconciliation_parity"] = False
+        unsigned = dict(report)
+        unsigned.pop("review_manifest_sha256", None)
+        report["review_manifest_sha256"] = sha256_json(unsigned)
+        with self.assertRaises(UnifiedContentReviewError):
+            validate_review_manifest(report, self.schema)
+
+    def test_editorial_routing_reconciliation_failure_blocks_unified_review(self) -> None:
+        from d_renderer_editorial_field_routing_visibility_reconciliation import EditorialRoutingReconciliationError
+        with patch("d_renderer_unified_content_review._get_editorial_routing_reconciliation", side_effect=EditorialRoutingReconciliationError("injected failure")):
+            with self.assertRaisesRegex(UnifiedContentReviewError, "Editorial routing/visibility reconciliation invalid"):
+                validate_harness_summaries(make_summaries())
+
+
 def main() -> int:
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(UnifiedContentReviewTests)
     result = unittest.TextTestRunner(verbosity=0).run(suite)
@@ -541,7 +560,7 @@ def main() -> int:
         jsonschema_ok = False
     schema_label = "jsonschema=1/1" if jsonschema_ok else "jsonschema=NOT_INSTALLED (structural checks PASS)"
     source_label = "source_files=22/22" if source_paths_present else (f"source_files=PARTIAL_BUILD_CONTEXT({present_count}/22)" if source_paths_partial else "source_files=NOT_CHECKED_IN_OVERLAY_BUILD_CONTEXT")
-    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=17/17 | negative=30/30 | source_lineage=22/22 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
+    print(f"C11-D RENDERER UNIFIED CONTENT REVIEW CONTRACT PASS | content_types=3/3 | harness_contracts=7/7 | cross_checks=18/18 | negative=32/32 | source_lineage=23/23 | {source_label} | schema=1/1 | {schema_label} | godot_orchestration=NOT_RUN_BY_PYTHON | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0
 
 

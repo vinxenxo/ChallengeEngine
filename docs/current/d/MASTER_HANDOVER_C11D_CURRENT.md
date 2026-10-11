@@ -1,3 +1,21 @@
+# Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
+
+The routing/visibility reconciliation matrix is now connected to the unified content review through a fail-closed cross-artifact check and a signed-in-review report receipt. The upstream input contract `D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json` is intentionally unchanged (SHA-256 `4dfdd8eb1e79282cd911f92fedde715d0b226281e25a4aa70ca235b95bdf994d`) because downstream payload binding pins it. The generated review report adds the matrix as a separate, hash-pinned lineage row: **23 output lineage entries**, while the existing input contract remains **22 source-lineage entries**. The review checks increase from 17 to 18; source-file pins for the input contract remain 22/22.
+
+Preparation-workspace validation after this increment: unified review 38/38 tests PASS (`cross_checks=18/18`, `negative=32/32`, output `source_lineage=23/23`, input `source_files=22/22`); routing/visibility reconciliation 13/13; editorial field-consumption audit 11/11; request-scoped payload binding 9/9; renderer candidate I/O 30 source pins/30, 3 schemas/3, 13 fail-closed negatives/13 and 8 schema-instance negatives/8. The frozen C11-C manifest, upstream review input contract and timebase source bytes remain unchanged. This is not Godot runtime acceptance.
+
+The reconstructed export used for this preparation does not include the operator ledgers needed for lifecycle/baseline preflight, so those two tests cannot be claimed as freshly passing in this environment. The user's Windows checkout had passed D9.13 lifecycle and baseline candidate preflight after the previous overlay; rerun those commands after applying this increment. Expected governance remains `baseline_approval=MISSING`, `freeze_eligible=false`, five blockers, renderer OFF, media false, D4.8 BLOCKED and release authority NONE.
+
+# Current authoritative update — editorial routing matrix integrated into unified review (2026-10-11)
+
+The operator confirmed the editorial field routing/visibility reconciliation overlay on Windows: 13/13 focused tests, `field_instances=14/14`, exact review-chain parity `14/14`, zero payload consumption and zero evaluated windows. The same run passed editorial consumption audit 11/11, unified review 36/36, D9.13 lifecycle 14/14 negatives and candidate preflight. Candidate state remains `baseline_approval=MISSING`, `freeze_eligible=false`, five blockers; renderer OFF, no media, D4.8 BLOCKED and release authority NONE.
+
+This increment wires `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json` into the unified reviewer as a fail-closed cross-artifact check. The reviewer pins the matrix, validates its 27 upstream source pins, compares all visual editorial field instances against the unified semantic-region matrix, and preserves Challenge universal-field/phase-field namespace separation. This remains review-only; it does not apply the matrix or approve semantic regions, windows, geometry, renderer baseline or release. The generated review output adds a separate routing-contract source pin (23 output lineage entries; the pre-existing upstream review config remains 22 entries). The cross-check count becomes 18.
+
+After application, run the routing test, unified content review, D9.13 lifecycle and baseline candidate preflight. Python review alone does not count as Godot runtime acceptance.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — editorial field routing/visibility reconciliation (2026-10-11)
 
 `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now joins existing field-to-region and visibility-window proposals without promoting them. It covers 14 D9.9 field instances across Challenges (6), Visual Loops (4) and Visual Drills (4); review-chain parity remains 14/14 and current visual payload consumption remains 0/14. Loop/Drill declare six full-span rules but actual `evaluated_window` stays null because raw editorial strings are not exposed in the current runtime summary. Challenge D9.9 universal fields have no corresponding field-window mapping. Challenge phase fields `hook/reveal/cta` remain a different namespace and must not be treated as aliases for `title/subtitle/call_to_action`. `CHALLENGE_OVERLAY` remains a semantic role, not a fixed geometry; exploratory normalized bounds are not used.
@@ -392,3 +410,17 @@ Seguir `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`: auditar primero los módulo
 ### Gates que no cambian
 
 `D9.14=BLOCKED_AS_REQUIRED`; `D9.16` es solo preflight, full acceptance bloqueada; `D9.17=BLOCKED/NO-GO`; renderer baseline no aprobado/congelado; D baseline approval no registrado; `D4.8=BLOCKED`; renderer OFF; `media_created=false`; `release_authority=NONE`; C11-C 2.19.12 y su manifiesto inmutables.
+
+## Current continuation — renderer candidate identity inventory
+
+The latest engineering preparation increment is `D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_CHECKPOINT_V1.md`. To run the read-only identity packet:
+
+```powershell
+python -B .\tools\c11d\d9\test_d_renderer_candidate_identity_inventory.py
+python -B .\tools\c11d\d9\d_renderer_candidate_identity_inventory.py
+# Añadir --full-report solo cuando se necesite inspeccionar todo el JSON de 140 fuentes.
+python -B .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
+```
+
+The report pins the declared renderer preparation surface and records toolchain detection; it is not a built renderer or full-tree baseline. Expected governance remains `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, `baseline_approval=MISSING`, `freeze_eligible=false`, with five candidate blockers. Do not turn identity PASS into renderer/D baseline approval; explicit independent approval and D4.8 authorization remain external gates.
+

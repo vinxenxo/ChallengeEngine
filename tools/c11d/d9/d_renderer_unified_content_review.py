@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 import math
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -47,9 +48,17 @@ from d_renderer_unified_presentation_region_policy import (
     build_preview as build_unified_presentation_region_policy_preview,
     validate_preview as validate_unified_presentation_region_policy_preview,
 )
+from d_renderer_editorial_field_routing_visibility_reconciliation import (
+    EditorialRoutingReconciliationError,
+    build_reconciliation as build_editorial_field_routing_visibility_reconciliation,
+    validate_reconciliation as validate_editorial_field_routing_visibility_reconciliation,
+)
 
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
+EDITORIAL_ROUTING_RECONCILIATION_REL = Path("definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json")
+EDITORIAL_ROUTING_RECONCILIATION_SHA256 = "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+EDITORIAL_ROUTING_RECONCILIATION_REPORT_SHA256 = "33f3f947dd529b11960336d84548c756ac5bf59d91ca93ee23e4d5ac6bf18012"
 CONTRACT_ID = "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1"
 OUTPUT_SCHEMA = "C11-D-D9-RENDERER-UNIFIED-CONTENT-REVIEW-V1"
 FROZEN_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
@@ -136,6 +145,54 @@ def _is_sha256(value: Any) -> bool:
     if not isinstance(value, str) or len(value) != 64:
         return False
     return all(c in "0123456789abcdef" for c in value)
+
+
+def _editorial_routing_source_signature(root: Path) -> tuple[tuple[str, str], ...]:
+    contract_path = root / EDITORIAL_ROUTING_RECONCILIATION_REL
+    if not contract_path.is_file():
+        raise EditorialRoutingReconciliationError("Editorial routing reconciliation contract is missing")
+    contract_sha = sha256_bytes(contract_path.read_bytes())
+    if contract_sha != EDITORIAL_ROUTING_RECONCILIATION_SHA256:
+        raise EditorialRoutingReconciliationError("Editorial routing reconciliation contract SHA-256 mismatch")
+    try:
+        contract = json.loads(contract_path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise EditorialRoutingReconciliationError("Editorial routing reconciliation contract cannot be read") from exc
+    rows = contract.get("source_lineage")
+    if not isinstance(rows, list) or len(rows) != 27:
+        raise EditorialRoutingReconciliationError("Editorial routing reconciliation must retain 27 source pins")
+    signature: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict) or set(row) != {"path", "sha256"}:
+            raise EditorialRoutingReconciliationError("Malformed editorial routing source pin")
+        rel, expected = row["path"], row["sha256"]
+        if rel in seen:
+            raise EditorialRoutingReconciliationError(f"Duplicate editorial routing source pin: {rel}")
+        seen.add(rel)
+        source_path = root / rel
+        if not source_path.is_file():
+            raise EditorialRoutingReconciliationError(f"Editorial routing source missing: {rel}")
+        actual = sha256_bytes(source_path.read_bytes())
+        if actual != expected:
+            raise EditorialRoutingReconciliationError(f"Editorial routing source SHA-256 mismatch: {rel}")
+        signature.append((rel, actual))
+    return tuple(signature)
+
+
+@lru_cache(maxsize=4)
+def _cached_editorial_routing_reconciliation(root_text: str, source_signature: tuple[tuple[str, str], ...]) -> dict[str, Any]:
+    root = Path(root_text)
+    report = build_editorial_field_routing_visibility_reconciliation(root)
+    validate_editorial_field_routing_visibility_reconciliation(report, root)
+    if report.get("contract_sha256") != EDITORIAL_ROUTING_RECONCILIATION_SHA256 or report.get("reconciliation_sha256") != EDITORIAL_ROUTING_RECONCILIATION_REPORT_SHA256:
+        raise EditorialRoutingReconciliationError("Editorial routing reconciliation report identity/digest mismatch")
+    return report
+
+
+def _get_editorial_routing_reconciliation(root: Path) -> dict[str, Any]:
+    signature = _editorial_routing_source_signature(root)
+    return copy.deepcopy(_cached_editorial_routing_reconciliation(str(root.resolve()), signature))
 
 
 def validate_contract(project_root: Path | str | None = None, *, verify_sources: bool = False) -> tuple[dict[str, Any], dict[str, Any]]:
@@ -751,6 +808,43 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
     if unified_presentation_policy_preview.get("policy_approved") is not False or unified_presentation_policy_preview.get("execution_boundary", {}).get("coordinates_emitted") is not False or unified_presentation_policy_preview.get("execution_boundary", {}).get("renderer_native_input_emitted") is not False or unified_presentation_policy_preview.get("execution_boundary", {}).get("d4_8") != "BLOCKED" or unified_presentation_policy_preview.get("execution_boundary", {}).get("release_authority") != "NONE":
         raise UnifiedContentReviewError("Unified presentation region policy crossed approval, geometry-emission or execution boundary")
 
+    # Cross-check the field-by-field reconciliation matrix against the already
+    # reviewed semantic-region matrix. The reconciliation validates its own 27
+    # source pins and remains proposal-only; this does not apply routing/windows.
+    try:
+        routing_report = _get_editorial_routing_reconciliation(root)
+    except EditorialRoutingReconciliationError as exc:
+        raise UnifiedContentReviewError(f"Editorial routing/visibility reconciliation invalid: {exc}") from exc
+    routing_summary = routing_report.get("summary", {})
+    if (
+        routing_summary.get("content_types_reviewed") != 3
+        or routing_summary.get("field_instances_reviewed") != 14
+        or routing_summary.get("canonical_review_chain_parity") != "PASS_14_OF_14"
+        or routing_summary.get("current_visual_payload_consumption") != "ZERO_OF_14"
+        or routing_summary.get("evaluated_visibility_windows") != 0
+        or routing_summary.get("candidate_input_admissible") is not False
+        or routing_report.get("approval_state", {}).get("routing_matrix_approved") is not False
+        or routing_report.get("execution_boundary", {}).get("renderer_native_input_emitted") is not False
+    ):
+        raise UnifiedContentReviewError("Editorial routing/visibility reconciliation summary or governance lock drift")
+    presentation_matrix = {row.get("content_type"): row for row in unified_presentation_policy_preview.get("content_matrix", [])}
+    route_rows = routing_report.get("field_routes", [])
+    for content_type in ("visual_loops", "visual_drills", "challenges"):
+        expected_targets = {
+            row.get("field"): row.get("target_region")
+            for row in presentation_matrix.get(content_type, {}).get("fields", [])
+        }
+        actual_targets = {
+            row.get("source_field"): row.get("semantic_region_id")
+            for row in route_rows
+            if row.get("content_type") == content_type and row.get("field_kind") == "VISUAL_TEXT"
+        }
+        if actual_targets != expected_targets:
+            raise UnifiedContentReviewError(f"Editorial routing matrix differs from unified semantic-region matrix: {content_type}")
+    challenge_universal_routes = [row for row in route_rows if row.get("content_type") == "challenges" and row.get("field_kind") == "VISUAL_TEXT"]
+    if any(row.get("visibility_policy_id") is not None or row.get("visibility_rule") is not None or row.get("evaluated_window") is not None for row in challenge_universal_routes):
+        raise UnifiedContentReviewError("Challenge universal editorial fields may not borrow phase-window mappings")
+
     return {
         "loop": loop,
         "drill": drill,
@@ -772,6 +866,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         "unified_delivery_policy_preview": unified_delivery_policy_preview,
         "unified_audio_music_policy_preview": unified_audio_music_policy_preview,
         "unified_presentation_policy_preview": unified_presentation_policy_preview,
+        "editorial_routing_reconciliation": routing_report,
         "challenge_visual_payload_sha256": challenge_visual["payload_sha256"],
         "d_render_model_sha256": render_model_sha,
     }
@@ -865,12 +960,23 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
         "status": "REVIEW_CHAIN_CONSISTENT_NOT_VIDEO_READY",
         "frozen_c11c_manifest_sha256": FROZEN_MANIFEST_SHA256,
         "contract_sha256": sha256_bytes(contract_path.read_bytes()),
-        "source_lineage": copy.deepcopy(contract["source_lineage"]),
+        "source_lineage": copy.deepcopy(contract["source_lineage"]) + [{"path": str(EDITORIAL_ROUTING_RECONCILIATION_REL).replace("\\", "/"), "sha256": EDITORIAL_ROUTING_RECONCILIATION_SHA256}],
         "content_items": items,
         "harness_evidence": harness_evidence,
         "unified_delivery_policy": {**copy.deepcopy(joined["unified_delivery_policy_preview"]), "preview_sha256": sha256_json(joined["unified_delivery_policy_preview"])},
         "unified_audio_music_policy": {**copy.deepcopy(joined["unified_audio_music_policy_preview"]), "preview_sha256": sha256_json(joined["unified_audio_music_policy_preview"])},
         "unified_presentation_policy": {**copy.deepcopy(joined["unified_presentation_policy_preview"]), "preview_sha256": sha256_json(joined["unified_presentation_policy_preview"])},
+        "editorial_field_routing_reconciliation": {
+            "contract_sha256": joined["editorial_routing_reconciliation"]["contract_sha256"],
+            "reconciliation_sha256": joined["editorial_routing_reconciliation"]["reconciliation_sha256"],
+            "content_types_reviewed": joined["editorial_routing_reconciliation"]["summary"]["content_types_reviewed"],
+            "field_instances_reviewed": joined["editorial_routing_reconciliation"]["summary"]["field_instances_reviewed"],
+            "canonical_review_chain_parity": joined["editorial_routing_reconciliation"]["summary"]["canonical_review_chain_parity"],
+            "current_visual_payload_consumption": joined["editorial_routing_reconciliation"]["summary"]["current_visual_payload_consumption"],
+            "evaluated_visibility_windows": joined["editorial_routing_reconciliation"]["summary"]["evaluated_visibility_windows"],
+            "routing_matrix_approved": joined["editorial_routing_reconciliation"]["summary"]["semantic_region_mapping_approved"] is True,
+            "renderer_native_input_emitted": joined["editorial_routing_reconciliation"]["execution_boundary"]["renderer_native_input_emitted"],
+        },
         "cross_artifact_checks": {
             "c11c_manifest_identity": True,
             "challenge_source_identity": True,
@@ -889,6 +995,7 @@ def build_review_manifest(summaries: Mapping[str, dict[str, Any]], harness_evide
             "unified_delivery_policy_parity": True,
             "unified_audio_music_policy_parity": True,
             "unified_presentation_region_policy_parity": True,
+            "editorial_field_routing_visibility_reconciliation_parity": True,
         },
         "unresolved_gates": unresolved,
         "approval_state": copy.deepcopy(contract["approval_state"]),
@@ -916,12 +1023,28 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
         raise UnifiedContentReviewError("Frozen C11-C manifest identity mismatch")
     if not _is_sha256(report.get("contract_sha256")):
         raise UnifiedContentReviewError("Unified review contract digest is malformed")
-    if report.get("source_lineage") != [{"path": path, "sha256": digest} for path, digest in EXPECTED_SOURCE_LINEAGE]:
-        raise UnifiedContentReviewError("Unified review source lineage differs from the pinned contract")
+    expected_output_lineage = [{"path": path, "sha256": digest} for path, digest in EXPECTED_SOURCE_LINEAGE]
+    expected_output_lineage.append({"path": str(EDITORIAL_ROUTING_RECONCILIATION_REL).replace("\\", "/"), "sha256": EDITORIAL_ROUTING_RECONCILIATION_SHA256})
+    if report.get("source_lineage") != expected_output_lineage:
+        raise UnifiedContentReviewError("Unified review source lineage differs from the pinned contract and routing reconciliation")
+    routing_receipt = report.get("editorial_field_routing_reconciliation", {})
+    expected_routing_receipt = {
+        "contract_sha256": EDITORIAL_ROUTING_RECONCILIATION_SHA256,
+        "reconciliation_sha256": EDITORIAL_ROUTING_RECONCILIATION_REPORT_SHA256,
+        "content_types_reviewed": 3,
+        "field_instances_reviewed": 14,
+        "canonical_review_chain_parity": "PASS_14_OF_14",
+        "current_visual_payload_consumption": "ZERO_OF_14",
+        "evaluated_visibility_windows": 0,
+        "routing_matrix_approved": False,
+        "renderer_native_input_emitted": False,
+    }
+    if routing_receipt != expected_routing_receipt:
+        raise UnifiedContentReviewError("Editorial routing reconciliation receipt drift or approval promotion")
     items = report.get("content_items", [])
     if [x.get("content_type") for x in items] != EXPECTED_TYPES:
         raise UnifiedContentReviewError("The unified manifest must contain the three content types in canonical order")
-    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity", "unified_audio_music_policy_parity", "unified_presentation_region_policy_parity")}:
+    if report.get("cross_artifact_checks") != {key: True for key in ("c11c_manifest_identity", "challenge_source_identity", "payload_repeat_determinism", "profile_identity_parity", "delivery_timeline_parity", "field_window_parity", "simulation_invariance", "governance_boundary", "challenge_visual_payload_identity", "coordinate_projection_parity", "challenge_sample_selection_proposal_parity", "challenge_coordinate_sample_composition_proposal_parity", "loop_drill_editorial_field_window_proposal_parity", "challenge_temporal_alignment_policy_parity", "unified_delivery_policy_parity", "unified_audio_music_policy_parity", "unified_presentation_region_policy_parity", "editorial_field_routing_visibility_reconciliation_parity")}:
         raise UnifiedContentReviewError("Cross-artifact consistency checks must all pass before the review manifest is emitted")
     gates = report.get("unresolved_gates", [])
     if gates != EXPECTED_UNRESOLVED_GATES:

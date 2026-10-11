@@ -16,7 +16,8 @@
     "review_manifest_sha256",
     "unified_delivery_policy",
     "unified_audio_music_policy",
-    "unified_presentation_policy"
+    "unified_presentation_policy",
+    "editorial_field_routing_reconciliation"
   ],
   "properties": {
     "schema": {
@@ -37,7 +38,7 @@
     },
     "source_lineage": {
       "type": "array",
-      "minItems": 22,
+      "minItems": 23,
       "items": {
         "type": "object",
         "required": [
@@ -56,7 +57,7 @@
         },
         "additionalProperties": false
       },
-      "maxItems": 22
+      "maxItems": 23
     },
     "content_items": {
       "type": "array",
@@ -661,7 +662,8 @@
         "challenge_temporal_alignment_policy_parity",
         "unified_delivery_policy_parity",
         "unified_audio_music_policy_parity",
-        "unified_presentation_region_policy_parity"
+        "unified_presentation_region_policy_parity",
+        "editorial_field_routing_visibility_reconciliation_parity"
       ],
       "properties": {
         "c11c_manifest_identity": {
@@ -713,6 +715,9 @@
           "const": true
         },
         "unified_presentation_region_policy_parity": {
+          "const": true
+        },
+        "editorial_field_routing_visibility_reconciliation_parity": {
           "const": true
         }
       },
@@ -1707,6 +1712,50 @@
         "execution_boundary",
         "preview_sha256"
       ],
+      "additionalProperties": false
+    },
+    "editorial_field_routing_reconciliation": {
+      "type": "object",
+      "required": [
+        "contract_sha256",
+        "reconciliation_sha256",
+        "content_types_reviewed",
+        "field_instances_reviewed",
+        "canonical_review_chain_parity",
+        "current_visual_payload_consumption",
+        "evaluated_visibility_windows",
+        "routing_matrix_approved",
+        "renderer_native_input_emitted"
+      ],
+      "properties": {
+        "contract_sha256": {
+          "const": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+        },
+        "reconciliation_sha256": {
+          "const": "33f3f947dd529b11960336d84548c756ac5bf59d91ca93ee23e4d5ac6bf18012"
+        },
+        "content_types_reviewed": {
+          "const": 3
+        },
+        "field_instances_reviewed": {
+          "const": 14
+        },
+        "canonical_review_chain_parity": {
+          "const": "PASS_14_OF_14"
+        },
+        "current_visual_payload_consumption": {
+          "const": "ZERO_OF_14"
+        },
+        "evaluated_visibility_windows": {
+          "const": 0
+        },
+        "routing_matrix_approved": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        }
+      },
       "additionalProperties": false
     }
   },
