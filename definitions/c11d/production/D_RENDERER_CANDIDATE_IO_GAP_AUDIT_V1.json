@@ -1,0 +1,450 @@
+{
+  "schema": "C11-D-RENDERER-CANDIDATE-IO-CONFORMANCE-GAP-AUDIT-V1",
+  "schema_version": "1.0",
+  "status": "READ_ONLY_INTERFACE_CONFORMANCE_AUDIT_NOT_ADMISSION_NOT_APPROVAL",
+  "scope": {
+    "owner": "C11-D_ONLY",
+    "source_interface": "D_RENDERER_CANDIDATE_IO_CONTRACT_V1",
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "longform": "OUT_OF_SCOPE",
+    "mode": "SOURCE_PINNED_READ_ONLY_AUDIT"
+  },
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "audit_rules": {
+    "expected_io_contract_status": "PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED",
+    "expected_input_schema_id": "urn:c11d:renderer-candidate-input:v1",
+    "expected_output_schema_id": "urn:c11d:renderer-output-manifest:v1",
+    "expected_input_groups": [
+      "content_identity",
+      "source_lineage",
+      "payload_instance",
+      "seed_domains",
+      "editorial",
+      "presentation",
+      "timeline",
+      "audio",
+      "delivery",
+      "authorization"
+    ],
+    "complete_state_never_inferred_from_static_pass": true,
+    "require_fixed_payload_status": "PREPARATION_ONLY_FIXED_REVIEW_FIXTURES_REQUEST_BOUND_NOT_RENDERER_INPUT",
+    "require_editorial_sidecar_status": "PREPARATION_ONLY_HASH_BOUND_EDITORIAL_SIDECAR_NOT_VISUAL_CONSUMPTION"
+  },
+  "input_group_assessments": [
+    {
+      "group": "content_identity",
+      "interface_required_group": "content_identity",
+      "schema_fields": [
+        "content_type",
+        "family_id",
+        "subtype_id",
+        "variant_id",
+        "variant_scope_id",
+        "difficulty_tier",
+        "variation_index",
+        "canonical_request_sha256"
+      ],
+      "state": "PARTIAL_FIXED_REVIEW_IDENTITIES_ONLY",
+      "finding": "The request/binding chain is pinned to three fixed review fixtures; arbitrary selector/variant/scope transport is not established.",
+      "evidence": [
+        "D9.9 canonical request and fixed request binding",
+        "Three fixtures: CHALLENGE_004, harmonic_membrane, tracking/tier-2"
+      ],
+      "unclosed_requirements": [
+        "dynamic selector, family, subtype/variant, variant_scope and difficulty request identity"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "source_lineage",
+      "interface_required_group": "source_lineage",
+      "schema_fields": [
+        "editorial_sha256",
+        "plan_sha256",
+        "bridge_record_sha256",
+        "adapter_envelope_sha256",
+        "binding_preview_sha256",
+        "logical_composition_sha256",
+        "frame_program_sha256",
+        "request_payload_manifest_sha256"
+      ],
+      "state": "PARTIAL_FIXED_FIXTURE_SOURCE_LINEAGE",
+      "finding": "Source pins and per-fixture hashes exist, but no admitted input instance assembles the complete prospective lineage.",
+      "evidence": [
+        "30-source-pin I/O contract",
+        "request-scoped binding and fixed materialization receipts"
+      ],
+      "unclosed_requirements": [
+        "complete request-specific lineage closure in a prospective input instance"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "payload_instance",
+      "interface_required_group": "request_specific_hash_bound_payload_instance",
+      "schema_fields": [
+        "instance_id",
+        "content_type",
+        "payload_sha256",
+        "payload_manifest_sha256",
+        "canonical_source_sha256",
+        "materialization_mode"
+      ],
+      "state": "PARTIAL_FIXED_IN_MEMORY_PAYLOAD_BINDINGS",
+      "finding": "Three fixed visual payloads are materialized in memory and hash-bound; they are not general request-selected payload instances and are not renderer input.",
+      "evidence": [
+        "two existing bounded Godot materialization harnesses",
+        "hash-bound payload receipt for the fixed fixtures"
+      ],
+      "unclosed_requirements": [
+        "request-specific payload materialization contract for dynamic valid requests",
+        "explicit payload manifest binding consumable by the future contract"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "seed_domains",
+      "interface_required_group": "isolated_gameplay_and_music_seed_domains",
+      "schema_fields": [
+        "gameplay_seed",
+        "gameplay_domain",
+        "music_seed",
+        "music_domain",
+        "automatic_seed_generation",
+        "cross_domain_seed_reuse"
+      ],
+      "state": "PARTIAL_FIXED_SEED_DOMAINS",
+      "finding": "The fixtures bind separated gameplay/music seed identities; arbitrary request seed/domain enforcement has not been proven.",
+      "evidence": [
+        "fixed payload binding checks seed identity and fixture values"
+      ],
+      "unclosed_requirements": [
+        "dynamic seed transport and validation",
+        "affirmed no cross-domain seed reuse for arbitrary requests"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "editorial",
+      "interface_required_group": "resolved_editorial_values_and_approved_field_windows",
+      "schema_fields": [
+        "resolved_editorial_values_sha256",
+        "frame_program_sha256",
+        "field_window_policy"
+      ],
+      "state": "PARTIAL_HASH_BOUND_SIDECAR_NOT_VISUALLY_CONSUMED",
+      "finding": "14/14 editorial values are in a hash-bound sidecar, while actual visual payload consumption remains 0/14 and window policy is unapproved.",
+      "evidence": [
+        "canonical D9.9 value sidecar for the three fixtures",
+        "field audit and routing parity 14/14"
+      ],
+      "unclosed_requirements": [
+        "request-specific field resolution tied into future input lineage",
+        "approved field-window policy for all three supported types",
+        "visual consumption evidence only after approval"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "presentation",
+      "interface_required_group": "approved_presentation_and_coordinate_projection",
+      "schema_fields": [
+        "presentation_profile_id",
+        "presentation_profile_sha256",
+        "region_policy",
+        "coordinate_projection_policy"
+      ],
+      "state": "BLOCKED_POLICY_NOT_APPROVED",
+      "finding": "Presentation/region and coordinate policy contracts remain proposals; geometry is not authorized.",
+      "evidence": [
+        "strict proposal contracts and review-only mapping"
+      ],
+      "unclosed_requirements": [
+        "formal approval and hash-bound effective policy",
+        "resolved presentation/coordinate policy"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "timeline",
+      "interface_required_group": "approved_timebase_temporal_alignment_sample_selection_and_coordinate_composition",
+      "schema_fields": [
+        "source_fps",
+        "delivery_fps",
+        "frame_count",
+        "schedule_sha256",
+        "delivery_timebase_policy",
+        "temporal_alignment_policy",
+        "sample_selection_policy",
+        "coordinate_sample_composition_policy"
+      ],
+      "state": "BLOCKED_TIMING_POLICIES_NOT_APPROVED",
+      "finding": "Delivery timebase, Challenge temporal alignment, sample selection and coordinate/sample composition remain proposals.",
+      "evidence": [
+        "review-only timebase and timing previews"
+      ],
+      "unclosed_requirements": [
+        "approved delivery timebase and Challenge temporal/sample policy set",
+        "derived frame schedule and sample bindings under approved policies"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "audio",
+      "interface_required_group": "approved_audio_music_delivery_and_timeline_alignment",
+      "schema_fields": [
+        "enabled",
+        "audio_timeline_sha256",
+        "audio_music_delivery_policy",
+        "music_seed_domain",
+        "duration_alignment_verified"
+      ],
+      "state": "BLOCKED_AUDIO_POLICY_NOT_APPROVED",
+      "finding": "Audio/music delivery and timeline alignment are still a proposal, without an admissible renderer input timeline.",
+      "evidence": [
+        "audio/music policy proposal and unified-review checks"
+      ],
+      "unclosed_requirements": [
+        "approved audio/music delivery policy",
+        "request-specific audio timeline and alignment proof"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "delivery",
+      "interface_required_group": "resolved_delivery_profile",
+      "schema_fields": [
+        "profile_id",
+        "profile_registry_sha256",
+        "resolved_profile_sha256",
+        "width",
+        "height",
+        "fps",
+        "video_codec",
+        "pixel_format"
+      ],
+      "state": "PARTIAL_PROFILE_RESOLUTION_ONLY",
+      "finding": "Canonical delivery-profile identity is available, but the delivery-timebase policy is unapproved and no complete prospective input binds it.",
+      "evidence": [
+        "delivery profile registry and fixed REVIEW_720 fixture identity"
+      ],
+      "unclosed_requirements": [
+        "resolved profile plus approved output FPS/timebase and final frame/codec parameters hash-bound to input"
+      ],
+      "complete_for_input_emission": false
+    },
+    {
+      "group": "authorization",
+      "interface_required_group": "renderer_baseline_approval_and_explicit_D4_8_authorization",
+      "schema_fields": [
+        "renderer_baseline_state",
+        "renderer_baseline_checkpoint_sha256",
+        "d4_8_state",
+        "d4_8_decision_sha256",
+        "d9_14_qualification_authorized"
+      ],
+      "state": "BLOCKED_BASELINE_AND_D4_8_MISSING",
+      "finding": "Renderer implementation/baseline approval and explicit D4.8 authorization are absent.",
+      "evidence": [
+        "candidate identity inventory and I/O governance gate"
+      ],
+      "unclosed_requirements": [
+        "independent renderer baseline review/approval and freeze",
+        "explicit D4.8 decision and hash binding",
+        "closure of D9.14/D9.16/D9.17 as applicable"
+      ],
+      "complete_for_input_emission": false
+    }
+  ],
+  "next_safe_increment": "DESIGN_DYNAMIC_REQUEST_TO_REQUEST_SPECIFIC_PAYLOAD_INSTANCE_CONTRACT_ONLY_AFTER_THIS_GAP_MATRIX_IS_REVIEWED; KEEP_IN_MEMORY_AND_NON_DISPATCHING",
+  "governance": {
+    "candidate_input_admissible": false,
+    "renderer_input_instance_emitted": false,
+    "renderer_output_manifest_created": false,
+    "renderer_implementation_added": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "c11c_source_mutation": false
+  },
+  "source_pins": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "IMMUTABLE_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+      "role": "VERSIONED_IO_INTERFACE_CONTRACT",
+      "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
+      "role": "IO_INTERFACE_CONTRACT_SCHEMA",
+      "sha256": "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json",
+      "role": "PROSPECTIVE_INPUT_SCHEMA",
+      "sha256": "2ccfe916f35445f4543a61028c454a7ab886891aa4ab30b62445d12e73af8afd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
+      "role": "PROSPECTIVE_OUTPUT_MANIFEST_SCHEMA",
+      "sha256": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+      "role": "BINDING_PREVIEW_CONTRACT",
+      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "role": "LOGICAL_COMPOSITION_CONTRACT",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "role": "NEUTRAL_FRAME_PROGRAM_CONTRACT",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "role": "FIXED_REQUEST_BINDING_CONTRACT",
+      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "role": "FIXED_PAYLOAD_MATERIALIZATION_CONTRACT",
+      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json",
+      "role": "EDITORIAL_VALUE_SIDECAR_CONTRACT",
+      "sha256": "1224526154b89ed79000e0bd737e25153cec12b3bd24d642d2e7bb0b741cd66b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "role": "PRESENTATION_REGION_POLICY_PROPOSAL",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "role": "DELIVERY_TIMEBASE_POLICY_PROPOSAL",
+      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+      "role": "CHALLENGE_TEMPORAL_ALIGNMENT_PROPOSAL",
+      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+      "role": "CHALLENGE_SAMPLE_SELECTION_PROPOSAL",
+      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
+      "role": "CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL",
+      "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
+      "role": "CHALLENGE_COORDINATE_PROJECTION_PROPOSAL",
+      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "role": "CHALLENGE_EDITORIAL_WINDOW_PROPOSAL",
+      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "role": "LOOP_DRILL_EDITORIAL_WINDOW_PROPOSAL",
+      "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "role": "AUDIO_MUSIC_DELIVERY_PROPOSAL",
+      "sha256": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "role": "BINDING_PREVIEW_IMPLEMENTATION",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "role": "LOGICAL_COMPOSITION_IMPLEMENTATION",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "role": "FRAME_PROGRAM_IMPLEMENTATION",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "role": "FIXED_REQUEST_BINDING_IMPLEMENTATION",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "role": "FIXED_PAYLOAD_MATERIALIZATION_IMPLEMENTATION",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_editorial_value_carrier.py",
+      "role": "EDITORIAL_VALUE_SIDECAR_IMPLEMENTATION",
+      "sha256": "77d7af66cecff878de925bdcc63b1b12db812f32928a8ae873ee404199dafb17"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "role": "LOOP_DRILL_PAYLOAD_PREVIEW_IMPLEMENTATION",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "role": "CHALLENGE_PAYLOAD_PREVIEW_IMPLEMENTATION",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
+      "role": "BASELINE_PREPARATION_PLAN",
+      "sha256": "e1ada549f737ec0f5028279ed39f13af0e3b42705245111e9dc1f9b27ef2609a"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md",
+      "role": "IO_CONTRACT_CHECKPOINT",
+      "sha256": "e86f33c305fa6bb9c5ceaef7aa57947b0f2e3f60087a6e28ffb957b742a5c18b"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md",
+      "role": "FIXED_MATERIALIZATION_CHECKPOINT",
+      "sha256": "cba2e912173eb484154b3a6e7f1a8b167272089abab7748063b806c5b3dba611"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
+      "role": "EDITORIAL_SIDECAR_CHECKPOINT",
+      "sha256": "24eba68894794b4439c5e7d53c9ae75508f7e386da55953b016e6076b9cc7e38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
+      "role": "EDITORIAL_ROUTING_CONSUMPTION_BOUNDARY",
+      "sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+    }
+  ]
+}

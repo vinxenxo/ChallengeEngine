@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-io-gap-audit:v1",
+  "title": "Read-only report for conformance gaps between D-owned candidate modules and prospective renderer I/O schemas",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "candidate_io_contract_status",
+    "candidate_input_admissible",
+    "input_groups",
+    "summary",
+    "source_pins",
+    "governance",
+    "audit_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-CANDIDATE-IO-GAP-AUDIT-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "READ_ONLY_SOURCE_PINNED_GAP_AUDIT_PASS_NOT_READINESS_PASS"
+    },
+    "candidate_io_contract_status": {
+      "const": "PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED"
+    },
+    "candidate_input_admissible": {
+      "const": false
+    },
+    "input_groups": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "group",
+          "interface_required_group",
+          "schema_fields",
+          "state",
+          "finding",
+          "evidence",
+          "unclosed_requirements",
+          "complete_for_input_emission"
+        ],
+        "properties": {
+          "group": {
+            "enum": [
+              "content_identity",
+              "source_lineage",
+              "payload_instance",
+              "seed_domains",
+              "editorial",
+              "presentation",
+              "timeline",
+              "audio",
+              "delivery",
+              "authorization"
+            ]
+          },
+          "interface_required_group": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "state": {
+            "enum": [
+              "PARTIAL_FIXED_REVIEW_IDENTITIES_ONLY",
+              "PARTIAL_FIXED_FIXTURE_SOURCE_LINEAGE",
+              "PARTIAL_FIXED_IN_MEMORY_PAYLOAD_BINDINGS",
+              "PARTIAL_FIXED_SEED_DOMAINS",
+              "PARTIAL_HASH_BOUND_SIDECAR_NOT_VISUALLY_CONSUMED",
+              "BLOCKED_POLICY_NOT_APPROVED",
+              "BLOCKED_TIMING_POLICIES_NOT_APPROVED",
+              "BLOCKED_AUDIO_POLICY_NOT_APPROVED",
+              "PARTIAL_PROFILE_RESOLUTION_ONLY",
+              "BLOCKED_BASELINE_AND_D4_8_MISSING"
+            ]
+          },
+          "finding": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "unclosed_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "complete_for_input_emission": {
+            "const": false
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_groups",
+        "complete_groups",
+        "partial_groups",
+        "blocked_groups",
+        "source_pins_verified",
+        "input_instance_emitted",
+        "output_manifest_created",
+        "renderer_implementation_added",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "next_safe_increment"
+      ],
+      "properties": {
+        "schema_groups": {
+          "const": 10
+        },
+        "complete_groups": {
+          "const": 0
+        },
+        "partial_groups": {
+          "const": 6
+        },
+        "blocked_groups": {
+          "const": 4
+        },
+        "source_pins_verified": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "input_instance_emitted": {
+          "const": false
+        },
+        "output_manifest_created": {
+          "const": false
+        },
+        "renderer_implementation_added": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "next_safe_increment": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 33,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "d4_8",
+        "release_authority",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10",
+        "c11c_source_mutation"
+      ],
+      "properties": {
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      }
+    },
+    "audit_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

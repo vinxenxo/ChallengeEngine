@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-dynamic-request-payload-input:v1",
+  "title": "D9.9-canonical identity passed to the dynamic in-memory payload harness",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "request_id",
+    "request_hash",
+    "selection",
+    "seed",
+    "music_seed",
+    "variation_index",
+    "presentation_profile_id",
+    "delivery_profile_id"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-INPUT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.-]+$"
+    },
+    "request_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "selection": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id"
+          ],
+          "properties": {
+            "content_type": {
+              "const": "challenges"
+            },
+            "family_id": {
+              "const": "parking_v2"
+            },
+            "subtype_id": {
+              "type": "null"
+            },
+            "variant_id": {
+              "const": "CHALLENGE_004"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id"
+          ],
+          "properties": {
+            "content_type": {
+              "const": "visual_loops"
+            },
+            "family_id": {
+              "const": "c11c_geometric_waves_v1"
+            },
+            "subtype_id": {
+              "const": "harmonic_membrane"
+            },
+            "variant_id": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id"
+          ],
+          "properties": {
+            "content_type": {
+              "const": "visual_drills"
+            },
+            "family_id": {
+              "const": "tracking"
+            },
+            "subtype_id": {
+              "type": "null"
+            },
+            "variant_id": {
+              "const": "tier-2"
+            }
+          }
+        }
+      ]
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483646
+    },
+    "music_seed": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483646
+    },
+    "variation_index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "presentation_profile_id": {
+      "const": "social_default_v1"
+    },
+    "delivery_profile_id": {
+      "enum": [
+        "REVIEW_720",
+        "MIN_540",
+        "MASTER_1080",
+        "META_REELS_FINAL_V1"
+      ]
+    }
+  }
+}
