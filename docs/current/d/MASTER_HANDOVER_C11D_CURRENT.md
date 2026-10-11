@@ -332,3 +332,29 @@ Run python tools/c11d/d9/test_d_renderer_challenge_coordinate_projection.py, the
 ## Unified Review - Seven Harnesses
 
 Run python tools/c11d/d9/test_d_renderer_unified_content_review.py and then python tools/c11d/d9/run_d_renderer_unified_content_review.py --godot godot. The review now joins Loop, Drill, Challenge runtime, profile identity, delivery timeline, editorial windows, Challenge visual payload and coordinate projection. Accept only seven clean harness exits and ten cross-artifact checks. Source-timebase payload and coordinate projection remain in-memory review artifacts, not renderer input. The unresolved sample/interpolation, projection/timebase/editorial policies, external baseline approval and D4.8 authorization remain blocked.
+<!-- C11D_D10_CONTINUITY_RECONCILIATION_20261011 -->
+## Continuidad actual — reconciliación local D10 (2026-10-11)
+
+### Evidencia Windows más reciente facilitada por el operador
+
+`python -B .\tools\c11d\d9\test_cross_suite_lifecycle.py` devuelve PASS: content types 3/3, stages 5/5, identity continuity, GUI/CLI 3/3, catalog projection 3/3, maintenance audit 3/3, negatives 14/14 y persisted parity 4/4.
+
+`python -B .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py` devuelve PASS como auditoría: C11-C immutable reference match, historical legacy entries reconciled 4/4, protected entries 854/854, negatives 22/22, D9.15 canonical PASS/CLOSED, cinco blockers, `freeze_eligible=false`, renderer OFF, no media, D4.8 blocked, release authority none. La tree hash de esa ejecución es `d3a2d795f647fc3d05fc19e62a15d931371d0916ccdc899ec82e2ffb4c87e2fe`.
+
+El checkout local mantiene el SHA-256 congelado del manifiesto. No interpretar la exportación ZIP como un espejo completo: omite parte de los artefactos operativos y duplica la entrada del manifiesto en el archivo, mientras el checkout real pasa sus preflights. El archivo ZIP no debe extraerse por encima del árbol activo.
+
+### Nota de identidad D9.15
+
+El SHA-256 de archivo obtenido mediante `Get-FileHash` no es el sello interno `ledger_sha256`: la implementación sella JSON canónico excluyendo el campo de sello. La validación D9.15 consume este último y el checkpoint canónico. No sobrescribir ni reinicializar el ledger por diferencia entre ambos tipos de hash.
+
+### Integraciones de política
+
+La revisión unificada incluye propuestas compartidas de presentación/regiones, timebase, audio/música, alineación temporal Challenge, sample selection, coordinate/sample composition y ventanas editoriales Loop/Drill. Deben seguir identificadas como propuestas/no aprobadas hasta una decisión formal registrada. El contenido `Longform` sigue fuera de alcance.
+
+### Próximo paso
+
+Seguir `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`: auditar primero los módulos D existentes para determinar la brecha real en el contrato versionado de entrada/salida del futuro renderer. Si se requiere contrato nuevo, mantenerlo D-only, source-pinned, con schemas estrictos, pruebas negativas y sin dispatch/input nativo. No crear aprobaciones ni realizar producción. El next step no es otra capa paralela de binding.
+
+### Gates que no cambian
+
+`D9.14=BLOCKED_AS_REQUIRED`; `D9.16` es solo preflight, full acceptance bloqueada; `D9.17=BLOCKED/NO-GO`; renderer baseline no aprobado/congelado; D baseline approval no registrado; `D4.8=BLOCKED`; renderer OFF; `media_created=false`; `release_authority=NONE`; C11-C 2.19.12 y su manifiesto inmutables.

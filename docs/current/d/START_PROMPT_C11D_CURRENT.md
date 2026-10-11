@@ -343,3 +343,15 @@ Validate the contract test and execute the in-memory Godot coordinate projection
 ## Next Check - Unified Visual Payload and Coordinate Projection
 
 Execute the 7-harness unified review using the real Godot 4.7.1 executable. Require 7/7 clean harnesses, 10/10 cross-artifact checks, frozen C11-C identity and matching Challenge frame-record hashes between source-timebase visual payload and coordinate projection. Do not apply delivery resampling/interpolation, activate rendering, create media or claim baseline approval.
+<!-- C11D_D10_CONTEXT_RECONCILIATION_20261011 -->
+## Addendum vigente — estado D10 tras verificación del operador (2026-10-11)
+
+Tomar como evidencia local más reciente los outputs que el operador proporcionó para `test_cross_suite_lifecycle.py` y `test_d_baseline_candidate.py`. Ambos pasan en el checkout Windows. El preflight candidate confirma D9.15 canónico `PASS_CLOSED`, cuarentena histórica reconciliada 4/4, negativos 22/22, cinco bloqueos y `freeze_eligible=false`; esto no es una aprobación/freeze.
+
+El manifiesto C11-C del checkout conserva el SHA-256 inmutable. El ZIP de contexto es una exportación incompleta de artefactos operativos y tiene una entrada duplicada del manifiesto; no inferir que un ledger no existe localmente porque no figure en la exportación, ni extraer ese ZIP sobre el checkout activo. `Get-FileHash` sobre el ledger mide los bytes del archivo y no es directamente comparable con el campo interno `ledger_sha256` de JSON canónico.
+
+Las políticas compartidas de presentación/regiones, entrega/timebase, audio/música, alineación temporal Challenge, selección de muestras, composición/proyección y ventanas editoriales están integradas para revisión, pero permanecen propuestas no aprobadas. No añadir mecánicas nuevas ni cambiar simulación, `winning_frame` o `close_calls`.
+
+Siguiente tarea: seguir `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md` y realizar un gap analysis de contrato D de entrada/salida, considerando los módulos ya existentes de binding preview, composición lógica y frame program. Solo implementar una ausencia real, con contrato versionado, source hashes, esquemas estrictos y negativos. La ruta D9.10 continúa `PREPARE_ONLY`; no se emite renderer input, no hay dispatch, no hay medios y no se crean checkpoints de aprobación.
+
+Gates invariables: D9.14 real-media blocked; D9.16 full acceptance blocked; D9.17 NO-GO; renderer baseline/D baseline approvals ausentes; `D4.8=BLOCKED`; `renderer=OFF`; `media_created=false`; `release_authority=NONE`; C11-C 2.19.12 y manifest inmutables.

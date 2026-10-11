@@ -138,3 +138,33 @@ Do not assume each path is present in a newer archive; inspect first. If a comma
 - Before applying an overlay, state its exact filename and SHA-256; give exact commands.
 - Do not make speculative broad refactors. Isolate fixes and test them before full acceptance runs.
 - User prefers continuation and execution of the next sensible task rather than being asked to restate established constraints.
+<!-- C11D_D10_LOCAL_CHECKOUT_RECONCILIATION_20261011 -->
+## Reconciliación de continuidad — verificación del checkout Windows (2026-10-11)
+
+Este addendum prevalece sobre cualquier conclusión anterior de esta conversación que haya interpretado la ausencia de artefactos en una exportación ZIP como ausencia en el checkout local.
+
+### Evidencia local comunicada por el operador
+
+- `release/C11C_FREEZE_PACKAGE_MANIFEST.json` conserva SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+- `tools/c11d/d9/test_cross_suite_lifecycle.py` — PASS: tres tipos de contenido, cinco etapas, identidad, GUI/CLI 3/3, proyección de catálogo 3/3, auditoría de mantenimiento 3/3, negativos 14/14 y regresión de paridad persistida 4/4.
+- `tools/c11d/baseline_candidate/test_d_baseline_candidate.py` — PASS como preflight de auditoría, no como aprobación: `D9.15=D9.15_OPERATOR_EVIDENCE_PASS_CLOSED`, cuarentena histórica reconciliada 4/4, protegidos 854/854, negativos 22/22, cinco bloqueos, `freeze_eligible=false`, `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`.
+- SHA-256 del árbol candidate reportado en esta ejecución: `d3a2d795f647fc3d05fc19e62a15d931371d0916ccdc899ec82e2ffb4c87e2fe`.
+- El operador confirma que `c11c-suite/c11d-control` ya fue retirado y que su disposición histórica queda reconciliada por el ledger de mantenimiento; no recrearlo ni revertir su retirada.
+
+Estos resultados fueron ejecutados por el operador en Windows PowerShell. No deben presentarse como ejecución de este entorno.
+
+### Interpretación de los hashes D9.15
+
+`Get-FileHash` aplicado al archivo físico del ledger produce el hash de sus bytes (`7120c4f26c4a11b2063f0ec0a1569b82727cfdfb8ac4795d877fa22f99c59cfa`). El campo `ledger_sha256` implementado en `tools/c11d/baseline_candidate/operator_evidence.py` es distinto: sella la representación JSON canónica del ledger sin el campo de sello. Por ello, el hash de archivo no se debe comparar directamente con el sello interno documentado `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`. La validación local D9.15 y el candidate preflight informados por el operador pasan; no reinicializar, reescribir ni regenerar el ledger/checkpoint por esta diferencia.
+
+### Límite de la exportación
+
+La exportación `ChallengeEngineV01_STATELESS_C11-D10_LATEST_20261011_203730.zip` tiene SHA-256 `8fd1957adaee0a0380048c9f789da661454dff22e662aba5fc6327cac4d622e8`, tamaño 6.347.957 bytes, 2.859 entradas ZIP y 2.858 nombres únicos. Contiene una ruta duplicada para el manifiesto C11-C y no incluye todos los artefactos operativos de `artifacts/`. Esta observación describe el paquete exportado, no el checkout local. No usar la ausencia de ledgers en esa exportación ni la duplicidad de entrada para inferir que el checkout está corrupto. Tampoco extraer el archivo completo por encima del checkout activo.
+
+### Estado de fase y siguiente incremento
+
+Las políticas compartidas de presentación/regiones, timebase de entrega, audio/música, alineación temporal, selección de muestras, composición/proyección de coordenadas y ventanas editoriales Loop/Drill están integradas en los contratos de revisión indicados por sus checkpoints específicos, pero permanecen `PROPOSED_NOT_APPROVED` salvo aprobación formal específica. Los PASS prueban consistencia; no autorizan renderizado.
+
+El siguiente trabajo de ingeniería debe seguir `D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md`: revisar primero las capacidades existentes de `d_renderer_candidate.py`, su schema y los programas de composición/frame neutrales; definir únicamente el contrato D de entrada/salida que aún falte, ligado al sobre D9.10 `PREPARE_ONLY`, con esquema versionado, linaje/hashes y pruebas fail-closed. No crear una segunda ruta de binding paralela ni emitir input nativo, dispatch, medios o checkpoints de aprobación.
+
+Locks invariantes: C11-C inmutable; `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; D9 permanece abierto; D9.17 `BLOCKED/NO-GO`; D10 bloqueado como puerta de producción/release.

@@ -161,3 +161,18 @@ Added a console-only orchestrator which sequentially runs the existing Visual Lo
 ## Increment â€” Challenge Visual Payload Preview V1
 
 Added a Godot headless in-memory logical visual payload builder for CHALLENGE_004. It invokes the frozen runtime twice, rebinds social_default_v1 on a deep copy, loads and hashes the three canonical SVG Texture2D assets, preserves all 420 GAME transform snapshots at source 60 FPS, excludes telemetry/winning_frame/close_calls, and checks simulation invariance. Coordinate projection and 30 FPS sample selection/interpolation remain unresolved and are not applied. The payload is not renderer input and is never written to disk.
+## Reconciliación del estado tras las integraciones C11-D del 2026-10-11
+
+Los contratos recientes para política de presentación/regiones, timebase, audio/música, alineación temporal, selección de muestras, composición/proyección de coordenadas y ventanas editoriales ya tienen integraciones de revisión y pruebas negativas focalizadas. Los estados de las políticas siguen siendo propuestos y no aprobados, salvo que un registro formal de aprobación válido y explícito disponga otra cosa. El resultado PASS del revisor no equivale a `video_render_ready` ni autoriza renderer/producción.
+
+El operador confirmó en el checkout Windows:
+
+- D9.13 lifecycle: PASS (content types 3/3, stages 5/5, parity 3/3, maintenance audit 3/3, negative 14/14, persisted parity 4/4).
+- D baseline candidate preflight: PASS como auditoría, D9.15 canónico `PASS_CLOSED`, cuarentena histórica reconciliada 4/4, negativos 22/22, cinco bloqueos y `freeze_eligible=false`.
+- C11-C manifest SHA-256 conserva el valor congelado exacto.
+
+El siguiente trabajo no es habilitar el renderer ni crear un render. Es comprobar si queda alguna brecha real en el contrato D de entrada/salida después de los componentes ya existentes (`d_renderer_candidate.py`, binding preview, logical composition y neutral frame program) y, si existe, definirla mediante un incremento aislado, versionado, source-bound y fail-closed. No duplicar el binding; Longform sigue rechazado. Cualquier interfaz permanece inerte y no emite renderer-native input. No crear aún `D_RENDERER_BASELINE_APPROVAL_CHECKPOINT.md` como aprobado ni `D_BASELINE_APPROVAL_CHECKPOINT.json` como aprobación.
+
+Las carpetas `artifacts/` y el registro de cuarentena del checkout son evidencias operativas; su omisión por el ZIP exportador no debe tratarse como fallo local. El export actual no debe extraerse por encima del checkout activo.
+
+Permanecen obligatorios: C11-C y su manifiesto inmutables; `D9.10=PREPARE_ONLY`; `D4.8=BLOCKED`; renderer OFF; `media_created=false`; `release_authority=NONE`; D9 OPEN; D9.17 NO-GO; D10 BLOCKED.
