@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-io-contract:v1",
+  "title": "C11-D Renderer Candidate I/O Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-CANDIDATE-IO-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "checkpoint": {
+      "const": "D_RENDERER_CANDIDATE_IO_CONTRACT"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "owner": {
+          "const": "C11-D_ONLY"
+        },
+        "content_types": {
+          "const": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "longform": {
+          "const": "REJECT_UNTIL_CANONICAL_D_REQUEST_AND_RENDERER_CONTRACT_SUPPORT_IT"
+        }
+      },
+      "required": [
+        "owner",
+        "content_types",
+        "longform"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 20
+    },
+    "boundary_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current_terminal_stage": {
+          "const": "D_RENDERER_NEUTRAL_FRAME_PROGRAM_PREPARATION_ONLY"
+        },
+        "binding_preview_is_renderer_input": {
+          "const": false
+        },
+        "logical_composition_is_renderer_input": {
+          "const": false
+        },
+        "frame_program_is_renderer_input": {
+          "const": false
+        },
+        "renderer_input_instance_emitted": {
+          "const": false
+        },
+        "renderer_output_manifest_created": {
+          "const": false
+        },
+        "renderer_implementation_added": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "const": null
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        }
+      },
+      "required": [
+        "current_terminal_stage",
+        "binding_preview_is_renderer_input",
+        "logical_composition_is_renderer_input",
+        "frame_program_is_renderer_input",
+        "renderer_input_instance_emitted",
+        "renderer_output_manifest_created",
+        "renderer_implementation_added",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "output_artifact_path",
+        "d4_8",
+        "release_authority",
+        "c11c_source_mutation"
+      ]
+    },
+    "interface_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json"
+            },
+            "schema_id": {
+              "const": "urn:c11d:renderer-candidate-input:v1"
+            },
+            "state": {
+              "const": "PROSPECTIVE_POST_APPROVAL_SCHEMA_NOT_EMITTED"
+            }
+          },
+          "required": [
+            "path",
+            "schema_id",
+            "state"
+          ]
+        },
+        "output_manifest_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json"
+            },
+            "schema_id": {
+              "const": "urn:c11d:renderer-output-manifest:v1"
+            },
+            "state": {
+              "const": "PROSPECTIVE_POST_RENDER_SCHEMA_NOT_EMITTED"
+            }
+          },
+          "required": [
+            "path",
+            "schema_id",
+            "state"
+          ]
+        },
+        "source_mapping": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "from": {
+                "type": "string",
+                "minLength": 1
+              },
+              "to": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "from",
+              "to"
+            ]
+          }
+        },
+        "input_required_groups": {
+          "type": "array",
+          "minItems": 9,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "output_required_groups": {
+          "type": "array",
+          "minItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "input_schema",
+        "output_manifest_schema",
+        "source_mapping",
+        "input_required_groups",
+        "output_required_groups"
+      ]
+    },
+    "current_admission_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "current_blockers": {
+          "type": "array",
+          "minItems": 9,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "approval_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "interface_design_approved": {
+              "const": false
+            },
+            "renderer_baseline_approved": {
+              "const": false
+            },
+            "renderer_baseline_frozen": {
+              "const": false
+            },
+            "d4_8_authorized": {
+              "const": false
+            },
+            "d9_14": {
+              "const": "BLOCKED"
+            },
+            "d9_16": {
+              "const": "BLOCKED"
+            },
+            "d9_17": {
+              "const": "BLOCKED_NO_GO"
+            },
+            "d10": {
+              "const": "BLOCKED"
+            },
+            "release_authority": {
+              "const": "NONE"
+            }
+          },
+          "required": [
+            "interface_design_approved",
+            "renderer_baseline_approved",
+            "renderer_baseline_frozen",
+            "d4_8_authorized",
+            "d9_14",
+            "d9_16",
+            "d9_17",
+            "d10",
+            "release_authority"
+          ]
+        }
+      },
+      "required": [
+        "candidate_input_admissible",
+        "current_blockers",
+        "approval_state"
+      ]
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 25,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observed_state": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "role",
+          "observed_state",
+          "sha256"
+        ]
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "future_input_admission": {
+          "const": "FAIL_CLOSED_UNLESS_EVERY_REQUIRED_POLICY_IS_APPROVED_AND_HASH_BOUND_AND_BOTH_AUTHORIZATION_CHECKPOINTS_VALIDATE"
+        },
+        "future_output_manifest": {
+          "const": "ONLY_AFTER_ACTUAL_AUTHORIZED_RENDER_AND_ALL_REQUIRED_QA_PASS"
+        },
+        "release": {
+          "const": "OUTPUT_MANIFEST_DOES_NOT_GRANT_RELEASE_AUTHORITY"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "forbidden_operations": {
+          "type": "array",
+          "minItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "future_input_admission",
+        "future_output_manifest",
+        "release",
+        "frozen_c11c_manifest_sha256",
+        "forbidden_operations"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "checkpoint",
+    "status",
+    "scope",
+    "purpose",
+    "boundary_state",
+    "interface_design",
+    "current_admission_state",
+    "source_pins",
+    "governance"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

@@ -92,14 +92,18 @@ class UnifiedDeliveryTimebasePolicyTests(unittest.TestCase):
     def test_negative_source_lineage_digest_mismatch(self):
         contract, _ = validate_contract(ROOT)
         contract_path = ROOT / CONTRACT_REL
-        original = contract_path.read_text(encoding='utf-8')
+        original_bytes = contract_path.read_bytes()
+        original = original_bytes.decode('utf-8')
         try:
             data = __import__('json').loads(original)
             data['source_lineage'][1]['sha256'] = '0' * 64
             contract_path.write_text(__import__('json').dumps(data), encoding='utf-8')
             with self.assertRaises(UnifiedDeliveryPolicyError): validate_contract(ROOT)
         finally:
-            contract_path.write_text(original, encoding='utf-8')
+            # Restore the exact bytes, not text-normalized bytes: the source contract's
+            # line endings are covered by downstream SHA-256 lineage pins.
+            contract_path.write_bytes(original_bytes)
+            self.assertEqual(contract_path.read_bytes(), original_bytes)
 
 def main() -> int:
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(UnifiedDeliveryTimebasePolicyTests)

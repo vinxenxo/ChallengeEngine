@@ -1,3 +1,15 @@
+# Latest authoritative update — renderer candidate I/O contract (2026-10-11)
+
+The active renderer-baseline preparation step now has a versioned proposal in `D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md` and strict future input/output-manifest schemas. The contract binds 30 source artifacts and remains `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`. No renderer-native input instance, output manifest, dispatcher, renderer implementation, media or approval has been created. It remains inadmissible until a request-specific payload instance and all explicitly approved policies, the independent D renderer baseline and D4.8 authorization exist.
+
+A focused regression pass also repaired stale byte-hash references in the shared timebase/audio/unified-review proposal chain and made the timebase negative test byte-preserving across operating systems. Verified in the preparation copy: timebase 13/13; audio/music 14/14; unified review 36/36; I/O contract source pins 30/30, schemas 3/3, in-memory schema fixtures 2/2, fail-closed negatives 13/13 (or structural-only fallback 5/5 when `jsonschema` is unavailable); binding preview 13/13 negatives; logical composition 17/17 negatives; frame program 19/19 negatives; request-scoped binding 51/51 negatives; Loop/Drill payload preview 29/29 negatives; Challenge visual-payload preview 10/10 unit tests. These are Python/static contract checks, not a full Suite or Godot acceptance. The new I/O test remains outside the aggregate Suite pending Windows verification.
+
+The inspected ZIP is not safe to extract wholesale over the active Windows checkout: it contains a duplicate historical freeze-manifest path and omits operator-runtime ledgers that the user confirmed exist locally. The active Windows checkout separately passed D9.13 lifecycle and candidate preflight per user-provided outputs. Preserve that distinction.
+
+Next: independently review the prospective field-level I/O contract, then only develop non-dispatching, request-specific payload materialization if extant contracts support it without inventing unapproved policies. Keep C11-C frozen, renderer OFF, media false, D4.8 BLOCKED and release authority NONE.
+
+---
+
 **Current authoritative phase (2026-10-09): D9.10 runtime PASS 3/3; bound acceptance PASS 7/7; aggregate Suite PASS 22/22; D9.15 canonical operator GUI acceptance PASS/CLOSED (13/13 pairings).** D9.14 gate remains `BLOCKED_AS_REQUIRED`; D9.16 is a passing preflight only and full acceptance remains blocked; D9 remains OPEN. The D9.15 checkpoint is sealed at SHA-256 `2e3b9d591288ba77259ee650685ba16deb12abcf770c123406612a5efbe309f`, bound to ledger SHA-256 `dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa`. Next safe action: re-run D9.15/D9.16/candidate preflights against this checkpoint and record actual current outputs. Full D9.14 remains blocked until a separately approved/frozen universal D renderer baseline and explicit `D4.8` governance authorization exist. D9.17 remains `BLOCKED/NO-GO`; D10 remains BLOCKED.
 
 ## D9.15 checkpoint-consumption integration fix — 2026-10-09

@@ -1,5 +1,13 @@
 # C11-D Context Checkpoint — 2026-10-11
 
+## 0. Newest preparation increment — renderer candidate I/O contract
+
+`D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md` records a 30-source-pinned interface proposal with strict prospective input and output-manifest schemas. It remains `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`; the candidate input remains inadmissible and no instance, renderer implementation, dispatch, media or approval is created. The interface does not promote presentation, timebase, sampling, coordinate, editorial, delivery or audio policies to approved status.
+
+A regression surfaced in the exported package: timebase policy bytes hash to `251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019`, while downstream audio/review pins referenced stale alternate hashes. The audio and review contracts, their schemas and validator pins were aligned to the byte-exact source. The timebase negative test now restores original bytes instead of a newline-normalized text string. Focused preparation-copy results: I/O contract 30/30 source pins, 3/3 schemas, 2/2 in-memory schema fixtures and 13/13 fail-closed negatives (or structural-only fallback 5/5 without `jsonschema`); timebase 13/13; audio 14/14; unified review 36/36; binding preview 13/13 negatives; logical composition 17/17 negatives; frame program 19/19 negatives; request-scoped binding 51/51 negatives; Loop/Drill payload preview 29/29 negatives; Challenge payload preview 10/10 unit tests. JSON Schema Draft 2020-12 validation passed 3/3 in this environment; forced dependency-free structural fallback also passed. Full aggregate Suite and Godot tests were not run in this preparation environment.
+
+The exact source ZIP is not a safe whole-repository restore: it has a duplicate historical freeze manifest entry and omits operator ledgers that the user confirms are present locally. Continue from the active Windows checkout and apply only the verified overlay. Keep the new focused I/O test outside the aggregate until Windows verification. The next step is field-level review of the interface proposal, then a narrowly scoped non-dispatching payload-instance path only if it can be built from existing contracts without guessing unresolved policy.
+
 **Checkpoint purpose:** hand over the current C11-D state into a new ChatGPT context with exact scope, evidence, invariants, next work, and acceptance discipline.
 
 ## 1. Source-of-truth attachment expected in the new context

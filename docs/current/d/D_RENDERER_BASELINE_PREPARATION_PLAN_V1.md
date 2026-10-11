@@ -1,5 +1,13 @@
 # C11-D Future Renderer Baseline Preparation Plan V1
 
+## Current authoritative status — prospective I/O boundary and regression closure (2026-10-11)
+
+The first renderer-baseline design increment is recorded in `D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md`. The 30-source-pinned D-owned input/output interface is `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`: it defines strict prospective input and output-manifest schemas but does not instantiate either, add a renderer implementation, dispatch, create media, or approve policy. Binding preview, logical composition, and the renderer-neutral frame program remain upstream preparation artifacts, not renderer-native input.
+
+The same regression pass reconciled stale byte-level lineage pins across the timebase, audio/music, and unified-review proposal chain. The canonical timebase proposal in the inspected ZIP is 9,740 bytes with SHA-256 `251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019`; `test_d_renderer_unified_delivery_timebase_policy.py` now restores the exact original bytes after its negative mutation instead of normalizing line endings. The downstream audio/review pins and strict schema constants now refer to the canonical source bytes. Focused checks pass: timebase 13/13, audio/music 14/14, unified review 36/36, candidate I/O pins 30/30 with 3/3 schemas, 2/2 in-memory schema fixtures and 13/13 fail-closed negatives (fallback without `jsonschema`: static negatives 5/5), and upstream binding/composition/frame-program/request-binding/payload-preview checks pass. The full aggregate and Godot/Windows runtime acceptance were not run in this preparation environment.
+
+The current request-specific payload instance is still not materialized for all three supported content types. Policy proposals remain unapproved, the renderer implementation and separate frozen/approved baseline are absent, D4.8 remains blocked, and the five candidate blockers remain. Next work is a source-bound, non-dispatching materialization/binding path only if it can consume the extant request-scoped inputs without inventing the unresolved sampling, temporal, coordinate, editorial, delivery, or audio semantics. Keep the current I/O contract in proposal status until it receives independent field-level review.
+
 **State:** `PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN`  
 **Current candidate:** `C11-D-BASELINE-CANDIDATE-0.1`  
 **Date:** 2026-10-09  

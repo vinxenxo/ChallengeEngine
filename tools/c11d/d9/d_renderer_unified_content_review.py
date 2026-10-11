@@ -73,8 +73,8 @@ EXPECTED_SOURCE_LINEAGE = [
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json", "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"),
     ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"),
-    ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921"),
-    ("definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json", "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json", "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"),
     ("definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json", "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"),
     ("definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json", "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"),
     ("definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json", "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"),
@@ -1030,7 +1030,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     delivery_policy_unsigned = {k: copy.deepcopy(v) for k, v in delivery_policy.items() if k != "preview_sha256"}
     if delivery_policy.get("schema") != "C11-D-D9-UNIFIED-DELIVERY-TIMEBASE-POLICY-PREVIEW-V1" or delivery_policy.get("policy_id") != UNIFIED_DELIVERY_POLICY_ID or delivery_policy.get("policy_state") != "PROPOSED_NOT_APPROVED":
         raise UnifiedContentReviewError("Unified delivery policy identity/state mismatch")
-    if delivery_policy.get("proposal_contract_sha256") != "1e190d5bc1541d04f93052ccc27afd8a3ed289d9c2271d364ebbae6548412921":
+    if delivery_policy.get("proposal_contract_sha256") != "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019":
         raise UnifiedContentReviewError("Unified delivery policy contract identity pin mismatch")
     if delivery_policy.get("target_delivery_profile") != EXPECTED_UNIFIED_DELIVERY_PROFILE or delivery_policy.get("content_matrix") != EXPECTED_UNIFIED_DELIVERY_MATRIX:
         raise UnifiedContentReviewError("Unified delivery policy target-profile or cross-content matrix mismatch")
@@ -1048,7 +1048,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     audio_unsigned = {k: copy.deepcopy(v) for k, v in audio_policy.items() if k != "preview_sha256"}
     if audio_policy.get("schema") != "C11-D-D9-UNIFIED-AUDIO-MUSIC-DELIVERY-POLICY-PREVIEW-V1" or audio_policy.get("policy_id") != UNIFIED_AUDIO_MUSIC_POLICY_ID or audio_policy.get("policy_state") != "PROPOSED_NOT_APPROVED":
         raise UnifiedContentReviewError("Unified audio/music delivery policy identity/state mismatch")
-    if audio_policy.get("proposal_contract_sha256") != "12d9000b73f09318a005e8f1d76e2efb2777469715dfeb7d686760600ba11238":
+    if audio_policy.get("proposal_contract_sha256") != "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8":
         raise UnifiedContentReviewError("Unified audio/music delivery proposal contract identity pin mismatch")
     if audio_policy.get("target_audio_profile") != EXPECTED_AUDIO_DELIVERY_PROFILE or audio_policy.get("content_matrix") != EXPECTED_AUDIO_DELIVERY_MATRIX:
         raise UnifiedContentReviewError("Unified audio/music target profile or pre-encode timeline matrix mismatch")

@@ -1,3 +1,17 @@
+# CURRENT AUTHORITATIVE UPDATE — D renderer candidate I/O boundary (2026-10-11)
+
+The next D-owned renderer-baseline preparation increment has been implemented as an inert, source-pinned interface proposal. Read `D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md`, `D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json`, and the associated strict input/output schemas. State is `PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED`; no renderer input/output instance is emitted, no implementation or dispatch is added, and no policy is promoted to approved.
+
+During focused regression, exact source bytes in the packaged timebase policy (9,740 bytes; SHA-256 `251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019`) exposed stale timebase/audio/review lineage pins. The downstream audio and unified-review contracts, their strict schemas, and verification code have been reconciled to this hash chain. The timebase test's negative mutation now restores saved bytes, preserving line endings so it cannot invalidate a downstream hash pin. Results in the preparation copy: timebase 13/13, audio/music 14/14, unified review 36/36, I/O contract pins 30/30, schemas 3/3, in-memory schema fixtures 2/2 and negatives 13/13 (or structural-only fallback 5/5 when `jsonschema` is unavailable); binding preview, logical composition, frame program, request binding and both payload-preview tests also pass. No Godot or Windows runtime acceptance was performed here; new contract test remains outside the aggregate Suite until Windows verification.
+
+The user-provided Windows evidence independently confirms the canonical C11-C manifest, D9.13 cross-suite lifecycle PASS and candidate-preflight PASS with five remaining blockers and `freeze_eligible=false`. The archive is only a context export: it has a duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` member and omits runtime ledgers confirmed present in the user's active checkout. Never extract it wholesale over the live project, and do not use export omissions as evidence of local loss.
+
+## Next work and immutable boundaries
+
+Review the exact input/output fields and their source mapping. Then assess a D-only, non-dispatching request-specific payload materialization path for all three supported types without inferring timebase, sampling, coordinate, editorial, delivery or audio decisions. Existing binding preview, composition and frame program are not renderer-native input. Do not emit an instance until the proposal and required policies/gates permit it. D9.10 stays `PREPARE_ONLY`; renderer OFF; no media; D4.8 BLOCKED; release authority NONE; D9 OPEN; D10 BLOCKED. C11-C 2.19.12 and the frozen manifest remain immutable.
+
+---
+
 # CURRENT AUTHORITATIVE UPDATE — region hierarchy reconciliation (2026-10-10)
 
 Windows operator accepted `D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1` as a proposal generator, not as approved geometry. The next source review clarified that D1.5 and the frozen presentation code already establish the 540×960 logical social `HEADER` / `BODY` / `FOOTER` frame and the distinct profile/family composition layers. The four normalized-permille boxes remain exploratory and must not drive a temporal schedule. The new increment `D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1` formalizes this source hierarchy and tests it read-only. **Windows verification of its focused test is pending.**

@@ -1,0 +1,539 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-input:v1",
+  "title": "C11-D Future Renderer Candidate Input V1 (post-approval interface only)",
+  "description": "Prospective strict interface schema. This increment emits no input instance. A conforming input may be built only after payload materialization, applicable policy approvals, renderer-baseline approval/freeze and explicit D4.8 authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-CANDIDATE-INPUT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "content_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "content_type": {
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "family_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtype_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_scope_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "difficulty_tier": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        },
+        "variation_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "canonical_request_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "content_type",
+        "family_id",
+        "subtype_id",
+        "variant_id",
+        "variant_scope_id",
+        "difficulty_tier",
+        "variation_index",
+        "canonical_request_sha256"
+      ]
+    },
+    "source_lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "editorial_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "plan_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bridge_record_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "adapter_envelope_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "binding_preview_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "logical_composition_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "frame_program_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "request_payload_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "editorial_sha256",
+        "plan_sha256",
+        "bridge_record_sha256",
+        "adapter_envelope_sha256",
+        "binding_preview_sha256",
+        "logical_composition_sha256",
+        "frame_program_sha256",
+        "request_payload_manifest_sha256"
+      ]
+    },
+    "payload_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instance_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_type": {
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "payload_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "payload_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonical_source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "materialization_mode": {
+          "const": "REQUEST_SCOPED_HASH_BOUND_INSTANCE"
+        }
+      },
+      "required": [
+        "instance_id",
+        "content_type",
+        "payload_sha256",
+        "payload_manifest_sha256",
+        "canonical_source_sha256",
+        "materialization_mode"
+      ]
+    },
+    "seed_domains": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gameplay_seed": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        },
+        "gameplay_domain": {
+          "const": "GAMEPLAY"
+        },
+        "music_seed": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        },
+        "music_domain": {
+          "const": "MUSIC"
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "cross_domain_seed_reuse": {
+          "const": false
+        }
+      },
+      "required": [
+        "gameplay_seed",
+        "gameplay_domain",
+        "music_seed",
+        "music_domain",
+        "automatic_seed_generation",
+        "cross_domain_seed_reuse"
+      ]
+    },
+    "editorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resolved_editorial_values_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "frame_program_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "field_window_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        }
+      },
+      "required": [
+        "resolved_editorial_values_sha256",
+        "frame_program_sha256",
+        "field_window_policy"
+      ]
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "presentation_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "presentation_profile_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "region_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        },
+        "coordinate_projection_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        }
+      },
+      "required": [
+        "presentation_profile_id",
+        "presentation_profile_sha256",
+        "region_policy",
+        "coordinate_projection_policy"
+      ]
+    },
+    "timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "delivery_fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "frame_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "schedule_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "delivery_timebase_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        },
+        "temporal_alignment_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        },
+        "sample_selection_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        },
+        "coordinate_sample_composition_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        }
+      },
+      "required": [
+        "source_fps",
+        "delivery_fps",
+        "frame_count",
+        "schedule_sha256",
+        "delivery_timebase_policy",
+        "temporal_alignment_policy",
+        "sample_selection_policy",
+        "coordinate_sample_composition_policy"
+      ]
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "audio_timeline_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "audio_music_delivery_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "APPROVED"
+            },
+            "contract_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "approval_checkpoint_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "contract_sha256",
+            "approval_checkpoint_sha256"
+          ]
+        },
+        "music_seed_domain": {
+          "const": "MUSIC"
+        },
+        "duration_alignment_verified": {
+          "const": true
+        }
+      },
+      "required": [
+        "enabled",
+        "audio_timeline_sha256",
+        "audio_music_delivery_policy",
+        "music_seed_domain",
+        "duration_alignment_verified"
+      ]
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_registry_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "resolved_profile_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "video_codec": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pixel_format": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "profile_id",
+        "profile_registry_sha256",
+        "resolved_profile_sha256",
+        "width",
+        "height",
+        "fps",
+        "video_codec",
+        "pixel_format"
+      ]
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "renderer_baseline_state": {
+          "const": "APPROVED_AND_FROZEN"
+        },
+        "renderer_baseline_checkpoint_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "d4_8_state": {
+          "const": "AUTHORIZED"
+        },
+        "d4_8_decision_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "d9_14_qualification_authorized": {
+          "const": true
+        }
+      },
+      "required": [
+        "renderer_baseline_state",
+        "renderer_baseline_checkpoint_sha256",
+        "d4_8_state",
+        "d4_8_decision_sha256",
+        "d9_14_qualification_authorized"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "content_identity",
+    "source_lineage",
+    "payload_instance",
+    "seed_domains",
+    "editorial",
+    "presentation",
+    "timeline",
+    "audio",
+    "delivery",
+    "authorization"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

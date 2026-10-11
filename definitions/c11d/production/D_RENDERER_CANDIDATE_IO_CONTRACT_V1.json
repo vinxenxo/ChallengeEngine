@@ -1,0 +1,316 @@
+{
+  "schema": "C11-D-RENDERER-CANDIDATE-IO-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D_RENDERER_CANDIDATE_IO_CONTRACT",
+  "status": "PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED",
+  "scope": {
+    "owner": "C11-D_ONLY",
+    "content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "longform": "REJECT_UNTIL_CANONICAL_D_REQUEST_AND_RENDERER_CONTRACT_SUPPORT_IT"
+  },
+  "purpose": "Specify the future D-owned renderer input and successful-output manifest boundary without emitting a renderer input, implementing/dispatching a renderer or creating media. It closes the documentation/design gap between existing preparation objects and any future governed renderer; it does not claim the prerequisites are satisfied.",
+  "boundary_state": {
+    "current_terminal_stage": "D_RENDERER_NEUTRAL_FRAME_PROGRAM_PREPARATION_ONLY",
+    "binding_preview_is_renderer_input": false,
+    "logical_composition_is_renderer_input": false,
+    "frame_program_is_renderer_input": false,
+    "renderer_input_instance_emitted": false,
+    "renderer_output_manifest_created": false,
+    "renderer_implementation_added": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  },
+  "interface_design": {
+    "input_schema": {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json",
+      "schema_id": "urn:c11d:renderer-candidate-input:v1",
+      "state": "PROSPECTIVE_POST_APPROVAL_SCHEMA_NOT_EMITTED"
+    },
+    "output_manifest_schema": {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
+      "schema_id": "urn:c11d:renderer-output-manifest:v1",
+      "state": "PROSPECTIVE_POST_RENDER_SCHEMA_NOT_EMITTED"
+    },
+    "source_mapping": [
+      {
+        "from": "D9.9 canonical request + producer plan",
+        "to": "content_identity, canonical_request_sha256, source_lineage"
+      },
+      {
+        "from": "D9.10 bridge + PREPARE_ONLY adapter envelope",
+        "to": "source_lineage.adapter_envelope_sha256; never dispatch directly"
+      },
+      {
+        "from": "binding preview + logical composition + neutral frame program",
+        "to": "source_lineage and editorial references; not renderer-native commands"
+      },
+      {
+        "from": "request-scoped payload materializer",
+        "to": "payload_instance identity + payload manifest hash; required, but not yet available as a complete request-specific instance for all three types"
+      },
+      {
+        "from": "explicitly approved presentation/timebase/sample/coordinate/editorial/audio policies",
+        "to": "approved policy IDs, hashes and derived payload/timeline references; unresolved proposals must block admission"
+      },
+      {
+        "from": "independently approved/frozen D renderer baseline + explicit D4.8 decision",
+        "to": "authorization hashes; both mandatory before admission or production"
+      }
+    ],
+    "input_required_groups": [
+      "content_identity",
+      "source_lineage",
+      "request_specific_hash_bound_payload_instance",
+      "isolated_gameplay_and_music_seed_domains",
+      "resolved_editorial_values_and_approved_field_windows",
+      "approved_presentation_and_coordinate_projection",
+      "approved_timebase_temporal_alignment_sample_selection_and_coordinate_composition",
+      "approved_audio_music_delivery_and_timeline_alignment",
+      "resolved_delivery_profile",
+      "renderer_baseline_approval_and_explicit_D4_8_authorization"
+    ],
+    "output_required_groups": [
+      "input_and_source_lineage",
+      "renderer_contract_implementation_and_build_identity",
+      "resolved_delivery_profile_and_frame_parameters",
+      "video_audio_and_final_mux_hashes_and_sizes",
+      "video_audio_visual_review_replay_and_provenance_QA_reports",
+      "decoded_frame_and_audio_PCM_reproducibility_fingerprints",
+      "Catalog_identity_and_provenance",
+      "explicit_non-release_governance_state"
+    ]
+  },
+  "current_admission_state": {
+    "candidate_input_admissible": false,
+    "current_blockers": [
+      "REQUEST_SCOPED_PAYLOAD_INSTANCE_NOT_ESTABLISHED_FOR_ALL_THREE_CONTENT_TYPES",
+      "PRESENTATION_REGION_POLICY_NOT_APPROVED",
+      "DELIVERY_TIMEBASE_POLICY_NOT_APPROVED",
+      "CHALLENGE_TEMPORAL_ALIGNMENT_AND_SAMPLE_SELECTION_POLICIES_NOT_APPROVED",
+      "COORDINATE_COMPOSITION_AND_PROJECTION_POLICIES_NOT_APPROVED",
+      "EDITORIAL_FIELD_WINDOW_POLICIES_NOT_APPROVED_FOR_ALL_THREE_CONTENT_TYPES",
+      "AUDIO_MUSIC_DELIVERY_POLICY_NOT_APPROVED",
+      "D_RENDERER_IMPLEMENTATION_AND_INDEPENDENT_BASELINE_APPROVAL_ABSENT",
+      "D4_8_AUTHORIZATION_BLOCKED"
+    ],
+    "approval_state": {
+      "interface_design_approved": false,
+      "renderer_baseline_approved": false,
+      "renderer_baseline_frozen": false,
+      "d4_8_authorized": false,
+      "d9_14": "BLOCKED",
+      "d9_16": "BLOCKED",
+      "d9_17": "BLOCKED_NO_GO",
+      "d10": "BLOCKED",
+      "release_authority": "NONE"
+    }
+  },
+  "source_pins": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "IMMUTABLE_C11C_REFERENCE",
+      "observed_state": "FROZEN",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "role": "D9_10_ADAPTER_BOUNDARY",
+      "observed_state": "PREPARE_ONLY",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+      "role": "BINDING_PREVIEW_CONTRACT",
+      "observed_state": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json",
+      "role": "BINDING_PREVIEW_SCHEMA",
+      "observed_state": "STRICT_SCHEMA",
+      "sha256": "61d0a86ff16a49610ccc74e5f0e82fe54c01a6f948bbabae9735ea6951a4b056"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "role": "LOGICAL_COMPOSITION_CONTRACT",
+      "observed_state": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
+      "role": "LOGICAL_COMPOSITION_SCHEMA",
+      "observed_state": "STRICT_SCHEMA",
+      "sha256": "101bdf4234fbbafa7f591439800f8985839ad60ed554dd03481a769590648657"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "role": "FRAME_PROGRAM_CONTRACT",
+      "observed_state": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+      "role": "FRAME_PROGRAM_SCHEMA",
+      "observed_state": "STRICT_SCHEMA",
+      "sha256": "c09d570865c8fcb8b0de3c1bef200a118e6801a476ab040a819b1fb698d30584"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "role": "REQUEST_SCOPED_PAYLOAD_BINDING_CONTRACT",
+      "observed_state": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "role": "REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA",
+      "observed_state": "STRICT_SCHEMA",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "role": "LOOP_DRILL_PAYLOAD_PREVIEW_CONTRACT",
+      "observed_state": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+      "role": "LOOP_DRILL_PAYLOAD_PREVIEW_SCHEMA",
+      "observed_state": "STRICT_SCHEMA",
+      "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "role": "CHALLENGE_PAYLOAD_PREVIEW_CONTRACT",
+      "observed_state": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "role": "CHALLENGE_PAYLOAD_PREVIEW_SCHEMA",
+      "observed_state": "STRICT_SCHEMA",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "role": "PRESENTATION_REGION_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "role": "DELIVERY_TIMEBASE_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "role": "AUDIO_MUSIC_DELIVERY_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+      "role": "CHALLENGE_TEMPORAL_ALIGNMENT_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+      "role": "CHALLENGE_SAMPLE_SELECTION_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
+      "role": "CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_POLICY",
+      "observed_state": "PROPOSED_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
+      "role": "CHALLENGE_COORDINATE_PROJECTION_POLICY",
+      "observed_state": "PROPOSED_NOT_APPROVED_NOT_FROZEN",
+      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "role": "CHALLENGE_EDITORIAL_FIELD_WINDOW_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "role": "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_POLICY",
+      "observed_state": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "role": "DELIVERY_PROFILE_REGISTRY",
+      "observed_state": "CANONICAL_SOURCE",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "role": "BINDING_PREVIEW_IMPLEMENTATION",
+      "observed_state": "IMPLEMENTED_INSPECTION_ONLY",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "role": "LOGICAL_COMPOSITION_IMPLEMENTATION",
+      "observed_state": "IMPLEMENTED_IN_MEMORY_ONLY",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "role": "FRAME_PROGRAM_IMPLEMENTATION",
+      "observed_state": "IMPLEMENTED_IN_MEMORY_ONLY",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "role": "REQUEST_SCOPED_PAYLOAD_BINDING_IMPLEMENTATION",
+      "observed_state": "SOURCE_BINDING_ONLY",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "role": "LOOP_DRILL_PAYLOAD_PREVIEW_IMPLEMENTATION",
+      "observed_state": "PREVIEW_ONLY",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "role": "CHALLENGE_PAYLOAD_PREVIEW_IMPLEMENTATION",
+      "observed_state": "PREVIEW_ONLY",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    }
+  ],
+  "governance": {
+    "future_input_admission": "FAIL_CLOSED_UNLESS_EVERY_REQUIRED_POLICY_IS_APPROVED_AND_HASH_BOUND_AND_BOTH_AUTHORIZATION_CHECKPOINTS_VALIDATE",
+    "future_output_manifest": "ONLY_AFTER_ACTUAL_AUTHORIZED_RENDER_AND_ALL_REQUIRED_QA_PASS",
+    "release": "OUTPUT_MANIFEST_DOES_NOT_GRANT_RELEASE_AUTHORITY",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "forbidden_operations": [
+      "emit an input instance from this specification increment",
+      "treat a preview/frame program as renderer-native input",
+      "materialize data by silently selecting an unapproved timing/coordinate/interpolation policy",
+      "invoke or dispatch renderer",
+      "launch Godot or FFmpeg as a production action",
+      "create video/audio/image media",
+      "modify C11-C or its freeze manifest",
+      "grant D4.8 or release authority"
+    ]
+  }
+}
