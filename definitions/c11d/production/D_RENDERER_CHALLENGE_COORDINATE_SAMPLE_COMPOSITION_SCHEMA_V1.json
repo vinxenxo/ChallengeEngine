@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-D9-RENDERER-CHALLENGE-COORDINATE-SAMPLE-COMPOSITION-PROPOSAL-V1",
+  "title": "C11-D Challenge Coordinate and Sample Composition Proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "status", "purpose", "authority", "source_lineage", "case", "spatial_projection", "composition", "expected_review_facts", "required_invariants", "governance_locks"],
+  "properties": {
+    "schema": {"const": "C11-D-D9-RENDERER-CHALLENGE-COORDINATE-SAMPLE-COMPOSITION-PROPOSAL-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PROPOSED_NOT_APPROVED_NOT_FROZEN"},
+    "purpose": {"type": "string", "minLength": 1},
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["frozen_c11c_manifest_path", "frozen_c11c_manifest_sha256", "coordinate_projection_contract_path", "coordinate_projection_contract_sha256", "sample_selection_contract_path", "sample_selection_contract_sha256"],
+      "properties": {
+        "frozen_c11c_manifest_path": {"const": "release/C11C_FREEZE_PACKAGE_MANIFEST.json"},
+        "frozen_c11c_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "coordinate_projection_contract_path": {"type": "string", "minLength": 1},
+        "coordinate_projection_contract_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "sample_selection_contract_path": {"type": "string", "minLength": 1},
+        "sample_selection_contract_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "source_lineage": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "case": {
+      "type": "object", "additionalProperties": false,
+      "required": ["challenge_id", "mechanic", "source_fps", "delivery_fps", "source_total_frames", "delivery_total_frames", "game_source_start_frame", "game_source_end_frame_exclusive", "game_delivery_start_frame", "game_delivery_end_frame_exclusive", "source_game_snapshot_count", "delivery_game_snapshot_count", "source_to_delivery_stride", "sampling_origin", "selected_source_local_indices", "first_selected_source_local_index", "last_selected_source_local_index", "winning_frame_local_game_index", "winning_frame_absolute_source_index", "winning_frame_delivery_local_game_index", "winning_frame_absolute_delivery_index", "close_calls"],
+      "properties": {
+        "challenge_id": {"const": "CHALLENGE_004"}, "mechanic": {"const": "parking_v2"},
+        "source_fps": {"const": 60}, "delivery_fps": {"const": 30},
+        "source_total_frames": {"const": 900}, "delivery_total_frames": {"const": 450},
+        "game_source_start_frame": {"const": 180}, "game_source_end_frame_exclusive": {"const": 600},
+        "game_delivery_start_frame": {"const": 90}, "game_delivery_end_frame_exclusive": {"const": 300},
+        "source_game_snapshot_count": {"const": 420}, "delivery_game_snapshot_count": {"const": 210}, "source_to_delivery_stride": {"const": 2},
+        "sampling_origin": {"const": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX"}, "selected_source_local_indices": {"const": "0,2,4,...,418"},
+        "first_selected_source_local_index": {"const": 0}, "last_selected_source_local_index": {"const": 418},
+        "winning_frame_local_game_index": {"const": 394}, "winning_frame_absolute_source_index": {"const": 574},
+        "winning_frame_delivery_local_game_index": {"const": 197}, "winning_frame_absolute_delivery_index": {"const": 287},
+        "close_calls": {"type": "integer", "minimum": 0}
+      }
+    },
+    "spatial_projection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_width", "source_height", "intermediate_width", "intermediate_height", "delivery_width", "delivery_height", "stage_1_scale", "stage_2_scale", "combined_scale", "combined_offset", "preserve_aspect_ratio", "clipping", "coordinate_transform", "asset_intrinsic_dimension_scaling", "simulation_local_scale_rotation_opacity_texture_and_variant"],
+      "properties": {
+        "source_width": {"const": 1080}, "source_height": {"const": 1920}, "intermediate_width": {"const": 540}, "intermediate_height": {"const": 960}, "delivery_width": {"const": 720}, "delivery_height": {"const": 1280},
+        "stage_1_scale": {"const": [0.5, 0.5]}, "stage_2_scale": {"const": [1.3333333333333333, 1.3333333333333333]}, "combined_scale": {"const": [0.6666666666666666, 0.6666666666666666]}, "combined_offset": {"const": [0.0, 0.0]},
+        "preserve_aspect_ratio": {"const": true}, "clipping": {"const": "NOT_APPLIED"}, "coordinate_transform": {"const": "DETACHED_REVIEW_COPY_ONLY"}, "asset_intrinsic_dimension_scaling": {"const": "METADATA_ONLY"}, "simulation_local_scale_rotation_opacity_texture_and_variant": {"const": "PRESERVE_UNCHANGED"}
+      }
+    },
+    "composition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["operation_order", "spatial_projection_record_count", "composed_delivery_record_count", "sampling_stride", "interpolation", "resampling", "sampled_projection_equivalence", "selection_uses_winning_frame_as_input", "selection_uses_close_calls_as_timing"],
+      "properties": {
+        "operation_order": {"const": ["PROJECT_ALL_GAME_COORDINATES_IN_ORIGINAL_ORDER", "SELECT_EVEN_ZERO_BASED_GAME_LOCAL_INDICES"]},
+        "spatial_projection_record_count": {"const": 420}, "composed_delivery_record_count": {"const": 210}, "sampling_stride": {"const": 2}, "interpolation": {"const": "NONE"}, "resampling": {"const": "NONE_BEYOND_EXPLICIT_EVERY_SECOND_SOURCE_SNAPSHOT_SELECTION"},
+        "sampled_projection_equivalence": {"const": "PROJECT_THEN_SELECT_EQUALS_SELECT_THEN_PROJECT_FOR_THE_DECLARED_AFFINE_UNIFORM_TRANSFORM"}, "selection_uses_winning_frame_as_input": {"const": false}, "selection_uses_close_calls_as_timing": {"const": false}
+      }
+    },
+    "expected_review_facts": {"type": "object", "additionalProperties": false, "required": ["source_target_position", "delivery_target_position", "source_game_snapshot_count", "projected_source_snapshot_count", "composed_delivery_snapshot_count", "winning_anchor_is_exact_selected_sample", "winning_anchor_delivery_game_local_index", "winning_anchor_absolute_delivery_index", "duration_seconds_preserved"], "properties": {"source_target_position": {"const": [850.0, 960.0]}, "delivery_target_position": {"const": [566.6666666666666, 640.0]}, "source_game_snapshot_count": {"const": 420}, "projected_source_snapshot_count": {"const": 420}, "composed_delivery_snapshot_count": {"const": 210}, "winning_anchor_is_exact_selected_sample": {"const": true}, "winning_anchor_delivery_game_local_index": {"const": 197}, "winning_anchor_absolute_delivery_index": {"const": 287}, "duration_seconds_preserved": {"const": 15.0}}},
+    "required_invariants": {"type": "array", "minItems": 9, "items": {"type": "string", "minLength": 1}},
+    "governance_locks": {"type": "object", "additionalProperties": false, "required": ["source_adapter_mode", "c11c_source_mutation", "policy_approved", "sample_selection_policy_approved", "coordinate_projection_policy_approved", "renderer_input_emitted", "renderer_activation", "media_created", "d4_8", "release_authority", "renderer_baseline_approved", "renderer_baseline_frozen"], "properties": {"source_adapter_mode": {"const": "PREPARE_ONLY"}, "c11c_source_mutation": {"const": false}, "policy_approved": {"const": false}, "sample_selection_policy_approved": {"const": false}, "coordinate_projection_policy_approved": {"const": false}, "renderer_input_emitted": {"const": false}, "renderer_activation": {"const": false}, "media_created": {"const": false}, "d4_8": {"const": "BLOCKED"}, "release_authority": {"const": "NONE"}, "renderer_baseline_approved": {"const": false}, "renderer_baseline_frozen": {"const": false}}}
+  }
+}
