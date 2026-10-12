@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-grammar-parameter-contract:v1",
+  "title": "C11-D Visual Loop grammar parameter instance contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "scope",
+    "request_matrix",
+    "materialization_semantics",
+    "execution_boundary",
+    "approval_state",
+    "source_of_truth",
+    "source_lineage",
+    "artifacts"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_EXACT_GRAMMAR_PARAMETER_INSTANCE_IN_MEMORY_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "const": "Materialize a request-bound, grammar-specific parameter instance for the single pinned Visual Loop selector by reusing the canonical D9.9 request chain and frozen C11-C profile values in memory. This is not the family authoring envelope, not a renderer-native payload, and not renderer approval."
+    },
+    "scope": {
+      "const": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "internal_family": "geometric",
+        "subtype_id": "harmonic_membrane",
+        "variant_id": null,
+        "selected_grammar_id": "harmonic_membrane",
+        "selected_grammar_index": 0,
+        "selected_shader_branch": "field_harmonic_membrane",
+        "parameter_count": 20,
+        "profile_input_order": [
+          "grammar_mode",
+          "palette_mode",
+          "morph",
+          "wave_frequency",
+          "line_width",
+          "glow",
+          "polygon_sides",
+          "wave_ratio",
+          "shape_rotation",
+          "layer_spread",
+          "radial_wave_amplitude",
+          "liss_x_frequency",
+          "liss_y_frequency",
+          "interference_scale",
+          "hero_scale",
+          "perspective_strength",
+          "depth_strength",
+          "secondary_phase",
+          "color_phase",
+          "stroke_scale"
+        ],
+        "style_parameter_order": [
+          "grammar_mode",
+          "palette_mode",
+          "morph",
+          "wave_frequency",
+          "line_width",
+          "glow_strength",
+          "polygon_sides",
+          "wave_ratio",
+          "shape_rotation",
+          "layer_spread",
+          "radial_wave_amplitude",
+          "liss_x_frequency",
+          "liss_y_frequency",
+          "interference_scale",
+          "hero_scale",
+          "perspective_strength",
+          "depth_strength",
+          "secondary_phase",
+          "color_phase",
+          "stroke_scale"
+        ],
+        "input_aliases": {
+          "glow": "glow_strength"
+        }
+      }
+    },
+    "request_matrix": {
+      "const": {
+        "cases": [
+          {
+            "id": "BASE",
+            "gameplay_seed": 12345,
+            "music_seed": 840001,
+            "variation_index": 0,
+            "delivery_profile_id": "REVIEW_720",
+            "editorial": "BASE"
+          },
+          {
+            "id": "GAMEPLAY_SEED_ONLY",
+            "gameplay_seed": 54321,
+            "music_seed": 840001,
+            "variation_index": 0,
+            "delivery_profile_id": "REVIEW_720",
+            "editorial": "BASE"
+          },
+          {
+            "id": "MUSIC_SEED_ONLY",
+            "gameplay_seed": 12345,
+            "music_seed": 840002,
+            "variation_index": 0,
+            "delivery_profile_id": "REVIEW_720",
+            "editorial": "BASE"
+          },
+          {
+            "id": "VARIATION_INDEX_ONLY",
+            "gameplay_seed": 12345,
+            "music_seed": 840001,
+            "variation_index": 17,
+            "delivery_profile_id": "REVIEW_720",
+            "editorial": "BASE"
+          },
+          {
+            "id": "DELIVERY_PROFILE_ONLY",
+            "gameplay_seed": 12345,
+            "music_seed": 840001,
+            "variation_index": 0,
+            "delivery_profile_id": "MASTER_1080",
+            "editorial": "BASE"
+          },
+          {
+            "id": "EDITORIAL_ONLY",
+            "gameplay_seed": 12345,
+            "music_seed": 840001,
+            "variation_index": 0,
+            "delivery_profile_id": "REVIEW_720",
+            "editorial": "ALTERNATE_TITLE"
+          }
+        ],
+        "expected_cases": 6,
+        "same_gameplay_seed_metadata_orthogonality": 4,
+        "distinct_gameplay_seed_visual_parameter_change": true
+      }
+    },
+    "materialization_semantics": {
+      "const": {
+        "exact_grammar_parameter_instance_materialized": true,
+        "exact_selector_visual_payload_materialized": false,
+        "family_authoring_envelope_grammar_gap": "REMAINS_OPEN",
+        "music_seed_in_parameter_values": false,
+        "variation_index_selects_grammar": false,
+        "delivery_profile_projection_applied": false,
+        "editorial_values_consumed_visually": false,
+        "renderer_native_input_emitted": false
+      }
+    },
+    "execution_boundary": {
+      "const": {
+        "mode": "GODOT_HEADLESS_IN_MEMORY_GRAMMAR_PARAMETER_REVIEW_ONLY",
+        "request_input_persisted": false,
+        "parameter_payload_files_written": false,
+        "receipt_files_written": false,
+        "renderer_instance_created": false,
+        "renderer_native_input_emitted": false,
+        "renderer_dispatch_invoked": false,
+        "shader_executed": false,
+        "media_created": false,
+        "c11c_source_mutation": false,
+        "candidate_input_admissible": false,
+        "renderer": "OFF",
+        "d4_8": "BLOCKED",
+        "release_authority": "NONE",
+        "d9_14": "BLOCKED_AS_REQUIRED",
+        "d9_16": "BLOCKED_AS_REQUIRED",
+        "d9_17": "BLOCKED_NO_GO",
+        "d10": "BLOCKED"
+      }
+    },
+    "approval_state": {
+      "const": {
+        "dynamic_request_contract_approved": false,
+        "grammar_parameter_instance_approved": false,
+        "visual_loop_grammar_instance_approved": false,
+        "editorial_visual_consumption_approved": false,
+        "presentation_geometry_approved": false,
+        "temporal_alignment_approved": false,
+        "renderer_baseline_approved": false,
+        "renderer_baseline_frozen": false,
+        "d4_8_authorized": false,
+        "release_authority": "NONE"
+      }
+    },
+    "source_of_truth": {
+      "const": {
+        "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      }
+    },
+    "source_lineage": {
+      "const": [
+        {
+          "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+          "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        {
+          "path": "c11c-suite/c11c-producer/producer_schema.json",
+          "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+        },
+        {
+          "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+          "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+          "sha256": "c83c3ec5f88e146089d670cfd0709cdeb91ad32cbf18b5a81d73204259f91cf1"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+          "sha256": "4707055450166f33aba7b1c18815d4f70ba4d2d551ff1a0cffc8b7d0d96aaa47"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V1.json",
+          "sha256": "a879cadc866c19c09b34d2098baaea1924a659038f3f95c669c5bb7bc8307769"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_SCHEMA_V1.json",
+          "sha256": "d6afd5d15d2f460d8d55cb38d30cba3679e90961d2d3110df0224c37eb617588"
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_V1.json",
+          "sha256": "a272c1313858e0a8c98b38bbfb4272aad69faae0f7bc0ba24d3d26849f78cb2f"
+        },
+        {
+          "path": "definitions/visual_loop_geometric_canonical.json",
+          "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+        },
+        {
+          "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+          "sha256": "69f627a5fe4745a05f5d86b060e9f6a99be07d11428a24fe62e1689c752eea0a"
+        },
+        {
+          "path": "tools/c11d/d9/d_renderer_visual_loop_grammar_binding_audit.py",
+          "sha256": "e431b1920ac88b4c4dfc5b999cb76b0434beab60a9ab0fa57325ba25773924b7"
+        },
+        {
+          "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+          "sha256": "2a477a92fcf18c6aa61d014ee4e20d990cb110607c8ca3c64bff530d0ee1f836"
+        },
+        {
+          "path": "tools/c11d/d9/probe_visual_loop_grammar_binding_in_memory.gd",
+          "sha256": "2ce19b11202ae5b7a29862088f1fcad30cb167d2424d0bbdaff8969a27a74c07"
+        },
+        {
+          "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+          "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+        },
+        {
+          "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+          "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+        },
+        {
+          "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+          "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+        },
+        {
+          "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+          "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+        },
+        {
+          "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+          "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+        }
+      ]
+    },
+    "artifacts": {
+      "const": {
+        "input_schema": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INPUT_SCHEMA_V1.json",
+        "output_schema": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_SCHEMA_V1.json",
+        "runner": "tools/c11d/d9/d_renderer_visual_loop_grammar_parameter_instance.py",
+        "godot_harness": "tools/c11d/d9/materialize_visual_loop_grammar_parameter_instance_in_memory.gd",
+        "test": "tools/c11d/d9/test_d_renderer_visual_loop_grammar_parameter_instance.py",
+        "checkpoint": "docs/current/d/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_CHECKPOINT_V1.md"
+      }
+    }
+  }
+}

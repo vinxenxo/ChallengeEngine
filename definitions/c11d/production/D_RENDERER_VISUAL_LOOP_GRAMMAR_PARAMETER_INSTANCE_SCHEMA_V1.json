@@ -1,0 +1,774 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-grammar-parameter-instance-receipt:v1",
+  "title": "C11-D exact grammar-specific parameter instance receipt (preparation only)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "source_identity",
+    "cases",
+    "findings",
+    "execution_boundary",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-RECEIPT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_EXACT_GRAMMAR_PARAMETER_INSTANCE_IN_MEMORY_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "source_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_sha256",
+        "input_schema_sha256",
+        "output_schema_sha256",
+        "harness_sha256",
+        "implementation_sha256",
+        "source_lineage_sha256",
+        "dynamic_binding_implementation_sha256",
+        "grammar_audit_implementation_sha256"
+      ],
+      "properties": {
+        "contract_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "input_schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "harness_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_lineage_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "dynamic_binding_implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "grammar_audit_implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "request_identity",
+          "canonical_chain",
+          "parameter_instance",
+          "request_parameter_binding_sha256",
+          "evidence"
+        ],
+        "properties": {
+          "case_id": {
+            "enum": [
+              "BASE",
+              "GAMEPLAY_SEED_ONLY",
+              "MUSIC_SEED_ONLY",
+              "VARIATION_INDEX_ONLY",
+              "DELIVERY_PROFILE_ONLY",
+              "EDITORIAL_ONLY"
+            ]
+          },
+          "request_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "request_id",
+              "request_hash",
+              "selection",
+              "gameplay_seed",
+              "music_seed",
+              "variation_index",
+              "presentation_profile_id",
+              "delivery_profile_id"
+            ],
+            "properties": {
+              "request_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "request_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "selection": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "content_type",
+                  "family_id",
+                  "subtype_id",
+                  "variant_id"
+                ],
+                "properties": {
+                  "content_type": {
+                    "const": "visual_loops"
+                  },
+                  "family_id": {
+                    "const": "c11c_geometric_waves_v1"
+                  },
+                  "subtype_id": {
+                    "const": "harmonic_membrane"
+                  },
+                  "variant_id": {
+                    "type": "null"
+                  }
+                }
+              },
+              "gameplay_seed": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483646
+              },
+              "music_seed": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483646
+              },
+              "variation_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              },
+              "presentation_profile_id": {
+                "const": "social_default_v1"
+              },
+              "delivery_profile_id": {
+                "enum": [
+                  "REVIEW_720",
+                  "MIN_540",
+                  "MASTER_1080",
+                  "META_REELS_FINAL_V1"
+                ]
+              }
+            }
+          },
+          "canonical_chain": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plan_hash",
+              "editorial_hash",
+              "bridge_record_hash",
+              "adapter_envelope_hash",
+              "source_binding_sha256"
+            ],
+            "properties": {
+              "plan_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "editorial_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bridge_record_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "adapter_envelope_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "source_binding_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "parameter_instance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "schema_version",
+              "selection",
+              "grammar_id",
+              "grammar_index",
+              "shader_branch",
+              "shader_uniform",
+              "style_parameter_count",
+              "style_parameters",
+              "style_parameters_sha256",
+              "parameter_instance_sha256"
+            ],
+            "properties": {
+              "schema": {
+                "const": "C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-V1"
+              },
+              "schema_version": {
+                "const": "1.0"
+              },
+              "selection": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "content_type",
+                  "family_id",
+                  "subtype_id",
+                  "variant_id"
+                ],
+                "properties": {
+                  "content_type": {
+                    "const": "visual_loops"
+                  },
+                  "family_id": {
+                    "const": "c11c_geometric_waves_v1"
+                  },
+                  "subtype_id": {
+                    "const": "harmonic_membrane"
+                  },
+                  "variant_id": {
+                    "type": "null"
+                  }
+                }
+              },
+              "grammar_id": {
+                "const": "harmonic_membrane"
+              },
+              "grammar_index": {
+                "const": 0
+              },
+              "shader_branch": {
+                "const": "field_harmonic_membrane"
+              },
+              "shader_uniform": {
+                "const": "grammar_mode"
+              },
+              "style_parameter_count": {
+                "const": 20
+              },
+              "style_parameters": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "grammar_mode",
+                  "palette_mode",
+                  "morph",
+                  "wave_frequency",
+                  "line_width",
+                  "glow_strength",
+                  "polygon_sides",
+                  "wave_ratio",
+                  "shape_rotation",
+                  "layer_spread",
+                  "radial_wave_amplitude",
+                  "liss_x_frequency",
+                  "liss_y_frequency",
+                  "interference_scale",
+                  "hero_scale",
+                  "perspective_strength",
+                  "depth_strength",
+                  "secondary_phase",
+                  "color_phase",
+                  "stroke_scale"
+                ],
+                "properties": {
+                  "grammar_mode": {
+                    "const": 0
+                  },
+                  "palette_mode": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4
+                  },
+                  "morph": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "wave_frequency": {
+                    "type": "number",
+                    "minimum": 5
+                  },
+                  "line_width": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "glow_strength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "polygon_sides": {
+                    "type": "number",
+                    "minimum": 5,
+                    "maximum": 8
+                  },
+                  "wave_ratio": {
+                    "type": "number",
+                    "minimum": 0.6,
+                    "maximum": 1.05
+                  },
+                  "shape_rotation": {
+                    "type": "number"
+                  },
+                  "layer_spread": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 0.1
+                  },
+                  "radial_wave_amplitude": {
+                    "type": "number",
+                    "minimum": 0.008,
+                    "maximum": 0.08
+                  },
+                  "liss_x_frequency": {
+                    "type": "number",
+                    "minimum": 3,
+                    "maximum": 16
+                  },
+                  "liss_y_frequency": {
+                    "type": "number",
+                    "minimum": 2,
+                    "maximum": 12
+                  },
+                  "interference_scale": {
+                    "type": "number",
+                    "minimum": 0.65,
+                    "maximum": 1.55
+                  },
+                  "hero_scale": {
+                    "type": "number",
+                    "minimum": 0.76,
+                    "maximum": 1.06
+                  },
+                  "perspective_strength": {
+                    "type": "number",
+                    "minimum": 0.2,
+                    "maximum": 1.2
+                  },
+                  "depth_strength": {
+                    "type": "number",
+                    "minimum": 0.2,
+                    "maximum": 1
+                  },
+                  "secondary_phase": {
+                    "type": "number"
+                  },
+                  "color_phase": {
+                    "type": "number"
+                  },
+                  "stroke_scale": {
+                    "type": "number",
+                    "minimum": 0.72,
+                    "maximum": 1.4
+                  }
+                }
+              },
+              "style_parameters_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "parameter_instance_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "request_parameter_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "canonical_request_chain_verified",
+              "source_pins_verified",
+              "same_seed_repeat_deterministic",
+              "exact_grammar_parameter_instance_materialized",
+              "exact_selector_visual_payload_materialized",
+              "family_authoring_envelope_gap"
+            ],
+            "properties": {
+              "canonical_request_chain_verified": {
+                "const": true
+              },
+              "source_pins_verified": {
+                "const": true
+              },
+              "same_seed_repeat_deterministic": {
+                "const": true
+              },
+              "exact_grammar_parameter_instance_materialized": {
+                "const": true
+              },
+              "exact_selector_visual_payload_materialized": {
+                "const": false
+              },
+              "family_authoring_envelope_gap": {
+                "const": "REMAINS_OPEN"
+              }
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_request_chain_passed",
+        "grammar_parameter_instances_materialized",
+        "case_count",
+        "distinct_seed_style_change",
+        "metadata_orthogonality_passed",
+        "music_seed_isolated",
+        "variation_index_isolated",
+        "delivery_and_editorial_metadata_isolated",
+        "family_authoring_envelope_gap",
+        "exact_selector_visual_payload_materialized",
+        "candidate_input_admissible",
+        "video_render_ready"
+      ],
+      "properties": {
+        "canonical_request_chain_passed": {
+          "const": true
+        },
+        "grammar_parameter_instances_materialized": {
+          "const": true
+        },
+        "case_count": {
+          "const": 6
+        },
+        "distinct_seed_style_change": {
+          "const": true
+        },
+        "metadata_orthogonality_passed": {
+          "const": true
+        },
+        "music_seed_isolated": {
+          "const": true
+        },
+        "variation_index_isolated": {
+          "const": true
+        },
+        "delivery_and_editorial_metadata_isolated": {
+          "const": true
+        },
+        "family_authoring_envelope_gap": {
+          "const": "REMAINS_OPEN"
+        },
+        "exact_selector_visual_payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "request_input_persisted",
+        "parameter_payload_files_written",
+        "receipt_files_written",
+        "renderer_instance_created",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "shader_executed",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "renderer",
+        "d4_8",
+        "release_authority",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "mode": {
+          "const": "GODOT_HEADLESS_IN_MEMORY_GRAMMAR_PARAMETER_REVIEW_ONLY"
+        },
+        "request_input_persisted": {
+          "const": false
+        },
+        "parameter_payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_instance_created": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "shader_executed": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "receipt_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {
+    "parameter_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "schema_version",
+        "selection",
+        "grammar_id",
+        "grammar_index",
+        "shader_branch",
+        "shader_uniform",
+        "style_parameter_count",
+        "style_parameters",
+        "style_parameters_sha256",
+        "parameter_instance_sha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-V1"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id"
+          ],
+          "properties": {
+            "content_type": {
+              "const": "visual_loops"
+            },
+            "family_id": {
+              "const": "c11c_geometric_waves_v1"
+            },
+            "subtype_id": {
+              "const": "harmonic_membrane"
+            },
+            "variant_id": {
+              "type": "null"
+            }
+          }
+        },
+        "grammar_id": {
+          "const": "harmonic_membrane"
+        },
+        "grammar_index": {
+          "const": 0
+        },
+        "shader_branch": {
+          "const": "field_harmonic_membrane"
+        },
+        "shader_uniform": {
+          "const": "grammar_mode"
+        },
+        "style_parameter_count": {
+          "const": 20
+        },
+        "style_parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "grammar_mode",
+            "palette_mode",
+            "morph",
+            "wave_frequency",
+            "line_width",
+            "glow_strength",
+            "polygon_sides",
+            "wave_ratio",
+            "shape_rotation",
+            "layer_spread",
+            "radial_wave_amplitude",
+            "liss_x_frequency",
+            "liss_y_frequency",
+            "interference_scale",
+            "hero_scale",
+            "perspective_strength",
+            "depth_strength",
+            "secondary_phase",
+            "color_phase",
+            "stroke_scale"
+          ],
+          "properties": {
+            "grammar_mode": {
+              "const": 0
+            },
+            "palette_mode": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "morph": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "wave_frequency": {
+              "type": "number",
+              "minimum": 5
+            },
+            "line_width": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "glow_strength": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "polygon_sides": {
+              "type": "number",
+              "minimum": 5,
+              "maximum": 8
+            },
+            "wave_ratio": {
+              "type": "number",
+              "minimum": 0.6,
+              "maximum": 1.05
+            },
+            "shape_rotation": {
+              "type": "number"
+            },
+            "layer_spread": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.1
+            },
+            "radial_wave_amplitude": {
+              "type": "number",
+              "minimum": 0.008,
+              "maximum": 0.08
+            },
+            "liss_x_frequency": {
+              "type": "number",
+              "minimum": 3,
+              "maximum": 16
+            },
+            "liss_y_frequency": {
+              "type": "number",
+              "minimum": 2,
+              "maximum": 12
+            },
+            "interference_scale": {
+              "type": "number",
+              "minimum": 0.65,
+              "maximum": 1.55
+            },
+            "hero_scale": {
+              "type": "number",
+              "minimum": 0.76,
+              "maximum": 1.06
+            },
+            "perspective_strength": {
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 1.2
+            },
+            "depth_strength": {
+              "type": "number",
+              "minimum": 0.2,
+              "maximum": 1
+            },
+            "secondary_phase": {
+              "type": "number"
+            },
+            "color_phase": {
+              "type": "number"
+            },
+            "stroke_scale": {
+              "type": "number",
+              "minimum": 0.72,
+              "maximum": 1.4
+            }
+          }
+        },
+        "style_parameters_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "parameter_instance_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}
