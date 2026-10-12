@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-GUI-REACTIVE-SELECTION-STATE-SCHEMA-V1",
+  "title": "Transient state for dependent controls in the future GUI",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "mode",
+    "catalog_sha256",
+    "selection"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-SHARED-GUI-REACTIVE-SELECTION-STATE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "mode": {
+      "enum": [
+        "REVIEW",
+        "PRODUCTION"
+      ]
+    },
+    "catalog_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "selector_field",
+        "selector_id"
+      ],
+      "properties": {
+        "content_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "family_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "selector_field": {
+          "enum": [
+            "subtype_id",
+            "variant_id",
+            null
+          ]
+        },
+        "selector_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

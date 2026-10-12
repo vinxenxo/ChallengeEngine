@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-GUI-REACTIVE-SELECTION-STATE-CONTRACT-SCHEMA-V1",
+  "title": "Contract schema for the read-only reactive GUI selection state machine",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "implementation_sha256",
+    "contract_schema_sha256",
+    "state_schema_sha256",
+    "snapshot_schema_sha256",
+    "source_lineage",
+    "transition_policy",
+    "execution_boundary",
+    "governance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-GUI-REACTIVE-SELECTION-STATE-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARE_ONLY_REACTIVE_CASCADING_STATE_NO_GUI_WIDGET_MODIFICATION"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "const": "3ac0c36f4060bb0842de47687d6126d07a9dab670e2b86c72135797d877335d9"
+    },
+    "contract_schema_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "state_schema_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "snapshot_schema_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "transition_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "descendant_invalidation",
+        "unknown_selection",
+        "mode_change",
+        "stale_catalog",
+        "silent_fallback",
+        "request_creation"
+      ],
+      "properties": {
+        "descendant_invalidation": {
+          "const": "CLEAR_ONLY_VALUES_INVALIDATED_BY_PARENT_CHANGE"
+        },
+        "unknown_selection": {
+          "const": "REJECT"
+        },
+        "mode_change": {
+          "const": "RECONCILE_AND_CLEAR_INVALID_DESCENDANTS_KEEP_CONTENT_TYPE_IF_REGISTERED"
+        },
+        "stale_catalog": {
+          "const": "REJECT_UNTIL_EXPLICIT_REFRESH"
+        },
+        "silent_fallback": {
+          "const": false
+        },
+        "request_creation": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "existing_gui_modified",
+        "catalog_read_only",
+        "request_created",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persisted"
+      ],
+      "properties": {
+        "existing_gui_modified": {
+          "const": false
+        },
+        "catalog_read_only": {
+          "const": true
+        },
+        "request_created": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persisted": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "c11c_mutation",
+        "renderer_activation",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "c11c_mutation": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    }
+  }
+}

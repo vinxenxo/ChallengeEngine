@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-GUI-REACTIVE-SELECTION-SNAPSHOT-SCHEMA-V1",
+  "title": "Read-only snapshot returned after a GUI selection-state transition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "state",
+    "available",
+    "transition",
+    "readiness",
+    "identity",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-SHARED-GUI-REACTIVE-SELECTION-SNAPSHOT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "state": {
+      "$ref": "#/$defs/state"
+    },
+    "available": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modes",
+        "content_types",
+        "families",
+        "selectors"
+      ],
+      "properties": {
+        "modes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "REVIEW",
+              "PRODUCTION"
+            ]
+          },
+          "minItems": 1
+        },
+        "content_types": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "selectable_in_mode"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "selectable_in_mode": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "families": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "selection_enabled",
+              "allowed_modes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "selection_enabled": {
+                "type": "boolean"
+              },
+              "allowed_modes": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "REVIEW",
+                    "PRODUCTION"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "selectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "selector_field",
+              "selection_mode",
+              "concrete_variant"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "selector_field": {
+                "enum": [
+                  "subtype_id",
+                  "variant_id"
+                ]
+              },
+              "selection_mode": {
+                "type": "boolean"
+              },
+              "concrete_variant": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "invalidated_fields",
+        "catalog_refreshed",
+        "reason"
+      ],
+      "properties": {
+        "action": {
+          "enum": [
+            "INITIALIZE",
+            "SET_MODE",
+            "SELECT_CONTENT_TYPE",
+            "SELECT_FAMILY",
+            "SELECT_SELECTOR",
+            "CLEAR_SELECTION",
+            "REFRESH_CATALOG"
+          ]
+        },
+        "invalidated_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "content_type",
+              "family_id",
+              "selector_field",
+              "selector_id"
+            ]
+          }
+        },
+        "catalog_refreshed": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selection_path_complete",
+        "canonical_selection_resolved",
+        "canonical_selection",
+        "exact_concrete_selector",
+        "blockers"
+      ],
+      "properties": {
+        "selection_path_complete": {
+          "type": "boolean"
+        },
+        "canonical_selection_resolved": {
+          "type": "boolean"
+        },
+        "canonical_selection": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "exact_concrete_selector": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_sha256",
+        "snapshot_sha256"
+      ],
+      "properties": {
+        "catalog_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_created",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persisted",
+        "release_authority"
+      ],
+      "properties": {
+        "request_created": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persisted": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "schema_version",
+        "mode",
+        "catalog_sha256",
+        "selection"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-SHARED-GUI-REACTIVE-SELECTION-STATE-V1"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "mode": {
+          "enum": [
+            "REVIEW",
+            "PRODUCTION"
+          ]
+        },
+        "catalog_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "selector_field",
+            "selector_id"
+          ],
+          "properties": {
+            "content_type": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "family_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "selector_field": {
+              "enum": [
+                "subtype_id",
+                "variant_id",
+                null
+              ]
+            },
+            "selector_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema": "C11-D-D9-SHARED-PRODUCTION-GUI-REACTIVE-SELECTION-STATE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_REACTIVE_CASCADING_STATE_NO_GUI_WIDGET_MODIFICATION",
+  "purpose": "Represent transitions of the future GUI dependent controls over the canonical D9 dynamic catalog. When a parent selection changes, clear only descendants invalidated by that change; never pick a replacement silently. Refresh must explicitly reconcile stale catalog identities. This module does not modify GUI widgets, create canonical production requests, dispatch rendering, persist state, or create media.",
+  "implementation_sha256": "3ac0c36f4060bb0842de47687d6126d07a9dab670e2b86c72135797d877335d9",
+  "contract_schema_sha256": "420c2ece5714d186f8c98f3349f0a8864708864f637a2eecf15772a3364a882d",
+  "state_schema_sha256": "6ba338dae3d57f5dff074135986cde8a7c39f64965a2b07a9925a5b57164021f",
+  "snapshot_schema_sha256": "6d80bc341f307ef63fc4b12dd8c79faa79815083a36fabc5959396b30f5c62db",
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_catalog.py",
+      "role": "CANONICAL_DYNAMIC_CATALOG_IMPLEMENTATION",
+      "sha256": "921ef12bd6425cb381505e32978593cc8dd82d2b1da2e2ac509fdb439c919fb6"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_V1.json",
+      "role": "DYNAMIC_CATALOG_CONTRACT",
+      "sha256": "0e5371789e055f2fc5c557f683895fad9c1638ccdfb19086f36bfc5896a9e095"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_SCHEMA_V1.json",
+      "role": "DYNAMIC_CATALOG_CONTRACT_SCHEMA",
+      "sha256": "e0fdb5d0ac0bbfb524645987d67ad5bd1fd606cd243edaf41158f4ee28aa46a9"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_SCHEMA_V1.json",
+      "role": "DYNAMIC_CATALOG_OUTPUT_SCHEMA",
+      "sha256": "aea81fa9029523755a7d8f333493185f21f383bea6c8cd0624b7bcf55728aa40"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_SELECTION_SCHEMA_V1.json",
+      "role": "DYNAMIC_SELECTION_SCHEMA",
+      "sha256": "18f13ec38b5f56f7ea9fea60cb4b06205e04e6b586d9d924f15295e67a85dc22"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_V1.json",
+      "role": "CANONICAL_GUI_STATE_CONTRACT",
+      "sha256": "e3d041125c7a5eb303067513690ce693a52a1cf17031ce053d7d893c18b541a5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_SCHEMA_V1.json",
+      "role": "CANONICAL_GUI_STATE_SCHEMA",
+      "sha256": "f26ecea345859af9734d0374260299f2681b836535b565e8c2cb6354d4f2097f"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_state.py",
+      "role": "CANONICAL_GUI_STATE_MAPPER",
+      "sha256": "fd78d20bc194c656d36e573f19c0a181aa6128693e664004f2d8ef139b6e6838"
+    }
+  ],
+  "transition_policy": {
+    "descendant_invalidation": "CLEAR_ONLY_VALUES_INVALIDATED_BY_PARENT_CHANGE",
+    "unknown_selection": "REJECT",
+    "mode_change": "RECONCILE_AND_CLEAR_INVALID_DESCENDANTS_KEEP_CONTENT_TYPE_IF_REGISTERED",
+    "stale_catalog": "REJECT_UNTIL_EXPLICIT_REFRESH",
+    "silent_fallback": false,
+    "request_creation": false
+  },
+  "execution_boundary": {
+    "existing_gui_modified": false,
+    "catalog_read_only": true,
+    "request_created": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "persisted": false
+  },
+  "governance": {
+    "c11c_mutation": false,
+    "renderer_activation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  }
+}
