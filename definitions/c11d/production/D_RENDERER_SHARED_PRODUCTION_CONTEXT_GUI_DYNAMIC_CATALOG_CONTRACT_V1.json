@@ -1,0 +1,77 @@
+{
+  "schema": "C11-D-D9-SHARED-PRODUCTION-GUI-DYNAMIC-CATALOG-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_READ_ONLY_DYNAMIC_OPTIONS_NO_GUI_SOURCE_MODIFICATION",
+  "purpose": "Provide runtime-derived cascading options for the future GUI. Read the canonical D9.8 model and the current Producer selector schema on demand, reconcile them against D9.9 and the GUI-state contract, expose disabled/limited statuses honestly, and validate any selected path through the canonical D9.8 resolver. No independent family/variant inventory is embedded in code.",
+  "implementation_sha256": "921ef12bd6425cb381505e32978593cc8dd82d2b1da2e2ac509fdb439c919fb6",
+  "contract_schema_sha256": "e0fdb5d0ac0bbfb524645987d67ad5bd1fd606cd243edaf41158f4ee28aa46a9",
+  "catalog_schema_sha256": "aea81fa9029523755a7d8f333493185f21f383bea6c8cd0624b7bcf55728aa40",
+  "selection_schema_sha256": "18f13ec38b5f56f7ea9fea60cb4b06205e04e6b586d9d924f15295e67a85dc22",
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "D9_8_CANONICAL_CATALOG_BUILDER",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "D9_9_CANONICAL_REQUEST_AND_CATALOG_BACKEND",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "role": "CANONICAL_SELECTOR_INVENTORY",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "D9_9_REQUEST_SUPPORT_CONTRACT",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_V1.json",
+      "role": "GUI_STATE_CONTRACT",
+      "sha256": "e3d041125c7a5eb303067513690ce693a52a1cf17031ce053d7d893c18b541a5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_SCHEMA_V1.json",
+      "role": "GUI_STATE_SCHEMA",
+      "sha256": "f26ecea345859af9734d0374260299f2681b836535b565e8c2cb6354d4f2097f"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_state.py",
+      "role": "GUI_STATE_CANONICAL_MAPPER",
+      "sha256": "fd78d20bc194c656d36e573f19c0a181aa6128693e664004f2d8ef139b6e6838"
+    }
+  ],
+  "selection_policy": {
+    "catalog_authority": "D9_8_BUILD_CATALOG_FROM_LIVE_C11C_PRODUCER_SCHEMA",
+    "review_mode": "ALLOW_CANONICAL_SUPPORTED_ACTIVE_MODEL_TYPES",
+    "production_mode": "ONLY_WHEN_REQUEST_PLAN_COMPATIBLE_AND_STATE_ACTIVE",
+    "loops_drills": "VISIBLE_FOR_REVIEW;PRODUCTION_MODE_DISABLED_WHILE_MODEL_ONLY",
+    "longform": "VISIBLE_DISABLED;NEVER_SELECTABLE",
+    "unknown_ids": "REJECT",
+    "family_inventory": "DERIVE_DURING_EACH_READ_NO_DUPLICATED_HARD_CODED_FAMILY_LIST"
+  },
+  "integration_boundary": {
+    "gui_source_modified": false,
+    "request_created": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "persistence": "NONE"
+  },
+  "governance": {
+    "c11c_mutation": false,
+    "renderer_activation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  }
+}

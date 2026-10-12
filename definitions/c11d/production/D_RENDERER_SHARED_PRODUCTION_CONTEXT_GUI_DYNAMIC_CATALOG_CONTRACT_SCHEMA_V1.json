@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.invalid/schemas/c11d/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_SCHEMA_V1.json",
+  "title": "C11-D Shared Production GUI Dynamic Catalog Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "implementation_sha256",
+    "contract_schema_sha256",
+    "catalog_schema_sha256",
+    "selection_schema_sha256",
+    "source_lineage",
+    "selection_policy",
+    "integration_boundary",
+    "governance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-GUI-DYNAMIC-CATALOG-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARE_ONLY_READ_ONLY_DYNAMIC_OPTIONS_NO_GUI_SOURCE_MODIFICATION"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "contract_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "catalog_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "selection_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "selection_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_authority",
+        "review_mode",
+        "production_mode",
+        "loops_drills",
+        "longform",
+        "unknown_ids",
+        "family_inventory"
+      ],
+      "properties": {
+        "catalog_authority": {
+          "const": "D9_8_BUILD_CATALOG_FROM_LIVE_C11C_PRODUCER_SCHEMA"
+        },
+        "review_mode": {
+          "const": "ALLOW_CANONICAL_SUPPORTED_ACTIVE_MODEL_TYPES"
+        },
+        "production_mode": {
+          "const": "ONLY_WHEN_REQUEST_PLAN_COMPATIBLE_AND_STATE_ACTIVE"
+        },
+        "loops_drills": {
+          "const": "VISIBLE_FOR_REVIEW;PRODUCTION_MODE_DISABLED_WHILE_MODEL_ONLY"
+        },
+        "longform": {
+          "const": "VISIBLE_DISABLED;NEVER_SELECTABLE"
+        },
+        "unknown_ids": {
+          "const": "REJECT"
+        },
+        "family_inventory": {
+          "const": "DERIVE_DURING_EACH_READ_NO_DUPLICATED_HARD_CODED_FAMILY_LIST"
+        }
+      }
+    },
+    "integration_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gui_source_modified",
+        "request_created",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persistence"
+      ],
+      "properties": {
+        "gui_source_modified": {
+          "const": false
+        },
+        "request_created": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persistence": {
+          "const": "NONE"
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "c11c_mutation",
+        "renderer_activation",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "c11c_mutation": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    }
+  }
+}

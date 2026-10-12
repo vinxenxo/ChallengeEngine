@@ -1,0 +1,149 @@
+{
+  "schema": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-STATE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_CANONICAL_UI_STATE_MAPPING_NO_GUI_SOURCE_MODIFICATION",
+  "purpose": "Define a renderer-agnostic, strict state contract for future GUI controls and map it into the canonical D9.9 request vocabulary. This adapter owns UI-state structure only; catalog semantics, editorial resolution, presentation identity, planning and policy remain owned by existing canonical backend services.",
+  "implementation_sha256": "fd78d20bc194c656d36e573f19c0a181aa6128693e664004f2d8ef139b6e6838",
+  "state_schema_sha256": "f26ecea345859af9734d0374260299f2681b836535b565e8c2cb6354d4f2097f",
+  "interface": {
+    "state_schema": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_SCHEMA_V1.json",
+    "builder": "build_canonical_request_from_gui_state(state, project_root=None)",
+    "prepared_context": "prepare_gui_state_context(state, project_root=None)",
+    "validator": "validate_gui_state(state, project_root=None)",
+    "canonical_request_contract": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+    "origin": "GUI",
+    "persistence": "NONE",
+    "output_context": "EXACT_SHARED_GUI_ADAPTER_RECORD"
+  },
+  "control_mapping": {
+    "selection": [
+      "content_type",
+      "family_id",
+      "subtype_id",
+      "variant_id"
+    ],
+    "production": [
+      "seed",
+      "music_seed",
+      "delivery_profile_id",
+      "presentation_profile_id",
+      "variation_index",
+      "audio_enabled",
+      "personalization_enabled"
+    ],
+    "editorial": [
+      "profile",
+      "overrides"
+    ],
+    "shared_editorial_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "challenge_only_editorial_fields": [
+      "player_name",
+      "challenge_label"
+    ],
+    "visual_loop_selector": "subtype_id",
+    "challenge_and_drill_selector": "variant_id",
+    "implicit_seed_generation": false,
+    "unknown_fields": "REJECT",
+    "unknown_selectors": "REJECT",
+    "editorial_resolution": "DELEGATE_TO_D9_8_D9_9",
+    "presentation_profile_resolution": "DELEGATE_TO_SHARED_CONTEXT_BINDING",
+    "family_adapters_override_shared_editorial_by_default": false
+  },
+  "integration_boundary": {
+    "existing_gui_source_modified_by_overlay": false,
+    "current_gui_connected": false,
+    "future_gui_uses_state_adapter": true,
+    "cli_uses_same_canonical_request": true,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "record_persisted": false
+  },
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CANONICAL_D9_9_REQUEST_CONTRACT",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "D9_9_CANONICAL_PRODUCER",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "D9_8_EDITORIAL_RESOLVER",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "D9_8_EDITORIAL_MODEL",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_service.py",
+      "role": "SHARED_PRODUCTION_CONTEXT_FACADE",
+      "sha256": "9726bf3ceeb3f567da350789f70750f9206caaf707523e4d53217e16f73f0aac"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_V1.json",
+      "role": "SHARED_FACADE_CONTRACT",
+      "sha256": "37a653fee1f6609511059b87a7c95596209d9d9273771b3d05b04bd84a72de79"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_SCHEMA_V1.json",
+      "role": "SHARED_FACADE_CONTRACT_SCHEMA",
+      "sha256": "110c2290faee4db50c04a1013f7e7f3f3ce9820be03dda5674a0f9b2660b9852"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_SCHEMA_V1.json",
+      "role": "SHARED_FACADE_OUTPUT_SCHEMA",
+      "sha256": "13c1fc3b6f7d3d981e812c80dd482f3ab71ffbd0b6f617cc3e74239e14906f1d"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_adapter.py",
+      "role": "GUI_CONTEXT_ADAPTER",
+      "sha256": "cf66c259fb1a11c99e534c19efc3366a527c6a42bf4e06b6a212ee839c152ff1"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_CONTRACT_V1.json",
+      "role": "GUI_ADAPTER_CONTRACT",
+      "sha256": "d1102674e294a9204d0745d2290e0c0fdb858e51f3acbf3398b66d407683a6e5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_CONTRACT_SCHEMA_V1.json",
+      "role": "GUI_ADAPTER_CONTRACT_SCHEMA",
+      "sha256": "0d1ce9502c21023467a72e13e51289f81a68bae9c6dbe472df834c2ed0662d0a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
+      "role": "PRESENTATION_PROFILE_REGISTRY",
+      "sha256": "796d455f63bd216b231e9fc717fafa4331df8dd4eff93fde7a1aa439d5565382"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
+      "role": "SHARED_PRESENTATION_INHERITANCE_CONTRACT",
+      "sha256": "89271bb75777f7fe968d1369155d37843ac711f4d804d5171f1bfae2721e5c46"
+    }
+  ]
+}

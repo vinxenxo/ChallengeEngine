@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.invalid/schemas/c11d/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_SELECTION_SCHEMA_V1.json",
+  "title": "C11-D Shared Production GUI Dynamic Selection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "mode",
+    "content_type",
+    "family_id",
+    "selector_field",
+    "selector_id",
+    "selector_metadata",
+    "selection",
+    "request_plan_compatible",
+    "exact_concrete_grammar",
+    "renderer_input_emitted",
+    "media_created",
+    "release_authority",
+    "identity_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-GUI-DYNAMIC-SELECTION-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "mode": {
+      "enum": [
+        "REVIEW",
+        "PRODUCTION"
+      ]
+    },
+    "content_type": {
+      "type": "string"
+    },
+    "family_id": {
+      "type": "string"
+    },
+    "selector_field": {
+      "enum": [
+        "subtype_id",
+        "variant_id"
+      ]
+    },
+    "selector_id": {
+      "type": "string"
+    },
+    "selector_metadata": {
+      "type": "object"
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "subtype_id",
+        "variant_id"
+      ],
+      "properties": {
+        "content_type": {
+          "type": "string"
+        },
+        "family_id": {
+          "type": "string"
+        },
+        "subtype_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "request_plan_compatible": {
+      "type": "boolean"
+    },
+    "exact_concrete_grammar": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "renderer_input_emitted": {
+      "const": false
+    },
+    "media_created": {
+      "const": false
+    },
+    "release_authority": {
+      "const": "NONE"
+    },
+    "identity_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

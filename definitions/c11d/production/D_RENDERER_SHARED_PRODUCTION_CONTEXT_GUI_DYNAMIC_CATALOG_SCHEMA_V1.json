@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.invalid/schemas/c11d/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_SCHEMA_V1.json",
+  "title": "C11-D Shared Production GUI Dynamic Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "identity",
+    "content_types",
+    "inventory_summary",
+    "execution_boundary",
+    "audit"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-GUI-DYNAMIC-CATALOG-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "READ_ONLY_DYNAMIC_OPTIONS_PREPARE_ONLY"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_sha256",
+        "implementation_sha256"
+      ],
+      "properties": {
+        "catalog_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "content_types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "state",
+          "canonical_request_supported",
+          "gui_state_supported",
+          "selection_enabled",
+          "request_plan_compatible",
+          "allowed_modes",
+          "selector_field",
+          "editable_fields",
+          "families",
+          "family_count",
+          "selector_count",
+          "reason_if_restricted"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "canonical_request_supported": {
+            "type": "boolean"
+          },
+          "gui_state_supported": {
+            "type": "boolean"
+          },
+          "selection_enabled": {
+            "type": "boolean"
+          },
+          "request_plan_compatible": {
+            "type": "boolean"
+          },
+          "allowed_modes": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "REVIEW",
+                "PRODUCTION"
+              ]
+            }
+          },
+          "selector_field": {
+            "enum": [
+              "subtype_id",
+              "variant_id"
+            ]
+          },
+          "editable_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "families": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "label",
+                "selector_field",
+                "selectors",
+                "selection_enabled",
+                "allowed_modes",
+                "source_metadata"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "selector_field": {
+                  "enum": [
+                    "subtype_id",
+                    "variant_id"
+                  ]
+                },
+                "selection_enabled": {
+                  "type": "boolean"
+                },
+                "allowed_modes": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "REVIEW",
+                      "PRODUCTION"
+                    ]
+                  }
+                },
+                "source_metadata": {
+                  "type": "object"
+                },
+                "selectors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "id",
+                      "label",
+                      "selector_field",
+                      "selection_mode",
+                      "concrete_variant",
+                      "metadata"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "selector_field": {
+                        "enum": [
+                          "subtype_id",
+                          "variant_id"
+                        ]
+                      },
+                      "selection_mode": {
+                        "type": "boolean"
+                      },
+                      "concrete_variant": {
+                        "type": "boolean"
+                      },
+                      "metadata": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "family_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "selector_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reason_if_restricted": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "inventory_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type_count",
+        "selection_enabled_content_type_count",
+        "disabled_content_type_count",
+        "family_count",
+        "selector_count",
+        "longform_enabled"
+      ],
+      "properties": {
+        "content_type_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "selection_enabled_content_type_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "disabled_content_type_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "family_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "selector_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "longform_enabled": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_source",
+        "GUI_SOURCE_MODIFIED",
+        "request_created",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persisted",
+        "release_authority"
+      ],
+      "properties": {
+        "catalog_source": {
+          "const": "D9.8_BUILD_CATALOG_FROM_CANONICAL_PRODUCER_SCHEMA"
+        },
+        "GUI_SOURCE_MODIFIED": {
+          "const": false
+        },
+        "request_created": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persisted": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_pins",
+        "active_type_contract_parity",
+        "longform_present_disabled"
+      ],
+      "properties": {
+        "source_pins": {
+          "const": 8
+        },
+        "active_type_contract_parity": {
+          "const": 3
+        },
+        "longform_present_disabled": {
+          "const": true
+        }
+      }
+    }
+  }
+}

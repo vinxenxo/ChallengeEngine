@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-STATE-SCHEMA-V1",
+  "title": "C11-D future GUI production state schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "request_id",
+    "mode",
+    "selection",
+    "production",
+    "editorial"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-SHARED-GUI-PRODUCTION-STATE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]{1,160}$"
+    },
+    "mode": {
+      "enum": [
+        "REVIEW",
+        "PRODUCTION"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id"
+      ],
+      "properties": {
+        "content_type": {
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "family_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "subtype_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "variant_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "subtype_id"
+          ]
+        },
+        {
+          "required": [
+            "variant_id"
+          ]
+        }
+      ],
+      "not": {
+        "required": [
+          "subtype_id",
+          "variant_id"
+        ]
+      }
+    },
+    "production": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seed",
+        "music_seed",
+        "delivery_profile_id",
+        "presentation_profile_id",
+        "variation_index",
+        "audio_enabled",
+        "personalization_enabled"
+      ],
+      "properties": {
+        "seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "music_seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "delivery_profile_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "presentation_profile_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "variation_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "audio_enabled": {
+          "type": "boolean"
+        },
+        "personalization_enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "overrides"
+      ],
+      "properties": {
+        "profile": {
+          "type": "object"
+        },
+        "overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "call_to_action": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 32
+            },
+            "player_name": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "challenge_label": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        }
+      }
+    }
+  }
+}
