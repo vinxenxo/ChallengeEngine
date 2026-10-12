@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-CONTRACT-SCHEMA-V1",
+  "title": "C11-D Shared Editorial Presentation Context Binding Contract Schema V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "inputs",
+    "output",
+    "supported_content_types",
+    "binding_rules",
+    "governance",
+    "source_lineage"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARE_ONLY_SHARED_CONTEXT_BINDING_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_producer",
+        "editorial_model",
+        "editorial_render_bridge",
+        "shared_inheritance_contract",
+        "presentation_profile_registry"
+      ],
+      "properties": {
+        "canonical_producer": {
+          "type": "string"
+        },
+        "editorial_model": {
+          "type": "string"
+        },
+        "editorial_render_bridge": {
+          "type": "string"
+        },
+        "shared_inheritance_contract": {
+          "type": "string"
+        },
+        "presentation_profile_registry": {
+          "type": "string"
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "mode",
+        "persisted",
+        "renderer_input_emitted"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-V1"
+        },
+        "mode": {
+          "const": "IN_MEMORY_REQUEST_CONTEXT_BINDING_ONLY"
+        },
+        "persisted": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        }
+      }
+    },
+    "supported_content_types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "challenges",
+          "visual_loops",
+          "visual_drills"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "binding_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_source",
+        "editorial_layers",
+        "presentation_reference",
+        "unknown_profile",
+        "profile_geometry",
+        "editorial_field_allowlist",
+        "language",
+        "challenge_fields",
+        "family_adapter_mutation",
+        "inheritance_default"
+      ],
+      "properties": {
+        "canonical_source": {
+          "const": "universal_producer.evaluate_universal_request"
+        },
+        "editorial_layers": {
+          "const": "global>content_type>family>subtype>variant>production_override"
+        },
+        "presentation_reference": {
+          "const": "canonical_request.presentation_profile_id"
+        },
+        "unknown_profile": {
+          "const": "REJECT"
+        },
+        "profile_geometry": {
+          "const": "NEVER_RESOLVED_BY_THIS_BINDER"
+        },
+        "editorial_field_allowlist": {
+          "const": "C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json"
+        },
+        "language": {
+          "const": "METADATA_NOT_DISPLAY_TEXT"
+        },
+        "challenge_fields": {
+          "const": "CHALLENGES_ONLY_PLAYER_NAME_AND_CHALLENGE_LABEL"
+        },
+        "family_adapter_mutation": {
+          "const": "FORBIDDEN"
+        },
+        "inheritance_default": {
+          "const": "SHARED_EDITORIAL_AND_PRESENTATION"
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

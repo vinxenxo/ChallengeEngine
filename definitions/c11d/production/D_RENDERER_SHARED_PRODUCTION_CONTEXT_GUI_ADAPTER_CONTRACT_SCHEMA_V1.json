@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-ADAPTER-CONTRACT-SCHEMA-V1",
+  "title": "C11-D shared production-context GUI adapter contract schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "adapter_sha256",
+    "interface",
+    "responsibilities",
+    "integration_boundary",
+    "governance",
+    "source_lineage"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-ADAPTER-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARE_ONLY_FUTURE_GUI_ADAPTER_EXISTING_GUI_SOURCE_UNMODIFIED_BY_OVERLAY"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 30
+    },
+    "adapter_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python_api",
+        "validator",
+        "parent_api",
+        "request_contract",
+        "origin_field",
+        "required_origin",
+        "output",
+        "persistence"
+      ],
+      "properties": {
+        "python_api": {
+          "const": "prepare_gui_shared_context(raw_request, project_root=None)"
+        },
+        "validator": {
+          "const": "validate_gui_shared_context(record, raw_request, project_root=None)"
+        },
+        "parent_api": {
+          "const": "prepare_shared_production_context(raw_request, project_root=None)"
+        },
+        "request_contract": {
+          "const": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json"
+        },
+        "origin_field": {
+          "const": "provenance.request_origin"
+        },
+        "required_origin": {
+          "const": "GUI"
+        },
+        "output": {
+          "const": "EXACT_SHARED_FACADE_RECORD"
+        },
+        "persistence": {
+          "const": "NONE"
+        }
+      }
+    },
+    "responsibilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gui_owns",
+        "shared_backend_owns",
+        "family_adapters_may_override_shared_editorial",
+        "unknown_selectors",
+        "unknown_presentation_profiles",
+        "api_cli_record_equality"
+      ],
+      "properties": {
+        "gui_owns": {
+          "type": "string"
+        },
+        "shared_backend_owns": {
+          "type": "string"
+        },
+        "family_adapters_may_override_shared_editorial": {
+          "const": "false"
+        },
+        "unknown_selectors": {
+          "const": "REJECT"
+        },
+        "unknown_presentation_profiles": {
+          "const": "REJECT"
+        },
+        "api_cli_record_equality": {
+          "const": "EXACT"
+        }
+      }
+    },
+    "integration_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "existing_gui_source_modified_by_overlay",
+        "future_gui_calls_d_owned_adapter",
+        "adapter_connected_to_current_gui",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persisted"
+      ],
+      "properties": {
+        "existing_gui_source_modified_by_overlay": {
+          "const": false
+        },
+        "future_gui_calls_d_owned_adapter": {
+          "const": true
+        },
+        "adapter_connected_to_current_gui": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persisted": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

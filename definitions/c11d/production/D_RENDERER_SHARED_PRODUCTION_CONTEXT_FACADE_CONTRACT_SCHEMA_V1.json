@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-CONTRACT-SCHEMA-V1",
+  "title": "C11-D shared production context facade contract schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "interface",
+    "composition_order",
+    "supported_content_types",
+    "binding_invariants",
+    "output",
+    "governance",
+    "source_lineage"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARE_ONLY_COMMON_BACKEND_FACADE_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 20
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python_api",
+        "record_validator",
+        "cli_entrypoint",
+        "gui_contract",
+        "cli_protocol",
+        "result_persistence"
+      ],
+      "properties": {
+        "python_api": {
+          "const": "prepare_shared_production_context(raw_request, project_root=None)"
+        },
+        "record_validator": {
+          "const": "validate_shared_production_context(record, raw_request, project_root=None)"
+        },
+        "cli_entrypoint": {
+          "const": "tools/c11d/d9/shared_production_context_cli.py"
+        },
+        "gui_contract": {
+          "type": "string"
+        },
+        "cli_protocol": {
+          "type": "string"
+        },
+        "result_persistence": {
+          "const": "NONE"
+        }
+      }
+    },
+    "composition_order": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step",
+          "authority",
+          "operation"
+        ],
+        "properties": {
+          "step": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "authority": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "supported_content_types": {
+      "const": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ]
+    },
+    "binding_invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "single_canonical_request_plan",
+        "same_request_plan_editorial_hashes_across_components",
+        "presentation_profile_must_be_registered",
+        "editorial_model_is_single_source_of_truth",
+        "shared_editorial_presentation_inherited_by_default",
+        "family_adapters_cannot_mutate_shared_editorial_values",
+        "unknown_content_type_or_profile",
+        "unknown_family_or_variant",
+        "gameplay_music_seed_cross_domain_sharing",
+        "service_output_in_memory_only",
+        "gui_cli_parity"
+      ],
+      "properties": {
+        "single_canonical_request_plan": {
+          "const": true
+        },
+        "same_request_plan_editorial_hashes_across_components": {
+          "const": true
+        },
+        "presentation_profile_must_be_registered": {
+          "const": true
+        },
+        "editorial_model_is_single_source_of_truth": {
+          "const": true
+        },
+        "shared_editorial_presentation_inherited_by_default": {
+          "const": true
+        },
+        "family_adapters_cannot_mutate_shared_editorial_values": {
+          "const": true
+        },
+        "unknown_content_type_or_profile": {
+          "const": "REJECT"
+        },
+        "unknown_family_or_variant": {
+          "type": "string"
+        },
+        "gameplay_music_seed_cross_domain_sharing": {
+          "const": "FORBIDDEN"
+        },
+        "service_output_in_memory_only": {
+          "const": true
+        },
+        "gui_cli_parity": {
+          "const": "EXACT_CANONICAL_RECORD_EQUALITY"
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "contains",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persisted"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-V1"
+        },
+        "contains": {
+          "const": [
+            "canonical_result",
+            "bridge_planning_record",
+            "d_only_adapter_envelope",
+            "shared_context_binding"
+          ]
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persisted": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 22,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

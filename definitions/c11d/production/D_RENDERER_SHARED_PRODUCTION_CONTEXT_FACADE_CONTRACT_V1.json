@@ -1,0 +1,199 @@
+{
+  "schema": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_COMMON_BACKEND_FACADE_NOT_RENDERER_INPUT",
+  "purpose": "Provide one reusable D9 backend operation for future GUI and CLI callers. It composes the canonical D9.9 planner, D9.10 bridge, D-owned prepare-only adapter and shared editorial/presentation context binding without duplicating resolution logic or enabling rendering.",
+  "interface": {
+    "python_api": "prepare_shared_production_context(raw_request, project_root=None)",
+    "record_validator": "validate_shared_production_context(record, raw_request, project_root=None)",
+    "cli_entrypoint": "tools/c11d/d9/shared_production_context_cli.py",
+    "gui_contract": "GUI calls the same Python API; no GUI-specific editorial or presentation resolution path is permitted",
+    "cli_protocol": "UTF-8 JSON on stdout; ASCII-safe JSON serialization; input request is read-only; no output-path argument",
+    "result_persistence": "NONE"
+  },
+  "composition_order": [
+    {
+      "step": 1,
+      "authority": "D9.9",
+      "operation": "evaluate_universal_request"
+    },
+    {
+      "step": 2,
+      "authority": "D9.10",
+      "operation": "build_bridge_planning_record"
+    },
+    {
+      "step": 3,
+      "authority": "D_RENDER_ADAPTER",
+      "operation": "prepare_d_only_adapter_envelope"
+    },
+    {
+      "step": 4,
+      "authority": "D9_SHARED_CONTEXT",
+      "operation": "build_context_binding_from_result"
+    },
+    {
+      "step": 5,
+      "authority": "D9_SHARED_CONTEXT",
+      "operation": "validate_binding_record"
+    },
+    {
+      "step": 6,
+      "authority": "D_FACADE",
+      "operation": "cross_component_identity_and_governance_check"
+    }
+  ],
+  "supported_content_types": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "binding_invariants": {
+    "single_canonical_request_plan": true,
+    "same_request_plan_editorial_hashes_across_components": true,
+    "presentation_profile_must_be_registered": true,
+    "editorial_model_is_single_source_of_truth": true,
+    "shared_editorial_presentation_inherited_by_default": true,
+    "family_adapters_cannot_mutate_shared_editorial_values": true,
+    "unknown_content_type_or_profile": "REJECT",
+    "unknown_family_or_variant": "REJECT_BY_CANONICAL_D9_9",
+    "gameplay_music_seed_cross_domain_sharing": "FORBIDDEN",
+    "service_output_in_memory_only": true,
+    "gui_cli_parity": "EXACT_CANONICAL_RECORD_EQUALITY"
+  },
+  "output": {
+    "schema": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-V1",
+    "contains": [
+      "canonical_result",
+      "bridge_planning_record",
+      "d_only_adapter_envelope",
+      "shared_context_binding"
+    ],
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "persisted": false
+  },
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "CANONICAL_EDITORIAL_FIELD_MODEL",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "role": "D9_10_BRIDGE_CONTRACT",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "role": "D_OWNED_ADAPTER_BOUNDARY_CONTRACT",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "D9_9_REQUEST_CONTRACT",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CONTRACT_V1.json",
+      "role": "SHARED_CONTEXT_BINDING_CONTRACT",
+      "sha256": "17157aeebdccdcfe069ce475e9ce836dfe324566101d55e792354024539c6773"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_SCHEMA_V1.json",
+      "role": "SHARED_CONTEXT_BINDING_OUTPUT_SCHEMA",
+      "sha256": "93597c33ae79d7b73ecc50281b48cf928bba5cad0e9655932984f5d0a4d2dafb"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_SCHEMA_V1.json",
+      "role": "SHARED_EDITORIAL_PRESENTATION_INHERITANCE_SCHEMA",
+      "sha256": "b552e6a9291ed1e9dc9d84dc17d2ee08e3c2d1a58d2ce0251863e492f4ad12f8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
+      "role": "SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CONTRACT",
+      "sha256": "89271bb75777f7fe968d1369155d37843ac711f4d804d5171f1bfae2721e5c46"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_SCHEMA_V1.json",
+      "role": "PRESENTATION_PROFILE_REGISTRY_SCHEMA",
+      "sha256": "72f93aba4a244d37846bc2b872fd454d42cbd994e548f04cf37091cbe8e8b6ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
+      "role": "PRESENTATION_PROFILE_REFERENCE_REGISTRY",
+      "sha256": "796d455f63bd216b231e9fc717fafa4331df8dd4eff93fde7a1aa439d5565382"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_SCHEMA_V1.json",
+      "role": "FACADE_CONTRACT_SCHEMA",
+      "sha256": "110c2290faee4db50c04a1013f7e7f3f3ce9820be03dda5674a0f9b2660b9852"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_SCHEMA_V1.json",
+      "role": "FACADE_OUTPUT_SCHEMA",
+      "sha256": "13c1fc3b6f7d3d981e812c80dd482f3ab71ffbd0b6f617cc3e74239e14906f1d"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "role": "D_OWNED_PREPARE_ONLY_ADAPTER",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_shared_editorial_presentation_context_binding.py",
+      "role": "SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDER",
+      "sha256": "29aa9da37c1abec62bbe157a295ae0d1c43fef8ac7a3b7cfb2c166f30f750bec"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "role": "CANONICAL_D9_10_EDITORIAL_BRIDGE",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_cli.py",
+      "role": "FACADE_CLI_ENTRYPOINT",
+      "sha256": "f41970db54783ef6906aeff4f0c923d5f7d4e0d1190f8c7394a5e77c81190fc6"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_service.py",
+      "role": "FACADE_IMPLEMENTATION",
+      "sha256": "9726bf3ceeb3f567da350789f70750f9206caaf707523e4d53217e16f73f0aac"
+    },
+    {
+      "path": "tools/c11d/d9/test_shared_production_context_service.py",
+      "role": "FACADE_CONTRACT_TEST",
+      "sha256": "6e4f1af4bfc2b461a2b72bac0cc7e08d648829c96fd1df22ba0f225e14c602c2"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CANONICAL_D9_8_EDITORIAL_RESOLVER",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CANONICAL_D9_9_REQUEST_PLANNER",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer_cli.py",
+      "role": "EXISTING_CANONICAL_CLI_REFERENCE",
+      "sha256": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54"
+    }
+  ]
+}

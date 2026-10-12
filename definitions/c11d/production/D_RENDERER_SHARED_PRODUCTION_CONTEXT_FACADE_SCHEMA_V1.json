@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-SCHEMA-V1",
+  "title": "C11-D shared production context facade record schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "identity",
+    "canonical_result",
+    "bridge_planning_record",
+    "d_only_adapter_envelope",
+    "shared_context_binding",
+    "source_contracts",
+    "execution_boundary",
+    "context_sha256",
+    "record_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-FACADE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARED_COMMON_BACKEND_CONTEXT_NOT_RENDERER_INPUT"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_id",
+        "content_type",
+        "selection",
+        "request_sha256",
+        "editorial_sha256",
+        "plan_sha256",
+        "canonical_result_sha256",
+        "bridge_record_sha256",
+        "adapter_envelope_sha256",
+        "shared_context_binding_sha256"
+      ],
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_type": {
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "selection": {
+          "type": "object"
+        },
+        "request_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "editorial_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "canonical_result_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bridge_record_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "adapter_envelope_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "shared_context_binding_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "canonical_result": {
+      "type": "object",
+      "required": [
+        "status",
+        "canonical_request",
+        "plan",
+        "request_hash",
+        "plan_hash",
+        "editorial_hash"
+      ],
+      "properties": {
+        "status": {
+          "const": "PLANNED"
+        },
+        "canonical_request": {
+          "type": "object"
+        },
+        "plan": {
+          "type": "object"
+        },
+        "request_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "plan_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "editorial_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "bridge_planning_record": {
+      "type": "object",
+      "required": [
+        "schema",
+        "status",
+        "record_hash"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1"
+        },
+        "status": {
+          "const": "PLANNING_ONLY_NOT_RENDERABLE"
+        },
+        "record_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "d_only_adapter_envelope": {
+      "type": "object",
+      "required": [
+        "schema",
+        "status",
+        "envelope_hash",
+        "renderer_activation",
+        "renderer_input_emitted",
+        "production_execution",
+        "media_output_created",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1"
+        },
+        "status": {
+          "const": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED"
+        },
+        "envelope_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "shared_context_binding": {
+      "type": "object",
+      "required": [
+        "schema",
+        "status",
+        "record_sha256",
+        "binding_context_sha256",
+        "identity"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-V1"
+        },
+        "status": {
+          "const": "REQUEST_SCOPED_SHARED_CONTEXT_BOUND_NOT_RENDERER_INPUT"
+        },
+        "record_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "binding_context_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "identity": {
+          "type": "object"
+        }
+      }
+    },
+    "source_contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service_contract_sha256",
+        "canonical_request_contract_sha256",
+        "bridge_contract_sha256",
+        "adapter_contract_sha256",
+        "shared_context_contract_sha256"
+      ],
+      "properties": {
+        "service_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "canonical_request_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bridge_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "adapter_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "shared_context_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "record_persisted",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_SHARED_BACKEND_FACADE_ONLY"
+        },
+        "record_persisted": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "record_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "C11-D-D9-SHARED-PRESENTATION-PROFILE-REFERENCE-REGISTRY-V1",
+  "schema_version": "1.0",
+  "status": "REFERENCE_IDENTITY_ONLY_NOT_PHYSICAL_BINDING",
+  "default_profile_id": "social_default_v1",
+  "registration_policy": {
+    "unknown_profile": "REJECT",
+    "profile_addition": "EXPLICIT_VERSIONED_HASH_BOUND_REGISTRY_CHANGE",
+    "geometry_authority": "NOT_DEFINED_BY_THIS_REGISTRY",
+    "family_exception_policy": "SEPARATE_HASH_BOUND_APPROVAL_REQUIRED"
+  },
+  "profiles": [
+    {
+      "profile_id": "social_default_v1",
+      "identity_source": "core/presentation/PresentationProfile.gd",
+      "identity_token": "const DEFAULT_ID: String = \"social_default_v1\"",
+      "status": "REGISTERED_REFERENCE_ONLY",
+      "default": true,
+      "eligible_content_types": [
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ],
+      "geometry_state": "NOT_RESOLVED_BY_IDENTITY_REGISTRY",
+      "render_ready": false
+    }
+  ],
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "role": "EXISTING_PRESENTATION_IDENTITY_CONSTANT_ONLY",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
+      "role": "SHARED_PRESENTATION_INHERITANCE_CONTRACT",
+      "sha256": "89271bb75777f7fe968d1369155d37843ac711f4d804d5171f1bfae2721e5c46"
+    }
+  ],
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false
+  }
+}

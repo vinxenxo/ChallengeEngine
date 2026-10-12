@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-SCHEMA-V1",
+  "title": "C11-D Shared Editorial/Presentation Request Context Binding V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "identity",
+    "selection",
+    "editorial_binding",
+    "presentation_binding",
+    "domain_binding",
+    "delivery_binding",
+    "source_contracts",
+    "execution_boundary",
+    "binding_context_sha256",
+    "record_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "REQUEST_SCOPED_SHARED_CONTEXT_BOUND_NOT_RENDERER_INPUT"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_id",
+        "content_type",
+        "request_sha256",
+        "editorial_sha256",
+        "plan_sha256",
+        "bridge_record_sha256"
+      ],
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_type": {
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "request_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "editorial_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bridge_record_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "subtype_id",
+        "variant_id",
+        "variant_scope_id",
+        "difficulty_tier"
+      ],
+      "properties": {
+        "content_type": {
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills"
+          ]
+        },
+        "family_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subtype_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_scope_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "difficulty_tier": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "editorial_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_model",
+        "source_plan_field",
+        "model_sha256",
+        "resolved_values",
+        "field_names",
+        "shared_display_text_fields",
+        "shared_metadata_fields",
+        "content_specific_fields",
+        "inheritance_layers",
+        "values_sha256",
+        "shared_values_sha256",
+        "resolution_state"
+      ],
+      "properties": {
+        "source_model": {
+          "const": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json"
+        },
+        "source_plan_field": {
+          "const": "plan.editorial"
+        },
+        "model_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "resolved_values": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "title",
+                "subtitle",
+                "call_to_action",
+                "language",
+                "player_name",
+                "challenge_label"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "call_to_action": {
+                  "type": "string"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "player_name": {
+                  "type": "string"
+                },
+                "challenge_label": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "title",
+                "subtitle",
+                "call_to_action",
+                "language"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "call_to_action": {
+                  "type": "string"
+                },
+                "language": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "field_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "shared_display_text_fields": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "subtitle",
+            "call_to_action"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "subtitle": {
+              "type": "string"
+            },
+            "call_to_action": {
+              "type": "string"
+            }
+          }
+        },
+        "shared_metadata_fields": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "language"
+          ],
+          "properties": {
+            "language": {
+              "type": "string"
+            }
+          }
+        },
+        "content_specific_fields": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "player_name": {
+              "type": "string"
+            },
+            "challenge_label": {
+              "type": "string"
+            }
+          }
+        },
+        "inheritance_layers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "values_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "shared_values_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "resolution_state": {
+          "const": "CANONICAL_D9_8_MODEL_VIA_D9_9_PLAN"
+        }
+      }
+    },
+    "presentation_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "registry_status",
+        "registry_sha256",
+        "registry_entry_sha256",
+        "identity_source",
+        "identity_token",
+        "reference_source",
+        "geometry_resolution",
+        "presentation_policy_approved",
+        "renderer_profile_object_created"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registry_status": {
+          "const": "REGISTERED_REFERENCE_IDENTITY_CONFIRMED"
+        },
+        "registry_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "registry_entry_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "identity_source": {
+          "type": "string"
+        },
+        "identity_token": {
+          "type": "string"
+        },
+        "reference_source": {
+          "const": "canonical_request.presentation_profile_id"
+        },
+        "geometry_resolution": {
+          "const": "NOT_PERFORMED"
+        },
+        "presentation_policy_approved": {
+          "const": false
+        },
+        "renderer_profile_object_created": {
+          "const": false
+        }
+      }
+    },
+    "domain_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gameplay_seed",
+        "gameplay_seed_source",
+        "gameplay_domain",
+        "music_seed",
+        "music_seed_source",
+        "music_domain",
+        "cross_domain_sharing",
+        "automatic_generation",
+        "runtime_derivation"
+      ],
+      "properties": {
+        "gameplay_seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "gameplay_seed_source": {
+          "const": "canonical_request.seed"
+        },
+        "gameplay_domain": {
+          "const": "GAMEPLAY"
+        },
+        "music_seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "music_seed_source": {
+          "const": "canonical_request.music_seed"
+        },
+        "music_domain": {
+          "const": "MUSIC"
+        },
+        "cross_domain_sharing": {
+          "const": "FORBIDDEN"
+        },
+        "automatic_generation": {
+          "const": false
+        },
+        "runtime_derivation": {
+          "const": false
+        }
+      }
+    },
+    "delivery_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_delivery_profile_id",
+        "resolved_delivery_profile_id",
+        "variation_index",
+        "audio_enabled"
+      ],
+      "properties": {
+        "requested_delivery_profile_id": {
+          "type": "string"
+        },
+        "resolved_delivery_profile_id": {
+          "type": "string"
+        },
+        "variation_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "audio_enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "source_contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_contract_sha256",
+        "editorial_model_sha256",
+        "bridge_contract_sha256",
+        "inheritance_contract_sha256",
+        "profile_registry_schema_sha256",
+        "profile_registry_sha256"
+      ],
+      "properties": {
+        "binding_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "editorial_model_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bridge_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "inheritance_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "profile_registry_schema_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "profile_registry_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "report_persisted",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "d4_8",
+        "release_authority",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_REQUEST_CONTEXT_BINDING_ONLY"
+        },
+        "report_persisted": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "binding_context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "record_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

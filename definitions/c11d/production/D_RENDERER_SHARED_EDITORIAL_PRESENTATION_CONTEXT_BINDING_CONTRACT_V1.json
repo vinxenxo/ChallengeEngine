@@ -1,0 +1,118 @@
+{
+  "schema": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_SHARED_CONTEXT_BINDING_NOT_RENDERER_INPUT",
+  "purpose": "Bind the resolved D9.8 editorial values and canonical presentation profile reference to the same D9.9 request/plan and D9.10 bridge identities for the supported content types. This is a non-persistent, renderer-agnostic identity receipt; it does not resolve presentation geometry or emit renderer input.",
+  "inputs": {
+    "canonical_producer": "tools/c11d/d9/universal_producer.py::evaluate_universal_request",
+    "editorial_model": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "editorial_render_bridge": "tools/c11d/d9/editorial_render_bridge.py::build_bridge_planning_record",
+    "shared_inheritance_contract": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
+    "presentation_profile_registry": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json"
+  },
+  "output": {
+    "schema": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-CONTEXT-BINDING-V1",
+    "mode": "IN_MEMORY_REQUEST_CONTEXT_BINDING_ONLY",
+    "persisted": false,
+    "renderer_input_emitted": false
+  },
+  "supported_content_types": [
+    "challenges",
+    "visual_loops",
+    "visual_drills"
+  ],
+  "binding_rules": {
+    "canonical_source": "universal_producer.evaluate_universal_request",
+    "editorial_layers": "global>content_type>family>subtype>variant>production_override",
+    "presentation_reference": "canonical_request.presentation_profile_id",
+    "unknown_profile": "REJECT",
+    "profile_geometry": "NEVER_RESOLVED_BY_THIS_BINDER",
+    "editorial_field_allowlist": "C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "language": "METADATA_NOT_DISPLAY_TEXT",
+    "challenge_fields": "CHALLENGES_ONLY_PLAYER_NAME_AND_CHALLENGE_LABEL",
+    "family_adapter_mutation": "FORBIDDEN",
+    "inheritance_default": "SHARED_EDITORIAL_AND_PRESENTATION"
+  },
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CANONICAL_D9_9_REQUEST_PLAN_ADAPTER",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CANONICAL_D9_8_EDITORIAL_RESOLVER",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "CANONICAL_EDITORIAL_MODEL",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CANONICAL_D9_9_REQUEST_CONTRACT",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "role": "CANONICAL_D9_10_BRIDGE_ADAPTER",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "role": "CANONICAL_D9_10_BRIDGE_CONTRACT",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
+      "role": "SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CONTRACT",
+      "sha256": "89271bb75777f7fe968d1369155d37843ac711f4d804d5171f1bfae2721e5c46"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_SCHEMA_V1.json",
+      "role": "SHARED_INHERITANCE_SCHEMA",
+      "sha256": "b552e6a9291ed1e9dc9d84dc17d2ee08e3c2d1a58d2ce0251863e492f4ad12f8"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "role": "EXISTING_PRESENTATION_PROFILE_IDENTITY_CONSTANT",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
+      "role": "D_OWNED_PROFILE_REFERENCE_REGISTRY",
+      "sha256": "796d455f63bd216b231e9fc717fafa4331df8dd4eff93fde7a1aa439d5565382"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_SCHEMA_V1.json",
+      "role": "PROFILE_REGISTRY_SCHEMA",
+      "sha256": "72f93aba4a244d37846bc2b872fd454d42cbd994e548f04cf37091cbe8e8b6ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_SCHEMA_V1.json",
+      "role": "BINDING_OUTPUT_SCHEMA",
+      "sha256": "93597c33ae79d7b73ecc50281b48cf928bba5cad0e9655932984f5d0a4d2dafb"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CONTRACT_SCHEMA_V1.json",
+      "role": "BINDING_CONTRACT_SCHEMA",
+      "sha256": "d1e9750ae6cadc81addcc09560cc52b75c13972fa011c8d2d55a4d62bfbeb64e"
+    }
+  ]
+}

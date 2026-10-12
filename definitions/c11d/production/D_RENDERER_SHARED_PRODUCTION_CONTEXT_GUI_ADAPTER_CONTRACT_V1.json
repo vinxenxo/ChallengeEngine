@@ -1,0 +1,86 @@
+{
+  "schema": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-ADAPTER-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_FUTURE_GUI_ADAPTER_EXISTING_GUI_SOURCE_UNMODIFIED_BY_OVERLAY",
+  "purpose": "Provide a D-owned, stable integration seam for the future GUI. The GUI builds the canonical D9.9 raw request from user selections and submits it to one shared backend API. This adapter enforces GUI provenance and delegates without duplicating content, family, presentation, editorial, seed or plan resolution.",
+  "adapter_sha256": "cf66c259fb1a11c99e534c19efc3366a527c6a42bf4e06b6a212ee839c152ff1",
+  "interface": {
+    "python_api": "prepare_gui_shared_context(raw_request, project_root=None)",
+    "validator": "validate_gui_shared_context(record, raw_request, project_root=None)",
+    "parent_api": "prepare_shared_production_context(raw_request, project_root=None)",
+    "request_contract": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+    "origin_field": "provenance.request_origin",
+    "required_origin": "GUI",
+    "output": "EXACT_SHARED_FACADE_RECORD",
+    "persistence": "NONE"
+  },
+  "responsibilities": {
+    "gui_owns": "UI widgets and mapping selected UI values into the canonical D9.9 request vocabulary only",
+    "shared_backend_owns": "catalog validation, type/family/subfamily/variant validation, editorial resolution, presentation-profile registration, production planning, D9.10 bridge, D-only adapter preparation and shared context binding",
+    "family_adapters_may_override_shared_editorial": "false",
+    "unknown_selectors": "REJECT",
+    "unknown_presentation_profiles": "REJECT",
+    "api_cli_record_equality": "EXACT"
+  },
+  "integration_boundary": {
+    "existing_gui_source_modified_by_overlay": false,
+    "future_gui_calls_d_owned_adapter": true,
+    "adapter_connected_to_current_gui": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "persisted": false
+  },
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_V1.json",
+      "role": "SHARED_BACKEND_FACADE_CONTRACT",
+      "sha256": "37a653fee1f6609511059b87a7c95596209d9d9273771b3d05b04bd84a72de79"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_service.py",
+      "role": "SHARED_BACKEND_FACADE_API",
+      "sha256": "9726bf3ceeb3f567da350789f70750f9206caaf707523e4d53217e16f73f0aac"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_cli.py",
+      "role": "SHARED_BACKEND_FACADE_CLI_REFERENCE",
+      "sha256": "f41970db54783ef6906aeff4f0c923d5f7d4e0d1190f8c7394a5e77c81190fc6"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/main.py",
+      "role": "ACTIVE_D9_PRODUCER_GUI_SOURCE_READ_ONLY_FOR_THIS_OVERLAY",
+      "sha256": "1af78a2199f404276d0a459d9e6daec8b3cceb0d1d325b79a7d41840bc6c241e"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "role": "FROZEN_GUI_REQUEST_HELPER_READ_ONLY",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/test_producer_gui_contract.py",
+      "role": "FROZEN_EXISTING_GUI_CONTRACT_TEST_READ_ONLY",
+      "sha256": "dd0abf2c05aac9423996a07ec9f8c50c1d871fdae109c1eb521b00f004387cff"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CANONICAL_D9_9_REQUEST_CONTRACT",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    }
+  ]
+}
