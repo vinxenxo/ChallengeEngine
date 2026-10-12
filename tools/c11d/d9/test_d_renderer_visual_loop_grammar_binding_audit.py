@@ -102,6 +102,7 @@ class VisualLoopGrammarBindingAuditTests(unittest.TestCase):
         self.assertTrue(source_findings["producer_registry"])
         self.assertTrue(source_findings["prototype_override"])
         self.assertTrue(source_findings["seed_profile"])
+        self.assertTrue(source_findings["profile_input_fields"])
         self.assertTrue(source_findings["renderer_style_signature"])
         self.assertTrue(source_findings["shader_branch"])
 
@@ -110,6 +111,22 @@ class VisualLoopGrammarBindingAuditTests(unittest.TestCase):
         self.assertEqual(self.contract["grammar_binding"]["renderer_style_argument_order"], audit.EXPECTED_STYLE_ARGUMENT_ORDER)
         renderer = (ROOT / "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd").read_text(encoding="utf-8-sig")
         self.assertIn('_material.set_shader_parameter("grammar_mode", clampi(grammar_mode, 0, 4))', renderer)
+
+    def test_profile_input_keys_are_distinct_from_renderer_output_aliases(self) -> None:
+        source = (ROOT / audit.HARNESS_REL).read_text(encoding="utf-8-sig")
+        input_keys = audit._quoted_ids(
+            source,
+            r"const\s+PROFILE_INPUT_KEYS:\s*Array\[String\]\s*=\s*\[(.*?)\]",
+            "probe source-profile input keys",
+        )
+        self.assertEqual(input_keys, audit.EXPECTED_PROFILE_INPUT_ORDER)
+        self.assertEqual(len(input_keys), 20)
+        self.assertIn('"glow_strength": clamp(float(value["glow"]), 0.0, 1.0)', source)
+        self.assertIn("for key: String in PROFILE_INPUT_KEYS:", source)
+        self.assertNotIn("for key: String in STYLE_KEYS:", source)
+        self.assertIn("glow", input_keys)
+        self.assertNotIn("glow_strength", input_keys)
+        self.assertNotEqual(input_keys, audit.EXPECTED_STYLE_ORDER)
 
     def test_family_authoring_envelope_remains_truthfully_unresolved(self) -> None:
         scope = self.contract["truthful_limitations"]

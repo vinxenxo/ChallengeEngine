@@ -1,6 +1,6 @@
 # C11-D — Visual Loop Grammar Binding Audit Checkpoint V1
 
-**State:** `SOURCE_TRACE_PINNED_RUNTIME_PROFILE_PROBE_REQUIRED_NOT_EXACT_PAYLOAD`  
+**State:** `SOURCE_TRACE_PINNED_RUNTIME_PROFILE_PROBE_REPAIR_REQUIRED_NOT_EXACT_PAYLOAD`  
 **Purpose:** verify the exact `harmonic_membrane` selector-to-prototype-grammar trace without claiming a D renderer payload instance.  
 **Scope:** one fixed Visual Loop selector, four deterministic gameplay seeds, source-only contract plus a Godot in-memory profile probe.
 
@@ -29,6 +29,12 @@ The headless Godot probe uses `12345`, `54321`, `0`, and `2147483646`. For each 
 - It does not instantiate the prototype or renderer, does not create a `ShaderMaterial`, does not execute the shader, does not write a receipt/payload, and creates no media.
 - `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`.
 - D9.14/D9.16 remain blocked as required; D9.17 remains NO-GO; D10 remains BLOCKED. Renderer baseline approval and D baseline approval remain missing.
+
+## Runtime probe defect found on Windows — repair V1
+
+The first actual Godot 4.7.1 run failed before hashing the projected parameters. The frozen C11-C profile exposes the field `glow`, while the renderer/shader output name is `glow_strength`. The initial probe incorrectly checked all renderer output names against the source profile dictionary, so the input completeness guard returned an empty projection. This was a D-owned probe defect; it did not indicate invalid gameplay seeds and required no C11-C change.
+
+Repair V1 separates `PROFILE_INPUT_KEYS` from `STYLE_KEYS`. The former reflects the profile's 20 source fields (`glow` included); the latter preserves the renderer/shader's 20 output parameter names (`glow_strength` included). The static audit and regression test now explicitly pin this alias mapping. The real Godot probe must be rerun after applying the repair; runtime closure is not claimed until that run passes.
 
 ## Windows verification
 

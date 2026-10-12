@@ -44,6 +44,12 @@ EXPECTED_STYLE_ARGUMENT_ORDER = [
     "liss_x_frequency", "liss_y_frequency", "interference_scale", "hero_scale", "perspective_strength",
     "depth_strength", "secondary_phase", "color_phase", "stroke_scale"
 ]
+EXPECTED_PROFILE_INPUT_ORDER = [
+    "grammar_mode", "palette_mode", "morph", "wave_frequency", "line_width", "glow",
+    "polygon_sides", "wave_ratio", "shape_rotation", "layer_spread", "radial_wave_amplitude",
+    "liss_x_frequency", "liss_y_frequency", "interference_scale", "hero_scale", "perspective_strength",
+    "depth_strength", "secondary_phase", "color_phase", "stroke_scale"
+]
 PROTECTED_C11C_PATHS = {
     "tools/prototypes/c11c_common/C11CVariationProfile.gd",
     "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
@@ -160,6 +166,10 @@ def _static_source_audit(root: Path, contract: Mapping[str, Any]) -> dict[str, b
     _require(profile_grammars == EXPECTED_GRAMMARS, "Seed-derived profile grammar order differs from prototype selector inventory")
     _require('var grammar_index: int = _index(seed_value, 11, grammar_modes.size())' in geometric,
              "Expected seed-derived grammar selection path changed; refresh the audit before proceeding")
+    geometric_profile_keys = set(re.findall(r'^\s*"([a-z_]+)"\s*:', geometric, flags=re.M))
+    missing_profile_fields = sorted(set(EXPECTED_PROFILE_INPUT_ORDER) - geometric_profile_keys)
+    _require(not missing_profile_fields,
+             f"Pinned C11-C geometric profile is missing probe input fields: {missing_profile_fields}")
 
     renderer = (root / "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd").read_text(encoding="utf-8-sig")
     signature = re.search(r"func\s+set_style\s*\((.*?)\)\s*->\s*void\s*:", renderer, flags=re.S)
@@ -205,6 +215,12 @@ def _static_source_audit(root: Path, contract: Mapping[str, Any]) -> dict[str, b
     harness = (root / HARNESS_REL).read_text(encoding="utf-8-sig")
     projected_keys = _quoted_ids(harness, r"const\s+STYLE_KEYS:\s*Array\[String\]\s*=\s*\[(.*?)\]", "probe style parameter keys")
     _require(projected_keys == EXPECTED_STYLE_ORDER, "Godot probe shader-parameter projection order drift")
+    profile_input_keys = _quoted_ids(harness, r"const\s+PROFILE_INPUT_KEYS:\s*Array\[String\]\s*=\s*\[(.*?)\]", "probe source-profile input keys")
+    _require(profile_input_keys == EXPECTED_PROFILE_INPUT_ORDER, "Godot probe C11-C profile input field order drift")
+    _require('"glow_strength": clamp(float(value["glow"]), 0.0, 1.0)' in harness,
+             "C11-C profile `glow` must map explicitly to renderer output `glow_strength`")
+    _require("for key: String in PROFILE_INPUT_KEYS:" in harness and "for key: String in STYLE_KEYS:" not in harness,
+             "Probe must validate source profile keys independently of renderer output keys")
     seed_match = re.search(r"const\s+SEEDS:\s*Array\[int\]\s*=\s*\[(.*?)\]", harness, flags=re.S | re.M)
     _require(seed_match is not None, "Could not parse pinned runtime seed set")
     probe_seeds = [int(v) for v in re.findall(r"\d+", seed_match.group(1))]
@@ -213,6 +229,7 @@ def _static_source_audit(root: Path, contract: Mapping[str, Any]) -> dict[str, b
         "producer_registry": True,
         "prototype_override": True,
         "seed_profile": True,
+        "profile_input_fields": True,
         "renderer_style_signature": True,
         "shader_branch": True,
         "family_envelope_gap": True,

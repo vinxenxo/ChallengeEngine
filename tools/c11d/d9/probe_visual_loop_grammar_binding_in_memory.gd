@@ -19,6 +19,14 @@ const STYLE_KEYS: Array[String] = [
     "radial_wave_amplitude", "liss_x_frequency", "liss_y_frequency", "interference_scale",
     "hero_scale", "perspective_strength", "depth_strength", "secondary_phase", "color_phase", "stroke_scale"
 ]
+# Input profile names are intentionally separate from renderer/shader output names.
+# C11CVariationProfile emits `glow`; the renderer shader parameter is `glow_strength`.
+const PROFILE_INPUT_KEYS: Array[String] = [
+    "grammar_mode", "palette_mode", "morph", "wave_frequency", "line_width",
+    "glow", "polygon_sides", "wave_ratio", "shape_rotation", "layer_spread",
+    "radial_wave_amplitude", "liss_x_frequency", "liss_y_frequency", "interference_scale",
+    "hero_scale", "perspective_strength", "depth_strength", "secondary_phase", "color_phase", "stroke_scale"
+]
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -143,7 +151,7 @@ func _source_checks_pass() -> bool:
     return true
 
 func _project_style_parameters(value: Dictionary) -> Dictionary:
-    for key: String in STYLE_KEYS:
+    for key: String in PROFILE_INPUT_KEYS:
         if not value.has(key):
             return {}
     return {
