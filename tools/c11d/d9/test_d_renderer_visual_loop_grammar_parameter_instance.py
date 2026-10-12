@@ -75,6 +75,26 @@ class GrammarParameterInstanceTests(unittest.TestCase):
                 validator.validate(candidate)
         self.assertEqual(audit.SELECTED["subtype_id"],"harmonic_membrane")
 
+    def test_frozen_geometric_profile_grammar_ids_are_multiline_and_complete(self):
+        profile=(ROOT/"tools/prototypes/c11c_common/C11CVariationProfile.gd").read_text(encoding="utf-8-sig")
+        geometric_start=profile.find("static func _geometric(seed_value: int) -> Dictionary:")
+        fractal_start=profile.find("static func _fractal(seed_value: int) -> Dictionary:",geometric_start+1)
+        self.assertGreaterEqual(geometric_start,0)
+        self.assertGreater(fractal_start,geometric_start)
+        geometric=profile[geometric_start:fractal_start]
+        ids=("harmonic_membrane","interference_plane","parametric_ribbon","lattice_wave","orbital_wave")
+        self.assertIn("var grammar_modes: Array[String] = [",geometric)
+        positions=[geometric.index('"'+item+'"') for item in ids]
+        self.assertEqual(positions,sorted(positions))
+        self.assertNotIn('var grammar_modes: Array[String] = ["harmonic_membrane"',geometric)
+
+    def test_harness_source_checks_are_multiline_safe_and_diagnostic(self):
+        harness=(ROOT/audit.HARNESS_REL).read_text(encoding="utf-8")
+        self.assertIn("func _source_checks_error() -> String:",harness)
+        self.assertIn("var geometric_profile := profile.substr(geometric_start, fractal_start - geometric_start)",harness)
+        self.assertIn('return "geometric profile block missing token: " + token',harness)
+        self.assertNotIn('var grammar_modes: Array[String] = ["harmonic_membrane", "interference_plane"',harness)
+
     def test_profile_alias_glow_is_mapped_to_glow_strength(self):
         harness=(ROOT/audit.HARNESS_REL).read_text(encoding="utf-8")
         self.assertIn('"glow_strength": clamp(float(value["glow"]), 0.0, 1.0)',harness)

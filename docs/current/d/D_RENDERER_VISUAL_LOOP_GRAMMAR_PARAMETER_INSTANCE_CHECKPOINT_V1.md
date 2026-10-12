@@ -43,3 +43,14 @@ Run `test_d_renderer_visual_loop_grammar_parameter_instance.py`, then execute `d
 - Existing unified content review: `PASS 36/36`.
 - The preparation export does not include the locally reconciled legacy `c11d-control` quarantine ledger, so its lifecycle test cannot be relied upon here; rerun lifecycle and baseline in the full Windows checkout.
 - **Actual Godot 4.7.1 execution of this new parameter-instance harness has not been performed in the preparation environment and remains a required Windows gate.** No runtime PASS is claimed here.
+
+
+## Windows runtime failure and narrow source-check repair (2026-10-12)
+
+The first real Godot 4.7.1 run failed before parameter projection with `Frozen C11-C grammar/profile/style sources failed token checks`. The C11-C source was unchanged and still matched the frozen manifest. Root cause: the D harness required the complete `grammar_modes` list as one inline string, while the real frozen `C11CVariationProfile.gd` formats that array over multiple lines inside `_geometric()`.
+
+The repair scopes checks to the source slice from `static func _geometric(...)` to `static func _fractal(...)`, checks the grammar IDs individually inside that slice, and returns a source-specific diagnostic on failure. No C11-C file, source pin, selector, parameter mapping or governance state changes. A static regression pins the multiline source representation and ensures the harness no longer assumes an inline array. Actual Windows/Godot rerun is required before runtime closure.
+
+## Operator's intended D architecture (design direction; not production approval)
+
+D is being built as a robust, versatile, renderer-agnostic production and authoring system for a future GUI. The GUI should choose content type, family, subfamily/subtype and variation with the flexibility of the current C11-C Producer, and edit the text fields displayed in the resulting video. Editorial and presentation are shared cross-family layers by default: newly added video families inherit the same editorial field model, routing and presentation contract unless a family explicitly declares a justified exception. Family-specific visual payload/grammar remains a separate adapter under the common request, editorial and presentation envelope. This architecture direction does not approve currently pending geometry, temporal alignment, audio, renderer or release policies.

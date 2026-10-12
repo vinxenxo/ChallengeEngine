@@ -30,8 +30,9 @@ func _run() -> void:
     if not errors.is_empty():
         _fail("Invalid grammar parameter input: " + "; ".join(errors))
         return
-    if not _source_checks_pass():
-        _fail("Frozen C11-C grammar/profile/style sources failed token checks.")
+    var source_check_error := _source_checks_error()
+    if not source_check_error.is_empty():
+        _fail("Frozen C11-C grammar/profile/style source check failed: " + source_check_error)
         return
     var request: Dictionary = input_value["request"]
     var grammar_index := GRAMMAR_IDS.find(SELECTED)
@@ -166,20 +167,40 @@ func _validate_input(v: Dictionary) -> Array[String]:
             if not _is_sha256(str(chain.get(key, ""))): errors.append("canonical chain %s malformed" % key)
     return errors
 
-func _source_checks_pass() -> bool:
+func _source_checks_error() -> String:
     var profile := FileAccess.get_file_as_string(PROFILE_SOURCE)
     var proto := FileAccess.get_file_as_string(PROTOTYPE_SOURCE)
     var renderer := FileAccess.get_file_as_string(RENDERER_SOURCE)
     var shader := FileAccess.get_file_as_string(SHADER_SOURCE)
-    for token: String in ["static func _geometric", 'var grammar_modes: Array[String] = ["harmonic_membrane", "interference_plane", "parametric_ribbon", "lattice_wave", "orbital_wave"]']:
-        if not profile.contains(token): return false
+    if profile.is_empty(): return "cannot read frozen C11-C variation profile"
+    if proto.is_empty(): return "cannot read frozen C11-C geometric prototype"
+    if renderer.is_empty(): return "cannot read frozen C11-C geometric renderer"
+    if shader.is_empty(): return "cannot read frozen C11-C geometric shader"
+
+    # The frozen profile deliberately formats grammar_modes as a multiline array.
+    # Scope token checks to the geometric function instead of requiring an inline array.
+    var geometric_start := profile.find("static func _geometric(seed_value: int) -> Dictionary:")
+    var fractal_start := profile.find("static func _fractal(seed_value: int) -> Dictionary:")
+    if geometric_start < 0 or fractal_start <= geometric_start:
+        return "cannot locate geometric profile function boundaries"
+    var geometric_profile := profile.substr(geometric_start, fractal_start - geometric_start)
+    for token: String in [
+        "var grammar_modes: Array[String] = [",
+        "\"harmonic_membrane\"",
+        "\"interference_plane\"",
+        "\"parametric_ribbon\"",
+        "\"lattice_wave\"",
+        "\"orbital_wave\""
+    ]:
+        if not geometric_profile.contains(token): return "geometric profile block missing token: " + token
+
     for token: String in ['OS.get_environment("C11C_VISUAL_GRAMMAR")', '_variation["grammar_mode"] = index', '_variation["grammar_name"] = technical_id']:
-        if not proto.contains(token): return false
+        if not proto.contains(token): return "geometric prototype missing token: " + token
     for token: String in ['func set_style(', '_material.set_shader_parameter("grammar_mode", clampi(grammar_mode, 0, 4))', '_material.set_shader_parameter("wave_frequency", max(wave_frequency, 5.0))']:
-        if not renderer.contains(token): return false
-    if not shader.contains('uniform int grammar_mode = 0;') or not shader.contains('if (grammar_mode == 0)') or not shader.contains('return field_harmonic_membrane(q, local_phase, layer);'):
-        return false
-    return true
+        if not renderer.contains(token): return "geometric renderer missing token: " + token
+    for token: String in ['uniform int grammar_mode = 0;', 'if (grammar_mode == 0)', 'return field_harmonic_membrane(q, local_phase, layer);']:
+        if not shader.contains(token): return "geometric shader missing token: " + token
+    return ""
 
 func _project_style_parameters(value: Dictionary) -> Dictionary:
     for key: String in PROFILE_INPUT_KEYS:
