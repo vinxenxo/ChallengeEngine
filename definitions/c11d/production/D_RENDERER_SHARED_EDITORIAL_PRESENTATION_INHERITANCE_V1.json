@@ -1,0 +1,274 @@
+{
+  "schema": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-INHERITANCE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9_ARCHITECTURE_CONTINUATION",
+  "status": "ARCHITECTURE_CONTRACT_PROPOSAL_NOT_RENDERER_INPUT",
+  "purpose": "Define the renderer-agnostic shared editorial and presentation inheritance contract for the future C11-D producer GUI and CLI. Content-family adapters supply only family-specific visual identity/parameters; shared editorial resolution and presentation-profile identity remain common unless an explicit, versioned, hash-bound family exception is declared.",
+  "authority": {
+    "runtime_authority": "NONE",
+    "renderer_activation": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "approved_presentation_geometry": false,
+    "approved_editorial_visual_consumption": false,
+    "frozen_c11c_mutation": "FORBIDDEN"
+  },
+  "future_gui_selection_contract": {
+    "canonical_backend": "tools/c11d/d9/universal_producer.py",
+    "gui_and_cli_must_share_backend": true,
+    "selector_dimensions": [
+      "content_type",
+      "family_id",
+      "subtype_id",
+      "variant_id"
+    ],
+    "editorial_configuration_dimensions": [
+      "editorial_profile",
+      "production_override"
+    ],
+    "selection_resolution_order": [
+      "content_type",
+      "family_id",
+      "subtype_id",
+      "variant_id"
+    ],
+    "editorial_inheritance_order": [
+      "global",
+      "content_type",
+      "family",
+      "subtype",
+      "variant",
+      "production_override"
+    ],
+    "unknown_selection": "REJECT",
+    "unknown_fields": "REJECT",
+    "silent_fallback": "FORBIDDEN",
+    "longform": "REJECT_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_IT"
+  },
+  "shared_editorial_layer": {
+    "source_model": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "source_value": "plan.editorial",
+    "shared_enabled_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "shared_display_text_fields": [
+      "title",
+      "subtitle",
+      "call_to_action"
+    ],
+    "shared_metadata_fields": [
+      "language"
+    ],
+    "challenge_only_enabled_fields": [
+      "player_name",
+      "challenge_label"
+    ],
+    "reserved_disabled_fields": [
+      "hook",
+      "preparation_text",
+      "final_text",
+      "header_line_1",
+      "header_line_2",
+      "footer_line_1",
+      "footer_line_2",
+      "show_title",
+      "show_subtitle",
+      "show_call_to_action",
+      "show_header",
+      "show_footer"
+    ],
+    "field_resolution": "CANONICAL_MODEL_INHERITANCE_ONLY",
+    "family_adapter_may_rewrite_editorial_values": false,
+    "editorial_may_override_simulation_telemetry_or_provenance": false,
+    "new_family_default": "INHERIT_SHARED_EDITORIAL_FIELDS"
+  },
+  "shared_presentation_layer": {
+    "profile_source": "canonical request/plan presentation_profile_id",
+    "profile_transport": "REGISTERED_PROFILE_REFERENCE_ONLY",
+    "profile_identity_may_be_synthesized": false,
+    "shared_layer_default": "INHERIT_COMMON_PRESENTATION_CONTRACT",
+    "family_specific_exception": "EXPLICIT_VERSIONED_HASH_BOUND_DECLARATION_REQUIRED",
+    "geometry_state": "UNRESOLVED_POLICY_PROPOSAL_NOT_APPROVED",
+    "semantic_region_mapping_approved": false,
+    "shared_presentation_region_policy_approved": false,
+    "frame_program_approved": false,
+    "editorial_windows_applied": false,
+    "coordinates_emitted": false,
+    "renderer_input_emitted": false
+  },
+  "family_adapter_boundary": {
+    "adapter_input_identity_source": "canonical D9.9 request/plan selection",
+    "adapter_visual_output": "family-specific declarative parameter instance only until adapter and renderer baseline are separately approved",
+    "shared_editorial_owner": "canonical D9.8 editorial model via D9.9 plan.editorial",
+    "shared_presentation_owner": "canonical presentation_profile_id plus future approved shared presentation policy",
+    "adapter_must_not_mutate": [
+      "content_identity",
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language",
+      "player_name",
+      "challenge_label",
+      "gameplay_seed",
+      "music_seed",
+      "SimulationResult",
+      "winning_frame",
+      "close_calls",
+      "derived_telemetry",
+      "provenance_identity"
+    ],
+    "unknown_family_or_subtype": "REJECT",
+    "family_visual_parameters_may_extend_shared_contract": true,
+    "family_adapter_may_duplicate_shared_editorial_or_presentation_logic": false
+  },
+  "current_coverage_snapshot": {
+    "supported_content_types": [
+      "challenges",
+      "visual_loops",
+      "visual_drills"
+    ],
+    "challenges": {
+      "plan_route": "REUSE_CANONICAL_D4_CHALLENGE_SUBPLAN",
+      "common_layer": "INHERIT_SHARED_EDITORIAL_AND_PRESENTATION_CONTRACT",
+      "visual_adapter_state": "CHALLENGE_PREVIEW_ONLY",
+      "exact_renderer_payload": false
+    },
+    "visual_loops": {
+      "known_selector": {
+        "family_id": "c11c_geometric_waves_v1",
+        "subtype_id": "harmonic_membrane"
+      },
+      "common_layer": "INHERIT_SHARED_EDITORIAL_AND_PRESENTATION_CONTRACT",
+      "family_parameters": "EXACT_GRAMMAR_PARAMETER_INSTANCE_PROVEN_FOR_PINNED_SELECTOR",
+      "exact_selector_visual_payload": false,
+      "family_authoring_envelope_gap": "OPEN"
+    },
+    "visual_drills": {
+      "plan_route": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+      "common_layer": "INHERIT_SHARED_EDITORIAL_AND_PRESENTATION_CONTRACT",
+      "family_visual_adapter_state": "NOT_CERTIFIED",
+      "exact_renderer_payload": false
+    }
+  },
+  "new_family_registration": {
+    "unknown_family_before_registration": "REJECT",
+    "registered_family_default": "INHERIT_SHARED_EDITORIAL_AND_PRESENTATION_CONTRACT",
+    "required_registration_fields": [
+      "content_type",
+      "family_id",
+      "adapter_contract_ref",
+      "adapter_contract_sha256",
+      "subtype_registry_ref",
+      "parameter_schema_ref",
+      "shared_editorial_inheritance",
+      "shared_presentation_inheritance",
+      "family_exception_ref"
+    ],
+    "shared_editorial_inheritance_default": true,
+    "shared_presentation_inheritance_default": true,
+    "exception_free_registration_is_valid": true,
+    "silent_exception_allowed": false,
+    "parameter_schema_is_family_owned": true,
+    "presentation_profile_is_shared_reference": true
+  },
+  "family_exception_policy": {
+    "active_exception_count": 0,
+    "exception_must_declare": [
+      "exception_id",
+      "family_id",
+      "reason",
+      "changed_fields",
+      "schema_version",
+      "source_path",
+      "source_sha256",
+      "approval_state"
+    ],
+    "exception_source_must_be_hash_bound": true,
+    "exception_must_be_explicitly_approved_before_activation": true,
+    "exception_may_enable_reserved_editorial_fields_without_separate_contract": false,
+    "exception_may_change_global_field_semantics": false,
+    "unknown_or_unpinned_exception": "REJECT"
+  },
+  "acceptance_invariants": [
+    "All three supported content types resolve shared enabled editorial fields through the canonical D9.8 model.",
+    "Language remains metadata and is not treated as display text.",
+    "Only Challenges receive player_name and challenge_label from the currently enabled content-specific field set.",
+    "Reserved editorial and show/hide fields remain disabled until separately certified.",
+    "Every registered family inherits the shared editorial/presentation layer by default.",
+    "Any family-specific exception is explicit, versioned, hash-bound, and approved before activation.",
+    "Unregistered selector tuples reject without fallback.",
+    "Family-specific visual parameters remain separate from editorial values and presentation geometry.",
+    "The presentation profile is passed by canonical identity only; no geometry or temporal policy is inferred.",
+    "No renderer input, renderer dispatch, media creation, or C11-C source mutation occurs."
+  ],
+  "execution_boundary": {
+    "audit_mode": "STATIC_READ_ONLY_SOURCE_CONFORMANCE",
+    "report_persisted": false,
+    "source_files_modified": false,
+    "renderer_instance_created": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "shader_executed": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "candidate_input_admissible": false,
+    "renderer": "OFF",
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "CANONICAL_UNIVERSAL_EDITORIAL_MODEL",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "role": "D9_10_EDITORIAL_RENDER_BRIDGE",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CANONICAL_D9_9_REQUEST",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_V1.json",
+      "role": "CURRENT_FAMILY_PARAMETER_INSTANCE",
+      "sha256": "1afefe7e5e14baba40a983b34b816612475c39aa13f54062a05496c4c91a47c9"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "role": "UNAPPROVED_PRESENTATION_REGION_POLICY",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CANONICAL_D9_9_BACKEND",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "role": "D9_10_BRIDGE_IMPLEMENTATION",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    }
+  ],
+  "artifacts": {
+    "schema": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_SCHEMA_V1.json",
+    "audit": "tools/c11d/d9/d_renderer_shared_editorial_presentation_inheritance.py",
+    "test": "tools/c11d/d9/test_d_renderer_shared_editorial_presentation_inheritance.py",
+    "checkpoint": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CHECKPOINT_V1.md"
+  }
+}

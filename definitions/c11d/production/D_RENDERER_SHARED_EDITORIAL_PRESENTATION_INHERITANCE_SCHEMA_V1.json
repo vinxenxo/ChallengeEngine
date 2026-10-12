@@ -1,0 +1,651 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:shared-editorial-presentation-inheritance-contract:v1",
+  "title": "C11-D Shared Editorial and Presentation Inheritance Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "checkpoint",
+    "status",
+    "purpose",
+    "authority",
+    "future_gui_selection_contract",
+    "shared_editorial_layer",
+    "shared_presentation_layer",
+    "family_adapter_boundary",
+    "current_coverage_snapshot",
+    "new_family_registration",
+    "family_exception_policy",
+    "acceptance_invariants",
+    "execution_boundary",
+    "source_lineage",
+    "artifacts"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-EDITORIAL-PRESENTATION-INHERITANCE-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "checkpoint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "ARCHITECTURE_CONTRACT_PROPOSAL_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime_authority",
+        "renderer_activation",
+        "production_execution",
+        "release_authority",
+        "approved_presentation_geometry",
+        "approved_editorial_visual_consumption",
+        "frozen_c11c_mutation"
+      ],
+      "properties": {
+        "runtime_authority": {
+          "const": "NONE"
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "approved_presentation_geometry": {
+          "const": false
+        },
+        "approved_editorial_visual_consumption": {
+          "const": false
+        },
+        "frozen_c11c_mutation": {
+          "const": "FORBIDDEN"
+        }
+      }
+    },
+    "future_gui_selection_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_backend",
+        "gui_and_cli_must_share_backend",
+        "selector_dimensions",
+        "editorial_configuration_dimensions",
+        "selection_resolution_order",
+        "editorial_inheritance_order",
+        "unknown_selection",
+        "unknown_fields",
+        "silent_fallback",
+        "longform"
+      ],
+      "properties": {
+        "canonical_backend": {
+          "type": "string"
+        },
+        "gui_and_cli_must_share_backend": {
+          "const": true
+        },
+        "selector_dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 4,
+          "uniqueItems": true
+        },
+        "editorial_configuration_dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "selection_resolution_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "editorial_inheritance_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknown_selection": {
+          "const": "REJECT"
+        },
+        "unknown_fields": {
+          "const": "REJECT"
+        },
+        "silent_fallback": {
+          "const": "FORBIDDEN"
+        },
+        "longform": {
+          "const": "REJECT_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_IT"
+        }
+      }
+    },
+    "shared_editorial_layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_model",
+        "source_value",
+        "shared_enabled_fields",
+        "shared_display_text_fields",
+        "shared_metadata_fields",
+        "challenge_only_enabled_fields",
+        "reserved_disabled_fields",
+        "field_resolution",
+        "family_adapter_may_rewrite_editorial_values",
+        "editorial_may_override_simulation_telemetry_or_provenance",
+        "new_family_default"
+      ],
+      "properties": {
+        "source_model": {
+          "type": "string"
+        },
+        "source_value": {
+          "type": "string"
+        },
+        "shared_enabled_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "shared_display_text_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "shared_metadata_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "challenge_only_enabled_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "reserved_disabled_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "field_resolution": {
+          "const": "CANONICAL_MODEL_INHERITANCE_ONLY"
+        },
+        "family_adapter_may_rewrite_editorial_values": {
+          "const": false
+        },
+        "editorial_may_override_simulation_telemetry_or_provenance": {
+          "const": false
+        },
+        "new_family_default": {
+          "const": "INHERIT_SHARED_EDITORIAL_FIELDS"
+        }
+      }
+    },
+    "shared_presentation_layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_source",
+        "profile_transport",
+        "profile_identity_may_be_synthesized",
+        "shared_layer_default",
+        "family_specific_exception",
+        "geometry_state",
+        "semantic_region_mapping_approved",
+        "shared_presentation_region_policy_approved",
+        "frame_program_approved",
+        "editorial_windows_applied",
+        "coordinates_emitted",
+        "renderer_input_emitted"
+      ],
+      "properties": {
+        "profile_source": {
+          "type": "string"
+        },
+        "profile_transport": {
+          "const": "REGISTERED_PROFILE_REFERENCE_ONLY"
+        },
+        "profile_identity_may_be_synthesized": {
+          "const": false
+        },
+        "shared_layer_default": {
+          "const": "INHERIT_COMMON_PRESENTATION_CONTRACT"
+        },
+        "family_specific_exception": {
+          "const": "EXPLICIT_VERSIONED_HASH_BOUND_DECLARATION_REQUIRED"
+        },
+        "geometry_state": {
+          "const": "UNRESOLVED_POLICY_PROPOSAL_NOT_APPROVED"
+        },
+        "semantic_region_mapping_approved": {
+          "const": false
+        },
+        "shared_presentation_region_policy_approved": {
+          "const": false
+        },
+        "frame_program_approved": {
+          "const": false
+        },
+        "editorial_windows_applied": {
+          "const": false
+        },
+        "coordinates_emitted": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        }
+      }
+    },
+    "family_adapter_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter_input_identity_source",
+        "adapter_visual_output",
+        "shared_editorial_owner",
+        "shared_presentation_owner",
+        "adapter_must_not_mutate",
+        "unknown_family_or_subtype",
+        "family_visual_parameters_may_extend_shared_contract",
+        "family_adapter_may_duplicate_shared_editorial_or_presentation_logic"
+      ],
+      "properties": {
+        "adapter_input_identity_source": {
+          "type": "string"
+        },
+        "adapter_visual_output": {
+          "type": "string"
+        },
+        "shared_editorial_owner": {
+          "type": "string"
+        },
+        "shared_presentation_owner": {
+          "type": "string"
+        },
+        "adapter_must_not_mutate": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "unknown_family_or_subtype": {
+          "const": "REJECT"
+        },
+        "family_visual_parameters_may_extend_shared_contract": {
+          "const": true
+        },
+        "family_adapter_may_duplicate_shared_editorial_or_presentation_logic": {
+          "const": false
+        }
+      }
+    },
+    "current_coverage_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supported_content_types",
+        "challenges",
+        "visual_loops",
+        "visual_drills"
+      ],
+      "properties": {
+        "supported_content_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 3,
+          "uniqueItems": true
+        },
+        "challenges": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plan_route",
+            "common_layer",
+            "visual_adapter_state",
+            "exact_renderer_payload"
+          ],
+          "properties": {
+            "plan_route": {
+              "type": "string"
+            },
+            "common_layer": {
+              "type": "string"
+            },
+            "visual_adapter_state": {
+              "type": "string"
+            },
+            "exact_renderer_payload": {
+              "const": false
+            }
+          }
+        },
+        "visual_loops": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "known_selector",
+            "common_layer",
+            "family_parameters",
+            "exact_selector_visual_payload",
+            "family_authoring_envelope_gap"
+          ],
+          "properties": {
+            "known_selector": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "family_id",
+                "subtype_id"
+              ],
+              "properties": {
+                "family_id": {
+                  "type": "string"
+                },
+                "subtype_id": {
+                  "type": "string"
+                }
+              }
+            },
+            "common_layer": {
+              "type": "string"
+            },
+            "family_parameters": {
+              "type": "string"
+            },
+            "exact_selector_visual_payload": {
+              "const": false
+            },
+            "family_authoring_envelope_gap": {
+              "const": "OPEN"
+            }
+          }
+        },
+        "visual_drills": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plan_route",
+            "common_layer",
+            "family_visual_adapter_state",
+            "exact_renderer_payload"
+          ],
+          "properties": {
+            "plan_route": {
+              "type": "string"
+            },
+            "common_layer": {
+              "type": "string"
+            },
+            "family_visual_adapter_state": {
+              "type": "string"
+            },
+            "exact_renderer_payload": {
+              "const": false
+            }
+          }
+        }
+      }
+    },
+    "new_family_registration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknown_family_before_registration",
+        "registered_family_default",
+        "required_registration_fields",
+        "shared_editorial_inheritance_default",
+        "shared_presentation_inheritance_default",
+        "exception_free_registration_is_valid",
+        "silent_exception_allowed",
+        "parameter_schema_is_family_owned",
+        "presentation_profile_is_shared_reference"
+      ],
+      "properties": {
+        "unknown_family_before_registration": {
+          "const": "REJECT"
+        },
+        "registered_family_default": {
+          "const": "INHERIT_SHARED_EDITORIAL_AND_PRESENTATION_CONTRACT"
+        },
+        "required_registration_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 8,
+          "uniqueItems": true
+        },
+        "shared_editorial_inheritance_default": {
+          "const": true
+        },
+        "shared_presentation_inheritance_default": {
+          "const": true
+        },
+        "exception_free_registration_is_valid": {
+          "const": true
+        },
+        "silent_exception_allowed": {
+          "const": false
+        },
+        "parameter_schema_is_family_owned": {
+          "const": true
+        },
+        "presentation_profile_is_shared_reference": {
+          "const": true
+        }
+      }
+    },
+    "family_exception_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active_exception_count",
+        "exception_must_declare",
+        "exception_source_must_be_hash_bound",
+        "exception_must_be_explicitly_approved_before_activation",
+        "exception_may_enable_reserved_editorial_fields_without_separate_contract",
+        "exception_may_change_global_field_semantics",
+        "unknown_or_unpinned_exception"
+      ],
+      "properties": {
+        "active_exception_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exception_must_declare": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 8,
+          "uniqueItems": true
+        },
+        "exception_source_must_be_hash_bound": {
+          "const": true
+        },
+        "exception_must_be_explicitly_approved_before_activation": {
+          "const": true
+        },
+        "exception_may_enable_reserved_editorial_fields_without_separate_contract": {
+          "const": false
+        },
+        "exception_may_change_global_field_semantics": {
+          "const": false
+        },
+        "unknown_or_unpinned_exception": {
+          "const": "REJECT"
+        }
+      }
+    },
+    "acceptance_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 10,
+      "uniqueItems": true
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audit_mode",
+        "report_persisted",
+        "source_files_modified",
+        "renderer_instance_created",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "shader_executed",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "renderer",
+        "d4_8",
+        "release_authority",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "audit_mode": {
+          "const": "STATIC_READ_ONLY_SOURCE_CONFORMANCE"
+        },
+        "report_persisted": {
+          "const": false
+        },
+        "source_files_modified": {
+          "const": false
+        },
+        "renderer_instance_created": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "shader_executed": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "audit",
+        "test",
+        "checkpoint"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string"
+        },
+        "audit": {
+          "type": "string"
+        },
+        "test": {
+          "type": "string"
+        },
+        "checkpoint": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
