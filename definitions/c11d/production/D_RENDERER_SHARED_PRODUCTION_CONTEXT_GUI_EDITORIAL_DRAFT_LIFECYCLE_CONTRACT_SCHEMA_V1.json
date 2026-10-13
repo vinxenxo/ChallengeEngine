@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-DRAFT-LIFECYCLE-CONTRACT-SCHEMA-V1",
+  "title": "Shared GUI editorial draft lifecycle contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "implementation_sha256",
+    "contract_schema_sha256",
+    "state_schema_sha256",
+    "source_lineage",
+    "draft_policy",
+    "execution_boundary",
+    "governance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-DRAFT-LIFECYCLE-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARE_ONLY_EDITORIAL_DRAFT_NO_GUI_WIDGET_MODIFICATION"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 20
+    },
+    "implementation_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "contract_schema_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "state_schema_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "draft_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shared_fields",
+        "challenge_only_fields",
+        "type_switch",
+        "empty_value",
+        "clear_override",
+        "family_switch",
+        "resolver"
+      ],
+      "properties": {
+        "shared_fields": {
+          "const": [
+            "title",
+            "subtitle",
+            "call_to_action",
+            "language"
+          ]
+        },
+        "challenge_only_fields": {
+          "const": [
+            "player_name",
+            "challenge_label"
+          ]
+        },
+        "type_switch": {
+          "const": "PRESERVE_SHARED_DRAFT_CLEAR_CHALLENGE_ONLY_OVERRIDES_WHEN_NOT_CHALLENGES"
+        },
+        "empty_value": {
+          "const": "PASS_TO_D9_8_NORMALIZATION; EMPTY_OVERRIDE_RESOLVES_TO_UNKNOWN"
+        },
+        "clear_override": {
+          "const": "REMOVE_KEY_TO_INHERIT_PROFILE"
+        },
+        "family_switch": {
+          "const": "PRESERVE_SHARED_AND_SAME_CONTENT_TYPE_DRAFT_OVERRIDES"
+        },
+        "resolver": {
+          "const": "DELEGATE_TO_D9_8_RESOLVE_EDITORIAL_VALUES"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gui_widgets_modified",
+        "production_request_created",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "persisted"
+      ],
+      "properties": {
+        "gui_widgets_modified": {
+          "const": false
+        },
+        "production_request_created": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "persisted": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "c11c_mutation",
+        "renderer_activation",
+        "D4.8",
+        "release_authority",
+        "D9.17",
+        "D10"
+      ],
+      "properties": {
+        "c11c_mutation": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED"
+        }
+      }
+    }
+  }
+}

@@ -24,3 +24,10 @@ The preparation test passes with `source_pins=9/9`, parent catalog `8/8`, parent
 ## Governance
 
 C11-C sources are not modified. `request_created=false`, `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, D9.17 remains `BLOCKED_NO_GO`, and D10 remains blocked.
+
+
+## Windows drift-test isolation fix (2026-10-13)
+
+The original source-drift negative used `shutil.copytree(ROOT, mirror)` and copied the entire repository, including deep production media paths under `artifacts/`. On Windows this may yield `WinError 3` for paths that cannot be recreated in the temporary tree, causing a test failure before the intended drift assertion. The test now stages only the reactive contract, its three schemas, the implementation, and the nine exact source-lineage files into an isolated temporary mirror. It appends a test-only comment to the pinned catalog source and requires the audit to fail specifically with `Pinned source drift`. It never copies, modifies, or removes the real artifacts tree.
+
+The focused Windows test must be rerun after applying `C11D_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_WINERROR3_FIX_V1.zip`. This fix changes only the test fixture strategy, not the reactive selection implementation or its contract.

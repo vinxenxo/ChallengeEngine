@@ -1,5 +1,5 @@
 from __future__ import annotations
-import copy, hashlib, json, subprocess, sys, tempfile, shutil
+import copy, hashlib, json, subprocess, sys, tempfile
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[2]
@@ -132,13 +132,30 @@ def run_checks():
  assert cli_init==again
  # No artifacts are persisted.
  assert not (ROOT/'shared_production_context_gui_reactive_selection_report.json').exists()
- # Source drift in an isolated full copy fails closed; no active source bytes touched.
+ # Source-drift negative uses an isolated minimal source mirror, never the multi-GB artifacts tree.
+ # Only the reactive contract's explicitly pinned files are copied; this also avoids MAX_PATH
+ # and partial-copy WinError 3 failures on Windows when production media folders are deep.
  with tempfile.TemporaryDirectory(prefix='c11d_reactive_gui_drift_') as name:
-  mirror=Path(name)/'repo'; shutil.copytree(ROOT,mirror,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+  mirror=Path(name)/'repo'; mirror.mkdir()
+  contract_rel='definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_CONTRACT_V1.json'
+  contract=json.loads((ROOT/contract_rel).read_text(encoding='utf-8'))
+  required={
+   contract_rel,
+   'definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_CONTRACT_SCHEMA_V1.json',
+   'definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_SCHEMA_V1.json',
+   'definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_SNAPSHOT_SCHEMA_V1.json',
+   'tools/c11d/d9/shared_production_context_gui_reactive_selection.py',
+  }
+  required.update(row['path'] for row in contract['source_lineage'])
+  for rel in sorted(required):
+   source=ROOT/rel; target=mirror/rel
+   assert source.is_file(), f'Missing source required for isolated drift test: {rel}'
+   target.parent.mkdir(parents=True,exist_ok=True)
+   target.write_bytes(source.read_bytes())
   drift=mirror/'tools/c11d/d9/shared_production_context_gui_catalog.py'
   drift.write_bytes(drift.read_bytes()+b'\n# test-only drift\n')
   try: audit_reactive_selection_contract(mirror)
-  except SharedProductionGUIReactiveSelectionError as exc: assert 'Pinned source drift' in str(exc) or 'Parent catalog/state contract failed' in str(exc)
+  except SharedProductionGUIReactiveSelectionError as exc: assert 'Pinned source drift' in str(exc), str(exc)
   else: raise AssertionError('Catalog source drift must fail closed')
  return {'source_pins':audit['source_pins'],'catalog_parent_pins':audit['parent_catalog_source_pins'],'state_parent_pins':audit['parent_state_source_pins'],'content_types':len(cat['content_types']),'api_cli_parity':parity,'negative':neg,'refresh':1,'source_drift':1}
 

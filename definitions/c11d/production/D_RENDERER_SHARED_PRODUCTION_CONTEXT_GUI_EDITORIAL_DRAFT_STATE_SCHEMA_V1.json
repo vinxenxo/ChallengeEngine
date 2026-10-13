@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-DRAFT-STATE-SCHEMA-V1",
+  "title": "Request-scoped editorial draft state for the future D9 GUI",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "selection_binding",
+    "profile",
+    "overrides",
+    "state_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-SHARED-PRODUCTION-GUI-EDITORIAL-DRAFT-STATE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "selection_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "catalog_sha256",
+        "selection_snapshot_sha256",
+        "content_type",
+        "family_id",
+        "selector_field",
+        "selector_id",
+        "selection_path_complete",
+        "canonical_selection_resolved",
+        "blockers"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "REVIEW",
+            "PRODUCTION"
+          ]
+        },
+        "catalog_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "selection_snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "content_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "challenges",
+            "visual_loops",
+            "visual_drills",
+            null
+          ]
+        },
+        "family_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "selector_field": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "subtype_id",
+            "variant_id",
+            null
+          ]
+        },
+        "selector_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "selection_path_complete": {
+          "type": "boolean"
+        },
+        "canonical_selection_resolved": {
+          "type": "boolean"
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "global": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "call_to_action": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          "additionalProperties": false
+        },
+        "content_type": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "call_to_action": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "language": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "player_name": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "challenge_label": {
+                "type": "string",
+                "maxLength": 160
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "family": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "call_to_action": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "language": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "player_name": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "challenge_label": {
+                "type": "string",
+                "maxLength": 160
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "subtype": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "call_to_action": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "language": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "player_name": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "challenge_label": {
+                "type": "string",
+                "maxLength": 160
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "variant": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "subtitle": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "call_to_action": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "language": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "player_name": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "challenge_label": {
+                "type": "string",
+                "maxLength": 160
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "overrides": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "subtitle": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "call_to_action": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "language": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "player_name": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "challenge_label": {
+          "type": "string",
+          "maxLength": 160
+        }
+      },
+      "additionalProperties": false
+    },
+    "state_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "selection_binding": {
+            "properties": {
+              "content_type": {
+                "const": "challenges"
+              }
+            },
+            "required": [
+              "content_type"
+            ]
+          }
+        },
+        "required": [
+          "selection_binding"
+        ]
+      },
+      "then": {},
+      "else": {
+        "properties": {
+          "overrides": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "player_name"
+                  ]
+                },
+                {
+                  "required": [
+                    "challenge_label"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

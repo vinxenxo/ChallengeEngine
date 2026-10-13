@@ -1,4 +1,13 @@
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
+<!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->
+## Current continuation - GUI editorial draft lifecycle (2026-10-13)
+
+- The previous lifecycle-overlay precondition check stopped before extraction because the packaged Master Handover hash was stale. The operator-reported current hash was 8af5aba79bd290f785695e9f62926c0e42163e14a2c6a308ad6bd25c68f1b128. No files from that failed application were installed.
+- Use the corrected safe-docs overlay C11D_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_OVERLAY_V1_SAFE_DOCS.zip, SHA-256 86e1fa29cbd6ac4ec45d0d09f00e7fe59445af8ae327933bdeeef7bcf4e280f4. It contains seven new artifacts and intentionally excludes full-file replacements of this Master Handover and the Start Prompt.
+- The D-owned editorial draft service is request-scoped and in-memory. Shared overrides title, subtitle, call_to_action, and language survive type/family/selector changes. Challenge-only player_name and challenge_label are deleted when leaving Challenges. Clearing an override returns resolution to the canonical D9.8 profile; an explicit empty string normalizes to UNKNOWN.
+- Windows acceptance for this candidate is pending until the operator runs the focused test, CLI audit, parent GUI/catalog/state/facade tests, D9.8-D9.10 regressions, and the baseline preflight.
+- Next: validate the lifecycle on Windows, then define the GUI-facing view model without changing current GUI widgets or duplicating D9.8/D9.9/D9.10 behavior.
+- Governance remains unchanged: C11-C immutable; renderer OFF; media_created=false; D4.8 BLOCKED; release_authority NONE; D9.17 NO-GO; D10 BLOCKED.
 
 The routing/visibility reconciliation matrix is now connected to the unified content review through a fail-closed cross-artifact check and a signed-in-review report receipt. The upstream input contract `D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json` is intentionally unchanged (SHA-256 `4dfdd8eb1e79282cd911f92fedde715d0b226281e25a4aa70ca235b95bdf994d`) because downstream payload binding pins it. The generated review report adds the matrix as a separate, hash-pinned lineage row: **23 output lineage entries**, while the existing input contract remains **22 source-lineage entries**. The review checks increase from 17 to 18; source-file pins for the input contract remain 22/22.
 

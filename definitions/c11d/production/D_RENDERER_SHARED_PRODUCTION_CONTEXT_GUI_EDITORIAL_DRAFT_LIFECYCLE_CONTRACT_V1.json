@@ -1,0 +1,94 @@
+{
+  "schema": "C11-D-D9-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-DRAFT-LIFECYCLE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARE_ONLY_EDITORIAL_DRAFT_NO_GUI_WIDGET_MODIFICATION",
+  "purpose": "Model the lifecycle of request-scoped editorial text drafts for the future GUI. Shared text overrides survive family and selector transitions. Challenge-only overrides are available only while Challenges is selected and are deleted when the active content type leaves Challenges. Effective values are resolved only through the canonical D9.8 editorial model.",
+  "implementation_sha256": "686be621854b448781f61d8d53229af4f10b59db72c6e6901a4f5d0e5ca6ff7e",
+  "contract_schema_sha256": "82841bffd9b1bdf935c905e6f0e04113b86acc37b4657fa0e80c1c6981c194e7",
+  "state_schema_sha256": "02ff6ecdb57159016e97e01c5c6364af4c49e0d016e1c0ac866f145e85121003",
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "FROZEN_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_reactive_selection.py",
+      "role": "PARENT_REACTIVE_GUI_SELECTION_STATE_MACHINE",
+      "sha256": "3ac0c36f4060bb0842de47687d6126d07a9dab670e2b86c72135797d877335d9"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_CONTRACT_V1.json",
+      "role": "PARENT_REACTIVE_SELECTION_CONTRACT",
+      "sha256": "1fc4b3add91355655f04f0fcd94be44e365d913d9a87fa123ff5388850116fb1"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_SNAPSHOT_SCHEMA_V1.json",
+      "role": "PARENT_REACTIVE_SELECTION_SNAPSHOT_SCHEMA",
+      "sha256": "6d80bc341f307ef63fc4b12dd8c79faa79815083a36fabc5959396b30f5c62db"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_catalog.py",
+      "role": "CANONICAL_DYNAMIC_GUI_CATALOG",
+      "sha256": "921ef12bd6425cb381505e32978593cc8dd82d2b1da2e2ac509fdb439c919fb6"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_V1.json",
+      "role": "CANONICAL_DYNAMIC_GUI_CATALOG_CONTRACT",
+      "sha256": "0e5371789e055f2fc5c557f683895fad9c1638ccdfb19086f36bfc5896a9e095"
+    },
+    {
+      "path": "tools/c11d/d9/shared_production_context_gui_state.py",
+      "role": "CANONICAL_GUI_STATE_MAPPER",
+      "sha256": "fd78d20bc194c656d36e573f19c0a181aa6128693e664004f2d8ef139b6e6838"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_SCHEMA_V1.json",
+      "role": "CANONICAL_GUI_STATE_SCHEMA",
+      "sha256": "f26ecea345859af9734d0374260299f2681b836535b565e8c2cb6354d4f2097f"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CANONICAL_D98_EDITORIAL_RESOLVER",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "CANONICAL_EDITORIAL_MODEL_DEFINITION",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    }
+  ],
+  "draft_policy": {
+    "shared_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "challenge_only_fields": [
+      "player_name",
+      "challenge_label"
+    ],
+    "type_switch": "PRESERVE_SHARED_DRAFT_CLEAR_CHALLENGE_ONLY_OVERRIDES_WHEN_NOT_CHALLENGES",
+    "empty_value": "PASS_TO_D9_8_NORMALIZATION; EMPTY_OVERRIDE_RESOLVES_TO_UNKNOWN",
+    "clear_override": "REMOVE_KEY_TO_INHERIT_PROFILE",
+    "family_switch": "PRESERVE_SHARED_AND_SAME_CONTENT_TYPE_DRAFT_OVERRIDES",
+    "resolver": "DELEGATE_TO_D9_8_RESOLVE_EDITORIAL_VALUES"
+  },
+  "execution_boundary": {
+    "gui_widgets_modified": false,
+    "production_request_created": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "persisted": false
+  },
+  "governance": {
+    "c11c_mutation": false,
+    "renderer_activation": false,
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED"
+  }
+}
