@@ -42,3 +42,11 @@ Do not add text to simulation truth, C11-C payload internals, or renderer output
 ## Follow-up — routing/visibility reconciliation (2026-10-11)
 
 `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now joins the existing region and field-window declarations into a 14-instance matrix. It preserves the original audit result: review-chain parity 14/14, visual payload consumption 0/14. Six Loop/Drill field-window rules exist as proposals but are not evaluated; all five visual D9.9 Challenge fields remain without a matching window policy. Challenge phase fields `hook/reveal/cta` are not aliases for D9.9 `title/subtitle/call_to_action`. No field consumer, geometry or timing policy is approved by the reconciliation.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CONSUMPTION_AUDIT -->
+
+
+## Operator-confirmed update — 2026-10-13
+
+The operator reports that the real Windows validation block containing this component and its parent gates completed PASS, and the frozen C11-C manifest hash remained unchanged. The shared GUI Editorial View Model is also now Windows-accepted (8/8, 45 source pins) and the broad parent regression is PASS. This does not change the scope or authority declared by this checkpoint.
+
+The operator's latest audit/validation block passed, including the actual bounded Godot harness chain. No new evidence supplied in that summary changes the audit's exact semantic distinction: review-chain parity 14/14 is not visual consumption. Retain the current 0/14 payload consumption finding until an implementation adds the approved fields as actual payload members and a subsequent audit observes the change. Do not infer visible rendering from payload-member injection alone.

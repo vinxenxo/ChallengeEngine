@@ -85,3 +85,11 @@ The canonical D9.9 resolver normalizes these values (for example, `language` to 
 ## Next engineering gate
 
 After Windows validation, the next safe increment is to design a **separate D-owned visual consumer** only after the relevant presentation-region and per-field visibility-window policies are formally approved. It must consume the sidecar without changing simulation truth or confusing sidecar presence with rendered consumption. Arbitrary selector/seed/profile transport remains a separate future contract; this V1 intentionally supports only the fixed review identities.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_VALUE_CARRIER -->
+
+
+## Operator-confirmed update — 2026-10-13
+
+The operator reports that the real Windows validation block containing this component and its parent gates completed PASS, and the frozen C11-C manifest hash remained unchanged. The shared GUI Editorial View Model is also now Windows-accepted (8/8, 45 source pins) and the broad parent regression is PASS. This does not change the scope or authority declared by this checkpoint.
+
+The operator also confirmed the focused value-carrier test and the Godot runner PASS. The meaningful limitation remains unchanged: a hash-bound sidecar is present, but it is not injected into the materialized visual payload. Preserve `sidecar_fields=14/14` separately from `payload_member_injection=false` and `visual_payload_consumed=0/14`. The next step is to contract any missing dynamic request/payload identity path and receive explicit presentation/window policy approval before visual consumption is implemented.

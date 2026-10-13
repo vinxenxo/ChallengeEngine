@@ -38,3 +38,9 @@ The validator checks the pinned C11-C manifest, payload/temporal/editorial contr
 The proposal is now linked into the unified content-review contract by `D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md`. The corresponding gates remain unresolved under the clearer statuses `VISUAL_LOOP_EDITORIAL_FIELD_MAPPING_NOT_APPROVED` and `VISUAL_DRILL_EDITORIAL_FIELD_MAPPING_NOT_APPROVED`: integration proves contract/payload parity, but it does not approve editorial policy. The unified report leaves `visibility_windows=null` because the current Godot payload summary does not expose raw editorial strings; it records the policy rules without fabricating per-field evaluated windows.
 
 C11-C remains immutable; renderer OFF; renderer-native input false; dispatch false; production false; payload files not written; media not created; D4.8 blocked; release authority none; D9.14/D9.16 full acceptance blocked as required; D9.17 no-go; D10 blocked.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_LOOP_DRILL_FIELD_WINDOW -->
+
+
+## Current continuation note — 2026-10-13
+
+The operator confirmed the value-carrier and bounded materialization runs PASS. They do not promote the Loop/Drill full-span field-window proposal. Keep `evaluated_window` unresolved unless the actual request-specific source text/frame-count inputs are consumed and the relevant visibility policy is explicitly accepted.

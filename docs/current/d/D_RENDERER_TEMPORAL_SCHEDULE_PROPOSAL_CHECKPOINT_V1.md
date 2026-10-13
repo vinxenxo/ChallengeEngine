@@ -80,3 +80,9 @@ The new focused test remains separate from the 22-step aggregate. If `jsonschema
 ## Next design increment
 
 After Windows acceptance, create a separate *request-bound timeline instance* design that consumes upstream canonical durations, FPS and frame counts, verifies source lineage and does not mutate C11-C. It remains in-memory and non-dispatchable until independent renderer-baseline approval and explicit D4.8 authorization.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_TEMPORAL_SCHEDULE -->
+
+
+## Current continuation note — 2026-10-13
+
+The editorial value carrier and bounded materialization runners passed their Windows checks but define no approved text display windows. Keep the Challenge `HOOK → GAME → REVEAL → CTA` phase model separate from the D9.9 universal editorial fields. Loop/Drill remain continuous spans only where their source duration is known; no invented subphases, durations or field-to-phase aliases are permitted. Any payload consumer must wait for approved timing/visibility policy.

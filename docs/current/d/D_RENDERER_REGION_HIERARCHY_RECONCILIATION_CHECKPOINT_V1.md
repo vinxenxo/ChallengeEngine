@@ -50,3 +50,9 @@ Prepare the temporal schedule as a separate proposal only after confirming that 
 ## Temporal-topology follow-up (2026-10-10)
 
 The next isolated increment is documented in `D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md`. It derives topology strictly from the existing C11-C timing sources: Challenge phase order is `HOOK → GAME → REVEAL → CTA`; Visual Loops and Visual Drills remain continuous spans without invented subphases. No concrete durations or frame coordinates/ranges are emitted. The earlier normalized-permille proposal remains noncanonical and is not a temporal source.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_REGION_HIERARCHY -->
+
+
+## Current continuation note — 2026-10-13
+
+The View Model and editorial carrier have passed their current Windows checks, but they create no approval for spatial geometry. Continue to use the D1.5/shared-frame/profile/family hierarchy as the source order. The old normalized-permille exploratory boxes remain noncanonical. Before a text consumer uses a semantic region, obtain explicit technical approval for the chosen region mapping and preserve all unresolved geometry as unresolved.

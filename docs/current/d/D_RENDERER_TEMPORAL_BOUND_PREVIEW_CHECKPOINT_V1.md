@@ -58,3 +58,9 @@ Then rerun the temporal-topology, spatial-hierarchy, region, frame-program, logi
 ## Next step
 
 Bind the preview to a canonical D9.9/D9.10 request result and its real payload rather than just the representative source fixtures. Then build a renderer-neutral editorial review manifest that aligns exact editorial strings with timing/semantic-region metadata. Only after the isolated D renderer and its full regressions are approved may governance authorize a first real-media test.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_TEMPORAL_BOUND -->
+
+
+## Current continuation note — 2026-10-13
+
+The fixed-fixture materialization/binding and unified review runners have operator-confirmed PASS results. These do not approve delivery-frame projection, sample selection/interpolation or editorial visibility windows. This preview remains an in-memory evidence join, not a renderer schedule or dispatchable input.

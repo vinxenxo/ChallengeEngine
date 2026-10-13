@@ -44,3 +44,11 @@ Run the focused test on the operator's Windows checkout, then run the unified re
 ## Governance locks
 
 C11-C manifest remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; renderer OFF; media false; D4.8 BLOCKED; release authority NONE; D9.14/D9.16 blocked; D9.17 NO-GO; D10 BLOCKED; renderer and D baseline approvals remain absent.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_ROUTING_POLICY -->
+
+
+## Operator-confirmed update — 2026-10-13
+
+The operator reports that the real Windows validation block containing this component and its parent gates completed PASS, and the frozen C11-C manifest hash remained unchanged. The shared GUI Editorial View Model is also now Windows-accepted (8/8, 45 source pins) and the broad parent regression is PASS. This does not change the scope or authority declared by this checkpoint.
+
+The operator now reports this routing/review regression block PASS in the active Windows checkout. This is acceptance of the reconciler, not approval of the mapping matrix. Keep Challenge universal fields separate from phase names; Loop/Drill full-span rules unevaluated unless actual source text/frame-count inputs are exposed; preserve `PROPOSED_NOT_APPROVED` and unresolved geometry/window states.

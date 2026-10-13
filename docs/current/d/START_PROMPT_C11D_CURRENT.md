@@ -1,3 +1,31 @@
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
+# Current authoritative C11-D state — 2026-10-13
+
+**Source context:** `ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip`  
+**Source ZIP SHA-256:** `52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d`  
+**Next checkpoint:** `docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md`
+
+The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 tests, 45 source pins, CLI/GUI shared-facade parity), the editorial draft lifecycle (16/16), the parent integration regression, the editorial routing/consumption and unified-review validation block including real Godot harnesses, and the request-scoped editorial value carrier test/runner. C11-C's frozen manifest remains ` e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953 ` (without spaces). Renderer is not enabled.
+
+**Critical distinction:** carrier PASS does not mean visual payload consumption. Current pinned audit/sidecar contracts still record review-chain parity 14/14 but payload-side editorial consumption 0/14; a visual consumer and actual renderer-visible output remain future work. The next phase first revalidates the existing D I/O gap and identity audits, then contracts dynamic request-to-payload identity if the gap persists, then requests explicit approval for field-to-region/visibility policies before implementing a separate payload-side consumer.
+
+**Immutable/gated:** C11-C 2.19.12 unchanged; D9.10 `PREPARE_ONLY`; `D4.8=BLOCKED`; `renderer=OFF`; `media_created=false`; `release_authority=NONE`; D9.15 operator evidence `PASS_CLOSED`; D9.14/D9.16 blocked as required; D9.17 `BLOCKED_NO_GO`; D10 blocked; baseline freeze ineligible; Longform out of scope.
+
+**Source-package warning:** this ZIP has a duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entry. Its first member matches the canonical manifest hash; the second member hash is `5ce72af208aaef73afb1bac530450a903bfc6581d030c118492c5b8162ed8557` and is not canonical. CRC check alone does not repair duplicate-name ambiguity. Do not extract the full archive over the active checkout.
+
+---
+
+## Start here — next engineering phase
+
+1. Treat the specified ZIP as a selective context source only. It has duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entries; never extract it wholesale over the working tree. The first manifest member matches the canonical hash; the second does not.
+2. Read `D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md` and the current D renderer baseline plan.
+3. Re-run the read-only candidate I/O gap and candidate identity audits plus the existing editorial-carrier/materialization tests listed in the checkpoint, capturing full output from the active Windows checkout.
+4. Run `test_d_renderer_dynamic_request_payload_binding.py`, then the ten-case `d_renderer_dynamic_request_payload_binding.py` runner against actual Windows Godot 4.7.1 using the dynamic-binding checkpoint. The Python test is mocked and does not prove runtime acceptance.
+5. Reconcile the real dynamic-binding receipts against the refreshed I/O gap matrix. Do not create a parallel contract; extend the existing contract only if a concrete residual request-to-payload requirement is proven uncovered. The selected Visual Loop grammar remains unresolved unless actual runtime evidence closes it.
+6. Prepare field-to-region and visibility-window policies for explicit review/approval. Do not treat proposals or PASS markers as approval. Only after separate policy approval may a payload-side visual consumer be implemented/tested. Keep payload inclusion, renderer-visible drawing, and actual generated-video acceptance as separate claims.
+
+No rendering, dispatch, media generation, freeze, D4.8 change or release is authorized in this phase.
+
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->
 ## Current operator instruction - GUI editorial draft lifecycle (2026-10-13)

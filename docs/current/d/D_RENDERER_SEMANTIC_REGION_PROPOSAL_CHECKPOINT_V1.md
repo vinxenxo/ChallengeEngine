@@ -47,3 +47,9 @@ The proposal's normalized rectangles are not a required layout approval checkpoi
 ## Invariants
 
 C11-C 2.19.12/manifest immutable; D9.10 adapter `PREPARE_ONLY`; renderer OFF; no media created; D4.8 BLOCKED; `release_authority=NONE`; D9 OPEN; D10 BLOCKED. The five candidate blockers remain. This checkpoint does not approve/freeze the renderer baseline or C11-D baseline.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_SEMANTIC_REGION -->
+
+
+## Current continuation note — 2026-10-13
+
+Current GUI/editorial and sidecar PASS results do not approve the semantic-region proposal. The consumer design must reference the existing D1.5/profile/family source hierarchy, not promote exploratory rectangles by implication. Record a separate explicit approval before any payload-side visual consumer uses a proposed region as policy.

@@ -40,3 +40,9 @@ A Python contract PASS is not the same as the Godot runtime PASS. Neither result
 ## Namespace reconciliation — 2026-10-11
 
 The current joined field routing/visibility matrix is `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md`. The Challenge-only phase mapping (`hook`, `reveal`, `cta`) is distinct from D9.9 universal producer fields; no implicit aliases are allowed. Thus this phase proposal does not supply visibility windows for D9.9 `title`, `subtitle`, `call_to_action`, `player_name`, or `challenge_label`. The proposal remains unapproved and geometry remains out of scope.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_FIELD_WINDOW -->
+
+
+## Current continuation note — 2026-10-13
+
+The editorial carrier supplies hash-bound effective text but does not evaluate or approve display windows. Challenge D9.9 universal-field windows remain undeclared; the phase fields `hook/reveal/cta` are not aliases for `title/subtitle/call_to_action`. For Loop/Drill, proposed full-span windows must remain unevaluated until the raw text and actual bounded frame count are available and the policy is explicitly approved.

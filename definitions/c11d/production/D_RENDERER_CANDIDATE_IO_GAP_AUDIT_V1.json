@@ -262,7 +262,7 @@
       "complete_for_input_emission": false
     }
   ],
-  "next_safe_increment": "DESIGN_DYNAMIC_REQUEST_TO_REQUEST_SPECIFIC_PAYLOAD_INSTANCE_CONTRACT_ONLY_AFTER_THIS_GAP_MATRIX_IS_REVIEWED; KEEP_IN_MEMORY_AND_NON_DISPATCHING",
+  "next_safe_increment": "RUN_EXISTING_D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_WITH_REAL_GODOT_4_7_1_BEFORE_ANY_NEW_CONTRACT;_RECONCILE_RESIDUAL_GAP;_KEEP_PREPARE_ONLY_AND_NON_DISPATCHING",
   "governance": {
     "candidate_input_admissible": false,
     "renderer_input_instance_emitted": false,
@@ -424,22 +424,22 @@
     {
       "path": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
       "role": "BASELINE_PREPARATION_PLAN",
-      "sha256": "e1ada549f737ec0f5028279ed39f13af0e3b42705245111e9dc1f9b27ef2609a"
+      "sha256": "a85b89794e4b93c5e0b25e0037085d53654c48b307eb93f14a8ba06b01e943f3"
     },
     {
       "path": "docs/current/d/D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md",
       "role": "IO_CONTRACT_CHECKPOINT",
-      "sha256": "e86f33c305fa6bb9c5ceaef7aa57947b0f2e3f60087a6e28ffb957b742a5c18b"
+      "sha256": "7def37e37d207d778a7bd3d59917b0969793f55684e67cc52b243c83ac174a90"
     },
     {
       "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md",
       "role": "FIXED_MATERIALIZATION_CHECKPOINT",
-      "sha256": "cba2e912173eb484154b3a6e7f1a8b167272089abab7748063b806c5b3dba611"
+      "sha256": "42a1120f618478a44d9984cc1d10c2b8d907319b45a34c4b0f02a631b22a0c8a"
     },
     {
       "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
       "role": "EDITORIAL_SIDECAR_CHECKPOINT",
-      "sha256": "24eba68894794b4439c5e7d53c9ae75508f7e386da55953b016e6076b9cc7e38"
+      "sha256": "143e956af6585120b42beee8b19d9cef45583ecec49fcb016acd6851e7bc46c6"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",

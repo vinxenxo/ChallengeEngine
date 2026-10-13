@@ -61,3 +61,11 @@ Before any real media/E2E path, a D renderer implementation/baseline must be ind
 - Frozen C11-C 2.19.12 manifest SHA-256: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 - `D9.10=PREPARE_ONLY`; `D4.8=BLOCKED`; `renderer=OFF`; `media_created=false`; `release_authority=NONE`.
 - D renderer baseline approval remains absent; `freeze_eligible=false`; D9.17 remains NO-GO; D10 remains blocked.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_VIEW_MODEL -->
+
+
+## Operator-confirmed update — 2026-10-13
+
+The operator reports that the real Windows validation block containing this component and its parent gates completed PASS, and the frozen C11-C manifest hash remained unchanged. The shared GUI Editorial View Model is also now Windows-accepted (8/8, 45 source pins) and the broad parent regression is PASS. This does not change the scope or authority declared by this checkpoint.
+
+The view model remains context preparation, not renderer input. It resolves the same canonical context through the GUI adapter and direct shared facade. Loop/Drill production modes remain rejected by the catalog; Longform remains unsupported. Continue to the phase checkpoint for the payload-consumption gap and next work order.

@@ -70,3 +70,9 @@ The new focused test is not registered in the 22-step aggregate Suite. Keep it s
 ## Next design review
 
 After Windows acceptance, the next increment is the D-owned semantic region proposal in `D_RENDERER_SEMANTIC_REGION_PROPOSAL_CHECKPOINT_V1.md`. Its geometry is normalized and remains PROPOSED_NOT_APPROVED. Only after independent review/approval may a subsequent increment propose temporal scheduling. A real-video run remains gated on separate renderer-baseline approval/freeze and explicit D4.8 authorization.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_FRAME_PROGRAM -->
+
+
+## Current continuation note — 2026-10-13
+
+The latest Windows PASS evidence concerns GUI/editorial composition and fixed-fixture carrier/binding only. The neutral frame program remains declarative; no schedule, frame range, pixels or executable renderer operation is approved by those results. A payload-side visual consumer must wait for explicit region/window policy approval and must keep semantic declarations separate from renderer-native input.

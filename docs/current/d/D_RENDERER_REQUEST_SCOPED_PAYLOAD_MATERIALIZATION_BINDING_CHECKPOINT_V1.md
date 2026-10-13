@@ -69,3 +69,11 @@ Replace the Godot executable path with the installed 4.7.1 console binary. If Go
 ## Next step
 
 First obtain the real Windows/Godot execution evidence for this fixed-fixture join. Then compare each receipt field with the remaining canonical editorial request semantics and decide whether dynamic request transport can be contracted without choosing unresolved policy. Do not add a dispatcher, emit candidate renderer input, register this test in the aggregate Suite, approve policies, create a renderer baseline, or close D9/D10 based on this step alone.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_MATERIALIZATION_BINDING -->
+
+
+## Operator-confirmed update — 2026-10-13
+
+The operator reports that the real Windows validation block containing this component and its parent gates completed PASS, and the frozen C11-C manifest hash remained unchanged. The shared GUI Editorial View Model is also now Windows-accepted (8/8, 45 source pins) and the broad parent regression is PASS. This does not change the scope or authority declared by this checkpoint.
+
+The operator's latest Windows block passed both the focused contract checks and the runner invoked with actual Godot 4.7.1 via `--godot godot`. This is a real bounded harness execution for the three fixed fixtures only. It does not cover arbitrary request/selector/variant/profile transport, does not establish Challenge native payload identity if the receipt aliases it, and does not show that all 14 editorial fields are consumed visually. Maintain the fixed-fixture scope and the non-renderer-input boundary.

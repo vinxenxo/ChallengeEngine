@@ -55,3 +55,9 @@ Apply `C11D_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_OVERLAY
 ## Joined field-routing/visibility matrix — 2026-10-11
 
 `D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now cross-checks the Loop/Drill mapping alongside semantic region routing for all three content types. The six full-span Loop/Drill rules remain proposed, are not evaluated to concrete per-field windows, and are not approved. Current runtime summary does not expose the raw editorial values, so `visibility_windows` continues to be `null`. This matrix does not modify this integration's contracts or add a harness.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_LOOP_DRILL_REVIEW -->
+
+
+## Current continuation note — 2026-10-13
+
+The review integration and bounded Godot chain are operator-confirmed PASS, but this is review consistency, not visibility-window approval. Keep window evaluation and actual text drawing distinct. Do not use review-report parity as proof that the text was injected into or rendered by the payload.

@@ -1,3 +1,30 @@
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
+# Current authoritative C11-D state — 2026-10-13
+
+**Source context:** `ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip`  
+**Source ZIP SHA-256:** `52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d`  
+**Next checkpoint:** `docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md`
+
+The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 tests, 45 source pins, CLI/GUI shared-facade parity), the editorial draft lifecycle (16/16), the parent integration regression, the editorial routing/consumption and unified-review validation block including real Godot harnesses, and the request-scoped editorial value carrier test/runner. C11-C's frozen manifest remains ` e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953 ` (without spaces). Renderer is not enabled.
+
+**Critical distinction:** carrier PASS does not mean visual payload consumption. Current pinned audit/sidecar contracts still record review-chain parity 14/14 but payload-side editorial consumption 0/14; a visual consumer and actual renderer-visible output remain future work. The next phase first revalidates the existing D I/O gap and identity audits, then contracts dynamic request-to-payload identity if the gap persists, then requests explicit approval for field-to-region/visibility policies before implementing a separate payload-side consumer.
+
+**Immutable/gated:** C11-C 2.19.12 unchanged; D9.10 `PREPARE_ONLY`; `D4.8=BLOCKED`; `renderer=OFF`; `media_created=false`; `release_authority=NONE`; D9.15 operator evidence `PASS_CLOSED`; D9.14/D9.16 blocked as required; D9.17 `BLOCKED_NO_GO`; D10 blocked; baseline freeze ineligible; Longform out of scope.
+
+**Source-package warning:** this ZIP has a duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entry. Its first member matches the canonical manifest hash; the second member hash is `5ce72af208aaef73afb1bac530450a903bfc6581d030c118492c5b8162ed8557` and is not canonical. CRC check alone does not repair duplicate-name ambiguity. Do not extract the full archive over the active checkout.
+
+---
+
+## Operator-confirmed latest Windows results
+
+- Editorial draft lifecycle: 16/16 PASS and audit PASS.
+- Shared GUI Editorial View Model V1: 8/8 PASS; audit PASS, 45 source pins, three content types, `GUI_ADAPTER_EQUALS_DIRECT_SHARED_FACADE`.
+- Parent integration regression and C11-C Suite: PASS.
+- Editorial routing, field-consumption audit, request-scoped materialization/binding, renderer candidate I/O, unified review and actual bounded Godot harness block: operator reported PASS.
+- Request-scoped editorial value carrier: focused contract and Godot runner PASS. Its defined result remains metadata/sidecar-only; no payload text injection or visual consumption is claimed.
+
+Current next work: rerun the read-only I/O gap and identity audits, then execute the existing dynamic request→payload binding matrix with real Windows Godot 4.7.1. The Python contract test is mocked and is not runtime acceptance. Do not add a parallel dynamic contract unless the real receipts expose a concrete uncovered requirement. Prepare explicit field-to-region/visibility policies for review; do not implement the visual payload consumer until those policies receive separate explicit approval. See the phase checkpoint for exact commands and gates.
+
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->
 ## Current continuation - GUI editorial draft lifecycle (2026-10-13)

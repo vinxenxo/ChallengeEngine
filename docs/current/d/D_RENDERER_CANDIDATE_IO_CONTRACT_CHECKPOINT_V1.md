@@ -74,3 +74,11 @@ Verified in this preparation copy after that repair:
 - Existing binding preview, logical composition, neutral frame program, request-scoped payload binding, Loop/Drill payload preview and Challenge payload preview focused tests pass (reported counts are in the current D handover).
 
 These results are from the isolated preparation copy, not from the user's live Windows checkout. No Godot test, Windows GUI/runtime acceptance, renderer dispatch, media creation, aggregate Suite acceptance, or release was performed. The timebase and audio/presentation policies remain proposals; this repair aligns byte-level references and does not approve them.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CANDIDATE_IO_CONTRACT -->
+
+
+## Operator-confirmed update — 2026-10-13
+
+The operator reports that the real Windows validation block containing this component and its parent gates completed PASS, and the frozen C11-C manifest hash remained unchanged. The shared GUI Editorial View Model is also now Windows-accepted (8/8, 45 source pins) and the broad parent regression is PASS. This does not change the scope or authority declared by this checkpoint.
+
+The operator reports the candidate I/O contract test PASS during the latest validation block. This contract remains a prospective interface and the candidate input is not admissible. The next I/O audit must distinguish fixed-fixture carrier/binding evidence from a dynamic request-specific payload instance; no prospective input object may be emitted until the full group set and the independent policy/authorization gates are satisfied.

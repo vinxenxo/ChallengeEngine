@@ -32,3 +32,9 @@ The test verifies stable fingerprints, exact manifest linkage, governance locks,
 ## Next gate
 
 Review this identity packet and the five blockers. This increment does **not** generate `D_RENDERER_BASELINE_APPROVAL_CHECKPOINT.md` as approved or `D_BASELINE_APPROVAL_CHECKPOINT.json` as approval. Do not dispatch/render until the independent renderer baseline approval/freeze and explicit D4.8 authorization exist and the remaining D9 gates are closed.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_IDENTITY_INVENTORY -->
+
+
+## Current continuation note — 2026-10-13
+
+The latest operator regression and fixed-fixture materialization/carrier runs passed, but the current block did not freshly run this identity inventory. Re-run it on the active checkout before the next request-specific payload-instance contract; do not infer identity inventory freshness from a separate gate PASS. Preserve the source-pinned 140-artifact scope and do not treat an identity PASS as renderer-baseline approval.

@@ -28,3 +28,9 @@ The contract is in-memory and source-pinned. It emits no renderer-native input, 
 ## Validation
 
 Run `python -m py_compile .\tools\c11d\d9\d_renderer_delivery_timebase_projection.py .\tools\c11d\d9\test_d_renderer_delivery_timebase_projection.py` and then `python .\tools\c11d\d9\test_d_renderer_delivery_timebase_projection.py`. The test expects 3/3 content types, deterministic outputs, pinned source lineage, 42 negative cases, and Draft 2020-12 validation if `jsonschema` is installed.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_TIMEBASE -->
+
+
+## Current continuation note — 2026-10-13
+
+Current editorial-context/sidecar PASS results do not approve delivery projection or Challenge sample mapping. Keep every timebase/sample/interpolation rule in its existing `PROPOSED_NOT_APPROVED` state unless a separate formal approval artifact exists. Do not map `winning_frame` using `close_calls` or any unstated offset.

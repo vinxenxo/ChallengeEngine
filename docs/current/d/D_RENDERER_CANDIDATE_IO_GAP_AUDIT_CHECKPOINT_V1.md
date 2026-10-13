@@ -29,9 +29,11 @@ The existing modules are not interchangeable: binding preview is inspection meta
 
 The CLI prints a summary by default and `--full-report` prints JSON to stdout; it writes no report, payload, manifest, media or receipt to disk. It does not run Godot and makes no claim about renderer runtime.
 
-## Next engineering increment
+## Next engineering increment — runtime-gate the existing dynamic binding
 
-The next safe work item is a D-only **dynamic request → request-specific payload-instance contract** for Challenges, Visual Loops and Visual Drills, still fixed to current supported content types and strictly prepare-only. It must define selector/variant/scope validation, seed-domain identity, profile identity, per-request payload provenance and deterministic hash relationships. It must not emit the prospective renderer input, choose unresolved visual/timing/audio policies, dispatch, create media, or extend to Longform. A future visual-field consumer remains gated on explicit approval of semantic regions and per-field visibility windows.
+A D-only dynamic request → payload-binding contract already exists at `definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json`, with its schemas, Python test, runner and checkpoint. **Do not create a parallel contract yet.** First run `test_d_renderer_dynamic_request_payload_binding.py` and the ten-case runner against real Windows Godot 4.7.1 using the commands in `D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_CHECKPOINT_V1.md`. The Python test uses mocked subprocesses and cannot close this gate.
+
+If the real matrix fails, diagnose the exact runtime failure before further design. If it passes, compare its actual receipts and bounded selector coverage with the freshly rerun I/O gap audit. Only propose an additive/versioned contract extension when a concrete residual requirement is not covered by the existing contract. The Loop `harmonic_membrane` selected grammar remains explicitly unresolved unless runtime evidence proves otherwise. Keep the path in-memory/receipt-only and prepare-only; emit no renderer input, dispatch, media or release. A future visual-field consumer remains gated on explicit approval of semantic regions and per-field visibility windows.
 
 ## Gates unchanged
 
@@ -47,3 +49,13 @@ python -B .\tools\c11d\d9\test_d_renderer_request_scoped_payload_materialization
 python -B .\tools\c11d\d9\test_d_renderer_request_scoped_editorial_value_carrier.py
 python -B .\tools\c11d\d9\test_d_renderer_candidate_identity_inventory.py
 ```
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CANDIDATE_IO_GAP_AUDIT -->
+
+
+## Current continuation note — after GUI View Model and editorial carrier acceptance (2026-10-13)
+
+The GUI View Model, editorial value carrier, fixed-fixture materialization binding and unified review have passed their focused Windows checks in their declared scopes. The latest operator block did **not** include a fresh invocation of this gap-audit runner or the candidate identity inventory; do not mark their older findings freshly revalidated on that basis.
+
+First run this checkpoint's own read-only gap audit and the identity inventory on the active checkout. Then run the existing dynamic-request binding test and ten-case runner against real Godot 4.7.1; that runtime gate is still outstanding. Do not create a second dynamic contract unless the actual receipts plus the refreshed gap matrix identify a concrete uncovered requirement. The existing contract covers three bounded selector representatives only; its Visual Loop selected-grammar instance remains unresolved. Do not emit candidate renderer input or choose unresolved editorial, presentation, timing or audio policy.
+
+Only after that bounded contract is confirmed should the team bring a separate semantic-region/visibility-window policy to explicit review. Payload-side editorial consumption is gated on that policy; actual visible rendering is a separate later acceptance.

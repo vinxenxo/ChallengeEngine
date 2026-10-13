@@ -66,3 +66,9 @@ Expected new focused result: content types 3/3; determinism 3/3; editorial flow 
 - This checkpoint does not approve/freeze the D renderer baseline and does not unblock D9.14/D9.16/D9.17. Definitive GUI work remains deferred.
 
 Windows acceptance is recorded for logical composition. The next separate increment proposes `D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1`; it carries ordered semantic binding declarations only, with no timing schedule, pixel coordinates or executable commands. Semantic roles/regions remain unapproved until independent technical review. Do not implement a backend, emit native renderer input, create media, or alter gate policies in that increment.
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_LOGICAL_COMPOSITION -->
+
+
+## Current continuation note — 2026-10-13
+
+The GUI View Model and editorial carrier now have operator-confirmed Windows PASS results; this does not make the proposed logical field-to-target map approved. Keep `PROPOSED_NOT_APPROVED` for every mapping/region/window that lacks a separate approval artifact. The future visual consumer must use the canonical exact string and source-field hash without turning this logical composition into renderer-native input or changing C11-C truth. Before visual injection, close the dynamic request-to-payload identity gap and obtain explicit field-to-region/visibility policy review.
