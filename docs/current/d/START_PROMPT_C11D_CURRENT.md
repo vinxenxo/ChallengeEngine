@@ -423,3 +423,19 @@ Use `docs/current/d/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_CHECKPOINT_V1.md` as
 
 Run the inventory test, inventory CLI and `test_d_baseline_candidate.py`. Keep `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, `baseline_approval=MISSING`, `freeze_eligible=false` and the five existing blockers. Do not create an approved renderer-baseline checkpoint or D-baseline approval JSON.
 
+
+
+<!-- C11D_GUI_EDITORIAL_VIEW_MODEL_V1_START_PROMPT -->
+## Resume directive — GUI editorial view model V1 (2026-10-13)
+
+Read MASTER_HANDOVER_C11D_CURRENT.md and D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_VIEW_MODEL_CHECKPOINT_V1.md first. The active Windows checkout is authoritative; do not apply full context ZIPs over the repository and do not replace mutable continuity documents from packaged copies.
+
+Apply this overlay only if the seven new targets are absent and all ZIP/source pins pass. Run:
+python -B .\tools\c11d\d9\test_shared_production_context_gui_editorial_view_model.py
+python -B .\tools\c11d\d9\shared_production_context_gui_editorial_view_model.py --audit-only
+
+After both focused checks pass, run the parent GUI/catalog/state/facade/adapter/draft/binding tests, cross-suite lifecycle test, baseline-candidate preflight, tests\run_all.py, and the frozen C11-C Suite. Record real Windows outputs.
+
+The view model only composes existing canonical services. Challenges, Visual Loops and Visual Drills are covered, but the existing catalog's Loop/Drill PRODUCTION restrictions stay in force. Longform remains rejected. No GUI widgets, renderer input, dispatch, media, approval or release authority is added here.
+
+After Windows acceptance, resume the read-only D renderer I/O contract gap audit in D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md. Keep C11-C immutable, D9.10 PREPARE_ONLY, D4.8 BLOCKED, renderer OFF, media_created=false, release_authority NONE, D9.17 NO-GO and D10 blocked.

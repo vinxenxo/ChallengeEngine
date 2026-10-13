@@ -433,3 +433,15 @@ python -B .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
 
 The report pins the declared renderer preparation surface and records toolchain detection; it is not a built renderer or full-tree baseline. Expected governance remains `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, `baseline_approval=MISSING`, `freeze_eligible=false`, with five candidate blockers. Do not turn identity PASS into renderer/D baseline approval; explicit independent approval and D4.8 authorization remain external gates.
 
+
+
+<!-- C11D_GUI_EDITORIAL_VIEW_MODEL_V1_HANDOVER -->
+## Current continuation — GUI editorial view model V1 (2026-10-13)
+
+The GUI editorial draft lifecycle V1 passed its focused Windows tests and the preceding integration regression was operator-confirmed PASS. This new view-model composition increment is prepared and source-pinned; its operator Windows acceptance remains pending.
+
+The view model joins existing reactive selection/catalog, editorial draft, GUI state mapping, GUI adapter, and shared D9.9/D9.10 facade. Its canonical preparation requires the GUI adapter record to equal the direct shared facade result and the D9.8 draft preview to equal the effective editorial values in the shared-context binding. It does not modify widgets, persist data, emit renderer-native input, dispatch, or create media.
+
+After Windows focused acceptance, run parent regressions and the baseline-candidate preflight. Then return to D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md for a read-only audit of the existing D renderer input/output contract against candidate I/O, request-scoped binding preview, logical composition, and renderer-neutral frame program. Do not create another parallel editorial binding.
+
+Governance unchanged: C11-C 2.19.12 and manifest immutable; D9.10 PREPARE_ONLY; D4.8 BLOCKED; renderer OFF; media_created=false; release_authority=NONE; D9.17 NO-GO; D10 blocked.

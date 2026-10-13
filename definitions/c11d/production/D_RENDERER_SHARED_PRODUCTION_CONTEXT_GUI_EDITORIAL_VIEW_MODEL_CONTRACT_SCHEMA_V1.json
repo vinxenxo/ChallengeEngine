@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-VIEW-MODEL-CONTRACT-SCHEMA-V1",
+  "title": "Strict contract for GUI editorial view-model composition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "status", "purpose", "implementation_sha256", "contract_schema_sha256", "view_model_schema_sha256", "source_lineage", "interface", "composition_rules", "execution_boundary", "governance"],
+  "properties": {
+    "schema": {"const": "C11-D-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-VIEW-MODEL-CONTRACT-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PREPARE_ONLY_GUI_DRAFT_TO_CANONICAL_CONTEXT_COMPOSITION"},
+    "purpose": {"type": "string", "minLength": 30},
+    "implementation_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "contract_schema_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "view_model_schema_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_lineage": {
+      "type": "array",
+      "minItems": 25,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "role", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "role": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["builder", "validator", "audit", "cli", "output_schema", "editorial_authority", "catalog_authority", "backend_authority"],
+      "properties": {
+        "builder": {"const": "build_gui_editorial_view_model(gui_state, editorial_draft_state, project_root=None)"},
+        "validator": {"const": "validate_gui_editorial_view_model(view_model, gui_state, editorial_draft_state, project_root=None)"},
+        "audit": {"const": "audit(project_root=None)"},
+        "cli": {"const": "--audit-only OR --inputs --gui-state PATH --editorial-draft PATH"},
+        "output_schema": {"const": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_VIEW_MODEL_SCHEMA_V1.json"},
+        "editorial_authority": {"const": "D9_8_RESOLVE_EDITORIAL_VALUES_VIA_DRAFT_AND_D9_9_PLAN"},
+        "catalog_authority": {"const": "EXISTING_DYNAMIC_D9_8_CATALOG_AND_REACTIVE_SELECTION"},
+        "backend_authority": {"const": "EXISTING_GUI_STATE_MAPPER_AND_SHARED_D9_9_D9_10_FACADE"}
+      }
+    },
+    "composition_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection_match", "editorial_source", "selection_semantics", "effective_value_parity", "gui_cli_parity", "type_scope", "unsupported_longform", "catalog_mode_gate"],
+      "properties": {
+        "selection_match": {"const": "GUI_STATE_MUST_EXACTLY_MATCH_DRAFT_BOUND_CANONICAL_SELECTION"},
+        "editorial_source": {"const": "DRAFT_PROFILE_AND_OVERRIDES_AUTHORITATIVE_OVER_STALE_UI_EDITORIAL_COPY"},
+        "selection_semantics": {"const": "DELEGATE_TO_CANONICAL_DYNAMIC_CATALOG_AND_REACTIVE_SELECTION"},
+        "effective_value_parity": {"const": "DRAFT_D9_8_PREVIEW_MUST_EQUAL_D9_9_D9_10_BOUND_EDITORIAL_VALUES"},
+        "gui_cli_parity": {"const": "GUI_ADAPTER_RECORD_EQUALS_DIRECT_SHARED_FACADE_RECORD"},
+        "type_scope": {"const": ["challenges", "visual_loops", "visual_drills"]},
+        "unsupported_longform": {"const": "REJECT"},
+        "catalog_mode_gate": {"const": "RESPECT_CANONICAL_ALLOWED_MODES; DO_NOT_PROMOTE_LOOP_OR_DRILL_TO_PRODUCTION"}
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gui_widgets_modified", "state_persisted", "canonical_context_persisted", "renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "production_execution", "media_created"],
+      "properties": {
+        "gui_widgets_modified": {"const": false},
+        "state_persisted": {"const": false},
+        "canonical_context_persisted": {"const": false},
+        "renderer_native_input_emitted": {"const": false},
+        "renderer_dispatch_invoked": {"const": false},
+        "renderer_activation": {"const": false},
+        "production_execution": {"const": false},
+        "media_created": {"const": false}
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["c11c_source_mutation", "d4_8", "release_authority", "d9_17", "d10", "renderer_baseline_approval", "baseline_approval"],
+      "properties": {
+        "c11c_source_mutation": {"const": false},
+        "d4_8": {"const": "BLOCKED"},
+        "release_authority": {"const": "NONE"},
+        "d9_17": {"const": "BLOCKED_NO_GO"},
+        "d10": {"const": "BLOCKED"},
+        "renderer_baseline_approval": {"const": "NOT_GRANTED"},
+        "baseline_approval": {"const": "NOT_GRANTED"}
+      }
+    }
+  }
+}

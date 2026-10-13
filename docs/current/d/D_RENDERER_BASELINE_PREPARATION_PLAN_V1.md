@@ -237,3 +237,13 @@ After the I/O contract and the unified-review/editorial-routing cross-check pass
 
 The packet is identity evidence only. No D renderer implementation or renderer build artifact is claimed (`NOT_IMPLEMENTED` / `NONE`); the existing binding preview is not a renderer. The five candidate blockers remain, `baseline_approval=MISSING`, `freeze_eligible=false`, `D4.8=BLOCKED`, renderer OFF, no media and release authority NONE. Do not create or mark either renderer-baseline or D-baseline approval checkpoints as approved from this inventory.
 
+
+
+<!-- C11D_GUI_EDITORIAL_VIEW_MODEL_V1_BASELINE_PLAN -->
+## Continuation after GUI editorial view-model composition V1 (2026-10-13)
+
+The GUI editorial view-model is a preparation-only D-owned composition service, not the renderer implementation or a baseline approval. It joins existing selection/catalog, editorial draft, GUI mapper/adapter, and shared D9.9/D9.10 facade with fail-closed source pins and exact GUI/direct-facade context parity.
+
+After its focused Windows test and audit pass, re-run the parent regressions and baseline-candidate preflight. Then perform the planned read-only gap audit of the existing renderer I/O contract against the existing candidate I/O contract, request-scoped payload binding preview, logical composition, and renderer-neutral frame program. Do not duplicate an existing binding. Any genuine gap must be addressed with a separate versioned, source-pinned, strict-schema, negative-tested D-only increment.
+
+No renderer-native input, dispatch, production or media may be enabled by this view-model increment. D4.8 remains BLOCKED; renderer OFF; media_created=false; release_authority=NONE. Renderer baseline approval and D baseline approval remain absent; freeze_eligible=false; D9.17 remains NO-GO and D10 remains blocked.

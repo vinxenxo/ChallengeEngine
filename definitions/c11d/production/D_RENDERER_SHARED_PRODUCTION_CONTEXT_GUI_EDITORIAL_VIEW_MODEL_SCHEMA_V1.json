@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-VIEW-MODEL-SCHEMA-V1",
+  "title": "GUI-facing view model for canonical selection and editorial draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "mode",
+    "selection",
+    "controls",
+    "editorial",
+    "identity",
+    "canonical_request_preview",
+    "shared_context_record",
+    "readiness",
+    "execution_boundary",
+    "view_model_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "C11-D-SHARED-PRODUCTION-CONTEXT-GUI-EDITORIAL-VIEW-MODEL-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PREPARED_SHARED_GUI_CONTEXT_NOT_RENDERER_INPUT"},
+    "mode": {"enum": ["REVIEW", "PRODUCTION"]},
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_type", "family_id", "selector_field", "selector_id", "request_plan_compatible", "exact_concrete_grammar"],
+      "properties": {
+        "content_type": {"enum": ["challenges", "visual_loops", "visual_drills"]},
+        "family_id": {"type": "string", "minLength": 1},
+        "subtype_id": {"type": "string", "minLength": 1},
+        "variant_id": {"type": "string", "minLength": 1},
+        "selector_field": {"enum": ["subtype_id", "variant_id"]},
+        "selector_id": {"type": "string", "minLength": 1},
+        "request_plan_compatible": {"type": "boolean"},
+        "exact_concrete_grammar": {"type": ["boolean", "null"]}
+      },
+      "oneOf": [
+        {"required": ["subtype_id"], "not": {"required": ["variant_id"]}},
+        {"required": ["variant_id"], "not": {"required": ["subtype_id"]}}
+      ]
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family_options", "selector_options", "production", "personalization_enabled"],
+      "properties": {
+        "family_options": {"type": "array", "items": {"type": "object"}},
+        "selector_options": {"type": "array", "items": {"type": "object"}},
+        "production": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["seed", "music_seed", "delivery_profile_id", "presentation_profile_id", "variation_index", "audio_enabled", "personalization_enabled"],
+          "properties": {
+            "seed": {"type": "integer", "minimum": 1, "maximum": 2147483646},
+            "music_seed": {"type": "integer", "minimum": 1, "maximum": 2147483646},
+            "delivery_profile_id": {"type": "string", "minLength": 1},
+            "presentation_profile_id": {"type": "string", "minLength": 1},
+            "variation_index": {"type": "integer", "minimum": 0},
+            "audio_enabled": {"type": "boolean"},
+            "personalization_enabled": {"type": "boolean"}
+          }
+        },
+        "personalization_enabled": {"type": "boolean"}
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "overrides", "active_fields", "effective_values", "applied_layers", "draft_state_sha256", "draft_preview_sha256", "resolved_by"],
+      "properties": {
+        "profile": {"type": "object"},
+        "overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {"type": "string"},
+            "subtitle": {"type": "string"},
+            "call_to_action": {"type": "string"},
+            "language": {"type": "string"},
+            "player_name": {"type": "string"},
+            "challenge_label": {"type": "string"}
+          }
+        },
+        "active_fields": {"type": "array", "uniqueItems": true, "items": {"enum": ["title", "subtitle", "call_to_action", "language", "player_name", "challenge_label"]}},
+        "effective_values": {
+          "type": "object",
+          "minProperties": 4,
+          "propertyNames": {"enum": ["title", "subtitle", "call_to_action", "language", "player_name", "challenge_label"]},
+          "additionalProperties": {"type": "string"}
+        },
+        "applied_layers": {"type": "array", "items": {"type": "string"}},
+        "draft_state_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "draft_preview_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "resolved_by": {"const": "CANONICAL_D9_8_EDITORIAL_MODEL_VIA_D9_9_PLAN"}
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_id", "content_type", "selection", "catalog_sha256", "selection_snapshot_sha256", "request_sha256", "editorial_sha256", "plan_sha256", "bridge_record_sha256", "adapter_envelope_sha256", "shared_context_binding_sha256"],
+      "properties": {
+        "request_id": {"type": "string", "minLength": 1},
+        "content_type": {"enum": ["challenges", "visual_loops", "visual_drills"]},
+        "selection": {"type": "object"},
+        "catalog_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "selection_snapshot_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "request_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "editorial_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "plan_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bridge_record_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "adapter_envelope_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "shared_context_binding_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "canonical_request_preview": {"type": "object"},
+    "shared_context_record": {"type": "object"},
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection_complete", "canonical_context_prepared", "catalog_mode_allowed", "request_plan_compatible", "renderer_input_admissible", "render_ready"],
+      "properties": {
+        "selection_complete": {"const": true},
+        "canonical_context_prepared": {"const": true},
+        "catalog_mode_allowed": {"type": "boolean"},
+        "request_plan_compatible": {"type": "boolean"},
+        "renderer_input_admissible": {"const": false},
+        "render_ready": {"const": false}
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gui_widgets_modified", "state_persisted", "canonical_context_persisted", "renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "production_execution", "media_created", "c11c_source_mutation", "d4_8", "release_authority", "d9_17", "d10"],
+      "properties": {
+        "gui_widgets_modified": {"const": false},
+        "state_persisted": {"const": false},
+        "canonical_context_persisted": {"const": false},
+        "renderer_native_input_emitted": {"const": false},
+        "renderer_dispatch_invoked": {"const": false},
+        "renderer_activation": {"const": false},
+        "production_execution": {"const": false},
+        "media_created": {"const": false},
+        "c11c_source_mutation": {"const": false},
+        "d4_8": {"const": "BLOCKED"},
+        "release_authority": {"const": "NONE"},
+        "d9_17": {"const": "BLOCKED_NO_GO"},
+        "d10": {"const": "BLOCKED"}
+      }
+    },
+    "view_model_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
