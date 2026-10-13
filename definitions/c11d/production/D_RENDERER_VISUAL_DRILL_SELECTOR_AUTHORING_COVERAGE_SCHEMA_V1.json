@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-drill-selector-authoring-coverage:v1",
+  "title": "C11-D Visual Drill Selector Authoring Coverage Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "source_lineage",
+    "source_lineage_sha256",
+    "catalog_summary",
+    "coverage_matrix",
+    "governance",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-DRILL-SELECTOR-AUTHORING-COVERAGE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_AUTHORING_ADAPTER_CAPABILITY_AUDIT_NOT_DYNAMIC_PAYLOAD_BINDING_OR_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "source_lineage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "catalog_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_count",
+        "selector_count",
+        "family_ids",
+        "tiers",
+        "authoring_adapter_coverage",
+        "dynamic_request_payload_binding",
+        "renderer_input_emitted"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_drills"
+        },
+        "family_count": {
+          "const": 4
+        },
+        "selector_count": {
+          "const": 20
+        },
+        "family_ids": {
+          "const": [
+            "peripheral_scan",
+            "pursuit",
+            "saccade",
+            "tracking"
+          ]
+        },
+        "tiers": {
+          "const": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "authoring_adapter_coverage": {
+          "const": "20_OF_20_VERIFIED_BY_REAL_GODOT_RUNTIME"
+        },
+        "dynamic_request_payload_binding": {
+          "const": "NOT_COVERED_BY_THIS_AUDIT"
+        },
+        "renderer_input_emitted": {
+          "const": false
+        }
+      }
+    },
+    "coverage_matrix": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "selection",
+          "canonical_source_path",
+          "canonical_source_sha256",
+          "difficulty_policy_path",
+          "difficulty_policy_sha256",
+          "canonical_duration_seconds",
+          "fps",
+          "frame_count",
+          "base_seed",
+          "alternate_seed",
+          "payload_sha256",
+          "repeat_payload_sha256",
+          "alternate_seed_payload_sha256",
+          "visual_state_sha256",
+          "repeat_visual_state_sha256",
+          "alternate_seed_visual_state_sha256",
+          "deterministic_repeat_pass",
+          "visual_seed_change_observed",
+          "selection_identity_matches",
+          "policy_tier_resolved"
+        ],
+        "properties": {
+          "selection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "subtype_id",
+              "variant_id"
+            ],
+            "properties": {
+              "content_type": {
+                "const": "visual_drills"
+              },
+              "family_id": {
+                "enum": [
+                  "peripheral_scan",
+                  "pursuit",
+                  "saccade",
+                  "tracking"
+                ]
+              },
+              "subtype_id": {
+                "type": "null"
+              },
+              "variant_id": {
+                "type": "string",
+                "pattern": "^tier-[1-5]$"
+              }
+            }
+          },
+          "canonical_source_path": {
+            "type": "string",
+            "pattern": "^definitions/visual_drill_(tracking|pursuit|saccade|peripheral_scan)_canonical\\.json$"
+          },
+          "canonical_source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "difficulty_policy_path": {
+            "type": "string",
+            "pattern": "^profiles/difficulty/visual_drill_(tracking|pursuit|saccade|peripheral_scan)\\.json$"
+          },
+          "difficulty_policy_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "canonical_duration_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "fps": {
+            "const": 30
+          },
+          "frame_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "base_seed": {
+            "const": 12345
+          },
+          "alternate_seed": {
+            "const": 54321
+          },
+          "payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "repeat_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "alternate_seed_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "repeat_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "alternate_seed_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "deterministic_repeat_pass": {
+            "const": true
+          },
+          "visual_seed_change_observed": {
+            "const": true
+          },
+          "selection_identity_matches": {
+            "const": true
+          },
+          "policy_tier_resolved": {
+            "const": true
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "request_bound_payload_manifest_created",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "baseline_approval",
+        "freeze_eligible"
+      ],
+      "properties": {
+        "scope": {
+          "const": "AUTHORING_ADAPTER_CAPABILITY_ONLY_NOT_REQUEST_BOUND_PAYLOAD_BINDING"
+        },
+        "request_bound_payload_manifest_created": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": "OFF"
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        }
+      }
+    },
+    "report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

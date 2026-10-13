@@ -3,7 +3,7 @@
 
 **Source context:** `ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip`  
 **Source ZIP SHA-256:** `52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d`  
-**Next checkpoint:** `docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md`
+**Next checkpoint:** `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`
 
 The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 tests, 45 source pins, CLI/GUI shared-facade parity), the editorial draft lifecycle (16/16), the parent integration regression, the editorial routing/consumption and unified-review validation block including real Godot harnesses, and the request-scoped editorial value carrier test/runner. C11-C's frozen manifest remains ` e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953 ` (without spaces). Renderer is not enabled.
 
@@ -23,7 +23,7 @@ The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 t
 - Editorial routing, field-consumption audit, request-scoped materialization/binding, renderer candidate I/O, unified review and actual bounded Godot harness block: operator reported PASS.
 - Request-scoped editorial value carrier: focused contract and Godot runner PASS. Its defined result remains metadata/sidecar-only; no payload text injection or visual consumption is claimed.
 
-Current next work: accept the request-specific payload-manifest increment on the active Windows checkout. Run the updated dynamic-binding Python contract and ten-case real Godot 4.7.1 runner, then refresh the I/O gap audit and candidate identity inventory and run unified review, cross-suite lifecycle and baseline-candidate preflight. Use D_RENDERER_REQUEST_PAYLOAD_MANIFEST_CHECKPOINT_V1.md. Next, review D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md; all region, visibility, timebase, sampling/coordinates, temporal and audio choices remain unapproved until an explicit versioned decision is recorded. Expand selector coverage only where canonical catalog and D-owned adapters prove support.
+Current next work: run the source-pinned Visual Drill selector authoring coverage audit at D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md. Its one real Godot 4.7.1 harness sweeps the four canonical drill types × five tiers (20 combinations) through the existing authoring adapter. This is not dynamic request-manifest acceptance. If 20/20 pass, extend the existing dynamic request→payload binder (no parallel binder) with a request-bound 20-selector Visual Drill matrix and full source/policy lineage. In parallel, review D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md; region/visibility, timebase/temporal, coordinates/sampling and audio/music choices remain unapproved until explicitly recorded in a versioned D-only decision. Renderer stays OFF; all C11-D cutover authority remains gated.
 
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->

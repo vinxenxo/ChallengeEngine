@@ -3,7 +3,7 @@
 
 **Source context:** `ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip`  
 **Source ZIP SHA-256:** `52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d`  
-**Next checkpoint:** `docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md`
+**Next checkpoint:** `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`
 
 The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 tests, 45 source pins, CLI/GUI shared-facade parity), the editorial draft lifecycle (16/16), the parent integration regression, the editorial routing/consumption and unified-review validation block including real Godot harnesses, and the request-scoped editorial value carrier test/runner. C11-C's frozen manifest remains ` e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953 ` (without spaces). Renderer is not enabled.
 
@@ -20,9 +20,9 @@ The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 t
 1. Treat the specified ZIP as a selective context source only. It has duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entries; never extract it wholesale over the working tree. The first manifest member matches the canonical hash; the second does not.
 2. Read `D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md` and the current D renderer baseline plan.
 3. Re-run the read-only candidate I/O gap and candidate identity audits plus the existing editorial-carrier/materialization tests listed in the checkpoint, capturing full output from the active Windows checkout.
-4. Validate the additive request-specific payload manifest on the existing dynamic binder: run its focused Python contract, then the ten-case matrix against real Windows Godot 4.7.1. Do not add a parallel binder.
-5. Refresh the I/O gap audit and candidate identity inventory after manifest acceptance; run unified review, cross-suite lifecycle and baseline-candidate preflight. Keep the I/O groups partial/blocked wherever selector coverage or approvals remain missing.
-6. Use D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md to request explicit decisions on regions/visibility, timebase/temporal alignment, sampling/coordinates and audio/music delivery. Do not implement editorial visual consumption until the relevant policy decisions are explicitly recorded and pinned. Distinguish payload inclusion, renderer-visible drawing and generated-video acceptance.
+4. Run `test_d_renderer_visual_drill_selector_authoring_coverage.py`, its `--contract-only` source/canonical audit, and the one-process 20-selector Godot 4.7.1 sweep using D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md. Preserve all 20 receipts.
+5. If the 20-selector authoring sweep passes, expand the existing dynamic request→payload binder for the same four Visual Drill types × five tiers, including canonical source/policy lineage and request-specific manifests. Do not create a parallel binder; keep Challenge and Loop selector boundaries unchanged.
+6. In parallel, reconcile `D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md` for explicit decisions on regions/visibility, timebase/temporal alignment, sampling/coordinates and audio/music delivery. Do not implement editorial visual consumption until relevant policy decisions are explicitly recorded and pinned. Keep payload inclusion, renderer-visible drawing and generated-video acceptance as separate claims.
 
 No rendering, dispatch, media generation, freeze, D4.8 change or release is authorized in this phase.
 

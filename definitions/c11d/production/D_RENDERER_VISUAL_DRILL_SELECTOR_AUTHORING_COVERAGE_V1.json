@@ -1,0 +1,160 @@
+{
+  "schema": "C11-D-D9-VISUAL-DRILL-SELECTOR-AUTHORING-COVERAGE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_AUTHORIZING_ADAPTER_CAPABILITY_AUDIT_NOT_DYNAMIC_PAYLOAD_BINDING_OR_RENDERER_INPUT",
+  "purpose": "Verify all canonical Visual Drill type/tier pairs against the existing C11/D-owned authoring generator, policy registry and adapter. This is upstream authoring-capability evidence only; it does not modify or replace the D dynamic request-to-payload binder.",
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "selector_matrix": {
+    "content_type": "visual_drills",
+    "family_ids": [
+      "peripheral_scan",
+      "pursuit",
+      "saccade",
+      "tracking"
+    ],
+    "tiers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "expected_selector_count": 20,
+    "authoring_domain_family": "visual_drill",
+    "request_bound_payload_manifest": "NOT_TESTED_BY_THIS_AUDIT"
+  },
+  "seed_pair": {
+    "base_seed": 12345,
+    "alternate_seed": 54321,
+    "same_seed_repeat_required": true,
+    "visual_state_must_change_on_seed_change": true
+  },
+  "canonical_binding": {
+    "duration_source": "definitions/visual_drill_<family>_canonical.json",
+    "fps_source": "canonical_payload.fps",
+    "frame_count_source": "canonical_payload.frame_count",
+    "difficulty_source": "profiles/difficulty/visual_drill_<family>.json",
+    "tier_source": "canonical_tier_policy_table",
+    "profile_baseline_tier_does_not_override_selected_tier": true
+  },
+  "output": {
+    "harness_path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+    "harness_sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b",
+    "report_schema_path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+    "report_schema_sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7",
+    "output_channel": "STDOUT_ONLY",
+    "persist_report": false
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+      "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringGenerator.gd",
+      "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+      "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRegistry.gd",
+      "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequest.gd",
+      "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+    },
+    {
+      "path": "core/authoring/VisualDifficultyResolver.gd",
+      "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+    },
+    {
+      "path": "core/authoring/VisualDrillSeedVariation.gd",
+      "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+    },
+    {
+      "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+      "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+      "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7"
+    },
+    {
+      "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+      "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904"
+    },
+    {
+      "path": "definitions/visual_drill_pursuit_canonical.json",
+      "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc"
+    },
+    {
+      "path": "definitions/visual_drill_saccade_canonical.json",
+      "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+      "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_pursuit.json",
+      "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_saccade.json",
+      "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_tracking.json",
+      "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+    },
+    {
+      "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+      "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+      "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+      "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    }
+  ],
+  "governance_locks": {
+    "scope": "AUTHORING_ADAPTER_CAPABILITY_ONLY_NOT_REQUEST_BOUND_PAYLOAD_BINDING",
+    "request_bound_payload_manifest_created": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": "OFF",
+    "production_execution": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false
+  }
+}
