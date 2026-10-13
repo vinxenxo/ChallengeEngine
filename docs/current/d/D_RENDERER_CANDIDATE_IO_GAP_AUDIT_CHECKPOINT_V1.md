@@ -59,3 +59,14 @@ The GUI View Model, editorial value carrier, fixed-fixture materialization bindi
 First run this checkpoint's own read-only gap audit and the identity inventory on the active checkout. Then run the existing dynamic-request binding test and ten-case runner against real Godot 4.7.1; that runtime gate is still outstanding. Do not create a second dynamic contract unless the actual receipts plus the refreshed gap matrix identify a concrete uncovered requirement. The existing contract covers three bounded selector representatives only; its Visual Loop selected-grammar instance remains unresolved. Do not emit candidate renderer input or choose unresolved editorial, presentation, timing or audio policy.
 
 Only after that bounded contract is confirmed should the team bring a separate semantic-region/visibility-window policy to explicit review. Payload-side editorial consumption is gated on that policy; actual visible rendering is a separate later acceptance.
+
+## Latest reconciliation — request-specific payload manifest V1 (2026-10-13)
+
+The dynamic request/payload binder now adds a self-hash-closed request payload manifest to each receipt. The manifest digest is bound into the request-binding digest, source identity and payload evidence, and carries bounded source lineage plus exact in-memory payload/visual-state hashes. The source-pinned audit contract now includes the dynamic binding source, output schema, harness, contract test and its own updated schema/test pins.
+
+Preparation validation: I/O audit contract 8/8 with 38/38 pins; dynamic binder contract 12/12, 46/46 pins, 2/2 schemas, 10/10 manifests and 10/10 lineage closures; identity inventory contract 9/9 and 149/149 source files. These are checks of the preparation copy. The updated manifest still requires acceptance in the active Windows checkout.
+
+The I/O assessment remains 0/10 complete, 6 partial (`content_identity`, `source_lineage`, `payload_instance`, `seed_domains`, `editorial`, `delivery`) and 4 blocked (`presentation`, `timeline`, `audio`, `authorization`). The three representative selectors and the `harmonic_membrane` composite do not establish catalogue-wide materialization. The candidate remains inadmissible; no renderer input, output manifest, dispatch or media is emitted.
+
+Next steps can run in parallel once the updated request manifest is accepted: refresh this audit and identity inventory; run unified review, lifecycle and baseline preflight; prepare an explicit operator decision using `D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md`. The packet does not approve policies. Field-to-region/visibility, timebase/temporal, sample/coordinate and audio/music decisions stay pending.
+

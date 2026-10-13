@@ -51,13 +51,13 @@
         "canonical_request_sha256"
       ],
       "state": "PARTIAL_FIXED_REVIEW_IDENTITIES_ONLY",
-      "finding": "The request/binding chain is pinned to three fixed review fixtures; arbitrary selector/variant/scope transport is not established.",
+      "finding": "The ten-case dynamic matrix now binds canonical request identity to the three pinned selector representatives and records an exact request/payload manifest digest. Arbitrary Challenge variants, Loop families/grammars, Drill types/tiers and variant scopes are still outside the admitted matrix.",
       "evidence": [
-        "D9.9 canonical request and fixed request binding",
-        "Three fixtures: CHALLENGE_004, harmonic_membrane, tracking/tier-2"
+        "ten-case dynamic request/payload matrix with gameplay-seed and orthogonality checks",
+        "hash-closed request_payload_manifest_sha256 in each validated receipt"
       ],
       "unclosed_requirements": [
-        "dynamic selector, family, subtype/variant, variant_scope and difficulty request identity"
+        "catalog-wide dynamic selector, family, subtype/variant, variant_scope and difficulty request identity"
       ],
       "complete_for_input_emission": false
     },
@@ -74,14 +74,16 @@
         "frame_program_sha256",
         "request_payload_manifest_sha256"
       ],
-      "state": "PARTIAL_FIXED_FIXTURE_SOURCE_LINEAGE",
-      "finding": "Source pins and per-fixture hashes exist, but no admitted input instance assembles the complete prospective lineage.",
+      "state": "PARTIAL_REQUEST_BOUND_LINEAGE_MANIFEST_FOR_PINNED_MATRIX",
+      "finding": "Each dynamic receipt now hash-binds canonical request/plan/editorial identity, D9.10 bridge, PREPARE_ONLY adapter, D request binding, binding preview, logical composition, neutral frame program, temporal preview, delivery projection, editorial review manifest, selected definition, registry and both source-lineage digests. This is complete only for the bounded review matrix and is not yet carried by an admissible prospective input instance.",
       "evidence": [
-        "30-source-pin I/O contract",
-        "request-scoped binding and fixed materialization receipts"
+        "dynamic request-specific payload manifest includes 13 lineage digests per request",
+        "real Godot 4.7.1 ten-case matrix plus separate Visual Loop composite runtime gates"
       ],
       "unclosed_requirements": [
-        "complete request-specific lineage closure in a prospective input instance"
+        "approved prospective input carrying the manifest and all required source lineage",
+        "general selector/family/tier lineage beyond the pinned three-representative matrix",
+        "approved presentation, timeline and audio policy lineage"
       ],
       "complete_for_input_emission": false
     },
@@ -96,15 +98,16 @@
         "canonical_source_sha256",
         "materialization_mode"
       ],
-      "state": "PARTIAL_FIXED_IN_MEMORY_PAYLOAD_BINDINGS",
-      "finding": "Three fixed visual payloads are materialized in memory and hash-bound; they are not general request-selected payload instances and are not renderer input.",
+      "state": "PARTIAL_REQUEST_BOUND_MANIFEST_FOR_PINNED_SELECTOR_MATRIX",
+      "finding": "Three pinned selector representatives produce deterministic in-memory payloads; the dynamic receipt now contains a hash-closed request-specific payload manifest linked to the exact payload and visual-state digests. The Visual Loop composite remains limited to harmonic_membrane; no renderer input is emitted.",
       "evidence": [
-        "two existing bounded Godot materialization harnesses",
-        "hash-bound payload receipt for the fixed fixtures"
+        "Godot 4.7.1 dynamic materialization matrix: ten cases; deterministic repeat per case",
+        "request_payload_manifest_sha256 propagated into request identity and payload evidence"
       ],
       "unclosed_requirements": [
-        "request-specific payload materialization contract for dynamic valid requests",
-        "explicit payload manifest binding consumable by the future contract"
+        "catalog-wide exact payload materialization for all supported families, subtypes, variants and tiers",
+        "approved prospective input consuming the payload manifest",
+        "shader/renderer-native payload contract remains unimplemented and unauthorized"
       ],
       "complete_for_input_emission": false
     },
@@ -120,13 +123,15 @@
         "cross_domain_seed_reuse"
       ],
       "state": "PARTIAL_FIXED_SEED_DOMAINS",
-      "finding": "The fixtures bind separated gameplay/music seed identities; arbitrary request seed/domain enforcement has not been proven.",
+      "finding": "The runtime matrix binds gameplay seed changes independently in all three representative content types (3/3); Visual Loop orthogonality checks show music seed, variation index, delivery identity and editorial title do not alter visual payload/state (4/4). The proof remains bounded to the pinned selectors.",
       "evidence": [
-        "fixed payload binding checks seed identity and fixture values"
+        "Godot 4.7.1 gameplay-seed binding 3/3",
+        "Godot 4.7.1 Visual Loop orthogonality 4/4",
+        "request manifest carries gameplay_seed and music_seed as separate request metadata"
       ],
       "unclosed_requirements": [
-        "dynamic seed transport and validation",
-        "affirmed no cross-domain seed reuse for arbitrary requests"
+        "general request-driven seed-domain validation across the full catalog",
+        "explicit automatic-seed and collision/cross-domain behavior for arbitrary requests"
       ],
       "complete_for_input_emission": false
     },
@@ -262,7 +267,7 @@
       "complete_for_input_emission": false
     }
   ],
-  "next_safe_increment": "RUN_EXISTING_D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_WITH_REAL_GODOT_4_7_1_BEFORE_ANY_NEW_CONTRACT;_RECONCILE_RESIDUAL_GAP;_KEEP_PREPARE_ONLY_AND_NON_DISPATCHING",
+  "next_safe_increment": "RERUN_THE_REQUEST_BOUND_PAYLOAD_MANIFEST_MATRIX_ON_WINDOWS_GODOT_4_7_1;_RECONCILE_THE_10_CASE_LINEAGE_RECEIPTS_WITH_THE_IO_MATRIX;_THEN_EXPAND_EXACT_SELECTOR_COVERAGE_AND_PREPARE_POLICY_APPROVALS;_KEEP_RENDERER_OFF_AND_CANDIDATE_INPUT_INADMISSIBLE",
   "governance": {
     "candidate_input_admissible": false,
     "renderer_input_instance_emitted": false,
@@ -287,14 +292,9 @@
       "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
-      "role": "VERSIONED_IO_INTERFACE_CONTRACT",
-      "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
-      "role": "IO_INTERFACE_CONTRACT_SCHEMA",
-      "sha256": "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420"
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+      "role": "BINDING_PREVIEW_CONTRACT",
+      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json",
@@ -302,14 +302,14 @@
       "sha256": "2ccfe916f35445f4543a61028c454a7ab886891aa4ab30b62445d12e73af8afd"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
-      "role": "PROSPECTIVE_OUTPUT_MANIFEST_SCHEMA",
-      "sha256": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
+      "role": "IO_INTERFACE_CONTRACT_SCHEMA",
+      "sha256": "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
-      "role": "BINDING_PREVIEW_CONTRACT",
-      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+      "role": "VERSIONED_IO_INTERFACE_CONTRACT",
+      "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
@@ -317,44 +317,14 @@
       "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
-      "role": "NEUTRAL_FRAME_PROGRAM_CONTRACT",
-      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
+      "role": "PROSPECTIVE_OUTPUT_MANIFEST_SCHEMA",
+      "sha256": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
-      "role": "FIXED_REQUEST_BINDING_CONTRACT",
-      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
-      "role": "FIXED_PAYLOAD_MATERIALIZATION_CONTRACT",
-      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json",
-      "role": "EDITORIAL_VALUE_SIDECAR_CONTRACT",
-      "sha256": "1224526154b89ed79000e0bd737e25153cec12b3bd24d642d2e7bb0b741cd66b"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
-      "role": "PRESENTATION_REGION_POLICY_PROPOSAL",
-      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
-      "role": "DELIVERY_TIMEBASE_POLICY_PROPOSAL",
-      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
-      "role": "CHALLENGE_TEMPORAL_ALIGNMENT_PROPOSAL",
-      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
-    },
-    {
-      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
-      "role": "CHALLENGE_SAMPLE_SELECTION_PROPOSAL",
-      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
+      "role": "CHALLENGE_COORDINATE_PROJECTION_PROPOSAL",
+      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
@@ -362,9 +332,29 @@
       "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
-      "role": "CHALLENGE_COORDINATE_PROJECTION_PROPOSAL",
-      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+      "role": "CHALLENGE_SAMPLE_SELECTION_PROPOSAL",
+      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+      "role": "CHALLENGE_TEMPORAL_ALIGNMENT_PROPOSAL",
+      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_OUTPUT_SCHEMA",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_CONTRACT",
+      "sha256": "ca6a9c384494fcd7f1072ced5f8dfb740b67ec5d4014412fe107ba1283bb893c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
+      "role": "EDITORIAL_ROUTING_CONSUMPTION_BOUNDARY",
+      "sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
@@ -377,49 +367,39 @@
       "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
     },
     {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "role": "NEUTRAL_FRAME_PROGRAM_CONTRACT",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json",
+      "role": "EDITORIAL_VALUE_SIDECAR_CONTRACT",
+      "sha256": "1224526154b89ed79000e0bd737e25153cec12b3bd24d642d2e7bb0b741cd66b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "role": "FIXED_REQUEST_BINDING_CONTRACT",
+      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "role": "FIXED_PAYLOAD_MATERIALIZATION_CONTRACT",
+      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+    },
+    {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
       "role": "AUDIO_MUSIC_DELIVERY_PROPOSAL",
       "sha256": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
     },
     {
-      "path": "tools/c11d/d9/d_renderer_candidate.py",
-      "role": "BINDING_PREVIEW_IMPLEMENTATION",
-      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "role": "DELIVERY_TIMEBASE_POLICY_PROPOSAL",
+      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
     },
     {
-      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
-      "role": "LOGICAL_COMPOSITION_IMPLEMENTATION",
-      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
-    },
-    {
-      "path": "tools/c11d/d9/d_renderer_frame_program.py",
-      "role": "FRAME_PROGRAM_IMPLEMENTATION",
-      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
-    },
-    {
-      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
-      "role": "FIXED_REQUEST_BINDING_IMPLEMENTATION",
-      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
-    },
-    {
-      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
-      "role": "FIXED_PAYLOAD_MATERIALIZATION_IMPLEMENTATION",
-      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
-    },
-    {
-      "path": "tools/c11d/d9/d_renderer_request_scoped_editorial_value_carrier.py",
-      "role": "EDITORIAL_VALUE_SIDECAR_IMPLEMENTATION",
-      "sha256": "77d7af66cecff878de925bdcc63b1b12db812f32928a8ae873ee404199dafb17"
-    },
-    {
-      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
-      "role": "LOOP_DRILL_PAYLOAD_PREVIEW_IMPLEMENTATION",
-      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
-    },
-    {
-      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
-      "role": "CHALLENGE_PAYLOAD_PREVIEW_IMPLEMENTATION",
-      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "role": "PRESENTATION_REGION_POLICY_PROPOSAL",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
     },
     {
       "path": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
@@ -432,19 +412,69 @@
       "sha256": "7def37e37d207d778a7bd3d59917b0969793f55684e67cc52b243c83ac174a90"
     },
     {
-      "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md",
-      "role": "FIXED_MATERIALIZATION_CHECKPOINT",
-      "sha256": "42a1120f618478a44d9984cc1d10c2b8d907319b45a34c4b0f02a631b22a0c8a"
-    },
-    {
       "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
       "role": "EDITORIAL_SIDECAR_CHECKPOINT",
       "sha256": "143e956af6585120b42beee8b19d9cef45583ecec49fcb016acd6851e7bc46c6"
     },
     {
-      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
-      "role": "EDITORIAL_ROUTING_CONSUMPTION_BOUNDARY",
-      "sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+      "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md",
+      "role": "FIXED_MATERIALIZATION_CHECKPOINT",
+      "sha256": "42a1120f618478a44d9984cc1d10c2b8d907319b45a34c4b0f02a631b22a0c8a"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "role": "BINDING_PREVIEW_IMPLEMENTATION",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "role": "CHALLENGE_PAYLOAD_PREVIEW_IMPLEMENTATION",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_IMPLEMENTATION",
+      "sha256": "7d74442e829d6bf1cd7e568739d95b514caaa46da4ee9d7dd17a1709ceba882f"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "role": "FRAME_PROGRAM_IMPLEMENTATION",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "role": "LOGICAL_COMPOSITION_IMPLEMENTATION",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_editorial_value_carrier.py",
+      "role": "EDITORIAL_VALUE_SIDECAR_IMPLEMENTATION",
+      "sha256": "77d7af66cecff878de925bdcc63b1b12db812f32928a8ae873ee404199dafb17"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "role": "FIXED_REQUEST_BINDING_IMPLEMENTATION",
+      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "role": "FIXED_PAYLOAD_MATERIALIZATION_IMPLEMENTATION",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "role": "LOOP_DRILL_PAYLOAD_PREVIEW_IMPLEMENTATION",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_GODOT_HARNESS",
+      "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding.py",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_TESTS",
+      "sha256": "9a7805ef88152b0d126b59de98872895941e714e017c87aec8a8d9a18ad891b3"
     }
   ]
 }

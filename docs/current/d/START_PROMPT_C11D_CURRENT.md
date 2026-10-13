@@ -20,9 +20,9 @@ The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 t
 1. Treat the specified ZIP as a selective context source only. It has duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entries; never extract it wholesale over the working tree. The first manifest member matches the canonical hash; the second does not.
 2. Read `D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md` and the current D renderer baseline plan.
 3. Re-run the read-only candidate I/O gap and candidate identity audits plus the existing editorial-carrier/materialization tests listed in the checkpoint, capturing full output from the active Windows checkout.
-4. Run the focused Python contracts for dynamic request-to-payload binding, Visual Loop Grammar Binding Audit, and Grammar Parameter Instance from the new composite-payload checkpoint. Stop on the first failure.
-5. Run the dynamic request-to-payload runner and the separate Visual Loop Grammar Binding Audit and Grammar Parameter Instance runners against actual Windows Godot 4.7.1 using D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md. The composite increment is not accepted until all three real runtime receipts pass; do not claim shader or renderer execution.
-6. Re-run the candidate I/O gap audit and identity inventory, then lifecycle and baseline preflight in the active Windows checkout. Reconcile the actual remaining I/O groups; do not implement editorial visual consumption until field-to-region and visibility-window policies receive separate explicit approval.
+4. Validate the additive request-specific payload manifest on the existing dynamic binder: run its focused Python contract, then the ten-case matrix against real Windows Godot 4.7.1. Do not add a parallel binder.
+5. Refresh the I/O gap audit and candidate identity inventory after manifest acceptance; run unified review, cross-suite lifecycle and baseline-candidate preflight. Keep the I/O groups partial/blocked wherever selector coverage or approvals remain missing.
+6. Use D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md to request explicit decisions on regions/visibility, timebase/temporal alignment, sampling/coordinates and audio/music delivery. Do not implement editorial visual consumption until the relevant policy decisions are explicitly recorded and pinned. Distinguish payload inclusion, renderer-visible drawing and generated-video acceptance.
 
 No rendering, dispatch, media generation, freeze, D4.8 change or release is authorized in this phase.
 

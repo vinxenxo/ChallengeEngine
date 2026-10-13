@@ -2,7 +2,7 @@
   "schema": "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "PREPARATION_ONLY_DYNAMIC_REQUEST_BOUND_IN_MEMORY_PAYLOAD_REVIEW_NOT_RENDERER_INPUT",
-  "purpose": "Bind canonical D9.9 request identities to deterministic in-memory payload evidence. For the single pinned Visual Loop selector harmonic_membrane, compose the existing family authoring envelope with a hash-bound 20-parameter grammar instance; this does not make the family authoring adapter grammar-aware and is not renderer input, shader execution, or media.",
+  "purpose": "Bind ten bounded request variants to deterministic in-memory payloads and an explicit hash-closed request-specific payload/source-lineage manifest; review-only, not renderer input.",
   "supported_content_types": [
     "challenges",
     "visual_loops",
@@ -228,7 +228,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
-      "sha256": "71b54908480a59b8abd42f38e4eb2ace37da48178591e75510f6d7111ce66f00"
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
     },
     {
       "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
@@ -315,6 +315,7 @@
   },
   "boundary_notes": {
     "exact_loop_selector_payload": "Only the composite in-memory payload for c11c_geometric_waves_v1/harmonic_membrane is materialized. The family adapter output remains subtype=geometric and is not grammar-aware. No other grammar is admitted.",
-    "editorial_visual_consumption": "No editorial fields are included in the visual payload; 0/14 editorial values remain consumed until separate field-to-region/window policy approval."
+    "editorial_visual_consumption": "No editorial fields are included in the visual payload; 0/14 editorial values remain consumed until separate field-to-region/window policy approval.",
+    "request_payload_manifest": "The Python runner emits a strict request-scoped manifest containing canonical request/plan/editorial identity, request-scoped binding, binding preview, logical composition, neutral frame program, temporal preview, delivery projection, editorial review lineage, exact payload digest and bounded grammar evidence. It is an in-memory/stdout review receipt only; it does not make candidate input admissible."
   }
 }

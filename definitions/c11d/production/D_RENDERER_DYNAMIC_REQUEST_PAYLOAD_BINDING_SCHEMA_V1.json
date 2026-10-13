@@ -15,7 +15,8 @@
     "semantic_limits",
     "readiness",
     "execution_boundary",
-    "receipt_sha256"
+    "receipt_sha256",
+    "payload_manifest"
   ],
   "properties": {
     "schema": {
@@ -42,7 +43,18 @@
         "source_binding_sha256",
         "source_lineage_sha256",
         "harness_sha256",
-        "implementation_sha256"
+        "implementation_sha256",
+        "binding_preview_sha256",
+        "logical_composition_sha256",
+        "frame_program_sha256",
+        "temporal_preview_sha256",
+        "delivery_projection_sha256",
+        "editorial_review_manifest_sha256",
+        "definition_source_sha256",
+        "registry_sha256",
+        "request_scoped_binding_sha256",
+        "binding_source_lineage_sha256",
+        "request_payload_manifest_sha256"
       ],
       "properties": {
         "request_hash": {
@@ -78,6 +90,50 @@
           "pattern": "^[0-9a-f]{64}$"
         },
         "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "binding_preview_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_composition_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "frame_program_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "temporal_preview_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "delivery_projection_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "editorial_review_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "definition_source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "registry_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_scoped_binding_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "binding_source_lineage_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_payload_manifest_sha256": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
         }
@@ -186,7 +242,8 @@
         "exact_selector_payload_materialized",
         "deterministic_repeat_pass",
         "materialization",
-        "grammar_parameter_evidence"
+        "grammar_parameter_evidence",
+        "request_payload_manifest_sha256"
       ],
       "properties": {
         "payload_sha256": {
@@ -278,6 +335,10 @@
             }
           ],
           "description": "Null for Challenge/Drill. Exact D-owned nested evidence only for the single pinned Visual Loop harmonic_membrane composite; not renderer input."
+        },
+        "request_payload_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
       }
     },
@@ -432,6 +493,266 @@
     "receipt_sha256": {
       "type": "string",
       "pattern": "^[0-9a-f]{64}$"
+    },
+    "payload_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "schema_version",
+        "status",
+        "frozen_c11c_manifest_sha256",
+        "request_identity",
+        "source_lineage",
+        "payload_identity",
+        "governance",
+        "manifest_sha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-REQUEST-PAYLOAD-MANIFEST-V1"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "status": {
+          "const": "PREPARATION_ONLY_REQUEST_BOUND_PAYLOAD_MANIFEST_NOT_RENDERER_INPUT"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "request_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "request_id",
+            "content_type",
+            "selection",
+            "canonical_request_sha256",
+            "plan_sha256",
+            "editorial_sha256",
+            "gameplay_seed",
+            "music_seed",
+            "variation_index",
+            "presentation_profile_id",
+            "delivery_profile_id"
+          ],
+          "properties": {
+            "request_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            },
+            "content_type": {
+              "enum": [
+                "challenges",
+                "visual_loops",
+                "visual_drills"
+              ]
+            },
+            "selection": {
+              "$ref": "#/properties/request_identity/properties/selection"
+            },
+            "canonical_request_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "plan_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "editorial_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "gameplay_seed": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483646
+            },
+            "music_seed": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483646
+            },
+            "variation_index": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "presentation_profile_id": {
+              "const": "social_default_v1"
+            },
+            "delivery_profile_id": {
+              "enum": [
+                "REVIEW_720",
+                "MIN_540",
+                "MASTER_1080",
+                "META_REELS_FINAL_V1"
+              ]
+            }
+          }
+        },
+        "source_lineage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "bridge_record_sha256",
+            "adapter_envelope_sha256",
+            "request_scoped_binding_sha256",
+            "binding_preview_sha256",
+            "logical_composition_sha256",
+            "frame_program_sha256",
+            "temporal_preview_sha256",
+            "delivery_projection_sha256",
+            "editorial_review_manifest_sha256",
+            "definition_source_sha256",
+            "registry_sha256",
+            "request_scoped_binding_lineage_sha256",
+            "dynamic_binding_lineage_sha256"
+          ],
+          "properties": {
+            "bridge_record_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "adapter_envelope_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "request_scoped_binding_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "binding_preview_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "logical_composition_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "frame_program_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "temporal_preview_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "delivery_projection_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "editorial_review_manifest_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "definition_source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "registry_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "request_scoped_binding_lineage_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "dynamic_binding_lineage_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "payload_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "payload_sha256",
+            "visual_state_sha256",
+            "payload_scope",
+            "exact_selector_payload_materialized",
+            "materialization",
+            "grammar_parameter_instance_sha256"
+          ],
+          "properties": {
+            "payload_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "visual_state_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "payload_scope": {
+              "enum": [
+                "CHALLENGE_RUNTIME_VISUAL_PAYLOAD_SOURCE_TIMEBASE",
+                "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1",
+                "VISUAL_DRILL_TIER_SEED_PAYLOAD"
+              ]
+            },
+            "exact_selector_payload_materialized": {
+              "type": "boolean"
+            },
+            "materialization": {
+              "const": "IN_MEMORY_ONLY"
+            },
+            "grammar_parameter_instance_sha256": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              ]
+            }
+          }
+        },
+        "governance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "candidate_input_admissible",
+            "video_render_ready",
+            "renderer_native_input_emitted",
+            "renderer_dispatch_invoked",
+            "media_created",
+            "d4_8",
+            "release_authority"
+          ],
+          "properties": {
+            "candidate_input_admissible": {
+              "const": false
+            },
+            "video_render_ready": {
+              "const": false
+            },
+            "renderer_native_input_emitted": {
+              "const": false
+            },
+            "renderer_dispatch_invoked": {
+              "const": false
+            },
+            "media_created": {
+              "const": false
+            },
+            "d4_8": {
+              "const": "BLOCKED"
+            },
+            "release_authority": {
+              "const": "NONE"
+            }
+          }
+        },
+        "manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
     }
   }
 }

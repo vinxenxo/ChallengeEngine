@@ -86,3 +86,14 @@ Review runtime evidence and source/seed relationships before proposing another a
 ## 10. Future C11-D promotion/cutover target
 
 The intended end state, only after all C11-D gates are formally closed and a new baseline is explicitly accepted/frozen, is for the accepted C11-D branch and its Producer to replace frozen C11-C as the authoritative working baseline. This is a future target, not current release authority. Until formal D closure, independent baseline approval, freeze and cutover are complete, C11-C 2.19.12 and its manifest remain immutable and authoritative for all existing pins. Do not mutate the C11-C freeze package or promote D from this checkpoint.
+
+## Request-specific payload manifest V1 — latest continuation (2026-10-13)
+
+The existing dynamic binding receipt is now extended with a strict hash-closed `payload_manifest`; this is not a second binder. The manifest covers `request_identity`, `source_lineage`, `payload_identity`, and `governance`. It records canonical request/plan/editorial hashes, separate gameplay/music seeds, bridge and PREPARE_ONLY adapter identity, request binding, binding preview, logical composition, neutral frame program, timebase preview, delivery projection, editorial review manifest, selected definition/registry lineage, exact payload and visual-state hashes, and the optional `harmonic_membrane` grammar-instance hash.
+
+The self-hash `manifest_sha256` is repeated in `source_identity.request_payload_manifest_sha256`, `payload_evidence.request_payload_manifest_sha256`, and the canonical request-binding digest. Semantic validation checks hash closure, request identity equality, cross-links to payload hashes, full bounded source lineage and fail-closed governance. All ten in-scope receipts must validate.
+
+Preparation-copy contract result: 12/12 checks, 46/46 source pins, 2/2 schemas, 10/10 modeled cases, 10/10 manifests and 10/10 lineage closures; 22 negative checks are fail-closed. This is not acceptance of the updated manifest on Windows. The active Windows checkout must rerun the updated Python test and the existing ten-case runner on actual Godot 4.7.1, capturing all ten receipt lines. The last operator-confirmed prior runtime matrix and independent grammar gates were green; this new receipt wrapper still requires its own Windows acceptance.
+
+After acceptance, refresh the candidate I/O gap audit and identity inventory, then unified review, lifecycle and baseline preflight. The gap must remain 0/10 complete, 6 partial, 4 blocked until actual residual requirements are resolved. Do not create a second binder, emit renderer input, or implement visual editorial consumption before separate region/window policy approval.
+

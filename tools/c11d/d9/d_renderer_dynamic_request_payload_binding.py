@@ -34,6 +34,8 @@ MANIFEST_REL = Path("release/C11C_FREEZE_PACKAGE_MANIFEST.json")
 CONTRACT_ID = "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V1"
 INPUT_SCHEMA_ID = "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-INPUT-V1"
 OUTPUT_SCHEMA_ID = "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-BINDING-V1"
+PAYLOAD_MANIFEST_SCHEMA_ID = "C11-D-D9-REQUEST-PAYLOAD-MANIFEST-V1"
+PAYLOAD_MANIFEST_STATUS = "PREPARATION_ONLY_REQUEST_BOUND_PAYLOAD_MANIFEST_NOT_RENDERER_INPUT"
 GODOT_SUMMARY_SCHEMA_ID = "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-MATERIALIZATION-V1"
 STATUS = "PREPARATION_ONLY_DYNAMIC_REQUEST_BOUND_PAYLOAD_REVIEW_NOT_RENDERER_INPUT"
 EXPECTED_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
@@ -430,6 +432,64 @@ def _build_receipt(chain: Mapping[str, Any], summary: Mapping[str, Any], root: P
         "presentation_profile_id": request["presentation_profile_id"],
         "delivery_profile_id": request["delivery_profile_id"],
     }
+    binding = chain["source_binding"]
+    binding_identity = binding["source_identity"]
+    grammar_evidence = copy.deepcopy(summary.get("grammar_parameter_evidence"))
+    grammar_instance_sha = grammar_evidence.get("parameter_instance_sha256") if isinstance(grammar_evidence, Mapping) else None
+    payload_manifest: dict[str, Any] = {
+        "schema": PAYLOAD_MANIFEST_SCHEMA_ID,
+        "schema_version": "1.0",
+        "status": PAYLOAD_MANIFEST_STATUS,
+        "frozen_c11c_manifest_sha256": EXPECTED_MANIFEST_SHA256,
+        "request_identity": {
+            "request_id": request["request_id"],
+            "content_type": content_type,
+            "selection": _canonical_selection(result["plan"]["selection"]),
+            "canonical_request_sha256": result["request_hash"],
+            "plan_sha256": result["plan_hash"],
+            "editorial_sha256": result["editorial_hash"],
+            "gameplay_seed": request["seed"],
+            "music_seed": request["music_seed"],
+            "variation_index": request["variation_index"],
+            "presentation_profile_id": request["presentation_profile_id"],
+            "delivery_profile_id": request["delivery_profile_id"],
+        },
+        "source_lineage": {
+            "bridge_record_sha256": bridge["record_hash"],
+            "adapter_envelope_sha256": envelope["envelope_hash"],
+            "request_scoped_binding_sha256": binding["binding_sha256"],
+            "binding_preview_sha256": binding_identity["binding_preview_sha256"],
+            "logical_composition_sha256": binding_identity["logical_composition_sha256"],
+            "frame_program_sha256": binding_identity["frame_program_sha256"],
+            "temporal_preview_sha256": binding_identity["temporal_preview_sha256"],
+            "delivery_projection_sha256": binding_identity["delivery_projection_sha256"],
+            "editorial_review_manifest_sha256": binding_identity["editorial_review_manifest_sha256"],
+            "definition_source_sha256": binding_identity["definition_source_sha256"],
+            "registry_sha256": binding_identity["registry_sha256"],
+            "request_scoped_binding_lineage_sha256": binding_identity["source_lineage_sha256"],
+            "dynamic_binding_lineage_sha256": _sha_json(lineage),
+        },
+        "payload_identity": {
+            "payload_sha256": summary["payload_sha256"],
+            "visual_state_sha256": summary["visual_state_sha256"],
+            "payload_scope": expected_scope,
+            "exact_selector_payload_materialized": exact,
+            "materialization": "IN_MEMORY_ONLY",
+            "grammar_parameter_instance_sha256": grammar_instance_sha,
+        },
+        "governance": {
+            "candidate_input_admissible": False,
+            "video_render_ready": False,
+            "renderer_native_input_emitted": False,
+            "renderer_dispatch_invoked": False,
+            "media_created": False,
+            "d4_8": "BLOCKED",
+            "release_authority": "NONE",
+        },
+    }
+    payload_manifest["manifest_sha256"] = _sha_json(payload_manifest)
+    payload_manifest_sha256 = payload_manifest["manifest_sha256"]
+
     identity_core = {
         **request_identity,
         "request_hash": result["request_hash"],
@@ -440,6 +500,7 @@ def _build_receipt(chain: Mapping[str, Any], summary: Mapping[str, Any], root: P
         "source_binding_sha256": chain["source_binding"]["binding_sha256"],
         "payload_sha256": summary["payload_sha256"],
         "visual_state_sha256": summary["visual_state_sha256"],
+        "request_payload_manifest_sha256": payload_manifest_sha256,
         "frozen_c11c_manifest_sha256": EXPECTED_MANIFEST_SHA256,
     }
     request_binding_sha256 = _sha_json(identity_core)
@@ -457,6 +518,17 @@ def _build_receipt(chain: Mapping[str, Any], summary: Mapping[str, Any], root: P
             "adapter_envelope_hash": envelope["envelope_hash"],
             "source_binding_sha256": chain["source_binding"]["binding_sha256"],
             "source_lineage_sha256": _sha_json(lineage),
+            "binding_preview_sha256": binding_identity["binding_preview_sha256"],
+            "logical_composition_sha256": binding_identity["logical_composition_sha256"],
+            "frame_program_sha256": binding_identity["frame_program_sha256"],
+            "temporal_preview_sha256": binding_identity["temporal_preview_sha256"],
+            "delivery_projection_sha256": binding_identity["delivery_projection_sha256"],
+            "editorial_review_manifest_sha256": binding_identity["editorial_review_manifest_sha256"],
+            "definition_source_sha256": binding_identity["definition_source_sha256"],
+            "registry_sha256": binding_identity["registry_sha256"],
+            "request_scoped_binding_sha256": binding["binding_sha256"],
+            "binding_source_lineage_sha256": binding_identity["source_lineage_sha256"],
+            "request_payload_manifest_sha256": payload_manifest_sha256,
             "harness_sha256": contract["harness"]["sha256"],
             "implementation_sha256": _sha_file(Path(__file__).resolve()),
         },
@@ -468,8 +540,10 @@ def _build_receipt(chain: Mapping[str, Any], summary: Mapping[str, Any], root: P
             "exact_selector_payload_materialized": exact,
             "deterministic_repeat_pass": True,
             "materialization": "IN_MEMORY_ONLY",
-            "grammar_parameter_evidence": copy.deepcopy(summary.get("grammar_parameter_evidence")),
+            "grammar_parameter_evidence": grammar_evidence,
+            "request_payload_manifest_sha256": payload_manifest_sha256,
         },
+        "payload_manifest": payload_manifest,
         "semantic_limits": copy.deepcopy(EXPECTED_SEMANTIC_LIMITS),
         "readiness": {
             "canonical_request_chain_passed": True,
@@ -563,6 +637,70 @@ def _validate_receipt(receipt: Mapping[str, Any], root: Path) -> bool:
     if not _is_sha(source.get("request_hash")) or not _is_sha(source.get("plan_hash")) or not _is_sha(source.get("editorial_hash")):
         raise DynamicRequestPayloadBindingError("Receipt canonical request/plan/editorial hashes are malformed")
 
+    manifest = receipt.get("payload_manifest")
+    if not isinstance(manifest, Mapping):
+        raise DynamicRequestPayloadBindingError("Receipt is missing its request-scoped payload manifest")
+    manifest_unsigned = {str(k): copy.deepcopy(v) for k, v in manifest.items() if k != "manifest_sha256"}
+    manifest_sha = manifest.get("manifest_sha256")
+    if not _is_sha(manifest_sha) or manifest_sha != _sha_json(manifest_unsigned):
+        raise DynamicRequestPayloadBindingError("Request-scoped payload manifest digest mismatch")
+    if manifest.get("schema") != PAYLOAD_MANIFEST_SCHEMA_ID or manifest.get("schema_version") != "1.0" or manifest.get("status") != PAYLOAD_MANIFEST_STATUS:
+        raise DynamicRequestPayloadBindingError("Request-scoped payload manifest identity/status mismatch")
+    if manifest.get("frozen_c11c_manifest_sha256") != EXPECTED_MANIFEST_SHA256:
+        raise DynamicRequestPayloadBindingError("Payload manifest immutable C11-C pin mismatch")
+    manifest_request = manifest.get("request_identity")
+    manifest_lineage = manifest.get("source_lineage")
+    manifest_payload = manifest.get("payload_identity")
+    manifest_governance = manifest.get("governance")
+    if not all(isinstance(item, Mapping) for item in (manifest_request, manifest_lineage, manifest_payload, manifest_governance)):
+        raise DynamicRequestPayloadBindingError("Payload manifest sections must be objects")
+    expected_manifest_governance = {
+        "candidate_input_admissible": False, "video_render_ready": False,
+        "renderer_native_input_emitted": False, "renderer_dispatch_invoked": False,
+        "media_created": False, "d4_8": "BLOCKED", "release_authority": "NONE",
+    }
+    if dict(manifest_governance) != expected_manifest_governance:
+        raise DynamicRequestPayloadBindingError("Payload manifest attempted to promote candidate/renderer governance")
+    for field, expected_value in {
+        "request_id": identity.get("request_id"), "content_type": identity.get("content_type"),
+        "selection": identity.get("selection"), "gameplay_seed": identity.get("gameplay_seed"),
+        "music_seed": identity.get("music_seed"), "variation_index": identity.get("variation_index"),
+        "presentation_profile_id": identity.get("presentation_profile_id"), "delivery_profile_id": identity.get("delivery_profile_id"),
+        "canonical_request_sha256": source.get("request_hash"), "plan_sha256": source.get("plan_hash"),
+        "editorial_sha256": source.get("editorial_hash"),
+    }.items():
+        if manifest_request.get(field) != expected_value:
+            raise DynamicRequestPayloadBindingError(f"Payload manifest request identity mismatch at {field}")
+    expected_lineage = {
+        "bridge_record_sha256": source.get("bridge_record_hash"),
+        "adapter_envelope_sha256": source.get("adapter_envelope_hash"),
+        "request_scoped_binding_sha256": source.get("request_scoped_binding_sha256"),
+        "binding_preview_sha256": source.get("binding_preview_sha256"),
+        "logical_composition_sha256": source.get("logical_composition_sha256"),
+        "frame_program_sha256": source.get("frame_program_sha256"),
+        "temporal_preview_sha256": source.get("temporal_preview_sha256"),
+        "delivery_projection_sha256": source.get("delivery_projection_sha256"),
+        "editorial_review_manifest_sha256": source.get("editorial_review_manifest_sha256"),
+        "definition_source_sha256": source.get("definition_source_sha256"),
+        "registry_sha256": source.get("registry_sha256"),
+        "request_scoped_binding_lineage_sha256": source.get("binding_source_lineage_sha256"),
+        "dynamic_binding_lineage_sha256": source.get("source_lineage_sha256"),
+    }
+    if dict(manifest_lineage) != expected_lineage:
+        raise DynamicRequestPayloadBindingError("Payload manifest source lineage does not match the request chain")
+    grammar_instance_sha = grammar_evidence.get("parameter_instance_sha256") if isinstance(grammar_evidence, Mapping) else None
+    expected_payload_identity = {
+        "payload_sha256": evidence.get("payload_sha256"), "visual_state_sha256": evidence.get("visual_state_sha256"),
+        "payload_scope": evidence.get("payload_scope"),
+        "exact_selector_payload_materialized": evidence.get("exact_selector_payload_materialized"),
+        "materialization": evidence.get("materialization"),
+        "grammar_parameter_instance_sha256": grammar_instance_sha,
+    }
+    if dict(manifest_payload) != expected_payload_identity:
+        raise DynamicRequestPayloadBindingError("Payload manifest digest target differs from the materialized payload evidence")
+    if source.get("request_payload_manifest_sha256") != manifest_sha or evidence.get("request_payload_manifest_sha256") != manifest_sha:
+        raise DynamicRequestPayloadBindingError("Request payload manifest hash is not propagated into receipt identity/evidence")
+
     identity_core = {
         "request_id": identity.get("request_id"),
         "content_type": identity.get("content_type"),
@@ -580,6 +718,7 @@ def _validate_receipt(receipt: Mapping[str, Any], root: Path) -> bool:
         "source_binding_sha256": source.get("source_binding_sha256"),
         "payload_sha256": evidence.get("payload_sha256"),
         "visual_state_sha256": evidence.get("visual_state_sha256"),
+        "request_payload_manifest_sha256": manifest_sha,
         "frozen_c11c_manifest_sha256": EXPECTED_MANIFEST_SHA256,
     }
     if identity.get("request_binding_sha256") != _sha_json(identity_core):
@@ -720,8 +859,8 @@ def main(argv: list[str] | None = None) -> int:
             for receipt in receipts:
                 r = receipt["request_identity"]
                 p = receipt["payload_evidence"]
-                print("C11-D DYNAMIC REQUEST PAYLOAD RECEIPT=" + json.dumps({"request_id":r["request_id"],"content_type":r["content_type"],"gameplay_seed":r["gameplay_seed"],"music_seed":r["music_seed"],"variation_index":r["variation_index"],"delivery_profile_id":r["delivery_profile_id"],"payload_sha256":p["payload_sha256"],"visual_state_sha256":p["visual_state_sha256"],"payload_scope":p["payload_scope"],"exact_selector_payload_materialized":p["exact_selector_payload_materialized"],"grammar_parameter_evidence":p["grammar_parameter_evidence"],"request_binding_sha256":r["request_binding_sha256"]},ensure_ascii=False,sort_keys=True,separators=(",", ":")))
-            print("C11-D DYNAMIC REQUEST PAYLOAD BINDING PASS | cases=%d | selector_types=3/3 | gameplay_seed_binding=%d/3 | orthogonality=%d/4 | source_pins=%d/%d | longform=REJECTED | loop_grammar_instance=HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE" % (stats["cases"], stats["seed_isolation"], stats["orthogonality"], len(data[3]), len(data[3])))
+                print("C11-D DYNAMIC REQUEST PAYLOAD RECEIPT=" + json.dumps({"request_id":r["request_id"],"content_type":r["content_type"],"gameplay_seed":r["gameplay_seed"],"music_seed":r["music_seed"],"variation_index":r["variation_index"],"delivery_profile_id":r["delivery_profile_id"],"payload_sha256":p["payload_sha256"],"visual_state_sha256":p["visual_state_sha256"],"payload_scope":p["payload_scope"],"exact_selector_payload_materialized":p["exact_selector_payload_materialized"],"grammar_parameter_evidence":p["grammar_parameter_evidence"],"request_binding_sha256":r["request_binding_sha256"],"request_payload_manifest_sha256":receipt["source_identity"]["request_payload_manifest_sha256"]},ensure_ascii=False,sort_keys=True,separators=(",", ":")))
+            print("C11-D DYNAMIC REQUEST PAYLOAD BINDING PASS | cases=%d | selector_types=3/3 | gameplay_seed_binding=%d/3 | orthogonality=%d/4 | source_pins=%d/%d | request_payload_manifest=10/10 | lineage_closure=10/10 | longform=REJECTED | loop_grammar_instance=HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE" % (stats["cases"], stats["seed_isolation"], stats["orthogonality"], len(data[3]), len(data[3])))
         return 0
     except Exception as exc:
         print("C11-D DYNAMIC REQUEST PAYLOAD BINDING FAIL | %s | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE" % str(exc))

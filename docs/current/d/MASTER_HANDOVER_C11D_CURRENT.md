@@ -23,7 +23,7 @@ The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 t
 - Editorial routing, field-consumption audit, request-scoped materialization/binding, renderer candidate I/O, unified review and actual bounded Godot harness block: operator reported PASS.
 - Request-scoped editorial value carrier: focused contract and Godot runner PASS. Its defined result remains metadata/sidecar-only; no payload text injection or visual consumption is claimed.
 
-Current next work: validate the additive Visual Loop composite payload integration overlay in the active Windows checkout. First run the focused Python contract tests, then the ten-case dynamic request-to-payload matrix and the separate Visual Loop grammar audit/parameter-instance runners against actual Windows Godot 4.7.1; use D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md. If green, rerun the I/O gap and candidate identity audits plus lifecycle and baseline preflight. This increment adds an in-memory D-owned composite for harmonic_membrane only; it does not make the family authoring adapter grammar-aware and does not prove renderer input, shader output or media. Do not implement editorial visual consumption until field-to-region and visibility policies have separate explicit approval.
+Current next work: accept the request-specific payload-manifest increment on the active Windows checkout. Run the updated dynamic-binding Python contract and ten-case real Godot 4.7.1 runner, then refresh the I/O gap audit and candidate identity inventory and run unified review, cross-suite lifecycle and baseline-candidate preflight. Use D_RENDERER_REQUEST_PAYLOAD_MANIFEST_CHECKPOINT_V1.md. Next, review D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md; all region, visibility, timebase, sampling/coordinates, temporal and audio choices remain unapproved until an explicit versioned decision is recorded. Expand selector coverage only where canonical catalog and D-owned adapters prove support.
 
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->
@@ -472,3 +472,9 @@ The view model joins existing reactive selection/catalog, editorial draft, GUI s
 After Windows focused acceptance, run parent regressions and the baseline-candidate preflight. Then return to D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md for a read-only audit of the existing D renderer input/output contract against candidate I/O, request-scoped binding preview, logical composition, and renderer-neutral frame program. Do not create another parallel editorial binding.
 
 Governance unchanged: C11-C 2.19.12 and manifest immutable; D9.10 PREPARE_ONLY; D4.8 BLOCKED; renderer OFF; media_created=false; release_authority=NONE; D9.17 NO-GO; D10 blocked.
+
+
+<!-- FUTURE_C11D_BASELINE_PRODUCER_CUTOVER_TARGET -->
+## Future C11-D baseline and Producer cutover
+
+After every C11-D gate is closed and formal approval, freeze and promotion are accepted, the C11-D branch and its Producer are intended to replace frozen C11-C as the authoritative baseline and Producer. This is a future cutover target, not current release authority. Until that formal cutover, C11-C 2.19.12 and its frozen manifest remain immutable.

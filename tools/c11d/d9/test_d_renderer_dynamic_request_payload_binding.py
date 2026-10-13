@@ -108,7 +108,7 @@ def _expect_reject(label: str, action: Callable[[], Any]) -> None:
 
 
 def run_checks() -> dict[str, int]:
-    counts = {"source_pins": 0, "schemas": 0, "dynamic_cases": 0, "seed_isolation": 0, "orthogonality": 0, "negative": 0}
+    counts = {"source_pins": 0, "schemas": 0, "dynamic_cases": 0, "seed_isolation": 0, "orthogonality": 0, "manifest_cases": 0, "lineage_closure": 0, "negative": 0}
     contract, input_schema, output_schema, lineage = _load_contract(ROOT)
     assert len(lineage) == len(contract["source_lineage"]) >= 30
     assert lineage[0]["path"] == "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
@@ -171,6 +171,19 @@ def run_checks() -> dict[str, int]:
         assert receipt["readiness"]["video_render_ready"] is False
         assert receipt["execution_boundary"] == EXPECTED_BOUNDARY
         assert receipt["semantic_limits"] == EXPECTED_SEMANTIC_LIMITS
+        manifest = receipt["payload_manifest"]
+        assert manifest["manifest_sha256"] == _sha_json({k: v for k, v in manifest.items() if k != "manifest_sha256"})
+        assert receipt["source_identity"]["request_payload_manifest_sha256"] == manifest["manifest_sha256"]
+        assert receipt["payload_evidence"]["request_payload_manifest_sha256"] == manifest["manifest_sha256"]
+        assert manifest["request_identity"]["request_id"] == receipt["request_identity"]["request_id"]
+        assert manifest["request_identity"]["canonical_request_sha256"] == receipt["source_identity"]["request_hash"]
+        assert manifest["source_lineage"]["binding_preview_sha256"] == receipt["source_identity"]["binding_preview_sha256"]
+        assert manifest["source_lineage"]["logical_composition_sha256"] == receipt["source_identity"]["logical_composition_sha256"]
+        assert manifest["source_lineage"]["frame_program_sha256"] == receipt["source_identity"]["frame_program_sha256"]
+        assert manifest["payload_identity"]["payload_sha256"] == receipt["payload_evidence"]["payload_sha256"]
+        assert manifest["governance"]["candidate_input_admissible"] is False
+        counts["manifest_cases"] += 1
+        counts["lineage_closure"] += 1
         counts["negative"] += 1
     loop = by_id["D-DYNAMIC-VISUAL_LOOPS-BASE"]
     loop_editorial = by_id["D-DYNAMIC-VISUAL_LOOPS-EDITORIAL-ONLY"]
@@ -222,6 +235,24 @@ def run_checks() -> dict[str, int]:
     _expect_reject("visual-state hash not rebound to request", lambda: _validate_receipt(tampered, ROOT))
     counts["negative"] += 1
 
+    tampered = copy.deepcopy(receipts[0])
+    tampered["payload_manifest"]["source_lineage"]["frame_program_sha256"] = "0" * 64
+    tampered["payload_manifest"]["manifest_sha256"] = _sha_json({k: v for k, v in tampered["payload_manifest"].items() if k != "manifest_sha256"})
+    tampered["source_identity"]["request_payload_manifest_sha256"] = tampered["payload_manifest"]["manifest_sha256"]
+    tampered["payload_evidence"]["request_payload_manifest_sha256"] = tampered["payload_manifest"]["manifest_sha256"]
+    tampered["receipt_sha256"] = _sha_json({k: v for k, v in tampered.items() if k != "receipt_sha256"})
+    _expect_reject("payload manifest detached from source lineage", lambda: _validate_receipt(tampered, ROOT))
+    counts["negative"] += 1
+
+    tampered = copy.deepcopy(receipts[0])
+    tampered["payload_manifest"]["governance"]["candidate_input_admissible"] = True
+    tampered["payload_manifest"]["manifest_sha256"] = _sha_json({k: v for k, v in tampered["payload_manifest"].items() if k != "manifest_sha256"})
+    tampered["source_identity"]["request_payload_manifest_sha256"] = tampered["payload_manifest"]["manifest_sha256"]
+    tampered["payload_evidence"]["request_payload_manifest_sha256"] = tampered["payload_manifest"]["manifest_sha256"]
+    tampered["receipt_sha256"] = _sha_json({k: v for k, v in tampered.items() if k != "receipt_sha256"})
+    _expect_reject("payload manifest cannot self-approve candidate input", lambda: _validate_receipt(tampered, ROOT))
+    counts["negative"] += 1
+
     # A source-pin drift is rejected and original bytes restored exactly, including line endings.
     pinned = ROOT / lineage[14]["path"]
     original = pinned.read_bytes()
@@ -241,7 +272,8 @@ if __name__ == "__main__":
         "C11-D DYNAMIC REQUEST PAYLOAD BINDING CONTRACT PASS"
         + f" | tests=12/12 | source_pins={c['source_pins']}/{c['source_pins']} | schemas={c['schemas']}/2"
         + f" | dynamic_cases={c['dynamic_cases']}/10 | gameplay_seed_binding={c['seed_isolation']}/3"
-        + f" | orthogonality={c['orthogonality']}/4 | fail_closed_negatives={c['negative']}"
+        + f" | orthogonality={c['orthogonality']}/4 | request_payload_manifests={c['manifest_cases']}/10"
+        + f" | lineage_closure={c['lineage_closure']}/10 | fail_closed_negatives={c['negative']}"
         + " | exact_loop_grammar_instance=HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED | renderer_input=NOT_EMITTED | renderer=OFF"
         + " | media_created=false | D4.8=BLOCKED | release_authority=NONE"
     )

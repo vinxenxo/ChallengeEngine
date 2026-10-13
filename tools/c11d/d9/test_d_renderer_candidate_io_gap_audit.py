@@ -24,9 +24,12 @@ class RendererCandidateIOGapAuditTests(unittest.TestCase):
 
     def test_payload_and_editorial_status_are_not_overstated(self):
         rows = {row["group"]: row for row in self.__class__.report["input_groups"]}
-        self.assertEqual(rows["payload_instance"]["state"], "PARTIAL_FIXED_IN_MEMORY_PAYLOAD_BINDINGS")
+        self.assertEqual(rows["payload_instance"]["state"], "PARTIAL_REQUEST_BOUND_MANIFEST_FOR_PINNED_SELECTOR_MATRIX")
+        self.assertIn("hash-closed request-specific payload manifest", rows["payload_instance"]["finding"])
+        self.assertEqual(rows["source_lineage"]["state"], "PARTIAL_REQUEST_BOUND_LINEAGE_MANIFEST_FOR_PINNED_MATRIX")
         self.assertEqual(rows["editorial"]["state"], "PARTIAL_HASH_BOUND_SIDECAR_NOT_VISUALLY_CONSUMED")
         self.assertIn("0/14", rows["editorial"]["finding"])
+        self.assertIn("request_payload_manifest_sha256", " ".join(rows["payload_instance"]["evidence"]))
 
     def test_report_and_governance_are_deterministic_and_locked(self):
         report = self.__class__.report

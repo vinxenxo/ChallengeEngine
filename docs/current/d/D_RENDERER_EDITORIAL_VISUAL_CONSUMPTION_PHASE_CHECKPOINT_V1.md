@@ -116,3 +116,16 @@ Use the installed Godot 4.7.1 console binary if `godot` is not on `PATH`. Do not
 - Longform is outside current scope.
 
 This checkpoint captures the latest operator-reported PASS results; it does not itself change any gate or approve a policy.
+
+## Superseding continuation — request payload manifest and consolidated policy review (2026-10-13)
+
+The operator has reported PASS on the existing Visual Loop composite integration, the actual Godot 4.7.1 dynamic matrix and independent grammar gates, unified review, D9.13 lifecycle and baseline-candidate preflight. The newly prepared request-manifest increment extends the same dynamic binder with a self-hash-closed per-request manifest and expanded source identity inventory; its updated output must still be accepted in Windows.
+
+The preparation checks currently report 10/10 request-manifest closures and 10/10 bounded lineage closures; the I/O audit remains 0/10 complete, 6 partial, 4 blocked and editorial visual consumption remains 0/14. No catalog-wide coverage is inferred from three selectors. `harmonic_membrane` remains the only Loop grammar composite in scope.
+
+`D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md` consolidates existing proposal hashes for semantic presentation regions, Challenge and Loop/Drill editorial windows, timebase/temporal alignment, simulation sample selection, coordinate composition/projection, and audio/music delivery. All rows are PENDING; this review packet is not approval. No visual consumer may be implemented until the applicable region/visibility policy is explicitly approved in a versioned D-owned decision contract.
+
+After the new manifest runtime receipts are accepted, refresh the I/O audit and candidate identity inventory, then run unified review, cross-suite lifecycle and baseline preflight. Preserve `renderer=OFF`, no media, D4.8 BLOCKED, release authority NONE, baseline approval missing and freeze ineligible.
+
+Future cutover target: once all C11-D gates are closed and formal approval/freeze/promotion is accepted, C11-D and its Producer replace frozen C11-C as the authoritative baseline and Producer. This target grants no current authority; C11-C 2.19.12 and its manifest remain immutable until that formal cutover.
+

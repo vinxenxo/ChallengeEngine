@@ -71,6 +71,16 @@
       "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
     },
     {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "4c815b9dfe8ea47384944375d5226581fa98e652aff81a44181ccdf4f3220aaf"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "1f6ff6a4cafe210c139b7a3d315a2756e2c2325898c8251782c73abaee9af3ef"
+    },
+    {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
       "sha256": "101bdf4234fbbafa7f591439800f8985839ad60ed554dd03481a769590648657"
@@ -164,6 +174,16 @@
       "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
       "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "ca6a9c384494fcd7f1072ced5f8dfb740b67ec5d4014412fe107ba1283bb893c"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
@@ -381,6 +401,11 @@
       "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
     },
     {
+      "path": "tools/c11d/d9/d_renderer_candidate_io_gap_audit.py",
+      "role": "READ_ONLY_SOURCE_PINNED_IO_GAP_AUDIT",
+      "sha256": "e056d45c02c00a9667b83335f40406064a6a994500ef8a51881db77e815d5ba1"
+    },
+    {
       "path": "tools/c11d/d9/d_renderer_challenge_coordinate_projection.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
       "sha256": "19e59fec446189a95820115e72f4239595c5890df1da4aebc55a3d75f5e1cd35"
@@ -419,6 +444,11 @@
       "path": "tools/c11d/d9/d_renderer_delivery_timebase_projection.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
       "sha256": "63f6aa6cdb446c9faa9ca4bafe0933d79b2e3e297e3668d00a48fd59da54b3ac"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "role": "DYNAMIC_REQUEST_TO_PAYLOAD_BINDER_WITH_HASH_CLOSED_MANIFEST",
+      "sha256": "7d74442e829d6bf1cd7e568739d95b514caaa46da4ee9d7dd17a1709ceba882f"
     },
     {
       "path": "tools/c11d/d9/d_renderer_editorial_field_consumption_audit.py",
@@ -531,6 +561,11 @@
       "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e"
     },
     {
+      "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_GODOT_HARNESS",
+      "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440"
+    },
+    {
       "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
       "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
       "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
@@ -564,6 +599,11 @@
       "path": "tools/c11d/d9/test_d_renderer_candidate_io_contract.py",
       "role": "FOCUSED_REGRESSION_TEST",
       "sha256": "d39f61148c7a4e0238f4b51ee27060c16ac944fe7c7a4c492632eebbccf4d3eb"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
+      "role": "SOURCE_PINNED_IO_GAP_AUDIT_TESTS",
+      "sha256": "eef57ba9fe2da2e3403bfd5d20a2bd6f92785600df6f43ae3c19128d94a09349"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_challenge_coordinate_projection.py",
@@ -604,6 +644,11 @@
       "path": "tools/c11d/d9/test_d_renderer_delivery_timebase_projection.py",
       "role": "FOCUSED_REGRESSION_TEST",
       "sha256": "9cfe9d5e36a5c6dbb556074bc8a1389319756ef0895371fb92d3592d08d819c6"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding.py",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_MANIFEST_TESTS",
+      "sha256": "9a7805ef88152b0d126b59de98872895941e714e017c87aec8a8d9a18ad891b3"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_editorial_field_consumption_audit.py",
@@ -716,6 +761,11 @@
     "docs/current/d/D_RENDERER_UNIFIED_CONTENT_REVIEW_CHECKPOINT_V1.md",
     "docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md",
     "docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+    "docs/current/d/D_RENDERER_REQUEST_PAYLOAD_MANIFEST_CHECKPOINT_V1.md",
     "docs/current/d/C11D_CONTEXT_CHECKPOINT_D10_20261011.md",
     "docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md",
     "docs/current/d/START_PROMPT_C11D_CURRENT.md",
