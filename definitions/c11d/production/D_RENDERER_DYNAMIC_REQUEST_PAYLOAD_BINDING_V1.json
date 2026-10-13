@@ -2,7 +2,7 @@
   "schema": "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V1",
   "schema_version": "1.0",
   "status": "PREPARATION_ONLY_DYNAMIC_REQUEST_BOUND_IN_MEMORY_PAYLOAD_REVIEW_NOT_RENDERER_INPUT",
-  "purpose": "Bind canonical D9.9 request identities and dynamic gameplay seed values to deterministic in-memory visual payload evidence; separately digest seed-derived visual parameters/frames so a seed change cannot pass merely by changing request metadata; keep unsupported selector variants and unapproved renderer semantics fail-closed.",
+  "purpose": "Bind canonical D9.9 request identities to deterministic in-memory payload evidence. For the single pinned Visual Loop selector harmonic_membrane, compose the existing family authoring envelope with a hash-bound 20-parameter grammar instance; this does not make the family authoring adapter grammar-aware and is not renderer input, shader execution, or media.",
   "supported_content_types": [
     "challenges",
     "visual_loops",
@@ -26,8 +26,8 @@
         "subtype_id": "harmonic_membrane",
         "variant_id": null
       },
-      "payload_scope": "VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED",
-      "exact_selector_payload_materialized": false
+      "payload_scope": "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1",
+      "exact_selector_payload_materialized": true
     },
     "visual_drills": {
       "selection": {
@@ -54,11 +54,11 @@
     "non_matrix_selector_or_variant": "REJECTED",
     "non_social_default_presentation_profile": "REJECTED",
     "longform_delivery_profile": "REJECTED",
-    "visual_loop_exact_grammar_instance": "NOT_MATERIALIZED"
+    "visual_loop_grammars_other_than_harmonic_membrane": "REJECTED"
   },
   "harness": {
     "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
-    "sha256": "2a477a92fcf18c6aa61d014ee4e20d990cb110607c8ca3c64bff530d0ee1f836",
+    "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440",
     "invocation": "godot --headless --path <repo> --script res://tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd -- <base64-canonical-envelope>",
     "output_channel": "STDOUT_ONLY"
   },
@@ -225,6 +225,30 @@
     {
       "path": "assets/c6/parking_target.svg",
       "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "71b54908480a59b8abd42f38e4eb2ace37da48178591e75510f6d7111ce66f00"
+    },
+    {
+      "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
     }
   ],
   "execution_boundary": {
@@ -262,5 +286,35 @@
     "d10": "BLOCKED",
     "release_authority": "NONE"
   },
-  "candidate_input_admissible": false
+  "candidate_input_admissible": false,
+  "visual_loop_grammar_composition": {
+    "status": "PREPARATION_ONLY_COMPOSITE_PAYLOAD_MATERIALIZED_IN_MEMORY",
+    "selection": {
+      "content_type": "visual_loops",
+      "family_id": "c11c_geometric_waves_v1",
+      "subtype_id": "harmonic_membrane",
+      "variant_id": null
+    },
+    "payload_member_path": "grammar_parameter_instance",
+    "grammar_id": "harmonic_membrane",
+    "grammar_index": 0,
+    "shader_branch": "field_harmonic_membrane",
+    "shader_uniform": "grammar_mode",
+    "style_parameter_count": 20,
+    "profile_input_aliases": {
+      "glow": "glow_strength"
+    },
+    "family_authoring_envelope_subtype": "geometric",
+    "family_authoring_adapter_itself_grammar_aware": false,
+    "only_pinned_selector_admitted": true,
+    "other_visual_loop_grammars": "REJECTED_BY_CANONICAL_REQUEST_SELECTOR_MATRIX",
+    "renderer_native_input_emitted": false,
+    "renderer_created": false,
+    "shader_executed": false,
+    "media_created": false
+  },
+  "boundary_notes": {
+    "exact_loop_selector_payload": "Only the composite in-memory payload for c11c_geometric_waves_v1/harmonic_membrane is materialized. The family adapter output remains subtype=geometric and is not grammar-aware. No other grammar is admitted.",
+    "editorial_visual_consumption": "No editorial fields are included in the visual payload; 0/14 editorial values remain consumed until separate field-to-region/window policy approval."
+  }
 }

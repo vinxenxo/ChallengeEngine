@@ -1,5 +1,7 @@
 # C11-D — Dynamic Request → Payload Binding Checkpoint V1
 
+**Current state after Visual Loop grammar runtime gates:** the separate Grammar Binding Audit and Grammar Parameter Instance gates have been operator-reported PASS on Godot 4.7.1. This increment composes their pinned `harmonic_membrane@0` 20-parameter instance into the existing D dynamic request→payload review object for the one admitted Visual Loop selector. It does not make `VisualLoopAuthoringAdapter` grammar-aware and does not instantiate a renderer, execute a shader, emit renderer-native input, or create media.
+
 **Checkpoint state:** JSON numeric-type compatibility repair prepared after the first real Godot 4.7.1 run rejected integer-valued JSON numbers as non-`TYPE_INT`; Python contract tests pass in the isolated merged preparation tree; **actual Godot 4.7.1 Windows rerun remains required**. Not approved for candidate input or rendering.
 
 ## 1. Why this increment exists
@@ -13,7 +15,7 @@ The default Python runner evaluates ten requests: a base and a gameplay-seed-onl
 | Content type | Pinned selector | Payload claim |
 |---|---|---|
 | Challenge | `parking_v2 / CHALLENGE_004` | Dynamic source copy changes `generation.seed` in memory and passes through the runtime bridge. It captures source-timebase gameplay-frame visual records. Exact fixed selector payload probe: `true`. |
-| Visual Loop | `c11c_geometric_waves_v1 / harmonic_membrane` | Uses the deterministic geometric family variation, palette and authoring envelope. Authoring output remains `geometric`; grammar consumption is not proven. Exact selected grammar payload: `false`, scope remains `VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED`. |
+| Visual Loop | `c11c_geometric_waves_v1 / harmonic_membrane` | D-owned composite keeps the authoring envelope (`geometric`) and adds a hash-bound `grammar_parameter_instance` for `harmonic_membrane@0`, branch `field_harmonic_membrane`, uniform `grammar_mode`, 20 style parameters. Exact pinned selector composite payload: `true`, scope `VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1`. The family adapter itself remains grammar-agnostic; other grammar IDs remain rejected. |
 | Visual Drill | `tracking / tier-2` | Dynamic seed is applied to the Visual Authoring context and checks the seeded motion/trajectory envelope. Exact fixed selector payload probe: `true`. |
 
 No additional family, grammar, Drill tier, Challenge variant or Longform selector is admitted. The selector matrix is a review-only sample, not a catalogue-wide certification.
@@ -25,7 +27,7 @@ Each Godot summary emits both:
 - `payload_sha256`: hash of the complete bounded in-memory payload, including its request-specific source identity.
 - `visual_state_sha256`: a separate digest of seed-derived visual evidence, excluding a bare seed label where applicable. For Challenge, this is the actual serialized gameplay-frame record signature; for Visual Loop, the deterministic family variation/palette/authoring visual parameters and timing; for Visual Drill, the seed-derived trajectory and motion parameters with direct seed/version labels removed.
 
-The runner requires the visual-state digest to change between base and gameplay-seed-only requests in all three content types. It also requires Visual Loop visual-state and payload hashes to remain unchanged when only music seed, `variation_index`, delivery profile identity or editorial title changes, while the canonical request-binding identity changes.
+The runner requires the visual-state digest to change between base and gameplay-seed-only requests in all three content types. For Visual Loop, the nested grammar-parameter evidence and complete in-memory composite hashes are included; the hashes must remain unchanged when only music seed, `variation_index`, delivery profile identity or editorial title changes, while canonical request-binding identity changes.
 
 These relations still require execution against real Godot 4.7.1. The Python test intentionally mocks the subprocess, proving Python contract behavior only.
 
@@ -33,7 +35,7 @@ These relations still require execution against real Godot 4.7.1. The Python tes
 
 Input envelope has exact keys and is constrained by JSON Schema Draft 2020-12 to the fixed selector matrix, seed domains, `social_default_v1`, and four non-Longform delivery IDs. Unknown keys, unsupported selectors, `LONGFORM_1080` and unapproved presentation profiles fail closed.
 
-The Python runner reuses the existing D9.9 canonical universal-request evaluator, D9.10 editorial bridge, D-owned adapter and request-scoped binding, then passes only the canonical envelope fields to Godot. It verifies the summary, strict in-memory receipt schema, source lineage pins (40 total, frozen C11-C manifest first), and nested binding digest. Receipts are printed to stdout, not persisted.
+The Python runner reuses the existing D9.9 canonical universal-request evaluator, D9.10 editorial bridge, D-owned adapter and request-scoped binding, then passes only the canonical envelope fields to Godot. It verifies the summary, strict in-memory receipt schema, source lineage pins (46 total after adding the output-schema and frozen grammar/prototype source identities; frozen C11-C manifest first), and nested binding digest. Receipts are printed to stdout, not persisted.
 
 ## 5. Safety / governance boundary
 
@@ -42,7 +44,7 @@ The Python runner reuses the existing D9.9 canonical universal-request evaluator
 - No use of `winning_frame` or `close_calls` as timing; simulation telemetry is excluded.
 - No delivery resampling, coordinate projection, visual-region policy, editorial visual consumption, audio/music rendering, renderer-native input, renderer dispatch or media output.
 - `music_seed` stays outside visual-state generation; `variation_index` remains metadata only; delivery-profile identity does not apply geometric/timing transforms.
-- Existing editorial carrier still has 14/14 canonical values hash-bound and 0/14 visually consumed.
+- Existing editorial carrier still has 14/14 canonical values hash-bound and 0/14 visually consumed. The composite grammar instance is not editorial visual consumption.
 - `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; baseline approval absent; freeze eligibility false; D9.14/D9.16 blocked; D9.17 NO-GO; D10 blocked.
 
 ## 6. Validation performed in preparation
@@ -64,7 +66,7 @@ From the repository root, after extracting the overlay and running the contract 
 
 `python -B .\tools\c11d\d9\d_renderer_dynamic_request_payload_binding.py --godot $env:C11D_GODOT_EXECUTABLE --timeout 120`
 
-Required final summary includes `cases=10`, `selector_types=3/3`, `gameplay_seed_binding=3/3`, `orthogonality=4/4`, `loop_grammar_instance=UNRESOLVED`, `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`. A failure should be diagnosed before any further payload-consumer work.
+Required final summary includes `cases=10`, `selector_types=3/3`, `gameplay_seed_binding=3/3`, `orthogonality=4/4`, `loop_grammar_instance=HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED`, `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`. The runtime must provide valid `grammar_parameter_evidence` for the Loop case; all four orthogonality variants must preserve visual/payload digests.
 
 Then run the targeted regressions separately:
 
@@ -79,4 +81,8 @@ python -B .\tools\c11d\baseline_candidate\test_d_baseline_candidate.py
 
 ## 9. Next step after runtime PASS
 
-Review runtime evidence and source/seed relationships before proposing another additive increment. The most material remaining limitation is the Visual Loop selector-to-grammar gap. Do not build a visual editor/consumer for `harmonic_membrane` until its grammar-instance integration is proven and the relevant presentation/timing policies are formally approved. This checkpoint does not authorize D4.8, D9.14 full media certification, D9.16, D9.17 closure, D10 closure, renderer baseline approval/freeze, or release.
+Review runtime evidence and source/seed relationships before proposing another additive increment. The previously open selector-to-grammar composition gap is now addressed for the single pinned `harmonic_membrane` selector only, pending Windows acceptance of this new composite integration increment. The remaining I/O gaps, exact native renderer input, renderer-visible drawing, delivery/timebase/coordinate projection, and editorial field-to-region/visibility policies are still open. Do not build a visual editor/consumer until the relevant presentation/timing/editorial policies receive explicit approval. This checkpoint does not authorize D4.8, D9.14 full media certification, D9.16, D9.17 closure, D10 closure, renderer baseline approval/freeze, or release.
+
+## 10. Future C11-D promotion/cutover target
+
+The intended end state, only after all C11-D gates are formally closed and a new baseline is explicitly accepted/frozen, is for the accepted C11-D branch and its Producer to replace frozen C11-C as the authoritative working baseline. This is a future target, not current release authority. Until formal D closure, independent baseline approval, freeze and cutover are complete, C11-C 2.19.12 and its manifest remain immutable and authoritative for all existing pins. Do not mutate the C11-C freeze package or promote D from this checkpoint.

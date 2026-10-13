@@ -185,7 +185,8 @@
         "payload_scope",
         "exact_selector_payload_materialized",
         "deterministic_repeat_pass",
-        "materialization"
+        "materialization",
+        "grammar_parameter_evidence"
       ],
       "properties": {
         "payload_sha256": {
@@ -199,7 +200,7 @@
         "payload_scope": {
           "enum": [
             "CHALLENGE_RUNTIME_VISUAL_PAYLOAD_SOURCE_TIMEBASE",
-            "VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED",
+            "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1",
             "VISUAL_DRILL_TIER_SEED_PAYLOAD"
           ]
         },
@@ -211,6 +212,72 @@
         },
         "materialization": {
           "const": "IN_MEMORY_ONLY"
+        },
+        "grammar_parameter_evidence": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "composition_role",
+                "payload_member_path",
+                "payload_contains_instance",
+                "grammar_id",
+                "grammar_index",
+                "shader_branch",
+                "shader_uniform",
+                "style_parameter_count",
+                "style_parameters_sha256",
+                "parameter_instance_sha256",
+                "family_authoring_envelope_subtype",
+                "family_authoring_adapter_itself_grammar_aware"
+              ],
+              "properties": {
+                "composition_role": {
+                  "const": "D_OWNED_COMPOSITE_REVIEW_PAYLOAD"
+                },
+                "payload_member_path": {
+                  "const": "grammar_parameter_instance"
+                },
+                "payload_contains_instance": {
+                  "const": true
+                },
+                "grammar_id": {
+                  "const": "harmonic_membrane"
+                },
+                "grammar_index": {
+                  "const": 0
+                },
+                "shader_branch": {
+                  "const": "field_harmonic_membrane"
+                },
+                "shader_uniform": {
+                  "const": "grammar_mode"
+                },
+                "style_parameter_count": {
+                  "const": 20
+                },
+                "style_parameters_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "parameter_instance_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "family_authoring_envelope_subtype": {
+                  "const": "geometric"
+                },
+                "family_authoring_adapter_itself_grammar_aware": {
+                  "const": false
+                }
+              }
+            }
+          ],
+          "description": "Null for Challenge/Drill. Exact D-owned nested evidence only for the single pinned Visual Loop harmonic_membrane composite; not renderer input."
         }
       }
     },

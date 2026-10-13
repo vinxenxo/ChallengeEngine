@@ -50,6 +50,23 @@ def _fake_process_runner(command, cwd, text, capture_output, timeout, check):
         "gameplay_seed": request["seed"],
         "presentation_profile_id": request["presentation_profile_id"],
     })
+    grammar_evidence = None
+    if content_type == "visual_loops":
+        style_sha = _sha_json({"mocked_style_for_seed": request["seed"]})
+        grammar_evidence = {
+            "composition_role": "D_OWNED_COMPOSITE_REVIEW_PAYLOAD",
+            "payload_member_path": "grammar_parameter_instance",
+            "payload_contains_instance": True,
+            "grammar_id": "harmonic_membrane",
+            "grammar_index": 0,
+            "shader_branch": "field_harmonic_membrane",
+            "shader_uniform": "grammar_mode",
+            "style_parameter_count": 20,
+            "style_parameters_sha256": style_sha,
+            "parameter_instance_sha256": _sha_json({"style_parameters_sha256": style_sha, "request_seed": request["seed"]}),
+            "family_authoring_envelope_subtype": "geometric",
+            "family_authoring_adapter_itself_grammar_aware": False,
+        }
     report = {
         "schema": "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-MATERIALIZATION-V1",
         "schema_version": "1.0",
@@ -67,6 +84,7 @@ def _fake_process_runner(command, cwd, text, capture_output, timeout, check):
         "visual_state_sha256": _sha_json({"visual_state": content_type, "seed_driven_visual_parameters": request["seed"]}),
         "payload_scope": scope,
         "exact_selector_payload_materialized": exact,
+        "grammar_parameter_evidence": grammar_evidence,
         "payload_deterministic_repeat": True,
         "payload_materialization": "IN_MEMORY_ONLY",
         "semantic_limits": copy.deepcopy(EXPECTED_SEMANTIC_LIMITS),
@@ -158,7 +176,14 @@ def run_checks() -> dict[str, int]:
     loop_editorial = by_id["D-DYNAMIC-VISUAL_LOOPS-EDITORIAL-ONLY"]
     assert loop["source_identity"]["editorial_hash"] != loop_editorial["source_identity"]["editorial_hash"]
     assert loop["payload_evidence"]["payload_sha256"] == loop_editorial["payload_evidence"]["payload_sha256"]
-    assert loop["payload_evidence"]["exact_selector_payload_materialized"] is False
+    assert loop["payload_evidence"]["exact_selector_payload_materialized"] is True
+    loop_evidence = loop["payload_evidence"]["grammar_parameter_evidence"]
+    assert loop_evidence["grammar_id"] == "harmonic_membrane"
+    assert loop_evidence["grammar_index"] == 0 and loop_evidence["style_parameter_count"] == 20
+    assert loop_evidence["family_authoring_adapter_itself_grammar_aware"] is False
+    assert loop_evidence["style_parameters_sha256"] != loop_evidence["parameter_instance_sha256"]
+    assert loop_editorial["payload_evidence"]["grammar_parameter_evidence"] == loop_evidence
+    assert by_id["D-DYNAMIC-CHALLENGES-BASE"]["payload_evidence"]["grammar_parameter_evidence"] is None
     assert by_id["D-DYNAMIC-CHALLENGES-BASE"]["payload_evidence"]["exact_selector_payload_materialized"] is True
     assert by_id["D-DYNAMIC-VISUAL_DRILLS-BASE"]["payload_evidence"]["exact_selector_payload_materialized"] is True
 
@@ -217,6 +242,6 @@ if __name__ == "__main__":
         + f" | tests=12/12 | source_pins={c['source_pins']}/{c['source_pins']} | schemas={c['schemas']}/2"
         + f" | dynamic_cases={c['dynamic_cases']}/10 | gameplay_seed_binding={c['seed_isolation']}/3"
         + f" | orthogonality={c['orthogonality']}/4 | fail_closed_negatives={c['negative']}"
-        + " | exact_loop_grammar_instance=UNRESOLVED | renderer_input=NOT_EMITTED | renderer=OFF"
+        + " | exact_loop_grammar_instance=HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED | renderer_input=NOT_EMITTED | renderer=OFF"
         + " | media_created=false | D4.8=BLOCKED | release_authority=NONE"
     )

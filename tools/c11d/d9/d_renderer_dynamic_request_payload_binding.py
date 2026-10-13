@@ -49,8 +49,27 @@ EXPECTED_SELECTIONS: dict[str, dict[str, Any]] = {
 }
 EXPECTED_SCOPE: dict[str, tuple[str, bool]] = {
     "challenges": ("CHALLENGE_RUNTIME_VISUAL_PAYLOAD_SOURCE_TIMEBASE", True),
-    "visual_loops": ("VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED", False),
+    "visual_loops": ("VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1", True),
     "visual_drills": ("VISUAL_DRILL_TIER_SEED_PAYLOAD", True),
+}
+EXPECTED_GRAMMAR_COMPOSITION = {
+    "status": "PREPARATION_ONLY_COMPOSITE_PAYLOAD_MATERIALIZED_IN_MEMORY",
+    "selection": {"content_type": "visual_loops", "family_id": "c11c_geometric_waves_v1", "subtype_id": "harmonic_membrane", "variant_id": None},
+    "payload_member_path": "grammar_parameter_instance",
+    "grammar_id": "harmonic_membrane",
+    "grammar_index": 0,
+    "shader_branch": "field_harmonic_membrane",
+    "shader_uniform": "grammar_mode",
+    "style_parameter_count": 20,
+    "profile_input_aliases": {"glow": "glow_strength"},
+    "family_authoring_envelope_subtype": "geometric",
+    "family_authoring_adapter_itself_grammar_aware": False,
+    "only_pinned_selector_admitted": True,
+    "other_visual_loop_grammars": "REJECTED_BY_CANONICAL_REQUEST_SELECTOR_MATRIX",
+    "renderer_native_input_emitted": False,
+    "renderer_created": False,
+    "shader_executed": False,
+    "media_created": False,
 }
 EXPECTED_BOUNDARY = {
     "mode": "GODOT_HEADLESS_IN_MEMORY_DYNAMIC_REQUEST_REVIEW_ONLY",
@@ -150,6 +169,8 @@ def _load_contract(root: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str
     }
     if contract.get("supported_selector_matrix") != expected_matrix:
         raise DynamicRequestPayloadBindingError("Pinned selector matrix or per-content materialization status drifted")
+    if contract.get("visual_loop_grammar_composition") != EXPECTED_GRAMMAR_COMPOSITION:
+        raise DynamicRequestPayloadBindingError("Pinned Visual Loop composite grammar contract drifted")
     if contract.get("execution_boundary") != EXPECTED_BOUNDARY:
         raise DynamicRequestPayloadBindingError("Execution/governance boundary drifted")
     expected_approval = {
@@ -308,6 +329,32 @@ def _validate_godot_summary(summary: Mapping[str, Any], chain: Mapping[str, Any]
     selection = _canonical_selection(result["plan"]["selection"])
     content_type = str(selection["content_type"])
     expected_scope, exact = EXPECTED_SCOPE[content_type]
+    grammar_evidence = summary.get("grammar_parameter_evidence")
+    if content_type == "visual_loops":
+        expected_evidence_literals = {
+            "composition_role": "D_OWNED_COMPOSITE_REVIEW_PAYLOAD",
+            "payload_member_path": "grammar_parameter_instance",
+            "payload_contains_instance": True,
+            "grammar_id": "harmonic_membrane",
+            "grammar_index": 0,
+            "shader_branch": "field_harmonic_membrane",
+            "shader_uniform": "grammar_mode",
+            "style_parameter_count": 20,
+            "family_authoring_envelope_subtype": "geometric",
+            "family_authoring_adapter_itself_grammar_aware": False,
+        }
+        if not isinstance(grammar_evidence, Mapping):
+            raise DynamicRequestPayloadBindingError("Visual Loop composite payload is missing grammar-parameter evidence")
+        if set(grammar_evidence) != set(expected_evidence_literals) | {"style_parameters_sha256", "parameter_instance_sha256"}:
+            raise DynamicRequestPayloadBindingError("Visual Loop grammar evidence contains missing/unknown properties")
+        for field, value in expected_evidence_literals.items():
+            if grammar_evidence.get(field) != value:
+                raise DynamicRequestPayloadBindingError(f"Visual Loop grammar evidence mismatch at {field}")
+        for field in ("style_parameters_sha256", "parameter_instance_sha256"):
+            if not _is_sha(grammar_evidence.get(field)):
+                raise DynamicRequestPayloadBindingError(f"Visual Loop grammar evidence has malformed {field}")
+    elif grammar_evidence is not None:
+        raise DynamicRequestPayloadBindingError("Non-Loop selector must not carry Visual Loop grammar evidence")
     expected = {
         "schema": GODOT_SUMMARY_SCHEMA_ID,
         "schema_version": "1.0",
@@ -335,7 +382,7 @@ def _validate_godot_summary(summary: Mapping[str, Any], chain: Mapping[str, Any]
         raise DynamicRequestPayloadBindingError("Godot payload hash is malformed")
     if not _is_sha(summary.get("visual_state_sha256")):
         raise DynamicRequestPayloadBindingError("Godot visual-state hash is malformed")
-    if set(summary) != set(expected) | {"payload_sha256", "visual_state_sha256"}:
+    if set(summary) != set(expected) | {"payload_sha256", "visual_state_sha256", "grammar_parameter_evidence"}:
         raise DynamicRequestPayloadBindingError("Godot summary shape contains missing or unknown properties")
 
 
@@ -421,6 +468,7 @@ def _build_receipt(chain: Mapping[str, Any], summary: Mapping[str, Any], root: P
             "exact_selector_payload_materialized": exact,
             "deterministic_repeat_pass": True,
             "materialization": "IN_MEMORY_ONLY",
+            "grammar_parameter_evidence": copy.deepcopy(summary.get("grammar_parameter_evidence")),
         },
         "semantic_limits": copy.deepcopy(EXPECTED_SEMANTIC_LIMITS),
         "readiness": {
@@ -467,6 +515,32 @@ def _validate_receipt(receipt: Mapping[str, Any], root: Path) -> bool:
         raise DynamicRequestPayloadBindingError("Receipt payload evidence is not an in-memory deterministic repeat")
     if not _is_sha(evidence.get("payload_sha256")) or not _is_sha(evidence.get("visual_state_sha256")):
         raise DynamicRequestPayloadBindingError("Receipt payload or visual-state digest is malformed")
+    grammar_evidence = evidence.get("grammar_parameter_evidence")
+    if content_type == "visual_loops":
+        expected_grammar_literals = {
+            "composition_role": "D_OWNED_COMPOSITE_REVIEW_PAYLOAD",
+            "payload_member_path": "grammar_parameter_instance",
+            "payload_contains_instance": True,
+            "grammar_id": "harmonic_membrane",
+            "grammar_index": 0,
+            "shader_branch": "field_harmonic_membrane",
+            "shader_uniform": "grammar_mode",
+            "style_parameter_count": 20,
+            "family_authoring_envelope_subtype": "geometric",
+            "family_authoring_adapter_itself_grammar_aware": False,
+        }
+        if not isinstance(grammar_evidence, Mapping):
+            raise DynamicRequestPayloadBindingError("Visual Loop receipt is missing composite grammar evidence")
+        if set(grammar_evidence) != set(expected_grammar_literals) | {"style_parameters_sha256", "parameter_instance_sha256"}:
+            raise DynamicRequestPayloadBindingError("Visual Loop receipt grammar evidence shape mismatch")
+        for field, expected_value in expected_grammar_literals.items():
+            if grammar_evidence.get(field) != expected_value:
+                raise DynamicRequestPayloadBindingError(f"Visual Loop receipt grammar evidence mismatch at {field}")
+        for field in ("style_parameters_sha256", "parameter_instance_sha256"):
+            if not _is_sha(grammar_evidence.get(field)):
+                raise DynamicRequestPayloadBindingError(f"Visual Loop receipt grammar digest malformed: {field}")
+    elif grammar_evidence is not None:
+        raise DynamicRequestPayloadBindingError("Non-Loop receipt contains inadmissible grammar evidence")
     if readiness != {
         "canonical_request_chain_passed": True,
         "canonical_source_bound": True,
@@ -589,12 +663,21 @@ def _assert_matrix_relationships(receipts: list[Mapping[str, Any]]) -> dict[str,
             raise DynamicRequestPayloadBindingError("Gameplay-seed mutation unexpectedly changed music seed")
         seed_checks += 1
     loop_base = by_id["D-DYNAMIC-VISUAL_LOOPS-BASE"]
+    loop_base_grammar = loop_base["payload_evidence"].get("grammar_parameter_evidence")
+    if not isinstance(loop_base_grammar, Mapping):
+        raise DynamicRequestPayloadBindingError("Base Visual Loop receipt lacks grammar-parameter evidence")
+    seed_changed_loop = by_id["D-DYNAMIC-VISUAL_LOOPS-SEED-CHANGE"]
+    seed_changed_grammar = seed_changed_loop["payload_evidence"].get("grammar_parameter_evidence")
+    if not isinstance(seed_changed_grammar, Mapping) or seed_changed_grammar.get("parameter_instance_sha256") == loop_base_grammar.get("parameter_instance_sha256"):
+        raise DynamicRequestPayloadBindingError("Gameplay seed did not change the pinned Loop grammar parameter instance")
     for suffix in ("MUSIC-ONLY", "VARIATION-ONLY", "DELIVERY-ONLY", "EDITORIAL-ONLY"):
         changed = by_id[f"D-DYNAMIC-VISUAL_LOOPS-{suffix}"]
         if loop_base["payload_evidence"]["visual_state_sha256"] != changed["payload_evidence"]["visual_state_sha256"]:
             raise DynamicRequestPayloadBindingError(f"{suffix.lower()} change leaked into visual-state evidence")
         if loop_base["payload_evidence"]["payload_sha256"] != changed["payload_evidence"]["payload_sha256"]:
             raise DynamicRequestPayloadBindingError(f"{suffix.lower()} change leaked into the current visual payload")
+        if changed["payload_evidence"].get("grammar_parameter_evidence") != loop_base_grammar:
+            raise DynamicRequestPayloadBindingError(f"{suffix.lower()} change leaked into grammar-parameter evidence")
         if loop_base["request_identity"]["request_binding_sha256"] == changed["request_identity"]["request_binding_sha256"]:
             raise DynamicRequestPayloadBindingError(f"{suffix.lower()} change was not retained by request binding identity")
     return {"cases": len(receipts), "seed_isolation": seed_checks, "orthogonality": 4}
@@ -637,8 +720,8 @@ def main(argv: list[str] | None = None) -> int:
             for receipt in receipts:
                 r = receipt["request_identity"]
                 p = receipt["payload_evidence"]
-                print("C11-D DYNAMIC REQUEST PAYLOAD RECEIPT=" + json.dumps({"request_id":r["request_id"],"content_type":r["content_type"],"gameplay_seed":r["gameplay_seed"],"music_seed":r["music_seed"],"variation_index":r["variation_index"],"delivery_profile_id":r["delivery_profile_id"],"payload_sha256":p["payload_sha256"],"visual_state_sha256":p["visual_state_sha256"],"payload_scope":p["payload_scope"],"exact_selector_payload_materialized":p["exact_selector_payload_materialized"],"request_binding_sha256":r["request_binding_sha256"]},ensure_ascii=False,sort_keys=True,separators=(",", ":")))
-            print("C11-D DYNAMIC REQUEST PAYLOAD BINDING PASS | cases=%d | selector_types=3/3 | gameplay_seed_binding=%d/3 | orthogonality=%d/4 | source_pins=%d/%d | longform=REJECTED | loop_grammar_instance=UNRESOLVED | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE" % (stats["cases"], stats["seed_isolation"], stats["orthogonality"], len(data[3]), len(data[3])))
+                print("C11-D DYNAMIC REQUEST PAYLOAD RECEIPT=" + json.dumps({"request_id":r["request_id"],"content_type":r["content_type"],"gameplay_seed":r["gameplay_seed"],"music_seed":r["music_seed"],"variation_index":r["variation_index"],"delivery_profile_id":r["delivery_profile_id"],"payload_sha256":p["payload_sha256"],"visual_state_sha256":p["visual_state_sha256"],"payload_scope":p["payload_scope"],"exact_selector_payload_materialized":p["exact_selector_payload_materialized"],"grammar_parameter_evidence":p["grammar_parameter_evidence"],"request_binding_sha256":r["request_binding_sha256"]},ensure_ascii=False,sort_keys=True,separators=(",", ":")))
+            print("C11-D DYNAMIC REQUEST PAYLOAD BINDING PASS | cases=%d | selector_types=3/3 | gameplay_seed_binding=%d/3 | orthogonality=%d/4 | source_pins=%d/%d | longform=REJECTED | loop_grammar_instance=HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE" % (stats["cases"], stats["seed_isolation"], stats["orthogonality"], len(data[3]), len(data[3])))
         return 0
     except Exception as exc:
         print("C11-D DYNAMIC REQUEST PAYLOAD BINDING FAIL | %s | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE" % str(exc))

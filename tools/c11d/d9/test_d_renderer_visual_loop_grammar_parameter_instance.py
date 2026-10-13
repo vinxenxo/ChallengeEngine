@@ -56,8 +56,8 @@ class GrammarParameterInstanceTests(unittest.TestCase):
         self.assertEqual(len({r["request_id"] for _,r in raws}),6)
         self.assertEqual({r["selection"]["subtype_id"] for _,r in raws},{"harmonic_membrane"})
 
-    def test_dynamic_upstream_exact_visual_payload_claim_stays_false(self):
-        self.assertEqual(audit.dynamic.EXPECTED_SCOPE["visual_loops"],("VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED",False))
+    def test_dynamic_upstream_has_composite_but_standalone_probe_remains_parameter_only(self):
+        self.assertEqual(audit.dynamic.EXPECTED_SCOPE["visual_loops"],("VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1",True))
         self.assertFalse(self.contract["materialization_semantics"]["exact_selector_visual_payload_materialized"])
 
     def test_input_schema_rejects_longform_or_wrong_selector(self):

@@ -199,14 +199,21 @@ def _static_source_audit(root: Path, contract: Mapping[str, Any]) -> dict[str, b
 
     dynamic_contract = _load_json(root / "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json")
     loop_scope = dynamic_contract.get("supported_selector_matrix", {}).get("visual_loops", {})
-    _require(loop_scope.get("exact_selector_payload_materialized") is False,
-             "Prior dynamic request contract must continue to disclose the unresolved exact Loop payload")
-    _require(loop_scope.get("payload_scope") == "VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED",
-             "Prior dynamic request scope was changed unexpectedly")
+    _require(loop_scope.get("exact_selector_payload_materialized") is True,
+             "Dynamic request contract must expose the pinned composite grammar payload")
+    _require(loop_scope.get("payload_scope") == "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1",
+             "Dynamic request composite payload scope changed unexpectedly")
     dynamic_harness = (root / "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd").read_text(encoding="utf-8-sig")
-    _require('"payload_scope":"VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED"' in dynamic_harness and
-             '"exact_selector_payload_materialized":false' in dynamic_harness,
-             "Existing dynamic probe no longer preserves unresolved grammar-instance status")
+    _require('const LOOP_GRAMMAR_PAYLOAD_SCOPE := "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1"' in dynamic_harness and
+             '"exact_selector_payload_materialized":true' in dynamic_harness and
+             '"grammar_parameter_instance": grammar_parameter_instance' in dynamic_harness,
+             "Dynamic harness does not compose the exact selected grammar instance into its payload")
+    dynamic_style_keys = _quoted_ids(dynamic_harness, r"const\s+LOOP_STYLE_KEYS:\s*Array\[String\]\s*=\s*\[(.*?)\]", "dynamic composite style keys")
+    _require(dynamic_style_keys == EXPECTED_STYLE_ORDER, "Dynamic composite style-parameter order differs from the approved pinned grammar probe")
+    dynamic_profile_keys = _quoted_ids(dynamic_harness, r"const\s+LOOP_PROFILE_INPUT_KEYS:\s*Array\[String\]\s*=\s*\[(.*?)\]", "dynamic composite profile inputs")
+    _require(dynamic_profile_keys == EXPECTED_PROFILE_INPUT_ORDER, "Dynamic composite profile input order differs from the frozen C11-C profile")
+    _require('"glow_strength": clamp(float(value["glow"]), 0.0, 1.0)' in dynamic_harness,
+             "Dynamic composite changed the pinned glow -> glow_strength alias")
 
     binding = contract.get("grammar_binding", {})
     _require(binding.get("prototype_grammar_ids") == EXPECTED_GRAMMARS, "Contract prototype grammar order drift")

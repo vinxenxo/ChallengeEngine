@@ -113,7 +113,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
-      "sha256": "4707055450166f33aba7b1c18815d4f70ba4d2d551ff1a0cffc8b7d0d96aaa47"
+      "sha256": "5079ec219482a4e95752ed4b6b4bd3c3f86aee4e4acaa49f023a66a808ba94e3"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V1.json",
@@ -121,11 +121,11 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
-      "sha256": "69f627a5fe4745a05f5d86b060e9f6a99be07d11428a24fe62e1689c752eea0a"
+      "sha256": "7e63eb54eebab56e64e8d620ca5dd5754f5ff703ca203baf0789e5831d1ada15"
     },
     {
       "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
-      "sha256": "2a477a92fcf18c6aa61d014ee4e20d990cb110607c8ca3c64bff530d0ee1f836"
+      "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440"
     },
     {
       "path": "core/authoring/VisualAuthoringGenerator.gd",

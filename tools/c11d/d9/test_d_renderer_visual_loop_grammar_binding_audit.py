@@ -134,8 +134,12 @@ class VisualLoopGrammarBindingAuditTests(unittest.TestCase):
         self.assertIs(scope["exact_selector_payload_materialized"], False)
         dynamic = json.loads((ROOT / "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json").read_text(encoding="utf-8"))
         loop = dynamic["supported_selector_matrix"]["visual_loops"]
-        self.assertIs(loop["exact_selector_payload_materialized"], False)
-        self.assertEqual(loop["payload_scope"], "VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED")
+        self.assertIs(loop["exact_selector_payload_materialized"], True)
+        self.assertEqual(loop["payload_scope"], "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1")
+        self.assertFalse(dynamic["visual_loop_grammar_composition"]["family_authoring_adapter_itself_grammar_aware"])
+        dynamic_harness = (ROOT / "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd").read_text(encoding="utf-8-sig")
+        self.assertIn("const LOOP_STYLE_KEYS: Array[String]", dynamic_harness)
+        self.assertIn('"glow_strength": clamp(float(value["glow"]), 0.0, 1.0)', dynamic_harness)
 
     def test_read_only_godot_probe_does_not_instantiate_or_dispatch_renderer(self) -> None:
         source = (ROOT / audit.HARNESS_REL).read_text(encoding="utf-8")

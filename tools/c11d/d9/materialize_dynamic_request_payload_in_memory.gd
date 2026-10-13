@@ -1,7 +1,7 @@
 extends SceneTree
 
 ## C11-D dynamic request -> in-memory payload binding proof.
-## Supports only the three currently pinned representative selector identities.
+## Supports three pinned representatives; the Visual Loop composite is exact only for harmonic_membrane.
 ## It never writes payload/receipt files, creates render nodes, emits renderer input,
 ## dispatches a renderer, or produces media.
 
@@ -22,6 +22,9 @@ const CHALLENGE_ASSETS := [
     {"role":"TARGET", "path":"res://assets/c6/parking_target.svg", "width":200, "height":400}
 ]
 const LOOP_GRAMMARS: Array[String] = ["harmonic_membrane", "interference_plane", "parametric_ribbon", "lattice_wave", "orbital_wave"]
+const LOOP_STYLE_KEYS: Array[String] = ["grammar_mode", "palette_mode", "morph", "wave_frequency", "line_width", "glow_strength", "polygon_sides", "wave_ratio", "shape_rotation", "layer_spread", "radial_wave_amplitude", "liss_x_frequency", "liss_y_frequency", "interference_scale", "hero_scale", "perspective_strength", "depth_strength", "secondary_phase", "color_phase", "stroke_scale"]
+const LOOP_PROFILE_INPUT_KEYS: Array[String] = ["grammar_mode", "palette_mode", "morph", "wave_frequency", "line_width", "glow", "polygon_sides", "wave_ratio", "shape_rotation", "layer_spread", "radial_wave_amplitude", "liss_x_frequency", "liss_y_frequency", "interference_scale", "hero_scale", "perspective_strength", "depth_strength", "secondary_phase", "color_phase", "stroke_scale"]
+const LOOP_GRAMMAR_PAYLOAD_SCOPE := "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1"
 const ALLOWED_DELIVERY_PROFILES: Array[String] = ["REVIEW_720", "MIN_540", "MASTER_1080", "META_REELS_FINAL_V1"]
 const MAX_SEED := 2147483646
 
@@ -67,6 +70,7 @@ func _run() -> void:
         "visual_state_sha256": first_visual_state_hash,
         "payload_scope": str(first.get("payload_scope", "")),
         "exact_selector_payload_materialized": bool(first.get("exact_selector_payload_materialized", false)),
+        "grammar_parameter_evidence": first.get("grammar_parameter_evidence", null),
         "payload_deterministic_repeat": true,
         "payload_materialization": "IN_MEMORY_ONLY",
         "semantic_limits": {
@@ -210,10 +214,28 @@ func _build_visual_loop_payload(seed: int) -> Dictionary:
     var layers: Array = envelope_payload.get("visual_parameters", {}).get("layers", [])
     if layers.is_empty() or str(layers[0].get("color_palette", "")) != str(variation.get("palette_name", "")):
         return {"success": false, "error": "Seeded palette was not present in the materialized Visual Loop envelope."}
+    var grammar_parameter_instance: Dictionary = _build_loop_grammar_parameter_instance(variation)
+    if grammar_parameter_instance.is_empty():
+        return {"success":false, "error":"Exact harmonic_membrane grammar parameter instance failed closed."}
+    var grammar_evidence: Dictionary = {
+        "composition_role":"D_OWNED_COMPOSITE_REVIEW_PAYLOAD",
+        "payload_member_path":"grammar_parameter_instance",
+        "payload_contains_instance":true,
+        "grammar_id":str(grammar_parameter_instance.get("grammar_id", "")),
+        "grammar_index":int(grammar_parameter_instance.get("grammar_index", -1)),
+        "shader_branch":str(grammar_parameter_instance.get("shader_branch", "")),
+        "shader_uniform":str(grammar_parameter_instance.get("shader_uniform", "")),
+        "style_parameter_count":int(grammar_parameter_instance.get("style_parameter_count", 0)),
+        "style_parameters_sha256":str(grammar_parameter_instance.get("style_parameters_sha256", "")),
+        "parameter_instance_sha256":str(grammar_parameter_instance.get("parameter_instance_sha256", "")),
+        "family_authoring_envelope_subtype":"geometric",
+        "family_authoring_adapter_itself_grammar_aware":false
+    }
     var visual_palette: Dictionary = palette.duplicate(true)
     visual_palette.erase("palette_variant_seed")
     var visual_state_sha256: String = _sha256({
         "family_variation": variation,
+        "grammar_parameter_instance": grammar_parameter_instance,
         "palette": visual_palette,
         "authoring_visual_parameters": envelope_payload.get("visual_parameters", {}),
         "timing": {"fps":30, "duration_seconds":duration_seconds, "frame_count":frame_count}
@@ -223,10 +245,62 @@ func _build_visual_loop_payload(seed: int) -> Dictionary:
         "source_identity": {"content_type":"visual_loops", "family_id":"c11c_geometric_waves_v1", "subtype_id":"harmonic_membrane", "gameplay_seed":seed, "presentation_profile_id":"social_default_v1"},
         "authoring_envelope": envelope,
         "family_variation_recipe": variation,
+        "grammar_parameter_instance": grammar_parameter_instance,
         "resolved_palette": palette,
         "timing": {"fps":30, "duration_seconds":duration_seconds, "frame_count":frame_count, "duration_source":"C11CVisualLoopDuration.policy_seconds_for_cycles"}
     }
-    return {"success":true, "payload":payload, "visual_state_sha256":visual_state_sha256, "payload_scope":"VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED", "exact_selector_payload_materialized":false}
+    return {"success":true, "payload":payload, "visual_state_sha256":visual_state_sha256, "payload_scope":LOOP_GRAMMAR_PAYLOAD_SCOPE, "exact_selector_payload_materialized":true, "grammar_parameter_evidence":grammar_evidence}
+
+func _build_loop_grammar_parameter_instance(value: Dictionary) -> Dictionary:
+    if str(value.get("grammar_name", "")) != "harmonic_membrane" or int(value.get("grammar_mode", -1)) != 0:
+        return {}
+    for key: String in LOOP_PROFILE_INPUT_KEYS:
+        if not value.has(key):
+            return {}
+    var style_parameters: Dictionary = {
+        "grammar_mode": clampi(int(value["grammar_mode"]), 0, 4),
+        "palette_mode": clampi(int(value["palette_mode"]), 0, 4),
+        "morph": clamp(float(value["morph"]), 0.0, 1.0),
+        "wave_frequency": max(float(value["wave_frequency"]), 5.0),
+        "line_width": max(float(value["line_width"]), 0.001),
+        "glow_strength": clamp(float(value["glow"]), 0.0, 1.0),
+        "polygon_sides": clamp(float(value["polygon_sides"]), 5.0, 8.0),
+        "wave_ratio": clamp(float(value["wave_ratio"]), 0.60, 1.05),
+        "shape_rotation": float(value["shape_rotation"]),
+        "layer_spread": clamp(float(value["layer_spread"]), 0.0, 0.10),
+        "radial_wave_amplitude": clamp(float(value["radial_wave_amplitude"]), 0.008, 0.08),
+        "liss_x_frequency": clamp(float(value["liss_x_frequency"]), 3.0, 16.0),
+        "liss_y_frequency": clamp(float(value["liss_y_frequency"]), 2.0, 12.0),
+        "interference_scale": clamp(float(value["interference_scale"]), 0.65, 1.55),
+        "hero_scale": clamp(float(value["hero_scale"]), 0.76, 1.06),
+        "perspective_strength": clamp(float(value["perspective_strength"]), 0.20, 1.20),
+        "depth_strength": clamp(float(value["depth_strength"]), 0.20, 1.0),
+        "secondary_phase": float(value["secondary_phase"]),
+        "color_phase": float(value["color_phase"]),
+        "stroke_scale": clamp(float(value["stroke_scale"]), 0.72, 1.40)
+    }
+    if style_parameters.size() != LOOP_STYLE_KEYS.size():
+        return {}
+    for key: String in LOOP_STYLE_KEYS:
+        if not style_parameters.has(key):
+            return {}
+    var instance_core: Dictionary = {
+        "schema":"C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-V1",
+        "schema_version":"1.0",
+        "selection":{"content_type":"visual_loops", "family_id":"c11c_geometric_waves_v1", "subtype_id":"harmonic_membrane", "variant_id":null},
+        "grammar_id":"harmonic_membrane",
+        "grammar_index":0,
+        "shader_branch":"field_harmonic_membrane",
+        "shader_uniform":"grammar_mode",
+        "style_parameter_count":LOOP_STYLE_KEYS.size(),
+        "style_parameters":style_parameters
+    }
+    var instance: Dictionary = instance_core.duplicate(true)
+    instance["style_parameters_sha256"] = _sha256(style_parameters)
+    instance["parameter_instance_sha256"] = _sha256(instance_core)
+    if not _is_sha256(str(instance["style_parameters_sha256"])) or not _is_sha256(str(instance["parameter_instance_sha256"])):
+        return {}
+    return instance
 
 func _build_visual_drill_payload(seed: int) -> Dictionary:
     var duration_seconds: float = 21.0

@@ -1,5 +1,8 @@
 # C11-D — Visual Loop Grammar Binding Audit Checkpoint V1
 
+**Updated interpretation (2026-10-13):** this document describes the standalone, read-only selector-to-prototype source audit; its own receipt correctly remains `exact_selector_payload_materialized=false` because it does not build the dynamic composite. The existing dynamic request→payload binder now composes the pinned `harmonic_membrane@0` parameter instance into a D-owned in-memory composite for that one selector. See `D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md` for its separate strict contract and Windows acceptance gate.
+
+
 **State:** `SOURCE_TRACE_PINNED_RUNTIME_PROFILE_PROBE_REPAIR_REQUIRED_NOT_EXACT_PAYLOAD`  
 **Purpose:** verify the exact `harmonic_membrane` selector-to-prototype-grammar trace without claiming a D renderer payload instance.  
 **Scope:** one fixed Visual Loop selector, four deterministic gameplay seeds, source-only contract plus a Godot in-memory profile probe.
@@ -14,7 +17,7 @@
 
 ## Critical remaining limitation
 
-This does **not** execute the frozen prototype's `_apply_grammar_override`, create its scene/renderer/material, execute the shader, or instantiate the D renderer input. It projects 20 style parameter values in memory by matching the pinned setter clamps and orders. The current C11-D Visual Loop authoring envelope remains family-level `geometric`, and `exact_selector_payload_materialized=false` remains authoritative.
+This does **not** execute the frozen prototype's `_apply_grammar_override`, create its scene/renderer/material, execute the shader, or instantiate the D renderer input. It projects 20 style parameter values in memory by matching the pinned setter clamps and orders. The upstream family authoring envelope remains subtype `geometric`; this standalone audit’s own `exact_selector_payload_materialized=false` remains truthful. The separate dynamic composite’s selector-materialization claim is governed by the strict contract in the composite checkpoint, not by this probe.
 
 The audit therefore proves the source route from selector identity to the existing prototype grammar branch, but it does not yet prove an integrated grammar-specific D payload, media output, or production readiness.
 
@@ -47,6 +50,6 @@ python -B .\tools\c11d\d9\d_renderer_visual_loop_grammar_binding_audit.py --godo
 
 Expected probe result: `runtime_seeds=4/4`, `style_parameters=20/20`, `selector_to_prototype_grammar=PASS`, `family_envelope_grammar_gap=OPEN`, `exact_selector_payload_materialized=false`, `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`.
 
-## Next gate after PASS
+## Relationship to the composite payload gate
 
-Use the receipt to decide whether a separate D-owned grammar-specific parameter payload contract can be added as preparation-only evidence. Do not change existing dynamic request status to `exact_selector_payload_materialized=true` unless a separate implementation demonstrates that a per-request grammar-specific payload is actually assembled under the canonical D request contract. No visual editor/consumer, renderer native input, render dispatch, or media creation is authorized by this checkpoint.
+The separate D-owned parameter-instance probe is now consumed by the existing dynamic request→payload composite only for `harmonic_membrane`. Re-run the composite checkpoint’s Windows acceptance, then reconcile the resulting evidence with the candidate I/O gap audit and candidate identity inventory. This standalone audit still must not instantiate or dispatch the renderer. No visual editor/consumer, renderer-native input, render dispatch, or media creation is authorized by this checkpoint.

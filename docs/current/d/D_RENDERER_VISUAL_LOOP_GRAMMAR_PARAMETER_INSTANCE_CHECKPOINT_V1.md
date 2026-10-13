@@ -1,5 +1,7 @@
 # C11-D — Visual Loop Grammar Parameter Instance Checkpoint V1
 
+**Updated interpretation:** the standalone parameter-only probe still truthfully emits `exact_selector_visual_payload_materialized=false`. Its validated instance is now composed into the existing D dynamic request→payload review payload under `grammar_parameter_instance` for the sole pinned `harmonic_membrane@0` selector. That composite is covered by `D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md`; this does not change the family authoring adapter or authorize rendering.
+
 **State:** `PREPARATION_ONLY_GRAMMAR_PARAMETER_INSTANCE_READY_FOR_WINDOWS_RUNTIME_GATE`
 
 ## Purpose
@@ -15,7 +17,7 @@ Close the narrow gap demonstrated by the Visual Loop grammar source audit: build
 
 ## Critical distinction
 
-This is **not** the canonical family authoring envelope and is **not** renderer input. It does not update the upstream dynamic request contract's `exact_selector_payload_materialized=false`. That status continues to mean no exact selector-specific visual payload has been assembled and integrated through the Visual Loop authoring adapter. This checkpoint only proves the separate grammar-parameter instance exists in memory, request-bound by hashes.
+This is **not** the canonical family authoring envelope and is **not** renderer input. This standalone probe’s `exact_selector_visual_payload_materialized=false` still means the probe itself only emits a parameter instance. That instance is now incorporated by the existing dynamic request contract into a separate D-owned, request-bound composite payload for the single pinned selector; the composite is not integrated through the family authoring adapter, which remains grammar-agnostic. See `D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md`.
 
 ## Runtime matrix
 

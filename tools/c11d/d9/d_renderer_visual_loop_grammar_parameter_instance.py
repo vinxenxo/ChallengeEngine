@@ -70,7 +70,7 @@ def load_contract(root):
     # Validate both existing contracts and their own full upstream lineage before using their private canonical-chain functions.
     dynamic._load_contract(root)
     grammar_audit.load_and_validate_contract(root)
-    _require(dynamic.EXPECTED_SCOPE["visual_loops"]==("VISUAL_LOOP_FAMILY_ENVELOPE_GRAMMAR_INSTANCE_UNRESOLVED",False),"Upstream visual-loop payload must remain truthfully family-level")
+    _require(dynamic.EXPECTED_SCOPE["visual_loops"]==("VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1",True),"Upstream dynamic payload must include the pinned composite grammar instance while the family adapter remains family-level")
     return contract,c_schema,i_schema,o_schema,lineage
 
 def _raw_cases():
