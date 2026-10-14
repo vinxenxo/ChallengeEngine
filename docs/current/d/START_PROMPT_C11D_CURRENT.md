@@ -1,30 +1,60 @@
-<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
-# Current authoritative C11-D state — 2026-10-13
+<!-- C11D_AUTHORITATIVE_START_PROMPT_20261014_NIGHTLY_RECONCILIATION -->
+# C11-D Start Prompt — 2026-10-14 nightly reconciliation
 
-**Source context:** `ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip`  
-**Source ZIP SHA-256:** `52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d`  
-**Next checkpoint:** `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`
+**Selective context source:** `ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip`  
+**Source ZIP SHA-256:** `562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac`  
+**Frozen C11-C manifest SHA-256:** `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`  
+**Current checkpoint:** `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`
 
-The active Windows operator has confirmed the GUI Editorial View Model V1 (8/8 tests, 45 source pins, CLI/GUI shared-facade parity), the editorial draft lifecycle (16/16), the parent integration regression, the editorial routing/consumption and unified-review validation block including real Godot harnesses, and the request-scoped editorial value carrier test/runner. C11-C's frozen manifest remains ` e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953 ` (without spaces). Renderer is not enabled.
+This authoritative start section supersedes older next-action instructions in the historical content below whenever they conflict. Continue from the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS` and reconcile the 2026-10-14 nightly additions without overwriting operator work.
 
-**Critical distinction:** carrier PASS does not mean visual payload consumption. Current pinned audit/sidecar contracts still record review-chain parity 14/14 but payload-side editorial consumption 0/14; a visual consumer and actual renderer-visible output remain future work. The next phase first revalidates the existing D I/O gap and identity audits, then contracts dynamic request-to-payload identity if the gap persists, then requests explicit approval for field-to-region/visibility policies before implementing a separate payload-side consumer.
+## Read first
 
-**Immutable/gated:** C11-C 2.19.12 unchanged; D9.10 `PREPARE_ONLY`; `D4.8=BLOCKED`; `renderer=OFF`; `media_created=false`; `release_authority=NONE`; D9.15 operator evidence `PASS_CLOSED`; D9.14/D9.16 blocked as required; D9.17 `BLOCKED_NO_GO`; D10 blocked; baseline freeze ineligible; Longform out of scope.
+1. Read `docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md`, `docs/current/d/C11D_SOURCE_PACKAGE_INTEGRITY_RECONCILIATION_V1.md`, `docs/current/d/D_RENDERER_REQUEST_PAYLOAD_MANIFEST_CHECKPOINT_V1.md`, and `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`.
+2. Do **not** extract the nightly ZIP wholesale. It has duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` members: first member hash `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` is canonical; second member hash `d54d70519f2e02d101c32e58448f2b6bb2b241e72b65d1f03fa4bbb4695bb7f0` is not. The ZIP CRC passes but does not make duplicate names safe. Verify the active manifest byte-for-byte before any mutation.
+3. Keep the last confirmed Windows results scoped accurately: Visual Loop composite focused contracts, three real Godot runners, I/O gap/identity audits, unified review 38/38, D9.13 lifecycle, and baseline preflight all passed before the new nightly-only Visual Drill audit was accepted. The previous preflight intentionally retained five blockers and `freeze_eligible=false`.
 
-**Source-package warning:** this ZIP has a duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entry. Its first member matches the canonical manifest hash; the second member hash is `5ce72af208aaef73afb1bac530450a903bfc6581d030c118492c5b8162ed8557` and is not canonical. CRC check alone does not repair duplicate-name ambiguity. Do not extract the full archive over the active checkout.
+## Immediate operator gate
+
+Run from the active repo root. Stop on the first failure and preserve full output:
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$Repo = 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS'
+$Godot = $env:C11D_GODOT_EXECUTABLE
+$ExpectedManifest = 'e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953'
+$ExpectedGodot = '4.7.1.stable.mono.official.a13da4feb'
+if ((Get-Location).Path.TrimEnd('\') -ine $Repo.TrimEnd('\')) { throw "Run from repo root: $Repo" }
+if ([string]::IsNullOrWhiteSpace($Godot) -or -not (Test-Path -LiteralPath $Godot -PathType Leaf)) { throw 'C11D_GODOT_EXECUTABLE is not a valid executable path.' }
+$ManifestHash = (Get-FileHash '.\release\C11C_FREEZE_PACKAGE_MANIFEST.json' -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($ManifestHash -ne $ExpectedManifest) { throw 'Frozen C11-C manifest mismatch.' }
+$GodotVersion = (& $Godot --version | Out-String).Trim()
+if ($LASTEXITCODE -ne 0 -or $GodotVersion -ne $ExpectedGodot) { throw "Unexpected Godot version: $GodotVersion" }
+
+python -B .\tools\c11d\d9\test_d_renderer_visual_drill_selector_authoring_coverage.py
+if ($LASTEXITCODE -ne 0) { throw 'Visual Drill selector coverage contract failed.' }
+python -B .\tools\c11d\d9\d_renderer_visual_drill_selector_authoring_coverage.py --contract-only
+if ($LASTEXITCODE -ne 0) { throw 'Visual Drill source/canonical catalog audit failed.' }
+python -B .\tools\c11d\d9\d_renderer_visual_drill_selector_authoring_coverage.py --godot "$Godot" --timeout 180
+if ($LASTEXITCODE -ne 0) { throw 'Visual Drill 20-selector Godot runtime audit failed.' }
+Write-Host 'VISUAL DRILL AUTHORING COVERAGE: PASS'
+```
+
+Acceptance requires the actual runtime summary to show `families=4/4`, `selectors=20/20`, `deterministic_repeat=20/20`, `visual_seed_change=20/20`, `identity=20/20`, and `policy_tier=20/20`. Preserve every selector receipt and the report SHA-256. A Python or `--contract-only` PASS is not runtime acceptance.
+
+## Next engineering increment — gated
+
+Only if all 20 actual Godot selectors pass, prepare a separate additive D-only overlay that extends the existing dynamic request→payload binder to `tracking`, `pursuit`, `saccade`, and `peripheral_scan`, tiers 1–5. Bind canonical authoring and difficulty-policy sources into request-specific payload identity; require all 20 actual Godot receipts and fail-closed negatives. Preserve the existing Challenge and Visual Loop selector boundaries. Do not create a parallel binder and do not claim renderer input, shader output, pixels, video, or release readiness.
+
+In parallel, review `D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md`, but do not infer approval from proposals or PASS markers. Field-to-region/visibility, timebase/temporal alignment, challenge sample/coordinate composition, and audio/music policy require explicit versioned D-only decisions before visual consumption work.
+
+## Non-negotiable governance
+
+C11-C 2.19.12 and its manifest stay immutable. `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, `baseline_approval=MISSING`, `freeze_eligible=false`; D9.14/D9.16 blocked as required; D9.17 `BLOCKED_NO_GO`; D10 blocked. No dispatch, render, media creation, freeze, release, or cutover. Once every C11-D gate is closed and D is formally approved, frozen and promoted, C11-D must replace C11-C as the authoritative baseline and Producer; no premature promotion.
 
 ---
 
-## Start here — next engineering phase
-
-1. Treat the specified ZIP as a selective context source only. It has duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entries; never extract it wholesale over the working tree. The first manifest member matches the canonical hash; the second does not.
-2. Read `D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md` and the current D renderer baseline plan.
-3. Re-run the read-only candidate I/O gap and candidate identity audits plus the existing editorial-carrier/materialization tests listed in the checkpoint, capturing full output from the active Windows checkout.
-4. Run `test_d_renderer_visual_drill_selector_authoring_coverage.py`, its `--contract-only` source/canonical audit, and the one-process 20-selector Godot 4.7.1 sweep using D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md. Preserve all 20 receipts.
-5. If the 20-selector authoring sweep passes, expand the existing dynamic request→payload binder for the same four Visual Drill types × five tiers, including canonical source/policy lineage and request-specific manifests. Do not create a parallel binder; keep Challenge and Loop selector boundaries unchanged.
-6. In parallel, reconcile `D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md` for explicit decisions on regions/visibility, timebase/temporal alignment, sampling/coordinates and audio/music delivery. Do not implement editorial visual consumption until relevant policy decisions are explicitly recorded and pinned. Keep payload inclusion, renderer-visible drawing and generated-video acceptance as separate claims.
-
-No rendering, dispatch, media generation, freeze, D4.8 change or release is authorized in this phase.
+## Historical record retained below
 
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->
