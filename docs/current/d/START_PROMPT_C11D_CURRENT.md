@@ -1,60 +1,38 @@
-<!-- C11D_AUTHORITATIVE_START_PROMPT_20261014_NIGHTLY_RECONCILIATION -->
-# C11-D Start Prompt — 2026-10-14 nightly reconciliation
+<!-- C11D_AUTHORITATIVE_START_20261014_NIGHTLY_VISUAL_DRILL_COVERAGE_ACCEPTED -->
+# C11-D Start Prompt — 2026-10-14
 
-**Selective context source:** `ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip`  
-**Source ZIP SHA-256:** `562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac`  
-**Frozen C11-C manifest SHA-256:** `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`  
-**Current checkpoint:** `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`
+**Context source snapshot:** `ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip`  
+**Context source SHA-256:** `562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac`  
+**Canonical frozen C11-C manifest SHA-256:** `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`  
+**Current phase:** Visual Drill authoring coverage accepted; dynamic request-bound manifest not yet tested.  
+**Read first:** `docs/current/d/C11D_NIGHTLY_RECONCILIATION_CHECKPOINT_20261014.md` and `docs/current/d/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_CHECKPOINT_V1.md`.
 
-This authoritative start section supersedes older next-action instructions in the historical content below whenever they conflict. Continue from the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS` and reconcile the 2026-10-14 nightly additions without overwriting operator work.
+This is the controlling start instruction for the new context. Older instructions below are retained for history only; when they conflict, this section wins.
 
-## Read first
+## Accepted evidence at the window boundary
 
-1. Read `docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md`, `docs/current/d/C11D_SOURCE_PACKAGE_INTEGRITY_RECONCILIATION_V1.md`, `docs/current/d/D_RENDERER_REQUEST_PAYLOAD_MANIFEST_CHECKPOINT_V1.md`, and `docs/current/d/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_CHECKPOINT_V1.md`.
-2. Do **not** extract the nightly ZIP wholesale. It has duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` members: first member hash `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` is canonical; second member hash `d54d70519f2e02d101c32e58448f2b6bb2b241e72b65d1f03fa4bbb4695bb7f0` is not. The ZIP CRC passes but does not make duplicate names safe. Verify the active manifest byte-for-byte before any mutation.
-3. Keep the last confirmed Windows results scoped accurately: Visual Loop composite focused contracts, three real Godot runners, I/O gap/identity audits, unified review 38/38, D9.13 lifecycle, and baseline preflight all passed before the new nightly-only Visual Drill audit was accepted. The previous preflight intentionally retained five blockers and `freeze_eligible=false`.
+The active Windows operator reports the Visual Drill selector authoring coverage sweep passed under Godot `4.7.1.stable.mono.official.a13da4feb`: 4/4 families, 20/20 selectors, deterministic repeat 20/20, visual seed change 20/20, identity 20/20, policy tier 20/20, source pins 24/24. Final report SHA-256: `fc550cf26161c5428e2b8edf280baf611fb3c06f2e3c00773910e352115eaa6e`. `dynamic_request_manifest=NOT_TESTED` is intentional and is the next uncovered gate. This accepts the authoring-adapter capability audit only.
 
-## Immediate operator gate
+The preceding Visual Loop composite increment and regressions were also reported PASS: three real Godot runners, unified content review 38/38, D9.13 lifecycle PASS, baseline preflight PASS. The preflight remains `baseline_approval=MISSING`, `freeze_eligible=false`, five blockers. C11-C manifest hash stays `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 
-Run from the active repo root. Stop on the first failure and preserve full output:
+## Isolated normalized-package validation (not Windows acceptance)
 
-```powershell
-$ErrorActionPreference = 'Stop'
-$Repo = 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS'
-$Godot = $env:C11D_GODOT_EXECUTABLE
-$ExpectedManifest = 'e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953'
-$ExpectedGodot = '4.7.1.stable.mono.official.a13da4feb'
-if ((Get-Location).Path.TrimEnd('\') -ine $Repo.TrimEnd('\')) { throw "Run from repo root: $Repo" }
-if ([string]::IsNullOrWhiteSpace($Godot) -or -not (Test-Path -LiteralPath $Godot -PathType Leaf)) { throw 'C11D_GODOT_EXECUTABLE is not a valid executable path.' }
-$ManifestHash = (Get-FileHash '.\release\C11C_FREEZE_PACKAGE_MANIFEST.json' -Algorithm SHA256).Hash.ToLowerInvariant()
-if ($ManifestHash -ne $ExpectedManifest) { throw 'Frozen C11-C manifest mismatch.' }
-$GodotVersion = (& $Godot --version | Out-String).Trim()
-if ($LASTEXITCODE -ne 0 -or $GodotVersion -ne $ExpectedGodot) { throw "Unexpected Godot version: $GodotVersion" }
+The normalized snapshot was independently checked with the Visual Drill contract and `--contract-only` audit, candidate identity tests/inventory, candidate I/O gap tests/report and existing dynamic binder contract tests. Results: 24/24 Visual Drill source pins; 20/20 canonical authoring selectors; identity 9/9 with 149 source files in the generated report; I/O gap 8/8 with 38 source pins, 0 complete groups, 6 partial and 4 blocked; dynamic binder 12/12, 46 pins, 2 schemas, 10 current dynamic cases, 10 manifests, 10 lineage closures and 22 negatives. The existing Loop composite is recognized. These results are isolated Python checks, not new Windows/Godot runtime acceptance. The ZIP export also omits the local D9.15 ledger and c11d-control quarantine event, so lifecycle and baseline-preflight attempts in this isolated copy stop fail-closed; this is distinct from the operator-reported Windows PASS. They do not test all 20 Visual Drill selectors through the dynamic request-bound manifest.
 
-python -B .\tools\c11d\d9\test_d_renderer_visual_drill_selector_authoring_coverage.py
-if ($LASTEXITCODE -ne 0) { throw 'Visual Drill selector coverage contract failed.' }
-python -B .\tools\c11d\d9\d_renderer_visual_drill_selector_authoring_coverage.py --contract-only
-if ($LASTEXITCODE -ne 0) { throw 'Visual Drill source/canonical catalog audit failed.' }
-python -B .\tools\c11d\d9\d_renderer_visual_drill_selector_authoring_coverage.py --godot "$Godot" --timeout 180
-if ($LASTEXITCODE -ne 0) { throw 'Visual Drill 20-selector Godot runtime audit failed.' }
-Write-Host 'VISUAL DRILL AUTHORING COVERAGE: PASS'
-```
+## Required execution sequence
 
-Acceptance requires the actual runtime summary to show `families=4/4`, `selectors=20/20`, `deterministic_repeat=20/20`, `visual_seed_change=20/20`, `identity=20/20`, and `policy_tier=20/20`. Preserve every selector receipt and the report SHA-256. A Python or `--contract-only` PASS is not runtime acceptance.
+1. Treat the named nightly ZIP as a context snapshot. The source archive has two same-path C11-C manifest members; never extract it wholesale. Use `ChallengeEngineV01_STATELESS_C11-D10-NORMALIZED-NIGHTLY_20261014.zip` as the context snapshot for this new window; preserve the canonical manifest at the hash above and do not extract the snapshot wholesale over the active checkout.
+2. Inspect the existing dynamic request→payload binder, its contract/schema/checkpoint, and the candidate I/O gap report. Re-run their focused tests and source identity audits on the active Windows checkout before modifying code.
+3. Extend the existing binder—not a parallel implementation—for all 20 canonical Visual Drill selector pairs: `tracking`, `pursuit`, `saccade`, `peripheral_scan` × tiers 1–5. Prove selected tier identity, request-specific manifest/digest, canonical source and policy lineage, deterministic repeat, and strict mismatch/unknown-selector rejection.
+4. Add adversarial contract coverage, then execute every supported selector through the real Godot 4.7.1 runtime harness. Preserve all 20 request-bound `VERIFIED` receipts and the final report SHA. Do not treat the authoring-only report above as binder acceptance.
+5. Re-run the candidate I/O gap audit and candidate identity inventory, then unified review, D9.13 lifecycle and baseline preflight. Report each I/O group honestly; keep renderer inadmissibility when any required group remains incomplete.
+6. Only after dynamic manifest acceptance proceed to explicit review of field-to-region/visibility, timebase/temporal alignment, coordinates/sampling and audio/music policies. Do not implement the editorial visual consumer without separate explicit policy approval.
 
-## Next engineering increment — gated
+## Hard boundaries
 
-Only if all 20 actual Godot selectors pass, prepare a separate additive D-only overlay that extends the existing dynamic request→payload binder to `tracking`, `pursuit`, `saccade`, and `peripheral_scan`, tiers 1–5. Bind canonical authoring and difficulty-policy sources into request-specific payload identity; require all 20 actual Godot receipts and fail-closed negatives. Preserve the existing Challenge and Visual Loop selector boundaries. Do not create a parallel binder and do not claim renderer input, shader output, pixels, video, or release readiness.
+No renderer activation, renderer-native input, dispatch, media creation, freeze, release or change to D4.8. Keep `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, `baseline_approval=MISSING`, `freeze_eligible=false`, and D10 blocked. Do not change C11-C 2.19.12 or its manifest.
 
-In parallel, review `D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md`, but do not infer approval from proposals or PASS markers. Field-to-region/visibility, timebase/temporal alignment, challenge sample/coordinate composition, and audio/music policy require explicit versioned D-only decisions before visual consumption work.
-
-## Non-negotiable governance
-
-C11-C 2.19.12 and its manifest stay immutable. `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, `baseline_approval=MISSING`, `freeze_eligible=false`; D9.14/D9.16 blocked as required; D9.17 `BLOCKED_NO_GO`; D10 blocked. No dispatch, render, media creation, freeze, release, or cutover. Once every C11-D gate is closed and D is formally approved, frozen and promoted, C11-D must replace C11-C as the authoritative baseline and Producer; no premature promotion.
-
----
-
-## Historical record retained below
+The intended eventual architecture remains: once C11-D has passed all gates and is formally approved, frozen and promoted, it replaces C11-C frozen as the authoritative baseline and Producer. That future authority does not exist yet.
 
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->

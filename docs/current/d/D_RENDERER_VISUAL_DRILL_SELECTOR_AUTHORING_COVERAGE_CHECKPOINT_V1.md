@@ -1,6 +1,6 @@
 # C11-D — Visual Drill Selector Authoring Coverage Checkpoint V1
 
-**State:** `PREPARATION_ONLY_AUTHORING_ADAPTER_CAPABILITY_AUDIT_NOT_DYNAMIC_PAYLOAD_BINDING_OR_RENDERER_INPUT`
+**State:** `AUTHORING_COVERAGE_ACCEPTED_DYNAMIC_REQUEST_BOUND_MANIFEST_NOT_TESTED`
 
 ## Purpose
 
@@ -47,3 +47,21 @@ After all C11-D gates close and formal approval, freeze and promotion are comple
 V1 runtime reached the matrix identity guard but rejected the canonical contract even though the Python contract-only audit validated its four family IDs, tiers 1–5, and selector count. The cause was a direct equality comparison between JSON-parsed Variant arrays and typed GDScript constant arrays. V1.2 normalizes JSON values into typed arrays, verifies every member in order, and validates the numeric selector count without relaxing the fixed 4 × 5 scope. The contract source pins and `output.harness_sha256` are updated to the corrected harness and regression test.
 
 After applying V1.2, repeat the focused test, `--contract-only` audit, and actual Godot 4.7.1 20-selector runtime sweep. A Python PASS is not runtime acceptance.
+
+## Operator runtime acceptance update — 2026-10-14
+
+The active Windows operator reports the full real-Godot audit PASS with Godot `4.7.1.stable.mono.official.a13da4feb`:
+
+- Families: **4/4**
+- Canonical selectors: **20/20**
+- Deterministic repeat: **20/20**
+- Visual seed change: **20/20**
+- Selector identity: **20/20**
+- Policy tier: **20/20**
+- Source pins: **24/24**
+- Final report SHA-256: `fc550cf26161c5428e2b8edf280baf611fb3c06f2e3c00773910e352115eaa6e`
+- Dynamic request manifest: **`NOT_TESTED`**
+
+This operator-reported runtime result supersedes the earlier V1.2 section that asks the operator to run the authoring sweep. It closes the authoring-capability gate only. It does not prove that the dynamic binder admits all 20 pairs, create a request-specific payload manifest, or authorize renderer input. The next gate is to extend and test the existing dynamic request→payload binder for the 20 Visual Drill type/tier selectors.
+
+The runtime audit is stdout-only and does not persist its report. The aggregate summary and report hash are transcribed from the operator-provided output; do not invent missing per-selector receipt rows. Preserve/re-capture the complete 20 `VERIFIED` JSON lines as part of the next gate's evidence bundle. Governance remains renderer OFF, media false, D4.8 BLOCKED, release authority NONE, baseline approval missing and freeze ineligible.
