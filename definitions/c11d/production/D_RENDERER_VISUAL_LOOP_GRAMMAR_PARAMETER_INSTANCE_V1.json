@@ -176,11 +176,11 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
-      "sha256": "71b54908480a59b8abd42f38e4eb2ace37da48178591e75510f6d7111ce66f00"
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
-      "sha256": "9f453ebc0a84507a609bcb2fe65ce7b8324b093fb0cd12be3c87a829c291c90b"
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V1.json",
@@ -192,7 +192,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_V1.json",
-      "sha256": "db2d56fde1e4ebc629139b90f47ec5daae9d257b15b08a0795d1be0b25f08ac2"
+      "sha256": "a57860469d1a31a7d170ba9951b4e5e994bf68f23001401bf6b12cafc6211e63"
     },
     {
       "path": "definitions/visual_loop_geometric_canonical.json",
@@ -200,7 +200,7 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
-      "sha256": "7b8d14554b7f3e8f9802189f3696bfa2a61cdc1e1e7678583cf0b10c77a209ba"
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
     },
     {
       "path": "tools/c11d/d9/d_renderer_visual_loop_grammar_binding_audit.py",

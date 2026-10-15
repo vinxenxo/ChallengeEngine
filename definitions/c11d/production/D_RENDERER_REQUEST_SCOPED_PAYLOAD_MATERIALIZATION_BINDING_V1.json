@@ -148,7 +148,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
-      "sha256": "f4bf6732cdfdfe077f23a8908d8c1963f9a12f6ba33032283fcf32da506c9e1b"
+      "sha256": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
@@ -188,15 +188,15 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
-      "sha256": "ed0e0e87f92e568858c7c913c97b3e527d48084235eedbc17362d64a2474af9a"
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
-      "sha256": "284152c4801f4c01ab13045559b3ffa651484c27e44e9bf2bf4abe6a5c1b08db"
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
-      "sha256": "d35df7dd06dec9dc11b1f1234e4afa5697d79b348ca4f69968f60c46d3bda988"
+      "sha256": "23e3c9494247d0d68b35ccbbd45ca9e9b455dbabd58f3a49445d890645f02d06"
     },
     {
       "path": "c11c-suite/c11c-producer/producer_schema.json",

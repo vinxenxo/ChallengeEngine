@@ -82,7 +82,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
       "role": "SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CONTRACT",
-      "sha256": "033c082fb127d49590d082271c066f262ac0340767aadbf0abd0217352e92989"
+      "sha256": "33443e5bfc48f9d6a23c731af5d182e8032445715929130eba4d20837f4276e6"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_SCHEMA_V1.json",
@@ -97,7 +97,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
       "role": "D_OWNED_PROFILE_REFERENCE_REGISTRY",
-      "sha256": "7574f4767ef7c24ab8459ea7e3753e8ca679c1a1e243347d558dea7b3abbd564"
+      "sha256": "e621be7e36222e6fcf748f03d50a05aefd283a3014ac7bf0d5ddb4e675051646"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_SCHEMA_V1.json",

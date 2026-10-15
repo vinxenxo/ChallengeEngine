@@ -13,9 +13,9 @@
     "visual_drill_canonical_path": "definitions/visual_drill_tracking_canonical.json",
     "visual_drill_canonical_sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3",
     "visual_payload_preview_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
-    "visual_payload_preview_contract_sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26",
+    "visual_payload_preview_contract_sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411",
     "editorial_review_manifest_path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
-    "editorial_review_manifest_sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd",
+    "editorial_review_manifest_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
     "logical_composition_contract_path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
     "logical_composition_contract_sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e",
     "neutral_frame_program_contract_path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
@@ -23,7 +23,7 @@
     "temporal_bound_preview_contract_path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
     "temporal_bound_preview_contract_sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646",
     "challenge_field_window_proposal_path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
-    "challenge_field_window_proposal_sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+    "challenge_field_window_proposal_sha256": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"
   },
   "scope": {
     "supported_content_types": [

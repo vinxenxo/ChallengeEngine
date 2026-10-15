@@ -316,7 +316,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
       "role": "VERSIONED_IO_INTERFACE_CONTRACT",
-      "sha256": "f4bf6732cdfdfe077f23a8908d8c1963f9a12f6ba33032283fcf32da506c9e1b"
+      "sha256": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
@@ -336,7 +336,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
       "role": "CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL",
-      "sha256": "9bdc712693dc90612bcdf1e068a96ec850222cad9c9c303af65a2740233d32ba"
+      "sha256": "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
@@ -346,7 +346,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
       "role": "CHALLENGE_TEMPORAL_ALIGNMENT_PROPOSAL",
-      "sha256": "122b9d631fab4e08beda6ae0621ab31a38a79f3cf06d7e385b7edd3d60c2da8e"
+      "sha256": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
@@ -356,12 +356,12 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
       "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_CONTRACT",
-      "sha256": "9f453ebc0a84507a609bcb2fe65ce7b8324b093fb0cd12be3c87a829c291c90b"
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
       "role": "VISUAL_DRILL_V2_REQUEST_BOUND_PAYLOAD_CONTRACT",
-      "sha256": "f0a25d8518199a9fda562a9e0567909ab6a518f2bdf0c5633aa16e8e72718ee5"
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85"
     },
     {
       "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
@@ -376,7 +376,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
       "role": "EDITORIAL_ROUTING_CONSUMPTION_BOUNDARY",
-      "sha256": "ed56d4664c03142d8d1777ad73296ceb1c5f978373d811cb5fa163a434d30ca2"
+      "sha256": "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
@@ -386,7 +386,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
       "role": "LOOP_DRILL_EDITORIAL_WINDOW_PROPOSAL",
-      "sha256": "ce91bf2d9a2c15bc98ffd8f18dc98426513b08f6e670ca96c488e4672cbda38e"
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
@@ -396,7 +396,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json",
       "role": "EDITORIAL_VALUE_SIDECAR_CONTRACT",
-      "sha256": "dc95142d48b193605b844fc9b2ca9dee7c778fac0eba4331893212250831297f"
+      "sha256": "de44f159c95f31d034fe8356f650b5be320cb5fb1555197073d07875cf0cf1f9"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
@@ -406,17 +406,17 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
       "role": "FIXED_PAYLOAD_MATERIALIZATION_CONTRACT",
-      "sha256": "91a05711bdbc01e5e9bbe69f9661bad167531c81609b2e9c4a35365b4e515e49"
+      "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
       "role": "AUDIO_MUSIC_DELIVERY_PROPOSAL",
-      "sha256": "284152c4801f4c01ab13045559b3ffa651484c27e44e9bf2bf4abe6a5c1b08db"
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
       "role": "DELIVERY_TIMEBASE_POLICY_PROPOSAL",
-      "sha256": "ed0e0e87f92e568858c7c913c97b3e527d48084235eedbc17362d64a2474af9a"
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",

@@ -218,7 +218,7 @@
                 "const": "PROPOSED_NOT_APPROVED"
               },
               "proposal_contract_sha256": {
-                "const": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+                "const": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
               },
               "preview_sha256": {
                 "type": "string",
@@ -295,7 +295,7 @@
                 "const": "PROPOSED_NOT_APPROVED_NOT_FROZEN"
               },
               "proposal_contract_sha256": {
-                "const": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
+                "const": "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd"
               },
               "coordinate_projection_policy_id": {
                 "const": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1"
@@ -374,7 +374,7 @@
                 "const": "PROPOSED_NOT_APPROVED"
               },
               "proposal_contract_sha256": {
-                "const": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+                "const": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6"
               },
               "preview_sha256": {
                 "type": "string",
@@ -840,7 +840,7 @@
           "const": "PROPOSED_NOT_APPROVED"
         },
         "proposal_contract_sha256": {
-          "const": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
+          "const": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
         },
         "target_delivery_profile": {
           "const": {
@@ -1041,7 +1041,7 @@
           "const": "PROPOSED_NOT_APPROVED"
         },
         "proposal_contract_sha256": {
-          "const": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
+          "const": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
         },
         "target_audio_profile": {
           "const": {
@@ -1729,10 +1729,10 @@
       ],
       "properties": {
         "contract_sha256": {
-          "const": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+          "const": "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
         },
         "reconciliation_sha256": {
-          "const": "33f3f947dd529b11960336d84548c756ac5bf59d91ca93ee23e4d5ac6bf18012"
+          "const": "98864f5b818de8cb727f8e586d9860f9b0a76b20cb33965a4b26c18e0dc2eb2b"
         },
         "content_types_reviewed": {
           "const": 3

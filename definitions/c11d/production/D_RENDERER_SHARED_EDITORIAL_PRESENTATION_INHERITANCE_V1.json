@@ -247,7 +247,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_V1.json",
       "role": "CURRENT_FAMILY_PARAMETER_INSTANCE",
-      "sha256": "437a4081a7399c88686bc42bc1f5d2d7bb8a9ee683da4d541c145bb3805729f5"
+      "sha256": "12fa24ccf1340ffef9a2d6355ea0c7a31069c3d4db680bab0ef3128676cb420a"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",

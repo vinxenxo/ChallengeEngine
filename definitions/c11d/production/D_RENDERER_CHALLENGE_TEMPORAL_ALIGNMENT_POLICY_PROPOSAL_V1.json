@@ -136,7 +136,7 @@
   },
   "editorial_windows_reference": {
     "contract_path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
-    "contract_sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f",
+    "contract_sha256": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229",
     "state": "PROPOSED_NOT_APPROVED",
     "interval_convention": "ZERO_BASED_HALF_OPEN_DELIVERY_FRAME_RANGE",
     "expected_field_ranges": {
@@ -155,7 +155,7 @@
   },
   "sample_selection_reference": {
     "contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
-    "contract_sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3",
+    "contract_sha256": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b",
     "state": "PROPOSED_NOT_APPROVED",
     "sampling_origin": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX",
     "stride": 2,

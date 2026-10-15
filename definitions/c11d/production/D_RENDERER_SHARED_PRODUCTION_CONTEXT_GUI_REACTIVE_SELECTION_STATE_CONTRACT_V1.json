@@ -21,7 +21,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_V1.json",
       "role": "DYNAMIC_CATALOG_CONTRACT",
-      "sha256": "1e82cfe82e71c4107053951175ac2ee1bf603b27a7897ee62fd53547de4612dc"
+      "sha256": "2098f74ce086fb62d697fac6da87dfdb2b7e3f0a0ba40a009d376acbd79deebc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_SCHEMA_V1.json",
@@ -41,7 +41,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_V1.json",
       "role": "CANONICAL_GUI_STATE_CONTRACT",
-      "sha256": "827db94668d198c665323336aea83153fb4141b792b44beb15e492895f2479dc"
+      "sha256": "eefa92abfae21c6c0dfd912a24be71b9841162b199744711a8d820e47ab1b8b3"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_SCHEMA_V1.json",

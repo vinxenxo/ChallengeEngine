@@ -68,7 +68,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "f4bf6732cdfdfe077f23a8908d8c1963f9a12f6ba33032283fcf32da506c9e1b"
+      "sha256": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_SCHEMA_V1.json",
@@ -78,7 +78,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "72c89ba52b31cdea3c925fc01a0e0b143665615c08d9ca73b02bf351fcbe4842"
+      "sha256": "dae8f178a5e1d995a27784b1333d7143692d659101dee69c5ba2477c73b7bca6"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
@@ -108,7 +108,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "9bdc712693dc90612bcdf1e068a96ec850222cad9c9c303af65a2740233d32ba"
+      "sha256": "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_SCHEMA_V1.json",
@@ -153,7 +153,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "122b9d631fab4e08beda6ae0621ab31a38a79f3cf06d7e385b7edd3d60c2da8e"
+      "sha256": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
@@ -183,12 +183,12 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "9f453ebc0a84507a609bcb2fe65ce7b8324b093fb0cd12be3c87a829c291c90b"
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "f0a25d8518199a9fda562a9e0567909ab6a518f2bdf0c5633aa16e8e72718ee5"
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
@@ -198,7 +198,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "c463d55720154cafc2b529029a7b41ecea4f514a3cae01f7a2d5811997838af1"
+      "sha256": "ab21e8290a31a238ba9ca4ae8ec3f88ed1e0a7f06cd96a3a26ef65d361e1d1cc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_SCHEMA_V1.json",
@@ -208,12 +208,12 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "ed56d4664c03142d8d1777ad73296ceb1c5f978373d811cb5fa163a434d30ca2"
+      "sha256": "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "216c9a2574fa3cc05d3cdc247a8683d334ea98f22701754c9a5b4e6ab9e68c2b"
+      "sha256": "81da414a3bc3e607bce3c624c16bf7d3ff9a126bbd2da4382c24184561ab5c0a"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
@@ -238,7 +238,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "ce91bf2d9a2c15bc98ffd8f18dc98426513b08f6e670ca96c488e4672cbda38e"
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
@@ -288,7 +288,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "91a05711bdbc01e5e9bbe69f9661bad167531c81609b2e9c4a35365b4e515e49"
+      "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_SCHEMA_V1.json",
@@ -323,22 +323,22 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_SCHEMA_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "e981babd4ec29dbe52318d30e148ca79627bf758abbd952d17ecba7e56752303"
+      "sha256": "531aff5760fb8dc36af65be83d361b6bdd0a3f01e8d0370e2595618d28aa5752"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "284152c4801f4c01ab13045559b3ffa651484c27e44e9bf2bf4abe6a5c1b08db"
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "efc08acce472036412598f3a1c11f556851400320e2597f50172efc4de947a79"
+      "sha256": "7b3946afb162d8ba2147ee27e7174da76dd2579448d2caefc9aff1d018aa13d4"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "d35df7dd06dec9dc11b1f1234e4afa5697d79b348ca4f69968f60c46d3bda988"
+      "sha256": "23e3c9494247d0d68b35ccbbd45ca9e9b455dbabd58f3a49445d890645f02d06"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_SCHEMA_V1.json",
@@ -348,7 +348,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "ed0e0e87f92e568858c7c913c97b3e527d48084235eedbc17362d64a2474af9a"
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_SCHEMA_V1.json",
@@ -418,12 +418,12 @@
     {
       "path": "tools/c11d/d9/d_renderer_challenge_coordinate_sample_composition.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "527e74c113230925c7d6ee96e093a2d2f575149d2e9a4bd775bcf4ba7eca0b97"
+      "sha256": "b20ce0aee350af4cca1c517109800c0a6aef4a0ebaccd79593c253195aaf3525"
     },
     {
       "path": "tools/c11d/d9/d_renderer_challenge_delivery_timeline_review.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "ed69a858977fddecc8489eb7340ec26817c77aba5f513097c511af8b96a48b58"
+      "sha256": "ef3f8353972a18b604322b6d98a2483973a6ecb2f474263dcefda8d5c0c8dcf9"
     },
     {
       "path": "tools/c11d/d9/d_renderer_challenge_runtime_output_preview.py",
@@ -433,12 +433,12 @@
     {
       "path": "tools/c11d/d9/d_renderer_challenge_simulation_sample_selection.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "9efc127db2dad3b3889fa423f65f331a5599831a97543af64ae19920e6ca52c1"
+      "sha256": "f257d0f3e8b9d9e0feddc17d88dbfdafdcbbe9c87f734d0d98c3df71223798ec"
     },
     {
       "path": "tools/c11d/d9/d_renderer_challenge_temporal_alignment_policy.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "7b0edcf4d01c9c30414b1712474d54e10f4ef631181988ef0e6507f39303dac9"
+      "sha256": "42d3f94516019e9912d8ed29a3d1b47bef9d316080d828e0de1560395b371be2"
     },
     {
       "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
@@ -468,7 +468,7 @@
     {
       "path": "tools/c11d/d9/d_renderer_editorial_field_window_proposal.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "52279d96093f6c201ac36931cce82a7153ba38cef57a39df027ec14f20c2f4de"
+      "sha256": "4b8971867a884014342c0557d77728965e3c704f481bbad213b6e6deb41c2495"
     },
     {
       "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
@@ -488,7 +488,7 @@
     {
       "path": "tools/c11d/d9/d_renderer_loop_drill_editorial_field_windows.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "98d195413e24fe35c41e4d88fcac3d3f604633a4beed0764aa45a703635cdf90"
+      "sha256": "e12d73fa229df37bf9de02dbd2e077eea4ec8eb7c959c8d08d6f37cfe6daac06"
     },
     {
       "path": "tools/c11d/d9/d_renderer_profile_identity_separation.py",
@@ -528,17 +528,17 @@
     {
       "path": "tools/c11d/d9/d_renderer_unified_audio_music_delivery_policy.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "ea20138b9a5d9308ac56558c286497a8d97be57f2d4f48476051db5a8a907ec2"
+      "sha256": "ac605f5b04a68ca1533ce33460f4449bb361d3c674d9424e881e330dd4e22730"
     },
     {
       "path": "tools/c11d/d9/d_renderer_unified_content_review.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "628a246c621c380f5884b568c55e3807a5be39aeda2a5559a3251ff757de4899"
+      "sha256": "f29490cfb3819dbabde3cd6927a990de9f223aca22bdae93de5c91816377ff4f"
     },
     {
       "path": "tools/c11d/d9/d_renderer_unified_delivery_timebase_policy.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
-      "sha256": "927d66f51370b2201df0225fde7fc0f76cebbe5035516f748f801edf08f0b871"
+      "sha256": "c39733c2454a89c64a4480b06fb617e74555ae51f2fd90a5890bf1e65b1f355c"
     },
     {
       "path": "tools/c11d/d9/d_renderer_unified_presentation_region_policy.py",
@@ -598,7 +598,7 @@
     {
       "path": "tools/c11d/d9/review_editorial_field_windows_in_memory.gd",
       "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
-      "sha256": "cc9f24047775d6f24753ef8b88f3edc80eddd6a906aa4e58f71797ced476dca7"
+      "sha256": "34b03c0464dd7a1cc92d3d6565d4d9973cecbfc82ddee74a35e8688d8c440186"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_candidate.py",
@@ -743,7 +743,7 @@
     {
       "path": "tools/c11d/d9/test_d_renderer_unified_content_review.py",
       "role": "FOCUSED_REGRESSION_TEST",
-      "sha256": "3c868e699bedfad52685a180bc00ea85dc9186e8e7572098f7d64f59e8d099ec"
+      "sha256": "0250b65cfd9297864636d6d7cd3dd77de8c0c93bf07c5db2f178724e1394a53a"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_unified_delivery_timebase_policy.py",

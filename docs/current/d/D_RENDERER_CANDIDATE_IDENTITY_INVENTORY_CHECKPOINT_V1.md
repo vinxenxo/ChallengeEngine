@@ -38,3 +38,9 @@ Review this identity packet and the five blockers. This increment does **not** g
 ## Current continuation note — 2026-10-15
 
 The Visual Drill V2 request-bound runtime matrix has been accepted by the operator on real Godot 4.7.1: 20/20 selector-tier pairs, 20/20 unique request IDs, 20/20 independent runtime repeats, 20/20 request manifests and 67/67 source pins. Runtime log SHA-256: `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`. The follow-up reconciliation overlay adds the V2 request contract, Godot harness and focused regression to this declared identity surface and refreshes explicitly accounted source hashes after the accepted overlay chain. The target inventory size is 152 source artifacts; the active Windows output must confirm the actual count and fingerprint. Any count/fingerprint from before reconciliation is historical. Do not treat identity PASS as renderer-baseline approval.
+
+## Parent-chain hash reconciliation — 2026-10-15 (prepared overlay; Windows confirmation pending)
+
+The operator confirmed the focused reconciliation PASS in the active Windows checkout and reported the reconciled inventory size as `152` sources. A subsequent parent review exposed historical hashes in some downstream contracts and schema-level source declarations in the reconstructed preparation copy. The current follow-up overlay refreshes the inventory's source hashes, the runner's exact contract/schema pins, and the downstream hash chain. The prepared-copy identity-inventory test passes 10/10 and continues to report `source_count=152`; the candidate is still only an identity review packet, not an approved/frozen baseline.
+
+These new downstream reconciliations have not yet been confirmed on the active Windows checkout. Rerun the focused inventory test and CLI after applying the follow-up overlay. Preserve the local D9.15 evidence ledger and quarantine record; neither is part of the normalized preparation export.

@@ -87,3 +87,11 @@ The I/O assessment remains 0/10 complete, 6 partial (`content_identity`, `source
 
 Next steps can run in parallel once the updated request manifest is accepted: refresh this audit and identity inventory; run unified review, lifecycle and baseline preflight; prepare an explicit operator decision using `D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md`. The packet does not approve policies. Field-to-region/visibility, timebase/temporal, sample/coordinate and audio/music decisions stay pending.
 
+
+## Parent-chain hash reconciliation — 2026-10-15 (prepared overlay; parent gates pending)
+
+The operator confirmed the focused reconciliation PASS in the active Windows checkout: I/O contract pins `41/41`; all `10/10` required groups assessed; `0` complete, `6` partial and `4` blocked; identity inventory `152` sources; baseline approval remains missing. No renderer or media was activated.
+
+A subsequent parent unified-review test in the reconstructed preparation copy found stale upstream digest declarations beyond the gap audit itself. The additive follow-up reconciles current JSON source pins and schema `const` lineage, plus dependent Python declarations. Prepared-copy I/O audit remains `9/9`, `source_pins=41/41`, and the candidate I/O interface remains inadmissible. This source-hash closure is not evidence that any group is complete and is not a replacement for a fresh active-Windows run.
+
+After applying the follow-up overlay, rerun the I/O audit/test, identity inventory/test, candidate I/O contract test, the source-bound parent regression list in `D_RENDERER_SOURCE_LINEAGE_RECONCILIATION_CHECKPOINT_20261015.md`, then unified-review runtime, D9.13 lifecycle and baseline candidate preflight. Preserve local D9.15 and quarantine ledgers unchanged.

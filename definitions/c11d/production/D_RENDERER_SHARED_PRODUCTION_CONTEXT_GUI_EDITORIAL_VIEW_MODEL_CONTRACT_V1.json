@@ -40,7 +40,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_CONTRACT_V1.json",
       "role": "REACTIVE_SELECTION_CONTRACT_OR_SCHEMA",
-      "sha256": "e3ecaa5e175f838a09872c98cc6603b2e63c1a1c1a74e83f860ff44a638672c3"
+      "sha256": "b09a9fcd2ca1e9a2154731d5aa0a8a66d2acd6842518c804eba714801d044502"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_CONTRACT_SCHEMA_V1.json",
@@ -65,7 +65,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_V1.json",
       "role": "DYNAMIC_CATALOG_CONTRACT_OR_SCHEMA",
-      "sha256": "1e82cfe82e71c4107053951175ac2ee1bf603b27a7897ee62fd53547de4612dc"
+      "sha256": "2098f74ce086fb62d697fac6da87dfdb2b7e3f0a0ba40a009d376acbd79deebc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_SCHEMA_V1.json",
@@ -90,7 +90,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_V1.json",
       "role": "GUI_STATE_CONTRACT_OR_SCHEMA",
-      "sha256": "827db94668d198c665323336aea83153fb4141b792b44beb15e492895f2479dc"
+      "sha256": "eefa92abfae21c6c0dfd912a24be71b9841162b199744711a8d820e47ab1b8b3"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_SCHEMA_V1.json",
@@ -110,7 +110,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_CONTRACT_V1.json",
       "role": "EDITORIAL_DRAFT_CONTRACT_OR_SCHEMA",
-      "sha256": "bdd73bbf5f278d1509a85a4bd5515ac59fc54892f70c614e7322f427290c9686"
+      "sha256": "83cba31482be3bb590283b13040e322a0531810639a279e696c1a9fc3fd1e86f"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_CONTRACT_SCHEMA_V1.json",
@@ -130,7 +130,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_CONTRACT_V1.json",
       "role": "GUI_ADAPTER_CONTRACT_OR_SCHEMA",
-      "sha256": "ac31f359ca832942299e9206c646b18af8da6641df0a1e3bd06df657a3e53036"
+      "sha256": "fff4d6eb5068d4a1b4c0ddd0aa8350609fe4b84970c3b0d18dc6bab17c809581"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_CONTRACT_SCHEMA_V1.json",
@@ -145,7 +145,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_V1.json",
       "role": "FACADE_CONTRACT_OR_SCHEMA",
-      "sha256": "f2ccd3e30a4cae546c5ce6699b155c14776ec3215ad8a8eaa4ce465329230be1"
+      "sha256": "7dc91c4fe08bdadecbc03aa96cb9a00528eac9c512057a1eece11f7f5a3129fb"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_SCHEMA_V1.json",
@@ -165,7 +165,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CONTRACT_V1.json",
       "role": "EDITORIAL_PRESENTATION_BINDING_CONTRACT_OR_SCHEMA",
-      "sha256": "42b1eea1bb8b2d1c7ea743e158275b926cb5547b6d2aaeeb7f4f470143905035"
+      "sha256": "d596a28c479d97e2b0713a41c5fbbbe2d8360ab2ed0076a7d5a3f926e5b1456f"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CONTRACT_SCHEMA_V1.json",
@@ -225,7 +225,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
       "role": "PRESENTATION_REFERENCE_REGISTRY",
-      "sha256": "7574f4767ef7c24ab8459ea7e3753e8ca679c1a1e243347d558dea7b3abbd564"
+      "sha256": "e621be7e36222e6fcf748f03d50a05aefd283a3014ac7bf0d5ddb4e675051646"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_SCHEMA_V1.json",

@@ -9,7 +9,7 @@
     "coordinate_projection_contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
     "coordinate_projection_contract_sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264",
     "sample_selection_contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
-    "sample_selection_contract_sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    "sample_selection_contract_sha256": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
   },
   "source_lineage": [
     {

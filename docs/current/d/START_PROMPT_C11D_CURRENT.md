@@ -1,5 +1,23 @@
 <!-- C11D_AUTHORITATIVE_START_20261014_NIGHTLY_VISUAL_DRILL_COVERAGE_ACCEPTED -->
-# C11-D Start Prompt — 2026-10-14
+# C11-D Start Prompt — 2026-10-15
+
+
+## Current continuation — 2026-10-15 source-lineage parent review reconciliation
+
+**Current checkpoint:** `docs/current/d/D_RENDERER_SOURCE_LINEAGE_RECONCILIATION_CHECKPOINT_20261015.md`.
+
+This continuation supersedes older next-step directions lower in this retained start prompt. Treat previous 149-source and 140-source notes as historical snapshot statements; the current candidate identity inventory contains 152 declared source artifacts.
+
+1. Verify and apply the guarded additive source-lineage parent-review reconciliation overlay. Do not apply a full repo ZIP. The apply block checks the overlay's exact SHA-256, each target before-hash, every archive after-hash, and the frozen C11-C manifest; it creates a rollback backup and does not run tests.
+2. Run the separate focused regression block from the repository root, stopping at the first failure. It includes the candidate I/O gap audit (41/41 pins and 0 complete/6 partial/4 blocked), identity inventory (152 sources), candidate I/O contract, dynamic request payload binding, Visual Drill V2 request/source-chain test, editorial consumption/routing/field-window proposals, temporal/coordinate/sample/timebase/audio policies, shared production context GUI/service tests, and unified content review.
+3. Run the seven-harness unified content review with the actual Godot 4.7.1 console executable configured through `C11D_GODOT_EXECUTABLE`; preserve full console evidence and require the coordinator's real runtime summary, not only Python contract passes.
+4. Rerun D9.13 cross-suite lifecycle and `tools/c11d/baseline_candidate/test_d_baseline_candidate.py` plus the read-only inventory/preflight commands against the active Windows checkout. The normalized preparation export has no user-local D9.15 evidence ledger or c11d-control quarantine record; do not fabricate or change those records to make copied-tree checks pass.
+5. Continue only from the actual outputs. A PASS here is preparation for later gates, not baseline approval.
+
+**Operator-confirmed evidence preceding this checkpoint:** real Godot Visual Drill V2 `20/20` type-tier cases, independent repeats, request manifests and lineage closures; source pins `67/67`; runtime log SHA-256 `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`. Candidate focused reconciliation is `41/41` I/O pins, 10 groups assessed (0 complete, 6 partial, 4 blocked), and 152 identity source artifacts.
+
+**Governance lock:** `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked. The frozen C11-C manifest remains SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. No renderer/media/release/baseline authority is granted.
+
 
 **Context source snapshot:** `ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip`  
 **Context source SHA-256:** `562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac`  

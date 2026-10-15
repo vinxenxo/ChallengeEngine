@@ -17,12 +17,12 @@ EXPECTED_SOURCES = {
     "profiles/delivery/c11c_video_delivery_profiles.json": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
     "definitions/visual_loop_geometric_canonical.json": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc",
     "definitions/visual_drill_tracking_canonical.json": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3",
-    "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26",
-    "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd",
+    "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411",
+    "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
     "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e",
     "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315",
     "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646",
-    "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f",
+    "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229",
 }
 EXPECTED_FIXTURES = {
     "visual_loops": {"frame_count": 600, "fps": 30, "duration_seconds": 20.0, "instance_id": "D-VLP-5ac67e64ff717d97", "payload_instance_sha256": "5ac67e64ff717d9756b37152dd1ee1ff81a1b0e754f83c06a618964c9a62e090"},

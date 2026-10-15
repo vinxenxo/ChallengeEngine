@@ -57,8 +57,8 @@ from d_renderer_editorial_field_routing_visibility_reconciliation import (
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json")
 EDITORIAL_ROUTING_RECONCILIATION_REL = Path("definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json")
-EDITORIAL_ROUTING_RECONCILIATION_SHA256 = "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
-EDITORIAL_ROUTING_RECONCILIATION_REPORT_SHA256 = "33f3f947dd529b11960336d84548c756ac5bf59d91ca93ee23e4d5ac6bf18012"
+EDITORIAL_ROUTING_RECONCILIATION_SHA256 = "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
+EDITORIAL_ROUTING_RECONCILIATION_REPORT_SHA256 = "98864f5b818de8cb727f8e586d9860f9b0a76b20cb33965a4b26c18e0dc2eb2b"
 CONTRACT_ID = "C11-D-RENDERER-UNIFIED-CONTENT-REVIEW-CONTRACT-V1"
 OUTPUT_SCHEMA = "C11-D-D9-RENDERER-UNIFIED-CONTENT-REVIEW-V1"
 FROZEN_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
@@ -68,22 +68,22 @@ EXPECTED_SOURCE_LINEAGE = [
     ("release/C11C_FREEZE_PACKAGE_MANIFEST.json", FROZEN_MANIFEST_SHA256),
     ("challenges/CHALLENGE_004.json", CHALLENGE_SHA256),
     ("profiles/delivery/c11c_video_delivery_profiles.json", "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"),
-    ("definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json", "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"),
-    ("definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"),
-    ("definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json", "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"),
-    ("definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"),
+    ("definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json", "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"),
+    ("definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json", "7fa2acc1d38d2ee4e027ded101286d6ee774a9fbb35a633ea451101959ec03e1"),
+    ("definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"),
     ("definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json", "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"),
-    ("definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"),
-    ("definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json", "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"),
-    ("definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"),
+    ("definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json", "5d61271f49296935cef2f8b29210e538738cac01b7a93c4c2adfed3c1f8927df"),
+    ("definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json", "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"),
     ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json", "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"),
-    ("definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json", "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"),
-    ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json", "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"),
-    ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"),
-    ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"),
-    ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"),
-    ("definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json", "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json", "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json", "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd"),
+    ("definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json", "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json", "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"),
+    ("definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json", "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"),
     ("definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json", "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"),
     ("definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json", "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"),
     ("definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json", "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"),
@@ -607,7 +607,7 @@ def validate_harness_summaries(summaries: Mapping[str, dict[str, Any]], project_
         validate_sample_selection_preview(sample_selection_preview, root)
     except ChallengeSampleSelectionError as exc:
         raise UnifiedContentReviewError(f"Challenge sample-selection proposal preview invalid: {exc}") from exc
-    proposal_sha = "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+    proposal_sha = "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
     proposal = sample_selection_preview
     sample_time = proposal.get("source_timebase", {})
     delivery_time = proposal.get("delivery_timebase", {})
@@ -1073,7 +1073,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
             raise UnifiedContentReviewError("Visual Loop/Drill field-window mapping must remain proposal-only")
         if any(key not in editorial_review for key in expected_editorial_review_keys):
             raise UnifiedContentReviewError("Visual Loop/Drill editorial review is missing proposal metadata")
-        if (editorial_review.get("policy_id"), editorial_review.get("policy_state"), editorial_review.get("proposal_contract_sha256")) != ("C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1", "PROPOSED_NOT_APPROVED", "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"):
+        if (editorial_review.get("policy_id"), editorial_review.get("policy_state"), editorial_review.get("proposal_contract_sha256")) != ("C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1", "PROPOSED_NOT_APPROVED", "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"):
             raise UnifiedContentReviewError("Visual Loop/Drill editorial policy identity/state mismatch")
         if editorial_review.get("payload_frame_count") != expected_frames or editorial_review.get("visibility_windows") is not None or editorial_review.get("visibility_window_evaluation") != "RAW_EDITORIAL_VALUES_NOT_EXPOSED_IN_RUNTIME_SUMMARY":
             raise UnifiedContentReviewError("Visual Loop/Drill review must not fabricate evaluated windows without raw editorial values")
@@ -1098,7 +1098,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     expected_sample = {
         "policy_id": "C11D_CHALLENGE_SAMPLE_EVERY_SECOND_SOURCE_SNAPSHOT_NO_INTERPOLATION_V1",
         "state": "PROPOSED_NOT_APPROVED",
-        "proposal_contract_sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3",
+        "proposal_contract_sha256": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b",
         "source_snapshot_count": 420, "delivery_snapshot_count": 210, "stride": 2,
         "sampling_origin": "ZERO_BASED_GAME_SEGMENT_LOCAL_INDEX",
         "first_source_snapshot_index": 0, "last_source_snapshot_index": 418,
@@ -1115,7 +1115,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     composition = challenge.get("coordinate_sample_composition", {})
     expected_composition = {
         "state": "PROPOSED_NOT_APPROVED_NOT_FROZEN",
-        "proposal_contract_sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4",
+        "proposal_contract_sha256": "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd",
         "coordinate_projection_policy_id": "C11D_CHALLENGE_COORDINATE_PROJECTION_1080_TO_540_TO_REVIEW720_V1",
         "sample_selection_policy_id": "C11D_CHALLENGE_SAMPLE_EVERY_SECOND_SOURCE_SNAPSHOT_NO_INTERPOLATION_V1",
         "operation_order": ["PROJECT_ALL_GAME_COORDINATES_IN_ORIGINAL_ORDER", "SELECT_EVEN_ZERO_BASED_GAME_LOCAL_INDICES"],
@@ -1132,7 +1132,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     expected_temporal = {
         "policy_id": "C11D_CHALLENGE_TEMPORAL_ALIGNMENT_60_TO_30_HALF_OPEN_BOUNDARIES_V1",
         "policy_state": "PROPOSED_NOT_APPROVED",
-        "proposal_contract_sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4",
+        "proposal_contract_sha256": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6",
         "source_fps": 60, "source_total_frames": 900, "source_boundaries": [0, 180, 600, 780, 900],
         "source_phase_frame_counts": [180, 420, 180, 120],
         "delivery_fps": 30, "delivery_total_frames": 450, "delivery_boundaries": [0, 90, 300, 390, 450],
@@ -1153,7 +1153,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     delivery_policy_unsigned = {k: copy.deepcopy(v) for k, v in delivery_policy.items() if k != "preview_sha256"}
     if delivery_policy.get("schema") != "C11-D-D9-UNIFIED-DELIVERY-TIMEBASE-POLICY-PREVIEW-V1" or delivery_policy.get("policy_id") != UNIFIED_DELIVERY_POLICY_ID or delivery_policy.get("policy_state") != "PROPOSED_NOT_APPROVED":
         raise UnifiedContentReviewError("Unified delivery policy identity/state mismatch")
-    if delivery_policy.get("proposal_contract_sha256") != "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019":
+    if delivery_policy.get("proposal_contract_sha256") != "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85":
         raise UnifiedContentReviewError("Unified delivery policy contract identity pin mismatch")
     if delivery_policy.get("target_delivery_profile") != EXPECTED_UNIFIED_DELIVERY_PROFILE or delivery_policy.get("content_matrix") != EXPECTED_UNIFIED_DELIVERY_MATRIX:
         raise UnifiedContentReviewError("Unified delivery policy target-profile or cross-content matrix mismatch")
@@ -1171,7 +1171,7 @@ def validate_review_manifest(report: dict[str, Any], schema: dict[str, Any]) -> 
     audio_unsigned = {k: copy.deepcopy(v) for k, v in audio_policy.items() if k != "preview_sha256"}
     if audio_policy.get("schema") != "C11-D-D9-UNIFIED-AUDIO-MUSIC-DELIVERY-POLICY-PREVIEW-V1" or audio_policy.get("policy_id") != UNIFIED_AUDIO_MUSIC_POLICY_ID or audio_policy.get("policy_state") != "PROPOSED_NOT_APPROVED":
         raise UnifiedContentReviewError("Unified audio/music delivery policy identity/state mismatch")
-    if audio_policy.get("proposal_contract_sha256") != "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8":
+    if audio_policy.get("proposal_contract_sha256") != "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23":
         raise UnifiedContentReviewError("Unified audio/music delivery proposal contract identity pin mismatch")
     if audio_policy.get("target_audio_profile") != EXPECTED_AUDIO_DELIVERY_PROFILE or audio_policy.get("content_matrix") != EXPECTED_AUDIO_DELIVERY_MATRIX:
         raise UnifiedContentReviewError("Unified audio/music target profile or pre-encode timeline matrix mismatch")

@@ -22,9 +22,9 @@ EXPECTED_SOURCE_LINEAGE = [
     {"path":"release/C11C_FREEZE_PACKAGE_MANIFEST.json","sha256":"e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
     {"path":"challenges/CHALLENGE_004.json","sha256":"6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"},
     {"path":"profiles/delivery/c11c_video_delivery_profiles.json","sha256":"967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"},
-    {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json","sha256":"ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"},
-    {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json","sha256":"30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"},
-    {"path":"definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json","sha256":"602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"},
+    {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json","sha256":"4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"},
+    {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json","sha256":"5d61271f49296935cef2f8b29210e538738cac01b7a93c4c2adfed3c1f8927df"},
+    {"path":"definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json","sha256":"4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"},
     {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json","sha256":"67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"},
     {"path":"definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json","sha256":"c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"},
 ]

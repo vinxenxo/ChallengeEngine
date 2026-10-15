@@ -18,7 +18,7 @@ TEST_REL = Path("tools/c11d/d9/test_d_renderer_candidate_identity_inventory.py")
 SCHEMA_ID = "C11-D-RENDERER-CANDIDATE-IDENTITY-INVENTORY-V1"
 CONTRACT_ID = "C11-D-RENDERER-CANDIDATE-IDENTITY-INVENTORY-CONTRACT-V1"
 EXPECTED_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
-EXPECTED_CONTRACT_SHA256 = "339c423973d81bc9c75651325df24aeb56e39683b6b69037abb3463afee1216c"
+EXPECTED_CONTRACT_SHA256 = "4ea234db998685190dbfebf0bbbd3a3389b9b3cbbb25a6aeeebeb2625960518a"
 EXPECTED_SCHEMA_SHA256 = "ad36c8f2b78fcc4f86a574b733f58cba5a4335156f6fe3882ef41dc4a4020205"
 EXPECTED_CONTEXT_PATHS = [
     "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
@@ -261,7 +261,7 @@ def _validate_report(report: dict[str, Any], schema: dict[str, Any]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Read-only D renderer candidate identity inventory; never renders or persists a report.")
     parser.add_argument("--no-godot-version-probe", action="store_true", help="do not run the harmless Godot --version query")
-    parser.add_argument("--full-report", action="store_true", help="emit the full 140-source JSON report; default output is a concise summary")
+    parser.add_argument("--full-report", action="store_true", help="emit the full declared-source JSON report; default output is a concise summary")
     args = parser.parse_args(argv)
     try:
         report = build_inventory(probe_godot=not args.no_godot_version_probe)

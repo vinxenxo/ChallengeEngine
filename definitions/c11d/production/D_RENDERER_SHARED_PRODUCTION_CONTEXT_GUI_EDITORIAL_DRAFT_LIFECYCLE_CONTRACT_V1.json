@@ -20,7 +20,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_STATE_CONTRACT_V1.json",
       "role": "PARENT_REACTIVE_SELECTION_CONTRACT",
-      "sha256": "e3ecaa5e175f838a09872c98cc6603b2e63c1a1c1a74e83f860ff44a638672c3"
+      "sha256": "b09a9fcd2ca1e9a2154731d5aa0a8a66d2acd6842518c804eba714801d044502"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_SNAPSHOT_SCHEMA_V1.json",
@@ -35,7 +35,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_DYNAMIC_CATALOG_CONTRACT_V1.json",
       "role": "CANONICAL_DYNAMIC_GUI_CATALOG_CONTRACT",
-      "sha256": "1e82cfe82e71c4107053951175ac2ee1bf603b27a7897ee62fd53547de4612dc"
+      "sha256": "2098f74ce086fb62d697fac6da87dfdb2b7e3f0a0ba40a009d376acbd79deebc"
     },
     {
       "path": "tools/c11d/d9/shared_production_context_gui_state.py",

@@ -129,15 +129,15 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
-      "sha256": "216c9a2574fa3cc05d3cdc247a8683d334ea98f22701754c9a5b4e6ab9e68c2b"
+      "sha256": "81da414a3bc3e607bce3c624c16bf7d3ff9a126bbd2da4382c24184561ab5c0a"
     },
     {
       "path": "tools/c11d/d9/d_renderer_editorial_field_window_proposal.py",
-      "sha256": "52279d96093f6c201ac36931cce82a7153ba38cef57a39df027ec14f20c2f4de"
+      "sha256": "4b8971867a884014342c0557d77728965e3c704f481bbad213b6e6deb41c2495"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
-      "sha256": "ce91bf2d9a2c15bc98ffd8f18dc98426513b08f6e670ca96c488e4672cbda38e"
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
@@ -145,11 +145,11 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_loop_drill_editorial_field_windows.py",
-      "sha256": "98d195413e24fe35c41e4d88fcac3d3f604633a4beed0764aa45a703635cdf90"
+      "sha256": "e12d73fa229df37bf9de02dbd2e077eea4ec8eb7c959c8d08d6f37cfe6daac06"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
-      "sha256": "c463d55720154cafc2b529029a7b41ecea4f514a3cae01f7a2d5811997838af1"
+      "sha256": "ab21e8290a31a238ba9ca4ae8ec3f88ed1e0a7f06cd96a3a26ef65d361e1d1cc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",

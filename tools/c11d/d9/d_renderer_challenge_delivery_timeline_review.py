@@ -21,11 +21,11 @@ EXPECTED_LINEAGE = [
     ("core/authoring/ChallengeMigrationAdapter.gd", "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"),
     ("core/authoring/TemporalCore.gd", "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966"),
     ("core/presentation/ChallengePresentationBinder.gd", "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"),
-    ("definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json", "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"),
-    ("definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"),
-    ("definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"),
+    ("definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json", "7fa2acc1d38d2ee4e027ded101286d6ee774a9fbb35a633ea451101959ec03e1"),
+    ("definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"),
+    ("definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"),
     ("definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json", "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"),
-    ("definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"),
+    ("definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"),
 ]
 PHASES = ("HOOK", "GAME", "REVEAL", "CTA")
 DURATION_KEYS = ("hook_duration", "game_duration", "reveal_duration", "cta_duration")

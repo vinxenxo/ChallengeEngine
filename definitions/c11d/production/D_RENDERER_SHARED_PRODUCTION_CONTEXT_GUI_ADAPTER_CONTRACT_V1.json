@@ -50,7 +50,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_V1.json",
       "role": "SHARED_BACKEND_FACADE_CONTRACT",
-      "sha256": "f2ccd3e30a4cae546c5ce6699b155c14776ec3215ad8a8eaa4ce465329230be1"
+      "sha256": "7dc91c4fe08bdadecbc03aa96cb9a00528eac9c512057a1eece11f7f5a3129fb"
     },
     {
       "path": "tools/c11d/d9/shared_production_context_service.py",

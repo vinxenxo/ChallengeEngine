@@ -1,5 +1,19 @@
 <!-- C11D_AUTHORITATIVE_HANDOFF_20261014_NIGHTLY_VISUAL_DRILL_COVERAGE_ACCEPTED -->
-# Current authoritative C11-D state — 2026-10-14
+# Current authoritative C11-D state — 2026-10-15
+
+
+## Current continuation — source-lineage parent review reconciliation (2026-10-15)
+
+This section supersedes the older “next phase” paragraph and older isolated inventory numbers below. Earlier snapshots and their reported source counts remain historical records, not the current source of truth.
+
+- The operator's active Windows checkout has confirmed the Visual Drill V2 real Godot 4.7.1 runtime receipt (`20/20` type-tier cases and repeats, `20/20` request-specific manifests and lineage closures, `67/67` runtime pins; log SHA-256 `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`) and the candidate I/O/identity focused reconciliation (`41/41` I/O pins, 10 groups assessed: 0 complete, 6 partial, 4 blocked; identity inventory 152 sources).
+- The current next work is to apply and verify the additive source-lineage parent-review reconciliation overlay, then rerun its regression sequence on the **active Windows checkout**. Detailed reasoning, prepared-tree results and exact next gates are in `docs/current/d/D_RENDERER_SOURCE_LINEAGE_RECONCILIATION_CHECKPOINT_20261015.md`.
+- Prepared-tree unified review now passes `38/38` with `source_lineage=23/23`, `source_files=22/22`, `harness_contracts=7/7`, `cross_checks=18/18`, and fail-closed negatives `32/32`. These are isolated preparation results until confirmed in Windows.
+- After applying the overlay, run the focused Python regressions; then run the unified seven-harness Godot 4.7.1 coordinator; then revalidate D9.13 lifecycle and candidate preflight against the active local ledgers. Do not edit, fabricate, or replace the D9.15 evidence ledger or the c11d-control quarantine ledger to force a pass.
+- Current identity inventory is `152` declared source artifacts. Historical values `149` or `140` appearing in old normalized-snapshot notes/report-help text refer to earlier snapshots and must not be treated as the present count.
+- Governance remains fail-closed: `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 remains blocked. The candidate I/O gap remains `0/10 complete`, `6/10 partial`, `4/10 blocked`, and `candidate_input_admissible=false`.
+- Frozen C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` are immutable; expected manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+
 
 **Context source snapshot:** `ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip`  
 **Context source SHA-256:** `562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac`  

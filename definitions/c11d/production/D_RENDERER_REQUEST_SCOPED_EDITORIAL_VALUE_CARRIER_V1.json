@@ -131,7 +131,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
-      "sha256": "91a05711bdbc01e5e9bbe69f9661bad167531c81609b2e9c4a35365b4e515e49"
+      "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
@@ -171,11 +171,11 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
-      "sha256": "f4bf6732cdfdfe077f23a8908d8c1963f9a12f6ba33032283fcf32da506c9e1b"
+      "sha256": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
-      "sha256": "c463d55720154cafc2b529029a7b41ecea4f514a3cae01f7a2d5811997838af1"
+      "sha256": "ab21e8290a31a238ba9ca4ae8ec3f88ed1e0a7f06cd96a3a26ef65d361e1d1cc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
@@ -187,7 +187,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
-      "sha256": "ed56d4664c03142d8d1777ad73296ceb1c5f978373d811cb5fa163a434d30ca2"
+      "sha256": "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_SCHEMA_V1.json",
