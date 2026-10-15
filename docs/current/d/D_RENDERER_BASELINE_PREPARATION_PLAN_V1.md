@@ -1,25 +1,27 @@
-<!-- C11D_CROSS_TYPE_SEED_DOMAIN_GATE_20261015_CURRENT_STATE -->
-# Current authoritative C11-D state — 2026-10-15 (cross-type seed-domain scope)
+<!-- C11D_SEED_DOMAIN_COLLISION_GATE_20261015_CURRENT_STATE -->
+# Current authoritative C11-D state — 2026-10-15 (explicit seed and collision rejection)
 
-**Next checkpoint:** `docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`  
-**New runtime gate:** 2 pinned selectors × 3 seed variants × 2 independent processes = 12 Godot 4.7.1 invocations.
+**Next checkpoint:** `docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md`  
+**Next gate:** 20 invalid/implicit seed requests plus four equal-valued gameplay/music seed collisions, all rejected before Godot. This is a read-only Python preflight gate; runtime invocation count is deliberately zero.
 
-The active Windows operator reports that the Visual Drill V2 seed-domain gate passed for all 20 canonical type/tier pairs: gameplay-seed sensitivity 20/20, music-seed orthogonality 20/20, 70/70 source pins and 120 runtime invocations. Its specific log digest was not restated in the operator's confirmation, so no hash is copied from the separate V2 payload-binding run.
+The operator reports PASS for the bounded cross-type runtime matrix (Challenge `parking_v2/CHALLENGE_004` + Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`): selectors 2/2; gameplay-seed sensitivity 2/2; music-seed orthogonality 2/2; independent repeats 6/6; source pins 18/18; 12 Godot 4.7.1 process calls. The supplied PowerShell wrapper did not capture an inspectable log and printed an unconditional PASS after missing-file/hash errors. Record the runtime result as operator-reported; do not invent a log digest. Future gate scripts must use direct stdout/stderr file redirection and verify exit code, files and summary before emitting PASS.
 
-The next bounded test reuses the canonical V1 binder for Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. The contract, report schema, runner and tests are integrated into the candidate I/O gap audit (49 pins) and candidate identity inventory (160 sources). The focused Python tests pass 12/12 in the reconstructed preparation tree with mocked process receipts; active Windows/Godot acceptance for this new matrix remains pending. The candidate I/O gap remains `0/10 complete`, `6/10 partial`, `4/10 blocked`.
+The explicit-seed/collision rejection audit is available in the preparation tree and passes 7/7 tests, with `explicit_seed_negative_cases=20/20`, `numeric_seed_collision_rejections=4/4`, `source_pins=23/23`, and `runtime_invocations=0`. Equal numerical values across the two seed domains are forbidden by the canonical D9.10 adapter; tests must verify rejection rather than weakening the guard.
+
+The candidate I/O gap contract is being reconciled to 54 pins; required groups stay `0 complete / 6 partial / 4 blocked`. Candidate identity inventory advances to 164 sources. These updates do not make input admissible.
 
 ## Ordered path toward the first controlled render
 
-1. Apply the guarded cross-type seed-domain overlay and run its Python regressions plus the two-selector Godot 4.7.1 runtime matrix. Preserve the exact cross-type log and its SHA-256.
-2. Extend only the existing canonical binder to additional Challenge variants and Visual Loop grammars in individually pinned, fail-closed steps. Then design and verify automatic/default-seed, collision and prohibited cross-domain behavior; do not infer catalog-wide coverage from the bounded representatives.
-3. Resolve policy decisions by explicit review/approval: editorial field windows and visibility, presentation regions/coordinate projection, delivery timebase/timeline, and audio/music rules.
-4. Only after policy approval, implement and verify an authorized D-owned in-memory payload-side editorial consumer; re-audit the complete prospective candidate I/O instance and lineage.
-5. Obtain independent renderer baseline review/approval/freeze and explicit D4.8 authorization; then close D9.14 real-media certification, D9.16 full acceptance, D9.17 closure, D10 and any other required release gates.
-6. Generate and QA the first controlled render only after all required approvals and gates close. Until then, keep renderer activation and media creation disabled.
+1. Apply the guarded seed rejection audit overlay, then run its Windows static regressions and confirm source-pin/inventory summaries.
+2. Preserve a clean cross-type runtime log using the corrected capture mechanism; do not fabricate or borrow a prior digest.
+3. Expand Challenge and Visual Loop seed-domain coverage by canonical selector/grammar in individually pinned increments, including implicit inputs and equal-valued cross-domain collision rejection.
+4. Obtain explicit approvals for editorial visibility/windows, presentation regions/coordinates, delivery timebase/timeline and audio/music rules.
+5. Only after policy approval, implement and validate the authorized payload-side editorial consumer; re-audit prospective candidate I/O and identity.
+6. Complete independent renderer baseline approval/freeze, explicit D4.8 authorization, D9.14 real-media certification, D9.16 full acceptance, D9.17 closure and D10 gates before the first controlled render.
 
 ## Immutable controls
 
-C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable at SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked. The seed-domain work remains read-only and does not emit candidate renderer input.
+C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable at SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked.
 
 ---
 

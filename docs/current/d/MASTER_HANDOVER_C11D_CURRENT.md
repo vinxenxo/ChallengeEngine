@@ -1,23 +1,27 @@
 # Current authoritative C11-D state — 2026-10-15
 
-## Current continuation — cross-type seed-domain audit
+## Current continuation — explicit seed and collision rejection audit
 
-**Next checkpoint:** `docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`.
+**Next checkpoint:** `docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md`.
 
-The operator confirms the Visual Drill V2 seed-domain audit passed on Windows: 20/20 selectors, gameplay-seed sensitivity 20/20, music-seed orthogonality 20/20, source pins 70/70 and 120 runtime invocations. The seed-specific log digest was not restated in the confirmation and must not be borrowed from the separate V2 payload-binding log.
+The operator reports PASS for the bounded cross-type Godot matrix: Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`; `selectors=2`, `gameplay_seed_sensitivity=2/2`, `music_seed_orthogonality=2/2`, `independent_repeats=6/6`, `source_pins=18/18`, `runtime_invocations=12`. The pasted PowerShell wrapper did not preserve a valid log and later printed PASS after missing-log/hash errors. Treat the result as operator-reported without a digest; do not infer or reuse a SHA. Future runtime evidence capture is fixed in the new checkpoint.
 
-The next gate introduces no binder implementation: it composes the canonical V1 binder for Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. The source-pinned matrix uses baseline, gameplay-only and music-only variants with two independent Godot 4.7.1 process runs per variant (12 calls). The focused Python regression passes 12/12 in the reconstructed preparation tree using mocked receipts. Active Windows/Godot acceptance is still pending for this new cross-type experiment.
+The next gate is a read-only pre-Godot rejection audit using the exact canonical binder/D9.10 guard. It expects 20/20 invalid/implicit seed request forms and 4/4 equal numeric gameplay/music seed collisions to be rejected before Godot. Preparation tree: 7/7 focused tests. Runtime invocations for this rejection-only gate are zero by design; active Windows confirmation is pending.
 
-Current candidate audits after integration: I/O gap contract has 49 pins, 10 input groups assessed (`0 complete / 6 partial / 4 blocked`), and identity inventory has 160 declared sources. These checks do not grant candidate input admissibility. Update the I/O and identity checkpoints at every material source or runtime gate.
+The I/O gap contract is being reconciled to 54 source pins and remains `0 complete / 6 partial / 4 blocked`; identity inventory advances to 164 sources. These source inventories do not confer candidate input admissibility or renderer authority.
 
-### Ordered path to the first controlled render
+### Ordered path toward the first controlled render
 
-1. Apply the guarded additive overlay; run static regressions and exact source-pin audits.
-2. Run and preserve the real Godot 4.7.1 cross-type seed-domain log, with summary `selectors=2`, sensitivity `2/2`, orthogonality `2/2`, independent repeats `6/6`, pins `18/18` and 12 invocations.
-3. Extend seed/identity coverage incrementally to more canonical Challenge variants and Visual Loop grammars, then verify automatic/default seeds, collisions and cross-domain prohibitions.
-4. Approve editorial visibility/windows, presentation regions/coordinates, delivery timeline/timebase and audio/music policies explicitly. Test and approve visual payload-side editorial consumption; sidecar parity is not payload consumption.
-5. Re-audit complete prospective input/lineage; obtain independent renderer baseline approval/freeze and explicit D4.8 authorization.
-6. Close D9.14 real-media certification, D9.16 full acceptance, D9.17 closure and the remaining formal gates. Only then execute the first controlled render and QA its real output.
+1. Apply the guarded rejection-audit overlay and run Windows static regressions; check I/O pins and identity inventory outputs.
+2. Re-capture the prior cross-type runtime evidence with a corrected PowerShell wrapper if a durable log is required; no old digest is available from the pasted transcript.
+3. Expand seed-domain coverage incrementally across canonical Challenge variants and Visual Loop grammars, retaining the same binder and fail-closed seed restrictions.
+4. Obtain explicit approval for editorial field windows/visibility, presentation regions/coordinate projection, delivery timebase/timeline and audio/music policy; only then implement and verify payload-side editorial consumption.
+5. Re-audit candidate I/O/lineage and complete independent renderer baseline review/approval/freeze plus D4.8 authorization.
+6. Close D9.14 real-media certification, D9.16 full acceptance, D9.17 closure and D10 gates before the first controlled render and output QA.
+
+## PowerShell evidence-capture requirements
+
+Use one complete balanced script/function. Prefer no `finally` in pasteable fragments; never execute it as a standalone console line. Resolve Godot with `Get-Command` or an explicit validated path, capture `--version` to files, and require 4.7.1. For Python/Godot, direct `1> stdout.log 2> stderr.log`, capture `$LASTEXITCODE` immediately, verify both files and the expected summary, hash the actual evidence only afterwards, and print PASS only if all checks pass. Avoid native stderr pipelines through `Tee-Object` under stop-on-error semantics.
 
 ### Immutable controls
 

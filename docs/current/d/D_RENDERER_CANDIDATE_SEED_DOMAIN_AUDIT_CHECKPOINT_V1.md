@@ -1,7 +1,7 @@
 # Candidate cross-type seed-domain audit — Checkpoint V1
 
 **Date:** 2026-10-15  
-**State:** `PREPARATION_ONLY_ACTIVE_WINDOWS_GODOT_RUNTIME_PENDING`  
+**State:** `OPERATOR_REPORTED_RUNTIME_PASS_EVIDENCE_CAPTURE_DEFECT_REQUIRES_RECAPTURE`  
 **Scope:** One canonical Challenge selector plus one explicitly pinned Visual Loop grammar only.  
 **Authority:** Read-only source-pinned experiment; not renderer input, baseline approval, freeze, production or render authorization.
 
@@ -41,9 +41,11 @@ For each selector, the gameplay-only mutation must change the request-binding SH
 - Candidate I/O audit integrates the new contract/schema/runner/test at **49 source pins** and retains **0 complete / 6 partial / 4 blocked** required groups.
 - Candidate identity inventory integrates **160 declared source artifacts**; it remains identity-only and does not mean a renderer baseline is approved.
 
-## Active Windows Godot 4.7.1 gate
+## Operator-reported Windows Godot 4.7.1 gate and evidence-capture issue
 
-From the active repository root, run the focused regression and then the runtime audit with the actual console executable configured in `C11D_GODOT_EXECUTABLE`:
+The operator reports the runtime matrix PASS, but the transcript attached to the prior wrapper did not preserve a valid log. For any evidence-grade rerun, first resolve the actual console executable via `Get-Command`/known paths; capture stdout and stderr directly to files; capture `$LASTEXITCODE` immediately; verify the summary and log; only then compute and record SHA-256. Do not reuse the Visual Drill seed log digest or prior V2 binder log digest.
+
+> Historical wrapper example retained below for audit context only; do not use it for a new evidence-grade run because its shell capture did not reliably preserve stdout/stderr.
 
 ```powershell
 python -B .\tools\c11d\d9\test_d_renderer_candidate_seed_domain_audit.py

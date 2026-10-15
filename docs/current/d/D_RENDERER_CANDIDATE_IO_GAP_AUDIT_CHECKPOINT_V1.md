@@ -1,3 +1,15 @@
+# Candidate renderer I/O gap audit — current state (2026-10-15)
+
+**Current report:** read-only source-pinned I/O contract audit, not an input-readiness PASS. The active operator reports the previous gates all PASS, including the bounded cross-type Challenge/Loop seed matrix. Its PowerShell wrapper failed to preserve a valid log even though the operator reports the underlying gate PASS; no runtime log digest is asserted here.
+
+The current incremental seed rejection audit verifies 20/20 invalid/implicit request forms and 4/4 equal numeric gameplay/music seed collision rejections before Godot. The preparation-tree tests pass 7/7; active Windows static confirmation is the next gate. The I/O source-pin set advances from 49 to 54; the identity inventory advances from 160 to 164. This does not close the input group.
+
+Required-state snapshot remains: 10 groups assessed; **0 complete, 6 partial, 4 blocked**; `candidate_input_admissible=false`; `renderer_input_emitted=false`; `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`.
+
+The new seed checkpoint is `docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md`. See it for the explicit-seed policy, collision semantics and PowerShell evidence capture guardrails.
+
+---
+
 ## Current continuation — Visual Drill seed gate accepted; cross-type seed matrix next (2026-10-15)
 
 The active Windows operator reports the Visual Drill seed-domain runtime gate PASS: 20 canonical type/tier pairs, `gameplay_seed_sensitivity=20/20`, `music_seed_orthogonality=20/20`, `source_pins=70/70`, and 120 runtime invocations. The operator confirmation did not restate that run's log digest; no SHA-256 is fabricated here.

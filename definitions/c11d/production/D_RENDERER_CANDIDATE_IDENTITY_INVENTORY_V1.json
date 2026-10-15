@@ -78,7 +78,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "17aee0304038977cdc05cf2e6e99c8c19d3ccb01087c3f1e0b97a01ce67f59a0"
+      "sha256": "2f92f556b537b81a99ea2b451950f6faf1543c81fd1e1777375a94a1445d8b71"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
@@ -299,6 +299,16 @@
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
       "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_SCHEMA_V1.json",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_SCHEMA",
+      "sha256": "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_V1.json",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CONTRACT",
+      "sha256": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_SCHEMA_V1.json",
@@ -536,6 +546,11 @@
       "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
     },
     {
+      "path": "tools/c11d/d9/d_renderer_seed_domain_collision_audit.py",
+      "role": "READ_ONLY_SEED_DOMAIN_COLLISION_REJECTION_AUDIT_RUNNER",
+      "sha256": "9a6c98bb3d9b68accde29496de1b96ea4305312b66489a70fb05abcb4b68f2c2"
+    },
+    {
       "path": "tools/c11d/d9/d_renderer_semantic_regions.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
       "sha256": "7f10aea38bf0ee9a9111db0cc0673466f54ef168511be80a75ce439fe9ee9943"
@@ -643,7 +658,7 @@
     {
       "path": "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
       "role": "SOURCE_PINNED_IO_GAP_AUDIT_TESTS",
-      "sha256": "f161e84a900955bf372ac7183b2c2ef892f14bd982264d321521d5814731e4e2"
+      "sha256": "9f318f7143c725b0d2885a588f4429402b61936d2655e2f81d68a2a11c193987"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
@@ -756,6 +771,11 @@
       "sha256": "6407fc1cf7b6560b83362445452c79204233e9bb39e261b7042d12acdb6219f6"
     },
     {
+      "path": "tools/c11d/d9/test_d_renderer_seed_domain_collision_audit.py",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_TEST",
+      "sha256": "1d2d7f25a7bba80d77474783c1ea31403163bcd2740b36980f97d757c9de779d"
+    },
+    {
       "path": "tools/c11d/d9/test_d_renderer_semantic_regions.py",
       "role": "FOCUSED_REGRESSION_TEST",
       "sha256": "8526de866c7a3377731e5130e079f1a21713f6a55dea810799ebf40d5db2a87a"
@@ -826,7 +846,8 @@
     "docs/current/d/START_PROMPT_C11D_CURRENT.md",
     "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
     "docs/current/d/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
-    "docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md"
+    "docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md"
   ],
   "review_packet_components": [
     {

@@ -121,10 +121,10 @@ class RendererCandidateIOGapAuditTests(unittest.TestCase):
         self.assertTrue(cross_type_seed_audit_paths.issubset(pins))
         for rel in cross_type_seed_audit_paths:
             self.assertEqual(pins[rel], _sha_file(ROOT / rel), f"stale cross-type seed audit pin: {rel}")
-        self.assertEqual(len(contract["source_pins"]), 49)
+        self.assertEqual(len(contract["source_pins"]), 54)
         seed_group = {row["group"]: row for row in contract["input_group_assessments"]}["seed_domains"]
         self.assertEqual(seed_group["state"], "PARTIAL_FIXED_SEED_DOMAINS")
-        self.assertIn("operator-accepted Godot 4.7.1 cross-type", seed_group["unclosed_requirements"][0])
+        self.assertIn("full catalog", " ".join(seed_group["unclosed_requirements"]))
         payload = {row["group"]: row for row in self.__class__.report["input_groups"]}["payload_instance"]
         self.assertEqual(payload["state"], "PARTIAL_REQUEST_BOUND_MANIFEST_FOR_PINNED_SELECTOR_MATRIX")
         self.assertFalse(payload["complete_for_input_emission"])
@@ -133,9 +133,10 @@ class RendererCandidateIOGapAuditTests(unittest.TestCase):
         self.assertIn("all 20 canonical Visual Drill type/tier pairs", identity_finding)
         self.assertNotIn("Drill types/tiers are still outside the admitted matrix", identity_finding)
         seed_finding = groups["seed_domains"]["finding"]
-        self.assertIn("Visual Drill V2", seed_finding)
-        self.assertIn("12-invocation matrix", seed_finding)
-        self.assertIn("remains pending", seed_finding)
+        self.assertIn("operator reports PASS", seed_finding)
+        self.assertIn("Visual Drill seed-domain runtime PASS", " ".join(groups["seed_domains"]["evidence"]))
+        self.assertIn("explicit-seed/collision rejection audit", seed_finding)
+        self.assertIn("evidence-capture repair", seed_finding)
         self.assertFalse(groups["seed_domains"]["complete_for_input_emission"])
 
     def test_tool_is_stdout_only_and_has_no_production_dispatch_path(self):

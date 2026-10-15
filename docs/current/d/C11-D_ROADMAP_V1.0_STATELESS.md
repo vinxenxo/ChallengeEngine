@@ -1,12 +1,20 @@
-## Current milestone update — Visual Drill seed PASS; bounded Challenge/Loop seed audit next (2026-10-15)
+## Current milestone update — cross-type seed PASS; collision/explicitness rejection next (2026-10-15)
 
-The active Windows operator confirms the Visual Drill seed-domain audit PASS: `gameplay_seed_sensitivity=20/20`, `music_seed_orthogonality=20/20`, `source_pins=70/70`, `runtime_invocations=120`. The seed-specific log SHA-256 was not restated in the confirmation and is not reconstructed from the separate V2 binder log.
+The active Windows operator reports the cross-type seed-domain runtime gate PASS for Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`: `selectors=2`, gameplay sensitivity `2/2`, music orthogonality `2/2`, independent repeats `6/6`, pins `18/18`, runtime invocations `12`. The prior PowerShell wrapper did not retain a valid runtime log; no run digest is invented. Future runtime evidence must use direct stdout/stderr file redirection, immediate exit-code capture and post-run summary/log verification.
 
-The next milestone is a source-pinned cross-type seed-domain audit over two explicitly admitted canonical selectors only: Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. Its baseline/gameplay-only/music-only matrix requires two independent Godot 4.7.1 executions per variant (12 total) and proves gameplay-seed sensitivity and music-seed orthogonality only in this bounded scope. Its Python regression passes 12/12 in the preparation tree using mock receipts; the real Windows/Godot gate is pending. The I/O gap pins the new audit at 49 sources and the identity inventory has 160 declared artifacts; gap groups remain 0 complete, 6 partial, 4 blocked.
+The next gate is the source-pinned, read-only seed rejection audit. The canonical D9.10 adapter forbids equal numeric gameplay/music seed values, so collision inputs are expected to be rejected before Godot, not accepted. The preparation tree currently passes 7/7 focused tests, rejecting 20 invalid/implicit seed cases and four equal-value collision attempts across the same two pinned selectors; active Windows confirmation is pending. The candidate I/O gap will integrate five new pins and remain `0 complete / 6 partial / 4 blocked`; the identity inventory advances from 160 to 164 sources.
 
-After this gate: widen Challenge selectors and Visual Loop grammars only through source-pinned, fail-closed increments; test automatic/default seeds, collisions and prohibited cross-domain reuse; approve editorial visibility/windows, presentation/coordinates, delivery timebase/timeline and audio/music policies; implement a separately authorized payload-side editorial consumer; then re-audit input completeness and proceed through independent renderer-baseline review/freeze and the required release gates. A PASS at any intermediate step is not render authorization.
+After Windows confirmation: broaden Challenge selectors and Visual Loop grammars only in source-pinned steps; keep automatic seed generation disabled and `master_seed` unadopted; then close the remaining policy approval work for editorial windows/visibility, regions/coordinates, timeline/timebase, and audio/music. Verify payload-side editorial consumption only after approval, refresh the prospective input audit, and proceed to independent renderer baseline review/freeze and formal release gates. No intermediate PASS implies render authorization.
 
 Immutable controls remain: C11-C manifest SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked.
+
+## PowerShell operator hardening
+
+- Keep `try/catch/finally` syntactically complete and pasted as one balanced block; avoid standalone `finally` commands.
+- Resolve Godot from the actual path/`Get-Command`, then validate `--version` using file redirection rather than PowerShell's mixed native stdout/stderr capture.
+- Capture Python/Godot stdout and stderr directly to files, store `$LASTEXITCODE` immediately, verify the files exist and the expected summary is present, then hash evidence. Do not print PASS after a failed exit code or failed log verification.
+
+---
 
 <!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
 

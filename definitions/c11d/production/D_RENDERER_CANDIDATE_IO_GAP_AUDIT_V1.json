@@ -14,7 +14,8 @@
     "mode": "SOURCE_PINNED_READ_ONLY_AUDIT"
   },
   "source_of_truth": {
-    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "current_checkpoint": "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md"
   },
   "audit_rules": {
     "expected_io_contract_status": "PREPARATION_ONLY_INTERFACE_PROPOSAL_NOT_IMPLEMENTED_NOT_APPROVED",
@@ -128,18 +129,18 @@
         "cross_domain_seed_reuse"
       ],
       "state": "PARTIAL_FIXED_SEED_DOMAINS",
-      "finding": "The existing representative runtime checks and operator-reported Visual Drill seed-domain gate are accepted only within their declared scopes. The Visual Drill V2 seed audit reports PASS for 20 canonical type/tier pairs, including gameplay-seed sensitivity 20/20, music-seed orthogonality 20/20, 70/70 source pins and 120 independent-process invocations. The added cross-type source-pinned gate now defines a separate 12-invocation matrix for parking_v2/CHALLENGE_004 and c11c_geometric_waves_v1/harmonic_membrane. Its focused Python regression passes 12/12 in the preparation workspace; real Godot 4.7.1 acceptance for that Challenge/Loop matrix remains pending. This remains partial and does not claim catalog-wide seed-domain proof or prospective-input admissibility.",
+      "finding": "The operator reports PASS for the bounded cross-type runtime matrix: Challenge parking_v2/CHALLENGE_004 and Visual Loop c11c_geometric_waves_v1/harmonic_membrane; selectors=2, gameplay_seed_sensitivity=2/2, music_seed_orthogonality=2/2, independent_repeats=6/6, source_pins=18/18, runtime_invocations=12. The previous PowerShell wrapper did not retain an inspectable runtime log; no digest is asserted, and the result is documented as operator-reported pending evidence-capture repair. The read-only explicit-seed/collision rejection audit passes in the preparation tree: 20/20 invalid or implicit requests and 4/4 equal numeric gameplay/music collisions rejected before Godot. The I/O source-pinned audit incorporates that contract at 54 pins. This remains partial and does not prove catalog-wide seed-domain behavior or prospective-input admissibility.",
       "evidence": [
         "Existing Godot 4.7.1 gameplay-seed binding 3/3 and Visual Loop orthogonality 4/4 in their pinned representative scope",
-        "Operator-reported Visual Drill seed-domain runtime PASS: 20 selectors; gameplay_seed_sensitivity=20/20; music_seed_orthogonality=20/20; source_pins=70/70; runtime_invocations=120; exact seed-audit log SHA-256 was not restated in the confirmation and is not fabricated here",
-        "Source-pinned Challenge/Visual Loop seed-domain contract and report schema: 18 source pins; strict two-selector, three-variant matrix; 12 Godot invocations required",
-        "Cross-type audit focused Python unit/regression: 12/12 in the reconstructed preparation tree using a mocked process runner; not live Godot acceptance",
+        "Operator-reported Visual Drill seed-domain runtime PASS: 20 selectors; gameplay_seed_sensitivity=20/20; music_seed_orthogonality=20/20; source_pins=70/70; runtime_invocations=120; exact seed-audit log SHA-256 was not restated and is not fabricated",
+        "Operator-reported bounded cross-type runtime PASS: two pinned selectors, gameplay sensitivity 2/2, music orthogonality 2/2, independent repeats 6/6, source pins 18/18, 12 invocations; runtime log could not be verified because the PowerShell capture wrapper failed",
+        "Explicit-seed/collision rejection contract and strict schema: 23 source pins; preparation test 7/7; 20 invalid/implicit cases and 4 numeric-collision attempts rejected before Godot; runtime_invocations=0 by design",
         "Request manifests preserve gameplay_seed and music_seed as separate identity metadata domains; no renderer input is emitted"
       ],
       "unclosed_requirements": [
-        "operator-accepted Godot 4.7.1 cross-type seed sensitivity and music-seed orthogonality for parking_v2/CHALLENGE_004 and c11c_geometric_waves_v1/harmonic_membrane, with preserved full log and SHA-256",
+        "re-capture an inspectable SHA-256-bound log for the operator-reported cross-type runtime pass using corrected stdout/stderr file redirection",
         "Challenge selector/variant coverage beyond parking_v2/CHALLENGE_004 and Visual Loop family/grammar coverage beyond harmonic_membrane",
-        "explicit automatic/default seed and collision/cross-domain behavior for arbitrary requests",
+        "explicit rejection behavior for arbitrary malformed/implicit inputs outside the bounded negative matrix and collision values tested",
         "general request-driven seed-domain validation across the full catalog"
       ],
       "complete_for_input_emission": false
@@ -276,7 +277,7 @@
       "complete_for_input_emission": false
     }
   ],
-  "next_safe_increment": "RUN_RECONCILED_GAP_AUDIT_AND_IDENTITY_INVENTORY; THEN_RUN_CANDIDATE_IO_CONTRACT_AND_BINDER_REGRESSIONS; THEN_RUN_UNIFIED_REVIEW_D9_13_LIFECYCLE_AND_BASELINE_PREFLIGHT; KEEP_RENDERER_OFF_AND_CANDIDATE_INPUT_INADMISSIBLE",
+  "next_safe_increment": "RUN_SEED_DOMAIN_COLLISION_REJECTION_AUDIT_ON_ACTIVE_WINDOWS_CHECKOUT; THEN_BROADEN_CANONICAL_CHALLENGE_AND_LOOP_SELECTORS_INCREMENTALLY; KEEP_RENDERER_OFF",
   "governance": {
     "candidate_input_admissible": false,
     "renderer_input_instance_emitted": false,
@@ -411,6 +412,16 @@
       "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
     },
     {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_SCHEMA_V1.json",
+      "sha256": "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_SCHEMA"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_V1.json",
+      "sha256": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CONTRACT"
+    },
+    {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
       "role": "AUDIO_MUSIC_DELIVERY_PROPOSAL",
       "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
@@ -438,7 +449,7 @@
     {
       "path": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
       "role": "BASELINE_PREPARATION_PLAN",
-      "sha256": "54b62ddd01b4a480cf0ebb0a8c9aa79c725fbe66961d807655d634cfb32e166a"
+      "sha256": "b5ca441179d3344fcb4ed6278db493af914723a1376043ecea5994cc7f63e8ec"
     },
     {
       "path": "docs/current/d/D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md",
@@ -454,6 +465,11 @@
       "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md",
       "role": "FIXED_MATERIALIZATION_CHECKPOINT",
       "sha256": "42a1120f618478a44d9984cc1d10c2b8d907319b45a34c4b0f02a631b22a0c8a"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md",
+      "sha256": "defe4de67e9315d25849c3fb16534faa1b2231348addb65446b9a5e4fa598d74",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CHECKPOINT"
     },
     {
       "path": "tools/c11d/d9/d_renderer_candidate.py",
@@ -501,6 +517,11 @@
       "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
     },
     {
+      "path": "tools/c11d/d9/d_renderer_seed_domain_collision_audit.py",
+      "sha256": "9a6c98bb3d9b68accde29496de1b96ea4305312b66489a70fb05abcb4b68f2c2",
+      "role": "READ_ONLY_SEED_DOMAIN_COLLISION_REJECTION_AUDIT_RUNNER"
+    },
+    {
       "path": "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
       "role": "READ_ONLY_VISUAL_DRILL_SEED_DOMAIN_AUDIT_RUNNER",
       "sha256": "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2"
@@ -534,6 +555,11 @@
       "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
       "role": "VISUAL_DRILL_V2_SOURCE_LINEAGE_AND_FAIL_CLOSED_REGRESSION_TESTS",
       "sha256": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_seed_domain_collision_audit.py",
+      "sha256": "1d2d7f25a7bba80d77474783c1ea31403163bcd2740b36980f97d757c9de779d",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_TEST"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",

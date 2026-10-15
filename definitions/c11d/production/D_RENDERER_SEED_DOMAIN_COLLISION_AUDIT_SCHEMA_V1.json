@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-seed-domain-collision-audit:v1",
+  "title": "C11-D Seed-Domain Explicitness and Collision Rejection Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "scope",
+    "selectors",
+    "explicit_seed_negative_cases",
+    "negative_case_count_per_selector",
+    "numeric_seed_collision_rejections",
+    "collision_values_tested",
+    "all_rejections_precede_godot",
+    "source_pin_count",
+    "runtime_invocations",
+    "godot_version",
+    "frozen_c11c_manifest_sha256",
+    "cross_type_seed_audit_contract_sha256",
+    "runtime_seed_derivation_enabled",
+    "automatic_seed_generation",
+    "master_seed_adopted",
+    "seed_domains_complete_for_candidate_input",
+    "rejection_outcomes",
+    "unclosed_requirements",
+    "execution_boundary",
+    "audit_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "urn:c11d:renderer-seed-domain-collision-audit:v1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_EXPLICIT_SEED_AND_NUMERIC_COLLISION_AUDIT_NOT_INPUT_ADMISSION"
+    },
+    "scope": {
+      "const": "EXPLICIT_SEED_NEGATIVE_MATRIX_AND_EQUAL_VALUE_COLLISION_REJECTION_FOR_TWO_PINNED_SELECTORS_ONLY"
+    },
+    "selectors": {
+      "const": 2
+    },
+    "explicit_seed_negative_cases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "total"
+      ],
+      "properties": {
+        "passed": {
+          "const": 20
+        },
+        "total": {
+          "const": 20
+        }
+      }
+    },
+    "negative_case_count_per_selector": {
+      "const": 10
+    },
+    "numeric_seed_collision_rejections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "total"
+      ],
+      "properties": {
+        "passed": {
+          "const": 4
+        },
+        "total": {
+          "const": 4
+        }
+      }
+    },
+    "collision_values_tested": {
+      "const": [
+        12345,
+        840001
+      ]
+    },
+    "all_rejections_precede_godot": {
+      "const": true
+    },
+    "source_pin_count": {
+      "const": 23
+    },
+    "runtime_invocations": {
+      "const": 0
+    },
+    "godot_version": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "const": null
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "cross_type_seed_audit_contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "runtime_seed_derivation_enabled": {
+      "const": false
+    },
+    "automatic_seed_generation": {
+      "const": false
+    },
+    "master_seed_adopted": {
+      "const": false
+    },
+    "seed_domains_complete_for_candidate_input": {
+      "const": false
+    },
+    "rejection_outcomes": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "case",
+          "result"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "challenges",
+              "visual_loops"
+            ]
+          },
+          "case": {
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "REJECTED_AS_REQUIRED",
+              "REJECTED_BEFORE_GODOT_AS_REQUIRED"
+            ]
+          },
+          "collision_value": {
+            "enum": [
+              12345,
+              840001
+            ]
+          }
+        }
+      }
+    },
+    "unclosed_requirements": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime",
+        "request_input_persisted",
+        "payload_files_written",
+        "receipt_files_written",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "output_artifact_path",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "runtime": {
+          "const": "PYTHON_PREFLIGHT_REJECTION_ONLY_NO_GODOT_INVOCATION"
+        },
+        "request_input_persisted": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "const": null
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "audit_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

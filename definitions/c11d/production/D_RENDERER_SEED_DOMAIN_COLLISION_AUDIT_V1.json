@@ -1,0 +1,195 @@
+{
+  "schema": "C11-D-RENDERER-SEED-DOMAIN-COLLISION-AUDIT-V1",
+  "schema_version": "1.0",
+  "status": "READ_ONLY_EXPLICIT_SEED_AND_COLLISION_REJECTION_AUDIT_NOT_INPUT_ADMISSION",
+  "description": "Read-only fail-closed verification of required explicit seed fields and rejection of equal numeric values across gameplay/music seed domains before Godot.",
+  "source_of_truth": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "accepted_cross_type_audit_contract_path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json"
+  },
+  "experiment": {
+    "content_types": [
+      "challenges",
+      "visual_loops"
+    ],
+    "selectors": {
+      "challenges": {
+        "selection": {
+          "content_type": "challenges",
+          "family_id": "parking_v2",
+          "subtype_id": null,
+          "variant_id": "CHALLENGE_004"
+        },
+        "payload_scope": "CHALLENGE_RUNTIME_VISUAL_PAYLOAD_SOURCE_TIMEBASE"
+      },
+      "visual_loops": {
+        "selection": {
+          "content_type": "visual_loops",
+          "family_id": "c11c_geometric_waves_v1",
+          "subtype_id": "harmonic_membrane",
+          "variant_id": null
+        },
+        "payload_scope": "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1"
+      }
+    },
+    "collision_values_tested": [
+      12345,
+      840001
+    ],
+    "explicit_seed_fields_required": [
+      "seed",
+      "music_seed"
+    ],
+    "runtime_seed_derivation_enabled": false,
+    "master_seed_adopted": false,
+    "automatic_seed_generation": false,
+    "expected_implicit_negative_cases": 20,
+    "expected_collision_rejections": 4,
+    "rejection_boundary": "CANONICAL_D9_9_D9_10_REQUEST_PLANNING_BEFORE_GODOT",
+    "godot_invocations": 0
+  },
+  "seed_policy": {
+    "required_fields": [
+      "seed",
+      "music_seed"
+    ],
+    "types": "INTEGER_ONLY_NOT_BOOLEAN",
+    "minimum": 1,
+    "maximum": 2147483646,
+    "runtime_seed_derivation_enabled": false,
+    "automatic_seed_generation": false,
+    "master_seed_adopted": false,
+    "equal_numeric_values_across_domains": "REJECTED_FAIL_CLOSED"
+  },
+  "source_pin_count": 23,
+  "source_pins": [
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "role": "PINNED_CHALLENGE_DEFINITION",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_SCHEMA",
+      "sha256": "ba22ca15028c82bfafdaca4f4d10f08d4e554405f9869247bb2d32e28922575c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_CONTRACT",
+      "sha256": "e51be5340d26896f28fc94ae33416a1c93fbbcd5dd27916b661edbebd7616d69"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "role": "V1_BINDING_OUTPUT_SCHEMA",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "role": "V1_BINDING_CONTRACT",
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "role": "ACCEPTED_VISUAL_DRILL_V2_CONTRACT",
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V1.json",
+      "role": "V1_BINDING_INPUT_SCHEMA",
+      "sha256": "a879cadc866c19c09b34d2098baaea1924a659038f3f95c669c5bb7bc8307769"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_SCHEMA",
+      "sha256": "e27e72a058e361087328fe8d117688b3ee8b711ba546607e5cfc9b42e9b5c485"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_CONTRACT",
+      "sha256": "5967a38c227152849a8b2f30ed3dfcea70aac57eca178314fc4a7ee969f17e8c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_V1.json",
+      "role": "PINNED_LOOP_GRAMMAR_AUDIT_CONTRACT",
+      "sha256": "a57860469d1a31a7d170ba9951b4e5e994bf68f23001401bf6b12cafc6211e63"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_V1.json",
+      "role": "PINNED_LOOP_PARAMETER_INSTANCE_CONTRACT",
+      "sha256": "12fa24ccf1340ffef9a2d6355ea0c7a31069c3d4db680bab0ef3128676cb420a"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "role": "PINNED_LOOP_CANONICAL_DEFINITION",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "IMMUTABLE_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "role": "CANONICAL_D9_10_SEED_DOMAIN_ISOLATION_GUARD",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_RUNNER",
+      "sha256": "3c246134fd1a1a38bc0a6141c40449c3ca9a797abf3a64a37b0ecc80e06d3dec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "role": "CANONICAL_V1_BINDER_IMPLEMENTATION",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_RUNNER",
+      "sha256": "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+      "role": "CANONICAL_V1_GODOT_HARNESS",
+      "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "role": "ACCEPTED_VISUAL_DRILL_V2_GODOT_HARNESS",
+      "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_TEST",
+      "sha256": "d540bbf4a8e7ecfd7ce194e015149acbd0354563c4cea750fdbfb0167b69447c"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding.py",
+      "role": "CANONICAL_V1_BINDER_REGRESSION",
+      "sha256": "9a7805ef88152b0d126b59de98872895941e714e017c87aec8a8d9a18ad891b3"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+      "role": "ACCEPTED_VISUAL_DRILL_V2_REGRESSION",
+      "sha256": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_REGRESSION",
+      "sha256": "9c7366db6fe5dfe14a494f0c12c01408302764ef2d086c4f44a1ab77ddf17054"
+    }
+  ],
+  "governance": {
+    "candidate_input_admissible": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": "OFF",
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false
+  }
+}

@@ -1,3 +1,13 @@
+# D Renderer Candidate Identity Inventory — current state (2026-10-15)
+
+**Current identity inventory:** `164` declared source artifacts; report context includes `D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md`. This is a read-only identity packet, not baseline approval, freeze or renderer authorization. The prior 160-source snapshot is historical and superseded by this contract revision.
+
+The inventory now includes the explicit-seed/collision rejection contract, strict report schema, read-only audit runner and focused tests. The cross-type runtime matrix is operator-reported PASS for the two source-pinned selectors, but the prior PowerShell wrapper did not produce a valid preserved log, so no exact log digest is asserted. The new static rejection audit passes 7/7 in the preparation tree; active Windows confirmation remains the next step.
+
+The I/O group audit remains 54 source pins, 10 groups assessed (`0 complete / 6 partial / 4 blocked`), input inadmissible. Renderer activation remains OFF; no media is created; D4.8 remains BLOCKED; baseline approval is MISSING and `freeze_eligible=false`.
+
+---
+
 ## Current continuation — cross-type seed-domain audit integrated (2026-10-15)
 
 The identity inventory now declares **160 source artifacts**, including the cross-type Challenge/Visual Loop seed-domain audit's contract, strict schema, stdout-only runner and focused tests. The report context allowlist includes `D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`. The immediately prior 156-source inventory is now historical and is superseded by the reconciled contract after this overlay.
