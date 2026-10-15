@@ -1,3 +1,13 @@
+## Current continuation — cross-type seed-domain audit integrated (2026-10-15)
+
+The identity inventory now declares **160 source artifacts**, including the cross-type Challenge/Visual Loop seed-domain audit's contract, strict schema, stdout-only runner and focused tests. The report context allowlist includes `D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`. The immediately prior 156-source inventory is now historical and is superseded by the reconciled contract after this overlay.
+
+Preparation-copy regressions pass for the cross-type audit (12/12), I/O gap audit (9/9 with 49 pins, 0 complete/6 partial/4 blocked), and identity inventory (10/10 with 160 sources). These Python unit tests use mocked receipts for cross-type behavior; live Godot 4.7.1 acceptance for the two-selector/12-invocation matrix remains pending. Visual Drill seed-domain runtime is separately operator-reported PASS and is documented in its own checkpoint; no seed-log digest is inferred here.
+
+Inventory completion remains identity-only: baseline approval is missing, the candidate is not freeze-eligible, the renderer remains OFF and no media is created.
+
+# D Renderer Candidate Identity Inventory — Checkpoint V1
+
 # D Renderer Candidate Identity Inventory — Checkpoint V1
 
 **State:** `IDENTITY_ONLY_REVIEW_PACKET_NOT_BASELINE_READY`  
@@ -7,7 +17,7 @@
 
 ## Result
 
-The inventory contract pins the exact SHA-256 of every declared source artifact and derives a deterministic `source_fingerprint` from sorted `{path, role, sha256, size_bytes}` rows. It also reports the exact pinned C11-C freeze manifest, review-context document hashes, Python/runtime host version, the Godot project-declared features, and (when `godot`/`godot4` is on `PATH`) its version obtained only through `--version`. The report is generated in memory; the CLI defaults to a concise fingerprint/toolchain summary and `--full-report` emits the complete JSON packet to stdout. It never persists the report.
+The current inventory contract declares 160 source artifacts and pins the exact SHA-256 of every declared source artifact and derives a deterministic `source_fingerprint` from sorted `{path, role, sha256, size_bytes}` rows. It also reports the exact pinned C11-C freeze manifest, review-context document hashes, Python/runtime host version, the Godot project-declared features, and (when `godot`/`godot4` is on `PATH`) its version obtained only through `--version`. The report is generated in memory; the CLI defaults to a concise fingerprint/toolchain summary and `--full-report` emits the complete JSON packet to stdout. It never persists the report.
 
 `fingerprint_scope` is explicitly the declared renderer candidate review surface, not the full repository tree. The full-tree candidate evaluator remains separately authoritative for overall source integrity and the operator’s live evidence/maintenance ledgers remain local operational inputs.
 
@@ -37,10 +47,10 @@ Review this identity packet and the five blockers. This increment does **not** g
 
 ## Current continuation note — 2026-10-15
 
-The Visual Drill V2 request-bound runtime matrix has been accepted by the operator on real Godot 4.7.1: 20/20 selector-tier pairs, 20/20 unique request IDs, 20/20 independent runtime repeats, 20/20 request manifests and 67/67 source pins. Runtime log SHA-256: `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`. The follow-up reconciliation overlay adds the V2 request contract, Godot harness and focused regression to this declared identity surface and refreshes explicitly accounted source hashes after the accepted overlay chain. The target inventory size is 152 source artifacts; the active Windows output must confirm the actual count and fingerprint. Any count/fingerprint from before reconciliation is historical. Do not treat identity PASS as renderer-baseline approval.
+The Visual Drill V2 request-bound runtime matrix has been accepted by the operator on real Godot 4.7.1: 20/20 selector-tier pairs, 20/20 unique request IDs, 20/20 independent runtime repeats, 20/20 request manifests and 67/67 source pins. Runtime log SHA-256: `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`. The follow-up reconciliation overlay added the V2 request contract, Godot harness and focused regression to this declared identity surface. The 152-source target is a historical milestone, superseded by the 156-source inventory following the Visual Drill seed-domain audit addition. Any earlier count/fingerprint is historical. Do not treat identity PASS as renderer-baseline approval.
 
 ## Parent-chain hash reconciliation — 2026-10-15 (prepared overlay; Windows confirmation pending)
 
-The operator confirmed the focused reconciliation PASS in the active Windows checkout and reported the reconciled inventory size as `152` sources. A subsequent parent review exposed historical hashes in some downstream contracts and schema-level source declarations in the reconstructed preparation copy. The current follow-up overlay refreshes the inventory's source hashes, the runner's exact contract/schema pins, and the downstream hash chain. The prepared-copy identity-inventory test passes 10/10 and continues to report `source_count=152`; the candidate is still only an identity review packet, not an approved/frozen baseline.
+The operator confirmed the previous focused reconciliation PASS in the active Windows checkout and reported the then-current inventory size as `152` sources. That historical count has now been superseded by the seed-domain audit increment. The current prepared inventory has 156 declared source artifacts and passes 10/10 focused tests; the latest preparation source fingerprint is `b5599c3d3a498e0f0e0d969d5d9b9ac8bbd9a1af1fba621db632a7b9558c016f`. The candidate remains an identity-only review packet, not an approved/frozen baseline.
 
 These new downstream reconciliations have not yet been confirmed on the active Windows checkout. Rerun the focused inventory test and CLI after applying the follow-up overlay. Preserve the local D9.15 evidence ledger and quarantine record; neither is part of the normalized preparation export.

@@ -1,3 +1,19 @@
+## Current next task — bounded Challenge/Visual Loop seed-domain audit (2026-10-15)
+
+The active Windows operator reports the previous Visual Drill V2 seed-domain gate PASS: 20/20 canonical type/tier selectors, gameplay-seed sensitivity 20/20, music-seed orthogonality 20/20, source pins 70/70, and 120 Godot 4.7.1 invocations. The specific seed-audit log SHA-256 was not restated in chat; do not infer it from the separate V2 binder runtime digest.
+
+Read `docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`. Apply its additive overlay only after validating the exact ZIP hash and all target before-hashes. Run application and tests separately. The cross-type audit reuses the canonical V1 binder for Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`; it requires 12 real Godot process invocations (two independent repeats for each of three seed variants across two selectors). Its current 12/12 Python regression is mocked preparation evidence, not a runtime PASS.
+
+After application, run the cross-type audit test, candidate I/O gap audit (`49/49` source pins, `0 complete / 6 partial / 4 blocked`), candidate identity inventory (`160` sources), and parent binding/unified-review regressions. Then execute the actual Godot 4.7.1 audit, capture the full console log and SHA-256, and only advance if the exact summary is fully green. Rerun D9.13 lifecycle and baseline candidate preflight against the active Windows ledgers as required by the overlay instructions.
+
+At the next material gate update this start prompt, master handover, roadmap, baseline preparation plan, I/O checkpoint, identity checkpoint and seed-domain checkpoints. Do not create a second binder, broaden selector claims beyond the audited source-pinned set, fabricate missing ledgers or relax fail-closed checks.
+
+**Governance lock:** `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked. Frozen C11-C manifest remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+
+---
+
+<!-- C11D_AUTHORITATIVE_START_20261014_NIGHTLY_VISUAL_DRILL_COVERAGE_ACCEPTED -->
+
 <!-- C11D_AUTHORITATIVE_START_20261014_NIGHTLY_VISUAL_DRILL_COVERAGE_ACCEPTED -->
 # C11-D Start Prompt — 2026-10-15
 

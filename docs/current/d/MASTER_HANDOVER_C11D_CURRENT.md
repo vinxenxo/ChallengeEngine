@@ -1,58 +1,31 @@
-<!-- C11D_AUTHORITATIVE_HANDOFF_20261014_NIGHTLY_VISUAL_DRILL_COVERAGE_ACCEPTED -->
 # Current authoritative C11-D state — 2026-10-15
 
+## Current continuation — cross-type seed-domain audit
 
-## Current continuation — source-lineage parent review reconciliation (2026-10-15)
+**Next checkpoint:** `docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`.
 
-This section supersedes the older “next phase” paragraph and older isolated inventory numbers below. Earlier snapshots and their reported source counts remain historical records, not the current source of truth.
+The operator confirms the Visual Drill V2 seed-domain audit passed on Windows: 20/20 selectors, gameplay-seed sensitivity 20/20, music-seed orthogonality 20/20, source pins 70/70 and 120 runtime invocations. The seed-specific log digest was not restated in the confirmation and must not be borrowed from the separate V2 payload-binding log.
 
-- The operator's active Windows checkout has confirmed the Visual Drill V2 real Godot 4.7.1 runtime receipt (`20/20` type-tier cases and repeats, `20/20` request-specific manifests and lineage closures, `67/67` runtime pins; log SHA-256 `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`) and the candidate I/O/identity focused reconciliation (`41/41` I/O pins, 10 groups assessed: 0 complete, 6 partial, 4 blocked; identity inventory 152 sources).
-- The current next work is to apply and verify the additive source-lineage parent-review reconciliation overlay, then rerun its regression sequence on the **active Windows checkout**. Detailed reasoning, prepared-tree results and exact next gates are in `docs/current/d/D_RENDERER_SOURCE_LINEAGE_RECONCILIATION_CHECKPOINT_20261015.md`.
-- Prepared-tree unified review now passes `38/38` with `source_lineage=23/23`, `source_files=22/22`, `harness_contracts=7/7`, `cross_checks=18/18`, and fail-closed negatives `32/32`. These are isolated preparation results until confirmed in Windows.
-- After applying the overlay, run the focused Python regressions; then run the unified seven-harness Godot 4.7.1 coordinator; then revalidate D9.13 lifecycle and candidate preflight against the active local ledgers. Do not edit, fabricate, or replace the D9.15 evidence ledger or the c11d-control quarantine ledger to force a pass.
-- Current identity inventory is `152` declared source artifacts. Historical values `149` or `140` appearing in old normalized-snapshot notes/report-help text refer to earlier snapshots and must not be treated as the present count.
-- Governance remains fail-closed: `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 remains blocked. The candidate I/O gap remains `0/10 complete`, `6/10 partial`, `4/10 blocked`, and `candidate_input_admissible=false`.
-- Frozen C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` are immutable; expected manifest SHA-256 remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+The next gate introduces no binder implementation: it composes the canonical V1 binder for Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. The source-pinned matrix uses baseline, gameplay-only and music-only variants with two independent Godot 4.7.1 process runs per variant (12 calls). The focused Python regression passes 12/12 in the reconstructed preparation tree using mocked receipts. Active Windows/Godot acceptance is still pending for this new cross-type experiment.
 
+Current candidate audits after integration: I/O gap contract has 49 pins, 10 input groups assessed (`0 complete / 6 partial / 4 blocked`), and identity inventory has 160 declared sources. These checks do not grant candidate input admissibility. Update the I/O and identity checkpoints at every material source or runtime gate.
 
-**Context source snapshot:** `ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip`  
-**Context source SHA-256:** `562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac`  
-**Canonical frozen C11-C manifest SHA-256:** `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`  
-**Phase closure:** `VISUAL_DRILL_AUTHORING_COVERAGE_ACCEPTED_DYNAMIC_REQUEST_PAYLOAD_MANIFEST_NOT_TESTED`  
-**Next checkpoint:** `docs/current/d/C11D_NIGHTLY_RECONCILIATION_CHECKPOINT_20261014.md`  
-**Next functional checkpoint:** `docs/current/d/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_CHECKPOINT_V1.md`
+### Ordered path to the first controlled render
 
-This header is the current authority for continuation and supersedes conflicting historical “next work” statements below. The normalized context package is `ChallengeEngineV01_STATELESS_C11-D10-NORMALIZED-NIGHTLY_20261014.zip`. The original nightly ZIP is a context source, not a directive to extract it wholesale over an active checkout. Its duplicate `release/C11C_FREEZE_PACKAGE_MANIFEST.json` entry was normalized by retaining the first/canonical member only; its canonical file hash remains `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+1. Apply the guarded additive overlay; run static regressions and exact source-pin audits.
+2. Run and preserve the real Godot 4.7.1 cross-type seed-domain log, with summary `selectors=2`, sensitivity `2/2`, orthogonality `2/2`, independent repeats `6/6`, pins `18/18` and 12 invocations.
+3. Extend seed/identity coverage incrementally to more canonical Challenge variants and Visual Loop grammars, then verify automatic/default seeds, collisions and cross-domain prohibitions.
+4. Approve editorial visibility/windows, presentation regions/coordinates, delivery timeline/timebase and audio/music policies explicitly. Test and approve visual payload-side editorial consumption; sidecar parity is not payload consumption.
+5. Re-audit complete prospective input/lineage; obtain independent renderer baseline approval/freeze and explicit D4.8 authorization.
+6. Close D9.14 real-media certification, D9.16 full acceptance, D9.17 closure and the remaining formal gates. Only then execute the first controlled render and QA its real output.
 
-## Latest operator-confirmed Windows evidence
+### Immutable controls
 
-- Visual Loop composite payload integration: focused contracts, three real Godot 4.7.1 runners, candidate I/O gap and candidate identity audits reported PASS.
-- Post-integration regressions: unified content review **38/38**, D9.13 cross-suite lifecycle PASS, and baseline-candidate preflight PASS.
-- Preflight still reports `manifest_exact=2506/2545`, `allowed_D_changes=35`, `protected_entries=854/854`, `baseline_approval=MISSING`, `freeze_eligible=false`, and **five blockers**. This is the required gated state, not a final baseline acceptance.
-- Visual Drill selector authoring coverage: operator-confirmed real Godot 4.7.1 PASS — `families=4/4`, `selectors=20/20`, `deterministic_repeat=20/20`, `visual_seed_change=20/20`, `identity=20/20`, `policy_tier=20/20`, `source_pins=24/24`.
-- Visual Drill runtime report SHA-256: `fc550cf26161c5428e2b8edf280baf611fb3c06f2e3c00773910e352115eaa6e`. The audit explicitly reports `dynamic_request_manifest=NOT_TESTED`. Its authoring-adapter pass does **not** admit these selectors into the dynamic request-to-payload binder and does not establish renderer input.
-- The operator was instructed by the runner to preserve all 20 `VERIFIED` JSON receipt lines. The aggregate PASS and report hash are recorded here; the raw 20-line receipt stream was not supplied in this conversation and is not fabricated or reconstructed in this package. Retain the original console capture, or recapture it when running the next gate.
+C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable at SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked. Do not edit or recreate the operator-local D9.15 evidence or c11d-control quarantine ledgers to force a pass.
 
-## Isolated validation of the normalized context snapshot (not Windows acceptance)
+---
 
-After normalization, the following read-only Python checks were re-run against the extracted normalized ZIP in an isolated preparation directory: Visual Drill authoring contract 24/24 pins, 4/4 families, 20/20 selectors, 6/6 fail-closed negatives and source-drift 1/1; `--contract-only` 20/20; candidate identity tests 9/9 and inventory build `source_files=149` (fingerprint `22c00ff67281e437d7077beaee759741e14385b19535eb0d27ccaf32df099b8f`); candidate I/O audit tests 8/8, 38/38 pins, 10 groups assessed, 0 complete, 6 partial and 4 blocked; existing dynamic-binder contract tests 12/12, 46/46 pins, 2/2 schemas, 10/10 existing dynamic cases, 10/10 request payload manifests, 10/10 lineage-closure cases and 22 fail-closed negatives. The existing Visual Loop case reports `HARMONIC_MEMBRANE_COMPOSITE_MATERIALIZED`.
-
-These are independent Python/contract checks on the normalized package, not fresh Windows runtime receipts, not a new Godot run, and not baseline-preflight acceptance. The isolated ZIP also lacks the operator-local D9.15 ledger and c11d-control quarantine event needed by lifecycle and baseline-preflight checks: attempts here stop fail-closed with `D9.15 ledger missing` / `legacy c11d-control source is missing without a matching quarantine ledger event`. This packaging limitation does not replace the operator-reported Windows lifecycle/preflight PASS above; revalidate those in the active Windows checkout after the documentation overlay. The dynamic binder's ten-case contract does not include the 20-case Visual Drill request-manifest matrix; that remains the next functional gate.
-
-## Next phase — extend the existing dynamic binder to Visual Drills
-
-1. Read `C11D_NIGHTLY_RECONCILIATION_CHECKPOINT_20261014.md`, `D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_CHECKPOINT_V1.md`, and the current baseline preparation plan.
-2. Re-run the dynamic request-to-payload contract and source-pinned candidate I/O/identity audits against the active Windows checkout before editing.
-3. Extend the **existing** dynamic request→payload binder to support the four canonical Visual Drill types (`tracking`, `pursuit`, `saccade`, `peripheral_scan`) × tiers 1–5. Bind selector identity, selected tier, canonical source/policy lineage, request-specific payload manifest and digest. Do not create a parallel binder.
-4. Require full source pins, schema validation, deterministic request-scoped identity, exact 20-case selector coverage and fail-closed negatives; run the resulting request-bound matrix through real Godot 4.7.1 and preserve the complete per-selector receipts/report hash.
-5. Re-run candidate I/O gap, candidate identity inventory, unified content review, D9.13 lifecycle and baseline-candidate preflight. Reconcile each I/O group from actual evidence; do not automatically mark the renderer candidate admissible because authoring coverage passed.
-6. Only after the dynamic-manifest gate is closed should the plan resume field-to-region/visibility policy approvals and later visual payload consumption. Those policy approvals have not been granted by this phase closure.
-
-## Governance / immutability
-
-`renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; five baseline blockers remain. D9.14/D9.16 remain blocked as required; D9.17 remains `BLOCKED_NO_GO`; D10 remains blocked. The D9.10 adapter remains `PREPARE_ONLY`. Do not implement or claim editorial visual consumption, renderer dispatch, shader output, or generated-video acceptance as part of this authoring-coverage closure.
-
-C11-C 2.19.12 and its canonical frozen manifest remain immutable. **Future cutover requirement:** only after all C11-D gates close and formal approval, freeze and promotion are completed and accepted, C11-D and its Producer must replace C11-C frozen as the authoritative baseline and Producer. This checkpoint authorizes no early promotion or freeze.
+# Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 
 # Current implementation update — editorial routing is now a unified-review cross-check (2026-10-11)
 <!-- C11D_GUI_EDITORIAL_DRAFT_LIFECYCLE_CURRENT_2026_10_13 -->

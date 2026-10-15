@@ -1,3 +1,53 @@
+<!-- C11D_CROSS_TYPE_SEED_DOMAIN_GATE_20261015_CURRENT_STATE -->
+# Current authoritative C11-D state — 2026-10-15 (cross-type seed-domain scope)
+
+**Next checkpoint:** `docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`  
+**New runtime gate:** 2 pinned selectors × 3 seed variants × 2 independent processes = 12 Godot 4.7.1 invocations.
+
+The active Windows operator reports that the Visual Drill V2 seed-domain gate passed for all 20 canonical type/tier pairs: gameplay-seed sensitivity 20/20, music-seed orthogonality 20/20, 70/70 source pins and 120 runtime invocations. Its specific log digest was not restated in the operator's confirmation, so no hash is copied from the separate V2 payload-binding run.
+
+The next bounded test reuses the canonical V1 binder for Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. The contract, report schema, runner and tests are integrated into the candidate I/O gap audit (49 pins) and candidate identity inventory (160 sources). The focused Python tests pass 12/12 in the reconstructed preparation tree with mocked process receipts; active Windows/Godot acceptance for this new matrix remains pending. The candidate I/O gap remains `0/10 complete`, `6/10 partial`, `4/10 blocked`.
+
+## Ordered path toward the first controlled render
+
+1. Apply the guarded cross-type seed-domain overlay and run its Python regressions plus the two-selector Godot 4.7.1 runtime matrix. Preserve the exact cross-type log and its SHA-256.
+2. Extend only the existing canonical binder to additional Challenge variants and Visual Loop grammars in individually pinned, fail-closed steps. Then design and verify automatic/default-seed, collision and prohibited cross-domain behavior; do not infer catalog-wide coverage from the bounded representatives.
+3. Resolve policy decisions by explicit review/approval: editorial field windows and visibility, presentation regions/coordinate projection, delivery timebase/timeline, and audio/music rules.
+4. Only after policy approval, implement and verify an authorized D-owned in-memory payload-side editorial consumer; re-audit the complete prospective candidate I/O instance and lineage.
+5. Obtain independent renderer baseline review/approval/freeze and explicit D4.8 authorization; then close D9.14 real-media certification, D9.16 full acceptance, D9.17 closure, D10 and any other required release gates.
+6. Generate and QA the first controlled render only after all required approvals and gates close. Until then, keep renderer activation and media creation disabled.
+
+## Immutable controls
+
+C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable at SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked. The seed-domain work remains read-only and does not emit candidate renderer input.
+
+---
+
+<!-- C11D_VISUAL_DRILL_SEED_DOMAIN_GATE_20261015_CURRENT_STATE -->
+
+<!-- C11D_VISUAL_DRILL_SEED_DOMAIN_GATE_20261015_CURRENT_STATE -->
+# Current authoritative C11-D state — 2026-10-15 (seed-domain audit gate)
+
+**Next checkpoint:** `docs/current/d/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md`  
+**New runtime experiment:** 20 Visual Drill selector pairs × 3 seed-domain variants × 2 independent runtime executions = 120 Godot calls.
+
+The active Windows operator has reported PASS for the previous source-lineage reconciliation, unified content review, D9.13 lifecycle, candidate preflight, and the focused contracts/regressions. The accepted V2 runtime baseline remains 20/20 selectors and 67/67 lineage pins, log SHA-256 `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`. The next work is the **new, not-yet-runtime-accepted** Visual Drill seed-domain audit: prove per selector that changing only gameplay seed changes the payload and visual-state evidence, while changing only music seed changes request-binding identity but not visual payload/authoring state.
+
+## Ordered path toward a first render
+
+1. Apply the new additive seed-domain audit overlay and run its source-pinned Python tests plus the Godot 4.7.1 runtime experiment. Preserve the complete evidence log and its SHA-256.
+2. Extend the same canonical binder (no parallel binder) to catalog-wide Challenge variants and Visual Loop family/grammar coverage; add explicit automatic-seed, collision, and cross-domain seed tests.
+3. Resolve the remaining policy gates by explicit review/approval: editorial field windows and visibility, presentation regions and coordinate projection, delivery timebase/timeline, and audio/music policy. A PASS in validation is not policy approval.
+4. Only after the relevant policy contracts are explicitly approved, implement a D-owned payload-side editorial consumer and verify its actual in-memory visual-payload effects. Do not count sidecar parity as visual consumption.
+5. Re-audit prospective I/O completeness and baseline identity after those dependencies close. Implement a separately gated, test-only renderer path only when the required input contract is approved and complete.
+6. Produce the first controlled render only after independent renderer baseline review/approval and freeze, explicit D4.8 authorization, D9.14 real-media certification, D9.16 full acceptance, D9.17 closure, and any other required release gates are formally satisfied. Capture QA evidence and preserve fail-closed disablement until authorization.
+
+## Immutable controls
+
+C11-C 2.19.12 and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` remain immutable at SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked. Seed audit status is pending real Windows/Godot acceptance; the I/O gap remains 0 complete, 6 partial, 4 blocked.
+
+---
+
 <!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
 # Current authoritative C11-D state — 2026-10-13
 

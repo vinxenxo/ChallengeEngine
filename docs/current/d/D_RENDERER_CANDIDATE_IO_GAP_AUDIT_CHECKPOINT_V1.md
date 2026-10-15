@@ -1,3 +1,13 @@
+## Current continuation — Visual Drill seed gate accepted; cross-type seed matrix next (2026-10-15)
+
+The active Windows operator reports the Visual Drill seed-domain runtime gate PASS: 20 canonical type/tier pairs, `gameplay_seed_sensitivity=20/20`, `music_seed_orthogonality=20/20`, `source_pins=70/70`, and 120 runtime invocations. The operator confirmation did not restate that run's log digest; no SHA-256 is fabricated here.
+
+The next bounded gate reuses the canonical V1 binder for only `parking_v2/CHALLENGE_004` and `c11c_geometric_waves_v1/harmonic_membrane`, with baseline/gameplay-only/music-only variants and two independent Godot processes per variant (12 invocations). The audit contract, schema, runner and regression are now included in the I/O audit's **49 source pins**. The new cross-type Python regression passes 12/12 in the reconstructed preparation tree; live Windows/Godot acceptance remains pending for this new matrix.
+
+The candidate identity inventory is updated to **160 source artifacts**. All ten I/O groups remain `0 complete / 6 partial / 4 blocked`, including `seed_domains` as partial. This change does not admit input, implement/activate a renderer, create media, or grant baseline/release authority.
+
+# D Renderer Candidate I/O Conformance Gap Audit — Checkpoint V1
+
 # D Renderer Candidate I/O Conformance Gap Audit — Checkpoint V1
 
 **Date:** 2026-10-12  
@@ -15,7 +25,7 @@ After the real Godot 4.7.1 payload materialization gate and the request-scoped e
 - Complete groups for input emission: **0/10**.
 - Partial groups: **6** (`content_identity`, `source_lineage`, `payload_instance`, `seed_domains`, `editorial`, `delivery`).
 - Blocked groups: **4** (`presentation`, `timeline`, `audio`, `authorization`).
-- Evidence pins: 40 D-owned source/contracts/docs plus the immutable C11-C manifest in the prior scope; the reconciled V2 audit contract now pins 41 total source artifacts.
+- Evidence pins: **49 total** (the immutable C11-C manifest plus 48 D-owned source artifacts), including Visual Drill V2 and the bounded cross-type seed-domain audit contract/schema/runner/tests.
 - `candidate_input_admissible=false`; no renderer candidate input or output manifest is instantiated.
 
 The existing modules are not interchangeable: binding preview is inspection metadata; logical composition is in-memory semantic composition; neutral frame program is declaration-only; request binding preserves its bounded Challenge and Visual Loop scope and now has a real-Godot request-bound Visual Drill V2 matrix for all 20 canonical type/tier pairs; the editorial sidecar binds 14 canonical values but consumes 0/14 in the visual payload. The proposed schemas require a complete request-specific payload, all approved policy hashes, delivery/timeline/audio lineage, and both baseline and D4.8 authorization.
@@ -39,7 +49,7 @@ This checkpoint is now the active source of truth for the follow-up reconciliati
 
 The real-Godot Visual Drill V2 request-bound matrix is accepted at its declared scope: 20/20 selector-tier pairs, 20 unique request IDs, 20/20 independent runtime repeats, request-specific manifests 20/20, lineage closure 20/20 and source lineage 67/67. Runtime log SHA-256: `27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53`.
 
-The next required action is to reconcile the read-only candidate I/O gap contract and candidate identity inventory with the accepted V2 implementation. This is a source-pin reconciliation only: it must not relax the report schema, promote any input group, approve policies, or change the frozen C11-C manifest. The expected reconciled evidence surfaces are 41 source pins in the I/O gap contract and 152 source artifacts in the candidate identity inventory. These are targets for the current overlay and must be confirmed by fresh Windows runs, not assumed from this document.
+The next required action is to reconcile the read-only candidate I/O gap contract and candidate identity inventory with the accepted V2 implementation. This is a source-pin reconciliation only: it must not relax the report schema, promote any input group, approve policies, or change the frozen C11-C manifest. Historical reconciliation targets at that point were 41 source pins and 152 identity sources. They were accepted at that earlier milestone and are superseded by the seed-domain audit increment below: 45 I/O pins and 156 identity sources. Use the latest section at the top for current expected values.
 
 Run in this order and stop on the first failure:
 
@@ -81,7 +91,7 @@ At the 2026-10-13 boundary, the identity inventory and gap audit still needed a 
 
 At this historical V1 checkpoint, the dynamic request/payload binder added a self-hash-closed request payload manifest to each bounded receipt. The accepted Visual Drill V2 runtime matrix described above supersedes the V1 selector-coverage limitation but does not replace the V1 contract’s historical Challenge/Visual Loop semantics. The manifest digest is bound into the request-binding digest, source identity and payload evidence, and carries bounded source lineage plus exact in-memory payload/visual-state hashes. The source-pinned audit contract now includes the dynamic binding source, output schema, harness, contract test and its own updated schema/test pins.
 
-Historical preparation validation: I/O audit contract 8/8 with 38/38 pins; identity inventory 149/149 source files. New active-checkout target after the V2 reconciliation: I/O gap audit 41/41 source pins and candidate identity inventory 152/152 source files. Confirm these results on Windows; do not treat the historical numbers as current acceptance.
+Historical preparation validation: I/O audit contract 8/8 with 38/38 pins; identity inventory 149/149 source files. Historical target after the V2-only reconciliation: I/O gap audit 41/41 source pins and identity inventory 152/152. This target is superseded by the present 45-pin / 156-source contract revision; confirm its fresh results in the active checkout.
 
 The I/O assessment remains 0/10 complete, 6 partial (`content_identity`, `source_lineage`, `payload_instance`, `seed_domains`, `editorial`, `delivery`) and 4 blocked (`presentation`, `timeline`, `audio`, `authorization`). The accepted 20-pair Visual Drill matrix does not establish renderer admissibility or complete the other content types’ unbounded catalogue coverage. The candidate remains inadmissible; no renderer input, output manifest, dispatch or media is emitted.
 
@@ -90,7 +100,7 @@ Next steps can run in parallel once the updated request manifest is accepted: re
 
 ## Parent-chain hash reconciliation — 2026-10-15 (prepared overlay; parent gates pending)
 
-The operator confirmed the focused reconciliation PASS in the active Windows checkout: I/O contract pins `41/41`; all `10/10` required groups assessed; `0` complete, `6` partial and `4` blocked; identity inventory `152` sources; baseline approval remains missing. No renderer or media was activated.
+The operator confirmed the focused V2-only reconciliation PASS in the active Windows checkout: I/O contract pins `41/41`; all `10/10` groups assessed; `0` complete, `6` partial and `4` blocked; identity inventory `152` sources. That is a historical, superseded checkpoint. Current preparation target is 45 pins and 156 identity sources; baseline approval remains missing and no renderer or media was activated.
 
 A subsequent parent unified-review test in the reconstructed preparation copy found stale upstream digest declarations beyond the gap audit itself. The additive follow-up reconciles current JSON source pins and schema `const` lineage, plus dependent Python declarations. Prepared-copy I/O audit remains `9/9`, `source_pins=41/41`, and the candidate I/O interface remains inadmissible. This source-hash closure is not evidence that any group is complete and is not a replacement for a fresh active-Windows run.
 

@@ -103,7 +103,28 @@ class RendererCandidateIOGapAuditTests(unittest.TestCase):
         for rel in expected_paths:
             actual = _sha_file(ROOT / rel)
             self.assertEqual(pins[rel], actual, f"stale source pin: {rel}")
-        self.assertEqual(len(contract["source_pins"]), 41)
+        expected_seed_audit_paths = {
+            "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+            "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+            "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+            "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+        }
+        self.assertTrue(expected_seed_audit_paths.issubset(pins))
+        for rel in expected_seed_audit_paths:
+            self.assertEqual(pins[rel], _sha_file(ROOT / rel), f"stale seed audit pin: {rel}")
+        cross_type_seed_audit_paths = {
+            "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+            "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+            "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+            "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
+        }
+        self.assertTrue(cross_type_seed_audit_paths.issubset(pins))
+        for rel in cross_type_seed_audit_paths:
+            self.assertEqual(pins[rel], _sha_file(ROOT / rel), f"stale cross-type seed audit pin: {rel}")
+        self.assertEqual(len(contract["source_pins"]), 49)
+        seed_group = {row["group"]: row for row in contract["input_group_assessments"]}["seed_domains"]
+        self.assertEqual(seed_group["state"], "PARTIAL_FIXED_SEED_DOMAINS")
+        self.assertIn("operator-accepted Godot 4.7.1 cross-type", seed_group["unclosed_requirements"][0])
         payload = {row["group"]: row for row in self.__class__.report["input_groups"]}["payload_instance"]
         self.assertEqual(payload["state"], "PARTIAL_REQUEST_BOUND_MANIFEST_FOR_PINNED_SELECTOR_MATRIX")
         self.assertFalse(payload["complete_for_input_emission"])
@@ -113,6 +134,8 @@ class RendererCandidateIOGapAuditTests(unittest.TestCase):
         self.assertNotIn("Drill types/tiers are still outside the admitted matrix", identity_finding)
         seed_finding = groups["seed_domains"]["finding"]
         self.assertIn("Visual Drill V2", seed_finding)
+        self.assertIn("12-invocation matrix", seed_finding)
+        self.assertIn("remains pending", seed_finding)
         self.assertFalse(groups["seed_domains"]["complete_for_input_emission"])
 
     def test_tool_is_stdout_only_and_has_no_production_dispatch_path(self):

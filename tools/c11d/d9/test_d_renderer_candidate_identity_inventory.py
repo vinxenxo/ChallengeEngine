@@ -21,7 +21,7 @@ class RendererCandidateIdentityInventoryTests(unittest.TestCase):
     def test_contract_pins_at_least_one_hundred_unique_sorted_sources(self):
         contract = json.loads((ROOT / CONTRACT_REL).read_text(encoding="utf-8"))
         paths = [row["path"] for row in contract["source_inventory"]]
-        self.assertGreaterEqual(len(paths), 100)
+        self.assertEqual(len(paths), 160)
         self.assertEqual(paths, sorted(paths))
         self.assertEqual(len(paths), len(set(paths)))
         self.assertEqual(contract["status"], "READ_ONLY_CANDIDATE_IDENTITY_ONLY_NOT_APPROVAL_OR_FREEZE")
@@ -89,8 +89,18 @@ class RendererCandidateIdentityInventoryTests(unittest.TestCase):
             "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
             "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
             "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
+            "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+            "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+            "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+            "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+            "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+            "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+            "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+            "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
         }
         self.assertTrue(expected_paths.issubset(pinned))
+        self.assertIn("docs/current/d/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md", contract["report_context_paths"])
+        self.assertIn("docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md", contract["report_context_paths"])
         for rel in expected_paths:
             actual = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
             self.assertEqual(pinned[rel], actual, f"stale candidate inventory pin: {rel}")

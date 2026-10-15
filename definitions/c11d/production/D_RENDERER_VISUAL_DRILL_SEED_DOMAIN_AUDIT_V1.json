@@ -1,0 +1,464 @@
+{
+  "schema": "C11-D-RENDERER-VISUAL-DRILL-SEED-DOMAIN-AUDIT-V1",
+  "schema_version": "1.0",
+  "status": "READ_ONLY_SOURCE_PINNED_VISUAL_DRILL_SEED_DOMAIN_AUDIT_NOT_INPUT_ADMISSION",
+  "purpose": "Extend the accepted Visual Drill V2 request-bound matrix with a bounded real-Godot comparison of gameplay-seed sensitivity and music-seed orthogonality for all 20 canonical family/tier selectors. No candidate renderer input or media is produced.",
+  "scope": {
+    "owner": "C11-D_ONLY",
+    "content_type": "visual_drills",
+    "families": [
+      "peripheral_scan",
+      "pursuit",
+      "saccade",
+      "tracking"
+    ],
+    "tiers": [
+      "tier-1",
+      "tier-2",
+      "tier-3",
+      "tier-4",
+      "tier-5"
+    ],
+    "selector_count": 20,
+    "coverage": "BOUNDED_CANONICAL_VISUAL_DRILL_MATRIX_ONLY",
+    "does_not_close_arbitrary_request_seed_domains": true
+  },
+  "experiment": {
+    "baseline_gameplay_seed": 12345,
+    "changed_gameplay_seed": 54321,
+    "baseline_music_seed": 840001,
+    "changed_music_seed": 840002,
+    "matrix_variants": [
+      "BASELINE",
+      "GAMEPLAY_SEED_ONLY_CHANGED",
+      "MUSIC_SEED_ONLY_CHANGED"
+    ],
+    "expected_runtime_invocations": 120,
+    "gameplay_seed_change_must_change": [
+      "payload_sha256",
+      "visual_state_sha256",
+      "request_binding_sha256"
+    ],
+    "music_seed_change_must_preserve": [
+      "payload_sha256",
+      "visual_state_sha256",
+      "visual_drill_authoring_evidence"
+    ],
+    "music_seed_change_must_change": [
+      "request_binding_sha256"
+    ],
+    "request_id_and_selector_held_constant_across_each_pair": true,
+    "expected_receipt_mode": "CANONICAL_VISUAL_DRILL_V2_RECEIPTS_WITH_INDEPENDENT_REPEAT_EVIDENCE"
+  },
+  "accepted_baseline_runtime_evidence": {
+    "godot_version": "4.7.1",
+    "cases": 20,
+    "independent_runtime_repeat": "20/20",
+    "request_payload_manifest": "20/20",
+    "lineage_closure": "20/20",
+    "source_lineage": "67/67",
+    "log_sha256": "27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53",
+    "used_as_prior_gate_evidence_only": true
+  },
+  "v2_binder": {
+    "contract_path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+    "contract_sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85",
+    "runner_path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+    "runner_sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+    "harness_path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+    "harness_sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0",
+    "input_schema_path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+    "input_schema_sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c",
+    "output_schema_path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+    "output_schema_sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f"
+  },
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "source_pin_count": 70,
+  "source_pins": [
+    {
+      "path": "assets/c6/car.svg",
+      "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "assets/c6/garage_background.svg",
+      "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "assets/c6/parking_target.svg",
+      "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+      "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringGenerator.gd",
+      "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+      "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRegistry.gd",
+      "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequest.gd",
+      "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+      "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualDifficultyResolver.gd",
+      "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/VisualDrillSeedVariation.gd",
+      "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+      "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/data/FrameSnapshot.gd",
+      "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "core/simulation/SimulationResult.gd",
+      "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+      "sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85",
+      "role": "CANONICAL_V2_BINDER_CONTRACT"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+      "sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+      "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+      "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+      "sha256": "444496d3a1c1eda1f8bf722c68d9e6197acc006fd4462bd55ac58b4aecc8eb5a",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+      "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/visual_drill_pursuit_canonical.json",
+      "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/visual_drill_saccade_canonical.json",
+      "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+      "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_pursuit.json",
+      "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_saccade.json",
+      "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_tracking.json",
+      "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+      "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+      "role": "EXISTING_DYNAMIC_REQUEST_BINDER"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+      "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+      "sha256": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574",
+      "role": "ACCEPTED_V2_FOCUSED_TEST"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+      "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1",
+      "role": "V2_REQUEST_PAYLOAD_SOURCE_LINEAGE"
+    }
+  ],
+  "report_schema": {
+    "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+    "id": "urn:c11d:renderer-visual-drill-seed-domain-audit:v1"
+  },
+  "expected_result": {
+    "status": "PREPARATION_ONLY_VISUAL_DRILL_SEED_DOMAIN_AUDIT_PASS_NOT_RENDERER_INPUT",
+    "cases": 20,
+    "gameplay_seed_sensitivity": "20/20",
+    "music_seed_orthogonality": "20/20",
+    "seed_domains_complete_for_candidate_input": false
+  },
+  "execution_boundary": {
+    "mode": "GODOT_HEADLESS_IN_MEMORY_AUDIT_ONLY",
+    "request_input_persisted": false,
+    "payload_files_written": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "output_artifact_path": null,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "unclosed_requirements": [
+    "automatic-seed and collision/cross-domain behaviour for arbitrary requests",
+    "general request-driven seed-domain validation across the full catalog",
+    "Challenge variant and Visual Loop grammar seed matrices remain outside this Visual Drill-only audit"
+  ],
+  "v2_source_lineage_count": 67,
+  "v2_input_schema_id": "urn:c11d:renderer-dynamic-request-payload-input:v2",
+  "v2_output_schema_id": "urn:c11d:renderer-dynamic-request-payload-binding:v2"
+}

@@ -1,3 +1,15 @@
+## Current milestone update — Visual Drill seed PASS; bounded Challenge/Loop seed audit next (2026-10-15)
+
+The active Windows operator confirms the Visual Drill seed-domain audit PASS: `gameplay_seed_sensitivity=20/20`, `music_seed_orthogonality=20/20`, `source_pins=70/70`, `runtime_invocations=120`. The seed-specific log SHA-256 was not restated in the confirmation and is not reconstructed from the separate V2 binder log.
+
+The next milestone is a source-pinned cross-type seed-domain audit over two explicitly admitted canonical selectors only: Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. Its baseline/gameplay-only/music-only matrix requires two independent Godot 4.7.1 executions per variant (12 total) and proves gameplay-seed sensitivity and music-seed orthogonality only in this bounded scope. Its Python regression passes 12/12 in the preparation tree using mock receipts; the real Windows/Godot gate is pending. The I/O gap pins the new audit at 49 sources and the identity inventory has 160 declared artifacts; gap groups remain 0 complete, 6 partial, 4 blocked.
+
+After this gate: widen Challenge selectors and Visual Loop grammars only through source-pinned, fail-closed increments; test automatic/default seeds, collisions and prohibited cross-domain reuse; approve editorial visibility/windows, presentation/coordinates, delivery timebase/timeline and audio/music policies; implement a separately authorized payload-side editorial consumer; then re-audit input completeness and proceed through independent renderer-baseline review/freeze and the required release gates. A PASS at any intermediate step is not render authorization.
+
+Immutable controls remain: C11-C manifest SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; `renderer=OFF`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `baseline_approval=MISSING`; `freeze_eligible=false`; D9.10=`PREPARE_ONLY`; D9.14/D9.16 blocked; D9.17=`BLOCKED_NO_GO`; D10 blocked.
+
+<!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
+
 <!-- C11D_EDITORIAL_VISUAL_CONSUMPTION_PHASE_20261013_CURRENT_STATE -->
 # Current authoritative C11-D state — 2026-10-13
 
@@ -375,4 +387,3 @@ Las puertas de D9.14, D9.16, D9.17 y las dos aprobaciones de baseline siguen abi
 The next plan item is implemented as `D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_V1`. It pins 140 declared artifacts across the frozen C11-C reference, D9.9/D9.10 bridge, renderer-neutral contracts, policies, previews, harnesses, tests and baseline governance. The CLI emits a canonical console-only packet with a SHA-256 fingerprint for that declared surface, live review-context hashes and toolchain version information. This scope is not a full repository-tree hash; the read-only baseline candidate evaluator remains the source for that independent integrity/readiness audit.
 
 The packet explicitly records that no D-owned renderer implementation/build exists as an approved artifact. It grants no authority, does not persist output, and does not replace required renderer-baseline review or explicit D4.8 authorization. The candidate preflight must continue to report five blockers and `freeze_eligible=false`; D9.17 remains NO-GO until its formal adjudication changes.
-

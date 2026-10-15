@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-visual-drill-seed-domain-audit:v1",
+  "title": "C11-D Visual Drill Seed Domain Audit Report V1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "urn:c11d:renderer-visual-drill-seed-domain-audit:v1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_VISUAL_DRILL_SEED_DOMAIN_AUDIT_PASS_NOT_RENDERER_INPUT"
+    },
+    "scope": {
+      "const": "VISUAL_DRILL_FOUR_FAMILIES_X_FIVE_TIERS_ONLY"
+    },
+    "cases": {
+      "const": 20
+    },
+    "families_verified": {
+      "const": 4
+    },
+    "tiers_per_family": {
+      "const": 5
+    },
+    "gameplay_seed_sensitivity": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "const": 20
+        },
+        "total": {
+          "const": 20
+        }
+      },
+      "required": [
+        "passed",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "music_seed_orthogonality": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "const": 20
+        },
+        "total": {
+          "const": 20
+        }
+      },
+      "required": [
+        "passed",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "source_pin_count": {
+      "const": 70
+    },
+    "runtime_invocations": {
+      "const": 120
+    },
+    "seed_domains_complete_for_candidate_input": {
+      "const": false
+    },
+    "unclosed_seed_requirements": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "per_selector": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "properties": {
+          "family_id": {
+            "type": "string",
+            "enum": [
+              "peripheral_scan",
+              "pursuit",
+              "saccade",
+              "tracking"
+            ]
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "tier-1",
+              "tier-2",
+              "tier-3",
+              "tier-4",
+              "tier-5"
+            ]
+          },
+          "gameplay_seed_sensitivity": {
+            "const": "PASS"
+          },
+          "music_seed_orthogonality": {
+            "const": "PASS"
+          },
+          "baseline_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "changed_gameplay_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "baseline_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "changed_gameplay_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "music_seed_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "baseline_request_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "changed_gameplay_request_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "changed_music_request_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "family_id",
+          "tier",
+          "gameplay_seed_sensitivity",
+          "music_seed_orthogonality",
+          "baseline_visual_state_sha256",
+          "changed_gameplay_visual_state_sha256",
+          "baseline_payload_sha256",
+          "changed_gameplay_payload_sha256",
+          "music_seed_payload_sha256",
+          "baseline_request_binding_sha256",
+          "changed_gameplay_request_binding_sha256",
+          "changed_music_request_binding_sha256"
+        ],
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    },
+    "execution_boundary": {
+      "type": "object",
+      "properties": {
+        "runtime": {
+          "const": "GODOT_HEADLESS_IN_MEMORY_AUDIT_ONLY"
+        },
+        "request_input_persisted": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "required": [
+        "runtime",
+        "request_input_persisted",
+        "payload_files_written",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "output_artifact_path",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority"
+      ],
+      "additionalProperties": false
+    },
+    "godot_version": {
+      "type": "string",
+      "pattern": "^4\\.7\\.1"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "accepted_v2_runtime_log_sha256": {
+      "const": "27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "scope",
+    "cases",
+    "families_verified",
+    "tiers_per_family",
+    "gameplay_seed_sensitivity",
+    "music_seed_orthogonality",
+    "source_pin_count",
+    "runtime_invocations",
+    "seed_domains_complete_for_candidate_input",
+    "unclosed_seed_requirements",
+    "per_selector",
+    "execution_boundary",
+    "godot_version",
+    "frozen_c11c_manifest_sha256",
+    "accepted_v2_runtime_log_sha256"
+  ],
+  "additionalProperties": false
+}

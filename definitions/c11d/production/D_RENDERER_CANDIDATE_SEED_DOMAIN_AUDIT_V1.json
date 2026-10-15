@@ -1,0 +1,210 @@
+{
+  "schema": "C11-D-RENDERER-CANDIDATE-SEED-DOMAIN-AUDIT-V1",
+  "schema_version": "1.0",
+  "status": "READ_ONLY_SOURCE_PINNED_CHALLENGE_VISUAL_LOOP_SEED_AUDIT_NOT_INPUT_ADMISSION",
+  "purpose": "Cross-type source-pinned audit of explicit gameplay_seed sensitivity and music_seed orthogonality using existing canonical V1 request-bound receipts; the accepted Visual Drill V2 seed matrix remains separate and unchanged.",
+  "scope": {
+    "content_types": [
+      "challenges",
+      "visual_loops"
+    ],
+    "challenge_selector": "parking_v2/CHALLENGE_004 only",
+    "visual_loop_selector": "c11c_geometric_waves_v1/harmonic_membrane only",
+    "longform": "OUT_OF_SCOPE",
+    "input_admission": "NOT_AUTHORIZED"
+  },
+  "source_of_truth": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "canonical_v1_binder_contract_path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+    "accepted_visual_drill_seed_audit_path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json"
+  },
+  "experiment": {
+    "content_types": [
+      "challenges",
+      "visual_loops"
+    ],
+    "selectors": {
+      "challenges": {
+        "selection": {
+          "content_type": "challenges",
+          "family_id": "parking_v2",
+          "subtype_id": null,
+          "variant_id": "CHALLENGE_004"
+        },
+        "payload_scope": "CHALLENGE_RUNTIME_VISUAL_PAYLOAD_SOURCE_TIMEBASE"
+      },
+      "visual_loops": {
+        "selection": {
+          "content_type": "visual_loops",
+          "family_id": "c11c_geometric_waves_v1",
+          "subtype_id": "harmonic_membrane",
+          "variant_id": null
+        },
+        "payload_scope": "VISUAL_LOOP_SELECTOR_PAYLOAD_HARMONIC_MEMBRANE_V1"
+      }
+    },
+    "baseline_gameplay_seed": 12345,
+    "changed_gameplay_seed": 54321,
+    "baseline_music_seed": 840001,
+    "changed_music_seed": 840002,
+    "variants": {
+      "BASELINE": {
+        "gameplay_seed": 12345,
+        "music_seed": 840001
+      },
+      "GAMEPLAY_SEED_ONLY_CHANGED": {
+        "gameplay_seed": 54321,
+        "music_seed": 840001
+      },
+      "MUSIC_SEED_ONLY_CHANGED": {
+        "gameplay_seed": 12345,
+        "music_seed": 840002
+      }
+    },
+    "identity_fields_held_constant": [
+      "request_id",
+      "content_type",
+      "selection",
+      "variation_index",
+      "presentation_profile_id",
+      "delivery_profile_id"
+    ],
+    "gameplay_seed_change_must_change": [
+      "request_binding_sha256",
+      "payload_sha256",
+      "visual_state_sha256"
+    ],
+    "music_seed_change_must_preserve": [
+      "payload_sha256",
+      "visual_state_sha256",
+      "grammar_parameter_evidence"
+    ],
+    "music_seed_change_must_change": [
+      "request_binding_sha256"
+    ],
+    "repeat_must_preserve": [
+      "request_hash",
+      "request_binding_sha256",
+      "payload_sha256",
+      "visual_state_sha256",
+      "grammar_parameter_evidence"
+    ],
+    "independent_runtime_executions_per_variant": 2,
+    "expected_runtime_invocations": 12,
+    "receipt_mode": "CANONICAL_V1_REQUEST_SCOPED_RECEIPTS_WITH_SEPARATE_INDEPENDENT_PROCESS_REPEATS"
+  },
+  "source_pin_count": 18,
+  "source_pins": [
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "role": "PINNED_CHALLENGE_DEFINITION"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0",
+      "role": "V1_BINDING_OUTPUT_SCHEMA"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b",
+      "role": "V1_BINDING_CONTRACT"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85",
+      "role": "ACCEPTED_VISUAL_DRILL_V2_CONTRACT"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V1.json",
+      "sha256": "a879cadc866c19c09b34d2098baaea1924a659038f3f95c669c5bb7bc8307769",
+      "role": "V1_BINDING_INPUT_SCHEMA"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "sha256": "e27e72a058e361087328fe8d117688b3ee8b711ba546607e5cfc9b42e9b5c485",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_SCHEMA"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+      "sha256": "5967a38c227152849a8b2f30ed3dfcea70aac57eca178314fc4a7ee969f17e8c",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_CONTRACT"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_V1.json",
+      "sha256": "a57860469d1a31a7d170ba9951b4e5e994bf68f23001401bf6b12cafc6211e63",
+      "role": "PINNED_LOOP_GRAMMAR_AUDIT_CONTRACT"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_V1.json",
+      "sha256": "12fa24ccf1340ffef9a2d6355ea0c7a31069c3d4db680bab0ef3128676cb420a",
+      "role": "PINNED_LOOP_PARAMETER_INSTANCE_CONTRACT"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc",
+      "role": "PINNED_LOOP_CANONICAL_DEFINITION"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "role": "IMMUTABLE_C11C_MANIFEST"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+      "role": "CANONICAL_V1_BINDER_IMPLEMENTATION"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+      "sha256": "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_RUNNER"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+      "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440",
+      "role": "CANONICAL_V1_GODOT_HARNESS"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0",
+      "role": "ACCEPTED_VISUAL_DRILL_V2_GODOT_HARNESS"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "9a7805ef88152b0d126b59de98872895941e714e017c87aec8a8d9a18ad891b3",
+      "role": "CANONICAL_V1_BINDER_REGRESSION"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+      "sha256": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574",
+      "role": "ACCEPTED_VISUAL_DRILL_V2_REGRESSION"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+      "sha256": "9c7366db6fe5dfe14a494f0c12c01408302764ef2d086c4f44a1ab77ddf17054",
+      "role": "ACCEPTED_VISUAL_DRILL_SEED_AUDIT_REGRESSION"
+    }
+  ],
+  "unclosed_requirements": [
+    "Visual Loop grammars beyond harmonic_membrane are not covered.",
+    "Challenge selectors beyond parking_v2/CHALLENGE_004 are not covered.",
+    "Automatic/default seed, collision and arbitrary-request cross-domain behavior remain unproven.",
+    "Visual Drill V2 seed-domain coverage remains governed by its separate 20-selector audit.",
+    "No renderer input admission, activation, production execution or media creation is established."
+  ],
+  "governance": {
+    "candidate_input_admissible": false,
+    "request_manifest_accepted_for_candidate_input": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": "OFF",
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false
+  }
+}

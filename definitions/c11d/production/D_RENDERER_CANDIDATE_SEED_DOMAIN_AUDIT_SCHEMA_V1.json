@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-seed-domain-audit:v1",
+  "title": "C11-D Candidate Cross-Type Seed-Domain Audit Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "scope",
+    "selectors",
+    "matrix_variants_per_selector",
+    "gameplay_seed_sensitivity",
+    "music_seed_orthogonality",
+    "independent_repeat_checks",
+    "source_pin_count",
+    "runtime_invocations",
+    "godot_version",
+    "frozen_c11c_manifest_sha256",
+    "accepted_visual_drill_seed_audit_contract_sha256",
+    "seed_domains_complete_for_candidate_input",
+    "unclosed_requirements",
+    "per_selector",
+    "execution_boundary",
+    "audit_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "urn:c11d:renderer-candidate-seed-domain-audit:v1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_CROSS_TYPE_SEED_DOMAIN_AUDIT_NOT_INPUT_ADMISSION"
+    },
+    "scope": {
+      "const": "CHALLENGE_PARKING_V2_SINGLE_SELECTOR_AND_VISUAL_LOOP_HARMONIC_MEMBRANE_SINGLE_SELECTOR_ONLY"
+    },
+    "selectors": {
+      "const": 2
+    },
+    "matrix_variants_per_selector": {
+      "const": 3
+    },
+    "gameplay_seed_sensitivity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "total"
+      ],
+      "properties": {
+        "passed": {
+          "const": 2
+        },
+        "total": {
+          "const": 2
+        }
+      }
+    },
+    "music_seed_orthogonality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "total"
+      ],
+      "properties": {
+        "passed": {
+          "const": 2
+        },
+        "total": {
+          "const": 2
+        }
+      }
+    },
+    "independent_repeat_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "total"
+      ],
+      "properties": {
+        "passed": {
+          "const": 6
+        },
+        "total": {
+          "const": 6
+        }
+      }
+    },
+    "source_pin_count": {
+      "type": "integer",
+      "const": 18
+    },
+    "runtime_invocations": {
+      "const": 12
+    },
+    "godot_version": {
+      "type": "string",
+      "pattern": "^4\\.7\\.1"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "accepted_visual_drill_seed_audit_contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "seed_domains_complete_for_candidate_input": {
+      "const": false
+    },
+    "unclosed_requirements": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    },
+    "per_selector": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "selection",
+          "payload_scope",
+          "gameplay_seed_sensitivity",
+          "music_seed_orthogonality",
+          "independent_repeats",
+          "baseline_payload_sha256",
+          "gameplay_changed_payload_sha256",
+          "music_changed_payload_sha256",
+          "baseline_visual_state_sha256",
+          "gameplay_changed_visual_state_sha256",
+          "baseline_request_binding_sha256",
+          "gameplay_changed_request_binding_sha256",
+          "music_changed_request_binding_sha256"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "challenges",
+              "visual_loops"
+            ]
+          },
+          "selection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "subtype_id",
+              "variant_id"
+            ],
+            "properties": {
+              "content_type": {
+                "enum": [
+                  "challenges",
+                  "visual_loops"
+                ]
+              },
+              "family_id": {
+                "type": "string"
+              },
+              "subtype_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "variant_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "payload_scope": {
+            "type": "string"
+          },
+          "gameplay_seed_sensitivity": {
+            "const": "PASS"
+          },
+          "music_seed_orthogonality": {
+            "const": "PASS"
+          },
+          "independent_repeats": {
+            "const": "PASS"
+          },
+          "baseline_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "gameplay_changed_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "music_changed_payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "baseline_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "gameplay_changed_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "baseline_request_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "gameplay_changed_request_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "music_changed_request_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "execution_boundary": {
+      "const": {
+        "runtime": "GODOT_HEADLESS_IN_MEMORY_CROSS_TYPE_AUDIT_ONLY",
+        "request_input_persisted": false,
+        "payload_files_written": false,
+        "receipt_files_written": false,
+        "renderer_input_emitted": false,
+        "renderer_dispatch_invoked": false,
+        "renderer_activation": false,
+        "production_execution": false,
+        "media_created": false,
+        "output_artifact_path": null,
+        "c11c_source_mutation": false,
+        "d4_8": "BLOCKED",
+        "release_authority": "NONE"
+      }
+    },
+    "audit_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

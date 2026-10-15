@@ -78,7 +78,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "dae8f178a5e1d995a27784b1333d7143692d659101dee69c5ba2477c73b7bca6"
+      "sha256": "17aee0304038977cdc05cf2e6e99c8c19d3ccb01087c3f1e0b97a01ce67f59a0"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
@@ -94,6 +94,16 @@
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
       "sha256": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "CROSS_TYPE_SEED_DOMAIN_AUDIT_SCHEMA",
+      "sha256": "ba22ca15028c82bfafdaca4f4d10f08d4e554405f9869247bb2d32e28922575c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "CROSS_TYPE_SEED_DOMAIN_AUDIT_CONTRACT",
+      "sha256": "e51be5340d26896f28fc94ae33416a1c93fbbcd5dd27916b661edbebd7616d69"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_SCHEMA_V1.json",
@@ -361,6 +371,16 @@
       "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
     },
     {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "e27e72a058e361087328fe8d117688b3ee8b711ba546607e5cfc9b42e9b5c485"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "5967a38c227152849a8b2f30ed3dfcea70aac57eca178314fc4a7ee969f17e8c"
+    },
+    {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
       "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
@@ -409,6 +429,11 @@
       "path": "tools/c11d/d9/d_renderer_candidate_io_gap_audit.py",
       "role": "READ_ONLY_SOURCE_PINNED_IO_GAP_AUDIT",
       "sha256": "e056d45c02c00a9667b83335f40406064a6a994500ef8a51881db77e815d5ba1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+      "role": "READ_ONLY_CROSS_TYPE_SEED_DOMAIN_AUDIT_RUNNER",
+      "sha256": "3c246134fd1a1a38bc0a6141c40449c3ca9a797abf3a64a37b0ecc80e06d3dec"
     },
     {
       "path": "tools/c11d/d9/d_renderer_challenge_coordinate_projection.py",
@@ -546,6 +571,11 @@
       "sha256": "d31267226c72f003dc2b24a0737bb7adb424720e9e414819656154b9a26f06ae"
     },
     {
+      "path": "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+      "role": "READ_ONLY_CANDIDATE_SEED_DOMAIN_AUDIT",
+      "sha256": "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2"
+    },
+    {
       "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
       "role": "D_OWNED_REVIEW_IMPLEMENTATION",
       "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
@@ -613,7 +643,12 @@
     {
       "path": "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
       "role": "SOURCE_PINNED_IO_GAP_AUDIT_TESTS",
-      "sha256": "da9e573ed3f73a3cef0ac6f17271be11b013c09bfe26222469c147f5e65eba5d"
+      "sha256": "f161e84a900955bf372ac7183b2c2ef892f14bd982264d321521d5814731e4e2"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "d540bbf4a8e7ecfd7ce194e015149acbd0354563c4cea750fdbfb0167b69447c"
     },
     {
       "path": "tools/c11d/d9/test_d_renderer_challenge_coordinate_projection.py",
@@ -756,6 +791,11 @@
       "sha256": "b6f1d2c07c528fdb8594182fceb748f8ea0ba0baab06553d882a96f0b45f25dc"
     },
     {
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "9c7366db6fe5dfe14a494f0c12c01408302764ef2d086c4f44a1ab77ddf17054"
+    },
+    {
       "path": "tools/c11d/d9/test_d_renderer_visual_payload_materialization_preview.py",
       "role": "FOCUSED_REGRESSION_TEST",
       "sha256": "34da34366d84c6be93d445b58e258c5cfff099ae8feb6189733b221f42a953a1"
@@ -784,7 +824,9 @@
     "docs/current/d/C11D_CONTEXT_CHECKPOINT_D10_20261011.md",
     "docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md",
     "docs/current/d/START_PROMPT_C11D_CURRENT.md",
-    "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md"
+    "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+    "docs/current/d/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md"
   ],
   "review_packet_components": [
     {
