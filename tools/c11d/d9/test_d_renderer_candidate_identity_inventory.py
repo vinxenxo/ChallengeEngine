@@ -79,6 +79,22 @@ class RendererCandidateIdentityInventoryTests(unittest.TestCase):
             with self.assertRaisesRegex(inventory.CandidateInventoryError, "SHA-256 mismatch"):
                 inventory.build_inventory(temp_root, probe_godot=False)
 
+    def test_accepted_visual_drill_v2_artifacts_are_in_candidate_inventory(self):
+        contract = json.loads((ROOT / CONTRACT_REL).read_text(encoding="utf-8"))
+        pinned = {row["path"]: row["sha256"] for row in contract["source_inventory"]}
+        expected_paths = {
+            "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+            "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+            "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+            "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+            "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
+            "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
+        }
+        self.assertTrue(expected_paths.issubset(pinned))
+        for rel in expected_paths:
+            actual = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
+            self.assertEqual(pinned[rel], actual, f"stale candidate inventory pin: {rel}")
+
     def test_contract_cannot_self_approve(self):
         contract = json.loads((ROOT / CONTRACT_REL).read_text(encoding="utf-8"))
         contract["status"] = "APPROVED_AND_FROZEN"

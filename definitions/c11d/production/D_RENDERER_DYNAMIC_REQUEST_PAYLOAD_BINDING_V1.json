@@ -88,7 +88,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
-      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
@@ -96,7 +96,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
-      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+      "sha256": "91a05711bdbc01e5e9bbe69f9661bad167531c81609b2e9c4a35365b4e515e49"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
@@ -104,7 +104,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
-      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
@@ -144,7 +144,7 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
-      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
     },
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",

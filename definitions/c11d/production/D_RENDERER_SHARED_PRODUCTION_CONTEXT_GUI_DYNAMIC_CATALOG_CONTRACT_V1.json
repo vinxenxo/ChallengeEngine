@@ -36,7 +36,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_V1.json",
       "role": "GUI_STATE_CONTRACT",
-      "sha256": "e3d041125c7a5eb303067513690ce693a52a1cf17031ce053d7d893c18b541a5"
+      "sha256": "827db94668d198c665323336aea83153fb4141b792b44beb15e492895f2479dc"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_STATE_SCHEMA_V1.json",

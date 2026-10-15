@@ -51,13 +51,16 @@
         "canonical_request_sha256"
       ],
       "state": "PARTIAL_FIXED_REVIEW_IDENTITIES_ONLY",
-      "finding": "The ten-case dynamic matrix now binds canonical request identity to the three pinned selector representatives and records an exact request/payload manifest digest. Arbitrary Challenge variants, Loop families/grammars, Drill types/tiers and variant scopes are still outside the admitted matrix.",
+      "finding": "The earlier ten-case dynamic matrix covered three pinned selector representatives. The accepted Visual Drill V2 binder now additionally binds all 20 canonical Visual Drill type/tier pairs to request identity and a self-hash-closed request-specific payload manifest. Challenge variants beyond its pinned cases, Visual Loop families/grammars beyond harmonic_membrane, and other variant scopes remain outside the admitted matrix.",
       "evidence": [
-        "ten-case dynamic request/payload matrix with gameplay-seed and orthogonality checks",
-        "hash-closed request_payload_manifest_sha256 in each validated receipt"
+        "Existing dynamic request/payload matrix: bounded Challenge and Visual Loop representatives with gameplay-seed/orthogonality checks",
+        "Visual Drill V2 real Godot 4.7.1 request-bound matrix: 20/20 canonical type/tier pairs; manifest and lineage closure 20/20",
+        "V2 runtime log SHA-256: 27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53"
       ],
       "unclosed_requirements": [
-        "catalog-wide dynamic selector, family, subtype/variant, variant_scope and difficulty request identity"
+        "catalog-wide dynamic Challenge selector/variant identity beyond the specifically pinned cases",
+        "Visual Loop family/grammar coverage beyond the pinned harmonic_membrane composite",
+        "general variant_scope and difficulty identity outside the explicit Challenge, Loop and 20-pair Visual Drill matrix"
       ],
       "complete_for_input_emission": false
     },
@@ -75,14 +78,15 @@
         "request_payload_manifest_sha256"
       ],
       "state": "PARTIAL_REQUEST_BOUND_LINEAGE_MANIFEST_FOR_PINNED_MATRIX",
-      "finding": "Each dynamic receipt now hash-binds canonical request/plan/editorial identity, D9.10 bridge, PREPARE_ONLY adapter, D request binding, binding preview, logical composition, neutral frame program, temporal preview, delivery projection, editorial review manifest, selected definition, registry and both source-lineage digests. This is complete only for the bounded review matrix and is not yet carried by an admissible prospective input instance.",
+      "finding": "The existing Challenge and Visual Loop scope remains explicitly bounded, and Visual Drill V2 now closes canonical source/policy lineage for the 20 canonical type/tier pairs through request-specific manifests and real Godot runtime receipts. This lineage closure is bounded to the admitted request matrix and does not make the prospective renderer input admissible.",
       "evidence": [
-        "dynamic request-specific payload manifest includes 13 lineage digests per request",
-        "real Godot 4.7.1 ten-case matrix plus separate Visual Loop composite runtime gates"
+        "Visual Drill V2: 20/20 selector/tier pairs with request_payload_manifest=20/20 and lineage_closure=20/20",
+        "V2 source lineage verified 67/67; runtime evidence log SHA-256=27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53",
+        "Challenge and Visual Loop scopes remain bounded; Visual Loop composite remains harmonic_membrane"
       ],
       "unclosed_requirements": [
-        "approved prospective input carrying the manifest and all required source lineage",
-        "general selector/family/tier lineage beyond the pinned three-representative matrix",
+        "approved prospective input carrying the request manifest and all required schema groups",
+        "dynamic selector support outside the explicitly admitted Challenge, Visual Loop and 20-pair Visual Drill scope",
         "approved presentation, timeline and audio policy lineage"
       ],
       "complete_for_input_emission": false
@@ -99,14 +103,15 @@
         "materialization_mode"
       ],
       "state": "PARTIAL_REQUEST_BOUND_MANIFEST_FOR_PINNED_SELECTOR_MATRIX",
-      "finding": "Three pinned selector representatives produce deterministic in-memory payloads; the dynamic receipt now contains a hash-closed request-specific payload manifest linked to the exact payload and visual-state digests. The Visual Loop composite remains limited to harmonic_membrane; no renderer input is emitted.",
+      "finding": "The accepted Visual Drill V2 binder has real Godot 4.7.1 evidence for all 20 canonical type/tier pairs. Each pair has a hash-closed request-specific payload manifest, exact in-memory payload evidence and an independent runtime repeat. This extends the supported D-owned request matrix but still does not produce an admissible prospective renderer input; the Visual Loop composite remains bounded to harmonic_membrane.",
       "evidence": [
-        "Godot 4.7.1 dynamic materialization matrix: ten cases; deterministic repeat per case",
-        "request_payload_manifest_sha256 propagated into request identity and payload evidence"
+        "Visual Drill V2 real Godot 4.7.1 runtime: cases=20; families=4/4; selectors=20/20; independent_runtime_repeat=20/20",
+        "request_payload_manifest=20/20; lineage_closure=20/20; source_pins=67/67; request_payload_manifest_sha256 bound per request; log SHA-256=27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53",
+        "renderer input remains un-emitted; C11-C frozen manifest remains unchanged"
       ],
       "unclosed_requirements": [
-        "catalog-wide exact payload materialization for all supported families, subtypes, variants and tiers",
-        "approved prospective input consuming the payload manifest",
+        "approved prospective input consuming the request-bound payload manifest",
+        "an approved, complete input instance spanning every required group in the prospective I/O schema",
         "shader/renderer-native payload contract remains unimplemented and unauthorized"
       ],
       "complete_for_input_emission": false
@@ -123,15 +128,17 @@
         "cross_domain_seed_reuse"
       ],
       "state": "PARTIAL_FIXED_SEED_DOMAINS",
-      "finding": "The runtime matrix binds gameplay seed changes independently in all three representative content types (3/3); Visual Loop orthogonality checks show music seed, variation index, delivery identity and editorial title do not alter visual payload/state (4/4). The proof remains bounded to the pinned selectors.",
+      "finding": "The established three-representative runtime matrix verifies gameplay-seed binding (3/3) and Visual Loop orthogonality (4/4). Visual Drill V2 additionally verifies request-specific payload manifests and deterministic independent runtime repetition for all 20 canonical type/tier pairs. This does not claim a matrix-wide cross-seed sensitivity, automatic-seed collision or cross-domain orthogonality proof for arbitrary requests.",
       "evidence": [
-        "Godot 4.7.1 gameplay-seed binding 3/3",
-        "Godot 4.7.1 Visual Loop orthogonality 4/4",
-        "request manifest carries gameplay_seed and music_seed as separate request metadata"
+        "Existing Godot 4.7.1 gameplay-seed binding 3/3",
+        "Existing Godot 4.7.1 Visual Loop orthogonality 4/4",
+        "Visual Drill V2 runtime: request_payload_manifest=20/20; independent_runtime_repeat=20/20; log SHA-256=27a953d867169a3923049b07e0c3b0555867014ce8ecc51483342b222a777c53",
+        "Request manifests preserve gameplay_seed and music_seed as distinct metadata domains"
       ],
       "unclosed_requirements": [
-        "general request-driven seed-domain validation across the full catalog",
-        "explicit automatic-seed and collision/cross-domain behavior for arbitrary requests"
+        "matrix-wide visual-state sensitivity to changed gameplay seed for every V2 selector/tier pair",
+        "explicit automatic-seed and collision/cross-domain behavior for arbitrary requests",
+        "general request-driven seed-domain validation across the full catalog"
       ],
       "complete_for_input_emission": false
     },
@@ -267,7 +274,7 @@
       "complete_for_input_emission": false
     }
   ],
-  "next_safe_increment": "RERUN_THE_REQUEST_BOUND_PAYLOAD_MANIFEST_MATRIX_ON_WINDOWS_GODOT_4_7_1;_RECONCILE_THE_10_CASE_LINEAGE_RECEIPTS_WITH_THE_IO_MATRIX;_THEN_EXPAND_EXACT_SELECTOR_COVERAGE_AND_PREPARE_POLICY_APPROVALS;_KEEP_RENDERER_OFF_AND_CANDIDATE_INPUT_INADMISSIBLE",
+  "next_safe_increment": "RUN_RECONCILED_GAP_AUDIT_AND_IDENTITY_INVENTORY; THEN_RUN_CANDIDATE_IO_CONTRACT_AND_BINDER_REGRESSIONS; THEN_RUN_UNIFIED_REVIEW_D9_13_LIFECYCLE_AND_BASELINE_PREFLIGHT; KEEP_RENDERER_OFF_AND_CANDIDATE_INPUT_INADMISSIBLE",
   "governance": {
     "candidate_input_admissible": false,
     "renderer_input_instance_emitted": false,
@@ -309,7 +316,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
       "role": "VERSIONED_IO_INTERFACE_CONTRACT",
-      "sha256": "97f7422a36d0a2668bcdad2da9581c9136a3b1b3511db90d8810429ce0843658"
+      "sha256": "f4bf6732cdfdfe077f23a8908d8c1963f9a12f6ba33032283fcf32da506c9e1b"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
@@ -329,17 +336,17 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
       "role": "CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL",
-      "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
+      "sha256": "9bdc712693dc90612bcdf1e068a96ec850222cad9c9c303af65a2740233d32ba"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
       "role": "CHALLENGE_SAMPLE_SELECTION_PROPOSAL",
-      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+      "sha256": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
       "role": "CHALLENGE_TEMPORAL_ALIGNMENT_PROPOSAL",
-      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+      "sha256": "122b9d631fab4e08beda6ae0621ab31a38a79f3cf06d7e385b7edd3d60c2da8e"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
@@ -349,22 +356,37 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
       "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_CONTRACT",
-      "sha256": "ca6a9c384494fcd7f1072ced5f8dfb740b67ec5d4014412fe107ba1283bb893c"
+      "sha256": "9f453ebc0a84507a609bcb2fe65ce7b8324b093fb0cd12be3c87a829c291c90b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "role": "VISUAL_DRILL_V2_REQUEST_BOUND_PAYLOAD_CONTRACT",
+      "sha256": "f0a25d8518199a9fda562a9e0567909ab6a518f2bdf0c5633aa16e8e72718ee5"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "role": "VISUAL_DRILL_V2_GODOT_IN_MEMORY_MATERIALIZATION_HARNESS",
+      "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+      "role": "VISUAL_DRILL_V2_SOURCE_LINEAGE_AND_FAIL_CLOSED_REGRESSION_TESTS",
+      "sha256": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
       "role": "EDITORIAL_ROUTING_CONSUMPTION_BOUNDARY",
-      "sha256": "fceb79f28a3ce7cd4faf769d776aafe655dc977fd53edfc3187b75354834aebc"
+      "sha256": "ed56d4664c03142d8d1777ad73296ceb1c5f978373d811cb5fa163a434d30ca2"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
       "role": "CHALLENGE_EDITORIAL_WINDOW_PROPOSAL",
-      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+      "sha256": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
       "role": "LOOP_DRILL_EDITORIAL_WINDOW_PROPOSAL",
-      "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
+      "sha256": "ce91bf2d9a2c15bc98ffd8f18dc98426513b08f6e670ca96c488e4672cbda38e"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
@@ -374,27 +396,27 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json",
       "role": "EDITORIAL_VALUE_SIDECAR_CONTRACT",
-      "sha256": "1224526154b89ed79000e0bd737e25153cec12b3bd24d642d2e7bb0b741cd66b"
+      "sha256": "dc95142d48b193605b844fc9b2ca9dee7c778fac0eba4331893212250831297f"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
       "role": "FIXED_REQUEST_BINDING_CONTRACT",
-      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
       "role": "FIXED_PAYLOAD_MATERIALIZATION_CONTRACT",
-      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+      "sha256": "91a05711bdbc01e5e9bbe69f9661bad167531c81609b2e9c4a35365b4e515e49"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
       "role": "AUDIO_MUSIC_DELIVERY_PROPOSAL",
-      "sha256": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
+      "sha256": "284152c4801f4c01ab13045559b3ffa651484c27e44e9bf2bf4abe6a5c1b08db"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
       "role": "DELIVERY_TIMEBASE_POLICY_PROPOSAL",
-      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
+      "sha256": "ed0e0e87f92e568858c7c913c97b3e527d48084235eedbc17362d64a2474af9a"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
@@ -434,7 +456,7 @@
     {
       "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
       "role": "DYNAMIC_REQUEST_PAYLOAD_BINDING_IMPLEMENTATION",
-      "sha256": "7d74442e829d6bf1cd7e568739d95b514caaa46da4ee9d7dd17a1709ceba882f"
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
     },
     {
       "path": "tools/c11d/d9/d_renderer_frame_program.py",
@@ -454,7 +476,7 @@
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
       "role": "FIXED_REQUEST_BINDING_IMPLEMENTATION",
-      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
     },
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",

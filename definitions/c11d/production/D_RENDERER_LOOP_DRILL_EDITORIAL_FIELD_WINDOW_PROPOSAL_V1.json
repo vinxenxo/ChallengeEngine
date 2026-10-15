@@ -26,8 +26,13 @@
     "challenge_field_window_proposal_sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
   },
   "scope": {
-    "supported_content_types": ["visual_loops", "visual_drills"],
-    "unsupported_content_types": ["challenges"],
+    "supported_content_types": [
+      "visual_loops",
+      "visual_drills"
+    ],
+    "unsupported_content_types": [
+      "challenges"
+    ],
     "source_span_model": "ONE_CONTINUOUS_PAYLOAD_SPAN_NO_INFERRED_SUBPHASES",
     "visibility_intervals": "ZERO_BASED_HALF_OPEN_FRAME_RANGES",
     "per_field_time_source": "THIS_EXPLICIT_PROPOSAL_ONLY; NO_CANONICAL_FIELD_WINDOW_EXISTS_YET",
@@ -39,12 +44,30 @@
     "policy_id": "C11D_LOOP_DRILL_NONEMPTY_VISUAL_FIELDS_FULL_CONTINUOUS_SPAN_V1",
     "state": "PROPOSED_NOT_APPROVED",
     "visible_fields": [
-      {"field_id": "title", "target_region": "HEADER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
-      {"field_id": "subtitle", "target_region": "HEADER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"},
-      {"field_id": "call_to_action", "target_region": "FOOTER", "condition": "NONEMPTY_STRING", "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"}
+      {
+        "field_id": "title",
+        "target_region": "HEADER",
+        "condition": "NONEMPTY_STRING",
+        "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+      },
+      {
+        "field_id": "subtitle",
+        "target_region": "HEADER",
+        "condition": "NONEMPTY_STRING",
+        "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+      },
+      {
+        "field_id": "call_to_action",
+        "target_region": "FOOTER",
+        "condition": "NONEMPTY_STRING",
+        "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+      }
     ],
     "metadata_only_fields": [
-      {"field_id": "language", "rule": "METADATA_ONLY_NO_VISIBILITY_WINDOW"}
+      {
+        "field_id": "language",
+        "rule": "METADATA_ONLY_NO_VISIBILITY_WINDOW"
+      }
     ],
     "empty_value_rule": "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW",
     "unknown_field_rule": "REJECT_UNTIL_EXPLICIT_MAPPING_IS_ADDED",
@@ -60,7 +83,10 @@
       "request_id": "D-PAYLOAD-BIND-VISUAL_LOOPS",
       "instance_id": "D-VLP-5ac67e64ff717d97",
       "payload_instance_sha256": "5ac67e64ff717d9756b37152dd1ee1ff81a1b0e754f83c06a618964c9a62e090",
-      "selection": {"family_id": "c11c_geometric_waves_v1", "subtype_id": "harmonic_membrane"},
+      "selection": {
+        "family_id": "c11c_geometric_waves_v1",
+        "subtype_id": "harmonic_membrane"
+      },
       "delivery_profile_id": "REVIEW_720",
       "fps": 30,
       "frame_count": 600,
@@ -72,7 +98,10 @@
       "request_id": "D-PAYLOAD-BIND-VISUAL_DRILLS",
       "instance_id": "D-VDP-1a96afdd7a0d950e",
       "payload_instance_sha256": "1a96afdd7a0d950ef3eabb5531fe13496b4206a7d4fd1d7f233892b0329a592b",
-      "selection": {"family_id": "tracking", "variant_id": "tier-2"},
+      "selection": {
+        "family_id": "tracking",
+        "variant_id": "tier-2"
+      },
       "delivery_profile_id": "REVIEW_720",
       "fps": 30,
       "frame_count": 630,
@@ -81,16 +110,46 @@
     }
   ],
   "source_lineage": [
-    {"path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
-    {"path": "profiles/delivery/c11c_video_delivery_profiles.json", "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"},
-    {"path": "definitions/visual_loop_geometric_canonical.json", "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"},
-    {"path": "definitions/visual_drill_tracking_canonical.json", "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"},
-    {"path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json", "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"},
-    {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"},
-    {"path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json", "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"},
-    {"path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json", "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"},
-    {"path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json", "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"},
-    {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json", "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"}
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"
+    }
   ],
   "approval_state": {
     "loop_editorial_field_mapping_approved": false,

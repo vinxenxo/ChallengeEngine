@@ -93,7 +93,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
-      "sha256": "4db6a41a3088b4f8cb7461a373863de0f8cedfd2178446542138c648332d42ae"
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
@@ -101,7 +101,7 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
-      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
     },
     {
       "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",

@@ -93,7 +93,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
-      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_SCHEMA_V1.json",
@@ -101,7 +101,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
-      "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
@@ -133,15 +133,15 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
-      "sha256": "b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164"
+      "sha256": "5e7e210b257f231a1c3f3723f9340b6c9a12b1bf1087f86e986ce72cabbcdcb3"
     },
     {
       "path": "tools/c11d/d9/d_renderer_delivery_timebase_projection.py",
-      "sha256": "63f6aa6cdb446c9faa9ca4bafe0933d79b2e3e297e3668d00a48fd59da54b3ac"
+      "sha256": "c111d171ba64b65c5629a0c33fe4a77e72703e576be4839f4842f271af43c24e"
     },
     {
       "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
-      "sha256": "1e722423ad9d9ac9f0cfcbf332bcd9c4468726bcc25300667ed04b8ca1a7e8cf"
+      "sha256": "007999019a1d1e7df854ab6f70421a544625168cb77ae15d34db1862ba74d529"
     }
   ],
   "representative_source_matrix": {

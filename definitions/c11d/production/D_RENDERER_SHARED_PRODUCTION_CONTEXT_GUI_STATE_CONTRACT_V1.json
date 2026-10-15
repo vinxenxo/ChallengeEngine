@@ -108,7 +108,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_V1.json",
       "role": "SHARED_FACADE_CONTRACT",
-      "sha256": "37a653fee1f6609511059b87a7c95596209d9d9273771b3d05b04bd84a72de79"
+      "sha256": "f2ccd3e30a4cae546c5ce6699b155c14776ec3215ad8a8eaa4ce465329230be1"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_FACADE_CONTRACT_SCHEMA_V1.json",
@@ -128,7 +128,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_CONTRACT_V1.json",
       "role": "GUI_ADAPTER_CONTRACT",
-      "sha256": "d1102674e294a9204d0745d2290e0c0fdb858e51f3acbf3398b66d407683a6e5"
+      "sha256": "ac31f359ca832942299e9206c646b18af8da6641df0a1e3bd06df657a3e53036"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_CONTRACT_SCHEMA_V1.json",
@@ -138,12 +138,12 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
       "role": "PRESENTATION_PROFILE_REGISTRY",
-      "sha256": "796d455f63bd216b231e9fc717fafa4331df8dd4eff93fde7a1aa439d5565382"
+      "sha256": "7574f4767ef7c24ab8459ea7e3753e8ca679c1a1e243347d558dea7b3abbd564"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
       "role": "SHARED_PRESENTATION_INHERITANCE_CONTRACT",
-      "sha256": "89271bb75777f7fe968d1369155d37843ac711f4d804d5171f1bfae2721e5c46"
+      "sha256": "033c082fb127d49590d082271c066f262ac0340767aadbf0abd0217352e92989"
     }
   ]
 }

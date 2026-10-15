@@ -258,7 +258,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
-      "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
@@ -266,11 +266,11 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
-      "sha256": "1e722423ad9d9ac9f0cfcbf332bcd9c4468726bcc25300667ed04b8ca1a7e8cf"
+      "sha256": "007999019a1d1e7df854ab6f70421a544625168cb77ae15d34db1862ba74d529"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
-      "sha256": "3ca013cb1f798b03ef0b595072429e038bd98054b5c10cd694b3ac9c3c225a76"
+      "sha256": "91a05711bdbc01e5e9bbe69f9661bad167531c81609b2e9c4a35365b4e515e49"
     },
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
@@ -282,7 +282,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
-      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",

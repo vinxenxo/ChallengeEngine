@@ -71,15 +71,15 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json",
-      "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"
+      "sha256": "4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json",
-      "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"
+      "sha256": "5d61271f49296935cef2f8b29210e538738cac01b7a93c4c2adfed3c1f8927df"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
-      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",

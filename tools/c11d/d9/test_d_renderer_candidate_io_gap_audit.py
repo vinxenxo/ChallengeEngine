@@ -90,6 +90,31 @@ class RendererCandidateIOGapAuditTests(unittest.TestCase):
             self.assertNotIn("..", Path(row["path"]).parts)
             self.assertEqual(len(row["sha256"]), 64)
 
+    def test_accepted_visual_drill_v2_sources_remain_hash_bound(self):
+        contract = json.loads((ROOT / CONTRACT_REL).read_text(encoding="utf-8"))
+        pins = {row["path"]: row["sha256"] for row in contract["source_pins"]}
+        expected_paths = {
+            "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+            "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+            "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+            "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+        }
+        self.assertTrue(expected_paths.issubset(pins))
+        for rel in expected_paths:
+            actual = _sha_file(ROOT / rel)
+            self.assertEqual(pins[rel], actual, f"stale source pin: {rel}")
+        self.assertEqual(len(contract["source_pins"]), 41)
+        payload = {row["group"]: row for row in self.__class__.report["input_groups"]}["payload_instance"]
+        self.assertEqual(payload["state"], "PARTIAL_REQUEST_BOUND_MANIFEST_FOR_PINNED_SELECTOR_MATRIX")
+        self.assertFalse(payload["complete_for_input_emission"])
+        groups = {row["group"]: row for row in contract["input_group_assessments"]}
+        identity_finding = groups["content_identity"]["finding"]
+        self.assertIn("all 20 canonical Visual Drill type/tier pairs", identity_finding)
+        self.assertNotIn("Drill types/tiers are still outside the admitted matrix", identity_finding)
+        seed_finding = groups["seed_domains"]["finding"]
+        self.assertIn("Visual Drill V2", seed_finding)
+        self.assertFalse(groups["seed_domains"]["complete_for_input_emission"])
+
     def test_tool_is_stdout_only_and_has_no_production_dispatch_path(self):
         source = (HERE / "d_renderer_candidate_io_gap_audit.py").read_text(encoding="utf-8")
         self.assertNotIn("write_text(", source)
@@ -107,7 +132,7 @@ def main() -> int:
         return 1
     summary = RendererCandidateIOGapAuditTests.report["summary"] if hasattr(RendererCandidateIOGapAuditTests, "report") else build_audit(ROOT)["summary"]
     print("C11-D CANDIDATE I/O CONFORMANCE GAP AUDIT CONTRACT PASS"
-          f" | tests=8/8 | groups={summary['schema_groups']}/10 | partial={summary['partial_groups']}"
+          f" | tests={result.testsRun}/{result.testsRun} | groups={summary['schema_groups']}/10 | partial={summary['partial_groups']}"
           f" | blocked={summary['blocked_groups']} | source_pins={summary['source_pins_verified']}/{summary['source_pins_verified']}"
           " | candidate_input_admissible=false | renderer=OFF | media_created=false | D4.8=BLOCKED | release_authority=NONE")
     return 0

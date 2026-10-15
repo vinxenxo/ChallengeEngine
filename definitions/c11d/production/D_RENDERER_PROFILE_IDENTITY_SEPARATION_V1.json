@@ -115,7 +115,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
-      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"
     },
     {
       "path": "tools/c11d/d9/d_renderer_challenge_runtime_output_preview.py",
@@ -127,7 +127,7 @@
     },
     {
       "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
-      "sha256": "23ef2ffe8499042b2c6597c9e6ea65d04ba87260319266b13a72d800c5323a0c"
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
     },
     {
       "path": "tools/c11d/d9/editorial_render_bridge.py",

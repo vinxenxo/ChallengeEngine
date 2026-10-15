@@ -161,7 +161,7 @@ def _load_contract(root: Path) -> tuple[dict[str, Any],dict[str, Any],list[dict[
     if entries[0].get("path") != str(MANIFEST_REL).replace("\\","/"): raise DRendererEditorialReviewError("C11-C manifest must lead source lineage")
     return contract,schema,lineage
 
-def _validate_temporal_alignment(content_type: str, selection: Mapping[str,Any], temporal: Mapping[str,Any], root: Path) -> tuple[str,str]:
+def _validate_temporal_alignment(content_type: str, selection: Mapping[str,Any], temporal: Mapping[str,Any], root: Path, allow_visual_drill_matrix: bool = False) -> tuple[str,str]:
     """Return timing scope, assessment label and delivery-FPS relation without inventing conversions."""
     source=temporal["source_identity"]; schedule=temporal["temporal_schedule"]
     producer=_read_json(root,"c11c-suite/c11c-producer/producer_schema.json")
@@ -186,12 +186,24 @@ def _validate_temporal_alignment(content_type: str, selection: Mapping[str,Any],
         if not isinstance(tier,int) or isinstance(tier,bool) or not suffix.isdigit() or int(suffix)!=tier: raise DRendererEditorialReviewError("Visual Drill tier identity is malformed")
         payload_source=_read_json(root,source["source_path"])
         params=payload_source.get("payload",{}).get("exercise_parameters",{})
-        if params.get("difficulty_tier") != tier: raise DRendererEditorialReviewError("Canonical Drill timing source does not match selected difficulty tier")
+        if allow_visual_drill_matrix:
+            expected_path=f"definitions/visual_drill_{selection.get('family_id')}_canonical.json"
+            if source.get("source_path") != expected_path or payload_source.get("subtype") != selection.get("family_id"):
+                raise DRendererEditorialReviewError("Selector-aware Drill timing source does not match selected canonical family")
+            policy_path=f"profiles/difficulty/visual_drill_{selection.get('family_id')}.json"
+            policy=_read_json(root,policy_path)
+            tiers=policy.get("tiers")
+            if policy.get("domain_family") != "visual_drill" or policy.get("subtype") != selection.get("family_id") or not isinstance(tiers,Mapping) or str(tier) not in tiers or len(tiers) != 5:
+                raise DRendererEditorialReviewError("Selected Drill tier is not declared in its canonical difficulty policy")
+            if params.get("difficulty_tier") not in {1,2,3,4,5}:
+                raise DRendererEditorialReviewError("Canonical Drill timing reference has an invalid reference tier")
+        else:
+            if params.get("difficulty_tier") != tier: raise DRendererEditorialReviewError("Canonical Drill timing source does not match selected difficulty tier")
         scope="DRILL_TYPE_AND_TIER_TIMING_REFERENCE_GENERATED_PAYLOAD_INSTANCE_NOT_BOUND"; assessment="TYPE_AND_TIER_REFERENCE_ONLY"
     else: raise DRendererEditorialReviewError("Unsupported content type; Longform fails closed")
     return scope,assessment
 
-def _build(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_envelope: Mapping[str,Any], root: Path, contract: Mapping[str,Any], schema: Mapping[str,Any], lineage: list[dict[str,str]]) -> dict[str,Any]:
+def _build(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_envelope: Mapping[str,Any], root: Path, contract: Mapping[str,Any], schema: Mapping[str,Any], lineage: list[dict[str,str]], allow_visual_drill_matrix: bool = False) -> dict[str,Any]:
     if not isinstance(result,Mapping) or result.get("status") != "PLANNED": raise DRendererEditorialReviewError("Input must be a successful canonical D9.9 PLANNED result")
     request=result.get("canonical_request"); plan=result.get("plan")
     if not isinstance(request,Mapping) or not isinstance(plan,Mapping): raise DRendererEditorialReviewError("D9.9 canonical request and plan are required")
@@ -204,8 +216,10 @@ def _build(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_en
         binding=build_renderer_binding_preview(adapter_envelope,root)
         composition=build_logical_composition_plan(binding,adapter_envelope,root)
         frame_program=build_renderer_neutral_frame_program(composition,binding,adapter_envelope,root)
-        temporal=build_temporal_bound_preview(str(plan.get("selection",{}).get("content_type")),root)
-        validate_temporal_bound_preview(temporal,root)
+        plan_selection = plan.get("selection", {})
+        temporal_selection = plan_selection if allow_visual_drill_matrix and plan_selection.get("content_type") == "visual_drills" else None
+        temporal=build_temporal_bound_preview(str(plan_selection.get("content_type")),root,selection=temporal_selection)
+        validate_temporal_bound_preview(temporal,root,selection=temporal_selection)
     except (EditorialRenderBridgeError,DRenderAdapterError,DRendererCandidateError,DRendererLogicalCompositionError,DRendererFrameProgramError,DRendererTemporalBoundPreviewError,ValueError,TypeError,KeyError) as exc:
         if isinstance(exc,DRendererEditorialReviewError): raise
         raise DRendererEditorialReviewError(f"Upstream source contract rejected the review chain: {exc}") from exc
@@ -214,7 +228,7 @@ def _build(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_en
     content_type=str(selection.get("content_type"))
     if content_type not in SUPPORTED_TYPES: raise DRendererEditorialReviewError("Unsupported content type; Longform and unknown types fail closed")
     if frame_program.get("content_identity") != dict(selection) or binding.get("content_identity") != dict(selection) or composition.get("content_identity") != dict(selection): raise DRendererEditorialReviewError("Content identity drift across binding/composition/frame program")
-    scope,alignment = _validate_temporal_alignment(content_type,selection,temporal,root)
+    scope,alignment = _validate_temporal_alignment(content_type,selection,temporal,root,allow_visual_drill_matrix)
     target=frame_program.get("canvas_descriptor",{})
     target_profile_id=request.get("resolved_delivery_profile_id",plan.get("resolved_delivery_profile_id"))
     if not target_profile_id: target_profile_id=plan.get("resolved_delivery_profile_id")
@@ -287,18 +301,18 @@ def _build(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_en
     _assert_no_truth(manifest)
     return manifest
 
-def build_editorial_review_manifest(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_envelope: Mapping[str,Any], project_root: Path | str | None = None) -> dict[str,Any]:
+def build_editorial_review_manifest(result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_envelope: Mapping[str,Any], project_root: Path | str | None = None, allow_visual_drill_matrix: bool = False) -> dict[str,Any]:
     root=_root(project_root); contract,schema,lineage=_load_contract(root)
-    manifest=_build(result,bridge_record,adapter_envelope,root,contract,schema,lineage)
-    validate_editorial_review_manifest(manifest,result,bridge_record,adapter_envelope,root)
+    manifest=_build(result,bridge_record,adapter_envelope,root,contract,schema,lineage,allow_visual_drill_matrix)
+    validate_editorial_review_manifest(manifest,result,bridge_record,adapter_envelope,root,allow_visual_drill_matrix)
     return manifest
 
-def validate_editorial_review_manifest(candidate: Mapping[str,Any], result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_envelope: Mapping[str,Any], project_root: Path | str | None = None) -> bool:
+def validate_editorial_review_manifest(candidate: Mapping[str,Any], result: Mapping[str,Any], bridge_record: Mapping[str,Any], adapter_envelope: Mapping[str,Any], project_root: Path | str | None = None, allow_visual_drill_matrix: bool = False) -> bool:
     root=_root(project_root); contract,schema,lineage=_load_contract(root)
     if not isinstance(candidate,Mapping) or candidate.get("schema") != OUTPUT_SCHEMA or candidate.get("status") != STATUS: raise DRendererEditorialReviewError("Unsupported/non-preparation editorial review manifest")
     if set(candidate) != set(schema.get("required",[])) or set(candidate) != set(schema.get("properties",{})): raise DRendererEditorialReviewError("Manifest output shape drift")
     if candidate.get("review_manifest_sha256") != _sha(_without_hash(candidate)): raise DRendererEditorialReviewError("Review manifest SHA-256 mismatch")
-    expected=_build(result,bridge_record,adapter_envelope,root,contract,schema,lineage)
+    expected=_build(result,bridge_record,adapter_envelope,root,contract,schema,lineage,allow_visual_drill_matrix)
     if dict(candidate) != expected: raise DRendererEditorialReviewError("Manifest differs from canonical editorial/temporal source chain or violates review locks")
     _assert_no_truth(candidate)
     return True

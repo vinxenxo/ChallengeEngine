@@ -20,7 +20,7 @@ OUTPUT_SCHEMA = "C11-D-D9-RENDERER-DELIVERY-TIMEBASE-PROJECTION-V1"
 STATUS = "PREPARATION_ONLY_IN_MEMORY_DELIVERY_TIMEBASE_PROJECTION"
 EXPECTED_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 SUPPORTED_TYPES = ("challenges", "visual_loops", "visual_drills")
-EXPECTED_SOURCE_LINEAGE = [{'path': 'release/C11C_FREEZE_PACKAGE_MANIFEST.json', 'sha256': 'e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953'}, {'path': 'profiles/delivery/c11c_video_delivery_profiles.json', 'sha256': '967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3'}, {'path': 'challenges/CHALLENGE_004.json', 'sha256': '6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71'}, {'path': 'definitions/visual_loop_geometric_canonical.json', 'sha256': '648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc'}, {'path': 'definitions/visual_drill_tracking_canonical.json', 'sha256': '54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json', 'sha256': '96ee3cffe8223e24673e7eb90c93308d45bb3a350961b2afc5eacbe66b54fbf8'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_SCHEMA_V1.json', 'sha256': '1744e2f748c1ce196e8655c85299bef16f475c4a71b45d5db5b6838418fa4b37'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json', 'sha256': 'ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json', 'sha256': '7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8'}, {'path': 'tools/c11d/d9/d_renderer_temporal_schedule.py', 'sha256': '04b85a077f06d6ef9ffc7569d3fda0a92471b9ee5e1d6e57d3b50dbf6a6247cd'}, {'path': 'tools/c11d/d9/d_renderer_temporal_bound_preview.py', 'sha256': 'b92be3e598fd59b5f788602aa798445e1a095e47290a4c591481329fe619e164'}, {'path': 'core/authoring/TemporalCore.gd', 'sha256': 'f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966'}]
+EXPECTED_SOURCE_LINEAGE = [{'path': 'release/C11C_FREEZE_PACKAGE_MANIFEST.json', 'sha256': 'e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953'}, {'path': 'profiles/delivery/c11c_video_delivery_profiles.json', 'sha256': '967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3'}, {'path': 'challenges/CHALLENGE_004.json', 'sha256': '6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71'}, {'path': 'definitions/visual_loop_geometric_canonical.json', 'sha256': '648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc'}, {'path': 'definitions/visual_drill_tracking_canonical.json', 'sha256': '54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json', 'sha256': '96ee3cffe8223e24673e7eb90c93308d45bb3a350961b2afc5eacbe66b54fbf8'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_SCHEMA_V1.json', 'sha256': '1744e2f748c1ce196e8655c85299bef16f475c4a71b45d5db5b6838418fa4b37'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json', 'sha256': 'ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646'}, {'path': 'definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json', 'sha256': '7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8'}, {'path': 'tools/c11d/d9/d_renderer_temporal_schedule.py', 'sha256': '04b85a077f06d6ef9ffc7569d3fda0a92471b9ee5e1d6e57d3b50dbf6a6247cd'}, {'path': 'tools/c11d/d9/d_renderer_temporal_bound_preview.py', 'sha256': '5e7e210b257f231a1c3f3723f9340b6c9a12b1bf1087f86e986ce72cabbcdcb3'}, {'path': 'core/authoring/TemporalCore.gd', 'sha256': 'f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966'}]
 EXPECTED_POLICY = {'name': 'CUMULATIVE_SOURCE_BOUNDARY_NEAREST_DELIVERY_TICK', 'state': 'PROPOSED_NOT_APPROVED', 'source_timebase': 'CANONICAL_ZERO_BASED_HALF_OPEN_SOURCE_FRAME_BOUNDARIES', 'mapping_formula': 'delivery_boundary = floor(source_boundary * delivery_fps / source_fps + 0.5)', 'integer_implementation': 'floor((2 * source_boundary * delivery_fps + source_fps) / (2 * source_fps))', 'quantization': 'PROJECT_CUMULATIVE_BOUNDARIES; SEGMENT_COUNTS_ARE_DIFFERENCES_OF_PROJECTED_BOUNDARIES', 'phase_order': 'PRESERVE_SOURCE_TIMELINE_ORDER', 'zero_length_output_span': 'PRESERVE_ZERO_LENGTH; NEVER_FORCE_A_FRAME', 'source_timeline_mutation': False, 'simulation_frame_sampling': 'UNRESOLVED_NOT_DEFINED_NOT_EMITTED', 'simulation_anchor_mapping': 'UNRESOLVED_NOT_DEFINED_NOT_EMITTED', 'interpolation_policy': 'UNRESOLVED_NOT_DEFINED_NOT_EMITTED', 'audio_resampling_policy': 'OUT_OF_SCOPE_NOT_DEFINED_NOT_EMITTED', 'per_field_visibility_windows': 'UNRESOLVED_NOT_DEFINED_NOT_EMITTED', 'renderer_input_emission': False, 'media_creation': False}
 EXPECTED_LOCKS = {'projection_mode': 'IN_MEMORY_REVIEW_ONLY', 'renderer_native_input_emitted': False, 'renderer_dispatch_invoked': False, 'renderer_activation': False, 'production_execution': False, 'media_output_created': False, 'output_artifact_path': None, 'c11c_source_mutation': False, 'd4_8': 'BLOCKED', 'release_authority': 'NONE', 'video_render_ready': False}
 EXPECTED_APPROVAL = {'timebase_projection_policy_approved': False, 'temporal_topology_approved': False, 'semantic_region_mapping_approved': False, 'renderer_baseline_approved': False, 'renderer_baseline_frozen': False, 'd4_8_authorized': False, 'd9_14_full_acceptance': 'BLOCKED_AS_REQUIRED', 'd9_16_full_acceptance': 'BLOCKED_AS_REQUIRED', 'd9_17_closure': 'BLOCKED_NO_GO', 'd10': 'BLOCKED', 'release_authority': 'NONE'}
@@ -105,11 +105,11 @@ def _round_ratio_half_up(numerator: int, denominator: int) -> int:
 
 def _lineage_sha(lineage: list[dict[str, str]]) -> str: return _sha_json(lineage)
 
-def _build(content_type: str, delivery_profile_id: str, root: Path, contract: Mapping[str, Any], schema: Mapping[str, Any], lineage: list[dict[str, str]]) -> dict[str, Any]:
+def _build(content_type: str, delivery_profile_id: str, root: Path, contract: Mapping[str, Any], schema: Mapping[str, Any], lineage: list[dict[str, str]], selection: Mapping[str, Any] | None = None) -> dict[str, Any]:
     if content_type not in SUPPORTED_TYPES: raise DRendererDeliveryTimebaseProjectionError("Unsupported content type; Longform and unknown types fail closed")
     try:
-        preview = build_temporal_bound_preview(content_type, root)
-        validate_temporal_bound_preview(preview, project_root=root)
+        preview = build_temporal_bound_preview(content_type, root, selection=selection)
+        validate_temporal_bound_preview(preview, project_root=root, selection=selection)
     except (DRendererTemporalBoundPreviewError, ValueError, TypeError, KeyError) as exc:
         raise DRendererDeliveryTimebaseProjectionError(f"Canonical temporal source refused projection: {exc}") from exc
     target, _, registry_sha = _profile(root, delivery_profile_id)
@@ -203,18 +203,18 @@ def _build(content_type: str, delivery_profile_id: str, root: Path, contract: Ma
     _assert_no_truth(out)
     return out
 
-def build_delivery_timebase_projection(content_type: str, delivery_profile_id: str = "REVIEW_720", project_root: Path | str | None = None) -> dict[str, Any]:
+def build_delivery_timebase_projection(content_type: str, delivery_profile_id: str = "REVIEW_720", project_root: Path | str | None = None, selection: Mapping[str, Any] | None = None) -> dict[str, Any]:
     root = _root(project_root)
     contract, schema, lineage = _load_contract(root)
-    result = _build(content_type, delivery_profile_id, root, contract, schema, lineage)
-    validate_delivery_timebase_projection(result, content_type, delivery_profile_id, project_root=root)
+    result = _build(content_type, delivery_profile_id, root, contract, schema, lineage, selection)
+    validate_delivery_timebase_projection(result, content_type, delivery_profile_id, project_root=root, selection=selection)
     return result
 
-def validate_delivery_timebase_projection(candidate: Mapping[str, Any], content_type: str, delivery_profile_id: str = "REVIEW_720", project_root: Path | str | None = None) -> bool:
+def validate_delivery_timebase_projection(candidate: Mapping[str, Any], content_type: str, delivery_profile_id: str = "REVIEW_720", project_root: Path | str | None = None, selection: Mapping[str, Any] | None = None) -> bool:
     if not isinstance(candidate, Mapping): raise DRendererDeliveryTimebaseProjectionError("Projection candidate must be a mapping")
     root = _root(project_root)
     contract, schema, lineage = _load_contract(root)
-    expected = _build(content_type, delivery_profile_id, root, contract, schema, lineage)
+    expected = _build(content_type, delivery_profile_id, root, contract, schema, lineage, selection)
     if dict(candidate) != expected: raise DRendererDeliveryTimebaseProjectionError("Projection differs from pinned source/profile, policy, frame boundaries or governance locks")
     if set(candidate) != set(schema.get("required", [])): raise DRendererDeliveryTimebaseProjectionError("Projection output shape differs from strict schema")
     if _sha_json(_without_hash(candidate)) != candidate.get("projection_sha256"): raise DRendererDeliveryTimebaseProjectionError("Projection SHA-256 mismatch")

@@ -148,7 +148,7 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
-      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
     },
     {
       "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",

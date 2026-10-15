@@ -10,6 +10,9 @@ from d_renderer_temporal_schedule import build_temporal_schedule_proposal, DRend
 CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json")
 SCHEMA_REL = Path("definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json")
 MANIFEST_REL = Path("release/C11C_FREEZE_PACKAGE_MANIFEST.json")
+DRILL_V2_CONTRACT_REL = Path("definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json")
+DRILL_V2_FAMILIES = ("tracking", "pursuit", "saccade", "peripheral_scan")
+DRILL_V2_TIERS = tuple(f"tier-{tier}" for tier in range(1, 6))
 CONTRACT_ID = "C11-D-RENDERER-TEMPORAL-BOUND-PREVIEW-CONTRACT-V1"
 OUTPUT_SCHEMA = "C11-D-D9-RENDERER-TEMPORAL-BOUND-PREVIEW-V1"
 OUTPUT_STATUS = "PREPARATION_ONLY_TEMPORAL_REVIEW_PREVIEW_NOT_RENDERER_INPUT"
@@ -143,11 +146,71 @@ def _segment(segment_id: str, duration: float, start: int, count: int) -> dict[s
         "enabled": count > 0,
     }
 
-def _build_preview(content_type: str, root: Path, contract: Mapping[str, Any], schema: Mapping[str, Any], lineage: list[dict[str, str]]) -> dict[str, Any]:
+def _visual_drill_v2_source_context(root: Path, selection: Mapping[str, Any]) -> tuple[str, list[dict[str, str]]]:
+    """Resolve selector-specific Drill timing references only under the pinned V2 binder matrix."""
+    family = selection.get("family_id")
+    variant = selection.get("variant_id")
+    if selection.get("content_type") != "visual_drills" or family not in DRILL_V2_FAMILIES or variant not in DRILL_V2_TIERS or selection.get("subtype_id") is not None:
+        raise DRendererTemporalBoundPreviewError("Visual Drill selector/tier is outside the exact V2 matrix")
+    if selection.get("difficulty_tier") is not None and selection.get("difficulty_tier") != int(str(variant).removeprefix("tier-")):
+        raise DRendererTemporalBoundPreviewError("Visual Drill selected difficulty_tier conflicts with variant_id")
+    try:
+        v2 = _read_json(root, DRILL_V2_CONTRACT_REL)
+    except DRendererTemporalBoundPreviewError as exc:
+        raise DRendererTemporalBoundPreviewError("Pinned V2 dynamic-binding contract is required for selector-aware timing") from exc
+    if v2.get("schema") != "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V2" or v2.get("schema_version") != "2.0":
+        raise DRendererTemporalBoundPreviewError("V2 dynamic-binding contract identity/version mismatch")
+    if v2.get("candidate_input_admissible") is not False:
+        raise DRendererTemporalBoundPreviewError("V2 candidate input must remain inadmissible")
+    rows = v2.get("source_lineage")
+    if not isinstance(rows, list) or not rows or rows[0].get("path") != str(MANIFEST_REL).replace("\\", "/"):
+        raise DRendererTemporalBoundPreviewError("V2 source lineage is malformed or does not lead with frozen C11-C")
+    by_path: dict[str, str] = {}
+    for row in rows:
+        if not isinstance(row, Mapping) or set(row) != {"path", "sha256"}:
+            raise DRendererTemporalBoundPreviewError("V2 source lineage contains a malformed row")
+        rel, expected = str(row["path"]), str(row["sha256"])
+        if rel in by_path or len(expected) != 64:
+            raise DRendererTemporalBoundPreviewError("V2 source lineage contains duplicate or malformed pins")
+        if len(expected) != 64 or any(char not in "0123456789abcdef" for char in expected):
+            raise DRendererTemporalBoundPreviewError(f"V2 source pin digest is malformed: {rel}")
+        by_path[rel] = expected
+    canonical_rel = f"definitions/visual_drill_{family}_canonical.json"
+    policy_rel = f"profiles/difficulty/visual_drill_{family}.json"
+    if canonical_rel not in by_path or policy_rel not in by_path:
+        raise DRendererTemporalBoundPreviewError("Selected Visual Drill canonical definition/policy is not pinned by V2")
+    for selected_rel in (canonical_rel, policy_rel):
+        if _sha_file(root / selected_rel) != by_path[selected_rel]:
+            raise DRendererTemporalBoundPreviewError(f"Selected Visual Drill source pin mismatch: {selected_rel}")
+    policy = _read_json(root, policy_rel)
+    tiers = policy.get("tiers")
+    selected_tier = str(int(str(variant).removeprefix("tier-")))
+    if policy.get("domain_family") != "visual_drill" or policy.get("subtype") != family or not isinstance(tiers, Mapping) or selected_tier not in tiers or len(tiers) != 5:
+        raise DRendererTemporalBoundPreviewError("Selected Visual Drill tier is not present in its pinned difficulty policy")
+    return canonical_rel, [
+        {"path": canonical_rel, "sha256": by_path[canonical_rel]},
+        {"path": policy_rel, "sha256": by_path[policy_rel]},
+    ]
+
+
+def _build_preview(content_type: str, root: Path, contract: Mapping[str, Any], schema: Mapping[str, Any], lineage: list[dict[str, str]], selection: Mapping[str, Any] | None = None) -> dict[str, Any]:
     if content_type not in SUPPORTED_TYPES:
         raise DRendererTemporalBoundPreviewError("Unsupported content type; Longform and unknown types fail closed")
     spec = contract["registered_review_sources"][content_type]
     rel = str(spec["path"])
+    effective_lineage = copy.deepcopy(lineage)
+    if selection is not None:
+        if content_type != "visual_drills":
+            raise DRendererTemporalBoundPreviewError("Selector-aware V2 timing input is restricted to Visual Drill")
+        rel, drill_source_rows = _visual_drill_v2_source_context(root, selection)
+        # Replace the legacy tracking timing pin with the selected family's exact source;
+        # the selected policy pin makes the tier provenance explicit without pretending
+        # that the static canonical timing fixture is a generated request instance.
+        effective_lineage = [row for row in effective_lineage if row.get("path") != "definitions/visual_drill_tracking_canonical.json"]
+        selected_canonical_row = drill_source_rows[0]
+        effective_lineage.append(copy.deepcopy(selected_canonical_row))
+        if len(effective_lineage) != len(lineage):
+            raise DRendererTemporalBoundPreviewError("Selector-aware timing source lineage must preserve the V1 row count")
     source = _read_json(root, rel)
     source_hash = _sha_file(root / rel)
     topology = build_temporal_schedule_proposal(content_type, root)
@@ -231,7 +294,7 @@ def _build_preview(content_type: str, root: Path, contract: Mapping[str, Any], s
         "content_type": content_type,
         "manifest_sha256": EXPECTED_MANIFEST_SHA256,
         "topology_proposal_sha256": topology["proposal_sha256"],
-        "source_lineage": copy.deepcopy(lineage),
+        "source_lineage": copy.deepcopy(effective_lineage),
         "source_identity": {
             "source_path": rel,
             "source_id": source_id,
@@ -290,20 +353,20 @@ def _assert_no_truth_fields(value: Any, location: str = "temporal_preview") -> N
         for index, child in enumerate(value):
             _assert_no_truth_fields(child, f"{location}[{index}]")
 
-def build_temporal_bound_preview(content_type: str, project_root: Path | str | None = None) -> dict[str, Any]:
+def build_temporal_bound_preview(content_type: str, project_root: Path | str | None = None, selection: Mapping[str, Any] | None = None) -> dict[str, Any]:
     root = _root(project_root)
     contract, schema, lineage = _load_contract(root)
-    result = _build_preview(content_type, root, contract, schema, lineage)
-    validate_temporal_bound_preview(result, project_root=root)
+    result = _build_preview(content_type, root, contract, schema, lineage, selection)
+    validate_temporal_bound_preview(result, project_root=root, selection=selection)
     return result
 
-def validate_temporal_bound_preview(candidate: Mapping[str, Any], project_root: Path | str | None = None) -> None:
+def validate_temporal_bound_preview(candidate: Mapping[str, Any], project_root: Path | str | None = None, selection: Mapping[str, Any] | None = None) -> None:
     if not isinstance(candidate, Mapping):
         raise DRendererTemporalBoundPreviewError("Temporal preview must be a mapping")
     root = _root(project_root)
     contract, schema, lineage = _load_contract(root)
     content_type = str(candidate.get("content_type"))
-    expected = _build_preview(content_type, root, contract, schema, lineage)
+    expected = _build_preview(content_type, root, contract, schema, lineage, selection)
     if dict(candidate) != expected:
         raise DRendererTemporalBoundPreviewError("Temporal preview mismatch, source drift, invented timing, or governance escalation")
     if set(candidate) != set(schema.get("required", [])):

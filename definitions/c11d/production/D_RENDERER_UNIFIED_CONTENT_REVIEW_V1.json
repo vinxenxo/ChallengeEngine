@@ -23,19 +23,19 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
-      "sha256": "937f34bdcb243a64b65c1e354828c2d8f81b5c0a5c3ac68619aab427c1f44c26"
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json",
-      "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"
+      "sha256": "4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json",
-      "sha256": "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"
+      "sha256": "7fa2acc1d38d2ee4e027ded101286d6ee774a9fbb35a633ea451101959ec03e1"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
-      "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
@@ -43,15 +43,15 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
-      "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json",
-      "sha256": "30381dba04a07d6e0ea1d82b186f46b78ab7193ecaa82efe3e484dd5bcd64e22"
+      "sha256": "5d61271f49296935cef2f8b29210e538738cac01b7a93c4c2adfed3c1f8927df"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
-      "sha256": "23c33f99f0bef1c76edc6526bcdfa6bf98dc27d7d22b38f48a424008f8f59c5f"
+      "sha256": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
@@ -63,27 +63,27 @@
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
-      "sha256": "3e278481afe9d66458f05f29c15275819af49f9b68120b6a0b39dda2e9715cf3"
+      "sha256": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
-      "sha256": "72aa659dfc464ce8f2205cc483c18cdff96b82e55f3651102310f9f83ce897b4"
+      "sha256": "9bdc712693dc90612bcdf1e068a96ec850222cad9c9c303af65a2740233d32ba"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
-      "sha256": "25fe4aaaaa94a80dbabcbf92533ff9c19a9d61cc0b3173cb0cd986a62701fd57"
+      "sha256": "ce91bf2d9a2c15bc98ffd8f18dc98426513b08f6e670ca96c488e4672cbda38e"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
-      "sha256": "bf8084f4d6e1257ac3aa594cd5a5625a6814d9022643774f152392558a224dd4"
+      "sha256": "122b9d631fab4e08beda6ae0621ab31a38a79f3cf06d7e385b7edd3d60c2da8e"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
-      "sha256": "251b2384aabfe975b55938bc4a6696aba81b8dc817aa6902bf1f60f3894ad019"
+      "sha256": "ed0e0e87f92e568858c7c913c97b3e527d48084235eedbc17362d64a2474af9a"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
-      "sha256": "f6fac5edf88269885c18d9b8272214f28d8bb3569cc4da249d2d67c727dac0a8"
+      "sha256": "284152c4801f4c01ab13045559b3ffa651484c27e44e9bf2bf4abe6a5c1b08db"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",

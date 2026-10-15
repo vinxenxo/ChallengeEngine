@@ -131,7 +131,7 @@ LOOP_DEFINITION_BY_INTERNAL = {
 }
 
 
-def _resolve_selected_source(root: Path, result: Mapping[str, Any], registry: Mapping[str, Any], source_matrix: Mapping[str, Any]) -> dict[str, Any]:
+def _resolve_selected_source(root: Path, result: Mapping[str, Any], registry: Mapping[str, Any], source_matrix: Mapping[str, Any], allow_visual_drill_matrix: bool = False) -> dict[str, Any]:
     plan = result.get("plan"); request = result.get("canonical_request")
     if not isinstance(plan, Mapping) or not isinstance(request, Mapping):
         raise DRendererRequestScopedPayloadBindingError("Canonical request/plan pair is required")
@@ -144,10 +144,21 @@ def _resolve_selected_source(root: Path, result: Mapping[str, Any], registry: Ma
     # V1 only chains the three content examples for which existing temporal and review contracts have exact sources.
     expected_case = source_matrix.get(content_type)
     if not isinstance(expected_case, Mapping):
-        raise DRendererRequestScopedPayloadBindingError("No approved-in-code V1 source-resolution case exists for this content type")
-    for field, expected in expected_case.get("required_selection", {}).items():
-        if selection.get(field) != expected:
-            raise DRendererRequestScopedPayloadBindingError(f"V1 end-to-end timing/review reference does not cover selection.{field}={selection.get(field)!r}")
+        raise DRendererRequestScopedPayloadBindingError("No approved-in-code source-resolution case exists for this content type")
+    if content_type == "visual_drills" and allow_visual_drill_matrix:
+        family_id = str(selection.get("family_id", ""))
+        variant_id = str(selection.get("variant_id", ""))
+        tier_match = re.fullmatch(r"tier-([1-5])", variant_id)
+        if family_id not in {"tracking", "pursuit", "saccade", "peripheral_scan"} or selection.get("subtype_id") is not None or not tier_match:
+            raise DRendererRequestScopedPayloadBindingError("Visual Drill selector/tier is outside the exact 4×5 V2 matrix")
+        selected_tier = int(tier_match.group(1))
+        if selection.get("difficulty_tier") != selected_tier:
+            raise DRendererRequestScopedPayloadBindingError("Canonical selection difficulty_tier conflicts with exact variant_id")
+        expected_case = {"payload_source_path": f"definitions/visual_drill_{family_id}_canonical.json"}
+    else:
+        for field, expected in expected_case.get("required_selection", {}).items():
+            if selection.get(field) != expected:
+                raise DRendererRequestScopedPayloadBindingError(f"V1 end-to-end timing/review reference does not cover selection.{field}={selection.get(field)!r}")
     registry_rel = Path("c11c-suite/c11c-producer/producer_schema.json")
     registry_sha = _sha_file(root / registry_rel)
     payload_rel = Path(str(expected_case["payload_source_path"]))
@@ -213,7 +224,7 @@ def _resolve_selected_source(root: Path, result: Mapping[str, Any], registry: Ma
         exercise = payload.get("payload", {}).get("exercise_parameters", {}) if isinstance(payload.get("payload"), Mapping) else {}
         generator = exercise.get("generator") if isinstance(exercise, Mapping) else None
         definition_tier = exercise.get("difficulty_tier") if isinstance(exercise, Mapping) else None
-        if payload.get("kind") != "visual_drill" or generator != str(declaration.get("internal", family_id)):
+        if payload.get("kind") != "visual_drill" or generator != str(declaration.get("internal", family_id)) or payload.get("subtype") != family_id:
             raise DRendererRequestScopedPayloadBindingError("Visual Drill canonical source does not match selected drill type")
         common.update({
             "source_class": "DRILL_TYPE_CANONICAL_DEFINITION_NOT_REQUEST_INSTANCE",
@@ -221,14 +232,14 @@ def _resolve_selected_source(root: Path, result: Mapping[str, Any], registry: Ma
             "selection_resolution_state": "DRILL_TYPE_SOURCE_RESOLVED_REQUEST_TIER_SEED_PAYLOAD_INSTANCE_REQUIRED",
             "definition_matches_selection": True,
             "selected_grammar_materialized": False,
-            "selected_tier_materialized": definition_tier == requested_tier,
+            "selected_tier_materialized": False if allow_visual_drill_matrix else definition_tier == requested_tier,
             "d4_subplan_status": None,
             "definition_payload_summary": {"source_fps": payload.get("payload", {}).get("fps"), "duration_seconds": payload.get("payload", {}).get("duration"), "frame_count": payload.get("payload", {}).get("frame_count"), "definition_seed_matches_request": payload.get("seed") == request.get("seed")},
         })
     return common
 
 
-def _build_core(result: Mapping[str, Any], bridge_record: Mapping[str, Any], adapter_envelope: Mapping[str, Any], root: Path, contract: Mapping[str, Any], schema: Mapping[str, Any], lineage: list[dict[str, str]]) -> dict[str, Any]:
+def _build_core(result: Mapping[str, Any], bridge_record: Mapping[str, Any], adapter_envelope: Mapping[str, Any], root: Path, contract: Mapping[str, Any], schema: Mapping[str, Any], lineage: list[dict[str, str]], allow_visual_drill_matrix: bool = False) -> dict[str, Any]:
     if not isinstance(result, Mapping) or result.get("status") != "PLANNED": raise DRendererRequestScopedPayloadBindingError("Requires successful canonical D9.9 PLANNED result")
     # Rebuild and compare each handoff; a detached/forged bridge or adapter is never accepted.
     expected_bridge = build_bridge_planning_record(result, root)
@@ -245,18 +256,20 @@ def _build_core(result: Mapping[str, Any], bridge_record: Mapping[str, Any], ada
     validate_logical_composition_plan(composition, binding_preview, adapter_envelope, root)
     frame_program = build_renderer_neutral_frame_program(composition, binding_preview, adapter_envelope, root)
     validate_renderer_neutral_frame_program(frame_program, composition, binding_preview, adapter_envelope, root)
-    temporal = build_temporal_bound_preview(str(content_type), root)
-    validate_temporal_bound_preview(temporal, root)
+    selection_for_chain = result.get("plan", {}).get("selection", {})
+    temporal_selection = selection_for_chain if allow_visual_drill_matrix and content_type == "visual_drills" else None
+    temporal = build_temporal_bound_preview(str(content_type), root, selection=temporal_selection)
+    validate_temporal_bound_preview(temporal, root, selection=temporal_selection)
     delivery_id = str(result.get("canonical_request", {}).get("delivery_profile_id"))
-    projection = build_delivery_timebase_projection(str(content_type), delivery_id, root)
-    validate_delivery_timebase_projection(projection, str(content_type), delivery_id, root)
-    review = build_editorial_review_manifest(result, bridge_record, adapter_envelope, root)
-    validate_editorial_review_manifest(review, result, bridge_record, adapter_envelope, root)
+    projection = build_delivery_timebase_projection(str(content_type), delivery_id, root, selection=temporal_selection)
+    validate_delivery_timebase_projection(projection, str(content_type), delivery_id, root, selection=temporal_selection)
+    review = build_editorial_review_manifest(result, bridge_record, adapter_envelope, root, allow_visual_drill_matrix=allow_visual_drill_matrix)
+    validate_editorial_review_manifest(review, result, bridge_record, adapter_envelope, root, allow_visual_drill_matrix=allow_visual_drill_matrix)
 
     registry_rel = Path("c11c-suite/c11c-producer/producer_schema.json")
     registry = _read_json(root, registry_rel)
     source_matrix = contract.get("representative_source_matrix", {})
-    resolved = _resolve_selected_source(root, result, registry, source_matrix)
+    resolved = _resolve_selected_source(root, result, registry, source_matrix, allow_visual_drill_matrix)
     selection = dict(result["plan"]["selection"])
     request = result["canonical_request"]
     identity = {
@@ -335,19 +348,19 @@ def _build_core(result: Mapping[str, Any], bridge_record: Mapping[str, Any], ada
     return out
 
 
-def build_request_scoped_payload_binding(result: Mapping[str, Any], bridge_record: Mapping[str, Any], adapter_envelope: Mapping[str, Any], project_root: Path | str | None = None) -> dict[str, Any]:
+def build_request_scoped_payload_binding(result: Mapping[str, Any], bridge_record: Mapping[str, Any], adapter_envelope: Mapping[str, Any], project_root: Path | str | None = None, allow_visual_drill_matrix: bool = False) -> dict[str, Any]:
     root = _root(project_root)
     contract, schema, lineage = _load_contract(root)
-    out = _build_core(result, bridge_record, adapter_envelope, root, contract, schema, lineage)
-    validate_request_scoped_payload_binding(out, result, bridge_record, adapter_envelope, root)
+    out = _build_core(result, bridge_record, adapter_envelope, root, contract, schema, lineage, allow_visual_drill_matrix)
+    validate_request_scoped_payload_binding(out, result, bridge_record, adapter_envelope, root, allow_visual_drill_matrix)
     return out
 
 
-def validate_request_scoped_payload_binding(candidate: Mapping[str, Any], result: Mapping[str, Any], bridge_record: Mapping[str, Any], adapter_envelope: Mapping[str, Any], project_root: Path | str | None = None) -> bool:
+def validate_request_scoped_payload_binding(candidate: Mapping[str, Any], result: Mapping[str, Any], bridge_record: Mapping[str, Any], adapter_envelope: Mapping[str, Any], project_root: Path | str | None = None, allow_visual_drill_matrix: bool = False) -> bool:
     if not isinstance(candidate, Mapping): raise DRendererRequestScopedPayloadBindingError("Payload binding candidate must be a mapping")
     root = _root(project_root)
     contract, schema, lineage = _load_contract(root)
-    expected = _build_core(result, bridge_record, adapter_envelope, root, contract, schema, lineage)
+    expected = _build_core(result, bridge_record, adapter_envelope, root, contract, schema, lineage, allow_visual_drill_matrix)
     if dict(candidate) != expected: raise DRendererRequestScopedPayloadBindingError("Payload binding differs from canonical request/source chain or governance locks")
     if set(candidate) != set(schema.get("required", [])): raise DRendererRequestScopedPayloadBindingError("Payload binding output shape does not match strict schema")
     if _sha(_without_hash(candidate)) != candidate.get("binding_sha256"): raise DRendererRequestScopedPayloadBindingError("Request-scoped binding SHA-256 mismatch")

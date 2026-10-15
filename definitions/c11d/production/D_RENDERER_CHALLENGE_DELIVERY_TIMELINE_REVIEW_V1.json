@@ -23,9 +23,25 @@
     "rule": "PRESENTATION_IDENTITY_AND_DELIVERY_IDENTITY_ARE_DISTINCT; DO_NOT_INFER_ONE_FROM_THE_OTHER"
   },
   "source_timeline": {
-    "phase_order": ["HOOK", "GAME", "REVEAL", "CTA"],
-    "expected_source_frame_counts": [180, 420, 180, 120],
-    "expected_source_boundaries": [0, 180, 600, 780, 900],
+    "phase_order": [
+      "HOOK",
+      "GAME",
+      "REVEAL",
+      "CTA"
+    ],
+    "expected_source_frame_counts": [
+      180,
+      420,
+      180,
+      120
+    ],
+    "expected_source_boundaries": [
+      0,
+      180,
+      600,
+      780,
+      900
+    ],
     "frame_interval_convention": "ZERO_BASED_HALF_OPEN",
     "timeline_authority": "FROZEN_EFFECTIVE_RUNTIME_CONTEXT",
     "simulation_truth": "READ_ONLY_INVARIANCE_EVIDENCE_ONLY; NOT AN INPUT TO BOUNDARY PROJECTION"
@@ -34,8 +50,19 @@
     "policy_name": "CUMULATIVE_SOURCE_BOUNDARY_NEAREST_DELIVERY_TICK",
     "policy_state": "PROPOSED_NOT_APPROVED",
     "integer_formula": "floor((2 * source_boundary * delivery_fps + source_fps) / (2 * source_fps))",
-    "expected_delivery_boundaries": [0, 90, 300, 390, 450],
-    "expected_delivery_frame_counts": [90, 210, 90, 60],
+    "expected_delivery_boundaries": [
+      0,
+      90,
+      300,
+      390,
+      450
+    ],
+    "expected_delivery_frame_counts": [
+      90,
+      210,
+      90,
+      60
+    ],
     "expected_delivery_total_frames": 450,
     "duration_preserved_seconds": 15,
     "simulation_frame_sampling": "UNRESOLVED_NOT_DEFINED_NOT_EMITTED",
@@ -49,21 +76,66 @@
     "rule": "PHASE_RANGES_ARE_NOT_TEXT_VISIBILITY_RANGES; DO_NOT_INFER_HOOK/REVEAL/CTA_TEXT_VISIBILITY_FROM_PHASE_NAMES"
   },
   "source_lineage": [
-    {"path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
-    {"path": "challenges/CHALLENGE_004.json", "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"},
-    {"path": "profiles/video/test_master_11s.json", "sha256": "6ac5ddd620d5300f1e365dd4dd8ca6c04e0f97c2ceb95ec48438d52059bff93b"},
-    {"path": "profiles/video/parking_v2_social_15s.json", "sha256": "12b49f14e0ee755d290f7dd36471723da6337ab3244461fc0088a3e3b77c5a82"},
-    {"path": "profiles/delivery/c11c_video_delivery_profiles.json", "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"},
-    {"path": "core/execution/ChallengeRuntimeBridge.gd", "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"},
-    {"path": "core/execution/ChallengeTimelineBuilder.gd", "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"},
-    {"path": "core/authoring/ChallengeMigrationAdapter.gd", "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"},
-    {"path": "core/authoring/TemporalCore.gd", "sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966"},
-    {"path": "core/presentation/ChallengePresentationBinder.gd", "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"},
-    {"path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json", "sha256": "e217d0d94a580747e754be68aba18bcadc4cf954c09d60f97a07e2b9c35fbb77"},
-    {"path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json", "sha256": "602c938cbf8378e8f71aefc6fb46d61496e78f9ab84d595f9efab982a2820a38"},
-    {"path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json", "sha256": "ed56660d77de32e288eb3f4106499e94e390785d6d6503c5c028fc3399dd20c5"},
-    {"path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json", "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"},
-    {"path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json", "sha256": "660f20bf39f6c797e5b3f06615e19efe490353c35637effcacd2e7d4acc447fd"}
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "profiles/video/test_master_11s.json",
+      "sha256": "6ac5ddd620d5300f1e365dd4dd8ca6c04e0f97c2ceb95ec48438d52059bff93b"
+    },
+    {
+      "path": "profiles/video/parking_v2_social_15s.json",
+      "sha256": "12b49f14e0ee755d290f7dd36471723da6337ab3244461fc0088a3e3b77c5a82"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+    },
+    {
+      "path": "core/authoring/ChallengeMigrationAdapter.gd",
+      "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"
+    },
+    {
+      "path": "core/authoring/TemporalCore.gd",
+      "sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json",
+      "sha256": "7fa2acc1d38d2ee4e027ded101286d6ee774a9fbb35a633ea451101959ec03e1"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json",
+      "sha256": "4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+    }
   ],
   "review_locks": {
     "mode": "IN_MEMORY_REVIEW_ONLY",
