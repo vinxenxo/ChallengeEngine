@@ -1,0 +1,81 @@
+{
+  "schema": "C11D-ADDITIVE-OVERLAY-MANIFEST-V1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_20261016",
+  "created_date": "2026-10-16",
+  "operation_mode": "ADD_ONLY",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "preconditions": {
+    "repository_root_required": true,
+    "project_file": "project.godot",
+    "frozen_manifest_required_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_manifest_sha256_required": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "target_paths_must_be_absent": true,
+    "no_existing_files_replaced": true
+  },
+  "files": [
+    {
+      "path": "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "9f2a8f683c6104cc1cc4cf3ee66654f2e0a8e22bfddd34c9df9cbb7214351d53"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "0ee35fc1dbcbf16ecc946c39dac424a0c6e4f7cbff9669b4ba133dc878b03e2d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_CONTRACT_SCHEMA_V2.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "61a787f00ea558dcc86a80ff55d45eb8e7e2d2296459fe453bf24d3dfc5d7c05"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_INPUT_SCHEMA_V2.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "3d7675f1ca2bccc197bd4b1f4b278318440ccaebf085e5bee5a2e5955065932f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_OUTPUT_SCHEMA_V2.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "4498fe25d45b657772b155e57729680dca513fa7040ff4fc23a1089b65cc8128"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_AUDIT_SCHEMA_V2.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "348a02a24d3f34d892c49390938425dbafb5e05d670c77969615dc9f0401a6b7"
+    },
+    {
+      "path": "tools/c11d/d9/probe_visual_loop_geometric_grammar_matrix_v2.gd",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "0b77bdf7014a9d9c4e2f2b84b5df51385beeb67e66a49c4ac5511b753527cba6"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_geometric_grammar_matrix_v2.py",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "9cb9164ddbe5afa4d2d17a369e762d45421c562edb295dbbc1777805b8c680df"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_geometric_grammar_matrix_v2.py",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "c611a0b4e838a7dd8d51b736ef8689a6162aa34dc0b13630e7e65eec5dbc39fe"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_CHECKPOINT_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "432c3a5ea6bfe63b0507bdcaf991c962f76c374591c4fcb3c26b1a0493af615c"
+    }
+  ],
+  "manifest_sha256_note": "This manifest does not self-hash. The ZIP sidecar contains the SHA-256 of the complete archive."
+}

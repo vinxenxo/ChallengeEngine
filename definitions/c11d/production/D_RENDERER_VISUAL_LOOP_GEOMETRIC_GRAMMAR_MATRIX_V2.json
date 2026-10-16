@@ -1,0 +1,136 @@
+{
+  "schema": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-GRAMMAR-MATRIX-CONTRACT-V2",
+  "schema_version": "2.0",
+  "status": "PREPARATION_ONLY_GEOMETRIC_GRAMMAR_PARAMETER_MATRIX_NOT_CANONICAL_REQUEST_BINDING_NOT_RENDERER_INPUT",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "scope": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "grammar_matrix": [
+      {
+        "grammar_id": "harmonic_membrane",
+        "grammar_index": 0,
+        "shader_branch": "field_harmonic_membrane"
+      },
+      {
+        "grammar_id": "interference_plane",
+        "grammar_index": 1,
+        "shader_branch": "field_interference_plane"
+      },
+      {
+        "grammar_id": "parametric_ribbon",
+        "grammar_index": 2,
+        "shader_branch": "field_parametric_ribbon"
+      },
+      {
+        "grammar_id": "lattice_wave",
+        "grammar_index": 3,
+        "shader_branch": "field_lattice_wave"
+      },
+      {
+        "grammar_id": "orbital_wave",
+        "grammar_index": 4,
+        "shader_branch": "field_orbital_wave"
+      }
+    ],
+    "seed_values": [
+      1,
+      12345,
+      54321,
+      2147483646
+    ],
+    "expected_case_count": 20,
+    "scope_limitations": [
+      "This matrix proves only read-only geometric grammar-to-parameter projection for the five shader grammar IDs in the frozen C11-C prototype.",
+      "The canonical D9.9-to-D9.10 request selector matrix remains pinned to harmonic_membrane for Visual Loops.",
+      "This audit is not a canonical request chain, exact selector payload binding, or renderer-native input.",
+      "The shader is inspected as source text but is not executed; no renderer or material is instantiated.",
+      "Gameplay seed sensitivity is probed only for local style-parameter dictionaries; music seed orthogonality is outside this matrix.",
+      "The other four Visual Loop families, Challenge expansion, full editorial/presentation/timeline/audio gates, and production authorization remain open."
+    ]
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_CONTRACT_SCHEMA_V2.json",
+      "sha256": "61a787f00ea558dcc86a80ff55d45eb8e7e2d2296459fe453bf24d3dfc5d7c05"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_INPUT_SCHEMA_V2.json",
+      "sha256": "3d7675f1ca2bccc197bd4b1f4b278318440ccaebf085e5bee5a2e5955065932f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_OUTPUT_SCHEMA_V2.json",
+      "sha256": "4498fe25d45b657772b155e57729680dca513fa7040ff4fc23a1089b65cc8128"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_AUDIT_SCHEMA_V2.json",
+      "sha256": "348a02a24d3f34d892c49390938425dbafb5e05d670c77969615dc9f0401a6b7"
+    },
+    {
+      "path": "tools/c11d/d9/probe_visual_loop_geometric_grammar_matrix_v2.gd",
+      "sha256": "0b77bdf7014a9d9c4e2f2b84b5df51385beeb67e66a49c4ac5511b753527cba6"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_geometric_grammar_matrix_v2.py",
+      "sha256": "9cb9164ddbe5afa4d2d17a369e762d45421c562edb295dbbc1777805b8c680df"
+    }
+  ],
+  "execution_boundary": {
+    "mode": "GODOT_HEADLESS_IN_MEMORY_GEOMETRIC_GRAMMAR_PARAMETER_MATRIX_ONLY",
+    "canonical_request_chain_admitted": false,
+    "canonical_selector_matrix_modified": false,
+    "renderer_native_input_emitted": false,
+    "renderer_instance_created": false,
+    "renderer_dispatch_invoked": false,
+    "shader_executed": false,
+    "payload_files_written": false,
+    "receipt_files_written": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "renderer": "OFF",
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "d9_14": "BLOCKED_AS_REQUIRED",
+    "d9_16": "BLOCKED_AS_REQUIRED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "approval_state": {
+    "geometric_grammar_parameter_matrix_approved": false,
+    "canonical_request_selector_matrix_approved": false,
+    "exact_selector_payload_approved": false,
+    "editorial_visual_consumption_approved": false,
+    "presentation_geometry_approved": false,
+    "temporal_alignment_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "release_authority": "NONE"
+  }
+}

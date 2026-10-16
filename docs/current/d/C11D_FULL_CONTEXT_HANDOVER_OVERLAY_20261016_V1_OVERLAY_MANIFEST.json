@@ -1,0 +1,60 @@
+{
+  "schema": "urn:c11d:documentation-overlay-manifest:v1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_FULL_CONTEXT_HANDOVER_OVERLAY_20261016_V1",
+  "created_date": "2026-10-16",
+  "purpose": "Full project-context/start-prompt/master-handover continuity for a new C11-D context window",
+  "mode": "ADDITIVE_DOCUMENTATION_ONLY",
+  "apply_policy": "ADD_ONLY_STOP_IF_ANY_TARGET_EXISTS",
+  "source_context_snapshot": "ChallengeEngineV01_STATELESS_C11-D10-NORMALIZED-NIGHTLY_20261014(1).zip",
+  "source_snapshot_role": "context only; predates the operator-confirmed 2026-10-15 seed collision V2 overlay and is not the active Windows checkout",
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "governance_boundary": {
+    "renderer": "OFF",
+    "media_created": false,
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "D9.17": "BLOCKED_NO_GO",
+    "D9.10_adapter": "PREPARE_ONLY"
+  },
+  "files": [
+    {
+      "path": "docs/current/d/C11D_PROJECT_CONTEXT_AND_GOVERNANCE_GUIDE_20261016.md",
+      "operation": "ADD",
+      "size_bytes": 23367,
+      "sha256": "66be81a3cda66879c3a216932440153e08f6dd4101d5f6158d2b399c09dbb13b",
+      "role": "C11D_PROJECT_CONTEXT_AND_GOVERNANCE_GUIDE_20261016.md"
+    },
+    {
+      "path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261016.md",
+      "operation": "ADD",
+      "size_bytes": 8708,
+      "sha256": "a53cc04f02733dc79cc9569d8f6515ca151bef876072e1bf8d4aa426b69e7b83",
+      "role": "C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261016.md"
+    },
+    {
+      "path": "docs/current/d/MASTER_HANDOVER_C11D_CURRENT_20261016.md",
+      "operation": "ADD",
+      "size_bytes": 22055,
+      "sha256": "a93e3b08e519a961689331ff95a400cf77ccbd8d7b2aee818d15c7b772be9349",
+      "role": "MASTER_HANDOVER_C11D_CURRENT_20261016.md"
+    },
+    {
+      "path": "docs/current/d/START_PROMPT_C11D_CURRENT_20261016.md",
+      "operation": "ADD",
+      "size_bytes": 14981,
+      "sha256": "57b12b6b5f9f244baf820cf039e7ea6a9d8f003af112e115280c166b29ccf929",
+      "role": "START_PROMPT_C11D_CURRENT_20261016.md"
+    },
+    {
+      "path": "docs/current/d/README_C11D_FULL_CONTEXT_HANDOVER_OVERLAY_20261016_V1.md",
+      "operation": "ADD",
+      "size_bytes": 3210,
+      "sha256": "e5819aba9c2cc26c72b808f498f437a8f8e03a952326653f0f10d7a6e0470dcb",
+      "role": "README_C11D_FULL_CONTEXT_HANDOVER_OVERLAY_20261016_V1.md"
+    }
+  ],
+  "source_snapshot_sha256": "05738cfaa851d93d398fca24bc9ab1dc7f32d2cd04ab023a088dc25e790fb5a3"
+}

@@ -1,0 +1,550 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-geometric-grammar-matrix-audit:v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "contract_sha256",
+    "godot_version",
+    "source_lineage_sha256",
+    "source_pin_count",
+    "godot_probe_sha256",
+    "scope",
+    "matrix",
+    "cases",
+    "findings",
+    "execution_boundary",
+    "audit_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-GRAMMAR-MATRIX-AUDIT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_GEOMETRIC_GRAMMAR_PARAMETER_MATRIX_NOT_CANONICAL_REQUEST_BINDING_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "godot_version": {
+      "const": "4.7.1.stable.mono.official.a13da4feb"
+    },
+    "source_lineage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_pin_count": {
+      "const": 12
+    },
+    "godot_probe_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "grammars",
+        "seed_values"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "grammars": {
+          "const": [
+            {
+              "grammar_id": "harmonic_membrane",
+              "grammar_index": 0,
+              "shader_branch": "field_harmonic_membrane"
+            },
+            {
+              "grammar_id": "interference_plane",
+              "grammar_index": 1,
+              "shader_branch": "field_interference_plane"
+            },
+            {
+              "grammar_id": "parametric_ribbon",
+              "grammar_index": 2,
+              "shader_branch": "field_parametric_ribbon"
+            },
+            {
+              "grammar_id": "lattice_wave",
+              "grammar_index": 3,
+              "shader_branch": "field_lattice_wave"
+            },
+            {
+              "grammar_id": "orbital_wave",
+              "grammar_index": 4,
+              "shader_branch": "field_orbital_wave"
+            }
+          ]
+        },
+        "seed_values": {
+          "const": [
+            1,
+            12345,
+            54321,
+            2147483646
+          ]
+        }
+      }
+    },
+    "matrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grammars",
+        "seed_values_per_grammar",
+        "cases",
+        "expected_cases",
+        "style_parameters_per_case",
+        "deterministic_repeat_checks",
+        "distinct_seed_style_hashes_per_grammar_min"
+      ],
+      "properties": {
+        "grammars": {
+          "const": 5
+        },
+        "seed_values_per_grammar": {
+          "const": 4
+        },
+        "cases": {
+          "const": 20
+        },
+        "expected_cases": {
+          "const": 20
+        },
+        "style_parameters_per_case": {
+          "const": 20
+        },
+        "deterministic_repeat_checks": {
+          "const": 20
+        },
+        "distinct_seed_style_hashes_per_grammar_min": {
+          "const": 2
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "grammar_id",
+          "grammar_index",
+          "shader_branch",
+          "gameplay_seed",
+          "seed_profile_grammar_before_override",
+          "style_parameter_count",
+          "style_parameters",
+          "repeat_style_parameters",
+          "style_sha256",
+          "repeat_style_sha256",
+          "parameter_instance_sha256",
+          "repeat_parameter_instance_sha256",
+          "deterministic_repeat"
+        ],
+        "properties": {
+          "grammar_id": {
+            "type": "string",
+            "enum": [
+              "harmonic_membrane",
+              "interference_plane",
+              "parametric_ribbon",
+              "lattice_wave",
+              "orbital_wave"
+            ]
+          },
+          "grammar_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "shader_branch": {
+            "type": "string",
+            "enum": [
+              "field_harmonic_membrane",
+              "field_interference_plane",
+              "field_parametric_ribbon",
+              "field_lattice_wave",
+              "field_orbital_wave"
+            ]
+          },
+          "gameplay_seed": {
+            "type": "integer",
+            "enum": [
+              1,
+              12345,
+              54321,
+              2147483646
+            ]
+          },
+          "seed_profile_grammar_before_override": {
+            "type": "string",
+            "enum": [
+              "harmonic_membrane",
+              "interference_plane",
+              "parametric_ribbon",
+              "lattice_wave",
+              "orbital_wave"
+            ]
+          },
+          "style_parameter_count": {
+            "type": "integer",
+            "const": 20
+          },
+          "style_parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "grammar_mode",
+              "palette_mode",
+              "morph",
+              "wave_frequency",
+              "line_width",
+              "glow_strength",
+              "polygon_sides",
+              "wave_ratio",
+              "shape_rotation",
+              "layer_spread",
+              "radial_wave_amplitude",
+              "liss_x_frequency",
+              "liss_y_frequency",
+              "interference_scale",
+              "hero_scale",
+              "perspective_strength",
+              "depth_strength",
+              "secondary_phase",
+              "color_phase",
+              "stroke_scale"
+            ],
+            "properties": {
+              "grammar_mode": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "palette_mode": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "morph": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "wave_frequency": {
+                "type": "number",
+                "minimum": 5
+              },
+              "line_width": {
+                "type": "number",
+                "minimum": 0.001
+              },
+              "glow_strength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "polygon_sides": {
+                "type": "number",
+                "minimum": 5,
+                "maximum": 8
+              },
+              "wave_ratio": {
+                "type": "number",
+                "minimum": 0.6,
+                "maximum": 1.05
+              },
+              "shape_rotation": {
+                "type": "number"
+              },
+              "layer_spread": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.1
+              },
+              "radial_wave_amplitude": {
+                "type": "number",
+                "minimum": 0.008,
+                "maximum": 0.08
+              },
+              "liss_x_frequency": {
+                "type": "number",
+                "minimum": 3,
+                "maximum": 16
+              },
+              "liss_y_frequency": {
+                "type": "number",
+                "minimum": 2,
+                "maximum": 12
+              },
+              "interference_scale": {
+                "type": "number",
+                "minimum": 0.65,
+                "maximum": 1.55
+              },
+              "hero_scale": {
+                "type": "number",
+                "minimum": 0.76,
+                "maximum": 1.06
+              },
+              "perspective_strength": {
+                "type": "number",
+                "minimum": 0.2,
+                "maximum": 1.2
+              },
+              "depth_strength": {
+                "type": "number",
+                "minimum": 0.2,
+                "maximum": 1.0
+              },
+              "secondary_phase": {
+                "type": "number"
+              },
+              "color_phase": {
+                "type": "number"
+              },
+              "stroke_scale": {
+                "type": "number",
+                "minimum": 0.72,
+                "maximum": 1.4
+              }
+            }
+          },
+          "repeat_style_parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "grammar_mode",
+              "palette_mode",
+              "morph",
+              "wave_frequency",
+              "line_width",
+              "glow_strength",
+              "polygon_sides",
+              "wave_ratio",
+              "shape_rotation",
+              "layer_spread",
+              "radial_wave_amplitude",
+              "liss_x_frequency",
+              "liss_y_frequency",
+              "interference_scale",
+              "hero_scale",
+              "perspective_strength",
+              "depth_strength",
+              "secondary_phase",
+              "color_phase",
+              "stroke_scale"
+            ],
+            "properties": {
+              "grammar_mode": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "palette_mode": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "morph": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "wave_frequency": {
+                "type": "number",
+                "minimum": 5
+              },
+              "line_width": {
+                "type": "number",
+                "minimum": 0.001
+              },
+              "glow_strength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "polygon_sides": {
+                "type": "number",
+                "minimum": 5,
+                "maximum": 8
+              },
+              "wave_ratio": {
+                "type": "number",
+                "minimum": 0.6,
+                "maximum": 1.05
+              },
+              "shape_rotation": {
+                "type": "number"
+              },
+              "layer_spread": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.1
+              },
+              "radial_wave_amplitude": {
+                "type": "number",
+                "minimum": 0.008,
+                "maximum": 0.08
+              },
+              "liss_x_frequency": {
+                "type": "number",
+                "minimum": 3,
+                "maximum": 16
+              },
+              "liss_y_frequency": {
+                "type": "number",
+                "minimum": 2,
+                "maximum": 12
+              },
+              "interference_scale": {
+                "type": "number",
+                "minimum": 0.65,
+                "maximum": 1.55
+              },
+              "hero_scale": {
+                "type": "number",
+                "minimum": 0.76,
+                "maximum": 1.06
+              },
+              "perspective_strength": {
+                "type": "number",
+                "minimum": 0.2,
+                "maximum": 1.2
+              },
+              "depth_strength": {
+                "type": "number",
+                "minimum": 0.2,
+                "maximum": 1.0
+              },
+              "secondary_phase": {
+                "type": "number"
+              },
+              "color_phase": {
+                "type": "number"
+              },
+              "stroke_scale": {
+                "type": "number",
+                "minimum": 0.72,
+                "maximum": 1.4
+              }
+            }
+          },
+          "style_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "repeat_style_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "parameter_instance_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "repeat_parameter_instance_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "deterministic_repeat": {
+            "type": "boolean",
+            "const": true
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "five_geometric_grammar_parameter_mappings_probed",
+        "gameplay_seed_changes_style_per_grammar",
+        "same_seed_repeats_deterministic",
+        "frozen_c11c_sources_read_only",
+        "canonical_request_chain_admitted",
+        "canonical_selector_matrix_modified",
+        "exact_selector_payload_materialized",
+        "candidate_input_admissible",
+        "video_render_ready"
+      ],
+      "properties": {
+        "five_geometric_grammar_parameter_mappings_probed": {
+          "const": true
+        },
+        "gameplay_seed_changes_style_per_grammar": {
+          "const": true
+        },
+        "same_seed_repeats_deterministic": {
+          "const": true
+        },
+        "frozen_c11c_sources_read_only": {
+          "const": true
+        },
+        "canonical_request_chain_admitted": {
+          "const": false
+        },
+        "canonical_selector_matrix_modified": {
+          "const": false
+        },
+        "exact_selector_payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "const": {
+        "mode": "GODOT_HEADLESS_IN_MEMORY_GEOMETRIC_GRAMMAR_PARAMETER_MATRIX_ONLY",
+        "canonical_request_chain_admitted": false,
+        "canonical_selector_matrix_modified": false,
+        "renderer_native_input_emitted": false,
+        "renderer_instance_created": false,
+        "renderer_dispatch_invoked": false,
+        "shader_executed": false,
+        "payload_files_written": false,
+        "receipt_files_written": false,
+        "media_created": false,
+        "c11c_source_mutation": false,
+        "renderer": "OFF",
+        "d4_8": "BLOCKED",
+        "release_authority": "NONE",
+        "d9_14": "BLOCKED_AS_REQUIRED",
+        "d9_16": "BLOCKED_AS_REQUIRED",
+        "d9_17": "BLOCKED_NO_GO",
+        "d10": "BLOCKED"
+      }
+    },
+    "audit_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

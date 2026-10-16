@@ -1,3 +1,15 @@
+# CURRENT OPERATOR ACCEPTANCE UPDATE — 2026-10-16
+
+The operator has now confirmed the seed-domain collision regression on the active Windows checkout (7/7) and a real Godot 4.7.1 cross-type seed audit (12/12 canonical V1 receipts). This supersedes the pending live-Windows wording from the 2026-10-15 note below only for these bounded gates.
+
+Cross-type scope is exactly Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`, with gameplay sensitivity 2/2, music orthogonality 2/2, repeats 6/6, 18/18 source pins and 12 runtime invocations. The JSON explicitly reports `seed_domains_complete_for_candidate_input=false`. The output created no renderer input, dispatch, output artifact or media and persisted no request/payload/receipt files. Hashes and evidence directory are recorded in `C11D_OPERATOR_EVIDENCE_20261016.md`.
+
+The I/O assessment remains **0/10 complete, 6 partial, 4 blocked**; source pin count 54 and identity inventory declaration 164 are coverage/inventory facts, not readiness. Partial groups: `content_identity`, `source_lineage`, `payload_instance`, `seed_domains`, `editorial`, `delivery`. Blocked groups: `presentation`, `timeline`, `audio`, `authorization`. Editorial consumption remains unclosed; the last documented visual payload consumption was 0/14 values. Candidate input remains inadmissible; renderer OFF; D4.8 BLOCKED; release authority NONE; baseline approval missing; D9.14/D9.16 blocked; D9.17 NO-GO; D10 blocked.
+
+This update does not claim that a fresh I/O audit or identity inventory command was run as part of the latest pasted output. Those source-pinned audits must be rerun after any code/contract change.
+
+---
+
 # Candidate renderer I/O gap audit — current state (2026-10-15)
 
 **Current report:** read-only source-pinned I/O contract audit, not an input-readiness PASS. The active operator reports the previous gates all PASS, including the bounded cross-type Challenge/Loop seed matrix. Its PowerShell wrapper failed to preserve a valid log even though the operator reports the underlying gate PASS; no runtime log digest is asserted here.

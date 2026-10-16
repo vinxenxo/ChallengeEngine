@@ -1,0 +1,153 @@
+{
+  "schema": "C11D-ADDITIVE-OVERLAY-MANIFEST-V1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_FINAL_CLOSEOUT_CONTEXT_DOCS_OVERLAY_20261016",
+  "created_date": "2026-10-16",
+  "operation_mode": "DOCUMENTATION_ONLY_WITH_GUARDED_REPLACEMENTS",
+  "target_repo_root": "C:/Users/vinxe/Projects/ChallengeEngineV01_STATELESS",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "preconditions": {
+    "project_file_required": "project.godot",
+    "frozen_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_manifest_sha256_required": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "all_replacement_before_sha256_required": true,
+    "all_addition_targets_must_be_absent": true,
+    "no_runtime_code_or_production_contracts_changed": true
+  },
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED",
+    "seed_domains_complete_for_candidate_input": false
+  },
+  "files": [
+    {
+      "path": "README_C11D_CONTEXT_HANDOVER_OVERLAY_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "6cb4acabf8da80cf6601b1194e7081ca80cc6892aefca9f5d2b53fa786e73f7e",
+      "sha256": "6cb4acabf8da80cf6601b1194e7081ca80cc6892aefca9f5d2b53fa786e73f7e",
+      "size_bytes": 3777
+    },
+    {
+      "path": "docs/current/d/C11D_D10_RENDERER_CLOSEOUT_CHECKPOINT_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "29657c58874564e57a71dd8936a8dae804cbc158f1af195aa717d1a246ea0afe",
+      "sha256": "29657c58874564e57a71dd8936a8dae804cbc158f1af195aa717d1a246ea0afe",
+      "size_bytes": 6552
+    },
+    {
+      "path": "docs/current/d/C11D_OPERATOR_EVIDENCE_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "44f4f266707c526e7613146bb9fe994efe42598b10a10b729b69ecc977a47041",
+      "sha256": "44f4f266707c526e7613146bb9fe994efe42598b10a10b729b69ecc977a47041",
+      "size_bytes": 3419
+    },
+    {
+      "path": "docs/current/d/C11D_POWERSHELL_EXECUTION_POLICY_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "b9f25b2afff0aa6ce933486e70e0f1b2e35438f35895c760685099038ede938b",
+      "sha256": "b9f25b2afff0aa6ce933486e70e0f1b2e35438f35895c760685099038ede938b",
+      "size_bytes": 3148
+    },
+    {
+      "path": "docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "b3c20588055af9d0079d965e7eff06a05e9d075b64e350ba6200ec305beba884",
+      "sha256": "b3c20588055af9d0079d965e7eff06a05e9d075b64e350ba6200ec305beba884",
+      "size_bytes": 8497
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_CHECKPOINT_V1.md",
+      "operation": "REPLACE",
+      "expected_existing_state": "EXACT_SHA256",
+      "before_sha256": "7cd246f697857f6d6d2ef909d0e32e5b4e45a856d5fbeb16ef7a65a589961d4b",
+      "after_sha256": "f74a6946988d8ba99044a0e14e0917601422cfb02e45fc31a9dddfabc71e1933",
+      "sha256": "f74a6946988d8ba99044a0e14e0917601422cfb02e45fc31a9dddfabc71e1933",
+      "size_bytes": 8793
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_CHECKPOINT_V1.md",
+      "operation": "REPLACE",
+      "expected_existing_state": "EXACT_SHA256",
+      "before_sha256": "8a09d514db4cc343bf8d358a66e3f0603a97ea4ed6b8d64ac342f878f1deb17b",
+      "after_sha256": "319b9bbd809ecef5f24f941f80bcd0a316b9cdb93928d714f919ca4d03a6e1cb",
+      "sha256": "319b9bbd809ecef5f24f941f80bcd0a316b9cdb93928d714f919ca4d03a6e1cb",
+      "size_bytes": 15163
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md",
+      "operation": "REPLACE",
+      "expected_existing_state": "EXACT_SHA256",
+      "before_sha256": "defe4de67e9315d25849c3fb16534faa1b2231348addb65446b9a5e4fa598d74",
+      "after_sha256": "f9c90266a1ea1345894423253b6d5869b49dfaf436277de2a10fa7229ad8c35e",
+      "sha256": "f9c90266a1ea1345894423253b6d5869b49dfaf436277de2a10fa7229ad8c35e",
+      "size_bytes": 7183
+    },
+    {
+      "path": "docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md",
+      "operation": "REPLACE",
+      "expected_existing_state": "EXACT_SHA256",
+      "before_sha256": "d132905ed86a7a56c0b812de9d54da34a8a56a5ea71a63570c8b43524285f177",
+      "after_sha256": "d7b811c7856b27428764abd456da25fdf5765e0e6ba3591c0185e9baad5136fd",
+      "sha256": "d7b811c7856b27428764abd456da25fdf5765e0e6ba3591c0185e9baad5136fd",
+      "size_bytes": 4949
+    },
+    {
+      "path": "docs/current/d/README.md",
+      "operation": "REPLACE",
+      "expected_existing_state": "EXACT_SHA256",
+      "before_sha256": "b6f55080edeae561fbbf936eca3a5e97ff88ef286892d2546303bafbc6376158",
+      "after_sha256": "dd3622cc5b0123ef56385469851d9e22d23f5bace3ce5586542b2100977217c8",
+      "sha256": "dd3622cc5b0123ef56385469851d9e22d23f5bace3ce5586542b2100977217c8",
+      "size_bytes": 1564
+    },
+    {
+      "path": "docs/current/d/START_PROMPT_C11D_CURRENT.md",
+      "operation": "REPLACE",
+      "expected_existing_state": "EXACT_SHA256",
+      "before_sha256": "673ac6b4a9687ac7f650c1c08fc34955d7e7247fead6e2972d7427cd2cf9ee09",
+      "after_sha256": "96d6f19136d277bb51103008cc6fca34bf05c814d915b14dc02a0057bb2e0ca0",
+      "sha256": "96d6f19136d277bb51103008cc6fca34bf05c814d915b14dc02a0057bb2e0ca0",
+      "size_bytes": 2187
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "c564316b320ffce1e20bae7f66e86705bc31be8ad8d3caaed4559535e10e4d0a",
+      "sha256": "c564316b320ffce1e20bae7f66e86705bc31be8ad8d3caaed4559535e10e4d0a",
+      "size_bytes": 10135
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "before_sha256": null,
+      "after_sha256": "029f9168a14d535cf64389b29adb64401a51b4be4a5ac2d099f1491b8971abbf",
+      "sha256": "029f9168a14d535cf64389b29adb64401a51b4be4a5ac2d099f1491b8971abbf",
+      "size_bytes": 3923
+    }
+  ],
+  "manifest_sha256_note": "Manifest does not self-hash. Archive SHA-256 is provided in the separate .zip.sha256 sidecar."
+}

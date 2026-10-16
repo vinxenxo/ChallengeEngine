@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-geometric-grammar-matrix-input:v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "contract_sha256",
+    "frozen_c11c_manifest_sha256",
+    "grammar_matrix",
+    "seeds"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-GRAMMAR-MATRIX-INPUT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "grammar_matrix": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "grammar_id",
+          "grammar_index",
+          "shader_branch"
+        ],
+        "properties": {
+          "grammar_id": {
+            "type": "string",
+            "enum": [
+              "harmonic_membrane",
+              "interference_plane",
+              "parametric_ribbon",
+              "lattice_wave",
+              "orbital_wave"
+            ]
+          },
+          "grammar_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "shader_branch": {
+            "type": "string",
+            "enum": [
+              "field_harmonic_membrane",
+              "field_interference_plane",
+              "field_parametric_ribbon",
+              "field_lattice_wave",
+              "field_orbital_wave"
+            ]
+          }
+        }
+      }
+    },
+    "seeds": {
+      "const": [
+        1,
+        12345,
+        54321,
+        2147483646
+      ]
+    }
+  }
+}

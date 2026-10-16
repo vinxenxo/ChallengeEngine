@@ -1,3 +1,17 @@
+# CURRENT OPERATOR ACCEPTANCE UPDATE — 2026-10-16 (supersedes pending Windows-confirmation wording below)
+
+**Active Windows result:** `SEED COLLISION REGRESSION: PASS`; 7/7 tests passed, `Ran 7 tests in 0.722s`, `OK`.
+
+The accepted test includes 23 source pins, preservation of the frozen C11-C reference, both pinned selector types, rejection of 20 invalid/implicit request forms and four equal numeric gameplay/music collisions before Godot, strict non-admissibility reporting, no Godot invocation by the rejection runner, and fail-closed policy checks. This is an operator-confirmed regression result, not renderer input admission.
+
+The bounded cross-type runtime audit also passed on the active Windows checkout: Godot `4.7.1.stable.mono.official.a13da4feb`, 12/12 canonical V1 receipts, 18/18 source pins, gameplay sensitivity 2/2, music-seed orthogonality 2/2 and independent repeats 6/6. Selector scope is only Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. Audit SHA `94cef68056e7fd5876e64642746012e3ba9c8e8106b03a3d78dd609d8eea7053`; stdout SHA `d2563c122dac6548f0fe1e4ced1d069b071ccd2ee50896a43cdf655b660a1594`; stderr SHA `98f4a2c4df3c95b2b4c4472f2e0098b40d7268cdb7b6272e7762cd7511c2620f`. Full evidence and limitations: `C11D_OPERATOR_EVIDENCE_20261016.md`.
+
+The cross-type report explicitly retains `seed_domains_complete_for_candidate_input=false`; automatic/default/arbitrary request coverage and selectors beyond the two representatives remain open. The last candidate I/O assessment is still 0/10 complete, 6 partial and 4 blocked. Renderer OFF; no renderer input/dispatch/media; D4.8 BLOCKED; release authority NONE; baseline approval missing; D9.14/D9.16 blocked; D9.17 NO-GO; D10 blocked.
+
+The original 2026-10-15 content below is preserved as historical context, but any prior “active Windows confirmation pending” statement for this bounded rejection/cross-type result is superseded by the operator evidence above.
+
+---
+
 # Seed-domain explicitness and collision rejection — Checkpoint V1
 
 **Date:** 2026-10-15  

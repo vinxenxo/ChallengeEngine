@@ -1,3 +1,13 @@
+# CURRENT OPERATOR ACCEPTANCE UPDATE — 2026-10-16
+
+The active Windows operator has confirmed that the seed-domain collision regression passed 7/7 and the bounded cross-type seed-domain Godot runtime audit passed with 12/12 canonical V1 receipts. This supersedes the earlier statement below that the cross-type runtime log could not be verified for that prior run; this new execution has distinct, explicit audit/stdout/stderr hashes documented in `C11D_OPERATOR_EVIDENCE_20261016.md`.
+
+The cross-type runtime matrix includes only Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane`. It reports sensitivity 2/2, music orthogonality 2/2, independent repeats 6/6 and source pins 18/18. It explicitly keeps `seed_domains_complete_for_candidate_input=false`. The declared candidate identity inventory remains 164 sources in the latest contract state, but the pasted 2026-10-16 output did not rerun the inventory CLI/test; do not imply that it did.
+
+Candidate I/O remains 0 complete / 6 partial / 4 blocked, candidate input inadmissible, renderer OFF, no media, D4.8 BLOCKED, baseline approval MISSING and `freeze_eligible=false`. Identity/inventory evidence cannot approve a renderer baseline or cut over C11-C.
+
+---
+
 # D Renderer Candidate Identity Inventory — current state (2026-10-15)
 
 **Current identity inventory:** `164` declared source artifacts; report context includes `D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md`. This is a read-only identity packet, not baseline approval, freeze or renderer authorization. The prior 160-source snapshot is historical and superseded by this contract revision.

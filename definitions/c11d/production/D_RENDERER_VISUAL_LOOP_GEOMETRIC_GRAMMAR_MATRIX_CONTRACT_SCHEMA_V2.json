@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-geometric-grammar-matrix-contract:v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "source_of_truth",
+    "scope",
+    "source_lineage",
+    "execution_boundary",
+    "approval_state"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-GRAMMAR-MATRIX-CONTRACT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_GEOMETRIC_GRAMMAR_PARAMETER_MATRIX_NOT_CANONICAL_REQUEST_BINDING_NOT_RENDERER_INPUT"
+    },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_c11c_manifest_sha256"
+      ],
+      "properties": {
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "grammar_matrix",
+        "seed_values",
+        "expected_case_count",
+        "scope_limitations"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "grammar_matrix": {
+          "const": [
+            {
+              "grammar_id": "harmonic_membrane",
+              "grammar_index": 0,
+              "shader_branch": "field_harmonic_membrane"
+            },
+            {
+              "grammar_id": "interference_plane",
+              "grammar_index": 1,
+              "shader_branch": "field_interference_plane"
+            },
+            {
+              "grammar_id": "parametric_ribbon",
+              "grammar_index": 2,
+              "shader_branch": "field_parametric_ribbon"
+            },
+            {
+              "grammar_id": "lattice_wave",
+              "grammar_index": 3,
+              "shader_branch": "field_lattice_wave"
+            },
+            {
+              "grammar_id": "orbital_wave",
+              "grammar_index": 4,
+              "shader_branch": "field_orbital_wave"
+            }
+          ]
+        },
+        "seed_values": {
+          "const": [
+            1,
+            12345,
+            54321,
+            2147483646
+          ]
+        },
+        "expected_case_count": {
+          "const": 20
+        },
+        "scope_limitations": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "execution_boundary": {
+      "const": {
+        "mode": "GODOT_HEADLESS_IN_MEMORY_GEOMETRIC_GRAMMAR_PARAMETER_MATRIX_ONLY",
+        "canonical_request_chain_admitted": false,
+        "canonical_selector_matrix_modified": false,
+        "renderer_native_input_emitted": false,
+        "renderer_instance_created": false,
+        "renderer_dispatch_invoked": false,
+        "shader_executed": false,
+        "payload_files_written": false,
+        "receipt_files_written": false,
+        "media_created": false,
+        "c11c_source_mutation": false,
+        "renderer": "OFF",
+        "d4_8": "BLOCKED",
+        "release_authority": "NONE",
+        "d9_14": "BLOCKED_AS_REQUIRED",
+        "d9_16": "BLOCKED_AS_REQUIRED",
+        "d9_17": "BLOCKED_NO_GO",
+        "d10": "BLOCKED"
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometric_grammar_parameter_matrix_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "editorial_visual_consumption_approved",
+        "presentation_geometry_approved",
+        "temporal_alignment_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "release_authority"
+      ],
+      "properties": {
+        "geometric_grammar_parameter_matrix_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "editorial_visual_consumption_approved": {
+          "const": false
+        },
+        "presentation_geometry_approved": {
+          "const": false
+        },
+        "temporal_alignment_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    }
+  }
+}
