@@ -1,0 +1,433 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-timing-review-reference-carrier-candidate:v1",
+  "title": "C11-D Visual Loop Timing/Review Reference Carrier Candidate V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "authority",
+    "parents",
+    "scope",
+    "reference_envelope_protocol",
+    "admission_boundary",
+    "execution_boundary",
+    "source_lineage"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "schema": {
+      "const": "C11-D-D10-VISUAL-LOOP-TIMING-REVIEW-REFERENCE-CARRIER-CANDIDATE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_REFERENCE_CARRIER_NOT_CANONICAL_BINDING_NOT_POLICY_APPROVAL"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 40
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branch",
+        "frozen_c11c_manifest_sha256",
+        "additive_only",
+        "canonical_binder_v1_mutated",
+        "canonical_binding_v2_activated",
+        "policy_approval_granted",
+        "renderer_admission_granted"
+      ],
+      "properties": {
+        "branch": {
+          "const": "C11-D only"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "additive_only": {
+          "const": true
+        },
+        "canonical_binder_v1_mutated": {
+          "const": false
+        },
+        "canonical_binding_v2_activated": {
+          "const": false
+        },
+        "policy_approval_granted": {
+          "const": false
+        },
+        "renderer_admission_granted": {
+          "const": false
+        }
+      }
+    },
+    "parents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timing_review_inheritance_contract_path",
+        "timing_review_inheritance_contract_sha256",
+        "timing_review_inheritance_audit_path",
+        "geometric_request_chain_gap_contract_path",
+        "geometric_request_chain_gap_audit_path",
+        "canonical_binding_v1_contract_path",
+        "canonical_binding_v1_implementation_path"
+      ],
+      "properties": {
+        "timing_review_inheritance_contract_path": {
+          "type": "string"
+        },
+        "timing_review_inheritance_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "timing_review_inheritance_audit_path": {
+          "type": "string"
+        },
+        "geometric_request_chain_gap_contract_path": {
+          "type": "string"
+        },
+        "geometric_request_chain_gap_audit_path": {
+          "type": "string"
+        },
+        "canonical_binding_v1_contract_path": {
+          "type": "string"
+        },
+        "canonical_binding_v1_implementation_path": {
+          "type": "string"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "matrix_contract_path",
+        "timing_review_inheritance_contract_path",
+        "selector_ids",
+        "selector_rows",
+        "shared_policy_reference_count",
+        "inheritance_mode",
+        "family_exceptions"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "matrix_contract_path": {
+          "type": "string"
+        },
+        "timing_review_inheritance_contract_path": {
+          "type": "string"
+        },
+        "selector_ids": {
+          "type": "array",
+          "const": [
+            "harmonic_membrane",
+            "interference_plane",
+            "parametric_ribbon",
+            "lattice_wave",
+            "orbital_wave"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "selector_rows": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "grammar_id",
+              "grammar_index",
+              "shader_branch",
+              "current_canonical_binding_status",
+              "reference_carrier_state",
+              "canonical_binding_admitted"
+            ],
+            "properties": {
+              "content_type": {
+                "const": "visual_loops"
+              },
+              "family_id": {
+                "const": "c11c_geometric_waves_v1"
+              },
+              "grammar_id": {
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "grammar_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "shader_branch": {
+                "type": "string"
+              },
+              "current_canonical_binding_status": {
+                "enum": [
+                  "SOURCE_BINDING_REVIEW_ONLY",
+                  "BLOCKED_BY_FIXED_V1_TIMING_REVIEW_SCOPE"
+                ]
+              },
+              "reference_carrier_state": {
+                "const": "PREPARED_METADATA_ONLY_NOT_CANONICAL_BINDING"
+              },
+              "canonical_binding_admitted": {
+                "const": false
+              }
+            }
+          }
+        },
+        "shared_policy_reference_count": {
+          "const": 9
+        },
+        "inheritance_mode": {
+          "const": "PROPOSED_SHARED_POLICY_DEFAULT"
+        },
+        "family_exceptions": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "reference_envelope_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "reference_fields",
+        "reference_set_digest_algorithm",
+        "selector_envelope_digest_algorithm",
+        "selector_identity_in_envelope_digest",
+        "shared_reference_set_digest_expected_unique_count",
+        "selector_envelope_digest_expected_unique_count",
+        "policy_source_bodies_copied",
+        "policy_values_copied",
+        "renderer_instructions_emitted",
+        "canonical_request_modified",
+        "canonical_payload_modified",
+        "envelope_persisted",
+        "envelopes_written_to_stdout_only_in_audit_report"
+      ],
+      "properties": {
+        "mode": {
+          "const": "SELECTOR_SCOPED_REFERENCE_METADATA_ONLY"
+        },
+        "reference_fields": {
+          "type": "array",
+          "const": [
+            "id",
+            "path",
+            "sha256",
+            "expected_status",
+            "scope",
+            "approval_assertion_count",
+            "all_approval_assertions_false"
+          ]
+        },
+        "reference_set_digest_algorithm": {
+          "type": "string"
+        },
+        "selector_envelope_digest_algorithm": {
+          "type": "string"
+        },
+        "selector_identity_in_envelope_digest": {
+          "const": true
+        },
+        "shared_reference_set_digest_expected_unique_count": {
+          "const": 1
+        },
+        "selector_envelope_digest_expected_unique_count": {
+          "const": 5
+        },
+        "policy_source_bodies_copied": {
+          "const": false
+        },
+        "policy_values_copied": {
+          "const": false
+        },
+        "renderer_instructions_emitted": {
+          "const": false
+        },
+        "canonical_request_modified": {
+          "const": false
+        },
+        "canonical_payload_modified": {
+          "const": false
+        },
+        "envelope_persisted": {
+          "const": false
+        },
+        "envelopes_written_to_stdout_only_in_audit_report": {
+          "const": true
+        }
+      }
+    },
+    "admission_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_v1_bound_grammar_ids",
+        "current_v1_blocked_grammar_ids",
+        "future_binding_v2_may_activate_only_after_all_prerequisites",
+        "required_prerequisites",
+        "current_candidate_input_admissible",
+        "current_timing_review_inheritance_approved",
+        "current_canonical_request_selector_matrix_approved",
+        "current_exact_selector_payload_approved",
+        "current_all_shared_policy_sources_approved",
+        "current_candidate_io_contract_complete",
+        "current_D4_8_authorized"
+      ],
+      "properties": {
+        "current_v1_bound_grammar_ids": {
+          "type": "array",
+          "const": [
+            "harmonic_membrane"
+          ]
+        },
+        "current_v1_blocked_grammar_ids": {
+          "type": "array",
+          "const": [
+            "interference_plane",
+            "parametric_ribbon",
+            "lattice_wave",
+            "orbital_wave"
+          ]
+        },
+        "future_binding_v2_may_activate_only_after_all_prerequisites": {
+          "const": true
+        },
+        "required_prerequisites": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          }
+        },
+        "current_candidate_input_admissible": {
+          "const": false
+        },
+        "current_timing_review_inheritance_approved": {
+          "const": false
+        },
+        "current_canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "current_exact_selector_payload_approved": {
+          "const": false
+        },
+        "current_all_shared_policy_sources_approved": {
+          "const": false
+        },
+        "current_candidate_io_contract_complete": {
+          "const": false
+        },
+        "current_D4_8_authorized": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "godot_invoked",
+        "canonical_request_evaluated_by_this_tool",
+        "request_persisted",
+        "payload_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "renderer",
+        "D4.8",
+        "release_authority"
+      ],
+      "properties": {
+        "godot_invoked": {
+          "const": false
+        },
+        "canonical_request_evaluated_by_this_tool": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "schema": "C11D-ADDITIVE-OVERLAY-MANIFEST-V1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_20261016_V1",
+  "created_date": "2026-10-16",
+  "operation_mode": "ADD_ONLY",
+  "purpose": "Bind metadata-only timing/review reference envelope digests to canonical D9.9 request/plan identity without modifying canonical binding or policy state.",
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "preconditions": {
+    "repository_root_required": true,
+    "project_file": "project.godot",
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "target_paths_must_be_absent": true,
+    "all_source_pins_must_match": true,
+    "source_pins": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+        "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+        "sha256": "412f9b7e7f193211a58d590b7841f442fc3a68c48d98376559d9b42c4b28115c"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_SCHEMA_V1.json",
+        "sha256": "a5ce869b652d3e083f5e629197a7eef80bd689352ec39b13a9482cccd2add764"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_REPORT_SCHEMA_V1.json",
+        "sha256": "61f38f281f165c73de018654625f220e49533b0a761c8d97d17ddce238f3527d"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_visual_loop_geometric_request_chain_gap_audit.py",
+        "sha256": "a0f8c796bdf331ed96978ce331f79d6d477839a15be8d2a27f10fddce3f4ac0e"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+        "sha256": "6b25565a9f275d4e1bcd3972e54e879dd0a194b177ccddc9b2fa63a82cd0bb3c"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_SCHEMA_V1.json",
+        "sha256": "0e4123008485a9d51233cedcc75c90f26238d8c0586ad77adc7c9340c9f693ff"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_REPORT_SCHEMA_V1.json",
+        "sha256": "2671ef41d1c8d1c0aa4ec13b56a0acef03189cf51bbccea6e2eda412b0fa2f79"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_inheritance_audit.py",
+        "sha256": "5b525c69020bad3b1c8e9a107d10032e1d4d9c5f9332e25c90529894d03b81d2"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_CANDIDATE_V1.json",
+        "sha256": "0c8a18583c35cb9998eda3f556c191aaa09426fc8862cfa0130393b8f5aa3834"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_CANDIDATE_SCHEMA_V1.json",
+        "sha256": "465e06428fedbc6ebe66e3fd5d471223f9aac579d4e1cbdadc41e255fb378965"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_REPORT_SCHEMA_V1.json",
+        "sha256": "731788bacee8d9fb2f5837a40b603662e10feaf6c5d5e354df0ea1be9c51bc1b"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_reference_carrier.py",
+        "sha256": "5d6ab700b216c752abf8d07c7bde3ef52bdb19399ee46630a3277ad723e4c151"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+        "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+        "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+      }
+    ]
+  },
+  "governance_boundary": {
+    "canonical_binder_v1_mutated": false,
+    "canonical_binding_v2_activated": false,
+    "policy_approval_granted": false,
+    "candidate_input_admissible": false,
+    "request_persisted": false,
+    "payload_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "renderer": "OFF",
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "D9.10": "PREPARE_ONLY",
+    "D9.17": "BLOCKED_NO_GO"
+  },
+  "files": [
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_V1.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 8483,
+      "sha256": "3a7a1c15fcbca872ba2f7a5028a89926da1bd7af5c09f775ab4c0618a9ad5f07"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_SCHEMA_V1.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 9633,
+      "sha256": "4c74169779c074d6011512b4456a41a40e905fa71ed2eac8efdaca25374b99d0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_REPORT_SCHEMA_V1.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 10225,
+      "sha256": "b61951b7b57836a7fc4d0580b9d9a902538993f65a310d1a3f03f73624ec4a1d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_request_bound_reference_carrier.py",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 13972,
+      "sha256": "813ef8e1dfde2ec031b6274b3c2c9390799e764054b9e88df5f93228f7125065"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_timing_review_request_bound_reference_carrier.py",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 8115,
+      "sha256": "7e1019c0f853700a89fe390eecab689df8fa90596be21c57a2a484bb99b6661a"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_CHECKPOINT_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 2728,
+      "sha256": "89535b0a98e0eb26642e17bc94faa78abcdf766739b665b5e6883c8b40b689d6"
+    },
+    {
+      "path": "README_C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_20261016_V1.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 1441,
+      "sha256": "586b62aa52b1abdb9367a5e3cba1b1a82f110e3a3d5bcef069806c3e86d4dcf7"
+    }
+  ],
+  "manifest_sha256_note": "This manifest does not self-hash. ZIP sidecar contains the complete archive SHA-256."
+}

@@ -1,0 +1,376 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-timing-review-request-bound-reference-carrier-report:v1",
+  "title": "C11-D Request-Bound Reference Carrier Audit Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_sha256",
+    "source_lineage",
+    "relations",
+    "summary",
+    "governance",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-VISUAL-LOOP-TIMING-REVIEW-REQUEST-BOUND-REFERENCE-CARRIER-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PASS_PREPARATION_ONLY_REQUEST_IDENTITY_JOIN_VERIFIED_NOT_BINDING_NOT_APPROVED"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 22,
+      "maxItems": 22,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "selector",
+          "request_identity",
+          "reference_identity",
+          "join_checks",
+          "locks"
+        ],
+        "properties": {
+          "selector": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "grammar_id",
+              "grammar_index",
+              "shader_branch"
+            ],
+            "properties": {
+              "content_type": {
+                "const": "visual_loops"
+              },
+              "family_id": {
+                "const": "c11c_geometric_waves_v1"
+              },
+              "grammar_id": {
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "grammar_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "shader_branch": {
+                "type": "string",
+                "pattern": "^field_[a-z_]+$"
+              }
+            }
+          },
+          "request_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "request_id",
+              "request_hash",
+              "plan_hash",
+              "canonical_status"
+            ],
+            "properties": {
+              "request_id": {
+                "type": "string",
+                "pattern": "^D-GRAMMAR-CHAIN-GAP-[A-Z_]+$"
+              },
+              "request_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "plan_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "canonical_status": {
+                "const": "PLANNED"
+              }
+            }
+          },
+          "reference_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "selector_envelope_sha256",
+              "shared_reference_set_sha256",
+              "reference_count",
+              "source_envelope_request_bound"
+            ],
+            "properties": {
+              "selector_envelope_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "shared_reference_set_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "reference_count": {
+                "const": 9
+              },
+              "source_envelope_request_bound": {
+                "const": false
+              }
+            }
+          },
+          "join_checks": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "request_hash_matches_parent_chain",
+              "plan_status_is_planned",
+              "selector_matches_canonical_request",
+              "selector_matches_reference_envelope",
+              "shared_policy_digest_matches",
+              "metadata_only_join"
+            ],
+            "properties": {
+              "request_hash_matches_parent_chain": {
+                "const": true
+              },
+              "plan_status_is_planned": {
+                "const": true
+              },
+              "selector_matches_canonical_request": {
+                "const": true
+              },
+              "selector_matches_reference_envelope": {
+                "const": true
+              },
+              "shared_policy_digest_matches": {
+                "const": true
+              },
+              "metadata_only_join": {
+                "const": true
+              }
+            }
+          },
+          "locks": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "canonical_request_mutated",
+              "canonical_plan_mutated",
+              "source_envelope_mutated",
+              "policy_values_consumed",
+              "renderer_instructions_emitted",
+              "payload_instance_bound",
+              "candidate_input_admissible"
+            ],
+            "properties": {
+              "canonical_request_mutated": {
+                "const": false
+              },
+              "canonical_plan_mutated": {
+                "const": false
+              },
+              "source_envelope_mutated": {
+                "const": false
+              },
+              "policy_values_consumed": {
+                "const": false
+              },
+              "renderer_instructions_emitted": {
+                "const": false
+              },
+              "payload_instance_bound": {
+                "const": false
+              },
+              "candidate_input_admissible": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_source_pins",
+        "request_plans",
+        "reference_envelopes",
+        "request_identity_joins",
+        "policy_reference_pairs",
+        "unique_request_hashes",
+        "unique_plan_hashes",
+        "shared_policy_digest_unique_count",
+        "selector_envelope_digest_unique_count",
+        "canonical_binding",
+        "blocked_by_fixed_v1_scope",
+        "approval_assertions_checked",
+        "approvals_granted",
+        "candidate_input_admissible"
+      ],
+      "properties": {
+        "direct_source_pins": {
+          "const": "22/22"
+        },
+        "request_plans": {
+          "const": "5/5"
+        },
+        "reference_envelopes": {
+          "const": "5/5"
+        },
+        "request_identity_joins": {
+          "const": "5/5"
+        },
+        "policy_reference_pairs": {
+          "const": "45/45"
+        },
+        "unique_request_hashes": {
+          "const": "5/5"
+        },
+        "unique_plan_hashes": {
+          "const": "5/5"
+        },
+        "shared_policy_digest_unique_count": {
+          "const": 1
+        },
+        "selector_envelope_digest_unique_count": {
+          "const": "5/5"
+        },
+        "canonical_binding": {
+          "const": "1/5"
+        },
+        "blocked_by_fixed_v1_scope": {
+          "const": "4/4"
+        },
+        "approval_assertions_checked": {
+          "const": 19
+        },
+        "approvals_granted": {
+          "const": 0
+        },
+        "candidate_input_admissible": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timing_review_inheritance_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "all_shared_policy_sources_approved",
+        "candidate_io_contract_complete",
+        "d4_8_authorized",
+        "request_persisted",
+        "payload_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "renderer",
+        "D4.8",
+        "release_authority",
+        "D9.10",
+        "D9.17"
+      ],
+      "properties": {
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "all_shared_policy_sources_approved": {
+          "const": false
+        },
+        "candidate_io_contract_complete": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        }
+      }
+    },
+    "report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

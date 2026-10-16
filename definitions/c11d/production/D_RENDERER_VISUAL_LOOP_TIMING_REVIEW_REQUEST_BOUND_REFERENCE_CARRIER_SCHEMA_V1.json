@@ -1,0 +1,370 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-timing-review-request-bound-reference-carrier:v1",
+  "title": "C11-D Request-Bound Timing/Review Reference Carrier Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "authority",
+    "parents",
+    "scope",
+    "join_protocol",
+    "approval_gate",
+    "source_lineage",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D10-VISUAL-LOOP-TIMING-REVIEW-REQUEST-BOUND-REFERENCE-CARRIER-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_REQUEST_IDENTITY_JOINED_TO_POLICY_REFERENCE_METADATA_NOT_BINDING_NOT_APPROVED"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 30
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branch",
+        "frozen_c11c_manifest_sha256",
+        "additive_only",
+        "canonical_binder_v1_mutated",
+        "canonical_binding_v2_activated",
+        "policy_approval_granted",
+        "candidate_input_admissible",
+        "renderer_admission_granted"
+      ],
+      "properties": {
+        "branch": {
+          "const": "C11-D only"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "additive_only": {
+          "const": true
+        },
+        "canonical_binder_v1_mutated": {
+          "const": false
+        },
+        "canonical_binding_v2_activated": {
+          "const": false
+        },
+        "policy_approval_granted": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer_admission_granted": {
+          "const": false
+        }
+      }
+    },
+    "parents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometric_request_chain_contract_path",
+        "geometric_request_chain_audit_path",
+        "timing_review_inheritance_contract_path",
+        "timing_review_inheritance_audit_path",
+        "reference_carrier_contract_path",
+        "reference_carrier_audit_path",
+        "canonical_producer_path",
+        "canonical_binding_v1_path"
+      ],
+      "properties": {
+        "geometric_request_chain_contract_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "geometric_request_chain_audit_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timing_review_inheritance_contract_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timing_review_inheritance_audit_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_carrier_contract_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_carrier_audit_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_producer_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_binding_v1_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "selector_ids",
+        "policy_reference_count_per_selector",
+        "required_request_status",
+        "current_canonical_binding_status"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "selector_ids": {
+          "const": [
+            "harmonic_membrane",
+            "interference_plane",
+            "parametric_ribbon",
+            "lattice_wave",
+            "orbital_wave"
+          ]
+        },
+        "policy_reference_count_per_selector": {
+          "const": 9
+        },
+        "required_request_status": {
+          "const": "PLANNED"
+        },
+        "current_canonical_binding_status": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "bound",
+            "blocked"
+          ],
+          "properties": {
+            "bound": {
+              "const": [
+                "harmonic_membrane"
+              ]
+            },
+            "blocked": {
+              "const": [
+                "interference_plane",
+                "parametric_ribbon",
+                "lattice_wave",
+                "orbital_wave"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "join_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_identity_fields",
+        "reference_identity_fields",
+        "joins_are_report_only_metadata",
+        "canonical_request_mutated",
+        "canonical_plan_mutated",
+        "source_envelope_mutated",
+        "policy_source_bodies_copied",
+        "policy_values_consumed",
+        "renderer_instructions_emitted",
+        "payload_instance_created",
+        "candidate_input_admissible"
+      ],
+      "properties": {
+        "request_identity_fields": {
+          "const": [
+            "request_id",
+            "request_hash",
+            "plan_hash",
+            "content_type",
+            "family_id",
+            "grammar_id"
+          ]
+        },
+        "reference_identity_fields": {
+          "const": [
+            "selector_envelope_sha256",
+            "shared_reference_set_sha256",
+            "reference_count"
+          ]
+        },
+        "joins_are_report_only_metadata": {
+          "const": true
+        },
+        "canonical_request_mutated": {
+          "const": false
+        },
+        "canonical_plan_mutated": {
+          "const": false
+        },
+        "source_envelope_mutated": {
+          "const": false
+        },
+        "policy_source_bodies_copied": {
+          "const": false
+        },
+        "policy_values_consumed": {
+          "const": false
+        },
+        "renderer_instructions_emitted": {
+          "const": false
+        },
+        "payload_instance_created": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        }
+      }
+    },
+    "approval_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timing_review_inheritance_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "all_nine_shared_policy_sources_approved",
+        "candidate_io_contract_complete",
+        "d4_8_authorized",
+        "binding_v2_implementation_authorized",
+        "required_before_binding_v2"
+      ],
+      "properties": {
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "all_nine_shared_policy_sources_approved": {
+          "const": false
+        },
+        "candidate_io_contract_complete": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "binding_v2_implementation_authorized": {
+          "const": false
+        },
+        "required_before_binding_v2": {
+          "const": [
+            "timing_review_inheritance_approved",
+            "canonical_request_selector_matrix_approved",
+            "exact_selector_payload_approved",
+            "all_nine_shared_policy_sources_approved",
+            "candidate_io_contract_complete",
+            "d4_8_authorized"
+          ]
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 22,
+      "maxItems": 22,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "godot_invoked",
+        "request_persisted",
+        "payload_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "renderer",
+        "D4.8",
+        "release_authority",
+        "D9.10",
+        "D9.17"
+      ],
+      "properties": {
+        "godot_invoked": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        }
+      }
+    }
+  }
+}

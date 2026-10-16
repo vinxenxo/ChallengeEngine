@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-timing-review-reference-carrier-report:v1",
+  "title": "C11-D Visual Loop Timing/Review Reference Carrier Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_sha256",
+    "source_lineage",
+    "envelopes",
+    "summary",
+    "governance",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-VISUAL-LOOP-TIMING-REVIEW-REFERENCE-CARRIER-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PASS_PREPARATION_ONLY_REFERENCE_ENVELOPES_VERIFIED_NOT_BINDING_NOT_APPROVED"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "envelopes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "schema_version",
+          "mode",
+          "selection",
+          "policy_references",
+          "shared_reference_set_sha256",
+          "selector_envelope_sha256",
+          "policy_source_bodies_copied",
+          "policy_values_copied",
+          "renderer_instructions_emitted",
+          "canonical_request_modified",
+          "canonical_payload_modified",
+          "request_bound",
+          "payload_materialized",
+          "renderer_native_input_emitted",
+          "canonical_binding_admitted",
+          "policy_approval_state"
+        ],
+        "properties": {
+          "schema": {
+            "const": "C11-D-VISUAL-LOOP-TIMING-REVIEW-REFERENCE-ENVELOPE-V1"
+          },
+          "schema_version": {
+            "const": "1.0"
+          },
+          "mode": {
+            "const": "SELECTOR_SCOPED_REFERENCE_METADATA_ONLY"
+          },
+          "selection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "grammar_id",
+              "grammar_index",
+              "shader_branch"
+            ],
+            "properties": {
+              "content_type": {
+                "const": "visual_loops"
+              },
+              "family_id": {
+                "const": "c11c_geometric_waves_v1"
+              },
+              "grammar_id": {
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "grammar_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "shader_branch": {
+                "type": "string"
+              }
+            }
+          },
+          "policy_references": {
+            "type": "array",
+            "minItems": 9,
+            "maxItems": 9,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "path",
+                "sha256",
+                "expected_status",
+                "scope",
+                "approval_assertion_count",
+                "all_approval_assertions_false",
+                "reference_role"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "expected_status": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "approval_assertion_count": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "all_approval_assertions_false": {
+                  "const": true
+                },
+                "reference_role": {
+                  "const": "PROVENANCE_ONLY_NOT_INSTRUCTIONS"
+                }
+              }
+            }
+          },
+          "shared_reference_set_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "selector_envelope_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "policy_source_bodies_copied": {
+            "const": false
+          },
+          "policy_values_copied": {
+            "const": false
+          },
+          "renderer_instructions_emitted": {
+            "const": false
+          },
+          "canonical_request_modified": {
+            "const": false
+          },
+          "canonical_payload_modified": {
+            "const": false
+          },
+          "request_bound": {
+            "const": false
+          },
+          "payload_materialized": {
+            "const": false
+          },
+          "renderer_native_input_emitted": {
+            "const": false
+          },
+          "canonical_binding_admitted": {
+            "const": false
+          },
+          "policy_approval_state": {
+            "const": "UNAPPROVED_PROPOSALS_REFERENCE_ONLY"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_source_pins",
+        "selectors",
+        "policy_refs_per_selector",
+        "reference_descriptors",
+        "prepared_envelopes",
+        "shared_reference_set_digest_unique_count",
+        "selector_envelope_digest_unique_count",
+        "canonical_binding_review",
+        "blocked_by_fixed_v1_scope",
+        "approval_assertions_checked",
+        "approvals_granted",
+        "candidate_input_admissible"
+      ],
+      "properties": {
+        "direct_source_pins": {
+          "const": "16/16"
+        },
+        "selectors": {
+          "const": 5
+        },
+        "policy_refs_per_selector": {
+          "const": 9
+        },
+        "reference_descriptors": {
+          "const": 45
+        },
+        "prepared_envelopes": {
+          "const": "5/5"
+        },
+        "shared_reference_set_digest_unique_count": {
+          "const": 1
+        },
+        "selector_envelope_digest_unique_count": {
+          "const": "5/5"
+        },
+        "canonical_binding_review": {
+          "const": "1/5"
+        },
+        "blocked_by_fixed_v1_scope": {
+          "const": "4/4"
+        },
+        "approval_assertions_checked": {
+          "const": 19
+        },
+        "approvals_granted": {
+          "const": 0
+        },
+        "candidate_input_admissible": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timing_review_inheritance_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "shared_policy_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "godot_invoked",
+        "request_persisted",
+        "payload_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "renderer",
+        "D4.8",
+        "release_authority",
+        "D9.10",
+        "D9.17"
+      ],
+      "properties": {
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "shared_policy_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "godot_invoked": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        }
+      }
+    },
+    "report_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

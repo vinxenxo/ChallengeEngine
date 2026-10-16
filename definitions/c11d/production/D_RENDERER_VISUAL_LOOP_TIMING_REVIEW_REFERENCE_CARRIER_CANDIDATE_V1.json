@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "C11-D-D10-VISUAL-LOOP-TIMING-REVIEW-REFERENCE-CARRIER-CANDIDATE-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_REFERENCE_CARRIER_NOT_CANONICAL_BINDING_NOT_POLICY_APPROVAL",
+  "purpose": "Define and verify deterministic selector-scoped metadata envelopes for the nine proposed shared timing/review policy references. The envelope is report-only metadata: it never copies policy instructions or values into a canonical request, payload, or renderer input.",
+  "authority": {
+    "branch": "C11-D only",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "additive_only": true,
+    "canonical_binder_v1_mutated": false,
+    "canonical_binding_v2_activated": false,
+    "policy_approval_granted": false,
+    "renderer_admission_granted": false
+  },
+  "parents": {
+    "timing_review_inheritance_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+    "timing_review_inheritance_contract_sha256": "6b25565a9f275d4e1bcd3972e54e879dd0a194b177ccddc9b2fa63a82cd0bb3c",
+    "timing_review_inheritance_audit_path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_inheritance_audit.py",
+    "geometric_request_chain_gap_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+    "geometric_request_chain_gap_audit_path": "tools/c11d/d9/d_renderer_visual_loop_geometric_request_chain_gap_audit.py",
+    "canonical_binding_v1_contract_path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+    "canonical_binding_v1_implementation_path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py"
+  },
+  "scope": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "matrix_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+    "timing_review_inheritance_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+    "selector_ids": [
+      "harmonic_membrane",
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "selector_rows": [
+      {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "harmonic_membrane",
+        "grammar_index": 0,
+        "shader_branch": "field_harmonic_membrane",
+        "current_canonical_binding_status": "SOURCE_BINDING_REVIEW_ONLY",
+        "reference_carrier_state": "PREPARED_METADATA_ONLY_NOT_CANONICAL_BINDING",
+        "canonical_binding_admitted": false
+      },
+      {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "interference_plane",
+        "grammar_index": 1,
+        "shader_branch": "field_interference_plane",
+        "current_canonical_binding_status": "BLOCKED_BY_FIXED_V1_TIMING_REVIEW_SCOPE",
+        "reference_carrier_state": "PREPARED_METADATA_ONLY_NOT_CANONICAL_BINDING",
+        "canonical_binding_admitted": false
+      },
+      {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "parametric_ribbon",
+        "grammar_index": 2,
+        "shader_branch": "field_parametric_ribbon",
+        "current_canonical_binding_status": "BLOCKED_BY_FIXED_V1_TIMING_REVIEW_SCOPE",
+        "reference_carrier_state": "PREPARED_METADATA_ONLY_NOT_CANONICAL_BINDING",
+        "canonical_binding_admitted": false
+      },
+      {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "lattice_wave",
+        "grammar_index": 3,
+        "shader_branch": "field_lattice_wave",
+        "current_canonical_binding_status": "BLOCKED_BY_FIXED_V1_TIMING_REVIEW_SCOPE",
+        "reference_carrier_state": "PREPARED_METADATA_ONLY_NOT_CANONICAL_BINDING",
+        "canonical_binding_admitted": false
+      },
+      {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "orbital_wave",
+        "grammar_index": 4,
+        "shader_branch": "field_orbital_wave",
+        "current_canonical_binding_status": "BLOCKED_BY_FIXED_V1_TIMING_REVIEW_SCOPE",
+        "reference_carrier_state": "PREPARED_METADATA_ONLY_NOT_CANONICAL_BINDING",
+        "canonical_binding_admitted": false
+      }
+    ],
+    "shared_policy_reference_count": 9,
+    "inheritance_mode": "PROPOSED_SHARED_POLICY_DEFAULT",
+    "family_exceptions": []
+  },
+  "reference_envelope_protocol": {
+    "mode": "SELECTOR_SCOPED_REFERENCE_METADATA_ONLY",
+    "reference_fields": [
+      "id",
+      "path",
+      "sha256",
+      "expected_status",
+      "scope",
+      "approval_assertion_count",
+      "all_approval_assertions_false"
+    ],
+    "reference_set_digest_algorithm": "SHA-256 of compact UTF-8 JSON with sorted object keys; array order preserved; NaN forbidden",
+    "selector_envelope_digest_algorithm": "SHA-256 of compact UTF-8 JSON with sorted object keys; array order preserved; NaN forbidden",
+    "selector_identity_in_envelope_digest": true,
+    "shared_reference_set_digest_expected_unique_count": 1,
+    "selector_envelope_digest_expected_unique_count": 5,
+    "policy_source_bodies_copied": false,
+    "policy_values_copied": false,
+    "renderer_instructions_emitted": false,
+    "canonical_request_modified": false,
+    "canonical_payload_modified": false,
+    "envelope_persisted": false,
+    "envelopes_written_to_stdout_only_in_audit_report": true
+  },
+  "admission_boundary": {
+    "current_v1_bound_grammar_ids": [
+      "harmonic_membrane"
+    ],
+    "current_v1_blocked_grammar_ids": [
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "future_binding_v2_may_activate_only_after_all_prerequisites": true,
+    "required_prerequisites": [
+      "timing_review_inheritance_approved",
+      "canonical_request_selector_matrix_approved",
+      "exact_selector_payload_approved",
+      "all_nine_shared_policy_sources_explicitly_approved",
+      "candidate_io_contract_complete",
+      "D4.8_authorized_by_canonical_governance"
+    ],
+    "current_candidate_input_admissible": false,
+    "current_timing_review_inheritance_approved": false,
+    "current_canonical_request_selector_matrix_approved": false,
+    "current_exact_selector_payload_approved": false,
+    "current_all_shared_policy_sources_approved": false,
+    "current_candidate_io_contract_complete": false,
+    "current_D4_8_authorized": false
+  },
+  "execution_boundary": {
+    "godot_invoked": false,
+    "canonical_request_evaluated_by_this_tool": false,
+    "request_persisted": false,
+    "payload_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "renderer": "OFF",
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+      "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+      "sha256": "412f9b7e7f193211a58d590b7841f442fc3a68c48d98376559d9b42c4b28115c"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_geometric_request_chain_gap_audit.py",
+      "sha256": "a0f8c796bdf331ed96978ce331f79d6d477839a15be8d2a27f10fddce3f4ac0e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+      "sha256": "6b25565a9f275d4e1bcd3972e54e879dd0a194b177ccddc9b2fa63a82cd0bb3c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_SCHEMA_V1.json",
+      "sha256": "0e4123008485a9d51233cedcc75c90f26238d8c0586ad77adc7c9340c9f693ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_REPORT_SCHEMA_V1.json",
+      "sha256": "2671ef41d1c8d1c0aa4ec13b56a0acef03189cf51bbccea6e2eda412b0fa2f79"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_inheritance_audit.py",
+      "sha256": "5b525c69020bad3b1c8e9a107d10032e1d4d9c5f9332e25c90529894d03b81d2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    }
+  ]
+}
