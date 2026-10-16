@@ -1,0 +1,113 @@
+{
+  "schema": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-REQUEST-CHAIN-GAP-AUDIT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_CANONICAL_REQUEST_TO_BINDING_GAP_AUDIT_NOT_ADMISSION",
+  "candidate_input_admissible": false,
+  "source_of_truth": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "scope": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "matrix_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+    "expected_grammar_ids": [
+      "harmonic_membrane",
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "current_source_binding_grammar_ids": [
+      "harmonic_membrane"
+    ],
+    "current_blocked_grammar_ids": [
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "blocked_reason_prefix": "V1 end-to-end timing/review reference does not cover selection.subtype_id=",
+    "interpretation": "A planned selector is not end-to-end bound. Preserve the V1 fail-closed reference guard until a versioned timing/review inheritance contract explicitly covers the added grammars."
+  },
+  "execution_boundary": {
+    "mode": "READ_ONLY_D9_9_TO_SOURCE_BINDING_GAP_AUDIT",
+    "godot_invoked": false,
+    "request_persisted": false,
+    "payload_instance_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "renderer": "OFF",
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "approval_state": {
+    "geometric_grammar_parameter_matrix_approved": false,
+    "canonical_request_selector_matrix_approved": false,
+    "exact_selector_payload_approved": false,
+    "timing_review_inheritance_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+      "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    }
+  ]
+}

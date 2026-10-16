@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-geometric-request-chain-gap-report:v1",
+  "title": "C11-D Visual Loop Geometric Request Chain Gap Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "source_contract_sha256",
+    "source_lineage",
+    "cases",
+    "summary",
+    "governance",
+    "audit_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-REQUEST-CHAIN-GAP-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_CANONICAL_REQUEST_CHAIN_GAP_AUDIT"
+    },
+    "source_contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "grammar_id",
+          "grammar_index",
+          "shader_branch",
+          "canonical_plan_status",
+          "canonical_request_hash",
+          "canonical_selection",
+          "request_scoped_source_binding_status",
+          "request_scoped_source_binding_error",
+          "payload_instance_materialized"
+        ],
+        "properties": {
+          "grammar_id": {
+            "type": "string",
+            "enum": [
+              "harmonic_membrane",
+              "interference_plane",
+              "parametric_ribbon",
+              "lattice_wave",
+              "orbital_wave"
+            ]
+          },
+          "grammar_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "shader_branch": {
+            "type": "string",
+            "enum": [
+              "field_harmonic_membrane",
+              "field_interference_plane",
+              "field_parametric_ribbon",
+              "field_lattice_wave",
+              "field_orbital_wave"
+            ]
+          },
+          "canonical_plan_status": {
+            "const": "PLANNED"
+          },
+          "canonical_request_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "canonical_selection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "subtype_id",
+              "variant_id"
+            ],
+            "properties": {
+              "content_type": {
+                "const": "visual_loops"
+              },
+              "family_id": {
+                "const": "c11c_geometric_waves_v1"
+              },
+              "subtype_id": {
+                "type": "string",
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "variant_id": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            }
+          },
+          "request_scoped_source_binding_status": {
+            "enum": [
+              "SOURCE_BINDING_REVIEW_ONLY",
+              "BLOCKED_BY_FIXED_V1_TIMING_REVIEW_SCOPE"
+            ]
+          },
+          "request_scoped_source_binding_error": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "payload_instance_materialized": {
+            "const": false
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_plans",
+        "source_binding_review_passes",
+        "blocked_by_fixed_v1_scope",
+        "candidate_input_admissible"
+      ],
+      "properties": {
+        "canonical_plans": {
+          "const": "5/5"
+        },
+        "source_binding_review_passes": {
+          "const": "1/5"
+        },
+        "blocked_by_fixed_v1_scope": {
+          "const": "4/4"
+        },
+        "candidate_input_admissible": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "godot_invoked",
+        "request_persisted",
+        "payload_instance_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "renderer",
+        "D4.8",
+        "release_authority"
+      ],
+      "properties": {
+        "godot_invoked": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_instance_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "audit_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

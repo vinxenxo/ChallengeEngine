@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-geometric-request-chain-gap-audit:v1",
+  "title": "C11-D Visual Loop Geometric Request Chain Gap Audit Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "candidate_input_admissible",
+    "source_of_truth",
+    "scope",
+    "execution_boundary",
+    "approval_state",
+    "source_lineage"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-GEOMETRIC-REQUEST-CHAIN-GAP-AUDIT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_CANONICAL_REQUEST_TO_BINDING_GAP_AUDIT_NOT_ADMISSION"
+    },
+    "candidate_input_admissible": {
+      "const": false
+    },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_c11c_manifest_sha256"
+      ],
+      "properties": {
+        "frozen_c11c_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "matrix_contract_path",
+        "expected_grammar_ids",
+        "current_source_binding_grammar_ids",
+        "current_blocked_grammar_ids",
+        "blocked_reason_prefix",
+        "interpretation"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "matrix_contract_path": {
+          "const": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json"
+        },
+        "expected_grammar_ids": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "harmonic_membrane",
+              "interference_plane",
+              "parametric_ribbon",
+              "lattice_wave",
+              "orbital_wave"
+            ]
+          }
+        },
+        "current_source_binding_grammar_ids": {
+          "const": [
+            "harmonic_membrane"
+          ]
+        },
+        "current_blocked_grammar_ids": {
+          "const": [
+            "interference_plane",
+            "parametric_ribbon",
+            "lattice_wave",
+            "orbital_wave"
+          ]
+        },
+        "blocked_reason_prefix": {
+          "const": "V1 end-to-end timing/review reference does not cover selection.subtype_id="
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 30
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "godot_invoked",
+        "request_persisted",
+        "payload_instance_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "renderer",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "READ_ONLY_D9_9_TO_SOURCE_BINDING_GAP_AUDIT"
+        },
+        "godot_invoked": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_instance_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometric_grammar_parameter_matrix_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "timing_review_inheritance_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "d9_14_full_acceptance",
+        "d9_16_full_acceptance",
+        "d9_17_closure",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "geometric_grammar_parameter_matrix_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17_closure": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
