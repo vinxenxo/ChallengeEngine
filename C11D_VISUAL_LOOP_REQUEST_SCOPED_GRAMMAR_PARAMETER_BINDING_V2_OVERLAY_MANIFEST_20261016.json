@@ -1,0 +1,268 @@
+{
+  "schema": "C11D-ADDITIVE-OVERLAY-MANIFEST-V1",
+  "overlay_id": "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_20261016_V1",
+  "operation_mode": "ADD_ONLY",
+  "source_of_truth": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "parent_request_scoped_matrix_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2.json",
+    "parent_request_scoped_matrix_contract_sha256": "833f1e8a2a4e4147ae109dcb8388b5998b2903b751e502bb45c52d1221cfa121"
+  },
+  "preconditions": {
+    "target_paths_must_be_absent": true,
+    "all_source_pins_must_match": true,
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_pin_count": 45,
+    "content_file_count": 9
+  },
+  "source_pins": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+      "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_REPORT_SCHEMA_V1.json",
+      "sha256": "61f38f281f165c73de018654625f220e49533b0a761c8d97d17ddce238f3527d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_SCHEMA_V1.json",
+      "sha256": "a5ce869b652d3e083f5e629197a7eef80bd689352ec39b13a9482cccd2add764"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+      "sha256": "412f9b7e7f193211a58d590b7841f442fc3a68c48d98376559d9b42c4b28115c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_CONTRACT_SCHEMA_V1.json",
+      "sha256": "9d072685d616f1f40d82848258ea94c1429ee418e2770d74ff7ae72f6776a594"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INPUT_SCHEMA_V1.json",
+      "sha256": "6279ba1eb04a4509242cc1814c784996e2280f1fb38ad974026b6e00e022a924"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_SCHEMA_V1.json",
+      "sha256": "0b6a903bd8bed282cd52bbc3636b5b93d7ceb9c8a6e3518825ca992a0be0c154"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_V1.json",
+      "sha256": "12fa24ccf1340ffef9a2d6355ea0c7a31069c3d4db680bab0ef3128676cb420a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_REPORT_SCHEMA_V2.json",
+      "sha256": "ec4efaab9da29740f372bc7805b9d017e40c8fbc72d2f04a49733641dd50f633"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_SCHEMA_V2.json",
+      "sha256": "6b540feb04181819fa9843a17a24770be0927472a86098d0c61a99198d897310"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2.json",
+      "sha256": "833f1e8a2a4e4147ae109dcb8388b5998b2903b751e502bb45c52d1221cfa121"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_REPORT_SCHEMA_V1.json",
+      "sha256": "2671ef41d1c8d1c0aa4ec13b56a0acef03189cf51bbccea6e2eda412b0fa2f79"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_SCHEMA_V1.json",
+      "sha256": "0e4123008485a9d51233cedcc75c90f26238d8c0586ad77adc7c9340c9f693ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+      "sha256": "6b25565a9f275d4e1bcd3972e54e879dd0a194b177ccddc9b2fa63a82cd0bb3c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_CANDIDATE_SCHEMA_V1.json",
+      "sha256": "465e06428fedbc6ebe66e3fd5d471223f9aac579d4e1cbdadc41e255fb378965"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_CANDIDATE_V1.json",
+      "sha256": "0c8a18583c35cb9998eda3f556c191aaa09426fc8862cfa0130393b8f5aa3834"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_REPORT_SCHEMA_V1.json",
+      "sha256": "731788bacee8d9fb2f5837a40b603662e10feaf6c5d5e354df0ea1be9c51bc1b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_REPORT_SCHEMA_V1.json",
+      "sha256": "b61951b7b57836a7fc4d0580b9d9a902538993f65a310d1a3f03f73624ec4a1d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_SCHEMA_V1.json",
+      "sha256": "4c74169779c074d6011512b4456a41a40e905fa71ed2eac8efdaca25374b99d0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_V1.json",
+      "sha256": "3a7a1c15fcbca872ba2f7a5028a89926da1bd7af5c09f775ab4c0618a9ad5f07"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_geometric_request_chain_gap_audit.py",
+      "sha256": "a0f8c796bdf331ed96978ce331f79d6d477839a15be8d2a27f10fddce3f4ac0e"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_grammar_parameter_instance.py",
+      "sha256": "58a596afcdd87636ba534adf999b0fa3cf42fd8c03435494964a89c67ebaf999"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_request_scoped_binding_matrix_v2.py",
+      "sha256": "b704907f06bb6cd03fc4c88493afa91dd75aed84fddbd2f7ccb3b9a825ffee2d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_inheritance_audit.py",
+      "sha256": "5b525c69020bad3b1c8e9a107d10032e1d4d9c5f9332e25c90529894d03b81d2"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_reference_carrier.py",
+      "sha256": "5d6ab700b216c752abf8d07c7bde3ef52bdb19399ee46630a3277ad723e4c151"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_request_bound_reference_carrier.py",
+      "sha256": "813ef8e1dfde2ec031b6274b3c2c9390799e764054b9e88df5f93228f7125065"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_loop_grammar_parameter_instance_in_memory.gd",
+      "sha256": "c20a8cc1355ec5b08f7314cfacbbecedb84e587398e868f6f54542502d571640"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_grammar_parameter_instance.py",
+      "sha256": "ca837136fbcf4d009f45c04582ca788ff9d776348a623d2bb2ddc72a5263dd95"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    }
+  ],
+  "files": [
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2.json",
+      "sha256": "f7c35fd5afbb593734aa340e838ef3081f86d9d971ef2bdcffe341a413494947",
+      "size_bytes": 13419
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_SCHEMA_V2.json",
+      "sha256": "95d312e4eea8e439ea4309d364c1bcaf126b44ef91ecc65450a34ad9ed673a3f",
+      "size_bytes": 10586
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_INPUT_SCHEMA_V2.json",
+      "sha256": "6f055e39b81c9b513ade68be53fdc57e2c3d7bf69f78208f1ae4b6219c637719",
+      "size_bytes": 4701
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_REPORT_SCHEMA_V2.json",
+      "sha256": "86587b5603380c7d692febc7a092c25f377dad05ccffa9370e4d63bbad36b784",
+      "size_bytes": 20751
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_request_scoped_grammar_parameter_binding_v2.py",
+      "sha256": "76908c16d1b8fae5fa25aab4e35222259139954d6b25a1552ffc741eca8d22d0",
+      "size_bytes": 33492
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_loop_grammar_parameter_matrix_v2_in_memory.gd",
+      "sha256": "9d5a869d9db65a722bebd443acc9c90b8dc169ae3a5fada2e506ba7c1cee9cdb",
+      "size_bytes": 17658
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_request_scoped_grammar_parameter_binding_v2.py",
+      "sha256": "a775aa62f5d4ed7caf6b2e2e6cda78a031e1bfba83ffc18bc9b439104c4ef313",
+      "size_bytes": 15142
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_CHECKPOINT_20261016.md",
+      "sha256": "be8b17a5882e7cf4d9e04c3f2d4677b438de54b4b83a4e3ad0fa47098fb8b1aa",
+      "size_bytes": 3922
+    },
+    {
+      "path": "README_C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_20261016.md",
+      "sha256": "7b30ec45445362e4bcf577791acf8617d1da3f2d326344e10765cbebf84ce0be",
+      "size_bytes": 2554
+    }
+  ],
+  "runtime_requirements": {
+    "godot_version": "4.7.1.stable.mono.official.a13da4feb",
+    "actual_godot_probe_required": true,
+    "python_test_subprocess_mocked": true,
+    "expected_selector_count": 5
+  },
+  "governance": {
+    "approval_assertions_checked": 19,
+    "approvals_granted": 0,
+    "candidate_input_admissible": false,
+    "selected_grammar_parameter_instances_bound": "5/5 only after actual runtime PASS",
+    "selected_grammar_payload_instances_bound": "0/5",
+    "exact_selector_visual_payload_materialized": false,
+    "renderer": "OFF",
+    "media_created": false,
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "D9.10": "PREPARE_ONLY",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED"
+  }
+}

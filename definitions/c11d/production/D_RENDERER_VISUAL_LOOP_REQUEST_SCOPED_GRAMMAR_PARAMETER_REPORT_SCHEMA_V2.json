@@ -1,0 +1,725 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-request-scoped-grammar-parameter-report:v2",
+  "title": "C11-D Request-Scoped Grammar Parameter Binding Report V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_sha256",
+    "input_schema_sha256",
+    "report_schema_sha256",
+    "source_lineage",
+    "source_lineage_sha256",
+    "parent_matrix_report_sha256",
+    "parent_reference_carrier_report_sha256",
+    "cases",
+    "summary",
+    "governance",
+    "execution_boundary",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-REQUEST-SCOPED-GRAMMAR-PARAMETER-BINDING-REPORT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_REQUEST_BOUND_GRAMMAR_PARAMETER_INSTANCES_5_OF_5_NOT_EXACT_VISUAL_PAYLOAD_NOT_APPROVED"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "input_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "report_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 40,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "source_lineage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "parent_matrix_report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "parent_reference_carrier_report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "request_identity",
+          "canonical_chain",
+          "timing_review_reference",
+          "parameter_instance",
+          "request_parameter_binding_sha256",
+          "evidence"
+        ],
+        "properties": {
+          "request_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "request_id",
+              "request_hash",
+              "selection",
+              "gameplay_seed",
+              "music_seed",
+              "variation_index",
+              "presentation_profile_id",
+              "delivery_profile_id"
+            ],
+            "properties": {
+              "request_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "request_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "selection": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "content_type",
+                  "family_id",
+                  "subtype_id",
+                  "variant_id"
+                ],
+                "properties": {
+                  "content_type": {
+                    "const": "visual_loops"
+                  },
+                  "family_id": {
+                    "const": "c11c_geometric_waves_v1"
+                  },
+                  "subtype_id": {
+                    "enum": [
+                      "harmonic_membrane",
+                      "interference_plane",
+                      "parametric_ribbon",
+                      "lattice_wave",
+                      "orbital_wave"
+                    ]
+                  },
+                  "variant_id": {
+                    "type": [
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "gameplay_seed": {
+                "type": "integer"
+              },
+              "music_seed": {
+                "type": "integer"
+              },
+              "variation_index": {
+                "type": "integer"
+              },
+              "presentation_profile_id": {
+                "type": "string"
+              },
+              "delivery_profile_id": {
+                "type": "string"
+              }
+            }
+          },
+          "canonical_chain": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "plan_hash",
+              "editorial_hash",
+              "bridge_record_hash",
+              "adapter_envelope_hash",
+              "source_binding_sha256"
+            ],
+            "properties": {
+              "plan_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "editorial_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bridge_record_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "adapter_envelope_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "source_binding_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "timing_review_reference": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "carrier_report_sha256",
+              "selector_envelope_sha256",
+              "shared_policy_reference_set_sha256",
+              "policy_reference_count",
+              "policy_values_consumed"
+            ],
+            "properties": {
+              "carrier_report_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "selector_envelope_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "shared_policy_reference_set_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "policy_reference_count": {
+                "const": 9
+              },
+              "policy_values_consumed": {
+                "const": false
+              }
+            }
+          },
+          "parameter_instance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "schema_version",
+              "selection",
+              "grammar_id",
+              "grammar_index",
+              "shader_branch",
+              "shader_uniform",
+              "style_parameter_count",
+              "style_parameters",
+              "gameplay_seed",
+              "request_hash",
+              "style_parameters_sha256",
+              "parameter_instance_sha256"
+            ],
+            "properties": {
+              "schema": {
+                "const": "C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-V2"
+              },
+              "schema_version": {
+                "const": "2.0"
+              },
+              "selection": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "content_type",
+                  "family_id",
+                  "subtype_id",
+                  "variant_id"
+                ],
+                "properties": {
+                  "content_type": {
+                    "const": "visual_loops"
+                  },
+                  "family_id": {
+                    "const": "c11c_geometric_waves_v1"
+                  },
+                  "subtype_id": {
+                    "enum": [
+                      "harmonic_membrane",
+                      "interference_plane",
+                      "parametric_ribbon",
+                      "lattice_wave",
+                      "orbital_wave"
+                    ]
+                  },
+                  "variant_id": {
+                    "type": [
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "grammar_id": {
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "grammar_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "shader_branch": {
+                "type": "string",
+                "pattern": "^field_[a-z_]+$"
+              },
+              "shader_uniform": {
+                "const": "grammar_mode"
+              },
+              "style_parameter_count": {
+                "const": 20
+              },
+              "style_parameters": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "grammar_mode",
+                  "palette_mode",
+                  "morph",
+                  "wave_frequency",
+                  "line_width",
+                  "glow_strength",
+                  "polygon_sides",
+                  "wave_ratio",
+                  "shape_rotation",
+                  "layer_spread",
+                  "radial_wave_amplitude",
+                  "liss_x_frequency",
+                  "liss_y_frequency",
+                  "interference_scale",
+                  "hero_scale",
+                  "perspective_strength",
+                  "depth_strength",
+                  "secondary_phase",
+                  "color_phase",
+                  "stroke_scale"
+                ],
+                "properties": {
+                  "grammar_mode": {
+                    "type": "number"
+                  },
+                  "palette_mode": {
+                    "type": "number"
+                  },
+                  "morph": {
+                    "type": "number"
+                  },
+                  "wave_frequency": {
+                    "type": "number"
+                  },
+                  "line_width": {
+                    "type": "number"
+                  },
+                  "glow_strength": {
+                    "type": "number"
+                  },
+                  "polygon_sides": {
+                    "type": "number"
+                  },
+                  "wave_ratio": {
+                    "type": "number"
+                  },
+                  "shape_rotation": {
+                    "type": "number"
+                  },
+                  "layer_spread": {
+                    "type": "number"
+                  },
+                  "radial_wave_amplitude": {
+                    "type": "number"
+                  },
+                  "liss_x_frequency": {
+                    "type": "number"
+                  },
+                  "liss_y_frequency": {
+                    "type": "number"
+                  },
+                  "interference_scale": {
+                    "type": "number"
+                  },
+                  "hero_scale": {
+                    "type": "number"
+                  },
+                  "perspective_strength": {
+                    "type": "number"
+                  },
+                  "depth_strength": {
+                    "type": "number"
+                  },
+                  "secondary_phase": {
+                    "type": "number"
+                  },
+                  "color_phase": {
+                    "type": "number"
+                  },
+                  "stroke_scale": {
+                    "type": "number"
+                  }
+                }
+              },
+              "gameplay_seed": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483646
+              },
+              "request_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "style_parameters_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "parameter_instance_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "request_parameter_binding_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "canonical_request_chain_verified",
+              "direct_source_pins_verified",
+              "in_memory_profile_repeat_deterministic",
+              "exact_grammar_parameter_instance_bound",
+              "exact_selector_visual_payload_materialized",
+              "timing_review_policy_values_consumed"
+            ],
+            "properties": {
+              "canonical_request_chain_verified": {
+                "const": true
+              },
+              "direct_source_pins_verified": {
+                "const": true
+              },
+              "in_memory_profile_repeat_deterministic": {
+                "const": true
+              },
+              "exact_grammar_parameter_instance_bound": {
+                "const": true
+              },
+              "exact_selector_visual_payload_materialized": {
+                "const": false
+              },
+              "timing_review_policy_values_consumed": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_source_pins",
+        "request_plans",
+        "request_parameter_bindings",
+        "parameter_instances",
+        "exact_grammar_identity",
+        "deterministic_repeats",
+        "policy_reference_pairs",
+        "unique_request_hashes",
+        "unique_plan_hashes",
+        "unique_parameter_instance_hashes",
+        "selected_grammar_parameter_instances_bound",
+        "selected_grammar_payload_instances_bound",
+        "exact_selector_visual_payload_materialized",
+        "approval_assertions_checked",
+        "approvals_granted",
+        "candidate_input_admissible"
+      ],
+      "properties": {
+        "direct_source_pins": {
+          "type": "string",
+          "pattern": "^[0-9]+/[0-9]+$"
+        },
+        "request_plans": {
+          "const": "5/5"
+        },
+        "request_parameter_bindings": {
+          "const": "5/5"
+        },
+        "parameter_instances": {
+          "const": "5/5"
+        },
+        "exact_grammar_identity": {
+          "const": "5/5"
+        },
+        "deterministic_repeats": {
+          "const": "5/5"
+        },
+        "policy_reference_pairs": {
+          "const": "45/45"
+        },
+        "unique_request_hashes": {
+          "const": "5/5"
+        },
+        "unique_plan_hashes": {
+          "const": "5/5"
+        },
+        "unique_parameter_instance_hashes": {
+          "const": "5/5"
+        },
+        "selected_grammar_parameter_instances_bound": {
+          "const": "5/5"
+        },
+        "selected_grammar_payload_instances_bound": {
+          "const": "0/5"
+        },
+        "exact_selector_visual_payload_materialized": {
+          "const": false
+        },
+        "approval_assertions_checked": {
+          "const": 19
+        },
+        "approvals_granted": {
+          "const": 0
+        },
+        "candidate_input_admissible": {
+          "const": false
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approval_assertions_checked",
+        "approvals_granted",
+        "pending_approval_assertions",
+        "grammar_parameter_binding_v2_approved",
+        "visual_loop_binding_matrix_v2_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "timing_review_inheritance_approved",
+        "all_nine_shared_policy_sources_approved",
+        "candidate_io_contract_complete",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "request_input_persisted",
+        "parameter_payload_files_written",
+        "receipt_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "renderer",
+        "D4.8",
+        "release_authority",
+        "D9.10",
+        "D9.17",
+        "D10"
+      ],
+      "properties": {
+        "approval_assertions_checked": {
+          "const": 19
+        },
+        "approvals_granted": {
+          "const": 0
+        },
+        "pending_approval_assertions": {
+          "const": 19
+        },
+        "grammar_parameter_binding_v2_approved": {
+          "const": false
+        },
+        "visual_loop_binding_matrix_v2_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "all_nine_shared_policy_sources_approved": {
+          "const": false
+        },
+        "candidate_io_contract_complete": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "request_input_persisted": {
+          "const": false
+        },
+        "parameter_payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_input_persisted",
+        "parameter_payload_files_written",
+        "receipt_files_written",
+        "renderer_instance_created",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "shader_executed",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "renderer",
+        "D4.8",
+        "release_authority",
+        "D9.10",
+        "D9.17",
+        "D10"
+      ],
+      "properties": {
+        "request_input_persisted": {
+          "const": false
+        },
+        "parameter_payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_instance_created": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "shader_executed": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
