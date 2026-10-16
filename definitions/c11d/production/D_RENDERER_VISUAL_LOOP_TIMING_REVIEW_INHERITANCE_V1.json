@@ -1,0 +1,344 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "C11-D-D10-VISUAL-LOOP-GEOMETRIC-TIMING-REVIEW-INHERITANCE-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_SHARED_POLICY_INHERITANCE_PROPOSAL_NOT_APPROVAL_NOT_BINDING",
+  "purpose": "Declare and audit the same shared timing/review policy references for all five geometric Visual Loop grammars while preserving the current canonical binder V1 gate and all renderer governance locks.",
+  "authority": {
+    "branch": "C11-D only",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "additive_only": true,
+    "canonical_binder_mutated": false,
+    "renderer_admission_granted": false
+  },
+  "scope": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "matrix_contract_path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+    "inheritance_rule": "ONE_SHARED_LOOP_POLICY_SET_FOR_ALL_LISTED_GRAMMARS_UNLESS_AN_EXPLICIT_APPROVED_EXCEPTION_EXISTS",
+    "family_exceptions": [],
+    "selector_rows": [
+      {
+        "grammar_id": "harmonic_membrane",
+        "grammar_index": 0,
+        "inheritance_mode": "PROPOSED_SHARED_POLICY_DEFAULT",
+        "policy_refs": [
+          "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_V1",
+          "UNIFIED_DELIVERY_TIMEBASE_V1",
+          "UNIFIED_PRESENTATION_REGION_V1",
+          "UNIFIED_AUDIO_MUSIC_DELIVERY_V1",
+          "SOURCE_BOUND_TEMPORAL_PREVIEW_V1",
+          "EDITORIAL_REVIEW_MANIFEST_V1",
+          "UNIFIED_CONTENT_REVIEW_V1",
+          "NEUTRAL_FRAME_PROGRAM_V1",
+          "CANDIDATE_LOGICAL_COMPOSITION_V1"
+        ],
+        "family_exception": "NONE_DECLARED",
+        "binding_state": "CANONICAL_BINDING_NOT_ADMITTED_BY_THIS_CONTRACT"
+      },
+      {
+        "grammar_id": "interference_plane",
+        "grammar_index": 1,
+        "inheritance_mode": "PROPOSED_SHARED_POLICY_DEFAULT",
+        "policy_refs": [
+          "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_V1",
+          "UNIFIED_DELIVERY_TIMEBASE_V1",
+          "UNIFIED_PRESENTATION_REGION_V1",
+          "UNIFIED_AUDIO_MUSIC_DELIVERY_V1",
+          "SOURCE_BOUND_TEMPORAL_PREVIEW_V1",
+          "EDITORIAL_REVIEW_MANIFEST_V1",
+          "UNIFIED_CONTENT_REVIEW_V1",
+          "NEUTRAL_FRAME_PROGRAM_V1",
+          "CANDIDATE_LOGICAL_COMPOSITION_V1"
+        ],
+        "family_exception": "NONE_DECLARED",
+        "binding_state": "CANONICAL_BINDING_NOT_ADMITTED_BY_THIS_CONTRACT"
+      },
+      {
+        "grammar_id": "parametric_ribbon",
+        "grammar_index": 2,
+        "inheritance_mode": "PROPOSED_SHARED_POLICY_DEFAULT",
+        "policy_refs": [
+          "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_V1",
+          "UNIFIED_DELIVERY_TIMEBASE_V1",
+          "UNIFIED_PRESENTATION_REGION_V1",
+          "UNIFIED_AUDIO_MUSIC_DELIVERY_V1",
+          "SOURCE_BOUND_TEMPORAL_PREVIEW_V1",
+          "EDITORIAL_REVIEW_MANIFEST_V1",
+          "UNIFIED_CONTENT_REVIEW_V1",
+          "NEUTRAL_FRAME_PROGRAM_V1",
+          "CANDIDATE_LOGICAL_COMPOSITION_V1"
+        ],
+        "family_exception": "NONE_DECLARED",
+        "binding_state": "CANONICAL_BINDING_NOT_ADMITTED_BY_THIS_CONTRACT"
+      },
+      {
+        "grammar_id": "lattice_wave",
+        "grammar_index": 3,
+        "inheritance_mode": "PROPOSED_SHARED_POLICY_DEFAULT",
+        "policy_refs": [
+          "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_V1",
+          "UNIFIED_DELIVERY_TIMEBASE_V1",
+          "UNIFIED_PRESENTATION_REGION_V1",
+          "UNIFIED_AUDIO_MUSIC_DELIVERY_V1",
+          "SOURCE_BOUND_TEMPORAL_PREVIEW_V1",
+          "EDITORIAL_REVIEW_MANIFEST_V1",
+          "UNIFIED_CONTENT_REVIEW_V1",
+          "NEUTRAL_FRAME_PROGRAM_V1",
+          "CANDIDATE_LOGICAL_COMPOSITION_V1"
+        ],
+        "family_exception": "NONE_DECLARED",
+        "binding_state": "CANONICAL_BINDING_NOT_ADMITTED_BY_THIS_CONTRACT"
+      },
+      {
+        "grammar_id": "orbital_wave",
+        "grammar_index": 4,
+        "inheritance_mode": "PROPOSED_SHARED_POLICY_DEFAULT",
+        "policy_refs": [
+          "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_V1",
+          "UNIFIED_DELIVERY_TIMEBASE_V1",
+          "UNIFIED_PRESENTATION_REGION_V1",
+          "UNIFIED_AUDIO_MUSIC_DELIVERY_V1",
+          "SOURCE_BOUND_TEMPORAL_PREVIEW_V1",
+          "EDITORIAL_REVIEW_MANIFEST_V1",
+          "UNIFIED_CONTENT_REVIEW_V1",
+          "NEUTRAL_FRAME_PROGRAM_V1",
+          "CANDIDATE_LOGICAL_COMPOSITION_V1"
+        ],
+        "family_exception": "NONE_DECLARED",
+        "binding_state": "CANONICAL_BINDING_NOT_ADMITTED_BY_THIS_CONTRACT"
+      }
+    ]
+  },
+  "shared_policy_refs": [
+    {
+      "id": "LOOP_DRILL_EDITORIAL_FIELD_WINDOW_V1",
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "expected_status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "scope": "VISUAL_LOOPS_AND_VISUAL_DRILLS",
+      "approval_assertions": {
+        "approval_state.loop_editorial_field_mapping_approved": false,
+        "approval_state.drill_editorial_field_mapping_approved": false,
+        "approval_state.field_window_policy_approved": false
+      },
+      "purpose": "Shared editorial fields and declared half-open full-payload visibility proposal; not applied."
+    },
+    {
+      "id": "UNIFIED_DELIVERY_TIMEBASE_V1",
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+      "expected_status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "scope": "ALL_SUPPORTED_CONTENT_TYPES",
+      "approval_assertions": {
+        "approval_state.unified_delivery_timebase_policy_approved": false,
+        "approval_state.loop_drill_no_resampling_policy_approved": false
+      },
+      "purpose": "Preserve source frame count/order and prohibit resampling for Loop/Drill as proposal; no delivery projection applied."
+    },
+    {
+      "id": "UNIFIED_PRESENTATION_REGION_V1",
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+      "expected_status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "scope": "ALL_SUPPORTED_CONTENT_TYPES",
+      "approval_assertions": {
+        "approval_state.shared_presentation_region_policy_approved": false,
+        "approval_state.semantic_region_mapping_approved": false
+      },
+      "purpose": "Shared semantic field-to-region mapping proposal; geometry remains unresolved and unapproved."
+    },
+    {
+      "id": "UNIFIED_AUDIO_MUSIC_DELIVERY_V1",
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+      "expected_status": "PROPOSAL_ONLY_NOT_RENDERER_INPUT",
+      "scope": "TECHNICAL_DELIVERY_ENVELOPE_ONLY",
+      "approval_assertions": {
+        "approval_state.audio_timeline_policy_approved": false,
+        "approval_state.music_selection_policy_approved": false
+      },
+      "purpose": "Technical audio timeline proposal only; no music selection, synthesis, mix or audio emission."
+    },
+    {
+      "id": "SOURCE_BOUND_TEMPORAL_PREVIEW_V1",
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646",
+      "expected_status": "PREPARATION_ONLY_SOURCE_BOUND_TEMPORAL_PREVIEW_NOT_APPROVED_NOT_FROZEN",
+      "scope": "SOURCE_BOUND_PREVIEW_ONLY",
+      "approval_assertions": {
+        "approval_state.temporal_topology_approved": false,
+        "approval_state.temporal_preview_approved": false
+      },
+      "purpose": "Source-bound temporal preview is not a policy approval or renderer admission."
+    },
+    {
+      "id": "EDITORIAL_REVIEW_MANIFEST_V1",
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+      "expected_status": "PREPARATION_ONLY_EDITORIAL_REVIEW_MANIFEST_NOT_RENDERER_INPUT",
+      "scope": "REVIEW_MANIFEST_ONLY",
+      "approval_assertions": {
+        "approval_state.editorial_review_manifest_approved": false,
+        "approval_state.semantic_region_mapping_approved": false
+      },
+      "purpose": "Editorial review aggregation only; does not authorize visibility or rendering."
+    },
+    {
+      "id": "UNIFIED_CONTENT_REVIEW_V1",
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
+      "sha256": "23e3c9494247d0d68b35ccbbd45ca9e9b455dbabd58f3a49445d890645f02d06",
+      "expected_status": "IN_MEMORY_REVIEW_ONLY_NOT_RENDERER_INPUT",
+      "scope": "IN_MEMORY_CROSS_CONTENT_REVIEW_ONLY",
+      "approval_assertions": {
+        "approval_state.loop_editorial_field_mapping_approved": false,
+        "approval_state.loop_drill_editorial_field_window_policy_approved": false
+      },
+      "expected_review_policy": {
+        "visual_loop_editorial_mapping": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED",
+        "loop_drill_editorial_field_windows": "PROPOSED_NOT_APPROVED_INCLUDED_IN_UNIFIED_REVIEW_NOT_APPLIED"
+      },
+      "purpose": "Cross-content review consistency only; proposed Loop editorial mapping is not applied."
+    },
+    {
+      "id": "NEUTRAL_FRAME_PROGRAM_V1",
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315",
+      "expected_status": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "scope": "FRAME_PROGRAM_PROPOSAL_ONLY",
+      "approval_assertions": {
+        "approval_state.frame_program_approved": false,
+        "approval_state.semantic_region_mapping_approved": false
+      },
+      "purpose": "Shared frame structure remains proposed and unapproved."
+    },
+    {
+      "id": "CANDIDATE_LOGICAL_COMPOSITION_V1",
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e",
+      "expected_status": "PREPARATION_ONLY_NOT_APPROVED_NOT_FROZEN",
+      "scope": "LOGICAL_COMPOSITION_PROPOSAL_ONLY",
+      "approval_assertions": {
+        "approval_state.renderer_baseline_approved": false,
+        "approval_state.renderer_baseline_frozen": false
+      },
+      "purpose": "Logical field composition is preparatory and cannot be treated as admitted renderer instructions."
+    }
+  ],
+  "policy_interpretation": {
+    "mode": "SOURCE_REFERENCE_AND_INHERITANCE_AUDIT_ONLY",
+    "proposal_status_is_not_approval": true,
+    "presence_in_unified_review_is_not_approval": true,
+    "policy_changes_require_separate_explicit_review": true,
+    "renderer_must_not_consume_this_contract_as_instructions": true
+  },
+  "binding_boundary": {
+    "canonical_binding_contract_path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+    "canonical_binding_implementation_path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+    "currently_bound_grammars": [
+      "harmonic_membrane"
+    ],
+    "currently_blocked_grammars": [
+      "interference_plane",
+      "parametric_ribbon",
+      "lattice_wave",
+      "orbital_wave"
+    ],
+    "blocked_reason": "The existing V1 end-to-end timing/review reference does not cover the added selector identities. This proposal lists shared reference inheritance but does not modify or bypass that guard.",
+    "candidate_input_admissible": false
+  },
+  "approval_state": {
+    "timing_review_inheritance_approved": false,
+    "canonical_request_selector_matrix_approved": false,
+    "exact_selector_payload_approved": false,
+    "shared_policy_approved": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "d9_14_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_16_full_acceptance": "BLOCKED_AS_REQUIRED",
+    "d9_17_closure": "BLOCKED_NO_GO",
+    "d10": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "execution_boundary": {
+    "godot_invoked": false,
+    "request_persisted": false,
+    "payload_materialized": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "renderer": "OFF"
+  },
+  "source_lineage": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+      "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+      "sha256": "412f9b7e7f193211a58d590b7841f442fc3a68c48d98376559d9b42c4b28115c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
+      "sha256": "23e3c9494247d0d68b35ccbbd45ca9e9b455dbabd58f3a49445d890645f02d06"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    }
+  ]
+}

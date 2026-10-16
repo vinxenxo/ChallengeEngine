@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-timing-review-inheritance-audit-report:v1",
+  "title": "C11-D Visual Loop Timing/Review Inheritance Audit Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "selectors",
+    "shared_policy_refs",
+    "policy_sources",
+    "source_pins",
+    "approval_assertions_checked",
+    "approvals_granted",
+    "canonical_bound",
+    "blocked_by_fixed_v1_scope",
+    "candidate_input_admissible",
+    "timing_review_inheritance_approved",
+    "renderer",
+    "media_created",
+    "d4_8",
+    "release_authority"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-VISUAL-LOOP-TIMING-REVIEW-INHERITANCE-AUDIT-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PASS_PREPARATION_ONLY_SHARED_POLICY_INHERITANCE_VERIFIED_NOT_APPROVED_NOT_BINDING"
+    },
+    "selectors": {
+      "const": 5
+    },
+    "shared_policy_refs": {
+      "const": 9
+    },
+    "policy_sources": {
+      "const": 9
+    },
+    "source_pins": {
+      "const": 17
+    },
+    "approval_assertions_checked": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "approvals_granted": {
+      "const": 0
+    },
+    "canonical_bound": {
+      "const": 1
+    },
+    "blocked_by_fixed_v1_scope": {
+      "const": 4
+    },
+    "candidate_input_admissible": {
+      "const": false
+    },
+    "timing_review_inheritance_approved": {
+      "const": false
+    },
+    "renderer": {
+      "const": "OFF"
+    },
+    "media_created": {
+      "const": false
+    },
+    "d4_8": {
+      "const": "BLOCKED"
+    },
+    "release_authority": {
+      "const": "NONE"
+    }
+  }
+}

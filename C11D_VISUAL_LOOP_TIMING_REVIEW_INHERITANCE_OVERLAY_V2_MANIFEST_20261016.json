@@ -1,0 +1,148 @@
+{
+  "schema": "C11D-ADDITIVE-OVERLAY-MANIFEST-V1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_OVERLAY_20261016_V2_PIN_RECONCILED",
+  "created_date": "2026-10-16",
+  "operation_mode": "ADD_ONLY",
+  "purpose": "Pin-reconciled V2 of the preparation-only timing/review inheritance proposal; uses exact after hashes from the accepted 2026-10-15 source-lineage parent-review reconciliation overlay.",
+  "preconditions": {
+    "repository_root_required": true,
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "all_source_pins_must_match": true,
+    "target_paths_must_be_absent": true,
+    "source_pins": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+        "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+        "sha256": "412f9b7e7f193211a58d590b7841f442fc3a68c48d98376559d9b42c4b28115c"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+        "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+        "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
+        "sha256": "23e3c9494247d0d68b35ccbbd45ca9e9b455dbabd58f3a49445d890645f02d06"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+        "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+        "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+        "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+        "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+      }
+    ],
+    "source_pins_must_match": true,
+    "pin_reconciliation_source_overlay": "C11D_SOURCE_LINEAGE_PARENT_REVIEW_RECONCILIATION_OVERLAY_20261015_V1",
+    "pin_reconciliation_rule": "For paths modified by that accepted overlay, pin its recorded after_sha256; all other pins remain unchanged and must still match the active checkout."
+  },
+  "governance_boundary": {
+    "mode": "READ_ONLY_SHARED_POLICY_INHERITANCE_PROPOSAL",
+    "godot_invoked": false,
+    "renderer": "OFF",
+    "media_created": false,
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "timing_review_inheritance_approved": false,
+    "candidate_input_admissible": false
+  },
+  "files": [
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 15825,
+      "sha256": "6b25565a9f275d4e1bcd3972e54e879dd0a194b177ccddc9b2fa63a82cd0bb3c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_SCHEMA_V1.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 9956,
+      "sha256": "0e4123008485a9d51233cedcc75c90f26238d8c0586ad77adc7c9340c9f693ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_REPORT_SCHEMA_V1.json",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 1752,
+      "sha256": "2671ef41d1c8d1c0aa4ec13b56a0acef03189cf51bbccea6e2eda412b0fa2f79"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_inheritance_audit.py",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 9292,
+      "sha256": "5b525c69020bad3b1c8e9a107d10032e1d4d9c5f9332e25c90529894d03b81d2"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_timing_review_inheritance_audit.py",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 5148,
+      "sha256": "22d642b5efc22a16ce57320eac12142364638dc3ed8693e098ec1231dbcaa4ff"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_CHECKPOINT_20261016.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 4001,
+      "sha256": "848f6a365141a3ecb2a67c940530f8a1ab9b2a6e55f2c7291843a7b577e22c0e"
+    },
+    {
+      "path": "README_C11D_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_OVERLAY_20261016_V2.md",
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "size_bytes": 2127,
+      "sha256": "c5336ef1b1aec61d924f6113bd2d26b807a8737fec35973e88c3743fe98a1b41"
+    }
+  ]
+}
