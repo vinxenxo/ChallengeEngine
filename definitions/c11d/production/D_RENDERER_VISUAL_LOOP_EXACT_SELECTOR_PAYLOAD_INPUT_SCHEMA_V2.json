@@ -1,0 +1,389 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-visual-loop-exact-selector-payload-input:v2",
+  "title": "Exact selector payload probe input V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "contract_sha256",
+    "frozen_c11c_manifest_sha256",
+    "parent_binding_report_sha256",
+    "request_identity",
+    "canonical_chain",
+    "timing_review_reference",
+    "request_parameter_binding_sha256",
+    "parameter_instance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-EXACT-SELECTOR-PAYLOAD-INPUT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "parent_binding_report_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "request_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_id",
+        "request_hash",
+        "selection",
+        "gameplay_seed",
+        "music_seed",
+        "variation_index",
+        "presentation_profile_id",
+        "delivery_profile_id"
+      ],
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "request_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id"
+          ],
+          "properties": {
+            "content_type": {
+              "const": "visual_loops"
+            },
+            "family_id": {
+              "const": "c11c_geometric_waves_v1"
+            },
+            "subtype_id": {
+              "type": "string",
+              "enum": [
+                "harmonic_membrane",
+                "interference_plane",
+                "parametric_ribbon",
+                "lattice_wave",
+                "orbital_wave"
+              ]
+            },
+            "variant_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "const": null
+            }
+          }
+        },
+        "gameplay_seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "music_seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "variation_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "presentation_profile_id": {
+          "const": "social_default_v1"
+        },
+        "delivery_profile_id": {
+          "const": "REVIEW_720"
+        }
+      }
+    },
+    "canonical_chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plan_hash",
+        "editorial_hash",
+        "bridge_record_hash",
+        "adapter_envelope_hash",
+        "source_binding_sha256"
+      ],
+      "properties": {
+        "plan_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "editorial_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bridge_record_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "adapter_envelope_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_binding_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "timing_review_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "carrier_report_sha256",
+        "selector_envelope_sha256",
+        "shared_policy_reference_set_sha256",
+        "policy_reference_count",
+        "policy_values_consumed"
+      ],
+      "properties": {
+        "carrier_report_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "selector_envelope_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "shared_policy_reference_set_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "policy_reference_count": {
+          "const": 9
+        },
+        "policy_values_consumed": {
+          "const": false
+        }
+      }
+    },
+    "request_parameter_binding_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "parameter_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "schema_version",
+        "selection",
+        "grammar_id",
+        "grammar_index",
+        "shader_branch",
+        "shader_uniform",
+        "style_parameter_count",
+        "style_parameters",
+        "gameplay_seed",
+        "request_hash",
+        "style_parameters_sha256",
+        "parameter_instance_sha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "C11-D-D9-VISUAL-LOOP-GRAMMAR-PARAMETER-INSTANCE-V2"
+        },
+        "schema_version": {
+          "const": "2.0"
+        },
+        "selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id"
+          ],
+          "properties": {
+            "content_type": {
+              "const": "visual_loops"
+            },
+            "family_id": {
+              "const": "c11c_geometric_waves_v1"
+            },
+            "subtype_id": {
+              "type": "string",
+              "enum": [
+                "harmonic_membrane",
+                "interference_plane",
+                "parametric_ribbon",
+                "lattice_wave",
+                "orbital_wave"
+              ]
+            },
+            "variant_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "const": null
+            }
+          }
+        },
+        "grammar_id": {
+          "type": "string",
+          "enum": [
+            "harmonic_membrane",
+            "interference_plane",
+            "parametric_ribbon",
+            "lattice_wave",
+            "orbital_wave"
+          ]
+        },
+        "grammar_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "shader_branch": {
+          "type": "string",
+          "enum": [
+            "field_harmonic_membrane",
+            "field_interference_plane",
+            "field_parametric_ribbon",
+            "field_lattice_wave",
+            "field_orbital_wave"
+          ]
+        },
+        "shader_uniform": {
+          "const": "grammar_mode"
+        },
+        "style_parameter_count": {
+          "const": 20
+        },
+        "style_parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "grammar_mode",
+            "palette_mode",
+            "morph",
+            "wave_frequency",
+            "line_width",
+            "glow_strength",
+            "polygon_sides",
+            "wave_ratio",
+            "shape_rotation",
+            "layer_spread",
+            "radial_wave_amplitude",
+            "liss_x_frequency",
+            "liss_y_frequency",
+            "interference_scale",
+            "hero_scale",
+            "perspective_strength",
+            "depth_strength",
+            "secondary_phase",
+            "color_phase",
+            "stroke_scale"
+          ],
+          "properties": {
+            "grammar_mode": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "palette_mode": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "morph": {
+              "type": "number"
+            },
+            "wave_frequency": {
+              "type": "number"
+            },
+            "line_width": {
+              "type": "number"
+            },
+            "glow_strength": {
+              "type": "number"
+            },
+            "polygon_sides": {
+              "type": "number"
+            },
+            "wave_ratio": {
+              "type": "number"
+            },
+            "shape_rotation": {
+              "type": "number"
+            },
+            "layer_spread": {
+              "type": "number"
+            },
+            "radial_wave_amplitude": {
+              "type": "number"
+            },
+            "liss_x_frequency": {
+              "type": "number"
+            },
+            "liss_y_frequency": {
+              "type": "number"
+            },
+            "interference_scale": {
+              "type": "number"
+            },
+            "hero_scale": {
+              "type": "number"
+            },
+            "perspective_strength": {
+              "type": "number"
+            },
+            "depth_strength": {
+              "type": "number"
+            },
+            "secondary_phase": {
+              "type": "number"
+            },
+            "color_phase": {
+              "type": "number"
+            },
+            "stroke_scale": {
+              "type": "number"
+            }
+          }
+        },
+        "gameplay_seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "request_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "style_parameters_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "parameter_instance_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

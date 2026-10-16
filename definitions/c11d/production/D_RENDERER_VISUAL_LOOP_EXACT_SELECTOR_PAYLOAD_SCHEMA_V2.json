@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-visual-loop-exact-selector-payload-contract:v2",
+  "title": "C11-D exact-selector Visual Loop payload V2 contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "authority",
+    "scope",
+    "reference_boundary",
+    "source_lineage",
+    "harness",
+    "approval_state",
+    "execution_boundary",
+    "output_schema",
+    "non_goals"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-EXACT-SELECTOR-PAYLOAD-CONTRACT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_IN_MEMORY_EXACT_SELECTOR_VISUAL_PAYLOADS_NOT_RENDERER_INPUT_NOT_APPROVED"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_c11c_manifest_sha256",
+        "parent_parameter_binding_overlay_manifest_path",
+        "parent_parameter_binding_overlay_manifest_sha256",
+        "parent_parameter_binding_contract_path",
+        "parent_parameter_binding_contract_sha256",
+        "parent_parameter_binding_runner_path",
+        "parent_parameter_binding_runner_sha256"
+      ],
+      "properties": {
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "parent_parameter_binding_overlay_manifest_path": {
+          "const": "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_MANIFEST_20261016.json"
+        },
+        "parent_parameter_binding_overlay_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "parent_parameter_binding_contract_path": {
+          "const": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2.json"
+        },
+        "parent_parameter_binding_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "parent_parameter_binding_runner_path": {
+          "const": "tools/c11d/d9/d_renderer_visual_loop_request_scoped_grammar_parameter_binding_v2.py"
+        },
+        "parent_parameter_binding_runner_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "canonical_selection_field",
+        "grammar_matrix",
+        "exact_selector_visual_payload_materialized_in_memory",
+        "renderer_native_input_emitted",
+        "payload_file_written",
+        "non_geometric_family_authoring_gaps_remain_open"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "canonical_selection_field": {
+          "const": "selection.subtype_id"
+        },
+        "grammar_matrix": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "grammar_id",
+              "grammar_index",
+              "shader_branch"
+            ],
+            "properties": {
+              "grammar_id": {
+                "type": "string",
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "grammar_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "shader_branch": {
+                "type": "string",
+                "enum": [
+                  "field_harmonic_membrane",
+                  "field_interference_plane",
+                  "field_parametric_ribbon",
+                  "field_lattice_wave",
+                  "field_orbital_wave"
+                ]
+              }
+            }
+          }
+        },
+        "exact_selector_visual_payload_materialized_in_memory": {
+          "const": true
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "payload_file_written": {
+          "const": false
+        },
+        "non_geometric_family_authoring_gaps_remain_open": {
+          "const": true
+        }
+      }
+    },
+    "reference_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_reference_count_per_selector",
+        "policy_values_consumed",
+        "policy_reference_bodies_copied"
+      ],
+      "properties": {
+        "policy_reference_count_per_selector": {
+          "const": 9
+        },
+        "policy_values_consumed": {
+          "const": false
+        },
+        "policy_reference_bodies_copied": {
+          "const": false
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 60,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "harness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "tools/c11d/d9/materialize_visual_loop_exact_selector_payload_v2_in_memory.gd"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_selector_payload_v2_approved",
+        "grammar_parameter_binding_v2_approved",
+        "visual_loop_binding_matrix_v2_approved",
+        "canonical_request_selector_matrix_approved",
+        "timing_review_inheritance_approved",
+        "all_nine_shared_policy_sources_approved",
+        "candidate_io_contract_complete",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "approval_assertions_checked",
+        "approvals_granted",
+        "release_authority"
+      ],
+      "properties": {
+        "exact_selector_payload_v2_approved": {
+          "const": false
+        },
+        "grammar_parameter_binding_v2_approved": {
+          "const": false
+        },
+        "visual_loop_binding_matrix_v2_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "all_nine_shared_policy_sources_approved": {
+          "const": false
+        },
+        "candidate_io_contract_complete": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "approval_assertions_checked": {
+          "const": 19
+        },
+        "approvals_granted": {
+          "const": 0
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "execution_boundary": {
+      "const": {
+        "payload_materialized_in_memory": true,
+        "payload_file_written": false,
+        "receipt_file_written": false,
+        "renderer_instance_created": false,
+        "shader_material_created": false,
+        "shader_executed": false,
+        "renderer_native_input_emitted": false,
+        "renderer_dispatch_invoked": false,
+        "renderer_activation": false,
+        "media_created": false,
+        "c11c_source_mutation": false,
+        "candidate_input_admissible": false,
+        "renderer": "OFF",
+        "D4.8": "BLOCKED",
+        "D9.10": "PREPARE_ONLY",
+        "D9.17": "BLOCKED_NO_GO",
+        "D10": "BLOCKED",
+        "release_authority": "NONE"
+      }
+    },
+    "output_schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-EXACT-SELECTOR-PAYLOAD-REPORT-V2"
+    },
+    "non_goals": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "minItems": 8
+    }
+  }
+}

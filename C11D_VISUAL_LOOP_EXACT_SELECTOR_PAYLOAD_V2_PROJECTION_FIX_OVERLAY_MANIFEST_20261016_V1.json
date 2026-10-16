@@ -1,0 +1,365 @@
+{
+  "schema": "C11D-PINNED-REPLACEMENT-OVERLAY-MANIFEST-V1",
+  "overlay_id": "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_PROJECTION_FIX_OVERLAY_20261016_V1",
+  "operation_mode": "REPLACE_PINNED_FILES",
+  "created_utc": "2026-10-16T12:50:00Z",
+  "supersedes": {
+    "overlay_id": "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_20261016_V1",
+    "manifest_path": "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_MANIFEST_20261016.json",
+    "manifest_sha256": "7ef72762c6fd6d625d0018e0a34239b4b5b5c9b3f4aef5b309a8be6d291270a5",
+    "reason": "Runtime probe exposed projection parity defect: raw profile values were compared against normalized request-bound values."
+  },
+  "source_of_truth": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "parent_parameter_binding_manifest_path": "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_MANIFEST_20261016.json",
+    "parent_parameter_binding_manifest_sha256": "fbe69705fb24a9879ec3ac97e8f3c0fdb8286a761502c5ce3585293d8143a319"
+  },
+  "preconditions": {
+    "source_pin_count": 70,
+    "source_pins_must_match": true,
+    "target_files_must_match_expected_before_hash_and_size": true,
+    "new_manifest_destination_must_be_absent": true,
+    "c11c_frozen_files_mutated": false,
+    "renderer_enabled": false
+  },
+  "source_pins": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json",
+      "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_REPORT_SCHEMA_V1.json",
+      "sha256": "61f38f281f165c73de018654625f220e49533b0a761c8d97d17ddce238f3527d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_SCHEMA_V1.json",
+      "sha256": "a5ce869b652d3e083f5e629197a7eef80bd689352ec39b13a9482cccd2add764"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_V1.json",
+      "sha256": "412f9b7e7f193211a58d590b7841f442fc3a68c48d98376559d9b42c4b28115c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_CONTRACT_SCHEMA_V1.json",
+      "sha256": "9d072685d616f1f40d82848258ea94c1429ee418e2770d74ff7ae72f6776a594"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INPUT_SCHEMA_V1.json",
+      "sha256": "6279ba1eb04a4509242cc1814c784996e2280f1fb38ad974026b6e00e022a924"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_SCHEMA_V1.json",
+      "sha256": "0b6a903bd8bed282cd52bbc3636b5b93d7ceb9c8a6e3518825ca992a0be0c154"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_V1.json",
+      "sha256": "12fa24ccf1340ffef9a2d6355ea0c7a31069c3d4db680bab0ef3128676cb420a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_REPORT_SCHEMA_V2.json",
+      "sha256": "ec4efaab9da29740f372bc7805b9d017e40c8fbc72d2f04a49733641dd50f633"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_SCHEMA_V2.json",
+      "sha256": "6b540feb04181819fa9843a17a24770be0927472a86098d0c61a99198d897310"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2.json",
+      "sha256": "833f1e8a2a4e4147ae109dcb8388b5998b2903b751e502bb45c52d1221cfa121"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_REPORT_SCHEMA_V1.json",
+      "sha256": "2671ef41d1c8d1c0aa4ec13b56a0acef03189cf51bbccea6e2eda412b0fa2f79"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_SCHEMA_V1.json",
+      "sha256": "0e4123008485a9d51233cedcc75c90f26238d8c0586ad77adc7c9340c9f693ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_V1.json",
+      "sha256": "6b25565a9f275d4e1bcd3972e54e879dd0a194b177ccddc9b2fa63a82cd0bb3c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_CANDIDATE_SCHEMA_V1.json",
+      "sha256": "465e06428fedbc6ebe66e3fd5d471223f9aac579d4e1cbdadc41e255fb378965"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_CANDIDATE_V1.json",
+      "sha256": "0c8a18583c35cb9998eda3f556c191aaa09426fc8862cfa0130393b8f5aa3834"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_REPORT_SCHEMA_V1.json",
+      "sha256": "731788bacee8d9fb2f5837a40b603662e10feaf6c5d5e354df0ea1be9c51bc1b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_REPORT_SCHEMA_V1.json",
+      "sha256": "b61951b7b57836a7fc4d0580b9d9a902538993f65a310d1a3f03f73624ec4a1d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_SCHEMA_V1.json",
+      "sha256": "4c74169779c074d6011512b4456a41a40e905fa71ed2eac8efdaca25374b99d0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_V1.json",
+      "sha256": "3a7a1c15fcbca872ba2f7a5028a89926da1bd7af5c09f775ab4c0618a9ad5f07"
+    },
+    {
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_geometric_request_chain_gap_audit.py",
+      "sha256": "a0f8c796bdf331ed96978ce331f79d6d477839a15be8d2a27f10fddce3f4ac0e"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_grammar_parameter_instance.py",
+      "sha256": "58a596afcdd87636ba534adf999b0fa3cf42fd8c03435494964a89c67ebaf999"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_request_scoped_binding_matrix_v2.py",
+      "sha256": "b704907f06bb6cd03fc4c88493afa91dd75aed84fddbd2f7ccb3b9a825ffee2d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_inheritance_audit.py",
+      "sha256": "5b525c69020bad3b1c8e9a107d10032e1d4d9c5f9332e25c90529894d03b81d2"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_reference_carrier.py",
+      "sha256": "5d6ab700b216c752abf8d07c7bde3ef52bdb19399ee46630a3277ad723e4c151"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_timing_review_request_bound_reference_carrier.py",
+      "sha256": "813ef8e1dfde2ec031b6274b3c2c9390799e764054b9e88df5f93228f7125065"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_loop_grammar_parameter_instance_in_memory.gd",
+      "sha256": "c20a8cc1355ec5b08f7314cfacbbecedb84e587398e868f6f54542502d571640"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_grammar_parameter_instance.py",
+      "sha256": "ca837136fbcf4d009f45c04582ca788ff9d776348a623d2bb2ddc72a5263dd95"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    },
+    {
+      "path": "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_MANIFEST_20261016.json",
+      "sha256": "fbe69705fb24a9879ec3ac97e8f3c0fdb8286a761502c5ce3585293d8143a319"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2.json",
+      "sha256": "f7c35fd5afbb593734aa340e838ef3081f86d9d971ef2bdcffe341a413494947"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_SCHEMA_V2.json",
+      "sha256": "95d312e4eea8e439ea4309d364c1bcaf126b44ef91ecc65450a34ad9ed673a3f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_INPUT_SCHEMA_V2.json",
+      "sha256": "6f055e39b81c9b513ade68be53fdc57e2c3d7bf69f78208f1ae4b6219c637719"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_REPORT_SCHEMA_V2.json",
+      "sha256": "86587b5603380c7d692febc7a092c25f377dad05ccffa9370e4d63bbad36b784"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_loop_request_scoped_grammar_parameter_binding_v2.py",
+      "sha256": "76908c16d1b8fae5fa25aab4e35222259139954d6b25a1552ffc741eca8d22d0"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_loop_grammar_parameter_matrix_v2_in_memory.gd",
+      "sha256": "9d5a869d9db65a722bebd443acc9c90b8dc169ae3a5fada2e506ba7c1cee9cdb"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_request_scoped_grammar_parameter_binding_v2.py",
+      "sha256": "a775aa62f5d4ed7caf6b2e2e6cda78a031e1bfba83ffc18bc9b439104c4ef313"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_CHECKPOINT_20261016.md",
+      "sha256": "be8b17a5882e7cf4d9e04c3f2d4677b438de54b4b83a4e3ad0fa47098fb8b1aa"
+    },
+    {
+      "path": "README_C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_20261016.md",
+      "sha256": "7b30ec45445362e4bcf577791acf8617d1da3f2d326344e10765cbebf84ce0be"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+      "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringGenerator.gd",
+      "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequest.gd",
+      "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+      "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+      "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+    },
+    {
+      "path": "core/authoring/VisualDifficultyResolver.gd",
+      "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringRegistry.gd",
+      "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+    },
+    {
+      "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+      "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+    },
+    {
+      "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CColorBoost.gd",
+      "sha256": "ea585997b03aba00a13c3cb87640a7c626081316b43306093265757dd09c6607"
+    }
+  ],
+  "files": [
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2.json",
+      "operation": "REPLACE_PINNED_FILE",
+      "expected_before_sha256": "e2669b40974bdc7e318b0663d1cdb75afc836a6b194c76a03f84fc2d05d46893",
+      "expected_before_size_bytes": 17753,
+      "sha256": "ff4928131ae6c46a076c703843d38c8cb92375ca0d6f994316460a75f35edc2c",
+      "size_bytes": 17753
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_loop_exact_selector_payload_v2_in_memory.gd",
+      "operation": "REPLACE_PINNED_FILE",
+      "expected_before_sha256": "77a5b7aee0481216d78af84c898b7dec31da00e3c53cf1053ef6ba9ac49c7cc5",
+      "expected_before_size_bytes": 23322,
+      "sha256": "4f77b9ebf388c57d293b0897b152efc93c16dd6ffab0e51f0833b9085606cb12",
+      "size_bytes": 24587
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_loop_exact_selector_payload_v2.py",
+      "operation": "REPLACE_PINNED_FILE",
+      "expected_before_sha256": "49b1f47290ddbbfd2a1218bdbee5196900810c0f3fd80656785211dce6cf1a84",
+      "expected_before_size_bytes": 10369,
+      "sha256": "388071e4da53eec0aed3c598bfd480e912ad43be52a68e344a56e847f5a82c79",
+      "size_bytes": 11160
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_CHECKPOINT_20261016.md",
+      "operation": "REPLACE_PINNED_FILE",
+      "expected_before_sha256": "ab832c9c97ba38b5c12e3623e81a6b9138a39a3cb2d2c6cfd1ce7a89d67651c3",
+      "expected_before_size_bytes": 3408,
+      "sha256": "4c8d22c1df320c43663cdedfc955926501bfdd0be9e9de44b7d534bf671a4dd7",
+      "size_bytes": 4294
+    },
+    {
+      "path": "README_C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_20261016.md",
+      "operation": "REPLACE_PINNED_FILE",
+      "expected_before_sha256": "72d95f1456651090fd6d391ef04b5d83012fe3247c2982ffe94f318f39dc87e1",
+      "expected_before_size_bytes": 2770,
+      "sha256": "44d2492264bb304be6165c0d8f7c11f3ea3f600d04f4ac9a583556392b5f464f",
+      "size_bytes": 3502
+    }
+  ],
+  "execution_boundary": {
+    "renderer": "OFF",
+    "media_created": false,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED",
+    "release_authority": "NONE",
+    "approvals_granted": 0,
+    "pending_approval_assertions": 19,
+    "candidate_input_admissible": false,
+    "shader_executed": false,
+    "payload_file_written": false,
+    "receipt_file_written": false
+  }
+}
