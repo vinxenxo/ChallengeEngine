@@ -1,0 +1,62 @@
+{
+  "schema": "C11D-ADDITIVE-OVERLAY-MANIFEST-V1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_20261016",
+  "created_date": "2026-10-16",
+  "operation_mode": "GUARDED_REPLACE_AND_ADD",
+  "purpose": "Fix Godot JSON-decoded exact seed-array comparison; retain preparation-only governance.",
+  "preconditions": {
+    "repository_root_required": true,
+    "project_file": "project.godot",
+    "frozen_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "all_replacement_files_must_match_expected_existing_sha256": true,
+    "all_additive_files_must_be_absent": true,
+    "no_force_overwrite": true,
+    "upstream_runtime_fix_v1_overlay_sha256": "c72ad72d54fcb826969cf5af17e7f51b8d905cd6c57612ea7a556145fa6b8569"
+  },
+  "files": {
+    "tools/c11d/d9/probe_visual_loop_geometric_grammar_matrix_v2.gd": {
+      "operation": "REPLACE",
+      "expected_existing_sha256": "7b4c35b9c87fdfdd41e89971077d3376a5a8df451f91f59083f85e3901a495c7",
+      "sha256": "91bc179b9a6db2a8bbcde54e08f05b91d6dd47abc7d12c5904742df4cb5a70e7",
+      "size_bytes": 18887
+    },
+    "tools/c11d/d9/test_d_renderer_visual_loop_geometric_grammar_matrix_v2.py": {
+      "operation": "REPLACE",
+      "expected_existing_sha256": "5f6eab104135d873f7e4242bbb415ff28309127f430f0061d51e840df955f625",
+      "sha256": "331834916e72e5dac71d9f74ea79c8a758f399da4a719a985da0515b74cd5471",
+      "size_bytes": 12510
+    },
+    "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json": {
+      "operation": "REPLACE",
+      "expected_existing_sha256": "e787b45843ff5c1642e9e1374d59869ef11fdc70620cfdda81606652aef5d17a",
+      "sha256": "e2118dd2e25005913bfe418a001e24c20d0929a395171a172a6ac9c88e1d13a2",
+      "size_bytes": 5493
+    },
+    "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_20261016.md": {
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "738c9b7a3d9495b4cca35c60f6b63f5190d7c5e102cc55b6215c7e9ad2af1ccd",
+      "size_bytes": 1845
+    },
+    "docs/current/d/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_CHECKPOINT_20261016.md": {
+      "operation": "ADD",
+      "expected_existing_state": "ABSENT",
+      "sha256": "4509dd433e68d05a4c336d33b922899b15bc7b1649c1c805178ffe0312b8529a",
+      "size_bytes": 2500
+    }
+  },
+  "governance_boundary": {
+    "renderer": "OFF",
+    "media_created": false,
+    "D4.8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "D9.17": "BLOCKED_NO_GO",
+    "D9.10": "PREPARE_ONLY",
+    "D10": "BLOCKED_FOR_PROMOTION"
+  },
+  "manifest_sha256_note": "This manifest does not self-hash. The ZIP sidecar contains the SHA-256 of the complete archive."
+}

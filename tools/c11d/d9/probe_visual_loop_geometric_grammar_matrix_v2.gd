@@ -181,9 +181,47 @@ func _validate_input(value: Dictionary) -> String:
     var rows: Variant = value.get("grammar_matrix", null)
     if not (rows is Array) or rows.size() != GRAMMAR_MATRIX.size(): return "Grammar matrix must contain exactly five entries"
     for index in range(GRAMMAR_MATRIX.size()):
-        if not (rows[index] is Dictionary) or rows[index] != GRAMMAR_MATRIX[index]: return "Grammar matrix differs from the exact five-entry mapping"
+        var row_value: Variant = rows[index]
+        if not (row_value is Dictionary):
+            return "Grammar matrix row is not an object at index %s" % index
+        var row: Dictionary = row_value
+        var expected_row: Dictionary = GRAMMAR_MATRIX[index]
+        var row_keys: Array = row.keys()
+        var expected_row_keys: Array = expected_row.keys()
+        row_keys.sort()
+        expected_row_keys.sort()
+        if row_keys != expected_row_keys:
+            return "Grammar matrix row has unexpected keys at index %s" % index
+
+        var grammar_id_value: Variant = row.get("grammar_id", null)
+        if typeof(grammar_id_value) != TYPE_STRING or str(grammar_id_value) != str(expected_row["grammar_id"]):
+            return "Grammar matrix grammar_id mismatch at index %s" % index
+
+        # JSON defines a single number type, and Godot may deserialize a whole-valued
+        # JSON number as float. Compare the numeric value explicitly instead of using
+        # recursive Dictionary equality, while rejecting non-numeric/non-finite values.
+        var grammar_index_value: Variant = row.get("grammar_index", null)
+        if typeof(grammar_index_value) != TYPE_INT and typeof(grammar_index_value) != TYPE_FLOAT:
+            return "Grammar matrix grammar_index is not numeric at index %s" % index
+        var numeric_index := float(grammar_index_value)
+        if not is_finite(numeric_index) or numeric_index != float(expected_row["grammar_index"]):
+            return "Grammar matrix grammar_index mismatch at index %s" % index
+
+        var shader_branch_value: Variant = row.get("shader_branch", null)
+        if typeof(shader_branch_value) != TYPE_STRING or str(shader_branch_value) != str(expected_row["shader_branch"]):
+            return "Grammar matrix shader_branch mismatch at index %s" % index
     var seeds: Variant = value.get("seeds", null)
-    if not (seeds is Array) or seeds != SEEDS: return "Seed matrix differs from the exact four pinned values"
+    if not (seeds is Array) or seeds.size() != SEEDS.size():
+        return "Seed matrix must contain exactly four pinned values"
+    for seed_index in range(SEEDS.size()):
+        var seed_value: Variant = seeds[seed_index]
+        if typeof(seed_value) != TYPE_INT and typeof(seed_value) != TYPE_FLOAT:
+            return "Seed matrix value is not numeric at index %s" % seed_index
+        # JSON has one number type; Godot may decode integral values as floats.
+        # Compare finite numeric values explicitly and retain the exact four pins.
+        var numeric_seed := float(seed_value)
+        if not is_finite(numeric_seed) or numeric_seed != float(SEEDS[seed_index]):
+            return "Seed matrix mismatch at index %s" % seed_index
     return ""
 
 func _source_check_error() -> String:

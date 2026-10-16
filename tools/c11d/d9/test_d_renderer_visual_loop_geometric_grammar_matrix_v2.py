@@ -116,6 +116,23 @@ class VisualLoopGeometricGrammarMatrixV2Tests(unittest.TestCase):
         self.assertEqual(len(lineage), 12)
         self.assertEqual(lineage[0]["path"], audit.MANIFEST_REL.as_posix())
 
+    def test_probe_uses_exact_field_validation_for_json_numeric_grammar_indices(self):
+        probe_source = (ROOT / audit.HARNESS_REL).read_text(encoding="utf-8")
+        self.assertNotIn("rows[index] != GRAMMAR_MATRIX[index]", probe_source)
+        self.assertIn('var row_keys: Array = row.keys()', probe_source)
+        self.assertIn('var grammar_index_value: Variant = row.get("grammar_index", null)', probe_source)
+        self.assertIn('numeric_index != float(expected_row["grammar_index"])', probe_source)
+        self.assertIn('shader_branch mismatch at index %s', probe_source)
+
+    def test_probe_validates_json_numeric_seed_values_without_array_type_equality(self):
+        probe_source = (ROOT / audit.HARNESS_REL).read_text(encoding="utf-8")
+        self.assertNotIn("seeds != SEEDS", probe_source)
+        self.assertIn('seeds.size() != SEEDS.size()', probe_source)
+        self.assertIn('var seed_value: Variant = seeds[seed_index]', probe_source)
+        self.assertIn('typeof(seed_value) != TYPE_INT and typeof(seed_value) != TYPE_FLOAT', probe_source)
+        self.assertIn('numeric_seed != float(SEEDS[seed_index])', probe_source)
+        self.assertIn('not is_finite(numeric_seed)', probe_source)
+
     def test_input_contains_only_five_geometric_grammars_and_four_seeds(self):
         contract, *_ = audit.load_contract(ROOT)
         probe_input = audit.build_input(ROOT, contract)
