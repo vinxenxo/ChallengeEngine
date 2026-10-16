@@ -1,0 +1,369 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:visual-loop-request-scoped-binding-matrix-contract:v2",
+  "title": "C11-D Visual Loop Request-Scoped Binding Matrix V2 Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "authority",
+    "scope",
+    "v1_core_reuse",
+    "reference_boundary",
+    "source_lineage",
+    "approval_state",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-VISUAL-LOOP-REQUEST-SCOPED-BINDING-MATRIX-CONTRACT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_GEOMETRIC_LOOP_REQUEST_SCOPED_SOURCE_BINDING_MATRIX_NOT_CANONICAL_INPUT_NOT_APPROVED"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 20
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branch",
+        "frozen_c11c_manifest_sha256",
+        "operation_mode",
+        "canonical_v1_mutated",
+        "canonical_v1_contract_mutated",
+        "canonical_v1_binding_scope_changed",
+        "binding_v2_authorized",
+        "renderer_activation_authorized",
+        "release_authority"
+      ],
+      "properties": {
+        "branch": {
+          "const": "C11-D only"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "operation_mode": {
+          "const": "ADD_ONLY"
+        },
+        "canonical_v1_mutated": {
+          "const": false
+        },
+        "canonical_v1_contract_mutated": {
+          "const": false
+        },
+        "canonical_v1_binding_scope_changed": {
+          "const": false
+        },
+        "binding_v2_authorized": {
+          "const": false
+        },
+        "renderer_activation_authorized": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_type",
+        "family_id",
+        "grammar_matrix",
+        "selector_source",
+        "request_identity_source",
+        "reference_identity_source",
+        "source_resolution",
+        "selected_grammar_instance_materialized",
+        "out_of_scope"
+      ],
+      "properties": {
+        "content_type": {
+          "const": "visual_loops"
+        },
+        "family_id": {
+          "const": "c11c_geometric_waves_v1"
+        },
+        "grammar_matrix": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "grammar_id",
+              "grammar_index",
+              "shader_branch"
+            ],
+            "properties": {
+              "grammar_id": {
+                "enum": [
+                  "harmonic_membrane",
+                  "interference_plane",
+                  "parametric_ribbon",
+                  "lattice_wave",
+                  "orbital_wave"
+                ]
+              },
+              "grammar_index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "shader_branch": {
+                "type": "string",
+                "pattern": "^field_[a-z_]+$"
+              }
+            }
+          }
+        },
+        "selector_source": {
+          "const": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2.json"
+        },
+        "request_identity_source": {
+          "type": "string"
+        },
+        "reference_identity_source": {
+          "type": "string"
+        },
+        "source_resolution": {
+          "const": "FAMILY_CANONICAL_VISUAL_LOOP_DEFINITION_NOT_GRAMMAR_INSTANCE"
+        },
+        "selected_grammar_instance_materialized": {
+          "const": false
+        },
+        "out_of_scope": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1_core_reuse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_path",
+        "implementation_path",
+        "mode",
+        "duplicate_binding_engine_added",
+        "v1_source_contract_modified",
+        "v1_behavior_changed"
+      ],
+      "properties": {
+        "contract_path": {
+          "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json"
+        },
+        "implementation_path": {
+          "const": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py"
+        },
+        "mode": {
+          "const": "REUSE_EXISTING_V1_CORE_IN_MEMORY_WITH_V2_GEOMETRIC_FAMILY_MATRIX"
+        },
+        "duplicate_binding_engine_added": {
+          "const": false
+        },
+        "v1_source_contract_modified": {
+          "const": false
+        },
+        "v1_behavior_changed": {
+          "const": false
+        }
+      }
+    },
+    "reference_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_bound_reference_carrier_contract_path",
+        "policy_reference_count_per_selector",
+        "expected_selector_policy_pairs",
+        "policy_values_consumed",
+        "policy_instructions_emitted",
+        "timing_review_approved",
+        "canonical_binding_v1_status_preserved"
+      ],
+      "properties": {
+        "request_bound_reference_carrier_contract_path": {
+          "const": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_V1.json"
+        },
+        "policy_reference_count_per_selector": {
+          "const": 9
+        },
+        "expected_selector_policy_pairs": {
+          "const": 45
+        },
+        "policy_values_consumed": {
+          "const": false
+        },
+        "policy_instructions_emitted": {
+          "const": false
+        },
+        "timing_review_approved": {
+          "const": false
+        },
+        "canonical_binding_v1_status_preserved": {
+          "const": "1/5; four selectors remain blocked by V1 fixed selection scope"
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visual_loop_binding_matrix_v2_approved",
+        "canonical_request_selector_matrix_approved",
+        "exact_selector_payload_approved",
+        "timing_review_inheritance_approved",
+        "all_nine_shared_policy_sources_approved",
+        "candidate_io_contract_complete",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "d9_14_full_acceptance",
+        "d9_16_full_acceptance",
+        "d9_17_closure",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "visual_loop_binding_matrix_v2_approved": {
+          "const": false
+        },
+        "canonical_request_selector_matrix_approved": {
+          "const": false
+        },
+        "exact_selector_payload_approved": {
+          "const": false
+        },
+        "timing_review_inheritance_approved": {
+          "const": false
+        },
+        "all_nine_shared_policy_sources_approved": {
+          "const": false
+        },
+        "candidate_io_contract_complete": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17_closure": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "godot_invoked",
+        "request_persisted",
+        "payload_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "media_created",
+        "c11c_source_mutation",
+        "candidate_input_admissible",
+        "renderer",
+        "D4.8",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "READ_ONLY_IN_MEMORY_PREPARATION_AUDIT"
+        },
+        "godot_invoked": {
+          "const": false
+        },
+        "request_persisted": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    }
+  }
+}
