@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:challenge-seed-domain-preflight:v2",
+  "title": "C11-D Challenge Seed Domain Planner Preflight Contract V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "contract_schema_sha256",
+    "report_schema_sha256",
+    "challenge_ids",
+    "seed_variants",
+    "expected_plan_calls",
+    "source_pins",
+    "selector_matrix",
+    "approval_state"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-CHALLENGE-SEED-DOMAIN-PREFLIGHT-CONTRACT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_CANONICAL_CHALLENGE_PLANNING_PREFLIGHT_NO_PAYLOAD_MATERIALIZATION_NOT_INPUT_ADMISSION"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "contract_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "report_schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "challenge_ids": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^CHALLENGE_00[1-9]$"
+      }
+    },
+    "seed_variants": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "variant_id",
+          "seed",
+          "music_seed"
+        ],
+        "properties": {
+          "variant_id": {
+            "enum": [
+              "BASELINE",
+              "GAMEPLAY_SEED_ONLY_CHANGED",
+              "MUSIC_SEED_ONLY_CHANGED"
+            ]
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483646
+          },
+          "music_seed": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483646
+          }
+        }
+      }
+    },
+    "expected_plan_calls": {
+      "const": 54
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "selector_matrix": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "challenge_id",
+          "family_id",
+          "mechanic",
+          "source_path",
+          "source_sha256"
+        ],
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "pattern": "^CHALLENGE_00[1-9]$"
+          },
+          "family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mechanic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "challenge_seed_domain_preflight_approved",
+        "challenge_visual_payload_seed_audit_approved",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation_approved",
+        "master_seed_adopted",
+        "candidate_input_admissible",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "d4_8_authorized",
+        "release_authority"
+      ],
+      "properties": {
+        "challenge_seed_domain_preflight_approved": {
+          "const": false
+        },
+        "challenge_visual_payload_seed_audit_approved": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation_approved": {
+          "const": false
+        },
+        "master_seed_adopted": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "schema": "C11-D-D9-CHALLENGE-SEED-DOMAIN-PREFLIGHT-CONTRACT-V2",
+  "schema_version": "2.0",
+  "status": "PREPARATION_ONLY_CANONICAL_CHALLENGE_PLANNING_PREFLIGHT_NO_PAYLOAD_MATERIALIZATION_NOT_INPUT_ADMISSION",
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "contract_schema_sha256": "86dc601bd29e1eee4d9c123d77e9a133ccacc5f97ef0718ee27d115f0b3db695",
+  "report_schema_sha256": "2aac148bea46253312dfb84ee2b2e23c78893b43ba2bd3e518a3569e18ea9086",
+  "challenge_ids": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_003",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007",
+    "CHALLENGE_008",
+    "CHALLENGE_009"
+  ],
+  "seed_variants": [
+    {
+      "variant_id": "BASELINE",
+      "seed": 12345,
+      "music_seed": 840001
+    },
+    {
+      "variant_id": "GAMEPLAY_SEED_ONLY_CHANGED",
+      "seed": 54321,
+      "music_seed": 840001
+    },
+    {
+      "variant_id": "MUSIC_SEED_ONLY_CHANGED",
+      "seed": 12345,
+      "music_seed": 840002
+    }
+  ],
+  "expected_plan_calls": 54,
+  "source_pins": [
+    {
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+      "role": "CANONICAL_D4_CHALLENGE_GUI_CLI_PARITY_ADAPTER"
+    },
+    {
+      "path": "challenges/CHALLENGE_001.json",
+      "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_001"
+    },
+    {
+      "path": "challenges/CHALLENGE_002.json",
+      "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_002"
+    },
+    {
+      "path": "challenges/CHALLENGE_003.json",
+      "sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_003"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_004"
+    },
+    {
+      "path": "challenges/CHALLENGE_005.json",
+      "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_005"
+    },
+    {
+      "path": "challenges/CHALLENGE_006.json",
+      "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_006"
+    },
+    {
+      "path": "challenges/CHALLENGE_007.json",
+      "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_007"
+    },
+    {
+      "path": "challenges/CHALLENGE_008.json",
+      "sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_008"
+    },
+    {
+      "path": "challenges/CHALLENGE_009.json",
+      "sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_009"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b",
+      "role": "CANONICAL_D9_9_REQUEST_SCHEMA"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "role": "CANONICAL_DELIVERY_PROFILE_REGISTRY"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "role": "IMMUTABLE_C11C_MANIFEST"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+      "role": "CANONICAL_V1_BASE_REQUEST_HELPER_ONLY_SELECTOR_MATRIX_NOT_INVOLVED"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "role": "CANONICAL_UNIVERSAL_EDITORIAL_SELECTOR_RESOLVER"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+      "role": "CANONICAL_D9_9_UNIVERSAL_PLANNER"
+    }
+  ],
+  "selector_matrix": [
+    {
+      "challenge_id": "CHALLENGE_001",
+      "family_id": "key",
+      "mechanic": "key",
+      "source_path": "challenges/CHALLENGE_001.json",
+      "source_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "family_id": "parking",
+      "mechanic": "parking",
+      "source_path": "challenges/CHALLENGE_002.json",
+      "source_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160"
+    },
+    {
+      "challenge_id": "CHALLENGE_003",
+      "family_id": "pilot",
+      "mechanic": "pilot",
+      "source_path": "challenges/CHALLENGE_003.json",
+      "source_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "family_id": "parking_v2",
+      "mechanic": "parking_v2",
+      "source_path": "challenges/CHALLENGE_004.json",
+      "source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "family_id": "hit_v1",
+      "mechanic": "hit_v1",
+      "source_path": "challenges/CHALLENGE_005.json",
+      "source_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "family_id": "catch_v1",
+      "mechanic": "catch_v1",
+      "source_path": "challenges/CHALLENGE_006.json",
+      "source_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "family_id": "find_v1",
+      "mechanic": "find_v1",
+      "source_path": "challenges/CHALLENGE_007.json",
+      "source_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61"
+    },
+    {
+      "challenge_id": "CHALLENGE_008",
+      "family_id": "choose_v1",
+      "mechanic": "choose_v1",
+      "source_path": "challenges/CHALLENGE_008.json",
+      "source_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309"
+    },
+    {
+      "challenge_id": "CHALLENGE_009",
+      "family_id": "count_v1",
+      "mechanic": "count_v1",
+      "source_path": "challenges/CHALLENGE_009.json",
+      "source_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151"
+    }
+  ],
+  "approval_state": {
+    "challenge_seed_domain_preflight_approved": false,
+    "challenge_visual_payload_seed_audit_approved": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation_approved": false,
+    "master_seed_adopted": false,
+    "candidate_input_admissible": false,
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "d4_8_authorized": false,
+    "release_authority": "NONE"
+  }
+}
