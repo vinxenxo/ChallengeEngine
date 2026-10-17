@@ -1,31 +1,30 @@
-# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-D current continuation (2026-10-17)
+# CONTINUE.md — ChallengeEngineV01_STATELESS / C11-D current continuation (2026-10-17 V5)
 
 ## Current state
 
-C11-D is in the D9/D10 renderer-baseline preparation and closeout path. Do not resume from historic D7-frozen / D8-next instructions. The active Windows checkpoint, current closeout gate map and V2 seed-domain plan are the continuation authority.
+C11-D is still in D9/D10 preparation and closeout. The active Windows checkout and the following versioned V5/V4 checkpoint documents are the continuation authority; do not resume old D7/D8 instructions.
 
 ## Must read first
 
 - `AGENTS.md`
 - `docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md`
-- `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V2.md`
-- `docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261017_V2.md`
-- `docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017.md`
+- `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V5.md`
+- `docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261017_V5.md`
+- `docs/current/d/C11D_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_RUNTIME_CHECKPOINT_20261017.md`
+- `docs/current/d/C11D_CHALLENGE_VISUAL_PAYLOAD_MATERIALIZER_V2_DESIGN_PROPOSAL_20261017.md`
+- `docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017_V4.md`
+- `docs/current/d/C11D_WORKSTREAM_NON_DUPLICATION_REGISTER_20261017_V5.md`
 - `docs/current/d/C11D_POWERSHELL_EXECUTION_POLICY_20261016.md`
-- `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017_V2.md`
+- `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017_V5.md`
 
-## Latest scoped runtime gate
+## Latest Challenge gate
 
-Operator-confirmed Windows Godot `4.7.1.stable.mono.official.a13da4feb`: exact-selector Visual Loop V2 payload audit PASS; 70/70 direct source pins, five bound parameter instances, five exact in-memory payloads and deterministic repeats. This is preparation-only, not renderer input/media or candidate admission. See `C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_RUNTIME_ACCEPTANCE_CHECKPOINT_20261017.md`.
+The Challenge preflight is PASS for canonical planning only: 9/9 selectors, 27/27 seed variants/repeats/parity, 54 planner calls, zero Godot and zero payload materialization. Saved report SHA-256 `1e41001f83cf9b093919f46ee2f327553c93464f8369ecfb0dc3b34b0a0c9d43`. Visual seed sensitivity is not tested by this gate.
 
-## Immediate next step
+## Next step
 
-Add a distinct, strictly source-pinned `D_RENDERER_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2` for the five supported geometric Loop grammars. Use three explicit seed variants per selector and two independent Godot runs per variant (30 calls). Recompute the complete canonical request chain for each variant. Prove gameplay-seed sensitivity, music-only visual-projection orthogonality, and repeat equality. Don't require the whole V2 request-bound envelope digest to stay fixed on a music-only change: the envelope carries seed-bearing request identity. Do not edit existing V1 seed audit contracts or accepted V2 payload contracts in place.
+Build an additive, separately versioned Challenge V2 static source/mechanic capability contract and Python tests before any Godot runtime probe. Preserve the Challenge V1 binder/harness fixed to `CHALLENGE_004`. Source-frame/runtime evidence must use exact source pins and independent repeats; seed-domain conclusions must use a safe visual-state projection. The 11-second vs 12-second conflicts in `CHALLENGE_008/009` prohibit phase-bound payload acceptance until the shared temporal-policy decision.
 
-## Absolute boundaries
+## Absolute locks
 
-C11-C 2.19.12 and its manifest remain immutable (`e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`). `master_seed=NOT_ADOPTED`; automatic/default seed generation remains disabled. Renderer OFF; candidate input inadmissible; no media; D4.8 BLOCKED; release authority NONE; D9.10 PREPARE_ONLY; D9.14/D9.16 blocked; D9.17 BLOCKED_NO_GO; D10 blocked. No release/freeze/promotion/cutover without explicit canonical approval.
-
-## Execution discipline
-
-PowerShell 5.1, repository root, small ZIP overlays, hash/precondition guardrails, no full snapshot extraction over the active checkout, no guessed runtime paths. Focused tests precede active Godot runtime. Capture separate stdout/stderr, validate real exit code and exact evidence markers, and hash only files that exist. Every PASS claim must name its actual scope and execution category.
+Frozen C11-C manifest SHA-256: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953. C11-C immutable; `winning_frame` sole temporal anchor; `close_calls` is episode count only. `renderer=OFF`; `candidate_input_admissible=false`; `seed_domains_complete_for_candidate_input=false`; `media_created=false`; `D4.8=BLOCKED`; `D9.10=PREPARE_ONLY`; `D9.17=BLOCKED_NO_GO`; `D10=BLOCKED_FOR_PROMOTION`; `release_authority=NONE`; `master_seed=NOT_ADOPTED`; automatic seed generation disabled. No renderer input, rendering, media, release, freeze, promotion or C11-C cutover.
