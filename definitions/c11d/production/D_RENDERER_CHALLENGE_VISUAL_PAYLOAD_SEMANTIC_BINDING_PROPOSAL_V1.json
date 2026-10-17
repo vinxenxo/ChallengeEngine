@@ -1,0 +1,513 @@
+{
+  "schema": "C11-D-RENDERER-CHALLENGE-VISUAL-PAYLOAD-SEMANTIC-BINDING-PROPOSAL-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_PROPOSAL_NOT_APPROVED_NOT_RUNTIME_ACCEPTANCE",
+  "purpose": "Defines a source-derived, selector-specific proposal for semantic visual fields. It is an allowlist proposal only; no field is approved for renderer binding and no payload is materialized.",
+  "source_authority": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "capability_matrix_contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_V1.json",
+    "capability_matrix_contract_sha256": "3b4375957da12d16a6c7f652c1ba2536ce1a819b781b68b15e5dd3f0ee4bda75",
+    "canonical_challenge_selectors": 9,
+    "source_inventory_status": "V2_A_STATIC_CAPABILITY_MATRIX_OPERATOR_CONFIRMED_PASS"
+  },
+  "scope": {
+    "kind": "STATIC_SEMANTIC_PROJECTION_PROPOSAL",
+    "selectors": 9,
+    "common_base_snapshot_fields": [
+      "position",
+      "rotation",
+      "scale",
+      "opacity",
+      "texture_index",
+      "variant_id"
+    ],
+    "custom_data_policy": "NEVER_SERIALIZE_WHOLE_MAP; CANDIDATE_FIELDS_ARE_PROPOSAL_ONLY_AND_BINDING_AUTHORIZED_FALSE",
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "godot_invocations": 0,
+    "payload_materialized": false,
+    "payload_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_output_created": false
+  },
+  "selector_semantics": [
+    {
+      "challenge_id": "CHALLENGE_001",
+      "mechanic": "key",
+      "mechanic_version": "1.0",
+      "challenge_source_path": "challenges/CHALLENGE_001.json",
+      "challenge_source_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "mechanic_source_path": "core/mechanics/key/KeyMechanic.gd",
+      "mechanic_source_sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/lock.svg",
+        "ANIMATED_OBJECT": "assets/c6/key.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "STATIC_POSITION",
+        "source_pointer": "presentation.static_target_position",
+        "candidate_custom_data_field": null,
+        "semantic_type": "Vector2",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PRESERVE_CHALLENGE_SOURCE_COORDINATES_NO_PROJECTION",
+        "semantic_interpretation": "Static target location declared by the Challenge source; does not derive position from scoring telemetry.",
+        "risk_note": "Verify that the static lock icon and source coordinate layout are semantically suitable before a renderer adapter is authorized.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "mechanic": "parking",
+      "mechanic_version": "1.0",
+      "challenge_source_path": "challenges/CHALLENGE_002.json",
+      "challenge_source_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "mechanic_source_path": "core/mechanics/parking/ParkingMechanic.gd",
+      "mechanic_source_sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/parking_target.svg",
+        "ANIMATED_OBJECT": "assets/c6/car.svg"
+      },
+      "coordinate_space": "UNDECLARED_IN_CHALLENGE_SOURCE",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "STATIC_POSITION",
+        "source_pointer": "difficulty.parking.target_position",
+        "candidate_custom_data_field": null,
+        "semantic_type": "Vector2",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PRESERVE_CHALLENGE_SOURCE_COORDINATES_NO_PROJECTION",
+        "semantic_interpretation": "Static parking target declared in mechanic configuration; not derived from telemetry.",
+        "risk_note": "The source challenge omits presentation.coordinate_space; keep the source space explicit as UNDECLARED rather than infer it.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_003",
+      "mechanic": "pilot",
+      "mechanic_version": "2.0",
+      "challenge_source_path": "challenges/CHALLENGE_003.json",
+      "challenge_source_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "mechanic_source_path": "core/mechanics/pilot/PilotMechanic.gd",
+      "mechanic_source_sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/waypoint.svg",
+        "ANIMATED_OBJECT": "assets/c6/pilot.svg"
+      },
+      "coordinate_space": "PILOT_0X100",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "SCALAR_AXIS_TRACK_CANDIDATE",
+        "source_pointer": "FrameSnapshot.custom_data.target_x",
+        "candidate_custom_data_field": "target_x",
+        "semantic_type": "float",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PILOT_0X100_SCALAR_ONLY_NO_2D_POSITION_CONVERSION",
+        "semantic_interpretation": "Per-frame X-axis target coordinate in the PILOT_0X100 coordinate space.",
+        "risk_note": "No Y coordinate is present in this field. Do not invent one or project into the 1080x1920 asset canvas.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "mechanic": "parking_v2",
+      "mechanic_version": "2.0",
+      "challenge_source_path": "challenges/CHALLENGE_004.json",
+      "challenge_source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "mechanic_source_path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "mechanic_source_sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/parking_target.svg",
+        "ANIMATED_OBJECT": "assets/c6/car.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "STATIC_POSITION_WITH_EXISTING_V1_REGRESSION",
+        "source_pointer": "difficulty.parking.target_position",
+        "candidate_custom_data_field": null,
+        "semantic_type": "Vector2",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PRESERVE_CHALLENGE_SOURCE_COORDINATES_NO_PROJECTION",
+        "semantic_interpretation": "Static parking target declaration. Existing Challenge_004 V1 preview remains an immutable regression fixture.",
+        "risk_note": "Do not edit or replace the existing V1 harness in the semantic proposal increment.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": true,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "mechanic": "hit_v1",
+      "mechanic_version": "1.0",
+      "challenge_source_path": "challenges/CHALLENGE_005.json",
+      "challenge_source_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "mechanic_source_path": "core/mechanics/hit/HitMechanic.gd",
+      "mechanic_source_sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/target.svg",
+        "ANIMATED_OBJECT": "assets/c6/projectile.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "PER_FRAME_SECONDARY_POSITION_CANDIDATE",
+        "source_pointer": "FrameSnapshot.custom_data.target_position",
+        "candidate_custom_data_field": "target_position",
+        "semantic_type": "Vector2",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PRESERVE_RAW_SOURCE_COORDINATES_NO_PROJECTION",
+        "semantic_interpretation": "Per-frame target-position candidate, sourced from HitMechanic._target_prime.",
+        "risk_note": "Candidate field is a semantic target track; it is not scoring telemetry but still requires review-only allowlist acceptance before implementation.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "mechanic": "catch_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_006.json",
+      "challenge_source_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "mechanic_source_path": "core/mechanics/catch/CatchMechanic.gd",
+      "mechanic_source_sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/target.svg",
+        "ANIMATED_OBJECT": "assets/c6/catcher.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "PER_FRAME_SECONDARY_POSITION_CANDIDATE",
+        "source_pointer": "FrameSnapshot.custom_data.target_position",
+        "candidate_custom_data_field": "target_position",
+        "semantic_type": "Vector2",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PRESERVE_RAW_SOURCE_COORDINATES_NO_PROJECTION",
+        "semantic_interpretation": "Per-frame target-position candidate, emitted by CatchMechanic as p_t.",
+        "risk_note": "Maintain the catcher as the primary Snapshot track and target_position as separate target track; do not merge them.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "mechanic": "find_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_007.json",
+      "challenge_source_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "mechanic_source_path": "core/mechanics/find/FindMechanic.gd",
+      "mechanic_source_sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/target.svg",
+        "ANIMATED_OBJECT": "assets/c6/scanner.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "PER_FRAME_SECONDARY_POSITION_CANDIDATE",
+        "source_pointer": "FrameSnapshot.custom_data.target_position",
+        "candidate_custom_data_field": "target_position",
+        "semantic_type": "Vector2",
+        "asset_role": "TARGET",
+        "coordinate_policy": "PRESERVE_RAW_SOURCE_COORDINATES_NO_PROJECTION",
+        "semantic_interpretation": "Per-frame target-position candidate from FindMechanic.calculate_frame; primary position remains scanner.",
+        "risk_note": "Do not serialize distractor topology, distances, or close-call accounting as visual fields.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "CANDIDATE_FOR_FUTURE_REVIEW_ONLY_RUNTIME_HARNESS"
+    },
+    {
+      "challenge_id": "CHALLENGE_008",
+      "mechanic": "choose_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_008.json",
+      "challenge_source_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+      "mechanic_source_path": "core/mechanics/choose/ChooseMechanic.gd",
+      "mechanic_source_sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/choose_background.svg",
+        "TARGET": "assets/c6/transparent.svg",
+        "ANIMATED_OBJECT": "assets/c6/cursor.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "INTEGER_SELECTION_STATE_CANDIDATE",
+        "source_pointer": "FrameSnapshot.custom_data.active_selection",
+        "candidate_custom_data_field": "active_selection",
+        "semantic_type": "int",
+        "asset_role": "ANIMATED_OBJECT",
+        "coordinate_policy": "PRESERVE_SOURCE_OPTION_INDEX_AND_SOURCE_POSITIONS_NO_PROJECTION",
+        "semantic_interpretation": "Per-frame index of selected option; candidate presentation state, not a position or score.",
+        "risk_note": "Runtime payload withheld until the declared-total 11s / component-sum 12s contradiction receives an explicit timebase decision.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "DECLARED_TOTAL_CONFLICTS_WITH_PHASE_SUM",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "WITHHOLD_FOR_TIMEBASE_DECISION"
+    },
+    {
+      "challenge_id": "CHALLENGE_009",
+      "mechanic": "count_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_009.json",
+      "challenge_source_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+      "mechanic_source_path": "core/mechanics/count/CountMechanic.gd",
+      "mechanic_source_sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8",
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/count_background.svg",
+        "TARGET": "assets/c6/transparent.svg",
+        "ANIMATED_OBJECT": "assets/c6/cursor.svg"
+      },
+      "coordinate_space": "CANVAS_1080X1920",
+      "base_track": {
+        "asset_role": "ANIMATED_OBJECT",
+        "snapshot_source": "SimulationResult.frames[*] / FrameSnapshot",
+        "fields": [
+          "position",
+          "rotation",
+          "scale",
+          "opacity",
+          "texture_index",
+          "variant_id"
+        ],
+        "status": "EXISTING_V1_REVIEW_ONLY_FIELD_SHAPE_NOT_RENDERER_APPROVED",
+        "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+        "delivery_resampling": "UNRESOLVED_NOT_APPLIED"
+      },
+      "secondary_binding_proposal": {
+        "binding_kind": "INTEGER_DISPLAY_STATE_CANDIDATE",
+        "source_pointer": "FrameSnapshot.custom_data.displayed_count",
+        "candidate_custom_data_field": "displayed_count",
+        "semantic_type": "int",
+        "asset_role": "ANIMATED_OBJECT",
+        "coordinate_policy": "PRESERVE_SOURCE_COUNT_VALUE_NO_LAYOUT_OR_TEXT_RENDERING",
+        "semantic_interpretation": "Per-frame displayed count candidate; current primary position also encodes the count location mathematically.",
+        "risk_note": "Runtime payload withheld until the declared-total 11s / component-sum 12s contradiction receives an explicit timebase decision.",
+        "proposal_status": "PROPOSAL_ONLY_NOT_APPROVED",
+        "binding_authorized": false,
+        "renderer_projection_approved": false
+      },
+      "temporal_status": "DECLARED_TOTAL_CONFLICTS_WITH_PHASE_SUM",
+      "existing_challenge_004_v1_regression": false,
+      "runtime_preview_target_scope": "WITHHOLD_FOR_TIMEBASE_DECISION"
+    }
+  ],
+  "never_bind_by_default": [
+    "success_distance",
+    "spatial_distance",
+    "velocity",
+    "angle_error",
+    "steering",
+    "braking",
+    "dodge_offset",
+    "save_offset",
+    "overshoot_dist",
+    "trajectory_noise",
+    "control_offset",
+    "base_x",
+    "target_count",
+    "score",
+    "minimum_distance",
+    "winning_frame",
+    "close_calls"
+  ],
+  "temporal_review": {
+    "CHALLENGE_008": {
+      "declared_total_seconds": 11.0,
+      "component_sum_seconds": 12.0,
+      "status": "UNRESOLVED_BLOCKED_FROM_RUNTIME_MATERIALIZATION"
+    },
+    "CHALLENGE_009": {
+      "declared_total_seconds": 11.0,
+      "component_sum_seconds": 12.0,
+      "status": "UNRESOLVED_BLOCKED_FROM_RUNTIME_MATERIALIZATION"
+    },
+    "policy": "Do not silently prefer declared total or phase sum. Resolve via an explicit editorial/timebase decision outside this proposal."
+  },
+  "future_runtime_minimums": [
+    "A subsequent runtime contract must explicitly adopt or reject each proposal binding before serializing it in a logical payload.",
+    "Run the canonical ChallengeRuntimeBridge.run_effective_pipeline; do not clone mechanics, RNG, planner, timing, or scoring.",
+    "Preserve every native GAME snapshot at source 60 FPS; do not resample or project coordinates.",
+    "Use separate primary and secondary tracks where mechanic code emits distinct actor/target positions.",
+    "Prove deterministic repeats and actual gameplay-seed visual sensitivity per selector; do not infer payload sensitivity from planner hashes.",
+    "Do not claim music-seed orthogonality from Challenge source-only runtime calls; that requires the real canonical request boundary.",
+    "Keep Challenge_004 V1 unchanged as a regression fixture.",
+    "Reject renderer input, dispatch, persistence, media output and governance unlocks."
+  ],
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed_adopted": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE",
+    "source_mutation": false,
+    "godot_invocations": 0,
+    "payload_materialized": false,
+    "payload_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_output_created": false
+  }
+}

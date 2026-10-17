@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:challenge-visual-payload-capability-matrix-contract:v1",
+  "title": "C11-D Challenge visual payload capability matrix contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "source_authority",
+    "capability_policy",
+    "custom_data_semantics",
+    "selector_matrix",
+    "pinned_sources",
+    "governance_locks",
+    "limitations"
+  ],
+  "properties": {
+    "source_authority": {
+      "type": "object"
+    },
+    "capability_policy": {
+      "type": "object"
+    },
+    "custom_data_semantics": {
+      "type": "object"
+    },
+    "governance_locks": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "C11-D-RENDERER-CHALLENGE-VISUAL-PAYLOAD-CAPABILITY-MATRIX-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_STATIC_CAPABILITY_INVENTORY_NOT_PAYLOAD_MATERIALIZATION"
+    },
+    "selector_matrix": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object"
+      }
+    },
+    "pinned_sources": {
+      "type": "array",
+      "minItems": 43,
+      "maxItems": 43,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "kind"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

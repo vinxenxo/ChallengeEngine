@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:challenge-visual-payload-semantic-binding-proposal-report:v1",
+  "title": "C11-D Challenge visual payload semantic binding proposal report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_sha256",
+    "capability_matrix_sha256",
+    "summary",
+    "selector_semantics",
+    "temporal_review",
+    "governance_locks"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-CHALLENGE-VISUAL-PAYLOAD-SEMANTIC-BINDING-PROPOSAL-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PASS_STATIC_PROPOSAL_ONLY_NO_BINDING_APPROVAL"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "capability_matrix_sha256": {
+      "const": "3b4375957da12d16a6c7f652c1ba2536ce1a819b781b68b15e5dd3f0ee4bda75"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "selector_semantics": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "temporal_review": {
+      "type": "object"
+    },
+    "governance_locks": {
+      "type": "object"
+    }
+  }
+}

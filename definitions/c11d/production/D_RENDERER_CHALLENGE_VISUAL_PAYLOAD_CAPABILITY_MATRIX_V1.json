@@ -1,0 +1,687 @@
+{
+  "schema": "C11-D-RENDERER-CHALLENGE-VISUAL-PAYLOAD-CAPABILITY-MATRIX-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "PREPARATION_ONLY_STATIC_CAPABILITY_INVENTORY_NOT_PAYLOAD_MATERIALIZATION",
+  "source_authority": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "canonical_challenge_inventory": "challenges/CHALLENGE_001.json through challenges/CHALLENGE_009.json",
+    "runtime_entry": "core/execution/ChallengeRuntimeBridge.gd::run_effective_pipeline",
+    "presentation_entry": "core/presentation/ChallengePresentationBinder.gd::bind",
+    "source_snapshot": "ChallengeEngineV01_STATELESS-SNAPSHOT-20261710_1017.zip; operator checkout remains authoritative for execution"
+  },
+  "capability_policy": {
+    "scope": "STATIC_SOURCE_CAPABILITY_AND_LINEAGE_ONLY",
+    "selector_count_expected": 9,
+    "mechanic_registry_route_count_expected": 9,
+    "asset_reference_count_expected": 27,
+    "unique_asset_count_expected": 15,
+    "common_snapshot_type": "core/data/FrameSnapshot.gd::FrameSnapshot",
+    "snapshot_fields_available": [
+      "position",
+      "rotation",
+      "scale",
+      "opacity",
+      "texture_index",
+      "variant_id",
+      "custom_data"
+    ],
+    "custom_data_policy": "INVENTORY_ONLY_NO_FIELD_BINDING_APPROVED",
+    "asset_role_binding_policy": "SOURCE_REFERENCE_ONLY_NOT_A_RENDERER_BINDING",
+    "coordinate_projection": "UNRESOLVED_NOT_APPLIED",
+    "delivery_resampling": "UNRESOLVED_NOT_APPLIED",
+    "phase_timeline_policy": "SOURCE_INVENTORY_ONLY_NO_CONFLICT_RESOLUTION",
+    "seed_domain_policy": "PLANNER_SEED_SENSITIVITY_PASS_DOES_NOT_PROVE_VISUAL_PAYLOAD_SEED_SENSITIVITY",
+    "challenge_004_v1_preview": "EXISTS_REVIEW_ONLY_SCOPE_CHALLENGE_004_ONLY",
+    "other_selector_payloads": "NO_RUNTIME_PAYLOAD_CLAIM_UNTIL_SELECTOR_SPECIFIC_GODOT_RECEIPTS"
+  },
+  "custom_data_semantics": {
+    "status": "UNMAPPED_REQUIRES_SELECTOR_SPECIFIC_SEMANTIC_REVIEW",
+    "known_visual_projection_candidates": {
+      "target_position": "Potential second visual track for hit_v1, catch_v1, find_v1; not approved for binding",
+      "target_x": "Potential target coordinate for pilot; not approved for binding",
+      "active_selection": "Potential choice emphasis for choose_v1; not approved for binding",
+      "displayed_count": "Potential visible object-count state for count_v1; not approved for binding"
+    },
+    "never_bind_by_default": [
+      "success_distance",
+      "spatial_distance",
+      "velocity",
+      "angle_error",
+      "steering",
+      "braking",
+      "dodge_offset",
+      "save_offset",
+      "overshoot_dist",
+      "trajectory_noise",
+      "control_offset",
+      "base_x",
+      "target_count",
+      "score",
+      "minimum_distance",
+      "winning_frame",
+      "close_calls"
+    ],
+    "invariant": "Do not serialize wholesale FrameSnapshot.custom_data; map only explicitly reviewed semantic visual fields in a future materializer increment."
+  },
+  "selector_matrix": [
+    {
+      "challenge_id": "CHALLENGE_001",
+      "mechanic": "key",
+      "mechanic_version": "1.0",
+      "mechanic_source_path": "core/mechanics/key/KeyMechanic.gd",
+      "mechanic_source_sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "1.0",
+      "asset_family": "fam_001",
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 0.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 2.0
+      },
+      "component_duration_sum_seconds": 9.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "spatial_distance",
+        "success_distance",
+        "velocity"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/lock.svg",
+        "ANIMATED_OBJECT": "assets/c6/key.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "mechanic": "parking",
+      "mechanic_version": "1.0",
+      "mechanic_source_path": "core/mechanics/parking/ParkingMechanic.gd",
+      "mechanic_source_sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "1.0",
+      "asset_family": "fam_garage_01",
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": null,
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 3.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 0.0
+      },
+      "component_duration_sum_seconds": 10.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "angle_error",
+        "braking",
+        "dodge_offset",
+        "overshoot_dist",
+        "save_offset",
+        "spatial_distance",
+        "steering",
+        "success_distance",
+        "velocity"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/parking_target.svg",
+        "ANIMATED_OBJECT": "assets/c6/car.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_003",
+      "mechanic": "pilot",
+      "mechanic_version": "2.0",
+      "mechanic_source_path": "core/mechanics/pilot/PilotMechanic.gd",
+      "mechanic_source_sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": "fam_001",
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "PILOT_0X100",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 3.0,
+        "game_duration": 7.0,
+        "cta_duration": 2.0
+      },
+      "component_duration_sum_seconds": 12.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "base_x",
+        "control_offset",
+        "success_distance",
+        "target_x",
+        "trajectory_noise",
+        "velocity"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/waypoint.svg",
+        "ANIMATED_OBJECT": "assets/c6/pilot.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "mechanic": "parking_v2",
+      "mechanic_version": "2.0",
+      "mechanic_source_path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "mechanic_source_sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": "fam_garage_01",
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 3.0,
+        "game_duration": 7.0,
+        "reveal_duration": 3.0,
+        "cta_duration": 2.0
+      },
+      "component_duration_sum_seconds": 15.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "angle_error",
+        "braking",
+        "dodge_offset",
+        "overshoot_dist",
+        "save_offset",
+        "spatial_distance",
+        "steering",
+        "success_distance",
+        "velocity"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/parking_target.svg",
+        "ANIMATED_OBJECT": "assets/c6/car.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": true,
+      "payload_runtime_status": "EXISTING_REVIEW_ONLY_V1_HARNESS",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "mechanic": "hit_v1",
+      "mechanic_version": "1.0",
+      "mechanic_source_path": "core/mechanics/hit/HitMechanic.gd",
+      "mechanic_source_sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": null,
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 0.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 0.0
+      },
+      "component_duration_sum_seconds": 7.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "target_position"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/target.svg",
+        "ANIMATED_OBJECT": "assets/c6/projectile.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "mechanic": "catch_v1",
+      "mechanic_version": null,
+      "mechanic_source_path": "core/mechanics/catch/CatchMechanic.gd",
+      "mechanic_source_sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": null,
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 0.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 2.0
+      },
+      "component_duration_sum_seconds": 9.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "target_position"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/target.svg",
+        "ANIMATED_OBJECT": "assets/c6/catcher.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "mechanic": "find_v1",
+      "mechanic_version": null,
+      "mechanic_source_path": "core/mechanics/find/FindMechanic.gd",
+      "mechanic_source_sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": null,
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 3.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 0.0
+      },
+      "component_duration_sum_seconds": 10.0,
+      "declared_total_duration_seconds": null,
+      "temporal_status": "TOTAL_DURATION_NOT_DECLARED",
+      "custom_data_keys_inventory_only": [
+        "target_position"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/garage_background.svg",
+        "TARGET": "assets/c6/target.svg",
+        "ANIMATED_OBJECT": "assets/c6/scanner.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_008",
+      "mechanic": "choose_v1",
+      "mechanic_version": null,
+      "mechanic_source_path": "core/mechanics/choose/ChooseMechanic.gd",
+      "mechanic_source_sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": null,
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 3.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 2.0
+      },
+      "component_duration_sum_seconds": 12.0,
+      "declared_total_duration_seconds": 11.0,
+      "temporal_status": "DECLARED_TOTAL_CONFLICTS_WITH_PHASE_SUM",
+      "custom_data_keys_inventory_only": [
+        "active_selection",
+        "success_distance"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/choose_background.svg",
+        "TARGET": "assets/c6/transparent.svg",
+        "ANIMATED_OBJECT": "assets/c6/cursor.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    },
+    {
+      "challenge_id": "CHALLENGE_009",
+      "mechanic": "count_v1",
+      "mechanic_version": null,
+      "mechanic_source_path": "core/mechanics/count/CountMechanic.gd",
+      "mechanic_source_sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8",
+      "generation_seed_field_present": true,
+      "generation_rng_version": "2.0",
+      "asset_family": null,
+      "presentation_profile": "social_default_v1",
+      "coordinate_space": "CANVAS_1080X1920",
+      "fps": 60,
+      "phase_duration_fields_present": [
+        "hook_duration",
+        "game_duration",
+        "reveal_duration",
+        "cta_duration"
+      ],
+      "phase_durations_seconds": {
+        "hook_duration": 3.0,
+        "game_duration": 7.0,
+        "reveal_duration": 0.0,
+        "cta_duration": 2.0
+      },
+      "component_duration_sum_seconds": 12.0,
+      "declared_total_duration_seconds": 11.0,
+      "temporal_status": "DECLARED_TOTAL_CONFLICTS_WITH_PHASE_SUM",
+      "custom_data_keys_inventory_only": [
+        "displayed_count",
+        "success_distance",
+        "target_count"
+      ],
+      "asset_bindings": {
+        "BACKGROUND": "assets/c6/count_background.svg",
+        "TARGET": "assets/c6/transparent.svg",
+        "ANIMATED_OBJECT": "assets/c6/cursor.svg"
+      },
+      "existing_challenge_visual_payload_preview_harness": false,
+      "payload_runtime_status": "NOT_YET_RUNTIME_MATERIALIZED",
+      "visual_projection_approval": "NONE"
+    }
+  ],
+  "pinned_sources": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "kind": "frozen_manifest"
+    },
+    {
+      "path": "challenges/CHALLENGE_001.json",
+      "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_002.json",
+      "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_003.json",
+      "sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_005.json",
+      "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_006.json",
+      "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_007.json",
+      "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_008.json",
+      "sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "challenges/CHALLENGE_009.json",
+      "sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+      "kind": "challenge_source"
+    },
+    {
+      "path": "core/mechanics/MechanicRegistry.gd",
+      "sha256": "03d20232a25ef6dcc0d5a8c6a772e3a6ab7706174cc37319c3a5d6cf67813a3a",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/key/KeyMechanic.gd",
+      "sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/parking/ParkingMechanic.gd",
+      "sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/pilot/PilotMechanic.gd",
+      "sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/hit/HitMechanic.gd",
+      "sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/catch/CatchMechanic.gd",
+      "sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/find/FindMechanic.gd",
+      "sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/choose/ChooseMechanic.gd",
+      "sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/mechanics/count/CountMechanic.gd",
+      "sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "core/data/FrameSnapshot.gd",
+      "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "assets/c6/car.svg",
+      "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/catcher.svg",
+      "sha256": "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/choose_background.svg",
+      "sha256": "11b3ac5e70ab6f1e15ac99fcf1b5ac36626a553e14a450b592a8fd598fa6dce2",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/count_background.svg",
+      "sha256": "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/cursor.svg",
+      "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/garage_background.svg",
+      "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/key.svg",
+      "sha256": "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/lock.svg",
+      "sha256": "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/parking_target.svg",
+      "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/pilot.svg",
+      "sha256": "aeddc9783af06b86a188f8400f60447f6f8e4eac1ba7a40c0dcf88b981ae94fb",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/projectile.svg",
+      "sha256": "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/scanner.svg",
+      "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/target.svg",
+      "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/transparent.svg",
+      "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "assets/c6/waypoint.svg",
+      "sha256": "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142",
+      "kind": "physical_asset"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a",
+      "kind": "runtime_or_contract_source"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2",
+      "kind": "runtime_or_contract_source"
+    }
+  ],
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed_adopted": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE",
+    "source_mutation": false,
+    "godot_invocations_by_this_preflight": 0,
+    "payload_materialized": false,
+    "payload_files_written": false,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_output_created": false
+  },
+  "limitations": [
+    "This contract is an inventory of pinned sources, not proof that all nine mechanics can be materially represented by the current Challenge_004-only in-memory payload preview.",
+    "Visual payload seed sensitivity remains NOT_TESTED for all challenge selectors.",
+    "Temporal conflicts on CHALLENGE_008 and CHALLENGE_009 remain unresolved.",
+    "No rendering, media, or release authority is granted."
+  ]
+}

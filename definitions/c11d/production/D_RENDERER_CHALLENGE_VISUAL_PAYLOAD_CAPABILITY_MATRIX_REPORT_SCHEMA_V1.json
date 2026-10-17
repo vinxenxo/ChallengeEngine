@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:challenge-visual-payload-capability-matrix-report:v1",
+  "title": "C11-D Challenge visual payload capability matrix report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_sha256",
+    "summary",
+    "selector_matrix",
+    "temporal_review",
+    "source_lineage",
+    "governance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-CHALLENGE-VISUAL-PAYLOAD-CAPABILITY-MATRIX-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PASS_STATIC_CAPABILITY_AND_LINEAGE_ONLY_NO_PAYLOAD_MATERIALIZATION"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "selector_matrix": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "temporal_review": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 43
+    },
+    "governance": {
+      "type": "object"
+    }
+  }
+}
