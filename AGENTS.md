@@ -1,63 +1,41 @@
-# AGENTS.md — ChallengeEngineV01_STATELESS / C11-D D7 FROZEN
+# AGENTS.md — ChallengeEngineV01_STATELESS / C11-D current authority (2026-10-17)
 
-## Current authority
+## Current project authority
 
-**C11-D D7.5 = PASS / CLOSED; D7 = FROZEN. Next = D8.0 Media QA + Release Pipeline.**
+Continue the C11-D D9/D10 closeout from the active Windows checkout:
+`C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`.
 
-Immutable D7.5 baseline:
-`ChallengeEngineV01_STATELESS_C11-D_7.5_V8_FROZEN_20261008_111052.zip`
+The older D7-frozen / D8-next wording in prior historic checkpoints is not the current phase. Read the current authoritative documents before planning work:
 
-ZIP SHA-256: `396d9f4bfdbb44b4878acf06db8d6c1c385103c110de537a174632e93611cd1d`
+1. `docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md`
+2. `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V2.md`
+3. `docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261017_V2.md`
+4. `docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017.md`
+5. `docs/current/d/C11D_POWERSHELL_EXECUTION_POLICY_20261016.md`
+6. `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017_V2.md`
+7. `prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261017_V2.md`
 
-Do not resume from earlier D7 candidate overlays.
+## Latest accepted scoped gate
 
-## Mandatory first reads for D8
+The operator-confirmed active-Windows Godot 4.7.1 exact-selector Visual Loop V2 payload audit passed on 2026-10-17. It covers five geometric grammars in memory only, with direct source pins `70/70`, exact selector payloads `5/5`, deterministic repeats `5/5`, zero renderer inputs, zero payload files and zero approvals. It does not admit candidate input or close the seed-domain, policy or renderer gates. The detailed evidence is in `docs/current/d/C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_RUNTIME_ACCEPTANCE_CHECKPOINT_20261017.md`.
 
-1. `AGENTS.md`
-2. `.continue/rules/CONTINUE.md`
-3. `docs/master-prompts/MASTER_HANDOVER_C11D_D7_FROZEN.md`
-4. `docs/master-prompts/START_PROMPT_C11D_D8.0.md`
-5. `docs/current/d/D7_DOCUMENTATION_CLOSURE.md`
-6. `docs/current/d/D8.0_ENTRY_BRIEF.md`
-7. `docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md`
+## Immutable C11-C and D governance
 
-## Frozen C11-C boundary
+Frozen manifest: `release/C11C_FREEZE_PACKAGE_MANIFEST.json`. Required SHA-256:
+`e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
 
-Do not modify without an explicit checkpoint, contract update, focused regression and rollback evidence:
+C11-C 2.19.12 is immutable. Do not modify simulation truth, RNG, `SimulationResult`, `winning_frame` (the sole temporal anchor), `close_calls` (episode count only), frozen geometry or manifest. Keep `master_seed=NOT_ADOPTED`; automatic/default seed generation disabled unless specified and approved.
 
-- simulation mathematics and mechanic truth;
-- RNG algorithm, streams and ownership;
-- `SimulationResult`;
-- `winning_frame`;
-- `close_calls`;
-- `WinningFrameDetector`;
-- `RenderedFrameStream`;
-- C7 audio contracts/ownership;
-- C9 authoring semantics;
-- logical 540×960 C11-B social geometry;
-- proven C11-C presentation/production behavior.
+Hard locks: `renderer=OFF`; `candidate_input_admissible=false`; `media_created=false`; `D4.8=BLOCKED`; `release_authority=NONE`; `D9.10=PREPARE_ONLY`; baseline approval missing; freeze eligibility false; D9.14/D9.16 blocked; D9.17 `BLOCKED_NO_GO`; D10 blocked. Passing a subgate never self-approves another gate.
 
-## D7 frozen boundary
+Use only existing suite surfaces: `c11c-test`, `c11c-producer`, `c11c-catalog`, `c11c-config`, and `c11c-maintenance`. Do not add `c11d-control`. Preserve GUI/CLI parity and renderer-agnostic shared editorial/presentation behavior.
 
-D7 created metadata/governance only. It established a deterministic 90-case production matrix and catalog chain but did **not** authorize media production or release execution.
+## Immediate next work
 
-- Matrix authority: `CANONICAL_D7_1`.
-- Catalog authority: `CANONICAL_D7_3`.
-- Identity/provenance authority: `CANONICAL_D7_4`.
-- Full acceptance authority: `CANONICAL_D7_5`.
-- `master_seed=NOT_ADOPTED`.
-- Cross-domain seed sharing: `FORBIDDEN`.
-- D4.8: `BLOCKED`.
-- Runtime: `NONE`.
-- Production: `false`.
-- Renderer: `false`.
+Implement a separately versioned `D_RENDERER_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2` over `harmonic_membrane`, `interference_plane`, `parametric_ribbon`, `lattice_wave`, and `orbital_wave`. Leave the V1 cross-type seed audit and accepted V2 payload contracts unchanged. Rebuild canonical request/plan/bridge/adapter/reference/binding/payload identities for each seed mutation. Use visual-content subprojection hashes—not the whole request-bound envelope hash alone—to test music-seed orthogonality. Planned scope: 5 selectors × 3 seed variants × 2 independent Godot processes = 30 calls. Follow the seed-domain plan and current gate map.
 
-## Operator parity
+## Execution rules
 
-`c11c-suite` remains the canonical GUI operator shell. GUI actions must continue to delegate to the same canonical PowerShell/Python/Godot paths used directly from the command line.
+PowerShell 5.1 compatibility is mandatory. Work from repository root; use small additive ZIP overlays; verify C11-C, source pins, ZIP hash, target preconditions and copied-file hashes; stop at first failure; separate apply and test blocks; capture stdout/stderr separately and validate real exit code/version/markers/receipt count before PASS. Never overlay a full snapshot onto the live checkout or change a source pin just to suppress drift. Additive overlay is default; replacements require an exact precondition and rollback.
 
-For D, GUI and CLI may be used simultaneously during authoring/testing; no GUI-only backend or state may be introduced.
-
-## Test discipline
-
-Focused checks come before expensive aggregate execution. PowerShell 5.1 compatibility is mandatory. Python validation should use `-B` or `PYTHONDONTWRITEBYTECODE=1` when repository mutation guards are active.
+C11-D is not yet approved for renderer input, first render, production, release, freeze, promotion or C11-C cutover. Maintain these limits until the canonical dependency-ordered closure and explicit authority are complete.

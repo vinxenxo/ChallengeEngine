@@ -468,7 +468,7 @@
     },
     {
       "path": "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md",
-      "sha256": "defe4de67e9315d25849c3fb16534faa1b2231348addb65446b9a5e4fa598d74",
+      "sha256": "f9c90266a1ea1345894423253b6d5869b49dfaf436277de2a10fa7229ad8c35e",
       "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CHECKPOINT"
     },
     {

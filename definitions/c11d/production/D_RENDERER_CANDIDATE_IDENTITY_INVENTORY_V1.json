@@ -78,7 +78,7 @@
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
       "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
-      "sha256": "2f92f556b537b81a99ea2b451950f6faf1543c81fd1e1777375a94a1445d8b71"
+      "sha256": "429963458d6cbad3fc6a6ae8108ddd6e5578ad4fa4ee21a92d919f355184ac07"
     },
     {
       "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",

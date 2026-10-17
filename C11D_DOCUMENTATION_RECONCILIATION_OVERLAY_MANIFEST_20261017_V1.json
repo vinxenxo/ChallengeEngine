@@ -1,0 +1,157 @@
+{
+  "schema": "C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_MANIFEST_V1",
+  "schema_version": "1.0",
+  "overlay_id": "C11D_DOCUMENTATION_RECONCILIATION_20261017_V1",
+  "created_date": "2026-10-17",
+  "mode": "ADD_ONLY",
+  "change_class": "DOCUMENTATION_AND_CONTINUATION_PROMPTS_ONLY",
+  "source_snapshot": {
+    "filename": "ChallengeEngineV01_STATELESS-SNAPSHOT-20261710_1017.zip",
+    "sha256": "b1c32a3abaef61be04b3b946016076a2d27fd3f0c7c2f3779b9888cb73dbd04f",
+    "compressed_bytes": 26605225,
+    "members": 17049,
+    "uncompressed_bytes": 93156860,
+    "crc_test": "PASS",
+    "duplicate_archive_paths": 0
+  },
+  "immutable_reference": {
+    "manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "required_precondition": true
+  },
+  "source_refs": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "role": "immutable_frozen_reference"
+    },
+    {
+      "path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261016.md",
+      "sha256": "a53cc04f02733dc79cc9569d8f6515ca151bef876072e1bf8d4aa426b69e7b83",
+      "role": "previous_checkpoint_superseded_for_current_state"
+    },
+    {
+      "path": "docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261016.md",
+      "sha256": "b3c20588055af9d0079d965e7eff06a05e9d075b64e350ba6200ec305beba884",
+      "role": "existing_canonical_gate_map"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
+      "sha256": "b5ca441179d3344fcb4ed6278db493af914723a1376043ecea5994cc7f63e8ec",
+      "role": "existing_baseline_preparation_plan"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
+      "sha256": "429963458d6cbad3fc6a6ae8108ddd6e5578ad4fa4ee21a92d919f355184ac07",
+      "role": "existing_machine_readable_gap_audit"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_V1.json",
+      "sha256": "a3f480a76a526a67f77379191d82d1cb30876ae38b78b58ebefbd647b64529c8",
+      "role": "existing_machine_readable_identity_inventory"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b",
+      "role": "existing_canonical_v1_binder_contract"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85",
+      "role": "existing_visual_drill_v2_binder_contract"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2.json",
+      "sha256": "50379db3cd15dcae2ca8a39b6ddfc0d2e73835bea7d98983f81ed5c6ebcdd325",
+      "role": "existing_loop_v2_payload_contract"
+    }
+  ],
+  "preconditions": [
+    {
+      "kind": "file_sha256",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "kind": "target_absent",
+      "paths": [
+        "README_C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_20261017_V1.md",
+        "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017.md",
+        "docs/current/d/C11D_SNAPSHOT_RECONCILIATION_REPORT_20261017.md",
+        "docs/current/d/C11D_WORKSTREAM_NON_DUPLICATION_REGISTER_20261017.md",
+        "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261017.md",
+        "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017.md",
+        "C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_MANIFEST_20261017_V1.json"
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "path": "README_C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_20261017_V1.md",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": "6b55d72102c5a08726c1d7f2cd386debd53334208a0459bc3eccfc960dc77cf2",
+      "bytes": 2891
+    },
+    {
+      "path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017.md",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": "340a8a22d5b971ff6b005e05ddf29a6979218d14b316a23943ceef4b3f935ce0",
+      "bytes": 12957
+    },
+    {
+      "path": "docs/current/d/C11D_SNAPSHOT_RECONCILIATION_REPORT_20261017.md",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": "698cef68ed00356aefc2850c4defa6bd87b5a811d5c5e3f67c96c53c34265349",
+      "bytes": 8929
+    },
+    {
+      "path": "docs/current/d/C11D_WORKSTREAM_NON_DUPLICATION_REGISTER_20261017.md",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": "7d4b01e62f006860870d277b637c133285b694ee5921981eca3a322534568e1a",
+      "bytes": 14911
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261017.md",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": "d0e283ddac2868fb6988b3141622dbf2ad39254e1604ca5a02827bbc589b31ef",
+      "bytes": 10160
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017.md",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": "90cb672325351f68098fb01d191eb7206be8cabb49edbb9d963dd8f04c1d47a8",
+      "bytes": 7369
+    },
+    {
+      "path": "C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_MANIFEST_20261017_V1.json",
+      "action": "ADD_ONLY",
+      "target_must_be_absent": true,
+      "sha256": null,
+      "bytes": null,
+      "self_reference": true
+    }
+  ],
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "d9_10": "PREPARE_ONLY",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED"
+  },
+  "notes": [
+    "The manifest lists SHA-256 and size for all six payload files. The manifest itself is included in the target-absence precondition; its hash cannot be embedded in itself.",
+    "Existing source artifacts are not modified.",
+    "Older records are retained as history. This dated checkpoint supersedes only current-state and next-action wording where stated.",
+    "No Godot runtime, renderer, media or release operation is invoked by this overlay."
+  ]
+}
