@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-visual-loop-seed-domain-audit-contract:v2",
+  "title": "Visual Loop exact-selector explicit seed-domain audit V2 contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "authority",
+    "implementation",
+    "contract_schema_sha256",
+    "report_schema_sha256",
+    "scope",
+    "seed_semantics",
+    "reference_boundary",
+    "source_lineage",
+    "approval_state",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {"const": "C11-D-D9-VISUAL-LOOP-SEED-DOMAIN-AUDIT-CONTRACT-V2"},
+    "schema_version": {"const": "2.0"},
+    "status": {"const": "PREPARATION_ONLY_EXPLICIT_SEED_DOMAIN_V2_FOR_FIVE_GEOMETRIC_SELECTORS_NOT_INPUT_ADMISSION"},
+    "purpose": {"type": "string", "minLength": 20},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["branch", "operation_mode", "frozen_c11c_manifest_sha256", "canonical_v1_mutated", "accepted_v2_parents_mutated", "explicit_seed_values_only", "automatic_seed_generation", "master_seed_adopted", "renderer_activation_authorized", "release_authority"],
+      "properties": {
+        "branch": {"const": "C11-D only"},
+        "operation_mode": {"const": "ADD_ONLY"},
+        "frozen_c11c_manifest_sha256": {"const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"},
+        "canonical_v1_mutated": {"const": false},
+        "accepted_v2_parents_mutated": {"const": false},
+        "explicit_seed_values_only": {"const": true},
+        "automatic_seed_generation": {"const": false},
+        "master_seed_adopted": {"const": false},
+        "renderer_activation_authorized": {"const": false},
+        "release_authority": {"const": "NONE"}
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"const": "tools/c11d/d9/d_renderer_visual_loop_seed_domain_audit_v2.py"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "contract_schema_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "report_schema_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_type", "family_id", "grammar_matrix", "seed_variants", "independent_repeats_per_variant", "expected_seed_variant_count", "expected_full_chain_repeat_count", "expected_godot_probe_invocations", "runtime_invocation_definition", "explicit_selector_scope_only"],
+      "properties": {
+        "content_type": {"const": "visual_loops"},
+        "family_id": {"const": "c11c_geometric_waves_v1"},
+        "grammar_matrix": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["grammar_id", "grammar_index", "shader_branch"],
+            "properties": {
+              "grammar_id": {"enum": ["harmonic_membrane", "interference_plane", "parametric_ribbon", "lattice_wave", "orbital_wave"]},
+              "grammar_index": {"type": "integer", "minimum": 0, "maximum": 4},
+              "shader_branch": {"type": "string", "pattern": "^field_(harmonic_membrane|interference_plane|parametric_ribbon|lattice_wave|orbital_wave)$"}
+            }
+          }
+        },
+        "seed_variants": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["variant_id", "gameplay_seed", "music_seed"],
+            "properties": {
+              "variant_id": {"enum": ["BASELINE", "GAMEPLAY_SEED_ONLY_CHANGED", "MUSIC_SEED_ONLY_CHANGED"]},
+              "gameplay_seed": {"type": "integer", "minimum": 1, "maximum": 2147483646},
+              "music_seed": {"type": "integer", "minimum": 1, "maximum": 2147483646}
+            }
+          }
+        },
+        "independent_repeats_per_variant": {"const": 2},
+        "expected_seed_variant_count": {"const": 15},
+        "expected_full_chain_repeat_count": {"const": 30},
+        "expected_godot_probe_invocations": {"const": 60},
+        "runtime_invocation_definition": {"const": "30 parameter-binding Godot probes plus 30 exact-payload Godot probes; one separate version probe"},
+        "explicit_selector_scope_only": {"const": true}
+      }
+    },
+    "seed_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameplay_seed_only_changed_fields_must_change", "music_seed_only_changed_fields_must_preserve", "music_seed_only_changed_identity_fields_must_change", "full_payload_identity_changes_with_either_seed_domain", "automatic_seed_and_master_seed_behavior_proven"],
+      "properties": {
+        "gameplay_seed_only_changed_fields_must_change": {
+          "const": ["request_hash", "plan_hash", "style_parameters_sha256", "family_variation_recipe_sha256", "resolved_palette_sha256", "visual_spec_sha256", "payload_instance_sha256"]
+        },
+        "music_seed_only_changed_fields_must_preserve": {
+          "const": ["style_parameters_sha256", "authoring_envelope_sha256", "family_variation_recipe_sha256", "resolved_palette_sha256", "visual_spec_sha256"]
+        },
+        "music_seed_only_changed_identity_fields_must_change": {
+          "const": ["request_hash", "plan_hash", "request_parameter_binding_sha256", "parameter_instance_sha256", "payload_instance_sha256"]
+        },
+        "full_payload_identity_changes_with_either_seed_domain": {"const": true},
+        "automatic_seed_and_master_seed_behavior_proven": {"const": false}
+      }
+    },
+    "reference_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_reference_count_per_selector", "logical_seed_variant_policy_reference_pairs", "selector_envelopes_are_request_bound", "policy_values_consumed", "policy_instructions_emitted"],
+      "properties": {
+        "policy_reference_count_per_selector": {"const": 9},
+        "logical_seed_variant_policy_reference_pairs": {"const": 135},
+        "selector_envelopes_are_request_bound": {"const": false},
+        "policy_values_consumed": {"const": false},
+        "policy_instructions_emitted": {"const": false}
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 70,
+      "maxItems": 70,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["explicit_seed_domain_audit_v2_approved", "seed_domains_complete_for_candidate_input", "automatic_seed_generation_approved", "master_seed_adopted", "canonical_v1_mutated", "exact_selector_payload_v2_approved", "renderer_baseline_approved", "renderer_baseline_frozen", "d4_8_authorized", "release_authority"],
+      "properties": {
+        "explicit_seed_domain_audit_v2_approved": {"const": false},
+        "seed_domains_complete_for_candidate_input": {"const": false},
+        "automatic_seed_generation_approved": {"const": false},
+        "master_seed_adopted": {"const": false},
+        "canonical_v1_mutated": {"const": false},
+        "exact_selector_payload_v2_approved": {"const": false},
+        "renderer_baseline_approved": {"const": false},
+        "renderer_baseline_frozen": {"const": false},
+        "d4_8_authorized": {"const": false},
+        "release_authority": {"const": "NONE"}
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_input_persisted", "payload_file_written", "receipt_file_written", "renderer_instance_created", "shader_material_created", "shader_executed", "renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "media_created", "c11c_source_mutation", "candidate_input_admissible", "renderer", "D4.8", "D9.10", "D9.17", "D10", "release_authority"],
+      "properties": {
+        "request_input_persisted": {"const": false},
+        "payload_file_written": {"const": false},
+        "receipt_file_written": {"const": false},
+        "renderer_instance_created": {"const": false},
+        "shader_material_created": {"const": false},
+        "shader_executed": {"const": false},
+        "renderer_native_input_emitted": {"const": false},
+        "renderer_dispatch_invoked": {"const": false},
+        "renderer_activation": {"const": false},
+        "media_created": {"const": false},
+        "c11c_source_mutation": {"const": false},
+        "candidate_input_admissible": {"const": false},
+        "renderer": {"const": "OFF"},
+        "D4.8": {"const": "BLOCKED"},
+        "D9.10": {"const": "PREPARE_ONLY"},
+        "D9.17": {"const": "BLOCKED_NO_GO"},
+        "D10": {"const": "BLOCKED"},
+        "release_authority": {"const": "NONE"}
+      }
+    }
+  }
+}
