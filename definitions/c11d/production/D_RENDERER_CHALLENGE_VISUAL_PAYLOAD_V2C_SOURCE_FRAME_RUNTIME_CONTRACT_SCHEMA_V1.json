@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-CONTRACT-SCHEMA-V1",
+  "title": "Challenge V2-C source-frame runtime receipt contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "scope",
+    "runtime_entry",
+    "canonical_planning",
+    "selectors",
+    "expected_selector_count",
+    "independent_processes_per_selector",
+    "repeat_comparison_fields",
+    "frame_projection",
+    "semantic_binding_policy",
+    "timebase_policy",
+    "side_effects_forbidden",
+    "governance_locks",
+    "frozen_c11c",
+    "source_pins",
+    "source_pin_count"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_SOURCE_FRAME_RUNTIME_RECEIPT"
+    },
+    "scope": {
+      "const": "SOURCE_FRAME_AND_ROUTE_ACCEPTANCE_ONLY"
+    },
+    "authority_note": {
+      "type": "string"
+    },
+    "runtime_entry": {
+      "type": "object"
+    },
+    "canonical_planning": {
+      "type": "object"
+    },
+    "selectors": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "challenge_id",
+          "mechanic",
+          "family_id",
+          "mechanic_source",
+          "candidate_kind",
+          "candidate_field",
+          "candidate_semantics",
+          "source_timebase",
+          "source_path",
+          "source_sha256",
+          "runtime_mechanic",
+          "custom_data_candidate_fields",
+          "declared_assets"
+        ],
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "enum": [
+              "CHALLENGE_001",
+              "CHALLENGE_002",
+              "CHALLENGE_003",
+              "CHALLENGE_004",
+              "CHALLENGE_005",
+              "CHALLENGE_006",
+              "CHALLENGE_007",
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "mechanic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mechanic_source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidate_kind": {
+            "enum": [
+              "STATIC_PRESENTATION_CANDIDATE",
+              "CUSTOM_DATA_FIELD_CANDIDATE"
+            ]
+          },
+          "candidate_field": {
+            "type": "string"
+          },
+          "candidate_semantics": {
+            "type": "string"
+          },
+          "source_timebase": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "fps",
+              "hook_duration_seconds",
+              "game_duration_seconds",
+              "reveal_duration_seconds",
+              "cta_duration_seconds",
+              "declared_total_duration_seconds",
+              "phase_duration_sum_seconds",
+              "timebase_conflict"
+            ],
+            "properties": {
+              "fps": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "hook_duration_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "game_duration_seconds": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "reveal_duration_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "cta_duration_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "declared_total_duration_seconds": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "phase_duration_sum_seconds": {
+                "type": "number",
+                "minimum": 0
+              },
+              "timebase_conflict": {
+                "type": "boolean"
+              }
+            }
+          },
+          "source_path": {
+            "type": "string"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "runtime_mechanic": {
+            "type": "string"
+          },
+          "custom_data_candidate_fields": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "target_x",
+                "target_position",
+                "active_selection",
+                "displayed_count"
+              ]
+            },
+            "uniqueItems": true,
+            "maxItems": 1
+          },
+          "declared_assets": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "background_path": {
+                "type": "string",
+                "pattern": "^res://"
+              },
+              "object_path": {
+                "type": "string",
+                "pattern": "^res://"
+              },
+              "target_path": {
+                "type": "string",
+                "pattern": "^res://"
+              }
+            }
+          }
+        }
+      }
+    },
+    "expected_selector_count": {
+      "const": 9
+    },
+    "independent_processes_per_selector": {
+      "const": 2
+    },
+    "repeat_comparison_fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "frame_projection": {
+      "type": "object"
+    },
+    "semantic_binding_policy": {
+      "type": "object"
+    },
+    "timebase_policy": {
+      "type": "object"
+    },
+    "side_effects_forbidden": {
+      "type": "object"
+    },
+    "governance_locks": {
+      "type": "object"
+    },
+    "frozen_c11c": {
+      "type": "object"
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "source_pin_count": {
+      "const": 81
+    }
+  },
+  "allOf": [
+    {
+      "properties": {
+        "selectors": {
+          "items": {
+            "properties": {
+              "source_path": {
+                "pattern": "^challenges/CHALLENGE_00[1-9]\\.json$"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

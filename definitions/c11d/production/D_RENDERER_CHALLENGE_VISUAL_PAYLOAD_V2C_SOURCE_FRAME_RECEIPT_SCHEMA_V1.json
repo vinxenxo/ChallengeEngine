@@ -1,0 +1,402 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RECEIPT-SCHEMA-V1",
+  "title": "Challenge V2-C source-frame runtime receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "selector",
+    "process",
+    "runtime",
+    "lineage",
+    "route",
+    "source_frames",
+    "source_timebase",
+    "source_asset_pins",
+    "candidate_field_observations",
+    "semantic_binding_state",
+    "side_effects"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "enum": [
+        "SOURCE_FRAME_RECEIPT",
+        "BLOCKED"
+      ]
+    },
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "challenge_id",
+        "mechanic",
+        "family_id"
+      ],
+      "properties": {
+        "challenge_id": {
+          "type": "string",
+          "pattern": "^CHALLENGE_00[1-9]$"
+        },
+        "mechanic": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "process": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "process_id",
+        "exit_code"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "process_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exit_code": {
+          "type": "integer"
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "godot_version",
+        "engine_version_info"
+      ],
+      "properties": {
+        "godot_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "engine_version_info": {
+          "type": "object"
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_sha256",
+        "frozen_manifest_sha256",
+        "challenge_source_sha256",
+        "mechanic_source_sha256",
+        "runtime_bridge_sha256",
+        "frame_snapshot_sha256",
+        "verified_source_pin_count"
+      ],
+      "properties": {
+        "contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "frozen_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "challenge_source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mechanic_source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "runtime_bridge_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "frame_snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "verified_source_pin_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effective_mechanic",
+        "runtime_bridge_method",
+        "planner_request_hash",
+        "planner_plan_hash",
+        "bridge_status",
+        "adapter_status",
+        "renderer",
+        "release_authority"
+      ],
+      "properties": {
+        "effective_mechanic": {
+          "type": "string"
+        },
+        "runtime_bridge_method": {
+          "const": "ChallengeRuntimeBridge.run_effective_pipeline"
+        },
+        "planner_request_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "planner_plan_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bridge_status": {
+          "const": "PLANNING_ONLY_NOT_RENDERABLE"
+        },
+        "adapter_status": {
+          "const": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED"
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "source_frames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "expected_game_frames",
+        "source_fps",
+        "game_duration_seconds",
+        "finite_transform_frames",
+        "frame_shape",
+        "projection_fields",
+        "projection_sha256"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_game_frames": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source_fps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "game_duration_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "finite_transform_frames": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frame_shape": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          }
+        },
+        "projection_fields": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "string"
+          }
+        },
+        "projection_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "source_timebase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declared_total_duration_seconds",
+        "hook_duration_seconds",
+        "game_duration_seconds",
+        "reveal_duration_seconds",
+        "cta_duration_seconds",
+        "phase_duration_sum_seconds",
+        "known_conflict",
+        "phase_timeline_acceptance"
+      ],
+      "properties": {
+        "declared_total_duration_seconds": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "hook_duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "game_duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reveal_duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cta_duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "phase_duration_sum_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "known_conflict": {
+          "type": "boolean"
+        },
+        "phase_timeline_acceptance": {
+          "enum": [
+            "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+            "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY"
+          ]
+        }
+      }
+    },
+    "source_asset_pins": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_key",
+          "sha256"
+        ],
+        "properties": {
+          "source_key": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "candidate_field_observations": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "target_x",
+          "target_position",
+          "active_selection",
+          "displayed_count"
+        ]
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "present_frames",
+          "type_histogram"
+        ],
+        "properties": {
+          "present_frames": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "type_histogram": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "semantic_binding_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "custom_data_values_serialized"
+      ],
+      "properties": {
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "custom_data_values_serialized": {
+          "const": false
+        }
+      }
+    },
+    "side_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "payload_file_written",
+        "media_created",
+        "renderer_native_input_emitted",
+        "render_nodes_created",
+        "rendering_server_called",
+        "viewport_captured",
+        "canonical_state_mutated",
+        "production_dispatched"
+      ],
+      "properties": {
+        "payload_file_written": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "render_nodes_created": {
+          "const": false
+        },
+        "rendering_server_called": {
+          "const": false
+        },
+        "viewport_captured": {
+          "const": false
+        },
+        "canonical_state_mutated": {
+          "const": false
+        },
+        "production_dispatched": {
+          "const": false
+        }
+      }
+    }
+  }
+}

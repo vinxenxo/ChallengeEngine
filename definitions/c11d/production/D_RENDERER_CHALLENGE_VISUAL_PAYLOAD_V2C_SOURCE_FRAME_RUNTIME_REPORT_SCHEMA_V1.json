@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-REPORT-SCHEMA-V1",
+  "title": "Challenge V2-C source-frame runtime report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_sha256",
+    "frozen_manifest_sha256",
+    "source_pin_count",
+    "selector_count_expected",
+    "selectors",
+    "planner_invocations",
+    "godot_version_probe_invocations",
+    "godot_runtime_process_invocations",
+    "godot_runtime_processes_expected",
+    "payload_materialized",
+    "media_created",
+    "approved_bindings",
+    "visual_seed_sensitivity",
+    "governance_locks",
+    "evidence"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "enum": [
+        "PASS_SOURCE_FRAME_ROUTE_ONLY",
+        "BLOCKED"
+      ]
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "frozen_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_pin_count": {
+      "type": "integer",
+      "minimum": 50
+    },
+    "selector_count_expected": {
+      "const": 9
+    },
+    "selectors": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "selector",
+          "status",
+          "block_reasons",
+          "planner",
+          "runtime_runs",
+          "repeat_agreement"
+        ],
+        "properties": {
+          "selector": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "challenge_id",
+              "mechanic",
+              "family_id"
+            ],
+            "properties": {
+              "challenge_id": {
+                "type": "string",
+                "pattern": "^CHALLENGE_00[1-9]$"
+              },
+              "mechanic": {
+                "type": "string"
+              },
+              "family_id": {
+                "type": "string"
+              }
+            }
+          },
+          "status": {
+            "enum": [
+              "ACCEPTED_SOURCE_FRAME_ONLY",
+              "BLOCKED",
+              "NOT_RUN_AFTER_FIRST_FAILURE"
+            ]
+          },
+          "block_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "planner": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "invocations",
+              "status",
+              "request_hash",
+              "plan_hash",
+              "bridge_status",
+              "adapter_status",
+              "gameplay_seed",
+              "music_seed"
+            ],
+            "properties": {
+              "invocations": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              "status": {
+                "enum": [
+                  "NOT_RUN",
+                  "PLANNED",
+                  "BLOCKED"
+                ]
+              },
+              "request_hash": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "plan_hash": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "bridge_status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "adapter_status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "gameplay_seed": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "music_seed": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            }
+          },
+          "runtime_runs": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "run_id",
+                "process_id",
+                "exit_code",
+                "stdout_sha256",
+                "stderr_sha256",
+                "receipt_sha256",
+                "receipt"
+              ],
+              "properties": {
+                "run_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "process_id": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "exit_code": {
+                  "type": "integer"
+                },
+                "stdout_sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "stderr_sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "receipt_sha256": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "receipt": {
+                  "oneOf": [
+                    {
+                      "$ref": "D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2C_SOURCE_FRAME_RECEIPT_SCHEMA_V1.json"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "repeat_agreement": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "planner_invocations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9
+    },
+    "godot_version_probe_invocations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "godot_runtime_process_invocations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 18
+    },
+    "godot_runtime_processes_expected": {
+      "const": 18
+    },
+    "payload_materialized": {
+      "const": false
+    },
+    "media_created": {
+      "const": false
+    },
+    "approved_bindings": {
+      "const": 0
+    },
+    "visual_seed_sensitivity": {
+      "const": "NOT_TESTED"
+    },
+    "governance_locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderer",
+        "media_created",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "challenge_visual_seed_sensitivity"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "challenge_visual_seed_sensitivity": {
+          "const": "NOT_TESTED"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object"
+    }
+  }
+}
