@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "binding_authorization": {
+      "const": "NOT_GRANTED_BY_SEMANTIC_REVIEW"
+    },
+    "candidate_evidence_audit_sha256": {
+      "const": "8c4503c128355fa21e670be0aaea25b093a73c325253a2afcec2a066a92e5f00"
+    },
+    "decisions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "challenge_id": {
+            "enum": [
+              "CHALLENGE_003",
+              "CHALLENGE_005",
+              "CHALLENGE_006",
+              "CHALLENGE_007",
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "field": {
+            "type": "string"
+          },
+          "rationale": {
+            "minLength": 20,
+            "type": "string"
+          },
+          "runtime_evidence_checked": {
+            "const": true
+          },
+          "semantic_decision": {
+            "enum": [
+              "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+              "REJECT_CANDIDATE_SEMANTIC_DEFINITION",
+              "BLOCKED_NEEDS_SOURCE_OR_POLICY_DECISION"
+            ]
+          },
+          "source_semantics_acknowledged": {
+            "const": true
+          },
+          "temporal_policy_acknowledged": {
+            "const": true
+          }
+        },
+        "required": [
+          "challenge_id",
+          "field",
+          "semantic_decision",
+          "rationale",
+          "source_semantics_acknowledged",
+          "runtime_evidence_checked",
+          "temporal_policy_acknowledged"
+        ],
+        "type": "object"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    },
+    "notes": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "renderer_projection_authorization": {
+      "const": "NOT_GRANTED_BY_SEMANTIC_REVIEW"
+    },
+    "request_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "reviewer_role": {
+      "minLength": 2,
+      "type": "string"
+    },
+    "schema": {
+      "const": "C11D-V2B-CANDIDATE-SEMANTIC-DECISION-RECORD-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "SEMANTIC_DECISIONS_RECORDED_BINDINGS_NOT_APPROVED"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "request_sha256",
+    "candidate_evidence_audit_sha256",
+    "reviewer_role",
+    "reviewed_at",
+    "decisions",
+    "binding_authorization",
+    "renderer_projection_authorization",
+    "notes"
+  ],
+  "title": "C11-D V2-B Candidate Semantic Decision Record V1",
+  "type": "object"
+}

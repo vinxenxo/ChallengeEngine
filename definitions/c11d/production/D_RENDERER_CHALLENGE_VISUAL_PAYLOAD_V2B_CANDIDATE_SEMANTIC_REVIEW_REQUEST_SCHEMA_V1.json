@@ -1,0 +1,531 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_count": {
+      "const": 6
+    },
+    "candidates": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "binding_authorized": {
+            "const": false
+          },
+          "challenge_id": {
+            "pattern": "^CHALLENGE_00[3-9]$",
+            "type": "string"
+          },
+          "coordinate_space": {
+            "type": "string"
+          },
+          "decision_status": {
+            "const": "PENDING_EXPLICIT_SEMANTIC_REVIEW"
+          },
+          "field": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "type": "string"
+          },
+          "missing_value_behavior": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "renderer_projection_approved": {
+            "const": false
+          },
+          "required_review_dimensions": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "minItems": 8,
+            "type": "array"
+          },
+          "review_question": {
+            "type": "string"
+          },
+          "reviewed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reviewer_role": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risk_and_boundary": {
+            "type": "string"
+          },
+          "runtime_evidence": {
+            "additionalProperties": false,
+            "properties": {
+              "audit_selector_id": {
+                "type": "string"
+              },
+              "baseline_repeat_agreement": {
+                "const": true
+              },
+              "candidate_audit_json_sha256": {
+                "const": "8c4503c128355fa21e670be0aaea25b093a73c325253a2afcec2a066a92e5f00"
+              },
+              "candidate_hashes_present_by_role": {
+                "const": true
+              },
+              "editorial_invariance": {
+                "const": "PASS"
+              },
+              "gameplay_seed_candidate_relation": {
+                "type": "string"
+              },
+              "music_seed_invariance": {
+                "const": "PASS"
+              },
+              "raw_candidate_values_included": {
+                "const": false
+              },
+              "runtime_report_sha256": {
+                "const": "f7a1522695cbd6d3f3681d3f266b625e3062d5141c32cddbb4532bcb466e0446"
+              }
+            },
+            "required": [
+              "candidate_audit_json_sha256",
+              "runtime_report_sha256",
+              "audit_selector_id",
+              "baseline_repeat_agreement",
+              "gameplay_seed_candidate_relation",
+              "music_seed_invariance",
+              "editorial_invariance",
+              "candidate_hashes_present_by_role",
+              "raw_candidate_values_included"
+            ],
+            "type": "object"
+          },
+          "semantic_decision": {
+            "enum": [
+              "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+              "REJECT_CANDIDATE_SEMANTIC_DEFINITION",
+              "BLOCKED_NEEDS_SOURCE_OR_POLICY_DECISION",
+              null
+            ],
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "semantic_type": {
+            "enum": [
+              "float",
+              "Vector2",
+              "int"
+            ]
+          },
+          "source_pointer": {
+            "type": "string"
+          },
+          "source_producer": {
+            "type": "string"
+          },
+          "source_review_disposition": {
+            "type": "string"
+          },
+          "source_semantics_summary": {
+            "type": "string"
+          },
+          "temporal_review_status": {
+            "enum": [
+              "SOURCE_FRAME_ONLY_NO_TIMELINE_APPROVAL",
+              "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY"
+            ]
+          }
+        },
+        "required": [
+          "challenge_id",
+          "field",
+          "semantic_type",
+          "source_pointer",
+          "source_producer",
+          "lifecycle",
+          "coordinate_space",
+          "missing_value_behavior",
+          "source_review_disposition",
+          "runtime_evidence",
+          "temporal_review_status",
+          "source_semantics_summary",
+          "risk_and_boundary",
+          "review_question",
+          "required_review_dimensions",
+          "decision_status",
+          "semantic_decision",
+          "reviewer_role",
+          "reviewed_at",
+          "rationale",
+          "binding_authorized",
+          "renderer_projection_approved"
+        ],
+        "type": "object"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date",
+      "type": "string"
+    },
+    "decision_record_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_semantic_decisions": {
+          "items": {
+            "enum": [
+              "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+              "REJECT_CANDIDATE_SEMANTIC_DEFINITION",
+              "BLOCKED_NEEDS_SOURCE_OR_POLICY_DECISION"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "blank_or_missing_decision": {
+          "const": "PENDING_NOT_APPROVED"
+        },
+        "explicit_binding_approval": {
+          "const": "NOT_GRANTED_BY_THIS_REVIEW"
+        },
+        "record_must_be_separate": {
+          "const": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json"
+        },
+        "request_is_immutable_after_review": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "record_must_be_separate",
+        "request_is_immutable_after_review",
+        "allowed_semantic_decisions",
+        "explicit_binding_approval",
+        "blank_or_missing_decision"
+      ],
+      "type": "object"
+    },
+    "evidence_pins": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_audit_static_test_receipt_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "candidate_evidence_audit_json_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "implementation_test_receipt_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "receipt_schema_fix_test_receipt_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "runtime_report_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "source_semantic_review_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "v2b_design_contract_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "v2b_runtime_contract_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "v2b_seed_matrix_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "v2c_source_frame_contract_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_evidence_audit_json_sha256",
+        "runtime_report_sha256",
+        "implementation_test_receipt_sha256",
+        "candidate_audit_static_test_receipt_sha256",
+        "receipt_schema_fix_test_receipt_sha256",
+        "source_semantic_review_sha256",
+        "v2b_design_contract_sha256",
+        "v2b_seed_matrix_sha256",
+        "v2b_runtime_contract_sha256",
+        "v2c_source_frame_contract_sha256",
+        "frozen_c11c_manifest_sha256"
+      ],
+      "type": "object"
+    },
+    "governance_locks": {
+      "additionalProperties": false,
+      "properties": {
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "binding_authorization_granted": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "candidate_values_serialized": {
+          "const": false
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        }
+      },
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "binding_authorization_granted",
+        "candidate_values_serialized"
+      ],
+      "type": "object"
+    },
+    "known_independent_blockers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "type": "string"
+          },
+          "scope": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "scope",
+          "status",
+          "detail"
+        ],
+        "type": "object"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array"
+    },
+    "next_gate": {
+      "const": "OPERATOR_SEMANTIC_DECISION_RECORD_REQUIRED; NO_BINDING_APPROVAL; NO_PAYLOAD_CONSUMER"
+    },
+    "purpose": {
+      "minLength": 20,
+      "type": "string"
+    },
+    "raw_candidate_values_included": {
+      "const": false
+    },
+    "runtime_acceptance_scope": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_input_pins": {
+          "const": 9
+        },
+        "godot_runtime_processes": {
+          "const": 45
+        },
+        "godot_version": {
+          "pattern": "4\\.7\\.1.*[Mm][Oo][Nn][Oo]",
+          "type": "string"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_identity": {
+          "const": "NOT_CREATED"
+        },
+        "planner_invocations": {
+          "const": 45
+        },
+        "rendering": {
+          "const": "NOT_EXECUTED"
+        },
+        "scope": {
+          "const": "IN_MEMORY_SOURCE_FRAME_SAFE_PROJECTION_AND_HASH_ONLY_CANDIDATE_OBSERVATIONS"
+        },
+        "selectors": {
+          "const": 9
+        },
+        "source_pins": {
+          "const": 81
+        },
+        "status": {
+          "const": "PASS_SAFE_PROJECTION_SEED_SENSITIVITY"
+        }
+      },
+      "required": [
+        "status",
+        "selectors",
+        "planner_invocations",
+        "godot_runtime_processes",
+        "godot_version",
+        "source_pins",
+        "authority_input_pins",
+        "scope",
+        "payload_identity",
+        "rendering",
+        "media_created"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "C11D-V2B-CANDIDATE-SEMANTIC-REVIEW-REQUEST-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "source_review_reconciliation": {
+      "additionalProperties": false,
+      "properties": {
+        "approved_custom_data_candidates": {
+          "const": 0
+        },
+        "approved_source_binding_proposals": {
+          "const": 0
+        },
+        "base_snapshot_fields_approved": {
+          "const": 0
+        },
+        "custom_data_candidates_reviewed": {
+          "const": 6
+        },
+        "selector_proposals_reviewed": {
+          "const": 9
+        },
+        "source_review_status": {
+          "const": "SOURCE_REVIEW_COMPLETE_BINDINGS_NOT_APPROVED"
+        },
+        "source_semantics_contract_sha256": {
+          "const": "374472b2d7ab0a70d94ed1f650302869b829252dcf06a7afe29c7c2e18e345dc"
+        }
+      },
+      "required": [
+        "source_review_status",
+        "selector_proposals_reviewed",
+        "approved_source_binding_proposals",
+        "custom_data_candidates_reviewed",
+        "approved_custom_data_candidates",
+        "base_snapshot_fields_approved",
+        "source_semantics_contract_sha256"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "const": "PENDING_EXPLICIT_SEMANTIC_DECISIONS"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "created_at",
+    "purpose",
+    "decision_record_policy",
+    "evidence_pins",
+    "runtime_acceptance_scope",
+    "source_review_reconciliation",
+    "candidate_count",
+    "candidates",
+    "governance_locks",
+    "known_independent_blockers",
+    "next_gate",
+    "raw_candidate_values_included"
+  ],
+  "title": "C11-D V2-B Candidate Semantic Review Request V1",
+  "type": "object"
+}
