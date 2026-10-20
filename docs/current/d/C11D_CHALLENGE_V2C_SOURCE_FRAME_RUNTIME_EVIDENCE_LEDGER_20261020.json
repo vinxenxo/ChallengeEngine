@@ -1,0 +1,79 @@
+{
+  "schema": "C11D-CHALLENGE-V2C-SOURCE-FRAME-RUNTIME-EVIDENCE-LEDGER-V1",
+  "ledger_version": "1.0",
+  "recorded_at": "2026-10-20",
+  "authority": "operator-confirmed current Windows checkout output pasted in conversation; evidence scope must not be broadened beyond markers/counters recorded",
+  "frozen_c11c": {
+    "manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "before_after": "UNCHANGED"
+  },
+  "increments": [
+    {
+      "id": "V2C_SOURCE_FRAME_RUNTIME_RECEIPTS",
+      "status": "PASS_SOURCE_FRAME_ROUTE_ONLY",
+      "godot_version": "4.7.1.stable.mono.official.a13da4feb",
+      "python_contract_tests": "28/28",
+      "selectors": "9/9",
+      "planner_invocations": "9/9",
+      "independent_godot_runtime_processes": "18/18",
+      "source_pins_before_after": "81/81",
+      "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+      "report_sha256": "35e5985f47055fc11cbc0fcd7317f4d0a4ebe6bfe4d8bb22bdab67b7bcbe56a7",
+      "runner_stdout_sha256": "f90846bfddeb4cccf064b1bf1b4332a36e08173f0e3a9d412c66466d361d95f6",
+      "runner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_directory": "%TEMP%\\C11DVR59d6b3f0",
+      "note": "PASS is source-frame/runtime-route only. The actual report file was validated by the operator-side PowerShell block; no payload or media was created."
+    },
+    {
+      "id": "V2C_MONO_VERSION_GUARD_FIX_V1",
+      "status": "APPLIED_AND_SMOKE_CONFIRMED",
+      "zip_sha256": "d00969263ff174e59b2ed602270c0e91ae027c3f3e1e91a78dd16e0fec53b29b",
+      "manifest_sha256": "ccbc8f79244736642064176d90d8dc5bdceb720a43d08b65ffce71b1036d5e87",
+      "effect": "Separates actual executable Mono version proof from Engine.get_version_info structured fields."
+    },
+    {
+      "id": "V2C_LEGACY_VIDEO_PROFILE_TIMEBASE_RESOLUTION_FIX_V1",
+      "status": "APPLIED_AND_SMOKE_CONFIRMED",
+      "zip_sha256": "5be4741635f18b7bafbb37d860bf3135ef31a5d6f408e3996deb1ad267d75e5c",
+      "manifest_sha256": "10ce3361e0b4d0a0470a02ecd9f8ddff1bc2a07f916f9ba3f03166f9756958d0",
+      "focused_smoke": "PASS_1/1",
+      "frame_count": 420,
+      "test_stdout_sha256": "6e869618eb36c6f6ee74de8af851b9d3cb5810cfd35df37968176c06f17fb808",
+      "test_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "smoke_stdout_sha256": "b1c7bd4d3f7dd2fc505d28f5a294b0b9b224e507cb9ac7eda1bc6cff5fa31a43",
+      "smoke_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_directory": "%TEMP%\\C11DTSe74b46be"
+    }
+  ],
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "visual_seed_sensitivity": "NOT_TESTED"
+  },
+  "open_gates": [
+    "SOURCE_SEMANTIC_REVIEW_TESTS_34_34_PENDING_OPERATOR_EXECUTION",
+    "V2B_SAFE_VISUAL_PROJECTION_RUNTIME_HARNESS_NOT_DESIGNED",
+    "CHALLENGE_VISUAL_SEED_SENSITIVITY_NOT_TESTED",
+    "CHALLENGE_008_009_TIMEBASE_CONFLICT",
+    "D4.8_BLOCKED",
+    "D9.14_BLOCKED",
+    "D9.16_BLOCKED",
+    "D9.17_BLOCKED_NO_GO",
+    "D10_BLOCKED_FOR_PROMOTION"
+  ],
+  "next_action": "Apply C11D_CHALLENGE_SOURCE_SEMANTIC_REVIEW_V1_AND_V2C_CLOSEOUT_OVERLAY_20261020 add-only, verify all 81 pins, run the bundled focused review test 34/34. Only after that review is installed and green, design V2-B in a separately versioned increment."
+}

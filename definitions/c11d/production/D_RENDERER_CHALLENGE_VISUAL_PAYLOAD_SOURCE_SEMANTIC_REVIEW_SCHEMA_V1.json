@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/c11d/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SOURCE_SEMANTIC_REVIEW_SCHEMA_V1.json",
+  "title": "C11-D Challenge Visual Payload Source Semantic Review V1",
+  "type": "object",
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "reviewed_at",
+    "source_authority",
+    "review_basis",
+    "v2c_runtime_evidence",
+    "review_summary",
+    "base_snapshot_fields",
+    "selector_reviews",
+    "custom_data_candidate_reviews",
+    "custom_data_policy",
+    "shared_temporal_policy",
+    "governance_locks",
+    "source_pins",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-CHALLENGE-VISUAL-PAYLOAD-SOURCE-SEMANTIC-REVIEW-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "SOURCE_REVIEW_COMPLETE_BINDINGS_NOT_APPROVED"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "source_authority": {
+      "type": "object"
+    },
+    "review_basis": {
+      "type": "object"
+    },
+    "v2c_runtime_evidence": {
+      "type": "object"
+    },
+    "review_summary": {
+      "type": "object",
+      "required": [
+        "selector_proposals_reviewed",
+        "static_target_proposals_reviewed",
+        "custom_data_candidate_rows_reviewed",
+        "base_snapshot_fields_inventoried",
+        "approved_bindings",
+        "approved_renderer_projection_bindings",
+        "approved_custom_data_bindings"
+      ],
+      "properties": {
+        "selector_proposals_reviewed": {
+          "const": 9
+        },
+        "static_target_proposals_reviewed": {
+          "const": 3
+        },
+        "custom_data_candidate_rows_reviewed": {
+          "const": 6
+        },
+        "base_snapshot_fields_inventoried": {
+          "const": 6
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        }
+      }
+    },
+    "base_snapshot_fields": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "source_type",
+          "status",
+          "note"
+        ]
+      }
+    },
+    "selector_reviews": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "required": [
+          "challenge_id",
+          "mechanic",
+          "challenge_source_path",
+          "challenge_source_sha256",
+          "mechanic_source_path",
+          "mechanic_source_sha256",
+          "proposed_binding",
+          "review_disposition",
+          "source_semantics",
+          "runtime_relation",
+          "units_and_coordinate_space",
+          "sampling_lifecycle",
+          "missing_value_behavior",
+          "seed_expectation",
+          "remaining_gate",
+          "binding_authorized",
+          "renderer_projection_approved"
+        ],
+        "properties": {
+          "binding_authorized": {
+            "const": false
+          },
+          "renderer_projection_approved": {
+            "const": false
+          }
+        }
+      }
+    },
+    "custom_data_candidate_reviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "challenge_id",
+          "field",
+          "semantic_type",
+          "source_pointer",
+          "producer",
+          "lifecycle",
+          "coordinate_space",
+          "missing_value_behavior",
+          "review_disposition"
+        ],
+        "properties": {
+          "challenge_id": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "custom_data_policy": {
+      "type": "object",
+      "required": [
+        "whole_map_serialization",
+        "unlisted_custom_data",
+        "approved_custom_data_bindings"
+      ],
+      "properties": {
+        "whole_map_serialization": {
+          "const": "PROHIBITED"
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        }
+      }
+    },
+    "shared_temporal_policy": {
+      "type": "object",
+      "required": [
+        "decision",
+        "challenge_json_edits_performed",
+        "phase_timeline_acceptance"
+      ],
+      "properties": {
+        "decision": {
+          "const": "UNRESOLVED_NO_PRECEDENCE_INFERRED"
+        },
+        "challenge_json_edits_performed": {
+          "const": false
+        },
+        "phase_timeline_acceptance": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "governance_locks": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "media_created",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "visual_seed_sensitivity"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "visual_seed_sensitivity": {
+          "const": "NOT_TESTED"
+        }
+      }
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 81,
+      "maxItems": 81,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "next_gate": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
