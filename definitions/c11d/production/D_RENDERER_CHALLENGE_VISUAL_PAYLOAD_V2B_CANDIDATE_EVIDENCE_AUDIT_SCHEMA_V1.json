@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D V2-B Candidate Evidence Audit V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "runtime_report_sha256",
+    "implementation_test_receipt_sha256",
+    "runtime_contract_sha256",
+    "design_contract_sha256",
+    "seed_matrix_sha256",
+    "v2c_source_frame_contract_sha256",
+    "frozen_manifest_sha256",
+    "selector_count",
+    "planner_invocations",
+    "godot_runtime_processes",
+    "godot_version",
+    "source_pin_count",
+    "authority_input_pin_count",
+    "approved_bindings",
+    "approved_custom_data_bindings",
+    "candidate_input_admissible",
+    "payload_materialized",
+    "media_created",
+    "renderer",
+    "release_authority",
+    "candidate_binding_status",
+    "selectors",
+    "next_gate",
+    "raw_candidate_values_included"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-V2B-CANDIDATE-EVIDENCE-AUDIT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PASS_CANDIDATE_EVIDENCE_AUDIT"
+    },
+    "runtime_report_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "implementation_test_receipt_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "runtime_contract_sha256": {
+      "const": "f89235640f40c81be6100f01f1007ed4e787990a1bbf7927fcd8d676ef2cb9a3"
+    },
+    "design_contract_sha256": {
+      "const": "e4f02e37fd4b9b2c89cbaa7597162f87b180da43182dc576d664263c1b937cfc"
+    },
+    "seed_matrix_sha256": {
+      "const": "d69c3fb2aca78a26c3afbfda0084f7f7aef458ee404b37f65261c6d22e43121a"
+    },
+    "v2c_source_frame_contract_sha256": {
+      "const": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c"
+    },
+    "frozen_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "selector_count": {
+      "const": 9
+    },
+    "planner_invocations": {
+      "const": 45
+    },
+    "godot_runtime_processes": {
+      "const": 45
+    },
+    "godot_version": {
+      "type": "string",
+      "pattern": "4\\.7\\.1.*[Mm][Oo][Nn][Oo]"
+    },
+    "source_pin_count": {
+      "const": 81
+    },
+    "authority_input_pin_count": {
+      "const": 9
+    },
+    "approved_bindings": {
+      "const": 0
+    },
+    "approved_custom_data_bindings": {
+      "const": 0
+    },
+    "candidate_input_admissible": {
+      "const": false
+    },
+    "payload_materialized": {
+      "const": false
+    },
+    "media_created": {
+      "const": false
+    },
+    "renderer": {
+      "const": "OFF"
+    },
+    "release_authority": {
+      "const": "NONE"
+    },
+    "candidate_binding_status": {
+      "const": "OBSERVED_NOT_APPROVED"
+    },
+    "selectors": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "challenge_id",
+          "mechanic",
+          "status",
+          "baseline_repeat_agreement",
+          "gameplay_seed_safe_state_changed",
+          "music_seed_safe_state_and_candidates_invariant",
+          "editorial_safe_state_and_candidates_invariant",
+          "payload_identity",
+          "candidate_observations",
+          "source_frame_only",
+          "timeline_acceptance",
+          "safe_state_hash_by_role",
+          "canonical_request_hash_by_role",
+          "canonical_plan_hash_by_role"
+        ],
+        "properties": {
+          "challenge_id": {
+            "type": "string"
+          },
+          "mechanic": {
+            "type": "string"
+          },
+          "status": {
+            "const": "ACCEPTED_SAFE_PROJECTION_RUNTIME"
+          },
+          "baseline_repeat_agreement": {
+            "const": true
+          },
+          "gameplay_seed_safe_state_changed": {
+            "const": true
+          },
+          "music_seed_safe_state_and_candidates_invariant": {
+            "const": true
+          },
+          "editorial_safe_state_and_candidates_invariant": {
+            "const": true
+          },
+          "payload_identity": {
+            "const": "NOT_CREATED"
+          },
+          "candidate_observations": {
+            "type": "array"
+          },
+          "source_frame_only": {
+            "const": true
+          },
+          "timeline_acceptance": {
+            "type": "string"
+          },
+          "safe_state_hash_by_role": {
+            "type": "object"
+          },
+          "canonical_request_hash_by_role": {
+            "type": "object"
+          },
+          "canonical_plan_hash_by_role": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "next_gate": {
+      "const": "REVIEW_CANDIDATE_SEMANTICS_AND_SEPARATE_EXPLICIT_APPROVAL; NO_PAYLOAD_CONSUMER"
+    },
+    "raw_candidate_values_included": {
+      "const": false
+    }
+  }
+}
