@@ -1,0 +1,230 @@
+{
+  "approved_bindings": 0,
+  "approved_custom_data_bindings": 0,
+  "authority_input_pin_count": 9,
+  "baseline_music_seed": 840001,
+  "candidate_observation": {
+    "allowlisted_fields": [
+      "target_x",
+      "target_position",
+      "active_selection",
+      "displayed_count"
+    ],
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "catch_find_target_position": "Vector2; frame-aligned track, independent from the primary actor position.",
+    "choose_active_selection": "int; check option bounds and selected-position correspondence; source-frame only.",
+    "count_displayed_count": "int; validate configured count range and x/y position encoding; never read target_count.",
+    "hit_target_position": "Vector2; same finite per-run vector repeated across all frames.",
+    "pilot_target_x": "float; expected invariant under gameplay-seed mutation; never convert to Vector2.",
+    "raw_values_in_receipt": false,
+    "required_presence": "Every declared selector candidate must be present and exact-typed for every source frame; otherwise BLOCK.",
+    "whole_custom_data_map_access": "PROHIBITED"
+  },
+  "canonical_planner_invocations_expected": 45,
+  "canonical_planner_invocations_per_selector": 5,
+  "comparison_rules": {
+    "baseline_repeat": [
+      "canonical_request_hash equal",
+      "canonical_plan_hash equal",
+      "projection_instance_identity_sha256 equal",
+      "safe_projection_state_sha256 equal",
+      "candidate field hashes equal",
+      "process_id differs",
+      "run_id differs"
+    ],
+    "editorial_mutation": "safe state, per-field candidate hashes and simulation input hash MUST equal baseline; request, plan and editorial hashes MUST differ",
+    "first_failure": "Stop immediately and emit nine selector rows; later rows NOT_RUN_AFTER_FIRST_FAILURE",
+    "gameplay_seed_mutation": "safe_projection_state_sha256 MUST differ for all nine selectors; request/plan hashes are not substitutes",
+    "music_seed_mutation": "safe state, per-field candidate hashes and simulation input hash MUST equal baseline; request and plan identities MUST differ",
+    "other_candidate_gameplay_mutation": "declared candidate hash MUST differ for hit/catch/find/choose/count",
+    "pilot_target_x_gameplay_mutation": "candidate hash MUST remain equal; safe base projection must still differ"
+  },
+  "design_contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_VISUAL_PROJECTION_DESIGN_V1.json",
+  "design_contract_sha256": "e4f02e37fd4b9b2c89cbaa7597162f87b180da43182dc576d664263c1b937cfc",
+  "expected_selector_count": 9,
+  "expected_selector_count_matches_design_contract": true,
+  "first_failure_stop": true,
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "gameplay_seed_mutation_rule": "DETERMINISTIC_NEXT_INTEGER_WITH_WRAP; source seed + 1, wrap 2147483646 to 1; no automatic seed generation",
+  "godot_process_timeout_seconds": 180,
+  "godot_processes_expected": 45,
+  "godot_processes_per_selector": 5,
+  "godot_version_required": "4.7.1 Mono",
+  "governance_locks": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "automatic_seed_generation": false,
+    "baseline_approval": "MISSING",
+    "candidate_input_admissible": false,
+    "challenge_004_v1_fixture": "IMMUTABLE",
+    "challenge_008_009_phase_timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+    "freeze_eligible": false,
+    "master_seed": "NOT_ADOPTED",
+    "media_created": false,
+    "payload_materialized": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "seed_domains_complete_for_candidate_input": false,
+    "visual_seed_sensitivity": "NOT_TESTED_UNTIL_V2B_RUNTIME_ACCEPTED"
+  },
+  "identity_model": {
+    "candidate_field_probe_sha256": "Separate aggregate over individual allowlisted candidate-field hashes; raw values are never emitted.",
+    "canonical_plan_hash": "Canonical plan identity; not output-sensitivity evidence.",
+    "canonical_request_hash": "Canonical universal request identity; not output-sensitivity evidence.",
+    "editorial_hash": "Resolved editorial-only identity; must change only for editorial mutation.",
+    "payload_identity": "NOT_CREATED; must never be synthesized from the safe-state or candidate hashes.",
+    "projection_instance_identity_sha256": "Binds selector, pinned source/mechanic, projection version, gameplay seed, music seed, and editorial hash.",
+    "safe_projection_state_sha256": "Hash of the ordered in-memory base FrameSnapshot projection; this alone is the gameplay-seed output sensitivity oracle."
+  },
+  "implementation": {
+    "contract_schema_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_PROJECTION_RUNTIME_CONTRACT_SCHEMA_V1.json",
+    "contract_schema_sha256": "0f804aeb51427286a6160aa445cdd98b2d3bbaaace19feacfa32f80e0fe738a5",
+    "harness_path": "tools/c11d/d9/challenge_visual_payload_v2b_safe_projection_runtime_in_memory.gd",
+    "harness_sha256": "aa175afe2ce357473aa46ed7c55ce46edf3f56457db461be28f7ec8e2f0b5ce2",
+    "implementation_test_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_safe_projection_runtime.py",
+    "implementation_test_receipt_required_status": "PASS_IMPLEMENTATION_STATIC_TESTS",
+    "implementation_test_receipt_schema": "C11D-V2B-RUNTIME-IMPLEMENTATION-TEST-RECEIPT-V1",
+    "receipt_schema_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_PROJECTION_RUNTIME_RECEIPT_SCHEMA_V1.json",
+    "receipt_schema_sha256": "278ef5c1e4a96955d547dc70ab2e8cebc73f5ddb904dbb66563322be5c52e52c",
+    "report_schema_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_PROJECTION_RUNTIME_REPORT_SCHEMA_V1.json",
+    "report_schema_sha256": "7152b4cb28f01dd33d140b22459d6eafd98d6a21811393d48ace97640c4a04b1",
+    "runtime_runner_path": "tools/c11d/d9/d_renderer_challenge_visual_payload_v2b_safe_projection_runtime.py",
+    "runtime_runner_sha256": "6a92aac96786acd2316f8e46b9d895f7cdcdfccbd75e9686378a4144a3a01a7f"
+  },
+  "media_created": false,
+  "music_seed_mutation": 840002,
+  "next_gate": {
+    "entry_condition": "Static implementation tests and source audit accepted in active Windows checkout; runner must receive their generated implementation_test_receipt.json.",
+    "must_not_do": [
+      "materialize payload/media",
+      "emit renderer-native input",
+      "serialize whole custom_data",
+      "change challenge JSON",
+      "claim timeline acceptance for 008/009",
+      "change C11-C",
+      "enable renderer",
+      "approve any candidate binding"
+    ],
+    "must_prove": [
+      "baseline repeat agreement across independent Godot processes",
+      "gameplay seed changes safe base projection for all nine selectors",
+      "music seed and editorial-only mutations preserve safe projection and candidate hashes",
+      "Pilot target_x invariant candidate exception",
+      "Hit candidate per-run constant; Catch/Find vector tracks; Choose indices and Count positional encoding valid",
+      "81 source pins and nine authority input pins remain clean before and after runtime",
+      "all 45 canonical planner calls and 45 independent Godot processes have explicit receipts"
+    ],
+    "name": "V2B_SAFE_PROJECTION_45_PLANNER_45_GODOT_RUNTIME_ACCEPTANCE"
+  },
+  "payload_materialized": false,
+  "planner_route": {
+    "bridge": "ChallengeRuntimeBridge.run_effective_pipeline(legacy_config: Dictionary)",
+    "canonical_request_id": "Same stable request_id for every role within a selector; baseline R1/R2 must be byte-identical requests.",
+    "do_not_clone_planner_or_mechanics": true,
+    "function": "universal_producer.evaluate_universal_request(raw, root)",
+    "route_status_required": "PLANNED;PLANNING_ONLY_NOT_RENDERABLE;PREPARED_NOT_DISPATCHED_RENDERER_DISABLED"
+  },
+  "renderer": "OFF",
+  "runtime_status": "NOT_EXECUTED_BY_DESIGN_OR_IMPLEMENTATION_TESTS",
+  "safe_projection": {
+    "allowlisted_frame_fields": [
+      "position",
+      "rotation",
+      "scale",
+      "opacity",
+      "texture_index",
+      "variant_id"
+    ],
+    "canonical_tuple": [
+      "local_frame_index",
+      "position_x",
+      "position_y",
+      "rotation",
+      "scale_x",
+      "scale_y",
+      "opacity",
+      "texture_index",
+      "variant_id"
+    ],
+    "coordinate_transform": "NONE",
+    "file_write_from_godot_harness": "PROHIBITED",
+    "forbidden_frame_fields": [
+      "custom_data",
+      "simulation_result",
+      "input_state",
+      "pause_state",
+      "result_state",
+      "close_calls"
+    ],
+    "frame_interpolation": "PROHIBITED",
+    "must_not_create_scene_or_render_nodes": true,
+    "rendering_server": "PROHIBITED",
+    "resampling": "PROHIBITED",
+    "serialization": "UTF-8 JSON ordered array-of-arrays; finite values only; source frame order and cardinality preserved",
+    "viewport_capture": "PROHIBITED"
+  },
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-CONTRACT-V1",
+  "schema_version": "1.0",
+  "scope": "IN_MEMORY_TEST_ONLY_SOURCE_STATE_OBSERVATION; NO RENDERER INPUT; NO PAYLOAD OR MEDIA",
+  "seed_limits": {
+    "cross_domain_seed_collision": "BLOCK",
+    "maximum": 2147483646,
+    "minimum": 1
+  },
+  "seed_test_matrix_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SEED_TEST_MATRIX_V1.json",
+  "seed_test_matrix_sha256": "d69c3fb2aca78a26c3afbfda0084f7f7aef458ee404b37f65261c6d22e43121a",
+  "selector_ids": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_003",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007",
+    "CHALLENGE_008",
+    "CHALLENGE_009"
+  ],
+  "source_pin_count": 81,
+  "status": "IMPLEMENTED_NOT_RUNTIME_ACCEPTED",
+  "variant_policy": {
+    "BASELINE_R1": {
+      "editorial": "source values",
+      "gameplay_seed": "source seed",
+      "music_seed": 840001
+    },
+    "BASELINE_R2": {
+      "editorial": "source values",
+      "gameplay_seed": "source seed",
+      "independent_process": true,
+      "music_seed": 840001
+    },
+    "EDITORIAL_MUTATION": {
+      "editorial": "change title, subtitle and call_to_action only",
+      "gameplay_seed": "source seed",
+      "music_seed": 840001
+    },
+    "GAMEPLAY_SEED_MUTATION": {
+      "editorial": "source values",
+      "gameplay_seed": "source seed + 1, with wrap",
+      "music_seed": 840001
+    },
+    "MUSIC_SEED_MUTATION": {
+      "editorial": "source values",
+      "gameplay_seed": "source seed",
+      "music_seed": 840002
+    }
+  },
+  "variant_roles": [
+    "BASELINE_R1",
+    "BASELINE_R2",
+    "GAMEPLAY_SEED_MUTATION",
+    "MUSIC_SEED_MUTATION",
+    "EDITORIAL_MUTATION"
+  ],
+  "variants_per_selector": 5
+}

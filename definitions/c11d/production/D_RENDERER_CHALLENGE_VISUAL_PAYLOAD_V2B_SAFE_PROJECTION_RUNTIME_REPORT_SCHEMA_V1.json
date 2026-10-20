@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "approved_bindings": {
+      "const": 0
+    },
+    "approved_custom_data_bindings": {
+      "const": 0
+    },
+    "design_contract_sha256": {
+      "const": "e4f02e37fd4b9b2c89cbaa7597162f87b180da43182dc576d664263c1b937cfc"
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "frozen_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "godot_runtime_process_invocations": {
+      "maximum": 45,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "godot_runtime_processes_expected": {
+      "const": 45
+    },
+    "godot_version_probe_invocations": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "governance_locks": {
+      "type": "object"
+    },
+    "media_created": {
+      "const": false
+    },
+    "payload_materialized": {
+      "const": false
+    },
+    "planner_invocations": {
+      "maximum": 45,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "planner_invocations_expected": {
+      "const": 45
+    },
+    "runtime_contract_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-REPORT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "selector_count_expected": {
+      "const": 9
+    },
+    "selectors": {
+      "items": {
+        "type": "object"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "PASS_SAFE_PROJECTION_SEED_SENSITIVITY",
+        "BLOCKED"
+      ]
+    },
+    "visual_seed_sensitivity": {
+      "enum": [
+        "ACCEPTED_BY_SAFE_PROJECTION_HASH",
+        "BLOCKED",
+        "NOT_TESTED"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "runtime_contract_sha256",
+    "design_contract_sha256",
+    "frozen_manifest_sha256",
+    "selector_count_expected",
+    "selectors",
+    "planner_invocations",
+    "planner_invocations_expected",
+    "godot_version_probe_invocations",
+    "godot_runtime_process_invocations",
+    "godot_runtime_processes_expected",
+    "payload_materialized",
+    "media_created",
+    "approved_bindings",
+    "approved_custom_data_bindings",
+    "visual_seed_sensitivity",
+    "governance_locks",
+    "evidence"
+  ],
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-REPORT-SCHEMA-V1",
+  "title": "C11-D V2-B Safe Projection Runtime Report Schema V1",
+  "type": "object"
+}

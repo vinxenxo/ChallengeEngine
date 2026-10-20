@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority": {
+      "additionalProperties": false,
+      "properties": {
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "renderer": {
+          "const": "OFF"
+        }
+      },
+      "required": [
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "renderer",
+        "payload_materialized",
+        "media_created",
+        "release_authority"
+      ],
+      "type": "object"
+    },
+    "candidate_field_observations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "enum": [
+              "target_x",
+              "target_position",
+              "active_selection",
+              "displayed_count"
+            ]
+          },
+          "present_frames": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "raw_values_emitted": {
+            "const": false
+          },
+          "renderer_binding_approved": {
+            "const": false
+          },
+          "semantic_type": {
+            "enum": [
+              "float",
+              "Vector2",
+              "int"
+            ]
+          },
+          "type_histogram": {
+            "additionalProperties": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "type": "object"
+          },
+          "value_stream_sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field",
+          "semantic_type",
+          "present_frames",
+          "type_histogram",
+          "value_stream_sha256",
+          "raw_values_emitted",
+          "renderer_binding_approved"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "identity": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_field_probe_sha256": {
+          "oneOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "canonical_plan_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "canonical_request_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "editorial_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "payload_identity": {
+          "const": "NOT_CREATED"
+        },
+        "projection_instance_identity_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "safe_projection_state_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonical_request_hash",
+        "canonical_plan_hash",
+        "editorial_hash",
+        "projection_instance_identity_sha256",
+        "safe_projection_state_sha256",
+        "candidate_field_probe_sha256",
+        "payload_identity"
+      ],
+      "type": "object"
+    },
+    "lineage": {
+      "additionalProperties": false,
+      "properties": {
+        "challenge_source_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "design_contract_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "frame_snapshot_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "frozen_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "mechanic_source_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "runtime_bridge_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "runtime_contract_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "verified_authority_input_pin_count": {
+          "const": 9
+        },
+        "verified_source_pin_count": {
+          "const": 81
+        }
+      },
+      "required": [
+        "runtime_contract_sha256",
+        "design_contract_sha256",
+        "frozen_manifest_sha256",
+        "challenge_source_sha256",
+        "mechanic_source_sha256",
+        "runtime_bridge_sha256",
+        "frame_snapshot_sha256",
+        "verified_source_pin_count",
+        "verified_authority_input_pin_count"
+      ],
+      "type": "object"
+    },
+    "process": {
+      "additionalProperties": false,
+      "properties": {
+        "exit_code": {
+          "const": 0
+        },
+        "process_id": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "variant_role": {
+          "enum": [
+            "BASELINE_R1",
+            "BASELINE_R2",
+            "GAMEPLAY_SEED_MUTATION",
+            "MUSIC_SEED_MUTATION",
+            "EDITORIAL_MUTATION"
+          ]
+        }
+      },
+      "required": [
+        "run_id",
+        "process_id",
+        "variant_role",
+        "exit_code"
+      ],
+      "type": "object"
+    },
+    "runtime": {
+      "additionalProperties": false,
+      "properties": {
+        "engine_version_info": {
+          "type": "object"
+        },
+        "godot_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "godot_version",
+        "engine_version_info"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-RECEIPT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "seeds": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_seed_used": {
+          "maximum": 2147483646,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "initial_seed": {
+          "maximum": 2147483646,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "music_seed_copied_into_simulation": {
+          "const": false
+        },
+        "music_seed_request_domain": {
+          "maximum": 2147483646,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "requested_gameplay_seed": {
+          "maximum": 2147483646,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "seed_attempts": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "source_gameplay_seed": {
+          "maximum": 2147483646,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source_gameplay_seed",
+        "requested_gameplay_seed",
+        "initial_seed",
+        "effective_seed_used",
+        "seed_attempts",
+        "music_seed_request_domain",
+        "music_seed_copied_into_simulation"
+      ],
+      "type": "object"
+    },
+    "selector": {
+      "additionalProperties": false,
+      "properties": {
+        "challenge_id": {
+          "enum": [
+            "CHALLENGE_001",
+            "CHALLENGE_002",
+            "CHALLENGE_003",
+            "CHALLENGE_004",
+            "CHALLENGE_005",
+            "CHALLENGE_006",
+            "CHALLENGE_007",
+            "CHALLENGE_008",
+            "CHALLENGE_009"
+          ]
+        },
+        "mechanic": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "challenge_id",
+        "mechanic"
+      ],
+      "type": "object"
+    },
+    "simulation_input_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "source_asset_pins": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "type": "string"
+          },
+          "source_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "source_frames": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinate_transform": {
+          "const": "NONE"
+        },
+        "count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_game_frames": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "frame_shape": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "game_duration_seconds": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "projection_fields": {
+          "const": [
+            "local_frame_index",
+            "position_x",
+            "position_y",
+            "rotation",
+            "scale_x",
+            "scale_y",
+            "opacity",
+            "texture_index",
+            "variant_id"
+          ]
+        },
+        "projection_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "resampling": {
+          "const": "PROHIBITED"
+        },
+        "source_fps": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "count",
+        "expected_game_frames",
+        "source_fps",
+        "game_duration_seconds",
+        "projection_fields",
+        "frame_shape",
+        "coordinate_transform",
+        "resampling",
+        "projection_sha256"
+      ],
+      "type": "object"
+    },
+    "source_timebase": {
+      "additionalProperties": false,
+      "properties": {
+        "cta_duration_seconds": {
+          "type": "number"
+        },
+        "declared_total_duration_seconds": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "game_duration_seconds": {
+          "type": "number"
+        },
+        "hook_duration_seconds": {
+          "type": "number"
+        },
+        "known_conflict": {
+          "type": "boolean"
+        },
+        "phase_duration_sum_seconds": {
+          "type": "number"
+        },
+        "phase_timeline_acceptance": {
+          "enum": [
+            "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+            "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+          ]
+        },
+        "reveal_duration_seconds": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "declared_total_duration_seconds",
+        "hook_duration_seconds",
+        "game_duration_seconds",
+        "reveal_duration_seconds",
+        "cta_duration_seconds",
+        "phase_duration_sum_seconds",
+        "known_conflict",
+        "phase_timeline_acceptance"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "const": "SAFE_PROJECTION_RECEIPT"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "selector",
+    "process",
+    "runtime",
+    "lineage",
+    "identity",
+    "seeds",
+    "simulation_input_sha256",
+    "source_frames",
+    "source_timebase",
+    "source_asset_pins",
+    "candidate_field_observations",
+    "authority"
+  ],
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-RECEIPT-SCHEMA-V1",
+  "title": "C11-D V2-B Safe Projection Runtime Receipt Schema V1",
+  "type": "object"
+}

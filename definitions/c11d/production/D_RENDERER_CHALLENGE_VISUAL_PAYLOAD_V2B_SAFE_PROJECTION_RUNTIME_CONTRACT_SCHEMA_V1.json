@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "approved_bindings": {
+      "const": 0
+    },
+    "approved_custom_data_bindings": {
+      "const": 0
+    },
+    "authority_input_pin_count": {
+      "const": 9
+    },
+    "baseline_music_seed": {
+      "const": 840001
+    },
+    "candidate_observation": {
+      "type": "object"
+    },
+    "canonical_planner_invocations_expected": {
+      "const": 45
+    },
+    "canonical_planner_invocations_per_selector": {
+      "const": 5
+    },
+    "comparison_rules": {
+      "type": "object"
+    },
+    "design_contract_path": {
+      "type": "string"
+    },
+    "design_contract_sha256": {
+      "const": "e4f02e37fd4b9b2c89cbaa7597162f87b180da43182dc576d664263c1b937cfc"
+    },
+    "expected_selector_count": {
+      "const": 9
+    },
+    "expected_selector_count_matches_design_contract": {
+      "const": true
+    },
+    "first_failure_stop": {
+      "const": true
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "gameplay_seed_mutation_rule": {
+      "type": "string"
+    },
+    "godot_process_timeout_seconds": {
+      "maximum": 600,
+      "minimum": 30,
+      "type": "integer"
+    },
+    "godot_processes_expected": {
+      "const": 45
+    },
+    "godot_processes_per_selector": {
+      "const": 5
+    },
+    "godot_version_required": {
+      "const": "4.7.1 Mono"
+    },
+    "governance_locks": {
+      "type": "object"
+    },
+    "identity_model": {
+      "type": "object"
+    },
+    "implementation": {
+      "type": "object"
+    },
+    "media_created": {
+      "const": false
+    },
+    "music_seed_mutation": {
+      "const": 840002
+    },
+    "next_gate": {
+      "type": "object"
+    },
+    "payload_materialized": {
+      "const": false
+    },
+    "planner_route": {
+      "type": "object"
+    },
+    "renderer": {
+      "const": "OFF"
+    },
+    "runtime_status": {
+      "const": "NOT_EXECUTED_BY_DESIGN_OR_IMPLEMENTATION_TESTS"
+    },
+    "safe_projection": {
+      "type": "object"
+    },
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "seed_limits": {
+      "type": "object"
+    },
+    "seed_test_matrix_path": {
+      "type": "string"
+    },
+    "seed_test_matrix_sha256": {
+      "const": "d69c3fb2aca78a26c3afbfda0084f7f7aef458ee404b37f65261c6d22e43121a"
+    },
+    "selector_ids": {
+      "const": [
+        "CHALLENGE_001",
+        "CHALLENGE_002",
+        "CHALLENGE_003",
+        "CHALLENGE_004",
+        "CHALLENGE_005",
+        "CHALLENGE_006",
+        "CHALLENGE_007",
+        "CHALLENGE_008",
+        "CHALLENGE_009"
+      ]
+    },
+    "source_pin_count": {
+      "const": 81
+    },
+    "status": {
+      "const": "IMPLEMENTED_NOT_RUNTIME_ACCEPTED"
+    },
+    "variant_policy": {
+      "type": "object"
+    },
+    "variant_roles": {
+      "const": [
+        "BASELINE_R1",
+        "BASELINE_R2",
+        "GAMEPLAY_SEED_MUTATION",
+        "MUSIC_SEED_MUTATION",
+        "EDITORIAL_MUTATION"
+      ]
+    },
+    "variants_per_selector": {
+      "const": 5
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "scope",
+    "design_contract_path",
+    "design_contract_sha256",
+    "seed_test_matrix_path",
+    "seed_test_matrix_sha256",
+    "frozen_c11c_manifest_sha256",
+    "expected_selector_count",
+    "selector_ids",
+    "variants_per_selector",
+    "variant_roles",
+    "canonical_planner_invocations_per_selector",
+    "godot_processes_per_selector",
+    "canonical_planner_invocations_expected",
+    "godot_processes_expected",
+    "gameplay_seed_mutation_rule",
+    "baseline_music_seed",
+    "music_seed_mutation",
+    "seed_limits",
+    "identity_model",
+    "safe_projection",
+    "candidate_observation",
+    "planner_route",
+    "variant_policy",
+    "comparison_rules",
+    "implementation",
+    "expected_selector_count_matches_design_contract",
+    "source_pin_count",
+    "authority_input_pin_count",
+    "approved_bindings",
+    "approved_custom_data_bindings",
+    "payload_materialized",
+    "media_created",
+    "renderer",
+    "governance_locks",
+    "godot_version_required",
+    "godot_process_timeout_seconds",
+    "first_failure_stop",
+    "runtime_status",
+    "next_gate"
+  ],
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-CONTRACT-SCHEMA-V1",
+  "title": "C11-D V2-B Safe Projection Runtime Contract Schema V1",
+  "type": "object"
+}
