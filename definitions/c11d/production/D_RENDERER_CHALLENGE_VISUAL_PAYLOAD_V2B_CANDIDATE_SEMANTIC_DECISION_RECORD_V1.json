@@ -1,0 +1,68 @@
+{
+  "schema": "C11D-V2B-CANDIDATE-SEMANTIC-DECISION-RECORD-V1",
+  "schema_version": "1.0",
+  "status": "SEMANTIC_DECISIONS_RECORDED_BINDINGS_NOT_APPROVED",
+  "request_sha256": "b576612dd0913ce8f706a5272a5b9ca5ceb6c7a1f39d832323d9db98578b5d01",
+  "candidate_evidence_audit_sha256": "8c4503c128355fa21e670be0aaea25b093a73c325253a2afcec2a066a92e5f00",
+  "reviewer_role": "operator",
+  "reviewed_at": "2026-10-20T23:58:36+02:00",
+  "decisions": [
+    {
+      "challenge_id": "CHALLENGE_003",
+      "field": "target_x",
+      "semantic_decision": "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+      "rationale": "Se acepta únicamente la semántica del escalar X por frame en PILOT_0X100, derivado de target_start + target_velocity * frame_index. No define Y, no autoriza una transformación a canvas y no es un oráculo independiente de sensibilidad a la semilla gameplay.",
+      "source_semantics_acknowledged": true,
+      "runtime_evidence_checked": true,
+      "temporal_policy_acknowledged": true
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "field": "target_position",
+      "semantic_decision": "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+      "rationale": "Se acepta la semántica de un único punto objetivo Vector2 por intento, repetido en cada recibo de frame. No debe interpretarse como trayectoria dinámica ni sustituirse por telemetría de puntuación.",
+      "source_semantics_acknowledged": true,
+      "runtime_evidence_checked": true,
+      "temporal_policy_acknowledged": true
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "field": "target_position",
+      "semantic_decision": "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+      "rationale": "Se acepta la semántica de una trayectoria objetivo Vector2 por frame, distinta de snapshot.position del catcher. Una futura especificación deberá exigir cardinalidad por frame y fallo cerrado ante ausencia o valores no finitos.",
+      "source_semantics_acknowledged": true,
+      "runtime_evidence_checked": true,
+      "temporal_policy_acknowledged": true
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "field": "target_position",
+      "semantic_decision": "ACCEPT_SEMANTIC_DEFINITION_FOR_FUTURE_BINDING_SPECIFICATION",
+      "rationale": "Se acepta la semántica de una trayectoria objetivo Vector2 por frame, separada del scanner. La definición excluye topología de distractores y telemetría de scoring o close calls.",
+      "source_semantics_acknowledged": true,
+      "runtime_evidence_checked": true,
+      "temporal_policy_acknowledged": true
+    },
+    {
+      "challenge_id": "CHALLENGE_008",
+      "field": "active_selection",
+      "semantic_decision": "BLOCKED_NEEDS_SOURCE_OR_POLICY_DECISION",
+      "rationale": "Se bloquea la decisión completa hasta resolver explícitamente el conflicto entre total_duration=11s y la suma de fases=12s. La semántica de índice de opción no recibe autorización temporal ni de representación visual por este registro.",
+      "source_semantics_acknowledged": true,
+      "runtime_evidence_checked": true,
+      "temporal_policy_acknowledged": true
+    },
+    {
+      "challenge_id": "CHALLENGE_009",
+      "field": "displayed_count",
+      "semantic_decision": "BLOCKED_NEEDS_SOURCE_OR_POLICY_DECISION",
+      "rationale": "Se bloquea hasta resolver el conflicto temporal 11s/12s y la política de presentación del recuento con codificación posicional primaria. displayed_count no es target_count y esta decisión no determina su propiedad visual.",
+      "source_semantics_acknowledged": true,
+      "runtime_evidence_checked": true,
+      "temporal_policy_acknowledged": true
+    }
+  ],
+  "binding_authorization": "NOT_GRANTED_BY_SEMANTIC_REVIEW",
+  "renderer_projection_authorization": "NOT_GRANTED_BY_SEMANTIC_REVIEW",
+  "notes": "El operador confirmó expresamente esta matriz el 2026-10-20. Las cuatro aceptaciones permiten avanzar exclusivamente a una futura especificación separada de binding. CHALLENGE_008 y CHALLENGE_009 quedan bloqueados por el conflicto temporal y las políticas pendientes. Este registro no aprueba bindings, proyección visual, consumidor de payload, renderer, medios, producción ni promoción."
+}
