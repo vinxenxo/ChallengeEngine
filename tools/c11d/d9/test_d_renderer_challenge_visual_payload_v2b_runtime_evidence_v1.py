@@ -59,7 +59,7 @@ def fixture():
                 "projection_instance_identity_sha256":h(cid+"projection"),"safe_projection_state_sha256":state,
                 "candidate_field_probe_sha256":aggregate,"payload_identity":"NOT_CREATED"}
             conflict=cid in ("CHALLENGE_008","CHALLENGE_009")
-            receipt={"schema":"C11D-V2B-SAFE-PROJECTION-RUNTIME-RECEIPT-V1","schema_version":"1.0","status":"SAFE_PROJECTION_RECEIPT",
+            receipt={"schema":audit.RUNTIME_RECEIPT_ID,"schema_version":"1.0","status":"SAFE_PROJECTION_RECEIPT",
                 "selector":{"challenge_id":cid,"mechanic":mechanic},
                 "process":{"run_id":run_id,"process_id":process_id,"variant_role":role,"exit_code":0},
                 "runtime":{},
@@ -108,6 +108,9 @@ def fixture():
 class CandidateEvidenceAuditTests(unittest.TestCase):
     def test_accepts_complete_fixture(self):
         r,d,receipt=fixture(); s=audit.validate_report(r,d,receipt,h("static receipt")); self.assertEqual(len(s["selectors"]),9)
+    def test_rejects_wrong_runtime_receipt_schema_id(self):
+        r,d,rec=fixture(); r["selectors"][0]["runtime_runs"][0]["receipt"]["schema"]="C11D-V2B-SAFE-PROJECTION-RUNTIME-RECEIPT-V1"
+        with self.assertRaises(audit.AuditError): audit.validate_report(r,d,rec,h("static receipt"))
     def test_root_schema_rejected(self):
         r,d,rec=fixture(); r["schema"]="wrong"
         with self.assertRaises(audit.AuditError): audit.validate_report(r,d,rec,h("static receipt"))

@@ -11,6 +11,7 @@ from typing import Any, Mapping
 
 REPORT_ID = "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-REPORT-V1"
 RECEIPT_ID = "C11D-V2B-RUNTIME-IMPLEMENTATION-TEST-RECEIPT-V1"
+RUNTIME_RECEIPT_ID = "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-RUNTIME-RECEIPT-V1"
 AUDIT_ID = "C11D-V2B-CANDIDATE-EVIDENCE-AUDIT-V1"
 FROZEN_SHA = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 DESIGN_SHA = "e4f02e37fd4b9b2c89cbaa7597162f87b180da43182dc576d664263c1b937cfc"
@@ -148,7 +149,7 @@ def validate_report(report: Any, design: Mapping[str, Any], receipt: Mapping[str
             need(is_sha(run.get("stdout_sha256")) and is_sha(run.get("stderr_sha256")) and is_sha(run.get("receipt_sha256")), f"{cid}/{role}: malformed runtime hashes")
             r = run["receipt"]
             need(set(r) == receipt_fields, f"{cid}/{role}: receipt fields mismatch")
-            need(r["schema"] == "C11D-V2B-SAFE-PROJECTION-RUNTIME-RECEIPT-V1" and r["schema_version"] == "1.0" and r["status"] == "SAFE_PROJECTION_RECEIPT", f"{cid}/{role}: receipt identity mismatch")
+            need(r["schema"] == RUNTIME_RECEIPT_ID and r["schema_version"] == "1.0" and r["status"] == "SAFE_PROJECTION_RECEIPT", f"{cid}/{role}: receipt identity mismatch")
             need(r["selector"] == {"challenge_id": cid, "mechanic": design_selector["mechanic"]}, f"{cid}/{role}: receipt selector mismatch")
             need(r["process"] == {"run_id": run["run_id"], "process_id": run["process_id"], "variant_role": role, "exit_code": 0}, f"{cid}/{role}: receipt process mismatch")
             lin = r["lineage"]
