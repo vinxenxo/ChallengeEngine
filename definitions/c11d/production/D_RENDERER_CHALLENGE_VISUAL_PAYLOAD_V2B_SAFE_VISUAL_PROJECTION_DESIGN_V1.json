@@ -1,0 +1,859 @@
+{
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-VISUAL-PROJECTION-DESIGN-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "runtime_implementation_authorized": false,
+  "scope": "IN_MEMORY_TEST_ONLY_SOURCE_STATE_OBSERVATION; NO RENDERER INPUT; NO PAYLOAD OR MEDIA",
+  "authority": {
+    "analysis_baseline_zip": "ChallengeEngineV01_STATELESS_NIGHTLY_20261710_1555.zip",
+    "analysis_baseline_zip_sha256": "aced079f3f553d81121e84940e6a7d9f2be4c278912b94abee75f277b8f32df2",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "capability_contract_sha256": "3b4375957da12d16a6c7f652c1ba2536ce1a819b781b68b15e5dd3f0ee4bda75",
+    "semantic_binding_proposal_contract_sha256": "d37cb74f360e19e664b94673bbf4b95462cad6e681a08215a95f4565c6e810aa",
+    "semantic_review_contract_sha256": "374472b2d7ab0a70d94ed1f650302869b829252dcf06a7afe29c7c2e18e345dc",
+    "v2c_contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+    "v2c_runtime_report_sha256": "35e5985f47055fc11cbc0fcd7317f4d0a4ebe6bfe4d8bb22bdab67b7bcbe56a7",
+    "v2c_evidence": "Operator-confirmed active Windows run; report file is not directly readable from this design environment.",
+    "semantic_review_status": "SOURCE_REVIEW_COMPLETE_BINDINGS_NOT_APPROVED",
+    "review_tests_operator_confirmed": "34/34",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0
+  },
+  "identity_model": {
+    "canonical_request_hash": "Hash of the canonical input request; not proof of output change.",
+    "canonical_plan_hash": "Hash of the canonical plan; not proof of output change.",
+    "projection_instance_identity_sha256": "Hash of selector/mechanic/source pins/projection schema plus variant inputs; not the projected state.",
+    "safe_projection_state_sha256": "Hash only of the in-memory test-only allowlisted FrameSnapshot sequence; this is the actual gameplay seed sensitivity oracle.",
+    "candidate_field_probe_sha256": "Separate per-field digest over a reviewed individual candidate field stream; no raw values emitted. Never folded into the safe projection.",
+    "payload_identity": "NOT_CREATED; no payload hash or renderer payload identity is allowed in the receipt."
+  },
+  "safe_projection": {
+    "name": "V2B_SAFE_SOURCE_STATE_PROJECTION_V1",
+    "purpose": "Test-only immutable projection over source FrameSnapshot base fields. No presentation adapter or renderer consumes it.",
+    "allowlisted_frame_fields": [
+      "position",
+      "rotation",
+      "scale",
+      "opacity",
+      "texture_index",
+      "variant_id"
+    ],
+    "forbidden_frame_fields": [
+      "custom_data",
+      "simulation_result",
+      "input_state",
+      "pause_state",
+      "result_state",
+      "close_calls"
+    ],
+    "canonical_frame_tuple": [
+      "local_frame_index",
+      "position_x",
+      "position_y",
+      "rotation",
+      "scale_x",
+      "scale_y",
+      "opacity",
+      "texture_index",
+      "variant_id"
+    ],
+    "canonical_serialization": "UTF-8 JSON of ordered array-of-arrays in frame order; finite numeric values only; no dictionary key-order dependency.",
+    "coordinate_transform": "NONE",
+    "resampling": "PROHIBITED",
+    "source_frame_order": "PRESERVE_EXACTLY",
+    "source_frame_cardinality": "MUST_MATCH_CANONICAL_SIMULATION_RESULT",
+    "projection_outputs": [
+      "safe_projection_state_sha256",
+      "frame_count",
+      "source_fps",
+      "game_duration_seconds",
+      "finite_base_fields_only"
+    ],
+    "not_a_visual_payload": true,
+    "renderer_consumption": "PROHIBITED",
+    "payload_materialization": "PROHIBITED",
+    "media_creation": "PROHIBITED"
+  },
+  "candidate_observation_policy": {
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "include_custom_data_in_safe_projection": false,
+    "serialize_whole_custom_data_map": false,
+    "mode": "INDIVIDUAL_FIELD_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+    "allowed_probe_fields": [
+      "target_x",
+      "target_position",
+      "active_selection",
+      "displayed_count"
+    ],
+    "candidate_field_probe_is_binding_approval": false,
+    "candidate_values_in_receipt": false,
+    "probe_receipt_properties": [
+      "field",
+      "semantic_type",
+      "present_frames",
+      "type_histogram",
+      "value_stream_sha256",
+      "raw_values_emitted=false",
+      "renderer_binding_approved=false"
+    ],
+    "unknown_fields": "BLOCK",
+    "missing_or_wrong_type": "BLOCK_IF_FIELD_IS_REQUIRED_FOR_SELECTED_PROBE",
+    "pilot_target_x": "Scalar float in PILOT_0X100; invariant under gameplay-seed mutation expected for this field; never infer Y or convert to Vector2.",
+    "hit_target_position": "Seed-derived target prime, constant per run and repeated per frame.",
+    "catch_find_target_position": "Per-frame Vector2 track aligned exactly with source frame index.",
+    "choose_active_selection": "Integer option index; validate bounds and selected-option-position consistency; source-frame only due timebase blocker.",
+    "count_displayed_count": "Integer count; validate range and positional encoding; never substitute target_count; source-frame only due timebase blocker.",
+    "candidate_fields": [
+      {
+        "challenge_id": "CHALLENGE_003",
+        "field": "target_x",
+        "semantic_type": "float",
+        "sampling_lifecycle": "SCALAR_PER_FRAME",
+        "gameplay_seed_probe_expectation": "EXPECTED_INVARIANT_ACROSS_GAMEPLAY_SEED_VARIANT",
+        "review_disposition": "CANDIDATE_SCALAR_ONLY_NOT_APPROVED",
+        "probe_mode": "FIELD_LEVEL_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+        "included_in_safe_projection": false,
+        "renderer_binding_approved": false,
+        "rule": "Never infer Y or convert to Vector2; exclude from the base safe-state projection."
+      },
+      {
+        "challenge_id": "CHALLENGE_005",
+        "field": "target_position",
+        "semantic_type": "Vector2",
+        "sampling_lifecycle": "SAME_FINITE_VECTOR_REPEATED_FOR_ALL_FRAMES",
+        "gameplay_seed_probe_expectation": "EXPECTED_SEED_VARIANT_CHANGE_PER_RUN_CONSTANT",
+        "review_disposition": "CANDIDATE_PER_RUN_CONSTANT_VECTOR_NOT_APPROVED",
+        "probe_mode": "FIELD_LEVEL_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+        "included_in_safe_projection": false,
+        "renderer_binding_approved": false,
+        "rule": "Probe field-level hash only; do not treat per-frame storage as moving-target semantics."
+      },
+      {
+        "challenge_id": "CHALLENGE_006",
+        "field": "target_position",
+        "semantic_type": "Vector2",
+        "sampling_lifecycle": "FRAME_ALIGNED_VECTOR_TRACK",
+        "gameplay_seed_probe_expectation": "EXPECTED_SEED_VARIANT_CHANGE_PER_FRAME_TRACK",
+        "review_disposition": "CANDIDATE_PER_FRAME_VECTOR_NOT_APPROVED",
+        "probe_mode": "FIELD_LEVEL_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+        "included_in_safe_projection": false,
+        "renderer_binding_approved": false,
+        "rule": "Keep target p_t distinct from primary catcher p_c."
+      },
+      {
+        "challenge_id": "CHALLENGE_007",
+        "field": "target_position",
+        "semantic_type": "Vector2",
+        "sampling_lifecycle": "FRAME_ALIGNED_VECTOR_TRACK",
+        "gameplay_seed_probe_expectation": "EXPECTED_SEED_VARIANT_CHANGE_PER_FRAME_TRACK",
+        "review_disposition": "CANDIDATE_PER_FRAME_VECTOR_NOT_APPROVED",
+        "probe_mode": "FIELD_LEVEL_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+        "included_in_safe_projection": false,
+        "renderer_binding_approved": false,
+        "rule": "Keep target p_target distinct from primary scanner p_scan; exclude distractor topology."
+      },
+      {
+        "challenge_id": "CHALLENGE_008",
+        "field": "active_selection",
+        "semantic_type": "int",
+        "sampling_lifecycle": "FRAME_ALIGNED_OPTION_INDEX",
+        "gameplay_seed_probe_expectation": "EXPECTED_SEED_VARIANT_CHANGE_SOURCE_FRAME_ONLY",
+        "review_disposition": "CANDIDATE_INDEX_SOURCE_FRAME_ONLY_TIMEBASE_BLOCKED_NOT_APPROVED",
+        "probe_mode": "FIELD_LEVEL_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+        "included_in_safe_projection": false,
+        "renderer_binding_approved": false,
+        "rule": "Validate integer/range/index-to-position consistency; timeline remains blocked."
+      },
+      {
+        "challenge_id": "CHALLENGE_009",
+        "field": "displayed_count",
+        "semantic_type": "int",
+        "sampling_lifecycle": "FRAME_ALIGNED_COUNT_STATE",
+        "gameplay_seed_probe_expectation": "EXPECTED_SEED_VARIANT_CHANGE_SOURCE_FRAME_ONLY",
+        "review_disposition": "CANDIDATE_COUNT_SOURCE_FRAME_ONLY_TIMEBASE_BLOCKED_NOT_APPROVED",
+        "probe_mode": "FIELD_LEVEL_HASH_ONLY_NO_RAW_VALUES_IN_RECEIPT",
+        "included_in_safe_projection": false,
+        "renderer_binding_approved": false,
+        "rule": "Validate integer/range/count-to-primary-position consistency; never substitute target_count."
+      }
+    ]
+  },
+  "selectors": [
+    {
+      "challenge_id": "CHALLENGE_001",
+      "mechanic": "key",
+      "mechanic_version": "1.0",
+      "challenge_source_path": "challenges/CHALLENGE_001.json",
+      "challenge_source_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "mechanic_source_path": "core/mechanics/key/KeyMechanic.gd",
+      "mechanic_source_sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "REVIEWED_NOT_APPROVED_DUPLICATE_TARGET_AUTHORITY",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE",
+      "custom_data_candidate_field": null,
+      "custom_data_candidate_expectation": "NOT_APPLICABLE",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "KeyMechanic uses gameplay-seed samples for trajectory speed and rotation; static_target_position is duplicate authority not consumed from presentation setup.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "mechanic": "parking",
+      "mechanic_version": "1.0",
+      "challenge_source_path": "challenges/CHALLENGE_002.json",
+      "challenge_source_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "mechanic_source_path": "core/mechanics/parking/ParkingMechanic.gd",
+      "mechanic_source_sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076",
+      "source_coordinate_space": "UNDECLARED_IN_CHALLENGE_SOURCE",
+      "review_disposition": "BLOCKED_UNDECLARED_COORDINATE_SPACE",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE",
+      "custom_data_candidate_field": null,
+      "custom_data_candidate_expectation": "NOT_APPLICABLE",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "ParkingMechanic uses seeded offsets and per-frame trajectory randomness; static target coordinate space is undeclared so no target-position projection.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_003",
+      "mechanic": "pilot",
+      "mechanic_version": "2.0",
+      "challenge_source_path": "challenges/CHALLENGE_003.json",
+      "challenge_source_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "mechanic_source_path": "core/mechanics/pilot/PilotMechanic.gd",
+      "mechanic_source_sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13",
+      "source_coordinate_space": "PILOT_0X100",
+      "review_disposition": "REVIEWED_NOT_APPROVED_SCALAR_TRACK",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE_PRIMARY_STATE",
+      "custom_data_candidate_field": "target_x",
+      "custom_data_candidate_expectation": "EXPECTED_INVARIANT_TARGET_TRACK",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "Pilot target_x is a configured linear scalar track, not directly sampled from gameplay RNG; primary pilot trajectory uses seeded trajectory/control streams.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "mechanic": "parking_v2",
+      "mechanic_version": "2.0",
+      "challenge_source_path": "challenges/CHALLENGE_004.json",
+      "challenge_source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "mechanic_source_path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "mechanic_source_sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "REVIEWED_NOT_APPROVED_V1_REGRESSION_ONLY",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE",
+      "custom_data_candidate_field": null,
+      "custom_data_candidate_expectation": "NOT_APPLICABLE",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "ParkingMechanicV2 consumes keyed gameplay RNG for target movement and steering; existing CHALLENGE_004 V1 harness remains an immutable regression fixture.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "mechanic": "hit_v1",
+      "mechanic_version": "1.0",
+      "challenge_source_path": "challenges/CHALLENGE_005.json",
+      "challenge_source_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "mechanic_source_path": "core/mechanics/hit/HitMechanic.gd",
+      "mechanic_source_sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "REVIEWED_NOT_APPROVED_PER_RUN_CONSTANT_VECTOR",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE",
+      "custom_data_candidate_field": "target_position",
+      "custom_data_candidate_expectation": "EXPECTED_SEED_VARIANT_CHANGE_PER_RUN_CONSTANT",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "HitMechanic computes a seed-derived target prime once per run and repeats the same target vector on every source frame; primary projectile trajectory also has seeded variance/noise.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "mechanic": "catch_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_006.json",
+      "challenge_source_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "mechanic_source_path": "core/mechanics/catch/CatchMechanic.gd",
+      "mechanic_source_sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "REVIEWED_NOT_APPROVED_PER_FRAME_TARGET_VECTOR",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE",
+      "custom_data_candidate_field": "target_position",
+      "custom_data_candidate_expectation": "EXPECTED_SEED_VARIANT_CHANGE_PER_FRAME_TRACK",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "CatchMechanic separates primary catcher p_c from per-frame target p_t; setup seed offsets affect path parameters.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "mechanic": "find_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_007.json",
+      "challenge_source_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "mechanic_source_path": "core/mechanics/find/FindMechanic.gd",
+      "mechanic_source_sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "REVIEWED_NOT_APPROVED_PER_FRAME_TARGET_VECTOR",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE",
+      "custom_data_candidate_field": "target_position",
+      "custom_data_candidate_expectation": "EXPECTED_SEED_VARIANT_CHANGE_PER_FRAME_TRACK",
+      "timeline_scope": "SOURCE_FRAME_ONLY",
+      "reason": "FindMechanic separates primary scanner p_scan from per-frame p_target; source setup seeds spatial placement and phases/drift.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "challenge_id": "CHALLENGE_008",
+      "mechanic": "choose_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_008.json",
+      "challenge_source_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+      "mechanic_source_path": "core/mechanics/choose/ChooseMechanic.gd",
+      "mechanic_source_sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE_SOURCE_FRAME_ONLY",
+      "custom_data_candidate_field": "active_selection",
+      "custom_data_candidate_expectation": "EXPECTED_SEED_VARIANT_CHANGE_SOURCE_FRAME_ONLY",
+      "timeline_scope": "SOURCE_FRAME_ONLY_TIMEBASE_CONFLICT",
+      "reason": "ChooseMechanic derives winning_option from seed and writes per-frame integer selection; declared 11 s conflicts with 12 s phase sum so timeline acceptance remains blocked.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT"
+    },
+    {
+      "challenge_id": "CHALLENGE_009",
+      "mechanic": "count_v1",
+      "mechanic_version": null,
+      "challenge_source_path": "challenges/CHALLENGE_009.json",
+      "challenge_source_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+      "mechanic_source_path": "core/mechanics/count/CountMechanic.gd",
+      "mechanic_source_sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8",
+      "source_coordinate_space": "CANVAS_1080X1920",
+      "review_disposition": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+      "raw_frame_state_observation": "ALLOWED_TEST_ONLY_NO_COORDINATE_TRANSFORM",
+      "safe_projection_seed_sensitivity_expectation": "EXPECTED_SENSITIVE_SOURCE_FRAME_ONLY",
+      "custom_data_candidate_field": "displayed_count",
+      "custom_data_candidate_expectation": "EXPECTED_SEED_VARIANT_CHANGE_SOURCE_FRAME_ONLY",
+      "timeline_scope": "SOURCE_FRAME_ONLY_TIMEBASE_CONFLICT",
+      "reason": "CountMechanic derives target count from seed and writes per-frame count value; declared 11 s conflicts with 12 s phase sum so timeline acceptance remains blocked.",
+      "custom_data_candidate_is_renderer_binding": false,
+      "coordinate_transform_allowed": false,
+      "timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT"
+    }
+  ],
+  "seed_test_matrix": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SEED_TEST_MATRIX_V1.json",
+  "runtime_matrix": {
+    "planner": "universal_producer.evaluate_universal_request(raw, root)",
+    "bridge": "ChallengeRuntimeBridge.run_effective_pipeline(legacy_config: Dictionary) -> Dictionary",
+    "do_not_clone_planner_or_mechanics": true,
+    "gameplay_seed_injection": "In-memory deep copy of pinned source config only, using the explicit canonical request gameplay seed; never write the source JSON.",
+    "variants_per_selector": 5,
+    "canonical_planner_invocations_per_selector": 5,
+    "godot_processes_per_selector": 5,
+    "total_selectors": 9,
+    "canonical_planner_invocations_expected": 45,
+    "godot_processes_expected": 45,
+    "process_roles": [
+      "BASELINE_R1",
+      "BASELINE_R2",
+      "GAMEPLAY_SEED_MUTATION",
+      "MUSIC_SEED_MUTATION",
+      "EDITORIAL_MUTATION"
+    ],
+    "same_input_processes_independent": true,
+    "runtime_entry_must_receive_variant_gameplay_seed": true,
+    "music_seed_must_not_be_copied_into_simulation_seed": true,
+    "editorial_variant_must_not_mutate_simulation_input": true,
+    "report_on_first_failure_keep_all_nine_selector_rows": true,
+    "Godot_version_required": "4.7.1 Mono",
+    "rendering_server_or_scene_nodes": "PROHIBITED"
+  },
+  "fail_closed_negative_cases": [
+    "missing_source_pin",
+    "source_pin_hash_mismatch",
+    "missing_selector",
+    "selector_omission",
+    "duplicate_selector",
+    "unknown_selector",
+    "unknown_projection_field",
+    "missing_base_snapshot_field",
+    "unknown_extra_receipt_field",
+    "nonfinite_position",
+    "nonfinite_rotation",
+    "nonfinite_scale",
+    "nonfinite_opacity",
+    "invalid_texture_index_type",
+    "invalid_variant_id_type",
+    "custom_data_whole_map_access",
+    "unlisted_custom_data_candidate",
+    "candidate_raw_values_in_receipt",
+    "unauthorized_candidate_in_safe_projection",
+    "target_x_vector_conversion",
+    "target_position_wrong_type",
+    "candidate_frame_cardinality_mismatch",
+    "active_selection_out_of_range",
+    "displayed_count_position_encoding_mismatch",
+    "gameplay_seed_variant_no_state_hash_change",
+    "music_seed_variant_changes_state_hash",
+    "editorial_variant_changes_state_hash",
+    "repeat_projection_hash_mismatch",
+    "request_hash_substituted_for_projection_hash",
+    "plan_hash_substituted_for_projection_hash",
+    "payload_hash_claimed_without_payload",
+    "renderer_native_input_emitted",
+    "rendering_server_called",
+    "viewport_captured",
+    "media_created",
+    "payload_written",
+    "canonical_state_mutated",
+    "production_dispatch",
+    "phase_acceptance_for_008",
+    "phase_acceptance_for_009",
+    "v1_challenge_004_fixture_changed",
+    "godot_process_not_independent",
+    "missing_runtime_exit_code",
+    "runtime_error_with_pass_marker"
+  ],
+  "fail_closed_negative_case_count": 44,
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "visual_seed_sensitivity": "NOT_TESTED_UNTIL_V2B_RUNTIME_ACCEPTED",
+    "challenge_008_009_phase_timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+    "challenge_004_v1_fixture": "IMMUTABLE"
+  },
+  "source_pin_count": 81,
+  "source_pins": [
+    {
+      "path": "assets/c6/car.svg",
+      "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+    },
+    {
+      "path": "assets/c6/catcher.svg",
+      "sha256": "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd"
+    },
+    {
+      "path": "assets/c6/choose_background.svg",
+      "sha256": "11b3ac5e70ab6f1e15ac99fcf1b5ac36626a553e14a450b592a8fd598fa6dce2"
+    },
+    {
+      "path": "assets/c6/count_background.svg",
+      "sha256": "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7"
+    },
+    {
+      "path": "assets/c6/cursor.svg",
+      "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b"
+    },
+    {
+      "path": "assets/c6/garage_background.svg",
+      "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+    },
+    {
+      "path": "assets/c6/key.svg",
+      "sha256": "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121"
+    },
+    {
+      "path": "assets/c6/lock.svg",
+      "sha256": "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167"
+    },
+    {
+      "path": "assets/c6/parking_target.svg",
+      "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+    },
+    {
+      "path": "assets/c6/pilot.svg",
+      "sha256": "aeddc9783af06b86a188f8400f60447f6f8e4eac1ba7a40c0dcf88b981ae94fb"
+    },
+    {
+      "path": "assets/c6/projectile.svg",
+      "sha256": "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254"
+    },
+    {
+      "path": "assets/c6/scanner.svg",
+      "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804"
+    },
+    {
+      "path": "assets/c6/target.svg",
+      "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547"
+    },
+    {
+      "path": "assets/c6/transparent.svg",
+      "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21"
+    },
+    {
+      "path": "assets/c6/waypoint.svg",
+      "sha256": "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "path": "challenges/CHALLENGE_001.json",
+      "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"
+    },
+    {
+      "path": "challenges/CHALLENGE_002.json",
+      "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160"
+    },
+    {
+      "path": "challenges/CHALLENGE_003.json",
+      "sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "challenges/CHALLENGE_005.json",
+      "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30"
+    },
+    {
+      "path": "challenges/CHALLENGE_006.json",
+      "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694"
+    },
+    {
+      "path": "challenges/CHALLENGE_007.json",
+      "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61"
+    },
+    {
+      "path": "challenges/CHALLENGE_008.json",
+      "sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309"
+    },
+    {
+      "path": "challenges/CHALLENGE_009.json",
+      "sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151"
+    },
+    {
+      "path": "core/authoring/ChallengeMigrationAdapter.gd",
+      "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13"
+    },
+    {
+      "path": "core/authoring/VideoProfileRegistry.gd",
+      "sha256": "2dafcc034eb7101bb2ebefbe7c3185809049640e1f6cd82daed3da1decc91bba"
+    },
+    {
+      "path": "core/data/FrameSnapshot.gd",
+      "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+    },
+    {
+      "path": "core/deterministic/MechanicRNGContext.gd",
+      "sha256": "74aff2549b1fea80c877cda06a589a8cdae54ad4016b7e8ec9bbd25a6dbb6b01"
+    },
+    {
+      "path": "core/deterministic/RNGStreamRegistry.gd",
+      "sha256": "62877a9fe6fe5bf2dc92eb9aa54c73fcd304d99967fb1dcc022c86e3d258f693"
+    },
+    {
+      "path": "core/deterministic/StructuralRNG.gd",
+      "sha256": "9ea60ff4a242d9cad748965a3cebf32239a61f207ca5dc2d7458df77e77fab4e"
+    },
+    {
+      "path": "core/execution/ChallengeExecutionPipeline.gd",
+      "sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeContext.gd",
+      "sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+    },
+    {
+      "path": "core/mechanics/MechanicRegistry.gd",
+      "sha256": "03d20232a25ef6dcc0d5a8c6a772e3a6ab7706174cc37319c3a5d6cf67813a3a"
+    },
+    {
+      "path": "core/mechanics/catch/CatchMechanic.gd",
+      "sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30"
+    },
+    {
+      "path": "core/mechanics/choose/ChooseMechanic.gd",
+      "sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84"
+    },
+    {
+      "path": "core/mechanics/count/CountMechanic.gd",
+      "sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8"
+    },
+    {
+      "path": "core/mechanics/find/FindMechanic.gd",
+      "sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50"
+    },
+    {
+      "path": "core/mechanics/hit/HitMechanic.gd",
+      "sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3"
+    },
+    {
+      "path": "core/mechanics/key/KeyMechanic.gd",
+      "sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6"
+    },
+    {
+      "path": "core/mechanics/parking/ParkingMechanic.gd",
+      "sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076"
+    },
+    {
+      "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"
+    },
+    {
+      "path": "core/mechanics/pilot/PilotMechanic.gd",
+      "sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+    },
+    {
+      "path": "core/simulation/SimulationMetricsResolver.gd",
+      "sha256": "3ecd5c32c3eaa3235ec6f442e1ceb4316918bf2c83d136afaee82430807b9587"
+    },
+    {
+      "path": "core/simulation/SimulationResult.gd",
+      "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+    },
+    {
+      "path": "core/timeline/VideoTimeline.gd",
+      "sha256": "0887364e8ca682e729908cef337c5d7877343d9b85e27954312ca1d104450114"
+    },
+    {
+      "path": "core/validation/ChallengeValidator.gd",
+      "sha256": "db512e574ba3f9e25dda5709dea4784edc2e9da8f13fb9f2586d4645fbc03bf0"
+    },
+    {
+      "path": "core/validation/WinningFrameDetector.gd",
+      "sha256": "018e33d981956f55c28c789c783029176c83b81b5ae17fa97913b79d83fe84c2"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_PERSONALIZATION_PROFILE_REGISTRY_V1.json",
+      "sha256": "7712c4e83d0dadc7934e595244d15e67a09490b1e07351beb52a7396a6a6daaf"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json",
+      "sha256": "82a889cf199c9dafdf95665c83be28da1affa83e1cbf4472d30e40969030dd5e"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_REPORT_SCHEMA_V1.json",
+      "sha256": "ee2b10559363b5c92b9d8797e42366bf8369796c1c95bfb53d79d7311a7cf436"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_SCHEMA_V1.json",
+      "sha256": "43f8facf450535019b04fc3f8ef457ee6244f25484cff9a8ecf1021b3aab5741"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_V1.json",
+      "sha256": "3b4375957da12d16a6c7f652c1ba2536ce1a819b781b68b15e5dd3f0ee4bda75"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_REPORT_SCHEMA_V1.json",
+      "sha256": "57fc91fd8ee19a0f511692ef24e802c8df9c88e8eee73a7f30d14b3d5e3d7051"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "f017a8a0081cc42f08af6381e7d47accb7a522ce89301ab9724d003a51c2dcf7"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1.json",
+      "sha256": "d37cb74f360e19e664b94673bbf4b95462cad6e681a08215a95f4565c6e810aa"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d4/canonical_production_orchestrator.py",
+      "sha256": "cf3233426c725a7ade9fc52543b3f1d58ecf6ba4cf8cfebf52be7cc5be94c2d3"
+    },
+    {
+      "path": "tools/c11d/d4/gui_production_adapter.py",
+      "sha256": "2f72b38b93650f84e6830759d0211ce071f58dd77d80a12e0b518a44206e8c28"
+    },
+    {
+      "path": "tools/c11d/d4/personalization_resolver.py",
+      "sha256": "42638f85280ee68b54f4a5db8fbd511676310a6ec381ad1cc4600d955ac118b8"
+    },
+    {
+      "path": "tools/c11d/d4/production_cli.py",
+      "sha256": "cc5712e039273f87b02e5694954629b8a70c9ed86a120262853cb830ed593784"
+    },
+    {
+      "path": "tools/c11d/d4/production_request_normalizer.py",
+      "sha256": "254e54308760e7adada72eae968a92ee924eeb3fbcd9010485e8acbabca0b199"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    }
+  ],
+  "authority_input_pin_count": 9,
+  "authority_input_pins": [
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_V1.json",
+      "sha256": "3b4375957da12d16a6c7f652c1ba2536ce1a819b781b68b15e5dd3f0ee4bda75",
+      "role": "capability_contract"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1.json",
+      "sha256": "d37cb74f360e19e664b94673bbf4b95462cad6e681a08215a95f4565c6e810aa",
+      "role": "semantic_binding_proposal_contract"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SOURCE_SEMANTIC_REVIEW_SCHEMA_V1.json",
+      "sha256": "fa6529c8e6c7c8f96f186da26fe44e17004e92fd489184089ba62df204592a9f",
+      "role": "semantic_review_schema"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SOURCE_SEMANTIC_REVIEW_V1.json",
+      "sha256": "374472b2d7ab0a70d94ed1f650302869b829252dcf06a7afe29c7c2e18e345dc",
+      "role": "semantic_review_contract"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_source_semantic_review_v1.py",
+      "sha256": "5f8d255d91a0496f7502c4c68c281a8a918dbae954e92823a4ff8ef04b5fafba",
+      "role": "semantic_review_test"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2C_SOURCE_FRAME_RUNTIME_RECEIPT_V1.json",
+      "sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+      "role": "v2c_source_frame_contract"
+    },
+    {
+      "path": "tools/c11d/d9/challenge_visual_payload_v2c_source_frame_runtime_in_memory.gd",
+      "sha256": "ba8500c1db0b86539953c667bc1c48bc765e960f765f7ecef935ff4d206e2a9d",
+      "role": "v2c_godot_harness"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_v2c_source_frame_runtime.py",
+      "sha256": "a4f5aab8febfb49ec25a97d12f4604137dcbf1c63049a50b0fafe5c0c0c5cdcf",
+      "role": "v2c_runner"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2c_source_frame_runtime.py",
+      "sha256": "f8cb0717f9f90b46071dcbf292a4c308e3dac04b4090a3fd4a0ea53bf627ebfb",
+      "role": "v2c_runtime_tests"
+    }
+  ],
+  "next_gate": {
+    "name": "V2B_SAFE_VISUAL_PROJECTION_RUNTIME_HARNESS_IMPLEMENTATION",
+    "entry_condition": "V2-B design overlay add-only applied, source pins and authority pins clean, design contract tests pass in the active Windows checkout.",
+    "must_prove": [
+      "same-input repeat projection hashes match across independent processes",
+      "gameplay-seed mutation changes safe source-state projection hash for the seed-consuming primary state of all nine selectors",
+      "music-seed mutation leaves safe state hash and per-field candidate probe hashes invariant",
+      "editorial-only mutation leaves safe state state hash invariant",
+      "candidate-specific expectations per six custom_data rows match actual mechanics",
+      "source pins and mechanic/resource identities remain pinned",
+      "fail-closed negatives work",
+      "no side effects or renderer input"
+    ],
+    "must_not_do": [
+      "approve bindings by implication",
+      "materialize payload or media",
+      "emit renderer-native inputs",
+      "serialize whole custom_data map",
+      "alter challenge JSON",
+      "claim timeline acceptance for CHALLENGE_008/009",
+      "change C11-C",
+      "enable renderer"
+    ],
+    "implementation_status": "NOT_IMPLEMENTED_IN_THIS_INCREMENT"
+  }
+}

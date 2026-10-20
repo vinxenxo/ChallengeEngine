@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://c11d.local/schemas/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_PROJECTION_RECEIPT_SCHEMA_V1.json",
+  "title": "C11-D V2-B Safe Projection Observation Receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "scope",
+    "selector",
+    "lineage",
+    "identity",
+    "source_frames",
+    "safe_projection",
+    "candidate_observations",
+    "timebase_scope",
+    "semantic_binding_state",
+    "side_effects"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-PROJECTION-OBSERVATION-RECEIPT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "scope": {
+      "const": "IN_MEMORY_TEST_ONLY_SOURCE_STATE_OBSERVATION"
+    },
+    "selector": {
+      "type": "object",
+      "required": [
+        "challenge_id",
+        "mechanic"
+      ],
+      "properties": {
+        "challenge_id": {
+          "type": "string",
+          "pattern": "^CHALLENGE_00[1-9]$"
+        },
+        "mechanic": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "frozen_manifest_sha256",
+        "design_contract_sha256",
+        "source_pin_count",
+        "mechanic_source_sha256",
+        "challenge_source_sha256"
+      ],
+      "properties": {
+        "frozen_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "design_contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_pin_count": {
+          "const": 81
+        },
+        "mechanic_source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "challenge_source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "canonical_request_hash",
+        "canonical_plan_hash",
+        "projection_instance_identity_sha256",
+        "safe_projection_state_sha256",
+        "payload_identity_created"
+      ],
+      "properties": {
+        "canonical_request_hash": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "canonical_plan_hash": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "projection_instance_identity_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "safe_projection_state_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "payload_identity_created": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_frames": {
+      "type": "object",
+      "required": [
+        "count",
+        "fps",
+        "game_duration_seconds",
+        "frame_cardinality_ok",
+        "finite_base_fields_only"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "game_duration_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "frame_cardinality_ok": {
+          "const": true
+        },
+        "finite_base_fields_only": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "safe_projection": {
+      "type": "object",
+      "required": [
+        "projection_schema_id",
+        "field_allowlist",
+        "coordinate_transform",
+        "raw_source_coordinates_preserved",
+        "candidate_custom_data_included"
+      ],
+      "properties": {
+        "projection_schema_id": {
+          "type": "string"
+        },
+        "field_allowlist": {
+          "const": [
+            "position",
+            "rotation",
+            "scale",
+            "opacity",
+            "texture_index",
+            "variant_id"
+          ]
+        },
+        "coordinate_transform": {
+          "const": "NONE"
+        },
+        "raw_source_coordinates_preserved": {
+          "const": true
+        },
+        "candidate_custom_data_included": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidate_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "semantic_type",
+          "present_frames",
+          "type_histogram",
+          "value_stream_sha256",
+          "raw_values_emitted",
+          "renderer_binding_approved"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "target_x",
+              "target_position",
+              "active_selection",
+              "displayed_count"
+            ]
+          },
+          "semantic_type": {
+            "type": "string",
+            "enum": [
+              "float",
+              "Vector2",
+              "int"
+            ]
+          },
+          "present_frames": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "type_histogram": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "value_stream_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "raw_values_emitted": {
+            "const": false
+          },
+          "renderer_binding_approved": {
+            "const": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "timebase_scope": {
+      "type": "object",
+      "required": [
+        "known_conflict",
+        "phase_timeline_acceptance"
+      ],
+      "properties": {
+        "known_conflict": {
+          "type": "boolean"
+        },
+        "phase_timeline_acceptance": {
+          "enum": [
+            "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+            "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "semantic_binding_state": {
+      "type": "object",
+      "required": [
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "whole_custom_data_serialized"
+      ],
+      "properties": {
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "whole_custom_data_serialized": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "side_effects": {
+      "type": "object",
+      "required": [
+        "payload_file_written",
+        "media_created",
+        "renderer_native_input_emitted",
+        "render_nodes_created",
+        "rendering_server_called",
+        "viewport_captured",
+        "canonical_state_mutated",
+        "production_dispatched"
+      ],
+      "properties": {
+        "payload_file_written": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "render_nodes_created": {
+          "const": false
+        },
+        "rendering_server_called": {
+          "const": false
+        },
+        "viewport_captured": {
+          "const": false
+        },
+        "canonical_state_mutated": {
+          "const": false
+        },
+        "production_dispatched": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "payload_sha256"
+        ]
+      },
+      {
+        "required": [
+          "renderer_input"
+        ]
+      },
+      {
+        "required": [
+          "raw_custom_data"
+        ]
+      },
+      {
+        "required": [
+          "custom_data"
+        ]
+      }
+    ]
+  }
+}

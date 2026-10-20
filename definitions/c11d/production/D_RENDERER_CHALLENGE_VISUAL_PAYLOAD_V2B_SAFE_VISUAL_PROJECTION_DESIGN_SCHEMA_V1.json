@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://c11d.local/schemas/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_VISUAL_PROJECTION_DESIGN_SCHEMA_V1.json",
+  "title": "C11-D V2-B Safe Visual Projection Design Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "runtime_implementation_authorized",
+    "scope",
+    "authority",
+    "identity_model",
+    "safe_projection",
+    "candidate_observation_policy",
+    "selectors",
+    "seed_test_matrix",
+    "runtime_matrix",
+    "fail_closed_negative_cases",
+    "governance_locks",
+    "source_pins",
+    "authority_input_pins"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SAFE-VISUAL-PROJECTION-DESIGN-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "DESIGN_ONLY_NOT_IMPLEMENTED"
+    },
+    "runtime_implementation_authorized": {
+      "const": false
+    },
+    "scope": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "identity_model": {
+      "type": "object"
+    },
+    "safe_projection": {
+      "type": "object"
+    },
+    "candidate_observation_policy": {
+      "type": "object"
+    },
+    "selectors": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "seed_test_matrix": {
+      "type": "string"
+    },
+    "runtime_matrix": {
+      "type": "object"
+    },
+    "fail_closed_negative_cases": {
+      "type": "array",
+      "minItems": 40
+    },
+    "governance_locks": {
+      "type": "object"
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 81,
+      "maxItems": 81
+    },
+    "authority_input_pins": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9
+    }
+  }
+}

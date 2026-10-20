@@ -1,0 +1,136 @@
+{
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2B-SEED-TEST-MATRIX-V1",
+  "schema_version": "1.0",
+  "status": "DESIGN_ONLY_NOT_EXECUTED",
+  "variant_definitions": [
+    {
+      "role": "BASELINE_R1",
+      "gameplay_seed": "SOURCE_EFFECTIVE_GAMEPLAY_SEED",
+      "music_seed": 840001,
+      "editorial": "SOURCE_EDITORIAL",
+      "repeat_group": "BASELINE",
+      "expected_projection_relation": "REFERENCE"
+    },
+    {
+      "role": "BASELINE_R2",
+      "gameplay_seed": "SOURCE_EFFECTIVE_GAMEPLAY_SEED",
+      "music_seed": 840001,
+      "editorial": "SOURCE_EDITORIAL",
+      "repeat_group": "BASELINE",
+      "expected_projection_relation": "IDENTICAL_TO_BASELINE_R1",
+      "require_independent_process": true
+    },
+    {
+      "role": "GAMEPLAY_SEED_MUTATION",
+      "gameplay_seed": "DETERMINISTIC_NEIGHBOR_SEED_WITH_WRAP",
+      "music_seed": 840001,
+      "editorial": "SOURCE_EDITORIAL",
+      "repeat_group": null,
+      "expected_projection_relation": "DIFFERENT_SAFE_STATE_HASH_FOR_ALL_NINE_SOURCE_MECHANICS"
+    },
+    {
+      "role": "MUSIC_SEED_MUTATION",
+      "gameplay_seed": "SOURCE_EFFECTIVE_GAMEPLAY_SEED",
+      "music_seed": 840002,
+      "editorial": "SOURCE_EDITORIAL",
+      "repeat_group": null,
+      "expected_projection_relation": "IDENTICAL_SAFE_STATE_HASH_TO_BASELINE_R1"
+    },
+    {
+      "role": "EDITORIAL_MUTATION",
+      "gameplay_seed": "SOURCE_EFFECTIVE_GAMEPLAY_SEED",
+      "music_seed": 840001,
+      "editorial": "CHANGE_TITLE_SUBTITLE_CALL_TO_ACTION_ONLY",
+      "repeat_group": null,
+      "expected_projection_relation": "IDENTICAL_SAFE_STATE_HASH_TO_BASELINE_R1"
+    }
+  ],
+  "per_selector_invocations": {
+    "canonical_planner_invocations": 5,
+    "godot_runtime_processes": 5
+  },
+  "whole_increment_invocations": {
+    "selector_count": 9,
+    "canonical_planner_invocations": 45,
+    "godot_runtime_processes": 45
+  },
+  "proof_rules": [
+    {
+      "id": "REQUEST_PLAN_IDENTITY_REPEAT",
+      "condition": "Base R1 and R2 request_hash and plan_hash must be equal; their process IDs and run IDs must differ."
+    },
+    {
+      "id": "PROJECTION_REPEAT",
+      "condition": "Base R1 and R2 safe_projection_state_sha256 and each per-field candidate probe hash must match."
+    },
+    {
+      "id": "GAMEPLAY_SEED_SENSITIVITY",
+      "condition": "For every selector the safe_projection_state_sha256 for GAMEPLAY_SEED_MUTATION must differ from Base R1. This is output-state evidence, not request/plan hash evidence."
+    },
+    {
+      "id": "MUSIC_ORTHOGONALITY",
+      "condition": "MUSIC_SEED_MUTATION may change request/plan identity, but the safe_projection_state_sha256 and allowlisted candidate field hashes must match Base R1."
+    },
+    {
+      "id": "EDITORIAL_INVARIANCE",
+      "condition": "EDITORIAL_MUTATION changes editorial/request identity but preserves safe projection and candidate field hashes; challenge simulation input hash must match Base R1."
+    },
+    {
+      "id": "PILOT_TARGET_X_EXCEPTION",
+      "condition": "CHALLENGE_003 target_x candidate hash is expected invariant across gameplay-seed mutation; never use target_x alone as seed-sensitivity oracle."
+    },
+    {
+      "id": "TEMPORAL_CONFLICT",
+      "condition": "CHALLENGE_008 and CHALLENGE_009 are source-frame-only; no phase/timeline acceptance."
+    }
+  ],
+  "fail_closed_negative_cases": [
+    "missing_source_pin",
+    "source_pin_hash_mismatch",
+    "missing_selector",
+    "selector_omission",
+    "duplicate_selector",
+    "unknown_selector",
+    "unknown_projection_field",
+    "missing_base_snapshot_field",
+    "unknown_extra_receipt_field",
+    "nonfinite_position",
+    "nonfinite_rotation",
+    "nonfinite_scale",
+    "nonfinite_opacity",
+    "invalid_texture_index_type",
+    "invalid_variant_id_type",
+    "custom_data_whole_map_access",
+    "unlisted_custom_data_candidate",
+    "candidate_raw_values_in_receipt",
+    "unauthorized_candidate_in_safe_projection",
+    "target_x_vector_conversion",
+    "target_position_wrong_type",
+    "candidate_frame_cardinality_mismatch",
+    "active_selection_out_of_range",
+    "displayed_count_position_encoding_mismatch",
+    "gameplay_seed_variant_no_state_hash_change",
+    "music_seed_variant_changes_state_hash",
+    "editorial_variant_changes_state_hash",
+    "repeat_projection_hash_mismatch",
+    "request_hash_substituted_for_projection_hash",
+    "plan_hash_substituted_for_projection_hash",
+    "payload_hash_claimed_without_payload",
+    "renderer_native_input_emitted",
+    "rendering_server_called",
+    "viewport_captured",
+    "media_created",
+    "payload_written",
+    "canonical_state_mutated",
+    "production_dispatch",
+    "phase_acceptance_for_008",
+    "phase_acceptance_for_009",
+    "v1_challenge_004_fixture_changed",
+    "godot_process_not_independent",
+    "missing_runtime_exit_code",
+    "runtime_error_with_pass_marker"
+  ],
+  "fail_closed_negative_case_count": 44,
+  "runtime_acceptance_required": false,
+  "next_increment_after_design_acceptance": "IMPLEMENTATION_AND_RUNTIME_TESTS_IN_SEPARATELY_VERSIONED_V2B_RUNTIME_OVERLAY"
+}
