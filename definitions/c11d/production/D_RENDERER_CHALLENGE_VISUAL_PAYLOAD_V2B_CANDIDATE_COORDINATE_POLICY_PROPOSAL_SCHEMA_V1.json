@@ -1,0 +1,909 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://challengeengine.local/schemas/c11d/v2b-candidate-coordinate-policy-proposal-v1.json",
+  "title": "C11-D V2-B Candidate Coordinate Policy Proposal V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "source_authority",
+    "scope",
+    "evidence_pins",
+    "source_pins",
+    "authority_input_pins",
+    "semantic_decision_input_pins",
+    "field_region_decision_input_pins",
+    "coordinate_reference_pins",
+    "coordinate_policy",
+    "candidate_count",
+    "candidates",
+    "blocked_candidates_retained",
+    "governance",
+    "decision_gate",
+    "notes"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-V2B-CANDIDATE-COORDINATE-POLICY-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PROPOSED_NOT_APPROVED_OPERATOR_REVIEW_REQUIRED"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 100
+    },
+    "source_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_c11c_manifest_path",
+        "frozen_c11c_manifest_sha256",
+        "field_region_visibility_proposal_path",
+        "field_region_visibility_proposal_sha256",
+        "field_region_visibility_decision_record_path",
+        "field_region_visibility_decision_record_sha256",
+        "field_region_visibility_decision_test_receipt_sha256",
+        "coordinate_mapper_path",
+        "coordinate_mapper_sha256",
+        "delivery_profile_id",
+        "delivery_profile_path",
+        "delivery_profile_sha256"
+      ],
+      "properties": {
+        "frozen_c11c_manifest_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frozen_c11c_manifest_sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field_region_visibility_proposal_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field_region_visibility_proposal_sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field_region_visibility_decision_record_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field_region_visibility_decision_record_sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field_region_visibility_decision_test_receipt_sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coordinate_mapper_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coordinate_mapper_sha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "delivery_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "delivery_profile_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "delivery_profile_sha256": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "candidate_count",
+        "accepted_field_region_candidate_count",
+        "blocked_candidate_count",
+        "included_challenge_fields",
+        "excluded_blocked_challenge_fields",
+        "source_frame_only",
+        "runtime_reexecution",
+        "simulation_reexecution",
+        "payload_materialized",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activated",
+        "render_test_authorized",
+        "media_output_created",
+        "challenge_json_modification_allowed",
+        "coordinate_mapper_modification_allowed",
+        "timebase_policy_changed",
+        "source_frames_resampled"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "candidate_count": {
+          "const": 4
+        },
+        "accepted_field_region_candidate_count": {
+          "const": 4
+        },
+        "blocked_candidate_count": {
+          "const": 2
+        },
+        "included_challenge_fields": {
+          "const": [
+            "CHALLENGE_003.target_x",
+            "CHALLENGE_005.target_position",
+            "CHALLENGE_006.target_position",
+            "CHALLENGE_007.target_position"
+          ]
+        },
+        "excluded_blocked_challenge_fields": {
+          "const": [
+            "CHALLENGE_008.active_selection",
+            "CHALLENGE_009.displayed_count"
+          ]
+        },
+        "source_frame_only": {
+          "const": true
+        },
+        "runtime_reexecution": {
+          "const": false
+        },
+        "simulation_reexecution": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activated": {
+          "const": false
+        },
+        "render_test_authorized": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "challenge_json_modification_allowed": {
+          "const": false
+        },
+        "coordinate_mapper_modification_allowed": {
+          "const": false
+        },
+        "timebase_policy_changed": {
+          "const": false
+        },
+        "source_frames_resampled": {
+          "const": false
+        }
+      }
+    },
+    "evidence_pins": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_evidence_audit_json_sha256",
+        "runtime_report_sha256",
+        "implementation_test_receipt_sha256",
+        "prior_semantic_decision_record_sha256",
+        "prior_semantic_decision_test_receipt_sha256",
+        "prior_field_region_proposal_test_receipt_sha256",
+        "prior_field_region_proposal_test_stdout_sha256",
+        "prior_field_region_proposal_test_stderr_sha256",
+        "field_region_decision_record_sha256",
+        "field_region_decision_record_schema_sha256",
+        "field_region_decision_test_script_sha256",
+        "field_region_decision_test_count",
+        "field_region_decision_test_stdout_sha256",
+        "field_region_decision_test_stderr_sha256",
+        "field_region_decision_test_receipt_sha256",
+        "coordinate_reference_pins_count"
+      ],
+      "properties": {
+        "candidate_evidence_audit_json_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runtime_report_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "implementation_test_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prior_semantic_decision_record_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prior_semantic_decision_test_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prior_field_region_proposal_test_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prior_field_region_proposal_test_stdout_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prior_field_region_proposal_test_stderr_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "field_region_decision_record_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "field_region_decision_record_schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "field_region_decision_test_script_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "field_region_decision_test_count": {
+          "const": 653
+        },
+        "field_region_decision_test_stdout_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "field_region_decision_test_stderr_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "field_region_decision_test_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "coordinate_reference_pins_count": {
+          "const": 3
+        }
+      }
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 81,
+      "maxItems": 81,
+      "items": {
+        "$ref": "#/$defs/filePin"
+      }
+    },
+    "authority_input_pins": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "$ref": "#/$defs/rolePin"
+      }
+    },
+    "semantic_decision_input_pins": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/rolePin"
+      }
+    },
+    "field_region_decision_input_pins": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/rolePin"
+      }
+    },
+    "coordinate_reference_pins": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/rolePin"
+      }
+    },
+    "coordinate_policy": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "status",
+        "logical_canvas",
+        "source_canvas",
+        "transform_stages",
+        "combined_canvas_to_reference_delivery",
+        "pilot_scalar_policy",
+        "vector_policy",
+        "asset_size_policy",
+        "temporal_noninterference",
+        "invalid_data_policy"
+      ],
+      "properties": {
+        "status": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "logical_canvas": {
+          "type": "object",
+          "required": [
+            "id",
+            "width",
+            "height",
+            "coordinate_origin",
+            "x_axis",
+            "y_axis"
+          ],
+          "properties": {
+            "id": {
+              "const": "LOGICAL_SOCIAL_CANVAS_540X960"
+            },
+            "width": {
+              "const": 540
+            },
+            "height": {
+              "const": 960
+            }
+          }
+        },
+        "source_canvas": {
+          "type": "object",
+          "required": [
+            "id",
+            "width",
+            "height",
+            "aspect_ratio"
+          ],
+          "properties": {
+            "id": {
+              "const": "CANVAS_1080X1920"
+            },
+            "width": {
+              "const": 1080
+            },
+            "height": {
+              "const": 1920
+            },
+            "aspect_ratio": {
+              "const": "9:16"
+            }
+          }
+        },
+        "transform_stages": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "combined_canvas_to_reference_delivery": {
+          "type": "object",
+          "required": [
+            "scale_x",
+            "scale_y",
+            "offset_x",
+            "offset_y",
+            "status"
+          ],
+          "properties": {
+            "scale_x": {
+              "const": 0.6666666666666666
+            },
+            "scale_y": {
+              "const": 0.6666666666666666
+            },
+            "offset_x": {
+              "const": 0.0
+            },
+            "offset_y": {
+              "const": 0.0
+            }
+          }
+        },
+        "pilot_scalar_policy": {
+          "type": "object",
+          "required": [
+            "source_space",
+            "source_domain_min",
+            "source_domain_max",
+            "destination_rect",
+            "logical_x_formula",
+            "logical_y_formula",
+            "y_semantics",
+            "y_inferred_from_simulation",
+            "out_of_domain_behavior",
+            "clamp_source_value"
+          ],
+          "properties": {
+            "source_space": {
+              "const": "PILOT_0X100"
+            },
+            "source_domain_min": {
+              "const": 0.0
+            },
+            "source_domain_max": {
+              "const": 100.0
+            },
+            "y_inferred_from_simulation": {
+              "const": false
+            },
+            "out_of_domain_behavior": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            },
+            "clamp_source_value": {
+              "const": false
+            }
+          }
+        },
+        "vector_policy": {
+          "type": "object",
+          "required": [
+            "source_space",
+            "source_domain_x",
+            "source_domain_y",
+            "bounds_inclusive",
+            "mapping",
+            "add_offset",
+            "invert_y",
+            "clamp_coordinates",
+            "out_of_bounds_behavior"
+          ],
+          "properties": {
+            "source_space": {
+              "const": "CANVAS_1080X1920"
+            },
+            "source_domain_x": {
+              "const": [
+                0.0,
+                1080.0
+              ]
+            },
+            "source_domain_y": {
+              "const": [
+                0.0,
+                1920.0
+              ]
+            },
+            "bounds_inclusive": {
+              "const": true
+            },
+            "add_offset": {
+              "const": false
+            },
+            "invert_y": {
+              "const": false
+            },
+            "clamp_coordinates": {
+              "const": false
+            },
+            "out_of_bounds_behavior": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            }
+          }
+        },
+        "asset_size_policy": {
+          "type": "object",
+          "required": [
+            "status",
+            "source_interpretation",
+            "known_marker_intrinsic_dimensions",
+            "waypoint_logical_size",
+            "target_logical_size",
+            "waypoint_reference_delivery_size",
+            "target_reference_delivery_size",
+            "asset_anchor",
+            "asset_bounds_behavior",
+            "simulation_scale_multiplier_used",
+            "asset_pixel_rounding"
+          ],
+          "properties": {
+            "status": {
+              "const": "PROPOSED_NOT_APPROVED"
+            },
+            "asset_anchor": {
+              "const": "CENTER"
+            },
+            "simulation_scale_multiplier_used": {
+              "const": false
+            },
+            "asset_pixel_rounding": {
+              "const": "UNRESOLVED_DEFERRED_TO_RENDERER_IMPLEMENTATION_GATE"
+            }
+          }
+        },
+        "temporal_noninterference": {
+          "type": "object",
+          "required": [
+            "interpolation",
+            "extrapolation",
+            "delivery_resampling",
+            "source_frame_order",
+            "winning_frame",
+            "close_calls"
+          ],
+          "properties": {
+            "interpolation": {
+              "const": "NONE"
+            },
+            "extrapolation": {
+              "const": "NONE"
+            },
+            "delivery_resampling": {
+              "const": "NOT_AUTHORIZED_BY_THIS_POLICY_PROPOSAL"
+            },
+            "source_frame_order": {
+              "const": "UNCHANGED"
+            },
+            "winning_frame": {
+              "const": "SOLE_CHALLENGE_TEMPORAL_ANCHOR"
+            },
+            "close_calls": {
+              "const": "EPISODE_COUNT_ONLY_NOT_TIMELINE_OR_VISIBILITY_INPUT"
+            }
+          }
+        },
+        "invalid_data_policy": {
+          "type": "object",
+          "required": [
+            "missing_field",
+            "nonfinite_scalar_or_component",
+            "sample_count_mismatch",
+            "out_of_domain_scalar",
+            "out_of_bounds_vector",
+            "only_allowlisted_custom_data_field_read",
+            "serialize_whole_custom_data_map"
+          ],
+          "properties": {
+            "missing_field": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            },
+            "nonfinite_scalar_or_component": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            },
+            "sample_count_mismatch": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            },
+            "out_of_domain_scalar": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            },
+            "out_of_bounds_vector": {
+              "const": "FAIL_CLOSED_REJECT_WHOLE_CANDIDATE_TRACK"
+            },
+            "only_allowlisted_custom_data_field_read": {
+              "const": true
+            },
+            "serialize_whole_custom_data_map": {
+              "const": false
+            }
+          }
+        }
+      }
+    },
+    "candidate_count": {
+      "const": 4
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "challenge_id",
+          "field",
+          "semantic_type",
+          "source_coordinate_space",
+          "source_track_kind",
+          "source_pointer",
+          "asset_path",
+          "asset_role",
+          "asset_dimensions_source",
+          "field_region_decision",
+          "mapping_proposal",
+          "visibility",
+          "sample_rule",
+          "interpolation",
+          "extrapolation",
+          "source_semantics_preserved",
+          "unresolved"
+        ],
+        "properties": {
+          "challenge_id": {
+            "enum": [
+              "CHALLENGE_003",
+              "CHALLENGE_005",
+              "CHALLENGE_006",
+              "CHALLENGE_007"
+            ]
+          },
+          "field": {
+            "enum": [
+              "target_x",
+              "target_position"
+            ]
+          },
+          "field_region_decision": {
+            "const": "ACCEPT_FOR_FUTURE_COORDINATE_POLICY_SPECIFICATION_ONLY"
+          },
+          "interpolation": {
+            "const": "NONE"
+          },
+          "extrapolation": {
+            "const": "NONE"
+          },
+          "source_semantics_preserved": {
+            "const": true
+          }
+        }
+      }
+    },
+    "blocked_candidates_retained": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "challenge_id",
+          "field",
+          "status",
+          "reason"
+        ],
+        "properties": {
+          "challenge_id": {
+            "enum": [
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "status": {
+            "const": "REMAINS_BLOCKED"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 60
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coordinate_policy_approval",
+        "coordinate_transform_authorization",
+        "asset_size_policy_approval",
+        "binding_authorization",
+        "renderer_projection_authorization",
+        "payload_consumer_implementation_authorized",
+        "renderer_activation_authorized",
+        "render_test_authorized",
+        "payload_materialization_authorized",
+        "media_creation_authorized",
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "whole_custom_data_serialization_allowed",
+        "challenge_json_modification_allowed",
+        "challenge_004_v1_harness_mutation_allowed"
+      ],
+      "properties": {
+        "coordinate_policy_approval": {
+          "const": "NOT_GRANTED"
+        },
+        "coordinate_transform_authorization": {
+          "const": "NOT_GRANTED"
+        },
+        "asset_size_policy_approval": {
+          "const": "NOT_GRANTED"
+        },
+        "binding_authorization": {
+          "const": "NOT_GRANTED"
+        },
+        "renderer_projection_authorization": {
+          "const": "NOT_GRANTED"
+        },
+        "payload_consumer_implementation_authorized": {
+          "const": false
+        },
+        "renderer_activation_authorized": {
+          "const": false
+        },
+        "render_test_authorized": {
+          "const": false
+        },
+        "payload_materialization_authorized": {
+          "const": false
+        },
+        "media_creation_authorized": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "whole_custom_data_serialization_allowed": {
+          "const": false
+        },
+        "challenge_json_modification_allowed": {
+          "const": false
+        },
+        "challenge_004_v1_harness_mutation_allowed": {
+          "const": false
+        }
+      }
+    },
+    "decision_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decision_required_for",
+        "acceptance_effect",
+        "does_not_authorize"
+      ],
+      "properties": {
+        "status": {
+          "const": "PENDING_OPERATOR_REVIEW_OF_EXPLICIT_SPATIAL_FORMULAS"
+        },
+        "decision_required_for": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "string"
+          }
+        },
+        "acceptance_effect": {
+          "type": "string",
+          "minLength": 50
+        },
+        "does_not_authorize": {
+          "type": "array",
+          "minItems": 8,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 50
+      }
+    }
+  },
+  "$defs": {
+    "filePin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_./-]+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "rolePin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "role"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_./-]+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
