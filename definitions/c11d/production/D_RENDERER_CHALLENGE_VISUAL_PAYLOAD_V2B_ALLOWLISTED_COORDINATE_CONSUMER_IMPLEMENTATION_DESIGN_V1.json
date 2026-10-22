@@ -1,0 +1,712 @@
+{
+  "schema": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-IMPLEMENTATION-DESIGN-V1",
+  "schema_version": "1.0",
+  "status": "REVIEW_ONLY_DESIGN_PENDING_IMPLEMENTATION",
+  "purpose": "Define the review-only implementation boundary, deterministic algorithm, error contract, and exhaustive negative-test plan for the accepted allowlisted coordinate consumer. This file does not contain production consumer code and does not authorize runtime bindings or renderer use.",
+  "decision_scope": "IMPLEMENTATION_DESIGN_AND_NEGATIVE_TEST_CONTRACT_ONLY_NO_RUNTIME_AUTHORIZATION",
+  "source_authority": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "consumer_specification_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_PROJECTION_CONSUMER_SPECIFICATION_V1.json",
+    "consumer_specification_sha256": "be2a42e26fc22a25df378d234a358c4005610eefbcb02f6b70e2ee56f6625a52",
+    "consumer_specification_schema_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_PROJECTION_CONSUMER_SPECIFICATION_SCHEMA_V1.json",
+    "consumer_specification_schema_sha256": "d8381ca133e4962d30e861e3e092eb1870909842d210b3ebf25ed702e14c3446",
+    "consumer_specification_test_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_projection_consumer_specification_v1.py",
+    "consumer_specification_test_sha256": "3e155960c8c6862ecc29ab28f8e4dccc9f115219734f21bc6a18262676e336ab",
+    "consumer_specification_test_receipt_sha256": "c52d3f5ca276beea0482eb1ab521d163e201023f818e9448f6f7279c306b2ef0",
+    "consumer_specification_test_stdout_sha256": "c5daea5a270aec81d76aa1c5b1499f8826d1d09e9047b3ad7ae0a7941dfc3682",
+    "consumer_specification_test_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "coordinate_policy_decision_record_sha256": "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+    "coordinate_policy_decision_test_receipt_sha256": "b61fb3403e0ad5725937be05f8a7153c3cf35ccde167306f45151ece0f1cc4cb",
+    "coordinate_mapper_path": "core/presentation/CoordinateMapper.gd",
+    "coordinate_mapper_sha256": "244bace2eaf87e29d653715ae18c0b4824cdf9503e915932be53d0f52bbe461c"
+  },
+  "scope": {
+    "kind": "REVIEW_ONLY_IN_MEMORY_CONSUMER_DESIGN",
+    "accepted_candidate_count": 4,
+    "blocked_candidate_count": 2,
+    "accepted_candidate_field_pairs": [
+      {
+        "candidate_id": "CHALLENGE_003",
+        "field": "target_x"
+      },
+      {
+        "candidate_id": "CHALLENGE_005",
+        "field": "target_position"
+      },
+      {
+        "candidate_id": "CHALLENGE_006",
+        "field": "target_position"
+      },
+      {
+        "candidate_id": "CHALLENGE_007",
+        "field": "target_position"
+      }
+    ],
+    "blocked_candidate_field_pairs": [
+      {
+        "candidate_id": "CHALLENGE_008",
+        "field": "active_selection"
+      },
+      {
+        "candidate_id": "CHALLENGE_009",
+        "field": "displayed_count"
+      }
+    ],
+    "production_consumer_code_included": false,
+    "runtime_execution_included": false,
+    "renderer_dispatch_reachable": false,
+    "renderer_native_input_emitted": false,
+    "payload_materialized": false,
+    "media_created": false,
+    "challenge_json_modification_allowed": false,
+    "coordinate_mapper_modification_allowed": false,
+    "simulation_or_rng_mutation_allowed": false,
+    "whole_custom_data_serialization_allowed": false
+  },
+  "implementation_boundary": {
+    "planned_module": "isolated review-only GDScript RefCounted helper, not in production call graph",
+    "planned_entrypoint": "project_allowlisted_target_marker_track(candidate_id, simulation_result, upstream_validation)",
+    "output_lifetime": "in-memory return value only; no JSON serialization, file writes, logs containing inputs, payload store, or renderer handoff",
+    "no_scene_or_render_nodes": true,
+    "rendering_server_access": false,
+    "resource_loading": false,
+    "asset_contract_handling": "use only the pinned asset path and static intrinsic-dimension contract; do not load SVG or create texture/Node2D/Sprite2D during this gate",
+    "not_yet_decided": "the production call site and binding approval remain a later formal gate; this design must not guess or add that call site",
+    "no_production_wiring": true,
+    "no_preview_or_delivery_scale": true,
+    "no_raster_rounding_or_crop_policy": true,
+    "production_consumer_code_included": false
+  },
+  "input_contract": {
+    "candidate_id": {
+      "type": "String",
+      "rule": "exact, case-sensitive candidate ID; no aliases, trimming, numeric coercion, or inference from frame data"
+    },
+    "simulation_result": {
+      "type": "SimulationResult",
+      "rule": "must be the same object associated with upstream validation and must expose the existing frames array"
+    },
+    "upstream_validation": {
+      "type": "Dictionary",
+      "origin": "the result of SimulationResult.validate_contract(expected_game_frames) for this exact SimulationResult",
+      "required": {
+        "is_valid": true,
+        "error_code": "OK"
+      },
+      "missing_or_mismatched_failure": "SNAPSHOT_CONTRACT_NOT_VALID"
+    },
+    "frame_sequence": "SimulationResult.frames in current array order; no winning_frame filtering and no custom sorting",
+    "frame_index_source": "zero-based local array ordinal i; do not read a snapshot frame_index field",
+    "custom_data_access": "exactly one Dictionary.get(allowlisted_key, unique_missing_sentinel) per source frame; never pair has() with a second index/get read",
+    "snapshot_access": "for projection read only the exact allowlisted custom_data key; asset path and projection constants come from the pinned contract, not the snapshot",
+    "no_enumeration_or_copy": "do not enumerate, duplicate, merge, stringify, log, hash, or serialize custom_data or any full snapshot object",
+    "empty_frames": "reject before output allocation",
+    "atomicity": "all frames validate before a success track is returned; any invalid sample discards all local partial frame entries and returns only a safe error envelope"
+  },
+  "candidate_handlers": [
+    {
+      "candidate_id": "CHALLENGE_003",
+      "field": "target_x",
+      "semantic_type": "finite_number",
+      "track_kind": "PER_FRAME_SCALAR",
+      "source_space": "PILOT_0X100",
+      "source_domain": {
+        "min": 0.0,
+        "max": 100.0,
+        "inclusive": true
+      },
+      "projection": {
+        "logical_x": "(target_x / 100.0) * 540.0",
+        "logical_y": 480.0,
+        "y_semantics": "PRESENTATION_CENTERLINE_DEFAULT_NOT_SOURCE_DATA",
+        "logical_asset_size": [
+          50.0,
+          50.0
+        ],
+        "anchor": "CENTER"
+      },
+      "asset_path": "assets/c6/waypoint.svg",
+      "asset_role": "TARGET",
+      "track_constraints": {
+        "one_sample_per_source_frame": true,
+        "require_exact_source_frame_count": true,
+        "require_source_order_preservation": true,
+        "interpolation": "NONE",
+        "extrapolation": "NONE"
+      }
+    },
+    {
+      "candidate_id": "CHALLENGE_005",
+      "field": "target_position",
+      "semantic_type": "Vector2",
+      "track_kind": "PER_RUN_CONSTANT_REPEATED_PER_FRAME",
+      "source_space": "CANVAS_1080X1920",
+      "source_domain": {
+        "x_min": 0.0,
+        "x_max": 1080.0,
+        "y_min": 0.0,
+        "y_max": 1920.0,
+        "inclusive": true
+      },
+      "projection": {
+        "logical_x": "target_position.x * 0.5",
+        "logical_y": "target_position.y * 0.5",
+        "logical_asset_size": [
+          50.0,
+          50.0
+        ],
+        "anchor": "CENTER"
+      },
+      "asset_path": "assets/c6/target.svg",
+      "asset_role": "TARGET",
+      "track_constraints": {
+        "one_sample_per_source_frame": true,
+        "require_exact_source_frame_count": true,
+        "require_source_order_preservation": true,
+        "must_equal_same_run_target_at_every_frame": true,
+        "interpolation": "NONE",
+        "extrapolation": "NONE"
+      }
+    },
+    {
+      "candidate_id": "CHALLENGE_006",
+      "field": "target_position",
+      "semantic_type": "Vector2",
+      "track_kind": "PER_FRAME_VECTOR",
+      "source_space": "CANVAS_1080X1920",
+      "source_domain": {
+        "x_min": 0.0,
+        "x_max": 1080.0,
+        "y_min": 0.0,
+        "y_max": 1920.0,
+        "inclusive": true
+      },
+      "projection": {
+        "logical_x": "target_position.x * 0.5",
+        "logical_y": "target_position.y * 0.5",
+        "logical_asset_size": [
+          50.0,
+          50.0
+        ],
+        "anchor": "CENTER"
+      },
+      "asset_path": "assets/c6/target.svg",
+      "asset_role": "TARGET",
+      "track_constraints": {
+        "one_sample_per_source_frame": true,
+        "require_exact_source_frame_count": true,
+        "require_source_order_preservation": true,
+        "interpolation": "NONE",
+        "extrapolation": "NONE"
+      }
+    },
+    {
+      "candidate_id": "CHALLENGE_007",
+      "field": "target_position",
+      "semantic_type": "Vector2",
+      "track_kind": "PER_FRAME_VECTOR",
+      "source_space": "CANVAS_1080X1920",
+      "source_domain": {
+        "x_min": 0.0,
+        "x_max": 1080.0,
+        "y_min": 0.0,
+        "y_max": 1920.0,
+        "inclusive": true
+      },
+      "projection": {
+        "logical_x": "target_position.x * 0.5",
+        "logical_y": "target_position.y * 0.5",
+        "logical_asset_size": [
+          50.0,
+          50.0
+        ],
+        "anchor": "CENTER"
+      },
+      "asset_path": "assets/c6/target.svg",
+      "asset_role": "TARGET",
+      "track_constraints": {
+        "one_sample_per_source_frame": true,
+        "require_exact_source_frame_count": true,
+        "require_source_order_preservation": true,
+        "interpolation": "NONE",
+        "extrapolation": "NONE"
+      }
+    }
+  ],
+  "validation_pipeline": [
+    {
+      "step": 1,
+      "name": "projection_stage_gate",
+      "rule": "require the call to be from the isolated review-only test entry point; no production or renderer-dispatch caller exists",
+      "failure_code": "UNAPPROVED_PROJECTION_STAGE"
+    },
+    {
+      "step": 2,
+      "name": "candidate_id_gate",
+      "rule": "exact match to one of the four accepted candidate IDs",
+      "failure_code": "UNSUPPORTED_CANDIDATE"
+    },
+    {
+      "step": 3,
+      "name": "candidate_field_pair_gate",
+      "rule": "bind exactly the single field specified for the accepted ID; no caller-supplied field argument",
+      "failure_code": "ALLOWLIST_MISMATCH"
+    },
+    {
+      "step": 4,
+      "name": "upstream_contract_gate",
+      "rule": "require valid upstream SimulationResult contract proof for the exact object and expected frame count",
+      "failure_code": "SNAPSHOT_CONTRACT_NOT_VALID"
+    },
+    {
+      "step": 5,
+      "name": "source_frame_gate",
+      "rule": "require nonempty Array[FrameSnapshot] and preserve its exact cardinality/order",
+      "failure_code": "EMPTY_SOURCE_FRAMES"
+    },
+    {
+      "step": 6,
+      "name": "asset_contract_gate",
+      "rule": "require pinned target asset path and approved 100x100 intrinsic size contract, but do not load the resource",
+      "failure_code": "INVALID_ASSET_DIMENSIONS"
+    },
+    {
+      "step": 7,
+      "name": "single_key_extraction",
+      "rule": "exactly one Dictionary.get(allowlisted_key, unique_missing_sentinel) per source frame; never pair has() with a second index/get read",
+      "failure_code": "MISSING_ALLOWLISTED_FIELD"
+    },
+    {
+      "step": 8,
+      "name": "strict_type_gate",
+      "rule": "CHALLENGE_003: int/float only, excluding bool; CHALLENGE_005/006/007: exactly Vector2; no string/array/dictionary coercion",
+      "failure_code": "INVALID_VALUE_TYPE"
+    },
+    {
+      "step": 9,
+      "name": "finite_value_gate",
+      "rule": "reject NaN and both infinities in scalar or either vector component",
+      "failure_code": "NONFINITE_VALUE"
+    },
+    {
+      "step": 10,
+      "name": "inclusive_domain_gate",
+      "rule": "enforce per-spec coordinate domain without clamp or round",
+      "failure_code": "VALUE_OUT_OF_DOMAIN or VECTOR_OUT_OF_BOUNDS"
+    },
+    {
+      "step": 11,
+      "name": "per_run_invariant_gate",
+      "rule": "for CHALLENGE_005 every target_position must exactly equal the first accepted same-run Vector2",
+      "failure_code": "PER_RUN_CONSTANT_MISMATCH"
+    },
+    {
+      "step": 12,
+      "name": "ordered_projection",
+      "rule": "emit one in-memory frame descriptor per source frame at ordinal i; apply only the spec transform and constants",
+      "failure_code": "FRAME_ORDER_MISMATCH"
+    },
+    {
+      "step": 13,
+      "name": "closed_output_check",
+      "rule": "success object contains exactly the output-contract root/frame/marker keys and no source or simulation fields",
+      "failure_code": "FRAME_CARDINALITY_MISMATCH"
+    },
+    {
+      "step": 14,
+      "name": "atomic_return",
+      "rule": "return complete logical track on full success; otherwise return no projected track and no partial samples",
+      "failure_code": "fail-closed"
+    }
+  ],
+  "coordinate_contract": {
+    "output_space": "LOGICAL_SOCIAL_CANVAS_540X960",
+    "logical_canvas": {
+      "width": 540.0,
+      "height": 960.0,
+      "origin": "TOP_LEFT",
+      "x_axis": "RIGHT",
+      "y_axis": "DOWN"
+    },
+    "vector_candidates": {
+      "candidate_ids": [
+        "CHALLENGE_005",
+        "CHALLENGE_006",
+        "CHALLENGE_007"
+      ],
+      "x": "source.x * 0.5",
+      "y": "source.y * 0.5",
+      "rounding": "NONE",
+      "clamp": "NONE",
+      "y_inversion": false
+    },
+    "pilot_candidate": {
+      "candidate_id": "CHALLENGE_003",
+      "x": "(target_x / 100.0) * 540.0",
+      "y": 480.0,
+      "y_semantics": "PRESENTATION_CENTERLINE_DEFAULT_NOT_SOURCE_DATA"
+    },
+    "delivery_profile": "REVIEW_720 is reference-only; this consumer must not apply delivery scaling",
+    "asset": {
+      "role": "TARGET",
+      "intrinsic_size": [
+        100.0,
+        100.0
+      ],
+      "logical_size": [
+        50.0,
+        50.0
+      ],
+      "anchor": "CENTER",
+      "edge_policy": "CLIP_BOUNDS_WITHOUT_MOVING_POINT"
+    },
+    "source_timeline": "one sample per existing source frame; no interpolation, extrapolation, resampling, duplication, winning_frame remapping, or temporal smoothing"
+  },
+  "success_output_contract": {
+    "output_kind": "LOGICAL_TARGET_MARKER_TRACK_SPECIFICATION",
+    "output_is_renderer_native_input": false,
+    "root_fields": [
+      "contract_id",
+      "candidate_id",
+      "logical_canvas_id",
+      "source_frame_count",
+      "frames"
+    ],
+    "root_additional_fields_allowed": false,
+    "frame_fields": [
+      "source_frame_index",
+      "target_marker"
+    ],
+    "frame_additional_fields_allowed": false,
+    "marker_fields": [
+      "role",
+      "asset_path",
+      "anchor_x",
+      "anchor_y",
+      "logical_width",
+      "logical_height",
+      "anchor_mode",
+      "asset_bounds_policy"
+    ],
+    "marker_additional_fields_allowed": false,
+    "raw_source_value_in_output": false,
+    "custom_data_in_output": false,
+    "score_or_close_calls_in_output": false,
+    "example": {
+      "contract_id": "C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_CONTRACT_V1",
+      "candidate_id": "CHALLENGE_006",
+      "logical_canvas_id": "LOGICAL_SOCIAL_CANVAS_540X960",
+      "source_frame_count": 1,
+      "frames": [
+        {
+          "source_frame_index": 0,
+          "target_marker": {
+            "role": "TARGET",
+            "asset_path": "assets/c6/target.svg",
+            "anchor_x": 270.0,
+            "anchor_y": 480.0,
+            "logical_width": 50.0,
+            "logical_height": 50.0,
+            "anchor_mode": "CENTER",
+            "asset_bounds_policy": "CLIP_BOUNDS_WITHOUT_MOVING_POINT"
+          }
+        }
+      ]
+    }
+  },
+  "failure_contract": {
+    "success_track_on_failure": false,
+    "partial_track_on_failure": false,
+    "input_values_in_error": false,
+    "error_message_policy": "stable failure code only; do not interpolate source values into messages",
+    "failure_codes": [
+      {
+        "code": "UNSUPPORTED_CANDIDATE",
+        "trigger": "candidate_id is not exactly one of the four allowlisted IDs"
+      },
+      {
+        "code": "ALLOWLIST_MISMATCH",
+        "trigger": "candidate ID and exact field pair do not match the contract"
+      },
+      {
+        "code": "EMPTY_SOURCE_FRAMES",
+        "trigger": "validated source frame sequence is empty"
+      },
+      {
+        "code": "SNAPSHOT_CONTRACT_NOT_VALID",
+        "trigger": "upstream SimulationResult contract proof is missing, invalid, or not tied to this exact result"
+      },
+      {
+        "code": "MISSING_ALLOWLISTED_FIELD",
+        "trigger": "one source frame lacks its one exact allowlisted custom_data key"
+      },
+      {
+        "code": "INVALID_VALUE_TYPE",
+        "trigger": "scalar is not int/float or vector is not exactly Vector2; booleans are never numbers"
+      },
+      {
+        "code": "NONFINITE_VALUE",
+        "trigger": "scalar or any Vector2 component is NaN or infinite"
+      },
+      {
+        "code": "VALUE_OUT_OF_DOMAIN",
+        "trigger": "CHALLENGE_003 target_x lies outside inclusive [0,100]"
+      },
+      {
+        "code": "VECTOR_OUT_OF_BOUNDS",
+        "trigger": "Vector2 x/y lies outside inclusive [0,1080] x [0,1920]"
+      },
+      {
+        "code": "FRAME_CARDINALITY_MISMATCH",
+        "trigger": "input/validation frame count is inconsistent; no synthetic samples are permitted"
+      },
+      {
+        "code": "FRAME_ORDER_MISMATCH",
+        "trigger": "source ordinal invariant cannot be proven; never fall back to frame metadata"
+      },
+      {
+        "code": "PER_RUN_CONSTANT_MISMATCH",
+        "trigger": "CHALLENGE_005 target_position differs from its first valid same-run Vector2"
+      },
+      {
+        "code": "INVALID_ASSET_DIMENSIONS",
+        "trigger": "pinned TARGET SVG does not match approved 100x100 intrinsic dimensions"
+      },
+      {
+        "code": "UNAPPROVED_PROJECTION_STAGE",
+        "trigger": "attempt is made from an unapproved stage or to reach renderer dispatch"
+      }
+    ]
+  },
+  "negative_test_contract": {
+    "status": "PLANNED_NOT_EXECUTED_AGAINST_IMPLEMENTATION",
+    "planned_negative_case_count": 261,
+    "negative_families": [
+      {
+        "id": "wrong_candidate_field_pair",
+        "planned_cases": 12,
+        "generation": "4 allowlisted candidate ids x 3 wrong fields from other accepted entries",
+        "expected_code": "ALLOWLIST_MISMATCH",
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "unsupported_candidate_ids",
+        "planned_cases": 7,
+        "values": [
+          "CHALLENGE_001",
+          "CHALLENGE_002",
+          "CHALLENGE_004",
+          "CHALLENGE_008",
+          "CHALLENGE_009",
+          "UNKNOWN",
+          ""
+        ],
+        "expected_code": "UNSUPPORTED_CANDIDATE",
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "missing_allowlisted_field",
+        "planned_cases": 12,
+        "generation": "4 exact candidate-field pairs x invalid location at first/middle/last source frame",
+        "expected_code": "MISSING_ALLOWLISTED_FIELD",
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "invalid_scalar_values",
+        "planned_cases": 33,
+        "candidate_id": "CHALLENGE_003",
+        "values": [
+          "null",
+          "true",
+          "false",
+          "string",
+          "object",
+          "array",
+          "NaN",
+          "positive_infinity",
+          "negative_infinity",
+          "below_minimum",
+          "above_maximum"
+        ],
+        "generation": "11 invalid variants x first/middle/last source frame",
+        "expected_codes": [
+          "INVALID_VALUE_TYPE",
+          "NONFINITE_VALUE",
+          "VALUE_OUT_OF_DOMAIN"
+        ],
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "invalid_vector_values",
+        "planned_cases": 153,
+        "candidate_ids": [
+          "CHALLENGE_005",
+          "CHALLENGE_006",
+          "CHALLENGE_007"
+        ],
+        "values": [
+          "null",
+          "true",
+          "false",
+          "string",
+          "object",
+          "array",
+          "wrong_dimension_zero",
+          "wrong_dimension_one",
+          "wrong_dimension_three",
+          "NaN_x",
+          "positive_infinity_y",
+          "negative_infinity_x",
+          "below_x_min",
+          "above_x_max",
+          "below_y_min",
+          "above_y_max",
+          "boolean_component"
+        ],
+        "generation": "17 invalid variants x 3 vector candidates x first/middle/last source frame",
+        "expected_codes": [
+          "INVALID_VALUE_TYPE",
+          "NONFINITE_VALUE",
+          "VECTOR_OUT_OF_BOUNDS"
+        ],
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "invalid_upstream_validation",
+        "planned_cases": 6,
+        "mutations": [
+          "missing_validation_result",
+          "null_validation_result",
+          "non_dictionary_validation_result",
+          "is_valid_false",
+          "error_code_not_OK",
+          "validation_for_different_source_result"
+        ],
+        "expected_code": "SNAPSHOT_CONTRACT_NOT_VALID",
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "empty_source_frames",
+        "planned_cases": 4,
+        "generation": "all four supported candidate-field pairs with zero source frames",
+        "expected_code": "EMPTY_SOURCE_FRAMES",
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "atomic_failure_position",
+        "planned_cases": 12,
+        "generation": "each supported candidate at an invalid first/middle/last frame following/before valid samples",
+        "expected_codes": [
+          "INVALID_VALUE_TYPE",
+          "NONFINITE_VALUE",
+          "VALUE_OUT_OF_DOMAIN",
+          "VECTOR_OUT_OF_BOUNDS",
+          "MISSING_ALLOWLISTED_FIELD"
+        ],
+        "atomic_output": "NO_PARTIAL_TRACK"
+      },
+      {
+        "id": "challenge_005_constant_violation",
+        "planned_cases": 2,
+        "generation": "first mismatch at frame 1 and last frame",
+        "expected_code": "PER_RUN_CONSTANT_MISMATCH",
+        "atomic_output": "NO_TRACK"
+      },
+      {
+        "id": "closed_output_and_no_leakage",
+        "planned_cases": 20,
+        "mutations": [
+          "extra_root_key",
+          "extra_frame_key",
+          "extra_marker_key",
+          "raw_source_value",
+          "custom_data_reference",
+          "custom_data_copy",
+          "score",
+          "close_calls",
+          "winning_frame",
+          "snapshot_position",
+          "rotation",
+          "scale",
+          "simulation_result_object",
+          "input_dictionary",
+          "pause_state",
+          "result_state",
+          "frame_object",
+          "untrusted_asset_path",
+          "delivery_scaled_coordinates",
+          "clamped_coordinates"
+        ],
+        "atomic_output": "ASSERT_EXACT_OUTPUT_KEYS_AND_ZERO_SOURCE_LEAKAGE",
+        "test_oracle": "assert exact success-output keys and zero source-data leakage; this is a test assertion, not a consumer failure code"
+      }
+    ],
+    "case_generation_is_deterministic": true,
+    "invalid_frame_positions": [
+      "FIRST",
+      "MIDDLE",
+      "LAST"
+    ],
+    "atomicity_oracle": "every invalid track returns no projected track and never exposes an accepted prefix",
+    "strict_type_policy": "bool is rejected as a number; scalar int/float only; vector must be Vector2; never coerce",
+    "boundary_policy": "inclusive coordinate bounds; epsilon outside fails; no clamp or rounding",
+    "closed_output_policy": "exact key sets only at root, frame and marker levels; source values and custom_data never flow to output",
+    "coverage_requirements": [
+      "all 4 accepted candidate-field pairs",
+      "all 12 wrong cross-pairings among the accepted candidates and their fields",
+      "all 7 unsupported candidate IDs",
+      "scalar invalid classes at first/middle/last frame",
+      "vector invalid classes for every vector candidate at first/middle/last frame",
+      "missing source key at first/middle/last frame",
+      "upstream validation missing/mismatch/failure variants",
+      "zero source frames for every supported candidate",
+      "atomic failure for every candidate and frame position",
+      "CHALLENGE_005 run-constant violation at multiple positions",
+      "closed output and forbidden data leakage mutation tests"
+    ],
+    "static_design_test_expected": 235
+  },
+  "positive_test_contract": {
+    "planned_positive_families": [
+      "all four exact allowlisted candidate-field pairs",
+      "inclusive domain endpoints for scalar and vectors",
+      "vector transform corners and center without rounding/clamping",
+      "source frame order/cardinality on multi-frame tracks",
+      "CHALLENGE_005 identical per-run vector repeated for every frame",
+      "CHALLENGE_006 and CHALLENGE_007 accept dynamic per-frame vectors",
+      "unrelated custom_data keys remain unread and absent from output",
+      "all successful output levels have exact closed keysets"
+    ],
+    "execution_status": "NOT_EXECUTED; implementation is not included"
+  },
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "whole_custom_data_serialization_allowed": false,
+    "challenge_json_modification_allowed": false,
+    "challenge_004_v1_harness_mutation_allowed": false,
+    "runtime_implementation_authorized_for_production": false,
+    "runtime_coordinate_transform_authorized": false,
+    "render_test_authorized": false,
+    "payload_output_is_renderer_native_input": false
+  },
+  "next_gate": "ISOLATED_REVIEW_ONLY_CONSUMER_IMPLEMENTATION_AND_NEGATIVE_RUNTIME_TESTS_NO_RENDERER_ACTIVATION"
+}

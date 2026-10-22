@@ -1,0 +1,88 @@
+{
+  "schema": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-IMPLEMENTATION-DESIGN-SCHEMA-V1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Allowlisted Coordinate Consumer Implementation Design V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "decision_scope",
+    "source_authority",
+    "scope",
+    "implementation_boundary",
+    "input_contract",
+    "candidate_handlers",
+    "validation_pipeline",
+    "coordinate_contract",
+    "success_output_contract",
+    "failure_contract",
+    "negative_test_contract",
+    "positive_test_contract",
+    "governance_locks",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "decision_scope": {
+      "type": "string"
+    },
+    "source_authority": {
+      "type": "object"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "implementation_boundary": {
+      "type": "object"
+    },
+    "input_contract": {
+      "type": "object"
+    },
+    "candidate_handlers": {
+      "type": "array"
+    },
+    "validation_pipeline": {
+      "type": "array"
+    },
+    "coordinate_contract": {
+      "type": "object"
+    },
+    "success_output_contract": {
+      "type": "object"
+    },
+    "failure_contract": {
+      "type": "object"
+    },
+    "negative_test_contract": {
+      "type": "object"
+    },
+    "positive_test_contract": {
+      "type": "object"
+    },
+    "governance_locks": {
+      "type": "object"
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "x-contract-notes": [
+    "The implementation design is review-only and is not runtime implementation authorization.",
+    "The exact accepted candidate-field pairs are fixed by the accepted consumer specification.",
+    "The negative test contract has 261 deterministic planned cases; no implementation has been executed by this schema suite."
+  ]
+}
