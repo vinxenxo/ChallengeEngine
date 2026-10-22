@@ -1,0 +1,1785 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "C11D-V2B-ALLOWLISTED-COORDINATE-PROJECTION-CONSUMER-SPECIFICATION-V1"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "status": {
+      "type": "string",
+      "const": "SPECIFICATION_ONLY_NOT_IMPLEMENTED"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "decision_scope": {
+      "type": "string"
+    },
+    "source_authority": {
+      "type": "object",
+      "properties": {
+        "frozen_c11c_manifest_path": {
+          "type": "string"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_decision_record_path": {
+          "type": "string"
+        },
+        "coordinate_policy_decision_record_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_decision_test_receipt_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_proposal_path": {
+          "type": "string"
+        },
+        "coordinate_policy_proposal_sha256": {
+          "type": "string"
+        },
+        "field_region_decision_record_path": {
+          "type": "string"
+        },
+        "field_region_decision_record_sha256": {
+          "type": "string"
+        },
+        "coordinate_mapper_path": {
+          "type": "string"
+        },
+        "coordinate_mapper_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "frozen_c11c_manifest_path",
+        "frozen_c11c_manifest_sha256",
+        "coordinate_policy_decision_record_path",
+        "coordinate_policy_decision_record_sha256",
+        "coordinate_policy_decision_test_receipt_sha256",
+        "coordinate_policy_proposal_path",
+        "coordinate_policy_proposal_sha256",
+        "field_region_decision_record_path",
+        "field_region_decision_record_sha256",
+        "coordinate_mapper_path",
+        "coordinate_mapper_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "candidate_count": {
+          "type": "integer"
+        },
+        "blocked_candidate_count": {
+          "type": "integer"
+        },
+        "accepted_candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "blocked_candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "reads_simulation_result_frames_only": {
+          "type": "boolean"
+        },
+        "reads_only_allowlisted_custom_data_key": {
+          "type": "boolean"
+        },
+        "whole_custom_data_serialization_allowed": {
+          "type": "boolean"
+        },
+        "writes_challenge_json": {
+          "type": "boolean"
+        },
+        "modifies_coordinate_mapper": {
+          "type": "boolean"
+        },
+        "changes_simulation_or_rng": {
+          "type": "boolean"
+        },
+        "source_frame_resampling_allowed": {
+          "type": "boolean"
+        },
+        "runtime_implementation_included": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "candidate_count",
+        "blocked_candidate_count",
+        "accepted_candidate_ids",
+        "blocked_candidate_ids",
+        "reads_simulation_result_frames_only",
+        "reads_only_allowlisted_custom_data_key",
+        "whole_custom_data_serialization_allowed",
+        "writes_challenge_json",
+        "modifies_coordinate_mapper",
+        "changes_simulation_or_rng",
+        "source_frame_resampling_allowed",
+        "runtime_implementation_included"
+      ],
+      "additionalProperties": false
+    },
+    "input_contract": {
+      "type": "object",
+      "properties": {
+        "frame_sequence": {
+          "type": "string"
+        },
+        "frame_index_source": {
+          "type": "string"
+        },
+        "candidate_identity": {
+          "type": "string"
+        },
+        "field_access": {
+          "type": "string"
+        },
+        "snapshot_validation": {
+          "type": "string"
+        },
+        "nonempty_frame_sequence_required": {
+          "type": "boolean"
+        },
+        "sample_cardinality": {
+          "type": "string"
+        },
+        "track_atomicity": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "frame_sequence",
+        "frame_index_source",
+        "candidate_identity",
+        "field_access",
+        "snapshot_validation",
+        "nonempty_frame_sequence_required",
+        "sample_cardinality",
+        "track_atomicity",
+        "order"
+      ],
+      "additionalProperties": false
+    },
+    "field_allowlist": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "candidate_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            },
+            "semantic_type": {
+              "type": "string"
+            },
+            "source_space": {
+              "type": "string"
+            },
+            "track_kind": {
+              "type": "string"
+            },
+            "source_pointer": {
+              "type": "string"
+            },
+            "asset_path": {
+              "type": "string"
+            },
+            "asset_role": {
+              "type": "string"
+            },
+            "allowed_custom_data_keys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "source_domain": {
+              "type": "object",
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                },
+                "inclusive": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "min",
+                "max",
+                "inclusive"
+              ],
+              "additionalProperties": false
+            },
+            "projection": {
+              "type": "object",
+              "properties": {
+                "logical_x": {
+                  "type": "string"
+                },
+                "logical_y": {
+                  "type": "number"
+                },
+                "y_semantics": {
+                  "type": "string"
+                },
+                "logical_asset_size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "anchor": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "logical_x",
+                "logical_y",
+                "y_semantics",
+                "logical_asset_size",
+                "anchor"
+              ],
+              "additionalProperties": false
+            },
+            "track_constraints": {
+              "type": "object",
+              "properties": {
+                "one_sample_per_source_frame": {
+                  "type": "boolean"
+                },
+                "require_exact_source_frame_count": {
+                  "type": "boolean"
+                },
+                "require_source_order_preservation": {
+                  "type": "boolean"
+                },
+                "interpolation": {
+                  "type": "string"
+                },
+                "extrapolation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "one_sample_per_source_frame",
+                "require_exact_source_frame_count",
+                "require_source_order_preservation",
+                "interpolation",
+                "extrapolation"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "candidate_id",
+            "field",
+            "semantic_type",
+            "source_space",
+            "track_kind",
+            "source_pointer",
+            "asset_path",
+            "asset_role",
+            "allowed_custom_data_keys",
+            "source_domain",
+            "projection",
+            "track_constraints"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "candidate_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            },
+            "semantic_type": {
+              "type": "string"
+            },
+            "source_space": {
+              "type": "string"
+            },
+            "track_kind": {
+              "type": "string"
+            },
+            "source_pointer": {
+              "type": "string"
+            },
+            "asset_path": {
+              "type": "string"
+            },
+            "asset_role": {
+              "type": "string"
+            },
+            "allowed_custom_data_keys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "source_domain": {
+              "type": "object",
+              "properties": {
+                "x_min": {
+                  "type": "number"
+                },
+                "x_max": {
+                  "type": "number"
+                },
+                "y_min": {
+                  "type": "number"
+                },
+                "y_max": {
+                  "type": "number"
+                },
+                "inclusive": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "x_min",
+                "x_max",
+                "y_min",
+                "y_max",
+                "inclusive"
+              ],
+              "additionalProperties": false
+            },
+            "projection": {
+              "type": "object",
+              "properties": {
+                "logical_x": {
+                  "type": "string"
+                },
+                "logical_y": {
+                  "type": "string"
+                },
+                "logical_asset_size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "anchor": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "logical_x",
+                "logical_y",
+                "logical_asset_size",
+                "anchor"
+              ],
+              "additionalProperties": false
+            },
+            "track_constraints": {
+              "type": "object",
+              "properties": {
+                "one_sample_per_source_frame": {
+                  "type": "boolean"
+                },
+                "require_exact_source_frame_count": {
+                  "type": "boolean"
+                },
+                "require_source_order_preservation": {
+                  "type": "boolean"
+                },
+                "must_equal_same_run_target_at_every_frame": {
+                  "type": "boolean"
+                },
+                "interpolation": {
+                  "type": "string"
+                },
+                "extrapolation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "one_sample_per_source_frame",
+                "require_exact_source_frame_count",
+                "require_source_order_preservation",
+                "must_equal_same_run_target_at_every_frame",
+                "interpolation",
+                "extrapolation"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "candidate_id",
+            "field",
+            "semantic_type",
+            "source_space",
+            "track_kind",
+            "source_pointer",
+            "asset_path",
+            "asset_role",
+            "allowed_custom_data_keys",
+            "source_domain",
+            "projection",
+            "track_constraints"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "candidate_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            },
+            "semantic_type": {
+              "type": "string"
+            },
+            "source_space": {
+              "type": "string"
+            },
+            "track_kind": {
+              "type": "string"
+            },
+            "source_pointer": {
+              "type": "string"
+            },
+            "asset_path": {
+              "type": "string"
+            },
+            "asset_role": {
+              "type": "string"
+            },
+            "allowed_custom_data_keys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "source_domain": {
+              "type": "object",
+              "properties": {
+                "x_min": {
+                  "type": "number"
+                },
+                "x_max": {
+                  "type": "number"
+                },
+                "y_min": {
+                  "type": "number"
+                },
+                "y_max": {
+                  "type": "number"
+                },
+                "inclusive": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "x_min",
+                "x_max",
+                "y_min",
+                "y_max",
+                "inclusive"
+              ],
+              "additionalProperties": false
+            },
+            "projection": {
+              "type": "object",
+              "properties": {
+                "logical_x": {
+                  "type": "string"
+                },
+                "logical_y": {
+                  "type": "string"
+                },
+                "logical_asset_size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "anchor": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "logical_x",
+                "logical_y",
+                "logical_asset_size",
+                "anchor"
+              ],
+              "additionalProperties": false
+            },
+            "track_constraints": {
+              "type": "object",
+              "properties": {
+                "one_sample_per_source_frame": {
+                  "type": "boolean"
+                },
+                "require_exact_source_frame_count": {
+                  "type": "boolean"
+                },
+                "require_source_order_preservation": {
+                  "type": "boolean"
+                },
+                "interpolation": {
+                  "type": "string"
+                },
+                "extrapolation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "one_sample_per_source_frame",
+                "require_exact_source_frame_count",
+                "require_source_order_preservation",
+                "interpolation",
+                "extrapolation"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "candidate_id",
+            "field",
+            "semantic_type",
+            "source_space",
+            "track_kind",
+            "source_pointer",
+            "asset_path",
+            "asset_role",
+            "allowed_custom_data_keys",
+            "source_domain",
+            "projection",
+            "track_constraints"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "candidate_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            },
+            "semantic_type": {
+              "type": "string"
+            },
+            "source_space": {
+              "type": "string"
+            },
+            "track_kind": {
+              "type": "string"
+            },
+            "source_pointer": {
+              "type": "string"
+            },
+            "asset_path": {
+              "type": "string"
+            },
+            "asset_role": {
+              "type": "string"
+            },
+            "allowed_custom_data_keys": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "source_domain": {
+              "type": "object",
+              "properties": {
+                "x_min": {
+                  "type": "number"
+                },
+                "x_max": {
+                  "type": "number"
+                },
+                "y_min": {
+                  "type": "number"
+                },
+                "y_max": {
+                  "type": "number"
+                },
+                "inclusive": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "x_min",
+                "x_max",
+                "y_min",
+                "y_max",
+                "inclusive"
+              ],
+              "additionalProperties": false
+            },
+            "projection": {
+              "type": "object",
+              "properties": {
+                "logical_x": {
+                  "type": "string"
+                },
+                "logical_y": {
+                  "type": "string"
+                },
+                "logical_asset_size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "anchor": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "logical_x",
+                "logical_y",
+                "logical_asset_size",
+                "anchor"
+              ],
+              "additionalProperties": false
+            },
+            "track_constraints": {
+              "type": "object",
+              "properties": {
+                "one_sample_per_source_frame": {
+                  "type": "boolean"
+                },
+                "require_exact_source_frame_count": {
+                  "type": "boolean"
+                },
+                "require_source_order_preservation": {
+                  "type": "boolean"
+                },
+                "interpolation": {
+                  "type": "string"
+                },
+                "extrapolation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "one_sample_per_source_frame",
+                "require_exact_source_frame_count",
+                "require_source_order_preservation",
+                "interpolation",
+                "extrapolation"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "candidate_id",
+            "field",
+            "semantic_type",
+            "source_space",
+            "track_kind",
+            "source_pointer",
+            "asset_path",
+            "asset_role",
+            "allowed_custom_data_keys",
+            "source_domain",
+            "projection",
+            "track_constraints"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "blocked_candidates_retained": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidate_id",
+          "field",
+          "status",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "coordinate_mapping_contract": {
+      "type": "object",
+      "properties": {
+        "output_space": {
+          "type": "string"
+        },
+        "logical_canvas": {
+          "type": "object",
+          "properties": {
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "origin": {
+              "type": "string"
+            },
+            "x_axis": {
+              "type": "string"
+            },
+            "y_axis": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "width",
+            "height",
+            "origin",
+            "x_axis",
+            "y_axis"
+          ],
+          "additionalProperties": false
+        },
+        "source_to_logical_vector_transform": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "string"
+            },
+            "y": {
+              "type": "string"
+            },
+            "offset": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "scale": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "rounding": {
+              "type": "string"
+            },
+            "clamp": {
+              "type": "string"
+            },
+            "y_inversion": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "offset",
+            "scale",
+            "rounding",
+            "clamp",
+            "y_inversion"
+          ],
+          "additionalProperties": false
+        },
+        "pilot_scalar_transform": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "string"
+            },
+            "y": {
+              "type": "number"
+            },
+            "y_is_presentation_default": {
+              "type": "boolean"
+            },
+            "source_y_exists": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "y_is_presentation_default",
+            "source_y_exists"
+          ],
+          "additionalProperties": false
+        },
+        "delivery_reference": {
+          "type": "object",
+          "properties": {
+            "profile_id": {
+              "type": "string"
+            },
+            "scale_x": {
+              "type": "number"
+            },
+            "scale_y": {
+              "type": "number"
+            },
+            "reference_only": {
+              "type": "boolean"
+            },
+            "consumer_must_not_apply_delivery_scale": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "profile_id",
+            "scale_x",
+            "scale_y",
+            "reference_only",
+            "consumer_must_not_apply_delivery_scale"
+          ],
+          "additionalProperties": false
+        },
+        "source_frames": {
+          "type": "string"
+        },
+        "winning_frame": {
+          "type": "string"
+        },
+        "close_calls": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "output_space",
+        "logical_canvas",
+        "source_to_logical_vector_transform",
+        "pilot_scalar_transform",
+        "delivery_reference",
+        "source_frames",
+        "winning_frame",
+        "close_calls"
+      ],
+      "additionalProperties": false
+    },
+    "asset_contract": {
+      "type": "object",
+      "properties": {
+        "asset_role": {
+          "type": "string"
+        },
+        "asset_dimensions_from_pinned_svg_intrinsic_size": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "logical_asset_size": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "anchor": {
+          "type": "string"
+        },
+        "asset_anchor_point_is_projected_coordinate": {
+          "type": "boolean"
+        },
+        "edge_policy": {
+          "type": "string"
+        },
+        "pixel_rounding": {
+          "type": "string"
+        },
+        "raster_crop_antialias_subpixel_semantics": {
+          "type": "string"
+        },
+        "invalid_asset_intrinsic_dimensions": {
+          "type": "string"
+        },
+        "delivery_profile_scaling_applied_by_this_consumer": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "asset_role",
+        "asset_dimensions_from_pinned_svg_intrinsic_size",
+        "logical_asset_size",
+        "anchor",
+        "asset_anchor_point_is_projected_coordinate",
+        "edge_policy",
+        "pixel_rounding",
+        "raster_crop_antialias_subpixel_semantics",
+        "invalid_asset_intrinsic_dimensions",
+        "delivery_profile_scaling_applied_by_this_consumer"
+      ],
+      "additionalProperties": false
+    },
+    "output_contract": {
+      "type": "object",
+      "properties": {
+        "output_kind": {
+          "type": "string"
+        },
+        "output_is_renderer_native_input": {
+          "type": "boolean"
+        },
+        "root_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "root_additional_fields_allowed": {
+          "type": "boolean"
+        },
+        "frame_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "frame_additional_fields_allowed": {
+          "type": "boolean"
+        },
+        "marker_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 8,
+          "maxItems": 8
+        },
+        "marker_additional_fields_allowed": {
+          "type": "boolean"
+        },
+        "raw_source_value_in_output": {
+          "type": "boolean"
+        },
+        "custom_data_in_output": {
+          "type": "boolean"
+        },
+        "score_or_close_calls_in_output": {
+          "type": "boolean"
+        },
+        "example": {
+          "type": "object",
+          "properties": {
+            "contract_id": {
+              "type": "string"
+            },
+            "candidate_id": {
+              "type": "string"
+            },
+            "logical_canvas_id": {
+              "type": "string"
+            },
+            "source_frame_count": {
+              "type": "integer"
+            },
+            "frames": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source_frame_index": {
+                    "type": "integer"
+                  },
+                  "target_marker": {
+                    "type": "object",
+                    "properties": {
+                      "role": {
+                        "type": "string"
+                      },
+                      "asset_path": {
+                        "type": "string"
+                      },
+                      "anchor_x": {
+                        "type": "number"
+                      },
+                      "anchor_y": {
+                        "type": "number"
+                      },
+                      "logical_width": {
+                        "type": "number"
+                      },
+                      "logical_height": {
+                        "type": "number"
+                      },
+                      "anchor_mode": {
+                        "type": "string"
+                      },
+                      "asset_bounds_policy": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "role",
+                      "asset_path",
+                      "anchor_x",
+                      "anchor_y",
+                      "logical_width",
+                      "logical_height",
+                      "anchor_mode",
+                      "asset_bounds_policy"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "source_frame_index",
+                  "target_marker"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1,
+              "maxItems": 1
+            }
+          },
+          "required": [
+            "contract_id",
+            "candidate_id",
+            "logical_canvas_id",
+            "source_frame_count",
+            "frames"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "output_kind",
+        "output_is_renderer_native_input",
+        "root_fields",
+        "root_additional_fields_allowed",
+        "frame_fields",
+        "frame_additional_fields_allowed",
+        "marker_fields",
+        "marker_additional_fields_allowed",
+        "raw_source_value_in_output",
+        "custom_data_in_output",
+        "score_or_close_calls_in_output",
+        "example"
+      ],
+      "additionalProperties": false
+    },
+    "validation_contract": {
+      "type": "object",
+      "properties": {
+        "accept_only_exact_candidate_field_pair": {
+          "type": "boolean"
+        },
+        "reject_unknown_candidate": {
+          "type": "boolean"
+        },
+        "reject_unknown_field": {
+          "type": "boolean"
+        },
+        "reject_extra_output_fields": {
+          "type": "boolean"
+        },
+        "reject_bool_as_number": {
+          "type": "boolean"
+        },
+        "require_finite_numbers": {
+          "type": "boolean"
+        },
+        "inclusive_source_bounds": {
+          "type": "boolean"
+        },
+        "clamping_allowed": {
+          "type": "boolean"
+        },
+        "reject_missing_value": {
+          "type": "boolean"
+        },
+        "reject_null_value": {
+          "type": "boolean"
+        },
+        "reject_type_mismatch": {
+          "type": "boolean"
+        },
+        "reject_zero_frame_sequence": {
+          "type": "boolean"
+        },
+        "reject_sample_count_mismatch": {
+          "type": "boolean"
+        },
+        "reject_frame_order_mismatch": {
+          "type": "boolean"
+        },
+        "reject_per_run_constant_mismatch_for_CHALLENGE_005": {
+          "type": "boolean"
+        },
+        "reject_entire_track_if_one_frame_invalid": {
+          "type": "boolean"
+        },
+        "fallback_from_FrameSnapshot_position_allowed": {
+          "type": "boolean"
+        },
+        "fallback_from_scoring_allowed": {
+          "type": "boolean"
+        },
+        "fallback_from_close_calls_allowed": {
+          "type": "boolean"
+        },
+        "interpolation_allowed": {
+          "type": "boolean"
+        },
+        "extrapolation_allowed": {
+          "type": "boolean"
+        },
+        "source_frame_resampling_allowed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "accept_only_exact_candidate_field_pair",
+        "reject_unknown_candidate",
+        "reject_unknown_field",
+        "reject_extra_output_fields",
+        "reject_bool_as_number",
+        "require_finite_numbers",
+        "inclusive_source_bounds",
+        "clamping_allowed",
+        "reject_missing_value",
+        "reject_null_value",
+        "reject_type_mismatch",
+        "reject_zero_frame_sequence",
+        "reject_sample_count_mismatch",
+        "reject_frame_order_mismatch",
+        "reject_per_run_constant_mismatch_for_CHALLENGE_005",
+        "reject_entire_track_if_one_frame_invalid",
+        "fallback_from_FrameSnapshot_position_allowed",
+        "fallback_from_scoring_allowed",
+        "fallback_from_close_calls_allowed",
+        "interpolation_allowed",
+        "extrapolation_allowed",
+        "source_frame_resampling_allowed"
+      ],
+      "additionalProperties": false
+    },
+    "safe_failure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 14,
+      "maxItems": 14
+    },
+    "privacy_and_noninterference": {
+      "type": "object",
+      "properties": {
+        "serialize_whole_custom_data": {
+          "type": "boolean"
+        },
+        "log_raw_candidate_value": {
+          "type": "boolean"
+        },
+        "error_payload_contains_raw_value": {
+          "type": "boolean"
+        },
+        "modify_simulation_result": {
+          "type": "boolean"
+        },
+        "modify_source_frames": {
+          "type": "boolean"
+        },
+        "modify_winning_frame": {
+          "type": "boolean"
+        },
+        "modify_close_calls": {
+          "type": "boolean"
+        },
+        "modify_score": {
+          "type": "boolean"
+        },
+        "modify_pause_state": {
+          "type": "boolean"
+        },
+        "modify_input_state": {
+          "type": "boolean"
+        },
+        "reexecute_simulation": {
+          "type": "boolean"
+        },
+        "reexecute_rng": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "serialize_whole_custom_data",
+        "log_raw_candidate_value",
+        "error_payload_contains_raw_value",
+        "modify_simulation_result",
+        "modify_source_frames",
+        "modify_winning_frame",
+        "modify_close_calls",
+        "modify_score",
+        "modify_pause_state",
+        "modify_input_state",
+        "reexecute_simulation",
+        "reexecute_rng"
+      ],
+      "additionalProperties": false
+    },
+    "evidence_pins": {
+      "type": "object",
+      "properties": {
+        "coordinate_policy_decision_test_count": {
+          "type": "integer"
+        },
+        "coordinate_policy_decision_test_stdout_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_decision_test_stderr_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_decision_test_receipt_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_test_count": {
+          "type": "integer"
+        },
+        "coordinate_policy_test_stdout_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_test_stderr_sha256": {
+          "type": "string"
+        },
+        "coordinate_policy_test_receipt_sha256": {
+          "type": "string"
+        },
+        "field_region_decision_test_count": {
+          "type": "integer"
+        },
+        "field_region_decision_test_stdout_sha256": {
+          "type": "string"
+        },
+        "field_region_decision_test_stderr_sha256": {
+          "type": "string"
+        },
+        "field_region_decision_test_receipt_sha256": {
+          "type": "string"
+        },
+        "semantic_decision_test_count": {
+          "type": "integer"
+        },
+        "semantic_decision_test_receipt_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "coordinate_policy_decision_test_count",
+        "coordinate_policy_decision_test_stdout_sha256",
+        "coordinate_policy_decision_test_stderr_sha256",
+        "coordinate_policy_decision_test_receipt_sha256",
+        "coordinate_policy_test_count",
+        "coordinate_policy_test_stdout_sha256",
+        "coordinate_policy_test_stderr_sha256",
+        "coordinate_policy_test_receipt_sha256",
+        "field_region_decision_test_count",
+        "field_region_decision_test_stdout_sha256",
+        "field_region_decision_test_stderr_sha256",
+        "field_region_decision_test_receipt_sha256",
+        "semantic_decision_test_count",
+        "semantic_decision_test_receipt_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "authorization": {
+      "type": "object",
+      "properties": {
+        "specification_approved_for_next_design_step": {
+          "type": "boolean"
+        },
+        "consumer_runtime_implementation_authorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "coordinate_transform_runtime_authorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "binding_authorization": {
+          "type": "string",
+          "const": "NOT_GRANTED"
+        },
+        "renderer_projection_authorization": {
+          "type": "string",
+          "const": "NOT_GRANTED"
+        },
+        "renderer_activation_authorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "render_test_authorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "payload_materialization_authorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "media_creation_authorized": {
+          "type": "boolean",
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "type": "boolean",
+          "const": false
+        },
+        "release_authority": {
+          "type": "string",
+          "const": "NONE"
+        }
+      },
+      "required": [
+        "specification_approved_for_next_design_step",
+        "consumer_runtime_implementation_authorized",
+        "coordinate_transform_runtime_authorized",
+        "binding_authorization",
+        "renderer_projection_authorization",
+        "renderer_activation_authorized",
+        "render_test_authorized",
+        "payload_materialization_authorized",
+        "media_creation_authorized",
+        "candidate_input_admissible",
+        "release_authority"
+      ],
+      "additionalProperties": false
+    },
+    "governance_locks": {
+      "type": "object",
+      "properties": {
+        "renderer": {
+          "type": "string"
+        },
+        "media_created": {
+          "type": "boolean"
+        },
+        "payload_materialized": {
+          "type": "boolean"
+        },
+        "candidate_input_admissible": {
+          "type": "boolean"
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "type": "boolean"
+        },
+        "automatic_seed_generation": {
+          "type": "boolean"
+        },
+        "master_seed": {
+          "type": "string"
+        },
+        "approved_bindings": {
+          "type": "integer"
+        },
+        "approved_custom_data_bindings": {
+          "type": "integer"
+        },
+        "approved_renderer_projection_bindings": {
+          "type": "integer"
+        },
+        "D4.8": {
+          "type": "string"
+        },
+        "D9.10": {
+          "type": "string"
+        },
+        "D9.14": {
+          "type": "string"
+        },
+        "D9.16": {
+          "type": "string"
+        },
+        "D9.17": {
+          "type": "string"
+        },
+        "D10": {
+          "type": "string"
+        },
+        "baseline_approval": {
+          "type": "string"
+        },
+        "freeze_eligible": {
+          "type": "boolean"
+        },
+        "release_authority": {
+          "type": "string"
+        },
+        "whole_custom_data_serialization_allowed": {
+          "type": "boolean"
+        },
+        "challenge_json_modification_allowed": {
+          "type": "boolean"
+        },
+        "challenge_004_v1_harness_mutation_allowed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "whole_custom_data_serialization_allowed",
+        "challenge_json_modification_allowed",
+        "challenge_004_v1_harness_mutation_allowed"
+      ],
+      "additionalProperties": false
+    },
+    "source_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 81,
+      "maxItems": 81
+    },
+    "authority_input_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "semantic_decision_input_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "field_region_decision_input_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "coordinate_reference_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "coordinate_policy_proposal_input_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "coordinate_policy_decision_input_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "coordinate_policy_decision_receipt": {
+      "type": "object",
+      "properties": {
+        "path_env_relative": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "stdout_sha256": {
+          "type": "string"
+        },
+        "stderr_sha256": {
+          "type": "string"
+        },
+        "test_count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "path_env_relative",
+        "sha256",
+        "stdout_sha256",
+        "stderr_sha256",
+        "test_count"
+      ],
+      "additionalProperties": false
+    },
+    "next_gate": {
+      "type": "string"
+    },
+    "test_count_expected": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "test_script_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "decision_scope",
+    "source_authority",
+    "scope",
+    "input_contract",
+    "field_allowlist",
+    "blocked_candidates_retained",
+    "coordinate_mapping_contract",
+    "asset_contract",
+    "output_contract",
+    "validation_contract",
+    "safe_failure_codes",
+    "privacy_and_noninterference",
+    "evidence_pins",
+    "authorization",
+    "governance_locks",
+    "source_pins",
+    "authority_input_pins",
+    "semantic_decision_input_pins",
+    "field_region_decision_input_pins",
+    "coordinate_reference_pins",
+    "coordinate_policy_proposal_input_pins",
+    "coordinate_policy_decision_input_pins",
+    "coordinate_policy_decision_receipt",
+    "next_gate",
+    "test_count_expected",
+    "test_script_sha256"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-V2B-ALLOWLISTED-COORDINATE-PROJECTION-CONSUMER-SPECIFICATION-SCHEMA-V1",
+  "title": "C11-D V2-B allowlisted coordinate projection consumer specification"
+}
