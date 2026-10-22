@@ -1,0 +1,252 @@
+{
+  "schema": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-RUNTIME-CONTRACT-V2",
+  "schema_version": "2.0",
+  "schema_required_keys": [
+    "schema",
+    "schema_version",
+    "status",
+    "source_authority",
+    "implementation",
+    "output_contract",
+    "negative_matrix_reconciliation",
+    "runtime_test_contract",
+    "governance_locks",
+    "next_gate"
+  ],
+  "status": "IMPLEMENTED_NOT_RUNTIME_ACCEPTED",
+  "purpose": "Revision 2 fixes the missing-field sentinel guard by type-checking Object Variants before equality. It remains isolated review-only code with no production call site; runtime acceptance is pending the operator Windows run.",
+  "source_authority": {
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "consumer_specification_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_PROJECTION_CONSUMER_SPECIFICATION_V1.json",
+    "consumer_specification_sha256": "be2a42e26fc22a25df378d234a358c4005610eefbcb02f6b70e2ee56f6625a52",
+    "implementation_design_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_IMPLEMENTATION_DESIGN_V1.json",
+    "implementation_design_sha256": "099da26bf50820fec026f2fe4a764bb78b35b6e1f24306f12a35181f8fa879c4",
+    "implementation_design_schema_sha256": "1547efa8f129299354b967b3352847aa79037a0d0068b1ccc9bdd3481aaf1ca4",
+    "implementation_design_test_sha256": "dfa2bd278eaba47a9967fa4b3fbd75249e218123ee10570725e220ec4e7d319c",
+    "prior_design_receipt_sha256": "9148ad3dfc21857d7decf5885a3fb0e10a839234ba7672040cfdfa86b57c7bd2",
+    "prior_design_stdout_sha256": "0e8e75cbd7d749c758657bd20e8b39e9df31047decf71094350cb4ab3f94246d",
+    "prior_design_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime_reference_pins": [
+      {
+        "path": "core/simulation/SimulationResult.gd",
+        "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296",
+        "role": "existing_validation_result_no_source_modification"
+      },
+      {
+        "path": "core/data/FrameSnapshot.gd",
+        "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+        "role": "existing_custom_data_carrier_no_source_modification"
+      },
+      {
+        "path": "core/presentation/CoordinateMapper.gd",
+        "sha256": "244bace2eaf87e29d653715ae18c0b4824cdf9503e915932be53d0f52bbe461c",
+        "role": "reference_only_not_called_or_modified"
+      },
+      {
+        "path": "assets/c6/target.svg",
+        "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+        "role": "pinned_intrinsic_100x100_target_asset_not_loaded"
+      },
+      {
+        "path": "assets/c6/waypoint.svg",
+        "sha256": "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142",
+        "role": "pinned_intrinsic_100x100_waypoint_asset_not_loaded"
+      }
+    ],
+    "prior_runtime_v1_module_path": "tools/c11d/d9/allowlisted_coordinate_consumer_review_only.gd",
+    "prior_runtime_v1_module_sha256": "5ed358ba4e0d0a6be340dbda4c104d2296ae6046044fed63dd812a757b3d8e17",
+    "prior_runtime_v1_test_path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime.gd",
+    "prior_runtime_v1_test_sha256": "44bee8080e7ecaa029daf435fd8152a65b3d0c89b3734f80c54ece0fc871cf15",
+    "observed_v1_runtime_stdout_sha256": "59e5531424b9dd30545ef5cf0422cc0a8d4abc95bc69ae0a23ebad40381417d8",
+    "observed_v1_runtime_stderr_sha256": "2e6cb1ff66713d29a7c6346f5b4ab224702fac85d49d3afad2f42a51b92d3c00",
+    "observed_v1_runtime_failure": "Godot 4.7.1 reported invalid equality operands float/Vector2 versus Object at the missing sentinel check (V1 module line 152); resulting cases did not meet their expected output contracts."
+  },
+  "implementation": {
+    "runtime_module_path": "tools/c11d/d9/allowlisted_coordinate_consumer_review_only_v2.gd",
+    "runtime_module_sha256": "2376d4c9208d749b3681f8083d1d0be1a5658f62930b9b92167916196aec3eef",
+    "runtime_test_path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd",
+    "runtime_test_sha256": "8b30bc90fa7f95ac8b38e8ad2b01670ed1fb97416acfc437225db4f478f8ded5",
+    "runtime_static_test_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static_v2.py",
+    "runtime_static_test_sha256": "bb8453f40d744abaff4134a90502e0957baceeb3582ed1ad29a7e7565da65f07",
+    "entrypoint": "project_allowlisted_target_marker_track(candidate_id, simulation_result, upstream_validation)",
+    "entrypoint_inputs": [
+      "candidate_id",
+      "simulation_result",
+      "upstream_validation"
+    ],
+    "caller_supplied_field_argument": false,
+    "production_consumer_code_included": false,
+    "production_callsite_count": 0,
+    "status": "ISOLATED_REVIEW_ONLY_NO_PRODUCTION_CALLSITE",
+    "upstream_validation_provenance": {
+      "existing_method": "SimulationResult.validate_contract(expected_game_frames)",
+      "existing_return_dict_has_object_identity": false,
+      "review_only_adapter_adds_fields_to_same_validation_dictionary": [
+        "_c11d_v2b_source_result_ref",
+        "_c11d_v2b_expected_game_frames"
+      ],
+      "identity_mechanism": "WeakRef pointing to the exact SimulationResult instance",
+      "core_simulation_or_snapshot_files_modified": false,
+      "production_adapter_authorized": false
+    },
+    "custom_data_access": {
+      "lookup_per_frame": 1,
+      "expression": "FrameSnapshot.custom_data.get(allowlisted_key, unique_missing_sentinel)",
+      "enumeration_allowed": false,
+      "has_then_get_allowed": false,
+      "direct_indexing_allowed": false,
+      "copy_or_duplicate_allowed": false,
+      "whole_dictionary_serialization_allowed": false
+    },
+    "coordinate_projection": {
+      "logical_canvas_id": "LOGICAL_SOCIAL_CANVAS_540X960",
+      "logical_canvas": [
+        540.0,
+        960.0
+      ],
+      "CHALLENGE_003": "x=(target_x/100.0)*540.0; y=480.0",
+      "CHALLENGE_005": "x=target_position.x*0.5; y=target_position.y*0.5; exact same-run Vector2 every frame",
+      "CHALLENGE_006": "x=target_position.x*0.5; y=target_position.y*0.5; per-frame Vector2",
+      "CHALLENGE_007": "x=target_position.x*0.5; y=target_position.y*0.5; per-frame Vector2",
+      "rounding": "NONE",
+      "clamping": "NONE",
+      "interpolation": "NONE",
+      "extrapolation": "NONE",
+      "winning_frame_filtering": "NONE",
+      "source_frame_ordinals": "zero-based array order"
+    },
+    "asset_contract": {
+      "asset_role": "TARGET",
+      "intrinsic_size": [
+        100.0,
+        100.0
+      ],
+      "logical_size": [
+        50.0,
+        50.0
+      ],
+      "anchor": "CENTER",
+      "edge_policy": "CLIP_BOUNDS_WITHOUT_MOVING_POINT",
+      "resource_loading": "FORBIDDEN",
+      "actual_asset_hash_and_dimensions_checked_by_static_suite": true
+    },
+    "failure_output": {
+      "fields": [
+        "ok",
+        "error_code"
+      ],
+      "source_values_included": false,
+      "partial_track_allowed": false
+    },
+    "side_effects": {
+      "scene_nodes_created": false,
+      "rendering_server_access": false,
+      "asset_resource_loading": false,
+      "json_serialization": false,
+      "file_writes": false,
+      "logs_from_consumer": false,
+      "renderer_dispatch": false,
+      "payload_materialization": false,
+      "media_creation": false
+    },
+    "sentinel_guard_revision": "TYPE_OBJECT_THEN_REFCOUNTED_IDENTITY_COMPARISON_V2"
+  },
+  "output_contract": {
+    "output_kind": "LOGICAL_TARGET_MARKER_TRACK_SPECIFICATION",
+    "renderer_native_input": false,
+    "root_fields": [
+      "contract_id",
+      "candidate_id",
+      "logical_canvas_id",
+      "source_frame_count",
+      "frames"
+    ],
+    "frame_fields": [
+      "source_frame_index",
+      "target_marker"
+    ],
+    "marker_fields": [
+      "role",
+      "asset_path",
+      "anchor_x",
+      "anchor_y",
+      "logical_width",
+      "logical_height",
+      "anchor_mode",
+      "asset_bounds_policy"
+    ],
+    "extra_fields_allowed": false,
+    "raw_source_value_allowed": false,
+    "custom_data_allowed": false,
+    "score_or_close_calls_allowed": false,
+    "simulation_result_or_frame_references_allowed": false
+  },
+  "negative_matrix_reconciliation": {
+    "prior_design_planned_cases": 261,
+    "prior_design_label": "261 negative cases",
+    "original_design_261_not_claimed_as_all_negative": true,
+    "negative_runtime_cases_expected": 241,
+    "positive_runtime_cases_expected": 36,
+    "total_runtime_cases_expected": 277,
+    "corrected_relations": {
+      "prior_candidate_field_cross_relations": 12,
+      "actual_wrong_field_relations": 6,
+      "valid_shared_target_position_relations": 6,
+      "reason": "CHALLENGE_005/006/007 all use the exact same field name target_position; cross-relations among them are valid field pairs, not mismatches. A field name cannot encode which other candidate it came from.",
+      "public_entrypoint_field_argument": false
+    },
+    "success_cases_mislabeled_negative": {
+      "closed_output_mutations": 20,
+      "correct_classification": "successful calls whose outputs must remain closed and leak-free"
+    },
+    "unrepresentable_vector_case": {
+      "prior_label": "boolean_component",
+      "corrected_classification": "boolean x/y dictionary surrogate is rejected because it is not a Vector2; Godot Vector2 components are numeric and cannot preserve a bool component"
+    },
+    "provenance_correction": "existing validate_contract dictionary carries no source object identity; isolated adapter adds a WeakRef and expected frame count to the same returned dictionary; no core file is modified",
+    "six_additional_provenance_negative_cases": true
+  },
+  "runtime_test_contract": {
+    "runner_path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd",
+    "runner_sha256": "8b30bc90fa7f95ac8b38e8ad2b01670ed1fb97416acfc437225db4f478f8ded5",
+    "negative_runtime_cases_expected": 241,
+    "positive_runtime_cases_expected": 36,
+    "total_runtime_cases_expected": 277,
+    "candidate_field_pair_negative_cases_expected": 6,
+    "valid_shared_field_relations_expected": 6,
+    "closed_output_mutation_cases_expected": 20,
+    "status": "V1_FAILED_RUNTIME; V2_FIX_PENDING_OPERATOR_RUNTIME",
+    "required_godot_version": "4.7.1.stable.mono.official",
+    "invocation": "godot --headless --path <repo> --script res://tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd"
+  },
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "whole_custom_data_serialization_allowed": false,
+    "challenge_json_modification_allowed": false,
+    "challenge_004_v1_harness_mutation_allowed": false,
+    "runtime_implementation_authorized_for_production": false,
+    "runtime_coordinate_transform_authorized": false,
+    "render_test_authorized": false,
+    "payload_output_is_renderer_native_input": false
+  },
+  "next_gate": "RUN_V2_STATIC_SUITE_AND_GODOT_MONO_RUNTIME_277_CASES; REVIEW_REAL_WINDOWS_EVIDENCE_BEFORE_PRODUCTION_WIRING"
+}

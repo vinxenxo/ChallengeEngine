@@ -1,0 +1,118 @@
+{
+  "schema": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-RUNTIME-CONTRACT-SCHEMA-V2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "source_authority",
+    "implementation",
+    "output_contract",
+    "negative_matrix_reconciliation",
+    "runtime_test_contract",
+    "governance_locks",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-RUNTIME-CONTRACT-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "schema_required_keys": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "const": "IMPLEMENTED_NOT_RUNTIME_ACCEPTED"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_authority": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "frozen_c11c_manifest_path",
+        "frozen_c11c_manifest_sha256",
+        "implementation_design_path",
+        "implementation_design_sha256",
+        "prior_design_receipt_sha256",
+        "runtime_reference_pins"
+      ]
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "runtime_module_path",
+        "runtime_module_sha256",
+        "runtime_test_path",
+        "runtime_test_sha256",
+        "entrypoint_inputs",
+        "caller_supplied_field_argument",
+        "production_callsite_count",
+        "custom_data_access",
+        "side_effects"
+      ]
+    },
+    "output_contract": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "output_kind",
+        "renderer_native_input",
+        "root_fields",
+        "frame_fields",
+        "marker_fields",
+        "extra_fields_allowed"
+      ]
+    },
+    "negative_matrix_reconciliation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "negative_runtime_cases_expected",
+        "positive_runtime_cases_expected",
+        "total_runtime_cases_expected",
+        "original_design_261_not_claimed_as_all_negative"
+      ]
+    },
+    "runtime_test_contract": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "runner_path",
+        "runner_sha256",
+        "negative_runtime_cases_expected",
+        "positive_runtime_cases_expected",
+        "total_runtime_cases_expected",
+        "status"
+      ]
+    },
+    "governance_locks": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "renderer",
+        "release_authority",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "runtime_implementation_authorized_for_production",
+        "render_test_authorized"
+      ]
+    },
+    "next_gate": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
