@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-SOURCE-COMPOSITION-CONTRACT-V1",
+  "title": "C11-D V2-B Allowlisted Coordinate Consumer Source Composition Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "source_authority",
+    "composition",
+    "input_policy",
+    "output_policy",
+    "runtime_test_contract",
+    "governance_locks",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-V2B-ALLOWLISTED-COORDINATE-CONSUMER-SOURCE-COMPOSITION-CONTRACT-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "enum": [
+        "PENDING_OPERATOR_SOURCE_RUNTIME_COMPOSITION_TEST",
+        "PASS_SOURCE_RUNTIME_COMPOSITION_TESTS"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_c11c_manifest_path",
+        "frozen_c11c_manifest_sha256",
+        "runtime_acceptance_record_path",
+        "runtime_acceptance_record_sha256",
+        "runtime_acceptance_receipt_sha256",
+        "runtime_acceptance_stdout_sha256",
+        "runtime_acceptance_stderr_sha256",
+        "source_pin_count",
+        "source_pins",
+        "runtime_input_pin_count",
+        "runtime_input_pins"
+      ],
+      "properties": {
+        "frozen_c11c_manifest_path": {
+          "const": "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runtime_acceptance_record_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtime_acceptance_record_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runtime_acceptance_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runtime_acceptance_stdout_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runtime_acceptance_stderr_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_pin_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source_pins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pin"
+          }
+        },
+        "runtime_input_pin_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "runtime_input_pins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pin"
+          }
+        }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "required": [
+        "runtime_entrypoint",
+        "consumer_entrypoint",
+        "composition_invocation_scope",
+        "production_callsite_count",
+        "candidate_count",
+        "candidates",
+        "expected_per_candidate_source_frames",
+        "expected_total_source_frames",
+        "expected_total_marker_frames",
+        "runtime_engine",
+        "no_synthetic_frame_snapshots",
+        "no_alternate_candidate_field_argument",
+        "no_production_adapter_created"
+      ],
+      "properties": {
+        "composition_invocation_scope": {
+          "const": "TEST_HARNESS_ONLY"
+        },
+        "production_callsite_count": {
+          "const": 0
+        },
+        "candidate_count": {
+          "const": 4
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "expected_per_candidate_source_frames": {
+          "const": 420
+        },
+        "expected_total_source_frames": {
+          "const": 1680
+        },
+        "expected_total_marker_frames": {
+          "const": 1680
+        },
+        "runtime_engine": {
+          "const": "4.7.1.stable.mono.official"
+        },
+        "no_synthetic_frame_snapshots": {
+          "const": true
+        },
+        "no_alternate_candidate_field_argument": {
+          "const": true
+        },
+        "no_production_adapter_created": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "input_policy": {
+      "type": "object",
+      "required": [
+        "allowlisted_pairs",
+        "custom_data_access",
+        "enumeration",
+        "has_then_get",
+        "direct_indexing",
+        "copy_duplicate",
+        "serialization",
+        "harness_direct_custom_data_reads",
+        "raw_values_in_logs"
+      ],
+      "properties": {
+        "enumeration": {
+          "const": false
+        },
+        "has_then_get": {
+          "const": false
+        },
+        "direct_indexing": {
+          "const": false
+        },
+        "copy_duplicate": {
+          "const": false
+        },
+        "serialization": {
+          "const": false
+        },
+        "harness_direct_custom_data_reads": {
+          "const": 0
+        },
+        "raw_values_in_logs": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "output_policy": {
+      "type": "object",
+      "required": [
+        "root_keys",
+        "frame_keys",
+        "marker_keys",
+        "strict_closed_shape",
+        "source_ordinals_zero_based",
+        "winning_frame_filtering",
+        "whole_custom_data_serialization_allowed",
+        "renderer_native_input"
+      ],
+      "properties": {
+        "strict_closed_shape": {
+          "const": true
+        },
+        "source_ordinals_zero_based": {
+          "const": true
+        },
+        "winning_frame_filtering": {
+          "const": false
+        },
+        "whole_custom_data_serialization_allowed": {
+          "const": false
+        },
+        "renderer_native_input": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "runtime_test_contract": {
+      "type": "object",
+      "required": [
+        "script_path",
+        "candidate_cases_expected",
+        "per_candidate_frames_expected",
+        "total_source_frames_expected",
+        "total_marker_frames_expected",
+        "runtime_acceptance_record_sha256",
+        "status"
+      ],
+      "properties": {
+        "candidate_cases_expected": {
+          "const": 4
+        },
+        "per_candidate_frames_expected": {
+          "const": 420
+        },
+        "total_source_frames_expected": {
+          "const": 1680
+        },
+        "total_marker_frames_expected": {
+          "const": 1680
+        },
+        "status": {
+          "enum": [
+            "PENDING_OPERATOR_GODOT_MONO_RUN",
+            "PASS_SOURCE_RUNTIME_COMPOSITION_TESTS"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "governance_locks": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "release_authority",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "runtime_implementation_authorized_for_production",
+        "render_test_authorized"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "runtime_implementation_authorized_for_production": {
+          "const": false
+        },
+        "render_test_authorized": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "next_gate": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "pin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "role"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "schema":  "C11D-V2B-ALLOWLISTED-COORDINATE-SOURCE-COMPOSITION-RUNTIME-EVIDENCE-V1",
+    "evidence_status":  "PASS_OPERATOR_RUNTIME_EVIDENCE_CAPTURED",
+    "date":  "2026-10-23",
+    "execution":  {
+                      "godot_version":  "4.7.1.stable.mono.official.a13da4feb",
+                      "operator_reported_runtime_exit_code":  0,
+                      "exit_code_provenance":  "Operator console transcript",
+                      "static_test_status":  "PASS",
+                      "static_test_count":  132,
+                      "runtime_test_status":  "PASS",
+                      "runtime_pass_marker_count":  1,
+                      "runtime_fail_marker_count":  0,
+                      "candidate_count_passed":  4,
+                      "candidate_count_expected":  4,
+                      "source_frames_passed":  1680,
+                      "source_frames_expected":  1680,
+                      "marker_frames_passed":  1680,
+                      "marker_frames_expected":  1680,
+                      "custom_data_lookups_per_frame":  1,
+                      "harness_custom_data_reads":  0,
+                      "raw_custom_data_logged":  false,
+                      "stdout_sha256":  "b5e1465894a9d5ad5a26715f10459bf578809d4a3fadce7fc030b4964aa2c3bb",
+                      "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+    "source_sha256":  {
+                          "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CONTRACT_V1.json":  "d3265f1ba91dc664e85bbb0dc87ea6b145f0fed34ffa4552412c8fa70c19b2ab",
+                          "release/C11C_FREEZE_PACKAGE_MANIFEST.json":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                          "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_source_composition_static.py":  "5c69f08194213b7bcf48fe7f52bd17e8ec29a2d6e275c4c73787e7fa20b174ff",
+                          "tools/c11d/d9/test_allowlisted_coordinate_consumer_source_composition_runtime.gd":  "74fe446ef69c92de0291aa739caf1b5c25dbcdaed7f9939eb1e63c9a4623cfe2"
+                      },
+    "governance_locks":  {
+                             "renderer":  "OFF",
+                             "production_calls":  0,
+                             "media_created":  false,
+                             "render_test_authorized":  false,
+                             "runtime_implementation_authorized_for_production":  false,
+                             "candidate_input_admissible":  false,
+                             "c11c_immutable":  true
+                         },
+    "limitations":  [
+                        "This receipt records the operator-run source-composition harness only.",
+                        "It does not approve production implementation, payload materialization, media creation, render testing, or baseline promotion.",
+                        "The V1 source-composition contract is retained unchanged as the original test specification."
+                    ]
+}
