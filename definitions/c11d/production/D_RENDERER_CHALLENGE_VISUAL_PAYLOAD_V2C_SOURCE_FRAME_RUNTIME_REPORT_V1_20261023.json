@@ -1,0 +1,2564 @@
+{
+  "approved_bindings": 0,
+  "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+  "evidence": {
+    "directory": "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11DV2CSOURCERUNTIME_056b0672e95a4440b88b46bce4ad5576",
+    "evidence_file_sha256": {
+      "CHALLENGE_001_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_001_R1.out": "0b8033ec3767a26c74b5a43cfd954e9c8b62ee589f5958dd6615a371243cd9ec",
+      "CHALLENGE_001_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_001_R2.out": "d1e1b0aa5e99d8bcb89f907d196c894a359cb3f6ea22516d1244fd4c84e6d121",
+      "CHALLENGE_002_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_002_R1.out": "fd5e2ede94e936928a6d7857e631112e138d38c167e2d092b131ae6eff39018c",
+      "CHALLENGE_002_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_002_R2.out": "a6015eca4e5fc5fc10d8a950077b0830be0583ff9fbd7a9c89be8ccf1b35b500",
+      "CHALLENGE_003_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_003_R1.out": "2040c5cc41dd36f7921a1bc50b48e974fbc9341fd9f22ef2265ea8db241ec662",
+      "CHALLENGE_003_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_003_R2.out": "d33c1acc36be6c8780c73cfab4ea8223b52afe9338c4f7ac7cfc4932104516a1",
+      "CHALLENGE_004_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_004_R1.out": "b9b5b4cb1427fa5e3367c22e9be1e84982a5e9039b2e53c73c22d4689a167e17",
+      "CHALLENGE_004_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_004_R2.out": "a13ea06c92e7ec4a1696d309dcda1bdf1a7e868e271e2a86f3ac477b6d5b6092",
+      "CHALLENGE_005_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_005_R1.out": "e266a5e8942091b5a7c1c74a7dddc576d2b3b09c36f555aff52c888eca185002",
+      "CHALLENGE_005_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_005_R2.out": "063222613a4df164328c5dc6f71e5e00efc4f5c7935c7993f3fb9f8c14c8e246",
+      "CHALLENGE_006_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_006_R1.out": "fe9d2057a1beb607cc44011cae32f7f81c76d3c9385f87f2093025268107888d",
+      "CHALLENGE_006_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_006_R2.out": "f678288488f8de9e9410482879b8f7ab7fc2c1d6345e4094a910c1bdf325de90",
+      "CHALLENGE_007_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_007_R1.out": "9d532c9a1af1d4321072037a49271da04e9eab6ef0ad45aaa0ee20177bcfb1e8",
+      "CHALLENGE_007_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_007_R2.out": "84f82eed340ecd69692b30cea2c244a139accb3396c448dbdb23b57acf0789e8",
+      "CHALLENGE_008_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_008_R1.out": "be999212c6a409598e5929bdad1348e49f0e0434068647eddd253ea0c6cf4b16",
+      "CHALLENGE_008_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_008_R2.out": "ceefaa4dba69751f0dd9fac4645b2eb4587b76bb5fd209122718362b2f06f27d",
+      "CHALLENGE_009_R1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_009_R1.out": "4109f9bc26cbc2e11255c3f9daf2917fe22ad0b58a8789a47bf0e4d4feca6199",
+      "CHALLENGE_009_R2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "CHALLENGE_009_R2.out": "4a3eae51588a27b63840f466bcfb7d24bab4f9976de801b342c12c9442dedad9"
+    },
+    "failure": null,
+    "godot_executable": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+    "godot_version": "4.7.1.stable.mono.official.a13da4feb",
+    "godot_version_probe_exit_code": 0,
+    "godot_version_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "godot_version_stdout_sha256": "e8e9e0f31b0b27890085f6ba6167aadd9ee965c20fa9bf8e25a1bbdc80594646",
+    "scope_note": "Source-frame/route acceptance only; no payload, media, renderer input or visual seed sensitivity.",
+    "source_pin_errors_before_runtime": []
+  },
+  "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "godot_runtime_process_invocations": 18,
+  "godot_runtime_processes_expected": 18,
+  "godot_version_probe_invocations": 1,
+  "governance_locks": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "automatic_seed_generation": false,
+    "baseline_approval": "MISSING",
+    "candidate_input_admissible": false,
+    "challenge_visual_seed_sensitivity": "NOT_TESTED",
+    "freeze_eligible": false,
+    "master_seed": "NOT_ADOPTED",
+    "media_created": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "seed_domains_complete_for_candidate_input": false
+  },
+  "media_created": false,
+  "payload_materialized": false,
+  "planner_invocations": 9,
+  "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-REPORT-V1",
+  "schema_version": "1.0",
+  "selector_count_expected": 9,
+  "selectors": [
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 193847,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "da0d8147e332a006daec764cf60805ca5825a85d4b1645aa48135792a1c3fc08",
+        "request_hash": "67eb6a18085b134ac521ee7b9d4bde2d4ece1f4935559dea87627d538d1c5fa1",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 31532,
+          "receipt": {
+            "candidate_field_observations": {},
+            "lineage": {
+              "challenge_source_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 31532,
+              "run_id": "CHALLENGE_001_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "key",
+              "planner_plan_hash": "da0d8147e332a006daec764cf60805ca5825a85d4b1645aa48135792a1c3fc08",
+              "planner_request_hash": "67eb6a18085b134ac521ee7b9d4bde2d4ece1f4935559dea87627d538d1c5fa1",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_001",
+              "family_id": "key",
+              "mechanic": "key"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121",
+                "source_key": "assets/c6/key.svg"
+              },
+              "target_path": {
+                "sha256": "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167",
+                "source_key": "assets/c6/lock.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "7d67392789739700d3df76da1d4dbd758feee06a658fce18209ef435a39a7661",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 0.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 9.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "3635059dfc4a348d2533fc1138ff85e39ea7f5642757f2515f025737bd239e34",
+          "run_id": "CHALLENGE_001_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "0b8033ec3767a26c74b5a43cfd954e9c8b62ee589f5958dd6615a371243cd9ec"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 3564,
+          "receipt": {
+            "candidate_field_observations": {},
+            "lineage": {
+              "challenge_source_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "47d6720a89174768cef9fce1252726db536cad157fa177663199c07b4bdc47d6",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 3564,
+              "run_id": "CHALLENGE_001_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "key",
+              "planner_plan_hash": "da0d8147e332a006daec764cf60805ca5825a85d4b1645aa48135792a1c3fc08",
+              "planner_request_hash": "67eb6a18085b134ac521ee7b9d4bde2d4ece1f4935559dea87627d538d1c5fa1",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_001",
+              "family_id": "key",
+              "mechanic": "key"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121",
+                "source_key": "assets/c6/key.svg"
+              },
+              "target_path": {
+                "sha256": "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167",
+                "source_key": "assets/c6/lock.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "7d67392789739700d3df76da1d4dbd758feee06a658fce18209ef435a39a7661",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 0.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 9.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "cd184da7cb5c60fb20cbe712de87f79d6f107d838efe6a0b967a009de3fd8d2b",
+          "run_id": "CHALLENGE_001_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "d1e1b0aa5e99d8bcb89f907d196c894a359cb3f6ea22516d1244fd4c84e6d121"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_001",
+        "family_id": "key",
+        "mechanic": "key"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 987654,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "65a2eccfc4377b400a4e03b5828b00a1fe6cd27f183ea340bcac6de3ea702ead",
+        "request_hash": "363d286d0733a81a91815602763ae1192d9512dfb59800e824e276d49512ffa3",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 13488,
+          "receipt": {
+            "candidate_field_observations": {},
+            "lineage": {
+              "challenge_source_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 13488,
+              "run_id": "CHALLENGE_002_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "parking",
+              "planner_plan_hash": "65a2eccfc4377b400a4e03b5828b00a1fe6cd27f183ea340bcac6de3ea702ead",
+              "planner_request_hash": "363d286d0733a81a91815602763ae1192d9512dfb59800e824e276d49512ffa3",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_002",
+              "family_id": "parking",
+              "mechanic": "parking"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+                "source_key": "assets/c6/car.svg"
+              },
+              "target_path": {
+                "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+                "source_key": "assets/c6/parking_target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "cf2049661998743e3d752c28d34943e9b82868bbad1dbf3f84eb695967667786",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 0.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 10.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "becd4c373fd931c3b1ebb72898ab3fc36936f81bc96b8ea4b17648a29f090e6a",
+          "run_id": "CHALLENGE_002_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "fd5e2ede94e936928a6d7857e631112e138d38c167e2d092b131ae6eff39018c"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 27972,
+          "receipt": {
+            "candidate_field_observations": {},
+            "lineage": {
+              "challenge_source_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "591135c9b4ab8cba077e302042832ecfaaa52e100383ee8b1799e2afb5fa6076",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 27972,
+              "run_id": "CHALLENGE_002_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "parking",
+              "planner_plan_hash": "65a2eccfc4377b400a4e03b5828b00a1fe6cd27f183ea340bcac6de3ea702ead",
+              "planner_request_hash": "363d286d0733a81a91815602763ae1192d9512dfb59800e824e276d49512ffa3",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_002",
+              "family_id": "parking",
+              "mechanic": "parking"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+                "source_key": "assets/c6/car.svg"
+              },
+              "target_path": {
+                "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+                "source_key": "assets/c6/parking_target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "cf2049661998743e3d752c28d34943e9b82868bbad1dbf3f84eb695967667786",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 0.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 10.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "f161a5f29da9ee6c8dc9abfe47a8ba15baabc880d045840021bcf026763084bf",
+          "run_id": "CHALLENGE_002_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "a6015eca4e5fc5fc10d8a950077b0830be0583ff9fbd7a9c89be8ccf1b35b500"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_002",
+        "family_id": "parking",
+        "mechanic": "parking"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 314159,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "848b64182b88c5ba0e42b4868dc2b36519c46c216569199a90a81c5bd22ac733",
+        "request_hash": "1bbcbaa960777a62384cddcd98fdf0874ece5de7ff6ede1015b1c591db3d2c13",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 22368,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_x": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "float": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 22368,
+              "run_id": "CHALLENGE_003_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "pilot",
+              "planner_plan_hash": "848b64182b88c5ba0e42b4868dc2b36519c46c216569199a90a81c5bd22ac733",
+              "planner_request_hash": "1bbcbaa960777a62384cddcd98fdf0874ece5de7ff6ede1015b1c591db3d2c13",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_003",
+              "family_id": "pilot",
+              "mechanic": "pilot"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "aeddc9783af06b86a188f8400f60447f6f8e4eac1ba7a40c0dcf88b981ae94fb",
+                "source_key": "assets/c6/pilot.svg"
+              },
+              "target_path": {
+                "sha256": "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142",
+                "source_key": "assets/c6/waypoint.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "96fd91bc92d4bddc7c9f88ae803916798f14226716a7aab51f89d02444aae185",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 12.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "cc9f7ef5edd9b7c5382b2314414bf8a8489b3b0448a38fb3caa382ae31693e7a",
+          "run_id": "CHALLENGE_003_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "2040c5cc41dd36f7921a1bc50b48e974fbc9341fd9f22ef2265ea8db241ec662"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 27600,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_x": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "float": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "d888ca95536bf523488a311c9f79852019ff10391445ba595bb890f4ae8bed13",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 27600,
+              "run_id": "CHALLENGE_003_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "pilot",
+              "planner_plan_hash": "848b64182b88c5ba0e42b4868dc2b36519c46c216569199a90a81c5bd22ac733",
+              "planner_request_hash": "1bbcbaa960777a62384cddcd98fdf0874ece5de7ff6ede1015b1c591db3d2c13",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_003",
+              "family_id": "pilot",
+              "mechanic": "pilot"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "aeddc9783af06b86a188f8400f60447f6f8e4eac1ba7a40c0dcf88b981ae94fb",
+                "source_key": "assets/c6/pilot.svg"
+              },
+              "target_path": {
+                "sha256": "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142",
+                "source_key": "assets/c6/waypoint.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "96fd91bc92d4bddc7c9f88ae803916798f14226716a7aab51f89d02444aae185",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 12.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "e30aa8803bb04c433ac79719c4371fc1e23e61e6313be79382be16381cfddcd9",
+          "run_id": "CHALLENGE_003_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "d33c1acc36be6c8780c73cfab4ea8223b52afe9338c4f7ac7cfc4932104516a1"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_003",
+        "family_id": "pilot",
+        "mechanic": "pilot"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 314159,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "044bf371f0d67446f50f790df342746bf99fc5df79c4bf066d526f1ff6fc963a",
+        "request_hash": "696a6e5ac10c5d851d2c79a875681033836d5fe4381119b7581cc60a84c73241",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 27668,
+          "receipt": {
+            "candidate_field_observations": {},
+            "lineage": {
+              "challenge_source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 27668,
+              "run_id": "CHALLENGE_004_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "parking_v2",
+              "planner_plan_hash": "044bf371f0d67446f50f790df342746bf99fc5df79c4bf066d526f1ff6fc963a",
+              "planner_request_hash": "696a6e5ac10c5d851d2c79a875681033836d5fe4381119b7581cc60a84c73241",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_004",
+              "family_id": "parking_v2",
+              "mechanic": "parking_v2"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+                "source_key": "assets/c6/car.svg"
+              },
+              "target_path": {
+                "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+                "source_key": "assets/c6/parking_target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "1e0c4a294c7b028b3bad348e50707ef92dc53adc2b96730ec874b409106a87b2",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 15.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 3.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "79d7175c9dd856cec7c52329862c94d4511f7f748c541e56ff89acf8db10a42c",
+          "run_id": "CHALLENGE_004_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "b9b5b4cb1427fa5e3367c22e9be1e84982a5e9039b2e53c73c22d4689a167e17"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 34632,
+          "receipt": {
+            "candidate_field_observations": {},
+            "lineage": {
+              "challenge_source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 34632,
+              "run_id": "CHALLENGE_004_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "parking_v2",
+              "planner_plan_hash": "044bf371f0d67446f50f790df342746bf99fc5df79c4bf066d526f1ff6fc963a",
+              "planner_request_hash": "696a6e5ac10c5d851d2c79a875681033836d5fe4381119b7581cc60a84c73241",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_004",
+              "family_id": "parking_v2",
+              "mechanic": "parking_v2"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+                "source_key": "assets/c6/car.svg"
+              },
+              "target_path": {
+                "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+                "source_key": "assets/c6/parking_target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "1e0c4a294c7b028b3bad348e50707ef92dc53adc2b96730ec874b409106a87b2",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 15.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 3.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "94c9424c8f359e03b1afc5b6f022e345ccc5f4d4f991827565cf18443c9dd1d2",
+          "run_id": "CHALLENGE_004_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "a13ea06c92e7ec4a1696d309dcda1bdf1a7e868e271e2a86f3ac477b6d5b6092"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_004",
+        "family_id": "parking_v2",
+        "mechanic": "parking_v2"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 998877,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "1d1869e70cc9d36c32db0f1fb070895a793977ac566cdfde5a2051043bf701b5",
+        "request_hash": "5bcd2b961db16c50b43b9301d593b8553f71b922ec8f1f47c2c270ca8ff20b79",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 15024,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_position": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "Vector2": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 15024,
+              "run_id": "CHALLENGE_005_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "hit_v1",
+              "planner_plan_hash": "1d1869e70cc9d36c32db0f1fb070895a793977ac566cdfde5a2051043bf701b5",
+              "planner_request_hash": "5bcd2b961db16c50b43b9301d593b8553f71b922ec8f1f47c2c270ca8ff20b79",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_005",
+              "family_id": "hit_v1",
+              "mechanic": "hit_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254",
+                "source_key": "assets/c6/projectile.svg"
+              },
+              "target_path": {
+                "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+                "source_key": "assets/c6/target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "cd79b4a99fb843f6e046fcf001d14455c71c9bca48d1e188dc552bef67500c8c",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 0.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 0.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 7.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "64bf6170e41640e6099b1af198ce9070ef32deffc6dab96342ac23ef588f49d3",
+          "run_id": "CHALLENGE_005_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e266a5e8942091b5a7c1c74a7dddc576d2b3b09c36f555aff52c888eca185002"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 34084,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_position": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "Vector2": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "79e43cafbe79bf1ffa7e5e4d750e41026b28db18c1e423cfdf57248b7e164fa3",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 34084,
+              "run_id": "CHALLENGE_005_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "hit_v1",
+              "planner_plan_hash": "1d1869e70cc9d36c32db0f1fb070895a793977ac566cdfde5a2051043bf701b5",
+              "planner_request_hash": "5bcd2b961db16c50b43b9301d593b8553f71b922ec8f1f47c2c270ca8ff20b79",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_005",
+              "family_id": "hit_v1",
+              "mechanic": "hit_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254",
+                "source_key": "assets/c6/projectile.svg"
+              },
+              "target_path": {
+                "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+                "source_key": "assets/c6/target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "cd79b4a99fb843f6e046fcf001d14455c71c9bca48d1e188dc552bef67500c8c",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 0.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 0.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 7.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "b6969f427ee4dc5b1145e0e0050d422388be553062d6dc3b118288379fbbc370",
+          "run_id": "CHALLENGE_005_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "063222613a4df164328c5dc6f71e5e00efc4f5c7935c7993f3fb9f8c14c8e246"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_005",
+        "family_id": "hit_v1",
+        "mechanic": "hit_v1"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 884422,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "d8c78195b17441c7454219d58fc9723aaf3775e464b6b70f7d3dd80c64a8feb0",
+        "request_hash": "3a78f601373fbbb4be6dbb41ec8b8b218157b53cda959ed901e4d538d06f071e",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 27060,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_position": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "Vector2": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 27060,
+              "run_id": "CHALLENGE_006_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "catch_v1",
+              "planner_plan_hash": "d8c78195b17441c7454219d58fc9723aaf3775e464b6b70f7d3dd80c64a8feb0",
+              "planner_request_hash": "3a78f601373fbbb4be6dbb41ec8b8b218157b53cda959ed901e4d538d06f071e",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_006",
+              "family_id": "catch_v1",
+              "mechanic": "catch_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd",
+                "source_key": "assets/c6/catcher.svg"
+              },
+              "target_path": {
+                "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+                "source_key": "assets/c6/target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "3035da808feafd5e09b5364b47b98ccab9297fdd567428319f56d3b274dd8c3e",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 0.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 9.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "b3c742b6969c76d8689c0fdc2e706d1910439ea5a3ec96596b32584b0f98ff54",
+          "run_id": "CHALLENGE_006_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "fe9d2057a1beb607cc44011cae32f7f81c76d3c9385f87f2093025268107888d"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 30588,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_position": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "Vector2": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "f5af70f8007cc7bc703b1caf28d9b15a76a6fe1041478ab9bbb7091dc94a5d30",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 30588,
+              "run_id": "CHALLENGE_006_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "catch_v1",
+              "planner_plan_hash": "d8c78195b17441c7454219d58fc9723aaf3775e464b6b70f7d3dd80c64a8feb0",
+              "planner_request_hash": "3a78f601373fbbb4be6dbb41ec8b8b218157b53cda959ed901e4d538d06f071e",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_006",
+              "family_id": "catch_v1",
+              "mechanic": "catch_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd",
+                "source_key": "assets/c6/catcher.svg"
+              },
+              "target_path": {
+                "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+                "source_key": "assets/c6/target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "3035da808feafd5e09b5364b47b98ccab9297fdd567428319f56d3b274dd8c3e",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 0.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 9.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "b2f4b990436cda1c6e952f6457812ff8312322a2f14ba9a5f6a6d3773d9ba01b",
+          "run_id": "CHALLENGE_006_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "f678288488f8de9e9410482879b8f7ab7fc2c1d6345e4094a910c1bdf325de90"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_006",
+        "family_id": "catch_v1",
+        "mechanic": "catch_v1"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 7770001,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "61b92aef3a50c99c295a31e5a3dd8bcb424c3847f488c05357f05ec56d614063",
+        "request_hash": "72c83d5744200da4539e5d02008785183b1e5baa2d7ba4c564ec327048484005",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 16928,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_position": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "Vector2": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 16928,
+              "run_id": "CHALLENGE_007_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "find_v1",
+              "planner_plan_hash": "61b92aef3a50c99c295a31e5a3dd8bcb424c3847f488c05357f05ec56d614063",
+              "planner_request_hash": "72c83d5744200da4539e5d02008785183b1e5baa2d7ba4c564ec327048484005",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_007",
+              "family_id": "find_v1",
+              "mechanic": "find_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804",
+                "source_key": "assets/c6/scanner.svg"
+              },
+              "target_path": {
+                "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+                "source_key": "assets/c6/target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "a28c9c1a7ebc46636ead18e46215992e7f79d76f09b7f2c7705c1cbc40e4c6a8",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 0.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 10.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "6a80c85b52c32fad74d2dbfb5a65a23d6842ae88f641594081ec94044ac63511",
+          "run_id": "CHALLENGE_007_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "9d532c9a1af1d4321072037a49271da04e9eab6ef0ad45aaa0ee20177bcfb1e8"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 8324,
+          "receipt": {
+            "candidate_field_observations": {
+              "target_position": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "Vector2": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "60d5a2910e97a922ada752223a37eee217fd5ddab29a4a43a4c562dce4634e50",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 8324,
+              "run_id": "CHALLENGE_007_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "find_v1",
+              "planner_plan_hash": "61b92aef3a50c99c295a31e5a3dd8bcb424c3847f488c05357f05ec56d614063",
+              "planner_request_hash": "72c83d5744200da4539e5d02008785183b1e5baa2d7ba4c564ec327048484005",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_007",
+              "family_id": "find_v1",
+              "mechanic": "find_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+                "source_key": "assets/c6/garage_background.svg"
+              },
+              "object_path": {
+                "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804",
+                "source_key": "assets/c6/scanner.svg"
+              },
+              "target_path": {
+                "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+                "source_key": "assets/c6/target.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "a28c9c1a7ebc46636ead18e46215992e7f79d76f09b7f2c7705c1cbc40e4c6a8",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 0.0,
+              "declared_total_duration_seconds": null,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": false,
+              "phase_duration_sum_seconds": 10.0,
+              "phase_timeline_acceptance": "NOT_EVALUATED_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "8e611cfc77236f38c2959cad81bbee9610fc81cf5f8ca16b5248a01f6cf5fcad",
+          "run_id": "CHALLENGE_007_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "84f82eed340ecd69692b30cea2c244a139accb3396c448dbdb23b57acf0789e8"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_007",
+        "family_id": "find_v1",
+        "mechanic": "find_v1"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 20260824,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "20f8e810adb9f20723b05fc2919c9c0fe6b037cfd92363c5407e2ff86f7ca1a4",
+        "request_hash": "39bac313639b75e4cc879b89c9393bcc513c0800deab2223c38ed2a424ae1d0b",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 35520,
+          "receipt": {
+            "candidate_field_observations": {
+              "active_selection": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "int": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 35520,
+              "run_id": "CHALLENGE_008_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "choose_v1",
+              "planner_plan_hash": "20f8e810adb9f20723b05fc2919c9c0fe6b037cfd92363c5407e2ff86f7ca1a4",
+              "planner_request_hash": "39bac313639b75e4cc879b89c9393bcc513c0800deab2223c38ed2a424ae1d0b",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_008",
+              "family_id": "choose_v1",
+              "mechanic": "choose_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "11b3ac5e70ab6f1e15ac99fcf1b5ac36626a553e14a450b592a8fd598fa6dce2",
+                "source_key": "assets/c6/choose_background.svg"
+              },
+              "object_path": {
+                "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b",
+                "source_key": "assets/c6/cursor.svg"
+              },
+              "target_path": {
+                "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21",
+                "source_key": "assets/c6/transparent.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "e9ebc8a463ab6828742c39bb3cacf62da0ba5378f728f29cb1ecfc9a429a46ef",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": 11.0,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": true,
+              "phase_duration_sum_seconds": 12.0,
+              "phase_timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "9bf80d4be684f7b99c42ab5657be03ce71aff6db503d63f1e1b7de98c8774493",
+          "run_id": "CHALLENGE_008_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "be999212c6a409598e5929bdad1348e49f0e0434068647eddd253ea0c6cf4b16"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 33436,
+          "receipt": {
+            "candidate_field_observations": {
+              "active_selection": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "int": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "e8bb292eb71729a6f2712fb52b0a98fb59ecb319331b1f0c0d7fe0e4150a7a84",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 33436,
+              "run_id": "CHALLENGE_008_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "choose_v1",
+              "planner_plan_hash": "20f8e810adb9f20723b05fc2919c9c0fe6b037cfd92363c5407e2ff86f7ca1a4",
+              "planner_request_hash": "39bac313639b75e4cc879b89c9393bcc513c0800deab2223c38ed2a424ae1d0b",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_008",
+              "family_id": "choose_v1",
+              "mechanic": "choose_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "11b3ac5e70ab6f1e15ac99fcf1b5ac36626a553e14a450b592a8fd598fa6dce2",
+                "source_key": "assets/c6/choose_background.svg"
+              },
+              "object_path": {
+                "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b",
+                "source_key": "assets/c6/cursor.svg"
+              },
+              "target_path": {
+                "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21",
+                "source_key": "assets/c6/transparent.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "e9ebc8a463ab6828742c39bb3cacf62da0ba5378f728f29cb1ecfc9a429a46ef",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": 11.0,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": true,
+              "phase_duration_sum_seconds": 12.0,
+              "phase_timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "11b79342502de5a5ee34a34e8e04b322f1a44eda89db4235a65b586762c7a6b9",
+          "run_id": "CHALLENGE_008_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "ceefaa4dba69751f0dd9fac4645b2eb4587b76bb5fd209122718362b2f06f27d"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_008",
+        "family_id": "choose_v1",
+        "mechanic": "choose_v1"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    },
+    {
+      "block_reasons": [],
+      "planner": {
+        "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+        "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+        "gameplay_seed": 20260901,
+        "invocations": 1,
+        "music_seed": 840001,
+        "plan_hash": "42c2c1948607853a7e8601704181b224c9668ccd6622974a1a98eeddc4310548",
+        "request_hash": "5045ff590d39af048a14d713e17490a81c0793df6beebda45a5d160d5a21fc2e",
+        "status": "PLANNED"
+      },
+      "repeat_agreement": true,
+      "runtime_runs": [
+        {
+          "exit_code": 0,
+          "process_id": 33444,
+          "receipt": {
+            "candidate_field_observations": {
+              "displayed_count": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "int": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 33444,
+              "run_id": "CHALLENGE_009_R1"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "count_v1",
+              "planner_plan_hash": "42c2c1948607853a7e8601704181b224c9668ccd6622974a1a98eeddc4310548",
+              "planner_request_hash": "5045ff590d39af048a14d713e17490a81c0793df6beebda45a5d160d5a21fc2e",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_009",
+              "family_id": "count_v1",
+              "mechanic": "count_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7",
+                "source_key": "assets/c6/count_background.svg"
+              },
+              "object_path": {
+                "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b",
+                "source_key": "assets/c6/cursor.svg"
+              },
+              "target_path": {
+                "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21",
+                "source_key": "assets/c6/transparent.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "573e6384499f06562d83a05328083f514c083132724c933adfb90c4e225793a8",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": 11.0,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": true,
+              "phase_duration_sum_seconds": 12.0,
+              "phase_timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "d064362e3a20c3c9adee832a0a113b54ae2eef89c1ced9a3fc5afea80198a4b8",
+          "run_id": "CHALLENGE_009_R1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "4109f9bc26cbc2e11255c3f9daf2917fe22ad0b58a8789a47bf0e4d4feca6199"
+        },
+        {
+          "exit_code": 0,
+          "process_id": 35380,
+          "receipt": {
+            "candidate_field_observations": {
+              "displayed_count": {
+                "present_frames": 420,
+                "type_histogram": {
+                  "int": 420
+                }
+              }
+            },
+            "lineage": {
+              "challenge_source_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+              "contract_sha256": "6d3c59214edbdd917cf63fe9ca4859edb6968d503368ec84e867bdd56a8df74c",
+              "frame_snapshot_sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+              "frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+              "mechanic_source_sha256": "7ad1b288956f81f31e1871eb1938062885dd1b8bb3814d109ec3bde0ebf77db8",
+              "runtime_bridge_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+              "verified_source_pin_count": 81
+            },
+            "process": {
+              "exit_code": 0,
+              "process_id": 35380,
+              "run_id": "CHALLENGE_009_R2"
+            },
+            "route": {
+              "adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+              "bridge_status": "PLANNING_ONLY_NOT_RENDERABLE",
+              "effective_mechanic": "count_v1",
+              "planner_plan_hash": "42c2c1948607853a7e8601704181b224c9668ccd6622974a1a98eeddc4310548",
+              "planner_request_hash": "5045ff590d39af048a14d713e17490a81c0793df6beebda45a5d160d5a21fc2e",
+              "release_authority": "NONE",
+              "renderer": "OFF",
+              "runtime_bridge_method": "ChallengeRuntimeBridge.run_effective_pipeline"
+            },
+            "runtime": {
+              "engine_version_info": {
+                "build": "official",
+                "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+                "hex": 263937,
+                "major": 4,
+                "minor": 7,
+                "patch": 1,
+                "status": "stable",
+                "string": "4.7.1-stable (official)",
+                "timestamp": 0
+              },
+              "godot_version": "4.7.1.stable.mono.official.a13da4feb"
+            },
+            "schema": "C11D-CHALLENGE-VISUAL-PAYLOAD-V2C-SOURCE-FRAME-RUNTIME-RECEIPT-V1",
+            "schema_version": "1.0",
+            "selector": {
+              "challenge_id": "CHALLENGE_009",
+              "family_id": "count_v1",
+              "mechanic": "count_v1"
+            },
+            "semantic_binding_state": {
+              "approved_bindings": 0,
+              "approved_custom_data_bindings": 0,
+              "custom_data_values_serialized": false
+            },
+            "side_effects": {
+              "canonical_state_mutated": false,
+              "media_created": false,
+              "payload_file_written": false,
+              "production_dispatched": false,
+              "render_nodes_created": false,
+              "renderer_native_input_emitted": false,
+              "rendering_server_called": false,
+              "viewport_captured": false
+            },
+            "source_asset_pins": {
+              "background_path": {
+                "sha256": "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7",
+                "source_key": "assets/c6/count_background.svg"
+              },
+              "object_path": {
+                "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b",
+                "source_key": "assets/c6/cursor.svg"
+              },
+              "target_path": {
+                "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21",
+                "source_key": "assets/c6/transparent.svg"
+              }
+            },
+            "source_frames": {
+              "count": 420,
+              "expected_game_frames": 420,
+              "finite_transform_frames": 420,
+              "frame_shape": [
+                "position:Vector2",
+                "rotation:float",
+                "scale:Vector2",
+                "opacity:float",
+                "texture_index:int",
+                "variant_id:int"
+              ],
+              "game_duration_seconds": 7.0,
+              "projection_fields": [
+                "position.x",
+                "position.y",
+                "rotation",
+                "scale.x",
+                "scale.y",
+                "opacity",
+                "texture_index",
+                "variant_id"
+              ],
+              "projection_sha256": "573e6384499f06562d83a05328083f514c083132724c933adfb90c4e225793a8",
+              "source_fps": 60
+            },
+            "source_timebase": {
+              "cta_duration_seconds": 2.0,
+              "declared_total_duration_seconds": 11.0,
+              "game_duration_seconds": 7.0,
+              "hook_duration_seconds": 3.0,
+              "known_conflict": true,
+              "phase_duration_sum_seconds": 12.0,
+              "phase_timeline_acceptance": "BLOCKED_TIMEBASE_CONFLICT_SOURCE_FRAME_ONLY",
+              "reveal_duration_seconds": 0.0
+            },
+            "status": "SOURCE_FRAME_RECEIPT"
+          },
+          "receipt_sha256": "902f910507665cece79682b2e3e13713c9f48bf2051b4ca268dfc0d69c339acb",
+          "run_id": "CHALLENGE_009_R2",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "4a3eae51588a27b63840f466bcfb7d24bab4f9976de801b342c12c9442dedad9"
+        }
+      ],
+      "selector": {
+        "challenge_id": "CHALLENGE_009",
+        "family_id": "count_v1",
+        "mechanic": "count_v1"
+      },
+      "status": "ACCEPTED_SOURCE_FRAME_ONLY"
+    }
+  ],
+  "source_pin_count": 81,
+  "status": "PASS_SOURCE_FRAME_ROUTE_ONLY",
+  "visual_seed_sensitivity": "NOT_TESTED"
+}
