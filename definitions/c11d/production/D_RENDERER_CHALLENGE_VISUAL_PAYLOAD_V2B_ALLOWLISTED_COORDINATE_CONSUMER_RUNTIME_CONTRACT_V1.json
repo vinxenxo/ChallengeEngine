@@ -61,7 +61,7 @@
     "runtime_test_path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime.gd",
     "runtime_test_sha256": "44bee8080e7ecaa029daf435fd8152a65b3d0c89b3734f80c54ece0fc871cf15",
     "runtime_static_test_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static.py",
-    "runtime_static_test_sha256": "e58c02a48e379afded51f5e45c74c1f2c94a8f83848dd4f8be0316cd78339e88",
+    "runtime_static_test_sha256": "c18082f7ad62722153088b07ade0f1753be739a7a6b00da0d08bf1db4e671946",
     "entrypoint": "project_allowlisted_target_marker_track(candidate_id, simulation_result, upstream_validation)",
     "entrypoint_inputs": [
       "candidate_id",

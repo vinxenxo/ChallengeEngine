@@ -1,17 +1,9 @@
-# C11-D current start prompt — 2026-10-16
+# C11-D Current Start Prompt — 2026-10-26, V24
 
-Continue from the actual active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`, not from a wholesale extracted snapshot. Before acting, read:
+Continue only in the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. Read `AGENTS.md`, `.continue/rules/CONTINUE.md`, `docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md`, `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261026_V24.md`, `docs/current/d/C11D_SOURCE_SNAPSHOT_RECONCILIATION_REPORT_20261026_V1.md`, `docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_REVIEW_20261026_V1.md`, and `prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261026_V24.md`.
 
-1. `MASTER_HANDOVER_C11D_CURRENT.md`
-2. `C11D_D10_RENDERER_CLOSEOUT_CHECKPOINT_20261016.md`
-3. `C11D_RENDERER_CLOSEOUT_GATE_MAP_20261016.md`
-4. `C11D_OPERATOR_EVIDENCE_20261016.md`
-5. `C11D_POWERSHELL_EXECUTION_POLICY_20261016.md`
+The last operator-confirmed gate passed 113/113 runtime-static V1 checks, 115/115 runtime-static V2 checks, 132/132 source-composition static checks and Godot 4.7.1 Mono source composition for four candidates / 1,680 source frames / 1,680 marker frames. Its V2 evidence receipt is captured but deliberately pending formal receipt review.
 
-The latest confirmed operator results are: collision rejection regression 7/7 PASS; bounded cross-type Godot 4.7.1 runtime 12/12 receipts PASS, sensitivity 2/2, music orthogonality 2/2, repeats 6/6, source pins 18/18. The two selectors are Challenge `parking_v2/CHALLENGE_004` and Visual Loop `c11c_geometric_waves_v1/harmonic_membrane` only. The report explicitly retains `seed_domains_complete_for_candidate_input=false`; this is not full input admission and not a render.
+**First action:** verify the live checkout manifest SHA-256 is `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` and its size is `796318` bytes. The uploaded ZIP copy differs (`f6b2fc6ce36973eb620738c8446d529d98da0fb79892132cf4708e6f453051b5`, `1070256` bytes) and must never be copied over the frozen manifest. If the live check passes, run `tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_source_composition_runtime_evidence_v2.py` against the temp directory `C11DCOORDCOMPOSITIONRUNTIME_79683278984b40d7b4fae0209ec4eee2`. Stop on any mismatch. If the validator passes, create a separate operator evidence review record before any integration proposal.
 
-**First action:** check whether `C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_20261016.zip` has already been applied. SHA-256 `b97572705a77c1dc2f0a2e6e37d820037448fee44e59cdd042d85a71a24608ac`. Its preparation-tree contract test was 11/11, but its own checkpoint says real Godot runtime was pending. If installed, run the actual Windows runtime and verify every guard/marker; if not, apply only with its own preconditions after checking target paths and frozen manifest. Do not duplicate it.
-
-Then progress toward the next seed-domain/selector coverage gate and the remaining I/O gaps in the gate map. Use short PowerShell blocks, true exit codes, separate stdout/stderr, exact checks and no unconditional PASS. Do not guess executable paths or build a complicated launcher. Continue to add/update a checkpoint and handover after meaningful changes.
-
-Immutable C11-C manifest SHA: `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Preserve C11-C simulation truth and frame semantics. Renderer OFF; D9.10 `PREPARE_ONLY`; D4.8 BLOCKED; release authority NONE; baseline approval missing; D9.14/D9.16 blocked; D9.17 NO-GO; D10 blocked. No request admission, renderer dispatch, media or cutover until every formal gate and approval is complete.
+C11-C 2.19.12 stays immutable; frozen manifest SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Locks remain renderer OFF, no payload materialization/media, no candidate input admission, zero approved bindings/projection bindings, D4.8 BLOCKED, D9.10 PREPARE_ONLY, D9.14/D9.16 BLOCKED, D9.17 BLOCKED_NO_GO, D10 BLOCKED_FOR_PROMOTION, baseline approval missing and release authority NONE.

@@ -342,7 +342,7 @@
     "runtime_input_pins": [
       {
         "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CONTRACT_V2.json",
-        "sha256": "4306881108a87348721fce5ae2d6443b6a3a57ccd8df27db3235daf63c500e04",
+        "sha256": "0bd65e8f64c13850670d927d62209276ae94999ce57c790db7ae1592fa793ae9",
         "role": "accepted_runtime_v2_contract"
       },
       {
@@ -362,7 +362,7 @@
       },
       {
         "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static_v2.py",
-        "sha256": "bb8453f40d744abaff4134a90502e0957baceeb3582ed1ad29a7e7565da65f07",
+        "sha256": "a3e13c382cf0fb7ebaa57896b75d36809ebfd09e6425f87936b9f2a2b8be7a1e",
         "role": "accepted_115_check_static_suite"
       },
       {

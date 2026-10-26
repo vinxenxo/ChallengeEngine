@@ -1,44 +1,59 @@
-# Current authoritative C11-D handover — 2026-10-17 (V6)
+# C11-D Current Master Handover — 2026-10-26, V24
 
-**Current state:** `CHALLENGE_PLANNER_PREFLIGHT_V2_PASS; CHALLENGE_VISUAL_CAPABILITY_MATRIX_V1_STATIC_PASS; CHALLENGE_SEMANTIC_BINDING_PROPOSAL_V1_STATIC_PASS; APPROVED_BINDINGS=0; CHALLENGE_RUNTIME_PAYLOAD_ACCEPTANCE_OPEN; CANDIDATE_INPUT_NOT_ADMISSIBLE; RENDERER_OFF`.
+**Current authority:** `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261026_V24.md` and the current continuation prompts under `prompts/` dated 2026-10-26. The prior unversioned state handover was last updated on 2026-10-17 and is replaced by this current pointer while all dated prior records remain preserved.
 
-Active checkout: `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. Current start prompt: `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017_V6.md`; current master prompt: `prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261017_V6.md`.
+## Required read order
 
-## Latest Challenge evidence (operator-confirmed, 2026-10-17)
+1. `AGENTS.md`
+2. `.continue/rules/CONTINUE.md`
+3. `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261026_V24.md`
+4. `docs/current/d/C11D_SOURCE_SNAPSHOT_RECONCILIATION_REPORT_20261026_V1.md`
+5. `docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_REVIEW_20261026_V1.md`
+6. `prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261026_V24.md`
+7. `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261026_V24.md`
+8. `docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261017_V5.md` and the non-duplication register V6 for their broader historical dependencies, not as the latest status of the source-composition micro-gate.
 
-### Canonical planner preflight V2
+## Product and authority boundary
 
-9/9 selectors; 27/27 seed variant cases; repeat stability and D4 parity 27/27; identity seed sensitivity for request/plan 9/9 each; editorial invariance 9/9; 5/5 negative cases; 54 planner calls; Godot 0; payload materialized false. Saved report SHA-256 `1e41001f83cf9b093919f46ee2f327553c93464f8369ecfb0dc3b34b0a0c9d43`.
+C11-D is a deterministic Godot 4.7.1 Mono vertical challenge-video factory candidate. C11-C 2.19.12 remains the only frozen authoritative production baseline until a separate C11-D baseline review, approval and freeze/promotion. The file `release/C11C_FREEZE_PACKAGE_MANIFEST.json` must continue to hash to `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` and have `796318` bytes. The uploaded ZIP contains a conflicting copy: SHA `f6b2fc6ce36973eb620738c8446d529d98da0fb79892132cf4708e6f453051b5`, `1070256` bytes, while its own `source_files` self-entry says `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` / `796318` bytes. Verify the active checkout before applying anything; never replace the frozen manifest from the ZIP. Never extract this ZIP over the working tree or modify C11-C implementation, seed V1, simulation truth, RNG ownership, `SimulationResult`, frozen geometry or source `winning_frame`.
 
-### Visual payload capability matrix V1
+`winning_frame` is the sole temporal anchor; `close_calls` is an episode count only. The logical social canvas is 540×960 (Header 0–144, Body 144–816, Footer 816–960). Delivery 720×1280 at 30 FPS is not a resampling of the 60 FPS source simulation frames.
 
-15/15 tests; 9/9 selectors, 43/43 source pins, 9/9 mechanic routes, 27/27 asset refs, 15/15 unique assets, 9/9 custom-data inventory, two explicit timebase conflicts, preview coverage 1/9. Saved report SHA-256 `36c014734892fee2d7a1beb2662cd610c6856b4ecb48d9e06bf596f826795327`. No Godot or payload materialization.
+## Current narrow consumer/composition evidence
 
-### Semantic binding proposal V1
+The review-only allowlisted consumer V2 has a separate accepted runtime record: 241/241 negative + 36/36 positive = 277/277; receipt `ea3acf30b29e8d59fcfa87e0452cb0f979ed7c0d48d9412999ba405c2a86098d`; acceptance record SHA `5ce4cddace9a8a04b4c1ba520cfdeeb79ee3a7e1952dc70f60baf45e02623d34`. The source-composition test then passed 113/113 (runtime-static V1), 115/115 (runtime-static V2), and 132/132 (composition static), followed by the operator-confirmed Godot runtime for `CHALLENGE_003/005/006/007`, 420 source frames each, 1,680 source frames and 1,680 logical marker frames total. Current execution stdout SHA `b5e1465894a9d5ad5a26715f10459bf578809d4a3fadce7fc030b4964aa2c3bb`, stderr empty SHA `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, exit code 0.
 
-**20/20 tests**, 9/9 selector proposal rows; base track 6/6; static source candidates 3/3; custom-data candidate fields 6/6; asset refs 27/27; 15 unique assets; timebase conflicts 2/2; **approved bindings 0**. Saved report SHA-256 `c8d7cbc14912f514ad34117882b1ad296835b4845d554285b4062f6997f4de53`. This is static proposal evidence only, not runtime payload acceptance.
+The 2026-10-26 source-composition V2 evidence record is explicitly **pending formal evidence review**. Its validator checks current file pins and the actual temp runtime logs, as well as all 81 parent source pins and all 6 runtime-input pins declared in the source-composition contract. The historic 2026-10-23 receipt is preserved and not rewritten; it binds earlier source hashes and must not be used as if it certified current corrected files.
 
-### Prior independent Visual Loop runtime gates
+## Immediate next step
 
-Exact-selector payload V2: operator-confirmed Godot 4.7.1 PASS; 5/5 payload instances, 70/70 source pins, 45/45 policy-reference pairs, zero renderer inputs. Report `55240ee0e34340bd860e4243f03d49ce777aa6ef87e5154443f5e2b1a9754d74`. Loop seed domain V2: 5/5 selectors; 15 seed variants/repeat pairs; gameplay sensitivity 5/5, music orthogonality 5/5; 60 invocations; report `be5ef149aa30c99c76501acafe6e1161ecc05e9980630d2309d7146f57ca7683`. These results do not transfer approval to Challenge payloads.
+First verify the active Windows checkout frozen C11-C manifest SHA and byte size. It must be SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` and `796318` bytes. If not, STOP; do not repair from the uploaded ZIP. The archive copy itself has a documented mismatch (`f6b2fc6ce36973eb620738c8446d529d98da0fb79892132cf4708e6f453051b5`, `1070256` bytes). Only after the active checkout identity check passes, run the V2 receipt validator:
 
-## Immediate next increment
+```powershell
+$Repo = "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS"
+$EvidenceDir = Join-Path $env:TEMP "C11DCOORDCOMPOSITIONRUNTIME_79683278984b40d7b4fae0209ec4eee2"
+$Python = "C:\Users\vinxe\AppData\Local\Programs\Python\Python313\python.exe"
+$Validator = Join-Path $Repo "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_source_composition_runtime_evidence_v2.py"
+$ValidatorOut = Join-Path $EvidenceDir "receipt_validator_stdout.txt"
+$ValidatorErr = Join-Path $EvidenceDir "receipt_validator_stderr.txt"
+$Process = Start-Process -FilePath $Python -ArgumentList @($Validator, $Repo, $EvidenceDir) -Wait -PassThru -NoNewWindow -RedirectStandardOutput $ValidatorOut -RedirectStandardError $ValidatorErr
+if (Test-Path -LiteralPath $ValidatorOut) { Get-Content -LiteralPath $ValidatorOut }
+if (Test-Path -LiteralPath $ValidatorErr) { Get-Content -LiteralPath $ValidatorErr }
+Write-Host ("EVIDENCE_VALIDATOR_EXIT_CODE=" + $Process.ExitCode)
+if ($Process.ExitCode -ne 0) { throw "V2 source-composition evidence validation failed; stop." }
+if (-not (Select-String -LiteralPath $ValidatorOut -SimpleMatch "C11D_V2B_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_VALIDATION_STATUS=PASS_RECEIPT_AND_CURRENT_SOURCE_PINS" -Quiet)) { throw "Required validation PASS marker missing; stop." }
+```
 
-Read `docs/current/d/C11D_NEXT_INCREMENT_SEMANTIC_BINDING_TO_RUNTIME_V1_20261017.md`. Inspect actual Challenge source semantics and all relevant adapter signatures. Then design a separate additive Challenge Visual Payload Runtime Harness V1. It must prove per-selector safe visual-projection determinism and actual gameplay-seed visual sensitivity using independent Godot processes, with source pins, version, exit codes and separate stdout/stderr. No runtime code should consume the proposal map without a separate binding review.
+Accept only `...VALIDATION_STATUS=PASS_RECEIPT_AND_CURRENT_SOURCE_PINS`. It verifies the source composition contract itself remains in its pending pre-run state; do not rewrite that contract after the run. Following a clean validation, write/review a distinct operator decision artifact before any subsequent integration proposal.
 
-- Keep Challenge 004 V1 binder/harness unchanged and use it as a regression fixture.
-- Never serialize the entire `FrameSnapshot.custom_data`; do not invent coordinate components.
-- Keep candidate bindings unauthorized (`binding_authorized=false`, `renderer_projection_approved=false`).
-- Challenge 003 `target_x` is scalar in `PILOT_0X100`; no fabricated Y/2D mapping.
-- Challenge 008/009 declare total 11s but phase sum is 12s. No phase-bound payload acceptance until shared timebase authority resolves the conflict.
-- Music-seed orthogonality belongs to the canonical request/planner boundary, not the Challenge source-only harness.
+## Governance locks
 
-## Frozen baseline and governance locks
+`renderer=OFF`; `media_created=false`; `payload_materialized=false`; `candidate_input_admissible=false`; `seed_domains_complete_for_candidate_input=false`; `automatic_seed_generation=false`; `master_seed=NOT_ADOPTED`; `approved_bindings=0`; `approved_custom_data_bindings=0`; `approved_renderer_projection_bindings=0`; `D4.8=BLOCKED`; `D9.10=PREPARE_ONLY`; `D9.14=BLOCKED`; `D9.16=BLOCKED`; `D9.17=BLOCKED_NO_GO`; `D10=BLOCKED_FOR_PROMOTION`; `baseline_approval=MISSING`; `freeze_eligible=false`; `release_authority=NONE`.
 
-`release/C11C_FREEZE_PACKAGE_MANIFEST.json` SHA-256 must remain `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Keep C11-C 2.19.12 immutable/authoritative. `winning_frame` is the sole temporal anchor; `close_calls` is an episode count only. No changes to C11-C, canonical seed V1, simulation truth, RNG ownership, `SimulationResult`, frozen geometry or seed defaults.
+## Longer closeout chain
 
-`renderer=OFF`; `media_created=false`; `candidate_input_admissible=false`; `seed_domains_complete_for_candidate_input=false`; `automatic_seed_generation=false`; `master_seed_adopted=false`; `D4.8=BLOCKED`; `D9.10=PREPARE_ONLY`; `D9.17=BLOCKED_NO_GO`; `D10=BLOCKED_FOR_PROMOTION`; baseline approval missing; freeze eligibility false; `release_authority=NONE`. No renderer dispatch/input, media, release, freeze, promotion or C11-C cutover.
+After the review-only receipt is formally reviewed, continue only through separate contractually bounded gates: coordinate consumer/integration proposal (no dispatch), active I/O gap and candidate identity refresh, dynamic request-to-payload identity if still required, explicit policy decisions (presentation regions/visibility, temporal/timebase, projection/crop/rounding, sampling, audio/music), seed-domain completeness and seed-orthogonality checks, resolution of 008/009 11s-vs-12s mismatch, D renderer contract/implementation candidate, separate renderer-baseline approval and D4.8 governance decision, then only if authorized D9.14 real-media certification, D9.16 full acceptance, D9.17 closure adjudication, and D10 baseline approval/freeze. Do not compress or infer one gate from another.
 
-## Operator workflow requirements
+## Execution rules
 
-Use additive overlays and complete PowerShell 5.1 blocks. Keep apply separate from test. Short staging paths. Verify ZIP, manifest, source pins and add-target absence before copying; replacements require exact previous hash, backup and post-hash. Use actual process exit code with separate stdout/stderr. Do not use `Expand-Archive` on a package unless directory entries are known correct. Never let a PASS line print after a prior error.
+PowerShell 5.1; complete pasteable blocks wrapped in `& { ... }`; no `&&`, no `Read-Host`, no PowerShell 7-only syntax. Use `Start-Process -Wait -PassThru` for native processes with stdout and stderr captured separately. Verify actual exit codes and all hashes. Apply and test in separate blocks. New artifacts add-only; stable-pointer replacements only with exact before-hash, backup and post-hash verification. Stop at first mismatch. No PASS after a thrown error.

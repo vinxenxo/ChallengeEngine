@@ -1,0 +1,307 @@
+{
+  "schema": "C11D-V2B-ALLOWLISTED-COORDINATE-SOURCE-COMPOSITION-RUNTIME-EVIDENCE-V2",
+  "schema_version": "1.0",
+  "evidence_status": "CAPTURED_OPERATOR_RUNTIME_PASS_PENDING_FORMAL_REVIEW",
+  "scope": "ISOLATED_IN_MEMORY_SOURCE_COMPOSITION_TEST_ONLY_NOT_PRODUCTION_WIRING",
+  "observed_date": "2026-10-26",
+  "reference_snapshot": {
+    "filename": "ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip",
+    "sha256": "3e48ee2d815593137f5863139e05c1aa04eb40b4a58ddfb3bed4507125c96874",
+    "size_bytes": 8001498,
+    "zip_entry_count": 3378,
+    "zip_integrity_status": "PASS_CRC",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "manifest_sha256_observed_in_zip": "f6b2fc6ce36973eb620738c8446d529d98da0fb79892132cf4708e6f453051b5",
+    "manifest_bytes_observed_in_zip": 1070256,
+    "manifest_generated_at_utc_in_zip": "2026-10-26T00:38:03.0481714Z",
+    "manifest_source_tree_sha256_declared_in_zip": "74c3cc20ba41ba51b131f6c42c313161409b05ffa54911790833e7312ce5ba43",
+    "manifest_sha256_declared_by_self_entry": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "manifest_bytes_declared_by_self_entry": 796318,
+    "manifest_reconciliation_status": "MISMATCH_STOP_AND_VERIFY_ACTIVE_CHECKOUT",
+    "active_checkout_manifest_expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "active_checkout_manifest_required_bytes": 796318
+  },
+  "execution": {
+    "godot_version": "4.7.1.stable.mono.official.a13da4feb",
+    "godot_executable_path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+    "runtime_command": "godot.exe --headless --path <active Windows checkout> --script tools/c11d/d9/test_allowlisted_coordinate_consumer_source_composition_runtime.gd",
+    "design_receipt_sha256": "9148ad3dfc21857d7decf5885a3fb0e10a839234ba7672040cfdfa86b57c7bd2",
+    "static_gates": [
+      {
+        "name": "runtime_static_v1",
+        "status": "PASS",
+        "checks": 113,
+        "exit_code": 0,
+        "stdout_sha256": "ca63239a81d23fd3bef046db02c67d7565aa4b24aefef4c1b849af71d1ecef8e",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static.py",
+        "source_sha256": "c18082f7ad62722153088b07ade0f1753be739a7a6b00da0d08bf1db4e671946"
+      },
+      {
+        "name": "runtime_static_v2",
+        "status": "PASS",
+        "checks": 115,
+        "exit_code": 0,
+        "stdout_sha256": "bbf030cb4aa8319d007eae259a7dac52294a29fc9cddd1d242b09306b25548df",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static_v2.py",
+        "source_sha256": "a3e13c382cf0fb7ebaa57896b75d36809ebfd09e6425f87936b9f2a2b8be7a1e"
+      },
+      {
+        "name": "composition_static",
+        "status": "PASS",
+        "checks": 132,
+        "exit_code": 0,
+        "stdout_sha256": "74aad0a3ef62052e211932328d0a7d780c00ea1bb1bc1c118c2ff01a4e30a84f",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_source_composition_static.py",
+        "source_sha256": "37317cd3462e555afba5c883aef97e6632ec9387d099fd33c24e4ab1d0c14c14"
+      }
+    ],
+    "runtime": {
+      "operator_reported_exit_code": 0,
+      "exit_code_provenance": "PowerShell Start-Process -Wait -PassThru operator transcript",
+      "stdout_filename": "composition_runtime_stdout.txt",
+      "stderr_filename": "composition_runtime_stderr.txt",
+      "summary_filename": "runtime_execution_summary.json",
+      "evidence_directory_basename": "C11DCOORDCOMPOSITIONRUNTIME_79683278984b40d7b4fae0209ec4eee2",
+      "stdout_sha256": "b5e1465894a9d5ad5a26715f10459bf578809d4a3fadce7fc030b4964aa2c3bb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass_marker_count": 1,
+      "fail_marker_count": 0,
+      "failure_or_error_marker_present": false
+    }
+  },
+  "source_lineage": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "contract_declared_parent_source_pin_count": 81,
+    "pins": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "role": "frozen_c11c_authority_manifest"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CONTRACT_V1.json",
+        "sha256": "575717bb3f36b476c9742488c8cace622a217c8861e376d17c519d02c70534b7",
+        "role": "current_source_composition_contract"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CONTRACT_SCHEMA_V1.json",
+        "sha256": "a24948379e03762b8074b571801a3eb12f5ae006fcf4443ce4f4f7b9330cebae",
+        "role": "current_source_composition_contract_schema"
+      },
+      {
+        "path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_source_composition_runtime.gd",
+        "sha256": "06417bf63a8c89c4ac5afb0ab818b3b395c48e31c5a0c6d45bd10e1aadccaa28",
+        "role": "corrected_source_composition_runtime_harness"
+      },
+      {
+        "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_source_composition_static.py",
+        "sha256": "37317cd3462e555afba5c883aef97e6632ec9387d099fd33c24e4ab1d0c14c14",
+        "role": "corrected_source_composition_static_suite"
+      },
+      {
+        "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static.py",
+        "sha256": "c18082f7ad62722153088b07ade0f1753be739a7a6b00da0d08bf1db4e671946",
+        "role": "allowlisted_consumer_runtime_static_suite_v1"
+      },
+      {
+        "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static_v2.py",
+        "sha256": "a3e13c382cf0fb7ebaa57896b75d36809ebfd09e6425f87936b9f2a2b8be7a1e",
+        "role": "allowlisted_consumer_runtime_static_suite_v2"
+      },
+      {
+        "path": "tools/c11d/d9/allowlisted_coordinate_consumer_review_only_v2.gd",
+        "sha256": "2376d4c9208d749b3681f8083d1d0be1a5658f62930b9b92167916196aec3eef",
+        "role": "isolated_review_only_consumer_v2"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_ACCEPTANCE_RECORD_V2_20261022.json",
+        "sha256": "5ce4cddace9a8a04b4c1ba520cfdeeb79ee3a7e1952dc70f60baf45e02623d34",
+        "role": "accepted_consumer_v2_runtime_acceptance_record"
+      },
+      {
+        "path": "challenges/CHALLENGE_003.json",
+        "sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "role": "candidate_source_challenge_003"
+      },
+      {
+        "path": "challenges/CHALLENGE_005.json",
+        "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "role": "candidate_source_challenge_005"
+      },
+      {
+        "path": "challenges/CHALLENGE_006.json",
+        "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "role": "candidate_source_challenge_006"
+      },
+      {
+        "path": "challenges/CHALLENGE_007.json",
+        "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "role": "candidate_source_challenge_007"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_V1_20261023.json",
+        "sha256": "a4684fdb7b3ea4b85f68b561d9aaa64981517f65530ba8a8787f820eb5e3960f",
+        "role": "historical_source_composition_runtime_evidence_v1_preserved"
+      },
+      {
+        "path": "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_DECISION_V1_20261023.md",
+        "sha256": "a52d5d8a4564cc96d47633c5527248bdc102152da8ce13ad699575fb5b677a08",
+        "role": "historical_source_composition_runtime_decision_preserved"
+      },
+      {
+        "path": "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_VERSION_GUARD_CORRECTION_RECORD_V1_20261023.md",
+        "sha256": "5e1d51cd68fcd64ddbab9f3bbd37521fa378e53df750f4356ed0bfdcbb7eccc7",
+        "role": "historical_version_guard_correction_record_preserved"
+      },
+      {
+        "path": "docs/current/d/C11D_V2B_SOURCE_COMPOSITION_HARNESS_CONTROL_FLOW_FIX_V1_20261023.md",
+        "sha256": "b0adb042ce3f822b0f2895dd64ffe5c3755fa442f8b96e6d96acd8d23002df02",
+        "role": "historical_harness_control_flow_fix_preserved"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CONTRACT_V2.json",
+        "sha256": "0bd65e8f64c13850670d927d62209276ae94999ce57c790db7ae1592fa793ae9",
+        "role": "accepted_runtime_v2_contract"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CONTRACT_SCHEMA_V2.json",
+        "sha256": "197cbad2f479f9baa3500c784bec7c4d84a7640c5ddeb43ccc8edfac95c60315",
+        "role": "accepted_runtime_v2_schema"
+      },
+      {
+        "path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd",
+        "sha256": "8b30bc90fa7f95ac8b38e8ad2b01670ed1fb97416acfc437225db4f478f8ded5",
+        "role": "accepted_277_case_runtime_harness"
+      },
+      {
+        "path": "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_FIX_CHECKPOINT_20261022_V2.md",
+        "sha256": "edf2109d457eeec117e866712063bc580e6223379ed6fc72b7e6e3b5dc773d0f",
+        "role": "prior_runtime_v2_checkpoint"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_SCHEMA_V2_20261026.json",
+        "sha256": "9c41d4bdc64be321638e895ffe5e7ed21051b81d20b33d7059ab9e525738b79c",
+        "role": "new_source_composition_runtime_evidence_schema_v2"
+      },
+      {
+        "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_source_composition_runtime_evidence_v2.py",
+        "sha256": "97173fef3d8f55086d0b090cb5366db9e76442473147208c8603fc659770f432",
+        "role": "new_source_composition_runtime_evidence_validator_v2"
+      }
+    ],
+    "runtime_input_pin_count": 6,
+    "runtime_input_pins": [
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CONTRACT_V2.json",
+        "sha256": "0bd65e8f64c13850670d927d62209276ae94999ce57c790db7ae1592fa793ae9",
+        "role": "accepted_runtime_v2_contract"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CONTRACT_SCHEMA_V2.json",
+        "sha256": "197cbad2f479f9baa3500c784bec7c4d84a7640c5ddeb43ccc8edfac95c60315",
+        "role": "accepted_runtime_v2_schema"
+      },
+      {
+        "path": "tools/c11d/d9/allowlisted_coordinate_consumer_review_only_v2.gd",
+        "sha256": "2376d4c9208d749b3681f8083d1d0be1a5658f62930b9b92167916196aec3eef",
+        "role": "accepted_review_only_consumer"
+      },
+      {
+        "path": "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd",
+        "sha256": "8b30bc90fa7f95ac8b38e8ad2b01670ed1fb97416acfc437225db4f478f8ded5",
+        "role": "accepted_277_case_runtime_harness"
+      },
+      {
+        "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_consumer_runtime_static_v2.py",
+        "sha256": "a3e13c382cf0fb7ebaa57896b75d36809ebfd09e6425f87936b9f2a2b8be7a1e",
+        "role": "accepted_115_check_static_suite"
+      },
+      {
+        "path": "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_FIX_CHECKPOINT_20261022_V2.md",
+        "sha256": "edf2109d457eeec117e866712063bc580e6223379ed6fc72b7e6e3b5dc773d0f",
+        "role": "prior_runtime_v2_checkpoint"
+      }
+    ],
+    "historical_v1_receipt_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_V1_20261023.json",
+    "historical_v1_receipt_sha256": "a4684fdb7b3ea4b85f68b561d9aaa64981517f65530ba8a8787f820eb5e3960f",
+    "historical_v1_decision_path": "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_DECISION_V1_20261023.md",
+    "historical_v1_decision_sha256": "a52d5d8a4564cc96d47633c5527248bdc102152da8ce13ad699575fb5b677a08",
+    "design_receipt_sha256": "9148ad3dfc21857d7decf5885a3fb0e10a839234ba7672040cfdfa86b57c7bd2"
+  },
+  "observed_runtime_markers": {
+    "candidates_passed": "4/4",
+    "source_frames": "1680/1680",
+    "marker_frames": "1680/1680",
+    "custom_data_lookups_per_frame": 1,
+    "harness_custom_data_reads": 0,
+    "raw_custom_data_logged": false,
+    "renderer": "OFF",
+    "production_calls": 0,
+    "media_created": false,
+    "payload_materialized": false,
+    "c11c_immutable": true,
+    "candidate_results": [
+      {
+        "candidate_id": "CHALLENGE_003",
+        "source_frames": 420,
+        "marker_frames": 420
+      },
+      {
+        "candidate_id": "CHALLENGE_005",
+        "source_frames": 420,
+        "marker_frames": 420
+      },
+      {
+        "candidate_id": "CHALLENGE_006",
+        "source_frames": 420,
+        "marker_frames": 420
+      },
+      {
+        "candidate_id": "CHALLENGE_007",
+        "source_frames": 420,
+        "marker_frames": 420
+      }
+    ]
+  },
+  "reconciliation": {
+    "historical_v1_retained_unchanged": true,
+    "historical_v1_applies_to_current_source_hashes": false,
+    "current_source_composition_contract_status_retained_pending": true,
+    "historical_acceptance_decision_rewritten": false,
+    "explanation": "The historical V1 receipt remains untouched and records the earlier contract/harness/static-runner hashes. This V2 record captures the operator-confirmed run against the corrected current source hashes. The source-composition contract itself remains in its pending pre-run state because the static suite explicitly asserts that precondition; this evidence record is separate and does not grant production authority."
+  },
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "runtime_implementation_authorized_for_production": false,
+    "render_test_authorized": false,
+    "production_dispatch": false
+  },
+  "next_gate": "VERIFY_ACTIVE_FROZEN_C11C_MANIFEST_THEN_VALIDATE_V2_EVIDENCE_RECEIPT_AND_COMPLETE_SEPARATE_OPERATOR_REVIEW; NO_PRODUCTION_INTEGRATION",
+  "notes": [
+    "Observed scope is only the four allowlisted Challenge candidates CHALLENGE_003, CHALLENGE_005, CHALLENGE_006 and CHALLENGE_007.",
+    "The 1680 source frames are gameplay simulation source frames at 60 FPS, not rendered delivery frames and not encoded video media.",
+    "One allowlisted Dictionary.get per source frame is attributed to the review-only consumer; the harness reads custom_data zero times and raw custom_data values are not logged.",
+    "A successful evidence validation is not binding approval, a production-integration proposal, renderer activation, render-test authorization, input admission or release authority."
+  ]
+}

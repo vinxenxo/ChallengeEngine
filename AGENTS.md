@@ -1,39 +1,38 @@
-# AGENTS.md — C11-D current authority (2026-10-17 V6)
+# AGENTS.md — C11-D current authority (2026-10-26 V24)
 
-## Read current continuation authority first
+## Current continuation authority
 
-Continue only from active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. Read in this order:
+Active Windows checkout: `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. Read the current dated authority files in this order:
 
 1. `docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md`
-2. `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V6.md`
-3. `docs/current/d/C11D_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1_OPERATOR_RUNTIME_CHECKPOINT_20261017.md`
-4. `docs/current/d/C11D_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1_DESIGN_20261017.md`
-5. `docs/current/d/C11D_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_V1_CHECKPOINT_20261017.md`
-6. `docs/current/d/C11D_NEXT_INCREMENT_SEMANTIC_BINDING_TO_RUNTIME_V1_20261017.md`
-7. `docs/current/d/C11D_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_RUNTIME_CHECKPOINT_20261017.md`
-8. `docs/current/d/C11D_RENDERER_CLOSEOUT_GATE_MAP_20261017_V5.md`
-9. `docs/current/d/C11D_WORKSTREAM_NON_DUPLICATION_REGISTER_20261017_V6.md`
-10. `docs/current/d/C11D_POWERSHELL_EXECUTION_POLICY_20261016.md`
-11. `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017_V6.md`
-12. `prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261017_V6.md`
+2. `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261026_V24.md`
+3. `docs/current/d/C11D_SOURCE_SNAPSHOT_RECONCILIATION_REPORT_20261026_V1.md`
+4. `docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_REVIEW_20261026_V1.md`
+5. `prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261026_V24.md`
+6. `prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261026_V24.md`
+7. The older dated checkpoints, gate map V5 and non-duplication register V6 for predecessor evidence and broader dependencies. Older state/next-step statements are historical when contradicted by the V24 current checkpoint.
 
-## Latest accepted scoped gates
+## Current scoped evidence
 
-- Challenge canonical planner preflight V2: 27/27 variants, repeats and D4 parity; 54 planner calls, no Godot/payload materialization; report `1e41001f83cf9b093919f46ee2f327553c93464f8369ecfb0dc3b34b0a0c9d43`.
-- Challenge visual capability matrix V1: 15/15 tests; selectors 9/9; pins 43/43; routes 9/9; asset refs 27/27; unique assets 15/15; custom-data inventory 9/9; report `36c014734892fee2d7a1beb2662cd610c6856b4ecb48d9e06bf596f826795327`.
-- Challenge semantic binding proposal V1: 20/20 tests; base track 6/6; proposal rows 9/9; static source candidates 3/3; custom-data candidate fields 6/6; temporal conflicts 2/2; **approved bindings 0**; report `c8d7cbc14912f514ad34117882b1ad296835b4845d554285b4062f6997f4de53`.
-- These three Challenge gates are static/plan-only. Challenge visual runtime payload sensitivity is not proven.
+The Windows operator transcript reports runtime-static V1 `113/113`, runtime-static V2 `115/115`, source-composition static `132/132` and Godot Mono runtime PASS for CHALLENGE_003/005/006/007 with 1,680/1,680 source frames and 1,680/1,680 marker frames. Runtime stdout SHA-256 `b5e1465894a9d5ad5a26715f10459bf578809d4a3fadce7fc030b4964aa2c3bb`; stderr empty SHA-256 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
+A new source-composition evidence V2 record plus strict schema and standard-library validator were added for review. Important provenance discrepancy: the embedded C11-C manifest in the uploaded ZIP is not byte-identical to the canonical frozen manifest; the active checkout must be checked before applying or validating. The record starts as `CAPTURED_OPERATOR_RUNTIME_PASS_PENDING_FORMAL_REVIEW`; validation and a separate operator review remain required. Historical V1 evidence is immutable and binds older source hashes.
+
+## Immutable authority and hard locks
+
+Frozen C11-C 2.19.12 remains authoritative until C11-D passes all gates and is separately approved/frozen/promoted. `release/C11C_FREEZE_PACKAGE_MANIFEST.json` SHA-256 must remain `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Do not modify C11-C code, frozen seed V1, simulation truth, RNG ownership, `SimulationResult`, frozen geometry or `winning_frame`; `winning_frame` is the only temporal anchor, `close_calls` is episode count only.
+
+`renderer=OFF`; `media_created=false`; `payload_materialized=false`; `candidate_input_admissible=false`; `seed_domains_complete_for_candidate_input=false`; `automatic_seed_generation=false`; `master_seed=NOT_ADOPTED`; `approved_bindings=0`; `approved_custom_data_bindings=0`; `approved_renderer_projection_bindings=0`; `D4.8=BLOCKED`; `D9.10=PREPARE_ONLY`; `D9.14=BLOCKED`; `D9.16=BLOCKED`; `D9.17=BLOCKED_NO_GO`; `D10=BLOCKED_FOR_PROMOTION`; `baseline_approval=MISSING`; `freeze_eligible=false`; `release_authority=NONE`.
 
 ## Immediate next work
 
-Review candidate bindings against the active source before designing a separate, additive Challenge visual payload runtime harness V1. The harness must use explicit safe visual projection, independent Godot processes, source pins, deterministic-repeat checks and actual gameplay-seed visual sensitivity. Do not use whole request hashes as a proxy for visible output. Challenge 004 V1 stays fixed. 008/009 phase-bound runtime payload acceptance remains blocked until the 11s-vs-12s timebase conflict receives explicit shared-policy authority.
+Run the current source-composition evidence validator against the exact `%TEMP%` runtime logs. On failure, stop and diagnose; do not make the test permissive. On PASS, record a separate operator evidence review before any integration proposal. Do not create production callsites, renderer inputs or media in this gate. The 008/009 11-second declared duration versus 12-second phase-sum conflict remains blocked.
 
-## Immutable authority and governance
+## Engineering rules
 
-C11-C 2.19.12 remains frozen and authoritative. Manifest SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Do not modify C11-C, canonical seed V1, simulation truth, RNG ownership, `SimulationResult`, frozen geometry or source `winning_frame`. `winning_frame` is the sole temporal anchor; `close_calls` is episode count only.
-
-`renderer=OFF`; `media_created=false`; `candidate_input_admissible=false`; `seed_domains_complete_for_candidate_input=false`; `automatic_seed_generation=false`; `master_seed_adopted=false`; `D4.8=BLOCKED`; `D9.10=PREPARE_ONLY`; `D9.17=BLOCKED_NO_GO`; `D10=BLOCKED_FOR_PROMOTION`; `baseline_approval=MISSING`; `freeze_eligible=false`; `release_authority=NONE`. No renderer input/dispatch, media, freeze, promotion, release or C11-C cutover.
-
-## Execution rules
-
-PowerShell 5.1; short temp/staging paths; complete single blocks; apply and tests separate; SHA-256/manifest/source pins; add targets absent; replacements require exact before-hash and backup; native process actual ExitCode and separate stdout/stderr; no success banner after any failure. Use `Start-Process -Wait -PassThru` to avoid PowerShell 5.1 treating native stderr as a terminating exception. No `$PSScriptRoot`, PowerShell 7-only syntax or `&&`. No duplicate planner/adapter, no `c11d-control`, no whole-context overwrite, no guessed source mapping.
+- PowerShell 5.1; complete single pasteable blocks inside `& { ... }`; no `&&`, no `Read-Host`, no PowerShell 7-only syntax.
+- Verify ZIP, source, contract, manifest and receipt SHA-256 values. New dated deliverables are add-only.
+- Stable pointer replacements require exact previous hashes, backups and post-apply checks. Do not overwrite or reclassify historical failures/acceptances.
+- Keep apply and test as separate blocks. Use `Start-Process -Wait -PassThru`, capture stdout/stderr separately, and check actual process exit code.
+- Stop on first mismatch. Never emit a PASS after an error.
+- Do not invent mappings, read all `FrameSnapshot.custom_data`, duplicate canonical planner/adapters, introduce `c11d-control`, or infer authorization from a test pass.

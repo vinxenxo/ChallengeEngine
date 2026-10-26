@@ -8,9 +8,9 @@ const ConsumerScript = preload("res://tools/c11d/d9/allowlisted_coordinate_consu
 const FrozenManifestPath: String = "res://release/C11C_FREEZE_PACKAGE_MANIFEST.json"
 const FrozenManifestSha: String = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 const ConsumerContractPath: String = "res://definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CONTRACT_V2.json"
-const ConsumerContractSha: String = "4306881108a87348721fce5ae2d6443b6a3a57ccd8df27db3235daf63c500e04"
+const ConsumerContractSha: String = "0bd65e8f64c13850670d927d62209276ae94999ce57c790db7ae1592fa793ae9"
 const CompositionContractPath: String = "res://definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CONTRACT_V1.json"
-const CompositionContractSha: String = "d3265f1ba91dc664e85bbb0dc87ea6b145f0fed34ffa4552412c8fa70c19b2ab"
+const CompositionContractSha: String = "575717bb3f36b476c9742488c8cace622a217c8861e376d17c519d02c70534b7"
 
 const CandidateRows: Array[Dictionary] = [
     {"candidate_id":"CHALLENGE_003", "mechanic":"pilot", "source_path":"res://challenges/CHALLENGE_003.json", "source_sha256":"38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419", "expected_field":"target_x"},

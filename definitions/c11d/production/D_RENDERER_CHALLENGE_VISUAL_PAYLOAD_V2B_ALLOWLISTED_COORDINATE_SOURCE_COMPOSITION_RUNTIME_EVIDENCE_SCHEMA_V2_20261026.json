@@ -1,0 +1,550 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-V2B-ALLOWLISTED-COORDINATE-SOURCE-COMPOSITION-RUNTIME-EVIDENCE-SCHEMA-V2",
+  "title": "C11-D V2-B source composition runtime evidence receipt V2 (operator-reviewed capture boundary)",
+  "description": "Strict evidence capture for the corrected source-composition harness run. A PASS capture does not authorize production integration, payload materialization, media creation, renderer activation, render tests, baseline freeze or release.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "C11D-V2B-ALLOWLISTED-COORDINATE-SOURCE-COMPOSITION-RUNTIME-EVIDENCE-V2"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "evidence_status": {
+      "const": "CAPTURED_OPERATOR_RUNTIME_PASS_PENDING_FORMAL_REVIEW"
+    },
+    "scope": {
+      "const": "ISOLATED_IN_MEMORY_SOURCE_COMPOSITION_TEST_ONLY_NOT_PRODUCTION_WIRING"
+    },
+    "observed_date": {
+      "const": "2026-10-26"
+    },
+    "reference_snapshot": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "const": "ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip"
+        },
+        "sha256": {
+          "const": "3e48ee2d815593137f5863139e05c1aa04eb40b4a58ddfb3bed4507125c96874"
+        },
+        "size_bytes": {
+          "const": 8001498
+        },
+        "zip_entry_count": {
+          "const": 3378
+        },
+        "zip_integrity_status": {
+          "const": "PASS_CRC"
+        },
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "manifest_sha256_observed_in_zip": {
+          "const": "f6b2fc6ce36973eb620738c8446d529d98da0fb79892132cf4708e6f453051b5"
+        },
+        "manifest_bytes_observed_in_zip": {
+          "const": 1070256
+        },
+        "manifest_generated_at_utc_in_zip": {
+          "const": "2026-10-26T00:38:03.0481714Z"
+        },
+        "manifest_source_tree_sha256_declared_in_zip": {
+          "const": "74c3cc20ba41ba51b131f6c42c313161409b05ffa54911790833e7312ce5ba43"
+        },
+        "manifest_sha256_declared_by_self_entry": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "manifest_bytes_declared_by_self_entry": {
+          "const": 796318
+        },
+        "manifest_reconciliation_status": {
+          "const": "MISMATCH_STOP_AND_VERIFY_ACTIVE_CHECKOUT"
+        },
+        "active_checkout_manifest_expected_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "active_checkout_manifest_required_bytes": {
+          "const": 796318
+        }
+      },
+      "required": [
+        "filename",
+        "sha256",
+        "size_bytes",
+        "zip_entry_count",
+        "zip_integrity_status",
+        "frozen_c11c_manifest_sha256",
+        "manifest_sha256_observed_in_zip",
+        "manifest_bytes_observed_in_zip",
+        "manifest_generated_at_utc_in_zip",
+        "manifest_source_tree_sha256_declared_in_zip",
+        "manifest_sha256_declared_by_self_entry",
+        "manifest_bytes_declared_by_self_entry",
+        "manifest_reconciliation_status",
+        "active_checkout_manifest_expected_sha256",
+        "active_checkout_manifest_required_bytes"
+      ],
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "godot_version": {
+          "const": "4.7.1.stable.mono.official.a13da4feb"
+        },
+        "godot_executable_path": {
+          "type": "string"
+        },
+        "runtime_command": {
+          "type": "string"
+        },
+        "design_receipt_sha256": {
+          "const": "9148ad3dfc21857d7decf5885a3fb0e10a839234ba7672040cfdfa86b57c7bd2"
+        },
+        "static_gates": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "status": {
+                "const": "PASS"
+              },
+              "checks": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "exit_code": {
+                "const": 0
+              },
+              "stdout_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "stderr_sha256": {
+                "const": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              "source_path": {
+                "type": "string"
+              },
+              "source_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "name",
+              "status",
+              "checks",
+              "exit_code",
+              "stdout_sha256",
+              "stderr_sha256",
+              "source_path",
+              "source_sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "runtime": {
+          "type": "object",
+          "properties": {
+            "operator_reported_exit_code": {
+              "const": 0
+            },
+            "exit_code_provenance": {
+              "const": "PowerShell Start-Process -Wait -PassThru operator transcript"
+            },
+            "stdout_filename": {
+              "const": "composition_runtime_stdout.txt"
+            },
+            "stderr_filename": {
+              "const": "composition_runtime_stderr.txt"
+            },
+            "summary_filename": {
+              "const": "runtime_execution_summary.json"
+            },
+            "evidence_directory_basename": {
+              "const": "C11DCOORDCOMPOSITIONRUNTIME_79683278984b40d7b4fae0209ec4eee2"
+            },
+            "stdout_sha256": {
+              "const": "b5e1465894a9d5ad5a26715f10459bf578809d4a3fadce7fc030b4964aa2c3bb"
+            },
+            "stderr_sha256": {
+              "const": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "pass_marker_count": {
+              "const": 1
+            },
+            "fail_marker_count": {
+              "const": 0
+            },
+            "failure_or_error_marker_present": {
+              "const": false
+            }
+          },
+          "required": [
+            "operator_reported_exit_code",
+            "exit_code_provenance",
+            "stdout_filename",
+            "stderr_filename",
+            "summary_filename",
+            "evidence_directory_basename",
+            "stdout_sha256",
+            "stderr_sha256",
+            "pass_marker_count",
+            "fail_marker_count",
+            "failure_or_error_marker_present"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "godot_version",
+        "godot_executable_path",
+        "runtime_command",
+        "design_receipt_sha256",
+        "static_gates",
+        "runtime"
+      ],
+      "additionalProperties": false
+    },
+    "source_lineage": {
+      "type": "object",
+      "properties": {
+        "frozen_c11c_manifest_sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "contract_declared_parent_source_pin_count": {
+          "const": 81
+        },
+        "pins": {
+          "type": "array",
+          "minItems": 23,
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "role"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "runtime_input_pin_count": {
+          "const": 6
+        },
+        "runtime_input_pins": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "role"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "historical_v1_receipt_path": {
+          "const": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_V1_20261023.json"
+        },
+        "historical_v1_receipt_sha256": {
+          "const": "a4684fdb7b3ea4b85f68b561d9aaa64981517f65530ba8a8787f820eb5e3960f"
+        },
+        "historical_v1_decision_path": {
+          "const": "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_DECISION_V1_20261023.md"
+        },
+        "historical_v1_decision_sha256": {
+          "const": "a52d5d8a4564cc96d47633c5527248bdc102152da8ce13ad699575fb5b677a08"
+        },
+        "design_receipt_sha256": {
+          "const": "9148ad3dfc21857d7decf5885a3fb0e10a839234ba7672040cfdfa86b57c7bd2"
+        }
+      },
+      "required": [
+        "frozen_c11c_manifest_sha256",
+        "contract_declared_parent_source_pin_count",
+        "pins",
+        "runtime_input_pin_count",
+        "runtime_input_pins",
+        "historical_v1_receipt_path",
+        "historical_v1_receipt_sha256",
+        "historical_v1_decision_path",
+        "historical_v1_decision_sha256",
+        "design_receipt_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "observed_runtime_markers": {
+      "type": "object",
+      "properties": {
+        "candidates_passed": {
+          "const": "4/4"
+        },
+        "source_frames": {
+          "const": "1680/1680"
+        },
+        "marker_frames": {
+          "const": "1680/1680"
+        },
+        "custom_data_lookups_per_frame": {
+          "const": 1
+        },
+        "harness_custom_data_reads": {
+          "const": 0
+        },
+        "raw_custom_data_logged": {
+          "const": false
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "production_calls": {
+          "const": 0
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "c11c_immutable": {
+          "const": true
+        },
+        "candidate_results": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "candidate_id": {
+                "enum": [
+                  "CHALLENGE_003",
+                  "CHALLENGE_005",
+                  "CHALLENGE_006",
+                  "CHALLENGE_007"
+                ]
+              },
+              "source_frames": {
+                "const": 420
+              },
+              "marker_frames": {
+                "const": 420
+              }
+            },
+            "required": [
+              "candidate_id",
+              "source_frames",
+              "marker_frames"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "candidates_passed",
+        "source_frames",
+        "marker_frames",
+        "custom_data_lookups_per_frame",
+        "harness_custom_data_reads",
+        "raw_custom_data_logged",
+        "renderer",
+        "production_calls",
+        "media_created",
+        "payload_materialized",
+        "c11c_immutable",
+        "candidate_results"
+      ],
+      "additionalProperties": false
+    },
+    "reconciliation": {
+      "type": "object",
+      "properties": {
+        "historical_v1_retained_unchanged": {
+          "const": true
+        },
+        "historical_v1_applies_to_current_source_hashes": {
+          "const": false
+        },
+        "current_source_composition_contract_status_retained_pending": {
+          "const": true
+        },
+        "historical_acceptance_decision_rewritten": {
+          "const": false
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "historical_v1_retained_unchanged",
+        "historical_v1_applies_to_current_source_hashes",
+        "current_source_composition_contract_status_retained_pending",
+        "historical_acceptance_decision_rewritten",
+        "explanation"
+      ],
+      "additionalProperties": false
+    },
+    "governance_locks": {
+      "type": "object",
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "runtime_implementation_authorized_for_production": {
+          "const": false
+        },
+        "render_test_authorized": {
+          "const": false
+        },
+        "production_dispatch": {
+          "const": false
+        }
+      },
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "runtime_implementation_authorized_for_production",
+        "render_test_authorized",
+        "production_dispatch"
+      ],
+      "additionalProperties": false
+    },
+    "next_gate": {
+      "const": "VERIFY_ACTIVE_FROZEN_C11C_MANIFEST_THEN_VALIDATE_V2_EVIDENCE_RECEIPT_AND_COMPLETE_SEPARATE_OPERATOR_REVIEW; NO_PRODUCTION_INTEGRATION"
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "evidence_status",
+    "scope",
+    "observed_date",
+    "reference_snapshot",
+    "execution",
+    "source_lineage",
+    "observed_runtime_markers",
+    "reconciliation",
+    "governance_locks",
+    "next_gate",
+    "notes"
+  ],
+  "additionalProperties": false
+}

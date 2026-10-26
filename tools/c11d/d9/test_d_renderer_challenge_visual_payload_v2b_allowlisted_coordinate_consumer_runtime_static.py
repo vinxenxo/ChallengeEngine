@@ -205,7 +205,7 @@ def main() -> int:
         check("C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_POSITIVE_RUNTIME_CASES=%d/36" in runtime_code, "POSITIVE_DENOMINATOR_36")
         check("C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_CASES=%d/277" in runtime_code, "TOTAL_DENOMINATOR_277")
 
-    # Structural call-graph guard: the only call sites must be in the review-only runtime test.
+    # Structural call-graph guard: permit only explicit review and composition test harnesses.
     callsite_paths: list[str] = []
     needle = ".project_allowlisted_target_marker_track("
     for gd_path in root.rglob("*.gd"):
@@ -218,7 +218,12 @@ def main() -> int:
             continue
         if needle in text:
             callsite_paths.append(rel)
-    check(callsite_paths == [runtime_test_rel], "REVIEW_ONLY_TEST_IS_SINGLE_CALLSITE")
+    expected_review_callsites = sorted([
+        runtime_test_rel,
+        "tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd",
+        "tools/c11d/d9/test_allowlisted_coordinate_consumer_source_composition_runtime.gd",
+    ])
+    check(sorted(callsite_paths) == expected_review_callsites, "ONLY_REVIEW_AND_COMPOSITION_TESTS_ARE_CALLSITES")
 
     check(contract.get("negative_matrix_reconciliation", {}).get("negative_runtime_cases_expected") == 241, "RECONCILED_NEGATIVE_MATRIX_241")
     check(contract.get("negative_matrix_reconciliation", {}).get("positive_runtime_cases_expected") == 36, "RECONCILED_POSITIVE_MATRIX_36")
