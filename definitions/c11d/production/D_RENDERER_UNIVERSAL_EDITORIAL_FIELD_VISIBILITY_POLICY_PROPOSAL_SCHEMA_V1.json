@@ -1,0 +1,489 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-RENDERER-UNIVERSAL-EDITORIAL-FIELD-VISIBILITY-POLICY-PROPOSAL-V1",
+  "title": "C11-D Universal Editorial Field Visibility Policy Proposal V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "policy",
+    "region_policy",
+    "content_matrix",
+    "source_lineage",
+    "review_output",
+    "approval_state",
+    "execution_boundary",
+    "forbidden_operations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-UNIVERSAL-EDITORIAL-FIELD-VISIBILITY-POLICY-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PROPOSAL_ONLY_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "state",
+        "scope",
+        "field_instance_cardinality",
+        "visual_field_rule",
+        "empty_value_rule",
+        "text_value_rule",
+        "interval_convention",
+        "candidate_window_formula",
+        "window_evaluation_state",
+        "frame_count_authority",
+        "language_rule",
+        "unknown_field_rule",
+        "challenge_phase_namespace_rule",
+        "shared_region_rule",
+        "geometry_and_style",
+        "simulation_and_sampling",
+        "implementation_authority"
+      ],
+      "properties": {
+        "policy_id": {
+          "const": "C11D_UNIVERSAL_EDITORIAL_FIELDS_FULL_DELIVERY_SPAN_V1"
+        },
+        "state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "scope": {
+          "const": "D9_9_UNIVERSAL_EDITORIAL_FIELDS_ONLY"
+        },
+        "field_instance_cardinality": {
+          "const": "CHALLENGES_6_VISUAL_LOOPS_4_VISUAL_DRILLS_4"
+        },
+        "visual_field_rule": {
+          "type": "string"
+        },
+        "empty_value_rule": {
+          "const": "SUPPRESS_FIELD_AND_ASSIGN_NO_WINDOW"
+        },
+        "text_value_rule": {
+          "const": "PRESERVE_EXACT_SOURCE_STRING_NO_TRIM_TRANSLATION_NORMALIZATION_OR_REWRITE"
+        },
+        "interval_convention": {
+          "const": "ZERO_BASED_HALF_OPEN_DELIVERY_FRAME_RANGE_START_INCLUSIVE_END_EXCLUSIVE"
+        },
+        "candidate_window_formula": {
+          "const": "[0,delivery_frame_count)"
+        },
+        "window_evaluation_state": {
+          "const": "NOT_EVALUATED_RAW_FIELD_VALUES_ARE_NOT_EXPOSED_BY_CURRENT_RUNTIME_SUMMARY"
+        },
+        "frame_count_authority": {
+          "type": "string"
+        },
+        "language_rule": {
+          "const": "METADATA_ONLY_NO_VISIBILITY_WINDOW_AND_NO_INSTRUCTION_OR_TRANSLATION_SEMANTICS"
+        },
+        "unknown_field_rule": {
+          "const": "REJECT_UNTIL_EXPLICIT_POLICY_MAPPING_IS_ADDED"
+        },
+        "challenge_phase_namespace_rule": {
+          "const": "HOOK_REVEAL_CTA_REMAIN_DISTINCT_FROM_D9_9_TITLE_SUBTITLE_CALL_TO_ACTION; NO_IMPLICIT_ALIAS_OR_WINDOW_INHERITANCE"
+        },
+        "shared_region_rule": {
+          "type": "string"
+        },
+        "geometry_and_style": {
+          "const": "OUT_OF_SCOPE_UNRESOLVED_NO_COORDINATES_NO_FONT_OR_PIXEL_LAYOUT"
+        },
+        "simulation_and_sampling": {
+          "type": "string"
+        },
+        "implementation_authority": {
+          "const": "NOT_GRANTED"
+        }
+      }
+    },
+    "region_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "targets",
+        "geometry_state",
+        "pixel_placement_authorized"
+      ],
+      "properties": {
+        "state": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "targets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "subtitle",
+            "call_to_action",
+            "player_name",
+            "challenge_label"
+          ],
+          "properties": {
+            "title": {
+              "const": "HEADER"
+            },
+            "subtitle": {
+              "const": "HEADER"
+            },
+            "call_to_action": {
+              "const": "FOOTER"
+            },
+            "player_name": {
+              "const": "CHALLENGE_OVERLAY"
+            },
+            "challenge_label": {
+              "const": "CHALLENGE_OVERLAY"
+            }
+          }
+        },
+        "geometry_state": {
+          "const": "UNRESOLVED_NO_COORDINATES"
+        },
+        "pixel_placement_authorized": {
+          "const": false
+        }
+      }
+    },
+    "content_matrix": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "delivery_profile_id",
+          "source_fps",
+          "delivery_fps",
+          "candidate_delivery_frame_count",
+          "candidate_duration_seconds",
+          "timeline_basis",
+          "field_rules"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "challenges",
+              "visual_loops",
+              "visual_drills"
+            ]
+          },
+          "delivery_profile_id": {
+            "const": "REVIEW_720"
+          },
+          "source_fps": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "delivery_fps": {
+            "const": 30
+          },
+          "candidate_delivery_frame_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "candidate_duration_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "timeline_basis": {
+            "const": "EXISTING_UNAPPROVED_DELIVERY_TIMEBASE_REVIEW_FIXTURE_ONLY"
+          },
+          "field_rules": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "field_id",
+                "field_class",
+                "target_region",
+                "value_condition",
+                "candidate_window_rule",
+                "candidate_interval_formula",
+                "window_evaluated",
+                "rule_state"
+              ],
+              "properties": {
+                "field_id": {
+                  "enum": [
+                    "title",
+                    "subtitle",
+                    "call_to_action",
+                    "player_name",
+                    "challenge_label",
+                    "language"
+                  ]
+                },
+                "field_class": {
+                  "enum": [
+                    "VISUAL_TEXT",
+                    "METADATA_ONLY"
+                  ]
+                },
+                "target_region": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "HEADER",
+                    "FOOTER",
+                    "CHALLENGE_OVERLAY",
+                    null
+                  ]
+                },
+                "value_condition": {
+                  "enum": [
+                    "NONEMPTY_STRING",
+                    "METADATA_VALUE"
+                  ]
+                },
+                "candidate_window_rule": {
+                  "enum": [
+                    "FULL_DELIVERY_TIMELINE_IF_NONEMPTY",
+                    "NO_VISIBILITY_WINDOW"
+                  ]
+                },
+                "candidate_interval_formula": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "[0,delivery_frame_count)",
+                    null
+                  ]
+                },
+                "window_evaluated": {
+                  "const": false
+                },
+                "rule_state": {
+                  "const": "PROPOSED_NOT_APPROVED"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_lineage": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "review_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "canonicalization",
+        "persistent_report",
+        "payload_files_written",
+        "receipt_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "media_created",
+        "video_render_ready",
+        "evaluated_visibility_windows"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_REVIEW_ONLY"
+        },
+        "canonicalization": {
+          "const": "UTF8_JSON_SORTED_KEYS_COMPACT_NO_NAN"
+        },
+        "persistent_report": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "video_render_ready": {
+          "const": false
+        },
+        "evaluated_visibility_windows": {
+          "const": 0
+        }
+      }
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "universal_editorial_field_window_policy_approved",
+        "unified_presentation_region_policy_approved",
+        "delivery_timebase_policy_approved",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "payload_consumer_implementation_authorized",
+        "d4_8_authorized",
+        "d9_14_full_acceptance",
+        "d9_16_full_acceptance",
+        "d9_17_closure",
+        "d10",
+        "release_authority"
+      ],
+      "properties": {
+        "universal_editorial_field_window_policy_approved": {
+          "const": false
+        },
+        "unified_presentation_region_policy_approved": {
+          "const": false
+        },
+        "delivery_timebase_policy_approved": {
+          "const": false
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "payload_consumer_implementation_authorized": {
+          "const": false
+        },
+        "d4_8_authorized": {
+          "const": false
+        },
+        "d9_14_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16_full_acceptance": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17_closure": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "PROPOSAL_VALIDATION_ONLY"
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "forbidden_operations": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}
