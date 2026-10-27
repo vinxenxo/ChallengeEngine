@@ -37,7 +37,9 @@ def _valid_inputs(content_type="visual_loops"):
     identity={"request_id":f["request_id"],"content_type":f["content_type"],"selection":f["selection"],"gameplay_seed":f["gameplay_seed"],"music_seed":f["music_seed"],"variation_index":f["variation_index"],"presentation_profile_id":f["presentation_profile_id"],"delivery_profile_id":f["delivery_profile_id"],"request_binding_sha256":sha('5')}
     source={"request_hash":request_hash,"plan_hash":plan_hash,"editorial_hash":editorial_hash,"bridge_record_hash":bridge_hash,"adapter_envelope_hash":adapter_hash,"source_binding_sha256":source_binding_hash,"source_lineage_sha256":lineage_hash,"request_scoped_binding_sha256":source_binding_hash,"request_payload_manifest_sha256":manifest["manifest_sha256"]}
     evidence={"payload_sha256":manifest_payload,"visual_state_sha256":visual_state,"payload_scope":mpayload["payload_scope"],"exact_selector_payload_materialized":True,"deterministic_repeat_pass":True,"materialization":"IN_MEMORY_ONLY","request_payload_manifest_sha256":manifest["manifest_sha256"]}
-    binder={"schema":v2.dynamic.OUTPUT_SCHEMA_ID,"schema_version":"1.0","status":v2.dynamic.STATUS,"candidate_input_admissible":False,"frozen_c11c_manifest_sha256":v2.MANIFEST_SHA256,"request_identity":identity,"source_identity":source,"payload_evidence":evidence,"payload_manifest":manifest,"readiness":{"video_render_ready":False},"execution_boundary":copy.deepcopy(v2.dynamic.EXPECTED_BOUNDARY)}
+    # Match the actual dynamic binder V1 strict receipt shape: admission and render
+    # readiness live under `readiness`, not as top-level receipt properties.
+    binder={"schema":v2.dynamic.OUTPUT_SCHEMA_ID,"schema_version":"1.0","status":v2.dynamic.STATUS,"frozen_c11c_manifest_sha256":v2.MANIFEST_SHA256,"request_identity":identity,"source_identity":source,"payload_evidence":evidence,"payload_manifest":manifest,"readiness":{"candidate_input_admissible":False,"video_render_ready":False},"execution_boundary":copy.deepcopy(v2.dynamic.EXPECTED_BOUNDARY)}
     _close(binder,"receipt_sha256")
     material={"content_type":f["content_type"],"request_id":f["request_id"],"selection":f["selection"],"canonical_request_sha256":request_hash,"producer_plan_sha256":plan_hash,"bridge_record_sha256":bridge_hash,"adapter_envelope_sha256":adapter_hash,"request_source_binding_sha256":source_binding_hash,"gameplay_seed":f["gameplay_seed"],"music_seed":f["music_seed"],"variation_index":f["variation_index"],"presentation_profile_id":f["presentation_profile_id"],"delivery_profile_id":f["delivery_profile_id"],"source_seed_matches_request":True,"materialization":"IN_MEMORY_ONLY","video_render_ready":False,"payload_instance_id":"D-VLP-1234567890abcdef","payload_instance_sha256":legacy_hash}
     _close(material,"binding_sha256")
@@ -125,8 +127,19 @@ class RequestPayloadInstanceV2Tests(unittest.TestCase):
         f,b,m,c=_valid_inputs(); c["payload_mutated"]=True; _close(c,"carrier_binding_sha256")
         with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
 
+    def test_accepts_actual_dynamic_v1_receipt_shape_without_top_level_admission_flag(self):
+        f,b,m,c=_valid_inputs()
+        self.assertNotIn("candidate_input_admissible", b)
+        self.assertIs(b["readiness"]["candidate_input_admissible"], False)
+        row=v2._join_one(b,m,c,f)
+        self.assertEqual(row["content_type"], f["content_type"])
+
     def test_rejects_candidate_admissibility(self):
-        f,b,m,c=_valid_inputs(); b["candidate_input_admissible"]=True; _close(b,"receipt_sha256")
+        f,b,m,c=_valid_inputs(); b["readiness"]["candidate_input_admissible"]=True; _close(b,"receipt_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+
+    def test_rejects_missing_readiness_section(self):
+        f,b,m,c=_valid_inputs(); b.pop("readiness"); _close(b,"receipt_sha256")
         with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
 
 if __name__ == '__main__':

@@ -99,30 +99,60 @@ Artefactos fijados: proposal contract `3e65d03532417502ff9a957bc9a6efca01a974641
 
 **Límite:** no es aprobación de renderer, I/O, políticas, pixels, producción o medios; no amplía Drill a 20 selectores.
 
-## 3. Fase actual — V2 preparada, Windows aún pendiente
+## 3. Fase F — V2 integrada en Windows; fallo de guard detectado y aislado (27-10-2026)
 
-**Estado:** `PACKAGE_PREPARED; SANDBOX_TEST_PASS; WINDOWS_ACCEPTANCE_PENDING`.
+**Estado:** `WINDOWS_RUNTIME_FAIL_GUARD_BUG_ISOLATED; CORRECTIVE_OVERLAY_PREPARED; WINDOWS_RETEST_PENDING`.
 
-Overlay anterior preparado: SHA-256 `6eebb14b971975333a9e5d4fdb8e2797df0355bc01b023b37ebfc929e7deea68`. Se regenera como un paquete R3 porque el operador informó que no podía descargar el enlace anterior. La revisión R3 añade este registro acumulado como destino add-only y actualiza el checkpoint/README para evitar que el historial se pierda en la próxima ventana.
+### V2 original — aceptación unitaria Windows
 
-Artefactos base del V2:
+El operador ejecutó la prueba focalizada del checkout activo: `UNIT_TESTS=10/10`, salida `OK`, exit code `0`; `FROZEN_C11C_MANIFEST=UNCHANGED`. Los diez tests cubrían pins, digest namespaces, identidad, sidecar y mutaciones negativas, pero su binder sintético no reflejaba fielmente la ubicación de la admisión en el recibo V1 real. Esta suite PASS no anticipó el bug de integración que apareció en runtime.
 
-- Decisión JSON SHA-256 `68d1e6e992f5d426c9553cbc0ae4da360e94a0cad3363b9b7c89a43e77c34711`.
-- Decisión Markdown SHA-256 `edd014e7e38f2305afc03e82da97bb310a96ad7abed1a96eac590505f09d3f03`.
-- Binding V2 SHA-256 `0bc9f904810b853ab0857ae03c143c0287edc527b597ec954de57bcfd28b8d1c`.
-- Schema V2 SHA-256 `3d8d85f76bef958062badb1cd1e6d22d5ab17e439d22f3947f2e774e4769c203`.
+Fuentes originales V2 antes de la corrección:
+
 - Runner SHA-256 `4ca3f35d87ba4201d7a31c77069022811869a9057b7a95855b71e5953813a968`.
 - Test SHA-256 `35f0f4072c8b6dae96391b7316f7701ea7879e6837509fc629d997027e9daf86`.
+- Contrato V2 SHA-256 `0bc9f904810b853ab0857ae03c143c0287edc527b597ec954de57bcfd28b8d1c`.
+- Schema de salida V2 SHA-256 `3d8d85f76bef958062badb1cd1e6d22d5ab17e439d22f3947f2e774e4769c203`.
+- Decisión JSON SHA-256 `68d1e6e992f5d426c9553cbc0ae4da360e94a0cad3363b9b7c89a43e77c34711`; decisión Markdown SHA-256 `edd014e7e38f2305afc03e82da97bb310a96ad7abed1a96eac590505f09d3f03`.
 
-Tested in the isolated preparation sandbox only: `10 tests`, all passed (initial run 7.933 s). Includes the `60` source-pin check, accepted valid join, digest namespaces kept distinct, schema acceptance, and rejection of selector mismatch, request hash mismatch, digest corruption, editorial sidecar mismatch, claimed payload mutation, inadmissibility and six policy/shape mutations. During R3 packaging verification, the same sandbox test was rerun and passed `10/10`; execution time is informational, not a gate. The R3 archive was also checked for ZIP integrity, 11 unique archive entries, and 9/9 destination hashes. This is **not** active Windows acceptance and is not a Godot run. No Windows V2 unit-test output or V2 runtime receipt exists yet.
+### V2 runtime — resultado real Windows
+
+Godot ejecutable por WinGet se verificó mediante captura redirigida: `4.7.1.stable.mono.official.a13da4feb`, exit code `0`. Los dos harnesses previos emitieron sus marcadores PASS in-memory (Visual Loop/Drill `materialized=2/3`; Challenge `payload=1/1`), pero el join dinámico terminó con:
+
+```text
+C11-D REQUEST-PAYLOAD INSTANCE INTEGRATION V2 FAIL | Dynamic binder receipt schema/status/admission mismatch | renderer=OFF | media_created=false | candidate_input_admissible=false | D4.8=BLOCKED | release_authority=NONE
+V2_RUNTIME_EXIT_CODE=1
+RUNTIME_STDOUT_SHA256=4c0436069f9c0c8010a33b654ef233511cbc3caf09482572d55ca1ccdc5592fc
+RUNTIME_STDERR_SHA256=e5eed2ae6854c661e8e16643f84be6445c9156f1aa7fafbb0b27359d799465ee
+```
+
+Log folder Windows: `%TEMP%\C11D_REQUEST_PAYLOAD_INTEGRATION_V2_RUNTIME_20261027`.
+
+### Causa raíz confirmada
+
+El recibo real del dynamic binder V1 aplica el schema estricto con `candidate_input_admissible=false` dentro de `readiness`, junto a `video_render_ready=false`; no declara ese flag en la raíz del recibo. El join V2 lo consultaba erróneamente como `binder.get("candidate_input_admissible")`, obtenía ausencia (`None`) y fallaba cerrado aunque el recibo estuviera correctamente bloqueado. Además, el fixture sintético del test V2 inicial añadía ese flag a la raíz y por tanto ocultaba el desacuerdo de contrato.
+
+### Corrección V2 Runtime Receipt Guard Fix V1
+
+La corrección limitada cambia únicamente el guard de interfaz y la fidelidad de los tests:
+
+1. Comprobar que `readiness` es un mapping y que `readiness.candidate_input_admissible is false`.
+2. Seguir exigiendo `readiness.video_render_ready is false`, el schema/status V1 exactos, digest propio, manifest hash, lineage, selector y las demás igualdades.
+3. Ajustar el recibo sintético a la forma real: no hay flag de admisión raíz; ambos valores de gobernanza quedan bajo `readiness`.
+4. Añadir una prueba de aceptación de esa forma real y una prueba negativa para `readiness` ausente; la negativa de promoción muta el flag anidado.
+
+No se modifica el binder dinámico V1, sus contratos, sus harnesses, el contrato/schema V2, los digest namespaces ni el límite de gobernanza. La corrección no tolera admisión `true`; alinea la consulta al schema ya vigente. En la preparación aislada, la suite corregida pasó **12/12** pruebas. Esto es validación de sandbox, no aceptación Windows ni runtime Godot de la corrección.
+
+Artefactos del overlay correctivo: runner V2 y test V2 son reemplazos controlados con hashes `before_sha256`; el ledger se reemplaza de forma acumulativa, y se añaden un checkpoint V2.1 y una ficha de overlay. El ZIP debe verificar hashes de origen/destino, backup de los tres reemplazos y conservar intacto el manifiesto C11-C antes/después.
 
 ## 4. Puertas siguientes (orden obligatorio)
 
-1. Aplicar el overlay R3 al checkout activo solo después de verificar su SHA-256, el manifiesto C11-C (SHA + 796318 bytes), las fuentes precondicionantes y la ausencia de los nueve destinos del overlay. No extraer el handover pack al repositorio ni sobrescribir archivos.
-2. Ejecutar únicamente: `python -B .\tools\c11d\d9\test_d_renderer_request_scoped_payload_materialization_binding_v2.py` desde la raíz. Requerir exit code 0 y el resumen `10 tests ... OK` o el marcador definido por el test actual.
-3. Solo con ese PASS, ejecutar: `python -B .\tools\c11d\d9\d_renderer_request_scoped_payload_materialization_binding_v2.py --godot $env:C11D_GODOT_EXECUTABLE --timeout 180` y capturar stdout/stderr separados con `Start-Process -Wait -PassThru`. No guardar recibos JSON ni crear medios.
-4. Si runtime PASS, registrar el stdout exacto, exit code, versión Godot y hashes de logs en un checkpoint V2 actualizado. Después refrescar una sola vez la auditoría I/O y el inventario de identidad por cambios en pines. No declarar input admisible automáticamente.
-5. Solo cuando las evidencias anteriores estén aceptadas, abordar los grupos parciales restantes y las políticas que bloquean regiones/visibilidad, timeline/timebase/sampling, audio/music y autorización. No activar renderer ni medios en esta fase.
+1. Aplicar `C11D_REQUEST_PAYLOAD_V2_RUNTIME_RECEIPT_GUARD_FIX_OVERLAY_20261027_V1.zip` mediante precondiciones hash para los reemplazos, comprobar que los dos documentos nuevos no existen, crear backup de reemplazos, validar cada hash de destino y verificar C11-C (SHA-256 y 796318 bytes).
+2. Ejecutar la suite focalizada actualizada `python -B .\tools\c11d\d9\test_d_renderer_request_scoped_payload_materialization_binding_v2.py`; requerir exit code `0`, `Ran 12 tests` y `OK`.
+3. Solo con ese PASS, volver a ejecutar el runner V2 con `--godot` apuntando al ejecutable absoluto WinGet ya verificado y `--timeout 180`. Capturar stdout/stderr a un nuevo directorio; no sobrescribir la evidencia del intento fallido. Requerir un PASS y el recibo completo de tres fixtures; validar su self-hash, schema V2 y límites de ejecución.
+4. Si el join avanza pero falla en otra arista, parar ante el primer error real, capturar hashes/logs y corregir solo esa discrepancia con un nuevo overlay documentado. No ensanchar selector scope ni relajar joins.
+5. Tras un runtime V2 PASS limpio, refrescar una vez la auditoría I/O y el inventario de identidad debido al cambio de pines, registrar hashes/salidas y continuar con los grupos/políticas pendientes.
+6. No activar renderer ni medios. Mantener cada gate de admisibilidad, política, baseline, certificación, freeze y promoción separado.
 
 ## 5. Cuestión de baseline separada que no debe confundirse con este gate
 

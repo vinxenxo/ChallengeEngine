@@ -123,11 +123,20 @@ def _join_one(
     if not isinstance(manifest, Mapping):
         raise PayloadInstanceIntegrationError("Dynamic binder request payload manifest missing")
     _verify_self_hash(manifest, "manifest_sha256", "dynamic request payload manifest")
-    if binder.get("schema") != dynamic.OUTPUT_SCHEMA_ID or binder.get("status") != dynamic.STATUS or binder.get("candidate_input_admissible") is not False:
-        raise PayloadInstanceIntegrationError("Dynamic binder receipt schema/status/admission mismatch")
+    readiness = binder.get("readiness")
+    if (
+        binder.get("schema") != dynamic.OUTPUT_SCHEMA_ID
+        or binder.get("status") != dynamic.STATUS
+        or not isinstance(readiness, Mapping)
+        or readiness.get("candidate_input_admissible") is not False
+    ):
+        raise PayloadInstanceIntegrationError(
+            "Dynamic binder receipt schema/status/admission mismatch "
+            "(candidate_input_admissible is defined under readiness by the V1 receipt schema)"
+        )
     if binder.get("execution_boundary") != dynamic.EXPECTED_BOUNDARY:
         raise PayloadInstanceIntegrationError("Dynamic binder execution boundary is not fully locked")
-    if binder.get("readiness", {}).get("video_render_ready") is not False:
+    if readiness.get("video_render_ready") is not False:
         raise PayloadInstanceIntegrationError("Dynamic binder receipt must remain not render-ready")
 
     identity = binder.get("request_identity")
