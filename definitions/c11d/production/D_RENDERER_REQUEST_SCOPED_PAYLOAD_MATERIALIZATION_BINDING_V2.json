@@ -139,6 +139,8 @@
     "request_payload_manifest_sha256",
     "dynamic_payload_sha256",
     "dynamic_source_lineage_sha256",
+    "canonical_editorial_sha256",
+    "canonical_editorial_reconstructed_sha256",
     "editorial_values_sha256",
     "editorial_carrier_binding_sha256"
   ],
@@ -147,9 +149,12 @@
     "legacy_payload_instance_sha256": "Digest declared by the existing fixed-fixture materialization-binding V1. It describes a different V1 payload serialization/contract; keep it in a separate named field.",
     "cross_contract_payload_digest_equality": "NOT_ASSERTED_OR_IMPLIED_BY_THIS_JOIN; only request identity/provenance are joined across the two representations.",
     "request_payload_manifest_sha256": "Must equal payload_manifest.manifest_sha256 and both receipt source_identity and payload_evidence copies.",
-    "editorial_values_sha256": "Must equal canonical request editorial hash and the existing sidecar value hash for the exact fixed request; sidecar is not injected into payload.",
+    "editorial_values_sha256": "SHA-256 of the sidecar editorial map only; it must equal the digest of the sidecar field values map. It is not expected to equal the canonical editorial_hash, which covers the full canonical selection plus the editorial map.",
     "music_seed": "Identity-only, kept separate from gameplay seed and excluded from visual-state generation.",
-    "source_timebase": "Challenge remains source-timebase; delivery projection remains unresolved."
+    "source_timebase": "Challenge remains source-timebase; delivery projection remains unresolved.",
+    "canonical_editorial_sha256": "Canonical D9.9 editorial_hash: SHA-256 of {selection: full canonical selection, editorial: canonical editorial map}.",
+    "canonical_editorial_reconstructed_sha256": "Independently reconstructed by hashing the full canonical producer selection together with the exact editorial map rebuilt from sidecar fields. Must equal canonical_editorial_sha256; this is the cross-namespace integrity join.",
+    "editorial_sidecar_join": "Pass only after verifying every sidecar field hash, the map-only digest, exact sidecar/canonical editorial map equality, and equality of a reconstructed composite digest with the canonical editorial_hash."
   },
   "output_contract": {
     "schema_path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V2.json",

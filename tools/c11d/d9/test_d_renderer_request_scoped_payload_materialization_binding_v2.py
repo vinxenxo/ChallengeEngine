@@ -28,7 +28,36 @@ def _fixture(content_type="visual_loops"):
 
 def _valid_inputs(content_type="visual_loops"):
     f=_fixture(content_type); sha=lambda c:c*64
-    request_hash=sha('a'); plan_hash=sha('b'); editorial_hash=sha('c'); bridge_hash=sha('d'); adapter_hash=sha('e'); source_binding_hash=sha('f'); lineage_hash=sha('1'); manifest_payload=sha('2'); visual_state=sha('3'); legacy_hash=sha('4')
+    request_hash=sha('a'); plan_hash=sha('b'); bridge_hash=sha('d'); adapter_hash=sha('e'); source_binding_hash=sha('f'); lineage_hash=sha('1'); manifest_payload=sha('2'); visual_state=sha('3'); legacy_hash=sha('4')
+    canonical_selection = dict(f["selection"])
+    canonical_selection.update({
+        "variant_scope_id": {
+            "challenges": "challenge:parking_v2:CHALLENGE_004",
+            "visual_loops": "visual_loop:c11c_geometric_waves_v1:harmonic_membrane",
+            "visual_drills": "visual_drill:tracking:tier-2",
+        }[content_type],
+        "difficulty_tier": "tier-2" if content_type == "visual_drills" else None,
+    })
+    editorial_values = {
+        "title": f"{content_type} title",
+        "subtitle": f"{content_type} subtitle",
+        "call_to_action": "Play now",
+        "language": "en",
+    }
+    if content_type == "challenges":
+        editorial_values.update({"player_name": "Alex", "challenge_label": "Parking"})
+    editorial_hash = _sha({"selection": canonical_selection, "editorial": editorial_values})
+    canonical_result = {
+        "status": "PLANNED",
+        "canonical_request": {
+            "request_id": f["request_id"],
+            "selection": canonical_selection,
+            "editorial": editorial_values,
+        },
+        "request_hash": request_hash,
+        "plan_hash": plan_hash,
+        "editorial_hash": editorial_hash,
+    }
     mri={"request_id":f["request_id"],"content_type":f["content_type"],"selection":f["selection"],"canonical_request_sha256":request_hash,"plan_sha256":plan_hash,"editorial_sha256":editorial_hash,"gameplay_seed":f["gameplay_seed"],"music_seed":f["music_seed"],"variation_index":f["variation_index"],"presentation_profile_id":f["presentation_profile_id"],"delivery_profile_id":f["delivery_profile_id"]}
     msource={"bridge_record_sha256":bridge_hash,"adapter_envelope_sha256":adapter_hash,"request_scoped_binding_sha256":source_binding_hash,"dynamic_binding_lineage_sha256":lineage_hash}
     mpayload={"payload_sha256":manifest_payload,"visual_state_sha256":visual_state,"payload_scope":f["scope"]}
@@ -43,9 +72,12 @@ def _valid_inputs(content_type="visual_loops"):
     _close(binder,"receipt_sha256")
     material={"content_type":f["content_type"],"request_id":f["request_id"],"selection":f["selection"],"canonical_request_sha256":request_hash,"producer_plan_sha256":plan_hash,"bridge_record_sha256":bridge_hash,"adapter_envelope_sha256":adapter_hash,"request_source_binding_sha256":source_binding_hash,"gameplay_seed":f["gameplay_seed"],"music_seed":f["music_seed"],"variation_index":f["variation_index"],"presentation_profile_id":f["presentation_profile_id"],"delivery_profile_id":f["delivery_profile_id"],"source_seed_matches_request":True,"materialization":"IN_MEMORY_ONLY","video_render_ready":False,"payload_instance_id":"D-VLP-1234567890abcdef","payload_instance_sha256":legacy_hash}
     _close(material,"binding_sha256")
-    carrier={"content_type":f["content_type"],"request_id":f["request_id"],"canonical_request_sha256":request_hash,"base_materialization_request_sha256":request_hash,"request_hash_matches_base_materialization_request":True,"payload_instance_id":material["payload_instance_id"],"payload_instance_sha256":legacy_hash,"editorial_values_sha256":editorial_hash,"payload_mutated":False,"editorial_values_injected_into_visual_payload":False,"visual_payload_consumed_editorial_text":False}
+    carrier_fields = []
+    for name, value in editorial_values.items():
+        carrier_fields.append({"field_name":name,"value":value,"value_sha256":hashlib.sha256(value.encode("utf-8")).hexdigest()})
+    carrier={"content_type":f["content_type"],"request_id":f["request_id"],"canonical_request_sha256":request_hash,"base_materialization_request_sha256":request_hash,"request_hash_matches_base_materialization_request":True,"payload_instance_id":material["payload_instance_id"],"payload_instance_sha256":legacy_hash,"editorial_values_sha256":_sha(editorial_values),"fields":carrier_fields,"payload_mutated":False,"editorial_values_injected_into_visual_payload":False,"visual_payload_consumed_editorial_text":False}
     _close(carrier,"carrier_binding_sha256")
-    return f,binder,material,carrier
+    return f,binder,material,carrier,canonical_result
 
 class RequestPayloadInstanceV2Tests(unittest.TestCase):
     def test_contract_and_60_source_pins(self):
@@ -55,7 +87,7 @@ class RequestPayloadInstanceV2Tests(unittest.TestCase):
         self.assertEqual(schema["$schema"],"https://json-schema.org/draft/2020-12/schema")
 
     def test_valid_join_preserves_distinct_payload_digest_namespaces(self):
-        f,b,m,c=_valid_inputs(); row=v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); row=v2._join_one(b,m,c,f,cr)
         self.assertEqual(row["request_identity_join"],"EXACT_CANONICAL_REQUEST_HASH_AND_SELECTOR_JOIN_PASS")
         self.assertEqual(row["dynamic_payload_sha256"],b["payload_evidence"]["payload_sha256"])
         self.assertEqual(row["legacy_payload_instance_sha256"],m["payload_instance_sha256"])
@@ -65,8 +97,8 @@ class RequestPayloadInstanceV2Tests(unittest.TestCase):
     def _sample_receipt(self):
         rows=[]
         for ct in ("challenges","visual_loops","visual_drills"):
-            f,b,m,c=_valid_inputs(ct)
-            rows.append(v2._join_one(b,m,c,f))
+            f,b,m,c,cr=_valid_inputs(ct)
+            rows.append(v2._join_one(b,m,c,f,cr))
         schema = v2._read_json(ROOT, v2.SCHEMA_REL)
         receipt = {
             "schema":v2.OUTPUT_SCHEMA,"schema_version":"2.0","status":v2.STATUS,
@@ -108,39 +140,81 @@ class RequestPayloadInstanceV2Tests(unittest.TestCase):
                     v2._validate_receipt(changed,schema)
 
     def test_rejects_materialization_request_hash_mismatch(self):
-        f,b,m,c=_valid_inputs(); m["canonical_request_sha256"]="9"*64; _close(m,"binding_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); m["canonical_request_sha256"]="9"*64; _close(m,"binding_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
 
     def test_rejects_selector_mismatch(self):
-        f,b,m,c=_valid_inputs(); b["request_identity"]["selection"]["subtype_id"]="other"; b["payload_manifest"]["request_identity"]["selection"]["subtype_id"]="other"; _close(b["payload_manifest"],"manifest_sha256"); b["source_identity"]["request_payload_manifest_sha256"]=b["payload_manifest"]["manifest_sha256"]; b["payload_evidence"]["request_payload_manifest_sha256"]=b["payload_manifest"]["manifest_sha256"]; _close(b,"receipt_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); b["request_identity"]["selection"]["subtype_id"]="other"; b["payload_manifest"]["request_identity"]["selection"]["subtype_id"]="other"; _close(b["payload_manifest"],"manifest_sha256"); b["source_identity"]["request_payload_manifest_sha256"]=b["payload_manifest"]["manifest_sha256"]; b["payload_evidence"]["request_payload_manifest_sha256"]=b["payload_manifest"]["manifest_sha256"]; _close(b,"receipt_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
 
     def test_rejects_manifest_digest_corruption(self):
-        f,b,m,c=_valid_inputs(); b["payload_manifest"]["manifest_sha256"]="0"*64; _close(b,"receipt_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); b["payload_manifest"]["manifest_sha256"]="0"*64; _close(b,"receipt_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
 
     def test_rejects_editorial_sidecar_hash_mismatch(self):
-        f,b,m,c=_valid_inputs(); c["editorial_values_sha256"]="9"*64; _close(c,"carrier_binding_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); c["editorial_values_sha256"]="9"*64; _close(c,"carrier_binding_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
 
     def test_rejects_claimed_payload_mutation(self):
-        f,b,m,c=_valid_inputs(); c["payload_mutated"]=True; _close(c,"carrier_binding_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); c["payload_mutated"]=True; _close(c,"carrier_binding_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
 
     def test_accepts_actual_dynamic_v1_receipt_shape_without_top_level_admission_flag(self):
-        f,b,m,c=_valid_inputs()
+        f,b,m,c,cr=_valid_inputs()
         self.assertNotIn("candidate_input_admissible", b)
         self.assertIs(b["readiness"]["candidate_input_admissible"], False)
-        row=v2._join_one(b,m,c,f)
+        row=v2._join_one(b,m,c,f,cr)
         self.assertEqual(row["content_type"], f["content_type"])
 
     def test_rejects_candidate_admissibility(self):
-        f,b,m,c=_valid_inputs(); b["readiness"]["candidate_input_admissible"]=True; _close(b,"receipt_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); b["readiness"]["candidate_input_admissible"]=True; _close(b,"receipt_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
 
     def test_rejects_missing_readiness_section(self):
-        f,b,m,c=_valid_inputs(); b.pop("readiness"); _close(b,"receipt_sha256")
-        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f)
+        f,b,m,c,cr=_valid_inputs(); b.pop("readiness"); _close(b,"receipt_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError): v2._join_one(b,m,c,f,cr)
+
+    def test_canonical_editorial_and_map_only_hash_namespaces_are_distinct(self):
+        f,b,m,c,cr=_valid_inputs("challenges")
+        row=v2._join_one(b,m,c,f,cr)
+        self.assertEqual(row["editorial_values_sha256"], c["editorial_values_sha256"])
+        self.assertEqual(row["canonical_editorial_sha256"], cr["editorial_hash"])
+        self.assertEqual(row["canonical_editorial_reconstructed_sha256"], cr["editorial_hash"])
+        self.assertNotEqual(row["editorial_values_sha256"], row["canonical_editorial_sha256"])
+        self.assertEqual(row["editorial_values_hash_namespace"], "EDITORIAL_MAP_ONLY")
+        self.assertEqual(row["canonical_editorial_hash_namespace"], "CANONICAL_SELECTION_PLUS_EDITORIAL_MAP")
+
+    def test_rejects_sidecar_value_drift_even_if_sidecar_hashes_are_recomputed(self):
+        f,b,m,c,cr=_valid_inputs("challenges")
+        c["fields"][0]["value"] = "tampered title"
+        c["fields"][0]["value_sha256"] = hashlib.sha256(b"tampered title").hexdigest()
+        sidecar_values = {row["field_name"]: row["value"] for row in c["fields"]}
+        c["editorial_values_sha256"] = _sha(sidecar_values)
+        _close(c,"carrier_binding_sha256")
+        with self.assertRaises(v2.PayloadInstanceIntegrationError):
+            v2._join_one(b,m,c,f,cr)
+
+    def test_rejects_mutated_full_selection_in_reconstructed_editorial_hash(self):
+        f,b,m,c,cr=_valid_inputs("challenges")
+        cr=copy.deepcopy(cr)
+        cr["canonical_request"]["selection"]["variant_scope_id"] = "mutated-scope"
+        with self.assertRaises(v2.PayloadInstanceIntegrationError):
+            v2._join_one(b,m,c,f,cr)
+
+    def test_full_canonical_producer_hash_reconstruction_for_all_fixed_fixtures(self):
+        fixtures = v2.materialization_v1._fixture_requests(ROOT)
+        self.assertEqual(set(fixtures), {"challenges", "visual_loops", "visual_drills"})
+        for content_type in ("challenges", "visual_loops", "visual_drills"):
+            with self.subTest(content_type=content_type):
+                raw = v2.materialization_v1._raw_request(fixtures[content_type])
+                result = v2.dynamic.evaluate_universal_request(dict(raw), ROOT)
+                canonical = result["canonical_request"]
+                composite = _sha({"selection": canonical["selection"], "editorial": canonical["editorial"]})
+                map_only = _sha(canonical["editorial"])
+                self.assertEqual(result["status"], "PLANNED")
+                self.assertEqual(composite, result["editorial_hash"])
+                self.assertNotEqual(map_only, result["editorial_hash"])
+                self.assertEqual(len(canonical["editorial"]), 6 if content_type == "challenges" else 4)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

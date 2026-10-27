@@ -2,7 +2,7 @@
 
 **Fecha de corte:** 27-10-2026  
 **Workstream:** enlace canónico solicitud → instancia de payload → evidencia de revisión  
-**Estado actual:** `V2_OVERLAY_PREPARADO; APLICACION_Y_ACEPTACION_WINDOWS_PENDIENTES`  
+**Estado actual:** `V2.2_EDITORIAL_HASH_NAMESPACE_FIX_PREPARED_SANDBOX_16_OF_16_WINDOWS_APPLY_AND_RUNTIME_PENDING`  
 **Checkout operativo:** `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`
 
 ## 0. Para reanudar sin repetir trabajo aprobado
@@ -11,7 +11,7 @@ Este documento es el índice acumulado de las fases de este workstream. La fuent
 
 **Regla de repetición:** no volver a ejecutar una fase ya aceptada si sus fuentes fijadas no han cambiado y la siguiente puerta no exige evidencia fresca. Tras integrar V2, se permite una única actualización de auditoría I/O e inventario de identidad porque el árbol D habrá cambiado. No repetir V2B 402/402 ni la prueba de propuesta V1 como rutina.
 
-**Próxima acción única:** descargar y aplicar el overlay R3 de este checkpoint, ejecutar el test focalizado V2 y, solo si pasa, ejecutar el runner runtime acotado con Godot 4.7.1 Mono. Tras una recepción runtime limpia, refrescar I/O gap + identity una vez y registrar sus nuevos hashes/salida en el siguiente ledger/checkpoint.
+**Próxima acción única:** aplicar el overlay `C11D_REQUEST_PAYLOAD_V2_EDITORIAL_HASH_NAMESPACE_FIX_OVERLAY_20261027_V1.zip` con verificación hash/backup, ejecutar la suite focalizada V2 (16/16 requerido) y solo tras ese PASS lanzar el runtime Godot 4.7.1 Mono en una carpeta nueva. Si el recibo integrado pasa revisión, refrescar I/O gap + identity una sola vez y actualizar este ledger/checkpoint; no repetir V2B ni la propuesta V1.
 
 ## 1. Invariantes de autoridad
 
@@ -145,14 +145,50 @@ No se modifica el binder dinámico V1, sus contratos, sus harnesses, el contrato
 
 Artefactos del overlay correctivo: runner V2 y test V2 son reemplazos controlados con hashes `before_sha256`; el ledger se reemplaza de forma acumulativa, y se añaden un checkpoint V2.1 y una ficha de overlay. El ZIP debe verificar hashes de origen/destino, backup de los tres reemplazos y conservar intacto el manifiesto C11-C antes/después.
 
+## 3.1 Fase G — Runtime V2.1; segundo defecto aislado (27-10-2026)
+
+**Estado:** `WINDOWS_RUNTIME_FAIL_EDITORIAL_DIGEST_NAMESPACE_MISMATCH; V2.2_CORRECTIVE_OVERLAY_PREPARED; WINDOWS_APPLY_PENDING`.
+
+### Evidencia de Windows
+
+El operador ejecutó la suite V2.1 después del primer arreglo, con `UNIT_TESTS=12/12`, `OK`, exit code `0`. La siguiente ejecución confirmó Godot Mono `4.7.1.stable.mono.official.a13da4feb` con exit code `0` y ambos harnesses de materialización in-memory pasaron sus marcadores, pero el join integrado falló:
+
+```text
+C11-D REQUEST-PAYLOAD INSTANCE INTEGRATION V2 FAIL | Canonical editorial hash does not join to the sidecar | renderer=OFF | media_created=false | candidate_input_admissible=false | D4.8=BLOCKED | release_authority=NONE
+V2_1_RUNTIME_EXIT_CODE=1
+RUNTIME_STDOUT_SHA256=4c0436069f9c0c8010a33b654ef233511cbc3caf09482572d55ca1ccdc5592fc
+RUNTIME_STDERR_SHA256=a863b8582f41dcf099073953466e3cbfa2f0c9bbc4e2ee6f937943279161e4ab
+```
+
+Log folder: `%TEMP%\C11D_REQUEST_PAYLOAD_INTEGRATION_V2_1_RUNTIME_20261027`. No receipt integrated; runtime acceptance remains **FAIL**.
+
+### Causa raíz
+
+El productor canónico calcula `editorial_hash` con dos componentes: selección canónica completa (`content_type`, `family_id`, `subtype_id`, `variant_id`, `variant_scope_id`, `difficulty_tier`) y mapa editorial. El sidecar calcula `editorial_values_sha256` con solo el mapa editorial. El join comparaba hashes de namespaces distintos, y la sección `digest_semantics` del contrato V2 también describía mal esa igualdad. No era un error de Godot ni una justificación para ignorar el sidecar.
+
+### Corrección V2.2 preparada
+
+El nuevo runner reevalúa en memoria los tres requests canónicos fijos, verifica el mapa exacto reconstruido desde los campos sidecar (`value_sha256` por campo más digest de mapa), y calcula `SHA256({selection: full_canonical_selection, editorial: sidecar_values})`. El digest reconstruido debe igualar el `editorial_hash` del productor y del dynamic binder. El recibo separa los campos `editorial_values_sha256`, `canonical_editorial_sha256` y `canonical_editorial_reconstructed_sha256`, más namespaces explícitos; el schema y la declaración contractual también se actualizan.
+
+Prueba aislada de esta implementación: **16/16 PASS**, incluyendo reconstrucción de hash para los tres request fixtures reales, divergencia deliberada entre namespaces, rechazo de valor lateral modificado aunque se recalculen hashes del sidecar y rechazo de selección canónica mutada. Esto aún es sandbox PASS, no Windows acceptance.
+
+Overlay: `C11D_REQUEST_PAYLOAD_V2_EDITORIAL_HASH_NAMESPACE_FIX_OVERLAY_20261027_V1.zip`; cinco reemplazos protegidos por hashes previos y dos documentos add-only (checkpoint V2.2 + causa raíz), con el ledger acumulativo incluido. La aplicación Windows y el runtime siguen pendientes.
+
+Hashes de destino para el overlay V2.2:
+
+- Runner: `709d5ff670561d2bfc8b5926ba616b6773589bb783dc10f767354b26c3c62cbd`.
+- Test: `120b99b58e4ba09ff74c01a5f1acf57252353d61a659aaa440723436f5900da6`.
+- Contrato V2: `0c3f03cbfa3990e093ccbc3e74f777f8f537682570e75cc304b393c2a6eb1100`.
+- Schema de recibo V2: `e1b586f4ec4abc31ca92e2ebdbdbaa293c17efb9493b0385f1af79e652dfc83f`.
+
 ## 4. Puertas siguientes (orden obligatorio)
 
-1. Aplicar `C11D_REQUEST_PAYLOAD_V2_RUNTIME_RECEIPT_GUARD_FIX_OVERLAY_20261027_V1.zip` mediante precondiciones hash para los reemplazos, comprobar que los dos documentos nuevos no existen, crear backup de reemplazos, validar cada hash de destino y verificar C11-C (SHA-256 y 796318 bytes).
-2. Ejecutar la suite focalizada actualizada `python -B .\tools\c11d\d9\test_d_renderer_request_scoped_payload_materialization_binding_v2.py`; requerir exit code `0`, `Ran 12 tests` y `OK`.
-3. Solo con ese PASS, volver a ejecutar el runner V2 con `--godot` apuntando al ejecutable absoluto WinGet ya verificado y `--timeout 180`. Capturar stdout/stderr a un nuevo directorio; no sobrescribir la evidencia del intento fallido. Requerir un PASS y el recibo completo de tres fixtures; validar su self-hash, schema V2 y límites de ejecución.
-4. Si el join avanza pero falla en otra arista, parar ante el primer error real, capturar hashes/logs y corregir solo esa discrepancia con un nuevo overlay documentado. No ensanchar selector scope ni relajar joins.
-5. Tras un runtime V2 PASS limpio, refrescar una vez la auditoría I/O y el inventario de identidad debido al cambio de pines, registrar hashes/salidas y continuar con los grupos/políticas pendientes.
-6. No activar renderer ni medios. Mantener cada gate de admisibilidad, política, baseline, certificación, freeze y promoción separado.
+1. Aplicar `C11D_REQUEST_PAYLOAD_V2_EDITORIAL_HASH_NAMESPACE_FIX_OVERLAY_20261027_V1.zip` verificando SHA-256 del ZIP, hashes `before_sha256`/`after_sha256`, byte counts, no existencia de los dos destinos add-only, respaldo verificado de los cinco reemplazos y manifiesto C11-C intacto (SHA-256 y 796318 bytes).
+2. Ejecutar únicamente el test focalizado actualizado `python -B .\tools\c11d\d9\test_d_renderer_request_scoped_payload_materialization_binding_v2.py`. Exigir exit code `0`, `Ran 16 tests` y `OK`. No repetir las pruebas V2.1 12/12 si no cambian los pines del nuevo test.
+3. Solo tras el PASS unitario, ejecutar el runner V2 con el Godot Mono de WinGet ya comprobado, `--timeout 180`, stdout/stderr separados y directorio nuevo `%TEMP%\C11D_REQUEST_PAYLOAD_INTEGRATION_V2_2_RUNTIME_20261027`. Preservar ambos intentos de runtime fallidos como evidencia histórica.
+4. Aceptar el runtime solo si aparece exactamente un marcador PASS y recibo JSON íntegro con self-hashes/schema válidos; exigir 3/3 joins canónicos, 3/3 manifests, sidecar 14/14, `visual_payload_consumed=0/14`, digest equivalence false y todos los locks explícitos. Si falla, parar ante el primer error y crear otro overlay documentado para ese defecto concreto.
+5. Tras un runtime PASS aceptado, refrescar una sola vez la auditoría I/O gap y el inventario de identidad por los cambios en runner/test/contract/schema. Actualizar ledger/checkpoint con sus salidas exactas y hashes; no hacerlos pasar automáticamente a complete si las políticas siguen abiertas.
+6. Mantener `renderer=OFF`, `media_created=false`, `candidate_input_admissible=false`, `D4.8=BLOCKED`, `D9.10=PREPARE_ONLY`, `D9.14/D9.16=BLOCKED`, `D9.17=BLOCKED_NO_GO`, `D10=BLOCKED_FOR_PROMOTION`, `baseline_approval=MISSING`, `freeze_eligible=false`, `release_authority=NONE`. No hay autorización de renderer/media en esta fase.
 
 ## 5. Cuestión de baseline separada que no debe confundirse con este gate
 

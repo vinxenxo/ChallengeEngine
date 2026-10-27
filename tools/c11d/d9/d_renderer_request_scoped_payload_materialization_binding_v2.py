@@ -77,6 +77,18 @@ def _load_contract(root: Path) -> tuple[dict[str, Any], dict[str, Any]]:
         raise PayloadInstanceIntegrationError("Proposal status drift")
     if contract.get("schema") != CONTRACT_ID or contract.get("schema_version") != "2.0" or contract.get("candidate_input_admissible") is not False:
         raise PayloadInstanceIntegrationError("V2 contract identity/status/admission boundary mismatch")
+    digest_semantics = contract.get("digest_semantics")
+    if not isinstance(digest_semantics, Mapping):
+        raise PayloadInstanceIntegrationError("V2 digest semantics section is missing")
+    map_semantics = str(digest_semantics.get("editorial_values_sha256", "")).lower()
+    canonical_semantics = str(digest_semantics.get("canonical_editorial_sha256", "")).lower()
+    reconstructed_semantics = str(digest_semantics.get("canonical_editorial_reconstructed_sha256", "")).lower()
+    if "map only" not in map_semantics or "not expected to equal" not in map_semantics:
+        raise PayloadInstanceIntegrationError("V2 contract must distinguish map-only sidecar digest semantics")
+    if "full canonical selection" not in canonical_semantics or "editorial map" not in canonical_semantics:
+        raise PayloadInstanceIntegrationError("V2 contract must define the composite canonical editorial digest")
+    if "must equal canonical_editorial_sha256" not in reconstructed_semantics:
+        raise PayloadInstanceIntegrationError("V2 contract must require reconstructed canonical editorial digest equality")
     if contract.get("source_pins", [None])[0].get("path") != MANIFEST_REL.as_posix():
         raise PayloadInstanceIntegrationError("C11-C manifest must be first in the source pin list")
     pins = contract.get("source_pins")
@@ -113,8 +125,35 @@ def _verify_self_hash(obj: Mapping[str, Any], field: str, label: str) -> None:
 def _normalized_selection(value: Mapping[str, Any]) -> dict[str, Any]:
     return {key: value.get(key) for key in ("content_type", "family_id", "subtype_id", "variant_id")}
 
+
+def _carrier_editorial_values(carrier: Mapping[str, Any], content_type: str) -> dict[str, str]:
+    """Rebuild the editorial map from the sidecar's individually hash-bound fields."""
+    fields = carrier.get("fields")
+    if not isinstance(fields, list) or not fields:
+        raise PayloadInstanceIntegrationError(f"Editorial carrier fields missing: {content_type}")
+    values: dict[str, str] = {}
+    for field in fields:
+        if not isinstance(field, Mapping):
+            raise PayloadInstanceIntegrationError(f"Malformed editorial sidecar field: {content_type}")
+        name = field.get("field_name")
+        value = field.get("value")
+        value_sha = field.get("value_sha256")
+        if not isinstance(name, str) or not name or name in values:
+            raise PayloadInstanceIntegrationError(f"Duplicate or malformed editorial sidecar field: {content_type}")
+        if not isinstance(value, str):
+            raise PayloadInstanceIntegrationError(f"Editorial sidecar value is not a string: {content_type}.{name}")
+        actual_value_sha = hashlib.sha256(value.encode("utf-8")).hexdigest()
+        if value_sha != actual_value_sha:
+            raise PayloadInstanceIntegrationError(f"Editorial sidecar field hash mismatch: {content_type}.{name}")
+        values[name] = value
+    if carrier.get("editorial_values_sha256") != _sha_json(values):
+        raise PayloadInstanceIntegrationError(f"Editorial values-map digest mismatch: {content_type}")
+    return values
+
+
 def _join_one(
-    binder: Mapping[str, Any], material: Mapping[str, Any], carrier: Mapping[str, Any], fixture: Mapping[str, Any]
+    binder: Mapping[str, Any], material: Mapping[str, Any], carrier: Mapping[str, Any], fixture: Mapping[str, Any],
+    canonical_result: Mapping[str, Any],
 ) -> dict[str, Any]:
     # The dynamic binder has already run and validated its current V1 output schema.
     # Re-check digest closure and all keys at this interface boundary.
@@ -200,9 +239,34 @@ def _join_one(
         raise PayloadInstanceIntegrationError(f"Editorial carrier is not bound to the exact fixed materialization instance: {content_type}")
     if carrier.get("payload_mutated") is not False or carrier.get("editorial_values_injected_into_visual_payload") is not False or carrier.get("visual_payload_consumed_editorial_text") is not False:
         raise PayloadInstanceIntegrationError(f"Editorial sidecar falsely claims payload mutation/consumption: {content_type}")
+    # The canonical producer's editorial_hash is composite: SHA-256 of the full
+    # canonical selection plus the editorial map. The sidecar's editorial_values_sha256
+    # is deliberately map-only. Never compare those two digest namespaces directly.
+    canonical_request = canonical_result.get("canonical_request")
+    canonical_selection = canonical_request.get("selection") if isinstance(canonical_request, Mapping) else None
+    canonical_editorial = canonical_request.get("editorial") if isinstance(canonical_request, Mapping) else None
     editorial_sha = source.get("editorial_hash")
-    if not _is_sha(editorial_sha) or carrier.get("editorial_values_sha256") != editorial_sha:
-        raise PayloadInstanceIntegrationError(f"Canonical editorial hash does not join to the sidecar: {content_type}")
+    if canonical_result.get("status") != "PLANNED" or not isinstance(canonical_selection, Mapping) or not isinstance(canonical_editorial, Mapping):
+        raise PayloadInstanceIntegrationError(f"Canonical producer editorial context is incomplete: {content_type}")
+    if canonical_request.get("request_id") != fixture["request_id"]:
+        raise PayloadInstanceIntegrationError(f"Canonical producer request id differs from fixed fixture: {content_type}")
+    if _normalized_selection(canonical_selection) != expected_selection:
+        raise PayloadInstanceIntegrationError(f"Canonical producer selector differs from fixed fixture: {content_type}")
+    if canonical_result.get("request_hash") != request_hash or canonical_result.get("plan_hash") != source.get("plan_hash") or canonical_result.get("editorial_hash") != editorial_sha:
+        raise PayloadInstanceIntegrationError(f"Canonical producer hashes do not join to dynamic binder: {content_type}")
+    if not _is_sha(editorial_sha):
+        raise PayloadInstanceIntegrationError(f"Canonical editorial digest is malformed: {content_type}")
+
+    sidecar_values = _carrier_editorial_values(carrier, content_type)
+    if dict(sidecar_values) != dict(canonical_editorial):
+        raise PayloadInstanceIntegrationError(f"Canonical editorial values differ from sidecar fields: {content_type}")
+    reconstructed_editorial_sha = _sha_json({
+        "selection": dict(canonical_selection),
+        "editorial": sidecar_values,
+    })
+    if reconstructed_editorial_sha != editorial_sha:
+        raise PayloadInstanceIntegrationError(f"Reconstructed canonical editorial hash does not join: {content_type}")
+
     if material.get("gameplay_seed") != identity.get("gameplay_seed") or material.get("music_seed") != identity.get("music_seed") or material.get("variation_index") != identity.get("variation_index") or material.get("presentation_profile_id") != identity.get("presentation_profile_id") or material.get("delivery_profile_id") != identity.get("delivery_profile_id"):
         raise PayloadInstanceIntegrationError(f"Materialization request scope mismatch: {content_type}")
 
@@ -230,10 +294,14 @@ def _join_one(
         "legacy_payload_instance_sha256": str(material["payload_instance_sha256"]),
         "legacy_materialization_binding_sha256": str(material["binding_sha256"]),
         "editorial_values_sha256": str(carrier["editorial_values_sha256"]),
+        "canonical_editorial_sha256": str(editorial_sha),
+        "canonical_editorial_reconstructed_sha256": str(reconstructed_editorial_sha),
+        "editorial_values_hash_namespace": "EDITORIAL_MAP_ONLY",
+        "canonical_editorial_hash_namespace": "CANONICAL_SELECTION_PLUS_EDITORIAL_MAP",
         "editorial_carrier_binding_sha256": str(carrier["carrier_binding_sha256"]),
         "request_identity_join": "EXACT_CANONICAL_REQUEST_HASH_AND_SELECTOR_JOIN_PASS",
         "payload_digest_relation": "SEPARATE_CONTRACTS_NO_EQUIVALENCE_CLAIM",
-        "editorial_sidecar_join": "CANONICAL_REQUEST_AND_EDITORIAL_VALUE_HASH_JOIN_PASS",
+        "editorial_sidecar_join": "CANONICAL_SELECTION_AND_EDITORIAL_VALUES_RECONSTRUCTED_HASH_JOIN_PASS",
         "editorial_payload_consumed": False,
     }
     row["binding_sha256"] = _sha_json(row)
@@ -258,6 +326,7 @@ def build_integration_receipt(
     dynamic_receipts: list[Mapping[str, Any]],
     materialization_receipt: Mapping[str, Any],
     carrier_receipt: Mapping[str, Any],
+    canonical_request_results: list[Mapping[str, Any]],
 ) -> dict[str, Any]:
     project_root = _root(root)
     contract, schema = _load_contract(project_root)
@@ -266,8 +335,8 @@ def build_integration_receipt(
     fixtures = contract.get("fixed_request_fixtures")
     if not isinstance(material_bindings, list) or not isinstance(carrier_bindings, list) or not isinstance(fixtures, list):
         raise PayloadInstanceIntegrationError("Existing materialization/carrier/fixture matrix is malformed")
-    if len(dynamic_receipts) != 3 or len(material_bindings) != 3 or len(carrier_bindings) != 3 or len(fixtures) != 3:
-        raise PayloadInstanceIntegrationError("V2 accepts exactly three fixed fixture receipts")
+    if len(dynamic_receipts) != 3 or len(material_bindings) != 3 or len(carrier_bindings) != 3 or len(fixtures) != 3 or len(canonical_request_results) != 3:
+        raise PayloadInstanceIntegrationError("V2 accepts exactly three fixed fixture receipts and canonical producer contexts")
     if materialization_receipt.get("candidate_input_admissible") is not False or carrier_receipt.get("candidate_input_admissible") is not False:
         raise PayloadInstanceIntegrationError("Upstream materialization/carrier must remain inadmissible")
     _verify_self_hash(materialization_receipt, "receipt_sha256", "fixed materialization receipt")
@@ -276,7 +345,10 @@ def build_integration_receipt(
     for index, fixture in enumerate(fixtures):
         if fixture.get("content_type") != material_bindings[index].get("content_type") or fixture.get("content_type") != carrier_bindings[index].get("content_type"):
             raise PayloadInstanceIntegrationError("Canonical content binding order mismatch")
-        rows.append(_join_one(dynamic_receipts[index], material_bindings[index], carrier_bindings[index], fixture))
+        rows.append(_join_one(
+            dynamic_receipts[index], material_bindings[index], carrier_bindings[index], fixture,
+            canonical_request_results[index],
+        ))
     if [row["content_type"] for row in rows] != ["challenges", "visual_loops", "visual_drills"]:
         raise PayloadInstanceIntegrationError("V2 receipt content type/order is not canonical")
 
@@ -338,7 +410,16 @@ def run_review(godot: str, timeout: int = 120, root: Path | str | None = None) -
     dynamic_result = dynamic.run_dynamic_request_matrix(
         godot, timeout, project_root, subprocess.run, raw_requests=raw_requests, mode="v1", independent_repeat=False
     )
-    return build_integration_receipt(project_root, dynamic_result["receipts"], materialization_receipt, carrier_receipt)
+    # Re-resolve the exact fixed canonical requests in-process so the full canonical
+    # selection (including D9.8 scope/tier members) is available to reconstruct the
+    # composite editorial digest from the separately hash-bound sidecar values.
+    canonical_request_results = [
+        dynamic.evaluate_universal_request(dict(raw), project_root) for raw in raw_requests
+    ]
+    return build_integration_receipt(
+        project_root, dynamic_result["receipts"], materialization_receipt, carrier_receipt,
+        canonical_request_results,
+    )
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Build a source-pinned in-memory V2 join of canonical requests, existing dynamic payload manifests and editorial sidecars; never renderer input.")

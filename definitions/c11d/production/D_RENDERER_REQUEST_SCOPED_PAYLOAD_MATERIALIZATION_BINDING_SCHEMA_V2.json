@@ -119,6 +119,10 @@
           "legacy_payload_instance_sha256",
           "legacy_materialization_binding_sha256",
           "editorial_values_sha256",
+          "canonical_editorial_sha256",
+          "canonical_editorial_reconstructed_sha256",
+          "editorial_values_hash_namespace",
+          "canonical_editorial_hash_namespace",
           "editorial_carrier_binding_sha256",
           "request_identity_join",
           "payload_digest_relation",
@@ -253,6 +257,20 @@
             "type": "string",
             "pattern": "^[a-f0-9]{64}$"
           },
+          "canonical_editorial_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "canonical_editorial_reconstructed_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "editorial_values_hash_namespace": {
+            "const": "EDITORIAL_MAP_ONLY"
+          },
+          "canonical_editorial_hash_namespace": {
+            "const": "CANONICAL_SELECTION_PLUS_EDITORIAL_MAP"
+          },
           "editorial_carrier_binding_sha256": {
             "type": "string",
             "pattern": "^[a-f0-9]{64}$"
@@ -264,7 +282,7 @@
             "const": "SEPARATE_CONTRACTS_NO_EQUIVALENCE_CLAIM"
           },
           "editorial_sidecar_join": {
-            "const": "CANONICAL_REQUEST_AND_EDITORIAL_VALUE_HASH_JOIN_PASS"
+            "const": "CANONICAL_SELECTION_AND_EDITORIAL_VALUES_RECONSTRUCTED_HASH_JOIN_PASS"
           },
           "editorial_payload_consumed": {
             "const": false
