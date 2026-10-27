@@ -66,7 +66,7 @@ foreach ($Pin in $Pins) { Assert-Sha (Join-Path $Root ($Pin.Rel.Replace('/','\')
 $AuditPath = Join-Path $Root 'tools\c11d\d9\audit_d_renderer_phase_o_source_frame_semantic_binding_crosswalk_20261027.py'
 $TestPath = Join-Path $Root 'tools\c11d\d9\test_d_renderer_phase_o_source_frame_semantic_binding_crosswalk_20261027.py'
 $SchemaPath = Join-Path $Root 'definitions\c11d\production\D_RENDERER_PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK_AUDIT_SCHEMA_V1.json'
-Assert-Sha $TestPath '3fe5e53bd338e91d52b3e460f5d052d151b6fc8aabd2bffbf8db8e8b36f9bc4f' 'Tests Fase O'
+Assert-Sha $TestPath 'b5bbf67e071a5eac7e1aeb6eda002782914b1d4790ebce7b825fd774050c23f9' 'Tests Fase O'
 Assert-Sha $SchemaPath 'a44ff98c7b3e82601f562dee764e0009c6377747807083ba608080871282d67d' 'Schema informe Fase O'
 
 $RuntimeMarkerPath = Join-Path $env:TEMP 'C11D_V2C_SOURCE_FRAME_RUNTIME_20261027.completed.json'
