@@ -1,14 +1,14 @@
 # C11-D — Request→Payload Instance Integration Checkpoint V2.2
 
 **Fecha:** 27-10-2026  
-**Estado:** `V2.2_WINDOWS_PASS; IO_IDENTITY_REFRESH_PASS; CHALLENGE_SEED_COLLISION_EXPANSION_WINDOWS_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PASS; V2C_SOURCE_FRAME_RECEIPTS_PENDING`  
+**Estado:** `V2.2_WINDOWS_PASS; IO_IDENTITY_REFRESH_PASS; CHALLENGE_SEED_COLLISION_EXPANSION_WINDOWS_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PASS; V2C_SOURCE_FRAME_RUNTIME_PASS; PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK_PENDING`  
 **Predecesor:** `D_RENDERER_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_CHECKPOINT_V2_1.md`  
 **Ledger acumulativo:** `C11D_ENGINEERING_PHASE_LEDGER_20261027_V1.md`
 
 
 ## 0. V2.2 — aceptación real en Windows (27-10-2026)
 
-**Estado:** `WINDOWS_PASS_RUNTIME_RECEIPT_VALIDATED; IO_IDENTITY_REFRESH_PASS; CHALLENGE_COLLISION_EXPANSION_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PASS; V2C_SOURCE_FRAME_RECEIPTS_PENDING`.
+**Estado:** `WINDOWS_PASS_RUNTIME_RECEIPT_VALIDATED; IO_IDENTITY_REFRESH_PASS; CHALLENGE_COLLISION_EXPANSION_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PASS; V2C_SOURCE_FRAME_RUNTIME_PASS; PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK_PENDING`.
 
 Aplicación del overlay `C11D_REQUEST_PAYLOAD_V2_EDITORIAL_HASH_NAMESPACE_FIX_OVERLAY_20261027_V1.zip`:
 
@@ -230,3 +230,16 @@ Solo tras la aceptación estática se puede abrir una puerta separada de `45/45`
 **Siguiente puerta:** V2-C source-frame runtime receipts para los nueve Challenges mediante planner canónico y ChallengeRuntimeBridge.run_effective_pipeline, primero recibos en memoria y validación de contrato/pins. Mantener sin cambios la gobernanza de render.
 
 **Bloqueos inalterados:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.
+### Fase N — Runtime source-frame V2-C (27-10-2026, Windows PASS; route-only)
+
+- Contrato Python: 28/28; stdout SHA-256 $ExpectedV2CTestStdoutSha; stderr SHA-256 $ExpectedEmptySha (vacío).
+- Contrato V2-C y source pins: 81/81; planner canónico 9/9; sonda de versión Godot 1; procesos Godot Mono independientes 18/18; selectores aceptados 9/9; artefactos de proceso 36/36 con hashes verificados.
+- Godot: 4.7.1.stable.mono.official.a13da4feb; estado de reporte PASS_SOURCE_FRAME_ROUTE_ONLY.
+- Reporte: $ReportPath; SHA-256 $ExpectedRuntimeReportSha; stdout SHA-256 $ExpectedRuntimeStdoutSha; stderr SHA-256 $ExpectedEmptySha (vacío).
+- Directorio de logs: $LogDirectory; directorio de evidencia: $EvidenceDirectory; completion marker: $CompletionPath.
+- Cada Challenge tiene una llamada al planner y dos procesos aislados con recibos SOURCE_FRAME_RECEIPT a través de ChallengeRuntimeBridge.run_effective_pipeline. Los recibos confirman ausencia de escritura de payload, creación de media, emisión de input nativo de renderer, nodos de render, llamadas al servidor de render, captura de viewport, mutación del estado canónico y dispatch de producción.
+- Alcance aceptado: repetibilidad de recibo source-frame y ruta runtime efectiva en memoria. isual_seed_sensitivity=NOT_TESTED; esta fase no demuestra dibujo de texto, píxeles, proyección de entrega ni vídeo.
+
+**Siguiente puerta:** Fase O — auditoría de solo lectura del cruce recibo source-frame → propuesta de binding semántico, sin aprobar ningún binding. Debe distinguir winning_frame como único anclaje temporal Challenge y close_calls como contador, y mantener en revisión cualquier campo custom_data, proyección y tratamiento temporal.
+
+**Gobernanza inalterada:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; pproved_renderer_projection_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE. El conflicto CHALLENGE_008/009 (11 s declarados y 12 s de fases) sigue pendiente.

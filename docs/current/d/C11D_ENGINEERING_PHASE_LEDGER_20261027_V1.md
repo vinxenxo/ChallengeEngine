@@ -2,7 +2,7 @@
 
 **Fecha de corte:** 27-10-2026  
 **Workstream:** enlace canónico solicitud → instancia de payload → evidencia de revisión  
-**Estado actual:** `V2.2_WINDOWS_RUNTIME_PASS; IO_IDENTITY_REFRESH_PASS; PHASE_K_CHALLENGE_COLLISION_EXPANSION_PASS; PHASE_L_V2B_STATIC_TESTS_PASS; PHASE_M_V2B_RUNTIME_MATRIX_PASS; NEXT_V2C_SOURCE_FRAME_RECEIPTS_GATE`  
+**Estado actual:** `V2.2_WINDOWS_RUNTIME_PASS; IO_IDENTITY_REFRESH_PASS; PHASE_K_CHALLENGE_COLLISION_EXPANSION_PASS; PHASE_L_V2B_STATIC_TESTS_PASS; PHASE_M_V2B_RUNTIME_MATRIX_PASS; PHASE_N_V2C_SOURCE_FRAME_RUNTIME_PASS; NEXT_PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK`  
 **Checkout operativo:** `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`
 
 ## 0. Para reanudar sin repetir trabajo aprobado
@@ -11,7 +11,7 @@ Este documento es el índice acumulado de las fases de este workstream. La fuent
 
 **Regla de repetición:** no volver a ejecutar una fase ya aceptada si sus fuentes fijadas no han cambiado y la siguiente puerta no exige evidencia fresca. Tras integrar V2, se permite una única actualización de auditoría I/O e inventario de identidad porque el árbol D habrá cambiado. No repetir V2B 402/402 ni la prueba de propuesta V1 como rutina.
 
-**Próxima acción única:** ejecutar la puerta V2-C de recibos runtime source-frame para los nueve Challenges, reutilizando el planner canónico y `ChallengeRuntimeBridge.run_effective_pipeline`; validar los recibos por selector sin materializar payload ni media y mantener el renderer apagado.
+**Próxima acción única:** auditar en modo de solo lectura los nueve recibos source-frame V2-C y cruzarlos con la propuesta de binding semántico existente; clasificar datos temporales, contadores de episodio, candidatos de custom_data y ausencias, sin aprobar bindings ni materializar payload/media.
 
 ## 1. Invariantes de autoridad
 
@@ -301,3 +301,16 @@ La siguiente puerta después de Fase L es la matriz V2-B de 45 llamadas al plann
 **Siguiente puerta:** V2-C source-frame runtime receipts para los nueve Challenges mediante planner canónico y ChallengeRuntimeBridge.run_effective_pipeline, primero recibos en memoria y validación de contrato/pins. Mantener sin cambios la gobernanza de render.
 
 **Bloqueos inalterados:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.
+### Fase N — Runtime source-frame V2-C (27-10-2026, Windows PASS; route-only)
+
+- Contrato Python: 28/28; stdout SHA-256 $ExpectedV2CTestStdoutSha; stderr SHA-256 $ExpectedEmptySha (vacío).
+- Contrato V2-C y source pins: 81/81; planner canónico 9/9; sonda de versión Godot 1; procesos Godot Mono independientes 18/18; selectores aceptados 9/9; artefactos de proceso 36/36 con hashes verificados.
+- Godot: 4.7.1.stable.mono.official.a13da4feb; estado de reporte PASS_SOURCE_FRAME_ROUTE_ONLY.
+- Reporte: $ReportPath; SHA-256 $ExpectedRuntimeReportSha; stdout SHA-256 $ExpectedRuntimeStdoutSha; stderr SHA-256 $ExpectedEmptySha (vacío).
+- Directorio de logs: $LogDirectory; directorio de evidencia: $EvidenceDirectory; completion marker: $CompletionPath.
+- Cada Challenge tiene una llamada al planner y dos procesos aislados con recibos SOURCE_FRAME_RECEIPT a través de ChallengeRuntimeBridge.run_effective_pipeline. Los recibos confirman ausencia de escritura de payload, creación de media, emisión de input nativo de renderer, nodos de render, llamadas al servidor de render, captura de viewport, mutación del estado canónico y dispatch de producción.
+- Alcance aceptado: repetibilidad de recibo source-frame y ruta runtime efectiva en memoria. isual_seed_sensitivity=NOT_TESTED; esta fase no demuestra dibujo de texto, píxeles, proyección de entrega ni vídeo.
+
+**Siguiente puerta:** Fase O — auditoría de solo lectura del cruce recibo source-frame → propuesta de binding semántico, sin aprobar ningún binding. Debe distinguir winning_frame como único anclaje temporal Challenge y close_calls como contador, y mantener en revisión cualquier campo custom_data, proyección y tratamiento temporal.
+
+**Gobernanza inalterada:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; pproved_renderer_projection_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE. El conflicto CHALLENGE_008/009 (11 s declarados y 12 s de fases) sigue pendiente.
