@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:phase-o-source-frame-semantic-binding-crosswalk-audit-report:v1",
+  "title": "C11-D Phase O source-frame to semantic binding crosswalk audit report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "generated_utc",
+    "scope",
+    "input_evidence",
+    "source_pins",
+    "summary",
+    "selector_crosswalk",
+    "field_crosswalk",
+    "temporal_policy_fields",
+    "editorial_sidecar_inventory",
+    "timebase_conflicts",
+    "asset_source_pins",
+    "process_evidence_sha256",
+    "invariants",
+    "governance_locks",
+    "next_safe_increment"
+  ],
+  "properties": {
+    "schema": {"const": "C11D-PHASE-O-SOURCE-FRAME-SEMANTIC-BINDING-CROSSWALK-AUDIT-REPORT-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PASS_READ_ONLY_CROSSWALK_NO_BINDING_APPROVAL"},
+    "generated_utc": {"type": "string", "format": "date-time"},
+    "scope": {"const": "READ_ONLY_ACCEPTED_SOURCE_FRAME_RECEIPTS_TO_EXISTING_SEMANTIC_PROPOSAL"},
+    "input_evidence": {"type": "object"},
+    "source_pins": {"type": "object", "minProperties": 10},
+    "summary": {
+      "type": "object",
+      "required": [
+        "selectors_verified", "runtime_receipts_verified", "process_evidence_files_verified",
+        "asset_source_pins_verified", "base_frame_field_rows", "stable_custom_data_candidate_occurrences",
+        "static_source_pointers_present", "timebase_conflicts_unresolved", "challenge_editorial_sidecar_fields",
+        "editorial_sidecar_slots_across_all_content_types", "approved_bindings",
+        "approved_custom_data_bindings", "approved_renderer_projection_bindings",
+        "editorial_fields_visually_consumed", "custom_data_values_serialized", "renderer", "media_created",
+        "payload_materialized", "candidate_input_admissible", "release_authority"
+      ],
+      "properties": {
+        "selectors_verified": {"const": 9},
+        "runtime_receipts_verified": {"const": 18},
+        "process_evidence_files_verified": {"const": 36},
+        "base_frame_field_rows": {"const": 54},
+        "stable_custom_data_candidate_occurrences": {"const": "6/6"},
+        "static_source_pointers_present": {"const": "3/3"},
+        "timebase_conflicts_unresolved": {"const": 2},
+        "challenge_editorial_sidecar_fields": {"const": 6},
+        "editorial_sidecar_slots_across_all_content_types": {"const": 14},
+        "approved_bindings": {"const": 0},
+        "approved_custom_data_bindings": {"const": 0},
+        "approved_renderer_projection_bindings": {"const": 0},
+        "editorial_fields_visually_consumed": {"const": 0},
+        "custom_data_values_serialized": {"const": false},
+        "renderer": {"const": "OFF"},
+        "media_created": {"const": false},
+        "payload_materialized": {"const": false},
+        "candidate_input_admissible": {"const": false},
+        "release_authority": {"const": "NONE"}
+      }
+    },
+    "selector_crosswalk": {"type": "array", "minItems": 9, "maxItems": 9},
+    "field_crosswalk": {"type": "array", "minItems": 70},
+    "temporal_policy_fields": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {"type": "object"}
+    },
+    "editorial_sidecar_inventory": {"type": "array", "minItems": 14, "maxItems": 14},
+    "timebase_conflicts": {"type": "array", "minItems": 2, "maxItems": 2},
+    "asset_source_pins": {"type": "array", "minItems": 3},
+    "process_evidence_sha256": {"type": "object", "minProperties": 36, "maxProperties": 36},
+    "invariants": {"type": "object"},
+    "governance_locks": {"type": "object"},
+    "next_safe_increment": {"type": "string"}
+  }
+}
