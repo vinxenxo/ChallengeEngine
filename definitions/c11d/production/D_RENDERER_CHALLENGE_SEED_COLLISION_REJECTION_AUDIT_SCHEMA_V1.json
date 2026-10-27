@@ -1,0 +1,341 @@
+{
+  "$id": "urn:c11d:challenge-seed-collision-rejection-audit:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "all_rejections_precede_godot": {
+      "const": true
+    },
+    "audit_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "automatic_seed_generation": {
+      "const": false
+    },
+    "challenge_seed_domain_preflight_contract_sha256": {
+      "const": "fc09a92e1f16afd4409a6a161385d1c3bca7925bb7e9d43249944fcc6d195799"
+    },
+    "collision_values_tested": {
+      "const": [
+        12345,
+        840001
+      ]
+    },
+    "execution_boundary": {
+      "additionalProperties": false,
+      "properties": {
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "const": null,
+          "type": "null"
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "request_input_persisted": {
+          "const": false
+        },
+        "runtime": {
+          "const": "PYTHON_PREFLIGHT_REJECTION_ONLY_NO_GODOT_INVOCATION"
+        }
+      },
+      "required": [
+        "runtime",
+        "request_input_persisted",
+        "payload_files_written",
+        "receipt_files_written",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_created",
+        "output_artifact_path",
+        "c11c_source_mutation",
+        "D4.8",
+        "release_authority"
+      ],
+      "type": "object"
+    },
+    "explicit_seed_negative_cases": {
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "const": 90
+        },
+        "total": {
+          "const": 90
+        }
+      },
+      "required": [
+        "passed",
+        "total"
+      ],
+      "type": "object"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "godot_version": {
+      "const": null,
+      "type": "null"
+    },
+    "master_seed_adopted": {
+      "const": false
+    },
+    "negative_case_count_per_selector": {
+      "const": 10
+    },
+    "numeric_seed_collision_rejections": {
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "const": 18
+        },
+        "total": {
+          "const": 18
+        }
+      },
+      "required": [
+        "passed",
+        "total"
+      ],
+      "type": "object"
+    },
+    "rejection_outcomes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case": {
+            "enum": [
+              "missing_gameplay_seed",
+              "null_gameplay_seed",
+              "string_gameplay_seed",
+              "boolean_gameplay_seed",
+              "zero_gameplay_seed",
+              "out_of_range_gameplay_seed",
+              "missing_music_seed",
+              "null_music_seed",
+              "automatic_seed_mode",
+              "master_seed_alias",
+              "equal_seed_collision_12345",
+              "equal_seed_collision_840001"
+            ]
+          },
+          "challenge_id": {
+            "enum": [
+              "CHALLENGE_001",
+              "CHALLENGE_002",
+              "CHALLENGE_003",
+              "CHALLENGE_004",
+              "CHALLENGE_005",
+              "CHALLENGE_006",
+              "CHALLENGE_007",
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "collision_value": {
+            "enum": [
+              12345,
+              840001
+            ]
+          },
+          "content_type": {
+            "const": "challenges"
+          },
+          "result": {
+            "enum": [
+              "REJECTED_AS_REQUIRED",
+              "REJECTED_BEFORE_GODOT_AS_REQUIRED"
+            ]
+          }
+        },
+        "required": [
+          "content_type",
+          "challenge_id",
+          "case",
+          "result"
+        ],
+        "type": "object"
+      },
+      "maxItems": 108,
+      "minItems": 108,
+      "type": "array"
+    },
+    "runtime_invocations": {
+      "const": 0
+    },
+    "runtime_seed_derivation_enabled": {
+      "const": false
+    },
+    "schema": {
+      "const": "urn:c11d:challenge-seed-collision-rejection-audit:v1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "scope": {
+      "const": "NINE_CANONICAL_CHALLENGE_SELECTORS_X_TEN_EXPLICIT_SEED_NEGATIVES_PLUS_TWO_NUMERIC_COLLISIONS"
+    },
+    "seed_domains_complete_for_candidate_input": {
+      "const": false
+    },
+    "selector_matrix": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "canonical_selection": {
+            "additionalProperties": false,
+            "properties": {
+              "content_type": {
+                "const": "challenges"
+              },
+              "family_id": {
+                "type": "string"
+              },
+              "subtype_id": {
+                "type": "null"
+              },
+              "variant_id": {
+                "enum": [
+                  "CHALLENGE_001",
+                  "CHALLENGE_002",
+                  "CHALLENGE_003",
+                  "CHALLENGE_004",
+                  "CHALLENGE_005",
+                  "CHALLENGE_006",
+                  "CHALLENGE_007",
+                  "CHALLENGE_008",
+                  "CHALLENGE_009"
+                ]
+              }
+            },
+            "required": [
+              "content_type",
+              "family_id",
+              "subtype_id",
+              "variant_id"
+            ],
+            "type": "object"
+          },
+          "challenge_id": {
+            "enum": [
+              "CHALLENGE_001",
+              "CHALLENGE_002",
+              "CHALLENGE_003",
+              "CHALLENGE_004",
+              "CHALLENGE_005",
+              "CHALLENGE_006",
+              "CHALLENGE_007",
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "family_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "mechanic": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_path": {
+            "pattern": "^challenges/CHALLENGE_00[1-9]\\.json$",
+            "type": "string"
+          },
+          "source_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "challenge_id",
+          "family_id",
+          "mechanic",
+          "source_path",
+          "source_sha256",
+          "canonical_selection"
+        ],
+        "type": "object"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "selectors": {
+      "const": 9
+    },
+    "source_pin_count": {
+      "const": 27
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_CHALLENGE_SEED_COLLISION_REJECTION_NOT_INPUT_ADMISSION"
+    },
+    "two_selector_collision_audit_contract_sha256": {
+      "const": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8"
+    },
+    "unclosed_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 5,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "scope",
+    "selectors",
+    "selector_matrix",
+    "explicit_seed_negative_cases",
+    "negative_case_count_per_selector",
+    "numeric_seed_collision_rejections",
+    "collision_values_tested",
+    "all_rejections_precede_godot",
+    "source_pin_count",
+    "runtime_invocations",
+    "godot_version",
+    "frozen_c11c_manifest_sha256",
+    "challenge_seed_domain_preflight_contract_sha256",
+    "two_selector_collision_audit_contract_sha256",
+    "runtime_seed_derivation_enabled",
+    "automatic_seed_generation",
+    "master_seed_adopted",
+    "seed_domains_complete_for_candidate_input",
+    "rejection_outcomes",
+    "unclosed_requirements",
+    "execution_boundary",
+    "audit_sha256"
+  ],
+  "title": "C11-D Canonical Challenge Selector Seed Collision Rejection Audit V1 Report",
+  "type": "object"
+}

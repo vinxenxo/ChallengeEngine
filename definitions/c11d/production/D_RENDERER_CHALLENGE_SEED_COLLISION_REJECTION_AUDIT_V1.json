@@ -1,0 +1,216 @@
+{
+  "experiment": {
+    "challenge_ids": [
+      "CHALLENGE_001",
+      "CHALLENGE_002",
+      "CHALLENGE_003",
+      "CHALLENGE_004",
+      "CHALLENGE_005",
+      "CHALLENGE_006",
+      "CHALLENGE_007",
+      "CHALLENGE_008",
+      "CHALLENGE_009"
+    ],
+    "collision_values_tested": [
+      12345,
+      840001
+    ],
+    "content_type": "challenges",
+    "expected_explicit_seed_negative_rejections": 90,
+    "expected_numeric_seed_collision_rejections": 18,
+    "expected_selector_count": 9,
+    "explicit_seed_negative_cases": [
+      "missing_gameplay_seed",
+      "null_gameplay_seed",
+      "string_gameplay_seed",
+      "boolean_gameplay_seed",
+      "zero_gameplay_seed",
+      "out_of_range_gameplay_seed",
+      "missing_music_seed",
+      "null_music_seed",
+      "automatic_seed_mode",
+      "master_seed_alias"
+    ],
+    "godot_invocations": 0,
+    "payload_materialized": false,
+    "receipt_files_written": false,
+    "rejection_boundary": "CANONICAL_D9_9_D9_10_REQUEST_PLANNING_BEFORE_GODOT_OR_PAYLOAD",
+    "request_input_persisted": false
+  },
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "baseline_approval": "MISSING",
+    "candidate_input_admissible": false,
+    "freeze_eligible": false,
+    "media_created": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "seed_domains_complete_for_candidate_input": false
+  },
+  "purpose": "Extend the accepted two-selector numeric seed-collision rejection evidence to the nine canonical Challenge selectors using the pinned D9.9 selector-resolution preflight and D9.10 isolation guard. No Godot, payload materialization or renderer input.",
+  "schema": "C11-D-D9-CHALLENGE-SEED-COLLISION-REJECTION-AUDIT-CONTRACT-V1",
+  "schema_version": "1.0",
+  "seed_policy": {
+    "automatic_seed_generation": false,
+    "collision_guard_message_contains": "Gameplay and music seed values must remain isolated",
+    "equal_numeric_values_across_domains": "REJECTED_FAIL_CLOSED",
+    "master_seed_adopted": false,
+    "required_fields": [
+      "seed",
+      "music_seed"
+    ],
+    "runtime_seed_derivation_enabled": false
+  },
+  "source_of_truth": {
+    "accepted_challenge_preflight_contract_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2.json",
+    "accepted_challenge_preflight_contract_sha256": "fc09a92e1f16afd4409a6a161385d1c3bca7925bb7e9d43249944fcc6d195799",
+    "accepted_challenge_preflight_scope": "9 canonical Challenge selectors; planning-only; visual payload seed sensitivity NOT_TESTED",
+    "accepted_two_selector_collision_audit_contract_sha256": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8",
+    "accepted_two_selector_collision_audit_schema_sha256": "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "source_pin_count": 27,
+  "source_pins": [
+    {
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "role": "CANONICAL_D4_GUI_CLI_PARITY_ADAPTER",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    {
+      "path": "challenges/CHALLENGE_001.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_001",
+      "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"
+    },
+    {
+      "path": "challenges/CHALLENGE_002.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_002",
+      "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160"
+    },
+    {
+      "path": "challenges/CHALLENGE_003.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_003",
+      "sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_004",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "path": "challenges/CHALLENGE_005.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_005",
+      "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30"
+    },
+    {
+      "path": "challenges/CHALLENGE_006.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_006",
+      "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694"
+    },
+    {
+      "path": "challenges/CHALLENGE_007.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_007",
+      "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61"
+    },
+    {
+      "path": "challenges/CHALLENGE_008.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_008",
+      "sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309"
+    },
+    {
+      "path": "challenges/CHALLENGE_009.json",
+      "role": "CANONICAL_CHALLENGE_DEFINITION_CHALLENGE_009",
+      "sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CANONICAL_D9_9_REQUEST_SCHEMA",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_SCHEMA_V1",
+      "sha256": "ba22ca15028c82bfafdaca4f4d10f08d4e554405f9869247bb2d32e28922575c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_CONTRACT_V1",
+      "sha256": "e51be5340d26896f28fc94ae33416a1c93fbbcd5dd27916b661edbebd7616d69"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2.json",
+      "role": "ACCEPTED_NINE_CHALLENGE_SEED_PREFLIGHT_CONTRACT_V2",
+      "sha256": "fc09a92e1f16afd4409a6a161385d1c3bca7925bb7e9d43249944fcc6d195799"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_REPORT_SCHEMA.json",
+      "role": "ACCEPTED_NINE_CHALLENGE_SEED_PREFLIGHT_REPORT_SCHEMA_V2",
+      "sha256": "2aac148bea46253312dfb84ee2b2e23c78893b43ba2bd3e518a3569e18ea9086"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_SCHEMA.json",
+      "role": "ACCEPTED_NINE_CHALLENGE_SEED_PREFLIGHT_SCHEMA_V2",
+      "sha256": "86dc601bd29e1eee4d9c123d77e9a133ccacc5f97ef0718ee27d115f0b3db695"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_SCHEMA_V1.json",
+      "role": "ACCEPTED_TWO_SELECTOR_COLLISION_AUDIT_SCHEMA_V1",
+      "sha256": "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_V1.json",
+      "role": "ACCEPTED_TWO_SELECTOR_COLLISION_AUDIT_CONTRACT_V1",
+      "sha256": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "role": "CANONICAL_DELIVERY_PROFILE_REGISTRY",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "IMMUTABLE_C11C_MANIFEST",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "role": "CANONICAL_D9_10_SEED_DOMAIN_ISOLATION_GUARD",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+      "role": "ACCEPTED_CROSS_TYPE_SEED_AUDIT_RUNNER_V1",
+      "sha256": "3c246134fd1a1a38bc0a6141c40449c3ca9a797abf3a64a37b0ecc80e06d3dec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_seed_domain_preflight_v2.py",
+      "role": "ACCEPTED_NINE_CHALLENGE_SEED_PREFLIGHT_RUNNER_V2",
+      "sha256": "5f7289532711a17ca83052af0fd3acbb966362473ee0de6a2c9f2a6386c26643"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "role": "CANONICAL_D9_10_PLANNING_AND_SEED_REJECTION_CHAIN",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_seed_domain_collision_audit.py",
+      "role": "ACCEPTED_TWO_SELECTOR_COLLISION_AUDIT_RUNNER_V1",
+      "sha256": "9a6c98bb3d9b68accde29496de1b96ea4305312b66489a70fb05abcb4b68f2c2"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CANONICAL_EDITORIAL_SELECTOR_RESOLVER",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CANONICAL_D9_9_UNIVERSAL_PLANNER",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    }
+  ],
+  "status": "READ_ONLY_CANONICAL_CHALLENGE_SELECTOR_COLLISION_REJECTION_AUDIT_NOT_INPUT_ADMISSION"
+}
