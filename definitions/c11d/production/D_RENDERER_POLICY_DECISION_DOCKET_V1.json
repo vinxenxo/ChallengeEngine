@@ -1,0 +1,1126 @@
+{
+    "schema_version":  "1.0.0",
+    "artifact_id":  "C11D_POLICY_DECISION_DOCKET_V1",
+    "status":  "PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED",
+    "created_utc":  "2026-10-26T21:43:38Z",
+    "purpose":  "Consolidate exact-hash-pinned C11-D policy proposals and unresolved decisions without approving policies, admitting candidate input, enabling the renderer, or changing C11-C.",
+    "source_pin_count":  198,
+    "source_pins":  [
+                        {
+                            "path":  "definitions/c11d/production/C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json",
+                            "sha256":  "a69fe9df9378d37fac084f6c053868cb8080d390870cff8b436627cd1d679cfd",
+                            "bytes":  953
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_CATALOG_IDENTITY_PROVENANCE_GOVERNANCE_POLICY_V1.json",
+                            "sha256":  "a35e0adc641532a2fe4df705a8cf8e58d9aedfa58b80548810734533bb6a8f21",
+                            "bytes":  1134
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json",
+                            "sha256":  "8f4ce1d99a38a6993e3653a0fb03fb0f8e373420245b509ffe61ccc6ca02399f",
+                            "bytes":  1358
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+                            "sha256":  "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504",
+                            "bytes":  4990
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json",
+                            "sha256":  "cf970424b1b079d80cda41085a700129e094e90c87e48b04122c5acdabebae16",
+                            "bytes":  1807
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_PRODUCTION_MATRIX_COVERAGE_POLICY_V1.json",
+                            "sha256":  "5542fc957a72316a8f29eaaa56447ffd8e0326da04d32a800522b46bfea88f81",
+                            "bytes":  1340
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_PRODUCTION_MATRIX_GOVERNANCE_POLICY_V1.json",
+                            "sha256":  "0d5915076047585b639c30d59f1901f3b641f7626afcf2755d9c08ef4fe26378",
+                            "bytes":  782
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json",
+                            "sha256":  "61d0a86ff16a49610ccc74e5f0e82fe54c01a6f948bbabae9735ea6951a4b056",
+                            "bytes":  7081
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+                            "sha256":  "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8",
+                            "bytes":  4224
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_SCHEMA_V1.json",
+                            "sha256":  "ad36c8f2b78fcc4f86a574b733f58cba5a4335156f6fe3882ef41dc4a4020205",
+                            "bytes":  6481
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_V1.json",
+                            "sha256":  "a3f480a76a526a67f77379191d82d1cb30876ae38b78b58ebefbd647b64529c8",
+                            "bytes":  41610
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json",
+                            "sha256":  "2ccfe916f35445f4543a61028c454a7ab886891aa4ab30b62445d12e73af8afd",
+                            "bytes":  13450
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
+                            "sha256":  "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420",
+                            "bytes":  9273
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+                            "sha256":  "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5",
+                            "bytes":  14874
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_SCHEMA_V1.json",
+                            "sha256":  "4c815b9dfe8ea47384944375d5226581fa98e652aff81a44181ccdf4f3220aaf",
+                            "bytes":  6030
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
+                            "sha256":  "429963458d6cbad3fc6a6ae8108ddd6e5578ad4fa4ee21a92d919f355184ac07",
+                            "bytes":  28303
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+                            "sha256":  "ba22ca15028c82bfafdaca4f4d10f08d4e554405f9869247bb2d32e28922575c",
+                            "bytes":  6671
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+                            "sha256":  "e51be5340d26896f28fc94ae33416a1c93fbbcd5dd27916b661edbebd7616d69",
+                            "bytes":  8410
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2.json",
+                            "sha256":  "fc09a92e1f16afd4409a6a161385d1c3bca7925bb7e9d43249944fcc6d195799",
+                            "bytes":  7285
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_REPORT_SCHEMA.json",
+                            "sha256":  "2aac148bea46253312dfb84ee2b2e23c78893b43ba2bd3e518a3569e18ea9086",
+                            "bytes":  11692
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_SCHEMA.json",
+                            "sha256":  "86dc601bd29e1eee4d9c123d77e9a133ccacc5f97ef0718ee27d115f0b3db695",
+                            "bytes":  4990
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "c6d7f0f6e3e6371ab911a6220cffcd44120f8b109f73aba9123c410a9181bdf2",
+                            "bytes":  1487
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6",
+                            "bytes":  7461
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CONTRACT_SCHEMA_V1.json",
+                            "sha256":  "a24948379e03762b8074b571801a3eb12f5ae006fcf4443ce4f4f7b9330cebae",
+                            "bytes":  8581
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CONTRACT_V1.json",
+                            "sha256":  "575717bb3f36b476c9742488c8cace622a217c8861e376d17c519d02c70534b7",
+                            "bytes":  22180
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_SCHEMA_V2_20261026.json",
+                            "sha256":  "9c41d4bdc64be321638e895ffe5e7ed21051b81d20b33d7059ab9e525738b79c",
+                            "bytes":  16004
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_V1_20261023.json",
+                            "sha256":  "a4684fdb7b3ea4b85f68b561d9aaa64981517f65530ba8a8787f820eb5e3960f",
+                            "bytes":  3177
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_EVIDENCE_V2_20261026.json",
+                            "sha256":  "c09e7beee55c3458e7f6d8778f090cb98ec12650a237787b72f6806ea8d3767b",
+                            "bytes":  16437
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_SCHEMA_V1.json",
+                            "sha256":  "d7b279c3225ceb431a434cbfbea606b248d710f766200c60adefbea544e6b8bc",
+                            "bytes":  25752
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+                            "sha256":  "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+                            "bytes":  32868
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "9715a6d3580f86307f2fb2c2ce348555256632c66d1c6f68d54db7af199486a2",
+                            "bytes":  24269
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "44c1ec6507988023b7cd20cdcc8e0e722c99af610d9be02a6d658ce9b07e9f57",
+                            "bytes":  40832
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_SCHEMA_V1.json",
+                            "sha256":  "bb32a0631216c8b557ee48f85ff06dbf1588c125606b917acff22930aa6ce50e",
+                            "bytes":  11641
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+                            "sha256":  "1ec59d7a9257cfc2477fc37efe8cb2f04d9807a7f9986d96afc2f2ddd9b4f7af",
+                            "bytes":  25091
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "503d0cbe4af4c5db04161d8a54e96f41b2dd8b503d5190169d5f208f8a44937a",
+                            "bytes":  28080
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_PROPOSAL_V1.json",
+                            "sha256":  "f3afe4d7d08791c7634c9851500ca551438870babc195db1908440b93e740692",
+                            "bytes":  44483
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_SCHEMA_V1.json",
+                            "sha256":  "878500113033eda7dec07f87894b4541cf8f44435407ce0c962caecb7d05296d",
+                            "bytes":  10224
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+                            "sha256":  "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241",
+                            "bytes":  7166
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
+                            "sha256":  "8608c91c8a66b65b87867282c1a345ab79cbc7837b176ee058e6cb303eeb5d6b",
+                            "bytes":  9848
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
+                            "sha256":  "ab21e8290a31a238ba9ca4ae8ec3f88ed1e0a7f06cd96a3a26ef65d361e1d1cc",
+                            "bytes":  12213
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_SCHEMA_V1.json",
+                            "sha256":  "98503bb96f2ff0b89ab65d31914e8369076490974e468ee706ec19cda24edd40",
+                            "bytes":  13629
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
+                            "sha256":  "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f",
+                            "bytes":  19000
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "81da414a3bc3e607bce3c624c16bf7d3ff9a126bbd2da4382c24184561ab5c0a",
+                            "bytes":  17288
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+                            "sha256":  "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229",
+                            "bytes":  4923
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
+                            "sha256":  "359728eeb0d675ed5957ca7a9d53d1955eb31523fb29b81749faf20e051a74c2",
+                            "bytes":  11486
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+                            "sha256":  "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+                            "bytes":  8591
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "e27b679968da67c368882b915f2d7993472331031c24a783fb039021d7c5d13e",
+                            "bytes":  6121
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+                            "sha256":  "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+                            "bytes":  8376
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_SCHEMA_V1.json",
+                            "sha256":  "c203ba78da64ad78279e02e2d23fecc3dd28098a9d6c172f326ee63267d7cb61",
+                            "bytes":  14938
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json",
+                            "sha256":  "de44f159c95f31d034fe8356f650b5be320cb5fb1555197073d07875cf0cf1f9",
+                            "bytes":  11736
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_INPUT_SCHEMA_V1.json",
+                            "sha256":  "16e0bf89808cef0e6da2dc253af8ce24c5f7d4bc854e54ed33338dc8c59e1d50",
+                            "bytes":  2781
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_SCHEMA_V1.json",
+                            "sha256":  "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4",
+                            "bytes":  5522
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_V1.json",
+                            "sha256":  "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8",
+                            "bytes":  7971
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CONTRACT_SCHEMA_V1.json",
+                            "sha256":  "d1e9750ae6cadc81addcc09560cc52b75c13972fa011c8d2d55a4d62bfbeb64e",
+                            "bytes":  5195
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CONTRACT_V1.json",
+                            "sha256":  "d596a28c479d97e2b0713a41c5fbbbe2d8360ab2ed0076a7d5a3f926e5b1456f",
+                            "bytes":  5593
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_SCHEMA_V1.json",
+                            "sha256":  "93597c33ae79d7b73ecc50281b48cf928bba5cad0e9655932984f5d0a4d2dafb",
+                            "bytes":  12680
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_SCHEMA_V1.json",
+                            "sha256":  "b552e6a9291ed1e9dc9d84dc17d2ee08e3c2d1a58d2ce0251863e492f4ad12f8",
+                            "bytes":  17053
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_V1.json",
+                            "sha256":  "33443e5bfc48f9d6a23c731af5d182e8032445715929130eba4d20837f4276e6",
+                            "bytes":  10770
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_SCHEMA_V1.json",
+                            "sha256":  "72f93aba4a244d37846bc2b872fd454d42cbd994e548f04cf37091cbe8e8b6ff",
+                            "bytes":  4164
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRESENTATION_PROFILE_REFERENCE_REGISTRY_V1.json",
+                            "sha256":  "e621be7e36222e6fcf748f03d50a05aefd283a3014ac7bf0d5ddb4e675051646",
+                            "bytes":  1870
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_CONTRACT_SCHEMA_V1.json",
+                            "sha256":  "82841bffd9b1bdf935c905e6f0e04113b86acc37b4657fa0e80c1c6981c194e7",
+                            "bytes":  4357
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_CONTRACT_V1.json",
+                            "sha256":  "83cba31482be3bb590283b13040e322a0531810639a279e696c1a9fc3fd1e86f",
+                            "bytes":  4271
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_STATE_SCHEMA_V1.json",
+                            "sha256":  "02ff6ecdb57159016e97e01c5c6364af4c49e0d016e1c0ac866f145e85121003",
+                            "bytes":  8290
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_VIEW_MODEL_CONTRACT_SCHEMA_V1.json",
+                            "sha256":  "eb1378b5c2ea7a6ac46f1c8a0e21a2b74b9584fb136d63831b6a3304a7bcf3ba",
+                            "bytes":  5025
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_VIEW_MODEL_CONTRACT_V1.json",
+                            "sha256":  "cc5bc42b46b1d8cf9031bbf43feec6ebd58de6546f430db83a43b1bb48beb34b",
+                            "bytes":  13887
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_VIEW_MODEL_SCHEMA_V1.json",
+                            "sha256":  "48e286e99f582c195ae636d5280e2679ec226cdb82b7b88767d2df9c83632c5d",
+                            "bytes":  7446
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json",
+                            "sha256":  "7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8",
+                            "bytes":  7478
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+                            "sha256":  "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646",
+                            "bytes":  7955
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "1744e2f748c1ce196e8655c85299bef16f475c4a71b45d5db5b6838418fa4b37",
+                            "bytes":  6422
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json",
+                            "sha256":  "96ee3cffe8223e24673e7eb90c93308d45bb3a350961b2afc5eacbe66b54fbf8",
+                            "bytes":  6802
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "531aff5760fb8dc36af65be83d361b6bdd0a3f01e8d0370e2595618d28aa5752",
+                            "bytes":  8704
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+                            "bytes":  7457
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "df2f2af3e186ac489937e526e30c9a03eb1ad52a3b41397581672c7e26cffcbb",
+                            "bytes":  12690
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+                            "bytes":  9507
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "8a0e0d457022d483b6a08047c7a3e19e5c52d6c78d6d5a6d29626bf39ea00c64",
+                            "bytes":  15737
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+                            "bytes":  9440
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIVERSAL_EDITORIAL_FIELD_VISIBILITY_POLICY_PROPOSAL_SCHEMA_V1.json",
+                            "sha256":  "f17b39aa0c405d6244b3d1a3b765ee250a1dc8eba86fe8d7eced2c9cfb629bc9",
+                            "bytes":  13168
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIVERSAL_EDITORIAL_FIELD_VISIBILITY_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "8ccbb98f63f6e6041cf047ccff8cda2c0b4c4e1c7cb772017f7cb2851a0d99fe",
+                            "bytes":  16796
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+                            "sha256":  "e27e72a058e361087328fe8d117688b3ee8b711ba546607e5cfc9b42e9b5c485",
+                            "bytes":  6236
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+                            "sha256":  "5967a38c227152849a8b2f30ed3dfcea70aac57eca178314fc4a7ee969f17e8c",
+                            "bytes":  20162
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2.json",
+                            "sha256":  "0b4bb8a15443c1fac0f4a46a3e35bbcd73d375c31b85c88e678004312116909f",
+                            "bytes":  18563
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2_REPORT_SCHEMA.json",
+                            "sha256":  "f5fd9bc394d51a06ad28abb76409d8645b636f34ff8bf9c5154d02f8ca957354",
+                            "bytes":  11046
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2_SCHEMA.json",
+                            "sha256":  "1e2bec789d0fac3ef7f7cd47849e4a4abd09508c32bb4f4a1e8c9268049ca28e",
+                            "bytes":  9289
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_RUNTIME_CHECKPOINT_20261017.md",
+                            "sha256":  "51133c9cc634e2181094d0390d205384cc3807aaf60543d007fea527cb9430a6",
+                            "bytes":  3316
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_POWERSHELL_EXECUTION_POLICY_20261016.md",
+                            "sha256":  "b9f25b2afff0aa6ce933486e70e0f1b2e35438f35895c760685099038ede938b",
+                            "bytes":  3148
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017.md",
+                            "sha256":  "d34c0c5180ee303479fb0ee851402ed8294dbd1b8e0ad7b6da62ed8d567d777c",
+                            "bytes":  6911
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017_V2.md",
+                            "sha256":  "943b0292c5c6866f215fb74b348f307f78ecb2fe8e767b2a0d08a31df438e495",
+                            "bytes":  4001
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017_V3.md",
+                            "sha256":  "75eb55dbebc9507a2899e65bc1d4386400963d6398809592508e6e38768ae0d6",
+                            "bytes":  3239
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_SEED_DOMAIN_NEXT_INCREMENT_PLAN_20261017_V4.md",
+                            "sha256":  "99e7c7c3c52761ad2a0d0ba6225e1cfb05aacb0d55dcae84e3e6c360e3996962",
+                            "bytes":  3837
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_CHECKPOINT_20261022_V1.md",
+                            "sha256":  "b64a2d0d0be6dc94d4d6aa1608cbac5134670fc72ca29503223c2e582cac929f",
+                            "bytes":  3089
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_DECISION_V1_20261023.md",
+                            "sha256":  "a52d5d8a4564cc96d47633c5527248bdc102152da8ce13ad699575fb5b677a08",
+                            "bytes":  1733
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_DECISION_V2_20261026.md",
+                            "sha256":  "22715d2139dd5a1fd7d747d74cbb7eab9c87f37c3d8f074c5c4a69da4db5aa59",
+                            "bytes":  6604
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_REVIEW_20261026_V1.md",
+                            "sha256":  "fe78c6e5bb6f1888fd1314741f05106044cd71b3edae74b2f789e4c2196881ad",
+                            "bytes":  6361
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_VERSION_GUARD_CORRECTION_RECORD_V1_20261023.md",
+                            "sha256":  "5e1d51cd68fcd64ddbab9f3bbd37521fa378e53df750f4356ed0bfdcbb7eccc7",
+                            "bytes":  1447
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_CHECKPOINT_20261021_V1.md",
+                            "sha256":  "a6f590095d9befad1a82a566cb30e6326b24786c2c93ebdf736149bbd2d5ca7a",
+                            "bytes":  3273
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_CHECKPOINT_20261021_V1.md",
+                            "sha256":  "e86acd16e6dedee24f71ef9f8f3608a61476af9f83f54cac3734273b7a1a1c23",
+                            "bytes":  3032
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_CHECKPOINT_20261021_V1.md",
+                            "sha256":  "5b61d989052752083803d4390e47a5b2b58fe8452c502f88143e4d91e479e095",
+                            "bytes":  3511
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_PROPOSAL_CHECKPOINT_20261021_V1.md",
+                            "sha256":  "c79264eb1eeadb98bae025fc3fa7351c408dc82efb37f82587deee41b7d042d0",
+                            "bytes":  3663
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2B_SOURCE_COMPOSITION_HARNESS_CONTROL_FLOW_FIX_V1_20261023.md",
+                            "sha256":  "b0adb042ce3f822b0f2895dd64ffe5c3755fa442f8b96e6d96acd8d23002df02",
+                            "bytes":  1104
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_V2C_LEGACY_VIDEO_PROFILE_TIMEBASE_RESOLUTION_FIX_20261017_V1.md",
+                            "sha256":  "c426307095cdd30568bd4bd28965c422510637f512633ad7e68f89da80dd7dbe",
+                            "bytes":  2604
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2_CHECKPOINT_20261017.md",
+                            "sha256":  "21f591ba7f81512c0df04e9c74dfc9e647a398ca2c67d9c388baa7384c274c70",
+                            "bytes":  4246
+                        },
+                        {
+                            "path":  "docs/current/d/C11D_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2_RUNTIME_CHECKPOINT_20261017.md",
+                            "sha256":  "9a5f47bbda0b20644e0c20551885513f98405c8f2512649daea0bde3c3fcb97c",
+                            "bytes":  2220
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CANDIDATE_BINDING_PREVIEW_CHECKPOINT_V1.md",
+                            "sha256":  "864aca366ac7860c8ea7c0f91e8fbbfde29ae2a9cb39286dc0b28a8723bc4e18",
+                            "bytes":  5679
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_CHECKPOINT_V1.md",
+                            "sha256":  "f74a6946988d8ba99044a0e14e0917601422cfb02e45fc31a9dddfabc71e1933",
+                            "bytes":  8793
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md",
+                            "sha256":  "7def37e37d207d778a7bd3d59917b0969793f55684e67cc52b243c83ac174a90",
+                            "bytes":  9238
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_CHECKPOINT_V1.md",
+                            "sha256":  "319b9bbd809ecef5f24f941f80bcd0a316b9cdb93928d714f919ca4d03a6e1cb",
+                            "bytes":  15163
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
+                            "sha256":  "a9f9471fbea539ae2a360197d5ade3619eaeb3a375e0a36b7a064a6e22ebd784",
+                            "bytes":  6320
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_CHECKPOINT.md",
+                            "sha256":  "035c69eaaf7ace87b2e57dc7027094827f6466105e290e60a64424d88722d9cd",
+                            "bytes":  3425
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md",
+                            "sha256":  "2439eb564adc5f3ed1abb765dab7dc1ee7f4d8191105525f5c48290a24b13254",
+                            "bytes":  4812
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_CHECKPOINT_V1.md",
+                            "sha256":  "5c0b50933b2650cb21980c22b9fecb3671bf7282dcc2b12a506f6352b32e8afd",
+                            "bytes":  3153
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md",
+                            "sha256":  "a4b540dce0797cf47bb3b6bc9405a9aedf792bfbb60ea8149322eecaac60a489",
+                            "bytes":  5560
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md",
+                            "sha256":  "db2ed4a6565315e1446bec153b34bbe2fc6fc28e8083ecbee22e0dc5856312c3",
+                            "bytes":  4606
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_CHECKPOINT_V1.md",
+                            "sha256":  "0eff10de60f321dfb4d831da660016c457261379db1f52b7da3fc0df909260fd",
+                            "bytes":  3766
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_CHECKPOINT_V1.md",
+                            "sha256":  "7e401a7b43b4f2aa22882a806a7f2e4f1e8a0fb7fe071f4f56dda5e550261781",
+                            "bytes":  3910
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md",
+                            "sha256":  "24553a6d7d2a9edc48b99d48f9ba2ed3ca95b894888c53c30f6e2546463843d3",
+                            "bytes":  16602
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_CHECKPOINT.md",
+                            "sha256":  "4fbe1c45647173e4dffa778b63b94a846f3c692684a9a6e47f6b27c0f5ace6bf",
+                            "bytes":  3511
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md",
+                            "sha256":  "51c545fc31ce97753eef28088d67fa3bd52a455abda246ac13cd1523b490da1c",
+                            "bytes":  4818
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+                            "sha256":  "5c5e1979f5b395e1a95437fd579bc24fc21409ae3682768571e36b300acbc3dc",
+                            "bytes":  6488
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
+                            "sha256":  "143e956af6585120b42beee8b19d9cef45583ecec49fcb016acd6851e7bc46c6",
+                            "bytes":  7191
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md",
+                            "sha256":  "f9c90266a1ea1345894423253b6d5869b49dfaf436277de2a10fa7229ad8c35e",
+                            "bytes":  7183
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CHECKPOINT_V1.md",
+                            "sha256":  "9bd72da83289506b7ff02970b4c798ad472dc6d03675211e023cb91ab73102f1",
+                            "bytes":  2256
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CHECKPOINT_V1.md",
+                            "sha256":  "2c66afa77ebaf167dc04895daee6f1c9009e7d0021000293a3e7ef0471527475",
+                            "bytes":  2433
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_CHECKPOINT_V1.md",
+                            "sha256":  "5a68ec122af531b2837b589bcd26930e678be996b03829d787df74da8dd7e075",
+                            "bytes":  4006
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_VIEW_MODEL_CHECKPOINT_V1.md",
+                            "sha256":  "e1dfee648c33ee92c4da136d3620ae0fc5de4647dcf5fcadfbaa8637eee02ec7",
+                            "bytes":  6297
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_TEMPORAL_BOUND_PREVIEW_CHECKPOINT_V1.md",
+                            "sha256":  "07036cacc4cc39ddcf0ed2734d98a6d944dd6202be784e77b7e323b86c230f17",
+                            "bytes":  5180
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_CHECKPOINT_V1.md",
+                            "sha256":  "34907364d9c4329979a865e8a10b7ea6332649b41ac07af2f46c4c3e4081b80f",
+                            "bytes":  6492
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_UNIVERSAL_EDITORIAL_FIELD_VISIBILITY_POLICY_PROPOSAL_CHECKPOINT_V1.md",
+                            "sha256":  "715772d708f9cbc410713810449b524bb839cbd6829ba1af9358eb5d3e59feda",
+                            "bytes":  3541
+                        },
+                        {
+                            "path":  "docs/current/d/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
+                            "sha256":  "0fa7afe6560871bb51fe52392873e263d31be416ec3cd4b372d3bccdb9ca2d81",
+                            "bytes":  6938
+                        },
+                        {
+                            "path":  "docs/current/d/D1.1_CHALLENGE_VISUAL_EDITORIAL_MAPPING_V1.0.md",
+                            "sha256":  "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+                            "bytes":  2260
+                        },
+                        {
+                            "path":  "docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md",
+                            "sha256":  "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+                            "bytes":  1797
+                        },
+                        {
+                            "path":  "docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md",
+                            "sha256":  "e2ca811e2ea454f519208845d4ae4a945b72cad569050474e9ba42e7cc357646",
+                            "bytes":  10822
+                        },
+                        {
+                            "path":  "docs/current/d/D9.8_UNIVERSAL_EDITORIAL_MODEL_CHECKPOINT.md",
+                            "sha256":  "5220ec34357fc489aca61a7ce4466456fabcc8fa259c99f9ab01a3bc6d9acc93",
+                            "bytes":  6489
+                        },
+                        {
+                            "path":  "docs/current/d/D9_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_CHECKPOINT.md",
+                            "sha256":  "3486ae59c2f5931839f41f81da3875ff3e37584dded78b849352cbf1ae527220",
+                            "bytes":  2728
+                        },
+                        {
+                            "path":  "docs/current/d/D9_UNIFIED_DELIVERY_TIMEBASE_POLICY_CHECKPOINT.md",
+                            "sha256":  "2eed6d837724ebdf6f1e288a5db844d330d5b7875b15d751bef72707876bb15d",
+                            "bytes":  3480
+                        },
+                        {
+                            "path":  "docs/current/d/D9_UNIFIED_PRESENTATION_REGION_POLICY_CHECKPOINT.md",
+                            "sha256":  "320afdd6d289a35598970cd859bb5019f076daa0ebbf4b1584dbf79a90d519d4",
+                            "bytes":  2786
+                        },
+                        {
+                            "path":  "docs/current/d/D9_UNIVERSAL_EDITORIAL_MODEL_V1.md",
+                            "sha256":  "9493ed623774d127ea086248529d74ff062f6c514be1e39b68007f3ff74cfd5a",
+                            "bytes":  11465
+                        },
+                        {
+                            "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                            "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                            "bytes":  796318
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_candidate_identity_inventory.py",
+                            "sha256":  "a0136498670045bede6f8bf68a337f5699d14d45c3d6088f64d4e09a6bae26ef",
+                            "bytes":  15478
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_candidate_io_gap_audit.py",
+                            "sha256":  "e056d45c02c00a9667b83335f40406064a6a994500ef8a51881db77e815d5ba1",
+                            "bytes":  13213
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+                            "sha256":  "3c246134fd1a1a38bc0a6141c40449c3ca9a797abf3a64a37b0ecc80e06d3dec",
+                            "bytes":  29285
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_challenge_seed_domain_preflight_v2.py",
+                            "sha256":  "5f7289532711a17ca83052af0fd3acbb966362473ee0de6a2c9f2a6386c26643",
+                            "bytes":  28235
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_challenge_temporal_alignment_policy.py",
+                            "sha256":  "42d3f94516019e9912d8ed29a3d1b47bef9d316080d828e0de1560395b371be2",
+                            "bytes":  17776
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_delivery_timebase_projection.py",
+                            "sha256":  "c111d171ba64b65c5629a0c33fe4a77e72703e576be4839f4842f271af43c24e",
+                            "bytes":  21223
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_editorial_field_consumption_audit.py",
+                            "sha256":  "7001098cec9239027784abfc20ed17024f5bb45993b20f308e1debfb7fd5b85a",
+                            "bytes":  21469
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_editorial_field_routing_visibility_reconciliation.py",
+                            "sha256":  "ac490fd9ab5a6794ff673c8af71eac39ccefa1884baaa84cd3c96a888f1b5e7d",
+                            "bytes":  19885
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_editorial_field_window_proposal.py",
+                            "sha256":  "4b8971867a884014342c0557d77728965e3c704f481bbad213b6e6deb41c2495",
+                            "bytes":  22372
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
+                            "sha256":  "007999019a1d1e7df854ab6f70421a544625168cb77ae15d34db1862ba74d529",
+                            "bytes":  28402
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_loop_drill_editorial_field_windows.py",
+                            "sha256":  "e12d73fa229df37bf9de02dbd2e077eea4ec8eb7c959c8d08d6f37cfe6daac06",
+                            "bytes":  12532
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_request_scoped_editorial_value_carrier.py",
+                            "sha256":  "77d7af66cecff878de925bdcc63b1b12db812f32928a8ae873ee404199dafb17",
+                            "bytes":  40262
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_seed_domain_collision_audit.py",
+                            "sha256":  "9a6c98bb3d9b68accde29496de1b96ea4305312b66489a70fb05abcb4b68f2c2",
+                            "bytes":  15955
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_shared_editorial_presentation_context_binding.py",
+                            "sha256":  "29aa9da37c1abec62bbe157a295ae0d1c43fef8ac7a3b7cfb2c166f30f750bec",
+                            "bytes":  22504
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_shared_editorial_presentation_inheritance.py",
+                            "sha256":  "ccdad0e3e013b7db1c8cba5b0dee865617be10873245cad5a52dbd200368a797",
+                            "bytes":  17186
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+                            "sha256":  "5e7e210b257f231a1c3f3723f9340b6c9a12b1bf1087f86e986ce72cabbcdcb3",
+                            "bytes":  23451
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_temporal_schedule.py",
+                            "sha256":  "04b85a077f06d6ef9ffc7569d3fda0a92471b9ee5e1d6e57d3b50dbf6a6247cd",
+                            "bytes":  15303
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_unified_audio_music_delivery_policy.py",
+                            "sha256":  "ac605f5b04a68ca1533ce33460f4449bb361d3c674d9424e881e330dd4e22730",
+                            "bytes":  13011
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_unified_delivery_timebase_policy.py",
+                            "sha256":  "c39733c2454a89c64a4480b06fb617e74555ae51f2fd90a5890bf1e65b1f355c",
+                            "bytes":  14846
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_unified_presentation_region_policy.py",
+                            "sha256":  "d31267226c72f003dc2b24a0737bb7adb424720e9e414819656154b9a26f06ae",
+                            "bytes":  14844
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_universal_editorial_field_visibility_policy_proposal.py",
+                            "sha256":  "fb949260a6c68b83f40751a2682caa9807c65e6aca2c0e9d02b38b478c6e3d18",
+                            "bytes":  6950
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+                            "sha256":  "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2",
+                            "bytes":  23985
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_visual_loop_seed_domain_audit_v2.py",
+                            "sha256":  "3adb56e627e9723ee9a739a6888dda90973f4b7376abcdd72d0773f5fce5853d",
+                            "bytes":  41042
+                        },
+                        {
+                            "path":  "tools/c11d/d9/editorial_render_bridge.py",
+                            "sha256":  "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+                            "bytes":  10868
+                        },
+                        {
+                            "path":  "tools/c11d/d9/shared_production_context_gui_editorial_draft.py",
+                            "sha256":  "686be621854b448781f61d8d53229af4f10b59db72c6e6901a4f5d0e5ca6ff7e",
+                            "bytes":  30241
+                        },
+                        {
+                            "path":  "tools/c11d/d9/shared_production_context_gui_editorial_view_model.py",
+                            "sha256":  "27124d46b687a51f44d88f856e898710a1c3459e2826deabbbfc5d0cbe16f297",
+                            "bytes":  23962
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_candidate_identity_inventory.py",
+                            "sha256":  "19f3f8677d3d5c059082b79ee414d81a4259a1f90383603381d505946ce75d07",
+                            "bytes":  8976
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_candidate_io_contract.py",
+                            "sha256":  "d39f61148c7a4e0238f4b51ee27060c16ac944fe7c7a4c492632eebbccf4d3eb",
+                            "bytes":  21605
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
+                            "sha256":  "9f318f7143c725b0d2885a588f4429402b61936d2655e2f81d68a2a11c193987",
+                            "bytes":  9703
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
+                            "sha256":  "d540bbf4a8e7ecfd7ce194e015149acbd0354563c4cea750fdbfb0167b69447c",
+                            "bytes":  7981
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_seed_domain_preflight_v2.py",
+                            "sha256":  "aee3d6ffd6e4dbba3ac499ae0771c483a38b1b0026dadd0e9eb944d2cdb7cd79",
+                            "bytes":  8351
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_temporal_alignment_policy.py",
+                            "sha256":  "d6da23fe92d66c12ccdcb5a219685c7ffe987af9047852615dca805a51cdc7df",
+                            "bytes":  10315
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_allowlisted_coordinate_source_composition_static.py",
+                            "sha256":  "37317cd3462e555afba5c883aef97e6632ec9387d099fd33c24e4ab1d0c14c14",
+                            "bytes":  17327
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_decision_record_v1.py",
+                            "sha256":  "ae4d30f25ff5988fd2a18c5aa7caabf6544eea4930d1b687a54d151b73d00d56",
+                            "bytes":  20561
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_proposal_v1.py",
+                            "sha256":  "70b869259778e3c2289782b985b7f1c89c63ded8d0130ead06d34bf28aa55e89",
+                            "bytes":  31626
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_field_region_visibility_decision_record_v1.py",
+                            "sha256":  "c35d3a44c0b998235ad17b2ad403892a1e6c95e0bffaeb0a3d075f4ff8258039",
+                            "bytes":  22315
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_field_region_visibility_proposal_v1.py",
+                            "sha256":  "e3c9b47e075d14145117b3c5f325681e37c01e3504a2fabc0f7e5133c13458de",
+                            "bytes":  25878
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_source_composition_runtime_evidence_v2.py",
+                            "sha256":  "97173fef3d8f55086d0b090cb5366db9e76442473147208c8603fc659770f432",
+                            "bytes":  22813
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_delivery_timebase_projection.py",
+                            "sha256":  "9cfe9d5e36a5c6dbb556074bc8a1389319756ef0895371fb92d3592d08d819c6",
+                            "bytes":  9243
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_editorial_field_consumption_audit.py",
+                            "sha256":  "8b61b05905e2e63bde32e24631a3f8330c1f490fc221b3a9d74bd4c807aca6c4",
+                            "bytes":  4776
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_editorial_field_routing_visibility_reconciliation.py",
+                            "sha256":  "1f29f4aa47361df410a7a3d7eafb31d438e6dcf0a31cd4a3ad67c7cfd7334b75",
+                            "bytes":  7493
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_editorial_field_window_proposal.py",
+                            "sha256":  "9f4a6a9bab432482dc2fd94f432f38a61ce1c5eab5f900856cbd5081421a93e8",
+                            "bytes":  11052
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_editorial_review_manifest.py",
+                            "sha256":  "0456a2119eb3aee3f7c033169a4a1ff48b414721c0fc81fcee9cee79324c7e5f",
+                            "bytes":  14064
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_loop_drill_editorial_field_windows.py",
+                            "sha256":  "157b57d51dab8e9586a0b7a8000ad9db95fe25c60ae534892a817299c0eb1e33",
+                            "bytes":  7981
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_request_scoped_editorial_value_carrier.py",
+                            "sha256":  "abf915d7032138c50b1e6023d82533565985ce4eab71242806310be9ef12dcb0",
+                            "bytes":  13986
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_seed_domain_collision_audit.py",
+                            "sha256":  "1d2d7f25a7bba80d77474783c1ea31403163bcd2740b36980f97d757c9de779d",
+                            "bytes":  4239
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_shared_editorial_presentation_context_binding.py",
+                            "sha256":  "e753c068c9535cd6e1ead7a7d0f823971be5571b9f8c5b7d561f61e5d33e72d9",
+                            "bytes":  11362
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_shared_editorial_presentation_inheritance.py",
+                            "sha256":  "8f92004d563407c9d47377649a9424e0eb25f13fcd4d0d503876e5cd794c5baa",
+                            "bytes":  6901
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_temporal_bound_preview.py",
+                            "sha256":  "9ef4d4fd813315a4c1c45265f5debd8efcc75a4dcc9434e533e221e6900d322c",
+                            "bytes":  11718
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_temporal_schedule.py",
+                            "sha256":  "77f317e14ec5ea1c8e09dc494741e9f1aad4fa25c7a25beffae4fe511a13e20b",
+                            "bytes":  8734
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_unified_audio_music_delivery_policy.py",
+                            "sha256":  "094baf3242c77eff32b0f9b45e9955336b3938f4c6bf795b92d9743975914746",
+                            "bytes":  6553
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_unified_delivery_timebase_policy.py",
+                            "sha256":  "f2f273532e71bf5a1901a35f4914fa1aee1ea326e501828946e2b479152fb0e7",
+                            "bytes":  6237
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_unified_presentation_region_policy.py",
+                            "sha256":  "b6f1d2c07c528fdb8594182fceb748f8ea0ba0baab06553d882a96f0b45f25dc",
+                            "bytes":  7943
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_universal_editorial_field_visibility_policy_proposal.py",
+                            "sha256":  "29339f4834cac69e10443cd252470a2500e844ad68fec0dd58eaac0badd957ce",
+                            "bytes":  9004
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+                            "sha256":  "9c7366db6fe5dfe14a494f0c12c01408302764ef2d086c4f44a1ab77ddf17054",
+                            "bytes":  11639
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_d_renderer_visual_loop_seed_domain_audit_v2.py",
+                            "sha256":  "0586d5b23947e67b56e5b0d17874e0433a916d1358c74dbf279096f3c4d59529",
+                            "bytes":  11877
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_editorial_render_bridge.py",
+                            "sha256":  "4db24104b7f6c8faf90cc0a5e7357c0553108cd86ae925c4ea312620fcee49a5",
+                            "bytes":  15448
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_shared_production_context_gui_editorial_draft.py",
+                            "sha256":  "563b101f11dd31230e3fed81f6f359c24354abbf5ec100f44195afb6bd715fa5",
+                            "bytes":  12488
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_shared_production_context_gui_editorial_view_model.py",
+                            "sha256":  "02a9f78c056979aca95852ae5c632211fbb5ff3964fdfee9336e5c94079256bc",
+                            "bytes":  12628
+                        },
+                        {
+                            "path":  "tools/c11d/d9/test_universal_editorial_model.py",
+                            "sha256":  "0b9c34d793af5aca2a164f89cb63d300612e9fde433b161d2e3ef0a812a45a72",
+                            "bytes":  9182
+                        },
+                        {
+                            "path":  "tools/c11d/d9/universal_editorial_model.py",
+                            "sha256":  "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+                            "bytes":  26574
+                        }
+                    ],
+    "editorial_readiness":  {
+                                "editorial_field_instances":  14,
+                                "candidate_window_rules":  11,
+                                "evaluated_windows":  0,
+                                "universal_editorial_policy_approved":  false,
+                                "consumer_authorized":  false
+                            },
+    "decisions":  [
+                      {
+                          "id":  "EDITORIAL_VISIBILITY_WINDOWS",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Review the pinned proposal\u0027s 11 candidate half-open window rules for 14 editorial field instances. The prior proposal runner evaluated zero windows.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "EDITORIAL_FIELD_CONSUMPTION",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Decide whether and how every declared editorial field is consumed by the visual presentation layer. The prior review reported zero of 14 fields visually consumed.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "LANGUAGE_FIELD_SEMANTICS",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Review the proposed metadata-only language behavior. This docket does not authorize rendering language as visible text.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "PRESENTATION_REGIONS_AND_GEOMETRY",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Review shared presentation-region proposals, including shared header/footer behavior and the Challenge overlay. Coordinate projection and region geometry remain unresolved.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "LOOP_DRILL_DELIVERY_TIMEBASE",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Review the proposed Loop and Drill identity timebase behavior for the fixed 30 FPS fixtures. This does not certify arbitrary inputs.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "CHALLENGE_DELIVERY_TIMEBASE",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Review the proposed Challenge source-to-delivery timebase and no-interpolation behavior. winning_frame remains the sole timing truth; close_calls is only a count.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "CHALLENGE_008_009_DURATION_CONFLICT",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Resolve the declared 11-second duration versus 12-second phase-sum conflict for CHALLENGE_008 and CHALLENGE_009 through an explicit shared temporal authority. No value is selected here.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "COORDINATE_PROJECTION_AND_VISIBILITY_CONSUMPTION",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Keep coordinate projection, visual sampling, region geometry and visibility-window consumption unresolved until explicit source-field policies exist.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "AUDIO_MUX_AND_DELIVERY_QA",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Review audio, mux, delivery QA and other unimplemented requirements. Their inclusion in this docket does not imply that implementations exist.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      },
+                      {
+                          "id":  "CANDIDATE_ADMISSION_AND_RENDER_AUTHORIZATION",
+                          "status":  "PENDING_OPERATOR_DECISION",
+                          "candidate_summary":  "Track arbitrary candidate-input materialization, candidate admission, renderer baseline approval/freeze and separately authorized gates. This docket grants none of them.",
+                          "disposition":  null,
+                          "operator":  null,
+                          "decided_utc":  null,
+                          "rationale":  null
+                      }
+                  ],
+    "locks":  {
+                  "renderer":  "OFF",
+                  "media_created":  false,
+                  "candidate_input_admissible":  false,
+                  "seed_domains_complete_for_candidate_input":  false,
+                  "automatic_seed_generation":  false,
+                  "master_seed":  "NOT_ADOPTED",
+                  "approved_bindings":  0,
+                  "approved_custom_data_bindings":  0,
+                  "approved_renderer_projection_bindings":  0,
+                  "D4_8":  "BLOCKED",
+                  "D9_10":  "PREPARE_ONLY",
+                  "D9_14":  "BLOCKED",
+                  "D9_16":  "BLOCKED",
+                  "D9_17":  "BLOCKED_NO_GO",
+                  "D10":  "BLOCKED_FOR_PROMOTION",
+                  "baseline_approval":  "MISSING",
+                  "freeze_eligible":  false,
+                  "release_authority":  "NONE"
+              },
+    "non_goals":  [
+                      "No policy is accepted or approved by this artifact.",
+                      "No source-to-region, coordinate, visibility, sampling, audio or timebase mapping is silently adopted.",
+                      "The CHALLENGE_008/009 11-second versus 12-second conflict is not resolved here.",
+                      "No renderer is implemented or enabled, and no media is created.",
+                      "The frozen C11-C baseline and manifest remain immutable."
+                  ]
+}

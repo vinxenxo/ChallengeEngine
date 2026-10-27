@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Editorial Payload Provenance Join Contract V1",
+  "type": "object",
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "runtime_scope",
+    "source_pin_count",
+    "source_pins",
+    "editorial_field_cardinality",
+    "expected_payload_observations",
+    "challenge_phase_namespace",
+    "runtime_evidence",
+    "execution_boundary",
+    "approval_state"
+  ],
+  "properties": {
+    "schema": {"const": "C11-D-D9-RENDERER-EDITORIAL-PAYLOAD-PROVENANCE-JOIN-CONTRACT-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PREPARATION_ONLY_IN_MEMORY_PROVENANCE_JOIN_NOT_RENDERER_INPUT"},
+    "source_pin_count": {"const": 16},
+    "source_pins": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "editorial_field_cardinality": {
+      "type": "object",
+      "required": ["challenges", "visual_loops", "visual_drills", "total", "nonempty_visual_fields_in_pinned_fixture", "language_metadata_fields"],
+      "properties": {
+        "challenges": {"const": 6},
+        "visual_loops": {"const": 4},
+        "visual_drills": {"const": 4},
+        "total": {"const": 14},
+        "nonempty_visual_fields_in_pinned_fixture": {"const": 11},
+        "language_metadata_fields": {"const": 3}
+      }
+    },
+    "expected_payload_observations": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "content_type",
+          "request_id",
+          "payload_instance_id",
+          "payload_instance_sha256",
+          "payload_identity_quality",
+          "observed_source_frame_count",
+          "observed_source_fps",
+          "observed_source_duration_seconds",
+          "challenge_game_frame_count",
+          "effective_delivery_frame_count",
+          "delivery_frame_count_status",
+          "editorial_payload_consumption",
+          "visibility_window_status"
+        ],
+        "properties": {
+          "content_type": {"enum": ["challenges", "visual_loops", "visual_drills"]},
+          "request_id": {"type": "string", "minLength": 1},
+          "payload_instance_id": {"type": "string", "minLength": 1},
+          "payload_instance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "payload_identity_quality": {"type": "string"},
+          "observed_source_frame_count": {"type": "integer", "minimum": 1},
+          "observed_source_fps": {"type": "integer", "minimum": 1},
+          "observed_source_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+          "challenge_game_frame_count": {"type": ["integer", "null"]},
+          "effective_delivery_frame_count": {"type": "null"},
+          "delivery_frame_count_status": {"const": "NOT_ESTABLISHED_TIMEBASE_POLICY_NOT_APPROVED"},
+          "editorial_payload_consumption": {"const": "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS"},
+          "visibility_window_status": {"const": "NOT_EVALUATED"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "challenge_phase_namespace": {"type": "object"},
+    "runtime_evidence": {"type": "object"},
+    "execution_boundary": {"type": "object"},
+    "approval_state": {"type": "object"}
+  },
+  "additionalProperties": false
+}

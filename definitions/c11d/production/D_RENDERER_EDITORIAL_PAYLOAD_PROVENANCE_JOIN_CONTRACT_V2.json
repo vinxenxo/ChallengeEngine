@@ -1,0 +1,213 @@
+{
+    "schema":  "C11-D-D9-RENDERER-EDITORIAL-PAYLOAD-PROVENANCE-JOIN-CONTRACT-V2",
+    "schema_version":  "1.0",
+    "status":  "PREPARATION_ONLY_IN_MEMORY_PROVENANCE_JOIN_NOT_RENDERER_INPUT",
+    "purpose":  "Pin request/editorial/payload identity observations from the successful in-memory diagnostic, without approving delivery-timebase policy or visual consumption.",
+    "runtime_scope":  {
+                          "runner_path":  "tools/c11d/d9/d_renderer_editorial_payload_provenance_join.py",
+                          "test_path":  "tools/c11d/d9/test_d_renderer_editorial_payload_provenance_join_contract.py",
+                          "supported_content_types":  [
+                                                          "challenges",
+                                                          "visual_loops",
+                                                          "visual_drills"
+                                                      ],
+                          "runtime_materialization":  "EXISTING_IN_MEMORY_REVIEW_HARNESSES_ONLY",
+                          "raw_editorial_values_persisted":  false,
+                          "per_field_value_hashes_persisted":  false
+                      },
+    "source_pin_count":  16,
+    "source_pins":  [
+                        {
+                            "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                            "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                            "bytes":  796318
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+                            "sha256":  "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f",
+                            "bytes":  73562
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+                            "sha256":  "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d",
+                            "bytes":  40250
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+                            "sha256":  "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b",
+                            "bytes":  26957
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+                            "sha256":  "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee",
+                            "bytes":  11889
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_renderer_editorial_field_consumption_audit.py",
+                            "sha256":  "7001098cec9239027784abfc20ed17024f5bb45993b20f308e1debfb7fd5b85a",
+                            "bytes":  21469
+                        },
+                        {
+                            "path":  "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+                            "sha256":  "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8",
+                            "bytes":  15427
+                        },
+                        {
+                            "path":  "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+                            "sha256":  "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e",
+                            "bytes":  27036
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+                            "sha256":  "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+                            "bytes":  8591
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6",
+                            "bytes":  7461
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+                            "sha256":  "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229",
+                            "bytes":  4923
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+                            "sha256":  "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+                            "bytes":  8376
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+                            "bytes":  9507
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+                            "bytes":  9440
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_UNIVERSAL_EDITORIAL_FIELD_VISIBILITY_POLICY_PROPOSAL_V1.json",
+                            "sha256":  "8ccbb98f63f6e6041cf047ccff8cda2c0b4c4e1c7cb772017f7cb2851a0d99fe",
+                            "bytes":  16796
+                        },
+                        {
+                            "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+                            "sha256":  "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b",
+                            "bytes":  5904
+                        }
+                    ],
+    "editorial_field_cardinality":  {
+                                        "challenges":  6,
+                                        "visual_loops":  4,
+                                        "visual_drills":  4,
+                                        "total":  14,
+                                        "nonempty_visual_fields_in_pinned_fixture":  11,
+                                        "language_metadata_fields":  3
+                                    },
+    "expected_payload_observations":  [
+                                          {
+                                              "content_type":  "challenges",
+                                              "request_id":  "D-PAYLOAD-BIND-CHALLENGES",
+                                              "payload_instance_id":  "D-CHALLENGE-CHALLENGE_004-7fe2bcf47b7127ee",
+                                              "payload_instance_sha256":  "7fe2bcf47b7127ee44c6c9d9a3a9eea5bf54fb78c28ca09757a99058e86b4809",
+                                              "payload_identity_quality":  "DERIVED_RECEIPT_ALIAS_NOT_NATIVE_RUNTIME_INSTANCE_ID",
+                                              "observed_source_frame_count":  900,
+                                              "observed_source_fps":  60,
+                                              "observed_source_duration_seconds":  15,
+                                              "challenge_game_frame_count":  420,
+                                              "effective_delivery_frame_count":  null,
+                                              "delivery_frame_count_status":  "NOT_ESTABLISHED_TIMEBASE_POLICY_NOT_APPROVED",
+                                              "editorial_payload_consumption":  "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+                                              "visibility_window_status":  "NOT_EVALUATED"
+                                          },
+                                          {
+                                              "content_type":  "visual_loops",
+                                              "request_id":  "D-PAYLOAD-BIND-VISUAL_LOOPS",
+                                              "payload_instance_id":  "D-VLP-5ac67e64ff717d97",
+                                              "payload_instance_sha256":  "5ac67e64ff717d9756b37152dd1ee1ff81a1b0e754f83c06a618964c9a62e090",
+                                              "payload_identity_quality":  "MATERIALIZER_INSTANCE_ID_AND_SHA256",
+                                              "observed_source_frame_count":  600,
+                                              "observed_source_fps":  30,
+                                              "observed_source_duration_seconds":  20,
+                                              "challenge_game_frame_count":  null,
+                                              "effective_delivery_frame_count":  null,
+                                              "delivery_frame_count_status":  "NOT_ESTABLISHED_TIMEBASE_POLICY_NOT_APPROVED",
+                                              "editorial_payload_consumption":  "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+                                              "visibility_window_status":  "NOT_EVALUATED"
+                                          },
+                                          {
+                                              "content_type":  "visual_drills",
+                                              "request_id":  "D-PAYLOAD-BIND-VISUAL_DRILLS",
+                                              "payload_instance_id":  "D-VDP-1a96afdd7a0d950e",
+                                              "payload_instance_sha256":  "1a96afdd7a0d950ef3eabb5531fe13496b4206a7d4fd1d7f233892b0329a592b",
+                                              "payload_identity_quality":  "MATERIALIZER_INSTANCE_ID_AND_SHA256",
+                                              "observed_source_frame_count":  630,
+                                              "observed_source_fps":  30,
+                                              "observed_source_duration_seconds":  21,
+                                              "challenge_game_frame_count":  null,
+                                              "effective_delivery_frame_count":  null,
+                                              "delivery_frame_count_status":  "NOT_ESTABLISHED_TIMEBASE_POLICY_NOT_APPROVED",
+                                              "editorial_payload_consumption":  "NOT_CONSUMED_BY_CURRENT_IN_MEMORY_VISUAL_PAYLOAD_HARNESS",
+                                              "visibility_window_status":  "NOT_EVALUATED"
+                                          }
+                                      ],
+    "challenge_phase_namespace":  {
+                                      "field_ids":  [
+                                                        "hook",
+                                                        "reveal",
+                                                        "cta"
+                                                    ],
+                                      "distinct_from_universal_D9_9_fields":  true,
+                                      "empty_reveal_suppressed":  true,
+                                      "candidate_ranges":  {
+                                                               "hook":  [
+                                                                            0,
+                                                                            90
+                                                                        ],
+                                                               "reveal":  null,
+                                                               "cta":  [
+                                                                           390,
+                                                                           450
+                                                                       ]
+                                                           },
+                                      "range_state":  "POLICY_FIXTURE_ONLY_NOT_EVALUATED"
+                                  },
+    "runtime_evidence":  {
+                             "previous_in_memory_receipt_sha256":  "fac949ee4a0498016808e859bd325e68b77586fd7589cb6d744bf11e7fed7e3e",
+                             "previous_in_memory_trace_sha256":  "5f6eee0a8c8fe7b9d9259354b1eb9f4dd64d9f367ccce00aea969ad76edc5c67",
+                             "previous_integration_tests_passed":  20,
+                             "godot_version":  "4.7.1.stable.mono.official.a13da4feb",
+                             "godot_executable_sha256":  "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d"
+                         },
+    "execution_boundary":  {
+                               "persistent_receipt_written":  false,
+                               "payload_files_written":  false,
+                               "renderer_native_input_emitted":  false,
+                               "renderer_dispatch_invoked":  false,
+                               "renderer_activation":  false,
+                               "production_execution":  false,
+                               "media_created":  false,
+                               "candidate_input_admissible":  false,
+                               "effective_delivery_frame_count":  null,
+                               "visibility_windows_evaluated":  0,
+                               "renderer":  "OFF",
+                               "D4_8":  "BLOCKED",
+                               "release_authority":  "NONE"
+                           },
+    "approval_state":  {
+                           "provenance_join_contract_approved":  false,
+                           "editorial_payload_consumer_approved":  false,
+                           "delivery_timebase_policy_approved":  false,
+                           "universal_editorial_visibility_policy_approved":  false,
+                           "renderer_baseline_approved":  false,
+                           "renderer_baseline_frozen":  false,
+                           "d4_8_authorized":  false,
+                           "D9_14":  "BLOCKED_AS_REQUIRED",
+                           "D9_16":  "BLOCKED_AS_REQUIRED",
+                           "D9_17":  "BLOCKED_NO_GO",
+                           "D10":  "BLOCKED_FOR_PROMOTION",
+                           "release_authority":  "NONE"
+                       }
+}

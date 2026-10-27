@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Policy Decision Docket V1",
+  "type": "object",
+  "required": ["schema_version", "artifact_id", "status", "created_utc", "source_pin_count", "source_pins", "editorial_readiness", "decisions", "locks", "non_goals"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "artifact_id": {"const": "C11D_POLICY_DECISION_DOCKET_V1"},
+    "status": {"const": "PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED"},
+    "source_pin_count": {"type": "integer", "minimum": 1},
+    "source_pins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "editorial_readiness": {
+      "type": "object",
+      "required": ["editorial_field_instances", "candidate_window_rules", "evaluated_windows", "universal_editorial_policy_approved", "consumer_authorized"],
+      "properties": {
+        "editorial_field_instances": {"const": 14},
+        "candidate_window_rules": {"const": 11},
+        "evaluated_windows": {"const": 0},
+        "universal_editorial_policy_approved": {"const": false},
+        "consumer_authorized": {"const": false}
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "candidate_summary", "disposition", "operator", "decided_utc", "rationale"],
+        "properties": {
+          "id": {"type": "string"},
+          "status": {"const": "PENDING_OPERATOR_DECISION"},
+          "candidate_summary": {"type": "string"},
+          "disposition": {"type": ["string", "null"]},
+          "operator": {"type": ["string", "null"]},
+          "decided_utc": {"type": ["string", "null"]},
+          "rationale": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "locks": {"type": "object"},
+    "non_goals": {"type": "array", "items": {"type": "string"}}
+  }
+}
