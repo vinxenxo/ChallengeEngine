@@ -2,7 +2,7 @@
 
 **Fecha de corte:** 27-10-2026  
 **Workstream:** enlace canónico solicitud → instancia de payload → evidencia de revisión  
-**Estado actual:** `V2.2_WINDOWS_RUNTIME_PASS; IO_IDENTITY_REFRESH_PASS; PHASE_K_CHALLENGE_COLLISION_EXPANSION_PASS; PHASE_L_V2B_STATIC_TESTS_PASS; PHASE_M_V2B_RUNTIME_MATRIX_PASS; PHASE_N_V2C_SOURCE_FRAME_RUNTIME_PASS; NEXT_PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK`  
+**Estado actual:** `V2.2_WINDOWS_RUNTIME_PASS; IO_IDENTITY_REFRESH_PASS; PHASE_K_CHALLENGE_COLLISION_EXPANSION_PASS; PHASE_L_V2B_STATIC_TESTS_PASS; PHASE_M_V2B_RUNTIME_MATRIX_PASS; PHASE_N_V2C_SOURCE_FRAME_RUNTIME_PASS; PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK_PASS; NEXT_PHASE_P_SOURCE_VALUE_VS_FRAME_VALUE_PROVENANCE`  
 **Checkout operativo:** `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`
 
 ## 0. Para reanudar sin repetir trabajo aprobado
@@ -11,7 +11,7 @@ Este documento es el índice acumulado de las fases de este workstream. La fuent
 
 **Regla de repetición:** no volver a ejecutar una fase ya aceptada si sus fuentes fijadas no han cambiado y la siguiente puerta no exige evidencia fresca. Tras integrar V2, se permite una única actualización de auditoría I/O e inventario de identidad porque el árbol D habrá cambiado. No repetir V2B 402/402 ni la prueba de propuesta V1 como rutina.
 
-**Próxima acción única:** auditar en modo de solo lectura los nueve recibos source-frame V2-C y cruzarlos con la propuesta de binding semántico existente; clasificar datos temporales, contadores de episodio, candidatos de custom_data y ausencias, sin aprobar bindings ni materializar payload/media.
+**Próxima acción única:** prepare a narrow source-value versus frame-value provenance test for the six custom_data candidates; do not bind or serialize them until separate approval and dedicated tests pass.
 
 ## 1. Invariantes de autoridad
 
@@ -314,3 +314,19 @@ La siguiente puerta después de Fase L es la matriz V2-B de 45 llamadas al plann
 **Siguiente puerta:** Fase O — auditoría de solo lectura del cruce recibo source-frame → propuesta de binding semántico, sin aprobar ningún binding. Debe distinguir winning_frame como único anclaje temporal Challenge y close_calls como contador, y mantener en revisión cualquier campo custom_data, proyección y tratamiento temporal.
 
 **Gobernanza inalterada:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; pproved_renderer_projection_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE. El conflicto CHALLENGE_008/009 (11 s declarados y 12 s de fases) sigue pendiente.
+### Phase O - Source-frame to semantic binding crosswalk (27-10-2026; Windows PASS; read-only)
+
+- Phase O tests: 28/28; test stdout SHA-256 fe6e6a91d2cfd7747eb9a8844d44d2a93b63d8ee2a172a5b3098e2ab0b7e24c9; test stderr SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (empty).
+- Audit status: PASS_READ_ONLY_CROSSWALK_NO_BINDING_APPROVAL; runtime invocation count 0; project source writes 0.
+- Runtime input lineage: accepted V2-C report SHA-256 7f96c9aec3849212299afbcabe7fd3045fee815807c9cafe555ad8cb947f91f2; accepted source-frame route only, no Godot runtime re-execution in Phase O.
+- Audit JSON report SHA-256 799d69eba67543b5254016dd3ebc9ac468a2a69f541acd99ee7476c1f53eb0bf; field CSV SHA-256 a9a38bb2e9ebe01936074f23d9d3059cf3593622f357e3106c75e376a270b0ce; Markdown summary SHA-256 36eb3a9aff52e29b727e217cc276b42bafea7e4733ebbdbb3bfb7af12225005e; output manifest SHA-256 3f9fda179304cdbded1993afccd097d8eaef93a7f158f92167626ecebce085a0.
+- Coverage: selectors 9/9; source-frame receipts 18/18; process evidence files 36/36; asset source pins verified 15; base field-shape rows 54; stable custom_data presence/type candidates 6/6; static source pointers present 3/3; unresolved timebase conflicts 2.
+- Semantic guardrails: winning_frame remains the sole Challenge temporal anchor; close_calls remains episode counter only. Receipt data confirms shape/presence/type and projection hashes, not actual per-frame values or renderer visual consumption. 	arget_x remains scalar; CHALLENGE_004 V1 was not modified.
+- Editorial sidecar remains sidecar-only: 14 fields/slots across content types, visually consumed 0; approved bindings 0, approved custom_data bindings 0, approved renderer projection bindings 0.
+- CHALLENGE_008 and CHALLENGE_009 remain unresolved: declared duration 11 seconds versus phase sum 12 seconds. No temporal decision was made.
+- Output folder: C:\Users\vinxe\AppData\Local\Temp\C11D_PHASE_O_SEMANTIC_CROSSWALK_20261027_e6a6ee2bddb74805a268ae2159bd5290; phase_o_crosswalk_report.json, phase_o_field_crosswalk.csv, phase_o_summary.md and output_manifest.json are outside the repository. This phase wrote no project source files.
+- Detailed write-back hashes are held in the immutable Phase O write-back manifest under TEMP and recorded in the acceptance completion marker.
+
+**Next phase:** Phase P - a narrow, read-only source-value versus frame-value provenance test for six custom_data candidates: CHALLENGE_003 	arget_x (scalar); CHALLENGE_005/006/007 	arget_position; CHALLENGE_008 ctive_selection; CHALLENGE_009 displayed_count. The test must distinguish config/source values from effective frame values, emit only types/presence and value hashes in its report, and never serialize all FrameSnapshot.custom_data. No binding is approved by this audit; approval requires a separate decision record and dedicated tests.
+
+**Governance unchanged:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; utomatic_seed_generation=false; master_seed=NOT_ADOPTED; pproved_bindings=0; pproved_custom_data_bindings=0; pproved_renderer_projection_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.
