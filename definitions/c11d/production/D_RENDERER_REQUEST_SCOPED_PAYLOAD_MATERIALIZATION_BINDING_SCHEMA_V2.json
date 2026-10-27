@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11-D-D9-RENDERER-REQUEST-SCOPED-PAYLOAD-MATERIALIZATION-BINDING-V2",
+  "title": "C11-D request-to-payload instance integration review receipt V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "frozen_c11c_manifest_sha256",
+    "candidate_input_admissible",
+    "source_pin_count",
+    "runtime_identity",
+    "content_bindings",
+    "summary",
+    "execution_boundary",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-REQUEST-SCOPED-PAYLOAD-MATERIALIZATION-BINDING-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "status": {
+      "const": "PREPARATION_ONLY_DYNAMIC_REQUEST_TO_PAYLOAD_INSTANCE_INTEGRATION_REVIEW_NOT_RENDERER_INPUT"
+    },
+    "frozen_c11c_manifest_sha256": {
+      "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "candidate_input_admissible": {
+      "const": false
+    },
+    "source_pin_count": {
+      "const": 60
+    },
+    "runtime_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_path",
+        "contract_sha256",
+        "schema_path",
+        "schema_sha256",
+        "implementation_path",
+        "implementation_sha256",
+        "test_path",
+        "test_sha256",
+        "proposal_contract_sha256",
+        "decision_record_sha256"
+      ],
+      "properties": {
+        "contract_path": {
+          "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V2.json"
+        },
+        "contract_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "schema_path": {
+          "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V2.json"
+        },
+        "schema_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "implementation_path": {
+          "const": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding_v2.py"
+        },
+        "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "test_path": {
+          "const": "tools/c11d/d9/test_d_renderer_request_scoped_payload_materialization_binding_v2.py"
+        },
+        "test_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "proposal_contract_sha256": {
+          "const": "3e65d03532417502ff9a957bc9a6efca01a974641aeaa1b9b00a11b1bdad4e81"
+        },
+        "decision_record_sha256": {
+          "const": "68d1e6e992f5d426c9553cbc0ae4da360e94a0cad3363b9b7c89a43e77c34711"
+        }
+      }
+    },
+    "content_bindings": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content_type",
+          "request_id",
+          "selection",
+          "gameplay_seed",
+          "music_seed",
+          "variation_index",
+          "presentation_profile_id",
+          "delivery_profile_id",
+          "canonical_request_sha256",
+          "producer_plan_sha256",
+          "bridge_record_sha256",
+          "adapter_envelope_sha256",
+          "request_source_binding_sha256",
+          "dynamic_binder_receipt_sha256",
+          "request_payload_manifest_sha256",
+          "dynamic_payload_sha256",
+          "dynamic_visual_state_sha256",
+          "dynamic_payload_scope",
+          "dynamic_source_lineage_sha256",
+          "legacy_payload_instance_id",
+          "legacy_payload_instance_sha256",
+          "legacy_materialization_binding_sha256",
+          "editorial_values_sha256",
+          "editorial_carrier_binding_sha256",
+          "request_identity_join",
+          "payload_digest_relation",
+          "editorial_sidecar_join",
+          "editorial_payload_consumed",
+          "binding_sha256"
+        ],
+        "properties": {
+          "content_type": {
+            "enum": [
+              "challenges",
+              "visual_loops",
+              "visual_drills"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "content_type",
+              "family_id",
+              "subtype_id",
+              "variant_id"
+            ],
+            "properties": {
+              "content_type": {
+                "enum": [
+                  "challenges",
+                  "visual_loops",
+                  "visual_drills"
+                ]
+              },
+              "family_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "subtype_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "variant_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "gameplay_seed": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "music_seed": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "variation_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "presentation_profile_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "delivery_profile_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "canonical_request_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "producer_plan_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bridge_record_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "adapter_envelope_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "request_source_binding_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "dynamic_binder_receipt_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "request_payload_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "dynamic_payload_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "dynamic_visual_state_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "dynamic_payload_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dynamic_source_lineage_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "legacy_payload_instance_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "legacy_payload_instance_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "legacy_materialization_binding_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "editorial_values_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "editorial_carrier_binding_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "request_identity_join": {
+            "const": "EXACT_CANONICAL_REQUEST_HASH_AND_SELECTOR_JOIN_PASS"
+          },
+          "payload_digest_relation": {
+            "const": "SEPARATE_CONTRACTS_NO_EQUIVALENCE_CLAIM"
+          },
+          "editorial_sidecar_join": {
+            "const": "CANONICAL_REQUEST_AND_EDITORIAL_VALUE_HASH_JOIN_PASS"
+          },
+          "editorial_payload_consumed": {
+            "const": false
+          },
+          "binding_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_types",
+        "request_identity_joins",
+        "payload_manifest_digests_verified",
+        "editorial_sidecar_joins",
+        "sidecar_field_values",
+        "visual_text_sidecar_values",
+        "metadata_only_values",
+        "visual_payload_text_consumed",
+        "payload_digest_equivalence_proven",
+        "video_render_ready"
+      ],
+      "properties": {
+        "content_types": {
+          "const": 3
+        },
+        "request_identity_joins": {
+          "const": 3
+        },
+        "payload_manifest_digests_verified": {
+          "const": 3
+        },
+        "editorial_sidecar_joins": {
+          "const": 3
+        },
+        "sidecar_field_values": {
+          "const": 14
+        },
+        "visual_text_sidecar_values": {
+          "const": 11
+        },
+        "metadata_only_values": {
+          "const": 3
+        },
+        "visual_payload_text_consumed": {
+          "const": 0
+        },
+        "payload_digest_equivalence_proven": {
+          "const": false
+        },
+        "video_render_ready": {
+          "const": false
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "request_input_persisted",
+        "payload_files_written",
+        "receipt_files_written",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "media_output_created",
+        "output_artifact_path",
+        "editorial_values_injected_into_visual_payload",
+        "c11c_source_mutation",
+        "d4_8",
+        "release_authority",
+        "d9_14",
+        "d9_16",
+        "d9_17",
+        "d10"
+      ],
+      "properties": {
+        "mode": {
+          "const": "IN_MEMORY_REVIEW_ONLY_REQUEST_PAYLOAD_JOIN_V2"
+        },
+        "request_input_persisted": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "receipt_files_written": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "media_output_created": {
+          "const": false
+        },
+        "output_artifact_path": {
+          "type": "null"
+        },
+        "editorial_values_injected_into_visual_payload": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "d9_14": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_16": {
+          "const": "BLOCKED_AS_REQUIRED"
+        },
+        "d9_17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "d10": {
+          "const": "BLOCKED"
+        }
+      }
+    },
+    "receipt_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

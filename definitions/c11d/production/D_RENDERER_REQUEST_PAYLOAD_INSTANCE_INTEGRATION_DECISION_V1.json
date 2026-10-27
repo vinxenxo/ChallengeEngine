@@ -1,0 +1,116 @@
+{
+  "schema": "C11-D-RENDERER-REQUEST-PAYLOAD-INSTANCE-INTEGRATION-DECISION-V1",
+  "schema_version": "1.0",
+  "decision_id": "C11D-REQUEST-PAYLOAD-INSTANCE-INTEGRATION-DECISION-20261027-V1",
+  "decision_date": "2026-10-27",
+  "status": "ACCEPTED_FOR_BOUNDED_NONPRODUCTION_INTEGRATION_IMPLEMENTATION_AND_RUNTIME_REVIEW_ONLY",
+  "decision_scope": "Accept the proposal validation outcome as sufficient to implement a D-only successor to the existing request-scoped materialization-binding interface for exactly the three already-pinned fixed review fixtures. The next gate must join canonical request hashes, canonical selector/seeds/profiles, dynamic binder request-payload manifest/digest and source lineage, fixed materialization identity, and editorial sidecar hashes. This is acceptance to prepare and run an isolated review receipt only.",
+  "basis": {
+    "operator_reported_test_exit_code": 0,
+    "operator_reported_stdout_marker": "C11-D REQUEST-PAYLOAD INSTANCE INTEGRATION PROPOSAL PASS",
+    "source_pins": "54/54",
+    "io_groups_assessed": "10/10",
+    "io_complete": 0,
+    "io_partial": 6,
+    "io_blocked": 4,
+    "schema_engine": "DRAFT2020_12",
+    "schema_negative_cases": "6/6",
+    "evidence_origin": "OPERATOR_REPORTED_WINDOWS_CHECKOUT_OUTPUT_2026-10-27; the raw stdout was retained by the operator at %TEMP%\\C11D_REQUEST_PAYLOAD_INSTANCE_PROPOSAL_20261027\\proposal_test_stdout.txt"
+  },
+  "pinned_inputs": {
+    "proposal_contract": {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_V1.json",
+      "sha256": "3e65d03532417502ff9a957bc9a6efca01a974641aeaa1b9b00a11b1bdad4e81"
+    },
+    "proposal_schema": {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "f75a98b9e666a2d668bdbc1f5c5605fb12851b704e0f5ee9df0bd798b0385cba"
+    },
+    "proposal_checkpoint": {
+      "path": "docs/current/d/D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_CHECKPOINT_V1.md",
+      "sha256": "66bacf230f0b6e931802f9f4eba15b0b73783b8e45989e6731fc6ba3f5a19958"
+    },
+    "proposal_test": {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_request_payload_instance_integration_proposal.py",
+      "sha256": "965619065a41a609c84a8dabc7302e4d87c4e9e157b0966ef0ba1990faeb3280"
+    },
+    "frozen_c11c_manifest": {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318
+    },
+    "renderer_policy_docket": {
+      "path": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+      "sha256": "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f"
+    },
+    "candidate_io_audit_contract": {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
+      "sha256": "429963458d6cbad3fc6a6ae8108ddd6e5578ad4fa4ee21a92d919f355184ac07"
+    },
+    "candidate_io_contract": {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+      "sha256": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
+    }
+  },
+  "authorized_next_gate": {
+    "interface": "D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V2",
+    "fixture_scope_only": [
+      {
+        "content_type": "challenges",
+        "request_id": "D-PAYLOAD-BIND-CHALLENGES",
+        "selector": "parking_v2/CHALLENGE_004",
+        "gameplay_seed": 314159
+      },
+      {
+        "content_type": "visual_loops",
+        "request_id": "D-PAYLOAD-BIND-VISUAL_LOOPS",
+        "selector": "c11c_geometric_waves_v1/harmonic_membrane",
+        "gameplay_seed": 12345
+      },
+      {
+        "content_type": "visual_drills",
+        "request_id": "D-PAYLOAD-BIND-VISUAL_DRILLS",
+        "selector": "tracking/tier-2",
+        "gameplay_seed": 12345
+      }
+    ],
+    "required_checks": [
+      "request_id/content_type/selector/seed/profile equality across canonical request, dynamic binder receipt, fixed materialization binding and editorial carrier",
+      "canonical request hash and plan/bridge/adapter/source-binding hash joins",
+      "request-specific dynamic payload manifest self-digest and receipt self-digest",
+      "separate and explicit dynamic-payload vs fixed-fixture payload digest namespaces; do not falsely assert cross-contract digest equality",
+      "editorial values hash equals the canonical editorial hash; carrier digest closes exactly; values stay sidecar-only",
+      "source lineage and policy lineage remain hash-bound; unknown or mismatched values fail closed"
+    ],
+    "output": "stdout-only, in-memory, self-hashed review receipt",
+    "source_pin_policy": "verify all 54 pins from the accepted proposal plus the proposal/decision artifacts before runtime"
+  },
+  "not_authorized": [
+    "candidate input admissibility or any complete I/O group declaration",
+    "selector expansion beyond the three fixed fixtures in this increment",
+    "payload file or receipt persistence",
+    "renderer-native input, dispatch, renderer activation, pixels, or media creation",
+    "editorial field injection or visual text consumption",
+    "presentation/visibility/timebase/temporal/coordinate/sampling/audio/music policy approval",
+    "automatic seed generation or master-seed adoption",
+    "baseline approval/freeze, D4.8 authorization, release or promotion",
+    "any modification to frozen C11-C source or manifest"
+  ],
+  "required_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "approved_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  }
+}
