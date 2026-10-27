@@ -1,0 +1,2220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-request-payload-instance-integration-proposal:v1",
+  "title": "C11-D Candidate Request-Payload Instance Integration Proposal V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "checkpoint",
+    "status",
+    "owner",
+    "purpose",
+    "source_of_truth",
+    "source_pins",
+    "observed_gap_state",
+    "integration_design",
+    "seed_domain_policy",
+    "editorial_policy",
+    "remaining_group_exit_criteria",
+    "gate_sequence",
+    "required_locks",
+    "forbidden_operations",
+    "approval_state"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-CANDIDATE-REQUEST-PAYLOAD-INSTANCE-INTEGRATION-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "checkpoint": {
+      "const": "D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL"
+    },
+    "status": {
+      "const": "PROPOSAL_ONLY_NON_PRODUCTION_INTEGRATION_NOT_IMPLEMENTED_NOT_APPROVED"
+    },
+    "owner": {
+      "const": "C11-D_ONLY"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 80
+    },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "frozen_c11c_manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+            },
+            "sha256": {
+              "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+            },
+            "bytes": {
+              "const": 796318
+            },
+            "mutable": {
+              "const": false
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "bytes",
+            "mutable"
+          ]
+        },
+        "renderer_policy_docket": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json"
+            },
+            "sha256": {
+              "const": "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "io_gap_audit_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json"
+            },
+            "sha256": {
+              "const": "429963458d6cbad3fc6a6ae8108ddd6e5578ad4fa4ee21a92d919f355184ac07"
+            },
+            "groups_assessed": {
+              "const": 10
+            },
+            "source_pins": {
+              "const": 54
+            },
+            "audit_is_admission": {
+              "const": false
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "groups_assessed",
+            "source_pins",
+            "audit_is_admission"
+          ]
+        },
+        "candidate_io_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json"
+            },
+            "sha256": {
+              "const": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "existing_dynamic_binder_v1": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json"
+            },
+            "sha256": {
+              "const": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "existing_dynamic_binder_v2_visual_drills": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json"
+            },
+            "sha256": {
+              "const": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "existing_request_scoped_materialization_binding_v1": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json"
+            },
+            "sha256": {
+              "const": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "existing_materialization_binding_runner": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py"
+            },
+            "sha256": {
+              "const": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "io_audit_report_observation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "groups": {
+              "const": "10/10"
+            },
+            "complete": {
+              "const": "0/10"
+            },
+            "partial": {
+              "const": 6
+            },
+            "blocked": {
+              "const": 4
+            },
+            "source_pins": {
+              "const": "54/54"
+            },
+            "candidate_input_admissible": {
+              "const": false
+            },
+            "input_instance_emitted": {
+              "const": false
+            },
+            "output_manifest_created": {
+              "const": false
+            }
+          },
+          "required": [
+            "groups",
+            "complete",
+            "partial",
+            "blocked",
+            "source_pins",
+            "candidate_input_admissible",
+            "input_instance_emitted",
+            "output_manifest_created"
+          ]
+        },
+        "identity_inventory_observation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_files": {
+              "const": 164
+            },
+            "fingerprint": {
+              "const": "0b4168bddac991ac03ea45d424f5af4fa2316c275dc31c1866c5cf8baf532d25"
+            },
+            "report_sha256": {
+              "const": "74e518b620d297c5e09cf6e9495864dbe96e9394b6520e9a5e492775642b92bf"
+            },
+            "scope": {
+              "const": "DECLARED_CANDIDATE_REVIEW_SURFACE_NOT_FULL_REPOSITORY_TREE"
+            },
+            "baseline_ready": {
+              "const": false
+            }
+          },
+          "required": [
+            "source_files",
+            "fingerprint",
+            "report_sha256",
+            "scope",
+            "baseline_ready"
+          ]
+        }
+      },
+      "required": [
+        "frozen_c11c_manifest",
+        "renderer_policy_docket",
+        "io_gap_audit_contract",
+        "candidate_io_contract",
+        "existing_dynamic_binder_v1",
+        "existing_dynamic_binder_v2_visual_drills",
+        "existing_request_scoped_materialization_binding_v1",
+        "existing_materialization_binding_runner",
+        "io_audit_report_observation",
+        "identity_inventory_observation"
+      ]
+    },
+    "source_pins": {
+      "type": "array",
+      "minItems": 54,
+      "maxItems": 54,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+            },
+            "role": {
+              "const": "IMMUTABLE_C11C_MANIFEST"
+            },
+            "sha256": {
+              "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json"
+            },
+            "role": {
+              "const": "BINDING_PREVIEW_CONTRACT"
+            },
+            "sha256": {
+              "const": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "PROSPECTIVE_INPUT_SCHEMA"
+            },
+            "sha256": {
+              "const": "2ccfe916f35445f4543a61028c454a7ab886891aa4ab30b62445d12e73af8afd"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "IO_INTERFACE_CONTRACT_SCHEMA"
+            },
+            "sha256": {
+              "const": "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json"
+            },
+            "role": {
+              "const": "VERSIONED_IO_INTERFACE_CONTRACT"
+            },
+            "sha256": {
+              "const": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json"
+            },
+            "role": {
+              "const": "LOGICAL_COMPOSITION_CONTRACT"
+            },
+            "sha256": {
+              "const": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "PROSPECTIVE_OUTPUT_MANIFEST_SCHEMA"
+            },
+            "sha256": {
+              "const": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "CROSS_TYPE_SEED_DOMAIN_AUDIT_REPORT_SCHEMA"
+            },
+            "sha256": {
+              "const": "ba22ca15028c82bfafdaca4f4d10f08d4e554405f9869247bb2d32e28922575c"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json"
+            },
+            "role": {
+              "const": "CROSS_TYPE_SEED_DOMAIN_AUDIT_CONTRACT"
+            },
+            "sha256": {
+              "const": "e51be5340d26896f28fc94ae33416a1c93fbbcd5dd27916b661edbebd7616d69"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json"
+            },
+            "role": {
+              "const": "CHALLENGE_COORDINATE_PROJECTION_PROPOSAL"
+            },
+            "sha256": {
+              "const": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL"
+            },
+            "sha256": {
+              "const": "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "CHALLENGE_SAMPLE_SELECTION_PROPOSAL"
+            },
+            "sha256": {
+              "const": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "CHALLENGE_TEMPORAL_ALIGNMENT_PROPOSAL"
+            },
+            "sha256": {
+              "const": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "DYNAMIC_REQUEST_PAYLOAD_BINDING_OUTPUT_SCHEMA"
+            },
+            "sha256": {
+              "const": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json"
+            },
+            "role": {
+              "const": "DYNAMIC_REQUEST_PAYLOAD_BINDING_CONTRACT"
+            },
+            "sha256": {
+              "const": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json"
+            },
+            "role": {
+              "const": "VISUAL_DRILL_V2_REQUEST_BOUND_PAYLOAD_CONTRACT"
+            },
+            "sha256": {
+              "const": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json"
+            },
+            "role": {
+              "const": "EDITORIAL_ROUTING_CONSUMPTION_BOUNDARY"
+            },
+            "sha256": {
+              "const": "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "CHALLENGE_EDITORIAL_WINDOW_PROPOSAL"
+            },
+            "sha256": {
+              "const": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "LOOP_DRILL_EDITORIAL_WINDOW_PROPOSAL"
+            },
+            "sha256": {
+              "const": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json"
+            },
+            "role": {
+              "const": "NEUTRAL_FRAME_PROGRAM_CONTRACT"
+            },
+            "sha256": {
+              "const": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_V1.json"
+            },
+            "role": {
+              "const": "EDITORIAL_VALUE_SIDECAR_CONTRACT"
+            },
+            "sha256": {
+              "const": "de44f159c95f31d034fe8356f650b5be320cb5fb1555197073d07875cf0cf1f9"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json"
+            },
+            "role": {
+              "const": "FIXED_REQUEST_BINDING_CONTRACT"
+            },
+            "sha256": {
+              "const": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json"
+            },
+            "role": {
+              "const": "FIXED_PAYLOAD_MATERIALIZATION_CONTRACT"
+            },
+            "sha256": {
+              "const": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_SCHEMA"
+            },
+            "sha256": {
+              "const": "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_V1.json"
+            },
+            "role": {
+              "const": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CONTRACT"
+            },
+            "sha256": {
+              "const": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "AUDIO_MUSIC_DELIVERY_PROPOSAL"
+            },
+            "sha256": {
+              "const": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "DELIVERY_TIMEBASE_POLICY_PROPOSAL"
+            },
+            "sha256": {
+              "const": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json"
+            },
+            "role": {
+              "const": "PRESENTATION_REGION_POLICY_PROPOSAL"
+            },
+            "sha256": {
+              "const": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json"
+            },
+            "role": {
+              "const": "D_RENDERER_SEED_DOMAIN_AUDIT_REPORT_SCHEMA"
+            },
+            "sha256": {
+              "const": "e27e72a058e361087328fe8d117688b3ee8b711ba546607e5cfc9b42e9b5c485"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json"
+            },
+            "role": {
+              "const": "D_RENDERER_SEED_DOMAIN_AUDIT_CONTRACT"
+            },
+            "sha256": {
+              "const": "5967a38c227152849a8b2f30ed3dfcea70aac57eca178314fc4a7ee969f17e8c"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md"
+            },
+            "role": {
+              "const": "BASELINE_PREPARATION_PLAN"
+            },
+            "sha256": {
+              "const": "b5ca441179d3344fcb4ed6278db493af914723a1376043ecea5994cc7f63e8ec"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "docs/current/d/D_RENDERER_CANDIDATE_IO_CONTRACT_CHECKPOINT_V1.md"
+            },
+            "role": {
+              "const": "IO_CONTRACT_CHECKPOINT"
+            },
+            "sha256": {
+              "const": "7def37e37d207d778a7bd3d59917b0969793f55684e67cc52b243c83ac174a90"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md"
+            },
+            "role": {
+              "const": "EDITORIAL_SIDECAR_CHECKPOINT"
+            },
+            "sha256": {
+              "const": "143e956af6585120b42beee8b19d9cef45583ecec49fcb016acd6851e7bc46c6"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "docs/current/d/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_CHECKPOINT_V1.md"
+            },
+            "role": {
+              "const": "FIXED_MATERIALIZATION_CHECKPOINT"
+            },
+            "sha256": {
+              "const": "42a1120f618478a44d9984cc1d10c2b8d907319b45a34c4b0f02a631b22a0c8a"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md"
+            },
+            "role": {
+              "const": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CHECKPOINT"
+            },
+            "sha256": {
+              "const": "f9c90266a1ea1345894423253b6d5869b49dfaf436277de2a10fa7229ad8c35e"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_candidate.py"
+            },
+            "role": {
+              "const": "BINDING_PREVIEW_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py"
+            },
+            "role": {
+              "const": "READ_ONLY_CROSS_TYPE_SEED_DOMAIN_AUDIT_RUNNER"
+            },
+            "sha256": {
+              "const": "3c246134fd1a1a38bc0a6141c40449c3ca9a797abf3a64a37b0ecc80e06d3dec"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py"
+            },
+            "role": {
+              "const": "CHALLENGE_PAYLOAD_PREVIEW_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py"
+            },
+            "role": {
+              "const": "DYNAMIC_REQUEST_PAYLOAD_BINDING_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_frame_program.py"
+            },
+            "role": {
+              "const": "FRAME_PROGRAM_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_logical_composition.py"
+            },
+            "role": {
+              "const": "LOGICAL_COMPOSITION_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_request_scoped_editorial_value_carrier.py"
+            },
+            "role": {
+              "const": "EDITORIAL_VALUE_SIDECAR_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "77d7af66cecff878de925bdcc63b1b12db812f32928a8ae873ee404199dafb17"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py"
+            },
+            "role": {
+              "const": "FIXED_REQUEST_BINDING_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py"
+            },
+            "role": {
+              "const": "FIXED_PAYLOAD_MATERIALIZATION_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_seed_domain_collision_audit.py"
+            },
+            "role": {
+              "const": "READ_ONLY_SEED_DOMAIN_COLLISION_REJECTION_AUDIT_RUNNER"
+            },
+            "sha256": {
+              "const": "9a6c98bb3d9b68accde29496de1b96ea4305312b66489a70fb05abcb4b68f2c2"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py"
+            },
+            "role": {
+              "const": "READ_ONLY_VISUAL_DRILL_SEED_DOMAIN_AUDIT_RUNNER"
+            },
+            "sha256": {
+              "const": "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py"
+            },
+            "role": {
+              "const": "LOOP_DRILL_PAYLOAD_PREVIEW_IMPLEMENTATION"
+            },
+            "sha256": {
+              "const": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd"
+            },
+            "role": {
+              "const": "DYNAMIC_REQUEST_PAYLOAD_GODOT_HARNESS"
+            },
+            "sha256": {
+              "const": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd"
+            },
+            "role": {
+              "const": "VISUAL_DRILL_V2_GODOT_IN_MEMORY_MATERIALIZATION_HARNESS"
+            },
+            "sha256": {
+              "const": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py"
+            },
+            "role": {
+              "const": "CROSS_TYPE_SEED_DOMAIN_AUDIT_TESTS"
+            },
+            "sha256": {
+              "const": "d540bbf4a8e7ecfd7ce194e015149acbd0354563c4cea750fdbfb0167b69447c"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding.py"
+            },
+            "role": {
+              "const": "DYNAMIC_REQUEST_PAYLOAD_BINDING_TESTS"
+            },
+            "sha256": {
+              "const": "9a7805ef88152b0d126b59de98872895941e714e017c87aec8a8d9a18ad891b3"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py"
+            },
+            "role": {
+              "const": "VISUAL_DRILL_V2_SOURCE_LINEAGE_AND_FAIL_CLOSED_REGRESSION_TESTS"
+            },
+            "sha256": {
+              "const": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/test_d_renderer_seed_domain_collision_audit.py"
+            },
+            "role": {
+              "const": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_TEST"
+            },
+            "sha256": {
+              "const": "1d2d7f25a7bba80d77474783c1ea31403163bcd2740b36980f97d757c9de779d"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "const": "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py"
+            },
+            "role": {
+              "const": "VISUAL_DRILL_SEED_DOMAIN_AUDIT_TESTS"
+            },
+            "sha256": {
+              "const": "9c7366db6fe5dfe14a494f0c12c01408302764ef2d086c4f44a1ab77ddf17054"
+            }
+          },
+          "required": [
+            "path",
+            "role",
+            "sha256"
+          ]
+        }
+      ],
+      "items": false
+    },
+    "observed_gap_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "groups_assessed": {
+          "const": 10
+        },
+        "complete_groups": {
+          "const": 0
+        },
+        "partial_groups": {
+          "const": [
+            "content_identity",
+            "source_lineage",
+            "payload_instance",
+            "seed_domains",
+            "editorial",
+            "delivery"
+          ],
+          "type": "array"
+        },
+        "blocked_groups": {
+          "const": [
+            "presentation",
+            "timeline",
+            "audio",
+            "authorization"
+          ],
+          "type": "array"
+        },
+        "all_groups": {
+          "const": [
+            "content_identity",
+            "source_lineage",
+            "payload_instance",
+            "seed_domains",
+            "editorial",
+            "presentation",
+            "timeline",
+            "audio",
+            "delivery",
+            "authorization"
+          ],
+          "type": "array"
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 50
+        }
+      },
+      "required": [
+        "groups_assessed",
+        "complete_groups",
+        "partial_groups",
+        "blocked_groups",
+        "all_groups",
+        "interpretation"
+      ]
+    },
+    "integration_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "single_existing_path": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "stage": {
+                  "const": 1
+                },
+                "component": {
+                  "const": "Canonical D9.9 request/facade"
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 20
+                }
+              },
+              "required": [
+                "stage",
+                "component",
+                "role"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "stage": {
+                  "const": 2
+                },
+                "component": {
+                  "const": "Existing dynamic request-to-payload binder V1/V2"
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 20
+                }
+              },
+              "required": [
+                "stage",
+                "component",
+                "role"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "stage": {
+                  "const": 3
+                },
+                "component": {
+                  "const": "Existing request-scoped payload materialization-binding interface"
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 20
+                }
+              },
+              "required": [
+                "stage",
+                "component",
+                "role"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "stage": {
+                  "const": 4
+                },
+                "component": {
+                  "const": "Candidate I/O input schema / logical-composition / frame-program review chain"
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 20
+                }
+              },
+              "required": [
+                "stage",
+                "component",
+                "role"
+              ]
+            }
+          ],
+          "items": false
+        },
+        "versioning_rule": {
+          "type": "string",
+          "minLength": 80
+        },
+        "supported_scope_rule": {
+          "type": "string",
+          "minLength": 80
+        },
+        "request_identity_fields": {
+          "const": [
+            "request_id",
+            "request_hash",
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id",
+            "variant_scope_id",
+            "difficulty_tier",
+            "variation_index",
+            "presentation_profile_id",
+            "delivery_profile_id"
+          ],
+          "type": "array"
+        },
+        "required_join_keys": {
+          "const": [
+            "canonical_request_sha256",
+            "request_hash",
+            "content_type",
+            "family_id",
+            "subtype_id",
+            "variant_id",
+            "difficulty_tier",
+            "variation_index",
+            "presentation_profile_id",
+            "delivery_profile_id",
+            "payload_instance_sha256",
+            "payload_manifest_sha256",
+            "source_lineage_sha256"
+          ],
+          "type": "array"
+        },
+        "payload_manifest_minimum_fields": {
+          "const": [
+            "schema",
+            "schema_version",
+            "request_id",
+            "request_hash",
+            "selection",
+            "request_payload_manifest_sha256",
+            "payload_instance_sha256",
+            "canonical_source_sha256",
+            "policy_source_sha256",
+            "gameplay_seed_domain",
+            "music_seed_domain",
+            "source_lineage",
+            "runtime_receipt_sha256",
+            "renderer_input_emitted"
+          ],
+          "type": "array"
+        },
+        "digest_semantics": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "request_hash": {
+              "type": "string",
+              "minLength": 30
+            },
+            "payload_instance_sha256": {
+              "type": "string",
+              "minLength": 30
+            },
+            "request_payload_manifest_sha256": {
+              "type": "string",
+              "minLength": 30
+            },
+            "music_seed": {
+              "type": "string",
+              "minLength": 30
+            },
+            "editorial_sidecar": {
+              "type": "string",
+              "minLength": 30
+            }
+          },
+          "required": [
+            "request_hash",
+            "payload_instance_sha256",
+            "request_payload_manifest_sha256",
+            "music_seed",
+            "editorial_sidecar"
+          ]
+        },
+        "review_only_receipt": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "persistence": {
+              "const": "NONE"
+            },
+            "output": {
+              "const": "STDOUT_ONLY_OR_IN_MEMORY_TEST_EVIDENCE"
+            },
+            "candidate_input_emitted": {
+              "const": false
+            },
+            "renderer_input_emitted": {
+              "const": false
+            },
+            "renderer_dispatch_invoked": {
+              "const": false
+            },
+            "media_created": {
+              "const": false
+            }
+          },
+          "required": [
+            "persistence",
+            "output",
+            "candidate_input_emitted",
+            "renderer_input_emitted",
+            "renderer_dispatch_invoked",
+            "media_created"
+          ]
+        }
+      },
+      "required": [
+        "single_existing_path",
+        "versioning_rule",
+        "supported_scope_rule",
+        "request_identity_fields",
+        "required_join_keys",
+        "payload_manifest_minimum_fields",
+        "digest_semantics",
+        "review_only_receipt"
+      ]
+    },
+    "seed_domain_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gameplay_seed_required_explicitly": {
+          "const": true
+        },
+        "music_seed_required_explicitly": {
+          "const": true
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "same_numeric_gameplay_music_seed": {
+          "const": "REJECT_IN_THE_BOUNDED_POLICY_SCOPE_AS_ALREADY_CONTRACTED"
+        },
+        "cross_domain_payload_hash_join": {
+          "const": "FORBIDDEN"
+        },
+        "incomplete_seed_evidence": {
+          "const": "PARTIAL_DO_NOT_CLAIM_INPUT_ADMISSIBLE"
+        },
+        "seed_group_state": {
+          "const": "PARTIAL"
+        }
+      },
+      "required": [
+        "gameplay_seed_required_explicitly",
+        "music_seed_required_explicitly",
+        "automatic_seed_generation",
+        "master_seed",
+        "same_numeric_gameplay_music_seed",
+        "cross_domain_payload_hash_join",
+        "incomplete_seed_evidence",
+        "seed_group_state"
+      ]
+    },
+    "editorial_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sidecar_fields_hash_bound": {
+          "const": "14/14"
+        },
+        "visual_payload_consumption": {
+          "const": "0/14"
+        },
+        "language": {
+          "const": "METADATA_ONLY"
+        },
+        "visual_text_injection": {
+          "const": "NOT_IMPLEMENTED_NOT_APPROVED"
+        },
+        "field_region_visibility_policy": {
+          "const": "PROPOSED_NOT_APPROVED"
+        },
+        "raw_editorial_values_copied_into_visual_payload": {
+          "const": false
+        }
+      },
+      "required": [
+        "sidecar_fields_hash_bound",
+        "visual_payload_consumption",
+        "language",
+        "visual_text_injection",
+        "field_region_visibility_policy",
+        "raw_editorial_values_copied_into_visual_payload"
+      ]
+    },
+    "remaining_group_exit_criteria": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "content_identity"
+            },
+            "state": {
+              "const": "PARTIAL"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "source_lineage"
+            },
+            "state": {
+              "const": "PARTIAL"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "payload_instance"
+            },
+            "state": {
+              "const": "PARTIAL"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "seed_domains"
+            },
+            "state": {
+              "const": "PARTIAL"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "editorial"
+            },
+            "state": {
+              "const": "PARTIAL"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "delivery"
+            },
+            "state": {
+              "const": "PARTIAL"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "presentation"
+            },
+            "state": {
+              "const": "BLOCKED"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "timeline"
+            },
+            "state": {
+              "const": "BLOCKED"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "audio"
+            },
+            "state": {
+              "const": "BLOCKED"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "const": "authorization"
+            },
+            "state": {
+              "const": "BLOCKED"
+            },
+            "exit_criterion": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "group",
+            "state",
+            "exit_criterion"
+          ]
+        }
+      ],
+      "items": false
+    },
+    "gate_sequence": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gate": {
+              "const": "G0_SOURCE_RECONCILIATION"
+            },
+            "state": {
+              "const": "EVIDENCE_REFRESHED"
+            },
+            "must_pass_before_next": {
+              "const": true
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "gate",
+            "state",
+            "must_pass_before_next",
+            "scope"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gate": {
+              "const": "G1_NON_PRODUCTION_INTEGRATION_CONTRACT"
+            },
+            "state": {
+              "const": "PROPOSED_NOT_APPROVED"
+            },
+            "must_pass_before_next": {
+              "const": true
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "gate",
+            "state",
+            "must_pass_before_next",
+            "scope"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gate": {
+              "const": "G2_BOUNDED_RUNTIME_RECEIPTS"
+            },
+            "state": {
+              "const": "NOT_STARTED"
+            },
+            "must_pass_before_next": {
+              "const": true
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "gate",
+            "state",
+            "must_pass_before_next",
+            "scope"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gate": {
+              "const": "G3_IO_GAP_REAUDIT"
+            },
+            "state": {
+              "const": "NOT_STARTED"
+            },
+            "must_pass_before_next": {
+              "const": true
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "gate",
+            "state",
+            "must_pass_before_next",
+            "scope"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gate": {
+              "const": "G4_POLICY_AND_AUTHORIZATION"
+            },
+            "state": {
+              "const": "BLOCKED"
+            },
+            "must_pass_before_next": {
+              "const": true
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "required": [
+            "gate",
+            "state",
+            "must_pass_before_next",
+            "scope"
+          ]
+        }
+      ],
+      "items": false
+    },
+    "required_locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "c11c_immutable": {
+          "const": true
+        }
+      },
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "c11c_immutable"
+      ]
+    },
+    "forbidden_operations": {
+      "const": [
+        "modify_or_regenerate_frozen_C11C",
+        "create_a_parallel_request_payload_binder",
+        "emit_renderer_native_input",
+        "invoke_renderer_or_dispatch",
+        "create_media_or_output_manifest",
+        "materialize_persistent_payloads_or_receipts",
+        "inject_editorial_text_into_visual_payload",
+        "apply_unapproved_presentation_timebase_coordinate_sample_or_audio_policy",
+        "claim_candidate_input_admissibility_from_report_or_test_pass",
+        "promote_or_freeze_C11D"
+      ],
+      "type": "array"
+    },
+    "approval_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "proposal_review": {
+          "const": "PENDING"
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "renderer_integration_authorized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "required": [
+        "proposal_review",
+        "implementation_authorized",
+        "renderer_integration_authorized",
+        "candidate_input_admissible",
+        "baseline_approval",
+        "release_authority"
+      ]
+    }
+  }
+}
