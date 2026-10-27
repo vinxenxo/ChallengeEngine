@@ -2,7 +2,7 @@
 
 **Fecha de corte:** 27-10-2026  
 **Workstream:** enlace canónico solicitud → instancia de payload → evidencia de revisión  
-**Estado actual:** `V2.2_WINDOWS_RUNTIME_PASS; IO_IDENTITY_REFRESH_PASS; PHASE_K_CHALLENGE_COLLISION_EXPANSION_PASS; PHASE_L_V2B_STATIC_TESTS_PASS; NEXT_V2B_RUNTIME_MATRIX_GATE`  
+**Estado actual:** `V2.2_WINDOWS_RUNTIME_PASS; IO_IDENTITY_REFRESH_PASS; PHASE_K_CHALLENGE_COLLISION_EXPANSION_PASS; PHASE_L_V2B_STATIC_TESTS_PASS; PHASE_M_V2B_RUNTIME_MATRIX_PASS; NEXT_V2C_SOURCE_FRAME_RECEIPTS_GATE`  
 **Checkout operativo:** `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`
 
 ## 0. Para reanudar sin repetir trabajo aprobado
@@ -11,7 +11,7 @@ Este documento es el índice acumulado de las fases de este workstream. La fuent
 
 **Regla de repetición:** no volver a ejecutar una fase ya aceptada si sus fuentes fijadas no han cambiado y la siguiente puerta no exige evidencia fresca. Tras integrar V2, se permite una única actualización de auditoría I/O e inventario de identidad porque el árbol D habrá cambiado. No repetir V2B 402/402 ni la prueba de propuesta V1 como rutina.
 
-**Próxima acción única:** ejecutar la matriz V2-B de 45 llamadas canónicas al planner y 45 procesos Godot Mono independientes, usando el recibo estático aceptado en `%TEMP%`. La matriz debe detenerse en el primer fallo y no puede materializar payload, media ni activar renderer.
+**Próxima acción única:** ejecutar la puerta V2-C de recibos runtime source-frame para los nueve Challenges, reutilizando el planner canónico y `ChallengeRuntimeBridge.run_effective_pipeline`; validar los recibos por selector sin materializar payload ni media y mantener el renderer apagado.
 
 ## 1. Invariantes de autoridad
 
@@ -288,3 +288,16 @@ La siguiente puerta después de Fase L es la matriz V2-B de 45 llamadas al plann
 **Siguiente puerta:** matriz V2-B 45/45 llamadas al planner + 45/45 procesos Godot Mono independientes, detenida al primer fallo. Debe demostrar repetibilidad baseline, sensibilidad al gameplay seed y ortogonalidad de music seed/editorial.
 
 **Gobernanza:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.
+### Fase M — Matriz V2-B de sensibilidad de estado visual seguro (27-10-2026, Windows PASS; recuperación de postcondición)
+
+- Reporte runtime: $ReportPath; SHA-256 $reportSha; estado PASS_SAFE_PROJECTION_SEED_SENSITIVITY; isual_seed_sensitivity=ACCEPTED_BY_SAFE_PROJECTION_HASH.
+- Planner canónico 45/45; procesos independientes de Godot Mono 45/45; selectores aceptados 9/9; cinco variantes por selector (BASELINE_R1, BASELINE_R2, GAMEPLAY_SEED_MUTATION, MUSIC_SEED_MUTATION, EDITORIAL_MUTATION).
+- Godot: $godotVersion; stdout agregado SHA-256 $stdoutSha; stderr SHA-256 $stderrSha (vacío). Se verificaron $processEvidenceCount archivos de evidencia por sus hashes.
+- Test estático de implementación previo: 198/198; recibo SHA-256 $ExpectedReceiptSha; pins estáticos 81/81 y authority-input pins 9/9 registrados en la aceptación de Fase L.
+- Integridad de fuentes runtime: $pinCount/14 pins confirmados; errores de pins antes/después vacíos; manifiesto congelado C11-C sin cambios.
+- El wrapper original imprimió C11D_V2B_RUNTIME_MATRIX=BLOCKED pese a que el reporte estricto y las 45/45 ejecuciones comunicaban PASS; la comprobación post-run del wrapper no reconoció los marcadores de stdout. Esta recuperación volvió a comprobar el reporte, las nueve filas, los locks, el archivo de salida y sus líneas normalizadas, sin reejecutar la matriz ni iniciar procesos Godot.
+- Alcance: evidencia de estado visual source-frame en memoria y sensibilidad de hash; **no es render de vídeo, no aprueba bindings y no admite input de candidato**.
+
+**Siguiente puerta:** V2-C source-frame runtime receipts para los nueve Challenges mediante planner canónico y ChallengeRuntimeBridge.run_effective_pipeline, primero recibos en memoria y validación de contrato/pins. Mantener sin cambios la gobernanza de render.
+
+**Bloqueos inalterados:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.

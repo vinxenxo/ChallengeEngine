@@ -98,10 +98,12 @@ if ($rowsOk) {
 $evidenceOk = ([string]$report.evidence.directory -eq $EvidenceDirectory -and [string]$report.runtime_contract_sha256 -eq $ExpectedContractSha -and [string]$report.design_contract_sha256 -eq $ExpectedDesignSha -and [string]$report.frozen_manifest_sha256 -eq $FrozenSha -and $report.payload_materialized -eq $false -and $report.media_created -eq $false -and [int]$report.approved_bindings -eq 0 -and [int]$report.approved_custom_data_bindings -eq 0 -and [string]$report.evidence.godot_version -eq '4.7.1.stable.mono.official.a13da4feb' -and [string]$report.evidence.implementation_test_receipt_sha256 -eq $ExpectedReceiptSha -and $null -eq $report.evidence.failure -and @($report.evidence.source_pin_errors_before_runtime).Count -eq 0 -and @($report.evidence.source_pin_errors_after_runtime).Count -eq 0)
 
 $stdoutLines = [regex]::Split($stdoutText, "\r\n|\n|\r")
+# The wrapper's Write-Host summary is captured by the interactive PowerShell host,
+# not by runtime_matrix.stdout.txt. Validate report path/hash from the pinned on-disk
+# evidence above; do not require those two host-only lines in the child stdout file.
+$reportMetadataOk = ([IO.Path]::GetFullPath($ReportPath) -eq [IO.Path]::GetFullPath((Join-Path $EvidenceDirectory 'report.json')) -and $reportSha -eq $ExpectedReportSha)
 $requiredLines = @(
     'C11D_V2B_RUNTIME_RESULT=PASS_SAFE_PROJECTION_SEED_SENSITIVITY',
-    'C11D_V2B_RUNTIME_REPORT=' + $ReportPath,
-    'C11D_V2B_RUNTIME_REPORT_SHA256=' + $ExpectedReportSha,
     'C11D_V2B_PLANNER_INVOCATIONS=45/45',
     'C11D_V2B_GODOT_RUNTIME_PROCESSES=45/45',
     'C11D_V2B_SELECTORS=9/9',
@@ -109,7 +111,7 @@ $requiredLines = @(
     'C11D_V2B_GOVERNANCE=renderer=OFF;media_created=false;payload_materialized=false;approved_bindings=0;candidate_input_admissible=false;D4.8=BLOCKED;D9.10=PREPARE_ONLY;D10=BLOCKED_FOR_PROMOTION;release_authority=NONE'
 )
 $missingLines = @($requiredLines | Where-Object { [Array]::IndexOf($stdoutLines, [string]$_) -lt 0 })
-$summaryOk = ($missingLines.Count -eq 0)
+$summaryOk = ($missingLines.Count -eq 0 -and $reportMetadataOk)
 
 $SourcePins = @(
     @{Path='definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_PROJECTION_RUNTIME_CONTRACT_V1.json';Sha=$ExpectedContractSha},
@@ -148,7 +150,10 @@ Write-Host ('COUNTS_45_45_VALID=' + [string]$countsOk)
 Write-Host ('SENSITIVITY_VALID=' + [string]$sensitivityOk)
 Write-Host ('SELECTOR_ROWS_VALID=' + [string]$rowsOk)
 Write-Host ('GOVERNANCE_LOCKS_VALID=' + [string]$governanceOk)
-Write-Host ('RUNNER_SUMMARY_LINES_VALID=' + [string]$summaryOk)
+Write-Host ('RUNNER_SUMMARY_LINES_VALID=' + [string]($missingLines.Count -eq 0))
+Write-Host ('REPORT_PATH_AND_HASH_VALID=' + [string]$reportMetadataOk)
+Write-Host ('EVIDENCE_CONTRACT_VALID=' + [string]$evidenceOk)
+Write-Host ('PROCESS_EVIDENCE_HASHES_VALID=' + [string]$processEvidenceOk)
 Write-Host ('PROCESS_EVIDENCE_FILES_VERIFIED=' + $processEvidenceCount)
 Write-Host ('SOURCE_PINS_VERIFIED=' + $pinCount + '/' + $SourcePins.Count)
 if (-not $statusOk -or -not $countsOk -or -not $sensitivityOk -or -not $rowsOk -or -not $governanceOk -or -not $summaryOk -or -not $evidenceOk -or -not $processEvidenceOk) {
@@ -217,7 +222,7 @@ $acceptText = @"
 - Invocaciones del planner canónico: `45/45`; procesos Godot Mono independientes: `45/45`; selectores: `9/9`; Godot `4.7.1.stable.mono.official.a13da4feb`.
 - Las nueve filas están aceptadas, cada una con las cinco variantes de matriz; cada proceso reporta exit code `0` y recibo con SHA-256. Los hashes de los ficheros de evidencia incluidos en el propio reporte se verificaron contra el disco.
 - Recibo estático precedente: `$ReceiptPath`; SHA-256 `$ExpectedReceiptSha`; `198/198` tests; `81/81` source pins; `9/9` authority-input pins.
-- Wrapper PowerShell original: `C11D_V2B_RUNTIME_MATRIX=BLOCKED` en su post-check; el runner/report ya existente devolvió el estado PASS y exit code `0` indicado por la consola. El bloqueo procedió del chequeo de los marcadores de stdout por líneas ancladas. Esta recuperación valida los mismos marcadores tras normalizar finales de línea; no vuelve a invocar el runner ni Godot.
+- Wrapper PowerShell original: `C11D_V2B_RUNTIME_MATRIX=BLOCKED` en su post-check; el runner/report ya existente devolvió el estado PASS y exit code `0` indicado por la consola. El aceptador previo también exigía que dos líneas de metadatos (`C11D_V2B_RUNTIME_REPORT=` y `C11D_V2B_RUNTIME_REPORT_SHA256=`) aparecieran en el stdout del proceso secundario. El wrapper las emitió mediante `Write-Host` en la consola principal, por lo que no forman parte de esa captura. Esta recuperación verifica ruta y SHA del informe directamente desde el archivo fijado en disco, conserva la exigencia de los marcadores operacionales restantes y no vuelve a invocar el runner ni Godot.
 - Log directory: `$LogDirectory`.
 
 ## Interpretación técnica
@@ -239,7 +244,7 @@ $repairText = @"
 
 **Hallazgo:** el wrapper PowerShell emitió `C11D_V2B_RUNTIME_MATRIX=BLOCKED` aunque el reporte existente presentaba `PASS_SAFE_PROJECTION_SEED_SENSITIVITY`, exit code del runner `0`, 45 llamadas al planner y 45 procesos Godot. El chequeo de aceptación del wrapper no incluía una salida de diagnóstico por condición y bloqueó la aceptación al evaluar las líneas summary capturadas.
 
-La recuperación no cambia el contrato, el runner Python, el harness Godot ni la matriz; no invoca el planner, Godot o los tests. En su lugar valida los hashes aceptados del reporte y stdout, comprueba la estructura estricta del reporte, los nueve selectores y las cinco variantes por selector, los hashes de los archivos de evidencia, los source pins y las locks de gobernanza. Comprueba las líneas de stdout tras dividir de forma robusta los finales `CRLF`, `LF` o `CR`, evitando la dependencia de anclas regex sobre las líneas originales.
+La recuperación no cambia el contrato, el runner Python, el harness Godot ni la matriz; no invoca el planner, Godot o los tests. Valida los hashes aceptados del reporte y stdout, la estructura estricta del reporte, los nueve selectores y cinco variantes por selector, los hashes de los archivos de evidencia, los source pins y las locks de gobernanza. La comprobación de salida exige las líneas operacionales que pertenecen al stdout del proceso; no exige `C11D_V2B_RUNTIME_REPORT=` ni `C11D_V2B_RUNTIME_REPORT_SHA256=` en ese fichero, porque esas dos líneas son emitidas por `Write-Host` del wrapper hacia la consola interactiva. Ruta y SHA del informe se comprueban directamente contra la ruta derivada del directorio de evidencia y el SHA-256 fijado. Esto elimina solo dos duplicados de presentación; no relaja las validaciones del reporte o de sus artefactos.
 
 Resultados: report `$ExpectedReportSha`; stdout `$ExpectedStdoutSha`; stderr vacío (`$ExpectedStderrSha`); `45/45` planner; `45/45` procesos Godot Mono; `9/9` selectores aceptados. No se modifica `C11C_FREEZE_PACKAGE_MANIFEST.json`. No hay permiso para render, media, payload persistido, candidato admisible, baseline/freeze/promotion ni release.
 "@

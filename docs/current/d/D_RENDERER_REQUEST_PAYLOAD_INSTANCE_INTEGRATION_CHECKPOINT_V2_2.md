@@ -1,14 +1,14 @@
 # C11-D — Request→Payload Instance Integration Checkpoint V2.2
 
 **Fecha:** 27-10-2026  
-**Estado:** `V2.2_WINDOWS_PASS; IO_IDENTITY_REFRESH_PASS; CHALLENGE_SEED_COLLISION_EXPANSION_WINDOWS_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PENDING`  
+**Estado:** `V2.2_WINDOWS_PASS; IO_IDENTITY_REFRESH_PASS; CHALLENGE_SEED_COLLISION_EXPANSION_WINDOWS_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PASS; V2C_SOURCE_FRAME_RECEIPTS_PENDING`  
 **Predecesor:** `D_RENDERER_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_CHECKPOINT_V2_1.md`  
 **Ledger acumulativo:** `C11D_ENGINEERING_PHASE_LEDGER_20261027_V1.md`
 
 
 ## 0. V2.2 — aceptación real en Windows (27-10-2026)
 
-**Estado:** `WINDOWS_PASS_RUNTIME_RECEIPT_VALIDATED; IO_IDENTITY_REFRESH_PASS; CHALLENGE_COLLISION_EXPANSION_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PENDING`.
+**Estado:** `WINDOWS_PASS_RUNTIME_RECEIPT_VALIDATED; IO_IDENTITY_REFRESH_PASS; CHALLENGE_COLLISION_EXPANSION_PASS; V2B_STATIC_TESTS_PASS; V2B_RUNTIME_MATRIX_PASS; V2C_SOURCE_FRAME_RECEIPTS_PENDING`.
 
 Aplicación del overlay `C11D_REQUEST_PAYLOAD_V2_EDITORIAL_HASH_NAMESPACE_FIX_OVERLAY_20261027_V1.zip`:
 
@@ -217,3 +217,16 @@ Solo tras la aceptación estática se puede abrir una puerta separada de `45/45`
 **Siguiente puerta:** matriz V2-B 45/45 llamadas al planner + 45/45 procesos Godot Mono independientes, detenida al primer fallo. Debe demostrar repetibilidad baseline, sensibilidad al gameplay seed y ortogonalidad de music seed/editorial.
 
 **Gobernanza:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.
+### Fase M — Matriz V2-B de sensibilidad de estado visual seguro (27-10-2026, Windows PASS; recuperación de postcondición)
+
+- Reporte runtime: $ReportPath; SHA-256 $reportSha; estado PASS_SAFE_PROJECTION_SEED_SENSITIVITY; isual_seed_sensitivity=ACCEPTED_BY_SAFE_PROJECTION_HASH.
+- Planner canónico 45/45; procesos independientes de Godot Mono 45/45; selectores aceptados 9/9; cinco variantes por selector (BASELINE_R1, BASELINE_R2, GAMEPLAY_SEED_MUTATION, MUSIC_SEED_MUTATION, EDITORIAL_MUTATION).
+- Godot: $godotVersion; stdout agregado SHA-256 $stdoutSha; stderr SHA-256 $stderrSha (vacío). Se verificaron $processEvidenceCount archivos de evidencia por sus hashes.
+- Test estático de implementación previo: 198/198; recibo SHA-256 $ExpectedReceiptSha; pins estáticos 81/81 y authority-input pins 9/9 registrados en la aceptación de Fase L.
+- Integridad de fuentes runtime: $pinCount/14 pins confirmados; errores de pins antes/después vacíos; manifiesto congelado C11-C sin cambios.
+- El wrapper original imprimió C11D_V2B_RUNTIME_MATRIX=BLOCKED pese a que el reporte estricto y las 45/45 ejecuciones comunicaban PASS; la comprobación post-run del wrapper no reconoció los marcadores de stdout. Esta recuperación volvió a comprobar el reporte, las nueve filas, los locks, el archivo de salida y sus líneas normalizadas, sin reejecutar la matriz ni iniciar procesos Godot.
+- Alcance: evidencia de estado visual source-frame en memoria y sensibilidad de hash; **no es render de vídeo, no aprueba bindings y no admite input de candidato**.
+
+**Siguiente puerta:** V2-C source-frame runtime receipts para los nueve Challenges mediante planner canónico y ChallengeRuntimeBridge.run_effective_pipeline, primero recibos en memoria y validación de contrato/pins. Mantener sin cambios la gobernanza de render.
+
+**Bloqueos inalterados:** enderer=OFF; media_created=false; payload_materialized=false; candidate_input_admissible=false; seed_domains_complete_for_candidate_input=false; pproved_bindings=0; pproved_custom_data_bindings=0; D4.8=BLOCKED; D9.10=PREPARE_ONLY; D9.14=BLOCKED; D9.16=BLOCKED; D9.17=BLOCKED_NO_GO; D10=BLOCKED_FOR_PROMOTION; aseline_approval=MISSING; reeze_eligible=false; elease_authority=NONE.
