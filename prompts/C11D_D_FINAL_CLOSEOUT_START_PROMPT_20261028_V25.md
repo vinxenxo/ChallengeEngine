@@ -1,0 +1,20 @@
+# C11-D Final Closeout — Start Prompt V25 (2026-10-28)
+
+Continúa en el checkout Windows activo `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`, sin extraer el snapshot encima del árbol de trabajo. En esta nueva ventana se adjuntarán `C11D_PHASE_P_CONTEXT_HANDOVER_DOCUMENTATION_OVERLAY_20261028_V1.zip` y un snapshot generado por `c11c-suite`, esperado como `ChallengeEngineV01_STATELESS_C11-D10_CONTEXT_SNAPSHOT_20261028_POST_PHASE_P_STATIC_PASS.zip`. Inspecciona ambos. El hash general del nuevo snapshot debe ser distinto al de snapshots anteriores por ser una nueva captura; eso no demuestra corrupción ni modifica la autoridad canónica del manifiesto en el checkout vivo.
+
+Lee primero `AGENTS.md`, `.continue/rules/CONTINUE.md`, el master handover `prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261028_V25.md`, checkpoint V25, ledger V2, registro de evidencia Phase P y playbook PowerShell 5.1. Usa el ledger V1 y los recibos de Fases A–O como historial; no repitas matrices aceptadas si los pins no cambiaron.
+
+**Estado actual exacto:** Fase O aceptada como crosswalk read-only; implementación Phase P aplicada; normalización de versión Python comprobada 5/5; Python `3.13.14`; tests estáticos Phase P 30/30, exit 0, stdout SHA `a32c904fad96c2068f689d39208029f50946ff73843e4d4055ac6dcc311e73e3`, stderr vacío SHA `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`. Runner tras fix SHA `77644d982ed0f552d58561ba05eb4969a76c90703bbb8745dbf73d1bafa3e327`.
+
+**Única tarea inmediata:** verificar el manifiesto C11-C de la copia viva, confirmar runner hash y Python preflight, y ejecutar una sola vez `tools/c11d/d9/run_d_renderer_phase_p_source_value_frame_value_provenance_20261028.ps1` según el playbook. El runtime Phase P todavía no está aceptado. Si falla, conservar stdout/stderr, reportes y evidencia y diagnosticar el primer fallo sin reintentar a ciegas ni aplicar otra reparación especulativa. Si pasa, validar hashes, pins, dos procesos independientes por selector y el reporte real; preparar un registro de revisión/aceptación independiente. No aprobar bindings por el hecho de pasar el runtime.
+
+Fase P cubre solo seis candidatos: `CHALLENGE_003.target_x` (escalar), `CHALLENGE_005/006/007.target_position`, `CHALLENGE_008.active_selection` y `CHALLENGE_009.displayed_count`. No serializar el diccionario completo `FrameSnapshot.custom_data`. Mantener `winning_frame` como único anclaje temporal y `close_calls` como contador de episodios.
+
+No modificar C11-C ni copiar el manifiesto desde el snapshot. El manifiesto vivo debe ser SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`, 796318 bytes. Conserva todos los locks: renderer OFF, media false, payload false, candidate input inadmissible, seed domains incomplete, master seed not adopted, approved bindings 0, D4.8 BLOCKED, D9.10 PREPARE_ONLY, D9.14/D9.16 BLOCKED, D9.17 NO-GO, D10 BLOCKED, baseline approval missing, freeze ineligible, release authority none. No render ni media todavía.
+
+
+## Nota específica sobre el ZIP de releases y la captura usada
+
+El snapshot que llegó primero a la biblioteca (`ChallengeEngineV01_STATELESS_C11-D10_latest_FROZEN_20261028_163525.zip`) se inspeccionó con SHA-256 `199a65ee76eb72a878808cb7b3c862a3eeb945b356cab9726c5d6c86f64b55a1`, tamaño 8.366.872 bytes, 3.476 entradas y CRC limpio. Ese archivo no contenía todavía los artefactos Phase P y, por tanto, no es la captura correcta de continuidad posterior a Phase P.
+
+Aclaración del operador: la divergencia observada en el contenido empaquetado de `releases` está causada por la generación del ZIP freeze/snapshot mediante `c11c-suite` para continuar el trabajo en otra ventana; no es un defecto adicional que deba abrir otra línea de investigación. La nueva captura tendrá una huella de archivo distinta intencionadamente. No invertir más iteraciones en intentar normalizar esa huella del ZIP. Solo comprobar la integridad del archivo y el estado del checkout vivo; no reescribir ni sustituir el manifiesto canónico desde el ZIP.

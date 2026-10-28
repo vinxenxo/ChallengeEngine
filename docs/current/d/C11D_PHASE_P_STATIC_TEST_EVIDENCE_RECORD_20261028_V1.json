@@ -1,0 +1,63 @@
+{
+  "record_type": "C11D_PHASE_P_STATIC_TEST_EVIDENCE",
+  "record_version": "1",
+  "date": "2026-10-28",
+  "status": "OPERATOR_REPORTED_STATIC_PASS_RUNTIME_PENDING",
+  "source_of_evidence": "operator transcript in conversation; not independently executed by author",
+  "checkout": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "python_preflight": {
+    "status": "PASS",
+    "version_text": "Python 3.13.14",
+    "probe": "py.exe -3.13 --version"
+  },
+  "version_normalization": {
+    "status": "PASS",
+    "cases_passed": 5,
+    "cases_total": 5,
+    "position_check": "PASS"
+  },
+  "static_test_suite": {
+    "path": "tools/c11d/d9/test_d_renderer_phase_p_source_value_frame_value_provenance_20261028.py",
+    "tests_passed": 30,
+    "tests_total": 30,
+    "exit_code": 0,
+    "stdout_sha256": "a32c904fad96c2068f689d39208029f50946ff73843e4d4055ac6dcc311e73e3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "log_directory": "%TEMP%\\C11D_PHASE_P_STATIC_TESTS_20261028_6c3212888d134707a4300d1354cbc009"
+  },
+  "runner": {
+    "path": "tools/c11d/d9/run_d_renderer_phase_p_source_value_frame_value_provenance_20261028.ps1",
+    "sha256_after_fix": "77644d982ed0f552d58561ba05eb4969a76c90703bbb8745dbf73d1bafa3e327",
+    "sha256_before_fix": "e9a6bb83b5de353c30288c6d5215419f6a2488340c08c5289798d2c3c9cc2a97"
+  },
+  "phase_p_runtime": {
+    "status": "NOT_YET_ACCEPTED",
+    "executed_after_fix": false,
+    "acceptance_receipt": null
+  },
+  "historical_failures": {
+    "first_runner_failure": "py.exe inline version probe raised File '<string>', line 1 error; not accepted as runtime evidence",
+    "intermediate_patch": "V3 apply precondition mismatch; no runtime was run under that failed application"
+  },
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  }
+}
