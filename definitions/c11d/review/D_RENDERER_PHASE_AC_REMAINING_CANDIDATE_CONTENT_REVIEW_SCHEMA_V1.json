@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Phase AC Remaining Candidate Content Review Result V1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "source_triage_sha256",
+    "counts",
+    "sources",
+    "bundle",
+    "authority_adjudication",
+    "policy_adoption",
+    "hard_locks",
+    "next_gate"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "phase": {
+      "const": "AC"
+    },
+    "status": {
+      "const": "CONTENT_BUNDLE_READY_FOR_REMAINING_CANDIDATE_REVIEW"
+    },
+    "source_triage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "all_candidates",
+        "medium_priority",
+        "low_priority",
+        "bundled_sources",
+        "source_hash_matches",
+        "source_hash_mismatches",
+        "source_files_missing"
+      ],
+      "properties": {
+        "all_candidates": {
+          "const": 107
+        },
+        "medium_priority": {
+          "const": 55
+        },
+        "low_priority": {
+          "const": 2
+        },
+        "bundled_sources": {
+          "const": 57
+        },
+        "source_hash_matches": {
+          "const": 57
+        },
+        "source_hash_mismatches": {
+          "const": 0
+        },
+        "source_files_missing": {
+          "const": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 57,
+      "maxItems": 57
+    },
+    "bundle": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "members"
+      ]
+    },
+    "authority_adjudication": {
+      "const": "NOT_PERFORMED"
+    },
+    "policy_adoption": {
+      "const": "NONE"
+    },
+    "hard_locks": {
+      "type": "object"
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

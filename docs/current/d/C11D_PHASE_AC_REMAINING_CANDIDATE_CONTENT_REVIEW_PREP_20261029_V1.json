@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "phase": "AC",
+  "title": "Remaining Authority Candidate Content Review Preparation",
+  "date": "2026-10-29",
+  "status": "PREPARED_REMAINING_CANDIDATE_CONTENT_REVIEW",
+  "source_triage_path": "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.json",
+  "source_triage_sha256": "4db4ab20040b68872c4501dc39dda61b7ca2d8716303a536dbdd4121929ec418",
+  "prior_content_review": {
+    "phase": "Y",
+    "covered_high_priority_candidates": 50,
+    "covered_previously_unsearched_documents": 7,
+    "remaining_candidate_content_review_complete": false
+  },
+  "scope": {
+    "select_priorities": [
+      "MEDIUM_REVIEW_PRIORITY",
+      "LOW_REVIEW_PRIORITY"
+    ],
+    "expected_medium": 55,
+    "expected_low": 2,
+    "expected_candidate_total": 57,
+    "source_bytes_read_from_active_checkout": true,
+    "verify_current_sha256_against_triage_pin": true,
+    "preserve_source_bytes_in_zip": true,
+    "source_files_written_or_changed": false,
+    "repository_runtime_reexecuted": false,
+    "git_history_searched": false,
+    "external_files_searched": false
+  },
+  "review_outputs": {
+    "json": "caller supplied TEMP path",
+    "markdown": "caller supplied TEMP path",
+    "zip": "caller supplied Downloads path"
+  },
+  "authority_adjudication": "NOT_PERFORMED",
+  "policy_adoption": "NONE",
+  "no_global_absence_claim": true,
+  "hard_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "timing_conflicts": [
+    {
+      "challenge": "CHALLENGE_008",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "challenge": "CHALLENGE_009",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "next_gate": "PHASE_AC_REMAINING_MEDIUM_LOW_CANDIDATE_CONTENT_REVIEW",
+  "note": "This prep artifact does not claim the remaining candidates have been read. The runtime tool will fail closed on count, path, missing-byte, size or SHA mismatch."
+}
