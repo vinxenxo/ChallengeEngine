@@ -1,0 +1,503 @@
+{
+  "schema": "C11D-PHASE-R-OPERATOR-POLICY-DECISION-PACKET-V1",
+  "schema_version": "1.0.0",
+  "artifact_id": "C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1",
+  "date": "2026-10-29",
+  "status": "PREPARED_READ_ONLY_DECISION_PACKET_NOT_ADJUDICATED",
+  "mode": "READ_ONLY_DECISION_PREPARATION",
+  "purpose": "Convert the Phase Q dependency inventory into a separable operator/product-authority decision docket. Options and test obligations are explicit, but no option is selected, no policy is adopted, and no renderer or binding authority is created.",
+  "phase_q_closeout": {
+    "path": "docs/current/d/C11D_PHASE_Q_VERIFIER_RECOVERY_AND_REVIEW_CLOSEOUT_20261029_2175920e62954eb0b0fba64555870767.md",
+    "sha256": "5a8e62f9d38bbf31cfb64066fec57f17d2f931da2349f0078b7ea62ed77851d1",
+    "status": "PASS_READ_ONLY_INVENTORY"
+  },
+  "scope": {
+    "selectors": [
+      "CHALLENGE_003.target_x",
+      "CHALLENGE_005.target_position",
+      "CHALLENGE_006.target_position",
+      "CHALLENGE_007.target_position",
+      "CHALLENGE_008.active_selection",
+      "CHALLENGE_009.displayed_count"
+    ],
+    "read_only": true,
+    "production_source_modification": false,
+    "challenge_definition_modification": false,
+    "runtime_reexecution": false,
+    "godot_invoked": false,
+    "renderer_dispatch_invoked": false,
+    "payload_materialized": false,
+    "media_created": false,
+    "operator_decisions_recorded": false
+  },
+  "authority_and_decision_rules": {
+    "decision_authority": "EXPLICIT_OPERATOR_OR_PRODUCT_CONTRACT_OWNER_AUTHORITY_REQUIRED; ASSISTANT_PREPARATION_IS_NOT_APPROVAL",
+    "decision_record": "Any adopted choice must be captured in a separate, immutable, add-only decision record that names the authority, exact policy, scope, source pins, rationale, and acceptance tests.",
+    "no_implicit_acceptance": true,
+    "default_when_unresolved": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+    "CHALLENGE_008_009": "No duration correction may be inferred from phase names, visual plausibility, or convenience; explicit authority is required.",
+    "future_binding": "A policy decision packet alone never authorizes a binding, custom_data access, renderer projection, payload, media, or release. Each remains subject to its own governed gate."
+  },
+  "candidate_semantics": [
+    {
+      "selector": "CHALLENGE_003.target_x",
+      "accepted_semantics": "float scalar X, per-frame, from pilot domain 0..100",
+      "not_authorized": "Any source Y, a Vector2 replacement, or rendering/binding",
+      "source_relation": "target_start + target_velocity * frame_index"
+    },
+    {
+      "selector": "CHALLENGE_005.target_position",
+      "accepted_semantics": "Vector2 target point constant per run and repeated across source frames",
+      "not_authorized": "Treating it as a dynamic trajectory or replacing snapshot.position",
+      "source_relation": "HitMechanic._target_prime"
+    },
+    {
+      "selector": "CHALLENGE_006.target_position",
+      "accepted_semantics": "Per-frame Vector2 target track",
+      "not_authorized": "Replacing catcher snapshot.position, interpolation/extrapolation, or rendering/binding",
+      "source_relation": "CatchMechanic emits p_t per source frame"
+    },
+    {
+      "selector": "CHALLENGE_007.target_position",
+      "accepted_semantics": "Per-frame Vector2 target track",
+      "not_authorized": "Distractor topology/distances, scoring/success telemetry, or close_calls as visual source",
+      "source_relation": "FindMechanic.calculate_frame emits p_target per source frame"
+    },
+    {
+      "selector": "CHALLENGE_008.active_selection",
+      "accepted_semantics": "Integer selection state only; semantic/presentation dependency unresolved",
+      "not_authorized": "Secondary visual consumer, duration fix, or fallback inferred from snapshot.position",
+      "source_relation": "ChooseMechanic writes the selected option index; snapshot.position already maps options_positions[selection] with a center fallback for invalid indices"
+    },
+    {
+      "selector": "CHALLENGE_009.displayed_count",
+      "accepted_semantics": "Integer current displayed state; distinct from target_count",
+      "not_authorized": "Text/layout emission, use of target_count as displayed state, or duration fix",
+      "source_relation": "CountMechanic writes displayed_count; snapshot.position is calculated from the displayed value; target_count remains a separate goal value"
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "R-01-TIMEBASE-SAMPLING",
+      "title": "Source 60 FPS to delivery 30 FPS sampling",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_003.target_x",
+        "CHALLENGE_005.target_position",
+        "CHALLENGE_006.target_position",
+        "CHALLENGE_007.target_position"
+      ],
+      "question": "Which exact source frame indices and duration/boundary semantics map to each 30 FPS delivery frame?",
+      "options": [
+        {
+          "id": "SAMPLE_EVEN_SOURCE_INDICES",
+          "definition": "Use explicitly enumerated source indices 0,2,4,... with exact cardinality derived from an approved duration convention.",
+          "consequence": "Simple deterministic decimation; drops odd source frames and still requires a defined endpoint/duration contract."
+        },
+        {
+          "id": "SAMPLE_EXPLICIT_TIME_BOUNDARIES",
+          "definition": "Define delivery times and an explicit source-boundary/nearest-sample policy including tie behavior.",
+          "consequence": "Can express timing precisely but must specify half-open/closed boundaries and tie handling; existing proposal is not globally approved."
+        },
+        {
+          "id": "KEEP_BLOCKED",
+          "definition": "Do not map samples until the product/contract authority selects and records one policy.",
+          "consequence": "No binding or rendering work may depend on this timebase yet."
+        }
+      ],
+      "non_negotiables": [
+        "No interpolation or extrapolation unless separately authorized by a new reviewed policy.",
+        "No synthetic source samples.",
+        "No blanket 2:1 assumption without an explicit selected rule.",
+        "Repeat determinism is necessary but not proof of visual correctness."
+      ],
+      "authority_required": "Product/contract owner for the delivery timeline; operator records the authoritative decision.",
+      "future_tests": [
+        "Exact source index list and cardinality",
+        "Boundary inclusion/exclusion and ties",
+        "Duration preservation",
+        "Unsupported FPS/timebase fails closed",
+        "Independent-process repeat determinism",
+        "No synthetic samples"
+      ]
+    },
+    {
+      "decision_id": "R-02-SPATIAL-MAPPING",
+      "title": "Coordinate transforms for Vector2 candidates",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_005.target_position",
+        "CHALLENGE_006.target_position",
+        "CHALLENGE_007.target_position"
+      ],
+      "question": "Approve the proposed two-stage transform, reject it, or require a different explicitly specified mapping?",
+      "options": [
+        {
+          "id": "APPROVE_PROPOSED_TWO_STAGE_AFTER_AUTHORITY_REVIEW",
+          "definition": "Source canvas 1080x1920 to logical 540x960 at 0.5, then logical to delivery reference 720x1280 at 4/3.",
+          "consequence": "Composite scale is 2/3 only if both stages and their coordinate origins are formally adopted; known-point and boundary tests remain mandatory."
+        },
+        {
+          "id": "REJECT_AND_REQUIRE_NEW_MAPPING_SPEC",
+          "definition": "Reject the proposal and require a new transform contract with source/destination spaces and origin conventions.",
+          "consequence": "No transform can be used pending a separately reviewed replacement."
+        },
+        {
+          "id": "KEEP_BLOCKED",
+          "definition": "Make no transform decision now.",
+          "consequence": "Vector candidates remain non-renderable and unbound."
+        }
+      ],
+      "non_negotiables": [
+        "Do not infer coordinate space from value shape.",
+        "No clamping of out-of-domain vectors.",
+        "Do not include CHALLENGE_008/009 in this decision while their timebase and semantic role remain blocked."
+      ],
+      "authority_required": "Product/visual-design authority for reference canvas and spatial contract.",
+      "future_tests": [
+        "Origin and known-point transforms",
+        "Axis and aspect-ratio preservation",
+        "Bounds and out-of-domain rejection",
+        "Float precision",
+        "Final delivery coordinate interpretation"
+      ]
+    },
+    {
+      "decision_id": "R-03-PILOT-SCALAR-X-AND-PRESENTATION-Y",
+      "title": "CHALLENGE_003 scalar X and separate presentation-only Y",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_003.target_x"
+      ],
+      "question": "Decide whether to adopt the proposed X mapping and whether a separate presentation-only centerline Y=480 is permitted.",
+      "options": [
+        {
+          "id": "APPROVE_X_AND_PRESENTATION_Y_SEPARATELY",
+          "definition": "Review X=(target_x/100)*540 and independently approve Y=480 as presentation policy, not source data.",
+          "consequence": "Requires two explicit decisions; neither may be inferred from the scalar or provenance report."
+        },
+        {
+          "id": "APPROVE_X_ONLY_NO_Y_DEFAULT",
+          "definition": "Approve an X transform only; withhold visual placement until Y ownership is separately specified.",
+          "consequence": "Scalar source remains one-dimensional and cannot alone define a full 2D point."
+        },
+        {
+          "id": "REJECT_MAPPING_OR_KEEP_BLOCKED",
+          "definition": "Reject the proposed map or defer all decisions.",
+          "consequence": "No position or rendering can be derived from target_x under this packet."
+        }
+      ],
+      "non_negotiables": [
+        "target_x remains float scalar.",
+        "snapshot.position is a separate track.",
+        "Never store an invented Y into source data or retype the candidate as Vector2."
+      ],
+      "authority_required": "Product/visual-design authority for target placement.",
+      "future_tests": [
+        "Scalar remains scalar through pipeline",
+        "Known X endpoints and representative values",
+        "Y policy independently traced as presentation-only",
+        "Missing/nonfinite/out-of-range scalar fails closed",
+        "No inferred Y in source provenance"
+      ]
+    },
+    {
+      "decision_id": "R-04-VISIBILITY-AND-REGION-OWNERSHIP",
+      "title": "Visible region and temporal visibility span",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_003.target_x",
+        "CHALLENGE_005.target_position",
+        "CHALLENGE_006.target_position",
+        "CHALLENGE_007.target_position"
+      ],
+      "question": "For each selector, identify the owning region/actor and exact visibility interval/cardinality.",
+      "options": [
+        {
+          "id": "FULL_SOURCE_FRAME_SPAN",
+          "definition": "Adopt full-source-frame-span visibility separately for each candidate after authority review.",
+          "consequence": "May keep targets visible outside meaningful gameplay phases; requires proof and exact cardinality tests."
+        },
+        {
+          "id": "EXPLICIT_AUTHORED_WINDOW",
+          "definition": "Adopt a source-authored window with exact inclusive/exclusive boundaries and ownership.",
+          "consequence": "Requires a grounded source/contract definition for every window; cannot derive from phase names alone."
+        },
+        {
+          "id": "KEEP_BLOCKED",
+          "definition": "Do not define visibility yet.",
+          "consequence": "No visibility rule can be used by a renderer or binding."
+        }
+      ],
+      "non_negotiables": [
+        "Phase P provenance is not visibility approval.",
+        "Do not use close_calls to infer visibility.",
+        "Do not infer regional ownership from asset names."
+      ],
+      "authority_required": "Product/visual-design authority for visible behavior and region ownership.",
+      "future_tests": [
+        "Exact visible span/cardinality",
+        "Hide/show boundary values",
+        "Missing samples fail closed",
+        "No visibility based on close_calls",
+        "Per-selector region ownership"
+      ]
+    },
+    {
+      "decision_id": "R-05-ASSET-GEOMETRY-ANCHOR-CROP-ROUNDING",
+      "title": "SVG intrinsic dimensions, anchor, clipping and pixel rounding",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_003.target_x",
+        "CHALLENGE_005.target_position",
+        "CHALLENGE_006.target_position",
+        "CHALLENGE_007.target_position"
+      ],
+      "question": "Adopt or reject asset-size interpretation, center anchor, edge clipping and exact deterministic rounding rules.",
+      "options": [
+        {
+          "id": "APPROVE_PROPOSED_GEOMETRY_WITH_EXACT_ROUNDING",
+          "definition": "Treat intrinsic 100x100 SVG size as source canvas units, use center anchor, clip at logical bounds, and separately define one exact pixel-rounding mode.",
+          "consequence": "Requires asset inspection and explicit rounding mode before it is testable; the rounding choice cannot be left implicit."
+        },
+        {
+          "id": "REQUIRE_EXPLICIT_ASSET_METADATA",
+          "definition": "Do not use intrinsic SVG dimensions as scale units; require a separately governed asset geometry declaration.",
+          "consequence": "Adds metadata contract and validation work but avoids an implicit asset-unit assumption."
+        },
+        {
+          "id": "KEEP_BLOCKED",
+          "definition": "Leave size/anchor/crop/rounding unresolved.",
+          "consequence": "No final renderer geometry may be defined."
+        }
+      ],
+      "non_negotiables": [
+        "No silent source-position movement to avoid clipping.",
+        "No unstated rounding behavior.",
+        "Malformed/missing intrinsic geometry fails closed."
+      ],
+      "authority_required": "Product/visual-design authority for asset sizing and crop; renderer-contract owner for rounding semantics.",
+      "future_tests": [
+        "Intrinsic size missing/invalid",
+        "Anchor geometry",
+        "Negative/off-edge geometry and clipping",
+        "Exact tie rounding samples",
+        "Repeat pixel-coordinate determinism"
+      ]
+    },
+    {
+      "decision_id": "R-06-INVALID-DATA-AND-TRACK-INTEGRITY",
+      "title": "Missing, malformed, nonfinite, out-of-range and cardinality mismatch handling",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_003.target_x",
+        "CHALLENGE_005.target_position",
+        "CHALLENGE_006.target_position",
+        "CHALLENGE_007.target_position"
+      ],
+      "question": "Formalize per-candidate fail-closed behavior and whole-track versus per-sample rejection.",
+      "options": [
+        {
+          "id": "FAIL_CLOSED_WHOLE_TRACK_NO_CLAMP",
+          "definition": "Reject the whole candidate track if any required sample is missing, malformed, nonfinite, out of domain, or cardinality-inconsistent; never clamp.",
+          "consequence": "Conservative and straightforward to audit; one bad sample invalidates the candidate track."
+        },
+        {
+          "id": "FAIL_CLOSED_SAMPLE_WITH_EXPLICIT_GAP_POLICY",
+          "definition": "Permit rejection of a bad sample only if a separately reviewed contract specifies the gap semantics and proves no interpolation or extrapolation.",
+          "consequence": "More complex; must not be assumed equivalent to whole-track rejection."
+        },
+        {
+          "id": "KEEP_BLOCKED",
+          "definition": "Do not specify a future binding contract until the policy is decided.",
+          "consequence": "No candidate data may be consumed for rendering."
+        }
+      ],
+      "non_negotiables": [
+        "NaN/Infinity invalid.",
+        "No silent coercion or clamping.",
+        "No whole custom_data map serialization.",
+        "Receipts must not serialize raw candidate values."
+      ],
+      "authority_required": "Data-contract owner, with operator recording the precise invalid-data rule.",
+      "future_tests": [
+        "Missing key",
+        "Wrong type",
+        "NaN and Infinity",
+        "Out-of-domain scalar/vector",
+        "Cardinality mismatch",
+        "Fail closed exactly as selected",
+        "Independent-process deterministic receipt",
+        "No raw values serialized"
+      ]
+    },
+    {
+      "decision_id": "R-07-SEMANTIC-VISUAL-OWNERSHIP",
+      "title": "Whether each accepted semantic candidate has a distinct visual consumer",
+      "status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "scope": [
+        "CHALLENGE_003.target_x",
+        "CHALLENGE_005.target_position",
+        "CHALLENGE_006.target_position",
+        "CHALLENGE_007.target_position",
+        "CHALLENGE_008.active_selection",
+        "CHALLENGE_009.displayed_count"
+      ],
+      "question": "For each selector, declare the visual entity/region it represents and whether it adds information not already represented by snapshot.position.",
+      "options": [
+        {
+          "id": "DEFINE_DISTINCT_VISUAL_CONSUMER_PER_SELECTOR",
+          "definition": "Record a separate owner, asset/region, semantic role and proof that the candidate adds distinct visual information.",
+          "consequence": "Requires exact per-selector design authority and prevents semantic aliases from becoming implicit duplicate sprites."
+        },
+        {
+          "id": "DECLARE_NO_SECONDARY_VISUAL_CONSUMER",
+          "definition": "Explicitly state the field is not separately projected into visuals.",
+          "consequence": "The candidate does not become a renderer binding; existing snapshot.position behavior remains governed independently."
+        },
+        {
+          "id": "KEEP_UNDECIDED",
+          "definition": "Do not infer any visual consumer or owner.",
+          "consequence": "All candidate visual consumption remains unauthorized."
+        }
+      ],
+      "non_negotiables": [
+        "CHALLENGE_003 target_x never supplies source Y.",
+        "CHALLENGE_005 target_position is per-run constant.",
+        "CHALLENGE_006/007 target_position are per-frame tracks.",
+        "CHALLENGE_007 distractor topology/distances, success/scoring telemetry and close_calls are excluded.",
+        "CHALLENGE_008 active_selection may be redundant with snapshot.position and remains blocked.",
+        "CHALLENGE_009 displayed_count is not target_count and does not authorize text/layout output."
+      ],
+      "authority_required": "Product authority for visible semantics and actor/region ownership.",
+      "future_tests": [
+        "Per-selector semantic ownership matrix",
+        "No invented fallback to snapshot.position",
+        "No telemetry substitute",
+        "No unapproved serialization",
+        "Only explicitly allowlisted fields appear in later contracts"
+      ]
+    },
+    {
+      "decision_id": "R-08-CHALLENGE-008-DURATION-CONFLICT",
+      "title": "CHALLENGE_008 declared duration versus phase sum",
+      "status": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "scope": [
+        "CHALLENGE_008.active_selection"
+      ],
+      "conflict": {
+        "declared_total_duration_seconds": 11,
+        "phase_duration_sum_seconds": 12,
+        "status": "BLOCKER_NO_CORRECTION_INFERRED"
+      },
+      "question": "Which authoritative source/contract value governs, and what explicit correction or exception is authorized?",
+      "options": [
+        {
+          "id": "AUTHORIZE_SOURCE_CONTRACT_CORRECTION",
+          "definition": "Authorized owner issues a separately governed change to the authoritative source/contract and its dependent pins/tests.",
+          "consequence": "Requires new reviewed evidence and revalidation; never edit the challenge JSON informally."
+        },
+        {
+          "id": "AUTHORIZE_EXPLICIT_CONTRACT_EXCEPTION",
+          "definition": "Authorized owner documents a precise reason why declared duration and phase sum may differ, with consumer semantics and test expectations.",
+          "consequence": "Must be explicit and versioned; cannot be inferred by the review packet."
+        },
+        {
+          "id": "RETAIN_BLOCK",
+          "definition": "Leave the conflict unresolved and keep CHALLENGE_008 blocked.",
+          "consequence": "No timebase/sampling or visual policy can adopt this selector."
+        }
+      ],
+      "authority_required": "Explicit owner of challenge timing/product contract; operator records immutable decision evidence.",
+      "future_tests": [
+        "Authoritative duration source is named",
+        "Declared duration and phase boundaries reconciled or exception proved",
+        "Exact sample count and endpoint",
+        "No inference from phase names",
+        "All affected source pins and regressions refreshed"
+      ]
+    },
+    {
+      "decision_id": "R-09-CHALLENGE-009-DURATION-AND-COUNT-ROLE",
+      "title": "CHALLENGE_009 declared duration versus phase sum and displayed-count ownership",
+      "status": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "scope": [
+        "CHALLENGE_009.displayed_count"
+      ],
+      "conflict": {
+        "declared_total_duration_seconds": 11,
+        "phase_duration_sum_seconds": 12,
+        "status": "BLOCKER_NO_CORRECTION_INFERRED"
+      },
+      "question": "Resolve timing under explicit authority, then decide whether displayed_count has a visual role distinct from current position and distinct from target_count.",
+      "options": [
+        {
+          "id": "AUTHORIZE_SOURCE_CONTRACT_CORRECTION_AND_DEFINE_COUNT_ROLE",
+          "definition": "Authorized owner governs the duration and explicitly defines what displayed_count represents visually, if anything.",
+          "consequence": "Requires timing and semantic evidence plus future tests; does not authorize text/layout by itself."
+        },
+        {
+          "id": "AUTHORIZE_EXPLICIT_CONTRACT_EXCEPTION_AND_DEFINE_COUNT_ROLE",
+          "definition": "Authorized owner documents an explicit timing exception and distinct count semantics, with tests.",
+          "consequence": "Versioned exception must distinguish current displayed state from target_count."
+        },
+        {
+          "id": "RETAIN_BLOCK",
+          "definition": "Keep both the timing conflict and presentation role unresolved.",
+          "consequence": "No sampling, text/layout or renderer policy can use displayed_count."
+        }
+      ],
+      "authority_required": "Explicit owner of challenge timing/product contract and count presentation; operator records immutable decision evidence.",
+      "future_tests": [
+        "11 versus 12 seconds reconciled or an explicit exception is proved",
+        "displayed_count remains distinct from target_count",
+        "Presentation owner/asset/region defined or explicitly none",
+        "No unauthorized text/layout emission",
+        "Affected source pins and regressions refreshed"
+      ]
+    }
+  ],
+  "future_gate_requirements": {
+    "required_artifacts_before_any_binding_specification": "Separate signed/authorized decisions with exact scopes, source pins, rationale, selected options, and accepted future-test criteria.",
+    "later_binding_specification": "New separately governed gate, allowlist only, no blanket custom_data access.",
+    "runtime_render_gate": "Not covered by Phase R; remains blocked until every prerequisite gate and approval is complete.",
+    "C11C": "Keep frozen authoritative baseline immutable until C11-D is formally approved, frozen, and promoted."
+  },
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "whole_custom_data_serialization_allowed": false,
+    "challenge_json_modification_allowed": false,
+    "challenge_004_v1_harness_mutation_allowed": false
+  },
+  "phase_r_exit_criteria": [
+    "Packet and schema validate; no decision option is selected by this artifact.",
+    "All nine decision IDs exist with explicit authority, options, consequences, and future tests.",
+    "CHALLENGE_008 and CHALLENGE_009 11s/12s conflicts remain preserved and blocked.",
+    "Current Phase Q and Phase P source pins reconcile.",
+    "Static test passes without Godot, renderer, payload, media, or production code changes.",
+    "Any future policy adoption occurs only in a separate explicit decision artifact."
+  ],
+  "next_gate": {
+    "name": "Phase S — authorized policy decision record and adjudication, only after explicit operator/product choices are supplied",
+    "mode": "READ_ONLY_DECISION_ADJUDICATION_UNTIL_FORMAL_AUTHORITY_IS_EVIDENCED",
+    "start_condition": "Phase R packet is accepted as decision preparation. No policy is adopted simply by closing Phase R."
+  }
+}
