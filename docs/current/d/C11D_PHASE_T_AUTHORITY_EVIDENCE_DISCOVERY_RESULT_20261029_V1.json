@@ -1,0 +1,1664 @@
+{
+    "schema_version":  "1.0.0",
+    "phase":  "T",
+    "status":  "CANDIDATE_INVENTORY_READY_FOR_HUMAN_REVIEW",
+    "created_utc":  "2026-10-29T10:33:49Z",
+    "scan_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "scope":  {
+                  "working_tree_only":  true,
+                  "git_history_searched":  false,
+                  "external_files_searched":  false,
+                  "text_extensions":  [
+                                          ".md",
+                                          ".markdown",
+                                          ".txt",
+                                          ".rst",
+                                          ".json",
+                                          ".yaml",
+                                          ".yml",
+                                          ".toml",
+                                          ".csv",
+                                          ".ps1",
+                                          ".py",
+                                          ".gd",
+                                          ".tscn",
+                                          ".tres",
+                                          ".xml",
+                                          ".ini",
+                                          ".cfg",
+                                          ".log",
+                                          ".shader",
+                                          ".gdshader"
+                                      ],
+                  "excluded_directory_names":  [
+                                                   ".git",
+                                                   ".godot",
+                                                   "node_modules",
+                                                   ".venv",
+                                                   "venv",
+                                                   "__pycache__",
+                                                   "bin",
+                                                   "obj",
+                                                   "dist",
+                                                   "build",
+                                                   ".pytest_cache",
+                                                   ".mypy_cache",
+                                                   "cache",
+                                                   "tmp",
+                                                   "temp"
+                                               ],
+                  "self_excluded_prefixes":  [
+                                                 "docs/current/d/C11D_PHASE_T_",
+                                                 "definitions/c11d/review/D_RENDERER_PHASE_T_",
+                                                 "tools/c11d/d9/test_d_renderer_phase_t_authority_evidence_discovery_",
+                                                 "tools/c11d/d9/scan_d_renderer_phase_t_authority_evidence_discovery_"
+                                             ],
+                  "maximum_text_file_bytes":  4194304,
+                  "binary_contents_searched":  false,
+                  "archive_contents_searched":  false
+              },
+    "counts":  {
+                   "directories_seen":  3161,
+                   "files_seen":  26146,
+                   "text_files_scanned":  17127,
+                   "files_skipped_large":  1,
+                   "candidate_files":  107,
+                   "candidate_match_lines":  86,
+                   "unsearched_documents":  7,
+                   "scan_errors":  0,
+                   "self_excluded_files":  5
+               },
+    "scan_index_sha256":  "54558ea925389ab25bcec2968bab6c7e706f3ec4708bd25878842fc70e5d1484",
+    "source_pins_verified":  [
+                                 {
+                                     "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                     "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "AGENTS.md",
+                                     "sha256":  "0d4565e57b9fe9bba88a88f10babd175f3bb5e3fb437014866ed1e67d3016b37",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  ".continue/rules/CONTINUE.md",
+                                     "sha256":  "52776e55023a36e1ead71cf39a93337ca96f6097bd2c88018c3353484145ac86",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261029_V5.md",
+                                     "sha256":  "18a509e5f9345efd5575ef87392a58df7aed8bfcf1c0c9e2dde2396925f938bb",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261029_V28.md",
+                                     "sha256":  "6025f8a79312b551fb12aa375ba2e4a392de55998d6ae98c8ef4aa42555bdb48",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_ACCEPTANCE_REVIEW_20261029_V1.md",
+                                     "sha256":  "9998e9f0e47db9f3b21265bb65a1266a0dc9d60274de9a82e8a01e4a5e9208de",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_CLOSEOUT_20261029_V1.md",
+                                     "sha256":  "1986edf289ac4cee6c0738c1cd99b915508bf66c382d123c846380251e281770",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.json",
+                                     "sha256":  "6df0e9b3d5d76cc14313c518786b765a86e779f1e110311a0593ee9939675d0d",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.json",
+                                     "sha256":  "6b6cd0881e207b0b3ce55de7db87b7aa325f2ea65ecaa94d7efc1afd2a9b386a",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_MATRIX_20261029_V1.json",
+                                     "sha256":  "de2d5e548e00442ee8f15ca7514744b402c6400b4a8497b2b6f6671d29b00390",
+                                     "status":  "PASS"
+                                 },
+                                 {
+                                     "path":  "docs/current/d/C11D_PHASE_P_SOURCE_FRAME_PROVENANCE_ACCEPTANCE_REVIEW_20261029_V1.md",
+                                     "sha256":  "d75b13453fac89b01eb806aaff162771d33d7ff15d88d6f81c2825cf8bcc9132",
+                                     "status":  "PASS"
+                                 }
+                             ],
+    "candidates":  [
+                       {
+                           "path":  ".continue/rules/CONTINUE.md",
+                           "sha256":  "52776e55023a36e1ead71cf39a93337ca96f6097bd2c88018c3353484145ac86",
+                           "bytes":  2833,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  7,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Phase P remains accepted only for source/frame provenance. Phase Q is `PASS_READ_ONLY_INVENTORY` with receipt SHA-256 `5a8e62f9d38bbf31cfb64066fec57f17d2f931da2349f0078b7ea62ed77851d1`. Phase R is decision preparation only, static 50/50, no policy adopted."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "artifacts/tests/c11d_d4/d4_8/d4_8_authorization_evidence.json",
+                           "sha256":  "8b0120c2cca1714852a1106a06a13fb5fdc3fb4836db1333e861211eb2bfc928",
+                           "bytes":  3503,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "artifacts/tests/c11d_d4/d4_8/d4_8_governance_matrix.json",
+                           "sha256":  "79571bcb5e3052cac0a2933f52ccf6c8b088449d4cf7a18a12530b17512f71f0",
+                           "bytes":  1834,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "artifacts/tests/c11d_d5/d5_2/d5_2_lineage_registry.json",
+                           "sha256":  "8c5984a2a8286707d6c2762365155368d96f027d036d6c6c12aa566173715db0",
+                           "bytes":  67704,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  1573,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"AUTHORIZED_BY\","
+                                           },
+                                           {
+                                               "line":  1599,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"relation\": \"AUTHORIZED_BY\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "artifacts/tests/c11d_d6/d6_0/d6_0_governance_findings.json",
+                           "sha256":  "211e699311b43f16dcbf96313363b7f01aaacfa95ba65029b92af8623d0d8f57",
+                           "bytes":  134227,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "artifacts/tests/c11d_d6/d6_1/d6_1_governance_matrix.json",
+                           "sha256":  "eb8636465bd86adfa74cb33f87744c05a1d2878c9d91c9089d7b26197e9d0312",
+                           "bytes":  2338,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "artifacts/tests/c11d_d7/d7_5/d7_5_governance_validation.json",
+                           "sha256":  "082fe86790f08a75c5345d3f761e8ee9e94b915c5ca890a54eb145304254b232",
+                           "bytes":  840,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+                           "sha256":  "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+                           "bytes":  3838,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  44,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"D9.14 real-media GUI acceptance has been authorized by a separate governance checkpoint and its required cases have passed with actual media provenance and deterministic replay.\","
+                                           },
+                                           {
+                                               "line":  45,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"D4.8 activation governance is explicitly authorized by a separate approved checkpoint; this candidate preflight cannot grant authorization.\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json",
+                           "sha256":  "a69fe9df9378d37fac084f6c053868cb8080d390870cff8b436627cd1d679cfd",
+                           "bytes":  953,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/C11D_CATALOG_IDENTITY_PROVENANCE_GOVERNANCE_POLICY_V1.json",
+                           "sha256":  "a35e0adc641532a2fe4df705a8cf8e58d9aedfa58b80548810734533bb6a8f21",
+                           "bytes":  1134,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json",
+                           "sha256":  "8f4ce1d99a38a6993e3653a0fb03fb0f8e373420245b509ffe61ccc6ca02399f",
+                           "bytes":  1358,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/C11D_PRODUCTION_MATRIX_GOVERNANCE_POLICY_V1.json",
+                           "sha256":  "0d5915076047585b639c30d59f1901f3b641f7626afcf2755d9c08ef4fe26378",
+                           "bytes":  782,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_SCHEMA_V1.json",
+                           "sha256":  "d7b279c3225ceb431a434cbfbea606b248d710f766200c60adefbea544e6b8bc",
+                           "bytes":  25752,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+                           "sha256":  "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+                           "bytes":  32868,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  721,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"No coordinate mapper code, challenge JSON, C11-C file, CHALLENGE_004 V1 harness, renderer consumer, or media output is modified or authorized by this decision.\""
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_SCHEMA_V1.json",
+                           "sha256":  "bb32a0631216c8b557ee48f85ff06dbf1588c125606b917acff22930aa6ce50e",
+                           "bytes":  11641,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+                           "sha256":  "1ec59d7a9257cfc2477fc37efe8cb2f04d9807a7f9986d96afc2f2ddd9b4f7af",
+                           "bytes":  25091,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_SCHEMA_V1.json",
+                           "sha256":  "ab09a617e9efc0aacb2111d9f6b02fc5764850f667cfdb33005451c5d4b073b9",
+                           "bytes":  2732,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+                           "sha256":  "cc3550cd4d13f228ec9b3d51eeaa199505c5975b42882fb06ba3e83c4a000e90",
+                           "bytes":  4247,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_SCHEMA_V1.json",
+                           "sha256":  "66e75d5fc136c0e3ffeeb2861abae8ac73d2e43eded257e54aadbd2736f2c68c",
+                           "bytes":  14286,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  22,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": {"
+                                           },
+                                           {
+                                               "line":  167,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_V1.json",
+                           "sha256":  "b576612dd0913ce8f706a5272a5b9ca5ceb6c7a1f39d832323d9db98578b5d01",
+                           "bytes":  20462,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  8,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": \"PENDING_EXPLICIT_SEMANTIC_REVIEW\","
+                                           },
+                                           {
+                                               "line":  51,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": \"PENDING_EXPLICIT_SEMANTIC_REVIEW\","
+                                           },
+                                           {
+                                               "line":  94,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": \"PENDING_EXPLICIT_SEMANTIC_REVIEW\","
+                                           },
+                                           {
+                                               "line":  137,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": \"PENDING_EXPLICIT_SEMANTIC_REVIEW\","
+                                           },
+                                           {
+                                               "line":  180,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": \"PENDING_EXPLICIT_SEMANTIC_REVIEW\","
+                                           },
+                                           {
+                                               "line":  223,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_status\": \"PENDING_EXPLICIT_SEMANTIC_REVIEW\","
+                                           },
+                                           {
+                                               "line":  329,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"detail\": \"No field-to-region, visibility schedule, coordinate projection, sampling/resampling or renderer mapping is approved by the current runtime audit.\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_SCHEMA_V1.json",
+                           "sha256":  "fcf2662fc761dc059f431a4bdfa6172bc1c848a4c2ff037505ba0e0a13212980",
+                           "bytes":  2191,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+                           "sha256":  "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f",
+                           "bytes":  73562,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  1120,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"No policy is accepted or approved by this artifact.\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/production/D9_14_PRODUCTION_QUALIFICATION_AUTHORIZATION_V1.json",
+                           "sha256":  "bdfcdc52dc30561da8a481b86ada2576747e2fdf389bf86b0176b6cc75cf2642",
+                           "bytes":  2393,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json",
+                           "sha256":  "eeb8e221d13ce9f751434f04d0fc5637fd32d06f96c26aa34bd32e0ac2e6b048",
+                           "bytes":  1350,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  11,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"AUTHORIZED_BY\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/review/D_RENDERER_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_SCHEMA_V1.json",
+                           "sha256":  "49d51d5b562c3834556ee9c78a40c3a5443a7e02c9be0d216fe1d917e002f539",
+                           "bytes":  10258,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  132,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_authority\","
+                                           },
+                                           {
+                                               "line":  140,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_authority\": {"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/review/D_RENDERER_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_SCHEMA_V1.json",
+                           "sha256":  "c2d55094a8a6210d6cf2d72e5c78e0672b753b164d37a7a730ea43f61c520a67",
+                           "bytes":  7437,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  118,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\","
+                                           },
+                                           {
+                                               "line":  136,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": {"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json",
+                           "sha256":  "5329bf071fc437d08f706c9605609e53773ae00cb90eb704052e04e3e98e8b88",
+                           "bytes":  3294,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_D7.2_AUTHORITY_FIX_V1_MANIFEST.json",
+                           "sha256":  "98856da3a433370adb99118a2ac04d5448c83f8f16239b97be1e378b12f93c5e",
+                           "bytes":  434,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261027_V1.md",
+                           "sha256":  "813fe8177f6348f7a02e91cdaebc5b9770161f857527fb247386fb6e503e2878",
+                           "bytes":  36835,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  22,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "- No renderer-native input, dispatch, persistent payload, output manifest, pixels, media, approval, freeze or promotion is authorized by this workstream."
+                                           },
+                                           {
+                                               "line":  330,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "**Next phase:** Phase P - a narrow, read-only source-value versus frame-value provenance test for six custom_data candidates: CHALLENGE_003 \target_x (scalar); CHALLENGE_005/006/007 \target_position; CHALLENGE_008 \u0007ctive_selection; CHALLENGE_009 displayed_cou..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261029_V5.md",
+                           "sha256":  "18a509e5f9345efd5575ef87392a58df7aed8bfcf1c0c9e2dde2396925f938bb",
+                           "bytes":  19068,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  169,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Phase S se acepta únicamente como `PASS_AUDIT_ONLY_AUTHORITY_EVIDENCE_NOT_FOUND`. No se halló un registro de autoridad aceptable dentro del conjunto pinneado Phase P/Q/R. Esta conclusión es acotada y **no** afirma ausencia global fuera de dicho conjunto. La..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V6.md",
+                           "sha256":  "b35964ec53fa81a37b9ade2a4d2c49abc919fc462f605863e48a25e2557284d1",
+                           "bytes":  10519,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  76,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Locked states: `renderer=OFF`; `media_created=false`; `candidate_input_admissible=false`; `seed_domains_complete_for_candidate_input=false`; `automatic_seed_generation=false`; `master_seed_adopted=false`; `D4.8=BLOCKED`; `D9.10=PREPARE_ONLY`; `D9.17=BLOCKED..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V15.md",
+                           "sha256":  "c8efcfb22be094607be687910214df99bdbcadeba11465313ff0ee8f3b0a4993",
+                           "bytes":  6385,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  43,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "The objective is to reach a controlled real-render test on a formally approved D baseline, then work toward replacing C11-C only after D gates, approval and freeze are complete. To reach it safely, the remaining chain is: coordinate policy -\u003e explicit bindi..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V17.md",
+                           "sha256":  "d9e260ec7c659a296cfca2b54e05cd108602b6782f7d1c81acbe8be197f7c3df",
+                           "bytes":  8578,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  43,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "The objective is to reach a controlled real-render test on a formally approved D baseline, then work toward replacing C11-C only after D gates, approval and freeze are complete. To reach it safely, the remaining chain is: coordinate policy -\u003e explicit bindi..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V18.md",
+                           "sha256":  "feef107c9ce752b13390508d56d4fc1949ea57d80560b737275a3ddbed7ce679",
+                           "bytes":  9716,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  43,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "The objective is to reach a controlled real-render test on a formally approved D baseline, then work toward replacing C11-C only after D gates, approval and freeze are complete. To reach it safely, the remaining chain is: coordinate policy -\u003e explicit bindi..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.json",
+                           "sha256":  "6b6cd0881e207b0b3ce55de7db87b7aa325f2ea65ecaa94d7efc1afd2a9b386a",
+                           "bytes":  25494,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  34,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"decision_authority\": \"EXPLICIT_OPERATOR_OR_PRODUCT_CONTRACT_OWNER_AUTHORITY_REQUIRED; ASSISTANT_PREPARATION_IS_NOT_APPROVAL\","
+                                           },
+                                           {
+                                               "line":  109,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"No interpolation or extrapolation unless separately authorized by a new reviewed policy.\","
+                                           },
+                                           {
+                                               "line":  464,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"C11C\": \"Keep frozen authoritative baseline immutable until C11-D is formally approved, frozen, and promoted.\""
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.md",
+                           "sha256":  "7aa7bf2ccc67d606f2a9c1b3808a42b2dd07cedd8c792d8c118c185f85c708a2",
+                           "bytes":  7602,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md",
+                           "sha256":  "b6df812cb3242a175e750aa73af35c43a56d298960e0387bb734da746f5a7a91",
+                           "bytes":  4698,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.json",
+                           "sha256":  "6df0e9b3d5d76cc14313c518786b765a86e779f1e110311a0593ee9939675d0d",
+                           "bytes":  21122,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  84,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  120,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  155,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  190,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  225,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  260,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  298,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  333,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           },
+                                           {
+                                               "line":  373,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "\"policy_adoption\": \"NOT_ADOPTED\","
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.md",
+                           "sha256":  "30e0d11aae5afca35a40fb81fa7dd87a4f882ddfc130adfdfc01d8478e3911cc",
+                           "bytes":  5957,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_ACCEPTANCE_REVIEW_20261029_V1.md",
+                           "sha256":  "9998e9f0e47db9f3b21265bb65a1266a0dc9d60274de9a82e8a01e4a5e9208de",
+                           "bytes":  3982,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_CLOSEOUT_20261029_V1.md",
+                           "sha256":  "1986edf289ac4cee6c0738c1cd99b915508bf66c382d123c846380251e281770",
+                           "bytes":  2009,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_PROJECT_CONTEXT_AND_GOVERNANCE_GUIDE_20261016.md",
+                           "sha256":  "66be81a3cda66879c3a216932440153e08f6dd4101d5f6158d2b399c09dbb13b",
+                           "bytes":  23367,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_CHECKPOINT_20261021_V1.md",
+                           "sha256":  "a6f590095d9befad1a82a566cb30e6326b24786c2c93ebdf736149bbd2d5ca7a",
+                           "bytes":  3273,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_CHECKPOINT_20261021_V1.md",
+                           "sha256":  "e86acd16e6dedee24f71ef9f8f3608a61476af9f83f54cac3734273b7a1a1c23",
+                           "bytes":  3032,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  25,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "No coordinate policy, point placement, asset sizing, binding, payload consumer, renderer projection, renderer execution, payload materialization, media creation, release or baseline promotion is authorized by this proposal. `renderer=OFF`, `media_created=fa..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_V2B_CANDIDATE_EVIDENCE_AUDIT_GOVERNANCE_SHAPE_FIX_20261020_V1.md",
+                           "sha256":  "3bdf4892c3de90576615541ba862ba680160e531c1c1f2f2b5f2523728dc3b61",
+                           "bytes":  2093,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_CHECKPOINT_20261021_V1.md",
+                           "sha256":  "5b61d989052752083803d4390e47a5b2b58fe8452c502f88143e4d91e479e095",
+                           "bytes":  3511,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_CHECKPOINT_20261020_V1.md",
+                           "sha256":  "d0ac9b6144fa0d7af77e9941a73ecf43ddade7addae77b3fa148b4adf63d2519",
+                           "bytes":  3328,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  30,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "No payload consumer, coordinate projection, region/visibility/timebase policy, media output, renderer dispatch or production behavior is authorized by this record. C11-C and `CHALLENGE_004` V1 harness/fixture remain immutable."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/C11D_V2B_SEMANTIC_BINDING_REVIEW_AND_RUNTIME_GATE_PLAN_20261017_V1.md",
+                           "sha256":  "9d4ec7e43eae5aec886a04a731a0e8a4ba70621bb74f9dad2727e27cf2513d8d",
+                           "bytes":  4456,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  4,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Status: PLANNING ONLY. No bindings approved, no runtime harness authorized by this plan, no payloads materialized."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md",
+                           "sha256":  "feb5d577dd3a071dc700a78a44e27c9a90253884ed9feed8ba23de05e6fa1741",
+                           "bytes":  6832,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  9,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "This is a candidate-evaluation track, not a freeze or release. C11-C is not replaced in-place: its source tree, renderer/simulation truth, and `release/C11C_FREEZE_PACKAGE_MANIFEST.json` stay immutable. D is being evaluated as a prospective successor baseli..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
+                           "sha256":  "b5ca441179d3344fcb4ed6278db493af914723a1376043ecea5994cc7f63e8ec",
+                           "bytes":  43963,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  212,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "5. **Independent approval:** the renderer baseline review must explicitly identify the implementation/contract hashes and record an accountable approver. D4.8 must be authorized by its separate governance decision; a local file, test pass or preflight canno..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_CHECKPOINT_V1.md",
+                           "sha256":  "66bacf230f0b6e931802f9f4eba15b0b73783b8e45989e6731fc6ba3f5a19958",
+                           "bytes":  6159,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  47,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "- **G1 — review proposal only:** review this strict schema and integration boundary. No implementation is authorized by writing or applying the proposal artifact."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md",
+                           "sha256":  "2439eb564adc5f3ed1abb765dab7dc1ee7f4d8191105525f5c48290a24b13254",
+                           "bytes":  4812,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  50,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "A real video-output test is **not yet authorized by this overlay**. The next step is to verify the integrated review on Windows, then continue closing the outstanding policy and operational gates. Passing a proposal contract is not equivalent to approving r..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md",
+                           "sha256":  "a4b540dce0797cf47bb3b6bc9405a9aedf792bfbb60ea8149322eecaac60a489",
+                           "bytes":  5560,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  44,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "`D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md` now joins the existing region and field-window declarations into a 14-instance matrix. It preserves the original audit result: review-chain parity 14/14, visual payload consumpt..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md",
+                           "sha256":  "db2ed4a6565315e1446bec153b34bbe2fc6fc28e8083ecbee22e0dc5856312c3",
+                           "bytes":  4606,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  42,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Run the focused test on the operator\u0027s Windows checkout, then run the unified review, D9.13 lifecycle and candidate preflight. Do not register this test into the aggregate Suite until Windows acceptance. A later visual-field consumer must remain blocked unt..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_EDITORIAL_PAYLOAD_PROVENANCE_JOIN_CHECKPOINT_V2.md",
+                           "sha256":  "5683e85343cfcbe48580efbed2842211b216f0689e52999feed53fc9bd0284cd",
+                           "bytes":  1830,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  19,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "- The 16 source pins and the docket 198 source pins remain required and are not approved by this correction."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_NEUTRAL_FRAME_PROGRAM_CHECKPOINT_V1.md",
+                           "sha256":  "12b111e87bc6c76f9e1938e7a2d27dd09364b7c8c754087a1e1a1f4f7ba8e9eb",
+                           "bytes":  6129,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  78,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "The latest Windows PASS evidence concerns GUI/editorial composition and fixed-fixture carrier/binding only. The neutral frame program remains declarative; no schedule, frame range, pixels or executable renderer operation is approved by those results. A payl..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+                           "sha256":  "5c5e1979f5b395e1a95437fd579bc24fc21409ae3682768571e36b300acbc3dc",
+                           "bytes":  6488,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_POLICY_DECISION_DOCKET_CHECKPOINT_V1.md",
+                           "sha256":  "496ea47c9ec38a0bec25f65db1aab7f97f8dba93e61a7de4af1eb2d3d5c9043c",
+                           "bytes":  3546,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
+                           "sha256":  "143e956af6585120b42beee8b19d9cef45583ecec49fcb016acd6851e7bc46c6",
+                           "bytes":  7191,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  87,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "After Windows validation, the next safe increment is to design a **separate D-owned visual consumer** only after the relevant presentation-region and per-field visibility-window policies are formally approved. It must consume the sidecar without changing si..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md",
+                           "sha256":  "11db1b9f8c905168b9f5095a8bbeb4e9ef6db9d2cac350228ccb3c46fd918168",
+                           "bytes":  5081,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  18,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Expected governance stays `renderer=OFF`, `media_created=false`, `D4.8=BLOCKED`, `release_authority=NONE`, candidate input inadmissible, video render readiness false. Editorial visual consumption stays `NOT_APPLIED`; the prior 14/14 values remain 0/14 visua..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_CHECKPOINT_V1.md",
+                           "sha256":  "83d6f775e6ff11e2150376b1e875456c5353e8b519478694024254144922620e",
+                           "bytes":  5580,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  55,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "The separate D-owned parameter-instance probe is now consumed by the existing dynamic request→payload composite only for `harmonic_membrane`. Re-run the composite checkpoint’s Windows acceptance, then reconcile the resulting evidence with the candidate I/O ..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D4.8_PRODUCTION_ACTIVATION_GOVERNANCE_CONTRACT.md",
+                           "sha256":  "e275b0f3d080f18d252b38c0b6f140b34e89c0a915f498c24d8e660c85e102a8",
+                           "bytes":  2920,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D5.2_PROVENANCE_LINEAGE_REGISTRY_CONTRACT.md",
+                           "sha256":  "2b5b067275cf104f2162eed450520257b43d7c99d6229f5a87085abc80b9fad6",
+                           "bytes":  3680,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  11,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Edges use `SOURCE --RELATION--\u003e TARGET`: the source artifact describes its relation to a preceding or supporting artifact. The relation vocabulary is exactly `DERIVED_FROM`, `GENERATED_FROM`, `AUTHORIZED_BY`, `VALIDATED_BY`, `DOCUMENTED_BY`, and `SNAPSHOT_OF`."
+                                           },
+                                           {
+                                               "line":  17,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "D4 plan-to-request edges use matching request IDs retained in the manifest. D4.8 authorization evidence is a decision artifact with `decision: BLOCKED`, renderer policy `DISABLED`, and reason `RENDERER_POLICY_DISABLED`. It is linked as decision evidence der..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D5.3_ARTIFACT_TOPOLOGY_VALIDATOR_CONTRACT.md",
+                           "sha256":  "d598bfbcfd451c051fc02f510d72a0388d2823270c9df0bed1ff19ee9e7d18b3",
+                           "bytes":  5151,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  31,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "The D4 gate requires evidence-backed plan-to-request edges, governance evidence linked to its plan, and a D4.9 PASS/CLOSED acceptance edge. D4.8 must remain `BLOCKED` with `RENDERER_POLICY_DISABLED`; no accepted `AUTHORIZED_BY` edge may turn the blocked dec..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D6.0_SEED_GOVERNANCE_AUDIT_CONTRACT.md",
+                           "sha256":  "dd8ce7a98d06eb04ad1d496389ce5aadcdbabda864b6f84ce01549f7c91b8d46",
+                           "bytes":  4192,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md",
+                           "sha256":  "45fefcff90e46670f886a06aee38814acbcbf0061bbc96abccf3495665eec4c8",
+                           "bytes":  4760,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  49,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "D6.4 emits provenance compatible with the D5 lineage model but does not mutate the D5.2 lineage registry. D4.8 blocked governance remains a decision record, not an `AUTHORIZED_BY` grant. No physical authorization is inferred or materialized."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/D9.17_D9_CLOSURE_ADJUDICATION_CHECKPOINT.md",
+                           "sha256":  "aa7fbc32470434d3bc7d239a30547f2960975ab6f191f445ce52c7e55c8831a5",
+                           "bytes":  9927,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/README_C11D_D7.2_AUTHORITY_FIX_V1.md",
+                           "sha256":  "4805b83ef37aed9016760a2df310c7334cef958da3111cc3250ea9d7d44bff76",
+                           "bytes":  433,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/current/d/README_C11D_D9.17_CLOSURE_ADJUDICATION_OVERLAY.md",
+                           "sha256":  "950f982223bcf35908b16a60cdc131d6486cf170cab52cbc91dad67b85da1db4",
+                           "bytes":  940,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/history/c11d/d9/START_PROMPT_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+                           "sha256":  "e74ed35f0965137f31b985dfd78ad9b0d44de5360502a628b3acb9acc5afe96e",
+                           "bytes":  24180,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  153,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "- Windows next action: open `c11c-suite\\c11c-test\\run.bat`, confirm GUI opens, inspect the D2–D9 route list and execute the no-media certification preflight. Actual real-media GUI execution remains D9.14 and is not authorized by this preflight."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/history/reference/GOVERNANCE_HISTORICAL.md",
+                           "sha256":  "91cd91f0236ab6b2b8a26318771d54e5abc157acfccf6cb283cfa6247fd27b61",
+                           "bytes":  6556,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "docs/history/reference/mechanics/PILOT_MECHANIC_V2.0.md",
+                           "sha256":  "3ed52953355ad001be8da8c9ccaea863a81feae7324c0db5cba262772371da5e",
+                           "bytes":  16553,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  449,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "- consumer not authorized by the Registry;"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "docs/operations/GOVERNANCE.md",
+                           "sha256":  "4b1847e1afea048def88cf5d87324cca7c62dc814b44163dbabfa03832781eb7",
+                           "bytes":  1061,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261026_V24.md",
+                           "sha256":  "db2f82bae7387658781f2f393100f3c3d758e3df98e2459974bad715a2543db8",
+                           "bytes":  9523,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  5,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Close C11-D only with evidence-backed, separately governed gates so a formally approved and frozen C11-D baseline can eventually replace the immutable C11-C production baseline. Do not optimize for a green console at the expense of provenance, source pins, ..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V27.md",
+                           "sha256":  "f5c5f2efff1f8f7a55f7a83eaead8d14495c78130baf1f4ffa72873798c094b3",
+                           "bytes":  5238,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  3,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "**Cut-off:** 2026-10-29. **Current state:** Phase P provenance-only accepted; Phase Q read-only inventory accepted; Phase R decision-preparation accepted; no policy adopted; no bindings approved; renderer off."
+                                           },
+                                           {
+                                               "line":  50,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "C11-C 2.19.12 remains authoritative and immutable until C11-D is formally approved, frozen and promoted. Canonical live manifest `release/C11C_FREEZE_PACKAGE_MANIFEST.json`: SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`, 796318 ..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V28.md",
+                           "sha256":  "b597a07fa794329fa7eeef24dd5df917e4f12d09386b62a8df7f355355cf001d",
+                           "bytes":  5044,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  3,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "**Cut-off:** 2026-10-29. **Current state:** Phase P provenance accepted; Phase Q read-only inventory accepted; Phase R decision preparation accepted; Phase S authority-evidence preflight accepted as a bounded audit only. No policy adopted, no bindings appro..."
+                                           },
+                                           {
+                                               "line":  47,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "C11-C 2.19.12 remains authoritative and immutable until C11-D is formally approved, frozen and promoted. Canonical live manifest `release/C11C_FREEZE_PACKAGE_MANIFEST.json`: SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`, 796318 ..."
+                                           },
+                                           {
+                                               "line":  55,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "Use Windows PowerShell 5.1 and complete pasteable blocks. Apply and test separately. Verify active checkout and exact prehashes, keep backups for guarded updates, use add-only records, and preserve stdout/stderr plus real process exit codes. Do not rerun Ph..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261016.md",
+                           "sha256":  "c564316b320ffce1e20bae7f66e86705bc31be8ad8d3caaed4559535e10e4d0a",
+                           "bytes":  10135,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  79,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "D is not done until: all candidate input groups needed for the supported catalogue close; seed domains and identity/lineage/payload are deterministic and complete; editorial/presentation/timebase/audio decisions are approved and implemented with end-to-end ..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261021_V15.md",
+                           "sha256":  "c3fcc98bf5e36218c365747bb290c40c4938e187052c30472be01b3517eea360",
+                           "bytes":  6234,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  28,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "No source field binding, destination mapping, pixel placement, payload consumer, render test, media, release, freeze or promotion is authorized by the decision record."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261021_V17.md",
+                           "sha256":  "ea4c260a4cb72092bd3fa8e737aacda5ce75a4a0bd72cb630da21de78ebc7f1b",
+                           "bytes":  8427,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  28,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "No source field binding, destination mapping, pixel placement, payload consumer, render test, media, release, freeze or promotion is authorized by the decision record."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017.md",
+                           "sha256":  "90cb672325351f68098fb01d191eb7206be8cabb49edbb9d963dd8f04c1d47a8",
+                           "bytes":  7369,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  56,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "- Use the existing nine-group policy decision packet; record explicit choices against the exact proposal hashes. Do not create an alternative policy packet or change proposals to approved by code."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261026_V24.md",
+                           "sha256":  "d2f627beabc30d286444f027ce4681d44fa9d0e05dda559a8fbd174383376e99",
+                           "bytes":  3775,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  30,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "If PASS, review the V2 receipt and create a distinct operator review decision record; do not change the historical V1 evidence or the source-composition contract\u0027s pending pre-run status. No production callsite, renderer, payload materialization, media, ren..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "prompts/C11D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261017_V3.md",
+                           "sha256":  "076628ae9bab1dda036583f7b0a5e2e3150df1f02e0d65367604fc47eca2ab8d",
+                           "bytes":  4721,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  28,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "5. Run Python contract tests first. Runtime testing, if authorized by the reviewed plan, must use the valid Godot 4.7.1 Mono executable from the current session/configuration and must not render, create media, write candidate payloads or emit renderer inputs."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+                           "sha256":  "951bcd9fe802cf62b10e01e520ff7d404eb49e266c0540957f5e1261e10fb49c",
+                           "bytes":  1616,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_OVERLAY_20261021_V2.md",
+                           "sha256":  "7716627b2b616b7d283db1d6ae3120f8df07896aaa9311cd035fb7ef47196e8f",
+                           "bytes":  3981,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "README_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_OVERLAY_20261020_V1.md",
+                           "sha256":  "2858fec2f02258d729b6eb4900aa57cf9b2749633269b943481f57ce24a5ca10",
+                           "bytes":  1414,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "README_C11D_V2B_SAFE_PROJECTION_RUNTIME_IMPLEMENTATION_OVERLAY_20261020_V1.md",
+                           "sha256":  "ad1fa36a26ed55b96d5a45c8e3a1d6ad3a164cabcf7b800c551b0979168164d4",
+                           "bytes":  5176,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  50,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "No change is authorized to any challenge JSON, frozen C11-C asset/manifest, or immutable CHALLENGE_004 V1 harness. CHALLENGE_008/009 timeline acceptance remains blocked by the declared 11s duration versus 12s phase sum; source-frame observations do not reso..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/baseline_candidate/d_baseline_candidate.py",
+                           "sha256":  "297d34dd71657a1e3036c1f3ee889435a70919575dce39370651354cbb821e37",
+                           "bytes":  42438,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  466,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "and bool(str(approval.get(\"approved_by\", \"\")).strip())"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d4/production_activation_governance.py",
+                           "sha256":  "cd3848f26bf12e8f486f7153eeda6c60d918314221655c40b8d9b18c67db0600",
+                           "bytes":  23196,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d4/run_d4_8_activation_governance.ps1",
+                           "sha256":  "d0b705c1a7c20e69df749e3f6ae08f69c9a5e66747b7418b5807e58d621676a4",
+                           "bytes":  11803,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d5/artifact_topology_validator.py",
+                           "sha256":  "fff483c1538ed6bd6587f0ce115c2eeee58d8de66ed9d63d5795174b312cd706",
+                           "bytes":  32417,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  291,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "and not any(e.get(\"relation\") == \"AUTHORIZED_BY\" and e.get(\"target_artifact_id\") == authorization[\"artifact_id\"] for e in edges)"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d5/full_d5_acceptance.py",
+                           "sha256":  "cd97837f6fbeb245745afc0f4b2207490e44d87d05912d1946da1c308d3ccc3c",
+                           "bytes":  51272,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  386,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "granted_edges = [edge for edge in edges if edge.get(\"relation\") == \"AUTHORIZED_BY\"]"
+                                           },
+                                           {
+                                               "line":  505,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "d48_blocked = bool(auth_evidence.get(\"renderer_policy\") == \"DISABLED\" and \"RENDERER_POLICY_DISABLED\" in auth_evidence.get(\"production_blocked_reasons\", []) and production_cases and all(case.get(\"authorized\") is False for case in production_cases) and auth_n..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d5/provenance_lineage_registry.py",
+                           "sha256":  "cf9f207c9eafd55ffc8052c7c80455e91e686ed2d517bdad2baa2991c31cea59",
+                           "bytes":  26304,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  12,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "RELATIONS = [\"DERIVED_FROM\", \"GENERATED_FROM\", \"AUTHORIZED_BY\", \"VALIDATED_BY\", \"DOCUMENTED_BY\", \"SNAPSHOT_OF\"]"
+                                           },
+                                           {
+                                               "line":  246,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "unresolved.append({\"candidate_source_artifact_id\": plan_node[\"artifact_id\"], \"candidate_target_artifact_id\": auth_node[\"artifact_id\"], \"relation\": \"AUTHORIZED_BY\", \"reason\": \"authorization artifact records a blocked decision; renderer policy is DISABLED and..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d6/run_d6_0_seed_governance_audit.ps1",
+                           "sha256":  "2ca3548fd22a206544ed94e952b2ea35929176ec6a8621edfc3c094910824679",
+                           "bytes":  3696,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d6/seed_governance_audit.py",
+                           "sha256":  "f1b9f72b2eaf0c4a3dd37e22bee37f728944fd7b1745c2f38dc25bfd112a8ebd",
+                           "bytes":  31694,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/accept_existing_d_renderer_phase_o_source_frame_semantic_binding_crosswalk_20261027.ps1",
+                           "sha256":  "4d3df0fc7760232e7f2d01c0ecde28bedc91aae261968d82719e972a8d7d9991",
+                           "bytes":  32753,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  281,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "**Next phase:** Phase P - a narrow, read-only source-value versus frame-value provenance test for six custom_data candidates: CHALLENGE_003 `target_x` (scalar); CHALLENGE_005/006/007 `target_position`; CHALLENGE_008 `active_selection`; CHALLENGE_009 `displa..."
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/d_renderer_policy_decision_docket.py",
+                           "sha256":  "9705dbc861698a6588e22c2e2da1d7a6e6758c495f2754c369f84b4fc2822880",
+                           "bytes":  7254,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_decision_record_v1.py",
+                           "sha256":  "ae4d30f25ff5988fd2a18c5aa7caabf6544eea4930d1b687a54d151b73d00d56",
+                           "bytes":  20561,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_proposal_v1.py",
+                           "sha256":  "70b869259778e3c2289782b985b7f1c89c63ded8d0130ead06d34bf28aa55e89",
+                           "bytes":  31626,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  68,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "g.same(p.get(\"source_authority\",{}).get(\"field_region_visibility_decision_record_sha256\"),file_sha(decision_path),\"field-region decision authority pin\")"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_field_region_visibility_decision_record_v1.py",
+                           "sha256":  "c35d3a44c0b998235ad17b2ad403892a1e6c95e0bffaeb0a3d075f4ff8258039",
+                           "bytes":  22315,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_decision_record_v1.py",
+                           "sha256":  "d9e2c2516a248b62b60706f97f8b3d8132e871eb2b24117ebf3f594e69cb5e5f",
+                           "bytes":  15635,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_review_request_v1.py",
+                           "sha256":  "cf0cf4366c8e9014de8074759ae07243ee33f89b4319268df19a6d400db91640",
+                           "bytes":  12650,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  91,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "(\u0027all decisions pending\u0027,all(r.get(\u0027decision_status\u0027)==\u0027PENDING_EXPLICIT_SEMANTIC_REVIEW\u0027 and r.get(\u0027semantic_decision\u0027) is None for r in req.get(\u0027candidates\u0027,[]))),"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_phase_r_operator_policy_decision_packet_20261029.py",
+                           "sha256":  "0e1b9a570de5068b1b506f8bca196f914b297b74ee8311773be86df218902817",
+                           "bytes":  13739,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_phase_s_authority_evidence_preflight_20261029.py",
+                           "sha256":  "94deb73c4ddb0522f66f11363464485a44ee9ccee8041bdb7aa054b777fa9a69",
+                           "bytes":  9765,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+                                           {
+                                               "line":  71,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "def test_10_no_policy_adopted(self): self.assertTrue(all(d[\"policy_adoption\"] == \"NOT_ADOPTED\" for d in self.packet[\"decisions\"]))"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_d_renderer_policy_decision_docket.py",
+                           "sha256":  "46c74da2bfc180ef45cc81172025e52563ad1c3bec28fb43fc2e48288934d711",
+                           "bytes":  3212,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  true,
+                           "matches":  [
+
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_full_acceptance.py",
+                           "sha256":  "e86fe4a85abb692a31d38a6addee06141cdfb08905a6ba6bfb11058e93f857f3",
+                           "bytes":  4452,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  39,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "reject(\"release authority granted\",lambda x:x[\"governance\"].update(release_authority=\"GRANTED\"))"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_gui_operational_acceptance.py",
+                           "sha256":  "ee93bfab980eabb8ccb573c8e6388ba4ffd3c8051f9d4c232078cbf4e8f19106",
+                           "bytes":  4432,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  33,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "reject(\u0027release authority granted\u0027,lambda x:x[\u0027governance\u0027].update(release_authority=\u0027GRANTED\u0027)); negative+=1"
+                                           }
+                                       ]
+                       },
+                       {
+                           "path":  "tools/c11d/d9/test_gui_real_media_certification.py",
+                           "sha256":  "40b64245abd3b2da8913599541360e6d157b3272505def0a2715eefeba55c974",
+                           "bytes":  5763,
+                           "classification":  "UNREVIEWED_CANDIDATE_NOT_AUTHORITY",
+                           "filename_match":  false,
+                           "matches":  [
+                                           {
+                                               "line":  21,
+                                               "rule":  "AUTHORITY_APPROVAL_OR_DECISION_FIELD_CANDIDATE",
+                                               "snippet":  "expect(gate[\"operator_execution_authorized\"] is False,\"operator execution must not be authorized by a preflight\")"
+                                           }
+                                       ]
+                       }
+                   ],
+    "unsearched_documents":  [
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D D9.10_20261009_220331.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  5683312,
+                                     "sha256":  "fa3c4e2299ecf7ecffa81925689313c1a79b47e437edbfc539f16e10973379b2",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 },
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  8001498,
+                                     "sha256":  "3e48ee2d815593137f5863139e05c1aa04eb40b4a58ddfb3bed4507125c96874",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 },
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  5280348,
+                                     "sha256":  "526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 },
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_LATEST_20261013_155400.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  6789997,
+                                     "sha256":  "b8284a958b6f6f261b16587a89ab68f25962279e1ccb5211ab336bc1a69a4c10",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 },
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  6813613,
+                                     "sha256":  "52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 },
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D10_LATEST_20261011_203730.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  6347957,
+                                     "sha256":  "8fd1957adaee0a0380048c9f789da661454dff22e662aba5fc6327cac4d622e8",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 },
+                                 {
+                                     "path":  "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip",
+                                     "extension":  ".zip",
+                                     "bytes":  6861376,
+                                     "sha256":  "562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac",
+                                     "reason":  "Binary/document/archive content not searched by this gate; manual or format-aware inspection required."
+                                 }
+                             ],
+    "skipped_large_files":  [
+                                {
+                                    "path":  "artifacts/tests/c11d_d5/d5_0/d5_0_artifact_topology_audit.json",
+                                    "bytes":  20905028,
+                                    "reason":  "Exceeds the 4 MiB text-content scan cap; not content-searched."
+                                }
+                            ],
+    "scan_errors":  [
+
+                    ],
+    "governance":  {
+                       "renderer":  "OFF",
+                       "approved_bindings":  0,
+                       "approved_custom_data_bindings":  0,
+                       "approved_renderer_projection_bindings":  0,
+                       "release_authority":  "NONE"
+                   },
+    "timing_conflicts":  [
+                             {
+                                 "status":  "BLOCKER_NO_CORRECTION_INFERRED",
+                                 "declared_total_duration_seconds":  11,
+                                 "phase_duration_sum_seconds":  12,
+                                 "challenge":  "CHALLENGE_008"
+                             },
+                             {
+                                 "status":  "BLOCKER_NO_CORRECTION_INFERRED",
+                                 "declared_total_duration_seconds":  11,
+                                 "phase_duration_sum_seconds":  12,
+                                 "challenge":  "CHALLENGE_009"
+                             }
+                         ],
+    "no_global_absence_claim":  true,
+    "candidate_review_disclaimer":  "Candidates are unreviewed leads only; keyword/filename matches are not proof of authority.",
+    "coverage_limitations":  [
+                                 "Git history and external files were not searched.",
+                                 "PDF/Office document and archive contents were not searched; inventory is provided for review.",
+                                 "Text files larger than 4 MiB were listed but not content-searched.",
+                                 "Excluded generated/cache/vendor directories are enumerated in scope."
+                             ],
+    "aggregate_hash_algorithm":  "SHA256(path|bytes|sha256 rows sorted by relative path, UTF-8 LF terminated)"
+}
