@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "phase": "Z",
+  "title": "Authority Record Reconciliation and Explicit Operator Decision Packet",
+  "review_date": "2026-10-29",
+  "status": "PASS_RECONCILIATION_MATRIX_AND_DECISION_PACKET_PREPARED_AUTHORITY_ADJUDICATION_PENDING",
+  "mode": "Read-only reconciliation; no policy adoption; no renderer/runtime execution",
+  "inputs": {
+    "phase_y_result_json": {
+      "path": "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.json",
+      "sha256": "c1bdce99d0ce9335c3f22168d818a66599a8c552f25155c6ce5fbcfb609e97ac"
+    },
+    "phase_y_result_markdown": {
+      "path": "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.md",
+      "sha256": "dfb09e3c9a8a6f38537b115b6975f9cfdc209c100040d5e4727faac7845daadd"
+    },
+    "phase_y_receipt": {
+      "path": "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_RECEIPT_20261029_V1.md",
+      "sha256": "e77173f4fe92b657c9cc20401181c7f398b5a3a25e2d78c2cd2a165f016610d5"
+    },
+    "phase_y_acceptance_review": {
+      "path": "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "sha256": "a8e538ecf6e309fea5b1bcd0d38633633a14964d00cf9e0231653eac7edc27fe"
+    },
+    "phase_x_source_bundle_sha256": "5a481bded8dc9634741f0e164696ee123e02e9f029bcf689c39cad6a6460811e"
+  },
+  "authority_assessment": {
+    "broad_phase_r_policy_adoption": "NONE",
+    "phase_s_scope": "Pinned Phase P/Q/R record set only; global_absence_claim=false",
+    "narrow_historical_operator_decisions": {
+      "semantic": {
+        "record_id": "V2B-SEMANTIC-DECISIONS-20261020",
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+        "sha256": "cc3550cd4d13f228ec9b3d51eeaa199505c5975b42882fb06ba3e83c4a000e90",
+        "status": "SEMANTIC_DECISIONS_RECORDED_BINDINGS_NOT_APPROVED",
+        "allowed_scope": "CHALLENGE_003.target_x, CHALLENGE_005.target_position, CHALLENGE_006.target_position, CHALLENGE_007.target_position semantics for future binding specification only",
+        "excluded_scope": "No actual binding, runtime consumer, renderer projection, payload/media, render test, freeze, or release authorization."
+      },
+      "region_visibility": {
+        "record_id": "V2B-FIELD-REGION-VISIBILITY-20261021",
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+        "sha256": "1ec59d7a9257cfc2477fc37efe8cb2f04d9807a7f9986d96afc2f2ddd9b4f7af",
+        "status": "FIELD_REGION_VISIBILITY_ACCEPTED_FOR_COORDINATE_POLICY_SPECIFICATION_ONLY",
+        "allowed_scope": "Four candidate fields for future coordinate-policy specification only.",
+        "excluded_scope": "No coordinate transform, binding, renderer projection, pixel placement, live implementation, or CHALLENGE_008/009 adoption."
+      },
+      "coordinate": {
+        "record_id": "V2B-COORDINATE-POLICY-20261021",
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+        "sha256": "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+        "status": "COORDINATE_POLICY_ACCEPTED_FOR_FUTURE_CONSUMER_SPECIFICATION_ONLY",
+        "allowed_scope": "Five specific scale/centerline/asset-size/anchor/clipping choices for future consumer specification only.",
+        "excluded_scope": "Runtime transform, binding, projection, renderer activation and pixel placement are false/not approved; rounding and final crop unresolved."
+      },
+      "docket": {
+        "record_id": "CURRENT-DECISION-DOCKET-20261029",
+        "path": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+        "sha256": "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f",
+        "status": "PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED",
+        "allowed_scope": "Preparation docket for R-01 through R-09 only.",
+        "excluded_scope": "No policy adoption or release authority."
+      },
+      "phase_s": {
+        "record_id": "CURRENT-PHASE-S-AUDIT-20261029",
+        "path": "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.json",
+        "sha256": "6df0e9b3d5d76cc14313c518786b765a86e779f1e110311a0593ee9939675d0d",
+        "status": "AUTHORITY_EVIDENCE_NOT_PRESENT_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+        "allowed_scope": "Findings limited to the pinned P/Q/R record set.",
+        "excluded_scope": "Does not establish global absence of authority records."
+      }
+    },
+    "narrow_decisions_expand_to_broad_policy": false,
+    "historical_test_pass_grants_renderer_authority": false,
+    "generic_standing_approval_to_continue_engineering_grants_product_policy_authority": false
+  },
+  "required_authority_fields": [
+    "decision_id",
+    "exact_policy_text_and_selected_option",
+    "named_approving_authority_and_role",
+    "authority_scope_and_delegation_basis",
+    "decision_date_and_effective_date",
+    "rationale",
+    "source_paths_and_sha256_pins",
+    "acceptance_test_obligations",
+    "verifiable_approval_provenance_or_signature",
+    "immutable_record_location"
+  ],
+  "decision_count": 9,
+  "decisions": [
+    {
+      "decision_id": "R-01-TIMEBASE-SAMPLING",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "What deterministic mapping/sampling rule converts source frames to the 30 FPS delivery timeline from the declared source rate?",
+      "evidence_assessment": "No authoritative source-to-delivery sampling decision found in the Phase Y review. Runtime test PASS records do not decide sampling policy.",
+      "narrow_sources": [],
+      "unresolved_requirements": [
+        "Exact source/delivery timebase and mapping rule",
+        "Tie-breaking and boundary behavior",
+        "Role/scope/effective date and approval provenance",
+        "Acceptance tests and immutable decision record"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-02-SPATIAL-MAPPING",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "What exact source-to-delivery spatial mapping policy is adopted for production?",
+      "evidence_assessment": "The coordinate record contains narrow choices accepted for future consumer specification only. Phase Y explicitly finds no authorization for runtime transform, binding, projection, or pixel placement; rounding/final crop unresolved.",
+      "narrow_sources": [
+        "coordinate"
+      ],
+      "unresolved_requirements": [
+        "Explicit broad policy adoption with exact scope",
+        "Runtime transform/binding/projection permission separately stated if intended",
+        "Pixel rounding and final crop rules",
+        "Acceptance obligations and immutable approval provenance"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-03-PILOT-SCALAR-X-AND-PRESENTATION-Y",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "What source fields and presentation semantics are approved for the production visual consumer?",
+      "evidence_assessment": "Historical semantics for CHALLENGE_003/005/006/007 are recorded for future binding specification only. They do not approve a binding or production projection.",
+      "narrow_sources": [
+        "semantic",
+        "coordinate"
+      ],
+      "unresolved_requirements": [
+        "Exact per-challenge field-to-presentation decision",
+        "Separate binding approval with field paths/types and allowed ranges",
+        "Consumer projection and acceptance tests",
+        "Verifiable approval provenance"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-04-VISIBILITY-AND-REGION-OWNERSHIP",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "Which owner controls visibility and region assignment, and with which precedence rules?",
+      "evidence_assessment": "Four field/region/visibility candidates were accepted for future coordinate-policy specification only. No live implementation or binding approval.",
+      "narrow_sources": [
+        "region_visibility"
+      ],
+      "unresolved_requirements": [
+        "Field-level authoritative ownership and precedence",
+        "Lifecycle/empty-state/invalid-state behavior",
+        "Explicit adoption for production use",
+        "Acceptance tests and immutable approval provenance"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-05-ASSET-GEOMETRY-ANCHOR-CROP-ROUNDING",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "What exact asset geometry, anchor, crop, clipping and pixel-rounding rules govern output?",
+      "evidence_assessment": "Some scale/centerline/asset-size/anchor/clipping choices exist only for future consumer specification. Pixel rounding and final crop remain unresolved.",
+      "narrow_sources": [
+        "coordinate"
+      ],
+      "unresolved_requirements": [
+        "Final crop and pixel-rounding definitions",
+        "Asset-boundary and out-of-range rules",
+        "Production consumer scope and explicit adoption",
+        "Golden-image/render acceptance obligations and immutable record"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-06-INVALID-DATA-AND-TRACK-INTEGRITY",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "What product policy applies to invalid values, missing tracks, inconsistent frames and recovery/fail-closed behavior?",
+      "evidence_assessment": "Contracts, validators and tests evidence proposed or implemented behavior; Phase Y found no independent qualifying product-policy authority record.",
+      "narrow_sources": [],
+      "unresolved_requirements": [
+        "Named invalid-data cases and exact outcomes",
+        "Track continuity and fail-closed/recovery policy",
+        "Authority role/scope/effective date and rationale",
+        "Acceptance tests, provenance and immutable record"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-07-SEMANTIC-VISUAL-OWNERSHIP",
+      "status": "NOT_ADOPTED_KEEP_BLOCKED",
+      "policy_question": "Which component owns each visual semantic and may publish it to the production consumer?",
+      "evidence_assessment": "Narrow semantic definitions support future binding specification only. They do not authorize visual consumer bindings or renderer projection.",
+      "narrow_sources": [
+        "semantic",
+        "region_visibility"
+      ],
+      "unresolved_requirements": [
+        "Per-field producer/consumer ownership contract",
+        "Conflict and precedence rules",
+        "Explicit production binding/projection scope if intended",
+        "Acceptance obligations and verifiable approval record"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-08-CHALLENGE-008",
+      "status": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "policy_question": "How should CHALLENGE_008.active_selection be represented and reconciled with declared challenge timing?",
+      "evidence_assessment": "Declared duration is 11 seconds while phase durations sum to 12 seconds; active_selection policy remains unresolved. No correction may be inferred.",
+      "narrow_sources": [
+        "semantic",
+        "region_visibility"
+      ],
+      "unresolved_requirements": [
+        "Authoritative resolution of 11s versus 12s discrepancy",
+        "Explicit active_selection representation and ownership",
+        "Effective dated approval and source pins",
+        "Acceptance tests covering timing and selection"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    {
+      "decision_id": "R-09-CHALLENGE-009",
+      "status": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "policy_question": "How should CHALLENGE_009.displayed_count be represented and reconciled with declared challenge timing?",
+      "evidence_assessment": "Declared duration is 11 seconds while phase durations sum to 12 seconds; displayed_count representation remains unresolved. No correction may be inferred.",
+      "narrow_sources": [
+        "semantic",
+        "region_visibility"
+      ],
+      "unresolved_requirements": [
+        "Authoritative resolution of 11s versus 12s discrepancy",
+        "Explicit displayed_count representation and ownership",
+        "Effective dated approval and source pins",
+        "Acceptance tests covering count and timing"
+      ],
+      "default_disposition": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    }
+  ],
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "next_gate": "PHASE_AA_OPERATOR_DECISION_EVIDENCE_COMPLETION_AND_PRE_RENDER_READINESS",
+  "first_render_prerequisite_note": "This phase does not authorize or execute the first render. Before renderer activation, a complete and verifiable authority packet and all required input, seed, binding, render, acceptance, baseline and promotion gates must be approved separately."
+}
