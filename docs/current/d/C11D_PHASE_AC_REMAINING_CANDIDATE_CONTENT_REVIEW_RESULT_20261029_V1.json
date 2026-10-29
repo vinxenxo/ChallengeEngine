@@ -1,0 +1,944 @@
+{
+  "schema": "C11D-PHASE-AC-REMAINING-CANDIDATE-CONTENT-REVIEW-RESULT-V1",
+  "schema_version": "1.0.0",
+  "phase": "AC",
+  "review_date": "2026-10-29",
+  "status": "PASS_CONTENT_REVIEW_COMPLETE_NO_APPLICABLE_D_RENDER_AUTHORITY_FOUND",
+  "method": "Full-content review of every extracted source member, structured inspection of JSON decision/policy/evidence artifacts, and scope analysis of Markdown checkpoints, schemas, scripts and tests. This is a source-scope adjudication, not an operator policy adoption.",
+  "input": {
+    "source_bundle_filename": "C11D_PHASE_AC_REMAINING_AUTHORITY_CONTENT_BUNDLE_20261029_cb20eede667645908f4592822d20b49d.zip",
+    "source_bundle_sha256": "5ee6ec0f5a6b3a0884c22bbecfc98691269bd431adc896c088e7eb7f9d0b7f08",
+    "source_bundle_bytes": 180653,
+    "source_manifest_sha256": "bc8405ccba850a540ab00d50691462ef496f1ccda9586dda7f775ff09e5c7ac1",
+    "triage_json_sha256": "4db4ab20040b68872c4501dc39dda61b7ca2d8716303a536dbdd4121929ec418",
+    "phase_ac_prep_json_sha256": "d8e33c286792f982652a366c0acb080454b06f6c3db59551074aa78d9b7e5abf",
+    "phase_ac_prep_md_sha256": "f90e494a716910da81827c5f66bf543d6473e5e9545e0cc7af1d666f1ec393a9"
+  },
+  "counts": {
+    "all_triaged_candidates": 107,
+    "previously_reviewed_high_priority": 50,
+    "previously_unsearched_documents_reviewed_in_phase_y": 7,
+    "remaining_candidates_reviewed_in_phase_ac": 57,
+    "medium_priority": 55,
+    "low_priority": 2,
+    "source_hash_matches": 57,
+    "source_hash_mismatches": 0,
+    "source_files_missing": 0,
+    "authority_records_applicable_to_first_d_baseline_render": 0,
+    "bounded_qualification_records_out_of_scope": 1,
+    "limited_future_specification_decision_groups": 3,
+    "policy_adoptions": 0,
+    "authority_adjudications_from_operator_evidence": 0
+  },
+  "findings": [
+    {
+      "id": "AC-F01",
+      "classification": "LIMITED_AUTHORIZATION_NOT_APPLICABLE",
+      "source": "definitions/c11d/production/D9_14_PRODUCTION_QUALIFICATION_AUTHORIZATION_V1.json",
+      "finding": "The record asserts AUTHORIZED_BOUNDED_QUALIFICATION_ONLY as of 2026-10-09, with token RUN_C11D_PRODUCTION_QUALIFICATION_NO_RELEASE. Its scope explicitly restricts it to existing C11C production generators for three fixed REVIEW_720 product cases. It explicitly does not authorize general D renderer activation, D4.8 global activation, D9.14 full GUI certification, D9.16/17 closure, final D baseline freeze, C11C mutation, or release/publishing. It therefore cannot authorize the first render of the D-owned baseline renderer. The document itself does not present a signature/delegation chain sufficient to expand that scope."
+    },
+    {
+      "id": "AC-F02",
+      "classification": "PASS_IS_VALIDATION_NOT_PERMISSION",
+      "source": "artifacts/tests/c11d_d4/d4_8/d4_8_authorization_evidence.json; artifacts/tests/c11d_d4/d4_8/d4_8_governance_matrix.json; docs/current/d/D4.8_PRODUCTION_ACTIVATION_GOVERNANCE_CONTRACT.md",
+      "finding": "D4.8 PASS/CLOSED denotes successful validation of its governance logic. All eight recorded cases have authorized=false; production remains blocked by RENDERER_POLICY_DISABLED, renderer_policy=DISABLED, renderer_called=false, production_execution=false and runtime_authority=NONE."
+    },
+    {
+      "id": "AC-F03",
+      "classification": "LIMITED_SEMANTIC_DECISIONS",
+      "source": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+      "finding": "Four selector/field meanings are accepted only for a future binding specification. binding_authorization and renderer_projection_authorization are NOT_GRANTED_BY_SEMANTIC_REVIEW. CHALLENGE_008.active_selection and CHALLENGE_009.displayed_count stay blocked."
+    },
+    {
+      "id": "AC-F04",
+      "classification": "LIMITED_FIELD_REGION_DECISIONS",
+      "source": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+      "finding": "Four field-region visibility proposals are accepted only for future coordinate-policy specification. coordinate policy approval, coordinate transform, binding, projection, payload consumer, renderer activation, render test, payload materialization, media and release are all expressly not granted."
+    },
+    {
+      "id": "AC-F05",
+      "classification": "LIMITED_COORDINATE_CHECKPOINT",
+      "source": "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_CHECKPOINT_20261021_V1.md; README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+      "finding": "Five coordinate choices are recorded as accepted for future consumer specification only. Pixel rounding/crop raster semantics remain blocked, and there is no authorization for runtime transform, bindings, projection, consumer, renderer, render test, payload or media. A schema alone is not a decision record."
+    },
+    {
+      "id": "AC-F06",
+      "classification": "SEED_AND_CATALOG_POLICIES_RETAIN_LOCKS",
+      "source": "definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json; definitions/c11d/production/C11D_PRODUCTION_MATRIX_GOVERNANCE_POLICY_V1.json; definitions/c11d/production/C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json; definitions/c11d/production/C11D_CATALOG_IDENTITY_PROVENANCE_GOVERNANCE_POLICY_V1.json; definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json; artifacts/tests/c11d_d6/d6_0/d6_0_governance_findings.json; artifacts/tests/c11d_d6/d6_1/d6_1_governance_matrix.json; artifacts/tests/c11d_d7/d7_5/d7_5_governance_validation.json",
+      "finding": "These are scoped seed, matrix, catalog, provenance or acceptance rules—not renderer authorization. Cross-domain seed sharing remains forbidden; derivation/activation disabled; master_seed is NOT_ADOPTED/NOT_DECIDED; visual variation, presentation, editorial and delivery do not have registered seed owners in D6.1; 896 UNKNOWN observations remain preserved."
+    },
+    {
+      "id": "AC-F07",
+      "classification": "D9_D10_NO_GO_REMAINS",
+      "source": "docs/current/d/D9.17_D9_CLOSURE_ADJUDICATION_CHECKPOINT.md; docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md",
+      "finding": "D9 remains OPEN, D9.17 BLOCKED/NO-GO, D10 BLOCKED, renderer OFF and release authority NONE. Baseline evaluation explicitly keeps freeze_eligible=false and requires approved D renderer baseline plus separate D4.8 authority and full D9.14/D9.16 evidence."
+    },
+    {
+      "id": "AC-F08",
+      "classification": "EDITORIAL_CONSUMPTION_NOT_READY",
+      "source": "docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md; docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md; docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md; docs/current/d/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_CHECKPOINT_V1.md",
+      "finding": "Editorial review chain parity is 14/14 but actual visual payload consumption is 0/14; visibility windows/geometry remain unresolved; request-scoped values remain a sidecar and renderer input is not emitted. The grammar probe does not instantiate/dispatch the renderer or create media."
+    },
+    {
+      "id": "AC-F09",
+      "classification": "PREPARATION_AND_TESTS_NOT_ADOPTION",
+      "source": "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.md; docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md; docs/current/d/D_RENDERER_POLICY_DECISION_DOCKET_CHECKPOINT_V1.md; tools/c11d/d9/test_d_renderer_phase_r_operator_policy_decision_packet_20261029.py; tools/c11d/d9/test_d_renderer_policy_decision_docket.py",
+      "finding": "R-01..R-09 remain pending/unadopted; the docket is PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED. Static tests and preparation acceptance are evidence of contract consistency, not adoption of a policy."
+    },
+    {
+      "id": "AC-F10",
+      "classification": "SOURCE_SCOPE_LIMIT",
+      "source": "source_manifest.json",
+      "finding": "The Phase AC bundle contains the remaining 55 medium and 2 low sources (57 total) and verifies 57/57 original bytes against SHA-256 and size pins. Combined with the Phase X/Y coverage recorded in the checkout, this accounts for 107 triaged candidates plus the seven previously unsearched items; the conclusion is bounded to these artifacts, not to unknown external documents."
+    }
+  ],
+  "authority_conclusion": {
+    "applicable_authority_for_first_d_baseline_render": "NONE_FOUND_IN_THE_57_PHASE_AC_REMAINING_CANDIDATES",
+    "limited_d9_14_qualification_record": "PRESENT_BUT_SCOPE_IS_EXISTING_C11C_PRODUCTION_GENERATORS_ONLY; DOES_NOT_AUTHORIZE_D_RENDERER",
+    "semantic_binding_authority": "NOT_GRANTED",
+    "renderer_projection_authority": "NOT_GRANTED",
+    "renderer_activation_authority": "NOT_GRANTED",
+    "payload_materialization_authority": "NOT_GRANTED",
+    "media_creation_authority": "NOT_GRANTED",
+    "policy_adoption": "NONE",
+    "operator_decisions_from_phase_ab_packet": "0",
+    "next_gate": "PHASE_AD_OPERATOR_AUTHORITY_EVIDENCE_OR_EXPLICIT_KEEP_BLOCKED_DECISION"
+  },
+  "coverage": {
+    "phase_x_y_bundle_sha256": "5a481bded8dc9634741f0e164696ee123e02e9f029bcf689c39cad6a6460811e",
+    "phase_y_result_json_sha256": "c1bdce99d0ce9335c3f22168d818a66599a8c552f25155c6ce5fbcfb609e97ac",
+    "previous_scope": "50 high-priority candidates plus seven previously unsearched documents reviewed in Phase Y; Phase AC reviews 55 medium and 2 low remaining candidates.",
+    "no_global_absence_claim": true
+  },
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "source_dispositions": [
+    {
+      "path": "artifacts/tests/c11d_d4/d4_8/d4_8_authorization_evidence.json",
+      "priority": "LOW_REVIEW_PRIORITY",
+      "priority_score": 0,
+      "priority_signals": [],
+      "bytes": 3503,
+      "sha256": "8b0120c2cca1714852a1106a06a13fb5fdc3fb4836db1333e861211eb2bfc928",
+      "archive_member": "sources/artifacts/tests/c11d_d4/d4_8/d4_8_authorization_evidence.json",
+      "review_disposition": "TEST_EVIDENCE_NO_ACTIVATION",
+      "review_note": "La matriz de ocho casos pasa como prueba del gate; los ocho casos marcan authorized=false, renderer_policy=DISABLED, production_execution=false y runtime_authority=NONE. PASS cierra validación de la política, no autoriza ejecutar."
+    },
+    {
+      "path": "definitions/c11d/production/D9_14_PRODUCTION_QUALIFICATION_AUTHORIZATION_V1.json",
+      "priority": "LOW_REVIEW_PRIORITY",
+      "priority_score": 0,
+      "priority_signals": [],
+      "bytes": 2393,
+      "sha256": "bdfcdc52dc30561da8a481b86ada2576747e2fdf389bf86b0176b6cc75cf2642",
+      "archive_member": "sources/definitions/c11d/production/D9_14_PRODUCTION_QUALIFICATION_AUTHORIZATION_V1.json",
+      "review_disposition": "LIMITED_AUTHORIZATION_OUT_OF_SCOPE",
+      "review_note": "El registro declara AUTHORIZED_BOUNDED_QUALIFICATION_ONLY (2026-10-09), token RUN_C11D_PRODUCTION_QUALIFICATION_NO_RELEASE y scope EXISTING_C11C_PRODUCTION_GENERATORS_BOUNDED_QUALIFICATION para tres productos REVIEW_720. Niega activación D4.8 global, renderer D general, certificación GUI D9.14, D9.16/17, freeze D y release. No autoriza el primer render del renderer D; el registro tampoco incluye en sí una firma o cadena independiente de delegación."
+    },
+    {
+      "path": ".continue/rules/CONTINUE.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "policy"
+      ],
+      "bytes": 2833,
+      "sha256": "52776e55023a36e1ead71cf39a93337ca96f6097bd2c88018c3353484145ac86",
+      "archive_member": "sources/.continue/rules/CONTINUE.md",
+      "review_disposition": "GOVERNANCE_GUIDANCE_NOT_DECISION",
+      "review_note": "La copia V28 exige evidencia explícita de autoridad y mantiene hard locks. Su marcador de fase está atrasado frente a Ledger/Checkpoint V38, por lo que no reemplaza la continuidad versionada más nueva; sus límites fail-closed sí concuerdan con el estado actual."
+    },
+    {
+      "path": "artifacts/tests/c11d_d4/d4_8/d4_8_governance_matrix.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 1834,
+      "sha256": "79571bcb5e3052cac0a2933f52ccf6c8b088449d4cf7a18a12530b17512f71f0",
+      "archive_member": "sources/artifacts/tests/c11d_d4/d4_8/d4_8_governance_matrix.json",
+      "review_disposition": "TEST_EVIDENCE_NO_ACTIVATION",
+      "review_note": "D4.8 informa 8/8 casos PASS, pero los casos de producción y review se mantienen no autorizados y el renderer queda deshabilitado."
+    },
+    {
+      "path": "artifacts/tests/c11d_d6/d6_0/d6_0_governance_findings.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 134227,
+      "sha256": "211e699311b43f16dcbf96313363b7f01aaacfa95ba65029b92af8623d0d8f57",
+      "archive_member": "sources/artifacts/tests/c11d_d6/d6_0/d6_0_governance_findings.json",
+      "review_disposition": "AUDIT_EVIDENCE_NOT_AUTHORITY",
+      "review_note": "Auditoría D6.0 PASS, runtime_authority=NONE, 896 hallazgos UNKNOWN preservados y fuentes de selección de seed del Producer clasificadas como observaciones/warnings. blocking_finding_count=0 solo significa que el auditor no calificó bloqueos dentro de su alcance; no concede semilla maestra ni autorización de ejecución."
+    },
+    {
+      "path": "artifacts/tests/c11d_d6/d6_1/d6_1_governance_matrix.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 2338,
+      "sha256": "eb8636465bd86adfa74cb33f87744c05a1d2878c9d91c9089d7b26197e9d0312",
+      "archive_member": "sources/artifacts/tests/c11d_d6/d6_1/d6_1_governance_matrix.json",
+      "review_disposition": "SEED_GOVERNANCE_SCOPE_ONLY",
+      "review_note": "La matriz limita dominios canónicos a GAMEPLAY y MUSIC, prohíbe compartir estado seed entre dominios y deja derivación/activación deshabilitadas; master_seed queda NOT_DECIDED. No habilita dominios de presentación/variación ni renderer."
+    },
+    {
+      "path": "artifacts/tests/c11d_d7/d7_5/d7_5_governance_validation.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 840,
+      "sha256": "082fe86790f08a75c5345d3f761e8ee9e94b915c5ca890a54eb145304254b232",
+      "archive_member": "sources/artifacts/tests/c11d_d7/d7_5/d7_5_governance_validation.json",
+      "review_disposition": "TEST_EVIDENCE_NO_ACTIVATION",
+      "review_note": "D7.5 status PASS valida su contrato; los checks mantienen D4.8 blocked, renderer/production false, runtime NONE, master_seed no adoptado y release write prohibido."
+    },
+    {
+      "path": "definitions/c11d/production/C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "governance",
+        "policy"
+      ],
+      "bytes": 953,
+      "sha256": "a69fe9df9378d37fac084f6c053868cb8080d390870cff8b436627cd1d679cfd",
+      "archive_member": "sources/definitions/c11d/production/C11D_CANONICAL_CATALOG_GOVERNANCE_POLICY_V1.json",
+      "review_disposition": "SCOPED_CANONICAL_POLICY_NOT_RENDER_AUTHORITY",
+      "review_note": "Política canónica limitada a autoridad del catálogo D7.3 y matriz D7.1; el propio documento fija master_seed NOT_ADOPTED, runtime NONE, renderer/production false y no genera seeds."
+    },
+    {
+      "path": "definitions/c11d/production/C11D_CATALOG_IDENTITY_PROVENANCE_GOVERNANCE_POLICY_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "governance",
+        "policy"
+      ],
+      "bytes": 1134,
+      "sha256": "a35e0adc641532a2fe4df705a8cf8e58d9aedfa58b80548810734533bb6a8f21",
+      "archive_member": "sources/definitions/c11d/production/C11D_CATALOG_IDENTITY_PROVENANCE_GOVERNANCE_POLICY_V1.json",
+      "review_disposition": "SCOPED_CANONICAL_POLICY_NOT_RENDER_AUTHORITY",
+      "review_note": "Política canónica D7.4 de identidad/procedencia del catálogo, con escrituras restringidas a artifacts/tests/c11d_d7/d7_4; runtime NONE, renderer/production false, D4.8 BLOCKED y mutación C11-C prohibida."
+    },
+    {
+      "path": "definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "acceptance",
+        "governance",
+        "policy"
+      ],
+      "bytes": 1358,
+      "sha256": "8f4ce1d99a38a6993e3653a0fb03fb0f8e373420245b509ffe61ccc6ca02399f",
+      "archive_member": "sources/definitions/c11d/production/C11D_D7_FULL_ACCEPTANCE_GOVERNANCE_POLICY_V1.json",
+      "review_disposition": "SCOPED_CANONICAL_POLICY_NOT_RENDER_AUTHORITY",
+      "review_note": "Política canónica de aceptación D7.5; exige D4.8 bloqueado, runtime NONE y renderer/producción false. No es una autorización de render."
+    },
+    {
+      "path": "definitions/c11d/production/C11D_PRODUCTION_MATRIX_GOVERNANCE_POLICY_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "governance",
+        "policy"
+      ],
+      "bytes": 782,
+      "sha256": "0d5915076047585b639c30d59f1901f3b641f7626afcf2755d9c08ef4fe26378",
+      "archive_member": "sources/definitions/c11d/production/C11D_PRODUCTION_MATRIX_GOVERNANCE_POLICY_V1.json",
+      "review_disposition": "SCOPED_CANONICAL_POLICY_NOT_RENDER_AUTHORITY",
+      "review_note": "Autoridad D7.1 para matriz de producción declarativa; ejecución de production-mode deshabilitada, master_seed NOT_ADOPTED, auto seed prohibida y runtime NONE."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_SCHEMA_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 25752,
+      "sha256": "d7b279c3225ceb431a434cbfbea606b248d710f766200c60adefbea544e6b8bc",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_SCHEMA_V1.json",
+      "review_disposition": "SCHEMA_ONLY_NOT_DECISION",
+      "review_note": "Define la estructura del posible registro de decisión de coordenadas; un schema no es una decisión aprobada ni un permiso de transformación/consumo."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_SCHEMA_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "renderer"
+      ],
+      "bytes": 11641,
+      "sha256": "bb32a0631216c8b557ee48f85ff06dbf1588c125606b917acff22930aa6ce50e",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_SCHEMA_V1.json",
+      "review_disposition": "SCHEMA_ONLY_NOT_DECISION",
+      "review_note": "Esquema de validación de un registro limitado de visibilidad/región; no concede autoridad por sí mismo."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "renderer"
+      ],
+      "bytes": 25091,
+      "sha256": "1ec59d7a9257cfc2477fc37efe8cb2f04d9807a7f9986d96afc2f2ddd9b4f7af",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Cuatro candidatos (CHALLENGE_003/005/006/007) se aceptan solo para futura especificación de política de coordenadas. coordinate_policy_approval, transform, binding, projection, consumer, renderer, render test, payload y media se niegan explícitamente; CHALLENGE_008/009 siguen bloqueados."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_SCHEMA_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "renderer",
+        "semantic"
+      ],
+      "bytes": 2732,
+      "sha256": "ab09a617e9efc0aacb2111d9f6b02fc5764850f667cfdb33005451c5d4b073b9",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_SCHEMA_V1.json",
+      "review_disposition": "SCHEMA_ONLY_NOT_DECISION",
+      "review_note": "Esquema de un registro semántico; no tiene decisión, aprobador ni permiso de runtime propio."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "renderer",
+        "semantic"
+      ],
+      "bytes": 4247,
+      "sha256": "cc3550cd4d13f228ec9b3d51eeaa199505c5975b42882fb06ba3e83c4a000e90",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Cuatro definiciones semánticas se aceptan solo para futura especificación de bindings; CHALLENGE_008.active_selection y CHALLENGE_009.displayed_count quedan bloqueados. binding_authorization y renderer_projection_authorization indican NOT_GRANTED."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_SCHEMA_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "renderer",
+        "semantic"
+      ],
+      "bytes": 14286,
+      "sha256": "66e75d5fc136c0e3ffeeb2861abae8ac73d2e43eded257e54aadbd2736f2c68c",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_SCHEMA_V1.json",
+      "review_disposition": "SCHEMA_ONLY_NOT_DECISION",
+      "review_note": "Esquema de solicitud de revisión con binding/renderer projection fijados como no autorizados; no contiene adopción de política."
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_SCHEMA_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 2191,
+      "sha256": "fcf2662fc761dc059f431a4bdfa6172bc1c848a4c2ff037505ba0e0a13212980",
+      "archive_member": "sources/definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_SCHEMA_V1.json",
+      "review_disposition": "SCHEMA_ONLY_NOT_DECISION",
+      "review_note": "Solo permite un expediente con estado PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED y decisiones pendientes; no contiene adopción de decisiones."
+    },
+    {
+      "path": "definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "governance",
+        "policy"
+      ],
+      "bytes": 3294,
+      "sha256": "5329bf071fc437d08f706c9605609e53773ae00cb90eb704052e04e3e98e8b88",
+      "archive_member": "sources/definitions/c11d/seeds/C11D_SEED_GOVERNANCE_POLICY_V1.json",
+      "review_disposition": "SCOPED_SEED_POLICY_NOT_RENDER_AUTHORITY",
+      "review_note": "Política de seed D6.1: GAMEPLAY y MUSIC tienen propietarios definidos; VISUAL_VARIATION, PRESENTATION, EDITORIAL y DELIVERY carecen de propietario/autoridad registrada. Derivación deshabilitada, master_seed NOT_DECIDED, auto selección no canónica y cross-domain sharing prohibido."
+    },
+    {
+      "path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V6.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "master_seed",
+        "renderer"
+      ],
+      "bytes": 10519,
+      "sha256": "b35964ec53fa81a37b9ade2a4d2c49abc919fc462f605863e48a25e2557284d1",
+      "archive_member": "sources/docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261017_V6.md",
+      "review_disposition": "HISTORICAL_CONTINUITY_NO_AUTHORITY",
+      "review_note": "Snapshot de continuidad anterior; explícitamente mantiene no-autoriza semántica/propuestas a bindings, consumer, renderer o release. No desplaza checkpoint V38 ni fases posteriores."
+    },
+    {
+      "path": "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "policy"
+      ],
+      "bytes": 7602,
+      "sha256": "7aa7bf2ccc67d606f2a9c1b3808a42b2dd07cedd8c792d8c118c185f85c708a2",
+      "archive_member": "sources/docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.md",
+      "review_disposition": "PREPARATION_ONLY_NO_POLICY_ADOPTION",
+      "review_note": "Expediente R-01 a R-09 preparado en modo read-only; no selecciona opciones, no aprueba políticas. R-01..R-07 sin adopción; R-08/R-09 bloqueados por conflicto 11 s vs suma de fases 12 s."
+    },
+    {
+      "path": "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "acceptance",
+        "decision",
+        "policy"
+      ],
+      "bytes": 4698,
+      "sha256": "b6df812cb3242a175e750aa73af35c43a56d298960e0387bb734da746f5a7a91",
+      "archive_member": "sources/docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "review_disposition": "PREPARATION_ONLY_NO_POLICY_ADOPTION",
+      "review_note": "La aceptación de Phase R es únicamente del paquete de preparación (50/50); declara que no sustituye autoridad de producto/contrato y no aprueba bindings, payload, render, media ni release."
+    },
+    {
+      "path": "docs/current/d/C11D_PROJECT_CONTEXT_AND_GOVERNANCE_GUIDE_20261016.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 23367,
+      "sha256": "66be81a3cda66879c3a216932440153e08f6dd4101d5f6158d2b399c09dbb13b",
+      "archive_member": "sources/docs/current/d/C11D_PROJECT_CONTEXT_AND_GOVERNANCE_GUIDE_20261016.md",
+      "review_disposition": "OLDER_CONTEXT_NO_AUTHORITY_EXPANSION",
+      "review_note": "Guía contextual previa; prescribe C11-C inmutable, D9.14/D9.16/D9.17/D10 bloqueados y ningún release. Es más antigua que ledger/checkpoint V38 y no puede ampliar una autorización."
+    },
+    {
+      "path": "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_CHECKPOINT_20261021_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "policy"
+      ],
+      "bytes": 3273,
+      "sha256": "a6f590095d9befad1a82a566cb30e6326b24786c2c93ebdf736149bbd2d5ca7a",
+      "archive_member": "sources/docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_CHECKPOINT_20261021_V1.md",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Acepta cinco opciones geométricas únicamente para futura especificación de consumidor; redondeo de píxel/crop permanece bloqueado. No autoriza transform runtime, binding, proyección, consumer, render, payload o media; CH008/9 bloqueados."
+    },
+    {
+      "path": "docs/current/d/C11D_V2B_CANDIDATE_EVIDENCE_AUDIT_GOVERNANCE_SHAPE_FIX_20261020_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 2093,
+      "sha256": "3bdf4892c3de90576615541ba862ba680160e531c1c1f2f2b5f2523728dc3b61",
+      "archive_member": "sources/docs/current/d/C11D_V2B_CANDIDATE_EVIDENCE_AUDIT_GOVERNANCE_SHAPE_FIX_20261020_V1.md",
+      "review_disposition": "AUDITOR_FIX_NOT_AUTHORITY",
+      "review_note": "Documento de reparación de forma de datos del auditor de evidencia; corrige una validación estática, sin alterar report runtime ni conceder bindings, payload o render."
+    },
+    {
+      "path": "docs/current/d/C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_CHECKPOINT_20261021_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "decision"
+      ],
+      "bytes": 3511,
+      "sha256": "5b61d989052752083803d4390e47a5b2b58fe8452c502f88143e4d91e479e095",
+      "archive_member": "sources/docs/current/d/C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_CHECKPOINT_20261021_V1.md",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Checkpoint que recoge aceptación de cuatro propuestas para futura especificación de coordenadas; niega transformaciones, pixel placement, binding, consumer, renderer y media."
+    },
+    {
+      "path": "docs/current/d/D4.8_PRODUCTION_ACTIVATION_GOVERNANCE_CONTRACT.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 2920,
+      "sha256": "e275b0f3d080f18d252b38c0b6f140b34e89c0a915f498c24d8e660c85e102a8",
+      "archive_member": "sources/docs/current/d/D4.8_PRODUCTION_ACTIVATION_GOVERNANCE_CONTRACT.md",
+      "review_disposition": "GOVERNANCE_CONTRACT_RENDERER_DISABLED",
+      "review_note": "Aunque el checkpoint se describe PASS/CLOSED, su regla explícita mantiene PRODUCTION bloqueado por RENDERER_POLICY_DISABLED y REVIEW nunca autorizado para producción; D4.8 no ejecuta renderer."
+    },
+    {
+      "path": "docs/current/d/D6.0_SEED_GOVERNANCE_AUDIT_CONTRACT.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 4192,
+      "sha256": "dd8ce7a98d06eb04ad1d496389ce5aadcdbabda864b6f84ce01549f7c91b8d46",
+      "archive_member": "sources/docs/current/d/D6.0_SEED_GOVERNANCE_AUDIT_CONTRACT.md",
+      "review_disposition": "AUDIT_ONLY_NOT_AUTHORITY",
+      "review_note": "Define auditoría read-only de seed/RNG; observaciones no asignan autoridad, UNKNOWN se conserva, no crea registro canónico, no invoca Godot/renderer ni production."
+    },
+    {
+      "path": "docs/current/d/D9.17_D9_CLOSURE_ADJUDICATION_CHECKPOINT.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "adjudication"
+      ],
+      "bytes": 9927,
+      "sha256": "aa7fbc32470434d3bc7d239a30547f2960975ab6f191f445ce52c7e55c8831a5",
+      "archive_member": "sources/docs/current/d/D9.17_D9_CLOSURE_ADJUDICATION_CHECKPOINT.md",
+      "review_disposition": "EXPLICIT_NO_GO",
+      "review_note": "Adjudicación D9.17 BLOCKED/NO-GO, D9 abierto, D4.8 bloqueado, D10 bloqueado; exige futuro D renderer baseline aprobado y autorización D4.8 independiente antes de real-media acceptance."
+    },
+    {
+      "path": "docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 54,
+      "priority_signals": [
+        "baseline",
+        "freeze",
+        "release",
+        "renderer"
+      ],
+      "bytes": 6832,
+      "sha256": "feb5d577dd3a071dc700a78a44e27c9a90253884ed9feed8ba23de05e6fa1741",
+      "archive_member": "sources/docs/current/d/D_BASELINE_CANDIDATE_EVALUATION_V1.md",
+      "review_disposition": "BASELINE_PREFLIGHT_NOT_FREEZE_AUTHORITY",
+      "review_note": "Evaluación de candidato devuelve freeze_eligible=false por D9.14 real-media, D4.8, D9.16/17 y ausencia de aprobaciones de baseline. El registro de cualificación C11C no cambia esa frontera."
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "renderer"
+      ],
+      "bytes": 5560,
+      "sha256": "a4b540dce0797cf47bb3b6bc9405a9aedf792bfbb60ea8149322eecaac60a489",
+      "archive_member": "sources/docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md",
+      "review_disposition": "AUDIT_PREPARATION_NO_CONSUMPTION_AUTHORITY",
+      "review_note": "Auditoría de tres fixtures informa 14/14 paridad cadena editorial pero 0/14 consumidos por payload visual; contract non-approved, no renderer baseline ni production approval."
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "acceptance",
+        "renderer"
+      ],
+      "bytes": 4606,
+      "sha256": "db2ed4a6565315e1446bec153b34bbe2fc6fc28e8083ecbee22e0dc5856312c3",
+      "archive_member": "sources/docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md",
+      "review_disposition": "PREPARATION_ONLY_UNRESOLVED_VISIBILITY",
+      "review_note": "Matriz 14/14 reconcilia nombres; consumo visual 0/14, ventanas no evaluadas y geometría unresolved. La reconciliación no aprueba layout, visibilidad, consumer, renderer o release."
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_POLICY_DECISION_DOCKET_CHECKPOINT_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 3546,
+      "sha256": "496ea47c9ec38a0bec25f65db1aab7f97f8dba93e61a7de4af1eb2d3d5c9043c",
+      "archive_member": "sources/docs/current/d/D_RENDERER_POLICY_DECISION_DOCKET_CHECKPOINT_V1.md",
+      "review_disposition": "PREPARATION_ONLY_NO_POLICY_ADOPTION",
+      "review_note": "Docket tiene diez decisiones PENDING_OPERATOR_DECISION, cero ventanas evaluadas, universal policy not approved y consumer unauthorized."
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "renderer"
+      ],
+      "bytes": 7191,
+      "sha256": "143e956af6585120b42beee8b19d9cef45583ecec49fcb016acd6851e7bc46c6",
+      "archive_member": "sources/docs/current/d/D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_CHECKPOINT_V1.md",
+      "review_disposition": "PREPARATION_ONLY_SIDECAR_NOT_RENDER_INPUT",
+      "review_note": "Sidecar editorial conserva 14 valores y hashes pero 0/14 se inyectan/consumen en payload visual; region/window null, renderer input not emitted, no production/baseline/freeze/release approval."
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_CHECKPOINT_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "acceptance",
+        "binding",
+        "renderer"
+      ],
+      "bytes": 5580,
+      "sha256": "83d6f775e6ff11e2150376b1e875456c5353e8b519478694024254144922620e",
+      "archive_member": "sources/docs/current/d/D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_CHECKPOINT_V1.md",
+      "review_disposition": "READ_ONLY_PROBE_NO_RENDER_AUTHORITY",
+      "review_note": "Probe usa C11CVariationProfile.build en memoria, no instancia renderer/prototipo ni crea media; mantiene renderer OFF y los gates de D9/D10 bloqueados."
+    },
+    {
+      "path": "docs/current/d/README_C11D_D9.17_CLOSURE_ADJUDICATION_OVERLAY.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "adjudication"
+      ],
+      "bytes": 940,
+      "sha256": "950f982223bcf35908b16a60cdc131d6486cf170cab52cbc91dad67b85da1db4",
+      "archive_member": "sources/docs/current/d/README_C11D_D9.17_CLOSURE_ADJUDICATION_OVERLAY.md",
+      "review_disposition": "NO_GO_CLOSEOUT_NOTE",
+      "review_note": "Overlay documenta criterio de cierre sin levantar el NO-GO; requiere baseline D y D4.8 autorizado separadamente."
+    },
+    {
+      "path": "docs/history/reference/GOVERNANCE_HISTORICAL.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 6556,
+      "sha256": "91cd91f0236ab6b2b8a26318771d54e5abc157acfccf6cb283cfa6247fd27b61",
+      "archive_member": "sources/docs/history/reference/GOVERNANCE_HISTORICAL.md",
+      "review_disposition": "HISTORICAL_REFERENCE_NOT_LIVE_AUTHORITY",
+      "review_note": "El archivo se declara histórico y refiere su sección Current Live como autoridad del repositorio; no es una aprobación para activar renderer."
+    },
+    {
+      "path": "docs/operations/GOVERNANCE.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 1061,
+      "sha256": "4b1847e1afea048def88cf5d87324cca7c62dc814b44163dbabfa03832781eb7",
+      "archive_member": "sources/docs/operations/GOVERNANCE.md",
+      "review_disposition": "GENERAL_ENGINEERING_GOVERNANCE_NOT_RENDER_AUTHORITY",
+      "review_note": "Reglas generales de source-of-truth, determinismo y no mutar fronteras congeladas; no contiene una decisión de producto que habilite render."
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261026_V24.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "baseline"
+      ],
+      "bytes": 9523,
+      "sha256": "db2f82bae7387658781f2f393100f3c3d758e3df98e2459974bad715a2543db8",
+      "archive_member": "sources/prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261026_V24.md",
+      "review_disposition": "HISTORICAL_HANDOVER_NOT_CURRENT_AUTHORITY",
+      "review_note": "Prompt V24 de 26-Oct es un handover histórico; aunque preserve locks y reglas, está supersedido por V38/V39 y no concede autorización."
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V27.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 56,
+      "priority_signals": [
+        "binding",
+        "decision",
+        "freeze",
+        "policy",
+        "release",
+        "renderer"
+      ],
+      "bytes": 5238,
+      "sha256": "f5c5f2efff1f8f7a55f7a83eaead8d14495c78130baf1f4ffa72873798c094b3",
+      "archive_member": "sources/prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V27.md",
+      "review_disposition": "HISTORICAL_HANDOVER_NOT_CURRENT_AUTHORITY",
+      "review_note": "Prompt V27 antecede a Phase S–AC; mantiene renderer OFF y no autoridad de release. Está supersedido por el handover versionado actual."
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261016.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "decision"
+      ],
+      "bytes": 10135,
+      "sha256": "c564316b320ffce1e20bae7f66e86705bc31be8ad8d3caaed4559535e10e4d0a",
+      "archive_member": "sources/prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261016.md",
+      "review_disposition": "HISTORICAL_HANDOVER_NOT_CURRENT_AUTHORITY",
+      "review_note": "Prompt general de 16-Oct describe metas y gates históricos; confirma que preparación de renderer no es autorización y C11-C permanece inmutable."
+    },
+    {
+      "path": "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261026_V24.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "renderer"
+      ],
+      "bytes": 3775,
+      "sha256": "d2f627beabc30d286444f027ce4681d44fa9d0e05dda559a8fbd174383376e99",
+      "archive_member": "sources/prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261026_V24.md",
+      "review_disposition": "HISTORICAL_HANDOVER_NOT_CURRENT_AUTHORITY",
+      "review_note": "Start prompt V24 anterior; explicita que un gate no autoriza renderer, payload/media, baseline approval o release."
+    },
+    {
+      "path": "README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "policy"
+      ],
+      "bytes": 1616,
+      "sha256": "951bcd9fe802cf62b10e01e520ff7d404eb49e266c0540957f5e1261e10fb49c",
+      "archive_member": "sources/README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Readme del overlay dice cinco opciones aceptadas para futura especificación; rounding/crop bloqueados, no runtime transform, binding, projection, consumer, render test ni media."
+    },
+    {
+      "path": "README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_OVERLAY_20261021_V2.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "decision"
+      ],
+      "bytes": 3981,
+      "sha256": "7716627b2b616b7d283db1d6ae3120f8df07896aaa9311cd035fb7ef47196e8f",
+      "archive_member": "sources/README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_OVERLAY_20261021_V2.md",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Readme limita cuatro propuestas a futura política de coordenadas; CH008/9 bloqueados; no coordinate policy approval ni binding/renderer/media."
+    },
+    {
+      "path": "README_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_OVERLAY_20261020_V1.md",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "semantic"
+      ],
+      "bytes": 1414,
+      "sha256": "2858fec2f02258d729b6eb4900aa57cf9b2749633269b943481f57ce24a5ca10",
+      "archive_member": "sources/README_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_OVERLAY_20261020_V1.md",
+      "review_disposition": "LIMITED_DECISION_FUTURE_SPEC_ONLY",
+      "review_note": "Readme de decisión semántica limita cuatro decisiones a una futura especificación de binding; CH008/9 bloqueados; no binding, projection, payload, media, renderer, production, freeze ni promotion."
+    },
+    {
+      "path": "tools/c11d/d4/production_activation_governance.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 23196,
+      "sha256": "cd3848f26bf12e8f486f7153eeda6c60d918314221655c40b8d9b18c67db0600",
+      "archive_member": "sources/tools/c11d/d4/production_activation_governance.py",
+      "review_disposition": "GOVERNANCE_EVALUATOR_NOT_AUTHORITY",
+      "review_note": "Implementa el evaluador declarativo de D4.8; docstring declara que nunca ejecuta production. La política actual mantiene renderer deshabilitado."
+    },
+    {
+      "path": "tools/c11d/d4/run_d4_8_activation_governance.ps1",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 11803,
+      "sha256": "d0b705c1a7c20e69df749e3f6ae08f69c9a5e66747b7418b5807e58d621676a4",
+      "archive_member": "sources/tools/c11d/d4/run_d4_8_activation_governance.ps1",
+      "review_disposition": "VALIDATION_RUNNER_NOT_EXECUTION_AUTHORITY",
+      "review_note": "Runner de validación D4.8; comprueba gates/pins, no es por sí mismo autorización de renderer ni ejecuta la producción."
+    },
+    {
+      "path": "tools/c11d/d6/run_d6_0_seed_governance_audit.ps1",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 3696,
+      "sha256": "2ca3548fd22a206544ed94e952b2ea35929176ec6a8621edfc3c094910824679",
+      "archive_member": "sources/tools/c11d/d6/run_d6_0_seed_governance_audit.ps1",
+      "review_disposition": "AUDIT_RUNNER_NOT_AUTHORITY",
+      "review_note": "Lanza el auditor read-only D6.0 y verifica sus outputs; no asigna seeds ni activa runtime."
+    },
+    {
+      "path": "tools/c11d/d6/seed_governance_audit.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 51,
+      "priority_signals": [
+        "governance"
+      ],
+      "bytes": 31694,
+      "sha256": "f1b9f72b2eaf0c4a3dd37e22bee37f728944fd7b1745c2f38dc25bfd112a8ebd",
+      "archive_member": "sources/tools/c11d/d6/seed_governance_audit.py",
+      "review_disposition": "AUDIT_IMPLEMENTATION_NOT_AUTHORITY",
+      "review_note": "Implementación de descubrimiento/clasificación seed/RNG read-only, preserva UNKNOWN, no cambia políticas ni runtime."
+    },
+    {
+      "path": "tools/c11d/d9/accept_existing_d_renderer_phase_o_source_frame_semantic_binding_crosswalk_20261027.ps1",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "binding",
+        "renderer",
+        "semantic"
+      ],
+      "bytes": 32753,
+      "sha256": "4d3df0fc7760232e7f2d01c0ecde28bedc91aae261968d82719e972a8d7d9991",
+      "archive_member": "sources/tools/c11d/d9/accept_existing_d_renderer_phase_o_source_frame_semantic_binding_crosswalk_20261027.ps1",
+      "review_disposition": "READ_ONLY_CROSSWALK_NO_BINDING_APPROVAL",
+      "review_note": "Script de aceptación Phase O confirma PASS_READ_ONLY_CROSSWALK_NO_BINDING_APPROVAL; 0 approved bindings/custom_data/projection, 0 runtime invocations y renderer OFF."
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_policy_decision_docket.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 7254,
+      "sha256": "9705dbc861698a6588e22c2e2da1d7a6e6758c495f2754c369f84b4fc2822880",
+      "archive_member": "sources/tools/c11d/d9/d_renderer_policy_decision_docket.py",
+      "review_disposition": "PREPARATION_TOOL_NOT_DECISION_AUTHORITY",
+      "review_note": "Prepara/valida docket de decisiones y sus pins; no selecciona opciones ni autoriza consumer/renderer."
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_decision_record_v1.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 20561,
+      "sha256": "ae4d30f25ff5988fd2a18c5aa7caabf6544eea4930d1b687a54d151b73d00d56",
+      "archive_member": "sources/tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_decision_record_v1.py",
+      "review_disposition": "STATIC_TEST_NOT_AUTHORITY",
+      "review_note": "Suite estática que verifica coherencia del registro/propuesta de coordenadas y los locks; los PASS no autorizan ejecutar su contenido."
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_field_region_visibility_decision_record_v1.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 52,
+      "priority_signals": [
+        "decision",
+        "renderer"
+      ],
+      "bytes": 22315,
+      "sha256": "c35d3a44c0b998235ad17b2ad403892a1e6c95e0bffaeb0a3d075f4ff8258039",
+      "archive_member": "sources/tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_field_region_visibility_decision_record_v1.py",
+      "review_disposition": "STATIC_TEST_NOT_AUTHORITY",
+      "review_note": "Suite estática de cuatro decisiones de visibilidad/region; su propio contrato exige coordinate spec only y locks intactos."
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_decision_record_v1.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "renderer",
+        "semantic"
+      ],
+      "bytes": 15635,
+      "sha256": "d9e2c2516a248b62b60706f97f8b3d8132e871eb2b24117ebf3f594e69cb5e5f",
+      "archive_member": "sources/tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_decision_record_v1.py",
+      "review_disposition": "STATIC_TEST_NOT_AUTHORITY",
+      "review_note": "Suite estática de semántica; acepta definiciones limitadas, verifica bindings/projection no concedidos."
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_review_request_v1.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "renderer",
+        "semantic"
+      ],
+      "bytes": 12650,
+      "sha256": "cf0cf4366c8e9014de8074759ae07243ee33f89b4319268df19a6d400db91640",
+      "archive_member": "sources/tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_review_request_v1.py",
+      "review_disposition": "STATIC_TEST_NOT_AUTHORITY",
+      "review_note": "Valida solicitud/schema de revisión semántica; no decide ni autoriza consumos."
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_phase_r_operator_policy_decision_packet_20261029.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 13739,
+      "sha256": "0e1b9a570de5068b1b506f8bca196f914b297b74ee8311773be86df218902817",
+      "archive_member": "sources/tools/c11d/d9/test_d_renderer_phase_r_operator_policy_decision_packet_20261029.py",
+      "review_disposition": "STATIC_TEST_NOT_AUTHORITY",
+      "review_note": "Test de Phase R verifica integridad del expediente pendiente y ausencia de adopción de políticas."
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_policy_decision_docket.py",
+      "priority": "MEDIUM_REVIEW_PRIORITY",
+      "priority_score": 53,
+      "priority_signals": [
+        "decision",
+        "policy",
+        "renderer"
+      ],
+      "bytes": 3212,
+      "sha256": "46c74da2bfc180ef45cc81172025e52563ad1c3bec28fb43fc2e48288934d711",
+      "archive_member": "sources/tools/c11d/d9/test_d_renderer_policy_decision_docket.py",
+      "review_disposition": "STATIC_TEST_NOT_AUTHORITY",
+      "review_note": "Suite del docket comprueba el estado PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED y las decisiones pendientes."
+    }
+  ],
+  "run_evidence": {
+    "phase_ab_tests_stdout_sha256": "c932a88d3714c69a04e11e3e8ce61b6d25545b0898a990d89f21a3a9103ce6c2",
+    "phase_ab_tests_stderr_sha256": "7cf03a4703d71d536bf2511cca70265e8ec91ccee4f09c0c10facca7718a1462",
+    "phase_ab_verifier_stdout_sha256": "aba1190312f26de2a067fb2f77912b14f56d1424c2e49dc887adfae1dbcdb541",
+    "phase_ab_verifier_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "phase_ac_tests_stdout_sha256": "10f87bb65b5d7bf60bd81ff56aac6c4114e07dd41343e1cea525f950eb71b466",
+    "phase_ac_tests_stderr_sha256": "2d3aca389a9f11b83ae36bc60b047e8518411be996afe044818b13542c574109",
+    "phase_ac_prepare_stdout_sha256": "cce5b68ea2ca693114412df8110d06e7bf13e68be972081e975865cd97a4b4ef",
+    "phase_ac_prepare_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "phase_ac_verify_stdout_sha256": "f32f2f3373f2134b4a67c2fbb22481d0e63aa2933b3218de74dc595d7e4f0ecf",
+    "phase_ac_verify_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "phase_ac_test_status": "PASS_30_OF_30",
+    "phase_ac_bundle_generation_status": "PASS_READ_ONLY_BUNDLE_READY",
+    "phase_ac_source_verification_status": "PASS_REMAINING_SOURCE_BYTES_PRESERVED"
+  }
+}

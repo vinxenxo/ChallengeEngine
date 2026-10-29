@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Phase AC Remaining Candidate Content Review Result V1",
+  "type": "object",
+  "required": [
+    "schema",
+    "schema_version",
+    "phase",
+    "status",
+    "input",
+    "counts",
+    "findings",
+    "authority_conclusion",
+    "governance",
+    "source_dispositions",
+    "run_evidence"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-PHASE-AC-REMAINING-CANDIDATE-CONTENT-REVIEW-RESULT-V1"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "phase": {
+      "const": "AC"
+    },
+    "status": {
+      "const": "PASS_CONTENT_REVIEW_COMPLETE_NO_APPLICABLE_D_RENDER_AUTHORITY_FOUND"
+    },
+    "input": {
+      "type": "object"
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "remaining_candidates_reviewed_in_phase_ac": {
+          "const": 57
+        },
+        "medium_priority": {
+          "const": 55
+        },
+        "low_priority": {
+          "const": 2
+        },
+        "source_hash_matches": {
+          "const": 57
+        },
+        "source_hash_mismatches": {
+          "const": 0
+        },
+        "source_files_missing": {
+          "const": 0
+        },
+        "authority_records_applicable_to_first_d_baseline_render": {
+          "const": 0
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 10
+    },
+    "authority_conclusion": {
+      "type": "object"
+    },
+    "governance": {
+      "type": "object"
+    },
+    "source_dispositions": {
+      "type": "array",
+      "minItems": 57,
+      "maxItems": 57
+    },
+    "run_evidence": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
