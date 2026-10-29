@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "receipt_id": "C11D-PHASE-AD-EXECUTION-RECEIPT-20261029-V1",
+  "date": "2026-10-29",
+  "phase": "AD",
+  "status": "PASS_DECISION_PACKET_AND_GOVERNANCE_LOCKS; OPERATOR_DECISION_PENDING",
+  "source_package_sha256": "3ff1ae96e3685b9823c17fcec3824ef0b7a51a83d95dd0deccd65d6271619b71",
+  "phase_ac_source_bundle_sha256": "5ee6ec0f5a6b3a0884c22bbecfc98691269bd431adc896c088e7eb7f9d0b7f08",
+  "decision_packet_sha256": "63339254dd444c38a932b8b582bc0af600d309786f46d1e8dd2b92dbf07054e5",
+  "decision_packet_markdown_sha256": "f2ece4afd91c9fa2a214ddedb56a266b72eb0454c990cc15d208a9a6d059a859",
+  "tests": {
+    "status": "PASS",
+    "passed": 60,
+    "total": 60,
+    "test_script_sha256": "dcca5db799ee79be07ae2f8ed4e96d5ae8d9d1e75b5e3b7593ccd883368000cf",
+    "stdout_sha256": "412b7c25cde4511610a9f7171e800d6d9ea00d9503584acf4d6e52377464048b",
+    "stderr_sha256": "bb892ed355c25a21ab0f5dbac36c1af45071e8cb9ed964e2a4998155dd3ab903"
+  },
+  "verification": {
+    "status": "PASS_DECISION_PACKET_AND_GOVERNANCE_LOCKS",
+    "verified_decisions": 9,
+    "verifier_script_sha256": "ff68b76e6a14786ed1b38fc0b8fb8d9c2c32c12d5cefa5d2e1e827e235906219",
+    "stdout_sha256": "70bbbf42c4e4e1926cace2064cfa12c76852b297b1d79d961db913bfc7d26937",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "operator_state": {
+    "choice": "PENDING_EVIDENCE_OR_KEEP_BLOCKED",
+    "authority_evidence_records_submitted": 0,
+    "decisions_adjudicated": 0,
+    "policy_adoption": "NONE"
+  },
+  "governance_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "next_action": "OPERATOR_COMPLETE_EXISTING_PHASE_AD_PACKET_WITH_REAL_IMMUTABLE_AUTHORITY_EVIDENCE_OR_EXPLICIT_KEEP_BLOCKED_NO_POLICY_ADOPTION",
+  "notes": [
+    "The user reported successful execution in the active Windows checkout; this receipt fingerprints that reported output.",
+    "A general instruction to continue engineering is not policy adoption.",
+    "Do not create another preparation-only technical phase to bypass the operator decision gate.",
+    "No applicable first-D-render authority was found in the reviewed 107 candidate corpus (50 high, 7 previously unsearched, 55 medium and 2 low); this is a bounded result, not a global absence claim."
+  ]
+}
