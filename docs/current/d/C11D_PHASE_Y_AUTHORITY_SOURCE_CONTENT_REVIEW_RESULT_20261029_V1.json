@@ -1,0 +1,1051 @@
+{
+  "schema": "C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_V1",
+  "schema_version": "1.0.0",
+  "phase": "Y",
+  "review_date": "2026-10-29",
+  "status": "PASS_CONTENT_REVIEW_COMPLETE_AUTHORITY_ADJUDICATION_PENDING",
+  "review_mode": "READ_ONLY_SOURCE_CONTENT_REVIEW_AND_HISTORICAL_ARCHIVE_SCAN",
+  "input_bundle": {
+    "filename": "C11D_PHASE_X_AUTHORITY_CONTENT_BUNDLE_V2_9aae72731ae34209a4edf2435ce70208.zip",
+    "sha256": "5a481bded8dc9634741f0e164696ee123e02e9f029bcf689c39cad6a6460811e",
+    "bytes": 41318940,
+    "zip_crc": "PASS",
+    "zip_entries": 58,
+    "manifest_entries": 57,
+    "manifest_sha256": "746c1626e2f73955e862fdf437a1ebd3e84a254e610711eb326f2110f3ce57ee",
+    "source_hash_matches": 57,
+    "source_hash_mismatches": 0,
+    "source_files_missing": 0
+  },
+  "counts": {
+    "high_priority_candidates_reviewed": 50,
+    "previously_unsearched_archives_reviewed": 7,
+    "source_members_integrity_verified": 57,
+    "nested_archive_entries": 20436,
+    "nested_decoded_text_files_scanned": 19504,
+    "nested_archive_crc_pass": 7,
+    "nested_archive_crc_fail": 0,
+    "scan_read_errors": 0,
+    "broad_phase_r_decisions": 9,
+    "broad_phase_r_decisions_adopted": 0,
+    "scoped_historical_decision_records_identified": 3
+  },
+  "review_limitations": [
+    "This is a read-only content review and scope reconciliation, not cryptographic identity verification, legal advice, or a replacement for an operator/contract-owner approval record.",
+    "The seven nested ZIPs are historical snapshots with overlapping content; their 20,436 entry count is not a count of unique files.",
+    "The scan covered 19,504 decodable text members in the seven snapshots plus all 50 high-priority source members. Non-text binaries were integrity checked but not semantically interpreted.",
+    "The Phase S statement that authority evidence was absent was expressly limited to its pinned Phase P/Q/R record set; this review does not make a global absence claim about records outside the reviewed bundle/snapshots or uncaptured conversations.",
+    "Historical payload materialization flags and runtime PASS labels were reviewed in their artifact scope; in-memory or isolated test payloads are not equivalent to current production payload/media authorization."
+  ],
+  "key_findings": [
+    {
+      "id": "Y-01",
+      "finding": "The current Phase R operator policy packet is preparation-only. R-01 through R-07 remain UNDECIDED_NO_POLICY_AUTHORIZED; R-08 and R-09 are BLOCKED_EXPLICIT_AUTHORITY_REQUIRED. No broad R decision is adopted by this review."
+    },
+    {
+      "id": "Y-02",
+      "finding": "The current Phase S preflight found no qualifying authority record in the specified pinned P/Q/R record set only; its global_absence_claim is false. It requires explicit decision IDs/options, authority identity and scope, effective date, rationale, source pins, acceptance obligations, approval provenance, and immutable record location."
+    },
+    {
+      "id": "Y-03",
+      "finding": "Three historical, explicitly limited decision records exist: semantic definitions for CHALLENGE_003/005/006/007 for future binding specification; field-region/visibility acceptance for future coordinate policy specification; and coordinate choices for future consumer specification. They do not approve runtime transforms, bindings, renderer projection, render tests, payload/media creation, release or promotion. The coordinate record cites a generic standing engineering approval, which the Phase S contract says is insufficient to authorize product policy."
+    },
+    {
+      "id": "Y-04",
+      "finding": "Historical isolated runtime/static acceptance evidence exists (including an allowlisted source-composition harness and a V2C source-frame route), but the records state their limited scope and do not authorize production wiring, renderer activation, current payload/media, bindings, seed-sensitivity certification or promotion."
+    },
+    {
+      "id": "Y-05",
+      "finding": "Historical `D9.15` GUI acceptance labels and older milestone snapshots are dated and narrower than the latest current state. They do not supersede current D9.17 BLOCKED/NO-GO, D10 BLOCKED_FOR_PROMOTION, D4.8 BLOCKED, baseline approval missing, and release authority NONE."
+    },
+    {
+      "id": "Y-06",
+      "finding": "No qualifying source authorizes a broad current renderer or release gate. CHALLENGE_008.active_selection and CHALLENGE_009.displayed_count stay blocked because total_duration=11s conflicts with the 12s phase sum; no fix is inferred."
+    }
+  ],
+  "limited_decision_records": [
+    {
+      "record_id": "V2B-SEMANTIC-DECISIONS-20261020",
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+      "sha256": "cc3550cd4d13f228ec9b3d51eeaa199505c5975b42882fb06ba3e83c4a000e90",
+      "status": "SEMANTIC_DECISIONS_RECORDED_BINDINGS_NOT_APPROVED",
+      "reviewed_at": "2026-10-20T23:58:36+02:00",
+      "decision_scope": "CHALLENGE_003.target_x, CHALLENGE_005.target_position, CHALLENGE_006.target_position, CHALLENGE_007.target_position semantics for future binding specification only",
+      "decision_outcome": "Scoped semantic decisions exist. CHALLENGE_008.active_selection and CHALLENGE_009.displayed_count remain blocked due the 11s versus 12s conflict and related presentation policy. No binding or renderer authorization."
+    },
+    {
+      "record_id": "V2B-FIELD-REGION-VISIBILITY-20261021",
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+      "sha256": "1ec59d7a9257cfc2477fc37efe8cb2f04d9807a7f9986d96afc2f2ddd9b4f7af",
+      "status": "FIELD_REGION_VISIBILITY_ACCEPTED_FOR_COORDINATE_POLICY_SPECIFICATION_ONLY",
+      "reviewed_at": "2026-10-21T11:24:00+02:00",
+      "decision_scope": "Four candidate fields, future coordinate-policy specification only",
+      "decision_outcome": "Explicitly does not approve coordinate transform, binding, renderer projection, or pixel placement; CHALLENGE_008/009 remain blocked."
+    },
+    {
+      "record_id": "V2B-COORDINATE-POLICY-20261021",
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+      "sha256": "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+      "status": "COORDINATE_POLICY_ACCEPTED_FOR_FUTURE_CONSUMER_SPECIFICATION_ONLY",
+      "reviewed_at": "2026-10-21T21:52:10+02:00",
+      "approval_basis": "Standing operator approval to continue the previously defined engineering gates; this record formalizes specific coordinate-policy choices while preserving separate renderer/runtime gates.",
+      "decision_scope": "Five specific scale/centerline/asset-size/anchor/clipping choices for future consumer specification only",
+      "decision_outcome": "Useful, narrow recorded technical choices; Phase S explicitly says a generic standing approval to continue engineering is not approval of product policy. All runtime_transform_authorized, binding_authorized and renderer_projection_authorized are false; rounding and final crop unresolved; CHALLENGE_008/009 blocked."
+    },
+    {
+      "record_id": "CURRENT-DECISION-DOCKET-20261029",
+      "path": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+      "sha256": "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f",
+      "status": "PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED",
+      "decision_scope": "Broad policy decisions R-01..R-09",
+      "decision_outcome": "Nine Phase R decisions are unadopted or explicitly blocked; packet is preparation-only; policy adoption none."
+    },
+    {
+      "record_id": "CURRENT-PHASE-S-AUDIT-20261029",
+      "path": "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.json",
+      "sha256": "6df0e9b3d5d76cc14313c518786b765a86e779f1e110311a0593ee9939675d0d",
+      "status": "AUTHORITY_EVIDENCE_NOT_PRESENT_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "decision_scope": "Pinned P/Q/R record set only; explicitly not a global absence claim",
+      "decision_outcome": "No qualifying Phase-S authority record for broad R-01..R-09 decisions in that pinned record set. Requires decision ID, exact policy, named role and scope, effective date, rationale, source pins, acceptance test obligations, approval provenance and immutable record location. KEEP_BLOCKED_NO_POLICY_ADOPTION by default."
+    },
+    {
+      "record_id": "HISTORICAL-ISOLATED-RUNTIME-20261022-26",
+      "path": "Historical runtime acceptance records within snapshot 004",
+      "sha256": null,
+      "status": "PASS_WITH_EXPLICITLY_LIMITED_SCOPE",
+      "decision_scope": "Isolated review harness / source-frame route / allowlisted source composition only",
+      "decision_outcome": "Some static and Godot harness passes exist historically (including 132/132 static + 1680 source/marker frames; V2C source-frame route acceptance). Those do not authorize production wiring, payload/media creation under current governance, renderer activation, bindings, seed sensitivity, or promotion."
+    },
+    {
+      "record_id": "HISTORICAL-D9-15-ACCEPTANCE-20261009-14",
+      "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md in older snapshots",
+      "sha256": "1daeff9674fdb51b65ea8df353e248db9a2b090206777e754279694cf58f0ec3",
+      "status": "HISTORICAL_GUI_OPERATIONAL_ACCEPTANCE_ONLY",
+      "decision_scope": "Old GUI operational gate only; superseded by later current closure gates",
+      "decision_outcome": "Does not supersede current D9.17 blocked/no-go, D10 blocked, D4.8 blocked, and release authority none."
+    }
+  ],
+  "phase_r_decision_disposition": [
+    {
+      "decision_id": "R-01-TIMEBASE-SAMPLING",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "No authoritative source→delivery 60/30 fps sampling decision found."
+    },
+    {
+      "decision_id": "R-02-SPATIAL-MAPPING",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "Historical coordinate choices limited to future consumer specification; no authority for execution/bindings/projection."
+    },
+    {
+      "decision_id": "R-03-PILOT-SCALAR-X-AND-PRESENTATION-Y",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "Semantic and coordinate notes are specification-only; no binding or runtime approval."
+    },
+    {
+      "decision_id": "R-04-VISIBILITY-AND-REGION-OWNERSHIP",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "Four fields accepted only for future coordinate-policy specification; no live region/visibility implementation approval."
+    },
+    {
+      "decision_id": "R-05-ASSET-GEOMETRY-ANCHOR-CROP-ROUNDING",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "Some geometry choices are future-spec-only; pixel rounding and final crop remain unresolved."
+    },
+    {
+      "decision_id": "R-06-INVALID-DATA-AND-TRACK-INTEGRITY",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "Contracts and tests are evidence of proposed fail-closed behavior, not an adopted product policy authority record."
+    },
+    {
+      "decision_id": "R-07-SEMANTIC-VISUAL-OWNERSHIP",
+      "disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "note": "Limited semantic definitions are accepted for future binding specification only; no visual consumer binding is approved."
+    },
+    {
+      "decision_id": "R-08-CHALLENGE-008",
+      "disposition": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "note": "11s total vs 12s phase sum; active_selection policy unresolved."
+    },
+    {
+      "decision_id": "R-09-CHALLENGE-009",
+      "disposition": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "note": "11s total vs 12s phase sum; displayed_count representation unresolved."
+    }
+  ],
+  "source_review_inventory": [
+    {
+      "member": "high_priority_candidates/001_b19a9b27ee35_C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.json",
+      "source_path": "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.json",
+      "sha256": "6b6cd0881e207b0b3ce55de7db87b7aa325f2ea65ecaa94d7efc1afd2a9b386a",
+      "bytes": 25494,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "DECISION_PACKET_PREPARATION_ONLY",
+      "review_finding": "R-01..R-07 undecided; R-08/R-09 explicitly blocked; all policy adoption fields remain NOT_ADOPTED."
+    },
+    {
+      "member": "high_priority_candidates/002_0dce2d7c09a5_D_RENDERER_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_SCHEMA_V1.json",
+      "source_path": "definitions/c11d/review/D_RENDERER_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_SCHEMA_V1.json",
+      "sha256": "c2d55094a8a6210d6cf2d72e5c78e0672b753b164d37a7a730ea43f61c520a67",
+      "bytes": 7437,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "SCHEMA_NOT_AUTHORITY",
+      "review_finding": "Defines validation schema and required approval provenance; cannot itself approve policy."
+    },
+    {
+      "member": "high_priority_candidates/003_226df10a7f41_C11D_ENGINEERING_PHASE_LEDGER_20261027_V1.md",
+      "source_path": "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261027_V1.md",
+      "sha256": "813fe8177f6348f7a02e91cdaebc5b9770161f857527fb247386fb6e503e2878",
+      "bytes": 36835,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/004_a7c6c5dd2ae0_C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.json",
+      "source_path": "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.json",
+      "sha256": "6df0e9b3d5d76cc14313c518786b765a86e779f1e110311a0593ee9939675d0d",
+      "bytes": 21122,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "SCOPED_AUTHORITY_EVIDENCE_PREFLIGHT",
+      "review_finding": "Found 0 qualifying decisions only inside the pinned P/Q/R record set; record explicitly says global_absence_claim=false. It defines the evidence requirements for the next reconciliation gate."
+    },
+    {
+      "member": "high_priority_candidates/005_feb49bc9b137_D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
+      "source_path": "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
+      "sha256": "b5ca441179d3344fcb4ed6278db493af914723a1376043ecea5994cc7f63e8ec",
+      "bytes": 43963,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/006_ff6185a11fa7_D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md",
+      "source_path": "docs/current/d/D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md",
+      "sha256": "11db1b9f8c905168b9f5095a8bbeb4e9ef6db9d2cac350228ccb3c46fd918168",
+      "bytes": 5081,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/007_07db0da9f36f_test_d_renderer_phase_s_authority_evidence_preflight_20261029.py",
+      "source_path": "tools/c11d/d9/test_d_renderer_phase_s_authority_evidence_preflight_20261029.py",
+      "sha256": "94deb73c4ddb0522f66f11363464485a44ee9ccee8041bdb7aa054b777fa9a69",
+      "bytes": 9765,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "TEST_ORACLE_NOT_AUTHORITY",
+      "review_finding": "A test PASS establishes only its declared test/gate scope, not policy adoption, binding approval, render authorization, or release authority."
+    },
+    {
+      "member": "high_priority_candidates/008_8a09266a0c74_test_full_acceptance.py",
+      "source_path": "tools/c11d/d9/test_full_acceptance.py",
+      "sha256": "e86fe4a85abb692a31d38a6addee06141cdfb08905a6ba6bfb11058e93f857f3",
+      "bytes": 4452,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "TEST_ORACLE_NOT_AUTHORITY",
+      "review_finding": "A test PASS establishes only its declared test/gate scope, not policy adoption, binding approval, render authorization, or release authority."
+    },
+    {
+      "member": "high_priority_candidates/009_e60ccf7ab6aa_test_gui_operational_acceptance.py",
+      "source_path": "tools/c11d/d9/test_gui_operational_acceptance.py",
+      "sha256": "ee93bfab980eabb8ccb573c8e6388ba4ffd3c8051f9d4c232078cbf4e8f19106",
+      "bytes": 4432,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "TEST_ORACLE_NOT_AUTHORITY",
+      "review_finding": "A test PASS establishes only its declared test/gate scope, not policy adoption, binding approval, render authorization, or release authority."
+    },
+    {
+      "member": "high_priority_candidates/010_e8e51072d0be_d5_2_lineage_registry.json",
+      "source_path": "artifacts/tests/c11d_d5/d5_2/d5_2_lineage_registry.json",
+      "sha256": "8c5984a2a8286707d6c2762365155368d96f027d036d6c6c12aa566173715db0",
+      "bytes": 67704,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "TEST_ORACLE_NOT_AUTHORITY",
+      "review_finding": "A test PASS establishes only its declared test/gate scope, not policy adoption, binding approval, render authorization, or release authority."
+    },
+    {
+      "member": "high_priority_candidates/011_f9a7fd7e04de_D_BASELINE_CANDIDATE_POLICY_V1.json",
+      "source_path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+      "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+      "bytes": 3838,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "EVALUATION_ONLY_BASELINE_POLICY",
+      "review_finding": "Status EVALUATION_ONLY_NOT_A_FREEZE; grants_release_authority=false."
+    },
+    {
+      "member": "high_priority_candidates/012_b1447bbcb3d1_D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+      "source_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+      "sha256": "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+      "bytes": 32868,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "LIMITED_COORDINATE_DECISION_RECORD",
+      "review_finding": "Coordinates accepted for future consumer specification only; runtime_transform_authorized=false; binding_authorized=false; renderer_projection_authorized=false; generic standing engineering approval is explicitly insufficient for broader product-policy adoption under Phase S."
+    },
+    {
+      "member": "high_priority_candidates/013_2cfa23952ec9_D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_V1.json",
+      "source_path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_V1.json",
+      "sha256": "b576612dd0913ce8f706a5272a5b9ca5ceb6c7a1f39d832323d9db98578b5d01",
+      "bytes": 20462,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "REVIEW_REQUEST_NOT_DECISION",
+      "review_finding": "A request/contract for review is not an approval record."
+    },
+    {
+      "member": "high_priority_candidates/014_fb2157776801_D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+      "source_path": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+      "sha256": "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f",
+      "bytes": 73562,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PREPARATION_ONLY_DECISION_DOCKET",
+      "review_finding": "Status PREPARATION_ONLY_DECISION_DOCKET_NOT_APPROVED; operator policies pending; no bindings authorized."
+    },
+    {
+      "member": "high_priority_candidates/015_b66d6f627594_C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json",
+      "source_path": "definitions/c11d/provenance/C11D_PROVENANCE_LINEAGE_REGISTRY_V1.json",
+      "sha256": "eeb8e221d13ce9f751434f04d0fc5637fd32d06f96c26aa34bd32e0ac2e6b048",
+      "bytes": 1350,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/016_01f9efb7906d_D_RENDERER_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_SCHEMA_V1.json",
+      "source_path": "definitions/c11d/review/D_RENDERER_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_SCHEMA_V1.json",
+      "sha256": "49d51d5b562c3834556ee9c78a40c3a5443a7e02c9be0d216fe1d917e002f539",
+      "bytes": 10258,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "DECISION_PACKET_PREPARATION_ONLY",
+      "review_finding": "R-01..R-07 undecided; R-08/R-09 explicitly blocked; all policy adoption fields remain NOT_ADOPTED."
+    },
+    {
+      "member": "high_priority_candidates/017_3032a58c1592_C11D_D7.2_AUTHORITY_FIX_V1_MANIFEST.json",
+      "source_path": "docs/current/d/C11D_D7.2_AUTHORITY_FIX_V1_MANIFEST.json",
+      "sha256": "98856da3a433370adb99118a2ac04d5448c83f8f16239b97be1e378b12f93c5e",
+      "bytes": 434,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "IMPLEMENTATION_OR_FIX_DOCUMENT",
+      "review_finding": "Describes a gate/implementation fix; does not create independent policy authority or release authorization."
+    },
+    {
+      "member": "high_priority_candidates/018_c51db5f52b76_C11D_ENGINEERING_PHASE_LEDGER_20261029_V5.md",
+      "source_path": "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261029_V5.md",
+      "sha256": "18a509e5f9345efd5575ef87392a58df7aed8bfcf1c0c9e2dde2396925f938bb",
+      "bytes": 19068,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/019_524fbc3edc9d_C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V15.md",
+      "source_path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V15.md",
+      "sha256": "c8efcfb22be094607be687910214df99bdbcadeba11465313ff0ee8f3b0a4993",
+      "bytes": 6385,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/020_c8def0813850_C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V17.md",
+      "source_path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V17.md",
+      "sha256": "d9e260ec7c659a296cfca2b54e05cd108602b6782f7d1c81acbe8be197f7c3df",
+      "bytes": 8578,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/021_9df4615a74fe_C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V18.md",
+      "source_path": "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261021_V18.md",
+      "sha256": "feef107c9ce752b13390508d56d4fc1949ea57d80560b737275a3ddbed7ce679",
+      "bytes": 9716,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/022_ddebe3747517_C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.md",
+      "source_path": "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1.md",
+      "sha256": "30e0d11aae5afca35a40fb81fa7dd87a4f882ddfc130adfdfc01d8478e3911cc",
+      "bytes": 5957,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "AUDIT_AND_ACCEPTANCE_RECORD",
+      "review_finding": "Documents scoped preflight method/results; no decision approval is granted."
+    },
+    {
+      "member": "high_priority_candidates/023_6bf7f0d0a427_C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "source_path": "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "sha256": "9998e9f0e47db9f3b21265bb65a1266a0dc9d60274de9a82e8a01e4a5e9208de",
+      "bytes": 3982,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "AUDIT_AND_ACCEPTANCE_RECORD",
+      "review_finding": "Documents scoped preflight method/results; no decision approval is granted."
+    },
+    {
+      "member": "high_priority_candidates/024_9d5f1aa47af2_C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_CLOSEOUT_20261029_V1.md",
+      "source_path": "docs/current/d/C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_CLOSEOUT_20261029_V1.md",
+      "sha256": "1986edf289ac4cee6c0738c1cd99b915508bf66c382d123c846380251e281770",
+      "bytes": 2009,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "AUDIT_AND_ACCEPTANCE_RECORD",
+      "review_finding": "Documents scoped preflight method/results; no decision approval is granted."
+    },
+    {
+      "member": "high_priority_candidates/025_8a0cd33cdda6_C11D_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_CHECKPOINT_20261021_V1.md",
+      "source_path": "docs/current/d/C11D_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_CHECKPOINT_20261021_V1.md",
+      "sha256": "e86acd16e6dedee24f71ef9f8f3608a61476af9f83f54cac3734273b7a1a1c23",
+      "bytes": 3032,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/026_62983e4ce4a9_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_CHECKPOINT_20261020_V1.md",
+      "source_path": "docs/current/d/C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_CHECKPOINT_20261020_V1.md",
+      "sha256": "d0ac9b6144fa0d7af77e9941a73ecf43ddade7addae77b3fa148b4adf63d2519",
+      "bytes": 3328,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/027_95e93403e1d2_C11D_V2B_SEMANTIC_BINDING_REVIEW_AND_RUNTIME_GATE_PLAN_20261017_V1.md",
+      "source_path": "docs/current/d/C11D_V2B_SEMANTIC_BINDING_REVIEW_AND_RUNTIME_GATE_PLAN_20261017_V1.md",
+      "sha256": "9d4ec7e43eae5aec886a04a731a0e8a4ba70621bb74f9dad2727e27cf2513d8d",
+      "bytes": 4456,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/028_37e5ff3317cf_D5.2_PROVENANCE_LINEAGE_REGISTRY_CONTRACT.md",
+      "source_path": "docs/current/d/D5.2_PROVENANCE_LINEAGE_REGISTRY_CONTRACT.md",
+      "sha256": "2b5b067275cf104f2162eed450520257b43d7c99d6229f5a87085abc80b9fad6",
+      "bytes": 3680,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/029_589c2f946bcb_D5.3_ARTIFACT_TOPOLOGY_VALIDATOR_CONTRACT.md",
+      "source_path": "docs/current/d/D5.3_ARTIFACT_TOPOLOGY_VALIDATOR_CONTRACT.md",
+      "sha256": "d598bfbcfd451c051fc02f510d72a0388d2823270c9df0bed1ff19ee9e7d18b3",
+      "bytes": 5151,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/030_eaf924d906d8_D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md",
+      "source_path": "docs/current/d/D6.4_REQUEST_PLAN_PROVENANCE_INTEGRATION_CONTRACT.md",
+      "sha256": "45fefcff90e46670f886a06aee38814acbcbf0061bbc96abccf3495665eec4c8",
+      "bytes": 4760,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/031_74a27ef842f8_D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_CHECKPOINT_V1.md",
+      "source_path": "docs/current/d/D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_CHECKPOINT_V1.md",
+      "sha256": "66bacf230f0b6e931802f9f4eba15b0b73783b8e45989e6731fc6ba3f5a19958",
+      "bytes": 6159,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/032_08d1f860986f_D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md",
+      "source_path": "docs/current/d/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_UNIFIED_REVIEW_INTEGRATION_CHECKPOINT.md",
+      "sha256": "2439eb564adc5f3ed1abb765dab7dc1ee7f4d8191105525f5c48290a24b13254",
+      "bytes": 4812,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/033_e6907f11d5d2_D_RENDERER_EDITORIAL_PAYLOAD_PROVENANCE_JOIN_CHECKPOINT_V2.md",
+      "source_path": "docs/current/d/D_RENDERER_EDITORIAL_PAYLOAD_PROVENANCE_JOIN_CHECKPOINT_V2.md",
+      "sha256": "5683e85343cfcbe48580efbed2842211b216f0689e52999feed53fc9bd0284cd",
+      "bytes": 1830,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/034_2f404cfca895_D_RENDERER_NEUTRAL_FRAME_PROGRAM_CHECKPOINT_V1.md",
+      "source_path": "docs/current/d/D_RENDERER_NEUTRAL_FRAME_PROGRAM_CHECKPOINT_V1.md",
+      "sha256": "12b111e87bc6c76f9e1938e7a2d27dd09364b7c8c754087a1e1a1f4f7ba8e9eb",
+      "bytes": 6129,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "PROPOSAL_OR_CHECKPOINT",
+      "review_finding": "Proposal/review/checkpoint content is not an approval unless a separate authoritative decision record grants a specific scope; no such broad grant was found here."
+    },
+    {
+      "member": "high_priority_candidates/035_14ed18aae98d_D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+      "source_path": "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+      "sha256": "5c5e1979f5b395e1a95437fd579bc24fc21409ae3682768571e36b300acbc3dc",
+      "bytes": 6488,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "REVIEW_PACKET_ONLY",
+      "review_finding": "All policies unapproved; decision table intentionally blank; no policy approval recorded."
+    },
+    {
+      "member": "high_priority_candidates/036_ecf371e64c9f_README_C11D_D7.2_AUTHORITY_FIX_V1.md",
+      "source_path": "docs/current/d/README_C11D_D7.2_AUTHORITY_FIX_V1.md",
+      "sha256": "4805b83ef37aed9016760a2df310c7334cef958da3111cc3250ea9d7d44bff76",
+      "bytes": 433,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "IMPLEMENTATION_OR_FIX_DOCUMENT",
+      "review_finding": "Describes a gate/implementation fix; does not create independent policy authority or release authorization."
+    },
+    {
+      "member": "high_priority_candidates/037_f43538f2b017_START_PROMPT_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+      "source_path": "docs/history/c11d/d9/START_PROMPT_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+      "sha256": "e74ed35f0965137f31b985dfd78ad9b0d44de5360502a628b3acb9acc5afe96e",
+      "bytes": 24180,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/038_804ef59d198c_PILOT_MECHANIC_V2.0.md",
+      "source_path": "docs/history/reference/mechanics/PILOT_MECHANIC_V2.0.md",
+      "sha256": "3ed52953355ad001be8da8c9ccaea863a81feae7324c0db5cba262772371da5e",
+      "bytes": 16553,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "HISTORICAL_DOMAIN_REFERENCE",
+      "review_finding": "Historical or mechanic reference; cannot independently grant current production authority."
+    },
+    {
+      "member": "high_priority_candidates/039_2c93829b1ad8_C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V28.md",
+      "source_path": "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V28.md",
+      "sha256": "b597a07fa794329fa7eeef24dd5df917e4f12d09386b62a8df7f355355cf001d",
+      "bytes": 5044,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/040_567cf8fa6faa_C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261021_V15.md",
+      "source_path": "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261021_V15.md",
+      "sha256": "c3fcc98bf5e36218c365747bb290c40c4938e187052c30472be01b3517eea360",
+      "bytes": 6234,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/041_9f9c72e75265_C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261021_V17.md",
+      "source_path": "prompts/C11D_D_FINAL_CLOSEOUT_OVERHAND_MASTER_PROMPT_20261021_V17.md",
+      "sha256": "ea4c260a4cb72092bd3fa8e737aacda5ce75a4a0bd72cb630da21de78ebc7f1b",
+      "bytes": 8427,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/042_2b4253c8c96e_C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017.md",
+      "source_path": "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261017.md",
+      "sha256": "90cb672325351f68098fb01d191eb7206be8cabb49edbb9d963dd8f04c1d47a8",
+      "bytes": 7369,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/043_f3d95e4ece74_C11D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261017_V3.md",
+      "source_path": "prompts/C11D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261017_V3.md",
+      "sha256": "076628ae9bab1dda036583f7b0a5e2e3150df1f02e0d65367604fc47eca2ab8d",
+      "bytes": 4721,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTINUITY_OR_HISTORICAL_CONTEXT",
+      "review_finding": "Governance continuity/source context; stale/historical versions cannot supersede the active V10/V33/V34 chain or unlock current gates."
+    },
+    {
+      "member": "high_priority_candidates/044_209a721b95d8_README_C11D_V2B_SAFE_PROJECTION_RUNTIME_IMPLEMENTATION_OVERLAY_20261020_V1.md",
+      "source_path": "README_C11D_V2B_SAFE_PROJECTION_RUNTIME_IMPLEMENTATION_OVERLAY_20261020_V1.md",
+      "sha256": "ad1fa36a26ed55b96d5a45c8e3a1d6ad3a164cabcf7b800c551b0979168164d4",
+      "bytes": 5176,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTEXT_REVIEWED_NO_BROAD_AUTHORITY",
+      "review_finding": "Source reviewed for authority scope; no record in this artifact that meets Phase S requirements for broad R decision adoption or renderer/release permission."
+    },
+    {
+      "member": "high_priority_candidates/045_24d593c75bb8_d_baseline_candidate.py",
+      "source_path": "tools/c11d/baseline_candidate/d_baseline_candidate.py",
+      "sha256": "297d34dd71657a1e3036c1f3ee889435a70919575dce39370651354cbb821e37",
+      "bytes": 42438,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/046_3012aef49d1e_artifact_topology_validator.py",
+      "source_path": "tools/c11d/d5/artifact_topology_validator.py",
+      "sha256": "fff483c1538ed6bd6587f0ce115c2eeee58d8de66ed9d63d5795174b312cd706",
+      "bytes": 32417,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/047_dc630b7d975b_full_d5_acceptance.py",
+      "source_path": "tools/c11d/d5/full_d5_acceptance.py",
+      "sha256": "cd97837f6fbeb245745afc0f4b2207490e44d87d05912d1946da1c308d3ccc3c",
+      "bytes": 51272,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/048_4678101ea21f_provenance_lineage_registry.py",
+      "source_path": "tools/c11d/d5/provenance_lineage_registry.py",
+      "sha256": "cf9f207c9eafd55ffc8052c7c80455e91e686ed2d517bdad2baa2991c31cea59",
+      "bytes": 26304,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "CONTRACT_IMPLEMENTATION_OR_REGISTRY",
+      "review_finding": "Defines/implements/checks behavior or stores provenance; not an independent product-policy authorization record."
+    },
+    {
+      "member": "high_priority_candidates/049_fd71f6d9b866_test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_proposal_v1.py",
+      "source_path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_proposal_v1.py",
+      "sha256": "70b869259778e3c2289782b985b7f1c89c63ded8d0130ead06d34bf28aa55e89",
+      "bytes": 31626,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "TEST_ORACLE_NOT_AUTHORITY",
+      "review_finding": "A test PASS establishes only its declared test/gate scope, not policy adoption, binding approval, render authorization, or release authority."
+    },
+    {
+      "member": "high_priority_candidates/050_41f3431d2bff_test_gui_real_media_certification.py",
+      "source_path": "tools/c11d/d9/test_gui_real_media_certification.py",
+      "sha256": "40b64245abd3b2da8913599541360e6d157b3272505def0a2715eefeba55c974",
+      "bytes": 5763,
+      "kind": "HIGH_PRIORITY_CANDIDATE",
+      "priority": "HIGH_REVIEW_PRIORITY",
+      "integrity": "PASS",
+      "review_class": "TEST_ORACLE_NOT_AUTHORITY",
+      "review_finding": "A test PASS establishes only its declared test/gate scope, not policy adoption, binding approval, render authorization, or release authority."
+    },
+    {
+      "member": "previously_unsearched_documents/001_927b646bcf3c_ChallengeEngineV01_STATELESS_C11-D_D9.10_20261009_220331.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D D9.10_20261009_220331.zip",
+      "sha256": "fa3c4e2299ecf7ecffa81925689313c1a79b47e437edbfc539f16e10973379b2",
+      "bytes": 5683312,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    },
+    {
+      "member": "previously_unsearched_documents/002_5836af42d6a8_ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip",
+      "sha256": "562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac",
+      "bytes": 6861376,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    },
+    {
+      "member": "previously_unsearched_documents/003_0ead629c82d8_ChallengeEngineV01_STATELESS_C11-D10_LATEST_20261011_203730.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D10_LATEST_20261011_203730.zip",
+      "sha256": "8fd1957adaee0a0380048c9f789da661454dff22e662aba5fc6327cac4d622e8",
+      "bytes": 6347957,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    },
+    {
+      "member": "previously_unsearched_documents/004_8a0ac4ed8860_ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip",
+      "sha256": "3e48ee2d815593137f5863139e05c1aa04eb40b4a58ddfb3bed4507125c96874",
+      "bytes": 8001498,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    },
+    {
+      "member": "previously_unsearched_documents/005_326847704497_ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip",
+      "sha256": "526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62",
+      "bytes": 5280348,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    },
+    {
+      "member": "previously_unsearched_documents/006_d78c614ae68d_ChallengeEngineV01_STATELESS_C11-D_LATEST_20261013_155400.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_LATEST_20261013_155400.zip",
+      "sha256": "b8284a958b6f6f261b16587a89ab68f25962279e1ccb5211ab336bc1a69a4c10",
+      "bytes": 6789997,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    },
+    {
+      "member": "previously_unsearched_documents/007_3fedb8fad868_ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip",
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip",
+      "sha256": "52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d",
+      "bytes": 6813613,
+      "kind": "PREVIOUSLY_UNSEARCHED_DOCUMENT",
+      "priority": null,
+      "integrity": "PASS"
+    }
+  ],
+  "historical_snapshots": [
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D D9.10_20261009_220331.zip",
+      "member": "previously_unsearched_documents/001_927b646bcf3c_ChallengeEngineV01_STATELESS_C11-D_D9.10_20261009_220331.zip",
+      "sha256": "fa3c4e2299ecf7ecffa81925689313c1a79b47e437edbfc539f16e10973379b2",
+      "bytes": 5683312,
+      "zip_crc": "PASS",
+      "entries": 2623,
+      "text_extension_entries": 2490,
+      "decoded_text_files_scanned": 2490,
+      "decision_or_authority_files": [
+        {
+          "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+          "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+          "bytes": 3838
+        },
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "f3da750d79e3fea392066628408cf418f4def5d351e0c8054e7d9b64784c668b",
+          "bytes": 12219
+        }
+      ]
+    },
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip",
+      "member": "previously_unsearched_documents/002_5836af42d6a8_ChallengeEngineV01_STATELESS_C11-D10-LATEST-NIGHTLY_20261014_120816.zip",
+      "sha256": "562ee7a4108c1588fe8457a64f567715a88b4dff36bf7b6a18f974e5badf2bac",
+      "bytes": 6861376,
+      "zip_crc": "PASS",
+      "entries": 3019,
+      "text_extension_entries": 2886,
+      "decoded_text_files_scanned": 2886,
+      "decision_or_authority_files": [
+        {
+          "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+          "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+          "bytes": 3838
+        },
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "1daeff9674fdb51b65ea8df353e248db9a2b090206777e754279694cf58f0ec3",
+          "bytes": 12763
+        },
+        {
+          "path": "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+          "sha256": "5c5e1979f5b395e1a95437fd579bc24fc21409ae3682768571e36b300acbc3dc",
+          "bytes": 6488
+        }
+      ]
+    },
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D10_LATEST_20261011_203730.zip",
+      "member": "previously_unsearched_documents/003_0ead629c82d8_ChallengeEngineV01_STATELESS_C11-D10_LATEST_20261011_203730.zip",
+      "sha256": "8fd1957adaee0a0380048c9f789da661454dff22e662aba5fc6327cac4d622e8",
+      "bytes": 6347957,
+      "zip_crc": "PASS",
+      "entries": 2859,
+      "text_extension_entries": 2726,
+      "decoded_text_files_scanned": 2726,
+      "decision_or_authority_files": [
+        {
+          "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+          "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+          "bytes": 3838
+        },
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "1daeff9674fdb51b65ea8df353e248db9a2b090206777e754279694cf58f0ec3",
+          "bytes": 12763
+        }
+      ]
+    },
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip",
+      "member": "previously_unsearched_documents/004_8a0ac4ed8860_ChallengeEngineV01_STATELESS_C11-D_20261026_013616.zip",
+      "sha256": "3e48ee2d815593137f5863139e05c1aa04eb40b4a58ddfb3bed4507125c96874",
+      "bytes": 8001498,
+      "zip_crc": "PASS",
+      "entries": 3378,
+      "text_extension_entries": 3245,
+      "decoded_text_files_scanned": 3245,
+      "decision_or_authority_files": [
+        {
+          "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+          "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+          "bytes": 3838
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_SCHEMA_V1.json",
+          "sha256": "d7b279c3225ceb431a434cbfbea606b248d710f766200c60adefbea544e6b8bc",
+          "bytes": 25752
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_V1.json",
+          "sha256": "45841adf320c4815b1a63b26555497adf38b57672bd62069c81385ef327e6a1e",
+          "bytes": 32868
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_SCHEMA_V1.json",
+          "sha256": "bb32a0631216c8b557ee48f85ff06dbf1588c125606b917acff22930aa6ce50e",
+          "bytes": 11641
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_V1.json",
+          "sha256": "1ec59d7a9257cfc2477fc37efe8cb2f04d9807a7f9986d96afc2f2ddd9b4f7af",
+          "bytes": 25091
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_SCHEMA_V1.json",
+          "sha256": "ab09a617e9efc0aacb2111d9f6b02fc5764850f667cfdb33005451c5d4b073b9",
+          "bytes": 2732
+        },
+        {
+          "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+          "sha256": "cc3550cd4d13f228ec9b3d51eeaa199505c5975b42882fb06ba3e83c4a000e90",
+          "bytes": 4247
+        },
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "1daeff9674fdb51b65ea8df353e248db9a2b090206777e754279694cf58f0ec3",
+          "bytes": 12763
+        },
+        {
+          "path": "docs/current/d/C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_CHECKPOINT_20261021_V1.md",
+          "sha256": "5b61d989052752083803d4390e47a5b2b58fe8452c502f88143e4d91e479e095",
+          "bytes": 3511
+        },
+        {
+          "path": "docs/current/d/C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_CHECKPOINT_20261020_V1.md",
+          "sha256": "d0ac9b6144fa0d7af77e9941a73ecf43ddade7addae77b3fa148b4adf63d2519",
+          "bytes": 3328
+        },
+        {
+          "path": "docs/current/d/C11D_V2C_SOURCE_FRAME_RUNTIME_ACCEPTANCE_DECISION_V1_20261023.md",
+          "sha256": "49ebf8214b2d87fc01b6f71387ff988f970f08550a25118c7f1c211005ac40f3",
+          "bytes": 2727
+        },
+        {
+          "path": "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+          "sha256": "5c5e1979f5b395e1a95437fd579bc24fc21409ae3682768571e36b300acbc3dc",
+          "bytes": 6488
+        },
+        {
+          "path": "README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+          "sha256": "951bcd9fe802cf62b10e01e520ff7d404eb49e266c0540957f5e1261e10fb49c",
+          "bytes": 1616
+        },
+        {
+          "path": "README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_OVERLAY_20261021_V2.md",
+          "sha256": "7716627b2b616b7d283db1d6ae3120f8df07896aaa9311cd035fb7ef47196e8f",
+          "bytes": 3981
+        },
+        {
+          "path": "README_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_OVERLAY_20261020_V1.md",
+          "sha256": "2858fec2f02258d729b6eb4900aa57cf9b2749633269b943481f57ce24a5ca10",
+          "bytes": 1414
+        },
+        {
+          "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_coordinate_policy_decision_record_v1.py",
+          "sha256": "ae4d30f25ff5988fd2a18c5aa7caabf6544eea4930d1b687a54d151b73d00d56",
+          "bytes": 20561
+        },
+        {
+          "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_field_region_visibility_decision_record_v1.py",
+          "sha256": "c35d3a44c0b998235ad17b2ad403892a1e6c95e0bffaeb0a3d075f4ff8258039",
+          "bytes": 22315
+        },
+        {
+          "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_v2b_candidate_semantic_decision_record_v1.py",
+          "sha256": "d9e2c2516a248b62b60706f97f8b3d8132e871eb2b24117ebf3f594e69cb5e5f",
+          "bytes": 15635
+        }
+      ]
+    },
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip",
+      "member": "previously_unsearched_documents/005_326847704497_ChallengeEngineV01_STATELESS_C11-D_9.7.2_LATEST_20261009_010805.zip",
+      "sha256": "526cdf34193a3a410ab8cc5b73bbe8cc19a4616c3cb7941bc55cfc66cdf68a62",
+      "bytes": 5280348,
+      "zip_crc": "PASS",
+      "entries": 2548,
+      "text_extension_entries": 2414,
+      "decoded_text_files_scanned": 2414,
+      "decision_or_authority_files": [
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "fea716ddae8b3480cc69d9e8cf4d912eefbbc52b21eadf3763c9fd73ce540a67",
+          "bytes": 2591
+        }
+      ]
+    },
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_LATEST_20261013_155400.zip",
+      "member": "previously_unsearched_documents/006_d78c614ae68d_ChallengeEngineV01_STATELESS_C11-D_LATEST_20261013_155400.zip",
+      "sha256": "b8284a958b6f6f261b16587a89ab68f25962279e1ccb5211ab336bc1a69a4c10",
+      "bytes": 6789997,
+      "zip_crc": "PASS",
+      "entries": 3004,
+      "text_extension_entries": 2871,
+      "decoded_text_files_scanned": 2871,
+      "decision_or_authority_files": [
+        {
+          "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+          "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+          "bytes": 3838
+        },
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "1daeff9674fdb51b65ea8df353e248db9a2b090206777e754279694cf58f0ec3",
+          "bytes": 12763
+        }
+      ]
+    },
+    {
+      "source_path": "artifacts/releases/ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip",
+      "member": "previously_unsearched_documents/007_3fedb8fad868_ChallengeEngineV01_STATELESS_C11-D_UPDATE_LATEST_20261013_161418.zip",
+      "sha256": "52028bc592018de6400a9f7f85c78c2a87bd9f3590ab4e51e55075c70875f91d",
+      "bytes": 6813613,
+      "zip_crc": "PASS",
+      "entries": 3005,
+      "text_extension_entries": 2872,
+      "decoded_text_files_scanned": 2872,
+      "decision_or_authority_files": [
+        {
+          "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+          "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e",
+          "bytes": 3838
+        },
+        {
+          "path": "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+          "sha256": "1daeff9674fdb51b65ea8df353e248db9a2b090206777e754279694cf58f0ec3",
+          "bytes": 12763
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "authority_adjudication": "NOT_PERFORMED",
+  "policy_adoption": "NONE_FOR_PHASE_R_BROAD_POLICIES",
+  "decision": "SOURCE_CONTENT_REVIEW_COMPLETE; LIMITED_HISTORICAL_DECISIONS_RECONCILED; NO_NEW_AUTHORITY_GRANTED",
+  "next_gate": "PHASE_Z_AUTHORITY_RECORD_RECONCILIATION_AND_EXPLICIT_OPERATOR_DECISION_PACKET"
+}

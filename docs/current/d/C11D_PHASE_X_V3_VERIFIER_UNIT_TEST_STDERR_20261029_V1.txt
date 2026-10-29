@@ -1,0 +1,10 @@
+test_counts_only_high_priority_members (__main__.HighPriorityBundleCountTests.test_counts_only_high_priority_members) ... ok
+test_counts_string_bundle_members_without_type_error (__main__.HighPriorityBundleCountTests.test_counts_string_bundle_members_without_type_error) ... ok
+test_empty_input (__main__.HighPriorityBundleCountTests.test_empty_input) ... ok
+test_ignores_high_priority_without_bundle_member (__main__.HighPriorityBundleCountTests.test_ignores_high_priority_without_bundle_member) ... ok
+test_matches_expected_50_member_shape (__main__.HighPriorityBundleCountTests.test_matches_expected_50_member_shape) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.024s
+
+OK
