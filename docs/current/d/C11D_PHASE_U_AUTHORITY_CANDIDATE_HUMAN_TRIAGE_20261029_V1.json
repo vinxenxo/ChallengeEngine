@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0.0",
+  "phase": "U",
+  "status": "PREPARED_READ_ONLY_CANDIDATE_TRIAGE_NOT_ADJUDICATION",
+  "purpose": "Prioritize review of Phase T candidates without asserting authority or adopting policy.",
+  "input": "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.json",
+  "outputs": "Caller-supplied TEMP paths only; never modify Phase T input or production data.",
+  "priority_rules": {
+    "HIGH_REVIEW_PRIORITY": "Issuer, signature, explicit approval/authority, release authority, baseline approval, policy adoption or decision identity signals in path/snippets.",
+    "MEDIUM_REVIEW_PRIORITY": "Governance, binding, renderer, policy, baseline, freeze, acceptance, release, adjudication or gate signals.",
+    "LOW_REVIEW_PRIORITY": "Matched candidate with no stronger signal in stored path/snippets."
+  },
+  "review_fields": {
+    "review_status": "NOT_REVIEWED",
+    "authority_finding": "UNDETERMINED"
+  },
+  "required_human_checks": [
+    "actual file bytes and SHA-256",
+    "issuer and authority role",
+    "exact decision IDs and scope",
+    "unambiguous adopted option/value",
+    "effective version/date",
+    "signature or immutable record identity",
+    "source pins and conditions",
+    "required validation gates",
+    "distinguish approval from proposal/test/example/rejection"
+  ],
+  "coverage_limits": {
+    "phase_t_candidates_reviewed_by_script": false,
+    "binary_document_contents_read": false,
+    "git_history_read": false,
+    "external_files_read": false,
+    "global_absence_claim": false
+  },
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "timing_conflicts": [
+    {
+      "challenge": "CHALLENGE_008",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "challenge": "CHALLENGE_009",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "next_action": "HUMAN_REVIEW_CANDIDATES_AND_SEVEN_UNSEARCHED_DOCUMENTS; NO_POLICY_ADOPTION"
+}

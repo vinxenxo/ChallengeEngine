@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "D Renderer Phase U Candidate Triage Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "created_utc",
+    "source_report_sha256",
+    "source_scan_index_sha256",
+    "scope",
+    "counts",
+    "candidates",
+    "unsearched_documents",
+    "governance",
+    "timing_conflicts",
+    "no_global_absence_claim"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "phase": {
+      "const": "U"
+    },
+    "status": {
+      "const": "CANDIDATE_TRIAGE_READY_FOR_HUMAN_REVIEW"
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "source_report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_scan_index_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "input_phase_t_report_only",
+        "working_tree_rescanned",
+        "git_history_searched",
+        "external_files_searched",
+        "binary_document_contents_searched",
+        "priority_is_authority"
+      ],
+      "properties": {
+        "input_phase_t_report_only": {
+          "const": true
+        },
+        "working_tree_rescanned": {
+          "const": false
+        },
+        "git_history_searched": {
+          "const": false
+        },
+        "external_files_searched": {
+          "const": false
+        },
+        "binary_document_contents_searched": {
+          "const": false
+        },
+        "priority_is_authority": {
+          "const": false
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "candidates",
+        "high_priority",
+        "medium_priority",
+        "low_priority",
+        "unsearched_documents",
+        "scan_errors"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "medium_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "low_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_documents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scan_errors": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "priority",
+          "priority_score",
+          "matches",
+          "review_status",
+          "authority_finding"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "priority": {
+            "enum": [
+              "HIGH_REVIEW_PRIORITY",
+              "MEDIUM_REVIEW_PRIORITY",
+              "LOW_REVIEW_PRIORITY"
+            ]
+          },
+          "priority_score": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "matches": {
+            "type": "array"
+          },
+          "review_status": {
+            "const": "NOT_REVIEWED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "unsearched_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "review_status"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "review_status": {
+            "const": "NOT_INSPECTED"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "release_authority"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      }
+    },
+    "timing_conflicts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "challenge",
+          "declared_total_duration_seconds",
+          "phase_duration_sum_seconds",
+          "status"
+        ],
+        "properties": {
+          "challenge": {
+            "enum": [
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "declared_total_duration_seconds": {
+            "const": 11
+          },
+          "phase_duration_sum_seconds": {
+            "const": 12
+          },
+          "status": {
+            "const": "BLOCKER_NO_CORRECTION_INFERRED"
+          }
+        }
+      }
+    },
+    "no_global_absence_claim": {
+      "const": true
+    }
+  },
+  "additionalProperties": true
+}
