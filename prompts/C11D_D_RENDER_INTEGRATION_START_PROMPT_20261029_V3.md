@@ -1,0 +1,11 @@
+# C11-D — Start Prompt de la siguiente ventana V3
+
+El snapshot nuevo para esta ventana es el ZIP subido más reciente `C11D_WORKING_CONTEXT_*.zip`, junto con su `.sha256` y `.report.json`. El snapshot `C11D_WORKING_CONTEXT_20261029_193950.zip` con SHA `5b8d06ad82bca798c94db03f943a85afb309d91484d4499ed40fed36056ca774` es solo el predecesor. Verifica el snapshot antes de confiar en él; checkout Windows activo sigue siendo autoridad.
+
+Lee en orden: `AGENTS.md`, `.continue/rules/CONTINUE.md`, manifiesto C, Ledger V18, Checkpoint V41, Phase AD closeout/receipt/gate con hashes actuales; índice documental V3; mapa generado de migración de raíz; catálogo; plan funcional V3; orden de lectura V3. No hagas una nueva ronda de catalogación si los outputs actuales pasan.
+
+Tarea principal: comprobar la ruta de producción física C y distinguirla de la ruta D plan-only, seguir un campo editorial de la fuente hasta el consumidor visual real, hallar el primer seam ausente y hacer el cambio D-only mínimo con tests focalizados. Empezar por `tools/qa/c11/run_c11c_challenge_bulk_qa.ps1`, `tools/qa/c11/run_c11c_complete_video_review.ps1`, `tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1`, `c11c-suite/c11c-test/BUILD_MANIFEST.json`, `c11c-suite/c11c-producer/main.py`, luego `c11d_gui_request.py` → universal producer/resolver → bridge → adapter → binder/materializer → payload/compositor → D3 music/mux.
+
+Phase AD: 60/60 + verifier PASS como packet; decisión de operador sigue `PENDING_EVIDENCE_OR_KEEP_BLOCKED`, 0 autoridad, 0 adjudicaciones, policy adoption NONE. Renderer OFF, D9.10 PREPARE_ONLY, D4.8/D9.14/D9.16 bloqueados, D9.17 BLOCKED_NO_GO, D10 bloqueado, freeze ineligible, release authority NONE. No crear MP4 D ni invocar renderer sin autorización específica de política y gates posteriores.
+
+Mantener C11-C inmutable, sin cambios a `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, RNG ni mecánica. `request.seed` y `request.music_seed` independientes; solo cinco superficies canónicas. No abrir `c11d-control`, `c11c-studio` ni una sexta GUI. La primera salida de trabajo debe ser un call graph con rutas y hashes actuales, el primer consumer ausente y el diff/tests mínimos; no otro documento genérico.

@@ -1,0 +1,1558 @@
+{
+    "schema":  "C11D-ROOT-DOCUMENTATION-MIGRATION-MAP-V1",
+    "generator":  "tools/c11d/documentation/organize_c11d_root_documentation.ps1",
+    "generated_at_utc":  "2026-10-29T19:35:39.9591473Z",
+    "source_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "git_commit":  "93845039e2c9bfa5edc98ff5ac67565012bf2c7b",
+    "source_pins":  [
+                        {
+                            "path":  "AGENTS.md",
+                            "sha256":  "0d4565e57b9fe9bba88a88f10babd175f3bb5e3fb437014866ed1e67d3016b37"
+                        },
+                        {
+                            "path":  ".continue/rules/CONTINUE.md",
+                            "sha256":  "52776e55023a36e1ead71cf39a93337ca96f6097bd2c88018c3353484145ac86"
+                        },
+                        {
+                            "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                            "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                            "bytes":  796318
+                        }
+                    ],
+    "candidate_count":  118,
+    "moved_count":  100,
+    "deduplicated_identical_count":  0,
+    "retained_count":  31,
+    "entries":  [
+                    {
+                        "source":  "C11D_D10_CONTEXT_HANDOVER_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_D10_CONTEXT_HANDOVER_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  6808,
+                        "sha256":  "fdae70e4e4d9953c5ec6b3f06440ad759bff48d5c879f8fae19703d259112feb",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_MANIFEST_20261017_V1.json",
+                        "destination":  "C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_MANIFEST_20261017_V1.json",
+                        "bytes":  6368,
+                        "sha256":  "a926e388ea07e85f8c89772bd5aa062d42e793c7f776100efd60424f0967c0c6",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_BOUND_INSTANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                        "destination":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_BOUND_INSTANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                        "bytes":  17222,
+                        "sha256":  "321d4b1db0e8fa3c7e80a11770b8cb47a7b2f439217537903e9e572eb61ba2d8",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_FLOAT_TOLERANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                        "destination":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_FLOAT_TOLERANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                        "bytes":  17254,
+                        "sha256":  "233f10e7114419290322ad6778aeae50b39d6dffe92e34859996714fb4789d9a",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  17353,
+                        "sha256":  "7ef72762c6fd6d625d0018e0a34239b4b5b5c9b3f4aef5b309a8be6d291270a5",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_PROJECTION_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                        "destination":  "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_PROJECTION_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                        "bytes":  17147,
+                        "sha256":  "2d8b0c02aa1905c384a50640d1bee23347a9405c1d88286f8b7a5a0b882ca7d4",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  3527,
+                        "sha256":  "e867e77faf86c652d95482b67a91afd6c64b5ef88eb296bd8864e1f713b29f98",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_RUNTIME_FIX_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_RUNTIME_FIX_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  2919,
+                        "sha256":  "b299e80414765a023807d30f37afbc457f98247ddf08a750b121a7be8898fd68",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  2912,
+                        "sha256":  "55549499b91b04860492f46cebc8e4033ade64cefe40535073580dc1be41fe85",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  9657,
+                        "sha256":  "b97f5c71a2a866c4ad332a007b4252bc20fd554b420115511a055d57d10996c5",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  12458,
+                        "sha256":  "fbe69705fb24a9879ec3ac97e8f3c0fdb8286a761502c5ce3585293d8143a319",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  6558,
+                        "sha256":  "2f07a8aa4f23d0b41f8873cce8546fc3dce12451b23a1f9559032a08e351283d",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_MANIFEST_20261016.json",
+                        "destination":  "C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_MANIFEST_20261016.json",
+                        "bytes":  8235,
+                        "sha256":  "2c1a4e25377de78285798e95db678464a3f962a6888f6f16b841d82cd3dbd88d",
+                        "action":  "RETAIN_ROOT_OVERLAY_MANIFEST",
+                        "reason":  "Historical package-relative manifest metadata retained byte-for-byte at its original root path.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md",
+                        "destination":  "D9.10_QT_GUI_RUNTIME_ACCEPTANCE_CHECKPOINT.md",
+                        "bytes":  4822,
+                        "sha256":  "fb3afda52599a05d0960df7279a54bc54c1ec66adf55b984598c64c051137268",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "docs/current/d/C11-D_MILESTONES_APPROVED.md",
+                                           "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+                                           "docs/current/d/D9.10_D_ONLY_RENDER_ADAPTER_ACCEPTANCE_RUNBOOK.md",
+                                           "docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md",
+                                           "docs/current/suite/C11C_SUITE_TOOLING_MATRIX.md",
+                                           "docs/history/master-prompts/c11d/MASTER_HANDOVER_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                                           "docs/history/master-prompts/c11d/START_PROMPT_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                                           "docs/master-prompts/MASTER_HANDOVER_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                                           "docs/master-prompts/START_PROMPT_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                                           "MASTER_HANDOVER_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                                           "README_C11D_D9.10_ACCEPTANCE_CONFIRMED_AND_D9.14_NEXT_GATE_OVERLAY_V1.md",
+                                           "README_C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.md",
+                                           "START_PROMPT_C11D_D9.10_QT_GUI_RUNTIME_20261009.md"
+                                       ]
+                    },
+                    {
+                        "source":  "MASTER_HANDOVER_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                        "destination":  "docs/history/d/root-documentation/legacy-d9_10/MASTER_HANDOVER_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                        "bytes":  8698,
+                        "sha256":  "16e12e89a65bfdf1837469f3fc0798ac5407bfefa549d17a23359aeba3537ffe",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  1575,
+                        "sha256":  "8a4eae631f8240216a66abe69807aebb08f583c783a0bb2eb6ee0bebae7c4a2d",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  4553,
+                        "sha256":  "21627bf8e2e4f043c738ca0569d26cdbeb618bb25492a4168da288c58a18c0b5",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_PLANNER_ACCEPTANCE_AND_MATERIALIZER_DESIGN_OVERLAY_20261017_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_PLANNER_ACCEPTANCE_AND_MATERIALIZER_DESIGN_OVERLAY_20261017_V1.md",
+                        "bytes":  1533,
+                        "sha256":  "0566f66148464162058bc1df193a5b4bd2995ee4a0ad08315708b771b8957991",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_OVERLAY_20261017_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_SEED_DOMAIN_PREFLIGHT_V2_OVERLAY_20261017_V1.md",
+                        "bytes":  4043,
+                        "sha256":  "6ae6cf8f74d475a7c16a069241ced049e82a0e4225c1bb08f361ffbbc410db8c",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  2099,
+                        "sha256":  "25ad5249b33e1792d67839390e42301b0f4aa6ceaa98dedb5d67ec64345ba7ce",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_SIMULATION_SAMPLE_SELECTION_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_SIMULATION_SAMPLE_SELECTION_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  3647,
+                        "sha256":  "3479eadaba014aa02fa33a768e2743191fb830a6a94c439c62f02bc5e68b94c4",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_SOURCE_SEMANTIC_REVIEW_AND_V2C_CLOSEOUT_OVERLAY_20261020_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_SOURCE_SEMANTIC_REVIEW_AND_V2C_CLOSEOUT_OVERLAY_20261020_V1.md",
+                        "bytes":  1081,
+                        "sha256":  "913fd363d2ce515b72931c7892e065659a60c314b6b5c433b438294d75316809",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  1924,
+                        "sha256":  "24d02dc7d77148b7a048b5e795c6705f53b166120014f196e815468403ce67ef",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  2217,
+                        "sha256":  "3d9cd4572db7016c88b2208ab08271a5c74435ae038158b9e40cf71ecc91bf2b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_V2C_SOURCE_FRAME_RUNTIME_RECEIPT_OVERLAY_20261017.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_V2C_SOURCE_FRAME_RUNTIME_RECEIPT_OVERLAY_20261017.md",
+                        "bytes":  2613,
+                        "sha256":  "8d356450efdbcd4a6b3379f2cf448914f2d81e2176c9a0390bddcc298fec02cb",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_V1_OVERLAY_20261017.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_VISUAL_PAYLOAD_CAPABILITY_MATRIX_V1_OVERLAY_20261017.md",
+                        "bytes":  1562,
+                        "sha256":  "018ceb32391f230ae09d6b4e72470a0d32599b20549be7c91042ca35712e651b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1_OVERLAY_20261017.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1_OVERLAY_20261017.md",
+                        "bytes":  2093,
+                        "sha256":  "2faa9ef34dfbcc59a62fec3ed067d045ffc2b7ab4aa5333e3fe82b7d3cc64fa7",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_VISUAL_PROJECTION_DESIGN_OVERLAY_20261020_V1.md",
+                        "destination":  "docs/history/d/root-documentation/challenge/README_C11D_CHALLENGE_VISUAL_PAYLOAD_V2B_SAFE_VISUAL_PROJECTION_DESIGN_OVERLAY_20261020_V1.md",
+                        "bytes":  1111,
+                        "sha256":  "523b2e83f0ff99fcee6210201fd18bbece6101bbf51b0bd755e784b8ac42b7a5",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CHECKPOINT_HANDOVER_OVERLAY_20261017_V2.md",
+                        "destination":  "docs/history/d/root-documentation/continuity/README_C11D_CHECKPOINT_HANDOVER_OVERLAY_20261017_V2.md",
+                        "bytes":  2245,
+                        "sha256":  "6fe3ecd92107faf4339d7d8f2e9dd24259f5612c91be3c29ded46b8a0dc237c2",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CONTEXT_HANDOVER_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_CONTEXT_HANDOVER_OVERLAY_20261016.md",
+                        "bytes":  3777,
+                        "sha256":  "6cb4acabf8da80cf6601b1194e7081ca80cc6892aefca9f5d2b53fa786e73f7e",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_D10_CONTEXT_HANDOVER_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CONTINUITY_RECONCILIATION_OVERLAY_20261026_V1.md",
+                        "destination":  "docs/history/d/root-documentation/continuity/README_C11D_CONTINUITY_RECONCILIATION_OVERLAY_20261026_V1.md",
+                        "bytes":  1941,
+                        "sha256":  "7c74293727b7c72c7c6a4bb42a518c806fc161d24b0b61fb26c6a37cf02127ff",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_CURRENT_CONTEXT_CHECKPOINT_OVERLAY_20261017_V1.md",
+                        "destination":  "docs/history/d/root-documentation/continuity/README_C11D_CURRENT_CONTEXT_CHECKPOINT_OVERLAY_20261017_V1.md",
+                        "bytes":  1564,
+                        "sha256":  "abaf9e98ca159d8e04ad1ba889534a0696ba6b94253b5a75c7e5f477ec352b72",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D10_CONTEXT_HANDOVER_DOCUMENTATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/d10/README_C11D_D10_CONTEXT_HANDOVER_DOCUMENTATION_OVERLAY_V1.md",
+                        "bytes":  2203,
+                        "sha256":  "1918c84a0f55ac94207dc0cc74e4883e672d0156480f02e76c8dac05e1b0879b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D10_RECONCILIATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/d10/README_C11D_D10_RECONCILIATION_OVERLAY_V1.md",
+                        "bytes":  2540,
+                        "sha256":  "c632f9cce89f31d8c7929ec326a9904ae016b39b9c757d6a9448c9336c481a97",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D9.10_ACCEPTANCE_CONFIRMED_AND_D9.14_NEXT_GATE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/acceptance/README_C11D_D9.10_ACCEPTANCE_CONFIRMED_AND_D9.14_NEXT_GATE_OVERLAY_V1.md",
+                        "bytes":  1819,
+                        "sha256":  "973d8ae9cd0a9cd87632228f3c2e55bac6213b633bb5507069294e0f3d35ac7f",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D9.5.1_OVERLAY.md",
+                        "destination":  "README_C11D_D9.5.1_OVERLAY.md",
+                        "bytes":  1831,
+                        "sha256":  "147012753cd08b637ff0a25ab6f19e698f0f7083edcae699b71ceb4ea88bde2b",
+                        "action":  "RETAIN_C11C_FREEZE_MANIFEST_PATH",
+                        "reason":  "Canonical C11-C manifest explicitly includes this root path; moving it would break frozen-baseline path integrity.",
+                        "references":  [
+                                           "docs/current/d/D9.10_D_ONLY_RENDER_ADAPTER_ACCEPTANCE_RUNBOOK.md",
+                                           "docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md",
+                                           "docs/history/c11d/d9/D9.10_ACCEPTANCE_README_MANIFEST_REPAIR_20261009.md",
+                                           "docs/history/c11d/d9/MASTER_HANDOVER_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+                                           "docs/history/c11d/d9/START_PROMPT_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+                                           "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md",
+                        "destination":  "README_C11D_D9.6_CATALOG_INTEGRATION_OVERLAY.md",
+                        "bytes":  1065,
+                        "sha256":  "440b31eaa6681950bb9b5ade8db862f037c611b9756ce2782ef3521120035dbe",
+                        "action":  "RETAIN_C11C_FREEZE_MANIFEST_PATH",
+                        "reason":  "Canonical C11-C manifest explicitly includes this root path; moving it would break frozen-baseline path integrity.",
+                        "references":  [
+                                           "docs/current/d/D9.10_D_ONLY_RENDER_ADAPTER_ACCEPTANCE_RUNBOOK.md",
+                                           "docs/current/d/D9.10_EDITORIAL_TO_RENDER_BRIDGE_PLANNING_CHECKPOINT.md",
+                                           "docs/history/c11d/d9/D9.10_ACCEPTANCE_README_MANIFEST_REPAIR_20261009.md",
+                                           "docs/history/c11d/d9/MASTER_HANDOVER_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+                                           "docs/history/c11d/d9/START_PROMPT_C11D_CURRENT_PRE_QT_RUNTIME_20261009.md",
+                                           "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.md",
+                        "destination":  "docs/history/d/root-documentation/acceptance/README_C11D_D910_QT_POST_RUNTIME_INTEGRATION_FIX_OVERLAY_V2.md",
+                        "bytes":  3343,
+                        "sha256":  "f1c3e99dd20e297aad1446283443ab9cf9cf18780dbe2d613fa2bd3ddda2757a",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D914_D916_PREFLIGHT_CONFIRMED_D915_NEXT_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/acceptance/README_C11D_D914_D916_PREFLIGHT_CONFIRMED_D915_NEXT_OVERLAY_V1.md",
+                        "bytes":  1558,
+                        "sha256":  "a74aef139172653d7a543cdc444ba5cbc08eb3fee82ae059b11757a784194176",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D915_CANONICAL_EVIDENCE_CLOSED_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/acceptance/README_C11D_D915_CANONICAL_EVIDENCE_CLOSED_OVERLAY_V1.md",
+                        "bytes":  1628,
+                        "sha256":  "04673de9d9ca7c9c9c7a2962003d44dfd55bf399438ffc2e5ae90b131fb1b57c",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_D915_CHECKPOINT_CONSUMPTION_FIX_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/acceptance/README_C11D_D915_CHECKPOINT_CONSUMPTION_FIX_OVERLAY_V1.md",
+                        "bytes":  3345,
+                        "sha256":  "a02632bf273971e74c811a189765a6d993eb0f2bc7647863a5b180b5cadbcdd6",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_20261017_V1.md",
+                        "destination":  "README_C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_20261017_V1.md",
+                        "bytes":  2891,
+                        "sha256":  "6b55d72102c5a08726c1d7f2cd386debd53334208a0459bc3eccfc960dc77cf2",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_DOCUMENTATION_RECONCILIATION_OVERLAY_MANIFEST_20261017_V1.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_DYNAMIC_REQUEST_PAYLOAD_GODOT_JSON_INTEGER_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_DYNAMIC_REQUEST_PAYLOAD_GODOT_JSON_INTEGER_FIX_V1.md",
+                        "bytes":  1785,
+                        "sha256":  "36de09700c217dc7b8526aad9c1942ebe8c4aa36f82aa0d0603c093dbdcdd84f",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_GUI_EDITORIAL_VIEW_MODEL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_GUI_EDITORIAL_VIEW_MODEL_OVERLAY_V1.md",
+                        "bytes":  3575,
+                        "sha256":  "9739ca83aa966de1ac9f5cb2e0227b1d6652abfb0d23641fc396144be660933b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  2673,
+                        "sha256":  "cf662b73876cf1bb5270b4d52dfd45aafa32862436350147e3a16dd78df77b4f",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_UNIFIED_REVIEW_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  4070,
+                        "sha256":  "ba3469b9a1e96cefb94691e1432f300993e468bea890b842aa0e954b74eb489f",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_NIGHTLY_RECONCILIATION_HANDOFF_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/continuity/README_C11D_NIGHTLY_RECONCILIATION_HANDOFF_OVERLAY_V1.md",
+                        "bytes":  1479,
+                        "sha256":  "5125f4373112e432f491d863d73bb0f16048901b20d228006c6b0978aa60e995",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_NIGHTLY_VISUAL_DRILL_PHASE_CLOSURE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/continuity/README_C11D_NIGHTLY_VISUAL_DRILL_PHASE_CLOSURE_OVERLAY_V1.md",
+                        "bytes":  2680,
+                        "sha256":  "c76022164c055055d5a170d6b7d25bf81766adf8d8c9d0a8e169f66e0c52d117",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_PHASE_P_CONTEXT_HANDOVER_OVERLAY_20261028_V1.md",
+                        "destination":  "docs/history/d/root-documentation/continuity/README_C11D_PHASE_P_CONTEXT_HANDOVER_OVERLAY_20261028_V1.md",
+                        "bytes":  3095,
+                        "sha256":  "771a1cb8533fd7852866c58dc6102959aa373696697d9391548b7af20eb9ddd1",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_OVERLAY_V1.md",
+                        "bytes":  2125,
+                        "sha256":  "78089bf1fcc6169a33ab8c6d0e203a36a42cc9cc5bfd95a2187de2320eb85b12",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CANDIDATE_IO_CONTRACT_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CANDIDATE_IO_CONTRACT_OVERLAY_V1.md",
+                        "bytes":  12018,
+                        "sha256":  "e4b0f4c6119229a88061d40488a6126321c7856f9bbee82e9a86e5526cda5769",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CANDIDATE_IO_GAP_AUDIT_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CANDIDATE_IO_GAP_AUDIT_OVERLAY_V1.md",
+                        "bytes":  764,
+                        "sha256":  "acd86d0112e2421707926d121333956aa78a77eafa995c05427f6ecd36f65e4a",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_FIX_V1.md",
+                        "bytes":  1306,
+                        "sha256":  "23e6a00c28e75ecd233df8be6923ea012d997f63107b016061b721841e6b0d4b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_OVERLAY_V1.md",
+                        "bytes":  2770,
+                        "sha256":  "27eeaac667a9909cd119391dc957d1c3f8e8e1675a711a83aba476df56f7b754",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_OVERLAY_V1.md",
+                        "bytes":  3770,
+                        "sha256":  "7cb1707db4681b0c1c5a2518297e064bc83ec2d6c25be3aae088f06ac2e94bbf",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_OVERLAY_V1.md",
+                        "bytes":  1624,
+                        "sha256":  "50e93b8edc3c35897c73e02eded5e311c3ecf2db30863badc3b8dc37298c7a1e",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_OVERLAY_V1.md",
+                        "bytes":  3318,
+                        "sha256":  "3cc239205dc31067a9874fba6cbae93b3c26969b24ef056ade82f8bd0d4e655b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_OVERLAY_V1.md",
+                        "bytes":  1761,
+                        "sha256":  "b0937f30d52aaee995a514956106bdbcb69cb623bde9ab859e47a58aa42d4ccf",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_OVERLAY_V1.md",
+                        "bytes":  4223,
+                        "sha256":  "502378359a22f2f9c497edf51cdbab9b034afef1756d89b26b10c826bebf600e",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_OVERLAY_V1.md",
+                        "bytes":  2920,
+                        "sha256":  "8f47a6fff257850fba9f4415245cf38c0fce42def3d36c2109c15c06f4c61bb6",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_OVERLAY_V1.md",
+                        "bytes":  3493,
+                        "sha256":  "e5f7316029149cd65e36700e3da55a182822a7fb0bf273061124ae89038cba72",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_EDITORIAL_FIELD_WINDOW_EMPTY_SHA256_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_EDITORIAL_FIELD_WINDOW_EMPTY_SHA256_FIX_V1.md",
+                        "bytes":  1570,
+                        "sha256":  "3c18141aba289800be6de2418483b34a73d56ee591cdd176b1197d5a354e6ee3",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  2620,
+                        "sha256":  "2a11e97aad28d5a91043df3f6224388aee15297edaf6278d18943e33d5a5c6b9",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_EDITORIAL_REVIEW_MANIFEST_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_EDITORIAL_REVIEW_MANIFEST_OVERLAY_V1.md",
+                        "bytes":  3140,
+                        "sha256":  "75e64831d66fa3c7c4deb8d9891f3db4580ffd4b09c333b48cf3f9a8236f399d",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_PROFILE_IDENTITY_SEPARATION_GDSCRIPT_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_PROFILE_IDENTITY_SEPARATION_GDSCRIPT_FIX_V1.md",
+                        "bytes":  1284,
+                        "sha256":  "ebefaa92527c22576a07748d6b0b94bdede28e281f9427785cd7a797d0fd7b2d",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_PROFILE_IDENTITY_SEPARATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_PROFILE_IDENTITY_SEPARATION_OVERLAY_V1.md",
+                        "bytes":  1237,
+                        "sha256":  "4b04c57f954d2918442143c871b8bb1378f7eb1cd4c240c878a77f6613f43171",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_REQUEST_SCOPED_EDITORIAL_VALUE_CARRIER_OVERLAY_V1.md",
+                        "bytes":  1223,
+                        "sha256":  "0c67c064ace2b72cece34fec6471e3052215b0b0beb636cbd8674dd83c60da60",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_OVERLAY_V1.md",
+                        "bytes":  1277,
+                        "sha256":  "4a346495e09fc53c019f297495b31d25a739f32b3ccbc453917b1eb890468fdb",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_OVERLAY_V1.md",
+                        "bytes":  10498,
+                        "sha256":  "aeca70c5c08cae6b2790a42f7ebb5408f3fb2ec09970ead6f6b9b3d1572d5d64",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_SEMANTIC_REGION_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_SEMANTIC_REGION_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  1017,
+                        "sha256":  "a6ffe32823de2a49d2461d3f0a23ff03acb026cc67fe9f3e282951696473748d",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_TEMPORAL_BOUND_PREVIEW_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_TEMPORAL_BOUND_PREVIEW_OVERLAY_V1.md",
+                        "bytes":  556,
+                        "sha256":  "23080ef46b30db80f5e03830bbef8eb2e182641c84cd328cdc03f4fe90da33ec",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_OVERLAY_V1.md",
+                        "bytes":  1179,
+                        "sha256":  "a818eaa7fe0f659123ea1cbcf25764d05f65d950276a92493aceb324d2c7dd98",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V1.md",
+                        "bytes":  2160,
+                        "sha256":  "8a66c05bb9a7921f75aac9adf567b73a9d41befa28c2fc1bd6c1235efa5db544",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V2.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V2.md",
+                        "bytes":  3041,
+                        "sha256":  "0f723f8b5cde80428948fb45a1d9d7cbbf692cd5c84572bf46efccada3ff12c3",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V3.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V3.md",
+                        "bytes":  1525,
+                        "sha256":  "88c9c38fbe7fc3beb8413cc20ced37033fca7d8d51c2cdf3e50226d2ca1ca32e",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V4.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V4.md",
+                        "bytes":  1770,
+                        "sha256":  "b2c801822c967bd5f73322db0c32e4dc88b1f26d4bdb24b2820465477641a86e",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V5.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_FIX_V5.md",
+                        "bytes":  1887,
+                        "sha256":  "5949bcd29056532dacdb7e5e044df245418fbf3963732c37242b54f1465c5e41",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_CONTENT_REVIEW_OVERLAY_V1.md",
+                        "bytes":  3726,
+                        "sha256":  "b979cba531c3b6ddc9f53830480f798bc16068090b654bc757514429e141bcf0",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_UNIFIED_REVIEW_EDITORIAL_ROUTING_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_UNIFIED_REVIEW_EDITORIAL_ROUTING_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  4163,
+                        "sha256":  "83822958d910c875b24260f69ca407997230cd30b99e6be01d7f61665ed6a2a7",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_BINDING_AUDIT_OVERLAY_V1.md",
+                        "bytes":  1984,
+                        "sha256":  "b30c0c830b65f89ae747979fbff414cd7a4b9023e93bb29f830277a2cd9467eb",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_INPUT_ALIAS_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_INPUT_ALIAS_FIX_V1.md",
+                        "bytes":  1741,
+                        "sha256":  "15bd21e55da50459166f87116cef813904df56ca5b19ff47746f2e27a3df62dc",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_OVERLAY_V1.md",
+                        "bytes":  1684,
+                        "sha256":  "64634cc5691ba9f1475f0a847380bc96b6b33eb3ce39beb867a3b1c9549f9e2c",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_SOURCE_CHECK_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_VISUAL_LOOP_GRAMMAR_PARAMETER_INSTANCE_SOURCE_CHECK_FIX_V1.md",
+                        "bytes":  1353,
+                        "sha256":  "eb43fe6d6eba204a855b6c348ad36fb705415ef933a32fc45cf97585dc1309a9",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/renderer/README_C11D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_OVERLAY_V1.md",
+                        "bytes":  2063,
+                        "sha256":  "27bfe42ae4c3ea886acac328269b8f3375ec9aa30927a196988a297edd04b94b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_V1.md",
+                        "bytes":  1881,
+                        "sha256":  "6f5476a2714a39e599e83a227d828b13e59afdb7ad9f121f3b899c3384aa6396",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_V2.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_V2.md",
+                        "bytes":  3561,
+                        "sha256":  "adaf88256049e0696c7520e09d21ff26a42697819b414ef0ae923252a787e614",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_REQUEST_PAYLOAD_MANIFEST_RECONCILIATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_REQUEST_PAYLOAD_MANIFEST_RECONCILIATION_OVERLAY_V1.md",
+                        "bytes":  2788,
+                        "sha256":  "ccce02340c21b8508dd52fdfaa0016f90551b7ec15ae610d6b794485722a722c",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_OVERLAY_V1.md",
+                        "bytes":  1098,
+                        "sha256":  "643ef2ba30d0bac1b63ffd4df8cdfb5f1a97024c84fab7e3ef3776275f64bdc5",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_WINDOWS_ENCODING_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_WINDOWS_ENCODING_FIX_V1.md",
+                        "bytes":  1009,
+                        "sha256":  "9505291c349c4784de43e13d2e4cf2a3f4a4ae76cea7774970b1a173fae948ce",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_OVERLAY_V1.md",
+                        "bytes":  2553,
+                        "sha256":  "9b01ef0cccabc541dc56f7a501f8dff6ed4b14313fd2be90aa91d1fbca4f5f97",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_CONTEXT_FACADE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_CONTEXT_FACADE_OVERLAY_V1.md",
+                        "bytes":  888,
+                        "sha256":  "c786b75db729695155edfd185c5a3f897a3bb2da613d737cab362fe7e02958ac",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_ADAPTER_OVERLAY_V1.md",
+                        "bytes":  1094,
+                        "sha256":  "8a44f150611c1f811bd2e098ff40eb6992643a4844310de63918cb11e61d1739",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_EDITORIAL_DRAFT_LIFECYCLE_OVERLAY_V1.md",
+                        "bytes":  2035,
+                        "sha256":  "a431aad1d4694f4a79ca77e37d16edba50131010e8a1929557a0acaf5e10523e",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_WINERROR3_FIX_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_REACTIVE_SELECTION_WINERROR3_FIX_V1.md",
+                        "bytes":  1253,
+                        "sha256":  "732562dabddbd8e322dd05f1cc1e6281aea78e85103b2b63a2bd38cd6a6cdadc",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_CONTEXT_GUI_STATE_CONTRACT_OVERLAY_V1.md",
+                        "bytes":  420,
+                        "sha256":  "04ebbda06badba4fdf7cfcd65b081cc90625668dd1062a4d735f6c22c34b274d",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_GUI_DYNAMIC_CATALOG_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_GUI_DYNAMIC_CATALOG_OVERLAY_V1.md",
+                        "bytes":  1488,
+                        "sha256":  "a8b9f2425eed3cb0983a217cf464f4fd7992a91d4b5cde0cc4edc71662eac138",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SHARED_PRODUCTION_GUI_REACTIVE_SELECTION_STATE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/shared-production-context/README_C11D_SHARED_PRODUCTION_GUI_REACTIVE_SELECTION_STATE_OVERLAY_V1.md",
+                        "bytes":  2284,
+                        "sha256":  "dc77ca2bab135306fda7f1dc2079d564b8228f5d4eeb1ca93f57f927d321eba8",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_SOURCE_PACKAGE_INTEGRITY_RECONCILIATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/other/README_C11D_SOURCE_PACKAGE_INTEGRITY_RECONCILIATION_OVERLAY_V1.md",
+                        "bytes":  2806,
+                        "sha256":  "5c15ba2ffce8ea24ee6c78e1d12b9ee72cc86b02c54d40de0bc94a548991e407",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/presentation-delivery/README_C11D_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  3421,
+                        "sha256":  "864933fd361a91bb6a591a6c209c2c4efc6eea66f964e5173d3cea4af3901967",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_UNIFIED_DELIVERY_TIMEBASE_POLICY_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/presentation-delivery/README_C11D_UNIFIED_DELIVERY_TIMEBASE_POLICY_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  2586,
+                        "sha256":  "f179aba1f1dd22f189b866ffb637d1def2f6e4d8e58eb39d4622de275e6a56ae",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_UNIFIED_PRESENTATION_REGION_POLICY_INTEGRATION_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/presentation-delivery/README_C11D_UNIFIED_PRESENTATION_REGION_POLICY_INTEGRATION_OVERLAY_V1.md",
+                        "bytes":  2274,
+                        "sha256":  "cdf6092c09731473552514ac329038239678222eef83433805736e4d607f7bea",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_UNIFIED_VISUAL_PAYLOAD_COORDINATE_PROJECTION_INTEGRATION_V2.md",
+                        "destination":  "docs/history/d/root-documentation/presentation-delivery/README_C11D_UNIFIED_VISUAL_PAYLOAD_COORDINATE_PROJECTION_INTEGRATION_V2.md",
+                        "bytes":  3197,
+                        "sha256":  "d74d2c7a8317d73916c7fde957ebcd432f59c3e2045d92bad53013c4bf428475",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_IMPLEMENTATION_DESIGN_OVERLAY_20261022_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_IMPLEMENTATION_DESIGN_OVERLAY_20261022_V1.md",
+                        "bytes":  2032,
+                        "sha256":  "2c3db3d61af024284cd5bf23072b53663dc1cef4616fd60ecb7823a3743bdf91",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_FIX_V2_OVERLAY_20261022_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_FIX_V2_OVERLAY_20261022_V1.md",
+                        "bytes":  1934,
+                        "sha256":  "67ef21c81abea528a978ff32cd297ee188981160a92e09c0cfb3f6a8b70d1cee",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_IMPLEMENTATION_OVERLAY_20261022_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_RUNTIME_IMPLEMENTATION_OVERLAY_20261022_V1.md",
+                        "bytes":  4146,
+                        "sha256":  "dabe27df2e889196aa87a2829b522a405ea634cfeb0da5f0ae44d917e5882ccf",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_OVERLAY_20261022_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_ALLOWLISTED_COORDINATE_CONSUMER_SOURCE_COMPOSITION_OVERLAY_20261022_V1.md",
+                        "bytes":  2480,
+                        "sha256":  "cef570bc2c1f27e15777f2b56351f560d33cc1185ba089709c25e268f79acb31",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_ALLOWLISTED_COORDINATE_PROJECTION_CONSUMER_SPECIFICATION_OVERLAY_20261021_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_ALLOWLISTED_COORDINATE_PROJECTION_CONSUMER_SPECIFICATION_OVERLAY_20261021_V1.md",
+                        "bytes":  1155,
+                        "sha256":  "b0247559a6b411b2ed8c9ad2e7c3ca7778d9fa2a58fad91594aa5034f3b5fe66",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+                        "destination":  "README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_DECISION_RECORD_OVERLAY_20261021_V1.md",
+                        "bytes":  1616,
+                        "sha256":  "951bcd9fe802cf62b10e01e520ff7d404eb49e266c0540957f5e1261e10fb49c",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_CONTENT_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_CONTENT_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_SOURCE_DISPOSITION_MATRIX_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_SOURCE_DISPOSITION_MATRIX_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_X_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V2.json",
+                                           "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_OVERLAY_20261021_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_OVERLAY_20261021_V1.md",
+                        "bytes":  3103,
+                        "sha256":  "41c64820a46391c2ca490ddd42a8f274163fcb6e96f056e970f217e46afe0074",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_EVIDENCE_AUDIT_OVERLAY_20261020_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_CANDIDATE_EVIDENCE_AUDIT_OVERLAY_20261020_V1.md",
+                        "bytes":  3099,
+                        "sha256":  "997e9d58e8ed0ea8106ba84e0b13446afa42fc3b854d38ab07a030676319e4e6",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_OVERLAY_20261021_V2.md",
+                        "destination":  "README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_DECISION_RECORD_OVERLAY_20261021_V2.md",
+                        "bytes":  3981,
+                        "sha256":  "7716627b2b616b7d283db1d6ae3120f8df07896aaa9311cd035fb7ef47196e8f",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_CONTENT_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_CONTENT_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_SOURCE_DISPOSITION_MATRIX_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_SOURCE_DISPOSITION_MATRIX_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_X_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V2.json",
+                                           "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_PROPOSAL_OVERLAY_20261021_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_PROPOSAL_OVERLAY_20261021_V1.md",
+                        "bytes":  3819,
+                        "sha256":  "fe20dff4438f6d0cbbe312545dcb2ada3562bb9ec3400768e2e4cf18aa00e3e1",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_OVERLAY_20261020_V1.md",
+                        "destination":  "README_C11D_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_OVERLAY_20261020_V1.md",
+                        "bytes":  1414,
+                        "sha256":  "2858fec2f02258d729b6eb4900aa57cf9b2749633269b943481f57ce24a5ca10",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_CONTENT_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_CONTENT_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_SOURCE_DISPOSITION_MATRIX_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_AC_REMAINING_CANDIDATE_SOURCE_DISPOSITION_MATRIX_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_X_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V2.json",
+                                           "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_OVERLAY_20261020_V1.md",
+                        "destination":  "docs/history/d/root-documentation/v2b/README_C11D_V2B_CANDIDATE_SEMANTIC_REVIEW_REQUEST_OVERLAY_20261020_V1.md",
+                        "bytes":  1251,
+                        "sha256":  "ec93913f8f558f6217f07c6aff20c3ab72617bff5bca98918877a73f14cb855b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_V2B_SAFE_PROJECTION_RUNTIME_IMPLEMENTATION_OVERLAY_20261020_V1.md",
+                        "destination":  "README_C11D_V2B_SAFE_PROJECTION_RUNTIME_IMPLEMENTATION_OVERLAY_20261020_V1.md",
+                        "bytes":  5176,
+                        "sha256":  "ad1fa36a26ed55b96d5a45c8e3a1d6ad3a164cabcf7b800c551b0979168164d4",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_V_AUTHORITY_CANDIDATE_SOURCE_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_W_AUTHORITY_CANDIDATE_SOURCE_HUMAN_REVIEW_RESULT_20261029_V1.md",
+                                           "docs/current/d/C11D_PHASE_X_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V2.json",
+                                           "docs/current/d/C11D_PHASE_X_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V2.md",
+                                           "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.json",
+                                           "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.md"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/visual-drills/README_C11D_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_OVERLAY_V1.md",
+                        "bytes":  2746,
+                        "sha256":  "55a2f28c1eccc4436ff7d875c5ab11ab27173a318d939cbe97207c41398f4d2b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_COMPOSITE_PAYLOAD_OVERLAY_V1.md",
+                        "destination":  "docs/history/d/root-documentation/visual-loops/README_C11D_VISUAL_LOOP_COMPOSITE_PAYLOAD_OVERLAY_V1.md",
+                        "bytes":  6762,
+                        "sha256":  "384da5e3bd4def67cb42c3ea834b3b695fdd759013db94f2d0a18933080b8126",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_20261016.md",
+                        "bytes":  4658,
+                        "sha256":  "c81a3d72f4666ba293d760c385e1f5cb94f3ad434ba4d61fd0233c19e4595ed7",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_BOUND_INSTANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_FLOAT_TOLERANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_MANIFEST_20261016.json",
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_PROJECTION_FIX_OVERLAY_MANIFEST_20261016_V1.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_EXACT_SELECTOR_V2_RUNTIME_ACCEPTANCE_OVERLAY_20261017_V1.md",
+                        "destination":  "docs/history/d/root-documentation/visual-loops/README_C11D_VISUAL_LOOP_EXACT_SELECTOR_V2_RUNTIME_ACCEPTANCE_OVERLAY_20261017_V1.md",
+                        "bytes":  4828,
+                        "sha256":  "25b8efc8198c629e2b884a085fb56455ff7720320929526d127b8577e0abaf50",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_20261016.md",
+                        "bytes":  5829,
+                        "sha256":  "9f2a8f683c6104cc1cc4cf3ee66654f2e0a8e22bfddd34c9df9cbb7214351d53",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_RUNTIME_FIX_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_RUNTIME_FIX_OVERLAY_20261016.md",
+                        "bytes":  2272,
+                        "sha256":  "53ba464d843442ad6fbd1f4fe26303be3ded44fd3b46a101537d3578db4ef035",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_RUNTIME_FIX_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_20261016.md",
+                        "bytes":  1845,
+                        "sha256":  "738c9b7a3d9495b4cca35c60f6b63f5190d7c5e102cc55b6215c7e9ad2af1ccd",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_GEOMETRIC_GRAMMAR_MATRIX_V2_SEED_RUNTIME_FIX_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_OVERLAY_20261016.md",
+                        "destination":  "docs/history/d/root-documentation/visual-loops/README_C11D_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_OVERLAY_20261016.md",
+                        "bytes":  2437,
+                        "sha256":  "53bf8f127bf1abf318bf9a10c4f9f60076517b326de60998d7b0f4852e2e287b",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_PIN_RECONCILIATION_OVERLAY_20261016.md",
+                        "destination":  "docs/history/d/root-documentation/visual-loops/README_C11D_VISUAL_LOOP_GEOMETRIC_REQUEST_CHAIN_GAP_AUDIT_PIN_RECONCILIATION_OVERLAY_20261016.md",
+                        "bytes":  2515,
+                        "sha256":  "05b47af20949df9be0699e87e658642a0a80297ba6bcc94392e8a09dcc7e8318",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2_OVERLAY_20261016.md",
+                        "bytes":  1887,
+                        "sha256":  "07cc18e5dadcb35b385f61661f04a210dcfae67fe8779c25714530103f1d61b1",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_REQUEST_SCOPED_BINDING_MATRIX_V2_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_20261016.md",
+                        "bytes":  2554,
+                        "sha256":  "7b30ec45445362e4bcf577791acf8617d1da3f2d326344e10765cbebf84ce0be",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_BOUND_INSTANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_FLOAT_TOLERANCE_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_OVERLAY_MANIFEST_20261016.json",
+                                           "C11D_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2_PROJECTION_FIX_OVERLAY_MANIFEST_20261016_V1.json",
+                                           "C11D_VISUAL_LOOP_REQUEST_SCOPED_GRAMMAR_PARAMETER_BINDING_V2_OVERLAY_MANIFEST_20261016.json",
+                                           "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_EXACT_SELECTOR_PAYLOAD_V2.json",
+                                           "definitions/c11d/production/D_RENDERER_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2_OVERLAY_20261017_V1.md",
+                        "destination":  "docs/history/d/root-documentation/visual-loops/README_C11D_VISUAL_LOOP_SEED_DOMAIN_AUDIT_V2_OVERLAY_20261017_V1.md",
+                        "bytes":  4139,
+                        "sha256":  "2cf9bdc433cab1402368cb9c6c543a8f411bd71fb3c3c62e0b9860b6eea84760",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_OVERLAY_20261016_V2.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_OVERLAY_20261016_V2.md",
+                        "bytes":  2127,
+                        "sha256":  "c5336ef1b1aec61d924f6113bd2d26b807a8737fec35973e88c3743fe98a1b41",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_TIMING_REVIEW_INHERITANCE_OVERLAY_V2_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_OVERLAY_20261016.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_OVERLAY_20261016.md",
+                        "bytes":  1292,
+                        "sha256":  "457523b425db8a8b5582bb3a1b50b7439d61f22cdaacef89a68f4c96ccc38319",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_TIMING_REVIEW_REFERENCE_CARRIER_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "README_C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_20261016_V1.md",
+                        "destination":  "README_C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_20261016_V1.md",
+                        "bytes":  1441,
+                        "sha256":  "586b62aa52b1abdb9367a5e3cba1b1a82f110e3a3d5bcef069806c3e86d4dcf7",
+                        "action":  "RETAIN_REFERENCED_ROOT_PATH",
+                        "reason":  "One or more source documents/manifests still name this root file; relocation requires a separately reconciled reference migration.",
+                        "references":  [
+                                           "C11D_VISUAL_LOOP_TIMING_REVIEW_REQUEST_BOUND_REFERENCE_CARRIER_OVERLAY_MANIFEST_20261016.json"
+                                       ]
+                    },
+                    {
+                        "source":  "START_PROMPT_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                        "destination":  "docs/history/d/root-documentation/legacy-d9_10/START_PROMPT_C11D_D9.10_QT_GUI_RUNTIME_20261009.md",
+                        "bytes":  4833,
+                        "sha256":  "9f2c9e2d23537d22b0b7bd97f9256dfd0f8d39d612df830d24c76a5ad23e0cfb",
+                        "action":  "MOVED",
+                        "reason":  "Moved without content modification; SHA-256 verified at destination.",
+                        "references":  [
+
+                                       ]
+                    }
+                ],
+    "policy":  [
+                   "AGENTS.md and README.md remain canonical root entrypoints",
+                   "all canonical C11-C manifest-listed paths remain unchanged",
+                   "documents with outstanding references remain at their old paths",
+                   "moved files are byte-preserved and SHA-256 verified",
+                   "root overlay manifests remain at historical root paths",
+                   "no source documentation content is rewritten"
+               ]
+}
