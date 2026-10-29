@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0.0",
+  "title": "C11-D Phase V Authority Candidate Source Review Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "created_utc",
+    "source_triage_sha256",
+    "counts",
+    "scope",
+    "candidates",
+    "unsearched_documents",
+    "timing_conflicts",
+    "governance",
+    "no_global_absence_claim",
+    "authority_adjudication",
+    "policy_adoption",
+    "next_action"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "phase": {
+      "const": "V"
+    },
+    "status": {
+      "enum": [
+        "SOURCE_EVIDENCE_INVENTORY_READY_FOR_HUMAN_REVIEW",
+        "SOURCE_PIN_DRIFT_REQUIRES_RECONCILIATION"
+      ]
+    },
+    "created_utc": {
+      "type": "string",
+      "minLength": 20
+    },
+    "source_triage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "candidates",
+        "high_priority",
+        "medium_priority",
+        "low_priority",
+        "source_hash_matches",
+        "source_hash_mismatches",
+        "source_files_missing",
+        "high_priority_excerpts",
+        "unsearched_documents",
+        "unsearched_existing",
+        "unsearched_missing"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "medium_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "low_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hash_matches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hash_mismatches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_files_missing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_priority_excerpts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_documents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_existing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_missing": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "working_tree_only",
+        "git_history_searched",
+        "external_files_searched",
+        "full_sources_modified",
+        "priority_is_authority",
+        "automated_adjudication"
+      ],
+      "properties": {
+        "working_tree_only": {
+          "const": true
+        },
+        "git_history_searched": {
+          "const": false
+        },
+        "external_files_searched": {
+          "const": false
+        },
+        "full_sources_modified": {
+          "const": false
+        },
+        "priority_is_authority": {
+          "const": false
+        },
+        "automated_adjudication": {
+          "const": false
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "expected_sha256",
+          "actual_sha256",
+          "expected_bytes",
+          "actual_bytes",
+          "source_integrity",
+          "priority",
+          "priority_score",
+          "review_status",
+          "authority_finding",
+          "excerpt_status",
+          "excerpts"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "expected_sha256": {
+            "type": "string"
+          },
+          "actual_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_bytes": {
+            "type": "integer"
+          },
+          "actual_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "source_integrity": {
+            "enum": [
+              "MATCH",
+              "HASH_MISMATCH",
+              "MISSING",
+              "PATH_UNSAFE",
+              "READ_ERROR"
+            ]
+          },
+          "priority": {
+            "enum": [
+              "HIGH_REVIEW_PRIORITY",
+              "MEDIUM_REVIEW_PRIORITY",
+              "LOW_REVIEW_PRIORITY"
+            ]
+          },
+          "priority_score": {
+            "type": "integer"
+          },
+          "review_status": {
+            "const": "NOT_REVIEWED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          },
+          "excerpt_status": {
+            "type": "string"
+          },
+          "excerpts": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "unsearched_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "review_status",
+          "authority_finding",
+          "current_file_state",
+          "current_sha256",
+          "current_bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "review_status": {
+            "const": "NOT_INSPECTED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          },
+          "current_file_state": {
+            "enum": [
+              "EXISTS_CONTENT_NOT_READ",
+              "MISSING",
+              "PATH_UNSAFE",
+              "READ_ERROR"
+            ]
+          },
+          "current_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "current_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "minItems": 7,
+      "maxItems": 7
+    },
+    "timing_conflicts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "governance": {
+      "type": "object"
+    },
+    "no_global_absence_claim": {
+      "const": true
+    },
+    "authority_adjudication": {
+      "const": "NOT_PERFORMED"
+    },
+    "policy_adoption": {
+      "const": "NONE"
+    },
+    "next_action": {
+      "const": "HUMAN_REVIEW_VERIFIED_SOURCE_EXCERPTS_AND_UNSEARCHED_DOCUMENTS"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "V",
+  "status": "PREPARED_READ_ONLY_SOURCE_REVIEW_NOT_ADJUDICATION",
+  "purpose": "Check current bytes and extract bounded source context for Phase U candidates; make no authority decision.",
+  "source": "docs/current/d/C11D_PHASE_U_AUTHORITY_CANDIDATE_HUMAN_TRIAGE_RESULT_20261029_V1.json",
+  "priority_batches": {
+    "high": 50,
+    "medium": 55,
+    "low": 2
+  },
+  "source_integrity": "Recompute current SHA-256 and size for every candidate; mismatch or missing source is blocking for that candidate.",
+  "excerpt_policy": {
+    "high_priority_only": true,
+    "max_text_bytes": 524288,
+    "max_matches_per_candidate": 3,
+    "context_lines_each_side": 3,
+    "max_chars_per_excerpt": 1800,
+    "full_source_content_copied": false
+  },
+  "unsearched_documents": {
+    "count": 7,
+    "content_inspected": false,
+    "current_hash_may_be_recorded": true
+  },
+  "review_states": {
+    "review_status": "NOT_REVIEWED",
+    "authority_finding": "UNDETERMINED"
+  },
+  "human_checks": [
+    "inspect full document, not excerpt alone",
+    "issuer and role authority",
+    "exact decision identifiers and scope",
+    "unambiguous adopted option/value",
+    "effective version/date",
+    "signature or immutable record identity",
+    "source pins and conditions",
+    "required gates",
+    "distinguish approval from proposal, sample, test, rejection or stale record"
+  ],
+  "governance": {
+    "renderer": "OFF",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "release_authority": "NONE"
+  },
+  "timing_conflicts": [
+    {
+      "challenge": "CHALLENGE_008",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "challenge": "CHALLENGE_009",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "no_global_absence_claim": true,
+  "authority_adjudication": "NOT_PERFORMED",
+  "policy_adoption": "NONE",
+  "next_action": "HUMAN_REVIEW_VERIFIED_SOURCE_EXCERPTS_AND_UNSEARCHED_DOCUMENTS"
+}
