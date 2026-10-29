@@ -17,7 +17,7 @@ $pythonVersionOutput = ((& $pythonLauncher.Source -3.13 --version 2>&1 | Out-Str
 $pythonVersionExitCode = $LASTEXITCODE
 $pythonVersionText = (@($pythonVersionOutput) -join ' ').Trim()
 $pythonVersionText = ([string]$pythonVersionText).Trim() -replace '^[^\d]*', ''
-if ($pythonVersionExitCode -ne 0 -or $pythonVersionText -notmatch '^Python\s+3\.13(?:\.|$)') { throw ('PYTHON_313_REQUIRED: ' + $pythonVersionText) }
+if ($pythonVersionExitCode -ne 0 -or $pythonVersionText -notmatch '^3\.13(?:\.|$)') { throw ('PYTHON_313_REQUIRED: ' + $pythonVersionText) }
 $pythonExecutableOutput = & $pythonLauncher.Source -3.13 -c 'import sys; print(sys.executable)' 2>&1
 $pythonExecutableExitCode = $LASTEXITCODE
 $pythonExecutableText = (@($pythonExecutableOutput) -join "`n").Trim()
@@ -34,14 +34,15 @@ if (-not $testPass) { Write-Output 'C11D_PHASE_P_STATIC_GATE=BLOCKED'; Write-Out
 $runScript = Join-Path $repoRoot 'tools\c11d\d9\audit_d_renderer_phase_p_source_value_frame_value_provenance_20261028.py'
 $evidenceDir = Join-Path $env:TEMP ('C11D_PHASE_P_SOURCE_VALUE_FRAME_PROVENANCE_' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $evidenceDir | Out-Null
+$auditDir = Join-Path $evidenceDir 'audit'
 $runnerOut = Join-Path $evidenceDir 'runner.stdout.txt'
 $runnerErr = Join-Path $evidenceDir 'runner.stderr.txt'
-$args = @('-B', ('"' + $runScript + '"'), '--repo-root', ('"' + $repoRoot + '"'), '--evidence-dir', ('"' + $evidenceDir + '"'))
+$args = @('-B', ('"' + $runScript + '"'), '--repo-root', ('"' + $repoRoot + '"'), '--evidence-dir', ('"' + $auditDir + '"'))
 if (-not [string]::IsNullOrWhiteSpace($GodotExecutable)) { $args += @('--godot', ('"' + $GodotExecutable + '"')) }
 $runProc = Start-Process -FilePath $pythonExe -ArgumentList $args -WorkingDirectory $repoRoot -PassThru -Wait -NoNewWindow -RedirectStandardOutput $runnerOut -RedirectStandardError $runnerErr
 $runnerText = Get-Content -LiteralPath $runnerOut -Raw
 $runnerErrorText = Get-Content -LiteralPath $runnerErr -Raw
-$reportPath = Join-Path $evidenceDir 'phase_p_provenance_report.json'
+$reportPath = Join-Path $auditDir 'phase_p_provenance_report.json'
 if ($runProc.ExitCode -ne 0 -or $runnerText -notmatch 'C11D_PHASE_P_SOURCE_VALUE_FRAME_VALUE_PROVENANCE_AUDIT=PASS_SOURCE_FRAME_PROVENANCE_ONLY_NO_BINDING_APPROVAL' -or -not (Test-Path -LiteralPath $reportPath -PathType Leaf)) {
     Write-Output 'C11D_PHASE_P_RUNTIME_AUDIT=BLOCKED'
     Write-Output ('EVIDENCE_DIR=' + $evidenceDir)

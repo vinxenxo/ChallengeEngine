@@ -777,13 +777,13 @@
     },
     {
       "path": "AGENTS.md",
-      "sha256": "a33caf3528a239049d7a84189584dfd661a1b12d6c48ec599ba3de51315b06f2",
-      "bytes": 4137
+      "sha256": "67c5f237035c121f27733c24f3b2fe2da2bb104eaaa5f95e4c7a88b573071599",
+      "bytes": 4851
     },
     {
       "path": ".continue/rules/CONTINUE.md",
-      "sha256": "8a6ea4611a2bc710a41fde7d02da2dcbf108e910c4daaad9b37f611d234541cd",
-      "bytes": 2493
+      "sha256": "8ee4f47588acbc981bd11400ad4186a598e052e279b8f2e2cc0bd87cb6b21c71",
+      "bytes": 3599
     },
     {
       "path": "tools/c11d/d9/phase_p_source_value_frame_value_provenance_in_memory.gd",
