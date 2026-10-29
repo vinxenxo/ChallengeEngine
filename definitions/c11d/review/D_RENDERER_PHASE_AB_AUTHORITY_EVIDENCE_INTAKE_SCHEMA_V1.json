@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Phase AB Authority Evidence Intake Packet V1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "required_fields",
+    "decisions",
+    "hard_locks",
+    "next_gate"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "phase": {
+      "const": "AB"
+    },
+    "status": {
+      "const": "PREPARED_PENDING_OPERATOR_EVIDENCE_AND_AUTHORITY_ADJUDICATION"
+    },
+    "required_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 11
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "required": [
+          "decision_id",
+          "intake_status",
+          "operator_disposition",
+          "source_records",
+          "authority_review",
+          "status"
+        ],
+        "properties": {
+          "decision_id": {
+            "type": "string"
+          },
+          "intake_status": {
+            "const": "PENDING_OPERATOR_SUBMISSION"
+          },
+          "operator_disposition": {
+            "enum": [
+              "PENDING",
+              "SUBMIT_AUTHORITY_EVIDENCE_FOR_REVIEW",
+              "DEFER_KEEP_BLOCKED",
+              "NO_VALID_AUTHORITY_RECORD_FOUND_KEEP_BLOCKED"
+            ]
+          },
+          "source_records": {
+            "type": "array"
+          },
+          "authority_review": {
+            "type": "object"
+          },
+          "status": {
+            "const": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+          }
+        }
+      }
+    },
+    "hard_locks": {
+      "type": "object"
+    },
+    "next_gate": {
+      "const": "PHASE_AB_OPERATOR_DECISION_EVIDENCE_SUBMISSION_AND_AUTHORITY_ADJUDICATION"
+    }
+  },
+  "additionalProperties": true
+}

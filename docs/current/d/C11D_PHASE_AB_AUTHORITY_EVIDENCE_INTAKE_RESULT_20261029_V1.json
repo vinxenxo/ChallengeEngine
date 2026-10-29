@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "phase": "AB",
+  "title": "Operator Decision Evidence Intake and Authority Adjudication",
+  "date": "2026-10-29",
+  "status": "INTAKE_PACKET_PREPARED_PENDING_OPERATOR_EVIDENCE",
+  "phase_aa_closeout": {
+    "status": "PASS_AUDIT_AND_LOCKS_RENDER_READINESS_BLOCKED",
+    "tests": "PASS_41_OF_41",
+    "test_stdout_sha256": "8cf39d6dfb66a3ca351b622774e254e6e51e8bec1cf2eb2e70fa0a1677b96d2a",
+    "test_stderr_sha256": "3b72918a4695d2085da90fa89af4e6c2cdd7b9929db7b346daa38c3a9a1cca40",
+    "verify_stdout_sha256": "675bd74134827a41e87bac05048c5488b1717234c0115e7f8ecd0fc87e7d0ffc",
+    "verify_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_pins": {
+    "release/C11C_FREEZE_PACKAGE_MANIFEST.json": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "AGENTS.md": "0d4565e57b9fe9bba88a88f10babd175f3bb5e3fb437014866ed1e67d3016b37",
+    ".continue/rules/CONTINUE.md": "52776e55023a36e1ead71cf39a93337ca96f6097bd2c88018c3353484145ac86",
+    "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261029_V13.md": "ffed9e45564fb40c5e59c7273f5ec911527de58400adbd1c4caf1753d840bd82",
+    "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261029_V36.md": "89c4b12c75dd1f3f9c0aa5a383828b499ed606d17b21817da1a5d4b2083b133c",
+    "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V36.md": "25bd924eab92597550fc1056fef3201f137d4a48b30776140841173db993a05a",
+    "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261029_V36.md": "855f21a7c8a2c52c8b9dba7db6628a86a6c4ed1bab48c184c28ebf1ebac44c31",
+    "docs/current/d/C11D_PHASE_Y_AUTHORITY_SOURCE_CONTENT_REVIEW_RESULT_20261029_V1.json": "c1bdce99d0ce9335c3f22168d818a66599a8c552f25155c6ce5fbcfb609e97ac",
+    "docs/current/d/C11D_PHASE_Z_AUTHORITY_RECORD_RECONCILIATION_RESULT_20261029_V1.json": "3aeb6dd4664cf1d927e07da3eba17da383d64479b2d2ccf1d0cb9dd9420af15a",
+    "docs/current/d/C11D_PHASE_Z_AUTHORITY_RECORD_RECONCILIATION_RESULT_20261029_V1.md": "bdda7160cbd03048a9fd1ec8a19ab42f1f410f76c11cfdcffd151263f5cd0a92",
+    "docs/current/d/C11D_PHASE_Z_EXPLICIT_OPERATOR_DECISION_PACKET_20261029_V1.json": "454e1e8fcc14634a97c124483e1272dcda040715e3febd5fbcec6cd115b68f2c",
+    "docs/current/d/C11D_PHASE_Z_EXPLICIT_OPERATOR_DECISION_PACKET_20261029_V1.md": "e3ea38cdc12a1827da958b1c7c9dd155202452ac5ea211b70029e18120da089b",
+    "docs/current/d/C11D_PHASE_Z_AUTHORITY_RECORD_RECONCILIATION_RESULT_RECEIPT_20261029_V1.md": "2665b16a97cce9ef811177163c36c624f25fe6a80b6ca38d362ab9f100ca3640",
+    "docs/current/d/C11D_PHASE_Z_AUTHORITY_RECORD_RECONCILIATION_ACCEPTANCE_REVIEW_20261029_V1.md": "487df616bc836679c5c6a4d9c891e8ac3c926b08518276559a93d88515d3edc9",
+    "docs/current/d/C11D_PHASE_AA_PRE_RENDER_READINESS_RESULT_20261029_V1.json": "254de0a6540f02014d6530062274d72a8e552a7a06399de7e173b71e9683f40e",
+    "docs/current/d/C11D_PHASE_AA_PRE_RENDER_READINESS_RESULT_20261029_V1.md": "685a4b658b6c0d8ccfabf4db3bf1d53d75840ea09ce61143abe212e863b4b5db",
+    "docs/current/d/C11D_PHASE_AA_PRE_RENDER_READINESS_GATE_MATRIX_20261029_V1.json": "842294b23862b111e0f60f2c3a9294e6a2a88531dfcfac3795a7e83affaa497d",
+    "docs/current/d/C11D_PHASE_AA_PRE_RENDER_READINESS_GATE_MATRIX_20261029_V1.md": "941660d6adf9f85879b1144a324130161002f7109f8381339cc1045a1f0d28ec",
+    "docs/current/d/C11D_PHASE_AA_OPERATOR_DECISION_EVIDENCE_COMPLETION_PACKET_20261029_V1.json": "e5e36f59c914a700ae78831e23b54868c1735fc79d1212113bcd08584a7e3628",
+    "docs/current/d/C11D_PHASE_AA_OPERATOR_DECISION_EVIDENCE_COMPLETION_PACKET_20261029_V1.md": "c6826e9330abfd70deefe300a61c5eaa7a435e52f6622eed640034658051dfab",
+    "docs/current/d/C11D_PHASE_AA_PRE_RENDER_READINESS_RECEIPT_20261029_V1.md": "1e88296d67bbe89ad374d35429b686f1bfba532a8067651e9d6b4e671a74d2a9",
+    "docs/current/d/C11D_PHASE_AA_PRE_RENDER_READINESS_ACCEPTANCE_REVIEW_20261029_V1.md": "7f7ccdd13c55c17ab4aeced8ce22b5021d943c36737f192b9cc24a44d75ae7d5",
+    "tools/c11d/d9/verify_d_renderer_phase_aa_pre_render_readiness_20261029_v1.py": "3f6dfc6be8e00fdcf93f291df8d6b11e25ab14d9a4b2fd6f58a5fe2222d31c35",
+    "tools/c11d/d9/test_d_renderer_phase_aa_pre_render_readiness_20261029_v1.py": "72dd5d0ce712969206d5cc4c7329928ba679a768a212ba558c60b6f53d067d4b"
+  },
+  "decision_count": 9,
+  "decision_ids": [
+    "R-01-TIMEBASE-SAMPLING",
+    "R-02-SPATIAL-MAPPING",
+    "R-03-PILOT-SCALAR-X-AND-PRESENTATION-Y",
+    "R-04-VISIBILITY-AND-REGION-OWNERSHIP",
+    "R-05-ASSET-GEOMETRY-ANCHOR-CROP-ROUNDING",
+    "R-06-INVALID-DATA-AND-TRACK-INTEGRITY",
+    "R-07-SEMANTIC-VISUAL-OWNERSHIP",
+    "R-08-CHALLENGE-008",
+    "R-09-CHALLENGE-009"
+  ],
+  "evidence_records_submitted": 0,
+  "authority_adjudications_completed": 0,
+  "operator_decisions_fabricated": 0,
+  "policy_adoption": "NONE",
+  "authority_adjudication": "PENDING_OPERATOR_EVIDENCE",
+  "required_authority_fields": [
+    "decision_id",
+    "requested_disposition",
+    "exact_policy_text_and_selected_option",
+    "named_approving_authority_and_role",
+    "authority_scope_and_delegation_basis",
+    "decision_date_and_effective_date",
+    "rationale",
+    "source_paths_and_sha256_pins",
+    "acceptance_test_obligations",
+    "verifiable_approval_provenance_or_signature",
+    "immutable_record_location"
+  ],
+  "status_by_decision": {
+    "R-01-TIMEBASE-SAMPLING": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-02-SPATIAL-MAPPING": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-03-PILOT-SCALAR-X-AND-PRESENTATION-Y": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-04-VISIBILITY-AND-REGION-OWNERSHIP": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-05-ASSET-GEOMETRY-ANCHOR-CROP-ROUNDING": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-06-INVALID-DATA-AND-TRACK-INTEGRITY": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-07-SEMANTIC-VISUAL-OWNERSHIP": {
+      "current_disposition": "NOT_ADOPTED_KEEP_BLOCKED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-08-CHALLENGE-008": {
+      "current_disposition": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    },
+    "R-09-CHALLENGE-009": {
+      "current_disposition": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "intake_status": "PENDING_OPERATOR_SUBMISSION",
+      "status": "BLOCKED_REQUIRED_AUTHORITY_EVIDENCE_MISSING"
+    }
+  },
+  "hard_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "renderer_activation_authorized": false,
+  "render_execution_authorized": false,
+  "godot_invoked": false,
+  "runtime_reexecuted": false,
+  "media_created": false,
+  "payload_materialized": false,
+  "next_gate": "PHASE_AB_OPERATOR_DECISION_EVIDENCE_SUBMISSION_AND_AUTHORITY_ADJUDICATION",
+  "note": "This package closes Phase AA using operator-reported result hashes and prepares Phase AB intake. It does not claim Phase AB adjudication has happened."
+}
