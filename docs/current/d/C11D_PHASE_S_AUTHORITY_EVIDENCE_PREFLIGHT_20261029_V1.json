@@ -1,0 +1,466 @@
+{
+  "schema": "C11D-PHASE-S-AUTHORITY-EVIDENCE-PREFLIGHT-V1",
+  "schema_version": "1.0.0",
+  "artifact_id": "C11D_PHASE_S_AUTHORITY_EVIDENCE_PREFLIGHT_20261029_V1",
+  "date": "2026-10-29",
+  "status": "AUTHORITY_EVIDENCE_NOT_PRESENT_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+  "mode": "READ_ONLY_AUTHORITY_EVIDENCE_PREFLIGHT",
+  "purpose": "Inspect the pinned Phase P/Q/R acceptance and decision records for explicit policy authority evidence before any policy adjudication. This is a bounded audit of the enumerated record set, not a claim that no authority document exists elsewhere.",
+  "audit_scope": {
+    "pinned_record_set": [
+      "docs/current/d/C11D_PHASE_P_SOURCE_FRAME_PROVENANCE_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "docs/current/d/C11D_PHASE_P_RUNTIME_EVIDENCE_VERIFICATION_20261029_9bb3b12b1f9b4658b5892679672bbf1a.md",
+      "docs/current/d/C11D_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_REVIEW_20261029_V1.md",
+      "docs/current/d/C11D_PHASE_Q_VERIFIER_RECOVERY_AND_REVIEW_CLOSEOUT_20261029_2175920e62954eb0b0fba64555870767.md",
+      "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.md",
+      "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md"
+    ],
+    "result": "NO_ACCEPTED_POLICY_AUTHORITY_RECORD_FOUND_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+    "global_absence_claim": false,
+    "authority_decisions_found": 0,
+    "decisions_scoped": 9
+  },
+  "phase_dependencies": {
+    "phase_p_status": "ACCEPTED_SOURCE_FRAME_PROVENANCE_ONLY_NOT_VISUAL_CONSUMPTION",
+    "phase_q_status": "PASS_READ_ONLY_INVENTORY",
+    "phase_r_status": "PASS_DECISION_PREPARATION_ONLY_NO_POLICY_ADOPTION",
+    "phase_r_acceptance_review": {
+      "path": "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "sha256": "b6df812cb3242a175e750aa73af35c43a56d298960e0387bb734da746f5a7a91"
+    }
+  },
+  "authority_record_contract": {
+    "required_fields": [
+      "authority_record_id",
+      "decision_id",
+      "exact_option_id_or_exact_policy_text",
+      "authority_name_or_role",
+      "authority_scope",
+      "effective_date",
+      "rationale",
+      "source_pins",
+      "acceptance_test_obligations",
+      "approval_provenance",
+      "immutable_record_location"
+    ],
+    "validation_rules": [
+      "The decision ID and exact policy option/text must be explicit and uniquely identifiable.",
+      "Authority identity/role and scope must match the policy type being decided.",
+      "The record must carry verifiable approval provenance and an immutable/add-only repository location.",
+      "Source pins and rationale must identify the contract facts being adopted.",
+      "Acceptance tests must be specified before implementing the policy.",
+      "A generic approval to continue engineering is not an approval of product policy.",
+      "One authority record may decide only its declared decision IDs and scope; no spillover to bindings or rendering."
+    ],
+    "insufficient_evidence_examples": [
+      "assistant-generated decision packet or a test PASS",
+      "a general standing approval to continue engineering gates",
+      "a phase name, visual plausibility, inference from snapshot.position, or convenience",
+      "a record without exact selector/option scope or verifiable authority provenance"
+    ],
+    "default_if_missing_or_ambiguous": "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+  },
+  "decisions": [
+    {
+      "decision_id": "R-01-TIMEBASE-SAMPLING",
+      "title": "Source 60 FPS to delivery 30 FPS sampling",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Product/contract owner for the delivery timeline; operator records the authoritative decision.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "SAMPLE_EVEN_SOURCE_INDICES",
+        "SAMPLE_EXPLICIT_TIME_BOUNDARIES",
+        "KEEP_BLOCKED"
+      ],
+      "future_acceptance_tests": [
+        "Exact source index list and cardinality",
+        "Boundary inclusion/exclusion and ties",
+        "Duration preservation",
+        "Unsupported FPS/timebase fails closed",
+        "Independent-process repeat determinism",
+        "No synthetic samples"
+      ]
+    },
+    {
+      "decision_id": "R-02-SPATIAL-MAPPING",
+      "title": "Coordinate transforms for Vector2 candidates",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Product/visual-design authority for reference canvas and spatial contract.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "APPROVE_PROPOSED_TWO_STAGE_AFTER_AUTHORITY_REVIEW",
+        "REJECT_AND_REQUIRE_NEW_MAPPING_SPEC",
+        "KEEP_BLOCKED"
+      ],
+      "future_acceptance_tests": [
+        "Origin and known-point transforms",
+        "Axis and aspect-ratio preservation",
+        "Bounds and out-of-domain rejection",
+        "Float precision",
+        "Final delivery coordinate interpretation"
+      ]
+    },
+    {
+      "decision_id": "R-03-PILOT-SCALAR-X-AND-PRESENTATION-Y",
+      "title": "CHALLENGE_003 scalar X and separate presentation-only Y",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Product/visual-design authority for target placement.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "APPROVE_X_AND_PRESENTATION_Y_SEPARATELY",
+        "APPROVE_X_ONLY_NO_Y_DEFAULT",
+        "REJECT_MAPPING_OR_KEEP_BLOCKED"
+      ],
+      "future_acceptance_tests": [
+        "Scalar remains scalar through pipeline",
+        "Known X endpoints and representative values",
+        "Y policy independently traced as presentation-only",
+        "Missing/nonfinite/out-of-range scalar fails closed",
+        "No inferred Y in source provenance"
+      ]
+    },
+    {
+      "decision_id": "R-04-VISIBILITY-AND-REGION-OWNERSHIP",
+      "title": "Visible region and temporal visibility span",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Product/visual-design authority for visible behavior and region ownership.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "FULL_SOURCE_FRAME_SPAN",
+        "EXPLICIT_AUTHORED_WINDOW",
+        "KEEP_BLOCKED"
+      ],
+      "future_acceptance_tests": [
+        "Exact visible span/cardinality",
+        "Hide/show boundary values",
+        "Missing samples fail closed",
+        "No visibility based on close_calls",
+        "Per-selector region ownership"
+      ]
+    },
+    {
+      "decision_id": "R-05-ASSET-GEOMETRY-ANCHOR-CROP-ROUNDING",
+      "title": "SVG intrinsic dimensions, anchor, clipping and pixel rounding",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Product/visual-design authority for asset sizing and crop; renderer-contract owner for rounding semantics.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "APPROVE_PROPOSED_GEOMETRY_WITH_EXACT_ROUNDING",
+        "REQUIRE_EXPLICIT_ASSET_METADATA",
+        "KEEP_BLOCKED"
+      ],
+      "future_acceptance_tests": [
+        "Intrinsic size missing/invalid",
+        "Anchor geometry",
+        "Negative/off-edge geometry and clipping",
+        "Exact tie rounding samples",
+        "Repeat pixel-coordinate determinism"
+      ]
+    },
+    {
+      "decision_id": "R-06-INVALID-DATA-AND-TRACK-INTEGRITY",
+      "title": "Missing, malformed, nonfinite, out-of-range and cardinality mismatch handling",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Data-contract owner, with operator recording the precise invalid-data rule.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "FAIL_CLOSED_WHOLE_TRACK_NO_CLAMP",
+        "FAIL_CLOSED_SAMPLE_WITH_EXPLICIT_GAP_POLICY",
+        "KEEP_BLOCKED"
+      ],
+      "future_acceptance_tests": [
+        "Missing key",
+        "Wrong type",
+        "NaN and Infinity",
+        "Out-of-domain scalar/vector",
+        "Cardinality mismatch",
+        "Fail closed exactly as selected",
+        "Independent-process deterministic receipt",
+        "No raw values serialized"
+      ]
+    },
+    {
+      "decision_id": "R-07-SEMANTIC-VISUAL-OWNERSHIP",
+      "title": "Whether each accepted semantic candidate has a distinct visual consumer",
+      "phase_r_status": "UNDECIDED_NO_POLICY_AUTHORIZED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Product authority for visible semantics and actor/region ownership.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "DEFINE_DISTINCT_VISUAL_CONSUMER_PER_SELECTOR",
+        "DECLARE_NO_SECONDARY_VISUAL_CONSUMER",
+        "KEEP_UNDECIDED"
+      ],
+      "future_acceptance_tests": [
+        "Per-selector semantic ownership matrix",
+        "No invented fallback to snapshot.position",
+        "No telemetry substitute",
+        "No unapproved serialization",
+        "Only explicitly allowlisted fields appear in later contracts"
+      ]
+    },
+    {
+      "decision_id": "R-08-CHALLENGE-008-DURATION-CONFLICT",
+      "title": "CHALLENGE_008 declared duration versus phase sum",
+      "phase_r_status": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Explicit owner of challenge timing/product contract; operator records immutable decision evidence.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "AUTHORIZE_SOURCE_CONTRACT_CORRECTION",
+        "AUTHORIZE_EXPLICIT_CONTRACT_EXCEPTION",
+        "RETAIN_BLOCK"
+      ],
+      "future_acceptance_tests": [
+        "Authoritative duration source is named",
+        "Declared duration and phase boundaries reconciled or exception proved",
+        "Exact sample count and endpoint",
+        "No inference from phase names",
+        "All affected source pins and regressions refreshed"
+      ],
+      "conflict": {
+        "declared_total_duration_seconds": 11,
+        "phase_duration_sum_seconds": 12,
+        "status": "BLOCKER_NO_CORRECTION_INFERRED"
+      }
+    },
+    {
+      "decision_id": "R-09-CHALLENGE-009-DURATION-AND-COUNT-ROLE",
+      "title": "CHALLENGE_009 declared duration versus phase sum and displayed-count ownership",
+      "phase_r_status": "BLOCKED_EXPLICIT_AUTHORITY_REQUIRED",
+      "authority_evidence_status": "NOT_EVIDENCED_IN_PINNED_PHASE_P_Q_R_RECORD_SET",
+      "authority_record_path": null,
+      "authority_required": "Explicit owner of challenge timing/product contract and count presentation; operator records immutable decision evidence.",
+      "required_record_fields": [
+        "authority_record_id",
+        "decision_id",
+        "exact_option_id_or_exact_policy_text",
+        "authority_name_or_role",
+        "authority_scope",
+        "effective_date",
+        "rationale",
+        "source_pins",
+        "acceptance_test_obligations",
+        "approval_provenance",
+        "immutable_record_location"
+      ],
+      "policy_adoption": "NOT_ADOPTED",
+      "current_action": "KEEP_BLOCKED_NO_POLICY_ADOPTION",
+      "option_ids_not_selected": [
+        "AUTHORIZE_SOURCE_CONTRACT_CORRECTION_AND_DEFINE_COUNT_ROLE",
+        "AUTHORIZE_EXPLICIT_CONTRACT_EXCEPTION_AND_DEFINE_COUNT_ROLE",
+        "RETAIN_BLOCK"
+      ],
+      "future_acceptance_tests": [
+        "11 versus 12 seconds reconciled or an explicit exception is proved",
+        "displayed_count remains distinct from target_count",
+        "Presentation owner/asset/region defined or explicitly none",
+        "No unauthorized text/layout emission",
+        "Affected source pins and regressions refreshed"
+      ],
+      "conflict": {
+        "declared_total_duration_seconds": 11,
+        "phase_duration_sum_seconds": 12,
+        "status": "BLOCKER_NO_CORRECTION_INFERRED"
+      }
+    }
+  ],
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "winning_frame": "ONLY_TEMPORAL_ANCHOR",
+    "close_calls": "EPISODE_COUNT_ONLY",
+    "whole_custom_data_serialization_allowed": false,
+    "production_source_modification": false,
+    "challenge_definition_modification": false,
+    "runtime_reexecution": false,
+    "godot_invoked": false,
+    "renderer_dispatch_invoked": false
+  },
+  "timing_conflicts": [
+    {
+      "decision_id": "R-08-CHALLENGE-008-DURATION-CONFLICT",
+      "selector": "CHALLENGE_008.active_selection",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "decision_id": "R-09-CHALLENGE-009-DURATION-AND-COUNT-ROLE",
+      "selector": "CHALLENGE_009.displayed_count",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "source_pins": {
+    "release/C11C_FREEZE_PACKAGE_MANIFEST.json": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "AGENTS.md": "710b3e112e0400e4daac3b8828c89573549f6f59393f6ae5e081e3d482b5ffea",
+    ".continue/rules/CONTINUE.md": "a5f2dcd3261b64933d85bda79c027d0bb840afda9444e4af6a6f431f01c1d7b4",
+    "docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261029_V4.md": "315c526043f2dd8a24c7552a7f07472e49af7685f106210123b5625714c11245",
+    "docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261029_V27.md": "c6186f5adca109b53d2976e6c38d29d8c2b04de2ef7930c5adb8f7baf59dff1a",
+    "prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V27.md": "f5c5f2efff1f8f7a55f7a83eaead8d14495c78130baf1f4ffa72873798c094b3",
+    "prompts/C11D_D_FINAL_CLOSEOUT_START_PROMPT_20261029_V27.md": "5d2e785f480b2f8abcab3015392f4461ef39c4aa4527e56b970ba683a29f401c",
+    "docs/current/d/C11D_PHASE_P_SOURCE_FRAME_PROVENANCE_ACCEPTANCE_REVIEW_20261029_V1.md": "d75b13453fac89b01eb806aaff162771d33d7ff15d88d6f81c2825cf8bcc9132",
+    "docs/current/d/C11D_PHASE_P_RUNTIME_EVIDENCE_VERIFICATION_20261029_9bb3b12b1f9b4658b5892679672bbf1a.md": "8eddd995c4351154275b3a6d60d328a6833c57fd6699dfb4dd698fe30b226d04",
+    "docs/current/d/C11D_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_REVIEW_20261029_V1.md": "4cffdb3ef7edb3f4d201391b8156e4691ad0b98fdad2859703bcc20f589dd62f",
+    "docs/current/d/C11D_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_MATRIX_20261029_V1.json": "de2d5e548e00442ee8f15ca7514744b402c6400b4a8497b2b6f6671d29b00390",
+    "definitions/c11d/review/D_RENDERER_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_MATRIX_SCHEMA_V1.json": "cca024de2dd6a01805f431d3b140c77dce12bf781d12aee11df35fd426af910b",
+    "tools/c11d/d9/test_d_renderer_phase_q_semantic_policy_dependency_review_20261029.py": "6cfa58e7f442d866d172a4ec5ee6d2e091ca0e6ff2c788cb776bf05e5e0aff1a",
+    "docs/current/d/C11D_PHASE_Q_VERIFIER_RECOVERY_AND_REVIEW_CLOSEOUT_20261029_2175920e62954eb0b0fba64555870767.md": "5a8e62f9d38bbf31cfb64066fec57f17d2f931da2349f0078b7ea62ed77851d1",
+    "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.md": "7aa7bf2ccc67d606f2a9c1b3808a42b2dd07cedd8c792d8c118c185f85c708a2",
+    "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_20261029_V1.json": "6b6cd0881e207b0b3ce55de7db87b7aa325f2ea65ecaa94d7efc1afd2a9b386a",
+    "definitions/c11d/review/D_RENDERER_PHASE_R_OPERATOR_POLICY_DECISION_PACKET_SCHEMA_V1.json": "49d51d5b562c3834556ee9c78a40c3a5443a7e02c9be0d216fe1d917e002f539",
+    "tools/c11d/d9/test_d_renderer_phase_r_operator_policy_decision_packet_20261029.py": "0e1b9a570de5068b1b506f8bca196f914b297b74ee8311773be86df218902817",
+    "docs/current/d/C11D_PHASE_R_OPERATOR_POLICY_DECISION_PREPARATION_ACCEPTANCE_REVIEW_20261029_V1.md": "b6df812cb3242a175e750aa73af35c43a56d298960e0387bb734da746f5a7a91"
+  },
+  "next_gate": {
+    "status": "WAIT_FOR_EXPLICIT_AUTHORITY_EVIDENCE",
+    "start_condition": "At least one immutable, verifiable authority decision record is added for an explicitly scoped decision ID, with all required fields; adjudicate only that scope. If no authority record is available, keep all nine decisions blocked.",
+    "policy_adoption_allowed_by_this_packet": false,
+    "binding_or_renderer_authority_created": false
+  }
+}
