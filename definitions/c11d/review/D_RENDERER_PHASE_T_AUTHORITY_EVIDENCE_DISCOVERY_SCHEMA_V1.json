@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "D_RENDERER_PHASE_T_AUTHORITY_EVIDENCE_DISCOVERY_SCHEMA_V1",
+  "title": "C11-D Phase T Authority Evidence Discovery Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "created_utc",
+    "scan_root",
+    "scope",
+    "counts",
+    "scan_index_sha256",
+    "source_pins_verified",
+    "candidates",
+    "unsearched_documents",
+    "skipped_large_files",
+    "scan_errors",
+    "governance",
+    "timing_conflicts",
+    "no_global_absence_claim"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "phase": {
+      "const": "T"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE_INVENTORY_READY_FOR_HUMAN_REVIEW",
+        "INCOMPLETE_SCAN_REQUIRES_REMEDIATION"
+      ]
+    },
+    "created_utc": {
+      "type": "string",
+      "pattern": "Z$"
+    },
+    "scan_root": {
+      "type": "string",
+      "minLength": 3
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "working_tree_only",
+        "git_history_searched",
+        "external_files_searched",
+        "text_extensions",
+        "excluded_directory_names",
+        "self_excluded_prefixes",
+        "maximum_text_file_bytes",
+        "binary_contents_searched",
+        "archive_contents_searched"
+      ],
+      "properties": {
+        "working_tree_only": {
+          "const": true
+        },
+        "git_history_searched": {
+          "const": false
+        },
+        "external_files_searched": {
+          "const": false
+        },
+        "text_extensions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_directory_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "self_excluded_prefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "maximum_text_file_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "binary_contents_searched": {
+          "const": false
+        },
+        "archive_contents_searched": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "directories_seen",
+        "files_seen",
+        "text_files_scanned",
+        "files_skipped_large",
+        "candidate_files",
+        "candidate_match_lines",
+        "unsearched_documents",
+        "scan_errors",
+        "self_excluded_files"
+      ],
+      "properties": {
+        "directories_seen": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "files_seen": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text_files_scanned": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "files_skipped_large": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate_match_lines": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_documents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scan_errors": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "self_excluded_files": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "scan_index_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_pins_verified": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "status"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "status": {
+            "const": "PASS"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "classification",
+          "matches"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "classification": {
+            "const": "UNREVIEWED_CANDIDATE_NOT_AUTHORITY"
+          },
+          "filename_match": {
+            "type": "boolean"
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "line",
+                "rule",
+                "snippet"
+              ],
+              "properties": {
+                "line": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rule": {
+                  "type": "string"
+                },
+                "snippet": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "unsearched_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "extension",
+          "bytes",
+          "reason"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "extension": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "skipped_large_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes",
+          "reason"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "scan_errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "error"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "release_authority"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "additionalProperties": true
+    },
+    "timing_conflicts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "challenge",
+          "declared_total_duration_seconds",
+          "phase_duration_sum_seconds",
+          "status"
+        ],
+        "properties": {
+          "challenge": {
+            "enum": [
+              "CHALLENGE_008",
+              "CHALLENGE_009"
+            ]
+          },
+          "declared_total_duration_seconds": {
+            "const": 11
+          },
+          "phase_duration_sum_seconds": {
+            "const": 12
+          },
+          "status": {
+            "const": "BLOCKER_NO_CORRECTION_INFERRED"
+          }
+        }
+      }
+    },
+    "no_global_absence_claim": {
+      "const": true
+    },
+    "candidate_review_disclaimer": {
+      "type": "string"
+    },
+    "coverage_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "aggregate_hash_algorithm": {
+      "const": "SHA256(path|bytes|sha256 rows sorted by relative path, UTF-8 LF terminated)"
+    }
+  },
+  "additionalProperties": true
+}

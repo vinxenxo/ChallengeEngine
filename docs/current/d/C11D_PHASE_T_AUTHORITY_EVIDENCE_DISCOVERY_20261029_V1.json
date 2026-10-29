@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0.0",
+  "phase": "T",
+  "status": "PREPARED_READ_ONLY_AUTHORITY_EVIDENCE_DISCOVERY_NOT_ADJUDICATION",
+  "purpose": "Inventory possible explicit authority evidence across eligible checkout working-tree files beyond the pinned Phase P/Q/R/S records.",
+  "source_of_truth_order": [
+    "active checkout",
+    "C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261029_V28.md",
+    "C11D_ENGINEERING_PHASE_LEDGER_20261029_V5.md",
+    "Phase S closeout receipt and verifier output",
+    "Phase P/Q/R/S pinned records",
+    "AGENTS.md",
+    ".continue/rules/CONTINUE.md"
+  ],
+  "search_mode": {
+    "working_tree_only": true,
+    "git_history_searched": false,
+    "external_files_searched": false,
+    "text_content_search": true,
+    "binary_document_content_search": false,
+    "archive_contents_searched": false,
+    "maximum_text_file_bytes": 4194304,
+    "candidate_match_is_authority": false
+  },
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "timing_conflicts": [
+    {
+      "challenge": "CHALLENGE_008",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "challenge": "CHALLENGE_009",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "required_human_review": [
+    "issuer and role authority",
+    "exact scope and policy decision IDs",
+    "unambiguous adopted option/value",
+    "effective version/date",
+    "signature or immutable decision-record identity",
+    "source hashes and conditions",
+    "any required validation gates"
+  ],
+  "no_global_absence_claim": true,
+  "next_action": "REVIEW_PHASE_T_INVENTORY_AND_ANY_UNSEARCHED_BINARY_DOCUMENTS; DO_NOT_ADOPT_POLICY"
+}
