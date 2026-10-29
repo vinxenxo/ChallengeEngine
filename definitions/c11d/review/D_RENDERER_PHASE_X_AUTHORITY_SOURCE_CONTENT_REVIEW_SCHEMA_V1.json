@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Phase X Authority Source Content Review Report V1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "created_utc",
+    "source_pins",
+    "counts",
+    "candidates",
+    "unsearched_documents",
+    "bundle",
+    "governance",
+    "timing_conflicts",
+    "authority_adjudication",
+    "policy_adoption",
+    "no_global_absence_claim"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "phase": {
+      "const": "X"
+    },
+    "status": {
+      "enum": [
+        "SOURCE_CONTENT_BUNDLE_READY_FOR_HUMAN_REVIEW",
+        "SOURCE_CONTENT_BUNDLE_INCOMPLETE_RECONCILIATION_REQUIRED"
+      ]
+    },
+    "created_utc": {
+      "type": "string"
+    },
+    "source_pins": {
+      "type": "object"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "candidates",
+        "high_priority_candidates",
+        "unsearched_documents",
+        "bundled_sources",
+        "source_hash_matches",
+        "source_hash_mismatches",
+        "source_files_missing",
+        "excluded_or_not_bundled"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_priority_candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_documents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bundled_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hash_matches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hash_mismatches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_files_missing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded_or_not_bundled": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "priority",
+          "expected_sha256",
+          "current_sha256",
+          "expected_bytes",
+          "current_bytes",
+          "integrity",
+          "review_status",
+          "authority_finding",
+          "bundle_member"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "expected_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "current_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "current_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "integrity": {
+            "type": "string"
+          },
+          "review_status": {
+            "const": "NOT_REVIEWED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          },
+          "bundle_member": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "unsearched_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "reason",
+          "current_sha256",
+          "current_bytes",
+          "integrity",
+          "content_bytes_captured",
+          "human_content_reviewed",
+          "bundle_member",
+          "review_status",
+          "authority_finding"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "current_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "current_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "integrity": {
+            "type": "string"
+          },
+          "content_bytes_captured": {
+            "type": "boolean"
+          },
+          "human_content_reviewed": {
+            "const": false
+          },
+          "bundle_member": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "review_status": {
+            "const": "NOT_REVIEWED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          }
+        }
+      }
+    },
+    "bundle": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "manifest_sha256",
+        "complete"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        },
+        "manifest_sha256": {
+          "type": "string"
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "governance": {
+      "type": "object"
+    },
+    "timing_conflicts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "authority_adjudication": {
+      "const": "NOT_PERFORMED"
+    },
+    "policy_adoption": {
+      "const": "NONE"
+    },
+    "no_global_absence_claim": {
+      "const": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,11 @@
+# C11-D Final Closeout Handover — Master Prompt V32
+
+Resume from the active checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. Read `AGENTS.md`, `.continue/rules/CONTINUE.md`, checkpoint V32, ledger V9, Phase W closeout/receipt/result and Phase U/V inputs. Verify current pins before relying on evidence.
+
+Phases P through V are complete at their recorded scopes. Phase W queue preparation is accepted and recorded: 107 candidates (50 high, 55 medium, 2 low), 107/107 current source hashes/sizes match, zero missing/mismatch, 7 unsearched docs, 40/40 static tests, queue verifier pass. Phase W JSON SHA `ee46f59a85b6b006115b239d5b628ad07f64c9f15b858e739b81c2d2285a239f`; Markdown SHA `b3259f7389d1c3196a11a3bbf17976d058dfccf92534d9a8b0b360778fef020b`; receipt SHA `98aeaa27d4f403b27b7c664dbbe422beea4d11462d773244413a018725c57871`. Do not repeat P–W tests without evidence invalidation.
+
+Next gate is Phase X source-content evidence bundle. From the pinned queue, reverify current bytes/hashes and package the original files for the 50 high priority candidates plus the seven previously unsearched documents. Record exclusions, oversize/unsupported cases and source drift explicitly. Do not modify source files. Produce a manifest and content archive for full human review. Every authority finding remains `UNDETERMINED` until the complete source and issuer/scope/decision are reviewed. The candidate bundle is not authority.
+
+Goal remains first real render against C11-D. Do not shortcut formal gates. Until the authority record and required policies/bindings/input/seed/renderer gates are approved: renderer OFF; media/payload absent; candidate input inadmissible; seed domains incomplete; master seed NOT_ADOPTED; approved binding counters zero; D10 blocked; release authority NONE. Preserve `winning_frame` temporal anchor, `close_calls` episode count and never serialize all `FrameSnapshot.custom_data`. Preserve CHALLENGE_008/009 declared 11s vs phase-sum 12s as unresolved blocker. C11-C 2.19.12 remains authoritative and immutable.
+
+For each accepted gate, add a separate receipt and update ledger, checkpoint, BOTH master handover and start prompts in new versions. PowerShell 5.1 scripts must be syntax-parsed first; use `Start-Process` for native Python logging; avoid console-color PASS claims without exit/hash/receipt checks.

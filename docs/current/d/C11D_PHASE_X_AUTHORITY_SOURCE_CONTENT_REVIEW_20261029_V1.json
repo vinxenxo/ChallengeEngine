@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "X",
+  "artifact_id": "C11D_PHASE_X_AUTHORITY_SOURCE_CONTENT_REVIEW_20261029_V1",
+  "status": "CONTRACT_INSTALLED_NOT_GENERATED",
+  "next_action": "GENERATE_PINNED_SOURCE_CONTENT_BUNDLE",
+  "expected_counts": {
+    "candidates": 107,
+    "high_priority_candidates": 50,
+    "unsearched_documents": 7
+  },
+  "pinned_inputs": {
+    "phase_u_triage_sha256": "4db4ab20040b68872c4501dc39dda61b7ca2d8716303a536dbdd4121929ec418",
+    "phase_v_review_sha256": "1c36ee0afc5bcb4a9ea5b9060487d172c9f251fe366205a8cdaaea2bfc31de67",
+    "phase_w_queue_sha256": "ee46f59a85b6b006115b239d5b628ad07f64c9f15b858e739b81c2d2285a239f",
+    "phase_w_markdown_sha256": "b3259f7389d1c3196a11a3bbf17976d058dfccf92534d9a8b0b360778fef020b",
+    "phase_w_receipt_sha256": "98aeaa27d4f403b27b7c664dbbe422beea4d11462d773244413a018725c57871"
+  },
+  "scope": {
+    "current_worktree_only": true,
+    "bundle_original_source_bytes": true,
+    "candidate_source_files_modified": false,
+    "automated_authority_adjudication": false,
+    "unsearched_document_content_read_in_phase_w": false,
+    "phase_x_may_bundle_unsearched_originals": true,
+    "no_global_absence_claim": true
+  },
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "release_authority": "NONE"
+  },
+  "timing_conflicts": [
+    {
+      "challenge": "CHALLENGE_008",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "challenge": "CHALLENGE_009",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "candidates": [],
+  "unsearched_documents": [],
+  "authority_adjudication": "NOT_PERFORMED",
+  "policy_adoption": "NONE"
+}
