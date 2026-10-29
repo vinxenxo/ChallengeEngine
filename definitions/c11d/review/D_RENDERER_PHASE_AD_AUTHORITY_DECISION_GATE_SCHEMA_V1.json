@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D_PHASE_AD_OPERATOR_AUTHORITY_DECISION_GATE_SCHEMA_V1",
+  "title": "C11-D Phase AD Operator Authority Decision Gate",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "packet_id",
+    "status",
+    "phase",
+    "operator_action_options",
+    "decisions",
+    "operator_decision",
+    "authority_adjudication",
+    "policy_adoption",
+    "governance",
+    "next_action",
+    "first_render_readiness"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "packet_id": {
+      "const": "C11D-PHASE-AD-OPERATOR-AUTHORITY-DECISION-GATE-20261029-V1"
+    },
+    "status": {
+      "const": "PENDING_OPERATOR_CHOICE_NO_APPLICABLE_AUTHORITY_SUBMITTED"
+    },
+    "phase": {
+      "const": "AD"
+    },
+    "operator_action_options": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SUBMIT_REAL_IMMUTABLE_AUTHORITY_EVIDENCE",
+          "KEEP_BLOCKED_NO_POLICY_ADOPTION"
+        ]
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "required": [
+          "decision_id",
+          "operator_decision_gate_status",
+          "operator_action",
+          "selected_option",
+          "authority_evidence_record_sha256",
+          "authority_evidence_immutable_uri_or_path",
+          "required_fields_checklist"
+        ],
+        "properties": {
+          "decision_id": {
+            "type": "string"
+          },
+          "operator_decision_gate_status": {
+            "const": "PENDING_OPERATOR_ACTION"
+          },
+          "operator_action": {
+            "const": "PENDING"
+          },
+          "selected_option": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authority_evidence_record_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authority_evidence_immutable_uri_or_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "required_fields_checklist": {
+            "type": "array",
+            "minItems": 10
+          }
+        }
+      }
+    },
+    "operator_decision": {
+      "type": "object"
+    },
+    "authority_adjudication": {
+      "const": "PENDING_OPERATOR_ACTION"
+    },
+    "policy_adoption": {
+      "const": "NONE"
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority"
+      ]
+    },
+    "next_action": {
+      "const": "OPERATOR_SUBMIT_REAL_IMMUTABLE_AUTHORITY_EVIDENCE_OR_EXPLICITLY_RECORD_KEEP_BLOCKED_NO_POLICY_ADOPTION"
+    },
+    "first_render_readiness": {
+      "const": "BLOCKED"
+    }
+  },
+  "additionalProperties": true
+}

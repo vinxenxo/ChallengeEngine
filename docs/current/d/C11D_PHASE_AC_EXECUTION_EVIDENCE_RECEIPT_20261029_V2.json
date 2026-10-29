@@ -1,0 +1,51 @@
+{
+  "schema": "C11D-PHASE-AC-EXECUTION-EVIDENCE-RECEIPT-V2",
+  "phase": "AC",
+  "date": "2026-10-29",
+  "status": "PASS_CONTENT_AND_SOURCE_PINS",
+  "evidence_source": "Operator-provided Windows PowerShell console output from checkout C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS; the SHA-256 values below are recorded exactly as reported.",
+  "inputs": {
+    "source_bundle_filename": "C11D_PHASE_AC_REMAINING_AUTHORITY_CONTENT_BUNDLE_20261029_cb20eede667645908f4592822d20b49d.zip",
+    "source_bundle_sha256": "5ee6ec0f5a6b3a0884c22bbecfc98691269bd431adc896c088e7eb7f9d0b7f08",
+    "source_bundle_bytes": 180653,
+    "source_manifest_sha256": "bc8405ccba850a540ab00d50691462ef496f1ccda9586dda7f775ff09e5c7ac1",
+    "phase_ac_result_json_sha256": "f733e9cf3f92e98e71743c01a8d601a6f71ebc4a0271dfb583ac6ad9a31f318e",
+    "phase_ac_result_markdown_sha256": "b7d6a3c08fab5d3fb90ed17d62f62cfeefe80bc33720117e71bf5bf8f38e3c69",
+    "source_disposition_matrix_json_sha256": "48d759c4c9ca23a264032e04734c884d53c45ffe226282eae58f7dc4306ffbea",
+    "source_disposition_matrix_markdown_sha256": "a9523e0d0db3d500a63709b77aaf2b194eb832f91acae5a0449208d5ea366df2"
+  },
+  "verification": {
+    "package_sha256": "0eb6a95e7b5220f429ca09f941d827a41668f7db02b714481391372748d780ae",
+    "package_crc": "PASS",
+    "source_bundle_sha256": "5ee6ec0f5a6b3a0884c22bbecfc98691269bd431adc896c088e7eb7f9d0b7f08",
+    "source_bundle_crc": "PASS",
+    "source_hash_matches": 57,
+    "source_hash_mismatches": 0,
+    "source_files_missing": 0,
+    "reviewed_medium_priority": 55,
+    "reviewed_low_priority": 2,
+    "review_tests": "45/45 PASS",
+    "content_verifier": "PASS_ALL_57_SOURCE_BYTES_AND_DISPOSITIONS",
+    "authority_records_applicable_to_first_d_baseline_render": 0,
+    "no_global_absence_claim": true
+  },
+  "execution_log_sha256": {
+    "phase_ab_tests_stdout": "c932a88d3714c69a04e11e3e8ce61b6d25545b0898a990d89f21a3a9103ce6c2",
+    "phase_ab_tests_stderr": "7cf03a4703d71d536bf2511cca70265e8ec91ccee4f09c0c10facca7718a1462",
+    "phase_ab_verifier_stdout": "aba1190312f26de2a067fb2f77912b14f56d1424c2e49dc887adfae1dbcdb541",
+    "phase_ab_verifier_stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "phase_ac_content_tests_stdout": "5d9a015a9e128a79658b1770004dff295b62ac7db678c683533348be5e739176",
+    "phase_ac_content_tests_stderr": "3600c0c96dd93a4d380394a9b6a3ec8e9ab0737cbd11e17a2d593dfaccde466e",
+    "phase_ac_source_verifier_stdout": "0167d559ed5dd269feaea3b0d1c2c626d1b80f41a9116b5c05755e17a220f1a8",
+    "phase_ac_source_verifier_stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "authority_conclusion": "NONE_FOUND_IN_REMAINING_CANDIDATES",
+  "policy_adoption": "NONE",
+  "operator_decisions_adjudicated": 0,
+  "runtime_reexecuted": false,
+  "godot_invoked": false,
+  "renderer": "OFF",
+  "approved_bindings": 0,
+  "release_authority": "NONE",
+  "next_gate": "PHASE_AD_OPERATOR_AUTHORITY_EVIDENCE_OR_EXPLICIT_KEEP_BLOCKED_DECISION"
+}
