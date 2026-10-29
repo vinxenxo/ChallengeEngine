@@ -1,25 +1,25 @@
-# CONTINUE.md — C11-D current continuation V25 (2026-10-28)
+# CONTINUE.md — C11-D current continuation V26 (2026-10-29)
 
 ## Current state
 
-Read `prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261028_V25.md` and `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261028_V25.md` first. The historical ledger is `docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261027_V1.md`; the new continuation ledger is `docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261028_V2.md`.
+Read `prompts/C11D_D_FINAL_CLOSEOUT_HANDOVER_MASTER_PROMPT_20261029_V26.md`, `docs/current/d/C11D_FULL_CONTEXT_CONTINUITY_CHECKPOINT_20261029_V26.md`, `docs/current/d/C11D_ENGINEERING_PHASE_LEDGER_20261029_V3.md`, and `docs/current/d/C11D_PHASE_P_SOURCE_FRAME_PROVENANCE_ACCEPTANCE_REVIEW_20261029_V1.md`.
 
-Phase O has been accepted as a read-only crosswalk with no binding approval. Phase P version normalization was applied and passed 5/5 normalization cases; static tests passed 30/30 under operator execution (Python 3.13.14). Phase P runtime remains unaccepted.
+Phase P has been accepted for the limited source/frame provenance objective: report SHA-256 `9686240a0e2caa46f05cea4ca2c8fcaaa1499d006ac6ac75d128137693fc2ef7`; runtime exit code 0; Godot 4.7.1; source pins 95/95; selectors 6/6; canonical planner calls 6/6; runtime processes 12/12; repeat hashes PASS. Static suite 30/30; Python preflight and isolation regressions 6/6 each; live pin reconciliation 7/7. No bindings have been approved.
 
 ## Immediate next action
 
-After checking the live C11-C manifest, confirm Phase P runner SHA `77644d982ed0f552d58561ba05eb4969a76c90703bbb8745dbf73d1bafa3e327`, run `py.exe -3.13 --version`, then execute `tools/c11d/d9/run_d_renderer_phase_p_source_value_frame_value_provenance_20261028.ps1` once. Follow `docs/current/d/C11D_POWERSHELL_51_TEST_EXECUTION_PLAYBOOK_20261028_V1.md`. If the runtime fails, preserve the exact outputs and diagnose first; do not blindly repeat or make speculative patches. On PASS, validate receipts/pins and write a distinct review/acceptance artifact. Do not approve bindings in this gate.
+Phase Q: create a review-only candidate decision matrix from Phase P runtime evidence and the Phase O crosswalk. For each of the six candidates separate source/frame provenance from semantic/product decision, timebase, sampling, visibility, projection/rounding, authority and future negative/determinism tests. Do not implement bindings or production renderer callsites. CHALLENGE_008/009 stay blocked by 11s declared duration versus 12s phase sum until explicit authority resolves the conflict.
 
-## Snapshot in the next window
+Do not rerun Phase P runtime merely to fix the old wrapper false negative or because this guidance file has changed after the report. Preserve the false-blocked wrapper record and the later evidence-verification record.
 
-The next context will attach `C11D_PHASE_P_CONTEXT_HANDOVER_DOCUMENTATION_OVERLAY_20261028_V1.zip` and a newly generated `c11c-suite` snapshot named `ChallengeEngineV01_STATELESS_C11-D10_CONTEXT_SNAPSHOT_20261028_POST_PHASE_P_STATIC_PASS.zip`. A different overall ZIP hash is expected for a fresh capture; it is not a reason to overwrite the active checkout. Check the canonical live manifest independently.
+## Pin chronology and snapshot rules
 
-## Locks and execution discipline
+At Phase P runtime this file had SHA-256 `8ee4f47588acbc981bd11400ad4186a598e052e279b8f2e2cc0bd87cb6b21c71` (3599 bytes), and `AGENTS.md` had SHA-256 `67c5f237035c121f27733c24f3b2fe2da2bb104eaaa5f95e4c7a88b573071599` (4851 bytes). Both were source-pinned during that run; their new V26 text is post-runtime guidance, not part of that historical report. Refresh source pins for every new gate after this change. Keep V25/V24 as history; never restore them from a snapshot. Archive identity is not the canonical C11-C manifest identity.
 
-C11-C 2.19.12 remains immutable; canonical live manifest hash `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953` and size `796318`. Keep renderer OFF, no media, no payload materialization, candidate input inadmissible, seed domains incomplete, automatic seed generation OFF, master seed unadopted, approved bindings zero, D4.8 blocked, D9.10 prepare-only, D9.14/D9.16 blocked, D9.17 no-go, D10 blocked, baseline approval missing, freeze ineligible and release authority none. `winning_frame` only temporal anchor; `close_calls` episode count. Preserve CHALLENGE_008/009 11s-vs-12s conflict until explicit authority. PowerShell 5.1; apply/test separate; `Start-Process -Wait -PassThru`; separate stdout/stderr; hashes + process exit + marker; no false PASS.
+## Governance locks
 
-## Nota específica sobre el ZIP de releases y la captura usada
+C11-C 2.19.12 remains authoritative and immutable; live manifest `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`, 796318 bytes. `renderer=OFF`; no media; no payload materialization; candidate input inadmissible; seed domains incomplete; automatic seed generation OFF; master seed not adopted; all binding counters zero; D4.8 blocked; D9.10 prepare-only; D9.14/D9.16 blocked; D9.17 no-go; D10 blocked for promotion; baseline approval missing; freeze ineligible; release authority none. `winning_frame` is the only temporal anchor; `close_calls` is episode count. Do not resolve the CHALLENGE_008/009 duration conflict without an explicit decision.
 
-El snapshot que llegó primero a la biblioteca (`ChallengeEngineV01_STATELESS_C11-D10_latest_FROZEN_20261028_163525.zip`) se inspeccionó con SHA-256 `199a65ee76eb72a878808cb7b3c862a3eeb945b356cab9726c5d6c86f64b55a1`, tamaño 8.366.872 bytes, 3.476 entradas y CRC limpio. Ese archivo no contenía todavía los artefactos Phase P y, por tanto, no es la captura correcta de continuidad posterior a Phase P.
+## Execution discipline
 
-Aclaración del operador: la divergencia observada en el contenido empaquetado de `releases` está causada por la generación del ZIP freeze/snapshot mediante `c11c-suite` para continuar el trabajo en otra ventana; no es un defecto adicional que deba abrir otra línea de investigación. La nueva captura tendrá una huella de archivo distinta intencionadamente. No invertir más iteraciones en intentar normalizar esa huella del ZIP. Solo comprobar la integridad del archivo y el estado del checkout vivo; no reescribir ni sustituir el manifiesto canónico desde el ZIP.
+PowerShell 5.1 only; complete blocks; apply/test separate; hash and size guards; no overwrites of unexpected destinations; preserve stdout/stderr and real exit codes. Stop at the first failure. Never infer a PASS from output printed after a thrown error.
