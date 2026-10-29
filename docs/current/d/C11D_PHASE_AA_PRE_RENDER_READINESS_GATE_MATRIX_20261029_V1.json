@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "phase": "AA",
+  "title": "Pre-render Readiness Gate Matrix",
+  "date": "2026-10-29",
+  "status": "AUDIT_COMPLETE_RENDER_READINESS_BLOCKED",
+  "render_execution_authorized": false,
+  "renderer_activation_authorized": false,
+  "godot_invocation_authorized": false,
+  "media_creation_authorized": false,
+  "payload_materialization_authorized": false,
+  "candidate_input_admissibility_authorized": false,
+  "seed_generation_authorized": false,
+  "binding_activation_authorized": false,
+  "policy_adoption": "NONE",
+  "gates": [
+    {
+      "gate_id": "AA-01-AUTHORITY-DECISION-EVIDENCE",
+      "status": "BLOCKED",
+      "evidence": "Phase Z packet contains nine pending/unsigned rows; approval provenance and exact decision fields are absent.",
+      "required_to_close": "For each intended adopted policy, provide every required field, verifiable provenance and immutable source; otherwise record a deliberate defer/keep-blocked disposition."
+    },
+    {
+      "gate_id": "AA-02-R08-R09-TIMING-RECONCILIATION",
+      "status": "BLOCKED",
+      "evidence": "CHALLENGE_008 and CHALLENGE_009 declared duration is 11 s while phase sums are 12 s.",
+      "required_to_close": "Authority decision resolving each timing/semantic conflict plus source pins and acceptance tests; no inferred repair."
+    },
+    {
+      "gate_id": "AA-03-CANDIDATE-INPUT-ADMISSIBILITY",
+      "status": "BLOCKED",
+      "evidence": "candidate_input_admissible=false.",
+      "required_to_close": "Separately governed and verifiable input contract and admissibility approval."
+    },
+    {
+      "gate_id": "AA-04-SEED-DOMAIN-COMPLETENESS",
+      "status": "BLOCKED",
+      "evidence": "seed_domains_complete_for_candidate_input=false; automatic_seed_generation=false; master_seed=NOT_ADOPTED.",
+      "required_to_close": "Complete deterministic seed-domain definitions and explicit master-seed policy/approval; no generation before its gate passes."
+    },
+    {
+      "gate_id": "AA-05-SEMANTIC-AND-CUSTOM-DATA-BINDINGS",
+      "status": "BLOCKED",
+      "evidence": "approved_bindings=0; approved_custom_data_bindings=0. Narrow historical records are specification-only.",
+      "required_to_close": "Field-level binding proposals and independent approvals with types/ranges/ownership, backed by acceptance tests. Never serialize all FrameSnapshot.custom_data."
+    },
+    {
+      "gate_id": "AA-06-RENDERER-PROJECTION",
+      "status": "BLOCKED",
+      "evidence": "approved_renderer_projection_bindings=0; renderer=OFF.",
+      "required_to_close": "Explicit projection contract, source pins and separate approval before activation."
+    },
+    {
+      "gate_id": "AA-07-D9-17-RENDER-NO-GO",
+      "status": "BLOCKED_NO_GO",
+      "evidence": "D9.17 remains BLOCKED_NO_GO.",
+      "required_to_close": "All controlling preconditions and explicit gate-specific approval, evidenced in a separate immutable decision."
+    },
+    {
+      "gate_id": "AA-08-ISOLATED-RENDER-ACCEPTANCE",
+      "status": "PREPARE_ONLY",
+      "evidence": "No render execution is authorized by Phases X/Y/Z/AA.",
+      "required_to_close": "Approved test scope, deterministic inputs/seed, acceptance oracle, provenance/hash capture and explicit execution permission."
+    },
+    {
+      "gate_id": "AA-09-D10-BASELINE-PROMOTION",
+      "status": "BLOCKED_FOR_PROMOTION",
+      "evidence": "D10 blocked; baseline_approval=MISSING; freeze_eligible=false; release_authority=NONE.",
+      "required_to_close": "Independent formal D-baseline acceptance, freeze and promotion package after all gates pass."
+    },
+    {
+      "gate_id": "AA-10-C11-C-IMMUTABILITY",
+      "status": "PASS_PRESERVE_IMMUTABLE_BASELINE",
+      "evidence": "C11-C frozen manifest pin is unchanged.",
+      "required_to_close": "No action. Keep C11-C authoritative until formal C11-D promotion."
+    }
+  ],
+  "hard_locks": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE"
+  },
+  "next_gate": "PHASE_AB_OPERATOR_DECISION_EVIDENCE_SUBMISSION_AND_AUTHORITY_ADJUDICATION",
+  "note": "This matrix is a read-only audit of readiness. PASS for this audit does not mean render readiness PASS; the render gate remains blocked."
+}
