@@ -1,0 +1,455 @@
+{
+  "schema": "C11D-PHASE-Q-SEMANTIC-POLICY-DEPENDENCY-MATRIX-V1",
+  "schema_version": "1.0.0",
+  "artifact_id": "C11D_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_MATRIX_V1",
+  "status": "PREPARED_READ_ONLY_POLICY_DEPENDENCY_REVIEW_NOT_OPERATOR_POLICY_APPROVAL",
+  "date": "2026-10-29",
+  "purpose": "Read-only consolidation of accepted Phase P source-frame provenance and prior semantic decisions into the policy decisions and proof obligations required before any renderer binding design or implementation. This artifact does not approve a binding, coordinate transform, visibility rule, sample rule, payload consumer, renderer input, or media output.",
+  "scope": {
+    "selector_count": 6,
+    "selector_order": [
+      "CHALLENGE_003.target_x",
+      "CHALLENGE_005.target_position",
+      "CHALLENGE_006.target_position",
+      "CHALLENGE_007.target_position",
+      "CHALLENGE_008.active_selection",
+      "CHALLENGE_009.displayed_count"
+    ],
+    "read_only": true,
+    "runtime_reexecution": false,
+    "project_source_modification": false,
+    "production_code_changes": false,
+    "payload_materialized": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false
+  },
+  "source_authority": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318,
+      "role": "immutable_C11C_baseline_manifest"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_PHASE_P_SOURCE_VALUE_VS_FRAME_VALUE_PROVENANCE_CONTRACT_V1.json",
+      "sha256": "a237e950953e70406cecd4ef94460eb8617482d1d27feebce03e3ef2f6afbb6a",
+      "role": "current_Phase_P_contract_after_live_pin_reconciliation"
+    },
+    {
+      "path": "docs/current/d/C11D_PHASE_P_SOURCE_FRAME_PROVENANCE_ACCEPTANCE_REVIEW_20261029_V1.md",
+      "sha256": "d75b13453fac89b01eb806aaff162771d33d7ff15d88d6f81c2825cf8bcc9132",
+      "role": "formal_Phase_P_provenance_only_review"
+    },
+    {
+      "path": "runtime_evidence/phase_p_provenance_report.json",
+      "sha256": "9686240a0e2caa46f05cea4ca2c8fcaaa1499d006ac6ac75d128137693fc2ef7",
+      "role": "accepted_runtime_report_hash_from_operator_verified_evidence"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_SEMANTIC_BINDING_PROPOSAL_V1.json",
+      "sha256": "d37cb74f360e19e664b94673bbf4b95462cad6e681a08215a95f4565c6e810aa",
+      "role": "prior_allowlist_semantic_proposal_only"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_SEMANTIC_DECISION_RECORD_V1.json",
+      "sha256": "cc3550cd4d13f228ec9b3d51eeaa199505c5975b42882fb06ba3e83c4a000e90",
+      "role": "prior_operator_semantic_decisions_not_binding_approval"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_COORDINATE_POLICY_PROPOSAL_V1.json",
+      "sha256": "44c1ec6507988023b7cd20cdcc8e0e722c99af610d9be02a6d658ce9b07e9f57",
+      "role": "coordinate_proposal_not_approved"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_V2B_CANDIDATE_FIELD_REGION_VISIBILITY_PROPOSAL_V1.json",
+      "sha256": "f3afe4d7d08791c7634c9851500ca551438870babc195db1908440b93e740692",
+      "role": "field_region_visibility_proposal_not_approved"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+      "sha256": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6",
+      "role": "temporal_alignment_proposal_case_specific_not_general_approval"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241",
+      "role": "delivery_timebase_projection_preparation_only"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_POLICY_DECISION_DOCKET_V1.json",
+      "sha256": "e008217bd57303b638e13329d21e5ae56ee3b4efef790566e3702c89ee41a83f",
+      "role": "unapproved_policy_docket_and_operator_decisions"
+    },
+    {
+      "path": "docs/current/d/C11D_PHASE_O_SOURCE_FRAME_SEMANTIC_BINDING_CROSSWALK_ACCEPTANCE_20261027_V1.md",
+      "sha256": "26e37178dfa3e28f8d99c4262f08272bdb61242ddf5f449a5b09b3a8f9c79129",
+      "role": "Phase_O_accepted_read_only_crosswalk_historical_evidence"
+    }
+  ],
+  "governance": {
+    "renderer": "OFF",
+    "media_created": false,
+    "payload_materialized": false,
+    "candidate_input_admissible": false,
+    "seed_domains_complete_for_candidate_input": false,
+    "automatic_seed_generation": false,
+    "master_seed": "NOT_ADOPTED",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false,
+    "release_authority": "NONE",
+    "whole_custom_data_serialization_allowed": false,
+    "challenge_json_modification_allowed": false,
+    "challenge_004_v1_harness_mutation_allowed": false
+  },
+  "phase_p_runtime_evidence": {
+    "status": "ACCEPTED_FOR_SOURCE_FRAME_PROVENANCE_ONLY_NO_BINDING_APPROVAL",
+    "report_sha256": "9686240a0e2caa46f05cea4ca2c8fcaaa1499d006ac6ac75d128137693fc2ef7",
+    "godot_version": "4.7.1.stable.mono.official.a13da4feb",
+    "source_pins": "95/95",
+    "v2c_parent_source_pins": "PASS",
+    "selectors": "6/6",
+    "canonical_planner_invocations": "6/6",
+    "godot_runtime_processes": "12/12",
+    "repeat_hash_agreement": "PASS_ALL_SIX",
+    "actual_candidate_values_serialized": false,
+    "whole_custom_data_map_serialized": false,
+    "temporal_conflicts_008_009": "PRESERVED_DECLARED_11_SECONDS_VS_PHASE_SUM_12_SECONDS"
+  },
+  "candidates": [
+    {
+      "selector": "CHALLENGE_003.target_x",
+      "challenge_id": "CHALLENGE_003",
+      "field": "target_x",
+      "semantic_definition_status": "ACCEPTED_FOR_FUTURE_BINDING_SPECIFICATION_NOT_BINDING_APPROVAL",
+      "source_frame_provenance_status": "ACCEPTED_PHASE_P",
+      "semantic_type": "float",
+      "source_space": "PILOT_0X100",
+      "track_kind": "PER_FRAME_SCALAR",
+      "asset_role": "TARGET",
+      "asset_path": "assets/c6/waypoint.svg",
+      "source_relation": "target_start + target_velocity * frame_index; source decision record accepts only the scalar X domain",
+      "primary_track_relation": "snapshot.position is a separate Vector2 base track; target_x does not supply Y",
+      "proposals_not_approved": [
+        "x_logical=(target_x/100)*540",
+        "y_logical=480 presentation centerline only",
+        "SVG intrinsic 100x100 interpreted as source canvas units",
+        "center anchor / edge clipping policy"
+      ],
+      "unresolved_decisions": [
+        "approve or reject explicit X mapping",
+        "approve or reject presentation-only Y=480 default",
+        "approve asset-size interpretation and center anchor",
+        "define crop/edge clipping and final pixel rounding",
+        "choose a target sample/timebase policy for 60-to-30 delivery"
+      ],
+      "invalid_data_policy_proposal": "FAIL_CLOSED_WHOLE_TRACK_FOR_MISSING_NONFINITE_OR_OUT_OF_RANGE_SCALAR; NO_CLAMP",
+      "current_binding_authorized": false,
+      "current_renderer_projection_authorized": false
+    },
+    {
+      "selector": "CHALLENGE_005.target_position",
+      "challenge_id": "CHALLENGE_005",
+      "field": "target_position",
+      "semantic_definition_status": "ACCEPTED_FOR_FUTURE_BINDING_SPECIFICATION_NOT_BINDING_APPROVAL",
+      "source_frame_provenance_status": "ACCEPTED_PHASE_P",
+      "semantic_type": "Vector2",
+      "source_space": "CANVAS_1080X1920",
+      "track_kind": "PER_RUN_CONSTANT_REPEATED_PER_FRAME",
+      "asset_role": "TARGET",
+      "asset_path": "assets/c6/target.svg",
+      "source_relation": "HitMechanic._target_prime; a single target point per run repeated in source-frame records",
+      "primary_track_relation": "snapshot.position remains the projectile/animated-object track; target_position is not a dynamic trajectory",
+      "proposals_not_approved": [
+        "Vector2 source-to-logical scale 0.5",
+        "logical 540x960 to reference 720x1280 scale 4/3",
+        "SVG intrinsic 100x100 interpreted as source canvas units",
+        "center anchor / edge clipping policy"
+      ],
+      "unresolved_decisions": [
+        "approve or reject spatial transforms",
+        "approve asset-size interpretation and anchor",
+        "define final pixel rounding / crop semantics",
+        "choose sample mapping for 60-to-30 delivery while preserving constant track semantics",
+        "approve visibility span"
+      ],
+      "invalid_data_policy_proposal": "FAIL_CLOSED_WHOLE_TRACK_FOR_MISSING_NONFINITE_COMPONENT_OR_OUT_OF_BOUNDS_VECTOR; NO_CLAMP",
+      "current_binding_authorized": false,
+      "current_renderer_projection_authorized": false
+    },
+    {
+      "selector": "CHALLENGE_006.target_position",
+      "challenge_id": "CHALLENGE_006",
+      "field": "target_position",
+      "semantic_definition_status": "ACCEPTED_FOR_FUTURE_BINDING_SPECIFICATION_NOT_BINDING_APPROVAL",
+      "source_frame_provenance_status": "ACCEPTED_PHASE_P",
+      "semantic_type": "Vector2",
+      "source_space": "CANVAS_1080X1920",
+      "track_kind": "PER_FRAME_VECTOR",
+      "asset_role": "TARGET",
+      "asset_path": "assets/c6/target.svg",
+      "source_relation": "CatchMechanic emits p_t as target_position for each source frame",
+      "primary_track_relation": "snapshot.position remains the catcher track; target_position is a distinct target trajectory",
+      "proposals_not_approved": [
+        "Vector2 source-to-logical scale 0.5",
+        "logical 540x960 to reference 720x1280 scale 4/3",
+        "SVG intrinsic 100x100 interpreted as source canvas units",
+        "center anchor / edge clipping policy"
+      ],
+      "unresolved_decisions": [
+        "approve or reject spatial transforms",
+        "approve asset-size interpretation and anchor",
+        "define final pixel rounding / crop semantics",
+        "choose 60-to-30 sample mapping without interpolation or extrapolation",
+        "approve visibility span"
+      ],
+      "invalid_data_policy_proposal": "FAIL_CLOSED_WHOLE_TRACK_FOR_MISSING_NONFINITE_COMPONENT_CARDINALITY_MISMATCH_OR_OUT_OF_BOUNDS_VECTOR; NO_CLAMP",
+      "current_binding_authorized": false,
+      "current_renderer_projection_authorized": false
+    },
+    {
+      "selector": "CHALLENGE_007.target_position",
+      "challenge_id": "CHALLENGE_007",
+      "field": "target_position",
+      "semantic_definition_status": "ACCEPTED_FOR_FUTURE_BINDING_SPECIFICATION_NOT_BINDING_APPROVAL",
+      "source_frame_provenance_status": "ACCEPTED_PHASE_P",
+      "semantic_type": "Vector2",
+      "source_space": "CANVAS_1080X1920",
+      "track_kind": "PER_FRAME_VECTOR",
+      "asset_role": "TARGET",
+      "asset_path": "assets/c6/target.svg",
+      "source_relation": "FindMechanic.calculate_frame emits p_target as target_position for each source frame",
+      "primary_track_relation": "snapshot.position remains the scanner track; target_position is a distinct target trajectory",
+      "proposals_not_approved": [
+        "Vector2 source-to-logical scale 0.5",
+        "logical 540x960 to reference 720x1280 scale 4/3",
+        "SVG intrinsic 100x100 interpreted as source canvas units",
+        "center anchor / edge clipping policy"
+      ],
+      "unresolved_decisions": [
+        "approve or reject spatial transforms",
+        "approve asset-size interpretation and anchor",
+        "define final pixel rounding / crop semantics",
+        "choose 60-to-30 sample mapping without interpolation or extrapolation",
+        "approve visibility span"
+      ],
+      "excluded_data": [
+        "distractor topology",
+        "distractor distances",
+        "success/scoring telemetry",
+        "close_calls episode counter"
+      ],
+      "invalid_data_policy_proposal": "FAIL_CLOSED_WHOLE_TRACK_FOR_MISSING_NONFINITE_COMPONENT_CARDINALITY_MISMATCH_OR_OUT_OF_BOUNDS_VECTOR; NO_CLAMP",
+      "current_binding_authorized": false,
+      "current_renderer_projection_authorized": false
+    },
+    {
+      "selector": "CHALLENGE_008.active_selection",
+      "challenge_id": "CHALLENGE_008",
+      "field": "active_selection",
+      "semantic_definition_status": "BLOCKED_NEEDS_EXPLICIT_TIMEBASE_AND_PRESENTATION_DECISION",
+      "source_frame_provenance_status": "ACCEPTED_PHASE_P_PROVENANCE_ONLY",
+      "semantic_type": "int",
+      "source_space": "CANVAS_1080X1920",
+      "track_kind": "PER_FRAME_INTEGER_SELECTION_STATE",
+      "asset_role": "ANIMATED_OBJECT_OR_SELECTION_PRESENTATION_UNRESOLVED",
+      "asset_path": "assets/c6/cursor.svg",
+      "source_relation": "ChooseMechanic writes the selected option index; snapshot.position already maps options_positions[selection] with center fallback when index is invalid",
+      "primary_track_relation": "Possible representational redundancy with snapshot.position is unresolved; no active-selection highlight/secondary visual role is authorized",
+      "timebase_conflict": {
+        "declared_total_duration_seconds": 11,
+        "phase_duration_sum_seconds": 12,
+        "status": "BLOCKER_NO_CORRECTION_INFERRED"
+      },
+      "unresolved_decisions": [
+        "explicitly resolve duration 11 vs phase sum 12 under authority",
+        "decide whether active_selection adds any visual information beyond snapshot.position",
+        "define option identity/highlight behavior if applicable",
+        "only then define time sampling, visibility and coordinate ownership"
+      ],
+      "current_binding_authorized": false,
+      "current_renderer_projection_authorized": false
+    },
+    {
+      "selector": "CHALLENGE_009.displayed_count",
+      "challenge_id": "CHALLENGE_009",
+      "field": "displayed_count",
+      "semantic_definition_status": "BLOCKED_NEEDS_EXPLICIT_TIMEBASE_AND_PRESENTATION_DECISION",
+      "source_frame_provenance_status": "ACCEPTED_PHASE_P_PROVENANCE_ONLY",
+      "semantic_type": "int",
+      "source_space": "CANVAS_1080X1920",
+      "track_kind": "PER_FRAME_INTEGER_DISPLAY_STATE",
+      "asset_role": "COUNT_PRESENTATION_ROLE_UNRESOLVED",
+      "asset_path": "REQUIRES_SEPARATE_PRESENTATION_AUTHORITY",
+      "source_relation": "CountMechanic writes displayed_count; primary snapshot.position is calculated from displayed value via start_pos.x + offset_index * step_x",
+      "primary_track_relation": "target_count is a separate goal value; displayed_count is the current displayed state; the current source contract does not authorize text/layout emission",
+      "timebase_conflict": {
+        "declared_total_duration_seconds": 11,
+        "phase_duration_sum_seconds": 12,
+        "status": "BLOCKER_NO_CORRECTION_INFERRED"
+      },
+      "unresolved_decisions": [
+        "explicitly resolve duration 11 vs phase sum 12 under authority",
+        "decide what visual entity represents count (if any) and whether position already supplies all intended presentation",
+        "separate displayed_count from target_count in any future semantics",
+        "only then define visibility, sampling, text/layout and coordinate policy"
+      ],
+      "current_binding_authorized": false,
+      "current_renderer_projection_authorized": false
+    }
+  ],
+  "policy_dependencies": [
+    {
+      "id": "TIMEBASE_AND_SAMPLING",
+      "status": "PROPOSAL_ONLY_NOT_APPROVED",
+      "facts": [
+        "source fps is 60 in the candidate records",
+        "delivery target is 30 fps, but a blanket 2-to-1 sampling rule is not approved for these six candidates",
+        "existing half-open boundary / nearest-half-up proposal is case-specific and cannot be assumed universally"
+      ],
+      "required_decisions": [
+        "select explicit source frame indices or boundary policy for 60-to-30 mapping",
+        "state duration preservation and tie behavior",
+        "state no interpolation/no extrapolation",
+        "resolve CHALLENGE_008/009 duration conflict before policy inclusion"
+      ],
+      "future_tests": [
+        "exact frame-index mapping and cardinality",
+        "boundary inclusion/exclusion",
+        "deterministic repeat result",
+        "fail closed for unsupported FPS/timebase",
+        "no synthetic samples"
+      ]
+    },
+    {
+      "id": "SPATIAL_MAPPING_AND_PROJECTION",
+      "status": "PROPOSED_NOT_APPROVED_FOR_CHALLENGE_003_005_006_007; EXCLUDED_FOR_008_009",
+      "facts": [
+        "logical canvas 540x960",
+        "reference delivery profile 720x1280",
+        "vector mapping is proposed as source x/y * 0.5 then logical * 4/3",
+        "pilot target_x mapping proposes X=(target_x/100)*540 and Y=480 as an explicit presentation default, not source data"
+      ],
+      "required_decisions": [
+        "approve/reject each transform explicitly",
+        "approve/reject y centerline default for scalar",
+        "approve domain/edge behavior",
+        "no silent clamping or source-space inference"
+      ],
+      "future_tests": [
+        "known-point transform tests",
+        "scalar has no invented source Y",
+        "boundary and out-of-domain rejection",
+        "float precision and pixel-rounding tests"
+      ]
+    },
+    {
+      "id": "FIELD_REGION_AND_VISIBILITY",
+      "status": "PROPOSED_NOT_APPROVED_FOR_003_005_006_007; EXCLUDED_FOR_008_009",
+      "facts": [
+        "previous proposal uses full-source-frame-span visibility for the four candidate definitions",
+        "Phase P provenance does not prove that a field must be visible"
+      ],
+      "required_decisions": [
+        "explicit target region owner per selector",
+        "visibility window and cardinality",
+        "relationship to phase windows cannot be inferred from phase names",
+        "whether target track remains visible for full frame span"
+      ],
+      "future_tests": [
+        "exact span/cardinality",
+        "hide/show boundaries",
+        "missing sample fail closed",
+        "no visibility derived from close_calls"
+      ]
+    },
+    {
+      "id": "ASSET_SIZE_ANCHOR_CROP_ROUNDING",
+      "status": "PROPOSAL_ONLY_PIXEL_ROUNDING_UNRESOLVED",
+      "facts": [
+        "proposal interprets 100x100 SVG intrinsic dimensions as source canvas units",
+        "center anchor and clip-at-logical-boundary are proposals",
+        "asset pixel rounding/crop behavior remains unresolved"
+      ],
+      "required_decisions": [
+        "confirm SVG intrinsic dimensions as scale units",
+        "confirm center anchor and crop semantics",
+        "define deterministic pixel rounding and renderer treatment of off-edge geometry"
+      ],
+      "future_tests": [
+        "intrinsic size missing/invalid fail closed",
+        "center-anchor geometry",
+        "edge clipping without moving source position",
+        "deterministic round/crop"
+      ]
+    },
+    {
+      "id": "SEMANTIC_REDUNDANCY_AND_VISUAL_OWNERSHIP",
+      "status": "FOUR_DEFINITIONS_ACCEPTED_FOR_FUTURE_SPECIFICATION; TWO_BLOCKED",
+      "facts": [
+        "Phase P proves source/frame relation only",
+        "CHALLENGE_008 selection already influences primary position",
+        "CHALLENGE_009 displayed count already influences primary position and is distinct from target_count",
+        "no visual text/layout consumer is authorized"
+      ],
+      "required_decisions": [
+        "define which actor/region owns each visual meaning",
+        "separate primary snapshot track from secondary semantic track",
+        "exclude telemetry and whole custom_data map",
+        "obtain explicit operator/product authority for whether each candidate is visually consumed"
+      ],
+      "future_tests": [
+        "no fallback to snapshot.position for missing secondary data",
+        "no substitute scoring telemetry",
+        "no serialization of unapproved fields",
+        "explicit candidate allowlist only"
+      ]
+    },
+    {
+      "id": "INVALID_DATA_AND_DETERMINISM",
+      "status": "FAIL_CLOSED_POLICY_REQUIRED",
+      "facts": [
+        "source provenance hashes are repeat-stable for all six selectors",
+        "hash agreement is not visual correctness"
+      ],
+      "required_decisions": [
+        "formalize finite/type/bounds/cardinality behavior in each future binding contract"
+      ],
+      "future_tests": [
+        "missing key",
+        "wrong type",
+        "NaN/Infinity",
+        "sample cardinality mismatch",
+        "out-of-domain scalar/vector",
+        "two independent process hash equality",
+        "no raw candidate values in receipt"
+      ]
+    }
+  ],
+  "phase_q_exit_criteria": [
+    "Operator review of this read-only matrix acknowledges which prior semantic decisions remain accepted and which remain blocked; this review itself does not accept renderer policies.",
+    "Independent policy decisions are recorded for timebase/sampling, spatial mapping, visibility/region ownership, asset sizing/anchor/crop, and pixel rounding before any implementation design gate.",
+    "CHALLENGE_008 and CHALLENGE_009 remain excluded from any binding/coordinate consumer until 11-second vs 12-second conflict is explicitly resolved.",
+    "Any later binding approval has a separate decision record and dedicated negative/determinism tests.",
+    "No runtime, payload, media, renderer or production callsite is part of Phase Q."
+  ],
+  "next_gate": {
+    "name": "Phase R — operator policy decision packet and dependency adjudication",
+    "mode": "READ_ONLY_DECISION_PREPARATION",
+    "start_condition": "Phase Q matrix static validation passes and operator acknowledges the dependency inventory; no new runtime is needed.",
+    "goals": [
+      "prepare a separable decision packet referencing existing proposals; no implicit policy acceptance",
+      "resolve or explicitly leave open each spatial/time/visibility/asset/rounding decision",
+      "resolve CHALLENGE_008/009 duration only through explicit authority",
+      "do not grant binding or renderer authority from a policy decision packet alone"
+    ]
+  }
+}

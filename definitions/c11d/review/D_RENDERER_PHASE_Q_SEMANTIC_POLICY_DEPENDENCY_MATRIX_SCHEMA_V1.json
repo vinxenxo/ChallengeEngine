@@ -1,0 +1,413 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-PHASE-Q-SEMANTIC-POLICY-DEPENDENCY-MATRIX-SCHEMA-V1",
+  "title": "C11-D Phase Q semantic policy dependency matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "artifact_id",
+    "status",
+    "date",
+    "purpose",
+    "scope",
+    "source_authority",
+    "governance",
+    "phase_p_runtime_evidence",
+    "candidates",
+    "policy_dependencies",
+    "phase_q_exit_criteria",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11D-PHASE-Q-SEMANTIC-POLICY-DEPENDENCY-MATRIX-V1"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "artifact_id": {
+      "const": "C11D_PHASE_Q_SEMANTIC_POLICY_DEPENDENCY_MATRIX_V1"
+    },
+    "status": {
+      "const": "PREPARED_READ_ONLY_POLICY_DEPENDENCY_REVIEW_NOT_OPERATOR_POLICY_APPROVAL"
+    },
+    "date": {
+      "type": "string",
+      "const": "2026-10-29"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 20
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "selector_count",
+        "selector_order",
+        "read_only",
+        "runtime_reexecution",
+        "project_source_modification",
+        "production_code_changes",
+        "payload_materialized",
+        "renderer_dispatch_invoked",
+        "media_created"
+      ],
+      "properties": {
+        "selector_count": {
+          "const": 6
+        },
+        "selector_order": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "read_only": {
+          "const": true
+        },
+        "runtime_reexecution": {
+          "const": false
+        },
+        "project_source_modification": {
+          "const": false
+        },
+        "production_code_changes": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_authority": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "role"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "media_created",
+        "payload_materialized",
+        "candidate_input_admissible",
+        "seed_domains_complete_for_candidate_input",
+        "automatic_seed_generation",
+        "master_seed",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "D4.8",
+        "D9.10",
+        "D9.14",
+        "D9.16",
+        "D9.17",
+        "D10",
+        "baseline_approval",
+        "freeze_eligible",
+        "release_authority",
+        "whole_custom_data_serialization_allowed",
+        "challenge_json_modification_allowed",
+        "challenge_004_v1_harness_mutation_allowed"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "payload_materialized": {
+          "const": false
+        },
+        "candidate_input_admissible": {
+          "const": false
+        },
+        "seed_domains_complete_for_candidate_input": {
+          "const": false
+        },
+        "automatic_seed_generation": {
+          "const": false
+        },
+        "master_seed": {
+          "const": "NOT_ADOPTED"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "D4.8": {
+          "const": "BLOCKED"
+        },
+        "D9.10": {
+          "const": "PREPARE_ONLY"
+        },
+        "D9.14": {
+          "const": "BLOCKED"
+        },
+        "D9.16": {
+          "const": "BLOCKED"
+        },
+        "D9.17": {
+          "const": "BLOCKED_NO_GO"
+        },
+        "D10": {
+          "const": "BLOCKED_FOR_PROMOTION"
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "whole_custom_data_serialization_allowed": {
+          "const": false
+        },
+        "challenge_json_modification_allowed": {
+          "const": false
+        },
+        "challenge_004_v1_harness_mutation_allowed": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "phase_p_runtime_evidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "report_sha256",
+        "godot_version",
+        "source_pins",
+        "v2c_parent_source_pins",
+        "selectors",
+        "canonical_planner_invocations",
+        "godot_runtime_processes",
+        "repeat_hash_agreement",
+        "actual_candidate_values_serialized",
+        "whole_custom_data_map_serialized",
+        "temporal_conflicts_008_009"
+      ],
+      "properties": {
+        "status": {
+          "const": "ACCEPTED_FOR_SOURCE_FRAME_PROVENANCE_ONLY_NO_BINDING_APPROVAL"
+        },
+        "report_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "godot_version": {
+          "type": "string"
+        },
+        "source_pins": {
+          "const": "95/95"
+        },
+        "v2c_parent_source_pins": {
+          "const": "PASS"
+        },
+        "selectors": {
+          "const": "6/6"
+        },
+        "canonical_planner_invocations": {
+          "const": "6/6"
+        },
+        "godot_runtime_processes": {
+          "const": "12/12"
+        },
+        "repeat_hash_agreement": {
+          "const": "PASS_ALL_SIX"
+        },
+        "actual_candidate_values_serialized": {
+          "const": false
+        },
+        "whole_custom_data_map_serialized": {
+          "const": false
+        },
+        "temporal_conflicts_008_009": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "selector",
+          "challenge_id",
+          "field",
+          "semantic_definition_status",
+          "source_frame_provenance_status",
+          "semantic_type",
+          "source_space",
+          "track_kind",
+          "unresolved_decisions",
+          "current_binding_authorized",
+          "current_renderer_projection_authorized"
+        ],
+        "properties": {
+          "selector": {
+            "type": "string"
+          },
+          "challenge_id": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "semantic_definition_status": {
+            "type": "string"
+          },
+          "source_frame_provenance_status": {
+            "type": "string"
+          },
+          "semantic_type": {
+            "type": "string"
+          },
+          "source_space": {
+            "type": "string"
+          },
+          "track_kind": {
+            "type": "string"
+          },
+          "unresolved_decisions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "current_binding_authorized": {
+            "const": false
+          },
+          "current_renderer_projection_authorized": {
+            "const": false
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "policy_dependencies": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "facts",
+          "required_decisions",
+          "future_tests"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_decisions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "future_tests": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "phase_q_exit_criteria": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "required": [
+        "name",
+        "mode",
+        "start_condition",
+        "goals"
+      ],
+      "properties": {
+        "name": {
+          "const": "Phase R — operator policy decision packet and dependency adjudication"
+        },
+        "mode": {
+          "const": "READ_ONLY_DECISION_PREPARATION"
+        },
+        "start_condition": {
+          "type": "string"
+        },
+        "goals": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
