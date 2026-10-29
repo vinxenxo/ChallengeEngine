@@ -1,0 +1,415 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11-D Phase W Authority Candidate Source Human Review Queue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "phase",
+    "status",
+    "created_utc",
+    "source_triage_sha256",
+    "source_review_sha256",
+    "counts",
+    "scope",
+    "candidates",
+    "unsearched_documents",
+    "governance",
+    "timing_conflicts",
+    "no_global_absence_claim",
+    "authority_adjudication",
+    "policy_adoption",
+    "next_action"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "phase": {
+      "const": "W"
+    },
+    "status": {
+      "enum": [
+        "QUEUE_TEMPLATE_INSTALLED_NOT_GENERATED",
+        "SOURCE_QUEUE_READY_FOR_HUMAN_REVIEW",
+        "SOURCE_PIN_DRIFT_REQUIRES_RECONCILIATION"
+      ]
+    },
+    "created_utc": {
+      "type": "string",
+      "minLength": 20
+    },
+    "source_triage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_review_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "source_inputs": {
+      "type": "object",
+      "required": [
+        "phase_u_triage_sha256",
+        "phase_v_review_sha256"
+      ],
+      "properties": {
+        "phase_u_triage_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "phase_v_review_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "candidates",
+        "high_priority",
+        "medium_priority",
+        "low_priority",
+        "source_hash_matches",
+        "source_hash_mismatches",
+        "source_files_missing",
+        "high_priority_excerpts",
+        "unsearched_documents",
+        "unsearched_existing",
+        "unsearched_missing"
+      ],
+      "properties": {
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "medium_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "low_priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hash_matches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hash_mismatches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_files_missing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_priority_excerpts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_documents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_existing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsearched_missing": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "working_tree_only",
+        "full_source_read_for_adjudication",
+        "automated_adjudication",
+        "priority_is_authority"
+      ],
+      "properties": {
+        "working_tree_only": {
+          "const": true
+        },
+        "full_source_read_for_adjudication": {
+          "const": false
+        },
+        "automated_adjudication": {
+          "const": false
+        },
+        "priority_is_authority": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "expected_sha256",
+          "expected_bytes",
+          "phase_v_actual_sha256",
+          "phase_v_actual_bytes",
+          "actual_sha256",
+          "actual_bytes",
+          "source_integrity",
+          "priority",
+          "priority_score",
+          "matches",
+          "excerpts",
+          "excerpt_status",
+          "review_status",
+          "authority_finding",
+          "full_document_inspected",
+          "authority_record_id",
+          "issuer",
+          "authority_basis",
+          "decision_scope",
+          "decision_option",
+          "effective_date",
+          "immutable_record_identity",
+          "reviewer_notes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "expected_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "phase_v_actual_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "phase_v_actual_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "actual_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "actual_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "source_integrity": {
+            "enum": [
+              "MATCH",
+              "HASH_MISMATCH",
+              "MISSING",
+              "READ_ERROR",
+              "PATH_UNSAFE"
+            ]
+          },
+          "priority": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "priority_score": {
+            "type": "number"
+          },
+          "matches": {
+            "type": "array"
+          },
+          "excerpts": {
+            "type": "array"
+          },
+          "excerpt_status": {
+            "type": "string"
+          },
+          "review_status": {
+            "const": "NOT_REVIEWED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          },
+          "full_document_inspected": {
+            "const": false
+          },
+          "authority_record_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "issuer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authority_basis": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "decision_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "decision_option": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "effective_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "immutable_record_identity": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reviewer_notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unsearched_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "reason",
+          "review_status",
+          "authority_finding",
+          "current_file_state",
+          "current_sha256",
+          "current_bytes",
+          "content_read"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "review_status": {
+            "const": "NOT_INSPECTED"
+          },
+          "authority_finding": {
+            "const": "UNDETERMINED"
+          },
+          "current_file_state": {
+            "enum": [
+              "EXISTS_CONTENT_NOT_READ",
+              "MISSING",
+              "PATH_UNSAFE"
+            ]
+          },
+          "current_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "current_bytes": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "content_read": {
+            "const": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "approved_bindings",
+        "approved_custom_data_bindings",
+        "approved_renderer_projection_bindings",
+        "release_authority"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "OFF"
+        },
+        "approved_bindings": {
+          "const": 0
+        },
+        "approved_custom_data_bindings": {
+          "const": 0
+        },
+        "approved_renderer_projection_bindings": {
+          "const": 0
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "additionalProperties": true
+    },
+    "timing_conflicts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "no_global_absence_claim": {
+      "const": true
+    },
+    "authority_adjudication": {
+      "const": "NOT_PERFORMED"
+    },
+    "policy_adoption": {
+      "const": "NONE"
+    },
+    "next_action": {
+      "const": "HUMAN_REVIEW_COMPLETE_SOURCE_AND_UNSEARCHED_DOCUMENTS"
+    }
+  }
+}

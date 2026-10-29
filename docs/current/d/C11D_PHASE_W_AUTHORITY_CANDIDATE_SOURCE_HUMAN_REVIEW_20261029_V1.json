@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "phase": "W",
+  "status": "QUEUE_TEMPLATE_INSTALLED_NOT_GENERATED",
+  "created_utc": "NOT_YET_GENERATED_PHASE_W_QUEUE",
+  "source_triage_sha256": "4db4ab20040b68872c4501dc39dda61b7ca2d8716303a536dbdd4121929ec418",
+  "source_review_sha256": "1c36ee0afc5bcb4a9ea5b9060487d172c9f251fe366205a8cdaaea2bfc31de67",
+  "purpose": "Read-only prioritized human review packet. This template is not runtime evidence and does not adjudicate authority.",
+  "source_inputs": {
+    "phase_u_triage_sha256": "4db4ab20040b68872c4501dc39dda61b7ca2d8716303a536dbdd4121929ec418",
+    "phase_v_review_sha256": "1c36ee0afc5bcb4a9ea5b9060487d172c9f251fe366205a8cdaaea2bfc31de67"
+  },
+  "counts": {
+    "candidates": 107,
+    "high_priority": 50,
+    "medium_priority": 55,
+    "low_priority": 2,
+    "source_hash_matches": 0,
+    "source_hash_mismatches": 0,
+    "source_files_missing": 0,
+    "high_priority_excerpts": 43,
+    "unsearched_documents": 7,
+    "unsearched_existing": 7,
+    "unsearched_missing": 0
+  },
+  "scope": {
+    "working_tree_only": true,
+    "full_source_read_for_adjudication": false,
+    "automated_adjudication": false,
+    "priority_is_authority": false
+  },
+  "candidates": [],
+  "unsearched_documents": [],
+  "governance": {
+    "renderer": "OFF",
+    "approved_bindings": 0,
+    "approved_custom_data_bindings": 0,
+    "approved_renderer_projection_bindings": 0,
+    "release_authority": "NONE"
+  },
+  "timing_conflicts": [
+    {
+      "challenge": "CHALLENGE_008",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    },
+    {
+      "challenge": "CHALLENGE_009",
+      "declared_total_duration_seconds": 11,
+      "phase_duration_sum_seconds": 12,
+      "status": "BLOCKER_NO_CORRECTION_INFERRED"
+    }
+  ],
+  "no_global_absence_claim": true,
+  "authority_adjudication": "NOT_PERFORMED",
+  "policy_adoption": "NONE",
+  "next_action": "HUMAN_REVIEW_COMPLETE_SOURCE_AND_UNSEARCHED_DOCUMENTS"
+}
