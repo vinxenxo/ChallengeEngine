@@ -1,0 +1,11 @@
+# C11-D Render Integration — Initial Task Prompt V1
+
+Retoma el repositorio activo `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS` siguiendo el Master Prompt y Start Prompt de Render Integration V1. El objetivo es finalizar D como baseline operativo de generación de vídeos mediante `c11c-suite`: conservar la mecánica y los generadores C sin alterar el freeze, añadir el consumer/composición visual D, editorial modificable y audio/música, y ofrecer generación real equivalente desde CLI y GUI para Challenge, Visual Loops y Visual Drills.
+
+No me devuelvas otro plan genérico ni repitas los gates verdes de documentación. Primero comprueba los pins de la checkout activa, después traza la llamada real C→D y localiza el punto donde se componen los frames que terminan en MP4. Reutiliza los contratos D9.8/D9.9/D9.10 y payload/binder existentes, sin crear otro binder. La prioridad técnica es cerrar el gap entre los valores editoriales canónicos y el payload visual/render final.
+
+Implementa el incremento D-only más pequeño que sea válido y prueba un vídeo real por cada familia, con el output aislado, evidencias de proceso, comprobación de MP4/audio y comparación de frames con campos editoriales diferentes. A continuación prepara smoke de 18 salidas (9 Challenge + 5 Loop + 4 Drill), y luego la matriz de 101 vídeos (54 Challenge + 27 gramáticas Loop + 20 variantes Drill), aplicando los límites conocidos para 008/009 y Longform.
+
+Usa las pruebas de C como referencia comprobada, no como excusa para modificar C. Asegura que CLI y GUI comparten servicio canónico, y que seeds de juego y música no se contaminan. Corre pruebas focalizadas afectadas por cambios, luego regresiones agregadas; guarda logs, exit codes, hashes y outputs reales. No marques como render PASS una prueba estática o un harness que no produzca MP4.
+
+El usuario ha autorizado explícitamente pruebas de render, pero eso no autoriza release, freeze o promoción y no permite falsificar el estado de un gate. Si un gate concreto bloquea el render, inspecciona su contrato y describe únicamente el requisito preciso que falta; no desactives el gate ni crees otra fase de preparación redundante. Mantén intactos `release/C11C_FREEZE_PACKAGE_MANIFEST.json`, el motor protegido C y las cinco superficies existentes.
