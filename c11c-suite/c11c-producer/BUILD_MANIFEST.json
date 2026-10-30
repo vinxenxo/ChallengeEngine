@@ -54,7 +54,8 @@
   "tests": [
     "c11c-suite/c11c-producer/test_d913_lifecycle_contract.py",
     "c11c-suite/c11c-producer/test_d914_certification_gate_contract.py",
-    "tools/c11d/d9/test_gui_real_media_certification.py"
+    "tools/c11d/d9/test_gui_real_media_certification.py",
+    "c11c-suite/c11c-producer/test_c11e_production_service.py"
   ],
   "d9_14_real_media_certification_gate": true,
   "d9_14_gate_backend": "tools/c11d/d9/gui_real_media_certification.py",
@@ -74,5 +75,15 @@
   "d9_10_d4_8": "BLOCKED",
   "final_gui_scope": "TEST_GUI_ONLY; definitive production GUI deferred until D baseline is frozen",
   "d9_10_bridge_renderer_adapter_invoked": false,
-  "d9_10_d_only_adapter_prepare_invoked": true
+  "d9_10_d_only_adapter_prepare_invoked": true,
+  "c11e_e1_shared_production_service": "c11c-suite/c11c-producer/c11e_production_service.py",
+  "c11e_e1_cli": "c11c-suite/c11c-producer/c11e_production_cli.py",
+  "c11e_e1_test": "c11c-suite/c11c-producer/test_c11e_production_service.py",
+  "c11e_e1_status": "IMPLEMENTED_PENDING_WINDOWS_ACCEPTANCE",
+  "c11e_e1_gui_cli_shared_service": true,
+  "c11e_e1_renderer_input_emitted": false,
+  "c11e_e1_renderer_dispatch_invoked": false,
+  "c11e_e1_production_execution": false,
+  "c11e_e1_media_created": false,
+  "c11e_e1_release_authority": "NONE"
 }

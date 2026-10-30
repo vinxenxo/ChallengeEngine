@@ -1,0 +1,102 @@
+{
+  "schema": "c11e-foundation-decision-record/v3",
+  "record_id": "C11E-FOUNDATION-20261030-V3",
+  "created_date": "2026-10-30",
+  "program": "C11-E",
+  "branch": "main",
+  "status": "FOUNDATION_READY_FOR_E0_V3_INSTALLATION",
+  "authorization_scope": "Install C11-E foundation and execute engineering gates on local main. Do not switch/create/push Git branches. Two isolated Challenge media tests are authorized only by E2; isolated Loop and Drill tests only by E4. No release/promotion authority.",
+  "observed_parent": {
+    "branch": "main",
+    "head": "bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c",
+    "parent_head": "8f6905003a4dff979ed97dc2e721d1abc4375de8",
+    "commit_subject": "doc catalog",
+    "changed_paths": [
+      "docs/current/d/C11D_DOCUMENTATION_CATALOG_GENERATED.json",
+      "docs/current/d/C11D_DOCUMENTATION_CATALOG_GENERATED.md"
+    ],
+    "working_tree": "CLEAN",
+    "upstream_status": "origin/main; local main is ahead by one commit",
+    "verification_basis": "User-provided E0-R1 command output dated 2026-10-30"
+  },
+  "c11c_manifest": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "bytes": 796318
+  },
+  "protected_invariants": [
+    "C11-C frozen baseline unchanged until E8",
+    "C gameplay mechanics and RNG unchanged",
+    "SimulationResult unchanged",
+    "winning_frame remains temporal anchor",
+    "close_calls remains episode count",
+    "RenderedFrameStream unchanged",
+    "request.seed separate from request.music_seed",
+    "five c11c-suite modules retained",
+    "no arbitrary FrameSnapshot.custom_data projection",
+    "CHALLENGE_008/009 excluded until duration discrepancy resolution"
+  ],
+  "test_authority": {
+    "E0_to_E1_physical_render": false,
+    "E2_two_isolated_challenge_render_for_title_ab": true,
+    "E3_audio_mux_of_e2_source": true,
+    "E4_isolated_loop_and_drill_render": true,
+    "release_or_promotion": false
+  },
+  "first_functional_case": {
+    "family": "challenge",
+    "selector": "CHALLENGE_001",
+    "field": "title",
+    "proof": "Two distinct physical MP4 outputs show the two values while gameplay/duration/frame count remain stable."
+  },
+  "gates": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7",
+    "E8"
+  ],
+  "sources": {
+    "working_context_zip_sha256": "b6acdc0ecff427acd90b64d41cf9f295af722114d55f907ac89267411b65d987",
+    "active_evidence_zip_sha256": "18c6507d38b6ae65be6298a8b5807ed4e74329c117ebe90f2dba5f6daed1f928",
+    "full_docs_review_zip_sha256": "5e0d8dfa56e0ff08047bc21a70319843c1367961b4534f615b974a04ae1ee876",
+    "docs_markdown_files": 1507,
+    "docs_folders": 83,
+    "unique_content_hashes": 1385,
+    "duplicate_instances": 122
+  },
+  "limitations": [
+    "E0 not run on user's Windows checkout",
+    "core and most D source inspection based on 2026-10-29 20:35 snapshot unless separately included in active slice",
+    "No renderer or MP4 executed during package preparation"
+  ],
+  "e0_v1_reconciliation": {
+    "result": "SAFE_ABORT_NO_CHECKOUT_MODIFICATION",
+    "reason": "V1 expected the historical capture HEAD exactly; E0-R1 established a clean direct descendant consisting only of generated documentation catalog updates.",
+    "v2_action": "Pin the exact reconciled HEAD and its sole parent; preserve the doc catalog commit as the E branch base."
+  },
+  "version": "V3",
+  "git_working_policy": {
+    "active_local_branch": "main",
+    "user_instruction": "Work locally on main in the existing checkout directory.",
+    "logical_workstream": "C11-E",
+    "create_or_switch_branch": false,
+    "push_or_update_remote_refs": false,
+    "existing_local_c11e_ref": "c11e-unified-editorial-production at bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c; preserve unchanged",
+    "existing_remote_c11e_ref": "origin/c11e-unified-editorial-production at bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c; preserve unchanged",
+    "reason": "Explicit user preference from 2026-10-30."
+  },
+  "e0_reconciliation": {
+    "v2_observed": "Preflight passed and branch switch reported, but no overlay files, historical copies or receipt were found in subsequent R2; R3 found main active and local/remote c11e refs at base HEAD.",
+    "current_checkout_from_user_e0_r3": {
+      "branch": "main",
+      "head": "bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c",
+      "worktree": "clean"
+    },
+    "v3_action": "Install add-only E documents on main without changing any Git ref."
+  }
+}

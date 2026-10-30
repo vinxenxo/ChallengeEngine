@@ -14,6 +14,8 @@ py_compile.compile(str(ROOT / "main.py"), doraise=True)
 py_compile.compile(str(ROOT / "preflight.py"), doraise=True)
 py_compile.compile(str(ROOT / "c11d_gui_request.py"), doraise=True)
 py_compile.compile(str(ROOT / "test_d9_producer_integration.py"), doraise=True)
+for e1_file in ("c11e_production_service.py", "c11e_production_cli.py", "test_c11e_production_service.py"):
+    py_compile.compile(str(ROOT / e1_file), doraise=True)
 D9_DIR = PROJECT / "tools" / "c11d" / "d9"
 for d9_file in ("universal_producer.py", "universal_producer_cli.py", "test_universal_producer.py", "editorial_render_bridge.py", "d_render_adapter.py", "test_editorial_render_bridge.py", "gui_real_media_certification.py", "test_gui_real_media_certification.py"):
     py_compile.compile(str(D9_DIR / d9_file), doraise=True)
@@ -22,6 +24,15 @@ schema = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
 build_manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
 assert build_manifest["version"] == "0.11.1"
 assert build_manifest["backend_logic_modified"] is False
+assert build_manifest.get("c11e_e1_shared_production_service") == "c11c-suite/c11c-producer/c11e_production_service.py"
+assert build_manifest.get("c11e_e1_cli") == "c11c-suite/c11c-producer/c11e_production_cli.py"
+assert build_manifest.get("c11e_e1_status") == "IMPLEMENTED_PENDING_WINDOWS_ACCEPTANCE"
+assert build_manifest.get("c11e_e1_gui_cli_shared_service") is True
+assert build_manifest.get("c11e_e1_renderer_input_emitted") is False
+assert build_manifest.get("c11e_e1_renderer_dispatch_invoked") is False
+assert build_manifest.get("c11e_e1_production_execution") is False
+assert build_manifest.get("c11e_e1_media_created") is False
+assert build_manifest.get("c11e_e1_release_authority") == "NONE"
 
 assert schema["producer_version"] == "0.11.1"
 assert [x[0] for x in schema.get("video_types", [])] == ["challenges", "visual_loops", "visual_drills"]
@@ -197,3 +208,12 @@ d914_gate = subprocess.run([sys.executable, str(D9_DIR / "test_gui_real_media_ce
 assert d914_gate.returncode == 0, d914_gate.stdout + "\n" + d914_gate.stderr
 assert "gate=BLOCKED_AS_REQUIRED" in d914_gate.stdout and "media_created=false" in d914_gate.stdout
 print("C11-C Producer 0.11.1 D9.14 gate checks PASS | gate remains BLOCKED, renderer OFF, media=false")
+
+# C11-E E1: the GUI and CLI share one preparation-only service; no dispatch/media.
+e1_service_test = subprocess.run(
+    [sys.executable, str(ROOT / "test_c11e_production_service.py")],
+    cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60,
+)
+assert e1_service_test.returncode == 0, e1_service_test.stdout + "\n" + e1_service_test.stderr
+assert "Ran 13 tests" in e1_service_test.stderr and "OK" in e1_service_test.stderr
+print("C11-E E1 shared GUI/CLI production-intent service PASS | 13/13 | preparation-only | renderer OFF | media=false")

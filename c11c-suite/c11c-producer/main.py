@@ -21,6 +21,8 @@ from c11d_gui_request import (
     resolve_delivery_profile_data,
 )
 
+from c11e_production_service import prepare_c11e_production_intent
+
 from PySide6.QtCore import QProcess, Qt
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import (
@@ -815,7 +817,9 @@ class MainWindow(QMainWindow):
         self.d9_lifecycle_view = QPlainTextEdit()
         self.d9_certification_view = QPlainTextEdit()
         self.d9_certification_view.setPlainText("D9.14 GATE = BLOCKED. Future D frozen renderer baseline and explicit D4.8 authorization are absent. This view is preflight-only; no renderer or media will be started.")
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_parity_view):
+        self.d9_e1_view = QPlainTextEdit()
+        self.d9_e1_view.setPlainText("C11-E E1 shared service has not prepared a request yet. E1 is preparation-only; no dispatch or media.")
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_e1_view, self.d9_parity_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
@@ -826,6 +830,7 @@ class MainWindow(QMainWindow):
             ("D-ONLY RENDER ADAPTER (PREPARED / OFF)", self.d9_adapter_view),
             ("CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)", self.d9_lifecycle_view),
             ("D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)", self.d9_certification_view),
+            ("C11-E · SERVICIO COMPARTIDO (E1 · SIN DISPATCH)", self.d9_e1_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
         ):
             self.d9_output_tabs.addTab(view, title)
@@ -1046,7 +1051,11 @@ class MainWindow(QMainWindow):
                 "production_override": production_override,
                 "provenance": {"source_revision": "C11D-D9.10-PRODUCER-0.11.1", "request_origin": "GUI"},
             }
-            result = D9_UNIVERSAL.evaluate_universal_request(raw_request, PROJECT)
+            e1_prepared = prepare_c11e_production_intent(
+                raw_request, PROJECT, request_origin="GUI", resolver_module=D9_UNIVERSAL
+            )
+            e1_intent = e1_prepared["intent"]
+            result = e1_prepared["resolver_result"]
             bridge_record = build_d9_bridge_planning_record(result, PROJECT)
             adapter_envelope = prepare_d9_d_only_adapter_envelope(result, bridge_record, PROJECT)
             evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_universal"
@@ -1067,6 +1076,39 @@ class MainWindow(QMainWindow):
             if cli_run.returncode != 0:
                 raise RuntimeError("D9.9/D9.10 canonical CLI failed: " + cli_run.stderr.strip())
             cli_result = json.loads(cli_run.stdout)
+            e_cli_path = ROOT / "c11e_production_cli.py"
+            e_cli_run = subprocess.run(
+                [sys.executable, str(e_cli_path), "--request", str(request_path), "--origin", "CLI", "--print-json"],
+                cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=45,
+            )
+            if e_cli_run.returncode != 0:
+                raise RuntimeError("C11-E shared production CLI failed: " + e_cli_run.stderr.strip())
+            e_cli_payload = json.loads(e_cli_run.stdout)
+            e_cli_intent = e_cli_payload["intent"]
+            e1_parity_checks = {
+                "semantic_intent_hash_equal": e1_intent["identity"]["intent_hash"] == e_cli_intent["identity"]["intent_hash"],
+                "request_hash_equal": e1_intent["identity"]["request_hash"] == e_cli_intent["identity"]["request_hash"],
+                "editorial_hash_equal": e1_intent["identity"]["editorial_hash"] == e_cli_intent["identity"]["editorial_hash"],
+                "plan_hash_equal": e1_intent["identity"]["plan_hash"] == e_cli_intent["identity"]["plan_hash"],
+                "selection_equal": e1_intent["request"]["selection"] == e_cli_intent["request"]["selection"],
+                "editorial_equal": e1_intent["editorial"] == e_cli_intent["editorial"],
+                "seed_domains_equal": e1_intent["seed_domains"] == e_cli_intent["seed_domains"],
+                "gui_origin_preserved": e1_intent["request_origin"] == "GUI",
+                "cli_origin_preserved": e_cli_intent["request_origin"] == "CLI",
+                "both_fail_closed": e1_intent["execution_boundary"] == e_cli_intent["execution_boundary"],
+            }
+            e1_parity = {
+                "schema": "C11-E-E1-GUI-CLI-SHARED-SERVICE-PARITY-V1",
+                "status": "PASS" if all(e1_parity_checks.values()) else "FAIL",
+                "checks": e1_parity_checks,
+                "gui_intent_sha256": e1_intent["intent_sha256"],
+                "cli_intent_sha256": e_cli_intent["intent_sha256"],
+                "semantic_intent_hash": e1_intent["identity"]["intent_hash"],
+                "renderer": False,
+                "production_execution": False,
+                "media_created": False,
+                "release_authority": "NONE",
+            }
             parity_checks = {
                 "canonical_request_equal": result["canonical_request"] == cli_result["canonical_request"],
                 "request_hash_equal": result["request_hash"] == cli_result["request_hash"],
@@ -1097,6 +1139,8 @@ class MainWindow(QMainWindow):
                 "production_execution": False,
                 "release_authority": "NONE",
             }
+            parity["e1_shared_service"] = e1_parity
+            parity["status"] = "PASS" if parity["status"] == "PASS" and e1_parity["status"] == "PASS" else "FAIL"
             write_json(run_root / "canonical_request.json", result["canonical_request"])
             write_json(run_root / "editorial_resolution.json", result["editorial_resolution"])
             write_json(run_root / "universal_plan.json", result["plan"])
@@ -1104,6 +1148,25 @@ class MainWindow(QMainWindow):
             write_json(run_root / "d_render_adapter_envelope.json", adapter_envelope)
             write_json(run_root / "d4_subplan_evidence.json", result["d4_evidence"] or {"status": "NOT_APPLICABLE"})
             write_json(run_root / "gui_cli_parity.json", parity)
+            write_json(run_root / "c11e_production_intent.json", e1_intent)
+            write_json(run_root / "c11e_gui_cli_parity.json", e1_parity)
+            e1_receipt = {
+                "schema": "C11-E-E1-PRODUCTION-INTENT-RECEIPT-V1",
+                "status": "PASS_E1_PREPARATION_ONLY" if e1_parity["status"] == "PASS" else "FAIL",
+                "request_id": request_id,
+                "intent_sha256": e1_intent["intent_sha256"],
+                "request_hash": e1_intent["identity"]["request_hash"],
+                "editorial_hash": e1_intent["identity"]["editorial_hash"],
+                "plan_hash": e1_intent["identity"]["plan_hash"],
+                "gui_cli_parity": e1_parity["status"],
+                "renderer_input_emitted": False,
+                "renderer_dispatch_invoked": False,
+                "production_execution": False,
+                "media_created": False,
+                "release_authority": "NONE",
+                "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
+            }
+            write_json(run_root / "c11e_production_intent_receipt.json", e1_receipt)
             receipt = {
                 "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
                 "phase": "D9.10",
@@ -1137,13 +1200,16 @@ class MainWindow(QMainWindow):
             self.d9_adapter_view.setPlainText(json.dumps(adapter_envelope, ensure_ascii=False, indent=2))
             self.d9_lifecycle_view.setPlainText(json.dumps(lifecycle_receipt, ensure_ascii=False, indent=2))
             self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
-            self.d9_evidence_label.setText(f"Evidencia D9.9/D9.10/D9.13 (adaptador preparado, dispatch OFF): {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
-            self.d9_output_tabs.setCurrentWidget(self.d9_adapter_view if parity["status"] == "PASS" else self.d9_parity_view)
+            self.d9_e1_view.setPlainText(json.dumps({"intent": e1_intent, "gui_cli_parity": e1_parity, "receipt": e1_receipt}, ensure_ascii=False, indent=2))
+            self.d9_evidence_label.setText(f"D9.9/D9.10/D9.13 + C11-E E1 · GUI/CLI={e1_parity['status']} · {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
+            self.d9_output_tabs.setCurrentWidget(self.d9_e1_view if e1_parity["status"] == "PASS" else self.d9_parity_view)
             if parity["status"] != "PASS":
                 raise AssertionError("D9.9 GUI/CLI request or plan identity mismatch")
             self.statusBar().showMessage(
-                f"D9.13 LIFECYCLE PASS · {content_type} · lifecycle={lifecycle_receipt['lifecycle_id']} · plan-only / renderer OFF"
+                f"D9.13 LIFECYCLE PASS · C11-E E1 SERVICE {e1_parity['status']} · {content_type} · plan-only / renderer OFF"
             )
+            if e1_parity["status"] != "PASS":
+                raise AssertionError("C11-E E1 shared GUI/CLI service parity failed")
         except Exception as exc:
             self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
             QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))

@@ -56,7 +56,13 @@ for node in ast.walk(main_window):
         if callback.attr.startswith('_') and callback.attr not in main_window_methods:
             missing_callbacks.add(callback.attr)
 assert not missing_callbacks, f'Qt callbacks reference missing MainWindow methods: {sorted(missing_callbacks)}'
-assert 'D9_UNIVERSAL.evaluate_universal_request(raw_request, PROJECT)' in main_text
+# E1 routes the GUI through the same C11-E service facade as the CLI while
+# retaining D9.9 as the canonical semantic resolver.
+assert "prepare_c11e_production_intent(" in main_text
+assert "resolver_module=D9_UNIVERSAL" in main_text
+assert "c11e_production_cli.py" in main_text
+assert "e1_shared_service" in main_text
+assert "C11-E · SERVICIO COMPARTIDO (E1 · SIN DISPATCH)" in main_text
 assert 'universal_producer_cli.py' in main_text
 assert 'canonical_request_equal' in main_text and 'plan_hash_equal' in main_text
 assert 'Longform · DESHABILITADO' in main_text
@@ -93,4 +99,4 @@ assert "generator_stderr.log" in ps
 assert "Visual Drill envelope generator returned no response" in ps
 
 assert manifest.get('d9_14_real_media_execution') is False and manifest.get('d9_14_renderer_activation') is False and manifest.get('d9_14_release_authority') == 'NONE'
-print("C11C_PRODUCER_GUI_CONTRACT_SUITE PASS | Producer 0.11.1 | D9.9 universal editorial + D9.10 D-only adapter prepare-only + D9.14 fail-closed certification gate wired to canonical backend; definitive GUI remains deferred")
+print("C11C_PRODUCER_GUI_CONTRACT_SUITE PASS | Producer 0.11.1 | D9.9 universal editorial + D9.10 D-only adapter prepare-only + D9.14 fail-closed certification gate + C11-E E1 shared GUI/CLI service (preparation-only); definitive GUI remains deferred")
