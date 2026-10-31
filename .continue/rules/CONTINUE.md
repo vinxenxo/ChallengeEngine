@@ -1,21 +1,17 @@
-# CONTINUE.md — C11-E engineering continuation (V4)
+# C11-E continuation rules — V11
 
-## Current state
+Mission: produce final A/V MP4s for Challenges, Visual Loops and Visual Drills, with the correct C presentation, enabled D9.8 editorial fields visibly consumed by the corresponding family binder, D3 music driven by the independent `request.music_seed`, FFmpeg mux and FFprobe validation. GUI and CLI must share one canonical E production service.
 
-The active workstream is C11-E on local Git branch `main`; never switch branches or refs. Current reviewed HEAD: `bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c`. C11-C 2.19.12 remains the production baseline until independent E8 acceptance.
+Continue on the exact current local `main`. Never reset/clean/checkout another branch, move refs, commit or push. Preserve E1/E2 work and all D historical records. Keep C11-C 2.19.12 and its 796318-byte frozen manifest (`e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`) immutable. No changes to protected mechanics, `SimulationResult`, `winning_frame`, `close_calls`, frame stream or gameplay/structural RNG; never enumerate arbitrary `custom_data`.
 
-E0 bootstrap has been independently reviewed and is PASS. The addendum updates this routing file and `AGENTS.md` to V4 while preserving their exact V3 versions under `docs/history/c11e/`. E1 source architecture review is complete at inspection level; E1 implementation remains in progress.
+Read `AGENTS.md`, `docs/current/e/README.md`, current authority V11, gate matrix V11, product scope, error log V7 and the D→E full-family roadmap. Then inspect only live sources needed for the next functional slice; never repeat global inventories without a specific changed source.
 
-Read `AGENTS.md`, `docs/current/e/README.md`, `C11E_CURRENT_AUTHORITY_20261030_V4.md`, `C11E_GATES_ACCEPTANCE_MATRIX_20261030_V4.md`, `C11E_E0_REVIEW_AND_E1_SOURCE_ARCHITECTURE_20261030_V1.md`, `C11E_DOCUMENTATION_RECONCILIATION_20261030_V4.md`, and charter/contract/risk register V3.
+D9.8 enabled fields: common `title`, `subtitle`, `call_to_action`, `language`; Challenge-only `player_name`, `challenge_label`. Reserved fields stay disabled. Do not put `title` into hook or CTA. D9.9 may be reused where its canonical Challenge request contract applies; Loop/Drill universal request adapters must be implemented and tested in E rather than assumed to exist. D3 Music V5 remains the audio engine. Gameplay `request.seed` and music `request.music_seed` remain independent.
 
-## Functional focus
+Current known evidence at 2026-10-30: E1 Windows automated Producer contract/self-test 2/2 PASS; manual GUI observation pending. E2 V4 overlay installation 21/21 and path guard 4/4 PASS. E2 physical render never started: PowerShell combined two `Get-Command python` results into an invalid executable path. Python 3.13.14, Godot 4.7.1 Mono, FFmpeg 9 and FFprobe are installed; the exact Python 3.13 path is `C:\Users\vinxe\AppData\Local\Programs\Python\Python313\python.exe`. No E2 AVI/MP4, pixel A/B or valid failure evidence ZIP exists. Do not count manual console `Write-Host PASS` as evidence.
 
-Implement one canonical E production service inside existing `c11c-suite/c11c-producer`; GUI and CLI must call it. Reuse D9.9 resolution where valid, but do not repurpose D9.10 or `shared_production_context_service.py` (D preparation-only). No physical render during E1.
+E0 restart preserves the exact pre-V9 root instructions in `docs/history/c11e/` before replacing them. The repaired E2 runner selects one existing executable, excludes WindowsApps aliases, records toolchain resolution and Process.Start diagnostics, and verifies evidence archives before reporting them. The failed V4 RequestId must never be reused; V5 uses a new RequestId.
 
-Then E2 adds a dedicated visible `editorial.title` slot for Challenge and exactly two isolated `CHALLENGE_001` MP4s differing only in title. Keep `content.hook`, CTA and simulation truth independent. Compare frames/pixels and confirm gameplay seed, duration and frame count unchanged.
+Next sequence: close E0; retry E2 using explicit Python 3.13 executable; review real A/B; then E3 Challenge D3/mux; E4A/B/C one complete A/V editorial render each; E5 determinism/regression; E6 Smoke 18; E7 Matrix 101 (52 Challenges +27 Loop grammars +20 Drill variants currently runnable; CH_008/009 remain blocked); E8 formal independent acceptance. No gate inherits another's PASS.
 
-## Non-negotiables
-
-Preserve C11-C freeze manifest SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`, 796318 bytes. Do not change simulation, `SimulationResult`, `winning_frame`, `close_calls`, RNG, mechanics, frame stream or challenge definitions. `request.seed` and `request.music_seed` are independent. D3 is E3. Loops/Drills are E4. CHALLENGE_008/009 remain excluded until the 11 s/12 s discrepancy is resolved. Do not alter D receipts or governance flags.
-
-PowerShell 5.1 only; full pasteable blocks. Prehash sources, stop on drift, preserve outputs and receipts. No branch changes, commit, push, renderer in E1, stale PASS, or docs-only workstreams.
+PowerShell 5.1: deliver one complete script/block; do not split `if/elseif/else`; avoid `$Name:` interpolation; use `-f`/`${Name}`. Capture `$LASTEXITCODE` immediately. Fail install => do not run verifier/renderer. Resolve executables to one absolute existing path; never cast a multi-result `Get-Command` collection to string. Record `FileName`, args, cwd and full exception before process start. A failure archive is reported only after existence, nonzero size, entries and SHA-256 are checked. No generated artifact is assumed to be in Downloads unless an exact path is supplied.

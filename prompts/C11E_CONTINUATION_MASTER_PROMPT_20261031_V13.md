@@ -1,0 +1,13 @@
+# C11-E continuation master prompt (V13)
+
+Work in `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. The active Windows checkout is authority; never claim local execution without operator output. Preserve branch `main`, HEAD `a3c7c5d284a96ce115ca52208b4039002502753b` and parent `bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c`. No reset, clean, branch switch, Git ref movement, commit or push. C11-C manifest is immutable: 796318 bytes, SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+
+E0 V2 is applied; E1 shared service remains installed and Windows automated tests passed 2/2 (GUI manual observation pending). E2 V5 reached 9/9 Python tests and successful pair preparation but failed before Godot because the runner read `request_id` from the CLI summary instead of the hash-bound `E2_PAIR_PREPARED.json` receipt. V6 runner corrects that reader.
+
+The first V6 installer failed before writing any of nine payloads: `[IO.File]::Replace` received a null backup path. Receipt SHA-256 `408fd6fa62f7e549475779621073a05e570d65b268168e4c87ce8b4f764d559e`, 0/9 applied; live runner remained V5 SHA `9340907afd4e787495be5a9d711024a8a7ab2787aa507842ea7c7ada0c198b72`. Ignore any manual “installed/verified” text printed after a thrown error.
+
+Next action: apply E2 V6 remediation package V2 using its exact ZIP/checksum and full installer block. It pins the failed V1 receipt, archives one exact orphan runner temp only after SHA verification, uses non-null unique replacement backup paths, retains preimage backups and verifies 9/9 postimages. If installation exits nonzero or hash mismatches, stop. Do not run E2. After actual installer PASS, run the runner with fresh RequestId `C11E-E2-CH001-AB-20261031-V6`. Keep V5 failure evidence and all partial artifacts untouched.
+
+E2 is not accepted until two physical MP4s pass FFprobe and A/B frame/body/title isolation; provenance and human visual review are mandatory. E2 is Challenge-only and has no audio. Then E3 D3 Music V5 + independent music seed + FFmpeg mux + FFprobe; E4A Challenge, E4B Visual Loop, E4C Visual Drill; E5 determinism and GUI/CLI parity; E6 Smoke18; E7 Matrix101 without silently counting held CH_008/009; E8 independent formal acceptance.
+
+All three families are mandatory. Preserve C generators/mechanics/binders/presentation. Enabled D9.8 fields: common title, subtitle, call_to_action, language; Challenge-only player_name and challenge_label. Reserved fields/show flags remain disabled. `request.seed` is gameplay-only; `request.music_seed` is music-only. Do not modify C manifest, protected C sources, D governance or release authority. Keep receipts/history add-only and record assistant/runner errors.

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://Main.tscn" id="1_main"]
+[ext_resource type="Script" path="res://tools/c11e/e2/C11EChallenge001E2.gd" id="2_script"]
+
+[node name="Main" instance=ExtResource("1_main")]
+script = ExtResource("2_script")

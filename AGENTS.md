@@ -1,31 +1,53 @@
-# AGENTS.md — C11-E current engineering authority (V4)
+# C11-E — current engineering authority (V11)
 
-## Active program and continuation order
+## Mission: the finished three-family producer
 
-The active engineering workstream is C11-E on the user-selected local Git branch `main`. Its objective is one GUI/CLI production path reusing C11-C mechanics and physical runners, D9.9 request/editorial resolution where valid, and D3 audio under separate gates. Do not switch branches or refs.
+Deliver one coherent GUI/CLI production workflow that creates final audiovisual MP4s for **Challenges, Visual Loops and Visual Drills**. Every family must use its existing C mechanics, timing, frame stream, presentation binder/profile and physical generator; add the enabled D editorial values in the proper family-specific visual slots; generate music with D3 using the independent `request.music_seed`; mux with FFmpeg; validate with FFprobe; and retain hash-bound provenance. C11-C remains the immutable production baseline until E8 is formally accepted and promotion is explicitly decided.
 
-Read in this order:
-1. `AGENTS.md` and `.continue/rules/CONTINUE.md`.
-2. `docs/current/e/README.md` and `docs/current/e/C11E_CURRENT_AUTHORITY_20261030_V4.md`.
-3. `docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261030_V4.md`.
-4. `docs/current/e/C11E_E0_REVIEW_AND_E1_SOURCE_ARCHITECTURE_20261030_V1.md`.
-5. `docs/current/e/C11E_DOCUMENTATION_RECONCILIATION_20261030_V4.md`.
-6. `docs/history/c11d/C11D_TO_C11E_ROADMAP_TRANSITION_20261030_V1.md`.
-7. Charter, architecture contract and risk register V3; then C11-C frozen contracts.
-8. `prompts/C11E_CONTINUATION_MASTER_PROMPT_20261030_V4.md` for a new context window.
+## Authority and read order
 
-## Authority and invariants
+1. This file and `.continue/rules/CONTINUE.md`.
+2. `docs/current/e/README.md`.
+3. `docs/current/e/C11E_CURRENT_AUTHORITY_20261030_V11.md`.
+4. `docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261030_V11.md`.
+5. `docs/current/e/C11E_PRODUCT_SCOPE_PRESENTATION_EDITORIAL_MUSIC_20261030_V1.md`.
+6. `docs/current/e/C11E_EXECUTION_HYGIENE_AND_ASSISTANT_ERROR_LOG_20261030_V7.md`.
+7. `docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261030_V1.md`.
+8. The relevant C source, family binder, physical runner, D9.8/D9.9 contracts and D3 music contracts.
+9. `prompts/C11E_CONTINUATION_MASTER_PROMPT_20261030_V11.md` for a new context.
 
-C11-C 2.19.12 remains the production baseline until E8 formal acceptance, freeze and promotion. Preserve `release/C11C_FREEZE_PACKAGE_MANIFEST.json` SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`, 796318 bytes. Never edit the frozen package/manifest or extract a snapshot over the checkout.
+## Architecture
 
-D receipts/locks remain immutable and scoped to D. D9.10 and `shared_production_context_service.py` remain preparation-only; do not convert them into an E dispatcher. E owns its service, receipts and gates. E tests do not promote a release.
+- Work on the user's selected local `main`; never reset, clean, force-checkout, move refs, create/delete branches, commit or push by automation.
+- Keep the five existing `c11c-suite` modules. No sixth module and no `c11d-control`.
+- GUI and CLI call one canonical C11-E production service. They must not have separate production implementations.
+- Reuse the real C generators, deterministic mechanics, family-specific binders, presentation profiles and Godot Movie Maker capture. E adds request/editorial/audio orchestration, not a second gameplay engine.
+- Reuse the canonical D9.8 editorial field semantics; reuse D9.9 where its existing Challenge request schema applies. Do not claim Loops/Drills are already accepted by D9.9: E must explicitly add and test the missing family request adapter/dispatch while preserving universal semantics.
+- Reuse D3 Music V5 and FFmpeg mux. `request.seed` and `request.music_seed` are distinct; neither may derive from or replace the other.
 
-Keep five existing `c11c-suite` modules; no `c11d-control` or sixth suite module. GUI and CLI call one canonical E production service. Reuse C generators and visual consumers. Do not mutate `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, gameplay RNG, mechanics, challenge definitions or timing to support editorial fields. Do not enumerate/serialize arbitrary `FrameSnapshot.custom_data`.
+## Immutable C and D boundaries
 
-`request.seed` and `request.music_seed` are separate. First visual proof is `CHALLENGE_001`, with `title` displayed in its own dedicated editorial slot, not mapped to `content.hook`. `CHALLENGE_008/009` remain excluded until the declared 11 s versus phase sum 12 s conflict is resolved.
+- C11-C freeze manifest remains exactly 796318 bytes / SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`.
+- Do not alter `SimulationResult`, `winning_frame`, `close_calls`, `WinningFrameDetector`, `RenderedFrameStream`, gameplay/structural RNG, mechanics, source definitions, phase durations or protected C files.
+- Never enumerate/serialize arbitrary `FrameSnapshot.custom_data`.
+- Keep D governance/history untouched: D9.10 `PREPARE_ONLY`; D4.8, D9.14, D9.16, D9.17 and D10 retain their recorded blocked/no-go states; no D release authority is implied by E tests.
+- CHALLENGE_008/009 remain excluded pending explicit resolution of 11-second declared duration vs 12-second phase sum.
 
-## Gates and execution
+## Enabled editorial scope
 
-E0 is verified PASS. E1 is active service/API/parity work and has no physical renderer dispatch. E2 permits only two isolated Challenge renders for title A/B; E3 adds D3+FFmpeg mux; E4 separately adds Loop and Drill. E5 regression/determinism, E6 Smoke 18, E7 Matrix 101 and E8 acceptance follow in order. Do not inherit PASS across gates.
+All three families: `title`, `subtitle`, `call_to_action`, `language`. Challenges additionally: `player_name`, `challenge_label`. Reserved `hook`, preparation/final text, header/footer lines and show/hide flags remain disabled. Never map title into C's hook or CTA. Each field must reach its own approved visual slot via the real family's presentation model/binder.
 
-Use Windows PowerShell 5.1 and complete pasteable blocks. No `&&`, `Read-Host` or PowerShell 7-only syntax. Prehash every source; stop on mismatch. Capture real exit codes, stdout/stderr, tool versions, hashes and receipts. No reset/clean/forced checkout. No commit/push unless specifically directed.
+## Required product acceptance
+
+A family is not accepted by a plan, sidecar, unit test or synthetic image. It needs real family generator + binder execution, a final MP4, editorial pixel proof, music WAV made with `music_seed`, muxed A/V MP4, FFprobe stream/geometry/FPS/duration/audio checks, content review and hash-bound provenance.
+
+## Work method
+
+1. E0 reconciles the actual checkout and receipts without resetting history.
+2. E1 establishes/validates the common service.
+3. E2 isolates Challenge title-to-pixels.
+4. E3 proves D3 music/mux on Challenge.
+5. E4A/E4B/E4C prove one complete A/V editorial render per family.
+6. E5 determinism and regression; E6 Smoke 18; E7 Matrix 101; E8 independent acceptance and promotion decision.
+
+Make the smallest code change that unlocks a functional test. Before sharing a script, inspect the complete PowerShell 5.1 file; pin current commit ancestry/receipts and exact file hashes; validate every destination before writing; use one self-contained package/command; capture actual native process path/args/cwd/exit code; never claim PASS or evidence ZIP unless the verified receipt/artifact exists. A later `Write-Host PASS` cannot override a failed exit code. When the assistant cannot run Windows PowerShell/Godot, say so.
