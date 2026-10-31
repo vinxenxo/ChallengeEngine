@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [string]$Root = 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS',
-    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$')][string]$RequestId = 'C11E-E2-CH001-AB-20261031-V6',
+    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$')][string]$RequestId = 'C11E-E2-CH001-AB-20261031-V8',
     [ValidateRange(1,2147483646)][int]$Seed = 193847,
     [ValidateRange(1,2147483646)][int]$MusicSeed = 840001,
     [string]$TitleA = 'C11-E TITLE A',
@@ -14,15 +14,17 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2.0
 
 $ExpectedBranch = 'main'
-$ExpectedHead = 'a3c7c5d284a96ce115ca52208b4039002502753b'
+$RequiredE0ReentryCommit = 'b92434d6a8b50cef7e49ba6b75a4813777927fe7'
 $ExpectedManifestSha = 'e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953'
 $ExpectedManifestBytes = 796318
-$ExpectedParent = 'bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c'
+$RequiredE1Commit = 'a3c7c5d284a96ce115ca52208b4039002502753b'
+$ExpectedE1ReceiptHead = 'bc8330e794fe37efe0c4f9c2bb0c0bd389f28f2c'
 $ExpectedE1ServiceSha = '6f18d5fd906ff615d95d7f9d53e2e6ff0bf37c74e185efdcaf34354c888b9645'
 $ExpectedE1CliSha = 'e7272231dca2eb730506308b092fce9b3644f7f8cfd9f2c2bbbbd1b695e82fc4'
 $ExpectedE1MainSha = '05f4ed650cec028df3d8e4253301fa16510b0fc495e028f9e0d6addc113551fb'
 $ExpectedGodotSceneSha = '6dfe47ebd3d158a19f0c72727ff68e4d5b37910513d89c523837b785e3f3d34c'
-$ExpectedGodotScriptSha = 'd53faa36379b5abdc25f7a7f57c76f0b8567044fc1d5a84ca65a994e3ed1759b'
+$ExpectedGodotScriptSha = 'af142fc5fc41f4e398e981e60c014d9ddd09dccc888c1d3fbc2e1b0e77911493'
+$ExpectedGodotJsonTestSha = 'd0591c6a5a2c9b49774b607aff58a59bc1e08fe17273dc774fd23743e2d1082d'
 $ExpectedPairBuilderSha = '37889062856127d0e4161b1c5951547d6a954e807e9fd031fd58fca158373eb7'
 $ExpectedPairTestsSha = '36b6f296d17f72b51b96946953b1abc72e907f5823567fd8a9993ae5f4169342'
 
@@ -178,20 +180,63 @@ function Get-FrameMd5Rows {
     return ,$rows
 }
 
+function Assert-VideoFrameContent {
+    param([string]$Ffmpeg, [string]$VideoPath, [string]$LogRoot, [string]$Label, [string]$WorkingDirectory)
+    $out = Join-Path $LogRoot ($Label + '.stdout.log')
+    $err = Join-Path $LogRoot ($Label + '.stderr.log')
+    # Inspect deterministic gameplay/middle/closing samples. A successful Movie Maker file
+    # with a constant clear-colour viewport must not be mistaken for a rendered challenge.
+    $filter = 'select=eq(n\,60)+eq(n\,270)+eq(n\,480),signalstats,metadata=print'
+    $run = Invoke-NativeProcess -FilePath $Ffmpeg -Arguments @('-hide_banner','-loglevel','info','-i',$VideoPath,'-vf',$filter,'-frames:v','3','-an','-f','null','NUL') -WorkingDirectory $WorkingDirectory -StdoutPath $out -StderrPath $err -Label $Label
+    $log = $run.Stderr + "`n" + $run.Stdout
+    $keys = @('YMIN','YMAX','UMIN','UMAX','VMIN','VMAX')
+    $values = @{}
+    foreach ($key in $keys) {
+        $matches = [regex]::Matches($log, ('lavfi\.signalstats\.' + $key + '=([0-9]+(?:\.[0-9]+)?)'))
+        if ($matches.Count -ne 3) { throw ("Visual content probe {0} did not return three {1} samples; got {2}." -f $Label, $key, $matches.Count) }
+        $values[$key] = @($matches | ForEach-Object { [double]$_.Groups[1].Value })
+    }
+    $rows = @()
+    $sampleIndices = @(60,270,480)
+    for ($i = 0; $i -lt 3; $i++) {
+        $yRange = $values['YMAX'][$i] - $values['YMIN'][$i]
+        $uRange = $values['UMAX'][$i] - $values['UMIN'][$i]
+        $vRange = $values['VMAX'][$i] - $values['VMIN'][$i]
+        if ($yRange -le 1 -and $uRange -le 1 -and $vRange -le 1) {
+            throw ("Source AVI contains a spatially uniform frame at required sample index {0} for run {1}; Movie Maker output is not accepted as visual content." -f ($sampleIndices[$i]), $Label)
+        }
+        $rows += [PSCustomObject]@{
+            frame_index = [int]$sampleIndices[$i]
+            luma_min = $values['YMIN'][$i]
+            luma_max = $values['YMAX'][$i]
+            luma_range = $yRange
+            chroma_u_range = $uRange
+            chroma_v_range = $vRange
+            spatially_nonuniform = $true
+        }
+    }
+    return ,$rows
+}
+
 $ResolvedRoot = (Resolve-Path -LiteralPath $Root).Path
 $Branch = (& git -C $ResolvedRoot branch --show-current).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Unable to read Git branch.' }
 $Head = (& git -C $ResolvedRoot rev-parse HEAD).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Unable to read Git HEAD.' }
-if ($Branch -ne $ExpectedBranch -or $Head -ne $ExpectedHead) {
-    throw ("E2 checkout identity mismatch: branch={0}; HEAD={1}" -f $Branch, $Head)
+$HeadParent = (& git -C $ResolvedRoot rev-parse HEAD^).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'Unable to read current Git HEAD parent.' }
+if ($Branch -ne $ExpectedBranch) {
+    throw ("E2 branch mismatch: expected={0}; found={1}" -f $ExpectedBranch, $Branch)
 }
-$HeadLine = (& git -C $ResolvedRoot rev-list --parents -n 1 HEAD).Trim()
-if ($LASTEXITCODE -ne 0) { throw 'Unable to read E1 commit parent.' }
-$HeadParts = @($HeadLine -split '\s+')
-if ($HeadParts.Count -ne 2 -or $HeadParts[0] -ne $ExpectedHead -or $HeadParts[1] -ne $ExpectedParent) {
-    throw ("E2 E1 commit ancestry mismatch: {0}" -f $HeadLine)
-}
+# Per-iteration local commits are expected. Pin the installed E0/E1 commits as
+# required ancestors, record the actual HEAD/parent, and rely on exact source pins
+# below instead of freezing HEAD to a stale value across user commits.
+& git -C $ResolvedRoot merge-base --is-ancestor $RequiredE1Commit $Head
+$E1AncestorCode = $LASTEXITCODE
+if ($E1AncestorCode -ne 0) { throw ("Required E1 commit is not an ancestor of active HEAD: {0}" -f $RequiredE1Commit) }
+& git -C $ResolvedRoot merge-base --is-ancestor $RequiredE0ReentryCommit $Head
+$E0AncestorCode = $LASTEXITCODE
+if ($E0AncestorCode -ne 0) { throw ("Required E0 re-entry commit is not an ancestor of active HEAD: {0}" -f $RequiredE0ReentryCommit) }
 
 $Manifest = Join-Path $ResolvedRoot 'release\C11C_FREEZE_PACKAGE_MANIFEST.json'
 $ManifestSha = Get-Sha256 $Manifest
@@ -208,8 +253,8 @@ foreach ($ReceiptPath in @($E1InstallReceiptPath, $E1TestReceiptPath)) {
 }
 $E1InstallReceipt = Get-Content -LiteralPath $E1InstallReceiptPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $E1TestReceipt = Get-Content -LiteralPath $E1TestReceiptPath -Raw -Encoding UTF8 | ConvertFrom-Json
-if ($E1InstallReceipt.status -ne 'E1_CODE_OVERLAY_APPLIED_PENDING_WINDOWS_ACCEPTANCE' -or $E1InstallReceipt.branch -ne 'main' -or $E1InstallReceipt.head -ne $ExpectedParent) { throw 'E1 installation receipt identity/status mismatch.' }
-if ($E1TestReceipt.status -ne 'E1_CODE_TESTS_PASS_GUI_OPERATOR_RUNTIME_PENDING' -or $E1TestReceipt.branch -ne 'main' -or $E1TestReceipt.head -ne $ExpectedParent) { throw 'E1 Windows test receipt identity/status mismatch.' }
+if ($E1InstallReceipt.status -ne 'E1_CODE_OVERLAY_APPLIED_PENDING_WINDOWS_ACCEPTANCE' -or $E1InstallReceipt.branch -ne 'main' -or $E1InstallReceipt.head -ne $ExpectedE1ReceiptHead) { throw 'E1 installation receipt identity/status mismatch.' }
+if ($E1TestReceipt.status -ne 'E1_CODE_TESTS_PASS_GUI_OPERATOR_RUNTIME_PENDING' -or $E1TestReceipt.branch -ne 'main' -or $E1TestReceipt.head -ne $ExpectedE1ReceiptHead) { throw 'E1 Windows test receipt identity/status mismatch.' }
 if (@($E1TestReceipt.test_results).Count -ne 2 -or @($E1TestReceipt.test_results | Where-Object { [int]$_.exit_code -ne 0 }).Count -ne 0) { throw 'E1 Windows parent test receipt is not 2/2 PASS.' }
 
 $Pins = @(
@@ -248,13 +293,15 @@ $PairBuilder = Join-Path $E2Root 'c11e_e2_challenge_pair.py'
 $PairTests = Join-Path $E2Root 'test_c11e_e2_challenge_pair.py'
 $Scene = Join-Path $E2Root 'C11EChallenge001E2.tscn'
 $GodotScript = Join-Path $E2Root 'C11EChallenge001E2.gd'
-foreach ($Path in @($PairBuilder, $PairTests, $Scene, $GodotScript)) {
+$GodotJsonTest = Join-Path $E2Root 'test_c11e_e2_godot_json_numeric_contract.gd'
+foreach ($Path in @($PairBuilder, $PairTests, $Scene, $GodotScript, $GodotJsonTest)) {
     if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { throw ("Missing E2 component: {0}" -f $Path) }
 }
 if ((Get-Sha256 $PairBuilder) -ne $ExpectedPairBuilderSha) { throw 'E2 Python pair-builder source pin mismatch.' }
 if ((Get-Sha256 $PairTests) -ne $ExpectedPairTestsSha) { throw 'E2 Python test source pin mismatch.' }
 if ((Get-Sha256 $Scene) -ne $ExpectedGodotSceneSha) { throw 'E2 scene source pin mismatch.' }
 if ((Get-Sha256 $GodotScript) -ne $ExpectedGodotScriptSha) { throw 'E2 GDScript source pin mismatch.' }
+if ((Get-Sha256 $GodotJsonTest) -ne $ExpectedGodotJsonTestSha) { throw 'E2 Godot JSON numeric test source pin mismatch.' }
 $E2RunnerSha = Get-Sha256 $PSCommandPath
 
 function Resolve-NativeExecutablePath {
@@ -321,6 +368,8 @@ $ToolchainRecord = [ordered]@{
 $NativeViewportState = $null
 $RenderRows = @()
 $ReviewSampleRows = @()
+$GodotInvocationCount = 0
+$MediaPaths = @()
 
 try {
     Write-Host '========== C11-E E2 CHALLENGE TITLE A/B ==========' -ForegroundColor Cyan
@@ -339,6 +388,11 @@ try {
     if ($PythonMajor -lt 3 -or ($PythonMajor -eq 3 -and $PythonMinor -lt 13)) { throw ("E2 requires Python 3.13 or newer; found {0}." -f $PythonVersionText) }
     $GodotVersionText = ($VersionGodot.Stdout + $VersionGodot.Stderr).Trim()
     if ($GodotVersionText -notmatch '4\.7\.1' -or $GodotVersionText -notmatch 'mono') { throw ("E2 requires the reviewed Godot 4.7.1 Mono runtime; found {0}." -f $GodotVersionText) }
+
+    $GodotJsonCheck = Invoke-NativeProcess -FilePath $Godot -Arguments @('--headless', '--path', $ResolvedRoot, '--script', $GodotJsonTest) -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $Stage 'godot_json_numeric_contract.stdout.log') -StderrPath (Join-Path $Stage 'godot_json_numeric_contract.stderr.log') -Label 'godot_json_numeric_contract'
+    $GodotJsonCombined = $GodotJsonCheck.Stdout + $GodotJsonCheck.Stderr
+    if (-not $GodotJsonCombined.Contains('C11E_E2_GODOT_JSON_NUMERIC_CONTRACT=PASS')) { throw 'Godot JSON numeric contract test did not emit its PASS marker.' }
+    Write-Host $GodotJsonCombined
 
     $Tests = Invoke-NativeProcess -FilePath $Python -Arguments @($PairTests) -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $Stage 'e2_contract_tests.stdout.log') -StderrPath (Join-Path $Stage 'e2_contract_tests.stderr.log') -Label 'e2_contract_tests'
     Write-Host ($Tests.Stdout + $Tests.Stderr)
@@ -411,9 +465,26 @@ try {
             ('--c11e-editorial-sha256=' + $SidecarSha),
             ('--c11e-config-sha256=' + $ConfigSha)
         )
-        $GodotRun = Invoke-NativeProcess -FilePath $Godot -Arguments $GodotArgs -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $RunDir 'godot.stdout.log') -StderrPath (Join-Path $RunDir 'godot.stderr.log') -Label ("godot_render_{0}" -f $Label)
+        $GodotStartDiagnostic = Join-Path $RunDir 'godot.stdout.log.start.json'
+        try {
+            $GodotRun = Invoke-NativeProcess -FilePath $Godot -Arguments $GodotArgs -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $RunDir 'godot.stdout.log') -StderrPath (Join-Path $RunDir 'godot.stderr.log') -Label ("godot_render_{0}" -f $Label)
+        } catch {
+            if (Test-Path -LiteralPath $GodotStartDiagnostic -PathType Leaf) {
+                try {
+                    $GodotStartRecord = Get-Content -LiteralPath $GodotStartDiagnostic -Raw -Encoding UTF8 | ConvertFrom-Json
+                    if ($GodotStartRecord.started -eq $true) { $GodotInvocationCount++ }
+                } catch { }
+            }
+            if (Test-Path -LiteralPath $Avi -PathType Leaf) { $MediaPaths += $Avi }
+            throw
+        }
+        $GodotInvocationCount++
+        if (Test-Path -LiteralPath $Avi -PathType Leaf) { $MediaPaths += $Avi }
         $GodotCombined = $GodotRun.Stdout + "`n" + $GodotRun.Stderr
         [IO.File]::WriteAllText((Join-Path $RunDir 'godot.command.txt'), $GodotRun.Command, $Utf8NoBom)
+        if ($GodotCombined -match '(?im)SCRIPT ERROR:|ERROR: Failed to load script|Parse Error:|Warning treated as error') {
+            throw ("Godot reported a script parse/load error for run {0}; inspect godot.stderr.log. A generated AVI is not accepted." -f $Label)
+        }
         if ($GodotCombined -notmatch 'Movie Maker mode enabled') { throw ("Godot did not enter Movie Maker mode for run {0}." -f $Label) }
         if ($GodotCombined -notmatch 'Done recording movie at path:') { throw ("Godot did not report Movie Maker completion for run {0}." -f $Label) }
         if ($GodotCombined -match 'CHALLENGE_INVALID|\[ERROR_JSON\]|\[C11E_E2\].*(mismatch|failed|missing)') { throw ("Godot emitted a Challenge/E2 error for run {0}." -f $Label) }
@@ -423,6 +494,7 @@ try {
         if (-not $GodotCombined.Contains($ExpectedTitleMarker)) { throw ("Godot did not confirm the expected title slot/hash for run {0}." -f $Label) }
         if (-not $GodotCombined.Contains($ExpectedSeedMarker)) { throw ("Godot did not confirm the expected gameplay seed for run {0}." -f $Label) }
         if (-not (Test-Path -LiteralPath $Avi -PathType Leaf)) { throw ("Godot source AVI missing for run {0}." -f $Label) }
+        $VisualContentRows = @(Assert-VideoFrameContent -Ffmpeg $Ffmpeg -VideoPath $Avi -LogRoot $RunDir -Label ("source_visual_content_{0}" -f $Label) -WorkingDirectory $ResolvedRoot)
 
         $ProbeOut = Invoke-NativeProcess -FilePath $Ffprobe -Arguments @('-v','error','-select_streams','v:0','-count_frames','-show_entries','stream=width,height,r_frame_rate,nb_read_frames,duration,codec_name,pix_fmt','-of','json',$Avi) -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $RunDir 'source_ffprobe.stdout.log') -StderrPath (Join-Path $RunDir 'source_ffprobe.stderr.log') -Label ("ffprobe_source_{0}" -f $Label)
         $SourceProbe = $ProbeOut.Stdout | ConvertFrom-Json
@@ -466,6 +538,7 @@ try {
             source_codec = [string]$SourceStream.codec_name
             source_pixel_format = [string]$SourceStream.pix_fmt
             source_duration = [string]$SourceStream.duration
+            source_visual_content_samples = $VisualContentRows
             delivery_fps = $DeliveryFps
             delivery_frames = $DeliveryFrames
             final_width = [int]$VideoStream.width
@@ -558,7 +631,7 @@ try {
         created_at = (Get-Date).ToString('o')
         branch = $Branch
         head = $Head
-        head_parent = $ExpectedParent
+        head_parent = $HeadParent
         c11c_manifest = [ordered]@{ bytes = $ManifestBytes; sha256 = $ManifestSha }
         request_id = $RequestId
         selection = [ordered]@{ content_type = 'challenges'; family_id = 'key'; variant_id = 'CHALLENGE_001' }
@@ -575,7 +648,7 @@ try {
         header_outside_title_slot = [ordered]@{ status = 'PIXEL_IDENTICAL'; top_frames = $HeaderTopFramesIdentical; bottom_frames = $HeaderBottomFramesIdentical; left_frames = $HeaderLeftFramesIdentical; right_frames = $HeaderRightFramesIdentical }
         verified_source_pins = $VerifiedPins
         review_samples = $ReviewSampleRows
-        e2_sources = [ordered]@{ pair_builder_sha256 = $ExpectedPairBuilderSha; pair_tests_sha256 = $ExpectedPairTestsSha; scene_sha256 = $ExpectedGodotSceneSha; gdscript_sha256 = $ExpectedGodotScriptSha; runner_sha256 = $E2RunnerSha }
+        e2_sources = [ordered]@{ pair_builder_sha256 = $ExpectedPairBuilderSha; pair_tests_sha256 = $ExpectedPairTestsSha; scene_sha256 = $ExpectedGodotSceneSha; gdscript_sha256 = $ExpectedGodotScriptSha; godot_json_numeric_test_sha256 = $ExpectedGodotJsonTestSha; runner_sha256 = $E2RunnerSha }
         render_rows = $RenderRows
         pair_preparation_receipt = $Prepared.pair_receipt
         pair_preparation_receipt_sha256 = $Prepared.pair_receipt_sha256
@@ -586,7 +659,7 @@ try {
             ffmpeg = (($VersionFfmpeg.Stdout -split "`r?`n")[0])
             ffprobe = (($VersionFfprobe.Stdout -split "`r?`n")[0])
         }
-        tests = [ordered]@{ python_contract_tests = '9/9'; runner_exit_code = 0 }
+        tests = [ordered]@{ python_contract_tests = '9/9'; godot_json_numeric_contract = 'PASS'; runner_exit_code = 0 }
         renderer_invoked = $true
         media_created = $true
         scope = 'EXACTLY_TWO_ISOLATED_CHALLENGE_001_AB_RENDER_TESTS'
@@ -628,12 +701,16 @@ catch {
             request_id = $RequestId
             branch = $Branch
             head = $Head
+            head_parent = $HeadParent
             stage = $Stage
             output_root = $OutputRoot
             output_root_exists = (Test-Path -LiteralPath $OutputRoot)
             exception = $FailureText
             inner_exception = $(if ($_.Exception.InnerException) { $_.Exception.InnerException.ToString() } else { $null })
-            renderer_invoked = $false
+            renderer_invoked = ($GodotInvocationCount -gt 0)
+            renderer_invocation_count = $GodotInvocationCount
+            media_created = (@($MediaPaths).Count -gt 0)
+            media_paths = @($MediaPaths)
             media_accepted = $false
             release_authority = 'NONE'
         }

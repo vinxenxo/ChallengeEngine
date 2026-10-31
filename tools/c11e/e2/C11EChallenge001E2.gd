@@ -51,7 +51,7 @@ func _ready() -> void:
 		push_error("[C11E_E2] Cannot open editorial sidecar.")
 		get_tree().quit(38)
 		return
-	var parsed := JSON.parse_string(sidecar_file.get_as_text())
+	var parsed: Variant = JSON.parse_string(sidecar_file.get_as_text())
 	sidecar_file.close()
 	if not (parsed is Dictionary):
 		push_error("[C11E_E2] Editorial sidecar must be a JSON object.")
@@ -90,6 +90,19 @@ func _get_c11e_user_arg(prefix: String) -> String:
 
 func _get_c11e_config_path() -> String:
 	return _get_c11e_user_arg("--config=")
+
+static func is_positive_integral_seed(value: Variant) -> bool:
+	# Godot JSON.parse_string() represents JSON numbers as TYPE_FLOAT. Accept either
+	# numeric Variant type, but require an exact positive integer in the request range.
+	var value_type := typeof(value)
+	if value_type != TYPE_INT and value_type != TYPE_FLOAT:
+		return false
+	var numeric_value := float(value)
+	if is_nan(numeric_value) or is_inf(numeric_value):
+		return false
+	if numeric_value < 1.0 or numeric_value > 2147483646.0:
+		return false
+	return numeric_value == floor(numeric_value)
 
 func _validate_c11e_sidecar(sidecar: Dictionary) -> bool:
 	if sidecar.get("schema") != "C11E-CHALLENGE-EDITORIAL-SIDECAR-V1":
@@ -136,11 +149,9 @@ func _validate_c11e_sidecar(sidecar: Dictionary) -> bool:
 		return false
 	if seeds.get("music", {}).get("field") != "request.music_seed":
 		return false
-	if typeof(seeds.get("gameplay", {}).get("value")) != TYPE_INT:
+	if not is_positive_integral_seed(seeds.get("gameplay", {}).get("value")):
 		return false
-	if typeof(seeds.get("music", {}).get("value")) != TYPE_INT:
-		return false
-	if int(seeds["gameplay"]["value"]) <= 0 or int(seeds["music"]["value"]) <= 0:
+	if not is_positive_integral_seed(seeds.get("music", {}).get("value")):
 		return false
 	return true
 
