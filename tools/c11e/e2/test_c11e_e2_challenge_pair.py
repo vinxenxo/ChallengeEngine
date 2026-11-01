@@ -94,12 +94,18 @@ class C11EE2ChallengePairTests(unittest.TestCase):
     def test_09_godot_scene_inherits_main_and_adds_no_c_source_edits(self) -> None:
         scene = (HERE / "C11EChallenge001E2.tscn").read_text(encoding="utf-8")
         script = (HERE / "C11EChallenge001E2.gd").read_text(encoding="utf-8")
+        validator = (HERE / "C11EE2SidecarValidator.gd").read_text(encoding="utf-8")
         self.assertIn('res://Main.tscn', scene)
         self.assertIn('res://tools/c11e/e2/C11EChallenge001E2.gd', scene)
         self.assertIn('extends "res://GeneradorMaestro.gd"', script)
         self.assertIn('super._ready()', script)
         self.assertIn('header.editorial_title', script)
-        self.assertIn('TITLE_IS_NOT_HOOK_CTA_OR_GAMEPLAY', script)
+        # V9 moved semantic sidecar enforcement into the shared validator.
+        # Assert the production scene delegates to it instead of requiring
+        # the semantic marker to be duplicated in the scene source text.
+        self.assertIn('C11EE2SidecarValidatorScript.validate(sidecar)', script)
+        self.assertIn('visual.get("semantic_separation") != "TITLE_IS_NOT_HOOK_CTA_OR_GAMEPLAY"', validator)
+        self.assertIn('str(_c11e_sidecar["editorial"]["title"])', script)
         self.assertNotIn('ChallengePresentationBinder.gd', script)
         self.assertNotIn('SimulationResult', script)
         self.assertNotIn('FrameSnapshot', script)

@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [string]$Root = 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS',
-    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$')][string]$RequestId = 'C11E-E2-CH001-AB-20261031-V8',
+    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$')][string]$RequestId = 'C11E-E2-CH001-AB-20261031-V9',
     [ValidateRange(1,2147483646)][int]$Seed = 193847,
     [ValidateRange(1,2147483646)][int]$MusicSeed = 840001,
     [string]$TitleA = 'C11-E TITLE A',
@@ -23,10 +23,11 @@ $ExpectedE1ServiceSha = '6f18d5fd906ff615d95d7f9d53e2e6ff0bf37c74e185efdcaf34354
 $ExpectedE1CliSha = 'e7272231dca2eb730506308b092fce9b3644f7f8cfd9f2c2bbbbd1b695e82fc4'
 $ExpectedE1MainSha = '05f4ed650cec028df3d8e4253301fa16510b0fc495e028f9e0d6addc113551fb'
 $ExpectedGodotSceneSha = '6dfe47ebd3d158a19f0c72727ff68e4d5b37910513d89c523837b785e3f3d34c'
-$ExpectedGodotScriptSha = 'af142fc5fc41f4e398e981e60c014d9ddd09dccc888c1d3fbc2e1b0e77911493'
-$ExpectedGodotJsonTestSha = 'd0591c6a5a2c9b49774b607aff58a59bc1e08fe17273dc774fd23743e2d1082d'
+$ExpectedGodotScriptSha = '4787b4459eb509117c6d752d1b6744236bb5a291372f2ef5a5cb1eb58755dae5'
+$ExpectedGodotJsonTestSha = '73fc4421f6ebfec8e3f458123600663cc772838731f57e240ef22abbebf2ef3b'
+$ExpectedGodotValidatorSha = 'b4150537b3c65b757c1cef05be66599d1d2fd6a46e038e4ddbc6beec4aaf333d'
 $ExpectedPairBuilderSha = '37889062856127d0e4161b1c5951547d6a954e807e9fd031fd58fca158373eb7'
-$ExpectedPairTestsSha = '36b6f296d17f72b51b96946953b1abc72e907f5823567fd8a9993ae5f4169342'
+$ExpectedPairTestsSha = 'ab4ed3fd421ef0cac86d4ef25167f0161a186ef5bd90373414abed7bea17d2a9'
 
 function Get-Sha256 {
     param([string]$Path)
@@ -294,7 +295,8 @@ $PairTests = Join-Path $E2Root 'test_c11e_e2_challenge_pair.py'
 $Scene = Join-Path $E2Root 'C11EChallenge001E2.tscn'
 $GodotScript = Join-Path $E2Root 'C11EChallenge001E2.gd'
 $GodotJsonTest = Join-Path $E2Root 'test_c11e_e2_godot_json_numeric_contract.gd'
-foreach ($Path in @($PairBuilder, $PairTests, $Scene, $GodotScript, $GodotJsonTest)) {
+$GodotValidator = Join-Path $E2Root 'C11EE2SidecarValidator.gd'
+foreach ($Path in @($PairBuilder, $PairTests, $Scene, $GodotScript, $GodotJsonTest, $GodotValidator)) {
     if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { throw ("Missing E2 component: {0}" -f $Path) }
 }
 if ((Get-Sha256 $PairBuilder) -ne $ExpectedPairBuilderSha) { throw 'E2 Python pair-builder source pin mismatch.' }
@@ -302,6 +304,7 @@ if ((Get-Sha256 $PairTests) -ne $ExpectedPairTestsSha) { throw 'E2 Python test s
 if ((Get-Sha256 $Scene) -ne $ExpectedGodotSceneSha) { throw 'E2 scene source pin mismatch.' }
 if ((Get-Sha256 $GodotScript) -ne $ExpectedGodotScriptSha) { throw 'E2 GDScript source pin mismatch.' }
 if ((Get-Sha256 $GodotJsonTest) -ne $ExpectedGodotJsonTestSha) { throw 'E2 Godot JSON numeric test source pin mismatch.' }
+if ((Get-Sha256 $GodotValidator) -ne $ExpectedGodotValidatorSha) { throw 'E2 Godot sidecar validator source pin mismatch.' }
 $E2RunnerSha = Get-Sha256 $PSCommandPath
 
 function Resolve-NativeExecutablePath {
@@ -389,10 +392,27 @@ try {
     $GodotVersionText = ($VersionGodot.Stdout + $VersionGodot.Stderr).Trim()
     if ($GodotVersionText -notmatch '4\.7\.1' -or $GodotVersionText -notmatch 'mono') { throw ("E2 requires the reviewed Godot 4.7.1 Mono runtime; found {0}." -f $GodotVersionText) }
 
-    $GodotJsonCheck = Invoke-NativeProcess -FilePath $Godot -Arguments @('--headless', '--path', $ResolvedRoot, '--script', $GodotJsonTest) -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $Stage 'godot_json_numeric_contract.stdout.log') -StderrPath (Join-Path $Stage 'godot_json_numeric_contract.stderr.log') -Label 'godot_json_numeric_contract'
+    $GodotJsonResultPath = Join-Path $Stage 'godot_json_numeric_contract.result.json'
+    $GodotJsonCheck = Invoke-NativeProcess -FilePath $Godot -Arguments @(
+        '--headless', '--path', $ResolvedRoot, '--script', 'res://tools/c11e/e2/test_c11e_e2_godot_json_numeric_contract.gd',
+        '--', ('--result-json=' + $GodotJsonResultPath)
+    ) -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $Stage 'godot_json_numeric_contract.stdout.log') -StderrPath (Join-Path $Stage 'godot_json_numeric_contract.stderr.log') -Label 'godot_json_numeric_contract'
     $GodotJsonCombined = $GodotJsonCheck.Stdout + $GodotJsonCheck.Stderr
-    if (-not $GodotJsonCombined.Contains('C11E_E2_GODOT_JSON_NUMERIC_CONTRACT=PASS')) { throw 'Godot JSON numeric contract test did not emit its PASS marker.' }
+    if (-not (Test-Path -LiteralPath $GodotJsonResultPath -PathType Leaf)) {
+        throw ('Godot JSON numeric regression returned exit zero but did not write its structured result. Inspect ' + (Join-Path $Stage 'godot_json_numeric_contract.stdout.log') + ' and ' + (Join-Path $Stage 'godot_json_numeric_contract.stderr.log'))
+    }
+    $GodotJsonResult = Get-Content -LiteralPath $GodotJsonResultPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    if ($GodotJsonResult.schema -ne 'C11E-E2-GODOT-JSON-NUMERIC-TEST-RESULT-V1' -or
+        $GodotJsonResult.status -ne 'PASS' -or
+        $GodotJsonResult.full_sidecar_validation -ne $true -or
+        $GodotJsonResult.numeric_cases_passed -ne 30 -or
+        $GodotJsonResult.numeric_cases_expected -ne 30 -or
+        $GodotJsonResult.json_gameplay_type -ne 'float' -or
+        $GodotJsonResult.json_music_type -ne 'float') {
+        throw ('Godot JSON numeric regression result did not satisfy the reviewed contract: ' + ($GodotJsonResult | ConvertTo-Json -Depth 8 -Compress))
+    }
     Write-Host $GodotJsonCombined
+    Write-Host ('GODOT_NUMERIC_RESULT=' + $GodotJsonResultPath)
 
     $Tests = Invoke-NativeProcess -FilePath $Python -Arguments @($PairTests) -WorkingDirectory $ResolvedRoot -StdoutPath (Join-Path $Stage 'e2_contract_tests.stdout.log') -StderrPath (Join-Path $Stage 'e2_contract_tests.stderr.log') -Label 'e2_contract_tests'
     Write-Host ($Tests.Stdout + $Tests.Stderr)
@@ -659,7 +679,7 @@ try {
             ffmpeg = (($VersionFfmpeg.Stdout -split "`r?`n")[0])
             ffprobe = (($VersionFfprobe.Stdout -split "`r?`n")[0])
         }
-        tests = [ordered]@{ python_contract_tests = '9/9'; godot_json_numeric_contract = 'PASS'; runner_exit_code = 0 }
+        tests = [ordered]@{ python_contract_tests = '9/9'; godot_json_numeric_contract = 'PASS_30_OF_30_STRUCTURED_RESULT'; runner_exit_code = 0 }
         renderer_invoked = $true
         media_created = $true
         scope = 'EXACTLY_TWO_ISOLATED_CHALLENGE_001_AB_RENDER_TESTS'

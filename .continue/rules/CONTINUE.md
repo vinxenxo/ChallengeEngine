@@ -1,15 +1,12 @@
-# C11-E continuation rules — V16
+# C11-E continuation rules — V18
 
-Mission: final A/V MP4 production for Challenges, Visual Loops and Visual Drills, retaining C11-C generators/mechanics/presentation and adding enabled D9.8 editorial fields in the correct family binders, D3 Music V5 from independent `request.music_seed`, FFmpeg mux, FFprobe verification, provenance, one shared GUI/CLI service. CH001 A/B is only the first control.
-
-Continue on the user's current local `main`. Read `AGENTS.md`, `docs/current/e/README.md`, authority V16, gate matrix V16, E2 V8 remediation note, product scope, execution hygiene V12 and full-family roadmap V6. User local commits each iteration; this is expected. Each installer pins exact current HEAD/parent. Runners may accept descendants only after E0/E1 ancestry and exact source pins. Never reset/clean/checkout another branch/move refs/rebase/amend/push.
-
-Keep C11-C 2.19.12 immutable; frozen manifest 796318 bytes / SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. Do not alter protected C generators, `SimulationResult`, `winning_frame`, `close_calls`, RNG domains, mechanics, timing or frame stream. Keep five `c11c-suite` modules; no sixth module or `c11d-control`. Preserve D governance/release locks.
-
-D9.8 enabled fields: common `title`, `subtitle`, `call_to_action`, `language`; Challenge-only `player_name`, `challenge_label`. Reserved fields/show flags stay disabled. Do not put title into hook or CTA. D3 V5 music seed `request.music_seed` is independent of gameplay `request.seed`. Loop/Drill adapters must be implemented and tested, not assumed universal.
-
-Known state 2026-10-31: E0 applied, E1 automated tests 2/2 PASS (GUI observation pending). E2 V7 failed at GDScript sidecar validation because Godot JSON parser returns numeric JSON values as `TYPE_FLOAT`, while V7 demanded `TYPE_INT` for seeds. Python pair tests 9/9 PASS do not override Godot exit 40. Failure ZIP `C11E_E2_CH001_AB_FAILURE_EVIDENCE_20261031_191440_13012eef.zip`, SHA `27fa769c35165e8171120bc0fce16fc3739505198157a874360c2de432c6bbe7`; one renderer invocation/partial one-frame AVI, media not accepted, no success receipt. The later console Write-Host PASS is invalid. V8 adds finite positive integral numeric validation and a Godot-native headless preflight; do not render unless it prints `C11E_E2_GODOT_JSON_NUMERIC_CONTRACT=PASS`.
-
-Next: reconcile live checkout and installer pins; install V8 only if exact preconditions match and it is not already applied; verify receipt/postimages; operator may commit; run two CHALLENGE_001 A/B renders with fresh V8 RequestId, no audio; stop on any nonzero exit. No E3 until E2 A/B media, FFprobe, body/title/header pixel proof, provenance and independent human visual review are accepted. After E2: E3 music/mux; E4A Challenge, E4B Loop, E4C Drill; E5 determinism/seed isolation/GUI-CLI parity; E6 Smoke18; E7 Matrix101 (99 runnable while CH_008/009 held); E8 independent acceptance/freeze/promotion.
-
-PowerShell 5.1: use one complete script/block. Capture `$LASTEXITCODE` immediately. Never continue success-only checks after failure; never print manual PASS; no stale receipt/variable reuse. Verify evidence ZIPs before reporting. Do not repeat accepted E0/E1 gates. C11-C remains baseline until E8.
+1. Treat the live Windows checkout as authoritative. Do not repeat accepted E0/E1 gates or regenerate snapshots unnecessarily.
+2. Keep C11-C 2.19.12 immutable: frozen manifest 796,318 bytes / SHA-256 `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`. It remains production authority until E8.
+3. Complete product target is Challenge + Visual Loop + Visual Drill, with C mechanics intact, D presentation/editorial, D3 Music V5, independent music seed, FFmpeg mux, FFprobe checks and shared GUI/CLI service. CH001 A/B is an early seam test only.
+4. User commits locally per iteration. Never reset/clean/switch/rebase/amend/push. Accept verified descendant HEADs with E0/E1 ancestry and exact pins.
+5. For installers, validate all receipts, pins, manifest, payload hashes and destination preimages before writes. Only allow exact declared preimage => replace, exact intended postimage => ALREADY_PRESENT, unknown => abort. Add-only may be absent or exact postimage only. Recheck immediately before each mutation; keep same-volume backups.
+6. V9 installer V1 must not be run. It incorrectly rejected `C11EChallenge001E2.gd` SHA `4787b445...755dae5`, which was already the exact V9 postimage. Use V9 V2 only.
+7. Run isolated Godot 4.7.1 Mono numeric test and require structured JSON PASS, type float for both seeds, full sidecar true and 30/30 cases. No E2 render before this. Preserve stdout/stderr and native exit code.
+8. E2 has exactly two CH001 A/B renders and no audio. Verify media, FFprobe, hashes, body pixel identity, title-slot pixel difference and header invariance. Human review is separate. E3 blocked until E2 accepted.
+9. PowerShell 5.1-safe scripts. Capture exit codes immediately. On failure halt; never print a success marker or continue validations after failure. No false PASS from stale variables or `$?`.
+10. Continue E3, E4A Challenge, E4B Loop, E4C Drill, E5, E6 Smoke18, E7 Matrix101 and E8 in authority order. Keep CH008/009 held for 11s/12s discrepancy until decision.
