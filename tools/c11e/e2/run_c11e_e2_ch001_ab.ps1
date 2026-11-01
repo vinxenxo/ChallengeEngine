@@ -525,8 +525,8 @@ try {
 
         $EncodeArgs = @(
             '-y','-hide_banner','-loglevel','error','-i',$Avi,
-            '-map','0:v:0','-an','-vf','fps=30,scale=720:1280:flags=lanczos',
-            '-c:v','libx264','-preset','fast','-crf','18','-profile:v','high','-pix_fmt','yuv420p',
+            '-map','0:v:0','-an','-vf','fps=30,scale=720:1280:flags=lanczos:in_range=pc:out_range=tv,format=yuv420p',
+            '-c:v','libx264','-preset','fast','-crf','18','-profile:v','high','-pix_fmt','yuv420p','-color_range','tv',
             '-g','90','-keyint_min','90','-sc_threshold','0','-x264-params','open_gop=0:keyint=90:min-keyint=90:scenecut=0',
             '-frames:v',([string]$DeliveryFrames),'-movflags','+faststart',$Mp4
         )
@@ -542,7 +542,7 @@ try {
         if ([int]$VideoStream.width -ne 720 -or [int]$VideoStream.height -ne 1280) { throw ("Final MP4 geometry mismatch for run {0}." -f $Label) }
         if ([string]$VideoStream.r_frame_rate -ne '30/1') { throw ("Final MP4 FPS mismatch for run {0}." -f $Label) }
         if ([int]$VideoStream.nb_read_frames -ne $DeliveryFrames) { throw ("Final MP4 frame count mismatch for run {0}." -f $Label) }
-        if ([string]$VideoStream.codec_name -ne 'h264' -or [string]$VideoStream.pix_fmt -ne 'yuv420p') { throw ("Final MP4 codec/pixel format mismatch for run {0}." -f $Label) }
+        if ([string]$VideoStream.codec_name -ne 'h264' -or [string]$VideoStream.pix_fmt -ne 'yuv420p' -or [string]$VideoStream.color_range -ne 'tv') { throw ("Final MP4 codec/pixel format/color range mismatch for run {0}." -f $Label) }
         if ($AudioStreams.Count -ne 0) { throw ("E2 output unexpectedly contains audio for run {0}. E3 owns audio." -f $Label) }
 
         $RenderRows += [PSCustomObject]@{

@@ -1,0 +1,13 @@
+# C11-E continuation master prompt â€” V21
+
+Act as the engineering and governance assistant for C11-E in `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`.
+
+Maintain these invariants: C11-C 2.19.12 remains frozen production authority until E8 independent acceptance and explicit promotion; manifest 796,318 bytes / SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; preserve protected C generators/mechanics; only work in approved c11c-suite architecture; shared CLI/GUI service; no stale PASS, stale hashes, reused request IDs, manual PASS after failure, or governance bypass. User commits locally every iteration; validate descendants without demanding an exact historical HEAD when source pins/ancestry remain correct.
+
+Product scope is full Challenge, Visual Loop, Visual Drill with C11-D presentation, enabled family-scoped editorial and D3 Music V5 using independent gameplay/music seeds. FFmpeg performs delivery encoding/mux; FFprobe verifies A/V streams, codec, pixel format/range, dimensions, frame rate, frame counts and synchronization. CH001 A/B is only E2's initial technical control, not the final product.
+
+Current status as of V21: E0 accepted; E1 automation 2/2 PASS and GUI observation pending; E2 Godot numeric 30/30 PASS; Python pair tests 9/9 PASS; V9 reconciliation and V19/V20 pre-render fixes accepted. R3 failed after rendering A because the MP4 retained `yuvj420p/pc`; B did not run. The runner now converts `pc` to `tv` explicitly and requires `yuv420p/tv`; installed FFmpeg 9.0 validation on R3 A AVI passed. Current runner SHA `158325324626085ebf319f68906ca8778f9a08eb39c6e8441da146c12ee4f953`.
+
+Next execute fresh R4 only after checking the active checkout and receipt: request `C11E-E2-CH001-AB-20261101-V9-R4`, gameplay seed 193847, music seed 840001, no audio. R4 must pass all automated source/delivery metadata and frame comparisons for both A/B. Then independently inspect complete MP4s and make an E2 acceptance decision. No E3 until E2 acceptance; no E2 acceptance by a single A file or a green test suite alone.
+
+Roadmap: E3 D3 Music V5; E4A Challenge; E4B Visual Loop; E4C Visual Drill; E5 determinism and GUI/CLI parity; E6 Smoke18; E7 Matrix101; E8 independent acceptance, freeze and promotion. CH_008/009 remain held because 11s declared duration conflicts with 12s phase sum; current runnable count 99. Keep this roadmap in every context handover.
