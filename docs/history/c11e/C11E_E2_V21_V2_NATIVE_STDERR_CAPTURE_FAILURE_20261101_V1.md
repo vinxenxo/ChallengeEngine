@@ -1,6 +1,6 @@
 # C11-E V21 V2 â€” PowerShell 5.1 native stderr capture failure
 
-**Date:** 2026-11-01  
+**Date:** 2026-11-01
 **Status:** V21 V2 aborted; runner rollback attempted; do not interpret this as a Python test failure.
 
 V21 V2 redirected the Python 3.13 unittest process using PowerShell native-command `1>` and `2>` while `$ErrorActionPreference = Stop`. Python's unittest runner writes test progress and the final summary to stderr on successful execution. Windows PowerShell 5.1 surfaced that native stderr as a terminating `RemoteException`, so the applicator stopped after displaying the first test line and entered its rollback path.

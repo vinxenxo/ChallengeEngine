@@ -1,7 +1,7 @@
 # C11-E E2 V9 R3 â€” FFmpeg full-range pixel-format mismatch
 
-**Date:** 2026-11-01  
-**Request:** `C11E-E2-CH001-AB-20261101-V9-R3`  
+**Date:** 2026-11-01
+**Request:** `C11E-E2-CH001-AB-20261101-V9-R3`
 **Failure ZIP SHA-256:** `cff29f245a1c8cf97ac02cd7bed3455a0a2ac364248f7cf257a2b148f2e0f6ab` (802,218 bytes; 76 entries; ZIP CRC clean)
 
 ## Result
