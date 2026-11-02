@@ -16,7 +16,15 @@ def sq(ph,d=.5): return 1.0 if (ph%1.0)<d else -1.0
 def tri(ph): x=ph%1.0; return 4.0*abs(x-.5)-1.0
 def render(req,spec,profile,out):
     if spec.get("engine_id")!=ENGINE_ID or str(spec.get("engine_version"))!=ENGINE_VERSION: raise ValueError("D3.1 engine identity mismatch")
-    if profile.get("style_profile_id","challenge_8bit_v1")!="challenge_8bit_v1": raise ValueError("D3.2 targets challenge_8bit_v1 only")
+    if profile.get("engine_id",ENGINE_ID)!=ENGINE_ID or str(profile.get("engine_version",ENGINE_VERSION))!=ENGINE_VERSION: raise ValueError("D3.1 profile engine identity mismatch")
+    # Normalize the profile's declarative field names to the V5 request/output contract.
+    # Existing V1 profile JSON uses profile_id/profile_version; legacy aliases remain supported.
+    profile_id=str(profile.get("style_profile_id",profile.get("profile_id","challenge_8bit_v1")))
+    profile_version=str(profile.get("style_profile_version",profile.get("profile_version","1.0")))
+    if profile_id!="challenge_8bit_v1": raise ValueError("D3.2 targets challenge_8bit_v1 only")
+    requested_profile_id=str(req.get("style_profile_id",profile_id))
+    requested_profile_version=str(req.get("style_profile_version",profile_version))
+    if requested_profile_id!=profile_id or requested_profile_version!=profile_version: raise ValueError("D3.2 requested style profile identity mismatch")
     seed=int(req["music_seed"])&0xffffffff; dur=float(req["duration_seconds"]); bpm=float(req["tempo_bpm"]); var=int(req.get("variation_index",0))
     n=int(round(dur*SR)); beat=60.0/bpm; half=beat/2.0; state=(seed^(var*0x9e3779b9))&0xffffffff
     motif=[72,75,79,75,70,74,77,74]; chords=[(48,52,55),(50,53,57),(43,47,50),(45,48,52)]
@@ -40,9 +48,9 @@ def render(req,spec,profile,out):
     Path(out).parent.mkdir(parents=True,exist_ok=True)
     with wave.open(str(out),"wb") as w: w.setnchannels(CH); w.setsampwidth(2); w.setframerate(SR); w.writeframes(buf)
     reqhash=shab(canon({"engine":spec,"profile":profile,"request":req}).encode())
-    return {"engine_id":ENGINE_ID,"engine_version":ENGINE_VERSION,"style_profile_id":profile.get("style_profile_id","challenge_8bit_v1"),"style_profile_version":str(profile.get("style_profile_version","1.0")),"music_seed":seed,"tempo_bpm":bpm,"duration_seconds":dur,"variation_index":var,"sample_rate":SR,"channels":CH,"frame_count":n,"parameter_hash":reqhash,"output_hash":shaf(out),"peak_linear":peak,"rms_linear":math.sqrt(ss/max(1,n*CH)),"max_abs_pcm":maxpcm}
+    return {"engine_id":ENGINE_ID,"engine_version":ENGINE_VERSION,"style_profile_id":profile_id,"style_profile_version":profile_version,"music_seed":seed,"tempo_bpm":bpm,"duration_seconds":dur,"variation_index":var,"sample_rate":SR,"channels":CH,"frame_count":n,"parameter_hash":reqhash,"output_hash":shaf(out),"peak_linear":peak,"rms_linear":math.sqrt(ss/max(1,n*CH)),"max_abs_pcm":maxpcm}
 def main():
     a=argparse.ArgumentParser(); a.add_argument("--engine",required=True); a.add_argument("--profile",required=True); a.add_argument("--output",required=True); a.add_argument("--seed",type=int,required=True); a.add_argument("--tempo",type=float,default=104); a.add_argument("--duration",type=float,default=4); a.add_argument("--variation",type=int,default=0); x=a.parse_args()
-    spec=load(x.engine); profile=load(x.profile); req={"music_seed":x.seed,"style_profile_id":profile.get("style_profile_id","challenge_8bit_v1"),"style_profile_version":str(profile.get("style_profile_version","1.0")),"tempo_bpm":x.tempo,"duration_seconds":x.duration,"variation_index":x.variation}
+    spec=load(x.engine); profile=load(x.profile); profile_id=str(profile.get("style_profile_id",profile.get("profile_id","challenge_8bit_v1"))); profile_version=str(profile.get("style_profile_version",profile.get("profile_version","1.0"))); req={"music_seed":x.seed,"style_profile_id":profile_id,"style_profile_version":profile_version,"tempo_bpm":x.tempo,"duration_seconds":x.duration,"variation_index":x.variation}
     print(json.dumps(render(req,spec,profile,x.output),sort_keys=True))
 if __name__=="__main__": main()

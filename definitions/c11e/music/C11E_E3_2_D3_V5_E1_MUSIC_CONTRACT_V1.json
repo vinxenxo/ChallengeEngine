@@ -1,0 +1,47 @@
+{
+  "schema": "C11E-E3.2-D3-V5-E1-MUSIC-CONTRACT",
+  "schema_version": "1.0",
+  "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+  "contract_version": "1.0",
+  "status": "E1_PLANNING_BINDING_ONLY",
+  "purpose": "Bind the existing deterministic D3 V5 Challenge music engine to the E1 production intent without invoking the engine or creating media.",
+  "engine": {
+    "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+    "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+    "engine_id": "c11d_music_engine_v5",
+    "engine_version": "5.0",
+    "spec_path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+    "spec_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+  },
+  "style_profile": {
+    "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+    "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+    "canonical_id": "challenge_8bit_v1",
+    "canonical_version": "1.0",
+    "source_id_field": "profile_id",
+    "source_version_field": "profile_version",
+    "engine_request_id_field": "style_profile_id",
+    "engine_request_version_field": "style_profile_version"
+  },
+  "request_mapping": {
+    "music_seed": "canonical_request.music_seed",
+    "variation_index": "canonical_request.variation_index",
+    "audio_enabled": "canonical_request.audio_enabled",
+    "tempo_bpm": "UNRESOLVED_IN_D9_9_E1",
+    "duration_seconds": "UNRESOLVED_IN_D9_9_E1"
+  },
+  "family_policy": {
+    "challenges": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY",
+    "visual_loops": "PRESERVE_EXISTING_C11C_LOOP_MUSIC_PATH",
+    "visual_drills": "PRESERVE_EXISTING_C11C_DRILL_MUSIC_PATH"
+  },
+  "execution_boundary": {
+    "engine_invocation": false,
+    "audio_creation": false,
+    "renderer_invocation": false,
+    "ffmpeg_mux": false,
+    "dispatch_authorized": false,
+    "dispatchable": false,
+    "release_authority": "NONE"
+  }
+}

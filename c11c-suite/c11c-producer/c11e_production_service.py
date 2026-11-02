@@ -18,7 +18,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 SERVICE_SCHEMA = "C11-E-PRODUCTION-INTENT-V1"
-SERVICE_VERSION = "0.1.0-E1"
+SERVICE_VERSION = "0.2.0-E3.2"
 EXPECTED_C11C_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 EXPECTED_C11C_MANIFEST_BYTES = 796318
 SUPPORTED_CONTENT_TYPES = ("challenges", "visual_loops", "visual_drills")
@@ -30,6 +30,14 @@ EXPECTED_D9_SOURCE_PINS = {
     "tools/c11d/d9/universal_producer.py": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
     "tools/c11d/d9/universal_editorial_model.py": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
     "c11c-suite/c11c-producer/c11d_gui_request.py": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+}
+
+MUSIC_CONTRACT_PATH = "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json"
+EXPECTED_MUSIC_SOURCE_PINS = {
+    "tools/c11d/d3/c11d_music_engine_v5.py": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+    "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+    "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+    MUSIC_CONTRACT_PATH: "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
 }
 
 
@@ -113,7 +121,142 @@ def _load_d9_resolver(root: Path):
     return module
 
 
-def _source_identity(root: Path, canonical_request: Mapping[str, Any]) -> dict[str, Any]:
+def _build_music_contract(root: Path, canonical_request: Mapping[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Resolve a sealed, non-dispatchable music binding; never imports or calls V5."""
+    selection = canonical_request["selection"]
+    content_type = str(selection["content_type"])
+    audio_enabled = canonical_request["audio_enabled"]
+    music_seed = canonical_request["music_seed"]
+    variation_index = canonical_request["variation_index"]
+    if content_type != "challenges":
+        # Do not even read or pin Challenge V5 sources for protected Loop/Drill requests.
+        protected_binding = {
+            "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+            "contract_version": "1.0",
+            "contract_path": None,
+            "contract_sha256": None,
+            "status": "PROTECTED_FAMILY_NOT_REWIRED",
+            "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+            "audio_enabled": audio_enabled,
+            "music_seed_field": "request.music_seed",
+            "music_seed": music_seed,
+            "variation_index": variation_index,
+            "engine": None,
+            "style_profile": None,
+            "engine_request": None,
+            "unresolved_engine_parameters": [],
+            "dispatchable": False,
+            "dispatch_authorized": False,
+            "engine_invoked": False,
+            "audio_created": False,
+            "renderer_invoked": False,
+            "ffmpeg_mux_invoked": False,
+            "release_authority": "NONE",
+        }
+        return protected_binding, []
+
+    identities: dict[str, dict[str, Any]] = {}
+    for relative, expected_sha in EXPECTED_MUSIC_SOURCE_PINS.items():
+        identity = _file_identity(root, relative)
+        if identity["sha256"] != expected_sha:
+            raise C11EProductionServiceError(f"Reviewed D3 V5 music source pin drift: {relative}")
+        identities[relative] = identity
+
+    def read_json(relative: str) -> dict[str, Any]:
+        try:
+            value = json.loads((root / Path(*PurePosixPath(relative).parts)).read_text(encoding="utf-8-sig"))
+        except Exception as exc:
+            raise C11EProductionServiceError(f"Invalid D3 V5 music contract JSON: {relative}: {exc}") from exc
+        if not isinstance(value, dict):
+            raise C11EProductionServiceError(f"D3 V5 music contract source must be a JSON object: {relative}")
+        return value
+
+    contract = read_json(MUSIC_CONTRACT_PATH)
+    spec = read_json("definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json")
+    profile = read_json("definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json")
+    engine_id = str(contract.get("engine", {}).get("engine_id", ""))
+    engine_version = str(contract.get("engine", {}).get("engine_version", ""))
+    profile_id = str(profile.get("style_profile_id", profile.get("profile_id", "")))
+    profile_version = str(profile.get("style_profile_version", profile.get("profile_version", "")))
+    if contract.get("schema") != "C11E-E3.2-D3-V5-E1-MUSIC-CONTRACT" or contract.get("contract_version") != "1.0":
+        raise C11EProductionServiceError("Unsupported C11-E E3.2 music contract identity")
+    if spec.get("engine_id") != engine_id or str(spec.get("engine_version")) != engine_version:
+        raise C11EProductionServiceError("D3 V5 engine specification identity mismatch")
+    if profile_id != contract.get("style_profile", {}).get("canonical_id") or profile_version != contract.get("style_profile", {}).get("canonical_version"):
+        raise C11EProductionServiceError("D3 V5 style profile identity mismatch")
+    if profile.get("engine_id") != engine_id or str(profile.get("engine_version")) != engine_version:
+        raise C11EProductionServiceError("D3 V5 style profile references a different engine")
+
+    selection = canonical_request["selection"]
+    content_type = str(selection["content_type"])
+    audio_enabled = canonical_request["audio_enabled"]
+    music_seed = canonical_request["music_seed"]
+    variation_index = canonical_request["variation_index"]
+    if content_type == "challenges":
+        route = "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY"
+        status = "PLANNED_NOT_RENDERED" if audio_enabled else "DISABLED_BY_REQUEST"
+        engine = {
+            "engine_id": engine_id,
+            "engine_version": engine_version,
+            "source_path": contract["engine"]["path"],
+            "source_sha256": identities[contract["engine"]["path"]]["sha256"],
+            "spec_path": contract["engine"]["spec_path"],
+            "spec_sha256": identities[contract["engine"]["spec_path"]]["sha256"],
+        }
+        style_profile = {
+            "profile_id": profile_id,
+            "profile_version": profile_version,
+            "source_path": contract["style_profile"]["path"],
+            "source_sha256": identities[contract["style_profile"]["path"]]["sha256"],
+        }
+        engine_request = None if not audio_enabled else {
+            "music_seed": music_seed,
+            "style_profile_id": profile_id,
+            "style_profile_version": profile_version,
+            "variation_index": variation_index,
+            "tempo_bpm": None,
+            "duration_seconds": None,
+        }
+        unresolved = ["tempo_bpm", "duration_seconds"] if audio_enabled else []
+    else:
+        route = "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH"
+        status = "PROTECTED_FAMILY_NOT_REWIRED"
+        engine = None
+        style_profile = None
+        engine_request = None
+        unresolved = []
+
+    binding = {
+        "contract_id": contract["contract_id"],
+        "contract_version": contract["contract_version"],
+        "contract_path": MUSIC_CONTRACT_PATH,
+        "contract_sha256": identities[MUSIC_CONTRACT_PATH]["sha256"],
+        "status": status,
+        "route": route,
+        "audio_enabled": audio_enabled,
+        "music_seed_field": "request.music_seed",
+        "music_seed": music_seed,
+        "variation_index": variation_index,
+        "engine": engine,
+        "style_profile": style_profile,
+        "engine_request": engine_request,
+        "unresolved_engine_parameters": unresolved,
+        "dispatchable": False,
+        "dispatch_authorized": False,
+        "engine_invoked": False,
+        "audio_created": False,
+        "renderer_invoked": False,
+        "ffmpeg_mux_invoked": False,
+        "release_authority": "NONE",
+    }
+    return binding, list(identities.values())
+
+
+def _source_identity(
+    root: Path,
+    canonical_request: Mapping[str, Any],
+    extra_pins: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     manifest_path = root / "release" / "C11C_FREEZE_PACKAGE_MANIFEST.json"
     if not manifest_path.is_file():
         raise C11EProductionServiceError("Frozen C11-C manifest is missing")
@@ -162,6 +305,7 @@ def _source_identity(root: Path, canonical_request: Mapping[str, Any]) -> dict[s
             raise C11EProductionServiceError(f"Selected Challenge differs from frozen C11-C source: {relative}")
         pins.append(identity)
 
+    pins.extend(extra_pins or [])
     return {
         "c11c_manifest": {
             "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
@@ -240,7 +384,8 @@ def prepare_c11e_production_intent(
     request_id = _safe_request_id(canonical_request.get("request_id"))
     content_type = str(canonical_request["selection"]["content_type"])
     editorial = dict(canonical_request.get("editorial", {}))
-    source_identity = _source_identity(root, canonical_request)
+    music_contract, music_source_pins = _build_music_contract(root, canonical_request)
+    source_identity = _source_identity(root, canonical_request, music_source_pins)
     output_root = f"artifacts/production/c11e/{request_id}"
     output_path = root / Path(*PurePosixPath(output_root).parts)
     output_root_exists = output_path.exists()
@@ -271,12 +416,13 @@ def prepare_c11e_production_intent(
         "presentation_profile_id": canonical_request["presentation_profile_id"],
         "audio_enabled": canonical_request["audio_enabled"],
         "editorial": editorial,
+        "music_contract": music_contract,
         "source_identity": source_identity,
         "output_root": output_root,
     }
     intent: dict[str, Any] = {
         "schema": SERVICE_SCHEMA,
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "service_version": SERVICE_VERSION,
         "status": "PREPARED_E1_NOT_DISPATCHED",
         "request_origin": origin,
@@ -285,6 +431,7 @@ def prepare_c11e_production_intent(
             "mode": canonical_request["mode"],
             "content_type": content_type,
             "selection": canonical_request["selection"],
+            "variation_index": canonical_request["variation_index"],
         },
         "identity": {
             "request_hash": resolved["request_hash"],
@@ -307,6 +454,7 @@ def prepare_c11e_production_intent(
             "audio_enabled": canonical_request["audio_enabled"],
         },
         "editorial": editorial,
+        "music_contract": music_contract,
         "editorial_field_consumption": field_consumption,
         "family_adapter": {
             "adapter_id": f"c11e_{content_type}_adapter",
@@ -342,13 +490,15 @@ def validate_c11e_production_intent(
 ) -> dict[str, Any]:
     """Validate self-seal, D9 hashes, seed separation, source pins and fail-closed flags."""
     root = _root(project_root)
-    if not isinstance(intent, Mapping) or intent.get("schema") != SERVICE_SCHEMA or intent.get("schema_version") != "1.0":
+    if not isinstance(intent, Mapping) or intent.get("schema") != SERVICE_SCHEMA or intent.get("schema_version") != "1.1":
         raise C11EProductionServiceError("C11-E intent schema mismatch")
     supplied = intent.get("intent_sha256")
     unsigned = dict(intent)
     unsigned.pop("intent_sha256", None)
     if not isinstance(supplied, str) or sha256(unsigned) != supplied:
         raise C11EProductionServiceError("C11-E intent self-hash mismatch")
+    if intent.get("service_version") != SERVICE_VERSION:
+        raise C11EProductionServiceError("C11-E service version mismatch")
     if intent.get("status") != "PREPARED_E1_NOT_DISPATCHED":
         raise C11EProductionServiceError("C11-E E1 status must remain preparation-only")
     origin = intent.get("request_origin")
@@ -358,6 +508,9 @@ def validate_c11e_production_intent(
     request_id = _safe_request_id(request.get("request_id"))
     if request.get("content_type") not in SUPPORTED_CONTENT_TYPES:
         raise C11EProductionServiceError("Unsupported C11-E content type")
+    variation_index = request.get("variation_index")
+    if isinstance(variation_index, bool) or not isinstance(variation_index, int) or not 0 <= variation_index <= 1000000:
+        raise C11EProductionServiceError("Invalid C11-E variation_index")
     seeds = intent.get("seed_domains", {})
     gameplay = seeds.get("gameplay", {})
     music = seeds.get("music", {})
@@ -369,6 +522,18 @@ def validate_c11e_production_intent(
             raise C11EProductionServiceError(f"Invalid {name} seed value")
     if seeds.get("independent_domains") is not True or seeds.get("cross_domain_sharing") != "FORBIDDEN" or seeds.get("automatic_generation") is not False or seeds.get("runtime_derivation") is not False:
         raise C11EProductionServiceError("Seed governance invariant mismatch")
+    delivery = intent.get("delivery", {})
+    if not isinstance(delivery.get("audio_enabled"), bool):
+        raise C11EProductionServiceError("Invalid E1 audio_enabled flag")
+    music_request = {
+        "selection": {"content_type": request.get("content_type")},
+        "music_seed": music.get("value"),
+        "variation_index": request.get("variation_index"),
+        "audio_enabled": delivery.get("audio_enabled"),
+    }
+    expected_music, expected_music_pins = _build_music_contract(root, music_request)
+    if intent.get("music_contract") != expected_music:
+        raise C11EProductionServiceError("C11-E music contract binding mismatch")
     boundary = intent.get("execution_boundary", {})
     expected_boundary = {
         "dispatch_authorized": False,
@@ -416,4 +581,29 @@ def validate_c11e_production_intent(
         current = _file_identity(root, str(row["path"]))
         if current != dict(row):
             raise C11EProductionServiceError(f"C11-E source pin has drifted: {row['path']}")
+    pin_map = {str(row["path"]): dict(row) for row in pinned}
+    for expected_pin in expected_music_pins:
+        if pin_map.get(expected_pin["path"]) != expected_pin:
+            raise C11EProductionServiceError(f"C11-E music source pin is missing or altered: {expected_pin['path']}")
+    editorial = intent.get("editorial", {})
+    output_root = output.get("planned_root")
+    intent_semantics = {
+        "request_id": request_id,
+        "mode": request.get("mode"),
+        "selection": request.get("selection"),
+        "request_hash": identity.get("request_hash"),
+        "editorial_hash": identity.get("editorial_hash"),
+        "plan_hash": identity.get("plan_hash"),
+        "gameplay_seed": gameplay.get("value"),
+        "music_seed": music.get("value"),
+        "delivery_profile_id": delivery.get("resolved_profile_id"),
+        "presentation_profile_id": delivery.get("presentation_profile_id"),
+        "audio_enabled": delivery.get("audio_enabled"),
+        "editorial": editorial,
+        "music_contract": expected_music,
+        "source_identity": source_identity,
+        "output_root": output_root,
+    }
+    if sha256(intent_semantics) != identity.get("intent_hash"):
+        raise C11EProductionServiceError("C11-E semantic intent hash mismatch")
     return {"valid": True, "status": "PASS_E1_PREPARATION_ONLY", "intent_sha256": supplied, "source_pin_count": len(pinned), "renderer": False, "media_created": False}
