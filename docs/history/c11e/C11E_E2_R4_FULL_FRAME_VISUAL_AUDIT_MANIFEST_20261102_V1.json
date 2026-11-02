@@ -1,0 +1,97 @@
+{
+  "schema": "C11E-E2-R4-FULL-FRAME-VISUAL-AUDIT-V1",
+  "frames_per_video": 270,
+  "fps": 30.0,
+  "resolution": [
+    720,
+    1280
+  ],
+  "boards": [
+    {
+      "label": "A",
+      "file": "A_frames_000_044.jpg",
+      "frames": "0-44",
+      "sha256": "8715d5a1bf15cd23880fc38f32e301de8f9305ca78a2369d504efec13720a34c",
+      "bytes": 262485
+    },
+    {
+      "label": "A",
+      "file": "A_frames_045_089.jpg",
+      "frames": "45-89",
+      "sha256": "511acf52feae0488e17ede392a822edcb97e899ce6320d517864786300141e53",
+      "bytes": 255864
+    },
+    {
+      "label": "A",
+      "file": "A_frames_090_134.jpg",
+      "frames": "90-134",
+      "sha256": "f557d643abc075a204b1d6b67b19c61498ce4e4907d75ed4f1f0130a070e3a09",
+      "bytes": 260209
+    },
+    {
+      "label": "A",
+      "file": "A_frames_135_179.jpg",
+      "frames": "135-179",
+      "sha256": "909c13ae9364a40bd7421036a84f674fa8ece4ef1be197cb7e43c0196d7e6458",
+      "bytes": 241725
+    },
+    {
+      "label": "A",
+      "file": "A_frames_180_224.jpg",
+      "frames": "180-224",
+      "sha256": "858f3785dadf38b2e6e5c74818c6a33651a7a3e5911eed910f7318d10e7849de",
+      "bytes": 256981
+    },
+    {
+      "label": "A",
+      "file": "A_frames_225_269.jpg",
+      "frames": "225-269",
+      "sha256": "063bd5e320d4da37bba473c30cfd93f33c0f30bb64a22bcdf45f6fe6a131a163",
+      "bytes": 288568
+    },
+    {
+      "label": "B",
+      "file": "B_frames_000_044.jpg",
+      "frames": "0-44",
+      "sha256": "cb644a598caa198e5047ae4f8e5efd79f32c05a9e21cc88e89952b187c24f0cf",
+      "bytes": 263405
+    },
+    {
+      "label": "B",
+      "file": "B_frames_045_089.jpg",
+      "frames": "45-89",
+      "sha256": "a1233eeb842ca916bf355ac46110638b5a9e1dbaf02f24ceb09485d6c3269950",
+      "bytes": 256876
+    },
+    {
+      "label": "B",
+      "file": "B_frames_090_134.jpg",
+      "frames": "90-134",
+      "sha256": "81db537526f1897b56d1c35c644bd57256113823a318b01e8b8a0c3cb4ccba3b",
+      "bytes": 261307
+    },
+    {
+      "label": "B",
+      "file": "B_frames_135_179.jpg",
+      "frames": "135-179",
+      "sha256": "ad1e9ace1f9f65f1153e0f816bd387194055c1ff1762371e6056519b77650135",
+      "bytes": 242683
+    },
+    {
+      "label": "B",
+      "file": "B_frames_180_224.jpg",
+      "frames": "180-224",
+      "sha256": "60102bc8265fecfb52e5f761373cae14c9fadfeaf56b7b9901ed702557551410",
+      "bytes": 258046
+    },
+    {
+      "label": "B",
+      "file": "B_frames_225_269.jpg",
+      "frames": "225-269",
+      "sha256": "ed8ad40bc240ebd5cf474c32f3fb7e6d0f86597d331c43f1207676b22f4bbfb8",
+      "bytes": 289603
+    }
+  ],
+  "source_evidence_zip_sha256": "f33431bb131697baf9dc3df6ed1ed8e4ca14ecb40d7b9ef07c812a5bca67a3de",
+  "receipt_sha256": "2f8c355453d8558c6af42aa5da35f603b767726d64ba04f842dc799a2cadef7f"
+}
