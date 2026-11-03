@@ -1,0 +1,57 @@
+# One-time bounded source handoff — PowerShell 5.1
+# Run from the active repository root. This only copies files and creates a ZIP.
+# No tests, Git commands, Godot, GUI, renderer, FFmpeg, or media are invoked.
+
+& {
+    $Repo = 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS'
+    $Stamp = Get-Date -Format 'yyyyMMdd_HHmmss'
+    $Base = Join-Path ([Environment]::GetFolderPath('MyDocuments')) ('C11E_E4A_SOURCE_HANDOFF_' + $Stamp)
+    New-Item -ItemType Directory -Path $Base -Force | Out-Null
+
+    $RelativeFiles = @(
+        'tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd',
+        'tools/c11d/d9/challenge_visual_payload_v2b_safe_projection_runtime_in_memory.gd',
+        'tools/c11d/d9/challenge_visual_payload_v2c_source_frame_runtime_in_memory.gd',
+        'tools/c11d/d9/allowlisted_coordinate_consumer_review_only_v2.gd',
+        'tools/c11d/d9/test_allowlisted_coordinate_consumer_review_only_runtime_v2.gd',
+        'tools/c11d/d9/test_allowlisted_coordinate_consumer_source_composition_runtime.gd',
+        'tools/c11d/d9/editorial_render_bridge.py',
+        'tools/c11d/d9/d_render_adapter.py',
+        'tools/c11d/d9/universal_editorial_model.py',
+        'c11c-suite/c11c-producer/c11e_production_service.py',
+        'c11c-suite/c11c-producer/main.py',
+        'challenges/CHALLENGE_004.json',
+        'core/presentation/ChallengePresentationBinder.gd',
+        'core/presentation/C11CVisualEditorialLayer.gd',
+        'core/presentation/rendering/VisualContentPlayer.gd',
+        'docs/current/d/D1.1_CHALLENGE_VISUAL_EDITORIAL_MAPPING_V1.0.md',
+        'docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md',
+        'docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md',
+        'docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_DECISION_V2_20261026.md',
+        'docs/current/d/C11D_V2B_ALLOWLISTED_COORDINATE_SOURCE_COMPOSITION_RUNTIME_REVIEW_20261026_V1.md',
+        'docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md'
+    )
+
+    $Copied = 0
+    $Missing = 0
+    foreach ($Relative in $RelativeFiles) {
+        $Source = Join-Path $Repo ($Relative -replace '/', '\\')
+        if (Test-Path -LiteralPath $Source -PathType Leaf) {
+            $Target = Join-Path $Base ($Relative -replace '/', '\\')
+            $Parent = Split-Path -Parent $Target
+            New-Item -ItemType Directory -Path $Parent -Force | Out-Null
+            Copy-Item -LiteralPath $Source -Destination $Target -Force
+            Write-Host "COPIED=$Relative"
+            $Copied++
+        } else {
+            Write-Host "MISSING=$Relative"
+            $Missing++
+        }
+    }
+
+    $Zip = Join-Path ([Environment]::GetFolderPath('MyDocuments')) ('C11E_E4A_CURRENT_SOURCE_HANDOFF_' + $Stamp + '.zip')
+    Compress-Archive -Path (Join-Path $Base '*') -DestinationPath $Zip -CompressionLevel Optimal
+    Write-Host "COPIED_COUNT=$Copied"
+    Write-Host "MISSING_COUNT=$Missing"
+    Write-Host "SOURCE_HANDOFF_ZIP=$Zip"
+}

@@ -1,0 +1,47 @@
+{
+  "command": [
+    "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+    "--path",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "--script",
+    "res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+    "--",
+    "--e4a-config",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_pixel_review\\RUN_20261103_233430_586c3cf4\\pixel_test_config.json"
+  ],
+  "godot": {
+    "executable": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+    "version": "4.7.1.stable.mono.official.a13da4feb",
+    "version_exit_code": 0
+  },
+  "godot_exit_code": 0,
+  "governance": {
+    "c11c_source_mutation": false,
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "production_dispatch": false,
+    "production_media_created": false,
+    "production_renderer_activation": false,
+    "release_authority": "NONE"
+  },
+  "pixel_comparison_count": 12,
+  "pixel_png_count": 18,
+  "pixel_report_path": "artifacts/tests/c11e/e4a_pixel_review/RUN_20261103_233430_586c3cf4/C11E_E4A_PIXEL_RENDER_REPORT.json",
+  "pixel_report_sha256": "adefba7fe65400efa30d422e0547499c60b79a400eed8e4d90cf1dc9a5d7597f",
+  "python_test_exit_code": 0,
+  "schema": "C11E-E4A-CHALLENGE-PIXEL-REVIEW-RUNNER-RECEIPT-V1",
+  "schema_version": "1.0",
+  "source_authorities": {
+    "approved_policy": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+    "challenge_004": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+    "d1_5_layout": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+    "frozen_manifest": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "status": "PASS_ISOLATED_TEST_PIXEL_RENDER_ONLY",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "1e9aa692669bae180b3c53a58b5f6c7b810a12f4ff7f8329bc64f0c845b9efbf"
+}

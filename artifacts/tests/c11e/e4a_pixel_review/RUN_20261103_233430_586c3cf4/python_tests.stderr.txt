@@ -1,0 +1,28 @@
+test_01_authority_pins_match (__main__.E4AChallengePixelReviewTests.test_01_authority_pins_match) ... ok
+test_02_approved_policy_has_exact_six_fields (__main__.E4AChallengePixelReviewTests.test_02_approved_policy_has_exact_six_fields) ... ok
+test_03_title_and_subtitle_route_to_header_hook (__main__.E4AChallengePixelReviewTests.test_03_title_and_subtitle_route_to_header_hook) ... ok
+test_04_call_to_action_routes_to_footer_cta (__main__.E4AChallengePixelReviewTests.test_04_call_to_action_routes_to_footer_cta) ... ok
+test_05_challenge_overlay_remains_semantic_only (__main__.E4AChallengePixelReviewTests.test_05_challenge_overlay_remains_semantic_only) ... ok
+test_06_language_is_metadata_only (__main__.E4AChallengePixelReviewTests.test_06_language_is_metadata_only) ... ok
+test_07_d15_regions_are_exactly_pinned (__main__.E4AChallengePixelReviewTests.test_07_d15_regions_are_exactly_pinned) ... ok
+test_08_e1_valid_intent_accepted (__main__.E4AChallengePixelReviewTests.test_08_e1_valid_intent_accepted) ... ok
+test_09_wrong_service_version_rejected (__main__.E4AChallengePixelReviewTests.test_09_wrong_service_version_rejected) ... ok
+test_10_wrong_selector_rejected (__main__.E4AChallengePixelReviewTests.test_10_wrong_selector_rejected) ... ok
+test_11_wrong_family_rejected (__main__.E4AChallengePixelReviewTests.test_11_wrong_family_rejected) ... ok
+test_12_wrong_seed_domain_rejected (__main__.E4AChallengePixelReviewTests.test_12_wrong_seed_domain_rejected) ... ok
+test_13_dispatch_authorization_rejected (__main__.E4AChallengePixelReviewTests.test_13_dispatch_authorization_rejected) ... ok
+test_14_editorial_extra_field_rejected (__main__.E4AChallengePixelReviewTests.test_14_editorial_extra_field_rejected) ... ok
+test_15_editorial_missing_field_rejected (__main__.E4AChallengePixelReviewTests.test_15_editorial_missing_field_rejected) ... ok
+test_16_editorial_carrier_must_remain_unconsumed_in_e1 (__main__.E4AChallengePixelReviewTests.test_16_editorial_carrier_must_remain_unconsumed_in_e1) ... ok
+test_17_materializer_keeps_default_preview_path_and_adds_opt_in_pixel_path (__main__.E4AChallengePixelReviewTests.test_17_materializer_keeps_default_preview_path_and_adds_opt_in_pixel_path) ... ok
+test_18_pixel_probe_uses_actual_offscreen_subviewport (__main__.E4AChallengePixelReviewTests.test_18_pixel_probe_uses_actual_offscreen_subviewport) ... ok
+test_19_pixel_probe_does_not_call_production_dispatch (__main__.E4AChallengePixelReviewTests.test_19_pixel_probe_does_not_call_production_dispatch) ... ok
+test_20_report_does_not_claim_gameplay_body_pixel_identity (__main__.E4AChallengePixelReviewTests.test_20_report_does_not_claim_gameplay_body_pixel_identity) ... ok
+test_21_runner_calls_existing_shared_e1_service (__main__.E4AChallengePixelReviewTests.test_21_runner_calls_existing_shared_e1_service) ... ok
+test_22_runner_never_invokes_ffmpeg_or_c_producer (__main__.E4AChallengePixelReviewTests.test_22_runner_never_invokes_ffmpeg_or_c_producer) ... ok
+test_23_runner_records_pngs_and_real_godot_exit_code (__main__.E4AChallengePixelReviewTests.test_23_runner_records_pngs_and_real_godot_exit_code) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.006s
+
+OK

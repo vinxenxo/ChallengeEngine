@@ -1,0 +1,215 @@
+{
+  "delivery": {
+    "audio_enabled": false,
+    "presentation_profile_id": "social_default_v1",
+    "requested_profile_id": "REVIEW_720",
+    "resolved_profile_id": "REVIEW_720"
+  },
+  "editorial": {
+    "call_to_action": "FOLLOW FOR MORE",
+    "challenge_label": "UNKNOWN",
+    "language": "en",
+    "player_name": "UNKNOWN",
+    "subtitle": "D9.9 editorial subtitle",
+    "title": "E4A PIXEL TITLE TEST"
+  },
+  "editorial_field_consumption": {
+    "call_to_action": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E2",
+      "resolved": true
+    },
+    "challenge_label": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E2",
+      "resolved": true
+    },
+    "language": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E2",
+      "resolved": true
+    },
+    "player_name": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E2",
+      "resolved": true
+    },
+    "subtitle": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E2",
+      "resolved": true
+    },
+    "title": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E2",
+      "resolved": true
+    }
+  },
+  "execution_boundary": {
+    "d4_8": "BLOCKED",
+    "dispatch_authorized": false,
+    "media_created": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "renderer_activation": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false
+  },
+  "family_adapter": {
+    "adapter_id": "c11e_challenges_adapter",
+    "renderer_input_emitted": false,
+    "status": "NOT_CONNECTED_E1",
+    "target_gate": "E2"
+  },
+  "identity": {
+    "editorial_hash": "3b18dbb648b942e6f70881000960353e25258065680f5c8dd44f28a59d8e47f9",
+    "intent_hash": "4f1154df4206597eae84b7c33fca4e47217d90bdb3518d9f400359b5c592511a",
+    "plan_hash": "8421b1c5da544b98840cdd59b3e20b4ce7baf5e0ba8216623c4578ddaebcb98a",
+    "request_hash": "6f35e079ab891b5cf1f686dcfc5be839175920c7a603dccddfa62a131ce90274"
+  },
+  "intent_sha256": "8797bd966f4d4369ce095bb2e01c6a7807b4151f4b7cf506becc2be2f903fe25",
+  "music_contract": {
+    "audio_created": false,
+    "audio_enabled": false,
+    "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+    "contract_path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+    "contract_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+    "contract_version": "1.0",
+    "dispatch_authorized": false,
+    "dispatchable": false,
+    "engine": {
+      "engine_id": "c11d_music_engine_v5",
+      "engine_version": "5.0",
+      "source_path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "source_sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+      "spec_path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "spec_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+    },
+    "engine_invoked": false,
+    "engine_request": null,
+    "ffmpeg_mux_invoked": false,
+    "music_seed": 840001,
+    "music_seed_field": "request.music_seed",
+    "release_authority": "NONE",
+    "renderer_invoked": false,
+    "route": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY",
+    "status": "DISABLED_BY_REQUEST",
+    "style_profile": {
+      "profile_id": "challenge_8bit_v1",
+      "profile_version": "1.0",
+      "source_path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "source_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+    },
+    "unresolved_engine_parameters": [],
+    "variation_index": 0
+  },
+  "output": {
+    "created": false,
+    "overwrite_policy": "DENY_EXISTING",
+    "planned_root": "artifacts/production/c11e/E4A-CH004-PIXEL-C-20261103T223430Z-E41ACDED",
+    "planned_root_exists": false
+  },
+  "request": {
+    "content_type": "challenges",
+    "mode": "REVIEW",
+    "request_id": "E4A-CH004-PIXEL-C-20261103T223430Z-E41ACDED",
+    "selection": {
+      "content_type": "challenges",
+      "difficulty_tier": null,
+      "family_id": "parking_v2",
+      "subtype_id": null,
+      "variant_id": "CHALLENGE_004",
+      "variant_scope_id": "challenge:CHALLENGE_004"
+    },
+    "variation_index": 0
+  },
+  "request_origin": "TEST",
+  "schema": "C11-E-PRODUCTION-INTENT-V1",
+  "schema_version": "1.1",
+  "seed_domains": {
+    "automatic_generation": false,
+    "cross_domain_sharing": "FORBIDDEN",
+    "gameplay": {
+      "field": "request.seed",
+      "value": 314159
+    },
+    "independent_domains": true,
+    "music": {
+      "field": "request.music_seed",
+      "value": 840001
+    },
+    "runtime_derivation": false
+  },
+  "service_version": "0.2.0-E3.2",
+  "source_identity": {
+    "c11c_manifest": {
+      "bytes": 796318,
+      "disposition": "IMMUTABLE_REFERENCE_ONLY",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "source_pins": [
+      {
+        "bytes": 19692,
+        "path": "tools/c11d/d9/universal_producer.py",
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+      },
+      {
+        "bytes": 26574,
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+      },
+      {
+        "bytes": 9183,
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+      },
+      {
+        "bytes": 12692,
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+      },
+      {
+        "bytes": 1761,
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "bytes": 3158,
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+      },
+      {
+        "bytes": 32714,
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      {
+        "bytes": 1543,
+        "path": "challenges/CHALLENGE_004.json",
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+      },
+      {
+        "bytes": 5256,
+        "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+        "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+      },
+      {
+        "bytes": 3313,
+        "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+        "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+      },
+      {
+        "bytes": 2818,
+        "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+        "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+      },
+      {
+        "bytes": 1943,
+        "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+        "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+      }
+    ]
+  },
+  "status": "PREPARED_E1_NOT_DISPATCHED"
+}
