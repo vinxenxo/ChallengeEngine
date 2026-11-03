@@ -40,7 +40,8 @@ class RealBodyPixelReviewTests(unittest.TestCase):
         self.assertEqual(real.APPROVAL_SHA256, "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5")
         self.assertEqual(real.LAYOUT_SHA256, "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461")
 
-    def test_02_review_delivery_contract_is_720_1280_30fps_450frames(self):
+    def test_02_c11c_source_and_normalized_review_timebases_are_distinct(self):
+        self.assertEqual((real.C11C_SOURCE_FPS, real.C11C_SOURCE_FRAMES), (60, 900))
         self.assertEqual((real.DELIVERY_WIDTH, real.DELIVERY_HEIGHT, real.DELIVERY_FPS), (720, 1280, 30))
         self.assertEqual(real.EXPECTED_DELIVERY_FRAMES, 450)
         self.assertIn('os.environ.get("C11E_FFMPEG_EXECUTABLE")', (HERE / "c11e_e4a_challenge_real_body_pixel_review.py").read_text(encoding="utf-8"))
@@ -212,6 +213,66 @@ class RealBodyPixelReviewTests(unittest.TestCase):
         self.assertIn('"release_authority": "NONE"', source)
         self.assertIn('"d4_8": "BLOCKED"', source)
 
+
+    def test_26_full_range_c11c_source_is_normalized_to_limited_yuv420p(self):
+        command = real.build_normalize_command("ffmpeg", Path("source.mp4"), Path("review.mp4"),
+            {"pix_fmt": "yuvj420p", "color_range": "pc"})
+        vf = command[command.index("-vf") + 1]
+        self.assertIn("fps=30", vf)
+        self.assertIn("scale=in_range=full:out_range=tv", vf)
+        self.assertIn("format=yuv420p", vf)
+        self.assertIn("-an", command)
+        self.assertIn("-color_range", command)
+        self.assertEqual(command[command.index("-color_range") + 1], "tv")
+
+    def test_27_limited_range_source_is_not_expanded_as_full_range(self):
+        command = real.build_normalize_command("ffmpeg", Path("source.mp4"), Path("review.mp4"),
+            {"pix_fmt": "yuv420p", "color_range": "tv"})
+        vf = command[command.index("-vf") + 1]
+        self.assertEqual(vf, "fps=30,format=yuv420p")
+        self.assertNotIn("in_range=full", vf)
+
+    def test_28_unknown_source_range_fails_closed(self):
+        with self.assertRaises(real.RealBodyReviewError):
+            real.build_normalize_command("ffmpeg", Path("source.mp4"), Path("review.mp4"),
+                {"pix_fmt": "yuvj420p", "color_range": "tv"})
+
+    def test_29_runner_normalizes_test_only_copy_and_preserves_c11c_source(self):
+        source = (HERE / "c11e_e4a_challenge_real_body_pixel_review.py").read_text(encoding="utf-8")
+        self.assertIn("normalize_c11c_source_video(ffmpeg, video_path, normalized_video_path", source)
+        self.assertIn("ORIGINAL_C11C_MP4_PRESERVED", source)
+        self.assertIn("probe_c11c_source_video(ffprobe, video_path", source)
+        self.assertIn("c11c_source_video", source)
+        self.assertIn('"frozen_manifest_sha256_after": frozen_manifest_after', source)
+
+
+
+    def test_30_runner_supports_reusing_the_prior_test_run(self):
+        source = (HERE / "c11e_e4a_challenge_real_body_pixel_review.py").read_text(encoding="utf-8")
+        self.assertIn("--reuse-c11c-base-run", source)
+        self.assertIn("REUSE_EXISTING_TEST_RENDER", source)
+        self.assertIn("REUSED_EXISTING_C11C_TEST_RENDER_NO_GODOT_RERUN", source)
+        self.assertIn("source_run.parent != approved_test_parent", source)
+
+    def test_31_reused_mp4_manifest_identity_and_audio_off_are_required(self):
+        source = (HERE / "c11e_e4a_challenge_real_body_pixel_review.py").read_text(encoding="utf-8")
+        self.assertIn('c_manifest.get("challenge_id") != "CHALLENGE_004"', source)
+        self.assertIn('c_manifest.get("seed") != 314159', source)
+        self.assertIn('c_manifest.get("audio_present") is not False', source)
+        self.assertIn("reused_source_mp4_sha256", source)
+
+
+    def test_32_runner_separates_region_proof_from_visual_placement_acceptance(self):
+        source = (HERE / "c11e_e4a_challenge_real_body_pixel_review.py").read_text(encoding="utf-8")
+        self.assertIn('"visual_placement_approved": False', source)
+        self.assertIn('"d1_5_safe_area_and_generic_typography": "UNKNOWN"', source)
+        self.assertIn("existing_c11c_hook_content_overlap_observed_in_fixture_montage", source)
+        self.assertIn("TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED", source)
+
+    def test_33_runner_records_manifest_vs_encoded_pixel_format_mismatch(self):
+        source = (HERE / "c11e_e4a_challenge_real_body_pixel_review.py").read_text(encoding="utf-8")
+        self.assertIn('"pixel_format_mismatch": c_manifest.get("pixel_format") != source_video.get("pix_fmt")', source)
+        self.assertIn('"ffprobe_color_range": source_video.get("color_range")', source)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

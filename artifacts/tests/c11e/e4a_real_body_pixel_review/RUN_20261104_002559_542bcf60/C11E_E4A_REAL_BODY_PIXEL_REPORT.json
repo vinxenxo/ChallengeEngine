@@ -1,0 +1,657 @@
+{
+  "authorities": {
+    "approved_policy": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+    "canonical_d99_resolver": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+    "challenge_004": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+    "d1_5_layout": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+    "frozen_manifest": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "previous_e4a_runner": "939a12f369df9eaa0dbaf5b06b0635a0d4dc906e14fd7d5bdf9c12b3ec2b97a0",
+    "producer_main": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3",
+    "shared_e1_service": "f0655d8d93df3b766b157d80a76a5bfc7b514d740815646f54c88ca788f602c0"
+  },
+  "body_crop_hashes": [
+    {
+      "body_crop_sha256": "5e5f78d49492aae556f55564b3554ed386fa9d5ceca3c021c70f3ba065ec0134",
+      "sample": "hook_first",
+      "variant": "A"
+    },
+    {
+      "body_crop_sha256": "5e5f78d49492aae556f55564b3554ed386fa9d5ceca3c021c70f3ba065ec0134",
+      "sample": "hook_first",
+      "variant": "B"
+    },
+    {
+      "body_crop_sha256": "5e5f78d49492aae556f55564b3554ed386fa9d5ceca3c021c70f3ba065ec0134",
+      "sample": "hook_first",
+      "variant": "C"
+    },
+    {
+      "body_crop_sha256": "5ec725092735796edf09fd883002f399eeda915cc8fab72c1cba2a8e93070970",
+      "sample": "hook_last",
+      "variant": "A"
+    },
+    {
+      "body_crop_sha256": "5ec725092735796edf09fd883002f399eeda915cc8fab72c1cba2a8e93070970",
+      "sample": "hook_last",
+      "variant": "B"
+    },
+    {
+      "body_crop_sha256": "5ec725092735796edf09fd883002f399eeda915cc8fab72c1cba2a8e93070970",
+      "sample": "hook_last",
+      "variant": "C"
+    },
+    {
+      "body_crop_sha256": "6b47d9be76a7c5fb37722e0184fd65bd7854152879677f84a99b449af8497ccf",
+      "sample": "game_first",
+      "variant": "A"
+    },
+    {
+      "body_crop_sha256": "6b47d9be76a7c5fb37722e0184fd65bd7854152879677f84a99b449af8497ccf",
+      "sample": "game_first",
+      "variant": "B"
+    },
+    {
+      "body_crop_sha256": "6b47d9be76a7c5fb37722e0184fd65bd7854152879677f84a99b449af8497ccf",
+      "sample": "game_first",
+      "variant": "C"
+    },
+    {
+      "body_crop_sha256": "b38ad5911bd1ec9b6f57ef839eb99ff4754a80696b002d84e73326573d166406",
+      "sample": "reveal_first",
+      "variant": "A"
+    },
+    {
+      "body_crop_sha256": "b38ad5911bd1ec9b6f57ef839eb99ff4754a80696b002d84e73326573d166406",
+      "sample": "reveal_first",
+      "variant": "B"
+    },
+    {
+      "body_crop_sha256": "b38ad5911bd1ec9b6f57ef839eb99ff4754a80696b002d84e73326573d166406",
+      "sample": "reveal_first",
+      "variant": "C"
+    },
+    {
+      "body_crop_sha256": "f463bff5de4ddb111d6324705e41c5610a12b354275141c9057da9ae0b3c7568",
+      "sample": "cta_first",
+      "variant": "A"
+    },
+    {
+      "body_crop_sha256": "f463bff5de4ddb111d6324705e41c5610a12b354275141c9057da9ae0b3c7568",
+      "sample": "cta_first",
+      "variant": "B"
+    },
+    {
+      "body_crop_sha256": "f463bff5de4ddb111d6324705e41c5610a12b354275141c9057da9ae0b3c7568",
+      "sample": "cta_first",
+      "variant": "C"
+    },
+    {
+      "body_crop_sha256": "e30feec7a61b60ddce7049982102322134e8ae3708d95dd7eef25fda90cbccd2",
+      "sample": "cta_last",
+      "variant": "A"
+    },
+    {
+      "body_crop_sha256": "e30feec7a61b60ddce7049982102322134e8ae3708d95dd7eef25fda90cbccd2",
+      "sample": "cta_last",
+      "variant": "B"
+    },
+    {
+      "body_crop_sha256": "e30feec7a61b60ddce7049982102322134e8ae3708d95dd7eef25fda90cbccd2",
+      "sample": "cta_last",
+      "variant": "C"
+    }
+  ],
+  "c11c_generator": {
+    "command": [
+      "REUSE_EXISTING_TEST_RENDER",
+      "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261103_235800_fd6fb07c",
+      "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261103_235800_fd6fb07c\\c11c_base_render\\CHALLENGE_004\\CHALLENGE_004_seed_314159.mp4"
+    ],
+    "execution_mode": "REUSED_EXISTING_C11C_TEST_RENDER_NO_GODOT_RERUN",
+    "exit_code": 0,
+    "frozen_manifest_sha256_after": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "frozen_manifest_sha256_before": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "producer_main_sha256": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3",
+    "producer_main_sha256_after": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3",
+    "reused_source_mp4_sha256": "fdd0598e20ddc6201e54cc2dad7fd3362c2ef80961df44f3ef4676fb97a765de",
+    "reused_source_run": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261103_235800_fd6fb07c",
+    "source_script": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "source_script_sha256": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+    "source_script_sha256_after": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+    "test_manifest_sha256": "24455b5ed2d4ac87f5d601c8204dc167ff47d20975ff92207887473316b1b14b",
+    "test_media_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\c11c_base_render\\CHALLENGE_004\\CHALLENGE_004_seed_314159.mp4",
+    "test_media_sha256": "fdd0598e20ddc6201e54cc2dad7fd3362c2ef80961df44f3ef4676fb97a765de"
+  },
+  "c11c_source_manifest_pixel_format": "yuv420p",
+  "c11c_source_video": {
+    "avg_frame_rate": "60/1",
+    "codec_name": "h264",
+    "color_range": "pc",
+    "duration_seconds": 15.0,
+    "height": 1280,
+    "nb_read_frames": 900,
+    "pix_fmt": "yuvj420p",
+    "r_frame_rate": "60/1",
+    "source_range_interpretation": "FULL_RANGE_YUVJ420P",
+    "video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\c11c_base_render\\CHALLENGE_004\\CHALLENGE_004_seed_314159.mp4",
+    "width": 720
+  },
+  "c11c_source_video_vs_manifest": {
+    "ffprobe_color_range": "pc",
+    "ffprobe_pixel_format": "yuvj420p",
+    "handling": "NORMALIZE_TEST_ONLY_DERIVATIVE; DO_NOT_MUTATE_FROZEN_C11C_SOURCE",
+    "manifest_pixel_format": "yuv420p",
+    "pixel_format_mismatch": true
+  },
+  "challenge": {
+    "duration_seconds": 15.0,
+    "id": "CHALLENGE_004",
+    "mechanic": "parking_v2",
+    "source_fps": 60,
+    "timeline": [
+      {
+        "end_seconds": 3.0,
+        "end_source_frame_exclusive": 180,
+        "phase": "HOOK",
+        "start_seconds": 0.0,
+        "start_source_frame": 0
+      },
+      {
+        "end_seconds": 10.0,
+        "end_source_frame_exclusive": 600,
+        "phase": "GAME",
+        "start_seconds": 3.0,
+        "start_source_frame": 180
+      },
+      {
+        "end_seconds": 13.0,
+        "end_source_frame_exclusive": 780,
+        "phase": "REVEAL",
+        "start_seconds": 10.0,
+        "start_source_frame": 600
+      },
+      {
+        "end_seconds": 15.0,
+        "end_source_frame_exclusive": 900,
+        "phase": "CTA",
+        "start_seconds": 13.0,
+        "start_source_frame": 780
+      }
+    ]
+  },
+  "delivery_video": {
+    "avg_frame_rate": "30/1",
+    "codec_name": "h264",
+    "color_range": "tv",
+    "duration_seconds": 15.0,
+    "height": 1280,
+    "nb_read_frames": 450,
+    "pix_fmt": "yuv420p",
+    "r_frame_rate": "30/1",
+    "video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\review_delivery\\CHALLENGE_004_REVIEW_720_30FPS_TEST_ONLY.mp4",
+    "width": 720
+  },
+  "field_dispositions": [
+    {
+      "field": "title",
+      "phase": "HOOK",
+      "region": "HEADER",
+      "status": "TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED"
+    },
+    {
+      "field": "subtitle",
+      "phase": "HOOK",
+      "region": "HEADER",
+      "status": "TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED"
+    },
+    {
+      "field": "call_to_action",
+      "phase": "CTA",
+      "region": "FOOTER",
+      "status": "TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED"
+    },
+    {
+      "field": "player_name",
+      "region": "CHALLENGE_OVERLAY",
+      "status": "BLOCKED_GEOMETRY_UNRESOLVED"
+    },
+    {
+      "field": "challenge_label",
+      "region": "CHALLENGE_OVERLAY",
+      "status": "BLOCKED_GEOMETRY_UNRESOLVED"
+    },
+    {
+      "field": "language",
+      "status": "METADATA_ONLY"
+    }
+  ],
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "production_dispatch": false,
+    "production_media_created": false,
+    "production_renderer": false,
+    "release_authority": "NONE",
+    "test_media_created": true
+  },
+  "invariants": {
+    "body_pixels_A_B_identical_at_all_six_samples": true,
+    "body_pixels_A_B_identical_at_sampled_gameplay_and_reveal": true,
+    "c11c_source_mutation": false,
+    "challenge_overlay_has_no_pixel_effect": true,
+    "d9_10_dispatch_invoked": false,
+    "d_production_renderer_activated": false,
+    "language_has_no_pixel_effect": true,
+    "only_policy_permitted_header_hook_and_footer_cta_regions_changed": true,
+    "production_media_created": false,
+    "real_gameplay_body_rasterized": true,
+    "test_media_created": true,
+    "test_only_typography_not_production_layout": true,
+    "visual_placement_approved": false
+  },
+  "pixel_artifacts": [
+    {
+      "delivery_frame": 0,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/A_hook_first.png",
+      "phase": "HOOK",
+      "sample": "hook_first",
+      "sha256": "0bd3db1aad0fc071b903888d392186b5435f6d3d79e3bb59ba8563d12bffa404",
+      "variant": "A",
+      "width": 720
+    },
+    {
+      "delivery_frame": 0,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/B_hook_first.png",
+      "phase": "HOOK",
+      "sample": "hook_first",
+      "sha256": "ba12f8be0114821478f6c322c274ae4f8c905ca03428cc6125366f65ad1d543d",
+      "variant": "B",
+      "width": 720
+    },
+    {
+      "delivery_frame": 0,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/C_hook_first.png",
+      "phase": "HOOK",
+      "sample": "hook_first",
+      "sha256": "ba12f8be0114821478f6c322c274ae4f8c905ca03428cc6125366f65ad1d543d",
+      "variant": "C",
+      "width": 720
+    },
+    {
+      "delivery_frame": 89,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/A_hook_last.png",
+      "phase": "HOOK",
+      "sample": "hook_last",
+      "sha256": "057494fcd8f8e3872d54901b957d935d069a149c56a0e2bbcb63e44dcc22057f",
+      "variant": "A",
+      "width": 720
+    },
+    {
+      "delivery_frame": 89,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/B_hook_last.png",
+      "phase": "HOOK",
+      "sample": "hook_last",
+      "sha256": "8179660dce72fdcb4d7ce7959571024a6d29eec5df10b4ad406debff5856ac33",
+      "variant": "B",
+      "width": 720
+    },
+    {
+      "delivery_frame": 89,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/C_hook_last.png",
+      "phase": "HOOK",
+      "sample": "hook_last",
+      "sha256": "8179660dce72fdcb4d7ce7959571024a6d29eec5df10b4ad406debff5856ac33",
+      "variant": "C",
+      "width": 720
+    },
+    {
+      "delivery_frame": 90,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/A_game_first.png",
+      "phase": "GAME",
+      "sample": "game_first",
+      "sha256": "de61eba792a40cc5ac92a48123c5a2460841ab76d21f93973c1c9784da604198",
+      "variant": "A",
+      "width": 720
+    },
+    {
+      "delivery_frame": 90,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/B_game_first.png",
+      "phase": "GAME",
+      "sample": "game_first",
+      "sha256": "de61eba792a40cc5ac92a48123c5a2460841ab76d21f93973c1c9784da604198",
+      "variant": "B",
+      "width": 720
+    },
+    {
+      "delivery_frame": 90,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/C_game_first.png",
+      "phase": "GAME",
+      "sample": "game_first",
+      "sha256": "de61eba792a40cc5ac92a48123c5a2460841ab76d21f93973c1c9784da604198",
+      "variant": "C",
+      "width": 720
+    },
+    {
+      "delivery_frame": 300,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/A_reveal_first.png",
+      "phase": "REVEAL",
+      "sample": "reveal_first",
+      "sha256": "e8271912d7088d04f1a53d0c8b83543fa79baab12fcecbbe99be569e4da28fae",
+      "variant": "A",
+      "width": 720
+    },
+    {
+      "delivery_frame": 300,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/B_reveal_first.png",
+      "phase": "REVEAL",
+      "sample": "reveal_first",
+      "sha256": "e8271912d7088d04f1a53d0c8b83543fa79baab12fcecbbe99be569e4da28fae",
+      "variant": "B",
+      "width": 720
+    },
+    {
+      "delivery_frame": 300,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/C_reveal_first.png",
+      "phase": "REVEAL",
+      "sample": "reveal_first",
+      "sha256": "e8271912d7088d04f1a53d0c8b83543fa79baab12fcecbbe99be569e4da28fae",
+      "variant": "C",
+      "width": 720
+    },
+    {
+      "delivery_frame": 390,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/A_cta_first.png",
+      "phase": "CTA",
+      "sample": "cta_first",
+      "sha256": "a6fb86c76d15153b29823dc49f89393e63dbe17bf54ef14346c05fa2fb121025",
+      "variant": "A",
+      "width": 720
+    },
+    {
+      "delivery_frame": 390,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/B_cta_first.png",
+      "phase": "CTA",
+      "sample": "cta_first",
+      "sha256": "e34b34bd1e9ec0c528ea377898f4d35370c159483679e595828811d64aa981e2",
+      "variant": "B",
+      "width": 720
+    },
+    {
+      "delivery_frame": 390,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/C_cta_first.png",
+      "phase": "CTA",
+      "sample": "cta_first",
+      "sha256": "e34b34bd1e9ec0c528ea377898f4d35370c159483679e595828811d64aa981e2",
+      "variant": "C",
+      "width": 720
+    },
+    {
+      "delivery_frame": 449,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/A_cta_last.png",
+      "phase": "CTA",
+      "sample": "cta_last",
+      "sha256": "5cc54961b7dd779f410fdf2f021fef63283c4ce30e33a0ebedc8d1eeb3842453",
+      "variant": "A",
+      "width": 720
+    },
+    {
+      "delivery_frame": 449,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/B_cta_last.png",
+      "phase": "CTA",
+      "sample": "cta_last",
+      "sha256": "50230f91a36c66371dea1d8a555edbb65ceb1fe01d50dc6420e5f17a556aecc5",
+      "variant": "B",
+      "width": 720
+    },
+    {
+      "delivery_frame": 449,
+      "height": 1280,
+      "path": "artifacts/tests/c11e/e4a_real_body_pixel_review/RUN_20261104_002559_542bcf60/png/C_cta_last.png",
+      "phase": "CTA",
+      "sample": "cta_last",
+      "sha256": "50230f91a36c66371dea1d8a555edbb65ceb1fe01d50dc6420e5f17a556aecc5",
+      "variant": "C",
+      "width": 720
+    }
+  ],
+  "pixel_comparisons": [
+    {
+      "allowed_region": "HOOK",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 10979,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 10979,
+      "comparison": "A_TO_B_HOOK_FIRST",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "B_TO_C_HOOK_FIRST_METADATA_AND_BLOCKED_FIELDS_NO_PIXELS",
+      "success": true
+    },
+    {
+      "allowed_region": "HOOK",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 10991,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 10991,
+      "comparison": "A_TO_B_HOOK_LAST",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "B_TO_C_HOOK_LAST_METADATA_AND_BLOCKED_FIELDS_NO_PIXELS",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "A_TO_B_GAME_FIRST",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "B_TO_C_GAME_FIRST_METADATA_AND_BLOCKED_FIELDS_NO_PIXELS",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "A_TO_B_REVEAL_FIRST",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "B_TO_C_REVEAL_FIRST_METADATA_AND_BLOCKED_FIELDS_NO_PIXELS",
+      "success": true
+    },
+    {
+      "allowed_region": "CTA",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 6716,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 6716,
+      "comparison": "A_TO_B_CTA_FIRST",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "B_TO_C_CTA_FIRST_METADATA_AND_BLOCKED_FIELDS_NO_PIXELS",
+      "success": true
+    },
+    {
+      "allowed_region": "CTA",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 6716,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 6716,
+      "comparison": "A_TO_B_CTA_LAST",
+      "success": true
+    },
+    {
+      "allowed_region": "NONE",
+      "changed_body_pixels": 0,
+      "changed_inside_allowed_region": 0,
+      "changed_outside_allowed_region": 0,
+      "changed_pixels": 0,
+      "comparison": "B_TO_C_CTA_LAST_METADATA_AND_BLOCKED_FIELDS_NO_PIXELS",
+      "success": true
+    }
+  ],
+  "regions_720x1280": {
+    "BODY": {
+      "x0": 0,
+      "x1": 720,
+      "y0": 192,
+      "y1": 1088
+    },
+    "FOOTER": {
+      "x0": 0,
+      "x1": 720,
+      "y0": 1088,
+      "y1": 1280
+    },
+    "HEADER": {
+      "x0": 0,
+      "x1": 720,
+      "y0": 0,
+      "y1": 192
+    }
+  },
+  "sample_frames": [
+    {
+      "boundary": "first",
+      "delivery_frame": 0,
+      "phase": "HOOK",
+      "sample": "hook_first",
+      "source_time_seconds": 0.0
+    },
+    {
+      "boundary": "last",
+      "delivery_frame": 89,
+      "phase": "HOOK",
+      "sample": "hook_last",
+      "source_time_seconds": 2.966666666666667
+    },
+    {
+      "boundary": "first",
+      "delivery_frame": 90,
+      "phase": "GAME",
+      "sample": "game_first",
+      "source_time_seconds": 3.0
+    },
+    {
+      "boundary": "first",
+      "delivery_frame": 300,
+      "phase": "REVEAL",
+      "sample": "reveal_first",
+      "source_time_seconds": 10.0
+    },
+    {
+      "boundary": "first",
+      "delivery_frame": 390,
+      "phase": "CTA",
+      "sample": "cta_first",
+      "source_time_seconds": 13.0
+    },
+    {
+      "boundary": "last",
+      "delivery_frame": 449,
+      "phase": "CTA",
+      "sample": "cta_last",
+      "source_time_seconds": 14.966666666666667
+    }
+  ],
+  "schema": "C11E-E4A-REAL-BODY-PIXEL-REPORT-V1",
+  "scope": "CHALLENGE_004_ONE_C11C_REVIEW_720_TEST_MP4_WITH_D_POLICY_DRIVEN_STILL_FRAME_OVERLAYS",
+  "status": "PASS_ISOLATED_REAL_C11C_BODY_PIXEL_PROOF_TEST_ONLY",
+  "test_only_normalization": {
+    "command": [
+      "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-y",
+      "-i",
+      "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\c11c_base_render\\CHALLENGE_004\\CHALLENGE_004_seed_314159.mp4",
+      "-vf",
+      "fps=30,scale=in_range=full:out_range=tv,format=yuv420p",
+      "-an",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "medium",
+      "-crf",
+      "18",
+      "-pix_fmt",
+      "yuv420p",
+      "-r",
+      "30",
+      "-fps_mode",
+      "cfr",
+      "-color_range",
+      "tv",
+      "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\review_delivery\\CHALLENGE_004_REVIEW_720_30FPS_TEST_ONLY.mp4"
+    ],
+    "exit_code": 0,
+    "output_sha256": "edbd446d67142d20e138e55563f16cbae8d9a4c39469fd2bebcb3c9d5723fb9e",
+    "scope": "TEST_ONLY_DERIVATIVE; ORIGINAL_C11C_MP4_PRESERVED",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "test_only_visual_layout_disposition": {
+    "d1_5_safe_area_and_generic_typography": "UNKNOWN",
+    "existing_c11c_hook_content_overlap_observed_in_fixture_montage": true,
+    "pixel_region_confinement_proven": true,
+    "production_compositor_layout_acceptance": "NOT_GRANTED",
+    "typography_coordinates_are_fixture_placeholders": true,
+    "visual_placement_approved": false
+  }
+}

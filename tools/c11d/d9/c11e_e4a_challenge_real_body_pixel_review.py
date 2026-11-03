@@ -43,6 +43,8 @@ CHALLENGE_SHA256 = "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be68
 APPROVAL_SHA256 = "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5"
 LAYOUT_SHA256 = "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461"
 DELIVERY_PROFILE = "REVIEW_720"
+C11C_SOURCE_FPS = 60
+C11C_SOURCE_FRAMES = 900
 DELIVERY_FPS = 30
 DELIVERY_WIDTH = 720
 DELIVERY_HEIGHT = 1280
@@ -344,7 +346,7 @@ def parse_rate(value: str) -> float:
 
 def probe_video(ffprobe: str, video_path: Path, evidence_dir: Path, root: Path) -> dict[str, Any]:
     command = [ffprobe, "-v", "error", "-count_frames", "-show_entries",
-               "stream=codec_type,codec_name,width,height,pix_fmt,avg_frame_rate,r_frame_rate,nb_read_frames,duration",
+               "stream=codec_type,codec_name,width,height,pix_fmt,color_range,avg_frame_rate,r_frame_rate,nb_read_frames,duration",
                "-show_entries", "format=duration", "-of", "json", str(video_path)]
     proc = subprocess.run(command, cwd=str(root), capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
     (evidence_dir / "ffprobe.stdout.txt").write_text(proc.stdout, encoding="utf-8")
@@ -360,15 +362,81 @@ def probe_video(ffprobe: str, video_path: Path, evidence_dir: Path, root: Path) 
     rate = parse_rate(str(stream.get("avg_frame_rate", "0/0")))
     duration = float(payload.get("format", {}).get("duration", stream.get("duration", 0)))
     metadata = {"codec_name": stream.get("codec_name"), "width": stream.get("width"), "height": stream.get("height"),
-                "pix_fmt": stream.get("pix_fmt"), "avg_frame_rate": stream.get("avg_frame_rate"),
+                "pix_fmt": stream.get("pix_fmt"), "color_range": stream.get("color_range"),
+                "avg_frame_rate": stream.get("avg_frame_rate"), "r_frame_rate": stream.get("r_frame_rate"),
                 "nb_read_frames": frames, "duration_seconds": duration, "video_path": str(video_path)}
     if metadata["codec_name"] != "h264" or metadata["width"] != DELIVERY_WIDTH or metadata["height"] != DELIVERY_HEIGHT:
         raise RealBodyReviewError(f"Unexpected C11-C review video codec/geometry: {metadata}")
-    if metadata["pix_fmt"] != "yuv420p":
-        raise RealBodyReviewError(f"Unexpected C11-C review pixel format: {metadata['pix_fmt']}; expected yuv420p")
+    if metadata["pix_fmt"] != "yuv420p" or metadata["color_range"] != "tv":
+        raise RealBodyReviewError(f"Unexpected normalized review pixel format/range: {metadata}")
     if abs(rate - DELIVERY_FPS) > 0.0001 or frames != EXPECTED_DELIVERY_FRAMES or abs(duration - 15.0) > 0.08:
-        raise RealBodyReviewError(f"Unexpected C11-C review timebase/duration: {metadata}")
+        raise RealBodyReviewError(f"Unexpected normalized review timebase/duration: {metadata}")
     return metadata
+
+
+def probe_c11c_source_video(ffprobe: str, video_path: Path, evidence_dir: Path, root: Path,
+                            source_fps: int, expected_frames: int, duration_seconds: float) -> dict[str, Any]:
+    command = [ffprobe, "-v", "error", "-count_frames", "-show_entries",
+               "stream=codec_type,codec_name,width,height,pix_fmt,color_range,avg_frame_rate,r_frame_rate,nb_read_frames,duration",
+               "-show_entries", "format=duration", "-of", "json", str(video_path)]
+    proc = subprocess.run(command, cwd=str(root), capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
+    (evidence_dir / "c11c_source_ffprobe.stdout.txt").write_text(proc.stdout, encoding="utf-8")
+    (evidence_dir / "c11c_source_ffprobe.stderr.txt").write_text(proc.stderr, encoding="utf-8")
+    if proc.returncode != 0:
+        raise RealBodyReviewError(f"C11-C source FFprobe failed ({proc.returncode}): {proc.stderr[-2000:]}")
+    payload = json.loads(proc.stdout)
+    streams = payload.get("streams", [])
+    if len(streams) != 1 or streams[0].get("codec_type") != "video":
+        raise RealBodyReviewError(f"Expected exactly one silent C11-C source video stream, got {streams}")
+    stream = streams[0]
+    frames = int(stream.get("nb_read_frames", -1))
+    rate = parse_rate(str(stream.get("avg_frame_rate", "0/0")))
+    duration = float(payload.get("format", {}).get("duration", stream.get("duration", 0)))
+    metadata = {"codec_name": stream.get("codec_name"), "width": stream.get("width"), "height": stream.get("height"),
+                "pix_fmt": stream.get("pix_fmt"), "color_range": stream.get("color_range"),
+                "avg_frame_rate": stream.get("avg_frame_rate"), "r_frame_rate": stream.get("r_frame_rate"),
+                "nb_read_frames": frames, "duration_seconds": duration, "video_path": str(video_path)}
+    if metadata["codec_name"] != "h264" or metadata["width"] != DELIVERY_WIDTH or metadata["height"] != DELIVERY_HEIGHT:
+        raise RealBodyReviewError(f"Unexpected C11-C source video codec/geometry: {metadata}")
+    if metadata["pix_fmt"] == "yuvj420p" and metadata["color_range"] == "pc":
+        metadata["source_range_interpretation"] = "FULL_RANGE_YUVJ420P"
+    elif metadata["pix_fmt"] == "yuv420p" and metadata["color_range"] in ("tv", None):
+        metadata["source_range_interpretation"] = "LIMITED_RANGE_YUV420P"
+    else:
+        raise RealBodyReviewError(f"Unsupported C11-C source pixel format/range pair: {metadata}")
+    if abs(rate - source_fps) > 0.0001 or frames != expected_frames or abs(duration - duration_seconds) > 0.08:
+        raise RealBodyReviewError(f"Unexpected C11-C source timebase/duration: {metadata}")
+    return metadata
+
+
+def build_normalize_command(ffmpeg: str, source_path: Path, output_path: Path,
+                             source_video: Mapping[str, Any]) -> list[str]:
+    if source_video.get("pix_fmt") == "yuvj420p" and source_video.get("color_range") == "pc":
+        range_filter = "scale=in_range=full:out_range=tv"
+    elif source_video.get("pix_fmt") == "yuv420p" and source_video.get("color_range") in ("tv", None):
+        range_filter = "format=yuv420p"
+    else:
+        raise RealBodyReviewError("Cannot normalize unknown C11-C source pixel range")
+    video_filter = f"fps={DELIVERY_FPS},{range_filter},format=yuv420p" if range_filter.startswith("scale=") else f"fps={DELIVERY_FPS},format=yuv420p"
+    return [ffmpeg, "-hide_banner", "-loglevel", "error", "-y", "-i", str(source_path),
+            "-vf", video_filter, "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+            "-pix_fmt", "yuv420p", "-r", str(DELIVERY_FPS), "-fps_mode", "cfr",
+            "-color_range", "tv", str(output_path)]
+
+
+def normalize_c11c_source_video(ffmpeg: str, source_path: Path, output_path: Path,
+                                source_video: Mapping[str, Any], root: Path, evidence_dir: Path) -> dict[str, Any]:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    command = build_normalize_command(ffmpeg, source_path, output_path, source_video)
+    stdout = evidence_dir / "review_normalizer.stdout.txt"
+    stderr = evidence_dir / "review_normalizer.stderr.txt"
+    exit_code = run_command(command, root, stdout, stderr)
+    if exit_code != 0 or not output_path.is_file():
+        detail = stderr.read_text(encoding="utf-8", errors="replace")[-2000:] if stderr.exists() else ""
+        raise RealBodyReviewError(f"Test-only 30fps normalization failed (exit={exit_code}): {detail}")
+    return {"command": command, "exit_code": exit_code, "output_sha256": sha256_file(output_path),
+            "stdout_sha256": sha256_file(stdout), "stderr_sha256": sha256_file(stderr),
+            "scope": "TEST_ONLY_DERIVATIVE; ORIGINAL_C11C_MP4_PRESERVED"}
 
 
 def extract_frame(ffmpeg: str, video_path: Path, frame_index: int, output: Path,
@@ -388,7 +456,8 @@ def extract_frame(ffmpeg: str, video_path: Path, frame_index: int, output: Path,
     return {"command": command, "exit_code": exit_code, "sha256": sha256_file(output), "path": str(output)}
 
 
-def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, powershell_arg: str | None) -> int:
+def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, powershell_arg: str | None,
+                 reuse_c11c_base_run: str | None = None) -> int:
     authorities = validate_authorities(root)
     powershell = powershell_arg or shutil.which("powershell.exe") or shutil.which("powershell")
     ffmpeg = ffmpeg_arg or os.environ.get("C11E_FFMPEG_EXECUTABLE") or shutil.which("ffmpeg.exe") or shutil.which("ffmpeg")
@@ -426,15 +495,47 @@ def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, po
         raise RealBodyReviewError("Frozen C11-C manifest does not match the accepted baseline")
     c11c_script_sha_before = sha256_file(script)
     main_source_sha_before = sha256_file(root / MAIN_SOURCE)
-    base_command = [powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
-                    "-ChallengeId", "CHALLENGE_004", "-Seed", "314159", "-DeliveryProfile", DELIVERY_PROFILE,
-                    "-OutputRoot", str(base_dir), "-NoSound"]
-    render = subprocess.run(base_command, cwd=str(root), capture_output=True, text=True,
-                            encoding="utf-8", errors="replace", check=False)
-    (evidence_dir / "c11c_generator.stdout.txt").write_text(render.stdout, encoding="utf-8")
-    (evidence_dir / "c11c_generator.stderr.txt").write_text(render.stderr, encoding="utf-8")
-    if render.returncode != 0:
-        raise RealBodyReviewError(f"Existing C11-C Challenge generator failed (exit={render.returncode}); evidence={evidence_dir}")
+    if reuse_c11c_base_run:
+        source_run = Path(reuse_c11c_base_run).resolve()
+        approved_test_parent = (root / "artifacts" / "tests" / "c11e" / "e4a_real_body_pixel_review").resolve()
+        if source_run.parent != approved_test_parent or not source_run.name.startswith("RUN_") or not source_run.is_dir():
+            raise RealBodyReviewError("Reuse path must be an existing RUN_* directory directly under the approved E4A test root")
+        source_mp4s = sorted(source_run.rglob("*.mp4"))
+        if len(source_mp4s) != 1:
+            raise RealBodyReviewError(f"Reuse run must contain exactly one C11-C test MP4; found {len(source_mp4s)}")
+        source_mp4 = source_mp4s[0]
+        source_manifest = source_mp4.parent / "production_manifest.json"
+        if not source_manifest.is_file():
+            raise RealBodyReviewError("Reuse run is missing the adjacent production_manifest.json")
+        for log_name in ("c11c_generator.stdout.txt", "c11c_generator.stderr.txt"):
+            if not (source_run / log_name).is_file():
+                raise RealBodyReviewError(f"Reuse run is missing {log_name}")
+        reuse_target = base_dir / source_mp4.parent.name
+        reuse_target.mkdir(parents=True, exist_ok=False)
+        for item in source_mp4.parent.iterdir():
+            if item.is_file():
+                shutil.copy2(item, reuse_target / item.name)
+        shutil.copy2(source_run / "c11c_generator.stdout.txt", evidence_dir / "c11c_generator.stdout.txt")
+        shutil.copy2(source_run / "c11c_generator.stderr.txt", evidence_dir / "c11c_generator.stderr.txt")
+        base_command = ["REUSE_EXISTING_TEST_RENDER", str(source_run), str(source_mp4)]
+        render_exit_code = 0
+        execution_mode = "REUSED_EXISTING_C11C_TEST_RENDER_NO_GODOT_RERUN"
+        reused_source_run = str(source_run)
+        reused_source_mp4_sha256 = sha256_file(source_mp4)
+    else:
+        base_command = [powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+                        "-ChallengeId", "CHALLENGE_004", "-Seed", "314159", "-DeliveryProfile", DELIVERY_PROFILE,
+                        "-OutputRoot", str(base_dir), "-NoSound"]
+        render = subprocess.run(base_command, cwd=str(root), capture_output=True, text=True,
+                                encoding="utf-8", errors="replace", check=False)
+        (evidence_dir / "c11c_generator.stdout.txt").write_text(render.stdout, encoding="utf-8")
+        (evidence_dir / "c11c_generator.stderr.txt").write_text(render.stderr, encoding="utf-8")
+        render_exit_code = int(render.returncode)
+        execution_mode = "FRESH_C11C_TEST_RENDER"
+        reused_source_run = None
+        reused_source_mp4_sha256 = None
+        if render_exit_code != 0:
+            raise RealBodyReviewError(f"Existing C11-C Challenge generator failed (exit={render_exit_code}); evidence={evidence_dir}")
     frozen_manifest_after = sha256_file(frozen_manifest_path)
     c11c_script_sha_after = sha256_file(script)
     main_source_sha_after = sha256_file(root / MAIN_SOURCE)
@@ -452,7 +553,18 @@ def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, po
     c_manifest = load_json(manifest_path)
     if c_manifest.get("delivery_profile") != DELIVERY_PROFILE:
         raise RealBodyReviewError("C11-C output production_manifest.json delivery_profile is not REVIEW_720")
-    video = probe_video(ffprobe, video_path, evidence_dir, root)
+    if c_manifest.get("challenge_id") != "CHALLENGE_004" or c_manifest.get("seed") != 314159:
+        raise RealBodyReviewError("C11-C output manifest does not match CHALLENGE_004 / seed 314159")
+    if c_manifest.get("audio_present") is not False:
+        raise RealBodyReviewError("C11-C base render must remain silent for E4A.2")
+    if reused_source_mp4_sha256 is not None and sha256_file(video_path) != reused_source_mp4_sha256:
+        raise RealBodyReviewError("Reused C11-C base video changed during evidence copy")
+    source_video = probe_c11c_source_video(ffprobe, video_path, evidence_dir, root,
+                                          source_fps, round(total_seconds * source_fps), total_seconds)
+    normalized_video_path = evidence_dir / "review_delivery" / "CHALLENGE_004_REVIEW_720_30FPS_TEST_ONLY.mp4"
+    normalization = normalize_c11c_source_video(ffmpeg, video_path, normalized_video_path,
+                                                source_video, root, evidence_dir)
+    video = probe_video(ffprobe, normalized_video_path, evidence_dir, root)
 
     text_dir = evidence_dir / "text"
     text_dir.mkdir()
@@ -471,7 +583,7 @@ def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, po
         for variant in ("A", "B", "C"):
             out = image_dir / f"{variant}_{sample['sample']}.png"
             draws = [] if variant == "A" else approved_draw_fields(policy, intent_by_id[variant]["editorial"], phase)
-            details = extract_frame(ffmpeg, video_path, frame_index, out, draws, text_files, font_file,
+            details = extract_frame(ffmpeg, normalized_video_path, frame_index, out, draws, text_files, font_file,
                                     root, evidence_dir, f"{variant}_{sample['sample']}")
             png = decode_png(out)
             if (png.width, png.height) != (DELIVERY_WIDTH, DELIVERY_HEIGHT):
@@ -520,32 +632,53 @@ def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, po
         "authorities": authorities,
         "challenge": {"id": "CHALLENGE_004", "mechanic": "parking_v2", "source_fps": source_fps,
                       "timeline": timeline, "duration_seconds": total_seconds},
-        "c11c_generator": {"source_script": C11C_RENDERER.as_posix(), "source_script_sha256": c11c_script_sha_before,
+        "c11c_generator": {"execution_mode": execution_mode, "reused_source_run": reused_source_run,
+                           "source_script": C11C_RENDERER.as_posix(), "source_script_sha256": c11c_script_sha_before,
                            "source_script_sha256_after": c11c_script_sha_after,
                            "producer_main_sha256": main_source_sha_before, "producer_main_sha256_after": main_source_sha_after,
                            "frozen_manifest_sha256_before": frozen_manifest_before,
                            "frozen_manifest_sha256_after": frozen_manifest_after, "command": base_command,
-                           "exit_code": render.returncode, "test_media_path": str(video_path),
+                           "exit_code": render_exit_code, "test_media_path": str(video_path),
+                           "reused_source_mp4_sha256": reused_source_mp4_sha256,
                            "test_media_sha256": sha256_file(video_path), "test_manifest_sha256": sha256_file(manifest_path)},
+        "c11c_source_video": source_video,
+        "c11c_source_manifest_pixel_format": c_manifest.get("pixel_format"),
+        "c11c_source_video_vs_manifest": {
+            "manifest_pixel_format": c_manifest.get("pixel_format"),
+            "ffprobe_pixel_format": source_video.get("pix_fmt"),
+            "ffprobe_color_range": source_video.get("color_range"),
+            "pixel_format_mismatch": c_manifest.get("pixel_format") != source_video.get("pix_fmt"),
+            "handling": "NORMALIZE_TEST_ONLY_DERIVATIVE; DO_NOT_MUTATE_FROZEN_C11C_SOURCE",
+        },
+        "test_only_normalization": normalization,
         "delivery_video": video,
         "sample_frames": samples,
         "regions_720x1280": {k: {"x0": v[0], "y0": v[1], "x1": v[2], "y1": v[3]} for k, v in REGIONS.items()},
         "field_dispositions": [
-            {"field": "title", "status": "TEST_PIXEL_DRAW", "region": "HEADER", "phase": "HOOK"},
-            {"field": "subtitle", "status": "TEST_PIXEL_DRAW", "region": "HEADER", "phase": "HOOK"},
-            {"field": "call_to_action", "status": "TEST_PIXEL_DRAW", "region": "FOOTER", "phase": "CTA"},
+            {"field": "title", "status": "TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED", "region": "HEADER", "phase": "HOOK"},
+            {"field": "subtitle", "status": "TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED", "region": "HEADER", "phase": "HOOK"},
+            {"field": "call_to_action", "status": "TEST_PIXEL_DRAW_REGION_ONLY_PLACEMENT_UNAPPROVED", "region": "FOOTER", "phase": "CTA"},
             {"field": "player_name", "status": "BLOCKED_GEOMETRY_UNRESOLVED", "region": "CHALLENGE_OVERLAY"},
             {"field": "challenge_label", "status": "BLOCKED_GEOMETRY_UNRESOLVED", "region": "CHALLENGE_OVERLAY"},
             {"field": "language", "status": "METADATA_ONLY"},
         ],
         "pixel_artifacts": artifacts, "pixel_comparisons": comparisons, "body_crop_hashes": body_hashes,
+        "test_only_visual_layout_disposition": {
+            "pixel_region_confinement_proven": True,
+            "typography_coordinates_are_fixture_placeholders": True,
+            "visual_placement_approved": False,
+            "d1_5_safe_area_and_generic_typography": "UNKNOWN",
+            "existing_c11c_hook_content_overlap_observed_in_fixture_montage": True,
+            "production_compositor_layout_acceptance": "NOT_GRANTED",
+        },
         "invariants": {"real_gameplay_body_rasterized": True, "body_pixels_A_B_identical_at_all_six_samples": True,
                        "body_pixels_A_B_identical_at_sampled_gameplay_and_reveal": True,
-                       "only_approved_header_hook_and_footer_cta_regions_changed": True,
+                       "only_policy_permitted_header_hook_and_footer_cta_regions_changed": True,
                        "language_has_no_pixel_effect": True, "challenge_overlay_has_no_pixel_effect": True,
                        "c11c_source_mutation": False, "d9_10_dispatch_invoked": False,
                        "d_production_renderer_activated": False, "production_media_created": False,
-                       "test_media_created": True, "test_only_typography_not_production_layout": True},
+                       "test_media_created": True, "test_only_typography_not_production_layout": True,
+                       "visual_placement_approved": False},
         "governance": {"production_renderer": False, "production_dispatch": False, "production_media_created": False,
                        "test_media_created": True, "d4_8": "BLOCKED", "d9_10": "PREPARE_ONLY",
                        "d9_14": "BLOCKED", "d9_16": "BLOCKED", "d9_17": "BLOCKED_NO_GO",
@@ -555,13 +688,21 @@ def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, po
     write_json(report_path, report)
     receipt = {
         "schema": "C11E-E4A-REAL-BODY-PIXEL-RUNNER-RECEIPT-V1", "status": report["status"],
-        "c11c_generator_exit_code": render.returncode, "c11c_generator_stdout_sha256": sha256_file(evidence_dir / "c11c_generator.stdout.txt"),
+        "c11c_generator_exit_code": render_exit_code, "c11c_generator_execution_mode": execution_mode,
+        "c11c_generator_stdout_sha256": sha256_file(evidence_dir / "c11c_generator.stdout.txt"),
         "c11c_generator_stderr_sha256": sha256_file(evidence_dir / "c11c_generator.stderr.txt"),
+        "c11c_source_ffprobe_stdout_sha256": sha256_file(evidence_dir / "c11c_source_ffprobe.stdout.txt"),
+        "c11c_source_ffprobe_stderr_sha256": sha256_file(evidence_dir / "c11c_source_ffprobe.stderr.txt"),
         "ffprobe_report_path": str((evidence_dir / "ffprobe.stdout.txt").relative_to(root)).replace("\\", "/"),
         "ffprobe_exit_code": 0,
         "ffprobe_stdout_sha256": sha256_file(evidence_dir / "ffprobe.stdout.txt"),
         "ffprobe_stderr_sha256": sha256_file(evidence_dir / "ffprobe.stderr.txt"),
-        "base_video_sha256": video["video_path"] and sha256_file(video_path),
+        "base_video_sha256": sha256_file(video_path),
+        "normalized_review_video_sha256": sha256_file(normalized_video_path),
+        "normalizer_command": normalization["command"],
+        "normalizer_exit_code": normalization["exit_code"],
+        "normalizer_stdout_sha256": normalization["stdout_sha256"],
+        "normalizer_stderr_sha256": normalization["stderr_sha256"],
         "pixel_png_count": len(artifacts), "pixel_comparison_count": len(comparisons),
         "body_crop_hash_count": len(body_hashes), "report_sha256": sha256_file(report_path),
         "governance": report["governance"],
@@ -574,12 +715,16 @@ def generate_run(root: Path, ffmpeg_arg: str | None, ffprobe_arg: str | None, po
             sums.append(f"{sha256_file(path)}  {path.relative_to(root).as_posix()}")
     (evidence_dir / "SHA256SUMS.txt").write_text("\n".join(sums) + "\n", encoding="utf-8")
     print("C11E_E4A_REAL_BODY_PIXEL_REVIEW=PASS_ISOLATED_TEST_ONLY")
-    print("C11C_BASE=1_REVIEW_720_H264_720x1280_30FPS_450_FRAMES")
+    print("C11C_EXECUTION_MODE=" + execution_mode)
+    print("C11C_BASE=1_REVIEW_720_H264_720x1280_60FPS_900_FRAMES")
+    print("C11C_SOURCE_PIX_FMT=" + str(source_video["pix_fmt"]) + "; COLOR_RANGE=" + str(source_video["color_range"]))
+    print("TEST_ONLY_NORMALIZED=H264_YUV420P_TV_720x1280_30FPS_450_FRAMES")
     print("REAL_GAMEPLAY_BODY=RASTERIZED")
     print("PIXEL_PNGS=18/18 @ 720x1280")
     print("PIXEL_COMPARISONS=12/12")
     print("BODY_PIXEL_IDENTITY=PASS_AT_6_SAMPLED_SOURCE_TIMEPOINTS")
-    print("D_FIELDS=title/subtitle=HEADER/HOOK; call_to_action=FOOTER/CTA")
+    print("D_FIELDS=title/subtitle=HEADER/HOOK; call_to_action=FOOTER/CTA; REGION_ONLY")
+    print("VISUAL_PLACEMENT=UNAPPROVED_D1_5_SAFE_AREA_TYPOGRAPHY_UNKNOWN")
     print("CHALLENGE_OVERLAY=BLOCKED_GEOMETRY_UNRESOLVED")
     print("PRODUCTION_RENDERER=false; D9.10=PREPARE_ONLY; RELEASE_AUTHORITY=NONE")
     print(f"EVIDENCE_DIR={evidence_dir}")
@@ -592,9 +737,10 @@ def main() -> int:
     parser.add_argument("--ffmpeg", help="FFmpeg executable; defaults to PATH")
     parser.add_argument("--ffprobe", help="FFprobe executable; defaults to PATH")
     parser.add_argument("--powershell", help="PowerShell executable; defaults to PATH")
+    parser.add_argument("--reuse-c11c-base-run", help="Reuse one prior RUN_* directory under the E4A artifacts/tests root; no Godot rerender")
     args = parser.parse_args()
     try:
-        return generate_run(ROOT, args.ffmpeg, args.ffprobe, args.powershell)
+        return generate_run(ROOT, args.ffmpeg, args.ffprobe, args.powershell, args.reuse_c11c_base_run)
     except Exception as exc:
         print(f"C11E_E4A_REAL_BODY_PIXEL_REVIEW=FAIL {type(exc).__name__}: {exc}", file=sys.stderr)
         return 1
