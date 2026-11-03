@@ -24,7 +24,7 @@ from c11d_gui_request import (
 from c11e_production_service import prepare_c11e_production_intent
 
 from PySide6.QtCore import QProcess, Qt
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QTextCursor
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -50,7 +50,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-APP_VERSION = "0.11.1"
+APP_VERSION = "0.12.0-E3"
 ROOT = Path(__file__).resolve().parent
 PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
 SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
@@ -310,6 +310,8 @@ class MainWindow(QMainWindow):
         self.job_total = 0
         self.job_completed = 0
         self.proc: QProcess | None = None
+        self.e3_process: QProcess | None = None
+        self.e3_last_intent_path: Path | None = None
         self.probe_file: Path | None = None
         self.rows: list[ParamRow] = []
         self._building_type = False
@@ -790,6 +792,14 @@ class MainWindow(QMainWindow):
         self.d9_certification_preflight.clicked.connect(self._run_d914_certification_preflight)
         form.addWidget(self.d9_certification_preflight, row, 0, 1, 4)
         row += 1
+        self.d9_e3_audio_pilot_button = QPushButton(
+            "C11-E E3 · AUDIO + MUX PILOT CHALLENGE_001 / R4 (SIN RERENDER)"
+        )
+        self.d9_e3_audio_pilot_button.setObjectName("Primary")
+        self.d9_e3_audio_pilot_button.setMinimumHeight(42)
+        self.d9_e3_audio_pilot_button.clicked.connect(self._run_c11e_e3_audio_pilot)
+        form.addWidget(self.d9_e3_audio_pilot_button, row, 0, 1, 4)
+        row += 1
         notice = QLabel(
             "D9.10 prepara una envolvente de bindings exclusiva de C11-D desde la petición canónica, "
             "la personalización, el plan y sus hashes. La envolvente es solo inspeccionable: no es "
@@ -817,9 +827,15 @@ class MainWindow(QMainWindow):
         self.d9_lifecycle_view = QPlainTextEdit()
         self.d9_certification_view = QPlainTextEdit()
         self.d9_certification_view.setPlainText("D9.14 GATE = BLOCKED. Future D frozen renderer baseline and explicit D4.8 authorization are absent. This view is preflight-only; no renderer or media will be started.")
+        self.d9_e3_audio_view = QPlainTextEdit()
+        self.d9_e3_audio_view.setPlainText(
+            "C11-E E3 audiovisual pilot has not run. Prepare a Challenge / CHALLENGE_001 E1 intent, "
+            "then execute D3 V5 + D3.3 mastering + FFmpeg mux against the accepted R4 video-only fixture. "
+            "This is isolated test media, not a production dispatch."
+        )
         self.d9_e1_view = QPlainTextEdit()
         self.d9_e1_view.setPlainText("C11-E E1 shared service has not prepared a request yet. E1 is preparation-only; no dispatch or media.")
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_e1_view, self.d9_parity_view):
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_e3_audio_view, self.d9_e1_view, self.d9_parity_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
@@ -830,6 +846,7 @@ class MainWindow(QMainWindow):
             ("D-ONLY RENDER ADAPTER (PREPARED / OFF)", self.d9_adapter_view),
             ("CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)", self.d9_lifecycle_view),
             ("D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)", self.d9_certification_view),
+            ("C11-E · E3 AUDIO + MUX PILOT (TEST ONLY)", self.d9_e3_audio_view),
             ("C11-E · SERVICIO COMPARTIDO (E1 · SIN DISPATCH)", self.d9_e1_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
         ):
@@ -1026,6 +1043,7 @@ class MainWindow(QMainWindow):
             widget.setEnabled(bool(enabled and field_name in allowed))
 
     def _run_d9_universal_plan(self) -> None:
+        self.e3_last_intent_path = None
         try:
             self._d9_save_universal_editorial_inputs()
             content_type = str(self.d9_content_type.currentData() or "")
@@ -1210,9 +1228,146 @@ class MainWindow(QMainWindow):
             )
             if e1_parity["status"] != "PASS":
                 raise AssertionError("C11-E E1 shared GUI/CLI service parity failed")
+            self.e3_last_intent_path = run_root / "c11e_production_intent.json"
+            if not self.e3_last_intent_path.is_file():
+                self.e3_last_intent_path = None
+                raise FileNotFoundError("E1 intent file was not written after GUI/CLI parity PASS")
         except Exception as exc:
             self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
             QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))
+
+    def _run_c11e_e3_audio_pilot(self) -> None:
+        """Run the isolated E3 Challenge audio/mux pilot from the existing Producer GUI."""
+        if self.e3_process is not None and self.e3_process.state() != QProcess.NotRunning:
+            self.statusBar().showMessage("C11-E E3 audio pilot is already running.")
+            return
+        try:
+            # Apply the exact R4 provenance fixture through the existing D9.9 form.
+            self.d9_content_type.setCurrentIndex(self.d9_content_type.findData("challenges"))
+            family_index = self.d9_family.findData("key")
+            if family_index < 0:
+                raise RuntimeError("D9.9 catalog does not expose the CHALLENGE_001 key family.")
+            self.d9_family.setCurrentIndex(family_index)
+            variant_index = self.d9_variant.findData("CHALLENGE_001")
+            if variant_index < 0:
+                raise RuntimeError("D9.9 catalog does not expose CHALLENGE_001.")
+            self.d9_variant.setCurrentIndex(variant_index)
+            self.d9_mode.setCurrentIndex(self.d9_mode.findData("REVIEW"))
+            self.d9_seed.setValue(193847)
+            self.d9_music_seed.setValue(840001)
+            self.d9_delivery.setCurrentIndex(self.d9_delivery.findData("REVIEW_720"))
+            self.d9_presentation.setText("social_default_v1")
+            self.d9_variation.setValue(0)
+            self.d9_audio.setChecked(True)
+            self.d9_personalization.setChecked(True)
+            self.d9_scope.setCurrentIndex(max(0, self.d9_scope.findData("production_override")))
+            self.d9_title.setText("C11-E CHALLENGE_001 E3 AUDIO PILOT")
+
+            self.d9_e3_audio_view.setPlainText(
+                "Preparing canonical E1 GUI intent and executing the existing GUI/CLI parity checks...\n"
+                "Gameplay seed: 193847\nMusic seed A/B: 840001\nMusic seed C control: 840002\n"
+                "Source: accepted E2 R4 CHALLENGE_001 A video-only MP4 (270 frames / 30 FPS / 9 seconds).\n"
+                "No gameplay renderer invocation. Output is test evidence under Documents."
+            )
+            self.d9_output_tabs.setCurrentWidget(self.d9_e3_audio_view)
+            self._run_d9_universal_plan()
+            intent_path = self.e3_last_intent_path
+            if intent_path is None or not intent_path.is_file():
+                self.d9_e3_audio_view.appendPlainText(
+                    "\nE1 GUI/CLI preparation did not produce a validated intent. E3 was not launched."
+                )
+                self.d9_output_tabs.setCurrentWidget(self.d9_e3_audio_view)
+                return
+
+            runner = ROOT / "c11e_e3_audio_pilot.py"
+            fixture_root = PROJECT / "tools" / "c11e" / "e3" / "fixtures"
+            source_video = fixture_root / "CHALLENGE_001_R4_A_REVIEW_720.mp4"
+            source_receipt = fixture_root / "C11E_E2_R4_RENDER_RECEIPT.json"
+            source_sha = fixture_root / "C11E_E2_R4_RENDER_RECEIPT.json.sha256"
+            missing = [str(p) for p in (runner, source_video, source_receipt, source_sha) if not p.is_file()]
+            if missing:
+                raise FileNotFoundError("E3 pilot payload/fixture missing: " + "; ".join(missing))
+
+            run_id = "C11E_E3_AUDIO_PILOT_GUI_" + datetime.now().strftime("%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:8]
+            output_root = Path.home() / "Documents" / "C11E_E3_AUDIO_PILOT_TESTS" / run_id
+            if output_root.exists():
+                raise FileExistsError(f"E3 output root already exists: {output_root}")
+
+            args = [
+                str(runner),
+                "--root", str(PROJECT),
+                "--intent", str(intent_path),
+                "--source-video", str(source_video),
+                "--source-receipt", str(source_receipt),
+                "--source-receipt-sha256", str(source_sha),
+                "--output-root", str(output_root),
+                "--operator-gui",
+            ]
+            self.e3_process = QProcess(self)
+            self.e3_process.setWorkingDirectory(str(PROJECT))
+            self.e3_process.setProgram(sys.executable)
+            self.e3_process.setArguments(args)
+            self.e3_process.readyReadStandardOutput.connect(self._e3_audio_read_stdout)
+            self.e3_process.readyReadStandardError.connect(self._e3_audio_read_stderr)
+            self.e3_process.finished.connect(self._e3_audio_finished)
+            self.e3_process.errorOccurred.connect(self._e3_audio_process_error)
+            self.d9_e3_audio_view.appendPlainText(
+                "\nE3 AUDIO PILOT STARTING\n"
+                + "INTENT=" + str(intent_path) + "\n"
+                + "SOURCE_VIDEO=" + str(source_video) + "\n"
+                + "OUTPUT=" + str(output_root) + "\n"
+                + "COMMAND=" + sys.executable + " " + " ".join(args)
+            )
+            self.d9_e3_audio_pilot_button.setEnabled(False)
+            self.statusBar().showMessage("C11-E E3 audio/mastering/FFmpeg/FFprobe pilot running · test-only")
+            self.e3_process.start()
+        except Exception as exc:
+            self.e3_last_intent_path = None
+            self.d9_e3_audio_view.appendPlainText("\nE3 NOT STARTED\n" + str(exc))
+            self.d9_output_tabs.setCurrentWidget(self.d9_e3_audio_view)
+            QMessageBox.warning(self, "C11-E E3 Audio Pilot", str(exc))
+
+    def _e3_audio_read_stdout(self) -> None:
+        if self.e3_process is not None:
+            data = bytes(self.e3_process.readAllStandardOutput()).decode("utf-8", errors="replace")
+            if data:
+                self.d9_e3_audio_view.moveCursor(QTextCursor.End)
+                self.d9_e3_audio_view.insertPlainText(data)
+
+    def _e3_audio_read_stderr(self) -> None:
+        if self.e3_process is not None:
+            data = bytes(self.e3_process.readAllStandardError()).decode("utf-8", errors="replace")
+            if data:
+                self.d9_e3_audio_view.moveCursor(QTextCursor.End)
+                self.d9_e3_audio_view.insertPlainText(data)
+
+    def _e3_audio_finished(self, exit_code: int, _exit_status: QProcess.ExitStatus) -> None:
+        process = self.e3_process
+        if process is not None:
+            self._e3_audio_read_stdout()
+            self._e3_audio_read_stderr()
+        if exit_code == 0:
+            self.d9_e3_audio_view.appendPlainText(
+                "\nC11-E E3 AUDIO PILOT: PASS (TEST ONLY)\n"
+                "release_authority=NONE\nproduction_product_created=false\n"
+                "Consulta el recibo y los tres MP4 de prueba en la ruta OUTPUT indicada arriba."
+            )
+            self.statusBar().showMessage("C11-E E3 audio pilot PASS · test-only · release authority NONE")
+        else:
+            self.d9_e3_audio_view.appendPlainText(
+                f"\nC11-E E3 AUDIO PILOT: FAIL · exit_code={exit_code}\n"
+                "Conserva el directorio de evidencia y los logs. No se ha autorizado producción."
+            )
+            self.statusBar().showMessage(f"C11-E E3 audio pilot FAIL · exit={exit_code} · evidence retained")
+        self.e3_process = None
+        self.d9_e3_audio_pilot_button.setEnabled(True)
+
+    def _e3_audio_process_error(self, error: QProcess.ProcessError) -> None:
+        if self.e3_process is not None and self.e3_process.state() == QProcess.NotRunning:
+            self.d9_e3_audio_view.appendPlainText(f"\nE3 PROCESS ERROR: {error}\n")
+            self.e3_process = None
+            self.d9_e3_audio_pilot_button.setEnabled(True)
+            self.statusBar().showMessage("C11-E E3 process could not start; inspect the E3 output tab.")
 
     def _run_d914_certification_preflight(self) -> None:
         """Show the canonical D9.14 readiness gate; never launches production."""

@@ -1,0 +1,346 @@
+{
+    "schema":  "C11E-E2-CHALLENGE-TITLE-AB-RENDER-RECEIPT-V1",
+    "status":  "E2_AUTOMATED_TITLE_TO_PIXELS_AND_GAMEPLAY_INVARIANCE_PASS_HUMAN_REVIEW_PENDING",
+    "created_at":  "2026-11-01T15:43:40.2312584+01:00",
+    "branch":  "main",
+    "head":  "7fbdf8529d2af6ba7089eacd8fd9b38682466d84",
+    "head_parent":  "b299521dcd738c0ab45f4db37e0d3ab70a00c06b",
+    "c11c_manifest":  {
+                          "bytes":  796318,
+                          "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+                      },
+    "request_id":  "C11E-E2-CH001-AB-20261101-V9-R4",
+    "selection":  {
+                      "content_type":  "challenges",
+                      "family_id":  "key",
+                      "variant_id":  "CHALLENGE_001"
+                  },
+    "seed_domains":  {
+                         "gameplay":  193847,
+                         "music":  840001,
+                         "independent":  true,
+                         "audio_used":  false
+                     },
+    "title_a":  "C11-E TITLE A",
+    "title_b":  "C11-E TITLE B",
+    "only_request_difference":  "production_override.title",
+    "effective_c_config_sha256_equal":  true,
+    "source_timebase":  {
+                            "fps":  60,
+                            "frames":  540
+                        },
+    "delivery":  {
+                     "profile":  "REVIEW_720",
+                     "width":  720,
+                     "height":  1280,
+                     "fps":  30,
+                     "frames":  270,
+                     "audio":  "NONE_E2"
+                 },
+    "gameplay_body_crop":  {
+                               "status":  "PIXEL_IDENTICAL",
+                               "frames_compared":  540,
+                               "crop":  "x=0,y=144,width=540,height=816"
+                           },
+    "editorial_title_slot_crop":  {
+                                      "status":  "PIXEL_DIFFERENT",
+                                      "frames_different":  540,
+                                      "crop":  "x=24,y=24,width=496,height=104"
+                                  },
+    "final_mp4_full_frame":  {
+                                 "status":  "PIXEL_DIFFERENT",
+                                 "frames_compared":  270,
+                                 "frames_different":  270
+                             },
+    "header_outside_title_slot":  {
+                                      "status":  "PIXEL_IDENTICAL",
+                                      "top_frames":  540,
+                                      "bottom_frames":  540,
+                                      "left_frames":  540,
+                                      "right_frames":  540
+                                  },
+    "verified_source_pins":  [
+                                 {
+                                     "path":  "GeneradorMaestro.gd",
+                                     "sha256":  "4f10144c62c7bc149bd46aa37494b1df40c7185544b8477153150eec71c1aaf9"
+                                 },
+                                 {
+                                     "path":  "Main.tscn",
+                                     "sha256":  "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7"
+                                 },
+                                 {
+                                     "path":  "project.godot",
+                                     "sha256":  "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3"
+                                 },
+                                 {
+                                     "path":  "challenges/CHALLENGE_001.json",
+                                     "sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"
+                                 },
+                                 {
+                                     "path":  "core/presentation/UnifiedSocialFrame.gd",
+                                     "sha256":  "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+                                 },
+                                 {
+                                     "path":  "core/presentation/UnifiedSocialFrame.tscn",
+                                     "sha256":  "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b"
+                                 },
+                                 {
+                                     "path":  "core/presentation/PresentationUI.gd",
+                                     "sha256":  "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+                                 },
+                                 {
+                                     "path":  "core/presentation/SocialUIBinder.gd",
+                                     "sha256":  "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+                                 },
+                                 {
+                                     "path":  "core/presentation/ChallengePresentationBinder.gd",
+                                     "sha256":  "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+                                 },
+                                 {
+                                     "path":  "core/presentation/PresentationProfile.gd",
+                                     "sha256":  "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+                                 },
+                                 {
+                                     "path":  "core/presentation/components/HookComponent.gd",
+                                     "sha256":  "52894359fc80f4647493fb37fa185aae3dcdc8daf1ac1fdc37137d13debb7bbe"
+                                 },
+                                 {
+                                     "path":  "core/presentation/components/TypographyLabel.gd",
+                                     "sha256":  "d7c6ec47b33baec983a239dfe6218037d4126dc1532130c92d4202d56e6e8866"
+                                 },
+                                 {
+                                     "path":  "core/presentation/C11CVisualTypography.gd",
+                                     "sha256":  "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633"
+                                 },
+                                 {
+                                     "path":  "assets/fonts/Inter-Bold.otf",
+                                     "sha256":  "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                     "sha256":  "6f18d5fd906ff615d95d7f9d53e2e6ff0bf37c74e185efdcaf34354c888b9645"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/c11e_production_cli.py",
+                                     "sha256":  "e7272231dca2eb730506308b092fce9b3644f7f8cfd9f2c2bbbbd1b695e82fc4"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/main.py",
+                                     "sha256":  "05f4ed650cec028df3d8e4253301fa16510b0fc495e028f9e0d6addc113551fb"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/BUILD_MANIFEST.json",
+                                     "sha256":  "d95ede2f22486b3ef649186c25ce227bf8531f8ad63ab53323ba339aba195376"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/self_test.py",
+                                     "sha256":  "84e8eabd5098e0d4cb194fa9f50e00e2f68c4516592285668399f35069c25a90"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/test_producer_gui_contract.py",
+                                     "sha256":  "ce073a39db0af583ea215c66a6c5303230539e8de857505076963a46dddf4139"
+                                 }
+                             ],
+    "review_samples":  [
+                           {
+                               "label":  "A",
+                               "sample":  "first",
+                               "seconds":  "0",
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\A\\review_first.png",
+                               "sha256":  "2a632c997c58c27c919a1e0e3c56f6c4e4cee4e0e00f365657d467a89acf2106"
+                           },
+                           {
+                               "label":  "A",
+                               "sample":  "middle",
+                               "seconds":  "4",
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\A\\review_middle.png",
+                               "sha256":  "460c27bef7cd3a50d8d1c73e7194f1bd65ba4f1ea28396a5e8e92a400e9d363d"
+                           },
+                           {
+                               "label":  "A",
+                               "sample":  "last",
+                               "seconds":  "8.9",
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\A\\review_last.png",
+                               "sha256":  "4fe5c2f779ae362980b12f51f867ec7a4b9ac847d22f15aceeaac0c4712bdb76"
+                           },
+                           {
+                               "label":  "B",
+                               "sample":  "first",
+                               "seconds":  "0",
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\B\\review_first.png",
+                               "sha256":  "582c712f5bff5ef27dd980ee50bf1ee55907b87654c9238ef53ddca2b521ba75"
+                           },
+                           {
+                               "label":  "B",
+                               "sample":  "middle",
+                               "seconds":  "4",
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\B\\review_middle.png",
+                               "sha256":  "1249f2a2d2ff60c3ab26773b3408dfc43e95d84a72bea5af7e37abe4d7e984ca"
+                           },
+                           {
+                               "label":  "B",
+                               "sample":  "last",
+                               "seconds":  "8.9",
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\B\\review_last.png",
+                               "sha256":  "a84eab8b6a1c9a4a019981d816502cdb46d00e494e04a9e9d97c6f0e37f2eca6"
+                           }
+                       ],
+    "e2_sources":  {
+                       "pair_builder_sha256":  "37889062856127d0e4161b1c5951547d6a954e807e9fd031fd58fca158373eb7",
+                       "pair_tests_sha256":  "ab4ed3fd421ef0cac86d4ef25167f0161a186ef5bd90373414abed7bea17d2a9",
+                       "scene_sha256":  "6dfe47ebd3d158a19f0c72727ff68e4d5b37910513d89c523837b785e3f3d34c",
+                       "gdscript_sha256":  "4787b4459eb509117c6d752d1b6744236bb5a291372f2ef5a5cb1eb58755dae5",
+                       "godot_json_numeric_test_sha256":  "73fc4421f6ebfec8e3f458123600663cc772838731f57e240ef22abbebf2ef3b",
+                       "runner_sha256":  "158325324626085ebf319f68906ca8778f9a08eb39c6e8441da146c12ee4f953"
+                   },
+    "render_rows":  [
+                        {
+                            "label":  "A",
+                            "title":  "C11-E TITLE A",
+                            "request_id":  "C11E-E2-CH001-AB-20261101-V9-R4",
+                            "gameplay_seed":  193847,
+                            "music_seed":  840001,
+                            "source_fps":  60,
+                            "source_frames":  540,
+                            "source_width":  540,
+                            "source_height":  960,
+                            "source_codec":  "mjpeg",
+                            "source_pixel_format":  "yuvj420p",
+                            "source_duration":  "9.000000",
+                            "source_visual_content_samples":  [
+                                                                  [
+                                                                      {
+                                                                          "frame_index":  60,
+                                                                          "luma_min":  0,
+                                                                          "luma_max":  255,
+                                                                          "luma_range":  255,
+                                                                          "chroma_u_range":  157,
+                                                                          "chroma_v_range":  127,
+                                                                          "spatially_nonuniform":  true
+                                                                      },
+                                                                      {
+                                                                          "frame_index":  270,
+                                                                          "luma_min":  0,
+                                                                          "luma_max":  255,
+                                                                          "luma_range":  255,
+                                                                          "chroma_u_range":  141,
+                                                                          "chroma_v_range":  127,
+                                                                          "spatially_nonuniform":  true
+                                                                      },
+                                                                      {
+                                                                          "frame_index":  480,
+                                                                          "luma_min":  0,
+                                                                          "luma_max":  255,
+                                                                          "luma_range":  255,
+                                                                          "chroma_u_range":  158,
+                                                                          "chroma_v_range":  127,
+                                                                          "spatially_nonuniform":  true
+                                                                      }
+                                                                  ]
+                                                              ],
+                            "delivery_fps":  30,
+                            "delivery_frames":  270,
+                            "final_width":  720,
+                            "final_height":  1280,
+                            "final_codec":  "h264",
+                            "final_pixel_format":  "yuv420p",
+                            "final_audio_streams":  0,
+                            "source_avi":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\A\\CHALLENGE_001_A_source.avi",
+                            "source_avi_sha256":  "0f265d8526793e25c12ae1fc55287133024d34716d92bcc47494023b70859e54",
+                            "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\A\\CHALLENGE_001_A_REVIEW_720.mp4",
+                            "final_mp4_sha256":  "3d72e52cc7f7f8fc4b32c8719ab9800ba622e6069c7fa956526c108defce1afd",
+                            "sidecar_sha256":  "df3d046350c83bb96acd02f714fb39d86eeb751d0c7600c436d3dbf219fe59bb",
+                            "effective_config_sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+                            "godot_exit_code":  0,
+                            "ffmpeg_exit_code":  0,
+                            "ffprobe_exit_code":  0
+                        },
+                        {
+                            "label":  "B",
+                            "title":  "C11-E TITLE B",
+                            "request_id":  "C11E-E2-CH001-AB-20261101-V9-R4",
+                            "gameplay_seed":  193847,
+                            "music_seed":  840001,
+                            "source_fps":  60,
+                            "source_frames":  540,
+                            "source_width":  540,
+                            "source_height":  960,
+                            "source_codec":  "mjpeg",
+                            "source_pixel_format":  "yuvj420p",
+                            "source_duration":  "9.000000",
+                            "source_visual_content_samples":  [
+                                                                  [
+                                                                      {
+                                                                          "frame_index":  60,
+                                                                          "luma_min":  0,
+                                                                          "luma_max":  255,
+                                                                          "luma_range":  255,
+                                                                          "chroma_u_range":  157,
+                                                                          "chroma_v_range":  127,
+                                                                          "spatially_nonuniform":  true
+                                                                      },
+                                                                      {
+                                                                          "frame_index":  270,
+                                                                          "luma_min":  0,
+                                                                          "luma_max":  255,
+                                                                          "luma_range":  255,
+                                                                          "chroma_u_range":  141,
+                                                                          "chroma_v_range":  127,
+                                                                          "spatially_nonuniform":  true
+                                                                      },
+                                                                      {
+                                                                          "frame_index":  480,
+                                                                          "luma_min":  0,
+                                                                          "luma_max":  255,
+                                                                          "luma_range":  255,
+                                                                          "chroma_u_range":  158,
+                                                                          "chroma_v_range":  127,
+                                                                          "spatially_nonuniform":  true
+                                                                      }
+                                                                  ]
+                                                              ],
+                            "delivery_fps":  30,
+                            "delivery_frames":  270,
+                            "final_width":  720,
+                            "final_height":  1280,
+                            "final_codec":  "h264",
+                            "final_pixel_format":  "yuv420p",
+                            "final_audio_streams":  0,
+                            "source_avi":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\B\\CHALLENGE_001_B_source.avi",
+                            "source_avi_sha256":  "23ffc36f6121511f224e6f251f09f5f465393559dabefdf83e65cf711b271945",
+                            "final_mp4":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\B\\CHALLENGE_001_B_REVIEW_720.mp4",
+                            "final_mp4_sha256":  "77c5ec4d432db9bebd174309d4e8e4039b437e78d08a16b30a3497fb5e1d3045",
+                            "sidecar_sha256":  "2ee8fa423ac2c50e62ef67eb7fc78edf861d7c527ed027a7a79a14e4cf92c56e",
+                            "effective_config_sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+                            "godot_exit_code":  0,
+                            "ffmpeg_exit_code":  0,
+                            "ffprobe_exit_code":  0
+                        }
+                    ],
+    "pair_preparation_receipt":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\C11E-E2-CH001-AB-20261101-V9-R4\\E2_PAIR_PREPARED.json",
+    "pair_preparation_receipt_sha256":  "0bce78c856b08eba58920f55eeff1b9ca63bc7652f1d811a4000e2dbb1f1823f",
+    "temporary_project_override":  {
+                                       "original_present":  false,
+                                       "original_sha256":  "NOT_PRESENT",
+                                       "restore_status":  "NOT_REQUIRED",
+                                       "collision_policy":  "PRESERVE_BOTH_AND_FAIL_IF_PATH_REOCCUPIED_WITH_DIFFERENT_BYTES"
+                                   },
+    "runtime_versions":  {
+                             "python":  "Python 3.13.14",
+                             "godot":  "4.7.1.stable.mono.official.a13da4feb",
+                             "ffmpeg":  "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+                             "ffprobe":  "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers"
+                         },
+    "tests":  {
+                  "python_contract_tests":  "9/9",
+                  "godot_json_numeric_contract":  "PASS_30_OF_30_STRUCTURED_RESULT",
+                  "runner_exit_code":  0
+              },
+    "renderer_invoked":  true,
+    "media_created":  true,
+    "scope":  "EXACTLY_TWO_ISOLATED_CHALLENGE_001_AB_RENDER_TESTS",
+    "human_visual_review":  "PENDING",
+    "release_authority":  "NONE",
+    "baseline_promotion":  false,
+    "d_governance_mutated":  false
+}
