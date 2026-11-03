@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import math
 import os
 import re
 import shutil
@@ -406,6 +407,101 @@ def _extract_decoded_audio(video: Path, target: Path, ffmpeg: str, run_root: Pat
     return sha256_file(target)
 
 
+def _validate_mux_probe(
+    probe: Mapping[str, Any],
+    *,
+    label: str,
+    expected_video_duration: float,
+    expected_video_frames: int = 270,
+    expected_video_fps: float = 30.0,
+) -> dict[str, Any]:
+    """Fail-closed validation for the final E3 A/V container metadata."""
+    if not isinstance(probe, Mapping):
+        raise C11EE3AudioPilotError(f"Final mux {label} FFprobe result is not an object")
+    streams = probe.get("streams", [])
+    if not isinstance(streams, list):
+        raise C11EE3AudioPilotError(f"Final mux {label} FFprobe streams are malformed")
+    videos = [item for item in streams if isinstance(item, Mapping) and item.get("codec_type") == "video"]
+    audios = [item for item in streams if isinstance(item, Mapping) and item.get("codec_type") == "audio"]
+    if len(videos) != 1 or len(audios) != 1:
+        raise C11EE3AudioPilotError(
+            f"Final mux {label} must contain exactly one video and one audio stream"
+        )
+
+    video, audio = videos[0], audios[0]
+    try:
+        width, height = int(video.get("width", 0)), int(video.get("height", 0))
+        frames = int(video.get("nb_read_frames", 0))
+        fps = float(Fraction(str(video.get("avg_frame_rate") or video.get("r_frame_rate") or "0/1")))
+        video_duration = float(video.get("duration") or 0.0)
+        audio_duration = float(audio.get("duration") or 0.0)
+        video_start = float(video.get("start_time") or 0.0)
+        audio_start = float(audio.get("start_time") or 0.0)
+        expected_duration = float(expected_video_duration)
+    except Exception as exc:
+        raise C11EE3AudioPilotError(f"Final mux {label} has missing/invalid stream timing metadata") from exc
+
+    numeric = (fps, video_duration, audio_duration, video_start, audio_start, expected_duration)
+    if not all(math.isfinite(value) for value in numeric):
+        raise C11EE3AudioPilotError(f"Final mux {label} contains non-finite stream timing metadata")
+    if expected_duration <= 0.0 or video_duration <= 0.0 or audio_duration <= 0.0:
+        raise C11EE3AudioPilotError(f"Final mux {label} contains zero/negative media duration")
+    if (width, height) != (720, 1280):
+        raise C11EE3AudioPilotError(f"Final mux {label} video dimensions changed")
+    if video.get("codec_name") != "h264" or frames != expected_video_frames:
+        raise C11EE3AudioPilotError(f"Final mux {label} video codec/frame-count changed")
+    if abs(fps - expected_video_fps) > 0.0001:
+        raise C11EE3AudioPilotError(f"Final mux {label} video frame rate changed")
+    if audio.get("codec_name") != "aac":
+        raise C11EE3AudioPilotError(f"Final mux {label} audio codec is not AAC")
+    if int(audio.get("sample_rate", 0)) != 48000:
+        raise C11EE3AudioPilotError(f"Final mux {label} audio sample rate is not 48000 Hz")
+    if int(audio.get("channels", 0)) != 2 or audio.get("channel_layout") != "stereo":
+        raise C11EE3AudioPilotError(f"Final mux {label} audio channel layout is not stereo")
+
+    start_drift = abs(video_start - audio_start)
+    video_end = video_start + video_duration
+    audio_end = audio_start + audio_duration
+    end_drift = abs(video_end - audio_end)
+    if start_drift > D9_2_AV_DRIFT_TOLERANCE_SECONDS:
+        raise C11EE3AudioPilotError(
+            f"Final mux {label} A/V start-time drift {start_drift:.6f}s exceeds 0.15s"
+        )
+    if end_drift > D9_2_AV_DRIFT_TOLERANCE_SECONDS:
+        raise C11EE3AudioPilotError(
+            f"Final mux {label} A/V end-time drift {end_drift:.6f}s exceeds 0.15s"
+        )
+    if abs(video_duration - expected_duration) > D9_2_AV_DRIFT_TOLERANCE_SECONDS:
+        raise C11EE3AudioPilotError(
+            f"Final mux {label} video duration does not match the pinned source duration"
+        )
+
+    return {
+        "video": {
+            "codec": video.get("codec_name"),
+            "profile": video.get("profile"),
+            "width": width,
+            "height": height,
+            "avg_frame_rate": video.get("avg_frame_rate"),
+            "frames": frames,
+            "start_time_seconds": video_start,
+            "duration_seconds": video_duration,
+        },
+        "audio": {
+            "codec": audio.get("codec_name"),
+            "sample_rate_hz": int(audio["sample_rate"]),
+            "channels": int(audio["channels"]),
+            "channel_layout": audio.get("channel_layout"),
+            "start_time_seconds": audio_start,
+            "duration_seconds": audio_duration,
+        },
+        "av_start_drift_seconds": start_drift,
+        "av_end_drift_seconds": end_drift,
+        "video_stream_count": len(videos),
+        "audio_stream_count": len(audios),
+    }
+
+
 def run_e3_audio_pilot(
     *,
     project_root: Path | str,
@@ -557,41 +653,29 @@ def run_e3_audio_pilot(
                 evidence_root=run_root,
             )
             probe = json.loads(probe_run.stdout)
-            videos = [s for s in probe.get("streams", []) if s.get("codec_type") == "video"]
-            audios = [s for s in probe.get("streams", []) if s.get("codec_type") == "audio"]
-            if len(videos) != 1 or len(audios) != 1:
-                raise C11EE3AudioPilotError(f"Final mux {label} must contain exactly one video and one audio stream")
-            v, a = videos[0], audios[0]
-            if (int(v.get("width", 0)), int(v.get("height", 0))) != (720, 1280):
-                raise C11EE3AudioPilotError(f"Final mux {label} video dimensions changed")
-            if v.get("codec_name") != "h264" or int(v.get("nb_read_frames", 0)) != 270:
-                raise C11EE3AudioPilotError(f"Final mux {label} video codec/frame-count changed")
-            if abs(float(Fraction(str(v.get("avg_frame_rate", "0/1")))) - 30.0) > 0.0001:
-                raise C11EE3AudioPilotError(f"Final mux {label} video FPS changed")
-            if a.get("codec_name") != "aac" or int(a.get("sample_rate", 0)) != 48000 or int(a.get("channels", 0)) != 2:
-                raise C11EE3AudioPilotError(f"Final mux {label} audio codec/rate/channel layout mismatch")
-            video_duration = float(v.get("duration") or probe.get("format", {}).get("duration") or 0.0)
-            audio_duration = float(a.get("duration") or 0.0)
-            av_drift = abs(video_duration - audio_duration)
-            if av_drift > D9_2_AV_DRIFT_TOLERANCE_SECONDS:
-                raise C11EE3AudioPilotError(f"Final mux {label} A/V duration drift {av_drift:.6f}s exceeds 0.15s")
+            mux_qa = _validate_mux_probe(
+                probe,
+                label=label,
+                expected_video_duration=duration,
+                expected_video_frames=source["source_frames"],
+                expected_video_fps=source["source_fps"],
+            )
+            mux_audio_qa = _audio_metrics(
+                final_mp4, ffmpeg, ffprobe, run_root, f"muxed_audio_{label.lower()}"
+            )
+            if (
+                mux_audio_qa["codec"] != "aac"
+                or mux_audio_qa["sample_rate_hz"] != 48000
+                or mux_audio_qa["channels"] != 2
+                or not mux_audio_qa["non_silent"]
+            ):
+                raise C11EE3AudioPilotError(f"Final mux {label} audio stream failed AAC/non-silence QA")
             final_probes[label] = {
                 "path": str(final_mp4),
                 "bytes": final_mp4.stat().st_size,
                 "sha256": sha256_file(final_mp4),
-                "video": {
-                    "codec": v.get("codec_name"), "profile": v.get("profile"),
-                    "width": int(v["width"]), "height": int(v["height"]),
-                    "avg_frame_rate": v.get("avg_frame_rate"), "frames": int(v["nb_read_frames"]),
-                    "duration_seconds": video_duration,
-                },
-                "audio": {
-                    "codec": a.get("codec_name"), "sample_rate_hz": int(a["sample_rate"]),
-                    "channels": int(a["channels"]), "channel_layout": a.get("channel_layout"),
-                    "duration_seconds": audio_duration,
-                },
-                "av_duration_drift_seconds": av_drift,
-                "video_stream_count": len(videos), "audio_stream_count": len(audios),
+                **mux_qa,
+                "audio_quality": mux_audio_qa,
             }
             muxed[label] = final_mp4
 
