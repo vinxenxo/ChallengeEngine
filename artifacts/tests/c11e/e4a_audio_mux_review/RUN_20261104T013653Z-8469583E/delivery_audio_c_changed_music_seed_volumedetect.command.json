@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+    "-hide_banner",
+    "-nostats",
+    "-i",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_audio_mux_review\\RUN_20261104T013653Z-8469583E\\C_CHANGED_MUSIC_SEED_D3_3_MASTER_15.000s.wav",
+    "-af",
+    "volumedetect",
+    "-f",
+    "null",
+    "nul"
+  ],
+  "cwd": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_audio_mux_review\\RUN_20261104T013653Z-8469583E",
+  "stage": "delivery_audio_c_changed_music_seed_volumedetect"
+}

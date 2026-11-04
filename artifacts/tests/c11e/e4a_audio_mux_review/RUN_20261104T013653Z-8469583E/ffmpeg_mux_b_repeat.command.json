@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+    "-hide_banner",
+    "-v",
+    "error",
+    "-y",
+    "-i",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\review_delivery\\CHALLENGE_004_REVIEW_720_30FPS_TEST_ONLY.mp4",
+    "-i",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_audio_mux_review\\RUN_20261104T013653Z-8469583E\\B_REPEAT_D3_3_MASTER_15.000s.wav",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c:v",
+    "copy",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-ac",
+    "2",
+    "-shortest",
+    "-movflags",
+    "+faststart",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_audio_mux_review\\RUN_20261104T013653Z-8469583E\\CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_B_REPEAT.mp4"
+  ],
+  "cwd": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_audio_mux_review\\RUN_20261104T013653Z-8469583E",
+  "stage": "ffmpeg_mux_b_repeat"
+}

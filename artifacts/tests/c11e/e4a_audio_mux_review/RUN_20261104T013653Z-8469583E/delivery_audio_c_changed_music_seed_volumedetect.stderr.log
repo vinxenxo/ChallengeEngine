@@ -1,0 +1,26 @@
+[aist#0:0/pcm_s16le @ 000001b2bb56dc80] Guessed Channel Layout: stereo
+Input #0, wav, from 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4a_audio_mux_review\RUN_20261104T013653Z-8469583E\C_CHANGED_MUSIC_SEED_D3_3_MASTER_15.000s.wav':
+  Metadata:
+    encoder         : Lavf63.1.100
+  Duration: 00:00:15.00, bitrate: 1536 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+[Parsed_volumedetect_0 @ 000001b2bd5eaec0] n_samples: 0
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'nul':
+  Metadata:
+    encoder         : Lavf63.1.100
+  Stream #0:0: Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s
+    Metadata:
+      encoder         : Lavc63.1.100 pcm_s16le
+[Parsed_volumedetect_0 @ 000001b2bb572080] n_samples: 1440000
+[Parsed_volumedetect_0 @ 000001b2bb572080] mean_volume: -17.1 dB
+[Parsed_volumedetect_0 @ 000001b2bb572080] max_volume: -6.1 dB
+[Parsed_volumedetect_0 @ 000001b2bb572080] histogram_6db: 6
+[Parsed_volumedetect_0 @ 000001b2bb572080] histogram_7db: 42
+[Parsed_volumedetect_0 @ 000001b2bb572080] histogram_8db: 126
+[Parsed_volumedetect_0 @ 000001b2bb572080] histogram_9db: 554
+[Parsed_volumedetect_0 @ 000001b2bb572080] histogram_10db: 3111
+[out#0/null @ 000001b2bb4ee880] video:0KiB audio:2812KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:00:15.00 bitrate=N/A speed=1.07e+03x elapsed=0:00:00.01    

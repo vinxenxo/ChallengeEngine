@@ -1,0 +1,571 @@
+{
+  "c11c_generator_modified": false,
+  "core_audio_modified": false,
+  "d3_3_mastering": {
+    "by_label": {
+      "A": {
+        "delivery_master": {
+          "bytes": 2880078,
+          "channels": 2,
+          "codec": "pcm_s16le",
+          "duration_seconds": 15.0,
+          "max_sample_db": -6.5,
+          "mean_volume_db": -17.1,
+          "non_silent": true,
+          "sample_rate_hz": 48000,
+          "sha256": "50018594902f11bc9f8800b6ce773d3bbd77ed4d64bc5401cbdf8e8d626ddb03"
+        },
+        "qa": {
+          "checks": {
+            "container": true,
+            "integrated_loudness_range": true,
+            "mono_compatibility_and_audibility": true,
+            "no_hard_clipping": true,
+            "sample_rate": true,
+            "true_peak": true
+          },
+          "measured": {
+            "channels": 2,
+            "codec": "pcm_s16le",
+            "duration_seconds": 30.0,
+            "integrated_lufs": -14.0,
+            "max_sample_db": -6.5,
+            "mean_volume_db": -17.1,
+            "mono_max_sample_db": -7.2,
+            "mono_mean_volume_db": -17.2,
+            "sample_rate_hz": 48000,
+            "true_peak_dbfs": -6.4
+          },
+          "method": "D3.3 deterministic 30-second repeated measurement window + FFmpeg loudnorm",
+          "mono_artifact": {
+            "bytes": 2880078,
+            "sha256": "03b44897333d424b683042b74cbb9a4a8ad889f9b0fdf86b929ecf7343edf85e"
+          },
+          "overall_pass": true,
+          "status": "PASS",
+          "targets": {
+            "channels": 2,
+            "integrated_lufs": -14.0,
+            "lra": 7.0,
+            "sample_rate_hz": 48000,
+            "true_peak_dbfs": -1.0
+          }
+        }
+      },
+      "B_REPEAT": {
+        "delivery_master": {
+          "bytes": 2880078,
+          "channels": 2,
+          "codec": "pcm_s16le",
+          "duration_seconds": 15.0,
+          "max_sample_db": -6.5,
+          "mean_volume_db": -17.1,
+          "non_silent": true,
+          "sample_rate_hz": 48000,
+          "sha256": "50018594902f11bc9f8800b6ce773d3bbd77ed4d64bc5401cbdf8e8d626ddb03"
+        },
+        "qa": {
+          "checks": {
+            "container": true,
+            "integrated_loudness_range": true,
+            "mono_compatibility_and_audibility": true,
+            "no_hard_clipping": true,
+            "sample_rate": true,
+            "true_peak": true
+          },
+          "measured": {
+            "channels": 2,
+            "codec": "pcm_s16le",
+            "duration_seconds": 30.0,
+            "integrated_lufs": -14.0,
+            "max_sample_db": -6.5,
+            "mean_volume_db": -17.1,
+            "mono_max_sample_db": -7.2,
+            "mono_mean_volume_db": -17.2,
+            "sample_rate_hz": 48000,
+            "true_peak_dbfs": -6.4
+          },
+          "method": "D3.3 deterministic 30-second repeated measurement window + FFmpeg loudnorm",
+          "mono_artifact": {
+            "bytes": 2880078,
+            "sha256": "03b44897333d424b683042b74cbb9a4a8ad889f9b0fdf86b929ecf7343edf85e"
+          },
+          "overall_pass": true,
+          "status": "PASS",
+          "targets": {
+            "channels": 2,
+            "integrated_lufs": -14.0,
+            "lra": 7.0,
+            "sample_rate_hz": 48000,
+            "true_peak_dbfs": -1.0
+          }
+        }
+      },
+      "C_CHANGED_MUSIC_SEED": {
+        "delivery_master": {
+          "bytes": 2880078,
+          "channels": 2,
+          "codec": "pcm_s16le",
+          "duration_seconds": 15.0,
+          "max_sample_db": -6.1,
+          "mean_volume_db": -17.1,
+          "non_silent": true,
+          "sample_rate_hz": 48000,
+          "sha256": "85909dc4898f8a0207cc7f829cec736a8cffa67c751981559f2bc8069a91234e"
+        },
+        "qa": {
+          "checks": {
+            "container": true,
+            "integrated_loudness_range": true,
+            "mono_compatibility_and_audibility": true,
+            "no_hard_clipping": true,
+            "sample_rate": true,
+            "true_peak": true
+          },
+          "measured": {
+            "channels": 2,
+            "codec": "pcm_s16le",
+            "duration_seconds": 30.0,
+            "integrated_lufs": -14.0,
+            "max_sample_db": -6.1,
+            "mean_volume_db": -17.1,
+            "mono_max_sample_db": -7.4,
+            "mono_mean_volume_db": -17.2,
+            "sample_rate_hz": 48000,
+            "true_peak_dbfs": -6.1
+          },
+          "method": "D3.3 deterministic 30-second repeated measurement window + FFmpeg loudnorm",
+          "mono_artifact": {
+            "bytes": 2880078,
+            "sha256": "702e74fcc48e4958ac56ec35e2dad55dac6f9185def3007892d3d3567ff2da60"
+          },
+          "overall_pass": true,
+          "status": "PASS",
+          "targets": {
+            "channels": 2,
+            "integrated_lufs": -14.0,
+            "lra": 7.0,
+            "sample_rate_hz": 48000,
+            "true_peak_dbfs": -1.0
+          }
+        }
+      }
+    },
+    "changed_music_seed_changes_delivery_master": true,
+    "delivery_repeatable": true
+  },
+  "d3_engine_modified": false,
+  "d3_source_pins": {
+    "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json": {
+      "bytes": 2818,
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+    },
+    "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json": {
+      "bytes": 3313,
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+    },
+    "tools/c11d/d3/c11d_music_engine_v5.py": {
+      "bytes": 5256,
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+    }
+  },
+  "d3_v5": {
+    "changed_music_seed_changes_raw_wav": true,
+    "raw_repeatable": true,
+    "renders": {
+      "A": {
+        "bytes": 1323044,
+        "channels": 2,
+        "duration_seconds": 15.0,
+        "engine_id": "c11d_music_engine_v5",
+        "engine_request": {
+          "duration_seconds": 15.0,
+          "music_seed": 840001,
+          "style_profile_id": "challenge_8bit_v1",
+          "style_profile_version": "1.0",
+          "tempo_bpm": 104,
+          "variation_index": 0
+        },
+        "engine_version": "5.0",
+        "file_sha256": "6956653f91a5bff2359426d6bcc7cd24eff599d840dbb6e431ff26b00960a96c",
+        "frame_count": 330750,
+        "max_abs_pcm": 10441,
+        "music_seed": 840001,
+        "output_hash": "6956653f91a5bff2359426d6bcc7cd24eff599d840dbb6e431ff26b00960a96c",
+        "parameter_hash": "32af6a637f5b16817562a3a9ad231e63f2f133a42e37a12c5e52520e893e00e3",
+        "peak_linear": 0.3186541901868727,
+        "rms_linear": 0.09684825442911073,
+        "sample_rate": 22050,
+        "style_profile_id": "challenge_8bit_v1",
+        "style_profile_version": "1.0",
+        "tempo_bpm": 104.0,
+        "variation_index": 0
+      },
+      "B_REPEAT": {
+        "bytes": 1323044,
+        "channels": 2,
+        "duration_seconds": 15.0,
+        "engine_id": "c11d_music_engine_v5",
+        "engine_request": {
+          "duration_seconds": 15.0,
+          "music_seed": 840001,
+          "style_profile_id": "challenge_8bit_v1",
+          "style_profile_version": "1.0",
+          "tempo_bpm": 104,
+          "variation_index": 0
+        },
+        "engine_version": "5.0",
+        "file_sha256": "6956653f91a5bff2359426d6bcc7cd24eff599d840dbb6e431ff26b00960a96c",
+        "frame_count": 330750,
+        "max_abs_pcm": 10441,
+        "music_seed": 840001,
+        "output_hash": "6956653f91a5bff2359426d6bcc7cd24eff599d840dbb6e431ff26b00960a96c",
+        "parameter_hash": "32af6a637f5b16817562a3a9ad231e63f2f133a42e37a12c5e52520e893e00e3",
+        "peak_linear": 0.3186541901868727,
+        "rms_linear": 0.09684825442911073,
+        "sample_rate": 22050,
+        "style_profile_id": "challenge_8bit_v1",
+        "style_profile_version": "1.0",
+        "tempo_bpm": 104.0,
+        "variation_index": 0
+      },
+      "C_CHANGED_MUSIC_SEED": {
+        "bytes": 1323044,
+        "channels": 2,
+        "duration_seconds": 15.0,
+        "engine_id": "c11d_music_engine_v5",
+        "engine_request": {
+          "duration_seconds": 15.0,
+          "music_seed": 840002,
+          "style_profile_id": "challenge_8bit_v1",
+          "style_profile_version": "1.0",
+          "tempo_bpm": 104,
+          "variation_index": 0
+        },
+        "engine_version": "5.0",
+        "file_sha256": "1b2fdaf9ac5b377aa89cba7317d36aa4ea0a9a655be31569142f1d65e5f0a6ed",
+        "frame_count": 330750,
+        "max_abs_pcm": 10243,
+        "music_seed": 840002,
+        "output_hash": "1b2fdaf9ac5b377aa89cba7317d36aa4ea0a9a655be31569142f1d65e5f0a6ed",
+        "parameter_hash": "1142577348d15dd4c1cba851aa2d27e68be7f022e964cd448bec7235e17e3098",
+        "peak_linear": 0.3126231951333294,
+        "rms_linear": 0.09633088325294697,
+        "sample_rate": 22050,
+        "style_profile_id": "challenge_8bit_v1",
+        "style_profile_version": "1.0",
+        "tempo_bpm": 104.0,
+        "variation_index": 0
+      }
+    }
+  },
+  "e1_intents": {
+    "A": {
+      "audio_enabled": true,
+      "dispatch_authorized": false,
+      "gameplay_seed": 314159,
+      "intent_sha256": "083307c950400d3e777173222f226e2d66527e60ecb2768e599ab042a391d231",
+      "music_seed": 840001,
+      "raw_request_sha256": "e170ea8bbc6e95ddc6180ed801ff2c30ae27ff48f8979dff3526b71822e1cdec",
+      "request_id": "E4A4-CH004-A-20261104T013653Z-8469583E",
+      "request_origin": "TEST",
+      "validation_status": "PASS_E1_PREPARATION_ONLY"
+    },
+    "B_REPEAT": {
+      "audio_enabled": true,
+      "dispatch_authorized": false,
+      "gameplay_seed": 314159,
+      "intent_sha256": "591904340017febcb5bd3ce76bb108964e91fa91e2e2b88481cea619164c7165",
+      "music_seed": 840001,
+      "raw_request_sha256": "bc010b43281b21b8f73ee176d0c31f25ca174dcdec9193f426a34448c9027a76",
+      "request_id": "E4A4-CH004-B_REPEAT-20261104T013653Z-8469583E",
+      "request_origin": "TEST",
+      "validation_status": "PASS_E1_PREPARATION_ONLY"
+    },
+    "C_CHANGED_MUSIC_SEED": {
+      "audio_enabled": true,
+      "dispatch_authorized": false,
+      "gameplay_seed": 314159,
+      "intent_sha256": "3867f8f3ec0b36edf9db3c23eb52c8e741aea162d978619e3ed90264860848b3",
+      "music_seed": 840002,
+      "raw_request_sha256": "06896519f05be516b6d503f8cf85525d2f70348804d5e2c2ce4dc4303e741451",
+      "request_id": "E4A4-CH004-C_CHANGED_MUSIC_SEED-20261104T013653Z-8469583E",
+      "request_origin": "TEST",
+      "validation_status": "PASS_E1_PREPARATION_ONLY"
+    }
+  },
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "gameplay_rerendered": false,
+  "generated_at_utc": "2026-11-04T01:36:53.398688+00:00",
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "renderer": false,
+    "test_media": true
+  },
+  "human_review": {
+    "instruction": "Review A/B/C for audible artefacts and sync; review the separate E4A.3 PNGs for visual overlap. Do not infer D overlays are present in these MP4s.",
+    "layout_approval": "NOT_GRANTED",
+    "operator_audio_listening_review": "PENDING",
+    "operator_video_review": "PENDING"
+  },
+  "invariants": {
+    "C11C_generators_unchanged": true,
+    "D_layer_not_embedded": true,
+    "decoded_aac_A_differs_C": true,
+    "decoded_aac_A_equals_B": true,
+    "decoded_aac_sha256": {
+      "A": "3d6bfd12b80aae6684b69fbdf67bbd51488256d2c7f828a935f541cf42762f01",
+      "B_REPEAT": "3d6bfd12b80aae6684b69fbdf67bbd51488256d2c7f828a935f541cf42762f01",
+      "C_CHANGED_MUSIC_SEED": "83aaad64daad6c2c23e64ee3e5909eb748b2b4a462eae11b10f7a14ec4a50d7f"
+    },
+    "gameplay_video_not_rerendered": true,
+    "mux_video_h264_sha256": {
+      "A": "6d843ea8a1b05c411d5599195ee5b8ec528623befd0377a076ad96b1eb3c6d8f",
+      "B_REPEAT": "6d843ea8a1b05c411d5599195ee5b8ec528623befd0377a076ad96b1eb3c6d8f",
+      "C_CHANGED_MUSIC_SEED": "6d843ea8a1b05c411d5599195ee5b8ec528623befd0377a076ad96b1eb3c6d8f"
+    },
+    "source_video_h264_sha256": "6d843ea8a1b05c411d5599195ee5b8ec528623befd0377a076ad96b1eb3c6d8f",
+    "source_video_h264_stream_identical_in_all_muxes": true
+  },
+  "music_contract_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+  "mux": {
+    "A": {
+      "audio_quality": {
+        "bytes": 1090890,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.6,
+        "mean_volume_db": -17.1,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+      },
+      "bytes": 1090890,
+      "ffprobe": {
+        "audio": {
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_A.mp4",
+      "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+    },
+    "B_REPEAT": {
+      "audio_quality": {
+        "bytes": 1090890,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.6,
+        "mean_volume_db": -17.1,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+      },
+      "bytes": 1090890,
+      "ffprobe": {
+        "audio": {
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_B_REPEAT.mp4",
+      "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+    },
+    "C_CHANGED_MUSIC_SEED": {
+      "audio_quality": {
+        "bytes": 1089716,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.3,
+        "mean_volume_db": -17.2,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "f8e22de816b5510fa31b658edbddb4e196f20adaa74f81980ace091770e7f62e"
+      },
+      "bytes": 1089716,
+      "ffprobe": {
+        "audio": {
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_C_CHANGED_MUSIC_SEED.mp4",
+      "sha256": "f8e22de816b5510fa31b658edbddb4e196f20adaa74f81980ace091770e7f62e"
+    }
+  },
+  "production_dispatch": false,
+  "production_media_created": false,
+  "production_renderer": false,
+  "release_authority": "NONE",
+  "report_sha256": "14cc43332e09c698a55e921be4538af8335d5495864a5c25c1c1611b689cdcbf",
+  "result": "PASS",
+  "run_id": "20261104T013653Z-8469583E",
+  "schema": "C11E-E4A4-CHALLENGE-AUDIO-MUX-RECEIPT-V1",
+  "schema_version": "1.0",
+  "scope": "ISOLATED_CHALLENGE_004_D3_V5_AUDIO_MUX_REVIEW_TEST_ONLY",
+  "source_identity": {
+    "base_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\review_delivery\\CHALLENGE_004_REVIEW_720_30FPS_TEST_ONLY.mp4",
+    "base_video_sha256": "edbd446d67142d20e138e55563f16cbae8d9a4c39469fd2bebcb3c9d5723fb9e",
+    "e4a2_receipt_sha256": "b23a5f0c1557b52b724c99ac90a671e0a8d8457dcd5e605f8d097c517f366308",
+    "e4a2_report_sha256": "e940f0a150d7dcea8ab34003b2f053d4be614f602ee6ea3ff04cd8bfa2b71159",
+    "e4a3_layout_review": {
+      "disposition": "AUDIO_MUX_REVIEW_ONLY_DO_NOT_TREAT_BASE_VIDEO_AS_D_OVERLAY_COMPOSITE",
+      "existing_c11c_hook_content_overlap_observed": true,
+      "production_compositor_layout_acceptance": "NOT_GRANTED",
+      "visual_placement_approved": false
+    },
+    "e4a3_receipt_sha256": "3670428feae3b34766677b4cdba3985babecbda9ee781eebe4cc57c318cd9f1c",
+    "e4a3_report_sha256": "ee1be803f4d0433347778793aab12228301aea5108f426011836c27dc268dc08",
+    "video_probe": {
+      "audio_stream_count": 0,
+      "codec": "h264",
+      "duration_seconds": 15.0,
+      "fps": 30.0,
+      "frames": 450,
+      "height": 1280,
+      "pixel_format": "yuv420p",
+      "width": 720
+    }
+  },
+  "source_pins": {
+    "approved_policy": {
+      "bytes": 4200,
+      "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+      "sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5"
+    },
+    "d3_contract": {
+      "bytes": 1943,
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+    },
+    "d3_engine": {
+      "bytes": 5256,
+      "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+    },
+    "d3_profile": {
+      "bytes": 2818,
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+    },
+    "d3_spec": {
+      "bytes": 3313,
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+    },
+    "d9_editorial": {
+      "bytes": 26574,
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    "d9_gui_request": {
+      "bytes": 9183,
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    "d9_resolver": {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    "e1_service": {
+      "bytes": 30335,
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "sha256": "f0655d8d93df3b766b157d80a76a5bfc7b514d740815646f54c88ca788f602c0"
+    },
+    "e3_audio_pipeline": {
+      "bytes": 39483,
+      "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+      "sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d"
+    },
+    "manifest": {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    }
+  },
+  "status": "PASS_ISOLATED_E4A4_CHALLENGE_AUDIO_MUX_TEST_ONLY",
+  "test_parameters": {
+    "d_layer_pngs_are_separate_e4a3_samples": true,
+    "duration_seconds": 15.0,
+    "duration_source": "FFPROBE_450_FRAMES_DIVIDED_BY_30FPS",
+    "family": "challenges",
+    "fullframe_d_compositor_embedded_in_mp4": false,
+    "gameplay_seed": 314159,
+    "independent_seed_domains": true,
+    "music_seed_A_B": 840001,
+    "music_seed_C": 840002,
+    "style_profile_id": "challenge_8bit_v1",
+    "style_profile_version": "1.0",
+    "tempo_bpm": 104,
+    "tempo_role": "HISTORICAL_D9_2_PILOT_FIXTURE_NOT_PRODUCT_DEFAULT",
+    "variant_id": "CHALLENGE_004",
+    "variation_index": 0
+  },
+  "tools": {
+    "ffmpeg": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers"
+  }
+}

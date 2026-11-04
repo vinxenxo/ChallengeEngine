@@ -1,0 +1,202 @@
+{
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "renderer": false,
+    "test_media": true
+  },
+  "human_review": {
+    "instruction": "Review A/B/C for audible artefacts and sync; review the separate E4A.3 PNGs for visual overlap. Do not infer D overlays are present in these MP4s.",
+    "layout_approval": "NOT_GRANTED",
+    "operator_audio_listening_review": "PENDING",
+    "operator_video_review": "PENDING"
+  },
+  "mux": {
+    "A": {
+      "audio_quality": {
+        "bytes": 1090890,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.6,
+        "mean_volume_db": -17.1,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+      },
+      "bytes": 1090890,
+      "ffprobe": {
+        "audio": {
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_A.mp4",
+      "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+    },
+    "B_REPEAT": {
+      "audio_quality": {
+        "bytes": 1090890,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.6,
+        "mean_volume_db": -17.1,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+      },
+      "bytes": 1090890,
+      "ffprobe": {
+        "audio": {
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_B_REPEAT.mp4",
+      "sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb"
+    },
+    "C_CHANGED_MUSIC_SEED": {
+      "audio_quality": {
+        "bytes": 1089716,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.3,
+        "mean_volume_db": -17.2,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "f8e22de816b5510fa31b658edbddb4e196f20adaa74f81980ace091770e7f62e"
+      },
+      "bytes": 1089716,
+      "ffprobe": {
+        "audio": {
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_C11C_REVIEW_BASE_WITH_AUDIO_C_CHANGED_MUSIC_SEED.mp4",
+      "sha256": "f8e22de816b5510fa31b658edbddb4e196f20adaa74f81980ace091770e7f62e"
+    }
+  },
+  "quality_checks": {
+    "all_three_muxes_pass_ffprobe": true,
+    "d3_3_master_repeatability": true,
+    "d3_v5_raw_repeatability": true,
+    "decoded_audio_changes_with_music_seed": true,
+    "decoded_audio_repeatability": true,
+    "music_seed_changes_delivery_master": true,
+    "music_seed_changes_raw_wav": true,
+    "source_h264_identical": true
+  },
+  "run_id": "20261104T013653Z-8469583E",
+  "schema": "C11E-E4A4-CHALLENGE-AUDIO-MUX-REPORT-V1",
+  "schema_version": "1.0",
+  "source": {
+    "base_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_real_body_pixel_review\\RUN_20261104_002559_542bcf60\\review_delivery\\CHALLENGE_004_REVIEW_720_30FPS_TEST_ONLY.mp4",
+    "base_video_sha256": "edbd446d67142d20e138e55563f16cbae8d9a4c39469fd2bebcb3c9d5723fb9e",
+    "e4a2_receipt_sha256": "b23a5f0c1557b52b724c99ac90a671e0a8d8457dcd5e605f8d097c517f366308",
+    "e4a2_report_sha256": "e940f0a150d7dcea8ab34003b2f053d4be614f602ee6ea3ff04cd8bfa2b71159",
+    "e4a3_layout_review": {
+      "disposition": "AUDIO_MUX_REVIEW_ONLY_DO_NOT_TREAT_BASE_VIDEO_AS_D_OVERLAY_COMPOSITE",
+      "existing_c11c_hook_content_overlap_observed": true,
+      "production_compositor_layout_acceptance": "NOT_GRANTED",
+      "visual_placement_approved": false
+    },
+    "e4a3_receipt_sha256": "3670428feae3b34766677b4cdba3985babecbda9ee781eebe4cc57c318cd9f1c",
+    "e4a3_report_sha256": "ee1be803f4d0433347778793aab12228301aea5108f426011836c27dc268dc08",
+    "video_probe": {
+      "audio_stream_count": 0,
+      "codec": "h264",
+      "duration_seconds": 15.0,
+      "fps": 30.0,
+      "frames": 450,
+      "height": 1280,
+      "pixel_format": "yuv420p",
+      "width": 720
+    }
+  },
+  "status": "PASS_ISOLATED_E4A4_CHALLENGE_AUDIO_MUX_TEST_ONLY",
+  "summary": "D3 V5 / D3.3 / FFmpeg mux and FFprobe verified on the immutable E4A.2 normalized CHALLENGE_004 review video; no D overlay is embedded and no layout is approved.",
+  "test_parameters": {
+    "d_layer_pngs_are_separate_e4a3_samples": true,
+    "duration_seconds": 15.0,
+    "duration_source": "FFPROBE_450_FRAMES_DIVIDED_BY_30FPS",
+    "family": "challenges",
+    "fullframe_d_compositor_embedded_in_mp4": false,
+    "gameplay_seed": 314159,
+    "independent_seed_domains": true,
+    "music_seed_A_B": 840001,
+    "music_seed_C": 840002,
+    "style_profile_id": "challenge_8bit_v1",
+    "style_profile_version": "1.0",
+    "tempo_bpm": 104,
+    "tempo_role": "HISTORICAL_D9_2_PILOT_FIXTURE_NOT_PRODUCT_DEFAULT",
+    "variant_id": "CHALLENGE_004",
+    "variation_index": 0
+  },
+  "visual_boundary": {
+    "e4a3_existing_hook_collision": true,
+    "fullframe_compositor_embedded": false,
+    "layout_approval": "NOT_GRANTED",
+    "next_required_work": "Resolve D1.5/D1.1/D1.7 geometry and safe typography before any fullframe D composited audiovisual render."
+  }
+}
