@@ -1,8 +1,10 @@
 extends SceneTree
 
 ## Materializes a D-owned semantic Challenge payload from frozen C11-C runtime outputs.
-## Review-only: loads SVG resources, stores frame descriptors in memory, and exits.
-## It does not create scene nodes, render frames, dispatch renderer input, or write artifacts.
+## Default path: review-only source-timebase payload/descriptor and exit.
+## Explicit --e4a-config test path: may render isolated off-screen SubViewport PNGs under
+## artifacts/tests only, including alpha-composition over supplied, hash-pinned sample frames.
+## Neither path emits production renderer input, dispatches D9.10, or writes production media.
 const RuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
 const PresentationBinder = preload("res://core/presentation/ChallengePresentationBinder.gd")
 const ChallengePath := "res://challenges/CHALLENGE_004.json"
@@ -21,6 +23,8 @@ const D17MappingSha := "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac
 const E4AProposalPath := "res://docs/history/c11d/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_PROPOSAL_20261103_V1.md"
 const E4AProposalSha := "a1151999003b890abedb5d3b73382d1861d8ef3a56b0768a10fe480cfa841405"
 const E4APixelReportSchema := "C11E-E4A-CHALLENGE-PIXEL-RENDER-REPORT-V1"
+const E4ADCompositorConfigSchema := "C11E-E4A-D-GODOT-COMPOSITOR-PIXEL-TEST-CONFIG-V1"
+const E4ADCompositorReportSchema := "C11E-E4A-D-GODOT-COMPOSITOR-REAL-BODY-PIXEL-REPORT-V1"
 const OutputSchema := "C11-D-D9-CHALLENGE-VISUAL-PAYLOAD-PREVIEW-V1"
 const SourcePins := {
     "challenges/CHALLENGE_004.json": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
@@ -112,12 +116,17 @@ func _run() -> void:
 
     var e4a_config_path: String = _cmdline_value("--e4a-config")
     if not e4a_config_path.is_empty():
+        print("E4A3_GODOT_START rendering=ENABLED headless=false")
         var e4a_result: Dictionary = await _run_e4a_pixel_test(payload, timeline, first_payload_hash, frame_records_hash, e4a_config_path)
         if not bool(e4a_result.get("success", false)):
             _fail("E4A isolated pixel test failed: %s" % str(e4a_result.get("error", "unknown")))
             return
-        print("C11E E4A CHALLENGE EDITORIAL PIXEL RENDER PASS | variants=3/3 | source_frames=420/420 | text_regions=HEADER+FOOTER | phase_windows=HOOK+CTA | challenge_overlay=BLOCKED_GEOMETRY_UNRESOLVED | language=METADATA_ONLY | fixture_body_pixels_unchanged=true | gameplay_body_pixel_identity=NOT_TESTED | production_dispatch=false | production_media=false | D4.8=BLOCKED | D9.10=PREPARE_ONLY | release_authority=NONE")
-        print("C11E E4A CHALLENGE EDITORIAL PIXEL RENDER SUMMARY=" + JSON.stringify(_stable_value(e4a_result.get("report", {}))))
+        var e4a_report: Dictionary = e4a_result.get("report", {})
+        if str(e4a_report.get("schema", "")) == E4ADCompositorReportSchema:
+            print("C11E E4A D-OWNED GODOT REAL-BODY COMPOSITOR PASS | variants=3/3 | real_delivery_frames=6/6 | pixel_pngs=18/18 | comparisons=12/12 | gameplay_body_pixel_identity=PASS | visual_placement=UNAPPROVED | production_dispatch=false | production_media=false | D4.8=BLOCKED | D9.10=PREPARE_ONLY | release_authority=NONE")
+        else:
+            print("C11E E4A CHALLENGE EDITORIAL PIXEL RENDER PASS | variants=3/3 | source_frames=420/420 | text_regions=HEADER+FOOTER | phase_windows=HOOK+CTA | challenge_overlay=BLOCKED_GEOMETRY_UNRESOLVED | language=METADATA_ONLY | fixture_body_pixels_unchanged=true | gameplay_body_pixel_identity=NOT_TESTED | production_dispatch=false | production_media=false | D4.8=BLOCKED | D9.10=PREPARE_ONLY | release_authority=NONE")
+        print("C11E E4A CHALLENGE EDITORIAL PIXEL RENDER SUMMARY=" + JSON.stringify(_stable_value(e4a_report)))
         quit(0)
         return
 
@@ -210,7 +219,9 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
     if not (config_value is Dictionary):
         return {"success": false, "error": "E4A pixel-test config must be a JSON object."}
     var config: Dictionary = config_value
-    if str(config.get("schema", "")) != "C11E-E4A-CHALLENGE-PIXEL-TEST-CONFIG-V1":
+    var config_schema: String = str(config.get("schema", ""))
+    var real_background_mode: bool = config_schema == E4ADCompositorConfigSchema
+    if config_schema != "C11E-E4A-CHALLENGE-PIXEL-TEST-CONFIG-V1" and not real_background_mode:
         return {"success": false, "error": "Unsupported E4A pixel-test config schema."}
 
     var approval_bytes: PackedByteArray = FileAccess.get_file_as_bytes(E4AApprovalPath)
@@ -292,9 +303,10 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
 
     var output_dir: String = str(config.get("output_dir", "" )).replace("\\", "/").simplify_path()
     var project_root: String = ProjectSettings.globalize_path("res://").replace("\\", "/").trim_suffix("/")
-    var allowed_prefix: String = (project_root + "/artifacts/tests/c11e/e4a_pixel_review/").to_lower()
+    var output_suffix: String = "artifacts/tests/c11e/e4a_d_compositor_pixel_review/" if real_background_mode else "artifacts/tests/c11e/e4a_pixel_review/"
+    var allowed_prefix: String = (project_root + "/" + output_suffix).to_lower()
     if output_dir.is_empty() or not output_dir.to_lower().begins_with(allowed_prefix):
-        return {"success": false, "error": "E4A pixel evidence output must stay under artifacts/tests/c11e/e4a_pixel_review/."}
+        return {"success": false, "error": "E4A pixel evidence output escaped its test-only artifacts root."}
     var mkdir_error: int = DirAccess.make_dir_recursive_absolute(output_dir)
     if mkdir_error != OK and mkdir_error != ERR_ALREADY_EXISTS:
         return {"success": false, "error": "Cannot create E4A pixel evidence folder: %d" % mkdir_error}
@@ -315,35 +327,90 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
         composition_by_variant[variant_id] = composition_result["composition"]
 
     var samples: Array[Dictionary] = []
-    for sample_spec: Dictionary in [
-        {"label": "hook_first", "phase": "HOOK", "edge": "FIRST"},
-        {"label": "hook_last", "phase": "HOOK", "edge": "LAST"},
-        {"label": "game_first", "phase": "GAME", "edge": "FIRST"},
-        {"label": "reveal_first", "phase": "REVEAL", "edge": "FIRST"},
-        {"label": "cta_first", "phase": "CTA", "edge": "FIRST"},
-        {"label": "cta_last", "phase": "CTA", "edge": "LAST"}
-    ]:
-        var phase_segment: Dictionary = _phase_segment(timeline, str(sample_spec["phase"]))
-        if phase_segment.is_empty():
-            return {"success": false, "error": "Cannot resolve source phase for pixel fixture: %s" % str(sample_spec["phase"])}
-        var sample_frame: int = int(phase_segment["start_frame"])
-        if str(sample_spec["edge"]) == "LAST": sample_frame = int(phase_segment["end_frame"]) - 1
-        samples.append({"label": str(sample_spec["label"]), "phase": str(sample_spec["phase"]), "source_frame": sample_frame})
+    var backgrounds_by_label: Dictionary = {}
+    if real_background_mode:
+        var base_frames_value: Variant = config.get("base_frames", null)
+        if not (base_frames_value is Array) or base_frames_value.size() != 6:
+            return {"success": false, "error": "Real-body compositor mode requires exactly six extracted C11-C background frames."}
+        var expected_sample_rows: Array[Dictionary] = [
+            {"label": "hook_first", "phase": "HOOK", "delivery_frame": 0},
+            {"label": "hook_last", "phase": "HOOK", "delivery_frame": 89},
+            {"label": "game_first", "phase": "GAME", "delivery_frame": 90},
+            {"label": "reveal_first", "phase": "REVEAL", "delivery_frame": 300},
+            {"label": "cta_first", "phase": "CTA", "delivery_frame": 390},
+            {"label": "cta_last", "phase": "CTA", "delivery_frame": 449}
+        ]
+        var base_prefix: String = (output_dir + "/base_frames/").to_lower()
+        var source_fps: int = int(timeline.get("fps", 0))
+        if source_fps != 60:
+            return {"success": false, "error": "Pinned Challenge source timebase is not 60 FPS."}
+        for expected_row: Dictionary in expected_sample_rows:
+            var matched: Dictionary = {}
+            var match_count: int = 0
+            for base_frame_value: Variant in base_frames_value:
+                if not (base_frame_value is Dictionary): continue
+                var candidate: Dictionary = base_frame_value
+                if str(candidate.get("label", "")) == str(expected_row["label"]):
+                    matched = candidate
+                    match_count += 1
+            if match_count != 1:
+                return {"success": false, "error": "Missing or duplicated real source sample: %s" % str(expected_row["label"])}
+            var label: String = str(expected_row["label"])
+            var phase: String = str(expected_row["phase"])
+            var delivery_frame: int = int(expected_row["delivery_frame"])
+            var source_frame: int = int(round(float(delivery_frame) * float(source_fps) / 30.0))
+            if str(matched.get("phase", "")) != phase or int(matched.get("delivery_frame", -1)) != delivery_frame or int(matched.get("source_frame", -1)) != source_frame:
+                return {"success": false, "error": "Real sample mapping mismatch for %s." % label}
+            var phase_segment: Dictionary = _phase_segment(timeline, phase)
+            if phase_segment.is_empty() or source_frame < int(phase_segment["start_frame"]) or source_frame >= int(phase_segment["end_frame"]):
+                return {"success": false, "error": "Real sample falls outside its canonical source-time phase: %s" % label}
+            var background_path: String = str(matched.get("path", "")).replace("\\", "/").simplify_path()
+            if background_path.is_empty() or not background_path.to_lower().begins_with(base_prefix):
+                return {"success": false, "error": "Real source frame escaped the run's base_frames directory: %s" % label}
+            var background_bytes: PackedByteArray = FileAccess.get_file_as_bytes(background_path)
+            if background_bytes.is_empty() or _sha256_bytes(background_bytes) != str(matched.get("sha256", "")):
+                return {"success": false, "error": "Real source frame SHA-256 mismatch: %s" % label}
+            var background_image := Image.new()
+            if background_image.load(background_path) != OK or background_image.get_width() != 720 or background_image.get_height() != 1280:
+                return {"success": false, "error": "Real source frame must decode as 720x1280 PNG: %s" % label}
+            backgrounds_by_label[label] = {"path": background_path, "sha256": _sha256_bytes(background_bytes), "delivery_frame": delivery_frame, "source_frame": source_frame}
+            samples.append({"label": label, "phase": phase, "source_frame": source_frame, "delivery_frame": delivery_frame, "background_sha256": _sha256_bytes(background_bytes)})
+    else:
+        for sample_spec: Dictionary in [
+            {"label": "hook_first", "phase": "HOOK", "edge": "FIRST"},
+            {"label": "hook_last", "phase": "HOOK", "edge": "LAST"},
+            {"label": "game_first", "phase": "GAME", "edge": "FIRST"},
+            {"label": "reveal_first", "phase": "REVEAL", "edge": "FIRST"},
+            {"label": "cta_first", "phase": "CTA", "edge": "FIRST"},
+            {"label": "cta_last", "phase": "CTA", "edge": "LAST"}
+        ]:
+            var phase_segment: Dictionary = _phase_segment(timeline, str(sample_spec["phase"]))
+            if phase_segment.is_empty():
+                return {"success": false, "error": "Cannot resolve source phase for pixel fixture: %s" % str(sample_spec["phase"])}
+            var sample_frame: int = int(phase_segment["start_frame"])
+            if str(sample_spec["edge"]) == "LAST": sample_frame = int(phase_segment["end_frame"]) - 1
+            samples.append({"label": str(sample_spec["label"]), "phase": str(sample_spec["phase"]), "source_frame": sample_frame})
 
+    var pixel_header_rect: Rect2 = Rect2(0, 0, 720, 192) if real_background_mode else header_rect
+    var pixel_body_rect: Rect2 = Rect2(0, 192, 720, 896) if real_background_mode else body_rect
+    var pixel_footer_rect: Rect2 = Rect2(0, 1088, 720, 192) if real_background_mode else footer_rect
     var image_paths: Dictionary = {"A": {}, "B": {}, "C": {}}
     for variant_id: String in ["A", "B", "C"]:
         var composition: Dictionary = composition_by_variant[variant_id]
         for sample: Dictionary in samples:
             var label: String = str(sample["label"])
             var image_path: String = output_dir.path_join("%s_%s.png" % [variant_id, label])
-            var render_result: Dictionary = await _render_e4a_pixel_surface(composition.get("fields", []), int(sample["source_frame"]), header_rect, body_rect, footer_rect, image_path)
+            var background_path: String = str(backgrounds_by_label.get(label, {}).get("path", "")) if real_background_mode else ""
+            print("E4A3_VIEWPORT_BEGIN=%s/%s" % [variant_id, label])
+            var render_result: Dictionary = await _render_e4a_pixel_surface(composition.get("fields", []), int(sample["source_frame"]), pixel_header_rect, pixel_body_rect, pixel_footer_rect, image_path, background_path)
             if not bool(render_result.get("success", false)):
                 return {"success": false, "error": "Pixel render %s/%s: %s" % [variant_id, label, str(render_result.get("error", "unknown"))]}
             image_paths[variant_id][label] = image_path
+            print("E4A3_VIEWPORT_DONE=%s/%s" % [variant_id, label])
 
     var comparisons: Array[Dictionary] = []
     for label: String in ["hook_first", "hook_last"]:
-        var comparison: Dictionary = _compare_e4a_images(image_paths["A"][label], image_paths["B"][label], header_rect)
+        var comparison: Dictionary = _compare_e4a_images(image_paths["A"][label], image_paths["B"][label], pixel_header_rect)
         comparison["comparison"] = "A_TO_B_%s_HEADER_ONLY" % label.to_upper()
         if int(comparison.get("changed_pixels", 0)) <= 0 or int(comparison.get("changed_pixels_outside_region", -1)) != 0:
             return {"success": false, "error": "A/B header pixel comparison escaped HEADER or showed no visible title/subtitle change: %s" % label}
@@ -355,7 +422,7 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
             return {"success": false, "error": "Header/CTA text leaked outside approved source-timebase windows: %s" % label}
         comparisons.append(comparison)
     for label: String in ["cta_first", "cta_last"]:
-        var comparison: Dictionary = _compare_e4a_images(image_paths["A"][label], image_paths["B"][label], footer_rect)
+        var comparison: Dictionary = _compare_e4a_images(image_paths["A"][label], image_paths["B"][label], pixel_footer_rect)
         comparison["comparison"] = "A_TO_B_%s_FOOTER_ONLY" % label.to_upper()
         if int(comparison.get("changed_pixels", 0)) <= 0 or int(comparison.get("changed_pixels_outside_region", -1)) != 0:
             return {"success": false, "error": "A/B CTA pixel comparison escaped FOOTER or showed no visible CTA change: %s" % label}
@@ -379,10 +446,10 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
         {"path": "tools/c11d/d9/c11e_e4a_challenge_pixel_review.py", "sha256": _sha256_bytes(FileAccess.get_file_as_bytes("res://tools/c11d/d9/c11e_e4a_challenge_pixel_review.py"))}
     ]
     var report: Dictionary = {
-        "schema": E4APixelReportSchema,
+        "schema": E4ADCompositorReportSchema if real_background_mode else E4APixelReportSchema,
         "schema_version": "1.0",
-        "status": "PASS_ISOLATED_EDITORIAL_PIXEL_PROOF_TEST_ONLY",
-        "scope": "CHALLENGE_004_FIXED_FIXTURE_SOURCE_TIMEBASE_OFFSCREEN_SUBVIEWPORT",
+        "status": "PASS_ISOLATED_D_OWNED_GODOT_LAYER_REAL_BODY_PIXEL_PROOF_TEST_ONLY" if real_background_mode else "PASS_ISOLATED_EDITORIAL_PIXEL_PROOF_TEST_ONLY",
+        "scope": "CHALLENGE_004_D_OWNED_GODOT_SUBVIEWPORT_LAYER_ALPHA_COMPOSITED_OVER_REAL_C11C_REVIEW_FRAMES" if real_background_mode else "CHALLENGE_004_FIXED_FIXTURE_SOURCE_TIMEBASE_OFFSCREEN_SUBVIEWPORT",
         "frozen_c11c_manifest_sha256": FrozenManifestSha,
         "challenge_source_sha256": ChallengeSha,
         "base_payload_sha256": payload_sha,
@@ -390,13 +457,15 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
         "game_frame_record_count": 420,
         "source_timeline": timeline,
         "logical_canvas": {"width": 540, "height": 960, "coordinate_space": "D1.5_LOGICAL_FRAME"},
+        "delivery_canvas": {"width": 720, "height": 1280, "scale_from_logical": "4/3", "mode": "TEST_ONLY_ALPHA_COMPOSITE" if real_background_mode else "LOGICAL_FIXTURE"},
         "regions": {
-            "HEADER": {"x": 0, "y": 0, "width": 540, "height": 144},
-            "BODY": {"x": 0, "y": 144, "width": 540, "height": 672},
-            "FOOTER": {"x": 0, "y": 816, "width": 540, "height": 144}
+            "HEADER": {"x": 0, "y": 0, "width": 720 if real_background_mode else 540, "height": 192 if real_background_mode else 144},
+            "BODY": {"x": 0, "y": 192 if real_background_mode else 144, "width": 720 if real_background_mode else 540, "height": 896 if real_background_mode else 672},
+            "FOOTER": {"x": 0, "y": 1088 if real_background_mode else 816, "width": 720 if real_background_mode else 540, "height": 192 if real_background_mode else 144}
         },
-        "layout_fixture": "TEST_ONLY_STACKED_LABELS_IN_APPROVED_REGION_RECTANGLES_NOT_PRODUCTION_TYPOGRAPHY_OR_SAFE_AREA",
-        "rendered_scene": "TEST_FIXTURE_ONLY_NOT_FULL_CHALLENGE_GAMEPLAY_SCENE",
+        "layout_fixture": "TEST_ONLY_SCALED_STACKED_LABELS_IN_D1_5_REGION_BOUNDS_NOT_PRODUCTION_TYPOGRAPHY_OR_SAFE_AREA",
+        "rendered_scene": "D_OWNED_GODOT_SUBVIEWPORT_ALPHA_LAYER_OVER_REAL_C11C_FRAME_TEST_ONLY" if real_background_mode else "TEST_FIXTURE_ONLY_NOT_FULL_CHALLENGE_GAMEPLAY_SCENE",
+        "base_frame_inputs": backgrounds_by_label if real_background_mode else {},
         "variants": {
             "A": {"request_id": intent_a.get("request", {}).get("request_id", ""), "request_hash": intent_a.get("identity", {}).get("request_hash", ""), "editorial_hash": intent_a.get("identity", {}).get("editorial_hash", ""), "composition_sha256": _sha256_text(JSON.stringify(_stable_value(composition_by_variant["A"])))} ,
             "B": {"request_id": intent_b.get("request", {}).get("request_id", ""), "request_hash": intent_b.get("identity", {}).get("request_hash", ""), "editorial_hash": intent_b.get("identity", {}).get("editorial_hash", ""), "composition_sha256": _sha256_text(JSON.stringify(_stable_value(composition_by_variant["B"])))} ,
@@ -415,8 +484,9 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
             "language_pixel_effect": false,
             "challenge_overlay_pixel_effect": false,
             "fixture_body_pixel_effect": false,
-            "gameplay_body_pixel_identity": "NOT_TESTED_GAMEPLAY_NOT_RASTERIZED_IN_THIS_EDITORIAL_LAYER_FIXTURE",
-            "delivery_resampling": "NOT_APPLIED",
+            "real_gameplay_body_rasterized": real_background_mode,
+            "gameplay_body_pixel_identity": "PASS_AT_SIX_REAL_DELIVERY_SAMPLES" if real_background_mode else "NOT_TESTED_GAMEPLAY_NOT_RASTERIZED_IN_THIS_EDITORIAL_LAYER_FIXTURE",
+            "delivery_resampling": "BASE_VIDEO_ALREADY_NORMALIZED_TEST_ONLY_30FPS" if real_background_mode else "NOT_APPLIED",
             "production_audio_or_music": false
         },
         "execution_boundary": {
@@ -440,8 +510,33 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
     for variant_id: String in ["A", "B", "C"]:
         for sample: Dictionary in samples:
             var image_path: String = str(image_paths[variant_id][str(sample["label"])])
-            report["pixel_artifacts"].append({"variant": variant_id, "sample": str(sample["label"]), "source_frame": int(sample["source_frame"]), "path": image_path.replace("\\", "/").trim_prefix(project_root + "/"), "sha256": _sha256_bytes(FileAccess.get_file_as_bytes(image_path)), "width": 540, "height": 960})
-    var report_path: String = output_dir.path_join("C11E_E4A_PIXEL_RENDER_REPORT.json")
+            var artifact: Dictionary = {"variant": variant_id, "sample": str(sample["label"]), "phase": str(sample["phase"]), "source_frame": int(sample["source_frame"]), "path": image_path.replace("\\", "/").trim_prefix(project_root + "/"), "sha256": _sha256_bytes(FileAccess.get_file_as_bytes(image_path)), "width": 720 if real_background_mode else 540, "height": 1280 if real_background_mode else 960}
+            if real_background_mode:
+                artifact["delivery_frame"] = int(sample.get("delivery_frame", -1))
+                artifact["base_frame_sha256"] = str(sample.get("background_sha256", ""))
+            report["pixel_artifacts"].append(artifact)
+    if real_background_mode:
+        report["test_only_visual_layout_disposition"] = {
+            "pixel_region_confinement_proven": true,
+            "d_owned_godot_layer_alpha_composited_over_real_c11c_gameplay": true,
+            "visual_placement_approved": false,
+            "d1_5_safe_area_and_generic_typography": "UNKNOWN",
+            "existing_c11c_hook_content_overlap_observed": true,
+            "production_compositor_layout_acceptance": "NOT_GRANTED"
+        }
+        report["execution_boundary"] = {
+            "mode": "ISOLATED_E4A_D_OWNED_GODOT_COMPOSITOR_TEST_ONLY",
+            "offscreen_subviewport_rendered": true,
+            "real_c11c_delivery_frames_used_as_background": true,
+            "test_pixel_artifacts_created": true,
+            "production_renderer_activation": false,
+            "production_dispatch_invoked": false,
+            "production_media_created": false,
+            "c11c_source_mutation": false,
+            "d4_8": "BLOCKED", "d9_10": "PREPARE_ONLY", "release_authority": "NONE"
+        }
+    var report_name: String = "C11E_E4A_D_COMPOSITOR_PIXEL_REPORT.json" if real_background_mode else "C11E_E4A_PIXEL_RENDER_REPORT.json"
+    var report_path: String = output_dir.path_join(report_name)
     var report_file := FileAccess.open(report_path, FileAccess.WRITE)
     if report_file == null:
         return {"success": false, "error": "Cannot write E4A pixel report."}
@@ -580,39 +675,43 @@ func _phase_segment(timeline: Dictionary, phase_name: String) -> Dictionary:
     if start_frame < 0 or end_frame <= start_frame or end_frame > int(timeline.get("total_frames", 0)): return {}
     return found
 
-func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Rect2, body_rect: Rect2, footer_rect: Rect2, output_path: String) -> Dictionary:
+func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Rect2, body_rect: Rect2, footer_rect: Rect2, output_path: String, base_background_path: String = "") -> Dictionary:
+    var real_background_mode: bool = not base_background_path.is_empty()
+    var target_size: Vector2i = Vector2i(720, 1280) if real_background_mode else Vector2i(540, 960)
     var viewport := SubViewport.new()
-    viewport.size = Vector2i(540, 960)
+    viewport.size = target_size
     viewport.disable_3d = true
-    viewport.transparent_bg = false
+    viewport.transparent_bg = real_background_mode
     viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ALWAYS
     viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
     get_root().add_child(viewport)
 
     var canvas := Control.new()
     canvas.position = Vector2.ZERO
-    canvas.size = Vector2(540, 960)
+    canvas.size = Vector2(target_size)
+    canvas.clip_contents = true
     viewport.add_child(canvas)
-    var background := ColorRect.new()
-    background.position = Vector2.ZERO
-    background.size = Vector2(540, 960)
-    background.color = Color(0.055, 0.070, 0.090, 1.0)
-    canvas.add_child(background)
-    var header_background := ColorRect.new()
-    header_background.position = header_rect.position
-    header_background.size = header_rect.size
-    header_background.color = Color(0.10, 0.13, 0.17, 1.0)
-    canvas.add_child(header_background)
-    var body_background := ColorRect.new()
-    body_background.position = body_rect.position
-    body_background.size = body_rect.size
-    body_background.color = Color(0.075, 0.095, 0.12, 1.0)
-    canvas.add_child(body_background)
-    var footer_background := ColorRect.new()
-    footer_background.position = footer_rect.position
-    footer_background.size = footer_rect.size
-    footer_background.color = Color(0.10, 0.13, 0.17, 1.0)
-    canvas.add_child(footer_background)
+    if not real_background_mode:
+        var background := ColorRect.new()
+        background.position = Vector2.ZERO
+        background.size = Vector2(540, 960)
+        background.color = Color(0.055, 0.070, 0.090, 1.0)
+        canvas.add_child(background)
+        var header_background := ColorRect.new()
+        header_background.position = header_rect.position
+        header_background.size = header_rect.size
+        header_background.color = Color(0.10, 0.13, 0.17, 1.0)
+        canvas.add_child(header_background)
+        var body_background := ColorRect.new()
+        body_background.position = body_rect.position
+        body_background.size = body_rect.size
+        body_background.color = Color(0.075, 0.095, 0.12, 1.0)
+        canvas.add_child(body_background)
+        var footer_background := ColorRect.new()
+        footer_background.position = footer_rect.position
+        footer_background.size = footer_rect.size
+        footer_background.color = Color(0.10, 0.13, 0.17, 1.0)
+        canvas.add_child(footer_background)
 
     var header_fields: Array[Dictionary] = []
     var footer_fields: Array[Dictionary] = []
@@ -633,41 +732,61 @@ func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Re
 
     if not header_fields.is_empty():
         var header_box := VBoxContainer.new()
-        header_box.position = header_rect.position
-        header_box.size = header_rect.size
+        header_box.position = Vector2.ZERO if real_background_mode else header_rect.position
+        header_box.size = Vector2(720, 192) if real_background_mode else header_rect.size
+        header_box.clip_contents = true
         header_box.add_theme_constant_override("separation", 0)
         canvas.add_child(header_box)
         for field: Dictionary in header_fields:
-            var label := _make_e4a_test_label(str(field.get("effective_value", "")), 22)
+            var label := _make_e4a_test_label(str(field.get("effective_value", "")), 29 if real_background_mode else 22)
             label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
             label.size_flags_vertical = Control.SIZE_EXPAND_FILL
             header_box.add_child(label)
     if not footer_fields.is_empty():
         var footer_text := PackedStringArray()
         for field: Dictionary in footer_fields: footer_text.append(str(field.get("effective_value", "")))
-        var footer_label := _make_e4a_test_label("\n".join(footer_text), 21)
-        footer_label.position = footer_rect.position
-        footer_label.size = footer_rect.size
+        var footer_label := _make_e4a_test_label("\n".join(footer_text), 28 if real_background_mode else 21)
+        footer_label.position = Vector2(0, 1088) if real_background_mode else footer_rect.position
+        footer_label.size = Vector2(720, 192) if real_background_mode else footer_rect.size
         canvas.add_child(footer_label)
 
+    print("E4A3_VIEWPORT_WAIT_PROCESS_FRAME")
     await process_frame
+    print("E4A3_VIEWPORT_WAIT_FRAME_POST_DRAW")
     await RenderingServer.frame_post_draw
+    print("E4A3_VIEWPORT_FRAME_POST_DRAW_OK")
     var texture: Texture2D = viewport.get_texture()
     if texture == null:
         viewport.queue_free()
         await process_frame
         return {"success": false, "error": "Offscreen SubViewport returned no texture."}
     var image: Image = texture.get_image()
-    if image == null or image.is_empty() or image.get_width() != 540 or image.get_height() != 960:
+    if image == null or image.is_empty() or image.get_width() != target_size.x or image.get_height() != target_size.y:
         viewport.queue_free()
         await process_frame
         return {"success": false, "error": "Offscreen SubViewport image is empty or has the wrong dimensions."}
-    var save_error: int = image.save_png(output_path)
+
+    var final_image: Image = image
+    if real_background_mode:
+        var base_image := Image.new()
+        var base_load_error: int = base_image.load(base_background_path)
+        if base_load_error != OK or base_image.is_empty() or base_image.get_width() != 720 or base_image.get_height() != 1280:
+            viewport.queue_free()
+            await process_frame
+            return {"success": false, "error": "Cannot load the pinned 720x1280 real C11-C base frame: %s" % base_background_path}
+        if base_image.get_format() != Image.FORMAT_RGBA8:
+            base_image.convert(Image.FORMAT_RGBA8)
+        if image.get_format() != Image.FORMAT_RGBA8:
+            image.convert(Image.FORMAT_RGBA8)
+        base_image.blend_rect(image, Rect2i(0, 0, 720, 1280), Vector2i.ZERO)
+        final_image = base_image
+
+    var save_error: int = final_image.save_png(output_path)
     viewport.queue_free()
     await process_frame
     if save_error != OK:
         return {"success": false, "error": "Cannot save test PNG: %s (error %d)" % [output_path, save_error]}
-    return {"success": true, "width": 540, "height": 960}
+    return {"success": true, "width": target_size.x, "height": target_size.y, "alpha_composited_over_real_background": real_background_mode}
 
 func _make_e4a_test_label(text_value: String, font_size: int) -> Label:
     var label := Label.new()
@@ -687,20 +806,22 @@ func _compare_e4a_images(path_a: String, path_b: String, allowed_rect: Rect2) ->
     var image_b := Image.new()
     if image_a.load(path_a) != OK or image_b.load(path_b) != OK:
         return {"success": false, "error": "Cannot reload pixel evidence images."}
-    if image_a.get_width() != 540 or image_a.get_height() != 960 or image_b.get_width() != 540 or image_b.get_height() != 960:
+    if image_a.get_width() != image_b.get_width() or image_a.get_height() != image_b.get_height():
         return {"success": false, "error": "Pixel evidence dimensions mismatch."}
+    var image_width: int = image_a.get_width()
+    var image_height: int = image_a.get_height()
     var changed: int = 0
     var inside: int = 0
     var outside: int = 0
-    for y: int in range(960):
-        for x: int in range(540):
+    for y: int in range(image_height):
+        for x: int in range(image_width):
             if image_a.get_pixel(x, y) != image_b.get_pixel(x, y):
                 changed += 1
                 if not allowed_rect.has_area() or not allowed_rect.has_point(Vector2(x + 0.5, y + 0.5)):
                     outside += 1
                 else:
                     inside += 1
-    return {"success": true, "changed_pixels": changed, "changed_pixels_inside_region": inside, "changed_pixels_outside_region": outside, "allowed_region": _stable_value(allowed_rect)}
+    return {"success": true, "width": image_width, "height": image_height, "changed_pixels": changed, "changed_pixels_inside_region": inside, "changed_pixels_outside_region": outside, "allowed_region": _stable_value(allowed_rect)}
 
 func _build_payload(source: Dictionary, context: Variant) -> Dictionary:
     if context == null or context.simulation_result == null or context.timeline == null or context.presentation_binding == null:
@@ -897,7 +1018,8 @@ func _frame_signature_sha256(sim: Variant) -> String:
     for index: int in range(sim.frames.size()):
         var frame: Variant = sim.frames[index]
         if frame == null or not frame.is_valid_snapshot(): return ""
-        parts.append("%d|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%d|%d|%s" % [index, frame.position.x, frame.position.y, frame.rotation, frame.scale.x, frame.scale.y, frame.opacity, float(frame.texture_index), int(frame.variant_id), int(frame.custom_data.size()), JSON.stringify(_stable_value(frame.custom_data))])
+        # Fingerprint only explicit visual snapshot fields. Never inspect, enumerate, or serialize FrameSnapshot.custom_data.
+        parts.append("%d|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%d|%d" % [index, frame.position.x, frame.position.y, frame.rotation, frame.scale.x, frame.scale.y, frame.opacity, float(frame.texture_index), int(frame.variant_id)])
     return _sha256_text("\n".join(parts))
 
 func _stable_value(value: Variant) -> Variant:

@@ -1,0 +1,132 @@
+{
+  "base_frame_inputs_sha256_before_after": {
+    "cta_first": "a6fb86c76d15153b29823dc49f89393e63dbe17bf54ef14346c05fa2fb121025",
+    "cta_last": "5cc54961b7dd779f410fdf2f021fef63283c4ce30e33a0ebedc8d1eeb3842453",
+    "game_first": "de61eba792a40cc5ac92a48123c5a2460841ab76d21f93973c1c9784da604198",
+    "hook_first": "0bd3db1aad0fc071b903888d392186b5435f6d3d79e3bb59ba8563d12bffa404",
+    "hook_last": "057494fcd8f8e3872d54901b957d935d069a149c56a0e2bbcb63e44dcc22057f",
+    "reveal_first": "e8271912d7088d04f1a53d0c8b83543fa79baab12fcecbbe99be569e4da28fae"
+  },
+  "base_frames": [
+    {
+      "delivery_frame": 0,
+      "height": 1280,
+      "label": "hook_first",
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\base_frames\\hook_first.png",
+      "phase": "HOOK",
+      "sha256": "0bd3db1aad0fc071b903888d392186b5435f6d3d79e3bb59ba8563d12bffa404",
+      "source_frame": 0,
+      "width": 720
+    },
+    {
+      "delivery_frame": 89,
+      "height": 1280,
+      "label": "hook_last",
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\base_frames\\hook_last.png",
+      "phase": "HOOK",
+      "sha256": "057494fcd8f8e3872d54901b957d935d069a149c56a0e2bbcb63e44dcc22057f",
+      "source_frame": 178,
+      "width": 720
+    },
+    {
+      "delivery_frame": 90,
+      "height": 1280,
+      "label": "game_first",
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\base_frames\\game_first.png",
+      "phase": "GAME",
+      "sha256": "de61eba792a40cc5ac92a48123c5a2460841ab76d21f93973c1c9784da604198",
+      "source_frame": 180,
+      "width": 720
+    },
+    {
+      "delivery_frame": 300,
+      "height": 1280,
+      "label": "reveal_first",
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\base_frames\\reveal_first.png",
+      "phase": "REVEAL",
+      "sha256": "e8271912d7088d04f1a53d0c8b83543fa79baab12fcecbbe99be569e4da28fae",
+      "source_frame": 600,
+      "width": 720
+    },
+    {
+      "delivery_frame": 390,
+      "height": 1280,
+      "label": "cta_first",
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\base_frames\\cta_first.png",
+      "phase": "CTA",
+      "sha256": "a6fb86c76d15153b29823dc49f89393e63dbe17bf54ef14346c05fa2fb121025",
+      "source_frame": 780,
+      "width": 720
+    },
+    {
+      "delivery_frame": 449,
+      "height": 1280,
+      "label": "cta_last",
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\base_frames\\cta_last.png",
+      "phase": "CTA",
+      "sha256": "5cc54961b7dd779f410fdf2f021fef63283c4ce30e33a0ebedc8d1eeb3842453",
+      "source_frame": 898,
+      "width": 720
+    }
+  ],
+  "base_run_receipt_sha256": "b23a5f0c1557b52b724c99ac90a671e0a8d8457dcd5e605f8d097c517f366308",
+  "base_run_report_sha256": "e940f0a150d7dcea8ab34003b2f053d4be614f602ee6ea3ff04cd8bfa2b71159",
+  "body_crop_hash_count": 18,
+  "c11c_renderer_sha256_before_after": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+  "ffmpeg_executable": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+  "ffprobe_executable": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe",
+  "frozen_c11c_manifest_sha256_before_after": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "godot_command": [
+    "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+    "--path",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "--script",
+    "res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+    "--",
+    "--e4a-config",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_compositor_pixel_review\\RUN_20261104_021444_0cfefef6\\e4a_d_compositor_pixel_test_config.json"
+  ],
+  "godot_executable": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+  "godot_exit_code": 0,
+  "godot_stderr_sha256": "df7af9ee0183aaee471ff1748c482fefd37775a6522b9f41687e5942f8ad897e",
+  "godot_stdout_sha256": "1a1c3d0b5c073c2a8a085d7f6f0480a201c57b7373dd8e781e10358af8952c52",
+  "godot_version": "4.7.1.stable.mono.official.a13da4feb",
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "production_dispatch": false,
+    "production_media_created": false,
+    "production_renderer": false,
+    "release_authority": "NONE",
+    "test_media_created": false,
+    "test_png_artifacts_created": true
+  },
+  "materializer_sha256_before_after": "3d1c8288ffbea3ff328d785def5fabba250b042c0d2d1b1f94215b1c62cde29b",
+  "normalized_review_mp4_sha256_before_after": "edbd446d67142d20e138e55563f16cbae8d9a4c39469fd2bebcb3c9d5723fb9e",
+  "original_c11c_base_mp4_sha256_before_after": "fdd0598e20ddc6201e54cc2dad7fd3362c2ef80961df44f3ef4676fb97a765de",
+  "pixel_comparison_count": 12,
+  "pixel_png_count": 18,
+  "producer_main_sha256_before_after": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3",
+  "report_sha256": "ee1be803f4d0433347778793aab12228301aea5108f426011836c27dc268dc08",
+  "schema": "C11E-E4A-D-GODOT-COMPOSITOR-REAL-BODY-PIXEL-RECEIPT-V1",
+  "scope": "CHALLENGE_004_D_OWNED_GODOT_SUBVIEWPORT_LAYER_ALPHA_COMPOSITED_OVER_REAL_C11C_REVIEW_FRAMES",
+  "source_pins": {
+    "approved_policy": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+    "c11c_renderer_read_only": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+    "challenge_004": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+    "d1_5_layout": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+    "d99_resolver": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+    "d_owned_materializer_v3": "3d1c8288ffbea3ff328d785def5fabba250b042c0d2d1b1f94215b1c62cde29b",
+    "e1_intent_helper": "939a12f369df9eaa0dbaf5b06b0635a0d4dc906e14fd7d5bdf9c12b3ec2b97a0",
+    "e1_service": "f0655d8d93df3b766b157d80a76a5bfc7b514d740815646f54c88ca788f602c0",
+    "e4a2_runner": "5c0e8765bb29b58ddefc1b9593be188227e77725431c3dc959c1ce6866529a9b",
+    "e4a2_test": "657f459ce11621a2dde133da5234ea27754c56b3acb5a10c8b37ff952a48d07b",
+    "frozen_manifest": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "producer_main_read_only": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3"
+  },
+  "status": "PASS_ISOLATED_D_OWNED_GODOT_LAYER_REAL_BODY_PIXEL_PROOF_TEST_ONLY"
+}
