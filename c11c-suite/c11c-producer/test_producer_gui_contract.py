@@ -13,7 +13,7 @@ SCHEMA = ROOT / "producer_schema.json"
 main_text = MAIN.read_text(encoding="utf-8")
 tree = ast.parse(main_text)
 manifest = json.loads((ROOT / "BUILD_MANIFEST.json").read_text(encoding="utf-8"))
-assert 'APP_VERSION = "0.11.1"' in main_text
+assert 'APP_VERSION = "0.12.0-E3"' in main_text
 assert "failed_seeds" in main_text
 assert "current_seed" in main_text
 assert 'QProcess.ProcessError.FailedToStart' in main_text

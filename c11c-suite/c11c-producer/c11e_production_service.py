@@ -361,6 +361,33 @@ def prepare_c11e_production_intent(
     if not isinstance(raw_request, Mapping):
         raise C11EProductionServiceError("C11-E request must be a JSON object")
     request = copy.deepcopy(dict(raw_request))
+    # E4A.1: presentation visibility is an E1 request option, not a D9.9
+    # canonical field. Remove it before invoking the strict D9.9 resolver.
+    option_supplied = "presentation_options" in request
+    raw_presentation_options = request.pop("presentation_options", None)
+    raw_selection = request.get("selection")
+    raw_content_type = raw_selection.get("content_type") if isinstance(raw_selection, Mapping) else None
+    if raw_content_type == "challenges":
+        if not option_supplied:
+            presentation_options: dict[str, Any] | None = {"show_hook_countdown": True}
+        elif (
+            not isinstance(raw_presentation_options, Mapping)
+            or set(raw_presentation_options) != {"show_hook_countdown"}
+            or type(raw_presentation_options.get("show_hook_countdown")) is not bool
+        ):
+            raise C11EProductionServiceError(
+                "Challenge presentation_options must contain only boolean show_hook_countdown"
+            )
+        else:
+            presentation_options = {
+                "show_hook_countdown": raw_presentation_options["show_hook_countdown"]
+            }
+    else:
+        if option_supplied:
+            raise C11EProductionServiceError(
+                "presentation_options.show_hook_countdown is Challenge-only"
+            )
+        presentation_options = None
     provenance = request.get("provenance")
     if not isinstance(provenance, Mapping):
         provenance = {}
@@ -420,19 +447,24 @@ def prepare_c11e_production_intent(
         "source_identity": source_identity,
         "output_root": output_root,
     }
+    if content_type == "challenges":
+        intent_semantics["presentation_options"] = presentation_options
+    intent_request = {
+        "request_id": request_id,
+        "mode": canonical_request["mode"],
+        "content_type": content_type,
+        "selection": canonical_request["selection"],
+        "variation_index": canonical_request["variation_index"],
+    }
+    if content_type == "challenges":
+        intent_request["presentation_options"] = presentation_options
     intent: dict[str, Any] = {
         "schema": SERVICE_SCHEMA,
         "schema_version": "1.1",
         "service_version": SERVICE_VERSION,
         "status": "PREPARED_E1_NOT_DISPATCHED",
         "request_origin": origin,
-        "request": {
-            "request_id": request_id,
-            "mode": canonical_request["mode"],
-            "content_type": content_type,
-            "selection": canonical_request["selection"],
-            "variation_index": canonical_request["variation_index"],
-        },
+        "request": intent_request,
         "identity": {
             "request_hash": resolved["request_hash"],
             "editorial_hash": resolved["editorial_hash"],
@@ -508,6 +540,20 @@ def validate_c11e_production_intent(
     request_id = _safe_request_id(request.get("request_id"))
     if request.get("content_type") not in SUPPORTED_CONTENT_TYPES:
         raise C11EProductionServiceError("Unsupported C11-E content type")
+    options_present = "presentation_options" in request
+    presentation_options = request.get("presentation_options")
+    if request.get("content_type") == "challenges":
+        # Older sealed E1 intents predate the optional visibility flag. They
+        # remain valid and retain the historical default (visible). New intents
+        # carry the explicit boolean and seal it into intent_hash.
+        if options_present and (
+            not isinstance(presentation_options, Mapping)
+            or set(presentation_options) != {"show_hook_countdown"}
+            or type(presentation_options.get("show_hook_countdown")) is not bool
+        ):
+            raise C11EProductionServiceError("Invalid sealed Challenge presentation_options")
+    elif options_present:
+        raise C11EProductionServiceError("Non-Challenge E1 request contains Challenge presentation_options")
     variation_index = request.get("variation_index")
     if isinstance(variation_index, bool) or not isinstance(variation_index, int) or not 0 <= variation_index <= 1000000:
         raise C11EProductionServiceError("Invalid C11-E variation_index")
@@ -604,6 +650,8 @@ def validate_c11e_production_intent(
         "source_identity": source_identity,
         "output_root": output_root,
     }
+    if options_present:
+        intent_semantics["presentation_options"] = presentation_options
     if sha256(intent_semantics) != identity.get("intent_hash"):
         raise C11EProductionServiceError("C11-E semantic intent hash mismatch")
     return {"valid": True, "status": "PASS_E1_PREPARATION_ONLY", "intent_sha256": supplied, "source_pin_count": len(pinned), "renderer": False, "media_created": False}

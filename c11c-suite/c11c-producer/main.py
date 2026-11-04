@@ -685,6 +685,11 @@ class MainWindow(QMainWindow):
         form.addWidget(self.d9_content_type, row, 1, 1, 3)
         row += 1
 
+        self.d9_show_hook_countdown = QCheckBox("Mostrar hook y countdown en Challenge")
+        self.d9_show_hook_countdown.setChecked(True)
+        form.addWidget(self.d9_show_hook_countdown, row, 1, 1, 3)
+        row += 1
+
         self.d9_family = QComboBox()
         self.d9_subtype = QComboBox()
         self.d9_variant = QComboBox()
@@ -896,6 +901,8 @@ class MainWindow(QMainWindow):
             self.d9_family.addItem(str(family.get("label", family["id"])), family["id"])
         self.d9_family.blockSignals(False)
         self.d9_family.setEnabled(bool(families))
+        if hasattr(self, "d9_show_hook_countdown"):
+            self.d9_show_hook_countdown.setEnabled(content_type == "challenges")
         self._d9_universal_family_changed(self.d9_family.currentIndex())
 
     def _d9_universal_family_changed(self, _index: int = -1) -> None:
@@ -1064,11 +1071,17 @@ class MainWindow(QMainWindow):
                 "presentation_profile_id": self.d9_presentation.text().strip() or "UNKNOWN",
                 "variation_index": int(self.d9_variation.value()),
                 "audio_enabled": bool(self.d9_audio.isChecked()),
+                "presentation_options": (
+                    {"show_hook_countdown": bool(self.d9_show_hook_countdown.isChecked())}
+                    if content_type == "challenges" else None
+                ),
                 "personalization_enabled": enabled,
                 "editorial_profile": editorial_profile,
                 "production_override": production_override,
                 "provenance": {"source_revision": "C11D-D9.10-PRODUCER-0.11.1", "request_origin": "GUI"},
             }
+            if content_type != "challenges":
+                raw_request.pop("presentation_options", None)
             e1_prepared = prepare_c11e_production_intent(
                 raw_request, PROJECT, request_origin="GUI", resolver_module=D9_UNIVERSAL
             )
@@ -1086,9 +1099,14 @@ class MainWindow(QMainWindow):
 
             request_path = run_root / "request.json"
             request_path.write_text(json.dumps(raw_request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            # D9.9 remains strict and must not receive E1-owned request options.
+            d9_request = dict(raw_request)
+            d9_request.pop("presentation_options", None)
+            d9_request_path = run_root / "d9_request.json"
+            d9_request_path.write_text(json.dumps(d9_request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             cli_path = PROJECT / "tools" / "c11d" / "d9" / "universal_producer_cli.py"
             cli_run = subprocess.run(
-                [sys.executable, str(cli_path), "--request", str(request_path), "--print-json"],
+                [sys.executable, str(cli_path), "--request", str(d9_request_path), "--print-json"],
                 cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=45,
             )
             if cli_run.returncode != 0:
@@ -1110,6 +1128,7 @@ class MainWindow(QMainWindow):
                 "plan_hash_equal": e1_intent["identity"]["plan_hash"] == e_cli_intent["identity"]["plan_hash"],
                 "selection_equal": e1_intent["request"]["selection"] == e_cli_intent["request"]["selection"],
                 "editorial_equal": e1_intent["editorial"] == e_cli_intent["editorial"],
+                "presentation_options_equal": e1_intent["request"].get("presentation_options") == e_cli_intent["request"].get("presentation_options"),
                 "seed_domains_equal": e1_intent["seed_domains"] == e_cli_intent["seed_domains"],
                 "gui_origin_preserved": e1_intent["request_origin"] == "GUI",
                 "cli_origin_preserved": e_cli_intent["request_origin"] == "CLI",

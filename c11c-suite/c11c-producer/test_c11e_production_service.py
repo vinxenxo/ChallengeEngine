@@ -12,6 +12,7 @@ from unittest.mock import patch
 from c11e_production_service import (
     C11EProductionServiceError,
     prepare_c11e_production_intent,
+    sha256,
     validate_c11e_production_intent,
 )
 
@@ -82,6 +83,84 @@ class C11EProductionServiceTests(unittest.TestCase):
         })
         self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
 
+    def test_challenge_presentation_option_defaults_on_and_is_sealed(self):
+        intent = prepare_c11e_production_intent(request(), ROOT)["intent"]
+        self.assertEqual(intent["schema_version"], "1.1")
+        self.assertEqual(intent["request"]["presentation_options"], {"show_hook_countdown": True})
+        self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+
+    def test_challenge_presentation_option_off_is_sealed_and_changes_intent_identity(self):
+        raw = request(request_id="C11E-E1-CHALLENGE-VISIBILITY-OFF")
+        raw["presentation_options"] = {"show_hook_countdown": False}
+        intent = prepare_c11e_production_intent(raw, ROOT)["intent"]
+        self.assertEqual(intent["request"]["presentation_options"], {"show_hook_countdown": False})
+        self.assertNotEqual(
+            intent["identity"]["intent_hash"],
+            prepare_c11e_production_intent(request(), ROOT)["intent"]["identity"]["intent_hash"],
+        )
+        self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+
+    def test_legacy_challenge_intent_without_visibility_option_remains_valid(self):
+        intent = copy.deepcopy(prepare_c11e_production_intent(request(), ROOT)["intent"])
+        intent["request"].pop("presentation_options")
+        semantics = {
+            "request_id": intent["request"]["request_id"],
+            "mode": intent["request"]["mode"],
+            "selection": intent["request"]["selection"],
+            "request_hash": intent["identity"]["request_hash"],
+            "editorial_hash": intent["identity"]["editorial_hash"],
+            "plan_hash": intent["identity"]["plan_hash"],
+            "gameplay_seed": intent["seed_domains"]["gameplay"]["value"],
+            "music_seed": intent["seed_domains"]["music"]["value"],
+            "delivery_profile_id": intent["delivery"]["resolved_profile_id"],
+            "presentation_profile_id": intent["delivery"]["presentation_profile_id"],
+            "audio_enabled": intent["delivery"]["audio_enabled"],
+            "editorial": intent["editorial"],
+            "music_contract": intent["music_contract"],
+            "source_identity": intent["source_identity"],
+            "output_root": intent["output"]["planned_root"],
+        }
+        intent["identity"]["intent_hash"] = sha256(semantics)
+        intent.pop("intent_sha256")
+        intent["intent_sha256"] = sha256(intent)
+        self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+
+    def test_challenge_presentation_option_rejects_invalid_shape_and_boolean_coercion(self):
+        invalid_values = [
+            {"show_hook_countdown": 0},
+            {"show_hook_countdown": "false"},
+            {"show_hook_countdown": False, "extra": True},
+            [],
+            None,
+        ]
+        for index, value in enumerate(invalid_values):
+            raw = request(request_id=f"C11E-E1-CHALLENGE-VISIBILITY-NEG-{index}")
+            raw["presentation_options"] = value
+            with self.subTest(value=value), self.assertRaises(C11EProductionServiceError):
+                prepare_c11e_production_intent(raw, ROOT)
+
+    def test_challenge_presentation_option_is_rejected_for_loop_and_drill(self):
+        for content_type, selection in (
+            ("visual_loops", {"content_type": "visual_loops", "family_id": "c11c_geometric_waves_v1", "subtype_id": "harmonic_membrane"}),
+            ("visual_drills", {"content_type": "visual_drills", "family_id": "tracking", "variant_id": "tier-1"}),
+        ):
+            raw = request(request_id=f"C11E-E1-{content_type.upper()}-VISIBILITY-NEG")
+            raw["selection"] = selection
+            raw["presentation_options"] = {"show_hook_countdown": False}
+            with self.subTest(content_type=content_type), self.assertRaises(C11EProductionServiceError):
+                prepare_c11e_production_intent(raw, ROOT)
+
+    def test_loop_and_drill_intents_keep_the_pre_e4a1_request_shape(self):
+        for content_type, selection in (
+            ("visual_loops", {"content_type": "visual_loops", "family_id": "c11c_geometric_waves_v1", "subtype_id": "harmonic_membrane"}),
+            ("visual_drills", {"content_type": "visual_drills", "family_id": "tracking", "variant_id": "tier-1"}),
+        ):
+            raw = request(request_id=f"C11E-E1-{content_type.upper()}-NO-VISIBILITY-OPTION")
+            raw["selection"] = selection
+            intent = prepare_c11e_production_intent(raw, ROOT)["intent"]
+            self.assertNotIn("presentation_options", intent["request"])
+            self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+
     def test_title_changes_editorial_identity_not_seed_domains(self):
         first = prepare_c11e_production_intent(request(title="Title A"), ROOT)["intent"]
         second = prepare_c11e_production_intent(request(title="Title B"), ROOT)["intent"]
@@ -98,11 +177,13 @@ class C11EProductionServiceTests(unittest.TestCase):
 
     def test_gui_cli_origin_does_not_change_semantic_intent(self):
         raw = request()
+        raw["presentation_options"] = {"show_hook_countdown": False}
         gui = prepare_c11e_production_intent(raw, ROOT, request_origin="GUI")["intent"]
         cli = prepare_c11e_production_intent(raw, ROOT, request_origin="CLI")["intent"]
         self.assertEqual(gui["request_origin"], "GUI")
         self.assertEqual(cli["request_origin"], "CLI")
         self.assertEqual(gui["identity"]["intent_hash"], cli["identity"]["intent_hash"])
+        self.assertEqual(gui["request"]["presentation_options"], cli["request"]["presentation_options"])
         self.assertNotEqual(gui["intent_sha256"], cli["intent_sha256"])
 
     def test_service_is_side_effect_free(self):
@@ -145,7 +226,9 @@ class C11EProductionServiceTests(unittest.TestCase):
             temp_root = Path(temp)
             request_path = temp_root / "request.json"
             output_path = temp_root / "intent.json"
-            request_path.write_text(json.dumps(request()), encoding="utf-8")
+            cli_request = request()
+            cli_request["presentation_options"] = {"show_hook_countdown": False}
+            request_path.write_text(json.dumps(cli_request), encoding="utf-8")
             cli = ROOT / "c11c-suite" / "c11c-producer" / "c11e_production_cli.py"
             run = subprocess.run(
                 [sys.executable, str(cli), "--request", str(request_path), "--origin", "CLI", "--output", str(output_path)],
@@ -155,6 +238,7 @@ class C11EProductionServiceTests(unittest.TestCase):
             payload = json.loads(output_path.read_text(encoding="utf-8"))
             self.assertEqual(payload["status"], "PASS_E1_PREPARATION_ONLY")
             self.assertEqual(payload["intent"]["request_origin"], "CLI")
+            self.assertEqual(payload["intent"]["request"]["presentation_options"], {"show_hook_countdown": False})
             self.assertEqual(payload["validation"]["status"], "PASS_E1_PREPARATION_ONLY")
             self.assertFalse(payload["execution_boundary"]["renderer_activation"])
 

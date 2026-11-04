@@ -56,6 +56,18 @@ class C11EE3GuiIntegrationTests(unittest.TestCase):
         self.assertNotIn("godot", action.lower())
         self.assertNotIn("godot", action.lower())
 
+    def test_challenge_hook_countdown_checkbox_flows_through_e1_without_expanding_d99_schema(self):
+        build = method_source("_build_d9_universal_editorial_tab")
+        type_changed = method_source("_d9_universal_type_changed")
+        plan = method_source("_run_d9_universal_plan")
+        self.assertIn('QCheckBox("Mostrar hook y countdown en Challenge")', build)
+        self.assertIn('self.d9_show_hook_countdown.setChecked(True)', build)
+        self.assertIn('self.d9_show_hook_countdown.setEnabled(content_type == "challenges")', type_changed)
+        self.assertIn('"presentation_options": (', plan)
+        self.assertIn('{"show_hook_countdown": bool(self.d9_show_hook_countdown.isChecked())}', plan)
+        self.assertIn('d9_request.pop("presentation_options", None)', plan)
+        self.assertIn('e1_intent["request"].get("presentation_options") == e_cli_intent["request"].get("presentation_options")', plan)
+
     def test_shared_cli_compatibility_is_not_removed(self):
         plan = method_source("_run_d9_universal_plan")
         self.assertIn('request_origin="GUI"', plan)
