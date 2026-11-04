@@ -1154,7 +1154,7 @@ func _frame_signature_sha256(sim: Variant) -> String:
         var frame: Variant = sim.frames[index]
         if frame == null or not frame.is_valid_snapshot(): return ""
         # Fingerprint only explicit visual snapshot fields. Never inspect, enumerate, or serialize FrameSnapshot.custom_data.
-        parts.append("%d|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%d|%d" % [index, frame.position.x, frame.position.y, frame.rotation, frame.scale.x, frame.scale.y, frame.opacity, float(frame.texture_index), int(frame.variant_id)])
+        parts.append("%d|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%.9f|%d" % [index, frame.position.x, frame.position.y, frame.rotation, frame.scale.x, frame.scale.y, frame.opacity, float(frame.texture_index), int(frame.variant_id)])
     return _sha256_text("\n".join(parts))
 
 func _stable_value(value: Variant) -> Variant:

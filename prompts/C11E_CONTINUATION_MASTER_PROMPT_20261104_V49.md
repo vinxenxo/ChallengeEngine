@@ -1,0 +1,9 @@
+# C11-E Continuation Master Prompt — V49
+
+Use `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS` active Windows checkout as authority. Do not restore ZIPs over it and do not repeat accepted E0/E1/E2/E3 or accepted E4A.2 evidence unless exact source-pin drift requires it.
+
+E4A.3D.1 isolated technical compositor proof is now closed test-only: 82 focused tests, py_compile, Godot 4.7.1 exit 0/empty stderr, 6/6 real frames, 18/18 PNG, 12/12 comparisons, BODY identity and correct Challenge hook/title/subtitle word-wrapped header. Challenge text validation must preserve C11-C semantics: native hook is the primary line; the D `title · subtitle` secondary string is wrapped by actual C11-C font metrics, so no fixed line-2/line-3 split may be asserted. Approved windows are title/subtitle=HOOK HEADER, call_to_action=CTA FOOTER. Phase keys hook/reveal/cta are not aliases for D9.9 editorial keys.
+
+Next: E4A.5B read-only capture of Challenge root scene/script, transitive Godot resources, launcher, QA caller and phase-specific `SocialUIBinder.bind_render_model` seam. Then E4A.6 minimal D-only live integration with one owner for HookComponent, CountdownComponent and CTAComponent. Do not touch C11-C. Keep Loop/Drill binders, timings and music separate; complete E4B/E4C, E5, Smoke18, Matrix101, then E8 independent acceptance/freeze/promotion. Renderer/production dispatch/media remain OFF; D4.8 blocked; D9.10 prepare-only; release authority NONE.
+
+All applies: one flat `.ps1` in Downloads, PS5.1 AST parse, exact pre/post SHA transaction, tests, clean stderr, receipts, add-only docs, no staging/commit. Do not build nested installer packages.

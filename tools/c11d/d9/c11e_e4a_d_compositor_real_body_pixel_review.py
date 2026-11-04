@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[3]
 MATERIALIZER = Path("tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd")
 EDITORIAL_ADAPTER = Path("tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd")
 EDITORIAL_ADAPTER_SHA256 = "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846"
-MATERIALIZER_SHA256 = "a5297d5e7e4ed16ff37f5e190d1a32b1efe94bcfa83025c0060e1ece7eb7fd8f"
+MATERIALIZER_SHA256 = "01deb2419f88012c162a1ab56013cb4a724fda72a5de70f5434cf5dad1a1e753"
 PREVIOUS_RUNNER = Path("tools/c11d/d9/c11e_e4a_challenge_real_body_pixel_review.py")
 PREVIOUS_RUNNER_SHA256 = "5c0e8765bb29b58ddefc1b9593be188227e77725431c3dc959c1ce6866529a9b"
 PREVIOUS_TEST = Path("tools/c11d/d9/test_c11e_e4a_challenge_real_body_pixel_review.py")
@@ -464,7 +464,14 @@ def run(root: Path, base_run_arg: str, ffmpeg_arg: str | None, ffprobe_arg: str 
         raise CompositorReviewError("Test-only placeholder visual placement was incorrectly approved")
     challenge_source = load_json(root / CHALLENGE_SOURCE)
     native_hook_text = str(challenge_source.get("content", {}).get("hook", "")).strip()
-    validate_header_recomposition(report, native_hook_text)
+    editorial_b = base["intents"]["B"].get("editorial", {})
+    header_parts = []
+    for field_name in ("title", "subtitle"):
+        raw_value = str(editorial_b.get(field_name, "")).strip()
+        if raw_value and raw_value.upper() != "UNKNOWN":
+            header_parts.append(raw_value)
+    expected_header_editorial = " · ".join(header_parts)
+    validate_header_recomposition(report, native_hook_text, expected_header_editorial)
 
     artifact_rows = report.get("pixel_artifacts", [])
     if len(artifact_rows) != 18 or report.get("pixel_comparisons") is None or len(report["pixel_comparisons"]) != 12:
@@ -592,8 +599,18 @@ def run(root: Path, base_run_arg: str, ffmpeg_arg: str | None, ffprobe_arg: str 
     return 0
 
 
-def validate_header_recomposition(report: Mapping[str, Any], expected_native_hook: str) -> None:
-    """Fail closed unless both real HOOK samples prove one shared header owner."""
+def validate_header_recomposition(
+    report: Mapping[str, Any],
+    expected_native_hook: str,
+    expected_editorial_text: str,
+) -> None:
+    """Validate Challenge's phase-scoped hook plus the C11-C word-wrapped D copy.
+
+    C11CVisualEditorialLayer composes its primary header line, then applies its
+    own deterministic word-boundary split to the single secondary string.
+    The split point is font/width dependent; line 2 and line 3 are therefore not
+    separate semantic fields. Validate their joined text, not a guessed split.
+    """
     layout = report.get("test_only_visual_layout_disposition", {})
     if layout.get("existing_c11c_hook_content_overlap_observed") is not False:
         raise CompositorReviewError("Native Challenge HOOK still overlaps the shared editorial header")
@@ -603,8 +620,11 @@ def validate_header_recomposition(report: Mapping[str, Any], expected_native_hoo
         raise CompositorReviewError("C11C three-line header fit contract is not proven on real HOOK samples")
     diagnostics = layout.get("header_layout_diagnostics", {})
     normalized_hook = " ".join(expected_native_hook.upper().split())
+    normalized_editorial = " ".join(expected_editorial_text.upper().split())
     if not normalized_hook:
         raise CompositorReviewError("Pinned Challenge native hook text is empty")
+    if not normalized_editorial:
+        raise CompositorReviewError("Approved E1 B-variant title/subtitle text is empty")
     for sample in ("hook_first", "hook_last"):
         row = diagnostics.get(sample, {})
         if row.get("success") is not True or row.get("native_hook_migrated") is not True:
@@ -612,8 +632,16 @@ def validate_header_recomposition(report: Mapping[str, Any], expected_native_hoo
         lines = [str(value).strip() for value in row.get("lines", []) if str(value).strip()]
         if not lines or lines[0] != normalized_hook:
             raise CompositorReviewError(f"Native Challenge hook is not the first rendered header line for {sample}")
-        if len(lines) > 3 or int(row.get("line_count", 99)) != len(lines):
-            raise CompositorReviewError(f"Shared header exceeded three rendered lines for {sample}")
+        if len(lines) != 3 or int(row.get("line_count", 99)) != len(lines):
+            raise CompositorReviewError(f"Challenge HOOK header must render the native hook plus two C11-C-wrapped editorial lines for {sample}")
+        # C11-C's shared layer is allowed to choose the word-boundary split.
+        # The two displayed lines must reconstruct the exact ordered D text.
+        rendered_editorial = " ".join(" ".join(lines[1:]).split())
+        if rendered_editorial != normalized_editorial:
+            raise CompositorReviewError(
+                f"D title/subtitle text or order changed in C11-C header wrapping for {sample}: "
+                f"expected={normalized_editorial!r} observed={rendered_editorial!r}"
+            )
         max_width = float(row.get("max_width", 0.0))
         text_width = float(row.get("widest_line_width", 1.0e30))
         box_height = float(row.get("text_box_height", 0.0))

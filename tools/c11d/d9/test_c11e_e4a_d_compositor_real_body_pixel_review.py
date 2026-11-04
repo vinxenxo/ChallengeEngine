@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -30,7 +31,27 @@ class CompositorContractTests(unittest.TestCase):
         self.assertEqual(module.ROOT, Path(__file__).resolve().parents[3])
 
     def test_02_materializer_postimage_pin_is_sha256(self):
-        self.assertEqual(module.MATERIALIZER_SHA256, "a5297d5e7e4ed16ff37f5e190d1a32b1efe94bcfa83025c0060e1ece7eb7fd8f")
+        self.assertEqual(module.MATERIALIZER_SHA256, "01deb2419f88012c162a1ab56013cb4a724fda72a5de70f5434cf5dad1a1e753")
+
+    def test_56_frame_signature_format_placeholder_arity_matches_arguments(self):
+        line = next(
+            line for line in GDSCRIPT.splitlines()
+            if "parts.append(" in line and "frame.position.x" in line
+        )
+        match = re.search(r'parts\.append\("([^"]+)"\s*%\s*\[([^\]]+)\]\)', line)
+        self.assertIsNotNone(match, line)
+        format_string, argument_expression = match.groups()
+        placeholders = re.findall(r"%(?:\.\d+)?[A-Za-z]", format_string)
+        arguments = [part.strip() for part in argument_expression.split(",")]
+        self.assertEqual(len(placeholders), len(arguments), line)
+        self.assertEqual(
+            arguments,
+            [
+                "index", "frame.position.x", "frame.position.y", "frame.rotation",
+                "frame.scale.x", "frame.scale.y", "frame.opacity",
+                "float(frame.texture_index)", "int(frame.variant_id)",
+            ],
+        )
 
     def test_03_d_challenge_editorial_adapter_is_pinned(self):
         self.assertEqual(module.EDITORIAL_ADAPTER_SHA256, "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846")
@@ -274,7 +295,9 @@ class CompositorContractTests(unittest.TestCase):
         self.assertIn("UnifiedSocialFrame.tscn", GDSCRIPT)
         self.assertNotIn("_make_e4a_test_label", GDSCRIPT)
 
-    def test_51a_report_gate_accepts_only_two_fitted_native_hook_samples(self):
+    def test_51a_report_gate_accepts_c11c_word_wrapped_editorial_header(self):
+        expected_hook = "¡SOLO EL 1% APARCA SIN ROZAR!"
+        expected_editorial = "TITULO DE PRUEBA · SUBTITULO EDITORIAL"
         report = {"test_only_visual_layout_disposition": {
             "visual_placement_approved": False,
             "existing_c11c_hook_content_overlap_observed": False,
@@ -282,21 +305,34 @@ class CompositorContractTests(unittest.TestCase):
             "header_three_line_fit_contract": "PASS_FOR_RENDERED_B_VARIANT_HOOK_SAMPLES",
             "header_layout_diagnostics": {
                 sample: {"success": True, "native_hook_migrated": True,
-                         "lines": ["¡SOLO EL 1% APARCA SIN ROZAR!", "TITULO", "SUBTITULO"],
+                         # C11C chooses the split from the actual Inter font metrics.
+                         "lines": [expected_hook, "TITULO DE PRUEBA ·", "SUBTITULO EDITORIAL"],
                          "line_count": 3, "widest_line_width": 450.0, "max_width": 468.0,
                          "estimated_text_height": 72.0, "text_box_height": 120.0}
                 for sample in ("hook_first", "hook_last")
             }
         }}
-        module.validate_header_recomposition(report, "¡SOLO EL 1% APARCA SIN ROZAR!")
+        module.validate_header_recomposition(report, expected_hook, expected_editorial)
+        # A different valid word-boundary split is equally valid if the full
+        # ordered message is preserved; the validator must not prescribe a line split.
+        alternate = json_copy(report)
+        for sample in ("hook_first", "hook_last"):
+            alternate["test_only_visual_layout_disposition"]["header_layout_diagnostics"][sample]["lines"] = [
+                expected_hook, "TITULO", "DE PRUEBA · SUBTITULO EDITORIAL"
+            ]
+        module.validate_header_recomposition(alternate, expected_hook, expected_editorial)
         bad = json_copy(report)
         bad["test_only_visual_layout_disposition"]["header_layout_diagnostics"]["hook_last"]["lines"][0] = "DUPLICATE HOOK"
         with self.assertRaises(module.CompositorReviewError):
-            module.validate_header_recomposition(bad, "¡SOLO EL 1% APARCA SIN ROZAR!")
+            module.validate_header_recomposition(bad, expected_hook, expected_editorial)
+        bad = json_copy(report)
+        bad["test_only_visual_layout_disposition"]["header_layout_diagnostics"]["hook_last"]["lines"][1] = "SUBTITULO EDITORIAL"
+        with self.assertRaises(module.CompositorReviewError):
+            module.validate_header_recomposition(bad, expected_hook, expected_editorial)
         bad = json_copy(report)
         bad["test_only_visual_layout_disposition"]["existing_c11c_hook_content_overlap_observed"] = True
         with self.assertRaises(module.CompositorReviewError):
-            module.validate_header_recomposition(bad, "¡SOLO EL 1% APARCA SIN ROZAR!")
+            module.validate_header_recomposition(bad, expected_hook, expected_editorial)
 
     def test_52_request_scoped_hook_countdown_option_is_applied_without_mutating_c_model(self):
         adapter = (HERE / "c11e_challenge_editorial_presentation_adapter.gd").read_text(encoding="utf-8")
