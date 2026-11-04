@@ -1,0 +1,11 @@
+SCRIPT ERROR: Parse Error: Cannot find member "join" in base "PackedStringArray".
+   at: GDScript::reload (res://tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd:145)
+SCRIPT ERROR: Parse Error: Function "join()" not found in base PackedStringArray.
+   at: GDScript::reload (res://tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd:145)
+SCRIPT ERROR: Parse Error: Cannot infer the type of "header_line_2" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd:145)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd:0)
+ERROR: Failed to load script "res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+C11-D RENDERER CHALLENGE VISUAL PAYLOAD PREVIEW FAIL | D-owned Challenge editorial adapter source pin mismatch.

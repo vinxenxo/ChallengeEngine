@@ -3,8 +3,10 @@
 
 Reuses the accepted E4A.2 silent Challenge 004 test MP4 and its normalized
 REVIEW_720 derivative. FFmpeg extracts six unmodified background frames only.
-The existing D materializer's off-screen Godot SubViewport creates a transparent
-editorial layer and alpha-composites it over those frames. No C11-C render,
+The existing D materializer's off-screen Godot SubViewport creates the shared
+editorial layer and composites it over those frames. During HOOK, an opaque C11C
+header re-composes the native hook with optional D title/subtitle, avoiding a
+second text owner. No C11-C render,
 production renderer, D9.10 dispatch, FFmpeg drawtext, audio, or production media.
 """
 from __future__ import annotations
@@ -26,7 +28,9 @@ from typing import Any, Mapping
 
 ROOT = Path(__file__).resolve().parents[3]
 MATERIALIZER = Path("tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd")
-MATERIALIZER_SHA256 = "3d1c8288ffbea3ff328d785def5fabba250b042c0d2d1b1f94215b1c62cde29b"
+EDITORIAL_ADAPTER = Path("tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd")
+EDITORIAL_ADAPTER_SHA256 = "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846"
+MATERIALIZER_SHA256 = "a5297d5e7e4ed16ff37f5e190d1a32b1efe94bcfa83025c0060e1ece7eb7fd8f"
 PREVIOUS_RUNNER = Path("tools/c11d/d9/c11e_e4a_challenge_real_body_pixel_review.py")
 PREVIOUS_RUNNER_SHA256 = "5c0e8765bb29b58ddefc1b9593be188227e77725431c3dc959c1ce6866529a9b"
 PREVIOUS_TEST = Path("tools/c11d/d9/test_c11e_e4a_challenge_real_body_pixel_review.py")
@@ -34,13 +38,13 @@ PREVIOUS_TEST_SHA256 = "657f459ce11621a2dde133da5234ea27754c56b3acb5a10c8b37ff95
 E1_INTENT_HELPER = Path("tools/c11d/d9/c11e_e4a_challenge_pixel_review.py")
 E1_INTENT_HELPER_SHA256 = "939a12f369df9eaa0dbaf5b06b0635a0d4dc906e14fd7d5bdf9c12b3ec2b97a0"
 E1_SERVICE = Path("c11c-suite/c11c-producer/c11e_production_service.py")
-E1_SERVICE_SHA256 = "f0655d8d93df3b766b157d80a76a5bfc7b514d740815646f54c88ca788f602c0"
+E1_SERVICE_SHA256 = "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951"
 D99_RESOLVER = Path("tools/c11d/d9/universal_producer.py")
 D99_RESOLVER_SHA256 = "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
 C11C_RENDERER = Path("tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1")
 C11C_RENDERER_SHA256 = "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5"
 MAIN_SOURCE = Path("c11c-suite/c11c-producer/main.py")
-MAIN_SOURCE_SHA256 = "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3"
+MAIN_SOURCE_SHA256 = "9685c4346cf56d3134fbf296585efbd779e5695635a249f0b85bd2c3682dac4e"
 CHALLENGE_SOURCE = Path("challenges/CHALLENGE_004.json")
 CHALLENGE_SHA256 = "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
 APPROVAL_SOURCE = Path("definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json")
@@ -115,12 +119,20 @@ def import_previous_runner(root: Path):
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
+    # E4A.1 added a request-scoped E1 Challenge option; reuse the accepted
+    # E4A.2 authority validator while rebasing only its E1 code pins to the
+    # verified E4A.1 postimages. Historical fixture media/intents stay intact.
+    if hasattr(module, "E1_SERVICE_SHA256"):
+        module.E1_SERVICE_SHA256 = E1_SERVICE_SHA256
+    if hasattr(module, "MAIN_SOURCE_SHA256"):
+        module.MAIN_SOURCE_SHA256 = MAIN_SOURCE_SHA256
     return module
 
 
 def validate_source_pins(root: Path) -> dict[str, str]:
     pins = {
-        "d_owned_materializer_v3": (MATERIALIZER, MATERIALIZER_SHA256),
+        "d_owned_materializer_v5_shared_layer_field_matrix": (MATERIALIZER, MATERIALIZER_SHA256),
+        "d_owned_challenge_editorial_adapter": (EDITORIAL_ADAPTER, EDITORIAL_ADAPTER_SHA256),
         "e4a2_runner": (PREVIOUS_RUNNER, PREVIOUS_RUNNER_SHA256),
         "e4a2_test": (PREVIOUS_TEST, PREVIOUS_TEST_SHA256),
         "e1_intent_helper": (E1_INTENT_HELPER, E1_INTENT_HELPER_SHA256),
@@ -447,8 +459,12 @@ def run(root: Path, base_run_arg: str, ffmpeg_arg: str | None, ffprobe_arg: str 
         raise CompositorReviewError("D materializer payload/frame lineage is incomplete")
     if report.get("execution_boundary", {}).get("production_dispatch_invoked") is not False or report.get("execution_boundary", {}).get("production_media_created") is not False:
         raise CompositorReviewError("Test compositor crossed the production execution boundary")
-    if report.get("test_only_visual_layout_disposition", {}).get("visual_placement_approved") is not False:
+    layout_disposition = report.get("test_only_visual_layout_disposition", {})
+    if layout_disposition.get("visual_placement_approved") is not False:
         raise CompositorReviewError("Test-only placeholder visual placement was incorrectly approved")
+    challenge_source = load_json(root / CHALLENGE_SOURCE)
+    native_hook_text = str(challenge_source.get("content", {}).get("hook", "")).strip()
+    validate_header_recomposition(report, native_hook_text)
 
     artifact_rows = report.get("pixel_artifacts", [])
     if len(artifact_rows) != 18 or report.get("pixel_comparisons") is None or len(report["pixel_comparisons"]) != 12:
@@ -567,12 +583,45 @@ def run(root: Path, base_run_arg: str, ffmpeg_arg: str | None, ffprobe_arg: str 
     print("REAL_C11C_FRAMES_EXTRACTED=6/6; GODOT_COMPOSITED_PNG=18/18; PIXEL_COMPARISONS=12/12")
     print("BODY_PIXEL_IDENTITY=PASS_AT_6_REAL_DELIVERY_SAMPLES")
     print("D_FIELDS=title/subtitle=HEADER/HOOK; call_to_action=FOOTER/CTA; REGION_ONLY")
+    print("HOOK_EDITORIAL_OVERLAP=FALSE; NATIVE_HOOK_RECOMPOSED=PASS; C11C_HEADER_FIT=PASS")
     print("VISUAL_PLACEMENT=UNAPPROVED_D1_5_SAFE_AREA_TYPOGRAPHY_UNKNOWN")
     print("CHALLENGE_OVERLAY=BLOCKED_GEOMETRY_UNRESOLVED; LANGUAGE=METADATA_ONLY")
     print("PRODUCTION_RENDERER=false; PRODUCTION_DISPATCH=false; D4.8=BLOCKED; D9.10=PREPARE_ONLY; RELEASE_AUTHORITY=NONE")
     print(f"EVIDENCE_DIR={evidence_dir}")
     print(f"RECEIPT_SHA256={sha256_file(receipt_path)}")
     return 0
+
+
+def validate_header_recomposition(report: Mapping[str, Any], expected_native_hook: str) -> None:
+    """Fail closed unless both real HOOK samples prove one shared header owner."""
+    layout = report.get("test_only_visual_layout_disposition", {})
+    if layout.get("existing_c11c_hook_content_overlap_observed") is not False:
+        raise CompositorReviewError("Native Challenge HOOK still overlaps the shared editorial header")
+    if layout.get("native_challenge_hook_recomposed_into_shared_header") is not True:
+        raise CompositorReviewError("Native Challenge HOOK is not proven as the first shared-header line")
+    if layout.get("header_three_line_fit_contract") != "PASS_FOR_RENDERED_B_VARIANT_HOOK_SAMPLES":
+        raise CompositorReviewError("C11C three-line header fit contract is not proven on real HOOK samples")
+    diagnostics = layout.get("header_layout_diagnostics", {})
+    normalized_hook = " ".join(expected_native_hook.upper().split())
+    if not normalized_hook:
+        raise CompositorReviewError("Pinned Challenge native hook text is empty")
+    for sample in ("hook_first", "hook_last"):
+        row = diagnostics.get(sample, {})
+        if row.get("success") is not True or row.get("native_hook_migrated") is not True:
+            raise CompositorReviewError(f"Shared header fit/recomposition diagnostics failed for {sample}")
+        lines = [str(value).strip() for value in row.get("lines", []) if str(value).strip()]
+        if not lines or lines[0] != normalized_hook:
+            raise CompositorReviewError(f"Native Challenge hook is not the first rendered header line for {sample}")
+        if len(lines) > 3 or int(row.get("line_count", 99)) != len(lines):
+            raise CompositorReviewError(f"Shared header exceeded three rendered lines for {sample}")
+        max_width = float(row.get("max_width", 0.0))
+        text_width = float(row.get("widest_line_width", 1.0e30))
+        box_height = float(row.get("text_box_height", 0.0))
+        text_height = float(row.get("estimated_text_height", 1.0e30))
+        if max_width <= 0.0 or text_width > max_width:
+            raise CompositorReviewError(f"Shared header text exceeds established width for {sample}")
+        if box_height <= 0.0 or text_height > box_height:
+            raise CompositorReviewError(f"Shared header text exceeds established height for {sample}")
 
 
 def rgb_pixels_equal(a: Any, b: Any) -> bool:

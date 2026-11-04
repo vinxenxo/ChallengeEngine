@@ -7,11 +7,14 @@ extends SceneTree
 ## Neither path emits production renderer input, dispatches D9.10, or writes production media.
 const RuntimeBridge = preload("res://core/execution/ChallengeRuntimeBridge.gd")
 const PresentationBinder = preload("res://core/presentation/ChallengePresentationBinder.gd")
+const C11CVisualEditorialLayerClass = preload("res://core/presentation/C11CVisualEditorialLayer.gd")
+const ChallengeEditorialAdapter = preload("res://tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd")
 const ChallengePath := "res://challenges/CHALLENGE_004.json"
 const ManifestPath := "res://release/C11C_FREEZE_PACKAGE_MANIFEST.json"
 const ContractPath := "res://definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json"
 const FrozenManifestSha := "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 const ChallengeSha := "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+const ChallengeEditorialAdapterSha := "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846"
 const E4AApprovalPath := "res://definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json"
 const E4AApprovalSha := "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5"
 const D15LayoutPath := "res://docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md"
@@ -56,6 +59,10 @@ func _run() -> void:
         if bytes.is_empty() or _sha256_bytes(bytes) != str(SourcePins[rel_path]):
             _fail("Pinned C11-C source or physical asset hash mismatch: %s" % rel_path)
             return
+    var adapter_bytes: PackedByteArray = FileAccess.get_file_as_bytes("res://tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd")
+    if adapter_bytes.is_empty() or _sha256_bytes(adapter_bytes) != ChallengeEditorialAdapterSha:
+        _fail("D-owned Challenge editorial adapter source pin mismatch.")
+        return
 
     var source_value: Variant = JSON.parse_string(source_bytes.get_string_from_utf8())
     if not (source_value is Dictionary):
@@ -123,7 +130,7 @@ func _run() -> void:
             return
         var e4a_report: Dictionary = e4a_result.get("report", {})
         if str(e4a_report.get("schema", "")) == E4ADCompositorReportSchema:
-            print("C11E E4A D-OWNED GODOT REAL-BODY COMPOSITOR PASS | variants=3/3 | real_delivery_frames=6/6 | pixel_pngs=18/18 | comparisons=12/12 | gameplay_body_pixel_identity=PASS | visual_placement=UNAPPROVED | production_dispatch=false | production_media=false | D4.8=BLOCKED | D9.10=PREPARE_ONLY | release_authority=NONE")
+            print("C11E E4A D-OWNED GODOT REAL-BODY COMPOSITOR PASS | variants=3/3 | real_delivery_frames=6/6 | pixel_pngs=18/18 | comparisons=12/12 | gameplay_body_pixel_identity=PASS | hook_editorial_overlap=false | shared_header_fit=PASS | visual_placement=UNAPPROVED | production_dispatch=false | production_media=false | D4.8=BLOCKED | D9.10=PREPARE_ONLY | release_authority=NONE")
         else:
             print("C11E E4A CHALLENGE EDITORIAL PIXEL RENDER PASS | variants=3/3 | source_frames=420/420 | text_regions=HEADER+FOOTER | phase_windows=HOOK+CTA | challenge_overlay=BLOCKED_GEOMETRY_UNRESOLVED | language=METADATA_ONLY | fixture_body_pixels_unchanged=true | gameplay_body_pixel_identity=NOT_TESTED | production_dispatch=false | production_media=false | D4.8=BLOCKED | D9.10=PREPARE_ONLY | release_authority=NONE")
         print("C11E E4A CHALLENGE EDITORIAL PIXEL RENDER SUMMARY=" + JSON.stringify(_stable_value(e4a_report)))
@@ -301,6 +308,16 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
     if intent_a.get("editorial", {}).get("title") != "UNKNOWN" or intent_a.get("editorial", {}).get("subtitle") != "UNKNOWN" or intent_a.get("editorial", {}).get("call_to_action") != "UNKNOWN" or intent_a.get("editorial", {}).get("language") != "UNKNOWN" or intent_a.get("editorial", {}).get("player_name") != "UNKNOWN" or intent_a.get("editorial", {}).get("challenge_label") != "UNKNOWN":
         return {"success": false, "error": "Variant A must provide the canonical empty-value control for all six fields."}
 
+    var adapter_contract: Dictionary = _validate_shared_editorial_adapter_contract(intent_b, intent_a, timeline)
+    if not bool(adapter_contract.get("success", false)):
+        return {"success": false, "error": "Shared editorial adapter contract failed: %s" % str(adapter_contract.get("error", "unknown"))}
+    var challenge_source_value: Variant = JSON.parse_string(FileAccess.get_file_as_string(ChallengePath))
+    if not (challenge_source_value is Dictionary):
+        return {"success": false, "error": "Canonical Challenge source could not be re-read for its native hook content."}
+    var native_hook_text: String = str(challenge_source_value.get("content", {}).get("hook", "")).strip_edges()
+    if native_hook_text.is_empty():
+        return {"success": false, "error": "Canonical Challenge hook text is empty; cannot recompose HEADER."}
+
     var output_dir: String = str(config.get("output_dir", "" )).replace("\\", "/").simplify_path()
     var project_root: String = ProjectSettings.globalize_path("res://").replace("\\", "/").trim_suffix("/")
     var output_suffix: String = "artifacts/tests/c11e/e4a_d_compositor_pixel_review/" if real_background_mode else "artifacts/tests/c11e/e4a_pixel_review/"
@@ -312,9 +329,11 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
         return {"success": false, "error": "Cannot create E4A pixel evidence folder: %d" % mkdir_error}
 
     var composition_by_variant: Dictionary = {}
+    var intent_by_variant: Dictionary = {}
     for variant_id: String in ["A", "B", "C"]:
         var intent: Dictionary = variants[variant_id]
-        var composition_result: Dictionary = _build_e4a_editorial_composition(intent.get("editorial", {}), timeline, approval, payload_sha, frame_records_sha)
+        intent_by_variant[variant_id] = intent
+        var composition_result: Dictionary = _build_e4a_editorial_composition(intent.get("editorial", {}), timeline, approval, payload_sha, frame_records_sha, intent)
         if not bool(composition_result.get("success", false)):
             return {"success": false, "error": "Editorial composition %s: %s" % [variant_id, str(composition_result.get("error", "unknown"))]}
         var composed_payload: Dictionary = base_payload.duplicate(true)
@@ -395,17 +414,21 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
     var pixel_body_rect: Rect2 = Rect2(0, 192, 720, 896) if real_background_mode else body_rect
     var pixel_footer_rect: Rect2 = Rect2(0, 1088, 720, 192) if real_background_mode else footer_rect
     var image_paths: Dictionary = {"A": {}, "B": {}, "C": {}}
+    var header_layout_by_variant: Dictionary = {"A": {}, "B": {}, "C": {}}
     for variant_id: String in ["A", "B", "C"]:
         var composition: Dictionary = composition_by_variant[variant_id]
         for sample: Dictionary in samples:
             var label: String = str(sample["label"])
             var image_path: String = output_dir.path_join("%s_%s.png" % [variant_id, label])
             var background_path: String = str(backgrounds_by_label.get(label, {}).get("path", "")) if real_background_mode else ""
+            var show_hook_countdown: bool = bool(composition.get("presentation_options", {}).get("show_hook_countdown", true))
             print("E4A3_VIEWPORT_BEGIN=%s/%s" % [variant_id, label])
-            var render_result: Dictionary = await _render_e4a_pixel_surface(composition.get("fields", []), int(sample["source_frame"]), pixel_header_rect, pixel_body_rect, pixel_footer_rect, image_path, background_path)
+            var render_result: Dictionary = await _render_e4a_pixel_surface(composition.get("fields", []), int(sample["source_frame"]), int(timeline.get("total_frames", 0)), pixel_header_rect, pixel_body_rect, pixel_footer_rect, image_path, background_path, native_hook_text, show_hook_countdown)
             if not bool(render_result.get("success", false)):
                 return {"success": false, "error": "Pixel render %s/%s: %s" % [variant_id, label, str(render_result.get("error", "unknown"))]}
             image_paths[variant_id][label] = image_path
+            if bool(render_result.get("header_layout", {}).get("header_active", false)):
+                header_layout_by_variant[variant_id][label] = render_result.get("header_layout", {})
             print("E4A3_VIEWPORT_DONE=%s/%s" % [variant_id, label])
 
     var comparisons: Array[Dictionary] = []
@@ -443,6 +466,7 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
         {"path": "docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md", "sha256": D17MappingSha},
         {"path": "docs/history/c11d/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_PROPOSAL_20261103_V1.md", "sha256": E4AProposalSha},
         {"path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd", "sha256": _sha256_bytes(FileAccess.get_file_as_bytes("res://tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"))},
+        {"path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd", "sha256": ChallengeEditorialAdapterSha},
         {"path": "tools/c11d/d9/c11e_e4a_challenge_pixel_review.py", "sha256": _sha256_bytes(FileAccess.get_file_as_bytes("res://tools/c11d/d9/c11e_e4a_challenge_pixel_review.py"))}
     ]
     var report: Dictionary = {
@@ -463,8 +487,8 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
             "BODY": {"x": 0, "y": 192 if real_background_mode else 144, "width": 720 if real_background_mode else 540, "height": 896 if real_background_mode else 672},
             "FOOTER": {"x": 0, "y": 1088 if real_background_mode else 816, "width": 720 if real_background_mode else 540, "height": 192 if real_background_mode else 144}
         },
-        "layout_fixture": "TEST_ONLY_SCALED_STACKED_LABELS_IN_D1_5_REGION_BOUNDS_NOT_PRODUCTION_TYPOGRAPHY_OR_SAFE_AREA",
-        "rendered_scene": "D_OWNED_GODOT_SUBVIEWPORT_ALPHA_LAYER_OVER_REAL_C11C_FRAME_TEST_ONLY" if real_background_mode else "TEST_FIXTURE_ONLY_NOT_FULL_CHALLENGE_GAMEPLAY_SCENE",
+        "layout_fixture": "C11C_SHARED_EDITORIAL_LAYER_LOGICAL_540X960_SCALED_4_3; OPAQUE_HEADER_RECOMPOSES_NATIVE_CHALLENGE_HOOK_PLUS_OPTIONAL_TITLE_SUBTITLE; FOOTER_BACKDROP_REPLACES_NATIVE_CTA_WHEN_D_CTA_ACTIVE; VISUAL_PLACEMENT_UNAPPROVED",
+        "rendered_scene": "C11E_D_ADAPTER_TO_C11C_VISUAL_EDITORIAL_LAYER_OVER_REAL_C11C_FRAME_TEST_ONLY" if real_background_mode else "C11E_D_ADAPTER_TO_C11C_VISUAL_EDITORIAL_LAYER_FIXTURE_ONLY",
         "base_frame_inputs": backgrounds_by_label if real_background_mode else {},
         "variants": {
             "A": {"request_id": intent_a.get("request", {}).get("request_id", ""), "request_hash": intent_a.get("identity", {}).get("request_hash", ""), "editorial_hash": intent_a.get("identity", {}).get("editorial_hash", ""), "composition_sha256": _sha256_text(JSON.stringify(_stable_value(composition_by_variant["A"])))} ,
@@ -472,6 +496,8 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
             "C": {"request_id": intent_c.get("request", {}).get("request_id", ""), "request_hash": intent_c.get("identity", {}).get("request_hash", ""), "editorial_hash": intent_c.get("identity", {}).get("editorial_hash", ""), "composition_sha256": _sha256_text(JSON.stringify(_stable_value(composition_by_variant["C"])))}
         },
         "field_dispositions": composition_by_variant["B"].get("fields", []),
+        "shared_visual_consumer": {"adapter": "C11EChallengeEditorialPresentationAdapter", "layer": "C11CVisualEditorialLayer.apply_render_model", "header_native_hook_recomposed_once": true, "header_native_hook_owner": "D_C11C_SHARED_HEADER_WHEN_EDITORIAL_ACTIVE", "footer_native_cta_owner": "D_C11C_SHARED_FOOTER_WHEN_EDITORIAL_CTA_PRESENT", "hook_countdown_option_off": "MODEL_ONLY_NOT_ERASURE_OF_BAKED_C11C_BASE_FRAME_PIXELS", "option_contract_probe": adapter_contract},
+        "header_layout_diagnostics": header_layout_by_variant,
         "pixel_comparisons": comparisons,
         "pixel_artifacts": [],
         "invariants": {
@@ -521,7 +547,10 @@ func _run_e4a_pixel_test(base_payload: Dictionary, timeline: Dictionary, payload
             "d_owned_godot_layer_alpha_composited_over_real_c11c_gameplay": true,
             "visual_placement_approved": false,
             "d1_5_safe_area_and_generic_typography": "UNKNOWN",
-            "existing_c11c_hook_content_overlap_observed": true,
+            "existing_c11c_hook_content_overlap_observed": false,
+            "native_challenge_hook_recomposed_into_shared_header": true,
+            "header_three_line_fit_contract": "PASS_FOR_RENDERED_B_VARIANT_HOOK_SAMPLES",
+            "header_layout_diagnostics": header_layout_by_variant.get("B", {}),
             "production_compositor_layout_acceptance": "NOT_GRANTED"
         }
         report["execution_boundary"] = {
@@ -567,6 +596,10 @@ func _validate_e4a_intent(intent: Dictionary, variant_id: String) -> bool:
         if str(consumption[field_name].get("consumer_status", "")) != "NOT_CONSUMED_E1": return false
     var boundary: Dictionary = intent.get("execution_boundary", {})
     if boundary.get("dispatch_authorized") != false or boundary.get("renderer_input_emitted") != false or boundary.get("renderer_dispatch_invoked") != false or boundary.get("renderer_activation") != false or boundary.get("production_execution") != false or boundary.get("media_created") != false or boundary.get("release_authority") != "NONE" or boundary.get("d4_8") != "BLOCKED": return false
+    var presentation_options: Variant = request.get("presentation_options", null)
+    if request.has("presentation_options"):
+        if not (presentation_options is Dictionary) or presentation_options.size() != 1 or not presentation_options.has("show_hook_countdown") or typeof(presentation_options.get("show_hook_countdown")) != TYPE_BOOL:
+            return false
     var editorial: Dictionary = intent.get("editorial", {})
     var expected_fields := ["title", "subtitle", "call_to_action", "language", "player_name", "challenge_label"]
     var actual_fields: Array = editorial.keys()
@@ -578,7 +611,122 @@ func _validate_e4a_intent(intent: Dictionary, variant_id: String) -> bool:
         if str(identity.get(key, "")).length() != 64: return false
     return true
 
-func _build_e4a_editorial_composition(editorial: Dictionary, timeline: Dictionary, approval: Dictionary, payload_sha: String, frame_records_sha: String) -> Dictionary:
+func _validate_shared_editorial_adapter_contract(intent_on: Dictionary, empty_intent: Dictionary, timeline: Dictionary) -> Dictionary:
+    var hook_content := {"hook": "NATIVE CHALLENGE HOOK", "ui_fps": 60, "ui_state_frame": 0, "absolute_frame": 0, "winning_frame": -1, "timeline": null}
+    var native_hook_model: Dictionary = PresentationBinder.build_frame_render_model("HOOK", hook_content, null)
+    var on_result: Dictionary = ChallengeEditorialAdapter.adapt_native_challenge_render_model(native_hook_model, intent_on)
+    if not bool(on_result.get("success", false)):
+        return {"success": false, "error": "Default/ON Challenge option was rejected."}
+    if on_result.get("render_model", {}).get("show_hook") != true or on_result.get("render_model", {}).get("countdown_visible") != true:
+        return {"success": false, "error": "Default/ON must preserve native C hook and countdown."}
+    var off_intent := intent_on.duplicate(true)
+    var off_request: Dictionary = off_intent.get("request", {}).duplicate(true)
+    off_request["presentation_options"] = {"show_hook_countdown": false}
+    off_intent["request"] = off_request
+    var off_result: Dictionary = ChallengeEditorialAdapter.adapt_native_challenge_render_model(native_hook_model, off_intent)
+    if not bool(off_result.get("success", false)):
+        return {"success": false, "error": "Explicit OFF Challenge option was rejected."}
+    var off_model: Dictionary = off_result.get("render_model", {})
+    if off_model.get("show_hook") != false or off_model.get("countdown_visible") != false or off_model.get("countdown_value") != "":
+        return {"success": false, "error": "Explicit OFF must suppress native hook/countdown model visibility."}
+    if native_hook_model.get("show_hook") != true or native_hook_model.get("countdown_visible") != true:
+        return {"success": false, "error": "Adapter mutated the C binder's input render model."}
+    var legacy_result: Dictionary = ChallengeEditorialAdapter.resolve_hook_countdown_option(empty_intent)
+    if not bool(legacy_result.get("success", false)) or legacy_result.get("show_hook_countdown") != true:
+        return {"success": false, "error": "Legacy E1 Challenge intent must default ON."}
+
+    var native_cta_model: Dictionary = PresentationBinder.build_frame_render_model("CTA", hook_content, null)
+    var cta_owner_result: Dictionary = ChallengeEditorialAdapter.adapt_native_challenge_render_model(native_cta_model, intent_on, {"footer_active": true})
+    if not bool(cta_owner_result.get("success", false)) or cta_owner_result.get("render_model", {}).get("cta_visible") != false or str(cta_owner_result.get("native_cta_owner", "")) != "D_C11C_SHARED_FOOTER":
+        return {"success": false, "error": "D editorial CTA must become the single footer owner only when D CTA is active."}
+    var native_cta_unchanged: Dictionary = ChallengeEditorialAdapter.adapt_native_challenge_render_model(native_cta_model, intent_on)
+    if not bool(native_cta_unchanged.get("success", false)) or native_cta_unchanged.get("render_model", {}).get("cta_visible") != true or native_cta_model.get("cta_visible") != true:
+        return {"success": false, "error": "Native Challenge CTA must remain owner when D CTA is empty."}
+
+    var loop_intent := intent_on.duplicate(true)
+    var loop_request: Dictionary = loop_intent.get("request", {}).duplicate(true)
+    loop_request["content_type"] = "visual_loops"
+    loop_intent["request"] = loop_request
+    if bool(ChallengeEditorialAdapter.resolve_hook_countdown_option(loop_intent).get("success", true)):
+        return {"success": false, "error": "Challenge-only option leaked into Loop."}
+
+    var hook_segment: Dictionary = _phase_segment(timeline, "HOOK")
+    var cta_segment: Dictionary = _phase_segment(timeline, "CTA")
+    if hook_segment.is_empty() or cta_segment.is_empty():
+        return {"success": false, "error": "Cannot resolve source phase windows for editorial arrangement probes."}
+    var hook_frame: int = int(hook_segment.get("start_frame", -1))
+    var cta_frame: int = int(cta_segment.get("start_frame", -1))
+    var total_frames: int = int(timeline.get("total_frames", 0))
+
+    var empty_rows: Array[Dictionary] = _build_adapter_probe_fields("", "", "", timeline)
+    var empty_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(empty_rows, hook_frame, total_frames)
+    if not bool(empty_probe.get("success", false)) or bool(empty_probe.get("header_active", true)) or bool(empty_probe.get("footer_active", true)):
+        return {"success": false, "error": "All-empty editorial arrangement must produce no visible regions."}
+
+    var title_rows: Array[Dictionary] = _build_adapter_probe_fields("TITLE ONLY", "", "", timeline)
+    var title_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(title_rows, hook_frame, total_frames, 314159, "NATIVE CHALLENGE HOOK", true)
+    if not bool(title_probe.get("success", false)) or not bool(title_probe.get("header_active", false)) or bool(title_probe.get("footer_active", true)):
+        return {"success": false, "error": "Title-only editorial arrangement did not isolate HEADER."}
+    if not bool(title_probe.get("header_native_hook_migrated", false)) or bool(title_probe.get("native_hook_overlap", true)):
+        return {"success": false, "error": "Title-only arrangement did not recompose native HOOK exactly once."}
+    if str(title_probe.get("render_model", {}).get("editorial", {}).get("header", {}).get("line_1", "")) != "NATIVE CHALLENGE HOOK":
+        return {"success": false, "error": "Native Challenge hook is not the primary C11C shared-header line."}
+
+    var subtitle_rows: Array[Dictionary] = _build_adapter_probe_fields("", "SUBTITLE ONLY", "", timeline)
+    var subtitle_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(subtitle_rows, hook_frame, total_frames, 314159, "NATIVE CHALLENGE HOOK", true)
+    if not bool(subtitle_probe.get("success", false)) or not bool(subtitle_probe.get("header_active", false)) or bool(subtitle_probe.get("footer_active", true)):
+        return {"success": false, "error": "Subtitle-only editorial arrangement did not isolate HEADER."}
+
+    var combined_rows: Array[Dictionary] = _build_adapter_probe_fields("TITLE + HOOK", "SUBTITLE", "", timeline)
+    var combined_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(combined_rows, hook_frame, total_frames, 314159, "NATIVE CHALLENGE HOOK", true)
+    if not bool(combined_probe.get("success", false)) or not bool(combined_probe.get("header_native_hook_migrated", false)):
+        return {"success": false, "error": "Combined title/subtitle did not migrate the native hook into the shared header."}
+    var combined_header: Dictionary = combined_probe.get("render_model", {}).get("editorial", {}).get("header", {})
+    if str(combined_header.get("line_1", "")) != "NATIVE CHALLENGE HOOK" or str(combined_header.get("line_2", "")) != "TITLE + HOOK · SUBTITLE":
+        return {"success": false, "error": "Three-line header content order is not hook/title/subtitle."}
+    var combined_adapted: Dictionary = ChallengeEditorialAdapter.adapt_native_challenge_render_model(native_hook_model, intent_on, combined_probe)
+    if not bool(combined_adapted.get("success", false)) or combined_adapted.get("render_model", {}).get("show_hook") != false or combined_adapted.get("render_model", {}).get("countdown_visible") != true:
+        return {"success": false, "error": "Hook must be migrated once while the body countdown remains visible when ON."}
+    var off_shared_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(combined_rows, hook_frame, total_frames, 314159, "NATIVE CHALLENGE HOOK", false)
+    if not bool(off_shared_probe.get("success", false)) or bool(off_shared_probe.get("header_native_hook_migrated", true)):
+        return {"success": false, "error": "Explicit OFF must omit native hook from the shared header."}
+    var off_shared_header: Dictionary = off_shared_probe.get("render_model", {}).get("editorial", {}).get("header", {})
+    if str(off_shared_header.get("line_1", "")) != "TITLE + HOOK" or str(off_shared_header.get("line_2", "")) != "SUBTITLE":
+        return {"success": false, "error": "Explicit OFF must retain editorial title/subtitle without native hook."}
+
+    var cta_rows: Array[Dictionary] = _build_adapter_probe_fields("", "", "CTA ONLY", timeline)
+    var cta_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(cta_rows, cta_frame, total_frames)
+    if not bool(cta_probe.get("success", false)) or bool(cta_probe.get("header_active", true)) or not bool(cta_probe.get("footer_active", false)):
+        return {"success": false, "error": "CTA-only editorial arrangement did not isolate FOOTER."}
+
+    var blocked_rows: Array[Dictionary] = _build_adapter_probe_fields("", "", "", timeline)
+    for row_index in range(blocked_rows.size()):
+        if str(blocked_rows[row_index].get("field", "")) == "player_name":
+            blocked_rows[row_index]["disposition"] = "READY_FOR_ISOLATED_TEST_PIXEL_DRAW"
+            blocked_rows[row_index]["effective_value"] = "BLOCKED PLAYER"
+            blocked_rows[row_index]["source_frame_ranges"] = [{"start_frame": hook_frame, "end_frame": int(hook_segment.get("end_frame", 0))}]
+    var blocked_probe: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(blocked_rows, hook_frame, total_frames)
+    if bool(blocked_probe.get("success", true)):
+        return {"success": false, "error": "CHALLENGE_OVERLAY player_name escaped its unresolved geometry block."}
+
+    return {"success": true, "cases": {"challenge_default_on": true, "challenge_explicit_off": true, "legacy_intent_default_on": true, "loop_rejected": true, "c_render_model_immutable": true, "single_cta_owner_when_populated": true, "native_cta_owner_when_d_empty": true, "empty_fields_omitted": true, "title_only_header": true, "subtitle_only_header": true, "hook_title_subtitle_single_shared_header": true, "hook_countdown_on_preserves_countdown_only": true, "hook_countdown_off_omits_hook_from_shared_header": true, "cta_only_footer": true, "challenge_overlay_blocked": true}}
+
+func _build_adapter_probe_fields(title_value: String, subtitle_value: String, cta_value: String, timeline: Dictionary) -> Array[Dictionary]:
+    var hook_segment: Dictionary = _phase_segment(timeline, "HOOK")
+    var cta_segment: Dictionary = _phase_segment(timeline, "CTA")
+    var rows: Array[Dictionary] = []
+    var title_disposition: String = "OMITTED_EMPTY" if title_value.strip_edges().is_empty() else "READY_FOR_ISOLATED_TEST_PIXEL_DRAW"
+    var subtitle_disposition: String = "OMITTED_EMPTY" if subtitle_value.strip_edges().is_empty() else "READY_FOR_ISOLATED_TEST_PIXEL_DRAW"
+    var cta_disposition: String = "OMITTED_EMPTY" if cta_value.strip_edges().is_empty() else "READY_FOR_ISOLATED_TEST_PIXEL_DRAW"
+    rows.append({"field": "title", "region": "HEADER", "disposition": title_disposition, "effective_value": title_value, "source_frame_ranges": [{"start_frame": int(hook_segment.get("start_frame", 0)), "end_frame": int(hook_segment.get("end_frame", 0))}]})
+    rows.append({"field": "subtitle", "region": "HEADER", "disposition": subtitle_disposition, "effective_value": subtitle_value, "source_frame_ranges": [{"start_frame": int(hook_segment.get("start_frame", 0)), "end_frame": int(hook_segment.get("end_frame", 0))}]})
+    rows.append({"field": "player_name", "region": "CHALLENGE_OVERLAY", "disposition": "BLOCKED_GEOMETRY_UNRESOLVED", "effective_value": "", "source_frame_ranges": []})
+    rows.append({"field": "challenge_label", "region": "CHALLENGE_OVERLAY", "disposition": "BLOCKED_GEOMETRY_UNRESOLVED", "effective_value": "", "source_frame_ranges": []})
+    rows.append({"field": "call_to_action", "region": "FOOTER", "disposition": cta_disposition, "effective_value": cta_value, "source_frame_ranges": [{"start_frame": int(cta_segment.get("start_frame", 0)), "end_frame": int(cta_segment.get("end_frame", 0))}]})
+    rows.append({"field": "language", "region": "METADATA", "disposition": "METADATA_ONLY", "effective_value": "es", "source_frame_ranges": []})
+    return rows
+
+func _build_e4a_editorial_composition(editorial: Dictionary, timeline: Dictionary, approval: Dictionary, payload_sha: String, frame_records_sha: String, intent: Dictionary) -> Dictionary:
     var expected_fields := ["title", "subtitle", "call_to_action", "language", "player_name", "challenge_label"]
     var actual_fields: Array = editorial.keys()
     actual_fields.sort()
@@ -639,6 +787,9 @@ func _build_e4a_editorial_composition(editorial: Dictionary, timeline: Dictionar
         })
     if seen.size() != 6:
         return {"success": false, "error": "Approved policy does not cover all six Challenge fields."}
+    var option_result: Dictionary = ChallengeEditorialAdapter.resolve_hook_countdown_option(intent)
+    if not bool(option_result.get("success", false)):
+        return {"success": false, "error": str(option_result.get("error", "E1 Challenge visibility option failed."))}
     var composition: Dictionary = {
         "schema": "C11E-E4A-CHALLENGE-EDITORIAL-VISUAL-COMPOSITION-V1",
         "status": "IN_MEMORY_D_ONLY_COMPOSITION_FOR_ISOLATED_PIXEL_TEST",
@@ -649,6 +800,8 @@ func _build_e4a_editorial_composition(editorial: Dictionary, timeline: Dictionar
         "source_fps": int(timeline.get("fps", 0)),
         "source_total_frames": int(timeline.get("total_frames", 0)),
         "fields": field_rows,
+        "presentation_options": {"show_hook_countdown": bool(option_result.get("show_hook_countdown", true)), "source": str(option_result.get("source", ""))},
+        "native_content_policy": "C11C_HOOK_COUNTDOWN_RETAINED_WHEN_ON; OFF_APPLIES_TO_LIVE_RENDER_MODEL_ONLY_NOT_BAKED_BASE_FRAME_PIXELS",
         "policy_sha256": E4AApprovalSha,
         "layout_contract_sha256": D15LayoutSha,
         "delivery_resampling": "NOT_APPLIED",
@@ -675,9 +828,13 @@ func _phase_segment(timeline: Dictionary, phase_name: String) -> Dictionary:
     if start_frame < 0 or end_frame <= start_frame or end_frame > int(timeline.get("total_frames", 0)): return {}
     return found
 
-func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Rect2, body_rect: Rect2, footer_rect: Rect2, output_path: String, base_background_path: String = "") -> Dictionary:
+func _render_e4a_pixel_surface(fields: Array, source_frame: int, source_frame_count: int, header_rect: Rect2, body_rect: Rect2, footer_rect: Rect2, output_path: String, base_background_path: String = "", native_hook_text: String = "", show_hook_countdown: bool = true) -> Dictionary:
     var real_background_mode: bool = not base_background_path.is_empty()
     var target_size: Vector2i = Vector2i(720, 1280) if real_background_mode else Vector2i(540, 960)
+    var shared_model_result: Dictionary = ChallengeEditorialAdapter.build_shared_editorial_model(fields, source_frame, source_frame_count, 314159, native_hook_text, show_hook_countdown)
+    if not bool(shared_model_result.get("success", false)):
+        return {"success": false, "error": "D editorial adapter rejected composition: %s" % str(shared_model_result.get("error", "unknown"))}
+
     var viewport := SubViewport.new()
     viewport.size = target_size
     viewport.disable_3d = true
@@ -713,47 +870,38 @@ func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Re
         footer_background.color = Color(0.10, 0.13, 0.17, 1.0)
         canvas.add_child(footer_background)
 
-    var header_fields: Array[Dictionary] = []
-    var footer_fields: Array[Dictionary] = []
-    for field_value: Variant in fields:
-        if not (field_value is Dictionary): continue
-        var field: Dictionary = field_value
-        if str(field.get("disposition", "")) != "READY_FOR_ISOLATED_TEST_PIXEL_DRAW": continue
-        var visible: bool = false
-        var ranges: Variant = field.get("source_frame_ranges", [])
-        if ranges is Array:
-            for range_value: Variant in ranges:
-                if range_value is Dictionary and source_frame >= int(range_value.get("start_frame", -1)) and source_frame < int(range_value.get("end_frame", -1)):
-                    visible = true
-                    break
-        if not visible: continue
-        if str(field.get("region", "")) == "HEADER": header_fields.append(field)
-        elif str(field.get("region", "")) == "FOOTER": footer_fields.append(field)
-
-    if not header_fields.is_empty():
-        var header_box := VBoxContainer.new()
-        header_box.position = Vector2.ZERO if real_background_mode else header_rect.position
-        header_box.size = Vector2(720, 192) if real_background_mode else header_rect.size
-        header_box.clip_contents = true
-        header_box.add_theme_constant_override("separation", 0)
-        canvas.add_child(header_box)
-        for field: Dictionary in header_fields:
-            var label := _make_e4a_test_label(str(field.get("effective_value", "")), 29 if real_background_mode else 22)
-            label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-            label.size_flags_vertical = Control.SIZE_EXPAND_FILL
-            header_box.add_child(label)
-    if not footer_fields.is_empty():
-        var footer_text := PackedStringArray()
-        for field: Dictionary in footer_fields: footer_text.append(str(field.get("effective_value", "")))
-        var footer_label := _make_e4a_test_label("\n".join(footer_text), 28 if real_background_mode else 21)
-        footer_label.position = Vector2(0, 1088) if real_background_mode else footer_rect.position
-        footer_label.size = Vector2(720, 192) if real_background_mode else footer_rect.size
-        canvas.add_child(footer_label)
-
-    print("E4A3_VIEWPORT_WAIT_PROCESS_FRAME")
+    var frame_scene := load("res://core/presentation/UnifiedSocialFrame.tscn") as PackedScene
+    if frame_scene == null:
+        viewport.queue_free()
+        return {"success": false, "error": "Cannot load the canonical UnifiedSocialFrame scene."}
+    var frame := frame_scene.instantiate() as UnifiedSocialFrame
+    if frame == null:
+        viewport.queue_free()
+        return {"success": false, "error": "UnifiedSocialFrame scene did not instantiate."}
+    frame.position = Vector2.ZERO
+    frame.scale = Vector2(4.0 / 3.0, 4.0 / 3.0) if real_background_mode else Vector2.ONE
+    canvas.add_child(frame)
+    print("E4A_SHARED_LAYER_WAIT_FRAME_READY")
     await process_frame
+
+    var shared_layer: RefCounted = C11CVisualEditorialLayerClass.new()
+    var layer_result: Dictionary = ChallengeEditorialAdapter.apply_to_shared_layer(frame, shared_layer, shared_model_result)
+    if not bool(layer_result.get("success", false)):
+        viewport.queue_free()
+        await process_frame
+        return {"success": false, "error": str(layer_result.get("error", "C11C shared layer failed."))}
+    var header_layout: Dictionary = ChallengeEditorialAdapter.get_header_layout_diagnostics(frame, shared_model_result)
+    if not bool(header_layout.get("success", false)):
+        viewport.queue_free()
+        await process_frame
+        return {"success": false, "error": str(header_layout.get("error", "C11C shared header did not satisfy its fit contract."))}
+
+    print("E4A_SHARED_LAYER_WAIT_PROCESS_FRAME")
+    await process_frame
+    print("E4A_SHARED_LAYER_WAIT_FRAME_POST_DRAW")
     print("E4A3_VIEWPORT_WAIT_FRAME_POST_DRAW")
     await RenderingServer.frame_post_draw
+    print("E4A_SHARED_LAYER_FRAME_POST_DRAW_OK")
     print("E4A3_VIEWPORT_FRAME_POST_DRAW_OK")
     var texture: Texture2D = viewport.get_texture()
     if texture == null:
@@ -764,7 +912,7 @@ func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Re
     if image == null or image.is_empty() or image.get_width() != target_size.x or image.get_height() != target_size.y:
         viewport.queue_free()
         await process_frame
-        return {"success": false, "error": "Offscreen SubViewport image is empty or has the wrong dimensions."}
+        return {"success": false, "error": "C11C shared-layer image is empty or has the wrong dimensions."}
 
     var final_image: Image = image
     if real_background_mode:
@@ -785,21 +933,8 @@ func _render_e4a_pixel_surface(fields: Array, source_frame: int, header_rect: Re
     viewport.queue_free()
     await process_frame
     if save_error != OK:
-        return {"success": false, "error": "Cannot save test PNG: %s (error %d)" % [output_path, save_error]}
-    return {"success": true, "width": target_size.x, "height": target_size.y, "alpha_composited_over_real_background": real_background_mode}
-
-func _make_e4a_test_label(text_value: String, font_size: int) -> Label:
-    var label := Label.new()
-    label.text = text_value
-    label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-    label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    label.add_theme_font_override("font", ThemeDB.fallback_font)
-    label.add_theme_font_size_override("font_size", font_size)
-    label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
-    label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 1.0))
-    label.add_theme_constant_override("outline_size", 3)
-    return label
+        return {"success": false, "error": "Cannot save shared-layer test PNG: %s (error %d)" % [output_path, save_error]}
+    return {"success": true, "width": target_size.x, "height": target_size.y, "shared_consumer": "C11CVisualEditorialLayer", "d_adapter_schema": str(shared_model_result.get("schema", "")), "alpha_composited_over_real_background": real_background_mode, "native_cta_owner": str(shared_model_result.get("native_cta_owner", "")), "header_layout": header_layout, "visual_placement": "UNAPPROVED_TEST_ONLY"}
 
 func _compare_e4a_images(path_a: String, path_b: String, allowed_rect: Rect2) -> Dictionary:
     var image_a := Image.new()
