@@ -1,0 +1,724 @@
+{
+  "schema": "C11E-E4A5B-HISTORICAL-88-RECONCILIATION-V6",
+  "base_handoff_zip_sha256": "d0a9e99544936890d7dbca3f321f025345914e21efe6b482317f79f141254051",
+  "base_inventory_sha256": "f5126d4dc36fad939ea1be7fa9ea8e6998722ef971be64016bfc519f6f24f85d",
+  "counts": {
+    "exact": 83,
+    "authorized_postimages": 5,
+    "unrecognized": 0
+  },
+  "members": [
+    {
+      "path": "AGENTS.md",
+      "base_bytes": 2633,
+      "base_sha256": "5019f62717c0ed30e091ca67d378e72bf59d4fd4adfc86360001f660c36ca46d",
+      "snapshot_bytes": 2633,
+      "snapshot_sha256": "5019f62717c0ed30e091ca67d378e72bf59d4fd4adfc86360001f660c36ca46d",
+      "classification": "EXACT"
+    },
+    {
+      "path": ".continue/rules/CONTINUE.md",
+      "base_bytes": 2045,
+      "base_sha256": "cea0902226a47349ba2e8511acc0f4190c94cc97720405485f7f3cc70af95519",
+      "snapshot_bytes": 2045,
+      "snapshot_sha256": "cea0902226a47349ba2e8511acc0f4190c94cc97720405485f7f3cc70af95519",
+      "classification": "EXACT"
+    },
+    {
+      "path": "project.godot",
+      "base_bytes": 868,
+      "base_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+      "snapshot_bytes": 868,
+      "snapshot_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+      "classification": "EXACT"
+    },
+    {
+      "path": "Main.tscn",
+      "base_bytes": 1086,
+      "base_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+      "snapshot_bytes": 1086,
+      "snapshot_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "base_bytes": 25891,
+      "base_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+      "snapshot_bytes": 25891,
+      "snapshot_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/execution/ChallengeExecutionPipeline.gd",
+      "base_bytes": 5536,
+      "base_sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0",
+      "snapshot_bytes": 5536,
+      "snapshot_sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/execution/ChallengeRuntimeContext.gd",
+      "base_bytes": 489,
+      "base_sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0",
+      "snapshot_bytes": 489,
+      "snapshot_sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "base_bytes": 3721,
+      "base_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "snapshot_bytes": 3721,
+      "snapshot_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "base_bytes": 6954,
+      "base_sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+      "snapshot_bytes": 6954,
+      "snapshot_sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/PresentationUI.gd",
+      "base_bytes": 8981,
+      "base_sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+      "snapshot_bytes": 8981,
+      "snapshot_sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "base_bytes": 8837,
+      "base_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "snapshot_bytes": 8837,
+      "snapshot_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/PresentationBindingResult.gd",
+      "base_bytes": 438,
+      "base_sha256": "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff",
+      "snapshot_bytes": 438,
+      "snapshot_sha256": "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/UnifiedSocialFrame.gd",
+      "base_bytes": 2087,
+      "base_sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+      "snapshot_bytes": 2087,
+      "snapshot_sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/UnifiedSocialFrame.tscn",
+      "base_bytes": 1471,
+      "base_sha256": "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b",
+      "snapshot_bytes": 1471,
+      "snapshot_sha256": "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/C11CVisualEditorialLayer.gd",
+      "base_bytes": 19047,
+      "base_sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+      "snapshot_bytes": 19047,
+      "snapshot_sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/C11CVisualTypography.gd",
+      "base_bytes": 2211,
+      "base_sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+      "snapshot_bytes": 2211,
+      "snapshot_sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/SocialUIBinder.gd",
+      "base_bytes": 1742,
+      "base_sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+      "snapshot_bytes": 1742,
+      "snapshot_sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/CountdownPresentationLogic.gd",
+      "base_bytes": 1219,
+      "base_sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+      "snapshot_bytes": 1219,
+      "snapshot_sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/PresentationBinderRegistry.gd",
+      "base_bytes": 2480,
+      "base_sha256": "bb12400cb748821b191e09db19b85105708d47a50db66c84b5f95fe6ff98ee66",
+      "snapshot_bytes": 2480,
+      "snapshot_sha256": "bb12400cb748821b191e09db19b85105708d47a50db66c84b5f95fe6ff98ee66",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/VisualLoopPresentationBinder.gd",
+      "base_bytes": 1895,
+      "base_sha256": "96abc0fe4361f88ba9b388a7bce18541a65c9b7334549ebb7c707e1cb76c513b",
+      "snapshot_bytes": 1895,
+      "snapshot_sha256": "96abc0fe4361f88ba9b388a7bce18541a65c9b7334549ebb7c707e1cb76c513b",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/VisualDrillPresentationBinder.gd",
+      "base_bytes": 11830,
+      "base_sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+      "snapshot_bytes": 11830,
+      "snapshot_sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/rendering/VisualContentPlayer.gd",
+      "base_bytes": 13876,
+      "base_sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+      "snapshot_bytes": 13876,
+      "snapshot_sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+      "classification": "EXACT"
+    },
+    {
+      "path": "core/presentation/rendering/VisualContentPlayer.tscn",
+      "base_bytes": 402,
+      "base_sha256": "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27",
+      "snapshot_bytes": 402,
+      "snapshot_sha256": "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27",
+      "classification": "EXACT"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "base_bytes": 3158,
+      "base_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "snapshot_bytes": 3158,
+      "snapshot_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "classification": "EXACT"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+      "base_bytes": 4200,
+      "base_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "snapshot_bytes": 4200,
+      "snapshot_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "classification": "EXACT"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "base_bytes": 12692,
+      "base_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+      "snapshot_bytes": 12692,
+      "snapshot_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+      "classification": "EXACT"
+    },
+    {
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "base_bytes": 1943,
+      "base_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+      "snapshot_bytes": 1943,
+      "snapshot_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+      "classification": "EXACT"
+    },
+    {
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "base_bytes": 3313,
+      "base_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+      "snapshot_bytes": 3313,
+      "snapshot_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+      "classification": "EXACT"
+    },
+    {
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "base_bytes": 2818,
+      "base_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+      "snapshot_bytes": 2818,
+      "snapshot_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+      "classification": "EXACT"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "base_bytes": 19692,
+      "base_sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+      "snapshot_bytes": 19692,
+      "snapshot_sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+      "classification": "EXACT"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer_cli.py",
+      "base_bytes": 3480,
+      "base_sha256": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54",
+      "snapshot_bytes": 3480,
+      "snapshot_sha256": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54",
+      "classification": "EXACT"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "base_bytes": 26574,
+      "base_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "snapshot_bytes": 26574,
+      "snapshot_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "classification": "EXACT"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "base_bytes": 10868,
+      "base_sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+      "snapshot_bytes": 10868,
+      "snapshot_sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+      "classification": "EXACT"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "base_bytes": 15051,
+      "base_sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+      "snapshot_bytes": 15051,
+      "snapshot_sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+      "classification": "EXACT"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "base_bytes": 73939,
+      "base_sha256": "3d1c8288ffbea3ff328d785def5fabba250b042c0d2d1b1f94215b1c62cde29b",
+      "snapshot_bytes": 89712,
+      "snapshot_sha256": "01deb2419f88012c162a1ab56013cb4a724fda72a5de70f5434cf5dad1a1e753",
+      "classification": "E4A3D1_ACCEPTED_D_MATERIALIZER_POSTIMAGE"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4a_d_compositor_real_body_pixel_review.py",
+      "base_bytes": 35611,
+      "base_sha256": "3165f99ddf37252b3ed2fc5becbe98877b0c945d5ef57dcbfb59dd18cc7852f1",
+      "snapshot_bytes": 40675,
+      "snapshot_sha256": "a8cdadb324bfa6026a308fc26cb9df8e5af2c5a14995d60f9c4544b6a7bf2505",
+      "classification": "E4A3D1_ACCEPTED_D_COMPOSITOR_RUNNER_POSTIMAGE"
+    },
+    {
+      "path": "tools/c11d/d9/test_c11e_e4a_d_compositor_real_body_pixel_review.py",
+      "base_bytes": 13775,
+      "base_sha256": "1e51fa2e47339097e6c66354cf2920eccff804d032787d0b268e2bdef2c22300",
+      "snapshot_bytes": 20914,
+      "snapshot_sha256": "fc60c327a481fd8c62223b10c8dfb2a046892c065d46edb0175181b1f8b050e6",
+      "classification": "E4A3D1_ACCEPTED_D_COMPOSITOR_TEST_POSTIMAGE"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/main.py",
+      "base_bytes": 109592,
+      "base_sha256": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3",
+      "snapshot_bytes": 110784,
+      "snapshot_sha256": "9685c4346cf56d3134fbf296585efbd779e5695635a249f0b85bd2c3682dac4e",
+      "classification": "E4A1_ACCEPTED_E1_GUI_POSTIMAGE"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "base_bytes": 30335,
+      "base_sha256": "f0655d8d93df3b766b157d80a76a5bfc7b514d740815646f54c88ca788f602c0",
+      "snapshot_bytes": 32885,
+      "snapshot_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+      "classification": "E4A1_ACCEPTED_E1_SERVICE_POSTIMAGE"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "base_bytes": 9183,
+      "base_sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+      "snapshot_bytes": 9183,
+      "snapshot_sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+      "classification": "EXACT"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+      "base_bytes": 39483,
+      "base_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+      "snapshot_bytes": 39483,
+      "snapshot_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+      "classification": "EXACT"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "base_bytes": 796318,
+      "base_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "snapshot_bytes": 796318,
+      "snapshot_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_001.json",
+      "base_bytes": 1085,
+      "base_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "snapshot_bytes": 1085,
+      "snapshot_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_002.json",
+      "base_bytes": 1218,
+      "base_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "snapshot_bytes": 1218,
+      "snapshot_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_003.json",
+      "base_bytes": 1132,
+      "base_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "snapshot_bytes": 1132,
+      "snapshot_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_004.json",
+      "base_bytes": 1543,
+      "base_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "snapshot_bytes": 1543,
+      "snapshot_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_005.json",
+      "base_bytes": 917,
+      "base_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "snapshot_bytes": 917,
+      "snapshot_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_006.json",
+      "base_bytes": 1097,
+      "base_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "snapshot_bytes": 1097,
+      "snapshot_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_007.json",
+      "base_bytes": 1388,
+      "base_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "snapshot_bytes": 1388,
+      "snapshot_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_008.json",
+      "base_bytes": 990,
+      "base_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+      "snapshot_bytes": 990,
+      "snapshot_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+      "classification": "EXACT"
+    },
+    {
+      "path": "challenges/CHALLENGE_009.json",
+      "base_bytes": 881,
+      "base_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+      "snapshot_bytes": 881,
+      "snapshot_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D1.1_CHALLENGE_VISUAL_EDITORIAL_MAPPING_V1.0.md",
+      "base_bytes": 2260,
+      "base_sha256": "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+      "snapshot_bytes": 2260,
+      "snapshot_sha256": "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "base_bytes": 2907,
+      "base_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "snapshot_bytes": 2907,
+      "snapshot_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md",
+      "base_bytes": 1797,
+      "base_sha256": "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+      "snapshot_bytes": 1797,
+      "snapshot_sha256": "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D3.0_PROCEDURAL_MUSIC_V5_DESIGN_CONTRACT.md",
+      "base_bytes": 2430,
+      "base_sha256": "3640f128022f9183f7044b4676746e81cfa1f226cd24c3b20859a4c3e85c34f8",
+      "snapshot_bytes": 2430,
+      "snapshot_sha256": "3640f128022f9183f7044b4676746e81cfa1f226cd24c3b20859a4c3e85c34f8",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D3.1_SHARED_MUSIC_ENGINE_V5_CONTRACT.md",
+      "base_bytes": 2073,
+      "base_sha256": "4ca5ecc4ee9e560cb0af41a4e56e28635431ca2e28150ad3ca72b545a1bf1885",
+      "snapshot_bytes": 2073,
+      "snapshot_sha256": "4ca5ecc4ee9e560cb0af41a4e56e28635431ca2e28150ad3ca72b545a1bf1885",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D3.2_DETERMINISTIC_MUSIC_IMPLEMENTATION_CONTRACT.md",
+      "base_bytes": 1534,
+      "base_sha256": "8d3dc9d5f64d366579fdc61bca79997e02b31d239f3428b51a745462f92b5d7a",
+      "snapshot_bytes": 1534,
+      "snapshot_sha256": "8d3dc9d5f64d366579fdc61bca79997e02b31d239f3428b51a745462f92b5d7a",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D3.3_LOUDNESS_MOBILE_AUDIO_QA_CONTRACT.md",
+      "base_bytes": 1441,
+      "base_sha256": "022f58a09121f1927aa36ba5a68d9ec753051546bbf25e8646590eadbd8a45c9",
+      "snapshot_bytes": 1441,
+      "snapshot_sha256": "022f58a09121f1927aa36ba5a68d9ec753051546bbf25e8646590eadbd8a45c9",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CHECKPOINT_V1.md",
+      "base_bytes": 2256,
+      "base_sha256": "9bd72da83289506b7ff02970b4c798ad472dc6d03675211e023cb91ab73102f1",
+      "snapshot_bytes": 2256,
+      "snapshot_sha256": "9bd72da83289506b7ff02970b4c798ad472dc6d03675211e023cb91ab73102f1",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CHECKPOINT_V1.md",
+      "base_bytes": 2433,
+      "base_sha256": "2c66afa77ebaf167dc04895daee6f1c9009e7d0021000293a3e7ef0471527475",
+      "snapshot_bytes": 2433,
+      "snapshot_sha256": "2c66afa77ebaf167dc04895daee6f1c9009e7d0021000293a3e7ef0471527475",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C2.2.0-VISUAL_DRILL_PRESENTATION_FOUNDATION.txt",
+      "base_bytes": 442,
+      "base_sha256": "cd2f9a223a2788d9ee4ac8485ee46b0c1adf4882ed8695e272d11d7a407b46c1",
+      "snapshot_bytes": 442,
+      "snapshot_sha256": "cd2f9a223a2788d9ee4ac8485ee46b0c1adf4882ed8695e272d11d7a407b46c1",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+      "base_bytes": 2429,
+      "base_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+      "snapshot_bytes": 2429,
+      "snapshot_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+      "base_bytes": 950,
+      "base_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+      "snapshot_bytes": 950,
+      "snapshot_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+      "base_bytes": 1391,
+      "base_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+      "snapshot_bytes": 1391,
+      "snapshot_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+      "base_bytes": 458,
+      "base_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+      "snapshot_bytes": 458,
+      "snapshot_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+      "base_bytes": 2445,
+      "base_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+      "snapshot_bytes": 2445,
+      "snapshot_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+      "base_bytes": 1348,
+      "base_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+      "snapshot_bytes": 1348,
+      "snapshot_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_HOOK_SOCIAL_AUDIO_2.11.1.md",
+      "base_bytes": 229,
+      "base_sha256": "1ba10fa029ea7952a3d9e0673d15c29fab5c2b1350a7167f3517a79c99892c11",
+      "snapshot_bytes": 229,
+      "snapshot_sha256": "1ba10fa029ea7952a3d9e0673d15c29fab5c2b1350a7167f3517a79c99892c11",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_HOOK_SOCIAL_CONTRACT_v1.0.md",
+      "base_bytes": 1986,
+      "base_sha256": "139932dba403938fff1d541f276338038c17397d991ee9781b17e439a5f808df",
+      "snapshot_bytes": 1986,
+      "snapshot_sha256": "139932dba403938fff1d541f276338038c17397d991ee9781b17e439a5f808df",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+      "base_bytes": 2324,
+      "base_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+      "snapshot_bytes": 2324,
+      "snapshot_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+      "base_bytes": 2153,
+      "base_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+      "snapshot_bytes": 2153,
+      "snapshot_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11-C_VISUAL_SOCIAL_COPY_v1.0.md",
+      "base_bytes": 1392,
+      "base_sha256": "970f4125cdbf54b199b16c6cbf26c8f7c6f5bfe303a9c99d61c363945e86c7ca",
+      "snapshot_bytes": 1392,
+      "snapshot_sha256": "970f4125cdbf54b199b16c6cbf26c8f7c6f5bfe303a9c99d61c363945e86c7ca",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+      "base_bytes": 1439,
+      "base_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+      "snapshot_bytes": 1439,
+      "snapshot_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+      "base_bytes": 2435,
+      "base_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+      "snapshot_bytes": 2435,
+      "snapshot_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V2.txt",
+      "base_bytes": 819,
+      "base_sha256": "9f353335f269de6d8912e94645a4b57e8ad54dc739126404c66e0a43300051b0",
+      "snapshot_bytes": 819,
+      "snapshot_sha256": "9f353335f269de6d8912e94645a4b57e8ad54dc739126404c66e0a43300051b0",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V3.txt",
+      "base_bytes": 937,
+      "base_sha256": "3359b244a2b6327279abbe7d5214da4adebb21243d001a8b0f786a68695a2e82",
+      "snapshot_bytes": 937,
+      "snapshot_sha256": "3359b244a2b6327279abbe7d5214da4adebb21243d001a8b0f786a68695a2e82",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.txt",
+      "base_bytes": 1405,
+      "base_sha256": "72c5c9cb4b23b5b5eef7771425533346e299563d012cb35d6ccecd10759b5ceb",
+      "snapshot_bytes": 1405,
+      "snapshot_sha256": "72c5c9cb4b23b5b5eef7771425533346e299563d012cb35d6ccecd10759b5ceb",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_REVISED.txt",
+      "base_bytes": 881,
+      "base_sha256": "155c4fab6c61a06bb0cf4dbaeaaed32c86676d5d51322029f5626a288d7d848c",
+      "snapshot_bytes": 881,
+      "snapshot_sha256": "155c4fab6c61a06bb0cf4dbaeaaed32c86676d5d51322029f5626a288d7d848c",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+      "base_bytes": 2429,
+      "base_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+      "snapshot_bytes": 2429,
+      "snapshot_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+      "base_bytes": 950,
+      "base_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+      "snapshot_bytes": 950,
+      "snapshot_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+      "base_bytes": 1391,
+      "base_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+      "snapshot_bytes": 1391,
+      "snapshot_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+      "base_bytes": 458,
+      "base_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+      "snapshot_bytes": 458,
+      "snapshot_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+      "base_bytes": 2445,
+      "base_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+      "snapshot_bytes": 2445,
+      "snapshot_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+      "base_bytes": 1348,
+      "base_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+      "snapshot_bytes": 1348,
+      "snapshot_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+      "base_bytes": 2324,
+      "base_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+      "snapshot_bytes": 2324,
+      "snapshot_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+      "base_bytes": 2153,
+      "base_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+      "snapshot_bytes": 2153,
+      "snapshot_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+      "base_bytes": 1439,
+      "base_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+      "snapshot_bytes": 1439,
+      "snapshot_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+      "classification": "EXACT"
+    },
+    {
+      "path": "docs/history/c11/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+      "base_bytes": 2435,
+      "base_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+      "snapshot_bytes": 2435,
+      "snapshot_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+      "classification": "EXACT"
+    }
+  ],
+  "review_status": "PASS",
+  "summary": {
+    "historical_members": 88,
+    "exact_matches": 83,
+    "explicitly_authorized_postimages": 5,
+    "unrecognized_deltas": 0
+  },
+  "authorization_note": "main.py and c11e_production_service.py are exact E4A.1 postimages; materializer + compositor runner + compositor test are exact E4A.3D.1 postimages. The adapter presentation test is not a historical postimage delta; d5c1... is a separate snapshot baseline pin."
+}

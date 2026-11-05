@@ -1,0 +1,32 @@
+{
+  "schema": "C11E-E4A4-SEPARATE-AUDIO-MUX-EVIDENCE-INDEX-V1",
+  "status": "PASS_ISOLATED_E4A4_CHALLENGE_AUDIO_MUX_TEST_ONLY",
+  "source_report": {
+    "path_in_e4a5b_reviewed_snapshot": "artifacts/tests/c11e/e4a_audio_mux_review/RUN_20261104T013653Z-8469583E/C11E_E4A4_CHALLENGE_AUDIO_MUX_REPORT.json",
+    "sha256": "14cc43332e09c698a55e921be4538af8335d5495864a5c25c1c1611b689cdcbf"
+  },
+  "source_receipt": {
+    "path_in_e4a5b_reviewed_snapshot": "artifacts/tests/c11e/e4a_audio_mux_review/RUN_20261104T013653Z-8469583E/C11E_E4A4_CHALLENGE_AUDIO_MUX_RECEIPT.json",
+    "sha256": "8d351c513b6972d4f583dfe6678ab46e0441ab0466315a03abf1ce1179c115ca"
+  },
+  "base_video_sha256": "edbd446d67142d20e138e55563f16cbae8d9a4c39469fd2bebcb3c9d5723fb9e",
+  "base_video_is_d_composited": false,
+  "d3_v5_and_d3_3": {
+    "same_music_seed_audio_sha256": "db28149f9af77450f765147c9f5810425a8878b58166dab479023baad96ec9fb",
+    "changed_music_seed_audio_sha256": "f8e22de816b5510fa31b658edbddb4e196f20adaa74f81980ace091770e7f62e",
+    "same_seed_repeatability": true,
+    "changed_music_seed_changes_audio": true
+  },
+  "mux_output": {
+    "video": "H.264 720x1280 30fps 450 frames 15s",
+    "audio": "AAC 48000 Hz stereo 15s non-silent",
+    "av_start_drift_seconds": 0.0,
+    "av_end_drift_seconds": 0.0
+  },
+  "human_review": {
+    "audio_listening": "PENDING",
+    "video_review": "PENDING",
+    "layout_approval": "NOT_GRANTED"
+  },
+  "scope": "Separate audio/mux validation on immutable C11-C review video; does not prove D-composited A/V."
+}

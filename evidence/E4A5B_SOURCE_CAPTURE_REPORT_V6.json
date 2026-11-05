@@ -1,0 +1,2626 @@
+{
+  "schema": "C11E-E4A5B-ROOT-SOURCE-REVIEW-REPORT-V5",
+  "status": "PASS_READ_ONLY_SOURCE_REVIEW_FROM_USER_SUPPLIED_SNAPSHOT",
+  "created_utc": "2026-11-05",
+  "working_snapshot": {
+    "name": "ChallengeEngineV01_STATELESS_C11-E3-LATEST.zip",
+    "sha256": "a70ff52e89c28ce527cc8e4af897d80043b64549a2a74aab34c012994779061c",
+    "bytes": 43437595,
+    "zip_entries": 18911,
+    "zip_crc": "PASS",
+    "dot_git_present": false,
+    "git_head": "UNAVAILABLE_NO_DOT_GIT_IN_SNAPSHOT",
+    "git_branch": "UNAVAILABLE_NO_DOT_GIT_IN_SNAPSHOT",
+    "git_status": "UNAVAILABLE_NO_DOT_GIT_IN_SNAPSHOT"
+  },
+  "historical_e4a5_handoff": {
+    "zip_name": "C11E_E4A5_RENDER_ROOT_HANDOFF_20261104_093421.zip",
+    "zip_sha256": "d0a9e99544936890d7dbca3f321f025345914e21efe6b482317f79f141254051",
+    "inventory_sha256_canonical_json": "f5126d4dc36fad939ea1be7fa9ea8e6998722ef971be64016bfc519f6f24f85d",
+    "original_inventory_count": 88,
+    "exact_matches": 83,
+    "authorized_postimages": 5,
+    "unrecognized_deltas": 0,
+    "reconciliation": [
+      {
+        "path": "AGENTS.md",
+        "base_bytes": 2633,
+        "base_sha256": "5019f62717c0ed30e091ca67d378e72bf59d4fd4adfc86360001f660c36ca46d",
+        "snapshot_bytes": 2633,
+        "snapshot_sha256": "5019f62717c0ed30e091ca67d378e72bf59d4fd4adfc86360001f660c36ca46d",
+        "classification": "EXACT"
+      },
+      {
+        "path": ".continue/rules/CONTINUE.md",
+        "base_bytes": 2045,
+        "base_sha256": "cea0902226a47349ba2e8511acc0f4190c94cc97720405485f7f3cc70af95519",
+        "snapshot_bytes": 2045,
+        "snapshot_sha256": "cea0902226a47349ba2e8511acc0f4190c94cc97720405485f7f3cc70af95519",
+        "classification": "EXACT"
+      },
+      {
+        "path": "project.godot",
+        "base_bytes": 868,
+        "base_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+        "snapshot_bytes": 868,
+        "snapshot_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+        "classification": "EXACT"
+      },
+      {
+        "path": "Main.tscn",
+        "base_bytes": 1086,
+        "base_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+        "snapshot_bytes": 1086,
+        "snapshot_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/execution/ChallengeRuntimeBridge.gd",
+        "base_bytes": 25891,
+        "base_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+        "snapshot_bytes": 25891,
+        "snapshot_sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/execution/ChallengeExecutionPipeline.gd",
+        "base_bytes": 5536,
+        "base_sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0",
+        "snapshot_bytes": 5536,
+        "snapshot_sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/execution/ChallengeRuntimeContext.gd",
+        "base_bytes": 489,
+        "base_sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0",
+        "snapshot_bytes": 489,
+        "snapshot_sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "base_bytes": 3721,
+        "base_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+        "snapshot_bytes": 3721,
+        "snapshot_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/ChallengePresentationBinder.gd",
+        "base_bytes": 6954,
+        "base_sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+        "snapshot_bytes": 6954,
+        "snapshot_sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/PresentationUI.gd",
+        "base_bytes": 8981,
+        "base_sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+        "snapshot_bytes": 8981,
+        "snapshot_sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/PresentationProfile.gd",
+        "base_bytes": 8837,
+        "base_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+        "snapshot_bytes": 8837,
+        "snapshot_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/PresentationBindingResult.gd",
+        "base_bytes": 438,
+        "base_sha256": "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff",
+        "snapshot_bytes": 438,
+        "snapshot_sha256": "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "base_bytes": 2087,
+        "base_sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+        "snapshot_bytes": 2087,
+        "snapshot_sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/UnifiedSocialFrame.tscn",
+        "base_bytes": 1471,
+        "base_sha256": "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b",
+        "snapshot_bytes": 1471,
+        "snapshot_sha256": "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "base_bytes": 19047,
+        "base_sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+        "snapshot_bytes": 19047,
+        "snapshot_sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/C11CVisualTypography.gd",
+        "base_bytes": 2211,
+        "base_sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+        "snapshot_bytes": 2211,
+        "snapshot_sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/SocialUIBinder.gd",
+        "base_bytes": 1742,
+        "base_sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+        "snapshot_bytes": 1742,
+        "snapshot_sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "base_bytes": 1219,
+        "base_sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+        "snapshot_bytes": 1219,
+        "snapshot_sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/PresentationBinderRegistry.gd",
+        "base_bytes": 2480,
+        "base_sha256": "bb12400cb748821b191e09db19b85105708d47a50db66c84b5f95fe6ff98ee66",
+        "snapshot_bytes": 2480,
+        "snapshot_sha256": "bb12400cb748821b191e09db19b85105708d47a50db66c84b5f95fe6ff98ee66",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/VisualLoopPresentationBinder.gd",
+        "base_bytes": 1895,
+        "base_sha256": "96abc0fe4361f88ba9b388a7bce18541a65c9b7334549ebb7c707e1cb76c513b",
+        "snapshot_bytes": 1895,
+        "snapshot_sha256": "96abc0fe4361f88ba9b388a7bce18541a65c9b7334549ebb7c707e1cb76c513b",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "base_bytes": 11830,
+        "base_sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+        "snapshot_bytes": 11830,
+        "snapshot_sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "base_bytes": 13876,
+        "base_sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+        "snapshot_bytes": 13876,
+        "snapshot_sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+        "classification": "EXACT"
+      },
+      {
+        "path": "core/presentation/rendering/VisualContentPlayer.tscn",
+        "base_bytes": 402,
+        "base_sha256": "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27",
+        "snapshot_bytes": 402,
+        "snapshot_sha256": "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27",
+        "classification": "EXACT"
+      },
+      {
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "base_bytes": 3158,
+        "base_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+        "snapshot_bytes": 3158,
+        "snapshot_sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+        "classification": "EXACT"
+      },
+      {
+        "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+        "base_bytes": 4200,
+        "base_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+        "snapshot_bytes": 4200,
+        "snapshot_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+        "classification": "EXACT"
+      },
+      {
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "base_bytes": 12692,
+        "base_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+        "snapshot_bytes": 12692,
+        "snapshot_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+        "classification": "EXACT"
+      },
+      {
+        "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+        "base_bytes": 1943,
+        "base_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+        "snapshot_bytes": 1943,
+        "snapshot_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+        "classification": "EXACT"
+      },
+      {
+        "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+        "base_bytes": 3313,
+        "base_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+        "snapshot_bytes": 3313,
+        "snapshot_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+        "classification": "EXACT"
+      },
+      {
+        "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+        "base_bytes": 2818,
+        "base_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+        "snapshot_bytes": 2818,
+        "snapshot_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+        "classification": "EXACT"
+      },
+      {
+        "path": "tools/c11d/d9/universal_producer.py",
+        "base_bytes": 19692,
+        "base_sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+        "snapshot_bytes": 19692,
+        "snapshot_sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+        "classification": "EXACT"
+      },
+      {
+        "path": "tools/c11d/d9/universal_producer_cli.py",
+        "base_bytes": 3480,
+        "base_sha256": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54",
+        "snapshot_bytes": 3480,
+        "snapshot_sha256": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54",
+        "classification": "EXACT"
+      },
+      {
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "base_bytes": 26574,
+        "base_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+        "snapshot_bytes": 26574,
+        "snapshot_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+        "classification": "EXACT"
+      },
+      {
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "base_bytes": 10868,
+        "base_sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+        "snapshot_bytes": 10868,
+        "snapshot_sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+        "classification": "EXACT"
+      },
+      {
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "base_bytes": 15051,
+        "base_sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+        "snapshot_bytes": 15051,
+        "snapshot_sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+        "classification": "EXACT"
+      },
+      {
+        "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+        "base_bytes": 73939,
+        "base_sha256": "3d1c8288ffbea3ff328d785def5fabba250b042c0d2d1b1f94215b1c62cde29b",
+        "snapshot_bytes": 89712,
+        "snapshot_sha256": "01deb2419f88012c162a1ab56013cb4a724fda72a5de70f5434cf5dad1a1e753",
+        "classification": "E4A3D1_ACCEPTED_D_MATERIALIZER_POSTIMAGE"
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4a_d_compositor_real_body_pixel_review.py",
+        "base_bytes": 35611,
+        "base_sha256": "3165f99ddf37252b3ed2fc5becbe98877b0c945d5ef57dcbfb59dd18cc7852f1",
+        "snapshot_bytes": 40675,
+        "snapshot_sha256": "a8cdadb324bfa6026a308fc26cb9df8e5af2c5a14995d60f9c4544b6a7bf2505",
+        "classification": "E4A3D1_ACCEPTED_D_COMPOSITOR_RUNNER_POSTIMAGE"
+      },
+      {
+        "path": "tools/c11d/d9/test_c11e_e4a_d_compositor_real_body_pixel_review.py",
+        "base_bytes": 13775,
+        "base_sha256": "1e51fa2e47339097e6c66354cf2920eccff804d032787d0b268e2bdef2c22300",
+        "snapshot_bytes": 20914,
+        "snapshot_sha256": "fc60c327a481fd8c62223b10c8dfb2a046892c065d46edb0175181b1f8b050e6",
+        "classification": "E4A3D1_ACCEPTED_D_COMPOSITOR_TEST_POSTIMAGE"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/main.py",
+        "base_bytes": 109592,
+        "base_sha256": "f0adc54de884d6d812396707cd6ced49038df0f52e4a9bc516a9ca5e6a0ddcd3",
+        "snapshot_bytes": 110784,
+        "snapshot_sha256": "9685c4346cf56d3134fbf296585efbd779e5695635a249f0b85bd2c3682dac4e",
+        "classification": "E4A1_ACCEPTED_E1_GUI_POSTIMAGE"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+        "base_bytes": 30335,
+        "base_sha256": "f0655d8d93df3b766b157d80a76a5bfc7b514d740815646f54c88ca788f602c0",
+        "snapshot_bytes": 32885,
+        "snapshot_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+        "classification": "E4A1_ACCEPTED_E1_SERVICE_POSTIMAGE"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "base_bytes": 9183,
+        "base_sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+        "snapshot_bytes": 9183,
+        "snapshot_sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+        "classification": "EXACT"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+        "base_bytes": 39483,
+        "base_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "snapshot_bytes": 39483,
+        "snapshot_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "classification": "EXACT"
+      },
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "base_bytes": 796318,
+        "base_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "snapshot_bytes": 796318,
+        "snapshot_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_001.json",
+        "base_bytes": 1085,
+        "base_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "snapshot_bytes": 1085,
+        "snapshot_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_002.json",
+        "base_bytes": 1218,
+        "base_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "snapshot_bytes": 1218,
+        "snapshot_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_003.json",
+        "base_bytes": 1132,
+        "base_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "snapshot_bytes": 1132,
+        "snapshot_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_004.json",
+        "base_bytes": 1543,
+        "base_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "snapshot_bytes": 1543,
+        "snapshot_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_005.json",
+        "base_bytes": 917,
+        "base_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "snapshot_bytes": 917,
+        "snapshot_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_006.json",
+        "base_bytes": 1097,
+        "base_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "snapshot_bytes": 1097,
+        "snapshot_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_007.json",
+        "base_bytes": 1388,
+        "base_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "snapshot_bytes": 1388,
+        "snapshot_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_008.json",
+        "base_bytes": 990,
+        "base_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+        "snapshot_bytes": 990,
+        "snapshot_sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+        "classification": "EXACT"
+      },
+      {
+        "path": "challenges/CHALLENGE_009.json",
+        "base_bytes": 881,
+        "base_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+        "snapshot_bytes": 881,
+        "snapshot_sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D1.1_CHALLENGE_VISUAL_EDITORIAL_MAPPING_V1.0.md",
+        "base_bytes": 2260,
+        "base_sha256": "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+        "snapshot_bytes": 2260,
+        "snapshot_sha256": "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "base_bytes": 2907,
+        "base_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+        "snapshot_bytes": 2907,
+        "snapshot_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md",
+        "base_bytes": 1797,
+        "base_sha256": "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+        "snapshot_bytes": 1797,
+        "snapshot_sha256": "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D3.0_PROCEDURAL_MUSIC_V5_DESIGN_CONTRACT.md",
+        "base_bytes": 2430,
+        "base_sha256": "3640f128022f9183f7044b4676746e81cfa1f226cd24c3b20859a4c3e85c34f8",
+        "snapshot_bytes": 2430,
+        "snapshot_sha256": "3640f128022f9183f7044b4676746e81cfa1f226cd24c3b20859a4c3e85c34f8",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D3.1_SHARED_MUSIC_ENGINE_V5_CONTRACT.md",
+        "base_bytes": 2073,
+        "base_sha256": "4ca5ecc4ee9e560cb0af41a4e56e28635431ca2e28150ad3ca72b545a1bf1885",
+        "snapshot_bytes": 2073,
+        "snapshot_sha256": "4ca5ecc4ee9e560cb0af41a4e56e28635431ca2e28150ad3ca72b545a1bf1885",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D3.2_DETERMINISTIC_MUSIC_IMPLEMENTATION_CONTRACT.md",
+        "base_bytes": 1534,
+        "base_sha256": "8d3dc9d5f64d366579fdc61bca79997e02b31d239f3428b51a745462f92b5d7a",
+        "snapshot_bytes": 1534,
+        "snapshot_sha256": "8d3dc9d5f64d366579fdc61bca79997e02b31d239f3428b51a745462f92b5d7a",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D3.3_LOUDNESS_MOBILE_AUDIO_QA_CONTRACT.md",
+        "base_bytes": 1441,
+        "base_sha256": "022f58a09121f1927aa36ba5a68d9ec753051546bbf25e8646590eadbd8a45c9",
+        "snapshot_bytes": 1441,
+        "snapshot_sha256": "022f58a09121f1927aa36ba5a68d9ec753051546bbf25e8646590eadbd8a45c9",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CHECKPOINT_V1.md",
+        "base_bytes": 2256,
+        "base_sha256": "9bd72da83289506b7ff02970b4c798ad472dc6d03675211e023cb91ab73102f1",
+        "snapshot_bytes": 2256,
+        "snapshot_sha256": "9bd72da83289506b7ff02970b4c798ad472dc6d03675211e023cb91ab73102f1",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CHECKPOINT_V1.md",
+        "base_bytes": 2433,
+        "base_sha256": "2c66afa77ebaf167dc04895daee6f1c9009e7d0021000293a3e7ef0471527475",
+        "snapshot_bytes": 2433,
+        "snapshot_sha256": "2c66afa77ebaf167dc04895daee6f1c9009e7d0021000293a3e7ef0471527475",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C2.2.0-VISUAL_DRILL_PRESENTATION_FOUNDATION.txt",
+        "base_bytes": 442,
+        "base_sha256": "cd2f9a223a2788d9ee4ac8485ee46b0c1adf4882ed8695e272d11d7a407b46c1",
+        "snapshot_bytes": 442,
+        "snapshot_sha256": "cd2f9a223a2788d9ee4ac8485ee46b0c1adf4882ed8695e272d11d7a407b46c1",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+        "base_bytes": 2429,
+        "base_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+        "snapshot_bytes": 2429,
+        "snapshot_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+        "base_bytes": 950,
+        "base_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+        "snapshot_bytes": 950,
+        "snapshot_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+        "base_bytes": 1391,
+        "base_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+        "snapshot_bytes": 1391,
+        "snapshot_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+        "base_bytes": 458,
+        "base_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+        "snapshot_bytes": 458,
+        "snapshot_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+        "base_bytes": 2445,
+        "base_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+        "snapshot_bytes": 2445,
+        "snapshot_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+        "base_bytes": 1348,
+        "base_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+        "snapshot_bytes": 1348,
+        "snapshot_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_HOOK_SOCIAL_AUDIO_2.11.1.md",
+        "base_bytes": 229,
+        "base_sha256": "1ba10fa029ea7952a3d9e0673d15c29fab5c2b1350a7167f3517a79c99892c11",
+        "snapshot_bytes": 229,
+        "snapshot_sha256": "1ba10fa029ea7952a3d9e0673d15c29fab5c2b1350a7167f3517a79c99892c11",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_HOOK_SOCIAL_CONTRACT_v1.0.md",
+        "base_bytes": 1986,
+        "base_sha256": "139932dba403938fff1d541f276338038c17397d991ee9781b17e439a5f808df",
+        "snapshot_bytes": 1986,
+        "snapshot_sha256": "139932dba403938fff1d541f276338038c17397d991ee9781b17e439a5f808df",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+        "base_bytes": 2324,
+        "base_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+        "snapshot_bytes": 2324,
+        "snapshot_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+        "base_bytes": 2153,
+        "base_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+        "snapshot_bytes": 2153,
+        "snapshot_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_SOCIAL_COPY_v1.0.md",
+        "base_bytes": 1392,
+        "base_sha256": "970f4125cdbf54b199b16c6cbf26c8f7c6f5bfe303a9c99d61c363945e86c7ca",
+        "snapshot_bytes": 1392,
+        "snapshot_sha256": "970f4125cdbf54b199b16c6cbf26c8f7c6f5bfe303a9c99d61c363945e86c7ca",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+        "base_bytes": 1439,
+        "base_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+        "snapshot_bytes": 1439,
+        "snapshot_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+        "base_bytes": 2435,
+        "base_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+        "snapshot_bytes": 2435,
+        "snapshot_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V2.txt",
+        "base_bytes": 819,
+        "base_sha256": "9f353335f269de6d8912e94645a4b57e8ad54dc739126404c66e0a43300051b0",
+        "snapshot_bytes": 819,
+        "snapshot_sha256": "9f353335f269de6d8912e94645a4b57e8ad54dc739126404c66e0a43300051b0",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V3.txt",
+        "base_bytes": 937,
+        "base_sha256": "3359b244a2b6327279abbe7d5214da4adebb21243d001a8b0f786a68695a2e82",
+        "snapshot_bytes": 937,
+        "snapshot_sha256": "3359b244a2b6327279abbe7d5214da4adebb21243d001a8b0f786a68695a2e82",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.txt",
+        "base_bytes": 1405,
+        "base_sha256": "72c5c9cb4b23b5b5eef7771425533346e299563d012cb35d6ccecd10759b5ceb",
+        "snapshot_bytes": 1405,
+        "snapshot_sha256": "72c5c9cb4b23b5b5eef7771425533346e299563d012cb35d6ccecd10759b5ceb",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_REVISED.txt",
+        "base_bytes": 881,
+        "base_sha256": "155c4fab6c61a06bb0cf4dbaeaaed32c86676d5d51322029f5626a288d7d848c",
+        "snapshot_bytes": 881,
+        "snapshot_sha256": "155c4fab6c61a06bb0cf4dbaeaaed32c86676d5d51322029f5626a288d7d848c",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+        "base_bytes": 2429,
+        "base_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+        "snapshot_bytes": 2429,
+        "snapshot_sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+        "base_bytes": 950,
+        "base_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+        "snapshot_bytes": 950,
+        "snapshot_sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+        "base_bytes": 1391,
+        "base_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+        "snapshot_bytes": 1391,
+        "snapshot_sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+        "base_bytes": 458,
+        "base_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+        "snapshot_bytes": 458,
+        "snapshot_sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+        "base_bytes": 2445,
+        "base_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+        "snapshot_bytes": 2445,
+        "snapshot_sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+        "base_bytes": 1348,
+        "base_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+        "snapshot_bytes": 1348,
+        "snapshot_sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+        "base_bytes": 2324,
+        "base_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+        "snapshot_bytes": 2324,
+        "snapshot_sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+        "base_bytes": 2153,
+        "base_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+        "snapshot_bytes": 2153,
+        "snapshot_sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+        "base_bytes": 1439,
+        "base_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+        "snapshot_bytes": 1439,
+        "snapshot_sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+        "classification": "EXACT"
+      },
+      {
+        "path": "docs/history/c11/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+        "base_bytes": 2435,
+        "base_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+        "snapshot_bytes": 2435,
+        "snapshot_sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+        "classification": "EXACT"
+      }
+    ],
+    "allowed_postimages": {
+      "c11c-suite/c11c-producer/main.py": {
+        "authority": "E4A1_ACCEPTED_E1_GUI_POSTIMAGE",
+        "sha256": "9685c4346cf56d3134fbf296585efbd779e5695635a249f0b85bd2c3682dac4e"
+      },
+      "c11c-suite/c11c-producer/c11e_production_service.py": {
+        "authority": "E4A1_ACCEPTED_E1_SERVICE_POSTIMAGE",
+        "sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951"
+      },
+      "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd": {
+        "authority": "E4A3D1_ACCEPTED_D_MATERIALIZER_POSTIMAGE",
+        "sha256": "01deb2419f88012c162a1ab56013cb4a724fda72a5de70f5434cf5dad1a1e753"
+      },
+      "tools/c11d/d9/c11e_e4a_d_compositor_real_body_pixel_review.py": {
+        "authority": "E4A3D1_ACCEPTED_D_COMPOSITOR_RUNNER_POSTIMAGE",
+        "sha256": "a8cdadb324bfa6026a308fc26cb9df8e5af2c5a14995d60f9c4544b6a7bf2505"
+      },
+      "tools/c11d/d9/test_c11e_e4a_d_compositor_real_body_pixel_review.py": {
+        "authority": "E4A3D1_ACCEPTED_D_COMPOSITOR_TEST_POSTIMAGE",
+        "sha256": "fc60c327a481fd8c62223b10c8dfb2a046892c065d46edb0175181b1f8b050e6"
+      }
+    }
+  },
+  "v4_pin_diagnosis": {
+    "path": "tools/c11d/d9/test_c11e_challenge_editorial_presentation_adapter.py",
+    "v3_v4_expected_sha256": "8f3e65619048c40bfa0f7c5e0d9a8ae274f0f18f00a7276bde5881dc16034478",
+    "observed_snapshot_sha256": "d5c1dcaf553ace24f1f55b808e63ed47ee8d5f66f30334f422a19e3f238a0fc4",
+    "classification": "SNAPSHOT_BASELINE_PIN_ONLY_NOT_AN_E4A3D1_AUTHORIZED_POSTIMAGE",
+    "reason": "The E4A3D1 apply receipt records this test as an explicit pytest input but does not record a per-file SHA postimage for it. V4 inherited an unsupported hard pin; the user-supplied latest snapshot is the working authority for this read-only review. No change to test source is proposed."
+  },
+  "e4a3d1_receipt": {
+    "zip_sha256": "33ea15dc09435c5d08e442722b2e129e8603d67c53fb2ef6a65a455ab779c63e",
+    "receipt_sha256": "4070b8589528794e8206eeb1d0413b7a617714a395658a95afb37f3381324d51",
+    "focused_pytest": "82 passed",
+    "explicit_test_input_in_apply_source": true,
+    "test_filename": "tools/c11d/d9/test_c11e_challenge_editorial_presentation_adapter.py",
+    "test_sha256_pinned_in_receipt": false,
+    "receipt_status": "PASS_ISOLATED_TECHNICAL_CLOSEOUT_TEST_ONLY",
+    "receipt_tests": "82 passed",
+    "pytest_command_found_in_applied_runner_source": true,
+    "apply_runner_source_sha256": "3482dc0c16ed9976756ccca417391b6826a806112cfbeb7dda0c1651baf27b92",
+    "apply_log_shows_pytest_exit_0": true,
+    "pytest_command_excerpt": [
+      "$Pytest = Invoke-LoggedProcess $PythonPath @('-m','pytest','-q',$TestRel,'tools/c11d/d9/test_c11e_challenge_editorial_presentation_adapter.py') $RepoRoot 'FOCUSED_PYTEST'"
+    ]
+  },
+  "root": {
+    "main_scene": "Main.tscn",
+    "main_script": "GeneradorMaestro.gd",
+    "project_main_scene_line": [
+      {
+        "line": 14,
+        "text": "run/main_scene=\"res://Main.tscn\""
+      }
+    ],
+    "main_scene_resources": [
+      {
+        "line": 3,
+        "text": "[ext_resource path=\"res://GeneradorMaestro.gd\" type=\"Script\" id=\"1\"]"
+      },
+      {
+        "line": 4,
+        "text": "[ext_resource type=\"PackedScene\" path=\"res://core/presentation/UnifiedSocialFrame.tscn\" id=\"2\"]"
+      }
+    ],
+    "scene_root": [
+      {
+        "line": 6,
+        "text": "[node name=\"Main\" type=\"Node2D\"]"
+      }
+    ]
+  },
+  "phase_consumer": {
+    "phase_count": 4,
+    "model_builder_count": 4,
+    "social_binder_call_count": 4,
+    "timeline_advance": {
+      "line": 1199,
+      "text": "timeline.advance()"
+    },
+    "branches": [
+      {
+        "phase": "HOOK",
+        "branch_start_line": 1140,
+        "model_builder_line": 1147,
+        "social_binder_line": 1150,
+        "ordering": "MODEL_BUILDER_BEFORE_SOCIAL_BINDER",
+        "candidate_consumer_seam": "immediately after social binder call, before match exits and before timeline.advance"
+      },
+      {
+        "phase": "GAME",
+        "branch_start_line": 1152,
+        "model_builder_line": 1167,
+        "social_binder_line": 1170,
+        "ordering": "MODEL_BUILDER_BEFORE_SOCIAL_BINDER",
+        "candidate_consumer_seam": "immediately after social binder call, before match exits and before timeline.advance"
+      },
+      {
+        "phase": "REVEAL",
+        "branch_start_line": 1172,
+        "model_builder_line": 1179,
+        "social_binder_line": 1182,
+        "ordering": "MODEL_BUILDER_BEFORE_SOCIAL_BINDER",
+        "candidate_consumer_seam": "immediately after social binder call, before match exits and before timeline.advance"
+      },
+      {
+        "phase": "CTA",
+        "branch_start_line": 1184,
+        "model_builder_line": 1191,
+        "social_binder_line": 1194,
+        "ordering": "MODEL_BUILDER_BEFORE_SOCIAL_BINDER",
+        "candidate_consumer_seam": "immediately after social binder call, before match exits and before timeline.advance"
+      }
+    ],
+    "invariant": "timeline.get_current_block() is sole phase truth; native state_frame offsets are based on hook/game/reveal phase lengths; D insertion candidate after each binder call and before timeline.advance; no phase aliases.",
+    "design_constraints": {
+      "full_native_binder_calls_per_frame": 1,
+      "second_full_binder_call": "FORBIDDEN",
+      "targeted_post_bind_overrides": [
+        "HookComponent.visible",
+        "CountdownComponent.visible",
+        "CTAComponent.visible"
+      ],
+      "shared_layer_mount": "ONCE_PER_CHALLENGE_SESSION",
+      "shared_layer_per_frame_operation": "apply_render_model_only",
+      "source_frame": "timeline.get_current_frame_before_single_timeline_advance",
+      "source_ranges": "approved composition.fields source_frame_ranges, half-open [start_frame,end_frame)",
+      "phase_authority": "timeline.get_current_block() and native phase branch only"
+    },
+    "e4a6_design": {
+      "status": "DESIGN_READY_NOT_IMPLEMENTED",
+      "consumer": "D-owned ChallengeLiveEditorialConsumer; Challenge-only; fail-closed when D envelope is absent or invalid",
+      "attachment": "after each of the four existing SocialUIBinder.bind_render_model(rm) calls",
+      "cta_ownership": "D footer only while approved non-empty CTA is active; native C CTA otherwise",
+      "hook_countdown": "preserve native hook/countdown values; override only visibility after native apply",
+      "protected_components": "No second whole PresentationUI.apply_render_model; RevealManager and WinningHighlight stay native single-pass"
+    }
+  },
+  "presentation_topology": {
+    "social_binder": "SocialUIBinder.bind_render_model -> PresentationUI.apply_render_model",
+    "default_shared_mode": false,
+    "native_hook": "HookComponent in header in non-shared path",
+    "native_countdown": "CountdownComponent in gameplay/body envelope",
+    "native_cta": "CTAComponent in footer in non-shared path",
+    "challenge_root_mounts_shared_layer": false,
+    "shared_layer": "C11CVisualEditorialLayer mounts independent header/footer layer; separate footer label/background",
+    "single_cta_resolution": "Keep exactly one native SocialUIBinder.bind_render_model(rm) call per Challenge frame. Immediately after it, the D-only consumer applies only targeted visibility decisions to PresentationUI.hook_label, countdown and cta, derived from adapt_native_challenge_render_model; it MUST NOT call SocialUIBinder or PresentationUI.apply_render_model a second time because that would re-run RevealManager and WinningHighlight processing. Mount C11CVisualEditorialLayer once on the existing UnifiedSocialFrame; update its render model each frame without remounting. Hide native CTA only on frames with a non-empty approved D CTA in its CTA source window; otherwise native Challenge CTA remains owner."
+  },
+  "approved_field_semantics": {
+    "title": "HEADER / HOOK only",
+    "subtitle": "HEADER / HOOK only",
+    "call_to_action": "FOOTER / CTA only",
+    "language": "METADATA_ONLY",
+    "player_name": "BLOCKED",
+    "challenge_label": "BLOCKED",
+    "hook": "native phase-owned hook / first line",
+    "countdown": "native BODY component, governed by Challenge option"
+  },
+  "e1_and_gui_cli": {
+    "gui_checkbox_option_found": true,
+    "gui_service_path": true,
+    "challenge_service_request_option": true,
+    "service_preparation_status": "PREPARED_E1_NOT_DISPATCHED",
+    "dispatch_disabled": true,
+    "music_seed_independent": true,
+    "current_d3_contract_is_plan_only": true
+  },
+  "physical_c_av_path": {
+    "launcher": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+    "godot_movie_maker": true,
+    "source_resolution": "540x960",
+    "source_fps": "challenge JSON video.fps",
+    "source_timeline": "hook_duration + game_duration + optional reveal_duration + cta_duration",
+    "godot_audio": "optional --audio-output PCM s16le 44100Hz mono",
+    "ffmpeg_delivery": "post-capture scale lanczos + H.264 yuv420p",
+    "audio_mux": "AAC-LC 192k 48kHz stereo -shortest; ffprobe A/V duration delta <=50ms",
+    "qa_caller": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+    "qa_runs": "9 challenges x 6 seeds = 54 runs",
+    "qa_uses_same_launcher": true,
+    "note": "This is the existing C11-C audio/movie path, not the not-yet-connected C11-D D3 V5 music engine/mux path."
+  },
+  "source_inventory": {
+    "captured_files": 223,
+    "nontext_asset_references": 10,
+    "resolved_directory_references": [
+      {
+        "path": "profiles/video/",
+        "referenced_by": [
+          "core/authoring/VideoProfileRegistry.gd"
+        ],
+        "file_count": 15
+      },
+      {
+        "path": "profiles/audio/",
+        "referenced_by": [
+          "core/authoring/AudioProfileRegistry.gd"
+        ],
+        "file_count": 12
+      },
+      {
+        "path": "profiles/assets/",
+        "referenced_by": [
+          "core/authoring/AssetFamilyRegistry.gd"
+        ],
+        "file_count": 10
+      }
+    ],
+    "unresolved_refs": 0,
+    "entries": [
+      {
+        "path": ".continue/rules/CONTINUE.md",
+        "bytes": 2045,
+        "sha256": "cea0902226a47349ba2e8511acc0f4190c94cc97720405485f7f3cc70af95519",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "AGENTS.md",
+        "bytes": 2633,
+        "sha256": "5019f62717c0ed30e091ca67d378e72bf59d4fd4adfc86360001f660c36ca46d",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "assets/c6/car.svg",
+        "bytes": 208,
+        "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+      },
+      {
+        "path": "assets/c6/catcher.svg",
+        "bytes": 165,
+        "sha256": "2c99475157623f88dc7c874169589ec048696f7848e8673477852348fbaec8bd",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_006.json"
+      },
+      {
+        "path": "assets/c6/choose_background.svg",
+        "bytes": 797,
+        "sha256": "11b3ac5e70ab6f1e15ac99fcf1b5ac36626a553e14a450b592a8fd598fa6dce2",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_008.json"
+      },
+      {
+        "path": "assets/c6/count_background.svg",
+        "bytes": 364,
+        "sha256": "19936242890592b04bfb43fc4c27d3a3ce08688321fe60d008d3e75584885fa7",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_009.json"
+      },
+      {
+        "path": "assets/c6/cursor.svg",
+        "bytes": 194,
+        "sha256": "8b62fdd3af3f868ca0222c0089dda5c086baca7596c02a75f6b5cc7fb577bf4b",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_008.json"
+      },
+      {
+        "path": "assets/c6/garage_background.svg",
+        "bytes": 127,
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+      },
+      {
+        "path": "assets/c6/key.svg",
+        "bytes": 361,
+        "sha256": "817fe28028a153f0895ca6cc24ce6f17294691de31e2d9ced5bac952585d9121",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_001.json"
+      },
+      {
+        "path": "assets/c6/lock.svg",
+        "bytes": 301,
+        "sha256": "4fc1637d3acd24b5b853dbac380d76459df8f2d324b4b093ff21862741615167",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_001.json"
+      },
+      {
+        "path": "assets/c6/parking_target.svg",
+        "bytes": 192,
+        "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+      },
+      {
+        "path": "assets/c6/pilot.svg",
+        "bytes": 156,
+        "sha256": "aeddc9783af06b86a188f8400f60447f6f8e4eac1ba7a40c0dcf88b981ae94fb",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_003.json"
+      },
+      {
+        "path": "assets/c6/projectile.svg",
+        "bytes": 145,
+        "sha256": "2d2f4dfe893ad00e85dacafe930ad3bf60968eaafa359898473c4a8a465c5254",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_005.json"
+      },
+      {
+        "path": "assets/c6/scanner.svg",
+        "bytes": 328,
+        "sha256": "90bc530d130c7550c54feed3eaa07ee90b6bf9de087a2afd5d5d1f74540e6804",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_007.json"
+      },
+      {
+        "path": "assets/c6/target.svg",
+        "bytes": 227,
+        "sha256": "7ebb32eb86848c01e2f03370bc33106928b94ecd02eb5b663f8e6e7930a52547",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_005.json"
+      },
+      {
+        "path": "assets/c6/transparent.svg",
+        "bytes": 136,
+        "sha256": "091ce32577ce45d14f91c8249f942289b6ab926c735ce69000d6ecec8574db21",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_008.json"
+      },
+      {
+        "path": "assets/c6/waypoint.svg",
+        "bytes": 200,
+        "sha256": "49c3292bd900c865441de92f5a3e5dd21814eeeb3108e9827bfe6515310eb142",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by challenges/CHALLENGE_003.json"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "bytes": 9183,
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+        "bytes": 39483,
+        "sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+        "bytes": 32885,
+        "sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/main.py",
+        "bytes": 110784,
+        "sha256": "9685c4346cf56d3134fbf296585efbd779e5695635a249f0b85bd2c3682dac4e",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_001.json",
+        "bytes": 1085,
+        "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_002.json",
+        "bytes": 1218,
+        "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_003.json",
+        "bytes": 1132,
+        "sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_004.json",
+        "bytes": 1543,
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_005.json",
+        "bytes": 917,
+        "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_006.json",
+        "bytes": 1097,
+        "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_007.json",
+        "bytes": 1388,
+        "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_008.json",
+        "bytes": 990,
+        "sha256": "c3be7c943f5f4419497e371a181cd66d10ec2a7cdf76833b8627029c7a76c309",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "challenges/CHALLENGE_009.json",
+        "bytes": 881,
+        "sha256": "32dea4f9b3054fa2df1ace5680ce11cc9e167212f87a8688d374548135499151",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/authoring/AssetFamilyRegistry.gd",
+        "bytes": 729,
+        "sha256": "eb935fb5975783882b02142f4cd425229d557ca419316976e19211b4ca39ad75",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/ChallengePresentationBinder.gd"
+      },
+      {
+        "path": "core/authoring/AssetFamilyValidator.gd",
+        "bytes": 1273,
+        "sha256": "0f11f9cc2723829cefc994b69ca4356d7fc7f2334a2e3ca0b610e7a4fadcf31a",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/ChallengePresentationBinder.gd"
+      },
+      {
+        "path": "core/authoring/AudioProfileRegistry.gd",
+        "bytes": 886,
+        "sha256": "0103793bfeb7ac6d765baa71b8328321ed2ec96865ea26e7541981aa29d4110e",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/ChallengePresentationBinder.gd"
+      },
+      {
+        "path": "core/authoring/AudioProfileValidator.gd",
+        "bytes": 5946,
+        "sha256": "3aaa9139d6c046e71602ca709f6ed22db3f04cb00cf083ac57cad351957ee572",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/ChallengePresentationBinder.gd"
+      },
+      {
+        "path": "core/authoring/ChallengeMigrationAdapter.gd",
+        "bytes": 8977,
+        "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/authoring/PresentationBindingValidator.gd",
+        "bytes": 3030,
+        "sha256": "39077f01d366054f8ae58841c6dce798c4da92308f07204686423b6c91ddc229",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/ChallengePresentationBinder.gd"
+      },
+      {
+        "path": "core/authoring/VideoProfileRegistry.gd",
+        "bytes": 810,
+        "sha256": "2dafcc034eb7101bb2ebefbe7c3185809049640e1f6cd82daed3da1decc91bba",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/authoring/VisualDrillTimeline.gd",
+        "bytes": 349,
+        "sha256": "ccf8658544319514173a7ba6dc9a7374a459e4abb5736dfa2c323cb69e43127b",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/VisualDrillRuntime.gd"
+      },
+      {
+        "path": "core/authoring/VisualLoopTimeline.gd",
+        "bytes": 681,
+        "sha256": "3560047db470a4cd5162fcf44635bb0289dac9d887b20fd5b776fcd4dfc58c96",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/VisualLoopRuntime.gd"
+      },
+      {
+        "path": "core/deterministic/CosmeticRNG.gd",
+        "bytes": 1312,
+        "sha256": "2882c16dd549eb42c9bb59c43dda09590100e46601450fd937ee0f5882fbec1b",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeLegacyRuntimeOracle.gd"
+      },
+      {
+        "path": "core/deterministic/MechanicRNGContext.gd",
+        "bytes": 2914,
+        "sha256": "74aff2549b1fea80c877cda06a589a8cdae54ad4016b7e8ec9bbd25a6dbb6b01",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/deterministic/PresentationRNGContext.gd",
+        "bytes": 2913,
+        "sha256": "27fe69e4572f8ceec856a276f3294e920ece6c32c380e8b6fa007beeda89c419",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeLegacyRuntimeOracle.gd"
+      },
+      {
+        "path": "core/deterministic/RNGStreamRegistry.gd",
+        "bytes": 7908,
+        "sha256": "62877a9fe6fe5bf2dc92eb9aa54c73fcd304d99967fb1dcc022c86e3d258f693",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/deterministic/StructuralRNG.gd",
+        "bytes": 1323,
+        "sha256": "9ea60ff4a242d9cad748965a3cebf32239a61f207ca5dc2d7458df77e77fab4e",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/execution/ChallengeExecutionPipeline.gd",
+        "bytes": 5536,
+        "sha256": "f85c5794a7f100fc04fddbb57ce19f3050533f710c91cf42a05f6e682356ffc0",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/execution/ChallengeLegacyRuntimeOracle.gd",
+        "bytes": 8605,
+        "sha256": "993013b5a31256faf0658d5caa4249121dc15b894614a57b8e36f5aad0b4243f",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by GeneradorMaestro.gd"
+      },
+      {
+        "path": "core/execution/ChallengeRuntimeBridge.gd",
+        "bytes": 25891,
+        "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/execution/ChallengeRuntimeContext.gd",
+        "bytes": 489,
+        "sha256": "abdd6ad454e3fb403113e14d091a38c3b03aa7f93e451bf431af66c0557fbaa0",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "bytes": 3721,
+        "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/mechanics/MechanicRegistry.gd",
+        "bytes": 612,
+        "sha256": "03d20232a25ef6dcc0d5a8c6a772e3a6ab7706174cc37319c3a5d6cf67813a3a",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeExecutionPipeline.gd"
+      },
+      {
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "bytes": 19047,
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/C11CVisualHookBank.gd",
+        "bytes": 2330,
+        "sha256": "756146ac7f1ea8ba58920fad41721d00531a53e83e97501284d52c0245351d0c",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/VisualDrillPresentationBinder.gd"
+      },
+      {
+        "path": "core/presentation/C11CVisualMusicProfile.gd",
+        "bytes": 1636,
+        "sha256": "5636052329383f7668f69f2b3caa341a95a4050cf8fc8ebad255baaf85794d5d",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/VisualDrillPresentationBinder.gd"
+      },
+      {
+        "path": "core/presentation/C11CVisualTypography.gd",
+        "bytes": 2211,
+        "sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/ChallengePresentationBinder.gd",
+        "bytes": 6954,
+        "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/components/CountdownComponent.gd",
+        "bytes": 695,
+        "sha256": "057c8126bb9bc1887c449d78fe5e23561e07c72f116ae96d002aca7dc55b3d30",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/components/CTAComponent.gd",
+        "bytes": 2760,
+        "sha256": "609488fa3099e5e879fc8ac86f4b99aa3217a9093be3d26719f8efee94d58f17",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/components/HookComponent.gd",
+        "bytes": 806,
+        "sha256": "52894359fc80f4647493fb37fa185aae3dcdc8daf1ac1fdc37137d13debb7bbe",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/components/RevealManager.gd",
+        "bytes": 1035,
+        "sha256": "9602000a9006e86336557795e8443c74939e31174dbb444323323419dfe1cce4",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/components/SafeAreaLayout.gd",
+        "bytes": 730,
+        "sha256": "47ff82410086a3fe07aa7b5ba62a7caa50f48649f9751968dd96bfdfbec31e95",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/components/TypographyLabel.gd",
+        "bytes": 1240,
+        "sha256": "d7c6ec47b33baec983a239dfe6218037d4126dc1532130c92d4202d56e6e8866",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/components/WinningHighlightComponent.gd",
+        "bytes": 2765,
+        "sha256": "7cf15fb77afe7a802b4a897d6b9e4f2ba17431da3079a399eaaeecf19d94280b",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "bytes": 1219,
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/PresentationBinderRegistry.gd",
+        "bytes": 2480,
+        "sha256": "bb12400cb748821b191e09db19b85105708d47a50db66c84b5f95fe6ff98ee66",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/PresentationBindingResult.gd",
+        "bytes": 438,
+        "sha256": "405f1a813856c739574fd0e6e657e2b7122eae553f7b4cd875e23105c035c4ff",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/PresentationFramer.gd",
+        "bytes": 1691,
+        "sha256": "6ceba3ebeb40259e2553a89ae436e8986abf67b82325ffb94bdedf3466c36039",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by GeneradorMaestro.gd"
+      },
+      {
+        "path": "core/presentation/PresentationProfile.gd",
+        "bytes": 8837,
+        "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/PresentationTheme.gd",
+        "bytes": 2051,
+        "sha256": "dd5f6ba9a9222e0012933637b7dae89c069f4fc296925f490f961e4098b6af7a",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "core/presentation/PresentationUI.gd",
+        "bytes": 8981,
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/rendering/C11CDrillEnvironment.gd",
+        "bytes": 5020,
+        "sha256": "728d297f4b403ec601f419a23fd588fb35f8285d3029cff32e0322d0aa6dfcb8",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/PeripheralScanRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/ContentRendererHost.gd",
+        "bytes": 790,
+        "sha256": "5e4eaef17a972f302782483a495a6144f5f7fa1aae9d14c7f99123dee0bddb2a",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualContentPlayer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/FractalRenderer.gd",
+        "bytes": 1882,
+        "sha256": "a35cb15e07f5bf351eb10c882bc8c3b2c3f7b2429863cd2335cb11d6e4bfd9c9",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualLoopRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/GeometricRenderer.gd",
+        "bytes": 1471,
+        "sha256": "a7fb618d915dd3539848abbccd35b1f72547b6af5f2bc3c015a43e4617c8a8f2",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualLoopRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/KaleidoscopeRenderer.gd",
+        "bytes": 1536,
+        "sha256": "9b98c4a4f5633b3888fec49da3b8877525cfa9d425901872ab3067e9da69714c",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualLoopRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/ParticleFlowRenderer.gd",
+        "bytes": 1697,
+        "sha256": "3c1769d1538c8e01e6cda392613f8ecd81eaabb15f839cbe1719641767b87463",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualLoopRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/PeripheralScanRenderer.gd",
+        "bytes": 6965,
+        "sha256": "0e3fa6af1596cef4d847d8aaeb7caace22dc5d7542be92449abcc457dbf787d1",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualDrillRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/PursuitRenderer.gd",
+        "bytes": 7212,
+        "sha256": "d5340076dbc682878d30f4dc725af002f6cd84044e42ca5a016a1e711e2c8778",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualDrillRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/PursuitTargetLayer.gd",
+        "bytes": 3143,
+        "sha256": "0b015d9c5317659f38273cfedb1a8aed597129e382e2d5b7c147407505b8d979",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/PursuitRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/SaccadeRenderer.gd",
+        "bytes": 7617,
+        "sha256": "d7ce1094dd5b6670627d65cbb8a0eac4699051d14da97aec933331930b757699",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualDrillRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/shaders/fractal.gdshader",
+        "bytes": 1001,
+        "sha256": "fc5800281f3829a9eb52503fb91b9ee253de4587290de6962b825e16cf6e6898",
+        "extension": ".gdshader",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/FractalRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/shaders/geometric.gdshader",
+        "bytes": 826,
+        "sha256": "2b35b80566d2297f010859458ed23f98cee9268075465a06e1b584cf11533fcd",
+        "extension": ".gdshader",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/GeometricRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/shaders/kaleidoscope.gdshader",
+        "bytes": 1005,
+        "sha256": "166058691aca98633e4234bc54cc76909cd1e60ff71b558522f48dd3d5a8a28b",
+        "extension": ".gdshader",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/KaleidoscopeRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/shaders/particle_flow.gdshader",
+        "bytes": 1369,
+        "sha256": "c6c2040a3148db0cebd7c66d8d4a474250653b313e5fec68ae7a82f7acc316c3",
+        "extension": ".gdshader",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/ParticleFlowRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/shaders/pursuit_dof.gdshader",
+        "bytes": 1202,
+        "sha256": "b4bee62e8f00a50537f8ad645f86e5d27556a2dec4fd1a153de606372d9975ce",
+        "extension": ".gdshader",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/PursuitRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/shaders/vector_field.gdshader",
+        "bytes": 1906,
+        "sha256": "f58a2c90c2029718432a015e5b356b24b2969941b142060dc16c499443d71db8",
+        "extension": ".gdshader",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VectorFieldRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/TrackingRenderer.gd",
+        "bytes": 7270,
+        "sha256": "3f4f717fb6053299385f88cf5b708e5b4bd2aa67ed0689eda5120ecf9afde162",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualDrillRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/TrackingTargetLayer.gd",
+        "bytes": 1773,
+        "sha256": "efd7bedbed029fdd24b563938743bfd59d27e504b477f3fa270ea59145e3cf2b",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/TrackingRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/VectorFieldRenderer.gd",
+        "bytes": 1779,
+        "sha256": "d3a2bc83777467d13ec6ad169786f48baa4e2990ba03bf55f9bf649ec159d0bc",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualLoopRenderer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "bytes": 13876,
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/rendering/VisualContentPlayer.tscn",
+        "bytes": 402,
+        "sha256": "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27",
+        "extension": ".tscn",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/rendering/VisualDrillRenderer.gd",
+        "bytes": 3045,
+        "sha256": "7eed8f503e7fbfd3215d36008da99661b7ed5e8d546378f6cbaf6837cefa1945",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualContentPlayer.gd"
+      },
+      {
+        "path": "core/presentation/rendering/VisualLoopRenderer.gd",
+        "bytes": 4145,
+        "sha256": "8747b3e27e2b8418102732ed1bfba8d5d77da44c7caa982da2acc22e6bcc9be4",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualContentPlayer.gd"
+      },
+      {
+        "path": "core/presentation/SocialUIBinder.gd",
+        "bytes": 1742,
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "bytes": 2087,
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/UnifiedSocialFrame.tscn",
+        "bytes": 1471,
+        "sha256": "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b",
+        "extension": ".tscn",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "bytes": 11830,
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "bytes": 1899,
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/VisualDrillPresentationBinder.gd"
+      },
+      {
+        "path": "core/presentation/VisualLoopPresentationBinder.gd",
+        "bytes": 1895,
+        "sha256": "96abc0fe4361f88ba9b388a7bce18541a65c9b7334549ebb7c707e1cb76c513b",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "core/presentation/WinningFrameVisibilityGate.gd",
+        "bytes": 2368,
+        "sha256": "94ea4055f6d24b7ee9eb1d624e52620178f463a041f0e2288f508065231909e2",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by GeneradorMaestro.gd"
+      },
+      {
+        "path": "core/runtime/ChallengeRuntime.gd",
+        "bytes": 2525,
+        "sha256": "30efd40974418ebadccce342a1fcfe5c9623430fc40b82004e2c27d9a91b63e6",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/ContentRuntimeRegistry.gd"
+      },
+      {
+        "path": "core/runtime/ContentRuntimeRegistry.gd",
+        "bytes": 4957,
+        "sha256": "1b063ad7c0d5b01c1af4a859c90ea2af761baabb9a8a7b3cf1b61d5852d7fb70",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/rendering/VisualContentPlayer.gd"
+      },
+      {
+        "path": "core/runtime/RenderedFrameStream.gd",
+        "bytes": 1744,
+        "sha256": "faf037b81326bb8fb54a3aaa66e096490298910c40269e53672f5ca35a9a6ab2",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/PresentationBinderRegistry.gd"
+      },
+      {
+        "path": "core/runtime/visual/VisualFrameState.gd",
+        "bytes": 664,
+        "sha256": "2c7b1e017c49ecfd274a1991ba391bd6a606c0019c9bef293319a0ded83a2ad8",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/VisualLoopRuntime.gd"
+      },
+      {
+        "path": "core/runtime/visual/VisualLoopGeneratorRegistry.gd",
+        "bytes": 700,
+        "sha256": "bf0114213828f6917a9a043e63847c91b74718c4e4a7a420a26f05cf45a87137",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/VisualLoopRuntime.gd"
+      },
+      {
+        "path": "core/runtime/visual_drill/VisualDrillFrameState.gd",
+        "bytes": 993,
+        "sha256": "a57a7f2c8f65eb1fd8b9774cc9f189d0e6f36fd323b43c4ee5d2ebbd2da27caf",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/VisualDrillRuntime.gd"
+      },
+      {
+        "path": "core/runtime/visual_drill/VisualDrillGeneratorRegistry.gd",
+        "bytes": 618,
+        "sha256": "29426b977c512fe1108b5603d7221b53215305b143d6b3770c45116d3bcc8564",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/VisualDrillRuntime.gd"
+      },
+      {
+        "path": "core/runtime/VisualDrillRuntime.gd",
+        "bytes": 6075,
+        "sha256": "13749de32b13d610e2139798dbd66c87e7310a6b5ce41b437d09b4b3f0cd9741",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/ContentRuntimeRegistry.gd"
+      },
+      {
+        "path": "core/runtime/VisualLoopRuntime.gd",
+        "bytes": 7908,
+        "sha256": "961e976a359e358104ced1447fdc44f104cb1016eaa17eb5211f734166d14022",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/runtime/ContentRuntimeRegistry.gd"
+      },
+      {
+        "path": "core/simulation/SimulationMetricsResolver.gd",
+        "bytes": 1815,
+        "sha256": "3ecd5c32c3eaa3235ec6f442e1ceb4316918bf2c83d136afaee82430807b9587",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/timeline/VideoTimeline.gd",
+        "bytes": 384,
+        "sha256": "0887364e8ca682e729908cef337c5d7877343d9b85e27954312ca1d104450114",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeTimelineBuilder.gd"
+      },
+      {
+        "path": "core/validation/ChallengeValidator.gd",
+        "bytes": 3485,
+        "sha256": "db512e574ba3f9e25dda5709dea4784edc2e9da8f13fb9f2586d4645fbc03bf0",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeRuntimeBridge.gd"
+      },
+      {
+        "path": "core/validation/PresentationProfileValidator.gd",
+        "bytes": 4517,
+        "sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/authoring/PresentationBindingValidator.gd"
+      },
+      {
+        "path": "core/validation/WinningFrameDetector.gd",
+        "bytes": 1705,
+        "sha256": "018e33d981956f55c28c789c783029176c83b81b5ae17fa97913b79d83fe84c2",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/execution/ChallengeTimelineBuilder.gd"
+      },
+      {
+        "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+        "bytes": 2818,
+        "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+        "bytes": 3313,
+        "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "bytes": 12692,
+        "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+        "bytes": 4200,
+        "sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+        "bytes": 4675,
+        "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a",
+        "extension": ".json",
+        "reason": "Transitive Godot resource referenced by tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+      },
+      {
+        "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+        "bytes": 1943,
+        "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/00_PROJECT_OVERVIEW.md",
+        "bytes": 3072,
+        "sha256": "39550d62f711cb76ab06521ef51fdfaea7813837c7d0d39d3f5d2ba706cbe160",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/c11/C11-C2.2.0-VISUAL_DRILL_PRESENTATION_FOUNDATION.txt",
+        "bytes": 442,
+        "sha256": "cd2f9a223a2788d9ee4ac8485ee46b0c1adf4882ed8695e272d11d7a407b46c1",
+        "extension": ".txt",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+        "bytes": 2429,
+        "sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+        "bytes": 950,
+        "sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+        "bytes": 1391,
+        "sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+        "bytes": 458,
+        "sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+        "bytes": 2445,
+        "sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+        "bytes": 1348,
+        "sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_HOOK_SOCIAL_AUDIO_2.11.1.md",
+        "bytes": 229,
+        "sha256": "1ba10fa029ea7952a3d9e0673d15c29fab5c2b1350a7167f3517a79c99892c11",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_HOOK_SOCIAL_CONTRACT_v1.0.md",
+        "bytes": 1986,
+        "sha256": "139932dba403938fff1d541f276338038c17397d991ee9781b17e439a5f808df",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+        "bytes": 2324,
+        "sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+        "bytes": 2153,
+        "sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11-C_VISUAL_SOCIAL_COPY_v1.0.md",
+        "bytes": 1392,
+        "sha256": "970f4125cdbf54b199b16c6cbf26c8f7c6f5bfe303a9c99d61c363945e86c7ca",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+        "bytes": 1439,
+        "sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+        "bytes": 2435,
+        "sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V2.txt",
+        "bytes": 819,
+        "sha256": "9f353335f269de6d8912e94645a4b57e8ad54dc739126404c66e0a43300051b0",
+        "extension": ".txt",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/README_FIX_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V3.txt",
+        "bytes": 937,
+        "sha256": "3359b244a2b6327279abbe7d5214da4adebb21243d001a8b0f786a68695a2e82",
+        "extension": ".txt",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.txt",
+        "bytes": 1405,
+        "sha256": "72c5c9cb4b23b5b5eef7771425533346e299563d012cb35d6ccecd10759b5ceb",
+        "extension": ".txt",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/c11/README_INSTALL_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_REVISED.txt",
+        "bytes": 881,
+        "sha256": "155c4fab6c61a06bb0cf4dbaeaaed32c86676d5d51322029f5626a288d7d848c",
+        "extension": ".txt",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D1.1_CHALLENGE_VISUAL_EDITORIAL_MAPPING_V1.0.md",
+        "bytes": 2260,
+        "sha256": "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "bytes": 2907,
+        "sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md",
+        "bytes": 1797,
+        "sha256": "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D3.0_PROCEDURAL_MUSIC_V5_DESIGN_CONTRACT.md",
+        "bytes": 2430,
+        "sha256": "3640f128022f9183f7044b4676746e81cfa1f226cd24c3b20859a4c3e85c34f8",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D3.1_SHARED_MUSIC_ENGINE_V5_CONTRACT.md",
+        "bytes": 2073,
+        "sha256": "4ca5ecc4ee9e560cb0af41a4e56e28635431ca2e28150ad3ca72b545a1bf1885",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D3.2_DETERMINISTIC_MUSIC_IMPLEMENTATION_CONTRACT.md",
+        "bytes": 1534,
+        "sha256": "8d3dc9d5f64d366579fdc61bca79997e02b31d239f3428b51a745462f92b5d7a",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D3.3_LOUDNESS_MOBILE_AUDIO_QA_CONTRACT.md",
+        "bytes": 1441,
+        "sha256": "022f58a09121f1927aa36ba5a68d9ec753051546bbf25e8646590eadbd8a45c9",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_CONTEXT_BINDING_CHECKPOINT_V1.md",
+        "bytes": 2256,
+        "sha256": "9bd72da83289506b7ff02970b4c798ad472dc6d03675211e023cb91ab73102f1",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/d/D_RENDERER_SHARED_EDITORIAL_PRESENTATION_INHERITANCE_CHECKPOINT_V1.md",
+        "bytes": 2433,
+        "sha256": "2c66afa77ebaf167dc04895daee6f1c9009e7d0021000293a3e7ef0471527475",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/current/e/C11E_APPLY_AND_INSTALLER_STANDARD_20261104_V1.md",
+        "bytes": 2374,
+        "sha256": "b0a0dd071a27eaa9b44870b60b254a05e5740806d0a9d86d9a6a87d0b887ddb8",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/current/e/C11E_CURRENT_AUTHORITY_20261104_V51.md",
+        "bytes": 3340,
+        "sha256": "bc4bf132984e315645a6731f65cae37cddcab0520b3c5253e81fde5e84b03f7f",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261104_V26.md",
+        "bytes": 2096,
+        "sha256": "08a8ec9b9152429dee712e3edc5c62cece9d712adbdb098a00c1055353c8702f",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261104_V6.md",
+        "bytes": 1092,
+        "sha256": "f8aa134f41b2374fafab3a1348d087f4f9452daeec2c1309d9e280137834a77f",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261104_V49.md",
+        "bytes": 1690,
+        "sha256": "a47dd9a6468f1514823c0c2fd54116b305fc795b695e79005c1f011cce53d8f4",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.0.md",
+        "bytes": 2429,
+        "sha256": "f6227647ac322427a7054f24a9dde412a1de5e79f22f9e334678dc42ea3b1808",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.1.md",
+        "bytes": 950,
+        "sha256": "9c2a5a4de25d6bc0ddccb50cf642cfb2fd6524e581fb3c914e047dd685e7fca7",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.2.md",
+        "bytes": 1391,
+        "sha256": "b77a96a54ea6c463f0e3d3f3644ac03ae71b1b72f8d9d82e3be73eabae585346",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.3.md",
+        "bytes": 458,
+        "sha256": "3178fb4155c5015c60bac0d2b84eee9ed7f5e0ca5407b37e07e3fcc8b014463c",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.4.md",
+        "bytes": 2445,
+        "sha256": "6cd8d36830799fc705283e50219325f6ba2416d1697640fff8f14008a906d6e5",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_DRILL_SOCIAL_PRESENTATION_CONTRACT_v1.5.md",
+        "bytes": 1348,
+        "sha256": "a058aac13cd33665fad807284568a2bf61c87471619231a4cdfce8d247c3030f",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.1.md",
+        "bytes": 2324,
+        "sha256": "c439d74371b5ba473a5a293a5a8d18f4e67b36e5cfd4eb764c2e1dd8b1411eb0",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11-C_VISUAL_PRESENTATION_OVERLAY_CONTRACT_v2.2.2.md",
+        "bytes": 2153,
+        "sha256": "9d7370f5580c057f6ad72dbdc37593bedf3403b9637aa570f2850becebb16698",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1_OVERLAY_MANIFEST.json",
+        "bytes": 1439,
+        "sha256": "0e0b34d4df3d9e33b213bc687197d62e7fb29070f417c4035c82ef0fc266bef9",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11/README_C11C_VISUAL_DRILL_SOCIAL_PRESENTATION_V1.md",
+        "bytes": 2435,
+        "sha256": "584f0353cd8fd602c8936375accdca02199d6e1ace824c118ae1680825a76fd3",
+        "extension": ".md",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261104_V39.md",
+        "bytes": 2798,
+        "sha256": "a9cb94ea2b6c015c66076f3797fcf8ed23cee830c1e752afd6139f1876825831",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/history/c11d/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_PROPOSAL_20261103_V1.md",
+        "bytes": 5201,
+        "sha256": "a1151999003b890abedb5d3b73382d1861d8ef3a56b0768a10fe480cfa841405",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "docs/history/c11e/C11E_E4A3D1_HEADER_DIAGNOSTIC_SEMANTICS_FIX_CHECKPOINT_20261104_V3.md",
+        "bytes": 3623,
+        "sha256": "a2135913d575d90a60dd642a259678f34364ee30e7a73bf903a6350c16c87c7f",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "GeneradorMaestro.gd",
+        "bytes": 36991,
+        "sha256": "4f10144c62c7bc149bd46aa37494b1df40c7185544b8477153150eec71c1aaf9",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "icon.svg",
+        "bytes": 995,
+        "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+        "extension": ".svg",
+        "reason": "Transitive Godot resource referenced by project.godot"
+      },
+      {
+        "path": "Main.tscn",
+        "bytes": 1086,
+        "sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+        "extension": ".tscn",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "profiles/assets/fam_001.json",
+        "bytes": 318,
+        "sha256": "3cbbd5e674ef97accbc52f49c0ff15403ccdbb3022e31b878004d6c865f025af",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_catch_01.json",
+        "bytes": 303,
+        "sha256": "d0c0528af2f93cf9cca381839678d5a300b8a80ad4879084b12d8baeae19cc0f",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_choose_01.json",
+        "bytes": 330,
+        "sha256": "2ce3331a3891087b4ea2ac3b86cc2b39c62f7df7d5794670b9dd9227836d8c6e",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_count_01.json",
+        "bytes": 326,
+        "sha256": "0a29352033d754e426db3025829e38f23ceee6c73e086bf74e42e4d418c585cd",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_find_01.json",
+        "bytes": 322,
+        "sha256": "cb581d065d6c99635c44f07fa185f8e64a705b4c3aef4e428e6bd5d2077a39ad",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_garage_01.json",
+        "bytes": 325,
+        "sha256": "2f934644cf67d00e7804f30a543818a96e2d5f9158d96531cc6ac9bf910ebfb5",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_hit_01.json",
+        "bytes": 302,
+        "sha256": "163df1585728736a104281cae7c5081daf1ad817a56b475b49b17483f09ffa30",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_key_01.json",
+        "bytes": 311,
+        "sha256": "3c2b25aa96ff16c3e0dce71ac2877ceb9ad4da41cc6a4f33eb39d72fa1a4ad2c",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/assets/fam_pilot_01.json",
+        "bytes": 321,
+        "sha256": "e3efc2555273eccd6f7aea44307c48adb04813dbab4e7f5cd2f0c559509de940",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/assets/"
+      },
+      {
+        "path": "profiles/audio/audio_assets.json",
+        "bytes": 1520,
+        "sha256": "22d73d40cfecce4e542b5c29996b3fb03d0a72a5cc1852dc675228746b6149b5",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/c7_profile_mixed_alt.json",
+        "bytes": 236,
+        "sha256": "f0779a4564ba2b38648bfcae507eec88d33aa0d02a48066b07354ff4e7e70ffd",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/c7_profile_mixed_overlap.json",
+        "bytes": 285,
+        "sha256": "690eaf2406df7e4ebb313619f83b22a0792a75e49b83e349ce619594780f9c43",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/c7_profile_multi_noise.json",
+        "bytes": 240,
+        "sha256": "6dad92453bb2d5faf22c48139a2dfd733a18dbeeab646a1f3c12558558a68d23",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/c7_profile_noise_only.json",
+        "bytes": 239,
+        "sha256": "68bf31d1530fd9083eddeaea35b92162a910516dfd57f1568a75a7226cd3cc5f",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/c7_profile_tone_only.json",
+        "bytes": 237,
+        "sha256": "18e02411efbf0d34c55749df6fbefe78141f68a9fedbc69cfbf7255c43006e51",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/c7_test_profile.json",
+        "bytes": 254,
+        "sha256": "b9b0573c619459c87401bca57661138f362cceccd7f22a02b7ccecc192812f11",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/default_asset_music.json",
+        "bytes": 298,
+        "sha256": "2482243ef443b2d6736a4b9312c9d1593d69ac9ed790f461d4a78e6ae6050798",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/default_procedural_music.json",
+        "bytes": 265,
+        "sha256": "da9dbe405a736a868bb4234a6123e6809945e218d7207e3ffcd366df8911f3ed",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/fake_identity.json",
+        "bytes": 261,
+        "sha256": "04d8b970fb3914232fafebec26d343a36c14a65f80532615341fa7f2394801ca",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/audio/tone_burst.json",
+        "bytes": 662,
+        "sha256": "b7194d998bf4235513e934ae4f76bb7802f0f7f5dd3ad72e42ee781e9c0ab793",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/audio/"
+      },
+      {
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "bytes": 3158,
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "profiles/presentation/c11c_visual_hooks.json",
+        "bytes": 4031,
+        "sha256": "c6367bdfaccc2bdb51ebb030b23bd60953dc6c4c2f0690073370762896ba2e87",
+        "extension": ".json",
+        "reason": "Transitive Godot resource referenced by core/presentation/C11CVisualHookBank.gd"
+      },
+      {
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "bytes": 7038,
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+        "extension": ".json",
+        "reason": "Transitive Godot resource referenced by core/presentation/C11CVisualMusicProfile.gd"
+      },
+      {
+        "path": "profiles/video/f4_legacy_60_h0_g7_r0_c0.json",
+        "bytes": 183,
+        "sha256": "1ed476739fddad3b093da4adadb92cd78369b03cd47663221e0c1ea9168d40e8",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/f4_legacy_60_h0_g7_r0_c2.json",
+        "bytes": 183,
+        "sha256": "f23a38a454f02114df2ba478854d17bb9272fd8081177fcf4a6893706946a88f",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/f4_legacy_60_h3_g7_r0_c0.json",
+        "bytes": 183,
+        "sha256": "33628b3ac326e3ded85faf00d51112ad700ae4489a0d0ab2796dac07b5bcd4c1",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/f4_legacy_60_h3_g7_r0_c2.json",
+        "bytes": 183,
+        "sha256": "11cdc0d3f5047fa1dd8e70fb14c9133f34e976fcdc851d2c92e90450651734fb",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/f4_legacy_60_h3_g7_r3_c2.json",
+        "bytes": 183,
+        "sha256": "7bedcf45282bd198cf1ec4be3ee63ccaa2cc83561eb1d678dc59655301ab3b0d",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/master_11s.json",
+        "bytes": 168,
+        "sha256": "f287240f67ea083239c3c38b7410444bbab2a506229675a01775f835f7fa10e3",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/parking_v2_social_15s.json",
+        "bytes": 180,
+        "sha256": "12b49f14e0ee755d290f7dd36471723da6337ab3244461fc0088a3e3b77c5a82",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/shadow_f4_60_h0_g7_r0_c0.json",
+        "bytes": 175,
+        "sha256": "d669b4f2f70baffa9181c96a6142e9a7cee925ce3d82e8d0814bc9931d1bf0a8",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/shadow_f4_60_h0_g7_r0_c2.json",
+        "bytes": 175,
+        "sha256": "cc8a5c3cdbfbfaa0caf6c9b9e4a4bfa6e10c08a03f47b254131d6c920047590f",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/shadow_f4_60_h3_g7_r0_c0.json",
+        "bytes": 175,
+        "sha256": "37e6d74aa428ffed19fbda4884fb5bde7d53c838d20e0b6bf6f84f422e6796e2",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/shadow_f4_60_h3_g7_r0_c2.json",
+        "bytes": 175,
+        "sha256": "c89f467e4713c63dd2e6dacc02ad845b1ba796dec5bdf047379ff4cae7ee9f3f",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/shadow_f4_60_h3_g7_r3_c2.json",
+        "bytes": 175,
+        "sha256": "2661154612bb20f969d4c86bd82a2b3c685c0233827a9ae0911522e1fa7dfecf",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/standard_8s.json",
+        "bytes": 169,
+        "sha256": "822f5f8fd7571263e7cd888d62e5b5570eceaceb2d57cd8e13b07956755be586",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "profiles/video/test_master_11s.json",
+        "bytes": 173,
+        "sha256": "6ac5ddd620d5300f1e365dd4dd8ca6c04e0f97c2ceb95ec48438d52059bff93b",
+        "extension": ".json",
+        "reason": "File contained in Godot-referenced resource directory profiles/video/"
+      },
+      {
+        "path": "project.godot",
+        "bytes": 868,
+        "sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+        "extension": ".godot",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261104_V49.md",
+        "bytes": 1655,
+        "sha256": "a44e6af4fb1f524ada147c05ba6e646ad563e585b32c61aba40be5672a2a8b27",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261104_V49.md",
+        "bytes": 1102,
+        "sha256": "9c2892d9ec7c66a062efe2599d61b73a0722311acc5da7c23faa2bf53b7351f3",
+        "extension": ".md",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "bytes": 796318,
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "extension": ".json",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+        "bytes": 14167,
+        "sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4a_d_compositor_real_body_pixel_review.py",
+        "bytes": 40675,
+        "sha256": "a8cdadb324bfa6026a308fc26cb9df8e5af2c5a14995d60f9c4544b6a7bf2505",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "bytes": 15051,
+        "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "bytes": 10868,
+        "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+        "bytes": 89712,
+        "sha256": "01deb2419f88012c162a1ab56013cb4a724fda72a5de70f5434cf5dad1a1e753",
+        "extension": ".gd",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/test_c11e_challenge_editorial_presentation_adapter.py",
+        "bytes": 6715,
+        "sha256": "d5c1dcaf553ace24f1f55b808e63ed47ee8d5f66f30334f422a19e3f238a0fc4",
+        "extension": ".py",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "tools/c11d/d9/test_c11e_e4a_d_compositor_real_body_pixel_review.py",
+        "bytes": 20914,
+        "sha256": "fc60c327a481fd8c62223b10c8dfb2a046892c065d46edb0175181b1f8b050e6",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "bytes": 26574,
+        "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/universal_producer.py",
+        "bytes": 19692,
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/c11d/d9/universal_producer_cli.py",
+        "bytes": 3480,
+        "sha256": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54",
+        "extension": ".py",
+        "reason": "Original E4A.5 inventoried source member"
+      },
+      {
+        "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+        "bytes": 18191,
+        "sha256": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+        "extension": ".ps1",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CDrillPaletteBank.gd",
+        "bytes": 27201,
+        "sha256": "757786a6bcc4e819fd43c1c41ea29e8b00dbe3b3f2f5c72fa19776a368b3c8ec",
+        "extension": ".gd",
+        "reason": "Transitive Godot resource referenced by core/presentation/VisualDrillPresentationBinder.gd"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd",
+        "bytes": 9631,
+        "sha256": "44c4a9a11c334e6e84fcc1413667accac175781787866c3d6b894beeba3ea255",
+        "extension": ".gd",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      },
+      {
+        "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+        "bytes": 15597,
+        "sha256": "c3572a8d7c3ed0ee1d8ebad5aceff62e19236217b69eb415b9f0234a6339f859",
+        "extension": ".ps1",
+        "reason": "E4A.5B required Challenge root/launcher/GUI/E1/source-contract supplement"
+      }
+    ],
+    "assets": [
+      {
+        "path": "assets/fonts/Inter-Bold.otf",
+        "bytes": 631880,
+        "sha256": "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d",
+        "referenced_by": [
+          "core/presentation/C11CVisualTypography.gd"
+        ]
+      },
+      {
+        "path": "assets/fonts/NotoSansMono-Regular.ttf",
+        "bytes": 510612,
+        "sha256": "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f",
+        "referenced_by": [
+          "core/presentation/C11CVisualTypography.gd"
+        ]
+      },
+      {
+        "path": "docs/current/d/D1.1_CHALLENGE_VISUAL_EDITORIAL_MAPPING_V1.0.md",
+        "bytes": 2260,
+        "sha256": "7060e72c6b32c31a3f1eb9f7bd242e9dbb3c792aecc2728f67ee86403af06e84",
+        "referenced_by": [
+          "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+        ]
+      },
+      {
+        "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "bytes": 2907,
+        "sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+        "referenced_by": [
+          "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+        ]
+      },
+      {
+        "path": "docs/current/d/D1.7_CHALLENGE_VISUAL_EDITORIAL_DECLARATIVE_MAPPING.md",
+        "bytes": 1797,
+        "sha256": "283a659af9c9d8c482355ef77fedd0ccc7bfc7461b60b867ecc1a9ac3a60950a",
+        "referenced_by": [
+          "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+        ]
+      },
+      {
+        "path": "docs/history/c11d/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_PROPOSAL_20261103_V1.md",
+        "bytes": 5201,
+        "sha256": "a1151999003b890abedb5d3b73382d1861d8ef3a56b0768a10fe480cfa841405",
+        "referenced_by": [
+          "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+        ]
+      },
+      {
+        "path": "profiles/assets/README.md",
+        "bytes": 1104,
+        "sha256": "1eaad368a0beacf1a3fbbfbb81e9794c36031f7eed5e8f6ecc74003f25561c5f",
+        "referenced_by": [
+          "core/authoring/AssetFamilyRegistry.gd"
+        ]
+      },
+      {
+        "path": "profiles/audio/README.md",
+        "bytes": 1319,
+        "sha256": "3d066b85075d31b975ca0d3fbf709e1b9bfcf097dcf630f403ee5e23b847eedc",
+        "referenced_by": [
+          "core/authoring/AudioProfileRegistry.gd"
+        ]
+      },
+      {
+        "path": "profiles/video/README.md",
+        "bytes": 1590,
+        "sha256": "dc692f5c8daf313047efd12fb4cfc08606bee919fe86046baf070644429843c2",
+        "referenced_by": [
+          "core/authoring/VideoProfileRegistry.gd"
+        ]
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4a_challenge_pixel_review.py",
+        "bytes": 21702,
+        "sha256": "939a12f369df9eaa0dbaf5b06b0635a0d4dc906e14fd7d5bdf9c12b3ec2b97a0",
+        "referenced_by": [
+          "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd"
+        ]
+      }
+    ]
+  },
+  "static_anchors": {
+    "main_scene_project_declared": true,
+    "main_scene_attaches_generador": true,
+    "main_scene_uses_unified_frame": true,
+    "root_has_4_phase_builders": true,
+    "root_has_4_social_binder_calls": true,
+    "timeline_advance_once_after_phase_match": true,
+    "social_binder_delegates_to_presentation_ui": true,
+    "presentation_ui_shared_mode_defaults_false": true,
+    "challenge_native_hook_component_exists": true,
+    "challenge_countdown_component_exists": true,
+    "native_cta_component_added_to_footer_nonshared": true,
+    "shared_layer_adds_footer_label": true,
+    "shared_layer_mounts_unified_frame": true,
+    "accepted_adapter_is_test_only_contract": true,
+    "root_does_not_currently_mount_shared_layer": true
+  },
+  "scope": "PASS_READ_ONLY_SOURCE_REVIEW_FROM_USER_SUPPLIED_LATEST_SNAPSHOT; GIT_PROVENANCE_UNAVAILABLE; E4A6_DESIGN_ONLY",
+  "governance": {
+    "c11c_revision": "2.19.12",
+    "c11c_freeze_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "renderer": "OFF",
+    "production_dispatch": "OFF",
+    "media_creation": "OFF",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE"
+  },
+  "limitations": [
+    "Snapshot archive contains no .git metadata; git HEAD/branch/worktree status cannot be established from this source bundle.",
+    "Static review proves source call sites and routing, not a runtime render.",
+    "E4A.6 remains a separate implementation/test gate.",
+    "E4A.5B source closure is a source review against user-supplied latest snapshot; Windows live-checkout identity/status has not been independently observed in this environment.",
+    "No Git metadata is present in the supplied snapshot; source review cannot attest branch, HEAD or worktree cleanliness.",
+    "No live Godot/FFmpeg execution occurred; source review is static and does not claim E4A.6 runtime acceptance.",
+    "The current D9.9 Challenge materializer creates an in-memory test-only composition; E4A.6 must define and validate a D-owned envelope transport to the root without modifying the C11-C launcher/QA path.",
+    "The existing helper apply_to_shared_layer mounts/recreates the shared layer on each call; it is not suitable as a per-frame live consumer entrypoint."
+  ]
+}

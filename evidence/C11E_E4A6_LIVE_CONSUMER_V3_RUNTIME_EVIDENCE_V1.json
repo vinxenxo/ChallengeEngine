@@ -1,0 +1,74 @@
+{
+  "schema": "C11E-E4A6-LIVE-CONSUMER-V3-RUNTIME-EVIDENCE-V1",
+  "evidence_archive": "C11E_E4A6_LIVE_CONSUMER_V3_20261105_140409.zip",
+  "evidence_archive_sha256": "1e5969c3b3a17f3a39381438f5fd12f97dd38573b62639de8db3e65caa39063d",
+  "archive_crc": "PASS",
+  "archive_entries": 22,
+  "archive_uncompressed_bytes": 64242,
+  "receipt_sha256": "03e568bf78d442949c70495c946ab1995e07ee48b98db00fcc6efb729c7494fe",
+  "receipt_schema": "C11E-E4A6-LIVE-CONSUMER-APPLY-RECEIPT-V3",
+  "receipt_status": "PASS_TEST_ONLY",
+  "timestamp_local": "2026-11-05T14:04:38.7353782+01:00",
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "git_head": "a18444655cdb844104561840a59a473b7bbbb172",
+  "generadormaestro": {
+    "sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+    "written": false
+  },
+  "consumer": {
+    "pre_sha256": "bbd1e67dfd4b36fcfafbf0e50eb09a45290830ab3fe070309c431e756fa5af04",
+    "post_sha256": "1a187fd156fc69caea7f8903e7e48b82379e32089878e507167f22f07a018384"
+  },
+  "focused_test_module": {
+    "pre_sha256": "0f3839a6d967c2660c7715eeb93d85c363dc2760b7005c2d577dae8d8a5e23bc",
+    "post_sha256": "361d96f41acec3d832a19d491d1ff964ff6e8df996e2d6486a6db78874f5345f"
+  },
+  "python": {
+    "py_compile": "PASS",
+    "focused_tests": "17/17_PASS",
+    "stderr_bytes": 0
+  },
+  "godot": {
+    "version": "4.7.1",
+    "editor_import": "PASS",
+    "editor_import_stderr_bytes": 0,
+    "live_root": "PASS",
+    "live_root_stderr_bytes": 0
+  },
+  "live_consumer_summary": {
+    "status": "PASS_TEST_ONLY",
+    "enabled": true,
+    "failed": false,
+    "frames_seen": 900,
+    "mount_count": 1,
+    "header_d_owner_frames": 180,
+    "footer_d_owner_frames": 120,
+    "native_cta_owner_frames": 0,
+    "renderer_input_emitted": false,
+    "production_dispatch": false,
+    "media_created": false,
+    "release_authority": "NONE"
+  },
+  "envelope": {
+    "sha256": "d7f3814ef1bcce4719f59e4eab013ff6f650475a77f5d290d7f46c142f6914ec",
+    "intent_hash": "13f302a203fbbd68579ac487485a6c7eac451fb838c93583fda77f39e6f55f3e",
+    "source_timebase": "60FPS/900FRAMES"
+  },
+  "scope_limits": [
+    "No Movie Maker invocation",
+    "No FFmpeg invocation",
+    "No audio export",
+    "No video or image media generated",
+    "No production dispatch",
+    "No production renderer input emitted",
+    "E4A.6 runtime PASS does not grant visual placement/layout approval or complete E4A acceptance"
+  ],
+  "separate_audio_mux_evidence": {
+    "report_sha256": "14cc43332e09c698a55e921be4538af8335d5495864a5c25c1c1611b689cdcbf",
+    "receipt_sha256": "8d351c513b6972d4f583dfe6678ab46e0441ab0466315a03abf1ce1179c115ca",
+    "status": "PASS_ISOLATED_E4A4_CHALLENGE_AUDIO_MUX_TEST_ONLY",
+    "fullframe_d_compositor_embedded_in_mp4": false,
+    "operator_audio_review": "PENDING",
+    "operator_video_review": "PENDING"
+  }
+}

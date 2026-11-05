@@ -1,0 +1,10 @@
+# C11-E E4A Challenge / E4B Loop / E4C Drill Alignment — V8
+
+- **Challenge native phases:** canonical `HOOK/GAME/REVEAL/CTA`. The implementation adds one D-only post-bind consumer after each existing `SocialUIBinder.bind_render_model(rm)`. It must not change phase keys, native source offsets, frame count or the single `timeline.advance()` after the phase match.
+- **Challenge binder ownership:** one native full `SocialUIBinder` apply per frame. Do not call `PresentationUI.apply_render_model` again. That method also processes RevealManager/WinningHighlight. D performs targeted Hook/Countdown/CTA visibility only and updates the C11C shared editorial layer, mounted once per session.
+- **Challenge editorial semantics:** title/subtitle => HEADER only during HOOK; native hook remains primary header line when `show_hook_countdown` is ON; call_to_action => FOOTER only during CTA; language metadata-only; player_name/challenge_label stay blocked due unresolved Challenge overlay geometry. One CTA owner: D footer only while approved non-empty CTA is active, native CTA otherwise.
+- **Envelope:** separate E1-backed Challenge-only sidecar, not injected into canonical Challenge JSON, SimulationResult or FrameSnapshot. It binds Challenge identity, intent, FPS/900 source frames, half-open phase windows, six-field allowlist, policy/layout pins and non-dispatch/non-media governance. The live consumer is opt-in and lazily loaded.
+- **Visual Loop:** preserve five families / 27 grammar identities, C11-C shared binder and family+grammar music. Do not apply Challenge sidecar, phase ranges or `show_hook_countdown` to Loop.
+- **Visual Drill:** preserve four types / 20 variants, existing presentation layer, phase/END_CTA precedence and Drill music. Do not alias Challenge fields to Drill fields.
+- **Orchestration:** common E1 intent preparation does not imply one universal binder, phase model, CTA owner or music route.
+- **Phase sequencing:** E4A.6 Windows Godot 4.7.1 runtime proof remains required; E4A final additionally requires actual D3 V5 audio/mux/FFprobe and GUI/CLI/human review. E4B/E4C remain held.

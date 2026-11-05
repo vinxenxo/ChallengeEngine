@@ -52,6 +52,7 @@ var static_target_base_position: Vector2 = Vector2.ZERO
 var presentation_ui: PresentationUI
 var presentation_profile: PresentationProfile
 var social_ui_binder: SocialUIBinder
+var c11e_live_editorial_consumer: Variant = null
 
 
 @onready var bg_sprite: Sprite2D = $OptimizadorVertical/PantallaVideo/UnifiedSocialFrame/BodyRegion/BodyContentRoot/GestorJuego/FondoEstatico
@@ -249,6 +250,8 @@ func _ready() -> void:
 	)
 
 	social_ui_binder = SocialUIBinder.new(presentation_ui, presentation_profile)
+	if not _configure_c11e_live_editorial_consumer():
+		return
 
 	print(
 		"[C6_UI] root=",
@@ -1106,6 +1109,12 @@ func _process(_delta: float) -> void:
 		return
 
 	if timeline.is_finished():
+		if c11e_live_editorial_consumer != null:
+			var e4a6_summary: Dictionary = c11e_live_editorial_consumer.get_runtime_summary()
+			print("C11E_E4A6_LIVE_CONSUMER_SUMMARY=" + JSON.stringify(e4a6_summary))
+			if bool(e4a6_summary.get("failed", false)) or int(e4a6_summary.get("mount_count", 0)) > 1:
+				get_tree().quit(1)
+				return
 		get_tree().quit(0)
 		return
 
@@ -1148,6 +1157,8 @@ func _process(_delta: float) -> void:
 					"HOOK", ui_content, presentation_ui.current_profile
 				)
 				social_ui_binder.bind_render_model(rm)
+				if not _apply_c11e_live_editorial_after_native_bind(rm):
+					return
 
 		"GAME":
 			object_sprite.visible = true
@@ -1168,6 +1179,8 @@ func _process(_delta: float) -> void:
 					"GAME", ui_content, presentation_ui.current_profile
 				)
 				social_ui_binder.bind_render_model(rm)
+				if not _apply_c11e_live_editorial_after_native_bind(rm):
+					return
 
 		"REVEAL":
 			object_sprite.visible = true
@@ -1180,6 +1193,8 @@ func _process(_delta: float) -> void:
 					"REVEAL", ui_content, presentation_ui.current_profile
 				)
 				social_ui_binder.bind_render_model(rm)
+				if not _apply_c11e_live_editorial_after_native_bind(rm):
+					return
 
 		"CTA":
 			object_sprite.visible = true
@@ -1192,11 +1207,73 @@ func _process(_delta: float) -> void:
 					"CTA", ui_content, presentation_ui.current_profile
 				)
 				social_ui_binder.bind_render_model(rm)
+				if not _apply_c11e_live_editorial_after_native_bind(rm):
+					return
 
 		_:
 			object_sprite.visible = false
 
 	timeline.advance()
+
+
+func _configure_c11e_live_editorial_consumer() -> bool:
+	var envelope_path: String = get_cli_arg_value("--c11e-editorial-envelope")
+	if envelope_path.is_empty():
+		return true
+	var unified_frame: UnifiedSocialFrame = presentation_ui_root as UnifiedSocialFrame
+	if unified_frame == null:
+		emit_engine_error(
+			"C11E_E4A6_FRAME_MISSING",
+			"D live Challenge editorial requires the canonical UnifiedSocialFrame root.",
+			"--c11e-editorial-envelope was supplied but Main.tscn did not resolve UnifiedSocialFrame"
+		)
+		get_tree().quit(1)
+		return false
+	var consumer_script: Script = load("res://tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd") as Script
+	if consumer_script == null:
+		emit_engine_error(
+			"C11E_E4A6_CONSUMER_SCRIPT_MISSING",
+			"D live Challenge editorial consumer script could not be loaded.",
+			"res://tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd"
+		)
+		get_tree().quit(1)
+		return false
+	c11e_live_editorial_consumer = consumer_script.new()
+	var configured: Dictionary = c11e_live_editorial_consumer.configure_from_file(
+		envelope_path,
+		config_cache,
+		timeline,
+		presentation_ui,
+		unified_frame
+	)
+	if not bool(configured.get("success", false)):
+		emit_engine_error(
+			"C11E_E4A6_ENVELOPE_INVALID",
+			"D live Challenge editorial envelope failed validation.",
+			str(configured.get("error", "unknown"))
+		)
+		get_tree().quit(1)
+		return false
+	print("C11E_E4A6_LIVE_CONSUMER_CONFIGURED=" + JSON.stringify(configured))
+	return true
+
+
+func _apply_c11e_live_editorial_after_native_bind(native_render_model: Dictionary) -> bool:
+	if c11e_live_editorial_consumer == null:
+		return true
+	var consumed: Dictionary = c11e_live_editorial_consumer.apply_after_native_bind(
+		native_render_model,
+		timeline.get_current_frame()
+	)
+	if not bool(consumed.get("success", false)):
+		emit_engine_error(
+			"C11E_E4A6_LIVE_CONSUMER_FAILED",
+			"D live Challenge editorial consumer failed closed after the native binder.",
+			str(consumed.get("error", "unknown"))
+		)
+		get_tree().quit(1)
+		return false
+	return true
 
 
 # ============================================================
