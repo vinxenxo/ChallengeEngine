@@ -49,6 +49,15 @@ var _header_owner_frames: int = 0
 var _footer_owner_frames: int = 0
 var _native_cta_owner_frames: int = 0
 var _envelope_sha256: String = ""
+var _header_container: Control = null
+var _footer_container: Control = null
+var _header_background: ColorRect = null
+var _footer_background: ColorRect = null
+var _header_text: Label = null
+var _footer_text: Label = null
+var _header_rule: ColorRect = null
+var _footer_rule: ColorRect = null
+var _reserved_band_black_frames: int = 0
 
 func configure_from_file(
     envelope_path: String,
@@ -309,23 +318,35 @@ func apply_after_native_bind(native_render_model: Dictionary, absolute_source_fr
     if not bool(adapted_result.get("success", false)):
         return _fail("D native visibility adaptation failed: %s" % str(adapted_result.get("error", "unknown")))
 
-    var editorial_enabled := bool(shared_model_result.get("header_active", false)) or bool(shared_model_result.get("footer_active", false))
-    if editorial_enabled and not _mounted:
+    # The two social bands are reserved D presentation regions, not conditional
+    # decorations. Mount once whenever the D envelope is enabled so an empty or
+    # inactive editorial slot still paints opaque black instead of exposing the
+    # legacy gray root surface underneath it.
+    if not _mounted:
         _layer = SharedLayerScript.new()
         var mounted_value: Variant = _layer.call("mount", _frame)
         if typeof(mounted_value) != TYPE_BOOL or not bool(mounted_value):
             return _fail("C11C shared editorial layer could not mount on the existing UnifiedSocialFrame.")
         _mounted = true
         _mount_count += 1
-        var header_background := _frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderBackground") as ColorRect
-        var footer_background := _frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterBackground") as ColorRect
-        if header_background == null or footer_background == null:
-            return _fail("Mounted C11C shared editorial background nodes are incomplete.")
-        header_background.color = Color("05070B")
-        footer_background.color = Color("05070B")
+        _header_container = _frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader") as Control
+        _footer_container = _frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter") as Control
+        _header_background = _frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderBackground") as ColorRect
+        _footer_background = _frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterBackground") as ColorRect
+        _header_text = _frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderText") as Label
+        _footer_text = _frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterText") as Label
+        _header_rule = _frame.get_header_content_root().get_node_or_null("C11CVisualEditorialHeader/C11CHeaderRule") as ColorRect
+        _footer_rule = _frame.get_footer_content_root().get_node_or_null("C11CVisualEditorialFooter/C11CFooterRule") as ColorRect
+        if _header_container == null or _footer_container == null or _header_background == null or _footer_background == null or _header_text == null or _footer_text == null or _header_rule == null or _footer_rule == null:
+            return _fail("Mounted C11C shared editorial band nodes are incomplete.")
 
     if _mounted:
         _layer.call("apply_render_model", shared_model_result["render_model"])
+        if not _apply_reserved_band_state(
+            bool(shared_model_result.get("header_active", false)),
+            bool(shared_model_result.get("footer_active", false))
+        ):
+            return _fail("D reserved header/footer bands could not be forced to opaque black.")
 
     var adapted_model: Dictionary = adapted_result.get("render_model", {})
     # Targeted component visibility only. Native text/value remains configured
@@ -335,6 +356,7 @@ func apply_after_native_bind(native_render_model: Dictionary, absolute_source_fr
     _presentation_ui.cta.visible = bool(adapted_model.get("cta_visible", false))
 
     _frame_count += 1
+    _reserved_band_black_frames += 1
     if bool(shared_model_result.get("header_active", false)):
         _header_owner_frames += 1
     if bool(shared_model_result.get("footer_active", false)):
@@ -351,6 +373,28 @@ func apply_after_native_bind(native_render_model: Dictionary, absolute_source_fr
         "native_cta_owner": str(adapted_result.get("native_cta_owner", ""))
     }
 
+func _apply_reserved_band_state(header_active: bool, footer_active: bool) -> bool:
+    if _header_container == null or _footer_container == null or _header_background == null or _footer_background == null:
+        return false
+    if _header_text == null or _footer_text == null or _header_rule == null or _footer_rule == null:
+        return false
+
+    var opaque_black := Color(0.0, 0.0, 0.0, 1.0)
+    _header_container.visible = true
+    _footer_container.visible = true
+    _header_background.visible = true
+    _footer_background.visible = true
+    _header_background.color = opaque_black
+    _footer_background.color = opaque_black
+
+    # Only the field-bearing region may display D text/rules. Inactive regions
+    # remain present as black reserved bands, with no stale label or separator.
+    _header_text.visible = header_active
+    _header_rule.visible = header_active
+    _footer_text.visible = footer_active
+    _footer_rule.visible = footer_active
+    return true
+
 func get_runtime_summary() -> Dictionary:
     return {
         "schema": "C11E-E4A6-LIVE-CONSUMER-RUNTIME-SUMMARY-V1",
@@ -365,6 +409,8 @@ func get_runtime_summary() -> Dictionary:
         "header_d_owner_frames": _header_owner_frames,
         "footer_d_owner_frames": _footer_owner_frames,
         "native_cta_owner_frames": _native_cta_owner_frames,
+        "reserved_band_policy": "OPAQUE_BLACK_ALWAYS_WHILE_D_ENVELOPE_ENABLED",
+        "reserved_band_black_frames": _reserved_band_black_frames,
         "production_dispatch": false,
         "renderer_input_emitted": false,
         "media_created": false,

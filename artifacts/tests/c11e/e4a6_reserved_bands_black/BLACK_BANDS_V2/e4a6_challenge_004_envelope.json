@@ -1,0 +1,414 @@
+{
+  "challenge_id": "CHALLENGE_004",
+  "content_type": "challenges",
+  "e1_intent": {
+    "delivery": {
+      "audio_enabled": false,
+      "presentation_profile_id": "social_default_v1",
+      "requested_profile_id": "REVIEW_720",
+      "resolved_profile_id": "REVIEW_720"
+    },
+    "editorial": {
+      "call_to_action": "FOLLOW FOR MORE",
+      "challenge_label": "BLOCKED CHALLENGE LABEL",
+      "language": "es",
+      "player_name": "BLOCKED PLAYER TEST",
+      "subtitle": "D HEADER SUBTITLE",
+      "title": "E4A.6 LIVE TITLE"
+    },
+    "editorial_field_consumption": {
+      "call_to_action": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E2",
+        "resolved": true
+      },
+      "challenge_label": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E2",
+        "resolved": true
+      },
+      "language": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E2",
+        "resolved": true
+      },
+      "player_name": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E2",
+        "resolved": true
+      },
+      "subtitle": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E2",
+        "resolved": true
+      },
+      "title": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E2",
+        "resolved": true
+      }
+    },
+    "execution_boundary": {
+      "d4_8": "BLOCKED",
+      "dispatch_authorized": false,
+      "media_created": false,
+      "production_execution": false,
+      "release_authority": "NONE",
+      "renderer_activation": false,
+      "renderer_dispatch_invoked": false,
+      "renderer_input_emitted": false
+    },
+    "family_adapter": {
+      "adapter_id": "c11e_challenges_adapter",
+      "renderer_input_emitted": false,
+      "status": "NOT_CONNECTED_E1",
+      "target_gate": "E2"
+    },
+    "identity": {
+      "editorial_hash": "f1075c8cc481d4dacbe461d9aea35e8257ce1b8f929eebad50fceca99cb083c7",
+      "intent_hash": "5656b24ec7cb44a08d2ee9df5c7eb57b64401f4bff3f9a892516c7e94a5e75e8",
+      "plan_hash": "d94f89d497cd1e02469cad2f016cd5cdd31afecac62f91635ace4a098aa50ebf",
+      "request_hash": "e4463a99e6ca4d5dd70737d4e3506c6b047c02f8c7f56b68af10c75400bd26f7"
+    },
+    "intent_sha256": "b0c2b2935d155c6cdb4020bce9a686dcfc710fd979b81d7ebbdb4c227347a0cf",
+    "music_contract": {
+      "audio_created": false,
+      "audio_enabled": false,
+      "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+      "contract_path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "contract_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+      "contract_version": "1.0",
+      "dispatch_authorized": false,
+      "dispatchable": false,
+      "engine": {
+        "engine_id": "c11d_music_engine_v5",
+        "engine_version": "5.0",
+        "source_path": "tools/c11d/d3/c11d_music_engine_v5.py",
+        "source_sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+        "spec_path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+        "spec_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+      },
+      "engine_invoked": false,
+      "engine_request": null,
+      "ffmpeg_mux_invoked": false,
+      "music_seed": 840001,
+      "music_seed_field": "request.music_seed",
+      "release_authority": "NONE",
+      "renderer_invoked": false,
+      "route": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY",
+      "status": "DISABLED_BY_REQUEST",
+      "style_profile": {
+        "profile_id": "challenge_8bit_v1",
+        "profile_version": "1.0",
+        "source_path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+        "source_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+      },
+      "unresolved_engine_parameters": [],
+      "variation_index": 0
+    },
+    "output": {
+      "created": false,
+      "overwrite_policy": "DENY_EXISTING",
+      "planned_root": "artifacts/production/c11e/E4A6-CH004-LIVE-20261105T214811Z-333CAD33",
+      "planned_root_exists": false
+    },
+    "request": {
+      "content_type": "challenges",
+      "mode": "REVIEW",
+      "presentation_options": {
+        "show_hook_countdown": true
+      },
+      "request_id": "E4A6-CH004-LIVE-20261105T214811Z-333CAD33",
+      "selection": {
+        "content_type": "challenges",
+        "difficulty_tier": null,
+        "family_id": "parking_v2",
+        "subtype_id": null,
+        "variant_id": "CHALLENGE_004",
+        "variant_scope_id": "challenge:CHALLENGE_004"
+      },
+      "variation_index": 0
+    },
+    "request_origin": "TEST",
+    "schema": "C11-E-PRODUCTION-INTENT-V1",
+    "schema_version": "1.1",
+    "seed_domains": {
+      "automatic_generation": false,
+      "cross_domain_sharing": "FORBIDDEN",
+      "gameplay": {
+        "field": "request.seed",
+        "value": 314159
+      },
+      "independent_domains": true,
+      "music": {
+        "field": "request.music_seed",
+        "value": 840001
+      },
+      "runtime_derivation": false
+    },
+    "service_version": "0.2.0-E3.2",
+    "source_identity": {
+      "c11c_manifest": {
+        "bytes": 796318,
+        "disposition": "IMMUTABLE_REFERENCE_ONLY",
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      "source_pins": [
+        {
+          "bytes": 19692,
+          "path": "tools/c11d/d9/universal_producer.py",
+          "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+        },
+        {
+          "bytes": 26574,
+          "path": "tools/c11d/d9/universal_editorial_model.py",
+          "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+        },
+        {
+          "bytes": 9183,
+          "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+          "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+        },
+        {
+          "bytes": 12692,
+          "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+          "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+        },
+        {
+          "bytes": 1761,
+          "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+          "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+        },
+        {
+          "bytes": 3158,
+          "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+          "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+        },
+        {
+          "bytes": 32714,
+          "path": "c11c-suite/c11c-producer/producer_schema.json",
+          "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+        },
+        {
+          "bytes": 1543,
+          "path": "challenges/CHALLENGE_004.json",
+          "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+        },
+        {
+          "bytes": 5256,
+          "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+          "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+        },
+        {
+          "bytes": 3313,
+          "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+          "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+        },
+        {
+          "bytes": 2818,
+          "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+          "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+        },
+        {
+          "bytes": 1943,
+          "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+          "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+        }
+      ]
+    },
+    "status": "PREPARED_E1_NOT_DISPATCHED"
+  },
+  "fields": [
+    {
+      "disposition": "READY_FOR_ISOLATED_TEST_PIXEL_DRAW",
+      "effective_value": "E4A.6 LIVE TITLE",
+      "field": "title",
+      "kind": "visual_text",
+      "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "region": "HEADER",
+      "source_frame_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "source_phase_windows": [
+        "HOOK"
+      ],
+      "source_value_sha256": "8054e9e887f9776b811b6cff9f55bebe66e11be311d60c527b720f18b6504804",
+      "value_sha256": "8054e9e887f9776b811b6cff9f55bebe66e11be311d60c527b720f18b6504804"
+    },
+    {
+      "disposition": "READY_FOR_ISOLATED_TEST_PIXEL_DRAW",
+      "effective_value": "D HEADER SUBTITLE",
+      "field": "subtitle",
+      "kind": "visual_text",
+      "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "region": "HEADER",
+      "source_frame_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "source_phase_windows": [
+        "HOOK"
+      ],
+      "source_value_sha256": "6316f7dbb4906cd6ecb2f4c94e08105de2db3b2db2981862d0edf32561d99e37",
+      "value_sha256": "6316f7dbb4906cd6ecb2f4c94e08105de2db3b2db2981862d0edf32561d99e37"
+    },
+    {
+      "disposition": "BLOCKED_GEOMETRY_UNRESOLVED",
+      "effective_value": "BLOCKED PLAYER TEST",
+      "field": "player_name",
+      "kind": "visual_text",
+      "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "region": "CHALLENGE_OVERLAY",
+      "source_frame_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "source_phase_windows": [
+        "HOOK",
+        "GAME"
+      ],
+      "source_value_sha256": "61d84bb567717082809886f4355239aa25918f6ad27ee90394480d2f90bbd030",
+      "value_sha256": "61d84bb567717082809886f4355239aa25918f6ad27ee90394480d2f90bbd030"
+    },
+    {
+      "disposition": "BLOCKED_GEOMETRY_UNRESOLVED",
+      "effective_value": "BLOCKED CHALLENGE LABEL",
+      "field": "challenge_label",
+      "kind": "visual_text",
+      "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "region": "CHALLENGE_OVERLAY",
+      "source_frame_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "source_phase_windows": [
+        "HOOK",
+        "GAME"
+      ],
+      "source_value_sha256": "5c79b6bfc1b4c07eb595b7f3db08fec89adb50b6f57c5d9619e99f385b210133",
+      "value_sha256": "5c79b6bfc1b4c07eb595b7f3db08fec89adb50b6f57c5d9619e99f385b210133"
+    },
+    {
+      "disposition": "READY_FOR_ISOLATED_TEST_PIXEL_DRAW",
+      "effective_value": "FOLLOW FOR MORE",
+      "field": "call_to_action",
+      "kind": "visual_text",
+      "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "region": "FOOTER",
+      "source_frame_ranges": [
+        {
+          "end_frame": 900,
+          "phase": "CTA",
+          "start_frame": 780,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "source_phase_windows": [
+        "CTA"
+      ],
+      "source_value_sha256": "f9ab3dd33a269ca1848cd5e13e25d8820f81204cf116c666f72248d85a1084ca",
+      "value_sha256": "f9ab3dd33a269ca1848cd5e13e25d8820f81204cf116c666f72248d85a1084ca"
+    },
+    {
+      "disposition": "METADATA_ONLY",
+      "effective_value": "es",
+      "field": "language",
+      "kind": "metadata_only",
+      "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "region": "METADATA",
+      "source_frame_ranges": [],
+      "source_phase_windows": [],
+      "source_value_sha256": "c0bc1e08f9743b2d50d5f1607503bf4e849af0e729fca896515bea955d70a33e",
+      "value_sha256": "c0bc1e08f9743b2d50d5f1607503bf4e849af0e729fca896515bea955d70a33e"
+    }
+  ],
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "media_created": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_input_emitted": false
+  },
+  "intent_hash": "5656b24ec7cb44a08d2ee9df5c7eb57b64401f4bff3f9a892516c7e94a5e75e8",
+  "layout_contract_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+  "policy_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+  "presentation_options": {
+    "show_hook_countdown": true
+  },
+  "request_id": "E4A6-CH004-LIVE-20261105T214811Z-333CAD33",
+  "schema": "C11E-CHALLENGE-LIVE-EDITORIAL-ENVELOPE-V1",
+  "schema_version": "1.0",
+  "source_phase_ranges": [
+    {
+      "end_frame": 180,
+      "phase": "HOOK",
+      "start_frame": 0,
+      "timebase": "SOURCE_FPS_HALF_OPEN"
+    },
+    {
+      "end_frame": 600,
+      "phase": "GAME",
+      "start_frame": 180,
+      "timebase": "SOURCE_FPS_HALF_OPEN"
+    },
+    {
+      "end_frame": 780,
+      "phase": "REVEAL",
+      "start_frame": 600,
+      "timebase": "SOURCE_FPS_HALF_OPEN"
+    },
+    {
+      "end_frame": 900,
+      "phase": "CTA",
+      "start_frame": 780,
+      "timebase": "SOURCE_FPS_HALF_OPEN"
+    }
+  ],
+  "source_timebase": {
+    "fps": 60,
+    "kind": "SOURCE_FRAME_INDEX",
+    "total_frames": 900
+  },
+  "status": "PREPARED_E1_NOT_DISPATCHED"
+}
