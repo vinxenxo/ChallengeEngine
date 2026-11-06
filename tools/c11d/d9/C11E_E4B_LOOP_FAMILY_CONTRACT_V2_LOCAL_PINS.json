@@ -1,0 +1,37 @@
+{
+  "schema": "C11E-E4B-LOOP-FAMILY-CONTRACT-V2-LOCAL-PINS",
+  "local_pins": [
+    {
+      "path": "tools/c11d/d9/test_c11e_e4b_loop_family_contract_v2.py",
+      "sha256": "0980cb916e37224b2b9d55e356f2cc4ce8934fff0b86973c9b2df592d2a954f9"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_contract_audit_v2.py",
+      "sha256": "d07c7c996c9d2ef53e29800b66ecbb5b76b8e2e5317a6fa308b4c3a997d96677"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_contract_audit.py",
+      "sha256": "aff432bd49bdf15e20f43093298a5486aebc633448ac34984263a155fa9034b0"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    {
+      "path": "tools/c11d/d9/C11E_E4B_LOOP_FAMILY_CONTRACT_SOURCE_PINS_V1.json",
+      "sha256": "f46ea9db3b31bfa820598ddfdda5170f2d0b9b32ed8853f33714d6d7ef89dd3c"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    }
+  ]
+}

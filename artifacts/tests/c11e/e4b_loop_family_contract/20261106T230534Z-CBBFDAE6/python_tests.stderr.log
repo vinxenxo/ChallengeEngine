@@ -1,0 +1,21 @@
+test_all_27_grammars_build_a_family_bound_contract (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_all_27_grammars_build_a_family_bound_contract) ... ok
+test_contract_fails_closed_when_audio_or_dispatch_is_enabled (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_contract_fails_closed_when_audio_or_dispatch_is_enabled) ... ok
+test_contract_hash_detects_tampering (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_contract_hash_detects_tampering) ... ok
+test_family_launcher_uses_gameplay_seed_only (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_family_launcher_uses_gameplay_seed_only) ... ok
+test_operator_decision_and_static_family_audit (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_operator_decision_and_static_family_audit) ... FAIL
+test_unknown_editorial_fields_suppress_composition (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_unknown_editorial_fields_suppress_composition) ... ok
+test_visual_composition_obeys_approved_geometry_and_source_span (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_visual_composition_obeys_approved_geometry_and_source_span) ... ok
+
+======================================================================
+FAIL: test_operator_decision_and_static_family_audit (test_c11e_e4b_loop_family_contract.E4BLoopFamilyContractTests.test_operator_decision_and_static_family_audit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\tools\c11d\d9\test_c11e_e4b_loop_family_contract.py", line 137, in test_operator_decision_and_static_family_audit
+    self.assertEqual(report["historical_product_coverage"]["mp4_present_in_snapshot_count"], 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 27 != 0
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.797s
+
+FAILED (failures=1)

@@ -1,0 +1,72 @@
+{
+  "schema": "C11E-E4B-OPERATOR-POLICY-DECISION-RECORD-V1",
+  "schema_version": "1.0",
+  "record_id": "C11E_E4B_OPERATOR_POLICY_DECISION_20261106_V1",
+  "recorded_date": "2026-11-06",
+  "decision_source": "EXPLICIT_OPERATOR_MESSAGE_IN_CONVERSATION",
+  "operator_identity": "OPERATOR_EXPLICIT_CHAT_DECISION",
+  "decision_semantics": "APPROVE_AS_PROPOSED_FOR_D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY",
+  "decisions": [
+    {
+      "decision_id": "A.1_SHARED_PRESENTATION_REGIONS",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "proposal_sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "Shared semantic field routing: title/subtitle to HEADER, CTA to FOOTER; no coordinates are inferred from A.1.",
+      "proposal_file_mutated": false
+    },
+    {
+      "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "Loop/Drill visibility is continuous over the exact source frame span; frame count must come from the actual C11-C payload.",
+      "proposal_file_mutated": false
+    },
+    {
+      "decision_id": "E4B_LOOP_COMPOSITION",
+      "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "720x1280 canvas; 192px top/bottom bands; contained 504x896 source viewport; static D-owned editorial for the full source sequence.",
+      "proposal_file_mutated": false
+    },
+    {
+      "decision_id": "B.1_UNIFIED_DELIVERY_TIMEBASE",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "proposal_sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "Preserve REVIEW_720 30fps frame count/order and duration; no cadence resampling.",
+      "proposal_file_mutated": false
+    },
+    {
+      "decision_id": "D.1_AUDIO_MUSIC_DELIVERY_ENVELOPE",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "proposal_sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "Accept only the technical delivery envelope; music selection, synthesis/emission, mixing, silence defaults and loudness remain out of scope.",
+      "proposal_file_mutated": false
+    }
+  ],
+  "scope_boundary": {
+    "d_only_design_and_contract_implementation_authorized": true,
+    "renderer_native_input_emission_authorized": false,
+    "renderer_activation_authorized": false,
+    "production_dispatch_authorized": false,
+    "media_creation_authorized": false,
+    "audio_asset_selection_authorized": false,
+    "audio_generation_authorized": false,
+    "audio_payload_materialization_authorized": false,
+    "release_promotion_authorized": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE"
+  },
+  "policy_proposal_files_mutated": false,
+  "historical_packet_v1_mutated": false,
+  "c11c_frozen_baseline_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+}

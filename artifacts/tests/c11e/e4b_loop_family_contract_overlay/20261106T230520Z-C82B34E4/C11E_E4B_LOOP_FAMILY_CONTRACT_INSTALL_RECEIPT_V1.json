@@ -1,0 +1,111 @@
+{
+    "schema":  "C11E-E4B-LOOP-FAMILY-CONTRACT-INSTALL-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY",
+    "run_id":  "20261106T230520Z-C82B34E4",
+    "powershell_version":  "5.1.26100.9818",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_pin_count":  40,
+    "payload_file_count":  18,
+    "files_installed":  18,
+    "identical_reuse":  0,
+    "docs_and_prompts":  13,
+    "payload_files":  [
+                          {
+                              "path":  "docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261106_V78.md",
+                              "sha256":  "46b5498ab3080fc84a4c4032b5c5365420ef4a3b76b5676217768064c9c9ce11",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261106_V38.md",
+                              "sha256":  "3c0567c47666b0e8ec51d90ef41b86ff8f2ea5112630359882beb47036e3ed68",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261106_V53.md",
+                              "sha256":  "0879e22bda25427501c560215eafef934583d68a5535ccaf4be254c8c5ee449e",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E4B_AUDIO_SEED_BOUNDARY_REVIEW_20261106_V1.md",
+                              "sha256":  "d9530ad728c13510bf34a4bc12ee15027e5286da7c3383ad6f09a0a430607cb7",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261106_V1.md",
+                              "sha256":  "63a7e62fba4a2f71ca0c0de085ee7373aa6fab6d57ee929947479c07804566ed",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261106_V2.json",
+                              "sha256":  "20bd952eb13ce61e7b3dd40de7ebae9a9a6debd4b63f84e30dd39ff6765297c0",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E4B_LOOP_FAMILY_STAGE_CONTRACT_REVIEW_20261106_V1.md",
+                              "sha256":  "e60e080e12bd0694b316a59e191aba6e472a0540311532019b813639e42850b3",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+                              "sha256":  "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261106_V76.md",
+                              "sha256":  "e373a466c9d078755e7eab42fa1951d0f92702fcf6c596f975abb59e393444fe",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "docs\\history\\c11d\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V66.md",
+                              "sha256":  "79715f1e1e3e4b5058f9b6444bc800cbb0a9187a584c83ee56deca3b663b7aae",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261106_V76.md",
+                              "sha256":  "d268a0dd064db9b14edf0510284c395e4ad1453d6c1f4b11e7ef4b29eec9227f",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "prompts\\C11E_FIRST_PROMPT_20261106_V20.md",
+                              "sha256":  "5fc4ea606406806e9fe17f06d50599de4bf28f972955be5ee05d8bc071a1a471",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261106_V76.md",
+                              "sha256":  "b27ba5b94ca8b4723e8dd5c388da35b146b2659b008cd567af8eba529151f5d3",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "tools\\c11d\\d9\\C11E_E4B_LOOP_FAMILY_CONTRACT_SOURCE_PINS_V1.json",
+                              "sha256":  "f46ea9db3b31bfa820598ddfdda5170f2d0b9b32ed8853f33714d6d7ef89dd3c",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "tools\\c11d\\d9\\RUN_C11E_E4B_LOOP_FAMILY_CONTRACT_V1.ps1",
+                              "sha256":  "893a385b8a8b82882183ebea3fc5de409d284de7053230ef494ab0423a922a87",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "tools\\c11d\\d9\\c11e_e4b_loop_family_contract_audit.py",
+                              "sha256":  "aff432bd49bdf15e20f43093298a5486aebc633448ac34984263a155fa9034b0",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "tools\\c11d\\d9\\c11e_e4b_loop_family_stage_contract.py",
+                              "sha256":  "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+                              "state":  "NEW"
+                          },
+                          {
+                              "path":  "tools\\c11d\\d9\\test_c11e_e4b_loop_family_contract.py",
+                              "sha256":  "ae2b89c51498d8db5a9fafea991e559bbbf7cca54e68b4ec8eb3a936377a6f1f",
+                              "state":  "NEW"
+                          }
+                      ],
+    "git_invoked":  false,
+    "existing_source_files_modified":  false,
+    "c11c_baseline_modified":  false,
+    "renderer":  false,
+    "media_created":  false,
+    "release_authority":  "NONE"
+}

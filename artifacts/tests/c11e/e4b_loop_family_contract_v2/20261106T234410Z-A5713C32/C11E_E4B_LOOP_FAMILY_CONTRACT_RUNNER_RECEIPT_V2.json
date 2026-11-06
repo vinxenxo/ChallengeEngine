@@ -1,0 +1,37 @@
+{
+    "schema":  "C11E-E4B-LOOP-FAMILY-CONTRACT-RUNNER-RECEIPT-V2",
+    "status":  "PASS_OPERATOR_DECISIONS_AND_FAMILY_STATIC_CONTRACT_AUDIT_ONLY",
+    "run_id":  "20261106T234410Z-A5713C32",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "powershell_version":  "5.1.26100.9818",
+    "python_version":  "Python 3.13.14",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "base_source_pin_count":  40,
+    "local_tool_pins":  8,
+    "focused_test_methods":  8,
+    "tested_canonical_selectors":  27,
+    "mp4_present_in_active_checkout":  27,
+    "visual_review_performed":  false,
+    "report_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_family_contract_v2\\20261106T234410Z-A5713C32\\C11E_E4B_LOOP_FAMILY_CONTRACT_AUDIT_V2.json",
+    "report_sha256":  "788ab1352a3e11bd91cc2ddf34fc8f11334b7713b9bc1a2b246156c79f40444e",
+    "stdout_sha256":  {
+                          "tests":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "audit":  "573b89376552fbba5f6b31d4c37ca05dd4e7f0b4f64559ae93a4622e57a27eee"
+                      },
+    "stderr_sha256":  {
+                          "tests":  "233c480cb4e58e9dc080c90dab4a69bc343d6f4299f56dfa7a36cd81717f70c9",
+                          "audit":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+    "test_exit_code":  0,
+    "audit_exit_code":  0,
+    "renderer_native_input_emitted":  false,
+    "launcher_invoked":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "audio_generated":  false,
+    "media_created":  false,
+    "c11c_source_mutation":  false,
+    "d4_8":  "BLOCKED",
+    "d9_10":  "PREPARE_ONLY",
+    "release_authority":  "NONE"
+}
