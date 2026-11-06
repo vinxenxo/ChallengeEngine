@@ -1,0 +1,410 @@
+{
+  "status": "PLANNED",
+  "canonical_request": {
+    "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+    "schema_version": "1.0",
+    "request_id": "E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+    "mode": "REVIEW",
+    "selection": {
+      "content_type": "visual_loops",
+      "family_id": "c11c_geometric_waves_v1",
+      "subtype_id": "harmonic_membrane",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+      "difficulty_tier": null
+    },
+    "seed": 314159,
+    "music_seed": 840001,
+    "delivery_profile_id": "REVIEW_720",
+    "resolved_delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "variation_index": 0,
+    "audio_enabled": true,
+    "personalization_enabled": true,
+    "editorial": {
+      "title": "Título editorial Loop — composición armónica en movimiento",
+      "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+      "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+      "language": "es"
+    },
+    "editorial_layers_applied": [
+      "production_override"
+    ],
+    "source_revision": "C11D-D9.9-PRODUCER-0.11.0",
+    "request_origin": "UNKNOWN"
+  },
+  "request_hash": "515ca7b5c55b7275df28b3ce42399f1964b70785d881cf23dfe1f92bd603d53b",
+  "editorial_resolution": {
+    "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-RESOLUTION-V1",
+    "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+    "selection": {
+      "content_type": "visual_loops",
+      "family_id": "c11c_geometric_waves_v1",
+      "subtype_id": "harmonic_membrane",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+      "scope_keys": {
+        "content_type": "visual_loops",
+        "family": "visual-loop-family:c11c_geometric_waves_v1",
+        "subtype": "visual-loop-grammar:c11c_geometric_waves_v1/harmonic_membrane",
+        "variant": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane"
+      },
+      "request_plan_compatible": false,
+      "editable_fields": [
+        "title",
+        "subtitle",
+        "call_to_action",
+        "language"
+      ],
+      "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER"
+    },
+    "values": {
+      "title": "Título editorial Loop — composición armónica en movimiento",
+      "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+      "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+      "language": "es"
+    },
+    "applied_layers": [
+      "production_override"
+    ],
+    "request_plan_compatible": false,
+    "request_plan_state": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+    "runtime_authority": "NONE",
+    "renderer_activation": false,
+    "production_execution": false,
+    "release_authority": "NONE"
+  },
+  "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+  "plan": {
+    "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-PLAN-V1",
+    "plan_version": "1.0",
+    "request_id": "E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+    "mode": "REVIEW",
+    "plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+    "request_hash": "515ca7b5c55b7275df28b3ce42399f1964b70785d881cf23dfe1f92bd603d53b",
+    "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+    "selection": {
+      "content_type": "visual_loops",
+      "family_id": "c11c_geometric_waves_v1",
+      "subtype_id": "harmonic_membrane",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+      "difficulty_tier": null
+    },
+    "editorial": {
+      "title": "Título editorial Loop — composición armónica en movimiento",
+      "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+      "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+      "language": "es"
+    },
+    "seed": 314159,
+    "music_seed": 840001,
+    "delivery_profile_id": "REVIEW_720",
+    "resolved_delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "variation_index": 0,
+    "audio_enabled": true,
+    "d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+    "d4_request_hash": null,
+    "d4_plan_hash": null,
+    "steps": [
+      {
+        "step_id": "validate_universal_request",
+        "type": "VALIDATION",
+        "authority": "C11D_D9.9_CANONICAL_ADAPTER"
+      },
+      {
+        "step_id": "resolve_content_identity",
+        "type": "CONTENT_SELECTION",
+        "content_type": "visual_loops",
+        "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+        "authority": "D9.8_UNIVERSAL_EDITORIAL_MODEL"
+      },
+      {
+        "step_id": "resolve_editorial",
+        "type": "EDITORIAL_RESOLUTION",
+        "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+        "authority": "D9.8_UNIVERSAL_EDITORIAL_MODEL"
+      },
+      {
+        "step_id": "preserve_seed_contract",
+        "type": "SEED_GOVERNANCE",
+        "gameplay_seed_field": "seed",
+        "music_seed_field": "music_seed",
+        "cross_domain_sharing": "FORBIDDEN",
+        "automatic_generation": false,
+        "runtime_derivation": false
+      },
+      {
+        "step_id": "resolve_delivery_profile",
+        "type": "DELIVERY_PROFILE",
+        "requested_id": "REVIEW_720",
+        "resolved_id": "REVIEW_720"
+      },
+      {
+        "step_id": "production_intent_plan",
+        "type": "PLAN_ONLY",
+        "renderer": false,
+        "production_execution": false,
+        "release_authority": "NONE"
+      }
+    ],
+    "runtime_authority": "NONE",
+    "simulation_truth_mutation": false,
+    "winning_frame_mutation": false,
+    "close_calls_mutation": false,
+    "gameplay_rng_consumption": false,
+    "structural_rng_consumption": false,
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "d4_8": "BLOCKED"
+  },
+  "plan_hash": "6384dffb8b07eefc7ae3ddf645dd30ff89a03e7b5d8a12ab5dee75f57302c46f",
+  "d4_evidence": null,
+  "renderer": false,
+  "execution": false,
+  "release_authority": "NONE",
+  "bridge_planning_record": {
+    "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1",
+    "schema_version": "1.0",
+    "status": "PLANNING_ONLY_NOT_RENDERABLE",
+    "contract_schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+    "contract_identity": {
+      "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+      "schema_version": "1.0",
+      "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+    },
+    "editorial_model_identity": {
+      "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+      "schema_version": "1.0",
+      "checkpoint": "D9.8",
+      "sha256": "4ac36f54527a92c50c0910b3180d622b031011e625aa99717e8f43885be3b7ba"
+    },
+    "request_id": "E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+    "content_type": "visual_loops",
+    "route": {
+      "route_id": "FUTURE_D_NATIVE_VISUAL_LOOP_ADAPTER_REQUIRED",
+      "required_plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+      "required_d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+      "render_adapter_state": "NOT_DEFINED"
+    },
+    "identity": {
+      "request_hash": "515ca7b5c55b7275df28b3ce42399f1964b70785d881cf23dfe1f92bd603d53b",
+      "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+      "plan_hash": "6384dffb8b07eefc7ae3ddf645dd30ff89a03e7b5d8a12ab5dee75f57302c46f",
+      "d4_request_hash": null,
+      "d4_plan_hash": null
+    },
+    "selection": {
+      "content_type": "visual_loops",
+      "family_id": "c11c_geometric_waves_v1",
+      "subtype_id": "harmonic_membrane",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+      "difficulty_tier": null
+    },
+    "editorial": {
+      "fields": [
+        "call_to_action",
+        "language",
+        "subtitle",
+        "title"
+      ],
+      "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "destination_contract": "FUTURE_D_RENDERER_BINDER_NOT_DEFINED",
+      "values_hash": "47f08f6f7f29b4416396444a98ffed5199517d0e7bb349edd3d33216e85a1bea"
+    },
+    "field_mappings": {
+      "content_identity": {
+        "source": "plan.selection",
+        "destination": "future_d_renderer_contract.content_identity",
+        "classification": "IDENTITY_ONLY",
+        "editable": false
+      },
+      "editorial": {
+        "source": "plan.editorial",
+        "destination": "future_d_renderer_contract.editorial_bindings",
+        "classification": "EDITORIAL_ALLOWLIST_ONLY",
+        "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "must_not_override_simulation_or_telemetry": true
+      },
+      "gameplay_seed": {
+        "source": "plan.seed",
+        "domain": "GAMEPLAY",
+        "owner": "request.seed",
+        "derivation": false,
+        "cross_domain_sharing": "FORBIDDEN"
+      },
+      "music_seed": {
+        "source": "plan.music_seed",
+        "domain": "MUSIC",
+        "owner": "request.music_seed",
+        "derivation": false,
+        "cross_domain_sharing": "FORBIDDEN"
+      },
+      "delivery_profile": {
+        "source": "plan.resolved_delivery_profile_id",
+        "destination": "future_d_renderer_contract.delivery_profile_id",
+        "classification": "REGISTERED_PROFILE_REFERENCE_ONLY"
+      },
+      "presentation_profile": {
+        "source": "plan.presentation_profile_id",
+        "destination": "future_d_renderer_contract.presentation_profile_id",
+        "classification": "REGISTERED_PROFILE_REFERENCE_ONLY"
+      },
+      "variation": {
+        "source": "plan.variation_index",
+        "classification": "TECHNICAL_REQUEST_VALUE_NOT_EDITORIAL",
+        "runtime_derivation": false
+      },
+      "audio": {
+        "source": "plan.audio_enabled",
+        "classification": "EXPLICIT_REQUEST_FLAG_ONLY",
+        "music_seed_domain": "MUSIC"
+      },
+      "provenance": {
+        "sources": [
+          "result.request_hash",
+          "result.editorial_hash",
+          "result.plan_hash"
+        ],
+        "classification": "IMMUTABLE_LINEAGE",
+        "sha256_required_for_future_media": true
+      }
+    },
+    "seed_contract": {
+      "gameplay_seed_source": "canonical_plan.seed",
+      "gameplay_seed": 314159,
+      "gameplay_seed_domain": "GAMEPLAY",
+      "music_seed_source": "canonical_plan.music_seed",
+      "music_seed": 840001,
+      "music_seed_domain": "MUSIC",
+      "cross_domain_seed_sharing": "FORBIDDEN",
+      "automatic_seed_generation": false,
+      "runtime_seed_derivation": false
+    },
+    "delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "variation_index": 0,
+    "audio_enabled": true,
+    "future_d_frozen_baseline_gates": [
+      "FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED",
+      "RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED",
+      "CONTENT_BINDER_COMPATIBILITY_MATRIX_PASS",
+      "D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION",
+      "GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS",
+      "EDITORIAL_ONLY_MUTATION_DETERMINISM_TESTS_PASS",
+      "RENDERER_AND_MEDIA_PROVENANCE_CHAIN_PASS",
+      "VISUAL_AND_AUDIO_QA_GATES_PASS",
+      "CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS"
+    ],
+    "governance": {
+      "master_seed": "NOT_ADOPTED",
+      "automatic_seed_generation": false,
+      "runtime_seed_derivation": false,
+      "cross_domain_seed_sharing": "FORBIDDEN",
+      "renderer_activation": false,
+      "production_execution": false,
+      "d4_8": "BLOCKED",
+      "release_authority": "NONE"
+    },
+    "renderer_input_emitted": false,
+    "renderer_adapter_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "record_hash": "a6e3ab4410e6668e4524f269c9a45a4dbd716c94bd51f9b0020624d2893a66a8"
+  },
+  "d_only_adapter_envelope": {
+    "schema": "C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1",
+    "schema_version": "1.0",
+    "status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+    "adapter_contract_identity": {
+      "schema": "C11-D-D9.10-RENDER-ADAPTER-BOUNDARY-CONTRACT-V1",
+      "schema_version": "1.0",
+      "sha256": "af3494d7fa100a75b95994f824bfe256c76fe7d9095e3905fa4d28647e3863df"
+    },
+    "bridge_contract_identity": {
+      "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+      "schema_version": "1.0",
+      "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+    },
+    "editorial_model_identity": {
+      "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+      "schema_version": "1.0",
+      "checkpoint": "D9.8",
+      "sha256": "4ac36f54527a92c50c0910b3180d622b031011e625aa99717e8f43885be3b7ba"
+    },
+    "source_identity": {
+      "request_id": "E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+      "request_hash": "515ca7b5c55b7275df28b3ce42399f1964b70785d881cf23dfe1f92bd603d53b",
+      "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+      "plan_hash": "6384dffb8b07eefc7ae3ddf645dd30ff89a03e7b5d8a12ab5dee75f57302c46f",
+      "bridge_record_hash": "a6e3ab4410e6668e4524f269c9a45a4dbd716c94bd51f9b0020624d2893a66a8"
+    },
+    "content_identity": {
+      "content_type": "visual_loops",
+      "family_id": "c11c_geometric_waves_v1",
+      "subtype_id": "harmonic_membrane",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+      "difficulty_tier": null
+    },
+    "binding_preview": {
+      "editorial_bindings": {
+        "title": "Título editorial Loop — composición armónica en movimiento",
+        "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+        "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+        "language": "es"
+      },
+      "editorial_allowlist_fields": [
+        "call_to_action",
+        "language",
+        "subtitle",
+        "title"
+      ],
+      "delivery_profile_id": "REVIEW_720",
+      "presentation_profile_id": "social_default_v1",
+      "variation_index": 0,
+      "audio_enabled": true,
+      "seed_contract": {
+        "gameplay_seed": 314159,
+        "gameplay_seed_source": "canonical_request.seed",
+        "gameplay_seed_domain": "GAMEPLAY",
+        "music_seed": 840001,
+        "music_seed_source": "canonical_request.music_seed",
+        "music_seed_domain": "MUSIC",
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "automatic_seed_generation": false,
+        "runtime_seed_derivation": false
+      },
+      "simulation_truth": "NOT_BOUND",
+      "derived_telemetry": "NOT_BOUND"
+    },
+    "adapter_execution": {
+      "mode": "PREPARE_ONLY",
+      "scope": "C11-D_ONLY",
+      "adapter_prepare_enabled": true,
+      "renderer_dispatch_invoked": false,
+      "reason_not_dispatched": "D4.8_BLOCKED_AND_D_BASELINE_NOT_APPROVED"
+    },
+    "d_only_adapter_prepare_invoked": true,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_output_created": false,
+    "output_artifact_path": null,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "c11c_source_mutation": false,
+    "policy_identity": null,
+    "envelope_hash": "e2570f9c1d8445d33aa983cbaa8111c54df681d4108986ad3e100ee39914a174"
+  }
+}

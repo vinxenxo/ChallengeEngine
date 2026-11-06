@@ -1,0 +1,31 @@
+{
+  "schema": "C11E-E4B-LOOP-CLI-REQUEST-PREPARATION-RECEIPT-V2",
+  "status": "PASS_UTF8_REQUEST_PREPARED",
+  "gui_request_id": "D99-GUI-439FD530F839",
+  "cli_request_id": "E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+  "gui_request_file_sha256": "f2e079854e1fa77696b156432de97a30e34a36c56a3b6c9b6340d7da8f1df83b",
+  "cli_request_file_sha256": "38b872f9c522a702158e742922e7f27efa498e8c08c16d1bedcfbf9b08ead37c",
+  "editorial_fields": [
+    "title",
+    "subtitle",
+    "call_to_action",
+    "language"
+  ],
+  "editorial": {
+    "title": "Título editorial Loop — composición armónica en movimiento",
+    "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+    "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+    "language": "es"
+  },
+  "unicode": {
+    "source": "GUI_EXPORTED_JSON_UTF8",
+    "serialization": "PYTHON_UTF8_ENSURE_ASCII_FALSE_NO_BOM",
+    "round_trip": "PASS",
+    "normalization": "NFC",
+    "mojibake_markers": "ABSENT"
+  },
+  "request_origin": "CLI",
+  "renderer": false,
+  "media_created": false,
+  "release_authority": "NONE"
+}

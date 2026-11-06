@@ -1,0 +1,10 @@
+test_exact_four_field_fixture (__main__.E4BLoopGuiCliParityV2Tests.test_exact_four_field_fixture) ... ok
+test_missing_or_extra_editorial_keys_are_rejected (__main__.E4BLoopGuiCliParityV2Tests.test_missing_or_extra_editorial_keys_are_rejected) ... ok
+test_mojibake_is_rejected (__main__.E4BLoopGuiCliParityV2Tests.test_mojibake_is_rejected) ... ok
+test_nfc_normalization_is_required (__main__.E4BLoopGuiCliParityV2Tests.test_nfc_normalization_is_required) ... ok
+test_utf8_fixture_contains_spanish_codepoints (__main__.E4BLoopGuiCliParityV2Tests.test_utf8_fixture_contains_spanish_codepoints) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.008s
+
+OK

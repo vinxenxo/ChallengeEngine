@@ -1,0 +1,188 @@
+{
+  "execution_boundary": {
+    "d4_8": "BLOCKED",
+    "dispatch_authorized": false,
+    "media_created": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "renderer_activation": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false
+  },
+  "intent": {
+    "delivery": {
+      "audio_enabled": true,
+      "presentation_profile_id": "social_default_v1",
+      "requested_profile_id": "REVIEW_720",
+      "resolved_profile_id": "REVIEW_720"
+    },
+    "editorial": {
+      "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+      "language": "es",
+      "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+      "title": "Título editorial Loop — composición armónica en movimiento"
+    },
+    "editorial_field_consumption": {
+      "call_to_action": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E4",
+        "resolved": true
+      },
+      "language": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E4",
+        "resolved": true
+      },
+      "subtitle": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E4",
+        "resolved": true
+      },
+      "title": {
+        "consumer_status": "NOT_CONSUMED_E1",
+        "required_gate": "E4",
+        "resolved": true
+      }
+    },
+    "execution_boundary": {
+      "d4_8": "BLOCKED",
+      "dispatch_authorized": false,
+      "media_created": false,
+      "production_execution": false,
+      "release_authority": "NONE",
+      "renderer_activation": false,
+      "renderer_dispatch_invoked": false,
+      "renderer_input_emitted": false
+    },
+    "family_adapter": {
+      "adapter_id": "c11e_visual_loops_adapter",
+      "renderer_input_emitted": false,
+      "status": "NOT_CONNECTED_E1",
+      "target_gate": "E4"
+    },
+    "identity": {
+      "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+      "intent_hash": "f16b33d28f15858052f8ecd16054bbf1d5662fdf3d259ad5f5a9f1e04f5ad631",
+      "plan_hash": "6384dffb8b07eefc7ae3ddf645dd30ff89a03e7b5d8a12ab5dee75f57302c46f",
+      "request_hash": "515ca7b5c55b7275df28b3ce42399f1964b70785d881cf23dfe1f92bd603d53b"
+    },
+    "intent_sha256": "02cf8b69a0668bf36143d51f5e53d1076b495325741ce4b652e635093d667fa5",
+    "music_contract": {
+      "audio_created": false,
+      "audio_enabled": true,
+      "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+      "contract_path": null,
+      "contract_sha256": null,
+      "contract_version": "1.0",
+      "dispatch_authorized": false,
+      "dispatchable": false,
+      "engine": null,
+      "engine_invoked": false,
+      "engine_request": null,
+      "ffmpeg_mux_invoked": false,
+      "music_seed": 840001,
+      "music_seed_field": "request.music_seed",
+      "release_authority": "NONE",
+      "renderer_invoked": false,
+      "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+      "status": "PROTECTED_FAMILY_NOT_REWIRED",
+      "style_profile": null,
+      "unresolved_engine_parameters": [],
+      "variation_index": 0
+    },
+    "output": {
+      "created": false,
+      "overwrite_policy": "DENY_EXISTING",
+      "planned_root": "artifacts/production/c11e/E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+      "planned_root_exists": false
+    },
+    "request": {
+      "content_type": "visual_loops",
+      "mode": "REVIEW",
+      "request_id": "E4B_LOOP_CLI_PARITY_20261106T204002Z_CF365847",
+      "selection": {
+        "content_type": "visual_loops",
+        "difficulty_tier": null,
+        "family_id": "c11c_geometric_waves_v1",
+        "subtype_id": "harmonic_membrane",
+        "variant_id": null,
+        "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane"
+      },
+      "variation_index": 0
+    },
+    "request_origin": "CLI",
+    "schema": "C11-E-PRODUCTION-INTENT-V1",
+    "schema_version": "1.1",
+    "seed_domains": {
+      "automatic_generation": false,
+      "cross_domain_sharing": "FORBIDDEN",
+      "gameplay": {
+        "field": "request.seed",
+        "value": 314159
+      },
+      "independent_domains": true,
+      "music": {
+        "field": "request.music_seed",
+        "value": 840001
+      },
+      "runtime_derivation": false
+    },
+    "service_version": "0.2.0-E3.2",
+    "source_identity": {
+      "c11c_manifest": {
+        "bytes": 796318,
+        "disposition": "IMMUTABLE_REFERENCE_ONLY",
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      "source_pins": [
+        {
+          "bytes": 19692,
+          "path": "tools/c11d/d9/universal_producer.py",
+          "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+        },
+        {
+          "bytes": 26574,
+          "path": "tools/c11d/d9/universal_editorial_model.py",
+          "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+        },
+        {
+          "bytes": 9183,
+          "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+          "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+        },
+        {
+          "bytes": 12692,
+          "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+          "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+        },
+        {
+          "bytes": 1761,
+          "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+          "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+        },
+        {
+          "bytes": 3158,
+          "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+          "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+        },
+        {
+          "bytes": 32714,
+          "path": "c11c-suite/c11c-producer/producer_schema.json",
+          "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+        }
+      ]
+    },
+    "status": "PREPARED_E1_NOT_DISPATCHED"
+  },
+  "schema": "C11-E-PRODUCTION-CLI-RESULT-V1",
+  "status": "PASS_E1_PREPARATION_ONLY",
+  "validation": {
+    "intent_sha256": "02cf8b69a0668bf36143d51f5e53d1076b495325741ce4b652e635093d667fa5",
+    "media_created": false,
+    "renderer": false,
+    "source_pin_count": 7,
+    "status": "PASS_E1_PREPARATION_ONLY",
+    "valid": true
+  }
+}
