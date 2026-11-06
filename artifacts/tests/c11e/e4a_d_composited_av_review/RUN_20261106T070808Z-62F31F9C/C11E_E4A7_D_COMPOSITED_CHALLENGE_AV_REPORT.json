@@ -1,0 +1,233 @@
+{
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "renderer": false,
+    "test_media": true
+  },
+  "human_review": {
+    "instruction": "Listen to A/B/C for audible artefacts and review the 15-second A/V sync; the supplied source video already contains the D compositor and must remain byte-identical at the H.264 elementary-stream level.",
+    "operator_audio_listening_review": "PENDING",
+    "operator_video_review": "PASS_REPORTED_BY_OPERATOR_2026-11-06",
+    "production_layout_policy_approval": "NOT_INFERRED_FROM_SINGLE_TEST_REVIEW",
+    "test_composition_review": "PASS_USER_CONFIRMED"
+  },
+  "mux": {
+    "A": {
+      "audio_quality": {
+        "bytes": 1045687,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.6,
+        "mean_volume_db": -17.1,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "03f5f93322d30d138e63c43eb590848bf7e28f91ab9e1b2123666ce3881c138b"
+      },
+      "bytes": 1045687,
+      "ffprobe": {
+        "audio": {
+          "bit_rate_bps": 192979,
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "profile": "LC",
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "color_range": "tv",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "pixel_format": "yuv420p",
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_D_COMPOSITED_CHALLENGE_004_WITH_AUDIO_A.mp4",
+      "sha256": "03f5f93322d30d138e63c43eb590848bf7e28f91ab9e1b2123666ce3881c138b"
+    },
+    "B_REPEAT": {
+      "audio_quality": {
+        "bytes": 1045687,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.6,
+        "mean_volume_db": -17.1,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "03f5f93322d30d138e63c43eb590848bf7e28f91ab9e1b2123666ce3881c138b"
+      },
+      "bytes": 1045687,
+      "ffprobe": {
+        "audio": {
+          "bit_rate_bps": 192979,
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "profile": "LC",
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "color_range": "tv",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "pixel_format": "yuv420p",
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_D_COMPOSITED_CHALLENGE_004_WITH_AUDIO_B_REPEAT.mp4",
+      "sha256": "03f5f93322d30d138e63c43eb590848bf7e28f91ab9e1b2123666ce3881c138b"
+    },
+    "C_CHANGED_MUSIC_SEED": {
+      "audio_quality": {
+        "bytes": 1044513,
+        "channels": 2,
+        "codec": "aac",
+        "duration_seconds": 15.0,
+        "max_sample_db": -6.3,
+        "mean_volume_db": -17.2,
+        "non_silent": true,
+        "sample_rate_hz": 48000,
+        "sha256": "41b9a361a052ef1abef4aef154e55a96891cf9e6c843a9c00f4e2532bb71b8df"
+      },
+      "bytes": 1044513,
+      "ffprobe": {
+        "audio": {
+          "bit_rate_bps": 192354,
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec": "aac",
+          "duration_seconds": 15.0,
+          "profile": "LC",
+          "sample_rate_hz": 48000,
+          "start_time_seconds": 0.0
+        },
+        "audio_stream_count": 1,
+        "av_end_drift_seconds": 0.0,
+        "av_start_drift_seconds": 0.0,
+        "video": {
+          "avg_frame_rate": "30/1",
+          "codec": "h264",
+          "color_range": "tv",
+          "duration_seconds": 15.0,
+          "frames": 450,
+          "height": 1280,
+          "pixel_format": "yuv420p",
+          "profile": "High",
+          "start_time_seconds": 0.0,
+          "width": 720
+        },
+        "video_stream_count": 1
+      },
+      "path": "CHALLENGE_004_D_COMPOSITED_CHALLENGE_004_WITH_AUDIO_C_CHANGED_MUSIC_SEED.mp4",
+      "sha256": "41b9a361a052ef1abef4aef154e55a96891cf9e6c843a9c00f4e2532bb71b8df"
+    }
+  },
+  "quality_checks": {
+    "all_three_muxes_pass_ffprobe": true,
+    "d3_3_master_repeatability": true,
+    "d3_v5_raw_repeatability": true,
+    "decoded_audio_changes_with_music_seed": true,
+    "decoded_audio_repeatability": true,
+    "music_seed_changes_delivery_master": true,
+    "music_seed_changes_raw_wav": true,
+    "source_h264_identical": true
+  },
+  "run_id": "20261106T070808Z-62F31F9C",
+  "schema": "C11E-E4A7-D-COMPOSITED-CHALLENGE-AV-REPORT-V1",
+  "schema_version": "1.0",
+  "source": {
+    "base_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4",
+    "base_video_sha256": "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f",
+    "d_compositor_embedded": true,
+    "pixel_audit": {
+      "active_hook_cta": "4/4_PASS",
+      "inactive_black": "12/12_PASS_RGB_MAX_LE_3"
+    },
+    "protected_source_pins": {
+      "C11CVisualEditorialLayer.gd": {
+        "bytes": 19047,
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      "D_live_consumer": {
+        "bytes": 26367,
+        "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+        "sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203"
+      },
+      "GeneradorMaestro.gd": {
+        "bytes": 39767,
+        "path": "GeneradorMaestro.gd",
+        "sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82"
+      }
+    },
+    "recovery_receipt_sha256": "3279011fa16479d4901c5b271463707a437ce7458d306c1667ab222cb1603980",
+    "review_mp4_source_metadata_sha256": "71378fbe01e9b3776877e05283613ecd36645bc80389ccfa83c2054ec3589a34",
+    "video_probe": {
+      "audio_stream_count": 0,
+      "codec": "h264",
+      "color_range": "tv",
+      "duration_seconds": 15.0,
+      "fps": 30.0,
+      "frames": 450,
+      "height": 1280,
+      "pixel_format": "yuv420p",
+      "profile": "High",
+      "width": 720
+    },
+    "visual_review": "PASS_REPORTED_BY_OPERATOR_2026-11-06"
+  },
+  "status": "PASS_ISOLATED_E4A7_D_COMPOSITED_CHALLENGE_AV_TEST_ONLY",
+  "summary": "D3 V5 / D3.3 / FFmpeg stream-copy mux and FFprobe review over the user-reviewed Recovery V1.2 D-composited Challenge video; source H.264 is required to remain identical; test-only, no production dispatch.",
+  "test_parameters": {
+    "d_layer_pngs_are_separate_e4a3_samples": false,
+    "duration_seconds": 15.0,
+    "duration_source": "FFPROBE_450_FRAMES_DIVIDED_BY_30FPS",
+    "family": "challenges",
+    "fullframe_d_compositor_embedded_in_mp4": true,
+    "gameplay_seed": 314159,
+    "independent_seed_domains": true,
+    "music_seed_A_B": 840001,
+    "music_seed_C": 840002,
+    "style_profile_id": "challenge_8bit_v1",
+    "style_profile_version": "1.0",
+    "tempo_bpm": 104,
+    "tempo_role": "HISTORICAL_D9_2_PILOT_FIXTURE_NOT_PRODUCT_DEFAULT",
+    "variant_id": "CHALLENGE_004",
+    "variation_index": 0
+  },
+  "visual_boundary": {
+    "active_hook_cta_audit": "4/4_PASS",
+    "fullframe_compositor_embedded": true,
+    "operator_test_visual_review": "PASS_REPORTED_BY_OPERATOR_2026-11-06",
+    "production_layout_policy_approval": "NOT_INFERRED_FROM_SINGLE_TEST_REVIEW",
+    "reserved_bands_black_audit": "12/12_PASS_RGB_MAX_LE_3"
+  }
+}

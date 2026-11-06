@@ -1,0 +1,31 @@
+[aist#0:0/pcm_s16le @ 000001f7d8193c40] Guessed Channel Layout: stereo
+Input #0, wav, from 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4a_d_composited_av_review\RUN_20261106T070808Z-62F31F9C\C_CHANGED_MUSIC_SEED_D3_3_QA_WINDOW.wav':
+  Metadata:
+    encoder         : Lavf63.1.100
+  Duration: 00:00:30.00, bitrate: 1536 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Stream mapping:
+  Stream #0:0 (pcm_s16le) -> loudnorm:default
+  loudnorm:default -> Stream #0:0 (pcm_s16le)
+Press [q] to stop, [?] for help
+Output #0, wav, to 'C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4a_d_composited_av_review\RUN_20261106T070808Z-62F31F9C\C_CHANGED_MUSIC_SEED_D3_3_MASTER_30S.wav':
+  Metadata:
+    ISFT            : Lavf63.1.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+    Metadata:
+      encoder         : Lavc63.1.100 pcm_s16le
+[Parsed_loudnorm_0 @ 000001f7d81b7b80] 
+Input Integrated:    -17.2 LUFS
+Input True Peak:      -9.3 dBTP
+Input LRA:             0.1 LU
+Input Threshold:     -27.2 LUFS
+
+Output Integrated:   -14.0 LUFS
+Output True Peak:     -6.1 dBTP
+Output LRA:            0.1 LU
+Output Threshold:    -24.0 LUFS
+
+Normalization Type:   Dynamic
+Target Offset:        +0.0 LU
+[out#0/wav @ 000001f7d810dd80] video:0KiB audio:5625KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.001354%
+size=    5625KiB time=00:00:30.00 bitrate=1536.0kbits/s speed=  36x elapsed=0:00:00.83    

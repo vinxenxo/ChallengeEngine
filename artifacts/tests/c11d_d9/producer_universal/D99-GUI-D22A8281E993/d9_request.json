@@ -1,0 +1,24 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "request_id": "D99-GUI-D22A8281E993",
+  "mode": "REVIEW",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "parking_v2",
+    "variant_id": "CHALLENGE_004"
+  },
+  "seed": 314159,
+  "music_seed": 840001,
+  "delivery_profile_id": "MASTER_1080",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "personalization_enabled": false,
+  "editorial_profile": {},
+  "production_override": {},
+  "provenance": {
+    "source_revision": "C11D-D9.10-PRODUCER-0.11.1",
+    "request_origin": "GUI"
+  }
+}

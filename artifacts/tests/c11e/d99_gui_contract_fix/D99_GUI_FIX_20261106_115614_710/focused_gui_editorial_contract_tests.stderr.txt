@@ -1,0 +1,8 @@
+test_challenge_canonical_request_always_carries_all_six_editorial_fields (test_e1_gui_editorial_contract.E1GuiEditorialContractTests.test_challenge_canonical_request_always_carries_all_six_editorial_fields) ... ok
+test_gui_request_has_no_noncanonical_presentation_options (test_e1_gui_editorial_contract.E1GuiEditorialContractTests.test_gui_request_has_no_noncanonical_presentation_options) ... ok
+test_loop_and_drill_keep_their_four_shared_editorial_fields (test_e1_gui_editorial_contract.E1GuiEditorialContractTests.test_loop_and_drill_keep_their_four_shared_editorial_fields) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.122s
+
+OK

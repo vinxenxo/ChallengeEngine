@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+    "-hide_banner",
+    "-v",
+    "error",
+    "-y",
+    "-i",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4",
+    "-i",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_composited_av_review\\RUN_20261106T070808Z-62F31F9C\\C_CHANGED_MUSIC_SEED_D3_3_MASTER_15.000s.wav",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c:v",
+    "copy",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "192k",
+    "-ar",
+    "48000",
+    "-ac",
+    "2",
+    "-shortest",
+    "-movflags",
+    "+faststart",
+    "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_composited_av_review\\RUN_20261106T070808Z-62F31F9C\\CHALLENGE_004_D_COMPOSITED_CHALLENGE_004_WITH_AUDIO_C_CHANGED_MUSIC_SEED.mp4"
+  ],
+  "cwd": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a_d_composited_av_review\\RUN_20261106T070808Z-62F31F9C",
+  "stage": "ffmpeg_mux_c_changed_music_seed"
+}

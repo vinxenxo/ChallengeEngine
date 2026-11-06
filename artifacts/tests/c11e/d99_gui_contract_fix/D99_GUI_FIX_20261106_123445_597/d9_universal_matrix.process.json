@@ -1,0 +1,17 @@
+{
+    "name":  "d9_universal_matrix",
+    "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "arguments":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_universal_producer.py",
+    "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "started_at":  "2026-11-06T12:34:47.4343984+01:00",
+    "completed_at":  "2026-11-06T12:34:48.6738716+01:00",
+    "timeout_seconds":  300,
+    "timed_out":  false,
+    "exit_code":  0,
+    "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\d99_gui_contract_fix\\D99_GUI_FIX_20261106_123445_597\\d9_universal_matrix.stdout.txt",
+    "stdout_bytes":  196,
+    "stdout_sha256":  "6be97c47f6ab9fd710c9814136851349706b5fc6afefef426ae31a606614c7b2",
+    "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\d99_gui_contract_fix\\D99_GUI_FIX_20261106_123445_597\\d9_universal_matrix.stderr.txt",
+    "stderr_bytes":  0,
+    "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

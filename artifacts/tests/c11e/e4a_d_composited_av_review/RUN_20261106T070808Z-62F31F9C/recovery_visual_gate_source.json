@@ -1,0 +1,45 @@
+{
+  "boundary_stills_source_metadata_sha256": "bbea7a923d7946455928eb37203d9719a427158aa6cbaee05980ad47a91d28b3",
+  "contact_sheet_sha256": "f45c911e97194020d0487ad6d8f22e3bb3370b15a87d8cd6d5e2884e7f61d4af",
+  "ffprobe": {
+    "audio_stream_count": 0,
+    "codec": "h264",
+    "color_range": "tv",
+    "duration_seconds": 15.0,
+    "fps": 30.0,
+    "frames": 450,
+    "height": 1280,
+    "pixel_format": "yuv420p",
+    "profile": "High",
+    "width": 720
+  },
+  "pixel_audit": {
+    "active_hook_cta": "4/4_PASS",
+    "inactive_black": "12/12_PASS_RGB_MAX_LE_3"
+  },
+  "recovery_receipt_sha256": "3279011fa16479d4901c5b271463707a437ce7458d306c1667ab222cb1603980",
+  "review_mp4": {
+    "bytes": 671647,
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4",
+    "sha256": "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f"
+  },
+  "review_mp4_source_metadata_sha256": "71378fbe01e9b3776877e05283613ecd36645bc80389ccfa83c2054ec3589a34",
+  "source_protected_pins": {
+    "C11CVisualEditorialLayer.gd": {
+      "bytes": 19047,
+      "path": "core/presentation/C11CVisualEditorialLayer.gd",
+      "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+    },
+    "D_live_consumer": {
+      "bytes": 26367,
+      "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203"
+    },
+    "GeneradorMaestro.gd": {
+      "bytes": 39767,
+      "path": "GeneradorMaestro.gd",
+      "sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82"
+    }
+  },
+  "visual_review": "PASS_REPORTED_BY_OPERATOR_2026-11-06"
+}

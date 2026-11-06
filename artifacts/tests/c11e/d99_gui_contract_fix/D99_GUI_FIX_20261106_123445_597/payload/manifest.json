@@ -1,0 +1,107 @@
+{
+  "schema": "C11E-D99-GUI-EDITORIAL-CONTRACT-FIX-PAYLOAD-V2",
+  "docs_add_only": true,
+  "file_count": 16,
+  "source": {
+    "target": "c11c-suite/c11c-producer/main.py",
+    "preimage_sha256": "9685c4346cf56d3134fbf296585efbd779e5695635a249f0b85bd2c3682dac4e",
+    "postimage_sha256": "4141072659f307468900c1cfb09774479abc6c10abae6ae638a11192cfcd04e6",
+    "postimage_bytes": 110183
+  },
+  "supporting_source_pins": {
+    "c11c-suite/c11c-producer/c11e_production_cli.py": "e7272231dca2eb730506308b092fce9b3644f7f8cfd9f2c2bbbbd1b695e82fc4",
+    "c11c-suite/c11c-producer/c11e_production_service.py": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+    "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+    "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b",
+    "release/C11C_FREEZE_PACKAGE_MANIFEST.json": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "tools/c11d/d9/universal_producer.py": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+    "tools/c11d/d9/universal_producer_cli.py": "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54"
+  },
+  "test": {
+    "target": "tools/c11d/d9/test_e1_gui_editorial_contract.py",
+    "bytes": 6497,
+    "sha256": "872bfd49a99b289b1980feb06d38e44dc55766818fe344fcf3678bcc7d3f325d"
+  },
+  "files": [
+    {
+      "path": "docs/docs/current/e/C11E_CURRENT_AUTHORITY_20261106_V71.md",
+      "bytes": 12506,
+      "sha256": "9d9f557f1851039ea0ed75456a9bedd87a357eddc1e2c9a2a6b0f5ed23242ef8"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_CURRENT_DOC_INDEX_20261106_V31.md",
+      "bytes": 2392,
+      "sha256": "f1ac76683a06c84215edac3e9a69736ae6395b0bdde945ed25aca1f22798223c"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_E1_GUI_CLI_RUNTIME_PARITY_PLAN_20261106_V3.md",
+      "bytes": 7407,
+      "sha256": "d2eb012371e1898e7039fdd00075ef1ee5d995920d6d27efa3a98ba160ffb1de"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261106_V46.md",
+      "bytes": 7615,
+      "sha256": "16d975fb3fd5c2f0481d984b259c888c0b1708fcf6c567282f903e19542c00b6"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_PLAN_20261106_V3.md",
+      "bytes": 4727,
+      "sha256": "cb498f260f8f1ab5a1165b29ae5c372bb975c4563abbde49b022d140d000a831"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V25.md",
+      "bytes": 2805,
+      "sha256": "d829c9d45ea41af5af75bc6dd9a916ec90c50bcc40f2b1dc9f138a046a7e74c2"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261106_V69.md",
+      "bytes": 4345,
+      "sha256": "3e5c97c239f91b4a230c874b2f119f0364fcdaaf3ae68672c609e5abc5b4758f"
+    },
+    {
+      "path": "docs/docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261106_V7.md",
+      "bytes": 10221,
+      "sha256": "f97a7e1dcad6a7f860409a38a9c02f17351cf5d6c8d85bcfd978d8253a09bab2"
+    },
+    {
+      "path": "docs/docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V59.md",
+      "bytes": 3957,
+      "sha256": "da1df5accf7bce18febde56fed68777eb36677a66d5fa7a7ecb08c91ea7cf52a"
+    },
+    {
+      "path": "docs/docs/history/c11e/C11E_D99_GUI_PRESENTATION_OPTIONS_CONTRACT_INCIDENT_20261106_V2.md",
+      "bytes": 7293,
+      "sha256": "a307d7291825ba661937d02d575dc6f280b1dcd1d45d66fef8c0ece40903bc1d"
+    },
+    {
+      "path": "docs/docs/history/c11e/C11E_E4A7_POSTRUN_EVIDENCE_REVIEW_20261106_V2.md",
+      "bytes": 5335,
+      "sha256": "b492256cbb3701e101b7301200200585ee1896e67c3e583461af3bbe1ab2e643"
+    },
+    {
+      "path": "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261106_V69.md",
+      "bytes": 6177,
+      "sha256": "90912b117e762a77d9d2115b5e54782d8e5921bceb7b25db5bfc48b1265d7c9d"
+    },
+    {
+      "path": "docs/prompts/C11E_FIRST_PROMPT_20261106_V13.md",
+      "bytes": 2414,
+      "sha256": "1f0684615f9dacb15358baac968f5479bca5fab83638bf6d7c67a2e9ed2cfa11"
+    },
+    {
+      "path": "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261106_V69.md",
+      "bytes": 2201,
+      "sha256": "4eef96fe22ee1b6b86764e0bba0f3403ec2cc4e99ca9132dbf5b1a043bdffcce"
+    },
+    {
+      "path": "source/main.py",
+      "bytes": 110183,
+      "sha256": "4141072659f307468900c1cfb09774479abc6c10abae6ae638a11192cfcd04e6"
+    },
+    {
+      "path": "tests/tools/c11d/d9/test_e1_gui_editorial_contract.py",
+      "bytes": 6497,
+      "sha256": "872bfd49a99b289b1980feb06d38e44dc55766818fe344fcf3678bcc7d3f325d"
+    }
+  ]
+}

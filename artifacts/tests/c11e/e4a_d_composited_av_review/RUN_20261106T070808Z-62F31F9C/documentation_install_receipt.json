@@ -1,0 +1,84 @@
+{
+  "archive_sha256": "25d9b66c1ac31291e9454f766cd5042ea55ba87e1c41c9499096543e10399f03",
+  "files": [
+    {
+      "bytes": 8256,
+      "path": "docs/current/e/C11E_CURRENT_AUTHORITY_20261106_V68.md",
+      "sha256": "4d4044198d2d89cb53acaa984697b3867cd07cbc42978b77cb0beb04c456b4a0",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 3616,
+      "path": "docs/current/e/C11E_CURRENT_DOC_INDEX_20261106_V28.md",
+      "sha256": "a1055426430bd469a428f6093b38bd2c98098bd23140fe3bcdc99da7fbb97292",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 4774,
+      "path": "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261106_V43.md",
+      "sha256": "8b49242fd8c85558c7ea148858eba785bf9f1c842892e93a672a07667ccaf1f7",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 5786,
+      "path": "docs/current/e/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_PLAN_20261106_V1.md",
+      "sha256": "0a706cd79047f65ad9f05409518deb691b53ec5db003472ef27c7e06b0283c4c",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2230,
+      "path": "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V22.md",
+      "sha256": "b95ca7962d9b51c93678148b3a897b9a8e3222b5ae85f576b0eea903588034c9",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2499,
+      "path": "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261106_V66.md",
+      "sha256": "c36c35a970cfd41d1f7ea3baa52d11c02e47fa0c23b511ad4554bb3cd28d11ec",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 7159,
+      "path": "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_V4.md",
+      "sha256": "a6919a19a0abb0914e82a93b6e30b5406b1f0693431d8a4b6463020ead8ba145",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2776,
+      "path": "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V56.md",
+      "sha256": "3e687cf4326be7511388b0b759f8af7baef88f46baca5b0b43ce1f27d3517bd7",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2070,
+      "path": "docs/history/c11e/C11E_E4A6_RESERVED_BANDS_BLACK_RECOVERY_POSTMORTEM_20261106_V1.md",
+      "sha256": "ea7f58382a9345e0238017b58596a8094488554d3796100b1e32312a80d26aa0",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2545,
+      "path": "docs/history/c11e/C11E_E4A7_AUDIO_MUX_SOURCE_PIN_RECONCILIATION_20261106_V1.md",
+      "sha256": "9f4b57b6c89e55bb90e5f87dfc491a99b91166379d0cbd9025b926ca654f5e31",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 4438,
+      "path": "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261106_V66.md",
+      "sha256": "83a54c83ff2d09801e6244e488da3348a64347f611b0726f4099f996e5cd9531",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2634,
+      "path": "prompts/C11E_FIRST_PROMPT_20261106_V10.md",
+      "sha256": "48a61fc6fa82f0777aa62b50a12c4db0b51ca516029ced07057c3318c2993816",
+      "state": "ADDED"
+    },
+    {
+      "bytes": 2001,
+      "path": "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261106_V66.md",
+      "sha256": "b213cf632256c6834fb42ffeed1a0aa73baa0e322f3500444bbae554f8895386",
+      "state": "ADDED"
+    }
+  ],
+  "schema": "C11E_E4A7_DOC_INSTALL_RECEIPT_V1"
+}

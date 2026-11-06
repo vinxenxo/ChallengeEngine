@@ -1,0 +1,60 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+  "status": "PASS",
+  "content_type": "challenges",
+  "selection": {
+    "content_type": "challenges",
+    "family_id": "parking_v2",
+    "subtype_id": null,
+    "variant_id": "CHALLENGE_004",
+    "variant_scope_id": "challenge:CHALLENGE_004",
+    "difficulty_tier": null
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true,
+    "d_only_adapter_envelope_equal": true
+  },
+  "gui_request_hash": "f6b08d989f3682a179849b98c5f79df8f64c8dd63c0953ef33a6b94bf0768674",
+  "cli_request_hash": "f6b08d989f3682a179849b98c5f79df8f64c8dd63c0953ef33a6b94bf0768674",
+  "gui_plan_hash": "c2b12be1c2979d7abb4e2a32affb73e31b43b67051f58975be53dfaf02b6fee6",
+  "cli_plan_hash": "c2b12be1c2979d7abb4e2a32affb73e31b43b67051f58975be53dfaf02b6fee6",
+  "bridge_record_hash": "ce3ff0a3c7cecc4137e2b84564542280747460dd92d1ee89ac3e3c2f95ab1513",
+  "cli_bridge_record_hash": "ce3ff0a3c7cecc4137e2b84564542280747460dd92d1ee89ac3e3c2f95ab1513",
+  "d_only_adapter_envelope_hash": "7c20446197065f8da0f9ff3a14a9fd1a08295b03ac50cc5489705c7655e7615e",
+  "cli_d_only_adapter_envelope_hash": "7c20446197065f8da0f9ff3a14a9fd1a08295b03ac50cc5489705c7655e7615e",
+  "d_only_adapter_prepare_invoked": true,
+  "renderer_dispatch_invoked": false,
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "e1_shared_service": {
+    "schema": "C11-E-E1-GUI-CLI-SHARED-SERVICE-PARITY-V1",
+    "status": "PASS",
+    "checks": {
+      "semantic_intent_hash_equal": true,
+      "request_hash_equal": true,
+      "editorial_hash_equal": true,
+      "plan_hash_equal": true,
+      "selection_equal": true,
+      "editorial_equal": true,
+      "presentation_options_equal": true,
+      "seed_domains_equal": true,
+      "gui_origin_preserved": true,
+      "cli_origin_preserved": true,
+      "both_fail_closed": true
+    },
+    "gui_intent_sha256": "7363e903ca841685397a92dc8ef93a93bf3c95d27f3224330e62e5555e31ad4b",
+    "cli_intent_sha256": "2b0dd61aba7263bfdf715dcc37cf8befcbedac1a3d5632183ab5cc425b49ffd8",
+    "semantic_intent_hash": "6fbc519e4e4de94faf6a45adad446e6ad40bffff096abd7c1baa27b900c3f1e5",
+    "renderer": false,
+    "production_execution": false,
+    "media_created": false,
+    "release_authority": "NONE"
+  }
+}

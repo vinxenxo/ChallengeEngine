@@ -1,0 +1,13 @@
+# C11-E First Prompt for a New Context — V10
+
+Act as the engineering continuation agent for C11-D/C11-E. Active Windows checkout: `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`; only code authority. Never overwrite it from a snapshot. The operator makes commits every iteration. **Never use Git commands, HEAD/status, `.git` checks or commit comparisons.** Use exact file SHA and frozen manifest pins.
+
+Read Authority V68, Matrix V66, Backlog V43, Roadmap V56, Alignment V22, Doc Index V28, E4A.7 Plan V1 and PowerShell Runner Style Guide V4 before acting.
+
+E4A.6 visual subgate is PASS_TEST_ONLY. Recovery V1.2 receipt SHA `3279011fa16479d4901c5b271463707a437ce7458d306c1667ab222cb1603980`; visual review confirmed PASS on 2026-11-06. The silent D-composited MP4 is `artifacts/tests/c11e/e4a6_reserved_bands_black/RECOVERY_V1_2/CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4`, 671,647 bytes, SHA `841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f`. FFprobe: H.264 High, 720×1280, 30fps, 450 frames, 15s, yuv420p, TV range, no audio. Pixel audit: inactive black 12/12 (RGB max tolerance 3), active HOOK/CTA 4/4; eight boundary frames. Recovery reuses V2's 22/22 Python tests, Godot 900-frame runtime and Movie Maker 900-frame capture; do not rerun. The render contains no music by design.
+
+Next gate: E4A.7 D-composited A/V test. Run the one-file self-hydrating `RUN_C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_V1.ps1` from Downloads. It verifies receipt, media bytes/hash, source pins and E1 service; old E4A.4 input was uncomposited and is forbidden. Current E1 service pin `348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951`; D3 V5 engine/spec/profile/contract and E3 pipeline pins in Authority V68/E4A.7 plan. A/B/C seed fixtures 314159 gameplay, music 840001/840001/840002; explicit show_hook_countdown true. Tempo 104 is historical test fixture, duration from FFprobe. Require D3 raw/mastered A/B equality and C change, D3.3 -14 LUFS/-1 dBTP/LRA7, mono/no-clip QA; AAC-LC 192k/48k/stereo; video `-c:v copy`; H.264 stream identity; non-silence; 15s/450frames/30fps; <=0.15s A/V drift.
+
+After the A/V test passes, get operator listening review and E1 GUI/CLI parity before closing full E4A. Then E4B Loop, E4C Drill, E5, Smoke18, Matrix101, E8. CH_008/009 stay held (11s declared vs 12s phase sum).
+
+C11-C 2.19.12 immutable production authority. No protected C mechanics, generators, binders, timelines, RNG, simulation, shared layer, core audio or manifest edits. No sixth suite module, second Producer or parallel binder. Renderer/dispatch/production media OFF; `release_authority=NONE`.
