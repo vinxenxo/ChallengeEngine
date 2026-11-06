@@ -1,0 +1,57 @@
+{
+    "schema":  "C11E-E4B-LOOP-POLICY-READINESS-RUNNER-RECEIPT-V1",
+    "status":  "PASS_AUDIT_ONLY_POLICY_APPROVAL_REQUIRED",
+    "run_id":  "20261106T215629Z-495EAB8C",
+    "completed_at":  "2026-11-06T21:56:31.1975082Z",
+    "powershell_version":  "5.1.26100.9818",
+    "python_version":  "3 13 14",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "gui_evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_family_matrix\\E4B_LOOP_GUI_20261106T211920Z_F9377504",
+    "cli_evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_family_matrix\\CLI_20261106T212054Z-DE8364C4",
+    "source_pin_count":  44,
+    "local_tool_pins":  {
+                            "helper":  "b9ed539c371b961d61e3065699ce666efe18f59b380a156eeae6bc47f52e2124",
+                            "tests":  "98ea4c5c225be42ffa4f93b305bce81cb4439ccbc6e73b42da31540482f4a04c"
+                        },
+    "focused_tests":  {
+                          "stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "stderr_sha256":  "7a7f4e9168a116329e0a0b213efb1f598a68dd52b0bcabb3f29d9f92d5162b16",
+                          "count":  "11/11",
+                          "exit_code":  0
+                      },
+    "audit":  {
+                  "exit_code":  0,
+                  "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "stale_labels":  [
+                                       "loop_drill_windows",
+                                       "delivery_timebase",
+                                       "audio_music_delivery"
+                                   ],
+                  "cases":  81,
+                  "direct_identity_fields":  9,
+                  "stdout_sha256":  "1e1ca2602d3299c4ce9f401696ddaeb42634ec234aeb080648cef58a2947b6de",
+                  "stale_packet_v1_hash_count":  3,
+                  "report_sha256":  "c3ecac53195e01d3b8de0f92f32174284312c4fbd352a72bc5eda5fd1591c288"
+              },
+    "governance":  {
+                       "media_created":  false,
+                       "d9_17":  "BLOCKED_NO_GO",
+                       "d3_v5_invoked":  false,
+                       "d9_10":  "PREPARE_ONLY",
+                       "release_authority":  "NONE",
+                       "production_execution":  false,
+                       "d9_14":  "BLOCKED",
+                       "git_invoked":  false,
+                       "ffmpeg_invoked":  false,
+                       "renderer_input_emitted":  false,
+                       "d4_8":  "BLOCKED",
+                       "c11c_baseline_modified":  false,
+                       "d10":  "BLOCKED_FOR_PROMOTION",
+                       "c11c_family_music_generator_invoked":  false,
+                       "renderer":  false,
+                       "godot_invoked":  false,
+                       "renderer_dispatch_invoked":  false,
+                       "d9_16":  "BLOCKED",
+                       "c11c_visual_generator_invoked":  false
+                   }
+}

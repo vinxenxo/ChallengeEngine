@@ -1,0 +1,157 @@
+{
+    "schema":  "C11E-E4B-LOOP-POLICY-READINESS-OVERLAY-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY",
+    "run_id":  "20261106T215614Z-8CF942B8",
+    "completed_at":  "2026-11-06T21:56:14.6030227Z",
+    "powershell_version":  "5.1.26100.9818",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "source_pin_count":  44,
+    "frozen_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "payload_file_count":  22,
+    "new_files":  22,
+    "identical_reuse":  0,
+    "documentation_count":  19,
+    "tool_count":  3,
+    "payload":  [
+                    {
+                        "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261106_V77.md",
+                        "bytes":  10927,
+                        "sha256":  "516509763535ed801dafcdf156b6b50c566ac2c37f15cd85f0c463992cb45a73",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261106_V37.md",
+                        "bytes":  2902,
+                        "sha256":  "12d56aef9ca7216391ef69d66f896c4ae7805570cbf7ba5a79d5e5d02515eb59",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261106_V52.md",
+                        "bytes":  3309,
+                        "sha256":  "786717958377f4370a986033efb9d8d513a21b8266c33c9fbb769e37866e4a9c",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V31.md",
+                        "bytes":  2634,
+                        "sha256":  "a44746ece17bab12a5574b5b30afb9b17f23cdc76e5cd2950faf1be0f9e9c694",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_COMPOSITION_REVIEW_20261106_V5.md",
+                        "bytes":  2028,
+                        "sha256":  "2ee61e067b25028a841b5a73b4e3bfdc8f91aefebf2ad8a87ba026b665e7a7a5",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_D_ONLY_CONSUMER_IMPLEMENTATION_BLUEPRINT_20261106_V1.md",
+                        "bytes":  4644,
+                        "sha256":  "fae9a1fb3d52f7a1f4c6f354611b4fd3b340f99b3ab4bb4d6e8315b7047a5fcd",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_FAMILY_MATRIX_EXECUTION_PLAN_20261106_V2.md",
+                        "bytes":  1575,
+                        "sha256":  "79e4c78ded29125625b80bd44051cf1b9fdd5f5977ecbfeb542522200be6e865",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_FAMILY_MATRIX_REVIEW_20261106_V2.md",
+                        "bytes":  1937,
+                        "sha256":  "9ce601c47790a1d85a8e35f5a452fef814d09f5dba69491fe32b0ccb2560a04b",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_GUI_CLI_PARITY_REVIEW_20261106_V5.md",
+                        "bytes":  1784,
+                        "sha256":  "51392601ac23ed74ae5d1f7fd0cb151650e25bebbdd51c0be5b549d6d86ff9e1",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_POLICY_DECISION_DOCKET_20261106_V1.md",
+                        "bytes":  4603,
+                        "sha256":  "a35c36ae1f3d05fea6c082ec8f4793ec2ef7e350b5f737cc5d48c0f13c9e78f4",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_POLICY_READINESS_REVIEW_20261106_V1.md",
+                        "bytes":  3777,
+                        "sha256":  "934f257d25d8abfc9af41c62b1145cb867516b9120f9a92c8b0f384cae636614",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_SOURCE_REVIEW_20261106_V6.md",
+                        "bytes":  3078,
+                        "sha256":  "17ea7fac2662a82469fa91abb25f96b4121a48655336168b940283f04d5a29f2",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E4B_LOOP_WINDOWS_MATRIX_ACCEPTANCE_REVIEW_20261106_V1.md",
+                        "bytes":  2148,
+                        "sha256":  "ac156bc92edd6d3bb63d6b24f977064bed4dec002c03d21605dd2a1abcceed2e",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261106_V75.md",
+                        "bytes":  3896,
+                        "sha256":  "1733d348f157810e0264208ab6fe5f1f1c05fcc75aea4e9c5877286b45947edb",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261106_V11.md",
+                        "bytes":  1637,
+                        "sha256":  "c891e3362757cb346e89e5cafc7deafa73c25af0ad9a212a54b544cd17f30884",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V65.md",
+                        "bytes":  2909,
+                        "sha256":  "244b0d9c772fc52c3e954bbca8c34061049bc7d651fc8aac658d1059ba5a948c",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261106_V75.md",
+                        "bytes":  4342,
+                        "sha256":  "00e11b2044481bea92f457a443faf738a640816a0584fba0688839406aeaffa3",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "prompts/C11E_FIRST_PROMPT_20261106_V19.md",
+                        "bytes":  2341,
+                        "sha256":  "ce13fa2ac5ae6cd2e35067bcbc6f5d731e16c40364f64720b301b7ebb843fbdb",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261106_V75.md",
+                        "bytes":  2313,
+                        "sha256":  "0ea867544f902d4256fd4989b2f047d42a2a99d2851c379f047824506c0c8008",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "tools/c11d/d9/RUN_C11E_E4B_LOOP_POLICY_READINESS_V1.ps1",
+                        "bytes":  16112,
+                        "sha256":  "a8d8b568e924da6901b0728add5674c70803f769fa784778a4a19ebfad95e5bc",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "tools/c11d/d9/c11e_e4b_loop_policy_readiness.py",
+                        "bytes":  23370,
+                        "sha256":  "b9ed539c371b961d61e3065699ce666efe18f59b380a156eeae6bc47f52e2124",
+                        "disposition":  "NEW"
+                    },
+                    {
+                        "path":  "tools/c11d/d9/test_c11e_e4b_loop_policy_readiness.py",
+                        "bytes":  5744,
+                        "sha256":  "98ea4c5c225be42ffa4f93b305bce81cb4439ccbc6e73b42da31540482f4a04c",
+                        "disposition":  "NEW"
+                    }
+                ],
+    "governance":  {
+                       "c11c_baseline_modified":  false,
+                       "renderer":  false,
+                       "release_authority":  "NONE",
+                       "git_invoked":  false,
+                       "preexisting_source_files_modified":  false,
+                       "media":  false
+                   }
+}

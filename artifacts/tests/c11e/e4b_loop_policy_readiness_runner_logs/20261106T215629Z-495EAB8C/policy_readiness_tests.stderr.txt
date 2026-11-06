@@ -1,0 +1,16 @@
+test_all_current_policy_proposals_remain_unapproved (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_all_current_policy_proposals_remain_unapproved) ... ok
+test_cli_report_and_template_sidecars (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_cli_report_and_template_sidecars) ... ok
+test_cli_report_scope_and_seed_distribution (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_cli_report_scope_and_seed_distribution) ... ok
+test_d98_metadata_remains_plan_only_pending (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_d98_metadata_remains_plan_only_pending) ... ok
+test_full_audit_reports_required_operator_decisions (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_full_audit_reports_required_operator_decisions) ... ok
+test_gui_report_scope_and_seed_distribution (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_gui_report_scope_and_seed_distribution) ... ok
+test_gui_report_sidecar (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_gui_report_sidecar) ... ok
+test_gui_template_sidecar (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_gui_template_sidecar) ... ok
+test_historical_payload_scope_is_geometric_only_and_blocked (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_historical_payload_scope_is_geometric_only_and_blocked) ... ok
+test_nine_canonical_identities_match_for_all_cases (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_nine_canonical_identities_match_for_all_cases) ... ok
+test_packet_v1_has_three_stale_policy_hashes (test_c11e_e4b_loop_policy_readiness.PolicyReadinessTests.test_packet_v1_has_three_stale_policy_hashes) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.112s
+
+OK
